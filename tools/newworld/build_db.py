@@ -297,17 +297,14 @@ def build() -> db.World:
                      "label": label, "named": named, "world": (wx, wy)})
     place_cols = ("status", "held_by", "population", "footprint_radius_m", "siting", "danger_band_id", "importance",
                   "summary", "lore_page", "statement_tier_id")
-    source_pop = source_match_population()
-    for p in rows:
+    for p in rows:  # population is the record's researched estimate; a source's people never replace it (0040)
         s, r = p["s"], places_r.get(p["id"], {})
-        if p["id"] in source_pop:  # the allocated source's people, adjusted by the record (nw-04)
-            r = dict(r, population=source_pop[p["id"]])
         cx, cy = p["cell"]
         region = cell_region.get((cx, cy)) or nearest_region(cell_region, cx, cy)
         name = r.get("name") or (title(p["label"]) if p["named"] else
                                  f"Unnamed {next(k['label'] for k in key['place_kind'] if k['id'] == p['kind']).lower()}")
-        x, y = int(round(s["px"])), int(round(s["py"]))
-        w.insert("place", id=p["id"], name=name, map_label=p["label"], symbol_id=p["sym"],
+        x, y = water_pixel(s["px"], s["py"])
+        w.insert("place", id=p["id"], name=name, map_label=p["label"], symbol_id=r.get("symbol_id", p["sym"]),
                  place_kind_id=r.get("place_kind_id", p["kind"]), culture_id=r.get("culture_id", p["culture"]),
                  region_id=region, cell_x=cx, cell_y=cy, px=s["px"], py=s["py"], world_x=round(p["world"][0], 1),
                  world_y=round(p["world"][1], 1), on_water=bool(water[y, x]), read_sure=bool(s.get("sure", True)),
@@ -531,12 +528,9 @@ def join_dead_ends(w: db.World, rd: dict, syms: list) -> None:
 SOURCE_MATCH = SRC / "source_match"   # each place's source place (tools/places/sources_match.py)
 
 
-def source_match_population() -> dict[str, int]:
-    p = SOURCE_MATCH / "place_source.jsonl"
-    if not p.exists():
-        return {}
-    rows = (json.loads(line) for line in p.read_text().splitlines() if line.strip())
-    return {r["place_id"]: r["population_after"] for r in rows if r["rank"] == 0}
+def water_pixel(px: float, py: float) -> tuple[int, int]:
+    """The raster pixel a map point lies in: floor, never round (rounding reads a neighbour pixel)."""
+    return int(math.floor(px)), int(math.floor(py))
 
 
 def source_match(w: db.World) -> None:

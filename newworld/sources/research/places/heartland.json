@@ -5,7 +5,7 @@
    "name": "Helstrom",
    "status": "inhabited",
    "held_by": "The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard",
-   "population": 62,
+   "population": 110,
    "footprint_radius_m": 525.0,
    "siting": "riverbank",
    "danger_band_id": "D1",
@@ -90,7 +90,7 @@
     },
     {
      "aspect": "people",
-     "text": "Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors and a very small outsider presence of perhaps a few dozen, each there on a naheesh's word. The guard is a tribal levy answerable to the assembly, not to strangers.",
+     "text": "Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors and a very small outsider presence of perhaps a handful, each there on a naheesh's word. The guard is a tribal levy answerable to the assembly, not to strangers.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -331,7 +331,8 @@
      "detail": "the Helstrom Hist: a blessing of the Hist (Resist Disease for eight hours)",
      "count": 1
     }
-   ]
+   ],
+   "symbol_id": "settlement.metropolis"
   },
   {
    "id": "korydon",

@@ -370,5 +370,6 @@
 {"id":"98","kind":"place","place_id":"arorha","px":2890.5,"py":1153.0,"world_x":256102.4,"world_y":-629350.4}
 {"id":"99","kind":"junction","px":2832.5,"py":1157.25,"world_x":244224.0,"world_y":-630220.8}
 {"id":"n-abandoned-village-m10-m100","kind":"place","place_id":"abandoned-village-m10-m100","px":1254.5,"py":2070.3,"world_x":-78950.4,"world_y":-817213.4}
+{"id":"n-fort-willowmoth","kind":"place","place_id":"fort-willowmoth","px":1667.6,"py":546.2,"world_x":5652.5,"world_y":-505077.8}
 {"id":"n-logging-camp-m20-m107","kind":"place","place_id":"logging-camp-m20-m107","px":860.0,"py":2344.0,"world_x":-159744.0,"world_y":-873267.2}
 {"id":"n-noota-nara","kind":"place","place_id":"noota-nara","px":2426.5,"py":938.0,"world_x":161075.2,"world_y":-585318.4}

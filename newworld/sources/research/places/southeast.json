@@ -1120,7 +1120,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey.",
+     "text": "Argonian Sithis and Hist devotion; a small pool of Hist sap lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1225,7 +1225,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The elder wants a cargo of saltrice carried to Archon past the customs post. A raft-master offers a back channel the customs officers do not use, for a favour. Two families dispute who tends the Hist pool.",
+     "text": "The elder wants a cargo of saltrice carried to Archon past the customs post. A raft-master offers a back channel the customs officers do not use, for a favour. Two families dispute who tends the pool of Hist sap.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1260,7 +1260,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Pryai village (Nyhus), is a Nordic and Dunmer village of eight interiors with an inn, a farm and a prison, so its Nordic pieces are replaced and it does not fit well. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock town of three interiors, a dockmaster's house, a general store and a bunkhouse, which serve as the cook-house, the landing market and the travellers' raft-house. Still to add: the pentagon of raft halls, the elder's long hall and its moot, the drying frames, the Hist pool and the smugglers' stash in the reed edge.",
+     "text": "Its main source, Pryai village (Nyhus), is a Nordic and Dunmer village of eight interiors with an inn, a farm and a prison, so its Nordic pieces are replaced and it does not fit well. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock town of three interiors, a dockmaster's house, a general store and a bunkhouse, which serve as the cook-house, the landing market and the travellers' raft-house. Still to add: the pentagon of raft halls, the elder's long hall and its moot, the drying frames, the pool of Hist sap and the smugglers' stash in the reed edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1330,7 +1330,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "The town's Hist pool: the Hist's blessing: cures disease and regenerates stamina for 8 hours",
+     "detail": "The town's pool of Hist sap: the Hist's blessing: cures disease and regenerates stamina for 8 hours",
      "count": 1
     },
     {
@@ -2872,7 +2872,7 @@
    "name": "Xi-Inou",
    "status": "inhabited",
    "held_by": "A Three Waters raft-master family under the elder of Uluo",
-   "population": 10,
+   "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
    "danger_band_id": "D1",
@@ -2954,7 +2954,7 @@
     },
     {
      "aspect": "present",
-     "text": "Ten people hold the landing under the raft-master's family, sell to passing Archon boatmen and hear all that moves in the estuary.",
+     "text": "Eight people hold the landing under the raft-master's family, sell to passing Archon boatmen and hear all that moves in the estuary.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3904,7 +3904,7 @@
    "place_kind_id": "keep",
    "status": "abandoned",
    "held_by": "No one holds it; Aroxhu families shelter in its upper floor and smugglers cache goods in its lower hall",
-   "population": 3,
+   "population": 0,
    "footprint_radius_m": 60,
    "siting": "inland",
    "danger_band_id": "D4",
@@ -3996,7 +3996,7 @@
     },
     {
      "aspect": "people",
-     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache and an old ex-privateer keeps a room as his home.",
+     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache, and nobody lives here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

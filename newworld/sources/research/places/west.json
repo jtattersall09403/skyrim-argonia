@@ -310,7 +310,7 @@
    "name": "Giovesse",
    "status": "inhabited",
    "held_by": "Gideon's poorer families and ghost-hunters, who squat below the ruined Castle Giovesse",
-   "population": 9,
+   "population": 8,
    "footprint_radius_m": 60,
    "siting": "inland",
    "danger_band_id": "D2",
@@ -367,7 +367,7 @@
     },
     {
      "aspect": "present",
-     "text": "About nine people live in lean-to hide tents on raised cypress platforms below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard.",
+     "text": "About eight people live in lean-to hide tents on raised cypress platforms below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -448,7 +448,7 @@
     },
     {
      "aspect": "look",
-     "text": "Grey, root-split castle walls on a low mound, a dozen hide tents below on raised cypress platforms, a plank causeway to Gideon's gate and lamps burning all night.",
+     "text": "Grey, root-split castle walls on a low mound, half a dozen hide tents below on raised cypress platforms, a plank causeway to Gideon's gate and lamps burning all night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4897,10 +4897,10 @@
    "held_by": "Naka-Desh river-folk",
    "population": 5,
    "footprint_radius_m": 40,
-   "siting": "riverbank",
+   "siting": "swamp",
    "danger_band_id": "D4",
    "importance": 1,
-   "summary": "Ukeel Station is a small river station in the Banujha Basin. It stands on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
+   "summary": "Ukeel Station is a small marsh landing in the Banujha Basin. It stands on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5071,7 +5071,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie at the landing, and strangers who mock the river-folk may be turned away by arrow. Mine-Burner watchers are close at hand.",
+     "text": "Crocodiles lie at the landing, and strangers who mock the Naka-Desh may be turned away by arrow. Mine-Burner watchers are close at hand.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7029,7 +7029,7 @@
    "held_by": "Mine-Burner tribes of the Banujha",
    "population": 6,
    "footprint_radius_m": 40,
-   "siting": "riverbank",
+   "siting": "swamp",
    "danger_band_id": "D4",
    "importance": 1,
    "summary": "Jal-Resh Post is a small watch post in the Banujha Basin. It stands on the Banujha waters between Jarecai and Kharaxos.",
@@ -7411,7 +7411,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the basin. Burn-marks on the gate honour the burned mine-mouths.",
+     "text": "The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the Banujha. Burn-marks on the gate honour the burned mine-mouths.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7810,7 +7810,7 @@
    "held_by": "The Mine-Burner tribes' council of elders",
    "population": 28,
    "footprint_radius_m": 110,
-   "siting": "lakeshore",
+   "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 4,
    "summary": "Jarecai is the seat of the Mine-Burner tribes of the Banujha Basin, a fortified stilt town on the water behind Soulrest. It is the hold over Soulrest's hatching grounds and the heart of the tribes that burned the Imperial mines.",
@@ -8064,7 +8064,7 @@
    "gives": [
     {
      "kind": "boat-stop",
-     "detail": "a raft-master at the lake landing",
+     "detail": "a raft-master at the river landing",
      "count": 1
     },
     {
@@ -8116,7 +8116,7 @@
    "held_by": "Mine-Burner elders, under Jarecai",
    "population": 22,
    "footprint_radius_m": 110,
-   "siting": "lakeshore",
+   "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 3,
    "summary": "Kharaxos is a Mine-Burner town on the east of the Banujha Basin, its name a leftover from the Kothringi who held the shore, which the tribes never changed. It trades with Kothringi-named towns of the interior.",
@@ -8725,7 +8725,7 @@
    "name": "Redtimber Camp",
    "status": "inhabited",
    "held_by": "Soulrest's timber crew, paying the Mine-Burners in kind",
-   "population": 5,
+   "population": 4,
    "footprint_radius_m": 25,
    "siting": "inland",
    "danger_band_id": "D2",
@@ -8773,7 +8773,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five loggers and a foreman work a stand of red mangrove; the Mine-Burners put up with them for a fee.",
+     "text": "Three loggers and a foreman work a stand of red mangrove; the Mine-Burners put up with them for a fee.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9609,7 +9609,7 @@
    "name": "Bramman's Watch",
    "status": "occupied",
    "held_by": "Bramman's Brethren, the pirates' seat under Captain Wazei-Vos, called One-Eye",
-   "population": 15,
+   "population": 12,
    "footprint_radius_m": 40,
    "siting": "hilltop",
    "danger_band_id": "D1",
@@ -9692,7 +9692,7 @@
     },
     {
      "aspect": "present",
-     "text": "About fifteen pirates live at the Watch. Their lookouts count every ship that comes into the bay for Gideon, and their boat crosses to Olvani.",
+     "text": "About twelve pirates live at the Watch. Their lookouts count every ship that comes into the bay for Gideon, and their boat crosses to Olvani.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

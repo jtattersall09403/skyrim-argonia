@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (20%), lily (12%), marsh herb
 
 Mine-Burner Argonians, Chime-Keepers, Root-Folk outposts and Paatru hunters; about 100 people. <!-- region_note:banujha-basin/people -->
 
-The places here belong to The Mine-Burners of the Banujha (Banu-Jaleel) (6 places, about 123 people), The Root-Folk of Helstrom (2 places, about 4 people), The Chime-Keepers (Kothringi-named towns) (1 place, about 2 people), The Naka-Desh (Riverbacks) (1 place, about 13 people) and Soulrest and the Topal Coast (1 place, about 5 people); 4 places carry no culture in the data. <!-- place:region=banujha-basin -->
+The places here belong to The Mine-Burners of the Banujha (Banu-Jaleel) (6 places, about 74 people), The Root-Folk of Helstrom (2 places, about 8 people), The Chime-Keepers (Kothringi-named towns) (1 place, about 8 people), The Naka-Desh (Riverbacks) (1 place, about 5 people) and Soulrest and the Topal Coast (1 place, about 4 people); 4 places carry no culture in the data. <!-- place:region=banujha-basin -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Jarecai
 
-A town, about 220 m across, sited on lakeshore, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by The Mine-Burner tribes' council of elders; 43 people live there. It is not built yet. <!-- place:jarecai -->
+A town, about 220 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by The Mine-Burner tribes' council of elders; 28 people live there. It is not built yet. <!-- place:jarecai -->
 
 A fortified town on stilts over the Banujha waters, the seat of the basin tribes. It is the political centre of the people who cut Soulrest off from its hinterland. <!-- place_note:jarecai/overview --> About 28 people live in tiered halls behind a palisade of stakes. The elders judge disputes, take a toll from Soulrest Argonians who come inland to the hatching grounds and use the grounds as a lever on the port. <!-- place_note:jarecai/present --> Mine-Burner Argonians, council elders and war-leaders; no Imperial-descended family lives here, and ex-Imperial administrators from Soulrest are unwelcome. <!-- place_note:jarecai/people --> The tribes of the basin burned the Imperial mines and timber concessions in 3E 427 and never made peace with the coast. The basin's oldest Hist stands at Jarecai. The town grew round it and is where their elders meet. <!-- place_note:jarecai/history -->
 
@@ -48,7 +48,7 @@ Tiered timber halls on stilts, a palisade of burned stakes, black-scorched mine 
 
 Built from: Its main source, Nyhus (Nyhus), is a walled town of 340 buildings whose ten interiors hold a fort, a smithy, an inn and houses, so it lends the fortified ground, the council hall (the fort) and the smith's yard. Its Imperial and Nordic pieces are replaced with Argonian stilt halls from King of the Murkmire, and Murkwood (Black Marsh & Valenwood) is the alternate for the landings. Still to add: the tiered stilt halls, the stake palisade, the scorched mine timbers and the Hist. <!-- place_note:jarecai/source -->
 
-It promises the player: Boat stop: a raft-master at the lake landing; Blacksmith trader: a Mine-Burner smith selling salvaged mine iron, steel and hide armour; Forge: the smith's forge and anvil; Smelter: at the smith's yard, for the salvaged ore; General goods trader: the council hall's trader; Skill trainer: Expert Light Armor trainer, a war-leader; Skill trainer: Journeyman Marksman trainer, a watch-leader; Shrine blessing: the Hist at Jarecai: drinking its sap cures disease and gives Waterbreathing for eight hours; Cooking pot: the council hall hearth. <!-- place_give:jarecai/0; place_give:jarecai/1; place_give:jarecai/2; place_give:jarecai/3; place_give:jarecai/4; place_give:jarecai/5; place_give:jarecai/6; place_give:jarecai/7; place_give:jarecai/8 -->
+It promises the player: Boat stop: a raft-master at the river landing; Blacksmith trader: a Mine-Burner smith selling salvaged mine iron, steel and hide armour; Forge: the smith's forge and anvil; Smelter: at the smith's yard, for the salvaged ore; General goods trader: the council hall's trader; Skill trainer: Expert Light Armor trainer, a war-leader; Skill trainer: Journeyman Marksman trainer, a watch-leader; Shrine blessing: the Hist at Jarecai: drinking its sap cures disease and gives Waterbreathing for eight hours; Cooking pot: the council hall hearth. <!-- place_give:jarecai/0; place_give:jarecai/1; place_give:jarecai/2; place_give:jarecai/3; place_give:jarecai/4; place_give:jarecai/5; place_give:jarecai/6; place_give:jarecai/7; place_give:jarecai/8 -->
 
 Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. Safe for the tribes' friends; strangers from the coast are questioned and sometimes held. Outlying posts are hostile. <!-- place_note:jarecai/dangers --> <!-- place_law:jarecai; place_danger:jarecai -->
 
@@ -58,7 +58,7 @@ It is to be built from Nyhus in Nyhus.esp (a town: 340 buildings, 10 interiors, 
 
 ### Kharaxos
 
-A town, about 220 m across, sited on lakeshore, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner elders, under Jarecai; 30 people live there. It is not built yet. <!-- place:kharaxos -->
+A town, about 220 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner elders, under Jarecai; 22 people live there. It is not built yet. <!-- place:kharaxos -->
 
 A fortified town of stilt halls on the basin's eastern shore, the tribes' gateway to the Chime-Keepers' towns toward Blackrose. <!-- place_note:kharaxos/overview --> About 22 people live here. It is a trade stop for metal and fish and a muster point for the basin's war-bands. <!-- place_note:kharaxos/present --> Mine-Burner Argonians and some Chime-Keeper traders from Oeneas. <!-- place_note:kharaxos/people --> Kharaxos bears a name older than the Mine-Burners, from the Kothringi who held the basin's east shore before the Knahaten Flu. The tribes who settled there after the Flu kept the name, as Argonian resettlers did across the old Kothringi country. <!-- place_note:kharaxos/history -->
 
@@ -76,7 +76,7 @@ It is to be built from Murkwood in Black Marsh.esm (a town: 153 buildings, 1 int
 
 ### Oeneas
 
-A hamlet, about 120 m across, sited on island, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by Chime-Keepers, Argonian resettlers of the Kothringi towns; 2 people live there. It is not built yet. <!-- place:oeneas -->
+A hamlet, about 120 m across, sited on island, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by Chime-Keepers, Argonian resettlers of the Kothringi towns; 8 people live there. It is not built yet. <!-- place:oeneas -->
 
 A hamlet of stilt houses with stone footings, kept by Argonians who resettled Kothringi-named places after 2E 560. <!-- place_note:oeneas/overview --> About eight people make chimes, boats and rope. The hamlet is orderly. Its people treat the Archwardens' officials coldly and Gideon's traders warmly. <!-- place_note:oeneas/present --> Chime-Keeper Argonians live here as craftsmen and traders, resettlers of a hamlet that bears a Kothringi name. <!-- place_note:oeneas/people --> The Kothringi named the place, and the Argonians who resettled it after the Knahaten Flu kept the name, as they did across the old Kothringi towns. <!-- place_note:oeneas/history -->
 
@@ -146,27 +146,27 @@ The nearest stop is the boat stop at Kharaxos, 250 m away across the marsh on fo
 
 It is to be built from AHO in Dwarfsphere.esp (a ruin dwemer: 2310 buildings, 5 interiors, 5 residents, 34 hostile, about 69 m across). The source reads: "AHO: a ruin dwemer built in dwemer and nordic style with ship, ruin, mine pieces. 5 people live there, 34 hostile. 5 interiors (AHO). Dry ground." Similar sources: Haj-Uxith (ruin argonian, 66 buildings, 1 interior), Teeth of Sithis (ruin argonian, 5729 buildings, 3 interiors) and Huluxinoag (ruin argonian, 59 buildings, 1 interior). <!-- place_source:lilmothiit-ruin-m6-m97/0; source_place:dwarfsphere.cluster.dlc2nchardak.21.9; place_source:lilmothiit-ruin-m6-m97/1; place_source:lilmothiit-ruin-m6-m97/2; place_source:lilmothiit-ruin-m6-m97/3 -->
 
-### Xul-Banu Post
+### Banu-Veeth Post
 
-An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 16 people live there. It is not built yet. <!-- place:outpost-m16-m87 -->
+An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 6 people live there. It is not built yet. <!-- place:outpost-m11-m102 -->
 
-Xul-Banu Post is a plank post raised on posts with a gate-tower and a trading float tied beside the landing. Six Mine-Burners stand the watch. <!-- place_note:outpost-m16-m87/overview --> A few Mine-Burner tribesmen hold the post and watch the border with Nha Enasa. They trade with the Naka-Desh across the water but admit travellers to the basin only with leave. <!-- place_note:outpost-m16-m87/present --> Six Mine-Burner Argonians: a post-captain, two watchers, a trader and two youths. They are on good terms with the Naka-Desh of Sakeepa Station. <!-- place_note:outpost-m16-m87/people --> Xul-Banu Post is a Mine-Burner watch post on the basin's north-west edge, where the basin's water meets the Naka-Desh channels. It has grown with the river trade from Gul-Tej, whose boats pay it a toll. <!-- place_note:outpost-m16-m87/history -->
+Banu-Veeth Post is a plank watch-post raised on posts with a lookout platform, a long boat-landing and a toll chain across the channel. Six Mine-Burner watchers live on it. <!-- place_note:outpost-m11-m102/overview --> A few Mine-Burner tribesmen hold the post year-round, watching for boats from Soulrest and the coast. They stop every boat and take a toll of salt or iron. <!-- place_note:outpost-m11-m102/present --> Six Mine-Burner Argonians: three watchers, a ferryman, a cook and a boy who runs messages to the basin. They are hostile to anyone from the coast. <!-- place_note:outpost-m11-m102/people --> Banu-Veeth Post is a Mine-Burner watch post at the south of the Banujha Basin, covering the water toward Soulrest. The tribes who burned the Imperial mines in 3E 427 set the first watch here against Soulrest's diggers. <!-- place_note:outpost-m11-m102/history -->
 
-A plank post raised on posts on the basin's north-west edge, a gate-tower facing Nha Enasa and a trading float tied beside the landing. Hides and baskets lie stacked on the float. <!-- place_note:outpost-m16-m87/look --> The watchers keep the Nha Enasa border and take a small toll on caravans. <!-- place_note:outpost-m16-m87/economy --> The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the basin. Burn-marks on the gate honour the burned mine-mouths. <!-- place_note:outpost-m16-m87/faith -->
+A plank watch-post raised on posts on the water with a lookout platform and a long boat-landing, with a toll chain across the channel. A heap of salt sacks sits under a lean-to. <!-- place_note:outpost-m11-m102/look --> Watching, fishing and a small toll on boats heading to Soulrest. <!-- place_note:outpost-m11-m102/economy --> The post's eggs are carried to the Hist at Jarecai to hatch, and its dead go back there to be staked. A fang charm hangs over the landing. <!-- place_note:outpost-m11-m102/faith -->
 
-Built from: Its main source, Military Camp Reach Imperial (Skyrim), is a small Imperial camp with sixteen people, camp pieces and a fort piece, and no interior; it lends the gate-tower ground. No room inside is needed. Ree-An-Wo (King of the Murkmire) is the alternate that supplies the cypress platforms on posts. Still to add: the gate-tower, the trading float, the burn-marks on the gate and the cache under the platform. <!-- place_note:outpost-m16-m87/source -->
+Built from: Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of Ree-An-Wo's cypress platforms on posts with plank walkways and platform bridges from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm. <!-- place_note:outpost-m11-m102/source -->
 
-It promises the player: Skill trainer: Journeyman Light Armor trainer, the watch-leader; Fish and clams: gar at the border water; Dangerous wildlife: crocodiles and marsh snakes at the border water; Lesser treasure: a smuggler's cache under the post. <!-- place_give:outpost-m16-m87/0; place_give:outpost-m16-m87/1; place_give:outpost-m16-m87/2; place_give:outpost-m16-m87/3 -->
+It promises the player: Skill trainer: Journeyman Marksman trainer, the post's watch-leader; Fish and clams: gar in the channel; Dangerous wildlife: crocodiles in the channel below the post; Lesser treasure: a smuggler's sunken crate by the chain. <!-- place_give:outpost-m11-m102/0; place_give:outpost-m11-m102/1; place_give:outpost-m11-m102/2; place_give:outpost-m11-m102/3 -->
 
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. The watchers are armed and treat strangers as suspects. Crocodiles and marsh snakes lie on both sides of the border water. <!-- place_note:outpost-m16-m87/dangers --> <!-- place_law:outpost-m16-m87; place_danger:outpost-m16-m87 -->
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses deadly ground; its loot is of the deadly band. Watchers with bows cover the channel, and a toll chain stretches across it. Crocodiles use the same channel. <!-- place_note:outpost-m11-m102/dangers --> <!-- place_law:outpost-m11-m102; place_danger:outpost-m11-m102 -->
 
-The nearest stop is the boat stop at Jarecai, 910 m away across the marsh on foot. Roads run from it to Sakeepa Station (track, 600 m north-west), Nine Reeds Waystation (track, 840 m north-west), Ukeel Station (track, 2.0 km south-east) and Nacydes (track, 2.4 km east). <!-- travel_approach:outpost-m16-m87; road_node:place=outpost-m16-m87 -->
+The nearest stop is the boat stop at Mir-Xal, 840 m away across the marsh on foot. No road reaches it. <!-- travel_approach:outpost-m11-m102; road_node:place=outpost-m11-m102 -->
 
-It is to be built from Military Camp Reach Imperial in Skyrim.esm (a camp military: 6 buildings, 0 interiors, 16 residents, 3 hostile, about 42 m across). The source reads: "Military Camp Reach Imperial: a camp military built in imperial style with camp, mine, fort pieces. 16 people live there, 3 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m16-m87/0; source_place:skyrim.marker.militarycampreachimperialmapmarker; place_source:outpost-m16-m87/1; place_source:outpost-m16-m87/2; place_source:outpost-m16-m87/3 -->
+It is to be built from Military Camp Pale Sons in Skyrim.esm (a camp military: 7 buildings, 0 interiors, 10 residents, 1 hostile, about 127 m across). The source reads: "Military Camp Pale Sons: a camp military built in nordic and imperial style with camp, mine, cave pieces. 10 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m11-m102/0; source_place:skyrim.marker.militarycamppalesonsmapmarker; place_source:outpost-m11-m102/1; place_source:outpost-m11-m102/2; place_source:outpost-m11-m102/3 -->
 
 ### Deshaa Post
 
-An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 13 people live there. It is not built yet. <!-- place:outpost-m19-m103 -->
+An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 6 people live there. It is not built yet. <!-- place:outpost-m19-m103 -->
 
 Deshaa Post is a plank post raised on posts with a toll gate, a lookout and a wagon yard beside a raised causeway. Six Mine-Burners man it. <!-- place_note:outpost-m19-m103/overview --> A few Mine-Burner tribesmen hold the post, watching the road and taking toll from carts. They are known on the road for fair, hard bargaining. <!-- place_note:outpost-m19-m103/present --> Six Mine-Burner Argonians: a toll-keeper, three watchers, a smith who mends axles and a boy with a horn. They know the carters of the road by name. <!-- place_note:outpost-m19-m103/people --> Deshaa Post is a Mine-Burner watch post at the basin's south-west edge, covering the road toward Soulrest and Chasepoint. The tribes set it there to decide who uses the road out of their basin. <!-- place_note:outpost-m19-m103/history -->
 
@@ -182,27 +182,9 @@ The nearest stop is the boat stop at Soulrest, 770 m away over water. Roads run 
 
 It is to be built from Military Camp Rift Imperial in Skyrim.esm (a camp military: 10 buildings, 0 interiors, 13 residents, 4 hostile, about 115 m across). The source reads: "Military Camp Rift Imperial: a camp military built in imperial and nordic style with mine, camp, ruin pieces. 13 people live there, 4 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m19-m103/0; source_place:skyrim.marker.militarycampriftimperialmapmarker; place_source:outpost-m19-m103/1; place_source:outpost-m19-m103/2; place_source:outpost-m19-m103/3 -->
 
-### Ukeel Station
-
-An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 13 people live there. It is not built yet. <!-- place:outpost-m14-m89 -->
-
-Ukeel Station is a reed-thatched plank platform raised on posts above the Banujha with a fish-rack, a net-drying frame and a boat landing. Five Naka-Desh keep it. <!-- place_note:outpost-m14-m89/overview --> The station is held through the year by a handful of Naka-Desh fishers, who net osheeja gar from the Banujha and trade the catch at the water's edge. They watch strangers from the platform and ask for riddles. <!-- place_note:outpost-m14-m89/present --> Five Naka-Desh: a net-boss, two fishers, a smoker of fish and a child who learns the river's ways. They love a riddle and give a good one in return for a gift of salt. <!-- place_note:outpost-m14-m89/people --> Ukeel Station is a net-mending landing on the Banujha where the Naka-Desh river-folk meet the basin's Mine-Burners. The same few families have held it for generations and rebuild its stilts when they rot. <!-- place_note:outpost-m14-m89/history -->
-
-A plank platform raised on posts and thatched with reed above the Banujha, a fish-rack, a net-drying frame and a boat landing with a chime-post at the end. Fish scales glitter on the planks. <!-- place_note:outpost-m14-m89/look --> Osheeja gar fishing, smoked fish and barter for salt and iron. <!-- place_note:outpost-m14-m89/economy --> The river-folk keep a chime-post at the landing for the Kothringi and the dead of the river. The river-folk go to their tree for hatching and burial, a boat-journey of several days. <!-- place_note:outpost-m14-m89/faith -->
-
-Built from: Its main source, Military Camp Haafingar Sons (Skyrim), is a camp of thirteen people with 27 camp pieces and no interior, so it lends tents and racks with its Nordic pieces replaced. Black Rose (Black Marsh & Valenwood) is a hamlet of three people with ruin pieces and is too bare. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. Still to add: the reed thatch over the raised platform, the fish-rack, the net-drying frame, the landing and the chime-post. <!-- place_note:outpost-m14-m89/source -->
-
-It promises the player: Fish and clams: osheeja gar from the landing; Innkeeper or food seller: a Naka-Desh fisher selling smoked gar and buying food; Cooking pot: the smoking fire; Dangerous wildlife: Banujha crocodiles at the landing; Lesser treasure: a sunken net-chest off the landing. <!-- place_give:outpost-m14-m89/0; place_give:outpost-m14-m89/1; place_give:outpost-m14-m89/2; place_give:outpost-m14-m89/3; place_give:outpost-m14-m89/4 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Crocodiles lie at the landing, and strangers who mock the river-folk may be turned away by arrow. Mine-Burner watchers are close at hand. <!-- place_note:outpost-m14-m89/dangers --> <!-- place_law:outpost-m14-m89; place_danger:outpost-m14-m89 -->
-
-The nearest stop is the boat stop at Jarecai, 870 m away across the marsh on foot. Roads run from it to Kyrenos (track, 700 m south-east), Oeneas (track, 790 m south-east), Nacydes (track, 1.2 km north-east), Sakeepa Station (track, 1.4 km north-west), Nine Reeds Waystation (track, 1.5 km north-west) and Xul-Banu Post (track, 2.0 km north-west). <!-- travel_approach:outpost-m14-m89; road_node:place=outpost-m14-m89 -->
-
-It is to be built from Military Camp Haafingar Sons in Skyrim.esm (a camp military: 8 buildings, 0 interiors, 13 residents, 5 hostile, about 98 m across). The source reads: "Military Camp Haafingar Sons: a camp military built in nordic and imperial style with camp, mine, fort pieces. 13 people live there, 5 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m14-m89/0; source_place:skyrim.marker.militarycamphaafingarsonsmapmarker; place_source:outpost-m14-m89/1; place_source:outpost-m14-m89/2; place_source:outpost-m14-m89/3 -->
-
 ### Jal-Resh Post
 
-An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 11 people live there. It is not built yet. <!-- place:outpost-m13-m96 -->
+An outpost, about 80 m across, sited on swamp, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 6 people live there. It is not built yet. <!-- place:outpost-m13-m96 -->
 
 Jal-Resh Post is a plank post raised on posts at a channel bend with a lookout tower, a signal horn and two war-canoes drawn up at the landing. Six Mine-Burners keep the watch here. <!-- place_note:outpost-m13-m96/overview --> A few Mine-Burner tribesmen hold the post and watch the channel for diggers heading for the ruins. They turn back anyone who cannot give a reason. <!-- place_note:outpost-m13-m96/present --> Six Mine-Burner Argonians: three bow-watchers, a boatman, a cook and a young one learning to read tracks. They know every digger who has come this way. <!-- place_note:outpost-m13-m96/people --> Jal-Resh Post is a Mine-Burner watch post on the water between Jarecai and Kharaxos. The tribes built it to keep diggers off the burned mine ground between the two towns. <!-- place_note:outpost-m13-m96/history -->
 
@@ -217,24 +199,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Kharaxos, 790 m away across the marsh on foot. Roads run from it to Meris-Keth (track, 770 m south-east), Jarecai (track, 980 m west), Ra'tal Den (track, 1.0 km east), Armanias (track, 2.5 km north-west), Teth-Kasa Station (track, 2.6 km north-west) and Naxan (track, 3.3 km west). <!-- travel_approach:outpost-m13-m96; road_node:place=outpost-m13-m96 -->
 
 It is to be built from Military Camp Hjaalmarch Sons in Skyrim.esm (a camp military: 30 buildings, 0 interiors, 11 residents, 4 hostile, about 156 m across). The source reads: "Military Camp Hjaalmarch Sons: a camp military built in nordic and imperial style with camp, ruin, mine pieces. 11 people live there, 4 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m13-m96/0; source_place:skyrim.marker.militarycamphjaalmarchsonsmapmarker; place_source:outpost-m13-m96/1; place_source:outpost-m13-m96/2; place_source:outpost-m13-m96/3 -->
-
-### Banu-Veeth Post
-
-An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 10 people live there. It is not built yet. <!-- place:outpost-m11-m102 -->
-
-Banu-Veeth Post is a plank watch-post raised on posts with a lookout platform, a long boat-landing and a toll chain across the channel. Six Mine-Burner watchers live on it. <!-- place_note:outpost-m11-m102/overview --> A few Mine-Burner tribesmen hold the post year-round, watching for boats from Soulrest and the coast. They stop every boat and take a toll of salt or iron. <!-- place_note:outpost-m11-m102/present --> Six Mine-Burner Argonians: three watchers, a ferryman, a cook and a boy who runs messages to the basin. They are hostile to anyone from the coast. <!-- place_note:outpost-m11-m102/people --> Banu-Veeth Post is a Mine-Burner watch post at the south of the Banujha Basin, covering the water toward Soulrest. The tribes who burned the Imperial mines in 3E 427 set the first watch here against Soulrest's diggers. <!-- place_note:outpost-m11-m102/history -->
-
-A plank watch-post raised on posts on the water with a lookout platform and a long boat-landing, with a toll chain across the channel. A heap of salt sacks sits under a lean-to. <!-- place_note:outpost-m11-m102/look --> Watching, fishing and a small toll on boats heading to Soulrest. <!-- place_note:outpost-m11-m102/economy --> The post's eggs are carried to the Hist at Jarecai to hatch, and its dead go back there to be staked. A fang charm hangs over the landing. <!-- place_note:outpost-m11-m102/faith -->
-
-Built from: Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of Ree-An-Wo's cypress platforms on posts with plank walkways and platform bridges from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm. <!-- place_note:outpost-m11-m102/source -->
-
-It promises the player: Skill trainer: Journeyman Marksman trainer, the post's watch-leader; Fish and clams: gar in the channel; Dangerous wildlife: crocodiles in the channel below the post; Lesser treasure: a smuggler's sunken crate by the chain. <!-- place_give:outpost-m11-m102/0; place_give:outpost-m11-m102/1; place_give:outpost-m11-m102/2; place_give:outpost-m11-m102/3 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses deadly ground; its loot is of the deadly band. Watchers with bows cover the channel, and a toll chain stretches across it. Crocodiles use the same channel. <!-- place_note:outpost-m11-m102/dangers --> <!-- place_law:outpost-m11-m102; place_danger:outpost-m11-m102 -->
-
-The nearest stop is the boat stop at Mir-Xal, 840 m away across the marsh on foot. No road reaches it. <!-- travel_approach:outpost-m11-m102; road_node:place=outpost-m11-m102 -->
-
-It is to be built from Military Camp Pale Sons in Skyrim.esm (a camp military: 7 buildings, 0 interiors, 10 residents, 1 hostile, about 127 m across). The source reads: "Military Camp Pale Sons: a camp military built in nordic and imperial style with camp, mine, cave pieces. 10 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m11-m102/0; source_place:skyrim.marker.militarycamppalesonsmapmarker; place_source:outpost-m11-m102/1; place_source:outpost-m11-m102/2; place_source:outpost-m11-m102/3 -->
 
 ### Veshu-Taal Camp
 
@@ -254,27 +218,45 @@ The nearest stop is the boat stop at Jarecai, 400 m away across the marsh on foo
 
 It is to be built from Talking Stone Camp in Skyrim.esm (a camp tribal: 0 buildings, 0 interiors, 0 residents, 4 hostile, about 73 m across). The source reads: "Talking Stone Camp: a camp tribal with camp, ruin, mine pieces. 0 people live there, 4 hostile. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Kazmalgur (camp tribal, 30 buildings, 1 interior) and Mor Khazgur (camp tribal, 219 buildings, 3 interiors). <!-- place_source:tribal-camp-m18-m91/0; source_place:skyrim.talkingstonecamplocation; place_source:tribal-camp-m18-m91/1; place_source:tribal-camp-m18-m91/2; place_source:tribal-camp-m18-m91/3 -->
 
-### Redtimber Camp
+### Xul-Banu Post
 
-A logging camp, about 50 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest's timber crew, paying the Mine-Burners in kind; 5 people live there. It is not built yet. <!-- place:logging-camp-m19-m101 -->
+An outpost, about 80 m across, sited on riverbank, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is inhabited, held by Mine-Burner tribes of the Banujha; 6 people live there. It is not built yet. <!-- place:outpost-m16-m87 -->
 
-A logging camp of a few huts and a log-landing, cutting for Soulrest's merchant council. <!-- place_note:logging-camp-m19-m101/overview --> Five loggers and a foreman work a stand of red mangrove; the Mine-Burners put up with them for a fee. <!-- place_note:logging-camp-m19-m101/present --> Argonians from Soulrest cut the timber, under a Khajiit foreman who came up from the port. <!-- place_note:logging-camp-m19-m101/people --> The tribes burned Soulrest's timber concessions in 3E 427. This camp is a small one the Mine-Burners allow, because it cuts only the red mangrove at the basin's edge and pays them for it. <!-- place_note:logging-camp-m19-m101/history -->
+Xul-Banu Post is a plank post raised on posts with a gate-tower and a trading float tied beside the landing. Six Mine-Burners stand the watch. <!-- place_note:outpost-m16-m87/overview --> A few Mine-Burner tribesmen hold the post and watch the border with Nha Enasa. They trade with the Naka-Desh across the water but admit travellers to the basin only with leave. <!-- place_note:outpost-m16-m87/present --> Six Mine-Burner Argonians: a post-captain, two watchers, a trader and two youths. They are on good terms with the Naka-Desh of Sakeepa Station. <!-- place_note:outpost-m16-m87/people --> Xul-Banu Post is a Mine-Burner watch post on the basin's north-west edge, where the basin's water meets the Naka-Desh channels. It has grown with the river trade from Gul-Tej, whose boats pay it a toll. <!-- place_note:outpost-m16-m87/history -->
 
-Log huts, a skid-road, piled red logs and a landing on the channel. <!-- place_note:logging-camp-m19-m101/look --> The loggers sell red mangrove timber and bark to Soulrest's merchants. <!-- place_note:logging-camp-m19-m101/economy --> Sithis, with a Bosmer shipwright's Y'ffre charm over the door. <!-- place_note:logging-camp-m19-m101/faith -->
+A plank post raised on posts on the basin's north-west edge, a gate-tower facing Nha Enasa and a trading float tied beside the landing. Hides and baskets lie stacked on the float. <!-- place_note:outpost-m16-m87/look --> The watchers keep the Nha Enasa border and take a small toll on caravans. <!-- place_note:outpost-m16-m87/economy --> The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the Banujha. Burn-marks on the gate honour the burned mine-mouths. <!-- place_note:outpost-m16-m87/faith -->
 
-Built from: Its main source, Solitude Sawmill (Skyrim), is a Nordic sawmill with one interior and five people; its Nordic pieces are replaced and it lends the lumber mill and water-wheel pieces, and its one interior of sawmill wall and column pieces and crates serves as the foreman's hut. The Lady Padomay (King of the Murkmire) fits the style better: a plank travel ship with cabin interiors of crates, barrels and a table, and dock and platform pieces, though it is no mill. Still to add: the log huts, the skid-road, the piled red logs and the chest in the foreman's hut. <!-- place_note:logging-camp-m19-m101/source -->
+Built from: Its main source, Military Camp Reach Imperial (Skyrim), is a small Imperial camp with sixteen people, camp pieces and a fort piece, and no interior; it lends the gate-tower ground. No room inside is needed. Ree-An-Wo (King of the Murkmire) is the alternate that supplies the cypress platforms on posts. Still to add: the gate-tower, the trading float, the burn-marks on the gate and the cache under the platform. <!-- place_note:outpost-m16-m87/source -->
 
-It promises the player: General goods trader: the foreman, who sells firewood, food and tools; Common harvestables: red mangrove bark and firewood; Free bed: a logger's bunk; Cooking pot: the camp fire; Dangerous wildlife: crocodiles and giant snakes in the stand; Lesser treasure: a chest in the foreman's hut. <!-- place_give:logging-camp-m19-m101/0; place_give:logging-camp-m19-m101/1; place_give:logging-camp-m19-m101/2; place_give:logging-camp-m19-m101/3; place_give:logging-camp-m19-m101/4; place_give:logging-camp-m19-m101/5 -->
+It promises the player: Skill trainer: Journeyman Light Armor trainer, the watch-leader; Fish and clams: gar at the border water; Dangerous wildlife: crocodiles and marsh snakes at the border water; Lesser treasure: a smuggler's cache under the post. <!-- place_give:outpost-m16-m87/0; place_give:outpost-m16-m87/1; place_give:outpost-m16-m87/2; place_give:outpost-m16-m87/3 -->
 
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles and giant snakes prowl the stand, and the Mine-Burners come with bows when the camp's fee is late. <!-- place_note:logging-camp-m19-m101/dangers --> <!-- place_law:logging-camp-m19-m101; place_danger:logging-camp-m19-m101 -->
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. The watchers are armed and treat strangers as suspects. Crocodiles and marsh snakes lie on both sides of the border water. <!-- place_note:outpost-m16-m87/dangers --> <!-- place_law:outpost-m16-m87; place_danger:outpost-m16-m87 -->
 
-The nearest stop is the boat stop at Jarecai, 790 m away across the marsh on foot. Roads run from it to Deshaa Post (track, 410 m south), Ashfall Cut (track, 530 m south-west) and Olaxa Station (track, 650 m north-east). <!-- travel_approach:logging-camp-m19-m101; road_node:place=logging-camp-m19-m101 -->
+The nearest stop is the boat stop at Jarecai, 910 m away across the marsh on foot. Roads run from it to Sakeepa Station (track, 600 m north-west), Nine Reeds Waystation (track, 840 m north-west), Ukeel Station (track, 2.0 km south-east) and Nacydes (track, 2.4 km east). <!-- travel_approach:outpost-m16-m87; road_node:place=outpost-m16-m87 -->
 
-It is to be built from Solitude Sawmill in Skyrim.esm (a mill: 142 buildings, 1 interior, 5 residents, 2 hostile, about 113 m across). The source reads: "Solitude Sawmill: a mill built in nordic and imperial style with farm, camp, lumber pieces. 5 people live there, 2 hostile. 1 interiors. By water." Similar sources: The Lady Padomay (mill, 10 buildings, 1 interior), Chillwater Mill (mill, 9 buildings, 1 interior) and Monger Mill (mill, 34 buildings, 4 interiors). <!-- place_source:logging-camp-m19-m101/0; source_place:skyrim.solitudesawmilllocation; place_source:logging-camp-m19-m101/1; place_source:logging-camp-m19-m101/2; place_source:logging-camp-m19-m101/3 -->
+It is to be built from Military Camp Reach Imperial in Skyrim.esm (a camp military: 6 buildings, 0 interiors, 16 residents, 3 hostile, about 42 m across). The source reads: "Military Camp Reach Imperial: a camp military built in imperial style with camp, mine, fort pieces. 16 people live there, 3 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m16-m87/0; source_place:skyrim.marker.militarycampreachimperialmapmarker; place_source:outpost-m16-m87/1; place_source:outpost-m16-m87/2; place_source:outpost-m16-m87/3 -->
+
+### Ukeel Station
+
+An outpost, about 80 m across, sited on swamp, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 5 people live there. It is not built yet. <!-- place:outpost-m14-m89 -->
+
+Ukeel Station is a reed-thatched plank platform raised on posts above the Banujha with a fish-rack, a net-drying frame and a boat landing. Five Naka-Desh keep it. <!-- place_note:outpost-m14-m89/overview --> The station is held through the year by a handful of Naka-Desh fishers, who net osheeja gar from the Banujha and trade the catch at the water's edge. They watch strangers from the platform and ask for riddles. <!-- place_note:outpost-m14-m89/present --> Five Naka-Desh: a net-boss, two fishers, a smoker of fish and a child who learns the river's ways. They love a riddle and give a good one in return for a gift of salt. <!-- place_note:outpost-m14-m89/people --> Ukeel Station is a net-mending landing on the Banujha where the Naka-Desh river-folk meet the basin's Mine-Burners. The same few families have held it for generations and rebuild its stilts when they rot. <!-- place_note:outpost-m14-m89/history -->
+
+A plank platform raised on posts and thatched with reed above the Banujha, a fish-rack, a net-drying frame and a boat landing with a chime-post at the end. Fish scales glitter on the planks. <!-- place_note:outpost-m14-m89/look --> Osheeja gar fishing, smoked fish and barter for salt and iron. <!-- place_note:outpost-m14-m89/economy --> The river-folk keep a chime-post at the landing for the Kothringi and the dead of the river. The river-folk go to their tree for hatching and burial, a boat-journey of several days. <!-- place_note:outpost-m14-m89/faith -->
+
+Built from: Its main source, Military Camp Haafingar Sons (Skyrim), is a camp of thirteen people with 27 camp pieces and no interior, so it lends tents and racks with its Nordic pieces replaced. Black Rose (Black Marsh & Valenwood) is a hamlet of three people with ruin pieces and is too bare. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. Still to add: the reed thatch over the raised platform, the fish-rack, the net-drying frame, the landing and the chime-post. <!-- place_note:outpost-m14-m89/source -->
+
+It promises the player: Fish and clams: osheeja gar from the landing; Innkeeper or food seller: a Naka-Desh fisher selling smoked gar and buying food; Cooking pot: the smoking fire; Dangerous wildlife: Banujha crocodiles at the landing; Lesser treasure: a sunken net-chest off the landing. <!-- place_give:outpost-m14-m89/0; place_give:outpost-m14-m89/1; place_give:outpost-m14-m89/2; place_give:outpost-m14-m89/3; place_give:outpost-m14-m89/4 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Crocodiles lie at the landing, and strangers who mock the Naka-Desh may be turned away by arrow. Mine-Burner watchers are close at hand. <!-- place_note:outpost-m14-m89/dangers --> <!-- place_law:outpost-m14-m89; place_danger:outpost-m14-m89 -->
+
+The nearest stop is the boat stop at Jarecai, 870 m away across the marsh on foot. Roads run from it to Kyrenos (track, 700 m south-east), Oeneas (track, 790 m south-east), Nacydes (track, 1.2 km north-east), Sakeepa Station (track, 1.4 km north-west), Nine Reeds Waystation (track, 1.5 km north-west) and Xul-Banu Post (track, 2.0 km north-west). <!-- travel_approach:outpost-m14-m89; road_node:place=outpost-m14-m89 -->
+
+It is to be built from Military Camp Haafingar Sons in Skyrim.esm (a camp military: 8 buildings, 0 interiors, 13 residents, 5 hostile, about 98 m across). The source reads: "Military Camp Haafingar Sons: a camp military built in nordic and imperial style with camp, mine, fort pieces. 13 people live there, 5 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m14-m89/0; source_place:skyrim.marker.militarycamphaafingarsonsmapmarker; place_source:outpost-m14-m89/1; place_source:outpost-m14-m89/2; place_source:outpost-m14-m89/3 -->
 
 ### Olaxa Station
 
-An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom; 3 people live there. It is not built yet. <!-- place:outpost-m17-m97 -->
+An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom; 4 people live there. It is not built yet. <!-- place:outpost-m17-m97 -->
 
 Olaxa Station is a plank platform raised on posts with a long drying rack, a thatched egg-hut and a landing hidden in the grass. Four Saxhleel hold it. <!-- place_note:outpost-m17-m97/overview --> Four Saxhleel keep the post and trade quietly with the basin tribes. They tend a clutch of eggs in the egg-hut and say little to anyone. <!-- place_note:outpost-m17-m97/present --> Four Root-Folk: an egg-tender, two hunters and a rack-keeper. They are watchful of the Mine-Burner tribes, who think of the basin as theirs. <!-- place_note:outpost-m17-m97/people --> Olaxa Station is a Root-Folk stilt post in the northern reeds of the Banujha Basin, near the Mine-Burners' land. The interior tribes never left these reeds, and the Root-Folk have kept a post here as long as they have traded fish for the Mine-Burners' metal. <!-- place_note:outpost-m17-m97/history -->
 
@@ -290,9 +272,27 @@ The nearest stop is the boat stop at Jarecai, 360 m away across the marsh on foo
 
 It is to be built from Saerings Watch in Dragonborn.esm (a tower: 96 buildings, 0 interiors, 3 residents, 7 hostile, about 115 m across). The source reads: "Saerings Watch: a tower built in nordic style with ruin, mine, shrine pieces. 3 people live there, 7 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m17-m97/0; source_place:dragonborn.marker.dlc2saeringswatchmapmarker; place_source:outpost-m17-m97/1; place_source:outpost-m17-m97/2; place_source:outpost-m17-m97/3 -->
 
+### Redtimber Camp
+
+A logging camp, about 50 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest's timber crew, paying the Mine-Burners in kind; 4 people live there. It is not built yet. <!-- place:logging-camp-m19-m101 -->
+
+A logging camp of a few huts and a log-landing, cutting for Soulrest's merchant council. <!-- place_note:logging-camp-m19-m101/overview --> Three loggers and a foreman work a stand of red mangrove; the Mine-Burners put up with them for a fee. <!-- place_note:logging-camp-m19-m101/present --> Argonians from Soulrest cut the timber, under a Khajiit foreman who came up from the port. <!-- place_note:logging-camp-m19-m101/people --> The tribes burned Soulrest's timber concessions in 3E 427. This camp is a small one the Mine-Burners allow, because it cuts only the red mangrove at the basin's edge and pays them for it. <!-- place_note:logging-camp-m19-m101/history -->
+
+Log huts, a skid-road, piled red logs and a landing on the channel. <!-- place_note:logging-camp-m19-m101/look --> The loggers sell red mangrove timber and bark to Soulrest's merchants. <!-- place_note:logging-camp-m19-m101/economy --> Sithis, with a Bosmer shipwright's Y'ffre charm over the door. <!-- place_note:logging-camp-m19-m101/faith -->
+
+Built from: Its main source, Solitude Sawmill (Skyrim), is a Nordic sawmill with one interior and five people; its Nordic pieces are replaced and it lends the lumber mill and water-wheel pieces, and its one interior of sawmill wall and column pieces and crates serves as the foreman's hut. The Lady Padomay (King of the Murkmire) fits the style better: a plank travel ship with cabin interiors of crates, barrels and a table, and dock and platform pieces, though it is no mill. Still to add: the log huts, the skid-road, the piled red logs and the chest in the foreman's hut. <!-- place_note:logging-camp-m19-m101/source -->
+
+It promises the player: General goods trader: the foreman, who sells firewood, food and tools; Common harvestables: red mangrove bark and firewood; Free bed: a logger's bunk; Cooking pot: the camp fire; Dangerous wildlife: crocodiles and giant snakes in the stand; Lesser treasure: a chest in the foreman's hut. <!-- place_give:logging-camp-m19-m101/0; place_give:logging-camp-m19-m101/1; place_give:logging-camp-m19-m101/2; place_give:logging-camp-m19-m101/3; place_give:logging-camp-m19-m101/4; place_give:logging-camp-m19-m101/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles and giant snakes prowl the stand, and the Mine-Burners come with bows when the camp's fee is late. <!-- place_note:logging-camp-m19-m101/dangers --> <!-- place_law:logging-camp-m19-m101; place_danger:logging-camp-m19-m101 -->
+
+The nearest stop is the boat stop at Jarecai, 790 m away across the marsh on foot. Roads run from it to Deshaa Post (track, 410 m south), Ashfall Cut (track, 530 m south-west) and Olaxa Station (track, 650 m north-east). <!-- travel_approach:logging-camp-m19-m101; road_node:place=logging-camp-m19-m101 -->
+
+It is to be built from Solitude Sawmill in Skyrim.esm (a mill: 142 buildings, 1 interior, 5 residents, 2 hostile, about 113 m across). The source reads: "Solitude Sawmill: a mill built in nordic and imperial style with farm, camp, lumber pieces. 5 people live there, 2 hostile. 1 interiors. By water." Similar sources: The Lady Padomay (mill, 10 buildings, 1 interior), Chillwater Mill (mill, 9 buildings, 1 interior) and Monger Mill (mill, 34 buildings, 4 interiors). <!-- place_source:logging-camp-m19-m101/0; source_place:skyrim.solitudesawmilllocation; place_source:logging-camp-m19-m101/1; place_source:logging-camp-m19-m101/2; place_source:logging-camp-m19-m101/3 -->
+
 ### Zul-Meeka Station
 
-An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom; 1 person lives there. It is not built yet. <!-- place:outpost-m9-m99 -->
+An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom; 4 people live there. It is not built yet. <!-- place:outpost-m9-m99 -->
 
 Zul-Meeka Station is a plank platform raised on posts at the swamp's edge with an egg-hut and a lookout post. Four Saxhleel hold it. <!-- place_note:outpost-m9-m99/overview --> Four Saxhleel hold the post and keep watch on the empty den and the abandoned village. They warn anyone heading for Meris-Keth about the smugglers who use it. <!-- place_note:outpost-m9-m99/present --> Four Root-Folk: two hunters, an egg-tender and a lookout who watches the path to Meris-Keth. They are quick to tell strangers which paths are safe. <!-- place_note:outpost-m9-m99/people --> Zul-Meeka Station stands on the south-east edge of the Banujha Basin, near an empty Lilmothiit den and the abandoned village of Meris-Keth. The Root-Folk keep it so the Mine-Burners' sap-gatherers have somewhere to rest near the dead village's sick Hist. <!-- place_note:outpost-m9-m99/history -->
 
@@ -361,42 +361,42 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A fox-folk charm, a hidden kit-cache or a scholar seeking Lilmothiit lore. <!-- place_note:lilmothiit-ruin-m6-m97/hooks -->
 - Over generations they withdrew inland toward Blackrose, and the Knahaten Flu finished those who were left; this den was abandoned in that long withdrawal. <!-- place_note:lilmothiit-ruin-m6-m97/history -->
 
-**Xul-Banu Post.**
+**Banu-Veeth Post.**
 
-- A message for Jarecai's elders, a toll quarrel with Gul-Tej's traders or a watch party that went out and has not come back. <!-- place_note:outpost-m16-m87/hooks -->
-- Burn-marks on the gate honour the burned mine-mouths. <!-- place_note:outpost-m16-m87/faith -->
+- A toll dispute, a coastal stranger to question or a message for Jarecai. <!-- place_note:outpost-m11-m102/hooks -->
+- The tribes who burned the Imperial mines in 3E 427 set the first watch here against Soulrest's diggers. <!-- place_note:outpost-m11-m102/history -->
 
 **Deshaa Post.**
 
 - A road-warden needs a witness, a smuggler's crate or a Soulrest agent. <!-- place_note:outpost-m19-m103/hooks -->
-
-**Ukeel Station.**
-
-- A riddle for passage, a net-snag with a surprise or a gar-hunter asking help. <!-- place_note:outpost-m14-m89/hooks -->
 
 **Jal-Resh Post.**
 
 - A watch-leader who needs a message carried to Jarecai by word of mouth, a wrecked boat in the channel or a stranger held for digging. <!-- place_note:outpost-m13-m96/hooks -->
 - The tribes built it to keep diggers off the burned mine ground between the two towns. <!-- place_note:outpost-m13-m96/history -->
 
-**Banu-Veeth Post.**
-
-- A toll dispute, a coastal stranger to question or a message for Jarecai. <!-- place_note:outpost-m11-m102/hooks -->
-- The tribes who burned the Imperial mines in 3E 427 set the first watch here against Soulrest's diggers. <!-- place_note:outpost-m11-m102/history -->
-
 **Veshu-Taal Camp.**
 
 - A border quarrel with the Mine-Burners, a hunter's missing son or a hide-trade. <!-- place_note:tribal-camp-m18-m91/hooks -->
 - The Paatru and the Mine-Burners have shared the basin's north edge since before the mines burned in 3E 427: the hunters take game on the dry ground and leave meat at a boundary stone, and the Mine-Burners leave them alone. <!-- place_note:tribal-camp-m18-m91/history -->
 
-**Redtimber Camp.**
+**Xul-Banu Post.**
 
-- A late fee, a lost log-raft or a body found in the timber could put the camp in trouble. <!-- place_note:logging-camp-m19-m101/hooks -->
-- The tribes burned Soulrest's timber concessions in 3E 427. <!-- place_note:logging-camp-m19-m101/history -->
+- A message for Jarecai's elders, a toll quarrel with Gul-Tej's traders or a watch party that went out and has not come back. <!-- place_note:outpost-m16-m87/hooks -->
+- Burn-marks on the gate honour the burned mine-mouths. <!-- place_note:outpost-m16-m87/faith -->
+
+**Ukeel Station.**
+
+- A riddle for passage, a net-snag with a surprise or a gar-hunter asking help. <!-- place_note:outpost-m14-m89/hooks -->
 
 **Olaxa Station.**
 
 - A clutch at risk, an intruder to turn back or a sap-run to escort. <!-- place_note:outpost-m17-m97/hooks -->
+
+**Redtimber Camp.**
+
+- A late fee, a lost log-raft or a body found in the timber could put the camp in trouble. <!-- place_note:logging-camp-m19-m101/hooks -->
+- The tribes burned Soulrest's timber concessions in 3E 427. <!-- place_note:logging-camp-m19-m101/history -->
 
 **Zul-Meeka Station.**
 

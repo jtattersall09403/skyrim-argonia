@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (20%), lily (15%), kelp (14%)
 
 A mix: the Root-Folk's islet stations, stone-footed farm hamlets in the Stormhold manner, clay-mound people at Marzai, Tumnatu fishers, the Archein garrison at Gysilla and Truowa's Lilmoth-linked merchants. <!-- region_note:lake-ulaish/people -->
 
-The places here belong to The Shadowfen Border (Stormhold) (3 places, about 14 people), The Root-Folk of Helstrom (2 places, about 2 people), Lilmoth and the Murkmire Coast (1 place, about 35 people), The Warden Marches (1 place, about 10 people) and The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 7 people); 1 place carries no culture in the data. <!-- place:region=lake-ulaish -->
+The places here belong to The Shadowfen Border (Stormhold) (3 places, about 17 people), The Root-Folk of Helstrom (2 places, about 8 people), Lilmoth and the Murkmire Coast (1 place, about 38 people), The Warden Marches (1 place, about 10 people) and The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 10 people); 1 place carries no culture in the data. <!-- place:region=lake-ulaish -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Truowa
 
-A small city, about 320 m across, sited on lakeshore, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a merchant council allied to Lilmoth's; 35 people live there. It is not built yet. <!-- place:truowa -->
+A small city, about 320 m across, sited on lakeshore, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a merchant council allied to Lilmoth's; 38 people live there. It is not built yet. <!-- place:truowa -->
 
 Truowa is a small city, on the scale of Falkreath, at the south-east edge of Lake Ulaish where the water runs out toward Lilmoth. It belongs to Lilmoth's trade: goods from the delta and the coast arrive here and go up the lake to the Helstrom country. <!-- place_note:truowa/overview --> In 4E 201 a merchant council, copying Lilmoth's, runs the city, takes a toll on lake boats and keeps a harbour watch. It trades openly with the delta and the Lilmoth coast and is cool toward the Warden fort at Gysilla. <!-- place_note:truowa/present --> About 38 residents, mostly Argonian, with a few Imperial, Khajiit and Bosmer traders on the quay, come up the river from Lilmoth's coast. Council merchants, harbour watchmen, ferrymen, rice buyers and a tree-minder everyone knows. <!-- place_note:truowa/people --> No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; in the generations after Umbriel destroyed Lilmoth, traders who would not live under the Xeech-Leel came here. <!-- place_note:truowa/history -->
 
@@ -76,7 +76,7 @@ It is to be built from Fort Tulis in Journey to Baan Malur.esp (a fort: 9 buildi
 
 ### Marzai
 
-A village, about 120 m across, sited on lakeshore, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by the elders of the Clay-Mound People; 7 people live there. It is not built yet. <!-- place:marzai -->
+A village, about 120 m across, sited on lakeshore, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by the elders of the Clay-Mound People; 10 people live there. It is not built yet. <!-- place:marzai -->
 
 Marzai is a village of about ten on a raised mound of red clay where the lake meets the eastern shore, a western outlier of the Clay-Mound People of Aroxhu. <!-- place_note:marzai/overview --> It sends two elders to the Aroxhu council and keeps cool peace with its Tumnatu neighbours across the water, trading eggs and smoked fish for clay-fired pots. <!-- place_note:marzai/present --> About ten residents of the Oxhu-Teeleel people: potters, fishers, a ferryman and an elder-woman who sings the story of the mound and its families. <!-- place_note:marzai/people --> No stake tells of its founding. The mound-building habit and the Tumnatu camp to the west imply a village set up as a lake landing for Aroxhu's pottery trade in the generations after 4E 48. <!-- place_note:marzai/history -->
 
@@ -110,6 +110,24 @@ The nearest stop is the boat stop at Julo, 510 m away across the marsh on foot. 
 
 It is to be built from Cradlecrush Rock in Skyrim.esm (a camp tribal: 0 buildings, 0 interiors, 0 residents, 3 hostile, about 0 m across). The source reads: "Cradlecrush Rock: a camp tribal with camp, mine pieces. 0 people live there, 3 hostile. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Mor Khazgur (camp tribal, 219 buildings, 3 interiors) and Largashbur (camp tribal, 65 buildings, 2 interiors). <!-- place_source:tribal-camp-9-m83/0; source_place:skyrim.cradlecrushrocklocation; place_source:tribal-camp-9-m83/1; place_source:tribal-camp-9-m83/2; place_source:tribal-camp-9-m83/3 -->
 
+### Julo
+
+A hamlet, about 80 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by House Ulvarys, the Dunmer house of Thorn that buys Owings, as its saltrice estate; 6 people live there. It is not built yet. <!-- place:julo -->
+
+Julo is House Ulvarys' saltrice estate at the delta where Helstrom's waters spread into the lake. It follows the Stormhold manner of raised stone footings and causeways. <!-- place_note:julo/overview --> In 4E 201 Aldyne Ulvarys, the house's matriarch, keeps her hall here, and the great roll of the Owings the house has bought lies in the cellar under it. People whose Owings the house holds work the saltrice paddies, and the house's fighters keep the farmhouses and the ferry. The estate still sends a gift of rice to Helstrom at each Root Talk. <!-- place_note:julo/present --> About six residents: Aldyne Ulvarys and her household of Dunmer in the hall, and the house's fighters. About twelve held workers, Argonians bound by Owings, sleep in the huts by the paddies. <!-- place_note:julo/people --> No stake tells of its founding. A farm in the Stormhold manner this far inland is read as one set up by families who left the northern river in the generations after 4E 48 and brought stone footings with them. <!-- place_note:julo/history -->
+
+Low stone footings with reed-and-mud walls, a causeway of laid stone out to the ferry post, flat rice paddies fenced with reed and the lake's wide grey sheet beyond. <!-- place_note:julo/look --> Saltrice, a ferry toll across the braid and small trade with Helstrom's outposts for sap and eggs. <!-- place_note:julo/economy --> Hist and Sithis at a little roadside tree; Aldyne Ulvarys keeps a household Ancestor shrine in the hall. <!-- place_note:julo/faith -->
+
+Built from: Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its three interiors serve the estate: the Meadery's hall as Aldyne Ulvarys' hall, its Basement as the cellar under it, and the Boilery as the rice store. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank. <!-- place_note:julo/source -->
+
+It promises the player: Boat stop: the ferryman's raft at the delta crossing; Common harvestables: saltrice (x4); Cooking pot: the farm hearth; Free bed: the ferry hut; Hostile occupants: grave-robbers at the opened cairn on the near bank (x3), 120 m north-west at the opened cairn on the near bank; Boss fight: the grave-robbers' leader, 120 m north-west at the opened cairn on the near bank; Boss chest: boss chest. <!-- place_give:julo/0; place_give:julo/1; place_give:julo/2; place_give:julo/3; place_give:julo/4; place_give:julo/5; place_give:julo/6 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses deadly ground; its loot is of the deadly band. A Naga band hunts the delta shallows; crocodiles in the braid; the ferry is the weak point. <!-- place_note:julo/dangers --> <!-- place_law:julo; place_danger:julo -->
+
+It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Helstrom (1.2 km, 20 gold, 1 hour). No road reaches it. <!-- travel_stop:julo/boat; travel_route:helstrom/julo/boat; road_node:place=julo -->
+
+It is to be built from Honningbrew Meadery in Skyrim.esm (a hamlet: 670 buildings, 3 interiors, 4 residents, 23 hostile, about 70 m across). The source reads: "Honningbrew Meadery: a hamlet built in nordic and argonian style with cave, farm, mine pieces. 4 people live there, 23 hostile. 3 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Velothi Victuals (hamlet, 16 buildings, 1 interior). <!-- place_source:julo/0; source_place:skyrim.marker.honningbrewmeaderymapmarker; place_source:julo/1; place_source:julo/2; place_source:julo/3 -->
+
 ### Yalugo
 
 A hamlet, about 80 m across, sited on lakeshore, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by Two farm families of the Stormhold manner; 6 people live there. It is not built yet. <!-- place:yalugo -->
@@ -128,27 +146,9 @@ The nearest stop is the boat stop at Shalaia, 470 m away across the marsh on foo
 
 It is to be built from Hunter's Shack in Wyrmstooth.esp (a hamlet: 12 buildings, 0 interiors, 0 residents, 0 hostile, about 13 m across). The source reads: "Hunter's Shack: a hamlet with mine, farm pieces. 0 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:yalugo/0; source_place:wyrmstooth.cluster.hunter-s-shack.6.-2; place_source:yalugo/1; place_source:yalugo/2; place_source:yalugo/3 -->
 
-### Julo
-
-A hamlet, about 80 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by House Ulvarys, the Dunmer house of Thorn that buys Owings, as its saltrice estate; 4 people live there. It is not built yet. <!-- place:julo -->
-
-Julo is House Ulvarys' saltrice estate at the delta where Helstrom's waters spread into the lake. It follows the Stormhold manner of raised stone footings and causeways. <!-- place_note:julo/overview --> In 4E 201 Aldyne Ulvarys, the house's matriarch, keeps her hall here, and the great roll of the Owings the house has bought lies in the cellar under it. People whose Owings the house holds work the saltrice paddies, and the house's fighters keep the farmhouses and the ferry. The estate still sends a gift of rice to Helstrom at each Root Talk. <!-- place_note:julo/present --> About six residents: Aldyne Ulvarys and her household of Dunmer in the hall, and the house's fighters. About twelve held workers, Argonians bound by Owings, sleep in the huts by the paddies. <!-- place_note:julo/people --> No stake tells of its founding. A farm in the Stormhold manner this far inland is read as one set up by families who left the northern river in the generations after 4E 48 and brought stone footings with them. <!-- place_note:julo/history -->
-
-Low stone footings with reed-and-mud walls, a causeway of laid stone out to the ferry post, flat rice paddies fenced with reed and the lake's wide grey sheet beyond. <!-- place_note:julo/look --> Saltrice, a ferry toll across the braid and small trade with Helstrom's outposts for sap and eggs. <!-- place_note:julo/economy --> Hist and Sithis at a little roadside tree; Aldyne Ulvarys keeps a household Ancestor shrine in the hall. <!-- place_note:julo/faith -->
-
-Built from: Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its three interiors serve the estate: the Meadery's hall as Aldyne Ulvarys' hall, its Basement as the cellar under it, and the Boilery as the rice store. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank. <!-- place_note:julo/source -->
-
-It promises the player: Boat stop: the ferryman's raft at the delta crossing; Common harvestables: saltrice (x4); Cooking pot: the farm hearth; Free bed: the ferry hut; Hostile occupants: grave-robbers at the opened cairn on the near bank (x3), 120 m north-west at the opened cairn on the near bank; Boss fight: the grave-robbers' leader, 120 m north-west at the opened cairn on the near bank; Boss chest: boss chest. <!-- place_give:julo/0; place_give:julo/1; place_give:julo/2; place_give:julo/3; place_give:julo/4; place_give:julo/5; place_give:julo/6 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses deadly ground; its loot is of the deadly band. A Naga band hunts the delta shallows; crocodiles in the braid; the ferry is the weak point. <!-- place_note:julo/dangers --> <!-- place_law:julo; place_danger:julo -->
-
-It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Helstrom (1.2 km, 20 gold, 1 hour). No road reaches it. <!-- travel_stop:julo/boat; travel_route:helstrom/julo/boat; road_node:place=julo -->
-
-It is to be built from Honningbrew Meadery in Skyrim.esm (a hamlet: 670 buildings, 3 interiors, 4 residents, 23 hostile, about 70 m across). The source reads: "Honningbrew Meadery: a hamlet built in nordic and argonian style with cave, farm, mine pieces. 4 people live there, 23 hostile. 3 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Velothi Victuals (hamlet, 16 buildings, 1 interior). <!-- place_source:julo/0; source_place:skyrim.marker.honningbrewmeaderymapmarker; place_source:julo/1; place_source:julo/2; place_source:julo/3 -->
-
 ### Luntoc
 
-A hamlet, about 80 m across, sited on island, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a fishing family and its kin; 4 people live there. It is not built yet. <!-- place:luntoc -->
+A hamlet, about 80 m across, sited on island, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a fishing family and its kin; 5 people live there. It is not built yet. <!-- place:luntoc -->
 
 Luntoc is a small island hamlet in the lake, built in the stone-footed Stormhold manner; it serves as a pilot station for the shoals. <!-- place_note:luntoc/overview --> Five people keep eel traps, a lantern for night boats and a causeway of stones across a shoal under knee-deep water. <!-- place_note:luntoc/present --> About five residents: one Argonian fishing family and a boy who pilots strangers across the shoals. <!-- place_note:luntoc/people --> No stake tells of its founding. The island's stone footings are read as the work of incomers in the generations after 4E 48; before them the island was a bare reed bank. <!-- place_note:luntoc/history -->
 
@@ -166,7 +166,7 @@ It is to be built from BlackMarsh2 1,-11 in Black Marsh.esm (a hamlet: 129 build
 
 ### Neexa-Lul
 
-An outpost, about 80 m across, sited on island, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 1 person lives there. It is not built yet. <!-- place:outpost-14-m85 -->
+An outpost, about 80 m across, sited on island, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 4 people live there. It is not built yet. <!-- place:outpost-14-m85 -->
 
 Four Saxhleel of the Root-Folk of Helstrom hold a cypress platform on posts with a lamp tower and racks of dried fish. <!-- place_note:outpost-14-m85/overview --> Four Saxhleel hold the islet, watching the water between Marzai and Truowa and tending eggs. They pass news of the eastern shore to a tree-minder when a boat comes by. <!-- place_note:outpost-14-m85/present --> About four Saxhleel live on the reed platform in the lake's eastern reaches: watchers, and an egg-tender. <!-- place_note:outpost-14-m85/people --> A lake station kept by the Root-Folk to guard their share of the lake's eastern trade. <!-- place_note:outpost-14-m85/history -->
 
@@ -184,7 +184,7 @@ It is to be built from Cradle Stone Tower in Skyrim.esm (a tower: 49 buildings, 
 
 ### Uzu-Tegh
 
-An outpost, about 80 m across, sited on island, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 1 person lives there. It is not built yet. <!-- place:outpost-9-m85 -->
+An outpost, about 80 m across, sited on island, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 4 people live there. It is not built yet. <!-- place:outpost-9-m85 -->
 
 Four Saxhleel of the Root-Folk of Helstrom live in two reed huts, with eel pots on poles round the islet. <!-- place_note:outpost-9-m85/overview --> Four Saxhleel live on the islet, trapping eels and watching the lake's north shallows. Their news goes to a tree-minder in Helstrom with any boat bound there. <!-- place_note:outpost-9-m85/present --> About four Saxhleel live on the islet in the lake's northern shallows: eel-trappers, and one who keeps watch over the water. <!-- place_note:outpost-9-m85/people --> A lake station of the Root-Folk, founded to keep the lake's northern fishing open to the Helstrom country. <!-- place_note:outpost-9-m85/history -->
 
@@ -227,14 +227,14 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A net-line has been cut, and the camp blames Marzai; the headwoman wants a go-between who speaks for neither side; a clay pot of Imperial coin came up in a fish-trap. <!-- place_note:tribal-camp-9-m83/hooks -->
 
+**Julo.**
+
+- The great roll lies in the cellar under the hall, behind a Master lock; the ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies. <!-- place_note:julo/hooks -->
+
 **Yalugo.**
 
 - The farmers are close to refusing the garrison their grain; a stranger hired a boat for one night and left a pouch of uncut stones behind; smugglers landing on the south bank want a dry store. <!-- place_note:yalugo/hooks -->
 - The garrison buys at a fixed low price, which the farmers resent. <!-- place_note:yalugo/economy -->
-
-**Julo.**
-
-- The great roll lies in the cellar under the hall, behind a Master lock; the ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies. <!-- place_note:julo/hooks -->
 
 **Luntoc.**
 

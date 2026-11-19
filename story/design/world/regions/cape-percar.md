@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: undergrowth (14%), boulder (13%), 
 
 Umber coast folk: Argonians, Khajiit coasters and Imperial-descended families, with Banujha watchers and a Naka-Desh river station at the edges. <!-- region_note:cape-percar/people -->
 
-The places here belong to Soulrest and the Topal Coast (13 places, about 202 people), The Warden Marches (2 places, about 0 people), The Mine-Burners of the Banujha (Banu-Jaleel) (1 place, about 8 people) and The Naka-Desh (Riverbacks) (1 place, about 3 people). <!-- place:region=cape-percar -->
+The places here belong to Soulrest and the Topal Coast (13 places, about 130 people), The Warden Marches (2 places, about 0 people), The Mine-Burners of the Banujha (Banu-Jaleel) (1 place, about 6 people) and The Naka-Desh (Riverbacks) (1 place, about 5 people). <!-- place:region=cape-percar -->
 
 ## Its history, faith, trade and the present
 
@@ -32,7 +32,7 @@ Timber, stone, fish and salt for Soulrest; the mines are derelict. <!-- region_n
 
 Villages and licensed camps work timber and stone under Soulrest's council; the mines stand derelict; Banujha mine-burners keep watch posts at its edges. <!-- region_note:cape-percar/present -->
 
-Law here, place by place: 9 under no law, 7 under native law and 1 under foreign law. <!-- place_law:region=cape-percar -->
+Law here, place by place: 8 under no law, 8 under native law and 1 under foreign law. <!-- place_law:region=cape-percar -->
 
 ## Its places
 
@@ -40,11 +40,11 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Soulrest
 
-A metropolis, about 600 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a merchant council, the ex-Imperial civil office and river interests, in an unresolved contest; the Banujha tribes hold the hatching grounds; 172 people live there. It is not built yet. <!-- place:soulrest -->
+A metropolis, about 600 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a merchant council, the ex-Imperial civil office and river interests, in an unresolved contest; the Banujha tribes hold the hatching grounds; 90 people live there. It is not built yet. <!-- place:soulrest -->
 
 The southwest coast port on a peninsula wrapping Topal Bay, capital of Black Marsh in the Third Era. In 4E 201 it is an administrative city with nothing left to administer, and the most mixed and contested city in the province. <!-- place_note:soulrest/overview --> A merchant council, the ex-Imperial civil apparatus with no sovereign and the mangrove-river interests contest the city, in the unexplained 'struggle for regional hegemony', while the interior mine-burning tribes hold the hatching grounds. The government quarter is half empty and repurposed. The city has no Hist, so its Argonians hatch, name and bury inland in Banujha country. <!-- place_note:soulrest/present --> About 60% Argonian, a large Khajiit share among seafarers, Imperial-descended administrators' families, Bosmer and other maritime minorities. A few dozen named residents at Skyrim's scale. <!-- place_note:soulrest/people --> Argonians lived here since the wraxu birds were alive. Red Bramman ran pirates from a mangrove river nearby in 1E; the Great Burn (1E 2828) reached its edge; the tribes burned its plantations and mines in 3E 427, ending gold and timber exports. The Legion and the Company sailed away at the secession (4E 5-10). <!-- place_note:soulrest/history -->
 
-A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu and burn-scarred dead ground and gas vents on its landward edge. <!-- place_note:soulrest/look --> Southern Sea trade, salvage from wrecks off the cape and Bramman's river, the concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict. <!-- place_note:soulrest/economy --> Sithis and the Hist through the interior tribes' trees; Imperial-descended families keep the Nine in small shrines; Khajiit sailors keep the moons. A Brotherhood of Seth presence is known and stays hidden. <!-- place_note:soulrest/faith -->
+A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove inlets to the south, xanmeers etched with wraxu and burn-scarred dead ground and gas vents on its landward edge. <!-- place_note:soulrest/look --> Southern Sea trade, salvage from wrecks off the cape and Red Bramman's concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict. <!-- place_note:soulrest/economy --> Sithis and the Hist through the interior tribes' trees; Imperial-descended families keep the Nine in small shrines; Khajiit sailors keep the moons. A Brotherhood of Seth presence is known and stays hidden. <!-- place_note:soulrest/faith -->
 
 Built from: Its main source, Solitude (Skyrim), is a Nordic and Imperial capital of 31 interiors, among them an inn, a smithy, an apothecary, a clothier, a temple, a lighthouse, a jail and a palace. Its stone Imperial quarter, gate and shop interiors serve the Imperial quarter here. Its Nordic pieces are replaced with Imperial and Argonian ones from Lilmoth (King of the Murkmire), whose harbour, wharves and sewer interiors give the stilt wharves and the smugglers' landing. Still to add: the harbour smelter, Skyrim's smelter set at the quay, the shrine of the Nine, the half-empty government quarter in the palace halls, the mangrove creeks and the burn-scar gas vents on the landward edge. <!-- place_note:soulrest/source -->
 
@@ -76,7 +76,7 @@ It is to be built from DLC01FalmerValley 3,0 in Dawnguard.esm (a landmark: 70 bu
 
 ### Chasepoint
 
-A village, about 120 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 13 people live there. It is not built yet. <!-- place:chasepoint -->
+A village, about 120 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 12 people live there. It is not built yet. <!-- place:chasepoint -->
 
 Chasepoint is a spit of timber and stone stilt houses with carts under sheds and a salvage yard of ship timber. Soulrest's merchant council rules it and takes its toll. <!-- place_note:chasepoint/overview --> Chasepoint answers to Soulrest's merchant council, which takes a toll on the carts and goods that pass the village. <!-- place_note:chasepoint/present --> Argonian carters, wreck-salvagers and a few Imperial-descended families who run the inn and the yard. <!-- place_note:chasepoint/people --> A road stage of the Third Era timber trade, Soulrest's eastern neighbour. <!-- place_note:chasepoint/history -->
 
@@ -92,45 +92,9 @@ The nearest stop is the boat stop at Soulrest, 640 m away across the marsh on fo
 
 It is to be built from Docks in Black Marsh.esm (a town: 482 buildings, 3 interiors, 13 residents, 6 hostile, about 93 m across). The source reads: "Docks: a town built in nordic and imperial style with ship, mine, farm pieces. 13 people live there, 6 hostile. 3 interiors (Ship, House). Dry ground." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:chasepoint/0; source_place:blackmarsh.cluster.docks.10.-2; place_source:chasepoint/1; place_source:chasepoint/2; place_source:chasepoint/3 -->
 
-### Xal-Tarek
-
-An outpost, about 80 m across, sited on island, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is garrisoned, held by Banujha mine-burner watchers; 8 people live there. It is not built yet. <!-- place:outpost-m15-m112 -->
-
-A watch post of the mine-burning tribes, on stilts at the water's edge. <!-- place_note:outpost-m15-m112/overview --> Watchers man the platform day and night, taking turns at the lookout and the boat. <!-- place_note:outpost-m15-m112/present --> Six Banujha tribesmen live on the Xal-Tarek platform, sharing watches in turns. <!-- place_note:outpost-m15-m112/people --> The tribes placed the Xal-Tarek watch post after the 3E 427 uprising to keep an eye on Soulrest's approaches. <!-- place_note:outpost-m15-m112/history -->
-
-A tall stilt platform rises from the water with a lookout at the top and a boat tied below. <!-- place_note:outpost-m15-m112/look --> The watchers spend their days watching the approaches to Soulrest and fishing from the platform and the boat. <!-- place_note:outpost-m15-m112/economy --> The watchers keep a Banujha tree-token shrine on the platform. A token hangs at the lookout. <!-- place_note:outpost-m15-m112/faith -->
-
-Built from: Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp on the water of cypress walkways and platforms on posts, hide tents and hide fences, which gives the platform and the watchers' tents. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest. <!-- place_note:outpost-m15-m112/source -->
-
-It promises the player: Hostile occupants: Banu-Jaleel watchers, hostile to Imperial-descended visitors (x6), only if its own people are provoked; Boss fight: the watch leader, only if its own people are provoked; Boss chest: the watch leader's chest on the platform; Fish and clams: fishing from the platform; Skill trainer: Expert Archery trainer, the watch leader, once the watchers are friendly. <!-- place_give:outpost-m15-m112/0; place_give:outpost-m15-m112/1; place_give:outpost-m15-m112/2; place_give:outpost-m15-m112/3; place_give:outpost-m15-m112/4 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. The watchers are hostile to Imperial-descended visitors and turn them away from the platform. <!-- place_note:outpost-m15-m112/dangers --> <!-- place_law:outpost-m15-m112; place_danger:outpost-m15-m112 -->
-
-The nearest stop is the boat stop at Acra-Tiin, 830 m away over water. Roads run from it to Mistwatch (track, 340 m south-west), Stonecut Quarry (track, 800 m north), Redbank Quarry (track, 970 m north-west), Chasepoint (track, 1.3 km north-west), Redgum Camp (track, 1.3 km north-west) and Blackdrift (track, 1.4 km north). <!-- travel_approach:outpost-m15-m112; road_node:place=outpost-m15-m112 -->
-
-It is to be built from near Shrineof Boethiah in Skyrim.esm (a camp military: 40 buildings, 0 interiors, 8 residents, 1 hostile, about 115 m across). The source reads: "near Shrineof Boethiah: a camp military built in imperial and nordic style with camp, farm, mine pieces. 8 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-m15-m112/0; source_place:skyrim.marker.0ec193; place_source:outpost-m15-m112/1; place_source:outpost-m15-m112/2; place_source:outpost-m15-m112/3 -->
-
-### Naxan
-
-A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 6 people live there. It is not built yet. <!-- place:naxan -->
-
-Naxan has timber stilt houses, a log landing and drying racks at the western end of the Topal Bay road. A reeve governs it for Soulrest, and the ruined fort of Wrackmoth lies on the same coast. <!-- place_note:naxan/overview --> A reeve governs Naxan on behalf of Soulrest's merchant council and settles disputes between its fishers and loggers. <!-- place_note:naxan/present --> Naxan's people are Argonian fishers and loggers, many of whom do both in a year. <!-- place_note:naxan/people --> Naxan began as a shore village of the Third Era timber trade on the cape's north coast. The timber trade is still its main work. <!-- place_note:naxan/history -->
-
-Timber stilt houses stand on the shore, with a log landing at the water and drying racks for the catch. <!-- place_note:naxan/look --> Naxan lives on fish, on hauling timber from the forest to the log landing and on coastal boats along the bay. <!-- place_note:naxan/economy --> Naxan's Sithis shrine is a ring of pale stones on the headland, where fishermen and loggers both pause on the way to the Topal Bay road. The families share a single egg-chest that goes to the Banujha tree once a year by Soulrest's coast road. <!-- place_note:naxan/faith -->
-
-Built from: Its main source, Silversand Trading Post (Skyrim Trading Posts), is a Nordic post of three buildings with no interior, too small for a village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and an accommodation hut that serves as the longhouse. Still to add: the log landing, the drying racks, the ring of pale stones on the headland and the tanning rack. <!-- place_note:naxan/source -->
-
-It promises the player: General goods trader: log-landing trader in fish and timber; Cooking pot: cooking pot at the log landing; Fish and clams: fishing from the bay shore; Tanning rack: tanning rack behind the longhouse; Skill trainer: Journeyman Two-handed trainer, a log-hauler. <!-- place_give:naxan/0; place_give:naxan/1; place_give:naxan/2; place_give:naxan/3; place_give:naxan/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses settled ground; its loot is of the wild band. Pirates of the bay raid the coast boats. River predators prowl the channels near the village. <!-- place_note:naxan/dangers --> <!-- place_law:naxan; place_danger:naxan -->
-
-The nearest stop is the boat stop at Soulrest, 810 m away over water. Roads run from it to Ashfall Cut (track, 770 m south-east), Soulrest (cart road, 1.2 km south), Armanias (cart road, 1.7 km north), Teth-Kasa Station (track, 1.7 km north), Jarecai (track, 2.8 km north-east) and Jal-Resh Post (track, 3.3 km east). <!-- travel_approach:naxan; road_node:place=naxan -->
-
-It is to be built from Silversand Trading Post in Skyrim Trading Posts.esp (a town: 3 buildings, 0 interiors, 6 residents, 2 hostile, about 70 m across). The source reads: "Silversand Trading Post: a town built in nordic style with camp, ship, mine pieces. 6 people live there, 2 hostile. By water." Similar sources: Dres village (village, 14 buildings, 0 interiors), Seekhat Yol (village, 160 buildings, 7 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:naxan/0; source_place:skyrimtradingposts.marker.silversand-trading-post; place_source:naxan/1; place_source:naxan/2; place_source:naxan/3 -->
-
 ### Acra-Tiin
 
-A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 3 people live there. It is not built yet. <!-- place:acra-tiin -->
+A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 9 people live there. It is not built yet. <!-- place:acra-tiin -->
 
 Acra-Tiin is a row of low stilt houses with drying racks and a boat slip. A reeve runs it for Soulrest's council. <!-- place_note:acra-tiin/overview --> Run by a reeve for the council, with little oversight from the council. <!-- place_note:acra-tiin/present --> Acra-Tiin's households are Argonian fishers and salters who work the south shore of the cape. <!-- place_note:acra-tiin/people --> Acra-Tiin was settled as a shore landing for the Soulrest port across the water, and has kept that role since. <!-- place_note:acra-tiin/history -->
 
@@ -146,9 +110,45 @@ It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with
 
 It is to be built from Longmont in Black Marsh.esm (a town: 8 buildings, 0 interiors, 3 residents, 7 hostile, about 54 m across). The source reads: "Longmont: a town with farm, camp pieces. 3 people live there, 7 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Dres village (village, 14 buildings, 0 interiors). <!-- place_source:acra-tiin/0; source_place:blackmarsh.cluster.longmont.26.-6; place_source:acra-tiin/1; place_source:acra-tiin/2; place_source:acra-tiin/3 -->
 
+### Naxan
+
+A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council through a village reeve; 9 people live there. It is not built yet. <!-- place:naxan -->
+
+Naxan has timber stilt houses, a log landing and drying racks at the western end of the Topal Bay road. A reeve governs it for Soulrest, and the ruined fort of Wrackmoth lies on the same coast. <!-- place_note:naxan/overview --> A reeve governs Naxan on behalf of Soulrest's merchant council and settles disputes between its fishers and loggers. <!-- place_note:naxan/present --> Naxan's people are Argonian fishers and loggers, many of whom do both in a year. <!-- place_note:naxan/people --> Naxan began as a shore village of the Third Era timber trade on the cape's north coast. The timber trade is still its main work. <!-- place_note:naxan/history -->
+
+Timber stilt houses stand on the shore, with a log landing at the water and drying racks for the catch. <!-- place_note:naxan/look --> Naxan lives on fish, on hauling timber from the forest to the log landing and on coastal boats along the bay. <!-- place_note:naxan/economy --> Naxan's Sithis shrine is a ring of pale stones on the headland, where fishermen and loggers both pause on the way to the Topal Bay road. The families share a single egg-chest that goes to the Banujha tree once a year by Soulrest's coast road. <!-- place_note:naxan/faith -->
+
+Built from: Its main source, Silversand Trading Post (Skyrim Trading Posts), is a Nordic post of three buildings with no interior, too small for a village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and an accommodation hut that serves as the longhouse. Still to add: the log landing, the drying racks, the ring of pale stones on the headland and the tanning rack. <!-- place_note:naxan/source -->
+
+It promises the player: General goods trader: log-landing trader in fish and timber; Cooking pot: cooking pot at the log landing; Fish and clams: fishing from the bay shore; Tanning rack: tanning rack behind the longhouse; Skill trainer: Journeyman Two-handed trainer, a log-hauler. <!-- place_give:naxan/0; place_give:naxan/1; place_give:naxan/2; place_give:naxan/3; place_give:naxan/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses settled ground; its loot is of the wild band. Pirates of the bay raid the coast boats. River predators prowl the channels near the village. <!-- place_note:naxan/dangers --> <!-- place_law:naxan; place_danger:naxan -->
+
+The nearest stop is the boat stop at Soulrest, 810 m away over water. Roads run from it to Ashfall Cut (track, 770 m south-east), Soulrest (cart road, 1.2 km south), Armanias (cart road, 1.7 km north), Teth-Kasa Station (track, 1.7 km north), Jarecai (track, 2.8 km north-east) and Jal-Resh Post (track, 3.3 km east). <!-- travel_approach:naxan; road_node:place=naxan -->
+
+It is to be built from Silversand Trading Post in Skyrim Trading Posts.esp (a town: 3 buildings, 0 interiors, 6 residents, 2 hostile, about 70 m across). The source reads: "Silversand Trading Post: a town built in nordic style with camp, ship, mine pieces. 6 people live there, 2 hostile. By water." Similar sources: Dres village (village, 14 buildings, 0 interiors), Seekhat Yol (village, 160 buildings, 7 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:naxan/0; source_place:skyrimtradingposts.marker.silversand-trading-post; place_source:naxan/1; place_source:naxan/2; place_source:naxan/3 -->
+
+### Xal-Tarek
+
+An outpost, about 80 m across, sited on island, of The Mine-Burners of the Banujha (Banu-Jaleel). In 4E 201 it is garrisoned, held by Banujha mine-burner watchers; 6 people live there. It is not built yet. <!-- place:outpost-m15-m112 -->
+
+A watch post of the mine-burning tribes, on stilts at the water's edge. <!-- place_note:outpost-m15-m112/overview --> Watchers man the platform day and night, taking turns at the lookout and the boat. <!-- place_note:outpost-m15-m112/present --> Six Banujha tribesmen live on the Xal-Tarek platform, sharing watches in turns. <!-- place_note:outpost-m15-m112/people --> The tribes placed the Xal-Tarek watch post after the 3E 427 uprising to keep an eye on Soulrest's approaches. <!-- place_note:outpost-m15-m112/history -->
+
+A tall stilt platform rises from the water with a lookout at the top and a boat tied below. <!-- place_note:outpost-m15-m112/look --> The watchers spend their days watching the approaches to Soulrest and fishing from the platform and the boat. <!-- place_note:outpost-m15-m112/economy --> The watchers keep a Banujha tree-token shrine on the platform. A token hangs at the lookout. <!-- place_note:outpost-m15-m112/faith -->
+
+Built from: Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp on the water of cypress walkways and platforms on posts, hide tents and hide fences, which gives the platform and the watchers' tents. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest. <!-- place_note:outpost-m15-m112/source -->
+
+It promises the player: Hostile occupants: Banu-Jaleel watchers, hostile to Imperial-descended visitors (x6), only if its own people are provoked; Boss fight: the watch leader, only if its own people are provoked; Boss chest: the watch leader's chest on the platform; Fish and clams: fishing from the platform; Skill trainer: Expert Archery trainer, the watch leader, once the watchers are friendly. <!-- place_give:outpost-m15-m112/0; place_give:outpost-m15-m112/1; place_give:outpost-m15-m112/2; place_give:outpost-m15-m112/3; place_give:outpost-m15-m112/4 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. The watchers are hostile to Imperial-descended visitors and turn them away from the platform. <!-- place_note:outpost-m15-m112/dangers --> <!-- place_law:outpost-m15-m112; place_danger:outpost-m15-m112 -->
+
+The nearest stop is the boat stop at Acra-Tiin, 830 m away over water. Roads run from it to Mistwatch (track, 340 m south-west), Stonecut Quarry (track, 800 m north), Redbank Quarry (track, 970 m north-west), Chasepoint (track, 1.3 km north-west), Redgum Camp (track, 1.3 km north-west) and Blackdrift (track, 1.4 km north). <!-- travel_approach:outpost-m15-m112; road_node:place=outpost-m15-m112 -->
+
+It is to be built from near Shrineof Boethiah in Skyrim.esm (a camp military: 40 buildings, 0 interiors, 8 residents, 1 hostile, about 115 m across). The source reads: "near Shrineof Boethiah: a camp military built in imperial and nordic style with camp, farm, mine pieces. 8 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-m15-m112/0; source_place:skyrim.marker.0ec193; place_source:outpost-m15-m112/1; place_source:outpost-m15-m112/2; place_source:outpost-m15-m112/3 -->
+
 ### Reek-Anu
 
-An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is garrisoned, held by Naka-Desh river-folk; 3 people live there. It is not built yet. <!-- place:outpost-m22-m98 -->
+An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is garrisoned, held by Naka-Desh river-folk; 5 people live there. It is not built yet. <!-- place:outpost-m22-m98 -->
 
 Reek-Anu is a river station of the Naka-Desh near Naxan, on a bank at the northwest edge of the cape. <!-- place_note:outpost-m22-m98/overview --> A group of huts stands on the bank beside a fishing weir that traps gar in the river. <!-- place_note:outpost-m22-m98/present --> Five Naka-Desh live here, wide-webbed river-folk who love a good riddle. <!-- place_note:outpost-m22-m98/people --> The Naka-Desh have kept the station since they spread south, and it has passed down through their river families. <!-- place_note:outpost-m22-m98/history -->
 
@@ -186,7 +186,7 @@ It is to be built from Darklight Tower in Skyrim.esm (a mine: 429 buildings, 2 i
 
 A logging camp, about 50 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a timber crew of Soulrest-quarter kin, cutting for the merchant council; 4 people live there. It is not built yet. <!-- place:logging-camp-m20-m107 -->
 
-Redgum Camp is a timber camp in the forest of the Percar hills, west of Chasepoint on the cape. <!-- place_note:logging-camp-m20-m107/overview --> The camp cuts for Soulrest, whose merchant council takes the logs and in return feeds and guards the crew. <!-- place_note:logging-camp-m20-m107/present --> Five Argonian loggers live and work at Redgum Camp, sharing a single bunk house. <!-- place_note:logging-camp-m20-m107/people --> Redgum Camp carries on the timber trade of the Third Era concession, cutting the same red gum stands. <!-- place_note:logging-camp-m20-m107/history -->
+Redgum Camp is a timber camp in the forest of the Percar hills, west of Chasepoint on the cape. <!-- place_note:logging-camp-m20-m107/overview --> The camp cuts for Soulrest, whose merchant council takes the logs and in return feeds and guards the crew. <!-- place_note:logging-camp-m20-m107/present --> Four Argonian loggers live and work at Redgum Camp, sharing a single bunk house. <!-- place_note:logging-camp-m20-m107/people --> Redgum Camp carries on the timber trade of the Third Era concession, cutting the same red gum stands. <!-- place_note:logging-camp-m20-m107/history -->
 
 A clearing in the forest holds a bunk house, a log yard stacked with red gum and the start of a haul track. <!-- place_note:logging-camp-m20-m107/look --> Redgum Camp fells red gum and hauls the logs along the track to Soulrest, which buys all it cuts. <!-- place_note:logging-camp-m20-m107/economy --> The loggers nail a gar jaw to the felling-post as a Sithis-token, and each man touches it before the first cut of the day. <!-- place_note:logging-camp-m20-m107/faith -->
 
@@ -200,11 +200,29 @@ The nearest stop is the boat stop at Soulrest, 520 m away across the marsh on fo
 
 It is to be built from The Lady Padomay in King of the Murkmire.esp (a mill: 10 buildings, 1 interior, 4 residents, 1 hostile, about 30 m across). The source reads: "The Lady Padomay: a mill built in argonian style with ship, mine, dock pieces. 4 people live there, 1 hostile. 1 interiors (The Lady Padomay). Dry ground." Similar sources: Chillwater Mill (mill, 9 buildings, 1 interior), Monger Mill (mill, 34 buildings, 4 interiors) and Solitude Sawmill (mill, 142 buildings, 1 interior). <!-- place_source:logging-camp-m20-m107/0; source_place:kingofthemurkmire.cluster.tamriel-18-21.-18.21; place_source:logging-camp-m20-m107/1; place_source:logging-camp-m20-m107/2; place_source:logging-camp-m20-m107/3 -->
 
+### Redbank Quarry
+
+A quarry, about 80 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a quarry crew of Soulrest-quarter kin; 3 people live there. It is not built yet. <!-- place:quarry-m18-m109 -->
+
+Redbank Quarry is a red-stained cut with a sled track and a short track to the shore. Its blocks are prized for their colour. <!-- place_note:quarry-m18-m109/overview --> A crew of three works the red-stone face on the south side of the cape, for Soulrest's merchant council, with a short track to the shore. <!-- place_note:quarry-m18-m109/present --> Three Argonian quarrymen cut the Redbank face and live in a shed beside the sled track. <!-- place_note:quarry-m18-m109/people --> Redbank Quarry was opened to cut red stone for Soulrest's builders on the south side of the cape. <!-- place_note:quarry-m18-m109/history -->
+
+A red-stained cut opens in the hillside, with a sled track running down to the shore. <!-- place_note:quarry-m18-m109/look --> It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and a share of the blocks goes to the merchant council for its protection of the shore track. Redbank blocks are prized for their colour. <!-- place_note:quarry-m18-m109/economy --> The crew keeps a Sithis shrine in a niche cut into the face itself, and the foreman marks the first block from each new bench with red for it. <!-- place_note:quarry-m18-m109/faith -->
+
+Built from: Its main source, Ironrock Mine (ExploreSkyrim-ES), is an enclosed mine of 157 buildings and does not fit an open cut. Frostmoon Crag (Dragonborn) fits better: an open area with no building or interior and mine and camp pieces. Still to add: the red-stained cut, the sled track to the shore, the crew's shed and the niche cut into the face. <!-- place_note:quarry-m18-m109/source -->
+
+It promises the player: Cooking pot: the crew's cooking pot; Ore or mineral vein: corundum ore vein in the red face (x2); Hostile occupants: the rival crew's saboteurs by night (x3); Lesser treasure: the saboteurs' stolen tools and coin. <!-- place_give:quarry-m18-m109/0; place_give:quarry-m18-m109/1; place_give:quarry-m18-m109/2; place_give:quarry-m18-m109/3 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. The quarry face is steep and loose. Bandits watch the track to the shore for the barge loads. <!-- place_note:quarry-m18-m109/dangers --> <!-- place_law:quarry-m18-m109; place_danger:quarry-m18-m109 -->
+
+The nearest stop is the boat stop at Acra-Tiin, 610 m away across the marsh on foot. Roads run from it to Chasepoint (cart road, 770 m north), Redgum Camp (cart road, 790 m north-west), Mistwatch (track, 800 m south), Blackdrift (cart road, 890 m north), Xal-Tarek (track, 970 m south-east) and Acra-Tiin (cart road, 1.0 km south-west). <!-- travel_approach:quarry-m18-m109; road_node:place=quarry-m18-m109 -->
+
+It is to be built from Ironrock Mine in ExploreSkyrim-ES.esp (a mine: 157 buildings, 1 interior, 0 residents, 10 hostile, about 0 m across). The source reads: "Ironrock Mine: a mine with mine, cave pieces. 0 people live there, 10 hostile. 1 interiors (Ironrock Mine). Dry ground." Similar sources: Frostmoon Crag (mine, 0 buildings, 0 interiors), Gloombound Mine (mine, 60 buildings, 1 interior) and Scoundrel's Pass (mine, 2037 buildings, 5 interiors). <!-- place_source:quarry-m18-m109/0; source_place:exploreskyrimes.patironrockminelocation; place_source:quarry-m18-m109/1; place_source:quarry-m18-m109/2; place_source:quarry-m18-m109/3 -->
+
 ### Stonecut Quarry
 
-A quarry, about 80 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a quarry crew of Soulrest-quarter kin; 4 people live there. It is not built yet. <!-- place:quarry-m14-m107 -->
+A quarry, about 80 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a quarry crew of Soulrest-quarter kin; 3 people live there. It is not built yet. <!-- place:quarry-m14-m107 -->
 
-Stonecut Quarry is a terraced cut with a stone sled track beside the Percar road. Its grey blocks go to Soulrest's harbour works and the coast road. <!-- place_note:quarry-m14-m107/overview --> A crew of five, kin to one Soulrest-quarter family, works the Percar road face for the merchant council, cutting grey blocks for the harbour works and the coast road. <!-- place_note:quarry-m14-m107/present --> Five Argonian quarrymen work the Stonecut face, living in a shed by the Percar road. <!-- place_note:quarry-m14-m107/people --> Stonecut Quarry was opened in the Third Era to supply stone for the buildings of Soulrest, and has worked on since. <!-- place_note:quarry-m14-m107/history -->
+Stonecut Quarry is a terraced cut with a stone sled track beside the Percar road. Its grey blocks go to Soulrest's harbour works and the coast road. <!-- place_note:quarry-m14-m107/overview --> A crew of three, kin to one Soulrest-quarter family, works the Percar road face for the merchant council, cutting grey blocks for the harbour works and the coast road. <!-- place_note:quarry-m14-m107/present --> Three Argonian quarrymen work the Stonecut face, living in a shed by the Percar road. <!-- place_note:quarry-m14-m107/people --> Stonecut Quarry was opened in the Third Era to supply stone for the buildings of Soulrest, and has worked on since. <!-- place_note:quarry-m14-m107/history -->
 
 A terraced cut climbs the hillside, with a stone sled track running down to the Percar road. <!-- place_note:quarry-m14-m107/look --> It sells cut stone to Soulrest's builders and road-menders and gives the merchant council a share of its blocks for its protection on the road. Carts take the stone to Chasepoint and the port. <!-- place_note:quarry-m14-m107/economy --> The crew keeps a small Sithis niche in the cutting shed and leaves a rock chip on its ledge for each month without a death. <!-- place_note:quarry-m14-m107/faith -->
 
@@ -290,24 +308,6 @@ The nearest stop is the boat stop at Acra-Tiin, 550 m away across the marsh on f
 
 It is to be built from Ilinaltas Deep in Skyrim.esm (a mine: 488 buildings, 2 interiors, 0 residents, 45 hostile, about 77 m across). The source reads: "Ilinaltas Deep: a mine built in imperial and nordic style with ruin, mine, fort pieces. 0 people live there, 45 hostile. 2 interiors. By water." Similar sources: Darklight Tower (mine, 429 buildings, 2 interiors), Bilegulch Mine (mine, 90 buildings, 1 interior) and Gloombound Mine (mine, 60 buildings, 1 interior). <!-- place_source:mine-m17-m112/0; source_place:skyrim.ilinaltasdeeplocation; place_source:mine-m17-m112/1; place_source:mine-m17-m112/2; place_source:mine-m17-m112/3 -->
 
-### Redbank Quarry
-
-A quarry, about 80 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a quarry crew of Soulrest-quarter kin; nobody lives there. It is not built yet. <!-- place:quarry-m18-m109 -->
-
-Redbank Quarry is a red-stained cut with a sled track and a short track to the shore. Its blocks are prized for their colour. <!-- place_note:quarry-m18-m109/overview --> A crew of four works the red-stone face on the south side of the cape, for Soulrest's merchant council, with a short track to the shore. <!-- place_note:quarry-m18-m109/present --> Four Argonian quarrymen cut the Redbank face and live in a shed beside the sled track. <!-- place_note:quarry-m18-m109/people --> Redbank Quarry was opened to cut red stone for Soulrest's builders on the south side of the cape. <!-- place_note:quarry-m18-m109/history -->
-
-A red-stained cut opens in the hillside, with a sled track running down to the shore. <!-- place_note:quarry-m18-m109/look --> It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and a share of the blocks goes to the merchant council for its protection of the shore track. Redbank blocks are prized for their colour. <!-- place_note:quarry-m18-m109/economy --> The crew keeps a Sithis shrine in a niche cut into the face itself, and the foreman marks the first block from each new bench with red for it. <!-- place_note:quarry-m18-m109/faith -->
-
-Built from: Its main source, Ironrock Mine (ExploreSkyrim-ES), is an enclosed mine of 157 buildings and does not fit an open cut. Frostmoon Crag (Dragonborn) fits better: an open area with no building or interior and mine and camp pieces. Still to add: the red-stained cut, the sled track to the shore, the crew's shed and the niche cut into the face. <!-- place_note:quarry-m18-m109/source -->
-
-It promises the player: Cooking pot: the crew's cooking pot; Ore or mineral vein: corundum ore vein in the red face (x2); Hostile occupants: the rival crew's saboteurs by night (x3); Lesser treasure: the saboteurs' stolen tools and coin. <!-- place_give:quarry-m18-m109/0; place_give:quarry-m18-m109/1; place_give:quarry-m18-m109/2; place_give:quarry-m18-m109/3 -->
-
-Law: no law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). What lives inside is dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. The quarry face is steep and loose. Bandits watch the track to the shore for the barge loads. <!-- place_note:quarry-m18-m109/dangers --> <!-- place_law:quarry-m18-m109; place_danger:quarry-m18-m109 -->
-
-The nearest stop is the boat stop at Acra-Tiin, 610 m away across the marsh on foot. Roads run from it to Chasepoint (cart road, 770 m north), Redgum Camp (cart road, 790 m north-west), Mistwatch (track, 800 m south), Blackdrift (cart road, 890 m north), Xal-Tarek (track, 970 m south-east) and Acra-Tiin (cart road, 1.0 km south-west). <!-- travel_approach:quarry-m18-m109; road_node:place=quarry-m18-m109 -->
-
-It is to be built from Ironrock Mine in ExploreSkyrim-ES.esp (a mine: 157 buildings, 1 interior, 0 residents, 10 hostile, about 0 m across). The source reads: "Ironrock Mine: a mine with mine, cave pieces. 0 people live there, 10 hostile. 1 interiors (Ironrock Mine). Dry ground." Similar sources: Frostmoon Crag (mine, 0 buildings, 0 interiors), Gloombound Mine (mine, 60 buildings, 1 interior) and Scoundrel's Pass (mine, 2037 buildings, 5 interiors). <!-- place_source:quarry-m18-m109/0; source_place:exploreskyrimes.patironrockminelocation; place_source:quarry-m18-m109/1; place_source:quarry-m18-m109/2; place_source:quarry-m18-m109/3 -->
-
 ### Wrackmoth
 
 An Imperial ruin, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is abandoned, held by nobody; scavengers; nobody lives there. It is not built yet. <!-- place:imperial-ruin-m23-m103 -->
@@ -362,7 +362,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 **Soulrest.**
 
-- A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city and control of smuggling through Bramman's river. <!-- place_note:soulrest/hooks -->
+- A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city and control of smuggling through Red Bramman's channel. <!-- place_note:soulrest/hooks -->
 - In 4E 201 it is an administrative city with nothing left to administer, and the most mixed and contested city in the province. <!-- place_note:soulrest/overview -->
 - Red Bramman ran pirates from a mangrove river nearby in 1E; the Great Burn (1E 2828) reached its edge; the tribes burned its plantations and mines in 3E 427, ending gold and timber exports. <!-- place_note:soulrest/history -->
 
@@ -377,10 +377,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A cart gone missing, a salvage dispute, a smuggler's drop for Bramman's river. <!-- place_note:chasepoint/hooks -->
 
-**Xal-Tarek.**
+**Acra-Tiin.**
 
-- A message must be carried to the council. <!-- place_note:outpost-m15-m112/hooks -->
-- One of the watchers has been wounded and needs help. <!-- place_note:outpost-m15-m112/hooks -->
+- A smuggler uses the landing after dark. <!-- place_note:acra-tiin/hooks -->
+- One of the village's boats has gone out and not come back. <!-- place_note:acra-tiin/hooks -->
 
 **Naxan.**
 
@@ -388,10 +388,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - The loggers need a crew to raft a load of timber down to the landing. <!-- place_note:naxan/hooks -->
 - A reeve governs Naxan on behalf of Soulrest's merchant council and settles disputes between its fishers and loggers. <!-- place_note:naxan/present -->
 
-**Acra-Tiin.**
+**Xal-Tarek.**
 
-- A smuggler uses the landing after dark. <!-- place_note:acra-tiin/hooks -->
-- One of the village's boats has gone out and not come back. <!-- place_note:acra-tiin/hooks -->
+- A message must be carried to the council. <!-- place_note:outpost-m15-m112/hooks -->
+- One of the watchers has been wounded and needs help. <!-- place_note:outpost-m15-m112/hooks -->
 
 **Reek-Anu.**
 
@@ -408,6 +408,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - One of the loggers has gone missing in the forest. <!-- place_note:logging-camp-m20-m107/hooks -->
 - A Banujha band has cut mine-burner signs into the best red gums and warns the camp off them. <!-- place_note:logging-camp-m20-m107/hooks -->
+
+**Redbank Quarry.**
+
+- A rival stone crew is breaking Redbank's sleds and cut blocks at night to drive it off the red face. <!-- place_note:quarry-m18-m109/hooks -->
 
 **Stonecut Quarry.**
 
@@ -445,10 +449,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Smugglers use the dry upper levels to store their goods. <!-- place_note:mine-m17-m112/present -->
 - Ninth Shaft was part of the Imperial concession on the south of the cape, and was burned in 3E 427 with the others. <!-- place_note:mine-m17-m112/history -->
 - A cracked Imperial votive niche is cut into the shaft head and holds a single drowned lamp. <!-- place_note:mine-m17-m112/faith -->
-
-**Redbank Quarry.**
-
-- A rival stone crew is breaking Redbank's sleds and cut blocks at night to drive it off the red face. <!-- place_note:quarry-m18-m109/hooks -->
 
 **Wrackmoth.**
 

@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: mangrove (19%), reed (16%), fern (
 
 Majority Lukiul Argonians, Nibenese-descended families, Naka-Desh river-folk and a few Khajiit sailors. Perhaps 130 live in the region. <!-- region_note:kotherra-mangroves/people -->
 
-The places here belong to The Gideon Frontier (4 places, about 272 people), The Warden Marches (1 place, about 7 people) and The Naka-Desh (Riverbacks) (1 place, about 11 people); 3 places carry no culture in the data. <!-- place:region=kotherra-mangroves -->
+The places here belong to The Gideon Frontier (4 places, about 120 people), The Warden Marches (1 place, about 8 people) and The Naka-Desh (Riverbacks) (1 place, about 5 people); 3 places carry no culture in the data. <!-- place:region=kotherra-mangroves -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Gideon (also called Twyllbek)
 
-A metropolis, about 600 m across, sited on coast, of The Gideon Frontier. In 4E 201 it is inhabited, held by The Gideon civic council in the old Governor's Mansion, over a Lukiul Argonian majority with Nibenese-descended families; 160 people live there. It is not built yet. <!-- place:gideon -->
+A metropolis, about 600 m across, sited on coast, of The Gideon Frontier. In 4E 201 it is inhabited, held by The Gideon civic council in the old Governor's Mansion, over a Lukiul Argonian majority with Nibenese-descended families; 90 people live there. It is not built yet. <!-- place:gideon -->
 
 Gideon is the first settlement on the Blackwood Road from Leyawiin: a governor's mansion, a courthouse, a Temple of Dibella, an arena and mud bathhouses in a maze of cramped streets. Most buildings stand along Blackwood Way because it is the only dry ground through the town. <!-- place_note:gideon/overview --> In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases and keeps its records, an Imperial habit the town never dropped. Gideon denies the Xeech-Leel's claim and deals with the Archwardens only at Fort Silvermoth's toll gate. Carts on the Blackwood Road to Leyawiin leave from the east gate. <!-- place_note:gideon/present --> Most people are Lukiul Argonians who speak Cyrodiilic, trade with outsiders and stand apart from Argonian philosophy, beside Nibenese-descended families two centuries settled. Archein families survive as landholders and council servants. About 90 people live in the walls; Khajiit and Bosmer traders pass through. <!-- place_note:gideon/people --> Barsaebic Ayleids founded it as Twyllbek; the Kothringi left a Dibella devotion in the soil; Imperial settlers built the mansion, the temple and Castle Giovesse beside it. The An-Xileel's weapon killed Gideon's Lukiul in 4E 48 and the undead host of Umbriel overran the town, yet Gideon's destruction was light and it stayed an active settlement. <!-- place_note:gideon/history -->
 
@@ -58,7 +58,7 @@ It is to be built from Riften in Skyrim.esm (a city: 4959 buildings, 34 interior
 
 ### Fort Silvermoth
 
-A fort, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden toll garrison drawn from old Archein families; 7 people live there. It is not built yet. <!-- place:fort-silvermoth -->
+A fort, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden toll garrison drawn from old Archein families; 8 people live there. It is not built yet. <!-- place:fort-silvermoth -->
 
 A small stone fort on the Gideon-Soulrest road, one of the '-moth' forts of the old Legion naming. In 4E 201 it is the Archwardens' toll post and river-watch at the southern approach to Gideon. <!-- place_note:fort-silvermoth/overview --> Eight soldiers man it, take a toll from traders at the bar across the road and watch the coast for bay pirates. They are courteous to Gideon's merchants and wary of the Mine-Burners' carts from the basin. <!-- place_note:fort-silvermoth/present --> Argonian soldiers of Archein-descended families, under a captain who still gives orders in Cyrodiilic. The fort has no Hist; the soldiers go home to a village tree to hatch and bury. <!-- place_note:fort-silvermoth/people --> The Legion built it as a road fort. The Imperial garrison left at the secession, and the Archein families who had served in it stayed and held the gate in the Archwardens' name, so the same toll is taken at the same bar under a new banner. <!-- place_note:fort-silvermoth/history -->
 
@@ -76,7 +76,7 @@ It is to be built from Cracked Tusk in Skyrim.esm (a fort: 254 buildings, 2 inte
 
 ### Olvani
 
-A village, about 120 m across, sited on coast, of The Gideon Frontier. In 4E 201 it is inhabited, held by a fishing community of Lukiul families, answering to Gideon's harbour officer; 82 people live there. It is not built yet. <!-- place:olvani -->
+A village, about 120 m across, sited on coast, of The Gideon Frontier. In 4E 201 it is inhabited, held by a fishing community of Lukiul families, answering to Gideon's harbour officer; 12 people live there. It is not built yet. <!-- place:olvani -->
 
 A village at the mouth of Gideon's estuary on Topal Bay's eastern shore. It is Gideon's fishing port and the landing for boats to Aphon Isle and the Topal Bay coast. <!-- place_note:olvani/overview --> About twelve people haul nets on the mudflats and ferry travellers to Aphon Isle. They report smugglers to Gideon when there is a reward and say nothing when there is not. <!-- place_note:olvani/present --> Lukiul families with Cyrodiilic names and a Khajiit sailor or two who came on a bay-boat and stayed. <!-- place_note:olvani/people --> Olvani grew up at the estuary landing where Gideon's Imperial-era trade met Topal Bay's boats. When the Imperial ships left at the secession the landing's trade ended. The families who stayed lived by fishing and by the ferry to Aphon Isle. <!-- place_note:olvani/history -->
 
@@ -94,7 +94,7 @@ It is to be built from Morthal in Skyrim.esm (a town: 162 buildings, 10 interior
 
 ### Hixinoag
 
-A village, about 120 m across, sited on swamp, of The Gideon Frontier. In 4E 201 it is inhabited, held by a drifting community of Lukiul and Naka-Desh families under a headwoman; 17 people live there. It is not built yet. <!-- place:hixinoag -->
+A village, about 120 m across, sited on swamp, of The Gideon Frontier. In 4E 201 it is inhabited, held by a drifting community of Lukiul and Naka-Desh families under a headwoman; 10 people live there. It is not built yet. <!-- place:hixinoag -->
 
 A village of thatched huts on raised plank platforms and house-rafts moored to stakes on the northern caravan road above Gideon. The ring of rafts has been moored where it is for years. <!-- place_note:hixinoag/overview --> About ten people keep a ferry and a rest-house for caravans. They bargain with the Archein landholders for reed rights and with Gideon for salt, and send the Archwardens nothing, since no toll gate stands on their channels. <!-- place_note:hixinoag/present --> Lukiul and Naka-Desh families, headed by a river-headwoman who judges disputes over rafts and channel rights. <!-- place_note:hixinoag/people --> The Argonian Account names Hixinoag on the northern road in the Imperial era. The village outlasted the Empire, and when Gideon's Lukiul quarters burned under Umbriel in 4E 48 it took in families from the plantation country south of it. <!-- place_note:hixinoag/history -->
 
@@ -112,11 +112,11 @@ It is to be built from Dragon Bridge in Skyrim.esm (a town: 37 buildings, 5 inte
 
 ### Giovesse (also called Castle Giovesse)
 
-A hamlet, about 120 m across, sited on inland, of The Gideon Frontier. In 4E 201 it is inhabited, held by Gideon's poorer families and ghost-hunters, who squat below the ruined Castle Giovesse; 13 people live there. It is not built yet. <!-- place:giovesse -->
+A hamlet, about 120 m across, sited on inland, of The Gideon Frontier. In 4E 201 it is inhabited, held by Gideon's poorer families and ghost-hunters, who squat below the ruined Castle Giovesse; 8 people live there. It is not built yet. <!-- place:giovesse -->
 
-Castle Giovesse was the Imperial ducal seat above Gideon and the prison of Empress Tavia; the ruin stands on a rise, and a hamlet of a few families has grown at its foot. <!-- place_note:giovesse/overview --> About nine people live in lean-to hide tents on raised cypress platforms below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard. <!-- place_note:giovesse/present --> Poor Lukiul Argonian families and a few Nibenese diggers, led by an old woman who keeps the ruin's door-keys from the days when it was closed. <!-- place_note:giovesse/people --> Calvus Vanin was the first lord; Empress Tavia was held here from 1E 2899. The castle fell to ruin. By the modern era it is described as haunted. The name now belongs to the hamlet. <!-- place_note:giovesse/history -->
+Castle Giovesse was the Imperial ducal seat above Gideon and the prison of Empress Tavia; the ruin stands on a rise, and a hamlet of a few families has grown at its foot. <!-- place_note:giovesse/overview --> About eight people live in lean-to hide tents on raised cypress platforms below the castle. They sell guided walks to the ruin, tend small yam beds and pay Gideon a gate-toll for the right to shelter under its guard. <!-- place_note:giovesse/present --> Poor Lukiul Argonian families and a few Nibenese diggers, led by an old woman who keeps the ruin's door-keys from the days when it was closed. <!-- place_note:giovesse/people --> Calvus Vanin was the first lord; Empress Tavia was held here from 1E 2899. The castle fell to ruin. By the modern era it is described as haunted. The name now belongs to the hamlet. <!-- place_note:giovesse/history -->
 
-Grey, root-split castle walls on a low mound, a dozen hide tents below on raised cypress platforms, a plank causeway to Gideon's gate and lamps burning all night. <!-- place_note:giovesse/look --> Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison. Little of value is left in it beyond urns and a rotted strongbox. <!-- place_note:giovesse/economy --> They leave Dibella offerings at a roadside shrine for the dead of the castle, and keep Sithis's name for the nights when something moves on the rise. <!-- place_note:giovesse/faith -->
+Grey, root-split castle walls on a low mound, half a dozen hide tents below on raised cypress platforms, a plank causeway to Gideon's gate and lamps burning all night. <!-- place_note:giovesse/look --> Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison. Little of value is left in it beyond urns and a rotted strongbox. <!-- place_note:giovesse/economy --> They leave Dibella offerings at a roadside shrine for the dead of the castle, and keep Sithis's name for the nights when something moves on the rise. <!-- place_note:giovesse/faith -->
 
 Built from: Its main source, BlackMarsh 22,-4 (Black Marsh & Valenwood), is a hamlet of thirteen people on a rise with no interior; its Nordic pieces are replaced with the hide tents and cypress platforms on posts of Ree-An-Wo (King of the Murkmire), a camp of sixteen people with cypress walkways, hide tents and hide fences that fits as the alternate. One plank hut interior of a bed, a table and a hearth, for the bedroll, comes from Root Whisper Village (King of the Murkmire). No source holds the castle: its halls and cell block are added as one ruin interior from the keep pieces of Cracked Tusk (Skyrim). Still to add: the root-split castle walls on the mound, the plank causeway, the roadside shrine and the yam beds. <!-- place_note:giovesse/source -->
 
@@ -184,7 +184,7 @@ It is to be built from Nightcaller Temple in Skyrim.esm (a ruin imperial: 620 bu
 
 ### Teth-Kasa Station
 
-An outpost, about 80 m across, sited on swamp, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 11 people live there. It is not built yet. <!-- place:outpost-m25-m90 -->
+An outpost, about 80 m across, sited on swamp, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 5 people live there. It is not built yet. <!-- place:outpost-m25-m90 -->
 
 Teth-Kasa Station is a platform on stilts among mangrove roots, with a rope-walk and a hidden landing. Five Naka-Desh keep it out of sight of the sea. <!-- place_note:outpost-m25-m90/overview --> A few Naka-Desh hold it and sell fish and reed rope to Gideon's boats. The mangroves hide it from the sea, and only people who know the channels find it. <!-- place_note:outpost-m25-m90/present --> Five Naka-Desh: a rope-maker, two fishers, a pilot who guides boats through the mangroves and a boy who cuts reed. They are cautious with strangers from the coast. <!-- place_note:outpost-m25-m90/people --> Teth-Kasa Station is the Naka-Desh's western-most post, among the mangrove channels south of Gideon. It gives the river-folk a landing on Gideon's delta trade, and Gideon's boatmen buy their fish and rope there. <!-- place_note:outpost-m25-m90/history -->
 

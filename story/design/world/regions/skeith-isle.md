@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Rainbreaker Keep
 
-A keep, about 120 m across, sited on coast, whose culture the data does not say. In 4E 201 it is occupied, held by Bramman's Brethren of Marque Landing, the Rainbreaker crew; 32 people live there. It is not built yet. <!-- place:rainbreaker-keep -->
+A keep, about 120 m across, sited on coast, whose culture the data does not say. In 4E 201 it is occupied, held by Bramman's Brethren of Marque Landing, the Rainbreaker crew; 12 people live there. It is not built yet. <!-- place:rainbreaker-keep -->
 
 A stone keep on a rise by the shore of Skeith Isle, built by the Empire and now held by pirates. <!-- place_note:rainbreaker-keep/overview --> The Brethren took it in 4E 189. They use the upper hall as their moot-room and the lower vault as a strong room. The undercroft, once the garrison's cells, stands empty. <!-- place_note:rainbreaker-keep/present --> Twelve of the Marque Landing pirates live here under the quartermaster, with a Seafalls diver who works for pay. <!-- place_note:rainbreaker-keep/people --> Built by the Empire to watch the Archon coast and break the pirate trade, and kept as a signal tower until the secession, when the garrison left. No Warden family took the keys, and the keep stood empty until pirates moved in. <!-- place_note:rainbreaker-keep/history -->
 
@@ -58,7 +58,7 @@ It is to be built from Fort Tulis in Journey to Baan Malur.esp (a keep: 567 buil
 
 ### Marque Landing
 
-An outlaw camp, about 90 m across, sited on coast, whose culture the data does not say. In 4E 201 it is inhabited, held by Bramman's Brethren: their outpost on the Archon coast, under Hasha-Jeen; 8 people live there. It is not built yet. <!-- place:outlaw-camp-38-m77 -->
+An outlaw camp, about 90 m across, sited on coast, whose culture the data does not say. In 4E 201 it is inhabited, held by Bramman's Brethren: their outpost on the Archon coast, under Hasha-Jeen; 20 people live there. It is not built yet. <!-- place:outlaw-camp-38-m77 -->
 
 Marque Landing is a pirate camp of hide tents, cypress walkways on posts and moored hulks in the shallows on Skeith Isle's western shore, serving Rainbreaker Keep above it. <!-- place_note:outlaw-camp-38-m77/overview --> Four ships' crews of the Brethren share the camp under Hasha-Jeen, master of the outpost. They use the keep above as a strong room and raid the Archwardens' chartered ships. <!-- place_note:outlaw-camp-38-m77/present --> About twenty pirates, mostly Argonian boat-crews with a few Dunmer and Khajiit seamen. Their master, Hasha-Jeen, an Argonian, sailed with the chartered crews before he came over to the Brethren. <!-- place_note:outlaw-camp-38-m77/people --> The Archon coast was riddled with pirates, and in the Blackwater War General Falco sent letters of marque to them. The tradition survived as a half-chartered fleet in 4E 201, the state's stand-in for a navy. In 4E 189 Bramman's Brethren of Topal Bay took the landing and the keep above it from the chartered crews, and some of those crews came over to them. <!-- place_note:outlaw-camp-38-m77/history -->
 
@@ -76,7 +76,7 @@ It is to be built from Bonestrewn Grove in King of the Murkmire.esp (a camp outl
 
 ### Hollow Tide Camp
 
-An outlaw camp, about 80 m across, sited on coast, whose culture the data does not say. In 4E 201 it is inhabited, held by Skeith smugglers, a hardened crew; 12 people live there. It is not built yet. <!-- place:outlaw-camp-36-m80 -->
+An outlaw camp, about 80 m across, sited on coast, whose culture the data does not say. In 4E 201 it is inhabited, held by Skeith smugglers, a hardened crew; 14 people live there. It is not built yet. <!-- place:outlaw-camp-36-m80 -->
 
 Hollow Tide Camp is a smugglers' camp in the lee of Skeith Isle's low south-western bluffs, hidden from the sea lanes between Thorn and Archon. <!-- place_note:outlaw-camp-36-m80/overview --> About fourteen men and women live in lean-to huts above the shingle, with two hidden coves and a cache in the caves under the bluff. Their boats are hauled up in the coves. <!-- place_note:outlaw-camp-36-m80/present --> Mixed crews: Argonian boatmen of the Okuwun coast, a few Dunmer from Tear, runaway Archein families and Khajiit moon-sugar dealers. The leader is a former Archon harbour hand who knows every customs man on the quay by name. <!-- place_note:outlaw-camp-36-m80/people --> Customs stand only at the recognised ports, so smugglers use any unwatched beach near one. Skeith lies between Thorn, Seafalls and Archon, which makes it the obvious cache for goods that dodge both customs houses. <!-- place_note:outlaw-camp-36-m80/history -->
 

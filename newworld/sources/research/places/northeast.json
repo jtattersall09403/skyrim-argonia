@@ -726,7 +726,7 @@
    "name": "Cutbank Camp",
    "status": "inhabited",
    "held_by": "Field-owners of Thorn, worked by hired Argonian crews",
-   "population": 5,
+   "population": 4,
    "footprint_radius_m": 25,
    "siting": "riverbank",
    "danger_band_id": "D3",
@@ -813,7 +813,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five or six: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own villages between fellings.",
+     "text": "Four: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own villages between fellings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3293,13 +3293,8 @@
    ],
    "gives": [
     {
-     "kind": "trader-apothecary",
-     "detail": "the Dunmer herbalist in the outer tomb",
-     "count": 1
-    },
-    {
      "kind": "alchemy-lab",
-     "detail": "the herbalist's bench",
+     "detail": "a dead herbalist's bench left in the outer tomb",
      "count": 1
     },
     {
@@ -5086,7 +5081,7 @@
    "held_by": "A council of village elders; the Clay-Mound families",
    "population": 12,
    "footprint_radius_m": 60,
-   "siting": "riverbank",
+   "siting": "lakeshore",
    "danger_band_id": "D4",
    "importance": 3,
    "summary": "Noota Nara is a village below Fort Chalkmoth where, in legend, the villagers once heated spear-tips in a dragon's own fire and killed it. Its walls have been rebuilt. The villagers still resent the loss of the dragon's head.",
@@ -5108,7 +5103,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. It sits on the river below Fort Chalkmoth.",
+     "text": "Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. It sits on the lake below Fort Chalkmoth.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -5339,12 +5334,12 @@
     },
     {
      "kind": "ore-vein",
-     "detail": "clay deposit on the riverbank (Hearthfire's clay)",
+     "detail": "clay deposit on the lake shore (Hearthfire's clay)",
      "count": 2
     },
     {
      "kind": "fishing",
-     "detail": "from the river below the walls",
+     "detail": "from the lake below the walls",
      "count": 1
     },
     {
@@ -7590,7 +7585,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small shrine to the Hist stands at the post's edge; eggs go north to the Jal-Veesa Hist pool, and the elder knows every egg the post has sent.",
+     "text": "A small shrine to the Hist stands at the post's edge; eggs go north to the pool of Hist sap at Jal-Veesa, and the elder knows every egg the post has sent.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

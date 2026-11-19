@@ -18,7 +18,7 @@ What grows commonest, by share of its plants: kelp (23%), coral (21%), shell (17
 
 Seafarers, many of them Khajiit, plus Argonian fishers and Bosmer pilots. <!-- region_note:topal-bay/people -->
 
-The places here belong to The Warden Marches (1 place, about 20 people); 1 place carries no culture in the data. <!-- place:region=topal-bay -->
+The places here belong to The Warden Marches (1 place, about 8 people); 1 place carries no culture in the data. <!-- place:region=topal-bay -->
 
 ## Its history, faith, trade and the present
 
@@ -38,7 +38,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Fort Shellmoth
 
-A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, Archein-descended; 20 people live there. It is not built yet. <!-- place:fort-shellmoth -->
+A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, Archein-descended; 8 people live there. It is not built yet. <!-- place:fort-shellmoth -->
 
 A small stone fort at the mouth of Topal Bay near Soulrest, one of the '-moth' forts. <!-- place_note:fort-shellmoth/overview --> Eight soldiers log shipping and collect tolls; they co-operate with Soulrest's merchant council. <!-- place_note:fort-shellmoth/present --> Argonian soldiers of Archein descent garrison the fort, with a Khajiit pilot. <!-- place_note:fort-shellmoth/people --> The Legion built it to guard the harbour approach to Soulrest. Its Imperial garrison left at the secession, and Archein families have held it in the Archwardens' name since. <!-- place_note:fort-shellmoth/history -->
 

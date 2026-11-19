@@ -40,6 +40,14 @@
    ],
    "place": "logging-camp-m20-m107",
    "why": "the road passes the logging camp; its spur to the dot is hidden under the culture square"
+  },
+  {
+   "end": [
+    1621.5,
+    543.25
+   ],
+   "place": "fort-willowmoth",
+   "why": "the solid border road runs on into Fort Willowmoth's square and ends at its triangle"
   }
  ],
  "about_minor": "Edges the reader classed major where the map draws a dashed (minor) line, each checked on a full-resolution crop; 'at' is a point on the edge, 'ink' the measured breaks in the road ink along it (a solid road has none; a dashed one about 4-5 per 40 px; short runs read under glyphs or labels were judged on the crop). roads.py sets each to minor.",

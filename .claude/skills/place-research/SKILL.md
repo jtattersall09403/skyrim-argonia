@@ -35,7 +35,10 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    needs. Every sentence of the summary, notes and gives passes the deliverability test (FORMAT.md, Deliverable in
    Skyrim): Skyrim and our mods can show or do it with at most a small addition (a thing placed, a person, a lock);
    every structure it names is in the sources or named in the `source` note as added, from which mod's pieces; it
-   agrees with the record's `siting`. A source holds a structure when its placed pieces or interiors show it, not
+   agrees with the record's `siting` and with the ground: a water word (river, creek, lake, sea, docks, boats,
+   fishing) names water the ground has within a few hundred metres of the place, and the `siting` names the water
+   nearest it. A Hist pool is always a pool of Hist sap, never of water. The population is the researched estimate
+   inside the tier's range and in order with its peers (FORMAT.md, Population). A source holds a structure when its placed pieces or interiors show it, not
    when its style tags suggest it, and the `source` note says so as a plain sentence naming the source and the
    evidence ("Bonestrewn Grove, from King of the Murkmire, has cypress walkways on posts and two hide tents"),
    never a command or an id. Each note is about this
@@ -83,7 +86,9 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
 1. Save after every few places; on a restart continue from what the file holds.
 2. Build (`python3 -m tools.newworld.build_db`) and check: no note text appears twice across all research files,
    nor the same sentence with only names swapped; the build runs with no place left unresearched;
-   `python3 -m tools.newworld.place_danger check` and `python3 -m tools.newworld.travel check` show 0 problems.
+   `python3 -m tools.newworld.place_danger check`, `python3 -m tools.newworld.travel check` and
+   `python3 -m tools.newworld.record_check` (population against tier and peers, water words and siting against the
+   ground, Hist pools as sap) show 0 problems. A water fault is fixed in the record's words, never by moving the place.
 3. Text review (the `text-review` skill) by someone other than the writer: reader passes over the exported prose,
    the rewrites applied, then the linter at 0 hard hits.
 4. Whenever the places or the travel network changed, rebuild the Atlas

@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (16%), undergrowth (14%), 
 
 A mix of the clay-mound people of Arorha, the Stone-Sleepers of Tsonac at Ysan, a Root-Folk watch at Yuva-Goli, Warden Marches families at the posts and a Sarpa camp inland. <!-- region_note:hatandros-bight/people -->
 
-The places here belong to The Warden Marches (2 places, about 8 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 16 people), The Stone-Sleepers of Tsonac (Tsona-Kaleel) (1 place, about 5 people) and The Root-Folk of Helstrom (1 place, about 3 people); 5 places carry no culture in the data. <!-- place:region=hatandros-bight -->
+The places here belong to The Warden Marches (2 places, about 10 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 11 people), The Stone-Sleepers of Tsonac (Tsona-Kaleel) (1 place, about 6 people) and The Root-Folk of Helstrom (1 place, about 5 people); 5 places carry no culture in the data. <!-- place:region=hatandros-bight -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Arorha
 
-A village, about 120 m across, sited on coast, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Arorha village elders, answering to the Aroxhu council; 16 people live there. It is not built yet. <!-- place:arorha -->
+A village, about 120 m across, sited on coast, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Arorha village elders, answering to the Aroxhu council; 11 people live there. It is not built yet. <!-- place:arorha -->
 
 Arorha is the north-eastern outlier of the Aroxhu clay-mound country, a village on the first raised ground south of Hatandros Bight where the road from Inoja meets the sea. It exists to move the confederacy's clay, dye and pottery onto coastal boats. <!-- place_note:arorha/overview --> A working village with a short stone-free quay of piled mud-brick and wattle where flat boats unload. Elders from Arorha sit on the Aroxhu council. The warden post at Marshgate Watch to the north takes a toll on goods bound for Thorn, and Arorha pays it. <!-- place_note:arorha/present --> About eleven Argonians of the Oxhu-Teeleel, mostly clay-diggers, potters and boatmen. The elder is a pot-painter who knows every kiln and every flat boat by its maker. Two or three Dunmer traders from Thorn lodge here while they buy. <!-- place_note:arorha/people --> The mounds were raised by the village's founders, a generation or two after the Knahaten Flu (2E 560-603) emptied the coast of Cantemiric Velothi, over ground the Velothi had left fallow. Until the secession East Empire Company boatmen called here for clay; in 4E 201 the landing is the same and the buyers are Argonian. <!-- place_note:arorha/history -->
 
@@ -128,45 +128,9 @@ The nearest stop is the boat stop at Arorha, 380 m away across the marsh on foot
 
 It is to be built from Broken Tower Redoubt in Skyrim.esm (a camp tribal: 307 buildings, 2 interiors, 0 residents, 11 hostile, about 110 m across). The source reads: "Broken Tower Redoubt: a camp tribal built in imperial and nordic style with ruin, mine, camp pieces. 0 people live there, 11 hostile. 2 interiors. Dry ground." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Mor Khazgur (camp tribal, 219 buildings, 3 interiors) and Kazmalgur (camp tribal, 30 buildings, 1 interior). <!-- place_source:tribal-camp-28-m76/0; source_place:skyrim.brokentowerredoubtlocation; place_source:tribal-camp-28-m76/1; place_source:tribal-camp-28-m76/2; place_source:tribal-camp-28-m76/3 -->
 
-### Coldbrine Mine
-
-A mine, about 70 m across, sited on inland, of The Warden Marches. In 4E 201 it is inhabited, held by Thorn's field-owners, with a toll to Fort Thornmoth; 5 people live there. It is not built yet. <!-- place:mine-28-m65 -->
-
-A small rock-salt mine in the rise between Thorn and the bight, worked by hired hands for Thorn's field-owners. The name is the Warden Marches' plain Imperial-style naming for a cold brine pit. <!-- place_note:mine-28-m65/overview --> A handful of workers cut brine-hard salt blocks in two shafts and load them on carts. A warden from Fort Thornmoth collects the toll on the carts. <!-- place_note:mine-28-m65/present --> About five Argonians, descendants of freed labourers, plus an overseer from an old Archein family who keeps the mine's keys and the one cart-horse. <!-- place_note:mine-28-m65/people --> Imperial-era bonded labour first cut the salt-bed for the East Empire Company's saltrice and fish trade; the shafts were kept running by Thorn's field-owners after the Company left. <!-- place_note:mine-28-m65/history -->
-
-A cut face of grey-white rock streaked with rust, a timber headframe, wooden carts and stacked salt blocks under reed roofs. The air smells of brine and wet stone. <!-- place_note:mine-28-m65/look --> Rock-salt for curing: blocks go to Thorn, ground salt to Arorha for fish. The salt is cheap but its trade is steady. <!-- place_note:mine-28-m65/economy --> The workers carry small hatching-stones from their home villages and leave a pinch of salt at the mine mouth for those buried underground. <!-- place_note:mine-28-m65/faith -->
-
-Built from: Its main source, Broken Tusk Mine (Dragonborn), is a Dunmer and Nordic dig on Solstheim with one interior. Gloombound Mine (Skyrim) fits better: a mine with one interior of timbered galleries, four people and a single door, which serves as the working shaft. Whistling Mine (Skyrim), a mine by water with its own interior, serves as the older shaft. Still to add: the open salt face, the timber headframe, the carts and stacked blocks under reed roofs, the walled-off gallery, the brine pools and the spoil heap. <!-- place_note:mine-28-m65/source -->
-
-It promises the player: Common harvestables: Salt Pile harvest in the working face (x6); Ore or mineral vein: iron ore veins in the older shaft (x3); Hostile occupants: mudcrabs in the spoil heap and brine pools (x4); Boss fight: an old giant mudcrab that has dug into the walled-off gallery; Boss chest: stoppered-gallery chest. <!-- place_give:mine-28-m65/0; place_give:mine-28-m65/1; place_give:mine-28-m65/2; place_give:mine-28-m65/3; place_give:mine-28-m65/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. The older shaft is half-fallen, its side galleries blocked by rock; brine pools with rotting water lie below, and mudcrabs nest in the spoil heap. <!-- place_note:mine-28-m65/dangers --> <!-- place_law:mine-28-m65; place_danger:mine-28-m65 -->
-
-The nearest stop is the boat stop at Thorn, 380 m away by road. Roads run from it to Marshgate Watch (track, 70 m south-east) and Thorn (track, 380 m north-east). <!-- travel_approach:mine-28-m65; road_node:place=mine-28-m65 -->
-
-It is to be built from Broken Tusk Mine in Dragonborn.esm (a mine: 99 buildings, 1 interior, 5 residents, 18 hostile, about 156 m across). The source reads: "DLC2SolstheimWorld 4,18: a mine built in dunmer and nordic style with mine, cave, camp pieces. 5 people live there, 18 hostile. 1 interiors. By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Whistling Mine (mine, 81 buildings, 1 interior) and Frostmoon Crag (mine, 0 buildings, 0 interiors). <!-- place_source:mine-28-m65/0; source_place:dragonborn.marker.0143d4; place_source:mine-28-m65/1; place_source:mine-28-m65/2; place_source:mine-28-m65/3 -->
-
-### Ysan
-
-A hamlet, about 80 m across, sited on coast, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by Stone-Sleepers of Tsonac, a landing held for Tsonac; 5 people live there. It is not built yet. <!-- place:ysan -->
-
-A hamlet at the bight's northern shore where the stone and timber of the Tsonac-Kaleel reach the sea. Its culture is that of Tsonac. <!-- place_note:ysan/overview --> A busy river-mouth landing with a stone jetty, a lime kiln and loading sheds. Thorn boats lie moored at the jetty. <!-- place_note:ysan/present --> About six Argonians of Tsonac who move between the uplands and the shore, with a Thorn broker who lodges here while he buys. <!-- place_note:ysan/people --> Founded as a coast landing by Tsonac in the settled generations after 4E 48, when Thorn's builders began buying stone again. The freight path down from the jungle uplands is older than the hamlet. <!-- place_note:ysan/history -->
-
-The landing has a neat dry-stone jetty with stacked blocks sorted by size, lime-white dust on the reeds and a few hide tents on cypress platforms raised on posts above the shore. <!-- place_note:ysan/look --> Cut stone, hewn timber and lime go out to Thorn; salt, rope and cloth come in. Tsonac keeps the price of stone high. Thorn's buyers complain of it. <!-- place_note:ysan/economy --> They carry small tokens of Tsonac's sleeping Hist and a tree-minder's charm of resin for sleeping. They do not pray to it in public. <!-- place_note:ysan/faith -->
-
-Built from: Its main source, BlackMarsh 4,-4 (Black Marsh), is a Nordic hamlet of eleven buildings with no interior, so its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of sixteen people, with cypress walkways and platforms on posts, hide tents, hide fences and ruin pieces and no interior. It supplies the walkways and the tents the landing's people live in. Still to add: the stone jetty, the lime kiln, the open loading sheds that the trader's stall stands in, the stone stacks and the stash under the jetty. <!-- place_note:ysan/source -->
-
-It promises the player: General goods trader: stone, lime, salt, rope and cloth; 750 gold; Cooking pot: landing cook-fire; Dangerous wildlife: crocodiles at the river mouth and skeevers among the stone stacks (x3); Lesser treasure: smugglers' stashed goods under the jetty. <!-- place_give:ysan/0; place_give:ysan/1; place_give:ysan/2; place_give:ysan/3 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Crocodiles in the river mouth and skeevers among the stone stacks. The Tsonac men turn away any trader who asks after labour. <!-- place_note:ysan/dangers --> <!-- place_law:ysan; place_danger:ysan -->
-
-The nearest stop is the boat stop at Thorn, 540 m away across the marsh on foot. Roads run from it to Marshgate Watch (track, 390 m north-west), Ayiin (track, 790 m west), Balormaak (track, 1.1 km south-west), Yuva-Goli (track, 1.6 km south), Zeeraxun Roost (track, 2.4 km south) and Arorha (track, 2.4 km south). <!-- travel_approach:ysan; road_node:place=ysan -->
-
-It is to be built from BlackMarsh 4,-4 in Black Marsh.esm (a hamlet: 11 buildings, 0 interiors, 5 residents, 0 hostile, about 73 m across). The source reads: "BlackMarsh 4,-4: a hamlet built in nordic style with ship, mine, camp pieces. 5 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:ysan/0; source_place:blackmarsh.cluster.blackmarsh-4-4.4.-4; place_source:ysan/1; place_source:ysan/2; place_source:ysan/3 -->
-
 ### Marshgate Watch
 
-An outpost, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by Archwardens, detachment from Fort Thornmoth; 3 people live there. It is not built yet. <!-- place:outpost-29-m66 -->
+An outpost, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by Archwardens, detachment from Fort Thornmoth; 6 people live there. It is not built yet. <!-- place:outpost-29-m66 -->
 
 A small garrison post where the Thorn road crosses the neck of land at the bight's northern end. The name follows the Marches' habit of naming posts for what they watch. <!-- place_note:outpost-29-m66/overview --> Six wardens rotate through from Fort Thornmoth. They take the customs toll on clay and salt and watch the shore for boats that avoid Thorn. <!-- place_note:outpost-29-m66/present --> Six Argonian wardens of old Archein lines, in patched half-Imperial livery, led by a sergeant who owns the post's one cutlass. <!-- place_note:outpost-29-m66/people --> Built by the Imperial Commission as a toll and way-station for the Thorn-Archon road. It stood empty from the secession until the Archwardens' detachment took it back as a customs point on the east road. <!-- place_note:outpost-29-m66/history -->
 
@@ -182,9 +146,27 @@ The nearest stop is the boat stop at Thorn, 450 m away by road. Roads run from i
 
 It is to be built from Lair of the Kraken in Here There Be Monsters.esp (a hamlet: 9 buildings, 0 interiors, 3 residents, 8 hostile, about 41 m across). The source reads: "Lair of the Kraken: a hamlet built in dwemer style with ship pieces. 3 people live there, 8 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-29-m66/0; source_place:heretherebemonsters.cluster.lair-of-the-kraken.45.21; place_source:outpost-29-m66/1; place_source:outpost-29-m66/2; place_source:outpost-29-m66/3 -->
 
+### Ysan
+
+A hamlet, about 80 m across, sited on coast, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by Stone-Sleepers of Tsonac, a landing held for Tsonac; 6 people live there. It is not built yet. <!-- place:ysan -->
+
+A hamlet at the bight's northern shore where the stone and timber of the Tsonac-Kaleel reach the sea. Its culture is that of Tsonac. <!-- place_note:ysan/overview --> A busy river-mouth landing with a stone jetty, a lime kiln and loading sheds. Thorn boats lie moored at the jetty. <!-- place_note:ysan/present --> About six Argonians of Tsonac who move between the uplands and the shore, with a Thorn broker who lodges here while he buys. <!-- place_note:ysan/people --> Founded as a coast landing by Tsonac in the settled generations after 4E 48, when Thorn's builders began buying stone again. The freight path down from the jungle uplands is older than the hamlet. <!-- place_note:ysan/history -->
+
+The landing has a neat dry-stone jetty with stacked blocks sorted by size, lime-white dust on the reeds and a few hide tents on cypress platforms raised on posts above the shore. <!-- place_note:ysan/look --> Cut stone, hewn timber and lime go out to Thorn; salt, rope and cloth come in. Tsonac keeps the price of stone high. Thorn's buyers complain of it. <!-- place_note:ysan/economy --> They carry small tokens of Tsonac's sleeping Hist and a tree-minder's charm of resin for sleeping. They do not pray to it in public. <!-- place_note:ysan/faith -->
+
+Built from: Its main source, BlackMarsh 4,-4 (Black Marsh), is a Nordic hamlet of eleven buildings with no interior, so its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of sixteen people, with cypress walkways and platforms on posts, hide tents, hide fences and ruin pieces and no interior. It supplies the walkways and the tents the landing's people live in. Still to add: the stone jetty, the lime kiln, the open loading sheds that the trader's stall stands in, the stone stacks and the stash under the jetty. <!-- place_note:ysan/source -->
+
+It promises the player: General goods trader: stone, lime, salt, rope and cloth; 750 gold; Cooking pot: landing cook-fire; Dangerous wildlife: crocodiles at the river mouth and skeevers among the stone stacks (x3); Lesser treasure: smugglers' stashed goods under the jetty. <!-- place_give:ysan/0; place_give:ysan/1; place_give:ysan/2; place_give:ysan/3 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Crocodiles in the river mouth and skeevers among the stone stacks. The Tsonac men turn away any trader who asks after labour. <!-- place_note:ysan/dangers --> <!-- place_law:ysan; place_danger:ysan -->
+
+The nearest stop is the boat stop at Thorn, 540 m away across the marsh on foot. Roads run from it to Marshgate Watch (track, 390 m north-west), Ayiin (track, 790 m west), Balormaak (track, 1.1 km south-west), Yuva-Goli (track, 1.6 km south), Zeeraxun Roost (track, 2.4 km south) and Arorha (track, 2.4 km south). <!-- travel_approach:ysan; road_node:place=ysan -->
+
+It is to be built from BlackMarsh 4,-4 in Black Marsh.esm (a hamlet: 11 buildings, 0 interiors, 5 residents, 0 hostile, about 73 m across). The source reads: "BlackMarsh 4,-4: a hamlet built in nordic style with ship, mine, camp pieces. 5 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:ysan/0; source_place:blackmarsh.cluster.blackmarsh-4-4.4.-4; place_source:ysan/1; place_source:ysan/2; place_source:ysan/3 -->
+
 ### Yuva-Goli
 
-A hamlet, about 80 m across, sited on coast, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom, tide-station; 3 people live there. It is not built yet. <!-- place:yuva-goli -->
+A hamlet, about 80 m across, sited on coast, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom, tide-station; 5 people live there. It is not built yet. <!-- place:yuva-goli -->
 
 A hamlet of Helstrom's people, set on the open coast far from any Hist tree. The Root-Folk's hunting and egg-tending stations spread through the inner swamp. This is their outlier on the sea. <!-- place_note:yuva-goli/overview --> Five Root-Folk keep the station for Helstrom. They watch ships and trade quietly with Arorha. <!-- place_note:yuva-goli/present --> About five Saxhleel. The eldest has the status of a mid-ranked tree-minder and speaks to Helstrom through a sap-jar sent twice a year. <!-- place_note:yuva-goli/people --> Founded in the generations after 4E 48, to keep watch on the sea; its people came from the Lake Ulaish country by canoe. <!-- place_note:yuva-goli/history -->
 
@@ -199,6 +181,24 @@ Law: native law. It meets a visitor as wary (its people live there and fight onl
 The nearest stop is the boat stop at Arorha, 570 m away across the marsh on foot. Roads run from it to Zeeraxun Roost (track, 1.0 km south-west), Arorha (track, 1.1 km south-west), Balormaak (track, 1.1 km west), Ayiin (track, 1.2 km north-west), Inoja (track, 1.4 km south-west) and Marshgate Watch (track, 1.4 km north-west). <!-- travel_approach:yuva-goli; road_node:place=yuva-goli -->
 
 It is to be built from Velothi Victuals in Nyhus.esp (a hamlet: 16 buildings, 1 interior, 3 residents, 0 hostile, about 31 m across). The source reads: "Velothi Victuals: a hamlet built in dunmer and nordic style with farm, ship, mine pieces. 3 people live there, 0 hostile. 1 interiors (Velothi Victuals). By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:yuva-goli/0; source_place:nyhus.cluster.velothi-victuals.54.-28; place_source:yuva-goli/1; place_source:yuva-goli/2; place_source:yuva-goli/3 -->
+
+### Coldbrine Mine
+
+A mine, about 70 m across, sited on inland, of The Warden Marches. In 4E 201 it is inhabited, held by Thorn's field-owners, with a toll to Fort Thornmoth; 4 people live there. It is not built yet. <!-- place:mine-28-m65 -->
+
+A small rock-salt mine in the rise between Thorn and the bight, worked by hired hands for Thorn's field-owners. The name is the Warden Marches' plain Imperial-style naming for a cold brine pit. <!-- place_note:mine-28-m65/overview --> A handful of workers cut brine-hard salt blocks in two shafts and load them on carts. A warden from Fort Thornmoth collects the toll on the carts. <!-- place_note:mine-28-m65/present --> About three Argonians, descendants of freed labourers, plus an overseer from an old Archein family who keeps the mine's keys and the one cart-horse. <!-- place_note:mine-28-m65/people --> Imperial-era bonded labour first cut the salt-bed for the East Empire Company's saltrice and fish trade; the shafts were kept running by Thorn's field-owners after the Company left. <!-- place_note:mine-28-m65/history -->
+
+A cut face of grey-white rock streaked with rust, a timber headframe, wooden carts and stacked salt blocks under reed roofs. The air smells of brine and wet stone. <!-- place_note:mine-28-m65/look --> Rock-salt for curing: blocks go to Thorn, ground salt to Arorha for fish. The salt is cheap but its trade is steady. <!-- place_note:mine-28-m65/economy --> The workers carry small hatching-stones from their home villages and leave a pinch of salt at the mine mouth for those buried underground. <!-- place_note:mine-28-m65/faith -->
+
+Built from: Its main source, Broken Tusk Mine (Dragonborn), is a Dunmer and Nordic dig on Solstheim with one interior. Gloombound Mine (Skyrim) fits better: a mine with one interior of timbered galleries, four people and a single door, which serves as the working shaft. Whistling Mine (Skyrim), a mine by water with its own interior, serves as the older shaft. Still to add: the open salt face, the timber headframe, the carts and stacked blocks under reed roofs, the walled-off gallery, the brine pools and the spoil heap. <!-- place_note:mine-28-m65/source -->
+
+It promises the player: Common harvestables: Salt Pile harvest in the working face (x6); Ore or mineral vein: iron ore veins in the older shaft (x3); Hostile occupants: mudcrabs in the spoil heap and brine pools (x4); Boss fight: an old giant mudcrab that has dug into the walled-off gallery; Boss chest: stoppered-gallery chest. <!-- place_give:mine-28-m65/0; place_give:mine-28-m65/1; place_give:mine-28-m65/2; place_give:mine-28-m65/3; place_give:mine-28-m65/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. The older shaft is half-fallen, its side galleries blocked by rock; brine pools with rotting water lie below, and mudcrabs nest in the spoil heap. <!-- place_note:mine-28-m65/dangers --> <!-- place_law:mine-28-m65; place_danger:mine-28-m65 -->
+
+The nearest stop is the boat stop at Thorn, 380 m away by road. Roads run from it to Marshgate Watch (track, 70 m south-east) and Thorn (track, 380 m north-east). <!-- travel_approach:mine-28-m65; road_node:place=mine-28-m65 -->
+
+It is to be built from Broken Tusk Mine in Dragonborn.esm (a mine: 99 buildings, 1 interior, 5 residents, 18 hostile, about 156 m across). The source reads: "DLC2SolstheimWorld 4,18: a mine built in dunmer and nordic style with mine, cave, camp pieces. 5 people live there, 18 hostile. 1 interiors. By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Whistling Mine (mine, 81 buildings, 1 interior) and Frostmoon Crag (mine, 0 buildings, 0 interiors). <!-- place_source:mine-28-m65/0; source_place:dragonborn.marker.0143d4; place_source:mine-28-m65/1; place_source:mine-28-m65/2; place_source:mine-28-m65/3 -->
 
 ### Wreck of the Pale Harvest
 
@@ -274,25 +274,25 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - The Sarpa want a stolen Velothi bone-flute back from an Arorha potter. <!-- place_note:tribal-camp-28-m76/hooks -->
 - The old female will trade safe passage across the Virtluush ground for it. <!-- place_note:tribal-camp-28-m76/hooks -->
 
-**Coldbrine Mine.**
+**Marshgate Watch.**
 
-- The old shaft was walled off after a collapse that killed bonded labourers; one of their descendants wants the bodies brought out and staked, and the overseer refuses. <!-- place_note:mine-28-m65/hooks -->
-- Something has broken through the walled-off gallery wall from the other side. <!-- place_note:mine-28-m65/hooks -->
+- A warden has been letting Skeith smugglers' boats through for pay. <!-- place_note:outpost-29-m66/hooks -->
+- The sergeant wants the man caught before the blame falls on the sergeant. <!-- place_note:outpost-29-m66/hooks -->
 
 **Ysan.**
 
 - A load of carved lintel stones for a Thorn client has gone missing between Tsonac and the jetty. <!-- place_note:ysan/hooks -->
 - The quarry-men suspect the smugglers on Skeith. <!-- place_note:ysan/hooks -->
 
-**Marshgate Watch.**
-
-- A warden has been letting Skeith smugglers' boats through for pay. <!-- place_note:outpost-29-m66/hooks -->
-- The sergeant wants the man caught before the blame falls on the sergeant. <!-- place_note:outpost-29-m66/hooks -->
-
 **Yuva-Goli.**
 
 - The sap-jar has gone cloudy and the elder fears the Hist is ill. <!-- place_note:yuva-goli/hooks -->
 - A fresh jar must be carried from Helstrom, or the foulness in this one must be found. <!-- place_note:yuva-goli/hooks -->
+
+**Coldbrine Mine.**
+
+- The old shaft was walled off after a collapse that killed bonded labourers; one of their descendants wants the bodies brought out and staked, and the overseer refuses. <!-- place_note:mine-28-m65/hooks -->
+- Something has broken through the walled-off gallery wall from the other side. <!-- place_note:mine-28-m65/hooks -->
 
 **Wreck of the Pale Harvest.**
 

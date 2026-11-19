@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (18%), marsh herb (14%), lily
 
 The people are the Three Waters Argonians. Clay-Mound families live at Badal and Lilmoth-coast families at Oju. Archon's boatmen also work the channels. <!-- region_note:nushara-bayou/people -->
 
-The places here belong to The Three Waters Tribe (5 places, about 16 people), The Archon Harbour Folk (1 place, about 322 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 10 people) and Lilmoth and the Murkmire Coast (1 place, about 10 people); 3 places carry no culture in the data. <!-- place:region=nushara-bayou -->
+The places here belong to The Three Waters Tribe (5 places, about 38 people), The Archon Harbour Folk (1 place, about 100 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 12 people) and Lilmoth and the Murkmire Coast (1 place, about 10 people); 3 places carry no culture in the data. <!-- place:region=nushara-bayou -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Archon
 
-A metropolis, about 600 m across, sited on coast, of The Archon Harbour Folk. In 4E 201 it is inhabited, held by a harbour authority and merchant council in the East Empire Company's old buildings, with the Xeech-Leel's customs officers alongside; 322 people live there. It is not built yet. <!-- place:archon -->
+A metropolis, about 600 m across, sited on coast, of The Archon Harbour Folk. In 4E 201 it is inhabited, held by a harbour authority and merchant council in the East Empire Company's old buildings, with the Xeech-Leel's customs officers alongside; 100 people live there. It is not built yet. <!-- place:archon -->
 
 A major port city on the eastern coast, marsh to the north and beaches to the south, beside an estuary that leads inland. It is the province's principal legal port and the south-east end of the Archon, Lilmoth, Soulrest and Tear trade line. Anyone arriving by sea or by the bayou channels passes through its harbour. <!-- place_note:archon/overview --> The harbour authority works from the old Company wharves, bonded sheds and warehouses, which still stand and which nobody owns by right. The Archwardens' customs officers keep a post on the quay beside it. <!-- place_note:archon/present --> About four in five are Argonians, with a sizeable Dunmer minority from Tear a short sail away, a few Imperials and Khajiit and a floating population of sailors. Pilots, wharfingers, ferrymen and the merchant council hold the real authority. <!-- place_note:archon/people --> Founded as an Ayleid town by the Barsaebic exiles, on ground held earlier by the Lilmothiit and the Cantemiric Velothi. Its coast was full of pirates in the late First Era until General Lucinia Falco chartered them with letters of marque. The East Empire Company ran its wharves until the secession, and the Shadowscales kept a school here that closed in 4E 187. Umbriel in 4E 48 never reached it. <!-- place_note:archon/history -->
 
@@ -58,9 +58,9 @@ It is to be built from Baan Malur in Journey to Baan Malur.esp (a city: 4979 bui
 
 ### Fort Swiftmoth
 
-A keep, about 120 m across, sited on inland, whose culture the data does not say. In 4E 201 it is abandoned, held by no one holds it; Aroxhu families shelter in its upper floor and smugglers cache goods in its lower hall; 3 people live there. It is not built yet. <!-- place:fort-swiftmoth -->
+A keep, about 120 m across, sited on inland, whose culture the data does not say. In 4E 201 it is abandoned, held by no one holds it; Aroxhu families shelter in its upper floor and smugglers cache goods in its lower hall; nobody lives there. It is not built yet. <!-- place:fort-swiftmoth -->
 
-A stone keep outside the Archwardens' garrison network, on firm ground on the road inland from Archon. <!-- place_note:fort-swiftmoth/overview --> The fort is unheld. Part of the roof is gone, and the upper floor is dry enough to sleep on. Fort Reedmoth keeps a garrison; this keep has none. <!-- place_note:fort-swiftmoth/present --> No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache and an old ex-privateer keeps a room as his home. <!-- place_note:fort-swiftmoth/people --> Built by the Legion as a road fort in the '-moth' manner. The Legion left at the secession, 4E 5-10 and no one has held the keep since. <!-- place_note:fort-swiftmoth/history -->
+A stone keep outside the Archwardens' garrison network, on firm ground on the road inland from Archon. <!-- place_note:fort-swiftmoth/overview --> The fort is unheld. Part of the roof is gone, and the upper floor is dry enough to sleep on. Fort Reedmoth keeps a garrison; this keep has none. <!-- place_note:fort-swiftmoth/present --> No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache, and nobody lives here. <!-- place_note:fort-swiftmoth/people --> Built by the Legion as a road fort in the '-moth' manner. The Legion left at the secession, 4E 5-10 and no one has held the keep since. <!-- place_note:fort-swiftmoth/history -->
 
 A square stone keep with a broken stair-tower, green with moss and vine, on a low rise in the reeds with a paving fragment at the gate. <!-- place_note:fort-swiftmoth/look --> It makes nothing. The stores of the dead garrison, a few rusted Imperial arms and a smugglers' cache are what draw people. <!-- place_note:fort-swiftmoth/economy --> Imperial forts carry no Hist; a bare stone shrine to the Nine on the ground floor has long gone to moss. <!-- place_note:fort-swiftmoth/faith -->
 
@@ -94,7 +94,7 @@ It is to be built from Redeyn Ancestral Tomb in Journey to Baan Malur.esp (a rui
 
 ### Badal
 
-A village, about 120 m across, sited on lakeshore, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by a council of village elders answering to the mound confederacy of Aroxhu; 10 people live there. It is not built yet. <!-- place:badal -->
+A village, about 120 m across, sited on lakeshore, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by a council of village elders answering to the mound confederacy of Aroxhu; 12 people live there. It is not built yet. <!-- place:badal -->
 
 A village of the Clay-Mound people at the north edge of the Nushara Bayou, where the east road meets the Okuwun-Rahei clay country. <!-- place_note:badal/overview --> About twelve households farm the mound slopes, fire pots and dye cloth; a council of elders speaks to the Aroxhu elders and to Three Waters traders. <!-- place_note:badal/present --> Oxhu-Teeleel Argonians, with Three Waters traders and Archon dye-buyers as visitors. <!-- place_note:badal/people --> Settled by mound-builders from the confederacy of Aroxhu, who found the clay banks of the inlet; the village's mounds lift it out of the wet ground. <!-- place_note:badal/history -->
 
@@ -128,45 +128,9 @@ The nearest stop is the boat stop at Archon, 660 m away across the marsh on foot
 
 It is to be built from Dunnashammipuri in Journey to Baan Malur.esp (a town: 433 buildings, 1 interior, 10 residents, 3 hostile, about 5 m across). The source reads: "Dunnashammipuri: a town built in daedric and nordic style with shrine, ruin, camp pieces. 10 people live there, 3 hostile. 1 interiors (Dunnashammipuri). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:oju/0; source_place:journeytobaanmalur.cluster.dunnashammipuri.-24.9; place_source:oju/1; place_source:oju/2; place_source:oju/3 -->
 
-### Siluo
-
-A hamlet, about 80 m across, sited on swamp, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 5 people live there. It is not built yet. <!-- place:siluo -->
-
-A small hamlet on a ridge of firm ground in the reed beds south of Inoio, off the road and reached by a walkway of poles. <!-- place_note:siluo/overview --> Six households cut, dry and bundle reed and trap eels and crabs. The hamlet is quiet and few outsiders come. <!-- place_note:siluo/present --> Three Waters Argonians; a reed-master leads and answers to Uluo's elder. <!-- place_note:siluo/people --> Settled by Three Waters reed-cutters who followed the best beds; the houses stand on the one firm hummock nearest them. <!-- place_note:siluo/history -->
-
-Low reed-thatch houses, hide tents on cypress platforms raised on posts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water. <!-- place_note:siluo/look --> Thatch, mat-reed and eel traps sold at Uluo; they buy salt, iron hooks and cloth. <!-- place_note:siluo/economy --> Reed-cutters leave the first bundle of each cutting on a stump for the Hist; otherwise they go to Uluo for hatching and burial. <!-- place_note:siluo/faith -->
-
-Built from: Its main source, a hamlet at Solstheim's cell -1,-5 (Journey to Baan Malur), is eighteen Dunmer-style buildings with mine and ship pieces and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts, hide tents and hide fences, which serve as the six houses. Siluo needs no interior. Still to add: the pole walkway, the tall reed racks, the hanging eel traps and the corroded strongbox in the mud. <!-- place_note:siluo/source -->
-
-It promises the player: General goods trader: Reed-cutters sell thatch, mat-reed and eel traps; they buy salt, iron hooks and cloth; Common harvestables: Cut reed and thatch bundles on the drying racks; Fish and clams: Eels and crabs from the trap-lines; Dangerous wildlife: Slaughterfish nesting in the reed beds, and mud-crabs (x3); Lesser treasure: Something metal in the mud of the bed: a corroded strongbox. <!-- place_give:siluo/0; place_give:siluo/1; place_give:siluo/2; place_give:siluo/3; place_give:siluo/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Slaughterfish and crocodiles in the reeds; no bandits. <!-- place_note:siluo/dangers --> <!-- place_law:siluo; place_danger:siluo -->
-
-The nearest stop is the boat stop at Truowa, 790 m away across the marsh on foot. Roads run from it to Fort Swiftmoth (track, 420 m south-east), Inoio (track, 580 m north-east), Badal (track, 870 m north), Truowa (track, 1.7 km north-west) and Shalaia (track, 2.1 km west). <!-- travel_approach:siluo; road_node:place=siluo -->
-
-It is to be built from DLC2SolstheimWorld -1,-5 in Journey to Baan Malur.esp (a hamlet: 18 buildings, 0 interiors, 5 residents, 0 hostile, about 30 m across). The source reads: "DLC2SolstheimWorld -1,-5: a hamlet built in dunmer style with mine, ship, camp pieces. 5 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and BlackMarsh 4,-4 (hamlet, 11 buildings, 0 interiors). <!-- place_source:siluo/0; source_place:journeytobaanmalur.cluster.dlc2solstheimworld-1-5.-1.-5; place_source:siluo/1; place_source:siluo/2; place_source:siluo/3 -->
-
-### Tapauo
-
-A hamlet, about 80 m across, sited on swamp, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 4 people live there. It is not built yet. <!-- place:tapauo -->
-
-A hamlet of rice-growers between two channels, a half-day's raft north of Uluo. <!-- place_note:tapauo/overview --> Eight households plant, tend and harvest, loading rice onto rafts for Uluo and the Archon market. <!-- place_note:tapauo/present --> Three Waters Argonians; a rice-warden decides when to plant and what the elder is owed. <!-- place_note:tapauo/people --> The tribe's rice grounds are older than the town; Tapauo's founders moved up the channel to find fresh silt. <!-- place_note:tapauo/history -->
-
-Rafts of rice-bed in neat rows beside hide-tent storehouses on cypress platforms raised on posts, with drying racks, sacks and a long landing of poles. <!-- place_note:tapauo/look --> Saltrice, the main food crop of the bayou, with surplus sold to Archon and Lilmoth by raft. <!-- place_note:tapauo/economy --> Planting and harvest are marked by chanting to the Hist; the first sheaf is set on the water. <!-- place_note:tapauo/faith -->
-
-Built from: Its main source, Skjaldur (Northwatch Coast), is a Nordic farm hamlet whose pieces are replaced, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts and hide tents, which serve as the storehouses and the landing. Still to add: the rice beds as rows of placed rafts with saltrice plants, the drying racks, an open thatched cook-stall for the visitors' meals and the hidden grain-raft cache. <!-- place_note:tapauo/source -->
-
-It promises the player: Common harvestables: Saltrice from the floating beds (x3); General goods trader: Sacks of saltrice and reed rope; 750 gold, restocked every 48 hours; Innkeeper or food seller: Rice, fish and shellfish cooked for visitors; buys food; Fish and clams: Fish from the channels between the beds; Dangerous wildlife: Slaughterfish in the channels (x2); Lesser treasure: A hidden grain-raft cache. <!-- place_give:tapauo/0; place_give:tapauo/1; place_give:tapauo/2; place_give:tapauo/3; place_give:tapauo/4; place_give:tapauo/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Slaughterfish and mud-crabs in the channels between the beds; risky outside the hamlet. <!-- place_note:tapauo/dangers --> <!-- place_law:tapauo; place_danger:tapauo -->
-
-The nearest stop is the boat stop at Uluo, 360 m away across the marsh on foot. Roads run from it to Ruined Velothi Shrine of Nyrath-Ven (track, 840 m north-east) and Oju (track, 1.2 km north-east). <!-- travel_approach:tapauo; road_node:place=tapauo -->
-
-It is to be built from Skjaldur in Northwatch Coast.esp (a hamlet: 67 buildings, 0 interiors, 4 residents, 0 hostile, about 95 m across). The source reads: "Skjaldur: a hamlet built in nordic and dunmer style with farm, ship, camp pieces. 4 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:tapauo/0; source_place:northwatchcoast.cluster.skjaldur.-32.30; place_source:tapauo/1; place_source:tapauo/2; place_source:tapauo/3 -->
-
 ### Inoio
 
-A hamlet, about 80 m across, sited on riverbank, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 3 people live there. It is not built yet. <!-- place:inoio -->
+A hamlet, about 80 m across, sited on riverbank, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 8 people live there. It is not built yet. <!-- place:inoio -->
 
 A hamlet at the point where the road from Archon toward the north crosses a wide channel. The raft ferry here is the reason it exists. <!-- place_note:inoio/overview --> Eight or so raft-families run the ferry in turns, tell travellers which bank the slaughterfish keep to and keep a lamp lit for night crossings. <!-- place_note:inoio/present --> Three Waters Argonians; the ferry-master is chosen by the elder at Uluo. Travellers from Archon, Aroxhu and the north pass daily. <!-- place_note:inoio/people --> The hamlet grew around a raft crossing used by Cyrodiilic and Company traders; the Company's road is gone since the secession but the crossing is older than it. The ferry families keep the crossing in their songs. <!-- place_note:inoio/history -->
 
@@ -182,27 +146,9 @@ The nearest stop is the boat stop at Truowa, 930 m away across the marsh on foot
 
 It is to be built from Black Rose in Black Marsh.esm (a hamlet: 8 buildings, 0 interiors, 3 residents, 0 hostile, about 60 m across). The source reads: "Black Rose: a hamlet with ruin pieces. 3 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors) and BlackMarsh 4,-4 (hamlet, 11 buildings, 0 interiors). <!-- place_source:inoio/0; source_place:blackmarsh.cluster.black-rose.30.-17; place_source:inoio/1; place_source:inoio/2; place_source:inoio/3 -->
 
-### Xi-Inou
-
-A hamlet, about 80 m across, sited on riverbank, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 3 people live there. It is not built yet. <!-- place:xi-inou -->
-
-A hamlet on the west bank of the estuary just above Archon, where bayou rafts and harbour boats tie up side by side. <!-- place_note:xi-inou/overview --> Ten people hold the landing under the raft-master's family, sell to passing Archon boatmen and hear all that moves in the estuary. <!-- place_note:xi-inou/present --> Three Waters Argonians, with Archon pilots as regular visitors; one old pilot's widow keeps a lantern house. <!-- place_note:xi-inou/people --> Grew with Archon's trade: the Three Waters wanted a landing to sell from without entering the harbour and paying its customs. <!-- place_note:xi-inou/history -->
-
-Stilt houses on the bank, a long plank landing, lanterns and boats; the hamlet's lights show from the harbour. <!-- place_note:xi-inou/look --> Rice, fish and reed sold on the water and a quiet trade in cargo that never goes through Archon's quay. <!-- place_note:xi-inou/economy --> Sailors drive a scrap of net into a mud post on the bank for the drowned of the estuary, as kin drive grave-stakes. <!-- place_note:xi-inou/faith -->
-
-Built from: Its main source, Millcrest (Nyhus), is a Nordic farm hamlet of two farmhouse interiors, so it does not fit. Keeba Hollow (King of the Murkmire) fits better: an Argonian village of nine interiors, huts and an elder's hut, with lighthouse and dock pieces, where one hut serves as the pilot's widow's lantern house with its bunk. Ree-An-Wo (King of the Murkmire) supplies cypress platforms on posts on the bank, and Seekhat Yol's thatched houses (King of the Murkmire) are added on them. Still to add: the plank landing, the mud post with its net scrap and the smuggler's cache under the landing. <!-- place_note:xi-inou/source -->
-
-It promises the player: General goods trader: reed, rice and fish sold from the landing; small stock, 750 gold at start; Innkeeper or food seller: the pilot's widow's lantern house: food, drink and a bed rented by the night; Rented room: a bunk above the lantern house; Fish and clams: estuary fishing from the plank landing; Hostile occupants: drunk sailors and smugglers at the night quay (x3), 120 m south-west at the night quay's far end, below the landing on the channel; Lesser treasure: a smuggler's cache under the landing. <!-- place_give:xi-inou/0; place_give:xi-inou/1; place_give:xi-inou/2; place_give:xi-inou/3; place_give:xi-inou/4; place_give:xi-inou/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Slaughterfish run the channel below the landing. Drunk sailors and smugglers work the quay by night. <!-- place_note:xi-inou/dangers --> <!-- place_law:xi-inou; place_danger:xi-inou -->
-
-The nearest stop is the boat stop at Archon, 520 m away by road. Roads run from it to Archon (track, 520 m east) and Fort Reedmoth (track, 1.1 km south). <!-- travel_approach:xi-inou; road_node:place=xi-inou -->
-
-It is to be built from Millcrest in Nyhus.esp (a hamlet: 36 buildings, 2 interiors, 3 residents, 2 hostile, about 62 m across). The source reads: "Millcrest: a hamlet built in nordic and dunmer style with farm, cave, mine pieces. 3 people live there, 2 hostile. 2 interiors (Lisbeta and Varro's Farm, Arvella's Farm). By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:xi-inou/0; source_place:nyhus.cluster.millcrest.57.-37; place_source:xi-inou/1; place_source:xi-inou/2; place_source:xi-inou/3 -->
-
 ### Shalaia
 
-A hamlet, about 80 m across, sited on coast, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 1 person lives there. It is not built yet. <!-- place:shalaia -->
+A hamlet, about 80 m across, sited on coast, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 8 people live there. It is not built yet. <!-- place:shalaia -->
 
 A coastal hamlet at the far west of the Nushara waters, nearest to Truowa and the fort that watches the water-road. <!-- place_note:shalaia/overview --> Eight raft-families net, gather shellfish and sell to Truowa's lighters; they pay the garrison at Fort Gysilla the toll and nothing more. <!-- place_note:shalaia/present --> Three Waters Argonians with some Truowa-bound rice traders; the families are kin to Tapauo and Uluo. <!-- place_note:shalaia/people --> Founded by Three Waters families seeking clams and cockles on the western mudflats, then drawn into Truowa's trade when the city grew. <!-- place_note:shalaia/history -->
 
@@ -217,6 +163,60 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Uluo (1.2 km, 20 gold, 1 hour). Roads run from it to Truowa (track, 1.1 km north), Badal (track, 1.7 km north-east), Inoio (track, 1.9 km east), Siluo (track, 2.1 km east) and Fort Swiftmoth (track, 2.4 km east). <!-- travel_stop:shalaia/boat; travel_route:shalaia/uluo/boat; road_node:place=shalaia -->
 
 It is to be built from Hunter's Shack in Wyrmstooth.esp (a hamlet: 27 buildings, 0 interiors, 1 resident, 1 hostile, about 10 m across). The source reads: "Hunter's Shack: a hamlet with mine, farm, camp pieces. 1 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:shalaia/0; source_place:wyrmstooth.cluster.hunter-s-shack.6.-3; place_source:shalaia/1; place_source:shalaia/2; place_source:shalaia/3 -->
+
+### Tapauo
+
+A hamlet, about 80 m across, sited on swamp, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 8 people live there. It is not built yet. <!-- place:tapauo -->
+
+A hamlet of rice-growers between two channels, a half-day's raft north of Uluo. <!-- place_note:tapauo/overview --> Eight households plant, tend and harvest, loading rice onto rafts for Uluo and the Archon market. <!-- place_note:tapauo/present --> Three Waters Argonians; a rice-warden decides when to plant and what the elder is owed. <!-- place_note:tapauo/people --> The tribe's rice grounds are older than the town; Tapauo's founders moved up the channel to find fresh silt. <!-- place_note:tapauo/history -->
+
+Rafts of rice-bed in neat rows beside hide-tent storehouses on cypress platforms raised on posts, with drying racks, sacks and a long landing of poles. <!-- place_note:tapauo/look --> Saltrice, the main food crop of the bayou, with surplus sold to Archon and Lilmoth by raft. <!-- place_note:tapauo/economy --> Planting and harvest are marked by chanting to the Hist; the first sheaf is set on the water. <!-- place_note:tapauo/faith -->
+
+Built from: Its main source, Skjaldur (Northwatch Coast), is a Nordic farm hamlet whose pieces are replaced, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts and hide tents, which serve as the storehouses and the landing. Still to add: the rice beds as rows of placed rafts with saltrice plants, the drying racks, an open thatched cook-stall for the visitors' meals and the hidden grain-raft cache. <!-- place_note:tapauo/source -->
+
+It promises the player: Common harvestables: Saltrice from the floating beds (x3); General goods trader: Sacks of saltrice and reed rope; 750 gold, restocked every 48 hours; Innkeeper or food seller: Rice, fish and shellfish cooked for visitors; buys food; Fish and clams: Fish from the channels between the beds; Dangerous wildlife: Slaughterfish in the channels (x2); Lesser treasure: A hidden grain-raft cache. <!-- place_give:tapauo/0; place_give:tapauo/1; place_give:tapauo/2; place_give:tapauo/3; place_give:tapauo/4; place_give:tapauo/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Slaughterfish and mud-crabs in the channels between the beds; risky outside the hamlet. <!-- place_note:tapauo/dangers --> <!-- place_law:tapauo; place_danger:tapauo -->
+
+The nearest stop is the boat stop at Uluo, 360 m away across the marsh on foot. Roads run from it to Ruined Velothi Shrine of Nyrath-Ven (track, 840 m north-east) and Oju (track, 1.2 km north-east). <!-- travel_approach:tapauo; road_node:place=tapauo -->
+
+It is to be built from Skjaldur in Northwatch Coast.esp (a hamlet: 67 buildings, 0 interiors, 4 residents, 0 hostile, about 95 m across). The source reads: "Skjaldur: a hamlet built in nordic and dunmer style with farm, ship, camp pieces. 4 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:tapauo/0; source_place:northwatchcoast.cluster.skjaldur.-32.30; place_source:tapauo/1; place_source:tapauo/2; place_source:tapauo/3 -->
+
+### Xi-Inou
+
+A hamlet, about 80 m across, sited on riverbank, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 8 people live there. It is not built yet. <!-- place:xi-inou -->
+
+A hamlet on the west bank of the estuary just above Archon, where bayou rafts and harbour boats tie up side by side. <!-- place_note:xi-inou/overview --> Eight people hold the landing under the raft-master's family, sell to passing Archon boatmen and hear all that moves in the estuary. <!-- place_note:xi-inou/present --> Three Waters Argonians, with Archon pilots as regular visitors; one old pilot's widow keeps a lantern house. <!-- place_note:xi-inou/people --> Grew with Archon's trade: the Three Waters wanted a landing to sell from without entering the harbour and paying its customs. <!-- place_note:xi-inou/history -->
+
+Stilt houses on the bank, a long plank landing, lanterns and boats; the hamlet's lights show from the harbour. <!-- place_note:xi-inou/look --> Rice, fish and reed sold on the water and a quiet trade in cargo that never goes through Archon's quay. <!-- place_note:xi-inou/economy --> Sailors drive a scrap of net into a mud post on the bank for the drowned of the estuary, as kin drive grave-stakes. <!-- place_note:xi-inou/faith -->
+
+Built from: Its main source, Millcrest (Nyhus), is a Nordic farm hamlet of two farmhouse interiors, so it does not fit. Keeba Hollow (King of the Murkmire) fits better: an Argonian village of nine interiors, huts and an elder's hut, with lighthouse and dock pieces, where one hut serves as the pilot's widow's lantern house with its bunk. Ree-An-Wo (King of the Murkmire) supplies cypress platforms on posts on the bank, and Seekhat Yol's thatched houses (King of the Murkmire) are added on them. Still to add: the plank landing, the mud post with its net scrap and the smuggler's cache under the landing. <!-- place_note:xi-inou/source -->
+
+It promises the player: General goods trader: reed, rice and fish sold from the landing; small stock, 750 gold at start; Innkeeper or food seller: the pilot's widow's lantern house: food, drink and a bed rented by the night; Rented room: a bunk above the lantern house; Fish and clams: estuary fishing from the plank landing; Hostile occupants: drunk sailors and smugglers at the night quay (x3), 120 m south-west at the night quay's far end, below the landing on the channel; Lesser treasure: a smuggler's cache under the landing. <!-- place_give:xi-inou/0; place_give:xi-inou/1; place_give:xi-inou/2; place_give:xi-inou/3; place_give:xi-inou/4; place_give:xi-inou/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Slaughterfish run the channel below the landing. Drunk sailors and smugglers work the quay by night. <!-- place_note:xi-inou/dangers --> <!-- place_law:xi-inou; place_danger:xi-inou -->
+
+The nearest stop is the boat stop at Archon, 520 m away by road. Roads run from it to Archon (track, 520 m east) and Fort Reedmoth (track, 1.1 km south). <!-- travel_approach:xi-inou; road_node:place=xi-inou -->
+
+It is to be built from Millcrest in Nyhus.esp (a hamlet: 36 buildings, 2 interiors, 3 residents, 2 hostile, about 62 m across). The source reads: "Millcrest: a hamlet built in nordic and dunmer style with farm, cave, mine pieces. 3 people live there, 2 hostile. 2 interiors (Lisbeta and Varro's Farm, Arvella's Farm). By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:xi-inou/0; source_place:nyhus.cluster.millcrest.57.-37; place_source:xi-inou/1; place_source:xi-inou/2; place_source:xi-inou/3 -->
+
+### Siluo
+
+A hamlet, about 80 m across, sited on swamp, of The Three Waters Tribe. In 4E 201 it is inhabited, held by a Three Waters raft-master family under the elder of Uluo; 6 people live there. It is not built yet. <!-- place:siluo -->
+
+A small hamlet on a ridge of firm ground in the reed beds south of Inoio, off the road and reached by a walkway of poles. <!-- place_note:siluo/overview --> Six households cut, dry and bundle reed and trap eels and crabs. The hamlet is quiet and few outsiders come. <!-- place_note:siluo/present --> Three Waters Argonians; a reed-master leads and answers to Uluo's elder. <!-- place_note:siluo/people --> Settled by Three Waters reed-cutters who followed the best beds; the houses stand on the one firm hummock nearest them. <!-- place_note:siluo/history -->
+
+Low reed-thatch houses, hide tents on cypress platforms raised on posts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water. <!-- place_note:siluo/look --> Thatch, mat-reed and eel traps sold at Uluo; they buy salt, iron hooks and cloth. <!-- place_note:siluo/economy --> Reed-cutters leave the first bundle of each cutting on a stump for the Hist; otherwise they go to Uluo for hatching and burial. <!-- place_note:siluo/faith -->
+
+Built from: Its main source, a hamlet at Solstheim's cell -1,-5 (Journey to Baan Malur), is eighteen Dunmer-style buildings with mine and ship pieces and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of thirty-one buildings with no interior, with cypress walkways and platforms on posts, hide tents and hide fences, which serve as the six houses. Siluo needs no interior. Still to add: the pole walkway, the tall reed racks, the hanging eel traps and the corroded strongbox in the mud. <!-- place_note:siluo/source -->
+
+It promises the player: General goods trader: Reed-cutters sell thatch, mat-reed and eel traps; they buy salt, iron hooks and cloth; Common harvestables: Cut reed and thatch bundles on the drying racks; Fish and clams: Eels and crabs from the trap-lines; Dangerous wildlife: Slaughterfish nesting in the reed beds, and mud-crabs (x3); Lesser treasure: Something metal in the mud of the bed: a corroded strongbox. <!-- place_give:siluo/0; place_give:siluo/1; place_give:siluo/2; place_give:siluo/3; place_give:siluo/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Slaughterfish and crocodiles in the reeds; no bandits. <!-- place_note:siluo/dangers --> <!-- place_law:siluo; place_danger:siluo -->
+
+The nearest stop is the boat stop at Truowa, 790 m away across the marsh on foot. Roads run from it to Fort Swiftmoth (track, 420 m south-east), Inoio (track, 580 m north-east), Badal (track, 870 m north), Truowa (track, 1.7 km north-west) and Shalaia (track, 2.1 km west). <!-- travel_approach:siluo; road_node:place=siluo -->
+
+It is to be built from DLC2SolstheimWorld -1,-5 in Journey to Baan Malur.esp (a hamlet: 18 buildings, 0 interiors, 5 residents, 0 hostile, about 30 m across). The source reads: "DLC2SolstheimWorld -1,-5: a hamlet built in dunmer style with mine, ship, camp pieces. 5 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and BlackMarsh 4,-4 (hamlet, 11 buildings, 0 interiors). <!-- place_source:siluo/0; source_place:journeytobaanmalur.cluster.dlc2solstheimworld-1-5.-1.-5; place_source:siluo/1; place_source:siluo/2; place_source:siluo/3 -->
 
 ### Wreck of the Tidewarden
 
@@ -261,7 +261,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A smugglers' cache waiting to be moved. <!-- place_note:fort-swiftmoth/hooks -->
 - A locked strongroom off the lower hall. <!-- place_note:fort-swiftmoth/hooks -->
 - A faded Imperial banner still hangs in the upper hall. <!-- place_note:fort-swiftmoth/hooks -->
-- Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache and an old ex-privateer keeps a room as his home. <!-- place_note:fort-swiftmoth/people -->
+- Aroxhu families rest in the upper floor on their road, smugglers use the lower hall as a cache, and nobody lives here. <!-- place_note:fort-swiftmoth/people -->
 - The stores of the dead garrison, a few rusted Imperial arms and a smugglers' cache are what draw people. <!-- place_note:fort-swiftmoth/economy -->
 
 **Ruined Velothi Shrine of Nyrath-Ven.**
@@ -280,29 +280,29 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A boat found empty at the platforms' edge with its crew gone; a boatman whose family owes both Archon and Lilmoth kin; goods that were not meant to be on the ferry. <!-- place_note:oju/hooks -->
 - A post in the channel carved for the drowned; hatching families walk the long way to Lilmoth's tree, the third Hist. <!-- place_note:oju/faith -->
 
-**Siluo.**
-
-- A cutter who found something metal in the mud of the bed; a trapper's request to clear a nest of slaughterfish. <!-- place_note:siluo/hooks -->
-
-**Tapauo.**
-
-- The rice-warden distrusts seed bought from an outsider and wants the seller found. <!-- place_note:tapauo/hooks -->
-- Two families wager over who may plant the last bed. <!-- place_note:tapauo/hooks -->
-
 **Inoio.**
 
 - Travellers who cannot pay want an escort across the slaughterfish water. <!-- place_note:inoio/hooks -->
 - The ferryman knows who crossed unseen last night. <!-- place_note:inoio/hooks -->
 - A raft-master bets that nobody can swim the channel. <!-- place_note:inoio/hooks -->
 
+**Shalaia.**
+
+- A trader needing safe passage between the fort and Truowa; a shell midden older than the hamlet with Cantemiric Velothi beads in it, from before the Flu. <!-- place_note:shalaia/hooks -->
+
+**Tapauo.**
+
+- The rice-warden distrusts seed bought from an outsider and wants the seller found. <!-- place_note:tapauo/hooks -->
+- Two families wager over who may plant the last bed. <!-- place_note:tapauo/hooks -->
+
 **Xi-Inou.**
 
 - A boat to hire into the bayou; a pilot's family owes a raft-master's family a debt; a raft that left for Archon and did not arrive. <!-- place_note:xi-inou/hooks -->
 - Sailors drive a scrap of net into a mud post on the bank for the drowned of the estuary, as kin drive grave-stakes. <!-- place_note:xi-inou/faith -->
 
-**Shalaia.**
+**Siluo.**
 
-- A trader needing safe passage between the fort and Truowa; a shell midden older than the hamlet with Cantemiric Velothi beads in it, from before the Flu. <!-- place_note:shalaia/hooks -->
+- A cutter who found something metal in the mud of the bed; a trapper's request to clear a nest of slaughterfish. <!-- place_note:siluo/hooks -->
 
 **Wreck of the Tidewarden.**
 

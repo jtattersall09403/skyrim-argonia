@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: undergrowth (17%), jungle tree (12
 
 Mostly Stone-Sleeper Argonians, with Root-Folk hunters, Warden garrisons and field-owners' crews near Thorn and Dunmer traders on the road. <!-- region_note:arnesian-jungle/people -->
 
-The places here belong to The Warden Marches (4 places, about 36 people), The Stone-Sleepers of Tsonac (Tsona-Kaleel) (2 places, about 123 people) and The Root-Folk of Helstrom (2 places, about 14 people); 2 places carry no culture in the data. <!-- place:region=arnesian-jungle -->
+The places here belong to The Warden Marches (4 places, about 88 people), The Stone-Sleepers of Tsonac (Tsona-Kaleel) (2 places, about 48 people) and The Root-Folk of Helstrom (2 places, about 14 people); 2 places carry no culture in the data. <!-- place:region=arnesian-jungle -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Thorn (also called Jewel of the East)
 
-A large city, about 440 m across, sited on coast, of The Warden Marches. In 4E 201 it is inhabited, held by Vicecanons and the saltrice field-owners; 25 people live there. It is not built yet. <!-- place:thorn -->
+A large city, about 440 m across, sited on coast, of The Warden Marches. In 4E 201 it is inhabited, held by Vicecanons and the saltrice field-owners; 70 people live there. It is not built yet. <!-- place:thorn -->
 
 Thorn is one of the eight major cities of Black Marsh, in the grassland of Thornmarsh in the north-east, with Morrowind and the road to Tear to its north. Its epithet is the Jewel of the East: as deadly as it is beautiful, a city where vagabonds eye purses and the guards turn a blind eye. <!-- place_note:thorn/overview --> In 4E 201 Thorn is intact and the most prosperous place in the north-east. With Dres gone the saltrice fields passed to whoever stood in them: freed labourers' descendants and the ex-Archein families who managed them. Who holds title to which field is the city's standing quarrel, settled by Vicecanons. <!-- place_note:thorn/present --> About three in four are Argonian, with a large Dunmer minority of mixed families whose ancestors stood on both sides of the coffles and a few Imperial-descended traders. The people who matter are the Vicecanons (one to three, chosen locally), the field-holding families, the saltrice gangs and the smugglers who work the quays. <!-- place_note:thorn/people --> The Barsaebic Ayleids founded it. House Dres raided it in the mid-First Era and rose to a Great House on the slaves taken; Dres ruled it in the Second Era until Heita-Meen, once a slave in its saltrice fields, killed Councilor Glathis Dres in 2E 572. In the Third Era it was a city-state under King Tibus and rival to Archon, and the Arnesian War of 3E 396 was fought on its border. <!-- place_note:thorn/history -->
 
@@ -58,7 +58,7 @@ It is to be built from Thorn in Black Marsh North.esp (a city: 629 buildings, 1 
 
 ### Tsonac
 
-A small city, about 320 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac, ruled by a council of elders and a tree-minder; 120 people live there. It is not built yet. <!-- place:tsonac -->
+A small city, about 320 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac, ruled by a council of elders and a tree-minder; 40 people live there. It is not built yet. <!-- place:tsonac -->
 
 The one city of the Stone-Sleepers (Tsona-Kaleel), who, unusually among Argonians, build in stone. Like the Xit-Xaht of Shadowfen they kept the old craft; unlike them they never raided for labour, and their Hist sleeps rather than raves. <!-- place_note:tsonac/overview --> Tsonac is peaceful, dry and proud and run by elders and a tree-minder. It is the Stone-Sleepers' one city and watches the road to Thorn. <!-- place_note:tsonac/present --> About forty named townsfolk: masons, timber-cutters, hunters, the tree-minder who hears the Hist's dreams, its pupils and buyers from Thorn who lodge by the quay. <!-- place_note:tsonac/people --> Barsaebic Ayleids and Cantemiric Velothi once held this country; the Argonians built over their foundations after the Flu emptied it. The name echoes Tsono-Xuhil, the mad Hist of the Xit-Xaht that its neighbours put to sleep and the grave-singers say Tsonac's tree is a sapling of that line, asleep since it was planted. <!-- place_note:tsonac/history -->
 
@@ -76,7 +76,7 @@ It is to be built from Windhelm in Skyrim.esm (a city: 5117 buildings, 27 interi
 
 ### Fort Thornmoth
 
-A fort, about 120 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by The Archwardens' garrison, staffed by ex-Archein families; 3 people live there. It is not built yet. <!-- place:fort-thornmoth -->
+A fort, about 120 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by The Archwardens' garrison, staffed by ex-Archein families; 10 people live there. It is not built yet. <!-- place:fort-thornmoth -->
 
 A fort beside Thorn on the western approach, named in the Legion's '-moth' style. In 4E 201 it is a toll station, river watch and the south end of the frontier screen facing Morrowind. It stands a short way west of the town. <!-- place_note:fort-thornmoth/overview --> A dozen at most man it: a watch captain, gate guards who take the toll and a few who keep the store room and the watch boat. The captain still drills them in the Legion's way, a habit the garrison kept from Imperial days. <!-- place_note:fort-thornmoth/present --> Argonian garrison families of old Archein lines, led by a captain who answers to the Archwardens and dines with Thorn's Vicecanons. A Dunmer quartermaster keeps the store, and Dunmer drivers wait at the gate with their carts. <!-- place_note:fort-thornmoth/people --> The Empire built it to protect Thorn and its saltrice trade, and it kept an Imperial garrison until the Legion left at the secession (4E 5-10). An ex-Archein family took the keys then and has held it in the Archwardens' name since. <!-- place_note:fort-thornmoth/history -->
 
@@ -94,7 +94,7 @@ It is to be built from The Perilous Pass in CavesofMorrowind.esp (a fort: 3650 b
 
 ### Tselan
 
-A hamlet, about 80 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac; 3 people live there. It is not built yet. <!-- place:tselan -->
+A hamlet, about 80 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac; 8 people live there. It is not built yet. <!-- place:tselan -->
 
 A Stone-Sleeper hamlet on a river that runs down to the bay, the westernmost of their quarry hamlets. Its people cut stone from the hill above and raft it to Tsonac. <!-- place_note:tselan/overview --> Eight Argonians cut stone from a quarry on the hill above and send it down by raft. <!-- place_note:tselan/present --> Stone-Sleeper families: a quarry gang of four and an elder who learned the Hist's dreams from Tsonac's tree-minder in her youth and still walks there to hear them. <!-- place_note:tselan/people --> Founded over an old foundation as the Stone-Sleepers spread west along the river. <!-- place_note:tselan/history -->
 
@@ -186,7 +186,7 @@ It is to be built from Stendarrs Beacon in Skyrim.esm (a tower: 26 buildings, 0 
 
 A logging camp, about 50 m across, sited on riverbank, of The Warden Marches. In 4E 201 it is inhabited, held by Field-owners of Thorn, worked by hired Argonian crews; 4 people live there. It is not built yet. <!-- place:logging-camp-25-m63 -->
 
-A timber camp on the inlet's southern shore, west of Thorn, named by its crews for the raw bank the water has cut beside the landing. It is the nearest timber to Thorn that the field-holders own outright. <!-- place_note:logging-camp-25-m63/overview --> A handful of crews cut and raft timber for Thorn's builders and for the garrison at Fort Thornmoth. <!-- place_note:logging-camp-25-m63/present --> Five or six: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own villages between fellings. <!-- place_note:logging-camp-25-m63/people --> It grew out of the Archein concession timber camps that fed Thorn's building; the field-owners kept it when the Archeins fell. <!-- place_note:logging-camp-25-m63/history -->
+A timber camp on the inlet's southern shore, west of Thorn, named by its crews for the raw bank the water has cut beside the landing. It is the nearest timber to Thorn that the field-holders own outright. <!-- place_note:logging-camp-25-m63/overview --> A handful of crews cut and raft timber for Thorn's builders and for the garrison at Fort Thornmoth. <!-- place_note:logging-camp-25-m63/present --> Four: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own villages between fellings. <!-- place_note:logging-camp-25-m63/people --> It grew out of the Archein concession timber camps that fed Thorn's building; the field-owners kept it when the Archeins fell. <!-- place_note:logging-camp-25-m63/history -->
 
 A bunkhouse and plank-drying sheds on pilings above a raw earth bank, log rafts moored along the water, stumps and sawdust round a saw-pit. <!-- place_note:logging-camp-25-m63/look --> Logs and sawn planks floated to Thorn; the loggers buy food and rope from Guxal. <!-- place_note:logging-camp-25-m63/economy --> The Argonian sawyers press a smear of sap from each felled trunk onto the camp's oldest stump, asking the Hist pardon for the cut; the Dunmer among them laugh at it and do the same. <!-- place_note:logging-camp-25-m63/faith -->
 

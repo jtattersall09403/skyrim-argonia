@@ -18,7 +18,7 @@ What grows commonest, by share of its plants: kelp (23%), seabed rock (17%), cor
 
 Argonian fishers, Khajiit coasters and a few Bosmer seafarers work the sea's boats and landings along the coast. <!-- region_note:sea-of-mists/people -->
 
-The places here belong to The Warden Marches (1 place, about 2 people); 1 place carries no culture in the data. <!-- place:region=sea-of-mists -->
+The places here belong to The Warden Marches (1 place, about 4 people); 1 place carries no culture in the data. <!-- place:region=sea-of-mists -->
 
 ## Its history, faith, trade and the present
 
@@ -38,7 +38,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Mistfall Light
 
-A lighthouse, about 50 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden light-keeper family; 2 people live there. It is not built yet. <!-- place:lighthouse-9-m114 -->
+A lighthouse, about 50 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden light-keeper family; 4 people live there. It is not built yet. <!-- place:lighthouse-9-m114 -->
 
 A lighthouse on the south coast at the edge of the Sea of Mists. <!-- place_note:lighthouse-9-m114/overview --> A keeper family lives in the mud house at the base and tends the lamp each night. <!-- place_note:lighthouse-9-m114/present --> A keeper's family of four lives at the light, parents and two children who help with the lamp. <!-- place_note:lighthouse-9-m114/people --> The light was first built by the Empire and was rebuilt by the Archwardens after the old tower fell. <!-- place_note:lighthouse-9-m114/history -->
 

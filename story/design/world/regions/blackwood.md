@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (14%), bald cypress (11%),
 
 Lukiul, Naka-Desh and Hutan-Tzel, with Nibenese-descended families. <!-- region_note:blackwood/people -->
 
-The places here belong to The Hutan-Tzel (2 places, about 14 people) and The Gideon Frontier (1 place, about 7 people); 4 places carry no culture in the data. <!-- place:region=blackwood -->
+The places here belong to The Hutan-Tzel (2 places, about 12 people) and The Gideon Frontier (1 place, about 9 people); 4 places carry no culture in the data. <!-- place:region=blackwood -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Umpholo
 
-A village, about 120 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a small river village of Lukiul and Naka-Desh families; nobody rules it; 7 people live there. It is not built yet. <!-- place:umpholo -->
+A village, about 120 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a small river village of Lukiul and Naka-Desh families; nobody rules it; 9 people live there. It is not built yet. <!-- place:umpholo -->
 
 Umpholo is the site of a Temple of Mara built about 3E 378. The missionaries died of swamp rot within a month and the library was picked clean by about 3E 399. The story is told in The Argonian Account, Book 4. The site lies in the far west. <!-- place_note:umpholo/overview --> A hamlet of river Argonians living in and around the stripped stone chapel, which the swamp has been overgrowing for two centuries. A fish-and-reed trade with Slough Point. <!-- place_note:umpholo/present --> Lukiul and Naka-Desh Argonians of the Blackwood frontier; Agaceph come now and then to trade. <!-- place_note:umpholo/people --> The Maran mission's temple was built about 3E 378 and abandoned within a month; the Agaceph looted its books by about 3E 399. <!-- place_note:umpholo/history -->
 
@@ -58,7 +58,7 @@ It is to be built from Dres village in Black Marsh North.esp (a village: 14 buil
 
 ### Hutan-Aru
 
-An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by The Hutan-Tzel under an elder styled naheesh; 12 people live there. It is not built yet. <!-- place:outpost-m15-m73 -->
+An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by The Hutan-Tzel under an elder styled naheesh; 6 people live there. It is not built yet. <!-- place:outpost-m15-m73 -->
 
 Hutan-Aru is a Hutan-Tzel palisade on a river branch in the far west. The spine sets the Hutan-Tzel as river-folk of Blackwood who hold the crossings, and this palisade on the branch is one of their posts; the name is in their style. <!-- place_note:outpost-m15-m73/overview --> A palisade of dark posts surrounds a few hide tents, with a totem carved in runes standing inside. <!-- place_note:outpost-m15-m73/present --> Hutan-Tzel guards live at the outpost under a local naheesh, an elder of the tribe. <!-- place_note:outpost-m15-m73/people --> The Hutan-Tzel hold a chain of river outposts in the far west and have held them for generations; Hutan-Aru is one link. <!-- place_note:outpost-m15-m73/history -->
 
@@ -70,13 +70,13 @@ It promises the player: Hunter buyer: a Hutan-Tzel hunter buying hides and meat;
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. The Hutan-Tzel tell strangers that beasts come for anyone who touches a totem, so travellers keep their hands off the carvings. <!-- place_note:outpost-m15-m73/dangers --> <!-- place_law:outpost-m15-m73; place_danger:outpost-m15-m73 -->
 
-The nearest stop is the coach stop at Slough Point, 580 m away across the marsh on foot. Roads run from it to Umpholo (track, 420 m north-west), Gul-Tej (track, 790 m south-west) and Tzel-Haar (track, 1.4 km south). <!-- travel_approach:outpost-m15-m73; road_node:place=outpost-m15-m73 -->
+The nearest stop is the boat stop at Gul-Tej, 580 m away over water. Roads run from it to Umpholo (track, 420 m north-west), Gul-Tej (track, 790 m south-west) and Tzel-Haar (track, 1.4 km south). <!-- travel_approach:outpost-m15-m73; road_node:place=outpost-m15-m73 -->
 
 It is to be built from Military Camp Falkreath Imperial in Skyrim.esm (a camp military: 6 buildings, 0 interiors, 12 residents, 0 hostile, about 79 m across). The source reads: "Military Camp Falkreath Imperial: a camp military built in imperial style with camp, mine pieces. 12 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m15-m73/0; source_place:skyrim.marker.militarycampfalkreathimperialmapmarker; place_source:outpost-m15-m73/1; place_source:outpost-m15-m73/2; place_source:outpost-m15-m73/3 -->
 
 ### Hutan-Veel
 
-An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by The Hutan-Tzel under an elder styled naheesh; 2 people live there. It is not built yet. <!-- place:outpost-m21-m74 -->
+An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by The Hutan-Tzel under an elder styled naheesh; 6 people live there. It is not built yet. <!-- place:outpost-m21-m74 -->
 
 Hutan-Veel is the Hutan-Tzel post closest to the Cyrodiil border, where the tribe deals with Cyrodiilic traders at its gate rather than let them into the marsh. <!-- place_note:outpost-m21-m74/overview --> A palisade of dark posts holds a rune-carved totem on the Cyrodiil border. <!-- place_note:outpost-m21-m74/present --> Hutan-Tzel guards live at the outpost under the elder styled naheesh. <!-- place_note:outpost-m21-m74/people --> Another link in the Hutan-Tzel chain of river outposts, standing on the far-west edge by the Cyrodiil border. <!-- place_note:outpost-m21-m74/history -->
 

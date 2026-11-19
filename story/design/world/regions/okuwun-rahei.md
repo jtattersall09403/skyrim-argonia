@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (14%), boulder (12%), lily (1
 
 Oxhu-Teeleel clay-mound people (the bulk), Agaceph raft-folk at Icalca, Xibcan and Yina, the mixed crews of the free port at Alten Corimont, Spray-Folk at Seafalls, Sarpa camps, a Root-Folk outpost. <!-- region_note:okuwun-rahei/people -->
 
-The places here belong to The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (8 places, about 162 people), The Spray-Folk of Seafalls (5 places, about 28 people), The Agaceph (3 places, about 8 people) and The Root-Folk of Helstrom (1 place, about 5 people); 5 places carry no culture in the data. <!-- place:region=okuwun-rahei -->
+The places here belong to The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (8 places, about 140 people), The Spray-Folk of Seafalls (5 places, about 26 people), The Agaceph (3 places, about 21 people) and The Root-Folk of Helstrom (1 place, about 4 people); 5 places carry no culture in the data. <!-- place:region=okuwun-rahei -->
 
 ## Its history, faith, trade and the present
 
@@ -40,15 +40,15 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Aroxhu
 
-A small city, about 320 m across, sited on inland, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by the council of village elders of the Oxhu-Teeleel, meeting under the Aroxhu Hist; 55 people live there. It is not built yet. <!-- place:aroxhu -->
+A small city, about 320 m across, sited on inland, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by the council of village elders of the Oxhu-Teeleel, meeting under the Aroxhu Hist; 38 people live there. It is not built yet. <!-- place:aroxhu -->
 
 The seat of the Oxhu-Teeleel confederacy, a mound-town of red clay with a Hist at its centre, nearly forty people, a small city by the standard of the interior. The confederacy was made from many interior tribes whose names outsiders do not know. <!-- place_note:aroxhu/overview --> A busy mound-town: the council meets under the Hist, the potters' kilns burn day and night and the Archwardens must bargain for any road or toll in Oxhu country. <!-- place_note:aroxhu/present --> About thirty-eight Argonians of the Oxhu-Teeleel: a council of seven elders (each from one village, with a speaker chosen yearly), potters, dyers, mound-farmers and boatmen and a few visiting Agaceph traders. <!-- place_note:aroxhu/people --> Raised over generations on a clay ridge above the low ground; it never held a stone wall. The Arorha and Inoja families moved up to its mounds when raiders burned their lowland villages, and it became the confederacy's centre. <!-- place_note:aroxhu/history -->
 
-A hill of terraced red mounds topped with a great gnarled Hist, reed-thatched houses on each terrace, kilns with long streamers of smoke, drying racks of cloth in madder red and ochre yellow and a clay-paved moot-ground at the foot of the tree. <!-- place_note:aroxhu/look --> Pottery, red clay, ochre and madder dye go down the rivers to Archon and Thorn; Aroxhu takes salt, fish, metal tools and coin. The clay trade is the confederacy's wealth, and the Archwardens envy it. <!-- place_note:aroxhu/economy --> The Aroxhu Hist is a young tree grown on the central mound. The elders hold the hatching rite beneath it, and eggs are laid in warm clay-pits at its roots. The dead go into the mounds beneath their houses, with their stories carved on the stake. <!-- place_note:aroxhu/faith -->
+A hill of terraced red mounds topped with a great gnarled Hist, reed-thatched houses on each terrace, kilns with long streamers of smoke, drying racks of cloth in madder red and ochre yellow and a clay-paved moot-ground at the foot of the tree. <!-- place_note:aroxhu/look --> Pottery, red clay, ochre and madder dye go down the waterways to Archon and Thorn; Aroxhu takes salt, fish, metal tools and coin. The clay trade is the confederacy's wealth, and the Archwardens envy it. <!-- place_note:aroxhu/economy --> The Aroxhu Hist is a young tree grown on the central mound. The elders hold the hatching rite beneath it, and eggs are laid in warm clay-pits at its roots. The dead go into the mounds beneath their houses, with their stories carved on the stake. <!-- place_note:aroxhu/faith -->
 
 Built from: Its main source, South of Riverhold (moonpath), is a Nordic and Dwemer city with 135 foes and does not fit. Lilmoth (King of the Murkmire) is the better source: an Argonian and Imperial city by water with 46 interiors, of which a few dozen huts serve the mound-town's houses, Genoag Manor the elders' council hall and the Genoag Plantation Storehouse the potters' market hall, the Imperial stone replaced with mud-brick. Still to add: the clay ridge and its terraces, the kilns and bread oven, the great Hist and its root pool from Black Marsh & Valenwood's Hist pieces, the dye table beside it and the moot-ground. <!-- place_note:aroxhu/source -->
 
-It promises the player: Rootworm stop: the root pool under the great Hist on the mound; General goods trader: pottery, red clay, ochre and madder dye; Clothier: dyed cloth in madder red and ochre yellow; Oven: a clay bread oven beside the potters' kilns; Cooking pot: hearths on the mound terraces (x2); Alchemy lab: a dye-and-sap alchemy table beside the Hist; Skill trainer: Journeyman Alchemy trainer, a dyer who works sap and ochre; Shrine blessing: the Aroxhu Hist's sap shrine: cures disease and gives Fortify Alchemy for eight hours; Free bed: guest mats on the moot-ground terrace (x2); Fish and clams: the river below the mounds. <!-- place_give:aroxhu/0; place_give:aroxhu/1; place_give:aroxhu/2; place_give:aroxhu/3; place_give:aroxhu/4; place_give:aroxhu/5; place_give:aroxhu/6; place_give:aroxhu/7; place_give:aroxhu/8; place_give:aroxhu/9 -->
+It promises the player: Rootworm stop: the root pool of sap under the great Hist on the mound; General goods trader: pottery, red clay, ochre and madder dye; Clothier: dyed cloth in madder red and ochre yellow; Oven: a clay bread oven beside the potters' kilns; Cooking pot: hearths on the mound terraces (x2); Alchemy lab: a dye-and-sap alchemy table beside the Hist; Skill trainer: Journeyman Alchemy trainer, a dyer who works sap and ochre; Shrine blessing: the Aroxhu Hist's sap shrine: cures disease and gives Fortify Alchemy for eight hours; Free bed: guest mats on the moot-ground terrace (x2); Fish and clams: the marsh pools below the mounds. <!-- place_give:aroxhu/0; place_give:aroxhu/1; place_give:aroxhu/2; place_give:aroxhu/3; place_give:aroxhu/4; place_give:aroxhu/5; place_give:aroxhu/6; place_give:aroxhu/7; place_give:aroxhu/8; place_give:aroxhu/9 -->
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. The town is safe; the elders keep a quiet watch of spear-bearers. The road to Inoja is mostly safe, but Sarpa and Paatru bands raid the outlying mounds. <!-- place_note:aroxhu/dangers --> <!-- place_law:aroxhu; place_danger:aroxhu -->
 
@@ -74,27 +74,9 @@ It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with
 
 It is to be built from Murkmire in Black Marsh.esm (a town: 156 buildings, 1 interior, 34 residents, 2 hostile, about 261 m across). The source reads: "Murkmire: a town built in dunmer and nordic style with ship, farm, mine pieces. 34 people live there, 2 hostile. 1 interiors (Ship). By water." Similar sources: Alten Meerhleel (town, 72 buildings, 3 interiors), Nyhus (town, 340 buildings, 10 interiors) and Murkwood (town, 153 buildings, 1 interior). <!-- place_source:yulca/0; source_place:blackmarsh.cluster.murkmire.-23.20; place_source:yulca/1; place_source:yulca/2; place_source:yulca/3 -->
 
-### Seafalls
-
-A village, about 120 m across, sited on coast, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by The Spray-Folk of Seafalls, under their pilot-elder; 18 people live there. It is not built yet. <!-- place:seafalls -->
-
-A coastal village at the falls where a river reaches the Padomaic, the reason cargo changes boats here. It lies north-north-east of Archon and is a falls-and-portage settlement. <!-- place_note:seafalls/overview --> A small, self-contained village. Its pilots take ships into Archon and off the Thorn road. The Archwardens charge the village nothing because no other crew will do the job. <!-- place_note:seafalls/present --> About fourteen Argonians of the Spray-Folk: pilots, portage-men and net-menders. The pilot-elder, an old woman who has taken a hundred ships through the surf, is the village's voice. <!-- place_note:seafalls/people --> The Spray-Folk came here from the Archon shore, beyond any Hist tree. Under the East Empire Company they ran the portage for Company boats. Since the secession the portage is theirs alone. <!-- place_note:seafalls/history -->
-
-White falls dropping into a sea-pool, stilt houses and nest-platforms on the cliff and shoals, rope-bridges over the spray, salt-crusted decks, the lighthouse beyond the point, gulls and surf. <!-- place_note:seafalls/look --> The portage, which charges cargo-carriers by weight; piloting; pearl-shell and sea-salt; and driftwood and wreck-salvage. Seafalls is the transfer point on the north-east link between Thorn, Branchmont and Archon. <!-- place_note:seafalls/economy --> They hold that the memories the Hist let fall are kept in the sea that the Hist let fall. They leave painted shells and knotted cords at the falls, keep death-dancers for burials and nest on the shoals. Hatching and naming mean a long journey inland. <!-- place_note:seafalls/faith -->
-
-Built from: Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village by water with 160 buildings, 48 dock pieces, ship pieces and seven hut interiors. It fits a village of fourteen; its Nordic pieces are replaced. Its accommodation hut serves the inn room and its huts the pilot-elder's house and the trader. Still to add: the cliff platforms and rope-bridges, the falls and the sea-pool, the pilot's boat at the landing, the shoal pearls and the salvage store. <!-- place_note:seafalls/source -->
-
-It promises the player: Boat stop: a pilot's boat at the landing; General goods trader: salvage, rope, sea-salt and pearl-shell goods; Innkeeper or food seller: grilled fish and shellfish at the falls; Rented room: a room on the cliff platforms; Fish and clams: sea-pool fish and clams; Rare harvestable: pearls from the shoals (x2); Cooking pot: the portage-men's pot at the falls; Dangerous wildlife: slaughterfish in the sea-pool (x3); Lesser treasure: a wreck-salvage store on the shoals; Hostile occupants: Skeith pirates raiding the landing (x3), 140 m south-east at the landing on the shoals below the rocks. <!-- place_give:seafalls/0; place_give:seafalls/1; place_give:seafalls/2; place_give:seafalls/3; place_give:seafalls/4; place_give:seafalls/5; place_give:seafalls/6; place_give:seafalls/7; place_give:seafalls/8; place_give:seafalls/9 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool and Skeith pirates who raid the landing. <!-- place_note:seafalls/dangers --> <!-- place_law:seafalls; place_danger:seafalls -->
-
-It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Archon (690 m, 15 gold, 1 hour) and Thorn (3.2 km, 35 gold, 2 hours). Roads run from it to Tidewatch Homestead (track, 280 m north-west). <!-- travel_stop:seafalls/boat; travel_route:archon/seafalls/boat; travel_route:seafalls/thorn/boat; road_node:place=seafalls -->
-
-It is to be built from Seekhat Yol in King of the Murkmire.esp (a village: 160 buildings, 7 interiors, 18 residents, 1 hostile, about 139 m across). The source reads: "Seekhat Yol: a village built in argonian and nordic style with ship, dock, mine pieces. 18 people live there, 1 hostile. 7 interiors (Egg Tender's Quarters, Treeminder's Hut, Touba-Jei's Hut). By water." Similar sources: Keeba Hollow (village, 203 buildings, 9 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Tel Eyrith (village, 85 buildings, 5 interiors). <!-- place_source:seafalls/0; source_place:kingofthemurkmire.seekhatyollocation; place_source:seafalls/1; place_source:seafalls/2; place_source:seafalls/3 -->
-
 ### Inoja
 
-A town, about 220 m across, sited on riverbank, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Inoja elders, under the Aroxhu council; 8 people live there. It is not built yet. <!-- place:inoja -->
+A town, about 220 m across, sited on riverbank, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Inoja elders, under the Aroxhu council; 21 people live there. It is not built yet. <!-- place:inoja -->
 
 A town of about twenty on the river fork where roads from Aroxhu, Arorha and the southern villages meet. It is where outsiders deal with the confederacy. <!-- place_note:inoja/overview --> A busy market. Dunmer clay-buyers from Thorn, Okuwun boatmen and now and then a Khajiit trader bargain here. The elders rule disputes between buyers and sellers. <!-- place_note:inoja/present --> About twenty-one Argonians of the Oxhu-Teeleel: traders, boatmen, ferrymen and inn-keepers, with a handful of visiting Dunmer and Khajiit. <!-- place_note:inoja/people --> Grew from a ferry crossing at a river fork into the confederacy's market. The Aroxhu elders do not want strangers inside their mounds, and Inoja is a day's walk away. <!-- place_note:inoja/history -->
 
@@ -110,27 +92,27 @@ It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with
 
 It is to be built from Alten Meerhleel in King of the Murkmire.esp (a town: 72 buildings, 3 interiors, 8 residents, 0 hostile, about 48 m across). The source reads: "Alten Meerhleel: a town built in argonian and imperial style with mine, dock, ship pieces. 8 people live there, 0 hostile. 3 interiors (Mexhira's House, Meerhleel Market, Alten Meerhleel Lodging House). By water." Similar sources: Murkmire (town, 156 buildings, 1 interior), Murkwood (town, 153 buildings, 1 interior) and Shedet (town, 181 buildings, 18 interiors). <!-- place_source:inoja/0; source_place:kingofthemurkmire.altenmeerhleellocation; place_source:inoja/1; place_source:inoja/2; place_source:inoja/3 -->
 
-### Joxhi
+### Seafalls
 
-A village, about 120 m across, sited on riverbank, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Joxhi elders, under the Aroxhu council; 23 people live there. It is not built yet. <!-- place:joxhi -->
+A village, about 120 m across, sited on coast, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by The Spray-Folk of Seafalls, under their pilot-elder; 14 people live there. It is not built yet. <!-- place:seafalls -->
 
-A village beside a river bend in the northern mounds, known for its red clay pits. <!-- place_note:joxhi/overview --> A working village, wary of the Sarpa camp to the west and of Thorn's buyers who offer too much. <!-- place_note:joxhi/present --> About ten Argonians of the Oxhu-Teeleel, mostly diggers and carriers. The elder is a former potter who still thumps every cartload to hear if it is sound. <!-- place_note:joxhi/people --> A hatchling of the first Inoja families found the red seam, and the diggers have worked it for generations. The village stands on its own spoil. <!-- place_note:joxhi/history -->
+A coastal village at the falls where a river reaches the Padomaic, the reason cargo changes boats here. It lies north-north-east of Archon and is a falls-and-portage settlement. <!-- place_note:seafalls/overview --> A small, self-contained village. Its pilots take ships into Archon and off the Thorn road. The Archwardens charge the village nothing because no other crew will do the job. <!-- place_note:seafalls/present --> About fourteen Argonians of the Spray-Folk: pilots, portage-men and net-menders. The pilot-elder, an old woman who has taken a hundred ships through the surf, is the village's voice. <!-- place_note:seafalls/people --> The Spray-Folk came here from the Archon shore, beyond any Hist tree. Under the East Empire Company they ran the portage for Company boats. Since the secession the portage is theirs alone. <!-- place_note:seafalls/history -->
 
-Stilted mounds beside a river bend, raw red pits edged with reed fencing, drying clay blocks, an orange-stained river and a domed kiln. <!-- place_note:joxhi/look --> Red clay is dug in blocks, fired in the village kiln and floated down the river to Inoja and Aroxhu. Joxhi clay fires a deep brick red and sells for double. <!-- place_note:joxhi/economy --> The village sends its eggs to the Hist at Aroxhu. Diggers press a clay figure into the pit wall for any who died in a fall, and the grave-singer names them at the kiln fire. <!-- place_note:joxhi/faith -->
+White falls dropping into a sea-pool, stilt houses and nest-platforms on the cliff and shoals, rope-bridges over the spray, salt-crusted decks, the lighthouse beyond the point, gulls and surf. <!-- place_note:seafalls/look --> The portage, which charges cargo-carriers by weight; piloting; pearl-shell and sea-salt; and driftwood and wreck-salvage. Seafalls is the transfer point on the north-east link between Thorn, Branchmont and Archon. <!-- place_note:seafalls/economy --> They hold that the memories the Hist let fall are kept in the sea that the Hist let fall. They leave painted shells and knotted cords at the falls, keep death-dancers for burials and nest on the shoals. Hatching and naming mean a long journey inland. <!-- place_note:seafalls/faith -->
 
-Built from: Its main source, Saxhleel Camp (Journey to Baan Malur), is a Dunmer and Dwemer camp of six buildings with three tent interiors. It does not fit a clay-diggers' village. Root Whisper Village (King of the Murkmire) fits better: an Argonian village by water with eight hut interiors and its Ayleid and ruin pieces. Its huts serve the village. Its Ayleid pieces and one hall interior serve the buried stone hall the diggers broke into. Still to add: the open clay pits with steep walls, the spoil mounds, the village kiln and the reed beds. <!-- place_note:joxhi/source -->
+Built from: Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village by water with 160 buildings, 48 dock pieces, ship pieces and seven hut interiors. It fits a village of fourteen; its Nordic pieces are replaced. Its accommodation hut serves the inn room and its huts the pilot-elder's house and the trader. Still to add: the cliff platforms and rope-bridges, the falls and the sea-pool, the pilot's boat at the landing, the shoal pearls and the salvage store. <!-- place_note:seafalls/source -->
 
-It promises the player: General goods trader: clay pots, tools, reed rope and river food from the diggers' stalls; Oven: a clay bread oven beside the village kiln; Common harvestables: river reeds and marsh herbs along the bend (x4); Free bed: the guest mound, shared with the diggers; Dangerous wildlife: crocodiles at the river mouth (x2); Lesser treasure: a digger's cache under the buried hall's door; Hostile occupants: Sarpa raiders in the pit scrub (x3), 140 m west at the pit scrub west of the village. <!-- place_give:joxhi/0; place_give:joxhi/1; place_give:joxhi/2; place_give:joxhi/3; place_give:joxhi/4; place_give:joxhi/5; place_give:joxhi/6 -->
+It promises the player: Boat stop: a pilot's boat at the landing; General goods trader: salvage, rope, sea-salt and pearl-shell goods; Innkeeper or food seller: grilled fish and shellfish at the falls; Rented room: a room on the cliff platforms; Fish and clams: sea-pool fish and clams; Rare harvestable: pearls from the shoals (x2); Cooking pot: the portage-men's pot at the falls; Dangerous wildlife: slaughterfish in the sea-pool (x3); Lesser treasure: a wreck-salvage store on the shoals; Hostile occupants: Skeith pirates raiding the landing (x3), 140 m south-east at the landing on the shoals below the rocks. <!-- place_give:seafalls/0; place_give:seafalls/1; place_give:seafalls/2; place_give:seafalls/3; place_give:seafalls/4; place_give:seafalls/5; place_give:seafalls/6; place_give:seafalls/7; place_give:seafalls/8; place_give:seafalls/9 -->
 
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Steep pit walls to fall from, crocodiles at the river mouth and Sarpa raiders from the west who come for tools. <!-- place_note:joxhi/dangers --> <!-- place_law:joxhi; place_danger:joxhi -->
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool and Skeith pirates who raid the landing. <!-- place_note:seafalls/dangers --> <!-- place_law:seafalls; place_danger:seafalls -->
 
-The nearest stop is the boat stop at Inoja, 400 m away over water. Roads run from it to Tazhul (track, 660 m south-west), Yuvexa (track, 740 m north), Inoja (track, 900 m south-east), Chalkmoth Pit (track, 1.0 km north-west), Noota Nara (track, 1.2 km north-west) and Fort Chalkmoth (track, 1.2 km north-west). <!-- travel_approach:joxhi; road_node:place=joxhi -->
+It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Archon (690 m, 15 gold, 1 hour) and Thorn (3.2 km, 35 gold, 2 hours). Roads run from it to Tidewatch Homestead (track, 280 m north-west). <!-- travel_stop:seafalls/boat; travel_route:archon/seafalls/boat; travel_route:seafalls/thorn/boat; road_node:place=seafalls -->
 
-It is to be built from Saxhleel Camp in Journey to Baan Malur.esp (a village: 6 buildings, 3 interiors, 23 residents, 8 hostile, about 40 m across). The source reads: "Saxhleel Camp: a village built in dunmer and dwemer style with mine, ruin, cave pieces. 23 people live there, 8 hostile. 3 interiors (Kar-Jei's Tent, Storage Tent, Common Room). By water." Similar sources: Root Whisper Village (village, 791 buildings, 8 interiors), Seekhat Yol (village, 160 buildings, 7 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:joxhi/0; source_place:journeytobaanmalur.saxhleelcamp; place_source:joxhi/1; place_source:joxhi/2; place_source:joxhi/3 -->
+It is to be built from Seekhat Yol in King of the Murkmire.esp (a village: 160 buildings, 7 interiors, 18 residents, 1 hostile, about 139 m across). The source reads: "Seekhat Yol: a village built in argonian and nordic style with ship, dock, mine pieces. 18 people live there, 1 hostile. 7 interiors (Egg Tender's Quarters, Treeminder's Hut, Touba-Jei's Hut). By water." Similar sources: Keeba Hollow (village, 203 buildings, 9 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Tel Eyrith (village, 85 buildings, 5 interiors). <!-- place_source:seafalls/0; source_place:kingofthemurkmire.seekhatyollocation; place_source:seafalls/1; place_source:seafalls/2; place_source:seafalls/3 -->
 
 ### Renhu
 
-A village, about 120 m across, sited on coast, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Renhu elders, under the Aroxhu council; 16 people live there. It is not built yet. <!-- place:renhu -->
+A village, about 120 m across, sited on coast, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Renhu elders, under the Aroxhu council; 12 people live there. It is not built yet. <!-- place:renhu -->
 
 A village between the inlet and the road to Seafalls, with a view of Skeith Isle on clear days. <!-- place_note:renhu/overview --> A tidy village with a small guesthouse and good fish. The elders watch for Skeith smugglers who sometimes buy their boats. <!-- place_note:renhu/present --> About twelve Argonians of the Oxhu-Teeleel, farmers and netters. A few Seafalls pilots lodge here. <!-- place_note:renhu/people --> People of Inoja settled it as a late daughter-village when the mounds filled. Seafalls-bound carts stop there because it lies on the road. <!-- place_note:renhu/history -->
 
@@ -160,9 +142,27 @@ It promises the player: Innkeeper or food seller: eel-paste, rice and dried fish
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Lake crocodiles, slaughterfish in the shallows and crews out of Alten Corimont who come ashore drunk. <!-- place_note:gaweja/dangers --> <!-- place_law:gaweja; place_danger:gaweja -->
 
-The nearest stop is the boat stop at Alten Corimont, 520 m away over water. Roads run from it to Badal (track, 590 m south), Xibcan (track, 1.1 km south-east), Redclay Watch (track, 1.1 km east), Inoja (track, 1.1 km north-east), Tazhul (track, 1.8 km north) and Noota Nara (track, 2.0 km north). <!-- travel_approach:gaweja; road_node:place=gaweja -->
+The nearest stop is the boat stop at Alten Corimont, 520 m away across the marsh on foot. Roads run from it to Badal (track, 590 m south), Xibcan (track, 1.1 km south-east), Redclay Watch (track, 1.1 km east), Inoja (track, 1.1 km north-east), Tazhul (track, 1.8 km north) and Noota Nara (track, 2.0 km north). <!-- travel_approach:gaweja; road_node:place=gaweja -->
 
 It is to be built from Darkwater Crossing in Skyrim.esm (a village: 82 buildings, 2 interiors, 11 residents, 3 hostile, about 123 m across). The source reads: "Darkwater Crossing: a village built in nordic and imperial style with mine, farm, camp pieces. 11 people live there, 3 hostile. 2 interiors. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:gaweja/0; source_place:skyrim.darkwatercrossinglocation; place_source:gaweja/1; place_source:gaweja/2; place_source:gaweja/3 -->
+
+### Joxhi
+
+A village, about 120 m across, sited on riverbank, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by Joxhi elders, under the Aroxhu council; 10 people live there. It is not built yet. <!-- place:joxhi -->
+
+A village beside a river bend in the northern mounds, known for its red clay pits. <!-- place_note:joxhi/overview --> A working village, wary of the Sarpa camp to the west and of Thorn's buyers who offer too much. <!-- place_note:joxhi/present --> About ten Argonians of the Oxhu-Teeleel, mostly diggers and carriers. The elder is a former potter who still thumps every cartload to hear if it is sound. <!-- place_note:joxhi/people --> A hatchling of the first Inoja families found the red seam, and the diggers have worked it for generations. The village stands on its own spoil. <!-- place_note:joxhi/history -->
+
+Stilted mounds beside a river bend, raw red pits edged with reed fencing, drying clay blocks, an orange-stained river and a domed kiln. <!-- place_note:joxhi/look --> Red clay is dug in blocks, fired in the village kiln and floated down the river to Inoja and Aroxhu. Joxhi clay fires a deep brick red and sells for double. <!-- place_note:joxhi/economy --> The village sends its eggs to the Hist at Aroxhu. Diggers press a clay figure into the pit wall for any who died in a fall, and the grave-singer names them at the kiln fire. <!-- place_note:joxhi/faith -->
+
+Built from: Its main source, Saxhleel Camp (Journey to Baan Malur), is a Dunmer and Dwemer camp of six buildings with three tent interiors. It does not fit a clay-diggers' village. Root Whisper Village (King of the Murkmire) fits better: an Argonian village by water with eight hut interiors and its Ayleid and ruin pieces. Its huts serve the village. Its Ayleid pieces and one hall interior serve the buried stone hall the diggers broke into. Still to add: the open clay pits with steep walls, the spoil mounds, the village kiln and the reed beds. <!-- place_note:joxhi/source -->
+
+It promises the player: General goods trader: clay pots, tools, reed rope and river food from the diggers' stalls; Oven: a clay bread oven beside the village kiln; Common harvestables: river reeds and marsh herbs along the bend (x4); Free bed: the guest mound, shared with the diggers; Dangerous wildlife: crocodiles at the river mouth (x2); Lesser treasure: a digger's cache under the buried hall's door; Hostile occupants: Sarpa raiders in the pit scrub (x3), 140 m west at the pit scrub west of the village. <!-- place_give:joxhi/0; place_give:joxhi/1; place_give:joxhi/2; place_give:joxhi/3; place_give:joxhi/4; place_give:joxhi/5; place_give:joxhi/6 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Steep pit walls to fall from, crocodiles at the river mouth and Sarpa raiders from the west who come for tools. <!-- place_note:joxhi/dangers --> <!-- place_law:joxhi; place_danger:joxhi -->
+
+The nearest stop is the boat stop at Inoja, 400 m away over water. Roads run from it to Tazhul (track, 660 m south-west), Yuvexa (track, 740 m north), Inoja (track, 900 m south-east), Chalkmoth Pit (track, 1.0 km north-west), Noota Nara (track, 1.2 km north-west) and Fort Chalkmoth (track, 1.2 km north-west). <!-- travel_approach:joxhi; road_node:place=joxhi -->
+
+It is to be built from Saxhleel Camp in Journey to Baan Malur.esp (a village: 6 buildings, 3 interiors, 23 residents, 8 hostile, about 40 m across). The source reads: "Saxhleel Camp: a village built in dunmer and dwemer style with mine, ruin, cave pieces. 23 people live there, 8 hostile. 3 interiors (Kar-Jei's Tent, Storage Tent, Common Room). By water." Similar sources: Root Whisper Village (village, 791 buildings, 8 interiors), Seekhat Yol (village, 160 buildings, 7 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:joxhi/0; source_place:journeytobaanmalur.saxhleelcamp; place_source:joxhi/1; place_source:joxhi/2; place_source:joxhi/3 -->
 
 ### Khiar
 
@@ -184,7 +184,7 @@ It is to be built from Tel Eyrith in Nyhus.esp (a village: 85 buildings, 5 inter
 
 ### Vicrium
 
-A mine, about 80 m across, sited on inland, whose culture the data does not say. In 4E 201 it is inhabited, held by Seafalls families and Aroxhu clay-miners, jointly; 4 people live there. It is not built yet. <!-- place:vicrium -->
+A mine, about 80 m across, sited on inland, whose culture the data does not say. In 4E 201 it is inhabited, held by Seafalls families and Aroxhu clay-miners, jointly; 6 people live there. It is not built yet. <!-- place:vicrium -->
 
 A mine on the road between Renhu and Seafalls whose Imperial-sounding name marks an old East Empire Company working. <!-- place_note:vicrium/overview --> The upper galleries are worked. The lower ones are plugged with clay behind a locked timber door after a roof fall killed two men. <!-- place_note:vicrium/present --> About six miners, Oxhu clay-diggers and Seafalls families, led by a gallery-boss who keeps the key. <!-- place_note:vicrium/people --> The Company worked this ochre and alum mine in the last years of the Third Era and left at the secession. Aroxhu's clay-diggers and Seafalls families reopened the upper galleries in the generations after. <!-- place_note:vicrium/history -->
 
@@ -254,9 +254,27 @@ The nearest stop is the boat stop at Inoja, 570 m away across the marsh on foot.
 
 It is to be built from Masvos in Journey to Baan Malur.esp (a shrine: 45 buildings, 1 interior, 6 residents, 0 hostile, about 36 m across). The source reads: "Masvos: a shrine built in dunmer and nordic style with ruin, mine, farm pieces. 6 people live there, 0 hostile. 1 interiors (Masvos Ruins). By water." Similar sources: Redeyn Ancestral Tomb (ruin dunmer, 18 buildings, 1 interior), Ashimmidarum (ruin daedric, 355 buildings, 1 interior) and Frossel (ruin dunmer, 491 buildings, 1 interior). <!-- place_source:velothi-ruin-28-m82/0; source_place:journeytobaanmalur.cluster.masvos.-1.-20; place_source:velothi-ruin-28-m82/1; place_source:velothi-ruin-28-m82/2; place_source:velothi-ruin-28-m82/3 -->
 
+### Icalca
+
+A hamlet, about 80 m across, sited on lakeshore, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Icalca, a raft-folk; 8 people live there. It is not built yet. <!-- place:icalca -->
+
+An Agaceph hamlet on a lake in the west of Okuwun-Rahei. The Agaceph are a people of Middle Argonia and live nowhere else. <!-- place_note:icalca/overview --> A hamlet of raft-houses and platforms on posts, bounded by reed screens. The Agaceph keep to their lake and sell tomes and illusion-work to those who ask politely. <!-- place_note:icalca/present --> About eight Agaceph with rainbow scales and needle faces, who work razor-thin rafts; the eldest reads three languages. <!-- place_note:icalca/people --> The Agaceph looted the dead Maran mission at Umpholo for its books, and the books were shared out among their hamlets. Icalca keeps a shelf of them. <!-- place_note:icalca/history -->
+
+Raft-houses lashed together on a blue-green lake, reed screens painted in bright scale-colours, long thin rafts hauled onto mats. <!-- place_note:icalca/look --> Maran books, scrolls and illusion-work are sold or swapped. Fish and lake-grain keep the hamlet fed. <!-- place_note:icalca/economy --> They hold a weak respect for the Hist. They read the Maran books for amusement. <!-- place_note:icalca/faith -->
+
+Built from: Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents, hide fences and ruin pieces and no interior. It supplies the platforms and walkways that serve as the landings, the hide fences that serve as the reed screens and the tents that stand on the platforms. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses lashed together on the water, the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens. <!-- place_note:icalca/source -->
+
+It promises the player: Bookseller: Maran lore books and tracts, a shelf of them; Spell vendor: Illusion tomes to Apprentice, scrolls of calm and fear; Skill trainer: Illusion, Journeyman; Fish and clams: lake fish and eels; Dangerous wildlife: lake crocodiles in the shallows; Lesser treasure: a bandit's cache by the reed screens; Hostile occupants: bandits trying the landings, 3 to 4, 120 m east at the lake landings beyond the reed screens. <!-- place_give:icalca/0; place_give:icalca/1; place_give:icalca/2; place_give:icalca/3; place_give:icalca/4; place_give:icalca/5; place_give:icalca/6 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Illusions that freeze, calm or turn strangers on each other; lake crocodiles in the shallows; and the bandits Icalca keeps out. <!-- place_note:icalca/dangers --> <!-- place_law:icalca; place_danger:icalca -->
+
+The nearest stop is the rootworm stop at Aroxhu, 450 m away across the marsh on foot. Roads run from it to Hokal-Ush (track, 1.3 km west) and Aroxhu (track, 1.3 km east). <!-- travel_approach:icalca; road_node:place=icalca -->
+
+It is to be built from near Masvos in Journey to Baan Malur.esp (a hamlet: 24 buildings, 0 interiors, 3 residents, 0 hostile, about 22 m across). The source reads: "near Masvos: a hamlet built in dunmer and nordic style with ruin, camp pieces. 3 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:icalca/0; source_place:journeytobaanmalur.cluster.dlc2solstheimworld-3-21.-3.-21; place_source:icalca/1; place_source:icalca/2; place_source:icalca/3 -->
+
 ### Seth-Alaxh Roost
 
-A tribal camp, about 90 m across, sited on inland, whose culture the data does not say. In 4E 201 it is inhabited, held by The Sarpa of the Seth-Alaxh roost; 7 people live there. It is not built yet. <!-- place:tribal-camp-19-m79 -->
+A tribal camp, about 90 m across, sited on inland, whose culture the data does not say. In 4E 201 it is inhabited, held by The Sarpa of the Seth-Alaxh roost; 8 people live there. It is not built yet. <!-- place:tribal-camp-19-m79 -->
 
 A permanent Sarpa camp on a high mud-bank west of Aroxhu. The winged hunters roost in reed shelters on the bank's crown, where they can watch the clay-mound country around them. <!-- place_note:tribal-camp-19-m79/overview --> A camp of perches and tents; Aroxhu's spears and the Sarpa have traded blows here. Fish and clay beads have changed hands between fights. <!-- place_note:tribal-camp-19-m79/present --> About eight Sarpa live on the roost, led by a wing-chief with a scarred crest. <!-- place_note:tribal-camp-19-m79/people --> The Sarpa are winged and hostile to outsiders and live only in Middle Argonia; this camp stands on the edge of Oxhu country, where the confederacy clashes with them often. <!-- place_note:tribal-camp-19-m79/history -->
 
@@ -272,9 +290,45 @@ The nearest stop is the rootworm stop at Aroxhu, 510 m away across the marsh on 
 
 It is to be built from Kazmalgur in Wyrmstooth.esp (a camp tribal: 30 buildings, 1 interior, 7 residents, 3 hostile, about 119 m across). The source reads: "Kazmalgur: a camp tribal built in orc and nordic style with mine, farm, camp pieces. 7 people live there, 3 hostile. 1 interiors (Kazmalgur Longhouse). By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Mor Khazgur (camp tribal, 219 buildings, 3 interiors) and Narzulbur (camp tribal, 52 buildings, 2 interiors). <!-- place_source:tribal-camp-19-m79/0; source_place:wyrmstooth.marker.kazmalgur; place_source:tribal-camp-19-m79/1; place_source:tribal-camp-19-m79/2; place_source:tribal-camp-19-m79/3 -->
 
+### Xibcan
+
+A hamlet, about 80 m across, sited on swamp, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Xibcan; 7 people live there. It is not built yet. <!-- place:xibcan -->
+
+A raft-and-platform hamlet in the marsh between Gaweja and Renhu. <!-- place_note:xibcan/overview --> A hamlet that guards its shelf of books and sells a few to those who bargain well. <!-- place_note:xibcan/present --> About seven Agaceph, led by a literate eldest who knows every book on the shelf by its cover. <!-- place_note:xibcan/people --> The hamlet grew round a chest of books that its people carried off from a dead Maran outstation in the Third Era. <!-- place_note:xibcan/history -->
+
+Raft-houses and hide tents on platforms raised on posts on a marsh pond, books drying on lines in the sun, rafts hauled onto reed beds. <!-- place_note:xibcan/look --> Books, copied pages, illusion-work and eels. Prices are steep but fair. <!-- place_note:xibcan/economy --> They honour the Hist from a distance and read the missionary's tracts as comedy. <!-- place_note:xibcan/faith -->
+
+Built from: Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents and hide fences and no interior. It supplies the platforms and hide tents on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses, the lines for drying books, the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach. <!-- place_note:xibcan/source -->
+
+It promises the player: Bookseller: a small shelf of Maran books and tomes; Spell vendor: Illusion tomes to Novice, scrolls; Skill book: one Illusion skill book on the shelf; Fish and clams: eels and marsh fish; Common harvestables: marsh reed and bog beacon; Dangerous wildlife: marsh crocodiles and giant snakes; Hostile occupants: illusion-casting guards for any intruder, 2, only if its own people are provoked; Lesser treasure: a locked coffer under the eldest's raft. <!-- place_give:xibcan/0; place_give:xibcan/1; place_give:xibcan/2; place_give:xibcan/3; place_give:xibcan/4; place_give:xibcan/5; place_give:xibcan/6; place_give:xibcan/7 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Illusion-casting guards on the approach, marsh crocodiles and giant snakes. <!-- place_note:xibcan/dangers --> <!-- place_law:xibcan; place_danger:xibcan -->
+
+The nearest stop is the boat stop at Seafalls, 790 m away across the marsh on foot. Roads run from it to Redclay Watch (track, 600 m east), Gaweja (track, 1.1 km north-west), Inoja (track, 1.8 km north), Tazhul (track, 2.6 km north), Noota Nara (track, 2.8 km north) and Joxhi (track, 2.8 km north). <!-- travel_approach:xibcan; road_node:place=xibcan -->
+
+It is to be built from near Dark Brotherhood Sanctuary in Wyrmstooth.esp (a hamlet: 43 buildings, 0 interiors, 1 resident, 0 hostile, about 14 m across). The source reads: "near Dark Brotherhood Sanctuary: a hamlet built in nordic style with ship, farm, camp pieces. 1 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:xibcan/0; source_place:wyrmstooth.cluster.wyrmstoothworld-17-0.17.0; place_source:xibcan/1; place_source:xibcan/2; place_source:xibcan/3 -->
+
+### Yina
+
+A hamlet, about 80 m across, sited on riverbank, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Yina; 6 people live there. It is not built yet. <!-- place:yina -->
+
+A hamlet on the river bank where a Cantemiric Velothi ruin stands, the two sharing the same stretch of country. <!-- place_note:yina/overview --> A hamlet of stilt-houses leaning against the ruin's wall. They defend it against Skeith raiders and tribal bands alike. <!-- place_note:yina/present --> About six Agaceph, among them an eldest who knows every stair of the upper halls. <!-- place_note:yina/people --> The Agaceph moved in at the foot of a Velothi stronghold soon after the Flu emptied it. They use its upper halls and are not afraid of ghosts. <!-- place_note:yina/history -->
+
+Raft-houses on the river, tied to the black Velothi wall, painted reed screens, books drying on the stone. <!-- place_note:yina/look --> Illusion-work, tomes and ash-glass shards from the upper halls; they trade a little with Renhu. <!-- place_note:yina/economy --> The Agaceph keep a respectful distance from the ruin's lower halls where the Velothi dead lie. <!-- place_note:yina/faith -->
+
+Built from: Its main source, The Chaoskampf (Here There Be Monsters - Curse of Cipactli), is a Dwemer and Nordic hamlet of 44 buildings with ship pieces and no interior. It does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water with camp and ruin pieces, which supplies cypress platforms on posts and the landings; the houses on the platforms are Seekhat Yol's thatched houses (King of the Murkmire), added. Neither holds the Velothi stronghold, so the ruin with its upper halls and ghost-haunted lower halls is added: its interior comes from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer ruin with one large interior of tomb halls. Still to add: the ruin's wall against which the huts lean, the sealed door and the river landings. <!-- place_note:yina/source -->
+
+It promises the player: Spell vendor: Illusion tomes to Novice, scrolls; General goods trader: ash-glass shards, lake fish, rope; Fish and clams: river fish; Free bed: a pallet in a stilt-house, offered to a guest; Dangerous wildlife: river crocodiles at the landings; Lesser treasure: a raiders' dropped satchel; Hostile occupants: Skeith raiders who try the landings, 3 to 4, 120 m west at the river landings below the hamlet. <!-- place_give:yina/0; place_give:yina/1; place_give:yina/2; place_give:yina/3; place_give:yina/4; place_give:yina/5; place_give:yina/6 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Ancestor ghosts in the lower halls, illusions on the approach and river crocodiles. <!-- place_note:yina/dangers --> <!-- place_law:yina; place_danger:yina -->
+
+The nearest stop is the boat stop at Inoja, 540 m away across the marsh on foot. Roads run from it to Inoja (track, 1.0 km north-west), Arorha (track, 1.0 km north-east), Zeeraxun Roost (track, 1.3 km north), Yuva-Goli (track, 1.7 km north-east), Balormaak (track, 2.5 km north) and Ayiin (track, 2.7 km north). <!-- travel_approach:yina; road_node:place=yina -->
+
+It is to be built from The Chaoskampf in Here There Be Monsters - Curse of Cipactli.esp (a hamlet: 44 buildings, 0 interiors, 3 residents, 0 hostile, about 31 m across). The source reads: "The Chaoskampf: a hamlet built in dwemer and nordic style with mine, ship, ruin pieces. 3 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and BlackMarsh 4,-4 (hamlet, 11 buildings, 0 interiors). <!-- place_source:yina/0; source_place:heretherebemonsterscurseofcipactli.cluster.the-chaoskampf.-2.-1; place_source:yina/1; place_source:yina/2; place_source:yina/3 -->
+
 ### Redclay Watch
 
-An outpost, about 70 m across, sited on inland, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is garrisoned, held by Aroxhu confederacy spear-watch; 6 people live there. It is not built yet. <!-- place:outpost-28-m86 -->
+An outpost, about 70 m across, sited on inland, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is garrisoned, held by Aroxhu confederacy spear-watch; 5 people live there. It is not built yet. <!-- place:outpost-28-m86 -->
 
 A watchpost of the Oxhu-Teeleel on a clay mound above the Renhu-Seafalls road. <!-- place_note:outpost-28-m86/overview --> Five spears keep the watch, with a bar across the road. They pass Seafalls folk and Aroxhu carts free and take a toll of outsiders. <!-- place_note:outpost-28-m86/present --> Five Argonians who rotate in from Renhu and Khiar, led by a woman of Khiar who knows the road. <!-- place_note:outpost-28-m86/people --> Built after Arorha's boatmen lost goods to coast robbers, and manned by volunteers from Renhu and Khiar. <!-- place_note:outpost-28-m86/history -->
 
@@ -292,7 +346,7 @@ It is to be built from Whitewatch Tower in Skyrim.esm (a tower: 33 buildings, 0 
 
 ### Tazhul
 
-An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom, an egg-tending station; 5 people live there. It is not built yet. <!-- place:outpost-22-m77 -->
+An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk of Helstrom, an egg-tending station; 4 people live there. It is not built yet. <!-- place:outpost-22-m77 -->
 
 Tazhul is a Root-Folk station on the edge of Okuwun-Rahei, a small outpost of Helstrom's people. <!-- place_note:outpost-22-m77/overview --> A small station with a rack of eggs and a hunters' lodge; the Root-Folk keep apart from the mounds and the Agaceph. <!-- place_note:outpost-22-m77/present --> About four Saxhleel, hunters and an egg-minder, wary of strangers. <!-- place_note:outpost-22-m77/people --> Helstrom's Root-Folk keep stations through the inner swamp, and Tazhul tends eggs on a warm mud-bank and hunts the marsh around it. <!-- place_note:outpost-22-m77/history -->
 
@@ -307,24 +361,6 @@ Law: native law. It meets a visitor as wary (its people live there and fight onl
 The nearest stop is the boat stop at Inoja, 420 m away across the marsh on foot. Roads run from it to Joxhi (track, 660 m north-east), Noota Nara (track, 980 m north-west), Yuvexa (track, 1.2 km north-east), Hirecan (track, 1.3 km west), Inoja (track, 1.4 km east) and Chalkmoth Pit (track, 1.5 km north). <!-- travel_approach:outpost-22-m77; road_node:place=outpost-22-m77 -->
 
 It is to be built from near Loreisian in King of the Murkmire.esp (a camp tribal: 8 buildings, 0 interiors, 5 residents, 0 hostile, about 37 m across). The source reads: "near Loreisian: a camp tribal built in argonian style with shrine, camp pieces. 5 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and Skjaldur (hamlet, 67 buildings, 0 interiors). <!-- place_source:outpost-22-m77/0; source_place:kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29; place_source:outpost-22-m77/1; place_source:outpost-22-m77/2; place_source:outpost-22-m77/3 -->
-
-### Icalca
-
-A hamlet, about 80 m across, sited on lakeshore, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Icalca, a raft-folk; 3 people live there. It is not built yet. <!-- place:icalca -->
-
-An Agaceph hamlet on a lake in the west of Okuwun-Rahei. The Agaceph are a people of Middle Argonia and live nowhere else. <!-- place_note:icalca/overview --> A hamlet of raft-houses and platforms on posts, bounded by reed screens. The Agaceph keep to their lake and sell tomes and illusion-work to those who ask politely. <!-- place_note:icalca/present --> About eight Agaceph with rainbow scales and needle faces, who work razor-thin rafts; the eldest reads three languages. <!-- place_note:icalca/people --> The Agaceph looted the dead Maran mission at Umpholo for its books, and the books were shared out among their hamlets. Icalca keeps a shelf of them. <!-- place_note:icalca/history -->
-
-Raft-houses lashed together on a blue-green lake, reed screens painted in bright scale-colours, long thin rafts hauled onto mats. <!-- place_note:icalca/look --> Maran books, scrolls and illusion-work are sold or swapped. Fish and lake-grain keep the hamlet fed. <!-- place_note:icalca/economy --> They hold a weak respect for the Hist. They read the Maran books for amusement. <!-- place_note:icalca/faith -->
-
-Built from: Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents, hide fences and ruin pieces and no interior. It supplies the platforms and walkways that serve as the landings, the hide fences that serve as the reed screens and the tents that stand on the platforms. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses lashed together on the water, the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens. <!-- place_note:icalca/source -->
-
-It promises the player: Bookseller: Maran lore books and tracts, a shelf of them; Spell vendor: Illusion tomes to Apprentice, scrolls of calm and fear; Skill trainer: Illusion, Journeyman; Fish and clams: lake fish and eels; Dangerous wildlife: lake crocodiles in the shallows; Lesser treasure: a bandit's cache by the reed screens; Hostile occupants: bandits trying the landings, 3 to 4, 120 m east at the lake landings beyond the reed screens. <!-- place_give:icalca/0; place_give:icalca/1; place_give:icalca/2; place_give:icalca/3; place_give:icalca/4; place_give:icalca/5; place_give:icalca/6 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Illusions that freeze, calm or turn strangers on each other; lake crocodiles in the shallows; and the bandits Icalca keeps out. <!-- place_note:icalca/dangers --> <!-- place_law:icalca; place_danger:icalca -->
-
-The nearest stop is the rootworm stop at Aroxhu, 450 m away across the marsh on foot. Roads run from it to Hokal-Ush (track, 1.3 km west) and Aroxhu (track, 1.3 km east). <!-- travel_approach:icalca; road_node:place=icalca -->
-
-It is to be built from near Masvos in Journey to Baan Malur.esp (a hamlet: 24 buildings, 0 interiors, 3 residents, 0 hostile, about 22 m across). The source reads: "near Masvos: a hamlet built in dunmer and nordic style with ruin, camp pieces. 3 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:icalca/0; source_place:journeytobaanmalur.cluster.dlc2solstheimworld-3-21.-3.-21; place_source:icalca/1; place_source:icalca/2; place_source:icalca/3 -->
 
 ### Seafalls Lighthouse
 
@@ -344,45 +380,9 @@ The nearest stop is the boat stop at Seafalls, 140 m away across the marsh on fo
 
 It is to be built from Solitude Lighthouse Exterior in Skyrim.esm (a lighthouse: 55 buildings, 1 interior, 3 residents, 0 hostile, about 10 m across). The source reads: "Solitude Lighthouse Exterior: a lighthouse built in nordic and imperial style with mine, farm, lighthouse pieces. 3 people live there, 0 hostile. 1 interiors. Dry ground." Similar sources: Abandoned Lighthouse (lighthouse, 44 buildings, 1 interior), Apocrypa Miraaks Tower (tower, 8 buildings, 0 interiors) and Alten Meerhleel (dock, 4 buildings, 1 interior). <!-- place_source:seafalls-lighthouse/0; source_place:skyrim.solitudelighthouseexteriorlocation; place_source:seafalls-lighthouse/1; place_source:seafalls-lighthouse/2; place_source:seafalls-lighthouse/3 -->
 
-### Yina
-
-A hamlet, about 80 m across, sited on riverbank, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Yina; 3 people live there. It is not built yet. <!-- place:yina -->
-
-A hamlet on the river bank where a Cantemiric Velothi ruin stands, the two sharing the same stretch of country. <!-- place_note:yina/overview --> A hamlet of stilt-houses leaning against the ruin's wall. They defend it against Skeith raiders and tribal bands alike. <!-- place_note:yina/present --> About six Agaceph, among them an eldest who knows every stair of the upper halls. <!-- place_note:yina/people --> The Agaceph moved in at the foot of a Velothi stronghold soon after the Flu emptied it. They use its upper halls and are not afraid of ghosts. <!-- place_note:yina/history -->
-
-Raft-houses on the river, tied to the black Velothi wall, painted reed screens, books drying on the stone. <!-- place_note:yina/look --> Illusion-work, tomes and ash-glass shards from the upper halls; they trade a little with Renhu. <!-- place_note:yina/economy --> The Agaceph keep a respectful distance from the ruin's lower halls where the Velothi dead lie. <!-- place_note:yina/faith -->
-
-Built from: Its main source, The Chaoskampf (Here There Be Monsters - Curse of Cipactli), is a Dwemer and Nordic hamlet of 44 buildings with ship pieces and no interior. It does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water with camp and ruin pieces, which supplies cypress platforms on posts and the landings; the houses on the platforms are Seekhat Yol's thatched houses (King of the Murkmire), added. Neither holds the Velothi stronghold, so the ruin with its upper halls and ghost-haunted lower halls is added: its interior comes from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer ruin with one large interior of tomb halls. Still to add: the ruin's wall against which the huts lean, the sealed door and the river landings. <!-- place_note:yina/source -->
-
-It promises the player: Spell vendor: Illusion tomes to Novice, scrolls; General goods trader: ash-glass shards, lake fish, rope; Fish and clams: river fish; Free bed: a pallet in a stilt-house, offered to a guest; Dangerous wildlife: river crocodiles at the landings; Lesser treasure: a raiders' dropped satchel; Hostile occupants: Skeith raiders who try the landings, 3 to 4, 120 m west at the river landings below the hamlet. <!-- place_give:yina/0; place_give:yina/1; place_give:yina/2; place_give:yina/3; place_give:yina/4; place_give:yina/5; place_give:yina/6 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Ancestor ghosts in the lower halls, illusions on the approach and river crocodiles. <!-- place_note:yina/dangers --> <!-- place_law:yina; place_danger:yina -->
-
-The nearest stop is the boat stop at Inoja, 540 m away across the marsh on foot. Roads run from it to Inoja (track, 1.0 km north-west), Arorha (track, 1.0 km north-east), Zeeraxun Roost (track, 1.3 km north), Yuva-Goli (track, 1.7 km north-east), Balormaak (track, 2.5 km north) and Ayiin (track, 2.7 km north). <!-- travel_approach:yina; road_node:place=yina -->
-
-It is to be built from The Chaoskampf in Here There Be Monsters - Curse of Cipactli.esp (a hamlet: 44 buildings, 0 interiors, 3 residents, 0 hostile, about 31 m across). The source reads: "The Chaoskampf: a hamlet built in dwemer and nordic style with mine, ship, ruin pieces. 3 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and BlackMarsh 4,-4 (hamlet, 11 buildings, 0 interiors). <!-- place_source:yina/0; source_place:heretherebemonsterscurseofcipactli.cluster.the-chaoskampf.-2.-1; place_source:yina/1; place_source:yina/2; place_source:yina/3 -->
-
-### Xibcan
-
-A hamlet, about 80 m across, sited on swamp, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph of Xibcan; 2 people live there. It is not built yet. <!-- place:xibcan -->
-
-A raft-and-platform hamlet in the marsh between Gaweja and Renhu. <!-- place_note:xibcan/overview --> A hamlet that guards its shelf of books and sells a few to those who bargain well. <!-- place_note:xibcan/present --> About seven Agaceph, led by a literate eldest who knows every book on the shelf by its cover. <!-- place_note:xibcan/people --> The hamlet grew round a chest of books that its people carried off from a dead Maran outstation in the Third Era. <!-- place_note:xibcan/history -->
-
-Raft-houses and hide tents on platforms raised on posts on a marsh pond, books drying on lines in the sun, rafts hauled onto reed beds. <!-- place_note:xibcan/look --> Books, copied pages, illusion-work and eels. Prices are steep but fair. <!-- place_note:xibcan/economy --> They honour the Hist from a distance and read the missionary's tracts as comedy. <!-- place_note:xibcan/faith -->
-
-Built from: Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents and hide fences and no interior. It supplies the platforms and hide tents on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses, the lines for drying books, the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach. <!-- place_note:xibcan/source -->
-
-It promises the player: Bookseller: a small shelf of Maran books and tomes; Spell vendor: Illusion tomes to Novice, scrolls; Skill book: one Illusion skill book on the shelf; Fish and clams: eels and marsh fish; Common harvestables: marsh reed and bog beacon; Dangerous wildlife: marsh crocodiles and giant snakes; Hostile occupants: illusion-casting guards for any intruder, 2, only if its own people are provoked; Lesser treasure: a locked coffer under the eldest's raft. <!-- place_give:xibcan/0; place_give:xibcan/1; place_give:xibcan/2; place_give:xibcan/3; place_give:xibcan/4; place_give:xibcan/5; place_give:xibcan/6; place_give:xibcan/7 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Illusion-casting guards on the approach, marsh crocodiles and giant snakes. <!-- place_note:xibcan/dangers --> <!-- place_law:xibcan; place_danger:xibcan -->
-
-The nearest stop is the boat stop at Seafalls, 790 m away across the marsh on foot. Roads run from it to Redclay Watch (track, 600 m east), Gaweja (track, 1.1 km north-west), Inoja (track, 1.8 km north), Tazhul (track, 2.6 km north), Noota Nara (track, 2.8 km north) and Joxhi (track, 2.8 km north). <!-- travel_approach:xibcan; road_node:place=xibcan -->
-
-It is to be built from near Dark Brotherhood Sanctuary in Wyrmstooth.esp (a hamlet: 43 buildings, 0 interiors, 1 resident, 0 hostile, about 14 m across). The source reads: "near Dark Brotherhood Sanctuary: a hamlet built in nordic style with ship, farm, camp pieces. 1 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:xibcan/0; source_place:wyrmstooth.cluster.wyrmstoothworld-17-0.17.0; place_source:xibcan/1; place_source:xibcan/2; place_source:xibcan/3 -->
-
 ### Saltmeadow Farm
 
-A farm, about 50 m across, sited on inland, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a Seafalls family; 5 people live there. It is not built yet. <!-- place:farm-28-m89 -->
+A farm, about 50 m across, sited on inland, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a Seafalls family; 4 people live there. It is not built yet. <!-- place:farm-28-m89 -->
 
 A guar farm on the meadow between Seafalls and the Khiar road. <!-- place_note:farm-28-m89/overview --> A small guar herd and a rice paddy, with a path to Seafalls. <!-- place_note:farm-28-m89/present --> Four Argonians of Seafalls keep the meadow: two adults and two hatchlings. <!-- place_note:farm-28-m89/people --> Founded by a Seafalls family who fell out with the pilot-elder and wanted their own ground. <!-- place_note:farm-28-m89/history -->
 
@@ -400,7 +400,7 @@ It is to be built from Farmhouse in Journey to Baan Malur.esp (a farm: 7 buildin
 
 ### Brineflat Farm
 
-A farm, about 50 m across, sited on inland, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a Seafalls family; 1 person lives there. It is not built yet. <!-- place:farm-28-m87 -->
+A farm, about 50 m across, sited on inland, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a Seafalls family; 3 people live there. It is not built yet. <!-- place:farm-28-m87 -->
 
 A farm on the salt flats inland of Seafalls, where the household raises salt-tolerant rice and fowl for the harbour. <!-- place_note:farm-28-m87/overview --> A working holding that sells its salt and sedge to Seafalls. <!-- place_note:farm-28-m87/present --> Three Argonians of Seafalls live here, a mother and her two grown children. <!-- place_note:farm-28-m87/people --> A Seafalls family cleared it for growing the food they cannot fish. <!-- place_note:farm-28-m87/history -->
 
@@ -418,7 +418,7 @@ It is to be built from Hlaalu Farm in Skyrim.esm (a farm: 16 buildings, 1 interi
 
 ### Tidewatch Homestead
 
-A homestead, about 50 m across, sited on coast, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a lone Spray-Folk household; 1 person lives there. It is not built yet. <!-- place:homestead-29-m88 -->
+A homestead, about 50 m across, sited on coast, of The Spray-Folk of Seafalls. In 4E 201 it is inhabited, held by a lone Spray-Folk household; 2 people live there. It is not built yet. <!-- place:homestead-29-m88 -->
 
 A single house above the shingle between the farms and the sea, a day's walk from Seafalls. <!-- place_note:homestead-29-m88/overview --> The household sells nets and rope to Seafalls and to coast boats, and sells the walker a meal and a floor to sleep on. <!-- place_note:homestead-29-m88/present --> Two Argonians live at Tidewatch, an old net-maker and her niece, who take turns keeping watch on the beach. <!-- place_note:homestead-29-m88/people --> A net-maker of Seafalls built the house here because she wanted the quiet of the shore, and her niece came to live with her. <!-- place_note:homestead-29-m88/history -->
 
@@ -458,21 +458,17 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A Dunmer chandler is selling a sea-chart he swears was drawn aboard the Golden Era, and an old crewman will pay to learn whether it is true. <!-- place_note:yulca/hooks -->
 - A small port town of smugglers and freebooters on the bank of a waterway that reaches the sea, as canon has it. <!-- place_note:yulca/overview -->
 
-**Seafalls.**
-
-- The pilot-elder needs a successor and has chosen a hatchling who cannot swim. <!-- place_note:seafalls/hooks -->
-- A ship lies at the landing whose cargo does not match its master's story. <!-- place_note:seafalls/hooks -->
-- Archon's chartered privateer wants it quietly held. <!-- place_note:seafalls/hooks -->
-
 **Inoja.**
 
 - A Thorn buyer has paid for a barge of pots that never arrived. <!-- place_note:inoja/hooks -->
 - The ferryman saw something on the river that night but will only tell a friend. <!-- place_note:inoja/hooks -->
 - The elders rule disputes between buyers and sellers. <!-- place_note:inoja/present -->
 
-**Joxhi.**
+**Seafalls.**
 
-- The diggers have broken through into a buried stone hall of old Ayleid make and will not go back down; the elder wants someone to look, and the Sarpa have heard of it. <!-- place_note:joxhi/hooks -->
+- The pilot-elder needs a successor and has chosen a hatchling who cannot swim. <!-- place_note:seafalls/hooks -->
+- A ship lies at the landing whose cargo does not match its master's story. <!-- place_note:seafalls/hooks -->
+- Archon's chartered privateer wants it quietly held. <!-- place_note:seafalls/hooks -->
 
 **Renhu.**
 
@@ -486,6 +482,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - An Agaceph rafter has gone missing and the fishers found his raft empty in the reeds. <!-- place_note:gaweja/hooks -->
 - Their nets bring up worked stones, and a stranger digs the shallows by night. <!-- place_note:gaweja/hooks -->
 - A fishers' post of woven reeds stands on the point with a knotted cord for every boat lost. <!-- place_note:gaweja/faith -->
+
+**Joxhi.**
+
+- The diggers have broken through into a buried stone hall of old Ayleid make and will not go back down; the elder wants someone to look, and the Sarpa have heard of it. <!-- place_note:joxhi/hooks -->
 
 **Khiar.**
 
@@ -520,11 +520,26 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Yina's eldest will pay anyone who can open it without waking what lies behind. <!-- place_note:velothi-ruin-28-m82/hooks -->
 - The Cantemiric Velothi built it and the Knahaten Flu of 2E 560 killed them; the Agaceph moved in at its foot soon after. <!-- place_note:velothi-ruin-28-m82/history -->
 
+**Icalca.**
+
+- A Gaweja fisher has taken a raft-pole the eldest valued, and the eldest wants it back. <!-- place_note:icalca/hooks -->
+- The eldest also speaks of a ruin in the reeds that no raft has found, and will pay in Illusion tomes to learn where it lies. <!-- place_note:icalca/hooks -->
+
 **Seth-Alaxh Roost.**
 
 - The wing-chief wants a stolen perch-pole returned from Aroxhu. <!-- place_note:tribal-camp-19-m79/hooks -->
 - An Aroxhu spear-captain wants peace and needs an envoy. <!-- place_note:tribal-camp-19-m79/hooks -->
 - Feathers, eggs and raided goods; they trade fish for clay beads. <!-- place_note:tribal-camp-19-m79/economy -->
+
+**Xibcan.**
+
+- A mission lamp-glass from the old outstation has been sold to a trader at Seafalls, and the eldest will pay in books to have it back. <!-- place_note:xibcan/hooks -->
+
+**Yina.**
+
+- A sealed door in the ruin hums by night, and the eldest needs help opening it without waking the dead behind it. <!-- place_note:yina/hooks -->
+- They defend it against Skeith raiders and tribal bands alike. <!-- place_note:yina/present -->
+- The Agaceph moved in at the foot of a Velothi stronghold soon after the Flu emptied it. <!-- place_note:yina/history -->
 
 **Redclay Watch.**
 
@@ -537,27 +552,12 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Two eggs have failed to hatch and the egg-minder believes someone has cursed them. <!-- place_note:outpost-22-m77/hooks -->
 - A hunter has found a Sarpa feather in a trap. <!-- place_note:outpost-22-m77/hooks -->
 
-**Icalca.**
-
-- A Gaweja fisher has taken a raft-pole the eldest valued, and the eldest wants it back. <!-- place_note:icalca/hooks -->
-- The eldest also speaks of a ruin in the reeds that no raft has found, and will pay in Illusion tomes to learn where it lies. <!-- place_note:icalca/hooks -->
-
 **Seafalls Lighthouse.**
 
 - The lamp is dark and a boat crew from Skeith Isle holds the gallery. <!-- place_note:seafalls-lighthouse/hooks -->
 - The keeper's hatchling saw them land and hides in the hut. <!-- place_note:seafalls-lighthouse/hooks -->
 - Lit every night by the keeper, who burns fish-oil bought from Archon and sells directions to the lost. <!-- place_note:seafalls-lighthouse/present -->
 - The keeper keeps a clay lamp for the lost dead and lights it with the beacon. <!-- place_note:seafalls-lighthouse/faith -->
-
-**Yina.**
-
-- A sealed door in the ruin hums by night, and the eldest needs help opening it without waking the dead behind it. <!-- place_note:yina/hooks -->
-- They defend it against Skeith raiders and tribal bands alike. <!-- place_note:yina/present -->
-- The Agaceph moved in at the foot of a Velothi stronghold soon after the Flu emptied it. <!-- place_note:yina/history -->
-
-**Xibcan.**
-
-- A mission lamp-glass from the old outstation has been sold to a trader at Seafalls, and the eldest will pay in books to have it back. <!-- place_note:xibcan/hooks -->
 
 **Saltmeadow Farm.**
 

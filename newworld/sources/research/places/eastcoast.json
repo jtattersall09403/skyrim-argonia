@@ -868,7 +868,7 @@
    "name": "Coldbrine Mine",
    "status": "inhabited",
    "held_by": "Thorn's field-owners, with a toll to Fort Thornmoth",
-   "population": 5,
+   "population": 4,
    "footprint_radius_m": 35,
    "siting": "inland",
    "danger_band_id": "D2",
@@ -961,7 +961,7 @@
     },
     {
      "aspect": "people",
-     "text": "About five Argonians, descendants of freed labourers, plus an overseer from an old Archein family who keeps the mine's keys and the one cart-horse.",
+     "text": "About three Argonians, descendants of freed labourers, plus an overseer from an old Archein family who keeps the mine's keys and the one cart-horse.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5297,7 +5297,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Pottery, red clay, ochre and madder dye go down the rivers to Archon and Thorn; Aroxhu takes salt, fish, metal tools and coin. The clay trade is the confederacy's wealth, and the Archwardens envy it.",
+     "text": "Pottery, red clay, ochre and madder dye go down the waterways to Archon and Thorn; Aroxhu takes salt, fish, metal tools and coin. The clay trade is the confederacy's wealth, and the Archwardens envy it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5417,7 +5417,7 @@
    "gives": [
     {
      "kind": "rootworm-stop",
-     "detail": "the root pool under the great Hist on the mound",
+     "detail": "the root pool of sap under the great Hist on the mound",
      "count": 1
     },
     {
@@ -5462,7 +5462,7 @@
     },
     {
      "kind": "fishing",
-     "detail": "the river below the mounds",
+     "detail": "the marsh pools below the mounds",
      "count": 1
     }
    ]

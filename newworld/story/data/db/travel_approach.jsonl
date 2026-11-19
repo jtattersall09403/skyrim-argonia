@@ -39,9 +39,9 @@
 {"place_id":"fort-silvermoth","stop_place_id":"olvani","travel_mode_id":"boat","foot_m":455,"way":"marsh","remote":0,"why":"455 m across the marsh on foot from the boat stop at Olvani"}
 {"place_id":"fort-swiftmoth","stop_place_id":"archon","travel_mode_id":"boat","foot_m":945,"way":"marsh","remote":0,"why":"945 m across the marsh on foot from the boat stop at Archon"}
 {"place_id":"fort-thornmoth","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":159,"way":"water","remote":0,"why":"159 m over the water from the boat stop at Thorn"}
-{"place_id":"fort-willowmoth","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":304,"way":"marsh","remote":0,"why":"304 m across the marsh on foot from the boat stop at Stormhold"}
+{"place_id":"fort-willowmoth","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":322,"way":"road","remote":0,"why":"322 m by road from the boat stop at Stormhold"}
 {"place_id":"gandranen","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":372,"way":"water","remote":0,"why":"372 m over the water from the coach stop at Slough Point"}
-{"place_id":"gaweja","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":523,"way":"water","remote":0,"why":"523 m over the water from the boat stop at Alten Corimont"}
+{"place_id":"gaweja","stop_place_id":"yulca","travel_mode_id":"boat","foot_m":523,"way":"marsh","remote":0,"why":"523 m across the marsh on foot from the boat stop at Alten Corimont"}
 {"place_id":"gemin","stop_place_id":"jal-veesa","travel_mode_id":"rootworm","foot_m":613,"way":"marsh","remote":0,"why":"613 m across the marsh on foot from the rootworm stop at Jal-Veesa"}
 {"place_id":"giovesse","stop_place_id":"gideon","travel_mode_id":"boat","foot_m":243,"way":"road","remote":0,"why":"243 m by road from the boat stop at Gideon"}
 {"place_id":"guxal","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":501,"way":"marsh","remote":0,"why":"501 m across the marsh on foot from the boat stop at Thorn"}
@@ -137,7 +137,7 @@
 {"place_id":"outpost-m13-m96","stop_place_id":"kharaxos","travel_mode_id":"boat","foot_m":786,"way":"marsh","remote":0,"why":"786 m across the marsh on foot from the boat stop at Kharaxos"}
 {"place_id":"outpost-m14-m89","stop_place_id":"jarecai","travel_mode_id":"boat","foot_m":869,"way":"marsh","remote":0,"why":"869 m across the marsh on foot from the boat stop at Jarecai"}
 {"place_id":"outpost-m15-m112","stop_place_id":"acra-tiin","travel_mode_id":"boat","foot_m":830,"way":"water","remote":0,"why":"830 m over the water from the boat stop at Acra-Tiin"}
-{"place_id":"outpost-m15-m73","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":581,"way":"marsh","remote":0,"why":"581 m across the marsh on foot from the coach stop at Slough Point"}
+{"place_id":"outpost-m15-m73","stop_place_id":"gul-tej","travel_mode_id":"boat","foot_m":578,"way":"water","remote":0,"why":"578 m over the water from the boat stop at Gul-Tej"}
 {"place_id":"outpost-m16-m68","stop_place_id":"slough-point","travel_mode_id":"coach","foot_m":493,"way":"marsh","remote":0,"why":"493 m across the marsh on foot from the coach stop at Slough Point"}
 {"place_id":"outpost-m16-m87","stop_place_id":"jarecai","travel_mode_id":"boat","foot_m":910,"way":"marsh","remote":0,"why":"910 m across the marsh on foot from the boat stop at Jarecai"}
 {"place_id":"outpost-m17-m97","stop_place_id":"jarecai","travel_mode_id":"boat","foot_m":362,"way":"marsh","remote":0,"why":"362 m across the marsh on foot from the boat stop at Jarecai"}
@@ -152,7 +152,7 @@
 {"place_id":"outpost-m3-m60","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":324,"way":"road","remote":0,"why":"324 m by road from the boat stop at Stormhold"}
 {"place_id":"outpost-m3-m83","stop_place_id":"julo","travel_mode_id":"boat","foot_m":907,"way":"marsh","remote":0,"why":"907 m across the marsh on foot from the boat stop at Julo"}
 {"place_id":"outpost-m6-m66","stop_place_id":"jal-veesa","travel_mode_id":"rootworm","foot_m":606,"way":"road","remote":0,"why":"606 m by road from the rootworm stop at Jal-Veesa"}
-{"place_id":"outpost-m7-m77","stop_place_id":"helstrom","travel_mode_id":"boat","foot_m":445,"way":"water","remote":0,"why":"445 m over the water from the boat stop at Helstrom"}
+{"place_id":"outpost-m7-m77","stop_place_id":"helstrom","travel_mode_id":"boat","foot_m":445,"way":"marsh","remote":0,"why":"445 m across the marsh on foot from the boat stop at Helstrom"}
 {"place_id":"outpost-m9-m99","stop_place_id":"kharaxos","travel_mode_id":"boat","foot_m":561,"way":"water","remote":0,"why":"561 m over the water from the boat stop at Kharaxos"}
 {"place_id":"ovezza","stop_place_id":"tsonac","travel_mode_id":"boat","foot_m":558,"way":"marsh","remote":0,"why":"558 m across the marsh on foot from the boat stop at Tsonac"}
 {"place_id":"oxayo","stop_place_id":"tsonac","travel_mode_id":"boat","foot_m":744,"way":"marsh","remote":0,"why":"744 m across the marsh on foot from the boat stop at Tsonac"}
@@ -188,7 +188,7 @@
 {"place_id":"sunken-ruin-31-m110","stop_place_id":"bell-station","travel_mode_id":"boat","foot_m":324,"way":"dive","remote":0,"why":"324 m down through the water from the boat stop at Bell Station"}
 {"place_id":"surkina","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":678,"way":"road","remote":0,"why":"678 m by road from the boat stop at Stormhold"}
 {"place_id":"tapauo","stop_place_id":"uluo","travel_mode_id":"boat","foot_m":365,"way":"marsh","remote":0,"why":"365 m across the marsh on foot from the boat stop at Uluo"}
-{"place_id":"tarak-shan","stop_place_id":"delta-ferry","travel_mode_id":"boat","foot_m":1037,"way":"water","remote":0,"why":"1037 m over the water from the boat stop at Delta Ferry"}
+{"place_id":"tarak-shan","stop_place_id":"delta-ferry","travel_mode_id":"boat","foot_m":1037,"way":"marsh","remote":0,"why":"1037 m across the marsh on foot from the boat stop at Delta Ferry"}
 {"place_id":"tei-kur","stop_place_id":"delta-ferry","travel_mode_id":"boat","foot_m":362,"way":"road","remote":0,"why":"362 m by road from the boat stop at Delta Ferry"}
 {"place_id":"tenmal","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":653,"way":"marsh","remote":0,"why":"653 m across the marsh on foot from the boat stop at Stormhold"}
 {"place_id":"toklea","stop_place_id":"lujei-ferry","travel_mode_id":"boat","foot_m":475,"way":"water","remote":0,"why":"475 m over the water from the boat stop at Lujei Ferry"}

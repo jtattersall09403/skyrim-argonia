@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (18%), dry tree (15%), und
 
 No single culture: Stone-Sleepers, Root-Folk, Agaceph, Sedge-Wardens and Clay-Mound families, with Sarpa to the west. <!-- region_note:chixathe-mesa/people -->
 
-The places here belong to The Stone-Sleepers of Tsonac (Tsona-Kaleel) (2 places, about 24 people), The Root-Folk of Helstrom (2 places, about 10 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 19 people), The Warden Marches (1 place, about 10 people), The Agaceph (1 place, about 9 people) and The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (1 place, about 20 people); 8 places carry no culture in the data. <!-- place:region=chixathe-mesa -->
+The places here belong to The Stone-Sleepers of Tsonac (Tsona-Kaleel) (2 places, about 16 people), The Root-Folk of Helstrom (2 places, about 10 people), The Clay-Mound People of Aroxhu (Oxhu-Teeleel) (1 place, about 12 people), The Warden Marches (1 place, about 10 people), The Agaceph (1 place, about 8 people) and The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (1 place, about 5 people); 8 places carry no culture in the data. <!-- place:region=chixathe-mesa -->
 
 ## Its history, faith, trade and the present
 
@@ -40,15 +40,15 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Noota Nara
 
-A village, about 120 m across, sited on riverbank, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by a council of village elders; the Clay-Mound families; 19 people live there. It is not built yet. <!-- place:noota-nara -->
+A village, about 120 m across, sited on lakeshore, of The Clay-Mound People of Aroxhu (Oxhu-Teeleel). In 4E 201 it is inhabited, held by a council of village elders; the Clay-Mound families; 12 people live there. It is not built yet. <!-- place:noota-nara -->
 
-Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. It sits on the river below Fort Chalkmoth. <!-- place_note:noota-nara/overview --> The village survives. It rebuilt its walls in timber and clay and still tells the story, with the head's loss as an old grievance. <!-- place_note:noota-nara/present --> A dozen or so households of Argonians who follow the Clay-Mound customs of the east, led by a council of elders; hunters, potters and spearsmiths. <!-- place_note:noota-nara/people --> Long ago, in the legend the villagers tell, a dragon burned the village's walls to the ground. The villagers heated their spear-tips in the dragonfire, took the enchantment and pierced it; In the telling, Dreekius carried the head to Stros M'Kai, to hang in the Draggin Tail Inn in Port Hunding. <!-- place_note:noota-nara/history -->
+Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. It sits on the lake below Fort Chalkmoth. <!-- place_note:noota-nara/overview --> The village survives. It rebuilt its walls in timber and clay and still tells the story, with the head's loss as an old grievance. <!-- place_note:noota-nara/present --> A dozen or so households of Argonians who follow the Clay-Mound customs of the east, led by a council of elders; hunters, potters and spearsmiths. <!-- place_note:noota-nara/people --> Long ago, in the legend the villagers tell, a dragon burned the village's walls to the ground. The villagers heated their spear-tips in the dragonfire, took the enchantment and pierced it; In the telling, Dreekius carried the head to Stros M'Kai, to hang in the Draggin Tail Inn in Port Hunding. <!-- place_note:noota-nara/history -->
 
 A walled village of mounds and reed roofs, with a single burned-black post kept where the old gate stood. <!-- place_note:noota-nara/look --> Clay pots, spears with fire-hardened tips, fish and trade with the fort. <!-- place_note:noota-nara/economy --> A Hist tree grows in the village. A dragon-spear is displayed beside it as a relic. <!-- place_note:noota-nara/faith -->
 
 Built from: Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses and the spear-smiths' house. Seekhat Yol's elders' hut (King of the Murkmire) serves as the elders' hall, and its smithy hut, with an anvil, an armour workbench and a forge, as the spear-smiths' forge. Still to add: the timber and clay walls built from its cypress palisade pieces, the village Hist tree built from its Hist roots and flowers, the clay deposit on the bank, the raft at the landing from its boats, the burned-black post where the gate stood and the dragon-spear beside the village Hist. <!-- place_note:noota-nara/source -->
 
-It promises the player: Boat stop: a raft at the village landing; Blacksmith trader: the spear-smiths: they sell fire-hardened iron and steel weapons and arrows; Forge: the spear-smiths' forge; Anvil: the spear-smiths' anvil; Grindstone: by the forge; Skill trainer: Smithing, Journeyman, the master spear-smith; General goods trader: the potters sell clay pots, food and goods; Ore or mineral vein: clay deposit on the riverbank (Hearthfire's clay) (x2); Fish and clams: from the river below the walls; Cooking pot: the potters' fire; Shrine blessing: the village Hist with the dragon-spear beside it: activating its sap cures disease and gives Resist Fire for eight hours. <!-- place_give:noota-nara/0; place_give:noota-nara/1; place_give:noota-nara/2; place_give:noota-nara/3; place_give:noota-nara/4; place_give:noota-nara/5; place_give:noota-nara/6; place_give:noota-nara/7; place_give:noota-nara/8; place_give:noota-nara/9; place_give:noota-nara/10 -->
+It promises the player: Boat stop: a raft at the village landing; Blacksmith trader: the spear-smiths: they sell fire-hardened iron and steel weapons and arrows; Forge: the spear-smiths' forge; Anvil: the spear-smiths' anvil; Grindstone: by the forge; Skill trainer: Smithing, Journeyman, the master spear-smith; General goods trader: the potters sell clay pots, food and goods; Ore or mineral vein: clay deposit on the lake shore (Hearthfire's clay) (x2); Fish and clams: from the lake below the walls; Cooking pot: the potters' fire; Shrine blessing: the village Hist with the dragon-spear beside it: activating its sap cures disease and gives Resist Fire for eight hours. <!-- place_give:noota-nara/0; place_give:noota-nara/1; place_give:noota-nara/2; place_give:noota-nara/3; place_give:noota-nara/4; place_give:noota-nara/5; place_give:noota-nara/6; place_give:noota-nara/7; place_give:noota-nara/8; place_give:noota-nara/9; place_give:noota-nara/10 -->
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses dangerous ground; its loot is of the deadly band. The village is safe by day; the mesa edge above it is wilder. <!-- place_note:noota-nara/dangers --> <!-- place_law:noota-nara; place_danger:noota-nara -->
 
@@ -92,45 +92,9 @@ The nearest stop is the boat stop at Noota Nara, 450 m away across the marsh on 
 
 It is to be built from near Northen Cage in DepthsOfSkyrim.esp (a ruin dunmer: 50 buildings, 0 interiors, 0 residents, 3 hostile, about 35 m across). The source reads: "near Northen Cage: a ruin dunmer built in dunmer and imperial style with ship, mine, ruin pieces. 0 people live there, 3 hostile. By water." Similar sources: Redeyn Ancestral Tomb (ruin dunmer, 18 buildings, 1 interior), Ashimmidarum (ruin daedric, 355 buildings, 1 interior) and Frossel (ruin dunmer, 491 buildings, 1 interior). <!-- place_source:velothi-ruin-23-m73/0; source_place:depthsofskyrim.cluster.tbpwreckoftheprovidence.4.31; place_source:velothi-ruin-23-m73/1; place_source:velothi-ruin-23-m73/2; place_source:velothi-ruin-23-m73/3 -->
 
-### Ayiin
-
-A hamlet, about 80 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac; 16 people live there. It is not built yet. <!-- place:ayiin -->
-
-The Stone-Sleepers' eastern hamlet stands on a river below the mesa where the Kalaxo Cut quarry works. The road from it runs a day north to Thorn. <!-- place_note:ayiin/overview --> Eight live there, working the Kalaxo Cut quarry upstream and fishing the river. <!-- place_note:ayiin/present --> Stone-Sleeper families, a gang of quarrymen and an elder who knows every carter on the Thorn road by name and by debt. <!-- place_note:ayiin/people --> Founded as the Stone-Sleepers took the quarries of the east mesa after the Archeins' time. <!-- place_note:ayiin/history -->
-
-Squared stone houses with reed roofs on a riverbank, a stone jetty, mesa cliffs behind. <!-- place_note:ayiin/look --> Quarried stone and fish, sold to Thorn's builders; Ayiin buys grain and metal tools. <!-- place_note:ayiin/economy --> A cairn takes the place of a tree; the elder reports dreams to Tsonac. <!-- place_note:ayiin/faith -->
-
-Built from: Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian hamlet of 31 buildings and 16 people, the same count as Ayiin, on the water with no interior. It holds no house to enter, so the elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the squared stone walls under reed roofs, the stone jetty, the cairn, the cart in the ford with its locked chest and the crocodile's path along the bank. <!-- place_note:ayiin/source -->
-
-It promises the player: General goods trader: the elder's house sells food and quarry tools; Fish and clams: from the stone jetty; Free bed: a bed in the elder's house; Dangerous wildlife: a crocodile on the riverbank path; Lesser treasure: the locked chest under the cart in the ford. <!-- place_give:ayiin/0; place_give:ayiin/1; place_give:ayiin/2; place_give:ayiin/3; place_give:ayiin/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles prowl the river bank at Ayiin. The odd thief works the road toward Thorn. <!-- place_note:ayiin/dangers --> <!-- place_law:ayiin; place_danger:ayiin -->
-
-The nearest stop is the boat stop at Noota Nara, 870 m away across the marsh on foot. Roads run from it to Marshgate Watch (track, 610 m north-east), Balormaak (track, 730 m south-east), Ysan (track, 790 m east), Yuva-Goli (track, 1.2 km south-east), Zeeraxun Roost (track, 2.0 km south) and Arorha (track, 2.0 km south-east). <!-- travel_approach:ayiin; road_node:place=ayiin -->
-
-It is to be built from Ree-An-Wo in King of the Murkmire.esp (a hamlet: 31 buildings, 0 interiors, 16 residents, 5 hostile, about 54 m across). The source reads: "Ree-An-Wo: a hamlet built in argonian and ayleid style with mine, camp, ruin pieces. 16 people live there, 5 hostile. By water." Similar sources: Black Rose (hamlet, 8 buildings, 0 interiors), DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors) and Alten Merihall (hamlet, 38 buildings, 0 interiors). <!-- place_source:ayiin/0; source_place:kingofthemurkmire.marker.ree-an-wo; place_source:ayiin/1; place_source:ayiin/2; place_source:ayiin/3 -->
-
-### Chalkmoth Pit
-
-A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by the families of Noota Nara, under Fort Chalkmoth's toll; 15 people live there. It is not built yet. <!-- place:mine-20-m70 -->
-
-Chalkmoth Pit is a chalk pit on the mesa shoulder between Fort Chalkmoth and Noota Nara, named for the fort above it. <!-- place_note:mine-20-m70/overview --> A crew works one chalk face and a burning kiln, and the white dust shows from the fort's wall. <!-- place_note:mine-20-m70/present --> A kiln-master, four diggers and a carter, all from Noota Nara, who pay the fort's toll on every cart that leaves. <!-- place_note:mine-20-m70/people --> Chalkmoth Pit is the chalk and limestone working that Fort Chalkmoth was sited to guard, cut since Imperial times for lime. It lies on the mesa shoulder between the fort and Noota Nara. <!-- place_note:mine-20-m70/history -->
-
-A white-scarred pit in the mesa with a lime kiln and smoke above it, and a cart track running to Noota Nara. <!-- place_note:mine-20-m70/look --> The pit yields chalk and limestone, burned to lime for mortar and saltrice-pan lining. <!-- place_note:mine-20-m70/economy --> Lime-white handprints mark the pit's inner wall, one for each worker burned at the kilns. The crew ask Noota Nara's Hist to keep the rain off the kiln. <!-- place_note:mine-20-m70/faith -->
-
-Built from: Its main source, Llerush Kwama Mine (Journey to Baan Malur), is a mine of 15 people, the same count as the pit's families, with 172 mine pieces and 32 Imperial pieces and one interior. Its Imperial timber beams frame the storeroom behind the fallen chalk face. Still to add: the brick walls of that storeroom, from Skyrim's Imperial pieces, the white-scarred pit, the lime kiln with its smoke, the handprints on the inner wall and the cart track to Noota Nara. <!-- place_note:mine-20-m70/source -->
-
-It promises the player: Ore or mineral vein: quarried stone deposit at the chalk face (Hearthfire's building stone) (x2); Dangerous wildlife: skeevers in the opened Imperial storeroom (x3); Lesser treasure: the Imperial storeroom: an old strongbox and steel tools. <!-- place_give:mine-20-m70/0; place_give:mine-20-m70/1; place_give:mine-20-m70/2 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. A rockfall trap inside; mostly safe outside because the road is watched. <!-- place_note:mine-20-m70/dangers --> <!-- place_law:mine-20-m70; place_danger:mine-20-m70 -->
-
-The nearest stop is the boat stop at Noota Nara, 220 m away across the marsh on foot. Roads run from it to Fort Chalkmoth (track, 330 m west), Kaochalit (track, 510 m north), Yuvexa (track, 810 m east), Joxhi (track, 1.0 km south-east), Kalaxo Cut (track, 1.2 km north-east) and Inoja (track, 1.5 km south-east). <!-- travel_approach:mine-20-m70; road_node:place=mine-20-m70 -->
-
-It is to be built from Llerush Kwama Mine in Journey to Baan Malur.esp (a mine: 112 buildings, 1 interior, 15 residents, 0 hostile, about 0 m across). The source reads: "Llerush Kwama Mine: a mine built in imperial style with mine, cave pieces. 15 people live there, 0 hostile. 1 interiors (Llerush Kwama Mine). By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Whistling Mine (mine, 81 buildings, 1 interior) and Frostmoon Crag (mine, 0 buildings, 0 interiors). <!-- place_source:mine-20-m70/0; source_place:journeytobaanmalur.cluster.llerush-kwama-mine.-29.6; place_source:mine-20-m70/1; place_source:mine-20-m70/2; place_source:mine-20-m70/3 -->
-
 ### Hanaxi Roost
 
-A tribal camp, about 70 m across, sited on inland, whose culture the data does not say. In 4E 201 it is occupied, held by a Sarpa warband; 9 people live there. It is not built yet. <!-- place:tribal-camp-12-m71 -->
+A tribal camp, about 70 m across, sited on inland, whose culture the data does not say. In 4E 201 it is occupied, held by a Sarpa warband; 10 people live there. It is not built yet. <!-- place:tribal-camp-12-m71 -->
 
 Hanaxi Roost is a Sarpa camp on the western mesa edge. The Sarpa are winged Argonians found in Middle Argonia alone. They are hostile to outsiders. <!-- place_note:tribal-camp-12-m71/overview --> A permanent camp of a warband, watching the mesa and raiding the road to Tsonac. <!-- place_note:tribal-camp-12-m71/present --> A dozen Sarpa live on the shelf: a warband of hunters and a few elders. <!-- place_note:tribal-camp-12-m71/people --> The Sarpa have hunted the mesa's western edge as long as Oxayo's grave-singers remember; this warband's camp has stood on the shelf for three generations of Stone-Sleepers. <!-- place_note:tribal-camp-12-m71/history -->
 
@@ -146,9 +110,27 @@ The nearest stop is the boat stop at Noota Nara, 880 m away across the marsh on 
 
 It is to be built from Mor Khazgur in Skyrim.esm (a camp tribal: 219 buildings, 3 interiors, 9 residents, 0 hostile, about 61 m across). The source reads: "Mor Khazgur: a camp tribal built in orc and nordic style with mine, cave, farm pieces. 9 people live there, 0 hostile. 3 interiors. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Dushnikh Yal (camp tribal, 257 buildings, 3 interiors) and Largashbur (camp tribal, 65 buildings, 2 interiors). <!-- place_source:tribal-camp-12-m71/0; source_place:skyrim.morkhazgurlocation; place_source:tribal-camp-12-m71/1; place_source:tribal-camp-12-m71/2; place_source:tribal-camp-12-m71/3 -->
 
+### Ayiin
+
+A hamlet, about 80 m across, sited on riverbank, of The Stone-Sleepers of Tsonac (Tsona-Kaleel). In 4E 201 it is inhabited, held by The Stone-Sleepers of Tsonac; 8 people live there. It is not built yet. <!-- place:ayiin -->
+
+The Stone-Sleepers' eastern hamlet stands on a river below the mesa where the Kalaxo Cut quarry works. The road from it runs a day north to Thorn. <!-- place_note:ayiin/overview --> Eight live there, working the Kalaxo Cut quarry upstream and fishing the river. <!-- place_note:ayiin/present --> Stone-Sleeper families, a gang of quarrymen and an elder who knows every carter on the Thorn road by name and by debt. <!-- place_note:ayiin/people --> Founded as the Stone-Sleepers took the quarries of the east mesa after the Archeins' time. <!-- place_note:ayiin/history -->
+
+Squared stone houses with reed roofs on a riverbank, a stone jetty, mesa cliffs behind. <!-- place_note:ayiin/look --> Quarried stone and fish, sold to Thorn's builders; Ayiin buys grain and metal tools. <!-- place_note:ayiin/economy --> A cairn takes the place of a tree; the elder reports dreams to Tsonac. <!-- place_note:ayiin/faith -->
+
+Built from: Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian hamlet of 31 buildings and 16 people, the same count as Ayiin, on the water with no interior. It holds no house to enter, so the elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the squared stone walls under reed roofs, the stone jetty, the cairn, the cart in the ford with its locked chest and the crocodile's path along the bank. <!-- place_note:ayiin/source -->
+
+It promises the player: General goods trader: the elder's house sells food and quarry tools; Fish and clams: from the stone jetty; Free bed: a bed in the elder's house; Dangerous wildlife: a crocodile on the riverbank path; Lesser treasure: the locked chest under the cart in the ford. <!-- place_give:ayiin/0; place_give:ayiin/1; place_give:ayiin/2; place_give:ayiin/3; place_give:ayiin/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles prowl the river bank at Ayiin. The odd thief works the road toward Thorn. <!-- place_note:ayiin/dangers --> <!-- place_law:ayiin; place_danger:ayiin -->
+
+The nearest stop is the boat stop at Noota Nara, 870 m away across the marsh on foot. Roads run from it to Marshgate Watch (track, 610 m north-east), Balormaak (track, 730 m south-east), Ysan (track, 790 m east), Yuva-Goli (track, 1.2 km south-east), Zeeraxun Roost (track, 2.0 km south) and Arorha (track, 2.0 km south-east). <!-- travel_approach:ayiin; road_node:place=ayiin -->
+
+It is to be built from Ree-An-Wo in King of the Murkmire.esp (a hamlet: 31 buildings, 0 interiors, 16 residents, 5 hostile, about 54 m across). The source reads: "Ree-An-Wo: a hamlet built in argonian and ayleid style with mine, camp, ruin pieces. 16 people live there, 5 hostile. By water." Similar sources: Black Rose (hamlet, 8 buildings, 0 interiors), DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors) and Alten Merihall (hamlet, 38 buildings, 0 interiors). <!-- place_source:ayiin/0; source_place:kingofthemurkmire.marker.ree-an-wo; place_source:ayiin/1; place_source:ayiin/2; place_source:ayiin/3 -->
+
 ### Hirecan
 
-A hamlet, about 80 m across, sited on riverbank, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph; 9 people live there. It is not built yet. <!-- place:hirecan -->
+A hamlet, about 80 m across, sited on riverbank, of The Agaceph. In 4E 201 it is inhabited, held by The Agaceph; 8 people live there. It is not built yet. <!-- place:hirecan -->
 
 A hamlet of the Agaceph, the Middle Argonian breed that is not a camp people. <!-- place_note:hirecan/overview --> Eight Agaceph live there; they ride their thin rafts to Icalca and to the docks of Alten Corimont. <!-- place_note:hirecan/present --> Agaceph with rainbow scales, readers and illusionists, wary of strangers and quick to freeze an intruder with a spell. <!-- place_note:hirecan/people --> A hamlet founded as the Agaceph spread along the mesa's rivers. <!-- place_note:hirecan/history -->
 
@@ -184,7 +166,7 @@ It is to be built from near Stonehollow in Wyrmstooth.esp (a hamlet: 13 building
 
 ### Sahlpesh Cave
 
-A cave, about 60 m across, sited on inland, whose culture the data does not say. In 4E 201 it is occupied, held by a Sarpa warband; 8 people live there. It is not built yet. <!-- place:cave-11-m71 -->
+A cave, about 60 m across, sited on inland, whose culture the data does not say. In 4E 201 it is occupied, held by a Sarpa warband; 6 people live there. It is not built yet. <!-- place:cave-11-m71 -->
 
 Sahlpesh Cave is a wide cave in the mesa's western wall beside the Sarpa camp, the warband's larder and nest. Sahlpesh is what the Stone-Sleepers of Oxayo call it. <!-- place_note:cave-11-m71/overview --> Used by the Sarpa warband from the nearby camp as a cold store and a roost; it holds their kills and their eggs. <!-- place_note:cave-11-m71/present --> Sarpa Argonians, a winged breed hostile to outsiders and their young. <!-- place_note:cave-11-m71/people --> A natural cave hunters have known for generations; the Sarpa took it when their warband settled the mesa edge, and every visitor since has had to fight to go in. <!-- place_note:cave-11-m71/history -->
 
@@ -200,9 +182,27 @@ The nearest stop is the rootworm stop at Aroxhu, 910 m away across the marsh on 
 
 It is to be built from BlackMarsh 2,6 in Black Marsh.esm (a cave: 62 buildings, 1 interior, 8 residents, 2 hostile, about 30 m across). The source reads: "BlackMarsh 2,6: a cave built in orc and imperial style with cave, camp, dock pieces. 8 people live there, 2 hostile. 1 interiors (Cavern). Dry ground." Similar sources: Sjobal, Rimhull & Legge Caves (cave, 452 buildings, 1 interior), Bristleback Cave (cave, 549 buildings, 1 interior) and Crag-drop Cave (cave, 57 buildings, 1 interior). <!-- place_source:cave-11-m71/0; source_place:blackmarsh.cluster.castle.2.6; place_source:cave-11-m71/1; place_source:cave-11-m71/2; place_source:cave-11-m71/3 -->
 
+### Chalkmoth Pit
+
+A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by the families of Noota Nara, under Fort Chalkmoth's toll; 4 people live there. It is not built yet. <!-- place:mine-20-m70 -->
+
+Chalkmoth Pit is a chalk pit on the mesa shoulder between Fort Chalkmoth and Noota Nara, named for the fort above it. <!-- place_note:mine-20-m70/overview --> A crew works one chalk face and a burning kiln, and the white dust shows from the fort's wall. <!-- place_note:mine-20-m70/present --> A kiln-master, four diggers and a carter, all from Noota Nara, who pay the fort's toll on every cart that leaves. <!-- place_note:mine-20-m70/people --> Chalkmoth Pit is the chalk and limestone working that Fort Chalkmoth was sited to guard, cut since Imperial times for lime. It lies on the mesa shoulder between the fort and Noota Nara. <!-- place_note:mine-20-m70/history -->
+
+A white-scarred pit in the mesa with a lime kiln and smoke above it, and a cart track running to Noota Nara. <!-- place_note:mine-20-m70/look --> The pit yields chalk and limestone, burned to lime for mortar and saltrice-pan lining. <!-- place_note:mine-20-m70/economy --> Lime-white handprints mark the pit's inner wall, one for each worker burned at the kilns. The crew ask Noota Nara's Hist to keep the rain off the kiln. <!-- place_note:mine-20-m70/faith -->
+
+Built from: Its main source, Llerush Kwama Mine (Journey to Baan Malur), is a mine of 15 people, the same count as the pit's families, with 172 mine pieces and 32 Imperial pieces and one interior. Its Imperial timber beams frame the storeroom behind the fallen chalk face. Still to add: the brick walls of that storeroom, from Skyrim's Imperial pieces, the white-scarred pit, the lime kiln with its smoke, the handprints on the inner wall and the cart track to Noota Nara. <!-- place_note:mine-20-m70/source -->
+
+It promises the player: Ore or mineral vein: quarried stone deposit at the chalk face (Hearthfire's building stone) (x2); Dangerous wildlife: skeevers in the opened Imperial storeroom (x3); Lesser treasure: the Imperial storeroom: an old strongbox and steel tools. <!-- place_give:mine-20-m70/0; place_give:mine-20-m70/1; place_give:mine-20-m70/2 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. A rockfall trap inside; mostly safe outside because the road is watched. <!-- place_note:mine-20-m70/dangers --> <!-- place_law:mine-20-m70; place_danger:mine-20-m70 -->
+
+The nearest stop is the boat stop at Noota Nara, 220 m away across the marsh on foot. Roads run from it to Fort Chalkmoth (track, 330 m west), Kaochalit (track, 510 m north), Yuvexa (track, 810 m east), Joxhi (track, 1.0 km south-east), Kalaxo Cut (track, 1.2 km north-east) and Inoja (track, 1.5 km south-east). <!-- travel_approach:mine-20-m70; road_node:place=mine-20-m70 -->
+
+It is to be built from Llerush Kwama Mine in Journey to Baan Malur.esp (a mine: 112 buildings, 1 interior, 15 residents, 0 hostile, about 0 m across). The source reads: "Llerush Kwama Mine: a mine built in imperial style with mine, cave pieces. 15 people live there, 0 hostile. 1 interiors (Llerush Kwama Mine). By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Whistling Mine (mine, 81 buildings, 1 interior) and Frostmoon Crag (mine, 0 buildings, 0 interiors). <!-- place_source:mine-20-m70/0; source_place:journeytobaanmalur.cluster.llerush-kwama-mine.-29.6; place_source:mine-20-m70/1; place_source:mine-20-m70/2; place_source:mine-20-m70/3 -->
+
 ### Kalaxo Cut
 
-A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by The Stone-Sleepers of Ayiin; 5 people live there. It is not built yet. <!-- place:mine-25-m68 -->
+A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by The Stone-Sleepers of Ayiin; 4 people live there. It is not built yet. <!-- place:mine-25-m68 -->
 
 Kalaxo Cut is a sheer quarry face and gallery on the mesa's east flank above Ayiin, the nearest good stone to Thorn. <!-- place_note:mine-25-m68/overview --> A crew works one gallery and a cutting face, hauling blocks down to the Ayiin road in ox-carts. <!-- place_note:mine-25-m68/present --> Four quarrymen, a foreman and a cart-driver from Ayiin and now and then a Thorn mason who walks up to choose his blocks. <!-- place_note:mine-25-m68/people --> Thorn's builders first quarried the east flank in Imperial times; the Stone-Sleepers of Ayiin took the cut over when they settled the river below, and work it still. <!-- place_note:mine-25-m68/history -->
 
@@ -220,7 +220,7 @@ It is to be built from Kolskeggr Mine in Skyrim.esm (a mine: 157 buildings, 2 in
 
 ### Xanuc Diggings
 
-A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by The Stone-Sleepers of Oxayo; 1 person lives there. It is not built yet. <!-- place:mine-16-m69 -->
+A mine, about 70 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by The Stone-Sleepers of Oxayo; 4 people live there. It is not built yet. <!-- place:mine-16-m69 -->
 
 Xanuc Diggings is a quarry mine in the wall of Chixathe Mesa between Oxayo and Fort Chalkmoth, and the best building stone on the mesa. <!-- place_note:mine-16-m69/overview --> A crew works one gallery and a cutting face, with an ox-cart track down the mesa side to Oxayo. <!-- place_note:mine-16-m69/present --> Four quarrymen, a foreman and a cart-driver, all Stone-Sleepers, who live in Oxayo and walk up each morning. <!-- place_note:mine-16-m69/people --> Xanuc Diggings has cut building stone from the mesa wall since Imperial times, when the Legion's masons took stone for Fort Chalkmoth; the Stone-Sleepers of Oxayo took it over when the Legion left at the secession. <!-- place_note:mine-16-m69/history -->
 
@@ -264,31 +264,13 @@ Squared Dunmer stone, curved roof ribs under vine, a central well and a stair in
 
 Built from: Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric and Nordic ruin with one interior, so its Daedric pieces do not suit a Velothi mesa town. Raven Rock's Temple Ancestral Tomb (Dragonborn) fits better: a Dunmer tomb of Redoran hall pieces with ash pits, burial urns, bones, candles and low mist. Ash spawn lie in ambush there. It serves as the lower halls, with the hall under the well at its end. Still to add: the roofless houses round a central well, a small outer tomb interior for the herbalist's bench built from the same Redoran tomb pieces, the shrine marks and the cellars with their fungus. <!-- place_note:kaochalit/source -->
 
-It promises the player: Apothecary: the Dunmer herbalist in the outer tomb; Alchemy lab: the herbalist's bench; Dangerous wildlife: skeletons and ghosts of the flu-dead in the lower halls (x6); Boss fight: a Velothi priestess of Mephala risen in the hall under the well; Boss chest: boss chest in the hall under the well; Rare harvestable: glowing and white cap fungus in the cellars (x5). <!-- place_give:kaochalit/0; place_give:kaochalit/1; place_give:kaochalit/2; place_give:kaochalit/3; place_give:kaochalit/4; place_give:kaochalit/5 -->
+It promises the player: Alchemy lab: a dead herbalist's bench left in the outer tomb; Dangerous wildlife: skeletons and ghosts of the flu-dead in the lower halls (x6); Boss fight: a Velothi priestess of Mephala risen in the hall under the well; Boss chest: boss chest in the hall under the well; Rare harvestable: glowing and white cap fungus in the cellars (x5). <!-- place_give:kaochalit/0; place_give:kaochalit/1; place_give:kaochalit/2; place_give:kaochalit/3; place_give:kaochalit/4 -->
 
 Law: no law. It meets a visitor as abandoned (the place is uninhabited. Whatever has moved in (beasts, the dead) attacks, or it lies empty). What lives inside is lethal (band 5 of 5, foes about level 50); the calmest way in crosses dangerous ground; its loot is of the lethal band. Flu-dead undead in the lower halls, loose stone and rockfall traps. <!-- place_note:kaochalit/dangers --> <!-- place_law:kaochalit; place_danger:kaochalit -->
 
 The nearest stop is the boat stop at Tsonac, 290 m away across the marsh on foot. Roads run from it to Chalkmoth Pit (track, 510 m south). <!-- travel_approach:kaochalit; road_node:place=kaochalit -->
 
 It is to be built from Dunnashammipuri in Journey to Baan Malur.esp (a ruin daedric: 469 buildings, 1 interior, 0 residents, 13 hostile, about 63 m across). The source reads: "Dunnashammipuri: a ruin daedric built in daedric and nordic style with ruin, shrine, camp pieces. 0 people live there, 13 hostile. 1 interiors (Dunnashammipuri). By water." Similar sources: Redeyn Ancestral Tomb (ruin dunmer, 18 buildings, 1 interior), Ashimmidarum (ruin daedric, 355 buildings, 1 interior) and Frossel (ruin dunmer, 491 buildings, 1 interior). <!-- place_source:kaochalit/0; source_place:journeytobaanmalur.dunnashammipurilocation; place_source:kaochalit/1; place_source:kaochalit/2; place_source:kaochalit/3 -->
-
-### Reeka-Veesa
-
-An outpost, about 80 m across, sited on inland, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Sedge-Wardens of Jal-Veesa; 20 people live there. It is not built yet. <!-- place:outpost-7-m69 -->
-
-Reeka-Veesa is the Sedge-Wardens' southernmost post, its name taken from Jal-Veesa, their town. Its hide tents on cypress platforms stand under a few trees on the mesa's west side, with drying racks of reed and feather. <!-- place_note:outpost-7-m69/overview --> Five or so people live here, hunting and gathering. They answer to Jal-Veesa's wardens. <!-- place_note:outpost-7-m69/present --> Sedge-Warden families from Jal-Veesa, one elder and a few youths who will go back north to marry. <!-- place_note:outpost-7-m69/people --> Reeka-Veesa is a Sedge-Warden post on the mesa's west side, used for generations to watch the road between Tenmal and Ranvos Landing and to gather reed and feather. <!-- place_note:outpost-7-m69/history -->
-
-Hide tents on cypress platforms under a few trees, drying racks of reed and feather and a lookout in a trunk that faces Sahlpesh Cave. <!-- place_note:outpost-7-m69/look --> Reed, feathers and hides go to Ranvos Landing and Tenmal Pits and the post gets lamp oil and salt back. <!-- place_note:outpost-7-m69/economy --> A small shrine to the Hist stands at the post's edge; eggs go north to the Jal-Veesa Hist pool, and the elder knows every egg the post has sent. <!-- place_note:outpost-7-m69/faith -->
-
-Built from: Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit a camp of hide tents on platforms. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of cypress walkways and platforms on posts, hide tents and hide fences with 16 people and no interior, which supplies the platforms and tents the families live in. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path. <!-- place_note:outpost-7-m69/source -->
-
-It promises the player: Common harvestables: sedge reed and hawk feathers (x4); Cooking pot: the post's fire; Skill trainer: Sneak, Apprentice, the elder, who has watched the Sarpa unseen for years; Dangerous wildlife: a giant spider nesting on the cave path; Lesser treasure: the spider's web: a cocooned Sarpa scout's quiver. <!-- place_give:outpost-7-m69/0; place_give:outpost-7-m69/1; place_give:outpost-7-m69/2; place_give:outpost-7-m69/3; place_give:outpost-7-m69/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Mesa predators and a dark cave nearby make this a risky post. The wardens forbid their children to enter the cave. <!-- place_note:outpost-7-m69/dangers --> <!-- place_law:outpost-7-m69; place_danger:outpost-7-m69 -->
-
-The nearest stop is the boat stop at Stormhold, 1.4 km away across the marsh on foot. It is remote on purpose: Reeka-Veesa is a Sedge-Warden post on the far west of the mesa, a long walk from Stormhold by the Tenmal road. No water or road there could carry a boat or a cart, and its people seldom leave the post. Roads run from it to Oxayo (track, 940 m east), Tenmal Pits (track, 970 m north), Nuxhal (track, 1.0 km north), Ranvos Landing (track, 1.1 km west), Tenmal (track, 1.2 km north-west) and Tseli-Oon (track, 1.5 km south-west). <!-- travel_approach:outpost-7-m69; road_node:place=outpost-7-m69 -->
-
-It is to be built from Military Camp Falkreath Sons in Skyrim.esm (a camp military: 5 buildings, 0 interiors, 20 residents, 11 hostile, about 86 m across). The source reads: "Military Camp Falkreath Sons: a camp military built in nordic and imperial style with camp, mine, cave pieces. 20 people live there, 11 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Lair of the Kraken (hamlet, 9 buildings, 0 interiors). <!-- place_source:outpost-7-m69/0; source_place:skyrim.marker.militarycampfalkreathsonsmapmarker; place_source:outpost-7-m69/1; place_source:outpost-7-m69/2; place_source:outpost-7-m69/3 -->
 
 ### Nuxhal
 
@@ -307,6 +289,24 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Stormhold, 1.1 km away across the marsh on foot. Roads run from it to Tenmal Pits (track, 250 m north-west), Tenmal (track, 610 m north-west), Ranvos Landing (track, 730 m south-west) and Reeka-Veesa (track, 1.0 km south). <!-- travel_approach:outpost-6-m65; road_node:place=outpost-6-m65 -->
 
 It is to be built from Tumble Arch Pass in Skyrim.esm (a camp tribal: 0 buildings, 0 interiors, 0 residents, 3 hostile, about 0 m across). The source reads: "Tumble Arch Pass: a camp tribal with ruin, camp pieces. 0 people live there, 3 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Lair of the Kraken (hamlet, 9 buildings, 0 interiors). <!-- place_source:outpost-6-m65/0; source_place:skyrim.tumblearchpasslocation; place_source:outpost-6-m65/1; place_source:outpost-6-m65/2; place_source:outpost-6-m65/3 -->
+
+### Reeka-Veesa
+
+An outpost, about 80 m across, sited on inland, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Sedge-Wardens of Jal-Veesa; 5 people live there. It is not built yet. <!-- place:outpost-7-m69 -->
+
+Reeka-Veesa is the Sedge-Wardens' southernmost post, its name taken from Jal-Veesa, their town. Its hide tents on cypress platforms stand under a few trees on the mesa's west side, with drying racks of reed and feather. <!-- place_note:outpost-7-m69/overview --> Five or so people live here, hunting and gathering. They answer to Jal-Veesa's wardens. <!-- place_note:outpost-7-m69/present --> Sedge-Warden families from Jal-Veesa, one elder and a few youths who will go back north to marry. <!-- place_note:outpost-7-m69/people --> Reeka-Veesa is a Sedge-Warden post on the mesa's west side, used for generations to watch the road between Tenmal and Ranvos Landing and to gather reed and feather. <!-- place_note:outpost-7-m69/history -->
+
+Hide tents on cypress platforms under a few trees, drying racks of reed and feather and a lookout in a trunk that faces Sahlpesh Cave. <!-- place_note:outpost-7-m69/look --> Reed, feathers and hides go to Ranvos Landing and Tenmal Pits and the post gets lamp oil and salt back. <!-- place_note:outpost-7-m69/economy --> A small shrine to the Hist stands at the post's edge; eggs go north to the pool of Hist sap at Jal-Veesa, and the elder knows every egg the post has sent. <!-- place_note:outpost-7-m69/faith -->
+
+Built from: Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit a camp of hide tents on platforms. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of cypress walkways and platforms on posts, hide tents and hide fences with 16 people and no interior, which supplies the platforms and tents the families live in. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path. <!-- place_note:outpost-7-m69/source -->
+
+It promises the player: Common harvestables: sedge reed and hawk feathers (x4); Cooking pot: the post's fire; Skill trainer: Sneak, Apprentice, the elder, who has watched the Sarpa unseen for years; Dangerous wildlife: a giant spider nesting on the cave path; Lesser treasure: the spider's web: a cocooned Sarpa scout's quiver. <!-- place_give:outpost-7-m69/0; place_give:outpost-7-m69/1; place_give:outpost-7-m69/2; place_give:outpost-7-m69/3; place_give:outpost-7-m69/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Mesa predators and a dark cave nearby make this a risky post. The wardens forbid their children to enter the cave. <!-- place_note:outpost-7-m69/dangers --> <!-- place_law:outpost-7-m69; place_danger:outpost-7-m69 -->
+
+The nearest stop is the boat stop at Stormhold, 1.4 km away across the marsh on foot. It is remote on purpose: Reeka-Veesa is a Sedge-Warden post on the far west of the mesa, a long walk from Stormhold by the Tenmal road. No water or road there could carry a boat or a cart, and its people seldom leave the post. Roads run from it to Oxayo (track, 940 m east), Tenmal Pits (track, 970 m north), Nuxhal (track, 1.0 km north), Ranvos Landing (track, 1.1 km west), Tenmal (track, 1.2 km north-west) and Tseli-Oon (track, 1.5 km south-west). <!-- travel_approach:outpost-7-m69; road_node:place=outpost-7-m69 -->
+
+It is to be built from Military Camp Falkreath Sons in Skyrim.esm (a camp military: 5 buildings, 0 interiors, 20 residents, 11 hostile, about 86 m across). The source reads: "Military Camp Falkreath Sons: a camp military built in nordic and imperial style with camp, mine, cave pieces. 20 people live there, 11 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Lair of the Kraken (hamlet, 9 buildings, 0 interiors). <!-- place_source:outpost-7-m69/0; source_place:skyrim.marker.militarycampfalkreathsonsmapmarker; place_source:outpost-7-m69/1; place_source:outpost-7-m69/2; place_source:outpost-7-m69/3 -->
 
 ### Yuvexa
 
@@ -357,22 +357,16 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A Sarpa raider of the outer yard carries a key of Velothi bronze that opens the deep vault, and the hunters of Noota Nara will pay for the bell that hangs silent in the high tower. <!-- place_note:velothi-ruin-23-m73/hooks -->
 - A Velothi town of the east, emptied by the Knahaten Flu in 2E 560-603; too far from any road to have been scavenged. <!-- place_note:velothi-ruin-23-m73/history -->
 
-**Ayiin.**
-
-- A quarry cart overturned in the ford with a locked chest under it, and an elder who wants to know who has been leaving shells at Balormaak's gate, since every family in Ayiin denies it. <!-- place_note:ayiin/hooks -->
-- Stone-Sleeper families, a gang of quarrymen and an elder who knows every carter on the Thorn road by name and by debt. <!-- place_note:ayiin/people -->
-
-**Chalkmoth Pit.**
-
-- A carter who drove a load of lime west and came back without cart, ox or lime, telling of Sarpa and an old chalk face that has fallen open onto a bricked Imperial storeroom. <!-- place_note:mine-20-m70/hooks -->
-- The pit yields chalk and limestone, burned to lime for mortar and saltrice-pan lining. <!-- place_note:mine-20-m70/economy -->
-- Lime-white handprints mark the pit's inner wall, one for each worker burned at the kilns. <!-- place_note:mine-20-m70/faith -->
-
 **Hanaxi Roost.**
 
 - A Tsonac stone caravan lost three guards on the road below the shelf, and their bodies hang on the feather poles; a Sarpa elder who will parley for a gift of fresh fish. <!-- place_note:tribal-camp-12-m71/hooks -->
 - A permanent camp of a warband, watching the mesa and raiding the road to Tsonac. <!-- place_note:tribal-camp-12-m71/present -->
 - They hunt, raid and take what they need; they trade nothing. <!-- place_note:tribal-camp-12-m71/economy -->
+
+**Ayiin.**
+
+- A quarry cart overturned in the ford with a locked chest under it, and an elder who wants to know who has been leaving shells at Balormaak's gate, since every family in Ayiin denies it. <!-- place_note:ayiin/hooks -->
+- Stone-Sleeper families, a gang of quarrymen and an elder who knows every carter on the Thorn road by name and by debt. <!-- place_note:ayiin/people -->
 
 **Hirecan.**
 
@@ -388,6 +382,12 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A clutch of Stone-Sleeper eggs carried off from Oxayo and kept in the nest gallery, and a Sarpa elder in the back chamber who will talk instead of fight if a visitor comes in with no weapon drawn. <!-- place_note:cave-11-m71/hooks -->
 - It serves as a larder and nest, with a little hoarded loot from raided travellers. <!-- place_note:cave-11-m71/economy -->
+
+**Chalkmoth Pit.**
+
+- A carter who drove a load of lime west and came back without cart, ox or lime, telling of Sarpa and an old chalk face that has fallen open onto a bricked Imperial storeroom. <!-- place_note:mine-20-m70/hooks -->
+- The pit yields chalk and limestone, burned to lime for mortar and saltrice-pan lining. <!-- place_note:mine-20-m70/economy -->
+- Lime-white handprints mark the pit's inner wall, one for each worker burned at the kilns. <!-- place_note:mine-20-m70/faith -->
 
 **Kalaxo Cut.**
 
@@ -408,13 +408,13 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Settled by Dunmer dissidents in the First or Second Era and emptied by the Knahaten Flu of 2E 560-603; the Hist have not claimed the ground. <!-- place_note:kaochalit/history -->
 - Once a mason town; now a quarry of dressed stone for Tsonac and a source of Velothi goods. <!-- place_note:kaochalit/economy -->
 
-**Reeka-Veesa.**
-
-- A child of the post has slipped off to Sahlpesh Cave, which the wardens forbid, to see the Sarpa nests and the reed-cutters have found a Sarpa arrow in a sedge bed only a stone's throw from the houses. <!-- place_note:outpost-7-m69/hooks -->
-
 **Nuxhal.**
 
 - A pair of giant snakes has denned in the gully below the post and killed a youth on his first hunt, and the pit crews at Tenmal owe Nuxhal a debt of iron for last year's hides and keep putting it off. <!-- place_note:outpost-6-m65/hooks -->
+
+**Reeka-Veesa.**
+
+- A child of the post has slipped off to Sahlpesh Cave, which the wardens forbid, to see the Sarpa nests and the reed-cutters have found a Sarpa arrow in a sedge bed only a stone's throw from the houses. <!-- place_note:outpost-7-m69/hooks -->
 
 **Yuvexa.**
 

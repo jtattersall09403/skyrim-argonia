@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (17%), marsh herb (15%), lily
 
 Veesa-Teeleel reed-wardens, Naga bands and the Lukiul of Slough Point. <!-- region_note:barsaebica/people -->
 
-The places here belong to The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (2 places, about 25 people), The Shadowfen Border (Stormhold) (2 places, about 30 people), The Warden Marches (1 place, about 18 people), The Gideon Frontier (1 place, about 11 people) and The Root-Folk of Helstrom (1 place, about 7 people); 7 places carry no culture in the data. <!-- place:region=barsaebica -->
+The places here belong to The Shadowfen Border (Stormhold) (2 places, about 12 people), The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (2 places, about 10 people), The Warden Marches (1 place, about 12 people), The Gideon Frontier (1 place, about 12 people) and The Root-Folk of Helstrom (1 place, about 5 people); 7 places carry no culture in the data. <!-- place:region=barsaebica -->
 
 ## Its history, faith, trade and the present
 
@@ -76,7 +76,7 @@ It is to be built from BlackMarsh 5,0 in Black Marsh.esm (a ruin ayleid: 108 bui
 
 ### Fort Rustmoth
 
-A keep, about 140 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden customs garrison keeping the old Imperial fort; 18 people live there. It is not built yet. <!-- place:fort-rustmoth -->
+A keep, about 140 m across, sited on inland, of The Warden Marches. In 4E 201 it is garrisoned, held by an Archwarden customs garrison keeping the old Imperial fort; 12 people live there. It is not built yet. <!-- place:fort-rustmoth -->
 
 Fort Rustmoth belongs to the Legion's '-moth' series of forts. The Third Empire's Fort Swampmoth stood on the same road between Slough Point and Gideon, and Rustmoth fits that placement and may be the same fort under a later name. <!-- place_note:fort-rustmoth/overview --> Held, but not by the Empire: an Archwarden garrison charges the road toll and the customs on goods bound for Gideon and Leyawiin, with the old Imperial drill. <!-- place_note:fort-rustmoth/present --> Argonian soldiers under an old Archein-lineage captain; a few Nibenese families in the kitchens. <!-- place_note:fort-rustmoth/people --> Built by the Third Empire to command the Blackwood Road; not Imperial since the secession, when the Legion left and an ex-Archein family took the keys in the Archwardens' name. <!-- place_note:fort-rustmoth/history -->
 
@@ -94,9 +94,9 @@ It is to be built from Ashfallow in Dragonborn.esm (a fort: 275 buildings, 1 int
 
 ### Slough Point
 
-A village, about 140 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a council of Lukiul and Nibenese-descended families; Fort Rustmoth's garrison keeps the toll; 11 people live there. It is not built yet. <!-- place:slough-point -->
+A village, about 140 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a council of Lukiul and Nibenese-descended families; Fort Rustmoth's garrison keeps the toll; 12 people live there. It is not built yet. <!-- place:slough-point -->
 
-Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border. <!-- place_note:slough-point/overview --> A village around the old customs house and the bridge. The bridge's low middle span lies under the black water, and a rope ferry stage with a moored boat stands where the road meets the water. The toll is kept by the garrison of Fort Rustmoth next door. <!-- place_note:slough-point/present --> Lukiul Argonians and Nibenese-descended families of the Gideon frontier; Khajiit and Imperial traders pass through; the garrison are Archwarden soldiers. <!-- place_note:slough-point/people --> The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left at the secession; the families who served the post stayed on. <!-- place_note:slough-point/history -->
+Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border. <!-- place_note:slough-point/overview --> A village around the old customs house and the bridge. The bridge's low middle span lies under the black water, and a rope ferry stage with a moored boat stands where the road meets the water. The toll is kept by the garrison of Fort Rustmoth next door. <!-- place_note:slough-point/present --> Lukiul Argonians and Nibenese-descended families of the Gideon frontier; Khajiit and Imperial traders pass through; the garrison are Archwarden soldiers. <!-- place_note:slough-point/people --> The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left at the secession; the families who served the post stayed on. <!-- place_note:slough-point/history -->
 
 A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud huts, thatched huts on raised plank platforms and a few Cyrodiilic gables; hackwing-chewed guards. <!-- place_note:slough-point/look --> Road trade to Gideon and Leyawiin, a ferry landing, a market of smugglers and herb-sellers. <!-- place_note:slough-point/economy --> Dibella shrine in the old customs house, as in Gideon; no Hist, a foreign foundation. Argonian residents go home to a village tree to hatch and bury. <!-- place_note:slough-point/faith -->
 
@@ -130,7 +130,7 @@ It is to be built from Feren Tarn in King of the Murkmire.esp (a ruin ayleid: 23
 
 ### Ushaan Camp
 
-A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by a band of tribeless Naga; 9 people live there. It is not built yet. <!-- place:tribal-camp-m9-m70 -->
+A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by a band of tribeless Naga; 8 people live there. It is not built yet. <!-- place:tribal-camp-m9-m70 -->
 
 Ushaan Camp is a second Naga band's camp, in the marsh south of Gandranen on the road toward Slough Point. Naga rob road traffic, and the Blackwood Road trade passes close by. <!-- place_note:tribal-camp-m9-m70/overview --> Hide tents hung with bones ring a fire pit in the marsh south of Gandranen. <!-- place_note:tribal-camp-m9-m70/present --> Tribeless Naga, a band of brigands who belong to no clan, hold the camp. <!-- place_note:tribal-camp-m9-m70/people --> Naga bands follow road traffic, and this camp south of Gandranen lives off the travellers of the road. <!-- place_note:tribal-camp-m9-m70/history -->
 
@@ -182,9 +182,45 @@ The nearest stop is the coach stop at Slough Point, 370 m away across the marsh 
 
 It is to be built from near Teeth of Sithis in King of the Murkmire.esp (a ruin ayleid: 15 buildings, 0 interiors, 0 residents, 0 hostile, about 92 m across). The source reads: "near Teeth of Sithis: a ruin ayleid built in ayleid and argonian style with ruin pieces. 0 people live there, 0 hostile. By water." Similar sources: BlackMarshNorth -16,16 (ruin ayleid, 71 buildings, 0 interiors), BlackMarsh 5,0 (ruin ayleid, 108 buildings, 1 interior) and Loreisian (ruin ayleid, 277 buildings, 1 interior). <!-- place_source:ayleid-ruin-m15-m69/0; source_place:kingofthemurkmire.cluster.argoniaworld-11-38.-11.-38; place_source:ayleid-ruin-m15-m69/1; place_source:ayleid-ruin-m15-m69/2; place_source:ayleid-ruin-m15-m69/3 -->
 
+### Ashgate Landing
+
+An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Dunmer gang-master and his Owing reed-cutters; 8 people live there. It is drafted: its place files are in newworld/places/outpost-m13-m65. <!-- place:outpost-m13-m65 -->
+
+Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut and gate still stand there. <!-- place_note:outpost-m13-m65/overview --> Six cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll. <!-- place_note:outpost-m13-m65/present --> A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and six cutters of every race, each serving months of the Owing. <!-- place_note:outpost-m13-m65/people --> The Vicecanons kept a road post here on the Slough Point road. When the toll moved to Slough Point the post was given over to the reed gangs, whose barges can reach it up the river from the sea. <!-- place_note:outpost-m13-m65/history -->
+
+A low stone hut and a wooden gate stand on the river bank, with the cutters' hide tents, bundled reed stacked by the landing and a work barge moored in the pool below the camp. <!-- place_note:outpost-m13-m65/look --> Cut reed goes downriver to Stormhold's mat-makers by barge. The cook sells dried fish and lamp oil from a stall by the hut. <!-- place_note:outpost-m13-m65/economy --> A grave-stake stands by the gate for the cutters who died here. It is the camp's sole mark of worship. <!-- place_note:outpost-m13-m65/faith -->
+
+Built from: Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends hide tents and a stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the bundled reed by the landing, the strongbox in the hut and the grave-stake. <!-- place_note:outpost-m13-m65/source -->
+
+It promises the player: General goods trader: the cook's stall of dried fish and lamp oil; Free bed: a bench in the hut; Cooking pot: the cook's fire by the hut; Common harvestables: sedge and swamp fungus on the reed beds (x2); Dangerous wildlife: mudcrabs on the river bank and one young crocodile in the reed beds (x3); Lesser treasure: the gang-master's strongbox in the hut. <!-- place_give:outpost-m13-m65/0; place_give:outpost-m13-m65/1; place_give:outpost-m13-m65/2; place_give:outpost-m13-m65/3; place_give:outpost-m13-m65/4; place_give:outpost-m13-m65/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are settled (band 1 of 5, foes about level 1); the calmest way in crosses settled ground; its loot is of the settled band. The camp is safe. Mudcrabs work the river bank and one young crocodile lies in the reed beds. <!-- place_note:outpost-m13-m65/dangers --> <!-- place_law:outpost-m13-m65; place_danger:outpost-m13-m65 -->
+
+The nearest stop is the coach stop at Slough Point, 470 m away across the marsh on foot. Roads run from it to Loriasel (track, 170 m south-east), Reed-Sill Weir (cart road, 380 m north-east), Vel-Sapha Stand (cart road, 750 m south-west) and Gemin (track, 940 m north). <!-- travel_approach:outpost-m13-m65; road_node:place=outpost-m13-m65 -->
+
+It is to be built from Military Camp Hjaalmarch Imperial in Skyrim.esm (a camp military: 6 buildings, 0 interiors, 16 residents, 1 hostile, about 29 m across). The source reads: "Military Camp Hjaalmarch Imperial: a camp military built in imperial style with camp, mine, fort pieces. 16 people live there, 1 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Lair of the Kraken (hamlet, 9 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m13-m65/0; source_place:skyrim.marker.militarycamphjaalmarchimperialmapmarker; place_source:outpost-m13-m65/1; place_source:outpost-m13-m65/2; place_source:outpost-m13-m65/3 -->
+
+### Reed-Sill Weir
+
+An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 5 people live there. It is drafted: its place files are in newworld/places/outpost-m11-m63. <!-- place:outpost-m11-m63 -->
+
+Reed-Sill Weir is a Veesa-Teeleel weir on the creek north-east of Gandranen. The Sedge-Wardens hold the creeks of Barsaebica and sell their catch at Jal-Veesa; an outpost on a creek in their country is one of their weirs. <!-- place_note:outpost-m11-m63/overview --> Six or so wardens live here in hide tents on cypress platforms around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market. <!-- place_note:outpost-m11-m63/present --> Veesa-Teeleel families take turns at the weir, sent in rotation from Jal-Veesa, whose market the traps feed. <!-- place_note:outpost-m11-m63/people --> The weirs date back to before the Dunmer and are kept by the Veesa-Teeleel wardens of Jal-Veesa. <!-- place_note:outpost-m11-m63/history -->
+
+Pale hide tents on cypress platforms on a mud bank and a woven weir across the creek, with a log walk along its top and long grey moss draped on its fences over the water. <!-- place_note:outpost-m11-m63/look --> Eels and gar from the traps are sold to Jal-Veesa's market and on to Stormhold. <!-- place_note:outpost-m11-m63/economy --> A Hist-shoot post stands at the landing. The wardens give it the first catch. <!-- place_note:outpost-m11-m63/faith -->
+
+Built from: Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of hide tents and hide fences on cypress platforms and walkways, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss on the weir and the hidden sack in the reeds. <!-- place_note:outpost-m11-m63/source -->
+
+It promises the player: Fish and clams: the weir traps: eels and gar; Cooking pot: by the landing; Dangerous wildlife: mudcrabs on the bank and one young crocodile below the weir (x3); Lesser treasure: a thief's sack of stolen traps and coin hidden in the reeds; Rare harvestable: Sithis' beard, a grey moss hanging on the woven weir (x2). <!-- place_give:outpost-m11-m63/0; place_give:outpost-m11-m63/1; place_give:outpost-m11-m63/2; place_give:outpost-m11-m63/3; place_give:outpost-m11-m63/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are settled (band 1 of 5, foes about level 1); the calmest way in crosses settled ground; its loot is of the settled band. One young crocodile lies below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not. <!-- place_note:outpost-m11-m63/dangers --> <!-- place_law:outpost-m11-m63; place_danger:outpost-m11-m63 -->
+
+The nearest stop is the rootworm stop at Jal-Veesa, 520 m away by road. Roads run from it to Ashgate Landing (cart road, 380 m south-west) and Jal-Veesa (cart road, 520 m east). <!-- travel_approach:outpost-m11-m63; road_node:place=outpost-m11-m63 -->
+
+It is to be built from Hunters Rest in Skyrim.esm (a homestead: 39 buildings, 0 interiors, 2 residents, 1 hostile, about 19 m across). The source reads: "Hunters Rest: a homestead with mine, farm, camp pieces. 2 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m11-m63/0; source_place:skyrim.huntersrestlocation; place_source:outpost-m11-m63/1; place_source:outpost-m11-m63/2; place_source:outpost-m11-m63/3 -->
+
 ### Teel-Fen Weir
 
-An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 23 people live there. It is drafted: its place files are in newworld/places/outpost-m6-m66. <!-- place:outpost-m6-m66 -->
+An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 5 people live there. It is drafted: its place files are in newworld/places/outpost-m6-m66. <!-- place:outpost-m6-m66 -->
 
 Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the creek south of the town. A young Hist rose here from the roots of Jal-Veesa's tree, and the wardens' families tend it beside their traps. <!-- place_note:outpost-m6-m66/overview --> Five wardens and their families live on a small cypress platform on posts at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the tents. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there. <!-- place_note:outpost-m6-m66/present --> Veesa-Teeleel families live at the weir, five wardens and their kin, with Heem-Jasa, the young tree's minder. <!-- place_note:outpost-m6-m66/people --> The weirs here belong to the Sedge-Wardens, the Veesa-Teeleel who keep the traps for Jal-Veesa. <!-- place_note:outpost-m6-m66/history -->
 
@@ -200,45 +236,9 @@ The nearest stop is the rootworm stop at Jal-Veesa, 610 m away by road. Roads ru
 
 It is to be built from near Left Hand Mine in Skyrim.esm (a camp military: 17 buildings, 0 interiors, 23 residents, 1 hostile, about 96 m across). The source reads: "near Left Hand Mine: a camp military built in nordic and imperial style with camp, mine pieces. 23 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m6-m66/0; source_place:skyrim.marker.0ec196; place_source:outpost-m6-m66/1; place_source:outpost-m6-m66/2; place_source:outpost-m6-m66/3 -->
 
-### Ashgate Landing
-
-An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Dunmer gang-master and his Owing reed-cutters; 16 people live there. It is drafted: its place files are in newworld/places/outpost-m13-m65. <!-- place:outpost-m13-m65 -->
-
-Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut and gate still stand there. <!-- place_note:outpost-m13-m65/overview --> Twelve cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll. <!-- place_note:outpost-m13-m65/present --> A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen cutters of every race, each serving months of the Owing. <!-- place_note:outpost-m13-m65/people --> The Vicecanons kept a road post here on the Slough Point road. When the toll moved to Slough Point the post was given over to the reed gangs, whose barges can reach it up the river from the sea. <!-- place_note:outpost-m13-m65/history -->
-
-A low stone hut and a wooden gate stand on the river bank, with the cutters' hide tents, bundled reed stacked by the landing and a work barge moored in the pool below the camp. <!-- place_note:outpost-m13-m65/look --> Cut reed goes downriver to Stormhold's mat-makers by barge. The cook sells dried fish and lamp oil from a stall by the hut. <!-- place_note:outpost-m13-m65/economy --> A grave-stake stands by the gate for the cutters who died here. It is the camp's sole mark of worship. <!-- place_note:outpost-m13-m65/faith -->
-
-Built from: Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends hide tents and a stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the bundled reed by the landing, the strongbox in the hut and the grave-stake. <!-- place_note:outpost-m13-m65/source -->
-
-It promises the player: General goods trader: the cook's stall of dried fish and lamp oil; Free bed: a bench in the hut; Cooking pot: the cook's fire by the hut; Common harvestables: sedge and swamp fungus on the reed beds (x2); Dangerous wildlife: mudcrabs on the river bank and one young crocodile in the reed beds (x3); Lesser treasure: the gang-master's strongbox in the hut. <!-- place_give:outpost-m13-m65/0; place_give:outpost-m13-m65/1; place_give:outpost-m13-m65/2; place_give:outpost-m13-m65/3; place_give:outpost-m13-m65/4; place_give:outpost-m13-m65/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are settled (band 1 of 5, foes about level 1); the calmest way in crosses settled ground; its loot is of the settled band. The camp is safe. Mudcrabs work the river bank and one young crocodile lies in the reed beds. <!-- place_note:outpost-m13-m65/dangers --> <!-- place_law:outpost-m13-m65; place_danger:outpost-m13-m65 -->
-
-The nearest stop is the coach stop at Slough Point, 470 m away across the marsh on foot. Roads run from it to Loriasel (track, 170 m south-east), Reed-Sill Weir (cart road, 380 m north-east), Vel-Sapha Stand (cart road, 750 m south-west) and Gemin (track, 940 m north). <!-- travel_approach:outpost-m13-m65; road_node:place=outpost-m13-m65 -->
-
-It is to be built from Military Camp Hjaalmarch Imperial in Skyrim.esm (a camp military: 6 buildings, 0 interiors, 16 residents, 1 hostile, about 29 m across). The source reads: "Military Camp Hjaalmarch Imperial: a camp military built in imperial style with camp, mine, fort pieces. 16 people live there, 1 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Lair of the Kraken (hamlet, 9 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m13-m65/0; source_place:skyrim.marker.militarycamphjaalmarchimperialmapmarker; place_source:outpost-m13-m65/1; place_source:outpost-m13-m65/2; place_source:outpost-m13-m65/3 -->
-
-### Urvyn Farm
-
-A farm, about 50 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by The Urvyn family; 14 people live there. It is not built yet. <!-- place:farm-m6-m64 -->
-
-Urvyn Farm is a Dunmer-descended family's smallholding west of Jal-Veesa, the furthest of the Stormhold causeway farms; it stands where the northern road lifts out of the reed beds. The family has a Dunmeri name, from the city's old minority. <!-- place_note:farm-m6-m64/overview --> One household works a few flooded fields beside the northern road, with a stone barn on a mound. <!-- place_note:farm-m6-m64/present --> A Dunmer-descended farmer and his Argonian wife of the Urvyn family keep the farm. <!-- place_note:farm-m6-m64/people --> A smallholding on raised ground west of Jal-Veesa, beside the northern road. <!-- place_note:farm-m6-m64/history -->
-
-A stone barn and a stone house stand on a mound that lifts the farm above the flooded fields. <!-- place_note:farm-m6-m64/look --> The farm sends saltrice and eels to Stormhold along the northern road. <!-- place_note:farm-m6-m64/economy --> Ancestor stones from the Dunmer side of the family stand by the house, beside a Hist shoot from the Argonian side. <!-- place_note:farm-m6-m64/faith -->
-
-Built from: Its main source, Katlas Farm (Skyrim), is a farm of fourteen people with a farmhouse and a stable interior, which serve as the stone house and the barn. Its Nordic pieces are replaced with Dunmer stone and Argonian mud-plaster. Hlaalu Farm (Skyrim) is smaller with one interior and is not used. Still to add: the mound, the flooded fields, the ancestor stones, the Hist shoot and the eel racks. <!-- place_note:farm-m6-m64/source -->
-
-It promises the player: Common harvestables: saltrice and greens (x2); Cooking pot: the farmhouse; Innkeeper or food seller: the Urvyns sell eels and saltrice to passers. <!-- place_give:farm-m6-m64/0; place_give:farm-m6-m64/1; place_give:farm-m6-m64/2 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. Wildlife in the ditches and fields is the only danger at this quiet farm. <!-- place_note:farm-m6-m64/dangers --> <!-- place_law:farm-m6-m64; place_danger:farm-m6-m64 -->
-
-The nearest stop is the rootworm stop at Jal-Veesa, 290 m away across the marsh on foot. Roads run from it to Nenria (track, 450 m south-east), Helstrom (track, 2.0 km south) and Hutan-Ketu (track, 2.7 km south). <!-- travel_approach:farm-m6-m64; road_node:place=farm-m6-m64 -->
-
-It is to be built from Katlas Farm in Skyrim.esm (a farm: 243 buildings, 2 interiors, 14 residents, 4 hostile, about 46 m across). The source reads: "Katlas Farm: a farm built in nordic and imperial style with farm, mine, camp pieces. 14 people live there, 4 hostile. 2 interiors. Dry ground." Similar sources: Salvius Farm (farm, 5 buildings, 1 interior), Hlaalu Farm (farm, 16 buildings, 1 interior) and Ruined Farmhouse (farm, 37 buildings, 1 interior). <!-- place_source:farm-m6-m64/0; source_place:skyrim.katlasfarmlocation; place_source:farm-m6-m64/1; place_source:farm-m6-m64/2; place_source:farm-m6-m64/3 -->
-
 ### Vel-Sapha Stand
 
-An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk sap-gatherers from the interior; 7 people live there. It is not built yet. <!-- place:outpost-m16-m68 -->
+An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk sap-gatherers from the interior; 5 people live there. It is not built yet. <!-- place:outpost-m16-m68 -->
 
 Vel-Sapha Stand is a Root-Folk stand round a young Hist at the western edge of Barsaebica. The Root-Folk of Helstrom carry sap and eggs to new trees, and a Hist that rose far from the others would draw a few of them to tend it; the name is in their tongue. <!-- place_note:outpost-m16-m68/overview --> Hide tents on cypress platforms stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy. <!-- place_note:outpost-m16-m68/present --> Root-Folk of the Saxhleel tend the stand, sap-gatherers who came from the interior swamp. <!-- place_note:outpost-m16-m68/people --> The sapling rose in the generations after 4E 48, and Root-Folk came from the interior to tend it. <!-- place_note:outpost-m16-m68/history -->
 
@@ -254,23 +254,23 @@ The nearest stop is the coach stop at Slough Point, 490 m away across the marsh 
 
 It is to be built from Riverside Shack in Skyrim.esm (a homestead: 23 buildings, 0 interiors, 7 residents, 2 hostile, about 132 m across). The source reads: "Tamriel 28,0: a homestead with mine, farm, lighthouse pieces. 7 people live there, 2 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m16-m68/0; source_place:skyrim.marker.0ecf4f; place_source:outpost-m16-m68/1; place_source:outpost-m16-m68/2; place_source:outpost-m16-m68/3 -->
 
-### Reed-Sill Weir
+### Urvyn Farm
 
-An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 2 people live there. It is drafted: its place files are in newworld/places/outpost-m11-m63. <!-- place:outpost-m11-m63 -->
+A farm, about 50 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by The Urvyn family; 4 people live there. It is not built yet. <!-- place:farm-m6-m64 -->
 
-Reed-Sill Weir is a Veesa-Teeleel weir on the creek north-east of Gandranen. The Sedge-Wardens hold the creeks of Barsaebica and sell their catch at Jal-Veesa; an outpost on a creek in their country is one of their weirs. <!-- place_note:outpost-m11-m63/overview --> Six or so wardens live here in hide tents on cypress platforms around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market. <!-- place_note:outpost-m11-m63/present --> Veesa-Teeleel families take turns at the weir, sent in rotation from Jal-Veesa, whose market the traps feed. <!-- place_note:outpost-m11-m63/people --> The weirs date back to before the Dunmer and are kept by the Veesa-Teeleel wardens of Jal-Veesa. <!-- place_note:outpost-m11-m63/history -->
+Urvyn Farm is a Dunmer-descended family's smallholding west of Jal-Veesa, the furthest of the Stormhold causeway farms; it stands where the northern road lifts out of the reed beds. The family has a Dunmeri name, from the city's old minority. <!-- place_note:farm-m6-m64/overview --> One household works a few flooded fields beside the northern road, with a stone barn on a mound. <!-- place_note:farm-m6-m64/present --> A Dunmer-descended farmer and his Argonian wife of the Urvyn family keep the farm. <!-- place_note:farm-m6-m64/people --> A smallholding on raised ground west of Jal-Veesa, beside the northern road. <!-- place_note:farm-m6-m64/history -->
 
-Pale hide tents on cypress platforms on a mud bank and a woven weir across the creek, with a log walk along its top and long grey moss draped on its fences over the water. <!-- place_note:outpost-m11-m63/look --> Eels and gar from the traps are sold to Jal-Veesa's market and on to Stormhold. <!-- place_note:outpost-m11-m63/economy --> A Hist-shoot post stands at the landing. The wardens give it the first catch. <!-- place_note:outpost-m11-m63/faith -->
+A stone barn and a stone house stand on a mound that lifts the farm above the flooded fields. <!-- place_note:farm-m6-m64/look --> The farm sends saltrice and eels to Stormhold along the northern road. <!-- place_note:farm-m6-m64/economy --> Ancestor stones from the Dunmer side of the family stand by the house, beside a Hist shoot from the Argonian side. <!-- place_note:farm-m6-m64/faith -->
 
-Built from: Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of hide tents and hide fences on cypress platforms and walkways, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss on the weir and the hidden sack in the reeds. <!-- place_note:outpost-m11-m63/source -->
+Built from: Its main source, Katlas Farm (Skyrim), is a farm of fourteen people with a farmhouse and a stable interior, which serve as the stone house and the barn. Its Nordic pieces are replaced with Dunmer stone and Argonian mud-plaster. Hlaalu Farm (Skyrim) is smaller with one interior and is not used. Still to add: the mound, the flooded fields, the ancestor stones, the Hist shoot and the eel racks. <!-- place_note:farm-m6-m64/source -->
 
-It promises the player: Fish and clams: the weir traps: eels and gar; Cooking pot: by the landing; Dangerous wildlife: mudcrabs on the bank and one young crocodile below the weir (x3); Lesser treasure: a thief's sack of stolen traps and coin hidden in the reeds; Rare harvestable: Sithis' beard, a grey moss hanging on the woven weir (x2). <!-- place_give:outpost-m11-m63/0; place_give:outpost-m11-m63/1; place_give:outpost-m11-m63/2; place_give:outpost-m11-m63/3; place_give:outpost-m11-m63/4 -->
+It promises the player: Common harvestables: saltrice and greens (x2); Cooking pot: the farmhouse; Innkeeper or food seller: the Urvyns sell eels and saltrice to passers. <!-- place_give:farm-m6-m64/0; place_give:farm-m6-m64/1; place_give:farm-m6-m64/2 -->
 
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are settled (band 1 of 5, foes about level 1); the calmest way in crosses settled ground; its loot is of the settled band. One young crocodile lies below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not. <!-- place_note:outpost-m11-m63/dangers --> <!-- place_law:outpost-m11-m63; place_danger:outpost-m11-m63 -->
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. Wildlife in the ditches and fields is the only danger at this quiet farm. <!-- place_note:farm-m6-m64/dangers --> <!-- place_law:farm-m6-m64; place_danger:farm-m6-m64 -->
 
-The nearest stop is the rootworm stop at Jal-Veesa, 520 m away by road. Roads run from it to Ashgate Landing (cart road, 380 m south-west) and Jal-Veesa (cart road, 520 m east). <!-- travel_approach:outpost-m11-m63; road_node:place=outpost-m11-m63 -->
+The nearest stop is the rootworm stop at Jal-Veesa, 290 m away across the marsh on foot. Roads run from it to Nenria (track, 450 m south-east), Helstrom (track, 2.0 km south) and Hutan-Ketu (track, 2.7 km south). <!-- travel_approach:farm-m6-m64; road_node:place=farm-m6-m64 -->
 
-It is to be built from Hunters Rest in Skyrim.esm (a homestead: 39 buildings, 0 interiors, 2 residents, 1 hostile, about 19 m across). The source reads: "Hunters Rest: a homestead with mine, farm, camp pieces. 2 people live there, 1 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m11-m63/0; source_place:skyrim.huntersrestlocation; place_source:outpost-m11-m63/1; place_source:outpost-m11-m63/2; place_source:outpost-m11-m63/3 -->
+It is to be built from Katlas Farm in Skyrim.esm (a farm: 243 buildings, 2 interiors, 14 residents, 4 hostile, about 46 m across). The source reads: "Katlas Farm: a farm built in nordic and imperial style with farm, mine, camp pieces. 14 people live there, 4 hostile. 2 interiors. Dry ground." Similar sources: Salvius Farm (farm, 5 buildings, 1 interior), Hlaalu Farm (farm, 16 buildings, 1 interior) and Ruined Farmhouse (farm, 37 buildings, 1 interior). <!-- place_source:farm-m6-m64/0; source_place:skyrim.katlasfarmlocation; place_source:farm-m6-m64/1; place_source:farm-m6-m64/2; place_source:farm-m6-m64/3 -->
 
 ### Agia Nero
 
@@ -347,29 +347,29 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A Vel-Sapha hunter has a carved stone from the shrine he wants rid of, and a Fort Rustmoth sergeant wants to know who keeps re-setting the mound's ward-stakes. <!-- place_note:ayleid-ruin-m15-m69/hooks -->
 - The mound's lower rooms stand in black water; Vel-Sapha Stand's people watch it from the track and the Veesa-Teeleel call it sick ground. <!-- place_note:ayleid-ruin-m15-m69/present -->
 
-**Teel-Fen Weir.**
-
-- The young Hist is sick: its scar has closed over a grey paste and its sap no longer runs. <!-- place_note:outpost-m6-m66/hooks -->
-- A reed hide beside a lone dead tree west of the weir, where strangers keep jars of sap. <!-- place_note:outpost-m6-m66/hooks -->
-
 **Ashgate Landing.**
 
 - The barge's hold locks from outside, and a new gang waits in it until the gang-master frees them. <!-- place_note:outpost-m13-m65/hooks -->
 - The gang-master keeps a strongbox with the easiest of locks in the hut, and its key hangs on his belt. <!-- place_note:outpost-m13-m65/hooks -->
 
-**Urvyn Farm.**
+**Reed-Sill Weir.**
 
-- A traveller asks to rent the Urvyns' barn for a few nights, and the Argonian wife has seen him by the Gandranen creek at dusk. <!-- place_note:farm-m6-m64/hooks -->
+- The weir traps are being robbed at night, and the wardens want the thief found. <!-- place_note:outpost-m11-m63/hooks -->
+- Sithis' beard, a moss tree-minders use, hangs on the woven weir, over the shallows where the crocodile lies. <!-- place_note:outpost-m11-m63/hooks -->
+
+**Teel-Fen Weir.**
+
+- The young Hist is sick: its scar has closed over a grey paste and its sap no longer runs. <!-- place_note:outpost-m6-m66/hooks -->
+- A reed hide beside a lone dead tree west of the weir, where strangers keep jars of sap. <!-- place_note:outpost-m6-m66/hooks -->
 
 **Vel-Sapha Stand.**
 
 - The sap-gatherers want word carried to Helstrom's Root-Folk that the sapling has set its first eggs. <!-- place_note:outpost-m16-m68/hooks -->
 - A Root-Folk hunter has seen a giant snake in the reeds west of the stand. <!-- place_note:outpost-m16-m68/hooks -->
 
-**Reed-Sill Weir.**
+**Urvyn Farm.**
 
-- The weir traps are being robbed at night, and the wardens want the thief found. <!-- place_note:outpost-m11-m63/hooks -->
-- Sithis' beard, a moss tree-minders use, hangs on the woven weir, over the shallows where the crocodile lies. <!-- place_note:outpost-m11-m63/hooks -->
+- A traveller asks to rent the Urvyns' barn for a few nights, and the Argonian wife has seen him by the Gandranen creek at dusk. <!-- place_note:farm-m6-m64/hooks -->
 
 **Agia Nero.**
 

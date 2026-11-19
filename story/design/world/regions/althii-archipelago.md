@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (13%), boulder (12%), marsh h
 
 Lilmoth-coast Argonians, tenants and labourers on the estates, garrison families of the Warden forts and the Three Waters Tribe. <!-- region_note:althii-archipelago/people -->
 
-The places here belong to Lilmoth and the Murkmire Coast (11 places, about 241 people), The Warden Marches (2 places, about 15 people) and The Three Waters Tribe (1 place, about 36 people); 8 places carry no culture in the data. <!-- place:region=althii-archipelago -->
+The places here belong to Lilmoth and the Murkmire Coast (11 places, about 135 people), The Warden Marches (2 places, about 18 people) and The Three Waters Tribe (1 place, about 24 people); 8 places carry no culture in the data. <!-- place:region=althii-archipelago -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Lilmoth
 
-A large city, about 440 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a reconstituted merchant council; no ruler; 144 people live there. It is not built yet. <!-- place:lilmoth -->
+A large city, about 440 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a reconstituted merchant council; no ruler; 70 people live there. It is not built yet. <!-- place:lilmoth -->
 
 A merchant port on the southern point of the Althii islands, built over shallow water, with large ships moored out in the bay and lighters tied at the quays. It is the biggest town on the south coast and the market for the delta villages and estates of the Althii islands. <!-- place_note:lilmoth/overview --> Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the Xeech-Leel, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others. <!-- place_note:lilmoth/present --> About four in five are Argonians, with a working foreign dock population of Bretons, Khajiit and Imperial-descended traders. Elders, including retired Shadowscales, settle disputes. Tree-minders rotate through the Hist's post so that no one holds it alone. <!-- place_note:lilmoth/people --> Founded by the Lilmothiit, ruled by Priest-Kings and taken by the Empire; its Imperial Quarter was looted when the An-Xileel drove the Empire out at the secession. Its second Hist grew mad and summoned Umbriel in 4E 48, and the Slaughter at Lilmoth destroyed the city. The site was resettled in the generations after, because the harbour has no rival nearby. <!-- place_note:lilmoth/history -->
 
@@ -58,15 +58,15 @@ It is to be built from Lilmoth in King of the Murkmire.esp (a city: 4030 buildin
 
 ### Uluo
 
-A town, about 220 m across, sited on coast, of The Three Waters Tribe. In 4E 201 it is inhabited, held by the elder of the Three Waters Tribe and the tribe's council of raft-masters; 36 people live there. It is not built yet. <!-- place:uluo -->
+A town, about 220 m across, sited on coast, of The Three Waters Tribe. In 4E 201 it is inhabited, held by the elder of the Three Waters Tribe and the tribe's council of raft-masters; 24 people live there. It is not built yet. <!-- place:uluo -->
 
 The one town of the Three Waters Tribe, and the place the bayou hamlets send their catch, rice and reed. It matters as the tribe's seat and as a crossing point between Archon, Lilmoth and the Nushara waters. <!-- place_note:uluo/overview --> A market town of raft-houses and stilt halls, never taken by any power and untouched by Umbriel. The tribe is wary of the Xeech-Leel and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present --> Three Waters Argonians: the elder, a council of raft-masters who know the channel routes, a handful of Archon and Lilmoth traders and traders from Aroxhu. <!-- place_note:uluo/people --> The tribe's Elder Nuetepa is remembered in Archon from long ago. Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive. <!-- place_note:uluo/history -->
 
-A pentagon of raft-mounted halls and reed houses around a landing, with a long communal hall for the elder's moot, drying frames of fish and rafts lashed in rings beside the landing. <!-- place_note:uluo/look --> Net-fish, shellfish, saltrice, reed mats and bundles and the back-water freight that moves between Archon and the Lilmoth delta without passing customs. The elder takes a share of every raft. <!-- place_note:uluo/economy --> Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey. <!-- place_note:uluo/faith -->
+A pentagon of raft-mounted halls and reed houses around a landing, with a long communal hall for the elder's moot, drying frames of fish and rafts lashed in rings beside the landing. <!-- place_note:uluo/look --> Net-fish, shellfish, saltrice, reed mats and bundles and the back-water freight that moves between Archon and the Lilmoth delta without passing customs. The elder takes a share of every raft. <!-- place_note:uluo/economy --> Argonian Sithis and Hist devotion; a small pool of Hist sap lies in the town, tended by a tree-minder and hatching families come in from the hamlets. The raft-masters speak a word to the pool before a journey. <!-- place_note:uluo/faith -->
 
-Built from: Its main source, Pryai village (Nyhus), is a Nordic and Dunmer village of eight interiors with an inn, a farm and a prison, so its Nordic pieces are replaced and it does not fit well. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock town of three interiors, a dockmaster's house, a general store and a bunkhouse, which serve as the cook-house, the landing market and the travellers' raft-house. Still to add: the pentagon of raft halls, the elder's long hall and its moot, the drying frames, the Hist pool and the smugglers' stash in the reed edge. <!-- place_note:uluo/source -->
+Built from: Its main source, Pryai village (Nyhus), is a Nordic and Dunmer village of eight interiors with an inn, a farm and a prison, so its Nordic pieces are replaced and it does not fit well. Alten Meerhleel (King of the Murkmire) fits better: a small Argonian dock town of three interiors, a dockmaster's house, a general store and a bunkhouse, which serve as the cook-house, the landing market and the travellers' raft-house. Still to add: the pentagon of raft halls, the elder's long hall and its moot, the drying frames, the pool of Hist sap and the smugglers' stash in the reed edge. <!-- place_note:uluo/source -->
 
-It promises the player: Boat stop: raft-masters at the town's raft landing; General goods trader: Landing market: saltrice, shellfish, reed mats and bundles, rope; 750 gold, restocked every 48 hours; Hunter buyer: Fish and hide buyer at the drying frames: scales, hides, raw fish; Apothecary: Tree-minder's herb stall: bayou ingredients, Restoration potions, antivenoms; Innkeeper or food seller: Communal cook-house: fish, rice, shellfish; buys food; Rented room: A raft-house for travellers, 10 gold a day; Fence: The smugglers' door: a back-water factor who buys stolen goods; Cooking pot: Cooking pot in the cook-house; Skill trainer: Journeyman Archery trainer: a bayou fisher-hunter; Shrine blessing: The town's Hist pool: the Hist's blessing: cures disease and regenerates stamina for 8 hours; Common harvestables: Saltrice, shellfish and reed at the landing; Fish and clams: Net-fish and shellfish in the channels; Dangerous wildlife: Slaughterfish in the channels round the town (x2); Lesser treasure: A smuggler's stashed cargo in the reed edge (x2). <!-- place_give:uluo/0; place_give:uluo/1; place_give:uluo/2; place_give:uluo/3; place_give:uluo/4; place_give:uluo/5; place_give:uluo/6; place_give:uluo/7; place_give:uluo/8; place_give:uluo/9; place_give:uluo/10; place_give:uluo/11; place_give:uluo/12; place_give:uluo/13 -->
+It promises the player: Boat stop: raft-masters at the town's raft landing; General goods trader: Landing market: saltrice, shellfish, reed mats and bundles, rope; 750 gold, restocked every 48 hours; Hunter buyer: Fish and hide buyer at the drying frames: scales, hides, raw fish; Apothecary: Tree-minder's herb stall: bayou ingredients, Restoration potions, antivenoms; Innkeeper or food seller: Communal cook-house: fish, rice, shellfish; buys food; Rented room: A raft-house for travellers, 10 gold a day; Fence: The smugglers' door: a back-water factor who buys stolen goods; Cooking pot: Cooking pot in the cook-house; Skill trainer: Journeyman Archery trainer: a bayou fisher-hunter; Shrine blessing: The town's pool of Hist sap: the Hist's blessing: cures disease and regenerates stamina for 8 hours; Common harvestables: Saltrice, shellfish and reed at the landing; Fish and clams: Net-fish and shellfish in the channels; Dangerous wildlife: Slaughterfish in the channels round the town (x2); Lesser treasure: A smuggler's stashed cargo in the reed edge (x2). <!-- place_give:uluo/0; place_give:uluo/1; place_give:uluo/2; place_give:uluo/3; place_give:uluo/4; place_give:uluo/5; place_give:uluo/6; place_give:uluo/7; place_give:uluo/8; place_give:uluo/9; place_give:uluo/10; place_give:uluo/11; place_give:uluo/12; place_give:uluo/13 -->
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are safe (band 0 of 5); the calmest way in crosses safe ground; its loot is of the safe band. Safe in the town. Slaughterfish swim the channels round it. Smugglers who have not paid the elder's share also work the outer channels. <!-- place_note:uluo/dangers --> <!-- place_law:uluo; place_danger:uluo -->
 
@@ -74,27 +74,9 @@ It is a boat hub, kept by raft-masters (a poled raft or a paddled canoe), with p
 
 It is to be built from Pryai village in Nyhus.esp (a town: 199 buildings, 8 interiors, 36 residents, 12 hostile, about 196 m across). The source reads: "Pryai village: a town built in nordic and dunmer style with farm, mine, ship pieces. 36 people live there, 12 hostile. 8 interiors (Arano's House, Pryai's Farm, Pryai Prison). By water." Similar sources: Alten Meerhleel (town, 72 buildings, 3 interiors), Murkwood (town, 153 buildings, 1 interior) and Murkmire (town, 156 buildings, 1 interior). <!-- place_source:uluo/0; source_place:nyhus.cluster.pryai-village.59.-42; place_source:uluo/1; place_source:uluo/2; place_source:uluo/3 -->
 
-### Southwatch Keep
-
-A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 9 people live there. It is not built yet. <!-- place:southwatch-keep -->
-
-A coastal fort at the south-west tip of the island, facing the sea road to Lilmoth. <!-- place_note:southwatch-keep/overview --> Eight garrison men keep the beacon lit, watch the sea road from the tower and pay little attention to Lilmoth's politics. <!-- place_note:southwatch-keep/present --> Argonian garrison of Archein-line officers, with fishermen from Karketa as neighbours. <!-- place_note:southwatch-keep/people --> An Imperial coast fort. The Legion left at the secession, 4E 5-10 and the Archwardens took the keep over soon after. <!-- place_note:southwatch-keep/history -->
-
-A squat stone keep with a beacon tower, a landing below and the sea open to the south. <!-- place_note:southwatch-keep/look --> The keep takes a toll from boatmen who put in at the landing below it and buys its provisions from the fishermen of Karketa. Spare fish is sold at the gate. <!-- place_note:southwatch-keep/economy --> There is no Hist at the keep; the garrison hatches its young and buries its dead at Lilmoth. <!-- place_note:southwatch-keep/faith -->
-
-Built from: Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a tower, a main hall and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, but its outside holds only a few roots and ash, so it gives no keep walls. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the keep's stone outer walls, gate and the beacon tower's outside, built from Imperial fort wall and tower pieces as at Cracked Tusk Keep (Skyrim), the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage. <!-- place_note:southwatch-keep/source -->
-
-It promises the player: General goods trader: the gate stores: fish, rope, lamp oil and mixed goods, restocked every 48 hours; Fish and clams: fish and shellfish off the landing (x3); Hostile occupants: wreckers in the sea-cave on the shore (x4); Boss fight: the wrecker captain; Dangerous wildlife: slaughterfish in the shallows below the landing (x3); Boss chest: boss chest in the wreckers' sea-cave; Lesser treasure: salvage from wrecked hulls (x2). <!-- place_give:southwatch-keep/0; place_give:southwatch-keep/1; place_give:southwatch-keep/2; place_give:southwatch-keep/3; place_give:southwatch-keep/4; place_give:southwatch-keep/5; place_give:southwatch-keep/6 -->
-
-Law: foreign law, with cells at Southwatch Keep. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Slaughterfish in the shallows below the landing and wreckers in a sea-cave on the shore. <!-- place_note:southwatch-keep/dangers --> <!-- place_law:southwatch-keep; place_danger:southwatch-keep -->
-
-The nearest stop is the boat stop at Lilmoth, 580 m away by road. Roads run from it to Ixa-Ruu Farm (track, 310 m north-east), Karketa (cart road, 450 m north-west), Kitsa Burrow (track, 520 m east) and Lilmoth (cart road, 580 m east). <!-- travel_approach:southwatch-keep; road_node:place=southwatch-keep -->
-
-It is to be built from Ashguard in SolstheimExpand.esp (a fort: 136 buildings, 3 interiors, 9 residents, 4 hostile, about 27 m across). The source reads: "Ashguard: a fort built in dunmer and nordic style with mine, camp, farm pieces. 9 people live there, 4 hostile. 3 interiors (Ashguard Watchtower, Ashguard Manor, Ashguard Barracks). By water." Similar sources: Cracked Tusk (fort, 254 buildings, 2 interiors), Forth Isle (fort, 24 buildings, 1 interior) and Whiterun Watchtower (fort, 48 buildings, 0 interiors). <!-- place_source:southwatch-keep/0; source_place:solstheimexpand.cluster.ashguard.15.7; place_source:southwatch-keep/1; place_source:southwatch-keep/2; place_source:southwatch-keep/3 -->
-
 ### Fort Reedmoth
 
-A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 6 people live there. It is not built yet. <!-- place:fort-reedmoth -->
+A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 10 people live there. It is not built yet. <!-- place:fort-reedmoth -->
 
 A stone fort held as a toll station and watch on the east end of the northern island, facing Archon's coast across the strait. <!-- place_note:fort-reedmoth/overview --> Ten men of Archein descent keep the gate, take tolls on the road and at the chain and check cargo for the Warden customs. They hold the keys in the Archwardens' name. <!-- place_note:fort-reedmoth/present --> Argonian garrison families, some Archein-line officers, no Imperials. The Three Waters raft-families come through often and know every man at the gate. <!-- place_note:fort-reedmoth/people --> Built by the Legion with a '-moth' name. The Legion left at the secession, 4E 5-10 and the Archwardens have kept the fort since. <!-- place_note:fort-reedmoth/history -->
 
@@ -109,6 +91,24 @@ Law: foreign law, with cells at Fort Reedmoth. It meets a visitor as friendly (i
 The nearest stop is the boat stop at Bell Station, 800 m away across the marsh on foot. Roads run from it to Fort Lowmoth (track, 380 m south-west), Mereweather Estate (cart road, 450 m south), Sal-Axan (track, 600 m north-west), Nundi (track, 850 m south-west), Archon (cart road, 950 m north-east) and Uluo (cart road, 980 m west). <!-- travel_approach:fort-reedmoth; road_node:place=fort-reedmoth -->
 
 It is to be built from Kintyra's Wall in Here There Be Monsters - Curse of Cipactli.esp (a fort: 16 buildings, 0 interiors, 6 residents, 15 hostile, about 35 m across). The source reads: "Kintyra's Wall: a fort built in ayleid and argonian style with ruin, shrine, mine pieces. 6 people live there, 15 hostile. By water." Similar sources: Whiterun Watchtower (fort, 48 buildings, 0 interiors), Forth Isle (fort, 24 buildings, 1 interior) and Cracked Tusk (fort, 254 buildings, 2 interiors). <!-- place_source:fort-reedmoth/0; source_place:heretherebemonsterscurseofcipactli.cluster.kintyra-s-wall.-16.4; place_source:fort-reedmoth/1; place_source:fort-reedmoth/2; place_source:fort-reedmoth/3 -->
+
+### Southwatch Keep
+
+A fort, about 80 m across, sited on coast, of The Warden Marches. In 4E 201 it is garrisoned, held by a small garrison of the Archwardens, the Xeech-Leel's wardens, drawn from old Archein families; 8 people live there. It is not built yet. <!-- place:southwatch-keep -->
+
+A coastal fort at the south-west tip of the island, facing the sea road to Lilmoth. <!-- place_note:southwatch-keep/overview --> Eight garrison men keep the beacon lit, watch the sea road from the tower and pay little attention to Lilmoth's politics. <!-- place_note:southwatch-keep/present --> Argonian garrison of Archein-line officers, with fishermen from Karketa as neighbours. <!-- place_note:southwatch-keep/people --> An Imperial coast fort. The Legion left at the secession, 4E 5-10 and the Archwardens took the keep over soon after. <!-- place_note:southwatch-keep/history -->
+
+A squat stone keep with a beacon tower, a landing below and the sea open to the south. <!-- place_note:southwatch-keep/look --> The keep takes a toll from boatmen who put in at the landing below it and buys its provisions from the fishermen of Karketa. Spare fish is sold at the gate. <!-- place_note:southwatch-keep/economy --> There is no Hist at the keep; the garrison hatches its young and buries its dead at Lilmoth. <!-- place_note:southwatch-keep/faith -->
+
+Built from: Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a tower, a main hall and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, but its outside holds only a few roots and ash, so it gives no keep walls. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the keep's stone outer walls, gate and the beacon tower's outside, built from Imperial fort wall and tower pieces as at Cracked Tusk Keep (Skyrim), the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage. <!-- place_note:southwatch-keep/source -->
+
+It promises the player: General goods trader: the gate stores: fish, rope, lamp oil and mixed goods, restocked every 48 hours; Fish and clams: fish and shellfish off the landing (x3); Hostile occupants: wreckers in the sea-cave on the shore (x4); Boss fight: the wrecker captain; Dangerous wildlife: slaughterfish in the shallows below the landing (x3); Boss chest: boss chest in the wreckers' sea-cave; Lesser treasure: salvage from wrecked hulls (x2). <!-- place_give:southwatch-keep/0; place_give:southwatch-keep/1; place_give:southwatch-keep/2; place_give:southwatch-keep/3; place_give:southwatch-keep/4; place_give:southwatch-keep/5; place_give:southwatch-keep/6 -->
+
+Law: foreign law, with cells at Southwatch Keep. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Slaughterfish in the shallows below the landing and wreckers in a sea-cave on the shore. <!-- place_note:southwatch-keep/dangers --> <!-- place_law:southwatch-keep; place_danger:southwatch-keep -->
+
+The nearest stop is the boat stop at Lilmoth, 580 m away by road. Roads run from it to Ixa-Ruu Farm (track, 310 m north-east), Karketa (cart road, 450 m north-west), Kitsa Burrow (track, 520 m east) and Lilmoth (cart road, 580 m east). <!-- travel_approach:southwatch-keep; road_node:place=southwatch-keep -->
+
+It is to be built from Ashguard in SolstheimExpand.esp (a fort: 136 buildings, 3 interiors, 9 residents, 4 hostile, about 27 m across). The source reads: "Ashguard: a fort built in dunmer and nordic style with mine, camp, farm pieces. 9 people live there, 4 hostile. 3 interiors (Ashguard Watchtower, Ashguard Manor, Ashguard Barracks). By water." Similar sources: Cracked Tusk (fort, 254 buildings, 2 interiors), Forth Isle (fort, 24 buildings, 1 interior) and Whiterun Watchtower (fort, 48 buildings, 0 interiors). <!-- place_source:southwatch-keep/0; source_place:solstheimexpand.cluster.ashguard.15.7; place_source:southwatch-keep/1; place_source:southwatch-keep/2; place_source:southwatch-keep/3 -->
 
 ### Ashiit Den
 
@@ -202,7 +202,7 @@ It is to be built from Huluxinoag in King of the Murkmire.esp (a ruin argonian: 
 
 ### Karketa
 
-A village, about 120 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a village moot answering to Lilmoth's council; 14 people live there. It is not built yet. <!-- place:karketa -->
+A village, about 120 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a village moot answering to Lilmoth's council; 12 people live there. It is not built yet. <!-- place:karketa -->
 
 A coastal village on the road between Lilmoth and Southwatch Keep, in the Lilmoth coast's orbit. <!-- place_note:karketa/overview --> Twelve households net, salt fish and keep boats and sell their catch to Lilmoth's council market. <!-- place_note:karketa/present --> Argonians of the Lilmoth coast; the headwoman's family has kept the boats for generations. <!-- place_note:karketa/people --> An old coast village on a shore the Lilmothiit left long before the Flu; it was spared when Umbriel fell on Lilmoth in 4E 48 and sent people to help the town's rebuilding. <!-- place_note:karketa/history -->
 
@@ -217,24 +217,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Lilmoth, 720 m away by road. Roads run from it to Ixa-Ruu Farm (track, 450 m east), Southwatch Keep (cart road, 450 m south-east), Kitsa Burrow (track, 660 m south-east) and Lilmoth (cart road, 720 m east). <!-- travel_approach:karketa; road_node:place=karketa -->
 
 It is to be built from Karthwasten in Skyrim.esm (a town: 248 buildings, 5 interiors, 14 residents, 5 hostile, about 154 m across). The source reads: "Karthwasten: a town built in nordic and imperial style with mine, farm, cave pieces. 14 people live there, 5 hostile. 5 interiors. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:karketa/0; source_place:skyrim.karthwastenlocation; place_source:karketa/1; place_source:karketa/2; place_source:karketa/3 -->
-
-### Sal-Axan
-
-A village, about 120 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a village moot of Lilmoth-coast families, in the fort's shadow; 11 people live there. It is not built yet. <!-- place:sal-axan -->
-
-A village on the north shore of the northern island, by the road from Uluo to Fort Reedmoth. <!-- place_note:sal-axan/overview --> Ten households trade with the fort, the ferrymen and passing boats. <!-- place_note:sal-axan/present --> Argonians of the Lilmoth coast, some married into fort families of Archein descent. <!-- place_note:sal-axan/people --> Grew beside the Imperial fort; the villagers kept their houses after the secession, when the Legion left and the Archwardens' families took the fort in their name. <!-- place_note:sal-axan/history -->
-
-Stilt houses on a low rise by the road, fish racks, a landing and the fort's tower visible to the east. <!-- place_note:sal-axan/look --> Fish, rice, laundry and labour for the fort; boat hire for the Archon crossing. <!-- place_note:sal-axan/economy --> Hatching families go to Lilmoth's tree; the fort families keep a few Imperial habits but go to Lilmoth's tree to hatch their young. <!-- place_note:sal-axan/faith -->
-
-Built from: Its main source, Eastmarch Trading Post (Skyrim Trading Posts), is one Nordic building with no interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock pieces, and a hut serves as the village table. Keeba Hollow (King of the Murkmire) adds more huts. Still to add: the fish racks, the landing, the view of the fort tower to the east and the deserters' hoard in the reeds. <!-- place_note:sal-axan/source -->
-
-It promises the player: General goods trader: fish, rice and shell sold to the fort and travellers; Innkeeper or food seller: a village table with fish stew and ale; Fish and clams: north-shore fishing; Hostile occupants: deserters from Fort Reedmoth in the reeds (x3), 140 m north at the reeds along the north shore; Lesser treasure: a deserter's hoard. <!-- place_give:sal-axan/0; place_give:sal-axan/1; place_give:sal-axan/2; place_give:sal-axan/3; place_give:sal-axan/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. The village sits by the fort road and is safe in daylight. Drunk soldiers cause trouble after dark, and deserters hide in the reeds. <!-- place_note:sal-axan/dangers --> <!-- place_law:sal-axan; place_danger:sal-axan -->
-
-The nearest stop is the boat stop at Uluo, 560 m away across the marsh on foot. Roads run from it to Fort Lowmoth (track, 550 m south), Fort Reedmoth (track, 600 m south-east), Mereweather Estate (track, 620 m south), Nundi (track, 800 m south-west) and Uluo (track, 930 m west). <!-- travel_approach:sal-axan; road_node:place=sal-axan -->
-
-It is to be built from Eastmarch Trading Post in Skyrim Trading Posts.esp (a town: 1 building, 0 interiors, 11 residents, 2 hostile, about 102 m across). The source reads: "Eastmarch Trading Post: a town built in nordic style with mine, fort, camp pieces. 11 people live there, 2 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:sal-axan/0; source_place:skyrimtradingposts.marker.eastmarch-trading-post; place_source:sal-axan/1; place_source:sal-axan/2; place_source:sal-axan/3 -->
 
 ### Nundi
 
@@ -253,6 +235,24 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Lilmoth (660 m, 15 gold, 1 hour). Roads run from it to Uluo (track, 540 m north-west), Sal-Axan (track, 800 m north-east), Fort Lowmoth (track, 800 m east), Fort Reedmoth (track, 850 m north-east) and Mereweather Estate (track, 870 m east). <!-- travel_stop:nundi/boat; travel_route:lilmoth/nundi/boat; road_node:place=nundi -->
 
 It is to be built from Nzech in Black Marsh.esm (a town: 1390 buildings, 2 interiors, 10 residents, 57 hostile, about 17 m across). The source reads: "Nzech: a town built in dwemer and imperial style with ruin, mine, cave pieces. 10 people live there, 57 hostile. 2 interiors (Ruins, Nzech). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Root Whisper Village (village, 791 buildings, 8 interiors). <!-- place_source:nundi/0; source_place:blackmarsh.cluster.blackmarsh2-15-6.15.-6; place_source:nundi/1; place_source:nundi/2; place_source:nundi/3 -->
+
+### Sal-Axan
+
+A village, about 120 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a village moot of Lilmoth-coast families, in the fort's shadow; 10 people live there. It is not built yet. <!-- place:sal-axan -->
+
+A village on the north shore of the northern island, by the road from Uluo to Fort Reedmoth. <!-- place_note:sal-axan/overview --> Ten households trade with the fort, the ferrymen and passing boats. <!-- place_note:sal-axan/present --> Argonians of the Lilmoth coast, some married into fort families of Archein descent. <!-- place_note:sal-axan/people --> Grew beside the Imperial fort; the villagers kept their houses after the secession, when the Legion left and the Archwardens' families took the fort in their name. <!-- place_note:sal-axan/history -->
+
+Stilt houses on a low rise by the road, fish racks, a landing and the fort's tower visible to the east. <!-- place_note:sal-axan/look --> Fish, rice, laundry and labour for the fort; boat hire for the Archon crossing. <!-- place_note:sal-axan/economy --> Hatching families go to Lilmoth's tree; the fort families keep a few Imperial habits but go to Lilmoth's tree to hatch their young. <!-- place_note:sal-axan/faith -->
+
+Built from: Its main source, Eastmarch Trading Post (Skyrim Trading Posts), is one Nordic building with no interior, so it does not fit. Seekhat Yol (King of the Murkmire) fits better: an Argonian stilt village of seven huts with dock pieces, and a hut serves as the village table. Keeba Hollow (King of the Murkmire) adds more huts. Still to add: the fish racks, the landing, the view of the fort tower to the east and the deserters' hoard in the reeds. <!-- place_note:sal-axan/source -->
+
+It promises the player: General goods trader: fish, rice and shell sold to the fort and travellers; Innkeeper or food seller: a village table with fish stew and ale; Fish and clams: north-shore fishing; Hostile occupants: deserters from Fort Reedmoth in the reeds (x3), 140 m north at the reeds along the north shore; Lesser treasure: a deserter's hoard. <!-- place_give:sal-axan/0; place_give:sal-axan/1; place_give:sal-axan/2; place_give:sal-axan/3; place_give:sal-axan/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. The village sits by the fort road and is safe in daylight. Drunk soldiers cause trouble after dark, and deserters hide in the reeds. <!-- place_note:sal-axan/dangers --> <!-- place_law:sal-axan; place_danger:sal-axan -->
+
+The nearest stop is the boat stop at Uluo, 560 m away across the marsh on foot. Roads run from it to Fort Lowmoth (track, 550 m south), Fort Reedmoth (track, 600 m south-east), Mereweather Estate (track, 620 m south), Nundi (track, 800 m south-west) and Uluo (track, 930 m west). <!-- travel_approach:sal-axan; road_node:place=sal-axan -->
+
+It is to be built from Eastmarch Trading Post in Skyrim Trading Posts.esp (a town: 1 building, 0 interiors, 11 residents, 2 hostile, about 102 m across). The source reads: "Eastmarch Trading Post: a town built in nordic style with mine, fort, camp pieces. 11 people live there, 2 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:sal-axan/0; source_place:skyrimtradingposts.marker.eastmarch-trading-post; place_source:sal-axan/1; place_source:sal-axan/2; place_source:sal-axan/3 -->
 
 ### Brackwater Waystation
 
@@ -308,27 +308,9 @@ The nearest stop is the boat stop at Lilmoth, 660 m away by road. Roads run from
 
 It is to be built from Fort Hraggstad in Skyrim.esm (a fort: 282 buildings, 2 interiors, 0 residents, 89 hostile, about 70 m across). The source reads: "Fort Hraggstad: a fort built in imperial and argonian style with mine, ruin, fort pieces. 0 people live there, 89 hostile. 2 interiors. Dry ground." Similar sources: Nightcaller Temple (ruin imperial, 620 buildings, 1 interior), Driftshade Sanctuary (ruin imperial, 479 buildings, 2 interiors) and Tamriel 18,35 (ruin imperial, 10 buildings, 0 interiors). <!-- place_source:imperial-ruin-14-m109/0; source_place:skyrim.forthraggstadlocation; place_source:imperial-ruin-14-m109/1; place_source:imperial-ruin-14-m109/2; place_source:imperial-ruin-14-m109/3 -->
 
-### Silt-Orrel Estate
-
-An estate, about 80 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by an Argonian family of Lilmoth that settled the empty planter house, worked by tenant kin; 33 people live there. It is not built yet. <!-- place:estate-16-m108 -->
-
-A rice and reed estate on the road north of Lilmoth, in an Archein planter's house that an Argonian family now holds. <!-- place_note:estate-16-m108/overview --> Six people live on the estate; the family hires out its boats to the harbour. <!-- place_note:estate-16-m108/present --> An Argonian landholder lives with his kin and the tenant families who cut the reeds and work the paddies. <!-- place_note:estate-16-m108/people --> The Archein planters who built the house left it empty in the Third Era. In the first generation after 4E 48 the family moved in, salvaging beams and fittings from the drowned Imperial quarter of Lilmoth to make it sound. <!-- place_note:estate-16-m108/history -->
-
-Low thatched halls on stilts, a large rice-barn and reed-lined channels. <!-- place_note:estate-16-m108/look --> The estate grows rice and reed and hires out its boats to the Lilmoth harbour. <!-- place_note:estate-16-m108/economy --> The family and its tenants carry their eggs to Lilmoth's tree for hatching and naming. A small post of woven reed at the channel landing holds offerings for the water-spirits, left before every cutting. <!-- place_note:estate-16-m108/faith -->
-
-Built from: Its main source, Goldenglow Estate (Skyrim), is a Nordic estate of four interiors and over nine hundred Nordic pieces, so it does not fit and those pieces are replaced. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the planter's house and the storehouse as the cellar holding the salvage chest. Still to add: the low thatched halls on stilts, the rice-barn, the reed-lined channels and the woven reed post at the landing. <!-- place_note:estate-16-m108/source -->
-
-It promises the player: Common harvestables: rice and reed at the paddies and channels (x6); Dangerous wildlife: mudcrabs and slaughterfish in the reed channels (x4); Hostile occupants: night thieves on the north road (x3); Lesser treasure: salvage chest from the drowned quarter in the cellar. <!-- place_give:estate-16-m108/0; place_give:estate-16-m108/1; place_give:estate-16-m108/2; place_give:estate-16-m108/3 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. Hired guards and dogs watch the barn, and the reed channels hide mudcrabs and slaughterfish. Thieves at night are the usual trouble, since the north road is busy. <!-- place_note:estate-16-m108/dangers --> <!-- place_law:estate-16-m108; place_danger:estate-16-m108 -->
-
-The nearest stop is the boat stop at Nundi, 430 m away across the marsh on foot. Roads run from it to Dunhallow Plantation (cart road, 340 m south-west), Fort Sallowmoth (track, 380 m west), Seeku Farm (track, 520 m south-west), Lilmoth (cart road, 520 m south) and Wattle-Pool Farm (track, 660 m south-east). <!-- travel_approach:estate-16-m108; road_node:place=estate-16-m108 -->
-
-It is to be built from Goldenglow Estate in Skyrim.esm (a estate: 927 buildings, 4 interiors, 33 residents, 8 hostile, about 161 m across). The source reads: "Goldenglow Estate: a estate built in nordic and imperial style with mine, ship, camp pieces. 33 people live there, 8 hostile. 4 interiors. By water." Similar sources: Cormar Crossing (farm, 67 buildings, 5 interiors), Riverside Shack (homestead, 23 buildings, 0 interiors) and Ruined Farmhouse (farm, 37 buildings, 1 interior). <!-- place_source:estate-16-m108/0; source_place:skyrim.goldenglowestatelocation; place_source:estate-16-m108/1; place_source:estate-16-m108/2; place_source:estate-16-m108/3 -->
-
 ### Dunhallow Plantation
 
-An estate, about 80 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a Lilmoth family that took over the empty planter house, worked by tenant kin; 9 people live there. It is not built yet. <!-- place:estate-15-m110 -->
+An estate, about 80 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a Lilmoth family that took over the empty planter house, worked by tenant kin; 8 people live there. It is not built yet. <!-- place:estate-15-m110 -->
 
 A rice estate north-west of Lilmoth, built in an old planter's house and held by one Argonian family and their tenants. <!-- place_note:estate-15-m110/overview --> Eight people live in the great house and the huts beside it; paddies run toward the road. <!-- place_note:estate-15-m110/present --> Eight Argonians of two kin-lines: the landholder, her brothers and their mates and hatchlings. Tenant kin from Lilmoth come for the planting. <!-- place_note:estate-15-m110/people --> Breton planters laid out the paddies on the Hereguard model in the Third Era and were gone long before the secession, leaving the house to rot. In the generations after 4E 48 a family from rebuilt Lilmoth patched the roof, cleared the dykes and planted again. <!-- place_note:estate-15-m110/history -->
 
@@ -344,27 +326,9 @@ The nearest stop is the boat stop at Lilmoth, 330 m away by road. Roads run from
 
 It is to be built from Cormar Crossing in Journey to Baan Malur.esp (a farm: 67 buildings, 5 interiors, 9 residents, 0 hostile, about 82 m across). The source reads: "Cormar Crossing: a farm built in dunmer and nordic style with farm, camp, mine pieces. 9 people live there, 0 hostile. 5 interiors (Storehouse, Grain Silo, Cormar Crossing Farmhouse). By water." Similar sources: Goldenglow Estate (estate, 927 buildings, 4 interiors), Ruined Farmhouse (farm, 37 buildings, 1 interior) and Riverside Shack (homestead, 23 buildings, 0 interiors). <!-- place_source:estate-15-m110/0; source_place:journeytobaanmalur.cluster.cormar-crossing.-23.6; place_source:estate-15-m110/1; place_source:estate-15-m110/2; place_source:estate-15-m110/3 -->
 
-### Tal-Neesh Farm
-
-A farm, about 50 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a single farm family in the Lilmoth coast's orbit; 8 people live there. It is not built yet. <!-- place:farm-22-m104 -->
-
-A family of three keeps Tal-Neesh, a low plain house with a rice-paddy and a woodpile. It sells rice and eggs to the keepers of Fort Reedmoth. <!-- place_note:farm-22-m104/overview --> The family sells rice and eggs to the fort's cooks and bars its door at night against the road. Soldiers pass and trade on credit; the family remembers every sack owed. <!-- place_note:farm-22-m104/present --> A family of three keeps Tal-Neesh and sells its crops to the keepers of Fort Reedmoth. <!-- place_note:farm-22-m104/people --> Tal-Neesh was cleared in the generations after 4E 48, on the island road between Sal-Axan and Fort Reedmoth. It grew by supplying the fort's cook-house, and the family has outlasted three keepers. <!-- place_note:farm-22-m104/history -->
-
-A low plain house stands beside a rice-paddy, with a woodpile against its wall. <!-- place_note:farm-22-m104/look --> The farm sends rice and eggs to the cook-house of Fort Reedmoth. <!-- place_note:farm-22-m104/economy --> The family sends its hatchlings to Lilmoth's tree and buries its dead at Sal-Axan's moot ground when the road is clear. A post by the door is hung with scraps of soldiers' cloth, left for travellers who died on the road. <!-- place_note:farm-22-m104/faith -->
-
-Built from: Its main source, Salvius Farm (Skyrim), is five buildings with one farmhouse interior, with Dwemer and Nordic pieces that are replaced. Hlaalu Farm (Skyrim) fits better for a plain family farm: sixteen buildings with farm pieces, one interior and a barn, its Nordic pieces replaced. Its interior serves as the low plain house. Still to add: the rice paddy, the woodpile, the barn post with the bandit's knife, the post hung with soldiers' cloth and the bandits' stash in the barn. <!-- place_note:farm-22-m104/source -->
-
-It promises the player: Innkeeper or food seller: rice and eggs sold from the door; Common harvestables: rice at the paddy (x4); Hostile occupants: road bandits on the island road (x3); Lesser treasure: bandits' stash in the barn. <!-- place_give:farm-22-m104/0; place_give:farm-22-m104/1; place_give:farm-22-m104/2; place_give:farm-22-m104/3 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Road bandits and passing soldiers both trouble the farm on the island road. <!-- place_note:farm-22-m104/dangers --> <!-- place_law:farm-22-m104; place_danger:farm-22-m104 -->
-
-The nearest stop is the boat stop at Nundi, 410 m away across the marsh on foot. No road reaches it. <!-- travel_approach:farm-22-m104; road_node:place=farm-22-m104 -->
-
-It is to be built from Salvius Farm in Skyrim.esm (a farm: 5 buildings, 1 interior, 8 residents, 1 hostile, about 42 m across). The source reads: "Salvius Farm: a farm built in dwemer and nordic style with camp, farm pieces. 8 people live there, 1 hostile. 1 interiors. Dry ground." Similar sources: Hlaalu Farm (farm, 16 buildings, 1 interior), Ruined Farmhouse (farm, 37 buildings, 1 interior) and Hollyfrost Farm Interior (farm, 36 buildings, 1 interior). <!-- place_source:farm-22-m104/0; source_place:skyrim.salviusfarmlocation; place_source:farm-22-m104/1; place_source:farm-22-m104/2; place_source:farm-22-m104/3 -->
-
 ### Mereweather Estate
 
-An estate, about 80 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by an Argonian family that settled the empty planter house, with tenant kin; 4 people live there. It is not built yet. <!-- place:estate-23-m106 -->
+An estate, about 80 m across, sited on coast, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by an Argonian family that settled the empty planter house, with tenant kin; 6 people live there. It is not built yet. <!-- place:estate-23-m106 -->
 
 A rice estate on the south shore of the northern island, close to Fort Reedmoth. <!-- place_note:estate-23-m106/overview --> Six people live in the house and the quarters beside the landing. <!-- place_note:estate-23-m106/present --> An Argonian landholder, his mate and hatchlings, a steward and a few tenant kin. <!-- place_note:estate-23-m106/people --> The Archein planters left the house derelict in the Third Era, and Fort Reedmoth beside it passed from the Legion at the secession to ex-Archein families who keep it in the Archwardens' name. In the generations after 4E 48 a family from the Lilmoth coast moved into the house and replanted the paddies. <!-- place_note:estate-23-m106/history -->
 
@@ -379,6 +343,24 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Nundi, 500 m away across the marsh on foot. Roads run from it to Fort Lowmoth (track, 230 m north-west), Fort Reedmoth (cart road, 450 m north), Sal-Axan (track, 620 m north), Nundi (track, 870 m west) and Uluo (cart road, 1.0 km north-west). <!-- travel_approach:estate-23-m106; road_node:place=estate-23-m106 -->
 
 It is to be built from Ramshackle Trading Post in Dragonborn.esm (a homestead: 35 buildings, 0 interiors, 4 residents, 2 hostile, about 166 m across). The source reads: "DLC2SolstheimWorld 13,9: a homestead built in dwemer and imperial style with mine, camp, shrine pieces. 4 people live there, 2 hostile. By water." Similar sources: Cormar Crossing (farm, 67 buildings, 5 interiors), Goldenglow Estate (estate, 927 buildings, 4 interiors) and Ruined Farmhouse (farm, 37 buildings, 1 interior). <!-- place_source:estate-23-m106/0; source_place:dragonborn.marker.034ee4; place_source:estate-23-m106/1; place_source:estate-23-m106/2; place_source:estate-23-m106/3 -->
+
+### Silt-Orrel Estate
+
+An estate, about 80 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by an Argonian family of Lilmoth that settled the empty planter house, worked by tenant kin; 6 people live there. It is not built yet. <!-- place:estate-16-m108 -->
+
+A rice and reed estate on the road north of Lilmoth, in an Archein planter's house that an Argonian family now holds. <!-- place_note:estate-16-m108/overview --> Six people live on the estate; the family hires out its boats to the harbour. <!-- place_note:estate-16-m108/present --> An Argonian landholder lives with his kin and the tenant families who cut the reeds and work the paddies. <!-- place_note:estate-16-m108/people --> The Archein planters who built the house left it empty in the Third Era. In the first generation after 4E 48 the family moved in, salvaging beams and fittings from the drowned Imperial quarter of Lilmoth to make it sound. <!-- place_note:estate-16-m108/history -->
+
+Low thatched halls on stilts, a large rice-barn and reed-lined channels. <!-- place_note:estate-16-m108/look --> The estate grows rice and reed and hires out its boats to the Lilmoth harbour. <!-- place_note:estate-16-m108/economy --> The family and its tenants carry their eggs to Lilmoth's tree for hatching and naming. A small post of woven reed at the channel landing holds offerings for the water-spirits, left before every cutting. <!-- place_note:estate-16-m108/faith -->
+
+Built from: Its main source, Goldenglow Estate (Skyrim), is a Nordic estate of four interiors and over nine hundred Nordic pieces, so it does not fit and those pieces are replaced. Cormar Crossing (Journey to Baan Malur) fits better: a Dunmer farm of five interiors, where the farmhouse serves as the planter's house and the storehouse as the cellar holding the salvage chest. Still to add: the low thatched halls on stilts, the rice-barn, the reed-lined channels and the woven reed post at the landing. <!-- place_note:estate-16-m108/source -->
+
+It promises the player: Common harvestables: rice and reed at the paddies and channels (x6); Dangerous wildlife: mudcrabs and slaughterfish in the reed channels (x4); Hostile occupants: night thieves on the north road (x3); Lesser treasure: salvage chest from the drowned quarter in the cellar. <!-- place_give:estate-16-m108/0; place_give:estate-16-m108/1; place_give:estate-16-m108/2; place_give:estate-16-m108/3 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses settled ground; its loot is of the dangerous band. Hired guards and dogs watch the barn, and the reed channels hide mudcrabs and slaughterfish. Thieves at night are the usual trouble, since the north road is busy. <!-- place_note:estate-16-m108/dangers --> <!-- place_law:estate-16-m108; place_danger:estate-16-m108 -->
+
+The nearest stop is the boat stop at Nundi, 430 m away across the marsh on foot. Roads run from it to Dunhallow Plantation (cart road, 340 m south-west), Fort Sallowmoth (track, 380 m west), Seeku Farm (track, 520 m south-west), Lilmoth (cart road, 520 m south) and Wattle-Pool Farm (track, 660 m south-east). <!-- travel_approach:estate-16-m108; road_node:place=estate-16-m108 -->
+
+It is to be built from Goldenglow Estate in Skyrim.esm (a estate: 927 buildings, 4 interiors, 33 residents, 8 hostile, about 161 m across). The source reads: "Goldenglow Estate: a estate built in nordic and imperial style with mine, ship, camp pieces. 33 people live there, 8 hostile. 4 interiors. By water." Similar sources: Cormar Crossing (farm, 67 buildings, 5 interiors), Riverside Shack (homestead, 23 buildings, 0 interiors) and Ruined Farmhouse (farm, 37 buildings, 1 interior). <!-- place_source:estate-16-m108/0; source_place:skyrim.goldenglowestatelocation; place_source:estate-16-m108/1; place_source:estate-16-m108/2; place_source:estate-16-m108/3 -->
 
 ### Seeku Farm
 
@@ -416,9 +398,27 @@ The nearest stop is the boat stop at Lilmoth, 370 m away by road. Roads run from
 
 It is to be built from Hollyfrost Farm Interior in Skyrim.esm (a farm: 36 buildings, 1 interior, 3 residents, 5 hostile, about 43 m across). The source reads: "Hollyfrost Farm Interior: a farm built in nordic style with farm, camp, fort pieces. 3 people live there, 5 hostile. 1 interiors. By water." Similar sources: Ruined Farmhouse (farm, 37 buildings, 1 interior), Farmhouse (farm, 7 buildings, 2 interiors) and Pinewood Farm (farm, 158 buildings, 2 interiors). <!-- place_source:farm-14-m112/0; source_place:skyrim.hollyfrostfarminteriorlocation; place_source:farm-14-m112/1; place_source:farm-14-m112/2; place_source:farm-14-m112/3 -->
 
+### Tal-Neesh Farm
+
+A farm, about 50 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a single farm family in the Lilmoth coast's orbit; 3 people live there. It is not built yet. <!-- place:farm-22-m104 -->
+
+A family of three keeps Tal-Neesh, a low plain house with a rice-paddy and a woodpile. It sells rice and eggs to the keepers of Fort Reedmoth. <!-- place_note:farm-22-m104/overview --> The family sells rice and eggs to the fort's cooks and bars its door at night against the road. Soldiers pass and trade on credit; the family remembers every sack owed. <!-- place_note:farm-22-m104/present --> A family of three keeps Tal-Neesh and sells its crops to the keepers of Fort Reedmoth. <!-- place_note:farm-22-m104/people --> Tal-Neesh was cleared in the generations after 4E 48, on the island road between Sal-Axan and Fort Reedmoth. It grew by supplying the fort's cook-house, and the family has outlasted three keepers. <!-- place_note:farm-22-m104/history -->
+
+A low plain house stands beside a rice-paddy, with a woodpile against its wall. <!-- place_note:farm-22-m104/look --> The farm sends rice and eggs to the cook-house of Fort Reedmoth. <!-- place_note:farm-22-m104/economy --> The family sends its hatchlings to Lilmoth's tree and buries its dead at Sal-Axan's moot ground when the road is clear. A post by the door is hung with scraps of soldiers' cloth, left for travellers who died on the road. <!-- place_note:farm-22-m104/faith -->
+
+Built from: Its main source, Salvius Farm (Skyrim), is five buildings with one farmhouse interior, with Dwemer and Nordic pieces that are replaced. Hlaalu Farm (Skyrim) fits better for a plain family farm: sixteen buildings with farm pieces, one interior and a barn, its Nordic pieces replaced. Its interior serves as the low plain house. Still to add: the rice paddy, the woodpile, the barn post with the bandit's knife, the post hung with soldiers' cloth and the bandits' stash in the barn. <!-- place_note:farm-22-m104/source -->
+
+It promises the player: Innkeeper or food seller: rice and eggs sold from the door; Common harvestables: rice at the paddy (x4); Hostile occupants: road bandits on the island road (x3); Lesser treasure: bandits' stash in the barn. <!-- place_give:farm-22-m104/0; place_give:farm-22-m104/1; place_give:farm-22-m104/2; place_give:farm-22-m104/3 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Road bandits and passing soldiers both trouble the farm on the island road. <!-- place_note:farm-22-m104/dangers --> <!-- place_law:farm-22-m104; place_danger:farm-22-m104 -->
+
+The nearest stop is the boat stop at Nundi, 410 m away across the marsh on foot. No road reaches it. <!-- travel_approach:farm-22-m104; road_node:place=farm-22-m104 -->
+
+It is to be built from Salvius Farm in Skyrim.esm (a farm: 5 buildings, 1 interior, 8 residents, 1 hostile, about 42 m across). The source reads: "Salvius Farm: a farm built in dwemer and nordic style with camp, farm pieces. 8 people live there, 1 hostile. 1 interiors. Dry ground." Similar sources: Hlaalu Farm (farm, 16 buildings, 1 interior), Ruined Farmhouse (farm, 37 buildings, 1 interior) and Hollyfrost Farm Interior (farm, 36 buildings, 1 interior). <!-- place_source:farm-22-m104/0; source_place:skyrim.salviusfarmlocation; place_source:farm-22-m104/1; place_source:farm-22-m104/2; place_source:farm-22-m104/3 -->
+
 ### Wattle-Pool Farm
 
-A farm, about 50 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a single farm family in the Lilmoth coast's orbit; 1 person lives there. It is not built yet. <!-- place:farm-18-m110 -->
+A farm, about 50 m across, sited on inland, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a single farm family in the Lilmoth coast's orbit; 3 people live there. It is not built yet. <!-- place:farm-18-m110 -->
 
 A couple and a child keep Wattle-Pool, a small farmhouse among fruit trees beside a pond ringed with wattle. They sell honey and fruit at the nearest village. <!-- place_note:farm-18-m110/overview --> The couple tend the fruit trees and hives and net the pool in turn. They sell honey and fruit at the nearest village, and a stranger who sleeps in their shed is sent off by morning. <!-- place_note:farm-18-m110/present --> A couple and their child keep Wattle-Pool, a small family on the isle's firm centre. <!-- place_note:farm-18-m110/people --> Wattle-Pool was cleared in the generations after 4E 48, on the island's firm centre where a spring-fed pool made fishing and fruit possible. The wattle ring round the pool is the work of the first couple, who kept slaughterfish out of the shallows. <!-- place_note:farm-18-m110/history -->
 
@@ -467,19 +467,19 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - The elder wants a cargo of saltrice carried to Archon past the customs post. <!-- place_note:uluo/hooks -->
 - A raft-master offers a back channel the customs officers do not use, for a favour. <!-- place_note:uluo/hooks -->
-- Two families dispute who tends the Hist pool. <!-- place_note:uluo/hooks -->
+- Two families dispute who tends the pool of Hist sap. <!-- place_note:uluo/hooks -->
 - The tribe is wary of the Xeech-Leel and sends its own to sit with Archon's merchants, so it is both neutral ground and a smuggler's door. <!-- place_note:uluo/present -->
 - Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive. <!-- place_note:uluo/history -->
-
-**Southwatch Keep.**
-
-- The beacon lamp is found put out by hand, and the watch blames wreckers. <!-- place_note:southwatch-keep/hooks -->
-- A ship's captain swears he paid the toll and will not pay twice. <!-- place_note:southwatch-keep/hooks -->
 
 **Fort Reedmoth.**
 
 - A smuggler's tip about a night landing on the east shingle. <!-- place_note:fort-reedmoth/hooks -->
 - A quarrel over the toll with the Three Waters families, who say the chain is theirs by older right. <!-- place_note:fort-reedmoth/hooks -->
+
+**Southwatch Keep.**
+
+- The beacon lamp is found put out by hand, and the watch blames wreckers. <!-- place_note:southwatch-keep/hooks -->
+- A ship's captain swears he paid the toll and will not pay twice. <!-- place_note:southwatch-keep/hooks -->
 
 **Ashiit Den.**
 
@@ -520,13 +520,13 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A boat lost beyond the reef with a villager's father aboard; a salt pan taken by a Lilmoth family for an unpaid debt; a stranger who asks the headwoman for a boat at night. <!-- place_note:karketa/hooks -->
 - They take their hatchlings to Lilmoth's third Hist and keep a prayer-post carved for the drowned. <!-- place_note:karketa/faith -->
 
-**Sal-Axan.**
-
-- A soldier who owes a village family a debt; a net that brought up something strange; a deserter hiding among the stilt houses. <!-- place_note:sal-axan/hooks -->
-
 **Nundi.**
 
 - A boundary quarrel with Uluo's families; a ferryman missing; a drained field that turned up old bones without grave-stakes. <!-- place_note:nundi/hooks -->
+
+**Sal-Axan.**
+
+- A soldier who owes a village family a debt; a net that brought up something strange; a deserter hiding among the stilt houses. <!-- place_note:sal-axan/hooks -->
 
 **Brackwater Waystation.**
 
@@ -551,26 +551,21 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A squatter wants a lost kinsman found, last seen heading for the fort. <!-- place_note:imperial-ruin-14-m109/hooks -->
 - Fort Sallowmoth has no residents, but squatters keep a watch from the roofless yard and smugglers pass through. <!-- place_note:imperial-ruin-14-m109/people -->
 
-**Silt-Orrel Estate.**
-
-- A salvage chest from the drowned quarter lies hidden in the cellar, and the family will not say whose it was. <!-- place_note:estate-16-m108/hooks -->
-- A cousin who left for the Warden fort has come back wanting a share of the boats. <!-- place_note:estate-16-m108/hooks -->
-- In the first generation after 4E 48 the family moved in, salvaging beams and fittings from the drowned Imperial quarter of Lilmoth to make it sound. <!-- place_note:estate-16-m108/history -->
-
 **Dunhallow Plantation.**
 
 - The family has walled up the old cellar, where the planters' strongbox lies and the unstaked Breton dead are not at rest. <!-- place_note:estate-15-m110/hooks -->
 - A rival family claims the east dykes. <!-- place_note:estate-15-m110/hooks -->
 
-**Tal-Neesh Farm.**
-
-- A soldier wants rice on credit and will not say who sent him. <!-- place_note:farm-22-m104/hooks -->
-- A bandit has stuck a knife in the barn post as a warning to pay. <!-- place_note:farm-22-m104/hooks -->
-
 **Mereweather Estate.**
 
 - The steward hides a kinsman who ran from Fort Reedmoth's keepers and wants him gone before they ask. <!-- place_note:estate-23-m106/hooks -->
 - A lighter of rice has not reached Archon, and its crew say nothing. <!-- place_note:estate-23-m106/hooks -->
+
+**Silt-Orrel Estate.**
+
+- A salvage chest from the drowned quarter lies hidden in the cellar, and the family will not say whose it was. <!-- place_note:estate-16-m108/hooks -->
+- A cousin who left for the Warden fort has come back wanting a share of the boats. <!-- place_note:estate-16-m108/hooks -->
+- In the first generation after 4E 48 the family moved in, salvaging beams and fittings from the drowned Imperial quarter of Lilmoth to make it sound. <!-- place_note:estate-16-m108/history -->
 
 **Seeku Farm.**
 
@@ -583,6 +578,11 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - A hawker offers odd things from wrecks on the southern shoals. <!-- place_note:farm-14-m112/hooks -->
 - A lost fowl has wandered into a hollow among the wreck timbers. <!-- place_note:farm-14-m112/hooks -->
 - By the door a post hung with shells stands for sailors drowned on the southern shoals. <!-- place_note:farm-14-m112/faith -->
+
+**Tal-Neesh Farm.**
+
+- A soldier wants rice on credit and will not say who sent him. <!-- place_note:farm-22-m104/hooks -->
+- A bandit has stuck a knife in the barn post as a warning to pay. <!-- place_note:farm-22-m104/hooks -->
 
 **Wattle-Pool Farm.**
 

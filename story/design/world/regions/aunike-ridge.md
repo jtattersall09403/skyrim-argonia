@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (21%), dry tree (18%), und
 
 Chime-Keepers at Nacydes and Tydeos; Paatru and Naga hold the camps at its margin. <!-- region_note:aunike-ridge/people -->
 
-The places here belong to The Chime-Keepers (Kothringi-named towns) (2 places, about 5 people); 2 places carry no culture in the data. <!-- place:region=aunike-ridge -->
+The places here belong to The Chime-Keepers (Kothringi-named towns) (2 places, about 11 people); 2 places carry no culture in the data. <!-- place:region=aunike-ridge -->
 
 ## Its history, faith, trade and the present
 
@@ -38,9 +38,27 @@ Law here, place by place: 3 under native law and 1 under no law. <!-- place_law:
 
 Each place below says what its record promises the player, how it is reached, and what it is to be built from: its allocated source place, quoted as the source mining describes it, and the next most similar sources. The mining counts a source's buildings, interiors and people and names its piece families; how many of each kind of building it holds the data does not say.
 
+### Tydeos
+
+A hamlet, about 80 m across, sited on inland, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a family of Chime-Keepers; 6 people live there. It is not built yet. <!-- place:tydeos -->
+
+Tydeos is a hamlet of about six at the foot of the ridge's southern peak, a Kothringi-named place kept by Argonians. <!-- place_note:tydeos/overview --> Six people tend the peak's watchfire, keep goods for passing parties and trade with Korydon. <!-- place_note:tydeos/present --> About six Argonians: chime-menders, a watchfire-keeper and young hunters. <!-- place_note:tydeos/people --> A Kothringi settlement before 2E 560; Argonian chime-keepers moved in, and its watchfire on the peak has burned ever since. <!-- place_note:tydeos/history -->
+
+Hide tents on cypress platforms and stone footings against a rock rise, a signal fire basket on the peak, chimes in the wind. <!-- place_note:tydeos/look --> Hunting, herb-gathering, lizard-hides and chime-mending for Korydon. <!-- place_note:tydeos/economy --> The families honour Sithis; the watchfire on the peak above the hamlet doubles as a small offering to the Hist. <!-- place_note:tydeos/faith -->
+
+Built from: Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a shore of fishing nets, crab traps and broken shack poles with one interior, a warehouse of crates and barrels, which serves as the hunters' store and house. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms, hide tents and hide fences. BlackMarsh 5,-1 (Black Marsh.esm) offers one cabin interior of plank walls and a shelf as an alternate. Still to add: the stone footings of the houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path. <!-- place_note:tydeos/source -->
+
+It promises the player: Hunter buyer: young hunters buy hides and meat; Tanning rack: the hunters' racks; Forge: the chime-menders' forge; Anvil: the chime-menders' forge; Skill trainer: Journeyman Archery (a hunter); Dangerous wildlife: giant spiders on the ridge path (x3); Dangerous wildlife: a giant spider over the Kothringi cache; Boss chest: boss chest. <!-- place_give:tydeos/0; place_give:tydeos/1; place_give:tydeos/2; place_give:tydeos/3; place_give:tydeos/4; place_give:tydeos/5; place_give:tydeos/6; place_give:tydeos/7 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Naga hunters from the north camps, giant snakes, bad footing at night. <!-- place_note:tydeos/dangers --> <!-- place_law:tydeos; place_danger:tydeos -->
+
+The nearest stop is the boat stop at Korydon, 460 m away across the marsh on foot. Roads run from it to Kharaxos (track, 810 m south-west), Nemeon (track, 890 m north-east), Oeneas (track, 1.0 km west), Orji-Hael (track, 1.1 km south-east), Korydon (track, 1.3 km south-east) and Toklea (track, 1.5 km south). <!-- travel_approach:tydeos; road_node:place=tydeos -->
+
+It is to be built from near Honrich Lake Cave in UWRL_UnderWaterSkyrimRiversAndLakes.esp (a hamlet: 116 buildings, 1 interior, 1 resident, 0 hostile, about 39 m across). The source reads: "near Honrich Lake Cave: a hamlet built in nordic style with ruin, dock, mine pieces. 1 people live there, 0 hostile. 1 interiors. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Yngol Barrow (hamlet, 9 buildings, 1 interior) and BlackMarsh 5,-1 (hamlet, 109 buildings, 1 interior). <!-- place_source:tydeos/0; source_place:uwrlunderwaterskyrimriversandlakes.cluster.riftenplankside.40.-25; place_source:tydeos/1; place_source:tydeos/2; place_source:tydeos/3 -->
+
 ### Nacydes
 
-A hamlet, about 80 m across, sited on inland, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a family of Chime-Keepers; 3 people live there. It is not built yet. <!-- place:nacydes -->
+A hamlet, about 80 m across, sited on inland, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a family of Chime-Keepers; 5 people live there. It is not built yet. <!-- place:nacydes -->
 
 Nacydes is a hamlet of about five on a ridge shoulder at the west of the Aunike country, among the few Chime-Keeper places that sit on drier ground. <!-- place_note:nacydes/overview --> Five people hold the hamlet, keep lizard-steeds and trade chimes for hides. They post a watch on the nearest peak. <!-- place_note:nacydes/present --> About five Argonians, lizard-keepers and a chime-maker; they deal with the Paatru across the ridge only through hard bargaining. <!-- place_note:nacydes/people --> A Kothringi-named place resettled by Argonians after the Knahaten Flu (2E 560–603); the ridge made it a lookout. <!-- place_note:nacydes/history -->
 
@@ -58,7 +76,7 @@ It is to be built from BlackMarsh 5,-1 in Black Marsh.esm (a hamlet: 109 buildin
 
 ### Nacydes Watch
 
-A peak, about 60 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is garrisoned, held by Chime-Keeper lookout parties; 3 people live there. It is not built yet. <!-- place:peak-m11-m84 -->
+A peak, about 60 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is garrisoned, held by Chime-Keeper lookout parties; 1 person lives there. It is not built yet. <!-- place:peak-m11-m84 -->
 
 Nacydes Watch is a peak on the west of the Aunike Ridge, above Nacydes. A hut and a small chime stand on its rocky summit, where one sentry from Nacydes keeps watch. <!-- place_note:peak-m11-m84/overview --> Nacydes keeps one sentry in the summit hut, who rings the chime when Paatru or Naga come near the ridge. <!-- place_note:peak-m11-m84/present --> The peak has no residents; a sentry from Nacydes sits in the hut at all times. <!-- place_note:peak-m11-m84/people --> A lookout kept by the people of Nacydes, who keep one sentry on it at all times. <!-- place_note:peak-m11-m84/history -->
 
@@ -73,24 +91,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Gul-Tej, 1.0 km away across the marsh on foot. No road reaches it. <!-- travel_approach:peak-m11-m84; road_node:place=peak-m11-m84 -->
 
 It is to be built from Velothi Mountain Pass in Nyhus.esp (a peak: 4 buildings, 0 interiors, 3 residents, 1 hostile, about 51 m across). The source reads: "Velothi Mountain Pass: a peak built in dunmer and imperial style with mine pieces. 3 people live there, 1 hostile. By water." Similar sources: Doomstone Atronach (landmark, 0 buildings, 0 interiors), Doomstone Apprentice (landmark, 0 buildings, 0 interiors) and Frykte Peak (peak, 18 buildings, 0 interiors). <!-- place_source:peak-m11-m84/0; source_place:nyhus.marker.velothi-mountain-pass; place_source:peak-m11-m84/1; place_source:peak-m11-m84/2; place_source:peak-m11-m84/3 -->
-
-### Tydeos
-
-A hamlet, about 80 m across, sited on inland, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a family of Chime-Keepers; 2 people live there. It is not built yet. <!-- place:tydeos -->
-
-Tydeos is a hamlet of about six at the foot of the ridge's southern peak, a Kothringi-named place kept by Argonians. <!-- place_note:tydeos/overview --> Six people tend the peak's watchfire, keep goods for passing parties and trade with Korydon. <!-- place_note:tydeos/present --> About six Argonians: chime-menders, a watchfire-keeper and young hunters. <!-- place_note:tydeos/people --> A Kothringi settlement before 2E 560; Argonian chime-keepers moved in, and its watchfire on the peak has burned ever since. <!-- place_note:tydeos/history -->
-
-Hide tents on cypress platforms and stone footings against a rock rise, a signal fire basket on the peak, chimes in the wind. <!-- place_note:tydeos/look --> Hunting, herb-gathering, lizard-hides and chime-mending for Korydon. <!-- place_note:tydeos/economy --> The families honour Sithis; the watchfire on the peak above the hamlet doubles as a small offering to the Hist. <!-- place_note:tydeos/faith -->
-
-Built from: Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a shore of fishing nets, crab traps and broken shack poles with one interior, a warehouse of crates and barrels, which serves as the hunters' store and house. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms, hide tents and hide fences. BlackMarsh 5,-1 (Black Marsh.esm) offers one cabin interior of plank walls and a shelf as an alternate. Still to add: the stone footings of the houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path. <!-- place_note:tydeos/source -->
-
-It promises the player: Hunter buyer: young hunters buy hides and meat; Tanning rack: the hunters' racks; Forge: the chime-menders' forge; Anvil: the chime-menders' forge; Skill trainer: Journeyman Archery (a hunter); Dangerous wildlife: giant spiders on the ridge path (x3); Dangerous wildlife: a giant spider over the Kothringi cache; Boss chest: boss chest. <!-- place_give:tydeos/0; place_give:tydeos/1; place_give:tydeos/2; place_give:tydeos/3; place_give:tydeos/4; place_give:tydeos/5; place_give:tydeos/6; place_give:tydeos/7 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Naga hunters from the north camps, giant snakes, bad footing at night. <!-- place_note:tydeos/dangers --> <!-- place_law:tydeos; place_danger:tydeos -->
-
-The nearest stop is the boat stop at Korydon, 460 m away across the marsh on foot. Roads run from it to Kharaxos (track, 810 m south-west), Nemeon (track, 890 m north-east), Oeneas (track, 1.0 km west), Orji-Hael (track, 1.1 km south-east), Korydon (track, 1.3 km south-east) and Toklea (track, 1.5 km south). <!-- travel_approach:tydeos; road_node:place=tydeos -->
-
-It is to be built from near Honrich Lake Cave in UWRL_UnderWaterSkyrimRiversAndLakes.esp (a hamlet: 116 buildings, 1 interior, 1 resident, 0 hostile, about 39 m across). The source reads: "near Honrich Lake Cave: a hamlet built in nordic style with ruin, dock, mine pieces. 1 people live there, 0 hostile. 1 interiors. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Yngol Barrow (hamlet, 9 buildings, 1 interior) and BlackMarsh 5,-1 (hamlet, 109 buildings, 1 interior). <!-- place_source:tydeos/0; source_place:uwrlunderwaterskyrimriversandlakes.cluster.riftenplankside.40.-25; place_source:tydeos/1; place_source:tydeos/2; place_source:tydeos/3 -->
 
 ### Aunike Crown
 
@@ -122,6 +122,11 @@ Places that fight a visitor: Aunike Crown (abandoned, deadly: abandoned; what mo
 
 Each is quoted from the notes and cited to its row. The place's own hooks note comes first; then the tensions, shortages, rivalries, mysteries and losses its other notes state.
 
+**Tydeos.**
+
+- The watchfire went dark one night and a stranger was found beside it; a giant spider nest guards a Kothringi cache along the ridge path. <!-- place_note:tydeos/hooks -->
+- A Kothringi settlement before 2E 560; Argonian chime-keepers moved in, and its watchfire on the peak has burned ever since. <!-- place_note:tydeos/history -->
+
 **Nacydes.**
 
 - The Paatru camp wants a chime tuned; a Naga band is watching the pass; the old watchman saw a light on the peak where no fire should be. <!-- place_note:nacydes/hooks -->
@@ -129,11 +134,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Nacydes Watch.**
 
 - The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice beside a giant snake den. <!-- place_note:peak-m11-m84/hooks -->
-
-**Tydeos.**
-
-- The watchfire went dark one night and a stranger was found beside it; a giant spider nest guards a Kothringi cache along the ridge path. <!-- place_note:tydeos/hooks -->
-- A Kothringi settlement before 2E 560; Argonian chime-keepers moved in, and its watchfire on the peak has burned ever since. <!-- place_note:tydeos/history -->
 
 **Aunike Crown.**
 

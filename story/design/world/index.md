@@ -2,13 +2,13 @@
 
 A digest of the new world's database (Project Tamriel's Black Marsh, built as our own worldspace) for the people who write its story. It is generated, never edited by hand: change the database or the generator and regenerate. The other files in this folder (the numbered lore-system notes) are written by hand and are not part of the digest.
 
-Made 2026-11-19 from database revision `ab4f411fea7296c2` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
+Made 2026-11-20 from database revision `8d0c5a22ee214894` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
 
     python3 -m tools.newworld.story_digest [--out story/design/world]
 
 | File | Lines | What it holds |
 |---|---|---|
-| [province.md](province.md) | 580 | The province in one read: the regions and what borders what, water, the travel network, the peoples, power and law, danger, what it offers, a table of every place, and where the data is silent. |
+| [province.md](province.md) | 581 | The province in one read: the regions and what borders what, water, the travel network, the peoples, power and law, danger, what it offers, a table of every place, and where the data is silent. |
 | [regions/althii-archipelago.md](regions/althii-archipelago.md) | 591 | Althii Archipelago: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/aphon-isle.md](regions/aphon-isle.md) | 153 | Aphon Isle: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/arnesian-jungle.md](regions/arnesian-jungle.md) | 293 | Arnesian Jungle: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |

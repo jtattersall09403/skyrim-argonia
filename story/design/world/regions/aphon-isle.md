@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (27%), dry tree (20%), und
 
 A handful of watchers and smugglers live on the island, the watchers at the belvedere and the smugglers at the cave. <!-- region_note:aphon-isle/people -->
 
-The places here belong to The Warden Marches (1 place, about 15 people); 3 places carry no culture in the data. <!-- place:region=aphon-isle -->
+The places here belong to The Warden Marches (1 place, about 12 people); 3 places carry no culture in the data. <!-- place:region=aphon-isle -->
 
 ## Its history, faith, trade and the present
 
@@ -40,9 +40,9 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Bramman's Watch (also called Aphon Belvedere)
 
-A belvedere, about 80 m across, sited on hilltop, of The Warden Marches. In 4E 201 it is occupied, held by Bramman's Brethren, the pirates' seat under Captain Wazei-Vos, called One-Eye; 15 people live there. It is not built yet. <!-- place:aphon-belvedere -->
+A belvedere, about 80 m across, sited on hilltop, of The Warden Marches. In 4E 201 it is occupied, held by Bramman's Brethren, the pirates' seat under Captain Wazei-Vos, called One-Eye; 12 people live there. It is not built yet. <!-- place:aphon-belvedere -->
 
-A view-house built for an Imperial governor, with a tower on the water below it; now the seat of the pirates of Topal Bay, who call it Bramman's Watch. <!-- place_note:aphon-belvedere/overview --> About fifteen pirates live at the Watch. Their lookouts count every ship that comes into the bay for Gideon, and their boat crosses to Olvani. <!-- place_note:aphon-belvedere/present --> Argonian, Khajiit and Dunmer pirates under their captain, One-Eye, with a Dunmer quartermaster and an Argonian bosun. <!-- place_note:aphon-belvedere/people --> Built under the Empire as a governor's retreat. The Imperial garrison left at the secession and a customs watch of the Archwardens used it for two centuries. In 4E 196 One-Eye's crews took it, and the watch withdrew to Fort Shellmoth by Soulrest. <!-- place_note:aphon-belvedere/history -->
+A view-house built for an Imperial governor, with a tower on the water below it; now the seat of the pirates of Topal Bay, who call it Bramman's Watch. <!-- place_note:aphon-belvedere/overview --> About twelve pirates live at the Watch. Their lookouts count every ship that comes into the bay for Gideon, and their boat crosses to Olvani. <!-- place_note:aphon-belvedere/present --> Argonian, Khajiit and Dunmer pirates under their captain, One-Eye, with a Dunmer quartermaster and an Argonian bosun. <!-- place_note:aphon-belvedere/people --> Built under the Empire as a governor's retreat. The Imperial garrison left at the secession and a customs watch of the Archwardens used it for two centuries. In 4E 196 One-Eye's crews took it, and the watch withdrew to Fort Shellmoth by Soulrest. <!-- place_note:aphon-belvedere/history -->
 
 A white-washed house with a verandah on the island's rise, a stair of rough stone down to a stone tower on the water, and boats at the tower's foot. <!-- place_note:aphon-belvedere/look --> Prize cargoes taken from the Topal Bay Company's ships, stored in Kelp-Mouth Cave and sold up Bramman's river at Alten Corimont. <!-- place_note:aphon-belvedere/economy --> The crews swear by a figurehead set at the head of the stair. The small Nine shrine of the old retreat still stands, and nobody tends it. <!-- place_note:aphon-belvedere/faith -->
 

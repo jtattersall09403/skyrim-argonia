@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: hanging moss (11%), bald cypress (
 
 The Root-Folk of Helstrom (Saxhleel) hold the heart; the Hutan-Tzel hold the west; tribeless Naga and the toad-like Paatru hold the camps at the margin. <!-- region_note:murkwood/people -->
 
-The places here belong to The Root-Folk of Helstrom (6 places, about 55 people), The Hutan-Tzel (2 places, about 61 people) and The Chime-Keepers (Kothringi-named towns) (1 place, about 3 people); 4 places carry no culture in the data. <!-- place:region=murkwood -->
+The places here belong to The Root-Folk of Helstrom (6 places, about 133 people), The Hutan-Tzel (2 places, about 12 people) and The Chime-Keepers (Kothringi-named towns) (1 place, about 6 people); 4 places carry no culture in the data. <!-- place:region=murkwood -->
 
 ## Its history, faith, trade and the present
 
@@ -40,9 +40,9 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Helstrom (also called The immortal capital of the Argonians)
 
-A large city, about 1050 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard; 17 people live there. It is drafted: its place files are in newworld/places/helstrom. <!-- place:helstrom -->
+A metropolis, about 1050 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard; 110 people live there. It is drafted: its place files are in newworld/places/helstrom. <!-- place:helstrom -->
 
-Helstrom is one of Black Marsh's great cities, in the reputedly inhospitable middle of the province and many call it the immortal capital of the Argonians. It meets the Root Talk and is run by its own people, not by any distant government. <!-- place_note:helstrom/overview --> In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus. <!-- place_note:helstrom/present --> Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors and a very small outsider presence of perhaps a few dozen, each there on a naheesh's word. The guard is a tribal levy answerable to the assembly, not to strangers. <!-- place_note:helstrom/people --> Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here. The Empire refused to follow and never besieged the city. In 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state, and villages were built around it. Umbriel's path in 4E 48 passed it by. <!-- place_note:helstrom/history -->
+Helstrom is one of Black Marsh's great cities, in the reputedly inhospitable middle of the province and many call it the immortal capital of the Argonians. It meets the Root Talk and is run by its own people, not by any distant government. <!-- place_note:helstrom/overview --> In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus. <!-- place_note:helstrom/present --> Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors and a very small outsider presence of perhaps a handful, each there on a naheesh's word. The guard is a tribal levy answerable to the assembly, not to strangers. <!-- place_note:helstrom/people --> Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here. The Empire refused to follow and never besieged the city. In 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state, and villages were built around it. Umbriel's path in 4E 48 passed it by. <!-- place_note:helstrom/history -->
 
 Stilt and root-hollow houses of reed, mud and living wood, with no stone and no outward wall, because the marsh is the wall. Black Heart-Mud pools between the roots, the air is thick and warm and rafts and plank walks thread the districts. <!-- place_note:helstrom/look --> Helstrom does not trade outward; it receives and redistributes, because the rivers all drain to it. Rootworm and raft traffic, the Panther River fork and pilgrimage to the Root Talk bring it goods. Its market traders sell Murkwood feathers, sap, eggs and river fish. <!-- place_note:helstrom/economy --> The Hist, above all. Helstrom's city tree and its tree-minders matter more than any office, and the Root Talk, the occasion at which the Hist's alignment becomes audible to all the tribes, is held here in the holy month Hist-Tsoko. Sithis is honoured quietly; the Nine have no temple. <!-- place_note:helstrom/faith -->
 
@@ -58,7 +58,7 @@ It is to be built from Helstrom in Black Marsh.esm (a town: 308 buildings, 2 int
 
 ### Hutan-Ketu
 
-An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by Hutan-Tzel naheesh; 52 people live there. It is not built yet. <!-- place:outpost-m7-m77 -->
+An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by Hutan-Tzel naheesh; 6 people live there. It is not built yet. <!-- place:outpost-m7-m77 -->
 
 Six Hutan-Tzel keep a reed palisade on the bank, totem posts and a long canoe shed. <!-- place_note:outpost-m7-m77/overview --> Six Hutan-Tzel keep the post on the Murkwood edge and carry word by mouth between Helstrom and the west. They house the go-betweens overnight and answer to their own naheesh. <!-- place_note:outpost-m7-m77/present --> About six Hutan-Tzel hold the post at the Murkwood edge, with a messenger who carries their naheesh's words to Helstrom. <!-- place_note:outpost-m7-m77/people --> The Hutan-Tzel sit between Helstrom and the Gideon country and act as go-betweens. <!-- place_note:outpost-m7-m77/history -->
 
@@ -70,13 +70,13 @@ It promises the player: Hunter buyer: the Hutan-Tzel buy hides; Tanning rack: th
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. Totem rules; Naga parties from the south-west camp; Murkwood's medusas just across the bend. <!-- place_note:outpost-m7-m77/dangers --> <!-- place_law:outpost-m7-m77; place_danger:outpost-m7-m77 -->
 
-The nearest stop is the boat stop at Helstrom, 440 m away over water. Roads run from it to Helstrom (track, 1.3 km north-east), Urvyn Farm (track, 2.7 km north) and Nenria (track, 2.8 km north). <!-- travel_approach:outpost-m7-m77; road_node:place=outpost-m7-m77 -->
+The nearest stop is the boat stop at Helstrom, 440 m away across the marsh on foot. Roads run from it to Helstrom (track, 1.3 km north-east), Urvyn Farm (track, 2.7 km north) and Nenria (track, 2.8 km north). <!-- travel_approach:outpost-m7-m77; road_node:place=outpost-m7-m77 -->
 
 It is to be built from Sadrith Kegran in Dwarfsphere.esp (a tower: 6781 buildings, 33 interiors, 52 residents, 247 hostile, about 80 m across). The source reads: "Sadrith Kegran: a tower built in dwemer and dunmer style with ruin, ship, mine pieces. 52 people live there, 247 hostile. 33 interiors (Sadrith Kegran Mycelium, Sadrith Kegran, Sadrith Kegran Farm). Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-m7-m77/0; source_place:dwarfsphere.dwaspsadrithkegranloc; place_source:outpost-m7-m77/1; place_source:outpost-m7-m77/2; place_source:outpost-m7-m77/3 -->
 
 ### Tzel-Haar
 
-An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by Hutan-Tzel naheesh; 9 people live there. It is not built yet. <!-- place:outpost-m13-m79 -->
+An outpost, about 80 m across, sited on riverbank, of The Hutan-Tzel. In 4E 201 it is inhabited, held by Hutan-Tzel naheesh; 6 people live there. It is not built yet. <!-- place:outpost-m13-m79 -->
 
 Six Hutan-Tzel keep a fenced bank with a reed palisade, rune-carved totems and a ferry. <!-- place_note:outpost-m13-m79/overview --> Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree and not to Helstrom. They send a share of every toll to that naheesh. <!-- place_note:outpost-m13-m79/present --> About six Hutan-Tzel hold the fenced bank on the Panther River: watchers for the ferry and tolls, and a rune-carver who tends the totems. <!-- place_note:outpost-m13-m79/people --> The Hutan-Tzel keep fortified outposts along the Panther River, as the tribe is known to do. <!-- place_note:outpost-m13-m79/history -->
 
@@ -91,24 +91,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Gul-Tej, 510 m away across the marsh on foot. Roads run from it to Gul-Tej (track, 890 m west), Hutan-Aru (track, 1.4 km north) and Umpholo (track, 1.4 km north-west). <!-- travel_approach:outpost-m13-m79; road_node:place=outpost-m13-m79 -->
 
 It is to be built from Shors Watchtower in Skyrim.esm (a tower: 1 building, 0 interiors, 9 residents, 0 hostile, about 5 m across). The source reads: "Shors Watchtower: a tower built in nordic and imperial style with farm, camp pieces. 9 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-m13-m79/0; source_place:skyrim.shorswatchtowerlocation; place_source:outpost-m13-m79/1; place_source:outpost-m13-m79/2; place_source:outpost-m13-m79/3 -->
-
-### Tseli-Oon
-
-An outpost, about 80 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 25 people live there. It is not built yet. <!-- place:outpost-1-m75 -->
-
-Five Saxhleel of the Root-Folk of Helstrom keep it, tapping sap from the trees along the bank and answering to a tree-minder in Helstrom. <!-- place_note:outpost-1-m75/overview --> Five Saxhleel keep the station all year, tapping sap from the trees along the bank. They take the news to a tree-minder in Helstrom by boat and carry it in speech. <!-- place_note:outpost-1-m75/present --> About five Saxhleel sap-gatherers, a young egg-tender and a boy sent to learn the trees. <!-- place_note:outpost-1-m75/people --> A hunters' camp for Helstrom's market that grew into a station kept all year. The interior tribes never left in 4E 48, and the Root-Folk have used this bank for as long as their songs go back. <!-- place_note:outpost-1-m75/history -->
-
-Four hide tents on cypress platforms raised on posts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows and a canoe landing wreathed in hanging moss. <!-- place_note:outpost-1-m75/look --> Sap tapped from the Hist-tended trees on the bank goes down to Helstrom's market; the station barters it for dried fish and cloth. <!-- place_note:outpost-1-m75/economy --> There is no Hist at the station; the keepers carry hatchlings and the dead to the nearest village tree. A small totem-post at the landing, carved with a sap-drop, is touched on leaving. <!-- place_note:outpost-1-m75/faith -->
-
-Built from: Its main source, Riften Military Camp (Skyrim), is a camp of 16 buildings with no interior, built in camp, Imperial and Nordic pieces. It lends its tents, chairs, tables and campfires and its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire), an Argonian camp by water of cypress walkways and platforms on posts, six hide tents and hide fences, is the closer kind and serves as the keeper's huts. Near Loreisian (King of the Murkmire), an Argonian camp of doomstone circles, cypress knees and bog beacons with no tents, serves as the totem. Still to add: the drying frame, the eel-trap line, the sap-skins on the bank trees, the station fire and spears at each door. <!-- place_note:outpost-1-m75/source -->
-
-It promises the player: Rare harvestable: Hist-sap from the bank trees (x3); Free bed: a keeper's hut; Cooking pot: the station fire; Dangerous wildlife: giant spiders in the bank roots (x3); Dangerous wildlife: a giant spider; Boss chest: boss chest. <!-- place_give:outpost-1-m75/0; place_give:outpost-1-m75/1; place_give:outpost-1-m75/2; place_give:outpost-1-m75/3; place_give:outpost-1-m75/4; place_give:outpost-1-m75/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. The Naga camp to the north hunts here; predators come to the sap-skins and the station keeps spears at each door. <!-- place_note:outpost-1-m75/dangers --> <!-- place_law:outpost-1-m75; place_danger:outpost-1-m75 -->
-
-The nearest stop is the boat stop at Helstrom, 670 m away over water. Roads run from it to Reeka-Veesa (track, 1.5 km north-east), Oxayo (track, 2.1 km north-east), Tselan (track, 2.7 km north-east), Xuvagol (track, 3.1 km north-east) and Tsonac (track, 3.1 km north-east). <!-- travel_approach:outpost-1-m75; road_node:place=outpost-1-m75 -->
-
-It is to be built from Riften Military Camp in Skyrim.esm (a camp military: 16 buildings, 0 interiors, 25 residents, 0 hostile, about 28 m across). The source reads: "Tamriel 41,-21: a camp military built in imperial and nordic style with camp, mine pieces. 25 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-1-m75/0; source_place:skyrim.marker.0ec195; place_source:outpost-1-m75/1; place_source:outpost-1-m75/2; place_source:outpost-1-m75/3 -->
 
 ### Mud-Croak Camp
 
@@ -182,6 +164,78 @@ The nearest stop is the coach stop at Slough Point, 590 m away across the marsh 
 
 It is to be built from Brucas Leap Redoubt in Skyrim.esm (a camp tribal: 101 buildings, 1 interior, 0 residents, 7 hostile, about 42 m across). The source reads: "Brucas Leap Redoubt: a camp tribal with mine, cave, camp pieces. 0 people live there, 7 hostile. 1 interiors. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Largashbur (camp tribal, 65 buildings, 2 interiors) and Mor Khazgur (camp tribal, 219 buildings, 3 interiors). <!-- place_source:tribal-camp-m12-m74/0; source_place:skyrim.brucasleapredoubtlocation; place_source:tribal-camp-m12-m74/1; place_source:tribal-camp-m12-m74/2; place_source:tribal-camp-m12-m74/3 -->
 
+### Nemeon
+
+A hamlet, about 80 m across, sited on swamp, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by Chime-Keeper households; 6 people live there. It is not built yet. <!-- place:nemeon -->
+
+Nemeon is a small hamlet on a side waterway between Lake Ulaish and Korydon. Its form follows the Kothringi-named towns. <!-- place_note:nemeon/overview --> It stages boats going between the lake and Korydon and keeps a waystation bench and a lantern. <!-- place_note:nemeon/present --> About six Argonians: a boat-wife, her sons and a hired herb-picker. <!-- place_note:nemeon/people --> No stake tells of its founding. The place is read as a Kothringi site resettled by Argonians, and it has stayed small. <!-- place_note:nemeon/history -->
+
+A few hide tents on cypress platforms raised on posts beside a green waterway, hung with chimes; a lantern post; mossy moorings. <!-- place_note:nemeon/look --> Staging fees, herbs, fish and mending. Most of the income comes from passing traffic. <!-- place_note:nemeon/economy --> The family worships Sithis, and its eggs are laid at the Hist tree in Korydon, the nearest town upriver. <!-- place_note:nemeon/faith -->
+
+Built from: Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of snowy trees and rock with one interior that is an ice cave, so it holds no house. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet by water with cypress walkways and platforms on posts, hide tents and hide fences and no interior, whose pieces serve the waterside dwellings. Still to add: the boat-wife's house, an interior built from Black Marsh & Valenwood's reed-hut pieces, the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses. <!-- place_note:nemeon/source -->
+
+It promises the player: General goods trader: the boat-wife; Common harvestables: swamp herbs (x3); Cooking pot: the boat-wife's hearth; Hostile occupants: boat-robbers who stripped the wreck in the reeds (x3), 120 m south-east at the wreck in the reeds along the waterway; Boss fight: the boat-robbers' leader, 120 m south-east at the wreck in the reeds along the waterway; Boss chest: boss chest. <!-- place_give:nemeon/0; place_give:nemeon/1; place_give:nemeon/2; place_give:nemeon/3; place_give:nemeon/4; place_give:nemeon/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Wild at night; predators on the bank; Tumnatu hunters in the reeds. <!-- place_note:nemeon/dangers --> <!-- place_law:nemeon; place_danger:nemeon -->
+
+The nearest stop is the boat stop at Julo, 610 m away over water. Roads run from it to Tydeos (track, 890 m south-west), Yalugo (track, 1.3 km south-east), Myroleon (track, 1.8 km south-east), Vesh-Aneel (track, 1.9 km north-west) and Nacydes (track, 2.1 km west). <!-- travel_approach:nemeon; road_node:place=nemeon -->
+
+It is to be built from Headwaters Of Harstrad in Dragonborn.esm (a hamlet: 16 buildings, 1 interior, 3 residents, 2 hostile, about 171 m across). The source reads: "DLC2SolstheimWorld 12,18: a hamlet built in nordic and dunmer style with cave, mine, ruin pieces. 3 people live there, 2 hostile. 1 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Honningbrew Meadery (hamlet, 670 buildings, 3 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:nemeon/0; source_place:dragonborn.marker.039f96; place_source:nemeon/1; place_source:nemeon/2; place_source:nemeon/3 -->
+
+### Gaxu-Reet
+
+An outpost, about 80 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 5 people live there. It is not built yet. <!-- place:outpost-1-m81 -->
+
+Five Saxhleel of the Root-Folk of Helstrom hold its platforms on posts over the junction and tend eggs in clay nest-pits. <!-- place_note:outpost-1-m81/overview --> Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers and send word to Helstrom's tree-minders at each new moon. <!-- place_note:outpost-1-m81/present --> About five egg-tenders and watchers; one is an old sap-speaker. <!-- place_note:outpost-1-m81/people --> The junction's old nest-pits are read as sites that the Root-Folk kept from before the Empire; the station is the watch they keep on them. <!-- place_note:outpost-1-m81/history -->
+
+Tall cypress platforms on posts over a wide river junction, nest-pits of clay lined with moss, a watch post with a lantern and a horn. <!-- place_note:outpost-1-m81/look --> Hatchery eggs, fish and sap exchanged with boats going between Helstrom and the lake. <!-- place_note:outpost-1-m81/economy --> The station has no Hist of its own, so hatching and burial are done at the nearest village tree. A totem-post carved with a heron stands at the landing, and boatmen bow to it passing. <!-- place_note:outpost-1-m81/faith -->
+
+Built from: Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water whose cypress walkways and platforms on posts serve as the platform. Near Loreisian (King of the Murkmire), a small Argonian camp of doomstone circles, cypress knees and bog beacons, serves as the totem-post. Still to add: the watch post with its lantern and horn, the nest-pits, the junction landing and the platform's fishing edge. <!-- place_note:outpost-1-m81/source -->
+
+It promises the player: Fish and clams: the junction landing; Free bed: a platform on posts; Cooking pot: the station fire; Hostile occupants: an egg-thieves' boat crew (x3), 120 m south at the river junction below the platforms where the boat ties up; Boss fight: the egg-thieves' pilot, 120 m south at the river junction below the platforms where the boat ties up; Boss chest: boss chest. <!-- place_give:outpost-1-m81/0; place_give:outpost-1-m81/1; place_give:outpost-1-m81/2; place_give:outpost-1-m81/3; place_give:outpost-1-m81/4; place_give:outpost-1-m81/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. Naga and Tumnatu parties pass here; slaughterfish crowd the deep water where the river arms meet. <!-- place_note:outpost-1-m81/dangers --> <!-- place_law:outpost-1-m81; place_danger:outpost-1-m81 -->
+
+The nearest stop is the boat stop at Julo, 480 m away over water. Roads run from it to Ixu-Maan (track, 1.0 km north-west) and Helstrom (track, 1.3 km north-west). <!-- travel_approach:outpost-1-m81; road_node:place=outpost-1-m81 -->
+
+It is to be built from Southroad Pass in Wyrmstooth.esp (a tower: 365 buildings, 1 interior, 1 resident, 0 hostile, about 162 m across). The source reads: "Southroad Pass: a tower built in nordic and imperial style with mine, farm, cave pieces. 1 people live there, 0 hostile. 1 interiors (Fort Valus Common House). By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-1-m81/0; source_place:wyrmstooth.marker.southroad-pass; place_source:outpost-1-m81/1; place_source:outpost-1-m81/2; place_source:outpost-1-m81/3 -->
+
+### Ixu-Maan
+
+An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 5 people live there. It is not built yet. <!-- place:outpost-m2-m79 -->
+
+Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a clay nest-pit, with a signal pole on the crest. <!-- place_note:outpost-m2-m79/overview --> Five Saxhleel keep a night watch on the rise and tend a clutch of eggs. They light a lamp for travellers on the south road and report each dawn to a tree-minder in Helstrom. <!-- place_note:outpost-m2-m79/present --> About five Saxhleel, egg-tenders and night watchers, live on the rise south of Helstrom around the clay nest-pit. <!-- place_note:outpost-m2-m79/people --> A watch has been kept here since the Third Era settlements on Helstrom's approaches. It is now a Root-Folk station. <!-- place_note:outpost-m2-m79/history -->
+
+Stilt huts around a clay nest-pit on a low rise, a signal pole and a rope bridge to the next hummock. <!-- place_note:outpost-m2-m79/look --> Eggs, fish and a small toll for rafts passing between the south fork and Helstrom. <!-- place_note:outpost-m2-m79/economy --> The rise has no Hist; hatchlings are carried the short way to Helstrom's own tree. A small totem-post with a lamp-niche stands on the crest, and the keepers speak to it at dusk. <!-- place_note:outpost-m2-m79/faith -->
+
+Built from: Its main source, Hrodulfs House (Dragonborn), is a homestead of 119 buildings in Dwemer and Nordic style with one interior, which serves as the watch hut. Its Dwemer and Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: the clay nest-pit, the signal pole, the lamp-niche totem-post on the crest and the rope bridge to the next hummock. <!-- place_note:outpost-m2-m79/source -->
+
+It promises the player: Free bed: a watch hut; Cooking pot: the watch fire; Hostile occupants: Salt-Tooth Naga scouting the nest-pit at night (x3), 120 m west at the swamp edge south-west of the nest-pit, on the way from the Naga camp; Boss fight: the Naga scout-leader, 120 m west at the swamp edge south-west of the nest-pit, on the way from the Naga camp; Boss chest: boss chest. <!-- place_give:outpost-m2-m79/0; place_give:outpost-m2-m79/1; place_give:outpost-m2-m79/2; place_give:outpost-m2-m79/3; place_give:outpost-m2-m79/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. Naga raiders from the south-west camp and swamp predators; the watch is the city's first warning of anyone coming up from the south. <!-- place_note:outpost-m2-m79/dangers --> <!-- place_law:outpost-m2-m79; place_danger:outpost-m2-m79 -->
+
+The nearest stop is the boat stop at Helstrom, 620 m away over water. Roads run from it to Helstrom (track, 780 m north-west) and Gaxu-Reet (track, 1.0 km south-east). <!-- travel_approach:outpost-m2-m79; road_node:place=outpost-m2-m79 -->
+
+It is to be built from Hrodulfs House in Dragonborn.esm (a homestead: 119 buildings, 1 interior, 4 residents, 12 hostile, about 95 m across). The source reads: "DLC2SolstheimWorld 10,3: a homestead built in dwemer and nordic style with mine, farm, ruin pieces. 4 people live there, 12 hostile. 1 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-m2-m79/0; source_place:dragonborn.marker.0143d6; place_source:outpost-m2-m79/1; place_source:outpost-m2-m79/2; place_source:outpost-m2-m79/3 -->
+
+### Tseli-Oon
+
+An outpost, about 80 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 5 people live there. It is not built yet. <!-- place:outpost-1-m75 -->
+
+Five Saxhleel of the Root-Folk of Helstrom keep it, tapping sap from the trees along the bank and answering to a tree-minder in Helstrom. <!-- place_note:outpost-1-m75/overview --> Five Saxhleel keep the station all year, tapping sap from the trees along the bank. They take the news to a tree-minder in Helstrom by boat and carry it in speech. <!-- place_note:outpost-1-m75/present --> About five Saxhleel sap-gatherers, a young egg-tender and a boy sent to learn the trees. <!-- place_note:outpost-1-m75/people --> A hunters' camp for Helstrom's market that grew into a station kept all year. The interior tribes never left in 4E 48, and the Root-Folk have used this bank for as long as their songs go back. <!-- place_note:outpost-1-m75/history -->
+
+Four hide tents on cypress platforms raised on posts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows and a canoe landing wreathed in hanging moss. <!-- place_note:outpost-1-m75/look --> Sap tapped from the Hist-tended trees on the bank goes down to Helstrom's market; the station barters it for dried fish and cloth. <!-- place_note:outpost-1-m75/economy --> There is no Hist at the station; the keepers carry hatchlings and the dead to the nearest village tree. A small totem-post at the landing, carved with a sap-drop, is touched on leaving. <!-- place_note:outpost-1-m75/faith -->
+
+Built from: Its main source, Riften Military Camp (Skyrim), is a camp of 16 buildings with no interior, built in camp, Imperial and Nordic pieces. It lends its tents, chairs, tables and campfires and its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire), an Argonian camp by water of cypress walkways and platforms on posts, six hide tents and hide fences, is the closer kind and serves as the keeper's huts. Near Loreisian (King of the Murkmire), an Argonian camp of doomstone circles, cypress knees and bog beacons with no tents, serves as the totem. Still to add: the drying frame, the eel-trap line, the sap-skins on the bank trees, the station fire and spears at each door. <!-- place_note:outpost-1-m75/source -->
+
+It promises the player: Rare harvestable: Hist-sap from the bank trees (x3); Free bed: a keeper's hut; Cooking pot: the station fire; Dangerous wildlife: giant spiders in the bank roots (x3); Dangerous wildlife: a giant spider; Boss chest: boss chest. <!-- place_give:outpost-1-m75/0; place_give:outpost-1-m75/1; place_give:outpost-1-m75/2; place_give:outpost-1-m75/3; place_give:outpost-1-m75/4; place_give:outpost-1-m75/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. The Naga camp to the north hunts here; predators come to the sap-skins and the station keeps spears at each door. <!-- place_note:outpost-1-m75/dangers --> <!-- place_law:outpost-1-m75; place_danger:outpost-1-m75 -->
+
+The nearest stop is the boat stop at Helstrom, 670 m away over water. Roads run from it to Reeka-Veesa (track, 1.5 km north-east), Oxayo (track, 2.1 km north-east), Tselan (track, 2.7 km north-east), Xuvagol (track, 3.1 km north-east) and Tsonac (track, 3.1 km north-east). <!-- travel_approach:outpost-1-m75; road_node:place=outpost-1-m75 -->
+
+It is to be built from Riften Military Camp in Skyrim.esm (a camp military: 16 buildings, 0 interiors, 25 residents, 0 hostile, about 28 m across). The source reads: "Tamriel 41,-21: a camp military built in imperial and nordic style with camp, mine pieces. 25 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-1-m75/0; source_place:skyrim.marker.0ec195; place_source:outpost-1-m75/1; place_source:outpost-1-m75/2; place_source:outpost-1-m75/3 -->
+
 ### Hokal-Ush
 
 An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 4 people live there. It is not built yet. <!-- place:outpost-6-m77 -->
@@ -200,24 +254,6 @@ The nearest stop is the boat stop at Julo, 690 m away across the marsh on foot. 
 
 It is to be built from Serpents Bluff Redoubt in Skyrim.esm (a camp tribal: 166 buildings, 1 interior, 0 residents, 16 hostile, about 90 m across). The source reads: "Serpents Bluff Redoubt: a camp tribal built in imperial and argonian style with ruin, cave, farm pieces. 0 people live there, 16 hostile. 1 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Honningbrew Meadery (hamlet, 670 buildings, 3 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-6-m77/0; source_place:skyrim.serpentsbluffredoubtlocation; place_source:outpost-6-m77/1; place_source:outpost-6-m77/2; place_source:outpost-6-m77/3 -->
 
-### Ixu-Maan
-
-An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 4 people live there. It is not built yet. <!-- place:outpost-m2-m79 -->
-
-Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a clay nest-pit, with a signal pole on the crest. <!-- place_note:outpost-m2-m79/overview --> Five Saxhleel keep a night watch on the rise and tend a clutch of eggs. They light a lamp for travellers on the south road and report each dawn to a tree-minder in Helstrom. <!-- place_note:outpost-m2-m79/present --> About five Saxhleel, egg-tenders and night watchers, live on the rise south of Helstrom around the clay nest-pit. <!-- place_note:outpost-m2-m79/people --> A watch has been kept here since the Third Era settlements on Helstrom's approaches. It is now a Root-Folk station. <!-- place_note:outpost-m2-m79/history -->
-
-Stilt huts around a clay nest-pit on a low rise, a signal pole and a rope bridge to the next hummock. <!-- place_note:outpost-m2-m79/look --> Eggs, fish and a small toll for rafts passing between the south fork and Helstrom. <!-- place_note:outpost-m2-m79/economy --> The rise has no Hist; hatchlings are carried the short way to Helstrom's own tree. A small totem-post with a lamp-niche stands on the crest, and the keepers speak to it at dusk. <!-- place_note:outpost-m2-m79/faith -->
-
-Built from: Its main source, Hrodulfs House (Dragonborn), is a homestead of 119 buildings in Dwemer and Nordic style with one interior, which serves as the watch hut. Its Dwemer and Nordic pieces are replaced with Argonian pieces from near Loreisian (King of the Murkmire). Still to add: the clay nest-pit, the signal pole, the lamp-niche totem-post on the crest and the rope bridge to the next hummock. <!-- place_note:outpost-m2-m79/source -->
-
-It promises the player: Free bed: a watch hut; Cooking pot: the watch fire; Hostile occupants: Salt-Tooth Naga scouting the nest-pit at night (x3), 120 m west at the swamp edge south-west of the nest-pit, on the way from the Naga camp; Boss fight: the Naga scout-leader, 120 m west at the swamp edge south-west of the nest-pit, on the way from the Naga camp; Boss chest: boss chest. <!-- place_give:outpost-m2-m79/0; place_give:outpost-m2-m79/1; place_give:outpost-m2-m79/2; place_give:outpost-m2-m79/3; place_give:outpost-m2-m79/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. Naga raiders from the south-west camp and swamp predators; the watch is the city's first warning of anyone coming up from the south. <!-- place_note:outpost-m2-m79/dangers --> <!-- place_law:outpost-m2-m79; place_danger:outpost-m2-m79 -->
-
-The nearest stop is the boat stop at Helstrom, 620 m away over water. Roads run from it to Helstrom (track, 780 m north-west) and Gaxu-Reet (track, 1.0 km south-east). <!-- travel_approach:outpost-m2-m79; road_node:place=outpost-m2-m79 -->
-
-It is to be built from Hrodulfs House in Dragonborn.esm (a homestead: 119 buildings, 1 interior, 4 residents, 12 hostile, about 95 m across). The source reads: "DLC2SolstheimWorld 10,3: a homestead built in dwemer and nordic style with mine, farm, ruin pieces. 4 people live there, 12 hostile. 1 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Honningbrew Meadery (hamlet, 670 buildings, 3 interiors). <!-- place_source:outpost-m2-m79/0; source_place:dragonborn.marker.0143d6; place_source:outpost-m2-m79/1; place_source:outpost-m2-m79/2; place_source:outpost-m2-m79/3 -->
-
 ### Vesh-Aneel
 
 An outpost, about 80 m across, sited on swamp, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 4 people live there. It is not built yet. <!-- place:outpost-m3-m83 -->
@@ -235,42 +271,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Julo, 910 m away across the marsh on foot. Roads run from it to Nacydes (track, 650 m south-west), Tydeos (track, 1.8 km south), Nemeon (track, 1.9 km south-east), Yalugo (track, 2.6 km south-east) and Myroleon (track, 3.0 km south-east). <!-- travel_approach:outpost-m3-m83; road_node:place=outpost-m3-m83 -->
 
 It is to be built from Bleakwind Bluff in Skyrim.esm (a tower: 10 buildings, 0 interiors, 4 residents, 6 hostile, about 36 m across). The source reads: "Tamriel -27,2: a tower built in nordic style with mine, ruin, camp pieces. 4 people live there, 6 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Alten Meerhleel (dock, 4 buildings, 1 interior) and Velothi Victuals (hamlet, 16 buildings, 1 interior). <!-- place_source:outpost-m3-m83/0; source_place:skyrim.marker.0bb47c; place_source:outpost-m3-m83/1; place_source:outpost-m3-m83/2; place_source:outpost-m3-m83/3 -->
-
-### Nemeon
-
-A hamlet, about 80 m across, sited on swamp, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by Chime-Keeper households; 3 people live there. It is not built yet. <!-- place:nemeon -->
-
-Nemeon is a small hamlet on a side waterway between Lake Ulaish and Korydon. Its form follows the Kothringi-named towns. <!-- place_note:nemeon/overview --> It stages boats going between the lake and Korydon and keeps a waystation bench and a lantern. <!-- place_note:nemeon/present --> About six Argonians: a boat-wife, her sons and a hired herb-picker. <!-- place_note:nemeon/people --> No stake tells of its founding. The place is read as a Kothringi site resettled by Argonians, and it has stayed small. <!-- place_note:nemeon/history -->
-
-A few hide tents on cypress platforms raised on posts beside a green waterway, hung with chimes; a lantern post; mossy moorings. <!-- place_note:nemeon/look --> Staging fees, herbs, fish and mending. Most of the income comes from passing traffic. <!-- place_note:nemeon/economy --> The family worships Sithis, and its eggs are laid at the Hist tree in Korydon, the nearest town upriver. <!-- place_note:nemeon/faith -->
-
-Built from: Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of snowy trees and rock with one interior that is an ice cave, so it holds no house. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet by water with cypress walkways and platforms on posts, hide tents and hide fences and no interior, whose pieces serve the waterside dwellings. Still to add: the boat-wife's house, an interior built from Black Marsh & Valenwood's reed-hut pieces, the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses. <!-- place_note:nemeon/source -->
-
-It promises the player: General goods trader: the boat-wife; Common harvestables: swamp herbs (x3); Cooking pot: the boat-wife's hearth; Hostile occupants: boat-robbers who stripped the wreck in the reeds (x3), 120 m south-east at the wreck in the reeds along the waterway; Boss fight: the boat-robbers' leader, 120 m south-east at the wreck in the reeds along the waterway; Boss chest: boss chest. <!-- place_give:nemeon/0; place_give:nemeon/1; place_give:nemeon/2; place_give:nemeon/3; place_give:nemeon/4; place_give:nemeon/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are deadly (band 4 of 5, foes about level 35); the calmest way in crosses dangerous ground; its loot is of the deadly band. Wild at night; predators on the bank; Tumnatu hunters in the reeds. <!-- place_note:nemeon/dangers --> <!-- place_law:nemeon; place_danger:nemeon -->
-
-The nearest stop is the boat stop at Julo, 610 m away over water. Roads run from it to Tydeos (track, 890 m south-west), Yalugo (track, 1.3 km south-east), Myroleon (track, 1.8 km south-east), Vesh-Aneel (track, 1.9 km north-west) and Nacydes (track, 2.1 km west). <!-- travel_approach:nemeon; road_node:place=nemeon -->
-
-It is to be built from Headwaters Of Harstrad in Dragonborn.esm (a hamlet: 16 buildings, 1 interior, 3 residents, 2 hostile, about 171 m across). The source reads: "DLC2SolstheimWorld 12,18: a hamlet built in nordic and dunmer style with cave, mine, ruin pieces. 3 people live there, 2 hostile. 1 interiors. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Honningbrew Meadery (hamlet, 670 buildings, 3 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:nemeon/0; source_place:dragonborn.marker.039f96; place_source:nemeon/1; place_source:nemeon/2; place_source:nemeon/3 -->
-
-### Gaxu-Reet
-
-An outpost, about 80 m across, sited on riverbank, of The Root-Folk of Helstrom. In 4E 201 it is inhabited, held by Root-Folk tree-minder of the nearest village tree; 1 person lives there. It is not built yet. <!-- place:outpost-1-m81 -->
-
-Five Saxhleel of the Root-Folk of Helstrom hold its platforms on posts over the junction and tend eggs in clay nest-pits. <!-- place_note:outpost-1-m81/overview --> Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers and send word to Helstrom's tree-minders at each new moon. <!-- place_note:outpost-1-m81/present --> About five egg-tenders and watchers; one is an old sap-speaker. <!-- place_note:outpost-1-m81/people --> The junction's old nest-pits are read as sites that the Root-Folk kept from before the Empire; the station is the watch they keep on them. <!-- place_note:outpost-1-m81/history -->
-
-Tall cypress platforms on posts over a wide river junction, nest-pits of clay lined with moss, a watch post with a lantern and a horn. <!-- place_note:outpost-1-m81/look --> Hatchery eggs, fish and sap exchanged with boats going between Helstrom and the lake. <!-- place_note:outpost-1-m81/economy --> The station has no Hist of its own, so hatching and burial are done at the nearest village tree. A totem-post carved with a heron stands at the landing, and boatmen bow to it passing. <!-- place_note:outpost-1-m81/faith -->
-
-Built from: Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water whose cypress walkways and platforms on posts serve as the platform. Near Loreisian (King of the Murkmire), a small Argonian camp of doomstone circles, cypress knees and bog beacons, serves as the totem-post. Still to add: the watch post with its lantern and horn, the nest-pits, the junction landing and the platform's fishing edge. <!-- place_note:outpost-1-m81/source -->
-
-It promises the player: Fish and clams: the junction landing; Free bed: a platform on posts; Cooking pot: the station fire; Hostile occupants: an egg-thieves' boat crew (x3), 120 m south at the river junction below the platforms where the boat ties up; Boss fight: the egg-thieves' pilot, 120 m south at the river junction below the platforms where the boat ties up; Boss chest: boss chest. <!-- place_give:outpost-1-m81/0; place_give:outpost-1-m81/1; place_give:outpost-1-m81/2; place_give:outpost-1-m81/3; place_give:outpost-1-m81/4; place_give:outpost-1-m81/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are lethal (band 5 of 5, foes about level 50); the calmest way in crosses deadly ground; its loot is of the lethal band. Naga and Tumnatu parties pass here; slaughterfish crowd the deep water where the river arms meet. <!-- place_note:outpost-1-m81/dangers --> <!-- place_law:outpost-1-m81; place_danger:outpost-1-m81 -->
-
-The nearest stop is the boat stop at Julo, 480 m away over water. Roads run from it to Ixu-Maan (track, 1.0 km north-west) and Helstrom (track, 1.3 km north-west). <!-- travel_approach:outpost-1-m81; road_node:place=outpost-1-m81 -->
-
-It is to be built from Southroad Pass in Wyrmstooth.esp (a tower: 365 buildings, 1 interior, 1 resident, 0 hostile, about 162 m across). The source reads: "Southroad Pass: a tower built in nordic and imperial style with mine, farm, cave pieces. 1 people live there, 0 hostile. 1 interiors (Fort Valus Common House). By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and DLC2SolstheimWorld -1,-5 (hamlet, 18 buildings, 0 interiors). <!-- place_source:outpost-1-m81/0; source_place:wyrmstooth.marker.southroad-pass; place_source:outpost-1-m81/1; place_source:outpost-1-m81/2; place_source:outpost-1-m81/3 -->
 
 ## What ranges it
 
@@ -298,10 +298,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A totem has been moved and the beasts have come; the rune-carver can read the stolen one. <!-- place_note:outpost-m13-m79/hooks -->
 
-**Tseli-Oon.**
-
-- A sap-skin has been slashed and swapped for a skin of plain water; the young egg-tender wants a clutch carried to Helstrom without the Naga seeing. <!-- place_note:outpost-1-m75/hooks -->
-
 **Mud-Croak Camp.**
 
 - The elder wants a chime tuned and will let one trusted visitor in; a hunter vanished at the mere's edge; a lost caravan's goods rest in the mud. <!-- place_note:tribal-camp-m13-m77/hooks -->
@@ -323,18 +319,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Eight Naga hold a bend of the western river and raid the Hutan-Tzel's boats. <!-- place_note:tribal-camp-m12-m74/present -->
 - The band lives by raids on the Hutan-Tzel's boats, by hunting and by extorting payment from the ferry at Tzel-Haar. <!-- place_note:tribal-camp-m12-m74/economy -->
 
-**Hokal-Ush.**
-
-- A hunter went into Murkwood wearing a feather band and has not come back; a feather-trader will pay for a missing band recovered. <!-- place_note:outpost-6-m77/hooks -->
-
-**Ixu-Maan.**
-
-- A signal went up at night with no visitor in sight; an egg-tender claims the Hist spoke to her in the mud. <!-- place_note:outpost-m2-m79/hooks -->
-
-**Vesh-Aneel.**
-
-- A guide lost a party at the last crossing; the post's fire was lit three nights running without a keeper. <!-- place_note:outpost-m3-m83/hooks -->
-
 **Nemeon.**
 
 - A wrecked boat lies in the reeds with its goods unsold; a Kothringi cairn is hidden behind the houses; the lantern is lit from the water side at night and the family has not seen who does it. <!-- place_note:nemeon/hooks -->
@@ -342,3 +326,19 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Gaxu-Reet.**
 
 - A clutch is missing from the nest-pits; boats tie up here that did not come up the river; the old sap-speaker will name who took it for a price. <!-- place_note:outpost-1-m81/hooks -->
+
+**Ixu-Maan.**
+
+- A signal went up at night with no visitor in sight; an egg-tender claims the Hist spoke to her in the mud. <!-- place_note:outpost-m2-m79/hooks -->
+
+**Tseli-Oon.**
+
+- A sap-skin has been slashed and swapped for a skin of plain water; the young egg-tender wants a clutch carried to Helstrom without the Naga seeing. <!-- place_note:outpost-1-m75/hooks -->
+
+**Hokal-Ush.**
+
+- A hunter went into Murkwood wearing a feather band and has not come back; a feather-trader will pay for a missing band recovered. <!-- place_note:outpost-6-m77/hooks -->
+
+**Vesh-Aneel.**
+
+- A guide lost a party at the last crossing; the post's fire was lit three nights running without a keeper. <!-- place_note:outpost-m3-m83/hooks -->

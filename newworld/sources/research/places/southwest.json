@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half empty, the mixed population lives off sea trade, salvage and the hidden Bramman's river and three groups contest who rules.",
+   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half empty, the mixed population lives off sea trade, salvage and the hidden channel of Red Bramman and three groups contest who rules.",
    "lore_page": "Lore:Soulrest",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [],
@@ -100,7 +100,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Southern Sea trade, salvage from wrecks off the cape and Bramman's river, the concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict.",
+     "text": "Southern Sea trade, salvage from wrecks off the cape and Red Bramman's concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -143,7 +143,7 @@
     },
     {
      "aspect": "look",
-     "text": "A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu and burn-scarred dead ground and gas vents on its landward edge.",
+     "text": "A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove inlets to the south, xanmeers etched with wraxu and burn-scarred dead ground and gas vents on its landward edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -187,7 +187,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city and control of smuggling through Bramman's river.",
+     "text": "A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city and control of smuggling through Red Bramman's channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2683,7 +2683,7 @@
    "name": "Tei-Kur",
    "status": "inhabited",
    "held_by": "A reed-lord council of the delta villages",
-   "population": 8,
+   "population": 9,
    "footprint_radius_m": 60,
    "siting": "riverbank",
    "danger_band_id": "D3",
@@ -3135,7 +3135,7 @@
    "name": "Reedfall Farm",
    "status": "inhabited",
    "held_by": "A rice-farming family",
-   "population": 5,
+   "population": 4,
    "footprint_radius_m": 25,
    "siting": "riverbank",
    "danger_band_id": "D1",
@@ -6857,7 +6857,7 @@
    "name": "Naxan",
    "status": "inhabited",
    "held_by": "Soulrest merchant council through a village reeve",
-   "population": 8,
+   "population": 9,
    "footprint_radius_m": 60,
    "siting": "coast",
    "danger_band_id": "D1",
@@ -8042,7 +8042,7 @@
    "name": "Stonecut Quarry",
    "status": "inhabited",
    "held_by": "A quarry crew of Soulrest-quarter kin",
-   "population": 0,
+   "population": 3,
    "footprint_radius_m": 40,
    "siting": "inland",
    "danger_band_id": "D3",
@@ -8091,7 +8091,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of five, kin to one Soulrest-quarter family, works the Percar road face for the merchant council, cutting grey blocks for the harbour works and the coast road.",
+     "text": "A crew of three, kin to one Soulrest-quarter family, works the Percar road face for the merchant council, cutting grey blocks for the harbour works and the coast road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8108,7 +8108,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five Argonian quarrymen work the Stonecut face, living in a shed by the Percar road.",
+     "text": "Three Argonian quarrymen work the Stonecut face, living in a shed by the Percar road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8271,7 +8271,7 @@
    "name": "Redbank Quarry",
    "status": "inhabited",
    "held_by": "A quarry crew of Soulrest-quarter kin",
-   "population": 0,
+   "population": 3,
    "footprint_radius_m": 40,
    "siting": "inland",
    "danger_band_id": "D3",
@@ -8320,7 +8320,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of four works the red-stone face on the south side of the cape, for Soulrest's merchant council, with a short track to the shore.",
+     "text": "A crew of three works the red-stone face on the south side of the cape, for Soulrest's merchant council, with a short track to the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8337,7 +8337,7 @@
     },
     {
      "aspect": "people",
-     "text": "Four Argonian quarrymen cut the Redbank face and live in a shed beside the sled track.",
+     "text": "Three Argonian quarrymen cut the Redbank face and live in a shed beside the sled track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8495,7 +8495,7 @@
    "name": "Redgum Camp",
    "status": "inhabited",
    "held_by": "A timber crew of Soulrest-quarter kin, cutting for the merchant council",
-   "population": 5,
+   "population": 4,
    "footprint_radius_m": 25,
    "siting": "inland",
    "danger_band_id": "D3",
@@ -8566,7 +8566,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five Argonian loggers live and work at Redgum Camp, sharing a single bunk house.",
+     "text": "Four Argonian loggers live and work at Redgum Camp, sharing a single bunk house.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

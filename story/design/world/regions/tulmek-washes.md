@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (17%), lily (12%), bald cypre
 
 Olive lake-folk, oxblood Chime-Keepers, rose delta farmers, umber carters, the Blackguards' heirs and Naga. <!-- region_note:tulmek-washes/people -->
 
-The places here belong to The Island of Blackrose (10 places, about 96 people), The Chime-Keepers (Kothringi-named towns) (3 places, about 54 people), Lilmoth and the Murkmire Coast (3 places, about 11 people), The Warden Marches (2 places, about 2 people) and Soulrest and the Topal Coast (2 places, about 41 people); 4 places carry no culture in the data. <!-- place:region=tulmek-washes -->
+The places here belong to The Island of Blackrose (10 places, about 103 people), The Chime-Keepers (Kothringi-named towns) (3 places, about 22 people), Lilmoth and the Murkmire Coast (3 places, about 17 people), The Warden Marches (2 places, about 12 people) and Soulrest and the Topal Coast (2 places, about 36 people); 4 places carry no culture in the data. <!-- place:region=tulmek-washes -->
 
 ## Its history, faith, trade and the present
 
@@ -40,7 +40,7 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Blackrose
 
-A large city, about 440 m across, sited on island, of The Island of Blackrose. In 4E 201 it is inhabited, held by the island core: a narrow, defensive, self-perpetuating government whose legitimacy is possession; 64 people live there. It is not built yet. <!-- place:blackrose -->
+A large city, about 440 m across, sited on island, of The Island of Blackrose. In 4E 201 it is inhabited, held by the island core: a narrow, defensive, self-perpetuating government whose legitimacy is possession; 60 people live there. It is not built yet. <!-- place:blackrose -->
 
 A major city in a lake in south-central Black Marsh where three rivers converge. The Rose lies off in the marsh and is not the city's, though outsiders assume it is. <!-- place_note:blackrose/overview --> Functioning but diminished, with ruined and rebuilt quarters of several ages and old siege earthworks in the marsh from Welloc's campaign. The island core holds the toll and the hatching. Its Hist lies drowned in the lake, reached only by boat and dive. <!-- place_note:blackrose/present --> Argonian-majority, with prison staff families, ex-prisoners, deserters, refugees and coerced migrants. Distrust of battlemages and of the Rose runs through all of them. <!-- place_note:blackrose/people --> Built by the Lilmothiit; Kothringi and Yespest lived nearby. Red Bramman's bandit kingdom stood here around 1E 1033. The Imperial rebuild followed 1E 2837; the 2E rumoured it ruined; the city raised an army against the Third Empire and was broken by the battlemage Welloc's vampiric cloud. <!-- place_note:blackrose/history -->
 
@@ -58,7 +58,7 @@ It is to be built from Black Rose in Black Marsh North.esp (a town: 222 building
 
 ### Blackrose Prison (also called Blackguards' Hold and The Rose)
 
-A prison, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is occupied, held by The Blackguards' heirs under a Naga raj-kaal; the risen inmates in the lower levels; 2 people live there. It is not built yet. <!-- place:blackrose-prison -->
+A prison, about 80 m across, sited on inland, of The Warden Marches. In 4E 201 it is occupied, held by The Blackguards' heirs under a Naga raj-kaal; the risen inmates in the lower levels; 12 people live there. It is not built yet. <!-- place:blackrose-prison -->
 
 The Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs. <!-- place_note:blackrose-prison/overview --> Held by Blackguard families many generations deep and a Naga raj-kaal who resent the word prison. The upper walls are their stronghold. The lower levels are held by the undead. <!-- place_note:blackrose-prison/present --> Blackguards' heirs, escapees' descendants, exiles and outlaws, Naga allies and a few dozen hangers-on. They raid the roads and trade quietly with the lake villages. <!-- place_note:blackrose-prison/people --> Raised by Pelladil Direnni with stone atronachs for Potentate Versidue-Shaie, abandoned in the Second Empire's fall, held by the inmates' descendants, reclaimed by the Third Empire and broken again late in the Third Era. When the Empire left at the secession, the inmates' heirs took it a third time. <!-- place_note:blackrose-prison/history -->
 
@@ -74,27 +74,9 @@ The nearest stop is the boat stop at Blackrose, 280 m away across the marsh on f
 
 It is to be built from Forth Isle in Journey to Baan Malur.esp (a fort: 24 buildings, 1 interior, 2 residents, 2 hostile, about 75 m across). The source reads: "Forth Isle: a fort built in imperial style with dock, mine, ship pieces. 2 people live there, 2 hostile. 1 interiors (Gharek's Shack). By water." Similar sources: Cracked Tusk (fort, 254 buildings, 2 interiors), Ashfallow (fort, 275 buildings, 1 interior) and Whiterun Watchtower (fort, 48 buildings, 0 interiors). <!-- place_source:blackrose-prison/0; source_place:journeytobaanmalur.cluster.forth-isle.33.20; place_source:blackrose-prison/1; place_source:blackrose-prison/2; place_source:blackrose-prison/3 -->
 
-### Toklea
-
-A town, about 220 m across, sited on riverbank, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a council of craft-masters; no Archwarden garrison; 54 people live there. It is not built yet. <!-- place:toklea -->
-
-A market town named by the Kothringi, kept by Argonians who settled the empty Kothringi towns after the Knahaten Flu. <!-- place_note:toklea/overview --> A craft-masters' council governs and deals coldly with the Archwardens and warmly with Gideon. It is the best-ordered place for days around. <!-- place_note:toklea/present --> Argonians of the oxblood towns with a few mixed families: metalworkers, boatwrights, traders. <!-- place_note:toklea/people --> A Kothringi town before 2E 560; resettled by flu-immune Argonians, who kept the name; nativists in the generations since called its people half-foreign. <!-- place_note:toklea/history -->
-
-Stilt houses on stone footings, chimes of tin and copper hanging from every eave, boardwalks, neat rope-walks and a boatyard on the channel. <!-- place_note:toklea/look --> Tin and copper chimes, metal-woven rope, shallow-draft sail-and-paddle boats and fees from river traffic. <!-- place_note:toklea/economy --> Sithis and the Hist, with a quiet regard for Z'en and Dibella beside them. <!-- place_note:toklea/faith -->
-
-Built from: Its main source, Toil's End (Here There Be Monsters, Curse of Cipactli), is a Kothringi town of 173 buildings with dock pieces and one interior, the Kothringi Greathouse, so it fits the name, with its huts raised on docks and poles. Alten Meerhleel (King of the Murkmire) adds Argonian stilt houses and three interiors, a market and a lodging house among them, for the inn and the chime-smith's trading room. Its Nordic pieces are replaced. Still to add: the stone footings under the houses, tin and copper chimes on the eaves, the rope-walks and the boatyard on the channel. <!-- place_note:toklea/source -->
-
-It promises the player: General goods trader: chime-maker and general trader on the stone footing; Jeweller: tin, copper and glass chime-smith who buys and sells ingots and gems; Innkeeper or food seller: river-fork inn with rooms; Rented room: room at the river-fork inn; Smelter: chime-smith's smelter; Forge: chime-smith's forge with its anvil; Cooking pot: cooking pot at the inn; Skill trainer: Journeyman Smithing trainer, the chime-smith; Fish and clams: fishing at the river fork. <!-- place_give:toklea/0; place_give:toklea/1; place_give:toklea/2; place_give:toklea/3; place_give:toklea/4; place_give:toklea/5; place_give:toklea/6; place_give:toklea/7; place_give:toklea/8 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. Safe inside; the surrounding washes hold large predators, and the roads east are watched by outlaws from the Rose. <!-- place_note:toklea/dangers --> <!-- place_law:toklea; place_danger:toklea -->
-
-The nearest stop is the boat stop at Lujei Ferry, 480 m away over water. Roads run from it to Orji-Hael (track, 1.2 km north-east), Tydeos (track, 1.5 km north), Korydon (track, 1.7 km north), Kharaxos (track, 1.9 km north-west) and Oeneas (track, 2.1 km north-west). <!-- travel_approach:toklea; road_node:place=toklea -->
-
-It is to be built from Toil's End in Here There Be Monsters - Curse of Cipactli.esp (a town: 173 buildings, 1 interior, 54 residents, 19 hostile, about 141 m across). The source reads: "Toil's End: a town built in nordic and falmer style with dock, mine, camp pieces. 54 people live there, 19 hostile. 1 interiors (Kothringi Greathouse). By water." Similar sources: Alten Meerhleel (town, 72 buildings, 3 interiors), Murkwood (town, 153 buildings, 1 interior) and Murkmire (town, 156 buildings, 1 interior). <!-- place_source:toklea/0; source_place:heretherebemonsterscurseofcipactli.cluster.toil-s-end.-15.0; place_source:toklea/1; place_source:toklea/2; place_source:toklea/3 -->
-
 ### Mir-Xal
 
-A town, about 220 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a reeve of the Soulrest merchant council; 27 people live there. It is not built yet. <!-- place:mir-xal -->
+A town, about 220 m across, sited on inland, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by a reeve of the Soulrest merchant council; 26 people live there. It is not built yet. <!-- place:mir-xal -->
 
 A pentagon town on the road between Soulrest and the Blackrose lakes, on the only broad dry rise in the washes. <!-- place_note:mir-xal/overview --> It answers to Soulrest's merchant council, though its reeve hears the mine-burning tribes' complaints too. <!-- place_note:mir-xal/present --> Argonians, a few Khajiit teamsters and two Imperial-descended families who keep the toll house for Soulrest. <!-- place_note:mir-xal/people --> A waystation of the Third Era timber trade; it kept its trade when the mines burned in 3E 427 and grew as a toll town. <!-- place_note:mir-xal/history -->
 
@@ -110,6 +92,24 @@ It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with
 
 It is to be built from Fort Frostmoth - Lost Quarters in Bloodmoon Dungeons Restored - Fort Frostmoth Expansion.esp (a town: 394 buildings, 2 interiors, 27 residents, 13 hostile, about 17 m across). The source reads: "Fort Frostmoth - Lost Quarters: a town built in imperial and nordic style with ruin, mine, cave pieces. 27 people live there, 13 hostile. 2 interiors (Fort Frostmoth - Lost Quarters, Fort Frostmoth). Dry ground." Similar sources: Alten Meerhleel (town, 72 buildings, 3 interiors), Murkmire (town, 156 buildings, 1 interior) and Murkwood (town, 153 buildings, 1 interior). <!-- place_source:mir-xal/0; source_place:bloodmoondungeonsrestoredfortfrostmothexpansion.cluster.dlc2fortfrostmoth.13.5; place_source:mir-xal/1; place_source:mir-xal/2; place_source:mir-xal/3 -->
 
+### Toklea
+
+A town, about 220 m across, sited on riverbank, of The Chime-Keepers (Kothringi-named towns). In 4E 201 it is inhabited, held by a council of craft-masters; no Archwarden garrison; 22 people live there. It is not built yet. <!-- place:toklea -->
+
+A market town named by the Kothringi, kept by Argonians who settled the empty Kothringi towns after the Knahaten Flu. <!-- place_note:toklea/overview --> A craft-masters' council governs and deals coldly with the Archwardens and warmly with Gideon. It is the best-ordered place for days around. <!-- place_note:toklea/present --> Argonians of the oxblood towns with a few mixed families: metalworkers, boatwrights, traders. <!-- place_note:toklea/people --> A Kothringi town before 2E 560; resettled by flu-immune Argonians, who kept the name; nativists in the generations since called its people half-foreign. <!-- place_note:toklea/history -->
+
+Stilt houses on stone footings, chimes of tin and copper hanging from every eave, boardwalks, neat rope-walks and a boatyard on the channel. <!-- place_note:toklea/look --> Tin and copper chimes, metal-woven rope, shallow-draft sail-and-paddle boats and fees from river traffic. <!-- place_note:toklea/economy --> Sithis and the Hist, with a quiet regard for Z'en and Dibella beside them. <!-- place_note:toklea/faith -->
+
+Built from: Its main source, Toil's End (Here There Be Monsters, Curse of Cipactli), is a Kothringi town of 173 buildings with dock pieces and one interior, the Kothringi Greathouse, so it fits the name, with its huts raised on docks and poles. Alten Meerhleel (King of the Murkmire) adds Argonian stilt houses and three interiors, a market and a lodging house among them, for the inn and the chime-smith's trading room. Its Nordic pieces are replaced. Still to add: the stone footings under the houses, tin and copper chimes on the eaves, the rope-walks and the boatyard on the channel. <!-- place_note:toklea/source -->
+
+It promises the player: General goods trader: chime-maker and general trader on the stone footing; Jeweller: tin, copper and glass chime-smith who buys and sells ingots and gems; Innkeeper or food seller: river-fork inn with rooms; Rented room: room at the river-fork inn; Smelter: chime-smith's smelter; Forge: chime-smith's forge with its anvil; Cooking pot: cooking pot at the inn; Skill trainer: Journeyman Smithing trainer, the chime-smith; Fish and clams: fishing at the river fork. <!-- place_give:toklea/0; place_give:toklea/1; place_give:toklea/2; place_give:toklea/3; place_give:toklea/4; place_give:toklea/5; place_give:toklea/6; place_give:toklea/7; place_give:toklea/8 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. Safe inside; the surrounding washes hold large predators, and the roads east are watched by outlaws from the Rose. <!-- place_note:toklea/dangers --> <!-- place_law:toklea; place_danger:toklea -->
+
+The nearest stop is the boat stop at Lujei Ferry, 480 m away over water. Roads run from it to Orji-Hael (track, 1.2 km north-east), Tydeos (track, 1.5 km north), Korydon (track, 1.7 km north), Kharaxos (track, 1.9 km north-west) and Oeneas (track, 2.1 km north-west). <!-- travel_approach:toklea; road_node:place=toklea -->
+
+It is to be built from Toil's End in Here There Be Monsters - Curse of Cipactli.esp (a town: 173 buildings, 1 interior, 54 residents, 19 hostile, about 141 m across). The source reads: "Toil's End: a town built in nordic and falmer style with dock, mine, camp pieces. 54 people live there, 19 hostile. 1 interiors (Kothringi Greathouse). By water." Similar sources: Alten Meerhleel (town, 72 buildings, 3 interiors), Murkwood (town, 153 buildings, 1 interior) and Murkmire (town, 156 buildings, 1 interior). <!-- place_source:toklea/0; source_place:heretherebemonsterscurseofcipactli.cluster.toil-s-end.-15.0; place_source:toklea/1; place_source:toklea/2; place_source:toklea/3 -->
+
 ### Tarak Shan (also called Storming of Tarak Shan)
 
 An abandoned stilt village, about 120 m across, sited on swamp, of The Island of Blackrose. In 4E 201 it is abandoned, held by nobody; scavengers and wildlife; nobody lives there. It is not built yet. <!-- place:tarak-shan -->
@@ -124,31 +124,13 @@ It promises the player: Dangerous wildlife: feather-serpents (winged serpents) i
 
 Law: no law. It meets a visitor as abandoned (the place is uninhabited. Whatever has moved in (beasts, the dead) attacks, or it lies empty). What lives inside is deadly (band 4 of 5, foes about level 35); the calmest way in crosses wild ground; its loot is of the deadly band. Feather-serpents, undead of the old assault and deep water around the halls. <!-- place_note:tarak-shan/dangers --> <!-- place_law:tarak-shan; place_danger:tarak-shan -->
 
-The nearest stop is the boat stop at Delta Ferry, 1.0 km away over water. <!-- travel_approach:tarak-shan -->
+The nearest stop is the boat stop at Delta Ferry, 1.0 km away across the marsh on foot. No road reaches it. <!-- travel_approach:tarak-shan; road_node:place=tarak-shan -->
 
 It is to be built from Grondal Passage in Nyhus.esp (a hamlet: 91 buildings, 1 interior, 1 resident, 1 hostile, about 112 m across). The source reads: "Grondal Passage: a hamlet built in dwemer and nordic style with cave, ruin, mine pieces. 1 people live there, 1 hostile. 1 interiors (Grondal Passage). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Teeth of Sithis (ruin argonian, 5729 buildings, 3 interiors). <!-- place_source:tarak-shan/0; source_place:nyhus.cluster.grondal-passage.38.-31; place_source:tarak-shan/1; place_source:tarak-shan/2; place_source:tarak-shan/3 -->
 
-### Salaxul
-
-A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council reeve; 14 people live there. It is not built yet. <!-- place:salaxul -->
-
-Salaxul is a village on the south coast of the cape, below Mir-Xal, where the road from the interior reaches the sea. <!-- place_note:salaxul/overview --> Under the Soulrest merchant council; its reeve collects landing fees. <!-- place_note:salaxul/present --> Salaxul's villagers are Argonian boatmen, joined by a few Khajiit coasters who put in at the jetty. <!-- place_note:salaxul/people --> Salaxul began as a Third Era timber landing and kept its trade as a coastal boat stop after the mines burned. <!-- place_note:salaxul/history -->
-
-A wooden jetty runs out from the shore, with drying racks above the beach, low thatched huts on raised platforms and a salt pan behind them. <!-- place_note:salaxul/look --> Salaxul earns landing fees from the boats that put in, and sells salt, shellfish and coastal freight. <!-- place_note:salaxul/economy --> A Sithis shrine of piled conch shells stands at the top of the beach. Salaxul's eggs go inland to be hatched under a Banujha tree. <!-- place_note:salaxul/faith -->
-
-Built from: Its main source, Alten Merihall (Black Marsh & Valenwood), is a hamlet of 38 buildings with dock and ship pieces and no interior, which suits a landing with no room the record needs. Its Nordic pieces are replaced with Argonian thatched huts on raised plank platforms from Seekhat Yol (King of the Murkmire). Still to add: the salt pan behind the houses, the drying racks above the beach, the shrine of piled conch shells and the wooden jetty from the dock pieces. <!-- place_note:salaxul/source -->
-
-It promises the player: Boat stop: a coastal boat at the jetty; General goods trader: landing trader in salt, shellfish and coastal freight; Cooking pot: cooking pot at the landing; Fish and clams: shellfish and fishing off the jetty; Dangerous wildlife: slaughterfish in the creeks behind the village (x3); Lesser treasure: a smuggler's purse hidden under the jetty. <!-- place_give:salaxul/0; place_give:salaxul/1; place_give:salaxul/2; place_give:salaxul/3; place_give:salaxul/4; place_give:salaxul/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore and the deep creeks behind the village hold slaughterfish. <!-- place_note:salaxul/dangers --> <!-- place_law:salaxul; place_danger:salaxul -->
-
-It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Lilmoth (2.6 km, 30 gold, 2 hours) and Soulrest (2.7 km, 30 gold, 2 hours). Roads run from it to Mir-Xal (track, 730 m north-east) and Old Goldseam (track, 1.0 km north-west). <!-- travel_stop:salaxul/boat; travel_route:lilmoth/salaxul/boat; travel_route:salaxul/soulrest/boat; road_node:place=salaxul -->
-
-It is to be built from Alten Merihall in Black Marsh.esm (a hamlet: 38 buildings, 0 interiors, 14 residents, 0 hostile, about 110 m across). The source reads: "Alten Merihall: a hamlet built in nordic and dunmer style with farm, dock, ship pieces. 14 people live there, 0 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:salaxul/0; source_place:blackmarsh.cluster.alten-merihall.14.-6; place_source:salaxul/1; place_source:salaxul/2; place_source:salaxul/3 -->
-
 ### Lujei
 
-A village, about 120 m across, sited on lakeshore, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core for protection; 9 people live there. It is not built yet. <!-- place:lujei -->
+A village, about 120 m across, sited on lakeshore, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core for protection; 12 people live there. It is not built yet. <!-- place:lujei -->
 
 A lakeshore village on the west bank, with Lujei Ferry just to its west, facing Blackrose across the channel. <!-- place_note:lujei/overview --> Its elders pay the island core for protection and keep the ferry crew, who report to them. <!-- place_note:lujei/present --> Lujei's families are Argonian fishers on the west bank of the channel, among them a few descended from the old Imperial prison's inmates. <!-- place_note:lujei/people --> A fishing village that grew into the island's west landing after the late-3E rebellion, when the city could no longer keep a bridge there. <!-- place_note:lujei/history -->
 
@@ -164,27 +146,9 @@ The nearest stop is the boat stop at Lujei Ferry, 170 m away across the marsh on
 
 It is to be built from Stonehills in Skyrim.esm (a village: 78 buildings, 2 interiors, 9 residents, 1 hostile, about 57 m across). The source reads: "Stonehills: a village built in nordic style with mine, cave, camp pieces. 9 people live there, 1 hostile. 2 interiors. By water." Similar sources: Keeba Hollow (village, 203 buildings, 9 interiors), Seekhat Yol (village, 160 buildings, 7 interiors) and Dres village (village, 14 buildings, 0 interiors). <!-- place_source:lujei/0; source_place:skyrim.stonehillslocation; place_source:lujei/1; place_source:lujei/2; place_source:lujei/3 -->
 
-### Amalaja
-
-A village, about 120 m across, sited on coast, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core little for protection; 8 people live there. It is not built yet. <!-- place:amalaja -->
-
-A village on a headland at the sea edge, one of the stage points between the lake and the delta. <!-- place_note:amalaja/overview --> Its elders pay little to the island core and trade freely with Lilmoth. <!-- place_note:amalaja/present --> Amalaja's households are Argonian fishers on the headland, with a few families born in the delta who came to marry or trade. <!-- place_note:amalaja/people --> Settled from Blackrose in the generations after 4E 48, when the delta villages were cleared again and has leaned toward Lilmoth in trade since. <!-- place_note:amalaja/history -->
-
-Reed houses on a sandy headland, rice sacks under tarps, a line of fishing boats on the beach. <!-- place_note:amalaja/look --> Amalaja sells fish and swaps it for the delta's rice. It keeps small boats for the short runs to Lilmoth's coast. <!-- place_note:amalaja/economy --> Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. The Hist is honoured in a small rice-straw shrine on the dune above the boats. <!-- place_note:amalaja/faith -->
-
-Built from: Its main source, Hjaalmarch Trading Post (Skyrim Trading Posts), is a post of four buildings with eight people and no interior, close to the size of the headland. Its Nordic pieces are replaced with Argonian reed huts from Seekhat Yol (King of the Murkmire), whose interiors give the fish-and-rice seller's room. Still to add: the rice-straw shrine on the dune, the rice sacks under tarps and the line of fishing boats on the beach. <!-- place_note:amalaja/source -->
-
-It promises the player: Innkeeper or food seller: fish-and-rice seller on the dune; Cooking pot: cooking pot on the dune above the boats; Fish and clams: sea fishing off the point; Common harvestables: rice and dried fish from the delta swap. <!-- place_give:amalaja/0; place_give:amalaja/1; place_give:amalaja/2; place_give:amalaja/3 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. Sea-drakes offshore, unlit coast at night, raiders from the delta channels. <!-- place_note:amalaja/dangers --> <!-- place_law:amalaja; place_danger:amalaja -->
-
-The nearest stop is the boat stop at Delta Ferry, 840 m away across the marsh on foot. Roads run from it to Khariton (track, 560 m north-east), Blackrose (track, 1.1 km north-west), Ka-Asei (track, 1.4 km west), Lujei (track, 1.5 km west) and Kit Mounds (track, 1.5 km west). <!-- travel_approach:amalaja; road_node:place=amalaja -->
-
-It is to be built from Hjaalmarch Trading Post in Skyrim Trading Posts.esp (a town: 4 buildings, 0 interiors, 8 residents, 3 hostile, about 68 m across). The source reads: "Hjaalmarch Trading Post: a town built in nordic and argonian style with camp, ship, mine pieces. 8 people live there, 3 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Dres village (village, 14 buildings, 0 interiors). <!-- place_source:amalaja/0; source_place:skyrimtradingposts.marker.hjaalmarch-trading-post; place_source:amalaja/1; place_source:amalaja/2; place_source:amalaja/3 -->
-
 ### Natai
 
-A village, about 120 m across, sited on coast, of The Island of Blackrose. In 4E 201 it is inhabited, held by Village elders; the island core's protection is nominal; 8 people live there. It is not built yet. <!-- place:natai -->
+A village, about 120 m across, sited on coast, of The Island of Blackrose. In 4E 201 it is inhabited, held by Village elders; the island core's protection is nominal; 10 people live there. It is not built yet. <!-- place:natai -->
 
 A coastal village on the south shore of the washes, at the tip where the land meets the Sea of Mists. <!-- place_note:natai/overview --> Under the island core's nominal protection, though it is a long way off; it governs itself. <!-- place_note:natai/present --> Natai's villagers are Argonian shellfish-gatherers who also strip the wreck off their shore for anything that washes loose. <!-- place_note:natai/people --> Settled by Blackrose fisherfolk who followed the southern channels to the coast; it has salvaged the wreck to its east for a generation. <!-- place_note:natai/history -->
 
@@ -200,9 +164,45 @@ The nearest stop is the boat stop at Lujei Ferry, 580 m away across the marsh on
 
 It is to be built from Honeymane Trading Post in Skyrim Trading Posts.esp (a town: 7 buildings, 0 interiors, 8 residents, 6 hostile, about 158 m across). The source reads: "Honeymane Trading Post: a town built in nordic and imperial style with mine, camp, ship pieces. 8 people live there, 6 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Root Whisper Village (village, 791 buildings, 8 interiors). <!-- place_source:natai/0; source_place:skyrimtradingposts.marker.honeymane-trading-post; place_source:natai/1; place_source:natai/2; place_source:natai/3 -->
 
+### Salaxul
+
+A village, about 120 m across, sited on coast, of Soulrest and the Topal Coast. In 4E 201 it is inhabited, held by Soulrest merchant council reeve; 10 people live there. It is not built yet. <!-- place:salaxul -->
+
+Salaxul is a village on the south coast of the cape, below Mir-Xal, where the road from the interior reaches the sea. <!-- place_note:salaxul/overview --> Under the Soulrest merchant council; its reeve collects landing fees. <!-- place_note:salaxul/present --> Salaxul's villagers are Argonian boatmen, joined by a few Khajiit coasters who put in at the jetty. <!-- place_note:salaxul/people --> Salaxul began as a Third Era timber landing and kept its trade as a coastal boat stop after the mines burned. <!-- place_note:salaxul/history -->
+
+A wooden jetty runs out from the shore, with drying racks above the beach, low thatched huts on raised platforms and a salt pan behind them. <!-- place_note:salaxul/look --> Salaxul earns landing fees from the boats that put in, and sells salt, shellfish and coastal freight. <!-- place_note:salaxul/economy --> A Sithis shrine of piled conch shells stands at the top of the beach. Salaxul's eggs go inland to be hatched under a Banujha tree. <!-- place_note:salaxul/faith -->
+
+Built from: Its main source, Alten Merihall (Black Marsh & Valenwood), is a hamlet of 38 buildings with dock and ship pieces and no interior, which suits a landing with no room the record needs. Its Nordic pieces are replaced with Argonian thatched huts on raised plank platforms from Seekhat Yol (King of the Murkmire). Still to add: the salt pan behind the houses, the drying racks above the beach, the shrine of piled conch shells and the wooden jetty from the dock pieces. <!-- place_note:salaxul/source -->
+
+It promises the player: Boat stop: a coastal boat at the jetty; General goods trader: landing trader in salt, shellfish and coastal freight; Cooking pot: cooking pot at the landing; Fish and clams: shellfish and fishing off the jetty; Dangerous wildlife: slaughterfish in the creeks behind the village (x3); Lesser treasure: a smuggler's purse hidden under the jetty. <!-- place_give:salaxul/0; place_give:salaxul/1; place_give:salaxul/2; place_give:salaxul/3; place_give:salaxul/4; place_give:salaxul/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are wild (band 2 of 5, foes about level 10); the calmest way in crosses settled ground; its loot is of the wild band. Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore and the deep creeks behind the village hold slaughterfish. <!-- place_note:salaxul/dangers --> <!-- place_law:salaxul; place_danger:salaxul -->
+
+It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Lilmoth (2.6 km, 30 gold, 2 hours) and Soulrest (2.7 km, 30 gold, 2 hours). Roads run from it to Mir-Xal (track, 730 m north-east) and Old Goldseam (track, 1.0 km north-west). <!-- travel_stop:salaxul/boat; travel_route:lilmoth/salaxul/boat; travel_route:salaxul/soulrest/boat; road_node:place=salaxul -->
+
+It is to be built from Alten Merihall in Black Marsh.esm (a hamlet: 38 buildings, 0 interiors, 14 residents, 0 hostile, about 110 m across). The source reads: "Alten Merihall: a hamlet built in nordic and dunmer style with farm, dock, ship pieces. 14 people live there, 0 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:salaxul/0; source_place:blackmarsh.cluster.alten-merihall.14.-6; place_source:salaxul/1; place_source:salaxul/2; place_source:salaxul/3 -->
+
+### Amalaja
+
+A village, about 120 m across, sited on coast, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core little for protection; 9 people live there. It is not built yet. <!-- place:amalaja -->
+
+A village on a headland at the sea edge, one of the stage points between the lake and the delta. <!-- place_note:amalaja/overview --> Its elders pay little to the island core and trade freely with Lilmoth. <!-- place_note:amalaja/present --> Amalaja's households are Argonian fishers on the headland, with a few families born in the delta who came to marry or trade. <!-- place_note:amalaja/people --> Settled from Blackrose in the generations after 4E 48, when the delta villages were cleared again and has leaned toward Lilmoth in trade since. <!-- place_note:amalaja/history -->
+
+Reed houses on a sandy headland, rice sacks under tarps, a line of fishing boats on the beach. <!-- place_note:amalaja/look --> Amalaja sells fish and swaps it for the delta's rice. It keeps small boats for the short runs to Lilmoth's coast. <!-- place_note:amalaja/economy --> Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. The Hist is honoured in a small rice-straw shrine on the dune above the boats. <!-- place_note:amalaja/faith -->
+
+Built from: Its main source, Hjaalmarch Trading Post (Skyrim Trading Posts), is a post of four buildings with eight people and no interior, close to the size of the headland. Its Nordic pieces are replaced with Argonian reed huts from Seekhat Yol (King of the Murkmire), whose interiors give the fish-and-rice seller's room. Still to add: the rice-straw shrine on the dune, the rice sacks under tarps and the line of fishing boats on the beach. <!-- place_note:amalaja/source -->
+
+It promises the player: Innkeeper or food seller: fish-and-rice seller on the dune; Cooking pot: cooking pot on the dune above the boats; Fish and clams: sea fishing off the point; Common harvestables: rice and dried fish from the delta swap. <!-- place_give:amalaja/0; place_give:amalaja/1; place_give:amalaja/2; place_give:amalaja/3 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. Sea-drakes offshore, unlit coast at night, raiders from the delta channels. <!-- place_note:amalaja/dangers --> <!-- place_law:amalaja; place_danger:amalaja -->
+
+The nearest stop is the boat stop at Delta Ferry, 840 m away across the marsh on foot. Roads run from it to Khariton (track, 560 m north-east), Blackrose (track, 1.1 km north-west), Ka-Asei (track, 1.4 km west), Lujei (track, 1.5 km west) and Kit Mounds (track, 1.5 km west). <!-- travel_approach:amalaja; road_node:place=amalaja -->
+
+It is to be built from Hjaalmarch Trading Post in Skyrim Trading Posts.esp (a town: 4 buildings, 0 interiors, 8 residents, 3 hostile, about 68 m across). The source reads: "Hjaalmarch Trading Post: a town built in nordic and argonian style with camp, ship, mine pieces. 8 people live there, 3 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Dres village (village, 14 buildings, 0 interiors). <!-- place_source:amalaja/0; source_place:skyrimtradingposts.marker.hjaalmarch-trading-post; place_source:amalaja/1; place_source:amalaja/2; place_source:amalaja/3 -->
+
 ### Ka-Asei
 
-A village, about 120 m across, sited on lakeshore, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core for protection; 4 people live there. It is not built yet. <!-- place:ka-asei -->
+A village, about 120 m across, sited on lakeshore, of The Island of Blackrose. In 4E 201 it is inhabited, held by the village elders, paying the island core for protection; 9 people live there. It is not built yet. <!-- place:ka-asei -->
 
 A water-village on stilts in the channel southeast of the island core, on the route to Amalaja and the delta. <!-- place_note:ka-asei/overview --> It pays the island core a channel toll and takes its patrol boat's visits. <!-- place_note:ka-asei/present --> Ka-Asei's households are Argonian fishers who also build boats, on stilts over the channel southeast of the island core. <!-- place_note:ka-asei/people --> It grew from a fishing platform to a village as the Delta Ferry trade rose in the Fourth Era. <!-- place_note:ka-asei/history -->
 
@@ -218,9 +218,27 @@ The nearest stop is the boat stop at Blackrose, 580 m away across the marsh on f
 
 It is to be built from Pale Trading Post in Skyrim Trading Posts.esp (a town: 2 buildings, 0 interiors, 4 residents, 0 hostile, about 140 m across). The source reads: "Pale Trading Post: a town built in nordic style with mine, camp, ship pieces. 4 people live there, 0 hostile. By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Keeba Hollow (village, 203 buildings, 9 interiors) and Dres village (village, 14 buildings, 0 interiors). <!-- place_source:ka-asei/0; source_place:skyrimtradingposts.marker.pale-trading-post; place_source:ka-asei/1; place_source:ka-asei/2; place_source:ka-asei/3 -->
 
+### Tei-Kur
+
+A village, about 120 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a reed-lord council of the delta villages; 9 people live there. It is not built yet. <!-- place:tei-kur -->
+
+A village in the farmed land east of Blackrose, within Lilmoth's trade. <!-- place_note:tei-kur/overview --> Part of Lilmoth's trade network and hostile to the Archwardens. <!-- place_note:tei-kur/present --> Tei-Kur's people are Argonian rice farmers who live with their households among the paddies east of Blackrose. <!-- place_note:tei-kur/people --> A delta farming village cleared and rebuilt in the generations after 4E 48. <!-- place_note:tei-kur/history -->
+
+Paddies in shallow terraces, thatched huts on raised platforms with rice stores, a boardwalk road. <!-- place_note:tei-kur/look --> Tei-Kur grows rice and cuts reed, sets fish traps in the channels and sends its rice on to Delta Ferry by the ferry connection. <!-- place_note:tei-kur/economy --> The Hist at Lilmoth, regrown since the city was rebuilt, serves them; they carry their dead to its tender. <!-- place_note:tei-kur/faith -->
+
+Built from: Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of thatched huts on raised plank platforms, 160 buildings and seven interiors, of which the egg-tenders' quarters, a hut of shelves, baskets and chests, serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps. <!-- place_note:tei-kur/source -->
+
+It promises the player: Innkeeper or food seller: rice-and-fish seller at the granary; Cooking pot: cooking pot at the granary; Common harvestables: rice from the paddies and reed from the channel; Fish and clams: fish traps in the farm channels; Dangerous wildlife: mudcrabs and a crocodile at the paddy edges (x3); Lesser treasure: a farmhand's lost pouch at the paddy edge. <!-- place_give:tei-kur/0; place_give:tei-kur/1; place_give:tei-kur/2; place_give:tei-kur/3; place_give:tei-kur/4; place_give:tei-kur/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Marsh predators haunt the paddy edges and the channels. Bandits from the delta come by water at night. <!-- place_note:tei-kur/dangers --> <!-- place_law:tei-kur; place_danger:tei-kur -->
+
+The nearest stop is the boat stop at Delta Ferry, 360 m away by road. Roads run from it to Delta Ferry (track, 360 m south-east), Reedfall Farm (track, 570 m north-west), Blackrose Prison (track, 580 m south-west) and Brushmound (track, 680 m south). <!-- travel_approach:tei-kur; road_node:place=tei-kur -->
+
+It is to be built from Cormaris in Journey to Baan Malur.esp (a town: 16 buildings, 1 interior, 3 residents, 0 hostile, about 16 m across). The source reads: "Cormaris: a town built in dunmer and imperial style with farm, mine, camp pieces. 3 people live there, 0 hostile. 1 interiors (Llefta Household). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Dres village (village, 14 buildings, 0 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:tei-kur/0; source_place:journeytobaanmalur.cluster.cormaris.-30.9; place_source:tei-kur/1; place_source:tei-kur/2; place_source:tei-kur/3 -->
+
 ### Delta Ferry
 
-A ferry, about 50 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by Delta ferry-folk, kin to the Lilmoth boatmen, who keep the crossing with the merchant council's goodwill; 3 people live there. It is not built yet. <!-- place:delta-ferry -->
+A ferry, about 50 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by Delta ferry-folk, kin to the Lilmoth boatmen, who keep the crossing with the merchant council's goodwill; 4 people live there. It is not built yet. <!-- place:delta-ferry -->
 
 A ferry landing on the delta channel on the road to Lilmoth. <!-- place_note:delta-ferry/overview --> The ferry-folk are kin to Lilmoth's boatmen and keep the crossing with the merchant council's goodwill: the council's barges are let past free, and in return its water-guards keep the landing at either bank. <!-- place_note:delta-ferry/present --> The landing is worked by Argonian ferrymen, who live with their families in huts beside the raft on the delta bank. <!-- place_note:delta-ferry/people --> Rebuilt in the generations after 4E 48, when Lilmoth was rebuilt and the Blackrose road was reopened. <!-- place_note:delta-ferry/history -->
 
@@ -253,24 +271,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 It is a boat spoke, kept by raft-masters (a poled raft or a paddled canoe), with passage to Blackrose (630 m, 15 gold, 1 hour). Roads run from it to Mir-Xal (track, 690 m south-west). <!-- travel_stop:lujei-ferry/boat; travel_route:blackrose/lujei-ferry/boat; road_node:place=lujei-ferry -->
 
 It is to be built from Northshore Landing in Dragonborn.esm (a dock: 24 buildings, 0 interiors, 3 residents, 11 hostile, about 87 m across). The source reads: "DLC2SolstheimWorld 4,21: a dock with dock, mine, ship pieces. 3 people live there, 11 hostile. By water." Similar sources: Alten Meerhleel (dock, 4 buildings, 1 interior), Solitude Docks (dock, 60 buildings, 1 interior) and Ree-An-Wo (hamlet, 31 buildings, 0 interiors). <!-- place_source:lujei-ferry/0; source_place:dragonborn.marker.0143da; place_source:lujei-ferry/1; place_source:lujei-ferry/2; place_source:lujei-ferry/3 -->
-
-### Tei-Kur
-
-A village, about 120 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a reed-lord council of the delta villages; 3 people live there. It is not built yet. <!-- place:tei-kur -->
-
-A village in the farmed land east of Blackrose, within Lilmoth's trade. <!-- place_note:tei-kur/overview --> Part of Lilmoth's trade network and hostile to the Archwardens. <!-- place_note:tei-kur/present --> Tei-Kur's people are Argonian rice farmers who live with their households among the paddies east of Blackrose. <!-- place_note:tei-kur/people --> A delta farming village cleared and rebuilt in the generations after 4E 48. <!-- place_note:tei-kur/history -->
-
-Paddies in shallow terraces, thatched huts on raised platforms with rice stores, a boardwalk road. <!-- place_note:tei-kur/look --> Tei-Kur grows rice and cuts reed, sets fish traps in the channels and sends its rice on to Delta Ferry by the ferry connection. <!-- place_note:tei-kur/economy --> The Hist at Lilmoth, regrown since the city was rebuilt, serves them; they carry their dead to its tender. <!-- place_note:tei-kur/faith -->
-
-Built from: Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of thatched huts on raised plank platforms, 160 buildings and seven interiors, of which the egg-tenders' quarters, a hut of shelves, baskets and chests, serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps. <!-- place_note:tei-kur/source -->
-
-It promises the player: Innkeeper or food seller: rice-and-fish seller at the granary; Cooking pot: cooking pot at the granary; Common harvestables: rice from the paddies and reed from the channel; Fish and clams: fish traps in the farm channels; Dangerous wildlife: mudcrabs and a crocodile at the paddy edges (x3); Lesser treasure: a farmhand's lost pouch at the paddy edge. <!-- place_give:tei-kur/0; place_give:tei-kur/1; place_give:tei-kur/2; place_give:tei-kur/3; place_give:tei-kur/4; place_give:tei-kur/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Marsh predators haunt the paddy edges and the channels. Bandits from the delta come by water at night. <!-- place_note:tei-kur/dangers --> <!-- place_law:tei-kur; place_danger:tei-kur -->
-
-The nearest stop is the boat stop at Delta Ferry, 360 m away by road. Roads run from it to Delta Ferry (track, 360 m south-east), Reedfall Farm (track, 570 m north-west), Blackrose Prison (track, 580 m south-west) and Brushmound (track, 680 m south). <!-- travel_approach:tei-kur; road_node:place=tei-kur -->
-
-It is to be built from Cormaris in Journey to Baan Malur.esp (a town: 16 buildings, 1 interior, 3 residents, 0 hostile, about 16 m across). The source reads: "Cormaris: a town built in dunmer and imperial style with farm, mine, camp pieces. 3 people live there, 0 hostile. 1 interiors (Llefta Household). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Dres village (village, 14 buildings, 0 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:tei-kur/0; source_place:journeytobaanmalur.cluster.cormaris.-30.9; place_source:tei-kur/1; place_source:tei-kur/2; place_source:tei-kur/3 -->
 
 ### Brushmound
 
@@ -382,7 +382,7 @@ It is to be built from Avanchnzel in Skyrim.esm (a ruin dwemer: 3105 buildings, 
 
 ### Reedfall Farm
 
-A farm, about 50 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a rice-farming family; 5 people live there. It is not built yet. <!-- place:farm-6-m97 -->
+A farm, about 50 m across, sited on riverbank, of Lilmoth and the Murkmire Coast. In 4E 201 it is inhabited, held by a rice-farming family; 4 people live there. It is not built yet. <!-- place:farm-6-m97 -->
 
 A family rice farm on the channel bank on the road to Tei-Kur, named Reedfall for the reed beds that lean over its landing. The family sells its rice to Blackrose and the travellers on the Lilmoth road. <!-- place_note:farm-6-m97/overview --> One Argonian family runs the whole farm, working the paddies and selling the harvest at Tei-Kur and Delta Ferry. <!-- place_note:farm-6-m97/present --> The household is a single Argonian farming family, with hatchlings and elders living under one stilted roof. <!-- place_note:farm-6-m97/people --> The land was cleared from marsh in the generations after 4E 48. The family has farmed the channel bank since. <!-- place_note:farm-6-m97/history -->
 
@@ -448,7 +448,7 @@ It promises the player: Dangerous wildlife: slaughterfish and a sea-drake over t
 
 Law: no law. It meets a visitor as abandoned (the place is uninhabited. Whatever has moved in (beasts, the dead) attacks, or it lies empty). What lives inside is dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Sea-drakes hunt the shallows over the wreck, divers can drown in the hull and broken timbers are sharp. <!-- place_note:shipwreck-0-m111/dangers --> <!-- place_law:shipwreck-0-m111; place_danger:shipwreck-0-m111 -->
 
-The nearest stop is the boat stop at Mir-Xal, 800 m away by diving. No road reaches it. <!-- travel_approach:shipwreck-0-m111; road_node:place=shipwreck-0-m111 -->
+The nearest stop is the boat stop at Mir-Xal, 800 m away by diving. <!-- travel_approach:shipwreck-0-m111 -->
 
 It is to be built from The Lair of Ymir in Here There Be Monsters.esp (a shipwreck: 4 buildings, 0 interiors, 7 residents, 2 hostile, about 79 m across). The source reads: "The Lair of Ymir: a shipwreck with ship pieces. 7 people live there, 2 hostile. By water." Similar sources: Ink Lagoon (shipwreck, 7 buildings, 0 interiors), Icerunner (shipwreck, 25 buildings, 2 interiors) and Wreck of the Serpent's Wake (shipwreck, 2 buildings, 0 interiors). <!-- place_source:shipwreck-0-m111/0; source_place:heretherebemonsters.marker.the-lair-of-ymir; place_source:shipwreck-0-m111/1; place_source:shipwreck-0-m111/2; place_source:shipwreck-0-m111/3 -->
 
@@ -502,14 +502,14 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - They raid the roads and trade quietly with the lake villages. <!-- place_note:blackrose-prison/people -->
 - Highway tolls and robbery, stripping the old Imperial settlements around it, smuggling through Blackrose's channels. <!-- place_note:blackrose-prison/economy -->
 
-**Toklea.**
-
-- Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck and the old stone footings that carry the town. <!-- place_note:toklea/hooks -->
-
 **Mir-Xal.**
 
 - A toll dispute, a smuggler caught with Bramman's river cargo, a message for the Banujha tribes. <!-- place_note:mir-xal/hooks -->
 - A waystation of the Third Era timber trade; it kept its trade when the mines burned in 3E 427 and grew as a toll town. <!-- place_note:mir-xal/history -->
+
+**Toklea.**
+
+- Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck and the old stone footings that carry the town. <!-- place_note:toklea/hooks -->
 
 **Tarak Shan.**
 
@@ -517,29 +517,33 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - Hunters from Amalaja will not stay a night. <!-- place_note:tarak-shan/people -->
 - Amalaja's minder leaves a reed offering at the old gate for the defenders whom the Third Legion killed. <!-- place_note:tarak-shan/faith -->
 
+**Lujei.**
+
+- A missing ferryman, a toll quarrel with the island core, a night crossing with a passenger's sealed chest. <!-- place_note:lujei/hooks -->
+- Lujei's tree-minder knows every egg the ferry families lay and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. <!-- place_note:lujei/faith -->
+
+**Natai.**
+
+- A wreck to dive, a salt-pan dispute, a smuggler landing that avoids Soulrest. <!-- place_note:natai/hooks -->
+
 **Salaxul.**
 
 - A smuggler's boat lands by night on the Salaxul beach. <!-- place_note:salaxul/hooks -->
 - A shipment of salt has gone missing on its way to the jetty. <!-- place_note:salaxul/hooks -->
 - Salaxul began as a Third Era timber landing and kept its trade as a coastal boat stop after the mines burned. <!-- place_note:salaxul/history -->
 
-**Lujei.**
-
-- A missing ferryman, a toll quarrel with the island core, a night crossing with a passenger's sealed chest. <!-- place_note:lujei/hooks -->
-- Lujei's tree-minder knows every egg the ferry families lay and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. <!-- place_note:lujei/faith -->
-
 **Amalaja.**
 
 - A rice-swap dispute, a lost boat or a message for Lilmoth's merchant council. <!-- place_note:amalaja/hooks -->
 - Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. <!-- place_note:amalaja/faith -->
 
-**Natai.**
-
-- A wreck to dive, a salt-pan dispute, a smuggler landing that avoids Soulrest. <!-- place_note:natai/hooks -->
-
 **Ka-Asei.**
 
 - A stolen boat, a hidden cargo under the platforms or a fisher's feud with Amalaja. <!-- place_note:ka-asei/hooks -->
+
+**Tei-Kur.**
+
+- A paddy blight, a landlord's feud and a chance to carry rice to Blackrose. <!-- place_note:tei-kur/hooks -->
 
 **Delta Ferry.**
 
@@ -548,10 +552,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Lujei Ferry.**
 
 - A passenger who must not be seen, or a raft cable that has been cut. <!-- place_note:lujei-ferry/hooks -->
-
-**Tei-Kur.**
-
-- A paddy blight, a landlord's feud and a chance to carry rice to Blackrose. <!-- place_note:tei-kur/hooks -->
 
 **Brushmound.**
 

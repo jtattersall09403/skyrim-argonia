@@ -79,7 +79,7 @@
 {"place_id":"arorha","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: village cook-fire on the quay)"}
 {"place_id":"arorha","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: mudcrab swarms and giant snakes on the shore road to the north)"}
 {"place_id":"arorha","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: smugglers' dropped goods in a shore cache)"}
-{"place_id":"aroxhu","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (rootworm-stop: the root pool under the great Hist on the mound)"}
+{"place_id":"aroxhu","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (rootworm-stop: the root pool of sap under the great Hist on the mound)"}
 {"place_id":"aroxhu","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: pottery, red clay, ochre and madder dye)"}
 {"place_id":"aroxhu","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-clothier: dyed cloth in madder red and ochre yellow)"}
 {"place_id":"aroxhu","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (oven: a clay bread oven beside the potters' kilns)"}
@@ -88,7 +88,7 @@
 {"place_id":"aroxhu","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Alchemy trainer, a dyer who works sap and ochre)"}
 {"place_id":"aroxhu","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Aroxhu Hist's sap shrine: cures disease and gives Fortify Alchemy for eight hours)"}
 {"place_id":"aroxhu","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: guest mats on the moot-ground terrace)"}
-{"place_id":"aroxhu","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the river below the mounds)"}
+{"place_id":"aroxhu","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the marsh pools below the mounds)"}
 {"place_id":"ayiin","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: the elder's house sells food and quarry tools)"}
 {"place_id":"ayiin","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: from the stone jetty)"}
 {"place_id":"ayiin","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bed in the elder's house)"}
@@ -485,7 +485,7 @@
 {"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"ref","ref_id":"jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
 {"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"ref","ref_id":"jal-veesa.Q8HD6HGMGF0GRV749RYRD14V5A","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
 {"place_id":"jal-veesa","give_seq":8,"seq":0,"by":"ref","ref_id":"jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F","status":"delivered","why":"the place's shrine (place.json stations)"}
-{"place_id":"jarecai","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a raft-master at the lake landing)"}
+{"place_id":"jarecai","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a raft-master at the river landing)"}
 {"place_id":"jarecai","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: a Mine-Burner smith selling salvaged mine iron, steel and hide armour)"}
 {"place_id":"jarecai","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (forge: the smith's forge and anvil)"}
 {"place_id":"jarecai","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (smelter: at the smith's yard, for the salvaged ore)"}
@@ -513,12 +513,11 @@
 {"place_id":"ka-asei","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: fish traps in the channel mouth)"}
 {"place_id":"ka-asei","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: night bandit boats at the channel mouth)"}
 {"place_id":"ka-asei","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the bandits' boat strongbox)"}
-{"place_id":"kaochalit","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-apothecary: the Dunmer herbalist in the outer tomb)"}
-{"place_id":"kaochalit","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: the herbalist's bench)"}
-{"place_id":"kaochalit","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: skeletons and ghosts of the flu-dead in the lower halls)"}
-{"place_id":"kaochalit","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: a Velothi priestess of Mephala risen in the hall under the well)"}
-{"place_id":"kaochalit","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest in the hall under the well)"}
-{"place_id":"kaochalit","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: glowing and white cap fungus in the cellars)"}
+{"place_id":"kaochalit","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: a dead herbalist's bench left in the outer tomb)"}
+{"place_id":"kaochalit","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: skeletons and ghosts of the flu-dead in the lower halls)"}
+{"place_id":"kaochalit","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: a Velothi priestess of Mephala risen in the hall under the well)"}
+{"place_id":"kaochalit","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest in the hall under the well)"}
+{"place_id":"kaochalit","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: glowing and white cap fungus in the cellars)"}
 {"place_id":"karketa","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: fish, sea salt and boat gear)"}
 {"place_id":"karketa","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: buys hides and raw meat from travellers on the Lilmoth road)"}
 {"place_id":"karketa","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: reef-edge fishing from the jetty)"}
@@ -834,8 +833,8 @@
 {"place_id":"noota-nara","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (grindstone: by the forge)"}
 {"place_id":"noota-nara","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Smithing, Journeyman, the master spear-smith)"}
 {"place_id":"noota-nara","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: the potters sell clay pots, food and goods)"}
-{"place_id":"noota-nara","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (ore-vein: clay deposit on the riverbank (Hearthfire's clay))"}
-{"place_id":"noota-nara","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: from the river below the walls)"}
+{"place_id":"noota-nara","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (ore-vein: clay deposit on the lake shore (Hearthfire's clay))"}
+{"place_id":"noota-nara","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: from the lake below the walls)"}
 {"place_id":"noota-nara","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the potters' fire)"}
 {"place_id":"noota-nara","give_seq":10,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the village Hist with the dragon-spear beside it: activating its sap cures disease and gives Resist Fire for eight hours)"}
 {"place_id":"nundi","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: the strait ferry)"}
@@ -1252,7 +1251,7 @@
 {"place_id":"stormhold","give_seq":15,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: in the tavern)"}
 {"place_id":"stormhold","give_seq":16,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Expert Alteration trainer, the Dunmer Vicecanon's mage)"}
 {"place_id":"stormhold","give_seq":17,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Light Armor trainer, a sergeant of the frontier screen)"}
-{"place_id":"stormhold","give_seq":18,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Hist in the square's pond: a blessing of resist poison, given by its tree-minder)"}
+{"place_id":"stormhold","give_seq":18,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: Slaughterfish at the lower windows)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: Giant mudcrab in the gallery)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: Bronze, vakka stone and bone left in the lower galleries)"}
@@ -1464,7 +1463,7 @@
 {"place_id":"uluo","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: The smugglers' door: a back-water factor who buys stolen goods)"}
 {"place_id":"uluo","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: Cooking pot in the cook-house)"}
 {"place_id":"uluo","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Archery trainer: a bayou fisher-hunter)"}
-{"place_id":"uluo","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: The town's Hist pool: the Hist's blessing: cures disease and regenerates stamina for 8 hours)"}
+{"place_id":"uluo","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: The town's pool of Hist sap: the Hist's blessing: cures disease and regenerates stamina for 8 hours)"}
 {"place_id":"uluo","give_seq":10,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: Saltrice, shellfish and reed at the landing)"}
 {"place_id":"uluo","give_seq":11,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: Net-fish and shellfish in the channels)"}
 {"place_id":"uluo","give_seq":12,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: Slaughterfish in the channels round the town)"}

@@ -79,7 +79,7 @@
 {"place_id":"arorha","seq":3,"give_kind_id":"cooking-pot","detail":"village cook-fire on the quay","count":1}
 {"place_id":"arorha","seq":4,"give_kind_id":"combat-creature","detail":"mudcrab swarms and giant snakes on the shore road to the north","count":4,"reward_kind_id":"treasure"}
 {"place_id":"arorha","seq":5,"give_kind_id":"treasure","detail":"smugglers' dropped goods in a shore cache","count":1}
-{"place_id":"aroxhu","seq":0,"give_kind_id":"rootworm-stop","detail":"the root pool under the great Hist on the mound","count":1}
+{"place_id":"aroxhu","seq":0,"give_kind_id":"rootworm-stop","detail":"the root pool of sap under the great Hist on the mound","count":1}
 {"place_id":"aroxhu","seq":1,"give_kind_id":"trader-general","detail":"pottery, red clay, ochre and madder dye","count":1}
 {"place_id":"aroxhu","seq":2,"give_kind_id":"trader-clothier","detail":"dyed cloth in madder red and ochre yellow","count":1}
 {"place_id":"aroxhu","seq":3,"give_kind_id":"oven","detail":"a clay bread oven beside the potters' kilns","count":1}
@@ -88,7 +88,7 @@
 {"place_id":"aroxhu","seq":6,"give_kind_id":"trainer","detail":"Journeyman Alchemy trainer, a dyer who works sap and ochre","count":1}
 {"place_id":"aroxhu","seq":7,"give_kind_id":"shrine-blessing","detail":"the Aroxhu Hist's sap shrine: cures disease and gives Fortify Alchemy for eight hours","count":1}
 {"place_id":"aroxhu","seq":8,"give_kind_id":"free-bed","detail":"guest mats on the moot-ground terrace","count":2}
-{"place_id":"aroxhu","seq":9,"give_kind_id":"fishing","detail":"the river below the mounds","count":1}
+{"place_id":"aroxhu","seq":9,"give_kind_id":"fishing","detail":"the marsh pools below the mounds","count":1}
 {"place_id":"ayiin","seq":0,"give_kind_id":"trader-general","detail":"the elder's house sells food and quarry tools","count":1}
 {"place_id":"ayiin","seq":1,"give_kind_id":"fishing","detail":"from the stone jetty","count":1}
 {"place_id":"ayiin","seq":2,"give_kind_id":"free-bed","detail":"a bed in the elder's house","count":1}
@@ -476,7 +476,7 @@
 {"place_id":"inoja","seq":3,"give_kind_id":"inn-room","detail":"a room at the stilted inn","count":1}
 {"place_id":"inoja","seq":4,"give_kind_id":"trader-hunter","detail":"hides and river game bought on the market ground","count":1}
 {"place_id":"inoja","seq":5,"give_kind_id":"fishing","detail":"the river fork at the ferry","count":1}
-{"place_id":"jal-veesa","seq":0,"give_kind_id":"rootworm-stop","detail":"the Hist pool at the heart of the town, where the tree-minder calls the rootworm","count":1}
+{"place_id":"jal-veesa","seq":0,"give_kind_id":"rootworm-stop","detail":"the Hist sap pool at the heart of the town, where the tree-minder calls the rootworm","count":1}
 {"place_id":"jal-veesa","seq":1,"give_kind_id":"trader-general","detail":"reed boats, mats, rope and dried fish at the jetty market","count":1}
 {"place_id":"jal-veesa","seq":2,"give_kind_id":"trader-innkeeper","detail":"a fish-smoker's stall on the road side","count":1}
 {"place_id":"jal-veesa","seq":3,"give_kind_id":"free-bed","detail":"a mat in the elders' long house","count":1}
@@ -484,8 +484,8 @@
 {"place_id":"jal-veesa","seq":5,"give_kind_id":"fishing","detail":"the weir channels: eels and gar","count":1}
 {"place_id":"jal-veesa","seq":6,"give_kind_id":"cooking-pot","detail":"at the fish racks","count":1}
 {"place_id":"jal-veesa","seq":7,"give_kind_id":"tanning-rack","detail":"by the boat sheds","count":1}
-{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison","count":1}
-{"place_id":"jarecai","seq":0,"give_kind_id":"boat-stop","detail":"a raft-master at the lake landing","count":1}
+{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist sap pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison","count":1}
+{"place_id":"jarecai","seq":0,"give_kind_id":"boat-stop","detail":"a raft-master at the river landing","count":1}
 {"place_id":"jarecai","seq":1,"give_kind_id":"trader-blacksmith","detail":"a Mine-Burner smith selling salvaged mine iron, steel and hide armour","count":1}
 {"place_id":"jarecai","seq":2,"give_kind_id":"forge","detail":"the smith's forge and anvil","count":1}
 {"place_id":"jarecai","seq":3,"give_kind_id":"smelter","detail":"at the smith's yard, for the salvaged ore","count":1}
@@ -513,12 +513,11 @@
 {"place_id":"ka-asei","seq":2,"give_kind_id":"fishing","detail":"fish traps in the channel mouth","count":1}
 {"place_id":"ka-asei","seq":3,"give_kind_id":"combat-foes","detail":"night bandit boats at the channel mouth","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the channel mouth beyond the stilts","bearing_deg":74.0,"distance_m":140.0}
 {"place_id":"ka-asei","seq":4,"give_kind_id":"treasure","detail":"the bandits' boat strongbox","count":1,"setting":"nearby"}
-{"place_id":"kaochalit","seq":0,"give_kind_id":"trader-apothecary","detail":"the Dunmer herbalist in the outer tomb","count":1}
-{"place_id":"kaochalit","seq":1,"give_kind_id":"alchemy-lab","detail":"the herbalist's bench","count":1}
-{"place_id":"kaochalit","seq":2,"give_kind_id":"combat-creature","detail":"skeletons and ghosts of the flu-dead in the lower halls","count":6,"reward_kind_id":"boss-chest"}
-{"place_id":"kaochalit","seq":3,"give_kind_id":"combat-boss","detail":"a Velothi priestess of Mephala risen in the hall under the well","count":1,"reward_kind_id":"boss-chest"}
-{"place_id":"kaochalit","seq":4,"give_kind_id":"boss-chest","detail":"boss chest in the hall under the well","count":1}
-{"place_id":"kaochalit","seq":5,"give_kind_id":"harvest-rare","detail":"glowing and white cap fungus in the cellars","count":5}
+{"place_id":"kaochalit","seq":0,"give_kind_id":"alchemy-lab","detail":"a dead herbalist's bench left in the outer tomb","count":1}
+{"place_id":"kaochalit","seq":1,"give_kind_id":"combat-creature","detail":"skeletons and ghosts of the flu-dead in the lower halls","count":6,"reward_kind_id":"boss-chest"}
+{"place_id":"kaochalit","seq":2,"give_kind_id":"combat-boss","detail":"a Velothi priestess of Mephala risen in the hall under the well","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"kaochalit","seq":3,"give_kind_id":"boss-chest","detail":"boss chest in the hall under the well","count":1}
+{"place_id":"kaochalit","seq":4,"give_kind_id":"harvest-rare","detail":"glowing and white cap fungus in the cellars","count":5}
 {"place_id":"karketa","seq":0,"give_kind_id":"trader-general","detail":"fish, sea salt and boat gear","count":1}
 {"place_id":"karketa","seq":1,"give_kind_id":"trader-hunter","detail":"buys hides and raw meat from travellers on the Lilmoth road","count":1}
 {"place_id":"karketa","seq":2,"give_kind_id":"fishing","detail":"reef-edge fishing from the jetty","count":1}
@@ -834,8 +833,8 @@
 {"place_id":"noota-nara","seq":4,"give_kind_id":"grindstone","detail":"by the forge","count":1}
 {"place_id":"noota-nara","seq":5,"give_kind_id":"trainer","detail":"Smithing, Journeyman, the master spear-smith","count":1}
 {"place_id":"noota-nara","seq":6,"give_kind_id":"trader-general","detail":"the potters sell clay pots, food and goods","count":1}
-{"place_id":"noota-nara","seq":7,"give_kind_id":"ore-vein","detail":"clay deposit on the riverbank (Hearthfire's clay)","count":2}
-{"place_id":"noota-nara","seq":8,"give_kind_id":"fishing","detail":"from the river below the walls","count":1}
+{"place_id":"noota-nara","seq":7,"give_kind_id":"ore-vein","detail":"clay deposit on the lake shore (Hearthfire's clay)","count":2}
+{"place_id":"noota-nara","seq":8,"give_kind_id":"fishing","detail":"from the lake below the walls","count":1}
 {"place_id":"noota-nara","seq":9,"give_kind_id":"cooking-pot","detail":"the potters' fire","count":1}
 {"place_id":"noota-nara","seq":10,"give_kind_id":"shrine-blessing","detail":"the village Hist with the dragon-spear beside it: activating its sap cures disease and gives Resist Fire for eight hours","count":1}
 {"place_id":"nundi","seq":0,"give_kind_id":"boat-stop","detail":"the strait ferry","count":1}
@@ -1252,7 +1251,7 @@
 {"place_id":"stormhold","seq":15,"give_kind_id":"cooking-pot","detail":"in the tavern","count":1}
 {"place_id":"stormhold","seq":16,"give_kind_id":"trainer","detail":"Expert Alteration trainer, the Dunmer Vicecanon's mage","count":1}
 {"place_id":"stormhold","seq":17,"give_kind_id":"trainer","detail":"Adept Light Armor trainer, a sergeant of the frontier screen","count":1}
-{"place_id":"stormhold","seq":18,"give_kind_id":"shrine-blessing","detail":"the Hist in the square's pond: a blessing of resist poison, given by its tree-minder","count":1}
+{"place_id":"stormhold","seq":18,"give_kind_id":"shrine-blessing","detail":"the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder","count":1}
 {"place_id":"sunken-ruin-23-m112","seq":0,"give_kind_id":"combat-creature","detail":"Slaughterfish at the lower windows","count":3,"reward_kind_id":"treasure"}
 {"place_id":"sunken-ruin-23-m112","seq":1,"give_kind_id":"combat-boss","detail":"Giant mudcrab in the gallery","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"sunken-ruin-23-m112","seq":2,"give_kind_id":"treasure","detail":"Bronze, vakka stone and bone left in the lower galleries","count":3}
@@ -1464,7 +1463,7 @@
 {"place_id":"uluo","seq":6,"give_kind_id":"fence","detail":"The smugglers' door: a back-water factor who buys stolen goods","count":1}
 {"place_id":"uluo","seq":7,"give_kind_id":"cooking-pot","detail":"Cooking pot in the cook-house","count":1}
 {"place_id":"uluo","seq":8,"give_kind_id":"trainer","detail":"Journeyman Archery trainer: a bayou fisher-hunter","count":1}
-{"place_id":"uluo","seq":9,"give_kind_id":"shrine-blessing","detail":"The town's Hist pool: the Hist's blessing: cures disease and regenerates stamina for 8 hours","count":1}
+{"place_id":"uluo","seq":9,"give_kind_id":"shrine-blessing","detail":"The town's pool of Hist sap: the Hist's blessing: cures disease and regenerates stamina for 8 hours","count":1}
 {"place_id":"uluo","seq":10,"give_kind_id":"harvest-common","detail":"Saltrice, shellfish and reed at the landing","count":1}
 {"place_id":"uluo","seq":11,"give_kind_id":"fishing","detail":"Net-fish and shellfish in the channels","count":1}
 {"place_id":"uluo","seq":12,"give_kind_id":"combat-creature","detail":"Slaughterfish in the channels round the town","count":2,"reward_kind_id":"treasure"}

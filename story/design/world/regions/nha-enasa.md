@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: reed (23%), fern (12%), lily (11%)
 
 Naka-Desh river-folk, Lukiul traders and Paatru hunters; about 60 people. <!-- region_note:nha-enasa/people -->
 
-The places here belong to The Gideon Frontier (2 places, about 31 people), The Naka-Desh (Riverbacks) (2 places, about 23 people) and The Root-Folk of Helstrom (1 place, about 4 people); 6 places carry no culture in the data. <!-- place:region=nha-enasa -->
+The places here belong to The Gideon Frontier (2 places, about 31 people), The Naka-Desh (Riverbacks) (2 places, about 10 people) and The Root-Folk of Helstrom (1 place, about 4 people); 6 places carry no culture in the data. <!-- place:region=nha-enasa -->
 
 ## Its history, faith, trade and the present
 
@@ -146,42 +146,6 @@ The nearest stop is the boat stop at Gul-Tej, 980 m away across the marsh on foo
 
 It is to be built from ArgoniaWorld -2,-45 in King of the Murkmire.esp (a ruin imperial: 7 buildings, 0 interiors, 0 residents, 0 hostile, about 18 m across). The source reads: "ArgoniaWorld -2,-45: a ruin imperial built in imperial and nordic style with ruin pieces. 0 people live there, 0 hostile. By water." Similar sources: JaphetsFollyWorld -1,-1 (hamlet, 598 buildings, 2 interiors), Teeth of Sithis (ruin argonian, 5729 buildings, 3 interiors) and Molten Depths (ruin imperial, 423 buildings, 1 interior). <!-- place_source:kothringi-ruin-m17-m86/0; source_place:kingofthemurkmire.cluster.argoniaworld-2-45.-2.-45; place_source:kothringi-ruin-m17-m86/1; place_source:kothringi-ruin-m17-m86/2; place_source:kothringi-ruin-m17-m86/3 -->
 
-### Nahk-Zeel Station
-
-An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 12 people live there. It is not built yet. <!-- place:outpost-m20-m77 -->
-
-Nahk-Zeel Station is a reed-covered plank platform raised on posts with a lamp-post, a fish-rack and a boat landing. Five Naka-Desh keep a lamp lit there for boats. <!-- place_note:outpost-m20-m77/overview --> A few Naka-Desh river-folk hold it and trade with the Paatru camps nearby, giving salt and iron for hides. They keep a lamp lit at night so boats can find the landing. <!-- place_note:outpost-m20-m77/present --> Five Naka-Desh: a salt-trader, two fishers, a lamp-keeper and a girl who runs messages to the Paatru camps. They are friendly to hunters and wary of anyone who comes with a blade drawn. <!-- place_note:outpost-m20-m77/people --> Nahk-Zeel Station stands at the northern edge of the Nha Enasa, where the channels thin out toward Gul-Tej. The Naka-Desh keep it as the place where Paatru hunters bring hides down to the river trade. <!-- place_note:outpost-m20-m77/history -->
-
-A reed-covered plank platform raised on posts at the channel's northern edge, with a lamp-post, a fish-rack and a boat landing. Hides hang drying on a frame beside the landing. <!-- place_note:outpost-m20-m77/look --> The Naka-Desh fish for gar and barter salt and iron with the Paatru camps for hides. <!-- place_note:outpost-m20-m77/economy --> The Naka-Desh hung the landing's chime-post for the Kothringi. The nearby Paatru camps follow another Hist, and the two peoples avoid talk of it. <!-- place_note:outpost-m20-m77/faith -->
-
-Built from: Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post. <!-- place_note:outpost-m20-m77/source -->
-
-It promises the player: Hunter buyer: a Naka-Desh trader who buys Paatru hides; Fish and clams: gar at the landing; Tanning rack: on the landing; Dangerous wildlife: giant snakes and crocodiles near the landing; Lesser treasure: a hide bundle lost in the reeds. <!-- place_give:outpost-m20-m77/0; place_give:outpost-m20-m77/1; place_give:outpost-m20-m77/2; place_give:outpost-m20-m77/3; place_give:outpost-m20-m77/4 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Giant snakes and crocodiles near the landing. A Paatru hunter who takes offence is dangerous, and so is the open north reach beyond the lamp. <!-- place_note:outpost-m20-m77/dangers --> <!-- place_law:outpost-m20-m77; place_danger:outpost-m20-m77 -->
-
-The nearest stop is the boat stop at Gul-Tej, 350 m away across the marsh on foot. Roads run from it to Aithros (track, 540 m west), Hutan-Veel (track, 650 m north), Sarth-Hul Station (track, 680 m south-west), Nine Reeds Waystation (track, 840 m south), Gul-Tej (track, 960 m east) and Nul-Sakeesh Camp (track, 1.3 km south). <!-- travel_approach:outpost-m20-m77; road_node:place=outpost-m20-m77 -->
-
-It is to be built from Military Camp Reach Sons in Skyrim.esm (a camp military: 17 buildings, 0 interiors, 12 residents, 7 hostile, about 98 m across). The source reads: "Military Camp Reach Sons: a camp military built in dwemer and nordic style with camp, ruin, mine pieces. 12 people live there, 7 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m20-m77/0; source_place:skyrim.marker.militarycampreachsonsmapmarker; place_source:outpost-m20-m77/1; place_source:outpost-m20-m77/2; place_source:outpost-m20-m77/3 -->
-
-### Sakeepa Station
-
-An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 11 people live there. It is not built yet. <!-- place:outpost-m18-m84 -->
-
-Sakeepa Station is a reed-thatched plank platform raised on posts at a bend of the Nha Enasa channel, with a long boat-landing and poled barges moored beneath. Five Naka-Desh keep it. <!-- place_note:outpost-m18-m84/overview --> A few Naka-Desh keep the station through the year and trade goods with Gul-Tej's boats. They exchange news with every boat and know who has gone up and down the channel. <!-- place_note:outpost-m18-m84/present --> Five Naka-Desh: a trader, a ferryman, two net-menders and a young one learning the channels. They talk with Gul-Tej's merchants in riddles and remember every debt without writing one down. <!-- place_note:outpost-m18-m84/people --> Sakeepa Station stands at a bend of the channel east of Gideon, where the river-folk meet the boats from Gul-Tej. It is older than the Archwardens, and the same few families have rebuilt it many times. <!-- place_note:outpost-m18-m84/history -->
-
-A reed-thatched plank platform raised on posts at the channel's edge, a long boat-landing, a fish-rack and a chime-post with a signal lamp. Poled barges lie moored beneath. <!-- place_note:outpost-m18-m84/look --> The five Naka-Desh fish for gar and keep the landing for Gul-Tej's boats. <!-- place_note:outpost-m18-m84/economy --> At the landing stands a chime-post hung in memory of the Kothringi, who were friends of the river-folk. For hatching and burial they travel to the Naka-Desh tree upriver. <!-- place_note:outpost-m18-m84/faith -->
-
-Built from: Its main source, Military Camp Winterhold Imperial (Skyrim), is a camp of eleven people with 29 camp pieces and no interior; it lends tents and bedrolls. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. No room inside is needed. Still to add: the reed thatch over the raised platform, the long landing, the fish-rack, the chime-post with its signal lamp and the moored barges. <!-- place_note:outpost-m18-m84/source -->
-
-It promises the player: Fish and clams: gar in the channel bend; Hunter buyer: the station trader, who buys hides and fish; Dangerous wildlife: crocodiles and snakes under the landing; Lesser treasure: a boatman's lost purse under the landing. <!-- place_give:outpost-m18-m84/0; place_give:outpost-m18-m84/1; place_give:outpost-m18-m84/2; place_give:outpost-m18-m84/3 -->
-
-Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles and snakes lurk under the landing. Unfamiliar boats are watched, and a hostile one is turned away by arrow. <!-- place_note:outpost-m18-m84/dangers --> <!-- place_law:outpost-m18-m84; place_danger:outpost-m18-m84 -->
-
-The nearest stop is the boat stop at Gideon, 950 m away across the marsh on foot. Roads run from it to Nine Reeds Waystation (track, 320 m north), Xul-Banu Post (track, 600 m south-east), Ukeel Station (track, 1.4 km south-east) and Nacydes (track, 1.8 km east). <!-- travel_approach:outpost-m18-m84; road_node:place=outpost-m18-m84 -->
-
-It is to be built from Military Camp Winterhold Imperial in Skyrim.esm (a camp military: 10 buildings, 0 interiors, 11 residents, 2 hostile, about 155 m across). The source reads: "Military Camp Winterhold Imperial: a camp military built in imperial style with camp, mine, fort pieces. 11 people live there, 2 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m18-m84/0; source_place:skyrim.marker.militarycampwinterholdimperialmapmarker; place_source:outpost-m18-m84/1; place_source:outpost-m18-m84/2; place_source:outpost-m18-m84/3 -->
-
 ### Ixha-Neeth Camp
 
 A tribal camp, about 80 m across, sited on riverbank, whose culture the data does not say. In 4E 201 it is inhabited, held by a Paatru hunting party of the Middle Argonian forest; 6 people live there. It is not built yet. <!-- place:tribal-camp-m16-m82 -->
@@ -217,6 +181,42 @@ Law: native law. It meets a visitor as wary (its people live there and fight onl
 The nearest stop is the boat stop at Gideon, 650 m away by road. Roads run from it to Mnemosa (track, 120 m south-east), Fort Silvermoth (track, 580 m south), Gideon (track, 650 m west), Hixinoag (track, 680 m north-west), Nine Reeds Waystation (track, 900 m east) and Gul-Tej (track, 1.3 km north-east). <!-- travel_approach:tribal-camp-m22-m83; road_node:place=tribal-camp-m22-m83 -->
 
 It is to be built from Dragon Bridge Overlook in Skyrim.esm (a camp tribal: 0 buildings, 0 interiors, 0 residents, 2 hostile, about 50 m across). The source reads: "Dragon Bridge Overlook: a camp tribal with camp, mine pieces. 0 people live there, 2 hostile. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Narzulbur (camp tribal, 52 buildings, 2 interiors) and Mor Khazgur (camp tribal, 219 buildings, 3 interiors). <!-- place_source:tribal-camp-m22-m83/0; source_place:skyrim.dragonbridgeoverlooklocation; place_source:tribal-camp-m22-m83/1; place_source:tribal-camp-m22-m83/2; place_source:tribal-camp-m22-m83/3 -->
+
+### Nahk-Zeel Station
+
+An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 5 people live there. It is not built yet. <!-- place:outpost-m20-m77 -->
+
+Nahk-Zeel Station is a reed-covered plank platform raised on posts with a lamp-post, a fish-rack and a boat landing. Five Naka-Desh keep a lamp lit there for boats. <!-- place_note:outpost-m20-m77/overview --> A few Naka-Desh river-folk hold it and trade with the Paatru camps nearby, giving salt and iron for hides. They keep a lamp lit at night so boats can find the landing. <!-- place_note:outpost-m20-m77/present --> Five Naka-Desh: a salt-trader, two fishers, a lamp-keeper and a girl who runs messages to the Paatru camps. They are friendly to hunters and wary of anyone who comes with a blade drawn. <!-- place_note:outpost-m20-m77/people --> Nahk-Zeel Station stands at the northern edge of the Nha Enasa, where the channels thin out toward Gul-Tej. The Naka-Desh keep it as the place where Paatru hunters bring hides down to the river trade. <!-- place_note:outpost-m20-m77/history -->
+
+A reed-covered plank platform raised on posts at the channel's northern edge, with a lamp-post, a fish-rack and a boat landing. Hides hang drying on a frame beside the landing. <!-- place_note:outpost-m20-m77/look --> The Naka-Desh fish for gar and barter salt and iron with the Paatru camps for hides. <!-- place_note:outpost-m20-m77/economy --> The Naka-Desh hung the landing's chime-post for the Kothringi. The nearby Paatru camps follow another Hist, and the two peoples avoid talk of it. <!-- place_note:outpost-m20-m77/faith -->
+
+Built from: Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post. <!-- place_note:outpost-m20-m77/source -->
+
+It promises the player: Hunter buyer: a Naka-Desh trader who buys Paatru hides; Fish and clams: gar at the landing; Tanning rack: on the landing; Dangerous wildlife: giant snakes and crocodiles near the landing; Lesser treasure: a hide bundle lost in the reeds. <!-- place_give:outpost-m20-m77/0; place_give:outpost-m20-m77/1; place_give:outpost-m20-m77/2; place_give:outpost-m20-m77/3; place_give:outpost-m20-m77/4 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Giant snakes and crocodiles near the landing. A Paatru hunter who takes offence is dangerous, and so is the open north reach beyond the lamp. <!-- place_note:outpost-m20-m77/dangers --> <!-- place_law:outpost-m20-m77; place_danger:outpost-m20-m77 -->
+
+The nearest stop is the boat stop at Gul-Tej, 350 m away across the marsh on foot. Roads run from it to Aithros (track, 540 m west), Hutan-Veel (track, 650 m north), Sarth-Hul Station (track, 680 m south-west), Nine Reeds Waystation (track, 840 m south), Gul-Tej (track, 960 m east) and Nul-Sakeesh Camp (track, 1.3 km south). <!-- travel_approach:outpost-m20-m77; road_node:place=outpost-m20-m77 -->
+
+It is to be built from Military Camp Reach Sons in Skyrim.esm (a camp military: 17 buildings, 0 interiors, 12 residents, 7 hostile, about 98 m across). The source reads: "Military Camp Reach Sons: a camp military built in dwemer and nordic style with camp, ruin, mine pieces. 12 people live there, 7 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m20-m77/0; source_place:skyrim.marker.militarycampreachsonsmapmarker; place_source:outpost-m20-m77/1; place_source:outpost-m20-m77/2; place_source:outpost-m20-m77/3 -->
+
+### Sakeepa Station
+
+An outpost, about 80 m across, sited on riverbank, of The Naka-Desh (Riverbacks). In 4E 201 it is inhabited, held by Naka-Desh river-folk; 5 people live there. It is not built yet. <!-- place:outpost-m18-m84 -->
+
+Sakeepa Station is a reed-thatched plank platform raised on posts at a bend of the Nha Enasa channel, with a long boat-landing and poled barges moored beneath. Five Naka-Desh keep it. <!-- place_note:outpost-m18-m84/overview --> A few Naka-Desh keep the station through the year and trade goods with Gul-Tej's boats. They exchange news with every boat and know who has gone up and down the channel. <!-- place_note:outpost-m18-m84/present --> Five Naka-Desh: a trader, a ferryman, two net-menders and a young one learning the channels. They talk with Gul-Tej's merchants in riddles and remember every debt without writing one down. <!-- place_note:outpost-m18-m84/people --> Sakeepa Station stands at a bend of the channel east of Gideon, where the river-folk meet the boats from Gul-Tej. It is older than the Archwardens, and the same few families have rebuilt it many times. <!-- place_note:outpost-m18-m84/history -->
+
+A reed-thatched plank platform raised on posts at the channel's edge, a long boat-landing, a fish-rack and a chime-post with a signal lamp. Poled barges lie moored beneath. <!-- place_note:outpost-m18-m84/look --> The five Naka-Desh fish for gar and keep the landing for Gul-Tej's boats. <!-- place_note:outpost-m18-m84/economy --> At the landing stands a chime-post hung in memory of the Kothringi, who were friends of the river-folk. For hatching and burial they travel to the Naka-Desh tree upriver. <!-- place_note:outpost-m18-m84/faith -->
+
+Built from: Its main source, Military Camp Winterhold Imperial (Skyrim), is a camp of eleven people with 29 camp pieces and no interior; it lends tents and bedrolls. Ree-An-Wo (King of the Murkmire) supplies the platform: an Argonian camp of sixteen people with cypress platforms on posts, ramps and hide tents. No room inside is needed. Still to add: the reed thatch over the raised platform, the long landing, the fish-rack, the chime-post with its signal lamp and the moored barges. <!-- place_note:outpost-m18-m84/source -->
+
+It promises the player: Fish and clams: gar in the channel bend; Hunter buyer: the station trader, who buys hides and fish; Dangerous wildlife: crocodiles and snakes under the landing; Lesser treasure: a boatman's lost purse under the landing. <!-- place_give:outpost-m18-m84/0; place_give:outpost-m18-m84/1; place_give:outpost-m18-m84/2; place_give:outpost-m18-m84/3 -->
+
+Law: native law. It meets a visitor as wary (its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles and snakes lurk under the landing. Unfamiliar boats are watched, and a hostile one is turned away by arrow. <!-- place_note:outpost-m18-m84/dangers --> <!-- place_law:outpost-m18-m84; place_danger:outpost-m18-m84 -->
+
+The nearest stop is the boat stop at Gideon, 950 m away across the marsh on foot. Roads run from it to Nine Reeds Waystation (track, 320 m north), Xul-Banu Post (track, 600 m south-east), Ukeel Station (track, 1.4 km south-east) and Nacydes (track, 1.8 km east). <!-- travel_approach:outpost-m18-m84; road_node:place=outpost-m18-m84 -->
+
+It is to be built from Military Camp Winterhold Imperial in Skyrim.esm (a camp military: 10 buildings, 0 interiors, 11 residents, 2 hostile, about 155 m across). The source reads: "Military Camp Winterhold Imperial: a camp military built in imperial style with camp, mine, fort pieces. 11 people live there, 2 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Black Rose (hamlet, 8 buildings, 0 interiors) and near Loreisian (camp tribal, 8 buildings, 0 interiors). <!-- place_source:outpost-m18-m84/0; source_place:skyrim.marker.militarycampwinterholdimperialmapmarker; place_source:outpost-m18-m84/1; place_source:outpost-m18-m84/2; place_source:outpost-m18-m84/3 -->
 
 ### Sarth-Hul Station
 
@@ -279,15 +279,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 - When the Flu emptied it in 2E 560, the last boat was left half-planked on the slip. <!-- place_note:kothringi-ruin-m17-m86/history -->
 - Now it is a source of ship-timber and iron fittings, and a place where the old Kothringi boat design can still be seen. <!-- place_note:kothringi-ruin-m17-m86/economy -->
 
-**Nahk-Zeel Station.**
-
-- A message to Gul-Tej, a lost net or a riddle contest with a stranger. <!-- place_note:outpost-m20-m77/hooks -->
-
-**Sakeepa Station.**
-
-- A trade in gar-leather, a Paatru dispute or a Kothringi ruin the river-folk watch. <!-- place_note:outpost-m18-m84/hooks -->
-- They talk with Gul-Tej's merchants in riddles and remember every debt without writing one down. <!-- place_note:outpost-m18-m84/people -->
-
 **Ixha-Neeth Camp.**
 
 - A stolen egg, a trade for skins or a hunter asking for a guide through the reeds. <!-- place_note:tribal-camp-m16-m82/hooks -->
@@ -296,6 +287,15 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A Kothringi relic the hunters found, a claim on the ruin or a boat for hire. <!-- place_note:tribal-camp-m22-m83/hooks -->
 - Six Paatru, who tell newcomers the ruin is haunted and say they keep to the camp for that reason. <!-- place_note:tribal-camp-m22-m83/people -->
+
+**Nahk-Zeel Station.**
+
+- A message to Gul-Tej, a lost net or a riddle contest with a stranger. <!-- place_note:outpost-m20-m77/hooks -->
+
+**Sakeepa Station.**
+
+- A trade in gar-leather, a Paatru dispute or a Kothringi ruin the river-folk watch. <!-- place_note:outpost-m18-m84/hooks -->
+- They talk with Gul-Tej's merchants in riddles and remember every debt without writing one down. <!-- place_note:outpost-m18-m84/people -->
 
 **Sarth-Hul Station.**
 

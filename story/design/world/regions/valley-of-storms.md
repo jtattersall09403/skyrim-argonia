@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (14%), undergrowth (11%), 
 
 Argonians and the oldest Dunmer minority in the province, with Veesa-Teeleel reed-wardens to the west. <!-- region_note:valley-of-storms/people -->
 
-The places here belong to The Shadowfen Border (Stormhold) (6 places, about 176 people), The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (3 places, about 66 people) and The Warden Marches (1 place, about 23 people); 4 places carry no culture in the data. <!-- place:region=valley-of-storms -->
+The places here belong to The Shadowfen Border (Stormhold) (6 places, about 121 people), The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) (3 places, about 32 people) and The Warden Marches (1 place, about 10 people); 4 places carry no culture in the data. <!-- place:region=valley-of-storms -->
 
 ## Its history, faith, trade and the present
 
@@ -40,33 +40,33 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Stormhold (also called Silyanorn)
 
-A metropolis, about 600 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by The Vicecanons of Stormhold (the office the city invented); the Hist tree in the town square; 153 people live there. It is not built yet. <!-- place:stormhold -->
+A metropolis, about 600 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by The Vicecanons of Stormhold (the office the city invented); the Hist tree in the town square; 90 people live there. It is not built yet. <!-- place:stormhold -->
 
-Stormhold is the largest settlement of Shadowfen and a major city of Black Marsh, near the banks of the river that forms the border with Morrowind. It is the city of the Valley of Storms and the likeliest first sight of the province for a newcomer. <!-- place_note:stormhold/overview --> The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here. <!-- place_note:stormhold/present --> Argonians beside the largest and oldest Dunmer minority in Argonia, descended from a colonial population, about a fifth of the city. The western quarter was where the Argonians who worked for the Dunmer lived, and the memory is still live. Townsfolk meet outsiders with pragmatism; they have always had to live with them. Several Vicecanons sit at once, one for each people. <!-- place_note:stormhold/people --> Barsaebic Ayleids founded Silyanorn here after 1E 198; the Hist later conquered them, by legend. The Dunmer used the site as the foothold of their slave trade, adding stone roads, light posts and bridges and the city invented the Vicecanon office to try slavers. It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E and was overrun but lightly damaged by Umbriel's undead in 4E 48. <!-- place_note:stormhold/history -->
+Stormhold is the largest settlement of Shadowfen and a major city of Black Marsh, near the banks of the river that forms the border with Morrowind. It is the city of the Valley of Storms and the likeliest first sight of the province for a newcomer. <!-- place_note:stormhold/overview --> The waterfall, the ravine-severed mounds, the Hist in its pool of sap and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here. <!-- place_note:stormhold/present --> Argonians beside the largest and oldest Dunmer minority in Argonia, descended from a colonial population, about a fifth of the city. The western quarter was where the Argonians who worked for the Dunmer lived, and the memory is still live. Townsfolk meet outsiders with pragmatism; they have always had to live with them. Several Vicecanons sit at once, one for each people. <!-- place_note:stormhold/people --> Barsaebic Ayleids founded Silyanorn here after 1E 198; the Hist later conquered them, by legend. The Dunmer used the site as the foothold of their slave trade, adding stone roads, light posts and bridges and the city invented the Vicecanon office to try slavers. It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E and was overrun but lightly damaged by Umbriel's undead in 4E 48. <!-- place_note:stormhold/history -->
 
-A city on a mountainside: Dunmer ornate stone, stone roads, light posts and long wooden bridges over ravines, with large Argonian mud huts on the mounds between and a waterfall running down through the old Ayleid compound. <!-- place_note:stormhold/look --> River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods come from Jal-Veesa and the weirs; the trading halls sit in the repurposed Ayleid compound. <!-- place_note:stormhold/economy --> The Hist tree stands in the town square in the middle of a pond, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side. <!-- place_note:stormhold/faith -->
+A city on a mountainside: Dunmer ornate stone, stone roads, light posts and long wooden bridges over ravines, with large Argonian mud huts on the mounds between and a waterfall running down through the old Ayleid compound. <!-- place_note:stormhold/look --> River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods come from Jal-Veesa and the weirs; the trading halls sit in the repurposed Ayleid compound. <!-- place_note:stormhold/economy --> The Hist tree stands in the town square in the middle of a pool of its own sap, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side. <!-- place_note:stormhold/faith -->
 
-Built from: Its main source, Markarth (Skyrim), is a stone city on a mountainside with a waterfall, thirty interiors and a mine beneath, and is the closest match in size and shape. Its Dwemer and Nordic pieces are replaced with Dunmer stone, Argonian mud huts and white Ayleid stone. Its temple and halls serve as the Vicecanons' hall and the trading halls, and its mine and Nchuand-Zel serve as the Silyanorn tunnels and crystal galleries. Lilmoth (King of the Murkmire) lends Argonian huts and a dock for the west quarter and the quay. Still to add: the Hist tree in its pond ringed by pillars, the sunken Ayleid well-room under the tunnels and the customs office. <!-- place_note:stormhold/source -->
+Built from: Its main source, Markarth (Skyrim), is a stone city on a mountainside with a waterfall, thirty interiors and a mine beneath, and is the closest match in size and shape. Its Dwemer and Nordic pieces are replaced with Dunmer stone, Argonian mud huts and white Ayleid stone. Its temple and halls serve as the Vicecanons' hall and the trading halls, and its mine and Nchuand-Zel serve as the Silyanorn tunnels and crystal galleries. Lilmoth (King of the Murkmire) lends Argonian huts and a dock for the west quarter and the quay. Still to add: the Hist tree in its pool of sap ringed by pillars, the sunken Ayleid well-room under the tunnels and the customs office. <!-- place_note:stormhold/source -->
 
-It promises the player: Boat stop: a riverboat at the quay; General goods trader: a Dunmer merchant in the old Ayleid compound, mixed goods from both sides of the border; Blacksmith trader: the screen's armourer, selling chitin, iron and steel and Stormhold Crystal-studded tools; Apothecary: an Argonian herbalist on the west quarter's mounds; Spell vendor: a Dunmer mage selling Alteration and Illusion tomes up to Adept, scrolls and soul gems; Jeweller: a crystal-cutter selling cut Stormhold Crystals (Skyrim's amethyst and garnet) and silver rings; Innkeeper or food seller: a tavern on the bridge mounds; Rented room: a room above the bridge tavern; Forge: the frontier screen's forge with its anvil; Grindstone: by the forge; Workbench: by the forge; Smelter: in the crystal tunnels' mouth; Tanning rack: on the west quarter's mounds; Alchemy lab: the herbalist's; Arcane enchanter: the Dunmer mage's; Cooking pot: in the tavern; Skill trainer: Expert Alteration trainer, the Dunmer Vicecanon's mage; Skill trainer: Adept Light Armor trainer, a sergeant of the frontier screen; Shrine blessing: the Hist in the square's pond: a blessing of resist poison, given by its tree-minder. <!-- place_give:stormhold/0; place_give:stormhold/1; place_give:stormhold/2; place_give:stormhold/3; place_give:stormhold/4; place_give:stormhold/5; place_give:stormhold/6; place_give:stormhold/7; place_give:stormhold/8; place_give:stormhold/9; place_give:stormhold/10; place_give:stormhold/11; place_give:stormhold/12; place_give:stormhold/13; place_give:stormhold/14; place_give:stormhold/15; place_give:stormhold/16; place_give:stormhold/17; place_give:stormhold/18 -->
+It promises the player: Boat stop: a riverboat at the quay; General goods trader: a Dunmer merchant in the old Ayleid compound, mixed goods from both sides of the border; Blacksmith trader: the screen's armourer, selling chitin, iron and steel and Stormhold Crystal-studded tools; Apothecary: an Argonian herbalist on the west quarter's mounds; Spell vendor: a Dunmer mage selling Alteration and Illusion tomes up to Adept, scrolls and soul gems; Jeweller: a crystal-cutter selling cut Stormhold Crystals (Skyrim's amethyst and garnet) and silver rings; Innkeeper or food seller: a tavern on the bridge mounds; Rented room: a room above the bridge tavern; Forge: the frontier screen's forge with its anvil; Grindstone: by the forge; Workbench: by the forge; Smelter: in the crystal tunnels' mouth; Tanning rack: on the west quarter's mounds; Alchemy lab: the herbalist's; Arcane enchanter: the Dunmer mage's; Cooking pot: in the tavern; Skill trainer: Expert Alteration trainer, the Dunmer Vicecanon's mage; Skill trainer: Adept Light Armor trainer, a sergeant of the frontier screen; Shrine blessing: the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder. <!-- place_give:stormhold/0; place_give:stormhold/1; place_give:stormhold/2; place_give:stormhold/3; place_give:stormhold/4; place_give:stormhold/5; place_give:stormhold/6; place_give:stormhold/7; place_give:stormhold/8; place_give:stormhold/9; place_give:stormhold/10; place_give:stormhold/11; place_give:stormhold/12; place_give:stormhold/13; place_give:stormhold/14; place_give:stormhold/15; place_give:stormhold/16; place_give:stormhold/17; place_give:stormhold/18 -->
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. Safe inside the walls, where guards keep order. Outside the gate are crocodile-infested ravines and sunken marsh; below the city the Silyanorn tunnels and a sunken Ayleid ruin are an outlaws' refuge. <!-- place_note:stormhold/dangers --> <!-- place_law:stormhold; place_danger:stormhold -->
 
-It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Helstrom (1.7 km, 25 gold, 2 hours). Roads run from it to Sedge-Kal Camp (track, 320 m north), Causeway-Head Post (cart road, 430 m north-east), Vandrel Farm (track, 480 m south-east) and Jal-Veesa (cart road, 630 m west). <!-- travel_stop:stormhold/boat; travel_route:helstrom/stormhold/boat; road_node:place=stormhold -->
+It is a boat spoke, kept by harbour boatmans (a small-draft coaster or lighter with a sail), with passage to Helstrom (1.7 km, 25 gold, 2 hours). Roads run from it to Fort Willowmoth (track, 320 m east), Sedge-Kal Camp (track, 320 m north), Causeway-Head Post (cart road, 430 m north-east), Vandrel Farm (track, 480 m south-east) and Jal-Veesa (cart road, 630 m west). <!-- travel_stop:stormhold/boat; travel_route:helstrom/stormhold/boat; road_node:place=stormhold -->
 
 It is to be built from Markarth in Skyrim.esm (a city: 8578 buildings, 30 interiors, 153 residents, 83 hostile, about 286 m across). The source reads: "Markarth: a city built in dwemer and nordic style with ruin, mine, cave pieces. 153 people live there, 83 hostile. 30 interiors. By water." Similar sources: Lilmoth (city, 4030 buildings, 46 interiors), Thorn (city, 629 buildings, 1 interior) and Solitude (city, 9316 buildings, 31 interiors). <!-- place_source:stormhold/0; source_place:skyrim.markarthlocation; place_source:stormhold/1; place_source:stormhold/2; place_source:stormhold/3 -->
 
 ### Jal-Veesa
 
-A town, about 220 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Veesa-Teeleel elders; their own, not the Vicecanons; 46 people live there. It is drafted: its place files are in newworld/places/jal-veesa. <!-- place:jal-veesa -->
+A town, about 220 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Veesa-Teeleel elders; their own, not the Vicecanons; 22 people live there. It is drafted: its place files are in newworld/places/jal-veesa. <!-- place:jal-veesa -->
 
-Jal-Veesa is the one town of the Veesa-Teeleel, the northern Argonians of the valleys between Stormhold and the Barsaebic ruins. It sits on the road west of Stormhold. <!-- place_note:jal-veesa/overview --> A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold. <!-- place_note:jal-veesa/present --> Veesa-Teeleel Argonians, courteous to Dunmer without trusting them. Elders and a tree-minder at the pool; a few Stormhold buyers lodge on market days. <!-- place_note:jal-veesa/people --> A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
+Jal-Veesa is the one town of the Veesa-Teeleel, the northern Argonians of the valleys between Stormhold and the Barsaebic ruins. It sits on the road west of Stormhold. <!-- place_note:jal-veesa/overview --> A town of stilt houses round a pool of Hist sap, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold. <!-- place_note:jal-veesa/present --> Veesa-Teeleel Argonians, courteous to Dunmer without trusting them. Elders and a tree-minder at the pool; a few Stormhold buyers lodge on market days. <!-- place_note:jal-veesa/people --> A Hist with its pool of sap, and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
 
-Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes cut through the sedge down to the creek, mats drying on racks, fish racks smoking on the road side. <!-- place_note:jal-veesa/look --> Reed mats, rope, boats and dried fish sold to Stormhold; weir fees from the fish traps on the creeks. Its warriors also guard the ruins of Gemin, Nenria and Loriasel against looters, paid in kind by Stormhold's trading halls. <!-- place_note:jal-veesa/economy --> A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them. <!-- place_note:jal-veesa/faith -->
+Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes cut through the sedge down to the creek, mats drying on racks, fish racks smoking on the road side. <!-- place_note:jal-veesa/look --> Reed mats, rope, boats and dried fish sold to Stormhold; weir fees from the fish traps on the creeks. Its warriors also guard the ruins of Gemin, Nenria and Loriasel against looters, paid in kind by Stormhold's trading halls. <!-- place_note:jal-veesa/economy --> A Hist tree rising from a pool of its own sap at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them. <!-- place_note:jal-veesa/faith -->
 
-Built from: Its main source, Cormaris (Journey to Baan Malur), is a town of the right size with twenty-seven interiors and forty-six people, but it is Imperial and Dunmer in style. Its houses are replaced with Argonian stilt huts from Seekhat Yol and Alten Meerhleel (King of the Murkmire), and Seekhat Yol's elder's hut and treeminder's hut serve as the elders' long house and the tree-minder's house. Still to add: the Hist tree and its pool at the centre, the jetty market on the creek, the fish racks and the boat sheds. <!-- place_note:jal-veesa/source -->
+Built from: Its main source, Cormaris (Journey to Baan Malur), is a town of the right size with twenty-seven interiors and forty-six people, but it is Imperial and Dunmer in style. Its houses are replaced with Argonian stilt huts from Seekhat Yol and Alten Meerhleel (King of the Murkmire), and Seekhat Yol's elder's hut and treeminder's hut serve as the elders' long house and the tree-minder's house. Still to add: the Hist tree and its pool of sap at the centre, the jetty market on the creek, the fish racks and the boat sheds. <!-- place_note:jal-veesa/source -->
 
-It promises the player: Rootworm stop: the Hist pool at the heart of the town, where the tree-minder calls the rootworm; General goods trader: reed boats, mats, rope and dried fish at the jetty market; Innkeeper or food seller: a fish-smoker's stall on the road side; Free bed: a mat in the elders' long house; Skill trainer: Adept Archery trainer, a ruin-warden of the Veesa-Teeleel; Fish and clams: the weir channels: eels and gar; Cooking pot: at the fish racks; Tanning rack: by the boat sheds; Shrine blessing: the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison. <!-- place_give:jal-veesa/0; place_give:jal-veesa/1; place_give:jal-veesa/2; place_give:jal-veesa/3; place_give:jal-veesa/4; place_give:jal-veesa/5; place_give:jal-veesa/6; place_give:jal-veesa/7; place_give:jal-veesa/8 -->
+It promises the player: Rootworm stop: the Hist sap pool at the heart of the town, where the tree-minder calls the rootworm; General goods trader: reed boats, mats, rope and dried fish at the jetty market; Innkeeper or food seller: a fish-smoker's stall on the road side; Free bed: a mat in the elders' long house; Skill trainer: Adept Archery trainer, a ruin-warden of the Veesa-Teeleel; Fish and clams: the weir channels: eels and gar; Cooking pot: at the fish racks; Tanning rack: by the boat sheds; Shrine blessing: the Hist sap pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison. <!-- place_give:jal-veesa/0; place_give:jal-veesa/1; place_give:jal-veesa/2; place_give:jal-veesa/3; place_give:jal-veesa/4; place_give:jal-veesa/5; place_give:jal-veesa/6; place_give:jal-veesa/7; place_give:jal-veesa/8 -->
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the safe band. The town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels and looters and Naga brigands on the track toward the ruins. <!-- place_note:jal-veesa/dangers --> <!-- place_law:jal-veesa; place_danger:jal-veesa -->
 
@@ -76,7 +76,7 @@ It is to be built from Cormaris in Journey to Baan Malur.esp (a town: 806 buildi
 
 ### Fort Willowmoth
 
-A fort, about 120 m across, sited on riverbank, of The Warden Marches. In 4E 201 it is garrisoned, held by The Archwardens' frontier screen (an Argonian garrison keeping the old Imperial fort); 23 people live there. It is not built yet. <!-- place:fort-willowmoth -->
+A fort, about 120 m across, sited on riverbank, of The Warden Marches. In 4E 201 it is garrisoned, held by The Archwardens' frontier screen (an Argonian garrison keeping the old Imperial fort); 10 people live there. It is not built yet. <!-- place:fort-willowmoth -->
 
 Fort Willowmoth is one of the Legion's '-moth' forts, named in the same style as Swampmoth, Moonmoth and Frostmoth. It stands a short walk east of Stormhold. <!-- place_note:fort-willowmoth/overview --> A garrison of a few Archwarden soldiers takes the road and river tolls and watches the crossing to Morrowind. The ranks and drill are half Cyrodiilic, kept by the old Archein family that holds the keys. <!-- place_note:fort-willowmoth/present --> Argonian soldiers under a captain of an ex-Archein family; the captain answers to the Archwardens for the tolls and the screen, and keeps on terms with Stormhold's Vicecanons. <!-- place_note:fort-willowmoth/people --> Built by the Third Empire as a border fort beside Stormhold. The Legion marched out at the secession (4E 5-10), and an ex-Archein family took the keys and has held the fort in the Archwardens' name since. <!-- place_note:fort-willowmoth/history -->
 
@@ -88,27 +88,9 @@ It promises the player: Blacksmith trader: the garrison quartermaster: iron and 
 
 Law: foreign law, with cells at Fort Willowmoth. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. The post is guarded; outside the gate there is road-side wildlife and the odd thief. <!-- place_note:fort-willowmoth/dangers --> <!-- place_law:fort-willowmoth; place_danger:fort-willowmoth -->
 
-The nearest stop is the boat stop at Stormhold, 300 m away across the marsh on foot. No road reaches it. <!-- travel_approach:fort-willowmoth; road_node:place=fort-willowmoth -->
+The nearest stop is the boat stop at Stormhold, 320 m away by road. Roads run from it to Stormhold (track, 320 m west), Causeway-Head Post (track, 380 m north-west) and Vandrel Farm (track, 430 m south-west). <!-- travel_approach:fort-willowmoth; road_node:place=fort-willowmoth -->
 
 It is to be built from Dawnguard Valley01 in Dawnguard.esm (a fort: 653 buildings, 4 interiors, 23 residents, 9 hostile, about 146 m across). The source reads: "Dawnguard Valley01: a fort built in imperial and nordic style with cave, mine, farm pieces. 23 people live there, 9 hostile. 4 interiors. By water." Similar sources: Whiterun Watchtower (fort, 48 buildings, 0 interiors), Cracked Tusk (fort, 254 buildings, 2 interiors) and Forth Isle (fort, 24 buildings, 1 interior). <!-- place_source:fort-willowmoth/0; source_place:dawnguard.marker.dlc1dawnguardmapmarkervalley01; place_source:fort-willowmoth/1; place_source:fort-willowmoth/2; place_source:fort-willowmoth/3 -->
-
-### Karsh-Naal Camp
-
-A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by Tribeless Naga hired as guards by the Unbound, a sap-takers' cult; 12 people live there. It is drafted: its place files are in newworld/places/tribal-camp-m2-m68. <!-- place:tribal-camp-m2-m68 -->
-
-Karsh-Naal Camp is a camp of tribeless Naga in the marsh south of Stormhold, hired out to the Unbound as guards. The Naga are the tribeless Argonians of canon who sell their blades to whoever pays; the Unbound use the camp as the store for the sap their crews draw. <!-- place_note:tribal-camp-m2-m68/overview --> A few Naga guards keep the camp, standing at the fire by the longhouse. A cage stands at the camp's edge for anyone who tries to leave the Unbound's work. <!-- place_note:tribal-camp-m2-m68/present --> Tribeless Naga, tall and hard-eyed, who guard for pay and answer to the Unbound; they have no chief of their own. <!-- place_note:tribal-camp-m2-m68/people --> The Naga once lived off the road traffic from Stormhold to Helstrom. When the Unbound came with coin, they took to guarding the sap jars instead. <!-- place_note:tribal-camp-m2-m68/history -->
-
-Hide tents hung with bones and a timber longhouse around a fire pit, jars of sap stacked by the longhouse wall, a cage at the camp's edge and a pole of trophies. <!-- place_note:tribal-camp-m2-m68/look --> The Unbound pay the guards in coin; jars of Hist sap are stacked by the longhouse until the cult's crews carry them on. <!-- place_note:tribal-camp-m2-m68/economy --> The Naga worship Sithis at a shrine of bones; no Hist tree stands in the camp. <!-- place_note:tribal-camp-m2-m68/faith -->
-
-Built from: Its main source, Dushnikh Yal (Skyrim), is an orc camp with a longhouse, a mine and a cellar, and its longhouse interior serves as the Naga longhouse where the pay and stolen goods lie. Its orc pieces are replaced with hide tents hung with bones from Ree-An-Wo and, for the bone shrine, the ring of standing stones and scattered bones of the Argonian camp near Loreisian (both King of the Murkmire). Still to add: the fire pit, the stacked jars of sap, the pole of trophies and the cage at the camp's edge, built from placed bars and posts. <!-- place_note:tribal-camp-m2-m68/source -->
-
-It promises the player: Hostile occupants: the Unbound's hired Naga guards at the fire (x4); Lesser treasure: the guards' pay and stolen goods in the longhouse (x2). <!-- place_give:tribal-camp-m2-m68/0; place_give:tribal-camp-m2-m68/1 -->
-
-Law: no law. It meets a visitor as hostile (held by people who attack on sight: outlaws, raiders, a warband). What lives inside is dangerous (band 3 of 5, foes about level 20); the calmest way in crosses dangerous ground; its loot is of the dangerous band. The guards attack strangers on sight, but they are few and keep to the fire, away from the cage at the edge. <!-- place_note:tribal-camp-m2-m68/dangers --> <!-- place_law:tribal-camp-m2-m68; place_danger:tribal-camp-m2-m68 -->
-
-The nearest stop is the boat stop at Stormhold, 700 m away across the marsh on foot. No road reaches it. <!-- travel_approach:tribal-camp-m2-m68; road_node:place=tribal-camp-m2-m68 -->
-
-It is to be built from Dushnikh Yal in Skyrim.esm (a camp tribal: 257 buildings, 3 interiors, 12 residents, 1 hostile, about 71 m across). The source reads: "Dushnikh Yal: a camp tribal built in orc and imperial style with mine, cave, ruin pieces. 12 people live there, 1 hostile. 3 interiors. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Kazmalgur (camp tribal, 30 buildings, 1 interior) and Narzulbur (camp tribal, 52 buildings, 2 interiors). <!-- place_source:tribal-camp-m2-m68/0; source_place:skyrim.dushnikhyallocation; place_source:tribal-camp-m2-m68/1; place_source:tribal-camp-m2-m68/2; place_source:tribal-camp-m2-m68/3 -->
 
 ### Surkina
 
@@ -128,27 +110,9 @@ The nearest stop is the boat stop at Stormhold, 680 m away by road. Roads run fr
 
 It is to be built from Left Hand Mine in Skyrim.esm (a village: 78 buildings, 4 interiors, 10 residents, 3 hostile, about 77 m across). The source reads: "Left Hand Mine: a village built in dwemer and nordic style with mine, cave, farm pieces. 10 people live there, 3 hostile. 4 interiors. Dry ground." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Dres village (village, 14 buildings, 0 interiors) and Root Whisper Village (village, 791 buildings, 8 interiors). <!-- place_source:surkina/0; source_place:skyrim.lefthandminelocation; place_source:surkina/1; place_source:surkina/2; place_source:surkina/3 -->
 
-### Tenmal Pits
-
-A mine, about 80 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by a pit-boss and a handful of delvers, by the Vicecanons' leave; 8 people live there. It is not built yet. <!-- place:mine-5-m64 -->
-
-Tenmal Pits is a crystal pit above Tenmal village. Canon puts the Stormhold Crystals in the tunnels under the city, dug in the late 3E; a seam running into the hills east of it would be worked by the nearest village once the prison diggings stopped. <!-- place_note:mine-5-m64/overview --> An adit and a tipping-yard where delvers bring up raw crystal for a Stormhold buyer. <!-- place_note:mine-5-m64/present --> Argonian and Dunmer delvers; a pit-boss who knows how to read a vein. <!-- place_note:mine-5-m64/people --> The crystals under Stormhold were dug by Warden Varus's prisoners in the 3E; the market remained and private diggers moved in. <!-- place_note:mine-5-m64/history -->
-
-A timber-propped adit in a hillside, a tipping-yard of spoil and a few huts. <!-- place_note:mine-5-m64/look --> Raw crystal sold to Stormhold's crystal-cutters; a share of every load goes to the Vicecanons for the right to dig. <!-- place_note:mine-5-m64/economy --> A small ancestor shrine stands at the mouth of the adit, where the delvers pause before going down. <!-- place_note:mine-5-m64/faith -->
-
-Built from: Its main source, Whistling Mine (Skyrim), is a small mine of one interior and eight people, with timber-propped galleries and cave pieces, and it fits the adit. Its interior serves as the galleries, and a wall piece placed across one gallery makes the walled-off section. Still to add: the tipping-yard of spoil, the huts, the smelter, the ancestor shrine at the mouth and the geode and iron veins. <!-- place_note:mine-5-m64/source -->
-
-It promises the player: Ore or mineral vein: geode veins (amethyst and garnet: the Stormhold Crystal) (x4); Ore or mineral vein: iron ore (x2); Smelter: in the tipping-yard; Dangerous wildlife: giant spiders in the walled-off galleries (x5); Boss fight: a giant spider brood-mother in the deepest gallery; Boss chest: behind the old wall. <!-- place_give:mine-5-m64/0; place_give:mine-5-m64/1; place_give:mine-5-m64/2; place_give:mine-5-m64/3; place_give:mine-5-m64/4; place_give:mine-5-m64/5 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Rockfall traps in the timber-propped galleries. Giant spiders nest in the old walled-off galleries deeper in. <!-- place_note:mine-5-m64/dangers --> <!-- place_law:mine-5-m64; place_danger:mine-5-m64 -->
-
-The nearest stop is the boat stop at Stormhold, 930 m away across the marsh on foot. Roads run from it to Nuxhal (track, 250 m south-east), Tenmal (track, 550 m north-west), Ranvos Landing (track, 670 m south-west) and Reeka-Veesa (track, 970 m south). <!-- travel_approach:mine-5-m64; road_node:place=mine-5-m64 -->
-
-It is to be built from Whistling Mine in Skyrim.esm (a mine: 81 buildings, 1 interior, 8 residents, 0 hostile, about 52 m across). The source reads: "Whistling Mine: a mine with cave, mine, camp pieces. 8 people live there, 0 hostile. 1 interiors. By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Frostmoon Crag (mine, 0 buildings, 0 interiors) and Broken Tusk Mine (mine, 99 buildings, 1 interior). <!-- place_source:mine-5-m64/0; source_place:skyrim.whistlingminelocation; place_source:mine-5-m64/1; place_source:mine-5-m64/2; place_source:mine-5-m64/3 -->
-
 ### Tenmal
 
-A village, about 120 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a council of farm-holders by the Vicecanons' leave; 6 people live there. It is not built yet. <!-- place:tenmal -->
+A village, about 120 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a council of farm-holders by the Vicecanons' leave; 10 people live there. It is not built yet. <!-- place:tenmal -->
 
 Tenmal is a village in the Stormhold manner on the road east of the city. Its name is close to Ten-Maur-Wolk (Tenmar Wall), the road hinge that neighbours Stormhold and the village grew up along the same road. <!-- place_note:tenmal/overview --> A river-side village with a landing and a wayhouse, and a crystal pit above it worked by a few households. <!-- place_note:tenmal/present --> Argonian and Dunmer families of the river road; a ferryman and a pit-boss. <!-- place_note:tenmal/people --> The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; the villagers do not speak of it. <!-- place_note:tenmal/history -->
 
@@ -163,6 +127,42 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Stormhold, 650 m away across the marsh on foot. Roads run from it to Tenmal Pits (track, 550 m south-east), Causeway-Head Post (cart road, 610 m north-west), Nuxhal (track, 610 m south-east), Ranvos Landing (track, 940 m south) and Reeka-Veesa (track, 1.2 km south-east). <!-- travel_approach:tenmal; road_node:place=tenmal -->
 
 It is to be built from Stendarr's Outpost in Wyrmstooth.esp (a village: 10 buildings, 1 interior, 6 residents, 0 hostile, about 21 m across). The source reads: "Stendarr's Outpost: a village built in nordic style with farm, fort, mine pieces. 6 people live there, 0 hostile. 1 interiors (Stendarr's Outpost). By water." Similar sources: Seekhat Yol (village, 160 buildings, 7 interiors), Root Whisper Village (village, 791 buildings, 8 interiors) and Keeba Hollow (village, 203 buildings, 9 interiors). <!-- place_source:tenmal/0; source_place:wyrmstooth.cluster.stendarr-s-outpost.11.-5; place_source:tenmal/1; place_source:tenmal/2; place_source:tenmal/3 -->
+
+### Karsh-Naal Camp
+
+A tribal camp, about 90 m across, sited on swamp, whose culture the data does not say. In 4E 201 it is inhabited, held by Tribeless Naga hired as guards by the Unbound, a sap-takers' cult; 8 people live there. It is drafted: its place files are in newworld/places/tribal-camp-m2-m68. <!-- place:tribal-camp-m2-m68 -->
+
+Karsh-Naal Camp is a camp of tribeless Naga in the marsh south of Stormhold, hired out to the Unbound as guards. The Naga are the tribeless Argonians of canon who sell their blades to whoever pays; the Unbound use the camp as the store for the sap their crews draw. <!-- place_note:tribal-camp-m2-m68/overview --> A few Naga guards keep the camp, standing at the fire by the longhouse. A cage stands at the camp's edge for anyone who tries to leave the Unbound's work. <!-- place_note:tribal-camp-m2-m68/present --> Tribeless Naga, tall and hard-eyed, who guard for pay and answer to the Unbound; they have no chief of their own. <!-- place_note:tribal-camp-m2-m68/people --> The Naga once lived off the road traffic from Stormhold to Helstrom. When the Unbound came with coin, they took to guarding the sap jars instead. <!-- place_note:tribal-camp-m2-m68/history -->
+
+Hide tents hung with bones and a timber longhouse around a fire pit, jars of sap stacked by the longhouse wall, a cage at the camp's edge and a pole of trophies. <!-- place_note:tribal-camp-m2-m68/look --> The Unbound pay the guards in coin; jars of Hist sap are stacked by the longhouse until the cult's crews carry them on. <!-- place_note:tribal-camp-m2-m68/economy --> The Naga worship Sithis at a shrine of bones; no Hist tree stands in the camp. <!-- place_note:tribal-camp-m2-m68/faith -->
+
+Built from: Its main source, Dushnikh Yal (Skyrim), is an orc camp with a longhouse, a mine and a cellar, and its longhouse interior serves as the Naga longhouse where the pay and stolen goods lie. Its orc pieces are replaced with hide tents hung with bones from Ree-An-Wo and, for the bone shrine, the ring of standing stones and scattered bones of the Argonian camp near Loreisian (both King of the Murkmire). Still to add: the fire pit, the stacked jars of sap, the pole of trophies and the cage at the camp's edge, built from placed bars and posts. <!-- place_note:tribal-camp-m2-m68/source -->
+
+It promises the player: Hostile occupants: the Unbound's hired Naga guards at the fire (x4); Lesser treasure: the guards' pay and stolen goods in the longhouse (x2). <!-- place_give:tribal-camp-m2-m68/0; place_give:tribal-camp-m2-m68/1 -->
+
+Law: no law. It meets a visitor as hostile (held by people who attack on sight: outlaws, raiders, a warband). What lives inside is dangerous (band 3 of 5, foes about level 20); the calmest way in crosses dangerous ground; its loot is of the dangerous band. The guards attack strangers on sight, but they are few and keep to the fire, away from the cage at the edge. <!-- place_note:tribal-camp-m2-m68/dangers --> <!-- place_law:tribal-camp-m2-m68; place_danger:tribal-camp-m2-m68 -->
+
+The nearest stop is the boat stop at Stormhold, 700 m away across the marsh on foot. No road reaches it. <!-- travel_approach:tribal-camp-m2-m68; road_node:place=tribal-camp-m2-m68 -->
+
+It is to be built from Dushnikh Yal in Skyrim.esm (a camp tribal: 257 buildings, 3 interiors, 12 residents, 1 hostile, about 71 m across). The source reads: "Dushnikh Yal: a camp tribal built in orc and imperial style with mine, cave, ruin pieces. 12 people live there, 1 hostile. 3 interiors. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Kazmalgur (camp tribal, 30 buildings, 1 interior) and Narzulbur (camp tribal, 52 buildings, 2 interiors). <!-- place_source:tribal-camp-m2-m68/0; source_place:skyrim.dushnikhyallocation; place_source:tribal-camp-m2-m68/1; place_source:tribal-camp-m2-m68/2; place_source:tribal-camp-m2-m68/3 -->
+
+### Tenmal Pits
+
+A mine, about 80 m across, sited on hilltop, whose culture the data does not say. In 4E 201 it is inhabited, held by a pit-boss and a handful of delvers, by the Vicecanons' leave; 6 people live there. It is not built yet. <!-- place:mine-5-m64 -->
+
+Tenmal Pits is a crystal pit above Tenmal village. Canon puts the Stormhold Crystals in the tunnels under the city, dug in the late 3E; a seam running into the hills east of it would be worked by the nearest village once the prison diggings stopped. <!-- place_note:mine-5-m64/overview --> An adit and a tipping-yard where delvers bring up raw crystal for a Stormhold buyer. <!-- place_note:mine-5-m64/present --> Argonian and Dunmer delvers; a pit-boss who knows how to read a vein. <!-- place_note:mine-5-m64/people --> The crystals under Stormhold were dug by Warden Varus's prisoners in the 3E; the market remained and private diggers moved in. <!-- place_note:mine-5-m64/history -->
+
+A timber-propped adit in a hillside, a tipping-yard of spoil and a few huts. <!-- place_note:mine-5-m64/look --> Raw crystal sold to Stormhold's crystal-cutters; a share of every load goes to the Vicecanons for the right to dig. <!-- place_note:mine-5-m64/economy --> A small ancestor shrine stands at the mouth of the adit, where the delvers pause before going down. <!-- place_note:mine-5-m64/faith -->
+
+Built from: Its main source, Whistling Mine (Skyrim), is a small mine of one interior and eight people, with timber-propped galleries and cave pieces, and it fits the adit. Its interior serves as the galleries, and a wall piece placed across one gallery makes the walled-off section. Still to add: the tipping-yard of spoil, the huts, the smelter, the ancestor shrine at the mouth and the geode and iron veins. <!-- place_note:mine-5-m64/source -->
+
+It promises the player: Ore or mineral vein: geode veins (amethyst and garnet: the Stormhold Crystal) (x4); Ore or mineral vein: iron ore (x2); Smelter: in the tipping-yard; Dangerous wildlife: giant spiders in the walled-off galleries (x5); Boss fight: a giant spider brood-mother in the deepest gallery; Boss chest: behind the old wall. <!-- place_give:mine-5-m64/0; place_give:mine-5-m64/1; place_give:mine-5-m64/2; place_give:mine-5-m64/3; place_give:mine-5-m64/4; place_give:mine-5-m64/5 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). The fights its record sets here are dangerous (band 3 of 5, foes about level 20); the calmest way in crosses wild ground; its loot is of the dangerous band. Rockfall traps in the timber-propped galleries. Giant spiders nest in the old walled-off galleries deeper in. <!-- place_note:mine-5-m64/dangers --> <!-- place_law:mine-5-m64; place_danger:mine-5-m64 -->
+
+The nearest stop is the boat stop at Stormhold, 930 m away across the marsh on foot. Roads run from it to Nuxhal (track, 250 m south-east), Tenmal (track, 550 m north-west), Ranvos Landing (track, 670 m south-west) and Reeka-Veesa (track, 970 m south). <!-- travel_approach:mine-5-m64; road_node:place=mine-5-m64 -->
+
+It is to be built from Whistling Mine in Skyrim.esm (a mine: 81 buildings, 1 interior, 8 residents, 0 hostile, about 52 m across). The source reads: "Whistling Mine: a mine with cave, mine, camp pieces. 8 people live there, 0 hostile. 1 interiors. By water." Similar sources: Gloombound Mine (mine, 60 buildings, 1 interior), Frostmoon Crag (mine, 0 buildings, 0 interiors) and Broken Tusk Mine (mine, 99 buildings, 1 interior). <!-- place_source:mine-5-m64/0; source_place:skyrim.whistlingminelocation; place_source:mine-5-m64/1; place_source:mine-5-m64/2; place_source:mine-5-m64/3 -->
 
 ### Nenria
 
@@ -184,7 +184,7 @@ It is to be built from Ranmora in Nyhus.esp (a ruin ayleid: 360 buildings, 2 int
 
 ### Sedge-Kal Camp
 
-An outpost, about 80 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel reed-cutters on rotation; 15 people live there. It is not built yet. <!-- place:outpost-m3-m60 -->
+An outpost, about 80 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel reed-cutters on rotation; 5 people live there. It is not built yet. <!-- place:outpost-m3-m60 -->
 
 Sedge-Kal Camp is where Veesa-Teeleel crews cut the northern plain's reed for Stormhold's mat-makers. Jal-Veesa lives on reed mats sold to the city, and the reed beds beyond it on the northern road are the nearest wide stand; the name is in the wardens' tongue. <!-- place_note:outpost-m3-m60/overview --> A cluster of lean-to huts and boat landings, where a crew of cutters lives among the bound reed stacks. A work barge lies moored at the landing, its hold shut by a door that locks from outside. <!-- place_note:outpost-m3-m60/present --> Veesa-Teeleel cutters and their families, with a watcher from Jal-Veesa. <!-- place_note:outpost-m3-m60/people --> The reed beds of the northern plain beyond Jal-Veesa have been cut for as long as there have been mats to sell. <!-- place_note:outpost-m3-m60/history -->
 
@@ -218,6 +218,24 @@ The nearest stop is the boat stop at Stormhold, 990 m away by road. Roads run fr
 
 It is to be built from Imperial Camp in Wyrmstooth.esp (a camp military: 9 buildings, 0 interiors, 5 residents, 5 hostile, about 144 m across). The source reads: "Imperial Camp: a camp military built in imperial style with camp, mine, ship pieces. 5 people live there, 5 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), near Loreisian (camp tribal, 8 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-1-m67/0; source_place:wyrmstooth.marker.imperial-camp; place_source:outpost-1-m67/1; place_source:outpost-1-m67/2; place_source:outpost-1-m67/3 -->
 
+### Causeway-Head Post
+
+An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Vicecanon's reeve and two guards; 4 people live there. It is not built yet. <!-- place:outpost-m1-m61 -->
+
+Causeway-Head Post stands where the northern road leaves Stormhold's mounds, north-west of Fort Willowmoth. Stormhold's toll-keepers take tolls on its causeways and river, and keep a bar at the head of the busiest one; it is named for where it stands. <!-- place_note:outpost-m1-m61/overview --> A small stone hut and a bar across the road, with a shed for the reeve and room for a cart. <!-- place_note:outpost-m1-m61/present --> A Vicecanon's reeve with two Argonian guards; the reeve knows every carter by face and who still owes the toll. <!-- place_note:outpost-m1-m61/people --> A post where the northern road leaves the mounds north-west of Fort Willowmoth, taking tolls on reed and fish cargoes since the colonial period. <!-- place_note:outpost-m1-m61/history -->
+
+A low stone toll-house with a lamp post and a wooden bar across a causeway. <!-- place_note:outpost-m1-m61/look --> A toll on goods leaving the city, a lamp-oil trade and a few stalls. <!-- place_note:outpost-m1-m61/economy --> A grave-stake for the post's dead and a Dunmer ancestor-stone from the colonial period. <!-- place_note:outpost-m1-m61/faith -->
+
+Built from: Its main source, Doomstone Tower (Skyrim), is a Nordic tower with no interior, so its Nordic pieces are replaced with a low Imperial-style stone hut. The record needs no interior, so the hut is an outside prop and the reeve and guards work in the open. Ree-An-Wo (King of the Murkmire) lends its glowing bog beacons for the lamp and its rustic tables and chests for the stall. Still to add: the bar across the causeway, the lamp post, the reeve's shed, the oil-and-rope stall, the grave-stake and the Dunmer ancestor stone. <!-- place_note:outpost-m1-m61/source -->
+
+It promises the player: General goods trader: a stall of lamp oil, rope and travel food. <!-- place_give:outpost-m1-m61/0 -->
+
+Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the dangerous band. Highway wildlife and the odd thief are the only threats at this small guarded toll-house at the head of the causeway. <!-- place_note:outpost-m1-m61/dangers --> <!-- place_law:outpost-m1-m61; place_danger:outpost-m1-m61 -->
+
+The nearest stop is the boat stop at Stormhold, 240 m away across the marsh on foot. Roads run from it to Sedge-Kal Camp (track, 280 m north-west), Fort Willowmoth (track, 380 m south-east), Stormhold (cart road, 430 m south-west), Vandrel Farm (track, 540 m south) and Tenmal (cart road, 610 m south-east). <!-- travel_approach:outpost-m1-m61; road_node:place=outpost-m1-m61 -->
+
+It is to be built from Doomstone Tower in Skyrim.esm (a tower: 9 buildings, 0 interiors, 1 resident, 0 hostile, about 24 m across). The source reads: "Doomstone Tower: a tower built in nordic style with mine, ruin, shrine pieces. 1 people live there, 0 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Lair of the Kraken (hamlet, 9 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m1-m61/0; source_place:skyrim.doomstonetowerlocation; place_source:outpost-m1-m61/1; place_source:outpost-m1-m61/2; place_source:outpost-m1-m61/3 -->
+
 ### Vandrel Farm
 
 A farm, about 50 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by The Vandrel family, tenants of Stormhold's farm-holders; 4 people live there. It is not built yet. <!-- place:farm-m1-m64 -->
@@ -232,13 +250,13 @@ It promises the player: Common harvestables: saltrice in the flooded fields (x2)
 
 Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses wild ground; its loot is of the dangerous band. Crocodiles lie in the irrigation ditch. A thief sometimes comes up the valley road at night. Stormhold's patrols ride past the farm. <!-- place_note:farm-m1-m64/dangers --> <!-- place_law:farm-m1-m64; place_danger:farm-m1-m64 -->
 
-The nearest stop is the boat stop at Stormhold, 270 m away across the marsh on foot. Roads run from it to Surkina (track, 200 m south-east), Stormhold (track, 480 m north-west) and Causeway-Head Post (track, 540 m north). <!-- travel_approach:farm-m1-m64; road_node:place=farm-m1-m64 -->
+The nearest stop is the boat stop at Stormhold, 270 m away across the marsh on foot. Roads run from it to Surkina (track, 200 m south-east), Fort Willowmoth (track, 430 m north-east), Stormhold (track, 480 m north-west) and Causeway-Head Post (track, 540 m north). <!-- travel_approach:farm-m1-m64; road_node:place=farm-m1-m64 -->
 
 It is to be built from Ruined Farmhouse in Journey to Baan Malur.esp (a farm: 37 buildings, 1 interior, 4 residents, 0 hostile, about 57 m across). The source reads: "Ruined Farmhouse: a farm built in dunmer and dwemer style with ruin, mine, farm pieces. 4 people live there, 0 hostile. 1 interiors (Ruined Farmhouse). By water." Similar sources: Salvius Farm (farm, 5 buildings, 1 interior), Katlas Farm (farm, 243 buildings, 2 interiors) and Farmhouse (farm, 7 buildings, 2 interiors). <!-- place_source:farm-m1-m64/0; source_place:journeytobaanmalur.cluster.ruinedfarm.-12.-12; place_source:farm-m1-m64/1; place_source:farm-m1-m64/2; place_source:farm-m1-m64/3 -->
 
 ### Ranvos Landing
 
-An outpost, about 50 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a ferry-keeper's family by the Vicecanons' leave; 2 people live there. It is not built yet. <!-- place:outpost-2-m68 -->
+An outpost, about 50 m across, sited on riverbank, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a ferry-keeper's family by the Vicecanons' leave; 3 people live there. It is not built yet. <!-- place:outpost-2-m68 -->
 
 Ranvos Landing is the ferry where the road from Stormhold toward Helstrom meets the river's eastern branch, kept by a Dunmer-descended family of the Stormhold country. The Dunmeri house name follows the city's old minority. <!-- place_note:outpost-2-m68/overview --> One family keeps a moored flat barge and a roadhouse and sells directions south. <!-- place_note:outpost-2-m68/present --> A Dunmer-descended ferryman and his Argonian crew, the one family that keeps the landing with the Vicecanons' leave. <!-- place_note:outpost-2-m68/people --> A ferry point where the road toward Helstrom crosses the eastern branch of the river, kept since the colonial period. <!-- place_note:outpost-2-m68/history -->
 
@@ -253,24 +271,6 @@ Law: native law. It meets a visitor as friendly (its people live there and welco
 The nearest stop is the boat stop at Stormhold, 850 m away across the marsh on foot. Roads run from it to Tenmal Pits (track, 670 m north-east), Nuxhal (track, 730 m north-east), Dry-Fang Camp (track, 760 m south-west), Tenmal (track, 940 m north) and Reeka-Veesa (track, 1.1 km east). <!-- travel_approach:outpost-2-m68; road_node:place=outpost-2-m68 -->
 
 It is to be built from near Katlas Farm in Skyrim.esm (a camp military: 1 building, 0 interiors, 2 residents, 0 hostile, about 22 m across). The source reads: "near Katlas Farm: a camp military built in nordic style with camp, mine pieces. 2 people live there, 0 hostile. By water." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Velothi Victuals (hamlet, 16 buildings, 1 interior) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-2-m68/0; source_place:skyrim.marker.0ec194; place_source:outpost-2-m68/1; place_source:outpost-2-m68/2; place_source:outpost-2-m68/3 -->
-
-### Causeway-Head Post
-
-An outpost, about 70 m across, sited on inland, of The Shadowfen Border (Stormhold). In 4E 201 it is inhabited, held by a Vicecanon's reeve and two guards; 1 person lives there. It is not built yet. <!-- place:outpost-m1-m61 -->
-
-Causeway-Head Post stands where the northern road leaves Stormhold's mounds, north-west of Fort Willowmoth. Stormhold's toll-keepers take tolls on its causeways and river, and keep a bar at the head of the busiest one; it is named for where it stands. <!-- place_note:outpost-m1-m61/overview --> A small stone hut and a bar across the road, with a shed for the reeve and room for a cart. <!-- place_note:outpost-m1-m61/present --> A Vicecanon's reeve with two Argonian guards; the reeve knows every carter by face and who still owes the toll. <!-- place_note:outpost-m1-m61/people --> A post where the northern road leaves the mounds north-west of Fort Willowmoth, taking tolls on reed and fish cargoes since the colonial period. <!-- place_note:outpost-m1-m61/history -->
-
-A low stone toll-house with a lamp post and a wooden bar across a causeway. <!-- place_note:outpost-m1-m61/look --> A toll on goods leaving the city, a lamp-oil trade and a few stalls. <!-- place_note:outpost-m1-m61/economy --> A grave-stake for the post's dead and a Dunmer ancestor-stone from the colonial period. <!-- place_note:outpost-m1-m61/faith -->
-
-Built from: Its main source, Doomstone Tower (Skyrim), is a Nordic tower with no interior, so its Nordic pieces are replaced with a low Imperial-style stone hut. The record needs no interior, so the hut is an outside prop and the reeve and guards work in the open. Ree-An-Wo (King of the Murkmire) lends its glowing bog beacons for the lamp and its rustic tables and chests for the stall. Still to add: the bar across the causeway, the lamp post, the reeve's shed, the oil-and-rope stall, the grave-stake and the Dunmer ancestor stone. <!-- place_note:outpost-m1-m61/source -->
-
-It promises the player: General goods trader: a stall of lamp oil, rope and travel food. <!-- place_give:outpost-m1-m61/0 -->
-
-Law: native law. It meets a visitor as friendly (its people live there and welcome a peaceable visitor). Its record sets no fight here; the calmest way in crosses safe ground; its loot is of the dangerous band. Highway wildlife and the odd thief are the only threats at this small guarded toll-house at the head of the causeway. <!-- place_note:outpost-m1-m61/dangers --> <!-- place_law:outpost-m1-m61; place_danger:outpost-m1-m61 -->
-
-The nearest stop is the boat stop at Stormhold, 240 m away across the marsh on foot. Roads run from it to Sedge-Kal Camp (track, 280 m north-west), Stormhold (cart road, 430 m south-west), Vandrel Farm (track, 540 m south) and Tenmal (cart road, 610 m south-east). <!-- travel_approach:outpost-m1-m61; road_node:place=outpost-m1-m61 -->
-
-It is to be built from Doomstone Tower in Skyrim.esm (a tower: 9 buildings, 0 interiors, 1 resident, 0 hostile, about 24 m across). The source reads: "Doomstone Tower: a tower built in nordic style with mine, ruin, shrine pieces. 1 people live there, 0 hostile. Dry ground." Similar sources: Ree-An-Wo (hamlet, 31 buildings, 0 interiors), Lair of the Kraken (hamlet, 9 buildings, 0 interiors) and Black Rose (hamlet, 8 buildings, 0 interiors). <!-- place_source:outpost-m1-m61/0; source_place:skyrim.doomstonetowerlocation; place_source:outpost-m1-m61/1; place_source:outpost-m1-m61/2; place_source:outpost-m1-m61/3 -->
 
 ### Calvian Waystation
 
@@ -309,7 +309,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Stormhold.**
 
 - Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. <!-- place_note:stormhold/hooks -->
-- The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons want the thief found before the quarters settle it themselves. <!-- place_note:stormhold/hooks -->
+- The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from beside the square's pool of Hist sap, and the Vicecanons want the thief found before the quarters settle it themselves. <!-- place_note:stormhold/hooks -->
 - The Dunmer used the site as the foothold of their slave trade, adding stone roads, light posts and bridges and the city invented the Vicecanon office to try slavers. <!-- place_note:stormhold/history -->
 - It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E and was overrun but lightly damaged by Umbriel's undead in 4E 48. <!-- place_note:stormhold/history -->
 
@@ -317,7 +317,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. <!-- place_note:jal-veesa/hooks -->
 - The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold. <!-- place_note:jal-veesa/present -->
-- A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
+- A Hist with its pool of sap, and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
 - In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. <!-- place_note:jal-veesa/faith -->
 - The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them. <!-- place_note:jal-veesa/faith -->
 
@@ -325,22 +325,22 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A Dunmer trader's raft held at the gate for a cargo of slaves' shackles nobody will explain; a tower watchman who sees fires in the Morrowind hills and is not believed. <!-- place_note:fort-willowmoth/hooks -->
 
-**Karsh-Naal Camp.**
-
-- A Naga sap-drawer caged at the camp's edge for trying to leave; jars of Hist sap stacked by the longhouse, more than any camp would need. <!-- place_note:tribal-camp-m2-m68/hooks -->
-
 **Surkina.**
 
 - A family on the far mound whose causeway stones were pulled out by someone in the night, so their saltrice cannot reach market; a feud between the Argonian and Dunmer farm-holders over a water-right. <!-- place_note:surkina/hooks -->
-
-**Tenmal Pits.**
-
-- A vein that hums; a pit-boss who wants someone to go through the wall the old delvers built across a gallery. <!-- place_note:mine-5-m64/hooks -->
 
 **Tenmal.**
 
 - A pit-boss who has found a vein that hums; a traveller who came by river with a sack of Dres slave-irons and has not left his room since. <!-- place_note:tenmal/hooks -->
 - The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; the villagers do not speak of it. <!-- place_note:tenmal/history -->
+
+**Karsh-Naal Camp.**
+
+- A Naga sap-drawer caged at the camp's edge for trying to leave; jars of Hist sap stacked by the longhouse, more than any camp would need. <!-- place_note:tribal-camp-m2-m68/hooks -->
+
+**Tenmal Pits.**
+
+- A vein that hums; a pit-boss who wants someone to go through the wall the old delvers built across a gallery. <!-- place_note:mine-5-m64/hooks -->
 
 **Nenria.**
 
@@ -357,6 +357,10 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - Someone is pulling up the weir stakes at night and leaving the crocodiles a way in; a boat of Dunmer traders asks to cross without paying. <!-- place_note:outpost-1-m67/hooks -->
 
+**Causeway-Head Post.**
+
+- A cart with a nailed-shut crate that the reeve has been paid to wave through; a night guard who has seen lights on the northern road. <!-- place_note:outpost-m1-m61/hooks -->
+
 **Vandrel Farm.**
 
 - A missing son who went to the Silyanorn tunnels for crystal; a stranger who asks to rent the barn for a week. <!-- place_note:farm-m1-m64/hooks -->
@@ -365,10 +369,6 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Ranvos Landing.**
 
 - The ferryman sells directions and warns against the camp to the south; a body washed up at the landing. <!-- place_note:outpost-2-m68/hooks -->
-
-**Causeway-Head Post.**
-
-- A cart with a nailed-shut crate that the reeve has been paid to wave through; a night guard who has seen lights on the northern road. <!-- place_note:outpost-m1-m61/hooks -->
 
 **Calvian Waystation.**
 
