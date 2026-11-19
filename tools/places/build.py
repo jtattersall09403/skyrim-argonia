@@ -1408,7 +1408,7 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
     if seam["last_ring_differ"]:
         problem(f"navmesh: {reach} rings out from the place its cells still come out unlike the world's "
                 f"({seam['last_ring_differ'][:6]}): the place's navmesh cannot be joined to the world's edge for edge")
-    ship = ring1 | {tuple(c) for c in seam["differ"]}
+    ship = ring1 | shipped_differ(ring1, {tuple(c) for c in seam["differ"]})
     mine = []
     navi = json.loads((out / "navi.json").read_text())
     nvmis = {}
@@ -1438,6 +1438,21 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
     seam["one_way_unlinked"] = unlink_one_way(mine, kept)
     seam["joined_edges"] = join_seams(mine)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
+
+
+def shipped_differ(ship: set, differ: set) -> set:
+    """The cells further out that came out unlike the world's and are shipped: those that touch the shipped block
+    along a seam, cell by cell (its seams were built against ours). A cell unlike the world's whose every neighbour
+    keeps the world's own mesh keeps the world's too: the world's meshes answer each other edge for edge, and ours
+    would answer none of them."""
+    got, grow = set(), True
+    while grow:
+        grow = False
+        for c in sorted(differ - got):
+            if any((c[0] + dx, c[1] + dy) in ship | got for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                got.add(c)
+                grow = True
+    return got
 
 
 def unlink_one_way(navs: list[dict], kept: list[dict] = ()) -> int:

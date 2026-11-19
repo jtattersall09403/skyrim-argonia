@@ -120,3 +120,9 @@ def test_a_link_into_a_world_mesh_that_does_not_answer_it_is_opened():
     assert B.unlink_one_way([a]) == 0                 # without the world's meshes nothing is judged
     assert B.unlink_one_way([a], [world]) == 1
     assert not nv.tris["flags"][0] & nvnm.EDGE_LINK[1] and nv.tris["flags"][1] & nvnm.EDGE_LINK[2]
+
+
+def test_a_far_cell_unlike_the_worlds_is_shipped_only_when_it_touches_the_shipped_block():
+    ship = {(0, 0), (0, 1)}
+    differ = {(0, 2), (0, 3), (0, 5), (1, 1)}
+    assert B.shipped_differ(ship, differ) == {(0, 2), (0, 3), (1, 1)}   # (0, 5) keeps the world's mesh
