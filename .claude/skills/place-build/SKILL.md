@@ -139,9 +139,11 @@ The tools lay the network by these rules.
   deeper than half a wade (the mesh under a foot lies a little below the ground it met, and deeper is swum). The steps are the
   source's own; where the source has none, the steps of the deck pieces' own kit (the non-Nordic steps pieces in
   the folder of a deck piece's model: Skyrim's DockStepsDown01 and 02 with its dock pieces), which `place.json`
-  `steps.kit` then names. A free edge is an open end: one the deck does not go on from, with no rail or wall of the
+  `steps.kit` then names. A steps piece taller than one and a half times its run is a wall or tower with a stair
+  in it (a keep's wall stairs), never a flight. A free edge is an open end: one the deck does not go on from, with no rail or wall of the
   piece along it. The bank may bury the rest of the run, as steps set into a slope; no tread stands under the
-  ground before that, and the flight's body is clear of every solid by the build's overlap rule. Of the flights
+  ground before that, and at least its top tread stands over the ground (a deck whose edge already meets the ground
+  needs no flight), and the flight's body is clear of every solid by the build's overlap rule. Of the flights
   that fit, the one the bank buries least is laid, then the one nearest the deck's streets and doors. A deck
   nothing of the town uses (a rowing boat, a bridge deck high overhead) gets none. Look at each flight in the
   render.
@@ -159,7 +161,9 @@ The tools lay the network by these rules.
   bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: name it in
   the hand-over and change the world's ground first (the skill `world-build`).
 - **Gangways and joins.** A door whose walkable ground is still an island is joined to the town by level walkway
-  pieces (the place's commonest walkway piece, never a flight, a building or a tent) laid from the island to the nearest point of the network at its height, no further than 768 units (a gangway, never a causeway) (never across a height the
+  pieces (the place's commonest walkway piece, never a flight, a building, a tent or a floor plate such as a keep's
+  ledge, which is walked where it stands and never laid as a gangway; a join already laid with one is laid again on
+  the walkway piece) laid along a line no wall, house or flight's body crosses at walking height, from the island to the nearest point of the network at its height, no further than 768 units (a gangway, never a causeway) (never across a height the
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
   hatch) rests on that thing as its gangway and names it as its `carrier`; a piece that continues a walkway stands
   `on` it. The build's overlap check lets a piece rest on what its seat names, by the same rule the drafter lays
@@ -464,7 +468,9 @@ and removed per file; a stage that would write outside what it owns changes noth
    else is walked through, as Skyrim's navmesh runs under its doors), so it meets the world's own navmesh edge
    for edge: the world file, its refs shards and its navmesh must be of one build, and the build fails when the
    shards do not hold every world ref the place clears. A link the ring's build made into a world mesh that the
-   world's own does not answer is opened. Every piece's collision is its own mesh, found by the new world's mod
+   world's own does not answer is opened. A cell further out that comes out unlike the world's is shipped only
+   where it touches the place's shipped cells along a seam; one ringed by the world's own cells keeps the world's
+   mesh, which its neighbours answer edge for edge. Every piece's collision is its own mesh, found by the new world's mod
    order; a source mod whose plugin the game never loads (its pieces copied into our places) is read from its
    plugin among the asset mods (`newworld-assets/<mod>`), outdoors and in every room, so no piece is missing from
    the mesh for want of its plugin. A copied room keeps its source's navmesh only when that is one walkable island

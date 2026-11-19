@@ -655,10 +655,10 @@ JOIN_BODY = 48.0   # units over a join's deck at which the line is tested agains
 
 
 def through(a, b, near: list[dict], bases: dict, carrier: str | None = None) -> bool:
-    """Whether a level join's line from a to b passes through a solid that is no walkway (a keep's wall, a house) at
+    """Whether a level join's line from a to b passes through a solid that is no level deck (a keep's wall, a house, a flight's body under its treads) at
     walking height: tested every 16 units, JOIN_BODY over the line's deck, by the build's own inside test."""
     from tools.places.draft import geom
-    solid = [o for o in near if o.get("id") != carrier and not paths_mod.walked(bases.get(o["base"]))]
+    solid = [o for o in near if o.get("id") != carrier and not paths_mod.is_deck(bases.get(o["base"]))]
     run = math.dist(a[:2], b[:2])
     for k in range(int(run // 16) + 1):
         t = k * 16 / run if run else 0.0
