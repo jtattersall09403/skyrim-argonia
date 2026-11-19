@@ -141,7 +141,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             continue
         sj = json.loads(sj.read_text())
         copied = io.copied_space(sj["copy_of"], src, bundles)
-        for b in interiors.beds_in(copied.refs if copied else [], bases, sj.get("room"), sj["copy_of"]):
+        known = {**io.catalogue_bases({r["base"] for r in copied.refs} - set(bases)), **bases} if sj.get("added") and copied else bases
+        for b in interiors.beds_in(copied.refs if copied else [], known, sj.get("room"), sj["copy_of"]):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
     for r in refs:   # the guard camp's beds, outdoors
@@ -397,7 +398,8 @@ def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -
         rows = {r["src"]: r for r in io.read_jsonl(sj.parent / "refs.jsonl") if r.get("src")}
         keep = interiors.kept(sp["copy_of"], sp.get("room"))
         src_sp = io.copied_space(sp["copy_of"], src, bundles)
-        if sp.get("added") and src_sp:
+        place_source = src.meta.get("source_id") or src.meta.get("bundle_id", "").removeprefix("src.")
+        if sp.get("added") and src_sp and sp["copy_of"].split("/", 1)[0] != place_source:
             bases = {**bases, **io.catalogue_bases({r["base"] for r in src_sp.refs})}
         for r in (src_sp.refs if src_sp else []):
             if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
