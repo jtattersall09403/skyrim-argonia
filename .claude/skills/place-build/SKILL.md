@@ -172,7 +172,10 @@ The tools lay the network by these rules.
   network does not reach (a Hist's trunk) becomes the nearest point of the network beside it, measured from the
   thing's body (a great Hist's trunk cuts the mesh far round it). A stop of a day outdoors that names no spot (an
   eat or a wander anywhere in town) stands at the town's middle: the network's point nearest the place's anchor,
-  never the first door's arrival, which may be a hatch only the player reaches.
+  never the first door's arrival, which may be a hatch only the player reaches. Every stop of a day outdoors at a
+  point stands where the build seats it on the network: the build seats a plan point on the ground, so a point over
+  ground the network does not walk (mud under a landing's deck) takes the deck's height, and a point off the
+  network moves to its nearest point on it.
 - **Streets and patrols lie on the built walkable network.** Once the doors are joined, every street, path and
   walkway is walked along its whole line (a point every 64 units) on the town's main network of the built navmesh
   (ours and the world's own round the place). A point stands on a dry triangle at a level where a person can stand:
@@ -190,7 +193,9 @@ The tools lay the network by these rules.
   Guards' patrols are then taken from those streets, each point on the network and out of the water (on a deck,
   or on mesh at or over the water's level; a ford is crossed, never stood in), the first the guard's work stop (a
   patrol keeps at least two). A stop or patrol point on a deck over the ground is written with its height, since
-  the build seats a plan point on the ground under the deck. One
+  the build seats a plan point on the ground under the deck. The `streets` stage builds and joins in at most six
+  rounds; its last round adds no piece and lays every street, stop and patrol on the network as built, so a place
+  whose flights and joins outrun the rounds still has its streets on its floor. One
   pass settles every line: `draft check` mends each street again on the built mesh and fails if any stretch moves.
   `draft check` and the build's `streets` check list any street or patrol point still off the network.
 

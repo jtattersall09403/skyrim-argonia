@@ -869,8 +869,48 @@ def stops(place_id: str, pdir: Path, W: Walkable, log=print, bases: dict | None 
             if mid and at.get("space", "exterior") == "exterior" and not at.get("pos") and not at.get("ref") and at:
                 st["at"] = {**at, "space": "exterior", "pos": mid}
                 n += 1
+    n += stand_stops(place_id, folk, W, log)
     if n:
         io.write_jsonl(fj, folk)
+    return n
+
+
+def stand_stops(place_id: str, folk: list[dict], W: Walkable, log=print) -> int:
+    """Every stop of the day outdoors at a point (an eat, a wander, a work beside a thing) stands where the build will
+    seat it on the town's main network: a plan point is seated on the ground, so one under a deck the network walks
+    (a landing's boards over a scrap of mud the mesh never joins) is given the deck's height (`Walkable.stood`), and a
+    point off the network is moved to its nearest point on it. Returns the stops changed."""
+    n = 0
+    for p in folk:
+        for key in ("work", None):
+            stops_ = [p] if key else (p.get("routine") or [])
+            for st in stops_:
+                k = key or "at"
+                at = st.get(k) or {}
+                pos = at.get("pos")
+                if at.get("ref") or not pos or at.get("space", "exterior") != "exterior":
+                    continue
+                g = W.zref(pos[0], pos[1]) if len(pos) == 2 and W.zref else None
+                if W.on(pos if len(pos) == 3 else [pos[0], pos[1], g] if g is not None else pos):
+                    continue
+                q = W.snap(pos[:2], 4 * SNAP)
+                if q is None:
+                    log(f"join {place_id}: {p['id']}: the {st.get('kind', k)} stop at {[round(v) for v in pos]} is off the "
+                        f"walkable network, with no point of it within {4 * SNAP:.0f} units")
+                    continue
+                new = W.stood(q)
+                if new == [round(float(v), 1) for v in pos]:
+                    continue
+                if key is None and p.get("work") == at:
+                    continue  # the work stop itself is settled with the person's own `work` below
+                st[k] = {**at, "pos": new}
+                if key:
+                    for s2 in p.get("routine") or []:
+                        if s2.get("at") == at:
+                            s2["at"] = st[k]
+                n += 1
+                log(f"join {place_id}: {p['id']}: the {st.get('kind', k)} stop at {[round(v) for v in pos]} stands on the "
+                    f"walkable network at {new}")
     return n
 
 
@@ -1014,7 +1054,10 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
         io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
         done += len(over)
     settle()
-    for _ in range(JOIN_ROUNDS):
+    for rnd in range(JOIN_ROUNDS):
+        # the last round adds no pieces: it lays the streets and stops on the network as built, so a place whose
+        # flights and joins outrun the rounds still has every street laid on its floor
+        last = rnd == JOIN_ROUNDS - 1
         ctx, bad = network(place_id, places, out)
         if ctx is None:
             log(f"join {place_id}: the build failed: {bad[-1:]}")
@@ -1031,7 +1074,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
         have, new = {r["id"] for r in rows}, []
         # a street's deck that ends against a bank standing over it: one flight up the bank, before anything else
         # is judged cut off (what such a deck carries is an island only for want of it)
-        up = bank_stairs(place_id, paths, Wd, rows, bases, steps_bases(rows, bases, G), G, log)
+        up = [] if last else bank_stairs(place_id, paths, Wd, rows, bases, steps_bases(rows, bases, G), G, log)
         for r in up:
             log(f"join {place_id}: {r['why']}: a flight of {r['base']} at {[round(v) for v in r['pos']]}, "
                 f"hung on {r['seat']['on']}")
@@ -1041,7 +1084,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
             record_kit(pdir, up, bases, src.bases)
             settle()
             continue   # the flights are the network once built
-        for key, (c, want) in sorted(deck_islands(ctx, Wd, paths).items()):
+        for key, (c, want) in sorted(({} if last else deck_islands(ctx, Wd, paths)).items()):
             got = [r for r in stairs(place_id, key, c, Wd, rows + new, bases, steps_bases(rows, bases, G), G, want)
                    if r["id"] not in have]
             if got:
@@ -1057,7 +1100,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
             record_kit(pdir, new, bases, src.bases)
             settle()
             continue   # the flights are the network once built
-        isl = islands(ctx, W)
+        isl = {} if last else islands(ctx, W)
         if isl:
             rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
             base = walk_base(rows, bases)

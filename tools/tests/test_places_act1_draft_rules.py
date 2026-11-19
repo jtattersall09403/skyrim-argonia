@@ -119,3 +119,26 @@ def test_the_work_hours_are_spent_at_the_work_stop():
     assert dpeople.work_stops(folk) == ["a"]
     assert folk[0]["routine"][1]["at"] == {"space": "room", "pos": [1, 2, 3], "radius": 512}
     assert dpeople.work_stops(folk) == [] and json.dumps(folk)
+
+
+def test_a_stop_at_a_point_under_a_deck_stands_on_the_network():
+    """An eat stop at a plan point the build would seat on mud under a landing's deck (an island of the mesh) is
+    moved onto the network at the deck's height; a stop already on the network where the build seats it stays."""
+    class W:
+        zref = staticmethod(lambda x, y: 0.0)
+
+        def on(self, p, tol=None):
+            return len(p) == 3 and (p[2] > 100 or p[0] > 500)   # the deck at z 150, the ground east of x 500
+
+        def snap(self, p, reach):
+            return tuple(p[:2])
+
+        def stood(self, q):
+            return [round(float(q[0]), 1), round(float(q[1]), 1), 150.0]
+    folk = [{"id": "o", "routine": [{"kind": "eat", "at": {"space": "exterior", "pos": [10, 20]}},
+                                    {"kind": "wander", "at": {"space": "exterior", "pos": [600, 20]}},
+                                    {"kind": "sleep", "at": {"space": "exterior", "ref": "bed"}}]}]
+    assert walk.stand_stops("p", folk, W(), log=lambda *_: None) == 1
+    r = folk[0]["routine"]
+    assert r[0]["at"]["pos"] == [10.0, 20.0, 150.0] and r[1]["at"]["pos"] == [600, 20]
+    assert r[2]["at"] == {"space": "exterior", "ref": "bed"}
