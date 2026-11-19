@@ -122,7 +122,7 @@ facts:
     a place no living diver has found.
   from: t3
 - id: fact.mn05.draught
-  claim: Cuts-the-Old-Knot's draught is to make her strong enough to kill whatever guards the Root.
+  claim: Cuts-the-Old-Knot's draught is to make her strong enough to kill the beast that the old songs say keeps the Root.
   from: t3
 - id: fact.mn05.go-between
   claim: Keel-Raa, an Unbound go-between, lodges at the Boatmen's Lodge with two hired men and a jar of stolen sap in his
@@ -197,7 +197,7 @@ things:
   name: Nesh-Deeka's House
   source: one of Helstrom's one-room Argonian house interiors (source 01ArgonianHouseinside copies), its door named for
     her
-  where: Helstrom, off the market
+  where: Helstrom, near the city landing
 - id: thing.mn.stolen-sap-jar
   kind: item
   name: Keel-Raa's Jar of Sap
@@ -240,7 +240,7 @@ placements:
   anchor:
     place: helstrom
     rule: surface
-    need: one of Helstrom's one-room Argonian houses off the market, its door showing "Nesh-Deeka's House" (Helstrom's 01ArgonianHouseinside.8, the house nearest
+    need: one of Helstrom's one-room Argonian houses near the city landing, its door showing "Nesh-Deeka's House" (Helstrom's 01ArgonianHouseinside.8, the house nearest
       the city landing); one room with tables, benches, beds, an arcane enchanter and a locked chest inside (from MN10 Never-Writes-Twice stands at the back of the same room)
   enabled: true
   placeName: Nesh-Deeka's House
@@ -412,8 +412,8 @@ stages:
     when:
       not:
         npcAlive: npc.mn.nesh-deeka
-  directions: The rootworm comes up at the root landing under Helstrom's city tree. Nesh-Deeka's House is one of the houses
-    off the market; its door bears her name.
+  directions: The rootworm comes up at the root landing under Helstrom's city tree. Nesh-Deeka's House stands south of the
+    city tree near the city landing, a short walk from the Boatmen's Lodge; its door bears her name.
   information:
     going: I carry the Unbound's names, their draught for "the Eye" and the seal to the order's handler.
     next: Ride the rootworm to Helstrom and speak to Nesh-Deeka in her house.
@@ -434,7 +434,7 @@ stages:
   journal: text.journal.mn05.20
   journalText: "Nesh-Deeka heard my report. The Eye is the Eye of Argonia, the old priest-kings' jewel of Hist amber.
     It lies at the Root, where every tree's roots meet under the sea, behind a gate the old kings sealed, and no living
-    diver has found it. I said the draught must be to kill whatever guards the Root, and she agreed. To prove me, she
+    diver has found it. The old songs say a beast keeps the Root, and nobody living has seen it. I said the draught must be to kill that beast, and she agreed. To prove me, she
     wants a jar of stolen sap from Keel-Raa, an Unbound go-between lodging at the Boatmen's Lodge with two hired men. I
     can lift it from his pack on the crates behind them while they are not looking, buy it for a hundred gold, or fight
     the three of them for it, which the levy will not count as a crime. If they catch me at the pack, all three will
@@ -728,8 +728,8 @@ topics:
   - 10
   essential: false
   intent: "Cheeval-Xu, the root-tender at the root pool under the city tree, where the rootworm comes up. Tells: he
-    calls the rootworm here and takes its fares. Nesh-Deeka's House is a quiet house off the market, one of the houses
-    nearest the city tree; her name is on the door; she takes visitors by word of mouth. Checks: nothing. Does:
+    takes the rootworm's fares here and shows riders where to go down to it. Nesh-Deeka's House is a quiet house south
+    of the city tree, down by the city landing where the rafts tie up, a short walk from the Boatmen's Lodge; her name is on the door; she takes visitors by word of mouth. Checks: nothing. Does:
     nothing."
   new: true
 - id: topic.mn05-nesh-who
@@ -754,8 +754,9 @@ topics:
   intent: 'Nesh-Deeka. Tells: she knows; she hears the player out: the sealed scar, the hide, the camp, Sesk''s names. "The
     Eye" is the Eye of Argonia, the lost jewel of the old priest-kings, who ruled the marsh before any history was written;
     they cut it from Hist amber, the solid sap the trees no longer make. It lies at the Root, the place under the sea where
-    the roots of every Hist meet, behind a gate that the last king sealed, in a place no living diver has found. Cuts-the-Old-Knot
-    wants it. She asks what the player thinks the draught is for (a question; its answer is topic.mn05-draught). Checks:
+    the roots of every Hist meet, behind a gate that the last king sealed, in a place no living diver has found. The old songs say a
+    beast keeps the Root, older than the kings, and nobody living has seen it. Cuts-the-Old-Knot
+    wants the Eye. She asks what the player thinks the draught is for (a question; its answer is topic.mn05-draught). Checks:
     nothing. Does: nothing.'
   uses:
   - fact.mn05.eye
@@ -763,14 +764,13 @@ topics:
   - topic.mn05-draught
   new: true
 - id: topic.mn05-draught
-  label: Sap makes a fighter strong. Something must guard the Root, and she means to kill it.
+  label: Sap makes a fighter strong. She means to kill the beast that keeps the Root.
   person: npc.mn.nesh-deeka
   stages:
   - 10
   essential: true
   intent: "Nesh-Deeka. Tells: (after topic.mn05-report: the Eye of Argonia is the priest-kings' jewel of Hist amber, at
-    the Root under the sea behind a sealed gate) she agrees: whatever guards the Root, Cuts-the-Old-Knot means to kill
-    it. Now she wants proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen's Lodge, the inn by
+    the Root under the sea behind a sealed gate) she agrees: Cuts-the-Old-Knot means to kill the beast that keeps the Root. Now she wants proof of the player. Keel-Raa, an Unbound go-between, lodges at the Boatmen's Lodge, the inn by
     the raft landing on the river, with two hired men and a jar of stolen sap in his pack. Bring her the jar. He is not
     looking for a fight and will talk, so lift it from his pack (if he or his men catch the player at it, all three
     will fight), buy it, or take it by force: his band pays the levy to look away from them, so the levy will not count
@@ -934,7 +934,7 @@ topics:
     with them now. The order's aim: the Root must be found before the Unbound find it, and the player is to use the Eye
     where it sits to heal the trees. She has one lead: an \"Eye of Argonia\" is for sale in Gideon's market, the
     relic-dealers' city to the west. Most such eyes are glass; find out where this one came from. The rootworm runs
-    from the root pool under Helstrom's city tree to Gideon; Cheeval-Xu, the root-tender at the pool, calls it. Does:
+    from the root pool under Helstrom's city tree to Gideon; Cheeval-Xu, the root-tender at the pool, takes the fare. Does:
     sets stage 90. "
   uses:
   - fact.mn05.aim

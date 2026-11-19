@@ -817,3 +817,11 @@ added here the day they are made, with the date and the issue.
   owner-bar.
 
 - 2026-11-19 (#80, Act I drafts): a place draft is handed over only when nothing that's plainly wrong is left in it. Every building stands on ground. Every door's arrival is on ground. No street runs through a building, and streets go round buildings. Walking paths reach every door and entrance, and no part of the place that people use is an island. Every person the place and its quests need is created, named and given paths and routines, with any missing base taken from another source. The source is the starting point, adapted to the record: nothing from the source the record has no use for (no mine in a camp whose record names none), and only what is logical to keep (a town's trader). Fine as a first draft: NPCs not walking from a barge onto its gangway (only the player must), bedrolls overlapping inside tents, a person with no bed. Every Hist stands over a pool of Hist sap, not water (lore: hatching pools), made from existing assets recoloured or retextured and checked by eye in a loop, and listed in the studio's asset search. Quest-placed things (a cage, a captive) are shown and movable in the studio, linked to their quest in the story explorer. The rootworm (story note) travels through Hist root tunnels, not open water; lore is checked before any claim.
+- 2026-11-19 (story explorer notes on the main plot, Acts I and II): joining a faction the story needs is the
+  player's own choice, offered and never assumed; a refusal leaves the offer open to take up later (MN02). What the
+  player can plainly see on reaching a place (someone in a cage) is a way of learning it, and the journal records it
+  with the marker moved to that person; a prisoner never calls out and breaks a sneaking player's cover (MN04, on the
+  approved arrival block). No lore claim without checking `story/lore/` and UESP first: the rootworm is the canon
+  "Underground Express" that travels the tunnels the Hist roots form, swallows riders and lets them off at air
+  pockets (MN04). The rootworm is open to anyone who pays, like Morrowind's silt striders. A throwaway place claim
+  ("off the market") is checked against the drafted place and its source before it is written.

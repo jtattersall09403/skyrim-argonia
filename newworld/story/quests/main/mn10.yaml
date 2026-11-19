@@ -58,7 +58,10 @@ foundation: 'Built from main-plot.md §5 quest 10 and the rank table. Kept: the 
   Grey Tooth. Ruled by the lead: Helstrom''s houses are one room, so Never-Writes-Twice stands at the back of the same room
   of Nesh-Deeka''s House; she is switched on by the map''s take, in another interior. Filled: the gallery-boss''s name (Ah-Zish),
   the Speech level (40), the rank pay in place of the report''s 100 gold, and what Nesh-Deeka already knows (the Unbound
-  have not reached Vicrium; the smugglers there sell to anyone).'
+  have not reached Vicrium; the smugglers there sell to anyone). Out of order: a player who goes into the mine before
+  Nesh-Deeka sends them may take the map then (the strongbox and the door are there from the start); when the quest
+  starts with the map already held, stage 10 moves straight to stage 20 and the journal sends them to Nesh-Deeka with
+  it.'
 recordSources:
   places:
   - vicrium
@@ -515,8 +518,9 @@ stages:
 - id: 20
   place: helstrom
   journal: text.journal.mn10.20
-  journalText: "In the knights' strongbox lay an old parchment map: seven towers standing in the sea, and a crag shaped
-    like a tooth on an island. Nesh-Deeka will want it in Helstrom."
+  journalText: "I have the old parchment map from the knights' strongbox in Vicrium, the mine whose mark is on the
+    knight-captain's disc: seven towers standing in the sea, and a crag shaped like a tooth on an island.
+    Nesh-Deeka will want it in Helstrom."
   onEnter:
   - enableRef: npc.mn.never-writes-twice
   objectives:

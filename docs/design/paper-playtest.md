@@ -86,7 +86,8 @@ part in capitals (`jal-veesa` is Jal-Veesa). A door leads to the place of that n
 
 **Conditions** played: `all`, `any`, `not`, `topicHeardFrom` [topic, person], `hasItem` [ref or item id, n],
 `npcAlive`, `questStage` [quest, op, n], `stageEverReached`, `flag` [flag, value], `objectiveComplete`,
-`counterAtLeast` [counter, n], and `skillAtLeast`, `goldAtLeast` and `spellCastNear` [school, npc] (labelled
+`counterAtLeast` [counter, n], `placeEntered` [place] (the player stands in that place: the block "an objective
+with no marker until found", the arrival setting a stage), and `skillAtLeast`, `goldAtLeast` and `spellCastNear` [school, npc] (labelled
 "(<School>)"), which hold by the player's word: a command that meets one with no word is undone
 and the game asks for `pass` or `fail` at its end. `say` of a topic whose successors from the current stage all fail
 on that word shows the topic's `fallback` and the topic is not heard.

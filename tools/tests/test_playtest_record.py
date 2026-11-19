@@ -328,3 +328,16 @@ def test_using_a_locked_door_fires_its_activate_hook_then_says_it_is_locked():
     g.begin()
     out = g.do("use door")
     assert "is locked" in out and g.s["flags"] == {"f.knocked": True} and g.s["stage"] == 90
+
+
+def test_arriving_in_a_place_moves_a_stage_on_place_entered():
+    q = copy.deepcopy(rec())
+    q["stages"][0]["successors"].insert(0, {"to": 20, "when": {"placeEntered": "yulca"}})
+    assert R.check(q) == []
+    g = R.Game(q)
+    g.begin(at="elsewhere")
+    g.do(A)
+    assert g.s["stage"] == 10
+    g.s["at"] = "yulca"
+    g.advance()
+    assert g.s["stage"] == 20

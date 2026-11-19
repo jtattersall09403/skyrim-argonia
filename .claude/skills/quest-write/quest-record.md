@@ -133,7 +133,8 @@ and the place's build takes each `need` as a promise. Its people are `npc.<line>
 marked `invented` until the place's people source holds them. A person placed at a place in a role its drafted people
 have (its cook, its gang-master) is that place's person, one person: the place's people source gives the row of that
 role `cast: <the placement's ref>` and the record's name (the skill `place-people`). Its use and read triggers are listed under `hooks`
-(`{thing, hook: activate | read, setsFlag}`), the rows `thing_hook` gets when it is imported. The paper player plays
+(`{thing, hook: activate | read, setsFlag}`), the rows `thing_hook` gets when it is imported. A stage that moves when the player arrives somewhere (what they plainly see there is then recorded, the
+block "an objective with no marker until found") has the successor `placeEntered: <new-world place id>`. The paper player plays
 it directly (quest-playtest §2). It is
 imported, compiled and checked when its places are in the story database.
 

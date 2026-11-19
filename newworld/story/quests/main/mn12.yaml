@@ -146,6 +146,7 @@ placements:
 - {ref: npc.mn.sarpa-raider-3, kind: person, name: Sarpa Raider, level: 20, hostile: true, base: {kind: template_person,
     id: King of the Murkmire Argonian raider (our Sarpa binding)}, anchor: {place: fort-chalkmoth, rule: navmesh, need: a
       robbed chalk cart on the western approach}}
+- {ref: thing.mn12.keep-key, kind: thing, base: {kind: item, id: thing.mn12.keep-key}, carriedBy: npc.mn.chalkmoth-captain}
 - {ref: door.mn12.keep, kind: door, placeName: Fort Chalkmoth Keep, lock: {level: key, key: thing.mn12.keep-key}, owner: faction.archwardens,
   anchor: {place: fort-chalkmoth, rule: surface, need: the keep's door off the yard}}
 - {ref: door.mn12.store, kind: door, placeName: Quartermaster's Store, lock: {level: adept, key: thing.mn12.store-key},
@@ -255,13 +256,14 @@ stages:
 - id: 12
   place: fort-chalkmoth
   journal: text.journal.mn12.12
-  journalText: "The wall captain Sakeeus-Wan is dead, and nobody else will give me leave to enter the keep. If I want
-    to see the cellar, I need to find a way in unseen, and the garrison will attack if they catch me."
+  journalText: "The wall captain Sakeeus-Wan is dead, and nobody else will give me leave to enter the keep. He carried
+    the keep's key, so I can take it from his body; or I can find a way in unseen. Either way the garrison will attack
+    if they catch me inside."
   objectives:
   - id: unseen
     text: text.objective.mn12.unseen
-    objectiveText: Find a way into Fort Chalkmoth's cellar unseen.
-    target: marker.mn12.fort
+    objectiveText: Take the keep's key from the wall captain's body, or find another way in.
+    target: thing.mn12.keep-key
     completeWhen:
       questStage:
       - quest.main.mn12
@@ -270,11 +272,16 @@ stages:
   successors:
   - to: 25
     when: {flag: flag.mn12.trapdoor}
+  - to: 25
+    when: {hasItem: thing.mn12.keep-key}
   failForward:
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
   approaches:
+  - id: key
+    actions:
+    - {skill: One-Handed, use: fight-people, target: the garrison, note: 'the key is on the captain''s body; inside the keep the garrison attacks whoever it sees'}
   - id: trapdoor
     actions:
     - {skill: Sneak, use: pass-unseen, target: door.mn12.trapdoor, note: 'If the player is caught, the garrison attacks;
@@ -282,9 +289,11 @@ stages:
   information:
     going: The captain is dead; the keep's main door is shut to me.
     next: Find a way into the cellar unseen.
-    ways: Look round the yard for another way in; if the garrison catches me, they attack.
+    ways: Take the key from his body and open the keep's door, or look round the yard for another way in; if the garrison
+      catches me inside, they attack.
     carriers:
     - {know: the captain is dead and the keep is shut, by: [journal, objective]}
+    - {know: the key is on his body, by: [journal, objective, 'marker:thing.mn12.keep-key']}
 - id: 15
   place: fort-chalkmoth
   journal: text.journal.mn12.15

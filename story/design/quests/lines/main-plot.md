@@ -169,10 +169,14 @@ them. He tells them only this: Vosh-Leera of Jal-Veesa will have work for them i
 a grey moss that hangs over the creek below Reed-Sill Weir, on the road to the town. The player's pack holds two
 lockpicks (Skyrim's). *Leads on:* Dralin's directions and a marker on the moss at the weir. The barge is Black Marsh &
 Valenwood's own Imperial ship: its plugin has the hull as a building and a furnished hold as an interior cell, with
-chests, loose things and furniture in it (section 9 gives the measures).
+chests, loose things and furniture in it (section 9 gives the measures). Among the hold's things is plain gear enough
+for a new fighter to face the weir's crocodiles: an Imperial sword and light shield, a set of Imperial light armour,
+a hunting bow with twenty iron arrows and three potions of minor healing (Skyrim's, stocked by the place).
 
-**A side quest here: What the Herald Sent.** Vosh-Leera sent a purse of 50 gold and a knife (Skyrim's iron dagger)
-for the player with her order. Dralin does not see why he should hand them over, and he has "mislaid" the key to
+**A side quest here: What the Herald Sent.** Vosh-Leera sent things for the player with her order: a purse of 100
+gold, a knife (Skyrim's iron dagger), a plain silver ring that keeps its wearer hale (a ring of Skyrim's enchanted to
+fortify health by 15, under our name: Vosh-Leera's Ring) and two scrolls, one of firebolt and one of fast healing
+(Skyrim's). Dralin does not see why he should hand them over, and he has "mislaid" the key to
 his strongbox. Okeeh tells the player so. The player lifts the key from his belt (Pickpocket), picks the box
 (Lockpicking) or talks him round (Speech). The lock is the easiest kind, Dralin's pocket is easy to pick and his
 Speech check is 20, so a new character who chose any of the three skills, as a profession's skill or one of their
@@ -189,18 +193,20 @@ tree-minder first. The Hist is sick: its bark is dry and dark, its scar has clos
 Weeltul takes the moss and makes a poultice that warms the pool but does not open the scar. She tells the player what
 the town loses if the tree dies, and gives them the tree's blessing: for a time they breathe under water. An Argonian,
 who already breathes water, is given the blessing of resist poison instead (the blessing that Teel-Fen Weir's record
-lists for its young tree). Back in her house, where nobody else hears, Vosh-Leera tells the player who they now work
-for: the Toh-Reel-Ka, the Xeech-Leel's secret warriors, made after Umbriel so that no tree and nobody allied with one
-can ever turn on the marsh again. She tells them in a few plain lines how the An-Xileel used Lilmoth's mad tree to
-call Umbriel down. She pays the player 50 gold. *Out of order:* a player who takes the moss straight to Weeltul skips
+lists for its young tree). Weeltul then sends the player back to Vosh-Leera, who is waiting in her house. There,
+where nobody else hears, Vosh-Leera tells the player whom she answers to: the Toh-Reel-Ka, the Xeech-Leel's secret
+warriors, made after Umbriel so that no tree and nobody allied with one can ever turn on the marsh again. She tells
+them in a few plain lines how the An-Xileel used Lilmoth's mad tree to call Umbriel down. Then she asks whether they
+will work for the order. The choice is the player's. If they say yes, she pays them 50 gold. If they say no, the
+journal records that the offer stands, and they can come back to her house at any time and say yes. *Out of order:* a player who takes the moss straight to Weeltul skips
 ahead cleanly, and Vosh-Leera greets them at the report; a player who goes to Vosh-Leera without the moss is greeted
 and sent back for it; Weeltul talks of the tree only once the player stands at her pool with the moss. *Leads on:*
-Vosh-Leera asks the player back to her house for a second task.
+once the player has said yes, Vosh-Leera has a second task for them there and then.
 
 **3. The First Dream** (Jal-Veesa; Teel-Fen Weir, a weir-wardens' camp round a young Hist). Vosh-Leera gives the
 player a cup of sap (Skyrim's potion bottle under our name). Tree-minders drink it, she says, to ask the trees a
 question. When the player drinks it, the screen goes black and the vision is shown as words on the black screen: a
-young Hist among stilt huts beside a woven weir, and a reed hide beside a lone dead tree. The player tells
+young Hist beside a platform of tents and a woven weir, and a reed hide beside a lone dead tree. The player tells
 Vosh-Leera what they saw, in dialogue, line by line. She knows the place: Teel-Fen Weir, south of the town, where a
 young tree grew from the roots of Jal-Veesa's own. The journal marks it. Heem-Jasa, the minder there, stands by her
 tree on the platform. Its scar closed three nights ago. She shows the player the grey paste in it. The hide from
@@ -222,39 +228,49 @@ hide before speaking to her skips ahead, and she shows them the scar when they c
 journal sends the player there, and the camp is marked.
 
 **4. The Sap Camp** (Karsh-Naal Camp, a camp of tribeless Naga in the Valley of Storms). The camp is the Unbound's.
-Sesk, a Naga who drew sap for them, is caged at its edge for trying to leave (Skyrim's cage door, placed). She calls
-out to the player through the bars: the key is on the guard Jeeta-Sakka at the fire, and the lock is a poor one. The
-journal says that the player may fight the guards or go quietly, and markers show the cage and the guard who carries
-its key. The guards are few and stand at the fire, away from the cage, so a quiet player can reach it. The player
+Sesk, a Naga who drew sap for them, is caged at its west edge for trying to leave (Skyrim's long metal cage, bars and
+door, placed in the camp's draft). When the player reaches the camp, the journal records what they can see: someone
+locked in a cage at the camp's edge, away from the guards at the fire. The marker moves to Sesk. The player sneaks
+over to the cage, walks or runs over openly, or fights the guards first; she never calls out, so a sneaking player
+stays unseen. Spoken to through the bars, Sesk asks the player to free her: she knows who takes the sap and what it
+is for, and will tell them once she is out. The lock is a poor one, she says, and the key is on the guard Jeeta-Sakka
+at the fire. Markers then show the cage and Jeeta-Sakka. The guards are few and stand at the fire, away from the
+cage, so a quiet player can reach it. The player
 picks the cage (Lockpicking, a Novice lock), lifts the key (Sneak and Pickpocket) or kills the guards. A player caught
 at the cage or at Jeeta-Sakka's pouch has all four guards to fight, and the key is then on his body. Sesk talks as soon
 as her cage is open. She names the Unbound's leader, Cuts-the-Old-Knot, an Argonian woman who never stays where her
 crews are. She says the sap is for a draught, and the draught is for something to do with "the Eye". She calls the
 grey paste "the seal" and does not know what is in it. Then Sesk leaves the camp. *Leads on:* back in Jal-Veesa,
 Vosh-Leera says this is more than a herald can judge. She sends the player to the order's handler in Helstrom and
-marks the house. Helstrom lies in deadly country, so she tells them to ride the rootworm, and what it is: a great
-blind worm that swims the waters under the roots from one Hist's pool to another's. It stops at a tree's root pool,
-the open water among the roots at the tree's foot, where a root-tender calls it with a hand on the bark and takes the
-fare. Jal-Veesa's root-tender is Weeltul, at the Hist pool in the middle of the town, and the fare is 25 gold. She
+marks the house. Helstrom lies in deadly country, so she tells them to ride the rootworm, and what it is: the "Underground
+Express", a worm with clear flesh that races through the tunnels the Hist roots form under the mud and the swamp
+water. It swallows a rider whole and digests so slowly that a rider could live in it for months; the rider watches
+through its flesh for the bubbles of an air pocket and pushes up through its soft skin there to get off (UESP
+Lore:Rootworm; `story/lore/topics/hist-placement.md` R5). Where the tunnels pass under a Hist's root pool there is
+such a pocket, and a root-tender there takes the fare and shows riders where to go down (our travel network's
+extrapolation). Jal-Veesa's root-tender is Weeltul, at the Hist pool in the middle of the town, and the fare is 25
+gold. She
 pays the player 100 gold. The journal marks Weeltul. *Out of order:* Vosh-Leera, asked for news before the camp,
-sends the player to Karsh-Naal first; Weeltul, asked for the rootworm before Vosh-Leera has given her word, says a
-stranger rides it only on the root-herald's word.
+sends the player to Karsh-Naal first. The rootworm is open to anyone who pays, as Morrowind's silt striders were, so
+a player may ride to Helstrom early; Nesh-Deeka, met before anyone has sent them, says she takes no business from
+strangers with no word from anyone she knows.
 
-**The rootworm's stops.** Every rootworm stop is the root pool of a Hist: the open water among the roots at the
-tree's foot, with a root-tender beside it who calls the worm and takes the fare
+**The rootworm's stops.** Every rootworm stop is the root pool of a Hist, where the worm's tunnel passes an air pocket
+under the roots, with a root-tender beside it who takes the fare
 ([the travel network](../../../../docs/design/travel-network.md): a rootworm route needs "a Hist with a root pool at
 both ends"). In this plot the stops are Jal-Veesa's Hist pool (Weeltul), the root pool under Helstrom's city tree
-(Cheeval-Xu) and Gideon's Hist garden. Helstrom's place record lists its stop as "the root landing under the city
-tree, where a handler calls the rootworm"; the city tree and its pool are still to be added to the place.
+(Cheeval-Xu) and Gideon's Hist garden. Helstrom's draft has its city tree (King of the Murkmire's young Hist) and its root-tender, Cheeval-Xu, beside it;
+its root pool is owed to the place and is asked of its place lane (section 9).
 
 **5. The Handler** (Helstrom, the oldest city). The quest opens with the ride. The worm comes up in the root pool
-under Helstrom's city tree, where its root-tender, Cheeval-Xu, points the player to Nesh-Deeka's House, a quiet house
-off the market near the city tree.
+under Helstrom's city tree, where its root-tender, Cheeval-Xu, points the player to Nesh-Deeka's House, a quiet house south
+of the city tree, down by the city landing where the rafts tie up, a short walk from the Boatmen's Lodge (the drafted
+house 8, about 50 m from the raft-master's post).
 Nesh-Deeka hears all that the player found and makes them a Voh-Vastei, the order's first rank. From now on the
 player can ask her about the Toh-Reel-Ka's history and their name, and the Xeech-Leel's. She tells them what the Eye
 is and where it lies: at the Root, behind a gate that the old kings sealed, in a place no living diver has found.
-The player says what the draught must be for, and she agrees: Cuts-the-Old-Knot means to kill whatever guards the
-Root. To prove the player, Nesh-Deeka sends them after an Unbound go-between, Keel-Raa, who lodges at the Boatmen's
+The old songs say a beast keeps the Root, older than the kings, and nobody living has seen it. The player says what
+the draught must be for, and she agrees: Cuts-the-Old-Knot means to kill that beast. To prove the player, Nesh-Deeka sends them after an Unbound go-between, Keel-Raa, who lodges at the Boatmen's
 Lodge, the inn by the raft landing, with a jar of stolen sap. He and his two hired men stand among the crates at the
 far end of the lodge, not hostile, so that the player can talk to them. The player lifts the jar from his pack, buys
 it from him for 100 gold or fights him and his men for it. A player caught at the pack has all three to fight, and
@@ -337,7 +353,10 @@ towers standing in the sea and a crag shaped like a tooth on an island. *Leads o
 Toh-Wo, the order's second rank, and passes them to her officer, Never-Writes-Twice, who stands at the back of the
 same house. Never-Writes-Twice tells her lie about Cuts-the-Old-Knot before the player asks, and warns them not to
 listen to her. She knows the crag on the map: the Grey Tooth, the seamark of Skeith Isle, and she marks it.
-*Out of order:* Nesh-Deeka, met before the player has been to Vicrium, sends them to the mine first.
+*Out of order:* Nesh-Deeka, met before the player has been to Vicrium, sends them to the mine first. A player who
+goes into the mine before the quest is given can take the map then: the door, the smugglers and the strongbox are
+there from the start, and when the quest begins with the map already held, the journal sends the player straight to
+Nesh-Deeka with it.
 
 **11. The Grey Tooth** (the Grey Tooth, a crag on Skeith Isle; the Wreck of the Stormwidow, a beached galleon). The
 Collector's hired men have camped at the foot of the Grey Tooth's goat-path. They, and the Unbound at the wreck, are
@@ -374,7 +393,8 @@ locked room serves as the quartermaster's store, and a door out of the prison is
   key and 100 gold. The keep's door opens only to that key and cannot be picked. The journal also says a quiet
   visitor might find another way in: the trapdoor in the yard behind the barracks, out of the walls' sight, has no
   marker and is not locked, because the gaoler comes and goes by it. A player who goes that way (Sneak) and is seen
-  in the yard or the guardroom is attacked by the garrison. If the captain is killed, the trapdoor is the only way in.
+  in the yard or the guardroom is attacked by the garrison. If the captain is killed, the keep's key is on his body, and the player can take it and open the
+  keep's door, or use the trapdoor; either way the garrison attacks whoever it sees inside.
 - *The store by the stair.* The stair down to the cellar starts in the quartermaster's store, behind an Adept lock.
   The player picks the lock (Lockpicking) or lifts the store's key from the Dunmer quartermaster, Theyne Indarys
   (Pickpocket); a player caught at either is a thief to the garrison, which means a fine or a fight. A player with
@@ -674,7 +694,8 @@ place its rows, and the place is built to them.
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
 | Ashgate Landing | a barge moored in the river pool by the camp, with a furnished hold a person can stand in and a door that locks (Black Marsh & Valenwood's Imperial ship and its hold cell `01dock3to4`) | 1. No Name on the Work Roll | The player starts in the hold, gives their name and trade, and comes out to be freed. | Okeeh speaks in the hold; Dralin speaks first at the door |
-| Ashgate Landing | a strongbox with the easiest lock in the hut, its key on the gang-master's belt | What the Herald Sent | The player gets what Vosh-Leera sent them. | the game names it as Dralin's strongbox; Okeeh tells them of it |
+| Ashgate Landing | in the barge's hold, plain gear for a new fighter: an Imperial sword, an Imperial light shield, Imperial light armour (cuirass, boots, bracers, helmet), a hunting bow, twenty iron arrows and three potions of minor healing (Skyrim's) | 1. No Name on the Work Roll; 2. The Dry Tree | A new character of any build can arm before the crocodiles at the weir. | their look and names in the hold's chests |
+| Ashgate Landing | a strongbox with the easiest lock in the hut, its key on the gang-master's belt, holding 100 gold, an iron dagger, Vosh-Leera's Ring (fortify health 15) and a scroll each of firebolt and fast healing | What the Herald Sent | The player gets what Vosh-Leera sent them. | the game names it as Dralin's strongbox; Okeeh tells them of it |
 | Reed-Sill Weir | Sithis' beard hanging over the creek below the weir, where the crocodiles lie | 2. The Dry Tree | The player kills, shoots or slips past the crocodiles to pick the moss. | the game names the moss; a marker; Dralin tells them Vosh-Leera wants it |
 | Jal-Veesa | the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop (the town's record has the tree, its pool and the rootworm stop) | 2. The Dry Tree; 4. The Sap Camp | The player sees a sick tree, hears what the town loses if it dies, and later rides the rootworm from its pool. | its look; Vosh-Leera sends them; Weeltul, the tree-minder and root-tender, tells them; a marker on Weeltul |
 | Jal-Veesa | a house for the root-herald (one of the source town's houses) | 2. The Dry Tree; 3. The First Dream; 4. The Sap Camp; Vosh-Leera's side quest | Vosh-Leera gives the player work, the cup of sap and the way to Helstrom. | its door shows her name; a marker |
@@ -682,10 +703,11 @@ place its rows, and the place is built to them.
 | Teel-Fen Weir | a reed hide beside a lone dead tree west of the weir, with three Unbound, jars of sap and a note | 3. The First Dream | The player takes a jar and the note, past the Unbound or through them. | the vision's words describe it; a marker |
 | Teel-Fen Weir | the same Hist dead and blackened, its platform empty | the Take and Give endings | The player sees what parting the trees cost. | its look |
 | Jal-Veesa | its Hist dead and blackened, its people gone | the Take and Give endings | The player sees what parting the trees cost. | its look |
-| Karsh-Naal Camp | a cage at the camp's edge with Sesk in it, its key on a guard who stands at the fire (Skyrim's cage door, placed) | 4. The Sap Camp | The player opens the cage by picking it, stealing the key or killing the guards, and Sesk talks. | markers on the cage and the guard; Sesk calls out |
+| Karsh-Naal Camp | a whole cage at the camp's west edge with Sesk in it, its key on a guard who stands at the fire (Skyrim's long metal cage, in the draft) | 4. The Sap Camp | The player sees the cage on arrival, speaks to Sesk, then opens the cage by picking it, stealing the key or killing the guards, and Sesk talks. | its look on arrival and the journal; markers on Sesk, then the cage and the guard |
 | Karsh-Naal Camp | jars of sap stacked by the longhouse | 4. The Sap Camp | The jars show the player this is where the sap goes. | their look |
 | Karsh-Naal Camp | the longhouse and its cellar (the source camp's longhouse and cellar) | the Give ending | The longhouse becomes the player's stronghold. | Cuts-the-Old-Knot gives it to them |
-| Helstrom | a quiet house off the market near the city tree, its door showing "Nesh-Deeka's House" (the source city's one-room Argonian house 8, with its tables, benches, beds, enchanter and locked chest), where the handler, Nesh-Deeka, stands by the table and Never-Writes-Twice at the back | 5. The Handler; the reports of quests 6 to 13; the report with three stones that opens quest 17; the Use ending | Nesh-Deeka makes the player a Voh-Vastei and takes their reports; Never-Writes-Twice takes them from quest 10. | its door shows its name; a marker |
+| Helstrom | the city tree with a root pool at its foot, the rootworm's stop, and Cheeval-Xu, its root-tender, beside it (the tree and Cheeval-Xu are in the draft; the pool is owed) | 5. The Handler; 6. The Glass Eye; every ride | The player arrives by the rootworm and leaves by it for Gideon. | its look; Cheeval-Xu speaks of it; a marker |
+| Helstrom | a quiet house south of the city tree by the city landing, its door showing "Nesh-Deeka's House" (the source city's one-room Argonian house 8, with its tables, benches, beds, enchanter and locked chest), where the handler, Nesh-Deeka, stands by the table and Never-Writes-Twice at the back | 5. The Handler; the reports of quests 6 to 13; the report with three stones that opens quest 17; the Use ending | Nesh-Deeka makes the player a Voh-Vastei and takes their reports; Never-Writes-Twice takes them from quest 10. | its door shows its name; a marker |
 | Helstrom | the Unbound go-between, Keel-Raa, lodging at the Boatmen's Lodge, the city's inn (the source's ship interior), among the crates at the far end of the hold, with his two hired men beside him, and his pack (a knapsack he owns, Skyrim's container) on the crates behind them with a jar of stolen sap in it | 5. The Handler | The player lifts the jar from the pack unseen, buys it (he gives them the pack) or fights the three for it. | Nesh-Deeka tells them; markers; the pack and the jar are named things |
 | Gideon | a relic dealer's stall in the market with a glass Eye for sale (the source city's market stalls) | 6. The Glass Eye | The player learns the Eye is glass and where its setting went. | the dealer shows it; a marker |
 | Gideon South Watch | the smugglers' locked chest in the inner room, with the Eye's old setting and the Collector's note (the second source's one interior) | 6. The Glass Eye | The player takes the setting by force or by stealth. | a marker; the setting and the note are named things |

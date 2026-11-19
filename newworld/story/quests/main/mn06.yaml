@@ -354,7 +354,7 @@ placements:
   anchor:
     place: helstrom
     rule: navmesh
-    need: the rootworm's landing under the city tree, where Cheeval-Xu calls it
+    need: the rootworm's landing under the city tree, where Cheeval-Xu takes the fare
 hooks:
 - thing: thing.mn06.south-watch-note
   hook: read
@@ -408,7 +408,7 @@ stages:
     market is selling an \"Eye of Argonia\". She said most such eyes are glass. She wants to know where this one came
     from. I should ride the rootworm from the pool under Helstrom's city tree to Gideon and find the dealer who sells
     it."
-  directions: Cheeval-Xu calls the rootworm at the landing under Helstrom's great tree; the fare is 25 gold. In Gideon the
+  directions: Cheeval-Xu takes the rootworm's fare at the landing under Helstrom's great tree; the fare is 25 gold. In Gideon the
     rootworm comes up at the red-clay stop by the Hist garden; the market lies along Blackwood Way, the one dry street through
     the town.
   objectives:

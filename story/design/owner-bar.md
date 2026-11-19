@@ -236,6 +236,16 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
   point of doing either of these?" (OR 2026-11-17, story explorer notes).
 - A vision is a black screen with the scene described in text, and the player then tells it in dialogue: "Visions
   are hard for us to create" (OR 2026-11-17, story explorer notes).
+- Joining a faction the story needs is the player's choice, offered and never assumed; a refusal keeps the offer
+  open to take up later (OR 2026-11-19, story explorer notes).
+- What the player plainly sees on reaching a place is learnt: the journal records it ("someone is in the cage") and
+  the marker moves to it. Nobody calls out in a way that breaks a sneaking player's cover (OR 2026-11-19, story
+  explorer notes).
+- No lore claim is written without checking `story/lore/` and UESP first ("You clearly have not checked the lore");
+  every throwaway place claim ("off the market") is checked against the drafted place and its source (OR 2026-11-19,
+  story explorer notes).
+- Travel such as the rootworm is open to anyone who pays, as Morrowind's silt striders were, unless the story needs
+  a gate (OR 2026-11-19, story explorer notes).
 - People a quest offers to talk to or buy from start non-hostile, and attacking outlaws of that kind is no crime
   (OR 2026-11-17, story explorer notes).
 - A small choice such as telling the truth or a comfort has a real, fixed difference in play (what a person gives,

@@ -107,7 +107,7 @@ truth:
     a question; she means the stranger to drink it and ask where the sickness is.
 facts:
 - id: fact.mn03.vision
-  claim: The sap showed a young Hist among stilt huts beside a woven weir, and a reed hide beside a lone dead tree.
+  claim: The sap showed a young Hist beside a platform of tents and a woven weir, and a reed hide beside a lone dead tree.
   from: t3
 - id: fact.mn03.teel-fen
   claim: The place is Teel-Fen Weir, south of Jal-Veesa, where a young Hist grew from the roots of Jal-Veesa's own.
@@ -214,7 +214,7 @@ placements:
   anchor:
     place: outpost-m6-m66
     rule: navmesh
-    need: on the stilt platform beside the young Hist in the middle of the huts, all day
+    need: on the tent platform beside the young Hist, all day
   enabled: true
 - ref: thing.mn03.sealed-scar
   kind: thing
@@ -358,13 +358,14 @@ shapeData:
   carrier: the Unbound sap-takers
   cure: none yet
   victims: the young Hist of Teel-Fen Weir and its eggs
-  image: a young Hist among stilt huts beside a woven weir, and a reed hide beside a lone dead tree
+  image: a young Hist beside a platform of tents and a woven weir, and a reed hide beside a lone dead tree
   rule: sap drunk shows what the trees have seen
 stages:
 - id: 10
   place: jal-veesa
   journal: text.journal.mn03.10
-  journalText: "Vosh-Leera has a second task for me. She asked me to come to her house in Jal-Veesa for it."
+  journalText: "Vosh-Leera has a second task for me, now that I work for the order. I should ask her for it, here in
+    her house in Jal-Veesa."
   objectives:
   - id: ask
     text: text.objective.mn03.ask
@@ -450,7 +451,7 @@ stages:
 - id: 30
   place: jal-veesa
   journal: text.journal.mn03.30
-  journalText: "I drank the sap and the world went black. I saw a young Hist among stilt huts beside a woven weir, and
+  journalText: "I drank the sap and the world went black. I saw a young Hist beside a platform of tents and a woven weir, and
     a reed hide beside a lone dead tree. Vosh-Leera is waiting to hear what I saw."
   onEnter:
   - takeItem:
@@ -483,7 +484,7 @@ stages:
   learns:
   - fact.mn03.vision
   information:
-    going: The sap showed me a young Hist by a woven weir among stilt huts, and a reed hide by a lone dead tree.
+    going: The sap showed me a young Hist by a woven weir and a platform of tents, and a reed hide by a lone dead tree.
     next: Tell Vosh-Leera what I saw, one thing at a time.
     ways: One way.
     carriers:
@@ -531,7 +532,7 @@ stages:
         npcAlive: npc.mn.heem-jasa
   learns:
   - fact.mn03.teel-fen
-  directions: Teel-Fen Weir is south of Jal-Veesa down the creek, a short walk; its huts stand on a stilt platform round
+  directions: Teel-Fen Weir is south of Jal-Veesa down the creek, a short walk; its tents stand on a platform round
     the young tree beside a woven weir.
   information:
     going: The vision showed Teel-Fen Weir, whose young Hist grew from Jal-Veesa's roots.
@@ -766,7 +767,7 @@ endings:
   seen: the main quest's message that the thread is severed
 messages:
 - id: message.mn03.vision
-  text: Darkness, and then a young Hist, slender and grey, standing among pale stilt huts. A woven weir crosses a creek
+  text: Darkness, and then a young Hist, slender and grey, standing beside a platform of hide tents. A woven weir crosses a creek
     beside it. West of the weir, on a bank of reeds, a reed hide stands beside a lone dead tree. Clay jars are stacked in
     its shade. Then the darkness again.
 terms:
@@ -817,7 +818,7 @@ topics:
     the cup, fades the screen to black and shows the vision on a message box. Checks: hasItem the cup.'
   new: true
 - id: topic.mn03-tell-tree
-  label: I saw a young Hist among stilt huts.
+  label: I saw a young Hist beside a platform of tents.
   person: npc.mn.vosh-leera
   stages:
   - 30
@@ -862,7 +863,7 @@ topics:
   - 91
   - 92
   essential: false
-  intent: 'Vosh-Leera. Tells: five warden families on a stilt platform at the weir south of the town, keeping eel traps;
+  intent: 'Vosh-Leera. Tells: five warden families on a tent platform at the weir south of the town, keeping eel traps;
     their young tree rose from Jal-Veesa''s roots within living memory, and they are wary of strangers. Checks: nothing.
     Does: nothing.'
   new: true

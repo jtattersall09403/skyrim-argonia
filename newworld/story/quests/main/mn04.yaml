@@ -43,6 +43,7 @@ touches:
 sources:
 - story/design/quests/lines/main-plot.md §3 §5 quest 4 §9
 essentialTopics:
+- topic.mn04-sesk-call
 - topic.mn04-sesk-talk
 - topic.mn04-vosh-report
 - topic.mn04-ride
@@ -55,7 +56,7 @@ start: 10
 recordStatus: design
 foundation: Built from main-plot.md §5 quest 4. Starts on any of MN03's complete endings (90, 91, 92), all of which leave
   the player holding the note that names Karsh-Naal Camp; this quest's first stage marks the camp on the map. Sesk is caged
-  at the camp's edge (Skyrim's cage door, placed, Novice lock); its key is on Jeeta-Sakka, the guard who stands at the fire
+  at the camp's edge (Skyrim's whole cage, bars and door, placed; Novice lock); its key is on Jeeta-Sakka, the guard who stands at the fire
   with three others, away from the cage. The player picks the cage, lifts the key or kills the guards; opening the cage
   door (a use hook) moves the quest. Sesk names the Unbound and Cuts-the-Old-Knot, says the sap is for a draught that has
   something to do with "the Eye", and calls the grey paste "the seal". Back in Jal-Veesa Vosh-Leera sends the player to
@@ -68,6 +69,8 @@ recordSources:
   place: tribal-camp-m2-m68, jal-veesa (place cards --mined, 2026-11-17); docs/design/travel-network.md (the rootworm)
   lore:
   - story/lore/topics/hist-and-sap.md (lines 31-32)
+  - story/lore/topics/hist-placement.md R5
+  - story/lore/topics/loading-facts.md (rootworm facts)
   - story/lore/extrapolation/argonia-4e201-state.md §2.5
 centrepiece: RESCUE
 actionPlan:
@@ -120,7 +123,7 @@ facts:
   claim: Vosh-Leera sends the player to the order's handler in Helstrom, Nesh-Deeka, at her house there.
   from: jal-veesa
 - id: fact.mn04.rootworm
-  claim: The rootworm runs from Jal-Veesa's Hist pool to Helstrom; the tree-minder calls it; the fare is 25 gold.
+  claim: The rootworm runs through the Hist roots' tunnels from Jal-Veesa's Hist pool to Helstrom; anyone may ride; the tree-minder takes the 25-gold fare.
   from: jal-veesa
 cast:
 - id: npc.mn.sesk
@@ -155,6 +158,8 @@ cast:
   knowledge:
     fact.mn04.handler: knows
   name: Vosh-Leera
+- id: npc.mn.nesh-deeka
+  name: Nesh-Deeka
 - id: npc.mn.jal-veesa-minder
   knowledge:
     fact.mn04.rootworm: knows
@@ -163,7 +168,7 @@ things:
 - id: thing.mn04.cage
   kind: door
   name: Sesk's Cage
-  source: Skyrim's cage door, placed at the camp's edge (main-plot §9); Novice lock, key thing.mn04.cage-key
+  source: Skyrim's whole cage (its bars and its door), placed at the camp's edge (main-plot §9; the draft has Skyrim's long metal cage, 0CE0AE, on the west edge); the door has a Novice lock, key thing.mn04.cage-key
   states:
     before-20: locked
     after-20: open
@@ -208,7 +213,7 @@ placements:
   anchor:
     place: tribal-camp-m2-m68
     rule: surface
-    need: a cage of Skyrim's cage door and bars at the camp's west edge, out of sight of the fire behind the reed-and-bone
+    need: a whole cage of Skyrim's (bars all round and a door) at the camp's west edge, out of sight of the fire behind the reed-and-bone
       huts, reachable from the reeds
   lock:
     level: novice
@@ -398,13 +403,16 @@ stages:
   - id: camp
     text: text.objective.mn04.camp
     objectiveText: Go to Karsh-Naal Camp and find out who takes the jars.
-    target: marker.mn04.karsh-naal, thing.mn04.cage
+    target: marker.mn04.karsh-naal
     completeWhen:
       questStage:
       - quest.main.mn04
       - ≥
       - 20
   successors:
+  - to: 15
+    when:
+      placeEntered: tribal-camp-m2-m68
   - to: 20
     when:
       topicHeardFrom:
@@ -425,8 +433,7 @@ stages:
   information:
     going: The sap goes to Karsh-Naal Camp, a camp of Naga.
     next: Go to the camp and find out who takes the jars.
-    ways: The guards stay at the fire by the longhouse; a caged prisoner at the camp's west edge calls out to anyone who
-      comes near.
+    ways: The camp is the Naga's; I may go in quietly or openly.
     carriers:
     - know: where the camp is
       by:
@@ -434,11 +441,6 @@ stages:
       - objective
       - marker:marker.mn04.karsh-naal
       - read:thing.mn.unbound-note
-    - know: someone is caged at the camp's edge
-      by:
-      - marker:thing.mn04.cage
-      - name:thing.mn04.cage
-      - line:topic.mn04-sesk-call
   approaches:
   - id: pick
     actions:
@@ -470,6 +472,58 @@ stages:
     - skill: Destruction
       use: fight-people
       target: four Naga guards
+- id: 15
+  place: tribal-camp-m2-m68
+  journal: text.journal.mn04.15
+  journalText: "At Karsh-Naal Camp I saw someone locked in a cage at the camp's west edge, away from the guards at the
+    fire. A prisoner of the Naga may know where the jars go. I should get to the cage and speak to them, quietly past
+    the guards or by fighting them first."
+  objectives:
+  - id: prisoner
+    text: text.objective.mn04.prisoner
+    objectiveText: Speak to the prisoner in the cage at Karsh-Naal Camp.
+    target: npc.mn.sesk
+    completeWhen:
+      questStage:
+      - quest.main.mn04
+      - ≥
+      - 20
+  successors:
+  - to: 20
+    when:
+      topicHeardFrom:
+      - topic.mn04-sesk-call
+      - npc.mn.sesk
+  - to: 30
+    when:
+      topicHeardFrom:
+      - topic.mn04-sesk-talk
+      - npc.mn.sesk
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.sesk
+  directions: The cage stands at the camp's west edge, behind the huts; the guards keep to the fire by the longhouse.
+  information:
+    going: The jars go to Karsh-Naal Camp, a camp of Naga, and someone is caged at its west edge.
+    next: Reach the cage and speak to the prisoner.
+    ways: Sneak to the cage past the guards at the fire, walk or run to it openly, or fight the guards first. The guards
+      attack whoever they see.
+    carriers:
+    - know: someone is caged at the camp's edge
+      by:
+      - look:thing.mn04.cage
+      - journal
+      - name:thing.mn04.cage
+    - know: speak to the prisoner
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.sesk
+    - know: sneak, go openly or fight
+      by:
+      - journal
 - id: 20
   place: tribal-camp-m2-m68
   journal: text.journal.mn04.20
@@ -615,8 +669,8 @@ stages:
   journal: text.journal.mn04.40
   journalText: "Vosh-Leera says this is more than a herald can judge, and paid me a hundred gold. She is sending me to
     the order's handler, Nesh-Deeka, at her house in Helstrom, far to the south through deadly country. She told me to
-    ride the rootworm: a great blind worm that swims the waters under the roots from one Hist's pool to another's. It
-    stops at a tree's root pool, the open water among the roots at its foot, where a root-tender calls it and takes the
+    ride the rootworm, a worm with clear flesh that races through the tunnels the Hist roots make, swallows its rider
+    whole and lets them off where an air pocket lies under a tree's root pool. A root-tender at each pool takes the
     fare. Here the tender is Weeltul, at the Hist pool in the middle of the town, and the fare is twenty-five gold. I
     should ask her to send me."
   onEnter:
@@ -662,7 +716,7 @@ stages:
 - id: 90
   place: jal-veesa
   journal: text.journal.mn04.90
-  journalText: "Weeltul will call the rootworm for me from Jal-Veesa's pool to the pool under Helstrom's city tree, for
+  journalText: "Weeltul will send me on the rootworm from Jal-Veesa's pool to the pool under Helstrom's city tree, for
     twenty-five gold paid to her. At Helstrom I need to find Nesh-Deeka's House; the root-tender there can point the
     way."
   learns:
@@ -799,7 +853,7 @@ terms:
   ask: topic.mn04-vosh-handler
 - term: the rootworm
   meets: 40, topic.mn04-vosh-report
-  told: '"the great worm the tree-minders call between the trees'' pools"'
+  told: '"a worm that swallows riders and carries them through the tunnels of the Hist roots"'
   ask: topic.mn-rootworm
 topics:
 - id: topic.mn04-sesk-call
@@ -807,17 +861,19 @@ topics:
   person: npc.mn.sesk
   stages:
   - 10
-  essential: false
-  intent: "Sesk, through the bars, to anyone who comes near the cage. Tells: she is Sesk, a Naga; she drew sap for the
-    people who send their jars here, and they caged her for trying to leave with her pay. She will tell the player
-    everything about the sap the moment they get her out. The key is on Jeeta-Sakka, the big one at the fire; the lock
+  - 15
+  essential: true
+  intent: "Sesk, low, through the bars, when the player speaks to her (she never calls out; a sneaking player stays
+    unseen). Tells: she is Sesk, a Naga; she drew sap for the people who send their jars here, and they caged her for
+    trying to leave with her pay. She asks the player to free her: she knows who takes the sap and what it is for, and
+    will tell them everything the moment they get her out. The key is on Jeeta-Sakka, the big one at the fire; the lock
     is a poor one; the guards never look this way, but if they catch the player at the cage or in Jeeta-Sakka's pouch,
     all four will come. Checks: nothing. Does: sets stage 20."
   new: true
 - id: topic.mn04-sesk-who
   label: Who are you?
   person: npc.mn.sesk
-  stages: [10, 20, 90]
+  stages: [10, 15, 20, 90]
   essential: false
   intent: 'Sesk. Tells: a Naga: the Naga are tribeless Argonians of the deep marsh, tall and hard, who sell their blades
     or their hands to whoever pays. She drew sap for the Unbound and tried to leave with her pay. Checks: nothing. Does:
@@ -826,7 +882,7 @@ topics:
 - id: topic.mn04-sesk-talk
   label: "The cage is open. Tell me about the sap."
   person: npc.mn.sesk
-  stages: [10, 20]
+  stages: [10, 15, 20]
   essential: true
   intent: "Sesk, the moment the cage door is open (she stands inside the cage, so this is the first thing she says once
     the player can reach her). Tells: the crews who drain the trees are the Unbound, a cult of the tribeless, and their
@@ -892,10 +948,7 @@ topics:
   intent: "Vosh-Leera. Tells: she hears it all: the Unbound, Cuts-the-Old-Knot, a draught, \"the Eye\", the seal. This
     is more than a herald can judge. The order's handler for this country is Nesh-Deeka, who keeps a quiet house in
     Helstrom, the oldest city, far to the south, where the Xeech-Leel's council sits; the door bears her name. The road
-    there runs through deadly country, so the player is to ride the rootworm, and she tells them what it is: a great
-    blind worm that swims the waters under the roots from one Hist's pool to another's, faster than any boat. It stops
-    at a tree's root pool, the open water among the roots at the tree's foot, where a root-tender calls it with a hand
-    on the bark and takes the fare. Here the root-tender is Weeltul, at the Hist pool in the middle of the town; the
+    there runs through deadly country, so the player is to ride the rootworm, and she tells them what it is: a worm longer than a boat, with clear flesh, that races through the tunnels the Hist roots make under the mud and the swamp water. It swallows a rider whole and digests so slowly that a rider could live in its belly for months. The rider watches through its clear flesh for bubbles, which mean an air pocket, and pushes up through its soft skin there to get off. Where its tunnels pass under a tree's root pool there is such a pocket, and a root-tender who knows when a worm passes takes the fare and shows the rider where to go down. Here the root-tender is Weeltul, at the Hist pool in the middle of the town; the
     fare is twenty-five gold. At Helstrom it comes up in the pool under the city tree, and the root-tender there can
     point the way to Nesh-Deeka's House. She pays the player a hundred gold. Does: sets stage 40, whose start gives the
     gold. Checks: nothing."
@@ -929,9 +982,19 @@ topics:
   person: npc.mn.jal-veesa-minder
   stages: [10, 20, 30]
   essential: false
-  intent: "Weeltul, before Vosh-Leera sends the player south. Tells: the rootworm is hers to call, from this pool to the
-    pool under Helstrom's city tree, but a stranger rides it only on the root-herald's word; Vosh-Leera has not given it.
-    Checks: nothing. Does: nothing."
+  intent: "Weeltul, before Vosh-Leera sends the player south. Tells: she is the root-tender here; anyone who pays
+    twenty-five gold rides the rootworm from this pool to the pool under Helstrom's city tree, stranger or not, as on
+    any boat. The ride itself is the stop's travel line. Checks: nothing. Does: nothing."
+  uses: []
+  new: true
+- id: topic.mn04-nesh-early
+  label: Are you Nesh-Deeka?
+  person: npc.mn.nesh-deeka
+  stages: [10, 15, 20, 30]
+  essential: false
+  intent: "Nesh-Deeka, met in her house before Vosh-Leera sends the player (the rootworm is open to anyone). Tells: she
+    is, and she takes no business from strangers who come with no word from anyone she knows. Checks: nothing. Does:
+    nothing."
   uses: []
   new: true
 - id: topic.mn04-ride
@@ -940,11 +1003,10 @@ topics:
   stages:
   - 40
   essential: true
-  intent: 'Weeltul. Tells: the rootworm is a great worm, longer than a boat, that swims through the waters under the roots
-    between the trees'' pools; a tree-minder calls it, and a rider holds on in its mouth-hollow and comes up in another
-    tree''s pool. From this pool it goes to Helstrom''s city tree. The fare is twenty-five gold, paid to her when the player
-    is ready to go: ask her to call it. In Helstrom, the house of anyone the player wants will be off the market; the city''s
-    rootworm caller can point the way. Does: sets stage 90. Checks: nothing.'
+  intent: 'Weeltul. Tells: the worm swallows the rider whole and carries them through the root tunnels; the player
+    should watch for the bubbles of the air pocket under Helstrom''s city tree and push up through its skin there. The
+    fare is twenty-five gold, paid to her when the player is ready to go. Nesh-Deeka''s House is near the city''s raft
+    landing; the root-tender at Helstrom, Cheeval-Xu, can point the way. Does: sets stage 90. Checks: nothing.'
   uses:
   - fact.mn04.rootworm
   new: true
@@ -955,9 +1017,8 @@ topics:
   - 40
   - 90
   essential: false
-  intent: 'Weeltul. Tells: a worm of the deep roots, blind and patient, older than the town. It follows the roots from tree
-    to tree under the water and mud, faster than any boat. Tree-minders call it with a hand on the bark. It carries a rider
-    who keeps still and holds their breath for a little; it does not bite those the tree knows. It runs from here to Helstrom.
+  intent: 'Weeltul. Tells: a worm longer than a boat, with clear flesh, that races through the tunnels the Hist roots make under the mud and the swamp water; people call it the Underground Express. It swallows a rider whole and digests so slowly that a rider could live in its belly for months. The rider watches through its clear flesh for bubbles, which mean an air pocket, and pushes up through its soft skin there to get off. Where its tunnels pass under a tree''s root pool there is such a pocket, and a root-tender who knows when a worm passes takes the fare and shows the rider where to go down. Traders by the Hist roots have used it for longer than any road
+    has stood. From here it runs to Helstrom. Anyone who pays rides it.
     Checks: nothing. Does: nothing.'
   uses:
   - fact.mn04.rootworm
@@ -977,8 +1038,12 @@ review:
     ids:
     - topics.topic.mn-rootworm
     finding: The rootworm and its fare.
-    answer: 'sourced: jal-veesa place card (rootworm-stop); main-plot §9 travel; docs/design/travel-network.md. Its look
-      (a great worm in the root waters) is the travel network''s; any mismatch is changed to the network''s words'
+    answer: 'changed: the worm is the canon rootworm, the Underground Express: clear-fleshed, racing through tunnels the
+      Hist roots form, swallowing riders whole, digesting slowly, left at air pockets shown by bubbles by pushing up
+      through its skin (story/lore/topics/hist-placement.md R5; story/lore/topics/loading-facts.md fact.underground-express,
+      fact.rootworm-root-tunnels; UESP Lore:Rootworm). Stops under root pools and the root-tender who takes the fare are
+      the travel network''s extrapolation (docs/design/travel-network.md); open to every paying rider, like the silt
+      striders, since nothing in the story needs a gate'
   - id: L4
     severity: lore
     ids:

@@ -26,7 +26,8 @@ from tools.playtest.game import HarnessError
 LOCKPICK = "item.lockpick"
 STATE_TERMS = {"all", "any", "not", "questStage", "stageEverReached", "hasItem", "flag", "counterAtLeast", "npcAlive"}
 COND_TERMS = {"all", "any", "not", "topicHeardFrom", "hasItem", "goldAtLeast", "skillAtLeast", "npcAlive",
-              "questStage", "stageEverReached", "flag", "objectiveComplete", "counterAtLeast", "spellCastNear"}
+              "questStage", "stageEverReached", "flag", "objectiveComplete", "counterAtLeast", "spellCastNear",
+              "placeEntered"}
 ACT_TERMS = {"giveItem", "takeItem", "removeItem", "giveGold", "takeGold", "removeGold", "setFlag", "enableRef",
              "disableRef", "giveOwnership", "setStage", "killRef", "showMessage", "fadeToBlack", "showChoice",
              "endingScene", "setPlayerName", "killNpc", "raiseSkill", "grantMapMarker", "setFactionRank", "makePeace",
@@ -524,6 +525,8 @@ class Game:
             return self.word == "pass"
         if k == "npcAlive":
             return self._alive(args[0])
+        if k == "placeEntered":
+            return self.s["at"] == args[0]
         if k == "questStage":
             qs = self._qstate(args[0])
             if qs is None:

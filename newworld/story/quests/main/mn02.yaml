@@ -15,8 +15,9 @@ anchorPlaces:
 - outpost-m11-m63
 - jal-veesa
 premise: On the road to Jal-Veesa the freed stranger picks Sithis' beard from under the crocodiles at Reed-Sill Weir and
-  brings it to Vosh-Leera, who sends them on with it to the tree-minder of the town's sick Hist, then tells them that they
-  now work for the Toh-Reel-Ka.
+  brings it to Vosh-Leera, who sends them on with it to the tree-minder of the town's sick Hist; the tree-minder sends
+  them back to Vosh-Leera, who tells them whom she answers to, the Toh-Reel-Ka, and offers them work with the order,
+  which they may take now or later.
 costTier: M
 milestone: 1
 touches:
@@ -45,6 +46,8 @@ sources:
 essentialTopics:
 - topic.mn02-give-moss
 - topic.mn02-vosh-work
+- topic.mn02-join
+- topic.mn02-join-later
 startWhen:
   questStage:
   - quest.main.mn01
@@ -530,7 +533,12 @@ stages:
   - to: 90
     when:
       topicHeardFrom:
-      - topic.mn02-vosh-work
+      - topic.mn02-join
+      - npc.mn.vosh-leera
+  - to: 40
+    when:
+      topicHeardFrom:
+      - topic.mn02-decline
       - npc.mn.vosh-leera
   failForward:
   - to: 95
@@ -569,14 +577,63 @@ stages:
       - objective
       - marker:npc.mn.vosh-leera
       - name:door.mn02.vosh-leera-house
+- id: 40
+  place: jal-veesa
+  journal: text.journal.mn02.40
+  journalText: "Vosh-Leera told me whom she answers to: the Toh-Reel-Ka, the \"Secret Warriors\" of the Xeech-Leel, who
+    rule the province. They were made after Umbriel, when the An-Xileel used Lilmoth's mad tree to call a flying city
+    down on the marsh, so that no tree and nobody allied with a tree can do it again. She asked me to work for them, and
+    I said no. She told me the offer stands: if I change my mind, I can go back to her house and say so."
+  objectives:
+  - id: rethink
+    text: text.objective.mn02.rethink
+    objectiveText: Tell Vosh-Leera in her house in Jal-Veesa if I will work for the order after all.
+    target: npc.mn.vosh-leera
+    completeWhen:
+      questStage:
+      - quest.main.mn02
+      - ≥
+      - 90
+  successors:
+  - to: 90
+    when:
+      topicHeardFrom:
+      - topic.mn02-join-later
+      - npc.mn.vosh-leera
+  failForward:
+  - to: 95
+    when:
+      not:
+        npcAlive: npc.mn.vosh-leera
+  learns:
+  - fact.mn02.order
+  - fact.mn02.why-me
+  - fact.mn02.umbriel
+  information:
+    going: Vosh-Leera answers to the Toh-Reel-Ka, the secret order of the Xeech-Leel who rule the province, made to stop
+      another Umbriel. She offered me work with them and I refused; the offer stays open.
+    next: Go back to Vosh-Leera's House and accept, when I choose to.
+    ways: Accept later, or leave the main quest where it stands.
+    carriers:
+    - know: who she answers to and what the order is
+      by:
+      - journal
+      - line:topic.mn02-decline
+      - ask:topic.mn-toh-reel-ka
+    - know: the offer stays open
+      by:
+      - journal
+      - objective
+      - line:topic.mn02-decline
+      - marker:npc.mn.vosh-leera
 - id: 90
   place: jal-veesa
   journal: text.journal.mn02.90
-  journalText: "Vosh-Leera told me who I work for now: the Toh-Reel-Ka, the \"Secret Warriors\" of the Xeech-Leel, who
+  journalText: "Vosh-Leera told me whom she answers to: the Toh-Reel-Ka, the \"Secret Warriors\" of the Xeech-Leel, who
     rule the province. They were made after Umbriel, when the An-Xileel used Lilmoth's mad tree to call a flying city
     down on the marsh, so that no tree and nobody allied with a tree can do it again. They free strangers like me
-    because we come cheap and have no kin. She paid me fifty gold, and she has a second task for me: she asked me to
-    come back to her here, in her house, for it."
+    because we come cheap and have no kin. I agreed to work for them. She paid me fifty gold and has a second task for
+    me now; I should ask her for it."
   learns:
   - fact.mn02.order
   - fact.mn02.why-me
@@ -586,24 +643,25 @@ stages:
   information:
     going: I work for the Toh-Reel-Ka, the secret order of the Xeech-Leel who rule the province, made to stop another Umbriel.
       I was freed because a stranger with no kin is a cheap spy. The trees are sick.
-    next: Ask Vosh-Leera for her second task, here in her house (MN03 stage 10).
+    next: Ask Vosh-Leera for her second task, now, here in her house (MN03 stage 10).
     ways: One way.
     carriers:
     - know: who I work for and why I was chosen
       by:
       - journal
-      - line:topic.mn02-vosh-work
+      - line:topic.mn02-join
       - ask:topic.mn-toh-reel-ka
     - know: who rules and what Umbriel was
       by:
       - journal
-      - line:topic.mn02-vosh-work
+      - line:topic.mn02-join
       - ask:topic.mn-xeech-leel
       - ask:topic.mn-umbriel
     - know: a second task waits with her
       by:
       - journal
-      - line:topic.mn02-vosh-work
+      - line:topic.mn02-join
+      - line:topic.mn02-join-later
 - id: 95
   place: jal-veesa
   journal: text.journal.mn02.95
@@ -636,7 +694,7 @@ stages:
       - journal
 endings:
 - id: e-told
-  when: Vosh-Leera told the player who they work for
+  when: the player agreed to work for the Toh-Reel-Ka, at once or after refusing first
   seen: Vosh-Leera stays in her house; Weeltul at the pool; the tree still dry and dark
   rewards:
   - giveGold: 50
@@ -826,7 +884,7 @@ topics:
 - id: topic.mn02-vosh-who
   label: Who are you?
   person: npc.mn.vosh-leera
-  stages: [10, 20, 25, 30, 90]
+  stages: [10, 20, 25, 30, 40, 90]
   essential: false
   intent: 'Vosh-Leera. Tells: root-herald of Jal-Veesa: she speaks for the town''s elders and its tree to anyone from outside,
     Dunmer buyers and Stormhold''s halls and gang-masters among them. Checks: nothing. Does: nothing.'
@@ -846,18 +904,51 @@ topics:
     the An-Xileel, who ruled then, used the mad Hist of Lilmoth to call down the flying city Umbriel, and its dead
     killed Lilmoth's people. The Xeech-Leel made the Toh-Reel-Ka so that no tree, and nobody allied with a tree, can
     ever turn on the marsh like that again. They comb the work gangs for strangers with no kin and no ties, because
-    such a stranger makes a useful spy and a cheap one; she chose the player off the barge's list. Nobody in the marsh
-    is owed a reason. They pay, and they give work. She gives the player fifty gold and asks them to come back to her,
-    here, for a second task. Does: sets stage 90. Checks: nothing."
+    such a stranger makes a useful spy and a cheap one; she chose the player off the barge's list. Freeing them bought
+    no service: she asks whether the player will work for the order, for pay, now. The choice is the player's; she
+    will not hold the freeing against them (a question; its answers are topic.mn02-join and topic.mn02-decline).
+    Does: nothing. Checks: nothing."
+  replies:
+  - topic.mn02-join
+  - topic.mn02-decline
   uses:
   - fact.mn02.order
   - fact.mn02.why-me
   - fact.mn02.umbriel
   new: true
+- id: topic.mn02-join
+  label: I will work for the order.
+  person: npc.mn.vosh-leera
+  stages:
+  - 30
+  essential: true
+  intent: 'Vosh-Leera. Tells: good; she pays the player fifty gold for the moss and the help, and has a second task for
+    them now, if they ask for it. Does: sets stage 90, whose ending gives the gold. Checks: nothing.'
+  new: true
+- id: topic.mn02-decline
+  label: No. I will not work for them.
+  person: npc.mn.vosh-leera
+  stages:
+  - 30
+  essential: true
+  intent: 'Vosh-Leera. Tells: the player is free; the name is struck either way. The offer stands: if they change their
+    mind, they can come back to her house and say so, and she will have work and pay for them. Does: sets stage 40.
+    Checks: nothing.'
+  new: true
+- id: topic.mn02-join-later
+  label: I have thought about it. I will work for the order.
+  person: npc.mn.vosh-leera
+  stages:
+  - 40
+  essential: true
+  intent: 'Vosh-Leera. Tells: she is glad; she pays the player fifty gold for the moss they brought, and has a second
+    task for them now, if they ask for it. Does: sets stage 90, whose ending gives the gold. Checks: nothing.'
+  new: true
 - id: topic.mn-toh-reel-ka
   label: Tell me about the Toh-Reel-Ka.
   person: npc.mn.vosh-leera
   stages:
+  - 40
   - 90
   essential: false
   intent: 'Vosh-Leera. Tells: Toh-Reel-Ka is Jel for "Secret Warriors": toh, secret, as in xal-toh, sacred secret, and reel-ka,
@@ -873,6 +964,7 @@ topics:
   label: Who are the Xeech-Leel?
   person: npc.mn.vosh-leera
   stages:
+  - 40
   - 90
   essential: false
   intent: 'Vosh-Leera. Tells: Xeech-Leel means the People of the New Beginning: Xeech, the planting month, and leel, people.
@@ -885,6 +977,7 @@ topics:
   label: What was Umbriel?
   person: npc.mn.vosh-leera
   stages:
+  - 40
   - 90
   essential: false
   intent: 'Vosh-Leera. Tells: in 4E 48 the An-Xileel, who ruled Black Marsh then, sang to Lilmoth''s Hist in secret until
