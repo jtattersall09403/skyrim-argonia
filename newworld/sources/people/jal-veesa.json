@@ -1,0 +1,662 @@
+{
+ "place_id": "jal-veesa",
+ "about": "Jal-Veesa's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/jal-veesa/people.jsonl under the same ids.",
+ "guard_body": "levy",
+ "households": [
+  {
+   "id": "jal-veesa.household.CormarisBarracks",
+   "home_space": "CormarisBarracks",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisBlacksmithHouse",
+   "home_space": "CormarisBlacksmithHouse",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisMareinFarmhouse",
+   "home_space": "CormarisMareinFarmhouse",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisCornerclub",
+   "home_space": "CormarisCornerclub",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisLabourersHouse",
+   "home_space": "CormarisLabourersHouse",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisCornerclub.2",
+   "home_space": "CormarisCornerclub.2",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisCouncillorsHouse",
+   "home_space": "CormarisCouncillorsHouse",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisFarmhouse",
+   "home_space": "CormarisFarmhouse",
+   "name": null
+  },
+  {
+   "id": "jal-veesa.household.CormarisFarmhut",
+   "home_space": "CormarisFarmhut",
+   "name": null
+  }
+ ],
+ "people": [
+  {
+   "id": "jal-veesa.1ZD5FP21NH5G9GMN9PEJNWE58E",
+   "name": "Vaxu-Teel",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBarracks",
+    "role": "head"
+   },
+   "role": "guard",
+   "trade": "the town levy, leads the day watch",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He leads the town levy's day watch from the barracks and settles who walks which round. He stands at the landing end of the road, where Stormhold's buyers arrive.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/people",
+      "place_note:jal-veesa/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.EWE1V6BCWS3V6JR7BDCBAJ6SSK",
+   "name": "Neexa-Sul",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBarracks",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the town levy, night watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She walks the town by night for the levy and sleeps at the barracks by day. She walks the mud banks round the Hist pool, where the boat lanes are hardest to make out after dark.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/people",
+      "place_note:jal-veesa/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF",
+   "name": "Sells-Dry-Fish",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBlacksmithHouse",
+    "role": "head"
+   },
+   "role": "merchant",
+   "trade": "seller of reed boats, mats, rope and dried fish at the jetty market; runs the fish-smoker's stall on the road side",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She sells the town's reed boats, mats, rope and dried fish to Stormhold's buyers and runs the smoker's stall on the road side. She took her name from the buyers, and her birth name is not used in the town.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_give:jal-veesa/1",
+      "place_give:jal-veesa/2"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+     "kind": "partner-of"
+    },
+    {
+     "to": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
+     "kind": "parent-of"
+    },
+    {
+     "to": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+   "name": "Weeltul",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBlacksmithHouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "tree-minder; rootworm handler at the Hist pool, who gives the blessing at the pool",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She is the tree-minder of Jal-Veesa and calls the rootworm at the Hist pool for travellers bound for Helstrom. The tree's bark has dried and darkened this season.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/faith",
+      "place_give:jal-veesa/0",
+      "place_give:jal-veesa/8",
+      "story/lore/topics/hist-and-sap.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF",
+     "kind": "partner-of"
+    }
+   ],
+   "cast": "npc.mn.jal-veesa-minder"
+  },
+  {
+   "id": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
+   "name": "Luxeela",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBlacksmithHouse",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "mat plaiter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She plaits the mats her mother sells at the jetty market and sets them out to dry on the racks by the creek. She can tell whose sedge a mat was cut from by the feel of it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
+   "name": "Hokaxu",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBlacksmithHouse",
+    "role": "sibling"
+   },
+   "role": "resident",
+   "trade": "fish hauler from the weir traps to the racks",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He hauls the day's catch from the weir traps to the fish racks and to his sister's stall. He has been bitten twice by gar and tells the story to any traveller who stops.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_give:jal-veesa/5",
+      "place_give:jal-veesa/6"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC",
+   "name": "Jeshun-Tal",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisMareinFarmhouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "weir keeper, collects the fee for each fish trap",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He minds the fish weirs on the creeks and gathers the fee owed for each trap. From the weirs at night he sometimes sees lights among the ruins of Nenria, and he has told only Mizeera.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/hooks",
+      "place_give:jal-veesa/5"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
+   "name": "Mizeera",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisMareinFarmhouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "fish drier and smoker at the racks",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She dries and smokes fish at the racks on the road side. She says nothing of the lights Jeshun-Tal sees at Nenria, and she walks home by the ruin road.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_give:jal-veesa/6",
+      "place_note:jal-veesa/hooks"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
+   "name": "Keeshu-Ra",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisCornerclub",
+    "role": "head"
+   },
+   "role": "trainer",
+   "trade": "Adept Archery trainer, a ruin-warden of the Veesa-Teeleel",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "A ruin-warden of the Veesa-Teeleel, she teaches archery at the edge of the town between her turns at Gemin. She lives alone and stores her bowstrings in the rafters out of the damp.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_give:jal-veesa/4"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6",
+   "name": "Dazhul-Tei",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisLabourersHouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "boat-wright",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She builds and caulks the reed boats that Sells-Dry-Fish sells at the jetty market. She learned the work from her mother and has taken no apprentice.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_give:jal-veesa/7"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
+   "name": "Sheeluxa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisLabourersHouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "rope-twister",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She twists sedge fibre into the rope for the boats Dazhul-Tei builds and sells what is left at the jetty. She hums while she works until anyone from Stormhold comes near.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33",
+   "name": "Taxhu-Neel",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisCornerclub.2",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "rope-maker",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She lays the town's rope in long lanes of staked strands beside the creek, one order at a time. She sells it by the coil to Stormhold's buyers after slow bargaining.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.66SDMA56E38FGAF0NT42B0GGE7",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.66SDMA56E38FGAF0NT42B0GGE7",
+   "name": "Walks-To-Stormhold",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisCornerclub.2",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "carrier of rope and mats to the buyers at Stormhold",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He carries rope and mats on his back along the road to Stormhold for buyers who will not come to the town on slack days. Taxhu-Neel says he walks that road more often than he poles the creek.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/people"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33",
+   "name": "Vosh-Leera",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisCouncillorsHouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "root-herald of Jal-Veesa, speaks for the elders",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She is the root-herald of Jal-Veesa and speaks for the elders to Stormhold's buyers and the frontier screen. She hears all that is said in her house and repeats little of it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/people",
+      "place_note:jal-veesa/present"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
+     "kind": "partner-of"
+    }
+   ],
+   "cast": "npc.mn.vosh-leera"
+  },
+  {
+   "id": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
+   "name": "Ixheela",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisCouncillorsHouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "tender of the elders' long house and its guest mat",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She tends the elders' long house, sweeping its mats and laying out the guest mat for any traveller who asks for a bed. She and Vosh-Leera have eaten at one table for twenty years.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:jal-veesa/3",
+      "place_note:jal-veesa/people"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
+   "name": "Kuxan-Deel",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisFarmhouse",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "sedge cutter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He cuts sedge in the beds beyond the mud banks for the town's mats and boats. He poles out before dawn with his father's cutting knife.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
+   "name": "Tsemeena",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisFarmhouse",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "mat plaiter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She plaits mats from Kuxan-Deel's sedge and trades them to Sells-Dry-Fish at the jetty. She taught the knot she uses to several mat-makers in the town.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.7W40EGBARBV6S6HWTT0D8284JX",
+   "name": "Azhuuk-Ma",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisFarmhut",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "ruin-warden of the Veesa-Teeleel, on turn at Loriasel",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She takes her turns as a ruin-warden at Loriasel and comes home to the town between them. She was among those who took a looter with Ayleid goods, and she has not said what should be done with him.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/hooks",
+      "place_note:jal-veesa/dangers"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
+   "name": "Pezuul-Ja",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisFarmhut",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "eel and gar fisher of the weir channels",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He fishes eels and gar from the weir channels and brings them to the racks. He will not go near the channels where the crocodiles lie up after rain.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:jal-veesa/5",
+      "place_note:jal-veesa/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  }
+ ]
+}

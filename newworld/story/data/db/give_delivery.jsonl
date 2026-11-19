@@ -476,11 +476,11 @@
 {"place_id":"inoja","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (inn-room: a room at the stilted inn)"}
 {"place_id":"inoja","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: hides and river game bought on the market ground)"}
 {"place_id":"inoja","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the river fork at the ferry)"}
-{"place_id":"jal-veesa","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (rootworm-stop: the Hist pool at the heart of the town, where the tree-minder calls the rootworm)"}
-{"place_id":"jal-veesa","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: reed boats, mats, rope and dried fish at the jetty market)"}
-{"place_id":"jal-veesa","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: a fish-smoker's stall on the road side)"}
+{"place_id":"jal-veesa","give_seq":0,"seq":0,"by":"person","person_id":"jal-veesa.2W0S9FR08886SKP3HS2VPP27C9","status":"delivered","why":"Weeltul (resident) gives it (people.jsonl services)"}
+{"place_id":"jal-veesa","give_seq":1,"seq":0,"by":"person","person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","status":"delivered","why":"Sells-Dry-Fish (merchant) gives it (people.jsonl services)"}
+{"place_id":"jal-veesa","give_seq":2,"seq":0,"by":"person","person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","status":"delivered","why":"Sells-Dry-Fish (merchant) gives it (people.jsonl services)"}
 {"place_id":"jal-veesa","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a mat in the elders' long house)"}
-{"place_id":"jal-veesa","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Archery trainer, a ruin-warden of the Veesa-Teeleel)"}
+{"place_id":"jal-veesa","give_seq":4,"seq":0,"by":"person","person_id":"jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q","status":"delivered","why":"Keeshu-Ra (trainer) gives it (people.jsonl services)"}
 {"place_id":"jal-veesa","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the weir channels: eels and gar)"}
 {"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"ref","ref_id":"jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
 {"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"ref","ref_id":"jal-veesa.Q8HD6HGMGF0GRV749RYRD14V5A","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
