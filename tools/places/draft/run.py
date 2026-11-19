@@ -1278,6 +1278,13 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                          "routine": people.routine("resident", bed_at, town, {"space": sid, "radius": 1024},
                                                    {"space": inn_space, "radius": 1024} if inn_space else town)})
             n += 1
+    # then the open beds, until the place holds the record's population (and the guards draft.guards keeps)
+    keep_free = set(dec.get("free_beds") or []) | {rent_bed}
+    _, filled, _ = people.fill_to_record(place_id, folk, our, bases, rec.get("population"), dec.get("guards"),
+                                         keep_free, town["pos"])
+    for p in folk:
+        if p["id"] in filled:
+            p["base_from"] = pick_base("resident")
     # the source's own actors: stand-ins for ours, or left to the town rule
     base_users: dict[str, list[str]] = {}
     for p in folk:

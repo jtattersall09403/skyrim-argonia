@@ -408,7 +408,11 @@ The tools lay the network by these rules.
   builder's room rule (the drafter calls it, so the beds counted are the beds built). A cell whose ways out all open
   into one walkable island by that rule is one building with several doors (a front and a back door, a door on each
   floor): it is copied once, every one of its doors paired with its own door inside. Every promised service
-  person works; residents fill the homes' remaining beds. A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower) makes no person of its own: it is given to a resident (the skill `place-people` chooses which, by the trade it writes; until it has chosen, the first resident who has no service to give). A stop's handler works at it through the service hours.
+  person works; residents fill the homes' remaining beds, then the open beds (a camp's tents and bedrolls) until
+  the place holds its record's population, every one with a routine. A place short of beds for its population is
+  given them (`draft.add`, then the `add` and `people` stages). A place whose record has no watch (a camp held by a
+  gang-master) sets `draft.guards` to the guards it keeps (0); a free bed the record promises is named in
+  `draft.free_beds` and stays unowned. A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower) makes no person of its own: it is given to a resident (the skill `place-people` chooses which, by the trade it writes; until it has chosen, the first resident who has no service to give). A stop's handler works at it through the service hours.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
   outdoors), one guard to a bed, never in the inn's rooms. A guard whose camp bed the town's network does not
