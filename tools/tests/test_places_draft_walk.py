@@ -346,9 +346,10 @@ def test_a_ship_of_several_pieces_carries_what_rests_on_it(monkeypatch):
     assert not any("fl" in (a["id"], b["id"]) for a, b in pairs)          # the build's check agrees
 
 
-def test_joins_are_laid_of_walkway_pieces_never_a_tent_or_a_flight():
-    bases = {"dock": {"model": "architecture/docks/dockstrent01.nif"}, "tent": {"model": "camp/tent01.nif"},
-             "steps": {"model": "architecture/docks/dockstepsdown01.nif"}}
+def test_joins_are_laid_of_walkway_pieces_never_a_tent_or_a_flight(monkeypatch):
+    monkeypatch.setattr(walk.io, "walkway_base", lambda: None)
+    bases = {"dock": {"model": "architecture/docks/dockstrent01.nif", "bounds": [[-179, -256, -438], [157, 287, 64]]},
+             "tent": {"model": "camp/tent01.nif"}, "steps": {"model": "architecture/docks/dockstepsdown01.nif"}}
     added = [{"id": f"t{i}", "base": "tent", "kind": "building", "why": "a cutters' tent", "src": None} for i in range(3)]
     flights = [{"id": f"s{i}", "base": "steps", "kind": "building", "why": "brings a deck down", "src": None} for i in range(2)]
     quay = [{"id": "q", "base": "dock", "kind": "building", "src": "X.esm:1"}]

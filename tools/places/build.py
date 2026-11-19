@@ -1548,6 +1548,12 @@ def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict
     return out, notes
 
 
+def walked_through(r: dict) -> bool:
+    """A gate (a door that leads nowhere else, with no collision box of its own) is walked through: Skyrim's navmesh
+    runs under its doors and an actor opens them, so the navmesh is never cut round one."""
+    return r.get("kind") == "door" and not r.get("door") and collision_box(r) is None
+
+
 def collision_objects(refs: list[dict]):
     from tools.navmesh import placed
     from tools.navmesh.__main__ import game_data
@@ -1556,12 +1562,19 @@ def collision_objects(refs: list[dict]):
         box = collision_box(r)
         if r["space"] != "exterior" or (r.get("kind") not in SOLID_KINDS and box is None) or r.get("disabled"):
             continue
+        if walked_through(r):
+            continue
         f, local = split_key(r["base"])
         rows.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale", 1.0), "formKey": r["fk"],
                      "box": box})
     if not rows:
         return None, {"refs": 0}
-    return placed.collide(rows, game_data(), {})
+    from tools.navmesh import meshes
+    was, meshes.PROFILE = meshes.PROFILE, "NewWorld"   # a place's mod meshes are found by the new world's mod order, never as boxes
+    try:
+        return placed.collide(rows, game_data(), {})
+    finally:
+        meshes.PROFILE = was
 
 
 # ---- one place --------------------------------------------------------------------------------------------------------

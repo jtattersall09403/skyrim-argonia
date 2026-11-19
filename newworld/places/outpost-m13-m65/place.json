@@ -298,6 +298,12 @@
     ],
     "why": "Okeeh, the cook (main story, quest 1: 'sitting by the hold's cook-pot a few steps from where the player wakes'): her work spot is the hold's own spit pot"
    }
+  },
+  "room_names": {
+   "01dock3to4": {
+    "name": "Barge Hold",
+    "why": "the barge's hold where the player wakes (main quest 1, room 'Barge Hold'); the cook's fire is only what Okeeh tends there"
+   }
   }
  },
  "fit": {

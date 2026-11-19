@@ -314,6 +314,18 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         if -min(go) > -min(gs) + allow + 16:
             bad.append(f"{r['id']} ({r['kind']}) buried {-min(go):.0f} into our ground (source {-min(gs):.0f})")
 
+    # 12b. a thing we added on the ground has ground under its whole footprint: no slope beyond the source's
+    # builders' (it would float over the low side or sink into the high), no water under any of it
+    from tools.places.draft import adds as adds_mod
+    for r in refs:
+        if r.get("src") or r.get("kind") not in adds_mod.STAND or (r.get("seat") or {}).get("mode") != "ground":
+            continue
+        if not adds_mod.ground_ok(r, G, norm):
+            f = r["seat"].get("foot")
+            rel = foot_relief(G, r["pos"][0], r["pos"][1], r["rot"][2], f) if f else 0.0
+            bad.append(f"{r['id']} ({r['kind']}) has no ground under its whole footprint: the ground under it rises "
+                       f"{rel:.0f} (at most {norm:.0f}) or water lies under part of it")
+
     # 13. every door opens the way out: its arrival on our ground, clear of collision, its plane across the way out
     for d in doors:
         a = (d["door"] or {}).get("arrival")

@@ -89,6 +89,36 @@ def nordic_review(path: Path = NORDIC_REVIEW) -> dict[str, dict]:
     return {r["base"]: r for r in read_jsonl(path)} if path.exists() else {}
 
 
+WAY_EDID = re.compile(r"walkway|boardwalk|dock", re.I)
+
+
+def walkway_base(path: Path | None = None) -> dict | None:
+    """The level walkway piece of the place's style for a place whose own pieces hold none a person walks on: from
+    the catalogue, a static of the style's plugins (first plugin first) named and modelled as a walkway, dock or
+    boardwalk, a deck by `paths.is_deck`, no taller than a jetty on its posts (160) and not Nordic; the shortest edid
+    of the first plugin that has one."""
+    from tools.places.draft.paths import is_deck
+    path = path or CATALOGUE
+    if not path.exists():
+        return None
+    review, best = nordic_review(), None
+    with path.open() as f:
+        for line in f:
+            if '"STAT"' not in line:
+                continue
+            r = json.loads(line)
+            if r.get("plugin") not in STYLE_ORDER or not WAY_EDID.search(r.get("edid") or "") \
+                    or not WAY_EDID.search(r.get("model") or "") or not is_deck(r) or is_nordic(r["key"], r, review):
+                continue
+            (_, _, z0), (_, _, z1) = r["bounds"]
+            if z1 - z0 > 160:
+                continue
+            k = (STYLE_ORDER.index(r["plugin"]), len(r["edid"]), r["edid"])
+            if best is None or k < best[0]:
+                best = (k, r)
+    return best[1] if best else None
+
+
 def is_nordic(key: str, base: dict, review: dict[str, dict]) -> bool:
     """For a base we add from elsewhere: Nordic by the review where it was looked at, else by the extractor's folder
     rule (the cautious default)."""

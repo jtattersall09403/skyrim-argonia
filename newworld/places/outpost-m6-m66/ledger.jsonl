@@ -8,7 +8,7 @@
 {"src":"King of the Murkmire.esp:11EDB7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:38F86B","space":"exterior","status":"placed","as":"outpost-m6-m66.S7Y1RDWYXPGG7BSTGRC47W7H4J","cluster":"w04"}
 {"src":"King of the Murkmire.esp:560C93","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:855049","space":"exterior","status":"adapted","as":"outpost-m6-m66.9XNRAMHDXN212W9HA2MBVBKWK9","cluster":"s01"}
+{"src":"King of the Murkmire.esp:855049","space":"exterior","status":"dropped","cluster":"s01","why":"a rock plateau of Ree-An-Wo's own ground (ArgoniaRockPlateau02MarshGrass, 21 by 16 m), standing far out from the camp on our creek's bank, where it sinks 370 into our ground: our ground is not the source's, and the record has no use for it","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85504A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85504F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:855056","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}

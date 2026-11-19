@@ -112,8 +112,12 @@ The tools lay the network by these rules.
   hatch is reached over its own ship. The landing's shore end is where the landing's own pieces meet our dry
   ground, never a bank it does not touch.
 - **Bridges.** Open water is crossed only where nothing else joins the two ends, and then where it is narrowest,
-  on bridges of the source's own walkway pieces: one piece per piece length along the route, each slid along it
-  clear of any solid there, its deck a hand's breadth over the water. A walkway's deck is the top of its collision
+  on bridges of the source's own walkway pieces: one piece per piece length along the route, its long side along
+  the route, each slid along it clear of any solid there, its deck a hand's breadth over the water. A walkway piece
+  is a level deck a person walks on, at least 96 units across (a stockade board stood on edge is none); where the
+  source has none, the style's own walkway piece (`io.walkway_base`: King of the Murkmire's MudHutWalkway01 for
+  the marsh). A bridge or join already laid on a piece no one walks on is laid again on the walkway piece at its
+  walking height by the `streets` stage. A walkway's deck is the top of its collision
   at its centre, read per piece, never its record's top, which is the rail.
 - **Steps.** Steps hang on their deck the way Skyrim's dock steps do (measured on Skyrim.esm's DockStepsDown01 and
   02): square to the deck, the top end against its edge, the top tread at the deck's own height, the piece seated `on` the deck piece (resting on it and carried with it). A flight of the source's that abuts a deck a little off its height (within 64 units; a step
@@ -214,7 +218,12 @@ The tools lay the network by these rules.
   with their cluster like any piece.
 - **A copied room keeps the source's own lights**, shadow casters among them, each on the base the source placed.
   There is no cap on shadow-casting lights in a room: the player's renderer settings decide how many it draws.
-- **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
+- **The source is the starting point; the record says what the place is.** A source piece stays when the record
+  needs it or the place would plainly have it (a town's general trader). A site of the source's the record never
+  names (a mine, a cave, a crypt: a source cell whose name says it is one) is left out by the tools with its door,
+  its room and its mouth (the doorless groups round its door: the rock face, the cart, the lamp), each with the
+  reason in the ledger. Anything else the source placed that our place must not have: `draft.drop`
+  `{source ref id: reason}` (the `pieces` stage; a room whose way in is dropped goes with it).
 - **Every room says what it is.** The name on a room's door is the one a player reads it by, so the tools give it
   from the place's data (`docs/design/place-studio.md`, Room names): the place a promise kept in it names, else its
   household's head ("Ixtul-Bei's House"), else the source's name unless it is a builder's leftover. A room nothing
@@ -224,7 +233,10 @@ The tools lay the network by these rules.
   row with its `space` (a room) or none (outside), `need` (the need's seq), `name` where the player must read what it
   is (a container), `tier` and `why`; its owner, lock and contents are a stock row (the skill `place-stock`). Choose a
   base the source or the marsh's own mods hold that reads as the thing, never a Nordic one. Then point the need's
-  `rests` at it.
+  `rests` at it. Outside, a thing stands on ground that carries its whole footprint: the ground under it rises no
+  more than the source's builders built on (`fit.relief_norm`) and no water lies under any of it. Choose such a
+  spot; the tools move one that is not to the nearest spot within 1536 units that is, clear of every solid, with
+  what stands inside it (a tent's bed), and `draft check` fails one with no ground under part of it.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
   smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).
@@ -319,7 +331,8 @@ The tools lay the network by these rules.
    promised service and station given and worked, a bed for every sleeper, an unowned bed to rent at the inn,
    guards out of the inn, every resident in one household under one roof, every room named (no leftover name,
    and no two alike once the people have identities), replaced pieces in the original's plane,
-   nothing floating or buried along its true outline beyond how it sat in the source, every door's arrival clear
+   nothing floating or buried along its true outline beyond how it sat in the source, every added thing on ground
+   under its whole footprint, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
    units of its place by its fixture, every added forge lit, nothing Nordic
    added and nothing levelled placed, no world plant left standing in what we placed, the sentence as section 5 has it
@@ -354,7 +367,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | Stage | Run it when | It owns |
 |---|---|---|
 | `fit` | a piece belongs in another cluster (a light with its fixture) | the cluster, place and turn of the exterior rows that move; their ledger rows |
-| `pieces` | `draft.replace` or `draft.drop` changed | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; their ledger rows |
+| `pieces` | `draft.replace` or `draft.drop` changed; the record stopped or started naming a source site | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; a room whose way in is dropped; their ledger rows |
 | `seating` | a seat rule changed | the seat and height of exterior rows |
 | `clearance` | buildings, doors or streets moved; the world's plants were placed again | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
@@ -384,7 +397,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 
 1. `python3 -m tools.places build <place_id>` builds the place layer plugin with the place's navmesh, from the
    place files and the database. The navmesh is cut round the place's own pieces and round everything the world has
-   placed there (the world's refs shards) but the plants the place clears, so it meets the world's own navmesh edge
+   placed there (the world's refs shards) but the plants the place clears and its gates (a door that leads nowhere
+   else is walked through, as Skyrim's navmesh runs under its doors), so it meets the world's own navmesh edge
    for edge: the world file, its refs shards and its navmesh must be of one build, and the build fails when the
    shards do not hold every world ref the place clears. The build keeps, in `out/places/shards/<place_id>/world.json`,
    the stamp of the world records it stands on (Inputs): a place whose records the world file no longer holds is

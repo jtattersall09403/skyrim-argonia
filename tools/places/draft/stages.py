@@ -44,7 +44,8 @@ ANY = None
 # it may add or remove rows}
 OWNS: dict[str, dict[str, tuple]] = {
     "fit": {"spaces/exterior/refs.jsonl": ({"pos", "rot", "cluster"}, True), "ledger.jsonl": (ANY, False)},
-    "pieces": {"spaces/*/refs.jsonl": ({"base", "pos", "rot", "align", "seat"}, True), "ledger.jsonl": (ANY, True)},
+    "pieces": {"spaces/*/refs.jsonl": ({"base", "pos", "rot", "align", "seat"}, True), "spaces/*/space.json": (ANY, True),
+               "ledger.jsonl": (ANY, True)},
     "seating": {"spaces/exterior/refs.jsonl": ({"seat", "pos"}, False)},
     "clearance": {"clear.jsonl": (ANY, True)},
     "streets": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
@@ -175,8 +176,14 @@ def pieces(st: Standing, log=print) -> None:
     replace = io.replacements(dec, st.bases, refused)
     for m in refused:
         log(f"draft pieces {st.place_id}: {m}")
-    drop = dec.get("drop") or {}
-    _, of, _ = st.clusters
+    drop = dict(dec.get("drop") or {})
+    cls, of, _ = st.clusters
+    from tools.places.draft.run import place_record
+    rec, gives = place_record(st.place_id)
+    for did, why in interiors.unused_rooms(st.src, [r for r in st.src_ext if r.get("kind") == "door"],
+                                           interiors.record_text(st.place_id, rec, gives)).items():
+        for sid in interiors.mouth(st.by_src[did], cls, of, st.by_src):
+            drop.setdefault(sid, why)
     ours, led = st.ours(), st.led()
     # a piece dropped by this step's old verdict and no longer dropped comes back; one newly dropped goes
     for sid, lr in sorted(led.items()):
@@ -256,7 +263,10 @@ def pieces(st: Standing, log=print) -> None:
             rep = replace.get(r["base"])
             door = interiors.door_target(r)
             if row.get("removed"):
-                if door:            # another room's way out: the room rule's, not this step's
+                other = any(lr.get("src") == r["id"] and lr.get("copy") == sid and lr.get("status") == "dropped"
+                            and lr.get("by") != "draft.drop" and not str(lr.get("why", "")).startswith("Nordic base")
+                            for lr in st.ledger)
+                if door or other:   # another room's way out, or another stage's verdict: not this step's
                     keep.append(row)
                 else:
                     log(f"draft pieces {st.place_id}: {sid}/{r['id']} stands again")
@@ -276,6 +286,23 @@ def pieces(st: Standing, log=print) -> None:
             if rep or door:         # a door's row carries its pairing: kept, on the source's own piece
                 keep.append(row)
         sp["refs"] = keep
+    # a room whose way in is gone goes with it, and the rooms behind it
+    ext_ids = {r["id"] for r in st.ext}
+    while True:
+        gone = [sid for sid, sp in st.files["spaces"].items() if sid != "exterior"
+                and ((sp.get("space") or {}).get("parent") == "exterior" and (sp.get("space") or {}).get("door_from") not in ext_ids
+                     or ((sp.get("space") or {}).get("parent") not in (None, "exterior")
+                         and (sp.get("space") or {}).get("parent") not in st.files["spaces"]))]
+        if not gone:
+            break
+        for sid in gone:
+            info = st.files["spaces"].pop(sid).get("space") or {}
+            src_sp = (info.get("copy_of") or "/").split("/", 1)[1]
+            why = next((drop[k] for k in drop if (st.by_src.get(k) or {}).get("door", {}) and
+                        interiors.door_target(st.by_src[k]) == src_sp), "its way in is gone")
+            st.ledger = [lr for lr in st.ledger if not (lr.get("space") == src_sp or lr.get("copy") == sid)]
+            st.ledger.append({"src": "*", "space": src_sp, "status": "dropped", "why": why, "by": "draft.drop"})
+            log(f"draft pieces {st.place_id}: room {sid} taken out: {why}")
     seat_all(st.ext, st.G)
 
 

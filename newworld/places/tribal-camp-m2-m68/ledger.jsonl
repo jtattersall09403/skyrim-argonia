@@ -9,11 +9,7 @@
 {"src":"Skyrim.esm:01992D","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Skyrim.esm:01992E","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Skyrim.esm:019930","space":"DushnikhYalLonghouse","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"*","space":"DushnikhYalMine","status":"placed","as":["DushnikhYalMine"],"count":521}
-{"src":"Skyrim.esm:01992F","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"Skyrim.esm:0C78BF","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"Skyrim.esm:0C78C1","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"Skyrim.esm:0C78C3","space":"DushnikhYalMine","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"*","space":"DushnikhYalMine","status":"dropped","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:01623E","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NJJE9YFQA6TFW4CJD148XQQQZ5","cluster":"b01"}
 {"src":"Skyrim.esm:019919","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9ADGNM2EKC8MKMWZBRBT1YFSCF","cluster":"b01"}
 {"src":"Skyrim.esm:02051F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EF85MN15XV9K1M6HDV41YZ7FMF","cluster":"b01"}
@@ -22,11 +18,11 @@
 {"src":"Skyrim.esm:044912","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5M50F8RY3KT45H59Z0V6TMNJVN","cluster":"b01"}
 {"src":"Skyrim.esm:044913","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.1VWGT2X5A1Y5XZJTM22E9FTH4J","cluster":"b01"}
 {"src":"Skyrim.esm:044914","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NYZV2281525ZQN2AKYTZ1A3GEN","cluster":"b01"}
-{"src":"Skyrim.esm:044915","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.892V8XTN5Y39QX1SXSHNEJ1WC4","cluster":"s01"}
-{"src":"Skyrim.esm:044916","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VH3PRTC1VQ77T4NNHDW5PMFVVS","cluster":"s01"}
+{"src":"Skyrim.esm:044915","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
+{"src":"Skyrim.esm:044916","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:055556","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AAZRBQSGP96ENF53KNWXGNGF1X","cluster":"s02"}
 {"src":"Skyrim.esm:055557","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.43PBGYQ7CYBN3QWRXVR8BHAW9Y","cluster":"s03"}
-{"src":"Skyrim.esm:05A348","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ASA8N4J2ZT70DDCRP0ERN63MYV","cluster":"s01"}
+{"src":"Skyrim.esm:05A348","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:05A34C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9GEGK3HBJQ6G4RCMNVH3MFP7Z3","cluster":"s04"}
 {"src":"Skyrim.esm:05A34D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.B88W43C970B89BX5VVQKNFC1EC","cluster":"s04"}
 {"src":"Skyrim.esm:05A357","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -88,8 +84,8 @@
 {"src":"Skyrim.esm:05ACA5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GB3NFCS7028XYTXJF07JDG0E9D","cluster":"b01"}
 {"src":"Skyrim.esm:05ACA6","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.84WHXWQJEX1KYME9D5S63JQFXZ","cluster":"b01"}
 {"src":"Skyrim.esm:05ACA7","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T950ZY2XTA0RNZSGW1AXB0MGHD","cluster":"b01"}
-{"src":"Skyrim.esm:05ACAA","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DSKW5ZDSHHV1RRY5ZSE7X8F8VF","cluster":"s01"}
-{"src":"Skyrim.esm:05ACAB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FNSKJXYNZSJNBY8EQF2WT73JZ8","cluster":"s01"}
+{"src":"Skyrim.esm:05ACAA","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
+{"src":"Skyrim.esm:05ACAB","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:067E9C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Skyrim.esm:06853F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.TW98JRNA7EV628NJKGVYYPP2Y9","cluster":"b01"}
 {"src":"Skyrim.esm:068541","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.YN206M0RZTQXW8F36G679FY718","cluster":"s04"}
@@ -233,12 +229,12 @@
 {"src":"Skyrim.esm:06868F","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9VKZXXFNRSZW6FNDDE2SY9P58X","cluster":"b01"}
 {"src":"Skyrim.esm:068697","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T7AEVC7ERE3S4TY5BKS12TJKR2","cluster":"s03"}
 {"src":"Skyrim.esm:06869C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Skyrim.esm:0686A5","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M5891HD1B0NS46HPT24V0HRG1V","cluster":"s01"}
+{"src":"Skyrim.esm:0686A5","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:0686A7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Skyrim.esm:0686AA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Skyrim.esm:0686AE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Skyrim.esm:0686AF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Skyrim.esm:0686B1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.97JY119356GWPMCJ1MCMRB0QKX","cluster":"s01"}
+{"src":"Skyrim.esm:0686B1","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:0686BE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QFS1FD10PX07YP1V5KY10DVJVV","cluster":"b01"}
 {"src":"Skyrim.esm:0686BF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JX91V3NDP42TX89J1CZ7WZ3B18","cluster":"b01"}
 {"src":"Skyrim.esm:0686C2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W2MTAFZ83ZEE9M65CNW8BT9YQS","cluster":"s04"}
@@ -382,8 +378,8 @@
 {"src":"Skyrim.esm:099EF3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.RJY9GMZ9S4KRE16MHKPFG46QCV","cluster":"b01"}
 {"src":"Skyrim.esm:099EF4","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.FJQ18NZ797J3W91G54BCW9Z57G","cluster":"b01"}
 {"src":"Skyrim.esm:099EFB","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KHZ6BCN47ATTCRH4ZDX96REDW2","cluster":"b01"}
-{"src":"Skyrim.esm:099EFC","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0DPQ555D9HWEWDH51727QDPSDS","cluster":"s01"}
-{"src":"Skyrim.esm:099EFD","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.5TPKX7M6B4RH57TRNBFZDYPP8W","cluster":"b01"}
+{"src":"Skyrim.esm:099EFC","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
+{"src":"Skyrim.esm:099EFD","space":"exterior","status":"dropped","cluster":"b01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:099EFF","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NBPHJ18P3Z34CQFVPW7B0HRK0R","cluster":"s07"}
 {"src":"Skyrim.esm:099F00","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.KAVT30KAEZ7F59PKY73WJBV2NN","cluster":"s09"}
 {"src":"Skyrim.esm:09E12D","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GSB843KBCTDBCH3RV6VHSDS09W","cluster":"b01"}
@@ -399,7 +395,7 @@
 {"src":"Skyrim.esm:0C81F9","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.VBJZDW1WV2J3A8HKSWN1R2FGN4","cluster":"s04"}
 {"src":"Skyrim.esm:0CD954","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.72N8HT9B60PY72JFB9YTTM2KPK","cluster":"b01"}
 {"src":"Skyrim.esm:0CD959","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.0AHSFZ8P8R5Y6WQEJV0JCCWGM3","cluster":"b01"}
-{"src":"Skyrim.esm:0CD95A","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.3VFMBNFDEPAW59Z6HJQ1T78MDA","cluster":"s01"}
+{"src":"Skyrim.esm:0CD95A","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:0CD95C","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.CZFJ02W4SPAC44TYQQRT6W9QSC","cluster":"b01"}
 {"src":"Skyrim.esm:0EBE28","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.QEBZA61XE03VHFB2XM8W8PS55D","cluster":"b01"}
 {"src":"Skyrim.esm:0EC358","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.Y9Q3NA50K23HRYDK41Q3Q10PEX","cluster":"s04"}
@@ -414,9 +410,9 @@
 {"src":"Skyrim.esm:0EC365","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.XKD09EVMTVJAEP34WC9G7KH0T3","cluster":"b01"}
 {"src":"Skyrim.esm:0EC371","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.DZHPXEVJXVBYQ2FRC8GNEEP7DZ","cluster":"b01"}
 {"src":"Skyrim.esm:0EC373","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Skyrim.esm:0EC374","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.M5KG7PDF98C6038HBNFD9TND3X","cluster":"s01"}
-{"src":"Skyrim.esm:0EC375","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.F40K2J1E66V9Z31433S3PRFYPT","cluster":"s01"}
-{"src":"Skyrim.esm:0EC376","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.D566M87MQJ7XTZEVH4PMSN1MEC","cluster":"s01"}
+{"src":"Skyrim.esm:0EC374","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
+{"src":"Skyrim.esm:0EC375","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
+{"src":"Skyrim.esm:0EC376","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:0EC377","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.ZFJNRFVAZ49EQDR16NS2HG32JX","cluster":"b01"}
 {"src":"Skyrim.esm:0EC379","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.SZ8GTWBYAG921SK24T90GX237E","cluster":"b01"}
 {"src":"Skyrim.esm:0EC37B","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.AY2F45CWCMDME5P21W0W15RYHX","cluster":"s04"}
@@ -429,7 +425,7 @@
 {"src":"Skyrim.esm:0EC383","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.S19EX4WRT8KEGJQJF6VRRW9JNE","cluster":"s04"}
 {"src":"Skyrim.esm:0EC384","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.9E8DRETHYYT270GH1V1FSE872X","cluster":"s04"}
 {"src":"Skyrim.esm:0EC387","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JCC4HXTN25J9SSRBC8CCQC5WDG","cluster":"b01"}
-{"src":"Skyrim.esm:0EC388","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JHPEVPE2YSTC88Z6X25Q3A792C","cluster":"s01"}
+{"src":"Skyrim.esm:0EC388","space":"exterior","status":"dropped","cluster":"s01","why":"the record has no use for the source's mine (DushnikhYalMine): its door and mouth go","by":"draft.drop"}
 {"src":"Skyrim.esm:0EC389","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.83B3QST1T1G3Q3Q71C5W1HCQKS","cluster":"b01"}
 {"src":"Skyrim.esm:0F3D85","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.NR6PK3MB1HXBFKHNRY91YT0MT9","cluster":"b01"}
 {"src":"Skyrim.esm:0F3D86","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.GG419A3QBFQBR20T00A6SFT57D","cluster":"s04"}

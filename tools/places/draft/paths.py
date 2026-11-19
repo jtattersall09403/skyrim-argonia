@@ -187,6 +187,29 @@ def connected(paths: list[dict], join: float = 32.0) -> bool:
 
 ROAD_TEX = re.compile(r"road|path|street|cobble|trail", re.I)
 WALKWAY = re.compile(r"dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty", re.I)
+LEVEL_WAY = re.compile(r"dock|boardwalk|walkway|pier|jetty|bridge|plank", re.I)
+FLIGHT = re.compile(r"step|stair", re.I)
+DECK_MIN = 96.0     # plan units: the narrow side of a piece a person walks along (a stockade board stood on edge is none)
+
+
+def is_deck(base: dict | None) -> bool:
+    """A level walkway piece a person walks on: a walkway by its model, no flight of steps, and a deck at least
+    DECK_MIN wide in plan (its record box's narrow side)."""
+    if not base or not LEVEL_WAY.search(str(base.get("model") or "")) or FLIGHT.search(str(base.get("model") or "")):
+        return False
+    (x0, y0, _), (x1, y1, _) = base.get("bounds") or [[0, 0, 0], [0, 0, 0]]
+    return min(x1 - x0, y1 - y0) >= DECK_MIN
+
+
+def deck_run(base: dict) -> tuple[float, float]:
+    """(length along the walk, the turn that lays its long side along the walk): a walkway piece is walked along
+    its long side, whichever of its record box's axes that is; a piece is laid one per length less a 16-unit lap."""
+    (x0, y0, _), (x1, y1, _) = base.get("bounds") or [[0, 0, 0], [0, 0, 0]]
+    if x1 - x0 > y1 - y0:
+        return max(64.0, x1 - x0 - 16), -math.pi / 2
+    return max(64.0, y1 - y0 - 16), 0.0
+
+
 QUADS = {"BottomLeft": (0, 0), "BottomRight": (0, 16), "TopLeft": (16, 0), "TopRight": (16, 16)}
 PAINTED = 0.5
 

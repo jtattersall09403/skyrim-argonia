@@ -340,6 +340,9 @@ static class Write
             Console.WriteLine($"write: {pid}");
         }
 
+        // a base copied in from a plugin that is no master (a template of one of ours) carries no levelled list either:
+        // its inventory is flattened to the items it gives at level 1, as our own bases' are (decision 0035)
+        foreach (var n in mod.Npcs) People.Flatten(n.Items);
         // the cells into the WRLD override's blocks
         foreach (var g in cells.GroupBy(kv => (kv.Key.Item1 >> 5, kv.Key.Item2 >> 5)))
         {

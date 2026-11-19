@@ -161,6 +161,9 @@
   },
   "replace": {
    "King of the Murkmire.esp:005DBA": "King of the Murkmire.esp:B7F081"
+  },
+  "drop": {
+   "King of the Murkmire.esp:855049": "a rock plateau of Ree-An-Wo's own ground (ArgoniaRockPlateau02MarshGrass, 21 by 16 m), standing far out from the camp on our creek's bank, where it sinks 370 into our ground: our ground is not the source's, and the record has no use for it"
   }
  },
  "fit": {
@@ -678,6 +681,11 @@
     "id": "outpost-m6-m66.sap.S60W22PPW4P7EYP4N7K13VYA9J",
     "on": "S60W22PPW4P7EYP4N7K13VYA9J"
    }
+  ]
+ },
+ "steps": {
+  "kit": [
+   "King of the Murkmire.esp:025C36"
   ]
  }
 }

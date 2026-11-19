@@ -15,6 +15,7 @@ with a ledger reason.
 from __future__ import annotations
 
 import functools
+import json
 import math
 import re
 import tempfile
@@ -158,6 +159,56 @@ def own_lights(src_refs: list[dict], overrides: list[dict]) -> tuple[list[dict],
             out.append(row)
             restored += 1
     return out, restored, dropped
+
+
+SITE = re.compile(r"mine|cave|cavern|quarry|crypt|tomb|barrow|ruin|sewer|catacomb|dungeon|grotto|vault|lair", re.I)
+
+
+def record_text(place_id: str, rec: dict, gives: list[dict]) -> str:
+    """What our record says of the place: its row, its promises and the stories' needs, as one lower-case text."""
+    try:
+        from tools.places import needs as needs_mod
+        nd = needs_mod.read(place_id)
+    except (FileNotFoundError, OSError, ValueError):
+        nd = {}
+    return json.dumps([rec, gives, nd], default=str).lower()
+
+
+def unused_rooms(src: Bundle, ext: list[dict], text: str) -> dict[str, str]:
+    """{source exterior door: why} for each door into a site of the source's (a mine, a cave, a crypt: a source cell
+    whose name says it is one) that our record never names: the place is drafted to deliver what the record says of
+    it, so the source's site goes with its door and the pieces of its mouth (`mouth`)."""
+    out = {}
+    for d in ext:
+        t = door_target(d)
+        sp = src.spaces.get(t) if t and t != "exterior" else None
+        if sp is None:
+            continue
+        label = f"{t} {sp.meta.get('name') or ''}"
+        m = SITE.search(re.sub(r"(?<=[a-z])(?=[A-Z])", " ", label))
+        if m and m.group(0).lower() not in text:
+            out[d["id"]] = f"the record has no use for the source's {m.group(0).lower()} ({t}): its door and mouth go"
+    return out
+
+
+MOUTH = 640.0   # units round a dropped site's door within which a group of pieces with no door of its own is its mouth
+
+
+def mouth(door: dict, clusters, of: dict, by_src: dict) -> set[str]:
+    """The source refs that make a dropped site's mouth: the door, and every cluster but the door's own whose middle
+    stands within MOUTH of it and that holds no door (the rock face, the cart, the lamp of a mine's entrance)."""
+    out = {door["id"]}
+    for c in clusters:
+        if c.id == of.get(door["id"]):
+            continue
+        refs = [by_src[i] for i in c.members if i in by_src]
+        if not refs or any(r.get("kind") == "door" for r in refs):
+            continue
+        mx = sum(r["pos"][0] for r in refs) / len(refs)
+        my = sum(r["pos"][1] for r in refs) / len(refs)
+        if math.dist((mx, my), door["pos"][:2]) <= MOUTH:
+            out |= {r["id"] for r in refs}
+    return out
 
 
 def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str], bases: dict | None = None,

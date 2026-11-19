@@ -32,6 +32,7 @@ def check_out(place_id: str) -> Path:
 LEVEL = 48.0         # units of height a join may leave between its two ends (a step the navmesh climbs)
 JOIN_ROUNDS = 6
 TRIES = 200        # joins tried per island, shortest first, for one no house or ship stands across
+JOIN_MAX = 768.0    # plan units: a join is a gangway; an island further off than this is no join's to reach
 
 
 def build(place_id: str, places: Path = io.PLACES, out: Path | None = None) -> list[str]:
@@ -507,21 +508,62 @@ def pairs(isl: np.ndarray, net: np.ndarray) -> list[tuple[float, np.ndarray, np.
 
 def walk_base(rows: list[dict], bases: dict) -> str | None:
     """The walkway piece the place's own joins and bridges use: the commonest the draft already laid, else the
-    commonest walkway piece of the place. A walkway piece is a level one (never a flight of steps); a building or a
-    tent added by hand (`draft.add`) is none."""
+    commonest walkway piece of the place, else the style's own (`io.walkway_base`, added to `bases`). A walkway
+    piece is a level deck a person walks on (`paths.is_deck`: never a flight of steps, nor a board stood on edge); a
+    building or a tent added by hand (`draft.add`) is none."""
     def way(r):
-        model = str((bases.get(r["base"]) or {}).get("model", ""))
-        return r.get("kind") == "building" and paths_mod.WALKWAY.search(model) and not STEPS.search(model)
+        return r.get("kind") == "building" and paths_mod.is_deck(bases.get(r["base"]))
     laid = Counter(r["base"] for r in rows if not r.get("src") and r.get("why") and way(r))
     if laid:
         return sorted(laid, key=lambda b: (-laid[b], b))[0]
     ways = Counter(r["base"] for r in rows if way(r))
-    return sorted(ways, key=lambda b: (-ways[b], b))[0] if ways else None
+    if ways:
+        return sorted(ways, key=lambda b: (-ways[b], b))[0]
+    wb = io.walkway_base()
+    if wb:
+        bases.setdefault(wb["key"], wb)
+        return wb["key"]
+    return None
 
 
 def piece_length(bases: dict, base: str) -> float:
-    bb = bases[base]["bounds"]
-    return max(64.0, bb[1][1] - bb[0][1] - 16)
+    return paths_mod.deck_run(bases[base])[0]
+
+
+LAID = ("joins door ", "carries street ")
+
+
+def relay(rows: list[dict], base: str, bases: dict, log=print) -> int:
+    """A walkway the draft laid (a join, a bridge) on a piece no one walks on is laid again on `base`, one deck piece
+    per length of the old piece along its line, at the old piece's walking height. Returns the pieces changed."""
+    from tools.places.draft import geom
+    length, turn = paths_mod.deck_run(bases[base])
+    top = geom.walk(bases[base]) or 0.0
+    done = 0
+    for r in list(rows):
+        if r.get("src") or not str(r.get("why", "")).startswith(LAID) or paths_mod.is_deck(bases.get(r["base"])):
+            continue
+        old = bases.get(r["base"]) or {}
+        old_len, old_turn = paths_mod.deck_run(old) if old.get("bounds") else (length, 0.0)
+        yaw = r["rot"][2] - old_turn              # the old piece's line
+        walk_z = r["pos"][2] + float(r.get("walk") or geom.walk(old) or 0.0)
+        n = max(1, math.ceil(old_len / length))
+        i = rows.index(r)
+        new = []
+        for j in range(n):
+            t = ((j + 0.5) / n - 0.5) * old_len
+            x, y = r["pos"][0] + math.sin(yaw) * t, r["pos"][1] + math.cos(yaw) * t
+            row = {**r, "id": r["id"] if j == 0 else io.mint(r["id"].split(".")[0], "relay", r["id"], str(j)), "base": base,
+                   "pos": [round(x, 2), round(y, 2), round(walk_z - top, 2)],
+                   "rot": [0.0, 0.0, round((yaw + turn) % (2 * math.pi), 5)], "walk": top}
+            if (row.get("seat") or {}).get("mode") == "stilts":
+                row["seat"] = {**row["seat"], "dz": round(row["seat"].get("dz", 0.0) + float(r.get("walk") or 0.0) - top, 1),
+                               "foot": geom.foot({"base": base, "kind": "building"}, bases)}
+            new.append(row)
+        rows[i:i + 1] = new
+        done += 1
+        log(f"relay: {r['id']} ({old.get('edid')}, no deck to walk on) laid again as {n} {bases[base].get('edid')}")
+    return done
 
 
 def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: dict, G,
@@ -531,17 +573,18 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
     the join is its gangway), and says so in its seat, so the build's overlap rule lets it (`check.rests`)."""
     from tools.places.draft import geom
     top = geom.walk(bases[base]) or 0.0
-    length = piece_length(bases, base)
+    length, turn = paths_mod.deck_run(bases[base])
     near = [r for r in rows if r.get("kind") in overlap.SOLID and math.dist(r["pos"][:2], a[:2]) < math.dist(a[:2], b[:2]) + 4096]
     run = math.dist(a[:2], b[:2])
     n = max(1, math.ceil(run / length))
-    yaw = math.atan2(b[0] - a[0], b[1] - a[1]) % (2 * math.pi)
+    yaw = (math.atan2(b[0] - a[0], b[1] - a[1]) + turn) % (2 * math.pi)
+    line = f"{a[0]:.0f},{a[1]:.0f},{b[0]:.0f},{b[1]:.0f}"     # each line its own ids: a later round's join is new
     out = []
     for j in range(n):
         t = (j + 0.5) / n if run > length else 0.5
         x, y = a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
         deck = float(a[2] + (b[2] - a[2]) * t)
-        cand = {"id": io.mint(place_id, "join", door_id, str(j)), "base": base, "kind": "building",
+        cand = {"id": io.mint(place_id, "join", door_id, line, str(j)), "base": base, "kind": "building",
                 "pos": [round(x, 2), round(y, 2), round(deck - top, 2)], "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0,
                 "layer": "place", "flags": [], "src": None, "walk": top,
                 "seat": {"mode": "free", **({"carrier": carrier} if carrier else {})},
@@ -867,6 +910,11 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
         from tools.places.seat import reseat_place
         reseat_place(place_id, places=places)
         edits.write_place(pdir, edits.load_place(pdir))
+    rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
+    base = walk_base(rows, bases)
+    if base and relay(rows, base, bases, log=lambda m: log(f"join {place_id}: {m}")):
+        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows)
+        done += 1
     settle()
     for _ in range(JOIN_ROUNDS):
         ctx, bad = network(place_id, places, out)
@@ -925,7 +973,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path | None = None, log=p
             for door_id, (c, pts) in sorted(isl.items()):
                 if c in joined:
                     continue
-                for d, a, b in pairs(dry(pts, G), net)[:TRIES]:
+                for d, a, b in [t for t in pairs(dry(pts, G), net) if t[0] <= JOIN_MAX][:TRIES]:
                     n = max(1, math.ceil(math.dist(a[:2], b[:2]) / piece_length(bases, base)))
                     carrier = ((next((r for r in rows if r["id"] == door_id), None) or {}).get("seat") or {}).get("on")
                     got = [r for r in lay(place_id, door_id, list(a), list(b), base, rows + new, bases, G, carrier)

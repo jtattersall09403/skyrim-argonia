@@ -166,7 +166,12 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     replace = io.replacements(dec, bases, refused=refused)
     for m in refused:
         print(f"draft {place_id}: {m}")
-    drop = dec.get("drop") or {}
+    drop = dict(dec.get("drop") or {})
+    # a site of the source's (a mine, a cave) our record never names goes, its door and its mouth with it
+    for did, why in interiors.unused_rooms(src, [r for r in ext if r.get("kind") == "door"],
+                                           interiors.record_text(place_id, rec, gives)).items():
+        for sid in interiors.mouth(by_src[did], clusters, of, by_src):
+            drop.setdefault(sid, why)
     # no cluster's piece in another's: the smaller cluster steps clear
     fit.separated = overlap.separate(sc, fit, clusters, by_src, bases,
                                      lambda r: (replace.get(r["base"]) or {}).get("base", r["base"]))
@@ -248,7 +253,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # things the place record promises that the source lacks, added by the agent (draft.add)
     # (the rows for rooms are placed by the `add` stage once the rooms are written)
     from tools.places.draft import adds
-    our.extend(row for space, row in adds.rows(place_id, dec, bases) if space == "exterior")
+    added = [row for space, row in adds.rows(place_id, dec, bases) if space == "exterior"]
+    adds.settle(added, our, bases, G, relief_norm(S, ext, bases), lambda m: print(f"draft {place_id}: {m}"))
+    our.extend(added)
     # --- water and land as our world has them: a thing on the wrong side of the waterline after the fit is
     # nudged to the nearest ground of its kind, or dropped; the land is never turned to water or water to land ---
     gone: dict[str, str] = {}
@@ -537,11 +544,16 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         counts: dict[str, int] = {}
         for r in walk_src:
             kb = (replace.get(r["base"]) or {}).get("base", r["base"])
-            if re.search(r"step|stair", str((bases.get(kb) or {}).get("model", "")), re.I):
-                continue    # a bridge is laid of level walkway pieces, never of a flight
+            if not paths_mod.is_deck(bases.get(kb)):
+                continue    # a bridge is laid of level walkway pieces a person walks on, never a flight or a board
             if not (bases.get(kb) or {}).get("nordic") and geom.foot({"base": kb, "kind": "building"}, bases):
                 counts[kb] = counts.get(kb, 0) + 1
         walk_base = max(sorted(counts), key=lambda kb: counts[kb]) if counts else None
+    if walk_src and walk_base is None:
+        wb = io.walkway_base()      # the source walks on none: the style's own walkway piece
+        if wb:
+            bases.setdefault(wb["key"], wb)
+            walk_base = wb["key"]
 
     def bridge_over(route, k) -> list[dict]:
         """Walkway pieces end to end over each wet stretch of a route, walked along it by length (one piece per piece
@@ -549,8 +561,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         there (a dock, a pier) is left out: that solid carries the street there."""
         if not walk_base:
             return []
-        b = model_bounds(bases[walk_base])
-        length = max(64.0, b[1][1] - b[0][1] - 16)
+        length, turn = paths_mod.deck_run(bases[walk_base])
         foot = geom.foot({"base": walk_base, "kind": "building"}, bases)
         deck = geom.walk(bases[walk_base]) or 0.0   # the deck under its posts, from the mesh
         # the route by length, and its wet runs
@@ -594,7 +605,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     m = m0 + slide
                     p, q = at(m - length / 2), at(m + length / 2)
                     x, y = at(m)
-                    yaw = math.atan2(q[0] - p[0], q[1] - p[1]) % (2 * math.pi)
+                    yaw = (math.atan2(q[0] - p[0], q[1] - p[1]) + turn) % (2 * math.pi)
                     cand = {"id": io.mint(place_id, "bridge", str(k), str(ri), str(j)), "base": walk_base,
                             "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0],
                             "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0, "layer": "place", "flags": [],
@@ -1186,6 +1197,18 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                 return s
         return None
 
+    def own_bed(prefer: list[str]) -> dict | None:
+        """A bed of one's own (a guard's, a lodger's): one no one else sleeps in, even a double, whose every slot it
+        takes; a bed has one owner."""
+        for sid in prefer:
+            whole = [s for s in free.get(sid, []) if sum(1 for o in slots.get(sid, []) if o["ref"] == s["ref"])
+                     == sum(1 for o in free[sid] if o["ref"] == s["ref"])]
+            if whole:
+                ref = whole[0]["ref"]
+                free[sid] = [s for s in free[sid] if s["ref"] != ref]
+                return whole[0]
+        return None
+
     def station_used(ref_id: str, w: dict) -> bool:
         row = next((r for r in our if r["id"] == ref_id), None)
         if row is None or w.get("space", "exterior") != "exterior":
@@ -1296,7 +1319,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     n_guards = people.guard_count(sum(1 for c in clusters if c.kind == "building"))
     for k in range(n_guards):
         shift = "day" if k % 2 == 0 else "night"
-        bed = bed_for(["exterior"] + barracks + [h for h in halls if h != inn_space] + houses)
+        bed = own_bed(["exterior"] + barracks + [h for h in halls if h != inn_space] + houses)
         pid = io.mint(place_id, "person", "guard", str(k))
         pts = people.patrol(beats, k)
         work = {"space": "exterior", "pos": pts[0] if pts else town["pos"], "radius": 256}

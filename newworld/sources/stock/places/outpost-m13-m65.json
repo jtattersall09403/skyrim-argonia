@@ -31,14 +31,60 @@
    "ref": "Black Marsh.esm:1BEAF9",
    "space": "01dock3to4",
    "kind": "satchel",
-   "owner_household": "outpost-m13-m65.household.01dock3to4",
-   "security": "S1",
-   "tier": "T1",
+   "security": "S0",
+   "tier": "T2",
    "gold": 0,
-   "items": [],
-   "why": "the household's other satchel: its source's significant things are taken out and its store is Black Marsh.esm:1BEB52; set dressing stays",
+   "items": [
+    {
+     "item": "Skyrim.esm:0135B8",
+     "count": 1,
+     "why": "an Imperial sword (main plot, quest 1: the hold's kit)"
+    },
+    {
+     "item": "Skyrim.esm:013AB2",
+     "count": 1,
+     "why": "an Imperial light shield"
+    },
+    {
+     "item": "Skyrim.esm:013ED9",
+     "count": 1,
+     "why": "an Imperial light cuirass"
+    },
+    {
+     "item": "Skyrim.esm:013ED7",
+     "count": 1,
+     "why": "Imperial light boots"
+    },
+    {
+     "item": "Skyrim.esm:013EDA",
+     "count": 1,
+     "why": "Imperial light bracers"
+    },
+    {
+     "item": "Skyrim.esm:013EDB",
+     "count": 1,
+     "why": "an Imperial light helmet"
+    },
+    {
+     "item": "Skyrim.esm:013985",
+     "count": 1,
+     "why": "a hunting bow"
+    },
+    {
+     "item": "Skyrim.esm:01397D",
+     "count": 20,
+     "why": "twenty iron arrows"
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 3,
+     "why": "three potions of minor healing"
+    }
+   ],
+   "why": "the kit in the barge's hold where the player wakes (main plot, quest 1, ruled by the owner): nobody's, so a level-1 newcomer leaves the hold armed for the crocodiles in the reed beds",
    "cites": [
-    "place_wealth:outpost-m13-m65"
+    "place_wealth:outpost-m13-m65",
+    "story/design/quests/lines/main-plot.md"
    ]
   },
   {
@@ -79,20 +125,21 @@
    "lock": "Novice",
    "security": "S2",
    "tier": "T2",
-   "gold": 27,
+   "gold": 100,
    "items": [
     {
-     "item": "Skyrim.esm:03B97C",
+     "item": "Skyrim.esm:01397E",
      "count": 1,
-     "why": "modest savings in a ring"
+     "why": "an iron dagger (main plot, quest 1's side quest)"
     }
    ],
-   "why": "the gang-master's strongbox in the hut (place give 5, treasure; hook: 'a strongbox with the easiest of locks in the hut, and its key hangs on his belt'), the camp household's store: the household store of Aulus Petrenius (W3 Modest, head of 2): gold 27 of 15-50 by household size; best tier T2; Novice (a chest, unlocked or Novice)",
+   "why": "the gang-master's strongbox in the hut (place give 5, treasure; main plot quest 1's side quest pays 100 gold and an iron dagger here; Vosh-Leera's Ring and the two scrolls are the story's to add)",
    "cites": [
-    "place_wealth:outpost-m13-m65",
     "person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC",
     "place_give:outpost-m13-m65/5",
-    "place_note:outpost-m13-m65/hooks"
+    "place_note:outpost-m13-m65/hooks",
+    "place_wealth:outpost-m13-m65",
+    "story/design/quests/lines/main-plot.md"
    ]
   }
  ],
