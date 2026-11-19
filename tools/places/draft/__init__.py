@@ -3,7 +3,7 @@ first draft. A place that holds the owner's finalised studio saves is never draf
 `--force "<why no narrow stage can be correct>"`.
 `draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that
 stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, pieces, seating, clearance,
-streets (also `join`), people, lights, stations, jail, primitives, hang, add, names. A whole draft places its
+streets (also `join`), people, lights, stations, jail, primitives, hang, sap, add, names. A whole draft places its
 things in rooms (`add`) and names its rooms (`names`), then ends with `primitives`, the join and then `jail` (the
 jail's release point is the arrival the join lays).
 `draft check <place_id>` runs the draft's self-checks; `draft render <place_id>` writes top-down PNGs."""

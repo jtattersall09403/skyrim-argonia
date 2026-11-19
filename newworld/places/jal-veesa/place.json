@@ -19,13 +19,15 @@
     "base": "King of the Murkmire.esp:3D870E",
     "kind": "activator",
     "pos": [
-     -51280.0,
-     -502800.0
+     -50617.59,
+     -502887.61
     ],
-    "scale": 1.5,
+    "rot_z": 0.32933,
+    "scale": 3.77,
+    "dz": 3.0,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the Hist's egg-pool at its foot (main story, The Dry Tree: 'its pool cooling'): King of the Murkmire's own Hist water (WaterPuddleHist) on the ground at the trunk's west foot, by the street; a stand-in until the world's ground holds a real pool there, which moves the waterline and is the owner's call"
+    "why": "the Hist's sap pool at its roots (main story, The Dry Tree: 'its pool cooling'; Lore:Hatching_Pools): King of the Murkmire's WaterPuddleHist, a placed water of its Hist sap, centred on the trunk and sized to the tree as the sap stage sizes every Hist's pool"
    },
    {
     "base": "King of the Murkmire.esp:165612",
@@ -456,5 +458,8 @@
   },
   "beds": 29
  },
- "draft_key": "a04c5806814a6d0c"
+ "draft_key": "a04c5806814a6d0c",
+ "sap": {
+  "added": []
+ }
 }

@@ -247,6 +247,13 @@ The tools lay the network by these rules.
 - **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, or a Hist the story
   needs placed by hand (`draft.add`), else the tools add a young Hist in the town's middle, clear of buildings and
   streets (`stations` `shrine`); the Hist itself carries it, never its roots or its pool. Look at it in the render.
+- **Every living Hist stands in a pool of its own sap** (Lore:Hatching_Pools): King of the Murkmire's
+  `WaterPuddleHist`, a placed water of its amber Hist sap (`DefaultHistSapWater`), never the cell's water. The
+  `sap` stage centres one on each living Hist's trunk (a dead Hist's pool is dry), sizes it to the tree, seats it on
+  the lowest ground or water under it and lowers the ground inside it to that height (its own land rows, `by`
+  "sap"), so the sap lies in a hollow on any slope and the waterline never moves. A pool placed by hand on the
+  trunk is kept in its stead. `draft check` fails a living Hist with no pool on its trunk. The studio draws it in
+  its sap's colour; search "hist sap" finds it.
 - **The sentence follows the place's law** (`place_law` in the database, the one source of the fact;
   `docs/design/law.md`). A place where no one keeps law has no sentence and its guards speak no arrest lines.
   A foreign law jails: the jail is the copied room holding the jail kit (bars, jail walls, jail doors), never a
@@ -355,6 +362,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `jail` | the place's law, the jail room, its door or its arrival, the landing or the streets changed | the jail's or the Owing's prison markers, bedroll and chests; `place.json`'s crime row `law`, `law_why`, `jail` and `owing` |
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
 | `hang` | trees under a place's Hist moved, turned or were swapped; lanterns are owed to a drafted place | the place's rope lanterns on its Hist and the trees round it; `place.json` `hang` |
+| `sap` | a Hist was added, moved, swapped or died | each living Hist's sap pool and its hollow; `place.json` `sap`; `land.jsonl` rows `by` "sap" |
 | `add` | `draft.add` changed: a thing placed by hand, outside or in a room | the rows `draft.add` mints |
 | `names` | who lives or works in a room changed, a promise moved, `draft.room_names` changed | each room's `name` in its `space.json` |
 

@@ -671,5 +671,13 @@
   },
   "beds": 0
  },
- "draft_key": "b33686fb48c72e30"
+ "draft_key": "b33686fb48c72e30",
+ "sap": {
+  "added": [
+   {
+    "id": "outpost-m6-m66.sap.S60W22PPW4P7EYP4N7K13VYA9J",
+    "on": "S60W22PPW4P7EYP4N7K13VYA9J"
+   }
+  ]
+ }
 }

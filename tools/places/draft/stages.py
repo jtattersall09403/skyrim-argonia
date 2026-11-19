@@ -58,7 +58,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "primitives": {"spaces/exterior/refs.jsonl": ({"primitive", "pos", "rot", "seat", "cluster"}, True), "spaces/*/refs.jsonl": (ANY, True),
                    "ledger.jsonl": (ANY, True)},
     "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
-    "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False)},
+    "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False), "land.jsonl": (ANY, True)},
     "add": {"spaces/*/refs.jsonl": (ANY, True)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
 }

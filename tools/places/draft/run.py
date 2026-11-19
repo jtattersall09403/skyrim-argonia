@@ -789,6 +789,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     our.extend(pools)
     bases.update({k: sb[k] for k in (sap.POOL,) if k in sb})
     seat_all(our, G)
+    hollow = sap.dish(G, our, bases, {tuple(r["cell"]) for r in land})   # each pool in its hollow
+    land += hollow
+    G.apply_patches(hollow)
+    seat_all(our, G)
 
     # --- write ---
     io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", our)
