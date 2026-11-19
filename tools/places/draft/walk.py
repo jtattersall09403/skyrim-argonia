@@ -629,6 +629,8 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
     n = max(1, math.ceil(run / length))
     yaw = (math.atan2(b[0] - a[0], b[1] - a[1]) + turn) % (2 * math.pi)
     line = f"{a[0]:.0f},{a[1]:.0f},{b[0]:.0f},{b[1]:.0f}"     # each line its own ids: a later round's join is new
+    if through(a, b, near, bases, carrier):
+        return []   # a wall or a house stands across the line at walking height: the mesh would be cut there
     out = []
     for j in range(n):
         t = (j + 0.5) / n if run > length else 0.5
@@ -647,6 +649,23 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
             cand["seat"]["on"] = ways[0]["id"]  # it rests on the walkway it continues
         out.append(cand)
     return out
+
+
+JOIN_BODY = 48.0   # units over a join's deck at which the line is tested against what stands across it (a walker's waist)
+
+
+def through(a, b, near: list[dict], bases: dict, carrier: str | None = None) -> bool:
+    """Whether a level join's line from a to b passes through a solid that is no walkway (a keep's wall, a house) at
+    walking height: tested every 16 units, JOIN_BODY over the line's deck, by the build's own inside test."""
+    from tools.places.draft import geom
+    solid = [o for o in near if o.get("id") != carrier and not paths_mod.walked(bases.get(o["base"]))]
+    run = math.dist(a[:2], b[:2])
+    for k in range(int(run // 16) + 1):
+        t = k * 16 / run if run else 0.0
+        q = (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t + JOIN_BODY)
+        if any(math.dist(o["pos"][:2], q[:2]) < 2048 and geom.stands_in(o, bases, q) for o in solid):
+            return True
+    return False
 
 
 def cut(place_id: str, door_ids: list[str], rows: list[dict], pdir: Path, log=print) -> int:
@@ -1372,16 +1391,7 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
                 if fl is None:
                     continue
                 pos, rot, seat = hang(fl, d, dz, a, o)
-                landed = buried = None
-                for u, z in zip(fl["us"], fl["zs"]):
-                    run = abs(u - fl["top"])
-                    x, y = a[0] + o[0] * run, a[1] + o[1] * run
-                    g, tz = G.height(x, y), pos[2] + z
-                    if g is None or g > tz + 8:
-                        break      # the ground stands over a tread: the flight would run into a bank
-                    if tz - g <= TREAD_MEET:
-                        landed, buried = (x, y, g), abs(fl["foot"] - u)
-                        break
+                landed, buried = landing(fl, pos[2], a, o, G)
                 if landed is None or not lands(Wd, landed):
                     continue       # it comes down in water too deep to wade, or on ground the town does not reach
                 row = {"id": io.mint(place_id, "steps", d["id"], str(e)), "base": sbase, "kind": "building",
@@ -1396,6 +1406,21 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
         cand = onto(place_id, key, c, Wd, rows, bases, sbases, G, want)
     cand.sort(key=lambda t: t[:3])
     return [t[3] for t in (cand if every else cand[:1])]
+
+
+def landing(fl: dict, z0: float, a, o, G) -> tuple:
+    """Where a flight hung at height z0 from edge point a, running along o, meets our ground: ((x, y, ground), the run
+    the ground buries), or (None, None) when the ground stands over a tread before that (it would run into a bank) or
+    its top tread is already on the ground (the deck meets the ground there: no flight's work)."""
+    for i, (u, z) in enumerate(zip(fl["us"], fl["zs"])):
+        run = abs(u - fl["top"])
+        x, y = a[0] + o[0] * run, a[1] + o[1] * run
+        g, tz = G.height(x, y), z0 + z
+        if g is None or g > tz + 8:
+            break
+        if tz - g <= TREAD_MEET:
+            return ((x, y, g), abs(fl["foot"] - u)) if i else (None, None)
+    return None, None
 
 
 FOOT_DEPTH = 32.0   # the deepest water a flight's foot may come down in: check.WADE (64) less the mesh's own fall

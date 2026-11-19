@@ -84,6 +84,25 @@ def test_a_wall_with_a_stair_in_it_is_no_flight():
     assert walk.flight(wall) is None
 
 
+def test_a_join_is_never_laid_through_a_wall():
+    wall = {"key": "K:wall", "model": "keep/exterior/walls/mwimparchlrgwall02.nif", "kind": "building",
+            "bounds": [[-128, -28, -256], [131, 27, 274]]}
+    bases = {"K:wall": wall, "K:dock": DOCK}
+    w = {"id": "w", "base": "K:wall", "kind": "building", "pos": [200.0, 0.0, 800.0], "rot": [0.0, 0.0, 0.0]}
+    assert walk.through((200.0, -200.0, 830.0), (200.0, 200.0, 830.0), [w], bases)        # across it
+    assert not walk.through((0.0, -200.0, 830.0), (0.0, 200.0, 830.0), [w], bases)        # beside it
+    assert walk.lay("p", "d", [200.0, -200.0, 830.0], [200.0, 200.0, 830.0], "K:dock", [w], bases, None) == []
+
+
+def test_a_flight_whose_top_tread_is_already_on_the_ground_is_not_hung():
+    fl = {"top": 0.0, "foot": 400.0, "us": [0.0, 200.0, 400.0], "zs": [500.0, 250.0, 0.0]}
+    flat = Slope()                                       # ground at 0 everywhere
+    got, buried = walk.landing(fl, -500.0, (0.0, 0.0), (1.0, 0.0), flat)   # top tread at 0: the deck is on the ground
+    assert got is None and buried is None
+    got, buried = walk.landing(fl, 0.0, (0.0, 0.0), (1.0, 0.0), flat)      # top at 500: it comes down to its foot
+    assert got == (400.0, 0.0, 0.0) and buried == 0.0
+
+
 def test_a_thing_on_a_slope_or_over_water_has_no_ground_under_it():
     row = {"id": "a", "base": "S:tent", "kind": "building", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0],
            "seat": {"mode": "ground", "dz": 0.0, "foot": [-200, -290, 200, 290]}}
