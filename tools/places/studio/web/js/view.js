@@ -22,10 +22,23 @@ function sharedRenderer(host) {
   };
   new ResizeObserver(fit).observe(host); shared.fit = fit;
   // a tablet may take the graphics context away (memory pressure, a long sleep): draw everything again when it returns
-  c.addEventListener('webglcontextlost', (e) => { e.preventDefault(); shared.lost = true; });
-  c.addEventListener('webglcontextrestored', () => { shared.lost = false; for (const v of shared.views) { for (const o of v.objects || []) o.dirty?.(); v.redraw(); } });
+  c.addEventListener('webglcontextlost', (e) => { e.preventDefault(); shared.lost = true; shared.onEvent?.('context-lost', {}); });
+  c.addEventListener('webglcontextrestored', () => { shared.lost = false; shared.onEvent?.('context-restored', {}); for (const v of shared.views) { for (const o of v.objects || []) o.dirty?.(); v.redraw(); } });
   shared.renderer = r; shared.canvas = c; fit();
   return r;
+}
+
+// What the views drew, for the client log: a blank view after a load says here whether the context was lost, the
+// canvas has no size, the view drew nothing, or something lies over it.
+export function onRendererEvent(fn) { shared.onEvent = fn; }
+export function drawState() {
+  const r = shared.renderer, c = shared.canvas, gl = r?.getContext();
+  return { lost: !!shared.lost || !!gl?.isContextLost?.(), glError: gl ? gl.getError() : null,
+    canvas: c ? [c.width, c.height, c.clientWidth, c.clientHeight] : null,
+    calls: r?.info.render.calls ?? null, triangles: r?.info.render.triangles ?? null, textures: r?.info.memory.textures ?? null,
+    views: shared.views.map((v) => { const b = v.el.getBoundingClientRect(), top = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
+      return { name: v.name, hidden: !!v.hidden?.(), rect: [Math.round(b.width), Math.round(b.height)], objects: (v.objects || []).length,
+        over: top ? `${top.tagName.toLowerCase()}${top.id ? '#' + top.id : ''}${typeof top.className === 'string' && top.className ? '.' + top.className.split(' ')[0] : ''}` : null }; }) };
 }
 
 export class View {
