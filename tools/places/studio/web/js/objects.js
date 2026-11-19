@@ -75,10 +75,12 @@ const loaderFor = (kind) => new GLTFLoader().register((parser) => new QuietTextu
 // thing's kind from the land's palette), cut-out alpha for leaves and lily pads (blending does not sort inside
 // an instanced mesh, and draws a blended pad's empty rim as a pale ring), both faces where the model wants them.
 const matCache = new Map();
-export function plainMaterial(m, kind) {
+// A placed water (a puddle, King of the Murkmire's Hist sap) is drawn in its water's colour (`tint`, the catalogue's
+// water.shallow), as the game shades its surface.
+export function plainMaterial(m, kind, tint = null) {
   const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
   const cut = m.alphaTest > 0 || m.transparent;
-  const colour = map ? m.color.getHexString() : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
+  const colour = map ? m.color.getHexString() : tint ? tint.map((v) => v.toString(16).padStart(2, '0')).join('') : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
   const key = `${map?.uuid || '-'}|${colour}|${cut}|${m.side}|${m.vertexColors}`;
   if (!matCache.has(key)) {
     matCache.set(key, new THREE.MeshLambertMaterial({ map, color: `#${colour}`, side: m.side, vertexColors: m.vertexColors,
@@ -97,8 +99,8 @@ function pump() {
   }
 }
 const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
-export function loadModel(model, pri = 0, level = 0, kind = 'other') {
-  const key = `${model}|${level}`;
+export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null) {
+  const key = `${model}|${level}|${tint || ''}`;
   if (!meshCache.has(key)) {
     meshCache.set(key, new Promise((resolve) => {
       queue.push({ pri, run: async () => {
@@ -115,7 +117,7 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other') {
             for (let q = o; q; q = q.parent) if (/^editormarker/i.test(q.name || '')) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
-            parts.push({ geometry: g, material: plainMaterial(o.material, kind) });
+            parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
           });
           resolve(parts);
         } catch (e) { console.info(`studio: ${e.message}`); resolve(null); }
@@ -326,7 +328,7 @@ class Group {
     if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
-      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind).then((parts) => {
+      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null).then((parts) => {
         if (!parts || !parts.length) return;
         ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
         this.layer.onDirty();   // a view at rest draws again, so a model that arrives is switched on without waiting for a touch

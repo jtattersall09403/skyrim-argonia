@@ -101,6 +101,8 @@ def descriptor(b: dict, source_name: str) -> str:
     model = (b.get("model") or "").rsplit(".", 1)[0]
     parts = [b.get("name") or "", " ".join(words(b.get("edid"))), TYPE_WORDS.get(b["type"], b["type"]),
              "model " + " ".join(words(model.replace("/", " "))), f"from {source_name}", size_words(b.get("bounds"))]
+    if b.get("water"):      # a placed water: a pool of its water's kind (Hist sap, a puddle)
+        parts.append("placed water, a pool of " + " ".join(w for w in words(b["water"].get("edid")) if w != "default"))
     if b.get("nordic"):
         parts.append("Nordic (Skyrim) style")
     return ". ".join(p for p in parts if p)

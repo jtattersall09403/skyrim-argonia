@@ -66,6 +66,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     from tools.places.draft import hang
     if any(r.get("base") in hang.LANTERNS for r in refs):   # each hanging lantern on a limb of the tree it hangs from
         bad += hang.faults(refs, bases, *hang.measurers(bases))
+    from tools.places.draft import sap
+    bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
     for r in ledger:
         if r["status"] not in ("placed", "adapted", "replaced", "dropped"):
             bad.append(f"ledger {r['src']}: unknown status {r['status']}")

@@ -85,6 +85,11 @@ foreach (var m in mods)
                 if (!rows.ContainsKey(key)) order.Add(key);
                 rows[key] = new() { ["key"] = key, ["edid"] = r.EditorID, ["type"] = code, ["name"] = name, ["model"] = model,
                                     ["bounds"] = bounds, ["plugin"] = m.ModKey.FileName.String, ["keywords"] = kw };
+                // a placed water (an activator with a water type, as Skyrim's puddles and King of the Murkmire's Hist
+                // sap): its water's colours, so the studio draws the surface the colour the game shades it
+                if (r is IActivatorGetter act && !act.WaterType.IsNull && cache.TryResolve<IWaterGetter>(act.WaterType.FormKey, out var wt))
+                    rows[key]["water"] = new { edid = wt.EditorID, shallow = new int[] { wt.ShallowColor.R, wt.ShallowColor.G, wt.ShallowColor.B },
+                                               deep = new int[] { wt.DeepColor.R, wt.DeepColor.G, wt.DeepColor.B } };
                 // an item form's value and enchantment (the record's own, as the stocking extractor reads it), so its
                 // tier on the stocking scale is right before stockdb measures it
                 (long? value, FormKey ench) = r switch

@@ -784,6 +784,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     hung, hb = hang.rows_for(place_id, our, bases, G)      # rope lanterns on the Hist and the trees round it
     our.extend(hung)
     bases.update({k: hb[k] for k in hang.LANTERNS if k in hb})
+    from tools.places.draft import sap
+    pools, sb = sap.rows_for(place_id, our, bases)       # a sap pool at the roots of each living Hist
+    our.extend(pools)
+    bases.update({k: sb[k] for k in (sap.POOL,) if k in sb})
     seat_all(our, G)
 
     # --- write ---
@@ -836,6 +840,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "stations": stations,
         "lights": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in lit]},
         "hang": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in hung]},
+        "sap": {"added": [{"id": r["id"], "on": r["id"].split(".sap.", 1)[1]} for r in pools]},
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,

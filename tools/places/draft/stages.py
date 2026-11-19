@@ -23,6 +23,7 @@ owns changes nothing and fails.
              (tools/places/draft/primitives.py)
   hang       rope lanterns on the place's Hist and the trees round it, each on a hang point of its tree's own limbs
              (tools/places/draft/hang.py)
+  sap        a pool of Hist sap at the roots of each living Hist (tools/places/draft/sap.py)
   add        the things the agent adds by hand (`draft.add`), outside or in a room (tools/places/draft/adds.py)
   names      each room's name, the one its door and the room show, from what the place data holds
              (tools/places/draft/names.py)
@@ -57,6 +58,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "primitives": {"spaces/exterior/refs.jsonl": ({"primitive", "pos", "rot", "seat", "cluster"}, True), "spaces/*/refs.jsonl": (ANY, True),
                    "ledger.jsonl": (ANY, True)},
     "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
+    "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False)},
     "add": {"spaces/*/refs.jsonl": (ANY, True)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
 }
@@ -447,6 +449,11 @@ def hang_stage(st: Standing, log=print) -> None:
     hang.apply(st, log)
 
 
+def sap_stage(st: Standing, log=print) -> None:
+    from tools.places.draft import sap
+    sap.apply(st, log)
+
+
 def add_stage(st: Standing, log=print) -> None:
     from tools.places.draft import adds
     adds.apply(st, log)
@@ -459,7 +466,7 @@ def names_stage(st: Standing, log=print) -> None:
 
 RUN = {"fit": fit, "pieces": pieces, "seating": seating_stage, "clearance": clearance, "people": people_stage,
        "lights": lights_stage, "stations": stations, "jail": jail_stage, "primitives": primitives_stage,
-       "hang": hang_stage, "add": add_stage, "names": names_stage}
+       "hang": hang_stage, "sap": sap_stage, "add": add_stage, "names": names_stage}
 
 
 # --- the run: snapshot, stage, proof of ownership, counts ---
