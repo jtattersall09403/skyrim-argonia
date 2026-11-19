@@ -3,7 +3,36 @@
  "about": "Teel-Fen Weir's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m6-m66/people.jsonl under the same ids. The camp has no roof of its own: Heem-Jasa and the two wardens on watch sleep in its open beds as one household. The three Unbound sap-takers whom quest 3 places at the reed hide are the quest's to place: the draft holds no hostile people to cast them on.",
  "guard_body": "levy",
  "households": [
-  {"id": "outpost-m6-m66.household.exterior", "home_space": "exterior", "name": null}
+  {
+   "id": "outpost-m6-m66.household.exterior",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m6-m66.household.exterior-b",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m6-m66.household.exterior-c",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m6-m66.household.exterior-d",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m6-m66.household.exterior-e",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m6-m66.household.exterior-f",
+   "home_space": "exterior",
+   "name": null
+  }
  ],
  "people": [
   {
@@ -12,7 +41,10 @@
    "sex": "female",
    "race": "ArgonianRace",
    "culture_id": "jade",
-   "household": {"id": "outpost-m6-m66.household.exterior", "role": "head"},
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-f",
+    "role": "head"
+   },
    "role": "apothecary",
    "trade": "minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy",
    "wealth": "W2",
@@ -21,7 +53,18 @@
    "tier": "AGENT_INVENTED",
    "cast": "npc.mn.heem-jasa",
    "notes": [
-    {"aspect": "backstory", "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste.", "tier": "AGENT_INVENTED", "cites": ["place_give:outpost-m6-m66/3", "place_give:outpost-m6-m66/4", "place_note:outpost-m6-m66/faith", "place_note:outpost-m6-m66/present", "newworld/story/quests/main/mn03.yaml"]}
+    {
+     "aspect": "backstory",
+     "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/3",
+      "place_give:outpost-m6-m66/4",
+      "place_note:outpost-m6-m66/faith",
+      "place_note:outpost-m6-m66/present",
+      "newworld/story/quests/main/mn03.yaml"
+     ]
+    }
    ],
    "relations": []
   },
@@ -31,7 +74,10 @@
    "sex": "male",
    "race": "ArgonianRace",
    "culture_id": "jade",
-   "household": {"id": "outpost-m6-m66.household.exterior", "role": "levy"},
+   "household": {
+    "id": "outpost-m6-m66.household.exterior",
+    "role": "head"
+   },
    "role": "guard",
    "trade": "weir-warden of the levy, night watch; leads the wardens on watch",
    "wealth": "W2",
@@ -39,9 +85,152 @@
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "He keeps the night watch on the traps for the Sedge-Wardens of Jal-Veesa. He counts every stranger who passes the reed hide to the west and trusts none of them.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m6-m66/history", "place_note:outpost-m6-m66/dangers"]}
+    {
+     "aspect": "backstory",
+     "text": "He watches the traps by night for the Sedge-Wardens of Jal-Veesa and counts every stranger who passes the reed hide to the west. His father Nur-meen sits up with him when the night is long.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/people",
+      "place_note:outpost-m6-m66/dangers",
+      "place_note:outpost-m6-m66/hooks"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.VREVK87KQA2P5486YZS3H14XTF",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.EBDDFN4Y2J5PJ33DXYZ0SSRXHC",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.EBDDFN4Y2J5PJ33DXYZ0SSRXHC",
+   "name": "Tee-nassa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "drying-rack keeper and fish smoker",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She cleans and hangs the day's eels and carp on the drying rack and turns them until they are dark. Her husband Hulzeeth sleeps through her working hours.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/1",
+      "place_note:outpost-m6-m66/economy"
+     ]
+    }
    ],
    "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH",
+   "name": "Tsa-tah",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "eel-trapper at the weir",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He sets and lifts the eel traps along the weir, standing on the log boom with his feet wide. He learned the work from his father Hulzeeth and has yet to be bitten by a crocodile.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_note:outpost-m6-m66/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.VREVK87KQA2P5486YZS3H14XTF",
+   "name": "Dee-ja",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "fetcher and carrier of the catch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She carries the catch in a basket from the traps to the rack, and counts the fish for her mother in a sing-song. She follows the wardens as they walk the platform.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_note:outpost-m6-m66/present"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.GXG2EAKBAX66M2WV0TT5XSEM59",
+   "name": "Nur-meen",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "weir-mender, the light work of an old trade",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He ties new withies into the woven weir where the creek has torn them, working slowly and sitting for it. He remembers the weir before the young Hist rose beside it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/history",
+      "place_note:outpost-m6-m66/overview"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD",
+     "kind": "parent-of"
+    }
+   ]
   },
   {
    "id": "outpost-m6-m66.VH5KST5J9YZKCX5FDTFKQCG8CS",
@@ -49,15 +238,543 @@
    "sex": "female",
    "race": "ArgonianRace",
    "culture_id": "jade",
-   "household": {"id": "outpost-m6-m66.household.exterior", "role": "levy"},
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-b",
+    "role": "head"
+   },
    "role": "guard",
-   "trade": "weir-warden of the levy, day watch",
+   "trade": "weir-warden of the levy, day watch; works the eel traps and loads the catch",
    "wealth": "W2",
    "level": null,
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "She works the eel traps by day and loads the catch for Urvyn Farm. She keeps the crocodiles off the log boom with a pole and a loud voice.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m6-m66/economy", "place_note:outpost-m6-m66/dangers", "place_give:outpost-m6-m66/0"]}
+    {
+     "aspect": "backstory",
+     "text": "She works the eel traps by day and loads the catch for Urvyn Farm. She keeps the crocodiles off the log boom with a pole and a loud voice.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/economy",
+      "place_note:outpost-m6-m66/dangers"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.47JVNVCPY6SWZN0H8AREJDYYD1",
+     "kind": "partner-of"
+    },
+    {
+     "to": "outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.548KFPSQP2Z8XHTPFJBZG6WFY6",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.47JVNVCPY6SWZN0H8AREJDYYD1",
+   "name": "Sei-jeem",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-b",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "tanner at the tanning rack on the platform",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He scrapes and cures hides on the tanning rack and has made the tent covers for half the platform. He keeps his scrapers in a bundle by the rack.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/2",
+      "place_note:outpost-m6-m66/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82",
+   "name": "Paa-shei",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-b",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "cook at the pot by the drying rack",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She cooks the day's eels and gar in the pot by the drying rack for everyone on the platform. She puts the heads aside for the young Hist's pool.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/1",
+      "place_note:outpost-m6-m66/faith"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.548KFPSQP2Z8XHTPFJBZG6WFY6",
+   "name": "Jaa-tul",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-b",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "boy who minds the landing",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He sits at the landing and watches for the cart from Urvyn Farm. He throws stones at the water to see how far the crocodiles are.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/economy",
+      "place_note:outpost-m6-m66/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.5MTMSA4S8NP7CBHD3C796WFR05",
+   "name": "Bee-xeeh",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-c",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "warden of the log boom",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He keeps the log boom across the creek sound and is first to see when the crocodiles gather under it. His wife Okee-ja and their children work beside him.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/dangers",
+      "place_note:outpost-m6-m66/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.EGTW6C9VP0GA9YXC3YM6TQT0BV",
+     "kind": "partner-of"
+    },
+    {
+     "to": "outpost-m6-m66.7WKDCQ45TBF9PGQSBEC9BBP24X",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.GQ4J6W7DDP5MQTYK84F16HST59",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.EGTW6C9VP0GA9YXC3YM6TQT0BV",
+   "name": "Okee-ja",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-c",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "net-mender and eel-trap weaver",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She weaves the eel traps from split withies and mends the nets on the platform's edge. She sings the same long song each time she starts a new trap.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_note:outpost-m6-m66/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.7WKDCQ45TBF9PGQSBEC9BBP24X",
+   "name": "Tsa-wulm",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-c",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "trap-lifter and carrier of the catch to the cart",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He carries the baskets from the landing to the cart for Urvyn Farm. He is the strongest of the platform's young hands, and he watches the reed hide to the west each evening.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/economy",
+      "place_note:outpost-m6-m66/hooks"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.GQ4J6W7DDP5MQTYK84F16HST59",
+   "name": "Jaa-ja",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-c",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "gatherer of swamp fungus for the minder",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She gathers swamp fungus on the bank for Heem-Jasa and gets an eggshell for each basket. She has seen the grey paste on the young tree's scar and does not go near it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/3",
+      "place_note:outpost-m6-m66/hooks"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.K67RVNX676RFCNCAMCKRWP8P90",
+   "name": "Mee-teel",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-d",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "gar fisher and keeper of the weir's traps",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He fishes gar from the shallows above the weir with a long spear, and his traps are the best placed on the creek. His family lift his traps; hired hands do not.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_note:outpost-m6-m66/economy"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.NJNQSK9J5PCHWSYGDREGB1GYC7",
+     "kind": "partner-of"
+    },
+    {
+     "to": "outpost-m6-m66.8A42CVVJX24H9JVGKY48Y35XJX",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.2SXHNCG0MS9RTB61F760S5PBMQ",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.NJNQSK9J5PCHWSYGDREGB1GYC7",
+   "name": "Nur-shei",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-d",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "tanner of eel-skin and scraper of hides",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She scrapes the eel skins on the platform and works them soft. Her husband Mee-teel wears a belt of them.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/2",
+      "place_note:outpost-m6-m66/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.8A42CVVJX24H9JVGKY48Y35XJX",
+   "name": "Naa-sakka",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-d",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "eel-trapper at the weir",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He lifts his father's traps at dawn when the mist lies on the water. He is learning to read the creek for gar.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_note:outpost-m6-m66/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.2SXHNCG0MS9RTB61F760S5PBMQ",
+   "name": "Vee-tah",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-d",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "apprentice to the tree's minder",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She carries water to the young Hist's pool and watches Heem-Jasa work the sap. She asks the minder questions and is not always answered.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/faith",
+      "place_give:outpost-m6-m66/3"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.8XQXYG67X3QJWW6W1F4JG5C8Z8",
+   "name": "Vee-daro",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-e",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "weir-warden and builder of the weir's walkways",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He lays and relays the log walk across the weir, trimming each log to fit. He gives the first catch of the day to the young Hist before any is sold.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/faith",
+      "place_note:outpost-m6-m66/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.AXXQN8RHFQ0CJZSZHMGDJSJX4K",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.VH71DPQSJADA7E6CGX71TCGY2G",
+   "name": "Paa-ruuk",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-e",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "teller of the weirs' old tales",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He sits on the platform and tells the children how the weirs were set before the Dunmer came. He says the young Hist is the third he has seen grow.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/history",
+      "place_note:outpost-m6-m66/faith"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m6-m66.8XQXYG67X3QJWW6W1F4JG5C8Z8",
+     "kind": "parent-of"
+    },
+    {
+     "to": "outpost-m6-m66.AXXQN8RHFQ0CJZSZHMGDJSJX4K",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m6-m66.AXXQN8RHFQ0CJZSZHMGDJSJX4K",
+   "name": "Heeta-meen",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-e",
+    "role": "sibling"
+   },
+   "role": "resident",
+   "trade": "eel-trapper and mender of the log boom",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He mends the log boom where the crocodiles have worked it loose and checks the traps on the far bank. He and his brother Vee-daro are never both on the water at once.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/dangers",
+      "place_note:outpost-m6-m66/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.V82WCNEJB2JGDV5EC2QP2BTGT0",
+   "name": "Bee-daro",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-e",
+    "role": "cousin"
+   },
+   "role": "resident",
+   "trade": "carrier of the catch and hide-fetcher",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He came from Jal-Veesa for the eel season and has stayed on carrying the catch. He argues with the cart-men about the road to the town.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m6-m66/economy",
+      "place_note:outpost-m6-m66/overview"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m6-m66.VCV7D6BCNZGTVQ0FFT3KAZE9SP",
+   "name": "Sei-sakka",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m6-m66.household.exterior-e",
+    "role": "kin"
+   },
+   "role": "resident",
+   "trade": "gar fisher and drier of fish",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He fishes the pool below the weir with a hook and dries what he catches on the rack. He shares the family's tent as Vee-daro's kin.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m6-m66/0",
+      "place_give:outpost-m6-m66/1"
+     ]
+    }
    ],
    "relations": []
   }

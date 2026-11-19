@@ -20,7 +20,7 @@
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "She runs the eel and gar traps by day on her family's turn at the weir and carries the catch to Jal-Veesa's market. She has begun counting the traps each dusk, since someone empties them at night.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/people", "place_note:outpost-m11-m63/economy", "place_note:outpost-m11-m63/hooks"]}
+    {"aspect": "backstory", "text": "She runs the eel and gar traps by day on her family's turn at the weir and carries the catch to Jal-Veesa's market. She has begun counting the traps each dusk, since they have been found empty at dawn.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/people", "place_note:outpost-m11-m63/economy", "place_note:outpost-m11-m63/hooks"]}
    ],
    "relations": []
   },
@@ -38,7 +38,7 @@
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "He keeps the night watch on the log walk and throws the offal in below the weir at dawn. He gives the first catch to the Hist-shoot post at the landing before he will eat.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/faith", "place_note:outpost-m11-m63/dangers"]}
+    {"aspect": "backstory", "text": "He stands the night on the log walk and throws the offal in below the weir at dawn. He leaves the first fish of the dawn at the Hist-shoot post's landing and eats afterwards.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/faith", "place_note:outpost-m11-m63/dangers"]}
    ],
    "relations": []
   }

@@ -1,19 +1,82 @@
 {
  "place_id": "outpost-m13-m65",
- "about": "Ashgate Landing's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m13-m65/people.jsonl under the same ids. Dralin Uveran and Hara-Jeel, whom quest 1 places here, are the quest's to place: the draft has no Dunmer gang-master nor a second cutter in the hold to cast them on.",
+ "about": "Ashgate Landing's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m13-m65/people.jsonl under the same ids. The camp has no guard: a Dunmer gang-master and his Owing cutters keep it. Hara-Jeel, whom quest 1 places in the barge's hold, is the quest's to place: the draft has no row to cast her on.",
  "guard_body": "guard",
  "households": [
-  {"id": "outpost-m13-m65.household.exterior", "home_space": "exterior", "name": null},
-  {"id": "outpost-m13-m65.household.01dock3to4", "home_space": "01dock3to4", "name": null}
+  {
+   "id": "outpost-m13-m65.household.exterior",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.tent-a",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.tent-b",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.tent-c",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.tent-d",
+   "home_space": "exterior",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.01dock3to4",
+   "home_space": "01dock3to4",
+   "name": null
+  }
  ],
  "people": [
+  {
+   "id": "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA",
+   "name": "Dralin Uveran",
+   "sex": "male",
+   "race": "DarkElfRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.exterior",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "gang-master of the reed gang; keeps the hut and its strongbox",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "cast": "npc.mn.dralin-uveran",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He is a Dunmer who cuts no reed and lives in the old post's stone hut with the strongbox key on his belt. He runs the gang's days and takes each new gang's names onto his roll.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/people",
+      "place_note:outpost-m13-m65/hooks",
+      "place_note:outpost-m13-m65/present",
+      "newworld/story/quests/main/mn01.yaml"
+     ]
+    }
+   ],
+   "relations": []
+  },
   {
    "id": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S",
    "name": "Okeeh",
    "sex": "female",
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
-   "household": {"id": "outpost-m13-m65.household.01dock3to4", "role": "head"},
+   "household": {
+    "id": "outpost-m13-m65.household.exterior",
+    "role": "lodger"
+   },
    "role": "merchant",
    "trade": "the gang's cook; keeps the cook's stall of dried fish and lamp oil",
    "wealth": "W2",
@@ -22,43 +85,444 @@
    "tier": "AGENT_INVENTED",
    "cast": "npc.mn.okeeh",
    "notes": [
-    {"aspect": "backstory", "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the hut. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.", "tier": "AGENT_INVENTED", "cites": ["place_give:outpost-m13-m65/0", "place_note:outpost-m13-m65/people", "place_note:outpost-m13-m65/present", "newworld/story/quests/main/mn01.yaml"]}
+    {
+     "aspect": "backstory",
+     "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the hut. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m13-m65/0",
+      "place_give:outpost-m13-m65/2",
+      "place_note:outpost-m13-m65/people",
+      "place_note:outpost-m13-m65/economy",
+      "newworld/story/quests/main/mn01.yaml"
+     ]
+    }
    ],
    "relations": []
   },
   {
-   "id": "outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC",
-   "name": "Aulus Petrenius",
+   "id": "outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF",
+   "name": "Ah-ja",
    "sex": "male",
-   "race": "ImperialRace",
+   "race": "ArgonianRace",
    "culture_id": "stone-grey",
-   "household": {"id": "outpost-m13-m65.household.exterior", "role": "head"},
-   "role": "guard",
-   "trade": "the gang-master's guard, day watch; leads the camp's two guards",
-   "wealth": "W3",
-   "level": null,
-   "status": "alive",
-   "tier": "AGENT_INVENTED",
-   "notes": [
-    {"aspect": "backstory", "text": "He is a sword the gang-master pays to keep the cutters at their months of the Owing. He served at the old road post before the toll moved to Slough Point and stayed when the reed gangs came.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m13-m65/history", "place_note:outpost-m13-m65/overview"]}
-   ],
-   "relations": []
-  },
-  {
-   "id": "outpost-m13-m65.WHM2H7QJJWKMZ93N3ZFEE967NE",
-   "name": "Calvia Durnas",
-   "sex": "female",
-   "race": "ImperialRace",
-   "culture_id": "stone-grey",
-   "household": {"id": "outpost-m13-m65.household.exterior", "role": "lodger"},
-   "role": "guard",
-   "trade": "the gang-master's guard, night watch",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-a",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "reed-cutter on the east bank",
    "wealth": "W2",
    "level": null,
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "She keeps the night watch over the barge and the tents, and walks the bank when the river runs high. She came up from the sea on a reed barge and never went back down.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m13-m65/look", "place_note:outpost-m13-m65/history"]}
+    {
+     "aspect": "backstory",
+     "text": "He is serving his months of the Owing and cuts the long reed along the east bank. He and his brother Chee-jeem came on the same barge and have worked side by side since.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/present",
+      "place_note:outpost-m13-m65/economy"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8",
+   "name": "Chee-jeem",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-a",
+    "role": "sibling"
+   },
+   "role": "resident",
+   "trade": "reed-bundler at the landing",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He binds the cut reed into bundles at the landing and counts the stack aloud as he ties each one. Ah-ja cuts what he binds.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/economy",
+      "place_note:outpost-m13-m65/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
+   "name": "Naa-neeus",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-a",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "sedge gatherer on the reed beds",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He gathers sedge on the reed beds between the cutters' turns and keeps a bag of dried fungus for the evening pot. He came to the gang alone and took the tent's free place.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m13-m65/3",
+      "place_note:outpost-m13-m65/present"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q",
+   "name": "Naa-wulm",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-b",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "reed-cutter, the gang's longest-serving",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He has worked more months than any other cutter at Ashgate, and newcomers ask him which bank to cut. He has been at Ashgate through two barges' coming and going.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/present",
+      "place_note:outpost-m13-m65/people"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.GKE6V3YB9K1ZXG5ZAXM3V45EGZ",
+   "name": "Okee-teel",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-b",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "reed-cutter on the west reach",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He cuts the west reach where the mudcrabs come up the bank and carries a long pole to move them on. He talks to his tent-mates about the river and the mudcrabs.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/dangers",
+      "place_note:outpost-m13-m65/present"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K",
+   "name": "Mee-shei",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-b",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "loader of the work barge",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He carries bundled reed from the landing stack down to the work barge and sleeps lightly, because the moored hull creaks at night. The barge leaves downriver full each month and comes back empty.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/economy",
+      "place_note:outpost-m13-m65/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.NJA6RREMP6W43HAYM7DGSH47Z7",
+   "name": "Kee-tul",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-b",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "fungus gatherer and sharpener of the cutters' knives",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He gathers swamp fungus on the reed beds for the cook's pot and hones the cutters' knives on a flat stone at dusk. He pays for a place at the cook's fire with the fungus.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m13-m65/3",
+      "place_give:outpost-m13-m65/2"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3",
+   "name": "Ra-tah",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-c",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "reed-cutter on the north reach",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He leads his tent's cutting on the north reach and is first to point out the young crocodile lying in the reeds. He and his sister Chee-mar serve their months together.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/dangers",
+      "place_note:outpost-m13-m65/present"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9",
+   "name": "Chee-mar",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-c",
+    "role": "sibling"
+   },
+   "role": "resident",
+   "trade": "reed-cutter, mender of the tent's hides",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She cuts beside Ra-tah and mends the tent's hides with sinew when the rain has loosened them. She leaves the first reed she cuts each month at the grave-stake by the gate.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/faith",
+      "place_note:outpost-m13-m65/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3",
+     "kind": "sibling-of"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+   "name": "Xil-neeus",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-c",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "reed-bundler at the landing",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He ties bundles at the landing across the stack from Chee-jeem and quarrels with him cheerfully about knots. He keeps the count of his days on a notched reed.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/economy",
+      "place_note:outpost-m13-m65/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X",
+   "name": "Ee-wulm",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-d",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "reed-cutter on the east bank",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He is the best hand with the cutting hook at Ashgate, and the others say the gang-master has never faulted his bundles. He tells visitors that the stone gate was once a road post's.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/history",
+      "place_note:outpost-m13-m65/present"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J",
+   "name": "Xil-lei",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-d",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "fire-tender at the cook's fire",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He keeps the cook's fire by the hut burning through the evening and carries lamp oil from Okeeh's stall to the tents. He sleeps through the barge's creak when his tent-mates do not.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m13-m65/2",
+      "place_note:outpost-m13-m65/economy"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E",
+   "name": "Lee-nassa",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-d",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "reed-cutter on the south reach",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He cuts the south reach, wading to the knee, and has learned where the mud is soft. He sings under his breath to keep the stroke.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m13-m65/present",
+      "place_note:outpost-m13-m65/look"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m13-m65.ZX9TNCDKABS2GNQ9CSJBRT7SYD",
+   "name": "Lee-meen",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "stone-grey",
+   "household": {
+    "id": "outpost-m13-m65.household.tent-d",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "sedge gatherer on the reed beds",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He gathers sedge in the shallows and dries it on the landing to lay in the tents. He says he will come back to Ashgate when his months are done, and the others laugh.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_give:outpost-m13-m65/3",
+      "place_note:outpost-m13-m65/economy"
+     ]
+    }
    ],
    "relations": []
   }

@@ -99,7 +99,7 @@
     "kind": "furniture",
     "pos": [
      -82380,
-     -513930
+     -514210
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
@@ -208,7 +208,7 @@
      -513430.0
     ],
     "rot_z": 0.8,
-    "dz": 30.0,
+    "dz": 12.0,
     "tier": "AGENT_INVENTED",
     "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
    },
@@ -268,8 +268,8 @@
     "base": "King of the Murkmire.esp:01FA38",
     "kind": "static",
     "pos": [
-     -82380.0,
-     -513620.0
+     -82409.0,
+     -513290.0
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
@@ -452,7 +452,7 @@
      "why": "an ordinary part of the marsh round a Hist-keeping camp; no building"
     }
    ],
-   "source": "Allocated King of the Murkmire cluster -29,-29 is a ruin and trap site with no tent or platform: a poor match. Of the ranked alternatives, near Loreisian (King of the Murkmire camp-tribal: 8 Argonian camp and shrine pieces, 5 people) is closest to a two-warden camp of hide tents on platforms; Ree-An-Wo (31 buildings, 16 people) is far too big, Black Rose is a ruin hamlet. Recommended: switch to near Loreisian by one whole redraft (not yet done); until then the camp is built from the pool on the allocated layout."
+   "source": "The allocated source is already the camp near Loreisian (King of the Murkmire cluster -29,-29, camp-tribal, rank 2 of the card): the closest of the ranked sources to a two-warden camp of hide tents on platforms (Hunters Rest is a Nordic homestead, Ree-An-Wo a 31-building hamlet, Black Rose a ruin hamlet), so no switch is needed. Its ruin columns, busts, beacons and trap field are dropped; the tents on platforms, weir, log walk, moss, landing and Hist-shoot post are added from the pool."
   }
  },
  "fit": {
