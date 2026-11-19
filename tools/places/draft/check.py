@@ -116,7 +116,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         ends.setdefault(p.get("to"), p["points"][-1])
     reached = set()
     for d in doors:
-        p = ends.get(d.get("src"))
+        p = ends.get(d.get("src") or d["id"])
         if p is None or dist_to_paths(p, paths) > DOOR_REACH:
             bad.append(f"door {d['id']} reached by no path")
         else:

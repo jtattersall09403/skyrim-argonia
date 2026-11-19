@@ -11,6 +11,10 @@
    "XeechLeelCouncilHouse": {
     "name": "The Council House of the Xeech-Leel",
     "why": "the thieves' line names the house by its door (thieves.md:350); no household lives there and no promise of the place record names it (AGENT_INVENTED)"
+   },
+   "XeechLeelWardensQuarters": {
+    "name": "Council Wardens' Quarters",
+    "why": "the thieves' line puts the council's six wardens in Dragonthorn Manor's barracks behind the council house (thieves.md:213, :350); no household lives there (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -141,9 +145,45 @@
     "rot_z": 0.0,
     "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
     "dz": -53.54,
+    "walk": 64.0,
     "need": 6,
     "tier": "AGENT_INVENTED",
     "why": "the boardwalk off the council house's porch, laid where Lilmoth lays it at Dragonthorn Manor (MurkmireWalkwayShort01), so one walks from the porch onto the town's ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:0D45E5",
+    "kind": "building",
+    "pos": [
+     -29051.7,
+     -614501.3
+    ],
+    "rot_z": 1.5708,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "why": "the wardens' quarters behind the council house, where Lilmoth sets Dragonthorn Manor's barracks behind the manor (MurkmireHouse07Red), seated on the town's ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -28931.8,
+     -614057.5
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.EZK9HHJ7SHHNK293XWGKGR71BN",
+    "dz": 11.37,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothMerchantManor01Barracks",
+     "door": "King of the Murkmire.esp:89DD4C",
+     "space": "XeechLeelWardensQuarters",
+     "arrival": [
+      -28831.8,
+      -614057.5
+     ]
+    },
+    "why": "the wardens' quarters' door, where Lilmoth sets the barracks' ground door, into a copy of Dragonthorn Manor Barracks (its beds for the council's wardens)"
    }
   ],
   "replace": {

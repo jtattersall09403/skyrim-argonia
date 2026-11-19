@@ -248,7 +248,10 @@ The tools lay the network by these rules.
   front of the door), `drop` ({source ref id: why} for a piece the room must not bring, such as a container of
   levelled treasure)}: the `add` stage copies that interior as a room of ours behind the door, the pair made, every
   further way out and every Nordic piece of it removed (or swapped by `draft.replace`). A piece set into the
-  building's wall round the door (a door frame) is left out: the door would stand inside it. Name the room in
+  building's wall round the door (a door frame) is left out: the door would stand inside it. Where the building's
+  door opens onto a porch, lay the walkway the source lays off it too, and give it `walk` (its deck's height over its
+  origin, from the source's navmesh there) where its mesh's top is a rail. The `add` stage lays each added door a
+  path from its arrival to the nearest street (`<place>.path.add.<door>`). Name the room in
   `draft.room_names` and run `names`, then `clearance` and `streets`.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the

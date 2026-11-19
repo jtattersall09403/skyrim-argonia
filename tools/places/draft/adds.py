@@ -1,7 +1,7 @@
 """Things the agent adds to a place by hand: place.json `draft.add`, one row per thing.
 
 A row: {base, pos: [x, y] outside | [x, y, z] in a room, space? (a room's space id; default the exterior), rot_z?,
-scale?, kind?, dz?, on?, name?, need?, map_marker?, room?, why, tier?}. Outside the thing is seated on the ground (its
+scale?, kind?, dz?, on?, walk?, name?, need?, map_marker?, room?, why, tier?}. Outside the thing is seated on the ground (its
 true footprint, `dz` over the lowest ground under it), or with `on` (a placed row's id, an added row's minted id
 included) `dz` over that row's origin, carried with it (moss on a fence, a door on its building); in a room it stands
 where `pos` puts
@@ -54,6 +54,9 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
             f = geom.foot(row, bases)
             if f:
                 row["seat"]["foot"] = f
+        w = a.get("walk", geom.walk(bases.get(a["base"]) or {}))    # `walk`: the deck's height where its mesh's top is a rail
+        if w is not None:      # one stands on a walkway's deck (its mesh's top surface), as on the source's own
+            row["walk"] = w
         if not bases.get(a["base"]):
             row["base_unknown"] = True
         out.append((space, row))
@@ -163,6 +166,32 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
     return sid, info, out
 
 
+SPUR = ".path.add."      # an added door's path: `<place>.path.add.<door id's tail>`
+
+
+def spurs(st, doors: list[dict], log=print) -> None:
+    """Each added door is reached by a path: a spur from its arrival to the nearest point of the place's other paths
+    (`from` the door's id, `to` that path's), so the town's network runs to it; spurs of doors no longer listed go."""
+    import math
+    paths = st.files["paths"]
+    mine = {f"{st.place_id}{SPUR}{d['id'].rsplit('.', 1)[-1]}": d for d in doors}
+    st.files["paths"] = paths = [p for p in paths if SPUR not in p["id"] or p["id"] in mine]
+    others = [p for p in paths if SPUR not in p["id"]]
+    for pid, d in sorted(mine.items()):
+        a = d["door"]["arrival"][:2]
+        near = min(((math.dist(a, q[:2]), q[:2], p["id"]) for p in others for q in p["points"]), default=None)
+        if near is None:
+            continue
+        row = {"id": pid, "kind": "path", "points": [[round(a[0], 1), round(a[1], 1)], [round(near[1][0], 1), round(near[1][1], 1)]],
+               "width": 128.0, "style": "dirt", "from": d["id"], "to": near[2], "laid": "a spur from an added door to the nearest street"}
+        have = next((i for i, p in enumerate(paths) if p["id"] == pid), None)
+        if have is None:
+            paths.append(row)
+            log(f"draft add {st.place_id}: path {pid} from door {d['id']} to {near[2]} ({near[0]:.0f} units)")
+        elif paths[have]["from"] != d["id"] or paths[have]["to"] != near[2]:
+            paths[have] = row
+
+
 def apply(st, log=print) -> None:
     """The `add` stage: every `draft.add` row placed again as `rows` gives it, and every room a row brings copied
     again; rows and rooms it made before and no longer lists are taken out; nothing else is touched."""
@@ -216,6 +245,7 @@ def apply(st, log=print) -> None:
         if info != sp["space"] or refs != sp["refs"]:
             sp["space"], sp["refs"] = info, refs
             log(f"draft add {st.place_id}: room {sid} copied again")
+    spurs(st, [r for sid, r in want if sid == "exterior" and (r.get("door") or {}).get("arrival")], log)
     outside = [r for sid, r in want if sid == "exterior"]
     settle(outside, [r for r in st.ext if r["id"] not in ids], st.bases, st.G,
            float((st.place.get("fit") or {}).get("relief_norm", 64.0)), lambda m: log(f"draft add {st.place_id}: {m}"))

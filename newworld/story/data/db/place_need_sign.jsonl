@@ -4,7 +4,7 @@
 {"place_id":"helstrom","need_seq":4,"need_sign_id":"person","detail":"the healer Taleeka-Ma heals and sells spell tomes there, and she and the sap-seller Wujeel both name it and its leader","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"}
 {"place_id":"helstrom","need_seq":5,"need_sign_id":"look","detail":"she is seen clearing creepers from tree roots"}
 {"place_id":"helstrom","need_seq":5,"need_sign_id":"person","detail":"the healers' leader calls her the root-tender at the door; the elder Hixee-Ra speaks first and says who she is","person_id":"helstrom.9NSKR4AZPYF3XXEDHPN0TX6WQK"}
-{"place_id":"helstrom","need_seq":6,"need_sign_id":"label","detail":"its door shows \"The Council House of the Xeech-Leel\""}
+{"place_id":"helstrom","need_seq":6,"need_sign_id":"label","detail":"its door shows \"The Council House of the Xeech-Leel\"; the house behind it shows \"Council Wardens' Quarters\""}
 {"place_id":"helstrom","need_seq":7,"need_sign_id":"label","detail":"its door shows \"Nesh-Deeka's House\""}
 {"place_id":"helstrom","need_seq":7,"need_sign_id":"person","detail":"Nesh-Deeka heads the household and lives there; Never-Writes-Twice keeps a bed in it","person_id":"helstrom.70XB8VD8S4A3J2CHESHXF26B2C"}
 {"place_id":"helstrom","need_seq":8,"need_sign_id":"label","detail":"its door shows \"Boatmen's Lodge\""}
@@ -13,7 +13,7 @@
 {"place_id":"helstrom","need_seq":10,"need_sign_id":"person","detail":"the raft-master Poles-Upriver works the city landing","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
 {"place_id":"helstrom","need_seq":11,"need_sign_id":"label","detail":"the world map marks \"Rootworm Landing (Helstrom)\" at the pool"}
 {"place_id":"helstrom","need_seq":11,"need_sign_id":"look","detail":"a clear pool of still water under the sacred tree, distinct from the amber sap at its foot, with the rootworm's tunnel mouth at its far lip"}
-{"place_id":"helstrom","need_seq":11,"need_sign_id":"person","detail":"the root-tender Cheeval-Xu works beside it and sells the rootworm's rides","person_id":"helstrom.C2855503QH3SHVRJDJSG1E9MKM"}
+{"place_id":"helstrom","need_seq":11,"need_sign_id":"person","detail":"the root-tender Cheeval-Xu works at the pool's edge and sells the rootworm's rides","person_id":"helstrom.C2855503QH3SHVRJDJSG1E9MKM"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"label","detail":"looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"}
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}

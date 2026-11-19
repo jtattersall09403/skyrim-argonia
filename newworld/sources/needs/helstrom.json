@@ -180,13 +180,13 @@
    "signs": [
     {
      "sign": "label",
-     "detail": "its door shows \"The Council House of the Xeech-Leel\""
+     "detail": "its door shows \"The Council House of the Xeech-Leel\"; the house behind it shows \"Council Wardens' Quarters\""
     }
    ],
    "met": false,
-   "why": "Partly met. A Murkmire stilt house stands in the town south-east of the sacred tree, its front door opening east onto the street and showing \"The Council House of the Xeech-Leel\"; inside is a copy of Dragonthorn Manor of King of the Murkmire's Lilmoth, its hall with writing desks and silver, a stair to an upper room and partition doors, open (no lock) by day. Not yet there: the back door to the river landing (Expert lock), the gallery door up the stilts, the strongroom behind an iron door (Master lock), Dragonthorn Manor's barracks for the six wardens, and the cook and wardens themselves.",
+   "why": "Partly met. A Murkmire house stands in the town south-east of the sacred tree, reached on foot over the boardwalk off its porch; its door shows \"The Council House of the Xeech-Leel\" and opens on a copy of Dragonthorn Manor of King of the Murkmire's Lilmoth (its hall with writing desks and silver, a stair to the upper room that serves as the treasurer's, partition doors), unlocked by day. Behind it stands the wardens' quarters, a copy of Dragonthorn Manor Barracks with its beds, its door showing \"Council Wardens' Quarters\". Not yet there: the back door to the river landing (Expert), the gallery door up the stilts, the strongroom behind an iron door (Master) and the six wardens and the cook.",
    "fit": "The council house as placed; the upper room of the copied manor serves as the treasurer's room.",
-   "narrow": "Yes, each by a narrow change: the barracks as a second added room behind a door on the house's back (draft.add room, Dragonthorn Manor Barracks), the strongroom as one locked iron door and a room of Imperial pieces added inside the copy, and the wardens and cook as people rows (place-people) or the quest's own placements; the back and gallery doors need a second way into one copied room, which the add stage does not yet make.",
+   "narrow": "Yes: the strongroom as a locked iron door and a room of Imperial pieces added inside the copy (draft.add in the room), the wardens and the cook as people rows (place-people) with the barracks' beds; the back and gallery doors need a second way into one copied room, which the add stage does not yet make.",
    "tier": "AGENT_INVENTED"
   },
   {
@@ -327,12 +327,12 @@
     },
     {
      "sign": "person",
-     "detail": "the root-tender Cheeval-Xu works beside it and sells the rootworm's rides",
+     "detail": "the root-tender Cheeval-Xu works at the pool's edge and sells the rootworm's rides",
      "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
     }
    ],
    "met": true,
-   "why": "Met. Under the sacred tree (HistTree04), 900 units west of its trunk and clear of its own sap pool, lies a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works between the pool and the trunk and gives the rootworm stop (seq 0 of the record's gives).",
+   "why": "Met. Under the sacred tree (HistTree04), 900 units west of its trunk and clear of its own sap pool, lies a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives).",
    "fit": "The pool as placed.",
    "narrow": "Nothing more to change."
   },

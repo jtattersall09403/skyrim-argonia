@@ -623,3 +623,12 @@ def test_a_source_with_no_person_to_build_on_takes_its_people_from_black_marsh()
     # a source with people of its own keeps them, and nothing is loaded
     src2 = NS(spaces=town.spaces, npcs=town.npcs)
     assert people.base_pool(src2, {}, lambda sid: 1 / 0)[2] == []
+
+
+def test_two_pieces_set_on_one_building_rest_together():
+    """A door and the walkway off its porch, both set `on` their building, stand in each other as the source laid them;
+    two things on the ground do not."""
+    door = {"id": "d", "seat": {"mode": "on", "on": "house", "dz": 9.0}}
+    walkway = {"id": "w", "seat": {"mode": "on", "on": "house", "dz": -53.0}}
+    assert C.rests(door, walkway)
+    assert not C.rests({"id": "a", "seat": {"mode": "ground"}}, {"id": "b", "seat": {"mode": "ground"}})

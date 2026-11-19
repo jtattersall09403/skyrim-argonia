@@ -60,7 +60,7 @@ OWNS: dict[str, dict[str, tuple]] = {
                    "ledger.jsonl": (ANY, True)},
     "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
     "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False), "land.jsonl": (ANY, True)},
-    "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True)},
+    "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
 }
 STAGES = tuple(OWNS)
