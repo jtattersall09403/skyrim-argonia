@@ -20,6 +20,26 @@ description: Draft one place of the new world from its source place (any plugin 
 After the first draft every change is narrow: the step that needs changing is applied to the committed files and
 every other row stays as it is (section 7 here, and the narrow-change section of each skill). Section 7 names the one case in which a place is drafted whole again.
 
+## The place record is the brief
+
+The place record says what the place is; the source place is only a pool of pieces and a layout to draw from.
+Before any draft, and again before any change to a drafted place, read the record whole:
+`python3 -m tools.newworld.place_card <place_id>` (the same notes the Atlas shows): its summary, `look`, people,
+promises (`gives`), dangers, hooks and the `source` note, which says which source to take, what of it to replace
+and with what, and what is still to add.
+
+1. Write the place's plan in `draft.plan` before the first stage runs: one line per thing the record names (each
+   building kind, the water and what stands in it, the market, the shrine, the racks and sheds, the look's
+   materials) and, against it, the source pieces or the added pieces that deliver it. The `source` note's
+   replacements are done, never left as the source had them (a "houses replaced with Argonian stilt huts" means
+   every house shell of the source is swapped).
+2. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
+   against the record's words: kept only when the record names it or it is an ordinary part of such a place;
+   otherwise dropped with its doors, rooms and pieces. The plan lists each one, kept or dropped, with its reason.
+3. A draft is finished only when it reads as the record's `look`: compare the renders (`draft render`) with the
+   look line by line and name any line not yet met. A check that passes on a place that does not look like its
+   record is not a finished draft.
+
 ## What you decide
 
 The tools do the measuring; you make the calls they cannot. Everything you decide goes in the `draft` block of
@@ -47,7 +67,7 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
   key stays. `python3 -m tools.places worldparts <place_id>` names what moved when something did.
 - Skyrim's town rules: `docs/research/skyrim/town-life.md`.
 
-## 1. Read the source's character
+## 1. Read the source's character (after the record)
 
 1. `python3 -m tools.places draft <place_id>` once with an empty `draft` block, then
    `python3 -m tools.places draft render <place_id>` and look at `out/places/renders/<place_id>/source.png`.

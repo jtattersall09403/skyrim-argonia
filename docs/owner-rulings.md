@@ -119,6 +119,13 @@ added here the day they are made, with the date and the issue.
 - A reward is an ordinary item unless the story needs a named one: the Ashgate strongbox's ring is a plain
   enchanted ring of about the strength and use of Fargoth's ring in Morrowind (Skyrim's Ring of Minor Health), not
   a ring of our own (2026-11-19).
+- A place is drafted to its record (the place card the Atlas shows: summary, look, promises, the `source` note's
+  replacements and additions); the source place is an asset pool and layout to draw from, and any source
+  structure the record does not support is dropped (the Karsh-Naal mine; Jal-Veesa's stone terrace). Jal-Veesa's
+  terrace goes and its houses stay (2026-11-19, #80).
+- A quest's people and things at a place get first positions in every place draft without being asked, drafted
+  as their real records and models, shown in the studio's Quests layer for the owner to move and note
+  (2026-11-19, #80).
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
 - Parry, riposte and backstab are what the owner called souls-like (2026-10-29); the collection is used out of
   the box first, and that ruling is revisited only if the owner misses them.
