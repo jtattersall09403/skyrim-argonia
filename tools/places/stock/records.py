@@ -17,6 +17,8 @@ import struct
 from functools import lru_cache
 from pathlib import Path
 
+from tools.places.stock import ours
+
 from tools.argonia_world import esm
 
 ITEM_SIGS = ("WEAP", "ARMO", "MISC", "BOOK", "ALCH", "INGR", "AMMO", "SLGM", "KEYM", "SCRL", "LIGH")
@@ -55,6 +57,7 @@ class Records:
     def __init__(self):
         self.raw: dict[str, esm.Record] = {}
         self.kw: dict[str, str] = {}
+        self.ours: dict[str, dict] = {}   # item records of ours (plugin/Argonia YAML), by "Argonia.esp:<hex>"
 
     @classmethod
     def load(cls, plugins: list[str | Path], dirs: list[str] | None = None) -> "Records":
@@ -62,11 +65,15 @@ class Records:
         dirs = dirs or search_dirs()
         self = cls()
         for name in plugins:
+            if name == ours.PLUGIN:   # ours is read from its YAML, not the built plugin
+                continue
             path = Path(name) if Path(name).is_absolute() else find_plugin(str(name), dirs)
             p = esm.Plugin.read(path, SIGS)
             for rec in p.records():
                 self.raw[place_key(rec.key)] = rec
         self.kw = {k: r.edid or k for k, r in self.raw.items() if r.sig == "KYWD"}
+        if ours.PLUGIN in [str(n) for n in plugins]:
+            self.ours = ours.items(self.kw)
         return self
 
     def _ref(self, rec: esm.Record, d: bytes | None, off: int = 0) -> str | None:
@@ -74,15 +81,21 @@ class Records:
         return place_key(rec.plugin.form_key(v)) if v else None
 
     def sig(self, key: str) -> str | None:
+        if key in self.ours:
+            return self.ours[key]["sig"]
         r = self.raw.get(key)
         return r.sig if r else None
 
     def edid(self, key: str) -> str | None:
+        if key in self.ours:
+            return self.ours[key]["edid"]
         r = self.raw.get(key)
         return r.edid if r else None
 
     @lru_cache(maxsize=None)
     def item(self, key: str) -> dict | None:
+        if key in self.ours:
+            return self.ours[key]
         rec = self.raw.get(key)
         if rec is None or rec.sig not in ITEM_SIGS:
             return None

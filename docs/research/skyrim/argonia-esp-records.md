@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2463 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2465 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -23,7 +23,9 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Faction | new | ARG_VendorLooksAtBooks `000BCA:Argonia.esp` |
 | ours | Faction | new | ARG_F_faction_night_reed_chapter `80001D:Argonia.esp` |
 | ours | MagicEffect | new | ARG_NoHealthRegenEffect `000C16:Argonia.esp` |
+| ours | ObjectEffect | new | ANW_VoshLeerasRingEnch `000F2F:Argonia.esp` |
 | ours | Spell | new | ARG_NoHealthRegen `000C17:Argonia.esp` |
+| ours | Armor | new | ANW_VoshLeerasRing `000F30:Argonia.esp` |
 | ours | Armor | new | ARG_I_item_glass_bead_strand `800020:Argonia.esp` |
 | ours | Armor | new | ARG_I_item_tg01_jasper_necklace `800010:Argonia.esp` |
 | ours | Armor | new | ARG_I_thing_bc03_tokens `800248:Argonia.esp` |

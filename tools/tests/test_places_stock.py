@@ -51,3 +51,18 @@ def test_an_owner_exception_on_a_container_row_is_read_by_space_and_ref(tmp_path
         {"ref": "b", "space": "hold", "owner_exception": {"why": "no ruling"}}, {"ref": "c", "space": "exterior"}]}))
     assert verify.owner_exceptions("p", tmp_path) == {("hold", "a"): {"ruling": "owner, 2026-11-19", "why": "his kit"}}
     assert verify.owner_exceptions("missing", tmp_path) == {}
+
+
+def test_an_item_of_ours_is_named_by_its_editor_id():
+    import pytest
+    from tools.places.stock import ours
+    from tools.places.stock.records import Records
+    key = ours.resolve("Argonia:ANW_VoshLeerasRing")
+    assert key == "Argonia.esp:000F30"
+    assert ours.resolve("Skyrim.esm:0FCEFD") == "Skyrim.esm:0FCEFD"
+    with pytest.raises(KeyError):
+        ours.resolve("Argonia:ANW_NoSuchItem")
+    rec = Records.load([ours.PLUGIN])
+    it = rec.item(key)
+    assert (rec.sig(key), rec.edid(key), it["name"], it["value"], it["slots"]) == ("ARMO", "ANW_VoshLeerasRing", "Vosh-Leera's Ring", 100, 0x40)
+    assert it["ench"] == "Argonia.esp:000F2F"

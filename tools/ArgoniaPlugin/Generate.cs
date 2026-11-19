@@ -221,6 +221,7 @@ static class Generate
         var chosen = Environment.GetEnvironmentVariable("QUESTFORM_DIRS") != null;
         Talk.Rumours(mod, edid => chosen || leftOut.Any(q => edid == "ARG_" + q.Split('.')[^1].ToUpperInvariant()));
         Talk.Voices(mod, mods); // every person we place has a voice, the quests' people too
+        Items.Add(mod, mods); // items of ours the place stock gives by editor id (Items.cs); allocated after the quests and Talk, so no earlier id moves
         Mortality.Clear(mod, mods); // nobody essential or protected, after every builder
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
         Heights.Fix(mod, mods); // people at their race's height (Heights.cs)

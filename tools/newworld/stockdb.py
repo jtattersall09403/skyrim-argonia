@@ -72,6 +72,7 @@ def _source(w, cite: str) -> str:
 
 
 def load(w) -> None:
+    from tools.places.stock import ours
     sc = _json(STOCK / "scale.json")
     w.insert_many("lock_level", [{"id": k, "level": v} for k, v in sc["lock_level"].items()])
     wealth.load(w)
@@ -133,12 +134,13 @@ def load(w) -> None:
     for p in sorted((STOCK / "places").glob("*.json")):
         _load_place_stock(w, _json(p))
     for u in _json(STOCK / "unique.json")["items"]:
-        w.insert("unique_item", **{k: u[k] for k in ("id", "item_id", "place_id", "held_by", "story", "why")})
+        w.insert("unique_item", **{k: u[k] for k in ("id", "item_id", "place_id", "held_by", "story", "why")} | {"item_id": ours.resolve(u["item_id"])})
     for pid in sorted({r[0] for r in w.query("SELECT DISTINCT place_id FROM place_give")}):
         _deliveries(w, pid)
 
 
 def _load_place_stock(w, doc: dict) -> None:
+    from tools.places.stock import ours
     pid = doc["place_id"]
     for g in doc.get("goods", []):
         w.insert("place_good", place_id=pid, good_id=g["good"], relation=g["relation"], why=g["why"],
@@ -150,24 +152,24 @@ def _load_place_stock(w, doc: dict) -> None:
                  lock_level_id=c.get("lock"), security_level_id=c["security"], effort_level_id=c.get("effort"),
                  stock_tier_id=c["tier"], gold=c.get("gold", 0), why=c["why"])
         for it in c.get("items", []):
-            w.insert("stock_container_item", place_id=pid, ref_id=c["ref"], item_id=it["item"], count=it["count"],
+            w.insert("stock_container_item", place_id=pid, ref_id=c["ref"], item_id=ours.resolve(it["item"]), count=it["count"],
                      why=it["why"])
         for cite in dict.fromkeys(c.get("cites", [])):
             w.insert("stock_container_source", place_id=pid, ref_id=c["ref"], source_id=_source(w, cite), locator=None)
     for lo in doc.get("loose", []):
         pos = lo.get("pos") or [None, None, None]
         w.insert("stock_loose", place_id=pid, id=lo["id"], space_id=lo["space"], on_ref_id=lo.get("on"),
-                 x=pos[0], y=pos[1], z=pos[2], item_id=lo["item"], count=lo["count"],
+                 x=pos[0], y=pos[1], z=pos[2], item_id=ours.resolve(lo["item"]), count=lo["count"],
                  owner_person_id=lo.get("owner_person"), owner_faction=lo.get("owner_faction"),
                  effort_level_id=lo.get("effort"), why=lo["why"])
     for po in doc.get("possessions", []):
         for it in po["items"]:
-            w.insert("person_item", person_id=po["person"], item_id=it["item"], count=it["count"],
+            w.insert("person_item", person_id=po["person"], item_id=ours.resolve(it["item"]), count=it["count"],
                      worn=bool(it.get("worn")), why=it["why"])
     for t in doc.get("traders", []):
         w.insert("trader", person_id=t["person"], gold=t["gold"], why=t["why"])
         for it in t.get("items", []):
-            w.insert("trader_item", person_id=t["person"], item_id=it["item"], count=it["count"], why=it["why"])
+            w.insert("trader_item", person_id=t["person"], item_id=ours.resolve(it["item"]), count=it["count"], why=it["why"])
         for cite in dict.fromkeys(t.get("cites", [])):
             w.insert("trader_source", person_id=t["person"], source_id=_source(w, cite), locator=None)
 
@@ -236,18 +238,18 @@ def reload() -> db.World:
 def items() -> int:
     """items.json: every item the sources name (the scale's lists by editor id, the stock and ledger rows by key),
     read from the plugins with their kind, value, material, tier and the split's verdict."""
-    from tools.places.stock import split
+    from tools.places.stock import split, ours
     from tools.places.stock.records import Records
     sc = _json(STOCK / "scale.json")
     keys: set[str] = set()
     for p in (STOCK / "places").glob("*.json"):
         doc = _json(p)
         for c in doc.get("containers", []):
-            keys |= {i["item"] for i in c.get("items", [])}
-        keys |= {lo["item"] for lo in doc.get("loose", [])}
+            keys |= {ours.resolve(i["item"]) for i in c.get("items", [])}
+        keys |= {ours.resolve(lo["item"]) for lo in doc.get("loose", [])}
         for h in doc.get("possessions", []) + doc.get("traders", []):
-            keys |= {i["item"] for i in h.get("items", [])}
-    keys |= {u["item_id"] for u in _json(STOCK / "unique.json")["items"]}
+            keys |= {ours.resolve(i["item"]) for i in h.get("items", [])}
+    keys |= {ours.resolve(u["item_id"]) for u in _json(STOCK / "unique.json")["items"]}
     order = ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm",
              "Black Marsh.esm", "Black Marsh North.esp"]
     # and every other plugin a source names an item of (a person built on King of the Murkmire's villagers carries its gear)

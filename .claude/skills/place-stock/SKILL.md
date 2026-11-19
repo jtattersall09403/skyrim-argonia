@@ -110,6 +110,10 @@ Price every choice by its **provenance**. Something made here is common. Somethi
 `newworld/sources/stock/unique.json` naming the story that puts it there, and the game-wide count stays within
 `ledger.caps`.
 
+**An item of ours** (a record in `plugin/Argonia`, made by `tools/ArgoniaPlugin/Items.cs`) is named in a stock row as
+`Argonia:<editor id>`, for example `Argonia:ANW_VoshLeerasRing`; `stockdb load` and `items` resolve it to its form key
+in Argonia.esp.
+
 A reason or note at the tier `OWNER_STATED` is the owner's own words: never change or remove it. The derive keeps
 such rows as they stand and lists where it would differ (`owner_kept`); raise a difference with the owner if the facts
 argue for it.

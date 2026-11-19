@@ -1,0 +1,16 @@
+FormKey: 000F2F:Argonia.esp
+VersionControl: 79128
+EditorID: ANW_VoshLeerasRingEnch
+Version2: 9
+Name:
+  TargetLanguage: English
+  Value: ''
+EnchantmentCost: 202
+EnchantmentAmount: 202
+EnchantType: Enchantment
+BaseEnchantment: 10FB77:Skyrim.esm
+WornRestrictions: 10CD1F:Skyrim.esm
+Effects:
+- BaseEffect: 0493AA:Skyrim.esm
+  Data:
+    Magnitude: 15
