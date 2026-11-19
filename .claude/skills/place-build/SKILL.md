@@ -355,7 +355,8 @@ The tools lay the network by these rules.
   streets (`stations` `shrine`); the Hist itself carries it, never its roots or its pool. Look at it in the render.
 - **Every living Hist stands in a pool of its own sap** (Lore:Hatching_Pools): King of the Murkmire's
   `WaterPuddleHist`, a placed water of its amber Hist sap (`DefaultHistSapWater`), never the cell's water. The
-  `sap` stage centres one on each living Hist's trunk (a dead Hist's pool is dry), sizes it to the tree, seats it on
+  `sap` stage centres one on each living Hist's trunk (a dead Hist's pool is dry; a Hist gland growing
+  within a tree's pool is a growth of that tree and shares its pool), sizes it to the tree, seats it on
   the lowest ground or water under it and lowers the ground inside it to that height (its own land rows, `by`
   "sap"), so the sap lies in a hollow on any slope and the waterline never moves. A pool placed by hand on the
   trunk is kept in its stead. `draft check` fails a living Hist with no pool on its trunk. The pool is centred

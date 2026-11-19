@@ -65,3 +65,13 @@ def test_on_a_slope_the_hollow_holds_the_pool_and_the_seat_stays():
     assert max(inner + [dug.height(cx, cy)]) < z                     # the sap lies over its whole hollow
     assert sap.dish(G, e + pools, BASES, set()) == hollow             # the same dig again: the seat stays put
     assert sap.dish(G, e + pools, BASES, {(0, 0)}) == []              # a cell another row holds is left alone
+
+
+def test_a_gland_within_a_trees_pool_is_part_of_that_tree_and_a_gland_apart_has_its_own():
+    bases = dict(BASES, **{"P:gland": {"edid": "HistGland03", "kind": "static", "bounds": [[-80, -80, 0], [80, 80, 200]]}})
+    near = {"id": "p.G", "base": "P:gland", "kind": "static", "pos": [1700.0, 1500.0, 0.0], "rot": [0, 0, 0], "scale": 1.0}
+    far = {"id": "p.H", "base": "P:gland", "kind": "static", "pos": [5000.0, 5000.0, 0.0], "rot": [0, 0, 0], "scale": 1.0}
+    rows = ext() + [near, far]
+    out = sap.plan("p", rows, bases)
+    assert [r["id"] for r in out] == ["p.sap.A", "p.sap.B", "p.sap.H"]
+    assert sap.faults(rows + out, bases) == []
