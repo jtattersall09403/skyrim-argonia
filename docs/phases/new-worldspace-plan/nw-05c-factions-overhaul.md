@@ -350,3 +350,33 @@ Owed:
    Bramman's Watch, Alten Corimont) and re-derives stock for the re-banded places.
 3. Sources shared between places, to settle when each is built: Coldbrine Mine and Vicrium (two mine interiors);
    Fort Silvermoth, Fort Gysilla and Blackrose Prison (Cracked Tusk).
+
+## The owner's words: make it all make sense (#80, 2026-11-19)
+
+"Frankly it's feeling like a huge amount of all of this just needs properly reviewing and sorting out, I'm leaving
+it with you. I am leaving you unattended. When I come back I want it all to make sense please, across the atlas and
+all the detail in all the parts of the place record for every place, and the story overviews, and the quests, and
+the source places and how we plan to use them, and the drafts for all the first 5 places. Also re: hist pools,
+these should *always* be the sap pools we talked about you creating; never water pools, those were an error."
+
+Earlier the same day: a place is drafted to its record, the source is an asset pool and a layout re-chosen to the
+closest match (main-quest places always), the "built from" note is a first idea; quest things get first spots as
+real models in every draft; Jal-Veesa keeps its spot and its record drops the creek, boat-lanes and weirs.
+
+### The order of work
+
+1. Atlas-wide audit of the 258 place records (read-only; findings in `~/.argonia/audit/`): populations against
+   kind, importance and lore (Helstrom, the capital, is 17; Thorn 25); water and ground claims against the real
+   ground; Hist pools worded as water; each source's fit, main-quest places first; contradictions inside a record.
+2. Records corrected by `place-research` from the findings; the Atlas and the story explorer republished.
+3. Sources re-judged for every main-quest place by place-build's "Choose the source" step; the other places'
+   source notes rewritten as first ideas that name a close match or say "build from the pool".
+4. Story overviews and quest records made consistent with the corrected records (quest skills).
+5. The Act I drafts (Ashgate Landing, Reed-Sill Weir, Teel-Fen Weir, Jal-Veesa, Karsh-Naal Camp, and Helstrom for
+   quest 5) redrafted to their records, quest things on real models, checks and renders read against the look;
+   the studio loads every place; one owner check posted.
+
+### Where it stands
+
+- Running: the audit; the outposts lane (Ashgate, Reed-Sill, Teel-Fen); Karsh-Naal and Helstrom; Jal-Veesa on
+  Seekhat Yol; the studio's blank-screen fault and quest things as real models.
