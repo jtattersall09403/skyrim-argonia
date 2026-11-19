@@ -1,4 +1,5 @@
-# Wake on reply (chunk 0.0 §a): an owner comment on an owner issue, or any issue the owner opens, starts the stopped
+# Wake on reply (chunk 0.0 §a): an owner comment on an owner issue (labelled owner-check or owner-call, or opened by
+# the owner, as owner_inbox.py counts them, open or closed), or any issue the owner opens, starts the stopped
 # build VM so the agent reads it and acknowledges it. "Run workflow" (GitHub mobile too) does the same.
 # The "play"/"stop" comment switch for the game machine is gone (owner, 2026-10-31: pointless; the play page starts
 # and stops it). Only the owner's own comments count: agent posts carry the marker <!-- argonia-agent -->.
@@ -24,7 +25,8 @@ jobs:
        !contains(github.event.issue.body, '<!-- argonia-agent')) ||
       (github.event.comment.user.login == 'jtattersall09403' &&
        !contains(github.event.comment.body, '<!-- argonia-agent') &&
-       (contains(github.event.issue.labels.*.name, 'owner-check') ||
+       (github.event.issue.user.login == 'jtattersall09403' ||
+        contains(github.event.issue.labels.*.name, 'owner-check') ||
         contains(github.event.issue.labels.*.name, 'owner-call')))
     runs-on: ubuntu-latest
     timeout-minutes: 8
