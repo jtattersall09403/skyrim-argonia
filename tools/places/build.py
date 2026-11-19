@@ -1182,8 +1182,7 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
     params): moved into synthetic cells, meshed, moved back and welded. `ground`: a plane just under the lowest
     collision (the floor a room's walls stand on), cut away outside the collision's bounds. -> (verts, tris)."""
     from tools.navmesh import params, stitch
-    from tools.navmesh.__main__ import NAV_BIN, build_tool as nav_tool, game_data
-    from tools.navmesh import placed
+    from tools.navmesh.__main__ import NAV_BIN, build_tool as nav_tool
     coll = []
     for r in rows:
         f, local = split_key(r["base"])
@@ -1606,8 +1605,6 @@ def walked_through(r: dict) -> bool:
 
 
 def collision_objects(refs: list[dict]):
-    from tools.navmesh import placed
-    from tools.navmesh.__main__ import game_data
     rows = []
     for r in refs:
         box = collision_box(r)
