@@ -4,9 +4,9 @@ Matches every place of ours (newworld/story/data/db/place.jsonl) to the mined ca
 (out/newworld/sources/mined/*.jsonl, `python -m tools.places sources-mine`) and writes the committed match:
 
 - newworld/sources/source_match/source_place.jsonl  every source place that is allocated or an alternate, its signals
-- newworld/sources/source_match/place_source.jsonl  per place: rank 0 the allocated source (unique across places),
+- newworld/sources/source_match/place_source.jsonl  per place: rank 0 the allocated source (the first match gives each place its own; a pin may share one),
   ranks 1-3 the next most similar (may be shared), each with its score and the score's parts; rank 0 also carries
-  the population the place now has and why (build_db overwrites place.population from it)
+  the record's population (never the source's residents; decision 0040)
 - newworld/places/sources_mined.jsonl                each of those sources as an extractor row, so
   `python -m tools.places extract <source_id>` (or `source <place_id>`) writes its bundle on demand
 - out/newworld/sources/ranked.json                   the top ten per place and the run's numbers, for the page
@@ -54,6 +54,31 @@ FIXED_WHY = {"helstrom": "the place is drafted from this source",
              "jarecai": "swapped with Alten Corimont: Nyhus's fort, smithy and inn serve the fortified town (owner, 2026-11-17)",
              "bala-karag": "Fort Dulan's Dunmer tower by the water holds the halls; no other place uses it (2026-11-18)",
              "velothi-ruin-28-m82": "Masvos's Velothi ruin by the water holds the halls; no other place uses it (2026-11-18)"}
+# Sources judged by hand for the places the main quest uses (decision 0040, 4): place -> (source id, why). A source
+# may serve several places, each adapted differently (owner, 2026-11-19); the source note says how.
+JUDGED = {
+    "outpost-m11-m63": ("kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
+                        "Reed-Sill Weir is drafted from the Argonian weir-sized camp near Loreisian"),
+    "outpost-m6-m66": ("kingofthemurkmire.marker.ree-an-wo",
+                       "Teel-Fen Weir is drafted from Ree-An-Wo's hide tents on cypress platforms"),
+    "natai": ("kingofthemurkmire.seekhatyollocation", "Seekhat Yol's huts and docks strung along a salvage beach"),
+    "lujei": ("kingofthemurkmire.keebahollowlocation", "Keeba Hollow's stilt village and fisher's hut on a lakeshore"),
+    "lilmothiit-ruin-14-m113": ("kingofthemurkmire.hiddennestplayerhomeextlocation",
+                                "Haj-Uxith's mud domes and its one burrow interior, sunk in dune sand"),
+    "bell-station": ("kingofthemurkmire.cluster.alten-meerhleel.-6.-56",
+                     "an Argonian islet dock with a bunkhouse and a store, the size of an eight-crew station"),
+    "blackrose-prison": ("skyrim.marker.crackedtuskmapmarker",
+                         "a walled fort with two keep interiors for the hall and the cells"),
+    "echo-deep": ("kingofthemurkmire.spirelandshistlocation", "an Argonian grove ruin whose one interior is the lair"),
+    "imperial-ruin-m25-m85": ("kingofthemurkmire.cluster.oldimplaboratoryext.-23.-37",
+                              "a small Imperial ruin on the water with a dock and one room"),
+    "peak-39-m79": ("dragonborn.marker.dlc2mountmoesringmapmarker", "a bare crag with no buildings, the size of the tooth"),
+    "shipwreck-36-m82": ("skyrim.icerunnerlocation",
+                         "the Stormwidow's hold and stern cabin are Icerunner's two interiors (MN11)"),
+}
+for _pid, (_sid, _why) in JUDGED.items():
+    FIXED[_pid] = (_sid, re.compile("^" + re.escape(_sid) + "$"))
+    FIXED_WHY[_pid] = _why + " (decision 0040)"
 EXCLUDE = [("bmv", re.compile(r"l[io]lmoth(?!iit)", re.I))]
 LIVED = {"inhabited", "garrisoned", "occupied"}
 WET_SITING = {"coast", "riverbank", "swamp", "lakeshore", "island", "seabed"}
@@ -524,26 +549,11 @@ def norm(s: str) -> str:
     return re.sub(r"[^a-z]", "", (s or "").lower())
 
 
-POP_FLOOR = {"trader-general", "trader-innkeeper", "trader-blacksmith", "trader-apothecary", "trader-hunter",
-             "trader-spells", "trader-jeweller", "trader-clothier", "trader-bookseller", "trader-fletcher", "trainer",
-             "fence", "follower"}
 def population(p: dict, gv: list, src: dict | None) -> tuple[int, str]:
-    """The allocated source's residents, as the source layout was built for them (owner, 2026-11-12): no blend
-    toward the record's estimate, no clamp to a kind's range. A place the record leaves empty stays 0; never fewer
-    than the people its gives name; a source with no counted residents falls back to the record's estimate."""
+    """The record's researched estimate, unchanged (decision 0040, 1): a source's residents never set a place's
+    population, whether the source comes from the match or from a pin."""
     before = p.get("population") or 0
-    if p["status"] not in LIVED and before == 0:
-        return 0, f"{p['status']}: the record says nobody lives here"
-    need = sum(g.get("count", 1) for g in gv if g["give_kind_id"] in POP_FLOOR)
-    base = (src or {}).get("residents", 0)
-    if base == 0:
-        pop, why = max(before, need), f"fallback: the source counts no residents; the record's estimate of {before} kept"
-    else:
-        pop, why = base, f"the source's {base} resident{'' if base == 1 else 's'}"
-    if pop < need:
-        pop = need
-        why += f"; raised to the {need} people its gives name"
-    return int(pop), why
+    return int(before), f"the record's researched estimate of {before} kept (decision 0040)"
 
 
 def repopulate() -> int:
@@ -621,8 +631,9 @@ def source_rows(sid: str, c: dict) -> tuple[dict, dict | None]:
 def pin(place_ids: list[str]) -> int:
     """Apply FIXED to the named places in the committed match without re-matching the rest: each named place's rows
     are rewritten (rank 0 its pinned source), every other place keeps its rows, and the source rows follow the
-    sources the match now names (a new one added, one no longer named dropped). The pinned source must be no other
-    place's allocation and share no cell with one."""
+    sources the match now names (a new one added, one no longer named dropped). A pinned source may already serve
+    other places (each adapts it differently, and its source note says how); it must share no cell with a
+    different allocated source."""
     from tools.places.search.embed import Embedder
     unknown = [x for x in place_ids if x not in FIXED]
     if unknown:
@@ -654,10 +665,6 @@ def pin(place_ids: list[str]) -> int:
             done.add(r["place_id"])
     by_sid = {c["source_id"]: c for c in cands}
     alloc = {r["place_id"]: r["source_place_id"] for r in out if r["rank"] == 0}
-    for x in place_ids:
-        twice = [o for o, s in alloc.items() if s == alloc[x] and o != x]
-        if twice:
-            raise SystemExit(f"{alloc[x]} is already allocated to {twice}")
     check_unique([by_sid[s] for s in alloc.values() if s in by_sid])
     src = {json.loads(line)["id"]: json.loads(line) for line in (MATCH / "source_place.jsonl").open() if line.strip()}
     ext = {json.loads(line)["source_id"]: json.loads(line) for line in ROWS.open() if line.strip()}
@@ -696,15 +703,14 @@ def main(argv: list[str]) -> int:
     for i, p in enumerate(places):
         cost[i] = (1 - total[i]) * IMPORTANCE_WEIGHT[p.get("importance") or 1]
     big = 1e6
-    for place_id, (_sid, j, js) in fixed.items():
-        for k in js:
-            cost[:, k] = big
-        if j is not None:
-            cost[pid[place_id], :] = big
-            cost[pid[place_id], j] = 0
-    rows, cols = linear_sum_assignment(cost)
-    alloc = dict(zip(rows.tolist(), cols.tolist()))
-    check_unique([cands[j] for j in alloc.values()])
+    # a fixed place takes its source outright (several fixed places may share one); the rest are assigned one each
+    pinned = {pid[place_id]: j for place_id, (_sid, j, _js) in fixed.items() if j is not None and place_id in pid}
+    for _sid, _j, js in fixed.values():
+        cost[:, js] = big
+    free = [i for i in range(len(places)) if i not in pinned]
+    rows, cols = linear_sum_assignment(cost[free])
+    alloc = {free[r]: c for r, c in zip(rows.tolist(), cols.tolist())} | pinned
+    check_unique([cands[j] for j in set(alloc.values())])
     MATCH.mkdir(parents=True, exist_ok=True)
     used: dict[str, dict] = {}
     match_rows, ranked = [], {}

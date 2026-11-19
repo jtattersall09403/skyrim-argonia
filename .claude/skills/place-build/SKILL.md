@@ -33,7 +33,14 @@ and with what, and what is still to add.
    place card's `source 0..3`, and `python3 -m tools.places sources-match` / the catalogue search for others of the
    same kind and culture) against the record: its style and materials, its layout (water, banks, streets), its
    buildings and their interiors, its size. Take the source that already looks most like the record, so the draft
-   is mostly kept pieces, not replacements. A place the main quest uses is always given its closest match. When no
+   is mostly kept pieces, not replacements. A place the main quest uses is always given its closest match. A
+   source may serve several places: each takes a different part, layout or adaptation of it, so no two places
+   feel the same, and the plan says how this one differs. Reuse is judged case by case: two places adapted
+   differently from one source are fine; many places on one source are not; and where another good source of
+   the kind exists and a light re-authoring of one record makes it fit, the second place moves to it. When
+   something must change to fit, change the cheapest thing with the fewest knock-on effects: a source note, then
+   a minor record, before a main-quest text or a drafted place. Set the choice with `python -m tools.places
+   sources-match --pin <place>` (its `JUDGED` table), never by hand. When no
    source is close (most of its buildings would be replaced), build the place from the whole asset pool instead,
    taking only what a source gives cheaply (a usable street layout, interiors with their furniture and navmesh); say
    which in the plan and why. Record the chosen source in `place.json` and the reason in the plan.

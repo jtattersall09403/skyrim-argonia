@@ -753,7 +753,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dragon Bridge (Skyrim), is a Nordic bridge town of five interiors (a tavern, a lumber camp, a farm) and does not fit a raft village. Seekhat Yol (King of the Murkmire) fits better: Argonian thatched huts on plank platforms raised on posts and joined by plank walkways, with seven hut interiors: the accommodation hut of beds, tables and partition walls serves as the rest-house and the fisher's hut as the keeper's house. Still to add: the house-rafts roped end to end, the causeway of laid planks, the ferry stage, the raft shrine to Sithis and the sleeping platform.",
+     "text": "Its main source, Dragon Bridge (Skyrim), gives the bridge-town layout and its interiors, and its Nordic pieces are replaced, so Hixinoag is built from the pool. Seekhat Yol (King of the Murkmire) supplies the Argonian thatched huts on plank platforms raised on posts and joined by plank walkways, and its hut interiors: the accommodation hut of beds, tables and partition walls serves as the rest-house and the fisher's hut as the keeper's house. Still to add: the house-rafts roped end to end, the causeway of laid planks, the ferry stage, the raft shrine to Sithis and the sleeping platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1014,7 +1014,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Morthal (Skyrim), is a marsh town of ten interiors (an inn, a guardhouse, houses) and 82 people; its Nordic and farm pieces are replaced, and the inn serves as the fish-seller's alehouse. Seekhat Yol (King of the Murkmire) fits better: Argonian huts on dock pieces for the landing. Still to add: the mudflat of stilt houses, the drying racks, the upturned punts, the jetty and the shrine to the drowned.",
+     "text": "Its main source, Morthal (Skyrim), gives the marsh-town layout and its interiors, and the inn serves as the fish-seller's alehouse; its Nordic and farm pieces are replaced by Argonian ones from the pool. Seekhat Yol (King of the Murkmire) lends Argonian huts on dock pieces for the landing. Still to add: the mudflat of stilt houses, the drying racks, the upturned punts, the jetty and the shrine to the drowned.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1538,7 +1538,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, the Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), is a mine entrance with one mine interior and eleven people, a poor fit for a village of potters. Seekhat Yol (King of the Murkmire) fits better: seven Argonian hut interiors (a smithy, a carpenter's, a fisher's, a treeminder's hung with pottery and an accommodation hut of beds and tables) that serve as the potter's house and the caravan rest-house, with thatched huts on raised plank platforms and walkways. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
+     "text": "Its main source, Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), gives only its spot and a mine entrance with one interior, so Armanias is built from the pool. Seekhat Yol (King of the Murkmire) supplies the Argonian hut interiors (a smithy, a carpenter's, a fisher's, a treeminder's hung with pottery and an accommodation hut of beds and tables) that serve as the potter's house and the caravan rest-house, with thatched huts on raised plank platforms and walkways. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2843,7 +2843,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), is an Imperial ruin of eighteen pieces with no interior and is too small for a quay and a boat-house. Japhet's Folly (Skyrim) fits better: a ruined hamlet of Imperial pieces, plank shacks and stockade scaffolds with a few ship planks and two interiors, one a tower storehouse of hay, barrels, crates and shelves that serves as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
+     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), gives its spot and a few Imperial ruin pieces, with no interior, so the quay and boat-house are built from the pool. Japhet's Folly (Skyrim) lends plank shacks, stockade scaffolds and ship planks, and its tower storehouse of hay, barrels, crates and shelves serves as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3071,7 +3071,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Provision Cellar (Nyhus), is a small ruin of mine and Imperial pieces with two interiors: a provision cellar of barrels, cupboards and food serves as the back room with the snake nest, and a hideout of coffins, a metal cage and a table as the strongroom behind the iron door. Teeth of Sithis (King of the Murkmire) is an Argonian ruin of 66 hostile and does not fit a family hall. Still to add: the long pale-stone hall above ground from Imperial ruin pieces, the leviathan horn on the lintel, the hearth, the fallen roof-beam and the spiked grate.",
+     "text": "Its main source, Provision Cellar (Nyhus), gives a small ruin of mine and Imperial pieces and two interiors: a provision cellar of barrels, cupboards and food serves as the back room with the snake nest, and a hideout of coffins, a metal cage and a table as the strongroom behind the iron door. Its Nordic pieces are replaced by Imperial ruin pieces from the pool. Still to add: the long pale-stone hall above ground from Imperial ruin pieces, the leviathan horn on the lintel, the hearth, the fallen roof-beam and the spiked grate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3574,7 +3574,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a tiny Imperial ruin of nine pieces with no interior. Driftshade Sanctuary (Skyrim) fits better: an Imperial ruin of 960 Imperial pieces with two interiors, one serving as the tower's rooms and the other as the smugglers' cellar. Still to add: the square tower with its fallen roof, the granary block, the hearth platform, the ring of reeds and the broken shrine.",
+     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), gives only its spot and a few Imperial ruin pieces, with no interior, so the waystation is built from the pool. Driftshade Sanctuary (Skyrim) lends its Imperial ruin pieces and two interiors, one serving as the tower's rooms and the other as the smugglers' cellar. Still to add: the square tower with its fallen roof, the granary block, the hearth platform, the ring of reeds and the broken shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3802,7 +3802,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Nightcaller Temple (Skyrim), is a great temple with one large interior, not a watchtower, and does not fit. Old Laboratory (King of the Murkmire) fits better: a small Imperial ruin on the water with Argonian pieces, a dock and one interior, which serves as the tower's inner room where the smugglers keep their locked chest. Still to add: a leaning round tower of Imperial ruin pieces over the interior's door, the broken lantern room and the rotted pier into the channel.",
+     "text": "Its main source, Old Laboratory (King of the Murkmire), is a small Imperial ruin on the water with Argonian pieces, a dock and one interior. The interior serves as the tower's inner room where the smugglers keep their locked chest, and its door opens off the pier as the main quest's anchor needs; the dock pieces become the rotted pier into the channel. Its Nordic pieces are replaced with Imperial ruin stone. Brackwater Waystation also uses Old Laboratory, as a shed over a sea-cave; here it is a leaning watch-tower on a pier. Still to add: a leaning round tower of Imperial ruin pieces built over the interior's door, the broken lantern room on top, the mud bank it leans on and the green weed round its base.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4071,7 +4071,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ash Crypt (SolsthDungeonPack), is a cave crypt of 938 cave pieces with one interior, not a tower. Old Laboratory (King of the Murkmire) fits better: an Imperial ruin of 417 Imperial pieces with one interior, which serves as the dug-out base of the tower. Still to add: the tall tower on the rock crest, the outside stair, the blackened lamp-room, the open dig and the lookouts' bedrolls.",
+     "text": "Its main source, Ash Crypt (SolsthDungeonPack), gives a crypt interior, which serves as the dug-out base of the tower, and its Dunmer and cave pieces are replaced by Imperial ones; it holds no tower, so the tower is built from the pool. Old Laboratory (King of the Murkmire) lends Imperial ruin pieces for the tower walls. Still to add: the tall tower on the rock crest, the outside stair, the blackened lamp-room, the open dig and the lookouts' bedrolls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4325,7 +4325,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stonehill Bluff (Skyrim), is a giants' camp site of mammoth bones, giant skewers and stone slabs with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with bog beacons, cypress knees, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the reed and hide lean-tos, the smoke-rack, the drawn-up boat, the hearth pit and the feather charms and the reed platform for the hunter's cache.",
+     "text": "Its main source, Stonehill Bluff (Skyrim), gives its spot and a bare giants' camp of bones, skewers and stone slabs, with no people and no interior, so the camp is built from the pool. Near Loreisian (King of the Murkmire) lends its Argonian tribal camp pieces: bog beacons, cypress knees, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the reed and hide lean-tos, the smoke-rack, the drawn-up boat, the hearth pit and the feather charms and the reed platform for the hunter's cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4582,7 +4582,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Talking Stone Camp (Skyrim), is a giants' camp site of stone slabs, spits, hanging bones and pelts, with no people and no interior, too bare for a hunters' camp. Near Loreisian (King of the Murkmire) fits better: an Argonian tribal camp of five people with bog beacons, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the ring of reed shelters, the smoke-rack, the stack of hides, the reed mound for the dead and the boundary stone with bones.",
+     "text": "Its main source, Talking Stone Camp (Skyrim), gives its spot and a bare giants' camp of stone slabs, spits and hanging bones, with no people and no interior, so the camp is built from the pool. Near Loreisian (King of the Murkmire) lends its Argonian tribal camp pieces: bog beacons, a stone circle and a few Xanmeer busts. No room inside is needed. Still to add: the ring of reed shelters, the smoke-rack, the stack of hides, the reed mound for the dead and the boundary stone with bones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5641,7 +5641,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Reach Sons (Skyrim), is a camp of twelve people with camp and Dwemer pieces and no interior; its Dwemer and Nordic pieces are not used. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
+     "text": "Its main source, Military Camp Reach Sons (Skyrim), gives its spot and a small camp layout with no interior; its Dwemer and Nordic pieces are not used, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts, ramps and hide tents; no room inside is needed. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5909,7 +5909,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hag's Perch (Wyrmstooth), is a Nordic tower of eleven people and no interior, which does not fit a platform among mangrove roots. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet with Argonian pieces. No room inside is needed. Still to add: the stilt platform, the rope-walk, the hidden landing and the chime-post.",
+     "text": "Its main source, Hag's Perch (Wyrmstooth), gives only its spot, being a Nordic tower with no interior whose Nordic pieces are replaced, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the Argonian platform and hamlet pieces; no room inside is needed. Still to add: the stilt platform among the mangrove roots, the rope-walk, the hidden landing and the chime-post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6176,7 +6176,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, CWAttacker Camp Whiterun (Skyrim), is a small camp of four people and ten camp pieces with no interior. Ree-An-Wo (King of the Murkmire) fits better with its cypress platforms on posts, ramps and hide tents. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the drying rack and the young Hist sapling ringed with stones.",
+     "text": "Its main source, CWAttacker Camp Whiterun (Skyrim), gives its spot and a small camp layout with no interior; its Nordic pieces are replaced, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts, ramps and hide tents, and the egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the drying rack and the young Hist sapling ringed with stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6448,7 +6448,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Saerings Watch (Dragonborn), is a Nordic tower on Solstheim and does not fit a reed station. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people on the water, with cypress platforms on posts. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the thatch roof of the egg-hut from Seekhat Yol's thatch house piece, the long drying rack and the hidden landing.",
+     "text": "Its main source, Saerings Watch (Dragonborn), gives only its spot, being a Nordic tower whose Nordic pieces are replaced, so Olaxa Station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts, and the egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the thatch roof of the egg-hut from Seekhat Yol's thatch house piece, the long drying rack and the hidden landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6724,7 +6724,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Meekos Shack (Skyrim), is a three-metre homestead of four pieces and is too small. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of sixteen people with cypress platforms on posts. The egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the egg-hut, the lookout post and the landing.",
+     "text": "Its main source, Meekos Shack (Skyrim), gives only its spot and a tiny homestead hut, with no interior, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the Argonian cypress platforms on posts, and the egg-hut's room is added as the Egg Tender's Quarters interior from Seekhat Yol (King of the Murkmire). Still to add: the egg-hut, the lookout post and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6981,7 +6981,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Pale Sons (Skyrim), is a camp of ten people and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces. The post needs no room inside, so it is built of Ree-An-Wo's cypress platforms on posts with plank walkways and platform bridges from Seekhat Yol (King of the Murkmire). Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm.",
+     "text": "Its main source, Military Camp Pale Sons (Skyrim), gives its spot and a small camp layout with no interior; its Nordic pieces are replaced, so the post is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress platforms on posts, and plank walkways and platform bridges come from Seekhat Yol (King of the Murkmire); the post needs no room inside. Still to add: the lookout platform, the long landing, the toll chain, the lean-to of salt sacks and the fang charm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7233,7 +7233,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Hjaalmarch Sons (Skyrim), is a camp of eleven people with camp and Nordic pieces and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian hamlet on the water with sixteen people and cypress platforms on posts. No room inside is needed. Still to add: the lookout tower with its signal horn, the landing and the two war-canoes.",
+     "text": "Its main source, Military Camp Hjaalmarch Sons (Skyrim), gives its spot and a small camp layout with no interior; its Nordic pieces are replaced, so the post is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the Argonian cypress platforms on posts at the channel bend; no room inside is needed. Still to add: the lookout tower with its signal horn, the landing and the two war-canoes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8675,7 +8675,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Brodir Grove (Dragonborn), is a Solstheim hamlet of mine pieces with one person and no interior; its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 105 Argonian pieces with sixteen people. The chime-smith's hut interior is added from Root Whisper Village (King of the Murkmire). Still to add: the stilt houses, from the painted plank houses of Alten Meerhleel (King of the Murkmire), set on stone footings, the long landing, the forge and the chimes on every eave.",
+     "text": "Its main source, Brodir Grove (Dragonborn), gives its spot and a few mine pieces and one person, with no interior; its Nordic pieces are replaced, so Oeneas is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the Argonian hamlet pieces, and the chime-smith's hut interior is added from Root Whisper Village (King of the Murkmire). Still to add: the stilt houses, from the painted plank houses of Alten Meerhleel (King of the Murkmire), set on stone footings, the long landing, the forge and the chimes on every eave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9561,7 +9561,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, AHO (Dwarfsphere), is a Dwemer sphere-ruin of 3,711 Dwemer pieces with five interiors and does not fit a turf dome. Haj-Uxith (King of the Murkmire) fits better: a small Argonian ruin of 236 Argonian pieces with one interior, which serves as the dome's passages and hearth chamber. Still to add: the grass-covered dome above it from Argonian camp pieces, the hearth ring, the orange paper charms and the pools.",
+     "text": "Its main source, AHO (Dwarfsphere), gives only its spot, being a Dwemer sphere-ruin whose Dwemer and Nordic pieces are not used, so the den is built from the pool. Haj-Uxith (King of the Murkmire) lends its Argonian ruin pieces and its one interior, which serves as the dome's passages and hearth chamber. Still to add: the grass-covered dome above it from Argonian camp pieces, the hearth ring, the orange paper charms and the pools.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

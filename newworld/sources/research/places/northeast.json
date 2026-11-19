@@ -1196,7 +1196,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), is a Nordic hamlet of wreck pieces with 26 hostiles and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: a small Argonian camp of cypress platforms and walkways on posts, hide tents and hide fences with no interior, which suits a raised watch platform. No source holds a watch house, so the guards' bench stands on the platform in the open and they sleep in the tent. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
+     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), gives only the spot of a track junction; its Nordic wreck pieces and hostile figures are removed, so the watch is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress platforms and walkways on posts, hide tents and hide fences for the raised watch platform. No source holds a watch house, so the guards' bench stands on the platform in the open and they sleep in the tent. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1502,7 +1502,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh2 -7,-4 (Black Marsh.esm), holds eight buildings of ship and farm pieces with no people and no interior, so it lends little. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of sixteen people with cypress platforms and walkways on posts, hide tents and hide fences and no interior. Its platforms are set on the bay's mud shore and its five hostiles are removed; the houses on them are Seekhat Yol's thatched houses (King of the Murkmire), added. Still to add: the rope bridges, the drying and tanning racks, the dugouts on the mud, the smoking fire and the root hollow with the egg clutch.",
+     "text": "Its main source, BlackMarsh2 -7,-4 (Black Marsh), gives only the shape of a bay shore with a few buildings and no people or interior; its ship and farm pieces are replaced, so the hamlet is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress platforms and walkways on posts, hide tents and hide fences, set on the bay's mud shore with its five hostiles removed; the houses on them are Seekhat Yol's thatched houses (King of the Murkmire). Still to add: the rope bridges, the drying and tanning racks, the dugouts on the mud, the smoking fire and the root hollow with the egg clutch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2384,7 +2384,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarshNorth -17,3 (Black Marsh North), is a Nordic dock hamlet of 56 buildings with no interior, so its houses do not fit. Ree-An-Wo (King of the Murkmire) is closer: an Argonian camp on the water of cypress platforms and walkways on posts, hide tents, hide fences and ruin pieces, with no interior. Still to add: the square stone houses with reed roofs, the terraced plots, the hillside quarry and the stone quay. The elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). The sealed Velothi chamber under the oldest foundation is a small interior built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur).",
+     "text": "Its main source, BlackMarshNorth -17,3 (Black Marsh North), gives the dock-hamlet layout of a quay and houses along a river with no interior; its Nordic houses are replaced with square stone houses under reed roofs. The rest is built from the pool: Ree-An-Wo (King of the Murkmire) supplies cypress platforms, walkways and ruin pieces. The elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire), and the sealed Velothi chamber under the oldest foundation is a small interior built from Redeyn Ancestral Tomb's Dunmer pieces (Journey to Baan Malur). Still to add: the terraced plots, the hillside quarry and the stone quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3007,7 +3007,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stendarrs Beacon (Skyrim), is an Imperial tower with six hostiles and no interior or people, so it does not fit a hunting camp. near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with five people, shrine and camp pieces and no interior, which gives the root shrine at the camp's edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the hunters live in. Still to add: the pelt frames, the lookout in a tall trunk and the gully with the snake's den.",
+     "text": "Its main source, Stendarrs Beacon (Skyrim), gives the spot of a beacon on high ground with no interior or people; its Imperial tower and hostile figures are replaced, so the hunting camp is built from the pool. Near Loreisian (King of the Murkmire) gives the root shrine at the camp's edge from its shrine and camp pieces, and Ree-An-Wo (King of the Murkmire) supplies cypress walkways, platforms on posts and hide tents for the hunters. Still to add: the pelt frames, the lookout in a tall trunk and the gully with the snake's den.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3281,7 +3281,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), is a Daedric and Nordic ruin with one interior, so its Daedric pieces do not suit a Velothi mesa town. Raven Rock's Temple Ancestral Tomb (Dragonborn) fits better: a Dunmer tomb of Redoran hall pieces with ash pits, burial urns, bones, candles and low mist. Ash spawn lie in ambush there. It serves as the lower halls, with the hall under the well at its end. Still to add: the roofless houses round a central well, a small outer tomb interior for the herbalist's bench built from the same Redoran tomb pieces, the shrine marks and the cellars with their fungus.",
+     "text": "Its main source, Dunnashammipuri (Journey to Baan Malur), gives the mesa ruin layout with its one interior as the stair and central well; its Daedric and Nordic pieces are replaced with squared Velothi stone. The lower halls come from the pool: Temple Ancestral Tomb at Raven Rock (Dragonborn), a Dunmer tomb of Redoran hall pieces with ash pits, burial urns, bones, candles and low mist, serves as the lower halls with the hall under the well at its end; ash spawn lie in ambush there. Still to add: the roofless houses round a central well, a small outer tomb interior for the herbalist's bench built from the same Redoran tomb pieces, the shrine marks and the cellars with their fungus.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3817,7 +3817,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Northen Cage (Depths of Skyrim), is a heap of wreck and mine pieces with three hostiles and no interior, so it does not fit. The Desecrated Ancestral Tomb (Caves of Morrowind), an interior reached through that mod's Fungal Green Subterrane, fits the deep halls better: a large Dunmer tomb of Redoran hall pieces that opens into rough cave passages, with ash pits, sarcophagi, burial urns of food and herbs, skulls and low mist. It serves as the deep halls half sunk into the mesa. A lock that only the bronze key opens is added to one of its doors, which becomes the door of the household's vault. Still to add: the fallen towers and the high tower with its silent bell, the outer yard and the fungus over the halls.",
+     "text": "Vorannuhl is built from the pool: its main source, near Northen Cage (DepthsOfSkyrim), is a heap of wreck and mine pieces with no interior, so it gives only its spot and is dropped. The deep halls half sunk into the mesa are the Desecrated Ancestral Tomb (Caves of Morrowind), a large Dunmer tomb of Redoran hall pieces opening into rough cave passages, with ash pits, sarcophagi and burial urns; a lock only the bronze key opens is added to one of its doors, the household's vault. Still to add: the fallen towers, the high tower with its silent bell, the outer yard where the map marker stands and the fungus over the halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4717,7 +4717,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Mor Khazgur (Skyrim), is an Orc stronghold of stone and palisade with three interiors, so its style does not fit hide tents. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with shrine and camp pieces and no interior, which suits a camp that needs none. Still to add: the hide tents from Ree-An-Wo (King of the Murkmire) with a larger one for the chief, the feather-hung poles, the drying racks, the camp fire and the drop at the shelf's edge.",
+     "text": "Its main source, Mor Khazgur (Skyrim), gives the flat shelf and the cave beside it, with its Orc stone and palisade replaced by hide tents and its interiors left aside, so the camp is built from the pool. Near Loreisian (King of the Murkmire), a small Argonian camp needing no interior, gives shrine and camp pieces, and Ree-An-Wo (King of the Murkmire) supplies the hide tents with a larger one for the chief. Still to add: the feather-hung poles, the drying racks, the camp fire and the drop at the shelf's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5617,7 +5617,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dimfrost (Wyrmstooth), is a Nordic hamlet of mine and shrine pieces with nine people, the same count as Hirecan, and no interior, so its style does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet with cypress walkways and platforms on posts, hide tents and hide fences, which supplies the platforms and tents the Agaceph live on. The reed-roofed mission-book house and the illusionist's shop are interiors from Keeba Hollow's hut interiors (King of the Murkmire), the crafter's and the treeminder's, the first under a reed-roofed mud hut. Still to add: the slender posts, the raft racks and the painted shutters.",
+     "text": "Its main source, Dimfrost (Wyrmstooth), gives the same number of people and a small hamlet spot with no interior; its Nordic mine and shrine pieces are replaced, so the hamlet is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress walkways and platforms on posts, hide tents and hide fences, the platforms and tents the Agaceph live on. The reed-roofed mission-book house and the illusionist's shop are interiors from Keeba Hollow's hut interiors (King of the Murkmire), the crafter's and the treeminder's. Still to add: the slender posts, the raft racks and the painted shutters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5918,7 +5918,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Stonehollow (Wyrmstooth), is 13 buildings of mine and camp pieces with no people and no interior, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet on the water with no interior. The watch-elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the stone walls under reed roofs, the cairn, the signal horn on a pole and the grindstone.",
+     "text": "Its main source, near Stonehollow (Wyrmstooth), gives its spot on a rise above the river and a loose scatter of mine and camp pieces, with no people and no interior; those pieces are replaced, so the hamlet is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the water-side layout of platforms and walkways, and the watch-elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the stone walls under reed roofs, the cairn, the signal horn on a pole and the grindstone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7100,7 +7100,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Secundas Shelf (Skyrim), is four ruin pieces and one camp piece with two hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Yuvexa, which gives the Hist shrine at the settlement edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the families live in. Still to add: the drying racks, the goat pen, the lookout in a trunk facing the ruins and the snakes' lair under the lip.",
+     "text": "Its main source, Secundas Shelf (Skyrim), gives only its spot on a mesa edge with a few ruin pieces and one camp piece; its hostile figures are removed, so the camp is built from the pool. Near Loreisian (King of the Murkmire) gives the Hist shrine at the settlement edge from its shrine and camp pieces, and Ree-An-Wo (King of the Murkmire) supplies cypress walkways, platforms on posts and hide tents for the families. Still to add: the drying racks, the goat pen, the lookout in a trunk facing the ruins and the snakes' lair under the lip.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7397,7 +7397,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Tumble Arch Pass (Skyrim), is four ruin pieces and two camp pieces with three hostiles and no people, so it does not fit. near Loreisian (King of the Murkmire) fits better: an Argonian camp of five people with shrine and camp pieces, the same count as Nuxhal, which gives the Hist shrine at the post's edge. Ree-An-Wo (King of the Murkmire), with cypress walkways and platforms on posts and hide tents, supplies the platforms and tents the families live in. Still to add: the drying racks, the lookout in a trunk and the gully with the snakes' den.",
+     "text": "Its main source, Tumble Arch Pass (Skyrim), gives only its spot under a stand of trees with a few ruin and camp pieces; its hostile figures are removed, so the post is built from the pool. Near Loreisian (King of the Murkmire) gives the Hist shrine at the post's edge from its shrine and camp pieces, and Ree-An-Wo (King of the Murkmire) supplies cypress walkways, platforms on posts and hide tents for the families. Still to add: the drying racks, the lookout in a trunk facing the smoke of Tenmal Pits and the gully with the snakes' den.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7689,7 +7689,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Falkreath Sons (Skyrim), is a Nordic and Imperial tent camp of 20 people and 11 hostiles, so its tents and style do not fit a camp of hide tents on platforms. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of cypress walkways and platforms on posts, hide tents and hide fences with 16 people and no interior, which supplies the platforms and tents the families live in. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path.",
+     "text": "Its main source, Military Camp Falkreath Sons (Skyrim), gives only its spot and the idea of a small camp; its Nordic and Imperial tents, people and hostile figures are replaced, so the camp is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress walkways and platforms on posts, hide tents and hide fences, which carry the families. Near Loreisian (King of the Murkmire) lends a shrine piece. Still to add: the drying racks of reed and feather, the shrine at the post's edge, the lookout in a trunk facing the cave and the web on the cave path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

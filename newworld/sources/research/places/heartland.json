@@ -834,7 +834,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dwemer Lift (Wyrmstooth), is a Dwemer and Falmer ruin city with a single interior and 23 hostile figures and does not fit a lake harbour. Lilmoth (King of the Murkmire) fits better: an Argonian and Imperial harbour city with 46 interiors, among them a tavern, an ironworks, an apothecary, a shipwright, an imports shop, a guardhouse and merchant manors. These serve as the quay tavern, the harbour smithy, the sap and herb seller's house, the cloth trader's shop, the harbour watch post and the council hall. Still to add: reed-pile quays and warehouses at the lake edge, the city tree and the Zenithar shrine.",
+     "text": "Its main source, Dwemer Lift (Wyrmstooth), gives the spot of a large city beside water and nothing else usable; its Dwemer and Falmer ruin pieces and foes are replaced, so the harbour is built from the pool. Lilmoth (King of the Murkmire) supplies the Argonian and Imperial interiors: its tavern as the quay tavern, ironworks as the harbour smithy, apothecary as the sap and herb seller's house, imports shop as the cloth trader's shop, guardhouse as the harbour watch post and a merchant manor as the council hall. Still to add: reed-pile quays and warehouses at the lake edge, the city tree and the Zenithar shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1144,7 +1144,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Wayfinder Trading Post (Skyrim Trading Posts), is a Nordic and Orc trading post of three buildings with no interior, too small and too Nordic for a village of ten. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings with seven interiors, among them an egg-tender's quarters, a tree-minder's hut and households' huts, which serve as the elder-woman's house and the potters' homes. Still to add: the raised mound of red clay, the kilns and drying racks for pots and cloth, the ferryman's hut and the landing.",
+     "text": "Its main source, Wayfinder Trading Post (Skyrim Trading Posts), gives little beyond its lakeshore spot and the idea of a trading stop, with its Nordic and Orc pieces replaced, so the village is built from the pool. Seekhat Yol (King of the Murkmire) supplies the Argonian huts and its interiors, among them an egg-tender's quarters, a tree-minder's hut and households' huts, which serve as the elder-woman's house and the potters' homes. Still to add: the raised mound of red clay, the kilns and drying racks for pots and cloth, the ferryman's hut and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1395,7 +1395,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Honningbrew Meadery (Skyrim), is a Nordic hamlet of farm pieces with three interiors and 23 hostile figures. Its three interiors serve the estate: the Meadery's hall as Aldyne Ulvarys' hall, its Basement as the cellar under it, and the Boilery as the rice store. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls. Ree-An-Wo (King of the Murkmire) is the closer match in size: a small Argonian hamlet of 31 buildings with no interior. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank.",
+     "text": "Its main source, Honningbrew Meadery (Skyrim), is a Nordic farm hamlet with three interiors and hostile figures. Its three interiors serve the estate: the Meadery's hall as Aldyne Ulvarys' hall, its Basement as the cellar under it, and the Boilery as the rice store. The hostile figures are removed and the Nordic pieces are replaced with stone footings and reed and mud walls, with Ree-An-Wo's Argonian platform pieces (King of the Murkmire) from the pool for the outbuildings. Still to add: the laid-stone causeway to the ferry post, the saltrice paddies, the ferry raft and the opened cairn on the near bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3771,7 +3771,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Southroad Pass (Wyrmstooth), is a large Nordic and Imperial tower fort of 365 buildings with one interior, far beyond a one-keeper station, so it does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water whose cypress walkways and platforms on posts serve as the platform. Near Loreisian (King of the Murkmire), a small Argonian camp of doomstone circles, cypress knees and bog beacons, serves as the totem-post. Still to add: the watch post with its lantern and horn, the nest-pits, the junction landing and the platform's fishing edge.",
+     "text": "Its main source, Southroad Pass (Wyrmstooth), gives only the spot of a lookout at a junction, with its one interior left aside and its Nordic and Imperial tower fort replaced, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress walkways and platforms on posts as the platform, and near Loreisian (King of the Murkmire), a small camp of doomstone circles, cypress knees and bog beacons, supplies the totem-post. Still to add: the watch post with its lantern and horn, the nest-pits, the junction landing and the platform's fishing edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4037,7 +4037,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), is a ruined Imperial redoubt of 166 buildings with one interior and 16 hostile figures, far larger than a four-keeper hummock, so it does not fit. Ree-An-Wo (King of the Murkmire) is the better kind: an Argonian camp by water of six hide tents on cypress platforms raised on posts and hide fences, which serves as the hunters' huts. Still to add: the canoe lane under the roots, the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
+     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), gives only the spot of a hummock; its Imperial redoubt pieces and hostile figures are removed, so the hummock is built from the pool. Ree-An-Wo (King of the Murkmire) supplies three of its hide tents on cypress platforms raised on posts and its hide fences as the hunters' huts. Still to add: the canoe lane under the roots, the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5606,7 +5606,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Shors Watchtower (Skyrim), is a Nordic and Imperial watchtower of one building with no interior. It lends its stone footing for a river watch and its Nordic pieces are replaced. Near Loreisian (King of the Murkmire) fits better: an Argonian camp of eight buildings with doomstone circles, cypress knees and bog beacons and no tents, whose standing stones serve as the rune-carved totems. Still to add: a reed palisade round the bank, the ferry post and the landing.",
+     "text": "Its main source, Shors Watchtower (Skyrim), gives the stone footing for a river watch, a single building with no interior; its Nordic and Imperial pieces are replaced. The rest is built from the pool: near Loreisian (King of the Murkmire) lends doomstone circles, cypress knees and bog beacons, whose standing stones serve as the rune-carved totems, and Ree-An-Wo (King of the Murkmire) lends hide fences for the bank. Still to add: a reed palisade round the bank, the ferry post and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5848,7 +5848,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Sadrith Kegran (Dwarfsphere), is a Dwemer and Dunmer tower city of 33 interiors and 247 hostile figures, far too large for a go-between post, so it does not fit. Near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings with doomstone circles, cypress knees and bog beacons and no tents, whose standing stones serve as the totems. Ree-An-Wo (King of the Murkmire), with six hide tents on cypress platforms, supplies the huts. Still to add: a reed palisade, the canoe shed and the landing.",
+     "text": "Its main source, Sadrith Kegran (Dwarfsphere), gives only its riverbank spot; its Dwemer and Dunmer towers, interiors and hostile figures are all left out, so the post is built from the pool. Near Loreisian (King of the Murkmire) supplies doomstone circles, cypress knees and bog beacons, whose standing stones serve as the totems, and Ree-An-Wo (King of the Murkmire), with its hide tents on cypress platforms, supplies the huts. Still to add: a reed palisade, the canoe shed and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6213,7 +6213,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Blizzard Rest (Skyrim), is a small camp of giant obelisk slabs, mammoth skulls, a giant mortar and skewers with no building, too small for nine Naga. Near Loreisian (King of the Murkmire), an Argonian camp of doomstone circles, cypress knees and bog beacons with no tents, serves as the old leader's place, and Ree-An-Wo (King of the Murkmire), whose six hide tents on cypress platforms serve as the lean-tos, fits better. Still to add: the slit-trench latrine, bones strung on lines, a fire pit, the stolen sap-skins and the captive sap-gatherer.",
+     "text": "Its main source, Blizzard Rest (Skyrim), gives the spot of a dry mound and its odd pieces of giant slabs, mammoth skulls and skewers, with no building; the snow-giant pieces are replaced. The camp is built from the pool: near Loreisian (King of the Murkmire), with doomstone circles, cypress knees and bog beacons, serves as the old leader's place, and Ree-An-Wo (King of the Murkmire) supplies hide tents on cypress platforms as the lean-tos. Still to add: the slit-trench latrine, bones strung on lines, a fire pit, the stolen sap-skins and the captive sap-gatherer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6554,7 +6554,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Brucas Leap Redoubt (Skyrim), is a camp of 101 buildings with one interior, built in mine and cave pieces. Its interior serves as the seer's den. Near Loreisian (King of the Murkmire) lends Argonian huts for the bank. Still to add: lean-tos and totem poles, the stolen totem-stone and the bank landing.",
+     "text": "Its main source, Brucas Leap Redoubt (Skyrim), is a camp in mine and cave pieces with one interior, which serves as the seer's den in the bank. Its Forsworn hide and bone pieces are dropped, and the huts on the bank are Argonian huts from the pool, taken from the camp near Loreisian's set (King of the Murkmire). Still to add: lean-tos and totem poles, the stolen totem-stone, the bank landing and the people of the camp at their fires.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7460,7 +7460,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cradlecrush Rock (Skyrim), is a tiny camp of hay mounds, hanging bones and a giant's chest with no building, no tent and no interior. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of six hide tents, hide fences and cypress walkways on posts, which serves as the reed shelters, the headwoman's place and the reed-mat racks. Still to add: reed mats in place of the hide on the tents, net-lines and fish-traps at the shore, the camp fire and the cut net-line.",
+     "text": "Its main source, Cradlecrush Rock (Skyrim), gives the low bank spot and a few hay mounds, hanging bones and a giant's chest, with no building and no interior. The shelters come from the pool: Ree-An-Wo (King of the Murkmire) supplies its hide tents, hide fences and cypress walkways on posts as the reed shelters, the headwoman's place and the mat racks, and near Loreisian (King of the Murkmire) adds marsh setting. Still to add: reed mats in place of the hide on the tents, net-lines and fish-traps at the shore, the camp fire and the cut net-line.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

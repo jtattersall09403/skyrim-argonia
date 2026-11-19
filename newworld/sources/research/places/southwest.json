@@ -898,7 +898,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Forth Isle (Journey to Baan Malur), is an Imperial island fort of 24 buildings with one shack, far too small for a fortress prison. Cracked Tusk (Skyrim) fits better: an Imperial and Orc fort of 254 buildings with two keep interiors and three doors, one keep serving as the raj-kaal's hall and the other as the lower cells. Still to add: a water plane in the lower cell to drown it, the bastions set in marsh water, the Blackguard banners and fires, the yard forge and the warden's vault with its office.",
+     "text": "Its main source, Cracked Tusk (Skyrim), is a walled stone fort with two keep interiors and three doors: one keep serves as the raj-kaal's hall and the other as the lower cells the main quest leads into. Its Orc and Nordic pieces (totems, banners, hide awnings) are replaced, and its walls are refaced with grey Lilmothiit rubble from the pool, part-sunk so the bastions stand in marsh water. Fort Silvermoth also uses Cracked Tusk, dry and whole; Blackrose Prison is its flooded, rubble-faced prison. Still to add: a water plane in the lower cells to flood them, the Blackguard banners and fires on the upper wall, the yard forge, the prison gate where the map marker stands, and the warden's office with its vault.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1675,7 +1675,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stonehills (Skyrim), is a Nordic mining village of 78 buildings with two interiors and does not fit a lakeshore fishing village. Keeba Hollow (King of the Murkmire) fits better: an Argonian stilt village of 203 buildings and nine interiors, a fisher's hut, a snail-minder's hut and a tree-minder's hut among them. The fisher's hut serves as the ferry families' cookhouse. Still to add: the fish-drying rack frame, the lantern post at the landing and the tarred pole-boat yard.",
+     "text": "Its main source, Keeba Hollow (King of the Murkmire), is an Argonian stilt village with nine hut interiors, among them a fisher's hut that serves as the ferry families' cookhouse; a few of its huts on stilts are set on the muddy lakeshore and the rest are dropped. Arorha also uses Keeba Hollow, built up on red clay mounds; Lujei keeps the stilts low over mud and adds no mounds or kilns, and it is a third the size. Its Nordic pieces are replaced with King of the Murkmire's reed and plank. Still to add: the fish-drying rack frame, the lantern post at the landing and the tarred pole-boat yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2132,7 +2132,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Honeymane Trading Post (Skyrim Trading Posts), is a Nordic post of seven buildings with no interior and does not fit a village of stilt houses. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings with seven interiors, among them a fisher's hut and an accommodation hut that serve as the salvagers' longhouse. Its dock pieces make the landing. Still to add: the wreck offshore, built from Skyrim's sunken ship pieces as at Pilgrims Trench, the salt pans, the drying racks, the driftwood shrine above the beach and the salvage timber.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village with seven hut interiors; here only a handful of its low stilt huts are strung in one line along the beach on its dock pieces, and its accommodation hut serves as the salvagers' longhouse. Seafalls keeps Seekhat Yol's cliff-and-shoal village, so Natai is the flat, salt-white beach version: no platforms climbing, weathered salvage timber patched into every wall. Its Nordic pieces are replaced. Still to add: the wreck offshore from Skyrim's sunken ship pieces, the salt pans, the drying racks, the driftwood shrine above the beach and the salvage store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2382,7 +2382,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Pale Trading Post (Skyrim Trading Posts), is a Nordic post of two buildings with no interior, long and thin along the water but too small. Keeba Hollow (King of the Murkmire) fits better: Argonian stilt huts and nine interiors, among them a fisher's hut and a crafter's hut that serve as the longhouse and the boatwright's workshop. Its dock pieces make the moorings. Still to add: the rope bridges between the stilt houses, the fish traps at the channel mouth and the cord of knots under the longhouse eaves.",
+     "text": "Its main source, Pale Trading Post (Skyrim Trading Posts), gives the long thin shape along the lakeshore, with a small post and no interior; its Nordic pieces are replaced. The stilt village is built from the pool: Keeba Hollow (King of the Murkmire) lends Argonian stilt huts, and its fisher's hut and crafter's hut serve as the longhouse and the boatwright's workshop, while its dock pieces make the moorings. Still to add: the rope bridges between the stilt houses, the fish traps at the channel mouth and the cord of knots under the longhouse eaves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2863,7 +2863,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cormaris (Journey to Baan Malur), is a Dunmer farm hamlet of 16 buildings with one small interior and does not fit an Argonian rice village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of thatched huts on raised plank platforms, 160 buildings and seven interiors, of which the egg-tenders' quarters, a hut of shelves, baskets and chests, serves as the granary. Cormaris lends its farm pieces for the rice stores. Still to add: the terraced paddies, the boardwalk road and the channel fish traps.",
+     "text": "Its main source, Cormaris (Journey to Baan Malur), gives the farm hamlet's layout and its one small interior, with its Dunmer, Imperial and Nordic pieces replaced, and its farm pieces make the rice stores. The Argonian huts are built from the pool: Seekhat Yol (King of the Murkmire) lends thatched huts on raised plank platforms, and its egg-tenders' quarters, a hut of shelves, baskets and chests, serve as the granary. Still to add: the terraced paddies, the boardwalk road and the channel fish traps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4276,7 +4276,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Grondal Passage (Nyhus), is a Dwemer and Nordic hamlet around a single cave, which does not fit a ring of tiered Argonian halls. Teeth of Sithis (King of the Murkmire) fits better: an Argonian ruin with tiered halls, three interiors and a large footprint. Its halls interior serves as the serpent's den in the great hall. Still to add: the stockade and landing set under water by a water plane, the lichen, the Legion banner and the pile of rusted arms.",
+     "text": "Its main source, Grondal Passage (Nyhus), gives its spot and the hamlet's one cave interior; its Dwemer, Nordic and Imperial pieces are replaced. The ring of tiered halls is built from the pool: Teeth of Sithis (King of the Murkmire), an Argonian ruin with tiered halls, three interiors and a large footprint, lends its halls, and its halls interior serves as the serpent's den in the great hall. Still to add: the stockade and landing set under water by a water plane, the lichen, the Legion banner and the pile of rusted arms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5047,7 +5047,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kagrumez (Dragonborn), is a Dwemer ruin of 264 buildings with one interior and does not fit a drowned Argonian village. Seekhat Yol (King of the Murkmire) fits better: an Argonian village of 160 buildings, with thatched huts on raised plank platforms and docks. Its huts are set so that three roof peaks and a leaning platform show above the water. Still to add: the line of stumps along the old street, the fish-bone shrine on the highest roof and the chest under water in the street.",
+     "text": "Zul-Etha is built from the pool: its allocated source, Kagrumez (Dragonborn), is a Dwemer ruin and gives it nothing but its spot, so every Dwemer and Nordic piece of it is replaced. Three of King of the Murkmire's thatched stilt huts are sunk to their roof peaks in the drowned street, one plank platform is tilted beside them, and a line of cut cypress stumps marks the old lane; no Seekhat Yol layout is copied, so it shares nothing with Seafalls or Natai but loose hut pieces. Still to add: the drowned posts along the old street, the fish-bone shrine on the highest roof and the chest under water in the street that the main quest sends the player to.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5290,7 +5290,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Tamriel 18,35 (DepthsOfSkyrim), is a bare Imperial ruin of ten pieces with no interior and no cellar. Old Laboratory (King of the Murkmire) fits better: an Imperial and Argonian ruin on the water with a dock and one interior, which serves as the cellars where outlaws sleep, its lower part set under water. Still to add: the broken stone tower and wall, the creepers over the Imperial crest, the cold forge in the yard and the outlaws' stash.",
+     "text": "Its main source, Tamriel 18,35 (DepthsOfSkyrim), gives the bare Imperial ruin of broken stone pieces on the mud rise, with no interior and no cellar. The cellars are built from the pool: Old Laboratory (King of the Murkmire), an Imperial and Argonian ruin on the water with a dock and one interior, lends that interior as the cellars where outlaws sleep, its lower part set under water. Still to add: the broken stone tower and wall, the creepers over the Imperial crest, the cold forge in the yard and the outlaws' stash.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5532,7 +5532,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Xocei-Tluthek (King of the Murkmire), is an Argonian ruin of 990 buildings, far larger than three domes, and does not fit. Huluxinoag (King of the Murkmire) fits better: a small Argonian ruin of 59 buildings with cave pieces and one root interior, which serves as the third dome with its grave goods. Still to add: the three low turf domes built from its cave pieces, the sedge, the flooded burrows and the fox-kite poles.",
+     "text": "Its main source, Xocei-Tluthek (King of the Murkmire), gives the Argonian ruin's spot in the swamp and its ruin pieces, of which only a few are kept, since three low domes need far less; its Dwemer and Nordic pieces are replaced. The domes are built from the pool: Huluxinoag (King of the Murkmire), a small Argonian ruin with cave pieces, lends its cave pieces for the domes and its one root interior as the third dome with its grave goods. Still to add: the three low turf domes, the sedge, the flooded burrows and the fox-kite poles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6006,7 +6006,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Avanchnzel (Skyrim), is a Dwemer ruin of 3105 buildings with three interiors and does not fit a flooded fox-folk den. Huluxinoag (King of the Murkmire) fits better: a small Argonian ruin of 59 buildings with cave pieces and one root interior, which serves as the drowned lower burrow with a water plane set in it. Still to add: the fallen roof, the ring of black stumps, the fox-kite poles and cloth, and the hunter's blind.",
+     "text": "Its main source, Avanchnzel (Skyrim), gives only its spot in the swamp, since it is a Dwemer ruin; its Dwemer and Imperial pieces are not used. The flooded den is built from the pool: Huluxinoag (King of the Murkmire), a small Argonian ruin with cave pieces and one root interior, lends the cave pieces for the turf hollow and its interior as the drowned lower burrow, with a water plane set in it. Still to add: the fallen roof, the ring of black stumps, the fox-kite poles and cloth, and the hunter's blind.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6289,7 +6289,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Lair of Ymir (Here There Be Monsters), is four ship pieces with no interior and no hold. Icerunner (Skyrim) fits better: a wreck whose one interior is a hold of crates, barrels, hay and benches, which serves as the hold. Its Nordic hull pieces are replaced with a Khajiit coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the broken ribs on the sand bar, the casks of salt with a false bottom, the captain's locked chest and the fish laid on the bow.",
+     "text": "Its main source, The Lair of Ymir (Here There Be Monsters), gives the broken hull from its ship pieces on the sand bar, with no interior and no hold. The hold is built from the pool: Icerunner (Skyrim), a wreck whose one interior is a hold of crates, barrels, hay and benches, serves as the hold, and its Nordic hull pieces are replaced with a Khajiit coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the broken ribs on the sand bar, the casks of salt with a false bottom, the captain's locked chest and the fish laid on the bow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6791,7 +6791,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Longmont (Black Marsh & Valenwood), is a town of eight buildings with no interior, too thin for a fishing village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and a fisher's hut that serves as the fish-and-salt seller's room. Still to add: the drying racks, the boat slip, the salt-white shrine stone at the landing and the wreckers' cache in the dunes.",
+     "text": "Its main source, Longmont (Black Marsh and Valenwood), gives the place its spot on the shore and a thin line of houses with no interior. The fishing village is built from the pool: Seekhat Yol (King of the Murkmire) lends Argonian stilt houses, dock pieces and a fisher's hut that serves as the fish-and-salt seller's room. Still to add: the drying racks, the boat slip, the salt-white shrine stone at the landing and the wreckers' cache in the dunes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7047,7 +7047,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Silversand Trading Post (Skyrim Trading Posts), is a Nordic post of three buildings with no interior, too small for a village. Seekhat Yol (King of the Murkmire) fits better: Argonian stilt houses, dock pieces and an accommodation hut that serves as the longhouse. Still to add: the log landing, the drying racks, the ring of pale stones on the headland and the tanning rack.",
+     "text": "Its main source, Silversand Trading Post (Skyrim Trading Posts), gives the shore spot and a small post with no interior; its Nordic pieces are replaced. The village is built from the pool: Seekhat Yol (King of the Murkmire) lends Argonian stilt houses and dock pieces, and its accommodation hut serves as the longhouse. Still to add: the log landing, the drying racks, the ring of pale stones on the headland and the tanning rack.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7289,7 +7289,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Darklight Tower (Skyrim), is an Imperial ruin tower and does not fit a mine. Gloombound Mine (Skyrim) fits better: a small mine of 60 buildings with one interior, which serves as the galleries. The Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes) lends its shaft interior for the flooded lower galleries. Still to add: the rusted rails, the broken sluice, the winch house as a plain ruined shed, the chief's chest and the Hist-token on its pole.",
+     "text": "Its main source, Darklight Tower (Skyrim), gives only its spot, since it is an Imperial ruin tower; its Imperial, Nordic and Dwemer pieces are not used. The mine is built from the pool: Gloombound Mine (Skyrim), a small mine with one interior, lends that interior as the galleries, and the Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes) lends its shaft interior for the flooded lower galleries. Still to add: the rusted rails, the broken sluice, the winch house as a plain ruined shed, the chief's chest and the Hist-token on its pole.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7757,7 +7757,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ilinaltas Deep (Skyrim), is an Imperial ruin of 488 buildings and does not fit a mine. Bilegulch Mine (Skyrim) fits better: an Orc mine of 90 buildings with one interior, which serves as the upper levels and the lower galleries, the lower part set under water. Still to add: the timber headframe over the shaft mouth, the cracked Imperial votive niche and the smugglers' store.",
+     "text": "Its main source, Ilinaltas Deep (Skyrim), gives its spot and ruined stone pieces, with its Imperial and Nordic pieces replaced. The mine itself is built from the pool: Bilegulch Mine (Skyrim), an Orc mine with one interior, lends that interior as the upper levels and the lower galleries, the lower part set under water, with its orc pieces swapped for plain timber. Still to add: the timber headframe over the shaft mouth, the cracked Imperial votive niche and the smugglers' store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8219,7 +8219,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Frostmoon Crag (Dragonborn), is an open mine area with no building or interior, which suits an open quarry. Gloombound Mine (Skyrim) lends a mine interior if the strata find needs one. Still to add: the terraced cut, the stone sled track, the cutting shed with its Sithis niche and the stacked grey blocks.",
+     "text": "Its main source, Frostmoon Crag (Dragonborn), is an open mine area with no building or interior, which gives the open ground of the quarry and its rock faces to cut the terraces from. If the strata find needs a room, a short mine interior is built from the pool from Gloombound Mine's timbered gallery pieces (Skyrim). Still to add: the terraced cut, the stone sled track, the cutting shed with its Sithis niche and the stacked grey blocks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8448,7 +8448,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ironrock Mine (ExploreSkyrim-ES), is an enclosed mine of 157 buildings and does not fit an open cut. Frostmoon Crag (Dragonborn) fits better: an open area with no building or interior and mine and camp pieces. Still to add: the red-stained cut, the sled track to the shore, the crew's shed and the niche cut into the face.",
+     "text": "Its main source, Ironrock Mine (ExploreSkyrim-ES), gives only its spot on the hillside, since its enclosed mine is not an open cut and its interior is not used. The quarry is built from the pool: Frostmoon Crag (Dragonborn), an open area with no building or interior, lends its mine and camp pieces for the cut and the crew's shed. Still to add: the red-stained cut, the sled track to the shore, the crew's shed and the niche cut into the face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8665,7 +8665,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Lady Padomay (King of the Murkmire), is a moored ship and does not fit a forest clearing. Chillwater Mill (Wyrmstooth) fits better: a mill of nine buildings with lumber pieces and one interior, which serves as the bunk house. Its Nordic farm pieces are replaced. Still to add: the log yard of red gum, the felling-post with its gar jaw, the haul track and the tanning rack.",
+     "text": "Its main source, The Lady Padomay (King of the Murkmire), gives only its spot and its Argonian pieces, since it is a moored ship and the camp is a forest clearing. The camp is built from the pool: Chillwater Mill (Wyrmstooth) lends its lumber pieces and its one interior as the bunk house, with its Nordic farm pieces replaced. Still to add: the log yard of red gum, the felling-post with its gar jaw, the haul track and the tanning rack.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9184,7 +9184,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Morvunskar (Skyrim), is an Imperial fort of 361 buildings with two interiors, which serve as the gatehouse and the iron-doored strongroom. Its yard and gate are set in standing water. Still to add: the creepers on the walls, the weathered standard-shrine, the Legion forge and the outlaws' stash.",
+     "text": "Its main source, Morvunskar (Skyrim), is an Imperial fort with two interiors, which serve as the gatehouse and the iron-doored strongroom; its yard and gate are set in standing water. Its Nordic pieces (banners, hide awnings, carved posts) are replaced with weathered Imperial stone and Legion fittings from the pool. Still to add: the creepers on the walls, the weathered standard-shrine, the Legion forge and the outlaws' stash.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9431,7 +9431,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Irkngthand (Skyrim), is a Dwemer ruin of 2661 buildings with four interiors and does not fit a village in the trees. Keeba Hollow (King of the Murkmire) fits better: Argonian mud huts with reed roofs and raised plank walkways, and nine interiors, whose huts serve as the dry halls where scavengers sleep. Left Hand Mine (Skyrim), a mining village, lends the mine crews' barracks. Still to add: the creepers on the old walls, the hollow stump shrine with its bird bones and the buried gold chest under a hall floor.",
+     "text": "Its main source, Irkngthand (Skyrim), gives only its spot among the trees, since it is a Dwemer ruin; its Dwemer and Falmer pieces are replaced. The ring of rotted halls is built from the pool: Keeba Hollow (King of the Murkmire) lends Argonian mud huts with reed roofs and raised plank walkways, whose interiors serve as the dry halls where scavengers sleep, and Left Hand Mine (Skyrim) lends the mine crews' barracks. Still to add: the creepers on the old walls, the hollow stump shrine with its bird bones and the buried gold chest under a hall floor.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9649,7 +9649,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a camp near the Shrine of Boethiah (Skyrim), is a dry Imperial camp of 40 buildings and does not fit a stilt platform in the water. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp on the water of cypress walkways and platforms on posts, hide tents and hide fences, which gives the platform and the watchers' tents. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest.",
+     "text": "Its main source, near Shrineof Boethiah (Skyrim), gives only its spot, since it is a dry camp; its Imperial and Nordic pieces are replaced. The stilt platform is built from the pool: Ree-An-Wo (King of the Murkmire), an Argonian camp on the water of cypress walkways and platforms on posts, hide tents and hide fences, gives the platform and the watchers' tents, with no interior. Still to add: the tall lookout platform, the boat tied below, the Banujha tree-token shrine and the watch leader's chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9868,7 +9868,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Reaver's Respite (Journey to Baan Malur), is a pirate hamlet of 48 buildings with ship pieces and two interiors and does not fit a river station of the Naka-Desh. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet of 31 buildings on water, with cypress platforms on posts, hide tents and hide fences, which supplies the platforms and tents. Still to add: the fishing weir from dock pieces, the elder's chest and the riddle trading room, a small interior taken from the Reaver's Respite's interior of crates, shelves and fish barrels.",
+     "text": "Its main source, The Reaver's Respite (Journey to Baan Malur), gives the river station's spot and layout with its ship pieces for the landing, and one of its two interiors, a room of crates, shelves and fish barrels, serves as the riddle trading room; its Nordic pieces are replaced. The tents are built from the pool: Ree-An-Wo (King of the Murkmire) supplies cypress platforms on posts, hide tents and hide fences. Still to add: the fishing weir from dock pieces and the elder's chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10106,7 +10106,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Falmer Valley (Dawnguard), is a landmark of cave and mine pieces over a dead valley floor. It has no interior, so the vent shaft and the deepest vent are an added cave interior of mine and cave pieces from Gloombound Mine (Skyrim). Still to add: the glassy black ground, the white ash, the dead snags, the gas and fire vents and the fire salts.",
+     "text": "Its main source, DLC01FalmerValley 3,0 (Dawnguard), gives the landmark of cave and mine pieces over a dead valley floor, with its Falmer pieces replaced by plain rock. It has no interior, so the vent shaft and the deepest vent are an added cave interior built from the pool: mine and cave pieces from Gloombound Mine (Skyrim). Still to add: the glassy black ground, the white ash, the dead snags, the gas and fire vents and the fire salts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10609,7 +10609,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, the Wreck of the Serpent's Wake (Northwatch Coast), is five ship pieces with no interior, so it has no hold. Icerunner (Skyrim) fits better: a wreck whose one interior is a hold of crates, barrels, hay and benches, which serves as the hold. Its Nordic hull pieces are replaced with a Bosmer coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the dark hull on the sea floor, the trailing weed, the captain's chest and the oilcloth bundles of silk and bows.",
+     "text": "Its main source, Wreck of the Serpent's Wake (Northwatch Coast), gives the hull from its ship pieces on the sea floor, with no interior and no hold. The hold is built from the pool: Icerunner (Skyrim), a wreck whose one interior is a hold of crates, barrels, hay and benches, serves as the hold, and its Nordic hull pieces are replaced with a Bosmer coaster's. Still to add: the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the dark hull on the sea floor, the trailing weed, the captain's chest and the oilcloth bundles of silk and bows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

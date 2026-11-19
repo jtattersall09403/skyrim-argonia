@@ -1113,7 +1113,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Broken Tusk Mine (Dragonborn), is a Dunmer and Nordic dig on Solstheim with one interior. Gloombound Mine (Skyrim) fits better: a mine with one interior of timbered galleries, four people and a single door, which serves as the working shaft. Whistling Mine (Skyrim), a mine by water with its own interior, serves as the older shaft. Still to add: the open salt face, the timber headframe, the carts and stacked blocks under reed roofs, the walled-off gallery, the brine pools and the spoil heap.",
+     "text": "Its main source, Broken Tusk Mine (Dragonborn), gives the cut rock face and the layout of a dig with a single interior as the working shaft; its Dunmer and Nordic timber and stone are replaced with reed roofs and plain timber, and its foes are removed. The older shaft comes from the pool: Gloombound Mine (Skyrim), a one-door mine of timbered galleries, and Whistling Mine (Skyrim), a mine by water, lend interiors as pieces. Still to add: the open salt face, the timber headframe, the carts and stacked blocks under reed roofs, the walled-off gallery, the brine pools and the spoil heap.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1920,7 +1920,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Broken Tower Redoubt (Skyrim), is an Imperial and Nordic ruined fort of 307 buildings with 11 foes and two interiors. It does not fit a camp of nine. near Loreisian (King of the Murkmire) fits better: a small Argonian tribal camp of eight buildings, by water. It has doomstone circles, cypress knees, bog beacons, Hist roots and a few Xanmeer busts but no tents and no interior, so it serves as the marsh setting around the roost. Ree-An-Wo (King of the Murkmire), a camp of six hide tents, hide fences and cypress walkways on posts, supplies the tents. Still to add: the high perches of timber and rock, the boundary poles marked in feathers and bones, the nets slung between the trees, the hoard chest of ash-glass and the hawk nests.",
+     "text": "Its main source, Broken Tower Redoubt (Skyrim), gives only its rise and the idea of a defended height; its Imperial and Nordic fort pieces are replaced and the camp is built from the pool. Near Loreisian (King of the Murkmire) supplies the marsh setting of doomstone circles, cypress knees, bog beacons, Hist roots and a few Xanmeer busts around the roost, and Ree-An-Wo (King of the Murkmire) supplies the hide tents. Still to add: the high perches of timber and rock, the boundary poles marked in feathers and bones, the nets slung between the trees, the hoard chest of ash-glass and the hawk nests.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2457,7 +2457,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh 4,-4 (Black Marsh), is a Nordic hamlet of eleven buildings with no interior, so its Nordic pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of sixteen people, with cypress walkways and platforms on posts, hide tents, hide fences and ruin pieces and no interior. It supplies the walkways and the tents the landing's people live in. Still to add: the stone jetty, the lime kiln, the open loading sheds that the trader's stall stands in, the stone stacks and the stash under the jetty.",
+     "text": "Its main source, BlackMarsh 4,-4 (Black Marsh), is a Nordic hamlet of eleven pieces with no interior; it gives the layout of a small landing on the shore, and its Nordic pieces are replaced. The walkways and the few hide tents on cypress platforms raised on posts above the shore, where the landing's people live, are loose King of the Murkmire pieces from the pool, kept few so that dry stone, not tents, sets Ysan's look. Still to add: the neat dry-stone jetty with its stacked blocks sorted by size, the lime kiln with its white dust on the reeds, the open loading sheds the trader's stall stands in and the stash under the jetty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3356,7 +3356,7 @@
     },
     {
      "aspect": "source",
-     "text": "No ranked source holds a ship with an interior. Its main source, Wreck? (DepthsOfSkyrim), is a bare wreck of eleven static pieces with rock and trees. Ink Lagoon (Journey to Baan Malur) is a ruined hull in a lagoon with no interior. They lend only the broken hull and the shoal rock. The upright sloop, its mast stump, the shut deckhouse hatch and the strongbox inside the deckhouse are added from Skyrim's ship pieces, set in shallow water over a jagged shoal; the deckhouse is one small interior behind the hatch.",
+     "text": "Its main source, Wreck? (DepthsOfSkyrim), gives the broken hull and the shoal rock of a bare wreck of static pieces; Ink Lagoon (Journey to Baan Malur), a ruined hull in a lagoon, lends the same. Neither holds a ship with an interior, so the rest is built from the pool: the upright sloop, its mast stump, the shut deckhouse hatch and the strongbox are added from Skyrim's ship pieces, set in shallow water over a jagged shoal. Still to add: the deckhouse as one small interior behind the hatch, the painted gull on the bow and the weed and floating spars.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4586,7 +4586,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Velothi Mountains Pass (CavesofMorrowind), is a Dwemer and Imperial range of 2112 buildings, 81 foes and seven interiors. It is far too large. Mount Moesring (Dragonborn) fits better: a bare crag with no buildings, one foe and shrine and ruin pieces, shaped here into a single grey-green spire. Still to add: the goat-path up the south face, the cairn with its buried cache, the nesting ledges, the pirate lookout post and a small cave interior on the north face built from Skyrim's cave pieces.",
+     "text": "Its main source, Mount Moesring (Dragonborn), is a bare crag with no buildings, which is what the Grey Tooth is: its rock is shaped here into a single dark grey-green spire, and its few shrine and ruin pieces are dropped. The main quest's small cave on the north face is added from Skyrim's cave pieces, a short interior behind its own door. Still to add: the goat-path up the south face where the map marker stands, the cairn with its buried cache, the sea-bird nesting ledges, the thin salt-grass and wind-bent shrubs, and the Collector's men's lookout post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5150,7 +5150,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ink Lagoon (Journey to Baan Malur), is a lagoon wreck of three ship pieces with ruin and camp pieces and no interior, so it lends only the beached hull and the tide-line rock. Icerunner (Skyrim), a wrecked ship whose one interior is a hold of crates, barrels and benches, supplies the sand-filled hold, its Nordic pieces replaced with Imperial galleon timber. Still to add: the galleon's upper hull on the beach, the sand drift in the hold, the stern cabin, a small interior built from Skyrim's ship pieces behind its own door on the stern deck, the rotten decks, the sealed strongbox with its lock and the scavengers' camp marks.",
+     "text": "Its main source, Icerunner (Skyrim), is a wrecked ship whose two interiors serve as the sand-filled hold and the stern cabin the main quest uses, where the kings' stone lies under the Unbound scouts. Its hull is set listing and half-buried in grey sand on the beach, and its Nordic pieces (carvings, banners) are replaced with Imperial galleon timber and a figurehead of a veiled woman. The Sallow Anne also uses Icerunner, jammed under water in a rock cleft; the Stormwidow lies beached and half-buried on sand. Still to add: the ribs open to the sky, the rotting ropes and sails, the sand drift in the hold, the rotten decks, the sealed strongbox with its lock and the scavengers' camp marks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5392,7 +5392,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, South of Riverhold (moonpath), is a Nordic and Dwemer city with 135 foes and does not fit. Lilmoth (King of the Murkmire) is the better source: an Argonian and Imperial city by water with 46 interiors, of which a few dozen huts serve the mound-town's houses, Genoag Manor the elders' council hall and the Genoag Plantation Storehouse the potters' market hall, the Imperial stone replaced with mud-brick. Still to add: the clay ridge and its terraces, the kilns and bread oven, the great Hist and its root pool from Black Marsh & Valenwood's Hist pieces, the dye table beside it and the moot-ground.",
+     "text": "Its main source, South of Riverhold (moonpath), gives the mound-town only its spot and the idea of a large hill settlement; its Nordic and Dwemer stone is replaced with mud-brick and reed thatch, and its foes are removed. The houses, the elders' council hall and the potters' market hall come from the pool: Lilmoth (King of the Murkmire) has dozens of Argonian huts, Genoag Manor as the council hall and the Genoag Plantation Storehouse as the market hall. Still to add: the clay ridge and its terraces, the kilns and bread oven, the great Hist and its root pool of Hist sap from Black Marsh & Valenwood's Hist pieces, the dye table beside it and the moot-ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5962,7 +5962,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Saxhleel Camp (Journey to Baan Malur), is a Dunmer and Dwemer camp of six buildings with three tent interiors. It does not fit a clay-diggers' village. Root Whisper Village (King of the Murkmire) fits better: an Argonian village by water with eight hut interiors and its Ayleid and ruin pieces. Its huts serve the village. Its Ayleid pieces and one hall interior serve the buried stone hall the diggers broke into. Still to add: the open clay pits with steep walls, the spoil mounds, the village kiln and the reed beds.",
+     "text": "Its main source, Saxhleel Camp (Journey to Baan Malur), gives a small camp layout with its tent interiors for the diggers' sheds and shelters; its Dunmer and Dwemer pieces are replaced, and the village itself is built from the pool. The stilted huts come from Root Whisper Village (King of the Murkmire), whose hut interiors serve the households. Its Ayleid pieces and one hall interior serve the buried stone hall the diggers broke into. Still to add: the open clay pits with steep walls, the spoil mounds, the domed village kiln and the reed beds along the orange-stained river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6294,7 +6294,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Darkwater Crossing (Skyrim), is a Nordic and Imperial river village of 82 buildings with two interiors. Its pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water of thatched huts on plank platforms raised on posts, with plank walkways, bridges and woven fences, and seven hut interiors. The fishers' hut serves the eel-paste kitchen with its cooking pot and stand, and the elders' hut serves as the elders' mound with its bed. Still to add: the clay mounds, the eel racks, the reed boats and rice terraces, the landing for rafts, the lily beds, the cairn and the fisher's lockbox on the point and the worked stones in the shallows.",
+     "text": "Its main source, Darkwater Crossing (Skyrim), gives the river-village layout of a crossing, a few houses and a landing, with its two interiors as the fishers' and elders' houses; all its Nordic and Imperial pieces are replaced. The thatched huts on plank platforms raised on posts, the plank walkways, bridges and woven fences come from the pool, from Seekhat Yol (King of the Murkmire). Its fishers' hut serves as the eel-paste kitchen with cooking pot and stand, and its elders' hut as the elders' mound with its bed. Still to add: the clay mounds, the eel racks, the reed boats and rice terraces, the landing for rafts, the lily beds, the cairn and the fisher's lockbox on the point and the worked stones in the shallows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6570,7 +6570,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kynesgrove (Skyrim), is a Nordic and Imperial village of 161 buildings with two interiors. Its Nordic pieces are replaced. Seekhat Yol (King of the Murkmire) fits better: an Argonian village by water with dock pieces and an accommodation hut among its seven interiors, which serves as the guesthouse. Still to add: the red mounds, the fish racks on the estuary shore, the lamp on the bluff and the smugglers' cache beneath it.",
+     "text": "Its main source, Kynesgrove (Skyrim), gives the layout of a coastal village around a landing and its two interiors as the houses; its Nordic and Imperial pieces are replaced with reed thatch on stilts. The stilt houses, dock pieces and the guesthouse come from the pool, from Seekhat Yol (King of the Murkmire), whose accommodation hut serves as the guesthouse among its hut interiors. Still to add: the three red mounds, the fish racks on the estuary shore, the lamp on the bluff and the smugglers' cache beneath it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7144,7 +7144,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Whitewatch Tower (Skyrim), is a Nordic and Imperial stone tower of 33 buildings with no interior, which is wrong for a mound-top spear-post. near Loreisian (King of the Murkmire) fits better: a small Argonian shrine of standing stones and vine-grown platforms with five people and no interior. Ree-An-Wo (King of the Murkmire) lends the hide tent that serves as the watch-hut and the hide fence that rings the mound. Still to add: the mound top, the bar across the road, the spear rack, the grindstone and the smugglers' cache by the road.",
+     "text": "Its main source, Whitewatch Tower (Skyrim), gives the spot of a lookout above a road and a ring of watch posts, with no interior; its Nordic and Imperial stone is replaced by a clay mound and hide, so the watch is built from the pool. Ree-An-Wo (King of the Murkmire) lends the hide tent that serves as the watch-hut and the hide fence that rings the mound, and near Loreisian (King of the Murkmire) lends its vine-grown platforms and standing stones as posts. Still to add: the mound top, the bar across the road, the spear rack, the grindstone and the smugglers' cache by the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8344,7 +8344,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hlaalu Farm (Skyrim), is a Nordic farm of sixteen buildings with one interior and four foes. Its Nordic pieces would be replaced. Farmhouse (Journey to Baan Malur) fits better: a small farm by water of a Dunmer stone farmhouse with a bed, table and shelves plus a silo of barrels and hay, two interiors that serve as the reed house and the boiling shed, their Dunmer stone replaced with reed. Still to add: the salt pans, the salt piles, the salt pot, the sedge beds and the smuggler's cache in the pans.",
+     "text": "Its main source, Hlaalu Farm (Skyrim), gives the small farm layout of a house, outbuildings and fenced yard, with its one interior as the reed house; its Nordic pieces are replaced with reed, sedge and mud. The boiling shed comes from the pool: the stone farmhouse of Farmhouse (Journey to Baan Malur) has a bed, table and shelves and a silo of barrels and hay, and its Dunmer stone is replaced with reed. Still to add: the salt pans, the salt piles, the salt pot, the sedge beds and the smuggler's cache in the pans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9211,7 +9211,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Masvos (Journey to Baan Malur), is a Dunmer and Nordic hamlet of 24 buildings with no interior. Its pieces would be replaced. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents, hide fences and ruin pieces and no interior. It supplies the platforms and walkways that serve as the landings, the hide fences that serve as the reed screens and the tents that stand on the platforms. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses lashed together on the water, the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens.",
+     "text": "Its main source, near Masvos (Journey to Baan Malur), gives only its spot and the loose scatter of a lakeshore hamlet with no interior; its Dunmer and Nordic pieces are replaced, so the place is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms and walkways on posts as the landings, the hide fences as the reed screens and the hide tents standing on the platforms. The eldest's raft-house, holding the book shelf, is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses lashed together on the water, the moored razor-thin rafts, the lake shallows and the bandit's cache by the screens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9498,7 +9498,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), is a Nordic hamlet of 43 buildings with ship and farm pieces and no interior, which does not fit a marsh island. Ree-An-Wo (King of the Murkmire) fits better: an Argonian hamlet by water with cypress walkways and platforms on posts, six hide tents and hide fences and no interior. It supplies the platforms and hide tents on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses, the lines for drying books, the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach.",
+     "text": "Its main source, near Dark Brotherhood Sanctuary (Wyrmstooth), gives only its spot among scattered buildings; its Nordic ship and farm pieces are replaced, so the island hamlet is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress walkways, platforms on posts, hide tents and hide fences on the island. The eldest's raft-house with the book shelf is an interior added from Black Marsh & Valenwood's reed-hut pieces. Still to add: the raft-houses, the lines for drying books, the raft with its locked coffer, the marsh reed beds and the guards' posts on the approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9831,7 +9831,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Chaoskampf (Here There Be Monsters - Curse of Cipactli), is a Dwemer and Nordic hamlet of 44 buildings with ship pieces and no interior. It does not fit. Ree-An-Wo (King of the Murkmire) fits better: an Argonian and Ayleid hamlet by water with camp and ruin pieces, which supplies cypress platforms on posts and the landings; the houses on the platforms are Seekhat Yol's thatched houses (King of the Murkmire), added. Neither holds the Velothi stronghold, so the ruin with its upper halls and ghost-haunted lower halls is added: its interior comes from Redeyn Ancestral Tomb (Journey to Baan Malur), a Dunmer ruin with one large interior of tomb halls. Still to add: the ruin's wall against which the huts lean, the sealed door and the river landings.",
+     "text": "Its main source, The Chaoskampf (Here There Be Monsters - Curse of Cipactli), gives only its riverbank spot and a ring of buildings; its Dwemer and Nordic pieces and ship pieces are replaced, so the hamlet is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts and the landings, and Seekhat Yol's thatched houses (King of the Murkmire) stand on them. The Velothi ruin interior comes from Redeyn Ancestral Tomb (Journey to Baan Malur), one large interior of tomb halls for the upper halls and the ghost-haunted lower halls. Still to add: the ruin's wall against which the huts lean, the sealed door and the river landings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10768,7 +10768,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Kazmalgur (Wyrmstooth), is an Orc and Nordic camp of 30 buildings with a longhouse interior. Its pieces would all be replaced. near Loreisian (King of the Murkmire) fits better: a small Argonian camp of eight buildings, by water, with doomstone circles, cypress knees, bog beacons and Hist roots but no tents and no interior; it serves as the marsh setting. Ree-An-Wo (King of the Murkmire), a camp of six hide tents, hide fences and cypress walkways on posts, supplies the tents. Still to add: the high perches, the reed shelters on the bank's crown, the rope nets, the wing-chief's tent, the perch caches and the boss chest.",
+     "text": "Its main source, Kazmalgur (Wyrmstooth), gives only the layout of a hillside camp with one longhouse interior for the wing-chief's tent; its Orc and Nordic pieces are all replaced. The marsh setting comes from the pool: near Loreisian (King of the Murkmire) lends doomstone circles, cypress knees, bog beacons and Hist roots, and Ree-An-Wo (King of the Murkmire) supplies the hide tents. Still to add: the high perches, the reed shelters on the bank's crown, the rope nets, the perch caches and the boss chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11740,7 +11740,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), is a Daedric ruin with Nordic pieces and 355 buildings. It does not fit a sea-cliff hold. Fort Velothi Pass (Caves of Morrowind), a Redoran bulwark held by bandits, fits the halls better. Its main hall of Redoran stone, with ash, scaffolds, crates, skooma, metal cages and anchor chains, serves as the upper tier and the halls, and one of its cages serves as the captive's cell. Its foyer and barracks serve as the lower hall and the smugglers' quarters. Broken Oar Grotto (Skyrim) serves as the sea-cave, a second interior behind a door at the waterline: a sea grotto of waist-deep water and kelp, with wooden scaffolds and walkways, stores of food and drink and chests. The bandits and the grotto's marauders are removed, and so are its ship pieces. Still to add: the cliff, the spell-fire, the rotten floor over the drop, the shrine of the lower hall and the smugglers' cache.",
+     "text": "Its main source, Ashimmidarum (Journey to Baan Malur), gives the spot and the black ruin on a rise, with its one interior as a hall; its Daedric and Nordic pieces are replaced, so the halls are built from the pool. Fort Velothi Pass (Caves of Morrowind) lends its Redoran main hall, with ash, scaffolds, crates, skooma, metal cages and anchor chains, as the upper tier and halls, one cage as the captive's cell, and its foyer and barracks as the lower hall and smugglers' quarters. Broken Oar Grotto (Skyrim) serves as the sea-cave behind a door at the waterline; its marauders and ship pieces are removed. Still to add: the cliff, the spell-fire, the rotten floor over the drop, the shrine of the lower hall and the smugglers' cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

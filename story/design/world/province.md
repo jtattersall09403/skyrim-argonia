@@ -568,7 +568,6 @@ What a story writer will want and the database does not hold. These are for the 
 - Goods: what places make, trade and need is a table of 11 rows (one place's market); the rest lives only in the economy notes.
 - Uniques: the world's unique things are a table of 0 rows; two places promise a unique item in their gives.
 - The make-up of a source place: the mining counts buildings, interiors, residents and hostiles, and names its piece families, but how many of each kind of building (houses, halls, piers, shrines) it holds: the data does not say.
-- How many live in a place: for 134 places the population was reset from the research's estimate to the residents of the place's source, so the number in a place row can differ from the number its people note gives.
 - How many live in Helstrom: the place row says 110 (its source's residents), the person table names 62.
 - How many live in Jal-Veesa: the place row says 22 (its source's residents), the person table names 19.
 - How many live in Reed-Sill Weir: the place row says 5 (its source's residents), the person table names 2.
