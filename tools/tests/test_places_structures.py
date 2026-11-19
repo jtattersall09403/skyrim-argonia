@@ -34,6 +34,26 @@ def test_a_harbour_is_ordinary_on_the_water():
     assert got["harbour"]["kept"] is True and "ordinary" in got["harbour"]["why"]
 
 
+def test_a_record_that_rules_a_structure_out_drops_it():
+    """Helstrom's look: "no stone and no outward wall, because the marsh is the wall"."""
+    got = structures.judge(REFS, BASES, "houses of reed and mud, with no stone and no outward wall; a gate of reeds")
+    assert got["walls"]["kept"] is False and "no outward wall" in got["walls"]["why"]
+
+
+def test_a_buildings_own_wall_or_a_keeper_is_no_support():
+    assert structures.supported("walls", "jars stacked by the longhouse wall; a back wall door") is None
+    assert structures.supported("keep", "a keeper and two lanterns") is None
+
+
+def test_a_palisade_of_clutter_pieces_is_a_wall_and_a_tower_house_is_a_home():
+    assert structures.classify({"edid": "StockadeWallStraight01", "model": "stockadewallstraight01.nif",
+                                "kind": "clutter"}) == "walls"
+    assert structures.classify({"edid": "StockadeTower01", "model": "stockadetower01.nif", "kind": "clutter"}) == "walls"
+    assert structures.classify({"edid": "Barrel01", "model": "barrel01.nif", "kind": "clutter"}) is None
+    assert structures.classify({"edid": "01arghousebig", "model": "exttower.nif", "kind": "building"}) is None
+    assert structures.classify({"edid": "01mosspost", "model": "byohbyohwrtowerpostsl01.nif", "kind": "building"}) is None
+
+
 def test_floor_gone_seats_on_ground_at_its_height_over_the_floor():
     sup = {"id": "p", "base": "plaza", "pos": [0.0, 0.0, 100.0], "rot": [0, 0, 0]}
     r = {"id": "h", "base": "house", "kind": "building", "pos": [10.0, 0.0, 356.0]}
