@@ -80,14 +80,14 @@
 {"src":"King of the Murkmire.esp:85A22D","space":"exterior","status":"dropped","cluster":"w01","why":"stood on a thing that was dropped"}
 {"src":"King of the Murkmire.esp:85A22E","space":"exterior","status":"dropped","cluster":"w01","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"King of the Murkmire.esp:85A22F","space":"exterior","status":"adapted","as":"outpost-m6-m66.JGRADW3HD359V5M21YDN6DDZCF","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A230","space":"exterior","status":"adapted","as":"outpost-m6-m66.K7Q9FPNS18ZZKF15KH6HYDNRS2","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A231","space":"exterior","status":"adapted","as":"outpost-m6-m66.SMCZ5Q3BJFG9CK2QEX5Y550N5V","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A230","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A231","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A232","space":"exterior","status":"adapted","as":"outpost-m6-m66.2TSNNRCZFH79W27V1CBG5QKBGD","cluster":"w01"}
 {"src":"King of the Murkmire.esp:85A234","space":"exterior","status":"adapted","as":"outpost-m6-m66.YH5G791H1MAE1NPK59HC7BYNGK","cluster":"w01"}
 {"src":"King of the Murkmire.esp:85A235","space":"exterior","status":"adapted","as":"outpost-m6-m66.HNCKVGJ8A7XCXTYX5XAYYZ58AC","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A236","space":"exterior","status":"adapted","as":"outpost-m6-m66.BFR65J2TB1S537BGKSJG08PFDT","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A236","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A237","space":"exterior","status":"adapted","as":"outpost-m6-m66.Z1Z901QDY23V0MRKAN5HK2W27K","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A238","space":"exterior","status":"adapted","as":"outpost-m6-m66.P5C0XAZHV4G41QZP93PM5HZMXD","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A238","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A239","space":"exterior","status":"adapted","as":"outpost-m6-m66.QBHY536JNXHY2VEMCMPZAYMZXZ","cluster":"w01"}
 {"src":"King of the Murkmire.esp:85A23A","space":"exterior","status":"adapted","as":"outpost-m6-m66.A69J5DVXT17Y360F9NVEZ1KPK9","cluster":"landing","nudge":128.0}
 {"src":"King of the Murkmire.esp:85A23B","space":"exterior","status":"adapted","as":"outpost-m6-m66.4DAFV4S9G7ZP53W75SZYT428ZQ","cluster":"landing"}
@@ -98,12 +98,12 @@
 {"src":"King of the Murkmire.esp:85A240","space":"exterior","status":"adapted","as":"outpost-m6-m66.DJBAGB33NFW7QDWBGM0Y5S2PM4","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85A241","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85A242","space":"exterior","status":"adapted","as":"outpost-m6-m66.TAFXVSVCK888MS0TR6BKDA1PBK","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A243","space":"exterior","status":"adapted","as":"outpost-m6-m66.NHBKGV2VCRFWD63HZNHWPJDF9W","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A244","space":"exterior","status":"adapted","as":"outpost-m6-m66.S0WDA6423F4E6708EW1KGMAYTM","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A245","space":"exterior","status":"adapted","as":"outpost-m6-m66.HBTGC74MM8VFG5T7TQS56VP1NG","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A243","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A244","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A245","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A246","space":"exterior","status":"placed","as":"outpost-m6-m66.AZXR9ZXSAQAZ3H9FFVTYTKZWVC","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A247","space":"exterior","status":"adapted","as":"outpost-m6-m66.H02Y4B12VXGV6RNYB0SCSVHQEX","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A248","space":"exterior","status":"adapted","as":"outpost-m6-m66.67YFWRYE7T9AJNDN0WCZ2ZATVD","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A247","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A248","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A24D","space":"exterior","status":"adapted","as":"outpost-m6-m66.XRHYG45WEJ01D35JFX961FHRQM","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85A24E","space":"exterior","status":"adapted","as":"outpost-m6-m66.77PB2ZD2XYNTRT8C1731V580QB","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85A252","space":"exterior","status":"adapted","as":"outpost-m6-m66.Q0BMAPQ1D8Z494MGSWSKP7ZYJP","cluster":"landing"}
@@ -116,14 +116,14 @@
 {"src":"King of the Murkmire.esp:85A260","space":"exterior","status":"adapted","as":"outpost-m6-m66.DT4FHREEHPWQTP2AY80SM5G3YH","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85A261","space":"exterior","status":"adapted","as":"outpost-m6-m66.KSYE429R5C25XNVB7STDW2Y4RQ","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85A262","space":"exterior","status":"adapted","as":"outpost-m6-m66.3QHW83KNA6NGVKTWSXTZYKVAVK","cluster":"landing"}
-{"src":"King of the Murkmire.esp:85A263","space":"exterior","status":"adapted","as":"outpost-m6-m66.VDYA0K3DZ4J8NR77MBTMW63F1C","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A264","space":"exterior","status":"adapted","as":"outpost-m6-m66.1JQPN8A457D0D37GG1P2ZGJZ68","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A263","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A264","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A265","space":"exterior","status":"placed","as":"outpost-m6-m66.XYB00N9EPVCZ2JMX1HX519QV62","cluster":"s06"}
 {"src":"King of the Murkmire.esp:85A266","space":"exterior","status":"placed","as":"outpost-m6-m66.ADGB04ZWZBTH5ZSVB3B2A1VVK5","cluster":"s06"}
 {"src":"King of the Murkmire.esp:85A267","space":"exterior","status":"placed","as":"outpost-m6-m66.1Y1HVNGT0KHTTTSXE2MZ1QFPS7","cluster":"s06"}
 {"src":"King of the Murkmire.esp:85A268","space":"exterior","status":"placed","as":"outpost-m6-m66.7N4AW4AGX4KWVVJA75G1DBKRG0","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A269","space":"exterior","status":"adapted","as":"outpost-m6-m66.4ZR5KCANHPYSGHMW65CFEMWE3T","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A26A","space":"exterior","status":"adapted","as":"outpost-m6-m66.8G4Q7M9WQE45HA2GDJDQ3ZEJGQ","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A269","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A26A","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A26B","space":"exterior","status":"dropped","cluster":"landing","why":"a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A26C","space":"exterior","status":"dropped","cluster":"landing","why":"a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A26D","space":"exterior","status":"dropped","cluster":"landing","why":"a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)","by":"draft.drop"}
@@ -159,10 +159,10 @@
 {"src":"King of the Murkmire.esp:85A29E","space":"exterior","status":"placed","as":"outpost-m6-m66.D6Y66K3SVDBZ22E6BEFWX3GZ2J","cluster":"s06"}
 {"src":"King of the Murkmire.esp:85A29F","space":"exterior","status":"placed","as":"outpost-m6-m66.SEGFXEQX6HESVCG0S78K4PV0T7","cluster":"s06"}
 {"src":"King of the Murkmire.esp:85A2A0","space":"exterior","status":"placed","as":"outpost-m6-m66.VXB4C5AVBXKP0PMVFE8TVXMXBZ","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A2A1","space":"exterior","status":"adapted","as":"outpost-m6-m66.5ECRTG0N0QQHV8GZXED99WD8HM","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A2A2","space":"exterior","status":"adapted","as":"outpost-m6-m66.0P2JZKG0T7N1K9FWGPT9GMWMFB","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A2A3","space":"exterior","status":"adapted","as":"outpost-m6-m66.2N4F54PRP486D505HJVM0PHF6R","cluster":"w01"}
-{"src":"King of the Murkmire.esp:85A2A4","space":"exterior","status":"adapted","as":"outpost-m6-m66.Z2V2MQH8MF7QGYQAPYK5ZPHB39","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85A2A1","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A2A2","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A2A3","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A2A4","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A2A6","space":"exterior","status":"adapted","as":"outpost-m6-m66.NH877PEZK4330WC7FC1ZHT1YAZ","cluster":"s10"}
 {"src":"King of the Murkmire.esp:85A2AD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85A2AE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -447,7 +447,7 @@
 {"src":"King of the Murkmire.esp:85F6F3","space":"exterior","status":"adapted","as":"outpost-m6-m66.VAFEWVNYBC8X6RZED206J2JQBK","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85F6F4","space":"exterior","status":"adapted","as":"outpost-m6-m66.6MXS5G2PB8DS8AX7WSDNDK6GKT","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85F6F5","space":"exterior","status":"placed","as":"outpost-m6-m66.9X80P1Y379G9TQASX0SAEFQXPM","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85F6F6","space":"exterior","status":"adapted","as":"outpost-m6-m66.G2Z7VR7GAEWNVXHHEY0FT9Z8HA","cluster":"w01"}
+{"src":"King of the Murkmire.esp:85F6F6","space":"exterior","status":"dropped","cluster":"w01","why":"the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85F6F7","space":"exterior","status":"adapted","as":"outpost-m6-m66.1XKWJR9H6CMAACB8TXNYES7J1X","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85F6F9","space":"exterior","status":"adapted","as":"outpost-m6-m66.46VE47DKDQKFBGMA0R8ZN0FGB9","cluster":"landing"}
 {"src":"King of the Murkmire.esp:85F6FA","space":"exterior","status":"adapted","as":"outpost-m6-m66.VNG3EWTGVYZY559T740TTDANGZ","cluster":"landing"}

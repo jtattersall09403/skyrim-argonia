@@ -86,6 +86,9 @@ def apply_identities(folk: list[dict], identities: dict[str, dict]) -> None:
     taken = set(named)
     for p in folk:
         row = identities.get(p["id"])
+        hh = (row or {}).get("household") or {}
+        if hh.get("id") and not p.get("household"):   # a camp's people: their household is the people source's
+            p["household"] = {"id": hh["id"], "relation": hh.get("role") or "kin"}
         if row and row.get("name"):
             p["name"] = row["name"]
         elif p["name"] in taken:

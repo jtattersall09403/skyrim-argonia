@@ -220,6 +220,338 @@
     "dz": -51.0,
     "tier": "AGENT_INVENTED",
     "why": "the landing: a plank jetty from the west bank into the creek below the camp (source note: 'Still to add: ... the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "static",
+    "pos": [
+     -43186.23,
+     -540366.54
+    ],
+    "rot_z": 0.0,
+    "scale": 0.6,
+    "on": "outpost-m6-m66.0Y6AVWQXTSH4WPWJCSC22ZB4V2",
+    "dz": 4.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's pale hide tent on the camp's one low cypress deck (place record: look, 'pale hide tents on a small cypress platform round a young Hist'), in place of the tents of the dropped upper storeys"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "static",
+    "pos": [
+     -42934.04,
+     -540359.54
+    ],
+    "rot_z": 0.0,
+    "scale": 0.6,
+    "on": "outpost-m6-m66.6RJBZDHQNGV8T4QRCC7GVYC2SH",
+    "dz": 4.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's pale hide tent on the camp's one low cypress deck (place record: look, 'pale hide tents on a small cypress platform round a young Hist'), in place of the tents of the dropped upper storeys"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -44800,
+     -539500
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44870.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44730.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -44800,
+     -540300
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44870.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44730.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -44300,
+     -539500
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44370.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44230.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -44300,
+     -540300
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44370.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44230.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -43800,
+     -539500
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43870.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43730.0,
+     -539220.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "building",
+    "pos": [
+     -43800,
+     -540300
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43870.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43730.0,
+     -540020.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -45000,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44750,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44500,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44250,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -44000,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43750,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43500,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -43250,
+     -539900
+    ],
+    "rot_z": 1.57,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
    }
   ],
   "roles": {
@@ -267,13 +599,31 @@
    "King of the Murkmire.esp:85A28E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
    "King of the Murkmire.esp:85A27E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
    "King of the Murkmire.esp:85A28C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85F6EF": "a smith's grindstone: Teel-Fen's record has no smith and promises no smithing (place record)"
+   "King of the Murkmire.esp:85F6EF": "a smith's grindstone: Teel-Fen's record has no smith and promises no smithing (place record)",
+   "King of the Murkmire.esp:85A2A2": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A264": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A2A3": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A269": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A2A1": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A26A": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A236": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85F6F6": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A247": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A245": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A230": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A243": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A238": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A244": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A231": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A263": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A2A4": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck"
   },
   "plan": {
    "look": [
     {
      "line": "pale hide tents on a small cypress platform round a young Hist",
-     "by": "the source's scale-hide tents (ALPAScaleTent02/03) on its cypress scaffold decks (cluster w01, the landing cluster's camp) round the added young Hist (HistTree04) in its sap pool. Still too tall and too large: w01 is a four-storey scaffold tower; to be cut to one low deck"
+     "by": "two King of the Murkmire scale-hide tents (ALPAScaleTent03 at 0.6) on the source's lowest cypress scaffold deck (cluster w01, its upper storeys dropped) by the added young Hist (HistTree04) in its sap pool"
     },
     {
      "line": "a woven weir across the creek",
@@ -301,7 +651,7 @@
     },
     {
      "line": "23 people (population)",
-     "by": ""
+     "by": "Heem-Jasa, two wardens on watch and twenty residents in the camp's tents and open bedrolls on the bank west of the platform"
     }
    ],
    "structures": [
