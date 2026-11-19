@@ -135,6 +135,13 @@ added here the day they are made, with the date and the issue.
 - The main quest is delivered as the owner authored it (main-plot.md and the MN records, Act I above all); places,
   records and sources are fitted to it, with only minor tweaks to the story where a place or the lore cannot carry
   it (2026-11-19, #80).
+- A source place may serve several places, each adapted differently so no two feel alike (2026-11-19, #80).
+- The terrain and the water are not rebuilt or regenerated in this review (2026-11-19, #80).
+- A draft never holds an obviously wrong thing: a piece floating in mid-air, a bridge without two supports, a
+  stand-in box where a building's model did not resolve (Helstrom's Xanmeer pyramid); the drafting tools detect
+  and refuse them (2026-11-19, #80).
+- Every data record ends 100% consistent with every other: the Atlas, each place record in all its parts, the
+  sources and their notes, the story overviews, the quests and the drafts (2026-11-19, #80).
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
