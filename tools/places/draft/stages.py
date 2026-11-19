@@ -324,8 +324,11 @@ def seating_stage(st: Standing, log=print) -> None:
         rule = st.seat_rule(r, row.get("cluster") or of[sid], ours)
         if rule != row.get("seat"):
             row["seat"] = rule
+    seating.levels(st.ext, st.by_src, st.bases, st.G)
     walk.flush_steps(st.ext, st.bases, log=lambda *_: None)
+    was = {r["id"]: r["pos"][2] for r in st.ext}
     seat_all(st.ext, st.G)
+    seating.carry(st.ext, was)
 
 
 def clearance(st: Standing, log=print) -> None:

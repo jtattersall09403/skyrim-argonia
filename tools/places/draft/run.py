@@ -251,6 +251,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             row["linked"] = [{**lk, "ref": our_id[lk["ref"]]} for lk in row["linked"] if lk.get("ref") in our_id]
             if not row["linked"]:
                 row.pop("linked")
+    seating.levels(our, by_src, bases, G)    # a walked structure with its own flight stands as one body
     # things the place record promises that the source lacks, added by the agent (draft.add)
     # (the rows for rooms are placed by the `add` stage once the rooms are written)
     from tools.places.draft import adds

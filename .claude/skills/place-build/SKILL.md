@@ -99,6 +99,11 @@ What the tools hold to, so you can judge their output:
   source's own frame with full rotation, are one body and share a cluster. A tilted piece turns about the world's
   axis with its cluster (one transform).
 - A sunk filler block or a low platform (its top within a step of the ground) is walked over, never an obstacle.
+- A walked level with its own flight stands as one body. The source's walked pieces whose decks touch in plan and
+  meet in height (a keep's yard of floor plates, and the flights whose tops reach it) keep their source heights
+  relative to each other, so the yard stays level and each flight's top still meets it: the level stands by the
+  flight whose foot on our ground moves the level's pieces least from their own seats at worst, and every other
+  piece of it is seated `on` that flight (`seating.levels`, the `seating` stage).
 - The world's plants give way to the town. A plant rooted closer to a building, a street or a door than the
   source's own plants came is cleared, and so is anything rooted inside a placed thing. A thing of the world whose
   body lies across a street's walking width or a door front is cleared wherever it is rooted (a great root, a rock

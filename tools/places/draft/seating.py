@@ -11,6 +11,8 @@ In order:
 """
 from __future__ import annotations
 
+import math
+
 from tools.places.draft import geom
 from tools.places.seat import Ground, foot_ground, foot_high, reference_z
 
@@ -73,3 +75,97 @@ def infer(r: dict, near: list[dict], bases: dict, g: Ground | None, interior: bo
     if gz is not None and z - gz <= GROUND_BAND:
         return {**out, "mode": "ground", "dz": round(z - gz, 2)}
     return {**out, "mode": "above", "dz": round(z - (h if h is not None else z), 2)}
+
+
+def carry(rows: list[dict], was: dict[str, float]) -> int:
+    """A piece laid free and carried by others (a flight or gangway the streets stage hung on a deck: its seat's
+    `carrier`) moves up or down with its first carrier that moved, so a re-seated deck keeps its flight. `was`: each
+    row's height before the re-seat. Returns the number of rows moved."""
+    by_id = {r["id"]: r for r in rows}
+    moved = 0
+    for r in rows:
+        s = r.get("seat") or {}
+        c = s.get("carrier")
+        if s.get("mode") != "free" or not c:
+            continue
+        for cid in (c if isinstance(c, list) else [c]):
+            sup = by_id.get(cid)
+            if sup is not None and cid in was and abs(sup["pos"][2] - was[cid]) > 1e-3:
+                r["pos"][2] = round(r["pos"][2] + sup["pos"][2] - was[cid], 3)
+                moved += 1
+                break
+    return moved
+
+
+# --- one walked structure, one height ---
+LEVEL_MODES = {"ground", "clear", "above"}
+LEVEL_STEP = 48.0       # deck heights (or a flight's foot and a deck) this close meet as one walked surface
+LEVEL_CONTACT = 16.0    # record boxes this close in plan touch
+
+
+def _plan_box(r: dict, b) -> tuple[float, float, float, float]:
+    x, y = r["pos"][0], r["pos"][1]
+    rz = (r.get("rot") or [0, 0, 0])[2]
+    c, s = math.cos(rz), math.sin(rz)
+    pts = [(x + u * c + v * s, y - u * s + v * c) for u in (b[0][0], b[1][0]) for v in (b[0][1], b[1][1])]
+    return min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts)
+
+
+def levels(rows: list[dict], by_src: dict[str, dict], bases: dict, g: Ground) -> int:
+    """Seat each walked level that has its own flight as one body. The source's walked pieces (decks, floor plates,
+    flights by their top) that touch in plan and meet in height are one level. Where a level holds a flight, its
+    pieces keep their source heights relative to each other, so a flight's top still meets its deck and a level yard
+    stays level: the level stands by the flight whose own seat rule (its foot on our ground) moves the level's pieces
+    least from their own rules at worst, and every other piece of it is seated `on` that flight at its source
+    offset. Pieces seated on the water or on another thing keep their rule. Returns the number of rows re-seated."""
+    from tools.places.draft.paths import FLIGHT
+    from tools.places.seat import seat_z
+    mem = []
+    for row in rows:
+        r = by_src.get(row.get("src"))
+        if r is None or row.get("base") != r.get("base") or row.get("primitive"):
+            continue
+        if (row.get("seat") or {}).get("mode") not in LEVEL_MODES:
+            continue
+        base = bases.get(r.get("base")) or {}
+        w, b = geom.walk(base), geom.bounds(r, bases)
+        if w is None or not b:
+            continue
+        mem.append((row, r, r["pos"][2] + w, _plan_box(r, b),
+                    bool(FLIGHT.search(str(base.get("model") or "")))))
+    par = list(range(len(mem)))
+
+    def find(i: int) -> int:
+        while par[i] != i:
+            par[i] = par[par[i]]
+            i = par[i]
+        return i
+    for i, (_, _, di, a, _) in enumerate(mem):
+        for j in range(i + 1, len(mem)):
+            _, _, dj, o, _ = mem[j]
+            if a[0] - LEVEL_CONTACT > o[2] or o[0] - LEVEL_CONTACT > a[2] or a[1] - LEVEL_CONTACT > o[3] \
+                    or o[1] - LEVEL_CONTACT > a[3]:
+                continue
+            if abs(di - dj) <= LEVEL_STEP:
+                par[find(i)] = find(j)
+    groups: dict[int, list[int]] = {}
+    for i in range(len(mem)):
+        groups.setdefault(find(i), []).append(i)
+    changed = 0
+    for members in groups.values():
+        flights = [i for i in members if mem[i][4]]
+        if len(members) < 2 or not flights:
+            continue
+        own = {i: seat_z(mem[i][0], g) - mem[i][1]["pos"][2] for i in members}
+        root = min(flights, key=lambda f: (max(abs(own[f] - own[i]) for i in members), mem[f][0]["id"]))
+        rrow, rsrc = mem[root][0], mem[root][1]
+        for i in members:
+            if i == root:
+                continue
+            row, r = mem[i][0], mem[i][1]
+            seat = {"foot": row["seat"]["foot"]} if row["seat"].get("foot") else {}
+            seat.update({"mode": "on", "on": rrow["id"], "dz": round(r["pos"][2] - rsrc["pos"][2], 2)})
+            if seat != row["seat"]:
+                row["seat"] = seat
+                changed += 1
+    return changed
