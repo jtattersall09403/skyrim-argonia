@@ -166,7 +166,7 @@ gold in its place.
 gives Okeeh their name and trade in the hold. As they finish, the bar is lifted from the door outside, and Okeeh
 tells them they can go out onto the landing, where the gang-master waits. Dralin speaks first on the landing and frees
 them. He tells them only this: Vosh-Leera of Jal-Veesa will have work for them if they bring her some Sithis' beard,
-a grey moss that hangs over the creek below Reed-Sill Weir, on the road to the town. The player's pack holds two
+a grey moss that hangs on the woven weir at Reed-Sill Weir, on the road to the town. The player's pack holds two
 lockpicks (Skyrim's). *Leads on:* Dralin's directions and a marker on the moss at the weir. The barge is Black Marsh &
 Valenwood's own Imperial ship: its plugin has the hull as a building and a furnished hold as an interior cell, with
 chests, loose things and furniture in it (section 9 gives the measures). Among the hold's things is plain gear enough
@@ -183,7 +183,7 @@ Speech check is 20, so a new character who chose any of the three skills, as a p
 own five, passes. The main quest does not wait for it.
 
 **2. The Dry Tree** (Reed-Sill Weir, a weir-wardens' camp; Jal-Veesa, a town of the Sedge-Wardens). The journal
-sends the player to the moss first. Crocodiles lie below the weir, where the moss hangs. The player kills them,
+sends the player to the moss first. Crocodiles lie in the shallows below the weir, where the moss hangs on its fences. The player kills them,
 shoots them from the log walk or slips past them to pick the moss (Here There Be Monsters' hanging moss, as an
 ingredient under our name); crocodiles that see the player attack. The journal then sends the player on to
 Vosh-Leera's house in Jal-Veesa. She greets them: she is the root-herald, who speaks for the town's elders and its
@@ -696,7 +696,7 @@ place its rows, and the place is built to them.
 | Ashgate Landing | a barge moored in the river pool by the camp, with a furnished hold a person can stand in and a door that locks (Black Marsh & Valenwood's Imperial ship and its hold cell `01dock3to4`) | 1. No Name on the Work Roll | The player starts in the hold, gives their name and trade, and comes out to be freed. | Okeeh speaks in the hold; Dralin speaks first at the door |
 | Ashgate Landing | in the barge's hold, plain gear for a new fighter: an Imperial sword, an Imperial light shield, Imperial light armour (cuirass, boots, bracers, helmet), a hunting bow, twenty iron arrows and three potions of minor healing (Skyrim's) | 1. No Name on the Work Roll; 2. The Dry Tree | A new character of any build can arm before the crocodiles at the weir. | their look and names in the hold's chests |
 | Ashgate Landing | a strongbox with the easiest lock in the hut, its key on the gang-master's belt, holding 100 gold, an iron dagger, Vosh-Leera's Ring (fortify health 15) and a scroll each of firebolt and fast healing | What the Herald Sent | The player gets what Vosh-Leera sent them. | the game names it as Dralin's strongbox; Okeeh tells them of it |
-| Reed-Sill Weir | Sithis' beard hanging over the creek below the weir, where the crocodiles lie | 2. The Dry Tree | The player kills, shoots or slips past the crocodiles to pick the moss. | the game names the moss; a marker; Dralin tells them Vosh-Leera wants it |
+| Reed-Sill Weir | Sithis' beard hanging on the woven weir's fences, over the shallows where the crocodiles lie | 2. The Dry Tree | The player kills, shoots or slips past the crocodiles to pick the moss. | the game names the moss; a marker; Dralin tells them Vosh-Leera wants it |
 | Jal-Veesa | the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop (the town's record has the tree, its pool and the rootworm stop) | 2. The Dry Tree; 4. The Sap Camp | The player sees a sick tree, hears what the town loses if it dies, and later rides the rootworm from its pool. | its look; Vosh-Leera sends them; Weeltul, the tree-minder and root-tender, tells them; a marker on Weeltul |
 | Jal-Veesa | a house for the root-herald (one of the source town's houses) | 2. The Dry Tree; 3. The First Dream; 4. The Sap Camp; Vosh-Leera's side quest | Vosh-Leera gives the player work, the cup of sap and the way to Helstrom. | its door shows her name; a marker |
 | Teel-Fen Weir | the young Hist on the platform with a grey paste in its closed scar | 3. The First Dream | Heem-Jasa shows the player the sealed scar. | Heem-Jasa tells them; the paste is a named thing |

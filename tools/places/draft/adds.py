@@ -1,8 +1,9 @@
 """Things the agent adds to a place by hand: place.json `draft.add`, one row per thing.
 
 A row: {base, pos: [x, y] outside | [x, y, z] in a room, space? (a room's space id; default the exterior), rot_z?,
-scale?, kind?, dz?, name?, need?, why, tier?}. Outside the thing is seated on the ground (its true footprint, `dz`
-over the lowest ground under it); in a room it stands where `pos` puts it (a room's floor is the source's, so its
+scale?, kind?, dz?, on?, name?, need?, why, tier?}. Outside the thing is seated on the ground (its true footprint, `dz`
+over the lowest ground under it), or, with `on` (a placed row's id), on that thing, `dz` over its origin (moss draped
+on a fence, carried with it); in a room it stands where `pos` puts it (a room's floor is the source's, so its
 height is measured off the floor-standing piece beside it and given). `name` is the name the game shows on looking
 at it (a container's: the build makes the container of ours carry it); `need` the story need it meets, by seq. Its
 id is minted from its place in the list and its base, so a rerun keeps it. The whole draft adds them; on a drafted
@@ -24,10 +25,11 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[dict]:
         row = {"id": io.mint(place_id, "add", str(k), a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
                "pos": [float(a["pos"][0]), float(a["pos"][1]), z], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
                "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,
-               "seat": {"mode": "ground", "dz": float(a.get("dz", 0.0))} if space == "exterior" else {"mode": "free"},
+               "seat": ({"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))} if a.get("on") else
+                        {"mode": "ground", "dz": float(a.get("dz", 0.0))}) if space == "exterior" else {"mode": "free"},
                "why": a.get("why", "")}
         row.update({f: a[f] for f in FIELDS if a.get(f) is not None})
-        if space == "exterior":
+        if space == "exterior" and not a.get("on"):
             f = geom.foot(row, bases)
             if f:
                 row["seat"]["foot"] = f

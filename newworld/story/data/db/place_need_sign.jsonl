@@ -10,7 +10,8 @@
 {"place_id":"helstrom","need_seq":8,"need_sign_id":"person","detail":"the innkeeper Sleeps-Last keeps it and rents its bed","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
 {"place_id":"helstrom","need_seq":9,"need_sign_id":"label","detail":"its door shows \"Tree-Minders' Hall\"; inside, the case names itself \"Urn Case\", locked (Expert)"}
 {"place_id":"helstrom","need_seq":10,"need_sign_id":"person","detail":"the raft-master Poles-Upriver works the city landing","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
-{"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top"}
+{"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"label","detail":"looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
+{"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"}
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"inside the gang-master's large tent, by his bed"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"label","detail":"the game shows \"Dralin's Strongbox\" on it"}

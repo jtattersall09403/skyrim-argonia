@@ -18,6 +18,7 @@
 {"id":"jal-veesa.household.CormarisFarmhut","place_id":"jal-veesa","home_space":"CormarisFarmhut"}
 {"id":"jal-veesa.household.CormarisLabourersHouse","place_id":"jal-veesa","home_space":"CormarisLabourersHouse"}
 {"id":"jal-veesa.household.CormarisMareinFarmhouse","place_id":"jal-veesa","home_space":"CormarisMareinFarmhouse"}
+{"id":"outpost-m11-m63.household.exterior","place_id":"outpost-m11-m63","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.01dock3to4","place_id":"outpost-m13-m65","home_space":"01dock3to4"}
 {"id":"outpost-m13-m65.household.exterior","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m6-m66.household.exterior","place_id":"outpost-m6-m66","home_space":"exterior"}

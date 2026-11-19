@@ -965,7 +965,7 @@
 {"place_id":"outpost-m11-m63","seq":1,"give_kind_id":"cooking-pot","detail":"by the landing","count":1}
 {"place_id":"outpost-m11-m63","seq":2,"give_kind_id":"combat-creature","detail":"mudcrabs on the bank and one young crocodile below the weir","count":3,"reward_kind_id":"treasure"}
 {"place_id":"outpost-m11-m63","seq":3,"give_kind_id":"treasure","detail":"a thief's sack of stolen traps and coin hidden in the reeds","count":1}
-{"place_id":"outpost-m11-m63","seq":4,"give_kind_id":"harvest-rare","detail":"Sithis' beard, a grey moss hanging over the creek below the weir","count":2}
+{"place_id":"outpost-m11-m63","seq":4,"give_kind_id":"harvest-rare","detail":"Sithis' beard, a grey moss hanging on the woven weir","count":2}
 {"place_id":"outpost-m13-m65","seq":0,"give_kind_id":"trader-general","detail":"the cook's stall of dried fish and lamp oil","count":1}
 {"place_id":"outpost-m13-m65","seq":1,"give_kind_id":"free-bed","detail":"a bench in the hut","count":1}
 {"place_id":"outpost-m13-m65","seq":2,"give_kind_id":"cooking-pot","detail":"the cook's fire by the hut","count":1}

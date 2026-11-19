@@ -3,15 +3,18 @@
  "needs": [
   {
    "seq": 0,
-   "from": ["3d40af0552"],
-   "thing": "Sithis' beard hanging over the creek below the weir, where the crocodiles lie",
+   "from": ["4a3772b6e8"],
+   "thing": "Sithis' beard hanging on the woven weir's fences, over the shallows where the crocodiles lie",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m11-m63.PNGX7E6MRW0WB8ZVKFE6MSJ7YM"},
-   "signs": [{"sign": "look", "detail": "a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top"}],
-   "met": false,
-   "why": "Partly met. The woven weir and its log walk now cross the creek's west end, so 'below the weir' is a place a player can find. The moss itself is the quest's (quest 2 places a hank of grey moss on the bank below the weir, and the young crocodiles in the shallows), but nothing hangs from the trees over the water there yet, so the spot does not look like where grey moss grows.",
-   "fit": "The creek bank just east of the weir, in sight of the log walk.",
-   "narrow": "Yes: a few hanging-moss pieces of the marsh's mods on the trees over the water below the weir (draft.add), placed with the quest's moss.",
+   "rests": {"space": "exterior", "ref": "outpost-m11-m63.QW32Q1N2PAMJDJ62N3DNMMSMXY"},
+   "signs": [
+    {"sign": "look", "detail": "a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"},
+    {"sign": "label", "detail": "looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
+   ],
+   "met": true,
+   "why": "Met. Three hanks of grey hanging moss hang on the downstream face of the weir's fences, their tops at the fence tops, a step from the log walk; the shallows below are where the quest's two young crocodiles lie. The quest's own hank of Sithis' beard is the quest's to place on the log walk by them.",
+   "fit": "The woven weir itself, picked from the log walk or from its bank end.",
+   "narrow": "Yes: three hanging-moss pieces seated on the weir's fences (draft.add, on the fence).",
    "tier": "AGENT_INVENTED"
   }
  ]

@@ -107,7 +107,7 @@ truth:
   who:
   - npc.mn.jal-veesa-minder
   where: Jal-Veesa
-  what: Weeltul, Jal-Veesa's tree-minder, needs Sithis' beard, a grey moss that hangs over the creek below Reed-Sill Weir,
+  what: Weeltul, Jal-Veesa's tree-minder, needs Sithis' beard, a grey moss that hangs on the woven weir at Reed-Sill Weir,
     to warm her sick tree's cooling egg-pool. Vosh-Leera, who chose the stranger off the barge's list, left word with
     Dralin that she will have work for the stranger if they bring the moss, for she gives work only to one who helps the
     tree-minder first.
@@ -134,7 +134,7 @@ facts:
   claim: Vosh-Leera's house is in Jal-Veesa, a town up the road to the east, past Reed-Sill Weir.
   from: t3
 - id: fact.mn01.moss
-  claim: Vosh-Leera will have work for the player if they bring her Sithis' beard, a grey moss hanging over the creek below
+  claim: Vosh-Leera will have work for the player if they bring her Sithis' beard, a grey moss hanging on the woven weir at
     Reed-Sill Weir, which is on the road to the town.
   from: t4
 - id: fact.mn01.hist
@@ -5122,7 +5122,7 @@ stages:
   journalText: "Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. He struck my name from
     his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does
     not know why she wants me, and he is sour about it. He says she will have work for me if I bring her some Sithis'
-    beard, a grey moss that hangs over the creek below Reed-Sill Weir, east up the road. I should pick the moss first,
+    beard, a grey moss that hangs on the woven weir at Reed-Sill Weir, east up the road. I should pick the moss first,
     then take it to her house in Jal-Veesa, past the weir."
   learns:
   - fact.mn01.struck
@@ -5135,7 +5135,7 @@ stages:
   information:
     going: 'I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know
       why. She will have work for me if I bring her Sithis'' beard.'
-    next: Pick Sithis' beard below Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
     ways: One way on, the moss first; the crocodiles under the weir can be fought, shot from the log walk or kept clear of.
     carriers:
     - know: I am free and who freed me
@@ -5243,7 +5243,7 @@ terms:
   ask: topic.mn-hist
 - term: Sithis' beard
   meets: 90, topic.mn01-dralin-free
-  told: '"a grey moss that hangs over the creek below Reed-Sill Weir"'
+  told: '"a grey moss that hangs on the woven weir at Reed-Sill Weir"'
   ask: topic.mn01-moss
 - term: Reed-Sill Weir
   meets: 90, topic.mn01-dralin-free
@@ -6153,7 +6153,7 @@ topics:
     brought down the road by Vosh-Leera, the root-herald of Jal-Veesa, the one who speaks for that town's elders and
     its tree to outsiders. He cannot refuse a root-herald. \"You must have friends in high places.\" He paid for the
     player's months and has lost them. Vosh-Leera left word: she will have work for the player if they bring her some
-    Sithis' beard, a grey moss that hangs over the creek below Reed-Sill Weir, the weir-wardens' camp where the road
+    Sithis' beard, a grey moss that hangs on the woven weir at Reed-Sill Weir, the weir-wardens' camp where the road
     east meets the creek; her house is in Jal-Veesa, a little further on past the weir. What she wants with either of
     them he does not know and does not care to. Mind the crocodiles under the weir. Does: sets stage 90. Checks:
     nothing."
@@ -6189,7 +6189,7 @@ topics:
   stages:
   - 90
   essential: false
-  intent: "Dralin. Tells: a long grey moss that hangs from the trees over the creek below Reed-Sill Weir, the first
+  intent: "Dralin. Tells: a long grey moss that hangs on the woven weir at Reed-Sill Weir, the first
     camp on the road east. Tree-minders use it for something; why Vosh-Leera wants it he does not know. There are
     crocodiles under the weir where the wardens throw their offal; kill them, shoot them from the log walk on top of
     the weir, or keep out of their sight. Checks: nothing. Does: nothing."

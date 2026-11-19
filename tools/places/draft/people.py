@@ -244,6 +244,65 @@ def usable(npc: dict, npcs: dict | None = None, _seen: frozenset = frozenset()) 
     return True
 
 
+# where the people of a place come from when its source has no one to build them on (a camp of beasts and empty
+# beds): Black Marsh's own townsfolk, nothing levelled in them
+PEOPLE_FALLBACK = ("bmv.helstrom",)
+
+
+def _actors(b) -> list[tuple[str, dict]]:
+    return [(sp_id, r) for sp_id, sp in sorted(b.spaces.items()) for r in sp.refs
+            if r.get("kind") == "actor" and r.get("base") in b.npcs]
+
+
+def base_pool(src, dec: dict, load) -> tuple[list, dict, list[str]]:
+    """The actors our people are built on and their bases: the source's own; or the actors of the sources
+    `draft.people_from` names (the source's people are not the place's); or, where the source holds no person to
+    build on, those of PEOPLE_FALLBACK, so no draft leaves a person without a base. Returns (pool, npcs, from)."""
+    pool, npcs = _actors(src), dict(src.npcs)
+    named = list(dec.get("people_from") or [])
+    if not named and any(usable(npcs[r["base"]], npcs) for _, r in pool):
+        return pool, npcs, []
+    pool, npcs = [], {}
+    for sid in named or PEOPLE_FALLBACK:
+        b = load(sid)
+        npcs.update(b.npcs)
+        pool += _actors(b)
+    return pool, npcs, named or list(PEOPLE_FALLBACK)
+
+
+def base_picker(pool: list, npcs: dict, used: dict[str, int] | None = None):
+    """pick(role): the usable base that best fits the role, the least used first."""
+    used = {} if used is None else used
+    cands = sorted({r["base"] for _, r in pool if usable(npcs[r["base"]], npcs)})
+
+    def pick(role: str) -> str | None:
+        if not cands:
+            return None
+        best = max(cands, key=lambda k: (role_score(npcs[k], role), -used.get(k, 0), k))
+        used[best] = used.get(best, 0) + 1
+        return best
+    return pick
+
+
+def rebase(folk: list[dict], src_npcs: dict, pool: list, npcs: dict) -> list[str]:
+    """Give a new base to each person built on none, or on one of the source's that is no person to build on (a
+    beast, a levelled or Nordic actor). Returns the ids changed."""
+    used: dict[str, int] = {}
+    for p in folk:
+        if p.get("base_from"):
+            used[p["base_from"]] = used.get(p["base_from"], 0) + 1
+    pick, out = base_picker(pool, npcs, used), []
+    for p in folk:
+        b = p.get("base_from")
+        if b and not (b in src_npcs and not usable(src_npcs[b], src_npcs)):
+            continue
+        nb = pick(p.get("role") or "resident")
+        if nb and nb != b:
+            p["base_from"] = nb
+            out.append(p["id"])
+    return out
+
+
 def guard_eat(bed: dict | None) -> dict:
     """Where a guard eats: in the room of their bed (a barracks, a home that lodges them), or, sleeping in their camp
     outdoors, at their own bed, as a camp eats round its beds; a stop outdoors with no spot is put where the town's

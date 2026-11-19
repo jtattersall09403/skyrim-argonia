@@ -603,3 +603,22 @@ def test_a_flights_foot_lands_on_the_bank_or_a_shallow_ford_never_where_the_mesh
     assert not walk.lands(W, (300.0, 50.0, -64.0))
     dry = walk.Walkable({"navs": navs}, lambda x, y: -64.0, None, lambda x, y: None, comp=C.components(navs, {}))
     assert walk.lands(dry, (300.0, 50.0, -64.0))           # no water there: dry ground at any height
+
+
+def test_a_source_with_no_person_to_build_on_takes_its_people_from_black_marsh():
+    from types import SimpleNamespace as NS
+    from tools.places.draft import people
+    fox = {"edid": "EncMarshFox", "race_edid": "FoxRace"}
+    guard = {"edid": "ArgGuard", "race_edid": "ArgonianRace", "class_edid": "CombatWarrior1H"}
+    src = NS(spaces={"exterior": NS(refs=[{"kind": "actor", "base": "k:fox"}])}, npcs={"k:fox": fox})
+    town = NS(spaces={"exterior": NS(refs=[{"kind": "actor", "base": "b:guard"}])}, npcs={"b:guard": guard})
+    loaded = []
+    pool, npcs, frm = people.base_pool(src, {}, lambda sid: loaded.append(sid) or town)
+    assert frm == list(people.PEOPLE_FALLBACK) and loaded == list(people.PEOPLE_FALLBACK)
+    assert people.base_picker(pool, npcs)("guard") == "b:guard"
+    folk = [{"id": "p1", "role": "guard", "base_from": "k:fox"}, {"id": "p2", "role": "guard", "base_from": None}]
+    assert people.rebase(folk, src.npcs, pool, npcs) == ["p1", "p2"]
+    assert {p["base_from"] for p in folk} == {"b:guard"}
+    # a source with people of its own keeps them, and nothing is loaded
+    src2 = NS(spaces=town.spaces, npcs=town.npcs)
+    assert people.base_pool(src2, {}, lambda sid: 1 / 0)[2] == []

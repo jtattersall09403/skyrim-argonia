@@ -307,7 +307,9 @@ The tools lay the network by these rules.
 - **People are of the place's people.** Bases come from the source's own actors. Where the source's people are not
   the place's (a Dunmer town drafted for an Argonian one, actors that are creatures), name in `draft.people_from` the
   sources whose actors are (`["bmv.helstrom"]` for Argonians: Black Marsh's own, nothing levelled in them); every base
-  is then taken from those.
+  is then taken from those. A source with no person to build on (a camp of beasts and empty beds) takes its people's
+  bases from Black Marsh's own without being asked, so a draft never ships a person short of a base: the whole draft
+  and the `people` stage both give one.
 
 ## 6. Check and iterate
 
@@ -356,7 +358,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `seating` | a seat rule changed | the seat and height of exterior rows |
 | `clearance` | buildings, doors or streets moved; the world's plants were placed again | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
-| `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
+| `people` | the people source or the place's promises changed; a person has no base fit to build on | names in `people.jsonl`, a base for each person built on none or on a beast, levelled or Nordic actor, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's lights on the source's own bases; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
 | `jail` | the place's law, the jail room, its door or its arrival, the landing or the streets changed | the jail's or the Owing's prison markers, bedroll and chests; `place.json`'s crime row `law`, `law_why`, `jail` and `owing` |

@@ -168,8 +168,11 @@ def derive(p: Place) -> dict:
     # containers: every significant one gets a row; its source contents are taken out
     rows = classify(p)
     conts = {}
+    # a container a draft stage already gave its owner (the jail's evidence and stolen goods chests, the crime
+    # faction's) is that stage's and never a household's
+    staged = {r["id"] for _, r in p.refs if r.get("owner")}
     for r in rows:
-        if r["holder"] == "container" and r["container_significant"]:
+        if r["holder"] == "container" and r["container_significant"] and r["ref"] not in staged:
             conts.setdefault(r["ref"], r)
         if r.get("significant") and r.get("item"):
             out["taken_out"].append({"holder": r["holder"], "where": r.get("ref") or r.get("person"),

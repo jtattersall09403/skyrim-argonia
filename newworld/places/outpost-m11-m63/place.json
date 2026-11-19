@@ -126,6 +126,75 @@
     "rot_z": 0.8,
     "tier": "AGENT_INVENTED",
     "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns): the source's only beds were a bog blight's ambush spots, dropped"
+   },
+   {
+    "base": "Skyrim.esm:0BB951",
+    "kind": "flora",
+    "pos": [
+     -82436.0,
+     -515126.0
+    ],
+    "rot_z": 1.5708,
+    "scale": 0.6,
+    "on": "outpost-m11-m63.9G5XADACXJPSVEYJTCX1WEHEDN",
+    "dz": 48.0,
+    "tier": "AGENT_INVENTED",
+    "need": 0,
+    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
+   },
+   {
+    "base": "Skyrim.esm:0BB951",
+    "kind": "flora",
+    "pos": [
+     -82436.0,
+     -515264.0
+    ],
+    "rot_z": 1.5708,
+    "scale": 0.6,
+    "on": "outpost-m11-m63.N021WHAZSXJZ8ZKHJ1E27E150K",
+    "dz": 48.0,
+    "tier": "AGENT_INVENTED",
+    "need": 0,
+    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
+   },
+   {
+    "base": "Skyrim.esm:0BB951",
+    "kind": "flora",
+    "pos": [
+     -82436.0,
+     -514918.0
+    ],
+    "rot_z": 1.5708,
+    "scale": 0.6,
+    "on": "outpost-m11-m63.6B4B8XR7Z9VW56PAVN6HFGPBMG",
+    "dz": 48.0,
+    "tier": "AGENT_INVENTED",
+    "need": 0,
+    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
+   },
+   {
+    "base": "Skyrim.esm:10E888",
+    "kind": "container",
+    "pos": [
+     -82150.0,
+     -514125.0
+    ],
+    "rot_z": 0.6,
+    "name": "Thief's Sack",
+    "tier": "AGENT_INVENTED",
+    "why": "the thief's sack of stolen traps and coin hidden in the reeds at the waterline east of the weir (place record: treasure, \"a thief's sack of stolen traps and coin hidden in the reeds\"; hooks: the traps are robbed at night): Skyrim's flat sack that never respawns"
+   },
+   {
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -82150.0,
+     -514760.0
+    ],
+    "rot_z": 0.0,
+    "dz": 40.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the weir's catch (place record: fishing, 'the weir traps: eels and gar'): Skyrim's own deep-pond critter spawner, fish only, in the pool below the weir, its pond square clear of the weir's fences, the way Skyrim's streams give fish a player can catch"
    }
   ],
   "drop": {

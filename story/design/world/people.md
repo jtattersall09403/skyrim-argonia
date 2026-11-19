@@ -1,6 +1,6 @@
 # Who the new world already names
 
-The person table holds 88 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
+The person table holds 90 people. They are the people of the drafted places, given light identities when their place was drafted; their status is 'alive' unless the table says otherwise. Every other place's people are counted (its population) but not named.
 
 ## Ashgate Landing (Barsaebica)
 
@@ -106,6 +106,13 @@ The person table holds 88 people. They are the people of the drafted places, giv
 | Sileeth | female Argonian, resident | Hesseth's (kin) | hunts the marsh for the camp's meat | Poor | She hunts the reeds round the camp for meat and hangs the best skulls on the trophy pole. She watches the cage more often than the guards do. | <!-- person:tribal-camp-m2-m68.RNT2SPEMAH3J1PPYVW2TQWA1JT -->
 | Tsoxi | male Argonian, resident | Hesseth's (kin) | tans hides and boils bones for the tents | Poor | He tans the hides the tents are hung with and boils the bones that hang on them. He came to the band from the road traffic days with nothing but his knives. | <!-- person:tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11 -->
 | Vuxalt | male Argonian, resident | Hesseth's (elder) | keeps the bone shrine to Sithis | Poor | He is the oldest of the camp and keeps the shrine of bones to Sithis. He says the jars bring nothing good and takes his share of the coin all the same. | <!-- person:tribal-camp-m2-m68.KKS4N5M31295M1G777AP7W3SKY -->
+
+## Reed-Sill Weir (Barsaebica)
+
+| Name | Who | Household | Trade | Means | What the data says of them |
+|---|---|---|---|---|---|
+| Zee-nassa | female Argonian, guard | Zee-nassa's (head) | weir-warden of the levy, day watch; leads the wardens on their turn at the weir | Poor | She runs the eel and gar traps by day on her family's turn at the weir and carries the catch to Jal-Veesa's market. She has begun counting the traps each dusk, since someone empties them at night. | <!-- person:outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W -->
+| Ula-ja | male Argonian, guard | Zee-nassa's (levy) | weir-warden of the levy, night watch | Poor | He keeps the night watch on the log walk and throws the offal in below the weir at dawn. He gives the first catch to the Hist-shoot post at the landing before he will eat. | <!-- person:outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ -->
 
 ## Teel-Fen Weir (Barsaebica)
 

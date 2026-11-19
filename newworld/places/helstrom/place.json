@@ -50,6 +50,17 @@
     "name": "Urn Case",
     "tier": "AGENT_INVENTED",
     "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it"
+   },
+   {
+    "base": "Skyrim.esm:000034",
+    "kind": "marker",
+    "pos": [
+     -30126.0,
+     -610760.0
+    ],
+    "rot_z": 3.1416,
+    "tier": "AGENT_INVENTED",
+    "why": "the slot of the city tree's Hist sap pool (owner, #80, 2026-11-19: every Hist has a pool of sap at its foot): a heading marker on the open ground at the south foot of the sacred tree (helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE), 380 units from its trunk, clear of the Sealed Spring to the east; the sap-pool lane sets its pool here, centred on the marker, and takes the marker out"
    }
   ]
  },

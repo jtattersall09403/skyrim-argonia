@@ -1097,24 +1097,12 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             if r.get("kind") == "actor" and r.get("base") in src.npcs:
                 actors.append((sp_id, r))
     used_bases: dict[str, int] = {}
-    # the bases our people are built on: the source's own actors, or, where the source's people are not the place's
-    # (a Dunmer town drafted for an Argonian one), the actors of the sources `draft.people_from` names
-    pool, pool_npcs = actors, src.npcs
-    if dec.get("people_from"):
-        pool, pool_npcs = [], {}
-        for sid_ in dec["people_from"]:
-            b_ = io.load(f"src.{sid_}", src.path.parent)
-            pool_npcs.update(b_.npcs)
-            pool += [(sp_id, r) for sp_id, sp in sorted(b_.spaces.items()) for r in sp.refs
-                     if r.get("kind") == "actor" and r.get("base") in b_.npcs]
-
-    def pick_base(role: str) -> str | None:
-        cands = sorted({r["base"] for _, r in pool if people.usable(pool_npcs[r["base"]], pool_npcs)})
-        if not cands:
-            return None
-        best = max(cands, key=lambda k: (people.role_score(pool_npcs[k], role), -used_bases.get(k, 0), k))
-        used_bases[best] = used_bases.get(best, 0) + 1
-        return best
+    # the bases our people are built on: the source's own actors, the sources `draft.people_from` names, or, where
+    # the source has no person to build on, Black Marsh's own (people.PEOPLE_FALLBACK)
+    pool, pool_npcs, people_from = people.base_pool(src, dec, lambda sid_: io.load(f"src.{sid_}", src.path.parent))
+    if people_from and not dec.get("people_from"):
+        print(f"draft {place_id}: the source has no person to build on; people's bases from {', '.join(people_from)}")
+    pick_base = people.base_picker(pool, pool_npcs, used_bases)
 
     centre = fit.xf.to
     town = {"space": "exterior", "pos": [round(centre[0], 1), round(centre[1], 1)], "radius": 1024}

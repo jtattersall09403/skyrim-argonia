@@ -235,3 +235,12 @@ def test_a_guard_sleeping_in_the_camp_eats_by_their_bed_never_at_the_towns_middl
     assert people.guard_eat({"space": "barracks", "ref": "fx.bunk", "radius": 128}) == {"space": "barracks", "radius": 1024}
     day = people.routine("guard", camp, {"space": "exterior", "pos": [0, 0], "radius": 256}, people.guard_eat(camp), camp)
     assert next(s for s in day if s["kind"] == "eat")["at"]["ref"] == "fx.bedroll"
+
+
+def test_a_thing_added_on_another_is_seated_on_it():
+    from tools.places.draft import adds
+    dec = {"add": [{"base": "b:moss", "kind": "flora", "pos": [10, 20], "on": "pl.fence", "dz": 48, "why": "moss on the fence"},
+                   {"base": "b:pot", "pos": [0, 0], "why": "pot"}]}
+    (sp1, moss), (sp2, pot) = adds.rows("pl", dec, {})
+    assert moss["seat"] == {"mode": "on", "on": "pl.fence", "dz": 48.0} and sp1 == "exterior"
+    assert pot["seat"]["mode"] == "ground"

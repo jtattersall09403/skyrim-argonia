@@ -56,7 +56,7 @@ startWhen:
 start: 10
 recordStatus: design
 foundation: 'Built from main-plot.md §5 quest 2 and §2. Starts as MN01 ends, with the player freed and sent to Vosh-Leera.
-  The player picks Sithis'' beard below Reed-Sill Weir, past or through two young crocodiles (fight, shoot from the log
+  The player picks Sithis'' beard at Reed-Sill Weir, past or through two young crocodiles (fight, shoot from the log
   walk, or sneak), and brings it to Vosh-Leera, who greets them and sends them on with it to Weeltul, Jal-Veesa''s
   tree-minder, at the Hist pool (owner, 2026-11-18: one place at a time; Vosh-Leera is the early handler). Out of
   order: a player who takes the moss straight to Weeltul skips ahead cleanly (Vosh-Leera greets them at the report); a
@@ -92,7 +92,7 @@ actionPlan:
   reason: a mage burns them from the log walk
 - skill: Sneak
   use: slip-past
-  reason: the moss can be picked from the bank's edge out of the crocodiles' sight
+  reason: the moss can be picked from the weir's bank end out of the crocodiles' sight
 truth:
 - id: t1
   when: this season
@@ -174,13 +174,13 @@ things:
 - id: thing.mn02.sithis-beard
   kind: item
   name: Sithis' Beard
-  source: 'new: an ingredient of ours on Here There Be Monsters'' hanging moss (main-plot §9), placed as a hank on the bank
-    below the hanging moss'
+  source: 'new: an ingredient of ours on Here There Be Monsters'' hanging moss (main-plot §9), placed as a hank on the log walk
+    under the moss hanging on the weir'
   states:
-    before-20: on the bank below the weir
+    before-20: on the weir's log walk
     after-20: carried
     after-30: with Weeltul
-  where: Reed-Sill Weir, below the weir
+  where: Reed-Sill Weir, on the weir
 - id: door.mn02.vosh-leera-house
   kind: door
   name: Vosh-Leera's House
@@ -201,9 +201,8 @@ placements:
   anchor:
     place: outpost-m11-m63
     rule: surface
-    need: a hank of grey moss lying on the creek bank below the woven weir, under the long grey moss hanging from the trees
-      over the water, where the crocodiles lie; reachable on foot from the bank and in sight of the log walk on top of the
-      weir
+    need: a hank of grey moss lying on the log walk at the bank end of the woven weir, under the long grey moss draped on
+      the weir's fences, above the shallows where the crocodiles lie; reachable on foot from the bank
   enabled: true
 - ref: npc.mn02.crocodile-1
   kind: person
@@ -229,7 +228,7 @@ placements:
   anchor:
     place: outpost-m11-m63
     rule: navmesh
-    need: on the mud below the weir, facing the offal stones, its back to the bank where the moss lies
+    need: on the mud below the weir, facing the offal stones, its back to the weir where the moss hangs
   enabled: true
 - ref: npc.mn.jal-veesa-minder
   kind: person
@@ -325,13 +324,13 @@ stages:
   place: outpost-m11-m63
   journal: text.journal.mn02.10
   journalText: "Dralin Uveran told me that Vosh-Leera, the root-herald of Jal-Veesa, who had me freed, will have work
-    for me if I bring her some Sithis' beard, a grey moss hanging over the creek below Reed-Sill Weir. Crocodiles lie
+    for me if I bring her some Sithis' beard, a grey moss hanging on the woven weir at Reed-Sill Weir. Crocodiles lie
     under the weir; he said I can kill them, shoot them from the log walk on top of the weir, or keep out of their
     sight, and if they see me they will come for me. First I need to pick the moss."
   objectives:
   - id: moss
     text: text.objective.mn02.moss
-    objectiveText: Pick Sithis' beard below Reed-Sill Weir.
+    objectiveText: Pick Sithis' beard at Reed-Sill Weir.
     target: thing.mn02.sithis-beard
     completeWhen:
       questStage:
@@ -349,17 +348,17 @@ stages:
     when:
       not:
         npcAlive: npc.mn.vosh-leera
-  directions: Reed-Sill Weir is the first camp east of Ashgate Landing, where the road meets the creek. The moss hangs from
-    the trees over the water just below the woven weir.
+  directions: Reed-Sill Weir is the first camp east of Ashgate Landing, where the road meets the creek. The moss hangs on
+    the woven weir's fences, over the water.
   information:
     going: I am free; Vosh-Leera of Jal-Veesa had me freed, and she will have work for me if I bring her Sithis' beard.
-    next: Pick Sithis' beard below Reed-Sill Weir, then take it to Vosh-Leera in Jal-Veesa.
+    next: Pick Sithis' beard at Reed-Sill Weir, then take it to Vosh-Leera in Jal-Veesa.
     ways: Fight the crocodiles, shoot them from the log walk, or sneak to the moss behind them.
     carriers:
     - know: who freed me, where she is and what she wants
       by:
       - journal
-    - know: pick the moss below the weir
+    - know: pick the moss on the weir
       by:
       - journal
       - objective
@@ -393,7 +392,7 @@ stages:
 - id: 20
   place: jal-veesa
   journal: text.journal.mn02.20
-  journalText: "I picked Sithis' beard below Reed-Sill Weir. I should bring it to Vosh-Leera at her house in Jal-Veesa,
+  journalText: "I picked Sithis' beard at Reed-Sill Weir. I should bring it to Vosh-Leera at her house in Jal-Veesa,
     a short walk on east along the road."
   objectives:
   - id: vosh-moss
@@ -715,7 +714,7 @@ endings:
 terms:
 - term: Sithis' beard
   meets: 10, journal
-  told: 'journal 10: "a grey moss hanging over the creek"'
+  told: 'journal 10: "a grey moss hanging on the woven weir"'
   ask: topic.mn02-moss-what
 - term: Weeltul
   meets: 20, name
@@ -762,7 +761,7 @@ topics:
   intent: "Vosh-Leera, if the player comes before they have the moss. Tells: she greets them: she is Vosh-Leera,
     root-herald of Jal-Veesa, and she had their name struck from Dralin's roll. She will give work only to one who
     helps the town's tree-minder first, and the tree-minder needs Sithis' beard. Go back to Reed-Sill Weir, west down
-    the road, pick the moss that hangs over the creek below it, and bring it here. Checks: nothing. Does: nothing."
+    the road, pick the moss that hangs on it, and bring it here. Checks: nothing. Does: nothing."
   new: true
 - id: topic.mn02-vosh-moss
   label: I brought the Sithis' beard you wanted.
@@ -812,7 +811,7 @@ topics:
   essential: false
   intent: "Weeltul. Tells: she is Weeltul, tree-minder of Jal-Veesa: she tends the town's Hist, keeps its egg-pool and
     draws its sap; every hatchling of the town comes to her on its naming day. Before the player has the moss she adds
-    that she is waiting on Sithis' beard from the creek below Reed-Sill Weir, west down the road, for her cooling pool.
+    that she is waiting on Sithis' beard from Reed-Sill Weir, west down the road, for her cooling pool.
     Checks: nothing. Does: nothing."
   new: true
 - id: topic.mn02-give-moss

@@ -50,7 +50,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "streets": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
                 "people.jsonl": (ANY, True), "clear.jsonl": (ANY, True), "ledger.jsonl": (ANY, True),
                 "place.json": (ANY, True)},
-    "people": {"people.jsonl": ({"name", "services", "work", "routine", "household", "identity"}, False)},
+    "people": {"people.jsonl": ({"name", "base_from", "services", "work", "routine", "household", "identity"}, False)},
     "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False)},
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
@@ -346,6 +346,10 @@ def people_stage(st: Standing, log=print) -> None:
     changed = people.refresh_services(st.files["people"], gives, routes)
     if changed:
         log(f"draft people {st.place_id}: services re-read from the record for {', '.join(changed)}")
+    pool, npcs, _ = people.base_pool(st.src, st.place.get("draft") or {}, lambda sid: io.load(f"src.{sid}", st.src.path.parent))
+    rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs)
+    if rebased:
+        log(f"draft people {st.place_id}: a person's base given for {', '.join(rebased)}")
     people.give_to_residents(st.files["people"], gives, who, hist, routes)
     people.apply_identities(st.files["people"], who)
 
