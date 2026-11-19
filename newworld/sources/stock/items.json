@@ -1667,6 +1667,21 @@
    "never": false
   },
   {
+   "id": "Skyrim.esm:096598",
+   "form_key": "096598:Skyrim.esm",
+   "plugin": "Skyrim.esm",
+   "edid": "FireboltScroll",
+   "name": null,
+   "record": "SCRL",
+   "item_kind_id": "scroll",
+   "value": 50,
+   "material": null,
+   "stock_tier_id": "T1",
+   "enchanted": false,
+   "significant": true,
+   "never": false
+  },
+  {
    "id": "Skyrim.esm:09659B",
    "form_key": "09659B:Skyrim.esm",
    "plugin": "Skyrim.esm",
@@ -1686,6 +1701,21 @@
    "form_key": "0965AD:Skyrim.esm",
    "plugin": "Skyrim.esm",
    "edid": "CalmScroll",
+   "name": null,
+   "record": "SCRL",
+   "item_kind_id": "scroll",
+   "value": 50,
+   "material": null,
+   "stock_tier_id": "T1",
+   "enchanted": false,
+   "significant": true,
+   "never": false
+  },
+  {
+   "id": "Skyrim.esm:0965AF",
+   "form_key": "0965AF:Skyrim.esm",
+   "plugin": "Skyrim.esm",
+   "edid": "FastHealingScroll",
    "name": null,
    "record": "SCRL",
    "item_kind_id": "scroll",
@@ -1964,6 +1994,21 @@
    "stock_tier_id": "T1",
    "enchanted": false,
    "significant": false,
+   "never": false
+  },
+  {
+   "id": "Skyrim.esm:0FCEFD",
+   "form_key": "0FCEFD:Skyrim.esm",
+   "plugin": "Skyrim.esm",
+   "edid": "EnchRingHealth01",
+   "name": null,
+   "record": "ARMO",
+   "item_kind_id": "armour",
+   "value": 100,
+   "material": null,
+   "stock_tier_id": "T2",
+   "enchanted": true,
+   "significant": true,
    "never": false
   },
   {

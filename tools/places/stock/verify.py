@@ -25,6 +25,21 @@ def _stock_ref(r: dict) -> str:
     return r["src"] if r["space"] != "exterior" and r.get("src") else r["id"]
 
 
+STOCK_PLACES = Path(__file__).resolve().parents[3] / "newworld" / "sources" / "stock" / "places"
+
+
+def owner_exceptions(place_id: str, root: Path = STOCK_PLACES) -> dict:
+    """{(space, ref): ruling} for each container the owner ruled out of the tier and value rules: its stock source
+    row's `owner_exception` {ruling, why} (the owner's words, where and when). Its contents, lock and owner keep every
+    other rule."""
+    p = root / f"{place_id}.json"
+    if not p.exists():
+        return {}
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    return {(c["space"], c["ref"]): c["owner_exception"] for c in doc.get("containers") or []
+            if (c.get("owner_exception") or {}).get("ruling")}
+
+
 def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     st = load_stock(place_id)
     if st is None:
@@ -106,6 +121,7 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         "bands": bands, "issue_tier": split.guard_issue(getattr(w.get("place", place_id), "culture_id", None),
                                                         pw.ceiling_tier_id, split.source_plugins(place_id), sc)["tier"],
         "caps": sc["ledger"]["caps"],
+        "exceptions": owner_exceptions(place_id),
         "containers": [{"ref": r.ref_id, "space": r.space_id, "owner_person": r.owner_person_id,
                         "owner_household": r.owner_household_id, "owner_faction": r.owner_faction, "lock": r.lock_level_id,
                         "security": r.security_level_id, "tier": r.stock_tier_id, "gold": r.gold,
@@ -209,6 +225,8 @@ def check_stock(ctx) -> list[str]:
             bad.append(f"owner: {holder}: built owner {b['owner'] or 'none'}, its row's {who} ({fk})")
         if fk is None and row["security"] != "S0":
             bad.append(f"owner: {holder}: {row['security']} but nobody's (only S0 things and the wild are unowned)")
+        if (X.get("exceptions") or {}).get(key):
+            continue       # the owner's own call on this container: its tier and value stand as he asked
         reach = R[X["open"]] + X["sec_rank"][row["security"]]
         if R[row["tier"]] > reach:
             bad.append(f"locks: {holder}: tier {row['tier']} above what {row['security']} keeps (up to rank {reach})")

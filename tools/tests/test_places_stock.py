@@ -39,3 +39,15 @@ def test_economy_read():
     assert "-does not trade" in words and "+market" in words
     assert pts == 2 * rules["economy_plus_each"] - rules["economy_minus_each"]   # trade (traders), market; minus
     assert wealth.economy_read("", rules) == (0, [])
+
+
+def test_an_owner_exception_on_a_container_row_is_read_by_space_and_ref(tmp_path):
+    """A container the owner ruled out of the tier and value rules carries `owner_exception` {ruling, why} in its stock
+    source row; verify reads it by (space, ref); a row with no ruling is not an exception."""
+    import json
+    from tools.places.stock import verify
+    (tmp_path / "p.json").write_text(json.dumps({"containers": [
+        {"ref": "a", "space": "hold", "owner_exception": {"ruling": "owner, 2026-11-19", "why": "his kit"}},
+        {"ref": "b", "space": "hold", "owner_exception": {"why": "no ruling"}}, {"ref": "c", "space": "exterior"}]}))
+    assert verify.owner_exceptions("p", tmp_path) == {("hold", "a"): {"ruling": "owner, 2026-11-19", "why": "his kit"}}
+    assert verify.owner_exceptions("missing", tmp_path) == {}

@@ -130,6 +130,20 @@
      }
     },
     "why": "the council house's front door (MudHutLDoor02, where Lilmoth sets it on the house, without Lilmoth's door frame, which the door would stand inside), into a copy of Dragonthorn Manor's interior (King of the Murkmire's Lilmoth: a Murkmire house with its hall, writing desks, stair to an upper room and partition doors), the hall open by day"
+   },
+   {
+    "base": "King of the Murkmire.esp:1616CD",
+    "kind": "static",
+    "pos": [
+     -27566.5,
+     -615028.3
+    ],
+    "rot_z": 0.0,
+    "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
+    "dz": -53.54,
+    "need": 6,
+    "tier": "AGENT_INVENTED",
+    "why": "the boardwalk off the council house's porch, laid where Lilmoth lays it at Dragonthorn Manor (MurkmireWalkwayShort01), so one walks from the porch onto the town's ground"
    }
   ],
   "replace": {

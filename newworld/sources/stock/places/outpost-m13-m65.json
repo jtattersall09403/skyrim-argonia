@@ -85,7 +85,11 @@
    "cites": [
     "place_wealth:outpost-m13-m65",
     "story/design/quests/lines/main-plot.md"
-   ]
+   ],
+   "owner_exception": {
+    "ruling": "owner, #80 story note 1, 2026-11-19: the barge-hold satchel keeps the kit he asked for",
+    "why": "the player's kit on waking in the hold; worth over an open satchel's budget by the owner's call"
+   }
   },
   {
    "ref": "Black Marsh.esm:1BEB52",
@@ -131,6 +135,21 @@
      "item": "Skyrim.esm:01397E",
      "count": 1,
      "why": "an iron dagger (main plot, quest 1's side quest)"
+    },
+    {
+     "item": "Skyrim.esm:0FCEFD",
+     "count": 1,
+     "why": "Vosh-Leera's Ring: a ring of fortify health that Vosh-Leera sent the player (main plot, quest 1's side quest What the Herald Sent; main-plot.md:178, :698)"
+    },
+    {
+     "item": "Skyrim.esm:096598",
+     "count": 1,
+     "why": "a scroll of firebolt Vosh-Leera sent (main-plot.md:178, :698)"
+    },
+    {
+     "item": "Skyrim.esm:0965AF",
+     "count": 1,
+     "why": "a scroll of fast healing Vosh-Leera sent (main-plot.md:178, :698)"
     }
    ],
    "why": "the gang-master's strongbox in the hut (place give 5, treasure; main plot quest 1's side quest pays 100 gold and an iron dagger here; Vosh-Leera's Ring and the two scrolls are the story's to add)",

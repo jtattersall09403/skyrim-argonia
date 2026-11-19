@@ -87,7 +87,9 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - An encounter near a settlement (a fight with `setting: nearby`) keeps its reward with it, outside the settlement
   and nobody's: the loot give marked `nearby` is stocked at the highest reward band of the nearby fights that name
   it (`place_encounter`, in `place_danger show <place>`), never at the settlement's ceiling.
-- Each container stays within its budget: its tier's `value_max` times its owner's share.
+- Each container stays within its budget: its tier's `value_max` times its owner's share. A container the owner asks to hold more
+  carries `owner_exception` {ruling (his words, where and when), why} in its row: the tier and value rules pass it by
+  that ruling, and every other rule holds.
 
 **Loose things** follow from what the place is and its record: an offering at a shrine, a lost pack in the reeds,
 tools at a bench. Each lies on a ref or at a position, with an owner where people live.
