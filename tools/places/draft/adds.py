@@ -9,7 +9,7 @@ the floor-standing piece beside it and given). `walk` is a walkway's deck height
 `stop` marks the thing a travel stop's handler works at (`rootworm-stop` on a root pool); `lock` is the ref's lock
 ({level, key, flags}); `name` the name the game shows on looking at it; `need` the story need it meets, by seq;
 `map_marker` the name a map marker shows on the world map (the row's base is Skyrim's map marker, 000010). Its id is
-minted from its place in the list and its base, so a rerun keeps it; `id_base` keeps the id a row was first
+minted from its `key` (the first run pins each row its key, so another row added or removed never shifts its id) and its base; `id_base` keeps the id a row was first
 minted from when its base is swapped in place (the ids the stories rest on stay). The whole draft adds them; on a drafted place
 `draft add <place>` places them again from `draft.add` and touches no other row.
 
@@ -34,11 +34,41 @@ from tools.places.draft import geom, interiors, io
 FIELDS = ("name", "need", "tier", "lock")
 
 
+def keys(adds: list[dict]) -> list[str]:
+    """The key each `draft.add` row's id is minted from: its own `key`; a row without one takes the smallest unused
+    whole number, so the first run gives positions and an added or removed row never shifts another's id."""
+    taken = {str(a["key"]) for a in adds if a.get("key") is not None}
+    out, n = [], 0
+    for a in adds:
+        if a.get("key") is not None:
+            out.append(str(a["key"]))
+            continue
+        while str(n) in taken:
+            n += 1
+        out.append(str(n))
+        taken.add(str(n))
+    return out
+
+
+def ident(place_id: str, a: dict, key: str) -> str:
+    return io.mint(place_id, "add", key, a.get("id_base") or a["base"])
+
+
+def pin(place: dict) -> int:
+    """Write each keyless `draft.add` row its key, so later runs keep its id. Returns the rows pinned."""
+    adds = (place.get("draft") or {}).get("add") or []
+    n = 0
+    for a, k in zip(adds, keys(adds)):
+        if a.get("key") is None:
+            a["key"], n = k, n + 1
+    return n
+
+
 def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
     """Each `draft.add` row as a place row with its `space`."""
     out = []
     adds = dec.get("add") or []
-    for k, a in enumerate(adds):
+    for k, a in zip(keys(adds), adds):
         space = a.get("space") or "exterior"
         z = float(a["pos"][2]) if len(a["pos"]) > 2 else 0.0
         if space != "exterior":
@@ -51,7 +81,7 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
             seat = {"mode": "ground", "dz": float(a.get("dz", 0.0))}
             if a.get("within"):   # on the ground inside a shelter (a bedroll in a tent, a bed in a hut): it rests in it
                 seat["carrier"] = a["within"]
-        row = {"id": io.mint(place_id, "add", str(k), a.get("id_base") or a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
+        row = {"id": ident(place_id, a, k), "base": a["base"], "kind": a.get("kind", "furniture"),
                "pos": [float(a["pos"][0]), float(a["pos"][1]), z], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
                "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,
                "seat": seat, "why": a.get("why", "")}
@@ -257,6 +287,7 @@ def apply(st, log=print) -> None:
     want = rows(st.place_id, dec, st.bases)
     st.bases.update(io.catalogue_bases({r["base"] for _, r in want} - set(st.bases)))
     want = rows(st.place_id, dec, st.bases)
+    pin(st.place)
     minted = {io.mint(st.place_id, "add", str(k), b) for k in range(len(adds) + 64)
               for b in {a["base"] for a in adds} | {a["id_base"] for a in adds if a.get("id_base")} | {r["base"] for sp in st.files["spaces"].values()
                                                     for r in sp["refs"] if r.get("why") and not r.get("src")}}

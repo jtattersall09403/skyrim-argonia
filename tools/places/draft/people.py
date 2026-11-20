@@ -231,18 +231,21 @@ def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str,
 def spots_of(place_id: str, place: dict) -> dict[str, str]:
     """{give kind: ref id} of the `draft.add` rows marked with a `stop` (the rootworm's root pool)."""
     from tools.places.draft import io
-    return {a["stop"]: io.mint(place_id, "add", str(k), a.get("id_base") or a["base"])
-            for k, a in enumerate((place.get("draft") or {}).get("add") or []) if a.get("stop")}
+    from tools.places.draft import adds
+    rows = (place.get("draft") or {}).get("add") or []
+    return {a["stop"]: adds.ident(place_id, a, k) for k, a in zip(adds.keys(rows), rows) if a.get("stop")}
 
 
 def work_spots(place_id: str, place: dict) -> dict[str, dict]:
     """{person name or id: work stop} of the `draft.add` rows that name who works at them (`work_for`): a councillor
     at a bench of the hall where the council sits, a warden at its door."""
     from tools.places.draft import io
+    from tools.places.draft import adds
     out = {}
-    for k, a in enumerate((place.get("draft") or {}).get("add") or []):
+    rows = (place.get("draft") or {}).get("add") or []
+    for k, a in zip(adds.keys(rows), rows):
         for who in a.get("work_for") or []:
-            out[who] = {"space": a.get("space") or "exterior", "ref": io.mint(place_id, "add", str(k), a.get("id_base") or a["base"]),
+            out[who] = {"space": a.get("space") or "exterior", "ref": adds.ident(place_id, a, k),
                         "radius": 256}
     return out
 

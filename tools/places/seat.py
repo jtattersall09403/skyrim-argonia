@@ -24,6 +24,8 @@ import sys
 from array import array
 from pathlib import Path
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLES = ROOT / "out" / "places" / "bundles"
 PLACES = ROOT / "newworld" / "places"
@@ -228,6 +230,54 @@ def _collision_tris(model: str):
     return c.tris[keep] if len(keep) else None
 
 
+SOLID_GRID = 24          # a model's vertical profile: this many cells a side over its collision's plan
+_profiles: dict = {}
+
+
+def profile_of_tris(tris) -> dict | None:
+    """A model's vertical profile from its collision triangles (n, 3, 3): over a SOLID_GRID square of plan cells, the
+    lowest and highest collision point in each cell that any triangle covers (NaN where none does)."""
+    if tris is None or not len(tris):
+        return None
+    lo, hi = tris.reshape(-1, 3).min(axis=0), tris.reshape(-1, 3).max(axis=0)
+    n = SOLID_GRID
+    span = np.maximum(hi[:2] - lo[:2], 1e-6)
+    zmin, zmax = np.full((n, n), np.inf), np.full((n, n), -np.inf)
+    for t in tris:
+        uv = (t[:, :2] - lo[:2]) / span * n
+        i0 = np.clip(np.floor(uv.min(axis=0)).astype(int), 0, n - 1)
+        i1 = np.clip(np.floor(uv.max(axis=0)).astype(int), 0, n - 1)
+        for i in range(i0[0], i1[0] + 1):
+            for j in range(i0[1], i1[1] + 1):
+                zmin[i, j], zmax[i, j] = min(zmin[i, j], t[:, 2].min()), max(zmax[i, j], t[:, 2].max())
+    zmin[np.isinf(zmin)] = np.nan
+    zmax[np.isinf(zmax)] = np.nan
+    return {"lo": lo[:2], "span": span, "zmin": zmin, "zmax": zmax}
+
+
+def solid_profile(model: str) -> dict | None:
+    """The vertical profile of a model's collision (cached), or None when it has no readable collision."""
+    m = str(model or "").lower()
+    if m not in _profiles:
+        try:
+            _profiles[m] = profile_of_tris(_collision_tris(m))
+        except Exception:
+            _profiles[m] = None
+    return _profiles[m]
+
+
+def in_profile(prof: dict, local) -> bool:
+    """Whether a point in the model's own frame is inside its solid: over a plan cell the collision covers, between
+    that cell's lowest and highest collision point."""
+    n = SOLID_GRID
+    u = (np.asarray(local[:2], float) - prof["lo"]) / prof["span"] * n
+    if u.min() < 0 or u.max() >= n:
+        return False
+    i, j = int(u[0]), int(u[1])
+    z0, z1 = prof["zmin"][i, j], prof["zmax"][i, j]
+    return bool(not np.isnan(z0) and z0 - 1.0 <= local[2] <= z1 + 1.0)
+
+
 def walk_top(base: dict) -> float:
     """Where one walks on a walkway piece, as a height over its origin: the top of its collision at its centre (what
     the navmesh and the game walk on), cached per model; the record's top when it has no readable collision."""
@@ -386,8 +436,8 @@ def read_jsonl(p: Path) -> list[dict]:
 
 
 def write_jsonl(p: Path, rows: list[dict]) -> None:
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text("".join(json.dumps(r, separators=(",", ":"), ensure_ascii=False) + "\n" for r in rows))
+    from tools.places import hands      # inside a stage run the hands' rows are kept (tools/places/hands.py)
+    hands.write_rows(p, rows)
 
 
 def ground_for(place_id: str, bundles: Path = BUNDLES, places: Path = PLACES) -> Ground:

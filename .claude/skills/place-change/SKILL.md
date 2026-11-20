@@ -13,6 +13,8 @@ Step 13 of the place path ([place-system](../place-system/SKILL.md)).
 the rows it owns, leaves every other row byte for byte, never changes a row a finalised studio save touched, and
 prints the rows changed per file; a stage that would write outside what it owns fails. A single piece or structure
 that must move, turn or sink is done by hand in the studio scene and `look commit` (`place-look`).
+A stage reads the files at its start and writes only its own rows: rows it does not own (a quest spot) and edits applied while it runs are kept as the hands left them, and a failed stage puts back only its own rows (`tools/places/hands.py`).
+An added thing keeps its id for good: `draft.add` rows carry a `key` that the `add` stage pins, never a list position.
 
 | Stage | Run it when | Skill |
 |---|---|---|

@@ -687,8 +687,8 @@ def _jsonl(p: Path) -> list:
 
 
 def _write_jsonl(p: Path, rows: list) -> None:
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text("".join(json.dumps(r, separators=(",", ":"), ensure_ascii=False) + "\n" for r in rows))
+    from tools.places import hands
+    hands.write_rows(p, rows)
 
 
 SOURCE_FILES = {"identities": "people/{pid}.json", "stock": "stock/places/{pid}.json"}
@@ -752,11 +752,12 @@ def write_sources(root: Path, files: dict, sources: Path | None = None) -> list[
 
 
 def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
+    from tools.places import hands
     root = Path(root)
     files = canonical(files)
     write_sources(root, files, sources)
     root.mkdir(parents=True, exist_ok=True)
-    (root / "place.json").write_text(json.dumps(files["place"], indent=1, ensure_ascii=False) + "\n")
+    hands.write_json(root / "place.json", files["place"])
     # a space the files no longer have (a copied room taken out again) leaves no folder behind
     import shutil
     for old in sorted((root / "spaces").glob("*")) if (root / "spaces").exists() else []:
@@ -765,7 +766,7 @@ def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
     for sid, sp in files["spaces"].items():
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
-            (root / "spaces" / sid / "space.json").write_text(json.dumps(sp["space"], indent=1, ensure_ascii=False) + "\n")
+            hands.write_json(root / "spaces" / sid / "space.json", sp["space"])
     for k in ("clear", "land", "paths", "people", "quests"):
         if files.get(k) or (root / f"{k}.jsonl").exists():
             _write_jsonl(root / f"{k}.jsonl", files.get(k) or [])
