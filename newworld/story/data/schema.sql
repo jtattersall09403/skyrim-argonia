@@ -611,6 +611,24 @@ CREATE TABLE "stock_container_item" (
   FOREIGN KEY ("place_id", "ref_id") REFERENCES "stock_container"("place_id", "ref_id")
 );
 
+-- A container's lock that has a key: one key record of ours per lock, named for the container, set as the lock's key
+-- and placed with exactly one holder: a person carries it, another container holds it, or it lies at a position.
+CREATE TABLE "stock_container_key" (
+  "place_id" TEXT NOT NULL,
+  "ref_id" TEXT NOT NULL,                -- the locked container
+  "name" TEXT NOT NULL,                  -- the key's name in the game ("Strongbox Key")
+  "holder_person_id" TEXT REFERENCES "person"("id"),
+  "holder_ref_id" TEXT,                  -- a container of the place (a stock_container row) that holds it
+  "space_id" TEXT,                       -- the holder container's or the position's space
+  "x" REAL, "y" REAL, "z" REAL,
+  "why" TEXT NOT NULL,
+  CHECK (("holder_person_id" IS NOT NULL) + ("holder_ref_id" IS NOT NULL) + ("x" IS NOT NULL) = 1),
+  CHECK (("x" IS NULL) = ("y" IS NULL) AND ("x" IS NULL) = ("z" IS NULL)),
+  CHECK (("holder_person_id" IS NULL) = ("space_id" IS NOT NULL)),
+  PRIMARY KEY ("place_id", "ref_id"),
+  FOREIGN KEY ("place_id", "ref_id") REFERENCES "stock_container"("place_id", "ref_id")
+);
+
 -- A significant thing lying loose: on a ref of the place files (a table, a shelf) or at a position in a space.
 CREATE TABLE "stock_loose" (
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),

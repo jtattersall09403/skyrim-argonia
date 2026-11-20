@@ -9,8 +9,8 @@ Reads the stock tables of the new world's database (loaded from `newworld/source
 place's bases come from. It changes the planned refs and people in place and returns the records the writer
 (tools/ArgoniaPlaces/Build Stock.cs and People.cs) adds:
   - a `stock_container` row: the ref's base becomes a container of ours holding the base's own set dressing (at
-    level 1) plus exactly the row's items and gold, never respawning; the ref gets the row's lock (its level, no
-    key) and owner (a person's actor base, a household faction of ours whose members are the household's people at
+    level 1) plus exactly the row's items and gold, never respawning; the ref gets the row's lock (its level, and its
+    key when the row has one) and owner (a person's actor base, a household faction of ours whose members are the household's people at
     rank 0, or the named faction);
   - a container the split calls significant with no row: a copy of ours holding its set dressing alone;
   - a container whose placed ref carries a `name` (a thing the place names, place-studio.md, Place files): a copy of
@@ -18,6 +18,8 @@ place's bases come from. It changes the planned refs and people in place and ret
   - `person_item` rows: the person's actor base carries exactly the non-worn rows plus the base's own set dressing,
     and wears an outfit of ours of the worn rows plus the base outfit's set dressing in the slots they leave free; a
     death item that would give a significant thing is cleared;
+  - a `stock_container_key` row: a key of ours (a copy of KEY_TEMPLATE under the row's name) set as that lock's key,
+    carried by the named person, held in the named container, or lying at the row's position;
   - a `trader` row: the vendor's merchant chest holds exactly the row's items and gold (it restocks to them);
   - a `stock_loose` row: whose id is a ref of the place, that ref kept with the row's owner and count; any other
     id, a new placed ref of the item at `pos` (or on the named container's top); every other significant loose ref
@@ -37,10 +39,11 @@ REPO = Path(__file__).resolve().parents[3]
 STOCK_SRC = REPO / "newworld" / "sources" / "stock"
 PEOPLE_SRC = REPO / "newworld" / "sources" / "people"
 DB_DIR = REPO / "newworld" / "story" / "data" / "db"
-TABLES = ("stock_container", "stock_container_item", "stock_loose", "person_item", "trader", "trader_item",
+TABLES = ("stock_container", "stock_container_item", "stock_container_key", "stock_loose", "person_item", "trader", "trader_item",
           "unique_item", "household", "person", "lock_level")
 MASTER_ORDER = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "Black Marsh.esm")
 OUR_PLUGIN = "ArgoniaNWPlaces.esp"
+KEY_TEMPLATE = "Skyrim.esm:0E82C3"   # FFRiften08StrongboxKey: vanilla's plain key, the model every key of ours copies
 
 
 def stock_source(place_id: str) -> Path:
@@ -86,6 +89,8 @@ class Stock:
             if r.person_id in self.persons:
                 self.trader_items[r.person_id].append(r)
         self.locks = {r.id: r.level for r in w.rows("lock_level")}
+        space_of = {ref: space for (space, ref) in self.containers}
+        self.keys = {(space_of.get(r.ref_id), r.ref_id): r for r in w.rows("stock_container_key", place_id=pid)}
 
 
 def load_stock(pid: str):
@@ -107,7 +112,7 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
     if rec is None:
         keys = [r.get("base") for r in S["refs"]] + [n.get("from") for n in (people or {}).get("npcs", [])]
         rec = Records.load(plugins_of(keys))
-    out = {"containers": [], "outfits": [], "taken_out": [], "kept_loose": [], "placed_loose": []}
+    out = {"containers": [], "outfits": [], "keys": [], "taken_out": [], "kept_loose": [], "placed_loose": []}
 
     def significant(k: str) -> bool:
         it = rec.item(k)
@@ -181,6 +186,14 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
                     items.append({"item": GOLD, "count": row.gold})
                 where = f"container {sref} in {r['space']}"
                 r["lock"] = st.locks[row.lock_level_id] if row.lock_level_id else None
+                kr = getattr(st, "keys", {}).get((r["space"], sref))
+                if kr is not None and not row.lock_level_id:
+                    problem(f"stock: {where}: has a key ({kr.name!r}) but no lock")
+                elif kr is not None:
+                    kfk = ids(f"keym:stock:{r['space']}:{sref}")
+                    out["keys"].append({"fk": kfk, "edid": f"ANP_{pid}_Key{len(out['keys']) + 1:03d}",
+                                        "from": KEY_TEMPLATE, "name": kr.name, "opens": r["fk"], "row": kr})
+                    r["lock"] = {"level": r["lock"], "key": kfk}
                 r["owner"] = owner(row.owner_person_id, row.owner_household_id, row.owner_faction, where)
             fk = ids(f"cont:stock:{r['space']}:{sref}")
             out["containers"].append({"fk": fk, "edid": f"ANP_{pid}_Stock{n_cont:03d}", "from": base, "items": items,
@@ -271,6 +284,37 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
         if who not in npc_of:
             problem(f"stock: possessions of {who}, who is no person of {pid}'s build")
 
+    # keys: each with its one holder, a person, a container of the place or a spot
+    cont_of = {c["ref"]: c for c in out["containers"]}
+    for k in out["keys"]:
+        kr = k.pop("row")
+        one = {"item": k["fk"], "count": 1}
+        if kr.holder_person_id:
+            if kr.holder_person_id not in npc_of:
+                problem(f"stock: key {kr.name!r}: holder {kr.holder_person_id} is no person of {pid}'s build")
+                continue
+            npc_of[kr.holder_person_id].setdefault("inventory", []).append(one)
+            k["held"] = {"person": kr.holder_person_id}
+        elif kr.holder_ref_id:
+            on = by_stock.get((kr.space_id, kr.holder_ref_id))
+            c = cont_of.get((on or {}).get("fk"))
+            if c is None:
+                problem(f"stock: key {kr.name!r}: holder {kr.holder_ref_id} in {kr.space_id} is no stocked container")
+                continue
+            c["items"].append(one)
+            k["held"] = {"container": kr.holder_ref_id, "space": kr.space_id}
+        else:
+            lid = f"{pid}.key." + "".join(c if c.isalnum() else "_" for c in kr.ref_id)
+            pos = [kr.x, kr.y, kr.z]
+            new = {"id": lid, "fk": ids(f"ref:{lid}"), "base": k["fk"], "kind": "clutter", "space": kr.space_id,
+                   "pos": pos, "rot": [0.0, 0.0, 0.0], "scale": 1.0, "disabled": False, "persistent": False,
+                   "seat": {"mode": "free"}}
+            if kr.space_id == "exterior":
+                new["cell"] = list(cell_of(*pos[:2]))
+            S["refs"].append(new)
+            S["by_id"][lid] = new
+            k["held"] = {"ref": new["fk"], "space": kr.space_id}
+
     # traders: the merchant chest holds exactly the row's list and gold
     for c in (people or {}).get("containers", []):
         who = c.get("who")
@@ -294,7 +338,7 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
             if p.household_id == hid and p.id in npc_of and not any(f["faction"] == fk for f in npc_of[p.id]["factions"]):
                 npc_of[p.id]["factions"].append({"faction": fk, "rank": 0})
     out["counts"] = {"containers": len(out["containers"]), "rows": sum(c["row"] for c in out["containers"]),
-                     "outfits": len(out["outfits"]), "kept_loose": len(out["kept_loose"]),
+                     "outfits": len(out["outfits"]), "keys": len(out["keys"]), "kept_loose": len(out["kept_loose"]),
                      "placed_loose": len(out["placed_loose"]), "taken_out": len(out["taken_out"])}
     return out
 

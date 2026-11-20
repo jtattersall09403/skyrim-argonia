@@ -113,6 +113,11 @@
    "kind": "strongbox",
    "owner_household": "outpost-m13-m65.household.exterior",
    "lock": "Novice",
+   "key": {
+    "name": "Strongbox Key",
+    "person": "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA",
+    "why": "Dralin Uveran keeps the hut and its strongbox, the key on his belt (people source, his backstory)"
+   },
    "security": "S2",
    "tier": "T2",
    "gold": 100,
