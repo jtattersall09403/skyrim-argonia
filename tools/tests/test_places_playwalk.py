@@ -178,3 +178,14 @@ def test_inside_a_box_is_a_fault_only_when_the_picture_agrees():
 def test_a_deck_overhead_is_not_a_fault_looking_up():
     over = {"all_inside": "Deck", "in_piece": "Deck", "fills": [{"edid": "Deck", "share": 0.8}], "land": 0.1}
     assert pw.classify("up", "stride", over)["verdict"] == "good"
+
+
+def test_a_roof_at_head_height_and_a_trunk_beside():
+    roof = {"edid": "ThatchHouse", "kind": "building", "share": 0.8, "dist": 43, "top_over_eye": 60}
+    v = pw.classify("right", "stride", {"near": roof, "land": 0.1})
+    assert v["fault"] == "place" and "eaves" in v["why"]
+    tall = roof | {"top_over_eye": 400}
+    assert pw.classify("right", "stride", {"near": tall, "land": 0.1})["fault"] == "capture"
+    trunk = {"all_inside": "TreeX", "in_piece": "TreeX", "fills": [{"edid": "TreeX", "share": 0.9}], "land": 0.1}
+    assert pw.classify("left", "stride", trunk)["fault"] == "capture"      # standing beside it
+    assert pw.classify("ahead", "stride", trunk)["fault"] == "place"       # walking into it

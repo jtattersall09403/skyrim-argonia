@@ -44,8 +44,9 @@ NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
 OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
-DOOR_OVER = 150.0    # a door this far over the end of the walk to it: its arrival lies under it
-TOOL = 4             # the judging rules version: a route shot under older rules is shot again
+EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this over the eye: its roof is at head height
+DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
+TOOL = 5             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
@@ -468,13 +469,18 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         p = ev["all_inside"]
         if inside and ev.get("low_ceiling"):
             return {"verdict": "failed", "fault": "place", "why": f"the ceiling is lower than a person here ({p})"}
-        return {"verdict": "failed", "fault": "place", "why": f"the way passes through {p}: every spot near the station is inside it"}
+        if look in ("ahead", "down"):
+            return {"verdict": "failed", "fault": "place", "why": f"the way passes through {p}: every spot near the station is inside it"}
+        return {"verdict": "failed", "fault": "capture", "why": f"the eye stands against {p}, which fills the view {look}"}
     if ev.get("inside"):
         return {"verdict": "failed", "fault": "capture", "why": ev["inside"]}
     nr = ev.get("near")
     if nr and nr.get("share", 0) > LENS and nr.get("dist", 1e9) < NEAR_LENS:
         if "doorway" in what and look == "ahead" and nr.get("kind") in ("building", "static", "door"):
             return {"verdict": "failed", "fault": "place", "why": f"the door opens onto a wall: {nr.get('edid')} fills {nr['share']:.0%} of the view {nr['dist']:.0f} u ahead"}
+        if nr.get("kind") == "building" and nr.get("top_over_eye") is not None and nr["top_over_eye"] < EAVES_OVER_EYE:
+            return {"verdict": "failed", "fault": "place", "why": f"the top of {nr.get('edid')} is {nr['top_over_eye']} u over the eye, "
+                                                                  f"{nr['dist']:.0f} u off the way: a house sunk to its eaves?"}
         return {"verdict": "failed", "fault": "capture", "why": f"{nr.get('edid')} ({nr.get('kind')}) fills {nr['share']:.0%} of the lens {nr['dist']:.0f} u away"}
     if look == "down" and "bridge middle" in what and ev.get("floor_below", 1.0) < 0.25:
         return {"verdict": "failed", "fault": "place", "why": "no floor under the bridge's middle: looking down shows the ground or water, not boards"}
@@ -507,15 +513,16 @@ def evidence(ids: np.ndarray, table: list, id0: int, by_id: dict, eye) -> dict:
     fills = []
     for rid, c in sorted(by.items(), key=lambda kv: -kv[1])[:3]:
         p = by_id.get(rid) or {}
-        dist = None
+        dist = top = None
         if p.get("m"):
             lo, hi = geom.aabb(p)
+            top = round(float(hi[2] - eye[2]))
             q = np.clip(np.asarray(eye, float), lo, hi)
             dist = float(np.linalg.norm(q - np.asarray(eye, float)))
             if dist == 0.0:   # the eye inside its box: how near its faces are is not known from the box
                 dist = None
         fills.append({"piece": rid, "edid": p.get("edid"), "kind": p.get("kind"), "share": round(c / n, 3),
-                      "dist": round(dist) if dist is not None else None})
+                      "dist": round(dist) if dist is not None else None, "top_over_eye": top})
     for nm, c in (("land", land), ("water", water), ("nothing", sky)):
         if c:
             fills.append({"edid": nm, "share": round(c / n, 3)})
