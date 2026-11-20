@@ -3,12 +3,15 @@
     python3 -m tools.newworld.record_check            # every place in the built database
     python3 -m tools.newworld.record_check jal-veesa  # one or more places
 
-Three checks, each a fault line per place; exit 1 when any fault stands:
+Four checks, each a fault line per place; exit 1 when any fault stands:
 - population: an inhabited settlement's population sits inside its tier's range (a seat may be up to 25% over),
   and the tiers keep their order (no outpost above a village's smallest, and so on up to the metropolises);
 - water: every water word of the summary, notes and gives names water the ground has within reach (the classified
   water raster, `out/newworld/water_classified.png`), and the siting agrees with the nearest water;
-- Hist: every Hist pool is a pool of sap, never of water.
+- Hist: every Hist pool is a pool of sap, never of water;
+- gives against the disposition: a friendly lived place gives no fight against people (its fights are dangers
+  near it, in its `dangers` note); a hostile or abandoned place offers no service; a second loot store stands
+  only as the reward of a fight; a trade needs people; an ore vein needs a mine.
 """
 from __future__ import annotations
 
@@ -94,6 +97,37 @@ def hist_faults(texts: dict[str, str]) -> list[str]:
             for s in sentences(text) if HIST_POOL.search(s) and not re.search(r"\bsap\b", s, re.I)]
 
 
+LIVED = {"city", "town", "village", "hamlet", "estate"}
+SERVICES = {"trader-general", "trader-innkeeper", "trader-hunter", "trader-blacksmith", "trader-apothecary",
+            "trader-spells", "trader-jeweller", "trader-clothier", "trader-bookseller", "trader-fletcher",
+            "inn-room", "free-bed", "trainer", "shrine-blessing", "fence"}
+STORES = {"treasure", "boss-chest", "gold-hoard"}
+MINE_KINDS = {"mine", "cave", "quarry"}
+MINE_WORDS = re.compile(r"\b(ore|mines?|veins?|quarry|pits?|seams?)\b", re.I)
+
+
+def gives_faults(kind: str, disposition: str, population: int | None, gives: list[dict], text: str) -> list[str]:
+    """gives: rows with give_kind_id, detail, reward_kind_id; text: the record's summary and notes."""
+    out, ks = [], [g["give_kind_id"] for g in gives]
+    if disposition == "friendly" and kind in LIVED:
+        out += [f"a friendly {kind} gives a fight ({g['give_kind_id']}: {g['detail']}): name it in the dangers note"
+                for g in gives if g["give_kind_id"] in ("combat-foes", "combat-boss")]
+    if disposition in ("hostile", "abandoned"):
+        out += [f"a {disposition} place offers a service ({k})" for k in ks if k in SERVICES]
+    rewards = {g.get("reward_kind_id") for g in gives if g["give_kind_id"].startswith("combat")}
+    stores = [k for k in ks if k in STORES]
+    loose = [k for k in stores if k not in rewards]
+    if len(stores) > 1 and loose:
+        out.append(f"{len(stores)} loot stores, {', '.join(loose)} the reward of no fight: keep one store")
+    if (population or 0) <= 1:
+        out += [f"population {population or 0} but a trade ({k}): a trade needs people"
+                for k in ks if k.startswith("trader-") or k == "inn-room"]
+    veins = " ".join(g["detail"] for g in gives if g["give_kind_id"] == "ore-vein")
+    if veins and kind not in MINE_KINDS and not MINE_WORDS.search(text + " " + veins):
+        out.append("an ore vein but the record names no mine, quarry, pit or seam")
+    return out
+
+
 class Ground:
     """Metres from a map point to the nearest water of each group, from the classified water raster."""
 
@@ -129,6 +163,9 @@ def main(argv: list[str]) -> int:
     for n in w.rows("place_note"):
         if n.aspect_id != "source":
             texts[n.place_id][n.aspect_id] = n.text
+    disp = {r.place_id: r.disposition_id for r in w.rows("place_danger")}
+    gives = [dict(place_id=g.place_id, give_kind_id=g.give_kind_id, detail=g.detail or "",
+                  reward_kind_id=g.reward_kind_id) for g in w.rows("place_give")]
     for g in w.rows("place_give"):
         texts[g.place_id]["gives"] = texts[g.place_id].get("gives", "") + " " + (g.detail or "") + "."
     want = set(argv) or {p["id"] for p in places}
@@ -140,6 +177,9 @@ def main(argv: list[str]) -> int:
         t = dict(texts[p["id"]], summary=p["summary"] or "")
         faults += [(p["id"], m) for m in water_faults(t, p["siting"], ground.near(p["px"], p["py"]))]
         faults += [(p["id"], m) for m in hist_faults(t)]
+        own = [g for g in gives if g["place_id"] == p["id"]]
+        faults += [(p["id"], m) for m in gives_faults(p["place_kind_id"], disp.get(p["id"], ""), p["population"], own,
+                                                       " ".join(v for k, v in t.items() if k != "gives"))]
     for pid, m in faults:
         print(f"{pid}: {m}")
     print(f"{len(faults)} faults in {len(want)} places")

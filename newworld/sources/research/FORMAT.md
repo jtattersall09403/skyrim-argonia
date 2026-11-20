@@ -90,6 +90,9 @@ list several kinds, and several of one kind.
 - A combat give (`combat-foes`, `combat-boss`, `combat-creature`) needs a `reward`. The reward is the id of a loot
   give that the same place also lists: `boss-chest`, `treasure`, `gold-hoard` or `unique-item`. A boss needs a
   boss-chest, a gold-hoard or a unique-item.
+- A friendly lived place gives no `combat-foes` or `combat-boss`: its dangers note names them. A hostile or
+  abandoned place gives no service. A second loot store is the reward of its own fight. A trade needs people; an
+  `ore-vein` needs a mine, quarry, pit or seam the record names (`tools/newworld/record_check.py`).
 - A combat give at a settlement (city, town, village, hamlet, outpost) names its `setting`: `interior` (it lives in
   a dungeon-like interior of the place), `provoked` (the place's own people, who fight only when provoked) or
   `nearby` (an encounter just outside it, on the way in). A creature fight in its waters needs none.

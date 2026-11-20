@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half empty, the mixed population lives off sea trade, salvage and the hidden channel of Red Bramman and three groups contest who rules.",
+   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half unused, the mixed population lives off sea trade, salvage and the hidden channel of Red Bramman and three groups contest who rules.",
    "lore_page": "Lore:Soulrest",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [],
@@ -952,11 +952,6 @@
     {
      "kind": "forge",
      "detail": "the Blackguards' forge in the yard with its anvil",
-     "count": 1
-    },
-    {
-     "kind": "fence",
-     "detail": "a Blackguard quartermaster who buys stolen goods once the gate is opened to the player",
      "count": 1
     },
     {
@@ -2419,22 +2414,6 @@
      "kind": "fishing",
      "detail": "fish traps in the channel mouth",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "night bandit boats at the channel mouth",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the channel mouth beyond the stilts",
-     "bearing_deg": 74,
-     "distance_m": 140
-    },
-    {
-     "kind": "treasure",
-     "detail": "the bandits' boat strongbox",
-     "count": 1,
-     "setting": "nearby"
     }
    ]
   },
@@ -4331,11 +4310,6 @@
     {
      "kind": "unique-item",
      "detail": "an old Legion banner-blade from the storming, fixed enchantment",
-     "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "treasure: a pile of rusted Imperial arms from the storming",
      "count": 1
     }
    ]
@@ -6325,11 +6299,6 @@
      "count": 1
     },
     {
-     "kind": "treasure",
-     "detail": "treasure: moon sugar and Senchal cloth in the salt casks",
-     "count": 1
-    },
-    {
      "kind": "harvest-common",
      "detail": "salt from the broken casks",
      "count": 1
@@ -6833,22 +6802,6 @@
      "kind": "fishing",
      "detail": "sea fishing off the landing",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "wreckers on the shore by night",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the shore and the dunes beyond the village",
-     "bearing_deg": 184,
-     "distance_m": 140
-    },
-    {
-     "kind": "treasure",
-     "detail": "the wreckers' cache in the dunes",
-     "count": 1,
-     "setting": "nearby"
     }
    ]
   },
@@ -7798,11 +7751,6 @@
      "kind": "ore-vein",
      "detail": "iron ore veins in the dry upper levels",
      "count": 2
-    },
-    {
-     "kind": "fence",
-     "detail": "the smugglers' quartermaster buys stolen goods once the player has his trust",
-     "count": 1
     }
    ]
   },
@@ -8966,11 +8914,6 @@
     {
      "kind": "boss-chest",
      "detail": "the smugglers' chest in the tower base",
-     "count": 1
-    },
-    {
-     "kind": "shrine-blessing",
-     "detail": "the Divines' niche in the tower base, kept by the smugglers' Imperial-descended signal-keeper: blessing of Kynareth (stamina regeneration for eight hours)",
      "count": 1
     }
    ]
@@ -10642,11 +10585,6 @@
     {
      "kind": "boss-chest",
      "detail": "the Bosmer captain's chest in the stern",
-     "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "treasure: Valenwood silk and bows in oilcloth in the hold",
      "count": 1
     }
    ]

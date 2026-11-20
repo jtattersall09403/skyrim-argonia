@@ -594,11 +594,6 @@
      "kind": "boss-chest",
      "detail": "lowest-hall boss chest",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "Velothi bronze, ash-glass and ancestor tablets in the upper-hall niches",
-     "count": 3
     }
    ]
   },
@@ -855,11 +850,6 @@
      "kind": "boss-chest",
      "detail": "sea-cave boss chest",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "the smugglers' cache and ash-glass shards in the cave",
-     "count": 2
     }
    ]
   },
@@ -1662,11 +1652,6 @@
      "kind": "boss-chest",
      "detail": "captain's strongbox with Company coin",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "sunken cargo-room coin and gems",
-     "count": 2
     }
    ]
   },
@@ -2249,11 +2234,6 @@
      "kind": "boss-chest",
      "detail": "lower-hall vault",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "Velothi bronze, ash-glass and dye-stuffs in the vault",
-     "count": 3
     }
    ]
   },
@@ -3988,11 +3968,6 @@
      "count": 1
     },
     {
-     "kind": "fence",
-     "detail": "the leader buys untaxed and stolen goods from anyone he has not shot",
-     "count": 1
-    },
-    {
      "kind": "cooking-pot",
      "detail": "camp cook fire and drying-rack",
      "count": 1
@@ -4334,16 +4309,6 @@
     {
      "kind": "boss-chest",
      "detail": "captain's sea chest",
-     "count": 1
-    },
-    {
-     "kind": "trader-general",
-     "detail": "prize goods sold off the hulks",
-     "count": 1
-    },
-    {
-     "kind": "fence",
-     "detail": "the quartermaster's buyer for stolen cargo",
      "count": 1
     },
     {
@@ -4962,11 +4927,6 @@
     {
      "kind": "boss-chest",
      "detail": "strong-room chest of prize cargo",
-     "count": 1
-    },
-    {
-     "kind": "shrine-blessing",
-     "detail": "the Imperial Akatosh shrine in the chapel behind the stacked crates: cures disease and gives Akatosh's blessing for eight hours",
      "count": 1
     }
    ]
@@ -6014,18 +5974,7 @@
     {
      "kind": "treasure",
      "detail": "a digger's cache under the buried hall's door",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Sarpa raiders in the pit scrub",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the pit scrub west of the village",
-     "bearing_deg": 270,
-     "distance_m": 140
+     "count": 1
     }
    ]
   },
@@ -6622,18 +6571,7 @@
     {
      "kind": "treasure",
      "detail": "a smugglers' cache on the bluff under the signal light",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Skeith smugglers camped on the inlet",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the inlet shore below the village",
-     "bearing_deg": 41,
-     "distance_m": 140
+     "count": 1
     }
    ]
   },
@@ -6909,18 +6847,7 @@
     {
      "kind": "treasure",
      "detail": "a smugglers' bundle behind the breakwater",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Skeith smugglers camped on the cape",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the cape beyond the breakwater",
-     "bearing_deg": 234,
-     "distance_m": 140
+     "count": 1
     }
    ]
   },
@@ -7843,18 +7770,7 @@
     {
      "kind": "treasure",
      "detail": "a wreck-salvage store on the shoals",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Skeith pirates raiding the landing",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the landing on the shoals below the rocks",
-     "bearing_deg": 145,
-     "distance_m": 140
+     "count": 1
     }
    ]
   },
@@ -9777,7 +9693,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ancestor ghosts in the lower halls, illusions on the approach and river crocodiles.",
+     "text": "Ancestor ghosts in the lower halls, illusions on the approach and river crocodiles. Skeith raiders try the river landings below the hamlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9883,18 +9799,7 @@
     {
      "kind": "treasure",
      "detail": "a raiders' dropped satchel",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Skeith raiders who try the landings, 3 to 4",
-     "count": 1,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the river landings below the hamlet",
-     "bearing_deg": 275,
-     "distance_m": 120
+     "count": 1
     }
    ]
   },
@@ -10205,18 +10110,7 @@
     {
      "kind": "treasure",
      "detail": "the turned-out crew's stash",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "the crew turned out of the port, 3 to 4",
-     "count": 1,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the far shore south of the town where the turned-out crew camps",
-     "bearing_deg": 180,
-     "distance_m": 190
+     "count": 1
     }
    ]
   },
@@ -10804,11 +10698,6 @@
      "count": 1
     },
     {
-     "kind": "treasure",
-     "detail": "perch caches of raided goods",
-     "count": 3
-    },
-    {
      "kind": "harvest-common",
      "detail": "hawk and swamp-bird feathers on the bank",
      "count": 1
@@ -11130,11 +11019,6 @@
      "kind": "boss-chest",
      "detail": "boss chest",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "family urns and coffers along the halls",
-     "count": 3
     },
     {
      "kind": "harvest-rare",
@@ -11460,11 +11344,6 @@
      "count": 1
     },
     {
-     "kind": "treasure",
-     "detail": "altar niches and coffers in the lower halls",
-     "count": 3
-    },
-    {
      "kind": "spell-tome",
      "detail": "one Illusion tome (Adept) left in an upper niche",
      "count": 1
@@ -11780,11 +11659,6 @@
      "kind": "boss-chest",
      "detail": "boss chest",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "the smugglers' cache in the sea-cave",
-     "count": 2
     },
     {
      "kind": "harvest-common",

@@ -64,3 +64,49 @@ def test_the_database_keeps_each_record_s_population():
               if line.strip())}
     assert {k: v for k, v in built.items() if research.get(k) != v} == {}
     assert not hasattr(build_db, "source_match_population")
+
+
+def give(kind, reward=None, detail="x"):
+    return {"give_kind_id": kind, "detail": detail, "reward_kind_id": reward}
+
+
+def test_a_friendly_village_gives_no_fight_against_people():
+    gs = [give("combat-foes", "treasure"), give("treasure"), give("combat-creature", "treasure")]
+    faults = rc.gives_faults("village", "friendly", 9, gs, "")
+    assert len(faults) == 1 and "combat-foes" in faults[0]
+
+
+def test_a_dead_place_offers_no_service():
+    assert rc.gives_faults("keep", "hostile", 6, [give("fence")], "")
+    assert rc.gives_faults("ruin", "abandoned", 0, [give("free-bed")], "")
+    assert rc.gives_faults("village", "friendly", 9, [give("fence")], "") == []
+
+
+def test_a_second_store_is_a_fight_s_reward():
+    rewarded = [give("combat-foes", "treasure"), give("combat-boss", "boss-chest"), give("treasure"), give("boss-chest")]
+    assert rc.gives_faults("cave", "hostile", 0, rewarded, "") == []
+    loose = [give("combat-boss", "boss-chest"), give("boss-chest"), give("gold-hoard")]
+    assert "gold-hoard" in rc.gives_faults("cave", "hostile", 0, loose, "")[0]
+    assert rc.gives_faults("shipwreck", "abandoned", 0, [give("treasure")], "") == []
+
+
+def test_a_trade_needs_people_and_a_vein_a_mine():
+    assert rc.gives_faults("camp", "wary", 1, [give("trader-general")], "")
+    assert rc.gives_faults("village", "friendly", 9, [give("ore-vein")], "clay on the shore")
+    assert rc.gives_faults("village", "friendly", 9, [give("ore-vein")], "the old clay pits") == []
+    assert rc.gives_faults("mine", "hostile", 0, [give("ore-vein")], "") == []
+
+
+def test_the_database_keeps_the_gives_rules():
+    rows = lambda n: [json.loads(line) for line in (ROOT / f"newworld/story/data/db/{n}.jsonl").read_text().splitlines()
+                      if line.strip()]
+    disp = {r["place_id"]: r["disposition_id"] for r in rows("place_danger")}
+    gives, text = {}, {}
+    for g in rows("place_give"):
+        gives.setdefault(g["place_id"], []).append(give(g["give_kind_id"], g.get("reward_kind_id"), g["detail"] or ""))
+    for n in rows("place_note"):
+        text[n["place_id"]] = text.get(n["place_id"], "") + " " + n["text"]
+    bad = [(p["id"], m) for p in rows("place")
+           for m in rc.gives_faults(p["place_kind_id"], disp.get(p["id"], ""), p["population"], gives.get(p["id"], []),
+                                    (p["summary"] or "") + text.get(p["id"], ""))]
+    assert bad == []
