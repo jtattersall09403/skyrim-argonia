@@ -20,7 +20,7 @@ so a plugin holding it puts a test quest in every player's journal. The owner's 
 ## What each step proves
 
 Start a new game and walk east along the shore from the barge's pier, about 350 m, to Lilmoth's fishing dock. Steps 1
-to 9 in one game, in order; 10 and 11 each in a game of their own.
+to 9 in one game, in order; 10, 11 and 12 each in a game of their own.
 
 | Step | Do | Proves |
 |---|---|---|
@@ -35,3 +35,4 @@ to 9 in one game, in order; 10 and 11 each in a game of their own.
 | 9 | Speak to the keeper once more | a line open only after the quest has ended |
 | 10 | Make the walker fight; kill her | the speaker turning hostile; a minor quest failed by a death with no message |
 | 11 | Save on the dock, kill the keeper, load | the death watch's faction message, the failed ending, the message shown once |
+| 12 | Kill the net-mender on the dock before handing in the token; in another game, kill her after handing it in | a person who must live until a stage: before it, the faction message and the failed ending (91); after it, no message and the quest goes on |

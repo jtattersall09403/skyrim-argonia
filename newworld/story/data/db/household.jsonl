@@ -30,7 +30,6 @@
 {"id":"jal-veesa.household.CormarisLabourersHouse","place_id":"jal-veesa","home_space":"SeekhatCarpenterHut"}
 {"id":"jal-veesa.household.CormarisMareinFarmhouse","place_id":"jal-veesa","home_space":"SeekhatFishersHut"}
 {"id":"outpost-m11-m63.household.exterior","place_id":"outpost-m11-m63","home_space":"exterior"}
-{"id":"outpost-m13-m65.household.01dock3to4","place_id":"outpost-m13-m65","home_space":"01dock3to4"}
 {"id":"outpost-m13-m65.household.exterior","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.tent-a","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.tent-b","place_id":"outpost-m13-m65","home_space":"exterior"}
@@ -38,8 +37,5 @@
 {"id":"outpost-m13-m65.household.tent-d","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m6-m66.household.exterior","place_id":"outpost-m6-m66","home_space":"exterior"}
 {"id":"outpost-m6-m66.household.exterior-b","place_id":"outpost-m6-m66","home_space":"exterior"}
-{"id":"outpost-m6-m66.household.exterior-c","place_id":"outpost-m6-m66","home_space":"exterior"}
-{"id":"outpost-m6-m66.household.exterior-d","place_id":"outpost-m6-m66","home_space":"exterior"}
-{"id":"outpost-m6-m66.household.exterior-e","place_id":"outpost-m6-m66","home_space":"exterior"}
 {"id":"outpost-m6-m66.household.exterior-f","place_id":"outpost-m6-m66","home_space":"exterior"}
 {"id":"tribal-camp-m2-m68.household.DushnikhYalLonghouse","place_id":"tribal-camp-m2-m68","home_space":"DushnikhYalLonghouse"}

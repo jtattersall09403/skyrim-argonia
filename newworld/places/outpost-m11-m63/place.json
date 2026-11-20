@@ -103,7 +103,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "cooking-pot: promised by the place record ('by the landing'): King of the Murkmire's cooking pot on the bank at the weir's camp end, where the log walk comes ashore; the wardens have no cook to work it, so the stations stage adds none"
+    "why": "cooking-pot: promised by the place record ('by the landing'): King of the Murkmire's cooking pot on the bank at the weir's camp end, where the log walk comes ashore; the wardens have no cook to work it, so the stations stage adds none",
+    "dz": -32.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
@@ -208,7 +209,7 @@
      -513430.0
     ],
     "rot_z": 0.8,
-    "dz": 12.0,
+    "dz": 48.0,
     "tier": "AGENT_INVENTED",
     "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
    },
@@ -298,6 +299,39 @@
     "dz": -52.0,
     "tier": "AGENT_INVENTED",
     "why": "the landing: a plank jetty from the mud bank into the pool below the camp, by the cooking pot (place record: cooking-pot 'by the landing'; source note: 'Still to add: the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82780.0,
+     -513330.0
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82860.0,
+     -513760.0
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82820.0,
+     -513520.0
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
    }
   ],
   "drop": {
@@ -452,7 +486,29 @@
      "why": "an ordinary part of the marsh round a Hist-keeping camp; no building"
     }
    ],
-   "source": "The allocated source is already the camp near Loreisian (King of the Murkmire cluster -29,-29, camp-tribal, rank 2 of the card): the closest of the ranked sources to a two-warden camp of hide tents on platforms (Hunters Rest is a Nordic homestead, Ree-An-Wo a 31-building hamlet, Black Rose a ruin hamlet), so no switch is needed. Its ruin columns, busts, beacons and trap field are dropped; the tents on platforms, weir, log walk, moss, landing and Hist-shoot post are added from the pool."
+   "source": "The allocated source is already the camp near Loreisian (King of the Murkmire cluster -29,-29, camp-tribal, rank 2 of the card): the closest of the ranked sources to a two-warden camp of hide tents on platforms (Hunters Rest is a Nordic homestead, Ree-An-Wo a 31-building hamlet, Black Rose a ruin hamlet), so no switch is needed. Its ruin columns, busts, beacons and trap field are dropped; the tents on platforms, weir, log walk, moss, landing and Hist-shoot post are added from the pool.",
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "Skyrim's deep-pond fish spawner in the pool below the woven weir (draft.add), the weir's eel and gar traps"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "King of the Murkmire's cooking pot by the landing (draft.add; place.json stations)"
+    },
+    {
+     "kind": "combat-creature",
+     "by": "quest 2's own placements at a fixed level in quests.jsonl: two mudcrabs on the bank and two young crocodiles below the weir"
+    },
+    {
+     "kind": "treasure",
+     "by": "the Thief's Sack hidden in the reeds at the waterline east of the weir (draft.add), stocked at T1"
+    },
+    {
+     "kind": "harvest-rare",
+     "by": "three hanks of hanging moss (Sithis' beard) seated on the woven weir's fences (draft.add need 0), and the quest's own hank beside them"
+    }
+   ]
   }
  },
  "fit": {

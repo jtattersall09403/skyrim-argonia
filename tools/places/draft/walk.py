@@ -1405,7 +1405,7 @@ def flush_steps(rows: list[dict], bases: dict, log=print) -> int:
             continue
         _, d, dz = best
         z = round(dz - fl["zs"][0] * s, 2)
-        seat = {**{k: v for k, v in (r.get("seat") or {}).items() if k == "foot"}, "mode": "on", "on": d["id"],
+        seat = {**{k: v for k, v in (r.get("seat") or {}).items() if k in ("foot", "carrier")}, "mode": "on", "on": d["id"],
                 "dz": round(z - d["pos"][2], 2)}
         if seat != r.get("seat"):
             log(f"steps {r['id']}: hung on deck {d['id']}, its top tread at the deck's height (it stood "

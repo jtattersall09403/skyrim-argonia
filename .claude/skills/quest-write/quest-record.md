@@ -152,7 +152,7 @@ every form ("How a form becomes records" there).
 | `objectives`, `objectiveText`, `target` | objectives with their words and targets, shown and completed at stages |
 | `successors`, `failForward` | lines that set stages (a `topicHeardFrom` with its gates), and take, use, death and quest-stage triggers |
 | `onEnter`, `endings[].world`, `endings[].rewards` | the stage's results |
-| a `failForward` on a person's death to a failed ending | a who-must-live row with its window |
+| a `failForward` on a person's death to a failed ending | a who-must-live row with its window (`to` is the last stage that carries it); a death `failForward` to a live or completed stage only from a stage above that window, never on the same stage |
 | `placements` | refs: existing, or placed by anchor, in a container or carried, with lock, owner, level and `at` |
 | `topics` and the written lines (`story/data/quest_lines/<code>.json`) | lines in the record's order, with conditions, results, windows; a gist until written |
 | `things[].name`, `text` for items that are not refs | `names`, `texts` |

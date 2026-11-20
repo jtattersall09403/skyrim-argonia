@@ -668,11 +668,15 @@ def check_doors(ctx) -> list[str]:
         at = p["door"]["to_pos"]
         space = r["space"]
         on_id = (m["rows"].get(r["fk"], {}).get("seat") or {}).get("on")
-        stands_on = next((x["fk"] for x in m["rows"].values() if x.get("id") == on_id), None) if on_id else None
+        on_row = next((x for x in m["rows"].values() if x.get("id") == on_id), None) if on_id else None
+        # the thing the door stands on, every building of it (a ship's hull and its masts are one cluster)
+        stands_on = {x["fk"] for x in m["rows"].values() if on_row is not None and (x is on_row or (
+            x.get("kind") == "building" and on_row.get("cluster") is not None
+            and x.get("cluster") == on_row.get("cluster")))}
         if idx.at(space, at) is None:
             bad.append(f"door {rid}: its arrival point {[round(v) for v in at]} is on no navmesh (facing a wall?)")
         for o, row, reach in solids.get(space, ()):
-            if o["fk"] == stands_on or o["fk"] == r["fk"]:
+            if o["fk"] in stands_on or o["fk"] == r["fk"]:
                 continue  # the thing the door stands on (its own building) holds the door, not the arrival
             if math.dist(at[:2], o["pos"][:2]) <= reach and stands_inside({**o, "walk": row.get("walk")}, at):
                 bad.append(f"door {rid}: its arrival point is inside {row.get('id', o['fk'])}")
