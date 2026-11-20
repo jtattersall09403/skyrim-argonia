@@ -66,8 +66,9 @@ def test_a_few_huts_with_beds_are_a_hamlet_and_ruin_pieces_a_ruin_of_their_tiles
 
 
 def test_fixed_places_have_distinct_sources_and_a_reason_each():
-    from tools.places.sources_match import FIXED, FIXED_WHY
-    ids = [sid for sid, _rx in FIXED.values()]
+    from tools.places.sources_match import FIXED, FIXED_WHY, JUDGED
+    # a judged source may serve several places, each adapted differently (owner, 2026-11-19)
+    ids = [sid for pid, (sid, _rx) in FIXED.items() if pid not in JUDGED]
     assert len(ids) == len(set(ids))
     assert set(FIXED) == set(FIXED_WHY)
     for sid, rx in FIXED.values():

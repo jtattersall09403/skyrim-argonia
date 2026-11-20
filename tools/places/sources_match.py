@@ -61,6 +61,8 @@ JUDGED = {
                         "Reed-Sill Weir is drafted from the Argonian weir-sized camp near Loreisian"),
     "outpost-m6-m66": ("kingofthemurkmire.marker.ree-an-wo",
                        "Teel-Fen Weir is drafted from Ree-An-Wo's hide tents on cypress platforms"),
+    "jal-veesa": ("kingofthemurkmire.seekhatyollocation",
+                  "pale reed-thatched stilt houses on platforms round a Hist: the closest match to the record's look"),
     "natai": ("kingofthemurkmire.seekhatyollocation", "Seekhat Yol's huts and docks strung along a salvage beach"),
     "lujei": ("kingofthemurkmire.keebahollowlocation", "Keeba Hollow's stilt village and fisher's hut on a lakeshore"),
     "lilmothiit-ruin-14-m113": ("kingofthemurkmire.hiddennestplayerhomeextlocation",
