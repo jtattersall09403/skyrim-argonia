@@ -154,9 +154,12 @@ def test_room_plan_entering_and_changed():
     assert [r["name"] for r in un] == ["entering"]
     st = un[0]["stations"][0]
     assert [x[0] for x in pw.looks_of(st)] == ["ahead", "left", "right"] and st["dir"][0] > 0.9
-    ch = pw.room_plan(M, {"kind": "changed", "things": [{"name": "added Bench", "pos": [2000, 0, 0]}], "spots": [],
-                          "cut": [0, -64, 4096, 64]}, [door])
-    assert len(ch) == 3
+    bench = {"id": "b", "kind": "furniture", "edid": "Bench", "model": "m/bench.nif"}
+    lamp = {"id": "l", "kind": "light", "edid": "Lamp", "model": "m/lamp.nif"}
+    ch = pw.room_plan(M, {"kind": "changed", "things": [{"name": "added b", "pos": [2000, 0, 0], "id": "b"},
+                                                         {"name": "added l", "pos": [900, 0, 0], "id": "l"}],
+                          "spots": [], "cut": [0, -64, 4096, 64]}, [door, bench, lamp])
+    assert len(ch) == 3 and ch[1]["to"] == "added Bench"   # the lamp is not walked to
     assert [x[0] for x in pw.looks_of(ch[1]["stations"][0])] == ["ahead", "down", "left", "right"]
     assert ch[2]["name"] == "cut" and len(ch[2]["stations"]) == 4
 
