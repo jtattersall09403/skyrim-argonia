@@ -3,13 +3,19 @@
 A pool is King of the Murkmire's own Hist sap water: WaterPuddleHist, a placed water activator (Skyrim's puddle
 outline, water/waterpuddle01.nif) whose water type is the mod's DefaultHistSapWater (amber, opaque). A placed water
 is its own surface, separate from the cell's water, so it stands on any ground at any height and the worldspace's
-waterline never moves. It is centred on the trunk, turned by a yaw drawn from the tree's row id, and sized to the
-tree: its reach is REACH of the tree's half-width (the record's bounds, scaled), never under MIN_SCALE. It is seated
-`stilts` over its own outline (the lowest of ground or water under it, DZ above), so no edge hangs in the air, and a
-Hist standing in water has its sap on the water. The ground inside the outline (DISH of its half-width about its
-centre) is lowered to that lowest height, a land patch of the stage's own (`by` "sap"), so the sap lies in a hollow
-on a slope instead of under the ground; never raised, never across the waterline, no deeper than PATCH_MAX, and no
-vertex of a cell another patch row holds. The seat stays where it is after the dig (nothing is dug below it).
+waterline never moves. It is turned by a yaw drawn from the tree's row id and sized by the TRUNK at the ground, never
+the crown: its reach is the trunk's radius at its foot (TRUNK_R per Hist base, measured from the mesh at ground
+height; else TRUNK_SHARE of the record's half-width), scaled, plus SAP_BAND of open sap, never under MIN_SCALE. It
+lies on the trunk's centre, or off it by an offset (`draft.sap.offset` of place.json: [dx, dy], or {hist id: [dx,
+dy]}), else one the stage chooses: toward the side with the most of the pool open to the sky (no deck, walkway or
+platform over it), the trunk kept inside the sap, when that uncovers a tenth more of the pool than centring does.
+Its surface is seated `stilts` over its whole outline, rim and all (the lowest of ground or water under it, DZ
+above), so a person at the rim looks down onto sap, never up over a lip. The stage's hollow (a land patch, `by`
+"sap") lowers the ground inside the outline to under the surface, and the rim one vertex round it to the surface
+(RIM_LIP over it), so the rim is level all round; never raised, never across the waterline, no vertex lowered more
+than PATCH_MAX and no vertex of a cell another patch row holds. Where the ground falls more than PATCH_MAX across
+the pool, the high side keeps a bank of what is left and the stage says so (`banks`). The seat stays where it is
+after the dig (nothing is dug below it).
 
 A living Hist is a row whose base's editor id is a Hist tree, trunk or gland (King of the Murkmire's HistTree*,
 HistTrunk*, HistGland*) and not dead (*Dead*: a dead Hist's pool is dry). Roots are not a Hist.
@@ -28,12 +34,15 @@ POOL = "King of the Murkmire.esp:3D870E"   # WaterPuddleHist: waterpuddle01.nif 
 POOL_HALF = 175.0                           # units: the puddle's half-width at scale 1 (bounds -154..148, -152..199)
 POOL_CENTRE = (-3.1, 23.5)                  # the puddle's centre in its own frame
 BOX = (-154.4, -152.6, 148.2, 199.5)        # the puddle's outline box at scale 1 (x0, y0, x1, y1)
-FOOT = 0.6                                  # the share of the box, about its centre, the seat reads the ground over
-REACH = 0.9                                 # the pool reaches this much of the tree's half-width
-MIN_SCALE = 2.2                             # a young Hist's pool still reaches past its roots
-TOL = 64.0                                  # units: a pool this far off its trunk's centre is off its tree
+TRUNK_R = {"HistTree01": 120.0}             # units at scale 1: the trunk's radius at the ground, measured from the mesh
+TRUNK_SHARE = 0.15                          # else this share of the record's half-width is the trunk at the ground
+SAP_BAND = 200.0                            # units of open sap round the trunk's foot
+MIN_SCALE = 1.6                             # a young Hist's pool still reaches past its roots
+RIM_LIP = 2.0                               # units: the dug rim stands this far over the surface
+OPEN = 0.1                                  # an offset is chosen only when it opens this share more of the pool
+COVER = re.compile(r"platform|deck|walkway|bridge|dock|pier|boardwalk|scaffold", re.I)
 DZ = 3.0                                    # units of sap over the hollow's floor
-DISH = 0.75                                 # the share of the pool's half-width the hollow reaches
+DISH = 0.85                                 # the share of the pool's half-width its sap covers (the puddle's outline)
 PATCH_MAX = 105.0                           # units: the most the hollow lowers any point (the draft's land bound)
 LIVING = re.compile(r"^Hist(Tree|Trunk|Gland)\d+[A-Za-z]*$")
 
@@ -48,21 +57,31 @@ def half_width(base: dict, scale: float) -> float:
     return scale * (max(abs(b[0][0]), abs(b[1][0])) + max(abs(b[0][1]), abs(b[1][1]))) / 2
 
 
+def trunk_r(base: dict, scale: float) -> float:
+    """The trunk's radius at the ground, scaled (TRUNK_R by base, else TRUNK_SHARE of the half-width)."""
+    r = TRUNK_R.get(str(base.get("edid") or ""))
+    return scale * r if r is not None else TRUNK_SHARE * half_width(base, scale)
+
+
+def reach(base: dict, scale: float) -> float:
+    return max(MIN_SCALE * POOL_HALF, trunk_r(base, scale) + SAP_BAND)
+
+
 def turned(u: float, v: float, rz: float) -> tuple[float, float]:
     """A point of the pool's own frame turned by its yaw (Skyrim's yaw turns clockwise seen from above)."""
     c, s = math.cos(rz), math.sin(rz)
     return u * c + v * s, -u * s + v * c
 
 
-def pool_for(place_id: str, t: dict, base: dict) -> dict:
-    """The sap pool row of one Hist row. Its seat's footprint is the inner part of its outline (FOOT of the box
-    about its centre), scaled, so the lowest ground is read where the sap lies, not past the outline's corners."""
-    s = round(max(MIN_SCALE, REACH * half_width(base, float(t.get("scale", 1.0))) / POOL_HALF), 2)
+def pool_for(place_id: str, t: dict, base: dict, off=(0.0, 0.0)) -> dict:
+    """The sap pool row of one Hist row, its centre `off` the trunk's. Its seat's footprint is its whole outline box,
+    scaled, so the surface is read from the lowest ground of the rim as well as inside it."""
+    s = round(reach(base, float(t.get("scale", 1.0))) / POOL_HALF, 2)
     rz = round(int(hashlib.sha256(f"{t['id']}/sap".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF * 2 * math.pi, 5)
     dx, dy = turned(POOL_CENTRE[0] * s, POOL_CENTRE[1] * s, rz)
-    foot = [round((c + (b - c) * FOOT) * s, 1) for b, c in zip(BOX, POOL_CENTRE * 2)]
+    foot = [round(b * s, 1) for b in BOX]
     return {"id": f"{place_id}.sap.{t['id'].split('.', 1)[-1]}", "base": POOL, "kind": "activator",
-            "pos": [round(t["pos"][0] - dx, 2), round(t["pos"][1] - dy, 2), t["pos"][2]], "rot": [0.0, 0.0, rz],
+            "pos": [round(t["pos"][0] + off[0] - dx, 2), round(t["pos"][1] + off[1] - dy, 2), t["pos"][2]], "rot": [0.0, 0.0, rz],
             "scale": s, "layer": "place", "flags": [], "src": None, "seat": {"mode": "stilts", "dz": DZ, "foot": foot},
             "why": f"the sap pool at the roots of {base.get('edid')} (Lore:Hatching_Pools): King of the Murkmire's "
                    f"WaterPuddleHist, its Hist sap water"}
@@ -75,12 +94,65 @@ def centre(p: dict) -> tuple[float, float]:
     return p["pos"][0] + dx, p["pos"][1] + dy
 
 
-def plan(place_id: str, ext: list[dict], bases: dict) -> list[dict]:
+def holds(p: dict, t: dict) -> bool:
+    """A pool holds a Hist when the trunk's centre lies inside its sap (within its reach of the pool's centre)."""
+    return math.dist(centre(p), t["pos"][:2]) <= POOL_HALF * float(p.get("scale", 1.0))
+
+
+def covers(ext: list[dict], bases: dict) -> list[tuple]:
+    """The plan boxes (x0, y0, x1, y1) of every deck, walkway, platform or bridge row: what hides sap from the sky."""
+    out = []
+    for r in ext:
+        b = bases.get(r.get("base")) or {}
+        if not COVER.search(str(b.get("edid") or "")) or not b.get("bounds"):
+            continue
+        (x0, y0, _), (x1, y1, _) = b["bounds"]
+        s, rz = float(r.get("scale", 1.0)), float((r.get("rot") or [0, 0, 0])[2])
+        pts = [turned(u * s, v * s, rz) for u in (x0, x1) for v in (y0, y1)]
+        xs, ys = [r["pos"][0] + p[0] for p in pts], [r["pos"][1] + p[1] for p in pts]
+        out.append((min(xs), min(ys), max(xs), max(ys)))
+    return out
+
+
+def open_share(cx: float, cy: float, rad: float, boxes: list[tuple]) -> float:
+    """The share of a round pool's points (rings at 0.2..1.0 of rad, 16 to a ring, and the centre) under no box."""
+    pts = [(cx, cy)] + [(cx + rad * k / 5 * math.cos(a * math.pi / 8), cy + rad * k / 5 * math.sin(a * math.pi / 8))
+                        for k in range(1, 6) for a in range(16)]
+    return sum(not any(x0 <= x <= x1 and y0 <= y <= y1 for x0, y0, x1, y1 in boxes) for x, y in pts) / len(pts)
+
+
+def offset(t: dict, base: dict, boxes: list[tuple], given=None) -> tuple[float, float]:
+    """The pool's centre off its trunk's: the place's own, else the side with the most open sap (the trunk kept in
+    the sap), when it opens OPEN more of the pool than centring does; else none."""
+    if given is not None:
+        return float(given[0]), float(given[1])
+    s = float(t.get("scale", 1.0))
+    rad, tr = reach(base, s), trunk_r(base, s)
+    x, y = t["pos"][0], t["pos"][1]
+    best, at = open_share(x, y, rad, boxes), (0.0, 0.0)
+    base_share = best
+    for k in (0.5, 1.0):
+        d = k * max(0.0, rad - tr)
+        for a in range(8):
+            o = (round(d * math.cos(a * math.pi / 4), 1), round(d * math.sin(a * math.pi / 4), 1))
+            sh = open_share(x + o[0], y + o[1], rad, boxes)
+            if sh > best + 1e-9:
+                best, at = sh, o
+    return at if best >= base_share + OPEN else (0.0, 0.0)
+
+
+def plan(place_id: str, ext: list[dict], bases: dict, offsets=None) -> list[dict]:
     """A pool for every living Hist row of a place's exterior, in row id order; a Hist already standing in a pool
-    placed by hand (`draft.add`, the studio) keeps that one."""
+    placed by hand (`draft.add`, the studio) keeps that one. offsets: the place's `draft.sap.offset`."""
     own = [r for r in ext if r.get("base") == POOL and ".sap." not in r["id"]]
-    return [pool_for(place_id, t, bases[t["base"]]) for t in sorted(pooled(ext, bases), key=lambda r: r["id"])
-            if not any(math.dist(centre(p), t["pos"][:2]) <= TOL for p in own)]
+    boxes = covers(ext, bases)
+    out = []
+    for t in sorted(pooled(ext, bases), key=lambda r: r["id"]):
+        if any(holds(p, t) for p in own):
+            continue
+        given = offsets.get(t["id"].split(".", 1)[-1], offsets.get(t["id"])) if isinstance(offsets, dict) else offsets
+        out.append(pool_for(place_id, t, bases[t["base"]], offset(t, bases[t["base"]], boxes, given)))
+    return out
 
 
 def pooled(ext: list[dict], bases: dict) -> list[dict]:
@@ -94,12 +166,12 @@ def pooled(ext: list[dict], bases: dict) -> list[dict]:
 
 
 def faults(ext: list[dict], bases: dict) -> list[str]:
-    """A living Hist without a sap pool centred on its trunk (within TOL), and a stage pool whose Hist is gone."""
+    """A living Hist without a sap pool holding its trunk, and a stage pool whose Hist is gone."""
     pools = [r for r in ext if r.get("base") == POOL]
     out = []
     hists = [t for t in ext if living(bases.get(t["base"]))]
     for t in pooled(ext, bases):
-        if not any(math.dist(centre(p), t["pos"][:2]) <= TOL for p in pools):
+        if not any(holds(p, t) for p in pools):
             out.append(f"{t['id']}: a Hist without its sap pool")
     ids = {t["id"].split(".", 1)[-1] for t in hists}
     for p in pools:
@@ -108,21 +180,23 @@ def faults(ext: list[dict], bases: dict) -> list[str]:
     return out
 
 
-def dish(G, ext: list[dict], bases: dict, taken: set) -> list[dict]:
-    """Land rows (`by` "sap") that lower the ground inside every pool centred on a living Hist to the pool's seat
-    height (its lowest ground or water); cells in `taken` (another row's) are left alone."""
+def dish(G, ext: list[dict], bases: dict, taken: set, banks: list | None = None) -> list[dict]:
+    """Land rows (`by` "sap") that lower the ground inside every pool holding a living Hist to under its surface (its
+    floor: its seat's lowest ground or water) and the rim one vertex round it to RIM_LIP over the surface, each vertex
+    no more than PATCH_MAX; cells in `taken` (another row's) are left alone. `banks` gets, per pool, what the dig
+    limit left standing over the surface on its high side."""
     from tools.places.draft.fit import WATERLINE_GAP
     from tools.places.seat import STEP, reference_z
     hists = [t for t in ext if living(bases.get(t["base"]))]
     cells: dict[tuple, dict] = {}
     for p in sorted(ext, key=lambda r: r["id"]):
-        if p.get("base") != POOL or not any(math.dist(centre(p), t["pos"][:2]) <= TOL for t in hists):
+        if p.get("base") != POOL or not any(holds(p, t) for t in hists):
             continue
         sd = p.get("seat") or {}
         floor = reference_z(G, "stilts", p["pos"][0], p["pos"][1], float(p["rot"][2]), sd.get("foot"))
         if floor is None:
             continue
-        rad = DISH * POOL_HALF * float(p.get("scale", 1.0))   # a round hollow, eased out over one vertex past it
+        rad = DISH * POOL_HALF * float(p.get("scale", 1.0))   # the sap's own outline, as a round hollow
         cx, cy = centre(p)
         # the floor is the lowest point any seat sample could read (every vertex up to two past the hollow), so the
         # pool seated again on the dug ground sits on the floor and a second dig changes nothing
@@ -132,14 +206,18 @@ def dish(G, ext: list[dict], bases: dict, taken: set) -> list[dict]:
                 if h is not None and math.dist((gx * STEP, gy * STEP), (cx, cy)) <= rad + 2 * STEP:
                     w = G.water(gx * STEP, gy * STEP)
                     floor = min(floor, max(h, w) if w is not None else h)
+        surface, left = floor + DZ, 0.0
         for gx in range(math.floor((cx - rad) / STEP) - 1, math.ceil((cx + rad) / STEP) + 2):
             for gy in range(math.floor((cy - rad) / STEP) - 1, math.ceil((cy + rad) / STEP) + 2):
                 d = math.dist((gx * STEP, gy * STEP), (cx, cy))
-                blend = 1.0 if d <= rad else max(0.0, 1 - (d - rad) / STEP)
-                h = G.vertex(gx, gy)
-                if h is None or blend <= 0 or h <= floor:
+                if d > rad + STEP:
                     continue
-                dz = max(-PATCH_MAX, (floor - h) * blend)
+                target = floor if d <= rad else surface + RIM_LIP    # under the sap; the rim level with it
+                h = G.vertex(gx, gy)
+                if h is None or h <= target:
+                    continue
+                dz = max(-PATCH_MAX, target - h)
+                left = max(left, -(target - h) - PATCH_MAX)
                 w = G.water(gx * STEP, gy * STEP)
                 if w is not None and h >= w:
                     dz = max(dz, min(0.0, w + WATERLINE_GAP - h))   # dry land stays dry
@@ -154,6 +232,8 @@ def dish(G, ext: list[dict], bases: dict, taken: set) -> list[dict]:
                             continue
                         c = cells.setdefault(cell, {})
                         c[(r_, c_)] = min(c.get((r_, c_), 0.0), dz)
+        if banks is not None and left > 1:
+            banks.append({"pool": p["id"], "bank": round(left, 1)})
     return [{"cell": list(k), "verts": [[r, c, v] for (r, c), v in sorted(vs.items())],
              "why": "the hollow of a Hist's sap pool", "by": "sap"} for k, vs in sorted(cells.items()) if vs]
 
@@ -177,13 +257,15 @@ def apply(st, log=print) -> None:
     G.apply_patches(other)
     pools = [r for r in st.ext if r.get("base") == POOL]
     seat_all(pools, G)
-    hollow = dish(G, st.ext, {**st.bases, **bases}, {tuple(r["cell"]) for r in other})
+    banks: list = []
+    hollow = dish(G, st.ext, {**st.bases, **bases}, {tuple(r["cell"]) for r in other}, banks)
     st.files["land"][:] = other + hollow
     G.apply_patches(hollow)
     st.G = G
-    near = [r for r in st.ext if any(math.dist(r["pos"][:2], centre(p)) <= DISH * POOL_HALF * float(p.get("scale", 1.0)) + 600
-                                     for p in pools)]
-    seat_all(near, G)                       # what stands over a hollow follows the ground down
+    seat_all(pools, G)                      # the pools on their dug floors; nothing else is moved by the dig
+    for b in banks:
+        log(f"draft sap {st.place_id}: {b['pool']}: the ground falls more than the dig limit across the pool; "
+            f"its high side keeps a bank of {b['bank']} over the sap")
     st.place["sap"] = {"added": [{"id": r["id"], "on": r["id"].split(".sap.", 1)[1]} for r in rows]}
     if POOL in bases:
         st.bases[POOL] = bases[POOL]
@@ -191,17 +273,17 @@ def apply(st, log=print) -> None:
 
 
 def want(st) -> tuple[list[dict], dict]:
-    return rows_for(st.place_id, st.ext, st.bases)
+    return rows_for(st.place_id, st.ext, st.bases, ((st.place.get("draft") or {}).get("sap") or {}).get("offset"))
 
 
-def rows_for(place_id: str, ext: list[dict], bases: dict) -> tuple[list[dict], dict]:
+def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None) -> tuple[list[dict], dict]:
     """Pool rows for a place's exterior rows, and the bases with the pool's (none when the catalogue lacks it)."""
     from tools.places.draft.io import catalogue_bases
     bases = dict(bases)
     bases.update(catalogue_bases({POOL} - set(bases)))
     if POOL not in bases:
         return [], bases
-    return plan(place_id, ext, bases), bases
+    return plan(place_id, ext, bases, offsets), bases
 
 
 def main(argv=None) -> int:

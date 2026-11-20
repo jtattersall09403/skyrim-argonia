@@ -1,6 +1,9 @@
-"""A place's Hist sap pools: one centred on every living Hist, sized to the tree, in a hollow dug to its seat on a
-slope, and found missing when a Hist has none."""
+"""A place's Hist sap pools: one holding every living Hist, sized by its trunk at the ground (never its crown), off
+the trunk toward open sky when decks hide it, its surface at the lowest ground of its rim in a hollow dug level all
+round, and found missing when a Hist has none."""
 import math
+
+import pytest
 
 from tools.places.draft import sap
 from tools.places.seat import Ground, seat_all
@@ -30,7 +33,9 @@ def test_every_living_hist_has_its_pool_centred_and_sized():
     by = {r["id"]: r for r in out}
     for r, t in ((by["p.sap.A"], ext()[0]), (by["p.sap.B"], ext()[1])):
         assert math.dist(sap.centre(r), t["pos"][:2]) < 0.1
-    assert by["p.sap.A"]["scale"] == sap.MIN_SCALE and by["p.sap.B"]["scale"] > 3.5
+    assert by["p.sap.A"]["scale"] == sap.MIN_SCALE
+    # sized by the trunk at the ground: the big Hist's crown (half-width 709) never sizes its pool
+    assert by["p.sap.B"]["scale"] * sap.POOL_HALF == pytest.approx(sap.trunk_r(BASES["P:big"], 1.0) + sap.SAP_BAND, abs=2)
     assert sap.faults(ext() + out, BASES) == []
 
 
@@ -75,3 +80,58 @@ def test_a_gland_within_a_trees_pool_is_part_of_that_tree_and_a_gland_apart_has_
     out = sap.plan("p", rows, bases)
     assert [r["id"] for r in out] == ["p.sap.A", "p.sap.B", "p.sap.H"]
     assert sap.faults(rows + out, bases) == []
+
+
+def test_a_named_trunk_sizes_the_pool_and_a_big_crown_does_not():
+    bases = dict(BASES, **{"P:h1": {"edid": "HistTree01", "kind": "static", "bounds": [[-904, -902, -99], [844, 1003, 1612]]}})
+    t = {"id": "p.T", "base": "P:h1", "kind": "static", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0], "scale": 1.64}
+    r = sap.plan("p", [t], bases)[0]
+    assert r["scale"] * sap.POOL_HALF == pytest.approx(120 * 1.64 + sap.SAP_BAND, abs=2)   # some 400, not 2,800 across
+
+
+def test_a_pool_under_a_deck_moves_toward_open_sky_with_the_trunk_kept_in_it():
+    bases = dict(BASES, **{"P:deck": {"edid": "MurkmirePlatformBase03", "kind": "building", "bounds": [[-300, -300, 0], [300, 300, 400]]}})
+    t = ext()[0]
+    deck = {"id": "p.K", "base": "P:deck", "kind": "building", "pos": [2300.0, 2000.0, 300.0], "rot": [0, 0, 0], "scale": 1.0}
+    r = sap.plan("p", [t, deck], bases)[0]
+    cx, cy = sap.centre(r)
+    assert cx < t["pos"][0] - 50 and sap.holds(r, t)                  # west, away from the deck east of the trunk
+    assert sap.faults([t, deck, r], bases) == []
+    alone = sap.plan("p", [t], bases)[0]
+    assert math.dist(sap.centre(alone), t["pos"][:2]) < 0.1           # nothing over it: on the trunk
+    fixed = sap.plan("p", [t, deck], bases, {"A": [0, 100]})[0]
+    assert math.dist(sap.centre(fixed), (2000.0, 2100.0)) < 0.1       # the place's own offset
+
+
+def test_the_surface_is_at_the_rims_lowest_ground_and_the_rim_is_dug_level():
+    G = slope()
+    e = ext()[:1]
+    pools = sap.plan("p", e, BASES)
+    seat_all(pools, G)
+    z = pools[0]["pos"][2]
+    cx, cy = sap.centre(pools[0])
+    rad = sap.DISH * sap.POOL_HALF * pools[0]["scale"]
+    rim = [G.height(cx + rad * math.cos(a / 8 * math.pi), cy + rad * math.sin(a / 8 * math.pi)) for a in range(16)]
+    assert z <= min(rim) + sap.DZ + 0.5                               # never under a lip: at the rim's lowest
+    banks = []
+    hollow = sap.dish(G, e + pools, BASES, set(), banks)
+    dug = Ground({k: list(v) for k, v in G.cells.items()}, {})
+    dug.apply_patches(hollow)
+    seat_all(pools, dug)
+    from tools.places.seat import STEP
+    for gx in range(int((cx - rad - STEP) // STEP), int((cx + rad + STEP) // STEP) + 2):
+        for gy in range(int((cy - rad - STEP) // STEP), int((cy + rad + STEP) // STEP) + 2):
+            d = math.dist((gx * STEP, gy * STEP), (cx, cy))
+            if rad < d <= rad + STEP and not banks:
+                assert dug.vertex(gx, gy) <= pools[0]["pos"][2] + sap.RIM_LIP + 0.2   # the rim level with the sap
+
+
+def test_ground_falling_more_than_the_dig_limit_leaves_a_bank_and_says_so():
+    steep = Ground({(0, 0): [0.6 * 128 * (i % 33) for i in range(33 * 33)]}, {})
+    e = ext()[:1]
+    pools = sap.plan("p", e, BASES)
+    seat_all(pools, steep)
+    banks = []
+    hollow = sap.dish(steep, e + pools, BASES, set(), banks)
+    assert banks and banks[0]["pool"] == "p.sap.A" and banks[0]["bank"] > 0
+    assert all(dz >= -sap.PATCH_MAX for r in hollow for _, _, dz in r["verts"])

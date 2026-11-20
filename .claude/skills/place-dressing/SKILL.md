@@ -30,9 +30,19 @@ tree. A source's own hanging lanterns come with their cluster.
 ## Hist sap
 
 Every living Hist stands in a pool of its own sap (King of the Murkmire's `WaterPuddleHist` with
-`DefaultHistSapWater`), never the cell's water. The `sap` stage centres, sizes and seats one on each living Hist and
-lowers the ground inside it (`land.jsonl` rows `by` "sap"); a pool placed by hand on the trunk is kept. Run `sap`
-after a Hist is added, moved, swapped or dies. `draft check` fails a living Hist with no pool.
+`DefaultHistSapWater`), never the cell's water. The `sap` stage lays one on each living Hist and digs its hollow
+(`land.jsonl` rows `by` "sap"); a pool placed by hand holding the trunk is kept. Run `sap` after a Hist is added,
+moved, swapped or dies. `draft check` fails a living Hist with no pool.
+
+- **Size**: by the trunk at the ground (its radius per Hist base, `TRUNK_R`, measured from the mesh), plus a band of
+  open sap; never by the crown.
+- **Where**: on the trunk, unless decks or walkways over it hide it: then the stage moves it toward the open side,
+  the trunk kept in the sap. A place may set its own: `draft.sap.offset` in place.json (`[dx, dy]`, or by Hist id).
+- **Height**: the surface at the lowest ground of its rim; the hollow lowers the ground under the sap and the rim
+  round it to the surface, so a person at the rim looks down onto sap. No vertex is dug more than `PATCH_MAX`; where
+  the ground falls more than that across the pool, the stage says how high a bank its high side keeps: move the
+  pool (`draft.sap.offset`) to flatter ground.
+- Judge it by eye from the rim, from the nearest deck and from the nearest doors: amber at the Hist's foot.
 
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
 water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an

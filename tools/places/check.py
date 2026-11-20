@@ -637,8 +637,8 @@ def rests(a: dict, b: dict) -> bool:
 
 def sap_of(pool: dict, hist: dict) -> bool:
     """`pool` is the sap pool the draft's sap stage set at the roots of the Hist `hist` (its id is the Hist's with
-    `.sap.` after the place: draft.sap.pool_for). The pool is centred on the trunk by design, so each stands in the
-    other."""
+    `.sap.` after the place: draft.sap.pool_for). The pool holds the trunk (on it or offset beside it), so each stands
+    in the other."""
     pid, _, rest = str(hist.get("id") or "").partition(".")
     if bool(rest) and pool.get("id") == f"{pid}.sap.{rest}":
         return True
@@ -647,7 +647,7 @@ def sap_of(pool: dict, hist: dict) -> bool:
     from tools.places.draft import sap
     if pool.get("base") != sap.POOL or not pool.get("pos") or not hist.get("pos"):
         return False
-    return math.dist(sap.centre(pool), hist["pos"][:2]) <= sap.TOL
+    return sap.holds(pool, hist)
 
 
 FRAME_WORDS = ("door", "entrance", "pillar", "arch", "frame", "gate", "portal", "jamb")
