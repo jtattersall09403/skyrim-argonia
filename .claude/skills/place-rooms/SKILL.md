@@ -50,6 +50,6 @@ nothing names is your call in `draft.room_names` `{space: {name, why}}`, named f
 `names` after any change to who lives or works where, then `clearance` and `streets` after an added building.
 
 Enforced by the checks: every room named, no leftover name, no two alike (`draft check`); doors paired and rooms
-reached (the build's `doors` and `rooms` checks).
+reached (the build's `doors` check; the `rooms` check holds a copy to the source room it keeps: its room, inside its cut, less its strip and drops).
 
 Each room's people and stock follow as for any room (`place-routines`, `place-people`, `place-stock`).

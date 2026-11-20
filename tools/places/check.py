@@ -1231,7 +1231,7 @@ def check_nordic(ctx) -> list[str]:
 def copied_room_expected(I: dict, place_dir: Path, plan: dict, refs: list[dict] | None = None) -> tuple[dict[str, str], str] | None:
     """The source refs a copied room must be built with, by key -> bundle kind: the bundle's cell (the load order's
     winner of every ref, people aside; `refs` gives its rows instead), the kept room where the space copies one room
-    (the Build recipe's room rule), less what the place's own rows remove and the loose things the stock takes out.
+    (the Build recipe's room rule), the part inside its cut, less what the place's own rows remove (a strip's refs among them) and the loose things the stock takes out.
     None: no bundle to compare."""
     copy_of = I.get("copy_of")
     if not I.get("copy") or not copy_of or "/" not in copy_of:
@@ -1243,7 +1243,11 @@ def copied_room_expected(I: dict, place_dir: Path, plan: dict, refs: list[dict] 
             return None
         refs = B.jsonl(rp)
     refs = [r for r in refs if r.get("kind") not in ("actor", "npc") and "pos" in r]
-    want = {r["id"]: r.get("kind") for r in refs}
+    cut = I.get("cut")
+    if cut is None:   # the place's space file carries the cut of a room copied as only one part of its source cell
+        sj = place_dir / "spaces" / I["space"] / "space.json"
+        cut = json.loads(sj.read_text(encoding="utf-8")).get("cut") if sj.exists() else None
+    want = {r["id"]: r.get("kind") for r in refs if B.in_cut(cut, r["pos"])}   # a cut keeps only the part inside its box
     if I.get("room"):
         tmp = B.OUT / "tmp" / f"rooms_{I['space']}"
         tmp.mkdir(parents=True, exist_ok=True)
