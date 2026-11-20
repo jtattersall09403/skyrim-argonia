@@ -944,14 +944,15 @@ def plan_text(p: dict) -> str:
 
 
 # ---------- the draft check's refusals ----------
-def check_faults(place_id: str, places: Path | None = None) -> list[str]:
+def check_faults(place_id: str, places: Path | None = None, pl: Place | None = None) -> list[str]:
     """A house moved apart from its platform (its body's gap to its own deck differs from the source's by more than
     GAP_TOL), and a tree or root moved off its seat on the ground by an edit of a building."""
     bad = []
-    try:
-        pl = Place(place_id)
-    except Exception as e:  # noqa: BLE001  no bundle or scene: the units cannot be read here
-        return [f"units: cannot read the place's units ({type(e).__name__}: {str(e)[:80]})"]
+    if pl is None:
+        try:
+            pl = Place(place_id)
+        except Exception as e:  # noqa: BLE001  no bundle or scene: the units cannot be read here
+            return [f"units: cannot read the place's units ({type(e).__name__}: {str(e)[:80]})"]
     for un in pl.units:
         if un["kind"] != "house":
             continue

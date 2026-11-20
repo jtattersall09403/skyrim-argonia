@@ -154,3 +154,24 @@ def test_seekhat_yol_has_seven_houses_each_with_its_platform_and_named_walkways_
     two = [u for u in spans if len({j["unit"] for j in u["joins"]}) >= 2]
     assert len(two) >= 5
     assert any({j["unit"] for j in u["joins"]} == {"house.SeekhatFishersHut", "house.SeekhatEldersHut"} for u in spans)
+
+
+def test_draft_check_refuses_a_house_moved_apart_from_its_platform(tmp_path: Path):
+    bad = U.check_faults("t", tmp_path, place({"s.huta": -120.0}))
+    assert len(bad) == 1 and bad[0].startswith("house.RoomA: a house moved apart from its platform")
+    assert U.check_faults("t", tmp_path, place({"s.huta": -4.0})) == []
+
+
+def test_the_hands_act_on_a_unit_and_refuse_a_body_without_its_deck():
+    from tools.places.look import hands
+    pl = place({})
+    sc = pl.sc
+    sc.place_id, sc._units = "t", pl
+    sc._of = lambda name, kind, pieces: {"name": name, "kind": kind, "pieces": pieces}
+    sc.resolve = lambda name: sc._of(name, "piece", [sc.by_id[name]])
+    th = hands.thing(sc, "house.RoomA")
+    assert th["kind"] == "unit" and {"d.huta", "d.plata", "d.doora", "d.lampa"} <= {p["id"] for p in th["pieces"]}
+    with pytest.raises(ValueError, match="moves with its platform"):
+        hands.thing(sc, "d.huta")
+    assert hands.thing(sc, "d.huta", piece=True)["pieces"][0]["id"] == "d.huta"
+    assert hands.thing(sc, "d.tree")["pieces"][0]["id"] == "d.tree"
