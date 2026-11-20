@@ -31,6 +31,10 @@
    "HelstromXanmeer": {
     "name": "Helstrom Xanmeer",
     "why": "the place record names it the old Xanmeer at the city's heart; the room is its hall, where the council of the Xeech-Leel holds its open sittings and the Root Talk meets (AGENT_INVENTED)"
+   },
+   "01ArgonianHouseinside.8": {
+    "name": "Nesh-Deeka's House",
+    "why": "the main quest names the quiet house by the city landing Nesh-Deeka's House (mn05, mn07, mn10, mn13); the Toh-Reel-Ka's handler lives there (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -422,8 +426,7 @@
      "arrival": [
       -38272.8,
       -595238.6
-     ],
-     "beds_owner": "helstrom.guard"
+     ]
     },
     "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse"
    },
