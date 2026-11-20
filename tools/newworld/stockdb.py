@@ -35,7 +35,7 @@ TABLES = ("lock_level", "stock_tier", "place_wealth_band", "person_wealth_band",
           "tier_item", "never_material", "security_level", "effort_level", "container_kind", "item_kind", "item",
           "good", "good_material", "place_good", "race", "person_role", "household_role", "relation_kind",
           "household", "person", "person_note", "person_note_source", "person_relation", "person_faction",
-          "stock_container", "stock_container_item", "stock_loose", "person_item", "trader", "trader_item",
+          "stock_container", "stock_container_item", "stock_container_key", "stock_loose", "person_item", "trader", "trader_item",
           "stock_container_source", "trader_source", "unique_item", "give_delivery")
 ITEM_KINDS = {  # id: (always significant, about)
     "gold": (True, "Coin."), "weapon": (True, "A weapon."), "armour": (True, "Armour or a shield."),
@@ -152,6 +152,12 @@ def _load_place_stock(w, doc: dict) -> None:
         for it in c.get("items", []):
             w.insert("stock_container_item", place_id=pid, ref_id=c["ref"], item_id=it["item"], count=it["count"],
                      why=it["why"])
+        if k := c.get("key"):
+            pos = k.get("pos") or [None, None, None]
+            w.insert("stock_container_key", place_id=pid, ref_id=c["ref"], name=k["name"],
+                     holder_person_id=k.get("person"), holder_ref_id=k.get("in"),
+                     space_id=None if k.get("person") else k.get("space", c["space"]),
+                     x=pos[0], y=pos[1], z=pos[2], why=k["why"])
         for cite in dict.fromkeys(c.get("cites", [])):
             w.insert("stock_container_source", place_id=pid, ref_id=c["ref"], source_id=_source(w, cite), locator=None)
     for lo in doc.get("loose", []):

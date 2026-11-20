@@ -3,6 +3,7 @@ built plugin read back: `check` runs `check_stock` and `check_promises` as two o
 
     ctx["stock"] = verify.load(place_id, plan, dump, esp)     # None: the place has no stock source
     verify.check_stock(ctx)      -> failures: nothing significant untraced, every row built, owners, locks, value,
+                                    every keyed lock's key placed with its holder and every placed key opening a lock,
                                     no respawn, the ledger, the never list, each person within their band
     verify.check_promises(ctx)   -> failures: a promise not delivered, or delivered by something the build lacks
     verify.summary(ctx["stock"]) -> the counts and the most valuable things, for the report
@@ -91,7 +92,8 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         key = (r["space"], _stock_ref(r))
         if d.get("contents") is not None:
             built["containers"][key] = {"fk": r["fk"], "contents": [(src(a), n) for a, n in d["contents"]],
-                                        "respawns": d.get("respawns", False), "lock": d.get("lock"), "owner": d.get("owner")}
+                                        "respawns": d.get("respawns", False), "lock": d.get("lock"), "owner": d.get("owner"),
+                                        "lock_key": d.get("lock_key")}
         elif rec.sig(src(d.get("base"))) in ITEM_SIGS:
             built["loose"][key] = {"fk": r["fk"], "item": src(d["base"]), "count": d.get("count") or 1, "owner": d.get("owner")}
     ppl = plan.get("people") or {}
@@ -107,6 +109,18 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         if d.get("base") in chest_who and d["fk"] in {m["fk"] for m in ppl.get("markers", [])}:
             built["chests"][chest_who[d["base"]]] = {"contents": [(src(a), n) for a, n in d.get("contents") or []],
                                                      "respawns": d.get("respawns", False)}
+    # keys of ours: where each is built (a person's inventory, a container's contents, a ref of it lying loose)
+    key_fks = {k["fk"] for k in (plan.get("stock") or {}).get("keys", [])}
+    built["lock_keys"] = {k: c["lock_key"] for k, c in built["containers"].items() if c.get("lock_key")}
+    held = defaultdict(list)
+    for who, n in built["npcs"].items():
+        held.update({a: held[a] + [("person", who)] for a, _ in n["inventory"] if a in key_fks})
+    for k, c in built["containers"].items():
+        held.update({a: held[a] + [("container", k)] for a, _ in c["contents"] if a in key_fks})
+    for d in dump["refs"]:
+        if d.get("base") in key_fks:
+            held[d["base"]].append(("spot", d["fk"]))
+    built["key_held"] = dict(held)
     fac_by_name = {f.get("name"): f["fk"] for f in ppl.get("factions", [])}
     owner_fk = {**{f"person:{p}": fk for p, fk in npc_fk.items()},
                 **{f"household:{h}": fac_by_name.get(f"{h} household") for h in st.households},
@@ -128,6 +142,10 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
                         "security": r.security_level_id, "tier": r.stock_tier_id, "gold": r.gold,
                         "items": [(i.item_id, i.count) for i in st.container_items.get(r.ref_id, [])]}
                        for r in st.containers.values()],
+        "keys": [{"lock": (space, r.ref_id), "name": r.name,
+                  "holder": ("person", r.holder_person_id) if r.holder_person_id else
+                  ("container", (r.space_id, r.holder_ref_id)) if r.holder_ref_id else ("spot", None)}
+                 for (space, _ref), r in getattr(st, "keys", {}).items()],
         "loose": [{"id": r.id, "space": r.space_id, "item": r.item_id, "count": r.count, "owner_person": r.owner_person_id,
                    "owner_faction": r.owner_faction} for r in st.loose.values()],
         "persons": {p.id: {"band": p.person_wealth_band_id, "household": p.household_id, "role": p.person_role_id,
@@ -312,6 +330,22 @@ def check_stock(ctx) -> list[str]:
             item_rules(holder, k)
     for who in sorted(set(B["chests"]) - set(X["traders"])):
         bad.append(f"traces: trader {who}'s merchant chest has no trader row")
+
+    # keys: every keyed lock has its key, placed with its row's holder alone; every placed key of ours opens a lock
+    lock_keys, key_held = B.get("lock_keys", {}), B.get("key_held", {})
+    for k in X.get("keys", []):
+        holder = f"container {k['lock'][1]} in {k['lock'][0]}"
+        fk = lock_keys.get(k["lock"])
+        if fk is None:
+            bad.append(f"keys: {holder}: its row gives its lock a key ({k['name']!r}), the built lock has none")
+            continue
+        got = key_held.get(fk, [])
+        want = k["holder"]
+        if len(got) != 1 or got[0][0] != want[0] or (want[1] is not None and got[0][1] != want[1]):
+            bad.append(f"keys: {holder}: its key {k['name']!r} ({fk}) is built with {got or 'nobody'}, its row's {want}")
+    for fk, got in sorted(key_held.items()):
+        if got and fk not in lock_keys.values():
+            bad.append(f"keys: key {fk} placed with {got} opens no lock of the place")
 
     # the ledger, game-wide
     if len(X["unique"]) > X["caps"]["unique"]:

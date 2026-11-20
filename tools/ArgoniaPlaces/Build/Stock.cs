@@ -2,6 +2,7 @@
 // contract is docs/design/place-studio.md, Stock). A container of ours is a copy of the ref's source base holding
 // exactly the plan's items (set dressing kept from the source, the stock row's items and gold), never respawning, under
 // the plan's name where the place names the thing;
+// a key of ours is a copy of the template key named for the container whose lock it opens;
 // an outfit of ours is the worn rows plus the base outfit's set dressing. Nothing levelled: every item is fixed.
 using System.Text.Json;
 using Mutagen.Bethesda.Plugins;
@@ -17,6 +18,19 @@ static class Stock
 
     public static void Build(Write.Ctx ctx, JsonElement stock)
     {
+        // a key of ours per keyed lock: a copy of the plan's template key under the container's key name (the plan sets
+        // it as the lock's key and puts it with its holder)
+        if (stock.TryGetProperty("keys", out var keys))
+            foreach (var k in keys.EnumerateArray())
+            {
+                var t = People.Cache.Resolve<IKeyGetter>(ctx.Link(k.GetProperty("from").GetString()!));
+                var o = (Key)t.Duplicate(C.Fk(k.GetProperty("fk").GetString()!));
+                o.EditorID = k.GetProperty("edid").GetString();
+                o.Name = new Mutagen.Bethesda.Strings.TranslatedString(Mutagen.Bethesda.Strings.Language.English, k.GetProperty("name").GetString()!);
+                o.Value = 0;
+                ctx.Localize(o);
+                ctx.Mod.Keys.Add(o);
+            }
         foreach (var c in stock.GetProperty("containers").EnumerateArray())
         {
             var from = ctx.Link(c.GetProperty("from").GetString()!);

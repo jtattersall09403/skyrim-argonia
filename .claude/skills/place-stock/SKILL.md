@@ -79,6 +79,10 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
   dressing only.
 - Value and protection agree. What lies open is ordinary. Each tier above the open tier is kept behind one more
   step of security. The lock is the lock of the best tier inside.
+- A lock whose keeper the record or the people source names gets its key: the row's `key` {name, who or what holds
+  it, why}, named for the container ("Strongbox Key") and held by that person (`person`), in another container
+  (`in`) or at a spot (`pos`). The build makes the key, sets it as the lock's key and places it; a lock nobody keeps
+  stays keyless, to be picked.
 - The owner is a person, a household or a faction, so that taking it is stealing. Only bodies, the wild and the
   ruined are nobody's.
 - On wild ground the tier follows the place's reward band: the way in is stocked one tier below it, and the
@@ -148,7 +152,7 @@ delivery `open`, `by: person`, naming them, with a `why` that says which service
    table.
 2. `python3 -m tools.newworld.stockdb promises <place>`: nothing open.
 3. Build and check the place (`python3 -m tools.places build <place>`, `check <place>`). Its `stock` check passes
-   only when every significant thing traces to a row, every row is built, owners and locks are set, nothing respawns
+   only when every significant thing traces to a row, every row is built, owners and locks are set, every keyed lock's key is with its holder, nothing respawns
    but a merchant chest, and each holder is within its budget and band. Its `promises` check passes only when no
    promise is open.
 4. `python3 -m tools.places stock report <place>` prints the place in numbers and its ten most valuable things. Read

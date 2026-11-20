@@ -321,6 +321,8 @@ each person's name.
 {place_id,
  goods:       [{good, relation: makes|trades|needs, why, tier, cites}],
  containers:  [{ref, space, kind (container_kind), owner_person? | owner_household? | owner_faction?, lock? (lock_level),
+                key? {name, person | in (a container ref of the place) | pos: [x, y, z], space? (of `in` or `pos`;
+                the row's own by default), why},
                 security (S0..S5), effort? (E0..E4, wild ground), tier (T1..T6), gold, items: [{item, count, why}],
                 why, cites}],
  loose:       [{id, space, on? (the ref it lies on) | pos: [x, y, z], item, count, owner_person? | owner_faction?,
@@ -394,9 +396,13 @@ A placed container whose row carries a `name` is always copied, under that name,
 gold alone (a new thing keeps none of its base's contents); a `name` on any other ref is a problem.
 1. A `stock_container` row: the placed ref's base becomes a container of ours (a copy of its base, `ANP_<place>_StockNNN`)
    holding the base's own set dressing plus exactly the row's items and gold, never respawning. The ref gets the row's
-   lock (its level, no key) or none, and its owner: the person's actor base, a household faction of ours (`<household
+   lock (its level) or none, and its owner: the person's actor base, a household faction of ours (`<household
    id> household`, every member at rank 0), or the named faction. A container the split calls significant with no
    row becomes a copy holding its set dressing alone. A row that names no container of the place is a problem.
+   A row whose lock has a `key` (table `stock_container_key`) makes one key of ours (`ANP_<place>_KeyNNN`, a copy of
+   vanilla's plain key under the row's name, "Strongbox Key"), set as that lock's key and placed with its one holder:
+   in the person's inventory, in the named container, or as a placed ref at the position. A key on a container with
+   no lock, or a holder the place does not have, is a problem.
 2. A `stock_loose` row: a kept ref keeps its place with the row's owner and count; a new one is a placed ref of the item
    at `pos`, or on the named container's top (its record bounds). A significant loose ref of the place with no row is
    not built.
@@ -430,7 +436,8 @@ flag and each actor base's inventory, outfit items and death item):
 7. Locks and value agree: the built lock equals the row's; a container's tier is at most its security's reach
    (`open tier + rank of security`); its significant value is within its budget (`value_max` of its tier times its
    owner's share: a person's band, a household's richest member's band, a faction or nobody 1.0); no item above its
-   container's tier.
+   container's tier. Every keyed lock's built key is placed with its row's holder and nowhere else, and every key of
+   ours placed in the place opens one of its locks.
 8. No respawn, except a trader's merchant chest, which must restock.
 9. The ledger: a T6 or unique item has its `unique_item` row, and the game-wide counts are within `scale.json`
    `ledger.caps`.

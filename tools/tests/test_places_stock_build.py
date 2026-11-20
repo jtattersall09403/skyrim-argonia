@@ -230,3 +230,64 @@ def test_an_enchanted_thing_takes_its_enchantment_s_grade_and_an_unmeasured_one_
     assert split.item_tier({**arcing, "ench": None, "ench_grade": None}, sc)[0] == "T1"
     assert split.item_tier({"edid": "Thing", "keywords": []}, sc) == (None, "")
     assert split.item_tier({"edid": "Thing", "keywords": [], "value": 260}, sc)[0] == "T3"
+
+
+def _keyed(**holder):
+    P, S, people, st = place()
+    row = {"ref_id": "X.esm:000009", "name": "Chest Key", "holder_person_id": None, "holder_ref_id": None,
+           "space_id": "house", "x": None, "y": None, "z": None, "why": "the head keeps it"}
+    st.keys = {("house", "X.esm:000009"): NS(**{**row, **holder})}
+    problems = []
+    out = stockplan.plan(P, S, people, Ids(), problems.append, [], st=st, rec=Rec())
+    return out, S, people, problems
+
+
+def test_a_keyed_lock_gets_one_key_of_ours_carried_by_its_holder():
+    out, S, people, problems = _keyed(holder_person_id="t.head", space_id=None)
+    assert not problems, problems
+    k = out["keys"][0]
+    assert k["name"] == "Chest Key" and k["from"] == stockplan.KEY_TEMPLATE and k["held"] == {"person": "t.head"}
+    assert S["by_id"]["X.esm:000009"]["lock"] == {"level": 1, "key": k["fk"]}
+    assert {"item": k["fk"], "count": 1} in people["npcs"][0]["inventory"]
+
+
+def test_a_key_lies_at_its_spot_or_in_a_container():
+    out, S, _people, problems = _keyed(x=1.0, y=2.0, z=3.0)
+    assert not problems and S["by_id"]["t.key.X_esm_000009"]["base"] == out["keys"][0]["fk"]
+    out, _S, _people, problems = _keyed(holder_ref_id="X.esm:000009")
+    assert not problems and {"item": out["keys"][0]["fk"], "count": 1} in out["containers"][0]["items"]
+
+
+def test_a_key_with_an_unknown_holder_is_a_problem():
+    _out, _S, _people, problems = _keyed(holder_person_id="t.nobody", space_id=None)
+    assert problems and "no person" in problems[0]
+
+
+KEY = "ArgoniaNWPlaces.esp:0100AA"
+
+
+def _keyed_stock():
+    X = copy.deepcopy(SF.stock())
+    X["keys"] = [{"lock": ("house", "X.esm:000009"), "name": "Chest Key", "holder": ("person", "t.head")}]
+    X["built"]["lock_keys"] = {("house", "X.esm:000009"): KEY}
+    X["built"]["key_held"] = {KEY: [("person", "t.head")]}
+    return X
+
+
+KEY_BROKEN = {
+    "the lock has no key": lambda X: X["built"]["lock_keys"].clear(),
+    "the key is placed nowhere": lambda X: X["built"]["key_held"].update({KEY: []}),
+    "the key has the wrong holder": lambda X: X["built"]["key_held"].update({KEY: [("person", "t.guard")]}),
+    "a key opens nothing": lambda X: X["built"]["key_held"].update({"P:9": [("spot", "P:8")]}),
+}
+
+
+def test_a_keyed_lock_with_its_key_held_passes():
+    assert verify.check_stock({"stock": _keyed_stock(), "plan": {"refs": []}}) == []
+
+
+@pytest.mark.parametrize("name", list(KEY_BROKEN))
+def test_each_key_fault_fails(name):
+    X = _keyed_stock()
+    KEY_BROKEN[name](X)
+    assert [b for b in verify.check_stock({"stock": X, "plan": {"refs": []}}) if b.startswith("keys:")], name
