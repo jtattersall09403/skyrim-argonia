@@ -318,8 +318,8 @@
     "base": "King of the Murkmire.esp:03A575",
     "kind": "plant",
     "pos": [
-     -101344,
-     -528146
+     -101494,
+     -528206
     ],
     "rot_z": 0.0,
     "need": 3,
@@ -330,8 +330,8 @@
     "base": "Skyrim.esm:07E8B8",
     "kind": "plant",
     "pos": [
-     -100972,
-     -529041
+     -101090,
+     -528985
     ],
     "rot_z": 1.1,
     "need": 3,
@@ -354,8 +354,8 @@
     "base": "Skyrim.esm:07E8B8",
     "kind": "plant",
     "pos": [
-     -101511,
-     -529416
+     -101561,
+     -529396
     ],
     "rot_z": 3.3,
     "need": 3,
