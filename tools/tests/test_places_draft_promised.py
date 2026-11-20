@@ -66,7 +66,7 @@ def test_a_draft_needs_its_plan_and_judges_each_structure():
     plan = {"look": [{"line": "pale hide tents", "by": "ALPAScaleTent02 x3"}, {"line": "a weir", "by": ""}],
             "structures": []}
     got = plan_checks({"draft": {"plan": plan}}, refs)
-    assert any("delivered by nothing" in m for m in got) and any("does not judge" in m for m in got)
+    assert any("delivered by nothing" in m for m in got) and any("without a verdict" in m for m in got)
     plan["look"][1]["by"] = "woven fences"
     plan["structures"] = [{"cluster": "c1", "what": "Xanmeer ruin", "verdict": "dropped", "why": "no ruin"}]
     assert any("still stands" in m for m in plan_checks({"draft": {"plan": plan}}, refs))
