@@ -193,7 +193,7 @@
      -543120.0
     ],
     "rot_z": 0.0,
-    "dz": 30.0,
+    "dz": 58.0,
     "tier": "AGENT_INVENTED",
     "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
    },
@@ -617,7 +617,10 @@
    "King of the Murkmire.esp:85A231": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
    "King of the Murkmire.esp:85A263": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
    "King of the Murkmire.esp:85A2A4": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck"
+   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A246": "a cypress scaffold floor of the source's, hung 7 m up a great tree with nothing under it on our ground (trees hold up no floor), with the two jars on it: the record's camp is on the bank",
+   "King of the Murkmire.esp:85A266": "a jar on the dropped tree-floor (85A246)",
+   "King of the Murkmire.esp:85A265": "a jar on the dropped tree-floor (85A246)"
   },
   "plan": {
    "look": [
