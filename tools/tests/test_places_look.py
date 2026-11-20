@@ -575,6 +575,9 @@ def test_camera_inside_ground_box_and_tree():
     assert capture.camera_inside([1150, 0, 112], [tree], 0.0) is None          # under the crown, beside the trunk
     assert "trunk" in capture.camera_inside([1000, 0, 112], [tree], 0.0)
     assert "crown" in capture.camera_inside([1150, 0, 700], [tree], 0.0)
+    hist = piece("H", (1000, 0, 0), (-200, -200, 0), (200, 200, 1000), edid="HistTree01")   # a Hist placed as a static
+    assert capture.camera_inside([1150, 0, 112], [hist], 0.0) is None          # on the ring under its crown
+    assert "trunk" in capture.camera_inside([1000, 0, 112], [hist], 0.0)
 
 
 def test_helper_kind_names_what_the_game_never_draws():

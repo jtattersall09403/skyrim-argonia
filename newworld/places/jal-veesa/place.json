@@ -546,7 +546,14 @@
    "King of the Murkmire.esp:198C28": "the egg-tenders' hut's door on its platform: the platform stands where the town's ground cannot reach it; the hut's room is behind the hut added on the dry ground (draft.add)",
    "King of the Murkmire.esp:198C2B": "the egg-tenders' hut's back door on its platform: as its front door",
    "King of the Murkmire.esp:1C1D4C": "a Creation Club curio the catalogue judges Nordic (decision 0006); the hut keeps its own things"
-  }
+  },
+  "joins_given_up": [
+   {
+    "walk": "dock.06",
+    "unit": "house.SeekhatTreeminderHut",
+    "why": "the prayer ring stands level with the Hist's base, 340 under the Treeminder's porch on our flat ground; the porch has its own flight to the ground (west) and the ring its own two"
+   }
+  ]
  },
  "fit": {
   "pivot": [
@@ -1361,7 +1368,8 @@
   "agent-20261120T155020",
   "agent-20261120T155313",
   "agent-20261120T160607",
-  "agent-20261120T161332"
+  "agent-20261120T161332",
+  "agent-20261120T164535"
  ],
  "steps": {
   "kit": [

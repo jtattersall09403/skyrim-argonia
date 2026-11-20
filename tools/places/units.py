@@ -568,6 +568,8 @@ def measure_hist(pl: Place, un: dict) -> dict:
                     out["flags"].append(f"{name} hangs {over:.0f} over the ground")
                 if top < max(h for _, h in lows):
                     out["flags"].append(f"{name} buried whole")
+            elif r == "floor" and over is not None and -STEP <= over <= STEP:
+                pass                    # a vine floor lying on our ground is seated, wherever the source's mound had it
             elif part["on_trunk"] is not None and abs(part["on_trunk"]) > STEP:
                 out["flags"].append(f"{name} off its place on the trunk ({part['on_trunk']:+.0f})")
             elif part["on_trunk"] is None and over > STEP and r in ("root", "floor"):
@@ -796,6 +798,7 @@ def joins(pl: Place) -> list[dict]:
     """Every join of a walkway or dock with what it rests on: {walk, unit, piece, with, rel, rel_src, flag}. rel: the
     walkway piece's top over the unit's standing level now; rel_src: the same in the source."""
     out = []
+    given = {(g["walk"], g["unit"]): g.get("why", "") for g in given_up(pl)}
     for un in pl.units:
         for j in un.get("joins", []):
             if j["unit"] == "ground":
@@ -816,8 +819,19 @@ def joins(pl: Place) -> list[dict]:
             flag = None
             if rel is not None and rs is not None and abs(rel - rs) > STEP:
                 flag = f"walkway end mismatched ({rel - rs:+.0f})"
-            out.append({"walk": un["id"], "unit": tgt["id"], "piece": ws[0], "rel": _r(rel), "rel_src": _r(rs), "flag": flag})
+            gone = given.get((un["id"], tgt["id"]), given.get((tgt["id"], un["id"])))
+            if gone is not None:
+                flag = None
+            out.append({"walk": un["id"], "unit": tgt["id"], "piece": ws[0], "rel": _r(rel), "rel_src": _r(rs), "flag": flag,
+                        **({"given_up": gone} if gone is not None else {})})
     return out
+
+
+def given_up(pl: Place) -> list[dict]:
+    """The joins the drafter gave up for a flight where two levels cannot agree (`draft.joins_given_up` of place.json:
+    [{walk, unit, why}], either order): measured as ever, never flagged as a mismatched end."""
+    files = getattr(pl.sc, "files", None) or {}
+    return list(((files.get("place") or {}).get("draft") or {}).get("joins_given_up") or [])
 
 
 def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:

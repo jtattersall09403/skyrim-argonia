@@ -78,7 +78,7 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             continue
         if not point_in_piece(p, pos, 4.0):
             continue
-        if p.get("kind") == "tree":   # a tree's box is mostly air: inside its crown (the upper part) or its trunk
+        if treelike(p):   # a tree's box (a Hist's too) is mostly air: inside its crown (the upper part) or its trunk
             if crowns_cut is not None and pos[2] > crowns_cut:
                 continue
             part = tree_part(p, pos)
@@ -87,6 +87,14 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             return f"the camera is inside a tree's {part} ({p.get('edid') or p.get('id')})"
         return f"the camera is inside {p.get('edid') or p.get('id')} ({p.get('kind')}, {p.get('id')})"
     return None
+
+
+HIST_TREE = re.compile(r"^(ArgoniaTreeHist|HistTree|HistTrunk)", re.I)   # a Hist placed as a static is still a tree
+
+
+def treelike(p: dict) -> bool:
+    """A tree: its kind, or a Hist's tree or trunk (a static whose box is a crown and a trunk over open air)."""
+    return p.get("kind") == "tree" or bool(HIST_TREE.match(str(p.get("edid") or "")))
 
 
 CROWN_FROM = 0.4   # a tree's crown: the box over this share of its height

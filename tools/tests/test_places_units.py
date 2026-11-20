@@ -89,6 +89,15 @@ def place(moves, ground_h=0.0, z0=0.0):
     return U.Place.of("t", sc, U.pieces_of(town(), BASES, bounds), flat())
 
 
+def test_a_join_given_up_for_a_flight_is_measured_but_not_flagged():
+    pl = place({"s.walk": -300.0})
+    assert [j["flag"] for j in U.joins(pl) if j["flag"]]                      # both ends of the lowered walkway
+    pl.sc.files["place"]["draft"] = {"joins_given_up": [{"walk": "house.RoomA", "unit": "walkway.01", "why": "a flight"}]}
+    js = {j["unit"]: j for j in U.joins(pl)}
+    assert js["house.RoomA"]["flag"] is None and js["house.RoomA"]["given_up"] == "a flight"
+    assert js["house.RoomB"]["flag"]                                          # the other end is still a fault
+
+
 def test_a_house_pushed_down_through_its_platform_is_measured_and_flagged():
     pl = place({"s.huta": -120.0, "s.doora": 0.0})
     m = U.measure(pl, pl.unit("house.RoomA"))
@@ -279,6 +288,7 @@ def test_a_hist_is_one_unit_with_its_roots_glands_and_sap_and_is_seated_by_its_o
     m = U.measure(pl, un)
     assert any("root HistRoot03" in f and "hangs" in f for f in m["flags"]), m["flags"]
     assert any("gland HistGland03" in f and "off its place on the trunk (+100)" in f for f in m["flags"]), m["flags"]
+    assert not any("floor" in f for f in m["flags"])
     dz = U.hist_reassembly(pl, un)
     assert dz["d.gland"] == -100.0                  # back at the source's 600 over the trunk
     assert dz["d.root"] == -(70.0 + U.BURY_MIN)     # its foot (570) sunk BURY_MIN into our ground
