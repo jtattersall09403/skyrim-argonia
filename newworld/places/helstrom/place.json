@@ -560,15 +560,161 @@
      "by": "kept: plain timber posts that carry the decks and the lanterns; not Nordic by the record's flags"
     },
     {
-     "line": "traps",
-     "by": "dropped: pressure plates and poison gas; the poison bloom on the ground is a harvestable ingredient, kept"
-    },
-    {
      "line": "Imperial grave containers, war table",
      "by": "dropped"
+    },
+    {
+     "line": "traps",
+     "by": "dropped: pressure plates, poison gas and the source's poison blooms (a hazard the friendly record names no danger for)"
     }
    ],
-   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced"
+   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced",
+   "gives": [
+    {
+     "kind": "rootworm-stop",
+     "by": "Cheeval-Xu, root-tender, works the city tree's sap pool (the root landing) with the rootworm tunnel mouth on its lip"
+    },
+    {
+     "kind": "boat-stop",
+     "by": "Poles-Upriver, raft-master, works the city landing's decks (cluster landing)"
+    },
+    {
+     "kind": "trader-general",
+     "by": "Weighs-Every-Coin, market trader, at the stalls of the market square"
+    },
+    {
+     "kind": "trader-blacksmith",
+     "by": "Meshu-Ka, the Root-Folk smith, at the market smithy's yard"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Wujeel, the sap and herb seller, at the sap-seller's stall and its alchemy lab"
+    },
+    {
+     "kind": "trader-spells",
+     "by": "Taleeka-Ma, tree-minders' healer, in the tree-minders' hall"
+    },
+    {
+     "kind": "trader-innkeeper",
+     "by": "Sleeps-Last keeps the Boatmen's Lodge (the ship's hold, 01Ship)"
+    },
+    {
+     "kind": "inn-room",
+     "by": "the Boatmen's Lodge's unowned bed (stations.rent_bed)"
+    },
+    {
+     "kind": "forge",
+     "by": "the market smithy's forge, added in its yard (stations.added)"
+    },
+    {
+     "kind": "anvil",
+     "by": "the market smithy's forge, which is its anvil"
+    },
+    {
+     "kind": "armour-workbench",
+     "by": "the market smithy's workbench across its yard"
+    },
+    {
+     "kind": "grindstone",
+     "by": "the market smithy's grindstone beside the forge"
+    },
+    {
+     "kind": "smelter",
+     "by": "the market smithy's smelter in its yard"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "the market smithy's tanning rack across its yard"
+    },
+    {
+     "kind": "alchemy-lab",
+     "by": "the sap-seller's stall's alchemy lab, worked by Wujeel"
+    },
+    {
+     "kind": "arcane-enchanter",
+     "by": "the arcane enchanter in the tree-minders' hall"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the cooking pot in the Boatmen's Lodge"
+    },
+    {
+     "kind": "trainer",
+     "line": "Expert Restoration (a tree-minder)",
+     "by": "Taleeka-Ma, in the tree-minders' hall"
+    },
+    {
+     "kind": "trainer",
+     "line": "Journeyman Alchemy (the sap-seller)",
+     "by": "Wujeel, at the sap-seller's stall"
+    },
+    {
+     "kind": "shrine-blessing",
+     "by": "the city tree (King of the Murkmire's HistTree03 at 1.5, draft.shrine) carries the blessing"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "harbour",
+     "what": "the source's landing: docks, moorings, the Brenton ship and the boats",
+     "verdict": "kept",
+     "why": "the record's raft-masters work the city landing and mn05 names the Boatmen's Lodge in the moored ship"
+    },
+    {
+     "structure": "keep",
+     "what": "the source's keep piece",
+     "verdict": "dropped",
+     "why": "the record names no keep; Helstrom has no stone"
+    },
+    {
+     "structure": "walls",
+     "what": "the source's castle wall and stockade",
+     "verdict": "dropped",
+     "why": "the record says no outward wall: the marsh is the wall"
+    },
+    {
+     "cluster": "b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16,b18,b19,b20,b24,b30,b31,b32,b33,b34,b35,b36,b37,b38,s11,s38,s42,s61",
+     "what": "the Argonian stilt, big and mud houses with their doors and lanterns",
+     "verdict": "kept",
+     "why": "the look's stilt and root-hollow houses of reed, mud and living wood; the nine copied houses are the homes"
+    },
+    {
+     "cluster": "landing",
+     "what": "the city landing's decks, moored ship and boats",
+     "verdict": "kept",
+     "why": "the boat stop and the Boatmen's Lodge"
+    },
+    {
+     "cluster": "b17,b21,b22,b23,b25,w06,w16,s14,s17,s18,s19",
+     "what": "plank bridges, stilt posts and dock steps between the districts",
+     "verdict": "kept",
+     "why": "the look's plank walks that thread the districts"
+    },
+    {
+     "cluster": "s15,s16,s22,s23,s24",
+     "what": "the levy's guard stands",
+     "verdict": "kept",
+     "why": "a tribal levy keeps the guard"
+    },
+    {
+     "cluster": "w37,w39,w40",
+     "what": "lamp posts",
+     "verdict": "kept",
+     "why": "the streets' lanterns"
+    },
+    {
+     "cluster": "b40,w57",
+     "what": "moss-grown broken ruin mounds",
+     "verdict": "kept",
+     "why": "old root-hollow ruins among the roots; no stone wall"
+    },
+    {
+     "cluster": "b39",
+     "what": "the old Xanmeer at the city's north-west edge with its fire pits and moored boats",
+     "verdict": "kept",
+     "why": "the source's stepped Xanmeer; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint"
+    }
+   ]
   }
  },
  "fit": {
