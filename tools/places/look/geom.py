@@ -170,7 +170,8 @@ class Boxes:
         self.ids = [q["id"] for q in keep]
         self.lo = np.array([boxes[i][0] for i in self.ids]).reshape(-1, 3)
         self.hi = np.array([boxes[i][1] for i in self.ids]).reshape(-1, 3)
-        self.tree = np.array([q.get("kind") == "tree" for q in keep], bool)
+        # a tree holds nothing up from below; a Hist's great roots are walked on like ground (furniture stands on them)
+        self.tree = np.array([q.get("kind") == "tree" and "root" not in str(q.get("edid") or "").lower() for q in keep], bool)
 
     def _over(self, x, y):
         lo, hi = self.lo, self.hi
@@ -249,12 +250,19 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
             continue
         g = gr.get(p["id"])
         top = float(boxes[p["id"]][1][2])
-        if g and g["over"] is not None and top - (g["low"] - g["over"]) < -BURIED:
+        hidden = "stolengoods" in str(p.get("edid") or "").lower()   # the Owing's stolen goods chest: under the ground by design
+        if g and g["over"] is not None and top - (g["low"] - g["over"]) < -BURIED and not hidden:
             out.append({"id": p["id"], "fault": "buried", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"],
                         "why": f"its top is {g['low'] - g['over'] - top:.0f} units under the ground: nobody can see it"})
             continue
-        if g and not g["grounded"]:
+        def end_held(e):
+            r = end_report(e, ground, allp, p["id"], boxes)
+            return (r["held_by"] and gr.get(r["held_by"], {"grounded": True})["grounded"]) or \
+                (r["over_ground"] is not None and r["over_ground"] <= END_TOL)
+        # a bridge hung between two held ends (a rope bridge sagging between decks) floats over nothing in between
+        slung = "bridge" in str(p.get("edid") or "").lower() and all(end_held(e) for e in end_points(p))
+        if g and not g["grounded"] and not slung:
             sup = [i for i in g["on"]]
             out.append({"id": p["id"], "fault": "floats", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"], "on": sup[:4],

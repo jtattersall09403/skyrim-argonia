@@ -135,6 +135,22 @@ class Scene:
     def resolve(self, name: str) -> dict:
         """A thing by name: {name, kind, pieces, lo, hi, point?}. Raises KeyError with the nearest names."""
         n = name.strip()
+        if "+" in n:   # several things as one: a+b+c
+            got, seen = [], set()
+            for part in n.split("+"):
+                for p in self.resolve(part)["pieces"]:
+                    if p["id"] not in seen:
+                        seen.add(p["id"])
+                        got.append(p)
+            return self._of(n, "group", got)
+        if "@" in n:   # a thing's pieces whose origin lies in a plan box: b04@x1,y1,x2,y2
+            what, box = n.split("@", 1)
+            x1, y1, x2, y2 = (float(v) for v in box.split(","))
+            inside = [p for p in self.resolve(what)["pieces"]
+                      if min(x1, x2) <= p["m"][0][3] <= max(x1, x2) and min(y1, y2) <= p["m"][1][3] <= max(y1, y2)]
+            if not inside:
+                raise KeyError(f"no piece of {what!r} lies in {box}")
+            return self._of(n, "group", inside)
         if "," in n and all(_num(v) for v in n.split(",")):
             v = [float(x) for x in n.split(",")]
             g = self.ground.height(v[0], v[1]) or 0.0

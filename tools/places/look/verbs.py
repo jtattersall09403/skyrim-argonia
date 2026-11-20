@@ -36,7 +36,7 @@ def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
 def _out(place: str, name: str) -> str:
     d = LOOK_OUT / place
     d.mkdir(parents=True, exist_ok=True)
-    return str(d / f"{time.strftime('%H%M%S')}-{name}.png")
+    return str(d / f"{time.strftime('%H%M%S')}{int(time.time() * 1000) % 1000:03d}-{name}.png")   # two looks in one second keep both
 
 
 def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) -> str:
@@ -398,10 +398,11 @@ def _move_op(r, after):
             "before": {k: before[k] for k in keys}, "after": {k: after[k] for k in keys}}
 
 
-def _shift(r, dx, dy, dz, rot=None):
+def _shift(r, dx, dy, dz, rot=None, moved=frozenset()):
+    """r moved by dx dy dz (and turned); its seat's dz moves with it, unless it sits `on` a piece moved with it."""
     a = _pose(r)
     a["pos"] = [round(a["pos"][0] + dx, 3), round(a["pos"][1] + dy, 3), round(a["pos"][2] + dz, 3)]
-    if a.get("seat") and a["seat"].get("mode", "free") not in ("free",):
+    if a.get("seat") and a["seat"].get("mode", "free") != "free" and a["seat"].get("on") not in moved:
         a["seat"] = dict(a["seat"], dz=round(float(a["seat"].get("dz", 0)) + dz, 3))
     if rot is not None:
         a["rot"] = [a["rot"][0], a["rot"][1], round((a["rot"][2] + rot) % (2 * math.pi), 5)]
@@ -414,9 +415,10 @@ def hand(sc, verb, args, sess) -> list[dict]:
     rows = _rows(sc, th)
     if not rows:
         raise ValueError(f"{pos[0]} has no pieces to act on")
+    ids = {r["id"] for r in rows}   # a piece seated on one of these moves with it: its own dz stays
     if verb == "move":
         dx, dy, dz = (float(v) for v in pos[1:4])
-        return [_move_op(r, _shift(r, dx, dy, dz)) for r in rows]
+        return [_move_op(r, _shift(r, dx, dy, dz, moved=ids)) for r in rows]
     if verb == "turn":
         deg = float(pos[1])
         a = math.radians(deg)
@@ -427,7 +429,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
         for r in rows:
             ox, oy = r["pos"][0] - cx, r["pos"][1] - cy
             nx, ny = cx + ox * math.cos(a) + oy * math.sin(a), cy - ox * math.sin(a) + oy * math.cos(a)   # clockwise, as the game's yaw
-            ops.append(_move_op(r, _shift(r, nx - r["pos"][0], ny - r["pos"][1], 0.0, rot=a)))
+            ops.append(_move_op(r, _shift(r, nx - r["pos"][0], ny - r["pos"][1], 0.0, rot=a, moved=ids)))
         return ops
     if verb == "sink":
         if len(pos) > 1 and not o.get("until-feet-buried"):
@@ -443,7 +445,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
                     feet.append(r["feet_over_ground"][1])
             dz = -(min(feet) + 8.0) if feet else 0.0
             dz = min(dz, 0.0)
-        ops = [_move_op(r, _shift(r, 0, 0, dz)) for r in rows]
+        ops = [_move_op(r, _shift(r, 0, 0, dz, moved=ids)) for r in rows]
         if ops:
             ops[0]["_dz"] = round(dz, 1)
         return ops
