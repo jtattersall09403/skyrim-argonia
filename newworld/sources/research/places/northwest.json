@@ -10,7 +10,7 @@
    "siting": "riverbank",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "The province's northern gate and one of its eight great cities: a stone-and-mud city on mounds and ravines beside the river that marks the Morrowind border, built on the Ayleid ruin of Silyanorn around a waterfall. In 4E 201 it is run by Vicecanons and holds the state's customs, its frontier offices and the province's largest and oldest Dunmer minority.",
+   "summary": "The province's northern gate and one of its eight great cities: a stone-and-mud city on mounds and ravines beside the river that marks the Morrowind border, built over the Ayleid ruin of Silyanorn around a waterfall. In 4E 201 it is run by Vicecanons and holds the state's customs, its frontier offices and the province's largest and oldest Dunmer minority.",
    "lore_page": "Lore:Stormhold",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [
@@ -70,7 +70,7 @@
     },
     {
      "aspect": "present",
-     "text": "The waterfall, the ravine-severed mounds, the Hist in its pool of sap and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here.",
+     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -132,7 +132,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist tree stands in the town square in the middle of a pool of its own sap, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side.",
+     "text": "The Hist tree stands in the town square in the middle of a pond, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from beside the square's pool of Hist sap, and the Vicecanons want the thief found before the quarters settle it themselves.",
+     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons want the thief found before the quarters settle it themselves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -211,7 +211,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Markarth (Skyrim), is a stone city on a mountainside with a waterfall, thirty interiors and a mine beneath, and is the closest match in size and shape. Its Dwemer and Nordic pieces are replaced with Dunmer stone, Argonian mud huts and white Ayleid stone. Its temple and halls serve as the Vicecanons' hall and the trading halls, and its mine and Nchuand-Zel serve as the Silyanorn tunnels and crystal galleries. Lilmoth (King of the Murkmire) lends Argonian huts and a dock for the west quarter and the quay. Still to add: the Hist tree in its pool of sap ringed by pillars, the sunken Ayleid well-room under the tunnels and the customs office.",
+     "text": "Its main source, Markarth (Skyrim), is a stone city on a mountainside with a waterfall, thirty interiors and a mine beneath, and is the closest match in size and shape. Its Dwemer and Nordic pieces are replaced with Dunmer stone, Argonian mud huts and white Ayleid stone. Its temple and halls serve as the Vicecanons' hall and the trading halls, and its mine and Nchuand-Zel serve as the Silyanorn tunnels and crystal galleries. Lilmoth (King of the Murkmire) lends Argonian huts and a dock for the west quarter and the quay. Still to add: the Hist tree in its pond ringed by pillars, the sunken Ayleid well-room under the tunnels and the customs office.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -331,7 +331,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder",
+     "detail": "the Hist in the square's pond: a blessing of resist poison, given by its tree-minder",
      "count": 1
     }
    ]
@@ -346,7 +346,7 @@
    "siting": "swamp",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "A market town of reed boats, mats and dried fish beside a pool of Hist sap, west of Stormhold on the northern road. The Sedge-Wardens who live here keep the reed beds and fish weirs that feed Stormhold and watch the Ayleid ruins of their country.",
+   "summary": "A market town of reed boats, mats and dried fish beside a Hist pool, west of Stormhold on the northern road. The Sedge-Wardens who live here keep the reed beds and fish weirs that feed Stormhold and watch the Ayleid ruins of their country.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -374,7 +374,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Hist with its pool of sap, and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
+     "text": "A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -395,7 +395,7 @@
     },
     {
      "aspect": "present",
-     "text": "A town of stilt houses round a pool of Hist sap, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
+     "text": "A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -458,7 +458,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist tree rising from a pool of its own sap at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
+     "text": "A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cormaris (Journey to Baan Malur), is a town of the right size with twenty-seven interiors and forty-six people, but it is Imperial and Dunmer in style. Its houses are replaced with Argonian stilt huts from Seekhat Yol and Alten Meerhleel (King of the Murkmire), and Seekhat Yol's elder's hut and treeminder's hut serve as the elders' long house and the tree-minder's house. Still to add: the Hist tree and its pool of sap at the centre, the jetty market on the creek, the fish racks and the boat sheds.",
+     "text": "Its source is Seekhat Yol (King of the Murkmire): pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look. Its rooms house the households, its elder's hut serving as the elders' long house, and three of Alten Meerhleel's (King of the Murkmire) houses are added: the jetty market on the stream, the levy's bunkhouse and a fisher household's house. Added: the jetty and the weirs on the stream, the fish racks and the mat racks",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -568,7 +568,7 @@
    "gives": [
     {
      "kind": "rootworm-stop",
-     "detail": "the Hist sap pool at the heart of the town, where the tree-minder calls the rootworm",
+     "detail": "the Hist pool at the heart of the town, where the tree-minder calls the rootworm",
      "count": 1
     },
     {
@@ -608,7 +608,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist sap pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison",
+     "detail": "the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison",
      "count": 1
     }
    ]
@@ -808,7 +808,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dawnguard Valley01 (Dawnguard), gives the fort's walls, yard and tower on the riverbank, a layout of the right size; its Nordic and Dwemer pieces are replaced with Imperial stone. Its cave and hall interiors are left out, and the interiors are built from the pool: the keep hall of Cracked Tusk (Skyrim) serves as the barracks and the captain's hall, and its vault of barred gates serves as the fort's cellar, with its orc pieces swapped for Imperial stone. Still to add: the moss on the walls, the Imperial relief over the gate, the toll-bar and the timber jetty on the road outside.",
+     "text": "Its main source, Dawnguard Valley01 (Dawnguard), is a fort of the right size but its interiors are caves and a Nordic hall, so it does not fit. Cracked Tusk (Skyrim) fits better: an Imperial fort of a yard, a keep hall and a vault of barred gates under it; the keep hall serves as the barracks and the captain's hall, and the vault as the fort's cellar. Its orc pieces are replaced with Imperial stone. Still to add: the moss on the walls, the Imperial relief over the gate, the toll-bar and the timber jetty on the road outside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1109,7 +1109,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Left Hand Mine (Skyrim), gives the village layout of the right size with its interiors for the homes; its mine pieces and Nordic, Dwemer and Imperial pieces are replaced. The Argonian houses come from the pool: Seekhat Yol (King of the Murkmire) lends its houses, whose interiors serve as the headman's house and the farm wife's kitchen, and Dres village (Black Marsh North) gives the Dunmer stone-footed houses. Still to add: the raised mounds, the stone causeway with its drowned lower stretch, the saltrice paddies, the drying frames and the Hist-shoot shrine at the causeway head.",
+     "text": "Its main source, Left Hand Mine (Skyrim), is a village of the right size with four interiors, but its mine and Nordic pieces do not suit a farm village, and they are replaced. Seekhat Yol (King of the Murkmire) fits better for the Argonian houses, whose interiors serve as the headman's house and the farm wife's kitchen, and Dres village (Black Marsh North) gives the Dunmer stone-footed houses. Still to add: the raised mounds, the stone causeway with its drowned lower stretch, the saltrice paddies, the drying frames and the Hist-shoot shrine at the causeway head.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1395,7 +1395,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Stendarr's Outpost (Wyrmstooth), gives a small riverside hamlet layout with one interior as the wayhouse; its Nordic pieces are replaced. The place is built from the pool for the rest: Seekhat Yol (King of the Murkmire), a riverside Argonian village with a dock, lends the stilt houses and the landing, and its guides' quarters serve as the long wayhouse with its rooms. Still to add: the timber landing stages, the stone chimney on the wayhouse, the Hist-shoot shrine and the ancestor stones.",
+     "text": "Its main source, Stendarr's Outpost (Wyrmstooth), is a Nordic hamlet of one interior and ten buildings, too small and the wrong style. Seekhat Yol (King of the Murkmire) fits better: a riverside Argonian village with a dock and seven interiors, of which the guides' quarters serves as the long wayhouse with its rooms. Still to add: the timber landing stages, the stone chimney on the wayhouse, the Hist-shoot shrine and the ancestor stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1941,7 +1941,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Imperial Camp (Wyrmstooth), gives a small military camp layout of tents and a fire on the mud bank, with no interior, which is all the record holds. Its Imperial pieces are replaced, and the weir-wardens' homes are built from the pool: Ree-An-Wo (King of the Murkmire) supplies cypress walkways and platforms on posts, hide tents and hide fences, the same pieces its camp by water is made of. Still to add: the woven weir of stakes across the creek, the boat landing, the drying racks, the small Hist-shoot shrine and the drowned strongbox below the weir.",
+     "text": "Its main source, Imperial Camp (Wyrmstooth), is a military camp with no interior and does not suit weir-wardens. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp by water of sixteen people, with cypress walkways and platforms on posts, hide tents and hide fences and no interior, which is all the record holds. It supplies the platforms and tents the wardens live on. Still to add: the woven weir of stakes across the creek, the boat landing, the drying racks, the small Hist-shoot shrine and the drowned strongbox below the weir.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2241,7 +2241,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Katlas Farm (Skyrim), gives only a spot and a one-building camp beside the water; its Nordic pieces are replaced. The rest is built from the pool: Velothi Victuals (Nyhus), a Dunmer roadside hamlet, lends its one interior as the roadhouse with its room, and Ree-An-Wo (King of the Murkmire) lends the hide tents the Argonian crew sleep in. Still to add: the timber landing, the flat barge moored beside it, the row of grave-stakes on the rise and the smoked-meat rack.",
+     "text": "Its main source, a camp near Katlas Farm (Skyrim), is a Nordic camp of one building and does not fit. Velothi Victuals (Nyhus) fits better: a Dunmer roadside hamlet with one interior, which serves as the roadhouse with its room. Ree-An-Wo (King of the Murkmire) lends the hide tents the Argonian crew sleep in. Still to add: the timber landing, the flat barge moored beside it, the row of grave-stakes on the rise and the smoked-meat rack.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2704,7 +2704,7 @@
     },
     {
      "aspect": "source",
-     "text": "Sedge-Kal Camp is built from the pool: its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp with no interior, so it gives only the layout of a camp on open ground and every Nordic piece is replaced. The lean-tos are loose King of the Murkmire hide tents with reed thatch laid over their roofs, set straight on a mud bank without platforms, so it reads as a work camp unlike the Ree-An-Wo platform camps. Still to add: the bundled reed stacked like haystacks, the flat boats pulled up at the landing, the work barge with a locking hatch on its hold, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
+     "text": "Its main source, Military Camp Winterhold Sons (Skyrim), is a Nordic camp of fourteen buildings with no interior, and its Nordic pieces are replaced with hide tents from Ree-An-Wo (King of the Murkmire) that serve as the lean-tos, with reed thatch laid over their roofs. Still to add: the mud bank, the bundled reed stacks, the flat boats, the work barge with a locking hatch on its hold, the gang-master's lean-to with its strongbox and the Hist-shoot on its post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3776,7 +3776,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
+     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -4302,7 +4302,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashfallow (Dragonborn), gives the Imperial citadel layout of walls, towers and a yard, and its one great interior serves as the keep hall; its Nordic pieces are replaced with Imperial stone. The toll fort's smaller rooms are built from the pool: Fort Tulis (Journey to Baan Malur) lends its main hall of beds, shelves and crates as the barracks, its warden's tower as the captain's tower and its prison block of hay, barrels and cells as the storeroom. Still to add: the Imperial eagle over the gate, the reed pond in place of the moat and the yard's forge with its anvil, grindstone and armour workbench, placed from Skyrim's crafting furniture.",
+     "text": "Its main source, Ashfallow (Dragonborn), is a large Imperial citadel with a single great interior, too big for a toll fort. Fort Tulis (Journey to Baan Malur) fits better: an Imperial keep with six interiors: its main hall of beds, shelves, crates and barrels serves as the barracks, its warden's tower of scroll piles, sacks and crates as the captain's tower, and its prison block of hay, barrels and cells as the storeroom. Its cave and two older interiors are not used. Still to add: the Imperial eagle over the gate, the reed pond in place of the moat and the yard's forge with its anvil, grindstone and armour workbench, placed from Skyrim's crafting furniture.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4830,7 +4830,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarsh 5,0 (Black Marsh), is a small Ayleid ruin with one interior of narrow stone passages lined with urns, so it gives the tomb wings and their grave goods and little above ground; its Nordic pieces are replaced. The rest is built from the pool: the hilltop amphitheatre, its ring of seats and the inner bailey from white Ayleid ruin pieces, and the keystone hall and the lamia caverns from Ayleid hall and cave interior pieces joined below. Still to add: the ring of ruined seats, the inner bailey, the dead trees, the Enchanter's workbench and the Hist-shoot outside the walls.",
+     "text": "Its main source, Black Marsh 5,0 (Black Marsh and Valenwood), is a small ruin of one interior of narrow stone passages lined with urns and does not hold a citadel, so only its interior is used, as the tomb wings with their grave goods. Feren Tarn (King of the Murkmire) serves as the keystone hall and the lamia caverns, its one interior joining Ayleid stone halls to cave pieces, the halls as the keystone hall and the cave end as the caverns. Still to add: the hilltop amphitheatre with its ring of seats and the inner bailey, built from Ayleid pieces, the Enchanter's workbench and the Hist-shoot outside the walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5577,7 +5577,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, ArgoniaWorld -33,-26 (King of the Murkmire), gives the small exterior Ayleid ruin of arches mixed with Argonian pieces, and it has no interior. The undercroft is built from the pool: the one interior of Black Marsh 5,0 (Black Marsh and Valenwood), a run of narrow stone passages lined with urns, is given a water level and reached by a stair down from the arches. Still to add: the sedge island, the fallen column over the pool, the altar under its vine, the ring of ward-stakes and the nirnroot at the water's edge.",
+     "text": "Its main source, a stretch of ArgoniaWorld (King of the Murkmire), is a small exterior Ayleid ruin of arches and Argonian pieces with no interior. The undercroft is the one interior of Black Marsh 5,0 (Black Marsh and Valenwood), a run of narrow stone passages lined with urns, given a water level and reached by a stair down. Still to add: the sedge island, the fallen column over the pool, the altar under its vine, the ring of ward-stakes and the nirnroot at the water's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6092,7 +6092,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Loreisian (King of the Murkmire), is a small Argonian tribal camp of eight pieces by water with five people and no interior, the size of a weir camp; its hide tents on cypress platforms are the camp on the mud bank and its shrine posts carry the Hist-shoot. Nothing in it is Nordic and nothing is dropped but the shrine's bones. Tazhul uses the same camp as a hunters' station on a mud bank; Reed-Sill alone stands on the creek with a weir. Still to add: the woven weir across the creek with a log walk along its top, the landing, the long grey moss draped on the weir's fences over the water and the hidden sack in the reeds.",
+     "text": "Its main source, Hunters Rest (Skyrim), is a Nordic homestead with no interior and does not suit a weir camp. Ree-An-Wo (King of the Murkmire) fits better: an Argonian camp of hide tents and hide fences on cypress platforms and walkways, with no interior, which is all the record holds. Still to add: the woven log weir with its walk, the landing, the Hist-shoot post, the hanging moss on the weir and the hidden sack in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6144,7 +6144,7 @@
    "culture_id": "stone-grey",
    "status": "inhabited",
    "held_by": "A Dunmer gang-master and his Owing reed-cutters",
-   "population": 8,
+   "population": 15,
    "footprint_radius_m": 35,
    "siting": "inland",
    "danger_band_id": "D2",
@@ -6193,7 +6193,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll.",
+     "text": "Twelve cutters of the Owing and their cook work the reed beds along the river under a Dunmer gang-master. The barge's hold is where a new gang sleeps until the gang-master takes its names onto his roll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6209,7 +6209,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and six cutters of every race, each serving months of the Owing.",
+     "text": "A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen cutters of every race, each serving months of the Owing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6537,7 +6537,7 @@
     },
     {
      "aspect": "source",
-     "text": "Vel-Sapha Stand is built from the pool: its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces, so it gives only a small clearing's layout and its pieces are dropped. The hide tents on cypress platforms under the canopy are loose King of the Murkmire tent and platform pieces, set as a ring round the sapling rather than any camp's layout, so it repeats neither Reed-Sill Weir nor Tazhul. Still to add: the young Hist tree in its pool of Hist sap, the sap bench under a hide tent, the tapping cuts on the trunk and the thick canopy of the Barsaebica edge.",
+     "text": "Its main source, Riverside Shack (Skyrim), is a homestead of one shack with farm pieces and does not fit a Root-Folk stand. Ree-An-Wo (King of the Murkmire) fits better: Argonian hide tents on cypress platforms and hide fences, with no interior. Its tents, and the shrine pieces of the camp near Loreisian, make the ring round the sapling. Still to add: the young Hist tree, the sap bench under a hide tent and the tapping cuts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6739,7 +6739,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian camp of hide tents and hide fences on cypress platforms and walkways by water, with no interior; its pieces are the small platform of pale tents round the young Hist, and the shrine posts of the camp near Loreisian ring the tree. Nothing in it is Nordic; only the platforms beyond the weir camp's size are dropped. Ree-An-Wo also serves Ayiin, rebuilt there in squared stone; Teel-Fen keeps its tents, small round a young Hist beside a weir. Still to add: the young Hist in its pool of Hist sap, the woven weir across the creek with its log boom, the drying rack, the landing and the reed hide beside the lone dead tree on the west bank.",
+     "text": "Its main source, a camp near Left Hand Mine (Skyrim), is a Nordic camp of seventeen buildings with no interior, whose camp pieces are replaced. Ree-An-Wo (King of the Murkmire) fits better: Argonian hide tents on cypress platforms with no interior, which suit a weir camp, and the shrine pieces of the camp near Loreisian ring the young tree. Still to add: the small platform of tents, the young Hist and its pool, the woven weir with its log boom, the drying rack, the landing and the reed hide beside a dead tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7316,7 +7316,7 @@
    "culture_id": "pale-green",
    "status": "inhabited",
    "held_by": "A small river village of Lukiul and Naka-Desh families; nobody rules it",
-   "population": 9,
+   "population": 8,
    "footprint_radius_m": 60,
    "siting": "riverbank",
    "danger_band_id": "D2",
@@ -7523,7 +7523,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Dres village (Black Marsh North), gives the riverside line of Dunmer stone houses along the bank, and it has no interior. The stripped chapel is built from the pool: Root Whisper Village (King of the Murkmire) lends Argonian stilt houses and shrine pieces, and its hall interior serves as the chapel inside. Still to add: the fallen chapel roof with vines over the stone, the silver amulet under the floor, the Hist-shoot shrine beside it and the potter's stall.",
+     "text": "Its main source, Dres village (Black Marsh North), is a Dunmer riverside village of fourteen buildings with no interior and does not suit the chapel. Root Whisper Village (King of the Murkmire) fits better: Argonian stilt houses and shrine pieces, with a hall interior that serves as the stripped chapel inside. Still to add: the fallen chapel roof with vines over the stone, the silver amulet under the floor, the Hist-shoot shrine beside it and the potter's stall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7990,7 +7990,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Apocrypa Miraaks Tower (Dragonborn), gives only its spot at the marsh edge, since its book stacks and tentacles are Daedric and are not used. The border post is built from the pool, with no interior: Ree-An-Wo (King of the Murkmire) lends its hide tents, and the camp near Loreisian lends its carved Argonian busts and standing stones. Still to add: the dark palisade, the totem made from a carved bust, the landing and the cooking pot inside.",
+     "text": "Its main source, a tower in Apocrypha (Dragonborn), is a strange Daedric tower of book stacks and tentacles and does not suit the border post. The camp near Loreisian and Ree-An-Wo (King of the Murkmire) fit better, with no interior: Ree-An-Wo's hide tents and the Loreisian camp's carved Argonian busts and standing stones. Still to add: the dark palisade, the totem made from a carved bust, the landing and the cooking pot inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8201,7 +8201,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Bloodlet Throne (Skyrim), gives the place its spot on the far-west hills and a ruined fort's broken walls and towers, from which the single tower stump and one length of wall are kept; its Nordic and Dwemer pieces are replaced with Imperial ruin stone and rubble. Its cave interior is not used. The rest is built from the pool: the exterior of Old Laboratory (King of the Murkmire) lends a ruined Imperial tower, broken ruin walls and rubble on cypress ground. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox.",
+     "text": "Its main source, Bloodlet Throne (Skyrim), is a large fort with a cave interior and does not fit a lone tower. The exterior of Old Laboratory (King of the Murkmire) fits better: a ruined Imperial tower, broken ruin walls and rubble on cypress ground, which supply the tower stump and the length of wall; its interior is not used. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8468,7 +8468,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, JaphetsFollyWorld -1,-1 (Skyrim), gives the ruined hamlet's ring of broken walls as the layout of the stone footings on the hill; its two interiors are not used, as this open town has no rooms. Its Imperial and Nordic pieces are replaced with Argonian ruin pieces from the pool: Root Whisper Village (King of the Murkmire), whose shrine pieces also make the cairns and the centre. Still to add: the stone footings, the cairns heaped with beads, the thorn tree hung with chimes and the diggers' trench.",
+     "text": "Its main source, Japhet's Folly (Skyrim), is a ruined hamlet with a ring of broken walls and two interiors that this open town does not use. Its Imperial and Nordic pieces are replaced with Argonian ruin pieces from Root Whisper Village (King of the Murkmire). Still to add: the stone footings, the cairns heaped with beads, the thorn tree hung with chimes and the diggers' trench.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8746,7 +8746,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Molten Depths (CavesofMorrowind), gives little beyond its spot, since it is a large mine-and-cave interior and this dead town is open ground; its Dunmer and Dwemer pieces are not used. The place is built from the pool: Root Whisper Village (King of the Murkmire) lends its shrine pieces and Argonian ruin walls for the loose ring of footings and the cairns, and no interior is needed. Still to add: the footings in a loose ring, the four cairns with coloured glass, the tin chime-frame, the pottery heap and the raiders' trench.",
+     "text": "Its main source, Molten Depths (CavesofMorrowind), is a large mine-and-cave interior and does not suit an open dead town. Root Whisper Village (King of the Murkmire) fits better for its shrine pieces and Argonian ruin walls, with no interior needed. Still to add: the footings in a loose ring, the four cairns with coloured glass, the tin chime-frame, the pottery heap and the raiders' trench.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

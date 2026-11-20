@@ -5,47 +5,47 @@
  "households": [
   {
    "id": "jal-veesa.household.CormarisBarracks",
-   "home_space": "CormarisBarracks",
+   "home_space": "AltenBunkhouse",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisBlacksmithHouse",
-   "home_space": "CormarisBlacksmithHouse",
+   "home_space": "SeekhatAccommodationHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisMareinFarmhouse",
-   "home_space": "CormarisMareinFarmhouse",
+   "home_space": "SeekhatFishersHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisCornerclub",
-   "home_space": "CormarisCornerclub",
+   "home_space": "SeekhatTreeminderHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisLabourersHouse",
-   "home_space": "CormarisLabourersHouse",
+   "home_space": "SeekhatCarpenterHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisCornerclub.2",
-   "home_space": "CormarisCornerclub.2",
+   "home_space": "SeekhatSmithyHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisCouncillorsHouse",
-   "home_space": "CormarisCouncillorsHouse",
+   "home_space": "SeekhatEldersHut",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisFarmhouse",
-   "home_space": "CormarisFarmhouse",
+   "home_space": "SeekhatEggTendersQuarters",
    "name": null
   },
   {
    "id": "jal-veesa.household.CormarisFarmhut",
-   "home_space": "CormarisFarmhut",
+   "home_space": "AltenDockmasterHouse",
    "name": null
   }
  ],

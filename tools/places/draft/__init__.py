@@ -39,6 +39,9 @@ def main(argv: list[str]) -> int:
     if argv[0] == "render":
         from tools.places.draft.render import main as m
         return m(argv[1:])
+    if argv[0] == "plan":
+        from tools.places.draft.plan import main as m
+        return m(argv[1:])
     if argv[0] == "structures":
         from tools.places.draft.structures import main as m
         return m(argv[1:])

@@ -711,8 +711,47 @@ def cut(place_id: str, door_ids: list[str], rows: list[dict], pdir: Path, log=pr
                        [r for r in rows if r["id"] not in gone and not str(r.get("why", "")).startswith(carried or ("\0",))])
         old = [r for r in io.read_jsonl(pdir / "ledger.jsonl") if r.get("space") not in dropped
                and not (r.get("space") == "exterior" and r.get("src") in srcs)]
-        io.write_jsonl(pdir / "ledger.jsonl", old + ledger)
+        io.write_jsonl(pdir / "ledger.jsonl", sorted(old + ledger, key=lambda r: (r["space"], r["src"])))   # the canonical order
     return len(gone)
+
+
+def room_beds(sp: dict, sdir: Path, src, bases: dict) -> list[dict]:
+    """The beds of one of our rooms, each with the sleepers it takes: the beds of the source cell it copies (of the
+    place's own source, or of another source a `draft.add` door copied it from, read from that source's bundle),
+    then every bed placed in the room itself (a bed a `draft.add` row stands in it)."""
+    from tools.places.draft import interiors
+    copy_of = str(sp.get("copy_of") or "")
+    cell = copy_of.split("/")[-1]
+    own_id = str(((getattr(src, "meta", None) or {}).get("bundle_id") or "")).removeprefix("src.")
+    from_id = copy_of.split("/", 1)[0] if "/" in copy_of else ""
+    space, b_all = None, bases
+    if cell in src.spaces and (not own_id or not from_id or from_id == own_id):
+        space = src.spaces[cell]
+    elif from_id:
+        try:
+            other = _bundle(from_id)
+        except FileNotFoundError:
+            other = None
+        if other is not None and cell in other.spaces:
+            space, b_all = other.spaces[cell], {**other.bases, **bases}
+    out = list(interiors.beds_in(space.refs, b_all, sp.get("room"), sp.get("copy_of"))) if space else []
+    seen = {b["ref"] for b in out}
+    rj = sdir / "refs.jsonl"
+    for r in io.read_jsonl(rj) if rj.exists() else []:
+        b = b_all.get(r.get("base")) or {}
+        if r.get("kind") == "furniture" and not r.get("removed") and r["id"] not in seen and interiors.is_bed(b):
+            out.append({"ref": r["id"], "sleeps": interiors.sleeps(b)})
+            seen.add(r["id"])
+    return sorted(out, key=lambda b: b["ref"])
+
+
+_BUNDLES: dict = {}
+
+
+def _bundle(source_id: str):
+    if source_id not in _BUNDLES:
+        _BUNDLES[source_id] = io.load(f"src.{source_id}")
+    return _BUNDLES[source_id]
 
 
 def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print) -> int:
@@ -732,10 +771,8 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
     valid: set = set()
     for sdir in sorted((pdir / "spaces").iterdir()):
         sp = json.loads((sdir / "space.json").read_text()) if (sdir / "space.json").exists() else None
-        src_space = str((sp or {}).get("copy_of") or "").split("/")[-1]
-        if sp and src_space in src.spaces:
-            valid |= {(sp["space_id"], b["ref"]) for b in interiors.beds_in(
-                src.spaces[src_space].refs, bases, sp.get("room"), sp.get("copy_of"))}
+        if sp and sp["space_id"] != "exterior":
+            valid |= {(sp["space_id"], b["ref"]) for b in room_beds(sp, sdir, src, bases)}
     for p in ppl:   # a bed indoors that is no bed of its room (off the room's walkable mesh) is given up
         bed = p.get("bed") or {}
         if bed.get("space") not in (None, "exterior") and (bed["space"], bed.get("ref")) not in valid \
@@ -748,10 +785,7 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
         sp = json.loads((sdir / "space.json").read_text()) if (sdir / "space.json").exists() else None
         if not sp or sp["space_id"] == "exterior" or sp.get("parent") != "exterior" or sp["space_id"] in inns:
             continue
-        src_space = str(sp.get("copy_of") or "").split("/")[-1]
-        if src_space not in src.spaces:
-            continue
-        for b in interiors.beds_in(src.spaces[src_space].refs, bases, sp.get("room"), sp.get("copy_of")):
+        for b in room_beds(sp, sdir, src, bases):
             free += [(sp["space_id"], b["ref"])] * max(0, b["sleeps"] - taken[(sp["space_id"], b["ref"])])
     from tools.places.draft import people as people_mod
     camp = sorted(r["id"] for r in rows.values() if r.get("kind") == "furniture" and not r.get("removed")
