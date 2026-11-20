@@ -199,3 +199,39 @@ def test_browser_smoke(tmp_path):
         assert im.shape == (240, 320) and im.std() > 10           # drawn, not a blank frame
     finally:
         run("stop")
+
+
+def test_commit_writes_strokes_as_agent_edits_and_spares_the_owners_rows(tmp_path, monkeypatch):
+    """`look <place> commit`: the session's strokes go into the place files by the studio's apply, as the agent's
+    save (agent-edits/, agent_saves_applied), never over a row an owner's finalised save touched; the session empties."""
+    import json
+    from tools.places import edits
+    from tools.places.look import daemon, verbs
+    src = Path(__file__).resolve().parents[2] / "newworld" / "places" / "jal-veesa"
+    places = tmp_path / "places"
+    shutil.copytree(src, places / "jal-veesa")
+    pdir = places / "jal-veesa"
+    monkeypatch.setattr(daemon, "LOOK_OUT", tmp_path / "look")
+    refs = [r for r in edits.load_place(pdir)["spaces"]["exterior"]["refs"] if not r.get("removed")]
+    a, b, c = refs[0], refs[1], refs[2]
+    (pdir / "edits").mkdir(exist_ok=True)
+    (pdir / "edits" / "owner.json").write_text(json.dumps({"save_id": "owner", "final": True, "ops": [{"id": c["id"]}]}))
+
+    def mv(r, dz):
+        return {"op": "ref.move", "space": "exterior", "id": r["id"], "call": "fault",
+                "before": {"pos": r["pos"]}, "after": {"pos": [r["pos"][0], r["pos"][1], r["pos"][2] + dz]}}
+    sess = {"strokes": [[mv(a, -10)], [{"op": "ref.remove", "space": "exterior", "id": b["id"], "call": "fault",
+                                        "before": b}], [mv(c, -5)]], "snapshots": {"x": []}, "n": 0}
+    with pytest.raises(ValueError):
+        verbs.commit("jal-veesa", dict(sess), [], places=places)
+    res = verbs.commit("jal-veesa", sess, ["-m", "seat a"], places=places)
+    assert res["left_for_owner"] == [{"stroke": 3, "owner_rows": [c["id"]]}]
+    after = {r["id"]: r for r in edits.load_place(pdir)["spaces"]["exterior"]["refs"]}
+    assert after[a["id"]]["pos"][2] == pytest.approx(a["pos"][2] - 10)
+    assert b["id"] not in after or after[b["id"]].get("removed")
+    assert after[c["id"]]["pos"] == c["pos"]
+    place = json.loads((pdir / "place.json").read_text())
+    assert place["agent_saves_applied"] and not place.get("saves_applied")
+    saved = json.loads((pdir / "agent-edits" / f"{place['agent_saves_applied'][0]}.json").read_text())
+    assert saved["by"] == "agent" and saved["name"] == "seat a" and not saved["final"]
+    assert sess["strokes"] == [] and sess["snapshots"] == {}

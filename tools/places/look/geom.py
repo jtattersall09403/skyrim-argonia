@@ -387,7 +387,7 @@ def pick(cam: dict, px: float, py: float, pieces: list[dict], clip=None) -> list
         if not p.get("model"):
             continue
         t = ray_box(o, d, p)
-        if t is None:
+        if t is None or t <= 0:   # no hit, or the eye is inside the box (a tree's crown about the camera): not what is seen
             continue
         if clip:
             # a section's slab: the hit must lie within it; walk the box until it does

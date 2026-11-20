@@ -110,6 +110,11 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         sess["strokes"] = copy.deepcopy(sess["snapshots"][args[0]])
         save_session(place, sess)
         return {"restored": args[0], "strokes": len(sess["strokes"])}
+    if verb == "commit":
+        res = commit(place, sess, args)
+        d.scenes.clear()
+        d.place = None   # the page reloads the place files as now written
+        return res
     if verb == "compare":
         a, b, vw = args[0], args[1], args[2:]
         sa = sess["snapshots"][a] if a != "now" else sess["strokes"]
@@ -336,6 +341,44 @@ def pick(d, place, strokes, args) -> dict:
             ground = [round(float(q[0]), 1), round(float(q[1]), 1), round(float(gz), 1)]
             break
     return {"hits": out, "ground": ground}
+
+
+# ---------- commit: the session into the place files ----------
+def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -> dict:
+    """`commit -m "<why>"`: the session's strokes written into the committed place files by the studio's own apply
+    (edits.apply_agent_save), as the agent's draft edits: the save kept at <place>/agent-edits/<save_id>.json and
+    listed in place.json `agent_saves_applied`; a stroke on a row the owner's finalised saves touched is left out and
+    reported. The session is then emptied (its snapshots too: they name the old files)."""
+    from tools.places import edits
+    from tools.places.draft.stages import owner_rows
+    from tools.places.look.daemon import save_session
+    from tools.places.look.scene import data_out
+    from tools.places.seat import PLACES
+    why = " ".join(a for a in args if a not in ("-m", "--m")).strip()
+    if not why:
+        raise ValueError('commit needs -m "<why>"')
+    if not sess["strokes"]:
+        return {"committed": 0, "why": "the session has no strokes"}
+    pdir = (places or PLACES) / place
+    at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    sid = "agent-" + time.strftime("%Y%m%dT%H%M%S", time.gmtime())
+    ops, n = [], 0
+    for k, stroke in enumerate(sess["strokes"], 1):
+        for op in stroke:
+            n += 1
+            ops.append({kk: v for kk, v in op.items() if not kk.startswith("_")} | {"n": n, "stroke": k, "at": at})
+    save = {"save_id": sid, "place_id": place, "name": why, "at": at, "by": "agent", "final": False, "ops": ops}
+    files = edits.load_place(pdir)
+    out, left = edits.apply_agent_save(files, save, owner_rows(pdir),
+                                       edits.bundle_source(bundles or (data_out() / "bundles")))
+    edits.write_place(pdir, out)
+    ad = pdir / "agent-edits"
+    ad.mkdir(exist_ok=True)
+    (ad / f"{sid}.json").write_text(json.dumps(save, indent=1) + "\n")
+    sess["strokes"], sess["snapshots"] = [], {}
+    save_session(place, sess)
+    return {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
+            "left_for_owner": left}
 
 
 # ---------- hands ----------
