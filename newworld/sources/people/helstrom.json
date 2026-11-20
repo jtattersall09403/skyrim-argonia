@@ -72,6 +72,46 @@
    "id": "helstrom.household.levy-camp",
    "home_space": "exterior",
    "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.10",
+   "home_space": "01ArgonianHouseinside.10",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.11",
+   "home_space": "01ArgonianHouseinside.11",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.12",
+   "home_space": "01ArgonianHouseinside.12",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.13",
+   "home_space": "01ArgonianHouseinside.13",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.14",
+   "home_space": "01ArgonianHouseinside.14",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.15",
+   "home_space": "01ArgonianHouseinside.15",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.16",
+   "home_space": "01ArgonianHouseinside.16",
+   "name": null
+  },
+  {
+   "id": "helstrom.household.01ArgonianHouseinside.17",
+   "home_space": "01ArgonianHouseinside.17",
+   "name": null
   }
  ],
  "people": [
@@ -1875,6 +1915,1582 @@
       "place_give:helstrom/1",
       "story/lore/regions/middle-argonia.md",
       "story/design/quests/35-cast.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
+   "name": "Gaxeel-Oru",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "river fisher",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He casts his nets from the same stilt landing his father did and sells the catch to the market's stalls each dawn.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.GXND23X5N514GARXRSWJ4Y7QJ5",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.H1Y2S0QD2H95J3E9PMD9H0V8SA",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.VT71KAR18C85YJV38BTMS9WE2X",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.V5Y1EKPHX5PAP9G9GECDA0AHFT",
+   "name": "Tseeja-Num",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "sinker-stone shaper",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Gaxeel-Oru's partner, he chips river stones into the weights that hold the household's nets down, and he sells the spares to other fishers.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.79KD1MDRY5KH2ER77056CDDDZK",
+   "name": "Ooleesha",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "net-mender",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Gaxeel-Oru's mother, she sits at the door with a bone needle and mends what the river tears; her fingers are slow now but never wrong.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.GXND23X5N514GARXRSWJ4Y7QJ5",
+   "name": "Hazeeka",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "trodh fisher",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She fishes the slow backwaters for trodh with her father and keeps the best of each catch for her mother's table.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.H1Y2S0QD2H95J3E9PMD9H0V8SA",
+   "name": "Mulaxi-Re",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "fish-smoker",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She smokes the catch over a root-wood fire so it keeps for the river traders, and she knows every fisher's boat by the smell of its fish.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.VT71KAR18C85YJV38BTMS9WE2X",
+   "name": "Xeeko-Dul",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.10",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "fish-gutter, learning the nets",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest of the house, he guts the day's catch at the landing and is learning to throw a net as straight as his father.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT",
+   "name": "Beelum-Sah",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "feather-trapper",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He sets snare lines for fellrunners in the Murkwood and brings their feathers to the household's stall before the market opens.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.BHNM413RZTQSZ9GQEBBHED0W6G",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.KF9XW7089ABBAK7Q4EFG3DH3QH",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.VPMG44DPGP6JWZDYSAW9DBG459",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.94S90JY82158FHN5AY5YP5ZZDD",
+   "name": "Ishaxa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "arrow-fletcher",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Beelum-Sah's partner, she trims fellrunner feathers into the fletching that hunters from three tribes buy from her.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.041MSR40K1Q7QSE19P9WVQ8YEK",
+   "name": "Dru-Kaleel",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "feather-sorter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Beelum-Sah's father, he sorts the trapped feathers by length and sheen, light work he took up when his knees would no longer carry him into the wood.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.BHNM413RZTQSZ9GQEBBHED0W6G",
+   "name": "Wahzeel",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "snare-maker",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She twists the snare cords that her father's lines depend on, and she can tell a fraying cord by sound alone.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.KF9XW7089ABBAK7Q4EFG3DH3QH",
+   "name": "Ketsu-Lan",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "feather carrier",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She carries bundled feathers to the market and to the dyers by plank walk, and she knows which stalls pay late.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.VPMG44DPGP6JWZDYSAW9DBG459",
+   "name": "Neeta-Pho",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.11",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "snare-minder's helper",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, she runs the short snare lines near the city's edge and brings back what the trapper cannot carry.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH",
+   "name": "Jaxuul-Em",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "sap-gatherer",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He taps the sap-trees of the Murkwood at dawn and has done so since he was a boy, and the sap-seller buys the best of his jars.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.8MD2K0ANCPP0G310Z34MEHHEBM",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.MFTZGGGA7KY19CD7ZQBP1VM9K1",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.S0DK76G100XS52WQZDVVYBTVE2",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.1B0D0R0NB8YGKTRA0FBDG63D36",
+   "name": "Aleesh-Ta",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "sap-boiler",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Jaxuul-Em's partner, she boils raw sap down in clay pots until it is thick enough to sell, and she watches the fire without ever stepping away.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.74BRDR7G71970VP71SNFA60T7F",
+   "name": "Soorka",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "jar-sealer",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Jaxuul-Em's mother, she seals each finished jar with wax and reed, a light task she keeps because she will not stop working.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.8MD2K0ANCPP0G310Z34MEHHEBM",
+   "name": "Veexa-Oon",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "sap-gatherer's apprentice",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She climbs after her father to the high taps and is learning which trees are rested and which are tired.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.MFTZGGGA7KY19CD7ZQBP1VM9K1",
+   "name": "Yeelu",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "potter of sap jars",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She shapes and fires the household's clay jars, and every jar of hers carries a thumbprint at the base.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.S0DK76G100XS52WQZDVVYBTVE2",
+   "name": "Tsoonu-Ba",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.12",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "jar carrier",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, he carries jars to the market and brings back the coin in a knotted cord he is proud to be trusted with.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ",
+   "name": "Kehluk-Aa",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "egg-gatherer",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He poles into the reed beds at first light to gather eggs from the nests and knows every colony within a morning's reach.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.C96468PJHSE2DMV1HV8BR6P8D1",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.ETTKJD26YX7XDKFXRPAAG9Z1H6",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.XJKEWR69HF9X5F38J2NPJ0629N",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.F4HS8HSE0Q2Z8BQ2M1B68G5097",
+   "name": "Meesha-Rul",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "egg-carrier at the market",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Kehluk-Aa's partner, she carries the eggs to the market and lays them in reed baskets so none break, and she never haggles twice over the same dozen.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.6DGNFKKQKGPJ1PA3BFWH23PD0W",
+   "name": "Ziru-Neem",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "egg-tender",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Kehluk-Aa's mother, she minds the eggs the household sets aside to hatch, and she hums to them when the house is quiet.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.C96468PJHSE2DMV1HV8BR6P8D1",
+   "name": "Opaxi",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "reed-basket weaver",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He weaves the baskets his father and mother carry the eggs in, and no basket of his has ever leaked a yolk.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.ETTKJD26YX7XDKFXRPAAG9Z1H6",
+   "name": "Chaleeka",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "nest-finder",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She wades the reed beds ahead of her father looking for new nests, and she can read a bird's movements from a bent stalk.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.XJKEWR69HF9X5F38J2NPJ0629N",
+   "name": "Ulxaa-Tem",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.13",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "nest-basket minder",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, she minds the nest baskets by the door and counts them morning and night.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.TFA15J5FMR0CJDWTV9RR1ZG2M8",
+   "name": "Hameel-Jo",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "raft-builder",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He lashes raft logs together on the river bank, and rafts of his go as far as the delta with other men's goods.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.NXGPADXSQWGBP7CBPVEPAMM0RD",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.QY05QVJ1PT6FY6VJ6Z8NSQH3AZ",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.WJ5QZC09TW1VB7NNK91WWR0VRD",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.N5M9Z77098EVAF6MHVEAQXHJYN",
+   "name": "Pessa-Kur",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "rope-twister",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Hameel-Jo's partner, she twists the bark rope that holds each of his rafts together and sells the spare coils to the landing.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.TFA15J5FMR0CJDWTV9RR1ZG2M8",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.2291A6BWF2GAS93ES68NRXP33Y",
+   "name": "Nobu-Seeth",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "pole-whittler",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Pessa-Kur's father, he whittles the long poles raft-hands push with; the work is light and he does it sitting by the water.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.N5M9Z77098EVAF6MHVEAQXHJYN",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.NXGPADXSQWGBP7CBPVEPAMM0RD",
+   "name": "Rilsa-Wen",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "raft-hand",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She poles the finished rafts to the landing for the boatmen and is saving for a raft of her own.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.QY05QVJ1PT6FY6VJ6Z8NSQH3AZ",
+   "name": "Aweeta",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "pitch-boiler",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She boils resin into pitch for sealing logs and smells of smoke wherever she goes.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.WJ5QZC09TW1VB7NNK91WWR0VRD",
+   "name": "Teexu-Ri",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.14",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "raft-builder's apprentice",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, she carries tools and lashes knots badly but quickly, and the builder lets him try again.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P",
+   "name": "Zhasa-Lok",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "lumberry gatherer",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He picks lumberries from the root-hollows that other gatherers pass by, and he sells them fresh at the market each morning.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.HD30TDCTDY5CBQWW164SXD9DA4",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.KY2FC5T1DJ4T88SMA4X4W8QP7D",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.XK37Y5Y4A0W0N31AJ0HXS1KE55",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.RZSPBET53PEZP1V0AFYJPJ6WRW",
+   "name": "Oomee-Tal",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "cook of lumberry cakes",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Zhasa-Lok's partner, she bakes lumberries into dense cakes that keep for the rafts, and she sells out before noon.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.9KTJXVEC98AQMA102H36RAZ4NC",
+   "name": "Leeshaa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "stew-pot keeper",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Zhasa-Lok's mother, she keeps the household's stew pot simmering at the hearth and adds to it until it is a week old.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.HD30TDCTDY5CBQWW164SXD9DA4",
+   "name": "Bakheel-Ne",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "fruit-picker",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He picks the fruits of the lower branches for his father and gets in return a share of what is sold.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.KY2FC5T1DJ4T88SMA4X4W8QP7D",
+   "name": "Chuxee",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "market stall-hand",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She minds the household's stall at the market, weighs out the cakes and remembers who owes what.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.XK37Y5Y4A0W0N31AJ0HXS1KE55",
+   "name": "Imeel-Vah",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.15",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "stall-runner",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, she runs between the house and the stall with fresh cakes and learns every customer's face.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ",
+   "name": "Xaleet-Ur",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "hide-curer",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He cures river-beast hides on racks above the water and sells them to the city's tanner and cobbler.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.D7F5JD4W07GZEZDYM8XD4CW34H",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.J0GE8Y1M5WTZVE2JB5HS98VWCX",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.M8WA4PAGSXR9V1BCW71QA6SW4R",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.V5FJWXX6RQPHXWZFAD2SAD3DFP",
+   "name": "Naseeta-Bo",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "tanner",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Xaleet-Ur's partner, she tans the hides he cures and sells the leather in strips to those who make straps and sheaths.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.7WFCYXX7WMX5J34QXE0FQZ3P04",
+   "name": "Fuleeka",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "bone-needle carver",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Xaleet-Ur's mother, she carves needles and awls from bone, light work she is proud of and sells by the handful.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.D7F5JD4W07GZEZDYM8XD4CW34H",
+   "name": "Ruzeel-Ai",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "hide-scraper",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She scrapes the hides clean before her mother tans them and has hands the colour of old bark from it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.J0GE8Y1M5WTZVE2JB5HS98VWCX",
+   "name": "Gojeel-Mur",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "leather-lacer",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He laces the tanned strips into sheaths and satchels, and a market stall sells his work at twice what he is paid.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.M8WA4PAGSXR9V1BCW71QA6SW4R",
+   "name": "Vexaa",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.16",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "curing-frame minder",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, she tends the curing frames and shoos the flies off with a palm frond.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q",
+   "name": "Dasheel-Ko",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "head"
+   },
+   "role": "resident",
+   "trade": "reed-mat weaver",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He cuts and weaves river reeds into the sleeping mats that half the stilt houses of the district lie on.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.D8V18AKGNMRPKCWSZHDSZVMV6K",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.YD6YW29MAAE8H5YPGGTD6JKJ1J",
+     "kind": "parent-of"
+    },
+    {
+     "to": "helstrom.YZJDRDTCVBY1H416H6H5M1WW9T",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.Y0P87B6GQ1HGAB4NGKSZPE3JTV",
+   "name": "Hurixa-Pen",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "partner"
+   },
+   "role": "resident",
+   "trade": "dyer of reed mats",
+   "wealth": "W3",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Dasheel-Ko's partner, she dyes his mats with swamp roots and bark so that no two houses end up with the same pattern.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q",
+     "kind": "partner-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.1X5VCA76VVSKZ77C7XSYFY05YG",
+   "name": "Epeela",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "basket-weaver",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "Dasheel-Ko's mother, she weaves the small baskets from the leavings of his mats, as she has always done.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "helstrom.D8V18AKGNMRPKCWSZHDSZVMV6K",
+   "name": "Kuzuul-Se",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "reed-cutter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She wades into the reed beds at low water and cuts the long stalks for her father's mats, and has never once been bitten.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.YD6YW29MAAE8H5YPGGTD6JKJ1J",
+   "name": "Lassi-Oom",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "thatch-layer",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She lays reed thatch on the stilt houses of the district and is on a roof most days before the sun is.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/topics/material-culture.md"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "helstrom.YZJDRDTCVBY1H416H6H5M1WW9T",
+   "name": "Wethu-Zan",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "forest-green",
+   "household": {
+    "id": "helstrom.household.01ArgonianHouseinside.17",
+    "role": "child"
+   },
+   "role": "resident",
+   "trade": "reed-sorter",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "The youngest, he sorts the cut reeds by length and thickness, and is quicker at it than he lets on.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:helstrom/economy",
+      "story/lore/regions/middle-argonia.md"
      ]
     }
    ],

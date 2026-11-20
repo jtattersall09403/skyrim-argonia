@@ -18,11 +18,11 @@ def deep(G, x: float, y: float) -> bool:
     return G.wet(x, y, WADE)
 
 
-def over(place_id: str, route: list, k: int, walk_base: str, bases: dict, G, rows: list[dict]) -> list[dict]:
+def over(place_id: str, route: list, k: int | str, walk_base: str, bases: dict, G, rows: list[dict]) -> list[dict]:
     """Walkway pieces of `walk_base` end to end over each stretch of `route` deeper than a wade, walked along it by
     length (one piece per piece length, never one per route step), standing on stilts; a piece that would stand in
     or round a solid already there (`rows`: a dock, a pier) is left out: that solid carries the street there.
-    `k` is the street's index (its id's number less one)."""
+    `k` is the street's index (its id's number less one), or the id's last part for a door's path (`path.add.<door>`)."""
     length, turn = paths_mod.deck_run(bases[walk_base])
     foot = geom.foot({"base": walk_base, "kind": "building"}, bases)
     deck = geom.walk(bases[walk_base]) or 0.0   # the deck under its posts, from the mesh
@@ -71,7 +71,7 @@ def over(place_id: str, route: list, k: int, walk_base: str, bases: dict, G, row
                         "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0, "layer": "place", "flags": [],
                         "src": None, "walk": deck,
                         "seat": {"mode": "stilts", "dz": round(DECK_OVER - deck, 1), "foot": foot},
-                        "why": f"carries street {k + 1:02d} over our water, which parts what the source's land "
+                        "why": f"carries street {f'{k + 1:02d}' if isinstance(k, int) else k} over our water, which parts what the source's land "
                                f"joined"}
                 near = [o for o in rows + out if o.get("kind") in overlap.SOLID and not o.get("removed")
                         and geom.dist(o["pos"], cand["pos"]) < length * 2 + 2048]
@@ -115,7 +115,8 @@ def streets(place_id: str, paths: list[dict], rows: list[dict], bases: dict, G, 
                 break
         if not bare:
             continue
-        k = int(str(p["id"]).rsplit(".", 1)[-1]) - 1
+        tail = str(p["id"]).rsplit(".", 1)[-1]
+        k = int(tail) - 1 if tail.isdigit() else tail
         got = [r for r in over(place_id, pts, k, walk_base, bases, G, rows + new) if r["id"] not in have]
         got = [r for r in got if not any(geom.contains_xy(w, bases, r["pos"][0], r["pos"][1]) for w in walk)]
         if got:
