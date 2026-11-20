@@ -428,6 +428,9 @@ def people_stage(st: Standing, log=print) -> None:
     moved = people.stop_spots(st.files["people"], people.spots_of(st.place_id, st.place))
     if moved:
         log(f"draft people {st.place_id}: works at the stop's own spot: {', '.join(moved)}")
+    moved = people.work_at(st.files["people"], people.work_spots(st.place_id, st.place))
+    if moved:
+        log(f"draft people {st.place_id}: works where a placed thing names them: {', '.join(moved)}")
     moved = people.work_stops(st.files["people"])
     if moved:
         log(f"draft people {st.place_id}: the work hours at the work stop for {', '.join(moved)}")

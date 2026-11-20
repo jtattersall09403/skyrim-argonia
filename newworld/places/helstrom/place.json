@@ -783,7 +783,10 @@
      "key": null,
      "flags": "0"
     },
-    "why": "the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more"
+    "why": "the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more",
+    "work_for": [
+     "Raxeela-Hut"
+    ]
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -809,7 +812,10 @@
     ],
     "rot_z": 0.2618,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "work_for": [
+     "Hixee-Ra"
+    ]
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -822,7 +828,10 @@
     ],
     "rot_z": 6.02139,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "work_for": [
+     "Ooxa-Leet"
+    ]
    },
    {
     "base": "King of the Murkmire.esp:5DD304",

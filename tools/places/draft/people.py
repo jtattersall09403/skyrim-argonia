@@ -235,6 +235,37 @@ def spots_of(place_id: str, place: dict) -> dict[str, str]:
             for k, a in enumerate((place.get("draft") or {}).get("add") or []) if a.get("stop")}
 
 
+def work_spots(place_id: str, place: dict) -> dict[str, dict]:
+    """{person name or id: work stop} of the `draft.add` rows that name who works at them (`work_for`): a councillor
+    at a bench of the hall where the council sits, a warden at its door."""
+    from tools.places.draft import io
+    out = {}
+    for k, a in enumerate((place.get("draft") or {}).get("add") or []):
+        for who in a.get("work_for") or []:
+            out[who] = {"space": a.get("space") or "exterior", "ref": io.mint(place_id, "add", str(k), a.get("id_base") or a["base"]),
+                        "radius": 256}
+    return out
+
+
+def work_at(folk: list[dict], spots: dict[str, dict]) -> list[str]:
+    """Each person a `work_for` row names works there: their work stop, and their work or patrol hours and the wander
+    hours of their working day at the old work stop stand there. Returns the people moved."""
+    out = []
+    for p in folk:
+        want = spots.get(p["id"]) or spots.get(p.get("name"))
+        if want is None or p.get("work") == want:
+            continue
+        old = p.get("work")
+        p["work"] = dict(want)
+        for st in p.get("routine") or []:
+            at = st.get("at") or {}
+            if st.get("kind") in ("work", "patrol") or (st.get("kind") == "wander" and 6 <= st.get("start", 0) < 18
+                                                        and (at == old or (old or {}).get("pos") == at.get("pos"))):
+                st["at"] = dict(want)
+        out.append(p["id"])
+    return out
+
+
 def stop_spots(folk: list[dict], spots: dict[str, str]) -> list[str]:
     """A stop's handler works at the stop's own thing where the place has one (`spots`: give kind -> the ref of the
     `draft.add` row marked with that `stop`, a rootworm's root pool): their work and the work hours of their day

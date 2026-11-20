@@ -21,3 +21,15 @@ def test_cut_keeps_only_the_box(tmp_path, monkeypatch):
                              {"b": {"edid": "BedRoll"}}, None, "s/Hall", cut)
     assert [b["ref"] for b in beds] == ["in"]
     interiors._cut_ids.cache_clear()
+
+
+def test_work_for_moves_the_working_day():
+    from tools.places.draft import people
+    folk = [{"id": "a", "name": "Hixee-Ra", "work": {"space": "exterior", "pos": [0, 0]},
+             "routine": [{"start": 0, "kind": "sleep", "at": {"space": "h"}},
+                         {"start": 8, "kind": "wander", "at": {"space": "exterior", "pos": [0, 0]}},
+                         {"start": 20, "kind": "wander", "at": {"space": "exterior", "pos": [0, 0]}}]}]
+    spot = {"space": "Hall", "ref": "r", "radius": 256}
+    assert people.work_at(folk, {"Hixee-Ra": spot}) == ["a"]
+    assert folk[0]["work"] == spot and folk[0]["routine"][1]["at"] == spot
+    assert folk[0]["routine"][2]["at"] == {"space": "exterior", "pos": [0, 0]}
