@@ -339,6 +339,19 @@
     "need": 0,
     "tier": "AGENT_INVENTED",
     "why": "the town's Hist at the heart of the town (place record: 'the Hist pool at the heart of the town'; main story, The Dry Tree): King of the Murkmire's HistTree03, standing where Seekhat Yol's own Hist stood among its glands, flowers and mossy vines (the source's tree is a plant of its land, which the draft leaves to our world); it carries the rootworm stop and the shrine blessing"
+   },
+   {
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -49450,
+     -519050
+    ],
+    "rot_z": 0,
+    "dz": 40,
+    "need": 5,
+    "tier": "AGENT_INVENTED",
+    "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty"
    }
   ],
   "people_from": [
@@ -1326,7 +1339,11 @@
   "agent-20261120T092505",
   "agent-20261120T100429",
   "agent-20261120T101339",
-  "agent-20261120T101611"
+  "agent-20261120T101611",
+  "agent-20261120T112610",
+  "agent-20261120T112646",
+  "agent-20261120T120552",
+  "agent-20261120T122806"
  ],
  "steps": {
   "kit": [

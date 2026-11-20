@@ -119,7 +119,7 @@
     "role": "head"
    },
    "role": "merchant",
-   "trade": "seller of reed boats, mats, rope and dried fish at the jetty market; runs the fish-smoker's stall on the road side",
+   "trade": "seller of reed boats, mats, rope and dried fish at the jetty market",
    "wealth": "W3",
    "level": null,
    "status": "alive",
@@ -279,6 +279,10 @@
     {
      "to": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
      "kind": "partner-of"
+    },
+    {
+     "to": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
+     "kind": "parent-of"
     }
    ]
   },
@@ -292,9 +296,9 @@
     "id": "jal-veesa.household.CormarisMareinFarmhouse",
     "role": "partner"
    },
-   "role": "resident",
-   "trade": "fish drier and smoker at the racks",
-   "wealth": "W2",
+   "role": "merchant",
+   "trade": "fish drier and smoker; keeps the fish-smoker's stall on the road side by the racks",
+   "wealth": "W3",
    "level": null,
    "status": "alive",
    "tier": "AGENT_INVENTED",
@@ -310,7 +314,12 @@
      ]
     }
    ],
-   "relations": []
+   "relations": [
+    {
+     "to": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
+     "kind": "parent-of"
+    }
+   ]
   },
   {
    "id": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
@@ -652,6 +661,99 @@
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:jal-veesa/5",
+      "place_note:jal-veesa/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
+   "name": "Okazhu",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisMareinFarmhouse",
+    "role": "grown child"
+   },
+   "role": "resident",
+   "trade": "eel-trap setter in the weir channels",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He sets and lifts the eel traps in the weir channels for his father's weirs, and carries the gar to his mother's racks. He keeps clear of the deep channels since a crocodile took a trap and nearly his arm.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/dangers",
+      "place_give:jal-veesa/5"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "jal-veesa.YVMAKC3EE6DW3J23J5Y51VZA33",
+   "name": "Tikaasi",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisFarmhouse",
+    "role": "elder"
+   },
+   "role": "resident",
+   "trade": "mender of the fish traps' reed baskets",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She cut sedge for forty years and now mends the weirs' reed baskets on the platform by her son's door. She taught Tsemeena to plait mats and still finds fault with every one.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/economy",
+      "place_note:jal-veesa/look"
+     ]
+    }
+   ],
+   "relations": [
+    {
+     "to": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
+     "kind": "parent-of"
+    }
+   ]
+  },
+  {
+   "id": "jal-veesa.KQAS45HH44MD7ES41DPSY2BG52",
+   "name": "Jaxeel-Ra",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "jal-veesa.household.CormarisBarracks",
+    "role": "levy"
+   },
+   "role": "guard",
+   "trade": "the town levy, day watch",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He walks the day round of the levy beside Vaxu-Teel, from the market jetty up to the Hist pool. He took the levy's spear last spring, when the looters on the ruins' track grew bolder.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:jal-veesa/people",
       "place_note:jal-veesa/dangers"
      ]
     }

@@ -320,8 +320,8 @@
 {"src":"King of the Murkmire.esp:193A8A","space":"exterior","status":"placed","as":"jal-veesa.D46912MVHB1ARHMQMXCQATXKCB","cluster":"b03"}
 {"src":"King of the Murkmire.esp:193A8B","space":"exterior","status":"placed","as":"jal-veesa.QVQ243DXQRYRAS3M5EZ90J0F7Z","cluster":"b03"}
 {"src":"King of the Murkmire.esp:193A8C","space":"exterior","status":"placed","as":"jal-veesa.2G8MT6G955FY0AS9EEPB175B9R","cluster":"b03"}
-{"src":"King of the Murkmire.esp:193A8D","space":"exterior","status":"placed","as":"jal-veesa.XBH0EQWR345Y09C23R3AZ332W3","cluster":"b03"}
-{"src":"King of the Murkmire.esp:193A8E","space":"exterior","status":"placed","as":"jal-veesa.0F6DRDTQBKWGWCVFE51VX2767K","cluster":"b02"}
+{"src":"King of the Murkmire.esp:193A8D","space":"exterior","status":"dropped","why":"an occlusion box (PlaneMarker primitive) of the source's layout, buried under our ground: never seen, and it would hide what stands over it now"}
+{"src":"King of the Murkmire.esp:193A8E","space":"exterior","status":"dropped","why":"an occlusion box (PlaneMarker primitive) of the source's layout, buried under our ground: never seen, and it would hide what stands over it now"}
 {"src":"King of the Murkmire.esp:193A8F","space":"exterior","status":"placed","as":"jal-veesa.WCPBM3M6AAY6P4HFSYEFXP4E30","cluster":"b01"}
 {"src":"King of the Murkmire.esp:193A90","space":"exterior","status":"placed","as":"jal-veesa.MFXGT7WAV2KNN40F3SJEV3Z0G0","cluster":"b01"}
 {"src":"King of the Murkmire.esp:193A91","space":"exterior","status":"placed","as":"jal-veesa.VQTS8HWWCR6RJ1NT3DX3R6DZ32","cluster":"b04"}
@@ -624,7 +624,7 @@
 {"src":"King of the Murkmire.esp:82B761","space":"exterior","status":"placed","as":"jal-veesa.PB5SEJQHBHT0BNAMEHPF0VCG6E","cluster":"landing"}
 {"src":"King of the Murkmire.esp:82B764","space":"exterior","status":"placed","as":"jal-veesa.Q4GK9TVF8NYWFS4S8TRSVM1W89","cluster":"b03"}
 {"src":"King of the Murkmire.esp:82B765","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:92322A","space":"exterior","status":"placed","as":"jal-veesa.Y5DSS2BZY6GQ5173P1VFR3TSYT","cluster":"s10"}
+{"src":"King of the Murkmire.esp:92322A","space":"exterior","status":"dropped","why":"an occlusion box (PlaneMarker primitive) of the source's layout, buried under our ground: never seen, and it would hide what stands over it now"}
 {"src":"King of the Murkmire.esp:9BCE2C","space":"exterior","status":"placed","as":"jal-veesa.P1MTWAVRHKX64838B9NPXMPXFD","cluster":"s09"}
 {"src":"King of the Murkmire.esp:A6AD61","space":"exterior","status":"dropped","cluster":"landing","why":"stood on a thing that was dropped"}
 {"src":"King of the Murkmire.esp:A6AD63","space":"exterior","status":"dropped","cluster":"landing","why":"stood on a thing that was dropped"}

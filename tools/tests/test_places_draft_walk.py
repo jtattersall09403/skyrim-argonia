@@ -48,6 +48,24 @@ def test_one_stands_on_a_walkways_deck_not_in_it():
     assert C.stands_inside({**dock, "walk": 0.0}, [0, 0, -100])    # under the deck
 
 
+def test_an_arrival_in_the_air_of_a_cliffs_box_is_not_inside_it():
+    from tools.places.seat import SOLID_GRID
+    n = SOLID_GRID
+    zmax = np.full((n, n), 100.0)
+    zmax[: n // 2] = 900.0          # the cliff stands high over the west half of its box, low over the east
+    prof = {"lo": np.array([-500.0, -500.0]), "span": np.array([1000.0, 1000.0]), "zmin": np.zeros((n, n)), "zmax": zmax}
+    cliff = {"pos": [0, 0, 0], "rot": [0, 0, 0], "scale": 1.0, "bounds": [-500, -500, 0, 500, 500, 900],
+             "kind": "rock", "model": "landscape/rockcliff01.nif", "profile": prof}
+    assert C.stands_inside(cliff, [-250, 0, 500])     # in the high half's rock
+    assert not C.stands_inside(cliff, [250, 0, 500])  # over the low half: air in the box, not rock
+
+
+def test_a_street_laid_on_a_deck_keeps_its_height_between_its_points():
+    s = walk.samples([[0, 0, 500], [256, 0, 600]], 128)
+    assert [q for _, q in s] == [(0, 0, 500), (128, 0, 550), (256, 0, 600)]
+    assert all(len(q) == 2 for _, q in walk.samples([[0, 0], [256, 0, 600]], 128))
+
+
 def _place(tmp, people):
     p = tmp / "p"
     (p / "spaces" / "exterior").mkdir(parents=True)

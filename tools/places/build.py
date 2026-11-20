@@ -464,7 +464,7 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
                 continue
             keys = (style, style, style)
         else:
-            pts_ = np.asarray(p["points"], float)
+            pts_ = np.asarray([q[:2] for q in p["points"]], float)
             mid = pts_[len(pts_) // 2]
             want = (PATH_STYLE_LTEX[style],) * 3 if style in PATH_STYLE_LTEX else path_road_set(float(mid[0]), float(mid[1]))
             keys = tuple(mat(w) for w in want)
@@ -477,7 +477,7 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
     # per cell vertex: the path with the strongest pull there, and its materials' weights
     best: dict[tuple[int, int], dict] = {}
     for p, style, keys, scale in specs:
-        pts = np.asarray(p["points"], float)
+        pts = np.asarray([q[:2] for q in p["points"]], float)
         half = float(p.get("width", 256)) / 2
         reach = half + rp.reach_m(scale) / rp.M_PER_UNIT
         lo, hi = pts.min(axis=0) - reach, pts.max(axis=0) + reach
@@ -1829,7 +1829,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         r.setdefault("points", [])
     path_cells = set()
     for p in P["paths"]:
-        for x, y in p["points"]:
+        for x, y, *_ in p["points"]:
             path_cells.add(cell_of(x, y))
     ext_cells = {tuple(r["cell"]) for r in S["refs"] if r["space"] == "exterior"}
     land_cells = {tuple(r["cell"]) for r in P["land"]}
@@ -1868,7 +1868,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
         if touched:
             objects, tally = collision_objects(S["refs"])
-            polylines = navworld.road_polylines() + [[(x, y, False) for x, y in p["points"]] for p in P["paths"]]
+            polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
                                               [r["pos"] for r in clear])
             nav_info["collision"] = tally

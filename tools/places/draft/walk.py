@@ -421,13 +421,15 @@ class Walkable:
 
 
 def samples(pts: list, step: float = STEP) -> list[tuple[int, tuple]]:
-    """A street's points every `step` units along it: [(the segment it lies on, (x, y))], its own points included."""
+    """A street's points every `step` units along it: [(the segment it lies on, (x, y))], its own points included.
+    A stretch between two 3-d points (a street laid on a deck at its own height) keeps its height, (x, y, z)."""
     out = []
     for i, (a, b) in enumerate(zip(pts, pts[1:])):
         n = max(1, math.ceil(math.dist(a[:2], b[:2]) / step))
-        out += [(i, (a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n)) for k in range(n)]
+        d = 3 if len(a) > 2 and len(b) > 2 else 2
+        out += [(i, tuple(a[j] + (b[j] - a[j]) * k / n for j in range(d))) for k in range(n)]
     if pts:
-        out.append((max(0, len(pts) - 2), tuple(pts[-1][:2])))
+        out.append((max(0, len(pts) - 2), tuple(pts[-1][:3 if len(pts[-1]) > 2 and len(pts) > 1 and len(pts[-2]) > 2 else 2])))
     return out
 
 

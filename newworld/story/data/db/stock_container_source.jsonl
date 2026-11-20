@@ -126,6 +126,27 @@
 {"place_id":"helstrom","space_id":"exterior","ref_id":"helstrom.4BT72PN2KW23D2FN72FPPS8FMG","source_id":"cite-story-design-quests-lines-main-plot-md"}
 {"place_id":"helstrom","space_id":"exterior","ref_id":"helstrom.86CBE7ZFHVE5RE15Q94RB2FF14","source_id":"cite-person-helstrom-87wth0ew4wj6aq9ctrc7gxazts"}
 {"place_id":"helstrom","space_id":"exterior","ref_id":"helstrom.86CBE7ZFHVE5RE15Q94RB2FF14","source_id":"cite-place-wealth-helstrom"}
+{"place_id":"jal-veesa","space_id":"AltenBunkhouse","ref_id":"King of the Murkmire.esp:0F278B","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"AltenBunkhouse","ref_id":"King of the Murkmire.esp:0F7B07","source_id":"cite-person-jal-veesa-1zd5fp21nh5g9gmn9pejnwe58e"}
+{"place_id":"jal-veesa","space_id":"AltenBunkhouse","ref_id":"King of the Murkmire.esp:0F7B07","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"AltenBunkhouse","ref_id":"King of the Murkmire.esp:0FCD2B","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"AltenDockmasterHouse","ref_id":"King of the Murkmire.esp:0FCE0B","source_id":"cite-person-jal-veesa-7w40egbarbv6s6hwtt0d8284jx"}
+{"place_id":"jal-veesa","space_id":"AltenDockmasterHouse","ref_id":"King of the Murkmire.esp:0FCE0B","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"AltenGeneralStore","ref_id":"King of the Murkmire.esp:0F26DF","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatAccommodationHut","ref_id":"King of the Murkmire.esp:1C1D6F","source_id":"cite-person-jal-veesa-hvxfp5gxq7x8t0fbgn9t38cwqf"}
+{"place_id":"jal-veesa","space_id":"SeekhatAccommodationHut","ref_id":"King of the Murkmire.esp:1C1D6F","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatCarpenterHut","ref_id":"King of the Murkmire.esp:1A31F8","source_id":"cite-person-jal-veesa-607ctz7sdhtjx923tx01pr9cz6"}
+{"place_id":"jal-veesa","space_id":"SeekhatCarpenterHut","ref_id":"King of the Murkmire.esp:1A31F8","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatEggTendersQuarters","ref_id":"King of the Murkmire.esp:19DFDF","source_id":"cite-person-jal-veesa-6j2hena7bdwshrd3h1j2ehd6pk"}
+{"place_id":"jal-veesa","space_id":"SeekhatEggTendersQuarters","ref_id":"King of the Murkmire.esp:19DFDF","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatEggTendersQuarters","ref_id":"King of the Murkmire.esp:19DFE0","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatFishersHut","ref_id":"King of the Murkmire.esp:1C1C95","source_id":"cite-person-jal-veesa-45e3z7n1q00xrwaj9e4t3h0jsc"}
+{"place_id":"jal-veesa","space_id":"SeekhatFishersHut","ref_id":"King of the Murkmire.esp:1C1C95","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:1CC12A","source_id":"cite-person-jal-veesa-y1snmxm4cbwbvq318nrp5gpk33"}
+{"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:1CC12A","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:951860","source_id":"cite-place-wealth-jal-veesa"}
+{"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","source_id":"cite-person-jal-veesa-4mc5qnqfymtg1yv6vqe7y2002q"}
+{"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","source_id":"cite-place-wealth-jal-veesa"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39","source_id":"cite-place-give-outpost-m11-m63-3"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39","source_id":"cite-place-note-outpost-m11-m63-hooks"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","source_id":"cite-place-wealth-outpost-m13-m65"}

@@ -342,7 +342,7 @@
    "status": "inhabited",
    "held_by": "The Veesa-Teeleel elders; their own, not the Vicecanons",
    "population": 22,
-   "footprint_radius_m": 110,
+   "footprint_radius_m": 120,
    "siting": "swamp",
    "danger_band_id": "D1",
    "importance": 3,

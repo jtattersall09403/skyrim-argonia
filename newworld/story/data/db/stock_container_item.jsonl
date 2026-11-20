@@ -24,6 +24,13 @@
 {"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013989","count":1,"why":"a steel sword of the levy's issue pattern, made here (T2), set by for the next order"}
 {"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:0800E4","count":6,"why":"straps for fittings, from the tanner's rack"}
 {"place_id":"helstrom","space_id":"exterior","ref_id":"helstrom.86CBE7ZFHVE5RE15Q94RB2FF14","item_id":"Skyrim.esm:03EADD","count":2,"why":"the levy's field dressings"}
+{"place_id":"jal-veesa","space_id":"AltenBunkhouse","ref_id":"King of the Murkmire.esp:0F7B07","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"AltenDockmasterHouse","ref_id":"King of the Murkmire.esp:0FCE0B","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"SeekhatAccommodationHut","ref_id":"King of the Murkmire.esp:1C1D6F","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"SeekhatCarpenterHut","ref_id":"King of the Murkmire.esp:1A31F8","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"SeekhatFishersHut","ref_id":"King of the Murkmire.esp:1C1C95","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:1CC12A","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0135B8","count":1,"why":"an Imperial sword (main plot, quest 1: the hold's kit)"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:01397D","count":20,"why":"twenty iron arrows"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013985","count":1,"why":"a hunting bow"}

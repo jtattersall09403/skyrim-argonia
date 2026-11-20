@@ -22,6 +22,14 @@
 {"id":"cite-person-helstrom-wgtqzw29pt5epq7fydc0cyg34q","kind":"dossier","title":"person:helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q","locator":"person:helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q"}
 {"id":"cite-person-helstrom-xz2v2nq5yes9x1sp8sq8p072sh","kind":"dossier","title":"person:helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH","locator":"person:helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH"}
 {"id":"cite-person-helstrom-yfmtjk20vgq52ak51gm46yjqyr","kind":"dossier","title":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR","locator":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
+{"id":"cite-person-jal-veesa-1zd5fp21nh5g9gmn9pejnwe58e","kind":"dossier","title":"person:jal-veesa.1ZD5FP21NH5G9GMN9PEJNWE58E","locator":"person:jal-veesa.1ZD5FP21NH5G9GMN9PEJNWE58E"}
+{"id":"cite-person-jal-veesa-45e3z7n1q00xrwaj9e4t3h0jsc","kind":"dossier","title":"person:jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC","locator":"person:jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC"}
+{"id":"cite-person-jal-veesa-4mc5qnqfymtg1yv6vqe7y2002q","kind":"dossier","title":"person:jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q","locator":"person:jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q"}
+{"id":"cite-person-jal-veesa-607ctz7sdhtjx923tx01pr9cz6","kind":"dossier","title":"person:jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6","locator":"person:jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6"}
+{"id":"cite-person-jal-veesa-6j2hena7bdwshrd3h1j2ehd6pk","kind":"dossier","title":"person:jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK","locator":"person:jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK"}
+{"id":"cite-person-jal-veesa-7w40egbarbv6s6hwtt0d8284jx","kind":"dossier","title":"person:jal-veesa.7W40EGBARBV6S6HWTT0D8284JX","locator":"person:jal-veesa.7W40EGBARBV6S6HWTT0D8284JX"}
+{"id":"cite-person-jal-veesa-hvxfp5gxq7x8t0fbgn9t38cwqf","kind":"dossier","title":"person:jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","locator":"person:jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF"}
+{"id":"cite-person-jal-veesa-y1snmxm4cbwbvq318nrp5gpk33","kind":"dossier","title":"person:jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33","locator":"person:jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33"}
 {"id":"cite-person-outpost-m13-m65-rhyfydyg75ynbgw69r8x9pzfba","kind":"dossier","title":"person:outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA","locator":"person:outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA"}
 {"id":"cite-person-outpost-m13-m65-vd51zd4gp90n4wygpgw43d7ppc","kind":"dossier","title":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC","locator":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC"}
 {"id":"cite-person-outpost-m6-m66-yd5kbebaej872qv0fz3x1w0d5v","kind":"dossier","title":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","locator":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V"}
@@ -102,6 +110,7 @@
 {"id":"cite-place-note-tribal-camp-m2-m68-people","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/people","locator":"place_note:tribal-camp-m2-m68/people"}
 {"id":"cite-place-note-tribal-camp-m2-m68-present","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/present","locator":"place_note:tribal-camp-m2-m68/present"}
 {"id":"cite-place-wealth-helstrom","kind":"dossier","title":"place_wealth:helstrom","locator":"place_wealth:helstrom"}
+{"id":"cite-place-wealth-jal-veesa","kind":"dossier","title":"place_wealth:jal-veesa","locator":"place_wealth:jal-veesa"}
 {"id":"cite-place-wealth-outpost-m13-m65","kind":"dossier","title":"place_wealth:outpost-m13-m65","locator":"place_wealth:outpost-m13-m65"}
 {"id":"cite-place-wealth-outpost-m6-m66","kind":"dossier","title":"place_wealth:outpost-m6-m66","locator":"place_wealth:outpost-m6-m66"}
 {"id":"cite-place-wealth-tribal-camp-m2-m68","kind":"dossier","title":"place_wealth:tribal-camp-m2-m68","locator":"place_wealth:tribal-camp-m2-m68"}

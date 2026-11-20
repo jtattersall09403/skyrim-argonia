@@ -110,7 +110,8 @@ def stands_inside(ref: dict, p, shrink: float = OVERLAP_SHRINK) -> bool:
     s = float(ref.get("scale") or 1.0)
     local = B.rotation(*(ref.get("rot") or [0, 0, 0])).T @ (np.asarray(p[:3], float) - np.asarray(ref["pos"], float)) / s
     top = b[5] if ref.get("walk") is None else float(ref["walk"])   # a walkway's deck, under its rails and posts
-    return bool(b[2] - 1.0 <= local[2] < top - ON_TOP / s)
+    # a rock, cliff, tree or Hist is its collision's profile, not its box (the overlap rule's own test)
+    return bool(b[2] - 1.0 <= local[2] < top - ON_TOP / s) and stands_in_solid(ref, p)
 
 
 def point_seg(p, a, b) -> float:
@@ -716,7 +717,8 @@ def check_doors(ctx) -> list[str]:
         for o, row, reach in solids.get(space, ()):
             if o["fk"] in stands_on or o["fk"] == r["fk"]:
                 continue  # the thing the door stands on (its own building) holds the door, not the arrival
-            if math.dist(at[:2], o["pos"][:2]) <= reach and stands_inside({**o, "walk": row.get("walk")}, at):
+            if math.dist(at[:2], o["pos"][:2]) <= reach and stands_inside(
+                    {**o, "walk": row.get("walk"), "kind": row.get("kind"), "model": o.get("model")}, at):
                 bad.append(f"door {rid}: its arrival point is inside {row.get('id', o['fk'])}")
     return bad
 
