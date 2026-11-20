@@ -175,7 +175,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     M = marks = None
     if o.get("mesh"):
         M, mesh_facts = built_mesh(place, space)
-        marks = mesh_marks(sc, M) if M is not None else None
+        net = network_rule(place, mesh_facts.get("build")) if M is not None and not inside else None
+        marks = mesh_marks(sc, M, net) if M is not None else None
     raw_shot = d.shot
     seen_past: dict = {}
 
@@ -328,7 +329,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     if seen_past and not keep:
         res["canopy"] = seen_past
     if mesh_facts and not keep:
-        res["mesh"] = {k: v for k, v in mesh_facts.items() if k != "built"}
+        res["mesh"] = {k: v for k, v in mesh_facts.items() if k not in ("built", "build")}
     if not keep:
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
@@ -676,11 +677,49 @@ def built_mesh(place: str, space: str = "exterior"):
     facts = {"navmesh": str(path), **mesh.stale(PLACES / place, build, place)}
     if facts["stale"]:
         facts["warning"] = "STALE: the place files are newer than the build this mesh is of; rebuild before trusting it"
+    facts["build"] = str(build)
     return _MESH[key], facts
 
+_NET: dict = {}
 
-def mesh_marks(sc, M) -> tuple[list, list]:
-    """Door arrivals [(name, xyz, on the main network)] and street points [(xyz, on)] for the overlay and the numbers."""
+
+def network_rule(place: str, build) -> dict | None:
+    """What the build's own check calls off the town's main network, by its own rule (check.check_streets and the
+    draft's island rule: walk.Walkable over the built mesh, walk.off_network, walk.islands): {doors_off: {door row
+    id}, samples: [(street id, (x, y), on)]}; cached per build. None when the build cannot be read that way."""
+    from pathlib import Path
+    from tools.places.seat import PLACES
+    if not build:
+        return None
+    plan = Path(build) / "shards" / place / "plan.json"
+    if not plan.exists():
+        return None
+    key = (place, str(build), plan.stat().st_mtime)
+    if key not in _NET:
+        try:
+            from tools.places import check as C
+            from tools.places.draft import walk
+            ctx = C.load(place, Path(build))
+            ctx["place_dir"] = PLACES / place
+            W = walk.Walkable(ctx, *C.surfaces(ctx))
+            pf = PLACES / place / "paths.jsonl"
+            paths = [json.loads(x) for x in pf.read_text().splitlines() if x.strip()] if pf.exists() else []
+            paths = [p for p in paths if p.get("points")]
+            off = {(s, tuple(round(v, 3) for v in q)) for s, q in walk.off_network(paths, [], W)[0]}
+            samples = [(p["id"], q, (p["id"], tuple(round(v, 3) for v in q)) not in off)
+                       for p in paths for _, q in walk.samples(p["points"])]
+            _NET.clear()
+            _NET[key] = {"doors_off": set(walk.islands(ctx, W)), "samples": samples}
+        except Exception as e:  # noqa: BLE001  an unreadable build: the overlay keeps the plain mesh lookup
+            _NET[key] = {"error": f"{type(e).__name__}: {e}"[:200]}
+    got = _NET[key]
+    return None if "error" in got else got
+
+
+def mesh_marks(sc, M, net: dict | None = None) -> tuple[list, list]:
+    """Door arrivals [(name, xyz, on the main network)] and street points [(xyz, on)] for the overlay and the numbers.
+    With the build's own rule (`net`, network_rule): a door is off when the check calls its navmesh an island, a
+    street's samples (every 64 units, as the check samples them) are off when the check calls them off: one rule."""
     di = M.door_islands()
     doors = []
     for p in sc.pieces:
@@ -688,9 +727,18 @@ def mesh_marks(sc, M) -> tuple[list, list]:
         if p.get("kind") != "door" or not dd.get("to_space"):
             continue
         at = dd.get("arrival") or [p["m"][0][3], p["m"][1][3], p["m"][2][3]]
-        isl = di.get(p["id"], M.island_of(at[0], at[1], at[2]))
-        doors.append((dd["to_space"], list(at), isl == M.main))
+        if net is not None and p["id"] in di:
+            on = p["id"] not in net["doors_off"]
+        else:   # the island of its own door triangle; else the island under where one comes out of it
+            isl = di[p["id"]] if p["id"] in di else M.island_of(at[0], at[1], at[2])
+            on = isl == M.main
+        doors.append((dd["to_space"], list(at), on))
     pts = []
+    if net is not None:
+        for _, q, on in net["samples"]:
+            t, z = street_point(sc, M, q)
+            pts.append(([q[0], q[1], z], on))
+        return doors, pts
     for line in sc.files.get("paths") or []:
         for q in line.get("points") or []:
             t, z = street_point(sc, M, q)
@@ -716,7 +764,9 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
     M, facts = built_mesh(place)
     if M is None:
         return facts
-    doors, pts = mesh_marks(sc, M)
+    net = network_rule(place, facts.pop("build", None))
+    doors, pts = mesh_marks(sc, M, net)
+    facts["rule"] = "the build's check (walk.off_network, walk.islands)" if net is not None else "the mesh's islands"
     di = M.door_islands()
     by_isl: dict[int, dict] = {}
     for p in sc.pieces:
@@ -736,7 +786,7 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
         ends = []
         for n in names[:2]:
             th = sc.resolve(n)
-            at = _point(th)
+            at = join_point(sc, th)
             pid = th["pieces"][0]["id"] if th["kind"] == "door" else None
             isl = di.get(pid, -1) if pid else -1
             if isl < 0:
@@ -751,6 +801,24 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
                     if p.get("kind") not in ("light", "marker", "plant", "groundcover") and _box_has(p, g["at"], 48)][:8]
             res["join"]["gap"] = g
     return res
+
+
+def join_point(sc, th) -> list:
+    """Where a walk to or from a thing is measured: a door's arrival; a structure's first door's arrival, else the
+    middle of its largest deck at the deck's height; a point as given; else the thing's middle at its lowest point."""
+    if th.get("point") or th["kind"] == "door":
+        return _point(th)
+    for p in th["pieces"]:
+        arr = (p.get("door") or {}).get("arrival") if p.get("kind") == "door" else None
+        if arr:
+            return list(arr)
+    ds = hands.decks(sc, [sc.refs[p["id"]] for p in th["pieces"] if p["id"] in sc.refs])
+    if ds:
+        from tools.places.draft import walk
+        r, z, rect = max(ds, key=lambda t: (t[2][2] - t[2][0]) * (t[2][3] - t[2][1]))
+        x, y = walk.to_world(r, (rect[0] + rect[2]) / 2, (rect[1] + rect[3]) / 2)
+        return [x, y, z]
+    return _point(th)
 
 
 def _box_has(p, at, pad):

@@ -500,3 +500,26 @@ def test_a_section_outlines_a_flights_treads_from_its_triangles_not_its_box():
     e = outline.edge(m)
     assert m.getbbox() is not None and e.getbbox() is not None   # edge-on treads still leave a mark
     assert outline.model_tris(None) is None
+
+
+def test_the_overlay_marks_doors_and_street_points_by_the_checks_own_rule():
+    """With the build check's verdicts the overlay says what the check says: a door whose navmesh the check calls an
+    island is red even where its triangle lies on the largest island, and the street samples off are the check's."""
+    from tools.places.look import mesh, verbs
+    v, t, nb = _two_decks()
+    M = mesh.Mesh(v, t, nb, doors=[(0, "door1")])
+    door = piece("door1", [50, 50, 0], [-10, -10, 0], [10, 10, 100], kind="door", door={"to_space": "Hut", "arrival": [50, 50, 0]})
+
+    class S:
+        pieces = [door]
+        files = {"paths": [{"id": "st1", "points": [[10, 10], [190, 10]]}]}
+
+        class ground:
+            @staticmethod
+            def height(x, y):
+                return 0.0
+    plain = verbs.mesh_marks(S, M)
+    assert plain[0][0][2] is True
+    net = {"doors_off": {"door1"}, "samples": [("st1", (10, 10), True), ("st1", (74, 10), False)]}
+    doors, pts = verbs.mesh_marks(S, M, net)
+    assert doors[0][2] is False and [on for _, on in pts] == [True, False]
