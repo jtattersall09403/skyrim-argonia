@@ -20,7 +20,7 @@ What grows commonest, by share of its plants: boulder (14%), bald cypress (11%),
 
 Lukiul, Naka-Desh and Hutan-Tzel, with Nibenese-descended families. <!-- region_note:blackwood/people -->
 
-The places here belong to The Hutan-Tzel (2 places, about 12 people) and The Gideon Frontier (1 place, about 9 people); 4 places carry no culture in the data. <!-- place:region=blackwood -->
+The places here belong to The Hutan-Tzel (2 places, about 12 people) and The Gideon Frontier (1 place, about 8 people); 4 places carry no culture in the data. <!-- place:region=blackwood -->
 
 ## Its history, faith, trade and the present
 
@@ -40,13 +40,13 @@ Each place below says what its record promises the player, how it is reached, an
 
 ### Umpholo
 
-A village, about 120 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a small river village of Lukiul and Naka-Desh families; nobody rules it; 9 people live there. It is not built yet. <!-- place:umpholo -->
+A village, about 120 m across, sited on riverbank, of The Gideon Frontier. In 4E 201 it is inhabited, held by a small river village of Lukiul and Naka-Desh families; nobody rules it; 8 people live there. It is not built yet. <!-- place:umpholo -->
 
 Umpholo is the site of a Temple of Mara built about 3E 378. The missionaries died of swamp rot within a month and the library was picked clean by about 3E 399. The story is told in The Argonian Account, Book 4. The site lies in the far west. <!-- place_note:umpholo/overview --> A hamlet of river Argonians living in and around the stripped stone chapel, which the swamp has been overgrowing for two centuries. A fish-and-reed trade with Slough Point. <!-- place_note:umpholo/present --> Lukiul and Naka-Desh Argonians of the Blackwood frontier; Agaceph come now and then to trade. <!-- place_note:umpholo/people --> The Maran mission's temple was built about 3E 378 and abandoned within a month; the Agaceph looted its books by about 3E 399. <!-- place_note:umpholo/history -->
 
 A stone chapel with a fallen roof, vine-covered and stilt houses along the bank. <!-- place_note:umpholo/look --> River fish, clay pots and reed, carried to Slough Point. <!-- place_note:umpholo/economy --> The chapel to Mara is empty; the river folk have a Hist-shoot shrine beside it and say Dibella's name in the Gideon way. <!-- place_note:umpholo/faith -->
 
-Built from: Its main source, Dres village (Black Marsh North), gives the riverside line of Dunmer stone houses along the bank, and it has no interior. The stripped chapel is built from the pool: Root Whisper Village (King of the Murkmire) lends Argonian stilt houses and shrine pieces, and its hall interior serves as the chapel inside. Still to add: the fallen chapel roof with vines over the stone, the silver amulet under the floor, the Hist-shoot shrine beside it and the potter's stall. <!-- place_note:umpholo/source -->
+Built from: Its main source, Dres village (Black Marsh North), is a Dunmer riverside village of fourteen buildings with no interior and does not suit the chapel. Root Whisper Village (King of the Murkmire) fits better: Argonian stilt houses and shrine pieces, with a hall interior that serves as the stripped chapel inside. Still to add: the fallen chapel roof with vines over the stone, the silver amulet under the floor, the Hist-shoot shrine beside it and the potter's stall. <!-- place_note:umpholo/source -->
 
 It promises the player: General goods trader: a potter's stall: clay pots, fish and reed goods; Fish and clams: the river below the chapel; Shrine blessing: the river folk's Hist-shoot shrine beside the chapel: a blessing of waterbreathing, given by the river folk; Cooking pot: by the chapel steps. <!-- place_give:umpholo/0; place_give:umpholo/1; place_give:umpholo/2; place_give:umpholo/3 -->
 
@@ -82,7 +82,7 @@ Hutan-Veel is the Hutan-Tzel post closest to the Cyrodiil border, where the trib
 
 A dark palisade stands above a landing at the far-west edge of the marsh. <!-- place_note:outpost-m21-m74/look --> Its people earn their living on the far-west border road: guiding, selling meat to Nahk-Zeel Station and bargaining at the palisade gate with Cyrodiilic traders. The outpost lives on a toll paid in salt. <!-- place_note:outpost-m21-m74/economy --> The guards carve their totems with runes that outsiders cannot read. <!-- place_note:outpost-m21-m74/faith -->
 
-Built from: Its main source, Apocrypa Miraaks Tower (Dragonborn), gives only its spot at the marsh edge, since its book stacks and tentacles are Daedric and are not used. The border post is built from the pool, with no interior: Ree-An-Wo (King of the Murkmire) lends its hide tents, and the camp near Loreisian lends its carved Argonian busts and standing stones. Still to add: the dark palisade, the totem made from a carved bust, the landing and the cooking pot inside. <!-- place_note:outpost-m21-m74/source -->
+Built from: Its main source, a tower in Apocrypha (Dragonborn), is a strange Daedric tower of book stacks and tentacles and does not suit the border post. The camp near Loreisian and Ree-An-Wo (King of the Murkmire) fit better, with no interior: Ree-An-Wo's hide tents and the Loreisian camp's carved Argonian busts and standing stones. Still to add: the dark palisade, the totem made from a carved bust, the landing and the cooking pot inside. <!-- place_note:outpost-m21-m74/source -->
 
 It promises the player: Hunter buyer: the gate-keeper, buying hides and meat; Skill trainer: Journeyman Sneak trainer, a border scout; Cooking pot: inside the palisade. <!-- place_give:outpost-m21-m74/0; place_give:outpost-m21-m74/1; place_give:outpost-m21-m74/2 -->
 
@@ -100,7 +100,7 @@ Aithros is a Kothringi town near the Cyrodiil border, one of the homeland's town
 
 Stone footings in a loose ring around four coloured cairns, with a tin chime-frame and a pottery heap by the stream. The border road is a day to the north. <!-- place_note:kothringi-ruin-m23-m76/look --> It was a craft town with beadwork and a pottery lane. Treasure-diggers and Cyrodilic relic-buyers from Nahk-Zeel Station now visit it. <!-- place_note:kothringi-ruin-m23-m76/economy --> The Kothringi's four powers are marked by four small cairns at the town's centre, each with a different colour of glass. Naka-Desh chimes hang from one tin frame. <!-- place_note:kothringi-ruin-m23-m76/faith -->
 
-Built from: Its main source, Molten Depths (CavesofMorrowind), gives little beyond its spot, since it is a large mine-and-cave interior and this dead town is open ground; its Dunmer and Dwemer pieces are not used. The place is built from the pool: Root Whisper Village (King of the Murkmire) lends its shrine pieces and Argonian ruin walls for the loose ring of footings and the cairns, and no interior is needed. Still to add: the footings in a loose ring, the four cairns with coloured glass, the tin chime-frame, the pottery heap and the raiders' trench. <!-- place_note:kothringi-ruin-m23-m76/source -->
+Built from: Its main source, Molten Depths (CavesofMorrowind), is a large mine-and-cave interior and does not suit an open dead town. Root Whisper Village (King of the Murkmire) fits better for its shrine pieces and Argonian ruin walls, with no interior needed. Still to add: the footings in a loose ring, the four cairns with coloured glass, the tin chime-frame, the pottery heap and the raiders' trench. <!-- place_note:kothringi-ruin-m23-m76/source -->
 
 It promises the player: Hostile occupants: Sul-Xan raiders in the stream trench (x4); Dangerous wildlife: restless dead at the four cairns (x4); Boss fight: the raiders' leader; Boss chest: the raiders' trench; Lesser treasure: unbroken Kothringi bowls and coloured glass (x2); Common harvestables: clay from the pottery heap by the stream. <!-- place_give:kothringi-ruin-m23-m76/0; place_give:kothringi-ruin-m23-m76/1; place_give:kothringi-ruin-m23-m76/2; place_give:kothringi-ruin-m23-m76/3; place_give:kothringi-ruin-m23-m76/4; place_give:kothringi-ruin-m23-m76/5 -->
 
@@ -136,7 +136,7 @@ Meliton is a Kothringi town in the western hills, named like Korydon and Toklea.
 
 Rings of stone footings on a hill, cairns heaped with glass beads and a chime-hung thorn tree at the centre. Hutan-Aru's smoke shows to the north. <!-- place_note:kothringi-ruin-m14-m71/look --> Once a craft town of glass beads and moonstone. Treasure-diggers now work it, as do the Sul-Xan raiders who come for the cairns. <!-- place_note:kothringi-ruin-m14-m71/economy --> The Kothringi honoured Z'en, Dibella, Mara and Kynareth and their cairns still hold bead strings. Naka-Desh chimes hang in a single thorn tree beside the largest cairn. <!-- place_note:kothringi-ruin-m14-m71/faith -->
 
-Built from: Its main source, JaphetsFollyWorld -1,-1 (Skyrim), gives the ruined hamlet's ring of broken walls as the layout of the stone footings on the hill; its two interiors are not used, as this open town has no rooms. Its Imperial and Nordic pieces are replaced with Argonian ruin pieces from the pool: Root Whisper Village (King of the Murkmire), whose shrine pieces also make the cairns and the centre. Still to add: the stone footings, the cairns heaped with beads, the thorn tree hung with chimes and the diggers' trench. <!-- place_note:kothringi-ruin-m14-m71/source -->
+Built from: Its main source, Japhet's Folly (Skyrim), is a ruined hamlet with a ring of broken walls and two interiors that this open town does not use. Its Imperial and Nordic pieces are replaced with Argonian ruin pieces from Root Whisper Village (King of the Murkmire). Still to add: the stone footings, the cairns heaped with beads, the thorn tree hung with chimes and the diggers' trench. <!-- place_note:kothringi-ruin-m14-m71/source -->
 
 It promises the player: Hostile occupants: Sul-Xan diggers on the south side (x4); Dangerous wildlife: restless Kothringi dead at the cairns (x3); Boss fight: the Sul-Xan dig-leader; Boss chest: the diggers' haul; Lesser treasure: bead strings and moonstone in the cairns (x2). <!-- place_give:kothringi-ruin-m14-m71/0; place_give:kothringi-ruin-m14-m71/1; place_give:kothringi-ruin-m14-m71/2; place_give:kothringi-ruin-m14-m71/3; place_give:kothringi-ruin-m14-m71/4 -->
 
@@ -154,7 +154,7 @@ Aldanus Watchtower is a Third Empire watchtower on the border hills above the Bl
 
 A broken tower and a wall stand in a thicket on the far-west hills. <!-- place_note:imperial-ruin-m19-m74/look --> Once a border watch of the Empire, the tower is now stripped of anything useful. <!-- place_note:imperial-ruin-m19-m74/economy --> A small shrine niche of the Divines is cut into the tower base, empty now. The Hutan-Tzel do not touch it. <!-- place_note:imperial-ruin-m19-m74/faith -->
 
-Built from: Its main source, Bloodlet Throne (Skyrim), gives the place its spot on the far-west hills and a ruined fort's broken walls and towers, from which the single tower stump and one length of wall are kept; its Nordic and Dwemer pieces are replaced with Imperial ruin stone and rubble. Its cave interior is not used. The rest is built from the pool: the exterior of Old Laboratory (King of the Murkmire) lends a ruined Imperial tower, broken ruin walls and rubble on cypress ground. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox. <!-- place_note:imperial-ruin-m19-m74/source -->
+Built from: Its main source, Bloodlet Throne (Skyrim), is a large fort with a cave interior and does not fit a lone tower. The exterior of Old Laboratory (King of the Murkmire) fits better: a ruined Imperial tower, broken ruin walls and rubble on cypress ground, which supply the tower stump and the length of wall; its interior is not used. Still to add: the thicket, the shrine niche in the tower base, the rubble and the courier's strongbox. <!-- place_note:imperial-ruin-m19-m74/source -->
 
 It promises the player: Dangerous wildlife: giant spiders in the thicket (x3); Boss fight: a hackwing nesting on the tower stump; Boss chest: the courier's strongbox. <!-- place_give:imperial-ruin-m19-m74/0; place_give:imperial-ruin-m19-m74/1; place_give:imperial-ruin-m19-m74/2 -->
 

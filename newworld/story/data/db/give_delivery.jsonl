@@ -462,9 +462,9 @@
 {"place_id":"jal-veesa","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a mat in the elders' long house)"}
 {"place_id":"jal-veesa","give_seq":4,"seq":0,"by":"person","person_id":"jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q","status":"delivered","why":"Keeshu-Ra (trainer) gives it (people.jsonl services)"}
 {"place_id":"jal-veesa","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the weir channels: eels and gar)"}
-{"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"ref","ref_id":"jal-veesa.P1R5QVKSM177Y2PDFWBEMWQ1BV","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
-{"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"ref","ref_id":"jal-veesa.Q8HD6HGMGF0GRV749RYRD14V5A","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
-{"place_id":"jal-veesa","give_seq":8,"seq":0,"by":"ref","ref_id":"jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F","status":"delivered","why":"the place's shrine (place.json stations)"}
+{"place_id":"jal-veesa","give_seq":6,"seq":0,"by":"ref","ref_id":"jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
+{"place_id":"jal-veesa","give_seq":7,"seq":0,"by":"ref","ref_id":"jal-veesa.X8WXQR5N4SBAW6GK2G2FN9YV45","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
+{"place_id":"jal-veesa","give_seq":8,"seq":0,"by":"ref","ref_id":"jal-veesa.7XQNVHSJ301DJJC517GEST7RHD","status":"delivered","why":"the place's shrine (place.json stations)"}
 {"place_id":"jarecai","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a raft-master at the river landing)"}
 {"place_id":"jarecai","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: a Mine-Burner smith selling salvaged mine iron, steel and hide armour)"}
 {"place_id":"jarecai","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (forge: the smith's forge and anvil)"}
@@ -1194,7 +1194,7 @@
 {"place_id":"stormhold","give_seq":15,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: in the tavern)"}
 {"place_id":"stormhold","give_seq":16,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Expert Alteration trainer, the Dunmer Vicecanon's mage)"}
 {"place_id":"stormhold","give_seq":17,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Adept Light Armor trainer, a sergeant of the frontier screen)"}
-{"place_id":"stormhold","give_seq":18,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder)"}
+{"place_id":"stormhold","give_seq":18,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (shrine-blessing: the Hist in the square's pond: a blessing of resist poison, given by its tree-minder)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: Slaughterfish at the lower windows)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: Giant mudcrab in the gallery)"}
 {"place_id":"sunken-ruin-23-m112","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: Bronze, vakka stone and bone left in the lower galleries)"}

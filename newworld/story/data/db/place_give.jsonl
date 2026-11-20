@@ -456,7 +456,7 @@
 {"place_id":"inoja","seq":3,"give_kind_id":"inn-room","detail":"a room at the stilted inn","count":1}
 {"place_id":"inoja","seq":4,"give_kind_id":"trader-hunter","detail":"hides and river game bought on the market ground","count":1}
 {"place_id":"inoja","seq":5,"give_kind_id":"fishing","detail":"the river fork at the ferry","count":1}
-{"place_id":"jal-veesa","seq":0,"give_kind_id":"rootworm-stop","detail":"the Hist sap pool at the heart of the town, where the tree-minder calls the rootworm","count":1}
+{"place_id":"jal-veesa","seq":0,"give_kind_id":"rootworm-stop","detail":"the Hist pool at the heart of the town, where the tree-minder calls the rootworm","count":1}
 {"place_id":"jal-veesa","seq":1,"give_kind_id":"trader-general","detail":"reed boats, mats, rope and dried fish at the jetty market","count":1}
 {"place_id":"jal-veesa","seq":2,"give_kind_id":"trader-innkeeper","detail":"a fish-smoker's stall on the road side","count":1}
 {"place_id":"jal-veesa","seq":3,"give_kind_id":"free-bed","detail":"a mat in the elders' long house","count":1}
@@ -464,7 +464,7 @@
 {"place_id":"jal-veesa","seq":5,"give_kind_id":"fishing","detail":"the weir channels: eels and gar","count":1}
 {"place_id":"jal-veesa","seq":6,"give_kind_id":"cooking-pot","detail":"at the fish racks","count":1}
 {"place_id":"jal-veesa","seq":7,"give_kind_id":"tanning-rack","detail":"by the boat sheds","count":1}
-{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist sap pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison","count":1}
+{"place_id":"jal-veesa","seq":8,"give_kind_id":"shrine-blessing","detail":"the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison","count":1}
 {"place_id":"jarecai","seq":0,"give_kind_id":"boat-stop","detail":"a raft-master at the river landing","count":1}
 {"place_id":"jarecai","seq":1,"give_kind_id":"trader-blacksmith","detail":"a Mine-Burner smith selling salvaged mine iron, steel and hide armour","count":1}
 {"place_id":"jarecai","seq":2,"give_kind_id":"forge","detail":"the smith's forge and anvil","count":1}
@@ -1194,7 +1194,7 @@
 {"place_id":"stormhold","seq":15,"give_kind_id":"cooking-pot","detail":"in the tavern","count":1}
 {"place_id":"stormhold","seq":16,"give_kind_id":"trainer","detail":"Expert Alteration trainer, the Dunmer Vicecanon's mage","count":1}
 {"place_id":"stormhold","seq":17,"give_kind_id":"trainer","detail":"Adept Light Armor trainer, a sergeant of the frontier screen","count":1}
-{"place_id":"stormhold","seq":18,"give_kind_id":"shrine-blessing","detail":"the Hist in the square's pool of sap: a blessing of resist poison, given by its tree-minder","count":1}
+{"place_id":"stormhold","seq":18,"give_kind_id":"shrine-blessing","detail":"the Hist in the square's pond: a blessing of resist poison, given by its tree-minder","count":1}
 {"place_id":"sunken-ruin-23-m112","seq":0,"give_kind_id":"combat-creature","detail":"Slaughterfish at the lower windows","count":3,"reward_kind_id":"treasure"}
 {"place_id":"sunken-ruin-23-m112","seq":1,"give_kind_id":"combat-boss","detail":"Giant mudcrab in the gallery","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"sunken-ruin-23-m112","seq":2,"give_kind_id":"treasure","detail":"Bronze, vakka stone and bone left in the lower galleries","count":3}

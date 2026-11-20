@@ -2048,11 +2048,11 @@
    "disposition_id": "friendly",
    "reward_band_id": "D1",
    "danger_tier": "T1",
-   "wealth_score": 33,
+   "wealth_score": 35,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T2",
-   "why": "score 33 = outpost 6 + importance 1 5 + population 8 10 + trade 12 (3 roads, major, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T2 (friendly: its people's own goods, its wealth's T2; reward band D1 T1)",
+   "why": "score 35 = outpost 6 + importance 1 5 + population 15 12 + trade 12 (3 roads, major, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T2 (friendly: its people's own goods, its wealth's T2; reward band D1 T1)",
    "owner": null
   },
   {
@@ -3170,7 +3170,7 @@
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T2",
-   "why": "score 45 = village 10 + importance 3 15 + population 9 10 + trade 10 (2 roads, major, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T2 (friendly: its people's own goods, its wealth's T2; reward band D2 T2)",
+   "why": "score 45 = village 10 + importance 3 15 + population 8 10 + trade 10 (2 roads, major, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T2 (friendly: its people's own goods, its wealth's T2; reward band D2 T2)",
    "owner": null
   },
   {
