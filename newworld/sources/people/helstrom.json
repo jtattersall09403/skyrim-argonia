@@ -545,7 +545,7 @@
     "role": "head"
    },
    "role": "resident",
-   "trade": "tally-keeper of goods landed at the river fork for the assembly",
+   "trade": "handler of the Toh-Reel-Ka, known in the city as a tally-keeper of goods landed at the river fork",
    "wealth": "W3",
    "level": null,
    "status": "alive",
@@ -553,7 +553,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She writes down every cargo landed at the river fork and who carried it, and keeps her tallies at the table of a quiet house off the market. Visitors come to her by word of mouth, and few in the city could say whose house it is.",
+     "text": "She writes down every cargo landed at the river fork and who carried it, and keeps her tallies at the table of a quiet house by the city landing. Visitors come to her by word of mouth, and few in the city could say whose house it is.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:helstrom/economy",
@@ -580,7 +580,7 @@
     "role": "head"
    },
    "role": "resident",
-   "trade": "keeps a quiet house off the market",
+   "trade": "lets a room behind the market's stalls",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -1307,7 +1307,7 @@
     "role": "lodger"
    },
    "role": "resident",
-   "trade": "raft-pilot on the northern rivers, seldom in the city",
+   "trade": "officer of the Toh-Reel-Ka over Nesh-Deeka, known in the city as a raft-pilot",
    "wealth": "W3",
    "level": null,
    "status": "alive",
@@ -1315,7 +1315,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She pilots rafts on the rivers to the north and keeps a bed in Nesh-Deeka's house for the nights she is in Helstrom, which are few.",
+     "text": "She served the Toh-Reel-Ka at Fort Chalkmoth for many years and is now the officer over Nesh-Deeka. She lodges in Nesh-Deeka's house and stands at the back of its room whenever the order has work there; in the city she passes for a raft-pilot from the northern rivers.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:helstrom/economy",

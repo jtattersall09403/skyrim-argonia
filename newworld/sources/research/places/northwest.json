@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms house the households and its elder's hut serves as the elders' long house. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool: the jetty market on the stream, the levy's bunkhouse and a fisher household's house. Still to add: the jetty and the weirs on the stream, the fish racks and the mat racks.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms house the households and its elder's hut serves as the elders' long house. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool: the jetty market on the stream, the levy's bunkhouse and a fisher household's house. Seekhat Yol's Nordic timber sheds and carved posts are replaced with Ree-An-Wo's hide tents and cypress posts. Unlike Natai, a salt-white line of huts on a beach, and Seafalls, platforms climbing a cliff over the surf, Jal-Veesa keeps the source's ring of houses round its Hist pool, inland on a stream. Still to add: the jetty and the weirs on the stream, the fish racks and the mat racks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1686,7 +1686,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ruined Farmhouse (Journey to Baan Malur), is a Dunmer farm of four people and one interior, and serves as the farmhouse once its ruin pieces are swapped for whole walls. The Storehouse of Farmhouse (Journey to Baan Malur) serves as the stone barn: hay, barrels, urns and shelves. Still to add as well: a bed in a loft over the barn's hay. Still to add: the raised mound, the paddy dikes, the causeway, the ancestor stones by the door and the Hist shoot in its clay pot.",
+     "text": "Its main source, Ruined Farmhouse (Journey to Baan Malur), is a Dunmer farm of four people and one interior, and serves as the farmhouse once its ruin pieces are swapped for whole walls. The Storehouse of Farmhouse (Journey to Baan Malur) serves as the stone barn: hay, barrels, urns and shelves. Its Nordic fences and timber sheds are replaced with the Dunmer stone walls of Cormar Crossing (Journey to Baan Malur). Still to add: a bed in a loft over the barn's hay, the raised mound, the paddy dikes, the causeway, the ancestor stones by the door and the Hist shoot in its clay pot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6030,7 +6030,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "One young crocodile lies below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
+     "text": "Two young crocodiles lie below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6102,8 +6102,8 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "mudcrabs on the bank and one young crocodile below the weir",
-     "count": 3,
+     "detail": "mudcrabs on the bank and two young crocodiles below the weir",
+     "count": 4,
      "reward": "treasure"
     },
     {
@@ -8951,7 +8951,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, BlackMarshNorth -16,16 (Black Marsh North), is a bandit shack camp with a few broken ruin columns, one mossy arch and bone piles, and no interior. The white arches come from the exterior of Loreisian (King of the Murkmire), its arch columns and ring arches. The drowned hall is the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. Still to add: the white arches in the reeds, the vines, the shrine fragments and the Welkynd stone on the stair.",
+     "text": "Its main source, BlackMarshNorth -16,16 (Black Marsh North), is a bandit shack camp with a few broken ruin columns, one mossy arch and bone piles, and no interior. The white arches come from the exterior of Loreisian (King of the Murkmire), its arch columns and ring arches. The drowned hall is the interior of Loreisian (King of the Murkmire), given a water level and entered by a stair. The camp's Nordic shacks and bone piles are replaced with Loreisian's arch columns, so nothing of the bandits' camp is left. Still to add: the white arches in the reeds, the vines, the shrine fragments and the Welkynd stone on the stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

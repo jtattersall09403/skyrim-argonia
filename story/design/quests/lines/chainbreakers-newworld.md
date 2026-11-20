@@ -164,7 +164,7 @@ rolls and burn them. They call themselves Chainbreakers. They hang two lamps whe
 Farm says they freed his cousin."
 
 The first such rumour starts a small quest, **Who Breaks Chains**. Its journal names the rumour and marks Saltmeadow
-Farm, a Spray-Folk grazing and rice farm south of Seafalls in the east (189 m on foot from the boat stop at Seafalls,
+Farm, a Spray-Folk grazing and rice farm west of Seafalls in the east (189 m on foot from the boat stop at Seafalls,
 which boats from Thorn and Archon serve). Rumours heard later add the name of the person who told them.
 
 **The work roll.** At Saltmeadow a washed-out Argonian herds the guar. He is Jeen-Wei, and he speaks first. He tells
@@ -212,7 +212,7 @@ in all of them from the rank of Breaker (quest 9). Each is a small addition to i
 | Ayiin | a stone house of the Stone-Sleepers (the elder's hut interior of Seekhat Yol, set in a house with added squared stone walls) |
 | Truowa | a room of a merchant's house on the lake shore (a merchant manor interior of Lilmoth) |
 | Alten Corimont | a room of the lodging house by the docks, where the raft-masters winter (the Lodging House interior of Alten Meerhleel) |
-| Helstrom | a quiet room off the market (one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom, the town's own source) |
+| Helstrom | a room behind the market's stalls (one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom, the town's own source) |
 | Gideon | a room of Haelga's Bunkhouse (a Riften interior), set aside for people the Brethren have not yet carried out |
 | Soulrest | a room of a house of Solitude (Erikur's house), set aside in the same way |
 | Archon | a room of a dockhouse of Baan Malur, set aside in the same way |
@@ -404,7 +404,7 @@ lake for House Ulvarys. The journal marks the fort, 358 m over the water from th
 **9. The Island Keep** (Fort Gysilla, an Archwarden toll fort on an island of Lake Ulaish). The garrison, of old
 Archein families, takes the toll on the lake (the Eelskins' 8, The Toll Chest, robs its store) and takes the
 Ulvarys' coin to lock up runaways caught on the lake until House Ulvarys' barge collects them. Three are in a lock-room
-of the barracks now (the fort's walls and keep are Fort Tulis from Journey to Baan Malur, nine Imperial buildings with no interior; the
+of the fort's vault cellar now (the fort's walls and keep are Fort Tulis from Journey to Baan Malur, nine Imperial buildings with no interior; the
 rooms inside come from Cracked Tusk of Skyrim, an Imperial fort whose two interiors are a keep hall and a vault of
 barred portcullis gates, so the lock-room is a barred chamber of the vault with its door set to an Adept lock). The way in is across the water. The Archein captain speaks first at the gate and
 refuses. A Speech check of 50 frightens him into opening the lock-room, because he fears the Archwardens at Stormhold
@@ -616,10 +616,7 @@ player chooses, the journal says what each gives and costs.
 | Calvian Waystation | Ah-Kesh by a fire with hired scavengers, his strongbox in the plinth's hollow (Expert lock) with the cellar key | 12. The Catch-Captain | The player takes the key. | Ah-Kesh speaks first; a marker on the ruin |
 | Fort Willowmoth | the Dunmer trader's flat barge at the jetty (added), a cage on its deck (added, Master lock), Dres shackles and three held workers | 13. The Vicecanon's Price | The player opens the cage. | the barge master speaks first; markers |
 | Julo | House Ulvarys' hall with Aldyne, the cellar under it behind a Master-locked door holding the great roll (the source's Basement interior), twelve held workers in the paddies | 14. The Great Roll | The player takes the great roll. | Aldyne speaks first; markers on the hall and the paddies |
-| Helstrom | the band's safe house, a quiet room off the market: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added | The safe-house chain (section 7): the player may sleep there from the rank of Breaker, quest 9 | The player rests and stores things there, and the keeper gives the band's word. | two lanterns in the window; the keeper answers the password; Helstrom's own hook says visitors find a quiet house off the market only by word of mouth |
-
-Julo's record says a family of causeway farmers lives in the hamlet; it does not yet say that House Ulvarys own the
-estate. That record change is the lead's to make (see the reply).
+| Helstrom | the band's safe house, a room behind the market's stalls: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added | The safe-house chain (section 7): the player may sleep there from the rank of Breaker, quest 9 | The player rests and stores things there, and the keeper gives the band's word. | two lanterns in the window; the keeper answers the password |
 
 ### What it asks of the ceiling
 

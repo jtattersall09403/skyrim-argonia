@@ -91,6 +91,8 @@ export function plainMaterial(m, kind, tint = null) {
 }
 
 let inFlight = 0; const queue = [];
+// Models asked for and not yet arrived, or arrived and not yet switched on (the agent view waits for none).
+export const pendingModels = () => inFlight + queue.length + ready.jobs.length;
 function pump() {
   while (inFlight < 4 && queue.length) {
     queue.sort((a, b) => a.pri - b.pri);
@@ -196,6 +198,15 @@ export function drainReady(renderer, layers = [], scene = null, camera = null, b
     j.fn(); ready.jobs.splice(i--, 1); left--;
   }
   return left;
+}
+
+// Every arrived model switched on at once, textures sent first (the agent view: no frame to keep smooth).
+export function drainAll(renderer) {
+  const mine = sent.get(renderer) || new WeakSet(); sent.set(renderer, mine);
+  for (const j of ready.jobs.splice(0)) {
+    for (const p of j.parts) { const m = p.material.map; if (m && !mine.has(m)) { renderer.initTexture(m); mine.add(m); } mine.add(p.material); }
+    j.fn();
+  }
 }
 
 // A light with no model of its own (the game's light records are invisible): drawn as a small bulb of its own colour

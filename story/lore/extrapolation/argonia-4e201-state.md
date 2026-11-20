@@ -575,8 +575,10 @@ the quest plan's community priors ([docs/quests/10-political-frame.md](../../../
   heirs** — prison-born families three generations deep, exiles and outlaws, with
   Umbriel's undead still in the lower levels. It has a claim to its own
   legitimacy and resents being called a prison. Blackrose city's relationship
-  with it is the city's central external problem: the Rose is a day's march away,
-  it is not the city's, and everyone outside the province assumes it is.
+  with it is the city's central external problem: the Rose is not the city's, and
+  everyone outside the province assumes it is. In canon it lies a day's march south of the city
+  (`topics/prisons.md`); in our world it stands in the marsh a short walk east of Blackrose's quay,
+  about 280 m, where Black Marsh & Valenwood's ground has it.
 
 ### Alten Corimont — the neutral port
 
@@ -921,8 +923,10 @@ forts. It calls itself the guardian of the old ways, and what it takes in return
 Canon: an Argonian hatched outside a tribe's tree cannot hear it and is outcast (`topics/hist-and-sap.md:108-111`);
 sap is wanted for industry and always by villains (`:45-50`); cutting the bond between a Hist and its unborn kills the
 unborn (`:78-80`), and an Argonian can be wholly without tribe (the tribeless Naga, §3). So the tribeless have a
-grievance against the trees, and a use for what they bleed. The Unbound are tribeless Argonians who cut Hist roots
-and carry the sap away in jars. A cut root sickens its tree and, because the trees are joined, the trees round it.
+grievance against the trees, and a use for what they bleed. The Unbound are tribeless Argonians, and a few
+outsiders have joined them. They drain a Hist's sap at its scar, carry it away in jars and press a grey paste, the
+seal, into the scar behind them. A sealed scar closes, its tree sickens and, because the trees are joined, so do the
+trees round it.
 
 ### 11.4 The Eye's power at the Root — `EXTRAPOLATED`
 
@@ -930,6 +934,6 @@ Canon: the Eye of Argonia is the old kings' jewel, and its nature is deliberatel
 (`regions/eye-of-argonia.md:6-8`); Hist amber is solid sap the trees no longer make (`topics/hist-and-sap.md:154`);
 all Hist are joined at the root (`:15-16`); a Mnemic Egg is a gateway into the whole collective and can sever the
 Argonian-Hist bond (`:150`). So a jewel cut from Hist amber, held where the roots of every Hist meet, can pour
-strength down every root and heal every tree, or part every root from every other. The Root lies under the sea
-trench of Echo Deep, behind a door the last king sealed.
+strength down every root and heal every tree, or part every root from every other. The Root lies under Teku-Sul
+Spire on the sea floor beside the trench of Echo Deep, behind a door the last king sealed.
 

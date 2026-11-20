@@ -30,7 +30,7 @@ to estates in the north as hands that need no food.
 
 Its front is a stall in Thorn's market square, kept by the factor, Ervyn Cardruhn. Its hall is the barred cellar
 under the ruin of Ovezza on the bay. Its master, Morvayn Cardruhn, sits in the hall under the well at Kaochalit, on
-the mesa south of Tsonac. Its people work through Thorn, Tsonac and the clay country round Aroxhu, wherever there
+the mesa south of Tsonac, and comes to Ovezza when his heirs send for him. Its people work through Thorn, Tsonac and the clay country round Aroxhu, wherever there
 are graves.
 
 Its skills are Conjuration, all of it, with Enchanting for the soul gems, Destruction and Restoration's Necromantic
@@ -86,7 +86,7 @@ pulled off its stake and made to work for a Dunmer master is the slave-coffles o
 | **Ervyn Cardruhn**, the house's factor and Morvayn's grandson, at its stall in Thorn's market square | the house rich and respectable, the dead a quiet sideline | he is ready to hand his grandfather over to the Vicecanon to keep the trade |
 | **Neeja**, an Argonian necromancer of the house, the player's teacher | her grandfather Keel-Vaxa's soul freed from an urn in the Sisei-Xul's hall | she tells the player she works for coin. She works for the urn, and she robs Argonian graves to get it |
 | **Dalvela Cardruhn**, the house's bone-mistress, in the hall at Ovezza | the Sisei-Xul wiped out and a house of the dead after Morvayn | her family's ancestral ash was lost when Argonian armies reached Scathing Bay in the Accession War (`topics/foreign-powers.md:47`). She makes ancestors of other people's dead |
-| **Morvayn Cardruhn**, master of the house, at Kaochalit | his heirs to keep the house after he dies, on his terms | he bought living Argonians late in the Third Era and sold forty Argonian Owings to House Ulvarys forty years ago. He is dying of his own spell |
+| **Morvayn Cardruhn**, master of the house, at Kaochalit, or at Ovezza when his heirs send for him | his heirs to keep the house after he dies, on his terms | he bought living Argonians late in the Third Era and sold forty Argonian Owings to House Ulvarys forty years ago. He is dying of his own spell |
 | **Okan-Zeel**, First Grave-Singer of the Sisei-Xul | the house destroyed | she bound Neeja's grandfather Keel-Vaxa to an urn. She says the urn holds a poisoner |
 | **Akeeta-Sul**, the Stone-Sleepers' minder at Tsonac | the Velothi graves under her hamlets left shut | she once sold Ervyn grave-goods from under her hamlets for gold and did not ask why he wanted them |
 

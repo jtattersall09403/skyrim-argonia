@@ -436,7 +436,7 @@ stages:
       not:
         npcAlive: npc.mn.never-writes-twice
   directions: Blackrose Prison stands in the marsh water a short walk east of Blackrose's quay, a grey fortress with fires
-    on its upper wall. Boats from Helstrom's quay go down to Blackrose. The gate-captain stands outside the main gate on
+    on its upper wall. Boats from Helstrom's quay go by Korydon down to Blackrose. The gate-captain stands outside the main gate on
     the road.
   information:
     going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;

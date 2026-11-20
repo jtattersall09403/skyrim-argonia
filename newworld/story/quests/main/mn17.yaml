@@ -366,7 +366,7 @@ stages:
     when:
       not:
         npcAlive: npc.mn.never-writes-twice
-  directions: Boats from Blackrose and Noota Nara go up to Helstrom, and the rootworm runs from Jal-Veesa's Hist pool to
+  directions: Boats go up to Helstrom from Blackrose by Korydon, and from Noota Nara by Inoja, Archon, Uluo and Truowa; the rootworm runs from Jal-Veesa's Hist pool to
     Helstrom's city tree. Nesh-Deeka's House is the quiet house with her name on the door.
   information:
     going: The Eye of Argonia, the old kings' jewel, sits at the Root under Teku-Sul, where the roots of every Hist meet;
@@ -424,7 +424,7 @@ stages:
     when:
       not:
         npcAlive: npc.mn.cuts-the-old-knot
-  directions: Take the boat to Bell Station, the divers' islet south of Lilmoth. Teku-Sul Spire stands on the sea floor
+  directions: Take the boat to Bell Station, the divers' islet east of Lilmoth. Teku-Sul Spire stands on the sea floor
     south-west of the station; the dive is long, so carry waterbreathing (the steward sells potions) or the Hist's blessing,
     or be Argonian. The east halls hold air; the gallery past them leads to the gate.
   information:
@@ -521,7 +521,7 @@ stages:
     when:
       not:
         npcAlive: npc.mn.cuts-the-old-knot
-  directions: Take the boat to Bell Station, the divers' islet south of Lilmoth. Teku-Sul Spire stands on the sea floor
+  directions: Take the boat to Bell Station, the divers' islet east of Lilmoth. Teku-Sul Spire stands on the sea floor
     south-west of the station; the dive is long, so carry waterbreathing (the steward sells potions) or the Hist's blessing,
     or be Argonian. The east halls hold air; the gallery past them leads to the gate.
   information:

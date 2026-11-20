@@ -37,6 +37,10 @@ addEventListener('error', (e) => report('error', { message: String(e.message || 
 addEventListener('unhandledrejection', (e) => report('rejection', { message: String(e.reason?.stack || e.reason).slice(0, 700) }));
 onRendererEvent((stage, extra) => report(stage, extra));   // the graphics context taken away and given back
 const $ = (s) => document.querySelector(s);
+// The agent view (/?place=<id>&agent=1): the same scene, no interface, no dialog, no loop, nothing saved; drawn only
+// when tools/places/look.py asks (agent.js).
+export const AGENT = new URLSearchParams(location.search).get('agent') === '1';
+if (AGENT) document.documentElement.classList.add('agent');
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private window */ } } };
 
@@ -52,7 +56,7 @@ class Studio {
     // offline, the search, the item search and the seat are answered here from what is held (offline.js)
     off.providers = { bases: () => [...(this.srcBases?.values() || []), ...(this.bases?.values() || [])], items: () => this.stockItems || new Map(),
       terrain: () => (this.terrain ? { terrain: this.terrain, water: this.ground?.spaces.exterior?.info?.water?.default_height ?? null } : null) };
-    this.linked = false; this.dirtySave = false; this.revs = {}; this.loop();
+    this.linked = false; this.dirtySave = false; this.revs = {}; this.loop(!AGENT);
     this.wireChrome();
   }
   // ---------- loading ----------
@@ -72,9 +76,9 @@ class Studio {
     for (const p of this.places) sel.add(new Option(p.title || p.place_id, p.place_id));
     const asked = new URLSearchParams(location.search).get('place'), want = this.places.some((p) => p.place_id === asked) ? asked : this.places[0].place_id;
     sel.value = want; sel.onchange = () => this.openPlaceSafe(sel.value);
-    this.heartbeat(); this.statusCheck();
+    if (!AGENT) this.heartbeat(), this.statusCheck();
     // the guide shows while the place loads, and can be put away at once
-    if (!store.get('studio.intro.v1')) this.panels.intro();
+    if (!AGENT && !store.get('studio.intro.v1')) this.panels.intro();
     await this.openPlaceSafe(want);
   }
   // Opening a place never hangs: a failed or malformed fetch shows a plain message and a Retry button; a place whose
@@ -170,7 +174,7 @@ class Studio {
     }
     this.ready = true; this.loading(false);
     setTimeout(() => { try { report('drawn', { place: id, ...drawState() }); } catch (e) { report('error', { message: `drawState: ${e.message}` }); } }, 3000);
-    this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
+    if (!AGENT) this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
     this.tools.use('select');
   }
   async openSource(sid) {
@@ -325,7 +329,7 @@ class Studio {
     });
     g.on = this.grassOn(); return g;
   }
-  grassOn() { return store.get('studio.grass.v1') !== 'off'; }
+  grassOn() { return !AGENT && store.get('studio.grass.v1') !== 'off'; }
   setGrass(on) {
     store.set('studio.grass.v1', on ? 'on' : 'off');
     for (const s of [this.ours, this.src]) s.grass?.setOn(on);
@@ -437,6 +441,7 @@ class Studio {
   describe(op) { return describe(op, (k) => this.nameOf(k)); }
   // ---------- saves ----------
   markUnsaved() {
+    if (AGENT) return;
     this.dirtySave = true; this.saveState('unsaved');
     clearTimeout(this.autoT); this.autoT = setTimeout(() => this.autosave(), 1500);
   }
@@ -565,8 +570,9 @@ class Studio {
     b.view.changed(true); if (b.space === 'exterior') b.terrainMesh?.update(rb.target); this.tools.cameraMoved(b.view); this.people.cameraMoved(b.view);
   }
   toast(text, ms = 3500) { const t = $('#toast'); t.textContent = text; t.hidden = false; clearTimeout(this.toastT); this.toastT = setTimeout(() => { t.hidden = true; }, ms); }
-  loop() {
+  loop(run = true) {
     this.governor = new Governor([this.ours.view, this.src.view], { onChange: () => this.panels?.detailShown?.() });
+    if (!run) return;
     let n = 0;
     const tick = (now) => {
       // the view in use draws every frame it changes; the other, while the first moves, every srcEvery-th frame
@@ -662,5 +668,6 @@ export function friendly(base, kind) {
 }
 const studio = new Studio();
 window.studio = studio; window.THREE = THREE;
+if (AGENT) import('./agent.js').then((m) => m.install(studio));
 const boot = () => studio.start().catch((e) => { console.error(e); studio.loadFailed(e.message, boot); });
 boot();

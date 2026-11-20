@@ -2,7 +2,8 @@
 
 The owner's ruling of 2026-11-13 (owner-bar, "The bar"): each choice and ending says what it gives and costs in play.
 These are proposals for the writers' second round of the old main quest line (now replaced by
-[the plot](../lines/main-plot.md)) and [chainbreakers](../lines/chainbreakers.md), written by the recipe in
+[the plot](../lines/main-plot.md)) and the old world's Chainbreakers page (deleted; the line is now
+[chainbreakers-newworld](../lines/chainbreakers-newworld.md)), written by the recipe in
 `.claude/skills/quest-write/principles/choices.md`; every row is built by results the quest form holds
 ([outcome-kinds](../../../../docs/research/skyrim/outcome-kinds.md)). The stories are not changed here.
 

@@ -558,7 +558,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Black Rose (Black Marsh North), is a town of 222 buildings over water with 64 people but only a house and a ship for interiors, too few for a city. Lilmoth (King of the Murkmire) lends the Argonian stilt houses, the tavern, the apothecary, the ironworks and a Hist-root interior, and its three sewer interiors serve as the Lilmothiit foundations under the island core. Its dock pieces make the boardwalks and its stone ruin pieces make the walled core. Still to add: Skyrim's enchanting table in the beached hulk, the drowned Hist as a placed tree and shrine on the lake floor, the earthworks in the marsh and the toll gate on the core's landing.",
+     "text": "Its main source, Black Rose (Black Marsh North), is a town of 222 buildings over water with 64 people but only a house and a ship for interiors, too few for a city. Lilmoth (King of the Murkmire) lends the Argonian stilt houses, the tavern, the apothecary, the ironworks and a Hist-root interior, and its three sewer interiors serve as the Lilmothiit foundations under the island core. Its dock pieces make the boardwalks and its stone ruin pieces make the walled core. Black Rose's Nordic houses are replaced with Lilmoth's Argonian stilt houses, so only the source's boardwalks, docks and layout remain. Still to add: Skyrim's enchanting table in the beached hulk, the drowned Hist as a placed tree and shrine on the lake floor, the earthworks in the marsh and the toll gate on the core's landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -707,7 +707,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs.",
+     "text": "The Imperial prison, 'the Rose', a short walk east of Blackrose city across the marsh (canon's 'a day's march' is the old measure; here the city's quay is about 280 m away). It is a ruin reoccupied by the Blackguards' heirs.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -1405,7 +1405,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Frostmoth Lost Quarters (Bloodmoon Dungeons Restored, Fort Frostmoth Expansion), is an Imperial walled town of 394 buildings with two interiors, which suits the toll gate and the pentagon of walls on the rise. Its two interiors serve as the toll house and the guards' quarters. Alten Meerhleel (King of the Murkmire) supplies the timber and reed buildings, a market house and a lodging house for the stage inn. Still to add: the warehouse quay on the river, the teamsters' yard, the small Sithis shrines on the main street and the red clay tracks.",
+     "text": "Its main source, Fort Frostmoth Lost Quarters (Bloodmoon Dungeons Restored, Fort Frostmoth Expansion), is an Imperial walled town of 394 buildings with two interiors, which suits the toll gate and the pentagon of walls on the rise. Its two interiors serve as the toll house and the guards' quarters. Alten Meerhleel (King of the Murkmire) supplies the timber and reed buildings, a market house and a lodging house for the stage inn. Fort Frostmoth's Nordic timber halls and banners are replaced with Alten Meerhleel's timber and reed buildings inside the Imperial walls. Still to add: the warehouse quay on the river, the teamsters' yard, the small Sithis shrines on the main street and the red clay tracks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2127,7 +2127,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village with seven hut interiors; here only a handful of its low stilt huts are strung in one line along the beach on its dock pieces, and its accommodation hut serves as the salvagers' longhouse. Seafalls keeps Seekhat Yol's cliff-and-shoal village, so Natai is the flat, salt-white beach version: no platforms climbing, weathered salvage timber patched into every wall. Its Nordic pieces are replaced. Still to add: the wreck offshore from Skyrim's sunken ship pieces, the salt pans, the drying racks, the driftwood shrine above the beach and the salvage store.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village with seven hut interiors; here only a handful of its low stilt huts are strung in one line along the beach on its dock pieces, and its accommodation hut serves as the salvagers' longhouse. Seafalls keeps Seekhat Yol's cliff-and-shoal village and Jal-Veesa its ring of houses round an inland Hist, whereas Natai is the flat, salt-white beach version: no platforms climbing, weathered salvage timber patched into every wall. Its Nordic pieces are replaced. Still to add: the wreck offshore from Skyrim's sunken ship pieces, the salt pans, the drying racks, the driftwood shrine above the beach and the salvage store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3069,7 +3069,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian dock of four buildings with a moored ship, The Lady Padomay, whose hold is an interior. That hold serves as the ferry house. Its dock and Argonian hut pieces make the landing and the ferrymen's huts. Still to add: a raft moored at the landing post, the lamp post at the end, the carved gar-tooth on the post and the rice sacks.",
+     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian dock of four buildings with a moored ship, The Lady Padomay, whose hold is an interior. That hold serves as the ferry house. Its dock and Argonian hut pieces make the landing and the ferrymen's huts. Unlike Bell Station, which builds the same islet out into a bunkhouse and store for eight, Delta Ferry keeps only the landing and the moored hold. Still to add: a raft moored at the landing post, the lamp post at the end, the carved gar-tooth on the post and the rice sacks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3749,7 +3749,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), is 120 buildings of ruin and camp pieces with one Argonian house interior, which suits a dead stilt town on stone footings. Its Nordic pieces are replaced with Argonian stilt-hall pieces from Keeba Hollow (King of the Murkmire). Still to add: the rusted tin chimes in the central tree, the Blackguard watch post of tents from the camp pieces and the stash chest set among the footings.",
+     "text": "Its main source, ArgoniaWorld -10,-44 (King of the Murkmire), is a small Argonian ruin by water with no interior, whose stone footings carry the dead stilt town. Its stilt halls are built from Keeba Hollow's stilt-hall pieces (King of the Murkmire), roofless and leaning, and the one house to enter is an empty hut interior from Keeba Hollow. Still to add: the rusted tin chimes in the central tree, the Blackguard watch post of hide tents from Ree-An-Wo (King of the Murkmire) and the stash chest set among the footings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4324,14 +4324,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei, emptied by raiders from the Rose and left to the lake.",
+   "summary": "Sheh-Ara is a half-sunken stilt village east of Lujei, emptied by raiders from the Rose and left to the lake.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard, on the ferry channel south of Lujei. It stood outside the island core's protection, and the Rose's raiders emptied it.",
+     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard, on the ferry channel east of Lujei. It stood outside the island core's protection, and the Rose's raiders emptied it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4357,7 +4357,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
+       "title": "an abandoned village on the map on the ferry channel east of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
@@ -4389,7 +4389,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
+       "title": "an abandoned village on the map on the ferry channel east of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
@@ -4775,7 +4775,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), shows outside only a mud house's door and window among ferns; its one interior of beds, pelts and lanterns serves as the half-buried granary with its locked bin. The ring of grey posts comes from the platform posts of Seekhat Yol (King of the Murkmire). Still to add: the broken dyke with its hanging sluice gates, the tilted hall platform and the brown water in the empty paddy.",
+     "text": "Its main source, a hamlet near Way to Ruins (Black Marsh & Valenwood), shows outside only a mud house's door and window among ferns; its one interior of beds, pelts and lanterns serves as the half-buried granary with its locked bin. The ring of grey posts comes from the platform posts of Seekhat Yol (King of the Murkmire). Its Nordic house walls and roofs are replaced with the reed-thatched stilt-hut pieces of Seekhat Yol, and its Dunmer and Imperial pieces survive only as rubble round the footings. It is now the one place on this hamlet: Meris-Keth and Khariton, once drafted from its neighbouring cells, have their own sources. Still to add: the broken dyke with its hanging sluice gates, the tilted hall platform and the brown water in the empty paddy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5048,7 +5048,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "an old bull crocodile in the drowned street",
+     "detail": "an old bull crocodile on the highest roof",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -5743,7 +5743,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ixtaxh-Thtithil-Meht (King of the Murkmire), is an Argonian ruin of 1952 buildings on a compact footprint, with one interior that serves as the central burrow. Haj-Uxith (King of the Murkmire) is a smaller alternate with two doors. Still to add: the thorn canopy as placed bramble plants, the three burrow mouths, the spirit stones with their notches and the ferry cache chest.",
+     "text": "Its main source, Ixtaxh-Thtithil-Meht (King of the Murkmire), is an Argonian ruin of 1952 buildings on a compact footprint, with one interior that serves as the central burrow. Haj-Uxith (King of the Murkmire) is a smaller alternate with two doors. Its Nordic pieces are replaced with Haj-Uxith's mud domes and woven walls. Still to add: the thorn canopy as placed bramble plants, the three burrow mouths, the spirit stones with their notches and the ferry cache chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7242,7 +7242,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Darklight Tower (Skyrim), gives only its spot, since it is an Imperial ruin tower; its Imperial, Nordic and Dwemer pieces are not used. The mine is built from the pool: Gloombound Mine (Skyrim), a small mine with one interior, lends that interior as the galleries, and the Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes) lends its shaft interior for the flooded lower galleries. Still to add: the rusted rails, the broken sluice, the winch house as a plain ruined shed, the chief's chest and the Hist-token on its pole.",
+     "text": "Its main source, Darklight Tower (Skyrim), gives only its spot, since it is an Imperial ruin tower; its Imperial, Nordic and Dwemer pieces are replaced with plain timbered mine pieces. The mine is built from the pool: Gloombound Mine (Skyrim), a small mine with one interior, lends that interior as the galleries, and the Flooded Mine Shaft (UWRL Underwater Skyrim Rivers and Lakes) lends its shaft interior for the flooded lower galleries. Still to add: the rusted rails, the broken sluice, the winch house as a plain ruined shed, the chief's chest and the Hist-token on its pole.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

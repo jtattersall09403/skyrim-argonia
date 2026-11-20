@@ -93,10 +93,10 @@ league-of-open-water:
   settings: [crowd, household, underwater]
 
 chainbreakers:
-  from: "story/design/quests/lines/chainbreakers.md §1 ('The build leaning': Lockpicking, Pickpocket and Sneak, then Speech, with a fight as the honest third way; Restoration and Alchemy small, for the washed-out); 40-factions §39; culture.faction.chainbreakers (bones go home; buying an Owing taboo)"
+  from: "story/design/quests/lines/chainbreakers-newworld.md §1 ('Their skills': every combat skill, Sneak and Lockpicking, and Speech used only to intimidate); 40-factions §39; culture.faction.chainbreakers (bones go home; buying an Owing taboo)"
   faction: faction.chainbreakers
-  families: {stealth: 3, speech: 2, combat: 1.2, magic: 0.8, craft: 0.6, endure: 0.5}
-  skills: {lockpicking: 3, pickpocket: 3, sneak: 3, speech: 2, one-handed: 1.2, destruction: 1, block: 1, restoration: 0.8, alchemy: 0.8}
+  families: {stealth: 3, combat: 2.5, speech: 1, magic: 0.5, craft: 0.5, endure: 1}
+  skills: {lockpicking: 3, sneak: 3, one-handed: 2, two-handed: 2, archery: 2, block: 2, heavy-armor: 1, speech: 1}
   targets: [people, undead-and-spirits]
   settings: [household, crowd, ruin]
 

@@ -2,7 +2,7 @@
 
 The owner rejected the talk-and-gold versions of the Chainbreakers' first three quests (OR 2026-11-13: "make them
 exciting ... do you have to pickpocket somebody to get a key to break into their house"). The story writer's
-[chainbreakers.md](../lines/chainbreakers.md) §3 replaced them; lane Q2b built its three outlines as quest records
+old-world Chainbreakers page (since deleted for [chainbreakers-newworld](../lines/chainbreakers-newworld.md)) replaced them; lane Q2b built its three outlines as quest records
 (`python3 -m tools.argonia_world.quest_record export quest.bc.bc01`, `.bc02`, `.bc03`), each compiled to a quest form
 that passes `python3 -m tools.questform check` alone and in the set of eleven, reaching every ending in
 `python3 -m tools.playtest reach`. This file holds what was built, what the census showed, what changed from the

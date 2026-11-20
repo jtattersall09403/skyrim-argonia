@@ -342,7 +342,7 @@ stages:
   journal: text.journal.mn10.10
   journalText: "Nesh-Deeka knew the mark on the knight-captain's disc: Vicrium, an old mine behind Seafalls, where the
     knights kept a strongbox. I should go there and ask at the mine; Ah-Zish is its gallery-boss."
-  directions: Poles-Upriver's boats run from Helstrom to Archon and on up the coast to Seafalls, the village by the white
+  directions: Poles-Upriver's raft runs from Helstrom to Truowa, and boats go on by Uluo and Archon up the coast to Seafalls, the village by the white
     falls. From Seafalls follow the road inland to the hillside cut in rust and yellow bands with a timber headframe.
   objectives:
   - id: ask
