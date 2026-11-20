@@ -385,6 +385,477 @@
     "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
    ],
    "owner_faction": "helstrom.guard"
+  },
+  {
+   "ref": "King of the Murkmire.esp:744767",
+   "space": "MarketSmithy",
+   "kind": "chest",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 60,
+   "items": [
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "a steel sword of the levy's issue pattern, made here (T2), set by for the next order"
+    },
+    {
+     "item": "Skyrim.esm:012EB7",
+     "count": 2,
+     "why": "iron swords for the raft crews, made here (T1)"
+    },
+    {
+     "item": "Skyrim.esm:013982",
+     "count": 1,
+     "why": "an iron mace, made here (T1)"
+    },
+    {
+     "item": "Skyrim.esm:013790",
+     "count": 1,
+     "why": "an iron war axe, made here (T1)"
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 6,
+     "why": "straps for fittings, from the tanner's rack"
+    }
+   ],
+   "why": "the smithy's working chest behind the counter, the one the source filled from levelled lists of iron and steel arms and armour, mineral and leather lists: fixed here to the smith's own made-here list (the trader row's iron and T2 work, a few pieces), at the smith's W4 band (T2 under S1, owned and unlocked, 175 of 187 value, 60 gold of T2's 40-120); the smith's merchant chest keeps the full list",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3989",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of iron ingots: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D398A",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of iron ingots: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D398B",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of ironworks stock: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D398C",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of ironworks stock: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D398D",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D398E",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3990",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3992",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3993",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3994",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D3995",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D399F",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D39A0",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of nothing: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D39A1",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D39A2",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D39A3",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:0D39A4",
+   "space": "MarketSmithy",
+   "kind": "sack",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's sack of coal: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:1274D6",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of iron ore: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:1274D7",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of iron ore: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:1274D8",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of iron ore: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:2E5B40",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of ironworks stock: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:2E5B41",
+   "space": "MarketSmithy",
+   "kind": "barrel",
+   "owner_person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the smithy's barrel of ironworks stock: the smith's working stock, owned so that taking it is stealing; its source contents are set dressing (ingots, ore, coal) and stay, nothing significant is added",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:85F7B7",
+   "space": "LevyPost",
+   "kind": "wardrobe",
+   "owner_faction": "helstrom.guard",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 4,
+     "why": "the levy's spare torches, one for each guard who walks the night"
+    }
+   ],
+   "why": "the levy post's wardrobe: the guard's own, so taking from it is stealing; the source's rows of fine tunics (T1 clothing worth 50 each, the same for every colour) are not kept: the levy wears its issue, not fine tunics, so it holds spare torches for the night rounds",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:85F7D3",
+   "space": "LevyPost",
+   "kind": "cupboard",
+   "owner_faction": "helstrom.guard",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 0,
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "a woodcutter's axe the post keeps for the levy's camp fires"
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 3,
+     "why": "the levy's field dressings, as the camp barrel holds"
+    }
+   ],
+   "why": "the levy post's cupboard of tools and dressings: the guard's store, sound and ordinary (T2 allowed by S1, kept at T1 things); the source's repeating axes and picks are not kept",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:85F7CD",
+   "space": "LevyPost",
+   "kind": "cupboard",
+   "owner_faction": "helstrom.guard",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the levy post's food cupboard: the guard's, so taking its food is stealing; its source contents are set dressing and stay",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ]
+  },
+  {
+   "ref": "King of the Murkmire.esp:85F813",
+   "space": "LevyPost",
+   "kind": "basket",
+   "owner_faction": "helstrom.guard",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the levy post's basket of river fish: the guard's, so taking it is stealing; its source contents are set dressing and stay",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ]
   }
  ],
  "loose": [
@@ -2163,6 +2634,858 @@
     }
    ],
    "why": "Poles-Upriver: boatman, raft-boatman to Truowa, Korydon, Marzai and Julo, W3 Modest"
+  },
+  {
+   "person": "helstrom.041MSR40K1Q7QSE19P9WVQ8YEK",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a quill-trimming knife for sorting feathers"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Dru-Kaleel: resident, feather-sorter, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.1B0D0R0NB8YGKTRA0FBDG63D36",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Aleesh-Ta: resident, sap-boiler, W3; best tier T2 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.1X5VCA76VVSKZ77C7XSYFY05YG",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a basket-weaver's knife for splitting reeds"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Epeela: resident, basket-weaver, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.2291A6BWF2GAS93ES68NRXP33Y",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a whittler's knife for raft poles"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Nobu-Seeth: resident, pole-whittler, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B562",
+     "count": 1,
+     "worn": true,
+     "why": "a trapper's bow for fellrunners, as the feather-trappers carry (T1)"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:01397D",
+     "count": 12,
+     "worn": false,
+     "why": "arrows fletched in the city by his partner (feathers are made here)"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Beelum-Sah: resident, feather-trapper, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Kehluk-Aa: resident, egg-gatherer, W3; best tier T2 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.6DGNFKKQKGPJ1PA3BFWH23PD0W",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ziru-Neem: resident, egg-tender, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.74BRDR7G71970VP71SNFA60T7F",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Soorka: resident, jar-sealer, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.79KD1MDRY5KH2ER77056CDDDZK",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a net-mender's knife for cutting cord"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ooleesha: resident, net-mender, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.7WFCYXX7WMX5J34QXE0FQZ3P04",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a carver's knife for bone needles"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Fuleeka: resident, bone-needle carver, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.8MD2K0ANCPP0G310Z34MEHHEBM",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a tapping knife, still learning the trees"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Veexa-Oon: resident, sap-gatherer's apprentice, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.94S90JY82158FHN5AY5YP5ZZDD",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a fletcher's knife for trimming shafts and quills"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:01397D",
+     "count": 20,
+     "worn": false,
+     "why": "arrows she fletches with Murkwood feathers (T1, made here)"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 8,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Ishaxa: resident, arrow-fletcher, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.9KTJXVEC98AQMA102H36RAZ4NC",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 3,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Leeshaa: resident, stew-pot keeper, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.BHNM413RZTQSZ9GQEBBHED0W6G",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a snare-maker's knife for cutting cord and pegs"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Wahzeel: resident, snare-maker, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.C96468PJHSE2DMV1HV8BR6P8D1",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a reed knife for splitting basket reeds"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Opaxi: resident, reed-basket weaver, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.D7F5JD4W07GZEZDYM8XD4CW34H",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a scraper's knife for the hides' hair side"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ruzeel-Ai: resident, hide-scraper, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.D8V18AKGNMRPKCWSZHDSZVMV6K",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a reed-cutter's knife for the cutting at the water's edge"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Kuzuul-Se: resident, reed-cutter, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.ETTKJD26YX7XDKFXRPAAG9Z1H6",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Chaleeka: resident, nest-finder, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.F4HS8HSE0Q2Z8BQ2M1B68G5097",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 19,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Meesha-Rul: resident, egg-carrier at the market, W3; best tier T2 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.GXND23X5N514GARXRSWJ4Y7QJ5",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a knife for the trodh he lines from the bank"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Hazeeka: resident, trodh fisher, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.H1Y2S0QD2H95J3E9PMD9H0V8SA",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a fish-smoker's knife for splitting the catch"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Mulaxi-Re: resident, fish-smoker, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.HD30TDCTDY5CBQWW164SXD9DA4",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Bakheel-Ne: resident, fruit-picker, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a curer's knife for fleshing hides"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Xaleet-Ur: resident, hide-curer, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.J0GE8Y1M5WTZVE2JB5HS98VWCX",
+   "items": [
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 6,
+     "worn": false,
+     "why": "straps cut and laced by hand: his own trade's material"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Gojeel-Mur: resident, leather-lacer, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.KF9XW7089ABBAK7Q4EFG3DH3QH",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 3,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ketsu-Lan: resident, feather carrier, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.KY2FC5T1DJ4T88SMA4X4W8QP7D",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Chuxee: resident, market stall-hand, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.M8WA4PAGSXR9V1BCW71QA6SW4R",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Vexaa: resident, curing-frame minder, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.MFTZGGGA7KY19CD7ZQBP1VM9K1",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Yeelu: resident, potter of sap jars, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.N5M9Z77098EVAF6MHVEAQXHJYN",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a rope-twister's knife for cutting fibre"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Pessa-Kur: resident, rope-twister, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.NXGPADXSQWGBP7CBPVEPAMM0RD",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Rilsa-Wen: resident, raft-hand, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.QY05QVJ1PT6FY6VJ6Z8NSQH3AZ",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Aweeta: resident, pitch-boiler, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a fisher's gutting knife, for the river's catch"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Gaxeel-Oru: resident, river fisher, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.RZSPBET53PEZP1V0AFYJPJ6WRW",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a cook's knife for the lumberry cakes"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Oomee-Tal: resident, cook of lumberry cakes, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.S0DK76G100XS52WQZDVVYBTVE2",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Tsoonu-Ba: resident, jar carrier, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a knife for cutting lumberries from the bough"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Zhasa-Lok: resident, lumberry gatherer, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.TFA15J5FMR0CJDWTV9RR1ZG2M8",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "worn": true,
+     "why": "a raft-builder's axe for cutting cane and poles"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Hameel-Jo: resident, raft-builder, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.V5FJWXX6RQPHXWZFAD2SAD3DFP",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a tanner's knife for splitting hides"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 4,
+     "worn": false,
+     "why": "straps cut from the household's leather for her partner's trade"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Naseeta-Bo: resident, tanner, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.V5Y1EKPHX5PAP9G9GECDA0AHFT",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a chisel-knife for dressing sinker stones"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Tseeja-Num: resident, sinker-stone shaper, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.VPMG44DPGP6JWZDYSAW9DBG459",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Neeta-Pho: resident, snare-minder's helper, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.VT71KAR18C85YJV38BTMS9WE2X",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a gutting knife, still learning the nets"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Xeeko-Dul: resident, fish-gutter, learning the nets, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a reed knife for cutting mat strips"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Dasheel-Ko: resident, reed-mat weaver, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.WJ5QZC09TW1VB7NNK91WWR0VRD",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a knife for trimming poles, learning the raft-builder's trade"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Teexu-Ri: resident, raft-builder's apprentice, W2; best tier T1 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.XJKEWR69HF9X5F38J2NPJ0629N",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ulxaa-Tem: resident, nest-basket minder, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.XK37Y5Y4A0W0N31AJ0HXS1KE55",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Imeel-Vah: resident, stall-runner, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "a tapping knife for the Hist-sap trees"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Jaxuul-Em: resident, sap-gatherer, W3; best tier T2 (tool chosen from the trade)"
+  },
+  {
+   "person": "helstrom.Y0P87B6GQ1HGAB4NGKSZPE3JTV",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Hurixa-Pen: resident, dyer of reed mats, W3; best tier T2 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.YD6YW29MAAE8H5YPGGTD6JKJ1J",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Lassi-Oom: resident, thatch-layer, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
+  },
+  {
+   "person": "helstrom.YZJDRDTCVBY1H416H6H5M1WW9T",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Wethu-Zan: resident, reed-sorter, W2; best tier T1 (a trade with no blade: gold and what is worn only)"
   }
  ],
  "traders": [
@@ -2830,6 +4153,102 @@
    "ref": "helstrom.GFAG1C5Q43PACH8BJ9N2V165K8",
    "edid": "01sword3",
    "why": "the source's battlefield tableau in the open street holds T6 (dragonbone, 1,500 gold) and T2 Imperial armour; the open tier here is T1, so it is not built"
+  },
+  {
+   "space": "01ArgonianHouseinside.10",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.10",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.11",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.11",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.12",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.12",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.13",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.13",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.14",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.14",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.15",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.15",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.16",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.16",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.17",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.17",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's, trapper's, sap-gatherer's, egg-gatherer's, raft-builder's, cook's, tanner's or weaver's household accounts for war magic, so the household has none (T1 by value)"
   }
  ]
 }
