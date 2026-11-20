@@ -856,6 +856,174 @@
     "place_wealth:helstrom",
     "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
    ]
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.10",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught kept for the river, bought at the tree-minders' hall (river fisher)"
+    }
+   ],
+   "why": "the household store of Gaxeel-Oru (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.10"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.11",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "an old ring of the household, kept in the store and not worn"
+    }
+   ],
+   "why": "the household store of Beelum-Sah (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.11"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.12",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught kept for the river, bought at the tree-minders' hall (sap-gatherer)"
+    }
+   ],
+   "why": "the household store of Jaxuul-Em (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.12"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.13",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "an old ring of the household, kept in the store and not worn"
+    }
+   ],
+   "why": "the household store of Kehluk-Aa (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.13"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.14",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught kept for the river, bought at the tree-minders' hall (raft-builder)"
+    }
+   ],
+   "why": "the household store of Hameel-Jo (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.TFA15J5FMR0CJDWTV9RR1ZG2M8"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.14"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.15",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "an old ring of the household, kept in the store and not worn"
+    }
+   ],
+   "why": "the household store of Zhasa-Lok (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.15"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.16",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught kept for the river, bought at the tree-minders' hall (hide-curer)"
+    }
+   ],
+   "why": "the household store of Xaleet-Ur (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.16"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.17",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "an old ring of the household, kept in the store and not worn"
+    }
+   ],
+   "why": "the household store of Dasheel-Ko (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.17"
   }
  ],
  "loose": [

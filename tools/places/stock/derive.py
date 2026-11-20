@@ -173,19 +173,19 @@ def derive(p: Place) -> dict:
     staged = {r["id"] for _, r in p.refs if r.get("owner")}
     for r in rows:
         if r["holder"] == "container" and r["container_significant"] and r["ref"] not in staged:
-            conts.setdefault(r["ref"], r)
+            conts.setdefault((r["space"], r["ref"]), r)
         if r.get("significant") and r.get("item"):
             out["taken_out"].append({"holder": r["holder"], "where": r.get("ref") or r.get("person"),
                                      "item": r["item"], "edid": r["edid"], "chance": r["chance"]})
     home_of = {h.home_space: h for h in households.values()}
     store_rank = ["safe", "strongbox", "chest", "wardrobe", "dresser", "end-table", "satchel", "cupboard"]
     store = {}          # each household's one store: its best-kept container
-    for ref, r in sorted(conts.items()):
+    for (_sp, ref), r in sorted(conts.items()):
         hh = home_of.get(r["space"])
         k = store_rank.index(r["container_kind"]) if r["container_kind"] in store_rank else len(store_rank)
         if hh and r["container_kind"] != "corpse" and (hh.id not in store or k < store[hh.id][0]):
             store[hh.id] = (k, ref)
-    for ref, r in sorted(conts.items()):
+    for (_sp, ref), r in sorted(conts.items()):
         kind, space = r["container_kind"], r["space"]
         hh = home_of.get(space)
         if hh and kind != "corpse" and store[hh.id][1] != ref:

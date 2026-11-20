@@ -75,6 +75,7 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
   clothing make the outfit.
 
 **Containers' contents** follow from what the container is, where it stands and whose it is.
+- A container is keyed by its space and its ref: houses copied from one source share ref ids, so each row names its `space` and one row is written per space.
 - A household has one store, its best-kept container, at the head's band. Its other containers keep their set
   dressing only.
 - Value and protection agree. What lies open is ordinary. Each tier above the open tier is kept behind one more
