@@ -387,6 +387,11 @@ stages:
       topicHeardFrom:
       - topic.mn03-task
       - npc.mn.vosh-leera
+  - to: 60
+    when:
+      hasItem:
+      - thing.mn.unbound-note
+      - 1
   failForward:
   - to: 95
     when:
@@ -437,6 +442,11 @@ stages:
       - hasItem:
         - thing.mn.cup-of-sap
         - 1
+  - to: 60
+    when:
+      hasItem:
+      - thing.mn.unbound-note
+      - 1
   failForward:
   - to: 95
     when:
@@ -489,6 +499,11 @@ stages:
       topicHeardFrom:
       - topic.mn03-tell-hide
       - npc.mn.vosh-leera
+  - to: 60
+    when:
+      hasItem:
+      - thing.mn.unbound-note
+      - 1
   failForward:
   - to: 95
     when:
@@ -645,7 +660,7 @@ stages:
   place: outpost-m6-m66
   journal: text.journal.mn03.60
   journalText: "I took the note from the reed hide. The crew's master orders them to bring their jars to Karsh-Naal
-    Camp, and to seal every scar behind them. I should go back to Heem-Jasa on the platform and tell her."
+    Camp, and to seal every scar behind them. I should take it to Heem-Jasa, the minder of the young tree on the platform at Teel-Fen Weir, and tell her."
   objectives:
   - id: back
     text: text.objective.mn03.back
@@ -800,7 +815,7 @@ endings:
   - setFlag:
     - flag.main.thread-severed
     - true
-  seen: the main quest's message that the root of what was to come is cut
+  seen: the main quest's message that the thread is severed
 - id: e-vosh-dead
   when: Vosh-Leera died before she named Teel-Fen Weir
   world:
