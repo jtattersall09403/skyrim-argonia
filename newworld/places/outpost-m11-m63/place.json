@@ -103,7 +103,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "cooking-pot: promised by the place record ('by the landing'): King of the Murkmire's cooking pot on the bank at the weir's camp end, where the log walk comes ashore; the wardens have no cook to work it, so the stations stage adds none"
+    "why": "cooking-pot: promised by the place record ('by the landing'): King of the Murkmire's cooking pot on the bank at the weir's camp end, where the log walk comes ashore; the wardens have no cook to work it, so the stations stage adds none",
+    "dz": -32.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
@@ -208,7 +209,7 @@
      -513430.0
     ],
     "rot_z": 0.8,
-    "dz": 12.0,
+    "dz": 48.0,
     "tier": "AGENT_INVENTED",
     "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
    },
