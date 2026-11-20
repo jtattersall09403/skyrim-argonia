@@ -65,8 +65,12 @@ eye over the walkable mesh where it is loaded, else a deck, bridge or walkway, e
 Light is not judged from the viewer: the game lights a place differently.
 
 Labels are on by default: structure ids where they stand, a 1.8 m figure at the
-subject, a north arrow, the side seen from, the ground grid and its spacing, red outlines on what `probe --all`
-faults. `--plain` drops them, `--size WxH` sets the image (768x576 by default), `--grass` the grown grass, `--lit` a neutral
+subject, a north arrow, the side seen from, red outlines on what `probe --all` faults. `--grid` adds the ground grid
+with its spacing (off by default: it hides the place). `--plain` drops all of them. Every view is 1920x1440 (4:3):
+a single view, each panel of an orbit, a walk and an overview; `--size WxH` sets it (per panel). Every label, line,
+figure and outline is drawn in proportion to the width (768 wide is the unit), so a label reads the same at any size.
+`orbit` and `walk` save each panel as its own file (`<name>-N.png`) and the sheet as an index of the same panels at
+640x480; `pick` takes pixels of the full-size image. `--grass` the grown grass, `--lit` a neutral
 fill light. What the game never draws (editor markers: x-markers, heading, idle, furniture and patrol markers;
 collision boxes, triggers, occlusion planes, light bulbs) is left out; `--helpers` shows it, each labelled with what
 it is. A model that did not load is drawn hatched and labelled: a fault of the place. `--once` takes the asked
@@ -84,7 +88,7 @@ hid it), and `--canopy` keeps it.
 | `orbit <thing>` | The same thing from north, east, south and west on one sheet: what one side hides. |
 | `walk <from> <to>` | Six eye-level frames along the place's streets and paths between two doors or points: whether the way is open and reads as a street. |
 | `overview` | The whole place obliquely and from above, every structure labelled: where to look next. |
-| `survey [<structure or unit> ...] [--changed]` | One contact sheet per thing named, else the whole place: near and far from the four compass sides at eye level, two high obliques, a top view with the crowns cut, sections on two axes with the ground line and a height scale, in the neutral fill, and one tile in the place's own light (labelled "viewer light, not the game's"). Each tile carries its side, distance and score; a failed tile is retried once, else struck through with its reason. Beside the sheet, `table.json` and `table.txt` of what each tile shows; all under `out/places/look/<tree>/<place>/survey/<thing>/`. `--changed` takes only the structures whose rows changed since this checkout's last survey. Prints one line per thing: its sheet and its failed tiles. The tiles go in one page call: seconds a structure on a warm daemon. |
+| `survey [<structure or unit> ...] [--changed]` | One contact sheet per thing named, else the whole place: near and far from the four compass sides at eye level, two high obliques, a top view with the crowns cut, sections on two axes with the ground line and a height scale, in the neutral fill, and one tile in the place's own light (labelled "viewer light, not the game's"). Every tile is drawn at 1280x960 and saved as its own file, `tiles/NN-<side>-<near|far|high|top|lit>.png` or `tiles/NN-section-<axis>.png` (with its id buffer, drawn 384 wide and enlarged, so `pick` works on it), carrying its side, distance and score; a failed tile is retried once, else struck through with its reason. The sheet is the index: the same tiles at 640x480, four across (2560 wide); `pick` on a sheet answers from the tile under the pixel. Beside the sheet, `table.json` and `table.txt` list what each tile shows with each tile's file; all under `out/places/look/<tree>/<place>/survey/<thing>/`. Read the tiles one by one for detail, the sheet to choose which. `--changed` takes only the structures whose rows changed since this checkout's last survey. Prints one line per thing: its sheet and its failed tiles. The tiles go in one page call: seconds a structure on a warm daemon. |
 
 ## Hands
 

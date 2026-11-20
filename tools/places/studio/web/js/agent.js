@@ -83,7 +83,7 @@ function readIds(r, sc, c, w, h) {
   return buf;
 }
 const b64 = (u8) => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
-function idPass(view, studio, c, w, h, subject) {
+function idPass(view, studio, c, w, h, subject, refW) {
   const sc = view.scene, r = view.renderer, table = [], swap = [];
   const land = studio.ours.terrainMesh?.group, water = studio.ours.terrainMesh?.water;
   const groupIds = new Map();
@@ -108,7 +108,10 @@ function idPass(view, studio, c, w, h, subject) {
     else if (g) { swap.push([o, o.material, null]); o.visible = false; return; }   // a stand-in box: not a piece drawn
     swap.push([o, o.material]); o.material = idMaterial(o, Array.isArray(o.material) ? o.material[0] : o.material, id);
   });
-  const ids = readIds(r, sc, c, w, h);
+  // the ids are drawn on a pass at most 768 wide whatever the image's size (a large image's pixels each take the id
+  // of the pass pixel they lie in): software drawing costs by the pixel, and one view scores the same at any size
+  const rw = Math.min(w, refW || 768), rh = Math.round(rw * h / w);
+  const ids = readIds(r, sc, c, rw, rh);
   // the subject alone, from a camera three times as wide (its whole projection, inside the frame or not)
   let wide = null;
   if (subject?.length) {
@@ -129,19 +132,19 @@ function idPass(view, studio, c, w, h, subject) {
     if (c.isOrthographicCamera) { wc = c.clone(); for (const k of ['left', 'right', 'top', 'bottom']) wc[k] *= 3; }
     else { wc = c.clone(); wc.fov = 2 * THREE.MathUtils.radToDeg(Math.atan(3 * Math.tan(THREE.MathUtils.degToRad(c.fov) / 2))); }
     wc.updateProjectionMatrix();
-    const ww = Math.round(w / 2), wh = Math.round(h / 2), buf = readIds(r, tmp, wc, ww, wh);
+    const ww = Math.round(rw / 2), wh = Math.round(rh / 2), buf = readIds(r, tmp, wc, ww, wh);
     let total = 0, centre = 0;
     for (let y = 0; y < wh; y++) for (let x = 0; x < ww; x++) {
       if (buf[(y * ww + x) * 4] !== 5) continue;
       total++; if (x >= ww / 3 && x < ww * 2 / 3 && y >= wh / 3 && y < wh * 2 / 3) centre++;
     }
     // counted at a quarter of the pixels over nine times the area: scaled to the frame's own pixels
-    const k = (9 * w * h) / (ww * wh);
+    const k = (9 * rw * rh) / (ww * wh);
     wide = { total: total * k, in_frame: centre * k };
     for (const m of made) { m.material.dispose(); m.dispose(); }
   }
   for (const [o, mat, hid] of swap) { o.material = mat; if (hid === null) o.visible = true; }
-  return { ids: b64(ids), table, id0: ID0, wide };
+  return { ids: b64(ids), ref: [rw, rh], table, id0: ID0, wide };
 }
 
 export function install(studio) {
@@ -257,17 +260,26 @@ export function install(studio) {
       const keepSun = cam.fill && sun ? [sun.color.clone(), sun.intensity] : null;
       if (keep) { hemi.color.setRGB(0.55, 0.55, 0.55); hemi.groundColor.setRGB(0.35, 0.35, 0.35); hemi.intensity = Math.PI; }
       if (keepSun) { sun.color.setRGB(1, 1, 1); sun.intensity = 1.0; }
-      r.render(view.scene, c);
+      // drawn into a target without the canvas's multisampling (in software it costs most of a large shot), then read back
+      const rt = new THREE.WebGLRenderTarget(w, h, { samples: 0, colorSpace: THREE.SRGBColorSpace });
+      r.setRenderTarget(rt); r.clear(); r.render(view.scene, c);
+      const pix = new Uint8Array(w * h * 4); r.readRenderTargetPixels(rt, 0, 0, w, h, pix); r.setRenderTarget(null); rt.dispose();
       if (keep) [hemi.color, hemi.groundColor, hemi.intensity] = keep;
       if (keepSun) [sun.color, sun.intensity] = keepSun;
       r.getContext().finish();
       const tr = performance.now();
-      const png = r.domElement.toDataURL('image/png');
-      const idp = cam.ids ? idPass(view, studio, c, w, h, cam.subject) : null;
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const im = new ImageData(w, h);
+      for (let y = 0; y < h; y++) im.data.set(pix.subarray((h - 1 - y) * w * 4, (h - y) * w * 4), y * w * 4);
+      cv.getContext('2d').putImageData(im, 0, 0);
+      const png = cv.toDataURL('image/png');
+      const tid = performance.now();
+      const idp = cam.ids ? idPass(view, studio, c, w, h, cam.subject, cam.ref_w) : null;
+      const tdone = performance.now();
       cut?.();
       for (const m of hidden) m.visible = true;
       r.clippingPlanes = []; r.setScissorTest(true);
-      const info = { calls: r.info.render.calls, triangles: r.info.render.triangles, render_ms: Math.round(tr - tw) };
+      const info = { calls: r.info.render.calls, triangles: r.info.render.triangles, render_ms: Math.round(tr - tw), png_ms: Math.round(tid - tr), ids_ms: Math.round(tdone - tid) };
       return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, ...info, ...(idp || {}) };
     },
     // Several shots in one call (a survey's tiles): the same scene, warm, one page round trip.

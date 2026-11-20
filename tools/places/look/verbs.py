@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import json
 import math
+import os
 import time
 
 import numpy as np
@@ -169,7 +170,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False})
+                          "once": False, "grid": False})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -186,6 +187,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         marks = mesh_marks(sc, M, net) if M is not None else None
     raw_shot = d.shot
     seen_past: dict = {}
+    spent: dict = {}   # where a view's seconds went: the page's shot (and its ids), then the score
 
     def past_trees(c, th):
         """The canopy cut over the subject's ground: always with --no-canopy; by itself from high or above when the
@@ -207,11 +209,19 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         return c | {"canopy": {"z": z}}
 
     def shot(c, th_=None):   # each frame judged by its id buffer; the built mesh over it when asked
+        t1 = time.time()
         img_, r_ = raw_shot(c | {"ids": True, "subject": [p_["id"] for p_ in (th_ or {}).get("pieces", [])][:400]})
+        t2 = time.time()
         if "ids" in r_:
             r_["score"], ids_ = judge(sc, c, r_, th_, inside)
             img_ = capture.hatch(img_, ids_, r_["table"], r_["id0"], helper_label(sc))
             r_["ids_arr"] = ids_
+        spent["page_s"] = round(spent.get("page_s", 0) + t2 - t1, 2)
+        spent["page_draw_ms"] = spent.get("page_draw_ms", 0) + r_.get("draw_ms", 0)
+        spent["page_render_ms"] = spent.get("page_render_ms", 0) + r_.get("render_ms", 0)
+        spent["page_png_ms"] = spent.get("page_png_ms", 0) + r_.get("png_ms", 0)
+        spent["page_ids_ms"] = spent.get("page_ids_ms", 0) + r_.get("ids_ms", 0)
+        spent["judge_s"] = round(spent.get("judge_s", 0) + time.time() - t2, 2)
         if M is not None:
             keep_ = None
             if c.get("line"):
@@ -225,7 +235,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         th = sc.resolve(pos[0])
         if cam:   # a hand's before and after, or a compare: the same camera twice
             img, r = shot(cam, th)
-            res = {"cam": cam, "img": img if plain else draw.annotate(img, cam, sc, th, faults, th["name"])[0]}
+            res = {"cam": cam, "img": img if plain else draw.annotate(img, cam, sc, th, faults, th["name"], grid=bool(o.get("grid")))[0]}
         else:
             got = framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, shot, past_trees)
             timing |= got.pop("timing")
@@ -233,11 +243,13 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             res = {"cam": got["cam"], "img": img}
             if not keep:
                 res = {k: v for k, v in got.items() if k not in ("img", "cam", "ids", "meta")}
+                ts = time.time()
                 res["png"] = _save(img, _out(place, f"at-{_slug(th['name'])}-{got['side']}"), got["meta"])
                 save_ids(res["png"], got["ids"])
+                spent["save_s"] = round(time.time() - ts, 2)
     elif verb == "orbit":
         th = sc.resolve(pos[0])
-        tw, thh = w // 2 * 2 // 2, h // 2 * 2 // 2
+        tw, thh = w, h
         tiles, caps, rms = [], [], []
         for s in ("n", "e", "s", "w"):
             c = room_cam(sc, th, s, height, tw, thh, o) if inside else \
@@ -246,21 +258,22 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             img, r = shot(c, th)
             rms.append(r["ms"])
             if not plain:
-                img, _ = draw.annotate(img, c, sc, th, faults, f"from {s.upper()}")
+                img, _ = draw.annotate(img, c, sc, th, faults, f"from {s.upper()}", grid=bool(o.get("grid")))
             tiles.append(mark(img, r.get("score")))
             caps.append({"side": s} | (r.get("score") or {}))
-        img = draw.sheet(tiles, 2)
         timing |= {"shot_ms": rms}
-        res = {"cam": None, "img": img}
+        res = {"cam": None, "img": draw.sheet(tiles, 2) if keep else None}
         if not keep:
-            res = {"png": _save(img, _out(place, f"orbit-{_slug(th['name'])}")), "thing": th["name"], "tiles": caps}
+            png, files = save_panels(_out(place, f"orbit-{_slug(th['name'])}"), tiles, 2)
+            img = tiles[0]
+            res = {"png": png, "panels": files, "thing": th["name"], "tiles": caps}
     elif verb == "walk":
         a, b = sc.resolve(pos[0]), sc.resolve(pos[1])
         pa, pb = _point(a), _point(b)
         lines = [p["points"] for p in sc.files.get("paths") or [] if p.get("points")] if not inside else []
         way = geom.route(lines, pa, pb)
         n = int(o.get("n", 6)) if "n" in o else 6
-        tw, thh = w // 2, h // 2
+        tw, thh = w, h
         tiles, caps, rms = [], [], []
         for i, (p, dv) in enumerate(geom.stations(way, n)):
             # a person's eye on the walkable ground or a deck at the station, stepped aside out of any piece
@@ -277,11 +290,12 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             if not plain:
                 img, _ = draw.annotate(img, c, sc, None, faults, f"{i + 1}/{n} heading {heading:.0f}", grid=False)
             tiles.append(img)
-        img = draw.sheet(tiles, 3)
         timing |= {"shot_ms": rms}
-        res = {"cam": None, "img": img}
+        res = {"cam": None, "img": draw.sheet(tiles, 3) if keep else None}
         if not keep:
-            res = {"png": _save(img, _out(place, f"walk-{_slug(a['name'])}-{_slug(b['name'])}")), "route_len": round(_len(way)), "tiles": caps,
+            png, files = save_panels(_out(place, f"walk-{_slug(a['name'])}-{_slug(b['name'])}"), tiles, 3)
+            img = tiles[0]
+            res = {"png": png, "panels": files, "route_len": round(_len(way)), "tiles": caps,
                    "route": [[round(v) for v in q] for q in way]}
     elif verb == "section":
         slab = float(o.get("slab", 96))
@@ -315,7 +329,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         if not plain:
             th = {"name": name, "lo": c2["box"][0], "hi": c2["box"][1]}
             i1, _ = draw.annotate(i1, c1, sc, None, faults, f"{name}: from its door, eye height", grid=False)
-            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{name} from above, ceiling cut at {c2['ceiling']:.0f}")
+            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{name} from above, ceiling cut at {c2['ceiling']:.0f}", grid=bool(o.get("grid")))
         img = draw.sheet([i2, i1], 2)
         timing |= {"shot_ms": [r1["ms"], r2["ms"]]}
         res = {"cam": None, "img": img}
@@ -332,8 +346,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         i1, r1 = shot(c1)
         i2, r2 = shot(c2)
         if not plain:
-            i1, _ = draw.annotate(i1, c1, sc, th, faults, f"{place} from {side.upper()}")
-            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{place} from above")
+            i1, _ = draw.annotate(i1, c1, sc, th, faults, f"{place} from {side.upper()}", grid=bool(o.get("grid")))
+            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{place} from above", grid=bool(o.get("grid")))
         img = draw.sheet([i1, i2], 2)
         timing |= {"shot_ms": [r1["ms"], r2["ms"]]}
         res = {"cam": None, "img": img}
@@ -346,7 +360,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     if mesh_facts and not keep:
         res["mesh"] = {k: v for k, v in mesh_facts.items() if k not in ("built", "build")}
     if not keep:
-        res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
+        res["timing"] = timing | spent | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
 
@@ -377,14 +391,15 @@ def units_aware(sc, place: str) -> None:
 # ---------- what each capture shows, and trying again when it shows too little ----------
 def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
     """The capture's score from its id buffer (capture.score) and where its camera stands."""
-    ids = capture.decode(r["ids"], c["w"], c["h"])
+    scored = capture.decode(r["ids"], *r["ref"])   # the id pass is at most 768 wide, whatever the image's size
+    ids = capture.enlarge(scored, c["w"], c["h"])
     if not hasattr(sc, "_names"):
         sc._names = {p["id"]: {"edid": p.get("edid"), "kind": p.get("kind")} for p in sc.everything()}
     ins = None
     if not c.get("ortho"):
         ins = _blocker(sc, inside)(c["pos"], (c.get("canopy") or {}).get("z"))
     subj = {p["id"] for p in (th or {}).get("pieces", [])}
-    s = capture.score(ids, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
+    s = capture.score(scored, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
                       ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")))
     return s, ids
 
@@ -489,7 +504,7 @@ def framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, s
             sco = r.get("score") or {"capture": "good"}
             if not plain:
                 img, _ = draw.annotate(img, c, sc, sub, faults, f"{th['name']}{title} from {s.upper()}, {hh}"
-                                       f"{', x%.1f' % scale if scale != 1 else ''}{', canopy cut' if cut else ''}")
+                                       f"{', x%.1f' % scale if scale != 1 else ''}{', canopy cut' if cut else ''}", grid=bool(o.get("grid")))
             att |= {k: v for k, v in sco.items()}
             got = (img, r, c, att)
             if sco["capture"] == "good":
@@ -615,12 +630,29 @@ def voids(d, place, strokes, sc, n: int = 16, size: int = 48) -> list[dict]:
     return room.openings(looks, sc.plan_box)
 
 
+VIEW_W, VIEW_H = 1920, 1440     # a single view, and each panel of an orbit, a walk or an overview (4:3)
+INDEX_W, INDEX_H = 640, 480     # a panel as it stands on an index sheet
+
+
 def draw_w():
-    return 768
+    return VIEW_W
 
 
 def draw_h():
-    return 576
+    return VIEW_H
+
+
+def save_panels(png: str, tiles: list, cols: int) -> tuple[str, list[str]]:
+    """The panels of an orbit or a walk, each full-size in a file of its own (`<name>-N.png`), and the index sheet
+    at `png`: the same panels downscaled to INDEX_W x INDEX_H, `cols` across."""
+    from PIL import Image
+    stem = png[:-4]
+    files = []
+    for i, t in enumerate(tiles, 1):
+        files.append(_save(t, f"{stem}-{i}.png"))
+    small = [t.convert("RGB").resize((INDEX_W, INDEX_H), Image.LANCZOS) for t in tiles]
+    _save(draw.sheet(small, cols), png)
+    return png, files
 
 
 def section_setup(sc, A, B, slab, w, h):
@@ -681,24 +713,30 @@ def _slug(s):
 
 
 # ---------- pick ----------
+def cam_scale(t: dict) -> float:
+    """How much larger a tile's own image is than the tile on the sheet (a survey sheet shows 1280-wide tiles at 640)."""
+    return t["w"] / t["sw"] if t.get("sw") else 1.0
+
+
 def pick(d, place, strokes, args) -> dict:
     png, px, py = args[0], float(args[1]), float(args[2])
     cam = json.loads(open(png + ".json").read())
     k = 0
     if cam.get("tiles"):   # a sheet: the tile under the pixel (placed by its offset, else side by side)
         ts = cam["tiles"]
-        k = next((i for i, t in enumerate(ts) if "ox" in t and t["ox"] <= px < t["ox"] + t.get("w", 0)
-                  and t["oy"] <= py < t["oy"] + t.get("h", 0)), None)
+        k = next((i for i, t in enumerate(ts) if "ox" in t and t["ox"] <= px < t["ox"] + t.get("sw", t.get("w", 0))
+                  and t["oy"] <= py < t["oy"] + t.get("sh", t.get("h", 0))), None)
         if k is None:
             k = int(px // ts[0]["w"])
             ox, oy = k * ts[0]["w"], 0
         else:
             ox, oy = ts[k]["ox"], ts[k]["oy"]
-        cam, px, py = ts[k], px - ox, py - oy
+        cam, px, py = ts[k], (px - ox) * cam_scale(ts[k]), (py - oy) * cam_scale(ts[k])
+        if cam.get("file") and os.path.exists(cam["file"] + ".json"):   # a survey tile: its own file and id buffer
+            png, k, cam = cam["file"], 0, json.loads(open(cam["file"] + ".json").read())
     sc = d.scene(place, strokes, cam.get("space", "exterior"))
     # what is drawn at the pixel, from the image's own id buffer; then what the ray passes through behind it
     drawn = None
-    import os
     if os.path.exists(png + ".ids.npz"):
         z = np.load(png + ".ids.npz")
         if f"ids{k}" in z:

@@ -185,6 +185,12 @@ added here the day they are made, with the date and the issue.
 - Lighting is not judged or changed from the studio viewer: the game's lighting is different. A place is not
   called too dark or too bright, and lights are not added or removed, on what the viewer shows; what looks wrong
   in light goes to the owner's in-game check (2026-11-20, #80).
+- The studio viewer draws no grass or ground cover, by design; the game does. Bare ground, flat ground paint and
+  slab-like bare terrain in a capture are not faults of a place (2026-11-20, #80).
+- Drafters and the lead also judge a place as the player meets it: walks along set routes at head height, a set
+  of looks every few steps (ahead, a little down, a little up, left, right, back, diagonals), up the stairs and
+  over the bridges, stitched into strips and read; the same inside every room; with capture failures and route
+  planning watched for and mended as the work goes (2026-11-20, #80).
 - A place's layout is planned properly: every structure is seated and sunk by the amount it needs for the place to
   work and look as we want, decided for the layout as a whole; there is no blanket rule of sinking houses until
   their decks are low, nor of keeping the source's heights (2026-11-20, #80).

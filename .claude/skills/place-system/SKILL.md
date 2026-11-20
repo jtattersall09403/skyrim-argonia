@@ -80,6 +80,8 @@ Which skill for a common job:
 - **Question every capture.** Before reading an image, ask whether it shows its subject: the subject may be out of
   frame, cropped, behind a crown, or the camera may be inside a tree, a mound or a roof. A failed capture is
   retaken from another side or distance; nothing is called missing or broken until a `look probe` agrees.
+- **No grass in the viewer.** The viewer draws no grass or ground cover and the game does: bare ground, flat
+  ground paint and slab-like terrain are not faults.
 - **Light is not judged in the viewer.** The game's light differs. Nothing is called too dark or too bright, and no
   light is added or removed, on what the viewer shows; a doubt about light goes to the owner's in-game check.
 - **Mend the tool and the skill as you go.** When a tool misleads, blocks or cannot show what is needed, mend it
