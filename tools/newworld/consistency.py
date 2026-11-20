@@ -142,6 +142,14 @@ def load_quests(root: Path) -> list[dict]:
 
 
 def load_drafts(root: Path, out: Path) -> dict:
+    def cast_spots(root, pid) -> set[str]:
+        """A person a quest places who is one of the place's own people (`cast` in its people source) stands where
+        that person's day puts them (tools.places.quest_draft never drafts a spot for one)."""
+        src = root / "newworld/sources/people" / f"{pid}.json"
+        if not src.exists():
+            return set()
+        return {f"cast/{p['cast']}" for p in json.loads(src.read_text()).get("people") or [] if p.get("cast")}
+
     d = {}
     for pj in sorted((root / "newworld/places").glob("*/place.json")):
         pid = pj.parent.name
@@ -151,8 +159,9 @@ def load_drafts(root: Path, out: Path) -> dict:
         d[pid] = {"place": json.loads(pj.read_text()), "rel": str(pj.relative_to(root)),
                   "people": sum(1 for x in people.read_text().splitlines() if x.strip()) if people.exists() else 0,
                   "spaces": sorted(p.stem for p in spaces.glob("*")) if spaces.exists() else [],
-                  "spots": {json.loads(x)["id"] for x in (pj.parent / "quests.jsonl").read_text().splitlines()
-                            if x.strip()} if (pj.parent / "quests.jsonl").exists() else set(),
+                  "spots": ({json.loads(x)["id"] for x in (pj.parent / "quests.jsonl").read_text().splitlines()
+                             if x.strip()} if (pj.parent / "quests.jsonl").exists() else set())
+                           | cast_spots(root, pid),
                   "check": json.loads(chk.read_text()) if chk.exists() else None,
                   "check_newer": chk.exists() and chk.stat().st_mtime >= changed_at(root, pj.parent)}
     return d
@@ -672,6 +681,11 @@ def check_story(ctx, R: Report, only=None):
                 room = a.get("room")
                 if room and d:
                     rooms = {norm(x) for x in room_names(d)}
+                    # an outdoor enclosure a quest calls a room (a cage) is the quest's own named door or thing,
+                    # standing at its spot in this place's quests.jsonl
+                    rooms |= {norm(str(o.get("name"))) for o in data.get("placements") or [] if isinstance(o, dict)
+                              and o.get("name") and (o.get("anchor") or {}).get("place") == pid
+                              and any(s.endswith("/" + str(o.get("ref"))) for s in spots)}
                     if norm(room) not in rooms:
                         R.add("story", "a quest names a room the draft does not have" + cause_sfx, pid,
                               f"{qid}: room '{room}'", ln)

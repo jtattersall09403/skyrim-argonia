@@ -495,7 +495,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | Stage | Run it when | It owns |
 |---|---|---|
 | `fit` | a piece belongs in another cluster (a light with its fixture) | the cluster, place and turn of the exterior rows that move; their ledger rows |
-| `pieces` | `draft.replace` or `draft.drop` changed; the record stopped or started naming a source site | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; a room whose way in is dropped; their ledger rows |
+| `pieces` | `draft.replace` or `draft.drop` changed; the record stopped or started naming a source site | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; a room whose way in is dropped; a link to a piece no longer placed; their ledger rows |
 | `seating` | a seat rule changed | the seat and height of exterior rows |
 | `clearance` | buildings, doors or streets moved; the world's plants were placed again | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
