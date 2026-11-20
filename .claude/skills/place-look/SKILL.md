@@ -36,6 +36,7 @@ viewer: the game lights the place differently.
 | The numbers of every house, deck, door, tree and loose piece | `measure` |
 | See what stands under trees | any view with `--no-canopy` (from high or above it is cut by itself when the canopy hides most of the subject) |
 | Is the way open | `walk <from> <to>` |
+| How a player meets the place, walking it | `playwalk` (every route), `playwalk <from> <to>`, `playwalk --rooms`; after every change to a stair, bridge, door or street, `playwalk` across it |
 | Where to look next | `overview` |
 | What is at a pixel | `pick <png> <px> <py>`: what is drawn there, then what lies behind it |
 | What the game never draws (markers, collision boxes, triggers) | any view with `--helpers`, each labelled |
@@ -88,10 +89,14 @@ Before a place goes to the owner (the bar in `place-system`):
 
 1. `probe --all` reports nothing.
 2. `survey <place>` and `survey <place> <structure>` for each structure, every tile good or struck through with
-   its reason; a `walk` along the main streets; for each room a story needs, its `in <room> overview` and `probe --all`.
-3. Read every image. Match each sentence of the record's `look` to an image that shows it; name each line not yet
+   its reason; for each room a story needs, its `in <room> overview` and `probe --all`.
+3. `playwalk` of the whole place and `playwalk --rooms`; read the forward filmstrip of every route, then its strips.
+   A red struck tile is the camera's: judge nothing from it. An orange PLACE tile (the way passes through a piece,
+   a door opens onto a wall, no boards under a bridge, the void in a room) is a fault: fix it. Every "cannot be
+   walked to" is a fault for `place-streets`. Bare ground is not a fault (the viewer draws no grass).
+4. Read every image. Match each sentence of the record's `look` to an image that shows it; name each line not yet
    met in the hand-over.
-4. Judge the whole: does it read as the record's place sitting naturally on our land? If not, go back to the skill
+5. Judge the whole: does it read as the record's place sitting naturally on our land? If not, go back to the skill
    that owns what is wrong.
 
 ## The machine

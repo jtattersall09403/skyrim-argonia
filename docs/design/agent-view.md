@@ -85,6 +85,51 @@ hid it), and `--canopy` keeps it.
 | `walk <from> <to>` | Six eye-level frames along the place's streets and paths between two doors or points: whether the way is open and reads as a street. |
 | `overview` | The whole place obliquely and from above, every structure labelled: where to look next. |
 | `survey [<structure or unit> ...] [--changed]` | One contact sheet per thing named, else the whole place: near and far from the four compass sides at eye level, two high obliques, a top view with the crowns cut, sections on two axes with the ground line and a height scale, in the neutral fill, and one tile in the place's own light (labelled "viewer light, not the game's"). Each tile carries its side, distance and score; a failed tile is retried once, else struck through with its reason. Beside the sheet, `table.json` and `table.txt` of what each tile shows; all under `out/places/look/<tree>/<place>/survey/<thing>/`. `--changed` takes only the structures whose rows changed since this checkout's last survey. Prints one line per thing: its sheet and its failed tiles. The tiles go in one page call: seconds a structure on a warm daemon. |
+| `playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again]` | The place walked as a player meets it, on its built walkable mesh (below). |
+
+## Playwalk: the place as a player walks it
+
+`playwalk` with no names plans the place's routes: from where the player arrives (the landing, each road's end
+that leaves the place, a quest arrival) to the centre (the landing, else the middle of the stalls, else of the
+doors); from the centre to each door's arrival, each stall, each crafting station, the Hist and its sap pool and
+each quest spot; and along each street. Each route is the shortest walk over the BUILT mesh's triangles
+(`playwalk.astar`, straightened inside the corridor), so it climbs the stairs and crosses the bridges a person
+would. A thing the mesh cannot reach from the arrival is listed "CANNOT BE WALKED TO" with where and how the mesh
+breaks, and the route is walked to the break. A mesh older than the place files is said STALE and every strip is
+marked so; with no built mesh the place's paths are walked instead and the plan says "walked on the place's paths,
+not the mesh". `playwalk <from> <to>` walks one route (names as for every verb, plus `landing`, `centre`,
+`market`). `--plan` prints the plan only: routes, lengths, stations, how many are new.
+
+Stations stand on the mesh: one every 256 units on a named route (768 on a whole place, `--stride u`), and always
+at each stair or ramp foot and head, each bridge or walkway start, middle and end, each doorway, each turn sharper
+than 45 degrees and each stretch within 150 units of a deck edge with a drop beside it. A station seen on an
+earlier route (same spot, same heading) is not shot again; the table names where it was. At each station, from a
+person's eye: ahead, 20 degrees down, 20 degrees up, left, right, back, and at stairs, bridges, doorways and turns
+the two forward diagonals; 80 degrees across at 4:3 (the game's first-person view), in the neutral fill.
+
+Each look is judged by its id buffer. A capture fault (the camera in a piece, one thing nearer than 100 units over
+60% of the frame, no ground drawn) is shot again from a nudged spot (along the walk up to 64 units, sideways on the
+mesh), else struck through in red with its reason. The same evidence names faults of the place, marked PLACE in
+orange: every spot near the station inside one piece (the way passes through it; indoors, a ceiling lower than a
+person); a wall filling the view ahead at a doorway (the door opens onto a wall); no boards under a bridge's middle
+looking down (a gap); in a room, the void seen.
+
+Out, under `out/places/look/<tree>/<place>/playwalk/<route>/`: `strip-NN.png` (one row a station, a column a
+look, at most 8 stations a strip), `forward.png` (the walk facing ahead), `map.png` (the route over the mesh,
+numbered), `tiles/` (every look full size) and `table.txt`/`table.json` (each look's file, verdict and the three
+things filling most of the frame). A route already shot as planned is skipped on a rerun (`--again` shoots it
+anew), so an interrupted walk resumes. `--changed` walks only the routes passing within 1000 units of a structure
+changed since this checkout's last playwalk.
+
+Rooms: `in <room> playwalk` and `playwalk --rooms` (every room, one line each). A room copied whole and unchanged
+gets the entering set at each door: just inside, looking in, left and right. A room we changed (a cut, source
+pieces struck, pieces added or moved, a quest spot, a person's work spot in it; from the place files,
+`playwalk.room_kind`) gets that, then one station at each thing changed and each spot (ahead, down, left, right,
+walked from the first door) and one look at each side of a cut. Every room look is tested for the void.
+
+Reading a strip: read the forward filmstrip first (does the walk read as a way?), then each row: what the player
+sees stepping there. A struck tile in red is the camera's: judge nothing from it. An orange PLACE tile is a fault to
+fix at its station. Bare ground is not a fault: the viewer draws no grass. Light is not judged.
 
 ## Hands
 
@@ -121,7 +166,9 @@ that touches a row an owner's finalised save touched is left out whole and liste
 4. When two fixes compete, `compare` them on the same view, keep the better, `restore` it.
 5. `survey --changed` after every structure placed or changed; `survey` of the whole place after each group; judge
    only from good captures, and of each ask whether it shows what it was meant to.
-6. Judge the whole with the place's survey and `walk` once the numbers are clean.
+6. `playwalk <from> <to>` across every stair, bridge, door or street you changed, straight after the change.
+7. Judge the whole with the place's survey and `playwalk` (every route, then `playwalk --rooms`) once the numbers
+   are clean.
 
 Every call appends a line to `out/places/look/<tree>/session.log` (verb, arguments, image, milliseconds). A sequence that
 has worked by hand on several places is the record from which a pipeline step is written; nothing becomes a step
