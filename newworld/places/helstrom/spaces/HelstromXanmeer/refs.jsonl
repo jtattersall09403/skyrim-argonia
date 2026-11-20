@@ -1,0 +1,69 @@
+{"id":"helstrom.04837NRC5Z60V592XH7BDF69CM","src":"King of the Murkmire.esp:4F4DD4","removed":true}
+{"id":"helstrom.05WGFBFA7HZQ0PTR671C5AVE05","src":"King of the Murkmire.esp:4F4DD9","removed":true}
+{"id":"helstrom.08VD2JN09BYBVV2C9TR3NA42NW","base":"King of the Murkmire.esp:644F72","kind":"light","pos":[15650.0,3092.0,200.0],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol","tier":"AGENT_INVENTED","base_unknown":true}
+{"id":"helstrom.1PVZ7AP4B9W8G7EHZXPSTXXM3E","src":"King of the Murkmire.esp:4F4DB5","removed":true}
+{"id":"helstrom.1WKXC8VTF7NQ1E30SZDSAKWD9R","base":"King of the Murkmire.esp:644F72","kind":"light","pos":[15650.0,1900.0,200.0],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol","tier":"AGENT_INVENTED","base_unknown":true}
+{"id":"helstrom.2BKZFY9TB5HCQ7MPBH0V34S8PA","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15850.7,2954.9,-288.0],"rot":[0.0,0.0,0.61087],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.2K1N48VN1JTBQSWRC9PRFPMM9R","src":"King of the Murkmire.esp:84070C","removed":true}
+{"id":"helstrom.2MTG3X7N36VXE62T13HMHTK378","src":"King of the Murkmire.esp:8406F3","removed":true}
+{"id":"helstrom.31YH6DV7RSVN5A5BC25X3P0RCT","src":"King of the Murkmire.esp:4F4DFE","removed":true}
+{"id":"helstrom.3R8072N8B52RNJJJRFC8Q6VYX7","src":"King of the Murkmire.esp:8406EF","removed":true}
+{"id":"helstrom.41VJ4W7KB8WK7GEQNEJBP05NZ9","src":"King of the Murkmire.esp:4F4DD6","removed":true}
+{"id":"helstrom.4B500V0QT01Z2HK35J80X3J8K0","src":"King of the Murkmire.esp:840614","removed":true}
+{"id":"helstrom.4FTGC2DD2G6FECARAAYFDHMTGX","src":"King of the Murkmire.esp:8406F0","removed":true}
+{"id":"helstrom.4K2XZB653GD2D8RNS9Z7ZD3D4H","src":"King of the Murkmire.esp:4F4DBE","removed":true}
+{"id":"helstrom.5X19NV63ZB88EBJBXXXR8W5SGN","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15733.3,2288.9,-288.0],"rot":[0.0,0.0,6.02139],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.67YFXN3BZZFSGT6TMZRE18SYHA","base":"King of the Murkmire.esp:644F72","kind":"light","pos":[15650.0,2496.0,200.0],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol","tier":"AGENT_INVENTED","base_unknown":true}
+{"id":"helstrom.6RNGTRW3HV9BHNA7QVAZMJMWMM","src":"King of the Murkmire.esp:4F4DE0","removed":true}
+{"id":"helstrom.6TF45KPCTZG0TJN295ZQ27DB40","src":"King of the Murkmire.esp:4F4DC2","removed":true}
+{"id":"helstrom.6V1XN4M7DF5KCP024MB7YZB9WE","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15850.7,2037.1,-288.0],"rot":[0.0,0.0,5.67232],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.7RWDCQRSKHKA7C0F9QE29SYRG5","src":"King of the Murkmire.esp:8406F1","removed":true}
+{"id":"helstrom.7VNP63C5N92W62VJSTH8HAPZ5E","src":"King of the Murkmire.esp:4F4DD3","removed":true}
+{"id":"helstrom.7YQWNNB160508A9GC31P55113G","src":"King of the Murkmire.esp:840728","removed":true}
+{"id":"helstrom.94NP4CHRHTZ7RT416ZG9068CY6","src":"King of the Murkmire.esp:4F4DFF","removed":true}
+{"id":"helstrom.98J6STAHYR6YS05W9EAZFSP3GX","src":"King of the Murkmire.esp:4F4DBA","removed":true}
+{"id":"helstrom.A838BGVE8ZM0CWW3709G74X1PY","src":"King of the Murkmire.esp:4F4DBF","removed":true}
+{"id":"helstrom.AG3PXSDMG98ZQ2WVD1R9RW24ZQ","src":"King of the Murkmire.esp:84060E","removed":true}
+{"id":"helstrom.ARZY7Y6Q0C06N71950EDPNXT73","src":"King of the Murkmire.esp:4F4DBC","removed":true}
+{"id":"helstrom.CDMNYWEVWQ45ARRHYWFHWKFTMF","src":"King of the Murkmire.esp:840729","removed":true}
+{"id":"helstrom.CTGWC531GB71BJGHJSJQMS6AV3","src":"King of the Murkmire.esp:840715","removed":true}
+{"id":"helstrom.CWH1SQBFB54SBNV5ECH11RS77B","src":"King of the Murkmire.esp:4F4DBB","removed":true}
+{"id":"helstrom.DCYFS1174RSA5TRFST9HZ9M4WX","src":"King of the Murkmire.esp:9C7223","removed":true}
+{"id":"helstrom.DH03S079RF6Z8N9TM1PGVS9R48","src":"King of the Murkmire.esp:4F4DB3","removed":true}
+{"id":"helstrom.DT5FGAQ1TV1NSKQV50FXY5HHB5","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15554.4,2052.3,-288.0],"rot":[0.0,0.0,5.84685],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.DTYWSZB16GYNKY4QQR9EV6D5SZ","src":"King of the Murkmire.esp:4F4DE1","removed":true}
+{"id":"helstrom.EQYRXRYJ4PAT3VKG48YXQKK312","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[16544,4016,240],"rot":[-1.5707964,5.960464e-07,4.71239],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8405C2","seat":{"mode":"free"}}
+{"id":"helstrom.ETZ05G1Q8F43TMPYTV79FDC8Y3","src":"King of the Murkmire.esp:4F4DFC","removed":true}
+{"id":"helstrom.FJ3TKRVG3S0HR0HRGC9E2WM9TZ","src":"King of the Murkmire.esp:840727","removed":true}
+{"id":"helstrom.GJJJ48F4MEHTMBFV7744GPSYDQ","src":"King of the Murkmire.esp:4F4DC0","removed":true}
+{"id":"helstrom.GN5GNP75YVZN50HEA5Z388ZF9Z","src":"King of the Murkmire.esp:4F4DD8","removed":true}
+{"id":"helstrom.GQSX2F5QBSJFGYMNVXPM6CTXJH","src":"King of the Murkmire.esp:4F4DC1","removed":true}
+{"id":"helstrom.H4CE4WKNWNHWG7Y1PGHQYE0EJ5","base":"King of the Murkmire.esp:5E249F","kind":"door","pos":[15260.0,2496.0,-144.0],"rot":[0.0,0.0,4.71239],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more","tier":"AGENT_INVENTED","lock":{"level":"RequiresKey","key":null,"flags":"0"}}
+{"id":"helstrom.J3K20K85S7ZHVEWP33G8XX0P3B","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[15040,2496,240],"rot":[-1.5689776,-1.5703079,4.71239],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8405CE","seat":{"mode":"free"}}
+{"id":"helstrom.J8V0YWQP5FKJA3S9XYGWSA95VA","src":"King of the Murkmire.esp:8406FE","removed":true}
+{"id":"helstrom.M9SMMQCKV69RSXTQ465D3WPTX6","src":"King of the Murkmire.esp:4F4DAF","removed":true}
+{"id":"helstrom.MKEJBGPS6J4R8DHGQACHWASZF8","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15733.3,2703.1,-288.0],"rot":[0.0,0.0,0.2618],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.MMG5F26JKBMA80FBHSAMK8X48J","src":"King of the Murkmire.esp:4F4D5E","removed":true}
+{"id":"helstrom.MXNBE5E3MCQYH7YFW97WZ1XY25","src":"King of the Murkmire.esp:8406ED","removed":true}
+{"id":"helstrom.MYGQAEF73AZ2AQKJJF7M80F9VX","src":"King of the Murkmire.esp:4F4DFD","removed":true}
+{"id":"helstrom.MZ85WNEJ9Q965HT4KJZ9KN4HW9","src":"King of the Murkmire.esp:4F4DEE","removed":true}
+{"id":"helstrom.N2D1M38A96V7QEF3826ASVHW4Q","src":"King of the Murkmire.esp:8406EE","removed":true}
+{"id":"helstrom.NVWTERSQ5DHH21PC7F3P9D43VZ","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[18048,2496,240],"rot":[1.5974575,1.5707964,1.6057],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8405B7","seat":{"mode":"free"}}
+{"id":"helstrom.PGVVPFA6GPWJW2J742KF67VCBW","src":"King of the Murkmire.esp:4F4DB4","removed":true}
+{"id":"helstrom.PPWZG389ZM97P3FFA1E4GSVVHS","src":"King of the Murkmire.esp:84072D","removed":true}
+{"id":"helstrom.PS4JCHSC8F5XQZ5G8SMTKZ19QM","src":"King of the Murkmire.esp:84060F","removed":true}
+{"id":"helstrom.PVZ2X713EYCF05CC0721392SXQ","src":"King of the Murkmire.esp:4F4E00","removed":true}
+{"id":"helstrom.PYHW6ABE2A5C4XRS21ANCJBMPQ","src":"King of the Murkmire.esp:4EA93A","removed":true}
+{"id":"helstrom.R1TGSD5ZHGDB1T1T7JYKX9N81W","src":"King of the Murkmire.esp:4F4DB0","removed":true}
+{"id":"helstrom.SB18EX604DJ4Y4S99E6R15CG5S","base":"King of the Murkmire.esp:5DD304","kind":"furniture","pos":[15554.4,2939.7,-288.0],"rot":[0.0,0.0,0.43633],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders","tier":"AGENT_INVENTED"}
+{"id":"helstrom.SHD2KXN7PB2WD075HTR02CH8HB","src":"King of the Murkmire.esp:840700","removed":true}
+{"id":"helstrom.TWAZXAP0NTGRF7QVBPZNM8WJ0R","src":"King of the Murkmire.esp:4F4DB9","removed":true}
+{"id":"helstrom.WGQQBDV4T4XX54DF6FP5AT6RYM","src":"King of the Murkmire.esp:8406FA","removed":true}
+{"id":"helstrom.XEW2BNSFXY30CR3HY6JQ2064Z7","src":"King of the Murkmire.esp:840615","removed":true}
+{"id":"helstrom.XRX8GKGR8YACRG4EY3549K02X9","edid":null,"base":"King of the Murkmire.esp:056D53","kind":"door","pos":[16544,6352,80],"rot":[0,0,0],"scale":1.05,"layer":"place","flags":["persistent"],"src":"King of the Murkmire.esp:840718","door":{"to_space":"exterior","to_ref":"helstrom.TP78Z1NVDQ8JRJP893FR8G52S8","to_pos":[-51841.3,-590341.7,208.08],"to_rot":[0.0,0.0,5.49779],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.XTN2118XCG4WW39WZZ0JA95Y8C","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[16544,1008,240],"rot":[1.5707964,-2.6226041e-06,1.5708],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8405AC","seat":{"mode":"free"}}
+{"id":"helstrom.XVCQATEZ7TP2EEAXB6YBPHYQ51","src":"King of the Murkmire.esp:8406FF","removed":true}
+{"id":"helstrom.Y2P9D7GAWQBPE95Z7Z91Q7J11E","src":"King of the Murkmire.esp:4F4DDF","removed":true}
+{"id":"helstrom.YC480VRZ9BA36HHZJ64SD7MW8G","src":"King of the Murkmire.esp:8406F2","removed":true}
+{"id":"helstrom.Z4Q307MW5GSS555C0VNSTF4ZXY","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[16546,411,240],"rot":[-1.5708182,0.00048795342,4.71239],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8406AF","seat":{"mode":"free"}}
+{"id":"helstrom.ZXQVFXRYY23C6VQJYF3PZGXTMA","src":"King of the Murkmire.esp:4F4DD5","removed":true}

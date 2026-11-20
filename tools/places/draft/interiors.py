@@ -67,11 +67,29 @@ def _partition(copy_of: str) -> dict:
         return build.room_partition(copy_of, refs, tmp)["rooms"]
 
 
-def kept(copy_of: str | None, room: str | None) -> frozenset | None:
-    """The source refs a copy keeps (None: the whole space)."""
-    if not room or not copy_of:
+def in_cut(cut: dict | None, pos) -> bool:
+    """Whether a source position lies inside a copy's cut (the build's rule: tools.places.build.in_cut)."""
+    from tools.places import build
+    return build.in_cut(cut, pos)
+
+
+@functools.lru_cache(maxsize=None)
+def _cut_ids(copy_of: str, box: tuple) -> frozenset:
+    from tools.places.draft import io
+    source_id, cell = copy_of.split("/", 1)
+    path = io.BUNDLES / f"src.{source_id}" / "spaces" / cell / "refs.jsonl"
+    return frozenset(r["id"] for r in io.read_jsonl(path) if "pos" in r and in_cut({"box": box}, r["pos"]))
+
+
+def kept(copy_of: str | None, room: str | None, cut: dict | None = None) -> frozenset | None:
+    """The source refs a copy keeps (None: the whole space): its room's, and of those only the ones inside its cut."""
+    if not copy_of or (not room and not cut):
         return None
-    return rooms_of(copy_of).get(room, frozenset())
+    keep = rooms_of(copy_of).get(room, frozenset()) if room else None
+    if cut:
+        inside = _cut_ids(copy_of, tuple(cut["box"]))
+        keep = inside if keep is None else keep & inside
+    return keep
 
 
 def shared(refs: list[dict], src: Bundle) -> bool:
@@ -115,15 +133,16 @@ def sleeps(b: dict) -> int:
     return 2 if DOUBLE.search(_name(b)) else 1
 
 
-def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_of: str | None = None) -> list[dict]:
-    """Bed refs of a space (of one room when `room` names its way-out door, and on that room's walkable mesh), each
-    with the sleepers it takes."""
-    keep = kept(copy_of, room)
+def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_of: str | None = None,
+            cut: dict | None = None) -> list[dict]:
+    """Bed refs of a space (of one room when `room` names its way-out door, and on that room's walkable mesh; inside
+    its cut when it has one), each with the sleepers it takes."""
+    keep = kept(copy_of, room, cut)
     out = []
     for r in space_refs:
         if r.get("kind") != "furniture" or not is_bed(bases.get(r.get("base")) or {}):
             continue
-        if keep is not None and (r["id"] not in keep or not on_room_mesh(copy_of, room, r["pos"])):
+        if keep is not None and (r["id"] not in keep or (room and not on_room_mesh(copy_of, room, r["pos"]))):
             continue
         out.append({"ref": r["id"], "sleeps": sleeps(bases.get(r.get("base")) or {})})
     return sorted(out, key=lambda b: b["ref"])

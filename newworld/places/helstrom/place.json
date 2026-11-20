@@ -27,6 +27,10 @@
    "LevyPost": {
     "name": "The Levy's Post",
     "why": "the place record's the levy's post (gives and source note), a room of ours behind an added door (AGENT_INVENTED)"
+   },
+   "HelstromXanmeer": {
+    "name": "Helstrom Xanmeer",
+    "why": "the place record names it the old Xanmeer at the city's heart; the room is its hall, where the council of the Xeech-Leel holds its open sittings and the Root Talk meets (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -645,6 +649,258 @@
      ]
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D53",
+    "kind": "door",
+    "pos": [
+     -52018.1,
+     -590164.9
+    ],
+    "rot_z": 5.49779,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.teethofsithislocation/TeethofSithisInt03",
+     "door": "King of the Murkmire.esp:840718",
+     "space": "HelstromXanmeer",
+     "arrival": [
+      -51841.3,
+      -590341.7
+     ],
+     "cut": {
+      "box": [
+       14900,
+       -800,
+       19400,
+       6700
+      ]
+     },
+     "strip": {
+      "XanmeerLever01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "GenPullChain01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerArgonianBust03Door01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "defaultSetStageTRIGPlayerOnly": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerPedestal01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerChestBoss01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerUrn03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerUrn04": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerFurnitureBedDouble": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CraftingAlchemyWorkbench": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CraftingEnchantingWorkbench": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerNisswoCoin": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ChainLightningScroll": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ConjureFrostAtronachScroll": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DummyPotion": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageHealth03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageMagicka02": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageStamina03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CureDisease": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CurePoison": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemCommonFilled": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemGreater": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemLesser": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemPetty": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemPettyFilled": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "GemGarnet": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "BoneTrollSkull01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "VoidSalts": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SprigganSap": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "Taproot": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "HistSap": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ccBGSSSE025_OreAmber": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ccBGSSSE037_BunglersBane": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerTrapFlamethrower01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerTrapBladeSwinging01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TrapTriggerBox": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerPortcullisLarge01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerRubbleBlocks06": "a loose fallen block on the hall floor reads as a ruin, not a hall in use"
+     }
+    },
+    "why": "the Xanmeer's door: King of the Murkmire's stone load door (XanmeerLDoor01) centred at the foot of the temple's stair, turned with the temple, as King of the Murkmire sets it at the foot of Ixtaxh-Thtithil-Meht's pyramid; into the throne wing of the Teeth of Sithis Halls copied alone (the cell's part east of its cut, its own north door the way out), the old seat where the council holds its open sittings and the Root Talk meets"
+   },
+   {
+    "base": "King of the Murkmire.esp:05BF2B",
+    "kind": "building",
+    "pos": [
+     -52136.2,
+     -589881.4
+    ],
+    "rot_z": 2.3562,
+    "dz": 96.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the east pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:05BF2C",
+    "kind": "building",
+    "pos": [
+     -52301.6,
+     -590046.8
+    ],
+    "rot_z": 2.3562,
+    "dz": 96.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the west pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D2E",
+    "kind": "static",
+    "pos": [
+     -51749.4,
+     -589966.9
+    ],
+    "rot_z": 5.49779,
+    "dz": -10.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone fire-bowl on the east side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D2E",
+    "kind": "static",
+    "pos": [
+     -52216.1,
+     -590433.6
+    ],
+    "rot_z": 5.49779,
+    "dz": -10.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone fire-bowl on the west side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+   },
+   {
+    "base": "King of the Murkmire.esp:5E249F",
+    "kind": "door",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15260.0,
+     2496.0,
+     -144.0
+    ],
+    "rot_z": 4.71239,
+    "tier": "AGENT_INVENTED",
+    "lock": {
+     "level": "RequiresKey",
+     "key": null,
+     "flags": "0"
+    },
+    "why": "the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15850.7,
+     2954.9,
+     -288.0
+    ],
+    "rot_z": 0.61087,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15733.3,
+     2703.1,
+     -288.0
+    ],
+    "rot_z": 0.2618,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15733.3,
+     2288.9,
+     -288.0
+    ],
+    "rot_z": 6.02139,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15850.7,
+     2037.1,
+     -288.0
+    ],
+    "rot_z": 5.67232,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15554.4,
+     2939.7,
+     -288.0
+    ],
+    "rot_z": 0.43633,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15554.4,
+     2052.3,
+     -288.0
+    ],
+    "rot_z": 5.84685,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     2496.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     1900.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     3092.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
    }
   ],
   "replace": {
@@ -656,6 +912,9 @@
    },
    "Black Marsh.esm:2001F3": {
     "base": "King of the Murkmire.esp:10A52C"
+   },
+   "King of the Murkmire.esp:5E2498": {
+    "base": "King of the Murkmire.esp:5E2496"
    }
   },
   "drop": {
@@ -863,8 +1122,8 @@
      "by": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
     },
     {
-     "line": "no stone",
-     "by": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs"
+     "line": "no new stone",
+     "by": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs; the only stone is the old Xanmeer"
     },
     {
      "line": "no outward wall",
@@ -931,8 +1190,8 @@
      "by": "the Levy's Post room (Lilmoth Guardhouse) behind a Lilmoth house by the levy's guard stand"
     },
     {
-     "line": "the old Xanmeer",
-     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) on the hidden ziggurat's footprint at the city's north-west edge"
+     "line": "only the old Xanmeer at the city's heart, left by the ancients, stands in stone",
+     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) at 0.78 on the hidden ziggurat's footprint, the biggest thing in the city, its stair turned south-east to the city's way, King of the Murkmire's stone door framed by two wall pillars and two fire-bowls at the stair's foot, into the Helstrom Xanmeer hall (the Teeth of Sithis Halls' throne wing, cut and lit, benches for twelve facing the throne)"
     }
    ],
    "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced",
@@ -1079,7 +1338,7 @@
      "cluster": "b39",
      "what": "the old Xanmeer at the city's north-west edge with its fire pits and moored boats",
      "verdict": "kept",
-     "why": "the source's stepped Xanmeer; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint"
+     "why": "kept: the old Xanmeer, the record's one stone building; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint, with a door into its hall"
     }
    ]
   }

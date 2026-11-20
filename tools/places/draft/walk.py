@@ -734,7 +734,7 @@ def room_beds(sp: dict, sdir: Path, src, bases: dict) -> list[dict]:
             other = None
         if other is not None and cell in other.spaces:
             space, b_all = other.spaces[cell], {**other.bases, **bases}
-    out = list(interiors.beds_in(space.refs, b_all, sp.get("room"), sp.get("copy_of"))) if space else []
+    out = list(interiors.beds_in(space.refs, b_all, sp.get("room"), sp.get("copy_of"), sp.get("cut"))) if space else []
     seen = {b["ref"] for b in out}
     rj = sdir / "refs.jsonl"
     for r in io.read_jsonl(rj) if rj.exists() else []:

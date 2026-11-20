@@ -134,23 +134,30 @@ def settle(rows: list[dict], others: list[dict], bases: dict, G, norm: float, lo
 def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set, G,
          arrival: list | None = None, parent: str = "exterior") -> tuple[str, dict, list[dict]]:
     """The copied room a door of ours leads into: (space id, space.json, refs of our changes). Sets the door's own
-    `door`: into the room, and its `arrival` outside (`arrival` when the streets stage has placed it, else the row's)."""
+    `door`: into the room, and its `arrival` outside (`arrival` when the streets stage has placed it, else the row's).
+    `spec`: copy_of, door (the way out), space, arrival, drop ({source ref: why}), strip ({base editor id: why}: every
+    ref of that base goes), whole, and cut ({"box": [x1, y1, x2, y2]}: only the part of the source cell inside the
+    box is copied, its way out any load door inside it; the build meshes the cut room's navmesh from what it keeps)."""
     cell = spec["copy_of"].split("/", 1)[1]
     sp = src.spaces.get(cell)
     if sp is None:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']}: the source bundle has no space {cell}")
     sid = spec.get("space") or cell
     ways = sorted((r for r in sp.refs if (r.get("door") or {}).get("to_space") == "exterior"), key=lambda r: r["id"])
-    back = next((r for r in ways if r["id"] == spec.get("door")), None) if spec.get("door") else (ways[0] if ways else None)
+    cut = spec.get("cut")
+    # a cut copy's way out may be any load door inside the cut (one wing of a hall entered by its own door)
+    loads = ways if not cut else sorted((r for r in sp.refs if (r.get("door") or {}).get("to_space")
+                                         and interiors.in_cut(cut, r["pos"])), key=lambda r: r["id"])
+    back = next((r for r in loads if r["id"] == spec.get("door")), None) if spec.get("door") else (loads[0] if loads else None)
     if back is None:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} has no way out {spec.get('door') or ''}")
     # a cell that packs several rooms (one behind each way out) is copied as the one room behind this way out; a
     # building whose ways out all open into one walkable island (a front and an upper door) is copied whole
     part = back["id"] if (len(ways) > 1 and not spec.get("whole") and interiors.shared(sp.refs, src)
                           and not interiors.one_building(spec["copy_of"], sp.refs)) else None   # one building: copied whole
-    keep = interiors.kept(spec["copy_of"], part)
+    keep = interiors.kept(spec["copy_of"], part, cut)
     inner = [r["id"] for r in sp.refs if (r.get("door") or {}).get("to_space") not in (None, "exterior")
-             and r["id"] not in (spec.get("drop") or {}) and (keep is None or r["id"] in keep)]
+             and r is not back and r["id"] not in (spec.get("drop") or {}) and (keep is None or r["id"] in keep)]
     if inner:
         raise ValueError(f"draft.add {door['id']}: room {spec['copy_of']} leads on into further rooms ({inner[:3]})")
     if arrival is None and parent != "exterior":     # inside a room: where one steps out is given whole
@@ -160,7 +167,7 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
         h = G.height(ax, ay)
         arrival = [round(ax, 2), round(ay, 2), round(h if h is not None else door["pos"][2], 2)]
     back_id = io.mint(place_id, sid, back["id"])
-    into = next(((r["door"].get("to_pos"), r["door"].get("to_rot")) for r in (src.exterior.refs if src.exterior else [])
+    into = next(((r["door"].get("to_pos"), r["door"].get("to_rot")) for s_ in src.spaces.values() for r in s_.refs
                  if (r.get("door") or {}).get("to_ref") == back["id"]), (None, None))
     door["door"] = {"to_space": sid, "to_ref": back_id, "to_pos": list(into[0] or back["pos"]),
                     "to_rot": list(into[1] or back.get("rot") or [0, 0, 0]), "flags": "0", "arrival": list(arrival)}
@@ -171,7 +178,8 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
         if r is back or r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
             continue
         rid = io.mint(place_id, sid, r["id"])
-        if (r.get("door") or {}).get("to_space") is not None or r["id"] in (spec.get("drop") or {}):
+        if ((r.get("door") or {}).get("to_space") is not None or r["id"] in (spec.get("drop") or {})
+                or (src.bases.get(r.get("base")) or {}).get("edid") in (spec.get("strip") or {})):
             out.append({"id": rid, "src": r["id"], "removed": True})       # one way in: this door's; or the agent's drop
         elif r.get("base") in replace:
             out.append({**r, **interiors.swap(r, {}, replace[r["base"]]), "id": rid, "src": r["id"], "seat": {"mode": "free"}})
@@ -179,6 +187,8 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
             out.append({"id": rid, "src": r["id"], "removed": True})       # a Nordic piece we would add (0006)
     info = {"space_id": sid, "copy_of": spec["copy_of"], "name": sp.meta.get("name"), "door_from": door["id"],
             "parent": parent, "room": part, "added": True}
+    if cut:
+        info["cut"] = cut
     return sid, info, out
 
 

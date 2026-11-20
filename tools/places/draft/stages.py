@@ -390,7 +390,7 @@ def home_beds(st: Standing) -> dict[str, list[str]]:
         if sp is None:
             continue
         known = {**io.catalogue_bases({r["base"] for r in sp.refs} - set(st.bases)), **st.bases}
-        for b in interiors.beds_in(sp.refs, known, info.get("room"), info["copy_of"]):
+        for b in interiors.beds_in(sp.refs, known, info.get("room"), info["copy_of"], info.get("cut")):
             out.setdefault(sid, []).extend([b["ref"]] * b["sleeps"])
     return out
 
@@ -537,7 +537,7 @@ def stations(st: Standing, log=print) -> None:
             sp = st.files["spaces"][space]
             info = sp["space"]
             src_refs = st.src.spaces[info["copy_of"].split("/", 1)[1]].refs
-            beds = interiors.beds_in(src_refs, st.bases, info.get("room"), info["copy_of"])
+            beds = interiors.beds_in(src_refs, st.bases, info.get("room"), info["copy_of"], info.get("cut"))
             anchor = {b_["ref"] for b_ in beds} or {info.get("room")}
             pts = [r["pos"] for r in src_refs if r["id"] in anchor] or [src_refs[0]["pos"]]
             into = next(((r.get("door") or {}).get("to_pos") for s2 in st.files["spaces"].values() for r in s2["refs"]
