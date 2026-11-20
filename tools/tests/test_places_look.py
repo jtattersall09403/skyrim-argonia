@@ -446,3 +446,39 @@ def test_canopy_names_and_how_much_a_crown_hides_from_above():
     assert got["seen"] > 0 and got["frac"] == 1.0 and got["by"] == ["ArgoniaTreeJungle06"]
     assert canopy.hidden(cam, [hut], [hut, aside])["frac"] == 0.0
     assert canopy.cut_height(100) == 100 + canopy.HEAD
+
+
+# ---------- hands (hands.py) ----------
+class _Sc:
+    def __init__(self, rows, pieces, ground, space="exterior"):
+        self.refs = {r["id"]: r for r in rows}
+        self.pieces, self.ground, self.space, self.bases = pieces, ground, space, {}
+
+
+def test_a_duplicate_gets_its_own_seat_and_reason_never_the_originals():
+    from tools.places.look import hands
+    g = Flat(100)
+    deck = {"id": "deck", "base": "B:deck", "pos": [0, 0, 300], "rot": [0, 0, 0], "seat": {"mode": "ground", "dz": 200}}
+    hut = {"id": "hut", "base": "B:hut", "pos": [0, 0, 320], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 20},
+           "why": "the elder's house", "src": "S:1"}
+    crate = {"id": "crate", "base": "B:crate", "pos": [50, 0, 320], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 20},
+             "why": "a crate"}
+    pieces = [piece("deck", [0, 0, 300], [-200, -200, 0], [200, 200, 20]),
+              piece("hut", [0, 0, 320], [-100, -100, 0], [100, 100, 200], kind="building"),
+              piece("crate", [50, 0, 320], [-20, -20, 0], [20, 20, 40])]
+    sc = _Sc([deck, hut, crate], pieces, g)
+    # the house and its deck copied together: the house stands on the deck's copy; the deck keeps its ground rule
+    got = hands.duplicate_rows(sc, [deck, hut], 1000, 0, "a second house for the new family", lambda i: f"new{i}")
+    d2, h2 = got
+    assert d2["seat"] == {"mode": "ground", "dz": 200} and d2["pos"][:2] == [1000, 0] and d2["pos"][2] == pytest.approx(300)
+    assert h2["seat"]["on"] == "new0" and all(x["why"] == "a second house for the new family" for x in got)
+    assert "src" not in h2
+    # the crate copied alone, off its deck: never on the original's deck; down on the ground at its height over it
+    (c2,) = hands.duplicate_rows(sc, [crate], 1000, 0, "another crate", lambda i: "c2")
+    assert c2["seat"]["mode"] == "ground" and c2["seat"]["dz"] == pytest.approx(220)
+    # copied along the same deck: on the deck under it
+    (c3,) = hands.duplicate_rows(sc, [crate], -100, 0, "another crate", lambda i: "c3")
+    assert c3["seat"] == {"mode": "on", "on": "deck", "dz": pytest.approx(20)}
+    # in a room a copy keeps its height
+    (c4,) = hands.duplicate_rows(_Sc([crate], pieces, g, space="Hall"), [crate], 10, 0, "x", lambda i: "c4")
+    assert c4["seat"] == {"mode": "free"}

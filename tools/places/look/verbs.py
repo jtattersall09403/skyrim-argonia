@@ -9,11 +9,11 @@ import time
 
 import numpy as np
 
-from tools.places.look import canopy, draw, geom, room
+from tools.places.look import canopy, draw, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate")
+HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -99,11 +99,18 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         sess["strokes"].append(ops)
         save_session(place, sess)
         res = {"verb": verb, "ops": len(ops), "ids": [op.get("id") or op.get("ref", {}).get("id") for op in ops][:20]}
+        for op in ops:
+            for k in [k for k in op if k.startswith("_") and k != "_dz"]:
+                res[k[1:]] = op.pop(k)
         if verb == "sink":
             res["dz"] = ops[0].get("_dz") if ops else 0
             for op in ops:
                 op.pop("_dz", None)
-            save_session(place, sess)
+        save_session(place, sess)
+        if verb in ("move", "sink"):   # the decks a person stands on: their height over the ground before and after
+            p_, _o = _opts(act, {"until-feet-buried": False})
+            mv = [float(v) for v in p_[1:4]] if verb == "move" else [0.0, 0.0, float(res["dz"] or 0)]
+            res["decks"] = hands.deck_heights(sc, _rows(sc, sc.resolve(p_[0])), *mv)
         if vw:
             after = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, cam=before["cam"], space=space)
             p = _out(place, f"{verb}-before-after")
@@ -577,7 +584,9 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 
 def _hand(sc, verb, args, sess) -> list[dict]:
-    pos, o = _opts(args, {"until-feet-buried": False})
+    pos, o = _opts(args, {"until-feet-buried": False, "why": True})
+    if verb == "steps":
+        return _steps(sc, pos, o, sess)
     th = sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
@@ -618,21 +627,33 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         return ops
     if verb == "delete":
         return [{"op": "ref.remove", "space": "exterior", "id": r["id"], "call": "fault", "before": copy.deepcopy(r)} for r in rows]
-    if verb == "duplicate":
+    if verb == "duplicate":   # each copy its own seat where it stands and its own reason
+        why = str(o.get("why") or "").strip()
+        if not why:
+            raise ValueError('duplicate needs --why "<why this copy is here>": a copy never carries the original\'s reason')
         dx, dy = (float(pos[1]), float(pos[2])) if len(pos) > 2 else (256.0, 0.0)
         sess["n"] = sess.get("n", 0) + 1
-        ids = {r["id"]: f"{sc.place_id}.LOOK{sess['n']:03d}{i:04d}" for i, r in enumerate(rows)}
-        ops = []
-        for r in rows:
-            nr = copy.deepcopy(r)
-            nr["id"] = ids[r["id"]]
-            nr["pos"] = [round(r["pos"][0] + dx, 3), round(r["pos"][1] + dy, 3), r["pos"][2]]
-            nr.pop("src", None)
-            if (nr.get("seat") or {}).get("on") in ids:
-                nr["seat"] = dict(nr["seat"], on=ids[nr["seat"]["on"]])
-            ops.append({"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr})
+        n = sess["n"]
+        new = hands.duplicate_rows(sc, rows, dx, dy, why, lambda i: f"{sc.place_id}.LOOK{n:03d}{i:04d}")
+        ops = [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr} for nr in new]
+        if ops:
+            ops[0]["_seats"] = [nr["seat"] for nr in new][:8]
         return ops
     raise ValueError(verb)
+
+
+def _steps(sc, pos, o, sess) -> list[dict]:
+    """`steps <from deck or door> <to point or thing>`: one flight of the place's own kit, as one ref.add."""
+    if len(pos) < 2:
+        raise ValueError("steps <from deck, structure or door> <to ground point or thing> [--why ...]")
+    frm, to = sc.resolve(pos[0]), sc.resolve(pos[1])
+    at = _point(to)
+    deck = hands.deck_of(sc, frm, at)
+    sess["n"] = sess.get("n", 0) + 1
+    why = str(o.get("why") or f"steps from {frm['name']} down to {to['name']}")
+    got = hands.lay_steps(sc, deck, at, f"{sc.place_id}.LOOK{sess['n']:03d}STEPS", why)
+    return [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": got["row"],
+             "_flight": {k: got[k] for k in ("edid", "top", "foot", "base")} | {"from_deck": deck["id"]}}]
 
 
 # ---------- the built walkable mesh ----------
