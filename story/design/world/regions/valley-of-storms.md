@@ -316,6 +316,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Jal-Veesa.**
 
 - A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. <!-- place_note:jal-veesa/hooks -->
+- The elders' long house is Vosh-Leera's: she heads the elders' household. <!-- place_note:jal-veesa/hooks -->
 - The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold. <!-- place_note:jal-veesa/present -->
 - A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
 - In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. <!-- place_note:jal-veesa/faith -->

@@ -205,5 +205,6 @@ Names in the places' researched notes that are not a place, a region or a people
 | Elder Nuetepa | Uluo | The tribe's Elder Nuetepa is remembered in Archon from long ago. | <!-- place_note:uluo/history -->
 | King Tibus | Thorn | In the Third Era it was a city-state under King Tibus and rival to Archon, and the Arnesian War of 3E 396 was fought on its border. | <!-- place_note:thorn/history -->
 | One-Eye | Bramman's Watch | In 4E 196 One-Eye's crews took it, and the watch withdrew to Fort Shellmoth by Soulrest. | <!-- place_note:aphon-belvedere/history -->
+| Vosh-Leera | Jal-Veesa | The elders' long house is Vosh-Leera's: she heads the elders' household. | <!-- place_note:jal-veesa/hooks -->
 | Warden Quintus Varus | Stormhold | It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E and was overrun but lightly damaged by Umbriel's undead in 4E 48. | <!-- place_note:stormhold/history -->
 | Warden Varus | Tenmal Pits | The crystals under Stormhold were dug by Warden Varus's prisoners in the 3E; the market remained and private diggers moved in. | <!-- place_note:mine-5-m64/history -->

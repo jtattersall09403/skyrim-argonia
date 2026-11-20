@@ -571,4 +571,4 @@ What a story writer will want and the database does not hold. These are for the 
 - How many live in Jal-Veesa: the place row says 22 (its source's residents), the person table names 19.
 - Built places: only Ashgate Landing, Helstrom, Jal-Veesa, Karsh-Naal Camp, Reed-Sill Weir and Teel-Fen Weir is drafted; every other place is a record and a source, not yet ground a quest can be checked against.
 
-The region files list 652 hooks the notes already hold.
+The region files list 653 hooks the notes already hold.
