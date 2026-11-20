@@ -173,3 +173,8 @@ def test_inside_a_box_is_a_fault_only_when_the_picture_agrees():
     assert pw.classify("ahead", "stride", air)["verdict"] == "good"     # under a deck on stilts: air
     solid = air | {"fills": [{"edid": "MurkmirePlatformBase01", "share": 0.9}]}
     assert pw.classify("ahead", "stride", solid)["fault"] == "place"
+
+
+def test_a_deck_overhead_is_not_a_fault_looking_up():
+    over = {"all_inside": "Deck", "in_piece": "Deck", "fills": [{"edid": "Deck", "share": 0.8}], "land": 0.1}
+    assert pw.classify("up", "stride", over)["verdict"] == "good"

@@ -44,7 +44,7 @@ NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
 DOOR_OVER = 150.0     # a door this far over the end of the walk to it: its arrival lies under it
-TOOL = 2             # the judging rules version: a route shot under older rules is shot again
+TOOL = 3             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
@@ -461,7 +461,7 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
     the share of the frame that is nothing). Returns {verdict good|failed, fault capture|place|None, why}.
     A piece's box is not its shape: the camera inside a box (the air under a deck on stilts, between a tree's roots)
     is a fault only when the picture agrees, that piece filling over half the frame."""
-    if (ev.get("all_inside") or ev.get("inside")) and not boxed_in(ev):
+    if (ev.get("all_inside") or ev.get("inside")) and (not boxed_in(ev) or look == "up"):   # a deck overhead fills an up look
         ev = dict(ev, all_inside=None, inside=None)
     if ev.get("all_inside"):
         p = ev["all_inside"]
