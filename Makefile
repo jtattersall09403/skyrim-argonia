@@ -4,12 +4,12 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: atlas storyexplorer check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
+.PHONY: atlas storyexplorer consistency check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
 check:
 	@GATE_PY=$(PY) $(PY) tooling/gate.py run $(if $(GATE_BASE),--base $(GATE_BASE)) $(GATE_PATHS)
 
-check-all: guard lint unit adaptation questtext questform reach storyexplorer atlas
+check-all: guard lint unit adaptation questtext questform reach storyexplorer atlas consistency
 	@echo "CHECK GREEN (all)"
 
 guard:
@@ -47,6 +47,11 @@ storyexplorer:
 # The Atlas (the map page) is published from the current place records (tools/newworld/atlas_state.py).
 atlas:
 	@python3 -m tools.newworld.atlas_state check
+
+# Every new-world data record against every other (tools/newworld/consistency.py, decision 0040): report-only, counts
+# per cause against tools/newworld/consistency_baseline.json; `--baseline` re-records it as the lanes fix records.
+consistency:
+	@$(PY) -m tools.newworld.consistency --summary
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

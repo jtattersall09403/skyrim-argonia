@@ -1,0 +1,32 @@
+{
+ "total": 623,
+ "causes": {
+  "atlas: a town or city on no road": 4,
+  "atlas: the footprint is too big for its tier": 1,
+  "draft: a draft with no built check": 1,
+  "draft: a draft with no plan": 6,
+  "draft: the draft's people differ from the population": 5,
+  "generated: the story digest is behind its sources": 1,
+  "ground: a Hist pool the record never calls sap": 3,
+  "ground: a Hist pool worded as water, not sap": 2,
+  "ground: a water word with no such water on the ground": 6,
+  "ground: on_water disagrees with the raster": 8,
+  "ground: siting without its water": 3,
+  "internal: a dead place with people": 1,
+  "internal: a friendly place gives a fight inside it": 24,
+  "internal: a give the record's words never name": 1,
+  "internal: a hostile or abandoned place offers a service": 19,
+  "internal: more than one treasure": 67,
+  "internal: population out of order with its peers": 94,
+  "internal: population outside its settlement tier": 47,
+  "internal: the people note's number differs from the population": 2,
+  "internal: trade with no people to keep it": 6,
+  "source: a Nordic source whose note does not replace its Nordic pieces": 76,
+  "source: a main-quest place whose source is not judged": 43,
+  "source: the source note names another source than the allocated one": 11,
+  "story: a quest asks of a place what its record and draft lack (main quest: the record is wrong)": 3,
+  "story: a quest names a faction not in the records": 3,
+  "story: a quest names a room the draft does not have (main quest: the record is wrong)": 15,
+  "story: a quest placement with no spot in its place's quests.jsonl": 171
+ }
+}

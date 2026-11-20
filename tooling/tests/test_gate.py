@@ -13,10 +13,10 @@ STORY = {"tools/tests/test_newworld_story_explorer.py", "tools/tests/test_newwor
          "tools/tests/test_places_needs.py", "tools/tests/test_newworld_story_digest.py"}
 
 
-def test_story_markdown_runs_the_explorer_and_story_tests_only():
+def test_story_markdown_runs_the_explorer_consistency_and_story_tests_only():
     p = gate.pick(["story/design/owner-bar.md"])
     assert not p.full
-    assert p.stages == {"storyexplorer"}
+    assert p.stages == {"storyexplorer", "consistency"}  # the consistency checker reads the story pages too
     assert STORY <= p.tests
     assert len(p.tests) < 15
     assert "tooling/tests/test_job_guard.py" not in p.tests
