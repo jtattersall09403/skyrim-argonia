@@ -532,28 +532,9 @@
    ],
    "gives": [
     {
-     "kind": "combat-foes",
-     "detail": "ghosts and restless dead in Castle Giovesse's halls and cells",
-     "count": 1,
-     "reward": "treasure",
-     "setting": "interior"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the ghost of the castle's last gaoler, in the cell block",
-     "count": 1,
-     "reward": "boss-chest",
-     "setting": "interior"
-    },
-    {
      "kind": "boss-chest",
      "detail": "the gaoler's chest in Tavia's old cell",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "urns and a rotted strongbox in the castle halls",
-     "count": 3
     },
     {
      "kind": "free-bed",
@@ -2094,11 +2075,6 @@
      "count": 3
     },
     {
-     "kind": "shrine-blessing",
-     "detail": "the altar of Dibella, kept with flowers and wine by Gideon's Nibenese pilgrims, who tend it as a living shrine",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "mangrove crocodiles and mudcrabs at the landing",
      "count": 1,
@@ -3111,11 +3087,6 @@
      "kind": "treasure",
      "detail": "goods in rotted crates in the hall",
      "count": 2
-    },
-    {
-     "kind": "free-bed",
-     "detail": "the hunters' bedrolls by the hearth",
-     "count": 1
     }
    ]
   },
@@ -9921,21 +9892,6 @@
      "count": 1
     },
     {
-     "kind": "free-bed",
-     "detail": "a bunk in the view-house for a member of the Brethren",
-     "count": 1
-    },
-    {
-     "kind": "trainer",
-     "detail": "Journeyman One-Handed trainer, Bar-Neeus the bosun",
-     "count": 1
-    },
-    {
-     "kind": "fence",
-     "detail": "Selvo Arenim, the quartermaster, who buys prize goods from a member",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "bay fish off the landing",
      "count": 1
@@ -10715,11 +10671,6 @@
      "count": 3
     },
     {
-     "kind": "boss-chest",
-     "detail": "the captain's chest in the stern cabin",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "clams on the sand round the hull",
      "count": 1
@@ -10984,11 +10935,6 @@
      "kind": "treasure",
      "detail": "oilcloth bundles of Valenwood silk and moon sugar in the hold",
      "count": 2
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "the captain's strongbox wedged in the cleft below the hull",
-     "count": 1
     }
    ]
   },

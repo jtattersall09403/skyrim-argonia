@@ -4451,11 +4451,6 @@
      "kind": "boss-chest",
      "detail": "boss chest in the nest gallery",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "travellers' goods heaped in the larder: a prospector's pick",
-     "count": 1
     }
    ]
   },
@@ -4743,11 +4738,6 @@
     {
      "kind": "boss-chest",
      "detail": "boss chest in the chief's tent",
-     "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "the caravan guards' gear on the feather poles",
      "count": 1
     },
     {
@@ -5331,11 +5321,6 @@
      "kind": "trader-general",
      "detail": "the potters sell clay pots, food and goods",
      "count": 1
-    },
-    {
-     "kind": "ore-vein",
-     "detail": "clay deposit on the lake shore (Hearthfire's clay)",
-     "count": 2
     },
     {
      "kind": "fishing",

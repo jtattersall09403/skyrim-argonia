@@ -3283,11 +3283,6 @@
      "kind": "boss-chest",
      "detail": "the undercroft altar",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "Welkynd stones in the wall sconces",
-     "count": 2
     }
    ]
   },
@@ -4886,11 +4881,6 @@
      "kind": "arcane-enchanter",
      "detail": "the Enchanter's workbench",
      "count": 1
-    },
-    {
-     "kind": "shrine-blessing",
-     "detail": "the Veesa-Teeleel's Hist-shoot outside the walls: a blessing of resist poison, given by their ruin-wardens",
-     "count": 1
     }
    ]
   },
@@ -5142,11 +5132,6 @@
     {
      "kind": "boss-chest",
      "detail": "the Fenlord's sarcophagus",
-     "count": 1
-    },
-    {
-     "kind": "gold-hoard",
-     "detail": "the Fenlord's vault",
      "count": 1
     }
    ]
@@ -5877,11 +5862,6 @@
      "kind": "boss-chest",
      "detail": "the flooded lower rooms",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "Welkynd stones in the arches",
-     "count": 2
     }
    ]
   },
@@ -7321,7 +7301,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "A river village at the empty stone chapel of the Maran mission, in the far west. Its people live around a church that the swamp overgrew two centuries ago.",
+   "summary": "A river village at the disused stone chapel of the Maran mission, in the far west. Its people live around a church that the swamp overgrew two centuries ago.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],

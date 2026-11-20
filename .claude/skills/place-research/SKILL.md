@@ -52,11 +52,16 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
 7. List what the place gives the player as `gives` (FORMAT.md, Gives): hard gameplay, never local colour, from
    the whole range Skyrim's places give, several kinds and several of a kind where the place has them. A fight
    always names its reward. A note or a give promises only what Skyrim's own systems deliver (FORMAT.md,
-   Deliverable in Skyrim).
+   Deliverable in Skyrim). The gives fit the place: a hostile or abandoned place offers no service (no trader,
+   bed, trainer, blessing or fence); a place holds one loot store, and a further store only as the reward of its
+   own fight; a trade or an inn needs people to run it; an ore vein needs a mine, quarry, pit or seam the record
+   names.
 8. Give a settlement no hostile occupants and no other place (a village, a camp, a ruin) folded inside it: its
-   extent contains only its own people and buildings. Danger inside a city or town lives in a dungeon-like
-   interior of it: a cellar, a sewer, a vault, a drowned under-layer, as Riften keeps its thieves in the Ratway.
-   A fight just outside it (raiders at its landing, robbers on its road) is an encounter near it: the combat give
+   extent contains only its own people and buildings. A friendly settlement gives no fight against people, inside
+   or near it: the raiders at its landing, the robbers on its road and the haunted cellar under it are named in
+   its `dangers` note, and a quest that needs the fight brings it. A wary settlement's fight inside lives in a
+   dungeon-like interior of it: a cellar, a sewer, a vault, a drowned under-layer, as Riften keeps its thieves in
+   the Ratway. A wary settlement's fight just outside it is an encounter near it: the combat give
    names `setting: nearby`, the `spot` in the record's own words, and a `bearing_deg` and `distance_m` from the
    place's centre that put it beyond its footprint (the footprint plus about 80 m, toward the water, road, pass or
    neighbour the spot names), and its reward give is marked `nearby` too. A separate village or ruin near a
@@ -88,7 +93,9 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    nor the same sentence with only names swapped; the build runs with no place left unresearched;
    `python3 -m tools.newworld.place_danger check`, `python3 -m tools.newworld.travel check` and
    `python3 -m tools.newworld.record_check` (population against tier and peers, water words and siting against the
-   ground, Hist pools as sap) show 0 problems. A water fault is fixed in the record's words, never by moving the place.
+   ground, Hist pools as sap, and the gives against the disposition: no fight against people at a friendly lived
+   place, no service at a hostile or abandoned one, a second loot store only as a fight's reward, a trade only
+   with people, an ore vein only with a mine) show 0 problems. A water fault is fixed in the record's words, never by moving the place.
 3. Text review (the `text-review` skill) by someone other than the writer: reader passes over the exported prose,
    the rewrites applied, then the linter at 0 hard hits.
 4. Whenever the places or the travel network changed, rebuild the Atlas

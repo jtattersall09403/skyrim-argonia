@@ -916,13 +916,6 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "Smugglers holed up in the drowned Imperial cellars under Pusbottom, reached by a hatch from the walkways",
-     "count": 2,
-     "reward": "treasure",
-     "setting": "interior"
-    },
-    {
      "kind": "treasure",
      "detail": "Salvage from the drowned Imperial villas",
      "count": 3
@@ -1815,7 +1808,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six households cut, dry and bundle reed and trap eels and crabs. The hamlet is quiet and few outsiders come.",
+     "text": "Six households cut, dry and bundle reed and pot eels and crabs. The hamlet is quiet and few outsiders come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1951,7 +1944,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low reed-thatch houses, hide tents on cypress platforms raised on posts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water.",
+     "text": "Low reed-thatch houses, hide tents on cypress platforms raised on posts above hummocks, tall drying racks of pale reed and eel pots hung like baskets over the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3241,22 +3234,6 @@
      "kind": "fishing",
      "detail": "estuary fishing from the plank landing",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "drunk sailors and smugglers at the night quay",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the night quay's far end, below the landing on the channel",
-     "bearing_deg": 224,
-     "distance_m": 120
-    },
-    {
-     "kind": "treasure",
-     "detail": "a smuggler's cache under the landing",
-     "count": 1,
-     "setting": "nearby"
     }
    ]
   },
@@ -4186,11 +4163,6 @@
      "count": 2
     },
     {
-     "kind": "free-bed",
-     "detail": "dry sleeping pallets in the upper floor",
-     "count": 3
-    },
-    {
      "kind": "harvest-common",
      "detail": "reeds and bog plants on the rise",
      "count": 3
@@ -4495,11 +4467,6 @@
    ],
    "gives": [
     {
-     "kind": "shrine-blessing",
-     "detail": "the east ancestor niche, kept by Archon's Dunmer families: cures disease and resist disease 25% for 8 hours",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Velothi ancestor ghosts and undead guards in the lower rooms",
      "count": 4,
@@ -4515,11 +4482,6 @@
      "kind": "boss-chest",
      "detail": "boss chest in the inner dome",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "grave-goods in the niches, ash-bowls and old coin",
-     "count": 3
     },
     {
      "kind": "harvest-rare",
@@ -5091,18 +5053,7 @@
     {
      "kind": "treasure",
      "detail": "a cutpurses' stash",
-     "count": 1,
-     "setting": "nearby"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "cutpurses on the Lilmoth road",
-     "count": 2,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the Lilmoth road outside the village",
-     "bearing_deg": 102,
-     "distance_m": 140
+     "count": 1
     }
    ]
   },
@@ -5719,22 +5670,6 @@
      "kind": "fishing",
      "detail": "north-shore fishing",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "deserters from Fort Reedmoth in the reeds",
-     "count": 3,
-     "reward": "treasure",
-     "setting": "nearby",
-     "spot": "the reeds along the north shore",
-     "bearing_deg": 342,
-     "distance_m": 140
-    },
-    {
-     "kind": "treasure",
-     "detail": "a deserter's hoard",
-     "count": 1,
-     "setting": "nearby"
     }
    ]
   },
@@ -6473,7 +6408,7 @@
    "siting": "inland",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "Dunhallow is a rice estate north-west of Lilmoth, set in the shell of a Breton planter's house that stood empty from the Third Era. A Lilmoth family took it over in the generations after 4E 48, and tenant kin work its paddies.",
+   "summary": "Dunhallow is a rice estate north-west of Lilmoth, set in the shell of a Breton planter's house that stood unused from the Third Era. A Lilmoth family took it over in the generations after 4E 48, and tenant kin work its paddies.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -6840,12 +6775,6 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "night thieves on the Lilmoth road",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
      "detail": "the planters' strongbox in the walled cellar",
      "count": 1
@@ -6863,7 +6792,7 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Silt-Orrel is a small rice and reed estate on the road north of Lilmoth, set in the shell of an Archein planter's house. An Argonian family took the empty house after 4E 48 and hires out its boats to Lilmoth's harbour.",
+   "summary": "Silt-Orrel is a small rice and reed estate on the road north of Lilmoth, set in the shell of an Archein planter's house. An Argonian family took the unused house after 4E 48 and hires out its boats to Lilmoth's harbour.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -7212,12 +7141,6 @@
      "kind": "combat-creature",
      "detail": "mudcrabs and slaughterfish in the reed channels",
      "count": 4,
-     "reward": "treasure"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "night thieves on the north road",
-     "count": 3,
      "reward": "treasure"
     },
     {
@@ -7591,12 +7514,6 @@
     {
      "kind": "combat-creature",
      "detail": "crocodilians in the shore dykes",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "smugglers using the landing at night",
      "count": 3,
      "reward": "treasure"
     },
@@ -9986,16 +9903,6 @@
      "kind": "boss-chest",
      "detail": "boss chest in the strongroom behind the iron door",
      "count": 1
-    },
-    {
-     "kind": "treasure",
-     "detail": "bandit loot from the road",
-     "count": 2
-    },
-    {
-     "kind": "fence",
-     "detail": "the bandits' dealer, who buys stolen goods and sells off the island road's takings",
-     "count": 1
     }
    ]
   },
@@ -10723,11 +10630,6 @@
      "kind": "treasure",
      "detail": "crates of stolen goods and moon sugar: coins",
      "count": 2
-    },
-    {
-     "kind": "fence",
-     "detail": "the smuggler captain buys stolen goods, no questions asked",
-     "count": 1
     },
     {
      "kind": "harvest-common",
@@ -12980,11 +12882,6 @@
      "count": 2
     },
     {
-     "kind": "boss-chest",
-     "detail": "the salvage master's locked chest in the stern cabin",
-     "count": 1
-    },
-    {
      "kind": "harvest-common",
      "detail": "Pearl clams in the silt around the hull",
      "count": 1
@@ -14067,11 +13964,6 @@
      "kind": "boss-chest",
      "detail": "Chest in the nest",
      "count": 1
-    },
-    {
-     "kind": "gold-hoard",
-     "detail": "The dreugh hoard of coin and gems",
-     "count": 1
     }
    ]
   },
@@ -14764,11 +14656,6 @@
    ],
    "gives": [
     {
-     "kind": "shrine-blessing",
-     "detail": "Hist-sap shrine on the summit: cures disease and gives eight hours of waterbreathing to a diver who leaves an offering and touches the sap",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "Slaughterfish at the spire foot",
      "count": 4,
@@ -15130,11 +15017,6 @@
      "count": 2
     },
     {
-     "kind": "boss-chest",
-     "detail": "The failed crew's trapped cache",
-     "count": 1
-    },
-    {
      "kind": "harvest-common",
      "detail": "Kelp and sea-grass around the anchor chains",
      "count": 1
@@ -15493,11 +15375,6 @@
     {
      "kind": "boss-chest",
      "detail": "the priest's chest in the inner gallery",
-     "count": 1
-    },
-    {
-     "kind": "gold-hoard",
-     "detail": "the temple hoard of coin and gems in the inner gallery",
      "count": 1
     }
    ]
