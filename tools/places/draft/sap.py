@@ -8,8 +8,8 @@ the crown: its reach is the trunk's radius at its foot (TRUNK_R per Hist base, m
 height; else TRUNK_SHARE of the record's half-width), scaled, plus SAP_BAND of open sap, never under MIN_SCALE. It
 lies on the trunk's centre, or off it by an offset (`draft.sap.offset` of place.json: [dx, dy], or {hist id: [dx,
 dy]}), else one the stage chooses: toward the side with the most of the pool open to the sky (no deck, walkway or
-platform over it), the trunk kept inside the sap, when that uncovers a tenth more of the pool than centring does.
-Its surface is seated `stilts` over its whole outline, rim and all (the lowest of ground or water under it, DZ
+platform over it, nor the trunk's own foot), the trunk kept inside the sap, when a deck lies over the centred pool and
+the offset uncovers a tenth more of it. Its surface is seated `stilts` over its whole outline, rim and all (the lowest of ground or water under it, DZ
 above), so a person at the rim looks down onto sap, never up over a lip. The stage's hollow (a land patch, `by`
 "sap") lowers the ground inside the outline to under the surface, and the rim one vertex round it to the surface
 (RIM_LIP over it), so the rim is level all round; never raised, never across the waterline, no vertex lowered more
@@ -114,11 +114,15 @@ def covers(ext: list[dict], bases: dict) -> list[tuple]:
     return out
 
 
-def open_share(cx: float, cy: float, rad: float, boxes: list[tuple]) -> float:
-    """The share of a round pool's points (rings at 0.2..1.0 of rad, 16 to a ring, and the centre) under no box."""
+def open_share(cx: float, cy: float, rad: float, boxes: list[tuple], trunk=None) -> float:
+    """The share of a round pool's points (rings at 0.2..1.0 of rad, 16 to a ring, and the centre) under no box and
+    outside the trunk's foot (trunk: (x, y, r)), the sap a person can see."""
     pts = [(cx, cy)] + [(cx + rad * k / 5 * math.cos(a * math.pi / 8), cy + rad * k / 5 * math.sin(a * math.pi / 8))
                         for k in range(1, 6) for a in range(16)]
-    return sum(not any(x0 <= x <= x1 and y0 <= y <= y1 for x0, y0, x1, y1 in boxes) for x, y in pts) / len(pts)
+    def seen(x, y):
+        return not any(x0 <= x <= x1 and y0 <= y <= y1 for x0, y0, x1, y1 in boxes) \
+            and not (trunk and math.dist((x, y), trunk[:2]) <= trunk[2])
+    return sum(seen(x, y) for x, y in pts) / len(pts)
 
 
 def offset(t: dict, base: dict, boxes: list[tuple], given=None) -> tuple[float, float]:
@@ -129,13 +133,16 @@ def offset(t: dict, base: dict, boxes: list[tuple], given=None) -> tuple[float, 
     s = float(t.get("scale", 1.0))
     rad, tr = reach(base, s), trunk_r(base, s)
     x, y = t["pos"][0], t["pos"][1]
-    best, at = open_share(x, y, rad, boxes), (0.0, 0.0)
+    if open_share(x, y, rad, boxes) >= 1.0:   # no deck over the pool on its trunk: it stays there
+        return 0.0, 0.0
+    foot = (x, y, tr)
+    best, at = open_share(x, y, rad, boxes, foot), (0.0, 0.0)
     base_share = best
-    for k in (0.5, 1.0):
-        d = k * max(0.0, rad - tr)
+    for k in (0.5, 1.0, 1.5):              # at most the trunk's foot at the sap's edge
+        d = min(k * max(0.0, rad - tr), 0.8 * rad)
         for a in range(8):
             o = (round(d * math.cos(a * math.pi / 4), 1), round(d * math.sin(a * math.pi / 4), 1))
-            sh = open_share(x + o[0], y + o[1], rad, boxes)
+            sh = open_share(x + o[0], y + o[1], rad, boxes, foot)
             if sh > best + 1e-9:
                 best, at = sh, o
     return at if best >= base_share + OPEN else (0.0, 0.0)
