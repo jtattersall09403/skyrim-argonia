@@ -1,0 +1,44 @@
+{
+ "save_id": "agent-20261120T161332",
+ "place_id": "jal-veesa",
+ "name": "the Treeminder's porch gets its own flight to the ground, west, clear of the Hist's roots",
+ "at": "2026-11-20T16:13:32Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK011STEPS",
+    "base": "King of the Murkmire.esp:1616D5",
+    "kind": "building",
+    "pos": [
+     -57198.76,
+     -504426.92,
+     426.58
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -497.45
+    },
+    "why": "the Treeminder's own way down from its porch to the ground, west, clear of the Hist's roots",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T16:13:32Z"
+  }
+ ]
+}
