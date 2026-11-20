@@ -9,7 +9,7 @@ import time
 
 import numpy as np
 
-from tools.places.look import canopy, draw, geom, hands, room
+from tools.places.look import canopy, capture, draw, framing, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
@@ -162,7 +162,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     inside = space != "exterior"
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
-                          "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False})
+                          "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
+                          "once": False})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -199,8 +200,12 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         seen_past["cut_at"] = round(z)
         return c | {"canopy": {"z": z}}
 
-    def shot(c):   # each frame with the built mesh over it when asked (a section keeps its slab's triangles)
-        img_, r_ = raw_shot(c)
+    def shot(c, th_=None):   # each frame judged by its id buffer; the built mesh over it when asked
+        img_, r_ = raw_shot(c | {"ids": True, "subject": [p_["id"] for p_ in (th_ or {}).get("pieces", [])][:400]})
+        if "ids" in r_:
+            r_["score"], ids_ = judge(sc, c, r_, th_, inside)
+            img_ = capture.hatch(img_, ids_, r_["table"], r_["id0"], helper_label(sc))
+            r_["ids_arr"] = ids_
         if M is not None:
             keep_ = None
             if c.get("line"):
@@ -212,16 +217,18 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         return img_, r_
     if verb == "at":
         th = sc.resolve(pos[0])
-        cam = cam or (room_cam(sc, th, side, height, w, h, o) if inside else
-                      geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"])))
-        cam = past_trees(cam | {"grass": bool(o.get("grass")), "space": space}, th)
-        img, r = shot(cam)
-        timing |= {k: r.get(k) for k in ("ms", "draw_ms", "render_ms", "calls", "triangles")}
-        if not plain:
-            img, labels = draw.annotate(img, cam, sc, th, faults, f"{th['name']} from {side.upper()}, {height}")
-        res = {"cam": cam, "img": img}
-        if not keep:
-            res = {"png": _save(img, _out(place, f"at-{_slug(th['name'])}-{side}"), cam), "thing": th["name"], "kind": th["kind"]}
+        if cam:   # a hand's before and after, or a compare: the same camera twice
+            img, r = shot(cam, th)
+            res = {"cam": cam, "img": img if plain else draw.annotate(img, cam, sc, th, faults, th["name"])[0]}
+        else:
+            got = framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, shot, past_trees)
+            timing |= got.pop("timing")
+            img = got["img"]
+            res = {"cam": got["cam"], "img": img}
+            if not keep:
+                res = {k: v for k, v in got.items() if k not in ("img", "cam", "ids", "meta")}
+                res["png"] = _save(img, _out(place, f"at-{_slug(th['name'])}-{got['side']}"), got["meta"])
+                save_ids(res["png"], got["ids"])
     elif verb == "orbit":
         th = sc.resolve(pos[0])
         tw, thh = w // 2 * 2 // 2, h // 2 * 2 // 2
@@ -230,17 +237,17 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             c = room_cam(sc, th, s, height, tw, thh, o) if inside else \
                 geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
             c = past_trees(c, th)
-            img, r = shot(c)
+            img, r = shot(c, th)
             rms.append(r["ms"])
             if not plain:
                 img, _ = draw.annotate(img, c, sc, th, faults, f"from {s.upper()}")
-            tiles.append(img)
-            caps.append(f"{th['name']} from {s.upper()}")
+            tiles.append(mark(img, r.get("score")))
+            caps.append({"side": s} | (r.get("score") or {}))
         img = draw.sheet(tiles, 2)
         timing |= {"shot_ms": rms}
         res = {"cam": None, "img": img}
         if not keep:
-            res = {"png": _save(img, _out(place, f"orbit-{_slug(th['name'])}")), "thing": th["name"]}
+            res = {"png": _save(img, _out(place, f"orbit-{_slug(th['name'])}")), "thing": th["name"], "tiles": caps}
     elif verb == "walk":
         a, b = sc.resolve(pos[0]), sc.resolve(pos[1])
         pa, pb = _point(a), _point(b)
@@ -250,13 +257,15 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         tw, thh = w // 2, h // 2
         tiles, caps, rms = [], [], []
         for i, (p, dv) in enumerate(geom.stations(way, n)):
-            g = sc.ground.height(*p)
-            g = getattr(sc.ground, "floor", 0.0) if g is None else g
-            sup = None if inside else geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)   # a room: its floor
-            z = max(g, geom.aabb(sc.by_id[sup])[1][2] if sup else g)
-            c = {"pos": [p[0] - dv[0] * 60, p[1] - dv[1] * 60, z + geom.EYE], "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, z + geom.EYE * 0.7],
+            # a person's eye on the walkable ground or a deck at the station, stepped aside out of any piece
+            st = framing.stand(p, [-dv[0], -dv[1]], 60.0, floor_fn(sc, place, inside), framing.blocker(sc.everything(), sc.ground),
+                               scales=(1.0, 0.0, 2.0, 3.0), turns=(0, 90, -90, 180))
+            eye = st["pos"] if st else [p[0], p[1], _floor_at(sc, p[0], p[1]) + geom.EYE]
+            c = {"pos": eye, "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, eye[2] - geom.EYE * 0.3],
                  "up": [0, 0, 1], "fov": 70, "w": tw, "h": thh, "near": 8, "far": 7000}
             img, r = shot(c)
+            img = mark(img, r.get("score"))
+            caps.append({"station": i + 1} | {k: v for k, v in (r.get("score") or {}).items() if k in ("capture", "why", "occluders")})
             rms.append(r["ms"])
             heading = (math.degrees(math.atan2(dv[0], dv[1])) + 360) % 360
             if not plain:
@@ -266,7 +275,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         timing |= {"shot_ms": rms}
         res = {"cam": None, "img": img}
         if not keep:
-            res = {"png": _save(img, _out(place, f"walk-{_slug(a['name'])}-{_slug(b['name'])}")), "route_len": round(_len(way)),
+            res = {"png": _save(img, _out(place, f"walk-{_slug(a['name'])}-{_slug(b['name'])}")), "route_len": round(_len(way)), "tiles": caps,
                    "route": [[round(v) for v in q] for q in way]}
     elif verb == "section":
         slab = float(o.get("slab", 96))
@@ -334,6 +343,166 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
+
+
+# ---------- what each capture shows, and trying again when it shows too little ----------
+def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
+    """The capture's score from its id buffer (capture.score) and where its camera stands."""
+    ids = capture.decode(r["ids"], c["w"], c["h"])
+    if not hasattr(sc, "_names"):
+        sc._names = {p["id"]: {"edid": p.get("edid"), "kind": p.get("kind")} for p in sc.everything()}
+    ins = None
+    if not c.get("ortho"):
+        ins = _blocker(sc, inside)(c["pos"])
+    subj = {p["id"] for p in (th or {}).get("pieces", [])}
+    s = capture.score(ids, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
+                      ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")))
+    return s, ids
+
+
+def _blocker(sc, inside):
+    if not hasattr(sc, "_blocked"):
+        sc._blocked = framing.blocker(sc.everything(), None if inside else sc.ground)
+    return sc._blocked
+
+
+def helper_label(sc):
+    def label(row):
+        p = sc.by_id.get(row[0]) or {"model": row[2]}
+        if row[3]:
+            return f"model did not load: {row[2].rsplit(chr(92), 1)[-1]} ({p.get('edid') or row[0]})"
+        return f"{capture.helper_kind(p) or 'helper'}: {p.get('edid') or row[2]}"
+    return label
+
+
+def mark(img, score: dict | None):
+    """A failed capture carries its reason in a red banner across it."""
+    if score and score.get("capture") == "failed":
+        return capture.banner(img, score.get("why", ""))
+    return img
+
+
+def save_ids(png: str, got: dict | None) -> None:
+    """The id buffer beside the image, for pick: what is drawn at each pixel."""
+    if not got:
+        return
+    np.savez_compressed(png + ".ids.npz", **{f"ids{k}": t["ids"].astype(np.int32) for k, t in enumerate(got)},
+                        tables=json.dumps([t["table"] for t in got]), id0=got[0]["id0"])
+
+
+def floor_fn(sc, place, inside):
+    """Where a person stands at (x, y): the built walkable mesh where it is loaded (the triangle nearest the ground),
+    else the top of a deck, bridge or walkway over the ground there, else the ground."""
+    if inside:
+        return lambda x, y: _floor_at(sc, x, y)
+    M = next((m for k, m in _MESH.items() if f"/{place}/" in k[0] or place in k[0]), None)
+    decks = [(p, *geom.aabb(p)) for p in sc.pieces if geom.is_span(p) and p.get("model")]
+
+    def f(x, y):
+        g = sc.ground.height(x, y)
+        if g is None:
+            return None
+        if M is not None:
+            t, z = M.tri_at(x, y, g, tol=600)
+            if t >= 0:
+                return float(z)
+        top = None
+        for p, lo, hi in decks:
+            if lo[0] <= x <= hi[0] and lo[1] <= y <= hi[1] and g - 50 <= hi[2] <= g + 600:
+                top = max(top or -1e9, float(hi[2]))
+        return top if top is not None else float(g)
+    return f
+
+
+def make_cam(sc, place, th, side, height, w, h, o, inside, scale, gz) -> dict | None:
+    """One try's camera: framed on the thing from a side and height, `scale` times as far; from the eye, standing on
+    what a person stands on, never inside a piece (None when no such spot is near)."""
+    if inside:
+        return room_cam(sc, th, side, height, w, h, o)
+    c = geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=gz, fill=0.85 / scale)
+    if height != "eye":
+        return c
+    t = np.asarray(c["target"], float)
+    away = np.asarray(c["pos"], float)[:2] - t[:2]
+    want = float(np.linalg.norm(away))
+    st = framing.stand(t, away, want, floor_fn(sc, place, inside), _blocker(sc, inside))
+    if st is None:
+        return None
+    c["pos"] = st["pos"]
+    horiz = float(np.linalg.norm(np.asarray(st["pos"][:2]) - t[:2]))
+    mid = (float(th["lo"][2]) + float(th["hi"][2])) / 2
+    c["target"][2] = round(max(gz + geom.EYE * 0.6, min(mid, st["pos"][2] + horiz * 0.25)), 2)
+    c["far"] = round(horiz + 3 * want + 2000)
+    c["stood"] = {"floor": st["floor"], "scale": st["scale"], "turn": st["turn"]}
+    return c
+
+
+def framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, shot, past_trees) -> dict:
+    """`at`: the asked view, judged; when it fails, the next try (other sides, further, higher, the canopy cut) until
+    one is good or none is to be had. A tall thing (a great tree, a pyramid) is framed whole, and a second view shows
+    its base."""
+    t0 = time.time()
+    gz = sc.ground_under(th["lo"], th["hi"])
+    tall = not inside and framing.is_tall(th["lo"], th["hi"]) and height in ("oblique", "eye")
+    attempts, metas, idl = [], [], []
+
+    def first_good(sub, hh0, title, part=False):
+        best = None
+        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12):
+            c = make_cam(sc, place, sub, s, hh, w, h, o, inside, scale, gz)
+            att = {"view": title, "side": s, "height": hh, "distance": scale, "canopy_cut": cut}
+            if c is None:
+                attempts.append(att | {"capture": "failed", "why": "no spot a person can stand there"})
+                continue
+            c |= {"grass": bool(o.get("grass")), "space": space, "part": part}
+            c = (c | {"canopy": {"z": canopy.cut_height(gz)}}) if cut and not inside else past_trees(c, th)
+            img, r = shot(c, th)
+            sco = r.get("score") or {"capture": "good"}
+            if not plain:
+                img, _ = draw.annotate(img, c, sc, sub, faults, f"{th['name']}{title} from {s.upper()}, {hh}"
+                                       f"{', x%.1f' % scale if scale != 1 else ''}{', canopy cut' if cut else ''}")
+            att |= {k: v for k, v in sco.items()}
+            got = (img, r, c, att)
+            if sco["capture"] == "good":
+                return got
+            att["png"] = _save(mark(img, sco), _out(place, f"at-failed-{_slug(th['name'])}-{s}-{hh}"), c)
+            attempts.append(att)
+            if best is None or sco.get("subject_seen", 0) > best[3].get("subject_seen", 0):
+                best = got
+        if best is None:
+            return None
+        img, r, c, att = best
+        return mark(img, att), r, c, att | {"none_good": True}
+
+    views = [(th, "oblique" if tall else height, " whole" if tall else "", False)]
+    if tall:
+        lo, hi = framing.base_box(th["lo"], th["hi"])
+        views.append((dict(th, lo=lo, hi=hi), "eye", " base", True))
+    shots, final = [], []
+    for sub, hh0, title, part in views:
+        got = first_good(sub, hh0, title, part)
+        if got is None:
+            final.append({"view": title.strip() or "view", "capture": "failed", "why": "no camera could be placed"})
+            continue
+        img, r, c, att = got
+        shots.append(img)
+        metas.append(c)
+        idl.append({"ids": r["ids_arr"], "table": r["table"], "id0": r["id0"]} if "ids_arr" in r else None)
+        final.append(att)
+    if not shots:
+        raise ValueError(f"no capture of {th['name']} could be made: {attempts[-1]['why'] if attempts else '?'}")
+    img = shots[0] if len(shots) == 1 else draw.sheet(shots, 2)
+    meta = metas[0] if len(metas) == 1 else metas[0] | {"tiles": metas}
+    out = {"thing": th["name"], "kind": th["kind"], "side": final[0].get("side", side), "views": final, "img": img,
+           "cam": metas[0], "meta": meta, "ids": [x for x in idl if x] or None,
+           "timing": {"tries": len(attempts) + len(final), "framed_s": round(time.time() - t0, 2)}}
+    out["capture"] = "failed" if any(v.get("capture") == "failed" for v in final) else "good"
+    if attempts:
+        out["failed_tries"] = [{k: a[k] for k in ("view", "side", "height", "distance", "canopy_cut", "why", "png") if k in a}
+                               for a in attempts]
+    if out["capture"] == "failed":
+        out["why"] = "no good capture to be had: " + "; ".join(sorted({a.get('why', '') for a in attempts}))[:600]
+    return out
 
 
 # ---------- inside a room ----------
@@ -486,13 +655,27 @@ def _slug(s):
 def pick(d, place, strokes, args) -> dict:
     png, px, py = args[0], float(args[1]), float(args[2])
     cam = json.loads(open(png + ".json").read())
+    k = 0
     if cam.get("tiles"):
         tw = cam["tiles"][0]["w"]
         k = int(px // tw)
         cam, px = cam["tiles"][k], px - k * tw
     sc = d.scene(place, strokes, cam.get("space", "exterior"))
-    hits = geom.pick(cam, px, py, sc.pieces, cam.get("clip"))
+    # what is drawn at the pixel, from the image's own id buffer; then what the ray passes through behind it
+    drawn = None
+    import os
+    if os.path.exists(png + ".ids.npz"):
+        z = np.load(png + ".ids.npz")
+        if f"ids{k}" in z:
+            drawn = capture.ref_at(z[f"ids{k}"], json.loads(str(z["tables"]))[k], int(z["id0"]), px, py)
+            p = sc.by_id.get(drawn.get("ref")) or next((q for q in sc.world if q["id"] == drawn.get("ref")), None)
+            if p is not None:
+                drawn |= {"edid": p.get("edid"), "base": p.get("base"), "structure": p.get("cluster"),
+                          **({"helper": capture.helper_kind(p)} if capture.helper_kind(p) else {})}
+    hits = geom.pick(cam, px, py, sc.everything(), cam.get("clip"))
     out = []
+    if drawn and drawn.get("ref"):
+        hits = [h for h in hits if h[1]["id"] != drawn["ref"]]
     for t, p in hits[:5]:
         lo, hi = geom.aabb(p)
         g = [sc.ground.height(x, y) for x, y, _ in geom.bottom_points(p)]
@@ -507,7 +690,10 @@ def pick(d, place, strokes, args) -> dict:
         if gz is not None and q[2] <= gz:
             ground = [round(float(q[0]), 1), round(float(q[1]), 1), round(float(gz), 1)]
             break
-    return {"hits": out, "ground": ground}
+    if drawn is None:
+        return {"drawn": None, "why": "this image has no id buffer (made before ids were kept): the boxes the ray crosses",
+                "behind": out, "ground": ground}
+    return {"drawn": drawn, "behind": out, "ground": ground}
 
 
 # ---------- commit: the session into the place files ----------

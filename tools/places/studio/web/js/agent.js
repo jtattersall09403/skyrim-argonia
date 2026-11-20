@@ -31,6 +31,119 @@ function canopyCut(view, c, o) {
   return () => { for (const [mat, was] of undo) mat.clippingPlanes = was; };
 }
 
+
+// Things the game never draws (editor markers, collision boxes, triggers, occlusion planes): hidden unless the helpers
+// are asked for. The same rule as tools/places/look/capture.py helper_kind.
+const HELPER = /(^|[\\/])(x?marker|editormarker|idlemarker|furnituremarker|patrolmarker|collision|trigger|occlusion|roommarker|portal)[^\\/]*$|markers?[\\/]/i;
+export const isHelper = (g) => g.kind === 'marker' || HELPER.test(g.base?.model || '') || /marker$|^xmarker|trigger|collision|occlusion/i.test(g.base?.edid || '');
+
+// The id pass: every drawn piece in a colour that names it (instance k of a group: id base + k), the land 1, the
+// water 2, anything else 3, a helper 4; nothing 0. Cut-out leaves are cut as they are drawn; clipping kept.
+const ID0 = 16;
+const idVert = `#include <common>
+#include <clipping_planes_pars_vertex>
+uniform int uBase; varying vec2 vUv; flat varying int vId;
+void main() {
+  vUv = uv; vId = uBase;
+  vec4 mvPosition = vec4(position, 1.0);
+  #ifdef USE_INSTANCING
+    mvPosition = instanceMatrix * mvPosition; vId = uBase + gl_InstanceID;
+  #endif
+  mvPosition = modelViewMatrix * mvPosition;
+  gl_Position = projectionMatrix * mvPosition;
+  #include <clipping_planes_vertex>
+}`;
+const idFrag = `#include <clipping_planes_pars_fragment>
+uniform sampler2D map; uniform float alphaTest; varying vec2 vUv; flat varying int vId;
+void main() {
+  #include <clipping_planes_fragment>
+  #ifdef CUT
+    if (texture2D(map, vUv).a < alphaTest) discard;
+  #endif
+  gl_FragColor = vec4(float(vId & 255) / 255.0, float((vId >> 8) & 255) / 255.0, float((vId >> 16) & 255) / 255.0, 1.0);
+}`;
+const idMats = new WeakMap();
+function idMaterial(mesh, src, id) {
+  let m = idMats.get(mesh);
+  const cut = !!(src?.map && src.alphaTest > 0);
+  if (!m || m.userData.cut !== cut) {
+    m = new THREE.ShaderMaterial({ vertexShader: idVert, fragmentShader: idFrag, clipping: true, defines: cut ? { CUT: '' } : {},
+      uniforms: { uBase: { value: 0 }, map: { value: null }, alphaTest: { value: 0 } } });
+    m.userData.cut = cut; idMats.set(mesh, m);
+  }
+  m.uniforms.uBase.value = id; m.uniforms.map.value = src?.map || null; m.uniforms.alphaTest.value = src?.alphaTest || 0;
+  m.side = src?.side ?? THREE.FrontSide; m.clippingPlanes = src?.clippingPlanes || null;
+  return m;
+}
+function readIds(r, sc, c, w, h) {
+  const rt = new THREE.WebGLRenderTarget(w, h), buf = new Uint8Array(w * h * 4);
+  const bg = sc.background, fog = sc.fog; sc.background = new THREE.Color(0, 0, 0); sc.fog = null;
+  r.setRenderTarget(rt); r.setViewport(0, 0, w, h); r.clear(); r.render(sc, c); r.readRenderTargetPixels(rt, 0, 0, w, h, buf); r.setRenderTarget(null);
+  sc.background = bg; sc.fog = fog; rt.dispose();
+  return buf;
+}
+const b64 = (u8) => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
+function idPass(view, studio, c, w, h, subject) {
+  const sc = view.scene, r = view.renderer, table = [], swap = [];
+  const land = studio.ours.terrainMesh?.group, water = studio.ours.terrainMesh?.water;
+  const groupIds = new Map();
+  for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
+    const n = g.full?.[0]?.visible ? g.full[0].count : 0;
+    if (!n) continue;
+    groupIds.set(g, table.length + ID0);
+    for (let k = 0; k < n; k++) {
+      const ref = g.refs[g.drawnIdx[k]];
+      table.push([ref.id, g.kind, g.base?.model || '', g.fullParts?.placeholder ? 1 : 0, isHelper(g) ? 1 : 0]);
+    }
+  }
+  const under = (o, root) => { for (let q = o; q; q = q.parent) if (q === root) return true; return false; };
+  sc.traverse((o) => {
+    if (!o.isMesh || !o.visible) return;
+    const g = o.userData.group;
+    let id = 3;
+    if (g && groupIds.has(g) && g.full?.includes(o)) id = groupIds.get(g);
+    else if (o.userData.prims || o.userData.lights) id = 4;
+    else if (water && under(o, water)) id = 2;
+    else if (land && under(o, land)) id = 1;
+    else if (g) { swap.push([o, o.material, null]); o.visible = false; return; }   // a stand-in box: not a piece drawn
+    swap.push([o, o.material]); o.material = idMaterial(o, Array.isArray(o.material) ? o.material[0] : o.material, id);
+  });
+  const ids = readIds(r, sc, c, w, h);
+  // the subject alone, from a camera three times as wide (its whole projection, inside the frame or not)
+  let wide = null;
+  if (subject?.length) {
+    const want = new Set(subject), tmp = new THREE.Scene(), made = [];
+    for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
+      if (!g.fullParts || !g.refs.some((x) => want.has(x.id))) continue;
+      const mats = g.matrices.filter((_, i) => want.has(g.refs[i].id));
+      for (const [pi, p] of g.fullParts.entries()) {
+        const m = new THREE.InstancedMesh(p.geometry, undefined, mats.length);
+        m.material = new THREE.ShaderMaterial({ vertexShader: idVert, fragmentShader: idFrag, clipping: true,
+          defines: p.material.map && p.material.alphaTest > 0 ? { CUT: '' } : {}, side: p.material.side,
+          uniforms: { uBase: { value: 5 }, map: { value: p.material.map || null }, alphaTest: { value: p.material.alphaTest || 0 } } });
+        m.material.clippingPlanes = (g.full?.[pi]?.material || p.material).clippingPlanes || null;
+        mats.forEach((mm, i) => m.setMatrixAt(i, mm)); m.frustumCulled = false; tmp.add(m); made.push(m);
+      }
+    }
+    let wc;
+    if (c.isOrthographicCamera) { wc = c.clone(); for (const k of ['left', 'right', 'top', 'bottom']) wc[k] *= 3; }
+    else { wc = c.clone(); wc.fov = 2 * THREE.MathUtils.radToDeg(Math.atan(3 * Math.tan(THREE.MathUtils.degToRad(c.fov) / 2))); }
+    wc.updateProjectionMatrix();
+    const ww = Math.round(w / 2), wh = Math.round(h / 2), buf = readIds(r, tmp, wc, ww, wh);
+    let total = 0, centre = 0;
+    for (let y = 0; y < wh; y++) for (let x = 0; x < ww; x++) {
+      if (buf[(y * ww + x) * 4] !== 5) continue;
+      total++; if (x >= ww / 3 && x < ww * 2 / 3 && y >= wh / 3 && y < wh * 2 / 3) centre++;
+    }
+    // counted at a quarter of the pixels over nine times the area: scaled to the frame's own pixels
+    const k = (9 * w * h) / (ww * wh);
+    wide = { total: total * k, in_frame: centre * k };
+    for (const m of made) { m.material.dispose(); m.dispose(); }
+  }
+  for (const [o, mat, hid] of swap) { o.material = mat; if (hid === null) o.visible = true; }
+  return { ids: b64(ids), table, id0: ID0, wide };
+}
+
 export function install(studio) {
   const st = document.createElement('style'); st.textContent = css; document.head.append(st);
   const v = () => studio.ours.view;
@@ -128,6 +241,12 @@ export function install(studio) {
         waits++; await tick();
       }
       for (const lay of view.objects || []) lay.cull(c);
+      // what the game never draws stays out of the picture unless the helpers are asked for
+      const hidden = [];
+      if (!cam.helpers) for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
+        if (!isHelper(g)) continue;
+        for (const m of g.full || []) if (m.visible) { m.visible = false; hidden.push(m); }
+      }
       const tw = performance.now();
       r.setPixelRatio(1); r.setSize(w, h, false); r.setScissorTest(false); r.setViewport(0, 0, w, h);
       view.lighting?.beforeDraw();
@@ -136,14 +255,18 @@ export function install(studio) {
       if (keep) { hemi.color.setRGB(0.55, 0.55, 0.55); hemi.groundColor.setRGB(0.35, 0.35, 0.35); hemi.intensity = Math.PI; }
       r.render(view.scene, c);
       if (keep) [hemi.color, hemi.groundColor, hemi.intensity] = keep;
-      cut?.();
       r.getContext().finish();
       const tr = performance.now();
       const png = r.domElement.toDataURL('image/png');
+      const idp = cam.ids ? idPass(view, studio, c, w, h, cam.subject) : null;
+      cut?.();
+      for (const m of hidden) m.visible = true;
       r.clippingPlanes = []; r.setScissorTest(true);
       const info = { calls: r.info.render.calls, triangles: r.info.render.triangles, render_ms: Math.round(tr - tw) };
-      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, ...info };
+      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, ...info, ...(idp || {}) };
     },
+    // Several shots in one call (a survey's tiles): the same scene, warm, one page round trip.
+    async shots(cams) { const out = []; for (const c of cams) out.push(await this.shot(c)); return out; },
   };
   window.agent = agent;
 }

@@ -523,3 +523,81 @@ def test_the_overlay_marks_doors_and_street_points_by_the_checks_own_rule():
     net = {"doors_off": {"door1"}, "samples": [("st1", (10, 10), True), ("st1", (74, 10), False)]}
     doors, pts = verbs.mesh_marks(S, M, net)
     assert doors[0][2] is False and [on for _, on in pts] == [True, False]
+
+
+# ---------- what a capture shows (capture.py, framing.py) ----------
+def _ids(rows):
+    import base64
+    a = np.array(rows, np.int32)[::-1]   # as WebGL reads: bottom row first
+    rgba = np.stack([a & 255, (a >> 8) & 255, (a >> 16) & 255, np.full_like(a, 255)], -1).astype(np.uint8)
+    return base64.b64encode(rgba.tobytes()).decode(), a.shape[1], a.shape[0]
+
+
+def test_decode_reads_ids_top_row_first():
+    from tools.places.look import capture
+    b, w, h = _ids([[16, 17], [1, 300000]])
+    assert capture.decode(b, w, h).tolist() == [[16, 17], [1, 300000]]
+
+
+def test_ref_at_names_what_is_drawn_at_the_pixel():
+    from tools.places.look import capture
+    ids = np.array([[0, 16], [1, 2]])
+    table = [["a", "static", "m.nif", 0, 0]]
+    assert capture.ref_at(ids, table, 16, 1, 0)["ref"] == "a"
+    assert capture.ref_at(ids, table, 16, 0, 0) == {"what": "sky"}
+    assert capture.ref_at(ids, table, 16, 0, 1) == {"what": "land"}
+
+
+def test_score_good_and_failed():
+    from tools.places.look import capture
+    table = [["s", "building", "", 0, 0], ["t", "tree", "", 0, 0]]
+    ids = np.array([[16] * 4 + [1] * 6] * 10)
+    good = capture.score(ids, table, 16, {"s"}, {"total": 40, "in_frame": 40}, {})
+    assert good["capture"] == "good" and good["subject_seen"] == 1.0 and good["subject_fills"] == 0.4
+    hid = capture.score(ids, table, 16, {"s"}, {"total": 200, "in_frame": 200}, {})
+    assert hid["capture"] == "failed" and "20%" in hid["why"]
+    ids2 = np.array([[17] * 8 + [16] * 2] * 10)   # a tree over most of the lens, no ground, camera inside
+    bad = capture.score(ids2, table, 16, {"s"}, {"total": 20, "in_frame": 20}, {"t": {"edid": "Oak", "kind": "tree"}},
+                        inside="the camera is inside a tree's crown (Oak)")
+    assert bad["capture"] == "failed"
+    assert "no ground is drawn" in bad["why"] and "covers 80% of the lens" in bad["why"] and "crown" in bad["why"]
+    assert bad["occluders"][0] == {"piece": "t", "edid": "Oak", "kind": "tree", "share": 0.8}
+    part = capture.score(ids, table, 16, {"s"}, {"total": 400, "in_frame": 40}, {}, part=True)
+    assert part["capture"] == "good"
+
+
+def test_camera_inside_ground_box_and_tree():
+    from tools.places.look import capture
+    house = piece("h", (0, 0, 0), (-100, -100, 0), (100, 100, 300), kind="building")
+    tree = piece("t", (1000, 0, 0), (-200, -200, 0), (200, 200, 1000), kind="tree")
+    assert "under the ground" in capture.camera_inside([500, 0, 90], [house], 100.0)
+    assert "inside" in capture.camera_inside([0, 0, 112], [house], 0.0)
+    assert capture.camera_inside([1150, 0, 112], [tree], 0.0) is None          # under the crown, beside the trunk
+    assert "trunk" in capture.camera_inside([1000, 0, 112], [tree], 0.0)
+    assert "crown" in capture.camera_inside([1150, 0, 700], [tree], 0.0)
+
+
+def test_helper_kind_names_what_the_game_never_draws():
+    from tools.places.look import capture
+    assert capture.helper_kind({"model": "markers/markerxheading.nif", "kind": "static"}) == "heading marker"
+    assert capture.helper_kind({"model": "", "edid": "XMarker", "kind": "static"}) == "x-marker"
+    assert capture.helper_kind({"model": "clutter/barrel01.nif", "edid": "Barrel01", "kind": "container"}) is None
+
+
+def test_candidates_and_tall():
+    from tools.places.look import framing
+    c = framing.candidates("n", "eye")
+    assert c[0] == ("n", "eye", 1.0, False) and len(c) == len(set(c)) and ("n", "eye", 1.0, True) in c
+    assert {s for s, *_ in c[:5]} == {"n", "ne", "nw", "e", "w"}
+    assert framing.is_tall([0, 0, 0], [400, 400, 2000]) and not framing.is_tall([0, 0, 0], [1500, 1400, 1540])
+    assert framing.base_box([0, 0, 0], [400, 400, 2000])[1][2] == 400
+
+
+def test_stand_steps_out_of_pieces_onto_the_floor():
+    from tools.places.look import framing
+    floor = lambda x, y: None if x < -50 else 10.0   # noqa: E731  no floor west of x=-50
+    blocked = lambda e: "inside" if 400 <= e[0] <= 600 and abs(e[1]) < 100 else None   # noqa: E731
+    st = framing.stand([0, 0, 0], [1, 0], 500.0, floor, blocked)
+    assert st["pos"][2] == 10.0 + geom.EYE
+    assert not (400 <= st["pos"][0] <= 600 and abs(st["pos"][1]) < 100)
+    assert framing.stand([0, 0, 0], [-1, 0], 500.0, lambda x, y: None, blocked) is None
