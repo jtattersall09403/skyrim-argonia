@@ -26,3 +26,12 @@ def test_a_door_half_under_the_ground_is_buried_though_its_house_is_not():
 def test_a_plant_needs_most_of_it_under():
     assert not geom.is_buried(-10.0, 20.0, 0.0, plant=True)
     assert geom.is_buried(-40.0, 10.0, 0.0, plant=True)
+
+
+def test_a_box_turned_upside_down_stands_above_its_origin():
+    # Black Marsh's mud mound house is set upside down: its model box (-1454..76) stands 1454 over its origin
+    import math
+    from tools.places.draft import geom as dgeom
+    lo, hi = dgeom.z_span(([-10, -10, -1454], [10, 10, 76]), [math.pi, 0.0, 0.0])
+    assert round(lo) == -76 and round(hi) == 1454
+    assert dgeom.z_span(([-10, -10, -1454], [10, 10, 76]), [0.0, 0.0, 1.0]) == (-1454, 76)
