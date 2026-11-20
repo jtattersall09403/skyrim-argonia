@@ -232,3 +232,53 @@ def test_the_hands_act_on_a_unit_and_refuse_a_body_without_its_deck():
         hands.thing(sc, "d.huta")
     assert hands.thing(sc, "d.huta", piece=True)["pieces"][0]["id"] == "d.huta"
     assert hands.thing(sc, "d.tree")["pieces"][0]["id"] == "d.tree"
+
+
+HIST_BASES = {
+    "hist": {"edid": "ArgoniaTreeHist01", "kind": "tree", "model": "t/histtree01.nif", "bounds": [[-900, -900, -100], [900, 900, 1600]]},
+    "swap": {"edid": "HistTree01", "kind": "static", "model": "t/histtree01.nif", "bounds": [[-900, -900, -100], [900, 900, 1600]]},
+    "root": {"edid": "HistRoot03", "kind": "tree", "model": "t/histroot03.nif", "bounds": [[-60, -340, -130], [90, 120, 540]]},
+    "gland": {"edid": "HistGland03", "kind": "tree", "model": "t/histgland03.nif", "bounds": [[-100, -100, -270], [100, 100, 300]]},
+    "vine": {"edid": "HistMossyVinesFloor01", "kind": "plant", "model": "t/histmossyvinesfloor01.nif", "bounds": [[-210, -240, -15], [260, 260, 10]]},
+    "sap": {"edid": "WaterPuddleHist", "kind": "activator", "model": "water/waterpuddle01.nif", "bounds": [[-150, -150, 0], [150, 200, 0]]},
+}
+
+
+def test_a_hist_is_one_unit_with_its_roots_glands_and_sap_and_is_seated_by_its_own_rule():
+    """A Hist the draft swapped for another base is found where the source's stood; what hung on the source's tree goes
+    back to its height on the trunk, a root that stood on the source's ground is sunk until its foot is in ours."""
+    bases = {**BASES, **HIST_BASES}
+    src = [row("s.hist", "plat", 0, 0, 700), row("s.root", "plat", 1000, 0, 300), row("s.gland", "plat", 300, 0, 1300),
+           row("s.vine", "plat", 2000, 0, 1500)]
+    for r, b in zip(src, ("hist", "root", "gland", "vine")):
+        r["base"], r["kind"] = b, HIST_BASES[b]["kind"]
+    # our ground is flat at 500 (the source's mound gone): the trunk stands lower against the gland, the root hangs
+    rows = [dict(row("d.trunk", "plat", 50, 0, 600), base="swap", kind="static", src=None),
+            dict(row("d.root", "plat", 1050, 0, 700), base="root", kind="tree", src="s.root"),
+            dict(row("d.gland", "plat", 350, 0, 1300), base="gland", kind="tree", src="s.gland"),
+            dict(row("d.sap", "plat", 50, 0, 500), base="sap", kind="activator", src=None)]
+
+    def bnd(b):
+        return (b.get("bounds") or [[-32, -32, 0], [32, 32, 64]]), True
+
+    class Sc(FakeScene):
+        def __init__(self):
+            self.bases, self.ground, self.space = bases, flat(500.0), "exterior"
+            self.refs = {r["id"]: r for r in rows}
+            self.pieces = U.pieces_of(rows, bases, bnd)
+            self.by_id = {p["id"]: p for p in self.pieces}
+            self.files = {"place": {"place_id": "t", "source_id": "t"}, "spaces": {"exterior": {"refs": rows}}}
+    src_ground = Ground({(c, d): [300.0] * 33 * 33 for c in range(-2, 2) for d in range(-2, 2)}, {}, None)
+    pl = U.Place.of("t", Sc(), U.pieces_of(src, bases, bnd), src_ground)
+    hist = [u for u in pl.units if u["kind"] == "hist"]
+    assert len(hist) == 1, [u["id"] for u in pl.units]
+    un = hist[0]
+    assert un["pieces"]["trunk"] == ["d.trunk"] and un["pieces"]["sap"] == ["d.sap"]
+    assert un["pieces"]["root"] == ["d.root"] and un["pieces"]["gland"] == ["d.gland"]
+    assert "s.vine" not in [i for v in pl.src_units[0]["pieces"].values() for i in v]   # too far from the trunk
+    m = U.measure(pl, un)
+    assert any("root HistRoot03" in f and "hangs" in f for f in m["flags"]), m["flags"]
+    assert any("gland HistGland03" in f and "off its place on the trunk (+100)" in f for f in m["flags"]), m["flags"]
+    dz = U.hist_reassembly(pl, un)
+    assert dz["d.gland"] == -100.0                  # back at the source's 600 over the trunk
+    assert dz["d.root"] == -(70.0 + U.BURY_MIN)     # its foot (570) sunk BURY_MIN into our ground

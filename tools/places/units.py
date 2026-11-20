@@ -2,12 +2,15 @@
 
     python -m tools.places units <place> [--all] [--source] [--json]
     python -m tools.places units plan <place> [--margin 30] [--out plan.json]
-    python -m tools.places units apply <place> [UNIT ...] [--why=...]   (the plan written as the agent's draft edits)
+    python -m tools.places units apply <place> [UNIT ...] [--why=...]   (the plan written as the agent's draft edits;
+        a Hist unit is seated by its own rule: what lay on the source's ground on ours, the rest on its trunk)
 
 A house unit is its building body with the platform or deck it stands on, the posts under them, the steps and
 railings at its deck, the doors set in its walls (and the room they lead to) and what rests on, hangs on or is fixed
 to it; a walkway, bridge or dock is a unit of its own whose joins name the units it rests on; a boat, a rack, a stall
-is a small unit. Trees, rocks, roots and ground cover belong to the ground (a plant standing on a deck excepted).
+is a small unit. A Hist is one unit: its trunk with its roots, glands, gland roots, flowers, vine floors, the gland
+lights and chimes hung in its crown, and its sap pool, kept in the source's arrangement about the trunk. Other trees,
+rocks, roots and ground cover belong to the ground (a plant standing on a deck excepted).
 Membership comes from contact and support among the SOURCE's pieces at the source's positions (the look tool's
 rules, tools/places/look/geom.py), carried to the draft by each row's `src`; draft rows with no source ref are
 grouped the same way where they stand.
@@ -50,6 +53,9 @@ POST_WORDS = ("post", "pillar", "stilt", "pole", "pile", "column", "support")
 GROUND_KINDS = {"tree", "rock", "plant", "groundcover", "flora", "grass", "landscape", "water"}
 SPANS = ("walkway", "bridge", "dock")
 LOOSE = {"light", "marker", "sound", "actor"}
+HIST_TRUNK = re.compile(r"^(ArgoniaTreeHist\d|Hist(Tree|Trunk)\d)", re.I)   # a Hist's tree or trunk, living or dead
+HIST_REACH = 256.0     # a root, gland, flower or vine floor of a Hist lies within this of its trunk's box
+HIST_SNAP = 128.0      # a draft's added Hist stands for the source's when it stands this near the source's spot
 
 
 # ---------- pieces ----------
@@ -115,6 +121,29 @@ def deck_top(p: dict, bases: dict | None) -> float:
 
 
 # ---------- derivation ----------
+def hist_trunk(p: dict) -> bool:
+    return bool(HIST_TRUNK.match(str(p.get("edid") or "")))
+
+
+def hist_role(p: dict) -> str | None:
+    """A piece's part of a Hist, by its words: root (a HistRoot or a gland's roots), gland, floor (a mossy vine
+    floor), sap (the Hist's sap water), hanging (a gland light, a flower, a chime); None when it is no part of one."""
+    e, w = str(p.get("edid") or ""), _words(p)
+    if hist_trunk(p):
+        return None
+    if "hist" in w and "sap" in w or e == "WaterPuddleHist":
+        return "sap"
+    if re.match(r"^HistRoot|^HistGland\d*Roots", e):
+        return "root"
+    if re.match(r"^HistGland\d", e):
+        return "gland"
+    if "mossyvinesfloor" in w:
+        return "floor"
+    if "hist" in w or "chime" in w:
+        return "hanging"
+    return None
+
+
 def _role0(p: dict) -> str:
     w = _words(p)
     if ground_piece(p):
@@ -169,6 +198,24 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
         got.discard(pid)
         return sorted(got, key=lambda q: (-float(boxes[q][1][2]), q))   # the nearest under first, in one order
 
+    unit_of: dict[str, int] = {}
+    role: dict[str, str] = {}
+    units: list[dict] = []
+    for t in sorted((p for p in pieces if hist_trunk(p)), key=lambda p: p["id"]):
+        units.append({"kind": "hist", "pieces": {}})
+        unit_of[t["id"]], role[t["id"]] = len(units) - 1, "trunk"
+    trunks = [i for i, r in role.items() if r == "trunk"]
+    for p in pieces:
+        r = hist_role(p)
+        if r is None or p["id"] in unit_of or not trunks:
+            continue
+        d, t = min((gap(p["id"], t), t) for t in trunks)
+        lo, hi = boxes[p["id"]]
+        tlo, thi = boxes[t]
+        if r == "hanging" and not ("hist" in _words(p) or (tlo <= lo).all() and (hi <= thi).all()):
+            continue   # a chime or lantern counts only inside the crown's box
+        if d <= HIST_REACH:
+            unit_of[p["id"]], role[p["id"]] = unit_of[t], r
     # bodies: by their words, or a large building piece a door is set in; bodies standing in each other are one
     doors = [p["id"] for p in pieces if role0[p["id"]] == "door"]
     for p in pieces:
@@ -196,9 +243,6 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
             if room in by_room:
                 union(bodies.index(b), bodies.index(by_room[room]))
             by_room[room] = b
-    unit_of: dict[str, int] = {}
-    role: dict[str, str] = {}
-    units: list[dict] = []
     groups: dict = {}
     for i, b in enumerate(bodies):
         groups.setdefault(find(i), []).append(b)
@@ -212,6 +256,8 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
 
     # decks: what the bodies stand on; posts: what the decks stand on (twice: a deck on beams on posts)
     for u in range(len(units)):
+        if units[u]["kind"] != "house":
+            continue
         mine = [b for b, k in unit_of.items() if k == u]
         for b in mine:
             blo = float(boxes[b][0][2])
@@ -317,7 +363,7 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
         x, y, z = p["m"][0][3], p["m"][1][3], p["m"][2][3]
         for q, u in list(unit_of.items()):
             lo, hi = boxes[q]
-            if units[u]["kind"] != "thing" and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
+            if units[u]["kind"] not in ("thing", "hist") and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
                 add(p["id"], u, "hanging" if p.get("kind") == "light" else "on")
                 break
 
@@ -393,7 +439,7 @@ class Place:
         sc = scene or Scene(place_id)
         src = io.load(f"src.{sc.files['place']['source_id']}", data_out() / "bundles")
         bounds = lambda b: sc.bounds_of(b)  # noqa: E731  the look tool's own extents, so the numbers match its sections
-        self.build(place_id, sc, pieces_of(src.exterior.refs, sc.bases, bounds), src.ground)
+        self.build(place_id, sc, pieces_of(src.exterior.refs, {**src.bases, **sc.bases}, bounds), src.ground)
 
     @classmethod
     def of(cls, place_id: str, scene, src_pieces: list[dict], src_ground) -> "Place":
@@ -425,6 +471,12 @@ class Place:
             taken.update(i for v in pcs.values() for i in v)
             self.units.append(dict(su, pieces=pcs, doors=pcs.get("door", []), src_pieces=su["pieces"]))
         rest = [p for p in sc.pieces if p["id"] not in taken and p["src"] not in self.src_by]
+        for un in self.units:   # a Hist the draft added where the source's stood (a swapped tree) is that Hist's trunk
+            if un["kind"] == "hist":
+                got = _stand_ins(self, un, rest)
+                for r, ids in got.items():
+                    un["pieces"].setdefault(r, []).extend(ids)
+                rest = [p for p in rest if not any(p["id"] in v for v in got.values())]
         for un in derive(rest, sc.ground, sc.bases, prefix="added."):
             self.units.append(dict(un, src_pieces=None))
         self.by_unit = {u["id"]: u for u in self.units}
@@ -447,6 +499,110 @@ class Place:
         return None
 
 
+def _stand_ins(pl: Place, un: dict, rest: list[dict]) -> dict:
+    """For a source Hist whose trunk the draft does not carry: the draft's added Hist standing where the source's
+    stood (the source's spot moved as the unit's carried pieces moved, within HIST_SNAP), and the sap pool on that
+    trunk (a WaterPuddleHist within its box). {role: [ids]}."""
+    if un["pieces"].get("trunk"):
+        trunk = un["pieces"]["trunk"][0]
+    else:
+        st = [s for s in un["src_pieces"].get("trunk", []) if s in pl.src_by]
+        moved = [np.array([pl.by[i]["m"][k][3] - pl.src_by[pl.by[i]["src"]]["m"][k][3] for k in range(2)])
+                 for v in un["pieces"].values() for i in v if pl.by.get(i, {}).get("src") in pl.src_by]
+        if not st or not moved:
+            return {}
+        d = np.median(np.array(moved), axis=0)
+        sx, sy = pl.src_by[st[0]]["m"][0][3] + d[0], pl.src_by[st[0]]["m"][1][3] + d[1]
+        near = sorted((math.hypot(p["m"][0][3] - sx, p["m"][1][3] - sy), p["id"]) for p in rest if hist_trunk(p))
+        if not near or near[0][0] > HIST_SNAP:
+            return {}
+        trunk = near[0][1]
+    out = {} if un["pieces"].get("trunk") else {"trunk": [trunk]}
+    lo, hi = geom.aabb(pl.by[trunk])
+    pools = [p["id"] for p in rest if hist_role(p) == "sap" and lo[0] <= p["m"][0][3] <= hi[0] and lo[1] <= p["m"][1][3] <= hi[1]]
+    if pools:
+        tx, ty = pl.by[trunk]["m"][0][3], pl.by[trunk]["m"][1][3]
+        out["sap"] = [min(pools, key=lambda i: math.hypot(pl.by[i]["m"][0][3] - tx, pl.by[i]["m"][1][3] - ty))]
+    return out
+
+
+def measure_hist(pl: Place, un: dict) -> dict:
+    """A Hist's numbers: each root, gland, floor and hanging piece against our ground and against the trunk. A piece
+    that rested on the source's ground (its lowest point within GROUND_REST of it) must reach ours, by its lowest
+    point; every other piece keeps its height on the trunk as the source has it, within STEP. A sap pool's surface is
+    given with the highest ground inside its box."""
+    G, roles = pl.sc.ground, un["pieces"]
+    trunk = (roles.get("trunk") or [None])[0]
+    sg = getattr(pl, "src_ground", None)
+    st = [s for s in (un.get("src_pieces") or {}).get("trunk", []) if s in pl.src_by]
+    tz = pl.by[trunk]["m"][2][3] if trunk in pl.by else None
+    stz = pl.src_by[st[0]]["m"][2][3] if st else None
+    out = {"id": un["id"], "kind": "hist", "n": sum(len(v) for v in roles.values()), "stand": _r(tz), "floor": None,
+           "deck": None, "flags": [], "steps": [], "doors": [], "parts": []}
+    gs, depths = [], []
+    for r in ("root", "floor", "gland", "hanging"):
+        for i in [i for i in roles.get(r, []) if i in pl.by]:
+            p = pl.by[i]
+            pts = geom.bottom_points(p, 3)
+            lows = [(float(z) - g, g) for x, y, z in pts if (g := G.height(float(x), float(y))) is not None]
+            if not lows:
+                continue
+            over, g = min(lows)
+            gs.append(g)
+            top = float(geom.aabb(p)[1][2])
+            sp = pl.src_by.get(p.get("src"))
+            src_over = rel = src_rel = None
+            if sp is not None and sg is not None:
+                sl = [float(z) - h for x, y, z in geom.bottom_points(sp, 3) if (h := sg.height(float(x), float(y))) is not None]
+                src_over = min(sl) if sl else None
+            if sp is not None and tz is not None and stz is not None:
+                rel, src_rel = p["m"][2][3] - tz, sp["m"][2][3] - stz
+            grounded = src_over is not None and src_over <= GROUND_REST and r != "hanging"
+            part = {"piece": i, "role": r, "edid": p.get("edid"), "over": _r(over), "src_over": _r(src_over),
+                    "on_trunk": _r(None if rel is None else rel - src_rel), "grounded": grounded}
+            out["parts"].append(part)
+            name = f"{r} {p.get('edid')} ...{i[-8:]}"
+            if grounded:
+                depths.append(-over)
+                if over > STEP:
+                    out["flags"].append(f"{name} hangs {over:.0f} over the ground")
+                if top < max(h for _, h in lows):
+                    out["flags"].append(f"{name} buried whole")
+            elif part["on_trunk"] is not None and abs(part["on_trunk"]) > STEP:
+                out["flags"].append(f"{name} off its place on the trunk ({part['on_trunk']:+.0f})")
+            elif part["on_trunk"] is None and over > STEP and r in ("root", "floor"):
+                out["flags"].append(f"{name} hangs {over:.0f} over the ground")
+    for i in roles.get("sap", []):
+        p = pl.by.get(i)
+        if p is None:
+            continue
+        lo, hi = geom.aabb(p)
+        rim = [g for x in np.linspace(lo[0], hi[0], 7) for y in np.linspace(lo[1], hi[1], 7)
+               if (g := G.height(float(x), float(y))) is not None]
+        out["sap"] = {"piece": i, "surface": _r(p["m"][2][3]), "rim_max": _r(max(rim)) if rim else None}
+    out["gmin"], out["gmax"] = (_r(min(gs)), _r(max(gs))) if gs else (None, None)
+    out["min_depth"] = _r(min(depths)) if depths else None
+    out["max_depth"] = _r(max(depths)) if depths else None
+    out["feet"] = []
+    return out
+
+
+def hist_reassembly(pl: Place, un: dict) -> dict:
+    """Per piece of a Hist, the height that seats it (measure_hist's rule): a piece that rested on the source's ground
+    sunk until its lowest point is BURY_MIN into ours (a vine floor flush on it), never lifted; every other piece back at its height on the trunk as the source has it. {piece id: dz}."""
+    out = {}
+    for part in measure_hist(pl, un)["parts"]:
+        if part["grounded"] and part["over"] is not None:   # its lowest point sunk into the ground, never lifted
+            d = min(0.0, (0.0 if part["role"] == "floor" else -BURY_MIN) - part["over"])
+        elif part["on_trunk"] is not None:
+            d = -part["on_trunk"]
+        else:
+            continue
+        if abs(d) > 0.5:
+            out[part["piece"]] = round(d, 1)
+    return out
+
+
 def _rel_src(pl: Place, un: dict, did: str) -> str | None:
     p = pl.by.get(did)
     return p and p.get("src")
@@ -455,6 +611,8 @@ def _rel_src(pl: Place, un: dict, did: str) -> str | None:
 def measure(pl: Place, un: dict, dz: dict | None = None, shift=(0.0, 0.0)) -> dict:
     """One unit's numbers on our ground. dz: piece id -> extra height (a plan's reassembly and offset); shift: a
     plan move (dx, dy) of the whole unit."""
+    if un["kind"] == "hist" and not dz and shift == (0.0, 0.0):
+        return measure_hist(pl, un)
     sc, dz = pl.sc, dz or {}
     G = sc.ground
     roles = un["pieces"]
@@ -1113,8 +1271,16 @@ def apply_strokes(pl: Place, p: dict, names: list[str] | None = None, places: Pa
 def apply_cli(place_id: str, names: list[str], why: str | None = None) -> int:
     from tools.places.look.verbs import write_agent_save
     pl = Place(place_id)
-    p = plan(pl)
-    strokes, report = apply_strokes(pl, p, names or None)
+    hists = [n for n in names if pl.by_unit.get(n, {}).get("kind") == "hist"]
+    if hists:   # a Hist is seated by its own rule (hist_reassembly), never by the houses' offsets
+        p = {"units": [{"unit": n, "dz": 0.0, "reassemble": hist_reassembly(pl, pl.by_unit[n])} for n in hists]}
+        strokes, report = apply_strokes(pl, p, hists)
+        names = [n for n in names if n not in hists]
+        if names:
+            more, rep = apply_strokes(pl, plan(pl), names)
+            strokes, report = strokes + more, report + rep
+    else:
+        strokes, report = apply_strokes(pl, plan(pl), names or None)
     print("\n".join(report))
     if not strokes:
         print("nothing to write")

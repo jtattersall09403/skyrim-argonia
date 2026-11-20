@@ -46,6 +46,11 @@ source's own arrangement, where every piece rests on what it should, and carried
   dock, the ground).
 - A boat, a rack, a stall is a small unit. Trees, rocks, roots and ground cover belong to the ground and are judged
   against it, never moved with a building; a plant standing on a deck is part of that deck's unit.
+- A **Hist** is one unit (`hist.01`): its trunk with its roots, glands, flowers, vine floors, the lights and chimes in
+  its crown and its sap pool, in the source's arrangement about the trunk (a Hist the draft swapped stands in for the
+  source's). Its row flags a root that stood on the source's ground and hangs over ours, and anything off its height
+  on the trunk; `units apply <place> hist.01` seats it by that rule. Keep the source's own Hist model where there is
+  a placeable one (`HistTree01` is `ArgoniaTreeHist01`'s), so what hung on it meets its limbs.
 
 Each unit is measured on our ground: its standing level (floor or deck) against the highest ground under its
 footprint, each foot against the ground under it and its leg (how far it reaches below the standing level in the
