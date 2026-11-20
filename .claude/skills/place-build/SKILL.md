@@ -48,9 +48,14 @@ and with what, and what is still to add.
    building kind, the water and what stands in it, the market, the shrine, the racks and sheds, the look's
    materials) and, against it, the source pieces or the added pieces that deliver it. The `source` note's
    replacements are done, never left as the source had them (a "houses replaced with Argonian stilt huts" means
-   every house shell of the source is swapped). Its shape: `look` rows `{line, by}` (each thing the record names,
-   and the pieces that deliver it) and `structures` rows `{cluster, what, verdict: kept|dropped, why}`; `draft
-   check` fails a place with no plan, a line delivered by nothing, or a standing building the plan does not keep.
+   every house shell of the source is swapped). Its shape (held by `tools/places/draft/plan.py`):
+   `{source, look: [{line, by}], gives: [{kind, by}], structures: [{cluster | structure, what, verdict:
+   kept|dropped, why}]}`: `source` says which source and why; a `look` row for each thing the record's look
+   names; a `gives` row for each promise of the record, by its kind; a `structures` row for each major source
+   structure (by its class from `draft structures`) and each source cluster with a standing building (by its
+   cluster ids, comma-separated). `python -m tools.places draft plan <place_id>` prints the plan and its faults:
+   no plan, a row with nothing delivering it, a promise or structure with no row, a dropped structure with a piece
+   still standing; `draft check` and the consistency checker fail on the same faults.
 3. Each major structure of the source (walls, terraces, keeps, mines, caves, harbours, temples, forts) is judged
    against the record's words: kept only when the record names it or it is an ordinary part of such a place;
    otherwise dropped with its doors, rooms and pieces. `python -m tools.places draft structures <place_id>` lists

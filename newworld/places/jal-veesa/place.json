@@ -344,105 +344,108 @@
   "people_from": [
    "bmv.helstrom"
   ],
-  "plan": [
-   {
-    "thing": "the source: Seekhat Yol",
-    "by": "Seekhat Yol (King of the Murkmire): an Argonian village of pale reed-thatched stilt houses on platforms round its Hist, the closest match to the record's look; its seven rooms, topped up with three of Alten Meerhleel's (King of the Murkmire) rooms (market, bunkhouse, dockmaster's house), house the town's nine households and its jetty market. Cormaris (the allocated source) was Imperial and Dunmer and needed every house replaced"
-   },
-   {
-    "thing": "pale reed-thatched stilt houses",
-    "by": "Seekhat Yol's own MurkmireThatchHouse05 to 08 on their stilt platforms, kept as the source has them"
-   },
-   {
-    "thing": "a ring of mud banks round the Hist's sap pool at the heart of the town",
-    "by": "Seekhat Yol's raised platforms and mud mounds round its Hist, which stands at the source's heart"
-   },
-   {
-    "thing": "the Hist and its sap pool",
-    "by": "Seekhat Yol's own Hist, swapped for King of the Murkmire's HistTree03 (a living Hist the sap stage pools), with Seekhat Yol's Hist glands, flowers and mossy vines; the sap stage's WaterPuddleHist of Hist sap on its trunk"
-   },
-   {
-    "thing": "boat-lanes and the jetty market at the stream",
-    "by": "Alten Meerhleel's market (a draft.add building with its room copied) and its walkway pieces at the water south of the town, the town's streets laid down to it"
-   },
-   {
-    "thing": "weirs on the stream",
-    "by": "walkway and stake pieces of the marsh's own kit standing in the stream below the jetty market (draft.add)"
-   },
-   {
-    "thing": "mats drying on racks",
-    "by": "the marsh's own drying racks with mats (draft.add) by the houses"
-   },
-   {
-    "thing": "fish racks smoking on the road side",
-    "by": "the marsh's own fish drying racks (draft.add) on the road side of the town, with the cooking pot"
-   },
-   {
-    "thing": "boat sheds",
-    "by": "Seekhat Yol's carpenter's yard (its carpenter's workbench and boats) and the tanning rack beside it"
-   },
-   {
-    "thing": "the rootworm stop",
-    "gives": "rootworm-stop",
-    "by": "the Hist and its sap pool: Weeltul, the tree-minder, works at the Hist"
-   },
-   {
-    "thing": "the jetty market's trader",
-    "gives": "trader-general",
-    "by": "Sells-Dry-Fish at Alten Meerhleel's market room at the jetty"
-   },
-   {
-    "thing": "the fish-smoker's stall",
-    "gives": "trader-innkeeper",
-    "by": "Sells-Dry-Fish, at the fish racks on the road side"
-   },
-   {
-    "thing": "a mat in the elders' long house",
-    "gives": "free-bed",
-    "by": "Seekhat Yol's elder's hut as the elders' long house, its guest mat an unowned bed"
-   },
-   {
-    "thing": "the archery trainer",
-    "gives": "trainer",
-    "by": "Keeshu-Ra, a ruin-warden, working in the town"
-   },
-   {
-    "thing": "weir fishing",
-    "gives": "fishing",
-    "by": "the weirs on the stream below the jetty market"
-   },
-   {
-    "thing": "the cooking pot",
-    "gives": "cooking-pot",
-    "by": "a cooking pot at the fish racks"
-   },
-   {
-    "thing": "the tanning rack",
-    "gives": "tanning-rack",
-    "by": "Seekhat Yol's own tanning rack, by the boat sheds"
-   },
-   {
-    "thing": "the shrine blessing",
-    "gives": "shrine-blessing",
-    "by": "the Hist itself, the tree-minder's blessing"
-   },
-   {
-    "thing": "the harbour",
-    "structure": "harbour",
-    "kept": true,
-    "by": "Seekhat Yol's platform ends and two-way platforms: the decks the stilt houses stand on"
-   },
-   {
-    "thing": "the walls",
-    "structure": "walls",
-    "kept": true,
-    "by": "Seekhat Yol's platform bridges and plank walls: the walkways between the stilt platforms, no town wall"
-   },
-   {
-    "thing": "the smithy",
-    "by": "dropped: Seekhat Yol's smelter and ore outside its smithy hut; the record has no smith (the hut is a home)"
-   }
-  ],
+  "plan": {
+   "look": [
+    {
+     "line": "pale reed-thatched stilt houses",
+     "by": "Seekhat Yol's own MurkmireThatchHouse05 to 08 on their stilt platforms, kept as the source has them"
+    },
+    {
+     "line": "a ring of mud banks round the Hist's sap pool at the heart of the town",
+     "by": "Seekhat Yol's raised platforms and mud mounds round its Hist, which stands at the source's heart"
+    },
+    {
+     "line": "the Hist and its sap pool",
+     "by": "Seekhat Yol's own Hist, swapped for King of the Murkmire's HistTree03 (a living Hist the sap stage pools), with Seekhat Yol's Hist glands, flowers and mossy vines; the sap stage's WaterPuddleHist of Hist sap on its trunk"
+    },
+    {
+     "line": "boat-lanes and the jetty market at the stream",
+     "by": "Alten Meerhleel's market (a draft.add building with its room copied) and its walkway pieces at the water south of the town, the town's streets laid down to it"
+    },
+    {
+     "line": "weirs on the stream",
+     "by": "walkway and stake pieces of the marsh's own kit standing in the stream below the jetty market (draft.add)"
+    },
+    {
+     "line": "mats drying on racks",
+     "by": "the marsh's own drying racks with mats (draft.add) by the houses"
+    },
+    {
+     "line": "fish racks smoking on the road side",
+     "by": "the marsh's own fish drying racks (draft.add) on the road side of the town, with the cooking pot"
+    },
+    {
+     "line": "boat sheds",
+     "by": "Seekhat Yol's carpenter's yard (its carpenter's workbench and boats) and the tanning rack beside it"
+    },
+    {
+     "line": "the smithy",
+     "by": "dropped: Seekhat Yol's smelter and ore outside its smithy hut; the record has no smith (the hut is a home)"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "rootworm-stop",
+     "by": "the Hist and its sap pool: Weeltul, the tree-minder, works at the Hist",
+     "line": "the rootworm stop"
+    },
+    {
+     "kind": "trader-general",
+     "by": "Sells-Dry-Fish at Alten Meerhleel's market room at the jetty",
+     "line": "the jetty market's trader"
+    },
+    {
+     "kind": "trader-innkeeper",
+     "by": "Sells-Dry-Fish, at the fish racks on the road side",
+     "line": "the fish-smoker's stall"
+    },
+    {
+     "kind": "free-bed",
+     "by": "Seekhat Yol's elder's hut as the elders' long house, its guest mat an unowned bed",
+     "line": "a mat in the elders' long house"
+    },
+    {
+     "kind": "trainer",
+     "by": "Keeshu-Ra, a ruin-warden, working in the town",
+     "line": "the archery trainer"
+    },
+    {
+     "kind": "fishing",
+     "by": "the weirs on the stream below the jetty market",
+     "line": "weir fishing"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "a cooking pot at the fish racks",
+     "line": "the cooking pot"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "Seekhat Yol's own tanning rack, by the boat sheds",
+     "line": "the tanning rack"
+    },
+    {
+     "kind": "shrine-blessing",
+     "by": "the Hist itself, the tree-minder's blessing",
+     "line": "the shrine blessing"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "harbour",
+     "what": "the harbour",
+     "verdict": "kept",
+     "why": "Seekhat Yol's platform ends and two-way platforms: the decks the stilt houses stand on"
+    },
+    {
+     "structure": "walls",
+     "what": "the walls",
+     "verdict": "kept",
+     "why": "Seekhat Yol's platform bridges and plank walls: the walkways between the stilt platforms, no town wall"
+    }
+   ],
+   "source": "the source: Seekhat Yol: Seekhat Yol (King of the Murkmire): an Argonian village of pale reed-thatched stilt houses on platforms round its Hist, the closest match to the record's look; its seven rooms, topped up with three of Alten Meerhleel's (King of the Murkmire) rooms (market, bunkhouse, dockmaster's house), house the town's nine households and its jetty market. Cormaris (the allocated source) was Imperial and Dunmer and needed every house replaced"
+  },
   "drop": {
    "King of the Murkmire.esp:1B78D5": "the smithy smelter: the record has no smith",
    "King of the Murkmire.esp:1B78DE": "the smithy ore: the record has no smith",

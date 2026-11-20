@@ -122,18 +122,20 @@ def test_story_against_records():
 
 
 def test_drafts():
-    d = {"place": {"draft": {"plan": {"gives": {"0": "the stall"}, "look": {"0": "posts", "1": "the tree"},
-                                      "structures": {"hall": {"verdict": "keep"}}}}},
+    d = {"place": {"draft": {"plan": {"gives": [{"kind": "trader-general", "by": "the stall"}],
+                                      "look": [{"line": "posts", "by": "posts"}],
+                                      "structures": [{"structure": "walls", "what": "hall", "verdict": "kept",
+                                                      "why": "the record's hall"}]}}},
          "rel": "newworld/places/a/place.json", "people": 20, "spaces": [], "spots": set(),
          "check": {"results": {"nordic": {"ok": True}, "seat": {"ok": True}}}, "check_newer": True}
     assert causes(ctx(drafts={"a": d}), "draft")[0] == set()
     bad = copy.deepcopy(d)
-    bad["place"]["draft"]["plan"] = {"gives": {}, "look": {"0": "x"}, "structures": {"hall": {}}}
+    bad["place"]["draft"]["plan"] = {"look": [{"line": "x", "by": ""}], "structures": [{"what": "hall", "why": "?"}]}
     bad["people"] = 3
     bad["check"]["results"]["nordic"] = {"ok": False, "n": 1, "failures": ["NorHouse01"]}
     bad["check_newer"] = False
     got, _ = causes(ctx(drafts={"a": bad}), "draft")
-    assert {"the plan misses a gives row", "the plan misses a look sentence", "a major structure without a verdict",
+    assert {"the plan misses a gives row", "a plan line delivered by nothing", "a major structure without a verdict",
             "the draft's people differ from the population", "a Nordic piece in the draft",
             "the built check is older than the draft"} <= got
     nop = copy.deepcopy(d)

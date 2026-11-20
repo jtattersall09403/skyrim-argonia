@@ -207,7 +207,7 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
         mf = _mod_file(repo, mod)
         if mf is None:
             raise FileNotFoundError(f"stage {stage}: no module {mod}")
-        files, named = idx.closure(mf)
+        files, named = idx.closure(mf, direct)
         for c in changed:
             if c in files or _named(c, named):
                 plan.stages.add(stage); plan.why.setdefault(stage, c); matched.add(c)

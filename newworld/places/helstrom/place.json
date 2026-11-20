@@ -509,68 +509,67 @@
    "base": "King of the Murkmire.esp:0D72B7",
    "scale": 1.5
   },
-  "plan": [
-   {
-    "thing": "source choice",
-    "from": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced"
-   },
-   {
-    "thing": "stilt and root-hollow houses of reed, mud and living wood",
-    "from": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
-   },
-   {
-    "thing": "no stone",
-    "from": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs"
-   },
-   {
-    "thing": "no outward wall",
-    "from": "dropped: the castle wall and the stockade pikes"
-   },
-   {
-    "thing": "Black Heart-Mud pools between the roots; thick warm air",
-    "from": "the source's mud and fog/mist effects kept"
-   },
-   {
-    "thing": "rafts and plank walks thread the districts",
-    "from": "the source's docks, dock steps, boats and walkways kept"
-   },
-   {
-    "thing": "the city tree (great)",
-    "from": "the shrine Hist stands as King of the Murkmire's HistTree03 at 1.5 scale (draft.shrine), with its sap pool, lanterns"
-   },
-   {
-    "thing": "the root landing",
-    "from": "the city tree's sap pool is the rootworm stop; the tunnel mouth on its west lip and the Rootworm Landing marker on its east lip"
-   },
-   {
-    "thing": "the council house, its wardens' quarters and strongroom",
-    "from": "kept: the draft.add rooms the thieves' line uses"
-   },
-   {
-    "thing": "the boatmen's lodge",
-    "from": "kept as the ship's hold the quests use for it"
-   },
-   {
-    "thing": "the tree-minders' hall",
-    "from": "kept as the hall room with its arcane enchanter and the order's urn case (quests)"
-   },
-   {
-    "thing": "Imperial green tents",
-    "from": "replaced by King of the Murkmire's hide tents"
-   },
-   {
-    "thing": "timber stilt posts (01mosspost) and lamp posts (01lightpost)",
-    "from": "kept: plain timber posts that carry the decks and the lanterns; not Nordic by the record's flags"
-   },
-   {
-    "thing": "traps",
-    "from": "dropped: pressure plates and poison gas; the poison bloom on the ground is a harvestable ingredient, kept"
-   },
-   {
-    "thing": "Imperial grave containers, war table",
-    "from": "dropped"
-   }
-  ]
+  "plan": {
+   "look": [
+    {
+     "line": "stilt and root-hollow houses of reed, mud and living wood",
+     "by": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
+    },
+    {
+     "line": "no stone",
+     "by": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs"
+    },
+    {
+     "line": "no outward wall",
+     "by": "dropped: the castle wall and the stockade pikes"
+    },
+    {
+     "line": "Black Heart-Mud pools between the roots; thick warm air",
+     "by": "the source's mud and fog/mist effects kept"
+    },
+    {
+     "line": "rafts and plank walks thread the districts",
+     "by": "the source's docks, dock steps, boats and walkways kept"
+    },
+    {
+     "line": "the city tree (great)",
+     "by": "the shrine Hist stands as King of the Murkmire's HistTree03 at 1.5 scale (draft.shrine), with its sap pool, lanterns"
+    },
+    {
+     "line": "the root landing",
+     "by": "the city tree's sap pool is the rootworm stop; the tunnel mouth on its west lip and the Rootworm Landing marker on its east lip"
+    },
+    {
+     "line": "the council house, its wardens' quarters and strongroom",
+     "by": "kept: the draft.add rooms the thieves' line uses"
+    },
+    {
+     "line": "the boatmen's lodge",
+     "by": "kept as the ship's hold the quests use for it"
+    },
+    {
+     "line": "the tree-minders' hall",
+     "by": "kept as the hall room with its arcane enchanter and the order's urn case (quests)"
+    },
+    {
+     "line": "Imperial green tents",
+     "by": "replaced by King of the Murkmire's hide tents"
+    },
+    {
+     "line": "timber stilt posts (01mosspost) and lamp posts (01lightpost)",
+     "by": "kept: plain timber posts that carry the decks and the lanterns; not Nordic by the record's flags"
+    },
+    {
+     "line": "traps",
+     "by": "dropped: pressure plates and poison gas; the poison bloom on the ground is a harvestable ingredient, kept"
+    },
+    {
+     "line": "Imperial grave containers, war table",
+     "by": "dropped"
+    }
+   ],
+   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced"
+  }
  },
  "fit": {
   "pivot": [

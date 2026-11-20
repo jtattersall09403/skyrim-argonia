@@ -1,22 +1,36 @@
-"""A place's plan (`draft.plan`) has a line for each promise of its record and a verdict on each major source
-structure; a structure it drops is dropped piece by piece (tools/places/draft/plan.py)."""
+"""A place's plan (`draft.plan`, one shape held by tools/places/draft/plan.py): every row delivered, a gives row for
+each promise of the record, a verdict on each major source structure and standing cluster, and a dropped structure
+dropped piece by piece."""
 from tools.places.draft import plan
 
 GIVES = [{"kind": "trader-general"}, {"kind": "cooking-pot"}]
-STRUCT = {"walls": {"kept": False, "refs": ["w1", "w2"]}, "harbour": {"kept": True, "refs": ["d1"]}}
-FULL = [{"thing": "a general trader at the jetty market", "by": "the market hut", "gives": "trader-general"},
-        {"thing": "a cooking pot at the fish racks", "by": "an added pot", "gives": "cooking-pot"},
-        {"thing": "the town wall", "by": "dropped", "structure": "walls", "kept": False},
-        {"thing": "the jetty", "by": "the source's docks", "structure": "harbour", "kept": True}]
+STRUCT = {"walls": {"refs": ["w1", "w2"]}, "harbour": {"refs": ["d1"]}}
+FULL = {"look": [{"line": "pale stilt houses", "by": "the source's thatch houses"}],
+        "gives": [{"kind": "trader-general", "by": "the market hut"}, {"kind": "cooking-pot", "by": "an added pot"}],
+        "structures": [{"structure": "walls", "what": "the town wall", "verdict": "dropped", "why": "no wall"},
+                       {"structure": "harbour", "what": "the jetty", "verdict": "kept", "why": "on the stream"},
+                       {"cluster": "s01,s02", "what": "houses", "verdict": "kept", "why": "the record's houses"},
+                       {"cluster": "s09", "what": "a trap field", "verdict": "dropped", "why": "a friendly camp"}]}
+
+
+def causes(bad):
+    return {c for c, _ in bad}
 
 
 def test_a_whole_plan_has_no_faults():
-    assert plan.faults(FULL, GIVES, STRUCT, {"w1": "x", "w2": "x"}) == []
+    assert plan.faults(FULL, GIVES, STRUCT, {"w1": "x", "w2": "x"}, {"s01", "s02"}) == []
 
 
-def test_a_missing_promise_a_missing_verdict_and_a_half_dropped_structure_are_named():
-    bad = plan.faults(FULL[1:3], GIVES, STRUCT, {"w1": "x"})
-    assert any("trader-general has no line" in b for b in bad)
-    assert any("harbour" in b and "no verdict" in b for b in bad)
-    assert any("walls is dropped but 1" in b for b in bad)
-    assert plan.faults([{"thing": "x"}], [], {}, {}) == ["plan line 0: a line names the thing and what delivers it"]
+def test_each_fault_is_named():
+    part = {"look": [{"line": "x", "by": ""}], "gives": FULL["gives"][1:], "structures": FULL["structures"][:1] +
+            FULL["structures"][3:] + [{"what": "a hall"}]}
+    bad = plan.faults(part, GIVES, STRUCT, {"w1": "x"}, {"s01", "s09"})
+    text = " | ".join(d for _, d in bad)
+    assert causes(bad) == {plan.UNDELIVERED, plan.NO_GIVE, plan.NO_VERDICT, plan.STANDS}
+    assert "trader-general" in text and "harbour" in text and "cluster s01" in text and "cluster s09" in text
+    assert "walls is dropped but 1" in text
+
+
+def test_no_plan_or_another_shape_is_missing():
+    for p in (None, {}, [{"thing": "x", "by": "y"}]):
+        assert causes(plan.faults(p, GIVES)) == {plan.MISSING}

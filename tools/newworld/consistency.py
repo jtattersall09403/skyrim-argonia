@@ -17,12 +17,11 @@ Check families, each a function of one context dict so the tests feed it a small
   story      every place, person, faction named by the quests and the line pages exists; what a quest says of a
              place is in its record or draft; each placement's place exists and has a spot (quests.jsonl).
              The main quest is the fixed side: the record is reported as wrong, never the quest.
-  draft      a drafted place: draft.plan covers each gives row, each look sentence and each structure's verdict;
+  draft      a drafted place: draft.plan has a delivered row per gives row and look line and a verdict per structure;
              people against population; the built check (nordic, seat, primitives) green and newer than the draft
   generated  the story digest, the story explorer and the Atlas current with their sources
 
-draft.plan's shape: {"gives": {"<seq>": "how the draft delivers it"}, "look": {"<sentence index>": "..."},
-"structures": {"<name>": {"verdict": "keep|replace|drop|add", ...}}}.
+draft.plan's shape and faults are tools/places/draft/plan.py's.
 
 `--baseline` writes the counts per cause to tools/newworld/consistency_baseline.json; a plain run compares with it.
 The stage (`make consistency`) is report-only: it exits 0 and prints the counts against the baseline.
@@ -747,23 +746,11 @@ def check_drafts(ctx, R: Report, only=None):
             R.add("draft", "a draft with no place record", pid, rel, rel)
             continue
         draft = d["place"].get("draft") or {}
-        plan = draft.get("plan")
-        if not plan:
-            R.add("draft", "a draft with no plan", pid, "draft.plan is missing: gives, look and structures unaccounted",
-                  rel)
-        else:
-            pg = {str(k) for k in (plan.get("gives") or {})}
-            for g in ctx["gives"].get(pid, []):
-                if str(g.get("seq")) not in pg:
-                    R.add("draft", "the plan misses a gives row", pid, f"seq {g.get('seq')} {g['give_kind_id']}", f"{rel}; {g['_ev']}")
-            look, lev = ctx["notes"].get(pid, {}).get("look", ("", ""))
-            pl = {str(k) for k in (plan.get("look") or {})}
-            for i, s in enumerate(sentences(look)):
-                if str(i) not in pl:
-                    R.add("draft", "the plan misses a look sentence", pid, f"look[{i}] {s[:90]}", f"{rel}; {lev}")
-            for name, v in (plan.get("structures") or {}).items():
-                if not (isinstance(v, dict) and v.get("verdict")) and not isinstance(v, str):
-                    R.add("draft", "a major structure without a verdict", pid, name, rel)
+        from tools.places.draft import plan
+        gives = ctx["gives"].get(pid, [])
+        for cause, detail in plan.faults(draft.get("plan"), gives):
+            ev = next((g["_ev"] for g in gives if cause == plan.NO_GIVE and f" {g['give_kind_id']} " in detail), None)
+            R.add("draft", cause, pid, detail, f"{rel}; {ev}" if ev else rel)
         pop = p.get("population") or 0
         n = d["people"]
         if n < pop or n > max(pop * 1.5, pop + 4):

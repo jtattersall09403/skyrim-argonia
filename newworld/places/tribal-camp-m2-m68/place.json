@@ -356,60 +356,59 @@
     "base": "King of the Murkmire.esp:0AAE85"
    }
   },
-  "plan": [
-   {
-    "thing": "source choice",
-    "from": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped"
-   },
-   {
-    "thing": "hide tents hung with bones",
-    "from": "each of the five orc awning sites takes King of the Murkmire's hide tent (ALPAScaleTent02, Ree-An-Wo's); the awnings' partitions dropped; a bone totem beside each tent"
-   },
-   {
-    "thing": "a timber longhouse",
-    "from": "the source's OrcLonghouse01 kept with its door and room (the Naga longhouse: pay and stolen goods); orc tables, chairs and chest replaced by King of the Murkmire's rustic pieces"
-   },
-   {
-    "thing": "the cellar",
-    "from": "kept: main quest 4 needs the longhouse and its cellar"
-   },
-   {
-    "thing": "a fire pit",
-    "from": "the source's campfire and fires kept"
-   },
-   {
-    "thing": "jars of sap stacked by the longhouse wall",
-    "from": "draft.add: urn stacks beside the longhouse door"
-   },
-   {
-    "thing": "a cage at the camp's edge",
-    "from": "draft.add: Skyrim's long metal cage at the west edge (main quest 4)"
-   },
-   {
-    "thing": "a pole of trophies",
-    "from": "draft.add: a tall bone totem by the fire"
-   },
-   {
-    "thing": "a bone shrine of standing stones",
-    "from": "draft.add: a ring of four standing stones with scattered bones (the Loreisian camp's), north of the tents"
-   },
-   {
-    "thing": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
-    "from": "dropped: the record names no wall"
-   },
-   {
-    "thing": "structure: mine",
-    "from": "dropped: the record names none"
-   },
-   {
-    "thing": "structure: orc smithy, stable, well, counter, dragon perch",
-    "from": "dropped: the record promises no smith, horses, trader or dragon"
-   },
-   {
-    "thing": "tanning rack",
-    "from": "replaced by King of the Murkmire's scale tanning rack"
-   }
-  ]
+  "plan": {
+   "look": [
+    {
+     "line": "hide tents hung with bones",
+     "by": "each of the five orc awning sites takes King of the Murkmire's hide tent (ALPAScaleTent02, Ree-An-Wo's); the awnings' partitions dropped; a bone totem beside each tent"
+    },
+    {
+     "line": "a timber longhouse",
+     "by": "the source's OrcLonghouse01 kept with its door and room (the Naga longhouse: pay and stolen goods); orc tables, chairs and chest replaced by King of the Murkmire's rustic pieces"
+    },
+    {
+     "line": "the cellar",
+     "by": "kept: main quest 4 needs the longhouse and its cellar"
+    },
+    {
+     "line": "a fire pit",
+     "by": "the source's campfire and fires kept"
+    },
+    {
+     "line": "jars of sap stacked by the longhouse wall",
+     "by": "draft.add: urn stacks beside the longhouse door"
+    },
+    {
+     "line": "a cage at the camp's edge",
+     "by": "draft.add: Skyrim's long metal cage at the west edge (main quest 4)"
+    },
+    {
+     "line": "a pole of trophies",
+     "by": "draft.add: a tall bone totem by the fire"
+    },
+    {
+     "line": "a bone shrine of standing stones",
+     "by": "draft.add: a ring of four standing stones with scattered bones (the Loreisian camp's), north of the tents"
+    },
+    {
+     "line": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
+     "by": "dropped: the record names no wall"
+    },
+    {
+     "line": "structure: mine",
+     "by": "dropped: the record names none"
+    },
+    {
+     "line": "structure: orc smithy, stable, well, counter, dragon perch",
+     "by": "dropped: the record promises no smith, horses, trader or dragon"
+    },
+    {
+     "line": "tanning rack",
+     "by": "replaced by King of the Murkmire's scale tanning rack"
+    }
+   ],
+   "source": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped"
+  }
  },
  "fit": {
   "pivot": [

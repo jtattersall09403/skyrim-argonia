@@ -79,7 +79,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
-        bad += plan.for_place(place_id)[1]
+        bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]
     for r in ledger:
         if r["status"] not in ("placed", "adapted", "replaced", "dropped"):
             bad.append(f"ledger {r['src']}: unknown status {r['status']}")
@@ -384,23 +384,12 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
 
 
 def plan_checks(place: dict, refs: list[dict]) -> list[str]:
-    """`draft.plan` is the place's plan against its record: `look` rows ({line, by}: each thing the record names and
-    the pieces that deliver it) and `structures` rows ({cluster, what, verdict: kept|dropped, why}: each major
-    structure of the source judged against the record). Fails with no plan, a look row delivered by nothing, or a
-    cluster holding a standing building the plan does not judge (or judged dropped)."""
-    plan = (place.get("draft") or {}).get("plan")
-    if not isinstance(plan, dict) or not plan.get("look"):
-        return ["draft.plan is missing: write the plan against the place record before drafting (place-build)"]
-    bad = [f"draft.plan look line '{row.get('line')}' is delivered by nothing" for row in plan["look"]
-           if not str(row.get("by") or "").strip()]
-    judged = {s.get("cluster"): s for s in plan.get("structures") or []}
-    for cid in sorted({r.get("cluster") for r in refs if r.get("kind") == "building" and r.get("src") and r.get("cluster")}):
-        s = judged.get(cid)
-        if s is None:
-            bad.append(f"draft.plan does not judge the structure of cluster {cid}")
-        elif s.get("verdict") != "kept":
-            bad.append(f"cluster {cid} still stands though draft.plan drops it ({s.get('why')})")
-    return bad
+    """`draft.plan` (shape and faults: tools/places/draft/plan.py) against the draft's standing source buildings:
+    each one's cluster judged kept. The record's promises and structures are checked by `plan.for_place`."""
+    from tools.places.draft import plan
+    clusters = {r.get("cluster") for r in refs if r.get("kind") == "building" and r.get("src") and r.get("cluster")}
+    return [f"draft.plan: {cause}: {detail}" for cause, detail in
+            plan.faults((place.get("draft") or {}).get("plan"), [], clusters=clusters)]
 
 
 def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) -> list[str]:
