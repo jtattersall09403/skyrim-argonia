@@ -46,7 +46,7 @@ REACH_Z = 220.0
 OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
 EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this over the eye: its roof is at head height
 DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
-TOOL = 5             # the judging rules version: a route shot under older rules is shot again
+TOOL = 6             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
@@ -705,7 +705,7 @@ def room_plan(M, kind: dict, pieces: list[dict]) -> list[dict]:
             continue
         things.append(t | {"name": t["name"].split(" ", 1)[0] + " " + (p.get("edid") or t["name"].split(" ", 1)[-1])})
     for t in things + kind["spots"]:
-        r = plan_route(M, route_name(a, t), a, t | {"kind": "thing"})
+        r = plan_route(M, f"{route_name(a, t)}-{len(routes)}", a, t | {"kind": "thing"})
         P = r.get("walk")
         r["stations"] = []
         if P is not None and len(P):
@@ -1046,7 +1046,7 @@ def _judge(sc, c, rr, by_id, lk, st, inside, ins, all_in):
     ev = evidence(ids, rr["table"], rr["id0"], by_id, c["pos"])
     ev["inside"], ev["all_inside"] = ins, all_in
     ev["in_piece"] = in_piece(ins)
-    if ev["in_piece"] and OPEN_UNDER.search(ev["in_piece"]):   # a deck on stilts: its box is mostly the air under it
+    if ev["in_piece"] and (OPEN_UNDER.search(ev["in_piece"]) or inside):   # a deck on stilts, a room's shell: a box of air
         ev["inside"] = ev["all_inside"] = ev["in_piece"] = None
     ev["low_ceiling"] = bool(inside and all_in)
     v = classify(lk[0], st["what"], ev, inside)
@@ -1086,7 +1086,8 @@ def _label(img, row, small=(256, 192)):
 def make_strips(r, rows, imgs, out: Path, inside: bool, fill: bool, stale: bool) -> list[str]:
     from PIL import Image, ImageDraw
     from tools.places.look import draw
-    cols = [lk[0] for lk in LOOKS + DIAGONALS]
+    present = {x["look"] for x in rows if "look" in x}
+    cols = [lk[0] for lk in LOOKS + DIAGONALS if lk[0] in present]
     sts = sorted({x["station"] for x in rows if "look" in x})
     tw, th = 256, 192
     paths = []
