@@ -1,5 +1,5 @@
 """`draft check` refuses an obviously wrong piece (tools/places/draft/obvious.py): a stand-in box or a model that does
-not resolve, a piece floating with nothing under it, a bridge without support at both ends."""
+not resolve, a piece floating (by the look tool's rules, tools/places/look/geom.py) with nothing under it, a bridge without support at both ends."""
 from tools.places.draft import obvious
 from tools.places.seat import Ground
 
@@ -8,6 +8,7 @@ BASES = {
     "deck": {"bounds": [[-300, -100, -20], [300, 100, 0]], "model": "x/dockdeck.nif"},
     "bridge": {"bounds": [[-300, -100, -20], [300, 100, 20]], "model": "x/bridge01.nif"},
     "lamp": {"bounds": [[-12, -12, -24], [12, 12, 24]], "model": "x/lamp.nif"},
+    "post": {"bounds": [[-50, -50, 0], [50, 50, 700]], "model": "x/post.nif"},
     "box": {"bounds": [[0, 0, 0], [0, 0, 0]], "model": None},
 }
 
@@ -48,11 +49,12 @@ def test_a_bridge_needs_support_at_both_ends():
     water = flat(-200.0, water=0.0)
     lone = ref("br", 0, 0, 500, "bridge")
     assert any("both ends" in b for b in obvious.faults([lone], BASES, water))
-    left = ref("dl", -500, 0, 500, "deck")
-    one = obvious.faults([lone, left], BASES, water)
+    # a deck carries a bridge's end only when the deck itself stands (on its post down to the bed)
+    left, lpost = ref("dl", -500, 0, 480, "deck"), ref("pl", -500, 0, -200, "post")
+    one = obvious.faults([lone, left, lpost], BASES, water)
     assert any("one end" in b for b in one if b.startswith("br "))
-    right = ref("dr", 500, 0, 500, "deck")
-    got = [b for b in obvious.faults([lone, left, right], BASES, water) if b.startswith("br ")]
+    right, rpost = ref("dr", 500, 0, 480, "deck"), ref("pr", 500, 0, -200, "post")
+    got = [b for b in obvious.faults([lone, left, lpost, right, rpost], BASES, water) if b.startswith("br ")]
     assert got == []
     # a bridge whose ends rest on the banks stands
     assert obvious.faults([ref("br", 0, 0, 20, "bridge")], BASES, flat()) == []
