@@ -482,3 +482,21 @@ def test_a_duplicate_gets_its_own_seat_and_reason_never_the_originals():
     # in a room a copy keeps its height
     (c4,) = hands.duplicate_rows(_Sc([crate], pieces, g, space="Hall"), [crate], 10, 0, "x", lambda i: "c4")
     assert c4["seat"] == {"mode": "free"}
+
+
+# ---------- sections by the mesh's outline (outline.py) ----------
+def test_a_section_outlines_a_flights_treads_from_its_triangles_not_its_box():
+    from tools.places.look import outline
+    # a flight's two treads, level, 0..200 along x, at z 0 and 50, 100 wide; and a stringer far off the slab
+    treads = np.array([[[0, -50, 0], [100, -50, 0], [100, 50, 0]], [[100, -50, 50], [200, -50, 50], [200, 50, 50]],
+                       [[0, 400, 0], [200, 400, 0], [200, 400, 100]]], float)
+    p = {"m": xform.matrix([1000, 0, 0], [0, 0, 0], 1.0)}
+    W = outline.world_tris(p, treads)
+    assert W[0, 0].tolist() == [1000, -50, 0]
+    kept = outline.in_slab(W, [[900, 0], [1300, 0]], 96)
+    assert len(kept) == 2                      # the stringer 400 off the line is outside the slab
+    cam = geom.section_camera([900, 0], [1300, 0], -50, 150, 200, 100, 96)
+    m = outline.mask(cam, kept, (200, 100))
+    e = outline.edge(m)
+    assert m.getbbox() is not None and e.getbbox() is not None   # edge-on treads still leave a mark
+    assert outline.model_tris(None) is None

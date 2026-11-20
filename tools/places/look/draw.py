@@ -182,13 +182,21 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
     tag(d, ((x0 + x1) / 2 + 70, h - 18), f"{sd:.0f} u = {sd / geom.UNITS_PER_M:.1f} m", size=11)
     # crossed pieces: outline (red when faulted) and their lowest point over the ground
     placed = []
-    for c in crossed:
+    from tools.places.look import outline
+    for c in crossed:   # every crossed piece by its mesh's own outline in the slab (its box only when it has no mesh)
         p = scene.by_id[c["id"]]
         pp = geom.project(cam, geom.corners(p))
-        hl = geom.hull(pp[:, :2])
         bad = p["id"] in fault_ids
-        if len(hl) > 2 and (bad or c.get("label")):
-            d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=3 if bad else 1)
+        ol = outline.piece_outline(cam, p, (w, h), float(cam.get("slab", 96.0)))
+        if ol is not None:
+            ink = Image.new("RGBA", (w, h), RED if bad else (255, 255, 255, 200))
+            over.paste(ink, (0, 0), ol.point(lambda v: 255 if v else 0))
+            if bad:
+                over.paste(ink, (0, 0), outline.edge(ol.filter(outline.ImageFilter.MaxFilter(3))).point(lambda v: 255 if v else 0))
+        else:
+            hl = geom.hull(pp[:, :2])
+            if len(hl) > 2:
+                d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=3 if bad else 1)
         if bad or c.get("label"):
             xm, ym = float(pp[:, 0].mean()), float(pp[:, 1].min())
             txt = f"{c['id'].split('.')[-1][:6]} {c.get('edid') or ''} {'+' if (c['over'] or 0) >= 0 else ''}{c['over']:.0f}" if c["over"] is not None else c["id"][-6:]
