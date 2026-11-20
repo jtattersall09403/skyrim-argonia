@@ -76,14 +76,14 @@
     "stop": "rootworm-stop",
     "kind": "activator",
     "pos": [
-     -30246.87,
-     -610441.29
+     -30126.1,
+     -610383.4
     ],
     "scale": 5.65,
     "dz": 3.0,
     "need": 11,
     "tier": "AGENT_INVENTED",
-    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
+    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist (its amber Hist sap water) centred on the trunk and sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
     "rot_z": 1.25494,
     "id_base": "Skyrim.esm:09727E"
    },
@@ -913,6 +913,26 @@
     {
      "line": "traps",
      "by": "dropped: pressure plates, poison gas and the source's poison blooms (a hazard the friendly record names no danger for)"
+    },
+    {
+     "line": "the market (outdoors)",
+     "by": "the market square: three of Black Marsh & Valenwood's own market stands round the market trader's spot; the Market Cave stays only as the way to the quiet house off the market that the record's hook and the Chainbreakers' line name"
+    },
+    {
+     "line": "the market smithy",
+     "by": "the smith's yard (forge, grindstone, workbench, smelter, tanning rack) and the Market Smithy room (Lilmoth Ironworks) behind a Lilmoth house on its west side"
+    },
+    {
+     "line": "the sap-seller's stall",
+     "by": "a market stand beside the alchemy lab where Wujeel works"
+    },
+    {
+     "line": "the levy's post",
+     "by": "the Levy's Post room (Lilmoth Guardhouse) behind a Lilmoth house by the levy's guard stand"
+    },
+    {
+     "line": "the old Xanmeer",
+     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) on the hidden ziggurat's footprint at the city's north-west edge"
     }
    ],
    "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced",
@@ -927,7 +947,7 @@
     },
     {
      "kind": "trader-general",
-     "by": "Weighs-Every-Coin, market trader, at the stalls of the market square"
+     "by": "Weighs-Every-Coin, market trader, at the stalls of the outdoor market square"
     },
     {
      "kind": "trader-blacksmith",
@@ -951,27 +971,27 @@
     },
     {
      "kind": "forge",
-     "by": "the market smithy's forge, added in its yard (stations.added)"
+     "by": "the market smithy's forge, added in its yard (stations.added); the Market Smithy room behind the yard"
     },
     {
      "kind": "anvil",
-     "by": "the market smithy's forge, which is its anvil"
+     "by": "the market smithy's forge, which is its anvil; the Market Smithy room behind the yard"
     },
     {
      "kind": "armour-workbench",
-     "by": "the market smithy's workbench across its yard"
+     "by": "the market smithy's workbench across its yard; the Market Smithy room behind the yard"
     },
     {
      "kind": "grindstone",
-     "by": "the market smithy's grindstone beside the forge"
+     "by": "the market smithy's grindstone beside the forge; the Market Smithy room behind the yard"
     },
     {
      "kind": "smelter",
-     "by": "the market smithy's smelter in its yard"
+     "by": "the market smithy's smelter in its yard; the Market Smithy room behind the yard"
     },
     {
      "kind": "tanning-rack",
-     "by": "the market smithy's tanning rack across its yard"
+     "by": "the market smithy's tanning rack across its yard; the Market Smithy room behind the yard"
     },
     {
      "kind": "alchemy-lab",
@@ -8066,6 +8086,11 @@
   "added": []
  },
  "sap": {
-  "added": []
+  "added": [
+   {
+    "id": "helstrom.sap.W8H2ZE5XRXHVJN6080NV1ASNXE",
+    "on": "W8H2ZE5XRXHVJN6080NV1ASNXE"
+   }
+  ]
  }
 }
