@@ -1829,7 +1829,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         r.setdefault("points", [])
     path_cells = set()
     for p in P["paths"]:
-        for x, y in p["points"]:
+        for x, y, *_ in p["points"]:
             path_cells.add(cell_of(x, y))
     ext_cells = {tuple(r["cell"]) for r in S["refs"] if r["space"] == "exterior"}
     land_cells = {tuple(r["cell"]) for r in P["land"]}
@@ -1868,7 +1868,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
         if touched:
             objects, tally = collision_objects(S["refs"])
-            polylines = navworld.road_polylines() + [[(x, y, False) for x, y in p["points"]] for p in P["paths"]]
+            polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
                                               [r["pos"] for r in clear])
             nav_info["collision"] = tally
