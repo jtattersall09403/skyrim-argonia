@@ -16,6 +16,9 @@
 {"faction_id":"faction.many-root-conclave","ord":0,"value":"docs/quests/40-factions.md"}
 {"faction_id":"faction.marsh-charter","ord":0,"value":"docs/quests/40-factions.md"}
 {"faction_id":"faction.marsh-charter","ord":1,"value":"world/sources/lore/topics/guilds-and-orders.md"}
+{"faction_id":"faction.mn.blackrose-heirs","ord":0,"value":"story/design/quests/lines/main-plot.md"}
+{"faction_id":"faction.mn.unbound","ord":0,"value":"story/design/quests/lines/main-plot.md"}
+{"faction_id":"faction.mn.unbound","ord":1,"value":"story/design/quests/lines/consistency.md"}
 {"faction_id":"faction.morrowind-veterans","ord":0,"value":"docs/quests/10-political-frame.md"}
 {"faction_id":"faction.murkwater-tribe","ord":0,"value":"UESP:Lore:Murkwater"}
 {"faction_id":"faction.naga-kur","ord":0,"value":"UESP:Lore:Naga"}
@@ -38,6 +41,7 @@
 {"faction_id":"faction.synod","ord":0,"value":"UESP:Lore:Synod"}
 {"faction_id":"faction.synod","ord":1,"value":"world/sources/lore/topics/guilds-and-orders.md"}
 {"faction_id":"faction.thorn-ash-reed-accord","ord":0,"value":"docs/quests/40-factions.md"}
+{"faction_id":"faction.toh-reel-ka","ord":0,"value":"story/design/quests/lines/main-plot.md"}
 {"faction_id":"faction.tribeless-naga","ord":0,"value":"world/sources/lore/topics/lost-peoples.md"}
 {"faction_id":"faction.umbriel-witness-society","ord":0,"value":"docs/quests/40-factions.md"}
 {"faction_id":"faction.umbriel-witness-society","ord":1,"value":"world/sources/lore/topics/umbriel.md"}

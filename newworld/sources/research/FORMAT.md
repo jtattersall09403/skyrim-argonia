@@ -66,12 +66,13 @@ ruins with an entrance into the ground need `entrance-in-slope`; places on the w
 
 Population (people living there in 4E 201, at Skyrim's scale: Solitude has about 70 named residents): the
 researched estimate, inside the tier's range in `settlement_tier` (a seat up to a quarter over), and in order with
-its peers: metropolises above large cities above small cities above towns above villages above outposts above
-minor places; 0 for a ruin or wild place. It is never a source's people count: a draft fills its people to the
+its peers among the true settlements: metropolises above large cities above small cities above towns above
+villages (an outpost, a camp or a minor place is held only to its own tier's range); 0 for a ruin or wild place. It is never a source's people count: a draft fills its people to the
 record, and a small source is topped up.
 
-`symbol_id` (optional): the Atlas symbol, only where lore sets a tier other than the map glyph's, with the reason in
-the overview's sources (Helstrom, the capital, is a metropolis).
+`symbol_id` (optional): the Atlas symbol, only where lore or the story sets a tier or kind other than the map
+glyph's, with the reason in the overview's sources (Helstrom, the capital, is a metropolis; Ashgate Landing, a work
+camp of the Owing, is a camp).
 
 ## Gives
 

@@ -48,8 +48,8 @@ storyexplorer:
 atlas:
 	@python3 -m tools.newworld.atlas_state check
 
-# Every new-world data record against every other (tools/newworld/consistency.py, decision 0040): report-only, counts
-# per cause against tools/newworld/consistency_baseline.json; `--baseline` re-records it as the lanes fix records.
+# Every new-world data record against every other (tools/newworld/consistency.py, decision 0040): fails on any
+# finding; the counts per cause, then `python -m tools.newworld.consistency` for each finding with its evidence.
 consistency:
 	@$(PY) -m tools.newworld.consistency --summary
 

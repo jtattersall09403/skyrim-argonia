@@ -2,7 +2,7 @@
 
 A digest of the new world's database (Project Tamriel's Black Marsh, built as our own worldspace) for the people who write its story. It is generated, never edited by hand: change the database or the generator and regenerate. The other files in this folder (the numbered lore-system notes) are written by hand and are not part of the digest.
 
-Made 2026-11-20 from database revision `c6df9894c50b1fed` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
+Made 2026-11-20 from database revision `e699082303d39c9b` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
 
     python3 -m tools.newworld.story_digest [--out story/design/world]
 
@@ -18,7 +18,7 @@ Made 2026-11-20 from database revision `c6df9894c50b1fed` (the first 16 hex digi
 | [regions/benthic-yobesh.md](regions/benthic-yobesh.md) | 292 | Benthic Yobesh: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/blackwood.md](regions/blackwood.md) | 217 | Blackwood: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/cape-percar.md](regions/cape-percar.md) | 465 | Cape Percar: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
-| [regions/chixathe-mesa.md](regions/chixathe-mesa.md) | 422 | Chixathe Mesa: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
+| [regions/chixathe-mesa.md](regions/chixathe-mesa.md) | 423 | Chixathe Mesa: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/hatandros-bight.md](regions/hatandros-bight.md) | 302 | Hatandros Bight: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/kotherra-mangroves.md](regions/kotherra-mangroves.md) | 262 | Kotherra Mangroves: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
 | [regions/lake-ulaish.md](regions/lake-ulaish.md) | 251 | Lake Ulaish: its nature, peoples, places in full (what each promises, what it will be built from, whether it is built), what ranges it, and its hooks. |
@@ -37,4 +37,4 @@ Made 2026-11-20 from database revision `c6df9894c50b1fed` (the first 16 hex digi
 
 How it is made: every sentence is either a note quoted as the database holds it or composed from rows; the HTML comment after each paragraph names the rows (`place:<id>`, `place_note:<place>/<aspect>`, `region_note:<region>/<aspect>`, `culture:<id>`, `place_give:<place>/<seq>`, `place_source:<place>/<rank>`, `travel_route:<from>/<to>/<mode>`, and so on). Hooks are each place's hooks note, then every sentence of its other notes (and its region's) that names a tension, shortage, rivalry, mystery or loss. Roads are read from the road graph, place to place through junctions. A place is built when its draft has written newworld/places/<id>/ledger.jsonl.
 
-Counts: 258 places, 24 regions, 18 cultures, 651 hooks, 131 named people.
+Counts: 258 places, 24 regions, 18 cultures, 652 hooks, 131 named people.

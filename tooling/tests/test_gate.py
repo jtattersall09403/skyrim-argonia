@@ -98,3 +98,13 @@ def test_every_mapped_stage_is_a_stage_with_a_make_target():
         assert s in gate.STAGES, s
         assert s == "skse" or s in targets, s
         assert s == "skse" or s in check_all, s
+
+
+def test_records_quests_story_drafts_and_the_checker_run_the_consistency_stage():
+    for path in ("newworld/story/data/db/place.jsonl", "newworld/sources/research/places/west.json",
+                 "newworld/story/quests/main/mn01.yaml", "story/design/quests/lines/main-plot.md",
+                 "newworld/places/helstrom/place.json", "story/data/db/faction.jsonl",
+                 "tools/newworld/consistency.py", "tools/newworld/record_check.py"):
+        p = gate.pick([path])
+        assert "consistency" in p.stages, path
+        assert p.full or "tools/tests/test_newworld_consistency.py" in p.tests, path

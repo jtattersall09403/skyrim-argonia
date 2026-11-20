@@ -126,3 +126,12 @@ globs = ["newworld/story/data/db/place*", "newworld/story/data/db/region*", "new
          "tools/newworld/map_page.*", "tools/newworld/atlas*"]
 stages = ["atlas"]
 tests = ["tools/tests/test_newworld_atlas_state.py"]
+
+# The consistency checker (decision 0040): every new-world record against every other. It runs when the place
+# records and their sources, the quests, the story pages, the drafts, the faction records or the checker change.
+[[rule]]
+globs = ["newworld/story/data/*", "newworld/sources/research/*", "newworld/sources/people/*", "newworld/story/quests/*",
+         "story/design/quests/lines/*", "newworld/places/*", "story/data/db/faction*", "tools/newworld/consistency.py",
+         "tools/newworld/record_check.py"]
+stages = ["consistency"]
+tests = ["tools/tests/test_newworld_consistency.py", "tools/tests/test_newworld_record_check.py"]

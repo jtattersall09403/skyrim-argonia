@@ -287,7 +287,7 @@
 {"place_id":"siluo","terrain_need_id":"flat-pad","radius_m":40.0,"why":"a few stilt houses and rafts"}
 {"place_id":"siluo","terrain_need_id":"shore-access","radius_m":40.0,"why":"the hamlet moors on the water"}
 {"place_id":"slough-point","terrain_need_id":"flat-pad","radius_m":70.0,"why":"the village around the customs house"}
-{"place_id":"slough-point","terrain_need_id":"shore-access","radius_m":70.0,"why":"the tidal river and the bridge head"}
+{"place_id":"slough-point","terrain_need_id":"shore-access","radius_m":70.0,"why":"the river and the bridge head"}
 {"place_id":"soulrest","terrain_need_id":"flat-pad","radius_m":300.0,"why":"the city's built area"}
 {"place_id":"soulrest","terrain_need_id":"shore-access","radius_m":300.0,"why":"the port frontage on the bay"}
 {"place_id":"southwatch-keep","terrain_need_id":"flat-pad","radius_m":40.0,"why":"the fort's walled yard"}

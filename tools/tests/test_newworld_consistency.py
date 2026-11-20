@@ -6,9 +6,12 @@ import copy
 from tools.newworld import consistency as C
 
 TIERS = {"village": {"id": "village", "population_lo": 10, "population_hi": 30, "footprint_radius_m": 60.0},
-         "town": {"id": "town", "population_lo": 30, "population_hi": 60, "footprint_radius_m": 110.0}}
+         "town": {"id": "town", "population_lo": 30, "population_hi": 60, "footprint_radius_m": 110.0},
+         "outpost": {"id": "outpost", "population_lo": 2, "population_hi": 25, "footprint_radius_m": 40.0}}
 SYMS = {"s.village": {"id": "s.village", "settlement_tier_id": "village"},
-        "s.town": {"id": "s.town", "settlement_tier_id": "town"}}
+        "s.town": {"id": "s.town", "settlement_tier_id": "town"},
+        "s.outpost": {"id": "s.outpost", "settlement_tier_id": "outpost"},
+        "s.camp": {"id": "s.camp"}}
 
 
 def place(pid, name, sym="s.village", pop=20, kind="village", **kw):
@@ -34,7 +37,7 @@ def ctx(**over):
          "source_place": {"s1": {"id": "s1", "title": "Keeba (KotM)", "name": "Keeba", "culture_tags": "argonian"},
                           "s2": {"id": "s2", "title": "Teeba (KotM)", "name": "Teeba", "culture_tags": "argonian"}},
          "tiers": TIERS, "symbols": SYMS, "regions": {"r": {"name": "Reg"}}, "cultures": {"c": {"name": "Cul"}},
-         "on_road": {"a", "b"}, "aliases": {}, "person_names": {"weeltul"}, "factions": {"faction.known"},
+         "on_road": {"a", "b"}, "on_route": set(), "aliases": {}, "person_names": {"weeltul"}, "factions": {"faction.known"},
          "quests": [], "lines": {}, "drafts": {}, "main": {"b"}, "ground": {}, "map_page": None,
          "generated": {"digest": []}, "cell_region": {}}
     c.update(over)
@@ -63,6 +66,29 @@ def test_internal_clean_then_broken():
     assert "a friendly place gives a fight inside it" in causes(c, "internal")[0]
 
 
+def test_peers_compare_true_settlements_only():
+    c = ctx()
+    c["places"]["o"] = place("o", "Outpost", sym="s.outpost", pop=24, kind="outpost")
+    c["places"]["k"] = place("k", "Camp", sym="s.camp", pop=40, kind="tribal-camp")
+    assert causes(c, "internal")[0] == set()  # an outpost or a camp outnumbering a village is no fault
+    c["places"]["b"]["population"] = 15  # a town below a village is
+    assert "population out of order with its peers" in causes(c, "internal")[0]
+
+
+def test_a_second_store_needs_a_fight_that_rewards_it():
+    def g(kind, reward=None):
+        return {"give_kind_id": kind, "detail": "x", "reward_kind_id": reward, "_ev": "g:9"}
+    c = ctx()
+    c["danger"]["a"]["disposition_id"] = "hostile"
+    c["gives"]["a"] = [g("combat-creature", "treasure"), g("combat-boss", "boss-chest"), g("treasure"), g("boss-chest")]
+    assert "more than one treasure" not in causes(c, "internal")[0]
+    c["gives"]["a"] = [g("combat-boss", "boss-chest"), g("boss-chest"), g("gold-hoard")]
+    got, R = causes(c, "internal")
+    assert "more than one treasure" in got and any("gold-hoard" in f.what for f in R.items)
+    c["gives"]["a"] = [g("treasure")]
+    assert "more than one treasure" not in causes(c, "internal")[0]
+
+
 def test_ground_water_words_and_hist_sap():
     far = {"d": {"sea": 9000.0, "river": 9000.0, "lake": 9000.0, "swamp": 9000.0, "any": 9000.0}, "water": False, "ev": "px"}
     c = ctx(ground={"a": far, "b": far})
@@ -72,6 +98,14 @@ def test_ground_water_words_and_hist_sap():
     got, _ = causes(c, "ground")
     assert {"a water word with no such water on the ground", "on_water disagrees with the raster",
             "a Hist pool worded as water, not sap"} <= got
+    c = ctx(ground={"a": far, "b": far})
+    c["places"]["a"]["summary"] = "A town built over the Ayleid ruin of Silyanorn."
+    c["notes"]["a"]["source"] = ("The marsh comes from the pool: Hist roots and bog beacons.", "n:2")
+    assert causes(c, "ground")[0] == set()  # "built over" a ruin; the source note's asset pool
+    c["places"]["a"]["summary"] = "A port built over shallow water."
+    c["notes"]["a"]["look"] = ("A Hist stands in the square's pond.", "n:1")
+    got, _ = causes(c, "ground")
+    assert {"a water word with no such water on the ground", "a Hist pool worded as water, not sap"} <= got
 
 
 def test_source_note_against_source():
@@ -98,9 +132,18 @@ def test_atlas_against_record():
     c["map_page"]["a"]["pop"] = 3
     c["on_road"] = set()
     c["places"]["b"]["footprint_radius_m"] = 500.0
-    got, _ = causes(c, "atlas")
+    got, R = causes(c, "atlas")
     assert {"the map page is behind the records", "the record's region differs from its cell's",
-            "a town or city on no road", "the footprint is too big for its tier"} <= got
+            "a town or city on no road or travel route", "the footprint is too big for its tier"} <= got
+    assert {f.place for f in R.items if f.cause.startswith("a town or city")} == {"b"}  # a village needs no road
+
+
+def test_a_town_is_reached_by_road_or_route_and_a_keep_is_no_town():
+    c = ctx(on_road=set(), on_route={"b"})
+    assert "a town or city on no road or travel route" not in causes(c, "atlas")[0]
+    c = ctx(on_road=set())
+    c["places"]["b"].update(symbol_id="s.outpost", place_kind_id="keep", population=20, importance=4)
+    assert "a town or city on no road or travel route" not in causes(c, "atlas")[0]
 
 
 def test_story_against_records():
@@ -109,7 +152,9 @@ def test_story_against_records():
          "placements": [{"ref": "thing.x", "anchor": {"place": "a", "need": "on the quay by the market"}},
                         {"ref": "thing.y", "anchor": {"place": "zz-ruin-1-m2"}}]}
     text = "id: quest.main.mn99\nfaction.ghost\nNobody-Here\nref: thing.x\non the quay by the market\nzz-ruin-1-m2\n"
-    c = ctx(quests=[{"path": "newworld/story/quests/main/mn99.yaml", "text": text, "data": q}])
+    drafted = {"a": {"place": {}, "rel": "newworld/places/a/place.json", "people": 20, "spaces": [], "spots": set(),
+                     "cast": set(), "check": None, "check_newer": True}}
+    c = ctx(quests=[{"path": "newworld/story/quests/main/mn99.yaml", "text": text, "data": q}], drafts=drafted)
     got, R = causes(c, "story")
     assert "a quest names a faction not in the records" in got
     assert "a quest names a person not in the records" in got
@@ -117,6 +162,16 @@ def test_story_against_records():
     assert "a quest placement with no spot in its place's quests.jsonl" in got
     assert any(c.startswith("a quest asks of a place what its record and draft lack") for c in got)
     assert all("mn99.yaml:" in f.evidence for f in R.items)
+    undrafted = ctx(quests=[{"path": "newworld/story/quests/main/mn99.yaml", "text": text, "data": q}])
+    assert "a quest placement with no spot in its place's quests.jsonl" not in causes(undrafted, "story")[0]
+    spotted = copy.deepcopy(drafted)
+    spotted["a"]["spots"] = {"quest.main.mn99/thing.x"}
+    c = ctx(quests=[{"path": "newworld/story/quests/main/mn99.yaml", "text": text, "data": q}], drafts=spotted)
+    assert "a quest placement with no spot in its place's quests.jsonl" not in causes(c, "story")[0]
+    cast = copy.deepcopy(drafted)
+    cast["a"]["cast"] = {"thing.x"}  # a person of the place's people source cast as the placement's ref
+    c = ctx(quests=[{"path": "newworld/story/quests/main/mn99.yaml", "text": text, "data": q}], drafts=cast)
+    assert "a quest placement with no spot in its place's quests.jsonl" not in causes(c, "story")[0]
     q2 = {"id": "quest.side.s1", "settlement": "a"}
     assert causes(ctx(quests=[{"path": "newworld/story/quests/side/s1.yaml", "text": "", "data": q2}]), "story")[0] == set()
 
@@ -154,4 +209,14 @@ def test_counts_group_by_family_and_cause():
     R.add("internal", "x", "a", "w", "e")
     R.add("internal", "x", "b", "w", "e")
     assert C.counts(R) == {"internal: x": 2}
-    assert "## internal: x  (2, baseline 1)" in C.render(R, {"internal: x": 1})
+    assert "## internal: x  (2)" in C.render(R)
+
+
+def test_a_finding_fails_the_run(monkeypatch, capsys):
+    monkeypatch.setattr(C, "load", lambda: ctx())
+    assert C.main(["--family", "internal"]) == 0
+    broken = ctx()
+    broken["places"]["b"]["population"] = 5
+    monkeypatch.setattr(C, "load", lambda: broken)
+    assert C.main(["--family", "internal"]) == 1
+    assert not hasattr(C, "BASELINE")

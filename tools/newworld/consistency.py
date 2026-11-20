@@ -1,6 +1,6 @@
 """Whether every data record of the new world agrees with every other (decision 0040; owner ruling #80, 2026-11-19).
 
-    ~/.argonia/venv/bin/python -m tools.newworld.consistency [--place ID] [--json] [--family F] [--baseline]
+    ~/.argonia/venv/bin/python -m tools.newworld.consistency [--place ID] [--json] [--family F] [--summary]
 
 Reads the real data in place: the place database (newworld/story/data/db), the quest records
 (newworld/story/quests/**), the story-line pages (story/design/quests/lines), the drafts (newworld/places/<id>), the
@@ -9,13 +9,23 @@ the generated pages (story digest, story explorer, Atlas). Reports every inconsi
 grouped by cause. Edits nothing.
 
 Check families, each a function of one context dict so the tests feed it a small broken fixture:
-  internal   a place record against itself (disposition, gives, population, tier, peers, held_by, wording)
-  ground     a record's water words, siting and on_water against the raster; Hist pools are sap
+  internal   a place record against itself. A settlement's population sits inside its symbol's tier range (a seat
+             up to 25% over); the true settlements keep their order (no village outnumbers a town, no town a small
+             city, and so up), while an outpost, a camp or a minor place is held only to its own range. A friendly
+             lived place gives no fight inside it; a hostile or abandoned place no service; a second loot store
+             stands only as the reward of a fight the record gives; a trade needs people; an ore vein a mine;
+             held_by, the people note's number and the words agree with the population and disposition.
+  ground     a record's water words, siting and on_water against the raster (the source note, which is about the
+             build source, is not read); every Hist pool is a pool of sap: worded as water is a fault, and so is a
+             record that names a Hist pool and never says sap
   source     the source note against the allocated source (place_source rank 0); main-quest sources judged;
              a shared source's notes say how each adaptation differs
-  atlas      symbol, tier, footprint, roads and region against the record; the map page's data against the record
+  atlas      symbol, tier, footprint and region against the record; a town or city (by its tier or kind) is on a
+             road or on a travel route; the map page's data against the record
   story      every place, person, faction named by the quests and the line pages exists; what a quest says of a
-             place is in its record or draft; each placement's place exists and has a spot (quests.jsonl).
+             place is in its record or draft; each placement's place exists, and a drafted place has its spot
+             (quests.jsonl), or, for a person, a person of its people source cast as that ref; an undrafted
+             place's spots are made when it is drafted.
              The main quest is the fixed side: the record is reported as wrong, never the quest.
   draft      a drafted place: draft.plan has a delivered row per gives row and look line and a verdict per structure;
              people against population; the built check (nordic, seat, primitives) green and newer than the draft
@@ -23,8 +33,8 @@ Check families, each a function of one context dict so the tests feed it a small
 
 draft.plan's shape and faults are tools/places/draft/plan.py's.
 
-`--baseline` writes the counts per cause to tools/newworld/consistency_baseline.json; a plain run compares with it.
-The stage (`make consistency`) is report-only: it exits 0 and prints the counts against the baseline.
+A run exits 1 on any finding; `make consistency` is a gate stage. tools/newworld/record_check.py runs this
+checker's internal and ground families for named places, for place-research.
 """
 from __future__ import annotations
 
@@ -40,8 +50,14 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
-BASELINE = Path(__file__).with_name("consistency_baseline.json")
-M_PER_PX = 2.93  # metres per Atlas raster pixel
+
+
+def _m_per_px() -> float:
+    from tools.newworld import frame
+    return frame.UNITS_PER_PX / frame.UNITS_PER_METRE
+
+
+M_PER_PX = _m_per_px()  # metres per Atlas raster pixel
 
 
 def out_root(repo: Path = REPO) -> Path:
@@ -91,7 +107,7 @@ def load(root: Path = REPO, out: Path | None = None) -> dict:
     out = out or out_root(root)
     T = {n: load_table(root, n) for n in (
         "place", "place_note", "place_give", "place_danger", "place_source", "source_place", "settlement_tier",
-        "symbol", "region", "culture", "road_node", "place_alias", "person")}
+        "symbol", "region", "culture", "road_node", "place_alias", "person", "travel_route")}
     ctx: dict = {"root": root, "out": out}
     ctx["places"] = {r["id"]: r for r, _ in T["place"]}
     ctx["place_ev"] = {r["id"]: ev for r, ev in T["place"]}
@@ -114,6 +130,7 @@ def load(root: Path = REPO, out: Path | None = None) -> dict:
     ctx["regions"] = {r["id"]: r for r, _ in T["region"]}
     ctx["cultures"] = {r["id"]: r for r, _ in T["culture"]}
     ctx["on_road"] = {r["place_id"] for r, _ in T["road_node"] if r.get("place_id")}
+    ctx["on_route"] = {r[k] for r, _ in T["travel_route"] for k in ("from_place_id", "to_place_id")}
     al: dict = collections.defaultdict(list)
     for r, _ in T["place_alias"]:
         al[r["place_id"]].append(r["alias"])
@@ -148,11 +165,14 @@ def load_drafts(root: Path, out: Path) -> dict:
         people = pj.parent / "people.jsonl"
         spaces = pj.parent / "spaces"
         chk = out / "places/shards" / pid / "check.json"
+        src = root / "newworld/sources/people" / f"{pid}.json"
+        cast = {r["cast"] for r in json.loads(src.read_text()).get("people", []) if r.get("cast")} if src.exists() else set()
         d[pid] = {"place": json.loads(pj.read_text()), "rel": str(pj.relative_to(root)),
                   "people": sum(1 for x in people.read_text().splitlines() if x.strip()) if people.exists() else 0,
                   "spaces": sorted(p.stem for p in spaces.glob("*")) if spaces.exists() else [],
                   "spots": {json.loads(x)["id"] for x in (pj.parent / "quests.jsonl").read_text().splitlines()
                             if x.strip()} if (pj.parent / "quests.jsonl").exists() else set(),
+                  "cast": cast,
                   "check": json.loads(chk.read_text()) if chk.exists() else None,
                   "check_newer": chk.exists() and chk.stat().st_mtime >= changed_at(root, pj.parent)}
     return d
@@ -283,7 +303,10 @@ SERVICES = {"trader-general", "trader-innkeeper", "trader-hunter", "trader-black
             "free-bed", "trainer", "shrine-blessing", "fence"}
 TREASURE = {"treasure", "boss-chest", "gold-hoard"}
 LIVED_IN = ("city", "town", "village", "hamlet", "estate")
-TIER_ORDER = ["minor", "outpost", "village", "town", "small-city", "large-city", "metropolis"]
+# the true settlements' tiers, smallest first: a place of a tier never has fewer people than one of the tier below
+SETTLEMENT_TIERS = ["village", "town", "small-city", "large-city", "metropolis", "megalopolis"]
+TOWN_TIERS = set(SETTLEMENT_TIERS[1:])
+FIGHTS = ("combat-foes", "combat-boss", "combat-creature")
 
 
 # ---------------------------------------------------------------- 1 internal
@@ -329,8 +352,12 @@ def check_internal(ctx, R: Report, only=None):
                     R.add("internal", "trade with no people to keep it", pid,
                           f"population {pop} but gives {g['give_kind_id']}", g["_ev"])
         tr = [g for g in G if g["give_kind_id"] in TREASURE]
-        if len(tr) >= 2:
-            R.add("internal", "more than one treasure", pid, f"{len(tr)} treasure rows", tr[1]["_ev"])
+        rewards = {g.get("reward_kind_id") for g in G if g["give_kind_id"] in FIGHTS}
+        loose = [g for g in tr if g["give_kind_id"] not in rewards]
+        if len(tr) >= 2 and loose:
+            R.add("internal", "more than one treasure", pid,
+                  f"{len(tr)} loot stores; {', '.join(g['give_kind_id'] for g in loose)} the reward of no fight",
+                  loose[0]["_ev"])
         if pop > 0 and (p.get("held_by") or "").lower().startswith("nobody"):
             R.add("internal", "held_by says nobody where people live", pid, f"population {pop}, held_by '{p['held_by']}'", ev)
         look = T.get("look", ("", ""))
@@ -354,13 +381,13 @@ def check_internal(ctx, R: Report, only=None):
         if disp == "hostile" and re.search(r"\b(welcom\w*|friendly|hospitable)\b", T.get("present", ("", ""))[0], re.I):
             R.add("internal", "the words say welcoming where the place is hostile", pid, "present says welcoming",
                   T["present"][1])
-    # peers: every place of a higher tier has more people than every one below it
+    # peers: among the true settlements, every place of a higher tier has more people than every one below it
     by: dict = collections.defaultdict(list)
     for pid, p in P.items():
         t, _ = tier_of(ctx, p)
-        if t and p.get("status") == "inhabited" and t["id"] in TIER_ORDER:
+        if t and p.get("status") == "inhabited" and t["id"] in SETTLEMENT_TIERS:
             by[t["id"]].append(((p.get("population") or 0), pid))
-    present = [t for t in TIER_ORDER if by[t]]
+    present = [t for t in SETTLEMENT_TIERS if by[t]]
     for lo, up in zip(present, present[1:]):
         for n, pid in by[up]:
             above = [q for m, q in by[lo] if m > n]
@@ -377,7 +404,7 @@ WATER_RULES = [
     ("docks", r"\b(docks?|jett(?:y|ies)|piers?|landing stage|boat-?lanes?|boat sheds?|boathouses?)\b", ["any"], 300),
     ("boats", r"\b(boats?|canoes?|punts?|rafts?|barges?|ferr(?:y|ies))\b", ["any"], 500),
     ("fishing", r"\b(fishing|fish traps?|fisher(?:men|folk)?)\b", ["any"], 500),
-    ("over water", r"\b(over (?:the )?water|above the water|built over|on the water)\b", ["any"], 150),
+    ("over water", r"\b(over (?:the |shallow |open )?water|above the water|on the water)\b", ["any"], 150),
     ("lake", r"\b(lakes?|lagoons?|meres?)\b", ["lake", "swamp"], 900),
     ("pool", r"\b(ponds?|pools?|tarns?)\b", ["any"], 250),
     ("sea", r"\b(sea|ocean|tides?|tidal|surf|beach|shoreline|coastal|coast)\b", ["sea"], 2500),
@@ -398,6 +425,8 @@ def check_ground(ctx, R: Report, only=None):
         says_sap = any(re.search(r"\bsap\b", v, re.I) for v, _ in T.values())
         hard, soft = [], []
         for a, (v, e) in T.items():
+            if a == "source":
+                continue  # the build source's note: "the pool" there is the asset pool
             for s in sentences(v):
                 if re.search(r"\bHist\b", s) and re.search(r"\b(pool|pond|pools|basin|spring)\b", s, re.I) \
                         and not re.search(r"\bsap\b", s, re.I):
@@ -552,10 +581,11 @@ def check_atlas(ctx, R: Report, only=None):
                 "village": {"village", "town", "outpost"}}
         if t and p.get("place_kind_id") in kmap and t["id"] not in kmap[p["place_kind_id"]]:
             R.add("atlas", "the symbol's tier differs from the kind", pid, f"kind {p['place_kind_id']} drawn as {t['id']}", ev)
-        if pid not in ctx["on_road"] and ((p.get("population") or 0) >= 20 or (p.get("importance") or 0) >= 4
-                                          or p.get("place_kind_id") in ("city", "town")):
-            R.add("atlas", "a town or city on no road", pid,
-                  f"{p.get('place_kind_id')} pop {p.get('population')} importance {p.get('importance')}", ev)
+        if pid not in ctx["on_road"] and pid not in ctx.get("on_route", set()) and (
+                (t and t["id"] in TOWN_TIERS) or p.get("place_kind_id") in ("city", "town")):
+            R.add("atlas", "a town or city on no road or travel route", pid,
+                  f"{p.get('place_kind_id')} drawn as {t['id'] if t else p.get('symbol_id')}, pop {p.get('population')}",
+                  ev)
         if mp is not None:
             row = mp.get(pid)
             if row is None:
@@ -665,10 +695,9 @@ def check_story(ctx, R: Report, only=None):
             if pid in P and (not only or pid == only):
                 spot = f"{qid.split('.')[-1] if isinstance(qid, str) else qid}/{pl.get('ref')}"
                 d = ctx["drafts"].get(pid)
-                spots = d["spots"] if d else set()
-                if not any(s.endswith("/" + str(pl.get("ref"))) for s in spots):
-                    R.add("story", "a quest placement with no spot in its place's quests.jsonl", pid,
-                          f"{spot}" + ("" if d else " (place not drafted)"), ln)
+                if d and pl.get("ref") not in d.get("cast", ()) and \
+                        not any(s.endswith("/" + str(pl.get("ref"))) for s in d["spots"]):
+                    R.add("story", "a quest placement with no spot in its place's quests.jsonl", pid, spot, ln)
                 room = a.get("room")
                 if room and d:
                     rooms = {norm(x) for x in room_names(d)}
@@ -804,21 +833,16 @@ def counts(R: Report) -> dict[str, int]:
     return dict(sorted(c.items()))
 
 
-def render(R: Report, base: dict | None) -> str:
+def render(R: Report) -> str:
     by: dict = collections.defaultdict(list)
     for f in R.items:
         by[(f.family, f.cause)].append(f)
     lines = []
     for (fam, cause), fs in sorted(by.items()):
-        key = f"{fam}: {cause}"
-        b = (base or {}).get(key)
-        lines.append(f"\n## {key}  ({len(fs)}" + (f", baseline {b}" if b is not None else "") + ")")
+        lines.append(f"\n## {fam}: {cause}  ({len(fs)})")
         for f in fs:
             lines.append(f"- {f.place or '-'}: {f.what}  [{f.evidence}]")
     lines.append(f"\n{len(R.items)} inconsistencies in {len(by)} causes")
-    if base is not None:
-        tot = sum(base.values())
-        lines.append(f"baseline {tot}; " + ("worse" if len(R.items) > tot else "not worse") + " than the baseline")
     return "\n".join(lines)
 
 
@@ -827,7 +851,6 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--place")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--family", action="append", choices=sorted(FAMILIES))
-    ap.add_argument("--baseline", action="store_true", help="write the counts per cause as the baseline")
     ap.add_argument("--summary", action="store_true", help="only the counts per cause")
     a = ap.parse_args(argv)
     ctx = load()
@@ -835,18 +858,15 @@ def main(argv: list[str] | None = None) -> int:
     ctx["cell_region"] = json.loads(cr.read_text()) if cr.exists() else {}
     R = run(ctx, a.place, a.family)
     c = counts(R)
-    if a.baseline:
-        BASELINE.write_text(json.dumps({"total": len(R.items), "causes": c}, indent=1) + "\n")
-    base = json.loads(BASELINE.read_text())["causes"] if BASELINE.exists() and not (a.place or a.family) else None
     if a.json:
         print(json.dumps({"total": len(R.items), "causes": c, "findings": [asdict(f) for f in R.items]}, indent=1))
     elif a.summary:
         for k, v in c.items():
-            print(f"{v:5d}  {k}" + (f"  (baseline {base.get(k, 0)})" if base is not None else ""))
-        print(f"{len(R.items):5d}  total" + (f"  (baseline {sum(base.values())})" if base is not None else ""))
+            print(f"{v:5d}  {k}")
+        print(f"{len(R.items):5d}  total")
     else:
-        print(render(R, base))
-    return 0
+        print(render(R))
+    return 1 if R.items else 0
 
 
 if __name__ == "__main__":
