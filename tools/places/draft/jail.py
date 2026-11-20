@@ -238,6 +238,9 @@ def apply(st, log=print) -> None:
     for sp in spaces.values():  # this stage's own rows are made again from the rule
         sp["refs"] = [r for r in sp["refs"] if r["id"] not in mine]
     kind, why = law(pid)
+    if kind == "native" and not any(p.get("role") == "guard" for p in st.files.get("people") or []):
+        # the Owing is a sentence its guards pass; a place with no guards (draft.guards 0) has no one to pass it
+        kind, why = "none", f"no one keeps law: no guards here ({why})"
     crime.update({"law": kind, "law_why": why, "jail": None, "owing": None})
     if kind == "native":
         owing(st, crime, log)

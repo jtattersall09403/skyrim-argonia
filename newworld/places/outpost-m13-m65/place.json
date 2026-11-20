@@ -758,15 +758,9 @@
    "kind": "crime",
    "name": "Ashgate Landing",
    "jail": null,
-   "owing": {
-    "work": "outpost-m13-m65.S2AM7P262GYVA6ESBJWFZVR63Y",
-    "return": "outpost-m13-m65.KVD02EV6HSJQZN2BXFE5WNKFBK",
-    "bed": "outpost-m13-m65.H7T7ZWP0A1C70F4KPYSA1NQTJM",
-    "stolen": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
-    "work_at": "the work stop 15 of the place's people share"
-   },
-   "law": "native",
-   "law_why": "Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters"
+   "owing": null,
+   "law": "none",
+   "law_why": "no one keeps law: no guards here (Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters)"
   },
   {
    "id": "outpost-m13-m65.guard",
