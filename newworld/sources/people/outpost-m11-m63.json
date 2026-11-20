@@ -3,7 +3,11 @@
  "about": "Reed-Sill Weir's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/outpost-m11-m63/people.jsonl under the same ids. The camp has no roof of its own: the two wardens on their turn at the weir sleep in its open bedrolls as one household. The two young crocodiles the main quest's second quest places below the weir are the quest's to place.",
  "guard_body": "levy",
  "households": [
-  {"id": "outpost-m11-m63.household.exterior", "home_space": "exterior", "name": null}
+  {
+   "id": "outpost-m11-m63.household.exterior",
+   "home_space": "exterior",
+   "name": null
+  }
  ],
  "people": [
   {
@@ -12,7 +16,10 @@
    "sex": "female",
    "race": "ArgonianRace",
    "culture_id": "jade",
-   "household": {"id": "outpost-m11-m63.household.exterior", "role": "head"},
+   "household": {
+    "id": "outpost-m11-m63.household.exterior",
+    "role": "head"
+   },
    "role": "guard",
    "trade": "weir-warden of the levy, day watch; leads the wardens on their turn at the weir",
    "wealth": "W2",
@@ -20,7 +27,16 @@
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "She runs the eel and gar traps by day on her family's turn at the weir and carries the catch to Jal-Veesa's market. She has begun counting the traps each dusk, since they have been found empty at dawn.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/people", "place_note:outpost-m11-m63/economy", "place_note:outpost-m11-m63/hooks"]}
+    {
+     "aspect": "backstory",
+     "text": "She runs the eel and gar traps by day on her family's turn at the weir and carries the catch to Jal-Veesa's market. She has begun counting the traps each dusk, since they have been found empty at dawn.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m11-m63/people",
+      "place_note:outpost-m11-m63/economy",
+      "place_note:outpost-m11-m63/hooks"
+     ]
+    }
    ],
    "relations": []
   },
@@ -30,7 +46,10 @@
    "sex": "male",
    "race": "ArgonianRace",
    "culture_id": "jade",
-   "household": {"id": "outpost-m11-m63.household.exterior", "role": "levy"},
+   "household": {
+    "id": "outpost-m11-m63.household.exterior",
+    "role": "levy"
+   },
    "role": "guard",
    "trade": "weir-warden of the levy, night watch",
    "wealth": "W2",
@@ -38,7 +57,105 @@
    "status": "alive",
    "tier": "AGENT_INVENTED",
    "notes": [
-    {"aspect": "backstory", "text": "He stands the night on the log walk and throws the offal in below the weir at dawn. He leaves the first fish of the dawn at the Hist-shoot post's landing and eats afterwards.", "tier": "AGENT_INVENTED", "cites": ["place_note:outpost-m11-m63/faith", "place_note:outpost-m11-m63/dangers"]}
+    {
+     "aspect": "backstory",
+     "text": "He stands the night on the log walk and throws the offal in below the weir at dawn. He leaves the first fish of the dawn at the Hist-shoot post's landing and eats afterwards.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m11-m63/faith",
+      "place_note:outpost-m11-m63/dangers"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
+   "name": "Heeta-daro",
+   "sex": "female",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m11-m63.household.exterior",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "weir-warden of the levy; mends the woven weir's fences",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "She reweaves the weir's fences after each flood and knows which stakes the crocodile has worked loose. She keeps the moss on the fences for the tree-minders and lets no one strip it.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m11-m63/people",
+      "place_note:outpost-m11-m63/economy",
+      "place_note:outpost-m11-m63/hooks"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
+   "name": "Dee-kai",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m11-m63.household.exterior",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "weir-warden of the levy; guts the catch at the landing",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He guts the eels and gar at the landing and throws the offal in below the weir, where the young crocodiles wait for it. He says the thief is a stranger from downstream.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m11-m63/people",
+      "place_note:outpost-m11-m63/economy",
+      "place_note:outpost-m11-m63/hooks"
+     ]
+    }
+   ],
+   "relations": []
+  },
+  {
+   "id": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
+   "name": "Nur-daro",
+   "sex": "male",
+   "race": "ArgonianRace",
+   "culture_id": "jade",
+   "household": {
+    "id": "outpost-m11-m63.household.exterior",
+    "role": "lodger"
+   },
+   "role": "resident",
+   "trade": "weir-warden of the levy; walks the log walk at dusk",
+   "wealth": "W2",
+   "level": null,
+   "status": "alive",
+   "tier": "AGENT_INVENTED",
+   "notes": [
+    {
+     "aspect": "backstory",
+     "text": "He walks the slick log walk at dusk to count the traps with the day watch. He has fallen in twice this season and the others call him the eel.",
+     "tier": "AGENT_INVENTED",
+     "cites": [
+      "place_note:outpost-m11-m63/people",
+      "place_note:outpost-m11-m63/economy",
+      "place_note:outpost-m11-m63/hooks"
+     ]
+    }
    ],
    "relations": []
   }
