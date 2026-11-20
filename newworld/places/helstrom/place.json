@@ -19,6 +19,14 @@
    "XeechLeelStrongroom": {
     "name": "Council Strongroom",
     "why": "the thieves' line names the council's strongroom behind an iron door (thieves.md:210-236, :350); no household lives there (AGENT_INVENTED)"
+   },
+   "MarketSmithy": {
+    "name": "The Market Smithy",
+    "why": "the place record's the market smithy (gives and source note), a room of ours behind an added door (AGENT_INVENTED)"
+   },
+   "LevyPost": {
+    "name": "The Levy's Post",
+    "why": "the place record's the levy's post (gives and source note), a room of ours behind an added door (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -346,6 +354,297 @@
     "dz": 1014.0,
     "tier": "AGENT_INVENTED",
     "why": "the old Xanmeer at the city's north-west edge: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone) on the footprint of the source's Xanmeer, whose stacked stone blocks its builders hid under the world and left only its 376 collision boxes; measured from the mesh (4884 x 4578 x 2249 at scale 1) to the hidden ziggurat's 4400-unit base at 0.95, turned with its cluster, its underside (1078 below its origin at 0.95) sunk 64 units into the ground; its own collision is its mesh's, so what is walked is what is seen"
+   },
+   {
+    "base": "King of the Murkmire.esp:05CCD1",
+    "kind": "building",
+    "pos": [
+     -42122.0,
+     -587227.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the market smithy's house (the record's gives: forge, anvil, armour bench, grindstone, smelter and tanning rack at the market smithy): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), on the smith's yard's west side, its door opening east onto the yard"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -41795.1,
+     -586974.0
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.SFC2MXK2C2949BFZTX887YKNXK",
+    "dz": 8.86,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothIronworks",
+     "door": "King of the Murkmire.esp:0CE762",
+     "space": "MarketSmithy",
+     "arrival": [
+      -41694.8,
+      -586965.6
+     ],
+     "whole": true
+    },
+    "why": "the market smithy's door (MudHutLDoor02, as Lilmoth sets it), into a copy of King of the Murkmire's Lilmoth Ironworks, the source note's ironworks set here as the market smithy; its other ways out removed"
+   },
+   {
+    "base": "King of the Murkmire.esp:05CCD1",
+    "kind": "building",
+    "pos": [
+     -38700.0,
+     -595500.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the levy's post (the source note: Lilmoth's guardhouse set here as the levy's post; a tribal levy keeps the guard): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), by the levy's guard stand west of the market"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -38373.1,
+     -595247.0
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.B4GMRVF5BZCJ6JHYW5D5RY8ZE5",
+    "dz": 8.86,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothGuardhouse01",
+     "door": "King of the Murkmire.esp:85F791",
+     "space": "LevyPost",
+     "arrival": [
+      -38272.8,
+      -595238.6
+     ]
+    },
+    "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse"
+   },
+   {
+    "base": "Black Marsh.esm:084B54",
+    "kind": "building",
+    "pos": [
+     -41286.2,
+     -593182.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B55",
+    "kind": "building",
+    "pos": [
+     -40866.2,
+     -593022.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B56",
+    "kind": "building",
+    "pos": [
+     -40446.2,
+     -593182.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B56",
+    "kind": "building",
+    "pos": [
+     -42177.9,
+     -596772.2
+    ],
+    "rot_z": 2.35619,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the sap-seller's stall beside its alchemy lab (the record's gives: alchemy lab at the sap-seller's stall): Black Marsh & Valenwood's own market stand, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -25360.24,
+     -612743.54
+    ],
+    "rot_z": 1.60001,
+    "scale": 1.3,
+    "dz": 10.67,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.10",
+     "arrival": [
+      -25404.5,
+      -612295.0
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -26909.51,
+     -614613.23
+    ],
+    "rot_z": 0.41461,
+    "scale": 1.3,
+    "dz": 16.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.11",
+     "arrival": [
+      -27341.8,
+      -614485.6
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -25139.39,
+     -608824.89
+    ],
+    "rot_z": 6.2214,
+    "scale": 1.3,
+    "dz": 22.2,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.12",
+     "arrival": [
+      -25582.1,
+      -608909.7
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -32462.97,
+     -607591.98
+    ],
+    "rot_z": 5.5596,
+    "scale": 1.3,
+    "dz": -53.36,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.13",
+     "arrival": [
+      -32760.1,
+      -607930.9
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -33156.63,
+     -602434.85
+    ],
+    "rot_z": 6.0978,
+    "scale": 1.3,
+    "dz": 15.18,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.14",
+     "arrival": [
+      -33585.5,
+      -602573.6
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -36583.96,
+     -603092.43
+    ],
+    "rot_z": 2.87641,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.15",
+     "arrival": [
+      -36167.5,
+      -602919.9
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -37324.53,
+     -601720.29
+    ],
+    "rot_z": 3.07641,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.16",
+     "arrival": [
+      -36882.1,
+      -601634.0
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -34337.31,
+     -598552.43
+    ],
+    "rot_z": 0.01461,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.17",
+     "arrival": [
+      -34785.2,
+      -598603.2
+     ]
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
    }
   ],
   "replace": {
@@ -543,7 +842,15 @@
    "Black Marsh North.esp:0787E5": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
    "Black Marsh North.esp:0787E6": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
    "Black Marsh North.esp:0787E2": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
-   "Black Marsh North.esp:0787E3": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air"
+   "Black Marsh North.esp:0787E3": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh.esm:207719": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771A": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771B": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771C": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771D": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771E": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:207720": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:207721": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home"
   },
   "shrine": {
    "base": "King of the Murkmire.esp:0D72B7",

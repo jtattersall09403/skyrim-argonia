@@ -375,6 +375,26 @@ def streets(place_id: str, places: Path, log=print) -> None:
     walk.join(place_id, places, log=log, first=False)
 
 
+def home_beds(st: Standing) -> dict[str, list[str]]:
+    """{home space: its bed refs, one per sleeper} of the place's homes: the rooms opening off the exterior that copy
+    a house cell the place uses for more than one home (the whole draft's houses: one family to a roof)."""
+    rooms = {sid: sp.get("space") or {} for sid, sp in st.files["spaces"].items() if sid != "exterior"}
+    uses: dict[str, int] = {}
+    for info in rooms.values():
+        uses[info.get("copy_of")] = uses.get(info.get("copy_of"), 0) + 1
+    out: dict[str, list[str]] = {}
+    for sid, info in sorted(rooms.items()):
+        if info.get("parent") != "exterior" or uses.get(info.get("copy_of"), 0) < 2:
+            continue
+        sp = io.copied_space(info["copy_of"], st.src, st.src.path.parent)
+        if sp is None:
+            continue
+        known = {**io.catalogue_bases({r["base"] for r in sp.refs} - set(st.bases)), **st.bases}
+        for b in interiors.beds_in(sp.refs, known, info.get("room"), info["copy_of"]):
+            out.setdefault(sid, []).extend([b["ref"]] * b["sleeps"])
+    return out
+
+
 def people_stage(st: Standing, log=print) -> None:
     from tools.places import identities
     from tools.places.draft import people
@@ -388,6 +408,10 @@ def people_stage(st: Standing, log=print) -> None:
         log(f"draft people {st.place_id}: services re-read from the record for {', '.join(changed)}")
     dec = st.place.get("draft") or {}
     keep_free = set(dec.get("free_beds") or []) | {((st.place.get("stations") or {}).get("rent_bed") or {}).get("ref")}
+    homed = people.fill_homes(st.place_id, st.files["people"], home_beds(st),
+                              place_record(st.place_id)[0].get("population"), keep_free)
+    if homed:
+        log(f"draft people {st.place_id}: {len(homed)} residents in the homes' free beds")
     gone, added, short = people.fill_to_record(st.place_id, st.files["people"], st.ext, st.bases,
                                                place_record(st.place_id)[0].get("population"), dec.get("guards"),
                                                keep_free, {i for i, r in who.items() if r.get("cast")})

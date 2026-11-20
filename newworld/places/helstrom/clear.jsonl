@@ -33,6 +33,7 @@
 {"base":"ArgoniaNewWorld.esm:0023CD","pos":[-57209.9,-593691.7,296],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:491E05"}
 {"base":"ArgoniaNewWorld.esm:0023CD","pos":[-57165.9,-593362,297.6],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:426CE8"}
 {"base":"ArgoniaNewWorld.esm:0023CD","pos":[-55013,-584229.2,209.5],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:52337F"}
+{"base":"ArgoniaNewWorld.esm:0023CD","pos":[-52165.8,-586308.5,219.7],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4989C1"}
 {"base":"ArgoniaNewWorld.esm:0023D7","pos":[-49494.2,-592912.4,-23.3],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:273CE5"}
 {"base":"ArgoniaNewWorld.esm:0023D7","pos":[-45119.4,-595513.9,174.1],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:3BAE17"}
 {"base":"ArgoniaNewWorld.esm:0023DD","pos":[-55975,-594002.3,339.8],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2585A9"}
@@ -63,6 +64,7 @@
 {"base":"ArgoniaNewWorld.esm:002452","pos":[-27182.4,-631392,-25.7],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:3F4B59"}
 {"base":"ArgoniaNewWorld.esm:002455","pos":[-55871.2,-582086.9,218.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:392D8C"}
 {"base":"ArgoniaNewWorld.esm:002455","pos":[-42851.4,-594467,212.5],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:38E1DF"}
+{"base":"ArgoniaNewWorld.esm:002455","pos":[-41684,-586436,225.7],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:405532"}
 {"base":"ArgoniaNewWorld.esm:002455","pos":[-28211.9,-624191.9,56.5],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:20E825"}
 {"base":"ArgoniaNewWorld.esm:002455","pos":[-26538.9,-630567.3,169.1],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:5F916C"}
 {"base":"ArgoniaNewWorld.esm:002467","pos":[-56963.9,-593086.8,399],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:63F280"}
@@ -70,6 +72,7 @@
 {"base":"ArgoniaNewWorld.esm:002467","pos":[-53286.4,-593531.1,299.3],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:59A001"}
 {"base":"ArgoniaNewWorld.esm:002467","pos":[-48098.7,-593638,238.2],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:63B776"}
 {"base":"ArgoniaNewWorld.esm:002467","pos":[-48063.5,-593551.8,240],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:2C591F"}
+{"base":"ArgoniaNewWorld.esm:002467","pos":[-43007,-586927.3,292.5],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:467AFF"}
 {"base":"ArgoniaNewWorld.esm:002467","pos":[-39474.6,-591582.7,266.5],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:5157A4"}
 {"base":"ArgoniaNewWorld.esm:00246A","pos":[-46897.1,-594042.6,47.8],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:4FBF3F"}
 {"base":"ArgoniaNewWorld.esm:00246A","pos":[-46602.9,-594246.7,35.7],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:214EFC"}
@@ -98,6 +101,7 @@
 {"base":"ArgoniaNewWorld.esm:0024B9","pos":[-40551.8,-586406.8,178.3],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:527720"}
 {"base":"ArgoniaNewWorld.esm:0024B9","pos":[-28885.9,-625207.7,109.5],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:376EF9"}
 {"base":"ArgoniaNewWorld.esm:0024B9","pos":[-27502.4,-631340.1,2.4],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2E4141"}
+{"base":"ArgoniaNewWorld.esm:0024BE","pos":[-55847.1,-587372.9,349.8],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:27E70A"}
 {"base":"ArgoniaNewWorld.esm:0024BE","pos":[-53523.4,-591629.9,289.1],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:38BF02"}
 {"base":"ArgoniaNewWorld.esm:0024BE","pos":[-53120.4,-587660.2,303.7],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:4B4CD3"}
 {"base":"ArgoniaNewWorld.esm:0024BE","pos":[-53054.8,-591775.8,270.7],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:4C9328"}
@@ -124,9 +128,11 @@
 {"base":"ArgoniaNewWorld.esm:0024FB","pos":[-55000.4,-591911.3,232.8],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:424559"}
 {"base":"ArgoniaNewWorld.esm:0024FB","pos":[-54232.6,-583057.8,146.6],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:25D67C"}
 {"base":"ArgoniaNewWorld.esm:0024FB","pos":[-51986.6,-589319,186.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:43C5E0"}
+{"base":"ArgoniaNewWorld.esm:0024FB","pos":[-49991.9,-588380.2,171],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4D03E6"}
 {"base":"ArgoniaNewWorld.esm:0024FB","pos":[-49391.7,-586163.9,171.8],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:343EFE"}
 {"base":"ArgoniaNewWorld.esm:0024FB","pos":[-48748.2,-591535.5,129.8],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:69ABDB"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-56646.7,-593171.7,289.7],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:3F1DD5"}
+{"base":"ArgoniaNewWorld.esm:0024FE","pos":[-56363.9,-588404.6,291.3],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:304558"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-55949.1,-585076.9,242.6],"by":"draft","why":"its body lies across a street","ref":"ArgoniaNewWorld.esm:2A59D2"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-55746.9,-590263.4,291],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:2D9128"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-55732.6,-585337.5,245.3],"by":"draft","why":"its body lies across a street","ref":"ArgoniaNewWorld.esm:380CDD"}
@@ -134,6 +140,7 @@
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-51711.6,-587320.2,205.5],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:43646B"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-51443.4,-587213.2,206.4],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:35CE68"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-45865.9,-594675,166.5],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:27849B"}
+{"base":"ArgoniaNewWorld.esm:0024FE","pos":[-41924.6,-587659.4,182.1],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:4721C2"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-41636.8,-593170.4,173.1],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:649B9F"}
 {"base":"ArgoniaNewWorld.esm:0024FE","pos":[-38784.8,-585674.5,180.5],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:4EFF93"}
 {"base":"ArgoniaNewWorld.esm:0024FF","pos":[-41193.6,-592724.3,270.8],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:3CB610"}
@@ -141,28 +148,36 @@
 {"base":"ArgoniaNewWorld.esm:0024FF","pos":[-26882.2,-623012.8,176.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2A7E58"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-56632.4,-593065.1,301.5],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:44B29B"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-56123,-594729.1,280.1],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:3267A2"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-55870.6,-587780.5,283.6],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:479F16"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-54811.4,-586306,247],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:25028A"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-52280.2,-589366.2,221.9],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:217F9E"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-52272.5,-586607.9,216],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:446875"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-51546.4,-587392.9,212.9],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:4B2BC9"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-49790.3,-591731.8,141.3],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:547895"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-47177.5,-593007.5,174.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:35F8D1"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-47123.4,-594025.4,174.2],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:227A0D"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-46992.6,-593994.4,173.5],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:36E904"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-45489.9,-594459.2,171.2],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:41B92E"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-43477.9,-586787.8,187.8],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:56959F"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-41692.9,-586720.1,190.2],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:493007"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-41524.7,-586220.3,188.3],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:52B7D9"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-41334.7,-589016.8,188.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:4E0A61"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-40367.9,-586206.8,185.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:6C8807"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-40239.1,-587471.3,189.8],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:5B2F14"}
+{"base":"ArgoniaNewWorld.esm:002501","pos":[-56791,-588190.3,265.5],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:652803"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-56395.4,-593434.5,256],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:488D8D"}
+{"base":"ArgoniaNewWorld.esm:002501","pos":[-53391,-585288.4,180.3],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4F6B93"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-52831.8,-585171.6,168],"by":"draft","why":"its body lies across a street","ref":"ArgoniaNewWorld.esm:4ADD29"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-49836.5,-587357.3,160.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:20F69B"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-47038.2,-594188,139],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:5A99CA"}
+{"base":"ArgoniaNewWorld.esm:002501","pos":[-42785.6,-585855.3,154.4],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:2BDEDA"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-42414,-594100,136.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4C62AF"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-41710.7,-593247.6,136.3],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:65CF94"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-40288.8,-586037.6,150.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:6260AD"}
 {"base":"ArgoniaNewWorld.esm:002501","pos":[-37312,-590993.3,134.8],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:6D457D"}
 {"base":"ArgoniaNewWorld.esm:002502","pos":[-27604.3,-631241.7,-102.4],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:51FDB1"}
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-56783.7,-593168,290.4],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:2B1CFF"}
+{"base":"ArgoniaNewWorld.esm:002503","pos":[-56646.6,-588823.4,313.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:318D1D"}
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-55509,-589564.6,278.2],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:51F071"}
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-54632.4,-582229.9,152],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:5E9291"}
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-53943.1,-584362.9,196.8],"by":"draft","why":"its body lies across a street","ref":"ArgoniaNewWorld.esm:4849EA"}
@@ -175,10 +190,13 @@
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-39524.7,-589681.4,173.7],"by":"draft","why":"its body lies across a street","ref":"ArgoniaNewWorld.esm:230E61"}
 {"base":"ArgoniaNewWorld.esm:002503","pos":[-38814.8,-585555.7,182.1],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:63C36F"}
 {"base":"ArgoniaNewWorld.esm:002504","pos":[-54705.5,-583044.7,287.4],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:551489"}
+{"base":"ArgoniaNewWorld.esm:002504","pos":[-53309.5,-584997.3,321.4],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:35915F"}
 {"base":"ArgoniaNewWorld.esm:002504","pos":[-45726,-594682.8,302.7],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:64BC61"}
 {"base":"ArgoniaNewWorld.esm:002504","pos":[-41712.6,-586873.4,317.9],"by":"draft","why":"doorway","ref":"ArgoniaNewWorld.esm:59F6E5"}
 {"base":"ArgoniaNewWorld.esm:002504","pos":[-41259.2,-589020.9,294.4],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:29C9B4"}
 {"base":"ArgoniaNewWorld.esm:002504","pos":[-40038.7,-591597,295.1],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:56E733"}
+{"base":"ArgoniaNewWorld.esm:002505","pos":[-56440.1,-588442.7,270.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:532C8C"}
+{"base":"ArgoniaNewWorld.esm:002505","pos":[-52236.6,-586541.4,196.4],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4CCBC1"}
 {"base":"ArgoniaNewWorld.esm:002505","pos":[-50589.9,-592349.6,127.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:542209"}
 {"base":"ArgoniaNewWorld.esm:002505","pos":[-50388.7,-587525.7,176],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:58A9C0"}
 {"base":"ArgoniaNewWorld.esm:002505","pos":[-50354,-587886.6,170.1],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:35464C"}
@@ -199,10 +217,15 @@
 {"base":"ArgoniaNewWorld.esm:002509","pos":[-43422.2,-593717.9,194.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:68B741"}
 {"base":"ArgoniaNewWorld.esm:00250A","pos":[-55423.2,-582838.1,257.3],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2BBA25"}
 {"base":"ArgoniaNewWorld.esm:00250A","pos":[-53040.9,-589298.5,309],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:56F36D"}
+{"base":"ArgoniaNewWorld.esm:00250B","pos":[-56392.9,-588546.8,165.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:22F431"}
 {"base":"ArgoniaNewWorld.esm:00250B","pos":[-55636.8,-592015.6,134.3],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:32DAFB"}
 {"base":"ArgoniaNewWorld.esm:00250B","pos":[-52492.3,-590926,-5.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:69E489"}
 {"base":"ArgoniaNewWorld.esm:00250B","pos":[-45121.7,-594912.4,76.4],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:30E2CA"}
+{"base":"ArgoniaNewWorld.esm:00250C","pos":[-57094.8,-588428.2,287.1],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:42E247"}
+{"base":"ArgoniaNewWorld.esm:00250C","pos":[-56767,-588053.1,266.3],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:650B79"}
+{"base":"ArgoniaNewWorld.esm:00250C","pos":[-55771.2,-587645.5,243.8],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:4FF410"}
 {"base":"ArgoniaNewWorld.esm:00250C","pos":[-55731,-590180.2,262.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:68864F"}
+{"base":"ArgoniaNewWorld.esm:00250C","pos":[-52574.7,-585458.4,170.4],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:26BE74"}
 {"base":"ArgoniaNewWorld.esm:00250C","pos":[-47450.7,-592544,132.4],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:2086D9"}
 {"base":"ArgoniaNewWorld.esm:00250C","pos":[-43368.9,-594614.3,135.9],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:57C372"}
 {"base":"ArgoniaNewWorld.esm:00250E","pos":[-53642,-592123.6,574.1],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:3C5873"}
@@ -213,6 +236,8 @@
 {"base":"ArgoniaNewWorld.esm:00250F","pos":[-54432.3,-591197.5,375.6],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:67F54A"}
 {"base":"ArgoniaNewWorld.esm:00250F","pos":[-52058.7,-590968.5,451.7],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:23B7C6"}
 {"base":"ArgoniaNewWorld.esm:00250F","pos":[-43596,-594183,484.7],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:27F35D"}
+{"base":"ArgoniaNewWorld.esm:00250F","pos":[-42768.7,-586800.1,283.1],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:22D652"}
+{"base":"ArgoniaNewWorld.esm:00250F","pos":[-41956.6,-587272.6,245.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:4CBD14"}
 {"base":"ArgoniaNewWorld.esm:00250F","pos":[-40544.7,-591703.1,321.4],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:345B3E"}
 {"base":"ArgoniaNewWorld.esm:002510","pos":[-51881,-592510.5,195.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:22A8E4"}
 {"base":"ArgoniaNewWorld.esm:002510","pos":[-27121.4,-623002.3,98.6],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:59A6AE"}
@@ -307,6 +332,7 @@
 {"base":"Black Marsh.esm:1B32DC","pos":[-26385.5,-623111.7,244.2],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2EE2F5"}
 {"base":"Black Marsh.esm:1B32DC","pos":[-25360.1,-624242.6,262.9],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:2B8839"}
 {"base":"Black Marsh.esm:1B32DC","pos":[-25319.6,-630384.4,266.2],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:4ED2EF"}
+{"base":"Skyrim.esm:0A7329","pos":[-52014.5,-586224.2,198.8],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:285F3B"}
 {"base":"Skyrim.esm:0A7329","pos":[-49438.5,-592806.2,-20.9],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:2FFEB8"}
 {"base":"Skyrim.esm:0A7329","pos":[-49420.8,-592907.2,-49.7],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:24FB0D"}
 {"base":"Skyrim.esm:0A7329","pos":[-44655.6,-595940.2,163.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:528312"}

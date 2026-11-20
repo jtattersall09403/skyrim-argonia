@@ -2382,7 +2382,7 @@
 {"src":"Black Marsh.esm:1DEE1E","space":"exterior","status":"adapted","as":"helstrom.4TJ0TJDW6HPTVNX3BG4DN7WYYF","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE1F","space":"exterior","status":"adapted","as":"helstrom.2973MW77T91ZRH332PY5MXFPJ7","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE20","space":"exterior","status":"dropped","cluster":"w39","why":"a hanging lantern whose lamp post is not in the place: it would hang in mid-air","by":"draft.drop"}
-{"src":"Black Marsh.esm:1DEE21","space":"exterior","status":"adapted","as":"helstrom.CE7Y40NP5GE0CEAM9DCDFZEHEK","cluster":"w39"}
+{"src":"Black Marsh.esm:1DEE21","space":"exterior","status":"dropped","cluster":"w39","why":"its fixture Black Marsh.esm:1DEE20 is left out; a light goes with its fixture"}
 {"src":"Black Marsh.esm:1DEE22","space":"exterior","status":"adapted","as":"helstrom.K0WGE3798DZ9DXN85KR3B30HFW","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE23","space":"exterior","status":"adapted","as":"helstrom.VDBM986Q60ABBSBGFVJ4VN0AAQ","cluster":"w37"}
 {"src":"Black Marsh.esm:1DEE24","space":"exterior","status":"adapted","as":"helstrom.67595MDEPHFJGQV90PAGEK3RTQ","cluster":"w37"}
@@ -2391,7 +2391,7 @@
 {"src":"Black Marsh.esm:1DEE27","space":"exterior","status":"adapted","as":"helstrom.TBNBQR6EK01M61PZSQP0BNMZVD","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE28","space":"exterior","status":"adapted","as":"helstrom.EP8NHE7YM1P4NZ9WKG3S5B469D","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE29","space":"exterior","status":"dropped","cluster":"w40","why":"a hanging lantern whose lamp post is not in the place: it would hang in mid-air","by":"draft.drop"}
-{"src":"Black Marsh.esm:1DEE2A","space":"exterior","status":"adapted","as":"helstrom.BWB05GEYB4FZWKQM8Q9ZEH9DBC","cluster":"w40"}
+{"src":"Black Marsh.esm:1DEE2A","space":"exterior","status":"dropped","cluster":"w40","why":"its fixture Black Marsh.esm:1DEE29 is left out; a light goes with its fixture"}
 {"src":"Black Marsh.esm:1DEE2B","space":"exterior","status":"adapted","as":"helstrom.APFP1T721NBXHXEM2KMTJMPHR2","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE2C","space":"exterior","status":"adapted","as":"helstrom.P3B9E88A28CZD2JC28F2VFY363","cluster":"w06"}
 {"src":"Black Marsh.esm:1DEE2D","space":"exterior","status":"adapted","as":"helstrom.3NTXC97CCY5FWV97X5ZQGQ21GY","cluster":"w06"}
@@ -2606,10 +2606,10 @@
 {"src":"Black Marsh.esm:1E41F3","space":"exterior","status":"adapted","as":"helstrom.65321QN9ZQ1DNX10EEVVJSXJ5E","cluster":"w06"}
 {"src":"Black Marsh.esm:1E41F4","space":"exterior","status":"adapted","as":"helstrom.MA25J7K462JTMQ40T15ZBDY9W4","cluster":"w06"}
 {"src":"Black Marsh.esm:1E41F5","space":"exterior","status":"adapted","as":"helstrom.T4JNPSYMGA1H1KDFXD3PYFKBSG","cluster":"w37"}
-{"src":"Black Marsh.esm:1E41F6","space":"exterior","status":"adapted","as":"helstrom.ZWX56NR07BADS1J532ZDE0XR5D","cluster":"w39"}
+{"src":"Black Marsh.esm:1E41F6","space":"exterior","status":"dropped","cluster":"w39","why":"its fixture Black Marsh.esm:1DEE20 is left out; a light goes with its fixture"}
 {"src":"Black Marsh.esm:1E41F7","space":"exterior","status":"adapted","as":"helstrom.A9KKX9Q0NFNWT4AQ946YFJE5X1","cluster":"b09"}
 {"src":"Black Marsh.esm:1E41F8","space":"exterior","status":"adapted","as":"helstrom.Z3ZVBRZG282HAE4S1CA232GM2N","cluster":"b25"}
-{"src":"Black Marsh.esm:1E41F9","space":"exterior","status":"adapted","as":"helstrom.8RFE0BYRY9BDPSZ31JMDFQ8V5K","cluster":"w40"}
+{"src":"Black Marsh.esm:1E41F9","space":"exterior","status":"dropped","cluster":"w40","why":"its fixture Black Marsh.esm:1DEE29 is left out; a light goes with its fixture"}
 {"src":"Black Marsh.esm:1E41FA","space":"exterior","status":"placed","as":"helstrom.Y80YK1KSJ1KVGY4GRTT78DFWG4","cluster":"b07"}
 {"src":"Black Marsh.esm:1E41FB","space":"exterior","status":"placed","as":"helstrom.M90XXPMYD1BJMC84R07K15NGCT","cluster":"b02"}
 {"src":"Black Marsh.esm:1E41FC","space":"exterior","status":"placed","as":"helstrom.52F3HQK8J1TJZV60GGYMSVK036","cluster":"b06"}
@@ -4766,14 +4766,14 @@
 {"src":"Black Marsh.esm:2076B5","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:2076B6","space":"exterior","status":"dropped","cluster":"s104","why":"a trap: Helstrom is friendly, its danger is social, not traps in its streets","by":"draft.drop"}
 {"src":"Black Marsh.esm:207718","space":"exterior","status":"placed","as":"helstrom.1TS7A5V3QWCH5CNQ90WDJE5874","cluster":"b20"}
-{"src":"Black Marsh.esm:207719","space":"exterior","status":"placed","as":"helstrom.FSJS2FZX8CK3E11HEJXVQV5MGM","cluster":"b09"}
-{"src":"Black Marsh.esm:20771A","space":"exterior","status":"placed","as":"helstrom.P5E0VDVWM7VWB3K7BDZ5G1J058","cluster":"b10"}
-{"src":"Black Marsh.esm:20771B","space":"exterior","status":"placed","as":"helstrom.2M1BWFRTHMRPGDZZ2XAK09YT6T","cluster":"b01"}
-{"src":"Black Marsh.esm:20771C","space":"exterior","status":"placed","as":"helstrom.278PZ4RN5CD5A663YW6WJE1E4Z","cluster":"b20"}
-{"src":"Black Marsh.esm:20771D","space":"exterior","status":"placed","as":"helstrom.TN5K02GF5B6PSE3QSEJM61BMPQ","cluster":"b14"}
-{"src":"Black Marsh.esm:20771E","space":"exterior","status":"placed","as":"helstrom.6FAYXAS4TCV44JAXC6378B3AQB","cluster":"b20"}
-{"src":"Black Marsh.esm:207720","space":"exterior","status":"placed","as":"helstrom.RVQ0439W3CS5A1GWJDFTWYV9F5","cluster":"b20"}
-{"src":"Black Marsh.esm:207721","space":"exterior","status":"placed","as":"helstrom.0W5KXKZE4E05W60XAFF72W7GEB","cluster":"b15"}
+{"src":"Black Marsh.esm:207719","space":"exterior","status":"dropped","cluster":"b09","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:20771A","space":"exterior","status":"dropped","cluster":"b10","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:20771B","space":"exterior","status":"dropped","cluster":"b01","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:20771C","space":"exterior","status":"dropped","cluster":"b20","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:20771D","space":"exterior","status":"dropped","cluster":"b14","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:20771E","space":"exterior","status":"dropped","cluster":"b20","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:207720","space":"exterior","status":"dropped","cluster":"b20","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
+{"src":"Black Marsh.esm:207721","space":"exterior","status":"dropped","cluster":"b15","why":"a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home","by":"draft.drop"}
 {"src":"Black Marsh.esm:207722","space":"exterior","status":"placed","as":"helstrom.KBKMCC6TTGAFAX3CK99J963YJX","cluster":"b24"}
 {"src":"Black Marsh.esm:207723","space":"exterior","status":"placed","as":"helstrom.4YYFS2443G9T534AHYA0VW9YJ2","cluster":"b19"}
 {"src":"Black Marsh.esm:207724","space":"exterior","status":"placed","as":"helstrom.NZ0SG8YJDSSAN3DVH1HW4PM05B","cluster":"b20"}

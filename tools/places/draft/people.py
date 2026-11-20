@@ -413,6 +413,57 @@ def patrol(beats_: list, k: int, on=None) -> list[list[float]]:
     return []
 
 
+def fill_homes(place_id: str, folk: list[dict], homes: dict[str, list[str]], population: int | None,
+               keep_free=frozenset()) -> list[str]:
+    """Residents fill the homes' free beds before the open beds (place-build, "Beds decide the people"), until the
+    place holds the record's `population`: each joins the family of the home whose bed they take (its first sleeper
+    heads it, the second is the partner, the rest their kin), and spends the day in the town as its residents do.
+    `homes`: {home space: a bed ref per sleeper} (stages.home_beds). Returns the ids added."""
+    from tools.places.draft import io
+    want = int(population or 0)
+    used: dict[tuple, int] = {}
+    for p in folk:
+        b = p.get("bed") or {}
+        used[(b.get("space"), b.get("ref"))] = used.get((b.get("space"), b.get("ref")), 0) + 1
+    town = next((p["work"] for p in folk if p.get("role") == "resident" and (p.get("work") or {}).get("pos")), None) \
+        or {"space": "exterior", "radius": 1024}
+    taken = {p.get("name") for p in folk}
+    ids = {p["id"] for p in folk}
+    members = {}
+    for p in folk:
+        hh = (p.get("household") or {}).get("id")
+        if hh:
+            members[hh] = members.get(hh, 0) + 1
+    crime = f"{place_id}.crime"
+    n = sum(1 for p in folk if p.get("role") == "resident")
+    added: list[str] = []
+    for sid in sorted(homes):
+        for ref in homes[sid]:
+            if len(folk) >= want:
+                return added
+            if ref in keep_free or used.get((sid, ref), 0) >= homes[sid].count(ref):
+                continue
+            used[(sid, ref)] = used.get((sid, ref), 0) + 1
+            pid = io.mint(place_id, "person", "resident", str(n))
+            while pid in ids:
+                n += 1
+                pid = io.mint(place_id, "person", "resident", str(n))
+            n += 1
+            ids.add(pid)
+            hh = f"{place_id}.household.{sid}"
+            k = members.get(hh, 0)
+            members[hh] = k + 1
+            bed = {"space": sid, "ref": ref, "radius": 128}
+            folk.append({"id": pid, "name": placeholder_name(pid, taken),
+                         "household": {"id": hh, "relation": ("head", "partner")[k] if k < 2 else "kin"},
+                         "base_from": None, "role": "resident", "home": sid, "bed": bed, "work": dict(town),
+                         "services": [], "faction_ranks": [{"faction": crime, "rank": 0},
+                                                           {"faction": f"{place_id}.town", "rank": 0}],
+                         "routine": routine("resident", bed, dict(town), {"space": sid, "radius": 1024}, dict(town))})
+            added.append(pid)
+    return added
+
+
 def fill_to_record(place_id: str, folk: list[dict], ext: list[dict], bases: dict, population: int | None,
                    guards: int | None = None, keep_free=frozenset(), keep=frozenset(),
                    centre: list[float] | None = None) -> tuple[list[str], list[str], int]:
