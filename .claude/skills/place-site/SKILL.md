@@ -36,11 +36,29 @@ builders built on (`fit.relief_norm`).
 
 ## 3. Seat by sinking, move structures whole
 
+A structure is a **unit** (`python -m tools.places units <place_id>`, `tools/places/units.py`), read from the
+source's own arrangement, where every piece rests on what it should, and carried to the draft by each row's `src`:
+
+- A **house** is its body with the platform or deck it stands on, the posts under them, the steps and railings at
+  its deck, the doors set in its walls (and the room behind them) and what rests on, hangs on or is fixed to it. It
+  is named by its room: `house.SeekhatEldersHut`.
+- A **walkway**, **bridge** or **dock** is a unit of its own; its joins name the units its ends rest on (a house, a
+  dock, the ground).
+- A boat, a rack, a stall is a small unit. Trees, rocks, roots and ground cover belong to the ground and are judged
+  against it, never moved with a building; a plant standing on a deck is part of that deck's unit.
+
+Each unit is measured on our ground: its standing level (floor or deck) against the highest ground under its
+footprint, each foot against the ground under it and its leg (how far it reaches below the standing level in the
+source), its body against its own deck (as in the source), each door sill against its floor and the ground before
+it, each join against the source's relative height. The units table flags each fault by name.
+
 - A piece is seated by sinking it into the ground until it stands; nothing is stretched or extended to reach the
   ground.
-- A whole structure (its body, deck, steps, what hangs on it, the bridges that bind it) is sunk or moved as one
-  group: in the studio scene, name the structure by its cluster id (`look sink b04 --until-feet-buried`, `look move
-  b04 dx dy dz`), check with `probe` and `section`, then `look commit` (`place-look`).
+- A unit is sunk, moved or turned whole: in the studio scene, name it by its unit id (`look sink
+  house.SeekhatEldersHut 40`, `look move walkway.04 dx dy dz`), check with `probe` and `section`, then `look commit`
+  (`place-look`). A house's body is never moved without its deck; `--piece` moves the one piece named.
+- `draft check` refuses a house moved apart from its platform (its body's gap to its own deck changed by more than
+  8 units from the source's) and a tree or root moved by an edit of a building.
 - A walked level with its own flights stands as one body: the `seating` stage keeps the source's relative heights of
   a yard of floor plates and the flights that reach it (`seating.levels`).
 - A sunk filler block or a low platform (top within a step of the ground) is walked over.

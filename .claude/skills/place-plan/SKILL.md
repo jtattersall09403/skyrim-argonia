@@ -84,7 +84,22 @@ place's dangers do not name, loot containers beyond the record's treasure count,
 Doomstone, a word wall, a shrine of Talos); `draft check` and the build's `nordic` check fail one that stands. A
 source piece the record needs, or that such a place plainly has (a town's general trader), stays.
 
-## 5. The draft is finished only when it reads as the record
+## 5. Plan the layout
+
+Once the source sits on our ground, plan every unit's height for the place as a whole before seating any by hand:
+`python -m tools.places units plan <place_id>` (the units are in `place-site`). It first puts each unit back
+together at its source's own relative levels (its `reassemble` per piece), then gives each one vertical offset so
+that its floor or deck stands over the highest ground under it (30 units; a stilt house's deck 60), every foot is in
+the ground by at least 16 units and never deeper than its leg, every door stays on its floor, every walkway end
+meets what it rests on within a step and steps reach the ground. Joined units are solved together for the least
+movement. Where no offset seats a unit on its ground, the plan says so and gives, in order, a spot within the place
+where it fits and keeps its joins, else the joins it would give up; it never changes terrain or water, moves the
+place or stretches a piece.
+
+Apply the plan unit by unit in the studio (`look move <unit> 0 0 <dz>`), look at each, and decide each unit the plan
+could not seat: a better spot, a dropped join, or a structure left out.
+
+## 6. The draft is finished only when it reads as the record
 
 A check that passes on a place that does not look like its record is not finished. The look is judged in
 `place-look`.

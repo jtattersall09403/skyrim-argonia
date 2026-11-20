@@ -780,10 +780,10 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 
 def _hand(sc, verb, args, sess) -> list[dict]:
-    pos, o = _opts(args, {"until-feet-buried": False, "why": True})
+    pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
-    th = sc.resolve(pos[0])
+    th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
         raise ValueError(f"{pos[0]} has no pieces to act on")
