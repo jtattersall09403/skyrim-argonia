@@ -2122,7 +2122,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is a ruined Imperial fort of nine buildings on water with no interior and no people. It lends its Imperial walls and keep. Cracked Tusk (Skyrim), an Imperial fort with two interiors, supplies the interior pieces: its keep hall serves as the barracks, and its vault of barred gates and shallow water as the cellar. The bricked door in front of the cellar is added. Still to add: reed re-roofing and moss on the stone, a signal lantern on a tower of Imperial pieces, a chain across the channel, the smithy and the stone chapel of the Nine.",
+     "text": "Its main source, Fort Tulis (Journey to Baan Malur), is a ruined Imperial fort of nine buildings on water with no interior and no people. It lends its Imperial walls and keep. Cracked Tusk (Skyrim), an Imperial fort with two interiors, supplies the interior pieces: its keep hall serves as the barracks, and its vault of barred gates and shallow water as the cellar. The bricked door in front of the cellar is added. Fort Tulis's Nordic and Daedric pieces are replaced with Cracked Tusk's Imperial wall and tower pieces, so the island fort reads as the Legion's work. Still to add: reed re-roofing and moss on the stone, a signal lantern on a tower of Imperial pieces, a chain across the channel, the smithy and the stone chapel of the Nine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2688,7 +2688,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of snowy trees and rock with one interior that is an ice cave, so it holds no house. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet by water with cypress walkways and platforms on posts, hide tents and hide fences and no interior, whose pieces serve the waterside dwellings. Still to add: the boat-wife's house, an interior built from Black Marsh & Valenwood's reed-hut pieces, the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses.",
+     "text": "Its main source, Headwaters Of Harstrad (Dragonborn), is a three-person hamlet of snowy trees and rock with one interior that is an ice cave, so it holds no house. Ree-An-Wo (King of the Murkmire) fits the waterway better: an Argonian hamlet by water with cypress walkways and platforms on posts, hide tents and hide fences and no interior, whose pieces serve the waterside dwellings. The source's snowy trees and Nordic rock are replaced with Ree-An-Wo's pieces and marsh cypress. Still to add: the boat-wife's house, an interior built from Black Marsh & Valenwood's reed-hut pieces, the waystation bench and lantern, the wreck in the reeds and the Kothringi cairn behind the houses.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3158,7 +3158,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a shore of fishing nets, crab traps and broken shack poles with one interior, a warehouse of crates and barrels, which serves as the hunters' store and house. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms, hide tents and hide fences. BlackMarsh 5,-1 (Black Marsh.esm) offers one cabin interior of plank walls and a shelf as an alternate. Still to add: the stone footings of the houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path.",
+     "text": "Its main source, near Honrich Lake Cave (UWRL_UnderWaterSkyrimRiversAndLakes), is a shore of fishing nets, crab traps and broken shack poles with one interior, a warehouse of crates and barrels, which serves as the hunters' store and house. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms, hide tents and hide fences. BlackMarsh 5,-1 (Black Marsh.esm) offers one cabin interior of plank walls and a shelf as an alternate. The shore's Nordic shack poles and plank huts are replaced with Ree-An-Wo's cypress platforms and hide tents. Still to add: the stone footings of the houses against a rock rise, the signal fire basket on the peak, the chime-menders' forge, the hunters' racks and the spiders' nest on the ridge path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3943,7 +3943,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), gives only the spot of a hummock; its Imperial redoubt pieces and hostile figures are removed, so the hummock is built from the pool. Ree-An-Wo (King of the Murkmire) supplies three of its hide tents on cypress platforms raised on posts and its hide fences as the hunters' huts. Still to add: the canoe lane under the roots, the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
+     "text": "Its main source, Serpents Bluff Redoubt (Skyrim), gives only the spot of a hummock; its Imperial redoubt pieces and hostile figures are removed, so the hummock is built from the pool. Ree-An-Wo (King of the Murkmire) supplies three of its hide tents on cypress platforms raised on posts and its hide fences as the hunters' huts. The redoubt's Nordic pieces are replaced with Ree-An-Wo's hide fences. Still to add: the canoe lane under the roots, the racks for hides and feathers, the feather-trader's stall and the landing at the river bend.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5754,7 +5754,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Sadrith Kegran (Dwarfsphere), gives only its riverbank spot; its Dwemer and Dunmer towers, interiors and hostile figures are all left out, so the post is built from the pool. Near Loreisian (King of the Murkmire) supplies doomstone circles, cypress knees and bog beacons, whose standing stones serve as the totems, and Ree-An-Wo (King of the Murkmire), with its hide tents on cypress platforms, supplies the huts. Still to add: a reed palisade, the canoe shed and the landing.",
+     "text": "Its main source, Sadrith Kegran (Dwarfsphere), gives only its riverbank spot; its Dwemer and Dunmer towers, interiors and hostile figures are all left out, so the post is built from the pool. Near Loreisian (King of the Murkmire) supplies doomstone circles, cypress knees and bog beacons, whose standing stones serve as the totems, and Ree-An-Wo (King of the Murkmire), with its hide tents on cypress platforms, supplies the huts. Sadrith Kegran's Dwemer, Dunmer and Nordic pieces are replaced with these Argonian stones and tents. Still to add: a reed palisade, the canoe shed and the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

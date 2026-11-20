@@ -1262,7 +1262,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cracked Tusk (Skyrim), is an Imperial fort of 254 pieces with two keep interiors, which serve as the barracks hall and the quartermaster's store with the forge. Still to add: the toll chain across the road, the saltrice paddy, the stockade for the held smuggler, the shrine to Zenithar, moss on the parapet and the flag of the Xeech-Leel.",
+     "text": "Its main source, Cracked Tusk (Skyrim), is an Imperial fort of 254 pieces with two keep interiors, which serve as the barracks hall and the quartermaster's store with the forge. Its Nordic and Orc pieces, the hide tents and longhouse fittings, are replaced with Imperial wall pieces and with reed-cord awnings from Ree-An-Wo (King of the Murkmire). Unlike Blackrose Prison, which uses the same fort as a hostile chief's hall with a vault, Silvermoth is a working toll station: its gate opens on the road, its keep holds a quartermaster and a forge, and the yard is cut down to one stockade. Still to add: the toll chain across the road, the saltrice paddy, the stockade for the held smuggler, the shrine to Zenithar, moss on the parapet and the flag of the Xeech-Leel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1519,7 +1519,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), gives only its spot and a mine entrance with one interior, so Armanias is built from the pool. Seekhat Yol (King of the Murkmire) supplies the Argonian hut interiors (a smithy, a carpenter's, a fisher's, a treeminder's hung with pottery and an accommodation hut of beds and tables) that serve as the potter's house and the caravan rest-house, with thatched huts on raised plank platforms and walkways. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
+     "text": "Its main source, Ancient Gold Mine (Here There Be Monsters - Curse of Cipactli), gives only its spot and a mine entrance with one interior, so Armanias is built from the pool. Seekhat Yol (King of the Murkmire) supplies the Argonian hut interiors (a smithy, a carpenter's, a fisher's, a treeminder's hung with pottery and an accommodation hut of beds and tables) that serve as the potter's house and the caravan rest-house, with thatched huts on raised plank platforms and walkways. The mine's Nordic timber props and sheds are replaced with Seekhat Yol's reed thatch and plank walkways, so only the mine mouth of the source is seen. Still to add: the round clay kilns along the road, the drying racks, the rice paddies and the red-clay pits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2287,7 +2287,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Driftshade Sanctuary (Skyrim), is an Imperial ruin of 960 Imperial pieces with two interiors: the one of rubble, shelves, tables and benches serves as the rooms of the barracks wing and the one of barrels and ruin halls as the knight-captain's tomb behind the sealed stone door. Still to add: the roofless hall of grey-white stone, the row of broken columns, the gable that carts steer by, the shield-hook and the socket for the keystone.",
+     "text": "Its main source, Driftshade Sanctuary (Skyrim), is an Imperial ruin of 960 Imperial pieces with two interiors: the one of rubble, shelves, tables and benches serves as the rooms of the barracks wing and the one of barrels and ruin halls as the knight-captain's tomb behind the sealed stone door. Driftshade's Nordic banners and wooden scaffolds are replaced with grey-white Imperial ruin stone. Still to add: the roofless hall of grey-white stone, the row of broken columns, the gable that carts steer by, the shield-hook and the socket for the keystone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2819,7 +2819,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), gives its spot and a few Imperial ruin pieces, with no interior, so the quay and boat-house are built from the pool. Japhet's Folly (Skyrim) lends plank shacks, stockade scaffolds and ship planks, and its tower storehouse of hay, barrels, crates and shelves serves as the boat-house floor. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
+     "text": "Its main source, ArgoniaWorld -2,-45 (King of the Murkmire), gives its spot and a few Imperial ruin pieces, with no interior, so the quay and boat-house are built from the pool. Japhet's Folly (Skyrim) lends plank shacks, stockade scaffolds and ship planks, and its tower storehouse of hay, barrels, crates and shelves serves as the boat-house floor. The Nordic pieces of both sources are replaced with Imperial ruin stone for the quay and with Alten Meerhleel's plank sheds (King of the Murkmire) for the boat-house. Still to add: the stone quay, the launching slip with its half-built hull, the sunken lower shed in the shallows and the Kynareth wind-chime.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3302,7 +3302,7 @@
     },
     {
      "aspect": "source",
-     "text": "No source fits a long music-hall: the main one, near Yngol Barrow (Black Marsh & Valenwood), is a hamlet with one ship interior. The hall is added as a ring of tall ruin columns under open sky from Imperial ruin pieces. The crypt below the stage is the single interior of Nightcaller Temple (Skyrim), a hall of rubble, jail walls, shelves and barrels in Imperial pieces. Still to add: the iron arms and chimes on the columns, the drifted leaves and the chime-master's chest.",
+     "text": "No source fits a long music-hall: the main one, near Yngol Barrow (Black Marsh & Valenwood), is a hamlet with one ship interior. The hall is added as a ring of tall ruin columns under open sky from Imperial ruin pieces. The crypt below the stage is the single interior of Nightcaller Temple (Skyrim), a hall of rubble, jail walls, shelves and barrels in Imperial pieces. The hamlet's Nordic and Orc pieces are replaced with the ring of columns, and its ship interior is dropped. Still to add: the iron arms and chimes on the columns, the drifted leaves and the chime-master's chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5612,7 +5612,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Reach Sons (Skyrim), gives its spot and a small camp layout with no interior; its Dwemer and Nordic pieces are not used, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts, ramps and hide tents; no room inside is needed. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
+     "text": "Its main source, Military Camp Reach Sons (Skyrim), gives its spot and a small camp layout with no interior; its Dwemer and Nordic pieces are replaced with Argonian ones, so the station is built from the pool. Ree-An-Wo (King of the Murkmire) supplies the cypress platforms on posts, ramps and hide tents; no room inside is needed. Still to add: the reed cover for the raised platform, the lamp-post, the fish-rack, the hide-drying frame and the chime-post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8337,7 +8337,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Murkwood (Black Marsh & Valenwood), is a town of thirty people with 116 dock pieces and one ship interior, a ship's hold of crates and barrels that serves as the metal-trader's store. Alten Meerhleel (King of the Murkmire) is the alternate, with painted plank houses raised over the water that serve as the stilt halls and three interiors (a dockmaster's house, a general store and a bunkhouse). Still to add: the stilt halls, the scorched palisade, the tin chimes on the market posts, the spoil heaps and the smelter.",
+     "text": "Its main source, Murkwood (Black Marsh & Valenwood), is a town of thirty people with 116 dock pieces and one ship interior, a ship's hold of crates and barrels that serves as the metal-trader's store. Alten Meerhleel (King of the Murkmire) is the alternate, with painted plank houses raised over the water that serve as the stilt halls and three interiors (a dockmaster's house, a general store and a bunkhouse). Murkwood's Nordic houses are replaced with Alten Meerhleel's painted plank stilt houses, and its Orc pieces with the cypress palisade of Root Whisper Village (King of the Murkmire), scorched. Still to add: the stilt halls, the scorched palisade, the tin chimes on the market posts, the spoil heaps and the smelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9248,7 +9248,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Way to Ruins (Black Marsh & Valenwood, Black Marsh.esm), is an empty hamlet of 120 pieces with one Argonian house interior; its Nordic and Dunmer pieces are replaced and the house serves as the headman's hall. Seekhat Yol (King of the Murkmire) fits the stilt halls better, with seven hut interiors such as an elder's hut and a smithy hut, dock pieces and a ship. Still to add: the tiers of halls joined by walkways, the leafless Hist in a root-hut, the smugglers' sacks of moon sugar and the clan carvings.",
+     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of eight hut interiors on tiers joined by walkways; here it stands empty and rotting with its huts unroofed. Its treeminder's hut serves as the headman's hall. Unlike Noota Nara, which keeps Root Whisper lived in behind rebuilt walls, Meris-Keth drops the palisade and the people and keeps only the tiers of halls round a dead Hist. Still to add: the leafless Hist in a root-hut, the smugglers' sacks of moon sugar and the clan carvings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9532,7 +9532,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, AHO (Dwarfsphere), gives only its spot, being a Dwemer sphere-ruin whose Dwemer and Nordic pieces are not used, so the den is built from the pool. Haj-Uxith (King of the Murkmire) lends its Argonian ruin pieces and its one interior, which serves as the dome's passages and hearth chamber. Still to add: the grass-covered dome above it from Argonian camp pieces, the hearth ring, the orange paper charms and the pools.",
+     "text": "Its main source, AHO (Dwarfsphere), gives only its spot, being a Dwemer sphere-ruin whose Dwemer and Nordic pieces are all replaced, so the den is built from the pool. Haj-Uxith (King of the Murkmire) lends its Argonian ruin pieces and its one interior, which serves as the dome's passages and hearth chamber. Still to add: the grass-covered dome above it from Argonian camp pieces, the hearth ring, the orange paper charms and the pools.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9857,7 +9857,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Waylayer's Watch (Wyrmstooth), is a small Imperial tower on the water with camp pieces, fifteen people and no interior, which suits the pirates' tower and their camp on the island's rise. Stendarrs Beacon (Skyrim) is a bare Imperial tower with shrine pieces and serves for the old Nine shrine. The view-house, the captain's house, needs one room, added as a hut interior from Seekhat Yol (King of the Murkmire). Still to add: the view-house with its verandah, the stair of rough stone, the figurehead at its head and the landing for the Brethren's boat.",
+     "text": "Its main source, Waylayer's Watch (Wyrmstooth), is a small Imperial tower on the water with camp pieces, fifteen people and no interior, which suits the pirates' tower and their camp on the island's rise. Stendarrs Beacon (Skyrim) is a bare Imperial tower with shrine pieces and serves for the old Nine shrine. The view-house, the captain's house, needs one room, added as a hut interior from Seekhat Yol (King of the Murkmire). Waylayer's Watch's Nordic timber and camp pieces are replaced with the Imperial wall and tower pieces of Cracked Tusk (Skyrim) for the tower, and with Seekhat Yol's plank platforms for the pirates' camp. Still to add: the view-house with its verandah, the stair of rough stone, the figurehead at its head and the landing for the Brethren's boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10907,7 +10907,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Icerunner (Skyrim), is a wrecked ship whose one interior of ship beams and walls, crates, sacks and hay serves as the sloop's hold; its Nordic ship pieces are replaced. Wreck of the Winter Sparrow (Wyrmstooth) is a bare nineteen-piece hull and fits the smaller sloop outside. Still to add: the rock cleft from rock pieces, the snapped mast, the kelp on the deck, the tin cup of coins and the strongbox in the cleft.",
+     "text": "Its main source, Icerunner (Skyrim), is a wrecked ship whose one interior of ship beams and walls, crates, sacks and hay serves as the sloop's hold; its Nordic ship pieces are replaced. Wreck of the Winter Sparrow (Wyrmstooth) is a bare nineteen-piece hull and fits the smaller sloop outside. Unlike the Wreck of the Stormwidow, which keeps Icerunner whole with its sand-filled hold and stern cabin, the Sallow Anne takes only the hold, under a smaller sloop's hull wedged in a rock cleft. Still to add: the rock cleft from rock pieces, the snapped mast, the kelp on the deck, the tin cup of coins and the strongbox in the cleft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

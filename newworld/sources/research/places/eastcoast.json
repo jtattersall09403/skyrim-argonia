@@ -235,7 +235,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Keeba Hollow (King of the Murkmire), is an Argonian village of 203 buildings by water with nine hut interiors, a few dock pieces and a lighthouse. It fits a village of sixteen people. Its huts serve as the mound houses and the elder's hut as the pot-painter's home; its Nordic pieces are replaced with Argonian reed and mud-brick. Still to add: the ring of red mounds, the kilns at the water's edge, the clay and ochre pits, the votive shrine on the quay and the flat-boat tied there.",
+     "text": "Its main source, Keeba Hollow (King of the Murkmire), is an Argonian village of 203 buildings by water with nine hut interiors, a few dock pieces and a lighthouse. It fits a village of sixteen people. Its huts serve as the mound houses and the elder's hut as the pot-painter's home; its Nordic pieces are replaced with Argonian reed and mud-brick. Unlike Lujei, which keeps Keeba Hollow's stilt huts and fisher's hut on a lakeshore, Arorha drops the stilts for low red mounds on a sea shore and adds the kilns. Still to add: the ring of red mounds, the kilns at the water's edge, the clay and ochre pits, the votive shrine on the quay and the flat-boat tied there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Dulan (Journey to Baan Malur), is a Velothi fort by the water, with stone walls, stairs and braziers outside and one large interior. Its halls, rooms of pillars, cells with barred doors and shackles and pools of standing water serve as the upper halls and the lowest hall. The lowest hall's door is barred and the hall is given a still water plane at knee depth, where the slaughterfish swim. Its bandits are removed. Still to add: the rock itself, the stone causeway, the broken tower over the door, the barnacled base courses and the ancestor tablets in the niches.",
+     "text": "Its main source, Fort Dulan (Journey to Baan Malur), is a Velothi fort by the water, with stone walls, stairs and braziers outside and one large interior. Its halls, rooms of pillars, cells with barred doors and shackles and pools of standing water serve as the upper halls and the lowest hall. The lowest hall's door is barred and the hall is given a still water plane at knee depth, where the slaughterfish swim. Its bandits are removed. Fort Dulan's few Nordic pieces, the wooden camp gear of its bandits, are replaced with Velothi rubble and braziers from Masvos (Journey to Baan Malur). Still to add: the rock itself, the stone causeway, the broken tower over the door, the barnacled base courses and the ancestor tablets in the niches.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2188,7 +2188,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Thirsk Unifying Dummy (Dragonborn), is a small Dunmer and Imperial ruin of 51 buildings with one interior, but it carries camp and farm pieces and seven living people that a haunted ruin does not need. Raven Rock's Morvayn Ancestral Tomb (Dragonborn) fits the lower halls better: a small Dunmer tomb of Redoran hall pieces with ash pits, burial urns, benches, candles and bones. It serves as the lower halls and the vault, with a still water plane added in the cistern hall. Still to add: the collapsed courts, the standing tower, the altar niches and family tablets, the Sarpa perches at the edge and the steward's ring.",
+     "text": "Its main source, Thirsk Unifying Dummy (Dragonborn), is a small Dunmer and Imperial ruin of 51 buildings with one interior, but it carries camp and farm pieces and seven living people that a haunted ruin does not need. Raven Rock's Morvayn Ancestral Tomb (Dragonborn) fits the lower halls better: a small Dunmer tomb of Redoran hall pieces with ash pits, burial urns, benches, candles and bones. It serves as the lower halls and the vault, with a still water plane added in the cistern hall. Its Nordic pieces are replaced with the Redoran hall pieces of the Morvayn tomb. Still to add: the collapsed courts, the standing tower, the altar niches and family tablets, the Sarpa perches at the edge and the steward's ring.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3658,7 +3658,7 @@
     },
     {
      "aspect": "source",
-     "text": "None of its ranked sources fits. Stone Wind (Dragonborn) is a Nordic and Dwemer temple site whose interiors are temple halls. The rest are small shipwrecks with no interior. The best hull is Pilgrims Trench (Skyrim), a ship of 48 pieces, scaled up and set upright on the deep shelf. Its decks, quarterdeck and lower hold are an interior added from Skyrim's ship pieces behind a hull door. Still to add: the weed and silt, the drowned marines, the Akaviri chest and the dark water over the lower hold.",
+     "text": "None of its ranked sources fits. Stone Wind (Dragonborn) is a Nordic and Dwemer temple site whose interiors are temple halls. The rest are small shipwrecks with no interior. The best hull is Pilgrims Trench (Skyrim), a ship of 48 pieces, scaled up and set upright on the deep shelf. Its decks, quarterdeck and lower hold are an interior added from Skyrim's ship pieces behind a hull door. Stone Wind's Nordic and Dwemer temple pieces are replaced with the Pilgrims Trench hull. Still to add: the weed and silt, the drowned marines, the Akaviri chest and the dark water over the lower hold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5647,7 +5647,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian and Imperial river town of 72 buildings with a dock, a market hall and a lodging house as its interiors. It fits a market town well. The market hall serves the bulk-trade counter and the lodging house the stilted inn. Still to add: the river fork and ferry, the barge at the market ground, the hide stalls and the pot stacks.",
+     "text": "Its main source, Alten Meerhleel (King of the Murkmire), is a small Argonian and Imperial river town of 72 buildings with a dock, a market hall and a lodging house as its interiors. It fits a market town well. The market hall serves the bulk-trade counter and the lodging house the stilted inn. The town's few Nordic timber sheds are replaced with Argonian reed huts from Keeba Hollow (King of the Murkmire). Still to add: the river fork and ferry, the barge at the market ground, the hide stalls and the pot stacks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7698,7 +7698,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village by water with 160 buildings, 48 dock pieces, ship pieces and seven hut interiors. It fits a village of fourteen; its Nordic pieces are replaced. Its accommodation hut serves the inn room and its huts the pilot-elder's house and the trader. Still to add: the cliff platforms and rope-bridges, the falls and the sea-pool, the pilot's boat at the landing, the shoal pearls and the salvage store.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), is an Argonian village by water with 160 buildings, 48 dock pieces, ship pieces and seven hut interiors. It fits a village of fourteen; its Nordic pieces are replaced. Its accommodation hut serves the inn room and its huts the pilot-elder's house and the trader. Unlike Jal-Veesa, which keeps the source's ring round its Hist inland, and Natai, a flat line of huts on a beach, Seafalls stacks the huts on cliff platforms by the falls and has no Hist. Still to add: the cliff platforms and rope-bridges, the falls and the sea-pool, the pilot's boat at the landing, the shoal pearls and the salvage store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10334,7 +10334,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Loreisian (King of the Murkmire), is a small Argonian tribal camp of eight buildings by water with shrine and camp pieces, five people and no interior. It fits a station of hunters. It supplies the huts and posts. The lodge is an open-sided hut with its bedroll and fire. Ree-An-Wo (King of the Murkmire) lends the cypress platform on posts that carries the egg rack. Still to add: the warm mud-bank, the egg rack, the tanning rack, the trap line along the paths and the hunter's stash.",
+     "text": "Its main source, near Loreisian (King of the Murkmire), is a small Argonian tribal camp of eight buildings by water with shrine and camp pieces, five people and no interior. It fits a station of hunters. It supplies the huts and posts. The lodge is an open-sided hut with its bedroll and fire. Ree-An-Wo (King of the Murkmire) lends the cypress platform on posts that carries the egg rack. Unlike Reed-Sill Weir, which builds woven fish fences on the same camp, Tazhul keeps the camp dry on a mud-bank with its egg rack and trap lines. Still to add: the warm mud-bank, the egg rack, the tanning rack, the trap line along the paths and the hunter's stash.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11296,7 +11296,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Masvos (Journey to Baan Malur), is an ash-covered Velothi ruin by the water, with ruined walls, arches, pillars and stairs outside and one interior. The interior is a set of small Velothi halls with ruined walls, rubble, dripping water and the remains of a camp of beds, tables and shelves. It serves as the upper halls, where the Agaceph read, and the lower halls. A lock is added to the door between them, which becomes the humming door. Its ash spawn are removed and its ash is cleared. Still to add: the ruin's wall above the river bank, the broken tower, the landing, the Daedric shrine of the lower hall, the humming door's sound and the Illusion tome in an upper niche.",
+     "text": "Its main source, Masvos (Journey to Baan Malur), is an ash-covered Velothi ruin by the water, with ruined walls, arches, pillars and stairs outside and one interior. The interior is a set of small Velothi halls with ruined walls, rubble, dripping water and the remains of a camp of beds, tables and shelves. It serves as the upper halls, where the Agaceph read, and the lower halls. A lock is added to the door between them, which becomes the humming door. Its ash spawn are removed and its ash is cleared. Masvos's Nordic pieces, the camp's timber and hides, are replaced with Velothi rubble from Fort Dulan (Journey to Baan Malur). Still to add: the ruin's wall above the river bank, the broken tower, the landing, the Daedric shrine of the lower hall, the humming door's sound and the Illusion tome in an upper niche.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
