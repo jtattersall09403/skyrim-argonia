@@ -350,10 +350,10 @@
      -588680.0
     ],
     "rot_z": 5.49779,
-    "scale": 0.95,
-    "dz": 1014.0,
+    "scale": 0.78,
+    "dz": 830.0,
     "tier": "AGENT_INVENTED",
-    "why": "the old Xanmeer at the city's north-west edge: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone) on the footprint of the source's Xanmeer, whose stacked stone blocks its builders hid under the world and left only its 376 collision boxes; measured from the mesh (4884 x 4578 x 2249 at scale 1) to the hidden ziggurat's 4400-unit base at 0.95, turned with its cluster, its underside (1078 below its origin at 0.95) sunk 64 units into the ground; its own collision is its mesh's, so what is walked is what is seen"
+    "why": "the old Xanmeer, the record's one stone building: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone; 69.8 x 65.4 x 32.1 m at scale 1) on the footprint of the source's hidden ziggurat; at 0.78 it is 54 x 51 m and 25 m tall, the biggest thing in the city by twice but no wider than the camp and houses round it, where 0.95 (66 m) swallowed them; its broad stair is on its local south face, turned (315 degrees) to the south-east where the city's way (path.13) comes up from the market; its underside sunk 60 to 160 units into the ground so no edge shows a gap; its own collision is its mesh's, so what is walked is what is seen"
    },
    {
     "base": "King of the Murkmire.esp:05CCD1",
