@@ -196,7 +196,8 @@ class Boxes:
         self.ids = [q["id"] for q in keep]
         self.lo = np.array([boxes[i][0] for i in self.ids]).reshape(-1, 3)
         self.hi = np.array([boxes[i][1] for i in self.ids]).reshape(-1, 3)
-        self.tree = np.array([q.get("kind") == "tree" for q in keep], bool)
+        # a tree holds nothing up from below; a Hist's great roots are walked on like ground (furniture stands on them)
+        self.tree = np.array([q.get("kind") == "tree" and "root" not in str(q.get("edid") or "").lower() for q in keep], bool)
         self.hull = np.array([vessel(q) for q in keep], bool)
 
     def _over(self, x, y):
@@ -295,7 +296,13 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
                         "over": g["over"], "z": g["low"],
                         "why": f"its top is {g['gmin'] - top:.0f} units under the lowest ground under it: nobody can see it"})
             continue
-        if g and not g["grounded"]:
+        def end_held(e):
+            r = end_report(e, ground, allp, p["id"], boxes)
+            return (r["held_by"] and gr.get(r["held_by"], {"grounded": True})["grounded"]) or \
+                (r["over_ground"] is not None and r["over_ground"] <= END_TOL)
+        # a bridge hung between two held ends (a rope bridge sagging between decks) floats over nothing in between
+        slung = "bridge" in str(p.get("edid") or "").lower() and all(end_held(e) for e in end_points(p))
+        if g and not g["grounded"] and not slung:
             sup = [i for i in g["on"]]
             out.append({"id": p["id"], "fault": "floats", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"], "on": sup[:4],
@@ -428,7 +435,7 @@ def pick(cam: dict, px: float, py: float, pieces: list[dict], clip=None) -> list
         if not p.get("model"):
             continue
         t = ray_box(o, d, p)
-        if t is None:
+        if t is None or t <= 0:   # no hit, or the eye is inside the box (a tree's crown about the camera): not what is seen
             continue
         if clip:
             # a section's slab: the hit must lie within it; walk the box until it does

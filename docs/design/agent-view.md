@@ -59,6 +59,13 @@ nothing is stretched. Add `--view <view verb...>` to any hand for the same look 
 `compare <a> <b> <view verb...>` shows one look at two states side by side (`now` is the current state); `reset`
 empties the session.
 
+`commit -m "<why>"` makes the session permanent: its strokes go into the committed place files through the same
+`edits.apply` an owner's finalised save takes (`edits.apply_agent_save`), recorded as the agent's draft edits, not
+the owner's: the save is kept at `newworld/places/<place>/agent-edits/<save_id>.json` (`by: agent`, `final: false`)
+and listed in `place.json` `agent_saves_applied`; no word gets the owner's tier and no preference is written. A stroke
+that touches a row an owner's finalised save touched is left out whole and listed in `left_for_owner`. The session
+(and its snapshots) is then emptied; commit the place files by path.
+
 ## Working a place
 
 1. `overview`, then `probe --all`.

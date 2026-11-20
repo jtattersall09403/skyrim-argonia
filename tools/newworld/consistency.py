@@ -158,7 +158,10 @@ def load_drafts(root: Path, out: Path) -> dict:
         chk = out / "places/shards" / pid / "check.json"
         d[pid] = {"place": json.loads(pj.read_text()), "rel": str(pj.relative_to(root)),
                   "people": sum(1 for x in people.read_text().splitlines() if x.strip()) if people.exists() else 0,
-                  "spaces": sorted(p.stem for p in spaces.glob("*")) if spaces.exists() else [],
+                  # each room by its id and by the name its door shows (space.json `name`, given by the names stage)
+                  "spaces": sorted({p.stem for p in spaces.glob("*")} | {
+                      json.loads((p / "space.json").read_text()).get("name") or p.stem
+                      for p in spaces.glob("*") if (p / "space.json").exists()}) if spaces.exists() else [],
                   "spots": ({json.loads(x)["id"] for x in (pj.parent / "quests.jsonl").read_text().splitlines()
                              if x.strip()} if (pj.parent / "quests.jsonl").exists() else set())
                            | cast_spots(root, pid),
