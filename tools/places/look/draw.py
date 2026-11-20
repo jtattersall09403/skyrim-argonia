@@ -16,6 +16,13 @@ BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 RED = (230, 30, 30, 255)
 
 
+def _grid_z(scene, x, y) -> float:
+    """The grid's height: the ground's outside, a room's floor level inside (flat, so it reads as a plan)."""
+    if hasattr(scene.ground, "floor"):
+        return scene.ground.floor
+    return scene.ground.height(x, y) or 0.0
+
+
 def font(size: int, bold: bool = False):
     try:
         return ImageFont.truetype(BOLD if bold else FONT, size)
@@ -65,7 +72,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
             for v in np.arange(x0 if fixed_x else y0, (x1 if fixed_x else y1) + 1, step):
                 ts = np.linspace(y0, y1, 24) if fixed_x else np.linspace(x0, x1, 24)
                 pts = [(v, t) if fixed_x else (t, v) for t in ts]
-                world = [(x, y, (scene.ground.height(x, y) or 0.0) + 2) for x, y in pts]
+                world = [(x, y, (_grid_z(scene, x, y)) + 2) for x, y in pts]
                 pp = geom.project(cam, world)
                 seg = [(float(p[0]), float(p[1])) for p in pp if p[2] > 0]
                 if len(seg) > 1:
@@ -175,13 +182,21 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
     tag(d, ((x0 + x1) / 2 + 70, h - 18), f"{sd:.0f} u = {sd / geom.UNITS_PER_M:.1f} m", size=11)
     # crossed pieces: outline (red when faulted) and their lowest point over the ground
     placed = []
-    for c in crossed:
+    from tools.places.look import outline
+    for c in crossed:   # every crossed piece by its mesh's own outline in the slab (its box only when it has no mesh)
         p = scene.by_id[c["id"]]
         pp = geom.project(cam, geom.corners(p))
-        hl = geom.hull(pp[:, :2])
         bad = p["id"] in fault_ids
-        if len(hl) > 2 and (bad or c.get("label")):
-            d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=3 if bad else 1)
+        ol = outline.piece_outline(cam, p, (w, h), float(cam.get("slab", 96.0)))
+        if ol is not None:
+            ink = Image.new("RGBA", (w, h), RED if bad else (255, 255, 255, 200))
+            over.paste(ink, (0, 0), ol.point(lambda v: 255 if v else 0))
+            if bad:
+                over.paste(ink, (0, 0), outline.edge(ol.filter(outline.ImageFilter.MaxFilter(3))).point(lambda v: 255 if v else 0))
+        else:
+            hl = geom.hull(pp[:, :2])
+            if len(hl) > 2:
+                d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=3 if bad else 1)
         if bad or c.get("label"):
             xm, ym = float(pp[:, 0].mean()), float(pp[:, 1].min())
             txt = f"{c['id'].split('.')[-1][:6]} {c.get('edid') or ''} {'+' if (c['over'] or 0) >= 0 else ''}{c['over']:.0f}" if c["over"] is not None else c["id"][-6:]

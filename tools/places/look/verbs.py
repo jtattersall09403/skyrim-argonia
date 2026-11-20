@@ -9,11 +9,11 @@ import time
 
 import numpy as np
 
-from tools.places.look import draw, geom
+from tools.places.look import canopy, draw, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate")
+HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -49,11 +49,17 @@ def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) ->
 
 def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
     from tools.places.look.daemon import save_session
+    space = "exterior"
+    if verb == "in":   # look <place> in <room> <verb> ...: every verb inside a room
+        if len(args) < 2:
+            raise ValueError("in <room id or the name its door shows> <verb> ...")
+        space = room.space_id(d.scene(place, sess["strokes"]).files["spaces"], args[0])
+        verb, args = args[1], args[2:]
     if verb in VIEWS:
-        return view(d, place, sess["strokes"], verb, args)
+        return view(d, place, sess["strokes"], verb, args, space=space)
     if verb == "probe":
-        sc = d.scene(place, sess["strokes"])
-        pos, o = _opts(args, {"all": False, "mesh": False})
+        sc = d.scene(place, sess["strokes"], space)
+        pos, o = _opts(args, {"all": False, "mesh": False, "no-void": False})
         if o.get("mesh"):
             return mesh_probe(sc, place, pos)
         if o.get("all") or not pos:
@@ -61,7 +67,12 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             by = {}
             for x in f:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
-            return {"place": place, "pieces": len(sc.pieces), "counts": by, "faults": f}
+            res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f}
+            if space != "exterior" and not o.get("no-void"):
+                res["openings"] = voids(d, place, sess["strokes"], sc)
+                if res["openings"]:
+                    by["opening onto the void"] = len(res["openings"])
+            return res
         th = sc.resolve(pos[0])
         boxes = {q["id"]: geom.aabb(q) for q in sc.everything()}
         rows = [geom.probe_piece(p, sc.ground, sc.everything(), boxes) for p in th["pieces"]]
@@ -80,21 +91,28 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             act, vw = args[:i], args[i + 1:]
         else:
             act, vw = args, []
-        before = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True) if vw else None
-        sc = d.scene(place, sess["strokes"])
+        before = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, space=space) if vw else None
+        sc = d.scene(place, sess["strokes"], space)
         ops = hand(sc, verb, act, sess)
         for op in ops:
             sess["n_op"] = op["n"] = sess.get("n_op", 0) + 1
         sess["strokes"].append(ops)
         save_session(place, sess)
         res = {"verb": verb, "ops": len(ops), "ids": [op.get("id") or op.get("ref", {}).get("id") for op in ops][:20]}
+        for op in ops:
+            for k in [k for k in op if k.startswith("_") and k != "_dz"]:
+                res[k[1:]] = op.pop(k)
         if verb == "sink":
             res["dz"] = ops[0].get("_dz") if ops else 0
             for op in ops:
                 op.pop("_dz", None)
-            save_session(place, sess)
+        save_session(place, sess)
+        if verb in ("move", "sink"):   # the decks a person stands on: their height over the ground before and after
+            p_, _o = _opts(act, {"until-feet-buried": False})
+            mv = [float(v) for v in p_[1:4]] if verb == "move" else [0.0, 0.0, float(res["dz"] or 0)]
+            res["decks"] = hands.deck_heights(sc, _rows(sc, sc.resolve(p_[0])), *mv)
         if vw:
-            after = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, cam=before["cam"])
+            after = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, cam=before["cam"], space=space)
             p = _out(place, f"{verb}-before-after")
             res["png"] = _save(draw.pair(before["img"], after["img"], "before", f"after {verb}"), p)
         return res
@@ -121,8 +139,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         a, b, vw = args[0], args[1], args[2:]
         sa = sess["snapshots"][a] if a != "now" else sess["strokes"]
         sb = sess["snapshots"][b] if b != "now" else sess["strokes"]
-        va = view(d, place, sa, vw[0], vw[1:], keep=True)
-        vb = view(d, place, sb, vw[0], vw[1:], keep=True, cam=va["cam"])
+        va = view(d, place, sa, vw[0], vw[1:], keep=True, space=space)
+        vb = view(d, place, sb, vw[0], vw[1:], keep=True, cam=va["cam"], space=space)
         p = _out(place, f"compare-{a}-{b}")
         return {"png": _save(draw.pair(va["img"], vb["img"], a, b), p)}
     if verb == "reset":
@@ -135,15 +153,18 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
 
 
 # ---------- views ----------
-def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
+def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") -> dict:
     t0 = time.time()
     d.open(place)
     d.sync(strokes)
-    sc = d.scene(place, strokes)
+    d.go(space)
+    sc = d.scene(place, strokes, space)
+    inside = space != "exterior"
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
-                          "mesh": False})
+                          "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False})
     d.helpers = bool(o.get("helpers"))
+    d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
     faults = {x["id"] for x in sc.faults()}
     plain = bool(o.get("plain"))
@@ -153,9 +174,30 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     mesh_facts: dict = {}
     M = marks = None
     if o.get("mesh"):
-        M, mesh_facts = built_mesh(place)
-        marks = mesh_marks(sc, M) if M is not None else None
+        M, mesh_facts = built_mesh(place, space)
+        net = network_rule(place, mesh_facts.get("build")) if M is not None and not inside else None
+        marks = mesh_marks(sc, M, net) if M is not None else None
     raw_shot = d.shot
+    seen_past: dict = {}
+
+    def past_trees(c, th):
+        """The canopy cut over the subject's ground: always with --no-canopy; by itself from high or above when the
+        canopy hides more than half the subject (--canopy keeps it)."""
+        if inside or o.get("canopy") or th is None or not th.get("pieces"):
+            return c
+        if o.get("no-canopy"):
+            seen_past["why"] = "asked"
+        elif height in ("high", "top"):
+            hid = canopy.hidden(c, th["pieces"], sc.everything())
+            seen_past["hidden_before"] = hid
+            if hid["frac"] <= 0.5:
+                return c
+            seen_past["why"] = f"the canopy hid {hid['frac']:.0%} of it ({', '.join(hid['by'][:3])})"
+        else:
+            return c
+        z = canopy.cut_height(sc.ground_under(th["lo"], th["hi"]))
+        seen_past["cut_at"] = round(z)
+        return c | {"canopy": {"z": z}}
 
     def shot(c):   # each frame with the built mesh over it when asked (a section keeps its slab's triangles)
         img_, r_ = raw_shot(c)
@@ -170,8 +212,9 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         return img_, r_
     if verb == "at":
         th = sc.resolve(pos[0])
-        cam = cam or geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"]))
-        cam = cam | {"grass": bool(o.get("grass"))}
+        cam = cam or (room_cam(sc, th, side, height, w, h, o) if inside else
+                      geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"])))
+        cam = past_trees(cam | {"grass": bool(o.get("grass")), "space": space}, th)
         img, r = shot(cam)
         timing |= {k: r.get(k) for k in ("ms", "draw_ms", "render_ms", "calls", "triangles")}
         if not plain:
@@ -184,7 +227,9 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         tw, thh = w // 2 * 2 // 2, h // 2 * 2 // 2
         tiles, caps, rms = [], [], []
         for s in ("n", "e", "s", "w"):
-            c = geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
+            c = room_cam(sc, th, s, height, tw, thh, o) if inside else \
+                geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
+            c = past_trees(c, th)
             img, r = shot(c)
             rms.append(r["ms"])
             if not plain:
@@ -199,14 +244,15 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     elif verb == "walk":
         a, b = sc.resolve(pos[0]), sc.resolve(pos[1])
         pa, pb = _point(a), _point(b)
-        lines = [p["points"] for p in sc.files.get("paths") or [] if p.get("points")]
+        lines = [p["points"] for p in sc.files.get("paths") or [] if p.get("points")] if not inside else []
         way = geom.route(lines, pa, pb)
         n = int(o.get("n", 6)) if "n" in o else 6
         tw, thh = w // 2, h // 2
         tiles, caps, rms = [], [], []
         for i, (p, dv) in enumerate(geom.stations(way, n)):
-            g = sc.ground.height(*p) or 0.0
-            sup = geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)
+            g = sc.ground.height(*p)
+            g = getattr(sc.ground, "floor", 0.0) if g is None else g
+            sup = None if inside else geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)   # a room: its floor
             z = max(g, geom.aabb(sc.by_id[sup])[1][2] if sup else g)
             c = {"pos": [p[0] - dv[0] * 60, p[1] - dv[1] * 60, z + geom.EYE], "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, z + geom.EYE * 0.7],
                  "up": [0, 0, 1], "fov": 70, "w": tw, "h": thh, "near": 8, "far": 7000}
@@ -246,6 +292,21 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         res = {"cam": cam, "img": img}
         if not keep:
             res = {"png": _save(img, _out(place, "section"), cam), "line": [A, B], "crossed": crossed}
+    elif verb == "overview" and inside:
+        c1, c2 = room_overview(sc, w, h, o)
+        i1, r1 = shot(c1)
+        i2, r2 = shot(c2)
+        name = sc.info.get("name") or space
+        if not plain:
+            th = {"name": name, "lo": c2["box"][0], "hi": c2["box"][1]}
+            i1, _ = draw.annotate(i1, c1, sc, None, faults, f"{name}: from its door, eye height", grid=False)
+            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{name} from above, ceiling cut at {c2['ceiling']:.0f}")
+        img = draw.sheet([i2, i1], 2)
+        timing |= {"shot_ms": [r1["ms"], r2["ms"]]}
+        res = {"cam": None, "img": img}
+        if not keep:
+            res = {"png": _save(img, _out(place, f"overview-{_slug(space)}"), c2 | {"tiles": [c2, c1]}), "space": space,
+                   "pieces": len(sc.pieces)}
     elif verb == "overview":
         cl = sc.clusters()
         keep_c = [c for c, ps in cl.items() if not c.startswith("w")] or list(cl)
@@ -265,12 +326,95 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
             res = {"png": _save(img, _out(place, "overview"), c1 | {"tiles": [c1, c2]})}
     else:
         raise ValueError(verb)
+    if seen_past and not keep:
+        res["canopy"] = seen_past
     if mesh_facts and not keep:
-        res["mesh"] = {k: v for k, v in mesh_facts.items() if k != "built"}
+        res["mesh"] = {k: v for k, v in mesh_facts.items() if k not in ("built", "build")}
     if not keep:
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
+
+
+# ---------- inside a room ----------
+def _floor_at(sc, x, y, z=None):
+    g = sc.ground.height(x, y)
+    return sc.ground.floor if g is None else g
+
+
+def _ceiling(sc, o, over: float = 0.0) -> list | None:
+    """A clip plane that cuts away what rises over the floor by more than the ceiling height (--ceiling u) or over."""
+    top = sc.ground.floor + max(float(o.get("ceiling", room.CEILING)), over)
+    return [0.0, 0.0, -1.0, top]
+
+
+def room_cam(sc, th, side, height, w, h, o) -> dict:
+    """A framed look at a thing inside a room: from the eye, the camera stands on the room's floor no further than the
+    floor goes (a wall behind it is never in the way); from above, the ceiling is cut away."""
+    gz = _floor_at(sc, (th["lo"][0] + th["hi"][0]) / 2, (th["lo"][1] + th["hi"][1]) / 2)
+    cam = geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=gz)
+    if height == "eye":
+        t = np.asarray(cam["target"], float)
+        u = np.asarray(cam["pos"], float)[:2] - t[:2]
+        want = float(np.linalg.norm(u))
+        got = room.stand_inside(sc.ground, t, u, want, blocks=room.walls(sc.pieces))
+        xy = t[:2] + u / max(want, 1e-9) * got
+        cam["pos"] = [round(float(xy[0]), 2), round(float(xy[1]), 2), round(_floor_at(sc, *xy) + geom.EYE, 2)]
+        cam["near"] = 4
+        if got < want:   # nearer than the frame wanted: a wider lens keeps the thing in
+            cam["fov"] = 75
+    else:
+        cam["clip"] = [_ceiling(sc, o, float(th["hi"][2]) - sc.ground.floor + 40 if th.get("kind") == "piece" else 0.0)]
+    return cam
+
+
+def room_overview(sc, w, h, o) -> tuple[dict, dict]:
+    """A room's overview: from its door at eye height, looking to the room's middle; and straight down on its plan
+    box with the ceiling cut away."""
+    x1, y1, x2, y2 = sc.plan_box
+    if len(sc.ground.T):   # framed on the walkable floor within the room's box
+        C = sc.ground.centres()
+        x1, y1 = max(x1, float(C[:, 0].min()) - 300), max(y1, float(C[:, 1].min()) - 300)
+        x2, y2 = min(x2, float(C[:, 0].max()) + 300), min(y2, float(C[:, 1].max()) + 300)
+    f = sc.ground.floor
+    lo, hi = [x1, y1, f], [x2, y2, f + 200]
+    top = geom.frame(lo, hi, "s", "top", w, h, fill=0.95)
+    clip = _ceiling(sc, o)
+    top |= {"clip": [clip], "ceiling": clip[3] - f, "box": [lo, hi], "space": sc.space}
+    door = None
+    try:
+        door = sc.resolve("door")["pieces"][0]
+    except KeyError:
+        pass
+    mid = np.array([(x1 + x2) / 2, (y1 + y2) / 2])
+    if door is not None:
+        ext = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]}.get(sc.info.get("door_from")) or {}
+        arr = (ext.get("door") or {}).get("to_pos")   # where the way in lands inside the room
+        at = np.asarray(arr[:2], float) if arr else np.array([door["m"][0][3], door["m"][1][3]], float)
+        at = at + (mid - at) / max(float(np.linalg.norm(mid - at)), 1e-9) * (0 if arr else 100)
+    else:
+        at = mid
+    z = _floor_at(sc, *at) + geom.EYE
+    look = mid if float(np.linalg.norm(mid - at)) > 200 else at + np.array([0, 400.0])
+    eye = {"pos": [float(at[0]), float(at[1]), z], "target": [float(look[0]), float(look[1]), z - 20], "up": [0, 0, 1],
+           "fov": 75, "w": w, "h": h, "near": 4, "far": 20000, "space": sc.space}
+    return eye, top
+
+
+def voids(d, place, strokes, sc, n: int = 16, size: int = 48) -> list[dict]:
+    """Openings onto the void: from n points spread over the room's walkable floor, at eye height, a cube of looks
+    with a background no model has; each way out of the shell (a cut room's edge left open, a hole) as where it meets
+    the room's plan box, which way it lies and the floor points that see it."""
+    C = sc.ground.centres()
+    if not len(C):
+        return [{"why": "the room has no walkable mesh to look out from: openings not tested"}]
+    pts = room.spread(C, n, sc.ground.area())
+    pts = [[round(float(p[0]), 1), round(float(p[1]), 1), round(float(p[2]) + geom.EYE, 1)] for p in pts]
+    d.open(place)
+    d.sync(strokes)
+    d.go(sc.space)
+    looks = d.page.evaluate("([p, s]) => agent.voids(p, s)", [pts, size])
+    return room.openings(looks, sc.plan_box)
 
 
 def draw_w():
@@ -346,7 +490,7 @@ def pick(d, place, strokes, args) -> dict:
         tw = cam["tiles"][0]["w"]
         k = int(px // tw)
         cam, px = cam["tiles"][k], px - k * tw
-    sc = d.scene(place, strokes)
+    sc = d.scene(place, strokes, cam.get("space", "exterior"))
     hits = geom.pick(cam, px, py, sc.pieces, cam.get("clip"))
     out = []
     for t, p in hits[:5]:
@@ -406,7 +550,7 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
 
 # ---------- hands ----------
 def _rows(sc, th):
-    rows = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]}
+    rows = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]} if sc.space == "exterior" else sc.refs
     return [rows[p["id"]] for p in th["pieces"] if p["id"] in rows]
 
 
@@ -433,7 +577,17 @@ def _shift(r, dx, dy, dz, rot=None, moved=frozenset()):
 
 
 def hand(sc, verb, args, sess) -> list[dict]:
-    pos, o = _opts(args, {"until-feet-buried": False})
+    """One stroke's ops, in the space the scene is of."""
+    ops = _hand(sc, verb, args, sess)
+    for op in ops:
+        op["space"] = sc.space
+    return ops
+
+
+def _hand(sc, verb, args, sess) -> list[dict]:
+    pos, o = _opts(args, {"until-feet-buried": False, "why": True})
+    if verb == "steps":
+        return _steps(sc, pos, o, sess)
     th = sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
@@ -474,21 +628,33 @@ def hand(sc, verb, args, sess) -> list[dict]:
         return ops
     if verb == "delete":
         return [{"op": "ref.remove", "space": "exterior", "id": r["id"], "call": "fault", "before": copy.deepcopy(r)} for r in rows]
-    if verb == "duplicate":
+    if verb == "duplicate":   # each copy its own seat where it stands and its own reason
+        why = str(o.get("why") or "").strip()
+        if not why:
+            raise ValueError('duplicate needs --why "<why this copy is here>": a copy never carries the original\'s reason')
         dx, dy = (float(pos[1]), float(pos[2])) if len(pos) > 2 else (256.0, 0.0)
         sess["n"] = sess.get("n", 0) + 1
-        ids = {r["id"]: f"{sc.place_id}.LOOK{sess['n']:03d}{i:04d}" for i, r in enumerate(rows)}
-        ops = []
-        for r in rows:
-            nr = copy.deepcopy(r)
-            nr["id"] = ids[r["id"]]
-            nr["pos"] = [round(r["pos"][0] + dx, 3), round(r["pos"][1] + dy, 3), r["pos"][2]]
-            nr.pop("src", None)
-            if (nr.get("seat") or {}).get("on") in ids:
-                nr["seat"] = dict(nr["seat"], on=ids[nr["seat"]["on"]])
-            ops.append({"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr})
+        n = sess["n"]
+        new = hands.duplicate_rows(sc, rows, dx, dy, why, lambda i: f"{sc.place_id}.LOOK{n:03d}{i:04d}")
+        ops = [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr} for nr in new]
+        if ops:
+            ops[0]["_seats"] = [nr["seat"] for nr in new][:8]
         return ops
     raise ValueError(verb)
+
+
+def _steps(sc, pos, o, sess) -> list[dict]:
+    """`steps <from deck or door> <to point or thing>`: one flight of the place's own kit, as one ref.add."""
+    if len(pos) < 2:
+        raise ValueError("steps <from deck, structure or door> <to ground point or thing> [--why ...]")
+    frm, to = sc.resolve(pos[0]), sc.resolve(pos[1])
+    at = _point(to)
+    deck = hands.deck_of(sc, frm, at)
+    sess["n"] = sess.get("n", 0) + 1
+    why = str(o.get("why") or f"steps from {frm['name']} down to {to['name']}")
+    got = hands.lay_steps(sc, deck, at, f"{sc.place_id}.LOOK{sess['n']:03d}STEPS", why)
+    return [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": got["row"],
+             "_flight": {k: got[k] for k in ("edid", "top", "foot", "base")} | {"from_deck": deck["id"]}}]
 
 
 # ---------- the built walkable mesh ----------
@@ -511,11 +677,49 @@ def built_mesh(place: str, space: str = "exterior"):
     facts = {"navmesh": str(path), **mesh.stale(PLACES / place, build, place)}
     if facts["stale"]:
         facts["warning"] = "STALE: the place files are newer than the build this mesh is of; rebuild before trusting it"
+    facts["build"] = str(build)
     return _MESH[key], facts
 
+_NET: dict = {}
 
-def mesh_marks(sc, M) -> tuple[list, list]:
-    """Door arrivals [(name, xyz, on the main network)] and street points [(xyz, on)] for the overlay and the numbers."""
+
+def network_rule(place: str, build) -> dict | None:
+    """What the build's own check calls off the town's main network, by its own rule (check.check_streets and the
+    draft's island rule: walk.Walkable over the built mesh, walk.off_network, walk.islands): {doors_off: {door row
+    id}, samples: [(street id, (x, y), on)]}; cached per build. None when the build cannot be read that way."""
+    from pathlib import Path
+    from tools.places.seat import PLACES
+    if not build:
+        return None
+    plan = Path(build) / "shards" / place / "plan.json"
+    if not plan.exists():
+        return None
+    key = (place, str(build), plan.stat().st_mtime)
+    if key not in _NET:
+        try:
+            from tools.places import check as C
+            from tools.places.draft import walk
+            ctx = C.load(place, Path(build))
+            ctx["place_dir"] = PLACES / place
+            W = walk.Walkable(ctx, *C.surfaces(ctx))
+            pf = PLACES / place / "paths.jsonl"
+            paths = [json.loads(x) for x in pf.read_text().splitlines() if x.strip()] if pf.exists() else []
+            paths = [p for p in paths if p.get("points")]
+            off = {(s, tuple(round(v, 3) for v in q)) for s, q in walk.off_network(paths, [], W)[0]}
+            samples = [(p["id"], q, (p["id"], tuple(round(v, 3) for v in q)) not in off)
+                       for p in paths for _, q in walk.samples(p["points"])]
+            _NET.clear()
+            _NET[key] = {"doors_off": set(walk.islands(ctx, W)), "samples": samples}
+        except Exception as e:  # noqa: BLE001  an unreadable build: the overlay keeps the plain mesh lookup
+            _NET[key] = {"error": f"{type(e).__name__}: {e}"[:200]}
+    got = _NET[key]
+    return None if "error" in got else got
+
+
+def mesh_marks(sc, M, net: dict | None = None) -> tuple[list, list]:
+    """Door arrivals [(name, xyz, on the main network)] and street points [(xyz, on)] for the overlay and the numbers.
+    With the build's own rule (`net`, network_rule): a door is off when the check calls its navmesh an island, a
+    street's samples (every 64 units, as the check samples them) are off when the check calls them off: one rule."""
     di = M.door_islands()
     doors = []
     for p in sc.pieces:
@@ -523,9 +727,18 @@ def mesh_marks(sc, M) -> tuple[list, list]:
         if p.get("kind") != "door" or not dd.get("to_space"):
             continue
         at = dd.get("arrival") or [p["m"][0][3], p["m"][1][3], p["m"][2][3]]
-        isl = di.get(p["id"], M.island_of(at[0], at[1], at[2]))
-        doors.append((dd["to_space"], list(at), isl == M.main))
+        if net is not None and p["id"] in di:
+            on = p["id"] not in net["doors_off"]
+        else:   # the island of its own door triangle; else the island under where one comes out of it
+            isl = di[p["id"]] if p["id"] in di else M.island_of(at[0], at[1], at[2])
+            on = isl == M.main
+        doors.append((dd["to_space"], list(at), on))
     pts = []
+    if net is not None:
+        for _, q, on in net["samples"]:
+            t, z = street_point(sc, M, q)
+            pts.append(([q[0], q[1], z], on))
+        return doors, pts
     for line in sc.files.get("paths") or []:
         for q in line.get("points") or []:
             t, z = street_point(sc, M, q)
@@ -551,7 +764,9 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
     M, facts = built_mesh(place)
     if M is None:
         return facts
-    doors, pts = mesh_marks(sc, M)
+    net = network_rule(place, facts.pop("build", None))
+    doors, pts = mesh_marks(sc, M, net)
+    facts["rule"] = "the build's check (walk.off_network, walk.islands)" if net is not None else "the mesh's islands"
     di = M.door_islands()
     by_isl: dict[int, dict] = {}
     for p in sc.pieces:
@@ -571,7 +786,7 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
         ends = []
         for n in names[:2]:
             th = sc.resolve(n)
-            at = _point(th)
+            at = join_point(sc, th)
             pid = th["pieces"][0]["id"] if th["kind"] == "door" else None
             isl = di.get(pid, -1) if pid else -1
             if isl < 0:
@@ -586,6 +801,24 @@ def mesh_probe(sc, place: str, names: list[str]) -> dict:
                     if p.get("kind") not in ("light", "marker", "plant", "groundcover") and _box_has(p, g["at"], 48)][:8]
             res["join"]["gap"] = g
     return res
+
+
+def join_point(sc, th) -> list:
+    """Where a walk to or from a thing is measured: a door's arrival; a structure's first door's arrival, else the
+    middle of its largest deck at the deck's height; a point as given; else the thing's middle at its lowest point."""
+    if th.get("point") or th["kind"] == "door":
+        return _point(th)
+    for p in th["pieces"]:
+        arr = (p.get("door") or {}).get("arrival") if p.get("kind") == "door" else None
+        if arr:
+            return list(arr)
+    ds = hands.decks(sc, [sc.refs[p["id"]] for p in th["pieces"] if p["id"] in sc.refs])
+    if ds:
+        from tools.places.draft import walk
+        r, z, rect = max(ds, key=lambda t: (t[2][2] - t[2][0]) * (t[2][3] - t[2][1]))
+        x, y = walk.to_world(r, (rect[0] + rect[2]) / 2, (rect[1] + rect[3]) / 2)
+        return [x, y, z]
+    return _point(th)
 
 
 def _box_has(p, at, pad):

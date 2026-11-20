@@ -3,10 +3,13 @@
 started on first use and gone when idle; prints JSON (a PNG path and/or numbers) on stdout.
 
 Views: at <thing> [--from n|ne|e|se|s|sw|w|nw] [--eye|--high|--top]; orbit <thing>; walk <from> <to>;
-section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every view: [--plain] [--size WxH] [--mesh].
+section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every view: [--plain] [--size WxH] [--mesh]
+[--no-canopy | --canopy] [--lit] [--ceiling u].
+Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; pick <png> <px> <py>.
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
---until-feet-buried]; delete <thing>; duplicate <thing> [dx dy]; each takes --view <view verb...> for a before/after.
+--until-feet-buried]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
+each takes --view <view verb...> for a before/after.
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
 commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
 """

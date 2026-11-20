@@ -352,3 +352,174 @@ def test_mesh_stale_when_a_place_file_is_newer(tmp_path):
     assert mesh.stale(pd, tmp_path / "b", "p")["stale"]
     os.utime(f, (plan.stat().st_mtime - 10, plan.stat().st_mtime - 10))
     assert not mesh.stale(pd, tmp_path / "b", "p")["stale"]
+
+
+# ---------- inside a room (room.py) ----------
+def _square_floor(z=0.0, size=1000.0):
+    from tools.places.look import room
+    return room.Floor([[0, 0, z], [size, 0, z], [size, size, z], [0, size, z]], [[0, 1, 2], [0, 2, 3]])
+
+
+def test_room_names_floor_and_navmesh_rows(tmp_path):
+    from tools.places.look import room
+    spaces = {"exterior": {"space": None}, "HutA": {"space": {"name": "Vosh-Leera's House"}},
+              "HallB": {"space": {"name": "Great Hall"}}}
+    assert room.space_id(spaces, "vosh-leera's house") == "HutA"
+    assert room.space_id(spaces, "hallb") == "HallB" and room.space_id(spaces, "outside") == "exterior"
+    with pytest.raises(KeyError, match="HallB"):
+        room.space_id(spaces, "Cellar")
+    f = _square_floor(50)
+    assert f.height(500, 500) == pytest.approx(50) and f.height(1500, 500) is None and f.water(0, 0) is None
+    nav = tmp_path / "navmesh.jsonl"
+    nav.write_text('{"verts": [[0,0,0],[100,0,0],[0,100,0],[5000,0,0],[5100,0,0],[5000,100,0]], '
+                   '"tris": [[0,1,2,0,0],[3,4,5,0,0]]}\n')
+    assert len(room.floor_of(nav).T) == 2
+    assert len(room.floor_of(nav, {"box": [-50, -50, 400, 400]}).T) == 1   # a cut keeps its own floor only
+
+
+def test_a_camera_inside_a_room_stops_at_the_floors_edge_and_at_a_wall():
+    from tools.places.look import room
+    f = _square_floor()
+    got = room.stand_inside(f, [500, 500], [1, 0], 2000)
+    assert 400 <= got <= 500                       # the floor ends 500 east of the target
+    wall = [(700, 0, 720, 1000, 0, 300)]
+    assert room.stand_inside(f, [500, 500], [1, 0], 2000, blocks=wall) < 200
+    assert room.stand_inside(f, [500, 500], [-1, 0], 300) == 300   # the floor goes on: the whole distance
+
+
+def test_kit_pieces_fixed_to_the_shell_are_held_and_a_lone_floater_is_not():
+    from tools.places.look import room
+    g = Flat(0)
+    wall = piece("wall", [0, 0, 0], [0, -200, 0], [20, 200, 600], kind="building")
+    arch = piece("arch", [30, 0, 400], [-10, -100, 0], [10, 100, 100], kind="building")   # set into the wall
+    lone = piece("lone", [600, 0, 300], [-50, -50, 0], [50, 50, 40], kind="furniture")    # a bench in the air
+    f = geom.faults([wall, arch, lone], g)
+    assert {x["id"] for x in f if x["fault"] == "floats"} == {"arch", "lone"}
+    assert {x["id"] for x in room.held_by_shell(f, [wall, arch, lone]) if x["fault"] == "floats"} == {"lone"}
+
+
+def test_openings_onto_the_void_are_placed_where_the_way_out_meets_the_room():
+    from tools.places.look import room
+    looks = [{"at": [100, 500, 100], "out": [{"face": "w", "frac": 0.6, "dir": [-1, 0, 0]},
+                                              {"face": "up", "frac": 0.001, "dir": [0, 0, 1]}]},
+             {"at": [150, 520, 100], "out": [{"face": "w", "frac": 0.3, "dir": [-1, 0, 0]}]},
+             {"at": [500, 500, 100], "out": []}]
+    o = room.openings(looks, [0, 0, 1000, 1000])
+    assert len(o) == 1 and o[0]["towards"] == "west" and o[0]["edge_at"][0] == 0 and len(o[0]["seen_from"]) == 2
+    assert room.heading([0, 0, 1]) == "up" and room.heading([0, 1, 0.5]) == "north and up"
+    pts = room.spread(np.array([[0, 0, 0], [1, 0, 0], [1000, 0, 0], [0, 1000, 0]], float), 3)
+    assert len(pts) == 3 and {tuple(p[:2]) for p in pts} >= {(1000.0, 0.0), (0.0, 1000.0)}
+
+
+def test_a_room_copied_from_another_source_is_read_from_that_source_and_kept_to_its_cut(tmp_path):
+    """The draft bundle (what the studio and the look tool draw) reads a room added from another place of our mods
+    from the bundle its copy_of names, and keeps only what lies in its cut."""
+    import json as _json
+    from tools.places import draft_bundle
+    own, other = tmp_path / "src.own", tmp_path / "src.other"
+    for b in (own, other):
+        (b / "spaces" / "Hall").mkdir(parents=True)
+    (own / "spaces" / "Hall" / "refs.jsonl").write_text("")
+    rows = [{"id": "a", "base": "B:a", "pos": [100, 100, 0]}, {"id": "b", "base": "B:b", "pos": [5000, 100, 0]},
+            {"id": "c", "base": "B:c", "pos": [200, 200, 0], "kind": "actor"}]
+    (other / "spaces" / "Hall" / "refs.jsonl").write_text("".join(_json.dumps(r) + "\n" for r in rows))
+    info = {"copy_of": "other/Hall", "cut": {"box": [0, 0, 1000, 1000]}}
+    assert draft_bundle.copy_src(info, own) == other
+    got = draft_bundle.copy_space(info, [{"id": "new", "base": "B:n", "pos": [1, 1, 0]}], draft_bundle.copy_src(info, own))
+    assert sorted(r["id"] for r in got) == ["a", "new"]
+    assert draft_bundle.copy_src({"copy_of": "own/Hall"}, own) == own
+
+
+# ---------- seeing past trees (canopy.py) ----------
+def test_canopy_names_and_how_much_a_crown_hides_from_above():
+    from tools.places.look import canopy
+    assert canopy.is_canopy({"kind": "tree", "edid": "ArgoniaTreeJungle06"})
+    assert canopy.is_canopy({"kind": "static", "edid": "HistTree03"})
+    assert canopy.is_canopy({"kind": "plant", "edid": "HangingMoss01"})
+    assert not canopy.is_canopy({"kind": "static", "edid": "HistRootsLarge01"})
+    assert not canopy.is_canopy({"kind": "building", "edid": "MurkmireHut01"})
+    hut = piece("hut", [0, 0, 0], [-100, -100, 0], [100, 100, 200], kind="building", edid="MurkmireHut01")
+    crown = piece("crown", [0, 0, 250], [-400, -400, 0], [400, 400, 150], kind="tree", edid="ArgoniaTreeJungle06")
+    aside = piece("aside", [3000, 0, 600], [-400, -400, 0], [400, 400, 300], kind="tree", edid="ArgoniaTreeJungle06")
+    cam = geom.frame([-150, -150, 0], [150, 150, 200], "s", "top", 400, 300)
+    got = canopy.hidden(cam, [hut], [hut, crown])
+    assert got["seen"] > 0 and got["frac"] == 1.0 and got["by"] == ["ArgoniaTreeJungle06"]
+    assert canopy.hidden(cam, [hut], [hut, aside])["frac"] == 0.0
+    assert canopy.cut_height(100) == 100 + canopy.HEAD
+
+
+# ---------- hands (hands.py) ----------
+class _Sc:
+    def __init__(self, rows, pieces, ground, space="exterior"):
+        self.refs = {r["id"]: r for r in rows}
+        self.pieces, self.ground, self.space, self.bases = pieces, ground, space, {}
+
+
+def test_a_duplicate_gets_its_own_seat_and_reason_never_the_originals():
+    from tools.places.look import hands
+    g = Flat(100)
+    deck = {"id": "deck", "base": "B:deck", "pos": [0, 0, 300], "rot": [0, 0, 0], "seat": {"mode": "ground", "dz": 200}}
+    hut = {"id": "hut", "base": "B:hut", "pos": [0, 0, 320], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 20},
+           "why": "the elder's house", "src": "S:1"}
+    crate = {"id": "crate", "base": "B:crate", "pos": [50, 0, 320], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 20},
+             "why": "a crate"}
+    pieces = [piece("deck", [0, 0, 300], [-200, -200, 0], [200, 200, 20]),
+              piece("hut", [0, 0, 320], [-100, -100, 0], [100, 100, 200], kind="building"),
+              piece("crate", [50, 0, 320], [-20, -20, 0], [20, 20, 40])]
+    sc = _Sc([deck, hut, crate], pieces, g)
+    # the house and its deck copied together: the house stands on the deck's copy; the deck keeps its ground rule
+    got = hands.duplicate_rows(sc, [deck, hut], 1000, 0, "a second house for the new family", lambda i: f"new{i}")
+    d2, h2 = got
+    assert d2["seat"] == {"mode": "ground", "dz": 200} and d2["pos"][:2] == [1000, 0] and d2["pos"][2] == pytest.approx(300)
+    assert h2["seat"]["on"] == "new0" and all(x["why"] == "a second house for the new family" for x in got)
+    assert "src" not in h2
+    # the crate copied alone, off its deck: never on the original's deck; down on the ground at its height over it
+    (c2,) = hands.duplicate_rows(sc, [crate], 1000, 0, "another crate", lambda i: "c2")
+    assert c2["seat"]["mode"] == "ground" and c2["seat"]["dz"] == pytest.approx(220)
+    # copied along the same deck: on the deck under it
+    (c3,) = hands.duplicate_rows(sc, [crate], -100, 0, "another crate", lambda i: "c3")
+    assert c3["seat"] == {"mode": "on", "on": "deck", "dz": pytest.approx(20)}
+    # in a room a copy keeps its height
+    (c4,) = hands.duplicate_rows(_Sc([crate], pieces, g, space="Hall"), [crate], 10, 0, "x", lambda i: "c4")
+    assert c4["seat"] == {"mode": "free"}
+
+
+# ---------- sections by the mesh's outline (outline.py) ----------
+def test_a_section_outlines_a_flights_treads_from_its_triangles_not_its_box():
+    from tools.places.look import outline
+    # a flight's two treads, level, 0..200 along x, at z 0 and 50, 100 wide; and a stringer far off the slab
+    treads = np.array([[[0, -50, 0], [100, -50, 0], [100, 50, 0]], [[100, -50, 50], [200, -50, 50], [200, 50, 50]],
+                       [[0, 400, 0], [200, 400, 0], [200, 400, 100]]], float)
+    p = {"m": xform.matrix([1000, 0, 0], [0, 0, 0], 1.0)}
+    W = outline.world_tris(p, treads)
+    assert W[0, 0].tolist() == [1000, -50, 0]
+    kept = outline.in_slab(W, [[900, 0], [1300, 0]], 96)
+    assert len(kept) == 2                      # the stringer 400 off the line is outside the slab
+    cam = geom.section_camera([900, 0], [1300, 0], -50, 150, 200, 100, 96)
+    m = outline.mask(cam, kept, (200, 100))
+    e = outline.edge(m)
+    assert m.getbbox() is not None and e.getbbox() is not None   # edge-on treads still leave a mark
+    assert outline.model_tris(None) is None
+
+
+def test_the_overlay_marks_doors_and_street_points_by_the_checks_own_rule():
+    """With the build check's verdicts the overlay says what the check says: a door whose navmesh the check calls an
+    island is red even where its triangle lies on the largest island, and the street samples off are the check's."""
+    from tools.places.look import mesh, verbs
+    v, t, nb = _two_decks()
+    M = mesh.Mesh(v, t, nb, doors=[(0, "door1")])
+    door = piece("door1", [50, 50, 0], [-10, -10, 0], [10, 10, 100], kind="door", door={"to_space": "Hut", "arrival": [50, 50, 0]})
+
+    class S:
+        pieces = [door]
+        files = {"paths": [{"id": "st1", "points": [[10, 10], [190, 10]]}]}
+
+        class ground:
+            @staticmethod
+            def height(x, y):
+                return 0.0
+    plain = verbs.mesh_marks(S, M)
+    assert plain[0][0][2] is True
+    net = {"doors_off": {"door1"}, "samples": [("st1", (10, 10), True), ("st1", (74, 10), False)]}
+    doors, pts = verbs.mesh_marks(S, M, net)
+    assert doors[0][2] is False and [on for _, on in pts] == [True, False]
