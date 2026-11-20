@@ -1,0 +1,296 @@
+{
+ "save_id": "agent-20261120T164244",
+ "place_id": "helstrom",
+ "name": "the landing: the ship with the way aboard (01Ship) moved 300 units west, clear of the west pier's planks, with its door, lanterns and light; the second copy of the same ship at the east pier dropped (two of one ship side by side read as a mistake)",
+ "at": "2026-11-20T16:42:44Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -24135.93,
+     -634195.82,
+     107.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -434.0,
+      -1080.5,
+      434.0,
+      792.9
+     ],
+     "mode": "stilts",
+     "dz": 107.52
+    }
+   },
+   "after": {
+    "pos": [
+     -24435.93,
+     -634195.82,
+     107.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -434.0,
+      -1080.5,
+      434.0,
+      792.9
+     ],
+     "mode": "stilts",
+     "dz": 107.52
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T16:42:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -24128.71,
+     -633958.15,
+     244.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.2,
+    "seat": {
+     "foot": [
+      -140.0,
+      -140.0,
+      140.0,
+      140.0
+     ],
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 136.85
+    }
+   },
+   "after": {
+    "pos": [
+     -24428.71,
+     -633958.15,
+     244.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.2,
+    "seat": {
+     "foot": [
+      -140.0,
+      -140.0,
+      140.0,
+      140.0
+     ],
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 136.85
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T16:42:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6Z4T8V42FPK3XR6Z95YNK5DJJV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -24567.24,
+     -634726.23,
+     399.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 292.25
+    }
+   },
+   "after": {
+    "pos": [
+     -24867.24,
+     -634726.23,
+     399.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 292.25
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T16:42:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.9QWCSFVYWWGG5SFGCSB239DZ78",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -24504.4,
+     -634665.34,
+     377.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.88319
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 269.48
+    }
+   },
+   "after": {
+    "pos": [
+     -24804.4,
+     -634665.34,
+     377.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.88319
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "dz": 269.48
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-20T16:42:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.F2GWVSPHBHCQ4EPW8ADB78N0WC",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -24514.68,
+     -634630.15,
+     346.5
+    ],
+    "rot": [
+     3.11146,
+     0.05004,
+     5.74083
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.9QWCSFVYWWGG5SFGCSB239DZ78",
+     "dz": -30.5
+    }
+   },
+   "after": {
+    "pos": [
+     -24814.68,
+     -634630.15,
+     346.5
+    ],
+    "rot": [
+     3.11146,
+     0.05004,
+     5.74083
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.9QWCSFVYWWGG5SFGCSB239DZ78",
+     "dz": -30.5
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-20T16:42:44Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.A6X8VK0VZM4YEEAXZD8VC46XK5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.A6X8VK0VZM4YEEAXZD8VC46XK5",
+    "base": "Black Marsh North.esp:0830A2",
+    "kind": "building",
+    "pos": [
+     -22074.12,
+     -634136.5,
+     0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:04F22E",
+    "seat": {
+     "foot": [
+      -607.6,
+      -1512.7,
+      607.6,
+      1110.0
+     ],
+     "mode": "stilts",
+     "dz": 0
+    },
+    "cluster": "landing"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-20T16:42:44Z"
+  }
+ ]
+}
