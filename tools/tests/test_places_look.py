@@ -188,7 +188,9 @@ def test_a_plant_is_buried_only_when_most_of_it_is_under():
     g = Flat(0)
     weed = piece("weed", [0, 0, -10], [-20, -20, 0], [20, 20, 30], kind="plant", edid="Nchickweed")  # root 10 under
     gone = piece("gone", [500, 0, -40], [-20, -20, 0], [20, 20, 50], kind="plant", edid="Braken")    # 40 of 50 under
+    bank = piece("bank", [-1000, 0, -1010], [-20, -20, 0], [20, 20, 30], kind="plant", edid="Nchickweed")  # on a slope
     assert {x["id"] for x in geom.faults([weed, gone], g) if x["fault"] == "buried"} == {"gone"}
+    assert not [x for x in geom.faults([bank], Slope()) if x["fault"] == "buried"]
 
 
 def test_probe_piece_feet_and_neighbours():

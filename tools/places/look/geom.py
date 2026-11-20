@@ -253,7 +253,7 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
             on.discard(p["id"])
         info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on), "grounded": over is None or over <= tol,
-                         "gmin": round(min(gs), 1) if gs else None, "gmean": round(sum(gs) / len(gs), 1) if gs else None}
+                         "gmin": round(min(gs), 1) if gs else None}
     changed = True
     while changed:
         changed = False
@@ -286,8 +286,8 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
         g = gr.get(p["id"])
         top = float(boxes[p["id"]][1][2])
         # buried: its top under the ground even where the ground under it is lowest (a rock half in a bank shows)
-        if p.get("kind") in PLANTS:   # a plant's root sits under the surface: buried when most of it is
-            sunk = g and g["gmean"] is not None and g["gmean"] - g["low"] > 0.6 * (top - g["low"])
+        if p.get("kind") in PLANTS:   # a plant's root sits under the surface: buried when most of it is, even where the ground is lowest
+            sunk = g and g["gmin"] is not None and g["gmin"] - g["low"] > 0.6 * (top - g["low"])
         else:
             sunk = g and g["gmin"] is not None and top - g["gmin"] < -BURIED and not out_of_reach(p)
         if sunk:
