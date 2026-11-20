@@ -12,6 +12,25 @@ html.agent dialog, html.agent .toast, html.agent .sheet, html.agent .panel { dis
 
 const tick = () => new Promise((r) => setTimeout(r, 30));
 
+// The canopy over a height: every model whose name says tree, Hist, moss, vine or canopy (roots kept) clipped at z
+// for one shot through its own materials (local clipping); returns the undo.
+const CANOPY = /tree|hist|canopy|moss|vine|willow|mangrove|palm|fern|hanging|leaves|branch/i, ROOTS = /root|stump|log/i;
+function canopyCut(view, c, o) {
+  const plane = new THREE.Plane(new THREE.Vector3(0, 0, -1), c.z - o[2]), undo = [];
+  view.renderer.localClippingEnabled = true;
+  for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
+    const name = `${g.base?.edid || ''} ${g.base?.model || ''}`;
+    if (!(g.kind === 'tree' || CANOPY.test(name)) || ROOTS.test(g.base?.edid || '')) continue;
+    for (const m of g.full || []) {
+      for (const mat of Array.isArray(m.material) ? m.material : [m.material]) {
+        if (!mat || undo.some((u) => u[0] === mat)) continue;
+        undo.push([mat, mat.clippingPlanes]); mat.clippingPlanes = [plane];
+      }
+    }
+  }
+  return () => { for (const [mat, was] of undo) mat.clippingPlanes = was; };
+}
+
 export function install(studio) {
   const st = document.createElement('style'); st.textContent = css; document.head.append(st);
   const v = () => studio.ours.view;
@@ -95,6 +114,8 @@ export function install(studio) {
       view.overlay.visible = !!cam.helpers;
       const tgt = L(cam.target);
       studio.ours.terrainMesh?.update(tgt);
+      // --no-canopy: tree crowns and hanging moss cut away over a height (game z), their trunks kept
+      const cut = cam.canopy ? canopyCut(view, cam.canopy, o) : null;
       r.clippingPlanes = (cam.clip || []).map(([nx, ny, nz, d]) => new THREE.Plane(new THREE.Vector3(nx, ny, nz), d + nx * o[0] + ny * o[1] + nz * o[2]));
       // every model the camera can see, loaded and switched on; the land's near cells baked
       let waits = 0;
@@ -115,6 +136,7 @@ export function install(studio) {
       if (keep) { hemi.color.setRGB(0.55, 0.55, 0.55); hemi.groundColor.setRGB(0.35, 0.35, 0.35); hemi.intensity = Math.PI; }
       r.render(view.scene, c);
       if (keep) [hemi.color, hemi.groundColor, hemi.intensity] = keep;
+      cut?.();
       r.getContext().finish();
       const tr = performance.now();
       const png = r.domElement.toDataURL('image/png');

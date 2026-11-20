@@ -428,3 +428,21 @@ def test_a_room_copied_from_another_source_is_read_from_that_source_and_kept_to_
     got = draft_bundle.copy_space(info, [{"id": "new", "base": "B:n", "pos": [1, 1, 0]}], draft_bundle.copy_src(info, own))
     assert sorted(r["id"] for r in got) == ["a", "new"]
     assert draft_bundle.copy_src({"copy_of": "own/Hall"}, own) == own
+
+
+# ---------- seeing past trees (canopy.py) ----------
+def test_canopy_names_and_how_much_a_crown_hides_from_above():
+    from tools.places.look import canopy
+    assert canopy.is_canopy({"kind": "tree", "edid": "ArgoniaTreeJungle06"})
+    assert canopy.is_canopy({"kind": "static", "edid": "HistTree03"})
+    assert canopy.is_canopy({"kind": "plant", "edid": "HangingMoss01"})
+    assert not canopy.is_canopy({"kind": "static", "edid": "HistRootsLarge01"})
+    assert not canopy.is_canopy({"kind": "building", "edid": "MurkmireHut01"})
+    hut = piece("hut", [0, 0, 0], [-100, -100, 0], [100, 100, 200], kind="building", edid="MurkmireHut01")
+    crown = piece("crown", [0, 0, 250], [-400, -400, 0], [400, 400, 150], kind="tree", edid="ArgoniaTreeJungle06")
+    aside = piece("aside", [3000, 0, 600], [-400, -400, 0], [400, 400, 300], kind="tree", edid="ArgoniaTreeJungle06")
+    cam = geom.frame([-150, -150, 0], [150, 150, 200], "s", "top", 400, 300)
+    got = canopy.hidden(cam, [hut], [hut, crown])
+    assert got["seen"] > 0 and got["frac"] == 1.0 and got["by"] == ["ArgoniaTreeJungle06"]
+    assert canopy.hidden(cam, [hut], [hut, aside])["frac"] == 0.0
+    assert canopy.cut_height(100) == 100 + canopy.HEAD

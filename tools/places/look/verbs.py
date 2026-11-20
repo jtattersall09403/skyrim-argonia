@@ -9,7 +9,7 @@ import time
 
 import numpy as np
 
-from tools.places.look import draw, geom, room
+from tools.places.look import canopy, draw, geom, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
@@ -155,7 +155,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     inside = space != "exterior"
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
-                          "mesh": False, "lit": False, "ceiling": True})
+                          "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -170,6 +170,26 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         M, mesh_facts = built_mesh(place, space)
         marks = mesh_marks(sc, M) if M is not None else None
     raw_shot = d.shot
+    seen_past: dict = {}
+
+    def past_trees(c, th):
+        """The canopy cut over the subject's ground: always with --no-canopy; by itself from high or above when the
+        canopy hides more than half the subject (--canopy keeps it)."""
+        if inside or o.get("canopy") or th is None or not th.get("pieces"):
+            return c
+        if o.get("no-canopy"):
+            seen_past["why"] = "asked"
+        elif height in ("high", "top"):
+            hid = canopy.hidden(c, th["pieces"], sc.everything())
+            seen_past["hidden_before"] = hid
+            if hid["frac"] <= 0.5:
+                return c
+            seen_past["why"] = f"the canopy hid {hid['frac']:.0%} of it ({', '.join(hid['by'][:3])})"
+        else:
+            return c
+        z = canopy.cut_height(sc.ground_under(th["lo"], th["hi"]))
+        seen_past["cut_at"] = round(z)
+        return c | {"canopy": {"z": z}}
 
     def shot(c):   # each frame with the built mesh over it when asked (a section keeps its slab's triangles)
         img_, r_ = raw_shot(c)
@@ -186,7 +206,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         th = sc.resolve(pos[0])
         cam = cam or (room_cam(sc, th, side, height, w, h, o) if inside else
                       geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"])))
-        cam = cam | {"grass": bool(o.get("grass")), "space": space}
+        cam = past_trees(cam | {"grass": bool(o.get("grass")), "space": space}, th)
         img, r = shot(cam)
         timing |= {k: r.get(k) for k in ("ms", "draw_ms", "render_ms", "calls", "triangles")}
         if not plain:
@@ -201,6 +221,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         for s in ("n", "e", "s", "w"):
             c = room_cam(sc, th, s, height, tw, thh, o) if inside else \
                 geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
+            c = past_trees(c, th)
             img, r = shot(c)
             rms.append(r["ms"])
             if not plain:
@@ -297,6 +318,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             res = {"png": _save(img, _out(place, "overview"), c1 | {"tiles": [c1, c2]})}
     else:
         raise ValueError(verb)
+    if seen_past and not keep:
+        res["canopy"] = seen_past
     if mesh_facts and not keep:
         res["mesh"] = {k: v for k, v in mesh_facts.items() if k != "built"}
     if not keep:
