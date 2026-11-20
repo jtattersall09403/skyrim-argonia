@@ -45,6 +45,13 @@ def decode(b64: str, w: int, h: int) -> np.ndarray:
     return (a[..., 0] | (a[..., 1] << 8) | (a[..., 2] << 16))[::-1]
 
 
+def enlarge(ids: np.ndarray, w: int, h: int) -> np.ndarray:
+    """An id buffer at the size of the image it belongs to: each pixel takes the id of the pass pixel it lies in."""
+    if ids.shape == (h, w):
+        return ids
+    return ids[(np.arange(h) * ids.shape[0] // h)][:, (np.arange(w) * ids.shape[1] // w)]
+
+
 def ref_at(ids: np.ndarray, table: list, id0: int, px: int, py: int) -> dict:
     """What is drawn at a pixel: a piece ({ref, kind, model, placeholder, helper}) or {'what': land|water|...}."""
     v = int(ids[int(py), int(px)])
@@ -174,19 +181,21 @@ def banner(img, text: str):
     from tools.places.look import draw
     img = img.convert("RGBA")
     d = ImageDraw.Draw(img)
-    f = draw.font(13, True)
+    k = draw.unit(img.width)
+    f = draw.font(round(13 * k), True)
     words, lines, cur = f"CAPTURE FAILED: {text}".split(), [], ""
     for wd in words:
-        if d.textlength(cur + " " + wd, font=f) > img.width - 16 and cur:
+        if d.textlength(cur + " " + wd, font=f) > img.width - 16 * k and cur:
             lines.append(cur)
             cur = wd
         else:
             cur = (cur + " " + wd).strip()
     lines.append(cur)
-    y0 = img.height // 2 - 10 * len(lines)
-    d.rectangle([0, y0 - 6, img.width, y0 + 20 * len(lines) + 4], fill=(200, 20, 20, 235))
+    lh = 20 * k
+    y0 = img.height // 2 - lh / 2 * len(lines)
+    d.rectangle([0, y0 - 6 * k, img.width, y0 + lh * len(lines) + 4 * k], fill=(200, 20, 20, 235))
     for i, ln in enumerate(lines):
-        d.text((8, y0 + 20 * i), ln, fill=(255, 255, 255, 255), font=f)
+        d.text((8 * k, y0 + lh * i), ln, fill=(255, 255, 255, 255), font=f)
     return img
 
 
@@ -194,9 +203,11 @@ def strike(img):
     """A failed tile struck through."""
     from PIL import ImageDraw
     img = img.convert("RGBA")
+    from tools.places.look import draw
     d = ImageDraw.Draw(img)
-    d.line([0, 0, img.width, img.height], fill=(220, 20, 20, 255), width=5)
-    d.line([0, img.height, img.width, 0], fill=(220, 20, 20, 255), width=5)
+    wd = round(5 * draw.unit(img.width))
+    d.line([0, 0, img.width, img.height], fill=(220, 20, 20, 255), width=wd)
+    d.line([0, img.height, img.width, 0], fill=(220, 20, 20, 255), width=wd)
     return img
 
 
@@ -218,7 +229,7 @@ def hatch(img, ids: np.ndarray, table: list, id0: int, label_of=None):
     over = Image.new("RGBA", img.size, (0, 0, 0, 0))
     o = np.zeros((img.height, img.width, 4), np.uint8)
     yy, xx = np.mgrid[0:img.height, 0:img.width]
-    stripes = ((xx + yy) // 6) % 2 == 0
+    stripes = ((xx + yy) // max(6, round(6 * draw.unit(img.width)))) % 2 == 0
     for row, xs, ys in marks:
         m = np.zeros(stripes.shape, bool)
         m[ys, xs] = True
@@ -231,5 +242,5 @@ def hatch(img, ids: np.ndarray, table: list, id0: int, label_of=None):
     for row, xs, ys in marks:
         text = (label_of(row) if label_of else None) or (
             f"model did not load: {row[2]}" if row[3] else f"helper: {row[2]}")
-        draw.tag(d, (int(xs.mean()), int(ys.min()) - 14), text[:60])
+        draw.tag(d, (int(xs.mean()), int(ys.min()) - round(14 * draw.unit(img.width))), text[:60])
     return img
