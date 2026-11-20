@@ -51,7 +51,7 @@ bulbs and collision boxes, `--grass` the grown grass.
 `move <thing> dx dy dz`, `turn <thing> deg` (clockwise from above, about the thing's middle), `sink <thing>
 [units | --until-feet-buried]`, `delete <thing>`, `duplicate <thing> [dx dy]`. Each is one stroke of the studio's
 own ops (`ref.move`, `ref.remove`, `ref.add`, the same kind of change as the owner's), kept in a scratch session
-(`out/places/look/<place>/session.json`) and never written to the place files or the owner's saves. A seated piece
+(`out/places/look/<tree>/<place>/session.json`; each checkout, the main tree or a lane's worktree, has its own daemon, session and port) and never written to the place files or the owner's saves. A seated piece
 keeps its seat rule: its height moves with its seat's `dz`. Pieces are seated by sinking them into the ground;
 nothing is stretched. Add `--view <view verb...>` to any hand for the same look before and after, side by side.
 
@@ -74,12 +74,12 @@ that touches a row an owner's finalised save touched is left out whole and liste
 4. When two fixes compete, `compare` them on the same view, keep the better, `restore` it.
 5. Judge the whole with `orbit` and `walk` once the numbers are clean.
 
-Every call appends a line to `out/places/look/session.log` (verb, arguments, image, milliseconds). A sequence that
+Every call appends a line to `out/places/look/<tree>/session.log` (verb, arguments, image, milliseconds). A sequence that
 has worked by hand on several places is the record from which a pipeline step is written; nothing becomes a step
 before that.
 
 ## The machine
 
-The first call starts the daemon (its own studio server on port 8791 and one headless Chromium, software GL) and
+The first call starts the daemon (its own studio server and one headless Chromium, software GL) and
 loads the place; later calls reuse both. The daemon leaves after 15 minutes without a call, browser and server with
 it (`look stop` ends it at once). Its session lives on disk, so a restart picks up where it was.
