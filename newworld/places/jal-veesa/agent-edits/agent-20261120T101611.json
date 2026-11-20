@@ -1,0 +1,253 @@
+{
+ "save_id": "agent-20261120T101611",
+ "place_id": "jal-veesa",
+ "name": "jal-veesa: the two prayer platforms at the Hist moved clear of its trunk with their prayer spots",
+ "at": "2026-11-20T10:16:11Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56335.38,
+     -505103.91,
+     517.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 21.39
+    }
+   },
+   "after": {
+    "pos": [
+     -56175.38,
+     -505103.91,
+     517.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 21.39
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T10:16:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56335.38,
+     -505743.91,
+     532.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 36.39
+    }
+   },
+   "after": {
+    "pos": [
+     -56175.38,
+     -505743.91,
+     532.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 36.39
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-20T10:16:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q0AFQDR1EX0172769PZ0NYWH83",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56158.65,
+     -505186.79,
+     590.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 72.72
+    }
+   },
+   "after": {
+    "pos": [
+     -55998.65,
+     -505186.79,
+     590.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 72.72
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-20T10:16:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.W7XH4JJE0KWHKD6SAAGE266D8Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56185.9,
+     -505762.33,
+     605.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+     "dz": 72.64
+    }
+   },
+   "after": {
+    "pos": [
+     -56025.9,
+     -505762.33,
+     605.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+     "dz": 72.64
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-20T10:16:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56086.05,
+     -505437.86,
+     573.74
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 77.74
+    }
+   },
+   "after": {
+    "pos": [
+     -55926.05,
+     -505437.86,
+     573.74
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 77.74
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-20T10:16:11Z"
+  }
+ ]
+}

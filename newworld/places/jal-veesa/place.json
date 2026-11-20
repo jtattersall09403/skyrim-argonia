@@ -442,6 +442,84 @@
      "what": "the walls",
      "verdict": "kept",
      "why": "Seekhat Yol's platform bridges and plank walls: the walkways between the stilt platforms, no town wall"
+    },
+    {
+     "cluster": "b01",
+     "what": "a thatch stilt house on its platform",
+     "verdict": "kept",
+     "why": "one of the record's pale reed-thatched stilt houses (MurkmireThatchHouse08) on the ring of banks round the pool"
+    },
+    {
+     "cluster": "b02",
+     "what": "the treeminder's hut on the Hist's roots",
+     "verdict": "kept",
+     "why": "the tree-minder's stilt house the main quest needs beside the Hist; sunk whole with the roots and knoll it stands on to a short flight over our ground"
+    },
+    {
+     "cluster": "b03",
+     "what": "the fishers' hut, the guest hut and their decks and bridges",
+     "verdict": "kept",
+     "why": "two of the record's stilt houses (the fishers' and the accommodation hut) on the ring; the fishers' deck sunk whole with its lookout bridges to a short flight over our ground"
+    },
+    {
+     "cluster": "b04",
+     "what": "two thatch stilt houses among Hist roots",
+     "verdict": "kept",
+     "why": "stilt houses of the record's ring, close by the Hist and its sap pool"
+    },
+    {
+     "cluster": "b05",
+     "what": "the elders' long house",
+     "verdict": "kept",
+     "why": "Vosh-Leera's House, the elders' long house mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
+    },
+    {
+     "cluster": "landing",
+     "what": "the landing's walkway",
+     "verdict": "kept",
+     "why": "the town's landing on the pool's bank: its walkways are how the town meets the water"
+    },
+    {
+     "cluster": "s02",
+     "what": "a walkway stair",
+     "verdict": "kept",
+     "why": "a flight from the banks up to the decks: what makes the stilt houses reachable"
+    },
+    {
+     "cluster": "s03",
+     "what": "platform ends",
+     "verdict": "kept",
+     "why": "deck ends that carry the walkways between the stilt houses"
+    },
+    {
+     "cluster": "s04",
+     "what": "the Hist gland grove and its sap pool",
+     "verdict": "kept",
+     "why": "the record's Hist sap pool at the heart of the town, with the steaming pool, roots and the walkways over them"
+    },
+    {
+     "cluster": "s05",
+     "what": "a plank bridge",
+     "verdict": "kept",
+     "why": "a walkway between the banks of the ring"
+    },
+    {
+     "cluster": "s06",
+     "what": "a platform end",
+     "verdict": "kept",
+     "why": "a deck end carrying a walkway of the ring"
+    },
+    {
+     "cluster": "s07",
+     "what": "a plank bridge",
+     "verdict": "kept",
+     "why": "a walkway between the banks of the ring"
+    },
+    {
+     "cluster": "s08",
+     "what": "platform ends",
+     "verdict": "kept",
+     "why": "deck ends carrying the walkways at the ring's east side"
     }
    ],
    "source": "the source: Seekhat Yol: Seekhat Yol (King of the Murkmire): an Argonian village of pale reed-thatched stilt houses on platforms round its Hist, the closest match to the record's look; its seven rooms, topped up with three of Alten Meerhleel's (King of the Murkmire) rooms (market, bunkhouse, dockmaster's house), house the town's nine households and its jetty market. Cormaris (the allocated source) was Imperial and Dunmer and needed every house replaced"
@@ -1244,6 +1322,15 @@
   ]
  },
  "agent_saves_applied": [
-  "agent-20261120T072429"
- ]
+  "agent-20261120T072429",
+  "agent-20261120T092505",
+  "agent-20261120T100429",
+  "agent-20261120T101339",
+  "agent-20261120T101611"
+ ],
+ "steps": {
+  "kit": [
+   "King of the Murkmire.esp:050D80"
+  ]
+ }
 }

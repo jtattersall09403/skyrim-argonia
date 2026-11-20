@@ -1,0 +1,311 @@
+{
+ "save_id": "agent-20261120T100429",
+ "place_id": "jal-veesa",
+ "name": "jal-veesa: one flight of the kit's MudHutStairs01 from the elders' and the fishers' decks to the ground",
+ "at": "2026-11-20T10:04:29Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0010000",
+    "base": "King of the Murkmire.esp:050D80",
+    "kind": "building",
+    "pos": [
+     -50303.12,
+     -506849.97,
+     723.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "walk": -124.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": 14.47
+    },
+    "why": "brings jal-veesa.WCTG77CNSEQ5X8HZH3MEET8AX4's deck down to the town's network"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50303.12,
+     -506849.97,
+     723.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": 14.47
+    }
+   },
+   "after": {
+    "pos": [
+     -50303.12,
+     -506849.97,
+     723.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": 14.47
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50303.12,
+     -506849.97,
+     723.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": 14.47
+    }
+   },
+   "after": {
+    "pos": [
+     -50309.12,
+     -506849.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.304GT42S136SZ11KJ798Z5HPW7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50326.16,
+     -506797.52,
+     492.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -134.8,
+      -172.1,
+      164.1,
+      154.4
+     ],
+     "mode": "ground",
+     "dz": 76.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50326.16,
+     -507247.52,
+     492.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -134.8,
+      -172.1,
+      164.1,
+      154.4
+     ],
+     "mode": "ground",
+     "dz": 76.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0020000",
+    "base": "King of the Murkmire.esp:050D80",
+    "kind": "building",
+    "pos": [
+     -51961.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "walk": -124.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    },
+    "why": "brings jal-veesa.WCTG77CNSEQ5X8HZH3MEET8AX4's deck down to the town's network"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51961.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -52082.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-20T10:04:29Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52082.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -52082.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-20T10:04:29Z"
+  }
+ ]
+}

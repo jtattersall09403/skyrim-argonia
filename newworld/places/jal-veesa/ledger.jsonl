@@ -4,7 +4,10 @@
 {"src":"King of the Murkmire.esp:1A31B8","space":"SeekhatCarpenterHut","copy":"SeekhatCarpenterHut","status":"replaced","base":"King of the Murkmire.esp:0D72B7"}
 {"src":"King of the Murkmire.esp:1D12E4","space":"SeekhatCarpenterHut","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:1D12E5","space":"SeekhatCarpenterHut","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"*","space":"SeekhatEggTendersQuarters","status":"dropped","why":"its only door jal-veesa.S7810T3D4PVBEA5JTA0HRKGJB8 stands on a walkable island with no way to the town (the source gives no way aboard) and nobody lives or works in it"}
+{"src":"*","space":"SeekhatEggTendersQuarters","status":"placed","as":["SeekhatEggTendersQuarters"],"count":16}
+{"src":"King of the Murkmire.esp:1D12E6","space":"SeekhatEggTendersQuarters","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"King of the Murkmire.esp:1D12E7","space":"SeekhatEggTendersQuarters","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"King of the Murkmire.esp:1D12E8","space":"SeekhatEggTendersQuarters","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"*","space":"SeekhatEldersHut","status":"placed","as":["SeekhatEldersHut"],"count":78}
 {"src":"King of the Murkmire.esp:1D1307","space":"SeekhatEldersHut","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:1D1308","space":"SeekhatEldersHut","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
