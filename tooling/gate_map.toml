@@ -126,3 +126,8 @@ globs = ["newworld/story/data/db/place*", "newworld/story/data/db/region*", "new
          "tools/newworld/map_page.*", "tools/newworld/atlas*"]
 stages = ["atlas"]
 tests = ["tools/tests/test_newworld_atlas_state.py"]
+
+# The agent view of the studio (the look tool) and the studio's page it drives.
+[[rule]]
+globs = ["tools/places/look*", "tools/places/studio/web/js/agent.js"]
+tests = ["tools/tests/test_places_look.py", "tools/tests/test_studio_web.py"]
