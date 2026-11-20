@@ -625,3 +625,23 @@ def test_survey_table_text_says_failed_tiles():
             {"tile": "S near", "capture": "failed", "why": "only 2% of the subject is seen"}]
     t = survey.table_text("b01", rows)
     assert "1 of 2 tiles failed" in t and "Oak 5%" in t and "FAILED: only 2%" in t
+
+
+# ---------- measure (measure.py) ----------
+class _Flat:
+    def __init__(self, z):
+        self.z = z
+
+    def height(self, x, y):
+        return self.z
+
+
+def test_measure_eaves_and_collar():
+    from tools.places.look import measure
+    body = piece("h", (0, 0, 100), (-200, -200, 0), (200, 200, 400), kind="building")
+    e = measure.eaves(body, _Flat(100.0))
+    assert e["eaves_over_ground"] == 220 and not e["flag"]   # 500 - 0.45 * 400 = 320 top-less-share, over 100
+    assert measure.eaves(body, _Flat(250.0))["flag"]
+    tree = piece("t", (0, 0, 20), (-50, -50, 0), (50, 50, 900), kind="tree")
+    assert measure.collar(tree, _Flat(100.0)) == {"collar_over_ground": -80, "flag": True}
+    assert not measure.collar(tree, _Flat(50.0))["flag"]

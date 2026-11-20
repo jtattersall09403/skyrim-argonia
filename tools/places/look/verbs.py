@@ -82,6 +82,9 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                                        "held_by") if k in r} | ({"ends": r["ends"]} if "ends" in r else {})
                     | ({"fault": True} if r["id"] in fl else {}) for r in rows]
         return {"thing": th["name"], "kind": th["kind"], "box": [th["lo"], th["hi"]], "pieces": rows}
+    if verb == "measure":
+        from tools.places.look import measure
+        return measure.run(d.scene(place, sess["strokes"], space), place)
     if verb == "survey":
         from tools.places.look import survey
         return survey.run(d, place, sess["strokes"], args)
@@ -346,6 +349,29 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
+
+
+def units_aware(sc, place: str) -> None:
+    """The scene's names take a unit's name too (tools/places/units.py: a house with its deck, posts, doors, steps,
+    railings and hangings; a dock, walkway or bridge): the whole unit as one thing."""
+    plain = sc.resolve
+
+    def resolve(name):
+        try:
+            return plain(name)
+        except KeyError:
+            if "." not in name or "+" in name:
+                raise
+            if not hasattr(sc, "_units"):
+                from tools.places import units
+                sc._units = units.Place(place, scene=sc)
+            try:
+                un = sc._units.unit(name)
+            except (KeyError, ValueError):
+                raise KeyError(f"no thing or unit named {name!r}") from None
+            ids = [pid for v in un["pieces"].values() for pid in v]
+            return sc._of(un["id"], "unit", [sc.by_id[i] for i in ids if i in sc.by_id])
+    sc.resolve = resolve
 
 
 # ---------- what each capture shows, and trying again when it shows too little ----------

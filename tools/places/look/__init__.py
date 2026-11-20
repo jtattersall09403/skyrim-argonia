@@ -89,6 +89,9 @@ def main(argv: list[str]) -> int:
     t0 = time.time()
     out = call({"place": place, "verb": verb, "args": args})
     out["wall_s"] = round(time.time() - t0, 2)
+    if verb == "measure" and out.get("ok"):   # the table as text
+        print(out["text"], end="")
+        return 0
     if verb == "survey" and out.get("ok"):   # one line per structure: its sheet and its failed tiles
         print("\n".join(out["lines"]) + f"\n({out['total_s']} s)")
         return 0
