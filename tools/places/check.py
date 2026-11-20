@@ -592,7 +592,7 @@ def check_overlap(ctx) -> list[str]:
     m = mine(ctx)
     rows = m["rows"]
     things = [{**rows[r["fk"]], "space": r["space"], "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale"),
-               "bounds": r.get("bounds")} for r in m["refs"].values() if r["fk"] in rows]
+               "bounds": r.get("bounds"), "model": r.get("model")} for r in m["refs"].values() if r["fk"] in rows]
     return [f"{a['id']} stands inside {b['id']}" for a, b in overlap_pairs(things)]
 
 
