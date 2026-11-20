@@ -170,7 +170,8 @@ added here the day they are made, with the date and the issue.
   replaces "a rootworm stop at a Hist is at its sap pool" of 2026-11-19 (2026-11-20, #80).
 - Killing a person the main quest cannot go on without shows our version of Morrowind's "thread of prophecy is
   severed" message; the journal never tells the player where to go instead. Heem-Jasa in quest 3 is such a person
-  (2026-11-20, #80).
+  until the player holds the note; after that her death is harmless and the quest goes on by the note, which needs a
+  new quest block (a person must live until a stage), proven once by the block test (2026-11-20, #80).
 - A loading-screen fact is changed to match our world where the two disagree (Blackrose Prison lies a short walk
   east of the city, not a day's march south) (2026-11-20, #80).
 - Whenever a fault in a draft is fixed, the tools and skills are changed so that kind of fault cannot be handed
