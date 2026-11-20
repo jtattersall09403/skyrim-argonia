@@ -57,6 +57,14 @@ it, each join against the source's relative height. The units table flags each f
 - A unit is sunk, moved or turned whole: in the studio scene, name it by its unit id (`look sink
   house.SeekhatEldersHut 40`, `look move walkway.04 dx dy dz`), check with `probe` and `section`, then `look commit`
   (`place-look`). A house's body is never moved without its deck; `--piece` moves the one piece named.
+- The layout is planned for the place as a whole (`units plan <place>`: each unit put back together at the source's
+  levels within it, then one offset) and written unit by unit with `units apply <place> <unit> ...`, through the
+  same path as `look commit`: what lay on the source's ground by or under a house (a net, a fire pit) lies on ours,
+  and every tree, fern, rock and root an earlier edit of a building moved goes back to its own seat on the ground.
+  Commit the place files by path, then look: the pictures draw what is committed. Apply one house at a time and
+  survey it before the next; the spans follow the houses.
+- What an agent's edit or the owner's save placed stays where it was put: its seat is pinned to its height
+  (`seat.pin`) and the `seating` stage keeps it (`draft.stages.placed_rows`).
 - `draft check` refuses a house moved apart from its platform (its body's gap to its own deck changed by more than
   8 units from the source's) and a tree or root moved by an edit of a building.
 - A walked level with its own flights stands as one body: the `seating` stage keeps the source's relative heights of

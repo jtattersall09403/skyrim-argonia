@@ -348,18 +348,31 @@ def seating_stage(st: Standing, log=print) -> None:
     from tools.places.draft import walk
     _, of, _ = st.clusters
     ours = st.ours()
+    put = placed_rows(st.pdir)        # placed by hand or by plan (an agent's or the owner's edit): they stay put
+    held = {r["id"]: r["pos"][2] for r in st.ext if r["id"] in put}
     for sid, row in sorted(ours.items()):
         r = st.by_src.get(sid)
-        if r is None or sid not in of or row.get("base") != r.get("base") or row.get("primitive"):
+        if r is None or sid not in of or row.get("base") != r.get("base") or row.get("primitive") or row["id"] in held:
             continue    # a replaced piece keeps the seat its replacement was given; a collision box, its piece's
         rule = st.seat_rule(r, row.get("cluster") or of[sid], ours)
         if rule != row.get("seat"):
             row["seat"] = rule
     seating.levels(st.ext, st.by_src, st.bases, st.G)
     walk.flush_steps(st.ext, st.bases, log=lambda *_: None)
+    for r in st.ext:
+        if r["id"] in held:
+            r["pos"][2] = held[r["id"]]
     was = {r["id"]: r["pos"][2] for r in st.ext}
     seat_all(st.ext, st.G)
     seating.carry(st.ext, was)
+    from tools.places.seat import pin
+    by = {r["id"]: r for r in st.ext}
+    for r in st.ext:            # what was placed keeps its height and its seat says so
+        if r["id"] in held:
+            r["pos"][2] = held[r["id"]]
+            s = pin(r, held[r["id"]], st.G, by)
+            if s is not None:
+                r["seat"] = s
 
 
 def clearance(st: Standing, log=print) -> None:
@@ -661,6 +674,16 @@ def _rows(rel: str, text: str) -> dict:
         key = r.get("id") or r.get("ref") or (f"{r.get('space')}|{r.get('src')}|{r.get('copy')}" if "status" in r else None) or line
         out[key] = r
     return out
+
+
+def placed_rows(pdir: Path) -> set[str]:
+    """The ids of the exterior rows an agent's draft edit (`look commit`, `units apply`) or an owner's finalised save
+    moved: the seating stage keeps each where it was put."""
+    ids = owner_rows(pdir)
+    for p in sorted((pdir / "agent-edits").glob("*.json")) if (pdir / "agent-edits").exists() else []:
+        ids |= {op["id"] for op in json.loads(p.read_text(encoding="utf-8")).get("ops") or []
+                if op.get("op") == "ref.move" and op.get("id")}
+    return ids
 
 
 def owner_rows(pdir: Path) -> set[str]:

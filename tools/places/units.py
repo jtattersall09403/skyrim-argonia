@@ -2,6 +2,7 @@
 
     python -m tools.places units <place> [--all] [--source] [--json]
     python -m tools.places units plan <place> [--margin 30] [--out plan.json]
+    python -m tools.places units apply <place> [UNIT ...] [--why=...]   (the plan written as the agent's draft edits)
 
 A house unit is its building body with the platform or deck it stands on, the posts under them, the steps and
 railings at its deck, the doors set in its walls (and the room they lead to) and what rests on, hangs on or is fixed
@@ -19,6 +20,7 @@ vertical offset, solved over the join graph, or a spot nearby where it fits, or 
 """
 from __future__ import annotations
 
+import copy
 import json
 import math
 import re
@@ -402,7 +404,7 @@ class Place:
 
     def build(self, place_id: str, sc, src_pieces: list[dict], src_ground) -> None:
         self.sc, self.place_id = sc, place_id
-        self.src_pieces = src_pieces
+        self.src_pieces, self.src_ground = src_pieces, src_ground
         self.src_by = {p["id"]: p for p in self.src_pieces}
         self.src_units = derive(self.src_pieces, src_ground, sc.bases)
         for p in sc.pieces:
@@ -714,16 +716,55 @@ def reassembly(pl: Place, un: dict) -> dict:
     else:
         shift = float(np.median([moved(i) for i in core]))
     out = {}
-    for v in un["pieces"].values():
+    sg, G = getattr(pl, "src_ground", None), pl.sc.ground
+    tops = [float(geom.aabb(pl.src_by[pl.by[i]["src"]])[1][2]) for i in un["pieces"].get("deck", [])
+            if i in pl.by and pl.by[i]["src"] in pl.src_by]
+    src_stand = max(tops) if tops else None
+    lying: dict[str, float] = {}     # what lay on the source's ground: {id: how far its underside was over it}
+    for r, v in un["pieces"].items():
+        for i in v:
+            p = pl.by.get(i)
+            if p and p["src"] in pl.src_by and r in ("on", "hanging", "railing", "door"):
+                over = _on_src_ground(pl.src_by[p["src"]], sg, src_stand if r in ("on", "door") else None)
+                if over is not None:
+                    lying[i] = over
+    # a group under the deck (a fire pit with its firewood and smoke) keeps its own heights, its lowest on the ground
+    up = [o for o in lying.values() if o > GROUND_REST]
+    drop = min(up) if up else 0.0
+    for r, v in un["pieces"].items():
         for i in v:
             p = pl.by.get(i)
             if not p or p["src"] not in pl.src_by:
                 continue
             want = pl.src_by[p["src"]]["m"][2][3] + shift
+            if i in lying:   # it lay on the source's ground by or under the house (a net, a fire pit): it lies on ours
+                lo, hi = geom.aabb(p)
+                g = G.height(float(lo[0] + hi[0]) / 2, float(lo[1] + hi[1]) / 2)
+                if g is not None:
+                    over = lying[i] - drop if lying[i] > GROUND_REST else lying[i]
+                    want = p["m"][2][3] + (g + over - float(lo[2]))
             d = want - p["m"][2][3]
             if abs(d) > 0.5:
                 out[i] = round(d, 1)
     return out
+
+
+GROUND_REST = 64.0     # a piece of a unit whose underside was this close to the source's ground rested on the ground
+
+
+def _on_src_ground(sp: dict, sg, stand: float | None = None) -> float | None:
+    """How far over the source's ground a piece's underside was, when it belonged to that ground: it rested on it, or
+    it stood wholly under the unit's standing level (a fire pit and its smoke under a stilt house, a door into the
+    space under the deck); else None."""
+    if sg is None:
+        return None
+    lo, hi = geom.aabb(sp)
+    g = sg.height(float(lo[0] + hi[0]) / 2, float(lo[1] + hi[1]) / 2)
+    if g is None:
+        return None
+    over = float(lo[2]) - g
+    under = stand is not None and float(hi[2]) < stand - STEP * 3 and over < stand - g - STEP * 3
+    return over if -GROUND_REST <= over <= GROUND_REST or under else None
 
 
 def interval(m: dict, un: dict, margin: float, steps: bool = True) -> tuple[float, float, list[str]]:
@@ -965,32 +1006,124 @@ def check_faults(place_id: str, places: Path | None = None, pl: Place | None = N
 
 
 def edit_faults(files: dict, bases: dict, places: Path | None = None) -> list[str]:
-    """A tree or root moved up or down in a stroke of an agent's edit that also moved a building."""
+    """A tree or root left moved up or down by a stroke of an agent's edit that also moved a building (net of the
+    strokes of the ground alone that put it back)."""
+    rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
+    bad = []
+    for i, dz in sorted(moved_by_buildings(files, bases, places).items()):
+        r = rows.get(i) or {}
+        b = bases.get(r.get("base")) or {}
+        k, ed = r.get("kind") or b.get("kind"), str(b.get("edid") or "").lower()
+        if (k == "tree" or "root" in ed) and abs(dz) > BURY_MIN:
+            bad.append(f"{i} ({ed or k}) moved {dz:+.0f} off its seat on the ground by an edit of a building: a tree or "
+                       f"root is judged against the ground, not moved with a house (units apply puts it back)")
+    return bad
+
+
+def moved_by_buildings(files: dict, bases: dict, places: Path | None = None) -> dict[str, float]:
+    """{id: dz} of every tree, fern, rock or root a stroke of an agent's edit moved together with a building, net of
+    the strokes of the ground alone that came after."""
     from tools.places.seat import PLACES
     pdir = (places or PLACES) / files["place"]["place_id"] / "agent-edits"
     rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
-    bad = []
+    owed: dict[str, float] = {}
     for f in sorted(pdir.glob("*.json")) if pdir.is_dir() else []:
-        ops = (json.loads(f.read_text()).get("ops") or [])
         strokes: dict = {}
-        for op in ops:
+        for op in json.loads(f.read_text()).get("ops") or []:
             if op.get("op") == "ref.move" and op.get("space", "exterior") == "exterior":
                 strokes.setdefault(op.get("stroke"), []).append(op)
-        for s, group in strokes.items():
-            def kind(op):
+        for group in strokes.values():
+            def piece(op):
                 r = rows.get(op["id"]) or {}
                 b = bases.get(r.get("base")) or {}
-                return r.get("kind") or b.get("kind"), str(b.get("edid") or "").lower()
-            if not any(kind(op)[0] == "building" for op in group):
-                continue
+                return {"kind": r.get("kind") or b.get("kind"), "edid": b.get("edid"), "model": b.get("model")}
+            building = any(piece(op)["kind"] == "building" for op in group)
             for op in group:
-                k, ed = kind(op)
-                if k == "tree" or "root" in ed:
-                    dz = op["after"]["pos"][2] - op["before"]["pos"][2]
-                    if abs(dz) > BURY_MIN:
-                        bad.append(f"{op['id']} ({ed or k}) moved {dz:+.0f} off its seat on the ground by an edit of a "
-                                   f"building ({f.name} stroke {s}): a tree or root is judged against the ground, not moved with a house")
-    return bad
+                if ground_piece(piece(op)) and (building or op["id"] in owed):
+                    owed[op["id"]] = owed.get(op["id"], 0.0) + op["after"]["pos"][2] - op["before"]["pos"][2]
+    return {i: dz for i, dz in owed.items() if abs(dz) > 0.5}
+
+
+# ---------- applying the plan ----------
+def apply_strokes(pl: Place, p: dict, names: list[str] | None = None, places: Path | None = None,
+                  files: dict | None = None) -> tuple[list, list[str]]:
+    """The plan `p` as strokes of ref moves on the place files: one stroke per unit named (default every unit the plan
+    seats), each piece moved by its own reassembly plus the unit's dz (and the unit's move in plan), then one stroke
+    of the ground alone putting back every tree, fern, rock and root an earlier edit of a building moved. Each moved
+    piece's seat is pinned (seat.pin) so the seating stage finds it where it was put. Returns (strokes, report)."""
+    from tools.places import edits
+    from tools.places.look.verbs import _move_op
+    from tools.places.seat import PLACES, pin, seat_z
+    files = files or edits.load_place((places or PLACES) / pl.place_id)
+    rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
+    seated = pl.sc.refs
+    G = pl.sc.ground
+    plan_by = {u["unit"]: u for u in p["units"]}
+    want = names or [u["unit"] for u in p["units"] if u.get("dz") is not None and not u.get("after")]
+    strokes, report = [], []
+    for name in want:
+        u, un = plan_by.get(name), pl.by_unit.get(name)
+        if u is None or un is None:
+            raise ValueError(f"{name}: no such unit in the plan of {pl.place_id}")
+        if u.get("dz") is None or u.get("after"):
+            report.append(f"{name}: not applied: the plan cannot seat it ({'; '.join(u.get('after') or []) or 'no offset'})")
+            continue
+        mv = u.get("move") or {}
+        dx, dy = float(mv.get("dx", 0.0)), float(mv.get("dy", 0.0))
+        ids = [i for v in un["pieces"].values() for i in v if i in rows and i in seated]
+        new = {}
+        for i in ids:
+            d = float(u.get("reassemble", {}).get(i, 0.0)) + float(u["dz"])
+            s = seated[i]["pos"]
+            new[i] = dict(copy.deepcopy(rows[i]), pos=[round(s[0] + dx, 3), round(s[1] + dy, 3), round(s[2] + d, 3)])
+        placed = {**seated, **new}
+        stroke = []
+        for i in ids:
+            r = new[i]
+            r["seat"] = pin(r, r["pos"][2], G, placed)
+            if r.get("seat") is None:
+                r.pop("seat", None)
+            if math.dist(r["pos"], rows[i]["pos"]) > 0.05 or r.get("seat") != rows[i].get("seat"):
+                stroke.append(_move_op(rows[i], {"pos": r["pos"], "rot": r.get("rot") or [0, 0, 0],
+                                                 "scale": r.get("scale", 1), "seat": r.get("seat")}))
+        if stroke:
+            strokes.append(stroke)
+        report.append(f"{name}: dz {float(u['dz']):+.0f}, {len(u.get('reassemble') or {})} piece(s) reassembled, "
+                      f"{len(stroke)} row(s) written")
+    ground = []
+    built = {i for un in pl.units for v in un["pieces"].values() for i in v}   # a plant on a deck moves with its deck
+    for i, dz in sorted(moved_by_buildings(files, pl.sc.bases, places).items()):
+        if i not in rows or i not in seated or i in built:
+            continue
+        r = copy.deepcopy(rows[i])
+        s = r.get("seat") or {}
+        if s.get("mode", "free") == "free":
+            r["pos"][2] = round(r["pos"][2] - dz, 3)
+        else:
+            r["seat"] = dict(s, dz=round(float(s.get("dz", 0.0)) - dz, 3))
+            r["pos"][2] = seat_z(r, G, seated)
+        ground.append(_move_op(rows[i], {"pos": r["pos"], "rot": r.get("rot") or [0, 0, 0], "scale": r.get("scale", 1),
+                                          "seat": r.get("seat")}))
+        report.append(f"{i}: back to its own seat on the ground ({-dz:+.0f})")
+    if ground:
+        strokes.append(ground)
+    return strokes, report
+
+
+def apply_cli(place_id: str, names: list[str], why: str | None = None) -> int:
+    from tools.places.look.verbs import write_agent_save
+    pl = Place(place_id)
+    p = plan(pl)
+    strokes, report = apply_strokes(pl, p, names or None)
+    print("\n".join(report))
+    if not strokes:
+        print("nothing to write")
+        return 0
+    got = write_agent_save(place_id, strokes, why or f"units apply: {' '.join(names) or 'every unit the plan seats'}")
+    print(f"wrote {got['ops']} op(s) in {got['strokes']} stroke(s): {got['save']}")
+    for lf in got["left_for_owner"]:
+        print(f"left for the owner: stroke {lf['stroke']} touches {lf['owner_rows']}")
+    return 0
 
 
 # ---------- CLI ----------
@@ -1000,6 +1133,8 @@ def main(argv: list[str]) -> int:
     if not args:
         print(__doc__.split("\n\n")[0])
         return 2
+    if args[0] == "apply":
+        return apply_cli(args[1], args[2:], opts.get("--why") if isinstance(opts.get("--why"), str) else None)
     if args[0] == "plan":
         pl = Place(args[1])
         p = plan(pl, float(opts.get("--margin", MARGIN)))

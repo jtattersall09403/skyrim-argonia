@@ -113,6 +113,25 @@ def test_the_plan_puts_a_house_back_on_its_platform_and_seats_both_with_the_walk
     assert abs(walk["dz"] - by["house.RoomA"]["dz"]) <= U.STEP and not walk.get("give_up")
 
 
+def test_units_apply_writes_the_plan_as_moves_that_put_a_house_back_together_and_trees_back_on_the_ground(tmp_path):
+    pl = place({"s.huta": -120.0, "s.tree": -300.0}, ground_h=100.0)
+    ed = tmp_path / "t" / "agent-edits"
+    ed.mkdir(parents=True)
+    (ed / "a.json").write_text(json.dumps({"ops": [   # an earlier stroke sank the house and dragged the tree with it
+        {"op": "ref.move", "space": "exterior", "id": "d.huta", "stroke": 1, "before": {"pos": [0, 0, 500]}, "after": {"pos": [0, 0, 380]}},
+        {"op": "ref.move", "space": "exterior", "id": "d.tree", "stroke": 1, "before": {"pos": [450, 0, 0]}, "after": {"pos": [450, 0, -300]}}]}))
+    p = U.plan(pl)
+    strokes, report = U.apply_strokes(pl, p, ["house.RoomA"], places=tmp_path, files=pl.sc.files)
+    after = {op["id"]: op["after"]["pos"][2] for st in strokes for op in st}
+    dz = {u["unit"]: u for u in p["units"]}["house.RoomA"]["dz"]
+    plat = after.get("d.plata", 500.0)
+    assert after["d.huta"] - plat == pytest.approx(0.0)                     # the body back on its deck, as in the source
+    assert plat == pytest.approx(500.0 + dz)                                # the whole house took the plan's one offset
+    assert after["d.tree"] == pytest.approx(0.0)                           # the tree back where the ground puts it
+    assert "d.platb" not in after                                          # a unit not named is not touched
+    assert len(strokes) == 2 and all(op["op"] == "ref.move" for op in strokes[-1])
+
+
 def test_a_house_on_ground_too_steep_for_its_legs_is_said_so():
     pl = place({}, ground_h=0.0)
     pl.sc.ground = Ground({(c, d): [0.0 if c < 0 else 600.0] * 33 * 33 for c in range(-2, 2) for d in range(-2, 2)}, {}, None)
@@ -130,7 +149,45 @@ def test_a_tree_moved_in_the_stroke_of_a_building_is_refused(tmp_path: Path):
                            "before": {"pos": [0, 0, 0]}, "after": {"pos": [0, 0, dz]}}
     (ed / "a.json").write_text(json.dumps({"ops": [mv("d.huta", -300, 1), mv("d.tree", -300, 1), mv("d.tree", -40, 2)]}))
     bad = U.edit_faults(files, BASES, tmp_path)
-    assert len(bad) == 1 and "d.tree" in bad[0] and "stroke 1" in bad[0]
+    assert len(bad) == 1 and "d.tree" in bad[0] and "-340" in bad[0]
+    # a later stroke of the ground alone that puts it back (units apply's restore) clears it
+    (ed / "b.json").write_text(json.dumps({"ops": [mv("d.tree", 340, 1)]}))
+    assert U.edit_faults(files, BASES, tmp_path) == []
+
+
+def test_a_placed_piece_keeps_its_height_through_any_later_seating():
+    from tools.places.seat import pin, seat_all
+    G = flat(100.0)
+    deck = {"id": "deck", "pos": [0, 0, 400.0], "rot": [0, 0, 0], "seat": {"mode": "ground", "dz": 0.0}}
+    hut = {"id": "hut", "pos": [0, 0, 650.0], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 0.0}}
+    deck["seat"] = pin(deck, 400.0, G, {})
+    hut["seat"] = pin(hut, 650.0, G, {"deck": deck})
+    assert deck["seat"]["dz"] == 300.0 and hut["seat"]["dz"] == 250.0
+    assert seat_all([hut, deck], G) == 0 and hut["pos"][2] == 650.0
+    free = {"id": "f", "pos": [0, 0, 5.0], "seat": {"mode": "free"}}
+    assert pin(free, 50.0, G) == {"mode": "free"}
+
+
+def test_the_seating_stage_keeps_what_an_agent_or_the_owner_placed(tmp_path: Path):
+    from tools.places.draft.stages import placed_rows
+    (tmp_path / "agent-edits").mkdir()
+    (tmp_path / "agent-edits" / "a.json").write_text(json.dumps({"ops": [
+        {"op": "ref.move", "id": "d.huta"}, {"op": "ref.add", "ref": {"id": "d.new"}}]}))
+    (tmp_path / "edits").mkdir()
+    (tmp_path / "edits" / "o.json").write_text(json.dumps({"final": True, "ops": [{"op": "ref.move", "id": "d.tree"}]}))
+    assert placed_rows(tmp_path) == {"d.huta", "d.tree"}
+
+
+def test_what_lay_on_the_source_ground_by_a_house_lies_on_ours():
+    from tools.places import xform
+    G = flat(0.0)
+
+    def piece(z):
+        return {"lo": [-20, -20, 0], "hi": [20, 20, 40], "m": xform.matrix([0, 0, z], [0, 0, 0], 1)}
+    assert U._on_src_ground(piece(20.0), G) == pytest.approx(20.0)                  # on the ground
+    assert U._on_src_ground(piece(300.0), G) is None                                # on the deck
+    assert U._on_src_ground(piece(150.0), G, stand=500.0) == pytest.approx(150.0)   # a fire pit under the deck
+    assert U._on_src_ground(piece(480.0), G, stand=500.0) is None                   # on the deck
 
 
 SEEKHAT = Path(__file__).resolve().parents[2] / "out" / "places" / "bundles" / "src.kingofthemurkmire.seekhatyollocation"
