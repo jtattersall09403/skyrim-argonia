@@ -358,7 +358,7 @@
 {"src":"Skyrim.esm:099ECE","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.T777TSJ89JPTS1YFVX4PNCS3KK","cluster":"s04"}
 {"src":"Skyrim.esm:099ED1","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.EXXF7YA092VSC63Q3MBCB06CM0","cluster":"s04"}
 {"src":"Skyrim.esm:099ED2","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.JQF4HCQW9N6VYM37CAEZBGEGY0","cluster":"s04"}
-{"src":"Skyrim.esm:099ED3","space":"exterior","status":"placed","as":"tribal-camp-m2-m68.W85MDTFG95B8PDZ8XPP2PDXD7Q","cluster":"s04"}
+{"src":"Skyrim.esm:099ED3","space":"exterior","status":"dropped","cluster":"s04","why":"a bench that stood on the orc palisade's walkway (the palisade is dropped): 5 m up with nothing under it","by":"draft.drop"}
 {"src":"Skyrim.esm:099ED4","space":"exterior","status":"replaced","as":"tribal-camp-m2-m68.38D50T7QEWJCRC7GSE8GN8QBSK","cluster":"s04","base":"King of the Murkmire.esp:10A52B"}
 {"src":"Skyrim.esm:099ED5","space":"exterior","status":"dropped","cluster":"s04","why":"an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)","by":"draft.drop"}
 {"src":"Skyrim.esm:099ED6","space":"exterior","status":"dropped","cluster":"s04","why":"an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)","by":"draft.drop"}

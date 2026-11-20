@@ -58,7 +58,7 @@
     "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
    },
    {
-    "base": "ArgoniaNewWorld.esm:020B76",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
     "kind": "static",
     "pos": [
      -9962,
@@ -94,7 +94,7 @@
     "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
    },
    {
-    "base": "ArgoniaNewWorld.esm:020B76",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
     "kind": "static",
     "pos": [
      -10519,
@@ -333,7 +333,8 @@
    "Skyrim.esm:0EC371": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
    "Skyrim.esm:0EC387": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
    "Skyrim.esm:0F762C": "a dragon perch: no dragons in this marsh camp",
-   "Skyrim.esm:05A348": "Dushnikh Mine's rock mouth: the record names no mine (a Naga camp of tents, a longhouse, a fire pit and a cage)"
+   "Skyrim.esm:05A348": "Dushnikh Mine's rock mouth: the record names no mine (a Naga camp of tents, a longhouse, a fire pit and a cage)",
+   "Skyrim.esm:099ED3": "a bench that stood on the orc palisade's walkway (the palisade is dropped): 5 m up with nothing under it"
   },
   "replace": {
    "Skyrim.esm:0AF1A2": {
