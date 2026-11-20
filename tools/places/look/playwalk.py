@@ -687,7 +687,14 @@ def room_plan(M, kind: dict, pieces: list[dict]) -> list[dict]:
     if kind["kind"] != "changed" or not doors:
         return routes
     a = {"name": doors[0]["name"], "pos": doors[0]["pos"], "kind": "way in"}
-    for t in kind["things"] + kind["spots"]:
+    by = {p["id"]: p for p in pieces}
+    things = []
+    for t in kind["things"]:   # what a person walks up to: not a light, a marker or a piece the room no longer holds
+        p = by.get(t.get("id"))
+        if p is None or p.get("kind") in ("light", "marker", "sound", "other") or not p.get("model"):
+            continue
+        things.append(t | {"name": t["name"].split(" ", 1)[0] + " " + (p.get("edid") or t["name"].split(" ", 1)[-1])})
+    for t in things + kind["spots"]:
         r = plan_route(M, route_name(a, t), a, t | {"kind": "thing"})
         P = r.get("walk")
         r["stations"] = []
@@ -872,7 +879,7 @@ def named(sc, M, n: str) -> dict:
         if n == "market":
             st = [t["pos"] for t in poi["targets"] if t["kind"] == "stall"]
             if st:
-                return {"name": "market", "pos": _on_ground(sc, np.mean(np.asarray(st, float), axis=0).tolist()), "kind": "stall"}
+                return {"name": "market", "pos": _on_ground(sc, np.median(np.asarray(st, float), axis=0).tolist()), "kind": "stall"}
         c = centre_of(sc, poi)
         if n == "landing" and c["name"] != "landing":
             q = [a for a in poi["arrivals"] if "landing" in a["name"]]
