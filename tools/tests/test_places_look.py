@@ -627,6 +627,46 @@ def test_survey_table_text_says_failed_tiles():
     assert "1 of 2 tiles failed" in t and "Oak 5%" in t and "FAILED: only 2%" in t
 
 
+def test_survey_tiles_have_a_file_each():
+    from tools.places.look import survey
+    names = [survey.tile_file(i + 1, t) for i, t in enumerate(survey.plan())]
+    assert len(set(names)) == len(names) == 14
+    assert names[0] == "01-n-near.png" and names[4] == "05-n-far.png" and names[8] == "09-ne-high.png"
+    assert names[10] == "11-s-top.png" and names[11] == "12-section-west-east.png" and names[13] == "14-se-lit.png"
+    assert (survey.TW, survey.TH) == (1280, 960) and (survey.SW, survey.SH) == (640, 480)
+    assert survey.table_text("b01", [{"tile": "N near", "capture": "good", "file": "/x/01-n-near.png"}]).count("01-n-near.png") == 1
+
+
+def test_views_are_1920_wide_and_labels_scale_with_width():
+    from PIL import Image, ImageDraw
+    from tools.places.look import draw, verbs
+    assert (verbs.draw_w(), verbs.draw_h()) == (1920, 1440)
+    a, b = Image.new("RGBA", (768, 576)), Image.new("RGBA", (1920, 1440))
+    ha = draw.tag(ImageDraw.Draw(a), (300, 300), "label")
+    hb = draw.tag(ImageDraw.Draw(b), (800, 800), "label")
+    assert abs((hb[3] - hb[1]) / (ha[3] - ha[1]) - 2.5) < 0.3
+    assert abs((hb[2] - hb[0]) / (ha[2] - ha[0]) - 2.5) < 0.3
+
+
+def test_ground_grid_is_off_unless_asked():
+    import inspect
+    from tools.places.look import draw
+    assert inspect.signature(draw.annotate).parameters["grid"].default is False
+
+
+def test_id_buffer_enlarged_to_the_image():
+    from tools.places.look import capture
+    ids = np.array([[1, 2], [3, 4]])
+    big = capture.enlarge(ids, 5, 4)
+    assert big.shape == (4, 5) and big[0, 0] == 1 and big[0, 4] == 2 and big[3, 0] == 3 and big[3, 4] == 4
+    assert capture.enlarge(ids, 2, 2) is ids
+
+
+def test_pick_scale_of_a_survey_tile():
+    from tools.places.look import verbs
+    assert verbs.cam_scale({"w": 1280, "sw": 640}) == 2.0 and verbs.cam_scale({"w": 1920}) == 1.0
+
+
 # ---------- measure (measure.py) ----------
 class _Flat:
     def __init__(self, z):

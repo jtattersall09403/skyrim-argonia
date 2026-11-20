@@ -35,15 +35,28 @@ def from_data_url(u: str) -> Image.Image:
     return Image.open(io.BytesIO(base64.b64decode(u.split(",", 1)[1]))).convert("RGBA")
 
 
-def tag(d: ImageDraw.ImageDraw, xy, text: str, fill=(255, 255, 255, 235), ink=(0, 0, 0, 255), size: int = 13, bold=True):
-    f = font(size, bold)
+BASE_W = 768   # the width every pixel size below was drawn for; a drawing scales by width / BASE_W
+
+
+def unit(w: float) -> float:
+    """How much to scale a size written for a 768-wide image to one `w` wide."""
+    return w / BASE_W
+
+
+def tag(d: ImageDraw.ImageDraw, xy, text: str, fill=(255, 255, 255, 235), ink=(0, 0, 0, 255), size: int = 13, bold=True,
+        k: float | None = None):
+    """A label; its text, padding and outline scale with the image's width (`k`: the panel's, for a sheet of panels)."""
+    k = unit(d.im.size[0]) if k is None else k
+    f = font(max(8, round(size * k)), bold)
     x, y = xy
     b = d.textbbox((0, 0), text, font=f)
-    w, h = b[2] - b[0] + 6, b[3] - b[1] + 4
-    x = min(max(2, x - w / 2), d.im.size[0] - w - 2)
-    y = min(max(2, y - h), d.im.size[1] - h - 2)
-    d.rectangle([x, y, x + w, y + h], fill=fill, outline=(0, 0, 0, 255))
-    d.text((x + 3, y + 1 - b[1]), text, font=f, fill=ink)
+    px, py = round(3 * k), round(2 * k)
+    w, h = b[2] - b[0] + 2 * px, b[3] - b[1] + 2 * py
+    m = max(2, round(2 * k))
+    x = min(max(m, x - w / 2), d.im.size[0] - w - m)
+    y = min(max(m, y - h), d.im.size[1] - h - m)
+    d.rectangle([x, y, x + w, y + h], fill=fill, outline=(0, 0, 0, 255), width=max(1, round(k)))
+    d.text((x + px, y + py - b[1]), text, font=f, fill=ink)
     return [x, y, x + w, y + h]
 
 
@@ -52,9 +65,10 @@ def _inside(p, w, h, pad=0):
 
 
 def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids: set[str], side_text: str,
-             grid: bool = True) -> tuple[Image.Image, list[dict]]:
+             grid: bool = False) -> tuple[Image.Image, list[dict]]:
     """A perspective look's labels. Returns the image and the labels drawn [{text, at}]."""
     w, h = img.size
+    k = unit(w)
     over = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(over)
     labels = []
@@ -76,7 +90,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
                 pp = geom.project(cam, world)
                 seg = [(float(p[0]), float(p[1])) for p in pp if p[2] > 0]
                 if len(seg) > 1:
-                    d.line(seg, fill=(255, 255, 255, 70), width=1)
+                    d.line(seg, fill=(255, 255, 255, 70), width=max(1, round(k)))
     # red outlines on faulted pieces in frame
     for p in scene.pieces:
         if p["id"] not in fault_ids:
@@ -86,7 +100,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
             continue
         hl = geom.hull(pp[:, :2])
         if len(hl) > 2:
-            d.polygon(hl, outline=RED, width=3)
+            d.polygon(hl, outline=RED, width=max(2, round(3 * k)))
     # structure ids where they stand
     seen = []
     cl = scene.clusters()
@@ -99,7 +113,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
         q = geom.project(cam, [c])[0]
         if not _inside(q, w, h, -10):
             continue
-        if any(abs(q[0] - s[0]) < 40 and abs(q[1] - s[1]) < 16 for s in seen):
+        if any(abs(q[0] - s[0]) < 40 * k and abs(q[1] - s[1]) < 16 * k for s in seen):
             continue
         seen.append(q)
         bad = any(p["id"] in fault_ids for p in ps)
@@ -113,23 +127,23 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
         a, b = geom.project(cam, [[gx, gy, g], [gx, gy, g + geom.PERSON]])
         if a[2] > 0 and b[2] > 0 and _inside(a, w, h):
             ph = math.hypot(b[0] - a[0], b[1] - a[1])
-            if ph >= 4:
+            if ph >= 4 * k:
                 x, y = float(a[0]), float(a[1])
-                r = max(1.5, ph * 0.09)
-                d.line([(x, y), (x, y - ph + 2 * r)], fill=(255, 210, 0, 255), width=max(2, int(ph / 14)))
+                r = max(1.5 * k, ph * 0.09)
+                d.line([(x, y), (x, y - ph + 2 * r)], fill=(255, 210, 0, 255), width=max(round(2 * k), int(ph / 14)))
                 d.ellipse([x - r, y - ph, x + r, y - ph + 2 * r], fill=(255, 210, 0, 255))
-                tag(d, (x, y - ph - 4), "1.8 m", fill=(255, 240, 160, 230), size=11)
+                tag(d, (x, y - ph - 4 * k), "1.8 m", fill=(255, 240, 160, 230), size=11)
     # north arrow and the side seen from
     c0, c1 = geom.project(cam, [tgt, tgt + np.array([0, max(dist * 0.05, 50), 0])])
     ang = math.atan2(c1[1] - c0[1], c1[0] - c0[0]) if c0[2] > 0 and c1[2] > 0 else -math.pi / 2
-    ox, oy, L = w - 34, 38, 22
-    d.ellipse([ox - 26, oy - 26, ox + 26, oy + 26], fill=(255, 255, 255, 200), outline=(0, 0, 0, 255))
+    ox, oy, L = w - 34 * k, 38 * k, 22 * k
+    d.ellipse([ox - 26 * k, oy - 26 * k, ox + 26 * k, oy + 26 * k], fill=(255, 255, 255, 200), outline=(0, 0, 0, 255), width=max(1, round(k)))
     tip = (ox + L * math.cos(ang), oy + L * math.sin(ang))
     tail = (ox - L * 0.6 * math.cos(ang), oy - L * 0.6 * math.sin(ang))
-    d.line([tail, tip], fill=(200, 0, 0, 255), width=4)
-    d.text((tip[0] + 4 * math.cos(ang) - 5, tip[1] + 4 * math.sin(ang) - 8), "N", font=font(13, True), fill=(0, 0, 0, 255))
+    d.line([tail, tip], fill=(200, 0, 0, 255), width=round(4 * k))
+    d.text((tip[0] + 4 * k * math.cos(ang) - 5 * k, tip[1] + 4 * k * math.sin(ang) - 8 * k), "N", font=font(round(13 * k), True), fill=(0, 0, 0, 255))
     txt = side_text + (f"   grid {step} u = {step / geom.UNITS_PER_M:.1f} m" if step else "")
-    tag(d, (8 + len(txt) * 3.6, 24), txt, size=13)
+    tag(d, (8 * k + len(txt) * 3.6 * k, 24 * k), txt, size=13)
     return Image.alpha_composite(img, over), labels
 
 
@@ -137,6 +151,7 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
                      title: str) -> Image.Image:
     """A section's labels: ground line, water line, a height scale, each crossed piece's height over the ground."""
     w, h = img.size
+    k = unit(w)
     over = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(over)
     a, b = np.asarray(cam.get("prof_line", cam["line"])[0]), np.asarray(cam.get("prof_line", cam["line"])[1])
@@ -147,8 +162,8 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
         return float(q[0]), float(q[1])
     pts = [px(s, g) for s, g, _ in prof if g is not None]
     if len(pts) > 1:
-        d.line(pts, fill=(120, 60, 10, 255), width=4)
-        d.line(pts, fill=(250, 170, 60, 255), width=2)
+        d.line(pts, fill=(120, 60, 10, 255), width=round(4 * k))
+        d.line(pts, fill=(250, 170, 60, 255), width=round(2 * k))
     wl = [(s, wz) for s, g, wz in prof if wz is not None and g is not None and wz > g]
     if wl:
         runs, cur = [], [wl[0]]
@@ -160,26 +175,26 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
         runs.append(cur)
         for r in runs:
             if len(r) > 1:
-                d.line([px(s, wz) for s, wz in r], fill=(20, 110, 255, 255), width=4)
-        tag(d, (max(px(wl[0][0], wl[0][1])[0], 0) + 110, px(wl[0][0], wl[0][1])[1] - 3), f"water {wl[0][1]:.0f}", fill=(200, 225, 255, 235), size=11)
+                d.line([px(s, wz) for s, wz in r], fill=(20, 110, 255, 255), width=round(4 * k))
+        tag(d, (max(px(wl[0][0], wl[0][1])[0], 0) + 110 * k, px(wl[0][0], wl[0][1])[1] - 3 * k), f"water {wl[0][1]:.0f}", fill=(200, 225, 255, 235), size=11)
     # height scale at the left
     upp = cam["upp"]
     zc = cam["target"][2]
     ztop, zbot = zc + upp * h / 2, zc - upp * h / 2
     stepz = geom.nice((ztop - zbot) / 6)
-    d.rectangle([0, 0, 62, h], fill=(255, 255, 255, 170))
+    d.rectangle([0, 0, 62 * k, h], fill=(255, 255, 255, 170))
     for z in np.arange(math.ceil(zbot / stepz) * stepz, ztop, stepz):
         _, y = px(0, z)
-        d.line([(0, y), (w, y)], fill=(0, 0, 0, 40), width=1)
-        d.line([(52, y), (62, y)], fill=(0, 0, 0, 255), width=2)
-        d.text((2, y - 7), f"{z:.0f}", font=font(11), fill=(0, 0, 0, 255))
+        d.line([(0, y), (w, y)], fill=(0, 0, 0, 40), width=max(1, round(k)))
+        d.line([(52 * k, y), (62 * k, y)], fill=(0, 0, 0, 255), width=round(2 * k))
+        d.text((2 * k, y - 7 * k), f"{z:.0f}", font=font(round(11 * k)), fill=(0, 0, 0, 255))
     # distance scale at the bottom
     L = float(np.linalg.norm(np.subtract(cam["line"][1], cam["line"][0])))
     sd = geom.nice(L / 5)
     x0, _ = px(0, zc)
     x1, _ = px(sd, zc)
-    d.line([(x0 + 70, h - 14), (x1 + 70, h - 14)], fill=(0, 0, 0, 255), width=4)
-    tag(d, ((x0 + x1) / 2 + 70, h - 18), f"{sd:.0f} u = {sd / geom.UNITS_PER_M:.1f} m", size=11)
+    d.line([(x0 + 70 * k, h - 14 * k), (x1 + 70 * k, h - 14 * k)], fill=(0, 0, 0, 255), width=round(4 * k))
+    tag(d, ((x0 + x1) / 2 + 70 * k, h - 18 * k), f"{sd:.0f} u = {sd / geom.UNITS_PER_M:.1f} m", size=11)
     # crossed pieces: outline (red when faulted) and their lowest point over the ground
     placed = []
     from tools.places.look import outline
@@ -192,24 +207,24 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
             ink = Image.new("RGBA", (w, h), RED if bad else (255, 255, 255, 200))
             over.paste(ink, (0, 0), ol.point(lambda v: 255 if v else 0))
             if bad:
-                over.paste(ink, (0, 0), outline.edge(ol.filter(outline.ImageFilter.MaxFilter(3))).point(lambda v: 255 if v else 0))
+                over.paste(ink, (0, 0), outline.edge(ol.filter(outline.ImageFilter.MaxFilter(2 * max(1, round(k)) + 1))).point(lambda v: 255 if v else 0))
         else:
             hl = geom.hull(pp[:, :2])
             if len(hl) > 2:
-                d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=3 if bad else 1)
+                d.polygon(hl, outline=RED if bad else (255, 255, 255, 150), width=round((3 if bad else 1) * k))
         if bad or c.get("label"):
             xm, ym = float(pp[:, 0].mean()), float(pp[:, 1].min())
             txt = f"{c['id'].split('.')[-1][:6]} {c.get('edid') or ''} {'+' if (c['over'] or 0) >= 0 else ''}{c['over']:.0f}" if c["over"] is not None else c["id"][-6:]
-            yy = ym - 4
-            while any(abs(yy - q[1]) < 17 and abs(xm - q[0]) < 140 for q in placed):
-                yy -= 17
+            yy = ym - 4 * k
+            while any(abs(yy - q[1]) < 17 * k and abs(xm - q[0]) < 140 * k for q in placed):
+                yy -= 17 * k
             placed.append((xm, yy))
             tag(d, (xm, yy), txt, fill=(255, 220, 220, 235) if bad else (255, 255, 255, 220), size=11)
-    tag(d, (w / 2, 22), title, size=13)
+    tag(d, (w / 2, 22 * k), title, size=13)
     for name, q in zip("AB", cam["line"]):   # the line's ends, at the foot of the frame
         x = float(geom.project(cam, [[q[0], q[1], cam["target"][2]]])[0][0])
-        d.line([(x, h - 30), (x, h)], fill=(0, 0, 0, 255), width=2)
-        d.text((x + 3, h - 30), name, font=font(16, True), fill=(0, 0, 0, 255))
+        d.line([(x, h - 30 * k), (x, h)], fill=(0, 0, 0, 255), width=round(2 * k))
+        d.text((x + 3 * k, h - 30 * k), name, font=font(round(16 * k), True), fill=(0, 0, 0, 255))
     return Image.alpha_composite(img, over)
 
 
@@ -222,16 +237,16 @@ def sheet(images: list[Image.Image], cols: int, captions: list[str] | None = Non
         x, y = (i % cols) * w, (i // cols) * h
         out.paste(im, (x, y))
         if captions:
-            tag(d, (x + 60 + len(captions[i]) * 3, y + h - 6), captions[i], size=12)
-        d.rectangle([x, y, x + w - 1, y + h - 1], outline=(0, 0, 0, 255))
+            tag(d, (x + (60 + len(captions[i]) * 3) * unit(w), y + h - 6 * unit(w)), captions[i], size=12, k=unit(w))
+        d.rectangle([x, y, x + w - 1, y + h - 1], outline=(0, 0, 0, 255), width=max(1, round(unit(w))))
     return out
 
 
 def pair(a: Image.Image, b: Image.Image, la: str, lb: str) -> Image.Image:
     out = sheet([a, b], 2)
     d = ImageDraw.Draw(out)
-    tag(d, (a.size[0] / 2, a.size[1] - 8), la, size=15, fill=(255, 255, 160, 240))
-    tag(d, (a.size[0] * 1.5, a.size[1] - 8), lb, size=15, fill=(255, 255, 160, 240))
+    tag(d, (a.size[0] / 2, a.size[1] - 8 * unit(a.size[0])), la, size=15, fill=(255, 255, 160, 240), k=unit(a.size[0]))
+    tag(d, (a.size[0] * 1.5, a.size[1] - 8 * unit(a.size[0])), lb, size=15, fill=(255, 255, 160, 240), k=unit(a.size[0]))
     return out
 
 
@@ -242,6 +257,7 @@ def mesh_overlay(img: Image.Image, cam: dict, M, doors: list[tuple[str, list, bo
     `keep`: a mask of the triangles to draw (a section's slab); else those in front of the camera and in the frame."""
     from tools.places.look import mesh as mesh_
     w, h = img.size
+    k = unit(w)
     over = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(over)
     if len(M.T):
@@ -256,7 +272,7 @@ def mesh_overlay(img: Image.Image, cam: dict, M, doors: list[tuple[str, list, bo
         idx = idx[np.argsort(-tri[idx, :, 2].mean(1))]
         for i in idx:
             c = mesh_.colour(int(M.lab[i]), M.main)
-            d.polygon([(float(x), float(y)) for x, y, _ in tri[i]], fill=c + (70,), outline=c + (170,))
+            d.polygon([(float(x), float(y)) for x, y, _ in tri[i]], fill=c + (70,), outline=c + (170,), width=max(1, round(k)))
         for isl in sorted(set(M.lab[idx].tolist())):
             s = idx[M.lab[idx] == isl]
             cx, cy = float(tri[s, :, 0].mean()), float(tri[s, :, 1].mean())
@@ -267,12 +283,12 @@ def mesh_overlay(img: Image.Image, cam: dict, M, doors: list[tuple[str, list, bo
         p = geom.project(cam, [at])[0]
         if p[2] > 0 and _inside(p, w, h):
             col = (255, 255, 255, 255) if on else (230, 20, 20, 255)
-            d.rectangle([p[0] - 5, p[1] - 5, p[0] + 5, p[1] + 5], fill=col, outline=(0, 0, 0, 255))
-            tag(d, (p[0] + 4, p[1] - 14), name, size=10, bold=False)
+            d.rectangle([p[0] - 5 * k, p[1] - 5 * k, p[0] + 5 * k, p[1] + 5 * k], fill=col, outline=(0, 0, 0, 255), width=max(1, round(k)))
+            tag(d, (p[0] + 4 * k, p[1] - 14 * k), name, size=10, bold=False)
     if points:
         pp = geom.project(cam, [q for q, _ in points])
         for p, (_, on) in zip(pp, points):
             if p[2] > 0 and _inside(p, w, h):
                 col = (255, 255, 255, 255) if on else (230, 20, 20, 255)
-                d.ellipse([p[0] - 3, p[1] - 3, p[0] + 3, p[1] + 3], fill=col, outline=(0, 0, 0, 255))
+                d.ellipse([p[0] - 3 * k, p[1] - 3 * k, p[0] + 3 * k, p[1] + 3 * k], fill=col, outline=(0, 0, 0, 255), width=max(1, round(k)))
     return Image.alpha_composite(img.convert("RGBA"), over)

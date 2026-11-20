@@ -1,9 +1,11 @@
 """`look <place> survey [<structure> ...] [--changed]`: one contact sheet per structure (and the whole place when none
 is named): near and far from the four compass sides at eye level, two high obliques, a top view with the crowns
 cut, sections on two axes with the ground line and a height scale, all in a neutral fill light, and one tile in the
-place's own light (the viewer's, not the game's). Each tile carries its side, distance and capture score; a failed
-tile is retried once and else struck through. Beside each sheet a table (JSON and plain text) of what each image
-shows. `--changed` surveys only the structures whose rows changed since this checkout's last survey.
+place's own light (the viewer's, not the game's). Each tile is drawn at 1280x960 and saved as its own file
+(`tiles/NN-<side>-<near|far|high|top|section-...|lit>.png`, with its id buffer for `pick`) carrying its side,
+distance and capture score; a failed tile is retried once and else struck through. The contact sheet is the index:
+the same tiles at 640x480, four across. Beside each sheet a table (JSON and plain text) of what each tile shows,
+with each tile's file. `--changed` surveys only the structures whose rows changed since this checkout's last survey.
 
 The tiles of a sheet are drawn in one page call on the warm scene. Pure parts (the tile plan, the row hashes, the
 table) are tested in tools/tests/test_places_look.py."""
@@ -17,9 +19,19 @@ from pathlib import Path
 from tools.places.look import capture, draw, verbs
 from tools.places.look.scene import LOOK_OUT
 
-TW, TH = 384, 288
+TW, TH = 1280, 960         # a tile, as drawn and as saved
+SW, SH = 640, 480           # a tile on the contact sheet
+SCORE_W = 384               # the width of the id pass a tile is scored on (and picked from)
 OWN_LIGHT = "viewer light, not the game's"
 NEAR, FAR = 0.55, 1.3   # eye-level distances, as shares of the distance that frames the whole structure
+
+
+def tile_file(i: int, t: dict) -> str:
+    """The file name of tile `i` (counting from 1): NN-<side>-<near|far|high|top|lit>, or NN-section-<axis>."""
+    if t.get("section"):
+        return f"{i:02d}-section-{t['section']}.png"
+    kind = "lit" if t.get("own_light") else t["name"].split()[-1] if t["name"].split()[-1] in ("near", "far", "high") else "top"
+    return f"{i:02d}-{t['side']}-{kind}.png"
 
 
 def plan() -> list[dict]:
@@ -59,11 +71,11 @@ def changed(last: dict, now: dict) -> list[str]:
 def table_text(name: str, rows: list[dict]) -> str:
     """The plain-text table of what each tile shows."""
     out = [f"survey of {name}: {sum(r['capture'] == 'failed' for r in rows)} of {len(rows)} tiles failed",
-           f"{'tile':24} {'capture':8} {'seen':>5} {'fills':>5} {'land':>5} {'sky':>5}  covered by / why"]
+           f"{'tile':24} {'capture':8} {'seen':>5} {'fills':>5} {'land':>5} {'sky':>5}  file; covered by / why"]
     for r in rows:
         occ = ", ".join(f"{o.get('edid') or o['piece'][-8:]} {o['share']:.0%}" for o in r.get("occluders", [])[:3])
         out.append(f"{r['tile']:24} {r['capture']:8} {r.get('subject_seen', 0):5.0%} {r.get('subject_fills', 0):5.0%} "
-                   f"{r.get('land', 0):5.0%} {r.get('sky', 0):5.0%}  {occ}{'; FAILED: ' + r['why'] if r.get('why') else ''}")
+                   f"{r.get('land', 0):5.0%} {r.get('sky', 0):5.0%}  {r.get('file', '')}; {occ}{'; FAILED: ' + r['why'] if r.get('why') else ''}")
     return "\n".join(out) + "\n"
 
 
@@ -101,7 +113,7 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
     calls = []
 
     def run(idx):
-        page = [dict(_page(cams[i]), ids=True, subject=subj, fill=not tiles[i].get("own_light"), grass=False)
+        page = [dict(_page(cams[i]), ids=True, ref_w=SCORE_W, subject=subj, fill=not tiles[i].get("own_light"), grass=False)
                 for i in idx]
         tc = time.time()
         got = d.page.evaluate("(cs) => agent.shots(cs)", page)
@@ -115,7 +127,7 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
             if c.get("_section"):
                 img = draw.annotate_section(img, c, sc, c["_section"][1], c["_section"][0], faults, title)
             else:
-                img, _ = draw.annotate(img, c, sc, th, faults, title, grid=tiles[i].get("height") != "top")
+                img, _ = draw.annotate(img, c, sc, th, faults, title)
             imgs[i], ids_keep[i] = img, {"ids": ids, "table": r["table"], "id0": r["id0"]}
             rows[i] = {"tile": tiles[i]["name"], "side": tiles[i].get("side"), "height": tiles[i].get("height"),
                        "distance": tiles[i].get("scale")} | s
@@ -148,17 +160,28 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
         dd = ImageDraw.Draw(imgs[i])
         draw.tag(dd, (TW // 2, TH - 10), cap, size=12, fill=(255, 255, 160, 240))
     out_dir.mkdir(parents=True, exist_ok=True)
+    tdir = out_dir / "tiles"
+    tdir.mkdir(exist_ok=True)
+    for old in tdir.glob("*"):   # the tiles of the last survey of this structure
+        old.unlink()
     png = out_dir / "sheet.png"
-    img = draw.sheet(imgs, 4)
-    img.convert("RGB").save(png, compress_level=3)
-    metas = [dict({k: v for k, v in (c or {}).items() if k != "_section"}, ox=(i % 4) * TW, oy=(i // 4) * TH)
-             for i, c in enumerate(cams)]
+    from PIL import Image
+    small, metas = [], []
+    for i, (im, c) in enumerate(zip(imgs, cams)):
+        f = tdir / tile_file(i + 1, tiles[i])
+        verbs._save(im, str(f), {k: v for k, v in (c or {"w": TW, "h": TH}).items() if k != "_section"})
+        if ids_keep[i]:
+            verbs.save_ids(str(f), [ids_keep[i]])
+        rows[i]["file"] = str(f)
+        small.append(im.convert("RGB").resize((SW, SH), Image.LANCZOS))
+        metas.append(dict({k: v for k, v in (c or {"w": TW, "h": TH}).items() if k != "_section"},
+                          ox=(i % 4) * SW, oy=(i // 4) * SH, sw=SW, sh=SH, file=str(f)))
+    verbs._save(draw.sheet(small, 4), str(png))
     (Path(str(png) + ".json")).write_text(json.dumps({"tiles": metas, "cols": 4}))
-    verbs.save_ids(str(png), [k or {"ids": capture.np.zeros((TH, TW), int), "table": [], "id0": 16} for k in ids_keep])
     (out_dir / "table.json").write_text(json.dumps(rows, indent=1))
     (out_dir / "table.txt").write_text(table_text(th["name"], rows))
     return {"structure": th["name"], "sheet": str(png), "failed": sum(r.get("capture") == "failed" for r in rows),
-            "tiles": len(rows), "s": round(time.time() - t0, 1), "page_calls_s": calls}
+            "tiles": len(rows), "tiles_dir": str(tdir), "files": [r["file"] for r in rows], "s": round(time.time() - t0, 1), "page_calls_s": calls}
 
 
 def _page(c: dict) -> dict:
@@ -192,5 +215,5 @@ def run(d, place: str, strokes, args: list[str]) -> dict:
     last |= {n: now[n] for n in names if n in now}
     root.mkdir(parents=True, exist_ok=True)
     state_p.write_text(json.dumps(last, indent=1))
-    return {"surveyed": out, "lines": [f"{r['sheet']}  failed tiles: {r['failed']}/{r['tiles']}  ({r['s']} s; page {r['page_calls_s']} s)" for r in out],
+    return {"surveyed": out, "lines": [f"{r['sheet']}  failed tiles: {r['failed']}/{r['tiles']}  tiles in {r['tiles_dir']}  ({r['s']} s; page {r['page_calls_s']} s)" for r in out],
             "total_s": round(time.time() - t0, 1)}
