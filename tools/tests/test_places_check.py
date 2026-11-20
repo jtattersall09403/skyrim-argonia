@@ -337,6 +337,13 @@ def test_each_check_can_fail(name):
     assert res[name], f"{name} did not fail on its broken fixture"
 
 
+def test_a_link_into_our_own_plugin_that_lacks_the_record_names_the_cause():
+    c = ctx()
+    c["dump"]["unresolved"].append(f"{k(1)} -> {C.B.PLUGIN}:0181F5 <IKeyGetter>")
+    got = C.run(c)["plugin"]
+    assert len(got) == 2 and "written by a build older than its shards' plans" in got[1]
+
+
 def test_a_cut_room_is_judged_by_the_part_inside_its_cut():
     """A room copied with a cut keeps only the source refs inside the cut's box: refs outside it are not missing."""
     c = broken("rooms")

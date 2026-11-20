@@ -33,6 +33,7 @@ machine-wide lock (`tools/places/heavy_lock.py`). They are never the inner loop:
 5. `python3 -m tools.places check <place_id>`: all seventeen checks green (`plugin`, `seat`, `overlap`, `doors`,
    `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`, `levelled`, `jail`,
    `primitives`, `stock`, `promises`). A place that fines passes `jail` with a note saying why.
+   A `plugin` failure naming records of our own plugin means it was written by a build older than its shards: write it again with this tree's tool.
 6. `python3 -m tools.places navexport <place_id>` writes the walking mesh the studio draws routes on.
 7. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
 
