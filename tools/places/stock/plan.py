@@ -75,7 +75,7 @@ class Stock:
         self.containers = {(r.space_id, r.ref_id): r for r in w.rows("stock_container", place_id=pid)}
         self.container_items = defaultdict(list)
         for r in w.rows("stock_container_item", place_id=pid):
-            self.container_items[r.ref_id].append(r)
+            self.container_items[(r.space_id, r.ref_id)].append(r)
         self.loose = {r.id: r for r in w.rows("stock_loose", place_id=pid)}
         self.persons = {r.id: r for r in w.rows("person", place_id=pid)}
         self.households = {r.id: r for r in w.rows("household", place_id=pid)}
@@ -89,8 +89,7 @@ class Stock:
             if r.person_id in self.persons:
                 self.trader_items[r.person_id].append(r)
         self.locks = {r.id: r.level for r in w.rows("lock_level")}
-        space_of = {ref: space for (space, ref) in self.containers}
-        self.keys = {(space_of.get(r.ref_id), r.ref_id): r for r in w.rows("stock_container_key", place_id=pid)}
+        self.keys = {(r.container_space_id, r.ref_id): r for r in w.rows("stock_container_key", place_id=pid)}
 
 
 def load_stock(pid: str):
@@ -181,7 +180,7 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
             n_cont += 1
             items = [] if named else dressing(c["items"])
             if row is not None:
-                items += [{"item": i.item_id, "count": i.count} for i in st.container_items.get(sref, [])]
+                items += [{"item": i.item_id, "count": i.count} for i in st.container_items.get((r["space"], sref), [])]
                 if row.gold:
                     items.append({"item": GOLD, "count": row.gold})
                 where = f"container {sref} in {r['space']}"

@@ -70,7 +70,7 @@ def place():
     row = NS(space_id="house", ref_id="X.esm:000009", owner_person_id=None, owner_household_id="t.household.house",
              owner_faction=None, lock_level_id="Novice", gold=30)
     st = NS(containers={("house", "X.esm:000009"): row},
-            container_items={"X.esm:000009": [NS(item_id=SF.RING, count=1)]},
+            container_items={("house", "X.esm:000009"): [NS(item_id=SF.RING, count=1)]},
             loose={"X.esm:00000A": NS(id="X.esm:00000A", space_id="house", item_id=SF.SCROLL, count=1, owner_person_id=None,
                                       owner_faction="t.household.house", x=None, y=None, z=None, on_ref_id=None)},
             persons={"t.head": NS(id="t.head", household_id="t.household.house"),
