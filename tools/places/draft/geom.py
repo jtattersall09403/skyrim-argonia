@@ -24,6 +24,16 @@ def bounds(ref: dict, bases: dict) -> tuple[list[float], list[float]] | None:
     return [v * s for v in b[0]], [v * s for v in b[1]]
 
 
+def z_span(b, rot) -> tuple[float, float]:
+    """A box's lowest and highest point over its origin under its tilt: a mound turned upside down stands above
+    its origin, not below it."""
+    from tools.places import xform
+    m = xform.rotation(rot)
+    zs = [m[2][0] * x + m[2][1] * y + m[2][2] * z
+          for x in (b[0][0], b[1][0]) for y in (b[0][1], b[1][1]) for z in (b[0][2], b[1][2])]
+    return min(zs), max(zs)
+
+
 def foot(ref: dict, bases: dict, min_half: float = 24.0) -> list[float] | None:
     """A ref's true footprint [x0, y0, x1, y1] in its own frame (scaled), or None for a small thing."""
     b = bounds(ref, bases)

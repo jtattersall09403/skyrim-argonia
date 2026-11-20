@@ -211,6 +211,10 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
                 bases[bk] = cat[bk]
             else:
                 missing.append({"missing_base": bk, "refs": n})
+        elif isinstance(bases[bk].get("water"), str):   # a placed water whose type a bundle names only by key
+            cat = cat if cat is not None else catalogue()
+            if isinstance((cat.get(bk) or {}).get("water"), dict):
+                bases[bk] = {**bases[bk], "water": cat[bk]["water"]}
     write_jsonl(out / "bases.jsonl", bases.values())
     write_jsonl(out / "npcs.jsonl", jsonl(src / "npcs.jsonl"))
     for name in FILES:

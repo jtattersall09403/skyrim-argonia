@@ -34,6 +34,10 @@ Every living Hist stands in a pool of its own sap (King of the Murkmire's `Water
 lowers the ground inside it (`land.jsonl` rows `by` "sap"); a pool placed by hand on the trunk is kept. Run `sap`
 after a Hist is added, moved, swapped or dies. `draft check` fails a living Hist with no pool.
 
+A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
+water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an
+exterior row seated `stilts` on a flat low spot between roots, clear of streets, houses and the water line.
+
 ## Stations and a shrine
 
 - The `stations` stage adds each promised crafting station the source lacks by the person who works it, as Skyrim's

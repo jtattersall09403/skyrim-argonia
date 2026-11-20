@@ -48,7 +48,8 @@
     "name": "Sealed Spring",
     "need": 1,
     "tier": "AGENT_INVENTED",
-    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 1150 units east of its trunk, past the great tree's roots and its sap, named so a player reads what it is; locked and owned by the town in the stock source"
+    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 1150 units east of its trunk, past the great tree's roots and its sap, named so a player reads what it is; locked and owned by the town in the stock source",
+    "key": "0"
    },
    {
     "base": "King of the Murkmire.esp:B7F081",
@@ -62,7 +63,8 @@
     "rot_z": 0.6,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "a locked chest the main story can use in place of a back room, in the one-room house nearest the city landing (Ixtul-Bei's household): King of the Murkmire's rustic chest beside the household's dresser (Black Marsh.esm:1E4354), against the same wall and turned as it is, at the floor's height there (the dresser's base 14771 plus the chest's 19 below its middle); owned by the household and locked at Novice in the stock source"
+    "why": "a locked chest the main story can use in place of a back room, in the one-room house nearest the city landing (Ixtul-Bei's household): King of the Murkmire's rustic chest beside the household's dresser (Black Marsh.esm:1E4354), against the same wall and turned as it is, at the floor's height there (the dresser's base 14771 plus the chest's 19 below its middle); owned by the household and locked at Novice in the stock source",
+    "key": "1"
    },
    {
     "base": "King of the Murkmire.esp:B7F081",
@@ -77,7 +79,8 @@
     "need": 9,
     "name": "Urn Case",
     "tier": "AGENT_INVENTED",
-    "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it"
+    "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it",
+    "key": "2"
    },
    {
     "base": "King of the Murkmire.esp:3D870E",
@@ -93,7 +96,8 @@
     "tier": "AGENT_INVENTED",
     "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
     "rot_z": 1.25494,
-    "id_base": "Skyrim.esm:09727E"
+    "id_base": "Skyrim.esm:09727E",
+    "key": "3"
    },
    {
     "base": "King of the Murkmire.esp:0CF38A",
@@ -106,7 +110,8 @@
     "dz": -20.0,
     "need": 11,
     "tier": "AGENT_INVENTED",
-    "why": "the mouth of the rootworm's tunnel at the root pool's west lip, where the worm comes up among the roots: King of the Murkmire's own rootworm tunnel entrance (RootWormTunnelsEnt01MarshMud02), sunk 20 units into the mud"
+    "why": "the mouth of the rootworm's tunnel at the root pool's west lip, where the worm comes up among the roots: King of the Murkmire's own rootworm tunnel entrance (RootWormTunnelsEnt01MarshMud02), sunk 20 units into the mud",
+    "key": "4"
    },
    {
     "base": "Skyrim.esm:000010",
@@ -118,7 +123,8 @@
     "map_marker": "Rootworm Landing (Helstrom)",
     "need": 11,
     "tier": "AGENT_INVENTED",
-    "why": "the map marker of the rootworm's landing under the city tree (MN06's marker.mn06.rootworm-helstrom), on the root pool's east lip between the pool and the root-tender's spot"
+    "why": "the map marker of the rootworm's landing under the city tree (MN06's marker.mn06.rootworm-helstrom), on the root pool's east lip between the pool and the root-tender's spot",
+    "key": "5"
    },
    {
     "base": "King of the Murkmire.esp:05CCD1",
@@ -130,7 +136,8 @@
     "rot_z": 4.7124,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the council house of the Xeech-Leel (thieves, 9. The Council's Strongroom, 10. Two of Four, 12. The Great Heist): the house Dragonthorn Manor stands in at King of the Murkmire's Lilmoth (MurkmireHouse06Beige), on flat dry ground in the town south-east of the sacred tree, its front door opening east onto the street"
+    "why": "the council house of the Xeech-Leel (thieves, 9. The Council's Strongroom, 10. Two of Four, 12. The Great Heist): the house Dragonthorn Manor stands in at King of the Murkmire's Lilmoth (MurkmireHouse06Beige), on flat dry ground in the town south-east of the sacred tree, its front door opening east onto the street",
+    "key": "6"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -156,7 +163,8 @@
       "King of the Murkmire.esp:864C11": "Lilmoth's strong box of levelled gems and jewellery: nothing levelled is placed (decision 0035); the council's gold is the strongroom's, placed by its quest"
      }
     },
-    "why": "the council house's front door (MudHutLDoor02, where Lilmoth sets it on the house, without Lilmoth's door frame, which the door would stand inside), into a copy of Dragonthorn Manor's interior (King of the Murkmire's Lilmoth: a Murkmire house with its hall, writing desks, stair to an upper room and partition doors), the hall open by day"
+    "why": "the council house's front door (MudHutLDoor02, where Lilmoth sets it on the house, without Lilmoth's door frame, which the door would stand inside), into a copy of Dragonthorn Manor's interior (King of the Murkmire's Lilmoth: a Murkmire house with its hall, writing desks, stair to an upper room and partition doors), the hall open by day",
+    "key": "7"
    },
    {
     "base": "King of the Murkmire.esp:1616CD",
@@ -171,7 +179,8 @@
     "walk": 64.0,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the boardwalk off the council house's porch, laid where Lilmoth lays it at Dragonthorn Manor (MurkmireWalkwayShort01), so one walks from the porch onto the town's ground"
+    "why": "the boardwalk off the council house's porch, laid where Lilmoth lays it at Dragonthorn Manor (MurkmireWalkwayShort01), so one walks from the porch onto the town's ground",
+    "key": "8"
    },
    {
     "base": "King of the Murkmire.esp:0D45E5",
@@ -183,7 +192,8 @@
     "rot_z": 1.5708,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the wardens' quarters behind the council house, set back from it as Lilmoth sets Dragonthorn Manor's barracks behind the manor, with room for the back door between (MurkmireHouse07Red), seated on the town's ground"
+    "why": "the wardens' quarters behind the council house, set back from it as Lilmoth sets Dragonthorn Manor's barracks behind the manor, with room for the back door between (MurkmireHouse07Red), seated on the town's ground",
+    "key": "9"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -207,7 +217,8 @@
       -614057.5
      ]
     },
-    "why": "the wardens' quarters' door, where Lilmoth sets the barracks' ground door, into a copy of Dragonthorn Manor Barracks (its beds for the council's wardens)"
+    "why": "the wardens' quarters' door, where Lilmoth sets the barracks' ground door, into a copy of Dragonthorn Manor Barracks (its beds for the council's wardens)",
+    "key": "10"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -221,7 +232,8 @@
     "rot_z": 0.0,
     "need": 6,
     "tier": "AGENT_INVENTED",
-    "why": "the council house's back door, inside: a Murkmire door (MudHutLDoor02, the house's own) in the hall's back wall on the ground floor, at the floor's height (the shell's 5648)"
+    "why": "the council house's back door, inside: a Murkmire door (MudHutLDoor02, the house's own) in the hall's back wall on the ground floor, at the floor's height (the shell's 5648)",
+    "key": "11"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -245,7 +257,8 @@
      "key": null,
      "flags": "0"
     },
-    "why": "the council house's back door, outside, in the house's back wall towards the wardens' quarters, locked at Expert (thieves.md:350)"
+    "why": "the council house's back door, outside, in the house's back wall towards the wardens' quarters, locked at Expert (thieves.md:350)",
+    "key": "12"
    },
    {
     "base": "Skyrim.esm:0163F0",
@@ -277,7 +290,8 @@
       "Journey to Baan Malur.esp:24AFBD": "the cellar's way on to a storehouse: the strongroom has one way in"
      }
     },
-    "why": "the strongroom's iron door (Skyrim's Imperial iron door, ImpJailDoor02) in the hall's back wall, locked at Master (thieves.md:350), into a copy of Journey to Baan Malur's cellar of Imperial stone"
+    "why": "the strongroom's iron door (Skyrim's Imperial iron door, ImpJailDoor02) in the hall's back wall, locked at Master (thieves.md:350), into a copy of Journey to Baan Malur's cellar of Imperial stone",
+    "key": "13"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -305,7 +319,8 @@
       "Black Marsh.esm:1E4383": "a candlelight scroll the source left loose: the safe house holds only the band's things"
      }
     },
-    "why": "the Chainbreakers' safe house, a quiet room off the market (chainbreakers-newworld.md:619): a door of the city's own Argonian houses in the Market Cave's west wall, into a further copy of the city's one-room Argonian house"
+    "why": "the Chainbreakers' safe house, a quiet room off the market (chainbreakers-newworld.md:619): a door of the city's own Argonian houses in the Market Cave's west wall, into a further copy of the city's one-room Argonian house",
+    "key": "14"
    },
    {
     "base": "King of the Murkmire.esp:B7F081",
@@ -320,7 +335,8 @@
     "need": 12,
     "name": "Chest",
     "tier": "AGENT_INVENTED",
-    "why": "the band's chest in the safe house, where a Breaker stores things (chainbreakers quest 9): King of the Murkmire's rustic chest by the east wall, at the floor's height (14771 plus its 19 below its middle)"
+    "why": "the band's chest in the safe house, where a Breaker stores things (chainbreakers quest 9): King of the Murkmire's rustic chest by the east wall, at the floor's height (14771 plus its 19 below its middle)",
+    "key": "15"
    },
    {
     "base": "Skyrim.esm:0318EC",
@@ -334,7 +350,8 @@
     "rot_z": 0.0,
     "need": 12,
     "tier": "AGENT_INVENTED",
-    "why": "the first of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
+    "why": "the first of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)",
+    "key": "16"
    },
    {
     "base": "Skyrim.esm:0318EC",
@@ -348,7 +365,8 @@
     "rot_z": 0.0,
     "need": 12,
     "tier": "AGENT_INVENTED",
-    "why": "the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
+    "why": "the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)",
+    "key": "17"
    },
    {
     "base": "Black Marsh North.esp:07308C",
@@ -361,7 +379,8 @@
     "scale": 0.78,
     "dz": 830.0,
     "tier": "AGENT_INVENTED",
-    "why": "the old Xanmeer, the record's one stone building: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone; 69.8 x 65.4 x 32.1 m at scale 1) on the footprint of the source's hidden ziggurat; at 0.78 it is 54 x 51 m and 25 m tall, the biggest thing in the city by twice but no wider than the camp and houses round it, where 0.95 (66 m) swallowed them; its broad stair is on its local south face, turned (315 degrees) to the south-east where the city's way (path.13) comes up from the market; its underside sunk 60 to 160 units into the ground so no edge shows a gap; its own collision is its mesh's, so what is walked is what is seen"
+    "why": "the old Xanmeer, the record's one stone building: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone; 69.8 x 65.4 x 32.1 m at scale 1) on the footprint of the source's hidden ziggurat; at 0.78 it is 54 x 51 m and 25 m tall, the biggest thing in the city by twice but no wider than the camp and houses round it, where 0.95 (66 m) swallowed them; its broad stair is on its local south face, turned (315 degrees) to the south-east where the city's way (path.13) comes up from the market; its underside sunk 60 to 160 units into the ground so no edge shows a gap; its own collision is its mesh's, so what is walked is what is seen",
+    "key": "18"
    },
    {
     "base": "King of the Murkmire.esp:05CCD1",
@@ -372,7 +391,8 @@
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
-    "why": "the market smithy's house (the record's gives: forge, anvil, armour bench, grindstone, smelter and tanning rack at the market smithy): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), on the smith's yard's west side, its door opening east onto the yard"
+    "why": "the market smithy's house (the record's gives: forge, anvil, armour bench, grindstone, smelter and tanning rack at the market smithy): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), on the smith's yard's west side, its door opening east onto the yard",
+    "key": "19"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -395,7 +415,8 @@
      ],
      "whole": true
     },
-    "why": "the market smithy's door (MudHutLDoor02, as Lilmoth sets it), into a copy of King of the Murkmire's Lilmoth Ironworks, the source note's ironworks set here as the market smithy; its other ways out removed"
+    "why": "the market smithy's door (MudHutLDoor02, as Lilmoth sets it), into a copy of King of the Murkmire's Lilmoth Ironworks, the source note's ironworks set here as the market smithy; its other ways out removed",
+    "key": "20"
    },
    {
     "base": "King of the Murkmire.esp:05CCD1",
@@ -406,7 +427,8 @@
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
-    "why": "the levy's post (the source note: Lilmoth's guardhouse set here as the levy's post; a tribal levy keeps the guard): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), by the levy's guard stand west of the market"
+    "why": "the levy's post (the source note: Lilmoth's guardhouse set here as the levy's post; a tribal levy keeps the guard): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), by the levy's guard stand west of the market",
+    "key": "21"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -428,7 +450,8 @@
       -595238.6
      ]
     },
-    "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse"
+    "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse",
+    "key": "22"
    },
    {
     "base": "Black Marsh.esm:084B54",
@@ -440,7 +463,8 @@
     "rot_z": 0.0,
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
-    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
+    "key": "23"
    },
    {
     "base": "Black Marsh.esm:084B55",
@@ -452,19 +476,21 @@
     "rot_z": 0.0,
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
-    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
+    "key": "24"
    },
    {
     "base": "Black Marsh.esm:084B56",
     "kind": "building",
     "pos": [
-     -40446.2,
-     -593182.4
+     -40946.2,
+     -593642.4
     ],
     "rot_z": 0.0,
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
-    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
+    "key": "25"
    },
    {
     "base": "Black Marsh.esm:084B56",
@@ -476,7 +502,8 @@
     "rot_z": 2.35619,
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
-    "why": "the sap-seller's stall beside its alchemy lab (the record's gives: alchemy lab at the sap-seller's stall): Black Marsh & Valenwood's own market stand, sunk 8 units into the ground"
+    "why": "the sap-seller's stall beside its alchemy lab (the record's gives: alchemy lab at the sap-seller's stall): Black Marsh & Valenwood's own market stand, sunk 8 units into the ground",
+    "key": "26"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -501,7 +528,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "27"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -526,7 +554,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "28"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -551,7 +580,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "29"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -576,7 +606,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "30"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -601,7 +632,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "31"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -626,7 +658,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "32"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -651,7 +684,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "33"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -676,7 +710,8 @@
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
-    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
+    "key": "34"
    },
    {
     "base": "King of the Murkmire.esp:056D53",
@@ -698,7 +733,7 @@
      ],
      "cut": {
       "box": [
-       14900,
+       14975,
        -800,
        19400,
        6700
@@ -742,10 +777,30 @@
       "XanmeerTrapBladeSwinging01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
       "TrapTriggerBox": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
       "XanmeerPortcullisLarge01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
-      "XanmeerRubbleBlocks06": "a loose fallen block on the hall floor reads as a ruin, not a hall in use"
+      "XanmeerRubbleBlocks06": "a loose fallen block on the hall floor reads as a ruin, not a hall in use",
+      "XanmeerRubbleFloorTiles01": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile02": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile03": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile04": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile07": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile08": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile09": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubblePile10": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "RuinsLinenSheet01": "red linen sheets lying on the floor: a dungeon's leftovers, not a council's",
+      "RuinsLinenSheet02": "red linen sheets lying on the floor: a dungeon's leftovers, not a council's",
+      "WallLeanMarker": "a wall-lean idle for the king's guards; nobody of the hall leans there",
+      "XanmeerRubbleFloor03": "dungeon leftovers a council hall in use would not have: the old seat is kept swept",
+      "XanmeerRubbleFloor04": "dungeon leftovers a council hall in use would not have: the old seat is kept swept"
+     },
+     "drop": {
+      "King of the Murkmire.esp:84072A": "the stone door between the entrance corridor and the throne hall: the way from the door to the benches and the throne is open, not through a door one must open for nothing",
+      "King of the Murkmire.esp:4F4E26": "a prayer idle marker where the council's benches now stand; nobody of the hall prays there",
+      "King of the Murkmire.esp:4F4E27": "a prayer idle marker where the council's benches now stand; nobody of the hall prays there",
+      "King of the Murkmire.esp:4F4E28": "a prayer idle marker where the council's benches now stand; nobody of the hall prays there"
      }
     },
-    "why": "the Xanmeer's door: King of the Murkmire's stone load door (XanmeerLDoor01) centred at the foot of the temple's stair, turned with the temple, as King of the Murkmire sets it at the foot of Ixtaxh-Thtithil-Meht's pyramid; into the throne wing of the Teeth of Sithis Halls copied alone (the cell's part east of its cut, its own north door the way out), the old seat where the council holds its open sittings and the Root Talk meets"
+    "why": "the Xanmeer's door: King of the Murkmire's stone load door (XanmeerLDoor01) centred at the foot of the temple's stair, turned with the temple, as King of the Murkmire sets it at the foot of Ixtaxh-Thtithil-Meht's pyramid; into the throne wing of the Teeth of Sithis Halls copied alone (the cell's part east of its cut, its own north door the way out), the old seat where the council holds its open sittings and the Root Talk meets",
+    "key": "35"
    },
    {
     "base": "King of the Murkmire.esp:05BF2B",
@@ -757,7 +812,8 @@
     "rot_z": 2.3562,
     "dz": 96.0,
     "tier": "AGENT_INVENTED",
-    "why": "the east pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+    "why": "the east pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground",
+    "key": "36"
    },
    {
     "base": "King of the Murkmire.esp:05BF2C",
@@ -769,7 +825,8 @@
     "rot_z": 2.3562,
     "dz": 96.0,
     "tier": "AGENT_INVENTED",
-    "why": "the west pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+    "why": "the west pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground",
+    "key": "37"
    },
    {
     "base": "King of the Murkmire.esp:056D2E",
@@ -781,7 +838,8 @@
     "rot_z": 5.49779,
     "dz": -10.0,
     "tier": "AGENT_INVENTED",
-    "why": "a stone fire-bowl on the east side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+    "why": "a stone fire-bowl on the east side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit",
+    "key": "38"
    },
    {
     "base": "King of the Murkmire.esp:056D2E",
@@ -793,7 +851,8 @@
     "rot_z": 5.49779,
     "dz": -10.0,
     "tier": "AGENT_INVENTED",
-    "why": "a stone fire-bowl on the west side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+    "why": "a stone fire-bowl on the west side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit",
+    "key": "39"
    },
    {
     "base": "King of the Murkmire.esp:5E249F",
@@ -814,7 +873,8 @@
     "why": "the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more",
     "work_for": [
      "Raxeela-Hut"
-    ]
+    ],
+    "key": "40"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -827,7 +887,8 @@
     ],
     "rot_z": 0.61087,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "key": "41"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -843,7 +904,8 @@
     "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
     "work_for": [
      "Hixee-Ra"
-    ]
+    ],
+    "key": "42"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -859,7 +921,8 @@
     "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
     "work_for": [
      "Ooxa-Leet"
-    ]
+    ],
+    "key": "43"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -872,7 +935,8 @@
     ],
     "rot_z": 5.67232,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "key": "44"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -885,7 +949,8 @@
     ],
     "rot_z": 0.43633,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "key": "45"
    },
    {
     "base": "King of the Murkmire.esp:5DD304",
@@ -898,7 +963,8 @@
     ],
     "rot_z": 5.84685,
     "tier": "AGENT_INVENTED",
-    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "key": "46"
    },
    {
     "base": "King of the Murkmire.esp:644F72",
@@ -911,7 +977,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol",
+    "key": "47"
    },
    {
     "base": "King of the Murkmire.esp:644F72",
@@ -924,7 +991,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol",
+    "key": "48"
    },
    {
     "base": "King of the Murkmire.esp:644F72",
@@ -937,7 +1005,78 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol",
+    "key": "49"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     16544.0,
+     5800.0,
+     160.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
+    "key": "50"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     16544.0,
+     5150.0,
+     160.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
+    "key": "51"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     16544.0,
+     4500.0,
+     160.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
+    "key": "52"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D4B",
+    "kind": "static",
+    "space": "HelstromXanmeer",
+    "pos": [
+     14975.0,
+     2368.0,
+     -144.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the kit's own wall (XanmeerIntWall02A) closing the stub behind the hall's locked west door where the cut ends: nothing behind the door opens onto the void",
+    "key": "53"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D4B",
+    "kind": "static",
+    "space": "HelstromXanmeer",
+    "pos": [
+     14975.0,
+     2624.0,
+     -144.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the kit's own wall (XanmeerIntWall02A) closing the stub behind the hall's locked west door where the cut ends: nothing behind the door opens onto the void",
+    "key": "54"
    }
   ],
   "replace": {
@@ -1254,7 +1393,7 @@
     },
     {
      "line": "Black Heart-Mud pools between the roots; thick warm air",
-     "by": "the source's mud and fog/mist effects kept"
+     "by": "five pools of near-black still water (Skyrim's WaterPuddle, its PuddleWater) set by hand on flat low spots between the roots of the north, middle, south and south-west districts (rows helstrom.MUD*); the source's fog and mist effects kept"
     },
     {
      "line": "rafts and plank walks thread the districts",
@@ -8472,6 +8611,10 @@
  },
  "agent_saves_applied": [
   "agent-20261120T093117",
-  "agent-20261120T093416"
+  "agent-20261120T093416",
+  "agent-20261120T112913",
+  "agent-20261120T123335",
+  "agent-20261120T123651",
+  "agent-20261120T124030"
  ]
 }

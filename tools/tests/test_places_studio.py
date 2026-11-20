@@ -262,6 +262,24 @@ def test_draft_bases_from_catalogue_and_missing_reported(tmp_path, monkeypatch):
     assert r["missing_bases"] == [{"missing_base": "Gone.esp:000001", "refs": 1}]
 
 
+def test_draft_bundle_resolves_a_placed_waters_type_from_the_catalogue(tmp_path, monkeypatch):
+    from tools.places import draft_bundle as db
+    fake_rooms(monkeypatch)
+    places, bundles = _draft_fixture(tmp_path)
+    puddle = {"key": "Fx.esm:000900", "edid": "WaterPuddle", "model": "water/waterpuddle01.nif"}
+    with (bundles / "src.fx.village" / "bases.jsonl").open("a") as f:
+        f.write(json.dumps(puddle | {"water": "Fx.esm:000901"}) + "\n")
+    cat = tmp_path / "catalogue.jsonl"
+    water = {"edid": "PuddleWater", "shallow": [11, 13, 12], "deep": [11, 15, 15]}
+    cat.write_text(json.dumps(puddle | {"water": water}) + "\n")
+    monkeypatch.setenv("PLACES_CATALOGUE", str(cat))
+    with (places / "fxd" / "spaces" / "exterior" / "refs.jsonl").open("a") as f:
+        f.write(json.dumps({"id": "fxd.w", "base": "Fx.esm:000900", "kind": "activator", "pos": [0, 0, 0]}) + "\n")
+    db.build("fxd", places, bundles)
+    got = {b["key"]: b for b in db.jsonl(bundles / "draft.fxd" / "bases.jsonl")}
+    assert got["Fx.esm:000900"]["water"] == water
+
+
 def test_missing_texture_is_a_marked_stand_in(env, monkeypatch):
     from tools.places.studio import links
     monkeypatch.setattr(links, "asset", lambda kind, *a: None)
