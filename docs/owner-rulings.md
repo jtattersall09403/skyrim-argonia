@@ -178,6 +178,16 @@ added here the day they are made, with the date and the issue.
   changes from "no stone" to "no new stone" (2026-11-20, #80).
 - A loading-screen fact is changed to match our world where the two disagree (Blackrose Prison lies a short walk
   east of the city, not a day's march south) (2026-11-20, #80).
+- Drafters take many more captures from many more angles during the work, and of every capture ask whether it
+  shows what it was meant to or is a capture fault (the subject out of frame, the camera inside a crown or a
+  solid); a place is never judged from one or two views, and an apparent absence is checked before it is reported
+  (2026-11-20, #80).
+- Lighting is not judged or changed from the studio viewer: the game's lighting is different. A place is not
+  called too dark or too bright, and lights are not added or removed, on what the viewer shows; what looks wrong
+  in light goes to the owner's in-game check (2026-11-20, #80).
+- A place's layout is planned properly: every structure is seated and sunk by the amount it needs for the place to
+  work and look as we want, decided for the layout as a whole; there is no blanket rule of sinking houses until
+  their decks are low, nor of keeping the source's heights (2026-11-20, #80).
 - Whenever a fault in a draft is fixed, the tools and skills are changed so that kind of fault cannot be handed
   over again (2026-11-20, #80).
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
