@@ -111,11 +111,11 @@
    "disposition_id": "hostile",
    "reward_band_id": "D3",
    "danger_tier": "T3",
-   "wealth_score": 48,
+   "wealth_score": 46,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T3",
-   "why": "score 48 = belvedere 16 + importance 3 15 + population 12 11 + trade 6 (0 roads, boat stop, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
+   "why": "score 46 = belvedere 16 + importance 3 15 + population 12 11 + trade 4 (0 roads, boat stop, 0 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
    "owner": null
   },
   {
@@ -293,11 +293,11 @@
    "disposition_id": "hostile",
    "reward_band_id": "D4",
    "danger_tier": "T4",
-   "wealth_score": 48,
+   "wealth_score": 46,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T4",
-   "why": "score 48 = prison 10 + importance 4 20 + population 12 11 + trade 4 (1 roads, 1 traders) + economy +3 (+toll) -> P2 Modest; ceiling T4 (hostile: the higher of wealth T2 and reward tier T4; reward band D4 T4)",
+   "why": "score 46 = prison 10 + importance 4 20 + population 12 11 + trade 2 (1 roads, 0 traders) + economy +3 (+toll) -> P2 Modest; ceiling T4 (hostile: the higher of wealth T2 and reward tier T4; reward band D4 T4)",
    "owner": null
   },
   {
@@ -1775,11 +1775,11 @@
    "disposition_id": "hostile",
    "reward_band_id": "D3",
    "danger_tier": "T3",
-   "wealth_score": 34,
+   "wealth_score": 32,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T3",
-   "why": "score 34 = outlaw-camp 10 + importance 2 10 + population 14 12 + trade 2 (0 roads, 1 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
+   "why": "score 32 = outlaw-camp 10 + importance 2 10 + population 14 12 + trade 0 (0 roads, 0 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
    "owner": null
   },
   {
@@ -1788,11 +1788,11 @@
    "disposition_id": "hostile",
    "reward_band_id": "D3",
    "danger_tier": "T3",
-   "wealth_score": 42,
+   "wealth_score": 38,
    "band": "P2",
    "open_tier": "T1",
    "ceiling_tier": "T3",
-   "why": "score 42 = outlaw-camp 10 + importance 3 15 + population 20 13 + trade 4 (0 roads, 2 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
+   "why": "score 38 = outlaw-camp 10 + importance 3 15 + population 20 13 + trade 0 (0 roads, 0 traders) + economy +0 (no telling words) -> P2 Modest; ceiling T3 (hostile: the higher of wealth T2 and reward tier T3; reward band D3 T3)",
    "owner": null
   },
   {
