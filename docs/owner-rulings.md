@@ -172,6 +172,10 @@ added here the day they are made, with the date and the issue.
   severed" message; the journal never tells the player where to go instead. Heem-Jasa in quest 3 is such a person
   until the player holds the note; after that her death is harmless and the quest goes on by the note, which needs a
   new quest block (a person must live until a stage), proven once by the block test (2026-11-20, #80).
+- Helstrom has a Xanmeer at its heart with a hall: the pyramid its source's builders left switched off was not
+  meant to be absent. The hall is King of the Murkmire's throne room (the throne wing of Teeth of Sithis Halls),
+  stripped, lit and lived-in; Teku-Sul keeps the whole of that hall dark, hostile and gated. Helstrom's record
+  changes from "no stone" to "no new stone" (2026-11-20, #80).
 - A loading-screen fact is changed to match our world where the two disagree (Blackrose Prison lies a short walk
   east of the city, not a day's march south) (2026-11-20, #80).
 - Whenever a fault in a draft is fixed, the tools and skills are changed so that kind of fault cannot be handed
