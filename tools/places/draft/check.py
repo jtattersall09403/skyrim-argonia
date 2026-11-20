@@ -247,11 +247,11 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         # a link walks the building an end of it stands in (a ship's hatch is on its ship), and no other
         own = {r["id"] for r in solid_b for e in (pts[0], pts[-1]) if geom.contains_xy(r, bases, e[0], e[1], 64)}
         for a, b in zip(pts, pts[1:]):
-            n = max(1, int(math.dist(a, b) // 128))
-            total += math.dist(a, b)
+            n = max(1, int(math.dist(a[:2], b[:2]) // 128))
+            total += math.dist(a[:2], b[:2])
             for k in range(1, n):
                 q = (a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n)
-                if min(math.dist(q, pts[0]), math.dist(q, pts[-1])) < DOOR_REACH:
+                if min(math.dist(q, pts[0][:2]), math.dist(q, pts[-1][:2])) < DOOR_REACH:
                     continue      # the step up to a door
                 if any(geom.contains_xy(r, bases, q[0], q[1], -48) for r in solid_b if r["id"] not in own):
                     bad.append(f"street {p['id']} runs through a building at {q[0]:.0f},{q[1]:.0f}")
