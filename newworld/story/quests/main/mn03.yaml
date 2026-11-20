@@ -60,7 +60,8 @@ foundation: 'Built from main-plot.md §5 quest 3. Vosh-Leera gives the player a 
   take the note (taking it moves the quest; a jar lies beside it to take as well). Back on the platform Heem-Jasa asks whether
   her tree will live: the truth opens her Alchemy training (Adept) and her stall; a comfort gives three potions of Cure
   Poison on the spot and leaves her training and stall closed. The note orders the crew to bring their jars to Karsh-Naal
-  Camp, which starts MN04.'
+  Camp, which starts MN04. Heem-Jasa is someone the main quest cannot go on without until the player holds the note:
+  her death before then fails the quest with the main quest''s message; after it, the note carries the player on.'
 recordSources:
   place: jal-veesa, outpost-m6-m66 (place cards --mined, 2026-11-17)
   lore:
@@ -391,6 +392,10 @@ stages:
     when:
       not:
         npcAlive: npc.mn.vosh-leera
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.heem-jasa
   information:
     going: I work for the Toh-Reel-Ka through Vosh-Leera; the trees are sick and nobody knows why.
     next: Ask Vosh-Leera, in her house, for the second task.
@@ -437,6 +442,10 @@ stages:
     when:
       not:
         npcAlive: npc.mn.vosh-leera
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.heem-jasa
   information:
     going: Sap drunk brings visions the trees send; Vosh-Leera wants me to ask the trees where the sickness is.
     next: Drink the cup in front of her, by telling her I will.
@@ -485,6 +494,10 @@ stages:
     when:
       not:
         npcAlive: npc.mn.vosh-leera
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.heem-jasa
   learns:
   - fact.mn03.vision
   information:
@@ -530,7 +543,7 @@ stages:
       - thing.mn.unbound-note
       - 1
   failForward:
-  - to: 92
+  - to: 96
     when:
       not:
         npcAlive: npc.mn.heem-jasa
@@ -573,6 +586,11 @@ stages:
       hasItem:
       - thing.mn.unbound-note
       - 1
+  failForward:
+  - to: 96
+    when:
+      not:
+        npcAlive: npc.mn.heem-jasa
   learns:
   - fact.mn03.paste
   - fact.mn03.hide
@@ -718,13 +736,13 @@ stages:
 - id: 92
   place: outpost-m6-m66
   journal: text.journal.mn03.92
-  journalText: "Heem-Jasa is dead, and her young tree has no minder now. Next comes Karsh-Naal Camp, the Naga camp in
-    the marsh east of Teel-Fen Weir."
+  journalText: "Heem-Jasa is dead, and her young tree has no minder now. The note I took from the hide sends the jars
+    to Karsh-Naal Camp, and that is where I go next."
   ending: complete
   endingId: e-no-minder
   information:
-    going: Heem-Jasa is dead, and her young tree has no minder now.
-    next: Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).
+    going: Heem-Jasa is dead, and her young tree has no minder now; I hold the note that names Karsh-Naal Camp.
+    next: Go to Karsh-Naal Camp, where the note sends the jars (MN04 marks it on the map).
     ways: None in this quest.
     carriers:
     - know: what happened and where next
@@ -744,6 +762,20 @@ stages:
     - know: what happened
       by:
       - journal
+- id: 96
+  place: outpost-m6-m66
+  journal: text.journal.mn03.96
+  journalText: Someone the trail of the trees' sickness depended on is dead, and the trail is lost.
+  ending: failed
+  endingId: e-thread
+  information:
+    going: Heem-Jasa is dead before she could set me on the trail of the trees' sickness; the main quest cannot go on.
+    next: 'Nothing more in the main quest: load an earlier save, or go on in the marsh as it now is.'
+    ways: None.
+    carriers:
+    - know: what happened and that the main quest is over
+      by:
+      - journal
 endings:
 - id: e-truth
   when: the player told Heem-Jasa her tree may die
@@ -759,9 +791,16 @@ endings:
   seen: three potions of Cure Poison in the player's pack; her training and stall stay closed to them
   rewards: []
 - id: e-no-minder
-  when: Heem-Jasa died before she asked
-  seen: the young tree untended; the main quest goes on by the note
+  when: Heem-Jasa died after the player took the note, before she asked
+  seen: the young tree untended; the main quest goes on by the note the player holds
   rewards: []
+- id: e-thread
+  when: Heem-Jasa died before the player took the note
+  world:
+  - setFlag:
+    - flag.main.thread-severed
+    - true
+  seen: the main quest's message that the root of what was to come is cut
 - id: e-vosh-dead
   when: Vosh-Leera died before she named Teel-Fen Weir
   world:
