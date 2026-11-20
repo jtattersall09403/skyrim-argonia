@@ -1,5 +1,10 @@
 {"src":"*","space":"01ArgonianHouseinside","status":"placed","as":["01ArgonianHouseinside","01ArgonianHouseinside.2","01ArgonianHouseinside.3","01ArgonianHouseinside.4","01ArgonianHouseinside.5","01ArgonianHouseinside.6","01ArgonianHouseinside.7","01ArgonianHouseinside.8","01ArgonianHouseinside.9"],"count":1557}
 {"src":"*","space":"01BlackRoseJail","status":"placed","as":["01BlackRoseJail"],"count":750}
+{"src":"Dawnguard.esm:00086E","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"a statue of Mara, a divine of the Nine, in the tree-minders' hall: plainly not theirs, an easy drop","by":"draft.drop"}
+{"src":"Dawnguard.esm:00087E","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)","by":"draft.drop"}
+{"src":"Dawnguard.esm:00087F","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)","by":"draft.drop"}
+{"src":"Dawnguard.esm:00088D","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"a Skyrim hold banner in the tree-minders' hall: an easy drop","by":"draft.drop"}
+{"src":"Dawnguard.esm:00F552","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"a statue of Malacath in the tree-minders' hall: plainly not theirs, an easy drop","by":"draft.drop"}
 {"src":"*","space":"01Exit2","status":"dropped","why":"its only door helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ stands on a walkable island with no way to the town (the source gives no way aboard) and nobody lives or works in it"}
 {"src":"*","space":"01Ship","status":"placed","as":["01Ship"],"count":1579}
 {"src":"Black Marsh North.esp:03E40E","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}

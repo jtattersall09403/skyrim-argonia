@@ -422,7 +422,8 @@
      "arrival": [
       -38272.8,
       -595238.6
-     ]
+     ],
+     "beds_owner": "helstrom.guard"
     },
     "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse"
    },
@@ -924,6 +925,12 @@
    },
    "King of the Murkmire.esp:5E2498": {
     "base": "King of the Murkmire.esp:5E2496"
+   },
+   "Skyrim.esm:1075FE": {
+    "base": "King of the Murkmire.esp:4EA913"
+   },
+   "Skyrim.esm:03C308": {
+    "base": "King of the Murkmire.esp:5E249F"
    }
   },
   "drop": {
@@ -1118,7 +1125,12 @@
    "Black Marsh.esm:20771D": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
    "Black Marsh.esm:20771E": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
    "Black Marsh.esm:207720": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
-   "Black Marsh.esm:207721": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home"
+   "Black Marsh.esm:207721": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Dawnguard.esm:00086E": "a statue of Mara, a divine of the Nine, in the tree-minders' hall: plainly not theirs, an easy drop",
+   "Dawnguard.esm:00087E": "a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)",
+   "Dawnguard.esm:00087F": "a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)",
+   "Dawnguard.esm:00088D": "a Skyrim hold banner in the tree-minders' hall: an easy drop",
+   "Dawnguard.esm:00F552": "a statue of Malacath in the tree-minders' hall: plainly not theirs, an easy drop"
   },
   "shrine": {
    "base": "King of the Murkmire.esp:0D72B7",

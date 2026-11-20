@@ -292,6 +292,22 @@ def pieces(st: Standing, log=print) -> None:
                 _unledger(st, r["id"], sid)
             if rep or door:         # a door's row carries its pairing: kept, on the source's own piece
                 keep.append(row)
+        # a source piece of the room with no row yet: on the step's base, or removed when `draft.drop` names it
+        have = {row.get("src") for row in keep}
+        kept_ids = interiors.kept(info["copy_of"], info.get("room"), info.get("cut"))
+        for r in sorted(by_id.values(), key=lambda r: r["id"]):
+            if r["id"] in have or r.get("kind") == "actor" or (kept_ids is not None and r["id"] not in kept_ids):
+                continue
+            rid = io.mint(st.place_id, sid, r["id"])
+            if r["id"] in drop:
+                keep.append({"id": rid, "src": r["id"], "removed": True})
+                st.ledger.append({"src": r["id"], "space": info["copy_of"].split("/", 1)[1],
+                                  "copy": sid, "status": "dropped", "why": drop[r["id"]], "by": "draft.drop"})
+                log(f"draft pieces {st.place_id}: {sid}/{r['id']} dropped")
+            elif replace.get(r["base"]) and not interiors.door_target(r):
+                keep.append({**r, **interiors.swap(r, st.bases, replace[r["base"]]), "id": rid, "src": r["id"],
+                             "seat": {"mode": "free"}})
+                log(f"draft pieces {st.place_id}: {sid}/{r['id']} {r['base']} -> {replace[r['base']]['base']}")
         sp["refs"] = keep
     # a room whose way in is gone goes with it, and the rooms behind it
     ext_ids = {r["id"] for r in st.ext}

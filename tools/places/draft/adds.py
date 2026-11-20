@@ -136,7 +136,7 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
     """The copied room a door of ours leads into: (space id, space.json, refs of our changes). Sets the door's own
     `door`: into the room, and its `arrival` outside (`arrival` when the streets stage has placed it, else the row's).
     `spec`: copy_of, door (the way out), space, arrival, drop ({source ref: why}), strip ({base editor id: why}: every
-    ref of that base goes), whole, and cut ({"box": [x1, y1, x2, y2]}: only the part of the source cell inside the
+    ref of that base goes), whole, beds_owner (a faction whose members share the room's beds: a barracks), and cut ({"box": [x1, y1, x2, y2]}: only the part of the source cell inside the
     box is copied, its way out any load door inside it; the build meshes the cut room's navmesh from what it keeps)."""
     cell = spec["copy_of"].split("/", 1)[1]
     sp = src.spaces.get(cell)
@@ -185,6 +185,8 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
             out.append({**r, **interiors.swap(r, {}, replace[r["base"]]), "id": rid, "src": r["id"], "seat": {"mode": "free"}})
         elif r.get("base") in nordic:
             out.append({"id": rid, "src": r["id"], "removed": True})       # a Nordic piece we would add (0006)
+        elif spec.get("beds_owner") and r.get("kind") == "furniture" and interiors.is_bed(src.bases.get(r.get("base")) or {}):
+            out.append({**r, "id": rid, "src": r["id"], "seat": {"mode": "free"}, "owner": spec["beds_owner"]})   # a bunkhouse
     info = {"space_id": sid, "copy_of": spec["copy_of"], "name": sp.meta.get("name"), "door_from": door["id"],
             "parent": parent, "room": part, "added": True}
     if cut:
