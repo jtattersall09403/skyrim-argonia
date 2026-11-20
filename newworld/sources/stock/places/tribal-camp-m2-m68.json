@@ -331,24 +331,6 @@
     }
    ],
    "why": "Mazh-Teel: guard, the Unbound's hired warband, day watch, W2; best tier T2"
-  },
-  {
-   "person": "tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11",
-   "items": [
-    {
-     "item": "Skyrim.esm:01397E",
-     "count": 1,
-     "worn": true,
-     "why": "tans hides and boils bones for the tents: a dagger of T1 (from far away (no maker or gate on the roads))"
-    },
-    {
-     "item": "Skyrim.esm:00000F",
-     "count": 9,
-     "worn": false,
-     "why": "carried gold, 2-10 for W2 Poor"
-    }
-   ],
-   "why": "Tsoxi: resident, tans hides and boils bones for the tents, W2; best tier T1"
   }
  ],
  "traders": [],

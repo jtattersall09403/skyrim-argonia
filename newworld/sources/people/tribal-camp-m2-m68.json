@@ -247,35 +247,6 @@
     }
    ],
    "relations": []
-  },
-  {
-   "id": "tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11",
-   "name": "Tsoxi",
-   "sex": "male",
-   "race": "ArgonianRace",
-   "culture_id": "stone-grey",
-   "household": {
-    "id": "tribal-camp-m2-m68.household.DushnikhYalLonghouse",
-    "role": "kin"
-   },
-   "role": "resident",
-   "trade": "tans hides and boils bones for the tents",
-   "wealth": "W2",
-   "level": null,
-   "status": "alive",
-   "tier": "AGENT_INVENTED",
-   "notes": [
-    {
-     "aspect": "backstory",
-     "text": "He tans the hides the tents are hung with and boils the bones that hang on them. He came to the band from the road traffic days with nothing but his knives.",
-     "tier": "AGENT_INVENTED",
-     "cites": [
-      "place_note:tribal-camp-m2-m68/look",
-      "place_note:tribal-camp-m2-m68/history"
-     ]
-    }
-   ],
-   "relations": []
   }
  ]
 }
