@@ -43,8 +43,9 @@ NUDGES_ALONG = (16.0, -16.0, 32.0, -32.0, 64.0, -64.0)
 NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
-DOOR_OVER = 150.0     # a door this far over the end of the walk to it: its arrival lies under it
-TOOL = 3             # the judging rules version: a route shot under older rules is shot again
+OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
+DOOR_OVER = 150.0    # a door this far over the end of the walk to it: its arrival lies under it
+TOOL = 4             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
@@ -511,6 +512,8 @@ def evidence(ids: np.ndarray, table: list, id0: int, by_id: dict, eye) -> dict:
             lo, hi = geom.aabb(p)
             q = np.clip(np.asarray(eye, float), lo, hi)
             dist = float(np.linalg.norm(q - np.asarray(eye, float)))
+            if dist == 0.0:   # the eye inside its box: how near its faces are is not known from the box
+                dist = None
         fills.append({"piece": rid, "edid": p.get("edid"), "kind": p.get("kind"), "share": round(c / n, 3),
                       "dist": round(dist) if dist is not None else None})
     for nm, c in (("land", land), ("water", water), ("nothing", sky)):
@@ -1036,6 +1039,8 @@ def _judge(sc, c, rr, by_id, lk, st, inside, ins, all_in):
     ev = evidence(ids, rr["table"], rr["id0"], by_id, c["pos"])
     ev["inside"], ev["all_inside"] = ins, all_in
     ev["in_piece"] = in_piece(ins)
+    if ev["in_piece"] and OPEN_UNDER.search(ev["in_piece"]):   # a deck on stilts: its box is mostly the air under it
+        ev["inside"] = ev["all_inside"] = ev["in_piece"] = None
     ev["low_ceiling"] = bool(inside and all_in)
     v = classify(lk[0], st["what"], ev, inside)
     return img, ev, v, c
