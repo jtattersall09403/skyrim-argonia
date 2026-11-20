@@ -845,7 +845,8 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
     (on the deck or the ground it lands one on): one over or under the mesh there (on steps since raised) is put at
     the mesh's height; one off it is moved to the nearest point that is on it, on the
     same side of its door, outside every placed thing's body, at the mesh's height there. The partner door's `to_pos`
-    and the door's `arrival` move together. Returns the arrivals moved."""
+    and the door's `arrival` move together; an arrival already on the mesh is the landing of its partner door, whose
+    `to_pos` follows it (an arrival lowered by hand carries its partner). Returns the arrivals moved."""
     from tools.places.draft import geom
 
     def level(q, z):   # the mesh's height at q on the main network at level z, else None
@@ -856,6 +857,11 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
     rows = io.read_jsonl(ext)
     by_id = {r["id"]: r for r in rows}
     moved, inner_dirty = 0, {}
+
+    def partner(d, sid):    # the door's partner inside its room, from the room's rows (read once, written when changed)
+        sp_ = pdir / "spaces" / sid / "refs.jsonl"
+        inner = inner_dirty.get(sid) or (io.read_jsonl(sp_) if sp_.exists() else [])
+        return inner, next((o for o in inner if (o.get("door") or {}).get("to_ref") == d["id"]), None)
     for d in rows:
         a = (d.get("door") or {}).get("arrival")
         sid = (d.get("door") or {}).get("to_space")
@@ -867,6 +873,13 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
             near_z = float(zz[np.argmin(np.abs(zz - a[2]))]) if len(c) else None
             at = near_z if near_z is not None and abs(near_z - a[2]) <= Z_TOL else None
         if at is not None and abs(at - a[2]) <= ARRIVAL_ON:
+            inner, back = partner(d, sid)     # on the mesh: the partner door lands where the arrival stands now
+            if back is not None and not (len(back["door"].get("to_pos") or []) == 3
+                                         and all(abs(u - v) < 0.01 for u, v in zip(back["door"]["to_pos"], a))):
+                back["door"] = {**back["door"], "to_pos": list(a)}
+                inner_dirty[sid] = inner
+                moved += 1
+                log(f"join {place_id}: door {d['id']}: its partner's landing follows the arrival to {[round(v) for v in a]}")
             continue
         sup = by_id.get((d.get("seat") or {}).get("on"))
         near = [r for r in rows if r.get("kind") in geom.SOLID_KINDS and r is not d and r is not sup
@@ -888,9 +901,7 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
             log(f"join {place_id}: door {d['id']}: its arrival {[round(v) for v in a]} is off the walkable mesh, "
                 f"with no point of it within {ARRIVAL_REACH:.0f} units")
             continue
-        sp = pdir / "spaces" / sid / "refs.jsonl"
-        inner = inner_dirty.get(sid) or (io.read_jsonl(sp) if sp.exists() else [])
-        back = next((o for o in inner if (o.get("door") or {}).get("to_ref") == d["id"]), None)
+        inner, back = partner(d, sid)
         if back is None:
             continue
         yaw = math.atan2(got[0] - d["pos"][0], got[1] - d["pos"][1]) % (2 * math.pi)
