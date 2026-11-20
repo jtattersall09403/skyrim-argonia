@@ -459,7 +459,11 @@ The tools lay the network by these rules.
    promised service and station given and worked, a bed for every sleeper, an unowned bed to rent at the inn,
    guards out of the inn, every resident in one household under one roof, every room named (no leftover name,
    and no two alike once the people have identities), replaced pieces in the original's plane,
-   nothing floating or buried along its true outline beyond how it sat in the source, every added thing on ground
+   nothing floating or buried along its true outline beyond how it sat in the source, nothing obviously wrong (a
+   model that does not resolve or a bare collision box standing on its own where a building should be seen; a piece
+   whose underside stands over the ground or water with nothing under it that it rests on, hangs from or is set
+   into; a bridge or walkway without support at both ends: each is dropped with its reason or given what carries
+   it by the stage that owns it), every added thing on ground
    under its whole footprint, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
    units of its place by its fixture, every added forge lit, nothing Nordic

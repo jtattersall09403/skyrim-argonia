@@ -439,18 +439,18 @@
 {"src":"Black Marsh North.esp:0787D8","space":"exterior","status":"placed","as":"helstrom.CBF3RZFCBGN2FGEY7ZJJZME92E","cluster":"b39"}
 {"src":"Black Marsh North.esp:0787D9","space":"exterior","status":"placed","as":"helstrom.SE33RDKCXM3EA3WP44GY7YQVWM","cluster":"b39"}
 {"src":"Black Marsh North.esp:0787DA","space":"exterior","status":"placed","as":"helstrom.JFNAG24YGCHHTWQDZ8TYT4T3JX","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787DB","space":"exterior","status":"placed","as":"helstrom.G08DMBVT2HWFKHMXHCM90C8CHE","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787DC","space":"exterior","status":"placed","as":"helstrom.NC9NY4A8R074DBA57X2STR1DYF","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787DD","space":"exterior","status":"placed","as":"helstrom.BFVY6TPRKDSB3TH9Q1MJJ9GSZF","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787DE","space":"exterior","status":"placed","as":"helstrom.9G9G5GG1XNVVW3XEF3HX9F2SWP","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787DF","space":"exterior","status":"placed","as":"helstrom.NJP7KHE4FZRHS50DDBT18DANEZ","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E0","space":"exterior","status":"placed","as":"helstrom.MYDVDS96FV4KE1RE2GPNVR9YMD","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E1","space":"exterior","status":"placed","as":"helstrom.7NX2Y1E1TN1JECHV1B3YDRTNF8","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E2","space":"exterior","status":"placed","as":"helstrom.SACCBXT5GZ2JWVG41TQHBWWA1C","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E3","space":"exterior","status":"placed","as":"helstrom.EMNV8X542MMTNDEGC48HZS1KK2","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E4","space":"exterior","status":"placed","as":"helstrom.ASWE73QB3WRDD687YQP7CVAAQJ","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E5","space":"exterior","status":"placed","as":"helstrom.GWFQZKXK52XSGVSB1W7F8HDFVP","cluster":"b39"}
-{"src":"Black Marsh North.esp:0787E6","space":"exterior","status":"placed","as":"helstrom.342C5ZS2FY9DMHWJT3R7TVT3N5","cluster":"b39"}
+{"src":"Black Marsh North.esp:0787DB","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787DC","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787DD","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787DE","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787DF","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E0","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E1","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E2","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E3","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E4","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E5","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
+{"src":"Black Marsh North.esp:0787E6","space":"exterior","status":"dropped","cluster":"b39","why":"a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air","by":"draft.drop"}
 {"src":"Black Marsh North.esp:0821A1","space":"exterior","status":"placed","as":"helstrom.F7Y87CTCG7EWR2Y1NRZ3Z9Y6ES","cluster":"s10"}
 {"src":"Black Marsh North.esp:0821A6","space":"exterior","status":"placed","as":"helstrom.2XX7165BASS2XV0DRQ3GAQTNP5","cluster":"b39"}
 {"src":"Black Marsh North.esp:082C97","space":"exterior","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
@@ -460,7 +460,7 @@
 {"src":"Black Marsh North.esp:0830A7","space":"exterior","status":"adapted","as":"helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM","cluster":"landing"}
 {"src":"Black Marsh North.esp:0830A8","space":"exterior","status":"adapted","as":"helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE","cluster":"landing"}
 {"src":"Black Marsh North.esp:0830A9","space":"exterior","status":"placed","as":"helstrom.7274RA9Y8Y76AMV4YR15JEP266","cluster":"w47"}
-{"src":"Black Marsh North.esp:083220","space":"exterior","status":"placed","as":"helstrom.H1AKX11EC5YCHF3K2Y08G8KR69","cluster":"w01"}
+{"src":"Black Marsh North.esp:083220","space":"exterior","status":"dropped","cluster":"w01","why":"a ship load door whose ship is not in the place and that leads nowhere: it would hang in the air over the water","by":"draft.drop"}
 {"src":"Black Marsh North.esp:08D5E3","space":"exterior","status":"replaced","as":["helstrom.FSF6529VRX65YHFS9SDR8JD794","helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC","helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE"]}
 {"src":"Black Marsh North.esp:08D5E4","space":"exterior","status":"replaced","as":["helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","helstrom.KXGAGQM60ANV7DVJBNTY46FYAN"]}
 {"src":"Black Marsh North.esp:08D5E6","space":"exterior","status":"replaced","as":["helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"]}
@@ -635,18 +635,18 @@
 {"src":"Black Marsh.esm:1CE915","space":"exterior","status":"dropped","cluster":"b20","why":"a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE91A","space":"exterior","status":"adapted","as":"helstrom.13ZVWASK9327DGZHGC7YZGWZE5","cluster":"b21"}
 {"src":"Black Marsh.esm:1CE91B","space":"exterior","status":"adapted","as":"helstrom.VR035H80KMN9PWAQ2EPPR70WM2","cluster":"b21"}
-{"src":"Black Marsh.esm:1CE91C","space":"exterior","status":"adapted","as":"helstrom.EJGWK7X57T7GH6EHKBGGH39RT5","cluster":"w06"}
-{"src":"Black Marsh.esm:1CE91D","space":"exterior","status":"adapted","as":"helstrom.G18WNFTP2A8JYK1HQZ0AMMA0E6","cluster":"w06"}
-{"src":"Black Marsh.esm:1CE91E","space":"exterior","status":"adapted","as":"helstrom.HMDCEVXBR9YRVSTX660BRMZ2BR","cluster":"w16"}
+{"src":"Black Marsh.esm:1CE91C","space":"exterior","status":"dropped","cluster":"w06","why":"a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE91D","space":"exterior","status":"dropped","cluster":"w06","why":"a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE91E","space":"exterior","status":"dropped","cluster":"w16","why":"a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE91F","space":"exterior","status":"adapted","as":"helstrom.55TV488YJC40P2F44BD1638KVC","cluster":"b22"}
 {"src":"Black Marsh.esm:1CE920","space":"exterior","status":"adapted","as":"helstrom.N4002CHZ21B95MFST5ZWBDM406","cluster":"b22"}
-{"src":"Black Marsh.esm:1CE922","space":"exterior","status":"placed","as":"helstrom.69YFYWG2BC2CSKPEJRA7DP359R","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE923","space":"exterior","status":"placed","as":"helstrom.SQT5KJ2YACB5CRQT588N8WSNM6","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE924","space":"exterior","status":"placed","as":"helstrom.939TGA7D434N73PAHA7G9TX4Y5","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE925","space":"exterior","status":"placed","as":"helstrom.FSF3TBJ4N8A6TXX9X9APQ3J3QF","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE926","space":"exterior","status":"placed","as":"helstrom.GD73261GA3V1GZPCVB9DYWE85A","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE927","space":"exterior","status":"placed","as":"helstrom.Z3MS184E3HSYCCR60BHAHH18KZ","cluster":"b23"}
-{"src":"Black Marsh.esm:1CE928","space":"exterior","status":"placed","as":"helstrom.4HR97J965YY6FYCV71GGZ8HNH9","cluster":"b23"}
+{"src":"Black Marsh.esm:1CE922","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE923","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE924","space":"exterior","status":"dropped","cluster":"b23","why":"a dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE925","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE926","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE927","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
+{"src":"Black Marsh.esm:1CE928","space":"exterior","status":"dropped","cluster":"b23","why":"a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them","by":"draft.drop"}
 {"src":"Black Marsh.esm:1CE92A","space":"exterior","status":"placed","as":"helstrom.9HSJG6B976G77TRTYP0DMVXVKJ","cluster":"b23"}
 {"src":"Black Marsh.esm:1CE92B","space":"exterior","status":"placed","as":"helstrom.10MXEHR0FBGM1P9FGVM6W3J3FA","cluster":"s18"}
 {"src":"Black Marsh.esm:1CE92C","space":"exterior","status":"adapted","as":"helstrom.2XKEN1M2M7W8WYCGBKNQPPFD0R","cluster":"b20"}
@@ -2381,7 +2381,7 @@
 {"src":"Black Marsh.esm:1DEE1D","space":"exterior","status":"adapted","as":"helstrom.ERHTHFZ0JTVXYW01SN2FKG5469","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE1E","space":"exterior","status":"adapted","as":"helstrom.4TJ0TJDW6HPTVNX3BG4DN7WYYF","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE1F","space":"exterior","status":"adapted","as":"helstrom.2973MW77T91ZRH332PY5MXFPJ7","cluster":"b09"}
-{"src":"Black Marsh.esm:1DEE20","space":"exterior","status":"adapted","as":"helstrom.BYTMNX7Q8WSC0HGGRKJYBE21WF","cluster":"w39"}
+{"src":"Black Marsh.esm:1DEE20","space":"exterior","status":"dropped","cluster":"w39","why":"a hanging lantern whose lamp post is not in the place: it would hang in mid-air","by":"draft.drop"}
 {"src":"Black Marsh.esm:1DEE21","space":"exterior","status":"adapted","as":"helstrom.CE7Y40NP5GE0CEAM9DCDFZEHEK","cluster":"w39"}
 {"src":"Black Marsh.esm:1DEE22","space":"exterior","status":"adapted","as":"helstrom.K0WGE3798DZ9DXN85KR3B30HFW","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE23","space":"exterior","status":"adapted","as":"helstrom.VDBM986Q60ABBSBGFVJ4VN0AAQ","cluster":"w37"}
@@ -2390,7 +2390,7 @@
 {"src":"Black Marsh.esm:1DEE26","space":"exterior","status":"adapted","as":"helstrom.AJM6D2J9CKKS4Z28PYVP95SQS0","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE27","space":"exterior","status":"adapted","as":"helstrom.TBNBQR6EK01M61PZSQP0BNMZVD","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE28","space":"exterior","status":"adapted","as":"helstrom.EP8NHE7YM1P4NZ9WKG3S5B469D","cluster":"b25"}
-{"src":"Black Marsh.esm:1DEE29","space":"exterior","status":"adapted","as":"helstrom.5G68A7G61MJDGY3X6NHNX1F24E","cluster":"w40"}
+{"src":"Black Marsh.esm:1DEE29","space":"exterior","status":"dropped","cluster":"w40","why":"a hanging lantern whose lamp post is not in the place: it would hang in mid-air","by":"draft.drop"}
 {"src":"Black Marsh.esm:1DEE2A","space":"exterior","status":"adapted","as":"helstrom.BWB05GEYB4FZWKQM8Q9ZEH9DBC","cluster":"w40"}
 {"src":"Black Marsh.esm:1DEE2B","space":"exterior","status":"adapted","as":"helstrom.APFP1T721NBXHXEM2KMTJMPHR2","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE2C","space":"exterior","status":"adapted","as":"helstrom.P3B9E88A28CZD2JC28F2VFY363","cluster":"w06"}
@@ -2692,7 +2692,7 @@
 {"src":"Black Marsh.esm:1E428A","space":"exterior","status":"adapted","as":"helstrom.28NFG91TYJVZ8SKE5VYDYDGDVB","cluster":"w25"}
 {"src":"Black Marsh.esm:1E428D","space":"exterior","status":"adapted","as":"helstrom.DCSH5RKMVYCTWXBDEC3JW4EJEQ","cluster":"w25"}
 {"src":"Black Marsh.esm:1E428E","space":"exterior","status":"adapted","as":"helstrom.FY13XA82GEBVZ9HTNA4GYGRSVN","cluster":"w25"}
-{"src":"Black Marsh.esm:1E4292","space":"exterior","status":"placed","as":"helstrom.QGDW33MW6W4RVH6BQ1RX71R6GG","cluster":"w17"}
+{"src":"Black Marsh.esm:1E4292","space":"exterior","status":"dropped","cluster":"w17","why":"a beehive whose tree is not in the place: it would hang in mid-air","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E4295","space":"exterior","status":"adapted","as":"helstrom.0XEXV35KBCYT1BMKAC7TV1GA4D","cluster":"landing"}
 {"src":"Black Marsh.esm:1E4296","space":"exterior","status":"adapted","as":"helstrom.R1YFT2A4YHZRWJRVQ2K6FGESSJ","cluster":"landing"}
 {"src":"Black Marsh.esm:1E4297","space":"exterior","status":"adapted","as":"helstrom.79NJPRBGN09SGJSD0YB9PJ0MM3","cluster":"landing"}
@@ -2760,7 +2760,7 @@
 {"src":"Black Marsh.esm:1E4509","space":"exterior","status":"adapted","as":"helstrom.5ENSH9YC5J8E91X4C6Y0Q7F98E","cluster":"s71"}
 {"src":"Black Marsh.esm:1E450D","space":"exterior","status":"adapted","as":"helstrom.GCV4YZSQFFSDS3D6XH7NANGK8R","cluster":"w49"}
 {"src":"Black Marsh.esm:1E450F","space":"exterior","status":"adapted","as":"helstrom.NMWG2WMAX4VA6ZNJEHRE0CJHA0","cluster":"s23"}
-{"src":"Black Marsh.esm:1E4512","space":"exterior","status":"adapted","as":"helstrom.78NMMJZY37ZR5859MBD0GQC4TN","cluster":"s72"}
+{"src":"Black Marsh.esm:1E4512","space":"exterior","status":"dropped","cluster":"s72","why":"a perched bird whose perch is not in the place: it would sit in mid-air","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E4513","space":"exterior","status":"adapted","as":"helstrom.9KG76Q6899M7SF5KZ4AMJH3CX2","cluster":"s72"}
 {"src":"Black Marsh.esm:1E4517","space":"exterior","status":"adapted","as":"helstrom.J766QAX99PHH9Z455QHB847E3P","cluster":"s73"}
 {"src":"Black Marsh.esm:1E4518","space":"exterior","status":"placed","as":"helstrom.YVKA7WG70F1CBD2QW7KGV9MRSE","cluster":"b23"}

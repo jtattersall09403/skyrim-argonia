@@ -272,7 +272,8 @@ def pieces(st: Standing, log=print) -> None:
                 other = any(lr.get("src") == r["id"] and lr.get("copy") == sid and lr.get("status") == "dropped"
                             and lr.get("by") != "draft.drop" and not str(lr.get("why", "")).startswith("Nordic base")
                             for lr in st.ledger)
-                if door or other:   # another room's way out, or another stage's verdict: not this step's
+                if door or other or interiors.nowhere(r):   # another room's way out, a door to nowhere, or
+                    # another stage's verdict: not this step's
                     keep.append(row)
                 else:
                     log(f"draft pieces {st.place_id}: {sid}/{r['id']} stands again")

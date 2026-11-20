@@ -1,0 +1,58 @@
+"""`draft check` refuses an obviously wrong piece (tools/places/draft/obvious.py): a stand-in box or a model that does
+not resolve, a piece floating with nothing under it, a bridge without support at both ends."""
+from tools.places.draft import obvious
+from tools.places.seat import Ground
+
+BASES = {
+    "house": {"bounds": [[-200, -200, 0], [200, 200, 300]], "model": "x/house.nif"},
+    "deck": {"bounds": [[-300, -100, -20], [300, 100, 0]], "model": "x/dockdeck.nif"},
+    "bridge": {"bounds": [[-300, -100, -20], [300, 100, 20]], "model": "x/bridge01.nif"},
+    "lamp": {"bounds": [[-12, -12, -24], [12, 12, 24]], "model": "x/lamp.nif"},
+    "box": {"bounds": [[0, 0, 0], [0, 0, 0]], "model": None},
+}
+
+
+def ref(i, x, y, z, base, kind="building", **kw):
+    return {"id": i, "base": base, "kind": kind, "pos": [x, y, z], "rot": [0, 0, 0], "scale": 1.0, "seat": {"mode": "ground"}, **kw}
+
+
+def flat(h=0.0, water=None):
+    return Ground({(c, d): [h] * 33 * 33 for c in range(-2, 2) for d in range(-2, 2)}, {}, water)
+
+
+def test_a_bare_collision_box_or_an_unresolved_model_is_refused():
+    box = ref("b", 0, 0, 0, "Skyrim.esm:000021", kind="marker", primitive={"type": "Box", "bounds": [500, 500, 500]})
+    gone = ref("g", 900, 0, 0, "missing", kind="static")
+    bad = obvious.faults([box, gone], BASES, flat())
+    assert any(b.startswith("b ") and obvious.BOX in b for b in bad)
+    assert any(b.startswith("g ") and obvious.UNRESOLVED in b for b in bad)
+    # a box that travels with a kept piece (a wall on its balcony) is that piece's collision, not a stand-in
+    house = ref("h", 0, 0, 0, "house")
+    box["seat"] = {"mode": "on", "on": "h", "dz": 0}
+    assert obvious.faults([house, box], BASES, flat()) == []
+
+
+def test_a_floating_piece_is_refused_unless_something_carries_it():
+    lamp = ref("l", 500, 500, 300, "lamp")
+    assert any(obvious.FLOATS in b for b in obvious.faults([lamp], BASES, flat()))
+    # hanging from a house's eave: the house's box holds it in plan and reaches its height
+    house = ref("h", 400, 500, 0, "house")
+    assert obvious.faults([lamp, house], BASES, flat()) == []
+    # on the ground, or on water no deeper than the tolerance, it stands
+    assert obvious.faults([ref("l", 500, 500, 30, "lamp")], BASES, flat()) == []
+    # a parked (disabled) piece is never seen, so never judged
+    assert obvious.faults([ref("l", 500, 500, 900, "lamp", flags=["initially_disabled"])], BASES, flat()) == []
+
+
+def test_a_bridge_needs_support_at_both_ends():
+    water = flat(-200.0, water=0.0)
+    lone = ref("br", 0, 0, 500, "bridge")
+    assert any("both ends" in b for b in obvious.faults([lone], BASES, water))
+    left = ref("dl", -500, 0, 500, "deck")
+    one = obvious.faults([lone, left], BASES, water)
+    assert any("one end" in b for b in one if b.startswith("br "))
+    right = ref("dr", 500, 0, 500, "deck")
+    got = [b for b in obvious.faults([lone, left, right], BASES, water) if b.startswith("br ")]
+    assert got == []
+    # a bridge whose ends rest on the banks stands
+    assert obvious.faults([ref("br", 0, 0, 20, "bridge")], BASES, flat()) == []

@@ -97,6 +97,12 @@ def door_target(r: dict) -> str | None:
     return (r.get("door") or {}).get("to_space")
 
 
+def nowhere(r: dict) -> bool:
+    """A load door (it names a destination) whose destination's space the source bundle does not hold."""
+    d = r.get("door") or {}
+    return bool(d.get("to_ref")) and d.get("to_space") is None
+
+
 def _name(b: dict) -> str:
     return f"{b.get('edid', '')} {b.get('name', '')} {b.get('model', '')}"
 
@@ -270,6 +276,11 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         for r in sorted(refs, key=lambda r: r["id"]):
             t2 = door_target(r)
             rep = (replace or {}).get(r.get("base")) if r.get("kind") != "actor" else None
+            if not t2 and nowhere(r) and (keep is None or r["id"] in keep):
+                # a load door whose destination the source bundle does not hold (another place's room of a cell
+                # several places share) leads nowhere in our copy: removed
+                sp["overrides"].append({"id": mint(place_id, sid, r["id"]), "src": r["id"], "removed": True})
+                continue
             if not t2:
                 if rep and (keep is None or r["id"] in keep):   # another room's piece is not in this copy
                     sp["overrides"].append({**r, **swap(r, bases, rep), "id": mint(place_id, sid, r["id"]),

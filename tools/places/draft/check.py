@@ -4,7 +4,9 @@ Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped 
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
 had on land, or the reverse; a Nordic base added from outside the source place or a levelled base placed; a light off its fixture, an added forge
-unlit; a person whose bed or routine points at nothing;
+unlit; a person whose bed or routine points at nothing; an obviously wrong piece (`obvious`: a model that does not
+resolve or a bare collision box standing on its own, a piece floating with nothing under it, a bridge without support
+at both ends);
 and every check of the build (`tools/places/check.py`, its streets on the main walked network among them) on the
 draft built.
 """
@@ -77,6 +79,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         bad += hang.faults(refs, bases, *hang.measurers(bases))
     from tools.places.draft import sap
     bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
+    from tools.places.draft import obvious                 # no stand-in box, nothing floating, no bridge on one leg
+    bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs} - set(bases)), **bases}, G)
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]

@@ -333,6 +333,19 @@
     "need": 12,
     "tier": "AGENT_INVENTED",
     "why": "the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
+   },
+   {
+    "base": "Black Marsh North.esp:07308C",
+    "kind": "building",
+    "pos": [
+     -53503.0,
+     -588680.0
+    ],
+    "rot_z": 5.49779,
+    "scale": 0.95,
+    "dz": 1014.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the old Xanmeer at the city's north-west edge: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone) on the footprint of the source's Xanmeer, whose stacked stone blocks its builders hid under the world and left only its 376 collision boxes; measured from the mesh (4884 x 4578 x 2249 at scale 1) to the hidden ziggurat's 4400-unit base at 0.95, turned with its cluster, its underside (1078 below its origin at 0.95) sunk 64 units into the ground; its own collision is its mesh's, so what is walked is what is seen"
    }
   ],
   "replace": {
@@ -503,7 +516,34 @@
    "Black Marsh.esm:2076B4": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
    "Black Marsh.esm:2076B5": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
    "Black Marsh.esm:2076B6": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
-   "Black Marsh.esm:1E4519": "a bench the great city tree now stands over"
+   "Black Marsh.esm:1E4519": "a bench the great city tree now stands over",
+   "Black Marsh North.esp:083220": "a ship load door whose ship is not in the place and that leads nowhere: it would hang in the air over the water",
+   "Black Marsh.esm:1CE924": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE91C": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1CE91D": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1CE91E": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1DEE29": "a hanging lantern whose lamp post is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1DEE20": "a hanging lantern whose lamp post is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1E4512": "a perched bird whose perch is not in the place: it would sit in mid-air",
+   "Black Marsh.esm:1E4292": "a beehive whose tree is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1CE928": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE922": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE925": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE926": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE923": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE927": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh North.esp:0787DE": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E4": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DF": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E0": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DB": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DC": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DD": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E1": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E5": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E6": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E2": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E3": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air"
   },
   "shrine": {
    "base": "King of the Murkmire.esp:0D72B7",
