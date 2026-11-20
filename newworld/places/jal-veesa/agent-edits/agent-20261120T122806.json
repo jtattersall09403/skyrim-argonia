@@ -1,0 +1,45 @@
+{
+ "save_id": "agent-20261120T122806",
+ "place_id": "jal-veesa",
+ "name": "my flight from the elders' deck dropped: the deck already has one (LOOK0010000) on the same side",
+ "at": "2026-11-20T12:28:06Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK001STEPS",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK001STEPS",
+    "base": "King of the Murkmire.esp:050D80",
+    "kind": "building",
+    "pos": [
+     -50878.92,
+     -506052.96,
+     572.99
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.GMS1NH6DRSH3FCH0F9GP6J0J4N",
+     "dz": -29.63
+    },
+    "why": "the elders' long house deck reaches the street to the fish seller's house only by a long way round: one flight down to it",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T12:28:06Z"
+  }
+ ]
+}
