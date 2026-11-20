@@ -83,6 +83,7 @@ Every result is a row (`Op`, `What`, `Num`) that `ARG_Effects.Run` carries out; 
 | a container's lock, key, owner, contents | the reference's lock level and key, its owner, its items | 762 locked doors; owned containers throughout |
 | a door locked or unlocked | the door's lock; a door a result unlocks starts locked | as above |
 | who must live; the message | `ARG_MortalWatch`, one always-running quest with an alias per person, running `ARG_AliasEffects` on the death | Morrowind's death message; DA06's failure box |
+| a person must live until a stage (`must_live` with `to`, a `death` trigger only above it) | the watch's alias script guarded by IfStageAtMost(`to`), so a later death shows nothing and fails nothing; the quest's own `defaultSetStageOnDeathRefAlias` from the later stage moves it on | Morrowind's thread of prophecy, severed only while the person still carries it |
 | nobody unkillable | the seed takes Essential and Protected off every base we or Black Marsh & Valenwood place, and off every alias of ours | the flags live on the base, through Use Base Data templates, and on the alias ([quest-form-engine-facts](../research/skyrim/quest-form-engine-facts.md) §3) |
 
 Every alias is a forced reference to a persistent placed reference, never "find matching". A spot is measured, never

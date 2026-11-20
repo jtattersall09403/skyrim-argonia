@@ -97,7 +97,8 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
    proportion to its difficulty [OB shape; OB skills; TJ P11].
 10. **Anyone can die.** Every line reads sensibly with each named person dead, or the quest names them as one it
     cannot go on without: their death fails it with a journal entry, and a main or faction quest also shows its
-    message [OB shape; MW §6.9].
+    message [OB shape; MW §6.9]. One needed only until a stage fails it below that stage; from it on their death moves
+    the quest on by a stage of its own, or does nothing.
 
 ## The premise and the truth
 

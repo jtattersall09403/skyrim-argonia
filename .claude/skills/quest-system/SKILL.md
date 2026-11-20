@@ -60,7 +60,8 @@ scene (a fade to black, the ending's music and the trees shown changing, then me
 
 **Anyone can die.** No person of ours or of Black Marsh & Valenwood is made unkillable. A quest names the people it
 cannot go on without; if one dies the quest fails with a journal entry, and a main or faction quest also shows its
-kind's message once (load an earlier save, or go on in the world as it now is).
+kind's message once (load an earlier save, or go on in the world as it now is). A person may be needed only until a
+stage: their death fails the quest below it and, from it on, moves the quest on by a stage of its own or does nothing.
 
 **Every objective has a marker**, save a riddle side quest's place before it is found. Every shown stage has an
 objective with a target switched on; the quest becomes the tracked one with its first objective. Directions in words
