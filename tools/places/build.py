@@ -46,7 +46,10 @@ WORLD_DIR = ROOT / "out" / "newworld" / "plugin"
 WORLD_ESM = WORLD_DIR / "ArgoniaNewWorld.esm"
 WORLD_NAV = WORLD_DIR / "navmesh"
 TOOL_PROJ = ROOT / "tools" / "ArgoniaPlaces" / "Build"
-TOOL_DIR = ROOT / "out" / "tools" / "ArgoniaPlacesBuild"
+# Each checkout (the main tree, a lane's worktree) builds its own copy of the tool: `out` is one shared directory
+# across worktrees, and a tool built from another tree's sources reads and writes another tree's shapes.
+TREE = "main" if (ROOT / ".git").is_dir() else hashlib.sha1(str(ROOT).encode()).hexdigest()[:8]
+TOOL_DIR = ROOT / "out" / "tools" / TREE / "ArgoniaPlacesBuild"
 TOOL = TOOL_DIR / "ArgoniaPlacesBuild.dll"
 DB = ROOT / "newworld" / "story" / "data" / "db"
 
