@@ -19,7 +19,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 ## Never
 
 - Never commit a game or mod file, converted or not, decompiles, or secrets ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md)); never bypass the no-assets guard.
-- Never make art, except music, which we make with Fal (owner, 2026-11-17); never let a Nordic element reach the player through what we add ([0006](docs/decisions/0006-black-marsh-immersion-no-nordic-element-survives.md)).
+- Never make art, except music, which we make with Fal (owner, 2026-11-17); Nordic pieces in places are judged case by case: keep what is nearly fine, prefer the Tropical Skyrim version, take an easy swap, never laboriously replace (owner, 2026-11-20; [0006](docs/decisions/0006-black-marsh-immersion-no-nordic-element-survives.md) as amended).
 - Never level anything against the player ([0035](docs/decisions/0035-nothing-is-levelled-against-the-player.md)).
 - Never update the pinned runtime outside a decision ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)); never bypass DRM or ownership checks.
 - Never test in game yourself when the owner can: post an owner check instead ([PLAN §2](docs/PLAN.md)).
