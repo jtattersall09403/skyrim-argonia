@@ -21,6 +21,7 @@ from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.fit import relief_allowed
 from tools.places.draft.paths import connected, dist_to_paths
+from tools.places.look import geom as lookgeom
 from tools.places.seat import Ground, foot_points, foot_relief, seat_all
 
 from tools.places.check import WADE   # the one depth rule: deeper water than a wade needs a walkway
@@ -329,8 +330,10 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"{r['id']} ({r['kind']}) floats {max(go):.0f} above our ground (source {max(gs):.0f})")
         src_rel = foot_relief(S, s_["pos"][0], s_["pos"][1], s_["rot"][2], f)
         allow = relief_allowed(src_rel, r["seat"], norm) or max(norm, RELIEF_SLACK_ALL)
-        if -min(go) > -min(gs) + allow + 16:
-            bad.append(f"{r['id']} ({r['kind']}) buried {-min(go):.0f} into our ground (source {-min(gs):.0f})")
+        lo_z, hi_z = r["pos"][2] + b[0][2], r["pos"][2] + b[1][2]
+        part = lookgeom.is_part({"kind": r["kind"], "edid": (bases.get(r.get("base")) or {}).get("edid")})
+        if lookgeom.is_buried(lo_z, hi_z, lo_z - max(go), False, part):
+            bad.append(f"{r['id']} ({r['kind']}) buried: most of it is under our ground (lowest ground {-max(go):.0f} over its foot)")
 
     # 12b. a thing we added on the ground has ground under its whole footprint: no slope beyond the source's
     # builders' (it would float over the low side or sink into the high), no water under any of it

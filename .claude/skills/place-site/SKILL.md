@@ -45,7 +45,12 @@ builders built on (`fit.relief_norm`).
   a yard of floor plates and the flights that reach it (`seating.levels`).
 - A sunk filler block or a low platform (top within a step of the ground) is walked over.
 
-Enforced by the checks: nothing floating or buried along its true outline beyond its source seat (`draft check`;
+Buried is physical, one rule for `draft check` and `look probe` (`look/geom.is_buried`): a piece is buried when
+nothing of it shows (its top under the lowest ground beneath it), a plant or a door, window or floor when most of it
+is under; stilt posts and rock feet in the ground are fine, and a house moved down whole by hand is judged by what
+shows, not by the source's seat.
+
+Enforced by the checks: nothing floating along its true outline beyond its source seat, nothing buried (`draft check`;
 `look probe --all`), the build's `seat` and `overlap` checks, `seat <place_id>` reporting 0 refs moved.
 
 ## 4. Clear the world's plants

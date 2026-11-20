@@ -26,6 +26,9 @@ PLANTS = {"plant", "groundcover", "flora"}   # buried only when most of its heig
 STRUCTURAL = {"building", "static", "furniture", "door", "container", "activator"}
 DRAUGHT = 160.0            # a boat's hull may dip this far under the water surface and still float
 BURIED = 64.0              # a piece whose top is this far under the ground is lost in it
+SUNK_SHARE = 0.6           # a plant is buried when more than this share of its height is under even the lowest ground under it
+PART_SHARE = 0.5           # a door, window or floor is buried when more than this share of it is
+PART_WORDS = ("door", "window", "floor")
 HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")   # a vessel: whatever stands inside its box rests on its deck
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
 REACH = 160.0               # a supporter's top may rise this far past what rests on it (a post through a deck)
@@ -101,6 +104,20 @@ def stage_made(p: dict) -> bool:
     """A piece the build makes whether or not the studio carries its base: a base of a master the game always loads
     (the jail's chest and mat), or a row a draft stage mints on its own (a Hist's sap pool, `<place>.sap.<tree>`)."""
     return str(p.get("base") or "").lower().startswith(GAME_MASTERS) or ".sap." in str(p.get("id"))
+
+
+def is_buried(low: float, top: float, gmin: float, plant: bool = False, part: bool = False) -> bool:
+    """The one buried rule, physical, shared by `look probe` and `draft check`: a plant is buried when most of it is
+    under the lowest ground under it; a door, window or floor (`part`) when half of it is; any other piece when its
+    top is BURIED under that ground (nothing of it shows). Stilt posts and rock feet in the ground are fine."""
+    if plant or part:
+        return gmin - low > (SUNK_SHARE if plant else PART_SHARE) * (top - low)
+    return top - gmin < -BURIED
+
+
+def is_part(p: dict) -> bool:
+    """A door, window or floor of a building, by its kind, edid or model."""
+    return p.get("kind") == "door" or any(w in f"{p.get('edid') or ''} {p.get('model') or ''}".lower() for w in PART_WORDS)
 
 
 def out_of_reach(p: dict) -> bool:
@@ -301,10 +318,8 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
         g = gr.get(p["id"])
         top = float(boxes[p["id"]][1][2])
         # buried: its top under the ground even where the ground under it is lowest (a rock half in a bank shows)
-        if p.get("kind") in PLANTS:   # a plant's root sits under the surface: buried when most of it is, even where the ground is lowest
-            sunk = g and g["gmin"] is not None and g["gmin"] - g["low"] > 0.6 * (top - g["low"])
-        else:
-            sunk = g and g["gmin"] is not None and top - g["gmin"] < -BURIED and not out_of_reach(p)
+        sunk = g and g["gmin"] is not None and not out_of_reach(p) and \
+            is_buried(g["low"], top, g["gmin"], p.get("kind") in PLANTS, is_part(p))
         if sunk:
             out.append({"id": p["id"], "fault": "buried", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"],
