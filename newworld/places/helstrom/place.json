@@ -30,7 +30,7 @@
    },
    "HelstromXanmeer": {
     "name": "Helstrom Xanmeer",
-    "why": "the place record names it the old Xanmeer at the city's heart; the room is its hall, where the council of the Xeech-Leel holds its open sittings and the Root Talk meets (AGENT_INVENTED)"
+    "why": "the place record names it the old Xanmeer on the city's north-western edge; the room is its hall, where the council of the Xeech-Leel holds its open sittings and the Root Talk meets (AGENT_INVENTED)"
    },
    "01ArgonianHouseinside.8": {
     "name": "Nesh-Deeka's House",
@@ -1313,7 +1313,7 @@
      "by": "the Levy's Post room (Lilmoth Guardhouse) behind a Lilmoth house by the levy's guard stand"
     },
     {
-     "line": "only the old Xanmeer at the city's heart, left by the ancients, stands in stone",
+     "line": "only the old Xanmeer on the city's north-western edge, left by the ancients, stands in stone",
      "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) at 0.78 on the hidden ziggurat's footprint, the biggest thing in the city, its stair turned south-east to the city's way, King of the Murkmire's stone door framed by two wall pillars and two fire-bowls at the stair's foot, into the Helstrom Xanmeer hall (the Teeth of Sithis Halls' throne wing, cut and lit, benches for twelve facing the throne)"
     }
    ],
