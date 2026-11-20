@@ -95,16 +95,16 @@
    "ref": "Black Marsh.esm:1BEB52",
    "space": "01dock3to4",
    "kind": "chest",
-   "owner_household": "outpost-m13-m65.household.01dock3to4",
+   "owner_household": "outpost-m13-m65.household.exterior",
    "lock": null,
    "security": "S1",
    "tier": "T1",
    "gold": 2,
    "items": [],
-   "why": "the household store of Okeeh (W2 Poor, head of 1): gold 2 of 0-15 by household size; best tier T1; unlocked (an unlocked chest or sack)",
+   "why": "the barge's store, the gang-master's (Dralin Uveran keeps the barge and its hold; W3): gold 2; best tier T1; unlocked (an unlocked chest)",
    "cites": [
     "place_wealth:outpost-m13-m65",
-    "person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
+    "person:outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA"
    ]
   },
   {
@@ -171,6 +171,264 @@
     }
    ],
    "why": "Okeeh: merchant, the gang's cook; keeps the cook's stall of dried fish and lamp oil, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter on the east bank: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ah-ja: resident, reed-cutter on the east bank, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-bundler at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Chee-jeem: resident, reed-bundler at the landing, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter of the new gang: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Hara-Jeel: resident, reed-cutter of the new gang, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter, the gang's longest-serving: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Naa-wulm: resident, reed-cutter, the gang's longest-serving, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.GKE6V3YB9K1ZXG5ZAXM3V45EGZ",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter on the west reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 3,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Okee-teel: resident, reed-cutter on the west reach, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "loader of the work barge: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Mee-shei: resident, loader of the work barge, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.NJA6RREMP6W43HAYM7DGSH47Z7",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "fungus gatherer and sharpener of the cutters' knives: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Kee-tul: resident, fungus gatherer and sharpener of the cutters' knives, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter on the north reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ra-tah: resident, reed-cutter on the north reach, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter, mender of the tent's hides: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Chee-mar: resident, reed-cutter, mender of the tent's hides, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-bundler at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Xil-neeus: resident, reed-bundler at the landing, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "gang-master of the reed gang; keeps the hut and its strongbox: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "worn": true,
+     "why": "modest: worn jewellery"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "worn": false,
+     "why": "carried gold, 8-25 for W3 Modest"
+    }
+   ],
+   "why": "Dralin Uveran: resident, gang-master of the reed gang; keeps the hut and its strongbox, W3; best tier T2"
+  },
+  {
+   "person": "outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter on the east bank: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Ee-wulm: resident, reed-cutter on the east bank, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "fire-tender at the cook's fire: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Xil-lei: resident, fire-tender at the cook's fire, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter on the south reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Lee-nassa: resident, reed-cutter on the south reach, W2; best tier T1"
   }
  ],
  "traders": [

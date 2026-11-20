@@ -489,6 +489,50 @@
     "rot_z": 0.8,
     "tier": "AGENT_INVENTED",
     "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
+   },
+   {
+    "base": "Skyrim.esm:0F6307",
+    "kind": "building",
+    "pos": [
+     -101917.43,
+     -526776.18
+    ],
+    "rot_z": 1.82778,
+    "on": "outpost-m13-m65.60T4J86V0FCV9CAJC916Z6Y91S",
+    "dz": 106.1,
+    "tier": "AGENT_INVENTED",
+    "why": "the barge's boarding plank laid over its rail on the bank side (main story, quest 1: the player walks out of the hold and off the barge): a flat plank deck, its two flights down to the waist and to the bank",
+    "within": "outpost-m13-m65.M83XKSNQRFV4NCNXG5Q8YVKS7D"
+   },
+   {
+    "base": "Skyrim.esm:0AE630",
+    "kind": "building",
+    "pos": [
+     -102298.34,
+     -526673.0
+    ],
+    "rot_z": 3.39858,
+    "on": "outpost-m13-m65.F3CRJF3RK0V660C4TPZ4Z7TA5V",
+    "dz": -124.11,
+    "within": [
+     "outpost-m13-m65.60T4J86V0FCV9CAJC916Z6Y91S",
+     "outpost-m13-m65.M83XKSNQRFV4NCNXG5Q8YVKS7D"
+    ],
+    "tier": "AGENT_INVENTED",
+    "why": "the steps down from the boarding plank into the barge's waist, where the hold door stands"
+   },
+   {
+    "base": "Skyrim.esm:0AE630",
+    "kind": "building",
+    "pos": [
+     -101542.81,
+     -526878.79
+    ],
+    "rot_z": 0.25698,
+    "on": "outpost-m13-m65.F3CRJF3RK0V660C4TPZ4Z7TA5V",
+    "dz": -124.11,
+    "tier": "AGENT_INVENTED",
+    "why": "the steps down from the boarding plank to the bank"
    }
   ],
   "roles": {
@@ -527,10 +571,6 @@
      "by": "3 added stick bundles of Journey to Baan Malur's"
     },
     {
-     "line": "a work barge moored in the pool below the camp",
-     "by": "the source's Imperial ship hull moored in the pool, its gangway and its hold door (owner-approved)"
-    },
-    {
      "line": "the grave-stake (source note)",
      "by": "an added cypress grave-stake by the gate"
     },
@@ -543,8 +583,12 @@
      "by": "an added plank farm bench (FarmBench01Static) in the stone hut with the unowned bedroll beside it"
     },
     {
-     "line": "16 people: the gang-master and his cutters, no guards",
-     "by": "Okeeh the cook and fifteen residents in the camp's beds (draft.guards 0), cast as Dralin Uveran and his cutters by place-people"
+     "line": "a work barge moored in the pool below the camp",
+     "by": "the source's Imperial ship hull moored in the pool with its hold door in the waist (owner-approved), boarded by a plank over its rail with steps down to the waist and to the bank (draft.add)"
+    },
+    {
+     "line": "15 people: the gang-master, the cook and the cutters, no guards",
+     "by": "fifteen by the record: Dralin Uveran the gang-master, Okeeh the cook, Hara-Jeel of the new gang and twelve cutters in the camp's beds (draft.guards 0)"
     }
    ],
    "structures": [
@@ -553,9 +597,41 @@
      "what": "the Imperial ship (the work barge) with its hold",
      "verdict": "kept",
      "why": "the record's work barge; owner-approved"
+    },
+    {
+     "structure": "harbour",
+     "what": "Black Rose's quay and walkways round the ship",
+     "verdict": "dropped",
+     "why": "the record's landing is our river bank; the barge is boarded by a plank laid over its rail with steps down to its waist and to the bank (draft.add), so the quay is not needed"
     }
    ],
-   "source": "The Imperial barge source kept (owner-approved barge, gangway, hold door, hold kit, strongbox); the camp round it is built from the pool (hide tents, gate, reed, stake, cook's rack), as no ranked source is a reed-cutters' camp with a stone hut."
+   "source": "The Imperial barge source kept (owner-approved barge, gangway, hold door, hold kit, strongbox); the camp round it is built from the pool (hide tents, gate, reed, stake, cook's rack), as no ranked source is a reed-cutters' camp with a stone hut.",
+   "gives": [
+    {
+     "kind": "trader-general",
+     "by": "Okeeh the cook (merchant, people.jsonl services): her stall is the fish drying rack beside the cook's fire, and she works the hold's spit pot in the mornings"
+    },
+    {
+     "kind": "free-bed",
+     "by": "the unowned bedroll beside the plank bench in the stone hut (draft.add need 1; draft.free_beds)"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the cook's spit by the hut (draft.add, the Hjaalmarch camp's cooking spit; place.json stations)"
+    },
+    {
+     "kind": "harvest-common",
+     "by": "three marshmerrow sedge and three swamp fungus plants on the river bank's reed beds (draft.add need 3)"
+    },
+    {
+     "kind": "combat-creature",
+     "by": "quest 1's own placements at a fixed level in quests.jsonl: two mudcrabs at the bank's water edge and one young crocodile in the reed beds"
+    },
+    {
+     "kind": "treasure",
+     "by": "Dralin's strongbox in the stone hut (draft.add need 1), Novice lock, stocked at T2"
+    }
+   ]
   },
   "guards": 0,
   "guards_why": "the record holds no watch: a Dunmer gang-master and his Owing reed-cutters (held by), so the camp keeps no guard; its people are the gang-master, the cook and the cutters",

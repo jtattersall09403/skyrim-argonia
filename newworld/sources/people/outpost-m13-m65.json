@@ -27,11 +27,6 @@
    "id": "outpost-m13-m65.household.tent-d",
    "home_space": "exterior",
    "name": null
-  },
-  {
-   "id": "outpost-m13-m65.household.01dock3to4",
-   "home_space": "01dock3to4",
-   "name": null
   }
  ],
  "people": [
@@ -170,7 +165,7 @@
   },
   {
    "id": "outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18",
-   "name": "Naa-neeus",
+   "name": "Hara-Jeel",
    "sex": "male",
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
@@ -179,7 +174,7 @@
     "role": "lodger"
    },
    "role": "resident",
-   "trade": "sedge gatherer on the reed beds",
+   "trade": "reed-cutter of the new gang",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -187,15 +182,17 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He gathers sedge on the reed beds between the cutters' turns and keeps a bag of dried fungus for the evening pot. He came to the gang alone and took the tent's free place.",
      "tier": "AGENT_INVENTED",
+     "text": "He came in with the new gang and sleeps in the barge's hold with the others until the gang-master frees them each morning. He counts the months he still owes on his fingers.",
      "cites": [
-      "place_give:outpost-m13-m65/3",
-      "place_note:outpost-m13-m65/present"
+      "place_note:outpost-m13-m65/hooks",
+      "place_note:outpost-m13-m65/people",
+      "newworld/story/quests/main/mn01.yaml"
      ]
     }
    ],
-   "relations": []
+   "relations": [],
+   "cast": "npc.mn.hara-jeel"
   },
   {
    "id": "outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q",
@@ -492,35 +489,6 @@
      "cites": [
       "place_note:outpost-m13-m65/present",
       "place_note:outpost-m13-m65/look"
-     ]
-    }
-   ],
-   "relations": []
-  },
-  {
-   "id": "outpost-m13-m65.ZX9TNCDKABS2GNQ9CSJBRT7SYD",
-   "name": "Lee-meen",
-   "sex": "male",
-   "race": "ArgonianRace",
-   "culture_id": "stone-grey",
-   "household": {
-    "id": "outpost-m13-m65.household.tent-d",
-    "role": "lodger"
-   },
-   "role": "resident",
-   "trade": "sedge gatherer on the reed beds",
-   "wealth": "W2",
-   "level": null,
-   "status": "alive",
-   "tier": "AGENT_INVENTED",
-   "notes": [
-    {
-     "aspect": "backstory",
-     "text": "He gathers sedge in the shallows and dries it on the landing to lay in the tents. He says he will come back to Ashgate when his months are done, and the others laugh.",
-     "tier": "AGENT_INVENTED",
-     "cites": [
-      "place_give:outpost-m13-m65/3",
-      "place_note:outpost-m13-m65/economy"
      ]
     }
    ],
