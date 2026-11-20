@@ -33,7 +33,8 @@ def thing(ref: dict, bases: dict) -> dict:
 
 def inside(p, ref: dict, bases: dict, z: bool = True, pad: float = 0.0) -> bool:
     """Whether point p stands inside ref's record box, by the build's `obb_contains`. `pad` widens it in plan."""
-    return C.obb_contains(thing(ref, bases), p, SHRINK, pad, z)
+    t = thing(ref, bases)
+    return C.obb_contains(t, p, SHRINK, pad, z) and C.stands_in_solid(t, p)
 
 
 def _reach(ref: dict, bases: dict) -> float:
@@ -56,7 +57,8 @@ def hits(row: dict, near: list[dict], bases: dict) -> list[dict]:
         if o is row or o["id"] == row["id"] or math.dist(o["pos"][:2], row["pos"][:2]) > reach + _reach(o, bases):
             continue
         b = thing(o, bases)
-        if (C.obb_contains(b, a["pos"], SHRINK) or C.obb_contains(a, b["pos"], SHRINK)) and not C._source_had(a, b):
+        if ((C.obb_contains(b, a["pos"], SHRINK) and C.stands_in_solid(b, a["pos"]))
+                or (C.obb_contains(a, b["pos"], SHRINK) and C.stands_in_solid(a, b["pos"]))) and not C._source_had(a, b):
             out.append(o)
     return out
 

@@ -50,6 +50,10 @@ nothing of it shows (its top under the lowest ground beneath it), a plant or a d
 is under; stilt posts and rock feet in the ground are fine, and a house moved down whole by hand is judged by what
 shows, not by the source's seat.
 
+Overlap is inside the solid: a rock, cliff, tree or Hist is judged by the vertical profile of its collision
+(`check.stands_in_solid`), so open ground in a cliff's box or beside a trunk is outside; every other piece is its box,
+so a house inside a house is still caught.
+
 Enforced by the checks: nothing floating along its true outline beyond its source seat, nothing buried (`draft check`;
 `look probe --all`), the build's `seat` and `overlap` checks, `seat <place_id>` reporting 0 refs moved.
 
