@@ -5,6 +5,7 @@ leads to), a person (id or name), a quest thing (its spot id or ref), or "x,y"."
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -28,7 +29,11 @@ def data_out() -> Path:
     return ROOT / "out" / "places"
 
 
-LOOK_OUT = Path(os.environ.get("LOOK_OUT", ROOT / "out" / "places" / "look"))
+# Each checkout (the main tree, a lane's worktree) has its own daemon, session and port: `out` is one shared
+# directory across worktrees, and a daemon serves the place files of the tree that started it.
+TREE = "main" if (ROOT / ".git").is_dir() else hashlib.sha1(str(ROOT).encode()).hexdigest()[:8]
+LOOK_OUT = Path(os.environ.get("LOOK_OUT", ROOT / "out" / "places" / "look" / TREE))
+LOOK_PORT = 8791 if TREE == "main" else 8800 + int(TREE, 16) % 180
 
 
 def _jsonl(p: Path) -> list[dict]:

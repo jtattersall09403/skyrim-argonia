@@ -20,3 +20,10 @@ elements sneaking into our Black Marsh game"; wants Pelagiad font throughout, ne
 
 - Our text goes through the `text-review` skill, whose linter carries the Nordic-tell list.
 - An element BM&V or a listed mod ships is theirs, not ours to fix; we may include them.
+
+## Amended 2026-11-20 (owner, #80)
+
+There is no blanket ban on Nordic pieces in places. A Nordic piece stays where it is nearly fine as it is; the
+Tropical Skyrim version is used where there is one; an easy swap is taken where there is one; each case is judged
+on how it reads to the player, and nothing is laboriously replaced. Plainly Nordic signs (a Doomstone circle, a
+Nord burial, a Talos shrine) are the cases where a swap is worth making.

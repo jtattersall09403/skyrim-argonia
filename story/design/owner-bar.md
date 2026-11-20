@@ -193,6 +193,8 @@ with its source in [owner-rulings-on-factions](../../docs/research/writing/owner
 - No pointless or buggy activity as a step (MQ05's tree climb was cut: #50).
 - Anyone can die. A person the main quest or a faction's line cannot go on without gets our version of
   Morrowind's "thread of prophecy" message; a minor side quest just fails with a journal entry (OR 2026-11-12).
+- Killing a person the main quest cannot go on without shows that message; the journal never tells the player
+  where to go instead (Heem-Jasa in quest 3) (OR 2026-11-20, #80).
 - A place or a quest promises only what Skyrim's own systems can deliver (OR 2026-11-09).
 - "Everything described in all parts of the story need to be known to be deliverable": while writing, the writer
   refers to the known deliverable set (the world's places as the data gives them, the meshes, creatures and items
