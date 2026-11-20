@@ -678,9 +678,51 @@
      "what": "a scaffold deck with two tents and fences",
      "verdict": "kept",
      "why": "hide tents on a cypress platform"
+    },
+    {
+     "structure": "walls",
+     "what": "Ree-An-Wo's cypress stockade scaffolds, ramps and floors",
+     "verdict": "kept",
+     "why": "they are the record's small cypress platform the tents stand on, not a wall"
+    },
+    {
+     "structure": "mine",
+     "what": "one cypress stockade plank the classifier reads as a mine",
+     "verdict": "kept",
+     "why": "a plank of the camp's platform; the source has no mine here"
     }
    ],
-   "source": "Ree-An-Wo kept: hide tents on cypress platforms are what the record asks, and it is the source note's own choice; Left Hand Mine (Nordic) and Black Rose (ruin) are further off; near Loreisian is too small for 23 people. Its four-storey scaffold tower (w01) is still to be cut down to a small platform."
+   "source": "Ree-An-Wo kept: hide tents on cypress platforms are what the record asks, and it is the source note's own choice; Left Hand Mine (Nordic) and Black Rose (ruin) are further off; near Loreisian is too small for 23 people. Its four-storey scaffold tower (w01) is still to be cut down to a small platform.",
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "a fishing spot on the woven weir across the creek (draft.add need 0), where eels and carp are taken"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the camp's cooking stand by the drying rack (place.json stations)"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "the tanning rack on the platform (place.json stations)"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Heem-Jasa, the tree's minder (apothecary, people.jsonl services), selling sap, swamp fungus and eggshells"
+    },
+    {
+     "kind": "trainer",
+     "by": "Heem-Jasa (people.jsonl services: Adept Alchemy trainer)"
+    },
+    {
+     "kind": "combat-foes",
+     "by": "quest 3's own three Unbound sap-takers at a fixed level at the reed hide (quests.jsonl npc.mn03.sap-taker-1..3)"
+    },
+    {
+     "kind": "treasure",
+     "by": "the sap-takers' pack at the reed hide (draft.add need 1), stocked at T2"
+    }
+   ]
   }
  },
  "fit": {
