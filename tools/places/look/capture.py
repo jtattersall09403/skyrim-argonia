@@ -65,8 +65,10 @@ def point_in_piece(p: dict, pt, pad: float = 0.0) -> bool:
     return bool(np.all(loc >= lo) and np.all(loc <= hi))
 
 
-def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = False) -> str | None:
-    """Why the camera stands where it cannot see: under the ground, or inside a piece's box (a tree's: its crown)."""
+def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = False,
+                  crowns_cut: float | None = None) -> str | None:
+    """Why the camera stands where it cannot see: under the ground, or inside a piece's box (a tree's: its crown,
+    unless the crowns are cut away under the camera)."""
     if ground_z is not None and pos[2] < ground_z - 2 and not room:
         return f"the camera is under the ground ({ground_z - pos[2]:.0f} u under it)"
     for p in pieces:
@@ -77,6 +79,8 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
         if not point_in_piece(p, pos, 4.0):
             continue
         if p.get("kind") == "tree":   # a tree's box is mostly air: inside its crown (the upper part) or its trunk
+            if crowns_cut is not None and pos[2] > crowns_cut:
+                continue
             part = tree_part(p, pos)
             if part is None:
                 continue

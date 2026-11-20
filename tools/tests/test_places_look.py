@@ -601,3 +601,27 @@ def test_stand_steps_out_of_pieces_onto_the_floor():
     assert st["pos"][2] == 10.0 + geom.EYE
     assert not (400 <= st["pos"][0] <= 600 and abs(st["pos"][1]) < 100)
     assert framing.stand([0, 0, 0], [-1, 0], 500.0, lambda x, y: None, blocked) is None
+
+
+# ---------- survey (survey.py) ----------
+def test_survey_plan_hashes_and_changed():
+    from tools.places.look import survey
+    p = survey.plan()
+    assert len(p) == 14 and sum(t.get("height") == "eye" for t in p) == 8 and sum(bool(t.get("section")) for t in p) == 2
+    assert sum(bool(t.get("own_light")) for t in p) == 1
+    refs = [{"id": "a", "cluster": "b01", "pos": [0, 0, 0]}, {"id": "b", "cluster": "b02", "pos": [1, 0, 0]}]
+    h = survey.structure_hashes(refs)
+    assert set(h) == {"b01", "b02", "_place"}
+    assert survey.changed(h, h) == []
+    moved = survey.structure_hashes([refs[0], dict(refs[1], pos=[2, 0, 0])])
+    assert survey.changed(h, moved) == ["b02", "_place"]
+    assert survey.changed({}, h) == ["b01", "b02", "_place"]
+
+
+def test_survey_table_text_says_failed_tiles():
+    from tools.places.look import survey
+    rows = [{"tile": "N near", "capture": "good", "subject_seen": 0.8, "subject_fills": 0.1, "land": 0.4, "sky": 0.3,
+             "occluders": [{"piece": "x", "edid": "Oak", "share": 0.05}]},
+            {"tile": "S near", "capture": "failed", "why": "only 2% of the subject is seen"}]
+    t = survey.table_text("b01", rows)
+    assert "1 of 2 tiles failed" in t and "Oak 5%" in t and "FAILED: only 2%" in t

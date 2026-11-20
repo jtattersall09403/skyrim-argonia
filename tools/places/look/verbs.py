@@ -82,6 +82,9 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                                        "held_by") if k in r} | ({"ends": r["ends"]} if "ends" in r else {})
                     | ({"fault": True} if r["id"] in fl else {}) for r in rows]
         return {"thing": th["name"], "kind": th["kind"], "box": [th["lo"], th["hi"]], "pieces": rows}
+    if verb == "survey":
+        from tools.places.look import survey
+        return survey.run(d, place, sess["strokes"], args)
     if verb == "pick":
         return pick(d, place, sess["strokes"], args)
     if verb in HANDS:
@@ -353,7 +356,7 @@ def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
         sc._names = {p["id"]: {"edid": p.get("edid"), "kind": p.get("kind")} for p in sc.everything()}
     ins = None
     if not c.get("ortho"):
-        ins = _blocker(sc, inside)(c["pos"])
+        ins = _blocker(sc, inside)(c["pos"], (c.get("canopy") or {}).get("z"))
     subj = {p["id"] for p in (th or {}).get("pieces", [])}
     s = capture.score(ids, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
                       ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")))
@@ -656,10 +659,16 @@ def pick(d, place, strokes, args) -> dict:
     png, px, py = args[0], float(args[1]), float(args[2])
     cam = json.loads(open(png + ".json").read())
     k = 0
-    if cam.get("tiles"):
-        tw = cam["tiles"][0]["w"]
-        k = int(px // tw)
-        cam, px = cam["tiles"][k], px - k * tw
+    if cam.get("tiles"):   # a sheet: the tile under the pixel (placed by its offset, else side by side)
+        ts = cam["tiles"]
+        k = next((i for i, t in enumerate(ts) if "ox" in t and t["ox"] <= px < t["ox"] + t.get("w", 0)
+                  and t["oy"] <= py < t["oy"] + t.get("h", 0)), None)
+        if k is None:
+            k = int(px // ts[0]["w"])
+            ox, oy = k * ts[0]["w"], 0
+        else:
+            ox, oy = ts[k]["ox"], ts[k]["oy"]
+        cam, px, py = ts[k], px - ox, py - oy
     sc = d.scene(place, strokes, cam.get("space", "exterior"))
     # what is drawn at the pixel, from the image's own id buffer; then what the ray passes through behind it
     drawn = None

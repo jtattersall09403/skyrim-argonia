@@ -251,11 +251,15 @@ export function install(studio) {
       const tw = performance.now();
       r.setPixelRatio(1); r.setSize(w, h, false); r.setScissorTest(false); r.setViewport(0, 0, w, h);
       view.lighting?.beforeDraw();
-      // a dark room judged for shape: a neutral fill over its own light (the room's lights and fixtures stay)
-      const hemi = view.lighting?.hemi, keep = cam.fill && hemi ? [hemi.color.clone(), hemi.groundColor.clone(), hemi.intensity] : null;
+      // --lit: a neutral fill over the place's own light, indoors or out, for judging shape (the viewer's light is not the game's)
+      const hemi = view.lighting?.hemi, sun = view.lighting?.sun;
+      const keep = cam.fill && hemi ? [hemi.color.clone(), hemi.groundColor.clone(), hemi.intensity] : null;
+      const keepSun = cam.fill && sun ? [sun.color.clone(), sun.intensity] : null;
       if (keep) { hemi.color.setRGB(0.55, 0.55, 0.55); hemi.groundColor.setRGB(0.35, 0.35, 0.35); hemi.intensity = Math.PI; }
+      if (keepSun) { sun.color.setRGB(1, 1, 1); sun.intensity = 1.0; }
       r.render(view.scene, c);
       if (keep) [hemi.color, hemi.groundColor, hemi.intensity] = keep;
+      if (keepSun) [sun.color, sun.intensity] = keepSun;
       r.getContext().finish();
       const tr = performance.now();
       const png = r.domElement.toDataURL('image/png');

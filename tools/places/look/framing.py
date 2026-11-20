@@ -82,9 +82,9 @@ def blocker(pieces: list[dict], ground) -> callable:
     """blocked(eye): why a camera there cannot see (capture.camera_inside), over the pieces near it."""
     boxes = [(p, *geom.aabb(p)) for p in pieces if p.get("model")]
 
-    def blocked(eye):
+    def blocked(eye, crowns_cut=None):
         near = [p for p, lo, hi in boxes if lo[0] - 8 <= eye[0] <= hi[0] + 8 and lo[1] - 8 <= eye[1] <= hi[1] + 8
                 and lo[2] - 8 <= eye[2] <= hi[2] + 8]
         g = ground.height(eye[0], eye[1]) if ground is not None else None
-        return capture.camera_inside(eye, near, g)
+        return capture.camera_inside(eye, near, g, crowns_cut=crowns_cut)
     return blocked

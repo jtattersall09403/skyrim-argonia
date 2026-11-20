@@ -89,6 +89,9 @@ def main(argv: list[str]) -> int:
     t0 = time.time()
     out = call({"place": place, "verb": verb, "args": args})
     out["wall_s"] = round(time.time() - t0, 2)
+    if verb == "survey" and out.get("ok"):   # one line per structure: its sheet and its failed tiles
+        print("\n".join(out["lines"]) + f"\n({out['total_s']} s)")
+        return 0
     if started:
         out["daemon_start_s"] = round(started, 1)
     print(json.dumps(out, indent=1))
