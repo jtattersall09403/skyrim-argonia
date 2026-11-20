@@ -17,6 +17,11 @@ Step 5 of the place path ([place-system](../place-system/SKILL.md)). Stages: `ad
   furniture; else the build meshes it again and says why.
 - A room may be stripped of what it must not bring: the added door's `room.drop` `{source ref id: why}` (a container
   of levelled treasure), Nordic pieces swapped by `draft.replace` where an easy swap exists.
+- Part of a large cell is copied by a cut: the added door's `room.cut` `{"box": [x1, y1, x2, y2]}` keeps only what
+  lies inside the box, the way out is a load door inside it, and the build meshes the cut room's navmesh itself.
+  Close every opening the cut leaves with the kit's own door or wall piece. `room.strip` `{base editor id: why}`
+  takes out every piece of a base (the cell's enemies, traps, levers and treasure).
+- A person works in an added room by the row's `work_for` (the people stage gives them their work stop there).
 
 ## A building a story needs and the source lacks
 

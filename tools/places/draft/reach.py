@@ -137,7 +137,7 @@ def check(folk: list[dict], refs: list[dict], spaces: dict[str, dict], bases: di
             return sp, f"space {sp} is not drafted"
         ref = st.get("ref")
         if ref:
-            keep = interiors.kept(s.get("copy_of"), s.get("room"))
+            keep = interiors.kept(s.get("copy_of"), s.get("room"), s.get("cut"))
             ours = {o["id"] for o in s.get("overrides") or []}
             if keep is not None and ref not in keep and ref not in ours:
                 return sp, f"{ref} is outside the room {sp} keeps (the builder's island from its way out)"

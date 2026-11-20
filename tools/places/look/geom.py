@@ -24,6 +24,7 @@ WALL_WORDS = HANG_WORDS + ("window",)   # fixed to a wall or post: held by the s
 TOUCH = 8.0                 # a wall-fixed thing's box this close to a solid's box touches it
 PLANTS = {"plant", "groundcover", "flora"}   # buried only when most of its height is under the ground
 STRUCTURAL = {"building", "static", "furniture", "door", "container", "activator"}
+DRAUGHT = 160.0            # a boat's hull may dip this far under the water surface and still float
 BURIED = 64.0              # a piece whose top is this far under the ground is lost in it
 HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")   # a vessel: whatever stands inside its box rests on its deck
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
@@ -87,6 +88,13 @@ def hangs(p: dict) -> bool:
 def vessel(p: dict) -> bool:
     words = f"{p.get('edid') or ''} {p.get('model') or ''}".lower()
     return p.get("kind") in ("building", "static") and any(w in words for w in HULL_WORDS)
+
+
+def world_rows(refs: list[dict], bases: dict) -> list[dict]:
+    """The world's own solid things about a place (its trees, rocks) from the ground bundle's rows: what holds up a
+    place's pieces beside its own. Probe and `draft check` both judge with these."""
+    return [r for r in refs if r.get("layer") != "place"
+            and (r.get("kind") or (bases.get(r["base"]) or {}).get("kind")) not in NO_SOLID]
 
 
 def stage_made(p: dict) -> bool:
@@ -253,7 +261,13 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
             if p.get("kind") not in STRUCTURAL:   # a flower, a vine, a pot: held by the trunk or wall it grows on or sits in
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
             on.discard(p["id"])
-        info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on), "grounded": over is None or over <= tol,
+        afloat = False
+        if vessel(p) and hasattr(ground, "water"):   # a boat floats on the water: held when its hull dips into it
+            cx, cy = (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2
+            w = ground.water(cx, cy)
+            afloat = w is not None and w - DRAUGHT <= low <= w + 8.0
+        info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on),
+                         "grounded": over is None or over <= tol or afloat,
                          "gmin": round(min(gs), 1) if gs else None}
     changed = True
     while changed:

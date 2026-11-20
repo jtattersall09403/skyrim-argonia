@@ -4,7 +4,9 @@ Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped 
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
 had on land, or the reverse; a Nordic base added from outside the source place or a levelled base placed; a light off its fixture, an added forge
-unlit; a person whose bed or routine points at nothing;
+unlit; a person whose bed or routine points at nothing; an obviously wrong piece (`obvious`: a model that does not
+resolve or a bare collision box standing on its own, a piece floating with nothing under it, a bridge without support
+at both ends);
 and every check of the build (`tools/places/check.py`, its streets on the main walked network among them) on the
 draft built.
 """
@@ -77,6 +79,9 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         bad += hang.faults(refs, bases, *hang.measurers(bases))
     from tools.places.draft import sap
     bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
+    from tools.places.draft import obvious                 # no stand-in box, nothing floating, no bridge on one leg
+    wrefs = grd.exterior.refs if grd.exterior else []
+    bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs + wrefs} - set(bases)), **bases}, G, wrefs)
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]
@@ -154,7 +159,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         sj = json.loads(sj.read_text())
         copied = io.copied_space(sj["copy_of"], src, bundles)
         known = {**io.catalogue_bases({r["base"] for r in copied.refs} - set(bases)), **bases} if sj.get("added") and copied else bases
-        for b in interiors.beds_in(copied.refs if copied else [], known, sj.get("room"), sj["copy_of"]):
+        for b in interiors.beds_in(copied.refs if copied else [], known, sj.get("room"), sj["copy_of"], sj.get("cut")):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
     for r in refs:   # the guard camp's beds, outdoors
@@ -418,7 +423,7 @@ def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -
         if sp.get("space_id") == "exterior" or not sp.get("copy_of"):
             continue
         rows = {r["src"]: r for r in io.read_jsonl(sj.parent / "refs.jsonl") if r.get("src")}
-        keep = interiors.kept(sp["copy_of"], sp.get("room"))
+        keep = interiors.kept(sp["copy_of"], sp.get("room"), sp.get("cut"))
         src_sp = io.copied_space(sp["copy_of"], src, bundles)
         place_source = src.meta.get("source_id") or src.meta.get("bundle_id", "").removeprefix("src.")
         if sp.get("added") and src_sp and sp["copy_of"].split("/", 1)[0] != place_source:

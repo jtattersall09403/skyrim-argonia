@@ -174,7 +174,7 @@ def apply(st, log=print) -> dict:
         src_sp = st.src.spaces.get(t)
         if src_sp is None:
             continue
-        keep = interiors.kept(info["copy_of"], info.get("room"))
+        keep = interiors.kept(info["copy_of"], info.get("room"), info.get("cut"))
         refs = [r for r in src_sp.refs if keep is None or r["id"] in keep]
         fol = followed(refs)
         rows = {o.get("src"): o for o in sp["refs"] if o.get("src")}

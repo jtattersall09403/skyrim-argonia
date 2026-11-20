@@ -152,3 +152,17 @@ def test_a_stop_at_a_point_under_a_deck_stands_on_the_network():
     r = folk[0]["routine"]
     assert r[0]["at"]["pos"] == [10.0, 20.0, 150.0] and r[1]["at"]["pos"] == [600, 20]
     assert r[2]["at"] == {"space": "exterior", "ref": "bed"}
+
+
+def test_a_door_and_its_own_frame_stand_in_each_other_by_design():
+    door = {"id": "p.D", "kind": "door", "space": "exterior", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0],
+            "bounds": [-80, -20, 0, 80, 20, 250]}
+    pillar = {"id": "p.P", "kind": "building", "edid": "XanmeerExtWallPillar01", "space": "exterior",
+              "pos": [30.0, 0.0, 0.0], "rot": [0, 0, 0], "bounds": [-40, -40, 0, 40, 40, 600]}
+    wall = {"id": "p.W", "kind": "building", "edid": "Hut01", "space": "exterior", "pos": [0.0, 180.0, 0.0],
+            "rot": [0, 0, 0], "bounds": [-200, -200, 0, 200, 200, 400]}    # the door in its wall ring
+    crate = {**door, "id": "p.C", "kind": "container"}
+    assert C.overlap_pairs([door, pillar]) == []
+    assert C.overlap_pairs([door, wall]) == []
+    assert C.overlap_pairs([door, {**wall, "pos": [0.0, 0.0, 0.0]}])     # a door in a house's middle still faults
+    assert C.overlap_pairs([crate, pillar])

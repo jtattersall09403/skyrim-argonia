@@ -19,6 +19,22 @@
    "XeechLeelStrongroom": {
     "name": "Council Strongroom",
     "why": "the thieves' line names the council's strongroom behind an iron door (thieves.md:210-236, :350); no household lives there (AGENT_INVENTED)"
+   },
+   "MarketSmithy": {
+    "name": "The Market Smithy",
+    "why": "the place record's the market smithy (gives and source note), a room of ours behind an added door (AGENT_INVENTED)"
+   },
+   "LevyPost": {
+    "name": "The Levy's Post",
+    "why": "the place record's the levy's post (gives and source note), a room of ours behind an added door (AGENT_INVENTED)"
+   },
+   "HelstromXanmeer": {
+    "name": "Helstrom Xanmeer",
+    "why": "the place record names it the old Xanmeer on the city's north-western edge; the room is its hall, where the council of the Xeech-Leel holds its open sittings and the Root Talk meets (AGENT_INVENTED)"
+   },
+   "01ArgonianHouseinside.8": {
+    "name": "Nesh-Deeka's House",
+    "why": "the main quest names the quiet house by the city landing Nesh-Deeka's House (mn05, mn07, mn10, mn13); the Toh-Reel-Ka's handler lives there (AGENT_INVENTED)"
    }
   },
   "add": [
@@ -333,6 +349,595 @@
     "need": 12,
     "tier": "AGENT_INVENTED",
     "why": "the second of the two lanterns on the sill by the door that tell a Chainbreaker the house is safe (chainbreakers-newworld.md:619)"
+   },
+   {
+    "base": "Black Marsh North.esp:07308C",
+    "kind": "building",
+    "pos": [
+     -53503.0,
+     -588680.0
+    ],
+    "rot_z": 5.49779,
+    "scale": 0.78,
+    "dz": 830.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the old Xanmeer, the record's one stone building: Black Marsh & Valenwood's own stepped temple (01aztectemple2, 1mjyaztecbuilding3redone; 69.8 x 65.4 x 32.1 m at scale 1) on the footprint of the source's hidden ziggurat; at 0.78 it is 54 x 51 m and 25 m tall, the biggest thing in the city by twice but no wider than the camp and houses round it, where 0.95 (66 m) swallowed them; its broad stair is on its local south face, turned (315 degrees) to the south-east where the city's way (path.13) comes up from the market; its underside sunk 60 to 160 units into the ground so no edge shows a gap; its own collision is its mesh's, so what is walked is what is seen"
+   },
+   {
+    "base": "King of the Murkmire.esp:05CCD1",
+    "kind": "building",
+    "pos": [
+     -42122.0,
+     -587227.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the market smithy's house (the record's gives: forge, anvil, armour bench, grindstone, smelter and tanning rack at the market smithy): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), on the smith's yard's west side, its door opening east onto the yard"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -41795.1,
+     -586974.0
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.SFC2MXK2C2949BFZTX887YKNXK",
+    "dz": 8.86,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothIronworks",
+     "door": "King of the Murkmire.esp:0CE762",
+     "space": "MarketSmithy",
+     "arrival": [
+      -41694.8,
+      -586965.6
+     ],
+     "whole": true
+    },
+    "why": "the market smithy's door (MudHutLDoor02, as Lilmoth sets it), into a copy of King of the Murkmire's Lilmoth Ironworks, the source note's ironworks set here as the market smithy; its other ways out removed"
+   },
+   {
+    "base": "King of the Murkmire.esp:05CCD1",
+    "kind": "building",
+    "pos": [
+     -38700.0,
+     -595500.0
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the levy's post (the source note: Lilmoth's guardhouse set here as the levy's post; a tribal levy keeps the guard): the house Lilmoth's buildings stand in (MurkmireHouse06Beige), by the levy's guard stand west of the market"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -38373.1,
+     -595247.0
+    ],
+    "rot_z": 4.7124,
+    "on": "helstrom.B4GMRVF5BZCJ6JHYW5D5RY8ZE5",
+    "dz": 8.86,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.lilmothlocation/LilmothGuardhouse01",
+     "door": "King of the Murkmire.esp:85F791",
+     "space": "LevyPost",
+     "arrival": [
+      -38272.8,
+      -595238.6
+     ]
+    },
+    "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse"
+   },
+   {
+    "base": "Black Marsh.esm:084B54",
+    "kind": "building",
+    "pos": [
+     -41286.2,
+     -593182.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B55",
+    "kind": "building",
+    "pos": [
+     -40866.2,
+     -593022.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B56",
+    "kind": "building",
+    "pos": [
+     -40446.2,
+     -593182.4
+    ],
+    "rot_z": 0.0,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:084B56",
+    "kind": "building",
+    "pos": [
+     -42177.9,
+     -596772.2
+    ],
+    "rot_z": 2.35619,
+    "dz": -8.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the sap-seller's stall beside its alchemy lab (the record's gives: alchemy lab at the sap-seller's stall): Black Marsh & Valenwood's own market stand, sunk 8 units into the ground"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -25360.24,
+     -612743.54
+    ],
+    "rot_z": 1.60001,
+    "scale": 1.3,
+    "dz": 10.67,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.10",
+     "arrival": [
+      -25404.5,
+      -612295.0
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -26909.51,
+     -614613.23
+    ],
+    "rot_z": 0.41461,
+    "scale": 1.3,
+    "dz": 16.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.11",
+     "arrival": [
+      -27341.8,
+      -614485.6
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -25139.39,
+     -608824.89
+    ],
+    "rot_z": 6.2214,
+    "scale": 1.3,
+    "dz": 22.2,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.12",
+     "arrival": [
+      -25582.1,
+      -608909.7
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -32462.97,
+     -607591.98
+    ],
+    "rot_z": 5.5596,
+    "scale": 1.3,
+    "dz": -53.36,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.13",
+     "arrival": [
+      -32760.1,
+      -607930.9
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -33156.63,
+     -602434.85
+    ],
+    "rot_z": 6.0978,
+    "scale": 1.3,
+    "dz": 15.18,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.14",
+     "arrival": [
+      -33585.5,
+      -602573.6
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -36583.96,
+     -603092.43
+    ],
+    "rot_z": 2.87641,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.15",
+     "arrival": [
+      -36167.5,
+      -602919.9
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -37324.53,
+     -601720.29
+    ],
+    "rot_z": 3.07641,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.16",
+     "arrival": [
+      -36882.1,
+      -601634.0
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -34337.31,
+     -598552.43
+    ],
+    "rot_z": 0.01461,
+    "scale": 1.3,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+     "door": "Black Marsh.esm:1E4419",
+     "space": "01ArgonianHouseinside.17",
+     "arrival": [
+      -34785.2,
+      -598603.2
+     ],
+     "strip": {
+      "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
+     }
+    },
+    "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D53",
+    "kind": "door",
+    "pos": [
+     -52018.1,
+     -590164.9
+    ],
+    "rot_z": 5.49779,
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.teethofsithislocation/TeethofSithisInt03",
+     "door": "King of the Murkmire.esp:840718",
+     "space": "HelstromXanmeer",
+     "arrival": [
+      -51841.3,
+      -590341.7
+     ],
+     "cut": {
+      "box": [
+       14900,
+       -800,
+       19400,
+       6700
+      ]
+     },
+     "strip": {
+      "XanmeerLever01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "GenPullChain01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerArgonianBust03Door01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "defaultSetStageTRIGPlayerOnly": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerPedestal01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerChestBoss01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerUrn03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TreasXanmeerUrn04": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerFurnitureBedDouble": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CraftingAlchemyWorkbench": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CraftingEnchantingWorkbench": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerNisswoCoin": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ChainLightningScroll": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ConjureFrostAtronachScroll": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DummyPotion": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageHealth03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageMagicka02": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "DamageStamina03": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CureDisease": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "CurePoison": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemCommonFilled": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemGreater": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemLesser": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemPetty": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SoulGemPettyFilled": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "GemGarnet": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "BoneTrollSkull01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "VoidSalts": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "SprigganSap": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "Taproot": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "HistSap": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ccBGSSSE025_OreAmber": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "ccBGSSSE037_BunglersBane": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerTrapFlamethrower01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerTrapBladeSwinging01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "TrapTriggerBox": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerPortcullisLarge01": "the Teeth of Sithis's gaol and treasure, not a council's: nothing of the king's trap-hall is copied (no trap, lever, pedestal, boss chest or levelled urn, decision 0035), no bed, no loose loot",
+      "XanmeerRubbleBlocks06": "a loose fallen block on the hall floor reads as a ruin, not a hall in use"
+     }
+    },
+    "why": "the Xanmeer's door: King of the Murkmire's stone load door (XanmeerLDoor01) centred at the foot of the temple's stair, turned with the temple, as King of the Murkmire sets it at the foot of Ixtaxh-Thtithil-Meht's pyramid; into the throne wing of the Teeth of Sithis Halls copied alone (the cell's part east of its cut, its own north door the way out), the old seat where the council holds its open sittings and the Root Talk meets"
+   },
+   {
+    "base": "King of the Murkmire.esp:05BF2B",
+    "kind": "building",
+    "pos": [
+     -52136.2,
+     -589881.4
+    ],
+    "rot_z": 2.3562,
+    "dz": 96.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the east pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:05BF2C",
+    "kind": "building",
+    "pos": [
+     -52301.6,
+     -590046.8
+    ],
+    "rot_z": 2.3562,
+    "dz": 96.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the west pillar of the Xanmeer's door frame, set as King of the Murkmire frames the door of Ixtaxh-Thtithil-Meht (its two wall pillars either side of the slab), sunk a hundred units into the ground"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D2E",
+    "kind": "static",
+    "pos": [
+     -51749.4,
+     -589966.9
+    ],
+    "rot_z": 5.49779,
+    "dz": -10.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone fire-bowl on the east side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+   },
+   {
+    "base": "King of the Murkmire.esp:056D2E",
+    "kind": "static",
+    "pos": [
+     -52216.1,
+     -590433.6
+    ],
+    "rot_z": 5.49779,
+    "dz": -10.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone fire-bowl on the west side of the Xanmeer's door (King of the Murkmire's XanmeerBrazier03, as at Ixtaxh-Thtithil-Meht's door): the old seat is kept and lit"
+   },
+   {
+    "base": "King of the Murkmire.esp:5E249F",
+    "kind": "door",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15260.0,
+     2496.0,
+     -144.0
+    ],
+    "rot_z": 4.71239,
+    "tier": "AGENT_INVENTED",
+    "lock": {
+     "level": "RequiresKey",
+     "key": null,
+     "flags": "0"
+    },
+    "why": "the cut closed: King of the Murkmire's own stone door (XanmeerDoor03, the wing's other inner doors) shut in the west arch where the throne wing met the rest of the Teeth of Sithis Halls, locked with no key, so no opening shows the void and nothing says there is more",
+    "work_for": [
+     "Raxeela-Hut"
+    ]
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15850.7,
+     2954.9,
+     -288.0
+    ],
+    "rot_z": 0.61087,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15733.3,
+     2703.1,
+     -288.0
+    ],
+    "rot_z": 0.2618,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "work_for": [
+     "Hixee-Ra"
+    ]
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15733.3,
+     2288.9,
+     -288.0
+    ],
+    "rot_z": 6.02139,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders",
+    "work_for": [
+     "Ooxa-Leet"
+    ]
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15850.7,
+     2037.1,
+     -288.0
+    ],
+    "rot_z": 5.67232,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15554.4,
+     2939.7,
+     -288.0
+    ],
+    "rot_z": 0.43633,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:5DD304",
+    "kind": "furniture",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15554.4,
+     2052.3,
+     -288.0
+    ],
+    "rot_z": 5.84685,
+    "tier": "AGENT_INVENTED",
+    "why": "a stone bench of the council's open sitting (King of the Murkmire's XanmeerFurnitureBench02, two to a bench), in two arcs west of the dais facing the throne: twelve seats for the elders"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     2496.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     1900.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
+   },
+   {
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "space": "HelstromXanmeer",
+    "pos": [
+     15650.0,
+     3092.0,
+     200.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol"
    }
   ],
   "replace": {
@@ -344,6 +949,15 @@
    },
    "Black Marsh.esm:2001F3": {
     "base": "King of the Murkmire.esp:10A52C"
+   },
+   "King of the Murkmire.esp:5E2498": {
+    "base": "King of the Murkmire.esp:5E2496"
+   },
+   "Skyrim.esm:1075FE": {
+    "base": "King of the Murkmire.esp:4EA913"
+   },
+   "Skyrim.esm:03C308": {
+    "base": "King of the Murkmire.esp:5E249F"
    }
   },
   "drop": {
@@ -503,7 +1117,122 @@
    "Black Marsh.esm:2076B4": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
    "Black Marsh.esm:2076B5": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
    "Black Marsh.esm:2076B6": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
-   "Black Marsh.esm:1E4519": "a bench the great city tree now stands over"
+   "Black Marsh.esm:1E4519": "a bench the great city tree now stands over",
+   "Black Marsh North.esp:083220": "a ship load door whose ship is not in the place and that leads nowhere: it would hang in the air over the water",
+   "Black Marsh.esm:1CE924": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE91C": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1CE91D": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1CE91E": "a high dockside bridge whose ends stood on the source banks: on our ground it joins nothing and hangs in the air (no street uses it)",
+   "Black Marsh.esm:1DEE29": "a hanging lantern whose lamp post is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1DEE20": "a hanging lantern whose lamp post is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1E4512": "a perched bird whose perch is not in the place: it would sit in mid-air",
+   "Black Marsh.esm:1E4292": "a beehive whose tree is not in the place: it would hang in mid-air",
+   "Black Marsh.esm:1CE928": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE922": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE925": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE926": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE923": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh.esm:1CE927": "a level bridge the source laid at z 860 across a ravine our ground does not have: its pieces seated one by one stand broken in mid-air, and no street uses them",
+   "Black Marsh North.esp:0787DE": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E4": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DF": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E0": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DB": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DC": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787DD": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E1": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E5": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E6": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E2": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh North.esp:0787E3": "a fire pit (or its fire and light) the source set on the top of its hidden Xanmeer at 2240, above the top of the Xanmeer that now stands there: it would burn in mid-air",
+   "Black Marsh.esm:207719": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771A": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771B": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771C": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771D": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:20771E": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:207720": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Black Marsh.esm:207721": "a load door of the source's Argonian house that led nowhere (the source holds two interiors): our added door stands in its place and leads into the house's home",
+   "Dawnguard.esm:00086E": "a statue of Mara, a divine of the Nine, in the tree-minders' hall: plainly not theirs, an easy drop",
+   "Dawnguard.esm:00087E": "a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)",
+   "Dawnguard.esm:00087F": "a Thalmor banner in the tree-minders' hall: plainly not theirs (an easy drop, Nordic pieces judged case by case)",
+   "Dawnguard.esm:00088D": "a Skyrim hold banner in the tree-minders' hall: an easy drop",
+   "Dawnguard.esm:00F552": "a statue of Malacath in the tree-minders' hall: plainly not theirs, an easy drop",
+   "Black Marsh.esm:200AE1": "a piece the source keeps 4200 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B1": "a piece the source keeps 30031 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9823": "a CandleLanternwithCandle01 hanging 22.5 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200AE2": "a piece the source keeps 3163 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200AC2": "a piece the source keeps 3618 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B7": "a piece the source keeps 30038 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200AC8": "a piece the source keeps 2473 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B8": "a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9820": "a RuinsSconceRopeShort hanging 24.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1F07A7": "a piece the source keeps 30052 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9825": "a RuinsSconceRopeShort hanging 21.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200ADB": "a piece the source keeps 4820 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9821": "a CandleLanternwithCandle01 hanging 22.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1F07B5": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B3": "a piece the source keeps 30060 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200AC7": "a piece the source keeps 4878 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A3": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200241": "a piece the source keeps 30020 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:20025D": "a piece the source keeps 30199 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200257": "a piece the source keeps 30213 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1D9169": "a RuinsSconceRopeShort hanging 6.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1DE986": "a 01barkwindow hanging 4.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1E9899": "a piece the source keeps 31058 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A5": "a piece the source keeps 30051 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A6": "a piece the source keeps 30041 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1D918B": "a CandleLanternwithCandle01 hanging 36.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1D9190": "a piece the source keeps 28268 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1DEF01": "a RuinsSconceRopeShort hanging 7.3 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200245": "a piece the source keeps 30172 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200AD5": "a piece the source keeps 4450 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07C1": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9812": "a CandleLanternwithCandle01 hanging 29.4 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200AE3": "a piece the source keeps 4223 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B0": "a piece the source keeps 30055 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E44B5": "a piece the source keeps 30104 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A4": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1DEF03": "a CandleLanternwithCandle01 hanging 5.9 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1E9826": "a CandleLanternwithCandle01 hanging 19.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:2001F2": "a piece the source keeps 30047 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9811": "a RuinsSconceRopeShort hanging 30.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:201798": "a CandleLanternwithCandle01 hanging 41.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1E44B3": "a piece the source keeps 30157 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07C2": "a piece the source keeps 30038 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07AD": "a piece the source keeps 30053 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B9": "a piece the source keeps 30052 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A9": "a piece the source keeps 30051 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07AC": "a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07A8": "a piece the source keeps 29968 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07BA": "a piece the source keeps 30049 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1D918C": "a piece the source keeps 28372 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07AB": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:201786": "a RuinsSconceRopeShort hanging 42.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1D916D": "a CandleLanternwithCandle01 hanging 4.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200243": "a piece the source keeps 29940 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07B2": "a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9814": "a CandleLanternwithCandle01 hanging 29.5 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1F07AA": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1D916B": "a CandleLanternwithCandle01 hanging 4.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:200AB6": "a piece the source keeps 2699 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1E9828": "a CandleLanternwithCandle01 hanging 20.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1D9187": "a RuinsSconceRopeShort hanging 37.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1F07B4": "a piece the source keeps 30036 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:2017B2": "a CandleLanternwithCandle01 hanging 41.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1F07AF": "a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1DEF02": "a CandleLanternwithCandle01 hanging 5.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)",
+   "Black Marsh.esm:1D918E": "a piece the source keeps 28391 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200AEE": "a piece the source keeps 5092 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:1F07AE": "a piece the source keeps 30048 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:200242": "a piece the source keeps 30020 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees",
+   "Black Marsh.esm:2009B7": "a CandleLanternwithCandle01 381 units under the ground: nobody can see it",
+   "Black Marsh.esm:1DEEA2": "a CandleLanternwithCandle01 1003 units under the ground: nobody can see it",
+   "Black Marsh.esm:200AFF": "a CandleLanternwithCandle01 477 units under the ground: nobody can see it",
+   "Black Marsh.esm:1DEEA3": "a CandleLanternwithCandle01 1062 units under the ground: nobody can see it",
+   "Black Marsh.esm:2009AE": "a CandleLanternwithCandle01 339 units under the ground: nobody can see it",
+   "Black Marsh.esm:1DEEA1": "a RuinsSconceRopeShort 965 units under the ground: nobody can see it"
   },
   "shrine": {
    "base": "King of the Murkmire.esp:0D72B7",
@@ -516,8 +1245,8 @@
      "by": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
     },
     {
-     "line": "no stone",
-     "by": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs"
+     "line": "no new stone",
+     "by": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs; the only stone is the old Xanmeer"
     },
     {
      "line": "no outward wall",
@@ -560,15 +1289,181 @@
      "by": "kept: plain timber posts that carry the decks and the lanterns; not Nordic by the record's flags"
     },
     {
-     "line": "traps",
-     "by": "dropped: pressure plates and poison gas; the poison bloom on the ground is a harvestable ingredient, kept"
-    },
-    {
      "line": "Imperial grave containers, war table",
      "by": "dropped"
+    },
+    {
+     "line": "traps",
+     "by": "dropped: pressure plates, poison gas and the source's poison blooms (a hazard the friendly record names no danger for)"
+    },
+    {
+     "line": "the market (outdoors)",
+     "by": "the market square: three of Black Marsh & Valenwood's own market stands round the market trader's spot; the Market Cave stays only as the way to the quiet house off the market that the record's hook and the Chainbreakers' line name"
+    },
+    {
+     "line": "the market smithy",
+     "by": "the smith's yard (forge, grindstone, workbench, smelter, tanning rack) and the Market Smithy room (Lilmoth Ironworks) behind a Lilmoth house on its west side"
+    },
+    {
+     "line": "the sap-seller's stall",
+     "by": "a market stand beside the alchemy lab where Wujeel works"
+    },
+    {
+     "line": "the levy's post",
+     "by": "the Levy's Post room (Lilmoth Guardhouse) behind a Lilmoth house by the levy's guard stand"
+    },
+    {
+     "line": "only the old Xanmeer on the city's north-western edge, left by the ancients, stands in stone",
+     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) at 0.78 on the hidden ziggurat's footprint, the biggest thing in the city, its stair turned south-east to the city's way, King of the Murkmire's stone door framed by two wall pillars and two fire-bowls at the stair's foot, into the Helstrom Xanmeer hall (the Teeth of Sithis Halls' throne wing, cut and lit, benches for twelve facing the throne)"
     }
    ],
-   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced"
+   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced",
+   "gives": [
+    {
+     "kind": "rootworm-stop",
+     "by": "Cheeval-Xu, root-tender, works the city tree's sap pool (the root landing) with the rootworm tunnel mouth on its lip"
+    },
+    {
+     "kind": "boat-stop",
+     "by": "Poles-Upriver, raft-master, works the city landing's decks (cluster landing)"
+    },
+    {
+     "kind": "trader-general",
+     "by": "Weighs-Every-Coin, market trader, at the stalls of the outdoor market square"
+    },
+    {
+     "kind": "trader-blacksmith",
+     "by": "Meshu-Ka, the Root-Folk smith, at the market smithy's yard"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Wujeel, the sap and herb seller, at the sap-seller's stall and its alchemy lab"
+    },
+    {
+     "kind": "trader-spells",
+     "by": "Taleeka-Ma, tree-minders' healer, in the tree-minders' hall"
+    },
+    {
+     "kind": "trader-innkeeper",
+     "by": "Sleeps-Last keeps the Boatmen's Lodge (the ship's hold, 01Ship)"
+    },
+    {
+     "kind": "inn-room",
+     "by": "the Boatmen's Lodge's unowned bed (stations.rent_bed)"
+    },
+    {
+     "kind": "forge",
+     "by": "the market smithy's forge, added in its yard (stations.added); the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "anvil",
+     "by": "the market smithy's forge, which is its anvil; the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "armour-workbench",
+     "by": "the market smithy's workbench across its yard; the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "grindstone",
+     "by": "the market smithy's grindstone beside the forge; the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "smelter",
+     "by": "the market smithy's smelter in its yard; the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "the market smithy's tanning rack across its yard; the Market Smithy room behind the yard"
+    },
+    {
+     "kind": "alchemy-lab",
+     "by": "the sap-seller's stall's alchemy lab, worked by Wujeel"
+    },
+    {
+     "kind": "arcane-enchanter",
+     "by": "the arcane enchanter in the tree-minders' hall"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the cooking pot in the Boatmen's Lodge"
+    },
+    {
+     "kind": "trainer",
+     "line": "Expert Restoration (a tree-minder)",
+     "by": "Taleeka-Ma, in the tree-minders' hall"
+    },
+    {
+     "kind": "trainer",
+     "line": "Journeyman Alchemy (the sap-seller)",
+     "by": "Wujeel, at the sap-seller's stall"
+    },
+    {
+     "kind": "shrine-blessing",
+     "by": "the city tree (King of the Murkmire's HistTree03 at 1.5, draft.shrine) carries the blessing"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "harbour",
+     "what": "the source's landing: docks, moorings, the Brenton ship and the boats",
+     "verdict": "kept",
+     "why": "the record's raft-masters work the city landing and mn05 names the Boatmen's Lodge in the moored ship"
+    },
+    {
+     "structure": "keep",
+     "what": "the source's keep piece",
+     "verdict": "dropped",
+     "why": "the record names no keep; Helstrom has no stone"
+    },
+    {
+     "structure": "walls",
+     "what": "the source's castle wall and stockade",
+     "verdict": "dropped",
+     "why": "the record says no outward wall: the marsh is the wall"
+    },
+    {
+     "cluster": "b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16,b18,b19,b20,b24,b30,b31,b32,b33,b34,b35,b36,b37,b38,s11,s38,s42,s61",
+     "what": "the Argonian stilt, big and mud houses with their doors and lanterns",
+     "verdict": "kept",
+     "why": "the look's stilt and root-hollow houses of reed, mud and living wood; the nine copied houses are the homes"
+    },
+    {
+     "cluster": "landing",
+     "what": "the city landing's decks, moored ship and boats",
+     "verdict": "kept",
+     "why": "the boat stop and the Boatmen's Lodge"
+    },
+    {
+     "cluster": "b17,b21,b22,b23,b25,w06,w16,s14,s17,s18,s19",
+     "what": "plank bridges, stilt posts and dock steps between the districts",
+     "verdict": "kept",
+     "why": "the look's plank walks that thread the districts"
+    },
+    {
+     "cluster": "s15,s16,s22,s23,s24",
+     "what": "the levy's guard stands",
+     "verdict": "kept",
+     "why": "a tribal levy keeps the guard"
+    },
+    {
+     "cluster": "w37,w39,w40",
+     "what": "lamp posts",
+     "verdict": "kept",
+     "why": "the streets' lanterns"
+    },
+    {
+     "cluster": "b40,w57",
+     "what": "moss-grown broken ruin mounds",
+     "verdict": "kept",
+     "why": "old root-hollow ruins among the roots; no stone wall"
+    },
+    {
+     "cluster": "b39",
+     "what": "the old Xanmeer at the city's north-west edge with its fire pits and moored boats",
+     "verdict": "kept",
+     "why": "kept: the old Xanmeer, the record's one stone building; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint, with a door into its hall"
+    }
+   ]
   }
  },
  "fit": {
@@ -7574,5 +8469,9 @@
  },
  "sap": {
   "added": []
- }
+ },
+ "agent_saves_applied": [
+  "agent-20261120T093117",
+  "agent-20261120T093416"
+ ]
 }

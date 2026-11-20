@@ -680,6 +680,16 @@ def plan_clear(rows: list[dict], facts: dict) -> list[dict]:
 
 # ---- refs, interiors, doors -----------------------------------------------------------------------------------------
 
+
+def in_cut(cut: dict | None, pos) -> bool:
+    """Whether a source position lies inside a copy's cut ({"box": [x1, y1, x2, y2]} in the source cell's units; no
+    cut: everywhere): a room copied as only one part of its source cell."""
+    if not cut:
+        return True
+    x1, y1, x2, y2 = cut["box"]
+    return min(x1, x2) <= pos[0] <= max(x1, x2) and min(y1, y2) <= pos[1] <= max(y1, y2)
+
+
 def is_disabled(r: dict) -> bool:
     """A place row is built Initially Disabled when its flags say so (the ref shape's `initially_disabled`)."""
     fl = r.get("flags")
@@ -800,7 +810,11 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                     continue  # people are ours (people.jsonl), never the source's
                 if room is not None and r["fk"] not in room["refs"]:
                     continue
+                if not in_cut(sp.get("cut"), r["pos"]):
+                    continue  # a cut copy keeps only the part of the source cell inside its box
                 src_rows.append(r)
+            if sp.get("cut"):
+                room = {"mesh": {"verts": [], "tris": []}}  # its navmesh is meshed from what it keeps, not the source's
         kept = {r["fk"] for r in src_rows}
         changes = {r["src"]: r for r in S["refs"] if r.get("src") and (not plugin or r["src"] in kept)}
         fk_of_src = {}

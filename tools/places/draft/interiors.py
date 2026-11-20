@@ -67,11 +67,29 @@ def _partition(copy_of: str) -> dict:
         return build.room_partition(copy_of, refs, tmp)["rooms"]
 
 
-def kept(copy_of: str | None, room: str | None) -> frozenset | None:
-    """The source refs a copy keeps (None: the whole space)."""
-    if not room or not copy_of:
+def in_cut(cut: dict | None, pos) -> bool:
+    """Whether a source position lies inside a copy's cut (the build's rule: tools.places.build.in_cut)."""
+    from tools.places import build
+    return build.in_cut(cut, pos)
+
+
+@functools.lru_cache(maxsize=None)
+def _cut_ids(copy_of: str, box: tuple) -> frozenset:
+    from tools.places.draft import io
+    source_id, cell = copy_of.split("/", 1)
+    path = io.BUNDLES / f"src.{source_id}" / "spaces" / cell / "refs.jsonl"
+    return frozenset(r["id"] for r in io.read_jsonl(path) if "pos" in r and in_cut({"box": box}, r["pos"]))
+
+
+def kept(copy_of: str | None, room: str | None, cut: dict | None = None) -> frozenset | None:
+    """The source refs a copy keeps (None: the whole space): its room's, and of those only the ones inside its cut."""
+    if not copy_of or (not room and not cut):
         return None
-    return rooms_of(copy_of).get(room, frozenset())
+    keep = rooms_of(copy_of).get(room, frozenset()) if room else None
+    if cut:
+        inside = _cut_ids(copy_of, tuple(cut["box"]))
+        keep = inside if keep is None else keep & inside
+    return keep
 
 
 def shared(refs: list[dict], src: Bundle) -> bool:
@@ -97,6 +115,12 @@ def door_target(r: dict) -> str | None:
     return (r.get("door") or {}).get("to_space")
 
 
+def nowhere(r: dict) -> bool:
+    """A load door (it names a destination) whose destination's space the source bundle does not hold."""
+    d = r.get("door") or {}
+    return bool(d.get("to_ref")) and d.get("to_space") is None
+
+
 def _name(b: dict) -> str:
     return f"{b.get('edid', '')} {b.get('name', '')} {b.get('model', '')}"
 
@@ -109,15 +133,16 @@ def sleeps(b: dict) -> int:
     return 2 if DOUBLE.search(_name(b)) else 1
 
 
-def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_of: str | None = None) -> list[dict]:
-    """Bed refs of a space (of one room when `room` names its way-out door, and on that room's walkable mesh), each
-    with the sleepers it takes."""
-    keep = kept(copy_of, room)
+def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_of: str | None = None,
+            cut: dict | None = None) -> list[dict]:
+    """Bed refs of a space (of one room when `room` names its way-out door, and on that room's walkable mesh; inside
+    its cut when it has one), each with the sleepers it takes."""
+    keep = kept(copy_of, room, cut)
     out = []
     for r in space_refs:
         if r.get("kind") != "furniture" or not is_bed(bases.get(r.get("base")) or {}):
             continue
-        if keep is not None and (r["id"] not in keep or not on_room_mesh(copy_of, room, r["pos"])):
+        if keep is not None and (r["id"] not in keep or (room and not on_room_mesh(copy_of, room, r["pos"]))):
             continue
         out.append({"ref": r["id"], "sleeps": sleeps(bases.get(r.get("base")) or {})})
     return sorted(out, key=lambda b: b["ref"])
@@ -270,6 +295,11 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         for r in sorted(refs, key=lambda r: r["id"]):
             t2 = door_target(r)
             rep = (replace or {}).get(r.get("base")) if r.get("kind") != "actor" else None
+            if not t2 and nowhere(r) and (keep is None or r["id"] in keep):
+                # a load door whose destination the source bundle does not hold (another place's room of a cell
+                # several places share) leads nowhere in our copy: removed
+                sp["overrides"].append({"id": mint(place_id, sid, r["id"]), "src": r["id"], "removed": True})
+                continue
             if not t2:
                 if rep and (keep is None or r["id"] in keep):   # another room's piece is not in this copy
                     sp["overrides"].append({**r, **swap(r, bases, rep), "id": mint(place_id, sid, r["id"]),

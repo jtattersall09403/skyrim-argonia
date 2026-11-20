@@ -132,7 +132,7 @@ def room_things(sp: dict, src, bases: dict) -> list[dict]:
     """The copied room's refs as the build makes them, with the rows the place adds to it."""
     info = sp["space"]
     src_sp = src.spaces.get(info["copy_of"].split("/", 1)[1])
-    keep = interiors.kept(info["copy_of"], info.get("room"))
+    keep = interiors.kept(info["copy_of"], info.get("room"), info.get("cut"))
     built = interiors.built_room(src_sp.refs if src_sp else [], keep, sp["refs"])
     return built + [o for o in sp["refs"] if not o.get("src") and not o.get("removed")]
 

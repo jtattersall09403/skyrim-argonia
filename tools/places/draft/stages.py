@@ -272,7 +272,8 @@ def pieces(st: Standing, log=print) -> None:
                 other = any(lr.get("src") == r["id"] and lr.get("copy") == sid and lr.get("status") == "dropped"
                             and lr.get("by") != "draft.drop" and not str(lr.get("why", "")).startswith("Nordic base")
                             for lr in st.ledger)
-                if door or other:   # another room's way out, or another stage's verdict: not this step's
+                if door or other or interiors.nowhere(r):   # another room's way out, a door to nowhere, or
+                    # another stage's verdict: not this step's
                     keep.append(row)
                 else:
                     log(f"draft pieces {st.place_id}: {sid}/{r['id']} stands again")
@@ -291,6 +292,22 @@ def pieces(st: Standing, log=print) -> None:
                 _unledger(st, r["id"], sid)
             if rep or door:         # a door's row carries its pairing: kept, on the source's own piece
                 keep.append(row)
+        # a source piece of the room with no row yet: on the step's base, or removed when `draft.drop` names it
+        have = {row.get("src") for row in keep}
+        kept_ids = interiors.kept(info["copy_of"], info.get("room"), info.get("cut"))
+        for r in sorted(by_id.values(), key=lambda r: r["id"]):
+            if r["id"] in have or r.get("kind") == "actor" or (kept_ids is not None and r["id"] not in kept_ids):
+                continue
+            rid = io.mint(st.place_id, sid, r["id"])
+            if r["id"] in drop:
+                keep.append({"id": rid, "src": r["id"], "removed": True})
+                st.ledger.append({"src": r["id"], "space": info["copy_of"].split("/", 1)[1],
+                                  "copy": sid, "status": "dropped", "why": drop[r["id"]], "by": "draft.drop"})
+                log(f"draft pieces {st.place_id}: {sid}/{r['id']} dropped")
+            elif replace.get(r["base"]) and not interiors.door_target(r):
+                keep.append({**r, **interiors.swap(r, st.bases, replace[r["base"]]), "id": rid, "src": r["id"],
+                             "seat": {"mode": "free"}})
+                log(f"draft pieces {st.place_id}: {sid}/{r['id']} {r['base']} -> {replace[r['base']]['base']}")
         sp["refs"] = keep
     # a room whose way in is gone goes with it, and the rooms behind it
     ext_ids = {r["id"] for r in st.ext}
@@ -381,6 +398,26 @@ def streets(place_id: str, places: Path, log=print) -> None:
     walk.join(place_id, places, log=log, first=False)
 
 
+def home_beds(st: Standing) -> dict[str, list[str]]:
+    """{home space: its bed refs, one per sleeper} of the place's homes: the rooms opening off the exterior that copy
+    a house cell the place uses for more than one home (the whole draft's houses: one family to a roof)."""
+    rooms = {sid: sp.get("space") or {} for sid, sp in st.files["spaces"].items() if sid != "exterior"}
+    uses: dict[str, int] = {}
+    for info in rooms.values():
+        uses[info.get("copy_of")] = uses.get(info.get("copy_of"), 0) + 1
+    out: dict[str, list[str]] = {}
+    for sid, info in sorted(rooms.items()):
+        if info.get("parent") != "exterior" or uses.get(info.get("copy_of"), 0) < 2:
+            continue
+        sp = io.copied_space(info["copy_of"], st.src, st.src.path.parent)
+        if sp is None:
+            continue
+        known = {**io.catalogue_bases({r["base"] for r in sp.refs} - set(st.bases)), **st.bases}
+        for b in interiors.beds_in(sp.refs, known, info.get("room"), info["copy_of"], info.get("cut")):
+            out.setdefault(sid, []).extend([b["ref"]] * b["sleeps"])
+    return out
+
+
 def people_stage(st: Standing, log=print) -> None:
     from tools.places import identities
     from tools.places.draft import people
@@ -394,6 +431,10 @@ def people_stage(st: Standing, log=print) -> None:
         log(f"draft people {st.place_id}: services re-read from the record for {', '.join(changed)}")
     dec = st.place.get("draft") or {}
     keep_free = set(dec.get("free_beds") or []) | {((st.place.get("stations") or {}).get("rent_bed") or {}).get("ref")}
+    homed = people.fill_homes(st.place_id, st.files["people"], home_beds(st),
+                              place_record(st.place_id)[0].get("population"), keep_free)
+    if homed:
+        log(f"draft people {st.place_id}: {len(homed)} residents in the homes' free beds")
     gone, added, short = people.fill_to_record(st.place_id, st.files["people"], st.ext, st.bases,
                                                place_record(st.place_id)[0].get("population"), dec.get("guards"),
                                                keep_free, {i for i, r in who.items() if r.get("cast")})
@@ -410,6 +451,9 @@ def people_stage(st: Standing, log=print) -> None:
     moved = people.stop_spots(st.files["people"], people.spots_of(st.place_id, st.place))
     if moved:
         log(f"draft people {st.place_id}: works at the stop's own spot: {', '.join(moved)}")
+    moved = people.work_at(st.files["people"], people.work_spots(st.place_id, st.place))
+    if moved:
+        log(f"draft people {st.place_id}: works where a placed thing names them: {', '.join(moved)}")
     moved = people.work_stops(st.files["people"])
     if moved:
         log(f"draft people {st.place_id}: the work hours at the work stop for {', '.join(moved)}")
@@ -519,7 +563,7 @@ def stations(st: Standing, log=print) -> None:
             sp = st.files["spaces"][space]
             info = sp["space"]
             src_refs = st.src.spaces[info["copy_of"].split("/", 1)[1]].refs
-            beds = interiors.beds_in(src_refs, st.bases, info.get("room"), info["copy_of"])
+            beds = interiors.beds_in(src_refs, st.bases, info.get("room"), info["copy_of"], info.get("cut"))
             anchor = {b_["ref"] for b_ in beds} or {info.get("room")}
             pts = [r["pos"] for r in src_refs if r["id"] in anchor] or [src_refs[0]["pos"]]
             into = next(((r.get("door") or {}).get("to_pos") for s2 in st.files["spaces"].values() for r in s2["refs"]

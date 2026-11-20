@@ -280,3 +280,14 @@ def test_commit_writes_strokes_as_agent_edits_and_spares_the_owners_rows(tmp_pat
     saved = json.loads((pdir / "agent-edits" / f"{place['agent_saves_applied'][-1]}.json").read_text())
     assert saved["by"] == "agent" and saved["name"] == "seat a" and not saved["final"]
     assert sess["strokes"] == [] and sess["snapshots"] == {}
+
+
+def test_a_boat_on_the_water_floats_and_one_in_the_air_does_not():
+    g = Flat(-200, water=0.0)
+    hull = dict(lo=[-150, -50, 0], hi=[150, 50, 120], kind="building", edid="ShipRowBoat01",
+                model="dungeons/ship/shiprowboat01.nif")
+    afloat = piece("afloat", [0, 0, -25], **{k: v for k, v in hull.items() if k in ("lo", "hi")},
+                   **{k: v for k, v in hull.items() if k not in ("lo", "hi")})
+    flying = piece("flying", [900, 0, 300], **{k: v for k, v in hull.items() if k in ("lo", "hi")},
+                   **{k: v for k, v in hull.items() if k not in ("lo", "hi")})
+    assert [(x["id"], x["fault"]) for x in geom.faults([afloat, flying], g)] == [("flying", "floats")]

@@ -37,6 +37,8 @@ static class Stock
             IContainerGetter src = from.ModKey == ctx.Mod.ModKey
                 ? (ctx.Fc.Copies.TryGetValue(from, out var own) && own is IContainerGetter oc ? oc : throw new InvalidDataException($"stock: {C.Key(from)} is not a container"))
                 : People.Cache.Resolve<IContainerGetter>(from);
+            if (src is Container copied && People.HoldsLevelled(copied.Items))
+                People.Flatten(copied.Items);  // our copy of a foreign container keeps no levelled list (0035)
             var o = (Container)src.Duplicate(C.Fk(c.GetProperty("fk").GetString()!));
             o.EditorID = c.GetProperty("edid").GetString();
             o.Flags &= ~Container.Flag.Respawns;  // an authored container never respawns
