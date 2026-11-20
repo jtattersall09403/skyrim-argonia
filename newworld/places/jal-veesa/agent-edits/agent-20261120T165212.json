@@ -1,0 +1,438 @@
+{
+ "save_id": "agent-20261120T165212",
+ "place_id": "jal-veesa",
+ "name": "after the sap stage's smaller hollow: the prayer ring back to the Hist's base (-23), the Hist's flowers, chime and a vine floor back to their places",
+ "at": "2026-11-20T16:52:12Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56674.15,
+     -504508.96,
+     566.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.6,
+      128.0,
+      132.0
+     ],
+     "mode": "above",
+     "dz": 17.84
+    }
+   },
+   "after": {
+    "pos": [
+     -56674.15,
+     -504508.96,
+     543.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.6,
+      128.0,
+      132.0
+     ],
+     "mode": "above",
+     "dz": -5.16
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56175.38,
+     -505743.91,
+     508.437
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 11.69
+    }
+   },
+   "after": {
+    "pos": [
+     -56175.38,
+     -505743.91,
+     485.437
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": -11.31
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56175.38,
+     -505103.91,
+     508.45
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 10.89
+    }
+   },
+   "after": {
+    "pos": [
+     -56175.38,
+     -505103.91,
+     485.45
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": -12.11
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BE2F3M4QFRFWPC66WC0WKA9BRX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56106.78,
+     -506115.86,
+     571.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 75.23
+    }
+   },
+   "after": {
+    "pos": [
+     -56106.78,
+     -506115.86,
+     548.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 52.23
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VTY8V7W5MR6DNCPSYPXQX6YY5H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56262.32,
+     -505004.88,
+     343.422
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.08319
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -54.7,
+      -21.1,
+      43.5,
+      36.1
+     ],
+     "mode": "ground",
+     "dz": -155.32
+    }
+   },
+   "after": {
+    "pos": [
+     -56262.32,
+     -505004.88,
+     320.422
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.08319
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -54.7,
+      -21.1,
+      43.5,
+      36.1
+     ],
+     "mode": "ground",
+     "dz": -178.32
+    }
+   },
+   "n": 5,
+   "stroke": 2,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.HK5XQ05T3CKABGE45YA92Y3NAK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56953.8,
+     -505351.58,
+     376.92
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.08319
+    ],
+    "scale": 1.45,
+    "seat": {
+     "foot": [
+      -34.1,
+      -38.6,
+      31.8,
+      48.7
+     ],
+     "mode": "ground",
+     "dz": -119.08
+    }
+   },
+   "after": {
+    "pos": [
+     -56953.8,
+     -505351.58,
+     353.92
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.08319
+    ],
+    "scale": 1.45,
+    "seat": {
+     "foot": [
+      -34.1,
+      -38.6,
+      31.8,
+      48.7
+     ],
+     "mode": "ground",
+     "dz": -142.08
+    }
+   },
+   "n": 6,
+   "stroke": 3,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GH7DK6ZFF4ASAXK9VBGV8Q3B0E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56524.81,
+     -504962.74,
+     1029.629
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "above",
+     "dz": 527.11
+    }
+   },
+   "after": {
+    "pos": [
+     -56524.81,
+     -504962.74,
+     996.629
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "above",
+     "dz": 494.11
+    }
+   },
+   "n": 7,
+   "stroke": 4,
+   "at": "2026-11-20T16:52:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.SYG4C5314A3B6MY3DV68Y7637Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56617.1,
+     -504963.46,
+     560.023
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -214.0,
+      -242.3,
+      259.6,
+      259.8
+     ],
+     "mode": "above",
+     "dz": 54.39
+    }
+   },
+   "after": {
+    "pos": [
+     -56617.1,
+     -504963.46,
+     530.023
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -214.0,
+      -242.3,
+      259.6,
+      259.8
+     ],
+     "mode": "above",
+     "dz": 24.39
+    }
+   },
+   "n": 8,
+   "stroke": 5,
+   "at": "2026-11-20T16:52:12Z"
+  }
+ ]
+}
