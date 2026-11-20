@@ -1206,11 +1206,11 @@
 {"src":"Black Marsh.esm:1D9166","space":"exterior","status":"adapted","as":"helstrom.SN717MFBW2R70X3NK6JA8EZKRP","cluster":"b20"}
 {"src":"Black Marsh.esm:1D9167","space":"exterior","status":"adapted","as":"helstrom.SRQEM81C423C574AWJRXD9Y6SM","cluster":"b20"}
 {"src":"Black Marsh.esm:1D9168","space":"exterior","status":"adapted","as":"helstrom.3GPRYQ9T7T3631QCVB5MPH3E95","cluster":"b20"}
-{"src":"Black Marsh.esm:1D9169","space":"exterior","status":"adapted","as":"helstrom.A2M5JRXKPCWZTS4Q2CK2D36T9H","cluster":"b20"}
+{"src":"Black Marsh.esm:1D9169","space":"exterior","status":"dropped","cluster":"b20","why":"a RuinsSconceRopeShort hanging 6.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D916A","space":"exterior","status":"adapted","as":"helstrom.G0DJT0CS6H90JN0KSHSE6ANC48","cluster":"b20"}
-{"src":"Black Marsh.esm:1D916B","space":"exterior","status":"adapted","as":"helstrom.RCZE11RNMZSTSDN8RYBD9G9RMT","cluster":"b20"}
+{"src":"Black Marsh.esm:1D916B","space":"exterior","status":"dropped","cluster":"b20","why":"a CandleLanternwithCandle01 hanging 4.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D916C","space":"exterior","status":"adapted","as":"helstrom.PATCD82ET3FH5TM2J4V1PKEQX1","cluster":"b20"}
-{"src":"Black Marsh.esm:1D916D","space":"exterior","status":"adapted","as":"helstrom.PQJDBDCCBQK2X6FVRD4M3AFAEQ","cluster":"b20"}
+{"src":"Black Marsh.esm:1D916D","space":"exterior","status":"dropped","cluster":"b20","why":"a CandleLanternwithCandle01 hanging 4.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D916E","space":"exterior","status":"adapted","as":"helstrom.HWMAJ69VS48TN6X2FHEJCMQ4SS","cluster":"w18"}
 {"src":"Black Marsh.esm:1D916F","space":"exterior","status":"adapted","as":"helstrom.PJS9SDASVW5DM5SY1B2V6PG83B","cluster":"w18"}
 {"src":"Black Marsh.esm:1D9170","space":"exterior","status":"adapted","as":"helstrom.0CDDRH7QDBBT3R08YHVNR69SVE","cluster":"w18"}
@@ -1231,16 +1231,16 @@
 {"src":"Black Marsh.esm:1D9184","space":"exterior","status":"adapted","as":"helstrom.6Q1YN10WCA78KNNP9HMDERY63J","cluster":"s58"}
 {"src":"Black Marsh.esm:1D9185","space":"exterior","status":"adapted","as":"helstrom.27SK94HZQTWZSHAVAEVQ5H8DTB","cluster":"s58"}
 {"src":"Black Marsh.esm:1D9186","space":"exterior","status":"adapted","as":"helstrom.6VNK33A89ZHVJCPKQKZ9NMZT3A","cluster":"s58"}
-{"src":"Black Marsh.esm:1D9187","space":"exterior","status":"adapted","as":"helstrom.SN41KJA3HWMVE218JNKDK8TNVS","cluster":"landing"}
+{"src":"Black Marsh.esm:1D9187","space":"exterior","status":"dropped","cluster":"landing","why":"a RuinsSconceRopeShort hanging 37.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D9188","space":"exterior","status":"adapted","as":"helstrom.3TFMBXZETSQPW5JXN4HVT5MJ1H","cluster":"landing"}
 {"src":"Black Marsh.esm:1D9189","space":"exterior","status":"adapted","as":"helstrom.PGFGHDC2K5KDJHKDS0KEQW5035","cluster":"landing"}
 {"src":"Black Marsh.esm:1D918A","space":"exterior","status":"adapted","as":"helstrom.DYHXG1ZDPYS6F83Z0CZRTMPDED","cluster":"landing"}
-{"src":"Black Marsh.esm:1D918B","space":"exterior","status":"adapted","as":"helstrom.BB24098F8ZGBG8C52621PEJE3S","cluster":"landing"}
-{"src":"Black Marsh.esm:1D918C","space":"exterior","status":"adapted","as":"helstrom.NVB3BCBWT3G3JVNJ5FWXDHRQS5","cluster":"landing"}
+{"src":"Black Marsh.esm:1D918B","space":"exterior","status":"dropped","cluster":"landing","why":"a CandleLanternwithCandle01 hanging 36.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1D918C","space":"exterior","status":"dropped","cluster":"landing","why":"a piece the source keeps 28372 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D918D","space":"exterior","status":"adapted","as":"helstrom.NWVSV1MW3ABFXTWDAXWWFYMEX9","cluster":"landing"}
-{"src":"Black Marsh.esm:1D918E","space":"exterior","status":"adapted","as":"helstrom.TVPPD9AC4P0YHMVC1ASBYF9XW1","cluster":"landing"}
+{"src":"Black Marsh.esm:1D918E","space":"exterior","status":"dropped","cluster":"landing","why":"a piece the source keeps 28391 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D918F","space":"exterior","status":"adapted","as":"helstrom.AP3ANF0TKGPSCYZTXDSC49S2H9","cluster":"landing"}
-{"src":"Black Marsh.esm:1D9190","space":"exterior","status":"adapted","as":"helstrom.BHB9GD0M4DAMZDSSWBNHK774QH","cluster":"landing"}
+{"src":"Black Marsh.esm:1D9190","space":"exterior","status":"dropped","cluster":"landing","why":"a piece the source keeps 28268 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1D9191","space":"exterior","status":"adapted","as":"helstrom.ANAZK6692T4C604N1J4E0TVKEF","cluster":"s59"}
 {"src":"Black Marsh.esm:1D9192","space":"exterior","status":"adapted","as":"helstrom.4FNGZJZ9W1W5YCSMEE0T5VW8VX","cluster":"s59"}
 {"src":"Black Marsh.esm:1D9193","space":"exterior","status":"adapted","as":"helstrom.PET4X8SKC2JE9M1Y845MVGFEK9","cluster":"s59"}
@@ -1304,7 +1304,7 @@
 {"src":"Black Marsh.esm:1DE982","space":"exterior","status":"placed","as":"helstrom.R9D0GA6FMQSXC4PBP1TGN54Q9Y","cluster":"s11"}
 {"src":"Black Marsh.esm:1DE983","space":"exterior","status":"placed","as":"helstrom.2EFBAFHE6ZFHVSVQG21C1B84JK","cluster":"s11"}
 {"src":"Black Marsh.esm:1DE985","space":"exterior","status":"adapted","as":"helstrom.7RDH30ZDX4DBD3NEJ6D73PDKR5","cluster":"s61"}
-{"src":"Black Marsh.esm:1DE986","space":"exterior","status":"adapted","as":"helstrom.AH414NEYCV4XA2V8SCES1W946W","cluster":"s61"}
+{"src":"Black Marsh.esm:1DE986","space":"exterior","status":"dropped","cluster":"s61","why":"a 01barkwindow hanging 4.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1DE987","space":"exterior","status":"adapted","as":"helstrom.6EZ5AP3A3WKM2K7A3GNDGHA55Z","cluster":"s61"}
 {"src":"Black Marsh.esm:1DE988","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DE989","space":"exterior","status":"adapted","as":"helstrom.RE1M87QFVXKZER9YWXNWT2D8ZV","cluster":"s61"}
@@ -2497,9 +2497,9 @@
 {"src":"Black Marsh.esm:1DEE9E","space":"exterior","status":"adapted","as":"helstrom.NBKGDTHES0C2WZCKQA9HPKGKCD","cluster":"s62"}
 {"src":"Black Marsh.esm:1DEE9F","space":"exterior","status":"adapted","as":"helstrom.4RK7R4NC3PGZ2JMTK3SK9CXSAN","cluster":"s62"}
 {"src":"Black Marsh.esm:1DEEA0","space":"exterior","status":"adapted","as":"helstrom.RVD3TF4C9M6CXQ9M1212Q3GB4W","cluster":"s62"}
-{"src":"Black Marsh.esm:1DEEA1","space":"exterior","status":"adapted","as":"helstrom.W1PKWBD5SYRBYXS1QEKQE6AR5B","cluster":"s62"}
-{"src":"Black Marsh.esm:1DEEA2","space":"exterior","status":"adapted","as":"helstrom.AP5RC9GM805BPT92XV6M39GXMZ","cluster":"s62"}
-{"src":"Black Marsh.esm:1DEEA3","space":"exterior","status":"adapted","as":"helstrom.EGBV9G3F1GHQ0M6X319CE6FZ35","cluster":"s62"}
+{"src":"Black Marsh.esm:1DEEA1","space":"exterior","status":"dropped","cluster":"s62","why":"a RuinsSconceRopeShort 965 units under the ground: nobody can see it","by":"draft.drop"}
+{"src":"Black Marsh.esm:1DEEA2","space":"exterior","status":"dropped","cluster":"s62","why":"a CandleLanternwithCandle01 1003 units under the ground: nobody can see it","by":"draft.drop"}
+{"src":"Black Marsh.esm:1DEEA3","space":"exterior","status":"dropped","cluster":"s62","why":"a CandleLanternwithCandle01 1062 units under the ground: nobody can see it","by":"draft.drop"}
 {"src":"Black Marsh.esm:1DEEA4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DEEA5","space":"exterior","status":"adapted","as":"helstrom.DDAQBF1A6840VJDRGJ2YS662EE","cluster":"landing"}
 {"src":"Black Marsh.esm:1DEEA6","space":"exterior","status":"adapted","as":"helstrom.F2GWVSPHBHCQ4EPW8ADB78N0WC","cluster":"landing"}
@@ -2569,9 +2569,9 @@
 {"src":"Black Marsh.esm:1DEEFE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DEEFF","space":"exterior","status":"placed","as":"helstrom.DXG9Z5GKWE8832MHXVP1NM2K20","cluster":"w22"}
 {"src":"Black Marsh.esm:1DEF00","space":"exterior","status":"placed","as":"helstrom.TX3MVJPXVNSEC305S80MQS5WY5","cluster":"w22"}
-{"src":"Black Marsh.esm:1DEF01","space":"exterior","status":"placed","as":"helstrom.BM1VHF4C9QK5XGPE2YM9Y82YNA","cluster":"w22"}
-{"src":"Black Marsh.esm:1DEF02","space":"exterior","status":"placed","as":"helstrom.TRTN3ET55B50P7GD6BPG1054X3","cluster":"w22"}
-{"src":"Black Marsh.esm:1DEF03","space":"exterior","status":"placed","as":"helstrom.HWZTZR9KN7YCDAJYVY4X61T7FP","cluster":"w22"}
+{"src":"Black Marsh.esm:1DEF01","space":"exterior","status":"dropped","cluster":"w22","why":"a RuinsSconceRopeShort hanging 7.3 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1DEF02","space":"exterior","status":"dropped","cluster":"w22","why":"a CandleLanternwithCandle01 hanging 5.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1DEF03","space":"exterior","status":"dropped","cluster":"w22","why":"a CandleLanternwithCandle01 hanging 5.9 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1DEF04","space":"exterior","status":"adapted","as":"helstrom.N3J4MN8TSGAEQMRB8RR4ARG3CS","cluster":"s66"}
 {"src":"Black Marsh.esm:1DEF05","space":"exterior","status":"adapted","as":"helstrom.NF6RMVDAA0CGH7G42FR3MFSHF4","cluster":"s66"}
 {"src":"Black Marsh.esm:1DEF06","space":"exterior","status":"adapted","as":"helstrom.RJYYSAWQRRCG1M8FC5TP5PSW03","cluster":"s66"}
@@ -2727,8 +2727,8 @@
 {"src":"Black Marsh.esm:1E44B0","space":"exterior","status":"dropped","cluster":"s63","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:1E44B1","space":"exterior","status":"adapted","as":"helstrom.QCYZYE41MTN3M0EMX6QW4X6T7C","cluster":"landing"}
 {"src":"Black Marsh.esm:1E44B2","space":"exterior","status":"adapted","as":"helstrom.3QWNT6D1J3T2YBFNEYW6VG5Z59","cluster":"landing"}
-{"src":"Black Marsh.esm:1E44B3","space":"exterior","status":"adapted","as":"helstrom.JRGZP17WSPWF4FC9XCNVKQVMRX","cluster":"landing"}
-{"src":"Black Marsh.esm:1E44B5","space":"exterior","status":"adapted","as":"helstrom.GWD9JVMMT6833PBAP6JHPHBFJW","cluster":"landing"}
+{"src":"Black Marsh.esm:1E44B3","space":"exterior","status":"dropped","cluster":"landing","why":"a piece the source keeps 30157 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E44B5","space":"exterior","status":"dropped","cluster":"landing","why":"a piece the source keeps 30104 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E44B6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1E44B7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1E44B8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2804,10 +2804,10 @@
 {"src":"Black Marsh.esm:1E980E","space":"exterior","status":"adapted","as":"helstrom.N9KCYVZWY72NADADHY08T2AM3G","cluster":"b25"}
 {"src":"Black Marsh.esm:1E980F","space":"exterior","status":"adapted","as":"helstrom.T0MNFSKV0YM1GD4Z1XVCRY51AP","cluster":"b25"}
 {"src":"Black Marsh.esm:1E9810","space":"exterior","status":"adapted","as":"helstrom.BS1FJP03Z22HDV71ZBDS0GT4PB","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9811","space":"exterior","status":"adapted","as":"helstrom.JACD9ZW4852XN6NXH3HXZWRGCE","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9812","space":"exterior","status":"adapted","as":"helstrom.DDXDSG8E6N3RPXQ7DRKP37F5FA","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9811","space":"exterior","status":"dropped","cluster":"s55","why":"a RuinsSconceRopeShort hanging 30.8 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9812","space":"exterior","status":"dropped","cluster":"s55","why":"a CandleLanternwithCandle01 hanging 29.4 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9813","space":"exterior","status":"adapted","as":"helstrom.7QE02C3R7ZNMHQTJP918GRMX64","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9814","space":"exterior","status":"adapted","as":"helstrom.QH8BN6D5ZD17VVVH9XF83FE2ED","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9814","space":"exterior","status":"dropped","cluster":"s55","why":"a CandleLanternwithCandle01 hanging 29.5 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9815","space":"exterior","status":"adapted","as":"helstrom.WH6K9D2MQ7CJWP1158H1RXZC47","cluster":"s55"}
 {"src":"Black Marsh.esm:1E9816","space":"exterior","status":"adapted","as":"helstrom.8QSPGHPBP791J1R2JP0GBAGH03","cluster":"s55"}
 {"src":"Black Marsh.esm:1E9817","space":"exterior","status":"adapted","as":"helstrom.W4XH3AJ1XVS5X3YXHAWQQ8JMAY","cluster":"s55"}
@@ -2819,15 +2819,15 @@
 {"src":"Black Marsh.esm:1E981D","space":"exterior","status":"adapted","as":"helstrom.1FYD5N1E0M87FQD54PFZKWT600","cluster":"s19"}
 {"src":"Black Marsh.esm:1E981E","space":"exterior","status":"adapted","as":"helstrom.TR8H2BJ81YKAG387RA6RMGAE5Z","cluster":"s19"}
 {"src":"Black Marsh.esm:1E981F","space":"exterior","status":"adapted","as":"helstrom.FWX0AN9B2M95A7AMBAHEPKSJBZ","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9820","space":"exterior","status":"adapted","as":"helstrom.5DJX06CF874CR28F8MS55FRKNW","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9821","space":"exterior","status":"adapted","as":"helstrom.6RDNMHNZRAVZAJYRW8NDVGHFHF","cluster":"s19"}
+{"src":"Black Marsh.esm:1E9820","space":"exterior","status":"dropped","cluster":"s19","why":"a RuinsSconceRopeShort hanging 24.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9821","space":"exterior","status":"dropped","cluster":"s19","why":"a CandleLanternwithCandle01 hanging 22.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9822","space":"exterior","status":"adapted","as":"helstrom.V2MCQC0AZB2F9QKHTZ4NCXNCJ4","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9823","space":"exterior","status":"adapted","as":"helstrom.21W8GBAMFS8HNKGYQYCTEPMCCP","cluster":"s19"}
+{"src":"Black Marsh.esm:1E9823","space":"exterior","status":"dropped","cluster":"s19","why":"a CandleLanternwithCandle01 hanging 22.5 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9824","space":"exterior","status":"adapted","as":"helstrom.B8PJ4DPFVPKTD4DARRCMZJ1TKK","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9825","space":"exterior","status":"adapted","as":"helstrom.5Q5S8CNFK1C9EZCRA5HCPE0SEN","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9826","space":"exterior","status":"adapted","as":"helstrom.J39Z0WVNBYK3NBDRD1HKYNNX71","cluster":"s19"}
+{"src":"Black Marsh.esm:1E9825","space":"exterior","status":"dropped","cluster":"s19","why":"a RuinsSconceRopeShort hanging 21.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
+{"src":"Black Marsh.esm:1E9826","space":"exterior","status":"dropped","cluster":"s19","why":"a CandleLanternwithCandle01 hanging 19.0 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9827","space":"exterior","status":"adapted","as":"helstrom.5KAYXMAFEWPF1KVRJ95605PYE1","cluster":"s19"}
-{"src":"Black Marsh.esm:1E9828","space":"exterior","status":"adapted","as":"helstrom.SC2TE7C1VMF2NXE5WF6W95FH85","cluster":"s19"}
+{"src":"Black Marsh.esm:1E9828","space":"exterior","status":"dropped","cluster":"s19","why":"a CandleLanternwithCandle01 hanging 20.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9829","space":"exterior","status":"adapted","as":"helstrom.KHARXWSSPA4TJ5VMFJRB3HQ8KW","cluster":"b21"}
 {"src":"Black Marsh.esm:1E982A","space":"exterior","status":"adapted","as":"helstrom.8Q8S7EZC3E4Z8DFYVVXVV8XMRF","cluster":"b21"}
 {"src":"Black Marsh.esm:1E982B","space":"exterior","status":"adapted","as":"helstrom.QHEFX0RYNDK7SHX4QJR5XD0EQG","cluster":"b21"}
@@ -2921,7 +2921,7 @@
 {"src":"Black Marsh.esm:1E9896","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9897","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E9898","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
-{"src":"Black Marsh.esm:1E9899","space":"exterior","status":"placed","as":"helstrom.AJXERBBANAT1DPZCQ0MD3HX8WX","cluster":"b39"}
+{"src":"Black Marsh.esm:1E9899","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 31058 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E989C","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E989D","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
 {"src":"Black Marsh.esm:1E989E","space":"exterior","status":"dropped","cluster":"b39","why":"stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone","by":"draft.drop"}
@@ -3171,38 +3171,38 @@
 {"src":"Black Marsh.esm:1F067A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F067E","space":"exterior","status":"dropped","cluster":"s01","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F067F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F07A3","space":"exterior","status":"placed","as":"helstrom.88HWTQTWFJ6MFHWD8F4V662P92","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A4","space":"exterior","status":"placed","as":"helstrom.HJPSKWX83K5WGD774NV2WFMPPB","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A5","space":"exterior","status":"placed","as":"helstrom.AYX9FBXBA0A2NYHFMK3ZS9GM7E","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A6","space":"exterior","status":"placed","as":"helstrom.B0K34NR41SVJJT47E7JAPWTH61","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A7","space":"exterior","status":"placed","as":"helstrom.5K6164GG1150XDSANZ86AV9T9H","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A8","space":"exterior","status":"placed","as":"helstrom.NFBH2HF96B39HQX7QVGQVWVKPK","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07A9","space":"exterior","status":"placed","as":"helstrom.N0VAFX50GZQ0RDQ1V2M2FQJR1R","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AA","space":"exterior","status":"placed","as":"helstrom.QMB334BSGR3RFJT29NTZC4KWBX","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AB","space":"exterior","status":"placed","as":"helstrom.PAAT6AQERJYJNQT7M0JQKCFFAY","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AC","space":"exterior","status":"placed","as":"helstrom.N3RE16ZA6JCPWB9S61MX3M12FD","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AD","space":"exterior","status":"placed","as":"helstrom.M5EJEN9XRSXDDCQ2NVNX9ANYS0","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AE","space":"exterior","status":"placed","as":"helstrom.X6HGSZ1RMKS52F1D6EE5PGY8KN","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07AF","space":"exterior","status":"placed","as":"helstrom.TMFQKWCXDFVTBDNGE8Q7TP8JZJ","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B0","space":"exterior","status":"placed","as":"helstrom.FSCPDFCQAEF2SQZD0BM0BHX520","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B1","space":"exterior","status":"placed","as":"helstrom.1EJZG0CK8QJCBYB65PGRZ4YJSV","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B2","space":"exterior","status":"placed","as":"helstrom.QFD0DAS6H1736PB048Y3DT14BJ","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B3","space":"exterior","status":"placed","as":"helstrom.7VEM9JTG0X091J84RBRVZMKPCN","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B4","space":"exterior","status":"placed","as":"helstrom.T44XSEJPBTD5V8C9M55E8NTAE2","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B5","space":"exterior","status":"placed","as":"helstrom.6XQREP1BBFVRSMJC5334MDWD4V","cluster":"b39"}
+{"src":"Black Marsh.esm:1F07A3","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A4","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A5","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30051 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A6","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30041 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A7","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30052 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A8","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 29968 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07A9","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30051 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AA","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AB","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AC","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AD","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30053 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AE","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30048 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07AF","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B0","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30055 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B1","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30031 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B2","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B3","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30060 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B4","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30036 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B5","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F07B6","space":"exterior","status":"placed","as":"helstrom.7FHB1XD27304NEHYE98RF66VM5","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B7","space":"exterior","status":"placed","as":"helstrom.2SP89JR5JFSJGS3S9502YJZ8DF","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B8","space":"exterior","status":"placed","as":"helstrom.3MV2ZVSV26PTVMY31E3QAHNRZC","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07B9","space":"exterior","status":"placed","as":"helstrom.M7FKP8RH8TYQF9HS7XTDAR8GMK","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07BA","space":"exterior","status":"placed","as":"helstrom.NQB5VJZ4AP8SRDENCCQSWB2XWY","cluster":"b39"}
+{"src":"Black Marsh.esm:1F07B7","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30038 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B8","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30042 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07B9","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30052 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07BA","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30049 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F07BB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07BC","space":"exterior","status":"placed","as":"helstrom.938WQTFKM4SRVZAN69HCS1SGSK","cluster":"s06"}
 {"src":"Black Marsh.esm:1F07BD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07BE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07BF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07C0","space":"exterior","status":"placed","as":"helstrom.7598SM963FSMD2RP2YPGAQ6GAP","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07C1","space":"exterior","status":"placed","as":"helstrom.CN20PSCS0TYJ3W4SCQWJW4C0XM","cluster":"b39"}
-{"src":"Black Marsh.esm:1F07C2","space":"exterior","status":"placed","as":"helstrom.M309X89R1RB24756JT60JRGDPY","cluster":"b39"}
+{"src":"Black Marsh.esm:1F07C1","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30046 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:1F07C2","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30038 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:1F07C3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07C4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07C5","space":"exterior","status":"adapted","as":"helstrom.MAWPVENQB5313X3X33CBKTBFT1","cluster":"b17"}
@@ -3239,7 +3239,7 @@
 {"src":"Black Marsh.esm:2001EF","space":"exterior","status":"replaced","as":"helstrom.BM34ZFFSN3VYD6WE6F8XVPQ85X","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
 {"src":"Black Marsh.esm:2001F0","space":"exterior","status":"replaced","as":"helstrom.5PVZ5XTVK7HZR048FYYCDTAS7E","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
 {"src":"Black Marsh.esm:2001F1","space":"exterior","status":"replaced","as":"helstrom.5B9NGP7NKYVBBQBAQAYMCP85BT","cluster":"b39","base":"King of the Murkmire.esp:10A52B"}
-{"src":"Black Marsh.esm:2001F2","space":"exterior","status":"replaced","as":"helstrom.J67K640BBZMHGT3FGTMHW17H19","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
+{"src":"Black Marsh.esm:2001F2","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30047 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:2001F4","space":"exterior","status":"replaced","as":"helstrom.Q17QBQBCD4RFF1HK5H68A3R34T","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
 {"src":"Black Marsh.esm:2001F5","space":"exterior","status":"replaced","as":"helstrom.Q3YZSE5549J02R04AFDKCP1SWQ","cluster":"b39","base":"King of the Murkmire.esp:10A52C"}
 {"src":"Black Marsh.esm:2001F9","space":"exterior","status":"placed","as":"helstrom.V648E74P2GK6ZN902DHD3PCB1K","cluster":"b39"}
@@ -3284,11 +3284,11 @@
 {"src":"Black Marsh.esm:20022C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20022D","space":"exterior","status":"placed","as":"helstrom.W3AYS3JEBGYH1HKBN9XP6EBB4K","cluster":"w04"}
 {"src":"Black Marsh.esm:200240","space":"exterior","status":"placed","as":"helstrom.Y7Y0EX4WFP82NG57RNNYGJKDQF","cluster":"b39"}
-{"src":"Black Marsh.esm:200241","space":"exterior","status":"placed","as":"helstrom.8BWZ7FCCW89JK7XKF5SKE742R2","cluster":"b39"}
-{"src":"Black Marsh.esm:200242","space":"exterior","status":"placed","as":"helstrom.XJ3EG5GDEPZC750W80HQYMFN5N","cluster":"b39"}
-{"src":"Black Marsh.esm:200243","space":"exterior","status":"placed","as":"helstrom.Q3877PXCPKXMWPQGEK88M1P16S","cluster":"b39"}
+{"src":"Black Marsh.esm:200241","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30020 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:200242","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30020 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:200243","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 29940 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200244","space":"exterior","status":"placed","as":"helstrom.87GVMCT4ASYE8ME80NZ0B8A18G","cluster":"b39"}
-{"src":"Black Marsh.esm:200245","space":"exterior","status":"placed","as":"helstrom.C1HGDJQ7PPWV7NKS3NP48YDBX0","cluster":"b39"}
+{"src":"Black Marsh.esm:200245","space":"exterior","status":"dropped","cluster":"b39","why":"a piece the source keeps 30172 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200246","space":"exterior","status":"placed","as":"helstrom.6AESZ662QXGJZN2KQ4GQ159F2C","cluster":"s90"}
 {"src":"Black Marsh.esm:200247","space":"exterior","status":"placed","as":"helstrom.PGDG70AM62ZZXVH3B8E5K1NCEQ","cluster":"s90"}
 {"src":"Black Marsh.esm:200248","space":"exterior","status":"placed","as":"helstrom.RRRPK21XT4JDEPJW63JEPYGSFH","cluster":"s90"}
@@ -3300,13 +3300,13 @@
 {"src":"Black Marsh.esm:200254","space":"exterior","status":"placed","as":"helstrom.PWHDJ87712GB81ANKPA24XFE5D","cluster":"s05"}
 {"src":"Black Marsh.esm:200255","space":"exterior","status":"placed","as":"helstrom.TBRQK09RQWE8S6VN86JEPH79B6","cluster":"s05"}
 {"src":"Black Marsh.esm:200256","space":"exterior","status":"placed","as":"helstrom.9WS3FRQC1X5YZB85X468SA4JAK","cluster":"s05"}
-{"src":"Black Marsh.esm:200257","space":"exterior","status":"placed","as":"helstrom.95ZEQBVK7ACY2EV98TV118ZRNZ","cluster":"s05"}
+{"src":"Black Marsh.esm:200257","space":"exterior","status":"dropped","cluster":"s05","why":"a piece the source keeps 30213 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200258","space":"exterior","status":"placed","as":"helstrom.82HR8GXSPZA0YXBGAVX386W1TB","cluster":"s08"}
 {"src":"Black Marsh.esm:200259","space":"exterior","status":"placed","as":"helstrom.0EF300RBA86D97PF14224X20KH","cluster":"s08"}
 {"src":"Black Marsh.esm:20025A","space":"exterior","status":"placed","as":"helstrom.C1T0870PES4ZWGGKF0CM6T96KZ","cluster":"s08"}
 {"src":"Black Marsh.esm:20025B","space":"exterior","status":"placed","as":"helstrom.Y6VCXF8SRY72M4MYZ4REEVDM11","cluster":"s08"}
 {"src":"Black Marsh.esm:20025C","space":"exterior","status":"placed","as":"helstrom.87KMK6K57N7SXS52EKMJ3GAE52","cluster":"s08"}
-{"src":"Black Marsh.esm:20025D","space":"exterior","status":"placed","as":"helstrom.8GDXQJ2VB4HMEM71RVMM96E5SK","cluster":"s08"}
+{"src":"Black Marsh.esm:20025D","space":"exterior","status":"dropped","cluster":"s08","why":"a piece the source keeps 30199 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:20025E","space":"exterior","status":"placed","as":"helstrom.TY4E7WX0F30JGE59WQBR2P8K4S","cluster":"b39"}
 {"src":"Black Marsh.esm:20025F","space":"exterior","status":"placed","as":"helstrom.WFEEY5023JWKVN4FXC7A1A43G2","cluster":"b39"}
 {"src":"Black Marsh.esm:200260","space":"exterior","status":"placed","as":"helstrom.50Y50MTFD08J8Z932SCJNVYS97","cluster":"b39"}
@@ -4236,7 +4236,7 @@
 {"src":"Black Marsh.esm:2009AB","space":"exterior","status":"placed","as":"helstrom.PGMNEACYHQC28NHEX18MY2V1MN","cluster":"s144"}
 {"src":"Black Marsh.esm:2009AC","space":"exterior","status":"dropped","cluster":"s141","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:2009AD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2009AE","space":"exterior","status":"placed","as":"helstrom.J78705JKK689BFP03RQJQYPY5D","cluster":"s143"}
+{"src":"Black Marsh.esm:2009AE","space":"exterior","status":"dropped","cluster":"s143","why":"a CandleLanternwithCandle01 339 units under the ground: nobody can see it","by":"draft.drop"}
 {"src":"Black Marsh.esm:2009AF","space":"exterior","status":"dropped","cluster":"s144","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:2009B0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2009B1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4245,7 +4245,7 @@
 {"src":"Black Marsh.esm:2009B4","space":"exterior","status":"placed","as":"helstrom.S4MR8YFMMS2D479ZC06PN94VWZ","cluster":"s143"}
 {"src":"Black Marsh.esm:2009B5","space":"exterior","status":"placed","as":"helstrom.7W543JRPKBAR324FZ5S9XV9GFM","cluster":"s143"}
 {"src":"Black Marsh.esm:2009B6","space":"exterior","status":"placed","as":"helstrom.NKFVPSW2K8YCXQDF09HM6E7MGB","cluster":"s143"}
-{"src":"Black Marsh.esm:2009B7","space":"exterior","status":"placed","as":"helstrom.48DG85AHWKWDH4MWJZ5JXFGQ9Q","cluster":"s143"}
+{"src":"Black Marsh.esm:2009B7","space":"exterior","status":"dropped","cluster":"s143","why":"a CandleLanternwithCandle01 381 units under the ground: nobody can see it","by":"draft.drop"}
 {"src":"Black Marsh.esm:2009B8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2009B9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2009BA","space":"exterior","status":"placed","as":"helstrom.9XF84XHADEX430H1XP5C49YZ26","cluster":"s143"}
@@ -4268,16 +4268,16 @@
 {"src":"Black Marsh.esm:200AB2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AB3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AB5","space":"exterior","status":"placed","as":"helstrom.P291Y5JK15ECWBAYYNFVDN83SN","cluster":"s147"}
-{"src":"Black Marsh.esm:200AB6","space":"exterior","status":"placed","as":"helstrom.S8NN88J4R66R8AQ0Q0QWCDFAMN","cluster":"s148"}
+{"src":"Black Marsh.esm:200AB6","space":"exterior","status":"dropped","cluster":"s148","why":"a piece the source keeps 2699 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AB8","space":"exterior","status":"dropped","cluster":"s149","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AC0","space":"exterior","status":"placed","as":"helstrom.Q5Y04TRWGM3XZQWTZYT4H6VNES","cluster":"s150"}
 {"src":"Black Marsh.esm:200AC1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200AC2","space":"exterior","status":"placed","as":"helstrom.2R9026E1Z31419MC8PAF3CRMKY","cluster":"s148"}
+{"src":"Black Marsh.esm:200AC2","space":"exterior","status":"dropped","cluster":"s148","why":"a piece the source keeps 3618 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AC4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AC5","space":"exterior","status":"placed","as":"helstrom.NZG0F35ZRX047ABMJBF50JV4NF","cluster":"s149"}
 {"src":"Black Marsh.esm:200AC6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200AC7","space":"exterior","status":"placed","as":"helstrom.809XNBGGVZSAAXNZNM9DEWC4BP","cluster":"s149"}
-{"src":"Black Marsh.esm:200AC8","space":"exterior","status":"placed","as":"helstrom.3M0TD46H4M6KH4ST648S477ZFA","cluster":"s148"}
+{"src":"Black Marsh.esm:200AC7","space":"exterior","status":"dropped","cluster":"s149","why":"a piece the source keeps 4878 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:200AC8","space":"exterior","status":"dropped","cluster":"s148","why":"a piece the source keeps 2473 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200ACA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200ACD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200ACE","space":"exterior","status":"adapted","as":"helstrom.ZR85GH34R9GJP7WX9Z58S0NW0S","cluster":"b17"}
@@ -4286,18 +4286,18 @@
 {"src":"Black Marsh.esm:200AD1","space":"exterior","status":"placed","as":"helstrom.D6820AXEF1E4KH1HJ918S9ZNT8","cluster":"s149"}
 {"src":"Black Marsh.esm:200AD2","space":"exterior","status":"placed","as":"helstrom.R56RFFWXH381RGJTGAAFJ3S3VM","cluster":"s148"}
 {"src":"Black Marsh.esm:200AD3","space":"exterior","status":"placed","as":"helstrom.09X4WCVKD421QG73A098CJ6A9F","cluster":"s148"}
-{"src":"Black Marsh.esm:200AD5","space":"exterior","status":"placed","as":"helstrom.CDN14N7N7E2DTNR72P7EYRDW8W","cluster":"s150"}
+{"src":"Black Marsh.esm:200AD5","space":"exterior","status":"dropped","cluster":"s150","why":"a piece the source keeps 4450 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AD6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AD7","space":"exterior","status":"placed","as":"helstrom.7BW3VHXZ8T6SPC9TD9X42STSNQ","cluster":"s149"}
 {"src":"Black Marsh.esm:200AD8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AD9","space":"exterior","status":"placed","as":"helstrom.NE39RAYHPGSPGX7N4XNFEH8HK6","cluster":"s148"}
 {"src":"Black Marsh.esm:200ADA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200ADB","space":"exterior","status":"placed","as":"helstrom.65PCWJKAQPXP8JY0DHNKY291SA","cluster":"s149"}
+{"src":"Black Marsh.esm:200ADB","space":"exterior","status":"dropped","cluster":"s149","why":"a piece the source keeps 4820 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200ADF","space":"exterior","status":"placed","as":"helstrom.YJ3FYA1N85EAJTJ03ADA18VSF1","cluster":"s149"}
 {"src":"Black Marsh.esm:200AE0","space":"exterior","status":"dropped","cluster":"s149","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
-{"src":"Black Marsh.esm:200AE1","space":"exterior","status":"placed","as":"helstrom.0HNVFVXQE9RKHJVKKV42K7MSKV","cluster":"s149"}
-{"src":"Black Marsh.esm:200AE2","space":"exterior","status":"placed","as":"helstrom.2QX3ESYABMEKFASYQW24SA3PQ9","cluster":"s148"}
-{"src":"Black Marsh.esm:200AE3","space":"exterior","status":"placed","as":"helstrom.FD49MHFFJGCMMAZP4WTWE415YS","cluster":"s149"}
+{"src":"Black Marsh.esm:200AE1","space":"exterior","status":"dropped","cluster":"s149","why":"a piece the source keeps 4200 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:200AE2","space":"exterior","status":"dropped","cluster":"s148","why":"a piece the source keeps 3163 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
+{"src":"Black Marsh.esm:200AE3","space":"exterior","status":"dropped","cluster":"s149","why":"a piece the source keeps 4223 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AE4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200AE6","space":"exterior","status":"dropped","cluster":"s149","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AE7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4306,7 +4306,7 @@
 {"src":"Black Marsh.esm:200AEA","space":"exterior","status":"placed","as":"helstrom.7S26336TWYF0P327M1VR5BK7YA","cluster":"s149"}
 {"src":"Black Marsh.esm:200AEC","space":"exterior","status":"placed","as":"helstrom.VGX2XJW1TY9615YV1TPJRWX3WJ","cluster":"s149"}
 {"src":"Black Marsh.esm:200AED","space":"exterior","status":"dropped","cluster":"s149","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
-{"src":"Black Marsh.esm:200AEE","space":"exterior","status":"placed","as":"helstrom.WW6XT587Y80FYR8HH0KEN9V4AD","cluster":"s149"}
+{"src":"Black Marsh.esm:200AEE","space":"exterior","status":"dropped","cluster":"s149","why":"a piece the source keeps 5092 units under the world (its builders hid it; initially disabled or out of sight): nothing a player sees","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AF2","space":"exterior","status":"dropped","cluster":"s150","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:200AF3","space":"exterior","status":"placed","as":"helstrom.4S00RRPXSVKJZP4E0CZF6DM99Y","cluster":"s152"}
 {"src":"Black Marsh.esm:200AF4","space":"exterior","status":"dropped","cluster":"s150","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
@@ -4320,7 +4320,7 @@
 {"src":"Black Marsh.esm:200AFC","space":"exterior","status":"placed","as":"helstrom.Y9TPF0TED3ZYVZ7FB70XF4SKNJ","cluster":"s151"}
 {"src":"Black Marsh.esm:200AFD","space":"exterior","status":"placed","as":"helstrom.EAPHGDQJX3JBGEKTY6YA027VXH","cluster":"s151"}
 {"src":"Black Marsh.esm:200AFE","space":"exterior","status":"placed","as":"helstrom.S6MGNMGMS6DM5007GGDR56TVQM","cluster":"s151"}
-{"src":"Black Marsh.esm:200AFF","space":"exterior","status":"placed","as":"helstrom.CYBZ6JD6K7G66234GM11D17CRM","cluster":"s151"}
+{"src":"Black Marsh.esm:200AFF","space":"exterior","status":"dropped","cluster":"s151","why":"a CandleLanternwithCandle01 477 units under the ground: nobody can see it","by":"draft.drop"}
 {"src":"Black Marsh.esm:200B00","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200B01","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200B02","space":"exterior","status":"placed","as":"helstrom.DRN3Y3B6ZNN7DFQCV4G6XQY52Y","cluster":"s151"}
@@ -4637,7 +4637,7 @@
 {"src":"Black Marsh.esm:201783","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201784","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201785","space":"exterior","status":"placed","as":"helstrom.4AEV018M0GMWKKT1VS89HNG5HX","cluster":"w09"}
-{"src":"Black Marsh.esm:201786","space":"exterior","status":"placed","as":"helstrom.PFCAQK8SWXKRX327AQ1NSF4NZC","cluster":"w34"}
+{"src":"Black Marsh.esm:201786","space":"exterior","status":"dropped","cluster":"w34","why":"a RuinsSconceRopeShort hanging 42.6 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:201787","space":"exterior","status":"dropped","cluster":"w03","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:201788","space":"exterior","status":"dropped","cluster":"w09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:201789","space":"exterior","status":"placed","as":"helstrom.ECNFNJEVXSWC3ZVRT7QVRXKVYA","cluster":"w45"}
@@ -4655,7 +4655,7 @@
 {"src":"Black Marsh.esm:201795","space":"exterior","status":"placed","as":"helstrom.Q0MC8K1EH5NZGAPENFK5580QMH","cluster":"w09"}
 {"src":"Black Marsh.esm:201796","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201797","space":"exterior","status":"placed","as":"helstrom.3G9DR1VBSFRS20Q3YMBXA9MVZN","cluster":"w09"}
-{"src":"Black Marsh.esm:201798","space":"exterior","status":"placed","as":"helstrom.JJX8EE3A3B9S4AFT3ZXVSQ5BXQ","cluster":"w34"}
+{"src":"Black Marsh.esm:201798","space":"exterior","status":"dropped","cluster":"w34","why":"a CandleLanternwithCandle01 hanging 41.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:201799","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20179A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20179B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4681,7 +4681,7 @@
 {"src":"Black Marsh.esm:2017AF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2017B0","space":"exterior","status":"dropped","cluster":"w09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"Black Marsh.esm:2017B1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2017B2","space":"exterior","status":"placed","as":"helstrom.T4FD3ZVYN3152M26CEEV9PRTQW","cluster":"w34"}
+{"src":"Black Marsh.esm:2017B2","space":"exterior","status":"dropped","cluster":"w34","why":"a CandleLanternwithCandle01 hanging 41.1 m over the ground with nothing that holds it (its tree or wall is not in the draft)","by":"draft.drop"}
 {"src":"Black Marsh.esm:2017B3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2017B4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2017B5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
