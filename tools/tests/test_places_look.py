@@ -148,6 +148,51 @@ def test_span_ends_doors_and_unresolved():
     assert any(x["fault"] == "missing base" and x["id"] == "gone" for x in f)
 
 
+def test_a_ship_holds_its_deck_and_stage_made_pieces_are_not_missing():
+    g = Flat(0)
+    ship = piece("ship", [0, 0, -200], [-600, -150, 0], [600, 150, 900], kind="building", edid="0ShipImperial",
+                 model="architecture/ships/imperialship01base.nif")
+    door = piece("door", [0, 0, 280], [-60, -10, 0], [60, 10, 200], kind="door")    # on the deck, rigging far above
+    gone = {"id": "p.sap.T", "base": "Mod.esp:1", "kind": "activator", "missing": True, "model": None, "resolved": False,
+            "m": xform.matrix([0, 0, 0], [0, 0, 0]), "lo": [0, 0, 0], "hi": [1, 1, 1]}
+    chest = dict(gone, id="p.C", base="Skyrim.esm:0267E7")
+    real = dict(gone, id="p.R", base="Mod.esp:2")
+    f = geom.faults([ship, door, gone, chest, real], g)
+    assert [(x["id"], x["fault"]) for x in f] == [("p.R", "missing base")]
+
+
+class Slope(Flat):
+    """Ground rising 1 unit per unit of x."""
+    def height(self, x, y):
+        return float(x)
+
+
+def test_a_rock_half_in_a_bank_shows_and_the_stolen_goods_chest_is_out_of_reach():
+    g = Slope()
+    rock = piece("rock", [0, 0, -100], [-400, -100, 0], [400, 100, 200], kind="rock")       # top 100; ground -400..400
+    chest = piece("chest", [3000, 0, 0], [-40, -30, 0], [40, 30, 60], kind="container", edid="EvidenceChestStolenGoods")
+    sunk = piece("sunk", [3000, 500, 0], [-40, -30, 0], [40, 30, 60], kind="container", edid="Chest01")
+    assert {x["id"] for x in geom.faults([rock, chest, sunk], g) if x["fault"] == "buried"} == {"sunk"}
+
+
+def test_wall_fixed_things_are_held_and_a_lantern_in_mid_air_is_not():
+    g = Flat(0)
+    house = piece("house", [0, 0, 0], [-300, -300, 0], [300, 300, 400], kind="building")
+    lamp = piece("lamp", [0, -310, 250], [-10, -15, -30], [10, 15, 30], kind="clutter", edid="CandleLantern01")  # on the wall
+    win = piece("win", [305, 0, 200], [-6, -40, -40], [6, 40, 40], edid="MudWindow01")                           # in the wall
+    stray = piece("stray", [2000, 0, 300], [-10, -10, -30], [10, 10, 30], kind="clutter", edid="CandleLantern01")
+    assert {x["id"] for x in geom.faults([house, lamp, win, stray], g) if x["fault"] == "floats"} == {"stray"}
+
+
+def test_a_plant_is_buried_only_when_most_of_it_is_under():
+    g = Flat(0)
+    weed = piece("weed", [0, 0, -10], [-20, -20, 0], [20, 20, 30], kind="plant", edid="Nchickweed")  # root 10 under
+    gone = piece("gone", [500, 0, -40], [-20, -20, 0], [20, 20, 50], kind="plant", edid="Braken")    # 40 of 50 under
+    bank = piece("bank", [-1000, 0, -1010], [-20, -20, 0], [20, 20, 30], kind="plant", edid="Nchickweed")  # on a slope
+    assert {x["id"] for x in geom.faults([weed, gone], g) if x["fault"] == "buried"} == {"gone"}
+    assert not [x for x in geom.faults([bank], Slope()) if x["fault"] == "buried"]
+
+
 def test_probe_piece_feet_and_neighbours():
     g = Flat(10)
     a = piece("a", [0, 0, 0], [-50, -50, 0], [50, 50, 100])
@@ -232,6 +277,6 @@ def test_commit_writes_strokes_as_agent_edits_and_spares_the_owners_rows(tmp_pat
     assert after[c["id"]]["pos"] == c["pos"]
     place = json.loads((pdir / "place.json").read_text())
     assert place["agent_saves_applied"] and not place.get("saves_applied")
-    saved = json.loads((pdir / "agent-edits" / f"{place['agent_saves_applied'][0]}.json").read_text())
+    saved = json.loads((pdir / "agent-edits" / f"{place['agent_saves_applied'][-1]}.json").read_text())
     assert saved["by"] == "agent" and saved["name"] == "seat a" and not saved["final"]
     assert sess["strokes"] == [] and sess["snapshots"] == {}

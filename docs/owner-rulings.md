@@ -159,6 +159,27 @@ added here the day they are made, with the date and the issue.
   where a measured case shows a big difference; no machine is changed before he says so (2026-11-20, #80).
 - The place skills become a map and specialised sub-skills, with the map saying when to use which, as the quest
   skills are (2026-11-20, #80).
+- Nordic pieces are fine to keep in general: no blanket ban. Use the Tropical Skyrim version where there is one,
+  take an easy swap where there is one, and judge case by case; nothing is laboriously replaced when it is nearly
+  fine as it is. This replaces decision 0006's "no Nordic element survives" for pieces in places (2026-11-20, #80).
+- Not everyone needs a bed and a routine: a place's people are as complete as King of the Murkmire's own places
+  are, by type of person and place, and no more (2026-11-20, #80).
+- A rootworm does not come up through a Hist's sap pool. Canon (The Argonian Account, book 3) has the traveller
+  leave the worm where bubbles rise through mud from an underground stream, red clay marking Gideon's stop. If a
+  stop needs a hole in the ground it is made as a local patch of the place, never by regenerating terrain. This
+  replaces "a rootworm stop at a Hist is at its sap pool" of 2026-11-19 (2026-11-20, #80).
+- Killing a person the main quest cannot go on without shows our version of Morrowind's "thread of prophecy is
+  severed" message; the journal never tells the player where to go instead. Heem-Jasa in quest 3 is such a person
+  until the player holds the note; after that her death is harmless and the quest goes on by the note, which needs a
+  new quest block (a person must live until a stage), proven once by the block test (2026-11-20, #80).
+- Helstrom has a Xanmeer at its heart with a hall: the pyramid its source's builders left switched off was not
+  meant to be absent. The hall is King of the Murkmire's throne room (the throne wing of Teeth of Sithis Halls),
+  stripped, lit and lived-in; Teku-Sul keeps the whole of that hall dark, hostile and gated. Helstrom's record
+  changes from "no stone" to "no new stone" (2026-11-20, #80).
+- A loading-screen fact is changed to match our world where the two disagree (Blackrose Prison lies a short walk
+  east of the city, not a day's march south) (2026-11-20, #80).
+- Whenever a fault in a draft is fixed, the tools and skills are changed so that kind of fault cannot be handed
+  over again (2026-11-20, #80).
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
 - Parry, riposte and backstab are what the owner called souls-like (2026-10-29); the collection is used out of
   the box first, and that ruling is revisited only if the owner misses them.

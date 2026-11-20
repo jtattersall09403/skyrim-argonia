@@ -20,8 +20,13 @@ SIDES = {"n": 90.0, "ne": 45.0, "e": 0.0, "se": -45.0, "s": -90.0, "sw": -135.0,
 ELEV = {"eye": None, "oblique": 32.0, "high": 60.0, "top": 89.0}
 SPAN_WORDS = ("bridge", "walkway", "dock", "boardwalk", "pier", "plank", "gangway", "stair", "ramp", "deck")
 HANG_WORDS = ("lantern", "sconce", "rope", "chain", "hang", "banner", "sign", "lamp", "bell", "cage", "net", "candle")
+WALL_WORDS = HANG_WORDS + ("window",)   # fixed to a wall or post: held by the solid its box touches
+TOUCH = 8.0                 # a wall-fixed thing's box this close to a solid's box touches it
+PLANTS = {"plant", "groundcover", "flora"}   # buried only when most of its height is under the ground
 STRUCTURAL = {"building", "static", "furniture", "door", "container", "activator"}
 BURIED = 64.0              # a piece whose top is this far under the ground is lost in it
+HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")   # a vessel: whatever stands inside its box rests on its deck
+GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
 REACH = 160.0               # a supporter's top may rise this far past what rests on it (a post through a deck)
 NO_SOLID = {"light", "marker", "sound", "actor", "groundcover", "plant"}
 
@@ -69,9 +74,30 @@ def effect(p: dict) -> bool:
     return m.startswith("effects/") or e.startswith("fx")
 
 
+def wall_fixed(p: dict) -> bool:
+    words = f"{p.get('edid') or ''} {p.get('model') or ''}".lower()
+    return any(w in words for w in WALL_WORDS)
+
+
 def hangs(p: dict) -> bool:
     words = f"{p.get('edid') or ''} {p.get('model') or ''}".lower()
     return any(w in words for w in HANG_WORDS)
+
+
+def vessel(p: dict) -> bool:
+    words = f"{p.get('edid') or ''} {p.get('model') or ''}".lower()
+    return p.get("kind") in ("building", "static") and any(w in words for w in HULL_WORDS)
+
+
+def stage_made(p: dict) -> bool:
+    """A piece the build makes whether or not the studio carries its base: a base of a master the game always loads
+    (the jail's chest and mat), or a row a draft stage mints on its own (a Hist's sap pool, `<place>.sap.<tree>`)."""
+    return str(p.get("base") or "").lower().startswith(GAME_MASTERS) or ".sap." in str(p.get("id"))
+
+
+def out_of_reach(p: dict) -> bool:
+    """Skyrim's stolen-goods chest: placed under the ground by design, where no one reaches it."""
+    return str(p.get("edid") or "").lower().startswith("evidencechest")
 
 
 def solid(p: dict) -> bool:
@@ -172,6 +198,7 @@ class Boxes:
         self.hi = np.array([boxes[i][1] for i in self.ids]).reshape(-1, 3)
         # a tree holds nothing up from below; a Hist's great roots are walked on like ground (furniture stands on them)
         self.tree = np.array([q.get("kind") == "tree" and "root" not in str(q.get("edid") or "").lower() for q in keep], bool)
+        self.hull = np.array([vessel(q) for q in keep], bool)
 
     def _over(self, x, y):
         lo, hi = self.lo, self.hi
@@ -179,11 +206,17 @@ class Boxes:
 
     def under(self, x: float, y: float, z: float, tol: float, reach: float = None) -> np.ndarray:
         """Indexes of the boxes holding (x, y) whose top is within tol under z to `reach` over it (a post or wall
-        that rises a little past a deck's underside holds it; a house whose roof is far above does not); a tree
-        holds nothing up from below."""
+        that rises a little past a deck's underside holds it; a house whose roof is far above does not, but a ship's
+        hull holds what stands on its deck however high its rigging); a tree holds nothing up from below."""
         lo, hi = self.lo, self.hi
         reach = REACH if reach is None else reach
-        return np.nonzero(self._over(x, y) & (hi[:, 2] >= z - tol) & (hi[:, 2] <= z + reach) & (lo[:, 2] < z - 1)
+        return np.nonzero(self._over(x, y) & (hi[:, 2] >= z - tol) & ((hi[:, 2] <= z + reach) | self.hull)
+                          & (lo[:, 2] < z - 1) & ~self.tree)[0]
+
+    def touching(self, lo, hi, gap: float = TOUCH) -> np.ndarray:
+        """Indexes of the boxes (no trees) that touch or enter the box [lo, hi]: the wall or post a thing is fixed to."""
+        return np.nonzero((self.lo[:, 0] - gap <= hi[0]) & (lo[0] <= self.hi[:, 0] + gap) & (self.lo[:, 1] - gap <= hi[1])
+                          & (lo[1] <= self.hi[:, 1] + gap) & (self.lo[:, 2] - gap <= hi[2]) & (lo[2] <= self.hi[:, 2] + gap)
                           & ~self.tree)[0]
 
     def around(self, x: float, y: float, z: float) -> np.ndarray:
@@ -215,10 +248,13 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
                 on.update(B.ids[i] for i in B.under(x, y, low, tol))
             if hangs(p):   # a lantern, a sconce, a sign: held by what its top hangs from
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, float(hi[2])))
+            if wall_fixed(p):   # a lantern, sconce, window or sign on a wall or post: held by what it touches
+                on.update(B.ids[i] for i in B.touching(lo, hi))
             if p.get("kind") not in STRUCTURAL:   # a flower, a vine, a pot: held by the trunk or wall it grows on or sits in
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
             on.discard(p["id"])
-        info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on), "grounded": over is None or over <= tol}
+        info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on), "grounded": over is None or over <= tol,
+                         "gmin": round(min(gs), 1) if gs else None}
     changed = True
     while changed:
         changed = False
@@ -238,7 +274,7 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
     for p in pieces:
         if p.get("kind") in ("marker", "light", "sound", "actor") and not p.get("model"):
             continue
-        if p.get("missing"):
+        if p.get("missing") and not stage_made(p):
             out.append({"id": p["id"], "fault": "missing base", "base": p.get("base"), "cluster": p.get("cluster"),
                         "why": "its base is in no bundle: the studio draws nothing there and the build cannot place it"})
             continue
@@ -250,11 +286,15 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
             continue
         g = gr.get(p["id"])
         top = float(boxes[p["id"]][1][2])
-        hidden = "stolengoods" in str(p.get("edid") or "").lower()   # the Owing's stolen goods chest: under the ground by design
-        if g and g["over"] is not None and top - (g["low"] - g["over"]) < -BURIED and not hidden:
+        # buried: its top under the ground even where the ground under it is lowest (a rock half in a bank shows)
+        if p.get("kind") in PLANTS:   # a plant's root sits under the surface: buried when most of it is, even where the ground is lowest
+            sunk = g and g["gmin"] is not None and g["gmin"] - g["low"] > 0.6 * (top - g["low"])
+        else:
+            sunk = g and g["gmin"] is not None and top - g["gmin"] < -BURIED and not out_of_reach(p)
+        if sunk:
             out.append({"id": p["id"], "fault": "buried", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"],
-                        "why": f"its top is {g['low'] - g['over'] - top:.0f} units under the ground: nobody can see it"})
+                        "why": f"its top is {g['gmin'] - top:.0f} units under the lowest ground under it: nobody can see it"})
             continue
         def end_held(e):
             r = end_report(e, ground, allp, p["id"], boxes)

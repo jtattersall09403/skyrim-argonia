@@ -37,6 +37,8 @@
    "journal": "I came out of the ship by its door. The Dock Keeper will want to hear the crab is dead."},
   {"number": 90, "shown": true, "ending": "failed", "results": [],
    "journal": "The Dock Keeper is dead. Nobody else can finish the block test with me."},
+  {"number": 91, "shown": true, "ending": "failed", "results": [],
+   "journal": "The net-mender is dead, and she was to vouch for me before I was made a dock hand. Nobody else can."},
   {"number": 100, "shown": true, "ending": "completed",
    "results": [{"do": "lock_door", "ref": "door.test.ship"}, {"do": "switch_off", "ref": "person.test.crab"},
                {"do": "forget_spell", "spell": "017122:Skyrim.esm"}, {"do": "make_peace", "faction": "039F26:Skyrim.esm"},
@@ -61,6 +63,9 @@
   {"id": "person.test.keeper", "kind": "person", "enabled": true,
    "placement": {"base": {"kind": "template_person", "id": "00FF4D:Black Marsh.esm"}, "anchor": {"near": "02A20A:Black Marsh.esm", "rule": "navmesh"}},
    "at": {"cell": "005A21:Black Marsh.esm", "interior": false, "x": 30901.0, "y": -2693.0, "z": 3.0}},
+  {"id": "person.test.mender", "kind": "person", "enabled": true, "name": "Net-Mender",
+   "placement": {"base": {"kind": "template_person", "id": "00FF4D:Black Marsh.esm"}, "anchor": {"near": "02A20A:Black Marsh.esm", "rule": "navmesh"}},
+   "at": {"cell": "005A21:Black Marsh.esm", "interior": false, "x": 30826.0, "y": -2771.0, "z": 3.0}},
   {"id": "thing.test.barrel", "kind": "thing", "enabled": true,
    "placement": {"base": {"kind": "existing_base", "id": "08771D:Skyrim.esm"}, "anchor": {"near": "02A20A:Black Marsh.esm", "rule": "surface"}},
    "at": {"cell": "005A21:Black Marsh.esm", "interior": false, "x": 31040.0, "y": -2700.0, "z": 0.0}},
@@ -151,6 +156,7 @@
   {"id": "use.door.test.ship-inside.60-70", "kind": "use", "ref": "door.test.ship-inside", "prerequisite": 60, "sets": 70, "until": 70}
  ],
  "must_live": [
-  {"ref": "person.test.keeper", "fail_stage": 90, "main_message": true}
+  {"ref": "person.test.keeper", "fail_stage": 90, "main_message": true},
+  {"ref": "person.test.mender", "fail_stage": 91, "main_message": true, "to": 30}
  ]
 }

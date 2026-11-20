@@ -111,7 +111,9 @@ general.md's table of dramatic jobs, never scripted.
    results are true at once.
 5. **Who must live.** Name only the people the quest cannot go on without: their death fails it with its own journal
    entry, over the window of stages where it matters (from the first shown stage at the earliest); a main or faction
-   quest also shows its kind's message, a minor quest does not. Every other line reads sensibly with any named person
+   quest also shows its kind's message, a minor quest does not. A person needed only until a stage (until the player
+   holds what carries the quest on) has the failing `failForward` on each stage below it and, from it on, a
+   `failForward` on their death to a stage of its own, or none; the two never share a stage (`death both ways`). Every other line reads sensibly with any named person
    dead, gated on who is alive; where either of two people alive is enough, neither is a who-must-live row.
 6. **Deaths.** A death moves the quest only for a person the player is asked to fight (`hostile`, at a fixed level,
    with a reward in proportion), a who-must-live person, or a killing marked the player's choice. A confrontation is a
