@@ -14,8 +14,7 @@
 {"id":"cite-person-helstrom-v7ck5843ekqs34zehs9hj39chn","kind":"dossier","title":"person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","locator":"person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"}
 {"id":"cite-person-helstrom-vp6htf3eaym7xem7wecspeg8fn","kind":"dossier","title":"person:helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","locator":"person:helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN"}
 {"id":"cite-person-helstrom-yfmtjk20vgq52ak51gm46yjqyr","kind":"dossier","title":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR","locator":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
-{"id":"cite-person-outpost-m11-m63-pf9dwpc1z8q6bzzqgdcjpx7a7w","kind":"dossier","title":"person:outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","locator":"person:outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W"}
-{"id":"cite-person-outpost-m13-m65-rp1zwttmyj5qz7eky4szehe05s","kind":"dossier","title":"person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","locator":"person:outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"}
+{"id":"cite-person-outpost-m13-m65-rhyfydyg75ynbgw69r8x9pzfba","kind":"dossier","title":"person:outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA","locator":"person:outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA"}
 {"id":"cite-person-outpost-m13-m65-vd51zd4gp90n4wygpgw43d7ppc","kind":"dossier","title":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC","locator":"person:outpost-m13-m65.VD51ZD4GP90N4WYGPGW43D7PPC"}
 {"id":"cite-person-outpost-m6-m66-yd5kbebaej872qv0fz3x1w0d5v","kind":"dossier","title":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","locator":"person:outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V"}
 {"id":"cite-place-give-helstrom-1","kind":"reasoning","title":"place_give:helstrom/1","locator":"place_give:helstrom/1"}
@@ -49,7 +48,6 @@
 {"id":"cite-place-give-outpost-m13-m65-5","kind":"reasoning","title":"place_give:outpost-m13-m65/5","locator":"place_give:outpost-m13-m65/5"}
 {"id":"cite-place-give-outpost-m6-m66-0","kind":"reasoning","title":"place_give:outpost-m6-m66/0","locator":"place_give:outpost-m6-m66/0"}
 {"id":"cite-place-give-outpost-m6-m66-1","kind":"reasoning","title":"place_give:outpost-m6-m66/1","locator":"place_give:outpost-m6-m66/1"}
-{"id":"cite-place-give-outpost-m6-m66-2","kind":"reasoning","title":"place_give:outpost-m6-m66/2","locator":"place_give:outpost-m6-m66/2"}
 {"id":"cite-place-give-outpost-m6-m66-3","kind":"reasoning","title":"place_give:outpost-m6-m66/3","locator":"place_give:outpost-m6-m66/3"}
 {"id":"cite-place-give-outpost-m6-m66-4","kind":"reasoning","title":"place_give:outpost-m6-m66/4","locator":"place_give:outpost-m6-m66/4"}
 {"id":"cite-place-give-outpost-m6-m66-6","kind":"reasoning","title":"place_give:outpost-m6-m66/6","locator":"place_give:outpost-m6-m66/6"}
@@ -84,10 +82,7 @@
 {"id":"cite-place-note-outpost-m6-m66-dangers","kind":"reasoning","title":"place_note:outpost-m6-m66/dangers","locator":"place_note:outpost-m6-m66/dangers"}
 {"id":"cite-place-note-outpost-m6-m66-economy","kind":"reasoning","title":"place_note:outpost-m6-m66/economy","locator":"place_note:outpost-m6-m66/economy"}
 {"id":"cite-place-note-outpost-m6-m66-faith","kind":"reasoning","title":"place_note:outpost-m6-m66/faith","locator":"place_note:outpost-m6-m66/faith"}
-{"id":"cite-place-note-outpost-m6-m66-history","kind":"reasoning","title":"place_note:outpost-m6-m66/history","locator":"place_note:outpost-m6-m66/history"}
 {"id":"cite-place-note-outpost-m6-m66-hooks","kind":"reasoning","title":"place_note:outpost-m6-m66/hooks","locator":"place_note:outpost-m6-m66/hooks"}
-{"id":"cite-place-note-outpost-m6-m66-look","kind":"reasoning","title":"place_note:outpost-m6-m66/look","locator":"place_note:outpost-m6-m66/look"}
-{"id":"cite-place-note-outpost-m6-m66-overview","kind":"reasoning","title":"place_note:outpost-m6-m66/overview","locator":"place_note:outpost-m6-m66/overview"}
 {"id":"cite-place-note-outpost-m6-m66-people","kind":"reasoning","title":"place_note:outpost-m6-m66/people","locator":"place_note:outpost-m6-m66/people"}
 {"id":"cite-place-note-outpost-m6-m66-present","kind":"reasoning","title":"place_note:outpost-m6-m66/present","locator":"place_note:outpost-m6-m66/present"}
 {"id":"cite-place-note-tribal-camp-m2-m68-dangers","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/dangers","locator":"place_note:tribal-camp-m2-m68/dangers"}
@@ -99,7 +94,6 @@
 {"id":"cite-place-note-tribal-camp-m2-m68-people","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/people","locator":"place_note:tribal-camp-m2-m68/people"}
 {"id":"cite-place-note-tribal-camp-m2-m68-present","kind":"reasoning","title":"place_note:tribal-camp-m2-m68/present","locator":"place_note:tribal-camp-m2-m68/present"}
 {"id":"cite-place-wealth-helstrom","kind":"dossier","title":"place_wealth:helstrom","locator":"place_wealth:helstrom"}
-{"id":"cite-place-wealth-outpost-m11-m63","kind":"dossier","title":"place_wealth:outpost-m11-m63","locator":"place_wealth:outpost-m11-m63"}
 {"id":"cite-place-wealth-outpost-m13-m65","kind":"dossier","title":"place_wealth:outpost-m13-m65","locator":"place_wealth:outpost-m13-m65"}
 {"id":"cite-place-wealth-outpost-m6-m66","kind":"dossier","title":"place_wealth:outpost-m6-m66","locator":"place_wealth:outpost-m6-m66"}
 {"id":"cite-place-wealth-tribal-camp-m2-m68","kind":"dossier","title":"place_wealth:tribal-camp-m2-m68","locator":"place_wealth:tribal-camp-m2-m68"}
