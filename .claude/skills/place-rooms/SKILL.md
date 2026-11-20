@@ -22,6 +22,10 @@ Step 5 of the place path ([place-system](../place-system/SKILL.md)). Stages: `ad
   Close every opening the cut leaves with the kit's own door or wall piece. `room.strip` `{base editor id: why}`
   takes out every piece of a base (the cell's enemies, traps, levers and treasure).
 - A person works in an added room by the row's `work_for` (the people stage gives them their work stop there).
+- Look at every copied or cut room before it is handed over (`place-look`, Inside a room): `look <place> in <room>
+  overview` and `probe --all`. An opening onto the void is closed with the kit's own door or wall piece; what the
+  source left that the record does not want (a king's guards, traps, treasure, rubble of a ruin) is dropped or
+  stripped.
 
 ## A building a story needs and the source lacks
 
