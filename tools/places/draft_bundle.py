@@ -29,7 +29,7 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land")
-TOOL = "tools/places/draft_bundle.py v4"
+TOOL = "tools/places/draft_bundle.py v5"
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 _catalogue: dict = {}
 
@@ -127,12 +127,22 @@ def stale(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> bool
     return current_key(place_id, bundles) != key(place_id, places, bundles)
 
 
+def copy_src(info: dict, src: Path) -> Path:
+    """The source bundle a copied room is read from: the one its copy_of names (a room added from another place of
+    our mods), else the place's own."""
+    other = src.parent / f"src.{info['copy_of'].split('/', 1)[0]}"
+    return other if other.is_dir() else src
+
+
 def copy_space(info: dict, rows: list[dict], src: Path) -> list[dict]:
-    """An interior: the source cell's refs (no actors; one room only when `room` names it, by the build's room_partition), with our
-    rows over them: a row with `src` changes that ref (or drops it when `removed`), ignored when its src is outside
-    the kept room; a row without `src` is added."""
+    """An interior: the source cell's refs (no actors; one room only when `room` names it, by the build's room_partition;
+    only what lies in its `cut` box when it has one, the build's in_cut), with our rows over them: a row with `src`
+    changes that ref (or drops it when `removed`), ignored when its src is outside the kept room; a row without `src`
+    is added. The source is the bundle the room's copy_of names."""
+    from tools.places.build import in_cut
     copied_from = info["copy_of"].split("/", 1)[1]
-    srows = [r for r in jsonl(src / "spaces" / copied_from / "refs.jsonl") if r.get("kind") != "actor"]
+    srows = [r for r in jsonl(copy_src(info, src) / "spaces" / copied_from / "refs.jsonl")
+             if r.get("kind") != "actor" and (not info.get("cut") or ("pos" in r and in_cut(info["cut"], r["pos"])))]
     if info.get("room"):  # one room of a shared cell: exactly the room the build makes (Build, the room rule)
         from tools.places.build import room_partition
         rows_b = [{"fk": r["id"], "base": r["base"], "pos": r["pos"], "rot": r.get("rot"), "scale": r.get("scale"),
@@ -171,11 +181,14 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
     shutil.rmtree(out, ignore_errors=True)
     spaces, counts = [], {}
     used: dict[str, int] = {}
+    others: list[Path] = []   # the source bundles of rooms copied from other places: their bases too
     for sdir in sorted(p for p in (pdir / "spaces").iterdir() if p.is_dir()):
         sid, rows = sdir.name, jsonl(sdir / "refs.jsonl")
         info = json.loads((sdir / "space.json").read_text(encoding="utf-8")) if (sdir / "space.json").exists() else {}
         if sid != "exterior" and info.get("copy_of"):
             rows = copy_space(info, rows, src)
+            if copy_src(info, src) != src:
+                others.append(copy_src(info, src))
         info = {"space_id": sid, "type": "exterior" if sid == "exterior" else "interior"} | info
         if sid == "exterior" and (ground / "spaces" / "exterior" / "space.json").exists():
             info = json.loads((ground / "spaces" / "exterior" / "space.json").read_text()) | info
@@ -188,7 +201,8 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
             if r.get("base"):
                 used[r["base"]] = used.get(r["base"], 0) + 1
     # every base a ref uses: the source bundle first (then the ground's), else the catalogue; none: reported
-    bases = {r["key"]: r for f in (ground / "bases.jsonl", src / "bases.jsonl") for r in jsonl(f)}
+    bases = {r["key"]: r for f in (*(o / "bases.jsonl" for o in others), ground / "bases.jsonl", src / "bases.jsonl")
+             for r in jsonl(f)}
     cat, missing = None, []
     for bk, n in sorted(used.items()):
         if bk not in bases:
