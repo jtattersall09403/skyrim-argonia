@@ -55,6 +55,163 @@
     "need": 1,
     "tier": "AGENT_INVENTED",
     "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B76",
+    "kind": "static",
+    "pos": [
+     -9962,
+     -551919
+    ],
+    "rot_z": 0.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B77",
+    "kind": "static",
+    "pos": [
+     -11213,
+     -550752
+    ],
+    "rot_z": 1.3,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B7B",
+    "kind": "static",
+    "pos": [
+     -11550,
+     -550732
+    ],
+    "rot_z": 2.6,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B76",
+    "kind": "static",
+    "pos": [
+     -10519,
+     -553421
+    ],
+    "rot_z": 3.9,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B77",
+    "kind": "static",
+    "pos": [
+     -9952,
+     -552860
+    ],
+    "rot_z": 5.2,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
+   },
+   {
+    "base": "ArgoniaNewWorld.esm:020B7B",
+    "kind": "static",
+    "pos": [
+     -10027,
+     -551907
+    ],
+    "rot_z": 0.0,
+    "scale": 1.6,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the pole of trophies by the fire (place record look; source note still to add): Curse of Cipactli's tall bone totem, raised a head above a man"
+   },
+   {
+    "base": "Skyrim.esm:0C1ADD",
+    "kind": "static",
+    "pos": [
+     -11420,
+     -550203
+    ],
+    "rot_z": 1.171,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+   },
+   {
+    "base": "Skyrim.esm:0C1ADD",
+    "kind": "static",
+    "pos": [
+     -11747,
+     -550070
+    ],
+    "rot_z": 5.883,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+   },
+   {
+    "base": "Skyrim.esm:0C1ADD",
+    "kind": "static",
+    "pos": [
+     -11880,
+     -550397
+    ],
+    "rot_z": 4.312,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+   },
+   {
+    "base": "Skyrim.esm:0C1ADD",
+    "kind": "static",
+    "pos": [
+     -11553,
+     -550530
+    ],
+    "rot_z": 2.742,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+   },
+   {
+    "base": "Skyrim.esm:0C49ED",
+    "kind": "clutter",
+    "pos": [
+     -11620,
+     -550320
+    ],
+    "rot_z": 1.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
+   },
+   {
+    "base": "Skyrim.esm:0C49EF",
+    "kind": "clutter",
+    "pos": [
+     -11690,
+     -550275
+    ],
+    "rot_z": 1.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
+   },
+   {
+    "base": "Skyrim.esm:0C49EB",
+    "kind": "clutter",
+    "pos": [
+     -11590,
+     -550250
+    ],
+    "rot_z": 1.0,
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
    }
   ],
   "room_names": {
@@ -62,7 +219,197 @@
     "name": "Karsh-Naal Cellar",
     "why": "the cellar under the longhouse (main quest 4 need: the longhouse and its cellar), where the guards keep their pay and stolen goods"
    }
-  }
+  },
+  "drop": {
+   "Skyrim.esm:05A34C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A34D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A359": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A35A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A35B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A35E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A360": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A362": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A363": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A365": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A368": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A369": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A36A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A36D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A36E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A36F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A60E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A60F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A611": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A617": "the orc smithy: the record promises no forge here",
+   "Skyrim.esm:05A623": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A624": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A625": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A626": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A627": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A628": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A629": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05A63F": "the orc smithy: the record promises no forge here",
+   "Skyrim.esm:05A646": "the orc mine's and village's pieces: no mine or well in the record",
+   "Skyrim.esm:05AC8D": "the orc smithy: the record promises no forge here",
+   "Skyrim.esm:05ACA4": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05ACA5": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05ACA6": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05ACA7": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05ACAA": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:05ACAB": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06853F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068541": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068545": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068546": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068547": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068548": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068549": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06854A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06854B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06854C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06854D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06854F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068550": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068551": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068555": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068596": "an Imperial stable: no horses in a Naga marsh camp",
+   "Skyrim.esm:0685D5": "an Imperial stable: no horses in a Naga marsh camp",
+   "Skyrim.esm:0685D6": "an Imperial stable: no horses in a Naga marsh camp",
+   "Skyrim.esm:0685E0": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0685E7": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:068603": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068604": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068605": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068606": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068610": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:068621": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:068632": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068634": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068635": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068636": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068637": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068638": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068639": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06863A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068644": "the orc mine's and village's pieces: no mine or well in the record",
+   "Skyrim.esm:06864A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06864B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06864C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06864D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:068683": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:068684": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:068686": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:06868A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06868C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06868D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:06868F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:0686CF": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:0686D7": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:0686E2": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:068720": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:06A8DF": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:06A8FB": "the orc smith's counter and display: no trader here",
+   "Skyrim.esm:099E85": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E86": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E87": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E88": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E92": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:099E93": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:099E95": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E96": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099E97": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099EB1": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099EBC": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:099EBD": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:099ED5": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099ED6": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099ED7": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
+   "Skyrim.esm:099EEF": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
+   "Skyrim.esm:099EF3": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0A8935": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0A8939": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0CD959": "the orc smithy: the record promises no forge here",
+   "Skyrim.esm:0EC371": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0EC387": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
+   "Skyrim.esm:0F762C": "a dragon perch: no dragons in this marsh camp"
+  },
+  "replace": {
+   "Skyrim.esm:0AF1A2": {
+    "base": "King of the Murkmire.esp:10A52B"
+   },
+   "Skyrim.esm:0AF1A3": {
+    "base": "King of the Murkmire.esp:10A52B"
+   },
+   "Skyrim.esm:0AF19F": {
+    "base": "King of the Murkmire.esp:10A52B"
+   },
+   "Skyrim.esm:042D30": {
+    "base": "King of the Murkmire.esp:08EAC7"
+   },
+   "Skyrim.esm:042B8A": {
+    "base": "King of the Murkmire.esp:08EACC"
+   },
+   "Skyrim.esm:0774C8": {
+    "base": "King of the Murkmire.esp:B7F081"
+   },
+   "Skyrim.esm:0727A1": {
+    "base": "King of the Murkmire.esp:0AAE85"
+   }
+  },
+  "plan": [
+   {
+    "thing": "source choice",
+    "from": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped"
+   },
+   {
+    "thing": "hide tents hung with bones",
+    "from": "each of the five orc awning sites takes King of the Murkmire's hide tent (ALPAScaleTent02, Ree-An-Wo's); the awnings' partitions dropped; a bone totem beside each tent"
+   },
+   {
+    "thing": "a timber longhouse",
+    "from": "the source's OrcLonghouse01 kept with its door and room (the Naga longhouse: pay and stolen goods); orc tables, chairs and chest replaced by King of the Murkmire's rustic pieces"
+   },
+   {
+    "thing": "the cellar",
+    "from": "kept: main quest 4 needs the longhouse and its cellar"
+   },
+   {
+    "thing": "a fire pit",
+    "from": "the source's campfire and fires kept"
+   },
+   {
+    "thing": "jars of sap stacked by the longhouse wall",
+    "from": "draft.add: urn stacks beside the longhouse door"
+   },
+   {
+    "thing": "a cage at the camp's edge",
+    "from": "draft.add: Skyrim's long metal cage at the west edge (main quest 4)"
+   },
+   {
+    "thing": "a pole of trophies",
+    "from": "draft.add: a tall bone totem by the fire"
+   },
+   {
+    "thing": "a bone shrine of standing stones",
+    "from": "draft.add: a ring of four standing stones with scattered bones (the Loreisian camp's), north of the tents"
+   },
+   {
+    "thing": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
+    "from": "dropped: the record names no wall"
+   },
+   {
+    "thing": "structure: mine",
+    "from": "dropped: the record names none"
+   },
+   {
+    "thing": "structure: orc smithy, stable, well, counter, dragon perch",
+    "from": "dropped: the record promises no smith, horses, trader or dragon"
+   },
+   {
+    "thing": "tanning rack",
+    "from": "replaced by King of the Murkmire's scale tanning rack"
+   }
+  ]
  },
  "fit": {
   "pivot": [

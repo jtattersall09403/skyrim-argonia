@@ -26,13 +26,13 @@
     "base": "Dragonborn.esm:03C364",
     "kind": "container",
     "pos": [
-     -29776.1,
-     -610423.4
+     -28976.1,
+     -610383.4
     ],
     "name": "Sealed Spring",
     "need": 1,
     "tier": "AGENT_INVENTED",
-    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 350 units east of its trunk, named so a player reads what it is; locked and owned by the town in the stock source"
+    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 1150 units east of its trunk, past the great tree's roots and its sap, named so a player reads what it is; locked and owned by the town in the stock source"
    },
    {
     "base": "King of the Murkmire.esp:B7F081",
@@ -64,25 +64,27 @@
     "why": "the case that holds the order's sealed urn (Sisei-Xul, quests 5 to 10 and the ending; House Cardruhn, 9. The Urn): King of the Murkmire's rustic chest beside the hall's arcane enchanter inside the door, named so a player reads what it is; owned by the town and locked at Expert in the stock source; the urn itself is the quests' own thing put inside it"
    },
    {
-    "base": "Skyrim.esm:09727E",
+    "base": "King of the Murkmire.esp:3D870E",
     "stop": "rootworm-stop",
     "kind": "activator",
     "pos": [
-     -31020.4,
-     -610425.3
+     -30246.87,
+     -610441.29
     ],
-    "scale": 1.8,
-    "dz": 2.0,
+    "scale": 5.65,
+    "dz": 3.0,
     "need": 11,
     "tier": "AGENT_INVENTED",
-    "why": "the rootworm's root pool under the city tree (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool): Skyrim's plain still water puddle (WaterPuddle, clear water, not the tree's amber sap) at 1.8 scale, 900 units west of the trunk of the sacred tree (helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE), beyond the root-tender Cheeval-Xu's spot and clear of the tree's own sap pool at its foot"
+    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
+    "rot_z": 1.25494,
+    "id_base": "Skyrim.esm:09727E"
    },
    {
     "base": "King of the Murkmire.esp:0CF38A",
     "kind": "clutter",
     "pos": [
-     -31330.0,
-     -610383.0
+     -31234.8,
+     -610383.4
     ],
     "rot_z": 1.5708,
     "dz": -20.0,
@@ -94,8 +96,8 @@
     "base": "Skyrim.esm:000010",
     "kind": "marker",
     "pos": [
-     -30650.0,
-     -610383.0
+     -29017.3,
+     -610383.4
     ],
     "map_marker": "Rootworm Landing (Helstrom)",
     "need": 11,
@@ -336,8 +338,239 @@
   "replace": {
    "Skyrim.esm:0E29F4": {
     "base": "Skyrim.esm:08C4B1"
+   },
+   "Black Marsh.esm:2001EE": {
+    "base": "King of the Murkmire.esp:10A52B"
+   },
+   "Black Marsh.esm:2001F3": {
+    "base": "King of the Murkmire.esp:10A52C"
    }
-  }
+  },
+  "drop": {
+   "Black Marsh North.esp:07865D": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:078662": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:078672": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:078677": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:078682": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:078697": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:07869B": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786C9": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786DA": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786DB": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786DD": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786FC": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0786FF": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:07870A": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0787BD": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0787C1": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0787C2": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0787C3": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh North.esp:0787C4": "a collision volume of the source whose visible building (a stepped Xanmeer the boxes outline, z to 2500) is not among the source pieces: invisible steps standing in the air",
+   "Black Marsh.esm:1CE90A": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE90B": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE90C": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE90D": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE90E": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE90F": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE910": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE911": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE912": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE913": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE914": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE915": "a Dwemer stone road: the record's city has no stone; rafts and plank walks thread the districts",
+   "Black Marsh.esm:1CE93E": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE93F": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE941": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE942": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE943": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE945": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE948": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE949": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE94A": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1CE94C": "a Dwemer ruin piece: the record's city has no stone and no ruin",
+   "Black Marsh.esm:1E97F3": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F4": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F5": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F6": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F7": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F8": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97F9": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97FA": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97FB": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97FC": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97FD": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E97FE": "the source's castle wall (1sovcastlewall): the record's city has no outward wall, the marsh is the wall",
+   "Black Marsh.esm:1E984D": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E984E": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E984F": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9850": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9851": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9852": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9853": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9854": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9856": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9857": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9858": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9859": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985A": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985B": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985C": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985D": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985E": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E985F": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9866": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9867": "a stockade pike or torture pole: no outward wall and no war camp in a friendly city",
+   "Black Marsh.esm:1E9868": "a Skyrim Imperial grave or war table: nothing of the record",
+   "Black Marsh.esm:1E9880": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9882": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9883": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9884": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9885": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9886": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9887": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9888": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9889": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988A": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988B": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988C": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988D": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988E": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E988F": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9890": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9891": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9892": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9893": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9894": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9895": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9896": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9897": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E9898": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E989C": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E989D": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E989E": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E989F": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E98A1": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E98A2": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E98A3": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1E98A4": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:1F01E1": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:1F0202": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2001D7": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001D8": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001D9": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DA": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DB": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DC": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DD": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DE": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001DF": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001E0": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001E1": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001E2": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001E3": "stone blocks and Imperial stairs parked under the world in the source: the record's city has no stone",
+   "Black Marsh.esm:2001FE": "a Skyrim Imperial grave or war table: nothing of the record",
+   "Black Marsh.esm:2001FF": "a Skyrim Imperial grave or war table: nothing of the record",
+   "Black Marsh.esm:200200": "a Skyrim Imperial grave or war table: nothing of the record",
+   "Black Marsh.esm:207497": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:207498": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:207499": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749A": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749B": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749C": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749D": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749E": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20749F": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A0": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A1": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A2": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A3": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A4": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A5": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A6": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A7": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A8": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074A9": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074AA": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074AB": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074AC": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074AD": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2074AE": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:207617": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:207618": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:207619": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:20761A": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2076B3": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2076B4": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2076B5": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:2076B6": "a trap: Helstrom is friendly, its danger is social, not traps in its streets",
+   "Black Marsh.esm:1E4519": "a bench the great city tree now stands over"
+  },
+  "shrine": {
+   "base": "King of the Murkmire.esp:0D72B7",
+   "scale": 1.5
+  },
+  "plan": [
+   {
+    "thing": "source choice",
+    "from": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced"
+   },
+   {
+    "thing": "stilt and root-hollow houses of reed, mud and living wood",
+    "from": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
+   },
+   {
+    "thing": "no stone",
+    "from": "dropped: the castle wall, stone blocks, Dwemer road and Dwemer ruin pieces, Imperial stairs"
+   },
+   {
+    "thing": "no outward wall",
+    "from": "dropped: the castle wall and the stockade pikes"
+   },
+   {
+    "thing": "Black Heart-Mud pools between the roots; thick warm air",
+    "from": "the source's mud and fog/mist effects kept"
+   },
+   {
+    "thing": "rafts and plank walks thread the districts",
+    "from": "the source's docks, dock steps, boats and walkways kept"
+   },
+   {
+    "thing": "the city tree (great)",
+    "from": "the shrine Hist stands as King of the Murkmire's HistTree03 at 1.5 scale (draft.shrine), with its sap pool, lanterns"
+   },
+   {
+    "thing": "the root landing",
+    "from": "the city tree's sap pool is the rootworm stop; the tunnel mouth on its west lip and the Rootworm Landing marker on its east lip"
+   },
+   {
+    "thing": "the council house, its wardens' quarters and strongroom",
+    "from": "kept: the draft.add rooms the thieves' line uses"
+   },
+   {
+    "thing": "the boatmen's lodge",
+    "from": "kept as the ship's hold the quests use for it"
+   },
+   {
+    "thing": "the tree-minders' hall",
+    "from": "kept as the hall room with its arcane enchanter and the order's urn case (quests)"
+   },
+   {
+    "thing": "Imperial green tents",
+    "from": "replaced by King of the Murkmire's hide tents"
+   },
+   {
+    "thing": "timber stilt posts (01mosspost) and lamp posts (01lightpost)",
+    "from": "kept: plain timber posts that carry the decks and the lanterns; not Nordic by the record's flags"
+   },
+   {
+    "thing": "traps",
+    "from": "dropped: pressure plates and poison gas; the poison bloom on the ground is a harvestable ingredient, kept"
+   },
+   {
+    "thing": "Imperial grave containers, war table",
+    "from": "dropped"
+   }
+  ]
  },
  "fit": {
   "pivot": [
@@ -7279,7 +7512,7 @@
    {
     "station": "shrine",
     "id": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE",
-    "base": "King of the Murkmire.esp:0D72B8",
+    "base": "King of the Murkmire.esp:0D72B7",
     "space": "exterior",
     "by": null
    }
@@ -7338,25 +7571,9 @@
   ]
  },
  "hang": {
-  "added": [
-   {
-    "id": "helstrom.hang.W8H2ZE5XRXHVJN6080NV1ASNXE.0",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
-   },
-   {
-    "id": "helstrom.hang.W8H2ZE5XRXHVJN6080NV1ASNXE.1",
-    "base": "King of the Murkmire.esp:1A845D",
-    "on": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
-   }
-  ]
+  "added": []
  },
  "sap": {
-  "added": [
-   {
-    "id": "helstrom.sap.W8H2ZE5XRXHVJN6080NV1ASNXE",
-    "on": "W8H2ZE5XRXHVJN6080NV1ASNXE"
-   }
-  ]
+  "added": []
  }
 }

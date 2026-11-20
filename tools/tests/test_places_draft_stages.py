@@ -282,3 +282,14 @@ def test_a_stop_handler_works_at_the_stops_own_thing():
     assert people.stop_spots(folk, people.spots_of("p", place)) == ["p.tender"]
     assert folk[0]["work"]["ref"] == spot and folk[0]["routine"][0]["at"]["ref"] == spot
     assert people.stop_spots(folk, people.spots_of("p", place)) == []
+
+
+def test_an_added_row_swapped_in_place_keeps_its_id():
+    """A `draft.add` row whose base is swapped keeps the id it was minted with (`id_base`): the stories rest on it."""
+    from tools.places.draft import adds, io, people
+    first = io.mint("p", "add", "0", "b:puddle")
+    place = {"draft": {"add": [{"base": "b:sap", "id_base": "b:puddle", "pos": [0, 0], "stop": "rootworm-stop"}]}}
+    bases = {"b:sap": {"key": "b:sap", "edid": "Pool", "kind": "activator", "bounds": [[-10, -10, 0], [10, 10, 1]]}}
+    (_, row), = adds.rows("p", place["draft"], bases)
+    assert row["id"] == first and row["base"] == "b:sap"
+    assert people.spots_of("p", place) == {"rootworm-stop": first}

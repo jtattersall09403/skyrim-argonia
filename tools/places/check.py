@@ -615,7 +615,14 @@ def sap_of(pool: dict, hist: dict) -> bool:
     `.sap.` after the place: draft.sap.pool_for). The pool is centred on the trunk by design, so each stands in the
     other."""
     pid, _, rest = str(hist.get("id") or "").partition(".")
-    return bool(rest) and pool.get("id") == f"{pid}.sap.{rest}"
+    if bool(rest) and pool.get("id") == f"{pid}.sap.{rest}":
+        return True
+    # a pool of Hist sap placed by hand on the trunk (a travel stop's root pool), which the sap stage keeps as the
+    # tree's own (draft.sap.plan)
+    from tools.places.draft import sap
+    if pool.get("base") != sap.POOL or not pool.get("pos") or not hist.get("pos"):
+        return False
+    return math.dist(sap.centre(pool), hist["pos"][:2]) <= sap.TOL
 
 
 def _source_had(a: dict, b: dict) -> bool:
