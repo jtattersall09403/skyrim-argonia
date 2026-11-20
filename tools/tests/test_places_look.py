@@ -352,3 +352,79 @@ def test_mesh_stale_when_a_place_file_is_newer(tmp_path):
     assert mesh.stale(pd, tmp_path / "b", "p")["stale"]
     os.utime(f, (plan.stat().st_mtime - 10, plan.stat().st_mtime - 10))
     assert not mesh.stale(pd, tmp_path / "b", "p")["stale"]
+
+
+# ---------- inside a room (room.py) ----------
+def _square_floor(z=0.0, size=1000.0):
+    from tools.places.look import room
+    return room.Floor([[0, 0, z], [size, 0, z], [size, size, z], [0, size, z]], [[0, 1, 2], [0, 2, 3]])
+
+
+def test_room_names_floor_and_navmesh_rows(tmp_path):
+    from tools.places.look import room
+    spaces = {"exterior": {"space": None}, "HutA": {"space": {"name": "Vosh-Leera's House"}},
+              "HallB": {"space": {"name": "Great Hall"}}}
+    assert room.space_id(spaces, "vosh-leera's house") == "HutA"
+    assert room.space_id(spaces, "hallb") == "HallB" and room.space_id(spaces, "outside") == "exterior"
+    with pytest.raises(KeyError, match="HallB"):
+        room.space_id(spaces, "Cellar")
+    f = _square_floor(50)
+    assert f.height(500, 500) == pytest.approx(50) and f.height(1500, 500) is None and f.water(0, 0) is None
+    nav = tmp_path / "navmesh.jsonl"
+    nav.write_text('{"verts": [[0,0,0],[100,0,0],[0,100,0],[5000,0,0],[5100,0,0],[5000,100,0]], '
+                   '"tris": [[0,1,2,0,0],[3,4,5,0,0]]}\n')
+    assert len(room.floor_of(nav).T) == 2
+    assert len(room.floor_of(nav, {"box": [-50, -50, 400, 400]}).T) == 1   # a cut keeps its own floor only
+
+
+def test_a_camera_inside_a_room_stops_at_the_floors_edge_and_at_a_wall():
+    from tools.places.look import room
+    f = _square_floor()
+    got = room.stand_inside(f, [500, 500], [1, 0], 2000)
+    assert 400 <= got <= 500                       # the floor ends 500 east of the target
+    wall = [(700, 0, 720, 1000, 0, 300)]
+    assert room.stand_inside(f, [500, 500], [1, 0], 2000, blocks=wall) < 200
+    assert room.stand_inside(f, [500, 500], [-1, 0], 300) == 300   # the floor goes on: the whole distance
+
+
+def test_kit_pieces_fixed_to_the_shell_are_held_and_a_lone_floater_is_not():
+    from tools.places.look import room
+    g = Flat(0)
+    wall = piece("wall", [0, 0, 0], [0, -200, 0], [20, 200, 600], kind="building")
+    arch = piece("arch", [30, 0, 400], [-10, -100, 0], [10, 100, 100], kind="building")   # set into the wall
+    lone = piece("lone", [600, 0, 300], [-50, -50, 0], [50, 50, 40], kind="furniture")    # a bench in the air
+    f = geom.faults([wall, arch, lone], g)
+    assert {x["id"] for x in f if x["fault"] == "floats"} == {"arch", "lone"}
+    assert {x["id"] for x in room.held_by_shell(f, [wall, arch, lone]) if x["fault"] == "floats"} == {"lone"}
+
+
+def test_openings_onto_the_void_are_placed_where_the_way_out_meets_the_room():
+    from tools.places.look import room
+    looks = [{"at": [100, 500, 100], "out": [{"face": "w", "frac": 0.6, "dir": [-1, 0, 0]},
+                                              {"face": "up", "frac": 0.001, "dir": [0, 0, 1]}]},
+             {"at": [150, 520, 100], "out": [{"face": "w", "frac": 0.3, "dir": [-1, 0, 0]}]},
+             {"at": [500, 500, 100], "out": []}]
+    o = room.openings(looks, [0, 0, 1000, 1000])
+    assert len(o) == 1 and o[0]["towards"] == "west" and o[0]["edge_at"][0] == 0 and len(o[0]["seen_from"]) == 2
+    assert room.heading([0, 0, 1]) == "up" and room.heading([0, 1, 0.5]) == "north and up"
+    pts = room.spread(np.array([[0, 0, 0], [1, 0, 0], [1000, 0, 0], [0, 1000, 0]], float), 3)
+    assert len(pts) == 3 and {tuple(p[:2]) for p in pts} >= {(1000.0, 0.0), (0.0, 1000.0)}
+
+
+def test_a_room_copied_from_another_source_is_read_from_that_source_and_kept_to_its_cut(tmp_path):
+    """The draft bundle (what the studio and the look tool draw) reads a room added from another place of our mods
+    from the bundle its copy_of names, and keeps only what lies in its cut."""
+    import json as _json
+    from tools.places import draft_bundle
+    own, other = tmp_path / "src.own", tmp_path / "src.other"
+    for b in (own, other):
+        (b / "spaces" / "Hall").mkdir(parents=True)
+    (own / "spaces" / "Hall" / "refs.jsonl").write_text("")
+    rows = [{"id": "a", "base": "B:a", "pos": [100, 100, 0]}, {"id": "b", "base": "B:b", "pos": [5000, 100, 0]},
+            {"id": "c", "base": "B:c", "pos": [200, 200, 0], "kind": "actor"}]
+    (other / "spaces" / "Hall" / "refs.jsonl").write_text("".join(_json.dumps(r) + "\n" for r in rows))
+    info = {"copy_of": "other/Hall", "cut": {"box": [0, 0, 1000, 1000]}}
+    assert draft_bundle.copy_src(info, own) == other
+    got = draft_bundle.copy_space(info, [{"id": "new", "base": "B:n", "pos": [1, 1, 0]}], draft_bundle.copy_src(info, own))
+    assert sorted(r["id"] for r in got) == ["a", "new"]
+    assert draft_bundle.copy_src({"copy_of": "own/Hall"}, own) == own

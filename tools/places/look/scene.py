@@ -70,15 +70,32 @@ def _place_json(place_id: str) -> dict:
     return json.loads((PLACES / place_id / "place.json").read_text())
 
 
+_ROOM_BASES: dict[str, dict] = {}
+
+
+def _room_bases(src_dir: Path) -> dict:
+    """The bases of a source bundle a room is copied from (another place of our mods), read once."""
+    k = str(src_dir)
+    if k not in _ROOM_BASES:
+        _ROOM_BASES[k] = {b["key"]: b for b in _jsonl(src_dir / "bases.jsonl")}
+    return _ROOM_BASES[k]
+
+
 class Scene:
-    def __init__(self, place_id: str, ops: list[dict] | None = None, places: Path = PLACES):
-        self.place_id = place_id
+    info: dict = {}           # a room's space.json (the exterior: none)
+    plan_box: list | None = None   # a room's plan box: its cut, else its shell's
+
+    def __init__(self, place_id: str, ops: list[dict] | None = None, places: Path = PLACES, space: str = "exterior"):
+        self.place_id, self.space = place_id, space
         out = data_out()
         self.files = edits.load_place(places / place_id)
         if ops:
-            self.files = edits.apply(self.files, ops)
+            self.files = edits.apply(self.files, ops, edits.bundle_source(out / "bundles"))
         st = _static(place_id, self.files["place"]["source_id"], out)
         self.bases, self.footprints = st["bases"], st["footprints"]
+        if space != "exterior":
+            self._room(place_id, space, out)
+            return
         g = st["ground"]
         self.ground = Ground({k: list(v) for k, v in g.cells.items()}, g.water_by_cell, g.default_water, g.sha)
         self.ground.apply_patches(self.files.get("land") or [])
@@ -92,9 +109,53 @@ class Scene:
             st["world"] = [dict(p, world=True) for p in (self.piece(r) for r in st["world_refs"]) if p and p.get("resolved")]
         self.world = st["world"]
 
+    def _room(self, place_id: str, sid: str, out: Path):
+        """A room: its pieces as the draft bundle composes them (the source cell's copy with our rows over it, kept to
+        its room and cut), its floor (the source cell's walkable mesh) as its ground, no world about it."""
+        from tools.places import draft_bundle
+        from tools.places.look import room
+        sp = self.files["spaces"].get(sid)
+        if sp is None:
+            raise KeyError(f"{place_id} has no room {sid}")
+        info = sp.get("space") or {}
+        rows = copy.deepcopy(sp["refs"])
+        src = out / "bundles" / f"src.{self.files['place']['source_id']}"
+        floor = None
+        if info.get("copy_of"):
+            csrc = draft_bundle.copy_src(info, src)
+            rows = draft_bundle.copy_space(info, rows, csrc)
+            if csrc != src:
+                self.bases = _room_bases(csrc) | self.bases
+            floor = (csrc, info["copy_of"].split("/", 1)[1])
+        refs = [r for r in rows if not r.get("removed") and r.get("pos")]
+        self.info = info
+        self.refs = {r["id"]: r for r in refs}
+        self.pieces = [p for p in (self.piece(r) for r in refs) if p]
+        self.by_id = {p["id"]: p for p in self.pieces}
+        self.world = []
+        boxes = [geom.aabb(p) for p in self.pieces if p.get("kind") in ("building", "static") and p.get("model")] or \
+            [geom.aabb(p) for p in self.pieces] or [(np.zeros(3), np.zeros(3))]
+        lo = np.min([b[0] for b in boxes], axis=0)
+        hi = np.max([b[1] for b in boxes], axis=0)
+        cut = info.get("cut")
+        self.plan_box = [float(lo[0]), float(lo[1]), float(hi[0]), float(hi[1])]
+        if cut and cut.get("box"):   # the cut, as far as the room's shell reaches
+            x1, y1, x2, y2 = cut["box"]
+            self.plan_box = [max(min(x1, x2), self.plan_box[0]), max(min(y1, y2), self.plan_box[1]),
+                             min(max(x1, x2), self.plan_box[2]), min(max(y1, y2), self.plan_box[3])]
+        if floor:
+            self.ground = room.floor_of(floor[0] / "spaces" / floor[1] / "navmesh.jsonl", cut, self.plan_box)
+        else:
+            self.ground = room.flat_floor(float(lo[2]))
+        if not len(self.ground.T):
+            self.ground = room.flat_floor(float(lo[2]))
+
     def faults(self) -> list[dict]:
         if getattr(self, "_faults", None) is None:
             self._faults = geom.faults(self.pieces, self.ground, self.world)
+            if self.space != "exterior":
+                from tools.places.look import room
+                self._faults = room.held_by_shell(self._faults, self.pieces)
         return self._faults
 
     def everything(self) -> list[dict]:
@@ -157,10 +218,15 @@ class Scene:
             return self._of(n, "group", inside)
         if "," in n and all(_num(v) for v in n.split(",")):
             v = [float(x) for x in n.split(",")]
-            g = self.ground.height(v[0], v[1]) or 0.0
+            g = self.ground.height(v[0], v[1])
+            g = getattr(self.ground, "floor", 0.0) if g is None else g
             z = v[2] if len(v) > 2 else g
             return {"name": n, "kind": "point", "pieces": [], "lo": [v[0] - 400, v[1] - 400, z], "hi": [v[0] + 400, v[1] + 400, z + 300],
                     "point": [v[0], v[1], z]}
+        if self.space != "exterior" and n.lower() in ("door", "the door"):   # a room's way out to where it opens from
+            out = [p for p in self.pieces if p.get("kind") == "door" and (p.get("door") or {}).get("to_space") == (self.info.get("parent") or "exterior")]
+            if out:
+                return self._of(n, "door", out[:1])
         cl = self.clusters()
         if n in cl:
             return self._of(n, "structure", cl[n])

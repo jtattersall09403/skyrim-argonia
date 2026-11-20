@@ -9,7 +9,7 @@ import time
 
 import numpy as np
 
-from tools.places.look import draw, geom
+from tools.places.look import draw, geom, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
@@ -49,11 +49,17 @@ def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) ->
 
 def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
     from tools.places.look.daemon import save_session
+    space = "exterior"
+    if verb == "in":   # look <place> in <room> <verb> ...: every verb inside a room
+        if len(args) < 2:
+            raise ValueError("in <room id or the name its door shows> <verb> ...")
+        space = room.space_id(d.scene(place, sess["strokes"]).files["spaces"], args[0])
+        verb, args = args[1], args[2:]
     if verb in VIEWS:
-        return view(d, place, sess["strokes"], verb, args)
+        return view(d, place, sess["strokes"], verb, args, space=space)
     if verb == "probe":
-        sc = d.scene(place, sess["strokes"])
-        pos, o = _opts(args, {"all": False, "mesh": False})
+        sc = d.scene(place, sess["strokes"], space)
+        pos, o = _opts(args, {"all": False, "mesh": False, "no-void": False})
         if o.get("mesh"):
             return mesh_probe(sc, place, pos)
         if o.get("all") or not pos:
@@ -61,7 +67,12 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             by = {}
             for x in f:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
-            return {"place": place, "pieces": len(sc.pieces), "counts": by, "faults": f}
+            res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f}
+            if space != "exterior" and not o.get("no-void"):
+                res["openings"] = voids(d, place, sess["strokes"], sc)
+                if res["openings"]:
+                    by["opening onto the void"] = len(res["openings"])
+            return res
         th = sc.resolve(pos[0])
         boxes = {q["id"]: geom.aabb(q) for q in sc.everything()}
         rows = [geom.probe_piece(p, sc.ground, sc.everything(), boxes) for p in th["pieces"]]
@@ -80,8 +91,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             act, vw = args[:i], args[i + 1:]
         else:
             act, vw = args, []
-        before = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True) if vw else None
-        sc = d.scene(place, sess["strokes"])
+        before = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, space=space) if vw else None
+        sc = d.scene(place, sess["strokes"], space)
         ops = hand(sc, verb, act, sess)
         for op in ops:
             sess["n_op"] = op["n"] = sess.get("n_op", 0) + 1
@@ -94,7 +105,7 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                 op.pop("_dz", None)
             save_session(place, sess)
         if vw:
-            after = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, cam=before["cam"])
+            after = view(d, place, sess["strokes"], vw[0], vw[1:], keep=True, cam=before["cam"], space=space)
             p = _out(place, f"{verb}-before-after")
             res["png"] = _save(draw.pair(before["img"], after["img"], "before", f"after {verb}"), p)
         return res
@@ -121,8 +132,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         a, b, vw = args[0], args[1], args[2:]
         sa = sess["snapshots"][a] if a != "now" else sess["strokes"]
         sb = sess["snapshots"][b] if b != "now" else sess["strokes"]
-        va = view(d, place, sa, vw[0], vw[1:], keep=True)
-        vb = view(d, place, sb, vw[0], vw[1:], keep=True, cam=va["cam"])
+        va = view(d, place, sa, vw[0], vw[1:], keep=True, space=space)
+        vb = view(d, place, sb, vw[0], vw[1:], keep=True, cam=va["cam"], space=space)
         p = _out(place, f"compare-{a}-{b}")
         return {"png": _save(draw.pair(va["img"], vb["img"], a, b), p)}
     if verb == "reset":
@@ -135,15 +146,18 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
 
 
 # ---------- views ----------
-def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
+def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") -> dict:
     t0 = time.time()
     d.open(place)
     d.sync(strokes)
-    sc = d.scene(place, strokes)
+    d.go(space)
+    sc = d.scene(place, strokes, space)
+    inside = space != "exterior"
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
-                          "mesh": False})
+                          "mesh": False, "lit": False, "ceiling": True})
     d.helpers = bool(o.get("helpers"))
+    d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
     faults = {x["id"] for x in sc.faults()}
     plain = bool(o.get("plain"))
@@ -153,7 +167,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     mesh_facts: dict = {}
     M = marks = None
     if o.get("mesh"):
-        M, mesh_facts = built_mesh(place)
+        M, mesh_facts = built_mesh(place, space)
         marks = mesh_marks(sc, M) if M is not None else None
     raw_shot = d.shot
 
@@ -170,8 +184,9 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         return img_, r_
     if verb == "at":
         th = sc.resolve(pos[0])
-        cam = cam or geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"]))
-        cam = cam | {"grass": bool(o.get("grass"))}
+        cam = cam or (room_cam(sc, th, side, height, w, h, o) if inside else
+                      geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"])))
+        cam = cam | {"grass": bool(o.get("grass")), "space": space}
         img, r = shot(cam)
         timing |= {k: r.get(k) for k in ("ms", "draw_ms", "render_ms", "calls", "triangles")}
         if not plain:
@@ -184,7 +199,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         tw, thh = w // 2 * 2 // 2, h // 2 * 2 // 2
         tiles, caps, rms = [], [], []
         for s in ("n", "e", "s", "w"):
-            c = geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
+            c = room_cam(sc, th, s, height, tw, thh, o) if inside else \
+                geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
             img, r = shot(c)
             rms.append(r["ms"])
             if not plain:
@@ -199,13 +215,14 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     elif verb == "walk":
         a, b = sc.resolve(pos[0]), sc.resolve(pos[1])
         pa, pb = _point(a), _point(b)
-        lines = [p["points"] for p in sc.files.get("paths") or [] if p.get("points")]
+        lines = [p["points"] for p in sc.files.get("paths") or [] if p.get("points")] if not inside else []
         way = geom.route(lines, pa, pb)
         n = int(o.get("n", 6)) if "n" in o else 6
         tw, thh = w // 2, h // 2
         tiles, caps, rms = [], [], []
         for i, (p, dv) in enumerate(geom.stations(way, n)):
-            g = sc.ground.height(*p) or 0.0
+            g = sc.ground.height(*p)
+            g = getattr(sc.ground, "floor", 0.0) if g is None else g
             sup = geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)
             z = max(g, geom.aabb(sc.by_id[sup])[1][2] if sup else g)
             c = {"pos": [p[0] - dv[0] * 60, p[1] - dv[1] * 60, z + geom.EYE], "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, z + geom.EYE * 0.7],
@@ -246,6 +263,21 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         res = {"cam": cam, "img": img}
         if not keep:
             res = {"png": _save(img, _out(place, "section"), cam), "line": [A, B], "crossed": crossed}
+    elif verb == "overview" and inside:
+        c1, c2 = room_overview(sc, w, h, o)
+        i1, r1 = shot(c1)
+        i2, r2 = shot(c2)
+        name = sc.info.get("name") or space
+        if not plain:
+            th = {"name": name, "lo": c2["box"][0], "hi": c2["box"][1]}
+            i1, _ = draw.annotate(i1, c1, sc, None, faults, f"{name}: from its door, eye height", grid=False)
+            i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{name} from above, ceiling cut at {c2['ceiling']:.0f}")
+        img = draw.sheet([i2, i1], 2)
+        timing |= {"shot_ms": [r1["ms"], r2["ms"]]}
+        res = {"cam": None, "img": img}
+        if not keep:
+            res = {"png": _save(img, _out(place, f"overview-{_slug(space)}"), c2 | {"tiles": [c2, c1]}), "space": space,
+                   "pieces": len(sc.pieces)}
     elif verb == "overview":
         cl = sc.clusters()
         keep_c = [c for c, ps in cl.items() if not c.startswith("w")] or list(cl)
@@ -271,6 +303,87 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
+
+
+# ---------- inside a room ----------
+def _floor_at(sc, x, y, z=None):
+    g = sc.ground.height(x, y)
+    return sc.ground.floor if g is None else g
+
+
+def _ceiling(sc, o, over: float = 0.0) -> list | None:
+    """A clip plane that cuts away what rises over the floor by more than the ceiling height (--ceiling u) or over."""
+    top = sc.ground.floor + max(float(o.get("ceiling", room.CEILING)), over)
+    return [0.0, 0.0, -1.0, top]
+
+
+def room_cam(sc, th, side, height, w, h, o) -> dict:
+    """A framed look at a thing inside a room: from the eye, the camera stands on the room's floor no further than the
+    floor goes (a wall behind it is never in the way); from above, the ceiling is cut away."""
+    gz = _floor_at(sc, (th["lo"][0] + th["hi"][0]) / 2, (th["lo"][1] + th["hi"][1]) / 2)
+    cam = geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=gz)
+    if height == "eye":
+        t = np.asarray(cam["target"], float)
+        u = np.asarray(cam["pos"], float)[:2] - t[:2]
+        want = float(np.linalg.norm(u))
+        got = room.stand_inside(sc.ground, t, u, want, blocks=room.walls(sc.pieces))
+        xy = t[:2] + u / max(want, 1e-9) * got
+        cam["pos"] = [round(float(xy[0]), 2), round(float(xy[1]), 2), round(_floor_at(sc, *xy) + geom.EYE, 2)]
+        cam["near"] = 4
+        if got < want:   # nearer than the frame wanted: a wider lens keeps the thing in
+            cam["fov"] = 75
+    else:
+        cam["clip"] = [_ceiling(sc, o, float(th["hi"][2]) - sc.ground.floor + 40 if th.get("kind") == "piece" else 0.0)]
+    return cam
+
+
+def room_overview(sc, w, h, o) -> tuple[dict, dict]:
+    """A room's overview: from its door at eye height, looking to the room's middle; and straight down on its plan
+    box with the ceiling cut away."""
+    x1, y1, x2, y2 = sc.plan_box
+    if len(sc.ground.T):   # framed on the walkable floor within the room's box
+        C = sc.ground.centres()
+        x1, y1 = max(x1, float(C[:, 0].min()) - 300), max(y1, float(C[:, 1].min()) - 300)
+        x2, y2 = min(x2, float(C[:, 0].max()) + 300), min(y2, float(C[:, 1].max()) + 300)
+    f = sc.ground.floor
+    lo, hi = [x1, y1, f], [x2, y2, f + 200]
+    top = geom.frame(lo, hi, "s", "top", w, h, fill=0.95)
+    clip = _ceiling(sc, o)
+    top |= {"clip": [clip], "ceiling": clip[3] - f, "box": [lo, hi], "space": sc.space}
+    door = None
+    try:
+        door = sc.resolve("door")["pieces"][0]
+    except KeyError:
+        pass
+    mid = np.array([(x1 + x2) / 2, (y1 + y2) / 2])
+    if door is not None:
+        ext = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]}.get(sc.info.get("door_from")) or {}
+        arr = (ext.get("door") or {}).get("to_pos")   # where the way in lands inside the room
+        at = np.asarray(arr[:2], float) if arr else np.array([door["m"][0][3], door["m"][1][3]], float)
+        at = at + (mid - at) / max(float(np.linalg.norm(mid - at)), 1e-9) * (0 if arr else 100)
+    else:
+        at = mid
+    z = _floor_at(sc, *at) + geom.EYE
+    look = mid if float(np.linalg.norm(mid - at)) > 200 else at + np.array([0, 400.0])
+    eye = {"pos": [float(at[0]), float(at[1]), z], "target": [float(look[0]), float(look[1]), z - 20], "up": [0, 0, 1],
+           "fov": 75, "w": w, "h": h, "near": 4, "far": 20000, "space": sc.space}
+    return eye, top
+
+
+def voids(d, place, strokes, sc, n: int = 16, size: int = 48) -> list[dict]:
+    """Openings onto the void: from n points spread over the room's walkable floor, at eye height, a cube of looks
+    with a background no model has; each way out of the shell (a cut room's edge left open, a hole) as where it meets
+    the room's plan box, which way it lies and the floor points that see it."""
+    C = sc.ground.centres()
+    if not len(C):
+        return [{"why": "the room has no walkable mesh to look out from: openings not tested"}]
+    pts = room.spread(C, n, sc.ground.area())
+    pts = [[round(float(p[0]), 1), round(float(p[1]), 1), round(float(p[2]) + geom.EYE, 1)] for p in pts]
+    d.open(place)
+    d.sync(strokes)
+    d.go(sc.space)
+    looks = d.page.evaluate("([p, s]) => agent.voids(p, s)", [pts, size])
+    return room.openings(looks, sc.plan_box)
 
 
 def draw_w():
@@ -346,7 +459,7 @@ def pick(d, place, strokes, args) -> dict:
         tw = cam["tiles"][0]["w"]
         k = int(px // tw)
         cam, px = cam["tiles"][k], px - k * tw
-    sc = d.scene(place, strokes)
+    sc = d.scene(place, strokes, cam.get("space", "exterior"))
     hits = geom.pick(cam, px, py, sc.pieces, cam.get("clip"))
     out = []
     for t, p in hits[:5]:
@@ -406,7 +519,7 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
 
 # ---------- hands ----------
 def _rows(sc, th):
-    rows = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]}
+    rows = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]} if sc.space == "exterior" else sc.refs
     return [rows[p["id"]] for p in th["pieces"] if p["id"] in rows]
 
 
@@ -433,6 +546,14 @@ def _shift(r, dx, dy, dz, rot=None, moved=frozenset()):
 
 
 def hand(sc, verb, args, sess) -> list[dict]:
+    """One stroke's ops, in the space the scene is of."""
+    ops = _hand(sc, verb, args, sess)
+    for op in ops:
+        op["space"] = sc.space
+    return ops
+
+
+def _hand(sc, verb, args, sess) -> list[dict]:
     pos, o = _opts(args, {"until-feet-buried": False})
     th = sc.resolve(pos[0])
     rows = _rows(sc, th)

@@ -16,6 +16,13 @@ BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 RED = (230, 30, 30, 255)
 
 
+def _grid_z(scene, x, y) -> float:
+    """The grid's height: the ground's outside, a room's floor level inside (flat, so it reads as a plan)."""
+    if hasattr(scene.ground, "floor"):
+        return scene.ground.floor
+    return scene.ground.height(x, y) or 0.0
+
+
 def font(size: int, bold: bool = False):
     try:
         return ImageFont.truetype(BOLD if bold else FONT, size)
@@ -65,7 +72,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
             for v in np.arange(x0 if fixed_x else y0, (x1 if fixed_x else y1) + 1, step):
                 ts = np.linspace(y0, y1, 24) if fixed_x else np.linspace(x0, x1, 24)
                 pts = [(v, t) if fixed_x else (t, v) for t in ts]
-                world = [(x, y, (scene.ground.height(x, y) or 0.0) + 2) for x, y in pts]
+                world = [(x, y, (_grid_z(scene, x, y)) + 2) for x, y in pts]
                 pp = geom.project(cam, world)
                 seg = [(float(p[0]), float(p[1])) for p in pp if p[2] > 0]
                 if len(seg) > 1:

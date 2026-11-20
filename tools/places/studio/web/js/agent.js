@@ -26,6 +26,57 @@ export function install(studio) {
     push(ops) { const out = studio.log.push(ops.map((o) => ({ ...o }))); return out.map((o) => o.n); },
     undo() { return studio.log.undo().length; },
     reset() { studio.log.goto(0); studio.log.ops.length = 0; studio.log.cursor = 0; return true; },
+    // Which space the view shows: 'exterior' or a room, as the studio enters it (main.js showSpace); a room is lit by
+    // its own lighting (the game's, the studio's night mode), read from the cell it is copied from before the first shot.
+    async space(sid) {
+      if (sid !== 'exterior' && !studio.model.spaces[sid]) throw new Error(`no space ${sid}`);
+      if (studio.ours.space !== sid) studio.showSpace(studio.ours, sid);
+      const lg = v().lighting;
+      if (sid !== 'exterior') {
+        const t0 = performance.now(), info = studio.spaceInfo?.[sid];
+        const k = info?.copy_of && !info.light ? info.copy_of : null;
+        studio.roomInfo(studio.ours, sid);
+        while (k && studio._rooms?.has(k) && studio._rooms.get(k) === null && performance.now() - t0 < 8000) await tick();
+        lg?.invalidate(); lg?.setMode('night');
+      } else lg?.setMode('day');
+      const refs = [...(studio.model.spaces[sid]?.refs.values() || [])];
+      return { space: sid, floorZ: v().floorZ ?? null, refs: refs.filter((r) => !r.removed).length, mode: lg?.mode };
+    },
+    // Openings onto the void: from each point, six square looks (a cube) at size px with the background a colour no
+    // model has; every look where that colour shows is a way out of the room's shell. Returns per point the faces
+    // that see out: {face, frac, dir (mean direction of the escaping pixels, game axes)}.
+    async voids(points, size = 48) {
+      const view = v(), r = view.renderer, o = studio.ours.origin, sc = view.scene;
+      const bg = sc.background, fog = sc.fog;
+      sc.background = new THREE.Color(1, 0, 1);
+      const fn = fog ? [fog.near, fog.far] : null; if (fog) { fog.near = 1e9; fog.far = 2e9; }
+      const rt = new THREE.WebGLRenderTarget(size, size), buf = new Uint8Array(size * size * 4);
+      const faces = { e: [1, 0, 0], w: [-1, 0, 0], n: [0, 1, 0], s: [0, -1, 0], up: [0, 0, 1], down: [0, 0, -1] };
+      const out = [];
+      r.setScissorTest(false);
+      for (const p of points) {
+        const pos = new THREE.Vector3(p[0] - o[0], p[1] - o[1], p[2] - o[2]), seen = [];
+        for (const [name, d] of Object.entries(faces)) {
+          const c = new THREE.PerspectiveCamera(90, 1, 4, 60000);
+          c.up.set(...(Math.abs(d[2]) > 0.5 ? [0, 1, 0] : [0, 0, 1])); c.position.copy(pos);
+          c.lookAt(pos.clone().add(new THREE.Vector3(...d))); c.updateMatrixWorld(); c.updateProjectionMatrix();
+          for (const lay of view.objects || []) lay.cull(c);
+          for (let i = 0; i < 200 && pendingModels(); i++) { drainAll(r); await tick(); }
+          r.setRenderTarget(rt); r.setViewport(0, 0, size, size); r.render(sc, c); r.readRenderTargetPixels(rt, 0, 0, size, size, buf); r.setRenderTarget(null);
+          let n = 0; const m = new THREE.Vector3();
+          for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+            const i = (y * size + x) * 4;
+            if (buf[i] > 240 && buf[i + 1] < 16 && buf[i + 2] > 240) {
+              n++; m.add(new THREE.Vector3((x + 0.5) / size * 2 - 1, (y + 0.5) / size * 2 - 1, 0.5).unproject(c).sub(c.position).normalize());
+            }
+          }
+          if (n) seen.push({ face: name, frac: n / (size * size), dir: m.normalize().toArray().map((x) => Math.round(x * 100) / 100) });
+        }
+        out.push({ at: p, out: seen });
+      }
+      rt.dispose(); sc.background = bg; if (fog) [fog.near, fog.far] = fn; r.setScissorTest(true);
+      return out;
+    },
     applied() { return studio.log.applied ? studio.log.applied() : studio.log.ops.slice(0, studio.log.cursor); },
     // One shot. cam: {w, h, pos, target, up?, fov?, ortho?: {halfW, halfH}, near?, far?, clip?: [[nx,ny,nz,d], ...]
     // (keeps n.p + d >= 0, game coordinates), grass?: bool}. Returns {png (data URL), ms, waits}.
@@ -59,7 +110,11 @@ export function install(studio) {
       const tw = performance.now();
       r.setPixelRatio(1); r.setSize(w, h, false); r.setScissorTest(false); r.setViewport(0, 0, w, h);
       view.lighting?.beforeDraw();
+      // a dark room judged for shape: a neutral fill over its own light (the room's lights and fixtures stay)
+      const hemi = view.lighting?.hemi, keep = cam.fill && hemi ? [hemi.color.clone(), hemi.groundColor.clone(), hemi.intensity] : null;
+      if (keep) { hemi.color.setRGB(0.55, 0.55, 0.55); hemi.groundColor.setRGB(0.35, 0.35, 0.35); hemi.intensity = Math.PI; }
       r.render(view.scene, c);
+      if (keep) [hemi.color, hemi.groundColor, hemi.intensity] = keep;
       r.getContext().finish();
       const tr = performance.now();
       const png = r.domElement.toDataURL('image/png');

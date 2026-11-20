@@ -107,7 +107,7 @@ class Daemon:
         self.page.goto(f"http://127.0.0.1:{PORT}/?place={place}&agent=1")
         self.page.wait_for_function("window.agent !== undefined", timeout=60000)
         info = self.page.evaluate("agent.ready()")
-        self.place, self.page_strokes = place, []
+        self.place, self.page_strokes, self.space = place, [], "exterior"
         self.timing["load_s"] = round(time.time() - t0, 1)
         self.timing["load_page_ms"] = info.get("ms")
 
@@ -123,15 +123,24 @@ class Daemon:
             self.page.evaluate("(ops) => agent.push(ops)", s)
             self.page_strokes.append(s)
 
-    def scene(self, place: str, strokes) -> Scene:
-        key = (place, json.dumps(flat(strokes), sort_keys=True))
+    def go(self, space: str) -> dict:
+        """The page into a space (the exterior or a room), lit as the studio lights it."""
+        if getattr(self, "space", None) != space:
+            self.space_info = self.page.evaluate("(s) => agent.space(s)", space)
+            self.space = space
+        return getattr(self, "space_info", {})
+
+    def scene(self, place: str, strokes, space: str = "exterior") -> Scene:
+        key = (place, space, json.dumps(flat(strokes), sort_keys=True))
         if key not in self.scenes:
-            self.scenes.clear()
-            self.scenes[key] = Scene(place, flat(strokes))
+            if len(self.scenes) > 3:
+                self.scenes.clear()
+            self.scenes[key] = Scene(place, flat(strokes), space=space)
         return self.scenes[key]
 
     def shot(self, cam: dict):
-        r = self.page.evaluate("(c) => agent.shot(c)", cam | {"helpers": getattr(self, "helpers", False)})
+        r = self.page.evaluate("(c) => agent.shot(c)", cam | {"helpers": getattr(self, "helpers", False),
+                                                               "fill": getattr(self, "fill", False)})
         return draw.from_data_url(r["png"]), r
 
     # ---------- requests ----------
