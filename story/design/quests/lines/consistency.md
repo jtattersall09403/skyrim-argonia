@@ -9,7 +9,8 @@ plot and this page disagree, the main plot wins over a faction, and between two 
 
 **The Xeech-Leel.** "The People of the New Beginning" have ruled the province since the An-Xileel fell after Umbriel
 (`extrapolation/argonia-4e201-state.md` §1). No party called the An-Xileel survives; they are history, the party
-that called Umbriel down in 4E 48. The council of the Xeech-Leel sits at Helstrom, in its council house. Acts of
+that called Umbriel down in 4E 48. The council of the Xeech-Leel sits at Helstrom: its closed business in its council house, its open sittings in the
+old Xanmeer. Acts of
 state (chartering privateers, setting customs, buying a crew) are the Xeech-Leel's, done through their Archwardens at
 Archon. To call a Xeech-Leel officer "An-Xileel" is the gravest insult.
 
@@ -60,7 +61,7 @@ own, switched on when it starts, so either can be played first.
 | Place | The ruling |
 |---|---|
 | Ashgate Landing, Jal-Veesa, Teel-Fen Weir, Karsh-Naal Camp | The main quest's alone. The Chainbreakers name the opening barge as the player's past and reuse its block elsewhere |
-| Helstrom | Five buildings, never one for two lines: the Toh-Reel-Ka's quiet house by the city landing and the go-between's lodging (the main quest's 5), the Chainbreakers' safe house behind the market's stalls (their safe-house chain), the tree-minders' hall (the Sisei-Xul's seat; House Cardruhn's 9 steals the urn there), and the Xeech-Leel's council house with its strongroom (the Eelskins' 9 to 12). A theft seen at the council house is wanted only by its wardens |
+| Helstrom | Five buildings, never one for two lines: the Toh-Reel-Ka's quiet house by the city landing and the go-between's lodging (the main quest's 5), the Chainbreakers' safe house behind the market's stalls (their safe-house chain), the tree-minders' hall (the Sisei-Xul's seat; House Cardruhn's 9 steals the urn there), and the Xeech-Leel's council house with its strongroom (the Eelskins' 9 to 12); the council's open sittings and the Root Talk are held in the old Xanmeer, which no line uses. A theft seen at the council house is wanted only by its wardens |
 | Gideon | The main quest's relic dealer, the rootworm and Gideon South Watch stand whatever the bay war does. Bramman's Brethren's ending replaces the guards and empties the Company house; the Topal Bay Company's ending changes nothing in the city but the Company house |
 | The Grey Tooth, Wreck of the Stormwidow | The main quest's 11 uses the crag's north-face cave and the wreck's sand-filled hold, and its Collector's men and Unbound scouts appear only when that quest starts. Bramman's Brethren's 7 uses the goat-path up the south face, the cairn and its cache on the summit, and the stern cabin's strongbox |
 | Fort Chalkmoth | The main quest's alone. The Chainbreakers' freed Mim-Teeus may hide in its yard once the main quest's 12 has begun |

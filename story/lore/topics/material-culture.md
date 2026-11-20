@@ -300,7 +300,11 @@ neighbour you have to be able to hear.
 - **Fittings** — bone-and-tin chimes at every threshold and eave; totems of wood,
   mud and plumage (province-wide, all kits); grave-stakes; woven grass matting.
 - **Stone** — none. Xanmeer stone in an interior settlement appears **unquarried
-  and untouched**: a warning that is kept, never a material that is used.
+  and untouched**: a warning that is kept, never a material that is used. The old
+  Xanmeers are left alone as the ancients' work and their stone is never quarried;
+  the An-Xileel's taking of Xanmeers as seats was held against them, and the
+  Xeech-Leel council now sits in Helstrom's, one more way in which they grow like
+  the party they replaced (`extrapolation/argonia-4e201-state.md` §1).
 - **Forbidden here** — reed weave, stilt platforms over open water, and
   wattle-and-daub panels. Those are the two coastal kits and they do not belong
   inland; if a record needs one, it needs a stated reason (below).
