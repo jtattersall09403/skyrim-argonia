@@ -82,6 +82,9 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                                        "held_by") if k in r} | ({"ends": r["ends"]} if "ends" in r else {})
                     | ({"fault": True} if r["id"] in fl else {}) for r in rows]
         return {"thing": th["name"], "kind": th["kind"], "box": [th["lo"], th["hi"]], "pieces": rows}
+    if verb == "playwalk":
+        from tools.places.look import playwalk
+        return playwalk.run(d, place, sess["strokes"], args, space)
     if verb == "measure":
         from tools.places.look import measure
         return measure.run(d.scene(place, sess["strokes"], space), place)

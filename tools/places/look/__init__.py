@@ -91,8 +91,12 @@ def main(argv: list[str]) -> int:
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()
     t0 = time.time()
-    out = call({"place": place, "verb": verb, "args": args})
+    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if "playwalk" in (verb, *args[:2]) else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)
+    if "playwalk" in (verb, *args[:2]) and out.get("ok") and (out.get("lines") or out.get("plan")):   # the plan and each route, one line each
+        print("\n".join(out.get("plan") or out["lines"]))
+        print(json.dumps({k: v for k, v in out.items() if k not in ("lines", "plan", "trace")}, indent=1))
+        return 0
     if verb == "measure" and out.get("ok"):   # the table as text
         print(out["text"], end="")
         return 0

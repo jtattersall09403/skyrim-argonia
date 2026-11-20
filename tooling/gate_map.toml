@@ -130,7 +130,7 @@ tests = ["tools/tests/test_newworld_atlas_state.py"]
 # The agent view of the studio (the look tool) and the studio's page it drives.
 [[rule]]
 globs = ["tools/places/look*", "tools/places/studio/web/js/agent.js"]
-tests = ["tools/tests/test_places_look.py", "tools/tests/test_studio_web.py"]
+tests = ["tools/tests/test_places_look.py", "tools/tests/test_places_playwalk.py", "tools/tests/test_studio_web.py"]
 
 # The consistency checker (decision 0040): every new-world record against every other. It runs when the place
 # records and their sources, the quests, the story pages, the drafts, the faction records or the checker change.
