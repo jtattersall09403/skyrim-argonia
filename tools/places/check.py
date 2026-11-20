@@ -77,6 +77,26 @@ def obb_contains(ref: dict, p, shrink: float = 1.0, pad: float = 0.0, z: bool = 
     return bool(ok[0] and ok[1] and (ok[2] or not z or len(p) < 3))
 
 
+BIG_IRREGULAR = ("rock", "cliff", "boulder", "tree", "hist", "trunk")   # models whose box is mostly air
+
+
+def stands_in_solid(ref: dict, p) -> bool:
+    """Whether point p is inside ref's solid, not only its box: a rock, cliff, tree or Hist is judged by the vertical
+    profile of its collision (`seat.solid_profile`), so open ground in the box of a cliff, or beside a trunk, is
+    outside; every other piece, and a model with no readable collision, is its box."""
+    name = f"{ref.get('kind')} {ref.get('edid') or ''} {ref.get('model') or ''}".lower()
+    if not ref.get("model") or not any(w in name for w in BIG_IRREGULAR):
+        return True
+    from tools.places import seat
+    prof = ref.get("profile") or seat.solid_profile(ref["model"])
+    if prof is None:
+        return True
+    s = float(ref.get("scale") or 1.0)
+    q = list(p) + [ref["pos"][2]] * (3 - len(p))
+    local = B.rotation(*(ref.get("rot") or [0, 0, 0])).T @ (np.asarray(q[:3], float) - np.asarray(ref["pos"], float)) / s
+    return seat.in_profile(prof, local)
+
+
 ON_TOP = 16.0  # units: a point this near a thing's top stands on it, not in it
 
 
@@ -518,6 +538,10 @@ def surfaces(ctx: dict):
 def check_plugin(ctx) -> list[str]:
     d = ctx["dump"]
     bad = [f"unresolved link: {u}" for u in d["unresolved"]]
+    own = [u for u in d["unresolved"] if f"-> {B.PLUGIN}:" in u]
+    if own:   # a record of our own plugin a link names but the plugin lacks: the shards' plans are newer than the writer that wrote it
+        bad.append(f"{len(own)} of the links name a record of {B.PLUGIN} it does not hold: the plugin was written by a build "
+                   f"older than its shards' plans; write it again with this tree's tool (`python -m tools.places build`)")
     if B.WORLD not in d["masters"]:
         bad.append(f"not mastered on {B.WORLD}: masters {d['masters']}")
     return bad
@@ -583,7 +607,7 @@ def overlap_pairs(things: list[dict], pad: float = 0.0, z: bool = True) -> list[
                 continue
             if a["space"] != "exterior" and b.get("kind") in ("building", "static"):
                 continue  # an interior's shell and walls hold the room
-            if obb_contains(b, a["pos"], OVERLAP_SHRINK, pad, z) and not _source_had(a, b):
+            if obb_contains(b, a["pos"], OVERLAP_SHRINK, pad, z) and not _source_had(a, b) and stands_in_solid(b, a["pos"]):
                 out.append((a, b))
     return out
 
@@ -1231,7 +1255,7 @@ def check_nordic(ctx) -> list[str]:
 def copied_room_expected(I: dict, place_dir: Path, plan: dict, refs: list[dict] | None = None) -> tuple[dict[str, str], str] | None:
     """The source refs a copied room must be built with, by key -> bundle kind: the bundle's cell (the load order's
     winner of every ref, people aside; `refs` gives its rows instead), the kept room where the space copies one room
-    (the Build recipe's room rule), less what the place's own rows remove and the loose things the stock takes out.
+    (the Build recipe's room rule), the part inside its cut, less what the place's own rows remove (a strip's refs among them) and the loose things the stock takes out.
     None: no bundle to compare."""
     copy_of = I.get("copy_of")
     if not I.get("copy") or not copy_of or "/" not in copy_of:
@@ -1243,7 +1267,11 @@ def copied_room_expected(I: dict, place_dir: Path, plan: dict, refs: list[dict] 
             return None
         refs = B.jsonl(rp)
     refs = [r for r in refs if r.get("kind") not in ("actor", "npc") and "pos" in r]
-    want = {r["id"]: r.get("kind") for r in refs}
+    cut = I.get("cut")
+    if cut is None:   # the place's space file carries the cut of a room copied as only one part of its source cell
+        sj = place_dir / "spaces" / I["space"] / "space.json"
+        cut = json.loads(sj.read_text(encoding="utf-8")).get("cut") if sj.exists() else None
+    want = {r["id"]: r.get("kind") for r in refs if B.in_cut(cut, r["pos"])}   # a cut keeps only the part inside its box
     if I.get("room"):
         tmp = B.OUT / "tmp" / f"rooms_{I['space']}"
         tmp.mkdir(parents=True, exist_ok=True)

@@ -150,16 +150,16 @@ def _load_place_stock(w, doc: dict) -> None:
                  lock_level_id=c.get("lock"), security_level_id=c["security"], effort_level_id=c.get("effort"),
                  stock_tier_id=c["tier"], gold=c.get("gold", 0), why=c["why"])
         for it in c.get("items", []):
-            w.insert("stock_container_item", place_id=pid, ref_id=c["ref"], item_id=it["item"], count=it["count"],
+            w.insert("stock_container_item", place_id=pid, space_id=c["space"], ref_id=c["ref"], item_id=it["item"], count=it["count"],
                      why=it["why"])
         if k := c.get("key"):
             pos = k.get("pos") or [None, None, None]
-            w.insert("stock_container_key", place_id=pid, ref_id=c["ref"], name=k["name"],
+            w.insert("stock_container_key", place_id=pid, container_space_id=c["space"], ref_id=c["ref"], name=k["name"],
                      holder_person_id=k.get("person"), holder_ref_id=k.get("in"),
                      space_id=None if k.get("person") else k.get("space", c["space"]),
                      x=pos[0], y=pos[1], z=pos[2], why=k["why"])
         for cite in dict.fromkeys(c.get("cites", [])):
-            w.insert("stock_container_source", place_id=pid, ref_id=c["ref"], source_id=_source(w, cite), locator=None)
+            w.insert("stock_container_source", place_id=pid, space_id=c["space"], ref_id=c["ref"], source_id=_source(w, cite), locator=None)
     for lo in doc.get("loose", []):
         pos = lo.get("pos") or [None, None, None]
         w.insert("stock_loose", place_id=pid, id=lo["id"], space_id=lo["space"], on_ref_id=lo.get("on"),

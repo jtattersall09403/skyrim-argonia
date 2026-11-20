@@ -54,7 +54,7 @@ OWNS: dict[str, dict[str, tuple]] = {
                 "people.jsonl": (ANY, True), "clear.jsonl": (ANY, True), "ledger.jsonl": (ANY, True),
                 "place.json": (ANY, True)},
     "people": {"people.jsonl": ({"name", "base_from", "services", "work", "routine", "household", "identity"}, True)},
-    "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False)},
+    "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False), "ledger.jsonl": (ANY, False)},
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
     "jail": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"factions"}, False)},
@@ -62,7 +62,8 @@ OWNS: dict[str, dict[str, tuple]] = {
                    "ledger.jsonl": (ANY, True)},
     "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
     "sap": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"sap"}, False), "land.jsonl": (ANY, True)},
-    "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True)},
+    "add": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
+            "place.json": ({"draft"}, False)},
     "names": {"spaces/*/space.json": ({"name"}, False)},
     "quests": {"quests.jsonl": (ANY, True)},
 }
@@ -462,6 +463,15 @@ def people_stage(st: Standing, log=print) -> None:
 
 def lights_stage(st: Standing, log=print) -> None:
     rec = st.place.get("lights") or {}
+    led = st.led()
+    for row in lights.orphans(st.ext, st.bound):
+        from tools.places.draft.run import lights_out
+        st.ext.remove(row)
+        lr = led.get(row["src"])
+        if lr is not None:
+            lr.update({"status": "dropped", "why": lights_out(st.bound[row["src"]])})
+            lr.pop("as", None)
+        log(f"draft lights {st.place_id}: {row['id']} dropped, its fixture {st.bound[row['src']]} is left out")
     want = lights.station_lights(st.place_id, st.ext, st.place.get("stations"))
     have = {r["id"]: r for r in st.ext}
     for old in rec.get("added") or []:
@@ -672,15 +682,27 @@ def owner_saves(pdir: Path) -> list[str]:
     return out
 
 
-def diff(before: dict[str, str], after: dict[str, str], owns: dict | None = None) -> tuple[dict, list[str]]:
-    """({file: {changed, added, removed}} for the files that differ, [what was written outside `owns`])."""
+def diff(before: dict[str, str], after: dict[str, str], owns: dict | None = None,
+         hands: dict | None = None) -> tuple[dict, list[str]]:
+    """({file: {changed, added, removed}} for the files that differ, [what was written outside `owns`]). `hands`:
+    {file: the keys of the rows the hands changed beside the run, or None for a whole file}, left out of both."""
     import fnmatch
     counts, bad = {}, []
+    hands = hands or {}
     for rel in sorted(set(before) | set(after)):
         a, b = before.get(rel, ""), after.get(rel, "")
-        if a == b:
+        if a == b or (rel in hands and hands[rel] is None):
             continue
         ra, rb = _rows(rel, a), _rows(rel, b)
+        for k in hands.get(rel) or ():
+            if k in ra and k in rb:
+                rb[k] = ra[k]
+            elif k in rb:
+                rb.pop(k)
+            elif k in ra:
+                rb[k] = ra[k]
+        if ra == rb:
+            continue
         ch = sorted(k for k in ra if k in rb and ra[k] != rb[k])
         ad, rm = sorted(set(rb) - set(ra)), sorted(set(ra) - set(rb))
         counts[rel] = {"changed": len(ch), "added": len(ad), "removed": len(rm)}
@@ -710,8 +732,11 @@ def run(stage: str, place_id: str, places: Path = io.PLACES, bundles: Path = io.
     """Run one stage on the standing files of a place. Returns {file: {changed, added, removed}}."""
     if stage not in OWNS:
         raise StageError(f"no stage {stage}: one of {', '.join(STAGES)}")
+    from tools.places import hands
     pdir = places / place_id
     before = snapshot(pdir)
+    guard = hands.beside_hands(pdir)
+    g = guard.__enter__()
     try:
         if stage == "streets":
             streets(place_id, places, log)
@@ -730,11 +755,14 @@ def run(stage: str, place_id: str, places: Path = io.PLACES, bundles: Path = io.
                         sp["refs"][i] = was[sid][r["id"]]
                         log(f"draft {stage} {place_id}: {r['id']} is the owner's (a finalised save): kept as it stands")
             st.write()
-    except Exception:
-        restore(pdir, before)
+    except BaseException:
+        g.revert(before)
+        guard.__exit__(None, None, None)
         raise
-    counts, bad = diff(before, snapshot(pdir), OWNS[stage])
+    kept = g.settle()
+    guard.__exit__(None, None, None)
+    counts, bad = diff(before, snapshot(pdir), OWNS[stage], kept)
     if bad:
-        restore(pdir, before)
+        g.revert(before)
         raise StageError(f"draft {stage} {place_id} wrote outside what it owns; nothing is changed: " + "; ".join(bad[:8]))
     return counts

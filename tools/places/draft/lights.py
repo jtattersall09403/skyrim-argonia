@@ -51,6 +51,12 @@ def fixtures(refs: list[dict], bases: dict) -> dict[str, str]:
     return out
 
 
+def orphans(rows: list[dict], bound: dict[str, str]) -> list[dict]:
+    """Our exterior light rows whose source fixture has no row of ours: the light goes with its fixture."""
+    have = {r["src"] for r in rows if r.get("src")}
+    return [r for r in rows if r.get("src") in bound and bound[r["src"]] not in have]
+
+
 def seat(light: dict, fixture: dict) -> dict:
     """A light's seat rule: `on` its fixture, at its source height over the fixture's origin."""
     return {"mode": "on", "on": fixture["id"], "dz": round(light["pos"][2] - fixture["pos"][2], 2)}

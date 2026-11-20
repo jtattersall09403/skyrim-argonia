@@ -269,6 +269,24 @@ def _conflict(op, msg):
     raise EditConflict(f"op {op['n']} ({op['op']}): {msg}")
 
 
+def _carry_arrival(files, row, was, after) -> None:
+    """A door moved takes its arrival with it, and its partner door's landing: both shift by the door's own move
+    (unless the op sets the arrival itself); the streets stage then seats the arrival on the walkable ground."""
+    d = row.get("door") or {}
+    if "door" in after or "pos" not in after or len(was) < 3 or not d.get("arrival"):
+        return
+    delta = [n - o for n, o in zip(row["pos"], was)]
+    if not any(abs(v) > TOL for v in delta):
+        return
+    arr = [round(v + dv, 2) for v, dv in zip(d["arrival"], delta)]
+    row["door"] = {**d, "arrival": arr}
+    for sp in files["spaces"].values():
+        for r in sp["refs"]:
+            rd = r.get("door") or {}
+            if rd.get("to_ref") == row["id"] and rd.get("to_pos") is not None:
+                r["door"] = {**rd, "to_pos": list(arr)}
+
+
 def _apply_one(files, op):
     kind = op["op"]
     if kind == "ref.add":
@@ -332,7 +350,9 @@ def _apply_one(files, op):
         for k, v in op["before"].items():
             if not same(rows[i].get(k), v):
                 _conflict(op, f"ref {op['id']} {k} is {rows[i].get(k)}, the save expected {v}")
+        was = list(rows[i].get("pos") or [])
         rows[i].update(copy.deepcopy(op["after"]))
+        _carry_arrival(files, rows[i], was, op["after"])
         if _matches_source(files, op, rows[i]):
             rows.pop(i)   # back to its source pose: the override goes
     elif kind == "veg.clear":
@@ -667,8 +687,8 @@ def _jsonl(p: Path) -> list:
 
 
 def _write_jsonl(p: Path, rows: list) -> None:
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text("".join(json.dumps(r, separators=(",", ":"), ensure_ascii=False) + "\n" for r in rows))
+    from tools.places import hands
+    hands.write_rows(p, rows)
 
 
 SOURCE_FILES = {"identities": "people/{pid}.json", "stock": "stock/places/{pid}.json"}
@@ -732,11 +752,12 @@ def write_sources(root: Path, files: dict, sources: Path | None = None) -> list[
 
 
 def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
+    from tools.places import hands
     root = Path(root)
     files = canonical(files)
     write_sources(root, files, sources)
     root.mkdir(parents=True, exist_ok=True)
-    (root / "place.json").write_text(json.dumps(files["place"], indent=1, ensure_ascii=False) + "\n")
+    hands.write_json(root / "place.json", files["place"])
     # a space the files no longer have (a copied room taken out again) leaves no folder behind
     import shutil
     for old in sorted((root / "spaces").glob("*")) if (root / "spaces").exists() else []:
@@ -745,7 +766,7 @@ def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
     for sid, sp in files["spaces"].items():
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
-            (root / "spaces" / sid / "space.json").write_text(json.dumps(sp["space"], indent=1, ensure_ascii=False) + "\n")
+            hands.write_json(root / "spaces" / sid / "space.json", sp["space"])
     for k in ("clear", "land", "paths", "people", "quests"):
         if files.get(k) or (root / f"{k}.jsonl").exists():
             _write_jsonl(root / f"{k}.jsonl", files.get(k) or [])

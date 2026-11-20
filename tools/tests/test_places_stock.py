@@ -51,3 +51,29 @@ def test_an_owner_exception_on_a_container_row_is_read_by_space_and_ref(tmp_path
         {"ref": "b", "space": "hold", "owner_exception": {"why": "no ruling"}}, {"ref": "c", "space": "exterior"}]}))
     assert verify.owner_exceptions("p", tmp_path) == {("hold", "a"): {"ruling": "owner, 2026-11-19", "why": "his kit"}}
     assert verify.owner_exceptions("missing", tmp_path) == {}
+
+
+def test_two_containers_of_one_ref_in_different_spaces_load_and_stay_apart():
+    """Copied houses share a source ref id: a container is keyed (place, space, ref), its items and key with it."""
+    import sqlite3
+    from collections import defaultdict
+    from pathlib import Path
+    from types import SimpleNamespace as NS
+    from tools.places.stock import plan
+    con = sqlite3.connect(":memory:")
+    con.executescript((Path(__file__).parents[2] / "newworld/story/data/schema.sql").read_text())
+    con.execute("PRAGMA foreign_keys=OFF")
+    for sp, it in (("h.10", "A"), ("h.11", "B")):
+        con.execute("INSERT INTO stock_container (place_id, ref_id, space_id, container_kind_id, security_level_id, "
+                    "stock_tier_id, gold, why) VALUES ('p','R',?,'chest','s','T1',0,'w')", (sp,))
+        con.execute("INSERT INTO stock_container_item VALUES ('p',?,'R',?,1,'w')", (sp, it))
+
+    class W:
+        def rows(self, table, **where):
+            cur = con.execute(f"SELECT * FROM {table}")
+            names = [d[0] for d in cur.description]
+            return [NS(**dict(zip(names, r))) for r in cur]
+    st = plan.Stock(W(), "p")
+    assert set(st.containers) == {("h.10", "R"), ("h.11", "R")}
+    assert [i.item_id for i in st.container_items[("h.10", "R")]] == ["A"]
+    assert [i.item_id for i in st.container_items[("h.11", "R")]] == ["B"]

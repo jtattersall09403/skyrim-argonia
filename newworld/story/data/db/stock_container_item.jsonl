@@ -1,31 +1,39 @@
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE603","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE68F","item_id":"Skyrim.esm:05ACE4","count":4,"why":"iron bought from the raft crews for the forge"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE68F","item_id":"Skyrim.esm:05ACE5","count":2,"why":"steel kept back for the levy's blades"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE733","item_id":"Skyrim.esm:063B45","count":1,"why":"a garnet taken from a raft crew in trade and kept as savings"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE7D7","item_id":"Skyrim.esm:03EADD","count":2,"why":"healing draughts from the tree-minders' hall"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:03EADE","count":2,"why":"the household's stronger draughts, kept back from the stall"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:063B5F","count":4,"why":"sap in sealed gourds: dear in Helstrom"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:0AE723","count":1,"why":"a cure kept for the household"}
-{"place_id":"helstrom","ref_id":"Black Marsh.esm:1E44AB","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:012EB7","count":2,"why":"iron swords for the raft crews, made here (T1)"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013790","count":1,"why":"an iron war axe, made here (T1)"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013982","count":1,"why":"an iron mace, made here (T1)"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013989","count":1,"why":"a steel sword of the levy's issue pattern, made here (T2), set by for the next order"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:0800E4","count":6,"why":"straps for fittings, from the tanner's rack"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:85F7B7","item_id":"Skyrim.esm:01D4EC","count":4,"why":"the levy's spare torches, one for each guard who walks the night"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:85F7D3","item_id":"Skyrim.esm:02F2F4","count":1,"why":"a woodcutter's axe the post keeps for the levy's camp fires"}
-{"place_id":"helstrom","ref_id":"King of the Murkmire.esp:85F7D3","item_id":"Skyrim.esm:03EADD","count":3,"why":"the levy's field dressings, as the camp barrel holds"}
-{"place_id":"helstrom","ref_id":"helstrom.86CBE7ZFHVE5RE15Q94RB2FF14","item_id":"Skyrim.esm:03EADD","count":2,"why":"the levy's field dressings"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0135B8","count":1,"why":"an Imperial sword (main plot, quest 1: the hold's kit)"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:01397D","count":20,"why":"twenty iron arrows"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013985","count":1,"why":"a hunting bow"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013AB2","count":1,"why":"an Imperial light shield"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED7","count":1,"why":"Imperial light boots"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED9","count":1,"why":"an Imperial light cuirass"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDA","count":1,"why":"Imperial light bracers"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDB","count":1,"why":"an Imperial light helmet"}
-{"place_id":"outpost-m13-m65","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:03EADD","count":3,"why":"three potions of minor healing"}
-{"place_id":"outpost-m13-m65","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:01397E","count":1,"why":"an iron dagger (main plot, quest 1's side quest)"}
-{"place_id":"outpost-m13-m65","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:096598","count":1,"why":"a scroll of firebolt Vosh-Leera sent (main-plot.md:178, :698)"}
-{"place_id":"outpost-m13-m65","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0965AF","count":1,"why":"a scroll of fast healing Vosh-Leera sent (main-plot.md:178, :698)"}
-{"place_id":"outpost-m13-m65","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0FCEFD","count":1,"why":"a Ring of Minor Health that Vosh-Leera sent the player, an ordinary enchanted ring as Fargoth's was in Morrowind (owner, 2026-11-19; main-plot.md, What the Herald Sent)"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside","ref_id":"Black Marsh.esm:1DE603","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.10","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river, bought at the tree-minders' hall (river fisher)"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.11","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.12","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river, bought at the tree-minders' hall (sap-gatherer)"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.13","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.14","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river, bought at the tree-minders' hall (raft-builder)"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.15","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.16","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03EADD","count":1,"why":"a healing draught kept for the river, bought at the tree-minders' hall (hide-curer)"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.17","ref_id":"Black Marsh.esm:1E4354","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.2","ref_id":"Black Marsh.esm:1DE733","item_id":"Skyrim.esm:063B45","count":1,"why":"a garnet taken from a raft crew in trade and kept as savings"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.3","ref_id":"Black Marsh.esm:1DE68F","item_id":"Skyrim.esm:05ACE4","count":4,"why":"iron bought from the raft crews for the forge"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.3","ref_id":"Black Marsh.esm:1DE68F","item_id":"Skyrim.esm:05ACE5","count":2,"why":"steel kept back for the levy's blades"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.4","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:03EADE","count":2,"why":"the household's stronger draughts, kept back from the stall"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.4","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:063B5F","count":4,"why":"sap in sealed gourds: dear in Helstrom"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.4","ref_id":"Black Marsh.esm:1DE87B","item_id":"Skyrim.esm:0AE723","count":1,"why":"a cure kept for the household"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.5","ref_id":"Black Marsh.esm:1DE7D7","item_id":"Skyrim.esm:03EADD","count":2,"why":"healing draughts from the tree-minders' hall"}
+{"place_id":"helstrom","space_id":"01ArgonianHouseinside.6","ref_id":"Black Marsh.esm:1E44AB","item_id":"Skyrim.esm:03B97C","count":1,"why":"an old ring of the household, kept in the store and not worn"}
+{"place_id":"helstrom","space_id":"LevyPost","ref_id":"King of the Murkmire.esp:85F7B7","item_id":"Skyrim.esm:01D4EC","count":4,"why":"the levy's spare torches, one for each guard who walks the night"}
+{"place_id":"helstrom","space_id":"LevyPost","ref_id":"King of the Murkmire.esp:85F7D3","item_id":"Skyrim.esm:02F2F4","count":1,"why":"a woodcutter's axe the post keeps for the levy's camp fires"}
+{"place_id":"helstrom","space_id":"LevyPost","ref_id":"King of the Murkmire.esp:85F7D3","item_id":"Skyrim.esm:03EADD","count":3,"why":"the levy's field dressings, as the camp barrel holds"}
+{"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:012EB7","count":2,"why":"iron swords for the raft crews, made here (T1)"}
+{"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013790","count":1,"why":"an iron war axe, made here (T1)"}
+{"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013982","count":1,"why":"an iron mace, made here (T1)"}
+{"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:013989","count":1,"why":"a steel sword of the levy's issue pattern, made here (T2), set by for the next order"}
+{"place_id":"helstrom","space_id":"MarketSmithy","ref_id":"King of the Murkmire.esp:744767","item_id":"Skyrim.esm:0800E4","count":6,"why":"straps for fittings, from the tanner's rack"}
+{"place_id":"helstrom","space_id":"exterior","ref_id":"helstrom.86CBE7ZFHVE5RE15Q94RB2FF14","item_id":"Skyrim.esm:03EADD","count":2,"why":"the levy's field dressings"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0135B8","count":1,"why":"an Imperial sword (main plot, quest 1: the hold's kit)"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:01397D","count":20,"why":"twenty iron arrows"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013985","count":1,"why":"a hunting bow"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013AB2","count":1,"why":"an Imperial light shield"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED7","count":1,"why":"Imperial light boots"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED9","count":1,"why":"an Imperial light cuirass"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDA","count":1,"why":"Imperial light bracers"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDB","count":1,"why":"an Imperial light helmet"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:03EADD","count":3,"why":"three potions of minor healing"}
+{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:01397E","count":1,"why":"an iron dagger (main plot, quest 1's side quest)"}
+{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:096598","count":1,"why":"a scroll of firebolt Vosh-Leera sent (main-plot.md:178, :698)"}
+{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0965AF","count":1,"why":"a scroll of fast healing Vosh-Leera sent (main-plot.md:178, :698)"}
+{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0FCEFD","count":1,"why":"a Ring of Minor Health that Vosh-Leera sent the player, an ordinary enchanted ring as Fargoth's was in Morrowind (owner, 2026-11-19; main-plot.md, What the Herald Sent)"}

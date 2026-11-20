@@ -598,23 +598,25 @@ CREATE TABLE "stock_container" (
   "gold" INTEGER NOT NULL CHECK ("gold" >= 0),
   "why" TEXT NOT NULL,
   CHECK (("owner_person_id" IS NOT NULL) + ("owner_household_id" IS NOT NULL) + ("owner_faction" IS NOT NULL) <= 1),
-  PRIMARY KEY ("place_id", "ref_id")
+  PRIMARY KEY ("place_id", "space_id", "ref_id")
 );
 
 CREATE TABLE "stock_container_item" (
   "place_id" TEXT NOT NULL,
+  "space_id" TEXT NOT NULL,
   "ref_id" TEXT NOT NULL,
   "item_id" TEXT NOT NULL REFERENCES "item"("id"),
   "count" INTEGER NOT NULL CHECK ("count" >= 1),
   "why" TEXT NOT NULL,
-  PRIMARY KEY ("place_id", "ref_id", "item_id"),
-  FOREIGN KEY ("place_id", "ref_id") REFERENCES "stock_container"("place_id", "ref_id")
+  PRIMARY KEY ("place_id", "space_id", "ref_id", "item_id"),
+  FOREIGN KEY ("place_id", "space_id", "ref_id") REFERENCES "stock_container"("place_id", "space_id", "ref_id")
 );
 
 -- A container's lock that has a key: one key record of ours per lock, named for the container, set as the lock's key
 -- and placed with exactly one holder: a person carries it, another container holds it, or it lies at a position.
 CREATE TABLE "stock_container_key" (
   "place_id" TEXT NOT NULL,
+  "container_space_id" TEXT NOT NULL,    -- the locked container's space (copied houses share ref ids)
   "ref_id" TEXT NOT NULL,                -- the locked container
   "name" TEXT NOT NULL,                  -- the key's name in the game ("Strongbox Key")
   "holder_person_id" TEXT REFERENCES "person"("id"),
@@ -625,8 +627,8 @@ CREATE TABLE "stock_container_key" (
   CHECK (("holder_person_id" IS NOT NULL) + ("holder_ref_id" IS NOT NULL) + ("x" IS NOT NULL) = 1),
   CHECK (("x" IS NULL) = ("y" IS NULL) AND ("x" IS NULL) = ("z" IS NULL)),
   CHECK (("holder_person_id" IS NULL) = ("space_id" IS NOT NULL)),
-  PRIMARY KEY ("place_id", "ref_id"),
-  FOREIGN KEY ("place_id", "ref_id") REFERENCES "stock_container"("place_id", "ref_id")
+  PRIMARY KEY ("place_id", "container_space_id", "ref_id"),
+  FOREIGN KEY ("place_id", "container_space_id", "ref_id") REFERENCES "stock_container"("place_id", "space_id", "ref_id")
 );
 
 -- A significant thing lying loose: on a ref of the place files (a table, a shelf) or at a position in a space.
@@ -675,11 +677,12 @@ CREATE TABLE "trader_item" (
 -- The facts a stock holder's reason cites (the place_note_source pattern), one table per holder kind.
 CREATE TABLE "stock_container_source" (
   "place_id" TEXT NOT NULL,
+  "space_id" TEXT NOT NULL,
   "ref_id" TEXT NOT NULL,
   "source_id" TEXT NOT NULL REFERENCES "source"("id"),
   "locator" TEXT,
-  PRIMARY KEY ("place_id", "ref_id", "source_id"),
-  FOREIGN KEY ("place_id", "ref_id") REFERENCES "stock_container"("place_id", "ref_id")
+  PRIMARY KEY ("place_id", "space_id", "ref_id", "source_id"),
+  FOREIGN KEY ("place_id", "space_id", "ref_id") REFERENCES "stock_container"("place_id", "space_id", "ref_id")
 );
 
 CREATE TABLE "trader_source" (

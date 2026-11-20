@@ -337,6 +337,23 @@ def test_each_check_can_fail(name):
     assert res[name], f"{name} did not fail on its broken fixture"
 
 
+def test_a_link_into_our_own_plugin_that_lacks_the_record_names_the_cause():
+    c = ctx()
+    c["dump"]["unresolved"].append(f"{k(1)} -> {C.B.PLUGIN}:0181F5 <IKeyGetter>")
+    got = C.run(c)["plugin"]
+    assert len(got) == 2 and "written by a build older than its shards' plans" in got[1]
+
+
+def test_a_cut_room_is_judged_by_the_part_inside_its_cut():
+    """A room copied with a cut keeps only the source refs inside the cut's box: refs outside it are not missing."""
+    c = broken("rooms")
+    c["plan"]["interiors"][0]["cut"] = {"box": [-50, -50, 150, 50]}
+    c["room_refs"]["x/house"][1]["pos"] = [0.0, 900.0, 200.0]          # the lantern lies outside the cut
+    assert not C.run(c)["rooms"]
+    c["plan"]["interiors"][0]["cut"] = {"box": [-50, -50, 150, 1000]}  # the lantern inside the cut, not built: fails
+    assert C.run(c)["rooms"]
+
+
 def test_a_plant_on_a_path_fails_clear():
     c = ctx()
     c["facts"]["cells"][0]["refs"][1]["pos"] = [2300.0, 1400.0, 800.0]

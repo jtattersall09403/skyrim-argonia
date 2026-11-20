@@ -80,6 +80,32 @@ def test_inside_turns_with_full_rotation():
     assert not overlap.inside([0, 0, 150], flipped, BASES)     # where the unflipped box would be
 
 
+def _cliff_tris():
+    """A wall of collision, x -100..-20 (a cliff's face), 0..300 high: the rest of its 200 x 200 x 300 box is air."""
+    import numpy as np
+    return np.array([[(-100, -100, 0), (-20, -100, 300), (-20, 100, 300)],
+                     [(-100, -100, 0), (-20, 100, 300), (-100, 100, 0)]], float)
+
+
+def test_big_irregular_pieces_are_judged_by_their_solid_not_their_box(monkeypatch):
+    from tools.places import seat
+    monkeypatch.setattr(seat, "_collision_tris", lambda m: _cliff_tris())
+    monkeypatch.setattr(seat, "_profiles", {})
+    bases = {"cliff": {"bounds": [[-100, -100, 0], [100, 100, 300]], "model": "landscape/rocks/cliff01.nif"},
+             "small": BASES["small"]}
+    rock = ref("rock", 0, 0, base="cliff", kind="rock")
+    egg = ref("egg", 60, 0, base="small", z=10.0)
+    in_wall = ref("wall", -60, 0, base="small", z=10.0)
+    assert not overlap.inside(egg["pos"], rock, bases)          # open ground in the box of a cliff
+    assert overlap.inside(in_wall["pos"], rock, bases)          # inside the cliff's own solid
+    assert overlap.pairs([egg, rock], bases) == []
+    assert overlap.pairs([in_wall, rock], bases)
+
+
+def test_a_house_inside_a_house_is_still_caught_by_its_box():
+    assert len(overlap.pairs([ref("a", 30, 0), ref("b", 0, 0)], BASES)) == 2
+
+
 def test_standing_on_a_top_is_not_inside():
     deck = ref("d", 0, 0)
     assert geom.stands_in(deck, BASES, (0, 0, 50))

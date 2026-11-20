@@ -140,7 +140,7 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         "containers": [{"ref": r.ref_id, "space": r.space_id, "owner_person": r.owner_person_id,
                         "owner_household": r.owner_household_id, "owner_faction": r.owner_faction, "lock": r.lock_level_id,
                         "security": r.security_level_id, "tier": r.stock_tier_id, "gold": r.gold,
-                        "items": [(i.item_id, i.count) for i in st.container_items.get(r.ref_id, [])]}
+                        "items": [(i.item_id, i.count) for i in st.container_items.get((r.space_id, r.ref_id), [])]}
                        for r in st.containers.values()],
         "keys": [{"lock": (space, r.ref_id), "name": r.name,
                   "holder": ("person", r.holder_person_id) if r.holder_person_id else
