@@ -43,6 +43,8 @@ NUDGES_ALONG = (16.0, -16.0, 32.0, -32.0, 64.0, -64.0)
 NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
+DOOR_OVER = 150.0     # a door this far over the end of the walk to it: its arrival lies under it
+TOOL = 2             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
@@ -435,11 +437,32 @@ def dedup(routes: list[dict]) -> None:
 
 
 # ---------- what a look shows, and whose fault a failure is ----------
+def boxed_in(ev: dict) -> bool:
+    """Whether the piece the camera stands in (ev in_piece, its edid) fills over half of what the look shows."""
+    name = ev.get("in_piece")
+    if not name:
+        return True
+    top = (ev.get("fills") or [{}])[0]
+    return top.get("edid") == name and top.get("share", 0) > 0.5
+
+
+def in_piece(why: str | None) -> str | None:
+    """The edid in a camera_inside reason ('... inside EDID (kind, id)', '... inside a tree's trunk (EDID)')."""
+    if not why:
+        return None
+    m = re.search(r"inside a tree's \w+ \(([^)]+)\)", why) or re.search(r"inside (\S+) \(", why)
+    return m.group(1) if m else None
+
+
 def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
     """A look's verdict from its evidence. ev: inside (why the camera stands in something, or None), all_inside (every
     nudge was in a piece too: the piece), near ({edid, kind, share, dist} of the thing filling most of the frame),
     land, water, sky (shares), floor_below (the share of pieces in the bottom middle of a down look), void (indoors,
-    the share of the frame that is nothing). Returns {verdict good|failed, fault capture|place|None, why}."""
+    the share of the frame that is nothing). Returns {verdict good|failed, fault capture|place|None, why}.
+    A piece's box is not its shape: the camera inside a box (the air under a deck on stilts, between a tree's roots)
+    is a fault only when the picture agrees, that piece filling over half the frame."""
+    if (ev.get("all_inside") or ev.get("inside")) and not boxed_in(ev):
+        ev = dict(ev, all_inside=None, inside=None)
     if ev.get("all_inside"):
         p = ev["all_inside"]
         if inside and ev.get("low_ceiling"):
@@ -515,7 +538,7 @@ def points_of_interest(sc, files: dict) -> dict:
         dd = p.get("door") or {}
         if p.get("kind") == "door" and dd.get("to_space"):
             doors.append({"name": f"door of {dd['to_space']}", "pos": list(dd.get("arrival") or _xyz(p)), "kind": "doorway",
-                          "id": p["id"]})
+                          "id": p["id"], "door_z": _xyz(p)[2]})
     arrivals = []
     paths = [q for q in files.get("paths") or [] if q.get("points")]
     ends = []
@@ -742,6 +765,8 @@ def plan_all(M, want: list[tuple[dict, dict]], ground, stride: float, drops=None
             start = f"doorway of {a['name'][8:]}" if a.get("kind") == "doorway" else ("way in, " + a["name"]) if a.get("kind") == "way in" else f"start: {a['name']}"
             end = f"doorway of {b['name'][8:]}" if b.get("kind") == "doorway" else f"end: {b['name']}" + (" (the walk breaks here)" if r.get("broken") else "")
             r["stations"] = stations(P, evs, stride, start, end)
+            if b.get("door_z") is not None and b["door_z"] - P[-1, 2] > DOOR_OVER:
+                r["door_above"] = round(float(b["door_z"] - P[-1, 2]))
         else:
             r["stations"] = []
         routes.append(r)
@@ -761,6 +786,8 @@ def plan_lines(routes: list[dict], stale: dict | None) -> list[str]:
             line += f"; every station already seen in {', '.join(r['same_as'])}"
         if r.get("broken"):
             line += f"; CANNOT BE WALKED TO: {r['broken']['why']}"
+        if r.get("door_above"):
+            line += f"; THE DOOR IS {r['door_above']} u OVER THE END OF THE WALK: its arrival is under it, no way up"
         out.append(line)
     return out
 
@@ -832,7 +859,9 @@ def run(d, place: str, strokes, args: list[str], space: str = "exterior") -> dic
     failed = sum(x["failed"] for x in res)
     mb = sum(f.stat().st_size for f in root.rglob("*.png")) / 1e6
     return {"lines": lines + [x["line"] for x in res], "routes": len(routes), "stations": sum(x["stations"] for x in res),
-            "looks": looks, "failed": failed, "place_faults": [f for x in res for f in x["place_faults"]],
+            "looks": looks, "failed": failed, "place_faults": [f for x in res for f in x["place_faults"]]
+            + [f"{r['name']}: the door is {r['door_above']} u over the end of the walk" for r in routes if r.get("door_above")]
+            + [f"{r['name']}: {r['broken']['why']}" for r in routes if r.get("broken")],
             "seconds": round(time.time() - t0, 1), "megabytes": round(mb, 1), "out": str(root)}
 
 
@@ -927,7 +956,7 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
     from tools.places.look import framing
     w, h = tile_size()
     out = root / r["name"]
-    key = hashlib.sha1(json.dumps([r.get("way"), [s.get("seen") for s in r["stations"]], w, h, fill]).encode()).hexdigest()[:12]
+    key = hashlib.sha1(json.dumps([TOOL, r.get("way"), [s.get("seen") for s in r["stations"]], w, h, fill]).encode()).hexdigest()[:12]
     done = out / "table.json"
     if done.exists() and not again:
         old = json.loads(done.read_text())
@@ -999,6 +1028,7 @@ def _judge(sc, c, rr, by_id, lk, st, inside, ins, all_in):
     img = capture.hatch(img, ids, rr["table"], rr["id0"], verbs.helper_label(sc))
     ev = evidence(ids, rr["table"], rr["id0"], by_id, c["pos"])
     ev["inside"], ev["all_inside"] = ins, all_in
+    ev["in_piece"] = in_piece(ins)
     ev["low_ceiling"] = bool(inside and all_in)
     v = classify(lk[0], st["what"], ev, inside)
     return img, ev, v, c

@@ -159,3 +159,14 @@ def test_room_plan_entering_and_changed():
     assert len(ch) == 3
     assert [x[0] for x in pw.looks_of(ch[1]["stations"][0])] == ["ahead", "down", "left", "right"]
     assert ch[2]["name"] == "cut" and len(ch[2]["stations"]) == 4
+
+
+def test_inside_a_box_is_a_fault_only_when_the_picture_agrees():
+    why = "the camera is inside MurkmirePlatformBase01 (building, x.1)"
+    assert pw.in_piece(why) == "MurkmirePlatformBase01"
+    assert pw.in_piece("the camera is inside a tree's trunk (TreeX)") == "TreeX"
+    air = {"all_inside": "MurkmirePlatformBase01", "in_piece": "MurkmirePlatformBase01", "land": 0.4,
+           "fills": [{"edid": "land", "share": 0.4}, {"edid": "MurkmirePlatformBase01", "share": 0.3}]}
+    assert pw.classify("ahead", "stride", air)["verdict"] == "good"     # under a deck on stilts: air
+    solid = air | {"fills": [{"edid": "MurkmirePlatformBase01", "share": 0.9}]}
+    assert pw.classify("ahead", "stride", solid)["fault"] == "place"
