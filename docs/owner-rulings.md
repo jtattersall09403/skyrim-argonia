@@ -148,6 +148,17 @@ added here the day they are made, with the date and the issue.
 - A quest's people and things at a place get first positions in every place draft without being asked, drafted
   as their real records and models, shown in the studio's Quests layer for the owner to move and note
   (2026-11-19, #80).
+- A place is drafted by starting from its source place as a connected whole and then reshaping, pruning and
+  adding, never from scratch with the source's loose pieces: the modder's arrangement, the connections between
+  structures, patrols, daily routines, ownership and the rest of the wiring are carried over where the source has
+  them; structures move as whole chunks and are put where our ground matches theirs (2026-11-20, #80).
+- A piece is seated by sinking it into the ground; nothing is "extended" to reach it (2026-11-20, #80).
+- Place-drafting agents get eyes and hands in the studio's own 3D scene, to look, probe, act step by step, judge
+  and experiment as a human designer does; a set of steps becomes an automated pipeline only once it is proven by
+  hand, and its output is still checked. The owner will enable an MCP server or pay for a tool or a GPU machine
+  where a measured case shows a big difference; no machine is changed before he says so (2026-11-20, #80).
+- The place skills become a map and specialised sub-skills, with the map saying when to use which, as the quest
+  skills are (2026-11-20, #80).
 - Climb anything big enough, Breath of the Wild style, through FreeClimb (2026-11-01).
 - Parry, riposte and backstab are what the owner called souls-like (2026-10-29); the collection is used out of
   the box first, and that ruling is revisited only if the owner misses them.
