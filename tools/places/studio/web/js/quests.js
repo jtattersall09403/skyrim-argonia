@@ -65,14 +65,16 @@ export class Quests {
       if (m.parent !== v.overlay) v.overlay.add(m);
       const mine = this.sel === it.id, p = this.drag?.id === it.id ? this.drag.pos : s.pos, h = this.drag?.id === it.id ? this.drag.heading : (s.rot?.[2] || 0);
       m.visible = this.shown && (s.space || 'exterior') === a.ours.space;
-      m.position.set(p[0] - a.ours.origin[0], p[1] - a.ours.origin[1], p[2] - a.ours.origin[2]);
+      // a spot with no height (0) is seated on the ground by the build: drawn on the ground, not buried under it
+      const z = !p[2] && (s.space || 'exterior') === 'exterior' && a.terrain ? (a.terrain.heightAt(p[0], p[1]) ?? p[2]) : p[2];
+      m.position.set(p[0] - a.ours.origin[0], p[1] - a.ours.origin[1], z - a.ours.origin[2]);
       m.rotation.set(0, 0, -h);   // a heading turns clockwise seen from above
       m.scale.setScalar(mine ? 1.3 : 1);
       const col = mine ? GOLD_SEL : (KIND_COLOUR[it.kind] || GOLD);
       m.userData.pin.visible = !m.userData.real;   // the real thing drawn: its name label alone marks it
       for (const c of m.userData.pin.children) { c.material.color.set(col); c.material.wireframe = drafted; c.material.transparent = drafted; c.material.opacity = drafted ? 0.6 : 1; }
       m.userData.real?.traverse((o) => { if (o.isMesh) { o.material.transparent = drafted; o.material.opacity = drafted ? 0.55 : 1; } });
-      m.userData.at = p;
+      m.userData.at = [p[0], p[1], z];
     }
     for (const [id, m] of this.markers) if (!seen.has(id)) { m.removeFromParent(); this.markers.delete(id); }
     v.redraw(); this.drawLabels();

@@ -8,6 +8,7 @@ Numbers: probe <thing> | probe --all; pick <png> <px> <py>.
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
 --until-feet-buried]; delete <thing>; duplicate <thing> [dx dy]; each takes --view <view verb...> for a before/after.
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
+commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
 """
 from __future__ import annotations
 

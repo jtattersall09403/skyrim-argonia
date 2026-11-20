@@ -614,6 +614,34 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
     return out
 
 
+def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), source=None) -> tuple[dict, list]:
+    """An agent's draft edits (the look tool's strokes, `look <place> commit`) applied once by the same `apply` as an
+    owner's save, but recorded as the agent's: no owner tier on any word, no preference, the save listed under
+    place.json `agent_saves_applied` (never `saves_applied`). A stroke that touches a row the owner's finalised saves
+    touched (owner_ids) is left out whole and returned, so an agent never writes over an owner edit."""
+    check_save(save, place_files.get("place", {}).get("place_id"))
+    pl = place_files.get("place", {})
+    done = pl.get("agent_saves_applied", [])
+    if save["save_id"] in done or save["save_id"] in pl.get("saves_applied", []):
+        raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
+
+    def ids(op):
+        return {op.get("id"), (op.get("ref") or {}).get("id")} - {None}
+    groups: dict = {}
+    for op in save["ops"]:
+        groups.setdefault(op.get("stroke", op["n"]), []).append(op)
+    keep, left = [], []
+    for g in groups.values():
+        hit = sorted(set().union(*(ids(op) for op in g)) & set(owner_ids))
+        if hit:
+            left.append({"stroke": g[0].get("stroke"), "owner_rows": hit})
+        else:
+            keep += g
+    out = apply(place_files, keep, source)
+    out["place"]["agent_saves_applied"] = done + [save["save_id"]]
+    return out, left
+
+
 def _notes_by_op(save: dict) -> dict:
     """Each noted op's number -> the words of its note (the save's `notes` by `note_group`, or the op's own `note`)."""
     from tools.places.change_notes import note_of
