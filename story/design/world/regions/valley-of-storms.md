@@ -58,7 +58,7 @@ It is to be built from Markarth in Skyrim.esm (a city: 8578 buildings, 30 interi
 
 ### Jal-Veesa
 
-A town, about 220 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Veesa-Teeleel elders; their own, not the Vicecanons; 22 people live there. It is drafted: its place files are in newworld/places/jal-veesa. <!-- place:jal-veesa -->
+A town, about 240 m across, sited on swamp, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by The Veesa-Teeleel elders; their own, not the Vicecanons; 22 people live there. It is drafted: its place files are in newworld/places/jal-veesa. <!-- place:jal-veesa -->
 
 Jal-Veesa is the one town of the Veesa-Teeleel, the northern Argonians of the valleys between Stormhold and the Barsaebic ruins. It sits on the road west of Stormhold. <!-- place_note:jal-veesa/overview --> A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold. <!-- place_note:jal-veesa/present --> Veesa-Teeleel Argonians, courteous to Dunmer without trusting them. Elders and a tree-minder at the pool; a few Stormhold buyers lodge on market days. <!-- place_note:jal-veesa/people --> A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here. <!-- place_note:jal-veesa/history -->
 

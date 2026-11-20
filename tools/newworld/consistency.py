@@ -420,7 +420,7 @@ WATER_RULES = [
     ("flooded", r"\b(flooded|half-sunken|waterlogged|submerged|drowned)\b", ["any"], 200),
 ]
 NEG = re.compile(r"\b(no|not|without|never|dry|nor|far from|away from|lacks?|none)\b", re.I)
-HIST_WATER = re.compile(r"(waterbreathing|water-breathing|pond|bathe|wade|spring water|clear water|cool water|pool of water|"
+HIST_WATER = re.compile(r"(pond|bathe|wade|spring water|clear water|cool water|pool of water|"
                         r"waters? of the (?:hist )?pool|fed by|water[- ]fed)", re.I)
 
 
