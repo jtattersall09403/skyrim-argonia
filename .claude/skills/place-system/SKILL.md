@@ -68,6 +68,23 @@ Which skill for a common job:
 
 - **Eyes and hands first.** Work as a designer does: look (`look overview`, `at`, `section`), measure (`look
   probe`), change one thing (`look move`, `sink`, `turn`), look again. Measure for truth, look for judgement.
+- **Plan the layout before placing.** A structure is a real one: a house with its platform, posts, steps and what
+  hangs on it. For each, decide where it stands and at what height from the ground under its whole footprint, so
+  its floor and door are clear of the ground, its legs are in the ground by what they need, its door is reached on
+  foot and joined decks share a level; decide it for the place as a whole. Neither "the source's height" nor "sink
+  until low" is a rule.
+- **Look as you go, not at the end.** After each structure is placed or changed: capture it from several sides and
+  distances, at eye level and from above, with a section on two axes; read each capture; mend; then go on to the
+  next. After each group of structures, survey the whole place again. A fault found at hand-over was a look
+  skipped earlier.
+- **Question every capture.** Before reading an image, ask whether it shows its subject: the subject may be out of
+  frame, cropped, behind a crown, or the camera may be inside a tree, a mound or a roof. A failed capture is
+  retaken from another side or distance; nothing is called missing or broken until a `look probe` agrees.
+- **Light is not judged in the viewer.** The game's light differs. Nothing is called too dark or too bright, and no
+  light is added or removed, on what the viewer shows; a doubt about light goes to the owner's in-game check.
+- **Mend the tool and the skill as you go.** When a tool misleads, blocks or cannot show what is needed, mend it
+  then, with its test, and say it once in the skill that owns it; carry on with the place afterwards. Re-plan when
+  what you see disagrees with the plan.
 - **Iterate with the light tools.** The inner loop is `look probe`, `look section` and the one draft stage that
   owns the change (seconds to a minute). The whole draft, `draft check`, a `streets` run and the build take 10 to
   40 minutes and queue on the machine-wide lock: run each once, at a milestone, under `tooling/job_guard.sh`.
