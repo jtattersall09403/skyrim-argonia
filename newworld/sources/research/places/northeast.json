@@ -297,7 +297,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Thorn (Black Marsh North), is a city of 629 buildings in Dunmer and Imperial style with farm and ship pieces and 25 people, which fits the walled city on flat grassland. It has one interior, a ship, so the tavern, the apothecary's shop and the smithy borrow interiors from Lilmoth (King of the Murkmire), which holds a tavern, an apothecary and an ironworks. Still to add: the Conclave of the One, the Temple shrine of Saint Roris and the Vicecanons' hall as interiors built from Imperial and Dunmer pieces, the saltrice paddies round the walls and the Hist tree outside the gate.",
+     "text": "Its main source, Thorn (Black Marsh North), is a city of 629 buildings in Dunmer and Imperial style with farm and ship pieces and 25 people, which fits the walled city on flat grassland. It has one interior, a ship, so the tavern, the apothecary's shop and the smithy borrow interiors from Lilmoth (King of the Murkmire), which holds a tavern, an apothecary and an ironworks. Thorn's Nordic timber houses and fences are replaced with Dunmer and Imperial pieces from Baan Malur (Journey to Baan Malur). Still to add: the Conclave of the One, the Temple shrine of Saint Roris and the Vicecanons' hall as interiors built from Imperial and Dunmer pieces, the saltrice paddies round the walls and the Hist tree outside the gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -678,7 +678,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, The Perilous Pass (Caves of Morrowind), is a fort in Imperial and Dunmer style with six interiors, among them a pass tunnel, a bulwark, a distillery and its warehouse, which fits a gate fort cut into a rise. The warehouse serves as the locked store room for the confiscated moon sugar and the other interiors as the barracks and the captain's room. Its 91 hostiles are removed. Still to add: the toll bar across the road, the jetty for the watch boat and the Argonian reed-cord pennants.",
+     "text": "Its main source, The Perilous Pass (Caves of Morrowind), is a fort in Imperial and Dunmer style with six interiors, among them a pass tunnel, a bulwark, a distillery and its warehouse, which fits a gate fort cut into a rise. The warehouse serves as the locked store room for the confiscated moon sugar and the other interiors as the barracks and the captain's room. Its 91 hostiles are removed. Its Nordic wooden palisades and banners are replaced with Dunmer and Imperial pieces from Baan Malur (Journey to Baan Malur). Still to add: the toll bar across the road, the jetty for the watch boat and the Argonian reed-cord pennants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1196,7 +1196,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), gives only the spot of a track junction; its Nordic wreck pieces and hostile figures are removed, so the watch is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress platforms and walkways on posts, hide tents and hide fences for the raised watch platform. No source holds a watch house, so the guards' bench stands on the platform in the open and they sleep in the tent. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
+     "text": "Its main source, Captain Guomundr's Village (Here There Be Monsters), gives only the spot of a track junction; its Nordic wreck pieces and hostile figures are removed, so the watch is built from the pool. Ree-An-Wo (King of the Murkmire) supplies cypress platforms and walkways on posts, hide tents and hide fences for the raised watch platform. No source holds a watch house, so the guards' bench stands on the platform in the open and they sleep in the tent. The village's Nordic huts and wreck timbers are replaced with Ree-An-Wo's platform and tent. Still to add: the lantern pole, the stone-lined well and the chain between two posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4126,7 +4126,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian hamlet of 31 buildings and 16 people, the same count as Ayiin, on the water with no interior. It holds no house to enter, so the elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Still to add: the squared stone walls under reed roofs, the stone jetty, the cairn, the cart in the ford with its locked chest and the crocodile's path along the bank.",
+     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian hamlet of 31 buildings and 16 people, the same count as Ayiin, on the water with no interior. It holds no house to enter, so the elder's house is an interior from Seekhat Yol's elder's hut (King of the Murkmire). Unlike Teel-Fen Weir, which keeps Ree-An-Wo's hide tents on cypress platforms round its young Hist, Ayiin replaces the tents with stone houses at a ford. Still to add: the squared stone walls under reed roofs, the stone jetty, the cairn, the cart in the ford with its locked chest and the crocodile's path along the bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5276,7 +5276,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses and the spear-smiths' house. Seekhat Yol's elders' hut (King of the Murkmire) serves as the elders' hall, and its smithy hut, with an anvil, an armour workbench and a forge, as the spear-smiths' forge. Still to add: the timber and clay walls built from its cypress palisade pieces, the village Hist tree built from its Hist roots and flowers, the clay deposit on the bank, the raft at the landing from its boats, the burned-black post where the gate stood and the dragon-spear beside the village Hist.",
+     "text": "Its main source, Root Whisper Village (King of the Murkmire), is an Argonian village of 19 people, the same count as Noota Nara, with eight hut interiors among them a carpenter's, a hunter's and a treeminder's. They serve as the potters' houses and the spear-smiths' house. Seekhat Yol's elders' hut (King of the Murkmire) serves as the elders' hall, and its smithy hut, with an anvil, an armour workbench and a forge, as the spear-smiths' forge. Unlike Meris-Keth, an emptied ruin on the same village, Noota Nara is lived in behind rebuilt walls. Still to add: the timber and clay walls built from its cypress palisade pieces, the village Hist tree built from its Hist roots and flowers, the clay deposit on the bank, the raft at the landing from its boats, the burned-black post where the gate stood and the dragon-spear beside the village Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

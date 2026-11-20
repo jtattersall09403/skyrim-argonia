@@ -4110,7 +4110,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Mistwatch (Skyrim), a ruined Imperial fort round a tall stair-tower, with three interiors that are the tower's halls one above another and no cellar. Its lowest hall serves as the smugglers' lower hall and a side room as the strongroom, given a locked door; its top hall serves as the dry upper floor where travellers sleep. Still to add: moss and vine on the stone, the ditch round the rise, the smugglers' cache, the faded Imperial banner and the travellers' pallets.",
+     "text": "Built from Mistwatch (Skyrim), a ruined Imperial fort round a tall stair-tower, with three interiors that are the tower's halls one above another and no cellar. Its lowest hall serves as the smugglers' lower hall and a side room as the strongroom, given a locked door; its top hall serves as the dry upper floor where travellers sleep. Mistwatch's Nordic banners, braziers and wooden scaffolds are replaced with the Imperial fittings of Fort Hraggstad (Skyrim) and with moss on the bare stone. Still to add: moss and vine on the stone, the ditch round the rise, the smugglers' cache, the faded Imperial banner and the travellers' pallets.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6334,7 +6334,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a tower, a main hall and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, but its outside holds only a few roots and ash, so it gives no keep walls. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Still to add: the keep's stone outer walls, gate and the beacon tower's outside, built from Imperial fort wall and tower pieces as at Cracked Tusk Keep (Skyrim), the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage.",
+     "text": "Its main source, Ashguard (SolstheimExpand), is a Dunmer fort of three interiors, a tower, a main hall and a barracks, which serve as the beacon tower, the keep hall and the garrison's barracks, but its outside holds only a few roots and ash, so it gives no keep walls. The sources hold no cave, so the wreckers' sea-cave is added as a small cave interior from Skyrim's cave pieces behind a door on the shore. Ashguard's Nordic pieces are replaced with Dunmer pieces from Raven Rock (Dragonborn) inside and Imperial walls outside. Still to add: the keep's stone outer walls, gate and the beacon tower's outside, built from Imperial fort wall and tower pieces as at Cracked Tusk Keep (Skyrim), the beacon lamp, the landing below the keep, the gate stores, the boss chest in the cave and the salvage.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6730,7 +6730,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Cormar Crossing (Journey to Baan Malur), is a Dunmer farm of five interiors, a storehouse, grain silo, farmhouse, cornerclub and guardhouse, which fits a rice estate with its great house and huts. The farmhouse serves as the great house and the storehouse as the old cellar, behind a door the family has walled up with placed boards and stone. Still to add: the long plank house on posts with a tiled roof, the paddies and dykes, the boat landing, the bell on its post, the veranda with its hearth pot and the planters' strongbox.",
+     "text": "Its main source, Cormar Crossing (Journey to Baan Malur), is a Dunmer farm of five interiors, a storehouse, grain silo, farmhouse, cornerclub and guardhouse, which fits a rice estate with its great house and huts. The farmhouse serves as the great house and the storehouse as the old cellar, behind a door the family has walled up with placed boards and stone. Cormar Crossing's Nordic timber barns and fences are replaced with the painted plank houses on posts of Alten Meerhleel (King of the Murkmire) and Seekhat Yol's reed thatch. Still to add: the long plank house on posts with a tiled roof, the paddies and dykes, the boat landing, the bell on its post, the veranda with its hearth pot and the planters' strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7483,7 +7483,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ramshackle Trading Post (Dragonborn), gives only its spot, being Dwemer and mine pieces with no interior, so Mereweather is built from the pool. Cormar Crossing (Journey to Baan Malur) lends its farmhouse as the two-storey house, its silo of saltrice barrels, flour and hay as the rice-barn, and its guardhouse, with a bed and table, as the tenants' quarters beside the landing. Still to add: the veranda, the landing with its post, the tall palms and the smugglers' cache.",
+     "text": "Its main source, Ramshackle Trading Post (Dragonborn), gives only its spot, being Dwemer and mine pieces with no interior, so Mereweather is built from the pool. Cormar Crossing (Journey to Baan Malur) lends its farmhouse as the two-storey house, its silo of saltrice barrels, flour and hay as the rice-barn, and its guardhouse, with a bed and table, as the tenants' quarters beside the landing. The trading post's Nordic shacks are replaced with Cormar Crossing's Dunmer farm walls and with the plank landing of Alten Meerhleel (King of the Murkmire). Still to add: the veranda, the landing with its post, the tall palms and the smugglers' cache.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9174,7 +9174,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Fort Hraggstad (Skyrim), an Imperial fort of two interiors, a keep with its halls and a lower hall, with 405 Imperial pieces and no Nordic ones. The upper hall serves as the barracks and armoury with its locked cage, and the lower hall as the cellar, given a shallow water plane. Still to add: the vines and broken corner on the wall, the roofless yard, the empty chapel niche with candle stubs, the north wall lookout and the squatters' camp.",
+     "text": "Built from Fort Hraggstad (Skyrim), an Imperial fort of two interiors, a keep with its halls and a lower hall, with 405 Imperial pieces; its few Nordic banners and wooden scaffolds are replaced with plain Imperial rubble. The upper hall serves as the barracks and armoury with its locked cage, and the lower hall as the cellar, given a shallow water plane. Still to add: the vines and broken corner on the wall, the roofless yard, the empty chapel niche with candle stubs, the north wall lookout and the squatters' camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9521,7 +9521,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Old Laboratory (King of the Murkmire), a small Imperial ruin of one interior with Argonian and dock pieces, whose interior serves as the sea-cave beneath the shed, entered by a hatch in the shed floor, and whose Nordic pieces are replaced. Still to add: the low brick shed, the toppled signal tower with its rubble, the rusted iron ring in the wall, the deep pool in the cave, the bonded strongbox bolted to the floor and the clam beds on the shore.",
+     "text": "Built from Old Laboratory (King of the Murkmire), a small Imperial ruin of one interior with Argonian and dock pieces, whose interior serves as the sea-cave beneath the shed, entered by a hatch in the shed floor, and whose Nordic pieces are replaced. Unlike Gideon South Watch, which keeps the ruin's one room as a smugglers' inner room on the water, Brackwater sets that room under a new brick shed as a sea-cave and drops the dock for a toppled tower. Still to add: the low brick shed, the toppled signal tower with its rubble, the rusted iron ring in the wall, the deep pool in the cave, the bonded strongbox bolted to the floor and the clam beds on the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9868,7 +9868,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Quick Test Cell (Black Marsh North), is a ruined fort of one interior with 551 fort pieces and a few Imperial ones, which fits a burnt outlier fort. Its Nordic and Dwemer pieces are replaced, and its single interior, a jail block of barred cells, serves as the strongroom behind the iron door. Still to add: the charred black timbers and stone footings, the burnt shrine plinth, the bandits' lookout post and the dealer's corner on the road.",
+     "text": "Its main source, Abandoned Prison (Skyrim), is an Imperial fort ruin by water with one interior, a jail block of barred cells, which serves as the strongroom behind the iron door. Its Nordic banners and wooden scaffolds are replaced with charred Imperial stone, and its hostiles are removed. Still to add: the charred black timbers and stone footings, the burnt shrine plinth, the bandits' lookout post and the dealer's corner on the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10953,7 +10953,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Keel-Sakka Bridge (King of the Murkmire), gives only its spot and a few Argonian ruin pieces, being a bridge with mine and fort pieces and no interior, so the mound is built from the pool. Huluxinoag (King of the Murkmire) lends its one cave-like interior, which serves as the lower galleries and the burial chamber under the crown. Still to add: the large turf mound with its fallen leaf-roof, the ring of fallen posts, the skeleton guards on the crown and the fox-bone talisman by the hoard.",
+     "text": "Its main source, Keel-Sakka Bridge (King of the Murkmire), gives only its spot and a few Argonian ruin pieces, being a bridge with mine and fort pieces and no interior, so the mound is built from the pool. Huluxinoag (King of the Murkmire) lends its one cave-like interior, which serves as the lower galleries and the burial chamber under the crown. The bridge's Nordic pieces are replaced with Huluxinoag's Argonian ruin stone. Still to add: the large turf mound with its fallen leaf-roof, the ring of fallen posts, the skeleton guards on the crown and the fox-bone talisman by the hoard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13569,7 +13569,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Haj-Uxith (King of the Murkmire), gives a woven-wall mud-hut home with one interior of shelves and a few Argonian ruin pieces, but no tower, so the spire is built from the pool. Teeth of Sithis (King of the Murkmire) lends its East Xanmeer interior as the tower's flooded hall, given a water plane, and its Xanmeer wall pieces make the curling stone arms outside. Still to add: the curling stone arms, shaped from Xanmeer wall pieces, the weed, the half-cleared rooms, the dead-end gallery with the drowned diver, the locked grate and the salvage chest.",
+     "text": "Its main source, Haj-Uxith (King of the Murkmire), gives a woven-wall mud-hut home with one interior of shelves and a few Argonian ruin pieces, but no tower, so the spire is built from the pool. Teeth of Sithis (King of the Murkmire) lends its East Xanmeer interior as the tower's flooded hall, given a water plane, and its Xanmeer wall pieces make the curling stone arms outside. Haj-Uxith's Nordic pieces are replaced with Teeth of Sithis's Xanmeer stone. Unlike Kitsa Burrow, which keeps Haj-Uxith's mud domes and burrow on dry sand, Haxtil-Meht takes only its ruin pieces, as rubble at the foot of a drowned spire. Still to add: the curling stone arms, shaped from Xanmeer wall pieces, the weed, the half-cleared rooms, the dead-end gallery with the drowned diver, the locked grate and the salvage chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14281,7 +14281,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, near Bonestrewn Grove (King of the Murkmire), gives the Argonian, ruin and Imperial pieces of the silt-buried base; it has no interior, so the spire is built from the pool. Teeth of Sithis (King of the Murkmire) lends its Halls interior as the dreugh-held rooms and the crown, given a water plane, and its Xanmeer pieces make the spire. Still to add: the silt around the base, the coral on the crown, the carved prize, the cut bell-chain and the bell with its crew's remains.",
+     "text": "Its main source, near Bonestrewn Grove (King of the Murkmire), gives the Argonian, ruin and Imperial pieces of the silt-buried base; it has no interior, so the spire is built from the pool. Teeth of Sithis (King of the Murkmire) lends its Halls interior as the dreugh-held rooms and the crown, given a water plane, and its Xanmeer pieces make the spire. The base's Nordic pieces are replaced with more of Teeth of Sithis's Xanmeer stone. Still to add: the silt around the base, the coral on the crown, the carved prize, the cut bell-chain and the bell with its crew's remains.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
