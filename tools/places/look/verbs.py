@@ -36,7 +36,7 @@ def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
 def _out(place: str, name: str) -> str:
     d = LOOK_OUT / place
     d.mkdir(parents=True, exist_ok=True)
-    return str(d / f"{time.strftime('%H%M%S')}-{name}.png")
+    return str(d / f"{time.strftime('%H%M%S')}{int(time.time() * 1000) % 1000:03d}-{name}.png")   # two looks in one second keep both
 
 
 def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) -> str:
@@ -110,6 +110,11 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         sess["strokes"] = copy.deepcopy(sess["snapshots"][args[0]])
         save_session(place, sess)
         return {"restored": args[0], "strokes": len(sess["strokes"])}
+    if verb == "commit":
+        res = commit(place, sess, args)
+        d.scenes.clear()
+        d.place = None   # the page reloads the place files as now written
+        return res
     if verb == "compare":
         a, b, vw = args[0], args[1], args[2:]
         sa = sess["snapshots"][a] if a != "now" else sess["strokes"]
@@ -338,6 +343,44 @@ def pick(d, place, strokes, args) -> dict:
     return {"hits": out, "ground": ground}
 
 
+# ---------- commit: the session into the place files ----------
+def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -> dict:
+    """`commit -m "<why>"`: the session's strokes written into the committed place files by the studio's own apply
+    (edits.apply_agent_save), as the agent's draft edits: the save kept at <place>/agent-edits/<save_id>.json and
+    listed in place.json `agent_saves_applied`; a stroke on a row the owner's finalised saves touched is left out and
+    reported. The session is then emptied (its snapshots too: they name the old files)."""
+    from tools.places import edits
+    from tools.places.draft.stages import owner_rows
+    from tools.places.look.daemon import save_session
+    from tools.places.look.scene import data_out
+    from tools.places.seat import PLACES
+    why = " ".join(a for a in args if a not in ("-m", "--m")).strip()
+    if not why:
+        raise ValueError('commit needs -m "<why>"')
+    if not sess["strokes"]:
+        return {"committed": 0, "why": "the session has no strokes"}
+    pdir = (places or PLACES) / place
+    at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    sid = "agent-" + time.strftime("%Y%m%dT%H%M%S", time.gmtime())
+    ops, n = [], 0
+    for k, stroke in enumerate(sess["strokes"], 1):
+        for op in stroke:
+            n += 1
+            ops.append({kk: v for kk, v in op.items() if not kk.startswith("_")} | {"n": n, "stroke": k, "at": at})
+    save = {"save_id": sid, "place_id": place, "name": why, "at": at, "by": "agent", "final": False, "ops": ops}
+    files = edits.load_place(pdir)
+    out, left = edits.apply_agent_save(files, save, owner_rows(pdir),
+                                       edits.bundle_source(bundles or (data_out() / "bundles")))
+    edits.write_place(pdir, out)
+    ad = pdir / "agent-edits"
+    ad.mkdir(exist_ok=True)
+    (ad / f"{sid}.json").write_text(json.dumps(save, indent=1) + "\n")
+    sess["strokes"], sess["snapshots"] = [], {}
+    save_session(place, sess)
+    return {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
+            "left_for_owner": left}
+
+
 # ---------- hands ----------
 def _rows(sc, th):
     rows = {r["id"]: r for r in sc.files["spaces"]["exterior"]["refs"]}
@@ -355,10 +398,11 @@ def _move_op(r, after):
             "before": {k: before[k] for k in keys}, "after": {k: after[k] for k in keys}}
 
 
-def _shift(r, dx, dy, dz, rot=None):
+def _shift(r, dx, dy, dz, rot=None, moved=frozenset()):
+    """r moved by dx dy dz (and turned); its seat's dz moves with it, unless it sits `on` a piece moved with it."""
     a = _pose(r)
     a["pos"] = [round(a["pos"][0] + dx, 3), round(a["pos"][1] + dy, 3), round(a["pos"][2] + dz, 3)]
-    if a.get("seat") and a["seat"].get("mode", "free") not in ("free",):
+    if a.get("seat") and a["seat"].get("mode", "free") != "free" and a["seat"].get("on") not in moved:
         a["seat"] = dict(a["seat"], dz=round(float(a["seat"].get("dz", 0)) + dz, 3))
     if rot is not None:
         a["rot"] = [a["rot"][0], a["rot"][1], round((a["rot"][2] + rot) % (2 * math.pi), 5)]
@@ -371,9 +415,10 @@ def hand(sc, verb, args, sess) -> list[dict]:
     rows = _rows(sc, th)
     if not rows:
         raise ValueError(f"{pos[0]} has no pieces to act on")
+    ids = {r["id"] for r in rows}   # a piece seated on one of these moves with it: its own dz stays
     if verb == "move":
         dx, dy, dz = (float(v) for v in pos[1:4])
-        return [_move_op(r, _shift(r, dx, dy, dz)) for r in rows]
+        return [_move_op(r, _shift(r, dx, dy, dz, moved=ids)) for r in rows]
     if verb == "turn":
         deg = float(pos[1])
         a = math.radians(deg)
@@ -384,7 +429,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
         for r in rows:
             ox, oy = r["pos"][0] - cx, r["pos"][1] - cy
             nx, ny = cx + ox * math.cos(a) + oy * math.sin(a), cy - ox * math.sin(a) + oy * math.cos(a)   # clockwise, as the game's yaw
-            ops.append(_move_op(r, _shift(r, nx - r["pos"][0], ny - r["pos"][1], 0.0, rot=a)))
+            ops.append(_move_op(r, _shift(r, nx - r["pos"][0], ny - r["pos"][1], 0.0, rot=a, moved=ids)))
         return ops
     if verb == "sink":
         if len(pos) > 1 and not o.get("until-feet-buried"):
@@ -400,7 +445,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
                     feet.append(r["feet_over_ground"][1])
             dz = -(min(feet) + 8.0) if feet else 0.0
             dz = min(dz, 0.0)
-        ops = [_move_op(r, _shift(r, 0, 0, dz)) for r in rows]
+        ops = [_move_op(r, _shift(r, 0, 0, dz, moved=ids)) for r in rows]
         if ops:
             ops[0]["_dz"] = round(dz, 1)
         return ops
