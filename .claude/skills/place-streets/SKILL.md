@@ -51,6 +51,13 @@ door's room; then one `streets` run. The stage takes 10 to 40 minutes: commit fi
 `tooling/job_guard.sh`, and edit nothing of the place (look session, quest spots) until it ends, since it rewrites
 those files.
 
+A door or deck the check calls an island: `look <place> probe --mesh <door> <x,y,z on the street>` names the
+island its door triangle is on and, when a walk does not join the two, where the mesh breaks (a height step, a
+missing strip, the pieces there); `look <place> at <structure> --top --mesh` and a `section ... --mesh` across the
+deck edge show it. A door whose triangle is on a roof island while its deck is green (the main network) has its
+arrival off the deck: put the door's `arrival` on the deck (the build lands one there); a deck that is its own
+island needs a flight or a gangway; a flight whose top stands a step over or under the deck is seated again.
+
 Enforced by the checks: streets clear of buildings and open water, every door on a path, every arrival clear and on
 dry ground or a deck, every street and patrol point on the main walked network (`draft check`; the build's
 `streets` check); the overlap rule for laid pieces (`overlap`).

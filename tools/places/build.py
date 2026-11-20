@@ -901,7 +901,9 @@ def pair_doors(S: dict) -> list[str]:
     door names its partner by door.to_space + door.to_ref (the partner's id, or its source ref key in a copied space);
     the partner's own door field may be absent (it is paired from this side). One using door x lands at x's
     door.to_pos / to_rot when the place files give it (beside the partner, in the partner's space); else at
-    `marker_by` (the source's marker carried to our door, or in front of the partner)."""
+    `marker_by` (the source's marker carried to our door, or in front of the partner). Where the partner has its own
+    door.arrival (kept on the deck or ground it opens onto by the drafting and the hands), that is where one stands:
+    a stale to_pos never puts the door's navmesh triangle on a roof."""
     by_id = S["by_id"]
     by_src = {(r["space"], r.get("src")): r for r in S["refs"] if r.get("src")}
     notes, pairs = [], []
@@ -922,6 +924,9 @@ def pair_doors(S: dict) -> list[str]:
                 at = {"pos": [float(v) for v in d["to_pos"]], "rot": [float(v) for v in d.get("to_rot") or [0, 0, 0]]}
             else:
                 at = marker_by(y, x)
+            arr = (y.get("door") or {}).get("arrival")
+            if arr is not None and len(arr) >= 3:   # the door one comes out of holds where one stands: it wins
+                at = {**at, "pos": [float(v) for v in arr[:3]]}
             x["teleport"] = {"to": y["fk"], **at}
             x["persistent"] = True
             paired.add(x["fk"])
