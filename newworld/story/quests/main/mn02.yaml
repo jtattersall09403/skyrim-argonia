@@ -9,7 +9,7 @@ status: concept
 shapes:
 - CONTAMINATION
 - PREDATOR
-region: barsaebica
+region: valley-of-storms
 settlement: jal-veesa
 anchorPlaces:
 - outpost-m11-m63
@@ -100,7 +100,7 @@ truth:
   - npc.mn.jal-veesa-minder
   where: Jal-Veesa's Hist pool
   what: Jal-Veesa's Hist fell sick. Its bark dried and darkened, its scar closed and gives no sap, and its egg-pool has
-    cooled. Weeltul cannot find a cause. Sithis' beard, laid in the pool as a poultice, warms the water for a while.
+    cooled. Weeltul cannot find a cause. Sithis' beard, laid in the pool as a poultice, warms the sap for a while.
 - id: t2
   when: years ago
   who:
@@ -480,7 +480,7 @@ stages:
   journalText: "Vosh-Leera greeted me in her house. She is the root-herald of Jal-Veesa, who speaks for the town's elders
     and its tree to outsiders, and she had my name struck from the roll. The moss is not for her: the town's tree-minder,
     Weeltul, needs it for the sick Hist. Vosh-Leera asked me to take it to Weeltul at the Hist pool in the middle of the
-    town, the tall grey tree standing in the water, and come back to her after."
+    town, the tall grey tree standing in the sap, and come back to her after."
   objectives:
   - id: give
     text: text.objective.mn02.give
@@ -821,7 +821,7 @@ topics:
   stages: [20, 25]
   essential: false
   intent: "Weeltul, while the player holds the moss. Tells: laid in an egg-pool as a poultice, Sithis' beard warms the
-    water for a few days; her pool is cooling and she has turned the eggs twice today. Give it to her and she will show
+    sap for a few days; her pool is cooling and she has turned the eggs twice today. Give it to her and she will show
     the player the tree. Checks: nothing. Does: nothing."
   new: true
 - id: topic.mn-hist
@@ -855,7 +855,7 @@ topics:
   intent: 'Weeltul. Checks: hasItem [thing.mn02.sithis-beard, 1]. Tells: she takes it and lays it in the pool as a poultice.
     She shows the player the tree: its bark should be pale grey and soft and is dry and dark; its scar, the one place in
     the bark where she draws a little sap, has closed and gives nothing; its egg-pool, where the town''s eggs lie among
-    the roots, is cooling. The moss warms the water for a few days but does not open the scar. She does not know the cause;
+    the roots, is cooling. The moss warms the sap for a few days but does not open the scar. She does not know the cause;
     no minder on the river does. If the tree dies, no egg in its pools will ever hatch again, and in a generation Jal-Veesa
     is empty. She asks the player to lay a hand on the bark at the pool''s edge: a tree gives its blessing to those its
     people trust, and the player brought the moss (the town''s shrine-blessing: waterbreathing for a time, or, for an Argonian,

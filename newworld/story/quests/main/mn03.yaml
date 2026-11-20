@@ -191,7 +191,7 @@ things:
     before-60: at the hide
     after-60: carried
   where: Teel-Fen Weir, the reed hide
-  text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and the Naga will pay you.
+  text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and I will pay you there.
     Seal every scar behind you, as she showed you. Leave nothing at the hide. - K.
 - id: thing.mn.sap-jar
   kind: item
@@ -719,7 +719,7 @@ stages:
   place: outpost-m6-m66
   journal: text.journal.mn03.92
   journalText: "Heem-Jasa is dead, and her young tree has no minder now. Next comes Karsh-Naal Camp, the Naga camp in
-    the marsh east of Teel-Fen Weir, where the note sends the jars."
+    the marsh east of Teel-Fen Weir."
   ending: complete
   endingId: e-no-minder
   information:

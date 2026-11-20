@@ -264,7 +264,7 @@ stages:
   journal: text.journal.mn08.10
   journalText: "Nesh-Deeka sent me with the keystone to the Chime-Keepers of Toklea, who keep what is left of Kothringi
     lore. I should show it to their elder in the Kothringi Greathouse."
-  directions: Poles-Upriver's boats run from Helstrom to Blackrose and on to Lujei Ferry. From the ferry's raft, cross the
+  directions: Poles-Upriver's raft runs from Helstrom to Korydon, and boats go on to Blackrose and Lujei Ferry. From the ferry's raft, cross the
     channel north to Toklea, the town on stone footings where chimes hang from every eave; the greathouse is the old Kothringi
     hall in the middle.
   objectives:

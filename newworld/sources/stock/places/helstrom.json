@@ -1094,7 +1094,7 @@
      "worn": false
     }
    ],
-   "why": "Nesh-Deeka: resident, tally-keeper of goods landed at the river fork, W3 Modest"
+   "why": "Nesh-Deeka: resident, handler of the Toh-Reel-Ka, known in the city as a tally-keeper of goods landed at the river fork, W3 Modest"
   },
   {
    "person": "helstrom.7Z7FD862R24F7SFGXB2226RMJ8",
@@ -1103,7 +1103,7 @@
      "item": "Skyrim.esm:01397E",
      "count": 1,
      "worn": true,
-     "why": "keeps a quiet house off the market: a dagger of T1 (made here)"
+     "why": "lets a room behind the market's stalls: a dagger of T1 (made here)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -1112,7 +1112,7 @@
      "why": "carried gold, 2-10 for W2 Poor"
     }
    ],
-   "why": "Ruusa-Wan: resident, keeps a quiet house off the market, W2; best tier T1"
+   "why": "Ruusa-Wan: resident, lets a room behind the market's stalls, W2; best tier T1"
   },
   {
    "person": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
@@ -1712,7 +1712,7 @@
      "worn": false
     }
    ],
-   "why": "Never-Writes-Twice: resident, raft-pilot on the northern rivers, W3 Modest"
+   "why": "Never-Writes-Twice: resident, officer of the Toh-Reel-Ka over Nesh-Deeka, known in the city as a raft-pilot, W3 Modest"
   },
   {
    "person": "helstrom.K3KEW6JNDH6HQTS3EANF71X664",

@@ -177,7 +177,7 @@ things:
     a thumb''s weight to a tree. - C.'
 - id: thing.mn.paralysis-poison
   kind: item
-  name: Unbound Seal
+  name: Grey Seal (Paralysis Poison)
   source: Skyrim's poison of paralysis under our name (stated alike in MN09, where the player first met it)
   where: three bottles beside the recipe in the Stormwidow's hold
 - id: thing.mn11.scout-scrap
@@ -297,7 +297,7 @@ stages:
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
-  directions: Take the boat from Helstrom down to Archon and on round the coast to Arorha. From Arorha's quay the Grey
+  directions: Take the boats from Helstrom by Truowa and Uluo down to Archon and on round the coast to Arorha. From Arorha's quay the Grey
     Tooth is the grey-green spire standing over Skeith Isle; walk to its south face, where a goat-path climbs from a campfire.
     The cave is on the north face, round the foot of the crag.
   actions:
@@ -481,8 +481,8 @@ stages:
   journal: text.journal.mn11.90
   journalText: "Never-Writes-Twice read the marker stone. The marked tower is one of the drowned spires off Lilmoth,
     and the divers of Bell Station, east of Lilmoth, will know which; finding the tower is the order's hunt, and she
-    paid me a hundred gold. I asked her about Fort Chalkmoth. She said it is a fort like any other, but someone moans
-    in its cellar, and I mean to see it for myself on my own account. Bell Station for the hunt, or Fort Chalkmoth
+    paid me a hundred gold. I asked her about Fort Chalkmoth. She said it is a fort like any other, but the scout
+    told me to ask what moans in its cellar, and I mean to see it for myself on my own account. Bell Station for the hunt, or Fort Chalkmoth
     first: either may come first."
   onEnter:
   - takeItem: [thing.mn.marker-stone, 1]
@@ -491,7 +491,7 @@ stages:
   endingId: e-reported
   information:
     going: The marker stone points to a drowned spire off Lilmoth; Bell Station's divers will know which. Never-Writes-Twice
-      calls Fort Chalkmoth a fort like any other, though something moans in its cellar.
+      calls Fort Chalkmoth a fort like any other, though the scout asked what moans in its cellar.
     next: 'Two things are open, in either order: the order''s hunt, at Bell Station (MN13), and my own errand to see the
       cellar of Fort Chalkmoth (MN12).'
     ways: Either first; both are marked.

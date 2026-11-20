@@ -58,8 +58,7 @@ Fort Gysilla, or that she will trade with either rival to save her heist.
 
 **Why it does not touch the main quest.** The treasury lies in the council house, not in the Toh-Reel-Ka's quiet
 house or any place the main quest uses. A player seen in the theft is wanted only by the council house's wardens, and
-the bounty can be paid. The Xeech-Leel blame no one by name, and the journal says the Toh-Reel-Ka ask questions in
-Lilmoth and find nobody.
+the bounty can be paid. The Xeech-Leel blame no one by name.
 
 ## 3. The people who matter
 

@@ -131,7 +131,8 @@ The main quest is nineteen quests in three acts, as many as Skyrim's. Act I sets
 Act II is the treasure hunt, the heart of the plot: each find points to the next. Act III is the gate, the twist
 and the end.
 
-Danger climbs with the plot. Act I is played in the settled north (bands D1 to D3) as one road onward from the camp.
+Danger climbs with the plot. Act I is played in the settled north (bands D1 to D3) as one road onward from the camp, and ends
+with the rootworm ride under deadly country to Helstrom, whose city is safe.
 The hunt runs through dangerous country (D3) into deadly country (D4), and its last stone lies in one of the
 province's worst ruins (D5). Section 9 lists the danger bands that the plot changes and how the player travels to
 each quest.
@@ -153,7 +154,7 @@ pay for boats and the rootworm from the start (fares are 15 to 45 gold):
 |---|---|---|
 | Voh-Vastei ("Apprentice") | quest 5 | a set of light Argonian armour (from Sign of Cipactli, under our name), the order's traders and 200 gold for the road |
 | Toh-Wo ("Secret-Speaker") | quest 10 | a rapier (from Animated Armoury, under our name) or a quarterstaff, as the player chooses, and 200 gold |
-| Reel-Ka ("Warrior") | quest 13 | a cuirass and helm of the order's heavier make (Stormhold Warrior Armor, under our name), free beds in every Archwarden fort and 300 gold |
+| Reel-Ka ("Warrior") | quest 13 | a cuirass and helm of the order's heavier make (Stormhold Warrior Armor, under our name), free beds in every Archwarden fort that has no bounty on the player and 300 gold |
 | Ka-Deelith ("War-Teacher") | the three stones, at the report that opens quest 17 | the order's best: an enchanted pike or enchanted claws, as the player chooses, and the rest of the Stormhold Warrior set |
 | Toh-Nassa ("Leader of the Secret") | the Use ending | section 8 |
 
@@ -192,8 +193,8 @@ Weeltul, at the Hist pool, because the moss is for the town's sick tree and she 
 tree-minder first. The Hist is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling.
 Weeltul takes the moss and makes a poultice that warms the pool but does not open the scar. She tells the player what
 the town loses if the tree dies, and gives them the tree's blessing: for a time they breathe under water. An Argonian,
-who already breathes water, is given the blessing of resist poison instead (the blessing that Teel-Fen Weir's record
-lists for its young tree). Weeltul then sends the player back to Vosh-Leera, who is waiting in her house. There,
+who already breathes water, is given the blessing of resist poison instead (the blessing that Jal-Veesa's record
+lists for its tree). Weeltul then sends the player back to Vosh-Leera, who is waiting in her house. There,
 where nobody else hears, Vosh-Leera tells the player whom she answers to: the Toh-Reel-Ka, the Xeech-Leel's secret
 warriors, made after Umbriel so that no tree and nobody allied with one can ever turn on the marsh again. She tells
 them in a few plain lines how the An-Xileel used Lilmoth's mad tree to call Umbriel down. Then she asks whether they
@@ -424,12 +425,13 @@ past them; they attack whoever they see, and the tower's doors are not locked. P
 great gate with three empty sockets (King of the Murkmire's crystal pedestals set in a gate of its Xanmeer pieces).
 The ghost of a priest of the old kings, Sul-Xeeth, stands before it and speaks first, and the player can ask him
 what the Eye is. He says that a seal-stone belongs in each socket. He names where each was taken when the last king
-fell: a thief's cell in Blackrose Prison, the flooded vaults of Gemin and the deepest hall of Vorannuhl. The tower is
+fell: the warden's vault in Blackrose Prison, where a thief who died in its cells had carried one, the flooded vaults of Gemin and the deepest hall of Vorannuhl. The tower is
 built from Teeth of Sithis, an Argonian ruin in King of the Murkmire with three interiors named Teeth of Sithis East
 Xanmeer, Teeth of Sithis Halls and Teeth of Sithis West Xanmeer: the East Xanmeer serves as the east halls, the Halls
 as the gallery and the gate, and the West Xanmeer as the guardian's hall and the Root's chamber beyond the gate. *Leads
 on:* the player goes back to Helstrom, where Never-Writes-Twice makes them a Reel-Ka, the order's third rank. Her
-orders are to take all three stones before the Unbound do. The journal marks all three places. They can be done in
+orders are to take all three stones before the Unbound do and bring them to her before anyone goes near the gate.
+The journal marks all three places. They can be done in
 any order, and are numbered here from the least dangerous to the most.
 
 **14. The Thief's Stone** (Blackrose Prison, in the Tulmek Washes). A masked thief who sought the Eye died in the
@@ -663,18 +665,18 @@ to Teku-Sul is the one hard journey that the plot means. Distances are measured 
 | Quest | How the player gets there |
 |---|---|
 | 1 | starts at Ashgate Landing |
-| 2 | on foot up the road: about 330 m to Reed-Sill Weir, then about 470 m on to Jal-Veesa |
-| 3 | on foot about 520 m south from Jal-Veesa to Teel-Fen Weir |
+| 2 | on foot up the road: about 380 m to Reed-Sill Weir, then about 520 m on to Jal-Veesa |
+| 3 | on foot about 610 m south by road from Jal-Veesa to Teel-Fen Weir |
 | 4 | on foot about 520 m east from Teel-Fen Weir to Karsh-Naal Camp, then about 920 m back to Jal-Veesa by another way |
 | 5 | the rootworm from Jal-Veesa's Hist pool to Helstrom (25 gold) |
 | 6 | the rootworm from Helstrom to Gideon (25 gold); the South Watch is about 250 m from Gideon's quay on foot |
-| 7 | boats from Helstrom down the rivers to Archon and on round the coast to Thorn; about 470 m on foot down the coast to Ysan's jetty, then a swim of about 240 m to the wreck |
+| 7 | boats from Helstrom down the rivers to Archon and on round the coast to Thorn; about 540 m on foot down the coast to Ysan's jetty, then a swim of about 240 m to the wreck |
 | 8 | boats to Blackrose and Lujei Ferry; Toklea is about 480 m over the water from Lujei Ferry, and Zul-Etha about 340 m on foot from Mir-Xal's landing (boat from Blackrose) |
 | 9 | the rootworm to Gideon; Eurydike is about 460 m on foot from Gideon |
 | 10 | boats to Archon and Seafalls; Vicrium is about 520 m by road from Seafalls |
 | 11 | boats to Archon and Arorha; the Grey Tooth is about 980 m and the Stormwidow about 820 m on foot across Skeith Isle from Arorha |
 | 12 | boats to Archon, Inoja and Noota Nara; Fort Chalkmoth is about 170 m on foot from Noota Nara |
-| 13 | boats to Lilmoth and Bell Station; the long dive to Teku-Sul is the plot's own hard journey; boats back to Helstrom for the rank |
+| 13 | boats to Lilmoth and Bell Station; the long dive to Teku-Sul, about 890 m from the station (the database's approach is the shorter 770 m dive from Lilmoth's quay), is the plot's own hard journey; boats back to Helstrom for the rank |
 | 14 | boats to Blackrose; the prison is about 280 m on foot |
 | 15 | the rootworm to Jal-Veesa; Gemin is about 610 m on foot across the marsh |
 | 16 | boats to Noota Nara; Vorannuhl is about 450 m on foot |
@@ -682,7 +684,7 @@ to Teku-Sul is the one hard journey that the plot means. Distances are measured 
 
 No stop is added. Every quest's place lies within a short walk or swim of a stop, and every stop it needs is joined
 to Helstrom by a chain of routes. A stop at Ysan was measured and left out: its boat route to Thorn would be 153 m
-long, which the network counts as a walk. The player walks the 470 m from Thorn's quay to Ysan's jetty instead, and
+long, which the network counts as a walk. The player walks the 540 m from Thorn's quay to Ysan's jetty instead, and
 swims about 240 m from there to the wreck.
 
 ### What each quest needs of its places
@@ -760,9 +762,9 @@ Blackrose's garrison is placed hostile, and the gate's toll, persuasion or yield
   Landing, the Owing reed-cutters' camp with the barge; Teel-Fen Weir took the young sick Hist and the reed hide,
   which Vel-Sapha Stand no longer has; Sedge-Kal Camp lost the barge; Jal-Veesa's blessing names the Argonian's
   blessing; the Grey Tooth and the Stormwidow carry quest 11's hooks.
-- *Place records still to correct to it:* Fort Chalkmoth (the order's cellar, the store of sap by the stair),
-  Teku-Sul Spire (the gate and the Root), Thul-Kesh Spire (no sealed door), Karsh-Naal Camp (the Unbound), Bell
-  Station (an islet; no diving bell), the Kelp Lantern (a wreck, not a brass sphere) and Helstrom's quiet house.
+- *Place records still to correct to it:* Fort Chalkmoth (the store of sap by the stair), Teku-Sul Spire (the
+  Root beyond the gate), Thul-Kesh Spire (no sealed door), Karsh-Naal Camp (the Unbound), Bell Station (an islet; no
+  diving bell) and the Kelp Lantern (a wreck, not a brass sphere).
 - *Names.* The rulers are the Xeech-Leel and the order is the Toh-Reel-Ka (owner, #74); the ranks and the other
   renamed terms follow `docs/phases/new-worldspace-plan/research/rulers-rename-map.md`. Alten Corimont (the place
   that was Yulca) is not a stop of the hunt: the map of quest 10 already leads to Skeith Isle, and a second sea-chart

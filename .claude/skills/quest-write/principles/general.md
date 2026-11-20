@@ -71,9 +71,9 @@ player can see it, music and weather [MW §3; MW §4.4; MW §4.5]. Each dramatic
 5. **Paperwork is rare, kept to the few people and places it truly belongs to** (an outsider's papers, an
    ex-Imperial household's count), **and then it is a thing to steal, burn, swap or alter, never the play.** No
    stage is won by reading, counting, filing or comparing. Why: ledgers and tallies drag every quest towards a desk
-   [OB vibe]. The Chainbreakers' count in
-   [chainbreakers](../../../../story/design/quests/lines/chainbreakers.md) §3 is the pattern: a leaf in a locked box,
-   lifted or swapped.
+   [OB vibe]. The Chainbreakers' work roll in
+   [chainbreakers-newworld](../../../../story/design/quests/lines/chainbreakers-newworld.md) §1 is the pattern: a
+   written sheet that binds a person, taken from its holder and burned.
 6. **Morrowind's virtues**: moral ambiguity, each side arguable with a reason of its own, and the world built
    through what people say and want. Why: that is what made Morrowind's stories worth playing [OB bar; ES WS;
    SO P1].

@@ -62,10 +62,10 @@ truth:
     their dreams; Never-Writes-Twice ran the cellar and keeps the inner door's only key away from the fort
     (argonia-4e201-state §2.5, §11.2; plot §3).
 - id: t2
-  when: every season
+  when: every season until this one
   who: [npc.mn.chalkmoth-quartermaster]
   where: the quartermaster's store
-  what: Jars of Hist sap come up the mesa road marked with Jal-Veesa's knot and are stacked by the stair down to the
+  what: Jars of Hist sap came up the mesa road marked with Jal-Veesa's knot until Jal-Veesa's tree fell sick, and are stacked by the stair down to the
     cellar. The quartermaster stores them and asks nothing; the fort has no Hist and its people go to Noota Nara's tree.
 - id: t3
   when: this month
@@ -202,9 +202,7 @@ stages:
   journalText: "Never-Writes-Twice says Fort Chalkmoth is a fort like any other, but a wounded Unbound scout told me to
     ask what moans in its cellar. This is my own errand, not the order's; the order's hunt waits at Bell Station, and
     either may come first. Fort Chalkmoth is the Archwardens' fort on the Chixathe Mesa above Noota Nara. I want to get
-    into the fort and see its cellar. Who goes into the keep is for the wall captain at the gate to say: its door opens
-    only to his key, and no pick will open it. A quiet visitor might find another way in, but the garrison will attack
-    anyone it catches inside without leave."
+    into the fort and see its cellar. Who goes into the keep is for the wall captain at the gate to say."
   onEnter:
   - grantMapMarker: marker.mn12.fort
   objectives:
@@ -659,7 +657,7 @@ topics:
   person: npc.mn.chalkmoth-quartermaster
   stages: [20, 25, 90, 91]
   essential: false
-  intent: 'Theyne Indarys, once the player has seen or taken a jar. Tells: they come up the mesa road every season, tied
+  intent: 'Theyne Indarys, once the player has seen or taken a jar. Tells: they came up the mesa road every season until this one, tied
     with Jal-Veesa''s knot, and go down the stair; the fort has no Hist and its people take their eggs and dead to Noota
     Nara''s tree; he stores them and asks nothing, and advises the player to do the same. Checks: nothing. Does: nothing.'
   uses: [fact.mn12.jal-veesa-sap]

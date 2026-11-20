@@ -2,7 +2,7 @@
 
 The craft of a line of quests, for the story writer and for every quest writer before any quest of a line. Read with
 `general.md` (which holds the source tags' key); the line's quests then follow their own shape files. A worked line
-written to this sheet: [chainbreakers](../../../../story/design/quests/lines/chainbreakers.md).
+written to this sheet: [chainbreakers-newworld](../../../../story/design/quests/lines/chainbreakers-newworld.md).
 
 ## How a line holds together
 

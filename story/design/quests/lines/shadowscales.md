@@ -70,7 +70,7 @@ hatchlings train. Ukka-Teel tells the player he kills for the hatchlings' sake, 
 | **Teesh-Vaal**, the Lampbearers' arbiter, at Soulrest | to judge fairly, and to keep the hatchlings safe | she was a Shadowscale, and she called Veezara the last to cover the order |
 | **Lucan Vetrix**, an Imperial who calls himself a rice buyer, at Lilmoth's stilt-hall tavern | the Archon school and its hatchlings for the Brotherhood | he buys Shadow-born hatchlings from the men of the washes, and he has told the Lampbearers where the order trains in return for his freedom |
 | **Swims-Without-Ripples**, the Eelskins' leader, in their hall under Pusbottom | the Lampbearers gone, so that her thieves can work | she will help the order kill if it clears her way |
-| **Marcella Dovi**, the Lampbearers' chief, at the Lamp-Hall in Soulrest | the Eelskins broken, as the Lilmoth merchant council that pays her wants | she will let one order of killers work to break a guild of thieves |
+| **Marcella Dovi**, the Lampbearers' chief, at the Lamp-Hall in Soulrest | the Eelskins broken, as Soulrest's merchant council, which pays a third of her Lampbearers, wants | she will let one order of killers work to break a guild of thieves |
 
 ## 4. Joining
 
@@ -258,7 +258,7 @@ choice, written as the player meets it.
    ends that leave. Swims-Without-Ripples speaks first. The Lampbearers hunt both the order and her thieves. If the
    order kills Marcella Dovi, the Eelskins will take the Lampbearers' house at Truowa, and the two will share the
    south as one underworld.
-3. *At the Lamp-Hall*, Marcella Dovi speaks first. Lilmoth's merchant council, which pays a third of her Lampbearers,
+3. *At the Lamp-Hall*, Marcella Dovi speaks first. Soulrest's merchant council, which pays a third of her Lampbearers,
    wants the Eelskins broken. If the order kills their leader, she will raid the hall, burn the case on the order and
    keep its name from the arbiter.
 4. *The answer.* The player may hear both in either order. Back at Beem-Xal's house, Ukka-Teel asks whose offer the
@@ -273,7 +273,7 @@ choice, written as the player meets it.
   Soulrest" (checked: Soulrest's source is Skyrim's Solitude, whose Castle Dour palace interiors are the halls from which the government quarter is to be built, so the Lamp-Hall with its hearing room is made from them as an addition the place's record lists). She sits each evening in the hearing room under its hanging lamp (Skyrim's hanging oil lamp, placed, with
   the lamp-oil spilt under her chair); the bonus way is to shoot it down. The Lamp-Hall's two guards stand at the
   front door, and its back door has an Expert lock. The player can also shoot her from the gallery above the hearing
-  room, or knife her. The same night the Eelskins drive J'zahri's Lampbearers out of Truowa, and the house on the
+  room, or knife her. The same night the Eelskins kill J'zahri and her Lampbearers at Truowa, and the house on the
   quay stands empty.
 - *With the Lampbearers.* The contract is Swims-Without-Ripples. The journal says: "Kill Swims-Without-Ripples in the
   Eelskins' hall under Pusbottom." The truce is over, so the Eelskins in the cistern and the hall attack. The player

@@ -10,7 +10,7 @@ hold together is caught while changing it costs a page. A minor quest (one place
 and starts at quest-write. Before this: [quest-system](../quest-system/SKILL.md) (the
 ceiling and the order of work). After this: [quest-write](../quest-write/SKILL.md), one quest at a time, from the
 outlines this skill leaves. The worked example is the Chainbreakers' line,
-[chainbreakers](../../../story/design/quests/lines/chainbreakers.md): its outlines are the shape of every line's
+[chainbreakers-newworld](../../../story/design/quests/lines/chainbreakers-newworld.md): its outlines are the shape of every line's
 outlines; the plot page's shape is [main-plot](../../../story/design/quests/lines/main-plot.md).
 
 ## 1. Read first

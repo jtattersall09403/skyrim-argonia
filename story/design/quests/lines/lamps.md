@@ -546,8 +546,7 @@ person takes it.
 ### What it changes elsewhere
 
 - *Place records:* the Lamp-Hall in Soulrest, the Lampbearers' house at Truowa, the hearth chamber at Ra'tal Den as
-  the Shadowscales' trial ground, and the woven reed post and landing at Silt-Orrel (already promised). Dunhallow
-  Plantation's record still names a cut sluice in its hooks; this line no longer uses it, and the lead may drop it.
+  the Shadowscales' trial ground, and the woven reed post and landing at Silt-Orrel (already promised).
 - *Lore:* the Lampbearers, the Eldest and the hidden Shadowscales are extrapolations, grounded above. They go into
   `story/lore/extrapolation/argonia-4e201-state.md` when the owner passes the plot.
 

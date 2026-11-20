@@ -17,7 +17,7 @@
 {"place_id":"abandoned-village-m11-m107","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the miners' gold buried under a hall floor)"}
 {"place_id":"abandoned-village-m11-m107","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: swamp fungus on the rotted halls)"}
 {"place_id":"abandoned-village-m4-m109","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles among the roof peaks)"}
-{"place_id":"abandoned-village-m4-m109","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: an old bull crocodile in the drowned street)"}
+{"place_id":"abandoned-village-m4-m109","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: an old bull crocodile on the highest roof)"}
 {"place_id":"abandoned-village-m4-m109","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: a chest under water in the drowned street, with a family's grave-stake in it)"}
 {"place_id":"abandoned-village-m4-m109","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: eel weirs between the posts)"}
 {"place_id":"acra-tiin","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a fishing boat across the bay to Soulrest)"}
@@ -183,7 +183,7 @@
 {"place_id":"echo-deep","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the lair chest)"}
 {"place_id":"echo-deep","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (gold-hoard: the drowned hoard on the trench lip, spilled from sunken wrecks)"}
 {"place_id":"echo-deep","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: dreugh shell and glowing deep kelp, found only below the rim)"}
-{"place_id":"echo-deep","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: salvage from the sunken spire: brass and ship-iron)"}
+{"place_id":"echo-deep","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: salvage from wrecks on the trench lip: brass and ship-iron)"}
 {"place_id":"estate-15-m110","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: steward sells cooked rice, rice-wine and roast fowl from the veranda)"}
 {"place_id":"estate-15-m110","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: hearth pot on the veranda)"}
 {"place_id":"estate-15-m110","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: rice stalks and reed at the paddies)"}
@@ -237,11 +237,11 @@
 {"place_id":"farm-m6-m64","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: saltrice and greens)"}
 {"place_id":"farm-m6-m64","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the farmhouse)"}
 {"place_id":"farm-m6-m64","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the Urvyns sell eels and saltrice to passers)"}
-{"place_id":"fort-chalkmoth","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: the Dunmer quartermaster: iron and steel arms, arrows)"}
+{"place_id":"fort-chalkmoth","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: the Dunmer quartermaster in his store in the keep: iron and steel arms, arrows)"}
 {"place_id":"fort-chalkmoth","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (grindstone: in the yard)"}
 {"place_id":"fort-chalkmoth","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (armour-workbench: in the yard)"}
-{"place_id":"fort-chalkmoth","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Archery, Journeyman, the wall captain who watches the Sarpa)"}
-{"place_id":"fort-chalkmoth","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bunk in the barracks)"}
+{"place_id":"fort-chalkmoth","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Archery, Journeyman, the wall captain who watches the Sarpa and sits in the keep's hall off watch)"}
+{"place_id":"fort-chalkmoth","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a bunk in the barracks, and a bed with benches in the keep's hall)"}
 {"place_id":"fort-chalkmoth","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Sarpa raiders on the western approach)"}
 {"place_id":"fort-chalkmoth","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: an Imperial strongbox in the quartermaster's store)"}
 {"place_id":"fort-gysilla","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: the garrison quartermaster)"}
@@ -916,7 +916,7 @@
 {"place_id":"outpost-m11-m102","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a smuggler's sunken crate by the chain)"}
 {"place_id":"outpost-m11-m63","give_seq":0,"seq":0,"by":"ref","ref_id":"outpost-m11-m63.699XAFFZBEJ558XYCHYSTT2WD2","status":"delivered","why":"the fish of the pool below the weir: Skyrim's deep-pond critter spawner, fish only (draft.add), placed against the woven weir"}
 {"place_id":"outpost-m11-m63","give_seq":1,"seq":0,"by":"ref","ref_id":"outpost-m11-m63.PBF61HY6V53GZ8090HEFCFY3PB","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
-{"place_id":"outpost-m11-m63","give_seq":2,"seq":0,"by":"record","status":"delivered","why":"combat-creature 'mudcrabs on the bank and one young crocodile below the weir': the quest's own placements at a fixed level (main quest 2: two mudcrabs at level 2, two young crocodiles at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn02/npc.mn02.mudcrab-1, quest.main.mn02/npc.mn02.mudcrab-2, quest.main.mn02/npc.mn02.crocodile-1, quest.main.mn02/npc.mn02.crocodile-2"}
+{"place_id":"outpost-m11-m63","give_seq":2,"seq":0,"by":"record","status":"delivered","why":"combat-creature 'mudcrabs on the bank and two young crocodiles below the weir': the quest's own placements at a fixed level (main quest 2: two mudcrabs at level 2, two young crocodiles at level 3), each standing at its spot in the studio's Quests layer: quest.main.mn02/npc.mn02.mudcrab-1, quest.main.mn02/npc.mn02.mudcrab-2, quest.main.mn02/npc.mn02.crocodile-1, quest.main.mn02/npc.mn02.crocodile-2"}
 {"place_id":"outpost-m11-m63","give_seq":3,"seq":0,"by":"container","ref_id":"outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39","status":"delivered","why":"the thief's sack lies in the reeds at the waterline east of the weir (draft.add), stocked at T1"}
 {"place_id":"outpost-m11-m63","give_seq":4,"seq":0,"by":"ref","ref_id":"outpost-m11-m63.QW32Q1N2PAMJDJ62N3DNMMSMXY","status":"delivered","why":"Sithis' beard: three hanks of Skyrim's hanging moss draped on the woven weir's fences (draft.add), picked from the log walk; the quest's own hank lies by them"}
 {"place_id":"outpost-m13-m65","give_seq":0,"seq":0,"by":"person","person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","status":"delivered","why":"Okeeh (merchant) gives it (people.jsonl services)"}
@@ -1114,7 +1114,7 @@
 {"place_id":"shipwreck-33-m67","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: drowned crew in the hold)"}
 {"place_id":"shipwreck-33-m67","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish in the shallows around the hull)"}
 {"place_id":"shipwreck-33-m67","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the drowned captain beside the strongbox)"}
-{"place_id":"shipwreck-33-m67","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: captain's strongbox with Company coin)"}
+{"place_id":"shipwreck-33-m67","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: captain's strongbox with Company coin and the Gideon relic dealer's best piece)"}
 {"place_id":"shipwreck-35-m71","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: drowned sloop crew)"}
 {"place_id":"shipwreck-35-m71","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish over the shoals)"}
 {"place_id":"shipwreck-35-m71","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the drowned captain)"}
