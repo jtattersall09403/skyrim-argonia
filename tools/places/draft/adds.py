@@ -46,6 +46,8 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
             seat = {"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))}
         else:
             seat = {"mode": "ground", "dz": float(a.get("dz", 0.0))}
+            if a.get("within"):   # on the ground inside a shelter (a bedroll in a tent, a bed in a hut): it rests in it
+                seat["carrier"] = a["within"]
         row = {"id": io.mint(place_id, "add", str(k), a["base"]), "base": a["base"], "kind": a.get("kind", "furniture"),
                "pos": [float(a["pos"][0]), float(a["pos"][1]), z], "rot": [0.0, 0.0, float(a.get("rot_z", 0.0))],
                "scale": float(a.get("scale", 1.0)), "layer": "place", "flags": [], "src": None,

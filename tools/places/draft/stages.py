@@ -53,7 +53,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "streets": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
                 "people.jsonl": (ANY, True), "clear.jsonl": (ANY, True), "ledger.jsonl": (ANY, True),
                 "place.json": (ANY, True)},
-    "people": {"people.jsonl": ({"name", "base_from", "services", "work", "routine", "household", "identity"}, False)},
+    "people": {"people.jsonl": ({"name", "base_from", "services", "work", "routine", "household", "identity"}, True)},
     "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False)},
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
@@ -187,6 +187,9 @@ def pieces(st: Standing, log=print) -> None:
                                            interiors.record_text(st.place_id, rec, gives)).items():
         for sid in interiors.mouth(st.by_src[did], cls, of, st.by_src):
             drop.setdefault(sid, why)
+    from tools.places.draft import promised
+    for sid, why in promised.drops(st.src_ext, st.bases, promised.record(st.place_id), dec.get("add")).items():
+        drop.setdefault(sid, why)
     ours, led = st.ours(), st.led()
     # a piece dropped by this step's old verdict and no longer dropped comes back; one newly dropped goes
     for sid, lr in sorted(led.items()):
@@ -382,7 +385,17 @@ def people_stage(st: Standing, log=print) -> None:
     changed = people.refresh_services(st.files["people"], gives, routes)
     if changed:
         log(f"draft people {st.place_id}: services re-read from the record for {', '.join(changed)}")
-    pool, npcs, _ = people.base_pool(st.src, st.place.get("draft") or {}, lambda sid: io.load(f"src.{sid}", st.src.path.parent))
+    dec = st.place.get("draft") or {}
+    keep_free = set(dec.get("free_beds") or []) | {((st.place.get("stations") or {}).get("rent_bed") or {}).get("ref")}
+    gone, added, short = people.fill_to_record(st.place_id, st.files["people"], st.ext, st.bases,
+                                               place_record(st.place_id)[0].get("population"), dec.get("guards"),
+                                               keep_free, {i for i, r in who.items() if r.get("cast")})
+    if gone or added:
+        log(f"draft people {st.place_id}: {len(gone)} taken out (draft.guards, or past the record's population), "
+            f"{len(added)} residents in the open beds, to the record's population")
+    if short:
+        log(f"draft people {st.place_id}: {short} people short of a bed: add beds (draft.add) and run add, then people")
+    pool, npcs, _ = people.base_pool(st.src, dec, lambda sid: io.load(f"src.{sid}", st.src.path.parent))
     rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs)
     if rebased:
         log(f"draft people {st.place_id}: a person's base given for {', '.join(rebased)}")

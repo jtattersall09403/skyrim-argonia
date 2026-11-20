@@ -44,7 +44,7 @@ CLUSTER_NUDGE = [float(v) for v in range(64, 2049, 64)]
 NUDGE_STEPS = [64.0, 128.0, 192.0, 256.0, 320.0, 384.0]
 PATCH_KINDS = {"building", "static", "furniture", "container", "door", "activator"}
 TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear.py", "interiors.py", "people.py",
-              "geom.py", "io.py", "walk.py", "overlap.py", "lights.py", "adds.py"]
+              "geom.py", "io.py", "walk.py", "overlap.py", "lights.py", "adds.py", "promised.py"]
 
 
 def tool_key() -> str:
@@ -173,6 +173,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                                            interiors.record_text(place_id, rec, gives)).items():
         for sid in interiors.mouth(by_src[did], clusters, of, by_src):
             drop.setdefault(sid, why)
+    # the source's traps and treasures the record does not promise
+    from tools.places.draft import promised
+    for sid, why in promised.drops(ext, bases, promised.record(place_id), dec.get("add")).items():
+        drop.setdefault(sid, why)
     # no cluster's piece in another's: the smaller cluster steps clear
     fit.separated = overlap.separate(sc, fit, clusters, by_src, bases,
                                      lambda r: (replace.get(r["base"]) or {}).get("base", r["base"]))
@@ -1274,6 +1278,13 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                          "routine": people.routine("resident", bed_at, town, {"space": sid, "radius": 1024},
                                                    {"space": inn_space, "radius": 1024} if inn_space else town)})
             n += 1
+    # then the open beds, until the place holds the record's population (and the guards draft.guards keeps)
+    keep_free = set(dec.get("free_beds") or []) | {rent_bed}
+    _, filled, _ = people.fill_to_record(place_id, folk, our, bases, rec.get("population"), dec.get("guards"),
+                                         keep_free, centre=town["pos"])
+    for p in folk:
+        if p["id"] in filled:
+            p["base_from"] = pick_base("resident")
     # the source's own actors: stand-ins for ours, or left to the town rule
     base_users: dict[str, list[str]] = {}
     for p in folk:

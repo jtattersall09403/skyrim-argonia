@@ -1183,7 +1183,7 @@ def check_nordic(ctx) -> list[str]:
     accepted as it comes and is not judged. Any other ref of ours (a station, a replacement, a laid piece): the
     Nordic review's looked-at verdict on its base (newworld/places/nordic_review.jsonl) outranks the folder and
     editor-id rule."""
-    from tools.places.draft.io import nordic_review
+    from tools.places.draft.io import nordic_review, NORDIC_SIGN
     review = ctx.get("nordic_review")
     review = nordic_review() if review is None else review
     own = source_bases(ctx)
@@ -1194,10 +1194,11 @@ def check_nordic(ctx) -> list[str]:
             continue
         if r.get("base_type") == "LIGH" and not r.get("model"):
             continue  # a light with no model shows nothing: no look to judge
-        if m["rows"].get(r["fk"], {}).get("base") in own:
-            continue  # the source place's own piece
+        sign = NORDIC_SIGN.search(f"{r.get('base_edid') or ''} {r.get('model') or ''}")
+        if m["rows"].get(r["fk"], {}).get("base") in own and not sign:
+            continue  # the source place's own piece (a Nordic sign is never accepted as it comes)
         v = review.get(m["rows"].get(r["fk"], {}).get("base"))
-        if v["verdict"] == "nordic" if v else is_nordic(r.get("model"), r.get("base_edid")):
+        if sign or (v["verdict"] == "nordic" if v else is_nordic(r.get("model"), r.get("base_edid"))):
             bad.append(f"{m['rows'].get(r['fk'], {}).get('id', r['fk'])}: Nordic base {r.get('base_edid')} ({r.get('model')})")
     return bad
 

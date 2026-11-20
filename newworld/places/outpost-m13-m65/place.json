@@ -55,7 +55,7 @@
   "rot_deg": 232,
   "add": [
    {
-    "base": "Skyrim.esm:0800D9",
+    "base": "Black Marsh.esm:09AEAD",
     "kind": "building",
     "pos": [
      -100640,
@@ -63,10 +63,10 @@
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
-    "why": "the gang-master's hut: the camp's large Imperial tent at the place's position, its open side to the landing; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+    "why": "the gang-master's hut, the old road post's low stone hut (place record: look, 'a low stone hut'): Black Marsh & Valenwood's stone swamp house (01Swamphousestone), one storey of stone, Dralin's bed, his strongbox and the bench inside"
    },
    {
-    "base": "Skyrim.esm:0800DC",
+    "base": "King of the Murkmire.esp:10A52B",
     "kind": "building",
     "pos": [
      -100150,
@@ -74,10 +74,11 @@
     ],
     "rot_z": 4.3124,
     "tier": "AGENT_INVENTED",
-    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
+    "scale": 0.8
    },
    {
-    "base": "Skyrim.esm:0800DC",
+    "base": "King of the Murkmire.esp:10A52B",
     "kind": "building",
     "pos": [
      -99800,
@@ -85,10 +86,11 @@
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
-    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
+    "scale": 0.8
    },
    {
-    "base": "Skyrim.esm:0800DC",
+    "base": "King of the Murkmire.esp:10A52B",
     "kind": "building",
     "pos": [
      -99950,
@@ -96,73 +98,80 @@
     ],
     "rot_z": 5.1124,
     "tier": "AGENT_INVENTED",
-    "why": "a cutters' tent; the reed-cutters' camp on the bank (place record: look note), from Military Camp Hjaalmarch Imperial's own pieces (Skyrim), the record's named source for the camp"
+    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
+    "scale": 0.8
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -100126.63489946148,
-     -530005.2636596402
+     -100220.0,
+     -529670.0
     ],
-    "rot_z": 4.3124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 1, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 1, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -100173.36510053852,
-     -529894.7363403598
+     -100080.0,
+     -529670.0
     ],
-    "rot_z": 4.3124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 1, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 1, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -99800.0,
-     -529360.0
+     -99870.0,
+     -529020.0
     ],
-    "rot_z": 4.7124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 2, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 2, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -99800.0,
-     -529240.0
+     -99730.0,
+     -529020.0
     ],
-    "rot_z": 4.7124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 2, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 2, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -99973.36510053852,
-     -528605.2636596402
+     -100020.0,
+     -528334.0
     ],
-    "rot_z": 5.1124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 3, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 3, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
     "kind": "furniture",
     "pos": [
-     -99926.63489946148,
-     -528494.7363403598
+     -99880.0,
+     -528334.0
     ],
-    "rot_z": 5.1124,
+    "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in tent 3, as the Hjaalmarch camp lays two to a small tent"
+    "why": "a cutter's bedroll before tent 3, as the Hjaalmarch camp lays two to a small tent",
+    "dz": 0.0
    },
    {
     "base": "Skyrim.esm:03B3CD",
@@ -217,7 +226,9 @@
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
-    "why": "the gang-master's bed in his hut (the Hjaalmarch camp's officer's bed)"
+    "why": "the gang-master's bed in his hut (the Hjaalmarch camp's officer's bed)",
+    "dz": 0.0,
+    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
    },
    {
     "base": "Skyrim.esm:068ADB",
@@ -241,7 +252,9 @@
     "tier": "AGENT_INVENTED",
     "why": "Dralin's strongbox in the hut (main story, What the Herald Sent; place record hook: easiest lock, key on his belt); its owner, lock and contents are a stock row",
     "name": "Dralin's Strongbox",
-    "need": 1
+    "need": 1,
+    "dz": 0.0,
+    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
    },
    {
     "base": "Journey to Baan Malur.esp:2E4CC9",
@@ -297,7 +310,9 @@
     "rot_z": 4.7124,
     "need": 1,
     "tier": "AGENT_INVENTED",
-    "why": "the free bed in the hut (place record: free-bed, 'a bench in the hut'): an unowned bedroll by the hut's wall, where a traveller may sleep, as Skyrim's camps give a free bed"
+    "why": "the free bed in the hut (place record: free-bed, 'a bench in the hut'): an unowned bedroll by the hut's wall, where a traveller may sleep, as Skyrim's camps give a free bed",
+    "dz": 0.0,
+    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
    },
    {
     "base": "King of the Murkmire.esp:03A575",
@@ -370,6 +385,110 @@
     "need": 3,
     "tier": "AGENT_INVENTED",
     "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA38",
+    "kind": "static",
+    "pos": [
+     -100260.0,
+     -527780.0
+    ],
+    "rot_z": 1.5708,
+    "tier": "AGENT_INVENTED",
+    "why": "the grave-stake by the old post's gate (source note: 'Still to add: ... the grave-stake'): a cypress stake of King of the Murkmire's (MudHutWalkwayPole), driven upright"
+   },
+   {
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -100850.0,
+     -528900.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the cook's stall of dried fish (place record: trader-general, 'the cook's stall of dried fish and lamp oil'): Skyrim's fish drying rack beside the cook's fire, where the cook sells"
+   },
+   {
+    "base": "Skyrim.esm:041EC7",
+    "kind": "static",
+    "pos": [
+     -100720,
+     -529260
+    ],
+    "rot_z": 4.7124,
+    "tier": "AGENT_INVENTED",
+    "why": "the bench in the hut (place record: free-bed, 'a bench in the hut'): a plank farm bench against the wall with the unowned bedroll laid beside it, where a guest of the camp sleeps",
+    "dz": 0.0,
+    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
+   },
+   {
+    "base": "King of the Murkmire.esp:10A52B",
+    "kind": "building",
+    "pos": [
+     -99650,
+     -529800
+    ],
+    "rot_z": 0.0,
+    "scale": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a fourth cutters' hide tent: sixteen people live at the camp (place record: population 16; look, 'the cutters' hide tents')"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99720.0,
+     -529520.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -99580.0,
+     -529520.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed",
+    "dz": 0.0
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100450,
+     -528450
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100900,
+     -528600
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100250,
+     -528750
+    ],
+    "rot_z": 0.8,
+    "tier": "AGENT_INVENTED",
+    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
    }
   ],
   "roles": {
@@ -388,7 +507,61 @@
     "name": "Barge Hold",
     "why": "the barge's hold where the player wakes (main quest 1, room 'Barge Hold'); the cook's fire is only what Okeeh tends there"
    }
-  }
+  },
+  "plan": {
+   "look": [
+    {
+     "line": "a low stone hut",
+     "by": "the added stone swamp house of Black Marsh & Valenwood (01Swamphousestone), one low storey"
+    },
+    {
+     "line": "a wooden gate on the river bank",
+     "by": "the added cypress palisade gate (CypressStockadePalisadeGate)"
+    },
+    {
+     "line": "the cutters' hide tents",
+     "by": "3 added King of the Murkmire scale-hide tents (ALPAScaleTent02 at 0.8)"
+    },
+    {
+     "line": "bundled reed stacked by the landing",
+     "by": "3 added stick bundles of Journey to Baan Malur's"
+    },
+    {
+     "line": "a work barge moored in the pool below the camp",
+     "by": "the source's Imperial ship hull moored in the pool, its gangway and its hold door (owner-approved)"
+    },
+    {
+     "line": "the grave-stake (source note)",
+     "by": "an added cypress grave-stake by the gate"
+    },
+    {
+     "line": "the cook's stall of dried fish and lamp oil (trader-general)",
+     "by": "an added fish drying rack beside the cook's fire, where the cook sells"
+    },
+    {
+     "line": "a bench in the hut (free-bed)",
+     "by": "an added plank farm bench (FarmBench01Static) in the stone hut with the unowned bedroll beside it"
+    },
+    {
+     "line": "16 people: the gang-master and his cutters, no guards",
+     "by": "Okeeh the cook and fifteen residents in the camp's beds (draft.guards 0), cast as Dralin Uveran and his cutters by place-people"
+    }
+   ],
+   "structures": [
+    {
+     "cluster": "landing",
+     "what": "the Imperial ship (the work barge) with its hold",
+     "verdict": "kept",
+     "why": "the record's work barge; owner-approved"
+    }
+   ],
+   "source": "The Imperial barge source kept (owner-approved barge, gangway, hold door, hold kit, strongbox); the camp round it is built from the pool (hide tents, gate, reed, stake, cook's rack), as no ranked source is a reed-cutters' camp with a stone hut."
+  },
+  "guards": 0,
+  "guards_why": "the record holds no watch: a Dunmer gang-master and his Owing reed-cutters (held by), so the camp keeps no guard; its people are the gang-master, the cook and the cutters",
+  "free_beds": [
+   "outpost-m13-m65.ET81EX756BWY1815520YP5TYDW"
+  ]
  },
  "fit": {
   "pivot": [
@@ -585,15 +758,9 @@
    "kind": "crime",
    "name": "Ashgate Landing",
    "jail": null,
-   "owing": {
-    "work": "outpost-m13-m65.S2AM7P262GYVA6ESBJWFZVR63Y",
-    "return": "outpost-m13-m65.KVD02EV6HSJQZN2BXFE5WNKFBK",
-    "bed": "outpost-m13-m65.H7T7ZWP0A1C70F4KPYSA1NQTJM",
-    "stolen": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
-    "work_at": "the work stop 2 of the place's people share, on the nearest street with footing"
-   },
-   "law": "native",
-   "law_why": "Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters"
+   "owing": null,
+   "law": "none",
+   "law_why": "no one keeps law: no guards here (Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters)"
   },
   {
    "id": "outpost-m13-m65.guard",

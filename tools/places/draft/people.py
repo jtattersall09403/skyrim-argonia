@@ -86,6 +86,9 @@ def apply_identities(folk: list[dict], identities: dict[str, dict]) -> None:
     taken = set(named)
     for p in folk:
         row = identities.get(p["id"])
+        hh = (row or {}).get("household") or {}
+        if hh.get("id") and not p.get("household"):   # a camp's people: their household is the people source's
+            p["household"] = {"id": hh["id"], "relation": hh.get("role") or "kin"}
         if row and row.get("name"):
             p["name"] = row["name"]
         elif p["name"] in taken:
@@ -408,3 +411,49 @@ def patrol(beats_: list, k: int, on=None) -> list[list[float]]:
         if len(pts) >= 2:
             return pts
     return []
+
+
+def fill_to_record(place_id: str, folk: list[dict], ext: list[dict], bases: dict, population: int | None,
+                   guards: int | None = None, keep_free=frozenset(), keep=frozenset(),
+                   centre: list[float] | None = None) -> tuple[list[str], list[str], int]:
+    """A draft holds all its people (owner, #80, 2026-11-19). `guards` (`draft.guards`, a count) is how many of the
+    drafted guards the place keeps (a camp held by a gang-master keeps none): the rest are taken out, last first.
+    Residents then sleep in the open beds left (a camp's tents and bedrolls, beds standing outdoors), one to a bed,
+    until the place holds the record's `population`; a bed in `keep_free` (the free bed the record promises, the
+    inn's rented bed) stays unowned. Returns (removed ids, added ids, people still short of a bed)."""
+    from tools.places.draft import interiors, io
+    removed: list[str] = []
+    if guards is not None:
+        for p in [p for p in folk if p.get("role") == "guard"][max(0, guards):]:
+            folk.remove(p)
+            removed.append(p["id"])
+    want = int(population or 0)
+    if population is not None:   # a record that holds fewer people: residents go, the last first, the cast never
+        for p in [p for p in folk if p.get("role") == "resident" and p["id"] not in keep][::-1]:
+            if len(folk) <= want:
+                break
+            folk.remove(p)
+            removed.append(p["id"])
+    owned = {(p.get("bed") or {}).get("ref") for p in folk}
+    beds = sorted((r for r in ext if r.get("kind") == "furniture" and interiors.is_bed(bases.get(r.get("base")) or {})
+                   and r["id"] not in owned and r["id"] not in keep_free), key=lambda r: r["id"])
+    mid = centre or (beds[0]["pos"][:2] if beds else [0.0, 0.0])
+    town = {"space": "exterior", "pos": [round(mid[0], 1), round(mid[1], 1)], "radius": 1024}
+    taken = {p.get("name") for p in folk}
+    n = sum(1 for p in folk if p.get("role") == "resident")
+    ids = {p["id"] for p in folk}
+    added: list[str] = []
+    crime = f"{place_id}.crime"
+    while len(folk) < want and beds:
+        pid = io.mint(place_id, "person", "resident", str(n))
+        n += 1
+        if pid in ids:
+            continue
+        bed = beds.pop(0)
+        at = {"space": "exterior", "ref": bed["id"], "radius": 128}
+        folk.append({"id": pid, "name": placeholder_name(pid, taken), "base_from": None, "role": "resident",
+                     "home": "exterior", "bed": at, "work": town, "services": [],
+                     "faction_ranks": [{"faction": crime, "rank": 0}, {"faction": f"{place_id}.town", "rank": 0}],
+                     "routine": routine("resident", at, town, guard_eat(at), town)})
+        added.append(pid)
+    return removed, added, max(0, want - len(folk))

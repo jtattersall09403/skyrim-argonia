@@ -46,7 +46,7 @@ TYPE_WORDS = {"STAT": "static object", "MSTT": "moving static object", "DOOR": "
 NORDIC = re.compile(r"(nord(?!ic\s*ruin)|nordic|whiterun|windhelm|solitude|markarth|riften|dawnstar|winterhold|falkreath|"
                     r"morthal|dragonsreach|skyhaven|farmhouse|stormcloak|draugr|snow|pine|aspen|reach|tundra|"
                     r"volcanic|wr(house|wall|gate|tower)|wh(house|wall)|sol(house|wall)|rift(house|wall)|"
-                    r"mrk|winterhold|ice(?=[^a-z]|$)|frost|skyrim)")
+                    r"mrk|winterhold|ice(?=[^a-z]|$)|frost|skyrim|doomstone|powershrine|wordwall|talos|dragonclaw)")
 # words that only look cold: taken out before the search (ice ends many an English word; pine sits in spine)
 NORDIC_EXCEPT = re.compile(r"(icecream|spine|pineapple|porcupine|cutpine|apprentice|novice|chalice|lattice|device|"
                            r"office|justice|service|spice|juice|police|notice|practice|sacrifice|voice|choice|malice|"

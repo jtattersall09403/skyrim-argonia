@@ -140,6 +140,15 @@ def walkway_base(path: Path | None = None) -> dict | None:
     return best[1] if best else None
 
 
+# A Nordic sign: a thing of the Nords' faith or power (a Doomstone, a word wall, a shrine of Talos). It is never
+# a builder's piece to accept as it comes: the source's own fails as one we add would (decision 0006).
+NORDIC_SIGN = re.compile(r"doomstone|powershrine|wordwall|talos|dragonclaw", re.I)
+
+
+def is_nordic_sign(base: dict) -> bool:
+    return bool(NORDIC_SIGN.search(f"{base.get('edid') or ''} {base.get('model') or ''}"))
+
+
 def is_nordic(key: str, base: dict, review: dict[str, dict]) -> bool:
     """For a base we add from elsewhere: Nordic by the review where it was looked at, else by the extractor's folder
     rule (the cautious default)."""
@@ -184,7 +193,8 @@ def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
     if want_lights - set(bases):
         from tools.places.draft import lights
         bases.update({k: b for k, b in lights.light_bases().items() if k in want_lights and k not in bases})
-    return {k: {**b, "nordic": False if k in src.bases else is_nordic(k, b, review)} for k, b in bases.items()}
+    return {k: {**b, "nordic": is_nordic_sign(b) or (False if k in src.bases else is_nordic(k, b, review))}
+            for k, b in bases.items()}
 
 
 WALKED = re.compile(r"dock|step|stair|bridge|walkway|plank|pier|ramp|boardwalk", re.I)

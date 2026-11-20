@@ -57,6 +57,13 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         for r in sp.refs:
             if (sid, r["id"]) not in seen and not (whole and r.get("kind") != "actor"):
                 bad.append(f"unaccounted source ref {sid}/{r['id']}")
+    # the record is the brief: a plan against it, and nothing of the source's it does not bring
+    bad += plan_checks(place, refs)
+    from tools.places.draft import promised
+    unwanted = promised.drops(src.exterior.refs, bases, promised.record(place_id), (place.get("draft") or {}).get("add"))
+    for r in refs:
+        if r.get("src") in unwanted:
+            bad.append(f"{r['id']} ({(bases.get(r['base']) or {}).get('edid')}) stands: {unwanted[r['src']]}")
     # every room a player can enter says what it is: a name on its door, no builder's leftover, no two alike
     from tools.places import edits
     from tools.places.draft import names
@@ -357,7 +364,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     for r in refs:
         b = bases.get(r["base"]) or {}
         if b.get("nordic"):
-            bad.append(f"{r['id']} adds a Nordic base {r['base']} from outside the source place")
+            bad.append(f"{r['id']} places a Nordic base {r['base']}"
+                       + (" (a Nordic sign)" if io.is_nordic_sign(b) else " from outside the source place"))
         if str(b.get("type")) in LEVELLED:
             bad.append(f"{r['id']} places a levelled base {r['base']}")
     bad += nordic_in_copies(pdir, src, bases, bundles)
@@ -369,6 +377,26 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     cleared = {c.get("ref") for c in io.read_jsonl(pdir / "clear.jsonl")}
     placed = [r for r in refs if r.get("kind") in geom.SOLID_KINDS]
     bad += clearmod.stray(world, cleared, placed, bases, paths)
+    return bad
+
+
+def plan_checks(place: dict, refs: list[dict]) -> list[str]:
+    """`draft.plan` is the place's plan against its record: `look` rows ({line, by}: each thing the record names and
+    the pieces that deliver it) and `structures` rows ({cluster, what, verdict: kept|dropped, why}: each major
+    structure of the source judged against the record). Fails with no plan, a look row delivered by nothing, or a
+    cluster holding a standing building the plan does not judge (or judged dropped)."""
+    plan = (place.get("draft") or {}).get("plan")
+    if not isinstance(plan, dict) or not plan.get("look"):
+        return ["draft.plan is missing: write the plan against the place record before drafting (place-build)"]
+    bad = [f"draft.plan look line '{row.get('line')}' is delivered by nothing" for row in plan["look"]
+           if not str(row.get("by") or "").strip()]
+    judged = {s.get("cluster"): s for s in plan.get("structures") or []}
+    for cid in sorted({r.get("cluster") for r in refs if r.get("kind") == "building" and r.get("src") and r.get("cluster")}):
+        s = judged.get(cid)
+        if s is None:
+            bad.append(f"draft.plan does not judge the structure of cluster {cid}")
+        elif s.get("verdict") != "kept":
+            bad.append(f"cluster {cid} still stands though draft.plan drops it ({s.get('why')})")
     return bad
 
 

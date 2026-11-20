@@ -23,7 +23,22 @@ def fx(tmp_path_factory):
         mp.setattr(io, "_stations", None)
         mp.setattr(lights, "_lights", None)
         counts = run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+        _plan(root / "places" / "fx")
         yield root, counts
+
+
+def _plan(pdir: Path) -> None:
+    """The agent's plan against the record (place-build): every look line delivered, every standing building of the
+    source judged kept."""
+    place = json.loads((pdir / "place.json").read_text())
+    refs = [json.loads(line) for line in (pdir / "spaces/exterior/refs.jsonl").read_text().splitlines()]
+    clusters = sorted({r["cluster"] for r in refs if r.get("kind") == "building" and r.get("src") and r.get("cluster")})
+    place.setdefault("draft", {})["plan"] = {
+        "look": [{"line": "a river town of houses and a hall", "by": "S0 S1 S2 HALL"},
+                 {"line": "a pier on the river", "by": "PIER"}],
+        "structures": [{"cluster": c, "what": "source building", "verdict": "kept", "why": "the record's town"}
+                       for c in clusters]}
+    (pdir / "place.json").write_text(json.dumps(place, indent=1))
 
 
 def test_ground_queries(tmp_path):
@@ -66,6 +81,8 @@ def test_patches_shift_vertices(tmp_path):
 def test_draft_passes_its_checks(fx):
     root, counts = fx
     assert check.check("fx", root / "bundles", root / "places", gives=F.GIVES) == []
+    place = json.loads((root / "places/fx/place.json").read_text())
+    assert check.plan_checks({}, []) and check.plan_checks(place, []) == []
     assert counts["interiors"] == 4            # three houses share one source interior: three copies, and the hall
     assert counts["people"]["boatman"] == 1 and counts["people"]["guard"] >= 2
 
@@ -244,3 +261,24 @@ def test_a_thing_added_on_another_is_seated_on_it():
     (sp1, moss), (sp2, pot) = adds.rows("pl", dec, {})
     assert moss["seat"] == {"mode": "on", "on": "pl.fence", "dz": 48.0} and sp1 == "exterior"
     assert pot["seat"]["mode"] == "ground"
+
+
+def test_fill_to_record_takes_guards_out_and_fills_the_open_beds():
+    """A draft holds all its people (owner, #80): draft.guards takes guards out, residents take the open beds to
+    the record's population, and the free bed stays unowned."""
+    from tools.places.draft import people as P
+    bases = {"B": {"edid": "BedrollGround"}, "T": {"edid": "Tent"}}
+    ext = [{"id": f"b{i}", "kind": "furniture", "base": "B", "pos": [i * 100.0, 0.0, 0.0]} for i in range(5)]
+    ext.append({"id": "t", "kind": "static", "base": "T", "pos": [0.0, 0.0, 0.0]})
+    folk = [{"id": "g0", "role": "guard", "name": "A", "bed": {"space": "exterior", "ref": "b0"}},
+            {"id": "g1", "role": "guard", "name": "B", "bed": {"space": "exterior", "ref": "b1"}},
+            {"id": "m", "role": "merchant", "name": "C", "bed": {"space": "exterior", "ref": "b2"}}]
+    gone, added, short = P.fill_to_record("fx", folk, ext, bases, 6, guards=0, keep_free={"b4"})
+    assert gone == ["g0", "g1"] and not any(p["role"] == "guard" for p in folk)
+    beds = {p["bed"]["ref"] for p in folk}
+    assert len(added) == 3 and "b4" not in beds and {"b0", "b1", "b3"} <= beds
+    assert short == 2 and all(p["routine"] for p in folk if p["id"] in added)
+    # the record now holds fewer: residents go, last first, never the cast
+    cast = added[0]
+    gone, _, _ = P.fill_to_record("fx", folk, ext, bases, 2, keep_free={"b4"}, keep={cast})
+    assert len(folk) == 2 and cast in {p["id"] for p in folk} and "m" not in gone

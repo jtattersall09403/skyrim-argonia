@@ -6,34 +6,34 @@
 {"src":"King of the Murkmire.esp:03B442","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"King of the Murkmire.esp:03B443","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"King of the Murkmire.esp:03B444","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
-{"src":"King of the Murkmire.esp:03B4FD","space":"exterior","status":"adapted","as":"outpost-m11-m63.ZAGGYZMYXMM0N8RMN4240Q4EE3","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B502","space":"exterior","status":"placed","as":"outpost-m11-m63.0MDW4GYMZVHPSSJ0HMJHT75M9Y","cluster":"s01"}
-{"src":"King of the Murkmire.esp:03B503","space":"exterior","status":"adapted","as":"outpost-m11-m63.G5ZW94ZP2KY0D3PXKEPDB8HGQS","cluster":"s02"}
-{"src":"King of the Murkmire.esp:03B505","space":"exterior","status":"adapted","as":"outpost-m11-m63.H9YKS6QJ7S6H31J3W61SFTCEJD","cluster":"s03"}
-{"src":"King of the Murkmire.esp:03B506","space":"exterior","status":"adapted","as":"outpost-m11-m63.5Q935096AQNQF62NC7RMXARRGQ","cluster":"s04"}
-{"src":"King of the Murkmire.esp:03B50A","space":"exterior","status":"adapted","as":"outpost-m11-m63.6BKP4EP96CW81EZND4XGD9A49E","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B50B","space":"exterior","status":"adapted","as":"outpost-m11-m63.T22P4Y1KGCPZ6YRCM34VWEQ8KS","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B50C","space":"exterior","status":"adapted","as":"outpost-m11-m63.T4BJD715665AYASQFBKD5VM5WC","cluster":"s09"}
+{"src":"King of the Murkmire.esp:03B4FD","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B502","space":"exterior","status":"dropped","cluster":"s01","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B503","space":"exterior","status":"dropped","cluster":"s02","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B505","space":"exterior","status":"dropped","cluster":"s03","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B506","space":"exterior","status":"dropped","cluster":"s04","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B50A","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B50B","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B50C","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:03B50D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:03B50E","space":"exterior","status":"adapted","as":"outpost-m11-m63.C6F2RYFETMEA6VY0V5G1D563J1","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B50F","space":"exterior","status":"adapted","as":"outpost-m11-m63.7E6CZ739D36VCJMDP93AKMQ1E2","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B510","space":"exterior","status":"adapted","as":"outpost-m11-m63.70MJ9B579Z2BS7K518NF50BBM9","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B511","space":"exterior","status":"adapted","as":"outpost-m11-m63.00CPEAV9GSWQZ2HYRF84AXSYN4","cluster":"s09"}
-{"src":"King of the Murkmire.esp:03B513","space":"exterior","status":"adapted","as":"outpost-m11-m63.BJN7CANAWVVN53N24PBANYK024","cluster":"s09"}
+{"src":"King of the Murkmire.esp:03B50E","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B50F","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B510","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B511","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:03B513","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:0407DE","space":"exterior","status":"adapted","as":"outpost-m11-m63.F0BKVNWJWM1EZ05A52B4QTXRVG","cluster":"w03"}
 {"src":"King of the Murkmire.esp:0407DF","space":"exterior","status":"adapted","as":"outpost-m11-m63.5A14MRG3ZG4W4GD4RTS2ET9VZE","cluster":"w01"}
 {"src":"King of the Murkmire.esp:0407E0","space":"exterior","status":"adapted","as":"outpost-m11-m63.5SMX7AXZK548E66P45H4W79Z4Y","cluster":"w02"}
 {"src":"King of the Murkmire.esp:0407E1","space":"exterior","status":"placed","as":"outpost-m11-m63.FBXGTZB4X3QA1SE3D3YV5JKJM0","cluster":"landing"}
 {"src":"King of the Murkmire.esp:0407E2","space":"exterior","status":"placed","as":"outpost-m11-m63.7GQ80KSMK0S0STNBT5QY4MAGFC","cluster":"landing"}
-{"src":"King of the Murkmire.esp:0407E5","space":"exterior","status":"adapted","as":"outpost-m11-m63.NGKHZ06D0SPG9JEBS2TEEP64W3","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407E6","space":"exterior","status":"adapted","as":"outpost-m11-m63.4WESDK36YJVG07AMX8TDK7ACA6","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407E7","space":"exterior","status":"adapted","as":"outpost-m11-m63.7TGHG72YT1FCPSMJX6BGMN6HEF","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407E8","space":"exterior","status":"adapted","as":"outpost-m11-m63.S7E22S8AJ73C37KC1755BJZF1J","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407E9","space":"exterior","status":"adapted","as":"outpost-m11-m63.31BAR4S2W80VC6074W5JXHD966","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407EA","space":"exterior","status":"adapted","as":"outpost-m11-m63.9FS3VEZREBF026N58Z35GD20B0","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407EC","space":"exterior","status":"adapted","as":"outpost-m11-m63.T548HCSTNSYGTETH7WCJ7S12YH","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407ED","space":"exterior","status":"adapted","as":"outpost-m11-m63.DYEH96XZ30P8GCVRMMMA9XP1ZS","cluster":"s09"}
-{"src":"King of the Murkmire.esp:0407EE","space":"exterior","status":"adapted","as":"outpost-m11-m63.CMQ9SZNXADFPY8VAP2N4CT8G3G","cluster":"s09"}
+{"src":"King of the Murkmire.esp:0407E5","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407E6","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407E7","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407E8","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407E9","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407EA","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407EC","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407ED","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:0407EE","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:0407EF","space":"exterior","status":"adapted","as":"outpost-m11-m63.6SXKDPJC3W763TESDP94FT548V","cluster":"s09"}
 {"src":"King of the Murkmire.esp:0407F0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:0407F1","space":"exterior","status":"adapted","as":"outpost-m11-m63.W0H5XRYKJ5GHCWJ3Y2NJY5YGZ0","cluster":"s09"}
@@ -46,11 +46,11 @@
 {"src":"King of the Murkmire.esp:046104","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046116","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046117","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:046118","space":"exterior","status":"placed","as":"outpost-m11-m63.GQE5XYHF99BV81HXAMVT1WH23K","cluster":"s01"}
-{"src":"King of the Murkmire.esp:046119","space":"exterior","status":"placed","as":"outpost-m11-m63.6M8TERSAYBW0JCM31V5755ZA44","cluster":"s01"}
-{"src":"King of the Murkmire.esp:04611A","space":"exterior","status":"placed","as":"outpost-m11-m63.B3ZV3Y5Q476QZP2MJC3KAGCYPP","cluster":"s01"}
-{"src":"King of the Murkmire.esp:04611B","space":"exterior","status":"adapted","as":"outpost-m11-m63.XECTSCPQQYATGAX1NN03JEC2FR","cluster":"s03"}
-{"src":"King of the Murkmire.esp:04611C","space":"exterior","status":"adapted","as":"outpost-m11-m63.0GKYH2PQ1GBCZXDZE2NS2W0HPJ","cluster":"s03"}
+{"src":"King of the Murkmire.esp:046118","space":"exterior","status":"dropped","cluster":"s01","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046119","space":"exterior","status":"dropped","cluster":"s01","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04611A","space":"exterior","status":"dropped","cluster":"s01","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04611B","space":"exterior","status":"dropped","cluster":"s03","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04611C","space":"exterior","status":"dropped","cluster":"s03","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:04611D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04611E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04611F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -65,16 +65,16 @@
 {"src":"King of the Murkmire.esp:046128","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046129","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04612A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:046144","space":"exterior","status":"adapted","as":"outpost-m11-m63.XHE477BAK6ZTG7AHWTQH6K1841","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046145","space":"exterior","status":"adapted","as":"outpost-m11-m63.5J2X5D0VEM8VH3XNH96K2QBB7V","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046146","space":"exterior","status":"adapted","as":"outpost-m11-m63.6STGR1G2Q7906D3RZPQTA7CS2N","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046147","space":"exterior","status":"adapted","as":"outpost-m11-m63.0Z1N8YM9Q2WQY8NV0QQHA5NAQG","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046148","space":"exterior","status":"adapted","as":"outpost-m11-m63.VAKC5P90Q8E450NYF2B9NSB5TM","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046149","space":"exterior","status":"adapted","as":"outpost-m11-m63.XZ0ZXHCQGQ6R2FERHFJJBZ78RF","cluster":"s09"}
-{"src":"King of the Murkmire.esp:04614A","space":"exterior","status":"adapted","as":"outpost-m11-m63.96XBDN4VFJT8QT77MMFBTE12HP","cluster":"s09"}
+{"src":"King of the Murkmire.esp:046144","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046145","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046146","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046147","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046148","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046149","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04614A","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:04614B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:04614C","space":"exterior","status":"adapted","as":"outpost-m11-m63.PTSJGMGG8KX69BRJXFS76FVXMX","cluster":"s09"}
-{"src":"King of the Murkmire.esp:04614D","space":"exterior","status":"adapted","as":"outpost-m11-m63.4FW725MZDHRCW5MPN76KAPZZJD","cluster":"s09"}
+{"src":"King of the Murkmire.esp:04614C","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04614D","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:04614E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046150","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046151","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -84,78 +84,78 @@
 {"src":"King of the Murkmire.esp:046155","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04615A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04615B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:04617D","space":"exterior","status":"adapted","as":"outpost-m11-m63.B4BN54VBV60MDN1M9VNVAYE5V8","cluster":"s06"}
-{"src":"King of the Murkmire.esp:04617E","space":"exterior","status":"adapted","as":"outpost-m11-m63.FGM9J6CDCM4XVT3KFMPF991R4B","cluster":"s03"}
-{"src":"King of the Murkmire.esp:046180","space":"exterior","status":"adapted","as":"outpost-m11-m63.6M8QJ4BY754RBYCGXVWRN6ZT74","cluster":"s07"}
-{"src":"King of the Murkmire.esp:046181","space":"exterior","status":"placed","as":"outpost-m11-m63.TWPTQ0BYPRRCBR4Z2X4305R0GN","cluster":"s08"}
+{"src":"King of the Murkmire.esp:04617D","space":"exterior","status":"dropped","cluster":"s06","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04617E","space":"exterior","status":"dropped","cluster":"s03","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046180","space":"exterior","status":"dropped","cluster":"s07","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046181","space":"exterior","status":"dropped","cluster":"s08","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:046188","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:046189","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04618A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04618B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04618C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:04618D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:04618E","space":"exterior","status":"adapted","as":"outpost-m11-m63.6VY5HE2TKD7478A8S0JSN4JJ10","cluster":"s09"}
-{"src":"King of the Murkmire.esp:04618F","space":"exterior","status":"adapted","as":"outpost-m11-m63.3DY8K5WBRZ0P1MHT5QKFHFD3D9","cluster":"s09"}
-{"src":"King of the Murkmire.esp:046190","space":"exterior","status":"adapted","as":"outpost-m11-m63.M4GPF4EH1R7K1SE7R3Z05A8Y5M","cluster":"s09"}
+{"src":"King of the Murkmire.esp:04618E","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:04618F","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:046190","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:046192","space":"exterior","status":"dropped","why":"a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek"}
 {"src":"King of the Murkmire.esp:046193","space":"exterior","status":"dropped","why":"a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek"}
 {"src":"King of the Murkmire.esp:046195","space":"exterior","status":"dropped","why":"a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek"}
 {"src":"King of the Murkmire.esp:046196","space":"exterior","status":"dropped","why":"a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek"}
-{"src":"King of the Murkmire.esp:046197","space":"exterior","status":"replaced","as":"outpost-m11-m63.RFWC7BVNV14N7Y5VNKC323TDXV","cluster":"s09","base":"Skyrim.esm:03B3CD"}
+{"src":"King of the Murkmire.esp:046197","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:04619A","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:04619B","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:04619C","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:04619D","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"King of the Murkmire.esp:04619E","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"King of the Murkmire.esp:084C8D","space":"exterior","status":"adapted","as":"outpost-m11-m63.D7H5JHEH9Y0WBKNDK6K6Q77X8P","cluster":"s10"}
-{"src":"King of the Murkmire.esp:084C8E","space":"exterior","status":"adapted","as":"outpost-m11-m63.GRP7C0AHPEXQ03JKPX9K6ZN0N6","cluster":"s10"}
-{"src":"King of the Murkmire.esp:084C90","space":"exterior","status":"adapted","as":"outpost-m11-m63.T9412Z95XJPV9NSYP9D4301FDS","cluster":"s10"}
-{"src":"King of the Murkmire.esp:084C91","space":"exterior","status":"adapted","as":"outpost-m11-m63.YAQNGPJKVK89RHAJE1YYSZWYR7","cluster":"s10"}
-{"src":"King of the Murkmire.esp:084C92","space":"exterior","status":"adapted","as":"outpost-m11-m63.PZ3E41ETJD9AFQGNFJ4YZPKV5G","cluster":"s10"}
-{"src":"King of the Murkmire.esp:084C93","space":"exterior","status":"adapted","as":"outpost-m11-m63.8YXGNZWA29Q5ZXRA8708562SVG","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C94","space":"exterior","status":"adapted","as":"outpost-m11-m63.4W0E8TZKW7AG5P8Y95T4S7CTH5","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C95","space":"exterior","status":"adapted","as":"outpost-m11-m63.S041D1SD5WMMEFJTS68DV0KQHX","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C96","space":"exterior","status":"adapted","as":"outpost-m11-m63.S7451RA96EWCG4TD7RP56BR9TK","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C97","space":"exterior","status":"adapted","as":"outpost-m11-m63.C70E2RWECM2A9TV3TY356H1S1G","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C98","space":"exterior","status":"adapted","as":"outpost-m11-m63.E0ZZ7KQ0EBHPNYJAHEQ7W6MSTE","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C99","space":"exterior","status":"adapted","as":"outpost-m11-m63.BNZQDFJT6VV032XPJDBP3D6GVX","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9A","space":"exterior","status":"adapted","as":"outpost-m11-m63.HCE1RQ4KB659VMVHMNVSDB9B6Y","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9B","space":"exterior","status":"adapted","as":"outpost-m11-m63.5CY7ANV74A8HS1XRW0EGWHDAF5","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9C","space":"exterior","status":"adapted","as":"outpost-m11-m63.6WGP7463G90B6V3RFFM667EZ7A","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9D","space":"exterior","status":"adapted","as":"outpost-m11-m63.FT89G3WZ2C97PNEVXDQGY5R8TQ","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9E","space":"exterior","status":"adapted","as":"outpost-m11-m63.FMKWVQPC6Z9PZ0ZGPYY306ST00","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084C9F","space":"exterior","status":"adapted","as":"outpost-m11-m63.J85Q1ECYS5VCMV6NAPYZXJMFPS","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA0","space":"exterior","status":"adapted","as":"outpost-m11-m63.MVFWWRQJYTTM2TG6WTRT6WGD25","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA1","space":"exterior","status":"adapted","as":"outpost-m11-m63.F6ZYYTEMBBDJ5E58142Y3H45Q6","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA2","space":"exterior","status":"adapted","as":"outpost-m11-m63.V26CFTRGMERV1NSBNDR46Y0QP4","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA3","space":"exterior","status":"adapted","as":"outpost-m11-m63.YPCS674ZX240Y8YFFKMQ1D19DH","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA4","space":"exterior","status":"adapted","as":"outpost-m11-m63.1WQKFN84FC707JQ8HH4K17V5SV","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA5","space":"exterior","status":"adapted","as":"outpost-m11-m63.K758XTY887VXAX2WY03SXB0K57","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA6","space":"exterior","status":"adapted","as":"outpost-m11-m63.Z3745T24FMRQWPRJF6BZWEH8M5","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA7","space":"exterior","status":"adapted","as":"outpost-m11-m63.MGMKKW89VQRR84J55VFXTMDG6Y","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CA8","space":"exterior","status":"adapted","as":"outpost-m11-m63.K1BX804QDNP4WJW6MG5XT06FWX","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CAA","space":"exterior","status":"adapted","as":"outpost-m11-m63.17EQME0WH25X5S6FXG7C1ENVSC","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CAB","space":"exterior","status":"adapted","as":"outpost-m11-m63.TEFP9QWSTG2KPHY77D3J6FPZTS","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CAC","space":"exterior","status":"adapted","as":"outpost-m11-m63.3QTY3WMY80JZ8YY25RPSZGWDXB","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CAF","space":"exterior","status":"adapted","as":"outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB0","space":"exterior","status":"adapted","as":"outpost-m11-m63.E5A6P46G7TKPQ85RWGDK8EP5P8","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB1","space":"exterior","status":"adapted","as":"outpost-m11-m63.TGP0GEVK9GWCNPWFZYNECDAZ7E","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB2","space":"exterior","status":"adapted","as":"outpost-m11-m63.ZSM6VQVNY4SG95CGQE8TN5EREM","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB3","space":"exterior","status":"adapted","as":"outpost-m11-m63.4NRDFV42F0Y2F19MN3GSCK7Q3T","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB4","space":"exterior","status":"adapted","as":"outpost-m11-m63.W6SAQB75BV78K06E8J7T0GHXND","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB5","space":"exterior","status":"adapted","as":"outpost-m11-m63.QZS1RB7J2C3HTV6ZB7N2WKV56A","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB6","space":"exterior","status":"adapted","as":"outpost-m11-m63.6YXNVQSZ22CBSVF86RJ8HNFZ84","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB7","space":"exterior","status":"adapted","as":"outpost-m11-m63.EXJWV1HCKM772WRFF2V87SD377","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CB8","space":"exterior","status":"adapted","as":"outpost-m11-m63.8770BEQPTZQTZNE3NGTFX32A14","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBA","space":"exterior","status":"adapted","as":"outpost-m11-m63.MH8JD78Y8MYWZNDWNXT5Z4F2CW","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBB","space":"exterior","status":"adapted","as":"outpost-m11-m63.GKBF824GFJTAGB4WGRD7MN32G4","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBC","space":"exterior","status":"adapted","as":"outpost-m11-m63.4DA8NBAVST2J0CMWM9A6HZP9J0","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBD","space":"exterior","status":"adapted","as":"outpost-m11-m63.AEEF5ZZDRW36547CVNGC6T5P4H","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBE","space":"exterior","status":"adapted","as":"outpost-m11-m63.H14NG318XTVJJPFAEBQPG3R3BG","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CBF","space":"exterior","status":"adapted","as":"outpost-m11-m63.6G75PGDXER4FEGPKRHKHWMPN6W","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CC0","space":"exterior","status":"adapted","as":"outpost-m11-m63.8R4WN652ZBQM50DZY18C41QSWN","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CC1","space":"exterior","status":"adapted","as":"outpost-m11-m63.4RZ19BGB34MFFYJ567PT8MAQ15","cluster":"s09"}
-{"src":"King of the Murkmire.esp:084CC2","space":"exterior","status":"adapted","as":"outpost-m11-m63.VS1WJGV5CAVX3MZSJ3W93VZC6K","cluster":"s09"}
+{"src":"King of the Murkmire.esp:084C8D","space":"exterior","status":"dropped","cluster":"s10","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C8E","space":"exterior","status":"dropped","cluster":"s10","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C90","space":"exterior","status":"dropped","cluster":"s10","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C91","space":"exterior","status":"dropped","cluster":"s10","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C92","space":"exterior","status":"dropped","cluster":"s10","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C93","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C94","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C95","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C96","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C97","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C98","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C99","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9A","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9B","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9C","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9D","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9E","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084C9F","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA0","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA1","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA2","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA3","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA4","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA5","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA6","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA7","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CA8","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CAA","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CAB","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CAC","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CAF","space":"exterior","status":"dropped","cluster":"s09","why":"a treasure beyond the record's promises (it promises 1, 1 placed by hand)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB0","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB1","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB2","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB3","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB4","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB5","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB6","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB7","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CB8","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBA","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBB","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBC","space":"exterior","status":"dropped","cluster":"s09","why":"a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBD","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBE","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CBF","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CC0","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CC1","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:084CC2","space":"exterior","status":"dropped","cluster":"s09","why":"a trap or hazard of the source's: the record names no such danger and the place is friendly","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:11ED40","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:11ED44","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:11ED45","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -208,16 +208,16 @@
 {"src":"King of the Murkmire.esp:85A3DE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85A3DF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85A3E0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"King of the Murkmire.esp:85A3E7","space":"exterior","status":"placed","as":"outpost-m11-m63.XWW4GHY6E6C01FYXYWJCDYB1GA","cluster":"s01"}
-{"src":"King of the Murkmire.esp:85A3E8","space":"exterior","status":"placed","as":"outpost-m11-m63.3HNBEE310YBCXFPQ5CPYMR2BEF","cluster":"s01"}
-{"src":"King of the Murkmire.esp:85A3EB","space":"exterior","status":"adapted","as":"outpost-m11-m63.M79RYQ4T7K44KAPCFRFFCNTPT6","cluster":"s04"}
-{"src":"King of the Murkmire.esp:85A3EC","space":"exterior","status":"adapted","as":"outpost-m11-m63.P7SBHBQF14R3TM39SX7BWES706","cluster":"s04"}
-{"src":"King of the Murkmire.esp:85A3EF","space":"exterior","status":"adapted","as":"outpost-m11-m63.VBBQWQVPK4GZWCC66RJA0YSNBX","cluster":"s03"}
-{"src":"King of the Murkmire.esp:85A3F0","space":"exterior","status":"adapted","as":"outpost-m11-m63.E6CWFBJK3AX0YQBQ8NXP60JGP0","cluster":"s03"}
-{"src":"King of the Murkmire.esp:85A3F1","space":"exterior","status":"adapted","as":"outpost-m11-m63.Y6WKKC521V4HKR0M5AN2KXDHQK","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A3F2","space":"exterior","status":"adapted","as":"outpost-m11-m63.E8D5D3QXYKZK03ZV2JZPZKN7WR","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A3F3","space":"exterior","status":"adapted","as":"outpost-m11-m63.ETJNS5ZBKGF0N3R8CKDK0DZR39","cluster":"s06"}
-{"src":"King of the Murkmire.esp:85A3F4","space":"exterior","status":"placed","as":"outpost-m11-m63.8A7J8VTH43HDJKHMVV56N4TX9P","cluster":"landing"}
+{"src":"King of the Murkmire.esp:85A3E7","space":"exterior","status":"dropped","cluster":"s01","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3E8","space":"exterior","status":"dropped","cluster":"s01","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3EB","space":"exterior","status":"dropped","cluster":"s04","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3EC","space":"exterior","status":"dropped","cluster":"s04","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3EF","space":"exterior","status":"dropped","cluster":"s03","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3F0","space":"exterior","status":"dropped","cluster":"s03","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3F1","space":"exterior","status":"dropped","cluster":"s06","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3F2","space":"exterior","status":"dropped","cluster":"s06","why":"a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3F3","space":"exterior","status":"dropped","cluster":"s06","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
+{"src":"King of the Murkmire.esp:85A3F4","space":"exterior","status":"dropped","cluster":"landing","why":"a Nordic sign (a Doomstone, a word wall, a shrine of Talos): decision 0006","by":"draft.drop"}
 {"src":"King of the Murkmire.esp:85A466","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:85A471","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"King of the Murkmire.esp:ABC9AE","space":"exterior","status":"replaced","as":["outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ"]}
