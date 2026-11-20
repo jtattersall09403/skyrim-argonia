@@ -16,6 +16,39 @@ def _walk():
     return walk
 
 
+UNIT_KINDS = ("house", "walkway", "bridge", "dock", "small", "boat", "thing", "added")
+
+
+def units_of(sc):
+    """The place's units (tools/places/units.py) as the scene stands, read once per scene."""
+    if getattr(sc, "_units", None) is None:
+        from tools.places import units
+        sc._units = units.Place(sc.place_id, scene=sc)
+    return sc._units
+
+
+def thing(sc, name: str, piece: bool = False) -> dict:
+    """What a hand acts on: a unit by its id (house.<room>, walkway.03, ...) as its own pieces, else the scene's thing.
+    A house's body is never moved without its deck: a thing holding a body but not all of its unit's decks is refused
+    unless `piece` (the agent means that one piece)."""
+    head = name.split(".", 1)[0].lower()
+    if sc.space == "exterior" and head in UNIT_KINDS:
+        pl = units_of(sc)
+        u = pl.unit(name)
+        ids = [i for v in u["pieces"].values() for i in v if i in sc.by_id]
+        return sc._of(u["id"], "unit", [sc.by_id[i] for i in ids])
+    th = sc.resolve(name)
+    if piece or sc.space != "exterior":
+        return th
+    got = {p["id"] for p in th["pieces"]}
+    for u in units_of(sc).units:
+        body, deck = set(u["pieces"].get("body", [])), set(u["pieces"].get("deck", []))
+        if u["kind"] == "house" and body & got and deck - got:
+            raise ValueError(f"{name} holds the body of {u['id']} but not its deck: a house moves with its platform. "
+                             f"Act on the unit ({u['id']}) or give --piece to move that piece alone")
+    return th
+
+
 def decks(sc, rows: list[dict]) -> list[tuple[dict, float, tuple]]:
     """The deck pieces among rows (floors, platforms, planks: a level walked top): [(row, deck height, own rect)]."""
     try:

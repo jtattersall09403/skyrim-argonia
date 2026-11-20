@@ -86,6 +86,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]
+        from tools.places import units                     # a house stays on its platform; a tree is not moved with it
+        bad += units.check_faults(place_id)
     for r in ledger:
         if r["status"] not in ("placed", "adapted", "replaced", "dropped"):
             bad.append(f"ledger {r['src']}: unknown status {r['status']}")
