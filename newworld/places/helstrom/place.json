@@ -717,8 +717,8 @@
     "base": "King of the Murkmire.esp:056D53",
     "kind": "door",
     "pos": [
-     -52018.1,
-     -590164.9
+     -52117.1,
+     -590065.9
     ],
     "rot_z": 5.49779,
     "dz": 0.0,
@@ -806,8 +806,8 @@
     "base": "King of the Murkmire.esp:05BF2B",
     "kind": "building",
     "pos": [
-     -52136.2,
-     -589881.4
+     -52235.2,
+     -589782.4
     ],
     "rot_z": 2.3562,
     "dz": 96.0,
@@ -819,8 +819,8 @@
     "base": "King of the Murkmire.esp:05BF2C",
     "kind": "building",
     "pos": [
-     -52301.6,
-     -590046.8
+     -52400.6,
+     -589947.8
     ],
     "rot_z": 2.3562,
     "dz": 96.0,
@@ -832,8 +832,8 @@
     "base": "King of the Murkmire.esp:056D2E",
     "kind": "static",
     "pos": [
-     -51749.4,
-     -589966.9
+     -51848.4,
+     -589867.9
     ],
     "rot_z": 5.49779,
     "dz": -10.0,
@@ -845,8 +845,8 @@
     "base": "King of the Murkmire.esp:056D2E",
     "kind": "static",
     "pos": [
-     -52216.1,
-     -590433.6
+     -52315.1,
+     -590334.6
     ],
     "rot_z": 5.49779,
     "dz": -10.0,
@@ -1007,48 +1007,6 @@
     "tier": "AGENT_INVENTED",
     "why": "a warm light over the council's benches (King of the Murkmire's XanmeerLightGold): the hall is in use and well lit, not a dark gaol",
     "key": "49"
-   },
-   {
-    "base": "King of the Murkmire.esp:644F72",
-    "kind": "light",
-    "space": "HelstromXanmeer",
-    "pos": [
-     16544.0,
-     5800.0,
-     160.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
-    "key": "50"
-   },
-   {
-    "base": "King of the Murkmire.esp:644F72",
-    "kind": "light",
-    "space": "HelstromXanmeer",
-    "pos": [
-     16544.0,
-     5150.0,
-     160.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
-    "key": "51"
-   },
-   {
-    "base": "King of the Murkmire.esp:644F72",
-    "kind": "light",
-    "space": "HelstromXanmeer",
-    "pos": [
-     16544.0,
-     4500.0,
-     160.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warm light along the entrance corridor (King of the Murkmire's XanmeerLightGold, the hall's own light): a hall in use is readable from its door",
-    "key": "52"
    },
    {
     "base": "King of the Murkmire.esp:056D4B",
@@ -8617,6 +8575,7 @@
   "agent-20261120T123651",
   "agent-20261120T124030",
   "agent-20261120T161505",
-  "agent-20261120T162820"
+  "agent-20261120T162820",
+  "agent-20261120T163033"
  ]
 }

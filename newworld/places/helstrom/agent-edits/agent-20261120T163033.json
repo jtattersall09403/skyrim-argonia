@@ -1,0 +1,142 @@
+{
+ "save_id": "agent-20261120T163033",
+ "place_id": "helstrom",
+ "name": "the Xanmeer hall: the four gold lights added along the entrance corridor because the viewer looked dark are taken out (lighting is not judged from the viewer)",
+ "at": "2026-11-20T16:30:33Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "HelstromXanmeer",
+   "id": "helstrom.LOOK0030000",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.LOOK0030000",
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "pos": [
+     16544.0,
+     6100.0,
+     40.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "base_unknown": true,
+    "why": "a warm light low along the entrance corridor (the hall's own XanmeerLightGold), so the corridor floor and the way to the throne show from the door",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T16:30:33Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "HelstromXanmeer",
+   "id": "helstrom.LOOK0040000",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.LOOK0040000",
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "pos": [
+     16544.0,
+     5450.0,
+     -70.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "base_unknown": true,
+    "why": "a warm light low along the entrance corridor (the hall's own XanmeerLightGold), so the corridor floor and the way to the throne show from the door",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T16:30:33Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "HelstromXanmeer",
+   "id": "helstrom.LOOK0050000",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.LOOK0050000",
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "pos": [
+     16544.0,
+     4800.0,
+     -70.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "base_unknown": true,
+    "why": "a warm light low along the entrance corridor (the hall's own XanmeerLightGold), so the corridor floor and the way to the throne show from the door",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T16:30:33Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "HelstromXanmeer",
+   "id": "helstrom.LOOK0060000",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.LOOK0060000",
+    "base": "King of the Murkmire.esp:644F72",
+    "kind": "light",
+    "pos": [
+     16544.0,
+     4200.0,
+     -70.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "base_unknown": true,
+    "why": "a warm light low along the entrance corridor (the hall's own XanmeerLightGold), so the corridor floor and the way to the throne show from the door",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-20T16:30:33Z"
+  }
+ ]
+}
