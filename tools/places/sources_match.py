@@ -124,6 +124,8 @@ JUDGED = {
                               "an Imperial fort ruin whose one interior of cells is the strongroom"),
     "vicrium": ("skyrim.gloomboundminelocation",
                 "a timbered mine whose one interior is the worked upper galleries above the locked door (MN10)"),
+    "korydon": ("heretherebemonsterscurseofcipactli.cluster.shedet.-4.0",
+                "Shedet's stilt town on water gives the moorings the main quest's boats call at and the market ring"),
 }
 for _pid, (_sid, _why) in JUDGED.items():
     FIXED[_pid] = (_sid, re.compile("^" + re.escape(_sid) + "$"))
