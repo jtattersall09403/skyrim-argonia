@@ -225,8 +225,10 @@ class Scene:
                     "point": [v[0], v[1], z]}
         if self.space != "exterior" and n.lower() in ("door", "the door"):   # a room's way out to where it opens from
             out = [p for p in self.pieces if p.get("kind") == "door" and (p.get("door") or {}).get("to_space") == (self.info.get("parent") or "exterior")]
-            if out:
-                return self._of(n, "door", out[:1])
+            if out:   # standing where the way in lands inside (the outer door's to_pos)
+                ext = {r["id"]: r for r in self.files["spaces"].get(self.info.get("parent") or "exterior", {}).get("refs") or []}
+                land = ((ext.get(self.info.get("door_from")) or {}).get("door") or {}).get("to_pos")
+                return self._of(n, "door", out[:1]) | ({"point": list(land)} if land else {})
         cl = self.clusters()
         if n in cl:
             return self._of(n, "structure", cl[n])

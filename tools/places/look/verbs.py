@@ -223,7 +223,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         for i, (p, dv) in enumerate(geom.stations(way, n)):
             g = sc.ground.height(*p)
             g = getattr(sc.ground, "floor", 0.0) if g is None else g
-            sup = geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)
+            sup = None if inside else geom.support_under(sc.pieces, p[0], p[1], g + 400, 400)   # a room: its floor
             z = max(g, geom.aabb(sc.by_id[sup])[1][2] if sup else g)
             c = {"pos": [p[0] - dv[0] * 60, p[1] - dv[1] * 60, z + geom.EYE], "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, z + geom.EYE * 0.7],
                  "up": [0, 0, 1], "fov": 70, "w": tw, "h": thh, "near": 8, "far": 7000}
