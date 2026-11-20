@@ -6,7 +6,11 @@ Views: at <thing> [--from n|ne|e|se|s|sw|w|nw] [--eye|--high|--top]; orbit <thin
 section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every view: [--plain] [--size WxH] [--mesh]
 [--no-canopy | --canopy] [--lit] [--ceiling u].
 Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
-Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; pick <png> <px> <py>.
+Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per thing, one page call.
+Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
+failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries.
+Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
+there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
 --until-feet-buried]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
 each takes --view <view verb...> for a before/after.
@@ -89,6 +93,12 @@ def main(argv: list[str]) -> int:
     t0 = time.time()
     out = call({"place": place, "verb": verb, "args": args})
     out["wall_s"] = round(time.time() - t0, 2)
+    if verb == "measure" and out.get("ok"):   # the table as text
+        print(out["text"], end="")
+        return 0
+    if verb == "survey" and out.get("ok"):   # one line per structure: its sheet and its failed tiles
+        print("\n".join(out["lines"]) + f"\n({out['total_s']} s)")
+        return 0
     if started:
         out["daemon_start_s"] = round(started, 1)
     print(json.dumps(out, indent=1))

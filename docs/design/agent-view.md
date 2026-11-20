@@ -16,7 +16,7 @@ Two rules decide which verb to reach for:
 
 A thing is named by any of: a structure (its cluster id: `b04`, `s06`, `landing`), a piece id or its last
 characters (`GS6YH2YT`), a door by the room it leads to (`SeekhatEldersHut`), a person by id or name, a quest thing
-by its spot id, or a point `x,y` (`x,y,z`). An unknown name answers with the structures there are.
+by its spot id, a unit (`house.SeekhatEldersHut`, `dock.03`: tools/places/units.py), or a point `x,y` (`x,y,z`). An unknown name answers with the structures there are.
 
 ## Inside a room
 
@@ -27,8 +27,7 @@ of our mods is read from that place's source). The room's floor (the walkable me
 kept to the cut) stands in for the ground: heights, floats and a door's ground are measured from it, and `door`
 names the room's way out, standing where the way in lands.
 
-- The room is lit by its own lighting (the cell's, as the game lights it). `--lit` adds a neutral fill over it, for
-  judging the shape of a dark room; judge the light itself without it.
+- The room is drawn in its own lighting (the cell's). `--lit` adds a neutral fill over it for judging shape.
 - `overview` of a room: straight down with the ceiling cut away (`--ceiling u` over the floor, 330 by default), and
   one eye-level view from where the way in lands. `at --high` and `--top` cut the ceiling too; `at --eye` stands
   the camera on the room's floor, never behind a wall or a door.
@@ -43,7 +42,8 @@ names the room's way out, standing where the way in lands.
 |---|---|
 | `probe --all` | Every fault in the place: a piece that **floats** (its lowest point over the ground under it, and no chain of resting reaches the ground), a **missing base** or an **unresolved** model (a stand-in box), a bridge or walkway **end** with nothing under it, a **door** with no ground before it. Run it first, and after every change. |
 | `probe <thing>` | Per piece: its box, each foot's height over the ground (negative: buried), what it rests on, its nearest neighbours and the gap to each; a span's two ends; a door's ground. |
-| `pick <png> <px> <py>` | What is at a pixel of a look: the piece, its base, model, structure, and its lowest point over the ground; and the ground point the pixel falls on. |
+| `pick <png> <px> <py>` | What is drawn at a pixel of a look (from the image's id buffer: the piece, its base, model, structure; a marker or a model that did not load says so), then what lies behind it along the ray with each one's lowest point over the ground, and the ground point the pixel falls on. |
+| `measure` | The place's table, numbers only: every unit's (`units <place>`: each house's floor, the ground under it, its deck and the gap between, its doors and steps; each dock, walkway and bridge with its joins), each house's eaves over the ground (an estimate from its box), each tree's root collar against the ground, each loose piece's lowest point; each flagged by its rule (floor under the ground, through its deck, a door off its floor, eaves under 150, a collar more than 60 under the ground, an end with nothing under it). |
 | `probe --mesh [<a> <b>]` | The built walkable mesh (the navmesh of the place's newest build: its own draft check, else the shared build): its islands, each with its triangles and the doors and street points on it, the doors and street points off the main network by the build check's own rule (a street sampled every 64 units, `walk.off_network`; a door off when its navmesh is an island, `walk.islands`), so its count is the check's; with two things, whether a walk joins them (a structure measured from its door's arrival, else its largest deck) and, if not, where the mesh breaks between them (the two open edges, the gap across and the height step, `height step` or `missing strip`, and the pieces there). Says `STALE` when a place file is newer than that build. The first call on a build reads it whole (a few minutes on a village); later calls are quick. |
 
 What holds a piece up: something whose top is from 24 units under its lowest point to 160 over it (a post rising
@@ -53,10 +53,24 @@ grows on. The world's own trees and rocks around the place count. Effects (mist,
 
 ## Views
 
-Each view prints a PNG path. Labels are on by default: structure ids where they stand, a 1.8 m figure at the
+Each view prints a PNG path and what it shows, from an id buffer drawn with the image: `subject_seen` (the share of
+the subject's own projected pixels visible and inside the frame), `subject_fills` (its share of the frame),
+`occluders` (the three biggest pieces over the rest, by piece and kind), the land, water and sky shares, and
+`capture`. A capture is `failed`, with `why` in the JSON and in a red banner across the image, when under 35% of its
+subject is seen, the camera is under the ground or inside a piece (a tree's crown or trunk), no ground is drawn, or
+one piece covers half the lens. `at` then tries again by itself: the other sides, further, higher, the canopy cut,
+until a capture is good or it says no good one is to be had and why (`failed_tries` lists each with its image). A
+thing much taller than wide is framed whole, and a second view shows its base. An eye camera stands at a person's
+eye over the walkable mesh where it is loaded, else a deck, bridge or walkway, else the ground, never inside a piece.
+Light is not judged from the viewer: the game lights a place differently.
+
+Labels are on by default: structure ids where they stand, a 1.8 m figure at the
 subject, a north arrow, the side seen from, the ground grid and its spacing, red outlines on what `probe --all`
-faults. `--plain` drops them, `--size WxH` sets the image (768x576 by default), `--helpers` shows the editor's light
-bulbs and collision boxes, `--grass` the grown grass. `--mesh` lays the built walkable mesh over any view: each island in its own colour (the main network green) with its id, door arrivals as squares and street points as dots, white on the main network and red off it by the check's rule; a section keeps the triangles in its slab.
+faults. `--plain` drops them, `--size WxH` sets the image (768x576 by default), `--grass` the grown grass, `--lit` a neutral
+fill light. What the game never draws (editor markers: x-markers, heading, idle, furniture and patrol markers;
+collision boxes, triggers, occlusion planes, light bulbs) is left out; `--helpers` shows it, each labelled with what
+it is. A model that did not load is drawn hatched and labelled: a fault of the place. `--once` takes the asked
+view only, without retries. `--mesh` lays the built walkable mesh over any view: each island in its own colour (the main network green) with its id, door arrivals as squares and street points as dots, white on the main network and red off it by the check's rule; a section keeps the triangles in its slab.
 
 Trees hide what stands under them. `--no-canopy` cuts away every tree crown, Hist and hanging moss or vine over
 head height at the subject (250 units over its ground) and keeps their trunks and roots; `--high` and `--top` cut
@@ -70,6 +84,7 @@ hid it), and `--canopy` keeps it.
 | `orbit <thing>` | The same thing from north, east, south and west on one sheet: what one side hides. |
 | `walk <from> <to>` | Six eye-level frames along the place's streets and paths between two doors or points: whether the way is open and reads as a street. |
 | `overview` | The whole place obliquely and from above, every structure labelled: where to look next. |
+| `survey [<structure or unit> ...] [--changed]` | One contact sheet per thing named, else the whole place: near and far from the four compass sides at eye level, two high obliques, a top view with the crowns cut, sections on two axes with the ground line and a height scale, in the neutral fill, and one tile in the place's own light (labelled "viewer light, not the game's"). Each tile carries its side, distance and score; a failed tile is retried once, else struck through with its reason. Beside the sheet, `table.json` and `table.txt` of what each tile shows; all under `out/places/look/<tree>/<place>/survey/<thing>/`. `--changed` takes only the structures whose rows changed since this checkout's last survey. Prints one line per thing: its sheet and its failed tiles. The tiles go in one page call: seconds a structure on a warm daemon. |
 
 ## Hands
 
@@ -100,11 +115,13 @@ that touches a row an owner's finalised save touched is left out whole and liste
 
 ## Working a place
 
-1. `overview`, then `probe --all`.
+1. `overview`, `probe --all` and `measure`.
 2. For each fault, a `section` through it; `pick` anything in the image that is not what the probe named.
 3. `snapshot` before trying a fix; act with a hand and its `--view`; `probe <thing>` to prove it held.
 4. When two fixes compete, `compare` them on the same view, keep the better, `restore` it.
-5. Judge the whole with `orbit` and `walk` once the numbers are clean.
+5. `survey --changed` after every structure placed or changed; `survey` of the whole place after each group; judge
+   only from good captures, and of each ask whether it shows what it was meant to.
+6. Judge the whole with the place's survey and `walk` once the numbers are clean.
 
 Every call appends a line to `out/places/look/<tree>/session.log` (verb, arguments, image, milliseconds). A sequence that
 has worked by hand on several places is the record from which a pipeline step is written; nothing becomes a step

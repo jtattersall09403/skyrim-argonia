@@ -136,6 +136,9 @@ class Daemon:
             if len(self.scenes) > 3:
                 self.scenes.clear()
             self.scenes[key] = Scene(place, flat(strokes), space=space)
+            if space == "exterior":   # a unit's name (house.SeekhatEldersHut, dock.03) names the whole unit
+                from tools.places.look import verbs
+                verbs.units_aware(self.scenes[key], place)
         return self.scenes[key]
 
     def shot(self, cam: dict):

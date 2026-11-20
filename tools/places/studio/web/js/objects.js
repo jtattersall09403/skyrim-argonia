@@ -321,6 +321,7 @@ class Group {
     const nearD = LIGHT.has(this.kind) && this.full ? farD : near * scale * (thin ? detail.lod : 1);
     const skips = thin && detail.density > 1 && this.kind !== 'tree' && this.kind !== 'rock';
     let nf = 0, nb = 0, nearest = Infinity;
+    this.drawnIdx = this.drawnIdx || [];   // instance k of the full model is refs[drawnIdx[k]] (the agent view's id buffer)
     for (let i = 0; i < this.refs.length; i++) {
       const m = this.matrices[i];
       tmpV.setFromMatrixPosition(m);
@@ -330,7 +331,7 @@ class Group {
       if (!frustum.intersectsSphere(sphere)) continue;
       if (skips && d > near * scale * 0.5 && i % detail.density) continue;
       nearest = Math.min(nearest, d);
-      if ((always || d < nearD) && this.full) this.full[0].setMatrixAt(nf++, m);
+      if ((always || d < nearD) && this.full) { this.drawnIdx[nf] = i; this.full[0].setMatrixAt(nf++, m); }
       // no stand-in boxes: a model not yet here, or too far for its kind, shows nothing (cleared plants keep their ghost)
       else if (this.ghost) { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
     }
