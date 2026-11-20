@@ -20,22 +20,6 @@
  ],
  "containers": [
   {
-   "ref": "outpost-m11-m63.5AM5VHBE13YVVS8V8YC4JS1VW3",
-   "space": "exterior",
-   "kind": "strongbox",
-   "owner_household": "outpost-m11-m63.household.exterior",
-   "lock": null,
-   "security": "S1",
-   "tier": "T1",
-   "gold": 5,
-   "items": [],
-   "why": "the household store of Zee-nassa (W2 Poor, head of 2): gold 5 of 0-15 by household size; best tier T1; unlocked (an unlocked chest or sack)",
-   "cites": [
-    "place_wealth:outpost-m11-m63",
-    "person:outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W"
-   ]
-  },
-  {
    "ref": "outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39",
    "space": "exterior",
    "kind": "sack",
@@ -148,6 +132,60 @@
     }
    ],
    "why": "Zee-nassa: guard, weir-warden of the levy, day watch; leads the wardens on their turn at the weir, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 1,
+     "worn": true,
+     "why": "weir-warden of the levy; mends the woven weir's fences: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Heeta-daro: resident, weir-warden of the levy; mends the woven weir's fences, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 1,
+     "worn": true,
+     "why": "weir-warden of the levy; guts the catch at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Dee-kai: resident, weir-warden of the levy; guts the catch at the landing, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 1,
+     "worn": true,
+     "why": "weir-warden of the levy; walks the log walk at dusk: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Nur-daro: resident, weir-warden of the levy; walks the log walk at dusk, W2; best tier T1"
   }
  ],
  "traders": [],

@@ -45,6 +45,8 @@ def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
             seat = {"mode": "free"}
         elif a.get("on"):
             seat = {"mode": "on", "on": a["on"], "dz": float(a.get("dz", 0.0))}
+            if a.get("within"):   # it also rests in another thing (a ship's steps carried by its hull)
+                seat["carrier"] = a["within"]
         else:
             seat = {"mode": "ground", "dz": float(a.get("dz", 0.0))}
             if a.get("within"):   # on the ground inside a shelter (a bedroll in a tent, a bed in a hut): it rests in it

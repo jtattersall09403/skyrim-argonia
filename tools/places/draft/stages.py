@@ -46,7 +46,7 @@ ANY = None
 # it may add or remove rows}
 OWNS: dict[str, dict[str, tuple]] = {
     "fit": {"spaces/exterior/refs.jsonl": ({"pos", "rot", "cluster"}, True), "ledger.jsonl": (ANY, False)},
-    "pieces": {"spaces/*/refs.jsonl": ({"base", "pos", "rot", "align", "seat"}, True), "spaces/*/space.json": (ANY, True),
+    "pieces": {"spaces/*/refs.jsonl": ({"base", "pos", "rot", "align", "seat", "linked"}, True), "spaces/*/space.json": (ANY, True),
                "ledger.jsonl": (ANY, True)},
     "seating": {"spaces/exterior/refs.jsonl": ({"seat", "pos"}, False)},
     "clearance": {"clear.jsonl": (ANY, True)},
@@ -312,6 +312,13 @@ def pieces(st: Standing, log=print) -> None:
                 {"src": s, "space": src_sp, "status": "dropped", "why": why, "by": "draft.drop"}
                 for s in sorted({lr["src"] for lr in ours} | {"*"})]
             log(f"draft pieces {st.place_id}: room {sid} taken out: {why}")
+    # a link leads only to a thing the place carries: a link to a piece taken out goes with it
+    ext_ids = {r["id"] for r in st.ext}
+    for row in st.ext:
+        if row.get("linked"):
+            row["linked"] = [lk for lk in row["linked"] if lk.get("ref") in ext_ids]
+            if not row["linked"]:
+                row.pop("linked")
     seat_all(st.ext, st.G)
 
 

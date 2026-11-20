@@ -38,8 +38,13 @@ def find_support(r: dict, near: list[dict], bases: dict, g: Ground) -> dict | No
             continue
         top, sbot = geom.top(s, bases), geom.bottom(s, bases)
         if sbot - CONTACT <= bot <= top + CONTACT and s["pos"][2] < r["pos"][2] + CONTACT:
-            # a building's floor is anywhere between its bottom and top; a small thing's top is its surface
-            score = abs(bot - top) if s.get("kind") != "building" else 0.5 * CONTACT
+            # a building's floor is anywhere between its bottom and top; a small thing's top is its surface. Of two
+            # buildings, the one whose collision has a floor under r carries it (a ship's hull, not its rigging)
+            if s.get("kind") != "building":
+                score = abs(bot - top)
+            else:
+                b = bases.get(s.get("base")) or {}
+                score = 0.0 if b and floor_under(r, s, b, bases) is not None else 0.5 * CONTACT
             if best is None or (score, -geom.radius(s, bases)) < best[0]:
                 best = ((score, -geom.radius(s, bases)), s)
     return best[1] if best else None

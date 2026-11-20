@@ -9,7 +9,7 @@
   ],
   "add": [
    {
-    "base": "Skyrim.esm:0CE0AE",
+    "base": "Skyrim.esm:0AA041",
     "kind": "static",
     "pos": [
      -12700,
@@ -18,7 +18,8 @@
     "rot_z": 4.712,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the cage at the camp's west edge, far from the fire by the longhouse and open toward the reeds (place record: look and present notes; main quest 4's need: Sesk's Cage): Skyrim's long metal cage; its gate is the quest's cage door (MetalCageLongGate01, Novice lock, its key on Jeeta-Sakka), at the cage's own place and turn"
+    "why": "Sesk's Cage at the camp's west edge, far from the fire by the longhouse and open toward the reeds (place record: look and hooks; main quest 4, thing.mn04.cage): Skyrim's metal cage (MetalCage01), bars all round, whose own door (MetalCageDoor01, the quest's locked door) stands at its origin as Skyrim sets it; sunk a hand's breadth into the ground",
+    "dz": 104.0
    },
    {
     "base": "Skyrim.esm:08632A",
@@ -57,7 +58,7 @@
     "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
    },
    {
-    "base": "ArgoniaNewWorld.esm:020B76",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
     "kind": "static",
     "pos": [
      -9962,
@@ -93,7 +94,7 @@
     "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
    },
    {
-    "base": "ArgoniaNewWorld.esm:020B76",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
     "kind": "static",
     "pos": [
      -10519,
@@ -130,7 +131,7 @@
     "why": "the pole of trophies by the fire (place record look; source note still to add): Curse of Cipactli's tall bone totem, raised a head above a man"
    },
    {
-    "base": "Skyrim.esm:0C1ADD",
+    "base": "King of the Murkmire.esp:045C48",
     "kind": "static",
     "pos": [
      -11420,
@@ -139,10 +140,10 @@
     "rot_z": 1.171,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
    },
    {
-    "base": "Skyrim.esm:0C1ADD",
+    "base": "King of the Murkmire.esp:045C48",
     "kind": "static",
     "pos": [
      -11747,
@@ -151,10 +152,10 @@
     "rot_z": 5.883,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
    },
    {
-    "base": "Skyrim.esm:0C1ADD",
+    "base": "King of the Murkmire.esp:045C48",
     "kind": "static",
     "pos": [
      -11880,
@@ -163,10 +164,10 @@
     "rot_z": 4.312,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
    },
    {
-    "base": "Skyrim.esm:0C1ADD",
+    "base": "King of the Murkmire.esp:045C48",
     "kind": "static",
     "pos": [
      -11553,
@@ -175,7 +176,7 @@
     "rot_z": 2.742,
     "need": 0,
     "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones and scattered bones of the Argonian camp near Loreisian, King of the Murkmire), facing in"
+    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
    },
    {
     "base": "Skyrim.esm:0C49ED",
@@ -331,7 +332,9 @@
    "Skyrim.esm:0CD959": "the orc smithy: the record promises no forge here",
    "Skyrim.esm:0EC371": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
    "Skyrim.esm:0EC387": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0F762C": "a dragon perch: no dragons in this marsh camp"
+   "Skyrim.esm:0F762C": "a dragon perch: no dragons in this marsh camp",
+   "Skyrim.esm:05A348": "Dushnikh Mine's rock mouth: the record names no mine (a Naga camp of tents, a longhouse, a fire pit and a cage)",
+   "Skyrim.esm:099ED3": "a bench that stood on the orc palisade's walkway (the palisade is dropped): 5 m up with nothing under it"
   },
   "replace": {
    "Skyrim.esm:0AF1A2": {
@@ -379,16 +382,8 @@
      "by": "draft.add: urn stacks beside the longhouse door"
     },
     {
-     "line": "a cage at the camp's edge",
-     "by": "draft.add: Skyrim's long metal cage at the west edge (main quest 4)"
-    },
-    {
      "line": "a pole of trophies",
      "by": "draft.add: a tall bone totem by the fire"
-    },
-    {
-     "line": "a bone shrine of standing stones",
-     "by": "draft.add: a ring of four standing stones with scattered bones (the Loreisian camp's), north of the tents"
     },
     {
      "line": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
@@ -405,9 +400,53 @@
     {
      "line": "tanning rack",
      "by": "replaced by King of the Murkmire's scale tanning rack"
+    },
+    {
+     "line": "a cage at the camp's edge",
+     "by": "Sesk's Cage: Skyrim's metal cage (MetalCage01) at the west edge, its door the quest's locked MetalCageDoor01 at the cage's origin (draft.add; quests.jsonl thing.mn04.cage)"
+    },
+    {
+     "line": "a bone shrine of standing stones",
+     "by": "draft.add: a ring of four King of the Murkmire Xanmeer obelisks with scattered bones (the Loreisian camp's ring, its Nordic Doomstone circle swapped for the marsh's own standing stone)"
     }
    ],
-   "source": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped"
+   "source": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped",
+   "gives": [
+    {
+     "kind": "combat-foes",
+     "by": "quest 4's own Naga guards at a fixed level in quests.jsonl: Jeeta-Sakka and two guards at the fire pit by the longhouse and one by the longhouse door, beside the camp's two Naga guards in people.jsonl"
+    },
+    {
+     "kind": "treasure",
+     "by": "the longhouse's store chest (Skyrim.esm:097E36 in the copied longhouse), T3 behind an Adept lock: the guards' pay and stolen goods"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "mine",
+     "what": "Dushnikh Mine's mouth",
+     "verdict": "dropped",
+     "why": "the record names no mine: a Naga camp of tents, a longhouse, a fire pit and a cage"
+    },
+    {
+     "structure": "walls",
+     "what": "the orc stronghold's palisade walls",
+     "verdict": "dropped",
+     "why": "the record names no wall: hide tents and a longhouse round a fire pit, open to the reeds so the cage can be reached unseen (main quest 4)"
+    },
+    {
+     "cluster": "b01",
+     "what": "the timber longhouse (OrcLonghouse01) with two hide tents beside it",
+     "verdict": "kept",
+     "why": "the record's timber longhouse round the fire pit, where the guards' pay and stolen goods lie, and its hide tents"
+    },
+    {
+     "cluster": "s04",
+     "what": "three hide tents on the camp's north side",
+     "verdict": "kept",
+     "why": "the record's hide tents hung with bones"
+    }
+   ]
   }
  },
  "fit": {

@@ -208,6 +208,10 @@
 {"person_id":"outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ","item_id":"Skyrim.esm:00000F","count":3,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
 {"person_id":"outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ","item_id":"Skyrim.esm:013922","count":1,"worn":true,"why":"the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ","item_id":"Skyrim.esm:01D4EC","count":1,"worn":false,"why":"the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."}
+{"person_id":"outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ","item_id":"King of the Murkmire.esp:57AA3E","count":1,"worn":true,"why":"weir-warden of the levy; mends the woven weir's fences: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ","item_id":"Skyrim.esm:00000F","count":9,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T","item_id":"King of the Murkmire.esp:57AA3E","count":1,"worn":true,"why":"weir-warden of the levy; guts the catch at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T","item_id":"Skyrim.esm:00000F","count":9,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"King of the Murkmire.esp:000D6B","count":1,"worn":true,"why":"the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"King of the Murkmire.esp:00ADB4","count":1,"worn":true,"why":"the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"King of the Murkmire.esp:00ADB5","count":1,"worn":true,"why":"the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
@@ -215,8 +219,43 @@
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"Skyrim.esm:013922","count":1,"worn":true,"why":"the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W","item_id":"Skyrim.esm:01D4EC","count":1,"worn":false,"why":"the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."}
+{"person_id":"outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD","item_id":"King of the Murkmire.esp:57AA3E","count":1,"worn":true,"why":"weir-warden of the levy; walks the log walk at dusk: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF","item_id":"Skyrim.esm:00000F","count":2,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.51TE0BP8XX6S4X5G1FTT56DCFF","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter on the east bank: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8","item_id":"Skyrim.esm:00000F","count":10,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.6F7H1CEAFXJEG9E4XYF2YEJPQ8","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-bundler at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18","item_id":"Skyrim.esm:00000F","count":10,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.6X2SHYV8JPR1EESYEFZWJCCS18","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter of the new gang: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q","item_id":"Skyrim.esm:00000F","count":7,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.ARJW0CC9PXEFNEMD9CBT9DM11Q","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter, the gang's longest-serving: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.GKE6V3YB9K1ZXG5ZAXM3V45EGZ","item_id":"Skyrim.esm:00000F","count":3,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.GKE6V3YB9K1ZXG5ZAXM3V45EGZ","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter on the west reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K","item_id":"Skyrim.esm:00000F","count":6,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.NJ9PTT910DCTNXD091G49HKR3K","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"loader of the work barge: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.NJA6RREMP6W43HAYM7DGSH47Z7","item_id":"Skyrim.esm:00000F","count":6,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.NJA6RREMP6W43HAYM7DGSH47Z7","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"fungus gatherer and sharpener of the cutters' knives: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.Q0KE6KDG9J24N4HDYZVGPT8CG3","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter on the north reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9","item_id":"Skyrim.esm:00000F","count":7,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter, mender of the tent's hides: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST","item_id":"Skyrim.esm:00000F","count":10,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.QH4E65DW0HFDCDBR90E56N5AST","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-bundler at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA","item_id":"Skyrim.esm:00000F","count":22,"worn":false,"why":"carried gold, 8-25 for W3 Modest"}
+{"person_id":"outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"gang-master of the reed gang; keeps the hut and its strongbox: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA","item_id":"Skyrim.esm:03B97C","count":1,"worn":true,"why":"modest: worn jewellery"}
 {"person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","item_id":"Skyrim.esm:00000F","count":6,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
 {"person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"the gang's cook; keeps the cook's stall of dried fish and lamp oil: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X","item_id":"Skyrim.esm:00000F","count":2,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter on the east bank: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"fire-tender at the cook's fire: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"reed-cutter on the south reach: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH","item_id":"King of the Murkmire.esp:57AA3E","count":1,"worn":true,"why":"eel-trapper at the weir: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH","item_id":"Skyrim.esm:00000F","count":5,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
+{"person_id":"outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82","item_id":"King of the Murkmire.esp:57AA3E","count":1,"worn":true,"why":"cook at the pot by the drying rack: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"}
+{"person_id":"outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82","item_id":"Skyrim.esm:00000F","count":10,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
 {"person_id":"outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD","item_id":"King of the Murkmire.esp:000D6B","count":1,"worn":true,"why":"the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD","item_id":"King of the Murkmire.esp:00ADB4","count":1,"worn":true,"why":"the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD","item_id":"King of the Murkmire.esp:00ADB5","count":1,"worn":true,"why":"the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 8 km by road))"}
@@ -259,5 +298,3 @@
 {"person_id":"tribal-camp-m2-m68.WHQGHMGVDP17ZTPTTZZ24E01A1","item_id":"Skyrim.esm:01D4EC","count":1,"worn":false,"why":"the levy's torch: Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035)."}
 {"person_id":"tribal-camp-m2-m68.WHQGHMGVDP17ZTPTTZZ24E01A1","item_id":"Skyrim.esm:03619E","count":1,"worn":true,"why":"the levy's cuirass at T2, light for the marsh (from far away (no maker or gate on the roads))"}
 {"person_id":"tribal-camp-m2-m68.WHQGHMGVDP17ZTPTTZZ24E01A1","item_id":"Skyrim.esm:07A91A","count":1,"worn":true,"why":"the Unbound's hired warband, day watch: a sword of T2 (from far away (no maker or gate on the roads))"}
-{"person_id":"tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11","item_id":"Skyrim.esm:00000F","count":9,"worn":false,"why":"carried gold, 2-10 for W2 Poor"}
-{"person_id":"tribal-camp-m2-m68.YBZ2P1FMS72RNK709P22VD9E11","item_id":"Skyrim.esm:01397E","count":1,"worn":true,"why":"tans hides and boils bones for the tents: a dagger of T1 (from far away (no maker or gate on the roads))"}

@@ -166,6 +166,42 @@
     }
    ],
    "why": "Heem-Jasa: apothecary, minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH",
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 1,
+     "worn": true,
+     "why": "eel-trapper at the weir: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Tsa-tah: resident, eel-trapper at the weir, W2; best tier T1"
+  },
+  {
+   "person": "outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82",
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 1,
+     "worn": true,
+     "why": "cook at the pot by the drying rack: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "worn": false,
+     "why": "carried gold, 2-10 for W2 Poor"
+    }
+   ],
+   "why": "Paa-shei: resident, cook at the pot by the drying rack, W2; best tier T1"
   }
  ],
  "traders": [

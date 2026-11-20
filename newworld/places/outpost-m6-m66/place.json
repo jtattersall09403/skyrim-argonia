@@ -193,7 +193,7 @@
      -543120.0
     ],
     "rot_z": 0.0,
-    "dz": 30.0,
+    "dz": 58.0,
     "tier": "AGENT_INVENTED",
     "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
    },
@@ -617,7 +617,10 @@
    "King of the Murkmire.esp:85A231": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
    "King of the Murkmire.esp:85A263": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
    "King of the Murkmire.esp:85A2A4": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck"
+   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
+   "King of the Murkmire.esp:85A246": "a cypress scaffold floor of the source's, hung 7 m up a great tree with nothing under it on our ground (trees hold up no floor), with the two jars on it: the record's camp is on the bank",
+   "King of the Murkmire.esp:85A266": "a jar on the dropped tree-floor (85A246)",
+   "King of the Murkmire.esp:85A265": "a jar on the dropped tree-floor (85A246)"
   },
   "plan": {
    "look": [
@@ -678,9 +681,51 @@
      "what": "a scaffold deck with two tents and fences",
      "verdict": "kept",
      "why": "hide tents on a cypress platform"
+    },
+    {
+     "structure": "walls",
+     "what": "Ree-An-Wo's cypress stockade scaffolds, ramps and floors",
+     "verdict": "kept",
+     "why": "they are the record's small cypress platform the tents stand on, not a wall"
+    },
+    {
+     "structure": "mine",
+     "what": "one cypress stockade plank the classifier reads as a mine",
+     "verdict": "kept",
+     "why": "a plank of the camp's platform; the source has no mine here"
     }
    ],
-   "source": "Ree-An-Wo kept: hide tents on cypress platforms are what the record asks, and it is the source note's own choice; Left Hand Mine (Nordic) and Black Rose (ruin) are further off; near Loreisian is too small for 23 people. Its four-storey scaffold tower (w01) is still to be cut down to a small platform."
+   "source": "Ree-An-Wo kept: hide tents on cypress platforms are what the record asks, and it is the source note's own choice; Left Hand Mine (Nordic) and Black Rose (ruin) are further off; near Loreisian is too small for 23 people. Its four-storey scaffold tower (w01) is still to be cut down to a small platform.",
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "a fishing spot on the woven weir across the creek (draft.add need 0), where eels and carp are taken"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the camp's cooking stand by the drying rack (place.json stations)"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "the tanning rack on the platform (place.json stations)"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Heem-Jasa, the tree's minder (apothecary, people.jsonl services), selling sap, swamp fungus and eggshells"
+    },
+    {
+     "kind": "trainer",
+     "by": "Heem-Jasa (people.jsonl services: Adept Alchemy trainer)"
+    },
+    {
+     "kind": "combat-foes",
+     "by": "quest 3's own three Unbound sap-takers at a fixed level at the reed hide (quests.jsonl npc.mn03.sap-taker-1..3)"
+    },
+    {
+     "kind": "treasure",
+     "by": "the sap-takers' pack at the reed hide (draft.add need 1), stocked at T2"
+    }
+   ]
   }
  },
  "fit": {
