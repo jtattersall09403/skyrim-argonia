@@ -56,7 +56,6 @@ def test_an_owner_exception_on_a_container_row_is_read_by_space_and_ref(tmp_path
 def test_two_containers_of_one_ref_in_different_spaces_load_and_stay_apart():
     """Copied houses share a source ref id: a container is keyed (place, space, ref), its items and key with it."""
     import sqlite3
-    from collections import defaultdict
     from pathlib import Path
     from types import SimpleNamespace as NS
     from tools.places.stock import plan
