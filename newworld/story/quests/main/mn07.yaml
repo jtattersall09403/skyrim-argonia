@@ -251,7 +251,7 @@ clues:
   - c1
 shapeData:
   destination: the captain's strongbox in the hold of the Pale Harvest
-  route: boats from Helstrom to Archon and Thorn, the coast south to Ysan's jetty, a swim east to the wreck
+  route: the raft from Helstrom to Truowa, boats by Uluo and Archon to Thorn, the coast south to Ysan's jetty, a swim east to the wreck
   hazards: slaughterfish in the shallows; the drowned crew and captain in the hold
   prize: the Kothringi keystone
 stages:
@@ -262,7 +262,7 @@ stages:
     jetty. I need to get into the hold, where the drowned crew walk, and open the captain's strongbox. I may fight
     them, or steal past them and pick its lock, a hard one; the captain carries its key. The drowned attack whoever
     they see, so a quiet player who is seen has a fight on their hands."
-  directions: Poles-Upriver's boats run from Helstrom's landing down the rivers to Archon and on round the coast to Thorn.
+  directions: Poles-Upriver's raft runs from Helstrom's landing down the river to Truowa, and boats go on by Uluo to Archon and round the coast to Thorn.
     From Thorn's quay walk south along the coast to Ysan's stone jetty, then swim east past the slaughterfish to the listing
     hull; its door lets into the hold.
   objectives:
@@ -444,7 +444,7 @@ topics:
   stages:
   - 10
   essential: false
-  intent: 'Nesh-Deeka. Tells: Poles-Upriver''s boats to Archon and round the coast to Thorn; walk south from Thorn to Ysan,
+  intent: 'Nesh-Deeka. Tells: Poles-Upriver''s raft to Truowa, then boats by Uluo to Archon and round the coast to Thorn; walk south from Thorn to Ysan,
     a landing of stone-cutters with a dry-stone jetty; the wreck lies a short swim out, with slaughterfish about it. Does:
     nothing.'
   new: true

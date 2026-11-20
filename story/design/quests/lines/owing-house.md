@@ -23,7 +23,7 @@ ancestors stood on both sides of the coffles (the same section).
 
 House Ulvarys are one of those Dunmer families. The family came to Thorn as Dres's overseers in the fields, stayed when
 Dres went, and kept a share of the saltrice by being there when the title passed. Nobody living remembers that: it
-is the family's own story of itself, told over six centuries. House Ulvarys is not Dres, and in 4E 201 Dres has
+is the family's own story of itself. House Ulvarys is not Dres, and in 4E 201 Dres has
 nothing in the province.
 
 ## Why the law lets it buy Owings
@@ -69,8 +69,7 @@ saltrice baskets, dressers and partition rooms, which Thorn borrows). Its countr
 Meadery from Skyrim, a hamlet of farm buildings with a meadery hall, a boilery and a cellar basement, whose Nordic
 walls the record replaces with stone footings and reed and mud; the ferry and the saltrice paddies are added by the
 record). A Naga band hunts the delta and crocodiles lie in
-the braid, so the estate is hard to reach (Julo's place record, strength D4). Julo's record does not yet name the
-estate as House Ulvarys'. The family's factor has a stall in Stormhold's old Ayleid compound (the record gives a merchant there, in white Ayleid stone added to Markarth, Stormhold's source city).
+the braid, so the estate is hard to reach (Julo's place record, strength D4). The family's factor has a stall in Stormhold's old Ayleid compound (the record gives a merchant there, in white Ayleid stone added to Markarth, Stormhold's source city).
 
 ## How it makes the Owing pay
 
@@ -112,7 +111,7 @@ living and want nothing of the dead.
 | Thornway Watch | wardens who set Owings on carters and sell them to the family | 6. The Toll Chain |
 | Bala Karag | catchers waiting for runaways at the causeway | 7. Out by Sea |
 | Redclay Watch | the family's fighters, sent against a runaway | 8. Hold the Watch |
-| Fort Gysilla | a garrison paid to lock up runaways in the barracks | 9. The Island Keep |
+| Fort Gysilla | a garrison paid to lock up runaways in the fort's vault cellar | 9. The Island Keep |
 | Marzai | the family's barge, with five held workers in its hold | 10. The Lantern on the Lake |
 | Thorn | the counting-house and the factor's letters | 11. The Counting-House |
 | Calvian Waystation | Ah-Kesh's camp | 12. The Catch-Captain |

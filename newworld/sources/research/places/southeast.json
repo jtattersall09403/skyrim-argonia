@@ -553,7 +553,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the Xeech-Leel, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others.",
+     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people keep the Xeech-Leel at arm's length; the An-Xileel who killed the old town are gone. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12500,7 +12500,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A diver who followed the echo down and came up silent; a sealed spire at its bottom; a dreugh lair on the rim.",
+     "text": "A diver followed the echo down and came up silent. The echoes rise from the sealed gate under Teku-Sul Spire nearby, and a dreugh lair lies on the rim.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12549,7 +12549,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Hajsetha-Tzel (King of the Murkmire), is an Argonian grove ruin on a rise with one cave-like interior; set on the trench's rim, under water, that interior serves as the dreugh lair and its grove ruin pieces as the broken stones round the lair's mouth. The trench itself is the sea-floor relief of our own ground, not source pieces. Its Dunmer pieces are replaced with Xanmeer stone from the pool. Still to add: the sealed spire at the bottom, built from Xanmeer tower pieces, the dark water, the echo sounds, the drowned hoard on the lip, the glowing kelp and the lair chest.",
+     "text": "Its main source, Hajsetha-Tzel (King of the Murkmire), is an Argonian grove ruin on a rise with one cave-like interior; set on the trench's rim, under water, that interior serves as the dreugh lair and its grove ruin pieces as the broken stones round the lair's mouth. The trench itself is the sea-floor relief of our own ground, not source pieces. Its Dunmer pieces are replaced with Xanmeer stone from the pool. Still to add: the dark water, the echo sounds, the drowned hoard on the lip, the glowing kelp and the lair chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12596,7 +12596,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "salvage from the sunken spire: brass and ship-iron",
+     "detail": "salvage from wrecks on the trench lip: brass and ship-iron",
      "count": 2
     }
    ]
@@ -13202,7 +13202,7 @@
     },
     {
      "aspect": "source",
-     "text": "Built from Teeth of Sithis (King of the Murkmire), whose three interiors, two Xanmeer towers and a halls level, serve as the dry east halls where the attendants walk, the mudcrab's gallery with the spiral stair and the lower halls ending at the great gate, with its Xanmeer pieces for the broken spire. Still to add: the spiral of the stair, set from Xanmeer stair pieces round a column, the weed and coral, the great gate with its three empty sockets and the old kings' marks, the half-opened salvage chest, the priest's ghost before the gate and the pearl clams on the reef.",
+     "text": "Built from Teeth of Sithis (King of the Murkmire), whose three interiors serve as the dry east halls where the attendants walk (the East Xanmeer), the mudcrab's gallery with the spiral stair and the great gate (the Halls), and the guardian's hall and the Root's chamber beyond the gate (the West Xanmeer), with its Xanmeer pieces for the broken spire. Still to add: the spiral of the stair, set from Xanmeer stair pieces round a column, the weed and coral, the great gate with its three empty sockets and the old kings' marks, the half-opened salvage chest, the priest's ghost before the gate and the pearl clams on the reef.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

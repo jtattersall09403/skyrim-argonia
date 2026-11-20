@@ -48,10 +48,19 @@ essentialTopics:
 - topic.mn04-vosh-report
 - topic.mn04-ride
 startWhen:
-  questStage:
-  - quest.main.mn03
-  - ≥
-  - 90
+  any:
+  - questStage:
+    - quest.main.mn03
+    - '='
+    - 90
+  - questStage:
+    - quest.main.mn03
+    - '='
+    - 91
+  - questStage:
+    - quest.main.mn03
+    - '='
+    - 92
 start: 10
 recordStatus: design
 foundation: Built from main-plot.md §5 quest 4. Starts on any of MN03's complete endings (90, 91, 92), all of which leave
@@ -188,7 +197,7 @@ things:
   name: Note to the Sap-Takers
   source: MN03's note, carried
   where: the player's pack
-  text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and the Naga will pay you.
+  text: Jars to Karsh-Naal Camp by the next dark moon. Stack them by the longhouse with the rest and I will pay you there.
     Seal every scar behind you, as she showed you. Leave nothing at the hide. - K.
 hooks: []
 placements:
@@ -314,7 +323,7 @@ placements:
     place: helstrom
     rule: navmesh
     need: outdoors at Helstrom's city landing, on the planks by the water a few steps from where the raft-master
-      Poles-Upriver works (his work spot, exterior -23821,-630400), at the end away from the Boatmen's Lodge door, facing
+      Poles-Upriver works (her work spot, exterior -23821,-630400), at the end away from the Boatmen's Lodge door, facing
       the river
   note: built as a move of npc.mn.sesk's one reference when the ending switches her off at the camp; listed so the place
     has the spot

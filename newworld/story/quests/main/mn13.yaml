@@ -79,7 +79,7 @@ truth:
   when: at the report
   who: [npc.mn.never-writes-twice]
   where: Nesh-Deeka's House, Helstrom
-  what: Never-Writes-Twice's orders are to take all three stones before the Unbound do.
+  what: Never-Writes-Twice's orders are to take all three stones before the Unbound do and bring them to her.
 playerStart: ['The marker stone''s marked tower is one of the drowned spires off Lilmoth, and the divers of Bell Station,
     on an islet east of Lilmoth, will know which (MN11).', 'The Eye of Argonia lies at the Root, behind a gate the old
     kings sealed (MN05).', 'The Unbound want the Eye and are brewing a draught to kill what guards the Root.', 'The player
@@ -94,7 +94,7 @@ facts:
 - {id: fact.mn13.where-stones, claim: 'One seal-stone lies in Blackrose Prison, where a masked thief who sought the Eye
     died in the cells and his stone went to the warden''s vault; one in the flooded vaults of Gemin; one in the deepest
     hall of Vorannuhl.', from: t2}
-- {id: fact.mn13.orders, claim: Never-Writes-Twice's orders are to take all three stones before the Unbound do., from: t4}
+- {id: fact.mn13.orders, claim: Never-Writes-Twice's orders are to take all three stones before the Unbound do and bring them to her., from: t4}
 cast:
 - id: npc.mn.meer-tasi
   persona: invented. Meer-Tasi, steward of Bell Station, Argonian of the Archein line (place record); weighs every find
@@ -207,7 +207,7 @@ stages:
   - to: 95
     when:
       not: {npcAlive: npc.mn.never-writes-twice}
-  directions: Take the boat from Helstrom to Lilmoth, then the station's boat east over the open water to Bell Station,
+  directions: Take the boats from Helstrom by Truowa and Uluo to Lilmoth, then the station's boat east over the open water to Bell Station,
     timber huts and a lantern mast on a bare rock islet, with a ship's bell on a post at its landing.
   information:
     going: The order hunts the Eye of Argonia, the old kings' jewel that can heal every sick Hist; it lies at the Root, where the roots of every Hist meet under the sea, and the Unbound want it first. The order's hunt goes on; the marker stone's tower is a drowned spire off Lilmoth. My own errand to Fort Chalkmoth
@@ -377,7 +377,8 @@ stages:
   journal: text.journal.mn13.90
   journalText: "Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three
     hundred gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the
-    Unbound do, from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the least
+    Unbound do, from Blackrose Prison, Gemin and Vorannuhl in any order and bring them to her before anyone goes near
+    the gate; all three are marked, Blackrose the least
     dangerous and Vorannuhl the worst. My own errand to Fort Chalkmoth is still open."
   onEnter:
   - setFactionRank: [faction.toh-reel-ka, reel-ka]
@@ -405,7 +406,8 @@ stages:
   journal: text.journal.mn13.91
   journalText: "Never-Writes-Twice made me a Reel-Ka, a Warrior of the order, and gave me its heavier armour, three
     hundred gold and a free bed in every Archwarden fort. Her orders are to take all three seal-stones before the
-    Unbound do, from Blackrose Prison, Gemin and Vorannuhl, in any order; all three are marked, Blackrose the least
+    Unbound do, from Blackrose Prison, Gemin and Vorannuhl in any order and bring them to her before anyone goes near
+    the gate; all three are marked, Blackrose the least
     dangerous and Vorannuhl the worst."
   onEnter:
   - setFactionRank: [faction.toh-reel-ka, reel-ka]
@@ -581,7 +583,7 @@ topics:
   intent: 'Never-Writes-Twice. Tells: she makes the player a Reel-Ka, "Warrior", the order''s third rank, and gives the
     order''s heavier cuirass and helm, three hundred gold and a free bed in every Archwarden fort; with the three stones the order
     can open the gate to the Root and use the Eye of Argonia where it sits; her orders are to take all three stones before
-    the Unbound do; she marks Blackrose Prison, Gemin and Vorannuhl and says to take them in any
+    the Unbound do and bring them to her before anyone goes near the gate; she marks Blackrose Prison, Gemin and Vorannuhl and says to take them in any
     order, Blackrose the least dangerous and Vorannuhl the worst. Checks: nothing. Does: sets stage 90 (91 if Fort Chalkmoth
     is done).'
   uses: [fact.mn13.orders]

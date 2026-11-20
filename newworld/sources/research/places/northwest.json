@@ -6030,7 +6030,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "One young crocodile lies below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
+     "text": "Two young crocodiles lie below the weir where the offal goes in, mudcrabs work the bank and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6102,8 +6102,8 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "mudcrabs on the bank and one young crocodile below the weir",
-     "count": 3,
+     "detail": "mudcrabs on the bank and two young crocodiles below the weir",
+     "count": 4,
      "reward": "treasure"
     },
     {

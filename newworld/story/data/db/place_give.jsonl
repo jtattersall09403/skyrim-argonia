@@ -17,7 +17,7 @@
 {"place_id":"abandoned-village-m11-m107","seq":2,"give_kind_id":"boss-chest","detail":"the miners' gold buried under a hall floor","count":1}
 {"place_id":"abandoned-village-m11-m107","seq":3,"give_kind_id":"harvest-common","detail":"swamp fungus on the rotted halls","count":1}
 {"place_id":"abandoned-village-m4-m109","seq":0,"give_kind_id":"combat-creature","detail":"crocodiles among the roof peaks","count":4,"reward_kind_id":"boss-chest"}
-{"place_id":"abandoned-village-m4-m109","seq":1,"give_kind_id":"combat-boss","detail":"an old bull crocodile in the drowned street","count":1,"reward_kind_id":"boss-chest"}
+{"place_id":"abandoned-village-m4-m109","seq":1,"give_kind_id":"combat-boss","detail":"an old bull crocodile on the highest roof","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"abandoned-village-m4-m109","seq":2,"give_kind_id":"boss-chest","detail":"a chest under water in the drowned street, with a family's grave-stake in it","count":1}
 {"place_id":"abandoned-village-m4-m109","seq":3,"give_kind_id":"fishing","detail":"eel weirs between the posts","count":1}
 {"place_id":"acra-tiin","seq":0,"give_kind_id":"boat-stop","detail":"a fishing boat across the bay to Soulrest","count":1}
@@ -183,7 +183,7 @@
 {"place_id":"echo-deep","seq":2,"give_kind_id":"boss-chest","detail":"the lair chest","count":1}
 {"place_id":"echo-deep","seq":3,"give_kind_id":"gold-hoard","detail":"the drowned hoard on the trench lip, spilled from sunken wrecks","count":1}
 {"place_id":"echo-deep","seq":4,"give_kind_id":"harvest-rare","detail":"dreugh shell and glowing deep kelp, found only below the rim","count":3}
-{"place_id":"echo-deep","seq":5,"give_kind_id":"harvest-common","detail":"salvage from the sunken spire: brass and ship-iron","count":2}
+{"place_id":"echo-deep","seq":5,"give_kind_id":"harvest-common","detail":"salvage from wrecks on the trench lip: brass and ship-iron","count":2}
 {"place_id":"estate-15-m110","seq":0,"give_kind_id":"trader-innkeeper","detail":"steward sells cooked rice, rice-wine and roast fowl from the veranda","count":1}
 {"place_id":"estate-15-m110","seq":1,"give_kind_id":"cooking-pot","detail":"hearth pot on the veranda","count":1}
 {"place_id":"estate-15-m110","seq":2,"give_kind_id":"harvest-common","detail":"rice stalks and reed at the paddies","count":6}
@@ -237,11 +237,11 @@
 {"place_id":"farm-m6-m64","seq":0,"give_kind_id":"harvest-common","detail":"saltrice and greens","count":2}
 {"place_id":"farm-m6-m64","seq":1,"give_kind_id":"cooking-pot","detail":"the farmhouse","count":1}
 {"place_id":"farm-m6-m64","seq":2,"give_kind_id":"trader-innkeeper","detail":"the Urvyns sell eels and saltrice to passers","count":1}
-{"place_id":"fort-chalkmoth","seq":0,"give_kind_id":"trader-blacksmith","detail":"the Dunmer quartermaster: iron and steel arms, arrows","count":1}
+{"place_id":"fort-chalkmoth","seq":0,"give_kind_id":"trader-blacksmith","detail":"the Dunmer quartermaster in his store in the keep: iron and steel arms, arrows","count":1}
 {"place_id":"fort-chalkmoth","seq":1,"give_kind_id":"grindstone","detail":"in the yard","count":1}
 {"place_id":"fort-chalkmoth","seq":2,"give_kind_id":"armour-workbench","detail":"in the yard","count":1}
-{"place_id":"fort-chalkmoth","seq":3,"give_kind_id":"trainer","detail":"Archery, Journeyman, the wall captain who watches the Sarpa","count":1}
-{"place_id":"fort-chalkmoth","seq":4,"give_kind_id":"free-bed","detail":"a bunk in the barracks","count":1}
+{"place_id":"fort-chalkmoth","seq":3,"give_kind_id":"trainer","detail":"Archery, Journeyman, the wall captain who watches the Sarpa and sits in the keep's hall off watch","count":1}
+{"place_id":"fort-chalkmoth","seq":4,"give_kind_id":"free-bed","detail":"a bunk in the barracks, and a bed with benches in the keep's hall","count":1}
 {"place_id":"fort-chalkmoth","seq":5,"give_kind_id":"combat-foes","detail":"Sarpa raiders on the western approach","count":3,"reward_kind_id":"treasure"}
 {"place_id":"fort-chalkmoth","seq":6,"give_kind_id":"treasure","detail":"an Imperial strongbox in the quartermaster's store","count":1}
 {"place_id":"fort-gysilla","seq":0,"give_kind_id":"trader-blacksmith","detail":"the garrison quartermaster","count":1}
@@ -916,7 +916,7 @@
 {"place_id":"outpost-m11-m102","seq":3,"give_kind_id":"treasure","detail":"a smuggler's sunken crate by the chain","count":1}
 {"place_id":"outpost-m11-m63","seq":0,"give_kind_id":"fishing","detail":"the weir traps: eels and gar","count":1}
 {"place_id":"outpost-m11-m63","seq":1,"give_kind_id":"cooking-pot","detail":"by the landing","count":1}
-{"place_id":"outpost-m11-m63","seq":2,"give_kind_id":"combat-creature","detail":"mudcrabs on the bank and one young crocodile below the weir","count":3,"reward_kind_id":"treasure"}
+{"place_id":"outpost-m11-m63","seq":2,"give_kind_id":"combat-creature","detail":"mudcrabs on the bank and two young crocodiles below the weir","count":4,"reward_kind_id":"treasure"}
 {"place_id":"outpost-m11-m63","seq":3,"give_kind_id":"treasure","detail":"a thief's sack of stolen traps and coin hidden in the reeds","count":1}
 {"place_id":"outpost-m11-m63","seq":4,"give_kind_id":"harvest-rare","detail":"Sithis' beard, a grey moss hanging on the woven weir","count":2}
 {"place_id":"outpost-m13-m65","seq":0,"give_kind_id":"trader-general","detail":"the cook's stall of dried fish and lamp oil","count":1}
@@ -1114,7 +1114,7 @@
 {"place_id":"shipwreck-33-m67","seq":0,"give_kind_id":"combat-foes","detail":"drowned crew in the hold","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"shipwreck-33-m67","seq":1,"give_kind_id":"combat-creature","detail":"slaughterfish in the shallows around the hull","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"shipwreck-33-m67","seq":2,"give_kind_id":"combat-boss","detail":"the drowned captain beside the strongbox","count":1,"reward_kind_id":"boss-chest"}
-{"place_id":"shipwreck-33-m67","seq":3,"give_kind_id":"boss-chest","detail":"captain's strongbox with Company coin","count":1}
+{"place_id":"shipwreck-33-m67","seq":3,"give_kind_id":"boss-chest","detail":"captain's strongbox with Company coin and the Gideon relic dealer's best piece","count":1}
 {"place_id":"shipwreck-35-m71","seq":0,"give_kind_id":"combat-foes","detail":"drowned sloop crew","count":3,"reward_kind_id":"boss-chest"}
 {"place_id":"shipwreck-35-m71","seq":1,"give_kind_id":"combat-creature","detail":"slaughterfish over the shoals","count":3,"reward_kind_id":"boss-chest"}
 {"place_id":"shipwreck-35-m71","seq":2,"give_kind_id":"combat-boss","detail":"the drowned captain","count":1,"reward_kind_id":"boss-chest"}

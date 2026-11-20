@@ -323,7 +323,7 @@
     },
     {
      "sign": "look",
-     "detail": "a clear pool of still water under the sacred tree, distinct from the amber sap at its foot, with the rootworm's tunnel mouth at its far lip"
+     "detail": "the amber sap pool at the sacred tree's foot, with the rootworm's tunnel mouth at its far lip"
     },
     {
      "sign": "person",
@@ -331,17 +331,17 @@
      "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
     }
    ],
-   "met": true,
-   "why": "Met. Under the sacred tree (HistTree04), 900 units west of its trunk and clear of its own sap pool, lies a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives).",
-   "fit": "The pool as placed.",
-   "narrow": "Nothing more to change."
+   "met": false,
+   "why": "Partly met. Under the sacred tree (HistTree04), 900 units west of its trunk and apart from its own sap pool, the draft lays a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives). Not met: a Hist's root pool is its sap pool, never water (decision 0040, 3), so the stop, the tunnel mouth, the marker and Cheeval-Xu belong at the tree's own sap pool and the water puddle goes.",
+   "fit": "The water puddle stands where the stop is until the stop moves to the sap pool.",
+   "narrow": "Yes: move the tunnel mouth, the marker and Cheeval-Xu's work spot to the sap pool's lip and delete the puddle; no other row changes."
   },
   {
    "seq": 12,
    "from": [
-    "8c29921fde"
+    "714fc66bd8"
    ],
-   "thing": "the band's safe house, a quiet room off the market: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added",
+   "thing": "the band's safe house, a room behind the market's stalls: one of the Argonian house interiors of Black Marsh & Valenwood's Helstrom (the drafted place already holds nine of that interior), with a bed, a chest, a keeper and two lanterns, all added",
    "line": "chainbreakers",
    "tier": "AGENT_INVENTED",
    "signs": [
@@ -355,7 +355,7 @@
     }
    ],
    "met": true,
-   "why": "Met for the place's part. A door at the back of the Market Cave, off the market, opens on a further copy of the city's one-room Argonian house, kept by Ruusa-Wan, with its beds, the household's chest and two lanterns on the sill by the door; a player finds it only by word of mouth. The password and the band's word are the quest's lines.",
+   "why": "Met for the place's part. A door at the back of the Market Cave, off the market, opens on a further copy of the city's one-room Argonian house, kept by Ruusa-Wan, with its beds, the household's chest and two lanterns on the sill by the door; a member finds it by the band's word. The password and the band's word are the quest's lines.",
    "fit": "The safe house as placed.",
    "narrow": "Nothing more to change for the place.",
    "rests": {

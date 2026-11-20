@@ -9,9 +9,9 @@
    "rests": {"space": "exterior", "ref": "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"},
    "signs": [],
    "met": false,
-   "why": "Partly met. A grown Hist (King of the Murkmire's HistTree03, some 14 metres tall) stands on open ground at the town's east edge, where Cormaris had its harbour, with four of King of the Murkmire's dead roots laid out from its trunk and a patch of its Hist water at its west foot by the street. It carries the shrine blessing and the rootworm stop; the root-tender works beside it. Not met yet: its bark is the living tree's (the sick-bark block is owed), the pool is a stand-in puddle (a real pool needs the world's ground and moves the waterline), and no person is named yet.",
-   "fit": "The tree as placed; the puddle stands where the pool would be.",
-   "narrow": "Yes for the people (place-people names the root-tender Weeltul). The darkened bark is the owed sick-bark block; the true pool is a world-build change and the owner's call.",
+   "why": "Partly met. A grown Hist (King of the Murkmire's HistTree03, some 14 metres tall) carries the shrine blessing and the rootworm stop, with four of King of the Murkmire's dead roots laid out from its trunk; the root-tender works beside it. Not met yet: the story puts the tree in the middle of the town, at its sap pool, and the draft stands it at the town's east edge with a stand-in water puddle; the draft moves the tree, its roots, the stop and the root-tender to the middle of the town, round a pool of its own sap. Its bark is the living tree's (the sick-bark block is owed), and no person is named yet.",
+   "fit": "The tree stands at the east edge until the draft moves it to the middle of the town.",
+   "narrow": "Yes: move the tree, its dead roots and the stop to the middle of the town and lay a sap pool at its foot; place-people names the root-tender Weeltul; the darkened bark is the owed sick-bark block.",
    "tier": "AGENT_INVENTED"
   },
   {

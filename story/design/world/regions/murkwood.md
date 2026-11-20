@@ -287,7 +287,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 **Helstrom.**
 
 - A stranger stranded on the approaches is pulled out by an Agaceph raftsman. <!-- place_note:helstrom/hooks -->
-- A quiet house off the market takes visitors only by word of mouth, and nobody will say whose it is. <!-- place_note:helstrom/hooks -->
+- A quiet house by the city landing takes visitors only by word of mouth, and nobody will say whose it is. <!-- place_note:helstrom/hooks -->
 - Every naheesh in the interior travels to the Root Talk. <!-- place_note:helstrom/hooks -->
 
 **Hutan-Ketu.**

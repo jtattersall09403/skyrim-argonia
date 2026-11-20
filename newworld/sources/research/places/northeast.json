@@ -4963,7 +4963,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The garrison holds the walls and the road, and Sarpa raids come to its western approach. The garrison turns away anyone who goes down the prison stair.",
+     "text": "The garrison holds the walls and the road, and Sarpa raids come to its western approach. The gaoler turns away anyone who goes down the prison stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4989,7 +4989,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A garrison captain whose chalk cart and its driver vanished on the western road. The old Legion prison below the keep is kept locked, with a gaoler of the garrison at its door, and the carters say they hear moaning from it at night.",
+     "text": "A garrison captain whose chalk cart and its driver vanished on the western road. The old Legion prison below the keep is kept locked, with a gaoler of the Toh-Reel-Ka, not of the garrison, at its door, and the carters say they hear moaning from it at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5015,7 +5015,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Fort Neugrad (Skyrim), is an Imperial fort of 533 buildings with two interiors, which serve as the keep's hall and the prison below it, and it fits a walled fort on a mesa shoulder. The prison is a locked door with a gaoler. Its 100 hostiles are removed and its Nordic pieces are replaced with chalk-dusted grey Imperial stone. Still to add: the barracks bunks, the quartermaster's store with its strongbox, the yard grindstone and workbench and the reed-cord pennants.",
+     "text": "Its main source, Fort Neugrad (Skyrim), is an Imperial fort of 533 buildings with two interiors, which serve as the keep's hall and the prison below it, and it fits a walled fort on a mesa shoulder. The prison is a locked door with a gaoler. Its 100 hostiles are removed and its Nordic pieces are replaced with chalk-dusted grey Imperial stone. Still to add: the barracks bunks, the keep hall's bed and benches, the quartermaster's store in the keep with its strongbox, the yard grindstone and workbench and the reed-cord pennants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5028,7 +5028,7 @@
    "gives": [
     {
      "kind": "trader-blacksmith",
-     "detail": "the Dunmer quartermaster: iron and steel arms, arrows",
+     "detail": "the Dunmer quartermaster in his store in the keep: iron and steel arms, arrows",
      "count": 1
     },
     {
@@ -5043,12 +5043,12 @@
     },
     {
      "kind": "trainer",
-     "detail": "Archery, Journeyman, the wall captain who watches the Sarpa",
+     "detail": "Archery, Journeyman, the wall captain who watches the Sarpa and sits in the keep's hall off watch",
      "count": 1
     },
     {
      "kind": "free-bed",
-     "detail": "a bunk in the barracks",
+     "detail": "a bunk in the barracks, and a bed with benches in the keep's hall",
      "count": 1
     },
     {

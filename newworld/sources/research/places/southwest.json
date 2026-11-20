@@ -707,7 +707,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs.",
+     "text": "The Imperial prison, 'the Rose', a short walk east of Blackrose city across the marsh (canon's 'a day's march' is the old measure; here the city's quay is about 280 m away). It is a ruin reoccupied by the Blackguards' heirs.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -4324,14 +4324,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei, emptied by raiders from the Rose and left to the lake.",
+   "summary": "Sheh-Ara is a half-sunken stilt village east of Lujei, emptied by raiders from the Rose and left to the lake.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard, on the ferry channel south of Lujei. It stood outside the island core's protection, and the Rose's raiders emptied it.",
+     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard, on the ferry channel east of Lujei. It stood outside the island core's protection, and the Rose's raiders emptied it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4357,7 +4357,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
+       "title": "an abandoned village on the map on the ferry channel east of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
@@ -4389,7 +4389,7 @@
       },
       {
        "kind": "reasoning",
-       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
+       "title": "an abandoned village on the map on the ferry channel east of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
@@ -5048,7 +5048,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "an old bull crocodile in the drowned street",
+     "detail": "an old bull crocodile on the highest roof",
      "count": 1,
      "reward": "boss-chest"
     },

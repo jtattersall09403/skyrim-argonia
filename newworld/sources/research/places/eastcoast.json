@@ -1481,7 +1481,7 @@
     },
     {
      "aspect": "history",
-     "text": "One of the Company's saltrice runs from Thorn to Archon in the last years before the secession; it ran onto a sandbar at the bight's mouth and settled where it lies.",
+     "text": "One of the Company's saltrice runs from Thorn to Archon in the last years before the secession; it ran onto a sandbar at the bight's mouth and settled where it lies, carrying a Gideon relic dealer's whole stock beside the Company's saltrice.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1530,7 +1530,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A strongbox of Company coin is the draw, with the bills of lading that name the cargo's buyer. Salvagers from Ysan and Arorha have picked at the hull but not reached the hold.",
+     "text": "A strongbox of Company coin is the draw, with the bills of lading that name the cargo's buyer and the best piece of the Gideon relic dealer's stock, which the captain locked away with his own coin. Salvagers from Ysan and Arorha have picked at the hull but not reached the hold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1650,7 +1650,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "captain's strongbox with Company coin",
+     "detail": "captain's strongbox with Company coin and the Gideon relic dealer's best piece",
      "count": 1
     }
    ]
@@ -4603,7 +4603,7 @@
    "siting": "coast",
    "danger_band_id": "D3",
    "importance": 4,
-   "summary": "Rainbreaker Keep is an old Imperial sea-watch keep on Skeith Isle, left empty at the secession. The Brethren of Marque Landing now use it as their strong room.",
+   "summary": "Rainbreaker Keep is an old Imperial sea-watch keep on Skeith Isle, garrisoned by the Archwardens' chartered crews until the Brethren took it in 4E 189. The Brethren of Marque Landing now use it as their strong room.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4642,7 +4642,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Empire to watch the Archon coast and break the pirate trade, and kept as a signal tower until the secession, when the garrison left. No Warden family took the keys, and the keep stood empty until pirates moved in.",
+     "text": "Built by the Empire to watch the Archon coast and break the pirate trade, and kept as a signal tower until the secession, when the garrison left. The Archwardens' chartered crews then manned it until Bramman's Brethren took it from them in 4E 189.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

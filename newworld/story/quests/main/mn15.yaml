@@ -67,8 +67,9 @@ truth:
   who:
   - the kings' priests
   where: the Vaults of Gemin
-  what: A priest hid the second seal-stone in the lowest hall of the Conclave's old vaults and cut a tablet beside it saying
-    why the Root was sealed. The vaults later sank and flooded; the lowest hall is under water.
+  what: A priest hid the second seal-stone in the lowest hall of the Ayleid vaults the Conclave later took for its
+    own, and cut a tablet beside it saying why the Root was sealed. The vaults later sank and flooded; the lowest
+    hall is under water.
 - id: t2
   when: days before the player comes
   who:
