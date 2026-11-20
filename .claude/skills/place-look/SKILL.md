@@ -24,6 +24,7 @@ tool is `python -m tools.places look <place> <verb> [args]`; its contract is `do
 | Is the way open | `walk <from> <to>` |
 | Where to look next | `overview` |
 | What is at a pixel | `pick <png> <px> <py>` |
+| Why a door or deck is cut off; where the built mesh breaks | `probe --mesh [<a> <b>]`; any view with `--mesh` |
 
 ## Working a fault
 

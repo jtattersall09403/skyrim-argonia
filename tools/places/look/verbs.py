@@ -53,7 +53,9 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         return view(d, place, sess["strokes"], verb, args)
     if verb == "probe":
         sc = d.scene(place, sess["strokes"])
-        pos, o = _opts(args, {"all": False})
+        pos, o = _opts(args, {"all": False, "mesh": False})
+        if o.get("mesh"):
+            return mesh_probe(sc, place, pos)
         if o.get("all") or not pos:
             f = sc.faults()
             by = {}
@@ -139,7 +141,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     d.sync(strokes)
     sc = d.scene(place, strokes)
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
-                          "slab": True, "axis": False, "grass": False, "n": True, "helpers": False})
+                          "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
+                          "mesh": False})
     d.helpers = bool(o.get("helpers"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
     faults = {x["id"] for x in sc.faults()}
@@ -147,11 +150,29 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
     height = "eye" if o.get("eye") else "high" if o.get("high") else "top" if o.get("top") else "oblique"
     side = o.get("from", "se")
     timing = {"scene_s": round(time.time() - t0, 2)}
+    mesh_facts: dict = {}
+    M = marks = None
+    if o.get("mesh"):
+        M, mesh_facts = built_mesh(place)
+        marks = mesh_marks(sc, M) if M is not None else None
+    raw_shot = d.shot
+
+    def shot(c):   # each frame with the built mesh over it when asked (a section keeps its slab's triangles)
+        img_, r_ = raw_shot(c)
+        if M is not None:
+            keep_ = None
+            if c.get("line"):
+                a_, b_ = np.asarray(c["line"][0][:2], float), np.asarray(c["line"][1][:2], float)
+                t_ = (b_ - a_) / max(float(np.linalg.norm(b_ - a_)), 1e-9)
+                rel = M.C[:, :2] - a_
+                keep_ = np.abs(rel[:, 0] * t_[1] - rel[:, 1] * t_[0]) <= float(o.get("slab", 96))
+            img_ = draw.mesh_overlay(img_, c, M, *marks, keep=keep_)
+        return img_, r_
     if verb == "at":
         th = sc.resolve(pos[0])
         cam = cam or geom.frame(th["lo"], th["hi"], side, height, w, h, ground_z=sc.ground_under(th["lo"], th["hi"]))
         cam = cam | {"grass": bool(o.get("grass"))}
-        img, r = d.shot(cam)
+        img, r = shot(cam)
         timing |= {k: r.get(k) for k in ("ms", "draw_ms", "render_ms", "calls", "triangles")}
         if not plain:
             img, labels = draw.annotate(img, cam, sc, th, faults, f"{th['name']} from {side.upper()}, {height}")
@@ -164,7 +185,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         tiles, caps, rms = [], [], []
         for s in ("n", "e", "s", "w"):
             c = geom.frame(th["lo"], th["hi"], s, height, tw, thh, ground_z=sc.ground_under(th["lo"], th["hi"]))
-            img, r = d.shot(c)
+            img, r = shot(c)
             rms.append(r["ms"])
             if not plain:
                 img, _ = draw.annotate(img, c, sc, th, faults, f"from {s.upper()}")
@@ -189,7 +210,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
             z = max(g, geom.aabb(sc.by_id[sup])[1][2] if sup else g)
             c = {"pos": [p[0] - dv[0] * 60, p[1] - dv[1] * 60, z + geom.EYE], "target": [p[0] + dv[0] * 800, p[1] + dv[1] * 800, z + geom.EYE * 0.7],
                  "up": [0, 0, 1], "fov": 70, "w": tw, "h": thh, "near": 8, "far": 7000}
-            img, r = d.shot(c)
+            img, r = shot(c)
             rms.append(r["ms"])
             heading = (math.degrees(math.atan2(dv[0], dv[1])) + 360) % 360
             if not plain:
@@ -218,7 +239,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
             A, B = [_xy(sc, pos[0]), _xy(sc, pos[1])]
             title = f"section {pos[0]} to {pos[1]}"
         cam, crossed, prof = section_setup(sc, A, B, slab, w, h)
-        img, r = d.shot(cam)
+        img, r = shot(cam)
         timing |= {"shot_ms": r["ms"], "draw_ms": r["draw_ms"]}
         if not plain:
             img = draw.annotate_section(img, cam, sc, prof, crossed, faults, title + f" (slab {slab:.0f} u each side, looking {_facing(cam)})")
@@ -232,8 +253,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
         th = sc._of(place, "place", allp)
         c1 = geom.frame(th["lo"], th["hi"], side, "oblique", w, h, ground_z=sc.ground_under(th["lo"], th["hi"]), fill=0.95)
         c2 = geom.frame(th["lo"], th["hi"], "s", "top", w, h, fill=0.95)
-        i1, r1 = d.shot(c1)
-        i2, r2 = d.shot(c2)
+        i1, r1 = shot(c1)
+        i2, r2 = shot(c2)
         if not plain:
             i1, _ = draw.annotate(i1, c1, sc, th, faults, f"{place} from {side.upper()}")
             i2, _ = draw.annotate(i2, c2, sc, th, faults, f"{place} from above")
@@ -244,6 +265,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None) -> dict:
             res = {"png": _save(img, _out(place, "overview"), c1 | {"tiles": [c1, c2]})}
     else:
         raise ValueError(verb)
+    if mesh_facts and not keep:
+        res["mesh"] = {k: v for k, v in mesh_facts.items() if k != "built"}
     if not keep:
         res["timing"] = timing | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
@@ -466,3 +489,105 @@ def hand(sc, verb, args, sess) -> list[dict]:
             ops.append({"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr})
         return ops
     raise ValueError(verb)
+
+
+# ---------- the built walkable mesh ----------
+_MESH: dict = {}
+
+
+def built_mesh(place: str, space: str = "exterior"):
+    """(Mesh, facts) of the place's built navmesh in `space`, cached per export; facts say which build and whether
+    the place files are newer than it (stale)."""
+    from tools.places.look import mesh
+    from tools.places.look.scene import data_out
+    from tools.places.seat import PLACES
+    path, build = mesh.find(place, data_out())
+    if path is None:
+        return None, {"mesh": None, "why": f"{place} has no build with a navmesh (draft check or the place build makes one)"}
+    key = (str(path), path.stat().st_mtime, space)
+    if key not in _MESH:
+        _MESH.clear()
+        _MESH[key] = mesh.load(path, space)
+    facts = {"navmesh": str(path), **mesh.stale(PLACES / place, build, place)}
+    if facts["stale"]:
+        facts["warning"] = "STALE: the place files are newer than the build this mesh is of; rebuild before trusting it"
+    return _MESH[key], facts
+
+
+def mesh_marks(sc, M) -> tuple[list, list]:
+    """Door arrivals [(name, xyz, on the main network)] and street points [(xyz, on)] for the overlay and the numbers."""
+    di = M.door_islands()
+    doors = []
+    for p in sc.pieces:
+        dd = p.get("door") or {}
+        if p.get("kind") != "door" or not dd.get("to_space"):
+            continue
+        at = dd.get("arrival") or [p["m"][0][3], p["m"][1][3], p["m"][2][3]]
+        isl = di.get(p["id"], M.island_of(at[0], at[1], at[2]))
+        doors.append((dd["to_space"], list(at), isl == M.main))
+    pts = []
+    for line in sc.files.get("paths") or []:
+        for q in line.get("points") or []:
+            t, z = street_point(sc, M, q)
+            pts.append(([q[0], q[1], z], bool(t >= 0 and M.lab[t] == M.main)))
+    return doors, pts
+
+
+def street_point(sc, M, q) -> tuple[int, float]:
+    """The triangle a street point stands on: the main network's under it if any, else the one nearest the ground."""
+    g = sc.ground.height(q[0], q[1]) or 0.0
+    t, z = M.tri_at(q[0], q[1], g + 200, tol=400)
+    if t >= 0 and M.lab[t] != M.main:
+        for zz in (g, g + 100, g + 300):
+            t2, z2 = M.tri_at(q[0], q[1], zz, tol=60)
+            if t2 >= 0 and M.lab[t2] == M.main:
+                return t2, z2
+    return (t, z) if t >= 0 else (-1, g)
+
+
+def mesh_probe(sc, place: str, names: list[str]) -> dict:
+    """`probe --mesh [a b]`: the islands and what stands on each; with two things, whether a walk joins them and,
+    where it does not, where and how the mesh breaks between them."""
+    M, facts = built_mesh(place)
+    if M is None:
+        return facts
+    doors, pts = mesh_marks(sc, M)
+    di = M.door_islands()
+    by_isl: dict[int, dict] = {}
+    for p in sc.pieces:
+        if p["id"] in di:
+            by_isl.setdefault(di[p["id"]], {"doors": [], "points": 0})["doors"].append((p.get("door") or {}).get("to_space"))
+    for q, _ in pts:
+        t, _z = M.tri_at(q[0], q[1], q[2], tol=8)
+        if t >= 0:
+            by_isl.setdefault(int(M.lab[t]), {"doors": [], "points": 0})["points"] += 1
+    rows = [{"island": int(i), "triangles": int(M.count[i]), **({"main": True} if i == M.main else {}),
+             "doors": by_isl.get(i, {}).get("doors", []), "street_points": by_isl.get(i, {}).get("points", 0)}
+            for i in sorted(set(by_isl) | {M.main}, key=lambda i: -M.count[i])]
+    res = {**facts, "islands": len(M.count), "triangles": int(len(M.T)), "listed": rows,
+           "doors_off_main": [n for n, _, on in doors if not on],
+           "street_points_off_main": sum(1 for _, on in pts if not on)}
+    if len(names) >= 2:
+        ends = []
+        for n in names[:2]:
+            th = sc.resolve(n)
+            at = _point(th)
+            pid = th["pieces"][0]["id"] if th["kind"] == "door" else None
+            isl = di.get(pid, -1) if pid else -1
+            if isl < 0:
+                isl = M.island_of(at[0], at[1], at[2] if len(at) > 2 else None)
+            ends.append({"thing": th["name"], "at": [round(v) for v in at], "island": int(isl)})
+        res["join"] = {"from": ends[0], "to": ends[1], "joined": ends[0]["island"] == ends[1]["island"] >= 0}
+        if not res["join"]["joined"] and min(e["island"] for e in ends) >= 0:
+            g = M.gap(ends[0]["island"], ends[1]["island"])
+            if g:
+                g["pieces_at_gap"] = [
+                    {"id": p["id"], "edid": p.get("edid")} for p in sc.pieces
+                    if p.get("kind") not in ("light", "marker", "plant", "groundcover") and _box_has(p, g["at"], 48)][:8]
+            res["join"]["gap"] = g
+    return res
+
+
+def _box_has(p, at, pad):
+    lo, hi = geom.aabb(p)
+    return all(lo[k] - pad <= at[k] <= hi[k] + pad for k in range(3))

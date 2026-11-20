@@ -291,3 +291,64 @@ def test_a_boat_on_the_water_floats_and_one_in_the_air_does_not():
     flying = piece("flying", [900, 0, 300], **{k: v for k, v in hull.items() if k in ("lo", "hi")},
                    **{k: v for k, v in hull.items() if k not in ("lo", "hi")})
     assert [(x["id"], x["fault"]) for x in geom.faults([afloat, flying], g)] == [("flying", "floats")]
+
+
+# ---------- the built walkable mesh ----------
+def _two_decks(step=0.0, across=0.0):
+    """Two 100x100 squares of two triangles each: the second shifted `across` along x past the first's edge and
+    raised `step`; joined (one island) only when they touch at the same height."""
+    v = [[0, 0, 0], [100, 0, 0], [100, 100, 0], [0, 100, 0],
+         [100 + across, 0, step], [200 + across, 0, step], [200 + across, 100, step], [100 + across, 100, step]]
+    t = [[0, 1, 2], [0, 2, 3], [4, 5, 6], [4, 6, 7]]
+    key = [tuple(p) for p in v]
+    edges = {}
+    for i, tri in enumerate(t):
+        for k in range(3):
+            edges.setdefault(frozenset((key[tri[k]], key[tri[(k + 1) % 3]])), []).append(i)
+    nb = [[next((o for o in edges[frozenset((key[tri[k]], key[tri[(k + 1) % 3]]))] if o != i), -1) for k in range(3)]
+          for i, tri in enumerate(t)]
+    return v, t, nb
+
+
+def test_mesh_islands_and_a_join():
+    from tools.places.look import mesh
+    M = mesh.Mesh(*_two_decks())
+    assert len(M.count) == 1 and M.island_of(50, 50, 0) == M.island_of(150, 50, 0)
+
+
+def test_mesh_gap_a_height_step():
+    from tools.places.look import mesh
+    M = mesh.Mesh(*_two_decks(step=80))
+    a, b = M.island_of(50, 50, 0), M.island_of(150, 50, 80)
+    assert a != b and a >= 0 and b >= 0
+    g = M.gap(a, b)
+    assert g["kind"] == "height step" and g["step"] == 80 and g["across"] == 0 and g["at"][0] == 100
+
+
+def test_mesh_gap_a_missing_strip():
+    from tools.places.look import mesh
+    M = mesh.Mesh(*_two_decks(across=60))
+    g = M.gap(M.island_of(50, 50), M.island_of(200, 50))
+    assert g["kind"] == "missing strip" and g["across"] == 60 and g["step"] == 0
+
+
+def test_mesh_point_off_and_on_by_height():
+    from tools.places.look import mesh
+    M = mesh.Mesh(*_two_decks(step=300))
+    assert M.tri_at(150, 50, 0)[0] == -1          # the upper deck is far over a point on the ground
+    assert M.tri_at(150, 50, 290)[1] == pytest.approx(300)
+
+
+def test_mesh_stale_when_a_place_file_is_newer(tmp_path):
+    from tools.places.look import mesh
+    plan = tmp_path / "b" / "shards" / "p" / "plan.json"
+    plan.parent.mkdir(parents=True)
+    plan.write_text("{}")
+    pd = tmp_path / "p"
+    (pd / "spaces").mkdir(parents=True)
+    f = pd / "spaces" / "refs.jsonl"
+    f.write_text("")
+    os.utime(f, (plan.stat().st_mtime + 10, plan.stat().st_mtime + 10))
+    assert mesh.stale(pd, tmp_path / "b", "p")["stale"]
+    os.utime(f, (plan.stat().st_mtime - 10, plan.stat().st_mtime - 10))
+    assert not mesh.stale(pd, tmp_path / "b", "p")["stale"]

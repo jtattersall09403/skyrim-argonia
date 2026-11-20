@@ -25,6 +25,7 @@ by its spot id, or a point `x,y` (`x,y,z`). An unknown name answers with the str
 | `probe --all` | Every fault in the place: a piece that **floats** (its lowest point over the ground under it, and no chain of resting reaches the ground), a **missing base** or an **unresolved** model (a stand-in box), a bridge or walkway **end** with nothing under it, a **door** with no ground before it. Run it first, and after every change. |
 | `probe <thing>` | Per piece: its box, each foot's height over the ground (negative: buried), what it rests on, its nearest neighbours and the gap to each; a span's two ends; a door's ground. |
 | `pick <png> <px> <py>` | What is at a pixel of a look: the piece, its base, model, structure, and its lowest point over the ground; and the ground point the pixel falls on. |
+| `probe --mesh [<a> <b>]` | The built walkable mesh (the navmesh of the place's newest build: its own draft check, else the shared build): its islands, each with its triangles and the doors and street points on it, the doors and street points off the main network; with two things, whether a walk joins them and, if not, where the mesh breaks between them (the two open edges, the gap across and the height step, `height step` or `missing strip`, and the pieces there). Says `STALE` when a place file is newer than that build. |
 
 What holds a piece up: something whose top is from 24 units under its lowest point to 160 over it (a post rising
 through a deck holds the deck; a house's roof far above does not). A tree holds up nothing from below, but a
@@ -36,7 +37,7 @@ grows on. The world's own trees and rocks around the place count. Effects (mist,
 Each view prints a PNG path. Labels are on by default: structure ids where they stand, a 1.8 m figure at the
 subject, a north arrow, the side seen from, the ground grid and its spacing, red outlines on what `probe --all`
 faults. `--plain` drops them, `--size WxH` sets the image (768x576 by default), `--helpers` shows the editor's light
-bulbs and collision boxes, `--grass` the grown grass.
+bulbs and collision boxes, `--grass` the grown grass. `--mesh` lays the built walkable mesh over any view: each island in its own colour (the main network green) with its id, door arrivals as squares and street points as dots, white on the main network and red off it; a section keeps the triangles in its slab.
 
 | Verb | For |
 |---|---|

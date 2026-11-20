@@ -218,3 +218,46 @@ def pair(a: Image.Image, b: Image.Image, la: str, lb: str) -> Image.Image:
     tag(d, (a.size[0] / 2, a.size[1] - 8), la, size=15, fill=(255, 255, 160, 240))
     tag(d, (a.size[0] * 1.5, a.size[1] - 8), lb, size=15, fill=(255, 255, 160, 240))
     return out
+
+
+def mesh_overlay(img: Image.Image, cam: dict, M, doors: list[tuple[str, list, bool]], points: list[tuple[list, bool]],
+                 keep=None) -> Image.Image:
+    """The built walkable mesh over a look: each island translucent in its own colour (the main network green) with
+    its id at its middle, door arrivals as squares and street points as dots (white on the mesh, red off it).
+    `keep`: a mask of the triangles to draw (a section's slab); else those in front of the camera and in the frame."""
+    from tools.places.look import mesh as mesh_
+    w, h = img.size
+    over = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(over)
+    if len(M.T):
+        P = geom.project(cam, M.V)
+        tri = P[M.T]                                   # (n, 3, 3)
+        front = (tri[:, :, 2] > 0).all(axis=1)
+        inside = (tri[:, :, 0].max(1) >= 0) & (tri[:, :, 0].min(1) <= w) & (tri[:, :, 1].max(1) >= 0) & (tri[:, :, 1].min(1) <= h)
+        e1, e2 = tri[:, 1, :2] - tri[:, 0, :2], tri[:, 2, :2] - tri[:, 0, :2]
+        small = np.abs(e1[:, 0] * e2[:, 1] - e1[:, 1] * e2[:, 0]) / 2 < w * h / 6   # one right by the eye hides the rest
+        m = front & inside & small & (np.ones(len(M.T), bool) if keep is None else keep)
+        idx = np.where(m)[0]
+        idx = idx[np.argsort(-tri[idx, :, 2].mean(1))]
+        for i in idx:
+            c = mesh_.colour(int(M.lab[i]), M.main)
+            d.polygon([(float(x), float(y)) for x, y, _ in tri[i]], fill=c + (70,), outline=c + (170,))
+        for isl in sorted(set(M.lab[idx].tolist())):
+            s = idx[M.lab[idx] == isl]
+            cx, cy = float(tri[s, :, 0].mean()), float(tri[s, :, 1].mean())
+            if 0 <= cx < w and 0 <= cy < h:
+                tag(d, (cx, cy), f"#{isl}" + (" main" if isl == M.main else f" {int(M.count[isl])}t"),
+                    fill=mesh_.colour(int(isl), M.main) + (230,), size=11)
+    for name, at, on in doors:
+        p = geom.project(cam, [at])[0]
+        if p[2] > 0 and _inside(p, w, h):
+            col = (255, 255, 255, 255) if on else (230, 20, 20, 255)
+            d.rectangle([p[0] - 5, p[1] - 5, p[0] + 5, p[1] + 5], fill=col, outline=(0, 0, 0, 255))
+            tag(d, (p[0] + 4, p[1] - 14), name, size=10, bold=False)
+    if points:
+        pp = geom.project(cam, [q for q, _ in points])
+        for p, (_, on) in zip(pp, points):
+            if p[2] > 0 and _inside(p, w, h):
+                col = (255, 255, 255, 255) if on else (230, 20, 20, 255)
+                d.ellipse([p[0] - 3, p[1] - 3, p[0] + 3, p[1] + 3], fill=col, outline=(0, 0, 0, 255))
+    return Image.alpha_composite(img.convert("RGBA"), over)
