@@ -59,8 +59,7 @@ def _static(place_id: str, source_id: str, out: Path) -> dict:
             fp = json.loads((out / "footprints.json").read_text())
         except (OSError, ValueError):
             fp = {}
-        world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer") != "place"
-                 and (r.get("kind") or (bases.get(r["base"]) or {}).get("kind")) not in geom.NO_SOLID]
+        world = geom.world_rows(grd.exterior.refs if grd.exterior else [], bases)
         _STATIC[key] = {"world_refs": world,
                         "bases": bases | io.place_bases(src, grd, {"place_id": place_id, "source_id": source_id} | _place_json(place_id)),
                         "ground": Ground.load(bdir / f"ground.{place_id}"), "footprints": fp}

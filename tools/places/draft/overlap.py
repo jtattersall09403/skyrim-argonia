@@ -25,9 +25,10 @@ def box(ref: dict, bases: dict) -> list | None:
 
 def thing(ref: dict, bases: dict) -> dict:
     """A row as the build's check sees it: its base's record bounds beside its pose."""
-    b = (bases.get(ref.get("base")) or {}).get("bounds")
+    base = bases.get(ref.get("base")) or {}
+    b = base.get("bounds")
     return {**ref, "space": ref.get("space", "exterior"), "rot": ref.get("rot") or [0, 0, 0],
-            "bounds": list(b[0]) + list(b[1]) if b else None}
+            "edid": base.get("edid"), "model": base.get("model"), "bounds": list(b[0]) + list(b[1]) if b else None}
 
 
 def inside(p, ref: dict, bases: dict, z: bool = True, pad: float = 0.0) -> bool:

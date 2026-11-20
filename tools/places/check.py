@@ -625,11 +625,25 @@ def sap_of(pool: dict, hist: dict) -> bool:
     return math.dist(sap.centre(pool), hist["pos"][:2]) <= sap.TOL
 
 
+FRAME_WORDS = ("door", "entrance", "pillar", "arch", "frame", "gate", "portal", "jamb")
+FRAME_RING = 0.5  # a door whose origin is outside this share of a building's box stands in its wall
+
+
+def door_frame(d: dict, f: dict) -> bool:
+    """A door and its own frame stand in each other: `d` a door, `f` a building or static that frames it, either by
+    what it is (an entrance, a door surround, the pillars or arch round it) or by where the door stands (in the wall
+    ring of its box, not in its middle)."""
+    if d.get("kind") != "door" or f.get("kind") not in ("building", "static"):
+        return False
+    words = f"{f.get('edid') or f.get('base_edid') or ''} {f.get('model') or ''}".lower()
+    return any(w in words for w in FRAME_WORDS) or not obb_contains(f, d["pos"], FRAME_RING)
+
+
 def _source_had(a: dict, b: dict) -> bool:
     """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
     pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
     moves a cluster as one rigid piece)."""
-    if rests(a, b) or sap_of(a, b) or sap_of(b, a):
+    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False

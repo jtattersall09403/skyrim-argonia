@@ -38,8 +38,9 @@ def piece(r: dict, bases: dict) -> dict:
             "hi": list((b or STAND_IN)[1]), "door": r.get("door")}
 
 
-def faults(refs: list[dict], bases: dict, G) -> list[str]:
-    """Every obviously wrong piece of the exterior rows `refs` over the ground `G`, one line each."""
+def faults(refs: list[dict], bases: dict, G, world_refs: list[dict] = ()) -> list[str]:
+    """Every obviously wrong piece of the exterior rows `refs` over the ground `G`, one line each. `world_refs`: the
+    world's own rows about the place (its trees, rocks), which hold up what hangs on or rests on them, as in probe."""
     bad: list[str] = []
     by_id = {r["id"]: r for r in refs}
     pieces = []
@@ -54,7 +55,9 @@ def faults(refs: list[dict], bases: dict, G) -> list[str]:
             continue
         pieces.append(piece(r, bases))
     ends: dict[str, int] = {}
-    for f in look.faults(pieces, G):
+    world = [dict(p, world=True) for p in (piece(r, bases) for r in look.world_rows(world_refs, bases))
+             if p.get("resolved")]
+    for f in look.faults(pieces, G, world):
         i, name = f["id"], f.get("edid") or by_id[f["id"]].get("base")
         if f["fault"] in ("missing base", "unresolved"):
             bad.append(f"{i} ({name}, {by_id[i].get('kind')}) {UNRESOLVED}")

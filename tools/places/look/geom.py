@@ -90,6 +90,13 @@ def vessel(p: dict) -> bool:
     return p.get("kind") in ("building", "static") and any(w in words for w in HULL_WORDS)
 
 
+def world_rows(refs: list[dict], bases: dict) -> list[dict]:
+    """The world's own solid things about a place (its trees, rocks) from the ground bundle's rows: what holds up a
+    place's pieces beside its own. Probe and `draft check` both judge with these."""
+    return [r for r in refs if r.get("layer") != "place"
+            and (r.get("kind") or (bases.get(r["base"]) or {}).get("kind")) not in NO_SOLID]
+
+
 def stage_made(p: dict) -> bool:
     """A piece the build makes whether or not the studio carries its base: a base of a master the game always loads
     (the jail's chest and mat), or a row a draft stage mints on its own (a Hist's sap pool, `<place>.sap.<tree>`)."""

@@ -58,3 +58,12 @@ def test_a_bridge_needs_support_at_both_ends():
     assert got == []
     # a bridge whose ends rest on the banks stands
     assert obvious.faults([ref("br", 0, 0, 20, "bridge")], BASES, flat()) == []
+
+
+def test_a_lantern_on_the_worlds_own_tree_is_held_as_probe_holds_it():
+    bases = {**BASES, "lantern": {"bounds": [[-12, -12, -40], [12, 12, 0]], "model": "x/lantern.nif"},
+             "tree": {"bounds": [[-60, -60, 0], [60, 60, 900]], "model": "x/tree.nif", "kind": "tree"}}
+    lamp = ref("l", 0, 0, 400, "lantern")
+    tree = ref("t", 0, 0, 0, "tree", kind="tree", layer="world")
+    assert any(obvious.FLOATS in b for b in obvious.faults([lamp], bases, flat()))
+    assert obvious.faults([lamp], bases, flat(), [tree]) == []
