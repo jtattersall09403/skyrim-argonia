@@ -15,9 +15,9 @@ import urllib.request
 from pathlib import Path
 
 from tools.places.look import draw
-from tools.places.look.scene import LOOK_OUT, ROOT, Scene, data_out
+from tools.places.look.scene import LOOK_OUT, LOOK_PORT, ROOT, Scene, data_out
 
-PORT = int(os.environ.get("LOOK_PORT", "8791"))
+PORT = int(os.environ.get("LOOK_PORT", LOOK_PORT))
 IDLE = float(os.environ.get("LOOK_IDLE", "900"))
 SOCK = LOOK_OUT / "daemon.sock"
 PIDF = LOOK_OUT / "daemon.pid"
