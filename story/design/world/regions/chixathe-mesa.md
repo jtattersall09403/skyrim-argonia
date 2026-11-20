@@ -351,6 +351,7 @@ Each is quoted from the notes and cited to its row. The place's own hooks note c
 
 - A garrison captain whose chalk cart and its driver vanished on the western road. <!-- place_note:fort-chalkmoth/hooks -->
 - The old Legion prison below the keep is kept locked, with a gaoler of the Toh-Reel-Ka, not of the garrison, at its door, and the carters say they hear moaning from it at night. <!-- place_note:fort-chalkmoth/hooks -->
+- A trapdoor in the yard behind the barracks, out of the walls' sight, opens on the prison's old passage, whose ladder comes up into the guardroom at the foot of the prison stair. <!-- place_note:fort-chalkmoth/hooks -->
 
 **Vorannuhl.**
 

@@ -70,7 +70,7 @@
     },
     {
      "aspect": "present",
-     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here.",
+     "text": "The waterfall, the ravine-severed mounds, the Hist in its sap pool and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -132,7 +132,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist tree stands in the town square in the middle of a pond, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side.",
+     "text": "The Hist tree stands in the town square in the middle of a pool of its sap, ringed by ancient pillars and a low stone wall, public and defended. Dunmer households keep their ancestors and a quiet Tribunal-shaped habit; the grave-stake tradition of the Argonians and the Ayleid-compound mortuary sit side by side.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons want the thief found before the quarters settle it themselves.",
+     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the Hist's sap pool in the square, and the Vicecanons want the thief found before the quarters settle it themselves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -331,7 +331,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist in the square's pond: a blessing of resist poison, given by its tree-minder",
+     "detail": "the Hist in the square's sap pool: a blessing of resist poison, given by its tree-minder",
      "count": 1
     }
    ]
@@ -608,7 +608,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison",
+     "detail": "the Hist's sap pool: a blessing of waterbreathing from the tree-minder, and for an Argonian, who already breathes water, a blessing of resist poison",
      "count": 1
     }
    ]
@@ -3771,7 +3771,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
+     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -4055,7 +4055,7 @@
     {
      "id": "shore-access",
      "radius_m": 70,
-     "why": "the tidal river and the bridge head"
+     "why": "the river and the bridge head"
     }
    ],
    "gives": [
@@ -6121,6 +6121,7 @@
   {
    "id": "outpost-m13-m65",
    "name": "Ashgate Landing",
+   "symbol_id": "icon.camp",
    "culture_id": "stone-grey",
    "status": "inhabited",
    "held_by": "A Dunmer gang-master and his Owing reed-cutters",
