@@ -124,6 +124,13 @@ def test_a_light_follows_its_fixture_and_the_check_sees_one_that_does_not():
     assert lights.off_fixture(ours[1:], src, {"l": "f"}, turn)    # its fixture left out
 
 
+def test_a_light_whose_fixture_is_left_out_is_dropped_and_one_whose_fixture_stands_is_kept():
+    rows = [{"id": "o.f1", "src": "f1"}, {"id": "o.l1", "src": "l1"}, {"id": "o.l2", "src": "l2"}]
+    bound = {"l1": "f1", "l2": "f2"}                              # f2 is left out
+    assert [r["id"] for r in lights.orphans(rows, bound)] == ["o.l2"]
+    assert lights.orphans(rows[:2], bound) == []
+
+
 def test_an_added_forge_carries_its_fire_light_and_a_smelter_none():
     ext = [{"id": "p.forge", "pos": [100.0, 100.0, 10.0], "rot": [0, 0, 0.0]}, {"id": "p.smelter", "pos": [0, 0, 0], "rot": [0, 0, 0]}]
     stn = {"added": [{"station": "forge", "id": "p.forge", "space": "exterior"},

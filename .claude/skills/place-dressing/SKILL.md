@@ -11,7 +11,7 @@ Step 7 of the place path ([place-system](../place-system/SKILL.md)). Stages: `li
 ## Lights
 
 - A light belongs to its fixture: the nearest lantern, sconce, window or fire within 128 units in the source. It
-  shares the fixture's cluster, stands at its source offset, is seated `on` it and goes when the fixture goes.
+  shares the fixture's cluster, stands at its source offset, is seated `on` it and goes when the fixture goes (the `lights` stage drops it and writes the reason in the ledger).
   `draft check` fails a light more than 16 units off.
 - What we add is lit as Skyrim lights it: an added forge carries LightForgeFire01 in its own frame (`draft check`
   fails an unlit added forge); an added smelter or alchemy lab carries none. Laid streets, bridges and steps are lit
