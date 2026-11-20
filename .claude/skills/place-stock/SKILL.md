@@ -1,6 +1,6 @@
 ---
 name: place-stock
-description: Stock one place of the new world (a city, a village, a camp, a ruin, a wreck) with what is in it - each person's possessions, each container's contents, the loose things and the traders' lists - on the one fixed scale, every thing with its reason, every promise of the place record delivered. Use after place-build has drafted the place and place-people has given its people their identities, and again for the rows a recast person or a changed fact of the place touches.
+description: Stock one place of the new world (a city, a village, a camp, a ruin, a wreck) with what is in it - each person's possessions, each container's contents, the loose things and the traders' lists - on the one fixed scale, every thing with its reason, every promise of the place record delivered. Use after the place is drafted (place-system) and place-people has given its people their identities, and again for the rows a recast person or a changed fact of the place touches.
 ---
 
 # Stock a place
@@ -11,7 +11,7 @@ You decide what each thing is and why, from the tools' measurements. Everything 
 The contract (file shapes, tables, what the build and its check do) is `docs/design/place-studio.md`, section Stock.
 Nothing is random and nothing is levelled (decision 0035). Set dressing (food, crockery, cheap clutter, furniture) stays as
 the source has it; everything significant is authored here. Never write mod record content into a source: ids, counts
-and reasons only. Where this step sits in the work on a place is at the top of the skill `place-build`.
+and reasons only. Where this step sits in the work on a place is in the skill `place-system`.
 
 ## Inputs
 
@@ -128,12 +128,12 @@ treasure and gold-hoard promises are yours: deliver each with a container or loo
 `deliveries` row naming it. A promise whose spot is not in the place files needs the spot built: never improvise
 the spot or its foes. Look for it in the drafted extent and in the database (a place of its own nearby); if it is in
 neither, write the delivery `open` with a `why` that says what is missing and what would deliver it (the
-place-build pass, the placed people at a fixed level, the container at its tier), and put the choice to the owner:
+drafting pass (`place-story`), the placed people at a fixed level, the container at its tier), and put the choice to the owner:
 build the spot, or edit the record. Editing the record is the owner's call. When the owner rules it, change the
 record, mark the delivery row `dropped` and name the edit in its `why` (the record's own narrow change is in the skill `place-research`).
 
 A service promise (a trade, a trainer, a travel stop) is delivered by the person whose `people.jsonl` service names
-its seq; the place files give it (the skill `place-build`). When the place's people hold the right person but the
+its seq; the place files give it (the skill `place-routines`). When the place's people hold the right person but the
 place files do not yet give them the service (a rootworm handler at the root landing for a `rootworm-stop`), run `python3 -m tools.places draft people <place>`, which gives a resident's promise to its keeper (the skill `place-people`, section 2). A promised station the files lack is `draft stations <place>`. Only when neither stage can give it, write the
 delivery `open`, `by: person`, naming them, with a `why` that says which service at which seq and where they work.
 

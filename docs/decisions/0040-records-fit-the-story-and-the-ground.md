@@ -22,7 +22,7 @@ fix causes, never symptoms.
    flags are corrected in the record; place-research checks claims against the ground before writing them.
 3. **Hist pools.** Every Hist pool in a record and a draft is a pool of Hist sap (the sap stage). Five records
    are reworded.
-4. **Sources.** The allocated source is a first idea. Each place the main quest uses is re-judged now (place-build,
+4. **Sources.** The allocated source is a first idea. Each place the main quest uses is re-judged now (place-plan,
    "Choose the source") and takes its closest match or is built from the asset pool; every other place's source
    note is rewritten as a first idea that names its closest match or says "from the pool". The allocation is not
    recomputed.

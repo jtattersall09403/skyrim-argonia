@@ -49,9 +49,9 @@ class Run:
         self.dir = self.repo / "out/places/runs" / self.run_id
         self.place = self.repo / "newworld/places" / place_id
         self.save_path = self.place / "edits" / f"{save_id}.json"
-        self.skill = (Path(skill) if skill else self.repo / ".claude/skills/place-build/SKILL.md").resolve()
+        self.skill = (Path(skill) if skill else self.repo / ".claude/skills/place-system/SKILL.md").resolve()
         self.fixes = self.repo / "docs/skill-fixes.md"
-        self.draft_skill = self.dir / "place-build.SKILL.md"   # the agent's rewrite, put in place by finalise
+        self.draft_skill = self.dir / "place-system.SKILL.md"   # the agent's rewrite of the map, put in place by finalise
         # content edits teach their own recipes, not the building one: who a person is (identity.edit) teaches
         # place-people, what a thing holds (stock.*) teaches place-stock
         self.people_skill = self.repo / ".claude/skills/place-people/SKILL.md"
@@ -211,7 +211,7 @@ def verb_available(repo: Path, verb: str) -> bool:
 
 
 def build_plan(repo: Path, place_id: str, world_moved: bool) -> list[tuple[str, list[str]]]:
-    """The build step's commands, in the place-build skill's order (section 7 of world-build): the ground bundle taken
+    """The build step's commands, in the place skills' order (section 7 of world-build): the ground bundle taken
     again from the current world when the world moved under it, then seat, build, check and navexport, then the
     place layer onto the New World card (which waits out a live stream itself)."""
     m = lambda *a: [PY, "-m", "tools.places", *a]
@@ -271,10 +271,10 @@ save. Inputs:
   (large: search them for the ids and positions you need rather than reading them whole)
 - the build and check results: {run.dir / 'build.done'}
 - every place's place.json (for taste preferences across places): {places}/*/place.json
-- the place-build skill: {run.skill}
+- the place skills' map: {run.skill}; the drafting sub-skills it routes to:{sub_list(run)}
 - the skill-fixes list for tool changes owed: {run.fixes}
-Write the whole rewritten place-build skill to {run.draft_skill} (only when the recipe changes; finalise puts it in
-place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list.{content_note(run)}"""
+Write each rewritten drafting sub-skill whole to <run folder>/<its name>.SKILL.md in {run.dir}, and a rewritten map
+to {run.draft_skill} (only when a recipe changes; finalise puts each in place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list.{content_note(run)}"""
 
 
 def write_notes(run: Run, save: dict) -> None:
@@ -284,6 +284,22 @@ def write_notes(run: Run, save: dict) -> None:
     files = json.loads(before.read_text()) if before.exists() else None
     said = change_notes.present(save, run.place_id, files, run.repo / "out/places/bundles")
     (run.dir / "notes.json").write_text(json.dumps({"notes": said}, indent=1, ensure_ascii=False) + "\n")
+
+
+DRAFT_SKILLS = ("place-plan", "place-site", "place-streets", "place-rooms", "place-routines", "place-dressing",
+                "place-story", "place-look", "place-check", "place-change")
+
+
+def draft_skills(run: Run) -> list[tuple[str, Path, Path]]:
+    """The drafting sub-skills the map routes to, each (name, skill, rewritten skill in the run folder), beside the
+    map; a sub-skill not in the tree is left out."""
+    root = run.skill.parent.parent
+    return [(n, root / n / "SKILL.md", run.dir / f"{n}.SKILL.md") for n in DRAFT_SKILLS
+            if (root / n / "SKILL.md").exists()]
+
+
+def sub_list(run: Run) -> str:
+    return "".join(f"\n  - {name}: {skill}" for name, skill, _ in draft_skills(run)) or " none"
 
 
 def content_skills(run: Run) -> list[tuple[str, Path, Path, str, Callable[[str], bool]]]:
@@ -308,7 +324,7 @@ def content_note(run: Run) -> str:
         if n and skill.exists():
             out.append(f"""
 {n} of the fault edits change {what} (the place's people source and stock source, before and after under
-"identities" and "stock" in the two JSON files). Those are lessons for the {name} skill ({skill}), not place-build:
+"identities" and "stock" in the two JSON files). Those are lessons for the {name} skill ({skill}), not the drafting sub-skills:
 when its recipe changes, write the whole rewritten {name} skill to {draft} (finalise puts it in place) and give
 those lessons "skill": "{name}" in the lessons file.""")
     return "".join(out)
@@ -319,7 +335,7 @@ def agent_cmd(run: Run, budget: float, turns: int) -> list[str]:
     if override:
         return shlex.split(override) + [str(run.dir), str(run.skill)]
     dirs = sorted({str(run.dir), str(run.repo), str(run.skill.parent), str(run.fixes.parent),
-                   *(str(skill.parent) for _, skill, *_ in content_skills(run))})
+                   *(str(skill.parent) for _, skill, *_ in [*draft_skills(run), *content_skills(run)])})
     return ["claude", "-p", agent_prompt(run), "--agent", "place-lessons", "--output-format", "json",
             "--max-budget-usd", f"{budget:.2f}", "--max-turns", str(turns), "--permission-mode", "acceptEdits",
             "--allowedTools", "Read,Glob,Grep,Edit,Write", "--no-session-persistence",
@@ -340,6 +356,7 @@ def restore_from_head(path: Path) -> None:
 
 def _kept(run: Run) -> list[tuple[Path, Path]]:
     return [(run.skill, run.dir / "skill.before"), (run.fixes, run.dir / "fixes.before"),
+            *((skill, run.dir / f"{name}.before") for name, skill, _ in draft_skills(run)),
             *((skill, run.dir / f"{name}.before") for name, skill, *_ in content_skills(run))]
 
 
@@ -366,7 +383,7 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     if not any(op.get("call", "fault") == "fault" for op in save["ops"]):
         return {"status": "nothing to learn", "why": "every edit was marked as a taste call"}
     if not run.skill.exists():
-        return {"status": "did not run", "why": f"the place-build skill is not at {run.skill}"}
+        return {"status": "did not run", "why": f"the place skills' map is not at {run.skill}"}
     started = run.dir / "learn.started"
     if started.exists():          # a killed run may have left a half-written skill
         put_back(run)
@@ -382,7 +399,7 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     write_notes(run, save)
     (run.dir / "lessons.json").unlink(missing_ok=True)
     run.draft_skill.unlink(missing_ok=True)
-    for _, _, draft, *_ in content_skills(run):
+    for _, _, draft, *_ in [*draft_skills(run), *content_skills(run)]:
         draft.unlink(missing_ok=True)
     cmd = agent_cmd(run, budget, turns)
     run.log("learn: the lessons agent started (budget $%.2f, %d turns)" % (budget, turns))
@@ -415,13 +432,13 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     if run.draft_skill.exists() and run.draft_skill.read_text().strip():
         run.skill.write_text(run.draft_skill.read_text())
     rewritten = []
-    for _, skill, draft, *_ in content_skills(run):
+    for _, skill, draft, *_ in [*draft_skills(run), *content_skills(run)]:
         if skill.exists() and draft.exists() and draft.read_text().strip():
             skill.write_text(draft.read_text())
             rewritten.append(skill)
     titles = "; ".join(lz.get("lesson", "")[:90] for lz in lessons.get("lessons", []))
     paths = [run.skill] + rewritten + ([run.fixes] if run.fixes.exists() else [])
-    sha = commit_skill(run, f"place-build: lessons from {run.place_id} (save {run.save_id}): {titles or 'nothing general'}",
+    sha = commit_skill(run, f"place skills: lessons from {run.place_id} (save {run.save_id}): {titles or 'nothing general'}",
                        paths)
     return {"status": "ok", "commit": sha, "cost_usd": cost, "turns": turns_used}
 
@@ -623,7 +640,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("place_id")
     ap.add_argument("save_id")
     ap.add_argument("--repo", default=str(CODE_REPO), help="the repository holding newworld/places and out/places")
-    ap.add_argument("--skill", help="the place-build skill to rewrite (default: the repo's)")
+    ap.add_argument("--skill", help="the place skills' map to rewrite (default: the repo's)")
     ap.add_argument("--relearn", action="store_true", help="run the lessons step and the report again")
     ap.add_argument("--skip-build", action="store_true", help="do not seat, build or check (a test run)")
     ap.add_argument("--budget", type=float, default=BUDGET_USD)

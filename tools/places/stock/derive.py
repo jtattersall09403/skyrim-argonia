@@ -339,7 +339,7 @@ def derive(p: Place) -> dict:
     for d in w.query("SELECT g.seq, g.give_kind_id, g.detail FROM give_delivery d JOIN place_give g ON "
                      "g.place_id = d.place_id AND g.seq = d.give_seq WHERE d.place_id = ? AND d.status = 'open'", pid):
         out["open"].append(f"give {d['seq']} {d['give_kind_id']} ({d['detail']}): nothing in the place files can "
-                           f"deliver it; the place needs the spot built (place-build) or the record edited with the reason")
+                           f"deliver it; the place needs the spot built (place-story) or the record edited with the reason")
     return out
 
 

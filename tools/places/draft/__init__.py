@@ -1,4 +1,4 @@
-"""`python -m tools.places draft <place_id>` drafts a place whole from its source (skill place-build): a place's
+"""`python -m tools.places draft <place_id>` drafts a place whole from its source (skill place-system): a place's
 first draft. A place that holds the owner's finalised studio saves is never drafted whole again without
 `--force "<why no narrow stage can be correct>"`.
 `draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that

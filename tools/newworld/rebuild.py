@@ -444,7 +444,7 @@ DOWNSTREAM = (
      "the skill world-lod"),
     ("the play machine's deploy of ArgoniaNewWorld.esm", ("esm",), "the skill world-build, section Deploy"),
     ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "place", "edits", "navmesh", "esm"),
-     "the skill place-build, section 7"),
+     "the skill place-change"),
 )
 
 

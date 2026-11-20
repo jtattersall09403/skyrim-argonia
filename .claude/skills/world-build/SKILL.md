@@ -226,8 +226,8 @@ stale beyond this build. The order keeps every long job on a world file that can
    build moved, and which; a place it calls current needs nothing. For a stale one, extract its ground bundle
    again (`python3 -m tools.places extract --ground <place_id>`, then
    `python3 -m tools.places ground-check <place_id>`), run the stages the change calls for (the skill
-   `place-build`, section 7: a relief change, `seating`; re-scattered plants or a changed navmesh rule,
-   `clearance`), then its build and check (section 8 there), then `streets` and the build and check again where
+   `place-change`: a relief change, `seating`; re-scattered plants or a changed navmesh rule,
+   `clearance`), then its build and check (the skill `place-check`), then `streets` and the build and check again where
    pieces or doors moved or the `streets` check names a point off the network. Commit the place files a stage
    changed.
 6. **The LOD**, and with it the deploy of the place layer and the stack: the skill `world-lod`, sections 4 to 8.

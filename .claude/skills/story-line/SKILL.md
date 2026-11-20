@@ -234,7 +234,7 @@ When the story lands, its needs reach each place it names by themselves: the pla
 needs tables each time it opens (so keep each one a regular table under a "What each quest needs of its places"
 heading, under its place's bold name or with a Place column, with the columns "The thing", "Quest", "What happens
 there" and "How the player knows it", the place named as the world's data names it). Each new row is then judged
-from the player's side (`python3 -m tools.places needs open <place>`; `place-build`, section 6). Where a place is
+from the player's side (`python3 -m tools.places needs open <place>`; `place-story`). Where a place is
 already built, a need it does not meet is answered by changing the story to what the place has.
 
 A story that no longer holds is marked at its head, as its first paragraph: `**Status: to be rewritten.**` with what

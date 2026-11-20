@@ -8,7 +8,7 @@ description: Research places and regions of the new world (Project Tamriel's Bla
 The records are JSON under `newworld/sources/research/` and are built into the database by
 `python3 -m tools.newworld.build_db` (each record fills the row its `id` names). The exact record formats, the
 grounding sources and the tiers are in `newworld/sources/research/FORMAT.md`; read it first. The record is the
-first step of the work on a place: the order is at the top of the skill `place-build`.
+first step of the work on a place: the order is in the skill `place-system`.
 
 ## Batch
 
@@ -49,7 +49,7 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    source fits better; a better source is taken by `python -m tools.places sources-match --pin` (its `JUDGED`
    table) or its pieces are named as pool pieces. A source may serve several places; each is adapted
    differently, and the note says how this place differs from the others built from the same source. Reuse
-   is judged by place-build's rule ("Choose the source"): two differently adapted users are fine, many are
+   is judged by place-plan's rule ("Choose the source"): two differently adapted users are fine, many are
    not, and the cheapest change that makes a place fit is made first. Check: `pytest tools/tests/test_newworld_source_note.py`. Each note is about this
    place alone, drawn from what is particular to it; no sentence is shared with another place, with only the
    names changed. The overview adds what the summary does not. An unnamed place gets a name in its culture's
@@ -117,4 +117,4 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
 A record that is already built on (a drafted or stocked place) is edited fact by fact: change the one field, note
 or give, with the reason in the commit, and rebuild. A promise the place's builders cannot deliver is dropped or
 changed only here, case by case, as the owner rules, never to avoid the work. After a change, the skills that
-read the fact apply it by their own narrow step (`place-build` section 7, `place-people`, `place-stock`).
+read the fact apply it by their own narrow step (`place-change`, `place-people`, `place-stock`).

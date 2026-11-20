@@ -1,4 +1,4 @@
-"""The heavy place-build lock: a second process waits while the first holds it, and the lock is re-entrant."""
+"""The heavy place lock: a second process waits while the first holds it, and the lock is re-entrant."""
 import os
 import subprocess
 import sys

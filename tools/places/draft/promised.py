@@ -1,7 +1,7 @@
 """What the record does not promise, the source does not bring: its traps and hazards, its treasures beyond the
 record's count, and any Nordic sign (decision 0006).
 
-The record says what the place is (place-build, "The place record is the brief"). A source's trap field (a vine
+The record says what the place is (place-system, "Who decides what"). A source's trap field (a vine
 snare, a gas vent, a poison bloom) stays only where the record names a danger of that kind and the place is not
 friendly; a friendly or safe place has none. A source's loot containers (Bethesda's `Treas*`) keep the record's
 treasure promises and no more: each treasure the draft adds by hand (`draft.add` containers) counts first, then the

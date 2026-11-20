@@ -28,7 +28,7 @@ def fx(tmp_path_factory):
 
 
 def _plan(pdir: Path) -> None:
-    """The agent's plan against the record (place-build): every look line delivered, every standing building of the
+    """The agent's plan against the record (place-plan): every look line delivered, every standing building of the
     source judged kept."""
     place = json.loads((pdir / "place.json").read_text())
     refs = [json.loads(line) for line in (pdir / "spaces/exterior/refs.jsonl").read_text().splitlines()]

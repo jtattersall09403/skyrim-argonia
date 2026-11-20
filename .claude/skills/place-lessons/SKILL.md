@@ -1,6 +1,6 @@
 ---
 name: place-lessons
-description: Turn the owner's finalised studio edits of one place into better place recipes. Reads the save's fault edits and the owner's notes with the changes they cover, finds the patterns behind them, and rewrites place-build (place-people for edits to who a person is, place-stock for edits to what a place holds) so the next place gets each class right first time; taste edits stay that place's preferences. Run headless by the finalise chain, one run per finalised save.
+description: Turn the owner's finalised studio edits of one place into better place recipes. Reads the save's fault edits and the owner's notes with the changes they cover, finds the patterns behind them, and rewrites the place sub-skill that owns each class (place-people for edits to who a person is, place-stock for edits to what a place holds) so the next place gets each class right first time; taste edits stay that place's preferences. Run headless by the finalise chain, one run per finalised save.
 ---
 
 # Place lessons
@@ -8,8 +8,10 @@ description: Turn the owner's finalised studio edits of one place into better pl
 The owner edits an agent's draft of a place in the studio and finalises the save. Every edit is marked `fault`
 (the builder got it wrong) or `taste` (a preference). Your job is to find what the fault edits say about the
 recipe that produced them, and change the recipe so a fresh agent working on any place gets that whole class of
-thing right first time. The recipe for where things stand, the streets, the lights and people's placement is
-`place-build`; the recipe for who a person is (name, household, trade, wealth, backstory) is `place-people`; the
+thing right first time. The recipe for where things stand, the streets, the rooms, the lights and people's placement
+is the place sub-skill that owns the class, as the map `place-system` routes it (`place-plan`, `place-site`,
+`place-streets`, `place-rooms`, `place-routines`, `place-dressing`, `place-story`, `place-look`, `place-check`,
+`place-change`); the recipe for who a person is (name, household, trade, wealth, backstory) is `place-people`; the
 recipe for what a container, a person or a trader holds is `place-stock`. The prompt names every input and the files you may edit; beside them you may add rows to the skill-fixes list.
 
 The place itself is already right: the owner's edit is in its files. You change recipes for the next place. You
@@ -29,13 +31,14 @@ never change this place, and no lesson asks for it to be drafted again.
   positions you need.
 - The build and check results, when there are any.
 - Every place's `place.json`, for the preferences recorded at other places.
-- The current `place-build` skill, and the `place-people` or `place-stock` skill when the prompt names content
+- The map `place-system` and the place sub-skills it names, and the `place-people` or `place-stock` skill when the prompt names content
   edits for it.
 - The skill-fixes list (`docs/skill-fixes.md`), for changes owed that you may not make yourself.
 
 ## Method
 
-1. **Read the recipe first.** Read `place-build` whole, so you know what a builder following it would do. When
+1. **Read the recipe first.** Read `place-system` whole, then each sub-skill a fault touches, so you know what a
+   builder following them would do. When
    the prompt names content edits, read each recipe it names for them whole as well: `place-people` for
    `identity.edit`, `place-stock` for `stock.*`.
 2. **Take only the faults.** Set aside every `taste` op. Number the fault ops you will reason about. Read the
@@ -58,7 +61,8 @@ never change this place, and no lesson asks for it to be drafted again.
    right at a place with a different layout?
 7. **Decide where it belongs.**
    - The builder's **judgement** (what to look at, which way to turn, what to keep clear, when to patch land):
-     the text of `place-build`. Rewrite it (below).
+     the text of the place sub-skill that owns the class in `place-system`'s table. Rewrite it (below), and mark
+     the lesson with that skill's name.
    - The stocker's **judgement** (what a holder holds, at what tier, behind what lock, whose it is): the text of
      `place-stock`. Rewrite it the same way, and mark the lesson `"skill": "place-stock"`.
    - A **tool's fixed rule** (a number or a computation in `tools/places/draft`, `seat` or `stock`): do not edit
@@ -81,7 +85,7 @@ never change this place, and no lesson asks for it to be drafted again.
 - Keep the skill from growing. Where your lesson makes an existing sentence redundant, remove it. A run usually
   changes a few sentences; a run that adds more than it removes needs every added line to carry a rule.
 - Keep the skill's own shape, headings and voice. Change nothing a lesson does not touch. The order of work at
-  the top of `place-build` and each skill's narrow-change section stay.
+  `place-system` and the stage table of `place-change` stay.
 - Where a rule belongs to another skill, the skill you are rewriting points to it and does not repeat it.
 - Write each whole rewritten skill to the path the prompt names for it; the finalise chain puts it in place. When
   no lesson belongs in a recipe, write nothing there.
@@ -105,7 +109,7 @@ Write it last, to the path the prompt gives, as JSON. Every text field is plain 
 sentences, no jargon, no op numbers or ids in the prose, distances in metres (70 game units is about a metre).
 
 ```
-{"lessons": [{"ops": [n...], "where": "recipe" | "tool", "skill": "place-build" | "place-stock" | "place-people",
+{"lessons": [{"ops": [n...], "where": "recipe" | "tool", "skill": "<place sub-skill>" | "place-stock" | "place-people",
               "lesson": "the general rule, one sentence",
               "why": "why the recipe led the builder to the mistake, one or two sentences",
               "change": "what the recipe says differently (recipe), or the tool change owed (tool)"}],

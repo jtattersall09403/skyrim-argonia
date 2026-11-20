@@ -62,12 +62,12 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
    clear of the trunk (its axis and radius measured 1.4 to 2.5 m up, over the root flare). The six thickest, 60 units
    apart, are kept per base in its own frame. Output: `newworld/sources/dressing/hang_points.json`, a committed
    source keyed by base with its mesh's digest; a run measures only new or changed meshes, and `check` lists a placed
-   tree base not yet measured. The place tools read the same rules (`tools/places/draft/hang.py`, place-build).
+   tree base not yet measured. The place tools read the same rules (`tools/places/draft/hang.py`, place-dressing).
 2. **The kind.** A kind whose habitat is `hang` (`hanging-hist-lanterns`: King of the Murkmire's rope lanterns
    `DLC2DarkElfLantern05Rope` and `04Rope`, self-lit by their glow shell, with no light reference, as the mod places
    them) hangs only from placed trees. Its numbers are the source mod's own, measured: King of the Murkmire hangs 23
    lanterns in 10 of its 93 cells, all inside its huts and houses, 1 to 5 to a carrying cell (`per_carrier`), so
-   its rate is 24.7 per 100 cells (`bound_per100`). A built place hangs its own (place-build's hanging things).
+   its rate is 24.7 per 100 cells (`bound_per100`). A built place hangs its own (place-dressing's hanging lanterns).
 3. **Where.** In the kind's region (Murkwood, where the wild world's living Hist trees stand), a cell within two
    cells of a built place, never a held cell, is eligible when it holds a carrier: a tree whose editor id names Hist
    (tree, trunk or gland) or a tree in a Hist grove, with a hang point the longest lantern fits. Of the eligible

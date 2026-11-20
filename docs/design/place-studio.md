@@ -19,7 +19,7 @@ world ESM ─────extract──▶ ground bundle ──┼─draft──�
 | Extract | `tools/ArgoniaPlaces/Extract` (C#, Mutagen), `python -m tools.places extract` | Reads a place out of any plugin into a bundle; reads our own ground the same way |
 | Assets | `tools/places/assets` | Mesh and texture conversion for the browser, on demand, cached; the asset catalogue |
 | Search | `tools/places/search` | Embedding index over the catalogue |
-| Draft | `tools/places/draft`, skill `place-build` | Source bundle + our ground → place files |
+| Draft | `tools/places/draft`, skills `place-system` and its drafting sub-skills | Source bundle + our ground → place files |
 | People | `tools/places/identities.py`, skill `place-people` | Who each placed person is: the people source (Stock, below) |
 | Stock | `tools/places/stock`, `tools/newworld/stockdb.py`, skill `place-stock` | The split, the derive; people, goods and contents as database sources (Stock, below) |
 | Build | `tools/ArgoniaPlaces/Build` (C#, Mutagen), `python -m tools.places build` | Place files and the database's stock → `out/places/plugin/ArgoniaNWPlaces.esp`, navmesh, checks |
@@ -219,7 +219,7 @@ the deck's height; a flight down onto a ship's deck also names the ship as its `
 `place.json` names the steps bases a flight was taken from out of a deck's own kit (the source having none).
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
-`roles`, `keep_patches`, `room_names`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
+`roles`, `keep_patches`, `room_names`; the place skills, `place-system`), `fit` (global and per-cluster transforms, `clusters_info`,
 `relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
 `.vendor.NN` per trader with hours and `chest`; the crime row's `law` is the place's law (native, foreign or
@@ -275,8 +275,8 @@ it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `b
 Building a place includes what is in it (nw-03, Stocking). Nothing is random and nothing is levelled (decision 0035).
 Set dressing (food, crockery, cheap clutter, furniture) stays as the source has it. Everything significant is
 authored, each thing with its reason; what the source held of that kind is taken out. The order of work on a place
-is the one the skill `place-build` states at its top: research (`place-research`), the draft (`place-build`), who
-each person is (`place-people`), what the place holds (`place-stock`), build and check (`place-build`), the owner's
+is the one the map `place-system` states: research (`place-research`), the draft (`place-plan` to `place-look`), who
+each person is (`place-people`), what the place holds (`place-stock`), build and check (`place-check`), the owner's
 studio edits, and finalise (`place-lessons`). Stocking runs after `place-people` has given every placed person an
 identity.
 
@@ -779,7 +779,7 @@ runs its lessons agent (budget $10, 80 turns, edits accepted, its shell limited 
 commit and git reads). One notes agent runs at a time: each run holds `out/places/notes-runs/agent.lock` for its
 whole length, so a batch sent meanwhile waits and then takes every sent note still open. The prompt names the place
 and the notes and says: read them with `python -m tools.places notes <place>`; answer each with a narrow change to
-the place by the place-build skill's stage for it, never redrafting the whole place nor regenerating over the
+the place by the stage the skill `place-change` names for it, never redrafting the whole place nor regenerating over the
 owner's studio edits; close each with `notes done <place> <id> --reply "..."` in plain English; a question for the
 owner, or a change larger than a narrow one, is closed with a reply that says so and what it would take, and not
 done; commit the changed files and the notes file by path. Each run's prompt, cost, turns and the notes it left open
@@ -1322,14 +1322,14 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    prints the order. A failed build or check does not undo the record and skips the deploy; the report says what
    failed and what it means.
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
-   the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
-   the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
+   the skill `place-lessons` on the save's fault ops and rewrites the place sub-skill that owns each fault class (or the map `place-system`) as a clean recipe, which
+   the agent writes whole to `out/places/runs/<run_id>/<skill>.SKILL.md` (it reads only `faults.jsonl`, the
    save's fault ops, each with its note's words as `note`, and `notes.json`, each of the owner's notes with
    exactly the ops it covers said in plain words) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
    content ops are lessons for their own recipes: `identity.edit` for the skill `place-people`, `stock.*` for the
    skill `place-stock`. The prompt names each with its count, and a rewrite the agent writes to
    `place-people.SKILL.md` or `place-stock.SKILL.md` in the run folder is put in place in the same commit; each is
-   kept before the agent runs and put back with `place-build` when the agent does not finish. Tool changes it finds are rows in
+   kept before the agent runs and put back with the place skills when the agent does not finish. Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,
    the chain completes, and the report says to rerun with `--relearn`.
 4. **Report**: `out/places/runs/<run_id>/report.md`, plain English, shown in the studio.

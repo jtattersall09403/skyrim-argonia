@@ -1,4 +1,4 @@
-"""Machine-wide lock for the heavy place-build steps (the ArgoniaPlacesBuild dotnet process, 5 to 7 GB each).
+"""Machine-wide lock for the heavy place steps (the ArgoniaPlacesBuild dotnet process, 5 to 7 GB each).
 
 One holder at a time across every worktree: the lock file lives in ~/.argonia/locks. Re-entrant within one
 process. The kernel drops the flock when the descriptor closes, so a crash never leaves it held.

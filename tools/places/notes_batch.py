@@ -49,8 +49,8 @@ This is a test place outside the repository: commit nothing.""")
     return f"""The owner wrote notes on the place {place_id} in the place studio and sent them to you as one batch. Read
 them with `{PY} -m tools.places notes {place_id}{where}` (they are also below, as they stood when sent). Answer every
 one of them:
-- A note that asks for a change to the place: make it as a narrow change. Follow the place-build skill
-  ({CODE_REPO / '.claude/skills/place-build/SKILL.md'}) for which stage owns the change and how it is made. Apply only
+- A note that asks for a change to the place: make it as a narrow change. Follow the place-change skill
+  ({CODE_REPO / '.claude/skills/place-change/SKILL.md'}) for which stage owns the change and how it is made. Apply only
   the step that needs changing to the committed place files and keep every other row as it is: never redraft the
   whole place, and never regenerate over the owner's studio edits.
 - Then close it: `{PY} -m tools.places notes done {place_id} <note id>{where} --reply "..."`, the reply one or two

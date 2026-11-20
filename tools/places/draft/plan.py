@@ -1,5 +1,5 @@
-"""`draft.plan`: the place's plan, written before the first stage runs (skill place-build, "The place record is the
-brief"). The one shape, read by `draft plan`, `draft check` and the consistency checker's draft family:
+"""`draft.plan`: the place's plan, written before the first stage runs (skill place-plan, "Write
+draft.plan"). The one shape, read by `draft plan`, `draft check` and the consistency checker's draft family:
 
   {"source"?: "<which source and why>",
    "look":       [{"line": "<a thing the record's look names>", "by": "<the pieces that deliver it>"}],
@@ -33,7 +33,7 @@ def faults(plan, gives: list[dict], structures: dict[str, dict] | None = None, d
     holding a standing building in the draft. Each is checked only when given."""
     if not isinstance(plan, dict) or not (plan.get("look") or plan.get("gives") or plan.get("structures")):
         return [(MISSING, "draft.plan is missing or not {look, gives, structures}: write it against the place record "
-                          "before drafting (place-build)")]
+                          "before drafting (place-plan)")]
     bad = []
     for key, need in (("look", "by"), ("gives", "by"), ("structures", "why")):
         for k, row in enumerate(plan.get(key) or []):

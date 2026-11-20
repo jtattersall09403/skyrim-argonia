@@ -74,7 +74,7 @@ onto one. Each step takes its facts from what exists at that step and passes on 
   hold (a locked house, a shrine, a wreck, a pen of beasts) is not written into the story as fact: it is listed as a
   **need of that place**, in words a place can be built to (story-line, "What each quest needs of its places").
 - *A place's record* takes those needs as promises, and the place is built to them; the build checks each promise
-  is there and reads as what it is called (`place-build`). A need the place cannot meet goes back to the story,
+  is there and reads as what it is called (`place-story`). A need the place cannot meet goes back to the story,
   which changes.
 - *Reads as* is judged from the player's side. The player knows only what the game shows: what a thing looks like,
   the names the game puts on doors, rooms, map markers and things, what stands there, and what people have told

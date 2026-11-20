@@ -1,6 +1,6 @@
 ---
 name: place-people
-description: Give every person of one drafted place of the new world a light identity - a name, a household and a place in it, a trade, a wealth band and a line or two of backstory, each grounded in the place record and the lore - as rows of the place's people source. Use after place-build has drafted the place and before place-stock, and again for the one person a recast or a changed promise touches.
+description: Give every person of one drafted place of the new world a light identity - a name, a household and a place in it, a trade, a wealth band and a line or two of backstory, each grounded in the place record and the lore - as rows of the place's people source. Use after the place is drafted (place-system) and before place-stock, and again for the one person a recast or a changed promise touches.
 ---
 
 # Light identities for a place's people
@@ -10,7 +10,7 @@ place files. Everything you write goes into the place's people source, `newworld
 one row per person of `newworld/places/<place_id>/people.jsonl` under the same id. A light identity holds no
 dialogue, no personality and no fixed level: the story casts those later, and may recast anyone. The file's shape
 and tables are in `docs/design/place-studio.md` (Stock: the people source). Where this step sits in the work on a
-place is at the top of the skill `place-build`.
+place is in the skill `place-system`.
 
 ## Inputs
 
@@ -46,7 +46,7 @@ gang-master, the tree-minder) and where its `need` stands them. That person's ro
   no other);
 - the trade, household and backstory built round what the record says of them, never contradicting it;
 - where they stand: the drafted work stop is where the record's `need` puts them. Where it is not, set the role's
-  spot with `draft.roles` (`{<role>: {space, pos}}`, the skill `place-build`) and run `draft people` again.
+  spot with `draft.roles` (`{<role>: {space, pos}}`, the skill `place-routines`) and run `draft people` again.
 
 A person the record places here whom the drafted people lack (a prisoner in a hold, a visitor) is the quest's to
 place, and gets no row here. Every other person is invented below.

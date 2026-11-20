@@ -80,7 +80,7 @@ CHECKED_WHEN_BUILT = (
     "each person's and thing's exact spot (navmesh or surface), and the person who speaks first a step from the "
     "player's arrival",
     "every place, person and form key the outline names exists in the built world, and each place reads as what "
-    "it is called (place-build)",
+    "it is called (place-story)",
     "the name the player sees on each thing, door and room",
     "the words: journal entries, lines and refusals (dialogue-write, text-review)",
 )

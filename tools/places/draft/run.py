@@ -1,6 +1,6 @@
 """`draft <place_id>`: the source bundle and our ground bundle into the place files (docs/design/place-studio.md).
 
-The agent's own calls (skill place-build) are inputs, read from place.json's `draft` block:
+The agent's own calls (skills place-plan to place-story) are inputs, read from place.json's `draft` block:
   anchor [x, y]    where the source's middle goes on our land (default: the place record's position)
   rot_deg          the source's turn onto our land (default: searched)
   search           how far round the anchor the global fit looks (units, default 4096)

@@ -22,7 +22,7 @@ if "FAIL" in skill.read_text():
     skill.write_text("half written")
     print(json.dumps({"is_error": True, "subtype": "error_max_budget_usd", "total_cost_usd": 3.1}))
     sys.exit(1)
-(run / "place-build.SKILL.md").write_text(skill.read_text().replace("by its centre point", "by its whole footprint"))
+(run / "place-system.SKILL.md").write_text(skill.read_text().replace("by its centre point", "by its whole footprint"))
 (run / "place-people.SKILL.md").write_text("# Place people\n\nName each person from the place's own culture.\n")
 (run / "lessons.json").write_text(json.dumps({"lessons": [{"where": "recipe", "ops": [1],
     "lesson": "Fit a building by its whole footprint.", "why": "The recipe fitted it by its centre point.",
@@ -73,7 +73,7 @@ def check_done(repo):
     assert json.loads((repo / "newworld/places/fixture/edits/s1.json").read_text())["final"] is True
     assert "whole footprint" in (repo / "skill/SKILL.md").read_text()
     log = subprocess.run(["git", "-C", str(repo), "log", "--format=%s"], capture_output=True, text=True).stdout
-    assert log.count("place-build: lessons") == 1 and log.count("edits recorded") == 1
+    assert log.count("place skills: lessons") == 1 and log.count("edits recorded") == 1
     assert not subprocess.run(["git", "-C", str(repo), "status", "--porcelain", "newworld", "skill"],
                               capture_output=True, text=True).stdout
     return st
@@ -192,7 +192,7 @@ def test_content_edits_reach_the_sources_and_the_tables(repo, tmp_path, crash):
 
 def test_content_faults_are_passed_to_the_lessons_agent(tmp_path):
     """An identity fault is a lesson for place-people, a stock fault for place-stock: each recipe is named with its
-    own count, its own rewrite path, and is kept, put back and installed by the chain like place-build."""
+    own count, its own rewrite path, and is kept, put back and installed by the chain like the place skills' map."""
     from tools.places.finalise import Run, agent_cmd, agent_prompt, content_skills, _kept
     for name in ("place-stock", "place-people"):
         skill = tmp_path / f".claude/skills/{name}/SKILL.md"
@@ -258,3 +258,19 @@ def test_a_stale_world_stamp_makes_the_build_refresh_the_ground_first_and_deploy
     assert names(True) == ["extract", "ground-check", "seat", "build", "check", "navexport", "deploy"]
     assert names(False) == ["seat", "build", "check", "navexport", "deploy"]
     assert F.build_plan(tmp_path, "helstrom", True)[0][1][-2:] == ["--ground", "helstrom"]
+
+
+def test_drafting_sub_skills_are_passed_to_the_lessons_agent(tmp_path):
+    """The map's drafting sub-skills are named in the prompt, kept and put back, and their rewrites installed."""
+    from tools.places.finalise import Run, agent_cmd, agent_prompt, draft_skills, _kept
+    for name in ("place-system", "place-site", "place-streets"):
+        skill = tmp_path / f".claude/skills/{name}/SKILL.md"
+        skill.parent.mkdir(parents=True)
+        skill.write_text(f"# {name}\n")
+    run = Run(tmp_path, "fixture", "s1")
+    assert [n for n, *_ in draft_skills(run)] == ["place-site", "place-streets"]
+    text = agent_prompt(run)
+    assert "place-site" in text and "place-streets" in text
+    site = tmp_path / ".claude/skills/place-site/SKILL.md"
+    assert str(site) in {str(k) for k, _ in _kept(run)}
+    assert str(site.parent) in agent_cmd(run, 1.0, 1)
