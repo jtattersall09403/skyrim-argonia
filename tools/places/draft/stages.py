@@ -389,10 +389,10 @@ def people_stage(st: Standing, log=print) -> None:
     keep_free = set(dec.get("free_beds") or []) | {((st.place.get("stations") or {}).get("rent_bed") or {}).get("ref")}
     gone, added, short = people.fill_to_record(st.place_id, st.files["people"], st.ext, st.bases,
                                                place_record(st.place_id)[0].get("population"), dec.get("guards"),
-                                               keep_free)
+                                               keep_free, {i for i, r in who.items() if r.get("cast")})
     if gone or added:
-        log(f"draft people {st.place_id}: {len(gone)} guards taken out (draft.guards), {len(added)} residents "
-            f"in the open beds, to the record's population")
+        log(f"draft people {st.place_id}: {len(gone)} taken out (draft.guards, or past the record's population), "
+            f"{len(added)} residents in the open beds, to the record's population")
     if short:
         log(f"draft people {st.place_id}: {short} people short of a bed: add beds (draft.add) and run add, then people")
     pool, npcs, _ = people.base_pool(st.src, dec, lambda sid: io.load(f"src.{sid}", st.src.path.parent))

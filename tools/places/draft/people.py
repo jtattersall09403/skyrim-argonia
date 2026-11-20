@@ -414,7 +414,7 @@ def patrol(beats_: list, k: int, on=None) -> list[list[float]]:
 
 
 def fill_to_record(place_id: str, folk: list[dict], ext: list[dict], bases: dict, population: int | None,
-                   guards: int | None = None, keep_free=frozenset(),
+                   guards: int | None = None, keep_free=frozenset(), keep=frozenset(),
                    centre: list[float] | None = None) -> tuple[list[str], list[str], int]:
     """A draft holds all its people (owner, #80, 2026-11-19). `guards` (`draft.guards`, a count) is how many of the
     drafted guards the place keeps (a camp held by a gang-master keeps none): the rest are taken out, last first.
@@ -428,6 +428,12 @@ def fill_to_record(place_id: str, folk: list[dict], ext: list[dict], bases: dict
             folk.remove(p)
             removed.append(p["id"])
     want = int(population or 0)
+    if population is not None:   # a record that holds fewer people: residents go, the last first, the cast never
+        for p in [p for p in folk if p.get("role") == "resident" and p["id"] not in keep][::-1]:
+            if len(folk) <= want:
+                break
+            folk.remove(p)
+            removed.append(p["id"])
     owned = {(p.get("bed") or {}).get("ref") for p in folk}
     beds = sorted((r for r in ext if r.get("kind") == "furniture" and interiors.is_bed(bases.get(r.get("base")) or {})
                    and r["id"] not in owned and r["id"] not in keep_free), key=lambda r: r["id"])

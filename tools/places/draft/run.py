@@ -1281,7 +1281,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # then the open beds, until the place holds the record's population (and the guards draft.guards keeps)
     keep_free = set(dec.get("free_beds") or []) | {rent_bed}
     _, filled, _ = people.fill_to_record(place_id, folk, our, bases, rec.get("population"), dec.get("guards"),
-                                         keep_free, town["pos"])
+                                         keep_free, centre=town["pos"])
     for p in folk:
         if p["id"] in filled:
             p["base_from"] = pick_base("resident")
