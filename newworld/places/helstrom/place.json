@@ -76,14 +76,14 @@
     "stop": "rootworm-stop",
     "kind": "activator",
     "pos": [
-     -30126.1,
-     -610383.4
+     -30246.87,
+     -610441.29
     ],
     "scale": 5.65,
     "dz": 3.0,
     "need": 11,
     "tier": "AGENT_INVENTED",
-    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist (its amber Hist sap water) centred on the trunk and sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
+    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
     "rot_z": 1.25494,
     "id_base": "Skyrim.esm:09727E"
    },
@@ -8086,11 +8086,6 @@
   "added": []
  },
  "sap": {
-  "added": [
-   {
-    "id": "helstrom.sap.W8H2ZE5XRXHVJN6080NV1ASNXE",
-    "on": "W8H2ZE5XRXHVJN6080NV1ASNXE"
-   }
-  ]
+  "added": []
  }
 }

@@ -331,9 +331,10 @@
      "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
     }
    ],
-   "met": true,
-   "why": "Met. The city tree (King of the Murkmire's HistTree03 at 1.5) stands in its own pool of Hist sap: King of the Murkmire's WaterPuddleHist, the amber sap water the sap stage uses, centred on the trunk and sized to the great tree, is the rootworm's root pool (the add row that carries the stop); the rootworm tunnel mouth stands at its west lip, the map marker \"Rootworm Landing (Helstrom)\" at its east lip, and the root-tender Cheeval-Xu works at its edge and gives the rootworm stop (seq 0 of the record's gives).",
-   "fit": "The stop is the Hist's sap pool, as a rootworm stop at a Hist is (owner, 2026-11-19, #80)."
+   "met": false,
+   "why": "Partly met. Under the sacred tree (HistTree04), 900 units west of its trunk and apart from its own sap pool, the draft lays a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives). Not met: a Hist's root pool is its sap pool, never water (decision 0040, 3), so the stop, the tunnel mouth, the marker and Cheeval-Xu belong at the tree's own sap pool and the water puddle goes.",
+   "fit": "The water puddle stands where the stop is until the stop moves to the sap pool.",
+   "narrow": "Yes: move the tunnel mouth, the marker and Cheeval-Xu's work spot to the sap pool's lip and delete the puddle; no other row changes."
   },
   {
    "seq": 12,
