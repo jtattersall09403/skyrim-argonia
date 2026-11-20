@@ -20,6 +20,7 @@ SOLID_KINDS = {"building", "static", "rock", "tree", "door", "furniture", "conta
 HELPER_RE = re.compile(r"(^|[\\/])(x?marker|editormarker|idlemarker|furnituremarker|patrolmarker|collision|trigger|"
                        r"occlusion|roommarker|portal)[^\\/]*$|markers?[\\/]", re.I)
 HELPER_EDID = re.compile(r"marker$|^xmarker|trigger|collision|occlusion", re.I)
+CRAFT = re.compile(r"crafting", re.I)   # a crafting station is drawn, whatever its model is called
 HELPER_NAMES = (("heading", "heading marker"), ("xmarker", "x-marker"), ("idle", "idle marker"),
                 ("furniture", "furniture marker"), ("patrol", "patrol marker"), ("collision", "collision box"),
                 ("trigger", "trigger"), ("occlusion", "occlusion plane"), ("portal", "room portal"),
@@ -29,10 +30,13 @@ HELPER_NAMES = (("heading", "heading marker"), ("xmarker", "x-marker"), ("idle",
 def helper_kind(p: dict) -> str | None:
     """What a piece the game never draws is ('heading marker', 'collision box', ...); None for anything drawn."""
     model, edid = str(p.get("model") or ""), str(p.get("edid") or "")
-    if not (p.get("kind") == "marker" or HELPER_RE.search(model) or HELPER_EDID.search(edid)):
+    if CRAFT.match(edid) or not (p.get("kind") == "marker" or HELPER_RE.search(model) or HELPER_EDID.search(edid)):
         return None
-    name = f"{model.rsplit('/', 1)[-1]} {edid}".lower()
-    return next((says for word, says in HELPER_NAMES if word in name), "editor marker")
+    base = model.replace("\\", "/").rsplit("/", 1)[-1].lower()
+    if base.startswith("markerx") and "heading" not in base or edid.lower() == "xmarker":
+        return "x-marker"
+    name = f"{base} {edid}".lower()
+    return next((says for word, says in HELPER_NAMES if word in name and word != "xmarker"), "editor marker")
 
 
 def decode(b64: str, w: int, h: int) -> np.ndarray:

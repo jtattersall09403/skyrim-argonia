@@ -35,7 +35,7 @@ function canopyCut(view, c, o) {
 // Things the game never draws (editor markers, collision boxes, triggers, occlusion planes): hidden unless the helpers
 // are asked for. The same rule as tools/places/look/capture.py helper_kind.
 const HELPER = /(^|[\\/])(x?marker|editormarker|idlemarker|furnituremarker|patrolmarker|collision|trigger|occlusion|roommarker|portal)[^\\/]*$|markers?[\\/]/i;
-export const isHelper = (g) => g.kind === 'marker' || HELPER.test(g.base?.model || '') || /marker$|^xmarker|trigger|collision|occlusion/i.test(g.base?.edid || '');
+export const isHelper = (g) => !/^crafting/i.test(g.base?.edid || '') && (g.kind === 'marker' || HELPER.test(g.base?.model || '') || /marker$|^xmarker|trigger|collision|occlusion/i.test(g.base?.edid || ''));
 
 // The id pass: every drawn piece in a colour that names it (instance k of a group: id base + k), the land 1, the
 // water 2, anything else 3, a helper 4; nothing 0. Cut-out leaves are cut as they are drawn; clipping kept.
@@ -228,7 +228,6 @@ export function install(studio) {
       const tgt = L(cam.target);
       studio.ours.terrainMesh?.update(tgt);
       // --no-canopy: tree crowns and hanging moss cut away over a height (game z), their trunks kept
-      const cut = cam.canopy ? canopyCut(view, cam.canopy, o) : null;
       r.clippingPlanes = (cam.clip || []).map(([nx, ny, nz, d]) => new THREE.Plane(new THREE.Vector3(nx, ny, nz), d + nx * o[0] + ny * o[1] + nz * o[2]));
       // every model the camera can see, loaded and switched on; the land's near cells baked
       let waits = 0;
@@ -241,6 +240,8 @@ export function install(studio) {
         waits++; await tick();
       }
       for (const lay of view.objects || []) lay.cull(c);
+      // the canopy cut once every model the shot draws has arrived (one cut before would miss those loaded here)
+      const cut = cam.canopy ? canopyCut(view, cam.canopy, o) : null;
       // what the game never draws stays out of the picture unless the helpers are asked for
       const hidden = [];
       if (!cam.helpers) for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
