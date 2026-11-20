@@ -765,11 +765,11 @@ stages:
 - id: 96
   place: outpost-m6-m66
   journal: text.journal.mn03.96
-  journalText: Someone the trail of the trees' sickness depended on is dead, and the trail is lost.
+  journalText: Someone the trail of the trees' sickness ran through is dead, and the thread of it is cut.
   ending: failed
   endingId: e-thread
   information:
-    going: Heem-Jasa is dead before she could set me on the trail of the trees' sickness; the main quest cannot go on.
+    going: Heem-Jasa died before I brought her the note; the main quest cannot go on.
     next: 'Nothing more in the main quest: load an earlier save, or go on in the marsh as it now is.'
     ways: None.
     carriers:
@@ -791,11 +791,11 @@ endings:
   seen: three potions of Cure Poison in the player's pack; her training and stall stay closed to them
   rewards: []
 - id: e-no-minder
-  when: Heem-Jasa died after the player took the note, before she asked
-  seen: the young tree untended; the main quest goes on by the note the player holds
+  when: Heem-Jasa died after the note came into the quest (stage 60), before the player answered her
+  seen: Heem-Jasa dead, her training and stall gone; the main quest goes on by the note
   rewards: []
 - id: e-thread
-  when: Heem-Jasa died before the player took the note
+  when: Heem-Jasa died before stage 60 (before the note came into the quest)
   world:
   - setFlag:
     - flag.main.thread-severed
