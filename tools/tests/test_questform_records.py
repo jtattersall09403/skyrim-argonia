@@ -295,3 +295,57 @@ def test_every_check_shows_its_label_and_no_threshold(forms):
             assert not any(k == "threshold" for k, _, _ in rules.prompt_labels(ln["prompt"])), (q, ln["id"])
             for c in rules.checks(ln["conditions"]):
                 assert c in {(k, v) for k, v, _ in rules.prompt_labels(ln["prompt"])}, (q, ln["id"])
+
+
+# -- a person must live until a stage --------------------------------------------------------------------------------
+def _mn03(world, edit=None):
+    """MN03's record (its YAML view; its places are not in the database yet): Heem-Jasa's death fails the quest at
+    stages 10 to 50 and moves it to 92 from 60."""
+    import yaml
+    from pathlib import Path
+    rec = yaml.safe_load(Path("newworld/story/quests/main/mn03.yaml").read_text(encoding="utf-8"))
+    if edit:
+        edit({s["id"]: s for s in rec["stages"]})
+    real = qc.export
+    qc.export = lambda w, q: rec
+    try:
+        c = qc.Compiler(world, rec["id"])
+        try:
+            c.compile()
+        except Exception:                # the unplaced record may stop the compile after the stage pass
+            pass
+    finally:
+        qc.export = real
+    return c
+
+
+HEEM = "npc.mn.heem-jasa"
+
+
+def test_a_death_fails_the_quest_until_a_stage_and_moves_it_on_after(world):
+    c = _mn03(world)
+    assert not [r for r in c.refused if r[0] == "death both ways"]
+    assert max(c.must_live_at[HEEM]) == 50 and c.death_moves[HEEM] == {60}
+    row = next(m for m in c.windows([{"number": n, "shown": True, "ending": "none"} for n in (10, 20, 30, 40, 50, 60, 70)],
+                                    {"stage": 10}, "main") if m["ref"] == HEEM)
+    assert row["to"] == 50 and row["fail_stage"] == 96 and row["main_message"]
+
+
+def _moves_at(n):
+    def edit(stages):
+        stages[n].setdefault("failForward", []).append({"to": 92, "when": {"not": {"npcAlive": HEEM}}})
+    return edit
+
+
+def test_a_death_that_fails_and_moves_the_quest_at_one_stage_is_refused(world):
+    c = _mn03(world, _moves_at(30))
+    assert any(r[0] == "death both ways" and HEEM in r[1] for r in c.refused)
+
+
+def test_the_boundary_the_last_failing_stage_cannot_also_move(world):
+    assert any(r[0] == "death both ways" for r in _mn03(world, _moves_at(50)).refused)
+    def edit_after(stages):                 # the watch's last stage is 40; 50 and 60 move it on
+        stages[50]["failForward"] = [f for f in stages[50]["failForward"] if f["to"] != 96]
+        _moves_at(50)(stages)
+    c = _mn03(world, edit_after)
+    assert not [r for r in c.refused if r[0] == "death both ways"] and max(c.must_live_at[HEEM]) == 40

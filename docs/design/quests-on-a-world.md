@@ -82,7 +82,9 @@ as any change to the method; the quest skills carry it step by step, and their m
 - **Clean-up per host place:** placements that break the setting or level with the player are disabled by override;
   each templated survivor gets a fixed level (nothing levelled against the player). A person given talk is kept.
 - **Anyone can die:** no person of ours or of the world is made unkillable; each quest names those it cannot go on
-  without.
+  without, and up to which stage: a death-to-failed fail-forward on each stage where the quest needs them, and from the
+  next stage on either a death-to-another-stage fail-forward or none. A person dead before their quest starts fails it
+  at its start stage, by the same start check.
 - **Things of ours** only where no world or base-game item serves, each on an item whose model reads as what it is
   called; no new art, never a Nordic-specific model.
 - **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.

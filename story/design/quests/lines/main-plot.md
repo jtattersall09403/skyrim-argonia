@@ -217,7 +217,9 @@ The player fights them, shoots them from cover or passes them by stealth to take
 (a jar is theirs to take too). The hide has no door or lock; a player who is seen there has all three to fight. Back
 on the platform, Heem-Jasa asks whether her tree will live. *Out of order:* met before Vosh-Leera sends the player,
 Heem-Jasa says only that her tree is unwell and she does not tell its troubles to strangers; a player who finds the
-hide before speaking to her skips ahead, and she shows them the scar when they come to her with the note.
+hide before speaking to her skips ahead, and she shows them the scar when they come to her with the note. The main
+quest cannot go on without Heem-Jasa until the player holds the note: if she dies before then, the quest fails and
+the main quest's message says its thread is cut. If she dies after, the note carries the player on to quest 4.
 
 - *The truth.* The player says it may die. Heem-Jasa thanks them for not lying. From then on she trains the player
   in Alchemy (Adept) and sells them sap, swamp fungus and eggshells.

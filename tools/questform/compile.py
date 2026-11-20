@@ -157,7 +157,7 @@ class Compiler:
         self.triggers: list[dict] = []
         self.must_live: dict[str, int] = {}
         self.must_live_at: dict[str, set[int]] = {}
-        self.death_moves: set[str] = set()
+        self.death_moves: dict[str, set[int]] = {}
         self.used_refs: dict[str, str] = {}
         self.kill_choice: set[str] = set()
         self.perk_names: dict[str, str] = {}      # a given perk's form key: the name the player sees
@@ -276,7 +276,7 @@ class Compiler:
                 self.must_live.setdefault(npc, to)
                 self.must_live_at.setdefault(npc, set()).add(frm)
             else:
-                self.death_moves.add(npc)
+                self.death_moves.setdefault(npc, set()).add(frm)
                 self._trigger("death", npc, frm, to, until)
         elif term in ("questStage", "stageEverReached"):
             q, n = (a[0], a[2]) if term == "questStage" else (a[0], a[1])
@@ -471,9 +471,12 @@ class Compiler:
                 objectives.append({"number": n + i, "text": o.get("objectiveText") or o["id"], "shown_at": [n],
                                    "completed_at": done, "targets": [self.use(t, ow) for t in targets]})
         objectives = _merged(objectives)
-        for npc in sorted(self.death_moves & set(self.must_live)):
-            self.refuse("death both ways", f"ref {npc}", "a person's death either fails the quest (who must live) "
-                        "or moves it on, at every stage alike")
+        for npc in sorted(set(self.death_moves) & set(self.must_live)):
+            at = self.must_live_at.get(npc, set())
+            lo, hi = min(at), max(at)
+            if any(lo <= s <= hi for s in self.death_moves[npc]) or min(self.death_moves[npc]) < lo:
+                self.refuse("death both ways", f"ref {npc}", "a person's death fails the quest (who must live) up to a "
+                            "stage and may move it on only from the stage after; never both at one stage")
         self._held(stages)
         lines = self.lines(q)
         triggers = [{"id": f"{t['kind']}.{t.get('ref') or t['quest']}.{t['prerequisite']}-{t['sets']}", **t}

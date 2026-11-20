@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "about": "Loading-screen facts about Black Marsh and the Argonians (2.9b m4): the home table (standard 18) of text.loading.fact.<slug>. One row per fact: id, topic, the text as the player reads it, its UESP source page and its tier (canon only, era policy 0002: earlier eras are history). Dossier: world/sources/lore/topics/loading-facts.md. `python3 -m worldgen.loading_facts --write` regenerates packages/text-catalogue/src/generated/loading-facts.ts; write against docs/standards/text/style-guide.md and run the text-review skill before commit. `regions` lists the catalogue region ids (world/sources/catalogue/places-<region>.json) the fact is about, set from its text and UESP page through the lore names (Shadowfen, Thornmarsh, Stormhold: dunmer-north; Blackwood, Gideon: imperial-fringe; Middle Argonia, Helstrom: hist-heartland; Archon: saxhleel-coast; Lilmoth, Oliis Bay: mercantile-coast; Murkmire: naga-kur-deeps and imperial-penal-south; Blackrose: imperial-penal-south; Dead-Water, Naga-Kur: naga-kur-deeps; Alten Corimont: pirate-freeholds). Empty means province-wide, which history and the Hist in general stay. The loading screen draws the facts of the region the player will be in plus the province-wide ones. Regional sweep (lane loading-facts-regions), settled against the catalogue: Hissmir, the Hatching Pools, Rockguard (Hutan-Tzel), Thorn, Mazzatun, Gandranen, Loriasel, Ten-Maur-Wolk, Bogmother, Stillrise, Tsono-Xuhil, Zuuk: dunmer-north; Fort Swampmoth, Glenbridge, Rockgrove, Stonewastes, Xi-Tsei, the Onkobra and Panther rivers: imperial-fringe; the Agaceph, Paatru and Sarpa tribes, the Lost City: hist-heartland; Blackrose Prison, the Blackguards, Murkwood, Red Bramman's kingdom: imperial-penal-south; Bright-Throat, Ixtaxh, the Xinchei-Konu, Alten Meerhleel, Rockpark, the Lilmothiit: mercantile-coast; Root-Whisper, Deepmire, Xul-Thuxis, the Tum-Taleel and the Veeskhleel: naga-kur-deeps; Leafwater: pirate-freeholds; Arnesia, the Cantemiric Velothi, glowgill guar: saxhleel-coast.",
+ "about": "Loading-screen facts about Black Marsh and the Argonians (2.9b m4): the home table (standard 18) of text.loading.fact.<slug>. One row per fact: id, topic, the text as the player reads it, its UESP source page and its tier (canon only, era policy 0002: earlier eras are history). Dossier: world/sources/lore/topics/loading-facts.md. `python3 -m worldgen.loading_facts --write` regenerates packages/text-catalogue/src/generated/loading-facts.ts; write against docs/standards/text/style-guide.md and run the text-review skill before commit. `regions` lists the catalogue region ids (world/sources/catalogue/places-<region>.json) the fact is about, set from its text and UESP page through the lore names (Shadowfen, Thornmarsh, Stormhold: dunmer-north; Blackwood, Gideon: imperial-fringe; Middle Argonia, Helstrom: hist-heartland; Archon: saxhleel-coast; Lilmoth, Oliis Bay: mercantile-coast; Murkmire: naga-kur-deeps and imperial-penal-south; Blackrose: imperial-penal-south; Dead-Water, Naga-Kur: naga-kur-deeps; Alten Corimont: pirate-freeholds). Empty means province-wide, which history and the Hist in general stay. The loading screen draws the facts of the region the player will be in plus the province-wide ones. Regional sweep (lane loading-facts-regions), settled against the catalogue: Hissmir, the Hatching Pools, Rockguard (Hutan-Tzel), Thorn, Mazzatun, Gandranen, Loriasel, Ten-Maur-Wolk, Bogmother, Stillrise, Tsono-Xuhil, Zuuk: dunmer-north; Fort Swampmoth, Glenbridge, Rockgrove, Stonewastes, Xi-Tsei, the Onkobra and Panther rivers: imperial-fringe; the Agaceph, Paatru and Sarpa tribes, the Lost City: hist-heartland; Blackrose Prison, the Blackguards, Murkwood, Red Bramman's kingdom: imperial-penal-south; Bright-Throat, Ixtaxh, the Xinchei-Konu, Alten Meerhleel, Rockpark, the Lilmothiit: mercantile-coast; Root-Whisper, Deepmire, Xul-Thuxis, the Tum-Taleel and the Veeskhleel: naga-kur-deeps; Leafwater: pirate-freeholds; Arnesia, the Cantemiric Velothi, glowgill guar: saxhleel-coast. A fact whose canon line contradicts our world's places is told as our world has it: `text` (what the player reads) is ours, tier EXTRAPOLATED, `canonText` keeps the canon line unaltered beside its `source`, and `basis` names the place records it follows.",
  "facts": [
   {
    "id": "fact.mer-name-argonia",
@@ -376,9 +376,11 @@
    "regions": [
     "imperial-penal-south"
    ],
-   "text": "Blackrose Prison is not part of Blackrose city. It lies a day's march to the south, in northern Murkmire.",
+   "text": "Blackrose Prison is not part of Blackrose city. It stands a short walk to the east, across the marsh.",
    "source": "Lore:Blackrose",
-   "tier": "CANON_EXPLICIT"
+   "tier": "EXTRAPOLATED",
+   "canonText": "Blackrose Prison is not part of Blackrose city. It lies a day's march to the south, in northern Murkmire.",
+   "basis": "our world: Blackrose Prison stands about 280 m east of Blackrose city (newworld/story/data/db/place.jsonl; place_note blackrose-prison overview)"
   },
   {
    "id": "fact.lilmoth-jewel",
@@ -4556,9 +4558,11 @@
    "regions": [
     "imperial-penal-south"
    ],
-   "text": "The prison stood a day's march south of Blackrose in Murkmire. The Empire chose the site for the climate that killed non-Argonians and for the aggressive Nagas around it.",
+   "text": "The prison stood a short walk east of Blackrose, across the marsh. The Empire chose the site for the climate that killed non-Argonians and for the aggressive Nagas around it.",
    "source": "Lore:Blackrose Prison",
-   "tier": "CANON_EXPLICIT"
+   "tier": "EXTRAPOLATED",
+   "canonText": "The prison stood a day's march south of Blackrose in Murkmire. The Empire chose the site for the climate that killed non-Argonians and for the aggressive Nagas around it.",
+   "basis": "our world: Blackrose Prison stands about 280 m east of Blackrose city (newworld/story/data/db/place.jsonl; place_note blackrose-prison overview)"
   },
   {
    "id": "fact.blackguards-origin",
