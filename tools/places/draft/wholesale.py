@@ -35,7 +35,7 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
 
     def pt(x, y):
         dx, dy = x - pv[0], y - pv[1]
-        return an[0] + dx * c - dy * s, an[1] + dx * s + dy * c
+        return an[0] + dx * c + dy * s, an[1] - dx * s + dy * c   # clockwise, as geom.Xf and ground.carry
     ext, ledger, our_id = [], [], {}
     _, of, _ = st.clusters        # the source's own groups, as names for the look tool only; nothing is moved by them
     for r in st.src_ext:
@@ -120,7 +120,7 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
             row = {k: q[k] for k in ("edid", "base", "kind", "pos", "rot", "scale", "layer", "flags") if k in q}
             row = {"id": io.mint(st.place_id, sp, q["id"]), **row, "src": q["id"],
                    "door": {**d, "to_space": "exterior", "to_ref": io.mint(st.place_id, "exterior", d["to_ref"]),
-                            "to_pos": [round(an[0] + dx * c - dy * s_, 2), round(an[1] + dx * s_ + dy * c, 2),
+                            "to_pos": [round(an[0] + dx * c + dy * s_, 2), round(an[1] - dx * s_ + dy * c, 2),
                                        round(float(z) + offset, 2)], "to_rot": to_rot},
                    "seat": {"mode": "free"}}
             rows.append(row)
@@ -161,7 +161,7 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
 
     def ours(x, y, z):
         dx, dy = x - pv[0], y - pv[1]
-        return (round(an[0] + dx * c - dy * s_, 1), round(an[1] + dx * s_ + dy * c, 1), round(z + offset, 1))
+        return (round(an[0] + dx * c + dy * s_, 1), round(an[1] - dx * s_ + dy * c, 1), round(z + offset, 1))
     navs = io.read_jsonl(st.src.path / "spaces" / "exterior" / "navmesh.jsonl")
     nodes, adj, base_of, links, seam = [], {}, {}, [], {}
 

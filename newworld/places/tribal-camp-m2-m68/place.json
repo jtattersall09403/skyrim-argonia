@@ -115,7 +115,7 @@
    -11059.2,
    -552960.0
   ],
-  "rot_deg": 270.0,
+  "rot_deg": 90.0,
   "cost": 0.0,
   "clusters": {},
   "separated": [],
@@ -198,14 +198,14 @@
  "draft_key": "22a7262c9e40d3f7",
  "wholesale": {
   "offset": 290.0,
-  "band": 1577.0,
+  "band": 1828.0,
   "pieces": 221,
   "dropped": 256,
-  "raised_max": 613.0,
-  "lowered_max": 306.8,
-  "band_steepest_deg": 63.6,
+  "raised_max": 363.0,
+  "lowered_max": 178.7,
+  "band_steepest_deg": 59.1,
   "source_water_area_m2": 0,
-  "held_by_water": 110
+  "held_by_water": 108
  },
  "agent_saves_applied": []
 }

@@ -34,7 +34,7 @@ def _transform(place: dict):
 
     def ours(x, y, z):
         dx, dy = x - pv[0], y - pv[1]
-        return an[0] + dx * c - dy * s, an[1] + dx * s + dy * c, z + off
+        return an[0] + dx * c + dy * s, an[1] - dx * s + dy * c, z + off   # clockwise, as geom.Xf
     return ours, off
 
 
