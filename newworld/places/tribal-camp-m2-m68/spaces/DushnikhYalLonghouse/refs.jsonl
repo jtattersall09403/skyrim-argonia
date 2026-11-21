@@ -1,3 +1,4 @@
+{"id":"Skyrim.esm:097E72","src":"Skyrim.esm:097E72","removed":true}
 {"id":"tribal-camp-m2-m68.5ES5Z306JKYM809ENRNZJ332MD","src":"Skyrim.esm:06795F","removed":true}
 {"id":"tribal-camp-m2-m68.A5PQMSJV71ACXRBNR0WH4CX8C8","src":"Skyrim.esm:0A8912","removed":true}
 {"id":"tribal-camp-m2-m68.CTAKRXWTS1S681FQ5EB4YQ39MM","edid":null,"base":"Skyrim.esm:02834E","kind":"door","pos":[211.91736,254.15727,-1.7392628],"rot":[1.5707964,-0.24434602,3.1415932],"scale":0.9,"layer":"place","flags":["persistent"],"src":"Skyrim.esm:06773B","door":{"to_space":"DushnikhYalCellar","to_ref":"tribal-camp-m2-m68.K98TAEJK1P7EBA5SHY45ZAJH88","to_pos":[115.307556,-1062.4594,234.41862],"to_rot":[0,0,0],"flags":"0"},"lock":{"level":"0","key":"Skyrim.esm:06566A","flags":"0"},"seat":{"mode":"free"}}
