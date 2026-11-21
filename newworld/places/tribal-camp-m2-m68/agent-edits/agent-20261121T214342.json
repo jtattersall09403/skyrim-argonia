@@ -1,0 +1,258 @@
+{
+ "save_id": "agent-20261121T214342",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "five plants the corrected fault list found floating: the fern hanging in the north scaffold's beams deleted (a stray); the north-edge undergrowth, the fern in the ruin top's earthen pit, the swamp cypress and the sword ferns by the top of the east steps sunk onto the ground under them",
+ "at": "2026-11-21T21:43:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.QQ59MEYF6WWEBS2KT8WQTR3X8C",
+   "call": "fault",
+   "before": {
+    "id": "tribal-camp-m2-m68.QQ59MEYF6WWEBS2KT8WQTR3X8C",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -10912.14,
+     -550909.38,
+     1077.82
+    ],
+    "rot": [
+     0,
+     0,
+     5.25398
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:85A4EE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s06"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:43:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.DA7CV5CGCH02VP5B0A93VVER7A",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10559.15,
+     -550688.0,
+     660.13
+    ],
+    "rot": [
+     0,
+     0,
+     3.7708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10559.15,
+     -550688.0,
+     580.13
+    ],
+    "rot": [
+     0,
+     0,
+     3.7708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T21:43:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.2GA9DJB5G2MD5RBWREGRZE7X0C",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -12447.47,
+     -552992.9,
+     258.0
+    ],
+    "rot": [
+     0,
+     0,
+     2.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -12447.47,
+     -552992.9,
+     198.0
+    ],
+    "rot": [
+     0,
+     0,
+     2.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T21:43:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.2BS8XFNZ46ZRB6VNVMW70DHGPV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -9840.38,
+     -552033.24,
+     828.09
+    ],
+    "rot": [
+     0,
+     0,
+     4.65399
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -9840.38,
+     -552033.24,
+     758.09
+    ],
+    "rot": [
+     0,
+     0,
+     4.65399
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T21:43:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.4TRABVQHAYG22SS3RDPCJHSQR3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -9711.63,
+     -551764.03,
+     739.64
+    ],
+    "rot": [
+     0.12985456,
+     0.1525416,
+     2.28073
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -9711.63,
+     -551764.03,
+     699.64
+    ],
+    "rot": [
+     0.12985456,
+     0.1525416,
+     2.28073
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T21:43:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.2BS8XFNZ46ZRB6VNVMW70DHGPV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -9840.38,
+     -552033.24,
+     758.09
+    ],
+    "rot": [
+     0,
+     0,
+     4.65399
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -9840.38,
+     -552033.24,
+     708.09
+    ],
+    "rot": [
+     0,
+     0,
+     4.65399
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T21:43:42Z"
+  }
+ ]
+}
