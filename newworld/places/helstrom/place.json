@@ -1997,7 +1997,14 @@
  "sap": {
   "added": []
  },
- "agent_saves_applied": [],
+ "agent_saves_applied": [
+  "agent-20261121T203657",
+  "agent-20261121T203658",
+  "agent-20261121T203659",
+  "agent-20261121T203700",
+  "agent-20261121T203701",
+  "agent-20261121T203702"
+ ],
  "wholesale": {
   "navmesh": "source",
   "offset": 180.0,
