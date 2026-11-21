@@ -20,7 +20,7 @@
  ],
  "containers": [
   {
-   "ref": "outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39",
+   "ref": "outpost-m11-m63.LOOK028PLACE",
    "space": "exterior",
    "kind": "sack",
    "lock": null,
@@ -193,23 +193,23 @@
   {
    "give_seq": 3,
    "by": "container",
-   "ref": "outpost-m11-m63.7HFB0KABY28EP2NJBC5J80JT39",
+   "ref": "outpost-m11-m63.LOOK028PLACE",
    "status": "delivered",
-   "why": "the thief's sack lies in the reeds at the waterline east of the weir (draft.add), stocked at T1"
+   "why": "the thief's sack lies in the reeds at the south end of the weir's log walk, the far bank from the camp (placed by hand), stocked at T1"
   },
   {
    "give_seq": 4,
    "by": "ref",
-   "ref": "outpost-m11-m63.QW32Q1N2PAMJDJ62N3DNMMSMXY",
+   "ref": "outpost-m11-m63.LOOK023PLACE",
    "status": "delivered",
-   "why": "Sithis' beard: three hanks of Skyrim's hanging moss draped on the woven weir's fences (draft.add), picked from the log walk; the quest's own hank lies by them"
+   "why": "Sithis' beard: six hanks of Skyrim's hanging moss draped on both faces of the woven weir's fences (placed by hand), picked from the log walk; the quest's own hank hangs among them"
   },
   {
    "give_seq": 0,
    "by": "ref",
    "status": "delivered",
-   "why": "the fish of the pool below the weir: Skyrim's deep-pond critter spawner, fish only (draft.add), placed against the woven weir",
-   "ref": "outpost-m11-m63.699XAFFZBEJ558XYCHYSTT2WD2"
+   "why": "the fish of the water below the weir: Skyrim's deep-pond critter spawner, fish only (placed by hand), just downstream of the woven weir",
+   "ref": "outpost-m11-m63.LOOK029PLACE"
   },
   {
    "give_seq": 2,
