@@ -27,10 +27,14 @@ the whole draft, judged stage by stage (`place-site` onwards).
 
 The record's `source` note and the allocated source are a first idea, not a ruling.
 
-1. Weigh the allocated source and its alternatives (the card's `source 0..3`, `python3 -m tools.places
-   sources-match`, the catalogue search) against the record: style and materials, layout (water, banks, streets),
-   buildings and interiors, size. Take the one that already looks most like the record, so the draft is mostly
-   kept pieces. A place the main quest uses always gets its closest match.
+1. Look at the best three or four candidates as places (the card's `source 0..3`, `python3 -m tools.places
+   sources-match`, the catalogue search), each in its own ground with the place's footprint drawn:
+   `python -m tools.places look --source <source_id> survey --ring <radius_m>` (the whole-place sheet), `section`
+   through its relief, and `units --ring <radius_m>` for what it holds inside the ring. Judge each against the
+   record: style and materials, layout (water, banks, streets), buildings and interiors, size, what would be pruned
+   and added, how much of its ground to bring. Take the one that already looks most like the record, so the draft is
+   mostly kept pieces: within the footprint, over half its pieces kept as built, and the quests' rooms present or
+   cheap from one other source. A place the main quest uses always gets its closest match.
 2. A source may serve several places, each taking a different part, layout or adaptation; the plan says how this
    one differs. Many places on one source are not fine; where another good source of the kind fits after a light
    re-authoring of one record, the second place moves to it.

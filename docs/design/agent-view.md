@@ -185,6 +185,19 @@ and listed in `place.json` `agent_saves_applied`; no word gets the owner's tier 
 that touches a row an owner's finalised save touched is left out whole and listed in `left_for_owner`. The session
 (and its snapshots) is then emptied; commit the place files by path.
 
+## A source by itself
+
+The first step of a draft is choosing its source by looking at the best three or four candidates as places, judging
+each against the record, choosing and pinning (`place-plan`). `look --source <source_id> <verb>` shows a candidate on
+its own ground from its bundle (extracted on demand), as a view-only place grouped into the source's own structures:
+every view verb works (`overview`, `at`, `orbit`, `section`, `survey`, `walk`, `probe`, `pick`), no hand does, and no
+faults are marked. `--ring <metres>` [`--centre x,y`] draws the footprint of a place of that radius on the ground and
+across sections (centred on the source's anchor by default); the overview and the whole-place survey then frame what
+stands inside it, the rest being the structure `outside`. `look --source <source_id> units --ring <metres>` counts
+what stands inside it: houses with rooms, beds, work stations, docks, boats, palisades, towers, tents, shrines,
+mines, farms, the pieces by class and by culture (Nordic, Imperial, orc, Dunmer, Argonian), the people by role. The
+view runs its own daemon (`look --source stop`).
+
 ## Working a place
 
 1. `overview`, `probe --all` and `measure`.
