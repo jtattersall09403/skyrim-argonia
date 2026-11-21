@@ -52,3 +52,20 @@ test('the ripple tile is the same every time, a unit tangent normal per texel, a
   for (let j = 0; j < 32; j++) { inside = Math.max(inside, step(10, j, 11, j)); seam = Math.max(seam, step(31, j, 0, j)); }
   assert.ok(seam <= inside * 2 + 2);
 });
+
+test('the ripple is a faint swell with no lattice: low slopes, and no repeat inside the tile', () => {
+  const n = 128, a = rippleNormals(n);
+  let sum = 0, mx = 0;
+  for (let k = 0; k < a.length; k += 4) { const s = Math.hypot(a[k] / 127.5 - 1, a[k + 1] / 127.5 - 1); sum += s; mx = Math.max(mx, s); }
+  assert.ok(sum / (n * n) < 0.12 && mx < 0.35, `slopes mean ${sum / (n * n)}, max ${mx}`);
+  // a lattice repeats inside the tile: shifted by a half, a quarter or an eighth it matches itself; value noise does not
+  const corr = (sh) => {
+    let num = 0, d1 = 0, d2 = 0;
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+      const x = a[(j * n + i) * 4] - 128, y = a[(j * n + ((i + sh) % n)) * 4] - 128;
+      num += x * y; d1 += x * x; d2 += y * y;
+    }
+    return num / Math.sqrt(d1 * d2);
+  };
+  for (const sh of [n / 2, n / 4, n / 8, n / 16]) assert.ok(Math.abs(corr(sh)) < 0.5, `shift ${sh}: ${corr(sh)}`);
+});
