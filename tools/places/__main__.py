@@ -1,14 +1,24 @@
 """python -m tools.places <verb> [args]: each verb is the module tools.places.<verb> (dashes as underscores)
-with a main(argv) -> int. Adding a verb is adding a module; this file does not change."""
+with a main(argv) -> int. Adding a verb is adding a module with a main; this file does not change. A module with no
+main is a library, never listed as a verb."""
 import importlib
 import pkgutil
 import sys
+from pathlib import Path
 
 import tools.places as pkg
 
 
+def is_verb(m) -> bool:
+    """A package (its __init__) or a module whose source defines main()."""
+    path = Path(pkg.__path__[0]) / m.name
+    src = path / "__init__.py" if m.ispkg else path.with_suffix(".py")
+    return src.is_file() and "\ndef main(" in src.read_text()
+
+
 def main(argv: list[str]) -> int:
-    verbs = sorted(m.name.replace("_", "-") for m in pkgutil.iter_modules(pkg.__path__) if not m.name.startswith("_"))
+    verbs = sorted(m.name.replace("_", "-") for m in pkgutil.iter_modules(pkg.__path__)
+                   if not m.name.startswith("_") and is_verb(m))
     if not argv or argv[0] in ("-h", "--help"):
         print("usage: python -m tools.places <verb> [args]\nverbs: " + " ".join(verbs))
         return 0 if argv else 2

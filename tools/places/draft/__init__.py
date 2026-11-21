@@ -1,20 +1,22 @@
-"""`python -m tools.places draft <place_id>` drafts a place whole from its source (skill place-system): a place's
-first draft. A place that holds the owner's finalised studio saves is never drafted whole again without
-`--force "<why no narrow stage can be correct>"`.
+"""`python -m tools.places draft wholesale <place_id> --offset <units> ...` lays a place's baseline: its source carried
+whole at one transform with the chosen part of its ground (tools/places/draft/wholesale.py; skill place-site), and
+with `--rooms` and `--walks` the source's rooms and walks.
+`python -m tools.places draft <place_id>` runs every stage on a place with no draft yet: the people, quest spots, fit
+frame and plan a baseline is laid over. A place that holds the owner's finalised studio saves is never drafted whole
+again without `--force "<why no narrow stage can be correct>"`.
 `draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that
 stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, ground (`--dry` prints what
-it would do), pieces, seating, clearance,
-streets (also `join`), people, lights, stations, jail, primitives, hang, sap, add, names. A whole draft places its
-things in rooms (`add`) and names its rooms (`names`), then ends with `primitives`, the join and then `jail` (the
-jail's release point is the arrival the join lays).
-`draft check <place_id>` runs the draft's self-checks; `draft structures <place_id>` lists each major source
-structure kept or dropped against the place record; `draft render <place_id>` writes top-down PNGs."""
+it would do), pieces, seating, clearance, streets (also `join`), people, lights, stations, jail, primitives, hang,
+sap, add, names, quests.
+`draft check <place_id>` runs the draft's self-checks; `draft plan <place_id>` prints the plan's faults; `draft
+structures <place_id>` lists each major source structure against the place record; `draft render <place_id>`
+writes top-down PNGs."""
 from __future__ import annotations
 
 import json
 import sys
 
-USAGE = "usage: python -m tools.places draft [<stage>|check|render] <place_id> [--force \"<why>\"]"
+USAGE = "usage: python -m tools.places draft [<stage>|wholesale|check|plan|structures|render] <place_id> [--force \"<why>\"]"
 
 
 def refusal(place_id: str, force: str | None, places=None) -> str | None:
@@ -42,6 +44,9 @@ def main(argv: list[str]) -> int:
         return m(argv[1:])
     if argv[0] == "plan":
         from tools.places.draft.plan import main as m
+        return m(argv[1:])
+    if argv[0] == "wholesale":
+        from tools.places.draft.wholesale import main as m
         return m(argv[1:])
     if argv[0] == "structures":
         from tools.places.draft.structures import main as m

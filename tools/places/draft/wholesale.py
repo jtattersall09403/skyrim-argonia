@@ -1,12 +1,18 @@
-"""A place laid wholesale from its source (the by-hand experiment): every source exterior piece inside the place's
-footprint at the fit's one main transform and its source height plus one common offset, and the source's whole relief
-inside the footprint carried as land rows at the same offset (no cap; the band's slope held to SLOPE_DEG; our water
-line kept by the ground stage's own rule). No fit per cluster, no seating, no drop rule but these three: an actor
-(people come from the place's people rows), the source's water plane (our world's water stands where it stands) and
-a levelled base (decision 0035). The place's people, quest spots, interiors and stock rows are left as they are; the
-draft's added pieces, streets, land patches and agent edits are cleared, since the experiment starts from the source.
+"""A place's baseline: every source exterior piece inside the place's footprint at one transform (place.json `fit`:
+`pivot` in the source, `anchor` in ours, `rot_deg`) and its source height plus one common offset, with the source's
+relief inside the footprint carried as land rows at the same offset (the band's slope held to SLOPE_DEG; our water
+line kept by the ground stage's own rule). Nothing is fitted per cluster or seated; the only pieces left out are an
+actor (people come from the place's people rows), the source's water plane (our water stands where it stands) and a
+levelled base (decision 0035). The place's people, quest spots, interiors and stock rows are left as they are; the
+draft's added pieces, streets, land rows and agent edits are cleared, since the baseline starts from the source.
+How much ground comes: all of it (default), only within `--carry-radius` of the centre (a camp's own platform), at
+most `--cap` units of change; `--keep-wet` carries a source pond's bed as a mud hollow. Then `--rooms` carries the
+source's rooms and door pairs onto the laid doors and `--walks x,y` its walks as path rows; place.json
+`wholesale.navmesh: "source"` makes the build write the source's own walking mesh (docs/design/place-studio.md,
+Navmesh; skill place-site).
 
-    python -m tools.places.draft.wholesale <place_id> --offset <units> [--dry]
+    python -m tools.places draft wholesale <place_id> --offset <units> [--carry-radius u] [--cap u] [--keep-wet] [--dry]
+    python -m tools.places draft wholesale <place_id> --offset <units> --rooms | --walks x,y
 """
 from __future__ import annotations
 
@@ -256,7 +262,7 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
 
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(prog="python -m tools.places draft wholesale", description=__doc__.split("\n")[0])
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
     ap.add_argument("--carry-radius", type=float, default=None,

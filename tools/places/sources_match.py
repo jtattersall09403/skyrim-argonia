@@ -737,6 +737,9 @@ def pin(place_ids: list[str]) -> int:
 
 
 def main(argv: list[str]) -> int:
+    if argv[:1] in (["-h"], ["--help"]):
+        print(__doc__)
+        return 0
     if argv[:1] == ["--population"]:
         return repopulate()
     if argv[:1] == ["--pin"]:
