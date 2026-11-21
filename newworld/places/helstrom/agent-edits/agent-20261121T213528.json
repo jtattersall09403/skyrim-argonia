@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T213528",
+ "place_id": "helstrom",
+ "name": "the city tree made great: the record's great Hist stands over the city's lesser trees (scale 2.3)",
+ "at": "2026-11-21T21:35:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK001PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -35000.0,
+     -626300.0,
+     155.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -35000.0,
+     -626300.0,
+     35.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.3,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:35:28Z"
+  }
+ ]
+}
