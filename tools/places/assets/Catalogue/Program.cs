@@ -95,7 +95,7 @@ foreach (var m in mods)
                                                // the rest of what shades the surface: opacity 0..100, the reflection colour, reflectivity, fresnel
                                                // and the distance the water takes to turn from its shallow to its deep colour
                                                opacity = (int)wt.Opacity, reflect = new int[] { wt.ReflectionColor.R, wt.ReflectionColor.G, wt.ReflectionColor.B },
-                                               reflectivity = WaterField(wt, "ReflectivityAmount"), fresnel = WaterField(wt, "FresnelAmount"),
+                                               reflectivity = WaterField(wt, "WaterReflectivity"), fresnel = WaterField(wt, "WaterFresnel"),
                                                fog_far = WaterField(wt, "FogAboveWaterDistanceFarPlane") };
                 // an item form's value and enchantment (the record's own, as the stocking extractor reads it), so its
                 // tier on the stocking scale is right before stockdb measures it

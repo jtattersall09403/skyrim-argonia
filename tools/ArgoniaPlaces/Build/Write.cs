@@ -335,6 +335,8 @@ static class Write
                 Boat.Build(ctx, boats);
             if (plan.TryGetProperty("shrines", out var shrines) && shrines.ValueKind == JsonValueKind.Array)
                 Shrine.Build(ctx, shrines);
+            if (plan.TryGetProperty("own", out var own) && own.ValueKind == JsonValueKind.Array)
+                Own.Build(ctx, own);
             if (plan.TryGetProperty("stock", out var stock) && stock.ValueKind == JsonValueKind.Object)
                 Stock.Build(ctx, stock);
             Console.WriteLine($"write: {pid}");
