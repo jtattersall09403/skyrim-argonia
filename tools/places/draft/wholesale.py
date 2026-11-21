@@ -191,6 +191,8 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
         meta = space.get("space") or {}
         if sp == "exterior" or not str(meta.get("copy_of", "")).startswith(st.place["source_id"] + "/"):
             continue
+        if meta.get("added"):     # a room the draft added behind its own added door (place-rooms): not the source's
+            continue
         src_sp = st.src.spaces.get(sp) or st.src.spaces.get(str(meta["copy_of"]).split("/", 1)[1])
         if not src_sp:
             continue

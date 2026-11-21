@@ -88,7 +88,8 @@ def test_rooms_of_a_shared_cell_keep_their_own_doors():
            {"id": "x.e2", "src": "e2", "door": {"to_space": "cell", "to_ref": "q2"}}]
     spaces = {"exterior": {"refs": ext},
               "cell": {"space": {"copy_of": "src/cell", "room": "q1"}, "refs": []},
-              "cell.2": {"space": {"copy_of": "src/cell", "room": "q2"}, "refs": []}}
+              "cell.2": {"space": {"copy_of": "src/cell", "room": "q2"}, "refs": []},
+              "cell.3": {"space": {"copy_of": "src/cell", "room": "q1", "added": True}, "refs": [{"id": "own"}]}}
     st = types.SimpleNamespace(place_id="x", place={"source_id": "src", "fit": {"pivot": [0, 0], "anchor": [0, 0]}},
                                files={"spaces": spaces}, src=types.SimpleNamespace(spaces={"cell": types.SimpleNamespace(refs=cell)}),
                                by_src={"e1": {}, "e2": {}}, ext=ext, S=None, G=None)
@@ -96,6 +97,7 @@ def test_rooms_of_a_shared_cell_keep_their_own_doors():
     assert [r["src"] for r in spaces["cell"]["refs"]] == ["q1"] and [r["src"] for r in spaces["cell.2"]["refs"]] == ["q2"]
     assert ext[1]["door"]["to_space"] == "cell.2" and ext[1]["door"]["to_ref"] == spaces["cell.2"]["refs"][0]["id"]
     assert ext[0]["door"]["arrival"] == [0.0, 0.0, 7.0]
+    assert spaces["cell.3"]["refs"] == [{"id": "own"}] and ext[0]["door"]["to_space"] == "cell"   # an added room is its own
 
 
 def test_the_carried_mesh_reads_the_districts():
