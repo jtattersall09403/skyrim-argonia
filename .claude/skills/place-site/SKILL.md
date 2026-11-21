@@ -14,8 +14,8 @@ After: the adaptation (`place-adapt`).
    `place.json` `fit`); its exterior pieces are replaced in step 3.
 2. The transform in `fit` (section 1) and the ground (section 2).
 3. `draft wholesale` (section 3): the pieces, then `--rooms`, then `--walks`. The plain run re-lays every exterior
-   piece and clears paths, land rows and agent edits, so it runs before any hand work and never after it; `--rooms`
-   and `--walks` touch only rooms and walks.
+   piece and clears paths, land rows and agent edits, so it is refused on a place holding hand edits (re-carry with
+   `--rooms` or `--walks`, or change by hand or by a stage; `--discard-hand-edits` only to lose them deliberately).
 4. Commit, then hand work: fit to our ground (section 4), the adaptation (`place-adapt`), rooms (`place-rooms`),
    people on the furniture (`place-routines`), quest spots (`place-story`).
 5. The rule stages on the place as it stands: `draft sap`, `draft stations`, `draft hang` where a Hist's trees lack

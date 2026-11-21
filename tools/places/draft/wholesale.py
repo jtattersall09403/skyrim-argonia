@@ -20,6 +20,7 @@ import argparse
 import json
 import math
 import shutil
+import sys
 
 from tools.places.draft import geom, ground, io
 from tools.places.draft.stages import Standing
@@ -261,6 +262,24 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
     return rows
 
 
+def hand_refusal(pdir) -> str | None:
+    """Why a whole re-lay of this place is refused, or None: it re-lays every exterior piece and clears paths, land
+    rows and agent edits, so the hands' work (agent saves, the owner's studio saves, hand-placed rows) would be lost."""
+    from tools.places import hands
+    from tools.places.draft.stages import owner_saves
+    rows = hands.placed(pdir)
+    agent = sorted(p.stem for p in (pdir / "agent-edits").glob("*.json")) if (pdir / "agent-edits").exists() else []
+    owner = owner_saves(pdir)
+    if not (rows or agent or owner):
+        return None
+    return (f"draft wholesale {pdir.name}: refused: the place holds hand edits ({len(rows)} hand-placed rows; agent "
+            f"saves {', '.join(agent) or 'none'}; owner's finalised saves {', '.join(owner) or 'none'}), and a whole "
+            f"re-lay replaces every exterior piece and clears paths, land rows and agent edits. Change it narrowly "
+            f"instead: `--rooms` re-carries the rooms and `--walks x,y` the walks without touching pieces; a piece or "
+            f"unit is changed by hand (look, `look commit`); a rule's output by its stage (`draft <stage>`). A "
+            f"deliberate whole re-lay that loses them: --discard-hand-edits.")
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="python -m tools.places draft wholesale", description=__doc__.split("\n")[0])
     ap.add_argument("place_id")
@@ -272,6 +291,8 @@ def main(argv=None) -> int:
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--rooms", action="store_true", help="carry the source's rooms, door pairs and arrivals onto the laid doors (the pieces as they stand)")
     ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
+    ap.add_argument("--discard-hand-edits", action="store_true",
+                    help="re-lay the whole baseline over a place that holds hand edits, losing them")
     ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)
     st = Standing(a.place_id)
@@ -290,6 +311,11 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
+    if not a.dry and not a.discard_hand_edits:
+        why = hand_refusal(st.pdir)
+        if why:
+            print(why, file=sys.stderr)
+            return 1
     ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
