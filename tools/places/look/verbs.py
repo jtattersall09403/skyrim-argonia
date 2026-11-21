@@ -185,8 +185,9 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False, "distance": True, "stand": True})
+                          "once": False, "grid": False, "distance": True, "stand": True, "clean": False})
     d.helpers = bool(o.get("helpers"))
+    CLEAN[0] = bool(o.get("clean"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
     faults = {x["id"] for x in sc.faults()}
@@ -507,9 +508,13 @@ def helper_label(sc):
     return label
 
 
+CLEAN = [False]   # `--clean`: the drafter has looked and judged the view; its image is kept without the banner
+
+
 def mark(img, score: dict | None):
-    """A failed capture carries its reason in a red banner across it."""
-    if score and score.get("capture") == "failed":
+    """A failed capture carries its reason in a red banner across it (its JSON still says failed and why), unless the
+    view was asked `--clean` (an owner capture the drafter has looked at: a close view whose subject fills the frame)."""
+    if score and score.get("capture") == "failed" and not CLEAN[0]:
         return capture.banner(img, score.get("why", ""))
     return img
 
