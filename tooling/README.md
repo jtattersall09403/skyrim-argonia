@@ -16,5 +16,5 @@
 | `session_tokens.py` | Tokens and list-price dollars per model from the transcripts (`--brief`, `--last N`) |
 | `brief_template.py` | Writes and checks a short brief for a delegated agent (`--write`, `--check`) |
 | `check_links.py` | Every relative markdown link under docs/, story/ and CLAUDE.md resolves |
-| `gate.py`, `gate_map.toml` | The scoped gate behind `make check`: only the stages and tests a change reaches (the docstring is the recipe); `make check-all` runs everything |
+| `gate.py`, `gate_map.toml` | The scoped gate behind `make check`: only the stages and tests a change reaches, a map edit included (the docstring is the recipe); `make check-all` runs everything |
 | `tests/` | Unit tests for the above; run by `make check` when their code changes |
