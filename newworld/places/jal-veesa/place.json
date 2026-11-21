@@ -1464,6 +1464,7 @@
  ],
  "wholesale": {
   "offset": 470.0,
+  "navmesh": "source",
   "band": 1411.0,
   "pieces": 612,
   "dropped": 11,
