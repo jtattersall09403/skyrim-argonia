@@ -14,7 +14,7 @@
    -142700.0
   ],
   "anchor": [
-   -42709.1,
+   -43309.1,
    -538869.8
   ],
   "rot_deg": 80,
@@ -73,16 +73,16 @@
  },
  "radius_m": 40,
  "wholesale": {
-  "offset": 50.0,
-  "band": 2030.0,
-  "pieces": 164,
-  "dropped": 82,
-  "raised_max": 250.6,
-  "lowered_max": 30.5,
-  "band_steepest_deg": 12.3,
-  "source_water_area_m2": 1093,
-  "held_by_water": 1,
-  "laid": "2026-11-21T15:00:05Z"
+  "offset": 0.0,
+  "band": 664.0,
+  "pieces": 176,
+  "dropped": 70,
+  "raised_max": 210.6,
+  "lowered_max": 147.9,
+  "band_steepest_deg": 20.9,
+  "source_water_area_m2": 1174,
+  "held_by_water": 2,
+  "laid": "2026-11-21T15:01:39Z"
  },
  "agent_saves_applied": []
 }
