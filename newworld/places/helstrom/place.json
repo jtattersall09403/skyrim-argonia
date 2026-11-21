@@ -1854,7 +1854,6 @@
     "helstrom.PPBSD8NSK1CS8SC67JGHX7N490"
    ],
    "armour-workbench": [
-    "helstrom.RWV7F7ANRB8VRVSFQNH32BG6XM",
     "helstrom.TKWH3EDTCQS7B8HSWB1PX2PF7Z"
    ],
    "cooking-pot": [
@@ -1873,11 +1872,25 @@
     "helstrom.WY5Z0Z38ZC52P6PFFY7EBQ29JJ"
    ],
    "shrine": [
-    "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
+    "helstrom.LOOK001PLACE"
    ]
   },
   "missing": [],
   "added": [
+   {
+    "station": "arcane-enchanter",
+    "id": "helstrom.PPBSD8NSK1CS8SC67JGHX7N490",
+    "base": "Black Marsh.esm:1DE5F6",
+    "space": "01BlackRoseJail",
+    "by": "helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"
+   },
+   {
+    "station": "cooking-pot",
+    "id": "helstrom.DZ16WVDNRWQN5F83QYDVS9YM8G",
+    "base": "King of the Murkmire.esp:1AD601",
+    "space": "01Ship",
+    "by": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
+   },
    {
     "station": "forge",
     "id": "helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T",
@@ -1893,25 +1906,11 @@
     "by": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"
    },
    {
-    "station": "arcane-enchanter",
-    "id": "helstrom.PPBSD8NSK1CS8SC67JGHX7N490",
-    "base": "Black Marsh.esm:1DE5F6",
-    "space": "01BlackRoseJail",
-    "by": "helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"
-   },
-   {
     "station": "armour-workbench",
     "id": "helstrom.TKWH3EDTCQS7B8HSWB1PX2PF7Z",
     "base": "Skyrim.esm:0D932F",
     "space": "exterior",
     "by": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
-   },
-   {
-    "station": "cooking-pot",
-    "id": "helstrom.DZ16WVDNRWQN5F83QYDVS9YM8G",
-    "base": "King of the Murkmire.esp:1AD601",
-    "space": "01Ship",
-    "by": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
    },
    {
     "station": "grindstone",
@@ -1933,13 +1932,6 @@
     "base": "King of the Murkmire.esp:0AAE85",
     "space": "exterior",
     "by": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
-   },
-   {
-    "station": "shrine",
-    "id": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE",
-    "base": "King of the Murkmire.esp:0D72B7",
-    "space": "exterior",
-    "by": null
    }
   ],
   "rent_bed": {
@@ -1999,7 +1991,12 @@
   "added": []
  },
  "sap": {
-  "added": []
+  "added": [
+   {
+    "id": "helstrom.sap.LOOK001PLACE",
+    "on": "LOOK001PLACE"
+   }
+  ]
  },
  "agent_saves_applied": [
   "agent-20261121T210715",

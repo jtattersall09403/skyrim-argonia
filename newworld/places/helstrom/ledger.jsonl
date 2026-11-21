@@ -10,6 +10,9 @@
 {"src":"Black Marsh North.esp:03E40E","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Black Marsh North.esp:16BF6D","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Black Marsh North.esp:16BF6F","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
+{"src":"Black Marsh.esm:0AA830","space":"01Ship","copy":"01Ship","status":"dropped","why":"a trigger (defaultActivateSelfTRIG, script defaultActivateSelf) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
+{"src":"Black Marsh.esm:0AA877","space":"01Ship","copy":"01Ship","status":"dropped","why":"a trigger (defaultActivateSelfTRIG, script defaultActivateSelf) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
+{"src":"Black Marsh.esm:0AA87D","space":"01Ship","copy":"01Ship","status":"dropped","why":"a trigger (defaultActivateSelfTRIG, script defaultActivateSelf) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
 {"src":"*","space":"01cellDUPLICATE002","status":"placed","as":["01cellDUPLICATE002"],"count":76}
 {"src":"Black Marsh North.esp:166BBE","space":"01cellDUPLICATE002","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Black Marsh North.esp:166BBF","space":"01cellDUPLICATE002","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
@@ -54,384 +57,384 @@
 {"src":"Black Marsh North.esp:0783A7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Black Marsh North.esp:0783A8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Black Marsh North.esp:0783A9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785D6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785D7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785D8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785D9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785DF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785E9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785EA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785EB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785EC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785ED","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785EE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785EF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785F9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"Black Marsh North.esp:0785D6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785D7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785D8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785D9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785DF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785E9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785EA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785EB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785EC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785ED","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785EE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785EF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785F9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0785FA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785FB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0785FF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078600","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078601","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078602","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078603","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078604","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078605","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078606","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078607","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078608","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078609","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07860F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078610","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078611","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078612","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078613","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078614","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078615","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078616","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078617","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078618","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078619","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07861F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078620","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078621","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078622","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078623","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078624","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078625","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078626","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078627","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078628","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078629","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07862B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07862C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07862D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07862E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07862F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078631","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078632","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078633","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078634","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078635","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078636","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078637","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078638","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078639","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07863F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078640","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078641","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078642","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078643","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078644","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078645","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078646","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078647","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078648","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078649","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07864A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07864B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07864C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07864E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078650","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078654","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078655","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078656","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078657","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078658","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078659","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07865F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078660","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078661","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078662","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078663","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078664","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078665","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078666","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078667","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078668","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078669","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07866F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078670","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078671","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078672","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078673","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078674","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078675","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078676","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078677","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078678","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078679","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07867F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078680","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078681","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078682","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078683","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078684","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078685","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078686","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078687","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078688","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078689","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07868F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078690","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078691","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078692","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078693","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078694","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078695","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078696","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078697","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078698","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078699","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07869F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786A9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786AF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786B9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786BA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786BB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786BC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786BD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786BE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786C9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786CF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786D9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786DF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786E9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786EA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786EB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786EC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786ED","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786EE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786EF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786F9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786FA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786FB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786FC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786FE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0786FF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078700","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078701","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078702","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078703","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078704","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078705","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078706","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078708","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078709","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07870F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078710","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078711","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078712","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078713","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078714","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078715","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078716","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078717","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078718","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078719","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07871A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07871B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078729","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07872C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078737","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078740","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07875C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"Black Marsh North.esp:0785FB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0785FF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078600","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078601","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078602","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078603","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078604","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078605","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078606","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078607","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078608","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078609","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07860F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078610","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078611","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078612","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078613","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078614","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078615","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078616","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078617","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078618","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078619","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07861F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078620","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078621","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078622","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078623","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078624","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078625","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078626","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078627","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078628","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078629","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07862B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07862C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07862D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07862E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07862F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078631","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078632","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078633","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078634","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078635","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078636","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078637","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078638","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078639","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07863F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078640","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078641","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078642","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078643","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078644","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078645","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078646","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078647","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078648","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078649","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07864A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07864B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07864C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07864E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078650","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078654","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078655","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078656","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078657","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078658","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078659","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07865F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078660","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078661","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078662","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078663","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078664","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078665","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078666","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078667","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078668","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078669","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07866F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078670","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078671","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078672","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078673","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078674","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078675","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078676","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078677","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078678","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078679","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07867F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078680","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078681","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078682","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078683","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078684","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078685","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078686","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078687","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078688","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078689","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07868F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078690","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078691","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078692","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078693","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078694","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078695","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078696","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078697","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078698","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078699","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07869F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786A9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786AF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786B9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786BA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786BB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786BC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786BD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786BE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786C9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786CF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786D9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786DF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786E9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786EA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786EB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786EC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786ED","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786EE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786EF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786F9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786FA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786FB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786FC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786FE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0786FF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078700","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078701","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078702","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078703","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078704","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078705","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078706","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078708","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078709","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07870F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078710","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078711","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078712","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078713","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078714","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078715","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078716","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078717","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078718","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078719","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07871A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07871B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078729","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07872C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078737","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078740","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07875C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:07875F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078782","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078783","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078784","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078785","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078786","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078787","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078788","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078789","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07878F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078790","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078791","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078792","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078793","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078794","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078795","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078796","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078797","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078798","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:078799","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:07879F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787A9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787AF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787B9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BC","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787BF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787C9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Black Marsh North.esp:0787CA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"Black Marsh North.esp:078782","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078783","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078784","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078785","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078786","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078787","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078788","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078789","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07878F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078790","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078791","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078792","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078793","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078794","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078795","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078796","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078797","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078798","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:078799","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879A","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879B","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879C","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879D","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879E","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:07879F","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A6","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A7","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787A9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787AF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787B9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BB","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BC","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BD","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BE","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787BF","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C0","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C1","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C2","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C3","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C4","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C5","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C8","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787C9","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
+{"src":"Black Marsh North.esp:0787CA","space":"exterior","status":"dropped","why":"a collision box on the source's own ground (it touches no piece the place keeps): our ground is not the source's, so it would hang in the air or lie buried where its builders never meant"}
 {"src":"Black Marsh North.esp:0787CE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Black Marsh North.esp:0787D0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Black Marsh North.esp:0787D1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
