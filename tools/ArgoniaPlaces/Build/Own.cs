@@ -48,11 +48,14 @@ static class Own
     {
         var p = typeof(Water).GetProperty(name) ?? throw new InvalidDataException($"WATR has no member {name}");
         var t = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
-        object o = t == typeof(Color) ? Color.FromArgb(0, val[0].GetInt32(), val[1].GetInt32(), val[2].GetInt32())
+        static int I(JsonElement v) => (int)Math.Round(v.GetDouble());   // a whole-number member written as 0.0 still reads
+        object o = t == typeof(Color) ? Color.FromArgb(0, I(val[0]), I(val[1]), I(val[2]))
             : t == typeof(P3Float) ? new P3Float(val[0].GetSingle(), val[1].GetSingle(), val[2].GetSingle())
-            : t == typeof(byte) ? (object)(byte)val.GetInt32()
+            : t == typeof(byte) ? (object)(byte)I(val)
             : t == typeof(float) ? (object)val.GetSingle()
-            : t == typeof(ushort) ? (object)(ushort)val.GetInt32()
+            : t == typeof(ushort) ? (object)(ushort)I(val)
+            : t == typeof(uint) ? (object)(uint)I(val)
+            : t == typeof(int) ? (object)I(val)
             : throw new InvalidDataException($"WATR member {name} is {t.Name}");
         p.SetValue(w, o);
     }
