@@ -22,7 +22,12 @@ STEPS_RE = re.compile(r"stair|steps|ramp|ladder")
 RAIL_WORDS = ("rail", "fence", "wall", "balust", "banister")
 POST_WORDS = ("post", "pillar", "stilt", "pole", "pile", "column", "support")
 NOT_POST_WORDS = ("woodpile", "firewood", "pile01", "rockpile", "bonepile", "lamppost", "signpost")
-HANG_WORDS = ("lantern", "sconce", "rope", "chain", "hang", "banner", "sign", "lamp", "bell", "cage", "net", "candle")
+HANG_WORDS = ("lantern", "sconce", "rope", "chain", "hang", "banner", "sign", "lamp", "bell", "cage", "net", "candle",
+              "chime", "bunting", "flagline", "torch")
+FRAME_WORDS = ("doorframe", "doorway", "door frame", "window")   # a wall part: set in a wall, held by it
+RUIN_WORDS = ("ruin", "/ayleidruins/", "obelisk", "totem", "temple", "aztec")   # a standing old structure, no house
+CLUTTER_WORDS = ("/clutter/", "/food/", "/weapons/", "/books/", "/ore/", "/bones/", "/potions/", "/argonianeggs/",
+                 "campfire", "cookingstand")
 WALL_WORDS = HANG_WORDS + ("window",)
 HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")
 PART_WORDS = ("door", "window", "floor")
@@ -38,11 +43,13 @@ NO_SOLID_KINDS = {"light", "marker", "sound", "actor", "groundcover", "plant"}
 STRUCTURAL_KINDS = {"building", "static", "furniture", "door", "container", "activator"}
 
 CLASSES = ("building body", "deck", "post", "steps", "door", "hanging fixture", "light", "effect", "marker", "plant",
-           "tree", "rock", "ground piece", "water", "boat", "furniture", "span", "railing", "thing")
+           "tree", "rock", "ground piece", "water", "boat", "furniture", "clutter", "span", "railing", "wall part", "ruin",
+           "thing")
 
 
 def words(p: dict) -> str:
-    return f"{p.get('edid') or ''} {p.get('model') or ''}".lower().replace("\\", "/")
+    """The edid and the model path, lower case, the path led by "/" so a word like "/landscape/" matches at its start."""
+    return f"{p.get('edid') or ''} /{p.get('model') or ''}".lower().replace("\\", "/")
 
 
 def has(p: dict, ws) -> bool:
@@ -68,18 +75,18 @@ def classify(p: dict) -> tuple[str, bool]:
         return "effect", False
     if k == "light":
         return ("hanging fixture" if has(p, HANG_WORDS) else "light"), False
-    if k in ("marker", "sound", "actor") or w.strip().startswith("markers/") or "/markers/" in w:
+    if k in ("marker", "sound", "actor") or has(p, ("/markers/", "/critters/", "/sky/")):
         return "marker", False
     if k == "door":
         return "door", False
-    if k == "water":
+    if k == "water" or has(p, ("/water/",)):
         return "water", False
-    if k == "tree" or (k not in STRUCTURAL_KINDS and has(p, TREE_WORDS)):
+    if k in PLANT_KINDS or has(p, ("/plants/",)):
+        return "plant", False
+    if k == "tree" or (has(p, TREE_WORDS) and not has(p, BODY_WORDS + DECK_WORDS + ("door",))):
         return "tree", False
     if k == "rock":
         return "rock", False
-    if k in PLANT_KINDS:
-        return "plant", False
     if k == "landscape" or has(p, MOUND_WORDS):
         return "ground piece", False
     if k in ("building", "static") and has(p, ROCK_WORDS) and not has(p, BODY_WORDS + DECK_WORDS):
@@ -90,6 +97,14 @@ def classify(p: dict) -> tuple[str, bool]:
         return "steps", False
     if has(p, HANG_WORDS):
         return "hanging fixture", False
+    if has(p, FRAME_WORDS):
+        return "wall part", False
+    if has(p, CLUTTER_WORDS) or (not p.get("model") and k not in STRUCTURAL_KINDS):
+        return "clutter", False   # a loose thing, or an item with no model of its own here (armour, a weapon)
+    if has(p, ("marketstand", "market stand")):
+        return "furniture", False
+    if has(p, RUIN_WORDS):
+        return "ruin", False
     if k in ("furniture", "container") or has(p, FURNITURE_WORDS):
         return "furniture", False
     if k == "building" and has(p, BODY_WORDS) and not has(p, DECK_WORDS + ("plank", "walkway", "bridge")):
@@ -100,7 +115,7 @@ def classify(p: dict) -> tuple[str, bool]:
         return "deck", False
     if post(p):
         return "post", False
-    if has(p, RAIL_WORDS):
+    if has(p, RAIL_WORDS + ("palisade", "stockade")):
         return "railing", False
     return "thing", True
 
@@ -110,4 +125,6 @@ def kind_of(p: dict) -> str:
 
 
 # classes that never stand as a building, carry a deck or need feet: what units must keep out of its structures
-NOT_STRUCTURE = {"light", "effect", "marker", "hanging fixture", "ground piece", "plant", "tree", "rock", "water"}
+NOT_STRUCTURE = {"light", "effect", "marker", "hanging fixture", "ground piece", "plant", "tree", "rock", "water", "clutter"}
+# classes that belong to the ground, never to a building (a plant standing on a deck is attached by units' own rule)
+GROUND_CLASSES = {"tree", "rock", "plant", "ground piece", "water"}
