@@ -224,3 +224,32 @@ def test_sink_until_feet_buried_reads_the_posts_feet_not_the_decks_underside(mon
     assert geom.bury_dz([d], Flat(0.0), depth=30) == pytest.approx(-(340 + 30), abs=TOL)
     assert geom.bury_dz([d], Flat(400.0)) == 0.0                 # already in the ground: never lifted
     assert -geom.bury_dz([d], Flat(0.0)) > geom.SINK_LIMIT      # the hand refuses this without --force
+
+
+def _geom_piece(pid, model, pos):
+    name = "t/" + model.split("/")[-1]                         # an fx/ model is an effect to the probe: holds nothing
+    shape.register(name, FIX["meshes"][model]["v"], FIX["meshes"][model]["t"])
+    p = piece(pid, name, pos)
+    S = shape.posed(p)
+    lo, hi = (S.lo - np.asarray(pos)).tolist(), (S.hi - np.asarray(pos)).tolist()
+    return {**p, "kind": "static", "resolved": True, "lo": lo, "hi": hi, "edid": pid}
+
+
+def test_a_deck_on_posts_set_into_a_grounded_root_mound_is_held_and_floats_once_the_mound_is_gone():
+    from tools.places.look import geom
+    c = C["legs"]
+    deck = _geom_piece("d", c["model"], (0, 0, 0))             # its posts' feet at -600
+    mound = _geom_piece("m", c["rock"], (0, 0, -400))          # top at -400: the posts set 200 into it, past REACH
+    ground = Flat(-700)                                        # the mound stands on the mud; the feet 100 over it
+    assert not [f for f in geom.faults([deck, mound], ground) if f["id"] == "d"]
+    assert geom.probe_piece(deck, ground, [deck, mound])["held_by"] == "m"
+    assert "floats" in [f["fault"] for f in geom.faults([deck], ground) if f["id"] == "d"]
+
+
+def test_legs_on_a_mound_hold_only_when_the_mound_itself_stands():
+    c = C["legs"]
+    deck = posed("d", c["model"], (0, 0, 0))
+    rock = posed("r", c["rock"], (0, 0, -c["legs"]))
+    for held, want in (({"r"}, "on its own legs"), (set(), "mid-air")):
+        rows = _ends(shape.joints([("d", deck)], [("d", deck), ("r", rock)], Flat(-1000), held=held))
+        assert rows and all(r["verdict"].startswith(want) for r in rows), (held, [r["verdict"] for r in rows])

@@ -36,7 +36,7 @@ code changes.
 | Where each stair, bridge and walkway end meets its deck or the ground | `python -m tools.places units <place> --joints`, then a `section` through each end it names |
 | Heights at a glance; proof a piece is seated | `section <thing> --axis` or `section <x1,y1> <x2,y2>` |
 | Judge a structure from every side at once | `survey <place> [<structure or unit> ...]`, `survey <place> --changed`: the sheet is the index; read each tile in `survey/<structure>/tiles/` (1280x960, listed with its score in `table.txt`) for detail |
-| One more look at a structure | `at <thing> [--from n..nw] [--eye\|--high\|--top]` (1920x1440; `--grid` adds the ground grid, off by default), `orbit <thing>` (each panel its own file) |
+| One more look at a structure | `at <thing> [--from n..nw] [--eye\|--high\|--top]` (1920x1440; `--grid` adds the ground grid, off by default), `orbit <thing>` (each panel its own file); `at <thing> --stand x,y[,z]` when the automatic camera lands in a roof: the eye at that point, over the deck under it |
 | The numbers of every house, deck, door, tree and loose piece | `measure` |
 | See what stands under trees | any view with `--no-canopy` (from high or above it is cut by itself when the canopy hides most of the subject) |
 | Is the way open | `walk <from> <to>` |

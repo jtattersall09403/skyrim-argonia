@@ -685,11 +685,12 @@ def walk_points(s: Posed) -> np.ndarray:
     return P[s.N[:, 2] >= WALK_NZ] if len(P) else P
 
 
-def legs_held(e: dict, others: list, ground) -> bool:
+def legs_held(e: dict, others: list, ground, held=None) -> bool:
     """Does the span's own mesh stand on legs under this end: is the lowest point of it within LEG_REACH of the end
     (`reach`, at `reach_at`: a post's foot) within STEP over the ground (or in it), on another mesh (its top or a
     walked surface within STEP of the foot, a cell round: a rock, a deck) or set into one all round (a cell round
-    it, the foot between its underside and its top: a post in a rock, not a post beside another post)?"""
+    it, the foot between its underside and its top: a post in a rock, not a post beside another post)? `held`: the ids
+    that themselves stand (grounded); when given, only those hold a foot (a mound floating in the air holds nothing)."""
     r, at = e.get("reach"), e.get("reach_at")
     if r is None:
         return False
@@ -697,7 +698,9 @@ def legs_held(e: dict, others: list, ground) -> bool:
     g = ground.height(x, y) if ground is not None else None
     if g is not None and r - g <= STEP:
         return True
-    for _, o in others:
+    for oid, o in others:
+        if held is not None and oid not in held:
+            continue
         if o.lo[0] > x + CELL or o.hi[0] < x - CELL or o.lo[1] > y + CELL or o.hi[1] < y - CELL \
                 or o.lo[2] > r + STEP or o.hi[2] < r - STEP:
             continue
@@ -713,7 +716,7 @@ def legs_held(e: dict, others: list, ground) -> bool:
     return False
 
 
-def end_meets(e: dict, others: list, ground) -> dict:
+def end_meets(e: dict, others: list, ground, held=None) -> dict:
     """What one end line meets: the walked surface of another piece just past (or under) it, else the ground. Gives
     `along` (the gap past the end to the surface; negative: the surface runs under the end that far), `dz` (the
     surface's height less the end's), the ground at the end and the end's underside over it, and the verdict:
@@ -757,7 +760,7 @@ def end_meets(e: dict, others: list, ground) -> dict:
         v = f"meets {best[1]}"
     elif over is not None and -SINK <= over <= STEP:
         v = "rests on ground"
-    elif over is not None and over > STEP and legs_held(e, others, ground):
+    elif over is not None and over > STEP and legs_held(e, others, ground, held):
         v = "on its own legs"
     elif over is not None and over < -SINK:
         v = f"buried end by {-over:.0f}"
@@ -809,7 +812,8 @@ def cover(s: Posed, o: Posed) -> dict | None:
             "clear": float(clear), "across": bool(clear < CLEAR_WALK and before >= 2 and after >= 2)}
 
 
-def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None, name_of=None) -> list[dict]:
+def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None, name_of=None,
+           held=None) -> list[dict]:
     """One row per end of every walked span (spans: [(id, Posed)]): what it meets and the verdict (end_meets); then,
     per span and piece of another unit: `spans overlap <id>` (another span overlapping it along its length);
     `crossed by wall <id>` (a wall or body cutting across its walked line, under CLEAR_WALK left, with open walk on
@@ -819,7 +823,8 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structur
     `stands on: <id>` (a piece resting on its walk leaving under CLEAR_WALK clear beside it) or `carries <id>` (one
     leaving that clear: not a fault), each saying what stands there, its share of the walk's width and the clear left.
     unit_of: piece id -> unit id; walls: ids of building bodies and wall parts; structures: the ids whose standing on
-    a span is named (bodies, decks, steps, spans, walls; None: every piece); name_of: id -> what it is, for the row."""
+    a span is named (bodies, decks, steps, spans, walls; None: every piece); name_of: id -> what it is, for the row;
+    held: the ids that stand themselves (legs_held: only those hold a span's legs; None: any mesh)."""
     unit_of = unit_of or {}
     walls = walls or set()
     name_of = name_of or {}
@@ -831,7 +836,7 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structur
         deck = [e["at"][2] for e in ends]
         for k, e in enumerate(ends):
             out.append({"span": sid, "unit": unit_of.get(sid), "end": "foot" if k == 0 else "head",
-                        **end_meets(e, others, ground)})
+                        **end_meets(e, others, ground, held)})
         for i, o in others:
             if boxes_apart(s, o, STEP):
                 continue

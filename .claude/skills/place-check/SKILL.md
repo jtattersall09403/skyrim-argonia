@@ -40,7 +40,11 @@ machine-wide lock (`tools/places/heavy_lock.py`). They are never the inner loop:
 ## A failure
 
 Each failure's full list is in `out/places/shards/<place_id>/check_failures/<check>.txt`; `check <place_id> --reach
-[person]` says what is cut off from what. Mend it at its cause, by the skill that owns it:
+[person]` says what is cut off from what. An `overlap`, `doors`, `clear` or `nordic` finding that is right after
+looking at it (`place-look`) is accepted in place.json `draft.accepted_checks` as `{check, ids, why}`: the ref ids the
+finding names and a reason of at least a sentence saying what was seen. It is then shown as `accepted: <why>`, counted
+apart and never fails; an entry that no longer matches a finding fails as stale and is deleted. Mend every other
+failure at its cause, by the skill that owns it:
 
 | Failure | Skill |
 |---|---|
