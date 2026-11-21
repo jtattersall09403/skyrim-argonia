@@ -1,0 +1,153 @@
+{
+ "save_id": "agent-20261120T112646",
+ "place_id": "jal-veesa",
+ "name": "three pieces raised to their seat rule's height (1.6, 1.6 and 12.6 units)",
+ "at": "2026-11-20T11:26:46Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56175.38,
+     -505103.91,
+     517.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 21.39
+    }
+   },
+   "after": {
+    "pos": [
+     -56175.38,
+     -505103.91,
+     518.99
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 22.99
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T11:26:46Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q0AFQDR1EX0172769PZ0NYWH83",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55998.65,
+     -505186.79,
+     590.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 72.72
+    }
+   },
+   "after": {
+    "pos": [
+     -55998.65,
+     -505186.79,
+     591.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 74.32
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T11:26:46Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55926.05,
+     -505437.86,
+     573.74
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 77.74
+    }
+   },
+   "after": {
+    "pos": [
+     -55926.05,
+     -505437.86,
+     586.34
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 90.34
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T11:26:46Z"
+  }
+ ]
+}

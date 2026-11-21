@@ -1,0 +1,96 @@
+{
+ "save_id": "agent-20261120T151225",
+ "place_id": "jal-veesa",
+ "name": "units apply: Fishers' net and basket back on the ground they lay on",
+ "at": "2026-11-20T15:12:25Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QS2NS9XQGD4X9HPFH7DQ5X5E13",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52462.83,
+     -506582.19,
+     269.403
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1.09,
+    "seat": {
+     "mode": "above",
+     "dz": -179.67
+    }
+   },
+   "after": {
+    "pos": [
+     -52462.83,
+     -506582.19,
+     618.903
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1.09,
+    "seat": {
+     "mode": "above",
+     "dz": 169.83
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T15:12:25Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0TGYS3TTVT7B1EPAE9EC20MGXT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52533.2,
+     -506310.21,
+     149.347
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -306.94
+    }
+   },
+   "after": {
+    "pos": [
+     -52533.2,
+     -506310.21,
+     507.347
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 51.06
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-20T15:12:25Z"
+  }
+ ]
+}

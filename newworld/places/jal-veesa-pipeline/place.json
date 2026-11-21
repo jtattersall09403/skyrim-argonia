@@ -1,0 +1,1511 @@
+{
+ "place_id": "jal-veesa-pipeline",
+ "source_id": "kingofthemurkmire.seekhatyollocation",
+ "similar": [
+  "kingofthemurkmire.altenmeerhleellocation"
+ ],
+ "draft": {
+  "add": [
+   {
+    "base": "King of the Murkmire.esp:15731E",
+    "kind": "building",
+    "pos": [
+     -51150.0,
+     -517150.0
+    ],
+    "rot_z": 1.1854,
+    "tier": "AGENT_INVENTED",
+    "why": "the jetty market's house (place record: trader-general 'at the jetty market'): Alten Meerhleel's market house (MurkmireHouse01) on the stream bank south of the town, where the town's road comes down to the water",
+    "key": "0"
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -51336.6,
+     -517236.1
+    ],
+    "rot_z": 1.1854,
+    "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+    "dz": 94.4,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.altenmeerhleellocation/AltenGeneralStore",
+     "door": "King of the Murkmire.esp:0F2625",
+     "space": "AltenGeneralStore",
+     "arrival": [
+      -51446.6,
+      -517288.1
+     ]
+    },
+    "why": "the jetty market's door, where Alten Meerhleel sets it on its market house, into a copy of Meerhleel Market",
+    "key": "1"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -50600,
+     -517700
+    ],
+    "rot_z": 0.7854,
+    "dz": -40.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "2"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -50250,
+     -518050
+    ],
+    "rot_z": 0.7854,
+    "dz": -40.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "3"
+   },
+   {
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -49900.0,
+     -518400.0
+    ],
+    "rot_z": 0.7854,
+    "dz": 34.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "4",
+    "scale": 1.0
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50804.0,
+     -519252.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "5",
+    "scale": 1.0,
+    "dz": 174.29
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50554.0,
+     -519252.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "6",
+    "scale": 1.0,
+    "dz": 195.59
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50304.0,
+     -519252.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "7",
+    "scale": 1.0,
+    "dz": 262.3
+   },
+   {
+    "base": "King of the Murkmire.esp:157321",
+    "kind": "building",
+    "pos": [
+     -53600.0,
+     -510300.0
+    ],
+    "rot_z": 3.3832,
+    "tier": "AGENT_INVENTED",
+    "why": "the levy's bunkhouse (the town's two wardens of the levy sleep here: place record dangers 'its own wardens patrol'): Alten Meerhleel's bunkhouse (MurkmireHouse04)",
+    "key": "8",
+    "scale": 1.0,
+    "dz": -61.9
+   },
+   {
+    "base": "King of the Murkmire.esp:157397",
+    "kind": "building",
+    "pos": [
+     -53691.5,
+     -510671.5
+    ],
+    "rot_z": 3.3832,
+    "on": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
+    "dz": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the bunkhouse's lean-to (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "key": "9",
+    "scale": 1.0
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -53167.6,
+     -510496.4
+    ],
+    "rot_z": 4.954,
+    "on": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
+    "dz": 96.3,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.altenmeerhleellocation/AltenBunkhouse",
+     "door": "King of the Murkmire.esp:0F2755",
+     "space": "AltenBunkhouse",
+     "arrival": [
+      -53047.6,
+      -510530.4
+     ]
+    },
+    "why": "the bunkhouse door, where Alten Meerhleel sets it, into a copy of Alten Meerhleel Lodging House",
+    "key": "10",
+    "scale": 1.0
+   },
+   {
+    "base": "King of the Murkmire.esp:157320",
+    "kind": "building",
+    "pos": [
+     -52700.0,
+     -516300.0
+    ],
+    "rot_z": 0.727,
+    "tier": "AGENT_INVENTED",
+    "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
+    "dz": -76.1,
+    "key": "11",
+    "scale": 1.0
+   },
+   {
+    "base": "King of the Murkmire.esp:157397",
+    "kind": "building",
+    "pos": [
+     -52763.2,
+     -516371.0
+    ],
+    "rot_z": 0.727,
+    "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+    "dz": 296.6,
+    "tier": "AGENT_INVENTED",
+    "why": "the house's upper storey (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "key": "12",
+    "scale": 1.0
+   },
+   {
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -52556.3,
+     -516155.6
+    ],
+    "rot_z": 3.8686,
+    "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+    "dz": 94.3,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.altenmeerhleellocation/AltenDockmasterHouse",
+     "door": "King of the Murkmire.esp:0FCDE5",
+     "space": "AltenDockmasterHouse",
+     "arrival": [
+      -52461.3,
+      -516057.6
+     ]
+    },
+    "why": "the house's door, where Alten Meerhleel sets it, into a copy of Mexhira's House",
+    "key": "13",
+    "scale": 1.0
+   },
+   {
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -52200,
+     -510200
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "14"
+   },
+   {
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51850,
+     -510350
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "15"
+   },
+   {
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51500,
+     -510200
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "16"
+   },
+   {
+    "base": "King of the Murkmire.esp:1AD601",
+    "kind": "furniture",
+    "pos": [
+     -51850.0,
+     -509950.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks",
+    "key": "17"
+   },
+   {
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -55500,
+     -506900
+    ],
+    "rot_z": 0.6,
+    "tier": "AGENT_INVENTED",
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "18"
+   },
+   {
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -55250,
+     -507150
+    ],
+    "rot_z": 0.6,
+    "tier": "AGENT_INVENTED",
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "19"
+   },
+   {
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -49800,
+     -503000
+    ],
+    "rot_z": 0.6,
+    "tier": "AGENT_INVENTED",
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "20"
+   },
+   {
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "space": "SeekhatEldersHut",
+    "pos": [
+     8300.0,
+     -3150.0,
+     6799.0
+    ],
+    "rot_z": 0.0,
+    "tier": "AGENT_INVENTED",
+    "why": "free-bed: the guest mat in the elders' long house (place record: 'a mat in the elders' long house'), unowned",
+    "key": "21"
+   },
+   {
+    "base": "King of the Murkmire.esp:11684E",
+    "kind": "building",
+    "pos": [
+     -55200.0,
+     -510300.0
+    ],
+    "rot_z": 4.7124,
+    "dz": -80.0,
+    "tier": "AGENT_INVENTED",
+    "why": "the sedge cutter's household's house: Seekhat Yol's egg-tenders' thatch hut (MurkmireThatchHouse07), set on the town's dry ground at its south edge, since its own platform stands where the town's ground cannot reach it",
+    "key": "22"
+   },
+   {
+    "base": "King of the Murkmire.esp:0259D2",
+    "kind": "door",
+    "pos": [
+     -54994.4,
+     -510033.0
+    ],
+    "rot_z": 3.1416,
+    "scale": 1.1,
+    "on": "jal-veesa.VE8A85BEW8291JEFASMB5NPBDN",
+    "dz": 94.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "kingofthemurkmire.seekhatyollocation/SeekhatEggTendersQuarters",
+     "door": "King of the Murkmire.esp:19DF88",
+     "space": "SeekhatEggTendersQuarters",
+     "whole": true,
+     "arrival": [
+      -54994.4,
+      -510143.0
+     ]
+    },
+    "why": "the hut's door, where Seekhat Yol sets it, into a copy of the egg-tenders' quarters (its other way out removed)",
+    "key": "23"
+   },
+   {
+    "base": "King of the Murkmire.esp:035B34",
+    "kind": "static",
+    "pos": [
+     -56511.0,
+     -505472.0
+    ],
+    "rot_z": 1.5708,
+    "stop": "rootworm-stop",
+    "need": 0,
+    "tier": "AGENT_INVENTED",
+    "why": "the town's Hist at the heart of the town (place record: 'the Hist pool at the heart of the town'; main story, The Dry Tree): King of the Murkmire's HistTree01, the model of Seekhat Yol's own Hist (ArgoniaTreeHist01, a plant of its land the draft leaves to our world) at its scale and turn, standing where it stood, so its glands, gland roots and hanging roots hang on its limbs as the source has them; 136 over our ground as it stood over its mound; it carries the rootworm stop and the shrine blessing",
+    "id_base": "King of the Murkmire.esp:0D72B7",
+    "scale": 1.64,
+    "dz": 742.5,
+    "key": "24"
+   },
+   {
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -50554.0,
+     -519002.0
+    ],
+    "rot_z": 0.0,
+    "dz": 226.75,
+    "need": 5,
+    "tier": "AGENT_INVENTED",
+    "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty",
+    "key": "25",
+    "scale": 1.0
+   }
+  ],
+  "people_from": [
+   "bmv.helstrom"
+  ],
+  "plan": {
+   "look": [
+    {
+     "line": "pale reed-thatched stilt houses",
+     "by": "Seekhat Yol's own MurkmireThatchHouse05 to 08 on their stilt platforms, kept as the source has them"
+    },
+    {
+     "line": "a ring of mud banks round the Hist's sap pool at the heart of the town",
+     "by": "Seekhat Yol's raised platforms and mud mounds round its Hist, which stands at the source's heart"
+    },
+    {
+     "line": "the Hist and its sap pool",
+     "by": "Seekhat Yol's own Hist, swapped for King of the Murkmire's HistTree03 (a living Hist the sap stage pools), with Seekhat Yol's Hist glands, flowers and mossy vines; the sap stage's WaterPuddleHist of Hist sap on its trunk"
+    },
+    {
+     "line": "boat-lanes and the jetty market at the stream",
+     "by": "Alten Meerhleel's market (a draft.add building with its room copied) and its walkway pieces at the water south of the town, the town's streets laid down to it"
+    },
+    {
+     "line": "weirs on the stream",
+     "by": "walkway and stake pieces of the marsh's own kit standing in the stream below the jetty market (draft.add)"
+    },
+    {
+     "line": "mats drying on racks",
+     "by": "the marsh's own drying racks with mats (draft.add) by the houses"
+    },
+    {
+     "line": "fish racks smoking on the road side",
+     "by": "the marsh's own fish drying racks (draft.add) on the road side of the town, with the cooking pot"
+    },
+    {
+     "line": "boat sheds",
+     "by": "Seekhat Yol's carpenter's yard (its carpenter's workbench and boats) and the tanning rack beside it"
+    },
+    {
+     "line": "the smithy",
+     "by": "dropped: Seekhat Yol's smelter and ore outside its smithy hut; the record has no smith (the hut is a home)"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "rootworm-stop",
+     "by": "the Hist and its sap pool: Weeltul, the tree-minder, works at the Hist",
+     "line": "the rootworm stop"
+    },
+    {
+     "kind": "trader-general",
+     "by": "Sells-Dry-Fish at Alten Meerhleel's market room at the jetty",
+     "line": "the jetty market's trader"
+    },
+    {
+     "kind": "trader-innkeeper",
+     "by": "Sells-Dry-Fish, at the fish racks on the road side",
+     "line": "the fish-smoker's stall"
+    },
+    {
+     "kind": "free-bed",
+     "by": "Seekhat Yol's elder's hut as the elders' long house, its guest mat an unowned bed",
+     "line": "a mat in the elders' long house"
+    },
+    {
+     "kind": "trainer",
+     "by": "Keeshu-Ra, a ruin-warden, working in the town",
+     "line": "the archery trainer"
+    },
+    {
+     "kind": "fishing",
+     "by": "the weirs on the stream below the jetty market",
+     "line": "weir fishing"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "a cooking pot at the fish racks",
+     "line": "the cooking pot"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "Seekhat Yol's own tanning rack, by the boat sheds",
+     "line": "the tanning rack"
+    },
+    {
+     "kind": "shrine-blessing",
+     "by": "the Hist itself, the tree-minder's blessing",
+     "line": "the shrine blessing"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "harbour",
+     "what": "the harbour",
+     "verdict": "kept",
+     "why": "Seekhat Yol's platform ends and two-way platforms: the decks the stilt houses stand on"
+    },
+    {
+     "structure": "walls",
+     "what": "the walls",
+     "verdict": "kept",
+     "why": "Seekhat Yol's platform bridges and plank walls: the walkways between the stilt platforms, no town wall"
+    },
+    {
+     "cluster": "b01",
+     "what": "a thatch stilt house on its platform",
+     "verdict": "kept",
+     "why": "one of the record's pale reed-thatched stilt houses (MurkmireThatchHouse08) on the ring of banks round the pool"
+    },
+    {
+     "cluster": "b02",
+     "what": "the treeminder's hut on the Hist's roots",
+     "verdict": "kept",
+     "why": "the tree-minder's stilt house the main quest needs beside the Hist; sunk whole with the roots and knoll it stands on to a short flight over our ground"
+    },
+    {
+     "cluster": "b03",
+     "what": "the fishers' hut, the guest hut and their decks and bridges",
+     "verdict": "kept",
+     "why": "two of the record's stilt houses (the fishers' and the accommodation hut) on the ring; the fishers' deck sunk whole with its lookout bridges to a short flight over our ground"
+    },
+    {
+     "cluster": "b04",
+     "what": "two thatch stilt houses among Hist roots",
+     "verdict": "kept",
+     "why": "stilt houses of the record's ring, close by the Hist and its sap pool"
+    },
+    {
+     "cluster": "b05",
+     "what": "the elders' long house",
+     "verdict": "kept",
+     "why": "Vosh-Leera's House, the elders' long house mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
+    },
+    {
+     "cluster": "landing",
+     "what": "the landing's walkway",
+     "verdict": "kept",
+     "why": "the town's landing on the pool's bank: its walkways are how the town meets the water"
+    },
+    {
+     "cluster": "s02",
+     "what": "a walkway stair",
+     "verdict": "kept",
+     "why": "a flight from the banks up to the decks: what makes the stilt houses reachable"
+    },
+    {
+     "cluster": "s03",
+     "what": "platform ends",
+     "verdict": "kept",
+     "why": "deck ends that carry the walkways between the stilt houses"
+    },
+    {
+     "cluster": "s04",
+     "what": "the Hist gland grove and its sap pool",
+     "verdict": "kept",
+     "why": "the record's Hist sap pool at the heart of the town, with the steaming pool, roots and the walkways over them"
+    },
+    {
+     "cluster": "s05",
+     "what": "a plank bridge",
+     "verdict": "kept",
+     "why": "a walkway between the banks of the ring"
+    },
+    {
+     "cluster": "s06",
+     "what": "a platform end",
+     "verdict": "kept",
+     "why": "a deck end carrying a walkway of the ring"
+    },
+    {
+     "cluster": "s07",
+     "what": "a plank bridge",
+     "verdict": "kept",
+     "why": "a walkway between the banks of the ring"
+    },
+    {
+     "cluster": "s08",
+     "what": "platform ends",
+     "verdict": "kept",
+     "why": "deck ends carrying the walkways at the ring's east side"
+    }
+   ],
+   "source": "the source: Seekhat Yol: Seekhat Yol (King of the Murkmire): an Argonian village of pale reed-thatched stilt houses on platforms round its Hist, the closest match to the record's look; its seven rooms, topped up with three of Alten Meerhleel's (King of the Murkmire) rooms (market, bunkhouse, dockmaster's house), house the town's nine households and its jetty market. Cormaris (the allocated source) was Imperial and Dunmer and needed every house replaced"
+  },
+  "drop": {
+   "King of the Murkmire.esp:1B78D5": "the smithy smelter: the record has no smith",
+   "King of the Murkmire.esp:1B78DE": "the smithy ore: the record has no smith",
+   "King of the Murkmire.esp:198C28": "the egg-tenders' hut's door on its platform: the platform stands where the town's ground cannot reach it; the hut's room is behind the hut added on the dry ground (draft.add)",
+   "King of the Murkmire.esp:198C2B": "the egg-tenders' hut's back door on its platform: as its front door",
+   "King of the Murkmire.esp:1C1D4C": "a Creation Club curio the catalogue judges Nordic (decision 0006); the hut keeps its own things"
+  },
+  "accepted": [
+   {
+    "unit": "house.SeekhatTreeminderHut",
+    "flag": "foot not reaching the ground",
+    "why": "the source's own: its deck corner stands over the cliff, posts down onto the rocks (looked at from E, eye, 2026-11-21)"
+   },
+   {
+    "unit": "house.SeekhatSmithyHut",
+    "flag": "foot not reaching the ground",
+    "why": "its walls meet the ground on every side (looked at from E, S and W, eye, 2026-11-21); the 52 is its porch plank over a shallow hollow in front of the door, no daylight under it at eye level. The source's posts and steps under that porch (150DC5, 184249) stood in the source's water and are dropped by the draft's water rule: a decision for the next draft run"
+   },
+   {
+    "unit": "small.02",
+    "flag": "foot not reaching the ground",
+    "why": "the hatchery: its eggs lie in the woven nest that stands in the steaming mud (looked at from S, 2026-11-21); the 43 is an egg on the nest, not on the ground"
+   },
+   {
+    "unit": "small.02",
+    "flag": "foot buried deeper than its leg",
+    "why": "the hatchery's steam pool is a pool: its mesh sinks into its own hollow"
+   },
+   {
+    "unit": "added.house.SeekhatEggTendersQuarters",
+    "flag": "floor under the ground",
+    "why": "the hut sits on the ground with its walls meeting it all round and its door 10 over the ground with its own step piece (looked at from S, eye, 2026-11-21); raising it 12 left a 18 gap under its low corner and the door 22 up, so it stays: the floor under the ground is the interior's floor plate, hidden inside a closed hut whose room is its own cell"
+   },
+   {
+    "unit": "added.house.SeekhatEggTendersQuarters",
+    "flag": "foot not reaching the ground",
+    "why": "as above: the 6 is the door sill over its step piece"
+   },
+   {
+    "unit": "house.SeekhatCarpenterHut",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own: the Carpenter's stair (14BB38) comes down from its deck onto walkway.04's boardwalk, not the ground; its foot is on the boardwalk (joints: steps to walkway.04 by 36, seen in survey walkway.04 NE high, 2026-11-21)"
+   }
+  ],
+  "ground_cap": 450
+ },
+ "fit": {
+  "pivot": [
+   -4379.5,
+   -162783.5
+  ],
+  "anchor": [
+   -52858.9,
+   -503951.4
+  ],
+  "rot_deg": 0.0,
+  "cost": 10627.604,
+  "clusters": {
+   "b01": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 31.25,
+    "cost_after": 31.25
+   },
+   "b02": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -53213.7,
+     -503804.4
+    ]
+   },
+   "b03": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 46.875,
+    "cost_after": 46.875,
+    "rejoined_from": [
+     -52587.4,
+     -503679.9
+    ]
+   },
+   "b04": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "b05": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "landing": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 4382.812,
+    "cost_after": 4382.812
+   },
+   "s01": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s02": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 166.667,
+    "cost_after": 166.667
+   },
+   "s03": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s04": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s05": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -53039.9,
+     -504132.4
+    ]
+   },
+   "s06": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -52504.1,
+     -504098.4
+    ]
+   },
+   "s07": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s08": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s09": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "s10": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 0.0,
+    "cost_after": 0.0
+   },
+   "w01": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w02": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w03": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w04": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w05": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   },
+   "w06": {
+    "pivot": [
+     -4379.5,
+     -162783.5
+    ],
+    "to": [
+     -52858.9,
+     -503951.4
+    ],
+    "rot": 0.0,
+    "dx": 0.0,
+    "dy": 0.0,
+    "drot_deg": 0.0,
+    "cost_before": 1000.0,
+    "cost_after": 1000.0
+   }
+  },
+  "separated": [
+   {
+    "cluster": "b02",
+    "dx": -354.8,
+    "dy": 147.0,
+    "clear_of": "s01"
+   },
+   {
+    "cluster": "b03",
+    "dx": 271.5,
+    "dy": 271.5,
+    "clear_of": "landing"
+   },
+   {
+    "cluster": "s05",
+    "dx": -181.0,
+    "dy": -181.0,
+    "clear_of": "b04"
+   },
+   {
+    "cluster": "s06",
+    "dx": 354.8,
+    "dy": -147.0,
+    "clear_of": "b04"
+   },
+   {
+    "drop": "King of the Murkmire.esp:14BB3A",
+    "why": "stood in King of the Murkmire.esp:01B036 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:14BB27",
+    "why": "stood in King of the Murkmire.esp:14BB20 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:14BB20",
+    "why": "stood in King of the Murkmire.esp:14BB2F once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:150DA8",
+    "why": "stood in King of the Murkmire.esp:150DBC once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1BCA5C",
+    "why": "stood in King of the Murkmire.esp:14BB3E once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1CC154",
+    "why": "stood in King of the Murkmire.esp:14BB22 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1B78DE",
+    "why": "stood in King of the Murkmire.esp:150DC5 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1B78DF",
+    "why": "stood in King of the Murkmire.esp:150DC5 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1C6F7F",
+    "why": "stood in King of the Murkmire.esp:14BB34 once the clusters were fitted, with no step of either cluster clear"
+   },
+   {
+    "drop": "King of the Murkmire.esp:1CC14C",
+    "why": "stood in King of the Murkmire.esp:150DC5 once the clusters were fitted, with no step of either cluster clear"
+   }
+  ],
+  "clusters_info": [
+   {
+    "id": "b01",
+    "kind": "building",
+    "head": "King of the Murkmire.esp:01B036",
+    "members": 40,
+    "centre": [
+     -6012.6,
+     -163860.2
+    ]
+   },
+   {
+    "id": "b02",
+    "kind": "building",
+    "head": "King of the Murkmire.esp:150DB6",
+    "members": 37,
+    "centre": [
+     -7822.5,
+     -163171.9
+    ]
+   },
+   {
+    "id": "b03",
+    "kind": "building",
+    "head": "King of the Murkmire.esp:01B03A",
+    "members": 116,
+    "centre": [
+     -3415.3,
+     -164687.7
+    ]
+   },
+   {
+    "id": "b04",
+    "kind": "building",
+    "head": "King of the Murkmire.esp:150DB7",
+    "members": 99,
+    "centre": [
+     -7220.1,
+     -165963.0
+    ]
+   },
+   {
+    "id": "b05",
+    "kind": "building",
+    "head": "King of the Murkmire.esp:198C45",
+    "members": 35,
+    "centre": [
+     -2453.2,
+     -165554.0
+    ]
+   },
+   {
+    "id": "landing",
+    "kind": "landing",
+    "head": null,
+    "members": 59,
+    "centre": [
+     -5237.5,
+     -164638.1
+    ]
+   },
+   {
+    "id": "s01",
+    "kind": "street",
+    "head": null,
+    "members": 37,
+    "centre": [
+     -7747.5,
+     -164459.7
+    ]
+   },
+   {
+    "id": "s02",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -6090.7,
+     -164852.3
+    ]
+   },
+   {
+    "id": "s03",
+    "kind": "street",
+    "head": null,
+    "members": 8,
+    "centre": [
+     -1070.4,
+     -164161.9
+    ]
+   },
+   {
+    "id": "s04",
+    "kind": "street",
+    "head": null,
+    "members": 74,
+    "centre": [
+     -9788.6,
+     -165351.6
+    ]
+   },
+   {
+    "id": "s05",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -9164.1,
+     -166586.4
+    ]
+   },
+   {
+    "id": "s06",
+    "kind": "street",
+    "head": null,
+    "members": 7,
+    "centre": [
+     -8166.6,
+     -167238.3
+    ]
+   },
+   {
+    "id": "s07",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -1027.8,
+     -164918.8
+    ]
+   },
+   {
+    "id": "s08",
+    "kind": "street",
+    "head": null,
+    "members": 10,
+    "centre": [
+     -1107.2,
+     -165738.6
+    ]
+   },
+   {
+    "id": "s09",
+    "kind": "street",
+    "head": null,
+    "members": 17,
+    "centre": [
+     -11144.4,
+     -166719.6
+    ]
+   },
+   {
+    "id": "s10",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -11701.3,
+     -164798.9
+    ]
+   },
+   {
+    "id": "w01",
+    "kind": "wet",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -6523.6,
+     -160592.8
+    ]
+   },
+   {
+    "id": "w02",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -2392.7,
+     -160672.4
+    ]
+   },
+   {
+    "id": "w03",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -5286.5,
+     -160436.4
+    ]
+   },
+   {
+    "id": "w04",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -1500.1,
+     -161158.1
+    ]
+   },
+   {
+    "id": "w05",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -4242.4,
+     -162076.8
+    ]
+   },
+   {
+    "id": "w06",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -447.6,
+     -160590.5
+    ]
+   }
+  ],
+  "relief_norm": 94.5,
+  "patch_max": 105.0
+ },
+ "clearance": {
+  "tree": {
+   "building": 25.6,
+   "door": 278.1,
+   "street": 117.3,
+   "samples": 167
+  },
+  "low": {
+   "building": 361.7,
+   "door": 208.2,
+   "street": 276.4,
+   "samples": 77
+  }
+ },
+ "factions": [
+  {
+   "id": "jal-veesa.crime",
+   "kind": "crime",
+   "name": "Jal-Veesa",
+   "jail": null,
+   "owing": {
+    "work": "jal-veesa.M0EXWP2X1F3VQ1KXNPX2JMGWZY",
+    "return": "jal-veesa.G00TQY0X2QE752859XQ7QWRGMT",
+    "bed": "jal-veesa.F4P5E0382SKCVR4YKKBP7NRRTJ",
+    "stolen": "jal-veesa.0H4GEY01V530ENNKV0VRZTJWYX",
+    "work_at": "the work stop 14 of the place's people share"
+   },
+   "law": "native",
+   "law_why": "Argonian law, no cell: The Veesa-Teeleel elders; their own, not the Vicecanons"
+  },
+  {
+   "id": "jal-veesa.guard",
+   "kind": "guard",
+   "crime": "jal-veesa.crime"
+  },
+  {
+   "id": "jal-veesa.town",
+   "kind": "town",
+   "crime": "jal-veesa.crime"
+  },
+  {
+   "id": "jal-veesa.vendor.01",
+   "kind": "vendor",
+   "crime": "jal-veesa.crime",
+   "hours": [
+    8,
+    20
+   ],
+   "sells": [
+    "trader-general",
+    "trader-innkeeper"
+   ],
+   "chest": true,
+   "person": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF"
+  }
+ ],
+ "stations": {
+  "needed": [
+   "cooking-pot",
+   "shrine",
+   "tanning-rack"
+  ],
+  "found": {
+   "cooking-pot": [
+    "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST"
+   ],
+   "tanning-rack": [
+    "jal-veesa.X8WXQR5N4SBAW6GK2G2FN9YV45"
+   ],
+   "shrine": [
+    "jal-veesa.7XQNVHSJ301DJJC517GEST7RHD",
+    "jal-veesa.8RN9MXN9N9GG5VTA0P6FYX5B5R",
+    "jal-veesa.AHFQAJAKB1F6X1FWJJ06D8VB3V",
+    "jal-veesa.C6GREJNZKZAYXTAR6VRSDGR74W",
+    "jal-veesa.HP1JEJ9340AYR88STTVEW6XSVF",
+    "jal-veesa.MNNC8V2R0QFQGMDMEW99HA15CA",
+    "jal-veesa.R6H6XAV301WARJAJNKQES2V62A",
+    "jal-veesa.RNQ1281B2E5X8752E8TM05G1YV"
+   ]
+  },
+  "missing": [],
+  "added": [],
+  "rent_bed": null
+ },
+ "lights": {
+  "added": []
+ },
+ "hang": {
+  "added": []
+ },
+ "ground": {
+  "bundle": "ground.jal-veesa",
+  "sha": "9e069504df3a234a8975ebe2af5822adc07a4db5b950586b164e8c051f6ecb35",
+  "stamp": "b567c944dceaf9d5"
+ },
+ "source": {
+  "bundle": "src.kingofthemurkmire.seekhatyollocation",
+  "stamp": "2ce8582d6b27a1e3"
+ },
+ "radius_m": 120,
+ "counts": {
+  "source_refs": 646,
+  "placed": 496,
+  "adapted": 0,
+  "replaced": 3,
+  "dropped": 147,
+  "exterior_refs": 493,
+  "clusters": 22,
+  "land_patches": 2,
+  "plants_cleared": 0,
+  "paths": 9,
+  "interiors": 7,
+  "people": {
+   "guard": 2,
+   "merchant": 1,
+   "resident": 10,
+   "trainer": 1
+  },
+  "beds": 17
+ },
+ "draft_key": "b342e67c323af19d",
+ "sap": {
+  "offset": {
+   "7SWK29SQSJ276Q5JVM1M6FCTK4": [
+    1450.0,
+    -250.0
+   ]
+  },
+  "scale": {
+   "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4
+  },
+  "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21)",
+  "added": [
+   {
+    "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
+    "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
+   }
+  ],
+  "none": [
+   {
+    "on": "RNQ1281B2E5X8752E8TM05G1YV",
+    "why": "the hatchery gland: the hatchery's own steam pool is at its foot and there is no open level ground for a sap pool (five spots tried, 2026-11-21); no pool (lead's decision, 2026-11-21)"
+   }
+  ]
+ },
+ "agent_saves_applied": [
+  "agent-20261120T072429",
+  "agent-20261120T092505",
+  "agent-20261120T100429",
+  "agent-20261120T101339",
+  "agent-20261120T101611",
+  "agent-20261120T112610",
+  "agent-20261120T112646",
+  "agent-20261120T120552",
+  "agent-20261120T122806",
+  "agent-20261120T150720",
+  "agent-20261120T151225",
+  "agent-20261120T151326",
+  "agent-20261120T151413",
+  "agent-20261120T151534",
+  "agent-20261120T151537",
+  "agent-20261120T151707",
+  "agent-20261120T151814",
+  "agent-20261120T151919",
+  "agent-20261120T152003",
+  "agent-20261120T152054",
+  "agent-20261120T155020",
+  "agent-20261120T155313",
+  "agent-20261120T160607",
+  "agent-20261120T161332",
+  "agent-20261120T164535",
+  "agent-20261120T165212",
+  "agent-20261120T170114",
+  "agent-20261121T034625",
+  "agent-20261121T041059",
+  "agent-20261121T041110",
+  "agent-20261121T041241",
+  "agent-20261121T041434",
+  "agent-20261121T041650",
+  "agent-20261121T050221",
+  "agent-20261121T050732",
+  "agent-20261121T052145",
+  "agent-20261121T070111",
+  "agent-20261121T070844",
+  "agent-20261121T071057",
+  "agent-20261121T071111",
+  "agent-20261121T071131",
+  "agent-20261121T071236",
+  "agent-20261121T071303",
+  "agent-20261121T071321",
+  "agent-20261121T071421",
+  "agent-20261121T071454",
+  "agent-20261121T071516",
+  "agent-20261121T072321",
+  "agent-20261121T072518",
+  "agent-20261121T072556",
+  "agent-20261121T072610",
+  "agent-20261121T080923",
+  "agent-20261121T081259",
+  "agent-20261121T081344",
+  "agent-20261121T081404",
+  "agent-20261121T081556"
+ ],
+ "steps": {
+  "kit": [
+   "King of the Murkmire.esp:050D80"
+  ]
+ },
+ "title": "Jal-Veesa (pipeline version, to compare)"
+}

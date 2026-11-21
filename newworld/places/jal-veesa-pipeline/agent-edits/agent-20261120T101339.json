@@ -1,0 +1,223 @@
+{
+ "save_id": "agent-20261120T101339",
+ "place_id": "jal-veesa",
+ "name": "jal-veesa: the elders' flight on the porch's free north edge, the fishers' at its west door; a net under the flight removed",
+ "at": "2026-11-20T10:13:39Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50309.12,
+     -506849.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -50880.12,
+     -506141.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T10:13:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50880.12,
+     -506141.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -50880.12,
+     -506141.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T10:13:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52082.12,
+     -505603.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -52613.12,
+     -506339.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T10:13:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52613.12,
+     -506339.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "after": {
+    "pos": [
+     -52613.12,
+     -506339.97,
+     571.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+     "dz": -137.53
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-20T10:13:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.WY80WCC09YW0KGM18JJG0R6A50",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.WY80WCC09YW0KGM18JJG0R6A50",
+    "base": "ccBGSSSE001-Fish.esm:000D71",
+    "kind": "clutter",
+    "pos": [
+     -52468.56,
+     -506358.22,
+     564.656
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.09,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:1BCA51",
+    "seat": {
+     "mode": "above",
+     "dz": 107.33
+    },
+    "cluster": "b03"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-20T10:13:39Z"
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "save_id": "agent-20261120T151814",
+ "place_id": "jal-veesa",
+ "name": "EggTenders' fire pit group set down on the ground under the house",
+ "at": "2026-11-20T15:18:14Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.FX13CV4VF2XQZYMY2ANPH1DS55",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54628.69,
+     -507504.29,
+     521.89
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.XW43DTJ40GJSPNC8VJYEKX8WMF",
+     "dz": 262.6
+    }
+   },
+   "after": {
+    "pos": [
+     -54628.69,
+     -507504.29,
+     455.99
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.XW43DTJ40GJSPNC8VJYEKX8WMF",
+     "dz": 196.7
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T15:18:14Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YX6JNMBCWQBA07207SZQ8XVHKB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54563.15,
+     -507338.25,
+     574.18
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.XW43DTJ40GJSPNC8VJYEKX8WMF",
+     "dz": 314.89
+    }
+   },
+   "after": {
+    "pos": [
+     -54563.15,
+     -507338.25,
+     508.28
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.XW43DTJ40GJSPNC8VJYEKX8WMF",
+     "dz": 248.99
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-20T15:18:14Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3AKNP5XT4HTRJMXMAPV0Z379N6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54556.22,
+     -507337.66,
+     732.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.71,
+    "seat": {
+     "mode": "above",
+     "dz": 276.87
+    }
+   },
+   "after": {
+    "pos": [
+     -54556.22,
+     -507337.66,
+     666.97
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.71,
+    "seat": {
+     "mode": "above",
+     "dz": 210.97
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-20T15:18:14Z"
+  }
+ ]
+}
