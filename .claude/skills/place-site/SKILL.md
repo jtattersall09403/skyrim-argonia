@@ -53,7 +53,14 @@ cliff pieces (Tropical Skyrim's among them); bare stretched ground is a fault.
 ## 3. Lay the baseline
 
 1. Choose the one height offset (z, in game units, added to every source height) from sections: the source's walked levels over our ground where the place is
-   entered, its posts' feet in our ground, not on it.
+   entered, its posts' feet in our ground, not on it. A source whose districts sat at different heights on a hill
+   takes one offset per district body instead: name them in `fit.districts` `[{name, clusters: [source cluster
+   ids], offset: <u> | "auto"}]` (`"auto"`: our ground less the source's under the district's buildings), each a
+   group of house clusters whose own grounds lie within the cap of one another; position and turn stay the one
+   transform. Each district is laid rigidly at its offset with its own terrace under it (capped by `--cap`, about
+   280, eased to ours); every other source cluster moves whole with the carried ground, a loose piece by its own.
+   The resolved offsets are written to `wholesale.districts`, which the carried walking mesh, the rooms' arrivals and
+   the walks read. Bridges and stairs between two districts are the joins to mend by hand (`units --joints`).
 2. `python -m tools.places draft wholesale <place_id> --offset <u> [--carry-radius u] [--cap u] [--keep-wet] --dry`:
    read the pieces laid, the band, the largest raise and lower, the source water area and what our water holds;
    then run it without `--dry`. Every source piece inside the footprint lands at the one transform and height; only
