@@ -192,14 +192,15 @@ def given_for(t: dict, v):
     return v.get(t["id"].split(".", 1)[-1], v.get(t["id"])) if isinstance(v, dict) else v
 
 
-def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scales=None, log=None) -> list[dict]:
+def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scales=None, log=None,
+         none=None) -> list[dict]:
     """A pool for every living Hist row of a place's exterior, in row id order; a Hist already standing in a pool
     placed by hand (`draft.add`, the studio) keeps that one. offsets, scales: the place's `draft.sap.offset` and
     `draft.sap.scale`; an offset with a scale is a pool placed by hand, taken as it stands."""
     own = [r for r in ext if r.get("base") == POOL and ".sap." not in r["id"]]
     boxes = covers(ext, bases)
     out = []
-    for t in sorted(pooled(ext, bases), key=lambda r: r["id"]):
+    for t in sorted(pooled(ext, bases, none), key=lambda r: r["id"]):
         if any(holds(p, t) for p in own):
             continue
         given, sc = given_for(t, offsets), given_for(t, scales)
@@ -215,22 +216,25 @@ def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scal
     return out
 
 
-def pooled(ext: list[dict], bases: dict) -> list[dict]:
+def pooled(ext: list[dict], bases: dict, none=None) -> list[dict]:
     """The living Hists that stand in a pool of their own: every Hist tree and trunk, and a gland only where it grows
-    apart from them (a gland within a tree's pool is a growth of that tree, and its sap is the tree's pool)."""
-    hists = [t for t in ext if living(bases.get(t["base"])) and t.get("kind") != "door"]
+    apart from them (a gland within a tree's pool is a growth of that tree, and its sap is the tree's pool); none: the
+    place's `draft.sap.none` {Hist ref id: why it has no pool} (no open level ground at its foot), left out."""
+    none = {str(k).split(".", 1)[-1] for k in (none or {})}
+    hists = [t for t in ext if living(bases.get(t["base"])) and t.get("kind") != "door"
+             and t["id"].split(".", 1)[-1] not in none]
     trees = [t for t in hists if "Gland" not in str(bases[t["base"]].get("edid"))]
     reach = [(t, POOL_HALF * pool_for("", t, bases[t["base"]])["scale"]) for t in trees]
     return trees + [g for g in hists if g not in trees
                     and not any(math.dist(g["pos"][:2], t["pos"][:2]) <= r for t, r in reach)]
 
 
-def faults(ext: list[dict], bases: dict) -> list[str]:
+def faults(ext: list[dict], bases: dict, none=None) -> list[str]:
     """A living Hist without a sap pool holding its trunk, and a stage pool whose Hist is gone."""
     pools = [r for r in ext if r.get("base") == POOL]
     out = []
     hists = [t for t in ext if living(bases.get(t["base"]))]
-    for t in pooled(ext, bases):
+    for t in pooled(ext, bases, none):
         if not any(of_hist(p, t) for p in pools):
             out.append(f"{t['id']}: a Hist without its sap pool")
     ids = {t["id"].split(".", 1)[-1] for t in hists}
@@ -369,18 +373,18 @@ def want(st, log=None) -> tuple[list[dict], dict]:
     G = Ground.load(st.grd.path)
     G.apply_patches([r for r in st.files["land"] if r.get("by") != "sap"])   # the ground before the dig
     d = (st.place.get("draft") or {}).get("sap") or {}
-    return rows_for(st.place_id, st.ext, st.bases, d.get("offset"), G, d.get("scale"), log)
+    return rows_for(st.place_id, st.ext, st.bases, d.get("offset"), G, d.get("scale"), log, d.get("none"))
 
 
 def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scales=None,
-             log=None) -> tuple[list[dict], dict]:
+             log=None, none=None) -> tuple[list[dict], dict]:
     """Pool rows for a place's exterior rows, and the bases with the pool's (none when the catalogue lacks it)."""
     from tools.places.draft.io import catalogue_bases
     bases = dict(bases)
     bases.update(catalogue_bases({POOL} - set(bases)))
     if POOL not in bases:
         return [], bases
-    return plan(place_id, ext, bases, offsets, G, scales, log), bases
+    return plan(place_id, ext, bases, offsets, G, scales, log, none), bases
 
 
 def main(argv=None) -> int:

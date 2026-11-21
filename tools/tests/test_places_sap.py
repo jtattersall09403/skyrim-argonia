@@ -221,3 +221,11 @@ def test_a_pool_placed_by_hand_off_the_trunk_keeps_its_place_and_size_and_is_dug
     assert {tuple(d["cell"]) for d in dug} == {(0, 0)}
     # an offset alone (no scale) is still the stage's own size
     assert sap.plan("p", [t], bases, {"A": [0, 100]})[0]["scale"] == sap.MIN_SCALE
+
+
+def test_a_hist_the_place_accepts_without_a_pool_gets_none_and_is_no_fault():
+    none = {"A": "no open level ground at its foot"}
+    out = sap.plan("p", ext(), BASES, none=none)
+    assert [r["id"] for r in out] == ["p.sap.B"]
+    assert sap.faults(ext() + out, BASES, none) == []
+    assert sap.faults(ext() + out, BASES) == ["p.A: a Hist without its sap pool"]
