@@ -105,6 +105,15 @@
      "why": "kept: the stairs and clay; the gas traps and stage triggers pruned (the record's dangers name none)"
     }
    ]
+  },
+  "roles": {
+   "apothecary": {
+    "space": "exterior",
+    "pos": [
+     -44380.0,
+     -538470.0
+    ]
+   }
   }
  },
  "fit": {
@@ -213,5 +222,48 @@
    "street": 0.0,
    "samples": 31
   }
+ },
+ "hang": {
+  "added": [
+   {
+    "id": "outpost-m6-m66.hang.99BYE0A4DTRN08517K3PMZPZ31.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31"
+   },
+   {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
+   },
+   {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.1",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
+   },
+   {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.2",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
+   }
+  ]
+ },
+ "lights": {
+  "added": []
+ },
+ "stations": {
+  "needed": [
+   "cooking-pot",
+   "tanning-rack"
+  ],
+  "found": {
+   "cooking-pot": [
+    "outpost-m6-m66.TF29POT"
+   ],
+   "tanning-rack": [
+    "outpost-m6-m66.TF33TANNING"
+   ]
+  },
+  "added": [],
+  "missing": []
  }
 }
