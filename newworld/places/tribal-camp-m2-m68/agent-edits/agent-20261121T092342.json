@@ -1,0 +1,119 @@
+{
+ "save_id": "agent-20261121T092342",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "fire set reduced to the logs and the light (the burner and ash stood inside them); bone pile moved off the stockade base",
+ "at": "2026-11-21T09:23:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK007PLACE",
+   "call": "fault",
+   "before": {
+    "id": "tribal-camp-m2-m68.LOOK007PLACE",
+    "base": "King of the Murkmire.esp:1AD5CF",
+    "kind": "furniture",
+    "pos": [
+     -10063.0,
+     -552200.0,
+     540.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T09:23:42Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK010PLACE",
+   "call": "fault",
+   "before": {
+    "id": "tribal-camp-m2-m68.LOOK010PLACE",
+    "base": "Dragonborn.esm:02000A",
+    "kind": "static",
+    "pos": [
+     -10043.0,
+     -552207.0,
+     560.33
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 1.0
+    },
+    "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T09:23:42Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10880.0,
+     -554380.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10630.0,
+     -554530.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T09:23:42Z"
+  }
+ ]
+}
