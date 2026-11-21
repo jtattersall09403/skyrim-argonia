@@ -84,37 +84,43 @@
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -49700,
-     -519300.0
+     -50804.0,
+     -519252.0
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
-    "key": "5"
+    "key": "5",
+    "scale": 1.0,
+    "dz": 174.29
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -49450,
-     -519300.0
+     -50554.0,
+     -519252.0
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
-    "key": "6"
+    "key": "6",
+    "scale": 1.0,
+    "dz": 195.59
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -49200,
-     -519300.0
+     -50304.0,
+     -519252.0
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
-    "key": "7"
+    "key": "7",
+    "scale": 1.0,
+    "dz": 262.3
    },
    {
     "base": "King of the Murkmire.esp:157321",
@@ -126,7 +132,9 @@
     "rot_z": 3.3832,
     "tier": "AGENT_INVENTED",
     "why": "the levy's bunkhouse (the town's two wardens of the levy sleep here: place record dangers 'its own wardens patrol'): Alten Meerhleel's bunkhouse (MurkmireHouse04)",
-    "key": "8"
+    "key": "8",
+    "scale": 1.0,
+    "dz": -61.9
    },
    {
     "base": "King of the Murkmire.esp:157397",
@@ -140,7 +148,8 @@
     "dz": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "the bunkhouse's lean-to (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
-    "key": "9"
+    "key": "9",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -163,7 +172,8 @@
      ]
     },
     "why": "the bunkhouse door, where Alten Meerhleel sets it, into a copy of Alten Meerhleel Lodging House",
-    "key": "10"
+    "key": "10",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:157320",
@@ -175,8 +185,9 @@
     "rot_z": 0.727,
     "tier": "AGENT_INVENTED",
     "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
-    "dz": -84.0,
-    "key": "11"
+    "dz": -76.1,
+    "key": "11",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:157397",
@@ -190,7 +201,8 @@
     "dz": 296.6,
     "tier": "AGENT_INVENTED",
     "why": "the house's upper storey (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
-    "key": "12"
+    "key": "12",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -213,7 +225,8 @@
      ]
     },
     "why": "the house's door, where Alten Meerhleel sets it, into a copy of Mexhira's House",
-    "key": "13"
+    "key": "13",
+    "scale": 1.0
    },
    {
     "base": "Skyrim.esm:0A56FD",
@@ -372,15 +385,16 @@
     "base": "Skyrim.esm:10638E",
     "kind": "activator",
     "pos": [
-     -49450,
-     -519050
+     -50554.0,
+     -519002.0
     ],
-    "rot_z": 0,
-    "dz": 40,
+    "rot_z": 0.0,
+    "dz": 226.75,
     "need": 5,
     "tier": "AGENT_INVENTED",
     "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty",
-    "key": "25"
+    "key": "25",
+    "scale": 1.0
    }
   ],
   "people_from": [
@@ -1400,7 +1414,8 @@
   "agent-20261120T165212",
   "agent-20261120T170114",
   "agent-20261121T034625",
-  "agent-20261121T041059"
+  "agent-20261121T041059",
+  "agent-20261121T041110"
  ],
  "steps": {
   "kit": [
