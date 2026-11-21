@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
 import { cellLayers } from './path_paint.js';
+import { worldWaterPatch } from './water.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
 
@@ -73,6 +74,7 @@ export class TerrainMesh {
     if (!this._waterMats.has(key)) {
       this._waterMats.set(key, new THREE.MeshLambertMaterial({ vertexColors: !deep, color: deep ? new THREE.Color(...deep) : 0xffffff,
         transparent: true, opacity: deep ? 0.75 : 1, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+      this._waterMats.get(key).onBeforeCompile = worldWaterPatch;   // the same fresnel sheen as a placed water (water.js)
     }
     return this._waterMats.get(key);
   }

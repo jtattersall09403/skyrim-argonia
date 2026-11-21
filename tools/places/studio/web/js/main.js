@@ -148,6 +148,7 @@ class Studio {
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
     this.ours.place.always = true; this.ours.world.always = true;   // everything placed is drawn whole at any zoom
+    this.ours.place.groundAt = this.ours.world.groundAt = (x, y) => this.terrain?.heightAt(x, y) ?? null;   // a placed water's depth
     this.ours.grass = this.makeGrass(this.ours, origin, () => this.terrain, () => [...this.worldRefs, ...(this.model.spaces.exterior?.refs.values() || [])]);
     this.ours.grass.view = this.ours.view;
     this.loading('Drawing the land');
@@ -185,7 +186,7 @@ class Studio {
     this.srcBases = this.srcBundle.bases; this.sourceId = sid;
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
     s.origin = this.srcBundle.meta.anchor ? this.srcBundle.meta.anchor.map(Math.round) : [0, 0, 0];
-    s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases); s.layer.always = true;
+    s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases); s.layer.always = true; s.layer.groundAt = (x, y) => s.terrain?.heightAt?.(x, y) ?? null;
     this.tools?.lightsShown?.();
     s.grass = this.makeGrass(s, s.origin, () => s.terrain, () => this.srcBundle.spaces.exterior?.refs || []); s.grass.view = s.view;
     s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex })

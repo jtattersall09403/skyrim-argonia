@@ -6,6 +6,8 @@ import { getMesh } from './api.js';
 import { refMatrix } from './xform.js';
 import { colourOf } from './lights.js';
 import { halfExtents, hasPrim, isRound } from './prims.js';
+import { isPlacedWater } from './water_look.js';
+import { WaterSurface } from './water.js';
 
 export const KIND_COLOUR = {
   building: '#a08f78', static: '#9a9488', clutter: '#c4a46a', tree: '#4f6b3a', plant: '#6f9a4a', groundcover: '#86a35a',
@@ -75,8 +77,8 @@ const loaderFor = (kind) => new GLTFLoader().register((parser) => new QuietTextu
 // thing's kind from the land's palette), cut-out alpha for leaves and lily pads (blending does not sort inside
 // an instanced mesh, and draws a blended pad's empty rim as a pale ring), both faces where the model wants them.
 const matCache = new Map();
-// A placed water (a puddle, King of the Murkmire's Hist sap) is drawn in its water's colour (`tint`, the catalogue's
-// water.shallow), as the game shades its surface.
+// A placed water (a puddle, King of the Murkmire's Hist sap) is drawn as a liquid by water.js, per group; this plain
+// material, in its water's colour (`tint`, the catalogue's water.shallow), is only what a part is made with first.
 export function plainMaterial(m, kind, tint = null) {
   const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
   const cut = m.alphaTest > 0 || m.transparent;
@@ -267,6 +269,8 @@ class Group {
     // refs with a primitive are a group of their own (setRefs), drawn as their boxes with the helpers
     this.prim = prim && !ghost;
     this.unseen = !base?.model && !ghost && !this.bulb && !this.prim;
+    // a placed water: a liquid's surface over the ground under it (water.js), with the look of its water type
+    this.surface = isPlacedWater(base) && !ghost && !this.prim ? new WaterSurface(base.water) : null;
     if (this.bulb) this.colour = lightColour(base);
     // effects and markers carry the record's "everything" bounds; draw them as a small box (a bulb: its sphere)
     let b = this.bulb ? [[-BULB, -BULB, -BULB], [BULB, BULB, BULB]] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];
@@ -288,8 +292,9 @@ class Group {
     // every part of one model shares one buffer of instance matrices
     let shared = null;
     this.full = this.fullParts.map((p) => {
-      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : p.material, shared ? 1 : this.cap);
+      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : this.surface ? this.surface.material(p.material) : p.material, shared ? 1 : this.cap);
       if (shared) m.instanceMatrix = shared; else shared = m.instanceMatrix;
+      if (this.surface) m.renderOrder = 3;
       m.count = 0; m.frustumCulled = false; m.userData.group = this; this.layer.root.add(m); return m;
     });
   }
@@ -298,6 +303,13 @@ class Group {
     this.matrices = refs.map((r) => matrixOf(r, this.layer.origin));
     let s = 1; for (const r of refs) if ((r.scale ?? 1) > s) s = r.scale;
     this.big = this.radius * 2 * s > BIG;
+    if (this.surface) this.setSurface();
+  }
+  // the ground under the placed waters, as depth, for the surface's shading
+  setSurface() {
+    const ax = Math.max(Math.abs(this.bmin[0]), Math.abs(this.bmin[0] + this.bsize[0])), ay = Math.max(Math.abs(this.bmin[1]), Math.abs(this.bmin[1] + this.bsize[1]));
+    const r0 = Math.hypot(ax, ay) || 64;
+    this.surface.setGrid(this.refs.map((r) => ({ pos: r.pos, r: r0 * (r.scale ?? 1) })), this.layer.origin, this.layer.groundAt);
   }
   // Fill instance buffers from what the camera can see.
   cull(cam, frustum, sphere) {
