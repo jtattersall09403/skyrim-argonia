@@ -144,7 +144,7 @@ Law: no law. It meets a visitor as hostile (held by people who attack on sight: 
 
 The nearest stop is the boat stop at Stormhold, 700 m away across the marsh on foot. No road reaches it. <!-- travel_approach:tribal-camp-m2-m68; road_node:place=tribal-camp-m2-m68 -->
 
-It is to be built from Dushnikh Yal in Skyrim.esm (a camp tribal: 257 buildings, 3 interiors, 12 residents, 1 hostile, about 71 m across). The source reads: "Dushnikh Yal: a camp tribal built in orc and imperial style with mine, cave, ruin pieces. 12 people live there, 1 hostile. 3 interiors. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Kazmalgur (camp tribal, 30 buildings, 1 interior) and Narzulbur (camp tribal, 52 buildings, 2 interiors). <!-- place_source:tribal-camp-m2-m68/0; source_place:skyrim.dushnikhyallocation; place_source:tribal-camp-m2-m68/1; place_source:tribal-camp-m2-m68/2; place_source:tribal-camp-m2-m68/3 -->
+It is to be built from Ree-An-Wo in King of the Murkmire.esp (a hamlet: 31 buildings, 0 interiors, 16 residents, 5 hostile, about 54 m across). The source reads: "Ree-An-Wo: a hamlet built in argonian and ayleid style with mine, camp, ruin pieces. 16 people live there, 5 hostile. By water." Similar sources: near Loreisian (camp tribal, 8 buildings, 0 interiors), Kazmalgur (camp tribal, 30 buildings, 1 interior) and Dushnikh Yal (camp tribal, 257 buildings, 3 interiors). <!-- place_source:tribal-camp-m2-m68/0; source_place:kingofthemurkmire.marker.ree-an-wo; place_source:tribal-camp-m2-m68/1; place_source:tribal-camp-m2-m68/2; place_source:tribal-camp-m2-m68/3 -->
 
 ### Tenmal Pits
 
