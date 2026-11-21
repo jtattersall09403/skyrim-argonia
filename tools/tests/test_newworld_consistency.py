@@ -238,3 +238,19 @@ def test_a_draft_of_another_source_fails_unless_marked_awaiting_its_redraft():
     assert "a redraft mark naming another source than the allocated one" in causes(ctx(drafts={"a": old}), "draft")[0]
     d["place"]["redraft"] = {"source_id": "s1", "why": "source changed to s1 2026-11-21 by hand"}
     assert "a redraft mark on a draft already of its source" in causes(ctx(drafts={"a": d}), "draft")[0]
+
+
+def test_a_studio_save_does_not_make_the_built_check_old(tmp_path):
+    import os
+    import subprocess
+    from tools.newworld import consistency
+    def g(*a, when=None):
+        env = dict(os.environ, GIT_COMMITTER_DATE=when, GIT_AUTHOR_DATE=when) if when else None
+        subprocess.run(["git", "-C", str(tmp_path), *a], check=True, capture_output=True, env=env)
+    g("init", "-q"); g("config", "user.email", "t@t"); g("config", "user.name", "t")
+    (tmp_path / "p").mkdir(); (tmp_path / "p/place.json").write_text("{}")
+    g("add", "."); g("commit", "-q", "-m", "draft", when="2020-01-01T00:00:00Z")
+    (tmp_path / "p/edits").mkdir(); (tmp_path / "p/edits/s.json").write_text("{}")
+    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # an uncommitted save: still the draft's
+    g("add", "."); g("commit", "-q", "-m", "save", when="2026-01-01T00:00:00Z")
+    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # a committed save: still the draft's

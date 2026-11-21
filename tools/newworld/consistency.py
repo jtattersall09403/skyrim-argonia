@@ -195,12 +195,14 @@ def load_drafts(root: Path, out: Path) -> dict:
 
 def changed_at(root: Path, d: Path) -> float:
     """When a place's files last changed: the later of its last commit and any uncommitted edit (a checkout's
-    file times are the checkout's, so the commit time is the honest one)."""
+    file times are the checkout's, so the commit time is the honest one). The owner's saves and notes (`edits/`) are
+    records of studio work, not the draft: a save does not make the built check old."""
     import subprocess
+    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits"]
     try:
-        ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", str(d.relative_to(root))],
+        ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
                                   capture_output=True, text=True, timeout=30).stdout.strip() or 0)
-        dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", str(d.relative_to(root))],
+        dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", *only],
                                capture_output=True, text=True, timeout=30).stdout.strip()
     except (OSError, ValueError, subprocess.SubprocessError):
         ct, dirty = 0.0, "x"
