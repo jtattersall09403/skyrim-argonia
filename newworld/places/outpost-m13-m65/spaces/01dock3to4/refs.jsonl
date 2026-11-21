@@ -2,7 +2,6 @@
 {"id":"outpost-m13-m65.1WCC4CTT2SZWCF3012WZEQ1DQG","src":"Black Marsh.esm:1BEB5F","removed":true}
 {"id":"outpost-m13-m65.7782RBQ516D2J55R8K55CRND7A","src":"Black Marsh.esm:1BECE7","removed":true}
 {"id":"outpost-m13-m65.9XXM3JNRDZNM0VDX3KNJYM7C08","src":"Black Marsh.esm:1BEBE6","removed":true}
-{"id":"outpost-m13-m65.BSWZF3PF3N8T1H2551XTBQS9XP","src":"Black Marsh.esm:1BEB52","removed":true}
 {"id":"outpost-m13-m65.CB0C5KN6YDBEMDXAP5JRJMRWKY","edid":null,"base":"Skyrim.esm:0C227B","kind":"door","pos":[2924.9524,3852.492,7255.7437],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:1BECCD","door":{"to_space":"exterior","to_ref":"outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3","to_pos":[-102202.3,-527470.0,100.0],"to_rot":[0.0,0.0,0.02922],"flags":"0"},"seat":{"mode":"free"}}
 {"id":"outpost-m13-m65.FWPK5JTEPHKV7XHHR9ZSREY34W","src":"Black Marsh.esm:1C9449","removed":true}
 {"id":"outpost-m13-m65.HGRHRXRDHHYBBKFFBAGP92HTEA","src":"Black Marsh.esm:1BEC30","removed":true}
@@ -13,6 +12,5 @@
 {"id":"outpost-m13-m65.PBD7PABDKCAKQ35XHRDBBMBS5B","src":"Black Marsh.esm:1BEB59","removed":true}
 {"id":"outpost-m13-m65.PKH4DM6SA0X5VX039RX7E90TPB","src":"Black Marsh.esm:1BECB9","removed":true}
 {"id":"outpost-m13-m65.WJ2KWQCSX55XB4MKC1PM1TYX65","src":"Black Marsh.esm:1BECA7","removed":true}
-{"id":"outpost-m13-m65.X24K8MBG2Y9Q505MWAKMB4PHRE","src":"Black Marsh.esm:1BEAF9","removed":true}
 {"id":"outpost-m13-m65.YW3XYXRDDKVJ5GYZ74W2GBDKAY","src":"Black Marsh.esm:1BEC4D","removed":true}
 {"id":"outpost-m13-m65.Z1MA2SSFZ7V4RRVQ3KZH5MTRSM","src":"Black Marsh.esm:1BECF8","removed":true}
