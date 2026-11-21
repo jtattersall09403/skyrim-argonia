@@ -1,0 +1,392 @@
+{
+ "save_id": "agent-20261121T080923",
+ "place_id": "jal-veesa",
+ "name": "jv-joins-2 e: bridge.06's lone lookout platform down 95 onto its posts' ground; dock.17 down 22 so bridge.11 lands level on it",
+ "at": "2026-11-21T08:09:23Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CS3YHYZ1WBBBFDCEQ6QK4EHCN6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49505.88,
+     -506728.07,
+     669.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 26.839
+    }
+   },
+   "after": {
+    "pos": [
+     -49505.88,
+     -506728.07,
+     647.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 5.239
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2XQRQFXA21N0PRSJW0W08JW316",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49505.87,
+     -506983.29,
+     669.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 23.598
+    }
+   },
+   "after": {
+    "pos": [
+     -49505.87,
+     -506983.29,
+     647.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 1.998
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CXQSTPFKRDACA11PDJ3THF3EXJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49400.99,
+     -506849.46,
+     692.27
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 44.509
+    }
+   },
+   "after": {
+    "pos": [
+     -49400.99,
+     -506849.46,
+     670.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 22.909
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Z3S3JS9G130FYH80HSJWEVWQFB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49610.93,
+     -506857.66,
+     692.27
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 44.597
+    }
+   },
+   "after": {
+    "pos": [
+     -49610.93,
+     -506857.66,
+     670.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 22.997
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9H96MEKS798QANHBZQA9H54MDV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49667.19,
+     -507069.18,
+     659.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 13.959
+    }
+   },
+   "after": {
+    "pos": [
+     -49667.19,
+     -507069.18,
+     638.16
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -7.641
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1A1X9BRK3VZ9DAC034BVMX5W8P",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49658.33,
+     -507101.38,
+     819.16
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+     "dz": 28.72
+    }
+   },
+   "after": {
+    "pos": [
+     -49658.33,
+     -507101.38,
+     797.56
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+     "dz": 28.72
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49669.9,
+     -507067.85,
+     790.44
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 144.809
+    }
+   },
+   "after": {
+    "pos": [
+     -49669.9,
+     -507067.85,
+     768.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 123.209
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T08:09:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5406066NGPD3BYPCTJ28WR4AY9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55553.08,
+     -505567.91,
+     1064.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 623.135
+    }
+   },
+   "after": {
+    "pos": [
+     -55553.08,
+     -505567.91,
+     969.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 528.135
+    }
+   },
+   "n": 8,
+   "stroke": 2,
+   "at": "2026-11-21T08:09:23Z"
+  }
+ ]
+}
