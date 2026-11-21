@@ -11,7 +11,7 @@ import { scaledPrim, wallsOf } from './prims.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
-  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['quests', 'Quests'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'],
+  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['quests', 'Quests'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'], ['walking', 'Walking'],
   null, ['needs', 'Story'], ['history', 'History'], ['saves', 'Saves'], ['notes', 'Notes'], ['help', 'Help'],
 ];
 const rnd = (v, k = 100) => Math.round(v * k) / k;
@@ -75,6 +75,7 @@ export class Tools {
     if (name === 'select' && !a.selection.size) a.panels.close(); else a.panels.open(name);
     this.markRail(name); // the select panel opens when something is selected
     this.lightsShown();
+    a.walkLayer.refresh(); a.walkTools.handles();   // the walking mesh shows while its tools are in use
     for (const v of [a.ours.view, a.src.view]) v.resize();
   }
   // The helpers (lights as bulbs with their rings, primitives as their boxes) are drawn and picked while selecting or
@@ -90,7 +91,7 @@ export class Tools {
     const a = this.app;
     if (view === a.src.view) return a.people.active ? a.people.srcTool : this.srcSelect;
     if (this.placing) return this.placeTool;
-    return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool, quests: a.quests.tool }[this.current] || this.selectTool;
+    return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool, quests: a.quests.tool, walking: a.walkTools.tool }[this.current] || this.selectTool;
   }
   // Previews under the pen are drawn once per animation frame, however many pen events arrive in it.
   soon(name, fn) {
@@ -98,6 +99,7 @@ export class Tools {
     if (!had) requestAnimationFrame(() => { const f = this._soon.get(name); this._soon.delete(name); f(); });
   }
   key(e) {
+    if (this.current === 'walking' && this.app.walkTools.key(e)) return;
     if (e.key === 'Delete' || e.key === 'Backspace') this.remove();
     if (e.key === 'Escape') { this.stopPlacing(); this.app.selection.clear(); this.selectionChanged(); }
   }

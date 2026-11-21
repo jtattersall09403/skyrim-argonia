@@ -6,6 +6,8 @@
 # An edit to this file is scoped like any other change: only the rules added, removed or altered count as changed
 # (their stages, their tests and the paths they name run); an edit to a structural part (`full`, `named_direct`, the
 # `[stages]` table, each of which applies to every change) runs the whole gate.
+# A path of a rule marked `only` (a place's edits/: the owner's saves and notes, read by no build or check) picks that
+# rule's stages and nothing else: a save's commit costs seconds, whatever else the gate would reach.
 # The guard and ruff always run. Globs are fnmatch patterns on repo-relative paths ("*" crosses "/").
 
 # A change to any of these runs the whole gate: the gate, test set-up, the build of the gate, and the
@@ -158,3 +160,9 @@ tests = ["tools/tests/test_places_truth.py", "tools/tests/test_places_shape.py"]
 [[rule]]
 globs = ["tools/places/carrynav.py", "tools/places/draft/srcnav.py", "tools/places/build.py", "tools/navmesh/nvnm.py"]
 tests = ["tools/tests/test_carrynav.py", "tools/tests/test_srcnav.py"]
+
+# The owner's saves and notes under a place's (or a variant's) edits/: only their own validity check, nothing else.
+[[rule]]
+globs = ["newworld/places/*/edits/*"]
+only = true
+stages = ["editsvalid"]

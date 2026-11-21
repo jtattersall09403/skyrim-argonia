@@ -21,7 +21,7 @@ import warnings
 from aiohttp import web
 
 from tools.places import navexport, needs, notes, quest_spots
-from tools.places.studio import awake, links, offline
+from tools.places.studio import awake, links, offline, walk_api
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -445,13 +445,13 @@ async def save_put(req: web.Request) -> web.Response:
 
 
 async def nav_get(req: web.Request) -> web.StreamResponse:
-    """The built place's walking mesh (tools/places/navexport.py), exported again when the plugin was rebuilt (one
-    export at a time for a place: tabs that ask together wait on the same one)."""
+    """The built place's walking mesh (walk_api.nav_path: a studio rebuild newer than the build, else navexport's,
+    exported again when the plugin was rebuilt; one export at a time for a place: tabs that ask together wait)."""
     pid = req.match_info["place_id"]
     if not PLACE_ID.match(pid):
         return jerr(400, "bad place id")
     async with req.app["nav_locks"].setdefault(pid, asyncio.Lock()):
-        p = await asyncio.get_running_loop().run_in_executor(None, navexport.current, pid, req.app["cfg"].out)
+        p = await asyncio.get_running_loop().run_in_executor(None, walk_api.nav_path, pid, req.app["cfg"].out)
     if not p:
         return jerr(404, "this place has not been built")
     stale = navexport.older_than_files(p, req.app["cfg"].places / pid)
@@ -871,6 +871,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/atlas/{path:.*}", atlas_file)
     r.add_get("/", web_file)
     r.add_get("/{path:(?!api/).+}", web_file)
+    walk_api.add_routes(app)
     app.on_startup.append(on_start)
     app.on_cleanup.append(on_stop)
     return app

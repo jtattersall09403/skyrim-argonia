@@ -13,7 +13,7 @@ check:
 full-why:
 	@case "$(WHY)" in deploy|phase-close) ;; *) echo "make: refused: a full run is only for a deploy or a phase's close (WHY=deploy or WHY=phase-close); a landing runs \`make check GATE_BASE=origin/main\`, which picks what the change reaches" >&2; exit 2 ;; esac
 
-check-all: full-why guard lint unit adaptation questtext questform reach storyexplorer atlas consistency
+check-all: full-why guard lint unit adaptation questtext questform reach storyexplorer atlas consistency editsvalid
 	@echo "CHECK GREEN (all)"
 
 guard:
@@ -79,3 +79,7 @@ deploy:
 # The offline BM&V map (tools/bmv_map): out/bmv-map/index.html from Black Marsh.esm's LAND and the census; never committed.
 map:
 	@$(PY) -m tools.bmv_map.build build && $(PY) -m tools.bmv_map.build verify
+
+# Every saved edits file and notes file parses and has its fields (tools/places/edits_valid.py).
+editsvalid:
+	@$(PY) -m tools.places.edits_valid --all

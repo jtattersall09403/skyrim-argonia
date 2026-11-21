@@ -164,3 +164,18 @@ def test_a_full_run_is_refused_without_a_deploy_or_a_phase_close(capsys):
 def test_a_full_run_the_change_forces_names_the_file_that_forced_it():
     line = gate.summary(gate.pick(["Makefile"]), 10)
     assert line.startswith("gate: FULL") and "Makefile" in line and "expected only when such a file changes" in line
+
+
+def test_an_edits_only_change_picks_only_the_validity_check():
+    for path in ("newworld/places/jal-veesa/edits/save-1.json", "newworld/places/jal-veesa/edits/notes.jsonl",
+                 "newworld/places/jal-veesa@pipeline/edits/save-2.json"):
+        p = gate.pick([path])
+        assert not p.full and p.stages == {"editsvalid"} and p.tests == set(), path
+        assert p.inert == [path]
+
+
+def test_edits_beside_place_files_are_picked_as_the_place_files_are():
+    p = gate.pick(["newworld/places/jal-veesa/edits/save-1.json", "newworld/places/jal-veesa/place.json"])
+    assert "consistency" in p.stages and "editsvalid" in p.stages and p.tests
+    assert p.inert == ["newworld/places/jal-veesa/edits/save-1.json"]
+    assert "consistency" in gate.pick(["newworld/places/jal-veesa/place.json"]).stages

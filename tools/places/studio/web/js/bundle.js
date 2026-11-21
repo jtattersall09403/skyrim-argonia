@@ -32,9 +32,9 @@ export async function loadBundle(id, { extras = false, optional = false, terrain
     b.spaces[sid] = s;
   }
   if (extras) {
-    const [people, paths, clear, land] = await Promise.all(['people', 'paths', 'clear', 'land']
+    const [people, paths, clear, land, walk] = await Promise.all(['people', 'paths', 'clear', 'land', 'walk']
       .map((f) => getJsonl(`${at}${f}.jsonl`, { optional: true })));
-    b.files = { people, paths, clear, land };
+    b.files = { people, paths, clear, land, walk };
   }
   return b;
 }

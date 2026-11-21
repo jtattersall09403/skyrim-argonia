@@ -23,6 +23,8 @@ import { NoteBar } from './notes_bar.js';
 import { ViewLighting, lightOf, nightOutside, lightInside, isNight } from './lighting.js';
 import { getJSON } from './api.js';
 import { Sticks } from './sticks.js';
+import { WalkLayer } from './walk_layer.js';
+import { WalkTools } from './walk_tools.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 // The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
@@ -54,6 +56,7 @@ class Studio {
     for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
     this.tools = new Tools(this); this.people = new People(this); this.needs = new Needs(this); this.quests = new Quests(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.offline = new OfflineUI(this);
+    this.walkLayer = new WalkLayer(this); this.walkTools = new WalkTools(this);
     if (!AGENT) this.sticks = new Sticks(this, $('#views'));
     // offline, the search, the item search and the seat are answered here from what is held (offline.js)
     off.providers = { bases: () => [...(this.srcBases?.values() || []), ...(this.bases?.values() || [])], items: () => this.stockItems || new Map(),
@@ -146,9 +149,11 @@ class Studio {
     // what the stories need of the place: fetched beside the rest, never waited for
     this.needs.load(id).then(() => { if (this.place?.place_id === id && this.panels.name === 'needs') this.needs.panel(); });
     if (this.terrain) this.terrain.override = this.model.land;
-    this.people.invalidateRoutes(); this.people.setNav(null);
-    // the built place's walking mesh, for people's routes: fetched beside the rest, never waited for
-    api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) { this.people.setNav(d.spaces); if (d.from_last_build) this.toast('The walking mesh and routes are from the last build, older than the place as it stands now.', 6000); } }).catch(() => {});
+    this.people.invalidateRoutes(); this.people.setNav(null); this.walkLayer.setNav(null); this.walkLayer.state = null; this.walkTools.sel = null;
+    // the built place's walking mesh, for people's routes and the Walking mesh view (which says its own age): fetched
+    // beside the rest, never waited for
+    api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) { this.people.setNav(d.spaces); this.walkLayer.setNav(d); if (d.from_last_build && !this.walkLayer.on) this.toast('The walking mesh and routes are from the last build, older than the place as it stands now.', 6000); } }).catch(() => {});
+    if (!AGENT) this.walkLayer.loadState();
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops)); this.noteBar.render();
     this.leavePlace();
@@ -304,7 +309,7 @@ class Studio {
       }
     }
     if (!interior) side.terrainMesh?.update(v.rig.target);
-    this.crumbs(side); this.people.refresh(); if (side === this.ours) { this.needs.drawNames(); this.quests.refresh(); }
+    this.crumbs(side); this.people.refresh(); if (side === this.ours) { this.needs.drawNames(); this.quests.refresh(); this.walkLayer.refresh(); }
   }
   enter(side, door) {
     const to = door.door?.to_space; if (!to) return;
@@ -468,6 +473,7 @@ class Studio {
     if (touched.has('ref') || touched.has('path') || touched.has('land')) this.people.invalidateRoutes();
     if (touched.has('person') || touched.has('ref')) this.people.refresh();
     if (touched.has('quest')) { this.quests.refresh(); if (this.panels.name === 'quests') this.quests.panel(); }
+    if (touched.has('walk') || touched.has('ref') || touched.has('land') || touched.has('path')) { this.walkLayer.refresh(); if (touched.has('walk')) this.walkTools.after(); }
     // what a person is or carries: the People panel shows it (the Selected panel is drawn again below)
     if ((touched.has('identity') || touched.has('stock')) && this.panels.name === 'people') this.panels.peoplePanel();
     this.markUnsaved();
@@ -559,6 +565,7 @@ class Studio {
     $('#player-names').onclick = () => this.needs.setNames(!this.needs.names);
     const sb = $('#sticks-btn'), sticksShown = () => sb.setAttribute('aria-pressed', String(!!this.sticks?.state.shown));
     sb.onclick = () => { this.sticks?.setShown(!this.sticks.state.shown); sticksShown(); }; sticksShown();
+    const wb = $('#walkmesh-btn'); wb.onclick = () => this.walkLayer.setShown(!this.walkLayer.on); wb.setAttribute('aria-pressed', String(this.walkLayer.on));
     setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms), offline: () => off.active });
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     // the source place can be put away to make room, and asked back; remembered on this device
@@ -621,6 +628,7 @@ class Studio {
     const side = view === this.ours.view ? this.ours : this.src;
     if (side.space === 'exterior') side.terrainMesh?.update(view.rig.target);
     this.tools.cameraMoved(view); this.people.cameraMoved(view); this.needs.cameraMoved(view); this.quests.cameraMoved(view);
+    this.walkLayer.cameraMoved(view); this.walkTools.cameraMoved(view);
     if (!this.linked || this.ours.space !== 'exterior' || this.src.space !== 'exterior') return;
     const [a, b] = view === this.ours.view ? [this.ours, this.src] : [this.src, this.ours];
     const ga = [a.view.rig.target.x + a.origin[0], a.view.rig.target.y + a.origin[1], a.view.rig.target.z + a.origin[2]];

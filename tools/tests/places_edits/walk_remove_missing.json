@@ -1,0 +1,38 @@
+{
+ "error": "does not exist",
+ "ops": [
+  {
+   "n": 1,
+   "op": "walk.remove",
+   "space": "exterior",
+   "walk": {
+    "by": "owner",
+    "id": "fix.w1",
+    "kind": "block",
+    "outline": [
+     [
+      900,
+      1900,
+      50
+     ],
+     [
+      1100,
+      1900,
+      50
+     ],
+     [
+      1100,
+      2100,
+      50
+     ],
+     [
+      900,
+      2100,
+      50
+     ]
+    ],
+    "space": "exterior"
+   }
+  }
+ ]
+}
