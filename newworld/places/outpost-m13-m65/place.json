@@ -441,7 +441,8 @@
       "Black Marsh.esm:1BEB5F": "a trigger of the source's own scripted scene",
       "Black Marsh.esm:1BEC4D": "a trigger of the source's own scripted scene",
       "Black Marsh.esm:1BECE9": "a trigger of the source's own scripted scene",
-      "Black Marsh.esm:1BECE7": "the Thieves Guild's crown gem activator, a quest thing of another story"
+      "Black Marsh.esm:1BECE7": "the Thieves Guild's crown gem activator, a quest thing of another story",
+      "Black Marsh.esm:1BEB18": "a table bench against the hull that Black Marsh & Valenwood's own walking mesh of the hold does not reach: without it the hold keeps that whole mesh, one walk from the hatch to every bed"
      }
     },
     "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
@@ -697,6 +698,22 @@
      "outpost-m13-m65.LOOK024PLACE"
     ],
     "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK006PLACE",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK007PLACE",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
    }
   ]
  }
