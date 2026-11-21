@@ -795,6 +795,43 @@
     "flag": "foot not reaching the ground",
     "why": "the barge floats at its own waterline in the pool; its keel and hull are over the river bed, as a moored ship's are, seen in the sections across its waist"
    }
+  ],
+  "accepted_faults": [
+   {
+    "id": "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   }
   ]
  }
 }
