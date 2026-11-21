@@ -3,39 +3,73 @@
  "needs": [
   {
    "seq": 0,
-   "from": ["d3bc404121"],
+   "from": [
+    "d3bc404121"
+   ],
    "thing": "the young Hist on the platform with a grey paste in its closed scar",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m6-m66.S60W22PPW4P7EYP4N7K13VYA9J"},
-   "signs": [{"sign": "look", "detail": "a young Hist some 6 m tall standing in the wardens' pool, against the east side of the cypress tent platform"}, {"sign": "person", "detail": "Heem-Jasa, the tree's minder, works on the platform beside it and sleeps there"}],
-   "met": false,
-   "why": "Partly met. The young Hist (King of the Murkmire's HistTree04) stands in the pool against the tent platform, and Heem-Jasa is cast on the camp's apothecary, who sleeps on the platform. The sealed scar is the quest's own thing on the trunk. But the platform is not yet joined to the bank: its deck is a walkable island, so neither the player nor Heem-Jasa walks from the bank to the tree.",
-   "fit": "The tree is where the record has it, at the platform's side in its pool.",
-   "narrow": "Yes: a gangway of the source's cypress planks from the platform's east edge to the east bank's street (the join laid one piece and the deck stayed an island).",
+   "rests": {
+    "space": "exterior",
+    "ref": "outpost-m6-m66.9YKDQWVX9RHB0TC7D6B66KK1WZ"
+   },
+   "signs": [
+    {
+     "sign": "look",
+     "detail": "a young Hist about 20 m tall on a mound of its own roots on the camp's west side, plank walkways round its foot, its amber sap pool at its east foot"
+    },
+    {
+     "sign": "person",
+     "detail": "Heem-Jasa, the tree's minder, works on the walkway by its sap pool all day"
+    }
+   ],
+   "met": true,
+   "why": "Met. The young Hist (Huluxinoag's Hist, its whole tree scaled down) stands on its roots at the west of the camp; the source's plank walkways run from the north tent platform to its foot; Heem-Jasa works on the walkway by its sap pool; the sealed scar is the quest's own thing low on the trunk's east side, facing her.",
    "tier": "AGENT_INVENTED"
   },
   {
    "seq": 1,
-   "from": ["96e7839e61"],
+   "from": [
+    "96e7839e61"
+   ],
    "thing": "a reed hide beside a lone dead tree west of the weir, with three Unbound, jars of sap and a note",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m6-m66.GGSW2YHJEFB2Z4HACWX9X6EGDF"},
-   "signs": [{"sign": "look", "detail": "a scale-hide lean-to on the west bank, beside a tall dead swamp tree, with a crate, two clay urns and a knapsack on its open west side"}, {"sign": "label", "detail": "the game names the knapsack \"Sap-Takers' Pack\""}],
+   "rests": {
+    "space": "exterior",
+    "ref": "outpost-m6-m66.TF12HIDE"
+   },
+   "signs": [
+    {
+     "sign": "look",
+     "detail": "a scale-hide lean-to on the west bank, beside a tall lone dead swamp tree, with a crate, two clay jars and a knapsack beside it"
+    },
+    {
+     "sign": "label",
+     "detail": "the game names the knapsack \"Sap-Takers' Pack\""
+    }
+   ],
    "met": true,
-   "why": "Met for the place. The hide stands on the west bank some 1,300 units west of the woven weir (five Saxhleel fences across the creek below the pool), beside a lone dead swamp tree, with a crate for the note and urns beside the quest's own jar of sap, and the sap-takers' pack. The three Unbound, the note and the jar are the quest's to place.",
+   "why": "Met for the place. The hide stands on the west bank some 2,500 units west-south-west of the woven weir (six Saxhleel fences across the creek below the camp, a log boom above them), beside a lone dead swamp tree, with a crate for the note, jars beside the quest's own jar of sap and the sap-takers' pack. The three Unbound, the note and the jar are the quest's, at their spots by hand.",
    "tier": "AGENT_INVENTED"
   },
   {
    "seq": 2,
-   "from": ["1f2a9cc76a"],
+   "from": [
+    "1f2a9cc76a"
+   ],
    "thing": "the same Hist dead and blackened, its platform empty",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m6-m66.S60W22PPW4P7EYP4N7K13VYA9J"},
-   "signs": [{"sign": "look", "detail": "the young Hist by the platform"}],
-   "met": false,
-   "why": "Not met. The place holds the living young Hist only; the endings' dead tree is a second state of it, and the empty platform is its people disabled. Neither is a thing of the place's draft.",
-   "fit": "The same spot as the living tree.",
-   "narrow": "Yes: a dead, blackened Hist base enabled in the living one's place by the endings (an enable parent), with the platform's people disabled; built with the ending's quest.",
+   "rests": {
+    "space": "exterior",
+    "ref": "outpost-m6-m66.5AE5530GR6H2BKNP4CK6QEHZ11"
+   },
+   "signs": [
+    {
+     "sign": "look",
+     "detail": "the same Hist with its bark dead and its glands withered, in the living tree's place"
+    }
+   ],
+   "met": true,
+   "why": "Met for the place. Huluxinoag's Hist carries its own dead state: a dead trunk and dead glands in the living ones' places, switched by one enable parent (the source's HuluxinoagCured marker, now starting enabled so the tree lives). An ending disables that marker and the dead tree shows; the empty platform is the ending disabling the place's people, the quest's to build.",
    "tier": "AGENT_INVENTED"
   }
  ]
