@@ -75,7 +75,7 @@ export class Panels {
     this.name = name;
     const f = { select: () => this.selectPanel(), search: () => this.searchPanel(), people: () => this.peoplePanel(), land: () => this.landPanel(),
       plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel(), needs: () => this.app.needs.panel(), quests: () => this.app.quests.panel(),
-      offline: () => this.app.offline.panel() }[name];
+      walking: () => this.app.walkTools.panel(), offline: () => this.app.offline.panel() }[name];
     if (f) f();
   }
   // ---------- selection ----------

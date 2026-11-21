@@ -7,6 +7,7 @@ export const ICON = {
   quests: p('<path d="M6 21V4"/><path d="M6 4h11l-2.5 4L17 12H6"/>'),
   land: p('<path d="M2 19l6-9 4 5 3-3 7 7z"/><path d="M14 6h6M17 3v6"/>'),
   plants: p('<path d="M12 21v-8"/><path d="M12 13c-4 0-6-3-6-7 4 0 6 3 6 7z"/><path d="M12 15c3 0 5-2 5-5-3 0-5 2-5 5z"/>'),
+  walking: p('<path d="M8 21c-1.6 0-2.4-1.4-2.2-3.4.2-1.8 1.2-3 2.6-3s2 1.4 1.7 3.2C9.8 19.6 9.2 21 8 21z"/><path d="M16 13c-1.4 0-2.1-1.2-1.9-3 .2-1.6 1-2.6 2.3-2.6s1.8 1.2 1.5 2.8c-.3 1.5-.8 2.8-1.9 2.8z"/><path d="M6.5 12.5h3.2M14.8 5h3"/>'),
   paths: p('<path d="M5 21c2-6 10-5 10-10S9 6 11 3"/><path d="M10 21c2-5 9-4 9-10S14 6 16 3" opacity=".45"/>'),
   history: p('<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>'),
   notes: p('<path d="M4 4h16v12H9l-5 4z"/><path d="M8 9h8M8 12h5"/>'),

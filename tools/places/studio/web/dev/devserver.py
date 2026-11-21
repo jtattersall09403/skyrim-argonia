@@ -66,6 +66,7 @@ class State:
         self.assets = assets_module() if real else None
         self.lock = threading.Lock()
         self.seen_models, self.heartbeats, self.hb_started, self.runs = set(), 0, None, {}
+        self.walk_run, self.walk_built = None, "2026-01-01T00:00:00Z"   # the Walking mesh view's rebuild (simulated)
         self.bases = {}  # bundle -> rows
         self.terrain_cache = {}
         for d in sorted(self.bdir.iterdir()):
@@ -101,6 +102,52 @@ class State:
             out = ({tuple(c["cell"]): (c, f) for c in meta["cells"]}, meta.get("ltex", {}))
         self.terrain_cache[bid] = out
         return out
+
+    def nav(self, pid):
+        """A walking mesh for the fixture place: a grid of 200 units over the place's middle on the ground, and a small
+        island cut off from it, as navexport writes one."""
+        verts, tris, nb, kind = [], [], [], []
+        n = 15
+        for j in range(n + 1):
+            for i in range(n + 1):
+                x, y = 2600 + i * 200, 2600 + j * 200
+                verts += [x, y, round(self.height(pid, x, y)[0] or 0)]
+
+        def tri_of(i, j, k):
+            return 2 * (j * n + i) + k
+        for j in range(n):
+            for i in range(n):
+                a, b, c, d = j * (n + 1) + i, j * (n + 1) + i + 1, (j + 1) * (n + 1) + i + 1, (j + 1) * (n + 1) + i
+                tris += [a, b, c, a, c, d]
+                # neighbours: edge 0-1, 1-2, 2-0 of each
+                nb += [tri_of(i, j - 1, 1) if j else -1, tri_of(i + 1, j, 1) if i < n - 1 else -1, tri_of(i, j, 1)]
+                nb += [tri_of(i, j, 0), tri_of(i, j + 1, 0) if j < n - 1 else -1, tri_of(i - 1, j, 0) if i else -1]
+                kind += [0, 0]
+        o = len(verts) // 3
+        for x, y in ((6500, 6500), (6800, 6500), (6800, 6800), (6500, 6800)):
+            verts += [x, y, round(self.height(pid, x, y)[0] or 0)]
+        t0 = len(kind)
+        tris += [o, o + 1, o + 2, o, o + 2, o + 3]
+        nb += [-1, -1, t0 + 1, t0, -1, -1]
+        kind += [0, 0]
+        return {"esp_sha256": None, "from": "preview" if self.walk_run else "build", "built_at": self.walk_built,
+                "spaces": {"exterior": {"verts": verts, "tris": tris, "nb": nb, "kind": kind, "doors": [[0, "fixture.door"]]}}}
+
+    def walkmesh(self, pid):
+        run = self.walk_run
+        if run and run["state"] == "running":
+            k = int((time.time() - run["t0"]) / 0.8)
+            if k >= 4:
+                run.update(state="done", step="export", words="Done")
+                self.walk_built = now()[:19] + "Z"
+            else:
+                run.update(step=["copy", "apply", "build", "export"][k], words=["Copying the place", "Applying your changes", "Building the walking mesh", "Reading the mesh back"][k])
+        return {"nav": {"from": "preview" if run else "build", "built_at": self.walk_built}, "files_at": now()[:19] + "Z",
+                "check": {"at": "2026-01-01T00:00:00Z", "results": {
+                    "doors": {"failures": []}, "navmesh": {"failures": ["fixture: open seam edge at [3400, 4400, 0] with navmesh across it (unjoined)"]},
+                    "streets": {"failures": ["street fixture.s1 point [4600, 3000, 0] is off the built walkable network"]},
+                    "people": {"failures": []}}},
+                "run": dict(run, steps=["copy", "apply", "build", "export"]) if run else None, "busy": None}
 
     def height(self, pid, x, y):
         t = self.load_terrain(f"ground.{pid}")
@@ -325,6 +372,9 @@ class H(BaseHTTPRequestHandler):
         m = re.fullmatch(r"/api/place/([^/]+)/notes", p)
         if m:
             return self.send(200, st.notes.get(m[1], []))
+        m = re.fullmatch(r"/api/place/([^/]+)/(nav|walkmesh)", p)
+        if m:
+            return self.send(200, st.nav(m[1]) if m[2] == "nav" else st.walkmesh(m[1]))
         m = re.fullmatch(r"/api/place/([^/]+)/(stock|items)", p)
         if m:   # the studio server's own code (tools/places/studio/stock.py) over the fixture's sources
             sys.path.insert(0, str(REPO))
@@ -440,6 +490,14 @@ class H(BaseHTTPRequestHandler):
                             "things": b.get("things", []), "view": b.get("view"), "sent": False, "done": False}
                     rows.append(note)
             return self.send(200, note)
+        m = re.fullmatch(r"/api/place/([^/]+)/walkmesh/rebuild", p)
+        if m:
+            self.body()
+            with self.st.lock:
+                if self.st.walk_run and self.st.walk_run["state"] == "running":
+                    return self.send(409, {"error": "The walking mesh of this place is being rebuilt already. Its progress is shown here."})
+                self.st.walk_run = {"state": "running", "step": "copy", "words": "Starting", "t0": time.time(), "save": "autosave"}
+            return self.send(202, {"job": f"walkmesh.{m[1]}"})
         m = re.fullmatch(r"/api/place/([^/]+)/notes/send", p)
         if m:
             self.body()

@@ -60,6 +60,16 @@ const online = {
   seat: (id, x, y) => getJSON(`/place/${id}/seat?x=${x}&y=${y}`),
   // the built place's walking mesh (tools/places/navexport.py); null when the place has not been built
   nav: (id) => getJSON(`/place/${id}/nav`, { optional: true }),
+  // the Walking mesh view's state: {nav: {from, built_at}, files_at, check, run, busy}; null from an older server
+  walkmesh: (id) => getJSON(`/place/${id}/walkmesh`, { optional: true }),
+  // rebuild the walking mesh from a save (a job): {job} or {error} in plain words (another build runs)
+  async rebuildWalk(id, save_id) {
+    try {
+      const r = await fetch(`${BASE}/place/${id}/walkmesh/rebuild`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ save_id }) });
+      const j = await r.json().catch(() => ({}));
+      return r.ok ? j : { error: j.error || `The rebuild could not start (${r.status}).` };
+    } catch { return { error: 'The build machine did not answer: the walking mesh can be rebuilt when it is back.' }; }
+  },
   notes: (id) => getJSON(`/place/${id}/notes`),
   // what the stories need of the place, in plain words; null when the server has none (an older server)
   needs: (id) => getJSON(`/place/${id}/needs`, { optional: true }),
