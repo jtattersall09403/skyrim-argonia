@@ -158,6 +158,7 @@ def prepare(sid: str, ring_m: float | None = None, centre: tuple[float, float] |
 
 
 # ---------- units: what the source holds inside the ring ----------
+NOT_FEATURE = {"palisade": ("scaffold",)}   # a cypress stockade scaffold is a platform, not a wall
 FEATURES = {   # feature -> words of a piece's edid or model (classify.words)
     "bed": ("bed", "bedroll", "hammock"),
     "work station": ("forge", "anvil", "tanningrack", "tanning", "smelter", "alchemy", "enchant", "cookingpot",
@@ -167,8 +168,9 @@ FEATURES = {   # feature -> words of a piece's edid or model (classify.words)
     "palisade": ("palisade", "stockade", "fortwall", "wallpost", "fence"),
     "tower": ("tower", "watchtower", "lookout"),
     "tent": ("tent", "yurt", "lean-to", "leanto"),
-    "shrine": ("shrine", "altar", "totem", "histtree", "hist0", "/hist"),
-    "mine": ("mine", "minecart", "orevein", "/mines/"),
+    "shrine": ("shrine", "altar", "totem"),
+    "Hist": ("histtree", "treehist", "histroot", "/hist"),
+    "mine": ("minecart", "mineentrance", "orevein", "/mines/"),
     "farm": ("farm", "crop", "cabbage", "potato", "wheat", "garden", "plough", "scarecrow", "trough"),
 }
 CULTURE = {   # culture -> model path or edid words
@@ -241,7 +243,7 @@ def units(sid: str, ring_m: float | None = None, centre: tuple[float, float] | N
             culture[f"{c} {cls}"] += 1
         w = _words(b)
         for f, ws in FEATURES.items():
-            if (cls not in ("marker", "effect") and any(x in w for x in ws)) or (f == "boat" and cls == "boat"):
+            if (cls not in ("marker", "effect") and any(x in w for x in ws) and not any(x in w for x in NOT_FEATURE.get(f, ()))) or (f == "boat" and cls == "boat"):
                 features[f] += 1
         to = (r.get("door") or {}).get("to_space")
         if r.get("kind") == "door" and to:

@@ -95,7 +95,11 @@ def draw_ring(d: ImageDraw.ImageDraw, cam: dict, scene, w: int, h: int, k: float
     ring = getattr(scene, "ring", None)
     if not ring:
         return
-    world = [(x, y, _grid_z(scene, x, y) + 4) for x, y in ring_points(ring)]
+    pts = ring_points(ring)
+    zs = [scene.ground.height(x, y) for x, y in pts]
+    known = [z for z in zs if z is not None]
+    z0 = scene.ground.height(*ring["centre"]) or (sorted(known)[len(known) // 2] if known else 0.0)
+    world = [(x, y, (z if z is not None else z0) + 4) for (x, y), z in zip(pts, zs)]   # past the bundle's land: level
     pp = geom.project(cam, world)
     seg, best = [], None
     for q in pp:
