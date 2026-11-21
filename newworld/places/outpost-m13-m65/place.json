@@ -718,6 +718,38 @@
     ],
     "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
    }
+  ],
+  "accepted": [
+   {
+    "unit": "house.01",
+    "flag": "floor under the ground",
+    "why": "the mess tent is canvas pitched on the ground with no floor of its own: its lowest canvas edge sits a little into the rise on its east side, seen from the west at eye level standing on the ground"
+   },
+   {
+    "unit": "house.01",
+    "flag": "foot not reaching the ground",
+    "why": "one guy-rope peg of the mess tent stops short where the bank dips at its west corner; the tent itself stands on the ground, seen from the west at eye level"
+   },
+   {
+    "unit": "house.02",
+    "flag": "floor under the ground",
+    "why": "the cook's tent and the long tent are canvas pitched on the ground with no floor: the highest ground under them is at their guy ropes on the rise towards the hut, while their floors lie on the level camp floor, seen in the section through the long tent"
+   },
+   {
+    "unit": "house.02",
+    "flag": "foot buried deeper than its leg",
+    "why": "a guy-rope peg of the long tent runs into the rise towards the hut, as a peg is driven into a slope; the tent's poles stand on the level camp floor (section through the long tent)"
+   },
+   {
+    "unit": "house.03",
+    "flag": "floor under the ground",
+    "why": "the small tents are canvas pitched on the bank's slope with no floor: their uphill canvas edges sit in the ground, their bedrolls lie on it, seen at eye level from beside the fire"
+   },
+   {
+    "unit": "added.house.01dock3to4",
+    "flag": "foot not reaching the ground",
+    "why": "the barge floats at its own waterline in the pool; its keel and hull are over the river bed, as a moored ship's are, seen in the sections across its waist"
+   }
   ]
  }
 }
