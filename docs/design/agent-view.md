@@ -90,7 +90,7 @@ hid it), and `--canopy` keeps it.
 | Verb | For |
 |---|---|
 | `section <thing> --axis` or `section <x1,y1> <x2,y2>` | The truth of heights at a glance: an orthographic side-on cut along a line, with the ground profile, the water, a height scale, each crossed piece outlined by its own mesh in the slab (a flight's treads too, which a side view sees edge-on) and its height over the ground. The first look at anything a probe calls floating, and the proof after it is seated. `--slab u` sets how much either side of the line is kept (96). |
-| `at <thing> [--from n..nw] [--eye\|--high\|--top]` | One framed look at a thing from a side: oblique by default, from a person's eye, from high, or straight down. For judging a structure. |
+| `at <thing> [--from n..nw] [--eye\|--high\|--top]` | One framed look at a thing from a side: oblique by default, from a person's eye, from high, or straight down. For judging a structure. `--stand x,y[,z]` puts the camera at that point instead, 120 units over the deck or ground under it (the lowest walked mesh surface there) unless z is given, looking at the thing, scored as any capture; refused inside a piece's mesh (a sight test from under an eave). |
 | `orbit <thing>` | The same thing from north, east, south and west on one sheet: what one side hides. |
 | `walk <from> <to>` | Six eye-level frames along the place's streets and paths between two doors or points: whether the way is open and reads as a street. |
 | `overview` | The whole place obliquely and from above, every structure labelled: where to look next. |

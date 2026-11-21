@@ -185,7 +185,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False, "distance": True})
+                          "once": False, "grid": False, "distance": True, "stand": True})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -255,6 +255,24 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         if cam:   # a hand's before and after, or a compare: the same camera twice
             img, r = shot(cam, th)
             res = {"cam": cam, "img": img if plain else draw.annotate(img, cam, sc, th, faults, th["name"], grid=bool(o.get("grid")))[0]}
+        elif o.get("stand"):   # the camera at an explicit point a person stands on, looking at the subject
+            pt = [float(v) for v in str(o["stand"]).split(",")]
+            if len(pt) not in (2, 3):
+                raise ValueError("--stand takes x,y or x,y,z")
+            c = framing.stand_camera(sc.everything(), None if inside else sc.ground, pt, th["lo"], th["hi"], w, h)
+            c |= {"grass": bool(o.get("grass")), "space": space}
+            img, r = shot(c, th)
+            sco = r.get("score") or {"capture": "good"}
+            if not plain:
+                img, _ = draw.annotate(img, c, sc, th, faults, f"{th['name']} from {','.join(f'{v:.0f}' for v in c['pos'])}",
+                                       grid=bool(o.get("grid")))
+            img = mark(img, sco)
+            res = {"cam": c, "img": img}
+            if not keep:
+                res = {"thing": th["name"], "kind": th["kind"], "stand": c["pos"], "stood_on": c["stood"]["on"], **sco}
+                res["png"] = _save(img, _out(place, f"at-{_slug(th['name'])}-stand"), c)
+                if "ids_arr" in r:
+                    save_ids(res["png"], [{"ids": r["ids_arr"], "table": r["table"], "id0": r["id0"]}])
         else:
             got = framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, shot, past_trees)
             timing |= got.pop("timing")

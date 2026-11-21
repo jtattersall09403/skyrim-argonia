@@ -91,3 +91,65 @@ def blocker(pieces: list[dict], ground) -> callable:
         g = ground.height(eye[0], eye[1]) if ground is not None else None
         return capture.camera_inside(eye, near, g, crowns_cut=crowns_cut)
     return blocked
+
+
+STAND_EYE = 120.0   # `at --stand x,y`: the eye this far over the surface under the point
+
+
+def _posed_near(pieces: list[dict], x: float, y: float):
+    from tools.places import shape
+    for p in pieces:
+        if not p.get("model") or not geom.solid(p):
+            continue
+        lo, hi = geom.aabb(p)
+        if lo[0] - shape.CELL <= x <= hi[0] + shape.CELL and lo[1] - shape.CELL <= y <= hi[1] + shape.CELL:
+            yield p, shape.posed(p)
+
+
+def stand_surface(pieces: list[dict], ground, x: float, y: float) -> tuple[float | None, str | None]:
+    """The surface a person stands on at (x, y): the lowest walked surface of a piece's mesh (shape.py: its walk or
+    lowest walk) over the ground there (a stilt deck, not the roof over it), else the ground. (height, piece id)."""
+    g = ground.height(x, y) if ground is not None else None
+    best = None
+    for p, S in _posed_near(pieces, x, y):
+        for f in ("walk", "walk_low"):
+            w = S.at(x, y, f)
+            if w is not None and (g is None or w >= g - 8.0) and (best is None or w < best[0]):
+                best = (w, p["id"])
+    return best if best is not None else (g, None)
+
+
+def inside_mesh(pieces: list[dict], pt) -> str | None:
+    """The piece whose mesh holds the point (between its underside and its top there, not standing over a walked
+    surface of it: a hut's own floor under its roof is room to stand in), else None."""
+    x, y, z = (float(v) for v in pt[:3])
+    for p, S in _posed_near(pieces, x, y):
+        u, t = S.at(x, y, "under"), S.at(x, y, "top")
+        if u is None or t is None or not (u + 4.0 < z < t - 4.0):
+            continue
+        floors = [w for f in ("walk", "walk_low") if (w := S.at(x, y, f)) is not None and w <= z]
+        if any(z - w <= STAND_EYE + 2 * geom.PERSON for w in floors):
+            continue
+        return f"{p.get('edid') or p['id']} ({p['id']})"
+    return None
+
+
+def stand_camera(pieces: list[dict], ground, point, lo, hi, w: int, h: int, fov: float = 60.0) -> dict:
+    """`at <subject> --stand x,y[,z]`: a camera at the eye (STAND_EYE) over the surface under (x, y) (stand_surface),
+    or at z when given, looking at the subject box's middle. Refused (ValueError) inside a piece's mesh."""
+    x, y = float(point[0]), float(point[1])
+    if len(point) > 2:
+        eye, on = [x, y, float(point[2])], "asked"
+    else:
+        z, on = stand_surface(pieces, ground, x, y)
+        if z is None:
+            raise ValueError(f"--stand {x:.0f},{y:.0f}: no ground or deck under the point")
+        eye, on = [x, y, float(z) + STAND_EYE], on or "ground"
+    hit = inside_mesh(pieces, eye)
+    if hit:
+        raise ValueError(f"--stand {','.join(f'{v:.0f}' for v in eye)} is inside the mesh of {hit}: stand elsewhere")
+    tgt = (np.asarray(lo, float) + np.asarray(hi, float)) / 2
+    d = float(np.linalg.norm(tgt - np.asarray(eye)))
+    r = float(np.linalg.norm(np.asarray(hi, float) - np.asarray(lo, float))) / 2
+    return {"pos": [round(v, 2) for v in eye], "target": [round(float(v), 2) for v in tgt], "up": [0, 0, 1],
+            "fov": fov, "w": w, "h": h, "near": 8, "far": round(d + 3 * r + 2000), "stood": {"on": on}}

@@ -330,6 +330,23 @@ def cameras(d, sc, root, check):
     c = verbs.make_cam(sc, PLACE, th, "s", "eye", W, H, {}, False, 0.05, 300.0)
     ok = c is None or (inside_any(sc, c["pos"]) is None and abs(c["pos"][2] - floor_truth(sc, *c["pos"]) - geom.EYE) <= 3)
     check("A2 cameras", "inside the house: no spot, or a good one", ok, f"camera {c and c['pos']}")
+    # `at --stand x,y`: the eye 120 over the deck under the point, the capture scored; refused inside the wall
+    dk = sc.resolve(f"{PLACE}.deck")
+    x, y = dk["hi"][0] - 25, (dk["lo"][1] + dk["hi"][1]) / 2   # the deck's strip outside the house on it
+    got = verbs.view(d, PLACE, [], "at", [f"{PLACE}.post0", "--stand", f"{x:.0f},{y:.0f}", "--plain"], keep=True)
+    p = got["cam"]["pos"]
+    fl = floor_truth(sc, p[0], p[1], p[2])
+    check("A2 cameras", "--stand: the eye 120 over the deck under the point", abs(p[2] - fl - 120.0) <= 3,
+          f"camera z {p[2]:.1f}, floor under it {fl:.1f}")
+    hs = sc.resolve(f"{PLACE}.wall")
+    try:
+        verbs.view(d, PLACE, [], "at", [f"{PLACE}.post0", "--stand",
+                                        f"{(hs['lo'][0] + hs['hi'][0]) / 2:.0f},{(hs['lo'][1] + hs['hi'][1]) / 2:.0f},"
+                                        f"{(hs['lo'][2] + hs['hi'][2]) / 2:.0f}"], keep=True)
+        refused = ""
+    except ValueError as e:
+        refused = str(e)
+    check("A2 cameras", "--stand inside the wall's mesh is refused", "inside the mesh" in refused, refused or "not refused")
 
 
 def scoring(d, sc, root, check):

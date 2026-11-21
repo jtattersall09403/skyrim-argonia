@@ -14,7 +14,7 @@ import pytest
 from tools.places import shape, xform
 
 shape.REAL = False   # measure the fixtures by their boxes (registered meshes only): no converted model is read
-from tools.places.look import geom
+from tools.places.look import framing, geom
 
 
 class Flat:
@@ -783,3 +783,21 @@ def test_an_accepted_probe_fault_is_kept_apart_from_the_open_ones():
     assert open_ == [{"id": "a", "fault": "buried"}]
     assert [(f["id"], f["accepted"]) for f in acc] == [("a", "on its roots"), ("b", "any fault")]
     assert split_accepted(found, None) == (found, [])
+
+
+def test_at_stand_puts_the_eye_over_the_deck_under_the_point_not_the_roof_and_refuses_inside_a_mesh():
+    g = Flat(0)
+    deck = piece("deck", [0, 0, 300], [-200, -200, 0], [200, 200, 20])        # a stilt deck, its walk at 320
+    roof = piece("roof", [0, 0, 500], [-250, -250, 0], [250, 250, 60])        # the eave over it
+    door = piece("door", [0, 150, 320], [-40, -5, 0], [40, 5, 200], kind="door")
+    house = piece("house", [1000, 0, 0], [-200, -200, 0], [200, 200, 800], kind="building")
+    things = [deck, roof, door, house]
+    assert framing.stand_surface(things, g, 0, -100) == (pytest.approx(320, abs=2), "deck")
+    c = framing.stand_camera(things, g, [0, -100], *geom.aabb(door), 640, 480)
+    assert c["pos"][2] == pytest.approx(320 + framing.STAND_EYE, abs=2) and c["stood"]["on"] == "deck"
+    assert c["target"][1] == pytest.approx(150, abs=1)
+    assert framing.stand_surface(things, g, 600, 0) == (0, None)                # off the deck: the ground
+    with pytest.raises(ValueError, match="inside the mesh of"):
+        framing.stand_camera(things, g, [1000, 0, 400], *geom.aabb(door), 640, 480)
+    with pytest.raises(ValueError, match="inside the mesh of"):
+        framing.stand_camera(things, g, [0, 0, 530], *geom.aabb(door), 640, 480)  # in the roof itself
