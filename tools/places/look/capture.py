@@ -95,6 +95,8 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             continue
         if not point_in_piece(p, pos, 4.0):
             continue
+        if p.get("kind") == "building" and not enclosed(p, pos):   # under a porch or an eave: its box, not its walls
+            continue
         if treelike(p):   # a tree's box (a Hist's too) is mostly air: inside its crown (the upper part) or its trunk
             if crowns_cut is not None and pos[2] > crowns_cut:
                 continue
@@ -104,6 +106,36 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             return f"the camera is inside a tree's {part} ({p.get('edid') or p.get('id')})"
         return f"the camera is inside {p.get('edid') or p.get('id')} ({p.get('kind')}, {p.get('id')})"
     return None
+
+
+ENCLOSE_R = 1200.0   # how far round a point a building's walls are looked for
+ENCLOSE_BAND = (-40.0, 120.0)   # the wall height band about the point that counts
+ENCLOSE_GAP = 100.0   # degrees: a wider opening round the point than this is the open side of a porch
+
+
+def enclosed(p: dict, pos) -> bool:
+    """A point inside a building's box is inside the building when its mesh closes round it: the surface points
+    within ENCLOSE_R and a wall's height band of it leave no opening wider than ENCLOSE_GAP degrees, and some of
+    the mesh lies over it. Under a porch or an eave the open side leaves a wide gap. A building with no mesh read
+    counts as enclosed (its box, as before)."""
+    try:
+        from tools.places import shape
+        P = shape.posed(p).P
+    except Exception:
+        return True
+    if not len(P):
+        return True
+    d = P - np.asarray(pos[:3], float)
+    over = d[(np.hypot(d[:, 0], d[:, 1]) < 200.0) & (d[:, 2] > 0)]
+    if not len(over):
+        return False
+    h = np.hypot(d[:, 0], d[:, 1])
+    m = (h > 24.0) & (h < ENCLOSE_R) & (d[:, 2] > ENCLOSE_BAND[0]) & (d[:, 2] < ENCLOSE_BAND[1])
+    if m.sum() < 8:
+        return False
+    a = np.sort(np.degrees(np.arctan2(d[m, 1], d[m, 0])))
+    gaps = np.diff(np.concatenate([a, [a[0] + 360.0]]))
+    return bool(gaps.max() <= ENCLOSE_GAP)
 
 
 HIST_TREE = re.compile(r"^(ArgoniaTreeHist|HistTree|HistTrunk)", re.I)   # a Hist placed as a static is still a tree
