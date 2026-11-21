@@ -114,6 +114,32 @@
     "flag": "foot buried deeper",
     "why": "the same: the uphill corner's plinth foot in the knoll"
    }
+  ],
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.3FRCMMZ748NN1B7AGZ3GW8F3JG",
+     "tribal-camp-m2-m68.FDBBBWQBFAWT4Y8Y6MJ15F7MR3"
+    ],
+    "why": "Two of the source's boulders on the south creek bank, sunk together onto our lower ground, now lean into each other as one outcrop; from the creek at eye level (survey landing, the bank view) they read as a single rock pile, as Skyrim stacks its cliff rocks."
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.453D6VK6650FQ0450PB5ZT2F89",
+     "tribal-camp-m2-m68.DCVYHQ0Y5KKGJRFN3XY68NP8ME"
+    ],
+    "why": "The source's marsh-grass rock south of the fire camp, sunk onto our ground, now sits into the dirt bank behind it; seen from the fire camp it reads as the bank's rocky face, one landform, not two things clashing."
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.LOOK002PLACE",
+     "tribal-camp-m2-m68.HDSGW1N9X25C7KBF85A1849H20"
+    ],
+    "why": "The second flight of the Xanmeer steps up the longhouse knoll runs along the mossy rock outcrop on its north side and cuts into its foot; from below and from the door (owner 05, 02) the steps read as laid between the rocks, the way a stair is cut through a bank."
+   }
   ]
  },
  "fit": {
