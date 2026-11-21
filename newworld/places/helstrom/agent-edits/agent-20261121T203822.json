@@ -1,0 +1,43 @@
+{
+ "save_id": "agent-20261121T203822",
+ "place_id": "helstrom",
+ "name": "a plant floating or buried in the source itself, as it is here",
+ "at": "2026-11-21T20:38:22Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FD49MHFFJGCMMAZP4WTWE415YS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FD49MHFFJGCMMAZP4WTWE415YS",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -51630.88,
+     -630237.23,
+     -4181.43
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:200AE3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s149"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T20:38:22Z"
+  }
+ ]
+}
