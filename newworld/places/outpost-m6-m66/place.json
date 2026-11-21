@@ -84,5 +84,7 @@
   "held_by_water": 17,
   "laid": "2026-11-21T14:39:01Z"
  },
- "agent_saves_applied": []
+ "agent_saves_applied": [
+  "agent-20261121T144950"
+ ]
 }
