@@ -1,0 +1,432 @@
+{
+ "save_id": "agent-20261121T081155",
+ "place_id": "jal-veesa",
+ "name": "the pot and the fish and mat racks set at the height their ground seat gives (the carried relief is higher there than where the plan chose them); three of the source's collision boxes deleted that stood 3 to 4 m under our ground with nothing to wall (they walled the source's lagoon bank); the mud raised before the market's door to its sill",
+ "at": "2026-11-21T08:11:55Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51850.0,
+     -509950.0,
+     325.525
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -50.6
+    }
+   },
+   "after": {
+    "pos": [
+     -51850.0,
+     -509950.0,
+     341.925
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -34.2
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GDTF4MP4E66E699C7FW3YPRHS2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55500.0,
+     -506900.0,
+     456.204
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -55500.0,
+     -506900.0,
+     558.604
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 102.4,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RWASB486WWKY0RC88FKQGM04YB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51500.0,
+     -510200.0,
+     367.438
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -51500.0,
+     -510200.0,
+     375.138
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 7.7,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.T1QCGPRJRYG45YCEJ0S0BJ25VK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55250.0,
+     -507150.0,
+     423.267
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.621,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -55250.0,
+     -507150.0,
+     509.367
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 86.721,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.0F6DRDTQBKWGWCVFE51VX2767K",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.0F6DRDTQBKWGWCVFE51VX2767K",
+    "base": "Skyrim.esm:000017",
+    "kind": "marker",
+    "pos": [
+     -56703.53,
+     -505073.5,
+     690.42
+    ],
+    "rot": [
+     0,
+     0,
+     3.07178
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:193A8E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02",
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      1020.9116,
+      2359.0625,
+      841.63885
+     ],
+     "color": [
+      255,
+      255,
+      255
+     ],
+     "unknown": 0.15
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.XBH0EQWR345Y09C23R3AZ332W3",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.XBH0EQWR345Y09C23R3AZ332W3",
+    "base": "Skyrim.esm:000017",
+    "kind": "marker",
+    "pos": [
+     -51398.74,
+     -505280.67,
+     492.09
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:193A8D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03",
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      1467.5781,
+      976.96875,
+      885.6718
+     ],
+     "color": [
+      255,
+      255,
+      255
+     ],
+     "unknown": 0.15
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.Y5DSS2BZY6GQ5173P1VFR3TSYT",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.Y5DSS2BZY6GQ5173P1VFR3TSYT",
+    "base": "Skyrim.esm:000017",
+    "kind": "marker",
+    "pos": [
+     -60180.7,
+     -505966.78,
+     612.95
+    ],
+    "rot": [
+     0,
+     0,
+     6.01809
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:92322A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s10",
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      64.80078,
+      3158.3125,
+      760
+     ],
+     "color": [
+      255,
+      255,
+      255
+     ],
+     "unknown": 0.15
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T08:11:55Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -13,
+    -127
+   ],
+   "verts": [
+    [
+     22,
+     13,
+     0.0,
+     17.9
+    ],
+    [
+     23,
+     13,
+     0.0,
+     29.5
+    ],
+    [
+     21,
+     14,
+     0.0,
+     2.0
+    ],
+    [
+     22,
+     14,
+     0.0,
+     72.0
+    ],
+    [
+     23,
+     14,
+     0.0,
+     72.0
+    ],
+    [
+     24,
+     14,
+     0.0,
+     26.1
+    ],
+    [
+     22,
+     15,
+     0.0,
+     61.1
+    ],
+    [
+     23,
+     15,
+     0.0,
+     63.2
+    ],
+    [
+     24,
+     15,
+     0.0,
+     11.2
+    ]
+   ],
+   "tool": {
+    "kind": "min",
+    "radius": 230.0,
+    "strength": 272.0
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T08:11:55Z"
+  }
+ ]
+}

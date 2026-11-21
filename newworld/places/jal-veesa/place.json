@@ -256,13 +256,15 @@
     "base": "Skyrim.esm:0A56FD",
     "kind": "static",
     "pos": [
-     -51500,
-     -510200
+     -51500.0,
+     -510200.0
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
-    "key": "16"
+    "key": "16",
+    "scale": 1.0,
+    "dz": 7.7
    },
    {
     "base": "King of the Murkmire.esp:1AD601",
@@ -274,31 +276,37 @@
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
     "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks",
-    "key": "17"
+    "key": "17",
+    "scale": 1.0,
+    "dz": -34.2
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
     "kind": "static",
     "pos": [
-     -55500,
-     -506900
+     -55500.0,
+     -506900.0
     ],
     "rot_z": 0.6,
     "tier": "AGENT_INVENTED",
     "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
-    "key": "18"
+    "key": "18",
+    "scale": 1.0,
+    "dz": 102.4
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
     "kind": "static",
     "pos": [
-     -55250,
-     -507150
+     -55250.0,
+     -507150.0
     ],
     "rot_z": 0.6,
     "tier": "AGENT_INVENTED",
     "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
-    "key": "19"
+    "key": "19",
+    "scale": 1.0,
+    "dz": 86.72
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -1446,7 +1454,8 @@
   "agent-20261121T075715",
   "agent-20261121T080250",
   "agent-20261121T080943",
-  "agent-20261121T081014"
+  "agent-20261121T081014",
+  "agent-20261121T081155"
  ],
  "wholesale": {
   "offset": 470.0,
