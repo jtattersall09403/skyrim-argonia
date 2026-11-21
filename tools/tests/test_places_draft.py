@@ -210,6 +210,14 @@ def test_nordic_review_outranks_the_folder_rule(tmp_path):
     assert refused == ["replace A:1 -> refused: the replacement is a Nordic piece (decision 0006)"]
 
 
+def test_a_copied_rooms_nordic_pieces_follow_the_review():
+    from tools.places.draft import adds
+    review = {"J:1": {"base": "J:1", "verdict": "neutral", "why": "a stone house's shell, plain stone and thatch"},
+              "J:2": {"base": "J:2", "verdict": "nordic", "why": "a carved dragon post"}}
+    bases = {"J:1": {"nordic": True}, "J:2": {"nordic": False}, "J:3": {"nordic": True}, "J:4": {"nordic": False}}
+    assert adds.room_nordic({"J:1", "J:2", "J:3", "J:4", "J:5"}, bases, review) == {"J:2", "J:3"}
+
+
 def test_a_replacement_keeps_the_walking_top():
     from tools.places.draft import io as dio
     steps = {"edid": "DockStepsDown02", "bounds": [[-258, -150, -508], [257, 157, 190]]}
