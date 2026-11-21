@@ -15,9 +15,84 @@
      "dressing_and_people": "Our own open riverbank plants instead of the source's cypress canopy, and no bones, cage or trophies; five weir-wardens sleep in the tents on the decks, work the weir walk and the landing and cook by the water, where Karsh-Naal's guards keep towers and a fire."
     }
    ],
-   "look": [],
-   "gives": [],
-   "structures": []
+   "look": [
+    {
+     "line": "pale hide tents",
+     "by": "three of Black Marsh's own small hide tents (Black Marsh.esm Tent, pale hide over poles), added one to a deck: Ree-An-Wo's scale-hide tents read dark, and its tents stood on the towers this place does not take"
+    },
+    {
+     "line": "on cypress platforms",
+     "by": "Ree-An-Wo's low cypress platform group kept as built (its decks on cypress posts, the ramp to its high deck and the ground ramp), the landing deck turned to close on the middle deck, a fourth deck of the same kit added to close the square"
+    },
+    {
+     "line": "on a mud bank",
+     "by": "our creek's north bank, kept as it is (no relief carried): the decks stand over its mud, the landing deck's posts in the water's edge"
+    },
+    {
+     "line": "a woven weir across the creek",
+     "by": "four of King of the Murkmire's woven Saxhleel fences set in the creek bed bank to bank across the creek's narrow head, west of the camp"
+    },
+    {
+     "line": "with a log walk along its top",
+     "by": "two of King of the Murkmire's extra-long cypress log walks along the weir's top, each end on a bank"
+    },
+    {
+     "line": "and long grey moss draped on its fences over the water",
+     "by": "six hanks of Skyrim's hanging moss hung on both faces of the weir's fences, their ends over the water"
+    },
+    {
+     "line": "the landing and its cooking pot (source note)",
+     "by": "the landing deck at the water's edge with a fish basket and a lifted trap; Ree-An-Wo's own cook fire, cook stand and pot on the bank beside it"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "Skyrim's deep-pond fish spawner in the water below the weir; traps lifted on the landing and the log walk, a fish rack by the fire"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "King of the Murkmire's cooking pot on its Argonian cook stand at the fire on the bank beside the landing"
+    },
+    {
+     "kind": "combat-creature",
+     "by": "quest 2's own placements (quests.jsonl): two young crocodiles in the shallows below the weir, two mudcrabs on the banks"
+    },
+    {
+     "kind": "treasure",
+     "by": "a flat sack hidden in the reeds at the south end of the log walk, on the far bank from the camp"
+    },
+    {
+     "kind": "harvest-rare",
+     "by": "the hanging moss on the weir's fences (Sithis' beard), picked from the log walk"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "walls",
+     "what": "Ree-An-Wo's cypress stockade kit: the low platform decks on their posts, and the two stilt watch towers with their scale fences and the ramp up to them",
+     "verdict": "kept",
+     "why": "kept in part: the twelve pieces of the low platform group are the camp's decks, kept as built; the towers, their fences and the ramp up to them were left outside the part taken or pruned by hand (Karsh-Naal Camp's landmark on this source; a weir camp of five keeps no watch towers)"
+    },
+    {
+     "structure": "mine",
+     "what": "the source's mine piece",
+     "verdict": "dropped",
+     "why": "outside the part taken (--take 560); the record has no mine"
+    },
+    {
+     "cluster": "landing",
+     "what": "the low cypress platform group at the pool's south-west shore: three low decks, the ramp to the high deck, the ground ramp, the landing deck",
+     "verdict": "kept",
+     "why": "kept as built and relabelled as the wardens' camp and landing on our creek bank; the landing deck moved to close on the middle deck (its source planks screen pruned) so it is walked onto"
+    },
+    {
+     "cluster": "w01",
+     "what": "the high cypress deck on its posts",
+     "verdict": "kept",
+     "why": "kept as built: the camp's high deck, now with a warden's tent; the ramp that climbed from it to the towers pruned"
+    }
+   ]
   }
  },
  "fit": {
