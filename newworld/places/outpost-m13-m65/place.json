@@ -414,6 +414,42 @@
   "agent-20261121T144850",
   "agent-20261121T145013",
   "agent-20261121T145226",
-  "agent-20261121T145820"
- ]
+  "agent-20261121T145820",
+  "agent-20261121T150205"
+ ],
+ "draft": {
+  "add": [
+   {
+    "key": "hold-door",
+    "base": "Skyrim.esm:027FE8",
+    "kind": "door",
+    "pos": [
+     -102202.3,
+     -527376.3
+    ],
+    "rot_z": 0.02922,
+    "on": "outpost-m13-m65.LOOK006PLACE",
+    "dz": 15.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.imperial-barge/01dock3to4",
+     "door": "Black Marsh.esm:1BECCD",
+     "space": "01dock3to4",
+     "arrival": [
+      -102202.3,
+      -527470.0,
+      100.0
+     ],
+     "drop": {
+      "Black Marsh.esm:1C9449": "a second load door into a cell the barge never reaches: the hold has one way out, the hatch to the waist",
+      "Black Marsh.esm:1BEB52": "a bandit chest of levelled loot (decision 0035): the hold holds the gang's own stores",
+      "Black Marsh.esm:1BEBE6": "a bandit chest of levelled loot (decision 0035)",
+      "Black Marsh.esm:1BECF8": "a bandit chest of levelled loot (decision 0035)",
+      "Black Marsh.esm:1BEAF9": "a knapsack of levelled loot (decision 0035)"
+     }
+    },
+    "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
+   }
+  ]
+ }
 }
