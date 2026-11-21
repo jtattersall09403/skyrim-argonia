@@ -362,6 +362,22 @@ def _square_floor(z=0.0, size=1000.0):
     return room.Floor([[0, 0, z], [size, 0, z], [size, size, z], [0, size, z]], [[0, 1, 2], [0, 2, 3]])
 
 
+def test_stacked_floors_measure_a_piece_against_the_floor_under_it():
+    from tools.places.look import room
+    v = [[0, 0, 0], [1000, 0, 0], [1000, 1000, 0], [0, 1000, 0],
+         [0, 0, 250], [1000, 0, 250], [1000, 1000, 250], [0, 1000, 250]]
+    f = room.Floor(v, [[0, 1, 2], [0, 2, 3], [4, 5, 6], [4, 6, 7]])    # a hold floor under a deck
+    assert f.height(500, 500) == pytest.approx(250)                   # the walkable top, as before
+    assert f.height_below(500, 500, 10) == pytest.approx(0)            # a crate on the hold floor
+    assert f.height_below(500, 500, 255) == pytest.approx(250)         # a barrel on the deck
+    assert f.height_below(500, 500, -200) == pytest.approx(0)          # under every floor: the lowest
+    lower = [[2000, 0, 0], [3000, 0, 0], [3000, 1000, 0], [2000, 1000, 0]]     # the hold floor walked beside the deck
+    hold = room.Floor(v + lower, [[4, 5, 6], [4, 6, 7], [8, 9, 10], [8, 10, 11], [0, 1, 2]])
+    assert hold.height_below(200, 800, 10) is None       # at floor level under the deck, no hold floor walked there
+    assert hold.height_below(200, 800, -300) == pytest.approx(250)    # in the bilge: against the floor over it
+    assert f.height_below(1500, 500, 0) is None
+
+
 def test_room_names_floor_and_navmesh_rows(tmp_path):
     from tools.places.look import room
     spaces = {"exterior": {"space": None}, "HutA": {"space": {"name": "Vosh-Leera's House"}},

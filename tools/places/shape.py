@@ -403,8 +403,9 @@ class Posed:
         zs = U[ii, jj]
         best = None
         gs = []
+        below = getattr(ground, "height_below", None)     # a room's stacked floors: the floor under the piece
         for x, y, z in zip(xs.tolist(), ys.tolist(), zs.tolist()):
-            g = ground.height(x, y)
+            g = below(x, y, z) if below else ground.height(x, y)
             if g is None:
                 continue
             gs.append(g)

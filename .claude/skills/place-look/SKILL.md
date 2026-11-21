@@ -87,7 +87,8 @@ A stage run rewrites the rows it owns: commit the look session first.
 shows; `door` names its way out. The room is drawn in its own light; `--lit` adds a neutral fill for judging shape.
 
 1. `in <room> overview`: from above with the ceiling cut away, and from where the way in lands at eye height.
-2. `in <room> probe --all`: floating and unresolved pieces, a door with no floor, and every **opening onto the
+2. `in <room> probe --all` (where floors stack, as in a ship's hold under its deck, each piece is judged against the
+   floor under it): floating and unresolved pieces, a door with no floor, and every **opening onto the
    void** (a cut room's edge left open, a hole in the shell), each with the side it lies to and where. An opening
    seen only from floor behind a closed door is one the player meets only by opening it: say which.
 3. `in <room> at <thing> --eye` for what a player sees; `in <room> walk door <thing>` from the way in.
