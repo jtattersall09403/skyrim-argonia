@@ -126,30 +126,47 @@ def open_share(cx: float, cy: float, rad: float, boxes: list[tuple], trunk=None)
     return sum(seen(x, y) for x, y in pts) / len(pts)
 
 
-def offset(t: dict, base: dict, boxes: list[tuple], given=None) -> tuple[float, float]:
-    """The pool's centre off its trunk's: the place's own, else the side with the most open sap (the trunk kept in
-    the sap), when it opens OPEN more of the pool than centring does; else none."""
+def relief(G, cx: float, cy: float, rad: float) -> float:
+    """How far the ground falls across a round pool's outline (its highest minus its lowest vertex within reach)."""
+    from tools.places.seat import STEP
+    hs = [h for gx in range(math.floor((cx - rad) / STEP), math.ceil((cx + rad) / STEP) + 1)
+          for gy in range(math.floor((cy - rad) / STEP), math.ceil((cy + rad) / STEP) + 1)
+          if math.dist((gx * STEP, gy * STEP), (cx, cy)) <= rad and (h := G.vertex(gx, gy)) is not None]
+    return max(hs) - min(hs) if hs else 0.0
+
+
+def offset(t: dict, base: dict, boxes: list[tuple], given=None, G=None) -> tuple[float, float]:
+    """The pool's centre off its trunk's: the place's own, else (the trunk kept in the sap) the side where the dig can
+    make the rim level all round (the ground falling no more than PATCH_MAX across the pool: no bank over the sap),
+    and among those the one with the most open sap, when it opens OPEN more than centring does; else none."""
     if given is not None:
         return float(given[0]), float(given[1])
     s = float(t.get("scale", 1.0))
     rad, tr = reach(base, s), trunk_r(base, s)
     x, y = t["pos"][0], t["pos"][1]
+
+    def bank(o):
+        return max(0.0, relief(G, x + o[0], y + o[1], DISH * rad) - PATCH_MAX) if G is not None else 0.0
+    foot = (x, y, tr)
+    cands = [(0.0, 0.0)] + [(round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.cos(a * math.pi / 4), 1),
+                             round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.sin(a * math.pi / 4), 1))
+                            for k in (0.5, 1.0, 1.5) for a in range(8)]   # at most the trunk's foot at the sap's edge
+    b0 = bank((0.0, 0.0))
+    if b0 > 0:                              # a bank at the trunk: the flattest side first, then the most open
+        return min(cands, key=lambda o: (round(bank(o)), -open_share(x + o[0], y + o[1], rad, boxes, foot),
+                                         math.hypot(*o)))
     if open_share(x, y, rad, boxes) >= 1.0:   # no deck over the pool on its trunk: it stays there
         return 0.0, 0.0
-    foot = (x, y, tr)
     best, at = open_share(x, y, rad, boxes, foot), (0.0, 0.0)
     base_share = best
-    for k in (0.5, 1.0, 1.5):              # at most the trunk's foot at the sap's edge
-        d = min(k * max(0.0, rad - tr), 0.8 * rad)
-        for a in range(8):
-            o = (round(d * math.cos(a * math.pi / 4), 1), round(d * math.sin(a * math.pi / 4), 1))
-            sh = open_share(x + o[0], y + o[1], rad, boxes, foot)
-            if sh > best + 1e-9:
-                best, at = sh, o
+    for o in cands[1:]:
+        sh = open_share(x + o[0], y + o[1], rad, boxes, foot)
+        if sh > best + 1e-9 and bank(o) <= 0:
+            best, at = sh, o
     return at if best >= base_share + OPEN else (0.0, 0.0)
 
 
-def plan(place_id: str, ext: list[dict], bases: dict, offsets=None) -> list[dict]:
+def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None) -> list[dict]:
     """A pool for every living Hist row of a place's exterior, in row id order; a Hist already standing in a pool
     placed by hand (`draft.add`, the studio) keeps that one. offsets: the place's `draft.sap.offset`."""
     own = [r for r in ext if r.get("base") == POOL and ".sap." not in r["id"]]
@@ -159,7 +176,7 @@ def plan(place_id: str, ext: list[dict], bases: dict, offsets=None) -> list[dict
         if any(holds(p, t) for p in own):
             continue
         given = offsets.get(t["id"].split(".", 1)[-1], offsets.get(t["id"])) if isinstance(offsets, dict) else offsets
-        out.append(pool_for(place_id, t, bases[t["base"]], offset(t, bases[t["base"]], boxes, given)))
+        out.append(pool_for(place_id, t, bases[t["base"]], offset(t, bases[t["base"]], boxes, given, G)))
     return out
 
 
@@ -281,17 +298,20 @@ def apply(st, log=print) -> None:
 
 
 def want(st) -> tuple[list[dict], dict]:
-    return rows_for(st.place_id, st.ext, st.bases, ((st.place.get("draft") or {}).get("sap") or {}).get("offset"))
+    from tools.places.seat import Ground
+    G = Ground.load(st.grd.path)
+    G.apply_patches([r for r in st.files["land"] if r.get("by") != "sap"])   # the ground before the dig
+    return rows_for(st.place_id, st.ext, st.bases, ((st.place.get("draft") or {}).get("sap") or {}).get("offset"), G)
 
 
-def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None) -> tuple[list[dict], dict]:
+def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None) -> tuple[list[dict], dict]:
     """Pool rows for a place's exterior rows, and the bases with the pool's (none when the catalogue lacks it)."""
     from tools.places.draft.io import catalogue_bases
     bases = dict(bases)
     bases.update(catalogue_bases({POOL} - set(bases)))
     if POOL not in bases:
         return [], bases
-    return plan(place_id, ext, bases, offsets), bases
+    return plan(place_id, ext, bases, offsets, G), bases
 
 
 def main(argv=None) -> int:

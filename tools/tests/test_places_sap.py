@@ -135,3 +135,21 @@ def test_ground_falling_more_than_the_dig_limit_leaves_a_bank_and_says_so():
     hollow = sap.dish(steep, e + pools, BASES, set(), banks)
     assert banks and banks[0]["pool"] == "p.sap.A" and banks[0]["bank"] > 0
     assert all(dz >= -sap.PATCH_MAX for r in hollow for _, _, dz in r["verts"])
+
+
+def test_a_pool_on_a_steep_side_goes_to_the_flat_side_of_its_trunk_so_no_bank_stands_over_the_sap():
+    # flat east of x=2000, falling steeply west of it: the pool centred on the trunk would keep a bank
+    h = [max(0.0, 2000.0 - 128 * (i % 33)) * 0.8 for i in range(33 * 33)]
+    G = Ground({(0, 0): h}, {})
+    e = ext()[:1]
+    pool = sap.plan("p", e, BASES, None, G)[0]
+    cx, cy = sap.centre(pool)
+    assert cx > 2000.0                                           # moved toward the flat side
+    assert sap.holds(pool, e[0])                                 # the trunk kept in its sap
+    rad = sap.DISH * sap.reach(BASES["P:hist"], 1.0)
+    assert sap.relief(G, cx, cy, rad) <= sap.PATCH_MAX
+    seat_all([pool], G)
+    banks = []
+    sap.dish(G, e + [pool], BASES, set(), banks)
+    assert not banks
+    assert sap.plan("p", e, BASES, {"A": [0, 0]}, G)[0]["pos"][:2] == sap.plan("p", e, BASES, [0, 0])[0]["pos"][:2]
