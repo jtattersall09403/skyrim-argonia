@@ -342,9 +342,10 @@ class Group {
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null).then((parts) => {
-        // a model that would not load or holds nothing is drawn as its bounds, flagged as a stand-in (the agent view
-        // hatches and lists it), never left out unseen
-        if (!parts || !parts.length || parts.placeholder) parts = this.standIn(parts?.failed || (parts?.placeholder ? "the converter could not read it" : "the model holds no geometry"));
+        // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists
+        // it), never left out unseen; a model that loads and holds nothing drawable (a furniture marker) is empty
+        if (parts && !parts.length && !parts.failed) { this.empty = true; return; }
+        if (!parts || !parts.length || parts.placeholder) parts = this.standIn(parts?.failed || 'the converter could not read it');
         ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
         this.layer.onDirty();   // a view at rest draws again, so a model that arrives is switched on without waiting for a touch
       });

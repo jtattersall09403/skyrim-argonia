@@ -446,8 +446,7 @@ def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
             if v >= r["id0"] and v - r["id0"] < len(r["table"]) and k / n > capture.NEAR_SHARE:
                 p = sc.by_id.get(r["table"][v - r["id0"]][0])
                 if p is not None:
-                    lo, hi = geom.aabb(p)
-                    near[p["id"]] = float(np.linalg.norm(np.maximum(0, np.maximum(np.asarray(lo) - pos, pos - np.asarray(hi)))))
+                    near[p["id"]] = lens_distance(p, pos)
         if th and th.get("pieces") and not c.get("part"):   # taken from on or inside its own subject
             lo, hi = np.asarray(th["lo"], float), np.asarray(th["hi"], float)
             if np.all(pos[:2] >= lo[:2]) and np.all(pos[:2] <= hi[:2]) and lo[2] <= pos[2] <= hi[2] + capture.ON_SUBJECT * geom.EYE:
@@ -455,6 +454,22 @@ def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
     s = capture.score(scored, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
                       ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")), near=near, on_subject=on)
     return s, ids
+
+
+def lens_distance(p: dict, pos) -> float:
+    """How far a piece's solid lies from the camera: its box in its own frame; a tree's trunk and crown only (its box
+    is mostly air)."""
+    m = np.asarray(p["m"], float)
+    loc = np.linalg.solve(m, np.array([*pos[:3], 1.0]))[:3]
+    lo, hi = np.asarray(p["lo"], float), np.asarray(p["hi"], float)
+    boxes = [(lo, hi)]
+    if p.get("kind") == "tree":
+        mid, half = (lo + hi) / 2, (hi - lo) * capture.TRUNK
+        zc = lo[2] + (hi[2] - lo[2]) * capture.CROWN_FROM
+        boxes = [(np.array([mid[0] - half[0], mid[1] - half[1], lo[2]]), np.array([mid[0] + half[0], mid[1] + half[1], zc])),
+                 (np.array([lo[0], lo[1], zc]), hi)]
+    scale = float(np.linalg.norm(m[:3, 0])) or 1.0
+    return min(float(np.linalg.norm(np.maximum(0, np.maximum(a - loc, loc - b)))) for a, b in boxes) * scale
 
 
 def _blocker(sc, inside):

@@ -156,12 +156,13 @@ function idPass(view, studio, c, w, h, subject, refW) {
 // a stand-in (a model that would not load, listed with why), refs never drawn by rule (effects, no model), helpers
 // hidden, and the instances drawn in the frame by kind. Returned with every shot: nothing that exists goes unreported.
 function census(layer) {
-  const c = { sent: 0, loaded: 0, stand_in: 0, waiting: 0, effects: 0, no_model: 0, lights: 0, helpers_hidden: 0, drawn: {}, failed: [] };
+  const c = { sent: 0, loaded: 0, stand_in: 0, waiting: 0, empty: 0, effects: 0, no_model: 0, lights: 0, helpers_hidden: 0, drawn: {}, failed: [] };
   for (const g of layer?.groups?.values() || []) {
     const n = g.refs.length; c.sent += n;
     if (g.fx) { c.effects += n; continue; }
     if (g.unseen) { c.no_model += n; continue; }
     if (g.bulb || g.prim) { c.lights += n; continue; }
+    if (g.empty) { c.empty += n; continue; }   // a model with nothing drawable in it (a furniture marker)
     if (!g.fullParts) c.waiting += n;
     else if (g.fullParts.placeholder) { c.stand_in += n; c.failed.push({ model: g.base?.model || '', refs: n, why: g.fullParts.why || 'the converter could not read it' }); }
     else c.loaded += n;

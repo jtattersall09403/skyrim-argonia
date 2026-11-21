@@ -57,8 +57,10 @@ Each view prints a PNG path and what it shows, from an id buffer drawn with the 
 the subject's own projected pixels visible and inside the frame), `subject_fills` (its share of the frame),
 `occluders` (the three biggest pieces over the rest, by piece and kind), the land, water and sky shares, and
 `capture`. A capture is `failed`, with `why` in the JSON and in a red banner across the image, when under 35% of its
-subject is seen, the camera is under the ground or inside a piece (a tree's crown or trunk), no ground is drawn, or
-one piece covers half the lens. `at` then tries again by itself: the other sides, further, higher, the canopy cut,
+subject is seen, the subject fills under 3% of the frame while another piece fills more, the camera stands on or
+inside its own subject, the camera is under the ground or inside a piece (a tree's crown or trunk), no ground is
+drawn, one piece covers half the lens, or a piece within 200 units of the lens covers over 4% of it (a leaf, a sail,
+a post). The thresholds are named in one place, `tools/places/look/capture.py`. `at` then tries again by itself: the other sides, further, higher, the canopy cut,
 until a capture is good or it says no good one is to be had and why (`failed_tries` lists each with its image). A
 thing much taller than wide is framed whole, and a second view shows its base. An eye camera stands at a person's
 eye over the walkable mesh where it is loaded, else a deck, bridge or walkway, else the ground, never inside a piece.
@@ -73,7 +75,11 @@ figure and outline is drawn in proportion to the width (768 wide is the unit), s
 640x480; `pick` takes pixels of the full-size image. `--grass` the grown grass, `--lit` a neutral
 fill light. What the game never draws (editor markers: x-markers, heading, idle, furniture and patrol markers;
 collision boxes, triggers, occlusion planes, light bulbs) is left out; `--helpers` shows it, each labelled with what
-it is. A model that did not load is drawn hatched and labelled: a fault of the place. `--once` takes the asked
+it is. A model that did not load is drawn as a box of its bounds, hatched and labelled: a fault of the place. Every
+view's `census` says what the page holds and drew: pieces sent (against the numbers' count), models loaded, pieces
+drawn as stand-ins with each failed model and why, models with nothing drawable (a furniture marker), effects and
+helpers hidden, instances drawn in the frame by kind, and the
+page's own errors; a mismatch is a `warn`. `--once` takes the asked
 view only, without retries. `--mesh` lays the built walkable mesh over any view: each island in its own colour (the main network green) with its id, door arrivals as squares and street points as dots, white on the main network and red off it by the check's rule; a section keeps the triangles in its slab.
 
 Trees hide what stands under them. `--no-canopy` cuts away every tree crown, Hist and hanging moss or vine over
@@ -194,6 +200,37 @@ that touches a row an owner's finalised save touched is left out whole and liste
 Every call appends a line to `out/places/look/<tree>/session.log` (verb, arguments, image, milliseconds). A sequence that
 has worked by hand on several places is the record from which a pipeline step is written; nothing becomes a step
 before that.
+
+## What a capture guarantees, and what it does not
+
+`python -m tools.places look truth` proves the guarantees on a golden scene of coloured-box models whose answers are
+known (`tools/tests/fixtures/look_truth`), against a ray caster of its own: about two minutes, one daemon of its own,
+one line per check and a report (`truth.json`) with each failure's image. `look truth <place> --sample 40` audits a
+real draft: forty pieces at random across kinds, each by the tool's own `at`, must be drawn in frame with their
+silhouette's centre within 5% of the frame of where their box projects. Run it when the look tool or the studio's
+drawing code changes; `LOOK_TRUTH=1 pytest tools/tests/test_places_look_truth.py` runs the same.
+
+Guaranteed, each by an assertion:
+- Every piece is drawn where its record puts it (its silhouette within 2 px of its projected boxes from the side,
+  above and the eye); `--top` is north-up; a section's ground line sits at the row the heights say, on flat ground,
+  a slope and land raised or lowered by several land rows (they add), and its scale is the stated units per pixel.
+- An eye camera stands at eye height over the ground or deck under the camera itself, never under the ground and
+  never inside a piece, on a slope, a mound, by a deck, beside a wall and under a crown.
+- `seen`, `fills` and the first occluder agree with the oracle within 0.04, 0.01 and exactly; the verdicts for a
+  subject behind a crown, seen from on its roof, small and far, or behind a leaf at the lens are `failed`.
+- `pick` returns the piece drawn at the pixel, a pool included.
+- Every piece sent is counted; a model that fails to load is a listed, hatched stand-in; markers are hidden unless
+  `--helpers`.
+- A look draws the place files as they stand in the working tree, as the numbers read them: a change to the files,
+  a commit, a new ground or source bundle, an undo or a restore shows at the next look without a restart, and every
+  answer names the state it drew (`drew`: the files' hash, the commit, whether the tree differs, the bundles'
+  stamps). Each checkout has its own daemon, port and draft bundles; looks in one millisecond keep separate files.
+- A room draws every piece of its source room.
+
+Not guaranteed: the viewer draws no grass unless asked, no effects (fire, fog, mist, glows), and its light is not
+the game's; placed water is the studio's approximation of its surface, and a section shows no line for a flat water
+sheet seen edge-on; a section's land is the drawn ground line, not the page's surface (flat land is edge-on); the
+pictures are software-rendered, seconds a view on a warm daemon and minutes for the first load of a large place.
 
 ## The machine
 

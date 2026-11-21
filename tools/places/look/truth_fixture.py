@@ -153,6 +153,12 @@ def run(d, root, check):
     freshness(d, root, check, sess)
     rooms(d, root, check, sess)
     (root / "times.json").write_text(json.dumps(TIMES))
+    # speed, measured against the stored budget (tools/tests/fixtures/look_truth/budget.json)
+    budget = json.loads((ROOT / "tools" / "tests" / "fixtures" / "look_truth" / "budget.json").read_text())
+    TIMES["checks_s"] = round(time.time() - t0, 1)
+    for k, lim in budget.items():
+        got = max(TIMES[k]) if isinstance(TIMES.get(k), list) else TIMES.get(k)
+        check("A10 speed", f"{k} within its budget", got is not None and got <= lim, f"{got} s, budget {lim} s")
 
 
 def geometry(d, sc, root, check):
@@ -426,7 +432,7 @@ def freshness(d, root, check, sess):
     git("add", "-A")
     git("-c", "user.name=look truth", "-c", "user.email=truth@localhost", "commit", "-qm", "golden scene")
     cam = geom.frame([0, 0, 0], [3500, 2500, 600], "s", "top", 768, 576) | {"far": 2e5}
-    res0 = verbs.run(d, PLACE, sess, "at", [f"{PLACE}.house", "--plain", "--once"])
+    verbs.run(d, PLACE, sess, "at", [f"{PLACE}.house", "--plain", "--once"])
     drew0 = dict(d.drew)
     a, _ = centroid(d, cam, f"{PLACE}.house")
     refs = pdir / "spaces" / "exterior" / "refs.jsonl"

@@ -7,9 +7,7 @@ import sys
 import time
 from pathlib import Path
 
-import numpy as np
-
-from tools.places.look import capture, daemon, geom, verbs
+from tools.places.look import daemon
 from tools.places.look.scene import LOOK_OUT, data_out
 
 RESULTS: list[dict] = []

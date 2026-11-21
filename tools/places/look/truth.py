@@ -11,13 +11,11 @@ Prints one line per check (PASS, FAIL or XFAIL with the reason) and a JSON summa
 Run by `LOOK_TRUTH=1 pytest tools/tests/test_places_look_truth.py` too. The fixture run takes about two minutes."""
 from __future__ import annotations
 
-import json
 import os
 import socket
 import subprocess
 import sys
 import tempfile
-import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
