@@ -93,7 +93,8 @@ export function modelFromFiles(files) {
   for (const c of files.clear || []) m.clear.set(vegKey(c), { ...clone(c), by: c.by || 'draft' });
   for (const p of files.land || []) {
     const k = p.cell.join(','), cm = m.land.get(k) || new Map();
-    for (const [row, col, dz] of p.verts) cm.set(row * GRID + col, dz);
+    // a cell may hold several rows (a carried ground and a sap hollow): a vertex's changes add, as the build adds them
+    for (const [row, col, dz] of p.verts) cm.set(row * GRID + col, (cm.get(row * GRID + col) ?? 0) + dz);
     m.land.set(k, cm); m.landRows.set(k, { why: p.why, textures: p.textures });
   }
   for (const p of files.paths || []) m.paths.set(p.id, clone(p));
