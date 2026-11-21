@@ -125,7 +125,7 @@ def test_a_house_standing_on_a_boardwalk_is_named():
     bw = posed("bw", "fx/boardwalk.nif", (0, 0, 0))
     hut = posed("hut", "fx/hut.nif", (300, 0, 0))
     rows = shape.joints([("bw", bw)], [("bw", bw), ("hut", hut)], Flat(-500), unit_of={"bw": "walk", "hut": "house"})
-    assert any(r["verdict"] == "stands on: hut" for r in rows)
+    assert any(r["verdict"].startswith("stands on: hut") for r in rows)
     assert shape.rests_on(hut, bw)
 
 
@@ -155,3 +155,59 @@ def test_a_model_that_cannot_be_read_is_named_and_measured_by_its_box():
     p = {"id": "x", "model": "fx/nosuch.nif", "m": xform.matrix([0, 0, 0], [0, 0, 0], 1), "lo": [-10, -10, 0], "hi": [10, 10, 30]}
     s = shape.Posed(p)
     assert not s.mesh and abs(s.top_z() - 30) <= TOL and "fx/nosuch.nif" in shape.unread()
+
+
+def _ends(rows):
+    return [r for r in rows if r["end"] != "-"]
+
+
+def test_a_sagging_rope_bridge_meets_both_platforms_at_its_last_planks():
+    c = C["ropebridge"]
+    br = posed("rb", c["model"], (0, 0, 0))
+    a = posed("A", c["slab"], (-100, 0, 0))                    # its edge at x 0, the bridge's first plank at 1
+    b = posed("B", c["slab"], (c["length"] + 100, 0, 0))       # its edge at 480, the last plank's end at 479
+    for e in br.ends():                                        # the planks' height at the end, not the end frame's 60
+        assert abs(e["at"][2]) <= 4 and e["width"] >= 90, e
+    rows = _ends(shape.joints([("rb", br)], [("rb", br), ("A", a), ("B", b)], Flat(-1000)))
+    assert sorted(r["verdict"] for r in rows) == ["meets A", "meets B"], rows
+    assert all(abs(r["along"]) < c["gap"] and abs(r["dz"]) < c["gap"] for r in rows), rows
+
+
+def test_a_deck_on_its_own_long_legs_stands_on_a_rock_and_one_with_short_legs_is_mid_air():
+    c = C["legs"]
+    deck = posed("d", c["model"], (0, 0, 0))
+    for drop, want in ((0, "on its own legs"), (c["short"], "mid-air")):
+        rock = posed("r", c["rock"], (0, 0, -c["legs"] - drop))  # its top at the legs' feet, or 100 under them
+        rows = _ends(shape.joints([("d", deck)], [("d", deck), ("r", rock)], Flat(-1000)))
+        assert len(rows) == 2 and all(r["verdict"].startswith(want) for r in rows), (drop, [r["verdict"] for r in rows])
+
+
+def test_a_hut_on_a_deck_of_three_pieces_is_their_floor_not_a_wall_across_them():
+    c = C["floor"]
+    hut = posed("hut", c["hut"], (0, 0, 0))
+    decks = [(f"d{k}", posed(f"d{k}", c["slab"], (x, 0, 0))) for k, x in enumerate((-200, 0, 200))]
+    units = {"hut": "house", **{i: "deck" for i, _ in decks}}
+    rows = shape.joints(decks, decks + [("hut", hut)], Flat(-500), units, walls={"hut"})
+    side = [r["verdict"] for r in rows if r["end"] == "-"]
+    assert len(side) == 3 and all(v.startswith("floor of hut") for v in side), side
+
+
+def test_a_wall_across_a_boardwalk_crosses_it():
+    c = C["walls"]
+    bw = posed("bw", c["boardwalk"], (0, 0, 0))
+    wall = posed("w", c["wall"], (300, 0, 0))
+    rows = shape.joints([("bw", bw)], [("bw", bw), ("w", wall)], Flat(-500), {"bw": "walk", "w": "house"}, walls={"w"})
+    assert [r["verdict"] for r in rows if r["end"] == "-"] == ["crossed by wall w"]
+
+
+def test_a_stair_foot_on_a_wide_boardwalk_leaving_100_clear_is_carried_one_blocking_it_stands_on_it():
+    c = C["walls"]
+    units = {"bw": "walk", "st": "stair"}
+    wide = posed("bw", c["wide"], (0, 0, 0))
+    st = posed("st", c["stair"], (200, -50, 0))                # covers y -100..0 of the walk's -100..100
+    rows = [r for r in shape.joints([("bw", wide)], [("bw", wide), ("st", st)], Flat(-500), units) if r["end"] == "-"]
+    assert len(rows) == 1 and rows[0]["verdict"].startswith("carries st") and abs(rows[0]["clear"] - c["clear"]) <= 16, rows
+    narrow = posed("bw", c["boardwalk"], (0, 0, 0))
+    st = posed("st", c["stair"], (200, 0, 0))                  # 100 wide on a walk 120 wide
+    rows = [r for r in shape.joints([("bw", narrow)], [("bw", narrow), ("st", st)], Flat(-500), units) if r["end"] == "-"]
+    assert len(rows) == 1 and rows[0]["verdict"].startswith("stands on: st") and rows[0]["clear"] < 64, rows
