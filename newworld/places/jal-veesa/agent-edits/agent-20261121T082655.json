@@ -1,0 +1,937 @@
+{
+ "save_id": "agent-20261121T082655",
+ "place_id": "jal-veesa",
+ "name": "dry town, not a lagoon town (place record on_water false; creek beyond the ring): the three boats moved from the mud of the dry dish onto the creek beside the jetty; one fishing spot and its gear moved to the jetty's end over the creek; the five other fishing/dog/follower markers over mud deleted (a fishing spot needs water); the two corundum ores deleted (no smith or mine in the record)",
+ "at": "2026-11-21T08:26:55Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6X0QAHWAJK3CQKB7HQ5Z3S0F2Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53408.75,
+     -505307.48,
+     466.23
+    ],
+    "rot": [
+     0,
+     0,
+     0.30001
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49449.75,
+     -518450.48,
+     -3.77
+    ],
+    "rot": [
+     0,
+     0,
+     0.30001
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MTYZG35PZ0ZQYPBXNVRS1VNP5J",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53830.72,
+     -504372.79,
+     461.55
+    ],
+    "rot": [
+     0,
+     0,
+     4.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49249.72,
+     -518999.79,
+     -8.45
+    ],
+    "rot": [
+     0,
+     0,
+     4.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.AWNNNNZ7DHMXM825D3S685S3HG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53823.34,
+     -507088.13,
+     461.55
+    ],
+    "rot": [
+     0,
+     0,
+     1.90001
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49350.34,
+     -519550.13,
+     -8.45
+    ],
+    "rot": [
+     0,
+     0,
+     1.90001
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WMDENZTJCQDG35HM11TQ1TMXZA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53805.41,
+     -506975.95,
+     515.27
+    ],
+    "rot": [
+     0,
+     0,
+     3.54956
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49332.41,
+     -519437.95,
+     45.27
+    ],
+    "rot": [
+     0,
+     0,
+     3.54956
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.T4CMZSVRQGH8GW205H1H53BA0X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53776.92,
+     -507041.4,
+     514.85
+    ],
+    "rot": [
+     1.5707966,
+     1.1707964,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49303.92,
+     -519503.4,
+     44.85
+    ],
+    "rot": [
+     1.5707966,
+     1.1707964,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.V3DKZ7YVJDVZRSC62N8QCVGCXJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53853.71,
+     -507113.2,
+     485.34
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49380.71,
+     -519575.2,
+     15.34
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VHWN2QH39XSKRJDTTDM1HV6B06",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53810.8,
+     -507133.37,
+     492.83
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1.28,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49337.8,
+     -519595.37,
+     22.83
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1.28,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J1RWJQ0KRSDDDWV408GG0J2DZE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53810.8,
+     -507133.37,
+     502.49
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49337.8,
+     -519595.37,
+     32.49
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 3,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.AWNNNNZ7DHMXM825D3S685S3HG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49350.34,
+     -519550.13,
+     -8.45
+    ],
+    "rot": [
+     0,
+     0,
+     1.90001
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49344.067,
+     -519548.731,
+     -8.45
+    ],
+    "rot": [
+     0,
+     0,
+     3.12174
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WMDENZTJCQDG35HM11TQ1TMXZA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49332.41,
+     -519437.95,
+     45.27
+    ],
+    "rot": [
+     0,
+     0,
+     3.54956
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49232.52,
+     -519527.212,
+     45.27
+    ],
+    "rot": [
+     0,
+     0,
+     4.77129
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.T4CMZSVRQGH8GW205H1H53BA0X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49303.92,
+     -519503.4,
+     44.85
+    ],
+    "rot": [
+     1.5707966,
+     1.1707964,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49284.279,
+     -519576.369,
+     44.85
+    ],
+    "rot": [
+     1.5707966,
+     1.1707964,
+     2.79253
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.V3DKZ7YVJDVZRSC62N8QCVGCXJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49380.71,
+     -519575.2,
+     15.34
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49378.013,
+     -519528.767,
+     15.34
+    ],
+    "rot": [
+     0,
+     0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VHWN2QH39XSKRJDTTDM1HV6B06",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49337.8,
+     -519595.37,
+     22.83
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1.28,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49382.29,
+     -519575.988,
+     22.83
+    ],
+    "rot": [
+     0,
+     0,
+     2.72173
+    ],
+    "scale": 1.28,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J1RWJQ0KRSDDDWV408GG0J2DZE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49337.8,
+     -519595.37,
+     32.49
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49382.29,
+     -519575.988,
+     32.49
+    ],
+    "rot": [
+     0,
+     0,
+     1.62173
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 14,
+   "stroke": 4,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CRR8HGXCH3JQV9N12T8HFD7JJ7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53259.8,
+     -506764.74,
+     502.58
+    ],
+    "rot": [
+     0,
+     0,
+     3.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49829.8,
+     -518479.74,
+     74.58
+    ],
+    "rot": [
+     0,
+     0,
+     3.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 5,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.F717VTHK2D0YDWGM1Z1XA4XGDK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53151.63,
+     -506798.21,
+     502.78
+    ],
+    "rot": [
+     0,
+     0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49879.63,
+     -518420.21,
+     74.78
+    ],
+    "rot": [
+     0,
+     0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 6,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.SDG3647RYFMTYYQ8KPXXSEE7NA",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.SDG3647RYFMTYYQ8KPXXSEE7NA",
+    "base": "ccBGSSSE001-Fish.esm:000853",
+    "kind": "marker",
+    "pos": [
+     -54089.31,
+     -504095.76,
+     502.75
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:A6AD61",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 17,
+   "stroke": 7,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.0MS41MV6J5QH6PZZ0VCKAPDZDK",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.0MS41MV6J5QH6PZZ0VCKAPDZDK",
+    "base": "ccBGSSSE001-Fish.esm:0D101B",
+    "kind": "marker",
+    "pos": [
+     -54012.35,
+     -504444.1,
+     566.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.68319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:A6AD65",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 18,
+   "stroke": 8,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.5E9CSKQ3YXV05NK9FRQ2T46RPN",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.5E9CSKQ3YXV05NK9FRQ2T46RPN",
+    "base": "ccBGSSSE001-Fish.esm:0D101A",
+    "kind": "marker",
+    "pos": [
+     -52811.33,
+     -506709.3,
+     566.0
+    ],
+    "rot": [
+     0,
+     0,
+     4.68319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:A6AD6D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 19,
+   "stroke": 9,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.9RNYP3YKH6P2QF2PN22J4XTPPE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.9RNYP3YKH6P2QF2PN22J4XTPPE",
+    "base": "ccBGSSSE001-Fish.esm:0D101A",
+    "kind": "marker",
+    "pos": [
+     -54275.51,
+     -504532.09,
+     565.91
+    ],
+    "rot": [
+     0,
+     0,
+     1.2
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:A6AD64",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 20,
+   "stroke": 10,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.NDX8Z6950908QXQWKZVVSAHE9Q",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.NDX8Z6950908QXQWKZVVSAHE9Q",
+    "base": "ccBGSSSE001-Fish.esm:0D101B",
+    "kind": "marker",
+    "pos": [
+     -52822.34,
+     -506811.9,
+     566.0
+    ],
+    "rot": [
+     0,
+     0,
+     4.78319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:A6AD6E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 21,
+   "stroke": 11,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.PPCE84Y4MKHPV0JKD8K4SSZC69",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.PPCE84Y4MKHPV0JKD8K4SSZC69",
+    "base": "Skyrim.esm:05ACDB",
+    "kind": "clutter",
+    "pos": [
+     -54566.4,
+     -507232.04,
+     595.35
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:1B78E0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04",
+    "owner": {
+     "owner": "King of the Murkmire.esp:198CD8",
+     "rank": null
+    }
+   },
+   "n": 22,
+   "stroke": 12,
+   "at": "2026-11-21T08:26:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.Z4Q0M7AME5EG29KPRYC5BE6J85",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.Z4Q0M7AME5EG29KPRYC5BE6J85",
+    "base": "Skyrim.esm:05ACDB",
+    "kind": "clutter",
+    "pos": [
+     -54584.78,
+     -507227.92,
+     595.35
+    ],
+    "rot": [
+     0,
+     0,
+     1.8
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:1B78E1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04",
+    "owner": {
+     "owner": "King of the Murkmire.esp:198CD8",
+     "rank": null
+    }
+   },
+   "n": 23,
+   "stroke": 13,
+   "at": "2026-11-21T08:26:55Z"
+  }
+ ]
+}
