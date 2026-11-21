@@ -2,6 +2,8 @@
 
     python -m tools.places units <place> [--all] [--source] [--json]
     python -m tools.places units plan <place> [--margin 30] [--out plan.json]
+    python -m tools.places units <place> --joints [--json]   one row per end of every stair, ramp, bridge, walkway
+        and boardwalk piece: what its end line meets, the gap along and in height, the verdict (shape.joints)
 
 A house unit is its building body with the platform or deck it stands on, the posts under them, the steps and
 railings at its deck, the doors set in its walls (and the room they lead to) and what rests on, hangs on or is fixed
@@ -991,6 +993,54 @@ def edit_faults(files: dict, bases: dict, places: Path | None = None) -> list[st
     return bad
 
 
+# ---------- joints ----------
+JOINT_ROLES = ("steps", "walkway", "bridge", "dock")
+JOINT_CLASSES = ("steps", "span")
+
+
+def joint_rows(pl: Place) -> list[dict]:
+    """Every walked span's ends and what stands on it, from the meshes (shape.joints): a span is a piece the classifier
+    calls steps or span, or a deck piece of a walkway, bridge or dock unit."""
+    from tools.places import classify, shape
+    unit_of, role_of = {}, {}
+    for u in pl.units:
+        for r, ids in u["pieces"].items():
+            for i in ids:
+                unit_of[i], role_of[i] = u["id"], (u["kind"] if r == "deck" else r)
+    solid = [p for p in pl.sc.pieces if p.get("model") and geom.solid(p) and not ground_piece(p)]
+    spans = [p for p in solid if (classify.kind_of(p) in JOINT_CLASSES or role_of.get(p["id"]) in JOINT_ROLES)
+             and not classify.has(p, ("wall",))]
+    walls = {p["id"] for p in solid if role_of.get(p["id"]) == "body" or classify.kind_of(p) in ("building body", "wall part")}
+    structures = walls | {p["id"] for p in solid if classify.kind_of(p) in ("deck", "steps", "span")}
+    posed = [(p["id"], shape.posed(p)) for p in solid]
+    by = dict(posed)
+    rows = shape.joints([(p["id"], by[p["id"]]) for p in spans], posed, pl.sc.ground, unit_of, walls, structures)
+    for r in rows:
+        p = pl.by.get(r["span"]) or {}
+        r["edid"] = p.get("edid")
+    return rows
+
+
+def joints_text(rows: list[dict]) -> str:
+    out = [f"{'span':<34} {'edid':<28} {'end':<5} {'at (x, y, z)':<26} {'over gnd':>8} {'along':>6} {'dz':>6}  verdict"]
+    for r in rows:
+        at = r.get("at")
+        out.append(f"{r['span'][-12:]:<34} {str(r.get('edid'))[:28]:<28} {r['end']:<5} "
+                   f"{(', '.join(f'{v:.0f}' for v in at) if at else ''):<26} {_s(r.get('over_ground')):>8} "
+                   f"{_s(r.get('along')):>6} {_s(r.get('dz')):>6}  {r['verdict']}")
+    kinds: dict[str, int] = {}
+    for r in rows:
+        k = r["verdict"].split(" ")[0] if not r["verdict"].startswith(("rests", "stands", "spans", "crossed", "buried", "short", "step", "on its"))\
+            else " ".join(r["verdict"].split(" ")[:2])
+        kinds[k] = kinds.get(k, 0) + 1
+    out.append("counts: " + ", ".join(f"{k} {n}" for k, n in sorted(kinds.items(), key=lambda kv: -kv[1])))
+    return "\n".join(out)
+
+
+def _s(v) -> str:
+    return "" if v is None else f"{v:.0f}"
+
+
 # ---------- CLI ----------
 def main(argv: list[str]) -> int:
     args = [a for a in argv if not a.startswith("--")]
@@ -1009,6 +1059,10 @@ def main(argv: list[str]) -> int:
         print(f"plan file: {out}")
         return 0
     pl = Place(args[0])
+    if "--joints" in opts:
+        rows = joint_rows(pl)
+        print(json.dumps(rows, indent=1, default=float) if "--json" in opts else joints_text(rows))
+        return 0
     if "--source" in opts:
         for u in pl.src_units:
             if u["kind"] != "thing" or "--all" in opts:

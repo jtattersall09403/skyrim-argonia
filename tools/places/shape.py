@@ -31,7 +31,7 @@ from pathlib import Path
 
 import numpy as np
 
-VERSION = 4
+VERSION = 5
 SPACING = 8.0
 MAX_POINTS = 400_000
 CELL = 16.0
@@ -40,6 +40,7 @@ WALK_MIN_CELLS = 3     # a walked surface this many 16-unit cells or larger is o
 STEP = 32.0            # a person steps up this much
 ROOT = Path(__file__).resolve().parents[2]
 
+REAL = True           # read the converted models; a test sets it False to measure only registered meshes and boxes
 _REG: dict[str, np.ndarray] = {}      # fixture or hand-given meshes: model -> tris (n, 3, 3)
 _MODEL: dict[str, "Model"] = {}
 _UNREAD: dict[str, str] = {}
@@ -73,9 +74,10 @@ class Model:
     COLUMNS (k, 5): each COL-unit model-frame column's middle x, y, lowest z, highest z and highest walked z (nan when
     nothing walkable). An untilted piece (any yaw, any uniform scale) reads its fields from the turned columns (plan
     error at most COL * 0.71 = 6 units); a tilted one from the cloud itself."""
-    def __init__(self, P, N, spacing: float, mesh: bool, cols: np.ndarray | None = None, load=None):
+    def __init__(self, P, N, spacing: float, mesh: bool, cols: np.ndarray | None = None, load=None, hull=None):
         self._P, self._N, self.spacing, self.mesh, self._load = P, N, spacing, mesh, load
         self.cols = columns(P, N) if cols is None else cols
+        self.hull = _plan_hull(P) if hull is None else hull
 
     @property
     def D(self) -> tuple[np.ndarray, np.ndarray]:
@@ -222,6 +224,8 @@ def model(name: str | None, lo=None, hi=None) -> Model:
     if k in _REG:
         P, N, s = cloud(_REG[k])
         m = Model(P, N, s, True)
+    elif k and not REAL:
+        why = "real models off (a test)"
     elif k:
         key, why = _glb_key(k)
         if key:
@@ -229,7 +233,7 @@ def model(name: str | None, lo=None, hi=None) -> Model:
             if f.exists():
                 z = np.load(f)
                 m = Model(None, None, float(z["s"]), True, z["C"],
-                          load=lambda z=z: (z["DP"], z["DN"].astype(np.float32) / 127.0))
+                          load=lambda z=z: (z["DP"], z["DN"].astype(np.float32) / 127.0), hull=z["H"])
                 m._D = None
                 m._Dload = m._load
             else:
@@ -241,12 +245,12 @@ def model(name: str | None, lo=None, hi=None) -> Model:
                     tmp = f.with_suffix(f".{os.getpid()}.tmp.npz")
                     m = Model(P, N, s, True)
                     DP, DN = m.D
-                    np.savez_compressed(tmp, s=np.float32(s), C=m.cols, DP=DP, DN=np.round(DN * 127).astype(np.int8))
+                    np.savez_compressed(tmp, s=np.float32(s), C=m.cols, DP=DP, DN=np.round(DN * 127).astype(np.int8), H=m.hull)
                     os.replace(tmp, f)
                 else:
                     why = "the converted model has no triangles"
-        if m is None:
-            _UNREAD[k] = why or "unreadable"
+    if m is None and k:
+        _UNREAD[k] = why or "unreadable"
     if m is None:
         if lo is None:
             m = Model(np.zeros((0, 3), np.float32), np.zeros((0, 3), np.float32), SPACING, False)
@@ -284,6 +288,11 @@ class Posed:
             xy = C[:, :2] @ A[:2, :2].T + M[:2, 3]
             zz = C[:, 2:6] * A[2, 2] + M[2, 3]
             self._grid(xy[:, 0], xy[:, 1], zz[:, 0], zz[:, 1], zz[:, 2], zz[:, 3])
+            H = mod.hull.astype(float) @ A[:2, :2].T + M[:2, 3]       # the plan's exact extent, from its hull
+            if len(H):
+                self.lo[:2], self.hi[:2] = H.min(0), H.max(0)
+            if A[2, 2] < 0:
+                self.lo[2], self.hi[2] = self.hi[2], self.lo[2]
 
     @property
     def P(self) -> np.ndarray:
@@ -355,24 +364,47 @@ class Posed:
             return float(F[i, j])
         return None
 
+    def surface_near(self, x: float, y: float, z: float, r: float, dz: float) -> float | None:
+        """The height of this mesh's top or walked surface within r of (x, y) in plan and dz of z, nearest z; None
+        when it has none there (what an end line rests on)."""
+        best = None
+        i0, i1 = int(math.floor((x - r) / CELL)) - self.i0, int(math.floor((x + r) / CELL)) - self.i0 + 1
+        j0, j1 = int(math.floor((y - r) / CELL)) - self.j0, int(math.floor((y + r) / CELL)) - self.j0 + 1
+        i0, j0 = max(i0, 0), max(j0, 0)
+        if i0 >= self.under.shape[0] or j0 >= self.under.shape[1] or i1 <= 0 or j1 <= 0:
+            return None
+        for F in (self.top, self.walk, self.walk_low):
+            w = F[i0:i1, j0:j1]
+            m = ~np.isnan(w) & (np.abs(w - z) <= dz)
+            if m.any():
+                v = w[m][np.argmin(np.abs(w[m] - z))]
+                if best is None or abs(v - z) < abs(best - z):
+                    best = float(v)
+        return best
+
     def outline(self) -> list[list[float]]:
         """The true plan outline as the occupied cells' convex hull (for the drawing); occupancy is `occ`."""
         pts = self.cells("under")[:, :2]
         return [[round(float(a), 1), round(float(b), 1)] for a, b in _hull(pts)] if len(pts) else []
 
     # ground against the mesh
-    def clearance(self, ground, band: float = 400.0) -> dict | None:
-        """The mesh's underside against the ground under each of its own cells (cells within `band` of its lowest
-        point): `over` the least (lowest point over the ground, negative: in the ground), `gmin`/`gmax` the lowest
-        and highest ground under the footprint, `at` where the least is."""
-        C = self.cells("under")
-        if not len(C):
+    def clearance(self, ground, band: float = 48.0) -> dict | None:
+        """The mesh's underside against the ground under its own cells: `over` the least underside-over-ground of its
+        cells within `band` of its lowest point and of every other cell (taken at every second cell: the ground's
+        grid is 128), negative: in the ground; `gmin`/`gmax` the lowest and highest ground under the footprint;
+        `at` where the least is."""
+        U = self.under
+        if not U.size:
             return None
-        C = C[C[:, 2] <= self.low() + band]
+        occ = ~np.isnan(U)
+        ii, jj = np.nonzero(occ & ((U <= self.low() + band)
+                                   | ((np.arange(U.shape[0])[:, None] % 2 == 0) & (np.arange(U.shape[1])[None, :] % 2 == 0))))
+        xs, ys = self.cell_xy(ii, jj)
+        zs = U[ii, jj]
         best = None
         gs = []
-        for x, y, z in C:
-            g = ground.height(float(x), float(y))
+        for x, y, z in zip(xs.tolist(), ys.tolist(), zs.tolist()):
+            g = ground.height(x, y)
             if g is None:
                 continue
             gs.append(g)
@@ -416,9 +448,11 @@ class Posed:
 
     def ends(self) -> list[dict] | None:
         """A walked span's two end lines, from its walked points (the cloud's top-facing points): the extremes along
-        its long axis (PCA of the walk), each end line's middle (x, y, z: the walked height there), its width across,
-        the outward axis, and `under`: the underside's lowest point within a cell of the end. Lowest first: a stair's
-        FOOT, then its HEAD."""
+        its long axis (PCA of the walk), each end line's middle (x, y, z: the median walked height there: the planks,
+        not a rail's top), its width across,
+        the outward axis, `under`: the underside of its deck there (the lowest point within a cell of the end and
+        DECK_DEPTH under the walk) and `reach`: the lowest point of anything of it there (its own legs). Lowest first:
+        a stair's FOOT, then its HEAD."""
         P, nz = self.P, self.N[:, 2]
         W = P[nz >= WALK_NZ]
         if len(W) < 3:
@@ -438,10 +472,13 @@ class Posed:
             side = (pts[:, :2] - c) @ np.array([-ax[1], ax[0]])
             mid = c + ax * ext + np.array([-ax[1], ax[0]]) * (side.max() + side.min()) / 2
             near = P[np.abs(tall - ext) <= CELL]
-            out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(float(pts[:, 2].max()), 1)],
+            zw = float(np.median(pts[:, 2]))
+            deck = near[(near[:, 2] <= zw + 1.0) & (near[:, 2] >= zw - DECK_DEPTH)] if len(near) else near
+            out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(float(np.median(pts[:, 2])), 1)],
                         "width": round(float(side.max() - side.min()), 1),
                         "out": [round(float(sgn * ax[0]), 4), round(float(sgn * ax[1]), 4)],
-                        "under": round(float(near[:, 2].min()), 1) if len(near) else None})
+                        "under": round(float(deck[:, 2].min()), 1) if len(deck) else None,
+                        "reach": round(float(near[:, 2].min()), 1) if len(near) else None})
         out.sort(key=lambda e: e["at"][2])
         return out
 
@@ -552,20 +589,27 @@ def boxes_apart(a: Posed, b: Posed, gap: float = 0.0) -> bool:
 
 
 def rests_on(a: Posed, b: Posed, tol: float = 24.0, reach: float = 160.0, a_band: float = 48.0) -> bool:
-    """Does a's underside (its cells within a_band of its lowest point: where it comes down) rest on b: in a shared
-    cell, b's top within tol under a's underside to `reach` over it (a post rising through a deck holds it), and b
-    has substance under that height there."""
+    """Does a's underside (its cells within a_band of its lowest point: where it comes down) rest on b? In a shared
+    cell, one of b's surfaces meets it: b's top within tol under a's underside to `reach` over it (a post rising
+    through a deck holds it), or one of b's walked surfaces (its highest or lowest: a floor inside a hut, a deck under
+    a roof) within tol under to a step over it; b must have substance under that height there."""
     if boxes_apart(a, b, tol):
         return False
     w = _shared(a, b)
     if w is None:
         return False
     sa, sb = w
-    au, bt, bu = a.under[sa], b.top[sb], b.under[sb]
-    low = a.low()
-    m = ~np.isnan(au) & ~np.isnan(bt) & (au <= low + a_band)
-    m &= (bt >= au - tol) & (bt <= au + reach) & (bu < au - 1.0)
-    return bool(m.any())
+    au, bu = a.under[sa], b.under[sb]
+    m0 = ~np.isnan(au) & (au <= a.low() + a_band) & ~np.isnan(bu)
+    if not m0.any():
+        return False
+    bt = b.top[sb]
+    if (m0 & (bt >= au - tol) & (bt <= au + reach)).any():
+        return True
+    for F in (b.walk[sb], b.walk_low[sb]):
+        if (m0 & ~np.isnan(F) & (F >= au - tol) & (F <= au + STEP)).any():
+            return True
+    return False
 
 
 def overlap(a: Posed, b: Posed, margin: float = 0.0) -> dict | None:
@@ -594,6 +638,7 @@ MEET_ALONG = 16.0      # an end within this of a surface along its axis meets it
 MEET_BACK = 64.0       # a surface reaching this far back under the end still counts (an end resting on a deck's lip)
 LOOK_AHEAD = 192.0     # how far past an end a surface it should meet is looked for
 SINK = 48.0            # an end's underside this far in the ground is buried
+DECK_DEPTH = 64.0      # a walked span's deck is at most this thick under its walk: lower parts are its own legs
 
 
 def walk_points(s: Posed) -> np.ndarray:
@@ -626,6 +671,8 @@ def end_meets(e: dict, others: list, ground) -> dict:
         a, zz = along[m], W[m, 2]
         gap = float(a.min())
         near = np.abs(a - max(gap, 0.0)) <= CELL
+        if not near.any():
+            near = np.abs(a - gap) <= CELL
         dz = float(zz[near][np.argmin(np.abs(zz[near] - z))]) - z
         score = max(gap, 0.0) + abs(dz)
         if best is None or score < best[0]:
@@ -642,6 +689,9 @@ def end_meets(e: dict, others: list, ground) -> dict:
         v = f"meets {best[1]}"
     elif over is not None and -SINK <= over <= STEP:
         v = "rests on ground"
+    elif over is not None and over > STEP and e.get("reach") is not None and g is not None \
+            and e["reach"] - g <= STEP:
+        v = "on its own legs"
     elif over is not None and over < -SINK:
         v = f"buried end by {-over:.0f}"
     elif best is not None and best[2] > MEET_ALONG and abs(best[3]) <= STEP:
@@ -654,11 +704,12 @@ def end_meets(e: dict, others: list, ground) -> dict:
     return row
 
 
-def joints(spans: list, pieces: list, ground, unit_of=None, walls=None) -> list[dict]:
+def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None) -> list[dict]:
     """One row per end of every walked span (spans: [(id, Posed)]): what it meets and the verdict (end_meets); then,
     per span, every piece of another unit standing ON its walked top (`stands on`), every other span of another unit
     overlapping it along its length (`spans overlap`) and every wall crossing it (`crossed by wall`).
-    unit_of: piece id -> unit id; walls: ids of building bodies and wall parts."""
+    unit_of: piece id -> unit id; walls: ids of building bodies and wall parts; structures: the ids whose standing on
+    a span is named (bodies, decks, steps, spans, walls; None: every piece)."""
     unit_of = unit_of or {}
     walls = walls or set()
     out = []
@@ -676,7 +727,7 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None) -> list[
                 continue
             if i in span_ids:
                 ov = overlap(s, o, 8.0)
-                if ov and ov["cells"] >= 6 and i > sid:
+                if ov and i > sid and ov["cells"] >= 0.25 * min(int(s.occ.sum()), int(o.occ.sum())):
                     out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"spans overlap {i}",
                                 "area": ov["area"]})
                 continue
@@ -686,7 +737,7 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None) -> list[
                     out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"crossed by wall {i}",
                                 "area": ov["area"]})
                     continue
-            if rests_on(o, s):
+            if (structures is None or i in structures) and rests_on(o, s):
                 out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"stands on: {i}"})
     return out
 
@@ -718,6 +769,19 @@ def _dilate(m: np.ndarray, r: int) -> np.ndarray:
         for dj in range(2 * r + 1):
             out |= pad[di:di + m.shape[0], dj:dj + m.shape[1]]
     return out
+
+
+def _plan_hull(P: np.ndarray) -> np.ndarray:
+    """The cloud's plan as its convex hull's corners (exact: the cloud holds every vertex)."""
+    if P is None or len(P) < 3:
+        return np.zeros((0, 2), np.float32)
+    try:
+        from scipy.spatial import ConvexHull
+        xy = np.asarray(P[:, :2], float)
+        return xy[ConvexHull(xy).vertices].astype(np.float32)
+    except Exception:  # noqa: BLE001  a degenerate (flat-in-plan) cloud: its extreme points
+        xy = np.asarray(P[:, :2], float)
+        return xy[[xy[:, 0].argmin(), xy[:, 0].argmax(), xy[:, 1].argmin(), xy[:, 1].argmax()]].astype(np.float32)
 
 
 def _hull(pts: np.ndarray) -> list:
