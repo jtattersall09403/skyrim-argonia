@@ -661,7 +661,7 @@
    {
     "id": "jal-veesa.5406066NGPD3BYPCTJ28WR4AY9",
     "fault": "floats",
-    "why": "not re-looked this context (s01, 117 over at one foot): owed a look"
+    "why": "SEEN 11:35 top canopy cut 113552399 and section 113251427 (looking N): the platform end stands on its own posts at the deck height (~1170), joining the plank deck on its W to the bamboo bridge GY96N7 on its E; both ends held (probe: supported); the probe's foot measures to the ground under the posts: not floating"
    },
    {
     "id": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
@@ -681,22 +681,22 @@
    {
     "id": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
     "fault": "unsupported end",
-    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+    "why": "SEEN 11:32 section 113213442 (y -504733, looking N): its W end runs level at 1220 into the deck of 4W48AB and the plank W9NC05, one continuous walking line; rests on that deck; the probe measures the end to the ground"
    },
    {
     "id": "jal-veesa.GY96N76EJYAC7P59R8JGHEGSV3",
     "fault": "unsupported end",
-    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+    "why": "SEEN 11:32 section 113251427 and top 113552399: its W end lands on the platform end 540606 at deck height (~1170), the bridge's rope posts at the joint; rests on that deck, does not hang"
    },
    {
     "id": "jal-veesa.W9NC05HAB60XX929F64D2R78ZX",
     "fault": "unsupported end",
-    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+    "why": "SEEN 11:32 section 113213442: the plank lies at 1220 between the deck 4W48AB and the walkway EK5YS5, both ends held (probe: held by 5J4748 and 4W48AB): rests on decks"
    },
    {
     "id": "jal-veesa.YEXHES44BRTPYKFJ0HJEBNNFYD",
     "fault": "unsupported end",
-    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+    "why": "probe 11:30: both ends held (MMRA83 at the W, KCS7WC at the E, supported); KCS7WC seen on the root mound (section 112301524): the bridge rests on decks at both ends"
    }
   ]
  },
@@ -1512,7 +1512,8 @@
   "agent-20261121T084445",
   "agent-20261121T085408",
   "agent-20261121T095803",
-  "agent-20261121T112121"
+  "agent-20261121T112121",
+  "agent-20261121T115012"
  ],
  "wholesale": {
   "offset": 470.0,

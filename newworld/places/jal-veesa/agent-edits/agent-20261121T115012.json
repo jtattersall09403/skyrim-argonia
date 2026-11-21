@@ -1,0 +1,890 @@
+{
+ "save_id": "agent-20261121T115012",
+ "place_id": "jal-veesa",
+ "name": "four lamp posts (the town's own CaveLamp02 tripod with its lantern and light, copied whole from b03) along the market lane from the town's south edge to the jetty",
+ "at": "2026-11-21T11:50:12Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0080000",
+    "base": "Skyrim.esm:03E631",
+    "kind": "clutter",
+    "pos": [
+     -52049.92,
+     -509600.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0090000",
+    "base": "Skyrim.esm:04318B",
+    "kind": "other",
+    "pos": [
+     -52051.84,
+     -509598.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0100000",
+    "base": "Skyrim.esm:075C32",
+    "kind": "light",
+    "pos": [
+     -52039.74,
+     -509587.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "radius": 258.7694,
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0080000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52049.92,
+     -509600.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -52049.92,
+     -509600.46,
+     472.64
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0090000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52051.84,
+     -509598.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -52051.84,
+     -509598.18,
+     521.55
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0100000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52039.74,
+     -509587.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -52039.74,
+     -509587.63,
+     529.54
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0110000",
+    "base": "Skyrim.esm:03E631",
+    "kind": "clutter",
+    "pos": [
+     -51649.92,
+     -511900.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0120000",
+    "base": "Skyrim.esm:04318B",
+    "kind": "other",
+    "pos": [
+     -51651.84,
+     -511898.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0130000",
+    "base": "Skyrim.esm:075C32",
+    "kind": "light",
+    "pos": [
+     -51639.74,
+     -511887.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "radius": 258.7694,
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0110000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51649.92,
+     -511900.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51649.92,
+     -511900.46,
+     419.14
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0120000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51651.84,
+     -511898.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51651.84,
+     -511898.18,
+     468.05
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0130000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51639.74,
+     -511887.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51639.74,
+     -511887.63,
+     476.04
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0140000",
+    "base": "Skyrim.esm:03E631",
+    "kind": "clutter",
+    "pos": [
+     -51149.92,
+     -514300.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 13,
+   "stroke": 13,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0150000",
+    "base": "Skyrim.esm:04318B",
+    "kind": "other",
+    "pos": [
+     -51151.84,
+     -514298.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 14,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0160000",
+    "base": "Skyrim.esm:075C32",
+    "kind": "light",
+    "pos": [
+     -51139.74,
+     -514287.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "radius": 258.7694,
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 15,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0140000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51149.92,
+     -514300.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51149.92,
+     -514300.46,
+     380.64
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 16,
+   "stroke": 16,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0150000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51151.84,
+     -514298.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51151.84,
+     -514298.18,
+     429.55
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 17,
+   "stroke": 17,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0160000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51139.74,
+     -514287.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -51139.74,
+     -514287.63,
+     437.54
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 18,
+   "stroke": 18,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0170000",
+    "base": "Skyrim.esm:03E631",
+    "kind": "clutter",
+    "pos": [
+     -50749.92,
+     -516900.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 19,
+   "stroke": 19,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0180000",
+    "base": "Skyrim.esm:04318B",
+    "kind": "other",
+    "pos": [
+     -50751.84,
+     -516898.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 20,
+   "stroke": 20,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0190000",
+    "base": "Skyrim.esm:075C32",
+    "kind": "light",
+    "pos": [
+     -50739.74,
+     -516887.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "b03",
+    "radius": 258.7694,
+    "why": "a lantern on its lamp post by the market lane, the town's own lamp set of b03 (CaveLamp02 with its lantern and light) copied whole, lighting the road from the town's south edge to the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 21,
+   "stroke": 21,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0170000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50749.92,
+     -516900.46,
+     1268.94
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -50749.92,
+     -516900.46,
+     281.64
+    ],
+    "rot": [
+     0,
+     0,
+     1.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 22,
+   "stroke": 22,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0180000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50751.84,
+     -516898.18,
+     1317.85
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -50751.84,
+     -516898.18,
+     330.55
+    ],
+    "rot": [
+     0,
+     0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 23,
+   "stroke": 23,
+   "at": "2026-11-21T11:50:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0190000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50739.74,
+     -516887.63,
+     1325.84
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -50739.74,
+     -516887.63,
+     338.54
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 24,
+   "stroke": 24,
+   "at": "2026-11-21T11:50:12Z"
+  }
+ ]
+}
