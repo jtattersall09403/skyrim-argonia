@@ -191,6 +191,13 @@ added here the day they are made, with the date and the issue.
   of looks every few steps (ahead, a little down, a little up, left, right, back, diagonals), up the stairs and
   over the bridges, stitched into strips and read; the same inside every room; with capture failures and route
   planning watched for and mended as the work goes (2026-11-20, #80).
+- A place may carry its source's local ground shape with it: the ground inside the place's own footprint may be
+  reshaped to what the source stood on (Jal-Veesa: the mound under its Hist), as a local land patch blended into
+  our ground at the footprint's edge. Nothing outside the footprint changes, no water line moves, and the world's
+  terrain is not regenerated. This amends "terrain is not touched" of 2026-11-19 for place footprints
+  (2026-11-21, #80).
+- The lead reflects periodically on the approach to place drafting, whether it is making progress and whether
+  another approach would do better, and may change method on his own judgement (2026-11-20, #80).
 - A place's layout is planned properly: every structure is seated and sunk by the amount it needs for the place to
   work and look as we want, decided for the layout as a whole; there is no blanket rule of sinking houses until
   their decks are low, nor of keeping the source's heights (2026-11-20, #80).
