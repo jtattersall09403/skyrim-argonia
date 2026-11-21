@@ -78,6 +78,6 @@ footprint and eaves, a plant's root collar, lean and crown, a hanging thing's ha
   degrees of level, so a roof's flat top or a table's top counts as walkable.
 - Still from the box, to move to `shape.py` next: `units` deck tops (the collision deck rectangle, else the box top),
   its floor, sills and body-through-deck gap; the seat (`seat.py`), the draft's overlap (`draft/overlap.py`, the
-  record box the build tests), the draft stages' placing and clearance (`draft/fit.py`, `seating.py`, `clear.py`,
-  `hang.py`, `walk.py`, `bridges.py`, `adds.py`, `sap.py`, `ground.py`'s feet-to-ground), a hanging or wall-fixed
+  record box the build tests), the rule stages' placing (`clear.py`, `hang.py`, `adds.py`, `sap.py`; the stages kept only for drafts awaiting
+  redraft, `fit.py`, `seating.py`, `walk.py`, `bridges.py`, stay on boxes until they go: place-studio.md), a hanging or wall-fixed
   thing's holder (`Boxes.around`, `Boxes.touching`), and the look tool's hands, camera and capture occlusion.

@@ -8,10 +8,23 @@ description: Put a place's source onto our ground - decide how much of the sourc
 Step 3 of the place path ([place-system](../place-system/SKILL.md)). Before: the source pinned (`place-plan`).
 After: the adaptation (`place-adapt`).
 
-## 1. The frame the baseline is laid over
+## The first draft, in order
 
-On a place with no draft yet, run `python3 -m tools.places draft <place_id>` once: it writes the place files the
-baseline keeps (people rows, quest spots, the plan's checks, `place.json` `fit`). The source bundle must exist
+1. `python3 -m tools.places draft <place_id>` once, on a place with no draft: the frame (people rows, quest spots,
+   `place.json` `fit`); its exterior pieces are replaced in step 3.
+2. The transform in `fit` (section 1) and the ground (section 2).
+3. `draft wholesale` (section 3): the pieces, then `--rooms`, then `--walks`. The plain run re-lays every exterior
+   piece and clears paths, land rows and agent edits, so it runs before any hand work and never after it; `--rooms`
+   and `--walks` touch only rooms and walks.
+4. Commit, then hand work: fit to our ground (section 4), the adaptation (`place-adapt`), rooms (`place-rooms`),
+   people on the furniture (`place-routines`), quest spots (`place-story`).
+5. The rule stages on the place as it stands: `draft sap`, `draft stations`, `draft hang` where a Hist's trees lack
+   lanterns, `draft primitives`, `draft clearance`, `draft names`, `draft jail` (`place-dressing`, `place-routines`),
+   each looked at.
+6. Verify once (`place-check`).
+
+## 1. The frame the baseline is laid over
+ The source bundle must exist
 (`python3 -m tools.places source <place_id>`) and the ground bundle stand on the deployed world
 (`extract --ground <place_id>`, `ground-check <place_id>` passes; the world is settled first, skill `world-build`).
 
@@ -19,7 +32,8 @@ Set the transform in `place.json` `fit`: `pivot` the source point that becomes t
 of ours it lands on (the record's position unless the record's siting needs another point inside it), `rot_deg` the
 turn. Choose the turn so the source faces our water and banks as it faced its own, and so our ground fits the
 source's best: compare sections of our ground and the source's (`look --source <id> section`, `look <place>
-section`) across two or three axes at each turn worth trying.
+section`) across two or three axes at each turn worth trying: set `rot_deg`, run `draft wholesale <place_id> --offset
+<u> --dry` (it reads `fit`) and section the carried relief against ours.
 
 ## 2. How much of the source's ground to bring
 
@@ -30,7 +44,7 @@ sections, per part of the place:
 - **Only a structure's own platform or a district's own terrace**: `--carry-radius <u>` round the middle, and
   `--cap <u>` on the change (a district's terrace capped at about 300 units and eased to our level, never a whole
   hill brought into a flat site).
-- **None**: a flat source onto flat ground (`--cap 0`).
+- **None**: a flat source onto flat ground (`--cap 0`). A pond's bed brought as mud: `--keep-wet`.
 
 Our water line never moves and the source's water is never brought (its bed may come as mud with `--keep-wet`);
 nothing outside the footprint changes. A steep bank inside the place is allowed where it is dressed with rock and
@@ -38,7 +52,7 @@ cliff pieces (Tropical Skyrim's among them); bare stretched ground is a fault.
 
 ## 3. Lay the baseline
 
-1. Choose the one height offset from sections: the source's walked levels over our ground where the place is
+1. Choose the one height offset (z, in game units, added to every source height) from sections: the source's walked levels over our ground where the place is
    entered, its posts' feet in our ground, not on it.
 2. `python -m tools.places draft wholesale <place_id> --offset <u> [--carry-radius u] [--cap u] [--keep-wet] --dry`:
    read the pieces laid, the band, the largest raise and lower, the source water area and what our water holds;

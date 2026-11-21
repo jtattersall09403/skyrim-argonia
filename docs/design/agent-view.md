@@ -162,17 +162,28 @@ fix at its station. Bare ground is not a fault: the viewer draws no grass. Light
 
 `move <thing> dx dy dz`, `turn <thing> deg` (clockwise from above, about the thing's middle), `sink <thing>
 [units | --until-feet-buried]`, `delete <thing>`, `duplicate <thing> [dx dy] --why "<why the copy is here>"`,
-`steps <from deck, structure or door> <to point or thing> [--why ...]`. `move` and `sink` answer with each deck
+`steps <from deck, structure or door> <to point or thing> [--why ...]`, `place` and `land` (below). `move` and `sink` answer with each deck
 piece's walked top over the ground before and after (`decks`). A copy gets its own id, its own reason (`--why`,
 required) and its own seat where it stands: a seat on the ground keeps its rule, measured afresh there; a piece the
 original stood on that is not copied is never the copy's (it goes on what is under it, else on the ground at the
-original's height over it). `steps` lays one flight the way the streets stage does: the place's own steps pieces
+original's height over it). `steps` lays one flight: the place's own steps pieces
 first, then its decks' kit, hung square off the deck's edge facing the point with its top tread at the deck's
 height, its foot where a tread meets the ground; it answers with the piece, its top and its foot. Each is one stroke of the studio's
 own ops (`ref.move`, `ref.remove`, `ref.add`, the same kind of change as the owner's), kept in a scratch session
 (`out/places/look/<tree>/<place>/session.json`; each checkout, the main tree or a lane's worktree, has its own daemon, session and port) and never written to the place files or the owner's saves. A seated piece
 keeps its seat rule: its height moves with its seat's `dz`. Pieces are seated by sinking them into the ground;
 nothing is stretched. Add `--view <view verb...>` to any hand for the same look before and after, side by side.
+
+`place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why>"` adds one piece of any base (seat free at
+z, or `above` dz over the ground there). `land <x,y> <radius> <dz> --why "<why>"` raises or lowers the ground inside
+the place's footprint, eased to nothing at the radius, as `land.jsonl` rows: a mound under legs that stop short, a
+ramp to an added door; a vertex past the land bound (`fit.patch_max`; carried ground by `draft.ground_cap`) is
+refused. A probe fault seen to be right as built is accepted in `place.json` `draft.accepted_faults` `[{id, fault,
+why}]`: `probe --all` lists it under `accepted` and the views draw it without red.
+
+`look --source <source_id> <verb> [--ring m] [--centre x,y]` shows a source place by itself (overview, at, section,
+units), with a ring at a footprint radius, for choosing a source and how much of its ground to bring; it runs its
+own daemon (`look --source stop`) and shows only the source's extracted cells.
 
 `undo` takes back the last stroke; `snapshot <name>` keeps the session's state; `restore <name>` returns to it;
 `compare <a> <b> <view verb...>` shows one look at two states side by side (`now` is the current state); `reset`

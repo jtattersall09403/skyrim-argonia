@@ -380,3 +380,13 @@ real models in every draft; Jal-Veesa keeps its spot and its record drops the cr
 
 - Running: the audit; the outposts lane (Ashgate, Reed-Sill, Teel-Fen); Karsh-Naal and Helstrom; Jal-Veesa on
   Seekhat Yol; the studio's blank-screen fault and quest things as real models.
+
+### How the Act I places are drafted (agreed 2026-11-21, #82; decision 0041)
+
+Each place is its source carried whole and adapted by hand, by one `place-drafter` agent per place, by the skill
+`place-system`: the source chosen by looking (Reed-Sill Weir and Karsh-Naal Camp from Ree-An-Wo, each adapted to
+feel its own; Teel-Fen Weir from Huluxinoag; Ashgate Landing from the Hjaalmarch military camp with the Imperial
+barge's ship; Helstrom carrying each district's own terrace), the baseline laid by `draft wholesale`, the
+adaptation by hand, the checks once at the end. Jal-Veesa (13 of 17 checks) and Karsh-Naal Camp (17 of 17) were the
+trials; the owner is editing them in the studio. Helstrom and the three outposts on main are drafts of the earlier
+stages and are redrafted this way.

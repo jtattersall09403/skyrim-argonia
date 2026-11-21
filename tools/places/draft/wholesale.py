@@ -270,7 +270,7 @@ def main(argv=None) -> int:
     ap.add_argument("--cap", type=float, default=1e9, help="units: the most the carried relief changes our ground")
     ap.add_argument("--keep-wet", action="store_true", help="the source's pond bed carried as a mud hollow (not faded to ours)")
     ap.add_argument("--dry", action="store_true")
-    ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
+    ap.add_argument("--rooms", action="store_true", help="carry the source's rooms, door pairs and arrivals onto the laid doors (the pieces as they stand)")
     ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
     ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)

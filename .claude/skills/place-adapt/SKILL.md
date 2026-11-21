@@ -6,11 +6,12 @@ description: Adapt a carried source place to what our record says the place is -
 # Adapt to the record
 
 Step 4 of the place path ([place-system](../place-system/SKILL.md)). Before: the baseline fitted to our ground
-(`place-site`). After: rooms (`place-rooms`), the walking mesh (`place-streets`), people (`place-routines`).
+(`place-site`). After: rooms, walks, people and quest spots (`place-rooms`, `place-streets`, `place-routines`, `place-story`).
 
 The source already works as a place; the adaptation makes it **our** place. Go round it group by group, looking
-(`look survey <unit>`, `at`, `at --stand x,y` at eye level), with the record open, and give each group one verdict.
-Write the reason per group in the place's notes and the verdict in `draft.plan` (`place-plan`).
+(`look survey <unit>`, `at`, `at --stand x,y` at eye level), with the record open, and give each group one verdict; record it in `draft.plan` as `kept` (as built, relabelled
+or moved, the `why` saying which) or `dropped`.
+Write the reason per group in the place's notes.
 
 ## The verdicts
 

@@ -1,7 +1,9 @@
 # Places: source, draft, studio, build
 
-How a place of the new world is built: seeded on a source place, drafted by an agent, edited by the owner in the
-studio, and built into the place layer. One pipeline for every place; a place is a row, never a special case.
+How a place of the new world is built: its source place carried whole onto our ground and adapted by hand by one
+agent (decision [0041](../decisions/0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md), skill
+`place-system`), edited by the owner in the studio, and built into the place layer. A place is a row, never a
+special case.
 The phase is [nw-03](../phases/new-worldspace-plan/nw-03-build-helstrom.md); the rulings are in
 [owner-rulings](../owner-rulings.md) (2026-11-09).
 
@@ -19,7 +21,7 @@ world ESM ─────extract──▶ ground bundle ──┼─draft──�
 | Extract | `tools/ArgoniaPlaces/Extract` (C#, Mutagen), `python -m tools.places extract` | Reads a place out of any plugin into a bundle; reads our own ground the same way |
 | Assets | `tools/places/assets` | Mesh and texture conversion for the browser, on demand, cached; the asset catalogue |
 | Search | `tools/places/search` | Embedding index over the catalogue |
-| Draft | `tools/places/draft`, skills `place-system` and its drafting sub-skills | Source bundle + our ground → place files |
+| Draft | `tools/places/draft` (`draft wholesale`: the baseline; the rule stages), the look tool's hands, skills `place-system` and its sub-skills | Source bundle + our ground → the baseline → adapted by hand → place files |
 | People | `tools/places/identities.py`, skill `place-people` | Who each placed person is: the people source (Stock, below) |
 | Stock | `tools/places/stock`, `tools/newworld/stockdb.py`, skill `place-stock` | The split, the derive; people, goods and contents as database sources (Stock, below) |
 | Build | `tools/ArgoniaPlaces/Build` (C#, Mutagen), `python -m tools.places build` | Place files and the database's stock → `out/places/plugin/ArgoniaNWPlaces.esp`, navmesh, checks |
@@ -28,6 +30,36 @@ world ESM ─────extract──▶ ground bundle ──┼─draft──�
 
 `python -m tools.places <verb> <place_id>` is the one entry point; every verb is rerunnable and skips work whose
 key (inputs' hashes) matches a stamp it wrote itself.
+
+## The baseline and what it carries
+
+`python -m tools.places draft wholesale <place_id> --offset <u>` (`tools/places/draft/wholesale.py`) lays every
+source exterior piece inside the footprint at the one transform of `place.json` `fit` (`pivot` in the source,
+`anchor` in ours, `rot_deg`) and its source height plus the offset, seat `free`, each walkway piece with its `walk`;
+pieces keep the source's ownership, linked refs, enable parents, locks, primitives, lights with their fixtures and
+the map marker. Left out (`ledger.jsonl`): actors, the source's water plane, levelled bases. The source's relief
+inside the footprint comes as land rows `by` "ground" (all of it, `--carry-radius` round the middle, at most `--cap`;
+`--keep-wet` keeps a pond's bed as mud), eased into ours over a band no steeper than 35 degrees, never across our
+water line. `--rooms` gives each laid door its source room, door pair and arrival; `--walks x,y` writes the source's
+walks routed on its own mesh as `paths.jsonl` rows. `place.json` `wholesale` records the offset and the counts;
+`wholesale.navmesh: "source"` makes the build write the source's own walking mesh (Build, Navmesh). Hand changes are
+look-tool strokes committed as agent edits (Edits); the rule stages (`sap`, `lights`, `hang`, `stations`,
+`primitives`, `clearance`, `people`, `names`, `add`, `jail`, `quests`) run on the place as it stands.
+
+**Accepted findings**, each with a reason of at least a sentence saying what was seen, listed apart and never
+failing, stale when nothing matches: `draft.accepted_checks` `[{check, ids, why}]` (the build's `overlap`, `doors`,
+`clear`, `nordic`), `draft.accepted` `[{unit, flag, why}]` (the units table), `draft.accepted_faults` `[{id, fault,
+why}]` (`look probe`).
+
+## Stages kept only for drafts awaiting redraft
+
+Helstrom, outpost-m13-m65, outpost-m11-m63 and outpost-m6-m66 were drafted by the stage pipeline and are changed
+narrowly with its stages until each is redrafted from its source carried whole. Kept for them only, and deleted with
+their tests when the last of them is redrafted: the stages `fit` (`draft/fit.py`), `pieces` (the
+`draft.replace` and `draft.drop` rules), `seating` (`draft/seating.py`), `ground` as a stage (`draft/ground.py`'s
+`apply`; `ground.carry` stays, the baseline uses it), `streets`/`join` (`draft/walk.py`, `paths.py`, `bridges.py`), `units plan` and `units apply`, `draft render`'s side-by-side, and the whole
+draft's fit-driven layout (`draft/run.py`; its frame, people and quest spots stay for a first draft). The build, the
+checks and the studio read both kinds of place.
 
 ## Identity
 
@@ -220,8 +252,10 @@ masts, is named as the list of them). A flight of steps is seated `on` the deck 
 the deck's height; a flight down onto a ship's deck also names the ship as its `carrier`. `steps.kit` in
 `place.json` names the steps bases a flight was taken from out of a deck's own kit (the source having none).
 
-`place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
-`roles`, `keep_patches`, `room_names`; the place skills, `place-system`), `fit` (global and per-cluster transforms, `clusters_info`,
+`place.json` also holds: `draft` (the agent's calls: `plan`, `add`, `roles`, `room_names`, `people_from`,
+`accepted_checks`, `accepted`, `accepted_faults`, `ground_cap`, `sap`; and, for drafts awaiting redraft, `anchor`,
+`rot_deg`, `search`, `replace`, `drop`, `keep_patches`; the place skills, `place-system`), `wholesale` (the
+baseline's offset and counts, `navmesh`), `fit` (global and per-cluster transforms, `clusters_info`,
 `relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
 `.vendor.NN` per trader with hours and `chest`; the crime row's `law` is the place's law (native, foreign or

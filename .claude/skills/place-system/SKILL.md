@@ -15,8 +15,8 @@ match to the place's record) carried onto our ground **whole**: every source pie
 transform and height, the chosen part of the source's ground under it, and what already works in the source
 carried with it (rooms and door pairs, walks, patrols, furniture and idle markers, lights with fixtures, ownership,
 its own walking mesh). The drafter then **adapts it by hand**, looking, until it reads as the record: adapt to our
-ground, relabel, prune, move, add. Rules do only what a rule does well (the Hist's sap pool, lights, stations,
-plant clearance), and their output is looked at.
+ground, relabel, prune, move, add. The Hist's sap pool, lights, stations and plant clearance are laid by their
+stages, and each is looked at.
 
 The draft is the place files under `newworld/places/<place_id>/`; the drafter's calls go in `place.json`'s `draft`
 block, hand changes through `look commit`. The file contract is `docs/design/place-studio.md`; never write mod
@@ -48,7 +48,7 @@ record or asset content into a place file.
 | 9 | The rules then a look: sap pool, lights, lanterns, stations, collision boxes | `place-dressing` |
 | 10 | Look, probe and act in the studio's 3D scene; the hand-over look | `place-look` (the inner loop of every step) |
 | 11 | Verify once at the end: draft check, seat, build with the carried mesh, the seventeen checks | `place-check` |
-| 12 | Who each person is | `place-people` |
+| 12 | Who each person is (names, households), after the people are placed at step 7 | `place-people` |
 | 13 | What the place holds, every promise delivered | `place-stock` |
 | 14 | Any change to a drafted place; the owner's notes and variants | `place-change` |
 | 15 | The owner finalises a save: record, build, lessons, report | `place-lessons` (the finalise chain) |

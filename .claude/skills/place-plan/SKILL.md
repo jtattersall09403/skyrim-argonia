@@ -31,8 +31,9 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 3. A source another place already uses is allowed and never counted against a candidate. The plan then says what
    this place takes and how it will differ from the other: a different part of the source, a different centre or
    layout, different added buildings, dressing and people's spots. The adaptation (`place-adapt`) makes it so.
-4. Where too little of every candidate is useful, build from the asset pool round the nearest thing: the closest
-   source's layout or one structure, with everything else added (`place-adapt`). Say so in the plan.
+4. Where too little of every candidate is useful, build from the asset pool round the nearest thing: carry the closest
+   source with `--carry-radius` round the one structure or layout worth keeping, prune the rest, and add everything
+   else (`place-adapt`). Say so in the plan.
 5. When something must change to fit, change the cheapest thing with the fewest knock-on effects: a source note,
    then a minor record, before a main-quest text or a drafted place. Where the record clashes with the ground, the
    record changes; the place is not moved.
@@ -53,7 +54,8 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 - `look`: a row for each thing the record's look names, with the source or added pieces that deliver it.
 - `gives`: a row for each promise of the record, by its kind.
 - `structures`: a row for each major source structure (`python -m tools.places draft structures <place_id>`) and each
-  source group with a standing building: kept (as built, or relabelled to a new use: say which), or dropped (pruned).
+  source group with a standing building: `kept` (as built, relabelled or moved: the `why` says which and to what) or
+  `dropped` (pruned). What is added is a `draft.add` row or a hand placement; `look` names it.
 
 `python -m tools.places draft plan <place_id>` prints the plan's faults; `draft check` and the consistency checker
 fail on the same ones. The plan is updated whenever the adaptation changes a verdict.
