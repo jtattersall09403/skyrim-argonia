@@ -649,7 +649,7 @@
    {
     "unit": "house.SeekhatAccommodationHut",
     "flag": "foot not reaching the ground",
-    "why": "its platform's west posts (4W48AB, x about -52115) end 54 to 110 over the mud inside the source's cliff rocks (ArgoniaRockCliff08/11) that dress that bank: from the west at eye level the rocks hide the post ends (at --stand -52750,-505100, 2026-11-21); a mound is refused there (the ground is already raised 97 of the land bound's 105) and bringing the hut down would break its bridges"
+    "why": "its platform's west posts (4W48AB, x about -52115) end 54 to 110 over the mud on the rock bank west of the hut: a mound is refused there (the ground is already raised 97 of the land bound's 105) and bringing the hut down would break its bridges, so four of the source's rocks (ArgoniaRockL02) stand under the post ends as footings; seen from the west the posts go down into rock (2026-11-21), and a camera cannot stand west of them for the cliff rocks"
    },
    {
     "unit": "house.SeekhatSmithyHut",
@@ -1699,7 +1699,8 @@
   "agent-20261121T211826",
   "agent-20261121T212308",
   "agent-20261121T233117",
-  "agent-20261121T233153"
+  "agent-20261121T233153",
+  "agent-20261121T233745"
  ],
  "wholesale": {
   "offset": 470.0,
