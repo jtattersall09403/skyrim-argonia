@@ -207,6 +207,12 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
+- Decided by the lead, for the owner to confirm (2026-11-21, #80): on carried ground a source piece is dropped
+  for water only if it would stand in our water with no ground of ours for it; a piece whose own carried ground
+  lies under it is kept (the old rule had dropped 22 landing pieces at Jal-Veesa, the Smithy's porch posts among
+  them). The hatchery gland at Jal-Veesa gets no sap pool: the hatchery's steam pool is at its foot and there is
+  no open level ground. Helstrom's place work runs alone, after the tool lanes, because its viewer is too slow
+  beside them.
 - Decided by the lead while the owner was away, for him to confirm (2026-11-21, #80): we do not bring a source's
   pond with its ground (a dock that leads somewhere is seated on our ground; what only made sense in water is
   dropped or moved to our real water); a unit's flag that faithfully copies the source's own arrangement is

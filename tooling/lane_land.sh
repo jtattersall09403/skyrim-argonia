@@ -35,7 +35,16 @@ for _ in 1 2 3; do
     git -C "$wt" rebase --abort >/dev/null 2>&1 || true
     die "refused: $branch conflicts with origin/main (rebase undone); rebase it in the lane, then land again"
   fi
-  (cd "$wt" && ${LANE_GATE:-make check GATE_BASE=origin/main}) || die "refused: the gate is red in $wt; nothing pushed"
+  # The gate reads the shared built outputs (the Atlas page, each place's built check): a worktree
+  # sees them through a link to the main tree's out/, put there for the gate and removed after.
+  linked=""
+  if [ "$wt" != "$main" ] && [ ! -L "$wt/out" ]; then
+    [ -e "$wt/out" ] && die "refused: $wt/out is a real directory; delete it (generated) so the gate can link the shared out/"
+    ln -s "$main/out" "$wt/out"; linked=1
+  fi
+  grc=0; (cd "$wt" && ${LANE_GATE:-make check GATE_BASE=origin/main}) || grc=$?
+  [ -n "$linked" ] && rm -f "$wt/out"
+  [ $grc -eq 0 ] || die "refused: the gate is red in $wt; nothing pushed"
   if git -C "$wt" push -q origin HEAD:main 2>/dev/null; then
     landed=1; echo "pushed: origin/main is at $(git -C "$wt" rev-parse --short HEAD)"; break
   fi
