@@ -95,7 +95,29 @@ def read(pid: str, root: Path = NEEDS) -> dict:
     return _json(source_path(pid, root)) or {"place_id": pid, "needs": [], "dismissed": []}
 
 
+SIGHT_RESULTS = ("recognised", "not recognised")
+SIGHT_SHAPE = '{"result": "recognised" or "not recognised", "said": "what the reader said"}'
+
+
+def sight_problems(doc: dict) -> list[str]:
+    """Every judgement whose sight test result is not in its one shape (SIGHT_SHAPE, or none): the story database
+    (tools/newworld/needsdb.py) reads `result` and `said` from it."""
+    out = []
+    for n in doc.get("needs", []):
+        s = n.get("sight")
+        if s is None:
+            continue
+        tag = f"need {n.get('seq')} ({str(n.get('thing', ''))[:40]})"
+        if not isinstance(s, dict) or s.get("result") not in SIGHT_RESULTS or not isinstance(s.get("said"), str) \
+                or not s["said"].strip() or set(s) - {"result", "said"}:
+            out.append(f"{tag}: sight is {json.dumps(s, ensure_ascii=False)[:80]}; it must be {SIGHT_SHAPE}")
+    return out
+
+
 def write(doc: dict, root: Path = NEEDS) -> None:
+    bad = sight_problems(doc)
+    if bad:
+        raise ValueError("needs: not written: " + "; ".join(bad))
     p = source_path(doc["place_id"], root)
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_name(f".{p.name}.{os.getpid()}.tmp")
@@ -488,6 +510,7 @@ def check(pid: str, root: Path = NEEDS, places: Path = PLACES, people_root: Path
         for x in n.get("placed", []):
             if x.get("person") and x["person"] not in people:
                 errs.append(f"{tag}: no person {x['person']}")
+    errs += sight_problems(doc)
     seqs = [n["seq"] for n in doc.get("needs", [])]
     if len(seqs) != len(set(seqs)):
         errs.append("two judgements share a seq")
@@ -525,6 +548,16 @@ def open_rows(pid: str, root: Path = NEEDS) -> list[dict]:
     return [n for n in payload(pid, root)["needs"] if not n["judged"]]
 
 
+def record_sight(pid: str, seq: int, result: str, said: str, root: Path = NEEDS) -> None:
+    """One judgement's sight test result, written in its one shape."""
+    doc = read(pid, root)
+    n = next((n for n in doc.get("needs", []) if n.get("seq") == seq), None)
+    if n is None:
+        raise ValueError(f"needs {pid}: no judgement with seq {seq}")
+    n["sight"] = {"result": result, "said": said}
+    write(doc, root)
+
+
 def dismiss(pid: str, key: str, why: str, root: Path = NEEDS) -> None:
     if not any(n["key"] == key for n in open_rows(pid, root)):
         raise ValueError(f"no open story row {key} for {pid}")
@@ -558,6 +591,11 @@ def main(argv: list[str]) -> int:
     d.add_argument("place")
     d.add_argument("key")
     d.add_argument("--why", required=True)
+    sg = sub.add_parser("sight", help="record one judgement's sight test result in its one shape")
+    sg.add_argument("place")
+    sg.add_argument("seq", type=int)
+    sg.add_argument("--result", required=True, choices=SIGHT_RESULTS)
+    sg.add_argument("--said", required=True, help="what the reader said, in their words")
     sub.add_parser("changed").add_argument("place", nargs="?")
     sub.add_parser("load")
     a = ap.parse_args(argv)
@@ -568,6 +606,9 @@ def main(argv: list[str]) -> int:
                   f"            {', '.join(s['story'] for s in r['sources'])}")
         print(f"{len(rows)} story row(s) for {a.place} not yet judged: judge each in {source_path(a.place)} "
               f"(a judgement's `from` holds the key), or dismiss it with a reason")
+    elif a.verb == "sight":
+        record_sight(a.place, a.seq, a.result, a.said)
+        print(f"{a.place}: need {a.seq}'s sight test recorded ({a.result})")
     elif a.verb == "dismiss":
         dismiss(a.place, a.key, a.why)
     elif a.verb == "show":

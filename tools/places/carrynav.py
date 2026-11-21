@@ -776,7 +776,7 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
         sides = {}
         for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
                             ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
-            if o in (neighbours or {}):
+            if o in (neighbours or {}) and o not in meshes:  # a neighbour rebuilt here matches by its new border
                 sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
         unsplit += unsplit_border(m, c, sides)
         got = finish_cell(m)

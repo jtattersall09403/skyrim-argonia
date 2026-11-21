@@ -24,7 +24,8 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
    check run.
 2. `python3 -m tools.places seat <place_id>`: 0 refs moved.
 3. Correct the record's radius to what was built: `place.json` `radius_m` into the research record's
-   `footprint_radius_m`, then `python3 -m tools.newworld.build_db`.
+   `footprint_radius_m`, then `python3 -m tools.newworld.refresh`: the tables, the story digest and the story explorer, in order; it says
+   what changed (commit it by path) and whether the story explorer or the Atlas needs republishing.
 4. `python3 -m tools.places build <place_id> --plan` (lists every problem), then the build: the place layer plugin
    and its navmesh, the source's own mesh carried where `wholesale.navmesh` is `"source"`. It stamps the world records
    it stands on; a stale place is refused by `infra/gpu-box/places_deploy.sh`. A `plugin` failure naming records of
@@ -51,7 +52,10 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     `survey <unit>` for every structure, each tile read; the owner captures (`place-look`, the hand-over look).
 11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
     the two apart.
-12. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
+12. Commit `newworld/places/<place_id>/` and the record change by path. The final build and check come after the
+    LAST edit of any kind to the place's files: `check` ends with whether the built check is current against them,
+    and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
+    consistency stage would refuse the landing). The place goes to `place-people`.
 
 ## Accepted findings
 
