@@ -6,6 +6,13 @@ people, and the drafted places as built. The checker (`python -m tools.newworld.
 fails a commit that breaks this; it is the floor, not the method. The method is below, and every agent works by it
 from the first hour of a piece of work, never as a clean-up at the end.
 
+## Every fact has one home
+
+A fact is stored once, and everything else refers to it by id or is derived from it: a quest names a place, a room
+or a person by id; a place's population is the count of its people; whether it stands on water is read from the
+ground. When you find the same fact stored twice, the fix is to stop storing one of them, not to keep the two in
+step. What cannot be reduced this way is prose and the built place itself: for those, the ladder below.
+
 ## When two things disagree, which one changes
 
 Change the thing that matters least and costs least, so that what matters most is delivered as authored. In order,

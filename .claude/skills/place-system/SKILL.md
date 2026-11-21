@@ -103,8 +103,10 @@ with builds and checks run beside his editing:
 1. `look <place> probe --all` reports nothing open (accepted faults listed with their reasons).
 2. `draft check` PASS, `needs check` PASS, `seat` 0 refs moved, the build's seventeen checks green with accepted
    findings named, `units` and `units --joints` read and every flag mended or accepted (`place-check`).
-3. `look survey` of the place and of every structure read; the playwalk tour and every room read at full size; no
-   PLACE tile and no "cannot be walked to" left.
+3. `look survey` of the place and of every structure read; the playwalk tour walked and read (its strips and map
+   whole, full size where a strip is doubtful and at every door, stair, bridge end and quest spot) and every room's
+   entering view read; no PLACE tile and no "cannot be walked to" left. A place that passes its checks but has not
+   been walked is not done.
 4. Every sentence of the record's `look` matched to an image that shows it; a line not yet met named.
 5. Every named person with a role has a bed, a work spot and a sleep package; every quest thing and person at the
    place has a spot a player finds and recognises (`place-story`).
