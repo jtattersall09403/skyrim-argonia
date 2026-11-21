@@ -3,6 +3,7 @@ different heights on a hill is laid on flat ground of ours with one offset per d
 rigidly at its offset ("auto": our ground less the source's under its buildings), the ground under it its own terrace
 at that offset (so a house stands on ours, not on a pedestal or in a pit), and a loose piece following the carried
 ground; the carried walking mesh and the rooms' arrivals read the same heights."""
+import math
 import types
 
 from tools.places.draft import heights, srcnav, wholesale
@@ -98,6 +99,22 @@ def test_rooms_of_a_shared_cell_keep_their_own_doors():
     assert ext[1]["door"]["to_space"] == "cell.2" and ext[1]["door"]["to_ref"] == spaces["cell.2"]["refs"][0]["id"]
     assert ext[0]["door"]["arrival"] == [0.0, 0.0, 7.0]
     assert spaces["cell.3"]["refs"] == [{"id": "own"}] and ext[0]["door"]["to_space"] == "cell"   # an added room is its own
+
+
+def test_a_room_lands_before_its_door_as_the_door_now_stands():
+    # the landing (pier, ship and its door) moved by hand: a later rooms carry lands the hold's way out before the
+    # door where it stands, never where the source put it
+    q = {"id": "q1", "base": "d", "kind": "door", "pos": [0.0, 0.0, 0.0],
+         "door": {"to_ref": "e1", "to_pos": [100.0, 0.0, 10.0], "to_space": "x", "to_rot": [0, 0, 0]}}
+    ext = [{"id": "x.e1", "src": "e1", "pos": [5000.0, 5000.0, 50.0], "rot": [0, 0, math.pi / 2],
+            "door": {"to_space": "ship", "to_ref": "q1"}}]
+    spaces = {"exterior": {"refs": ext}, "ship": {"space": {"copy_of": "src/ship"}, "refs": []}}
+    st = types.SimpleNamespace(place_id="x", place={"source_id": "src", "fit": {"pivot": [0, 0], "anchor": [0, 0]}},
+                               files={"spaces": spaces}, src=types.SimpleNamespace(spaces={"ship": types.SimpleNamespace(refs=[q])}),
+                               by_src={"e1": {"pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0]}}, ext=ext, S=None, G=None)
+    wholesale.carry_rooms(st, 0.0)
+    land = spaces["ship"]["refs"][0]["door"]["to_pos"]
+    assert [round(v) for v in land] == [5000, 4900, 60] and ext[0]["door"]["arrival"] == land
 
 
 def test_the_carried_mesh_reads_the_districts():

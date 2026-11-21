@@ -217,9 +217,18 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
                                        round(float(z) + rise(H, offset, st, x, y, an[0] + dx * c + dy * s_,
                                                                   an[1] - dx * s_ + dy * c), 2)], "to_rot": to_rot},
                    "seat": {"mode": "free"}}
+            ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
+            src_door = st.by_src.get(d["to_ref"]) or {}
+            if ext_door is not None and src_door.get("pos"):   # the landing follows the door as it stands (a hand's move)
+                a = float(ext_door["rot"][2]) - float((src_door.get("rot") or [0, 0, 0])[2])
+                ca, sa = math.cos(a), math.sin(a)
+                vx, vy = x - src_door["pos"][0], y - src_door["pos"][1]
+                row["door"]["to_pos"] = [round(ext_door["pos"][0] + vx * ca + vy * sa, 2),
+                                         round(ext_door["pos"][1] - vx * sa + vy * ca, 2),
+                                         round(ext_door["pos"][2] + float(z) - src_door["pos"][2], 2)]
+                row["door"]["to_rot"] = list(to_rot[:2]) + [round(float((d.get("to_rot") or [0, 0, 0])[2]) + a, 6)]
             rows.append(row)
             first = first or io.mint(st.place_id, "exterior", d["to_ref"])
-            ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
             if ext_door is not None and ext_door.get("door"):     # the outside door's arrival: the same landing
                 ext_door["door"].update(arrival=list(row["door"]["to_pos"]), to_space=sp, to_ref=row["id"])
         space["refs"][:] = rows
