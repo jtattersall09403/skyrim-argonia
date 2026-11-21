@@ -1,0 +1,2086 @@
+{
+ "save_id": "agent-20261121T144850",
+ "place_id": "outpost-m13-m65",
+ "name": "the camp pruned to what a reed camp holds: the Civil War map, table, banners and trigger, the smithy, the field hospital and its levelled chests, the source pond's spawners, and the source's country beyond the camp (its own ground was not carried there)",
+ "at": "2026-11-21T14:48:50Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.80WFYHEZMHBP1DXPAKGW4FRG1D",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.80WFYHEZMHBP1DXPAKGW4FRG1D",
+    "base": "Skyrim.esm:0B927E",
+    "kind": "tree",
+    "pos": [
+     -101681.87,
+     -532071.16,
+     851.32
+    ],
+    "rot": [
+     0.0061671487,
+     -0.009029523,
+     7.89002
+    ],
+    "scale": 1.18,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:03EF50",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N6TGB71HY8FRFX99GB9ZWZMZN0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.N6TGB71HY8FRFX99GB9ZWZMZN0",
+    "base": "Skyrim.esm:050385",
+    "kind": "rock",
+    "pos": [
+     -100277.36,
+     -531378.2,
+     164.97
+    ],
+    "rot": [
+     0,
+     0,
+     6.53412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "visible_when_distant"
+    ],
+    "src": "Skyrim.esm:03F100",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.M0TVQ256Q0K06A9RAMKT8AYTS5",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.M0TVQ256Q0K06A9RAMKT8AYTS5",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99960.56,
+     -532409.48,
+     1251.45
+    ],
+    "rot": [
+     -0.023992548,
+     0.027144236,
+     6.88049
+    ],
+    "scale": 1.25,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:03F10E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.XPT9VDNV8JG415XB2MX3RP36E6",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.XPT9VDNV8JG415XB2MX3RP36E6",
+    "base": "Skyrim.esm:0A7329",
+    "kind": "tree",
+    "pos": [
+     -99954.61,
+     -532552.22,
+     1228.07
+    ],
+    "rot": [
+     -0.060641278,
+     -0.03274235,
+     10.01941
+    ],
+    "scale": 1.05,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:049A94",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.X1J4DGSXS0R7PY7ZDW5QYT3480",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.X1J4DGSXS0R7PY7ZDW5QYT3480",
+    "base": "Skyrim.esm:0A731C",
+    "kind": "tree",
+    "pos": [
+     -100358.21,
+     -532636.23,
+     1253.03
+    ],
+    "rot": [
+     0.034931183,
+     0.09188035,
+     8.70725
+    ],
+    "scale": 1.11,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:049A95",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GDCK4KA8VKQYAYQ5HHDPJ7H34J",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.GDCK4KA8VKQYAYQ5HHDPJ7H34J",
+    "base": "Skyrim.esm:0B927D",
+    "kind": "tree",
+    "pos": [
+     -97369.77,
+     -528060.61,
+     -30.11
+    ],
+    "rot": [
+     0.0021592453,
+     -0.015821755,
+     10.19351
+    ],
+    "scale": 0.90999997,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E2F2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.ERNFTFXHV838RERMXKAPD19D93",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.ERNFTFXHV838RERMXKAPD19D93",
+    "base": "Skyrim.esm:0B927D",
+    "kind": "tree",
+    "pos": [
+     -97616.84,
+     -528682.98,
+     248.53
+    ],
+    "rot": [
+     0.03259446,
+     0.03104634,
+     10.79596
+    ],
+    "scale": 0.88,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E2F3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s03"
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GVPJ7J9GQ5PEQ4R5ZSK0KE40ET",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.GVPJ7J9GQ5PEQ4R5ZSK0KE40ET",
+    "base": "Skyrim.esm:0B927D",
+    "kind": "tree",
+    "pos": [
+     -97365.17,
+     -528491.95,
+     48.78
+    ],
+    "rot": [
+     0.027764358,
+     -0.006985074,
+     8.9517
+    ],
+    "scale": 0.85999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E2F4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.8QZF1AYS2SNAC8Z0CT77N5D3S1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.8QZF1AYS2SNAC8Z0CT77N5D3S1",
+    "base": "Skyrim.esm:0B927E",
+    "kind": "tree",
+    "pos": [
+     -97745.1,
+     -527622.38,
+     14.58
+    ],
+    "rot": [
+     0.017965056,
+     -0.022797171,
+     9.55718
+    ],
+    "scale": 1.25,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E39B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.SRF25P22N1J73TTQCTE8G5A07Y",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.SRF25P22N1J73TTQCTE8G5A07Y",
+    "base": "Skyrim.esm:0B8A76",
+    "kind": "tree",
+    "pos": [
+     -98020.9,
+     -527081.48,
+     126.1
+    ],
+    "rot": [
+     -0.027620567,
+     0.02074919,
+     10.771
+    ],
+    "scale": 0.89,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E486",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.QMG8HMTETYGGKTJ0V7PW6DCNEX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.QMG8HMTETYGGKTJ0V7PW6DCNEX",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99229.72,
+     -526051.86,
+     115.32
+    ],
+    "rot": [
+     -0.010809422,
+     0.022174748,
+     7.02638
+    ],
+    "scale": 0.72999996,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E669",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.W78SCSTE5D2VZG32AA3W0PCBHH",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.W78SCSTE5D2VZG32AA3W0PCBHH",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99543.58,
+     -526309.83,
+     123.5
+    ],
+    "rot": [
+     -0.0153861595,
+     -0.024171803,
+     11.8369
+    ],
+    "scale": 0.81,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E66B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N6X5YDF2S950WX5M5J34X52WPY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.N6X5YDF2S950WX5M5J34X52WPY",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99807.95,
+     -525999.0,
+     106.03
+    ],
+    "rot": [
+     0.0031242042,
+     0.030535439,
+     7.638
+    ],
+    "scale": 0.74,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E698",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.41TCF2P3SGZBR0XRXDM595PDED",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.41TCF2P3SGZBR0XRXDM595PDED",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99450.55,
+     -529314.7,
+     277.9
+    ],
+    "rot": [
+     0.010042947,
+     -0.012102556,
+     5.94289
+    ],
+    "scale": 0.85999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E69F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s04"
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.V1PA5T0M3GZKKH8Z5CEJD7DKZZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.V1PA5T0M3GZKKH8Z5CEJD7DKZZ",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -99407.19,
+     -529599.9,
+     276.9
+    ],
+    "rot": [
+     0.03359441,
+     0.021623049,
+     9.16702
+    ],
+    "scale": 0.78,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E6A0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.T7A9Q3CPNV069M3Z3KN52EBATX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.T7A9Q3CPNV069M3Z3KN52EBATX",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -101591.29,
+     -526509.87,
+     154.74
+    ],
+    "rot": [
+     -0.016517146,
+     0.010413568,
+     9.16653
+    ],
+    "scale": 1.02,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E6A5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.H4V1DV664KQBSXAK25BX0FMN9F",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.H4V1DV664KQBSXAK25BX0FMN9F",
+    "base": "Tropical Skyrim.esp:004955",
+    "kind": "tree",
+    "pos": [
+     -98239.81,
+     -527196.53,
+     109.38
+    ],
+    "rot": [
+     0.12434359,
+     0.12340448,
+     8.56087
+    ],
+    "scale": 0.85,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:052EC6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s07"
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FHQ0YBKZ37592RXMH1MJZD77CQ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.FHQ0YBKZ37592RXMH1MJZD77CQ",
+    "base": "Tropical Skyrim.esp:004955",
+    "kind": "tree",
+    "pos": [
+     -98652.92,
+     -527451.1,
+     110.18
+    ],
+    "rot": [
+     0.06241116,
+     0.12411532,
+     6.87138
+    ],
+    "scale": 1.02,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:052EC7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.MQP8XSDJ45VC6A3XRPP3FFWREN",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.MQP8XSDJ45VC6A3XRPP3FFWREN",
+    "base": "Tropical Skyrim.esp:004955",
+    "kind": "tree",
+    "pos": [
+     -98779.69,
+     -527452.5,
+     92.6
+    ],
+    "rot": [
+     0.06241116,
+     0.12411532,
+     8.47943
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:052EC9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.P4EH5A25DQDAFN24QRX4S88ESS",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.P4EH5A25DQDAFN24QRX4S88ESS",
+    "base": "Tropical Skyrim.esp:004955",
+    "kind": "tree",
+    "pos": [
+     -98917.39,
+     -526532.39,
+     106.82
+    ],
+    "rot": [
+     0,
+     -0.06241881,
+     10.72713
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:052ECB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FBMVVP76V6KE9HTJ0F2H1CF9FY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.FBMVVP76V6KE9HTJ0F2H1CF9FY",
+    "base": "Skyrim.esm:04FF0E",
+    "kind": "tree",
+    "pos": [
+     -99126.2,
+     -526756.02,
+     103.78
+    ],
+    "rot": [
+     0,
+     0,
+     8.87424
+    ],
+    "scale": 0.78,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:052F32",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.31ZA7R6WTDEHYXS6YZWVHV80KY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.31ZA7R6WTDEHYXS6YZWVHV80KY",
+    "base": "Tropical Skyrim.esp:004955",
+    "kind": "tree",
+    "pos": [
+     -97527.64,
+     -527686.84,
+     121.93
+    ],
+    "rot": [
+     0.06241116,
+     0,
+     6.28025
+    ],
+    "scale": 1.01,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:053031",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.BEQ8NK7D9YHG8VM82XZSMSZXEN",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.BEQ8NK7D9YHG8VM82XZSMSZXEN",
+    "base": "Skyrim.esm:0A7329",
+    "kind": "tree",
+    "pos": [
+     -97525.58,
+     -527897.15,
+     134.35
+    ],
+    "rot": [
+     0.043173317,
+     -0.084264114,
+     7.38329
+    ],
+    "scale": 0.85999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:053094",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.R21D812KJRG119J35KJV8J7VPH",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.R21D812KJRG119J35KJV8J7VPH",
+    "base": "Skyrim.esm:0A7329",
+    "kind": "tree",
+    "pos": [
+     -97317.86,
+     -528154.51,
+     147.82
+    ],
+    "rot": [
+     0.069362134,
+     -0.20300183,
+     11.08969
+    ],
+    "scale": 0.87,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:053097",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.NZW58VG2741K7H6BDDNHGYP2PJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.NZW58VG2741K7H6BDDNHGYP2PJ",
+    "base": "Skyrim.esm:0A731C",
+    "kind": "tree",
+    "pos": [
+     -97305.18,
+     -528539.04,
+     204.53
+    ],
+    "rot": [
+     0.18934107,
+     -0.18344216,
+     8.42752
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:053098",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s06"
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.8K79CR5WCES30KPADZ1EZ0SR58",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.8K79CR5WCES30KPADZ1EZ0SR58",
+    "base": "Skyrim.esm:0F0874",
+    "kind": "activator",
+    "pos": [
+     -100842.39,
+     -527856.26,
+     350.12
+    ],
+    "rot": [
+     0,
+     0,
+     9.01732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:09680F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the Civil War map: no war at a reed camp",
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PV4NHEDFC0TNQNJ9WGRFY8B5G6",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.PV4NHEDFC0TNQNJ9WGRFY8B5G6",
+    "base": "Skyrim.esm:01A2AD",
+    "kind": "furniture",
+    "pos": [
+     -100058.41,
+     -528622.64,
+     263.11
+    ],
+    "rot": [
+     0,
+     0,
+     8.11413
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096815",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the smithy: the record has no smith",
+   "n": 27,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FR9WMJDSCTZT2W070JVEYZ4JZF",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.FR9WMJDSCTZT2W070JVEYZ4JZF",
+    "base": "Skyrim.esm:06E9C2",
+    "kind": "furniture",
+    "pos": [
+     -99960.66,
+     -528804.14,
+     264.77
+    ],
+    "rot": [
+     0,
+     0,
+     6.45413
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096816",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the smithy: the record has no smith",
+   "n": 28,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.HQCQCBJMMFDAW6MMDXCBPFFJHX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.HQCQCBJMMFDAW6MMDXCBPFFJHX",
+    "base": "Skyrim.esm:0D932F",
+    "kind": "furniture",
+    "pos": [
+     -100118.23,
+     -529478.67,
+     291.74
+    ],
+    "rot": [
+     0,
+     0,
+     8.96412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096817",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the smithy: the record has no smith",
+   "n": 29,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.C0X7CFD4ACKKE6Z9SGP3A28KPB",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.C0X7CFD4ACKKE6Z9SGP3A28KPB",
+    "base": "Skyrim.esm:070BBC",
+    "kind": "clutter",
+    "pos": [
+     -100840.75,
+     -527859.68,
+     288.11
+    ],
+    "rot": [
+     0,
+     0,
+     9.03412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096825",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the Civil War map table",
+   "n": 30,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.YYVT0SFHY1VP2AQGPR3X9VZHW0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.YYVT0SFHY1VP2AQGPR3X9VZHW0",
+    "base": "Skyrim.esm:08A3B4",
+    "kind": "container",
+    "pos": [
+     -100511.8,
+     -528650.81,
+     291.54
+    ],
+    "rot": [
+     0,
+     0,
+     7.53412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096834",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the Legion paymaster's levelled chest (decision 0035; the record's one treasure is the strongbox)",
+   "n": 31,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.2QR8BY1AEHYZM3ABG9XAH45204",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.2QR8BY1AEHYZM3ABG9XAH45204",
+    "base": "Skyrim.esm:0CBB2A",
+    "kind": "rock",
+    "pos": [
+     -101270.29,
+     -526782.69,
+     151.91
+    ],
+    "rot": [
+     0.13825952,
+     -0.11595362,
+     10.35676
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0CBB29",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 32,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WK8TDNTY60AEX00XBY7N19881Z",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.WK8TDNTY60AEX00XBY7N19881Z",
+    "base": "Skyrim.esm:0A731C",
+    "kind": "tree",
+    "pos": [
+     -99312.0,
+     -529315.38,
+     272.03
+    ],
+    "rot": [
+     0,
+     0,
+     6.69385
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0CBB2D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s04"
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 33,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.2PKQ2CA7J64T15YVWKAV0HKDVZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.2PKQ2CA7J64T15YVWKAV0HKDVZ",
+    "base": "Skyrim.esm:0B8F53",
+    "kind": "tree",
+    "pos": [
+     -99168.48,
+     -528861.91,
+     304.55
+    ],
+    "rot": [
+     -0.9182698,
+     -1.3357118,
+     6.68044
+    ],
+    "scale": 0.79999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCA7D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 34,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.J5DNQGJ7JGYXVFG6VV4Z5G5N1Y",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.J5DNQGJ7JGYXVFG6VV4Z5G5N1Y",
+    "base": "Skyrim.esm:02C76F",
+    "kind": "rock",
+    "pos": [
+     -98880.2,
+     -529383.15,
+     252.73
+    ],
+    "rot": [
+     0.07005366,
+     -0.05997319,
+     11.43551
+    ],
+    "scale": 1.13,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCA81",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 35,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PVEVHF4T8VMP0H9EQX9MJES58A",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.PVEVHF4T8VMP0H9EQX9MJES58A",
+    "base": "Skyrim.esm:0B8F53",
+    "kind": "tree",
+    "pos": [
+     -99278.98,
+     -526731.32,
+     94.64
+    ],
+    "rot": [
+     -1.6666842,
+     0.35838693,
+     9.23758
+    ],
+    "scale": 0.79999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCA83",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 36,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.HKGKJJ5614RRKTCE4APDV4HZJF",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.HKGKJJ5614RRKTCE4APDV4HZJF",
+    "base": "Skyrim.esm:0BB94A",
+    "kind": "tree",
+    "pos": [
+     -98973.79,
+     -526696.79,
+     97.32
+    ],
+    "rot": [
+     -0.13999985,
+     0,
+     11.58731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCA84",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 37,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.VCVY89GE9FDSVFS56897M6V9FJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.VCVY89GE9FDSVFS56897M6V9FJ",
+    "base": "Skyrim.esm:02C76F",
+    "kind": "rock",
+    "pos": [
+     -98283.81,
+     -528051.53,
+     204.71
+    ],
+    "rot": [
+     0.10976333,
+     -0.019217001,
+     8.11346
+    ],
+    "scale": 1.13,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCA85",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 38,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.SY2HXB5QV01CKRZ4N6AEH3H7BD",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.SY2HXB5QV01CKRZ4N6AEH3H7BD",
+    "base": "Skyrim.esm:0B8F53",
+    "kind": "tree",
+    "pos": [
+     -99881.05,
+     -526780.68,
+     49.72
+    ],
+    "rot": [
+     -1.3233751,
+     -0.8140562,
+     9.05754
+    ],
+    "scale": 0.79999995,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0DCAB2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 39,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.AFK12DV2C39NSGCJMGBEE8RHD5",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.AFK12DV2C39NSGCJMGBEE8RHD5",
+    "base": "Skyrim.esm:0F0039",
+    "kind": "activator",
+    "pos": [
+     -99704.12,
+     -528277.08,
+     409.6
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0F0042",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s04",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    },
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      116.17969,
+      118.34375,
+      158.07227
+     ],
+     "color": [
+      255,
+      255,
+      0
+     ],
+     "unknown": 0.15
+    },
+    "edid": "CWMissionGeneratorTriggerHjaalmarchImperial"
+   },
+   "note": "a Civil War quest trigger",
+   "n": 40,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.538PTG2RCR4CDSRK0TYT3AMT96",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.538PTG2RCR4CDSRK0TYT3AMT96",
+    "base": "Skyrim.esm:0D8738",
+    "kind": "furniture",
+    "pos": [
+     -100407.84,
+     -529357.14,
+     298.14
+    ],
+    "rot": [
+     0,
+     0,
+     7.56731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8D2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "note": "the field hospital's wounded",
+   "n": 41,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.71XHGNMK0VYR7TX2C9HSTN3D1M",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.71XHGNMK0VYR7TX2C9HSTN3D1M",
+    "base": "Skyrim.esm:0FD834",
+    "kind": "container",
+    "pos": [
+     -100213.66,
+     -529277.1,
+     284.0
+    ],
+    "rot": [
+     0,
+     0,
+     12.20731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FD8D3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's levelled chest",
+   "n": 42,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.QJJZZNBTHVT1Q3D1V49E70TQJK",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.QJJZZNBTHVT1Q3D1V49E70TQJK",
+    "base": "Skyrim.esm:0C1D83",
+    "kind": "marker",
+    "pos": [
+     -100367.71,
+     -529208.02,
+     399.64
+    ],
+    "rot": [
+     1.0086156,
+     0.8320738,
+     11.69905
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8D4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's blood",
+   "n": 43,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.MN9Y4ZZZZRDY7QJEBZMANDSPVN",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.MN9Y4ZZZZRDY7QJEBZMANDSPVN",
+    "base": "Skyrim.esm:0CC84D",
+    "kind": "clutter",
+    "pos": [
+     -100344.94,
+     -529277.46,
+     289.18
+    ],
+    "rot": [
+     0.00577733,
+     -0.10403533,
+     11.01962
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FD8D5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's rags",
+   "n": 44,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.CBCBJBV8ZPQAKSSC3EB8Q0XXRX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.CBCBJBV8ZPQAKSSC3EB8Q0XXRX",
+    "base": "Skyrim.esm:08B1F6",
+    "kind": "marker",
+    "pos": [
+     -100430.49,
+     -529263.97,
+     350.42
+    ],
+    "rot": [
+     -0.7729133,
+     0.47629976,
+     9.22031
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8D7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's blood",
+   "n": 45,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.TYE52KPHH4Y71K28MC3ZNS8Z6T",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.TYE52KPHH4Y71K28MC3ZNS8Z6T",
+    "base": "Skyrim.esm:0D873D",
+    "kind": "furniture",
+    "pos": [
+     -100461.94,
+     -529195.42,
+     296.83
+    ],
+    "rot": [
+     0,
+     0,
+     7.39412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8D8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "note": "the field hospital's wounded",
+   "n": 46,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.APAV3ZW0K0B7A81S0A3F9DMXWW",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.APAV3ZW0K0B7A81S0A3F9DMXWW",
+    "base": "Skyrim.esm:0C1D83",
+    "kind": "marker",
+    "pos": [
+     -100498.66,
+     -529122.4,
+     347.76
+    ],
+    "rot": [
+     -1.4795069,
+     1.216464,
+     9.35319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8DA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's blood",
+   "n": 47,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.HPK8XSS125E1MG42JEBESMMQ22",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.HPK8XSS125E1MG42JEBESMMQ22",
+    "base": "Skyrim.esm:0D873E",
+    "kind": "furniture",
+    "pos": [
+     -100497.56,
+     -529089.22,
+     295.42
+    ],
+    "rot": [
+     0,
+     0,
+     7.61731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:0FD8DB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "note": "the field hospital's wounded",
+   "n": 48,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.49XC0ND765T1PM3KPW9JRMHPQY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.49XC0ND765T1PM3KPW9JRMHPQY",
+    "base": "Skyrim.esm:0D54FF",
+    "kind": "furniture",
+    "pos": [
+     -100224.85,
+     -528843.48,
+     275.3
+    ],
+    "rot": [
+     0,
+     0,
+     9.15373
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A2D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field surgeon's table: no healer at the camp",
+   "n": 49,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.6HS8TJFA4MMGSTMNACXSSNVSJM",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.6HS8TJFA4MMGSTMNACXSSNVSJM",
+    "base": "Skyrim.esm:0CC84D",
+    "kind": "clutter",
+    "pos": [
+     -100329.8,
+     -529001.04,
+     316.14
+    ],
+    "rot": [
+     -0.01786573,
+     -0.055474035,
+     11.74836
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A2F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's rags",
+   "n": 50,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.AXG1YF2T99Z375E091Q6JDYSYR",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.AXG1YF2T99Z375E091Q6JDYSYR",
+    "base": "Skyrim.esm:06A07E",
+    "kind": "clutter",
+    "pos": [
+     -100317.17,
+     -529028.9,
+     311.21
+    ],
+    "rot": [
+     0,
+     0,
+     9.94371
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A30",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's potions",
+   "n": 51,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PDCPV27E8HPMRY0G9APQ5TH46E",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.PDCPV27E8HPMRY0G9APQ5TH46E",
+    "base": "Skyrim.esm:06A07E",
+    "kind": "clutter",
+    "pos": [
+     -100286.02,
+     -529010.93,
+     311.21
+    ],
+    "rot": [
+     0,
+     0,
+     9.34371
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A31",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "the field hospital's potions",
+   "n": 52,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WX5AVXHYYYSMD135PZTWJCK0M5",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.WX5AVXHYYYSMD135PZTWJCK0M5",
+    "base": "Skyrim.esm:097ED9",
+    "kind": "clutter",
+    "pos": [
+     -100319.08,
+     -528759.48,
+     531.33
+    ],
+    "rot": [
+     0,
+     0,
+     9.02371
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A33",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a Legion banner: the camp is the gang-master's, not the Legion's",
+   "n": 53,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GX7BBR3VD3W8HK7PCDM6VNKMG2",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.GX7BBR3VD3W8HK7PCDM6VNKMG2",
+    "base": "Skyrim.esm:060166",
+    "kind": "clutter",
+    "pos": [
+     -100322.35,
+     -528759.9,
+     276.24
+    ],
+    "rot": [
+     0,
+     0,
+     12.1769
+    ],
+    "scale": 0.65,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:101A34",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a Legion banner pole",
+   "n": 54,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.16MYFMHE65FKQDFR089N8DMV6N",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.16MYFMHE65FKQDFR089N8DMV6N",
+    "base": "Skyrim.esm:07E8C2",
+    "kind": "plant",
+    "pos": [
+     -100532.51,
+     -532242.85,
+     1272.0
+    ],
+    "rot": [
+     -0.06241116,
+     0.06229757,
+     6.14053
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:107B4A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 55,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.Y355KK2SECWRTPS4MSWFZMK14H",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.Y355KK2SECWRTPS4MSWFZMK14H",
+    "base": "Skyrim.esm:07E8C2",
+    "kind": "plant",
+    "pos": [
+     -100415.33,
+     -532193.33,
+     1273.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.34625
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:107B4B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 56,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.CYAZRB525BCQKE5AH62PCSVQ8R",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.CYAZRB525BCQKE5AH62PCSVQ8R",
+    "base": "Skyrim.esm:07E8C2",
+    "kind": "plant",
+    "pos": [
+     -100349.24,
+     -532433.35,
+     1273.39
+    ],
+    "rot": [
+     0.06241116,
+     0,
+     6.24947
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:107B4C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "note": "the source's country beyond the camp, laid on our ground where its own ground was not carried",
+   "n": 57,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.2TTGZ3SJ8W30YYRES5JFNYQ6JP",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.2TTGZ3SJ8W30YYRES5JFNYQ6JP",
+    "base": "Skyrim.esm:06B2FF",
+    "kind": "activator",
+    "pos": [
+     -99223.22,
+     -527176.53,
+     100.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:10AF54",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w06"
+   },
+   "note": "the source pond's fish spawner; our river has its own",
+   "n": 58,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.QHWXC9Y0ZQ4AGJB51QQ1NVYESX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.QHWXC9Y0ZQ4AGJB51QQ1NVYESX",
+    "base": "Skyrim.esm:06B2FF",
+    "kind": "activator",
+    "pos": [
+     -100128.03,
+     -526640.83,
+     100.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:10CB94",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w02"
+   },
+   "note": "the source pond's fish spawner; our river has its own",
+   "n": 59,
+   "stroke": 1,
+   "at": "2026-11-21T14:48:50Z"
+  }
+ ]
+}
