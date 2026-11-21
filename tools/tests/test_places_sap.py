@@ -155,18 +155,50 @@ def test_a_pool_on_a_steep_side_goes_to_the_flat_side_of_its_trunk_so_no_bank_st
     assert sap.plan("p", e, BASES, {"A": [0, 0]}, G)[0]["pos"][:2] == sap.plan("p", e, BASES, [0, 0])[0]["pos"][:2]
 
 
-def test_a_bank_raises_the_sap_over_the_dug_floor_so_no_ground_shows_through_it():
+def test_the_sap_never_stands_above_its_own_rim_where_a_bank_is_left():
     steep = Ground({(0, 0): [0.6 * 128 * (i % 33) for i in range(33 * 33)]}, {})
     e = ext()[:1]
-    pools = sap.plan("p", e, BASES)
+    pools = sap.plan("p", e, BASES, None, steep)
     seat_all(pools, steep)
-    banks = []
-    hollow = sap.dish(steep, e + pools, BASES, set(), banks)
-    steep.apply_patches(hollow)
-    sap.cover_banks(pools, banks)
-    seat_all(pools, steep)
-    cx, cy = sap.centre(pools[0])
-    rad = sap.DISH * sap.POOL_HALF * pools[0]["scale"]
-    inside = [steep.height(cx + rad * k / 4 * math.cos(a), cy + rad * k / 4 * math.sin(a))
-              for k in range(4) for a in (0, 1.6, 3.1, 4.7)]
-    assert pools[0]["pos"][2] >= max(inside)
+    banks, surfaces = [], {}
+    steep.apply_patches(sap.dish(steep, e + pools, BASES, set(), banks, surfaces))
+    sap.settle(pools, steep, surfaces)
+    p = pools[0]
+    cx, cy = sap.centre(p)
+    rad = sap.DISH * sap.POOL_HALF * p["scale"]
+    from tools.places.seat import STEP
+    rim = [steep.vertex(gx, gy) for gx in range(-1, 34) for gy in range(-1, 34)
+           if rad < math.dist((gx * STEP, gy * STEP), (cx, cy)) <= rad + STEP and steep.vertex(gx, gy) is not None]
+    assert rim and p["pos"][2] <= min(rim) + 0.5                      # the surface no higher than the lowest rim
+
+
+def test_a_steep_pool_shrinks_and_weighs_a_platform_over_it_as_a_bank():
+    # rising eastward; a platform over the trunk's east side: the pool goes west, out from under it
+    G = Ground({(0, 0): [0.25 * 128 * (i % 33) for i in range(33 * 33)]}, {})
+    bases = dict(BASES, **{"P:deck": {"edid": "MurkmirePlatformBase03", "kind": "building", "bounds": [[-200, -400, 0], [200, 400, 400]]}})
+    t = ext()[0]
+    deck = {"id": "p.K", "base": "P:deck", "kind": "building", "pos": [2350.0, 2000.0, 900.0], "rot": [0, 0, 0], "scale": 1.0}
+    bare = sap.plan("p", [t], bases, None, G)[0]
+    under = sap.plan("p", [t, deck], bases, None, G)[0]
+    assert sap.holds(under, t) and sap.centre(under)[0] < sap.centre(bare)[0] + 1e-6
+    rad = sap.DISH * sap.POOL_HALF * under["scale"]
+    assert sap.open_share(*sap.centre(under), rad, sap.covers([deck], bases)) > \
+        sap.open_share(*sap.centre(bare), rad, sap.covers([deck], bases))
+    full = sap.pool_for("p", t, bases["P:hist"])["scale"]
+    assert bare["scale"] <= full                                      # shrunk where the slope leaves a bank
+
+
+def test_the_dig_never_moves_another_row_seated_on_the_ground():
+    G = slope()
+    t = ext()[0]
+    post = {"id": "p.post", "base": "P:root", "kind": "static", "pos": [2100.0, 2000.0, 0.0], "rot": [0, 0, 0],
+            "scale": 1.0, "seat": {"mode": "above", "dz": 0.0}}
+    pools = sap.plan("p", [t], BASES)
+    seat_all(pools, G)
+    from tools.places.seat import seat_z
+    post["pos"][2] = seat_z(post, G)
+    dug = Ground({k: list(v) for k, v in G.cells.items()}, {})
+    dug.apply_patches(sap.dish(G, [t, post] + pools, BASES, set()))
+    assert seat_z(post, dug) < post["pos"][2] - 1                     # the hollow reaches under it
+    assert sap.hold_others([t, post] + pools, dug) == ["p.post"]
+    assert seat_z(post, dug) == pytest.approx(post["pos"][2], abs=0.01)

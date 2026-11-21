@@ -36,12 +36,16 @@ moved, swapped or dies. `draft check` fails a living Hist with no pool.
 
 - **Size**: by the trunk at the ground (its radius per Hist base, `TRUNK_R`, measured from the mesh), plus a band of
   open sap; never by the crown.
-- **Where**: on the trunk, unless decks or walkways over it hide it: then the stage moves it toward the open side,
-  the trunk kept in the sap. A place may set its own: `draft.sap.offset` in place.json (`[dx, dy]`, or by Hist id).
-- **Height**: the surface at the lowest ground of its rim; the hollow lowers the ground under the sap and the rim
-  round it to the surface, so a person at the rim looks down onto sap. No vertex is dug more than `PATCH_MAX`; where
-  the ground falls more than that across the pool, the stage says how high a bank its high side keeps: move the
-  pool (`draft.sap.offset`) to flatter ground.
+- **Where**: on the trunk, the trunk always kept in the sap. The stage scores each side and size (full, or shrunk
+  to `SHRINK` of it) by the bank its dig would leave plus `COVER_W` times the share of sap a deck, walkway, bridge or
+  platform hides from the sky, and takes the lowest, so a pool is never put under the ring's platform when a side a
+  person can look onto exists. A place may set its own: `draft.sap.offset` in place.json (`[dx, dy]`, or by Hist id).
+- **Height**: the surface is the lowest rim; the sap never stands over its own rim. The hollow lowers the ground
+  under the sap and the rim round it to the surface. No vertex is dug more than `PATCH_MAX`; ground falling more than
+  that is what the stage moves or shrinks the pool away from, and a bank left over is logged (ground standing out of
+  the sap on its high side).
+- **Nothing else moves**: every other row seated on the ground keeps its height on the dug ground (its seat's dz
+  pinned, a hand's row too: only its dz changes, its pose stays).
 - Judge it by eye from the rim, from the nearest deck and from the nearest doors: amber at the Hist's foot.
 
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the

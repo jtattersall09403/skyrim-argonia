@@ -98,6 +98,18 @@ def test_a_join_given_up_for_a_flight_is_measured_but_not_flagged():
     assert js["house.RoomB"]["flag"]                                          # the other end is still a fault
 
 
+def test_an_accepted_flag_prints_its_reason_and_is_no_fault():
+    pl = place({"s.huta": -120.0, "s.doora": 0.0})
+    _, before = U.table(pl)
+    assert "body through its deck" in before
+    pl.sc.files["place"]["draft"] = {"accepted": [{"unit": "house.RoomA", "flag": "body through its deck", "why": "as the source"}]}
+    rows, text = U.table(pl)
+    a = next(r for r in rows if r["id"] == "house.RoomA")
+    assert not any(f.startswith("body through") for f in a["flags"])
+    assert any(n.startswith("accepted: as the source") for n in a["accepted"]) and "accepted: as the source" in text
+    assert any("door sill off its floor" in f for f in a["flags"])          # only the named flag is accepted
+
+
 def test_a_house_pushed_down_through_its_platform_is_measured_and_flagged():
     pl = place({"s.huta": -120.0, "s.doora": 0.0})
     m = U.measure(pl, pl.unit("house.RoomA"))

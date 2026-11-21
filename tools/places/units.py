@@ -834,8 +834,27 @@ def given_up(pl: Place) -> list[dict]:
     return list(((files.get("place") or {}).get("draft") or {}).get("joins_given_up") or [])
 
 
+def accepted(pl: Place) -> list[dict]:
+    """The flags the drafter accepted because they copy the source's own arrangement (`draft.accepted` of place.json:
+    [{unit, flag, why}]; `flag` is a prefix of the measured flag): shown as "accepted: why", never as a fault."""
+    files = getattr(pl.sc, "files", None) or {}
+    return list(((files.get("place") or {}).get("draft") or {}).get("accepted") or [])
+
+
+def apply_accepted(unit_id: str, flags: list[str], acc: list[dict]) -> tuple[list[str], list[str]]:
+    """Split a unit's flags into (faults, accepted notes) by the `draft.accepted` rows."""
+    faults, notes = [], []
+    for f in flags:
+        a = next((a for a in acc if a.get("unit") == unit_id and f.startswith(a.get("flag", "\0"))), None)
+        if a is None:
+            faults.append(f)
+        else:
+            notes.append(f"accepted: {a.get('why', '')} ({f})")
+    return faults, notes
+
+
 def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
-    rows, js = [], joins(pl)
+    rows, js, acc = [], joins(pl), accepted(pl)
     for un in pl.units:
         if un["kind"] == "thing" and not everything:
             continue
@@ -848,6 +867,7 @@ def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
                 pass
         if un["kind"] in ("walkway", "bridge") and not un.get("joins"):
             m["flags"].append("walkway end unsupported (rests on nothing named)")
+        m["flags"], m["accepted"] = apply_accepted(un["id"], m["flags"], acc)
         m["joins"] = [j["unit"] for j in un.get("joins", [])]
         m["roles"] = {r: len(v) for r, v in un["pieces"].items()}
         rows.append(m)
@@ -860,7 +880,7 @@ def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
         fd = "" if m["min_depth"] is None else f"{m['min_depth']:.0f}..{m['max_depth']:.0f}"
         roles = ",".join(f"{k}{v}" for k, v in sorted(m["roles"].items()))
         lines.append(f"{m['id'][:34]:34} {m['kind']:7} {m['n']:>3} {_f(m['stand']):>7} {_f(m['gmin']):>7} {_f(m['gmax']):>7} "
-                     f"{_f(fg):>8} {gp:>11} {fd:>13} {roles}; {' '.join(m['joins']) or '-'}; {'; '.join(m['flags']) or 'ok'}")
+                     f"{_f(fg):>8} {gp:>11} {fd:>13} {roles}; {' '.join(m['joins']) or '-'}; {'; '.join(m['flags'] + m['accepted']) or 'ok'}")
     return rows, "\n".join(lines)
 
 
