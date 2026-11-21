@@ -108,7 +108,7 @@
   "bundle": "src.kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
   "stamp": "28927c19e386e2c7"
  },
- "radius_m": 50,
+ "radius_m": 55,
  "counts": {
   "source_refs": 224,
   "placed": 20,
@@ -138,16 +138,16 @@
  "wholesale": {
   "offset": 110.0,
   "band": 512.0,
-  "pieces": 28,
-  "dropped": 449,
+  "pieces": 32,
+  "dropped": 445,
   "raised_max": 0.0,
   "lowered_max": -0.0,
   "band_steepest_deg": 0.0,
-  "source_water_area_m2": 80,
+  "source_water_area_m2": 120,
   "held_by_water": 0,
+  "navmesh": "source",
   "take": 560.0,
-  "laid": "2026-11-21T14:42:38Z",
-  "navmesh": "source"
+  "laid": "2026-11-21T14:46:50Z"
  },
  "agent_saves_applied": []
 }

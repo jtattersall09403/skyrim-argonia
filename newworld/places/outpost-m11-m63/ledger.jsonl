@@ -10,10 +10,10 @@
 {"src":"King of the Murkmire.esp:560C93","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:855049","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85504A","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
-{"src":"King of the Murkmire.esp:85504F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85504F","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:855056","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:855057","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:855058","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:855058","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:855059","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85505A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85505B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -95,7 +95,7 @@
 {"src":"King of the Murkmire.esp:85A23D","space":"exterior","status":"placed","as":"outpost-m11-m63.MHZ69AEKPM53TVPBXG46KWJ3T6"}
 {"src":"King of the Murkmire.esp:85A23E","space":"exterior","status":"placed","as":"outpost-m11-m63.P25E5Q8SP0QDP9W3N1HPEA3GW2"}
 {"src":"King of the Murkmire.esp:85A23F","space":"exterior","status":"placed","as":"outpost-m11-m63.MW9DPP7GNTN0DPQD1NNK5ZKD1W"}
-{"src":"King of the Murkmire.esp:85A240","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A240","space":"exterior","status":"placed","as":"outpost-m11-m63.YSQ1NY6FKASY99QBWSJSRPF1J3"}
 {"src":"King of the Murkmire.esp:85A241","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A242","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A243","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
@@ -167,14 +167,14 @@
 {"src":"King of the Murkmire.esp:85A2AD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2AE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2AF","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
-{"src":"King of the Murkmire.esp:85A2B0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A2B0","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A2B1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2B2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2B3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2B4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2B5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A2B6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A2B9","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A2B9","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A2BA","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A2BB","space":"exterior","status":"placed","as":"outpost-m11-m63.M08C4N5A6NEM463Q2FX71RJR4A"}
 {"src":"King of the Murkmire.esp:85A2BE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -272,7 +272,7 @@
 {"src":"King of the Murkmire.esp:85A3A2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A3AA","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A3AB","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
-{"src":"King of the Murkmire.esp:85A3AD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A3AD","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A3AE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A3AF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A3B0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -314,7 +314,7 @@
 {"src":"King of the Murkmire.esp:85A409","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A40A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A40B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A418","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A418","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A41B","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A41C","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A420","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
@@ -359,7 +359,7 @@
 {"src":"King of the Murkmire.esp:85A46E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A46F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A479","space":"exterior","status":"placed","as":"outpost-m11-m63.J5N4MVFBHXFJQT7598R5MG1F00"}
-{"src":"King of the Murkmire.esp:85A47A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A47A","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A47B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A47C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A47D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -367,14 +367,14 @@
 {"src":"King of the Murkmire.esp:85A47F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A484","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A485","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A486","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A487","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A486","space":"exterior","status":"placed","as":"outpost-m11-m63.RKAKVCRFT1ZEQA030YG3TDZMAB"}
+{"src":"King of the Murkmire.esp:85A487","space":"exterior","status":"placed","as":"outpost-m11-m63.9089QFBT7XNWGWQGT489SRPE8Z"}
 {"src":"King of the Murkmire.esp:85A48A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A48B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A48D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4A2","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A4A3","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
-{"src":"King of the Murkmire.esp:85A4A4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A4A4","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A4B0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4B1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4B2","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -393,14 +393,14 @@
 {"src":"King of the Murkmire.esp:85A4C3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4C4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4C5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A4C7","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A4C7","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A4C8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4D0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4D1","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4D3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4D4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85A4D5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85A4D6","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85A4D6","space":"exterior","status":"placed","as":"outpost-m11-m63.WGDKBVGZQWCFTXHA5TY9RW2R4R"}
 {"src":"King of the Murkmire.esp:85A4D7","space":"exterior","status":"placed","as":"outpost-m11-m63.A2KZV0MQE9NAR122JFEK277ATT"}
 {"src":"King of the Murkmire.esp:85A4D8","space":"exterior","status":"placed","as":"outpost-m11-m63.XXQ15C01N1A65YTKHHWNDNGQYB"}
 {"src":"King of the Murkmire.esp:85A4DE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -419,7 +419,7 @@
 {"src":"King of the Murkmire.esp:85A4ED","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85A4EE","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85F6CA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"King of the Murkmire.esp:85F6CD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85F6CD","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85F6CE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85F6CF","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85F6D0","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -450,7 +450,7 @@
 {"src":"King of the Murkmire.esp:85F6F6","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85F6F7","space":"exterior","status":"placed","as":"outpost-m11-m63.WS8KHZPKP93BH08HT0K2CM8ZAN"}
 {"src":"King of the Murkmire.esp:85F6F9","space":"exterior","status":"placed","as":"outpost-m11-m63.VFAKER5HSYAREKX39N0YJAPC1J"}
-{"src":"King of the Murkmire.esp:85F6FA","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"King of the Murkmire.esp:85F6FA","space":"exterior","status":"dropped","why":"outside the part of the source this place takes (within 560 of the pivot)"}
 {"src":"King of the Murkmire.esp:85F6FB","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85F6FD","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:85F6FE","space":"exterior","status":"dropped","why":"outside the place's footprint"}
