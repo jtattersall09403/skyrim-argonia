@@ -10,6 +10,9 @@ import pytest
 from tools.places import classify, truth, units, xform
 from tools.places.look import geom
 from tools.places.seat import Ground
+from tools.places import shape
+
+shape.REAL = False   # the golden place is measured by its own meshes and boxes, never a converted game model
 
 FIX = json.loads((Path(__file__).parent / "fixtures" / "truth_place.json").read_text())
 GROUND_TOL, LOW_TOL = 1.0, 1.0

@@ -33,6 +33,7 @@ code changes.
 |---|---|
 | Every fault in the place | `probe --all` (floats, missing base, unresolved model, walkway end with nothing under it, door with no ground) |
 | One piece's feet, rest and neighbours | `probe <thing>` |
+| Where each stair, bridge and walkway end meets its deck or the ground | `python -m tools.places units <place> --joints`, then a `section` through each end it names |
 | Heights at a glance; proof a piece is seated | `section <thing> --axis` or `section <x1,y1> <x2,y2>` |
 | Judge a structure from every side at once | `survey <place> [<structure or unit> ...]`, `survey <place> --changed`: the sheet is the index; read each tile in `survey/<structure>/tiles/` (1280x960, listed with its score in `table.txt`) for detail |
 | One more look at a structure | `at <thing> [--from n..nw] [--eye\|--high\|--top]` (1920x1440; `--grid` adds the ground grid, off by default), `orbit <thing>` (each panel its own file) |
