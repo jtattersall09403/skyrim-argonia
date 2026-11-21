@@ -618,6 +618,26 @@
     "unit": "added.house.SeekhatEggTendersQuarters",
     "flag": "foot not reaching the ground",
     "why": "as above: the 6 is the door sill over its step piece"
+   },
+   {
+    "unit": "dock.05",
+    "flag": "foot not reaching the ground",
+    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
+   },
+   {
+    "unit": "dock.07",
+    "flag": "foot not reaching the ground",
+    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
+   },
+   {
+    "unit": "house.SeekhatAccommodationHut",
+    "flag": "foot not reaching the ground",
+    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
+   },
+   {
+    "unit": "house.SeekhatEggTendersQuarters",
+    "flag": "foot not reaching the ground",
+    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
    }
   ],
   "sap": {
