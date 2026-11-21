@@ -201,13 +201,20 @@ class Daemon:
         if uncommitted(place):
             out["warning"] = ("the place files differ from the committed ones: the pictures draw what is committed, the "
                               "numbers what is in the working tree; commit the place files by path and look again")
-        if self.drew and self.place == place:   # which state this answer drew and measured
-            out["drew"] = self.drew
+        out["drew"] = drew_of(self, place)
         LOG.parent.mkdir(parents=True, exist_ok=True)
         with LOG.open("a") as f:
             f.write(json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%S"), "place": place, "verb": verb, "args": args,
                                 "png": out.get("png"), "ms": out["ms"]}) + "\n")
         return out
+
+
+def drew_of(d, place: str) -> dict:
+    """Which state an answer drew and measured: the page's state when the page stands on this place, else the place
+    files' state now (an answer that drew no picture, such as `status`, still says what it read), page False."""
+    if d.drew and d.place == place:
+        return d.drew
+    return {**state(place), "page": False}
 
 
 def files_stamp(place: str, places=None) -> str:

@@ -56,3 +56,14 @@ def test_reap_finds_a_daemon_whose_checkout_is_gone(tmp_path):
     finally:
         if p.poll() is None:
             os.killpg(p.pid, 9)
+
+
+def test_every_answer_says_which_state_it_drew(monkeypatch):
+    monkeypatch.setattr(daemon, "state", lambda place: {"files": "f", "commit": "c", "working_tree": False})
+
+    class P:
+        drew, place = {"files": "page"}, "a"
+    assert daemon.drew_of(P(), "a") == {"files": "page"}
+    assert daemon.drew_of(P(), "b") == {"files": "f", "commit": "c", "working_tree": False, "page": False}
+    P.drew = None
+    assert daemon.drew_of(P(), "a")["page"] is False
