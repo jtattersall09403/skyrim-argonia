@@ -83,6 +83,21 @@ def test_the_places_own_station_outdoors_is_worked_before_one_added_in_a_room():
     assert [s["at"].get("ref") for s in folk[0]["routine"]] == ["t.spit", "t.spit", "t.bed"]
 
 
+def test_a_station_the_place_already_holds_outdoors_is_found_not_added_again(monkeypatch):
+    """A cooking pot laid by hand (or carried from the source) beside the landing is the promised station: the stage
+    adds no second one."""
+    from tools.places.draft import run as R
+    monkeypatch.setattr(R, "place_record", lambda pid: (None, [{"give_kind_id": "cooking-pot"}]))
+    monkeypatch.setattr(stages, "seat_all", lambda refs, G: None)
+    pot = {"key": "K:pot", "edid": "CraftingCookingPotSmNoHandleArgonian"}
+    ext = [{"id": "t.LOOK013PLACE", "base": "K:pot"}]
+    st = SimpleNamespace(place_id="t", place={}, ext=ext, bases={"K:pot": pot}, G=None,
+                         files={"spaces": {"exterior": {"refs": ext}}, "people": [{"id": "t.cook", "role": "resident"}]})
+    stages.stations(st, log=lambda m: None)
+    assert st.place["stations"]["found"] == {"cooking-pot": ["t.LOOK013PLACE"]}
+    assert st.place["stations"]["added"] == [] and len(ext) == 1
+
+
 def test_a_stop_on_a_deck_is_written_with_its_height_and_one_on_the_ground_without():
     W = walk.Walkable.__new__(walk.Walkable)
     W.zref = lambda x, y: 0.0

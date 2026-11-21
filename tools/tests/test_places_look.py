@@ -534,6 +534,9 @@ def test_a_hand_places_any_base_and_a_studio_op_as_one_stroke(tmp_path):
     assert r["why"] == "fish racks" and r["rot"][2] == pytest.approx(math.pi / 2, abs=1e-4)
     (op2,) = verbs._hand(sc, "place", ["B:pole", "1,2,300", "--why", "a pole"], sess)
     assert op2["ref"]["seat"]["mode"] == "free" and op2["ref"]["pos"][2] == 300 and op2["ref"]["id"] != r["id"]
+    assert r["scale"] == 1 and op2["ref"]["scale"] == 1
+    (op3,) = verbs._hand(sc, "place", ["B:tent", "1,2,300", "--scale", "0.56", "--why", "a tent on a small deck"], sess)
+    assert op3["ref"]["scale"] == pytest.approx(0.56)
     with pytest.raises(ValueError):
         verbs._hand(sc, "place", ["B:pole", "1,2,300"], sess)          # no reason, no piece
     f = tmp_path / "op.json"
@@ -832,3 +835,19 @@ def test_at_stand_puts_the_eye_over_the_deck_under_the_point_not_the_roof_and_re
         framing.stand_camera(things, g, [1000, 0, 400], *geom.aabb(door), 640, 480)
     with pytest.raises(ValueError, match="inside the mesh of"):
         framing.stand_camera(things, g, [0, 0, 530], *geom.aabb(door), 640, 480)  # in the roof itself
+
+
+def test_a_hand_placed_base_from_the_pool_resolves_from_the_catalogue(monkeypatch):
+    """`look place` of a base neither the source nor the ground holds is drawn from the catalogue's row, not a stand-in box."""
+    import types
+
+    from tools.places import draft_bundle
+    from tools.places.look.scene import Scene
+    row = {"key": "BM:tent", "edid": "Tent", "model": "architecture/tents/smallnordictent01a.nif", "kind": "building",
+           "bounds": [[-133, -131, -20], [129, 137, 161]]}
+    monkeypatch.setattr(draft_bundle, "catalogue", lambda: {"BM:tent": row})
+    fake = types.SimpleNamespace(bases={}, bounds_of=lambda b: (b["bounds"], True))
+    p = Scene.piece(fake, {"id": "p.LOOK001PLACE", "base": "BM:tent", "pos": [0, 0, 0]})
+    assert p["resolved"] and p["model"] == row["model"] and fake.bases["BM:tent"] is row
+    q = Scene.piece(fake, {"id": "p.LOOK002PLACE", "base": "nowhere", "pos": [0, 0, 0]})
+    assert q["missing"] and not q["resolved"]

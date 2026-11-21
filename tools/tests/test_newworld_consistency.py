@@ -38,7 +38,7 @@ def ctx(**over):
                           "s2": {"id": "s2", "title": "Teeba (KotM)", "name": "Teeba", "culture_tags": "argonian"}},
          "tiers": TIERS, "symbols": SYMS, "regions": {"r": {"name": "Reg"}}, "cultures": {"c": {"name": "Cul"}},
          "on_road": {"a", "b"}, "on_route": set(), "aliases": {}, "person_names": {"weeltul"}, "factions": {"faction.known"},
-         "quests": [], "lines": {}, "drafts": {}, "main": {"b"}, "ground": {}, "map_page": None,
+         "quests": [], "lines": {}, "drafts": {}, "main": {"b"}, "ground": {},
          "generated": {"digest": []}, "cell_region": {}}
     c.update(over)
     return c
@@ -125,15 +125,12 @@ def test_source_note_against_source():
 
 
 def test_atlas_against_record():
-    page = {"a": {"n": "Alpha", "symid": "s.village", "reg": "r", "pop": 20, "radius": 50.0},
-            "b": {"n": "Beta", "symid": "s.town", "reg": "r", "pop": 40, "radius": 50.0}}
-    assert causes(ctx(map_page=page), "atlas")[0] == set()
-    c = ctx(map_page=copy.deepcopy(page), cell_region={"0,0": "other"})
-    c["map_page"]["a"]["pop"] = 3
+    assert causes(ctx(), "atlas")[0] == set()
+    c = ctx(cell_region={"0,0": "other"})
     c["on_road"] = set()
     c["places"]["b"]["footprint_radius_m"] = 500.0
     got, R = causes(c, "atlas")
-    assert {"the map page is behind the records", "the record's region differs from its cell's",
+    assert {"the record's region differs from its cell's",
             "a town or city on no road or travel route", "the footprint is too big for its tier"} <= got
     assert {f.place for f in R.items if f.cause.startswith("a town or city")} == {"b"}  # a village needs no road
 
@@ -238,3 +235,19 @@ def test_a_draft_of_another_source_fails_unless_marked_awaiting_its_redraft():
     assert "a redraft mark naming another source than the allocated one" in causes(ctx(drafts={"a": old}), "draft")[0]
     d["place"]["redraft"] = {"source_id": "s1", "why": "source changed to s1 2026-11-21 by hand"}
     assert "a redraft mark on a draft already of its source" in causes(ctx(drafts={"a": d}), "draft")[0]
+
+
+def test_a_studio_save_does_not_make_the_built_check_old(tmp_path):
+    import os
+    import subprocess
+    from tools.newworld import consistency
+    def g(*a, when=None):
+        env = dict(os.environ, GIT_COMMITTER_DATE=when, GIT_AUTHOR_DATE=when) if when else None
+        subprocess.run(["git", "-C", str(tmp_path), *a], check=True, capture_output=True, env=env)
+    g("init", "-q"); g("config", "user.email", "t@t"); g("config", "user.name", "t")
+    (tmp_path / "p").mkdir(); (tmp_path / "p/place.json").write_text("{}")
+    g("add", "."); g("commit", "-q", "-m", "draft", when="2020-01-01T00:00:00Z")
+    (tmp_path / "p/edits").mkdir(); (tmp_path / "p/edits/s.json").write_text("{}")
+    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # an uncommitted save: still the draft's
+    g("add", "."); g("commit", "-q", "-m", "save", when="2026-01-01T00:00:00Z")
+    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # a committed save: still the draft's

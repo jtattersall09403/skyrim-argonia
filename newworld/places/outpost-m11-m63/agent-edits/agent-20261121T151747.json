@@ -1,0 +1,182 @@
+{
+ "save_id": "agent-20261121T151747",
+ "place_id": "outpost-m11-m63",
+ "name": "the landing deck, its basket and trap a step (30) lower than the camp's decks so its posts reach the creek bed at the water's edge",
+ "at": "2026-11-21T15:17:47Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.CTPG99Z82K1N8ZYDWPPBVPAAD8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82011.05,
+     -514140.28,
+     191.21
+    ],
+    "rot": [
+     0,
+     0,
+     5.85236
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82011.05,
+     -514140.28,
+     161.21
+    ],
+    "rot": [
+     0,
+     0,
+     5.85236
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:17:47Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.DFQA5GTFPD0P3KMW510Q8PS3G2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82011.05,
+     -514140.28,
+     0.14
+    ],
+    "rot": [
+     0,
+     0,
+     2.71077
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82011.05,
+     -514140.28,
+     -29.86
+    ],
+    "rot": [
+     0,
+     0,
+     2.71077
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:17:47Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK030PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81975.0,
+     -514190.0,
+     231.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -81975.0,
+     -514190.0,
+     201.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:17:47Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK031PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82050.0,
+     -514230.0,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82050.0,
+     -514230.0,
+     165.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:17:47Z"
+  }
+ ]
+}

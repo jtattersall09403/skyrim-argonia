@@ -19,7 +19,7 @@
 {"place_id":"jal-veesa","need_seq":1,"need_sign_id":"label","detail":"its door shows Vosh-Leera's House"}
 {"place_id":"jal-veesa","need_seq":1,"need_sign_id":"person","detail":"Vosh-Leera heads its household and is home there; Weeltul sends the player back to her house","person_id":"jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"label","detail":"looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
-{"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"}
+{"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of four Saxhleel fences across the creek's narrow head, with a cypress log walk along its top and long grey moss draped on both faces of its fences"}
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored along the camp's bank, masts up, its hold door in the waist, a jetty and two planks over its rail to the bank"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"in the Gang-Master's Hut, beside his hammock"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"label","detail":"the game shows \"Dralin's Strongbox\" on it"}

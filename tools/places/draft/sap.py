@@ -56,6 +56,7 @@ BANK = 128.0                                # units outside the bowl over which 
 BANK_REACH = 600.0                          # units past the tree's half-width a bank pool may lie
 PATCH_MAX = 105.0                           # units: the most the dig lowers any point (the draft's land bound)
 BLOCKS = ("building", "furniture", "door", "container", "actor")   # kinds a bank bowl is never dug under
+NO_BANK = "the tree stands in water with no dry bank at its foot"
 LIVING = re.compile(r"^Hist(Tree|Trunk|Gland)\d+[A-Za-z]*$")
 
 
@@ -189,7 +190,7 @@ def plan(place_id: str, ext: list[dict], bases: dict, G=None, none: list | None 
             at = site(G, t, bases[t["base"]], ext, bases)
             if at is None:
                 if none is not None:
-                    none.append({"on": t["id"], "why": "the tree stands in water with no dry bank at its foot"})
+                    none.append({"on": t["id"], "why": NO_BANK})
                 continue
             if at == (t["pos"][0], t["pos"][1]):
                 at = None
@@ -296,6 +297,11 @@ def apply(st, log=print) -> None:
     G.apply_patches(other)
     none: list[dict] = []
     rows, bases = rows_for(st.place_id, st.ext, st.bases, G, none)
+    # a Hist the drafter said has no pool (sap.none with its own reason, not the stage's) gets none
+    said = [n for n in (st.place.get("sap") or {}).get("none") or [] if isinstance(n, dict) and n.get("why") != NO_BANK]
+    skip = {n.get("on") for n in said}
+    rows = [r for r in rows if r["id"].split(".sap.", 1)[1] not in {s.split(".", 1)[-1] for s in skip}]
+    none = said + [n for n in none if n.get("on") not in skip]
     old = {a["id"] for a in (st.place.get("sap") or {}).get("added") or []}
     keep = {r["id"] for r in rows}
     st.ext[:] = [r for r in st.ext if r["id"] not in old or r["id"] in keep]

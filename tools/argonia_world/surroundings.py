@@ -70,6 +70,7 @@ KINDS = [
     ("inn", "inns", r"tavern"),
     ("stone house", "stone houses", r"manor|castlehouse|stonehouse"),
     ("house", "houses", r"house|haus|longhs|farmhouse"),
+    ("woven fence", "woven fences", r"fencewoven|saxhleelfence|wovenfence"),
     ("stockade of stakes", "stockades of stakes", r"stockade|palisade|pike\d|spikes"),
     ("wall", "walls", r"wall|fence"),
     ("floor", "floors", r"floor|platform"),

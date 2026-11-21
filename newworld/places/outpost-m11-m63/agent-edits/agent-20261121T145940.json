@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T145940",
+ "place_id": "outpost-m11-m63",
+ "name": "the fish basket set on the landing deck's top",
+ "at": "2026-11-21T14:59:40Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK030PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81975.0,
+     -514190.0,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -81975.0,
+     -514190.0,
+     231.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T14:59:40Z"
+  }
+ ]
+}

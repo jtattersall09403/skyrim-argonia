@@ -31,7 +31,7 @@ SERVICE_WORDS = {"trader-spells": "sells spell tomes", "trainer": "offers traini
                  "trader-innkeeper": "sells food and drink", "inn-room": "rents a bed for the night",
                  "rootworm-stop": "offers to call a rootworm to carry you to other towns",
                  "boat-stop": "offers passage by boat to other towns"}
-NAMED_TYPES = {"FURN", "CONT", "ACTI", "DOOR", "BOOK", "MISC", "FLOR", "WEAP", "ARMO", "ALCH", "INGR", "KEYM"}
+NAMED_TYPES = {"FURN", "CONT", "ACTI", "DOOR", "BOOK", "MISC", "FLOR", "TREE", "WEAP", "ARMO", "ALCH", "INGR", "KEYM"}  # a tree is named only when harvested (Hanging Moss)
 
 
 def _out() -> Path:

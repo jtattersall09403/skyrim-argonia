@@ -975,7 +975,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 def _hand(sc, verb, args, sess) -> list[dict]:
     pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False, "rot": True, "above": True,
-                          "kind": True, "depth": True, "force": False})
+                          "kind": True, "depth": True, "force": False, "scale": True})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
     if verb == "place":
@@ -1035,11 +1035,11 @@ def _hand(sc, verb, args, sess) -> list[dict]:
 
 
 def _place(sc, pos, o, sess) -> list[dict]:
-    """`place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
+    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
     as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above)."""
     why = str(o.get("why") or "").strip()
     if len(pos) < 2 or not why:
-        raise ValueError('place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why it is here>"')
+        raise ValueError('place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why it is here>"')
     xyz = [float(v) for v in pos[1].split(",")]
     above = o.get("above")
     if above is not None:
@@ -1053,7 +1053,7 @@ def _place(sc, pos, o, sess) -> list[dict]:
     sess["n"] = sess.get("n", 0) + 1
     row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
-           "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": 1, "layer": "place",
+           "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}
     return [{"op": "ref.add", "space": sc.space, "call": "fault", "ref": row}]
 

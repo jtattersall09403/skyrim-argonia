@@ -1,0 +1,204 @@
+{
+ "save_id": "agent-20261121T154103",
+ "place_id": "outpost-m11-m63",
+ "name": "a fifth low deck north of the east deck carries the east tent and its bedroll, so the ramp up from the bank lands on an open deck; the fourth deck's bedroll toward the tent's open side",
+ "at": "2026-11-21T15:41:03Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK0460000",
+    "base": "King of the Murkmire.esp:05556C",
+    "kind": "static",
+    "pos": [
+     -82000.86,
+     -513559.52,
+     190.83
+    ],
+    "rot": [
+     0,
+     0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "landing",
+    "walk": 0.8,
+    "why": "a fifth low cypress deck of the platform's own kit north of the east deck, so the ramp up from the bank lands on an open deck: the second warden tent's platform",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:41:03Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK0470000",
+    "base": "King of the Murkmire.esp:055563",
+    "kind": "static",
+    "pos": [
+     -82000.86,
+     -513559.52,
+     -0.24
+    ],
+    "rot": [
+     0,
+     0,
+     1.13446
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "landing",
+    "why": "a fifth low cypress deck of the platform's own kit north of the east deck, so the ramp up from the bank lands on an open deck: the second warden tent's platform",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:41:03Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK007PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81890.9,
+     -513797.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82000.9,
+     -513559.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:41:03Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK038PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81890.9,
+     -513797.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82000.9,
+     -513559.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:41:03Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK039PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -81735.9,
+     -514045.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T15:41:03Z"
+  }
+ ]
+}

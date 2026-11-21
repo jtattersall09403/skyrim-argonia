@@ -57,7 +57,9 @@ cliff pieces (Tropical Skyrim's among them); bare stretched ground is a fault.
 2. `python -m tools.places draft wholesale <place_id> --offset <u> [--carry-radius u] [--cap u] [--keep-wet] --dry`:
    read the pieces laid, the band, the largest raise and lower, the source water area and what our water holds;
    then run it without `--dry`. Every source piece inside the footprint lands at the one transform and height; only
-   actors, the source's water plane and levelled bases are left out (`ledger.jsonl` says why).
+   actors, the source's water plane and levelled bases are left out (`ledger.jsonl` says why). A place that takes one
+   part of its source (its plan's `differs`) adds `--take <u>`: only the pieces within u of the pivot are laid, and the
+   ground and the source's walking mesh are carried for that part alone; the rest of the footprint stays ours.
 3. `draft wholesale <place_id> --offset <u> --rooms`: the source's rooms with their door pairs and arrivals, landing
    where the source landed them (`place-rooms`).
 4. `draft wholesale <place_id> --offset <u> --walks <x,y>` (the hub: the place's middle or its landing): the source's
