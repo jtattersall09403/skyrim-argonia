@@ -17,91 +17,67 @@
   "drop": {},
   "replace": {},
   "plan": {
+   "source": "Ree-An-Wo (King of the Murkmire): a Naga camp in the marsh, its hide tents on two stilt watch towers and round a ground fire, bedrolls, cook stand, a Naga chest, a Xanmeer floor with busts, laid wholesale at one transform (turn 90, +290) with its marsh relief; the owner's ruling (2026-11-21) that main quest places get their closest match. The timber longhouse and its cellar the story needs are added whole from Dushnikh Yal, the one source holding them.",
    "look": [
     {
      "line": "hide tents hung with bones",
-     "by": "each of the five orc awning sites takes King of the Murkmire's hide tent (ALPAScaleTent02, Ree-An-Wo's); the awnings' partitions dropped; a bone totem beside each tent"
+     "by": "Ree-An-Wo's own six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent"
     },
     {
      "line": "a timber longhouse",
-     "by": "the source's OrcLonghouse01 kept with its door and room (the Naga longhouse: pay and stolen goods); orc tables, chairs and chest replaced by King of the Murkmire's rustic pieces"
+     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added at the camp's east edge, its door facing the camp"
     },
     {
-     "line": "the cellar",
-     "by": "kept: main quest 4 needs the longhouse and its cellar"
-    },
-    {
-     "line": "a fire pit",
-     "by": "the source's campfire and fires kept"
+     "line": "around a fire pit",
+     "by": "the source's fire camp kept; a second fire of the source's own fire set before the longhouse door, where the guards keep"
     },
     {
      "line": "jars of sap stacked by the longhouse wall",
-     "by": "draft.add: urn stacks beside the longhouse door"
-    },
-    {
-     "line": "a pole of trophies",
-     "by": "draft.add: a tall bone totem by the fire"
-    },
-    {
-     "line": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
-     "by": "dropped: the record names no wall"
-    },
-    {
-     "line": "structure: mine",
-     "by": "dropped: the record names none"
-    },
-    {
-     "line": "structure: orc smithy, stable, well, counter, dragon perch",
-     "by": "dropped: the record promises no smith, horses, trader or dragon"
-    },
-    {
-     "line": "tanning rack",
-     "by": "replaced by King of the Murkmire's scale tanning rack"
+     "by": "three glazed urns by the wall south of the longhouse door, beside the quest's own stack"
     },
     {
      "line": "a cage at the camp's edge",
-     "by": "Sesk's Cage: Skyrim's metal cage (MetalCage01) at the west edge, its door the quest's locked MetalCageDoor01 at the cage's origin (draft.add; quests.jsonl thing.mn04.cage)"
+     "by": "Skyrim's MetalCage01 at the west edge toward the reeds, its door the quest's MetalCageDoor01"
     },
     {
-     "line": "a bone shrine of standing stones",
-     "by": "draft.add: a ring of four King of the Murkmire Xanmeer obelisks with scattered bones (the Loreisian camp's ring, its Nordic Doomstone circle swapped for the marsh's own standing stone)"
+     "line": "a pole of trophies",
+     "by": "Curse of Cipactli's tall bone totem by the longhouse fire"
     }
    ],
-   "source": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped",
    "gives": [
     {
      "kind": "combat-foes",
-     "by": "quest 4's own Naga guards at a fixed level in quests.jsonl: Jeeta-Sakka and two guards at the fire pit by the longhouse and one by the longhouse door, beside the camp's two Naga guards in people.jsonl"
+     "by": "quest 4's guards at the longhouse fire and door, the camp's two guards on their patrol between the fires"
     },
     {
      "kind": "treasure",
-     "by": "the longhouse's store chest (Skyrim.esm:097E36 in the copied longhouse), T3 behind an Adept lock: the guards' pay and stolen goods"
+     "by": "the longhouse's store chest (copied with the room) behind its lock: the guards' pay and stolen goods; the Naga loot chest by the fire camp"
     }
    ],
    "structures": [
     {
-     "structure": "mine",
-     "what": "Dushnikh Mine's mouth",
-     "verdict": "dropped",
-     "why": "the record names no mine: a Naga camp of tents, a longhouse, a fire pit and a cage"
-    },
-    {
-     "structure": "walls",
-     "what": "the orc stronghold's palisade walls",
-     "verdict": "dropped",
-     "why": "the record names no wall: hide tents and a longhouse round a fire pit, open to the reeds so the cage can be reached unseen (main quest 4)"
-    },
-    {
-     "cluster": "b01",
-     "what": "the timber longhouse (OrcLonghouse01) with two hide tents beside it",
+     "cluster": "landing",
+     "what": "the fire camp, the low platform and the Xanmeer floor with its busts",
      "verdict": "kept",
-     "why": "the record's timber longhouse round the fire pit, where the guards' pay and stolen goods lie, and its hide tents"
+     "why": "the camp's fire, tents, bedrolls, cook spot and its old stone heart; its gas traps dropped (a lived camp does not trap its own ground)"
     },
     {
-     "cluster": "s04",
-     "what": "three hide tents on the camp's north side",
+     "cluster": "w01",
+     "what": "the north watch tower with two hide tents",
      "verdict": "kept",
-     "why": "the record's hide tents hung with bones"
+     "why": "the guards' watch point and sleeping platform over the marsh"
+    },
+    {
+     "cluster": "s06",
+     "what": "the second watch tower with two hide tents",
+     "verdict": "kept",
+     "why": "the record's hide tents; a second watch over the approach"
+    },
+    {
+     "cluster": "s10",
+     "what": "rock outcrops and cypress east of the camp",
+     "verdict": "kept",
+     "why": "the marsh's own ground; one rock before the longhouse door and a cypress inside it removed"
     }
    ]
   }
