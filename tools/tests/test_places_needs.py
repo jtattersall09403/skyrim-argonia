@@ -166,6 +166,25 @@ def test_who_words_and_check_hold_rests_to_the_place_files(world):
     assert any("no person fenwick.Z" in e for e in errs)
 
 
+
+def test_a_sight_result_in_the_wrong_shape_is_refused_when_written_and_by_check(world):
+    """A plain string where {result, said} belongs is refused at the write, naming the row and the shape, and
+    `needs check` names it too on a hand-edited file (else only the database load finds it, at the gate)."""
+    _judged(world)
+    doc = N.read("fenwick", world["root"])
+    doc["needs"][0]["sight"] = "recognised"
+    with pytest.raises(ValueError, match=r"need 0 \(a hall that can be entered\): sight is \"recognised\"; it must be"):
+        N.write(doc, world["root"])
+    p = N.source_path("fenwick", world["root"])
+    p.write_text(json.dumps(doc))                                    # a hand edit, past the tool
+    errs = N.check("fenwick", world["root"], world["places"], world["people"])
+    assert any("need 0" in e and '"result": "recognised" or "not recognised"' in e for e in errs)
+    doc["needs"][0]["sight"] = {"result": "seen", "said": "a hall"}
+    assert N.sight_problems(doc)
+    N.record_sight("fenwick", 0, "recognised", "a long hall with a door", world["root"])
+    assert N.read("fenwick", world["root"])["needs"][0]["sight"] == {"result": "recognised", "said": "a long hall with a door"}
+    assert N.check("fenwick", world["root"], world["places"], world["people"]) == []
+
 def test_owner_changes_are_recorded_and_listed(world):
     _judged(world)
     with pytest.raises(ValueError):
