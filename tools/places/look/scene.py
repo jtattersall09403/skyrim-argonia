@@ -140,6 +140,7 @@ class Scene:
         self.ground = Ground({k: list(v) for k, v in g.cells.items()}, g.water_by_cell, g.default_water, g.sha)
         self.ground.apply_patches(self.files.get("land") or [])
         refs = [r for r in copy.deepcopy(self.files["spaces"]["exterior"]["refs"]) if not r.get("removed")]
+        self._resolve_bases(refs)
         seat_all(refs, self.ground)
         self.refs = {r["id"]: r for r in refs}
         self.pieces = [p for p in (self.piece(r) for r in refs) if p]
@@ -168,6 +169,7 @@ class Scene:
                 self.bases = _room_bases(csrc) | self.bases
             floor = (csrc, info["copy_of"].split("/", 1)[1])
         refs = [r for r in rows if not r.get("removed") and r.get("pos")]
+        self._resolve_bases(refs)
         self.info = info
         self.refs = {r["id"]: r for r in refs}
         self.pieces = [p for p in (self.piece(r) for r in refs) if p]
@@ -189,6 +191,17 @@ class Scene:
             self.ground = room.flat_floor(float(lo[2]))
         if not len(self.ground.T):
             self.ground = room.flat_floor(float(lo[2]))
+
+    def _resolve_bases(self, refs: list[dict]) -> None:
+        """A row whose base the draft's own set lacks (a piece placed by hand from another plugin, `look place`) takes
+        it from the asset catalogue, as the draft bundle does, so it is drawn and measured as its model, never a box."""
+        missing = {r["base"] for r in refs if r.get("base")} - set(self.bases)
+        if missing:
+            from tools.places import draft_bundle
+            cat = draft_bundle.catalogue()
+            got = {k: cat[k] for k in missing if k in cat}
+            if got:
+                self.bases = self.bases | got
 
     def faults(self) -> list[dict]:
         """The open faults: every fault the probe finds less those the drafter accepted (`accepted_faults`)."""

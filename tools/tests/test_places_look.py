@@ -801,3 +801,18 @@ def test_at_stand_puts_the_eye_over_the_deck_under_the_point_not_the_roof_and_re
         framing.stand_camera(things, g, [1000, 0, 400], *geom.aabb(door), 640, 480)
     with pytest.raises(ValueError, match="inside the mesh of"):
         framing.stand_camera(things, g, [0, 0, 530], *geom.aabb(door), 640, 480)  # in the roof itself
+
+
+def test_a_piece_placed_by_hand_from_another_plugin_resolves_from_the_catalogue(monkeypatch):
+    """`look place` of a base the draft's own set lacks (a tent from another source) is drawn and measured as its
+    model, taken from the asset catalogue as the draft bundle takes it, never left a stand-in box."""
+    from types import SimpleNamespace
+    from tools.places import draft_bundle
+    from tools.places.look.scene import Scene
+    tent = {"key": "Other.esp:000001", "edid": "Tent", "model": "argonia/clutter/scaletent02.nif",
+            "bounds": [[-273, -199, -32], [218, 207, 339]]}
+    monkeypatch.setattr(draft_bundle, "catalogue", lambda path=None: {tent["key"]: tent})
+    sc = SimpleNamespace(bases={"Src.esp:000002": {"key": "Src.esp:000002"}})
+    Scene._resolve_bases(sc, [{"base": "Other.esp:000001"}, {"base": "Src.esp:000002"}, {"base": "Gone.esp:000003"}])
+    assert sc.bases["Other.esp:000001"]["model"] == tent["model"]
+    assert "Gone.esp:000003" not in sc.bases and "Src.esp:000002" in sc.bases
