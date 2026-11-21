@@ -282,3 +282,11 @@ def test_a_hist_is_one_unit_with_its_roots_glands_and_sap_and_is_seated_by_its_o
     dz = U.hist_reassembly(pl, un)
     assert dz["d.gland"] == -100.0                  # back at the source's 600 over the trunk
     assert dz["d.root"] == -(70.0 + U.BURY_MIN)     # its foot (570) sunk BURY_MIN into our ground
+
+
+def test_a_huts_light_is_a_fixture_not_a_house():
+    lamp = {"id": "l", "kind": "building", "model": "vvardenfell/ashlanderhut/allight05.nif"}
+    hut = {"id": "h", "kind": "building", "model": "vvardenfell/ashlanderhut/ashlanderhut01.nif"}
+    assert U._role0(lamp) != "body" and U._role0(hut) == "body"
+    rope = {"id": "r", "kind": "building", "model": "clutter/ruins/ruinsceilingropeshort.nif"}
+    assert U._role0(lamp) == "loose" and U._role0(rope) == "loose"

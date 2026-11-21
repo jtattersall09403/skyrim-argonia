@@ -59,6 +59,15 @@ HIST_SNAP = 128.0      # a draft's added Hist stands for the source's when it st
 
 
 # ---------- pieces ----------
+FIXTURE_RE = re.compile(r"light|lantern|lamp|candle|sconce|rope|chain")
+
+
+def _stem(p: dict) -> str:
+    """The model's own file name: a hut's light (ashlanderhut/allight05.nif) or a lantern's rope from a tree
+    (ruinsceilingropeshort.nif) is a fixture, not a hut or a thing standing on the ground."""
+    return (p.get("model") or "").lower().replace("\\", "/").rsplit("/", 1)[-1]
+
+
 def _words(p: dict) -> str:
     return f"{p.get('edid') or ''} {p.get('model') or ''}".lower()
 
@@ -152,9 +161,12 @@ def _role0(p: dict) -> str:
         return "door"
     if p.get("kind") in LOOSE and not p.get("model"):
         return "loose"
+    if FIXTURE_RE.search(_stem(p)):
+        return "loose"          # a light, a lantern or a rope hangs from what holds it: it has no feet of its own
     if STEPS_RE.search(w) and p.get("kind") in ("building", "static"):
         return "steps"
-    if p.get("kind") == "building" and any(x in w for x in BODY_WORDS) and not any(x in w for x in DECK_WORDS + ("plank", "walkway", "bridge")):
+    if (p.get("kind") == "building" and any(x in w for x in BODY_WORDS) and not FIXTURE_RE.search(_stem(p))
+            and not any(x in w for x in DECK_WORDS + ("plank", "walkway", "bridge"))):
         return "body"
     if p.get("kind") in ("building", "static") and any(x in w for x in SPAN_WORDS):
         return "span"
@@ -364,7 +376,7 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
         for q, u in list(unit_of.items()):
             lo, hi = boxes[q]
             if units[u]["kind"] not in ("thing", "hist") and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
-                add(p["id"], u, "hanging" if p.get("kind") == "light" else "on")
+                add(p["id"], u, "hanging" if p.get("kind") == "light" or FIXTURE_RE.search(_stem(p)) else "on")
                 break
 
     for pid, u in unit_of.items():
