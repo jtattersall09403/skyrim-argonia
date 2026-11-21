@@ -502,6 +502,87 @@
     ],
     "why": "Okeeh the cook (main quest 1: she asks the new gang's names in the hold, a few steps from where the player wakes): her work spot is the hold's mess table, by its food barrels"
    }
+  },
+  "plan": {
+   "source": "Military Camp Hjaalmarch (Skyrim, Imperial side) for the camp, laid wholesale at one turn (340, +14100) with its level camp floor carried within 900 units and capped at 150, so its tents stand level on our river bank; Black Marsh & Valenwood's Imperial ship and its furnished hold for the work barge the main quest opens in (owner, 2026-11-21: the lane's recommendation applied). The camp is the closest match for a work camp of tents round a cook's fire; its Imperial tents give Ashgate a look no other place has (Reed-Sill Weir and Karsh-Naal Camp take Ree-An-Wo's hide tents). The stone hut and its room come whole from Journey to Baan Malur's Baan Malur, the one stone cottage with a one-room interior in the marsh's mods.",
+   "look": [
+    {
+     "line": "a low stone hut on the river bank",
+     "by": "Journey to Baan Malur's stone house (SOMRStonehouse01) with its door frame and a Raven Rock door, south of the cook's fire, set into the slope; its room copied from Baan Malur's own house (BaanDrHutSmall02, cut to the stone house), named Gang-Master's Hut"
+    },
+    {
+     "line": "a wooden gate on the river bank",
+     "by": "a Legion stockade gate standing alone on the landward road east of the tents, the old road post's"
+    },
+    {
+     "line": "the cutters' hide tents",
+     "by": "the source's six Imperial hide tents as it pitches them: three small tents of two bedrolls' room, the long tent (once the field hospital) with four bedrolls, the cook's tent with its bed and dresser, and the mess tent with its trestle tables and pelts"
+    },
+    {
+     "line": "bundled reed stacked by the landing",
+     "by": "seven bundles of cut reed (Journey to Baan Malur's stick bundles) at the jetty's land end, two of them stacked"
+    },
+    {
+     "line": "a work barge moored in the pool below the camp",
+     "by": "Black Marsh & Valenwood's Imperial ship, hull, masts and deck lanterns, moored along the east bank at its own waterline, its hold door in the waist; a Raven Rock jetty from the bank and two ship's planks over its rail"
+    },
+    {
+     "line": "the grave-stake (source note)",
+     "by": "a cypress pole driven upright outside the old post's gate"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "trader-general",
+     "by": "Okeeh the cook: her fish drying rack beside the cook's fire, and her trade at the barge hold's mess table where the main quest finds her"
+    },
+    {
+     "kind": "free-bed",
+     "by": "the unowned bedroll by the plank bench in the gang-master's hut (draft.free_beds)"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the source's own cooking spit at the camp fire, north of the hut (stations)"
+    },
+    {
+     "kind": "harvest-common",
+     "by": "three marshmerrow sedge and three swamp fungus on the river bank below the camp and by the landing"
+    },
+    {
+     "kind": "combat-creature",
+     "by": "main quest 1's own placements (quests.jsonl): two mudcrabs at the river's edge and the young crocodile in the sedge"
+    },
+    {
+     "kind": "treasure",
+     "by": "the gang-master's strong box beside his hammock in the hut (contents, lock and key are stock rows)"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "walls",
+     "what": "the camp's stockade scaffold tops, standing as trestle tables in the mess tent and the cook's tent",
+     "verdict": "kept",
+     "why": "relabelled: they are the camp's tables, not walls; the mess tent eats at them"
+    },
+    {
+     "cluster": "b02",
+     "what": "the Legion's command tent with its war table, map, banners and the small tent beside it",
+     "verdict": "kept",
+     "why": "relabelled as the cutters' mess tent: the war table, map, banners, lean and browse markers pruned, its trestle tables and pelts kept"
+    },
+    {
+     "cluster": "b01",
+     "what": "the officer's tent, the field hospital tent, the cook's fire with its spit, the smithy and the alchemy table",
+     "verdict": "kept",
+     "why": "relabelled: the officer's tent is the cook's tent, the hospital tent sleeps four cutters on bedrolls in place of its pallets; the fire and spit are the cook's fire; the smithy, surgeon's table, wounded markers, blood and levelled chests pruned"
+    },
+    {
+     "cluster": "s04",
+     "what": "the three small soldiers' tents with their bedrolls and firewood",
+     "verdict": "kept",
+     "why": "as built: the cutters' tents, their ground levelled into our slope"
+    }
+   ]
   }
  }
 }
