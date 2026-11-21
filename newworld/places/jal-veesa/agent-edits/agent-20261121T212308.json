@@ -1,0 +1,526 @@
+{
+ "save_id": "agent-20261121T212308",
+ "place_id": "jal-veesa",
+ "name": "floating ground plants at the town's edge and on the mound sunk to the ground",
+ "at": "2026-11-21T21:23:08Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TM37PW7GCDNZN0XCZQDE4ZM38A",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51367.63,
+     -508883.37,
+     565.2
+    ],
+    "rot": [
+     0,
+     0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51367.63,
+     -508883.37,
+     499.468
+    ],
+    "rot": [
+     0,
+     0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.C98N7YF0BSM993WJGZ2SEB2BBJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51994.42,
+     -508082.26,
+     473.74
+    ],
+    "rot": [
+     0,
+     0,
+     0.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51994.42,
+     -508082.26,
+     420.609
+    ],
+    "rot": [
+     0,
+     0,
+     0.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KVPT9FWHQ9Q8N4TQDA7Y80MEED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54925.6,
+     -506614.09,
+     546.12
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54925.6,
+     -506614.09,
+     501.391
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NDRE5WZVMG04D33EEDHJTEQX97",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55104.76,
+     -505787.68,
+     600.92
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55104.76,
+     -505787.68,
+     522.626
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MEGZTXPR92EYD512JMXAPHSFC5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55236.78,
+     -505023.84,
+     698.94
+    ],
+    "rot": [
+     0,
+     0,
+     0.7
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55236.78,
+     -505023.84,
+     552.881
+    ],
+    "rot": [
+     0,
+     0,
+     0.7
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GNFSW2S727X18AYRPVPHZ8WJTW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55286.45,
+     -508138.5,
+     557.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55286.45,
+     -508138.5,
+     458.522
+    ],
+    "rot": [
+     0,
+     0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2KDNYHS3ZZMBYWFJE8X4YM2V7Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55288.33,
+     -506464.95,
+     640.53
+    ],
+    "rot": [
+     0,
+     0,
+     2.1
+    ],
+    "scale": 1.44,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55288.33,
+     -506464.95,
+     559.817
+    ],
+    "rot": [
+     0,
+     0,
+     2.1
+    ],
+    "scale": 1.44,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KNASDAZ53Y3NHSAF6BAWEJ0SQH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55606.13,
+     -508671.84,
+     527.54
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1.87,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55606.13,
+     -508671.84,
+     460.634
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1.87,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TWN3CPF2K8102QM0DPSRHE3AD3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -60141.89,
+     -507876.54,
+     597.27
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1.61,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -60141.89,
+     -507876.54,
+     497.632
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1.61,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4Q50K9KKMQS1X7FRKHAMDJY65A",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55995.67,
+     -504232.12,
+     751.71
+    ],
+    "rot": [
+     0,
+     0,
+     5.88319
+    ],
+    "scale": 0.81,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55995.67,
+     -504232.12,
+     699.835
+    ],
+    "rot": [
+     0,
+     0,
+     5.88319
+    ],
+    "scale": 0.81,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.K59CNPGNQEMAF78042TWC32Y2R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -60738.99,
+     -506533.29,
+     1024.39
+    ],
+    "rot": [
+     0,
+     0,
+     0.9
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -60738.99,
+     -506533.29,
+     490.113
+    ],
+    "rot": [
+     0,
+     0,
+     0.9
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-21T21:23:08Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1HRB7GZD23KKBWD3FEYRH3V328",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -60494.1,
+     -506706.56,
+     1101.51
+    ],
+    "rot": [
+     0,
+     0.10471976,
+     0.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -60494.1,
+     -506706.56,
+     582.01
+    ],
+    "rot": [
+     0,
+     0.10471976,
+     0.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-21T21:23:08Z"
+  }
+ ]
+}
