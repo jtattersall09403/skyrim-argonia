@@ -73,8 +73,10 @@ def _words(p: dict) -> str:
 
 
 def ground_piece(p: dict) -> bool:
-    """A tree, rock, root, plant or ground cover: it belongs to the ground, never to a building."""
-    return p.get("kind") in GROUND_KINDS or "root" in _words(p) or "/landscape/" in _words(p)
+    """A tree, rock, root, plant, ground cover or a mud mound (the source's builders shaped ground with them): it
+    belongs to the ground, never to a building."""
+    w = _words(p)
+    return p.get("kind") in GROUND_KINDS or "root" in w or "/landscape/" in w or "mudmound" in w
 
 
 def pieces_of(rows: list[dict], bases: dict, bounds) -> list[dict]:
@@ -161,8 +163,8 @@ def _role0(p: dict) -> str:
         return "door"
     if p.get("kind") in LOOSE and not p.get("model"):
         return "loose"
-    if FIXTURE_RE.search(_stem(p)):
-        return "loose"          # a light, a lantern or a rope hangs from what holds it: it has no feet of its own
+    if FIXTURE_RE.search(_stem(p)) or _words(p).startswith("fx") or "effects/" in _words(p):
+        return "loose"          # a light, a lantern or a rope hangs from what holds it; mist and fog are air: no feet
     if STEPS_RE.search(w) and p.get("kind") in ("building", "static"):
         return "steps"
     if (p.get("kind") == "building" and any(x in w for x in BODY_WORDS) and not FIXTURE_RE.search(_stem(p))

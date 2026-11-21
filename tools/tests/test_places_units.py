@@ -290,3 +290,8 @@ def test_a_huts_light_is_a_fixture_not_a_house():
     assert U._role0(lamp) != "body" and U._role0(hut) == "body"
     rope = {"id": "r", "kind": "building", "model": "clutter/ruins/ruinsceilingropeshort.nif"}
     assert U._role0(lamp) == "loose" and U._role0(rope) == "loose"
+
+
+def test_a_mud_mound_is_ground_and_mist_has_no_feet():
+    assert U.ground_piece({"kind": "static", "edid": "01mudmound", "model": "telvanni/tel_ext_cap_03.nif"})
+    assert U._role0({"kind": "static", "edid": "FXFog01", "model": "effects/fxfog01.nif"}) == "loose"
