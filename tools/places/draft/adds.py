@@ -64,11 +64,47 @@ def pin(place: dict) -> int:
     return n
 
 
+def follow(place: dict, ops: list) -> list[str]:
+    """A hand's stroke on an added thing written into its `draft.add` row, so the stage places it where the hand put
+    it: a move sets `pos` (and the room's height), `rot_z`, `scale` and `dz` (its seat's); a drop marks the row
+    `dropped`; adding it back clears that. Pins the keys first. Returns the ids followed."""
+    adds = (place.get("draft") or {}).get("add") or []
+    if not adds:
+        return []
+    pin(place)
+    by = {ident(place["place_id"], a, str(a["key"])): a for a in adds}
+    done = []
+    for op in ops:
+        a = by.get(op.get("id") or (op.get("ref") or {}).get("id"))
+        if a is None:
+            continue
+        if op["op"] == "ref.move":
+            after = op.get("after") or {}
+            room = (a.get("space") or "exterior") != "exterior"
+            if after.get("pos"):
+                x, y, z = (float(v) for v in after["pos"][:3])
+                a["pos"] = [round(x, 2), round(y, 2)] + ([round(z, 2)] if room else [])
+            if after.get("rot"):
+                a["rot_z"] = round(float(after["rot"][2]), 5)
+            if after.get("scale") is not None:
+                a["scale"] = after["scale"]
+            if not room and (after.get("seat") or {}).get("dz") is not None:
+                a["dz"] = round(float(after["seat"]["dz"]), 2)
+        elif op["op"] == "ref.remove":
+            a["dropped"] = True
+        elif op["op"] == "ref.add":
+            a.pop("dropped", None)
+        done.append(op.get("id") or op["ref"]["id"])
+    return done
+
+
 def rows(place_id: str, dec: dict, bases: dict) -> list[tuple[str, dict]]:
-    """Each `draft.add` row as a place row with its `space`."""
+    """Each `draft.add` row as a place row with its `space`; a row a hand dropped (`dropped`) places nothing."""
     out = []
     adds = dec.get("add") or []
     for k, a in zip(keys(adds), adds):
+        if a.get("dropped"):
+            continue
         space = a.get("space") or "exterior"
         z = float(a["pos"][2]) if len(a["pos"]) > 2 else 0.0
         if space != "exterior":
@@ -283,13 +319,14 @@ def apply(st, log=print) -> None:
     again; rows and rooms it made before and no longer lists are taken out; nothing else is touched."""
     from tools.places.seat import seat_all
     dec = st.place.get("draft") or {}
-    adds = dec.get("add") or []
+    pin(st.place)                       # each row's id from its own key, before any row is placed
+    adds = [a for a in dec.get("add") or [] if not a.get("dropped")]
     want = rows(st.place_id, dec, st.bases)
     st.bases.update(io.catalogue_bases({r["base"] for _, r in want} - set(st.bases)))
     want = rows(st.place_id, dec, st.bases)
-    pin(st.place)
-    minted = {io.mint(st.place_id, "add", str(k), b) for k in range(len(adds) + 64)
-              for b in {a["base"] for a in adds} | {a["id_base"] for a in adds if a.get("id_base")} | {r["base"] for sp in st.files["spaces"].values()
+    every = dec.get("add") or []
+    minted = {io.mint(st.place_id, "add", k, b) for k in {str(a["key"]) for a in every} | set(map(str, range(len(every) + 64)))
+              for b in {a["base"] for a in every} | {a["id_base"] for a in every if a.get("id_base")} | {r["base"] for sp in st.files["spaces"].values()
                                                     for r in sp["refs"] if r.get("why") and not r.get("src")}}
     ids = {r["id"] for _, r in want}
     for sid, sp in st.files["spaces"].items():

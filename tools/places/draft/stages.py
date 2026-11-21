@@ -2,7 +2,9 @@
 
 A place is changed narrowly. Each stage applies its own rule to the standing files, changes only the rows it owns
 and leaves every other row byte for byte as it was; the run prints the rows changed, added and removed per file.
-A row a finalised studio save touched is the owner's and is never changed. A stage that would write outside what it
+A row a hand placed (a committed agent edit or the owner's finalised studio save: moved, turned, sunk, dropped,
+added or edited) stands as the hand left it, whatever the stage would write (tools/places/hands.py `keep_placed`,
+run after every stage); the run logs each such row and what the stage would have done. A stage that would write outside what it
 owns changes nothing and fails.
 
   fit        each piece in the cluster the source gives it (a light in its fixture's), standing where that cluster
@@ -32,7 +34,6 @@ owns changes nothing and fails.
 """
 from __future__ import annotations
 
-import copy
 import json
 import math
 from pathlib import Path
@@ -746,15 +747,9 @@ def run(stage: str, place_id: str, places: Path = io.PLACES, bundles: Path = io.
             log(f"draft quests {place_id}: {len(r['drafted'])} drafted, {len(r['unresolved'])} on no named anchor")
         else:
             st = Standing(place_id, places, bundles)
-            was = {sid: {r["id"]: copy.deepcopy(r) for r in sp["refs"]} for sid, sp in st.files["spaces"].items()}
             RUN[stage](st, log)
-            mine = owner_rows(pdir)
-            for sid, sp in st.files["spaces"].items():      # the owner's rows stand as the owner left them
-                for i, r in enumerate(sp["refs"]):
-                    if r["id"] in mine and r["id"] in was.get(sid, {}) and r != was[sid][r["id"]]:
-                        sp["refs"][i] = was[sid][r["id"]]
-                        log(f"draft {stage} {place_id}: {r['id']} is the owner's (a finalised save): kept as it stands")
             st.write()
+        hands.keep_placed(pdir, before, f"draft {stage} {place_id}", log)   # a hand's placement is authoritative
     except BaseException:
         g.revert(before)
         guard.__exit__(None, None, None)
