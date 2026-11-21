@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T215750",
+ "place_id": "helstrom",
+ "name": "a mud house's window left under the ground when its house was raised to its own ground: raised with it",
+ "at": "2026-11-21T21:57:50Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.JG8RQ20AKPTARJTEEYKDTSHEZV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -36780.61,
+     -612410.15,
+     -18.48
+    ],
+    "rot": [
+     -0.46865386,
+     0.08997264,
+     9.95771
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -36780.61,
+     -612410.15,
+     221.52
+    ],
+    "rot": [
+     -0.46865386,
+     0.08997264,
+     9.95771
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:57:50Z"
+  }
+ ]
+}
