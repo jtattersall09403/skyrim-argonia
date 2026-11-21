@@ -294,3 +294,10 @@ def test_a_hist_is_one_unit_with_its_roots_glands_and_sap_and_is_seated_by_its_o
     dz = U.hist_reassembly(pl, un)
     assert dz["d.gland"] == -100.0                  # back at the source's 600 over the trunk
     assert dz["d.root"] == -(70.0 + U.BURY_MIN)     # its foot (570) sunk BURY_MIN into our ground
+
+
+def test_a_join_a_step_off_its_source_is_within_a_step_and_more_is_mismatched():
+    assert not U.mismatched(-152.9, -168.9000001)          # 16.0000001: a step, to float noise
+    assert not U.mismatched(73.5, 57.4)                    # 16.1
+    assert U.mismatched(-26.4, 4.8) and U.mismatched(59.2, 10.2)
+    assert not U.mismatched(None, 3.0)

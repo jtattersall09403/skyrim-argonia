@@ -794,6 +794,12 @@ def _source_rel(pl: Place, un: dict) -> dict:
     return rel
 
 
+def mismatched(rel: float | None, rs: float | None) -> bool:
+    """A join's end is mismatched when it stands more than a step off the source's: a difference of a step itself
+    (to float noise, a bridge one plank step off) is within a step."""
+    return rel is not None and rs is not None and abs(rel - rs) > STEP + 0.5
+
+
 def joins(pl: Place) -> list[dict]:
     """Every join of a walkway or dock with what it rests on: {walk, unit, piece, with, rel, rel_src, flag}. rel: the
     walkway piece's top over the unit's standing level now; rel_src: the same in the source."""
@@ -817,7 +823,7 @@ def joins(pl: Place) -> list[dict]:
                 if srel is not None:
                     rs = deck_top(pl.src_by[j["piece"]], pl.sc.bases) - srel
             flag = None
-            if rel is not None and rs is not None and abs(rel - rs) > STEP:
+            if mismatched(rel, rs):
                 flag = f"walkway end mismatched ({rel - rs:+.0f})"
             gone = given.get((un["id"], tgt["id"]), given.get((tgt["id"], un["id"])))
             if gone is not None:
