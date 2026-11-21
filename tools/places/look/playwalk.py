@@ -52,7 +52,7 @@ EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this o
 DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
 TOUR_STRIDE = 768.0   # a station every this many units on a tour
 TIMES = {"page": 0.0, "judge": 0.0, "save": 0.0}   # seconds a run spent in the page, judging and saving
-TILE = (512, 384)     # the size of every look
+TILE = (960, 720)     # the size of every look: detail a reader can judge (a tour of a village is about ten minutes)
 JPEG_Q = 88           # strips and the forward filmstrip are JPEG at this quality (tiles stay PNG)
 TOUR_SPLIT = 90000.0  # a tour longer than this (units walked) is cut into two or three
 FULL_GAP = 700.0      # a bridge, walkway, stair or ramp event this near an earlier full-set station gets the short set
@@ -1162,7 +1162,7 @@ def plan_lines(routes: list[dict], stale: dict | None) -> list[str]:
 
 # ---------- the page: shooting, strips, tables ----------
 def tile_size() -> tuple[int, int]:
-    """A look's size: 512x384, the strips' tiles at twice their size (a look at the survey's 1280x960 costs seconds)."""
+    """A look's size: 960x720, the strips' tiles at twice their size (a look at the survey's 1280x960 costs seconds)."""
     return TILE
 
 
