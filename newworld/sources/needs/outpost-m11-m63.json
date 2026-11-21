@@ -3,18 +3,29 @@
  "needs": [
   {
    "seq": 0,
-   "from": ["4a3772b6e8"],
+   "from": [
+    "4a3772b6e8"
+   ],
    "thing": "Sithis' beard hanging on the woven weir's fences, over the shallows where the crocodiles lie",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m11-m63.QW32Q1N2PAMJDJ62N3DNMMSMXY"},
+   "rests": {
+    "space": "exterior",
+    "ref": "outpost-m11-m63.LOOK023PLACE"
+   },
    "signs": [
-    {"sign": "look", "detail": "a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"},
-    {"sign": "label", "detail": "looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
+    {
+     "sign": "look",
+     "detail": "a woven weir of four Saxhleel fences across the creek's narrow head, with a cypress log walk along its top and long grey moss draped on both faces of its fences"
+    },
+    {
+     "sign": "label",
+     "detail": "looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"
+    }
    ],
    "met": true,
-   "why": "Met. Three hanks of grey hanging moss hang on the downstream face of the weir's fences, their tops at the fence tops, a step from the log walk; the shallows below are where the quest's two young crocodiles lie. The quest's own hank of Sithis' beard is the quest's to place on the log walk by them.",
+   "why": "Met. Four hanks of long grey moss hang on the downstream face of the weir's fences (two more on the upstream face), their tops at the log walk's edge over the water; the shallows below are where the quest's two young crocodiles lie, and the quest's own hank of Sithis' beard hangs among them. Seen from the landing and from the log walk.",
    "fit": "The woven weir itself, picked from the log walk or from its bank end.",
-   "narrow": "Yes: three hanging-moss pieces seated on the weir's fences (draft.add, on the fence).",
+   "narrow": "Yes: six hanging-moss pieces hung on the weir's fences by hand (look place).",
    "tier": "AGENT_INVENTED"
   }
  ]
