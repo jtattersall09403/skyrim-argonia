@@ -1,0 +1,659 @@
+{
+ "save_id": "agent-20261120T112913",
+ "place_id": "helstrom",
+ "name": "helstrom: orphan buried porch and a mud window in a cliff dropped; the b20 cave entrance's porch raised to its door; the spur round the broken ruin crosses the pool on two plank decks; a plank landing before door 8EZ5 out of the water",
+ "at": "2026-11-20T11:29:13Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -35984.11,
+     -606360.08,
+     13.947
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2764
+    ],
+    "scale": 1.5,
+    "seat": {
+     "foot": [
+      -264.1,
+      -311.9,
+      213.9,
+      311.9
+     ],
+     "mode": "ground",
+     "dz": -145.73
+    }
+   },
+   "after": {
+    "pos": [
+     -35984.11,
+     -606360.08,
+     273.947
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2764
+    ],
+    "scale": 1.5,
+    "seat": {
+     "foot": [
+      -264.1,
+      -311.9,
+      213.9,
+      311.9
+     ],
+     "mode": "ground",
+     "dz": 114.27
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.Y104RDFNPZM7Z44FZ790ASBSAY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -35068.35,
+     -605946.56,
+     89.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.07642
+    ],
+    "scale": 1.4,
+    "seat": {
+     "foot": [
+      -246.5,
+      -291.1,
+      199.6,
+      291.1
+     ],
+     "mode": "above",
+     "dz": -70.78
+    }
+   },
+   "after": {
+    "pos": [
+     -35068.35,
+     -605946.56,
+     309.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.07642
+    ],
+    "scale": 1.4,
+    "seat": {
+     "foot": [
+      -246.5,
+      -291.1,
+      199.6,
+      291.1
+     ],
+     "mode": "above",
+     "dz": 149.22
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+    "base": "Black Marsh.esm:1CE8D6",
+    "kind": "building",
+    "pos": [
+     -35984.11,
+     -606360.08,
+     273.947
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2764
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE8FF",
+    "seat": {
+     "foot": [
+      -264.1,
+      -311.9,
+      213.9,
+      311.9
+     ],
+     "mode": "ground",
+     "dz": 114.27
+    },
+    "cluster": "b20"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JG8RQ20AKPTARJTEEYKDTSHEZV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JG8RQ20AKPTARJTEEYKDTSHEZV",
+    "base": "Black Marsh.esm:1D90E1",
+    "kind": "static",
+    "pos": [
+     -20288.14,
+     -611048.6,
+     -30.348
+    ],
+    "rot": [
+     5.82837,
+     6.13553,
+     4.25384
+    ],
+    "scale": 2.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D910B",
+    "seat": {
+     "foot": [
+      0.0,
+      -97.2,
+      79.2,
+      93.2
+     ],
+     "mode": "ground",
+     "dz": -164.0
+    },
+    "cluster": "s42"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2XHG869AB2A3VHJ36W8F7TKSVG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25452.04,
+     -610794.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.69014
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25158.04,
+     -610347.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.69014
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2XHG869AB2A3VHJ36W8F7TKSVG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25158.04,
+     -610347.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.69014
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25158.04,
+     -610347.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK0010000",
+    "base": "Skyrim.esm:0AE62E",
+    "kind": "building",
+    "pos": [
+     -25662.04,
+     -610433.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "walk": 0.1,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    },
+    "why": "carries street KRFMGHRBE44WZEW2AACHM18WXD over our water, which parts what the source's land joined"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK0020000",
+    "base": "Skyrim.esm:0AE62E",
+    "kind": "building",
+    "pos": [
+     -25300.04,
+     -612440.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "walk": 0.1,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    },
+    "why": "carries street KRFMGHRBE44WZEW2AACHM18WXD over our water, which parts what the source's land joined"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25300.04,
+     -612440.25,
+     15.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 15.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25300.04,
+     -612440.25,
+     -59.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -59.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25300.04,
+     -612440.25,
+     -59.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.54012
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -59.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25300.04,
+     -612440.25,
+     -59.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -59.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25300.04,
+     -612440.25,
+     -59.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -59.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25300.04,
+     -612570.25,
+     -39.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -39.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25300.04,
+     -612570.25,
+     -39.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": -39.1,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25300.04,
+     -612570.25,
+     2.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 2.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-20T11:29:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK0020000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -25300.04,
+     -612570.25,
+     2.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 2.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -25300.04,
+     -612400.25,
+     2.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71291
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "stilts",
+     "dz": 2.9,
+     "foot": [
+      -167.5,
+      -256.8,
+      161.6,
+      256.0
+     ]
+    }
+   },
+   "n": 13,
+   "stroke": 13,
+   "at": "2026-11-20T11:29:13Z"
+  }
+ ]
+}

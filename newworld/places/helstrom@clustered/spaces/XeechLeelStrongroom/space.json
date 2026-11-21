@@ -1,0 +1,9 @@
+{
+ "space_id": "XeechLeelStrongroom",
+ "copy_of": "journeytobaanmalur.baanmalurlocation/BaanWDWineCellar",
+ "name": "Council Strongroom",
+ "door_from": "helstrom.8YF723PHB7C82MEN1F9TPGV1ZJ",
+ "parent": "XeechLeelCouncilHouse",
+ "room": null,
+ "added": true
+}

@@ -1,0 +1,12 @@
+{"id":"helstrom.25Z244B1VR5SDH7DMPFQ1DBTVN","src":"Black Marsh.esm:1E4369","removed":true}
+{"id":"helstrom.3BAS3CXW67PYRQK3M3QKS82CWY","src":"Black Marsh.esm:1E4363","removed":true}
+{"id":"helstrom.3W0VXRC3PPKKM7A52K329RWZXT","src":"Black Marsh.esm:1E436D","removed":true}
+{"id":"helstrom.85SFYTMCZMWZA34VXNRNSKGA6K","src":"Black Marsh.esm:1E43AE","removed":true}
+{"id":"helstrom.DFGPJWRWCRZDGZP0FGGQKFG9NC","src":"Black Marsh.esm:1E43DE","removed":true}
+{"id":"helstrom.F1FVXJS2RCVHBDVFNE3NHC3ARC","edid":null,"base":"Black Marsh.esm:1DE5DF","kind":"door","pos":[-5205.2715,19687.234,14774.801],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:1E4419","door":{"to_space":"exterior","to_ref":"helstrom.TJD70AZ04VHV29TM3BQ4MV1QST","to_pos":[-32760.1,-607930.9,152.0],"to_rot":[0.0,0.0,5.5596],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.JX1TGXVXE1F3Q2FFXX5SF2SVGM","src":"Black Marsh.esm:1E4496","removed":true}
+{"id":"helstrom.JXQ4Q3RRKMGAC0RSG858D8Q1M9","src":"Black Marsh.esm:1E436F","removed":true}
+{"id":"helstrom.KR3JTHR9P4FB1CYPQA5DRD4980","src":"Black Marsh.esm:1E4450","removed":true}
+{"id":"helstrom.WPQFREWEZCBEF3ZH5YDHX5BS00","src":"Black Marsh.esm:1E43B0","removed":true}
+{"id":"helstrom.YJV1XJ99NJ85QNNYTR0K20PRCJ","src":"Black Marsh.esm:1E4383","removed":true}
+{"id":"helstrom.YMXAFND9Y7AA2788JT0273PHQJ","src":"Black Marsh.esm:1E4345","removed":true}

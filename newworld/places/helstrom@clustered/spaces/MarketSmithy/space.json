@@ -1,0 +1,9 @@
+{
+ "space_id": "MarketSmithy",
+ "copy_of": "kingofthemurkmire.lilmothlocation/LilmothIronworks",
+ "name": "The Market Smithy",
+ "door_from": "helstrom.R1AVNGCFCTCG3J1BQ8SKK6715S",
+ "parent": "exterior",
+ "room": null,
+ "added": true
+}

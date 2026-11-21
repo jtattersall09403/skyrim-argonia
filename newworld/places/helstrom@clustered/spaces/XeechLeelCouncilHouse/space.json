@@ -1,0 +1,9 @@
+{
+ "space_id": "XeechLeelCouncilHouse",
+ "copy_of": "kingofthemurkmire.lilmothlocation/LilmothMerchantManor01",
+ "name": "The Council House of the Xeech-Leel",
+ "door_from": "helstrom.PJAB81V6GANARBBQNZ6H23Y39G",
+ "parent": "exterior",
+ "room": null,
+ "added": true
+}

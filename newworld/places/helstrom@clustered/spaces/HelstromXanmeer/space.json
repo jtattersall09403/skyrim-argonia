@@ -1,0 +1,17 @@
+{
+ "space_id": "HelstromXanmeer",
+ "copy_of": "kingofthemurkmire.teethofsithislocation/TeethofSithisInt03",
+ "name": "Helstrom Xanmeer",
+ "door_from": "helstrom.TP78Z1NVDQ8JRJP893FR8G52S8",
+ "parent": "exterior",
+ "room": null,
+ "added": true,
+ "cut": {
+  "box": [
+   14975,
+   -800,
+   19400,
+   6700
+  ]
+ }
+}
