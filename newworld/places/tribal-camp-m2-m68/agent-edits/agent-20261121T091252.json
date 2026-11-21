@@ -156,8 +156,8 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
-     "dz": -31.9
+     "mode": "free",
+     "dz": 0.0
     },
     "why": "the pole of trophies by the fire before the longhouse (record look): Curse of Cipactli's tall bone totem",
     "tier": "AGENT_INVENTED"
@@ -220,7 +220,7 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
+     "mode": "free",
      "dz": 0.0
     },
     "why": "bones hung by a hide tent (record look): a bone totem by the second ground tent",

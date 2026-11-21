@@ -24,8 +24,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": 46.0
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "after": {
@@ -41,8 +41,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": 45.2
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "n": 1,
@@ -67,8 +67,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": 108.0
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "after": {
@@ -84,8 +84,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": 107.2
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "n": 2,
@@ -110,7 +110,7 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
+     "mode": "free",
      "dz": 0.0
     }
    },
@@ -127,8 +127,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": -6.1
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "n": 3,
@@ -153,7 +153,7 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
+     "mode": "free",
      "dz": 0.0
     }
    },
@@ -170,8 +170,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": -0.6
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "n": 4,
@@ -196,7 +196,7 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
+     "mode": "free",
      "dz": 0.0
     }
    },
@@ -213,8 +213,8 @@
     ],
     "scale": 1,
     "seat": {
-     "mode": "above",
-     "dz": -2.5
+     "mode": "free",
+     "dz": 0.0
     }
    },
    "n": 5,

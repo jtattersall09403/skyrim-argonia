@@ -1,2 +1,9 @@
 {"id":"tribal-camp-m2-m68.K98TAEJK1P7EBA5SHY45ZAJH88","edid":null,"base":"Skyrim.esm:05AD3C","kind":"door","pos":[120,-1080,232],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Skyrim.esm:067742","door":{"to_space":"DushnikhYalLonghouse","to_ref":"tribal-camp-m2-m68.CTAKRXWTS1S681FQ5EB4YQ39MM","to_pos":[208.25258,249.30089,1.1185589],"to_rot":[0,0,-2.4831848],"flags":"0"},"seat":{"mode":"free"}}
 {"id":"tribal-camp-m2-m68.T1MW06F0FRSQQD6SNADJM4935K","src":"Skyrim.esm:0E957A","removed":true}
+{"id":"tribal-camp-m2-m68.3M0EHA8T52R018JVCKTYR73SH5","src":"Skyrim.esm:067898","removed":true}
+{"id":"tribal-camp-m2-m68.4GR82JBQP29MDW1A5FJXE8NTZF","src":"Skyrim.esm:0678E4","removed":true}
+{"id":"tribal-camp-m2-m68.P6BGN61J2XV9E3WDAFWKJP9SCZ","src":"Skyrim.esm:0EBA15","removed":true}
+{"id":"tribal-camp-m2-m68.D6FW2FQEXEYQ7DZRY1VXG15XK9","src":"Skyrim.esm:0EBA16","removed":true}
+{"id":"tribal-camp-m2-m68.S259XF4VFCTFQVM3K5W6D39KD9","src":"Skyrim.esm:0EBA17","removed":true}
+{"id":"tribal-camp-m2-m68.Y82QABAZW9X2B594XXX6T2N6BT","src":"Skyrim.esm:0EBA18","removed":true}
+{"id":"tribal-camp-m2-m68.FJA2V438D2F2QXG89454BF7QRT","src":"Skyrim.esm:0EBA1A","removed":true}

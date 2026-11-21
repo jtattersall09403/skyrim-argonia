@@ -389,8 +389,8 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
-     "dz": 12.2
+     "mode": "free",
+     "dz": 0.0
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -421,8 +421,8 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
-     "dz": 74.2
+     "mode": "free",
+     "dz": 0.0
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -485,8 +485,8 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
-     "dz": -14.1
+     "mode": "free",
+     "dz": 0.0
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set: a warm-hands spot for a guard",
     "tier": "AGENT_INVENTED"
@@ -517,8 +517,8 @@
     "layer": "place",
     "flags": [],
     "seat": {
-     "mode": "above",
-     "dz": -75.7
+     "mode": "free",
+     "dz": 0.0
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set: a seat by the fire",
     "tier": "AGENT_INVENTED"
