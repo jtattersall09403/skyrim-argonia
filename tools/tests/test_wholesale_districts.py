@@ -79,6 +79,25 @@ def test_a_district_without_its_terrace(monkeypatch):
     assert abs(G1.height(7000, 2000) - 100.0) < 1
 
 
+def test_rooms_of_a_shared_cell_keep_their_own_doors():
+    # the source packs two houses' rooms into one cell; each copy keeps its own way out and its door leads into it
+    def door(i, to, pos):
+        return {"id": i, "base": "d", "kind": "door", "pos": pos, "door": {"to_ref": to, "to_pos": pos, "to_space": "x"}}
+    cell = [door("q1", "e1", [0.0, 0.0, 0.0]), door("q2", "e2", [500.0, 0.0, 0.0])]
+    ext = [{"id": "x.e1", "src": "e1", "door": {"to_space": "cell", "to_ref": "q1"}},
+           {"id": "x.e2", "src": "e2", "door": {"to_space": "cell", "to_ref": "q2"}}]
+    spaces = {"exterior": {"refs": ext},
+              "cell": {"space": {"copy_of": "src/cell", "room": "q1"}, "refs": []},
+              "cell.2": {"space": {"copy_of": "src/cell", "room": "q2"}, "refs": []}}
+    st = types.SimpleNamespace(place_id="x", place={"source_id": "src", "fit": {"pivot": [0, 0], "anchor": [0, 0]}},
+                               files={"spaces": spaces}, src=types.SimpleNamespace(spaces={"cell": types.SimpleNamespace(refs=cell)}),
+                               by_src={"e1": {}, "e2": {}}, ext=ext, S=None, G=None)
+    assert sorted(wholesale.carry_rooms(st, 7.0)) == ["cell", "cell.2"]
+    assert [r["src"] for r in spaces["cell"]["refs"]] == ["q1"] and [r["src"] for r in spaces["cell.2"]["refs"]] == ["q2"]
+    assert ext[1]["door"]["to_space"] == "cell.2" and ext[1]["door"]["to_ref"] == spaces["cell.2"]["refs"][0]["id"]
+    assert ext[0]["door"]["arrival"] == [0.0, 0.0, 7.0]
+
+
 def test_the_carried_mesh_reads_the_districts():
     place = {"fit": {"pivot": [0.0, 0.0], "anchor": [0.0, 0.0], "rot_deg": 0.0},
              "wholesale": {"offset": 5.0, "districts": [{"name": "high", "offset": -900.0, "at": [[7000.0, 0.0]]}]}}

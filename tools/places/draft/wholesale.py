@@ -178,7 +178,9 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
     """The source's rooms carried with their doors working: each way out of a room copied from this source leads to our
     copy of the source's own exterior door and lands where the source landed one, at the one transform (the room's door
     rows written afresh from the source's); `drop_removals`: rooms whose earlier `removed` rows are let go, so the room
-    stands whole as the source built it. Rooms copied from another source are left as they are."""
+    stands whole as the source built it. A copy of one room of a cell the source shares among several doors (its
+    `room`: that room's way out) keeps its own way out alone, and the outside door leads into that copy. Rooms copied
+    from another source are left as they are."""
     fit = st.place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
     rot = math.radians(float(fit.get("rot_deg", 0.0)))
@@ -189,15 +191,18 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
         meta = space.get("space") or {}
         if sp == "exterior" or not str(meta.get("copy_of", "")).startswith(st.place["source_id"] + "/"):
             continue
-        src_sp = st.src.spaces.get(sp)
+        src_sp = st.src.spaces.get(sp) or st.src.spaces.get(str(meta["copy_of"]).split("/", 1)[1])
         if not src_sp:
             continue
+        own = meta.get("room")   # a copy of one room of a shared cell: its own way out alone
         rows = [r for r in space["refs"] if not (r.get("door") and (r["door"].get("to_space") == "exterior"))
                 and not (sp in drop_removals and r.get("removed"))]
         first = None
         for q in src_sp.refs:
             d = q.get("door") or {}
             if not d.get("to_ref") or d["to_ref"] not in st.by_src:     # a way out to the source's exterior only
+                continue
+            if own and q["id"] != own:
                 continue
             x, y, z = d["to_pos"]
             dx, dy = x - pv[0], y - pv[1]
@@ -214,7 +219,7 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
             first = first or io.mint(st.place_id, "exterior", d["to_ref"])
             ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
             if ext_door is not None and ext_door.get("door"):     # the outside door's arrival: the same landing
-                ext_door["door"]["arrival"] = list(row["door"]["to_pos"])
+                ext_door["door"].update(arrival=list(row["door"]["to_pos"]), to_space=sp, to_ref=row["id"])
         space["refs"][:] = rows
         if first:
             meta["door_from"] = first
