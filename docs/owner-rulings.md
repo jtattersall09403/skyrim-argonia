@@ -207,6 +207,11 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
+- The owner has seen the comparison of the two drafting methods (issue #82) and taken the places over to edit in
+  the studio himself; the studio shows both drafts of Jal-Veesa side by side as two places (2026-11-21, #80).
+- One agent owns a place and works through it iteratively (do, look, do more); a place is not passed between many
+  agents (owner, 2026-11-21, #80). Where an agent's context forces a hand-over, the lead keeps the state short
+  enough that this is rare and says so.
 - Before a place is built from its source, the drafter looks at the source as a place and judges it against the
   record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
   structure's own platform, or none); and, where too little of it is useful, takes a better source. These are the
