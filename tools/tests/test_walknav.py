@@ -151,3 +151,19 @@ def test_interior_zones_merge_the_room():
     assert st["block"] == 1 and len(navs) == 1
     v = navs[0]["nv"].verts
     assert v[:, 0].min() >= 500 - 0.5 and navs[0]["nv"].cell == 5
+
+
+def test_a_zone_holds_its_own_level():
+    # a deck 300 over the ground: a block drawn on the deck cuts the deck, never the ground under it
+    meshes = {(0, 0): grid(0, 0, 1000, 1000, 0) + grid(200, 200, 800, 800, 300, n=2)}
+    block = {"id": "w8", "kind": "block", "outline": [[300, 300, 300], [700, 300, 300], [700, 700, 300], [300, 700, 300]]}
+    done, _ = wn.apply(meshes, [block], cell_of=True)
+    c = done[(0, 0)]
+    V = c["verts"]
+
+    def a(ts):
+        return sum(abs(0.5 * ((V[q][0] - V[p][0]) * (V[r][1] - V[p][1]) - (V[r][0] - V[p][0]) * (V[q][1] - V[p][1]))) for p, q, r in ts)
+    ground = [t for t in c["tris"] if max(V[i][2] for i in t) < 1]
+    deck = [t for t in c["tris"] if min(V[i][2] for i in t) > 299]
+    assert math.isclose(a(ground), 1000 * 1000, rel_tol=1e-4)
+    assert math.isclose(a(deck), 600 * 600 - 400 * 400, rel_tol=1e-3)

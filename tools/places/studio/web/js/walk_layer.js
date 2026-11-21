@@ -17,7 +17,9 @@ export class WalkLayer {
   constructor(app) {
     this.app = app; this.on = store.get() === 'on'; this.nav = null; this.meta = null; this.state = null; this.cache = new Map();
     this.group = new THREE.Group(); this.group.renderOrder = 4; this.zones = new THREE.Group(); this.zones.renderOrder = 6;
-    this.mat = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.42, depthWrite: false, side: THREE.DoubleSide,
+    // the mesh where it is seen, and faintly through what stands over it (a tree, a roof), so it reads over the place
+    this.xray = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.12, depthWrite: false, depthTest: false, side: THREE.DoubleSide });
+    this.mat = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide,
       polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -8 });
     this.wire = new THREE.MeshBasicMaterial({ color: '#0d3b39', wireframe: true, transparent: true, opacity: 0.16, depthWrite: false });
     this.popup = null; this.legendOpen = null;   // the key opens by itself in a wide view
@@ -52,8 +54,14 @@ export class WalkLayer {
     this.refresh();
   }
   // ---------- drawing ----------
+  // the place's reach: the box round what it placed outside, and 1,500 units round it
   focus() {
-    const pl = this.app.ground?.meta?.place, o = this.app.ours.origin, r = (this.app.ground?.meta?.radius_m || 120) * 70 + 1500;
+    const refs = [...(this.app.model?.spaces.exterior?.refs.values() || [])];
+    if (refs.length) {
+      const xs = refs.map((r) => r.pos[0]), ys = refs.map((r) => r.pos[1]);
+      return { box: [Math.min(...xs) - 1500, Math.min(...ys) - 1500, Math.max(...xs) + 1500, Math.max(...ys) + 1500] };
+    }
+    const pl = this.app.ground?.meta?.place, o = this.app.ours.origin, r = 6000;
     return pl ? { x: pl.world_x, y: pl.world_y, r } : o ? { x: o[0], y: o[1], r } : null;
   }
   drawn(space) {
@@ -64,9 +72,9 @@ export class WalkLayer {
       const g = new THREE.BufferGeometry();
       g.setAttribute('position', new THREE.BufferAttribute(d.positions, 3)); g.setAttribute('color', new THREE.BufferAttribute(d.colours, 3));
       g.computeBoundingSphere();
-      const mesh = new THREE.Mesh(g, this.mat), wire = new THREE.Mesh(g, this.wire);
-      mesh.renderOrder = 4; wire.renderOrder = 5; mesh.frustumCulled = wire.frustumCulled = false;
-      c = { data: d, mesh, wire, lift: 10 }; this.cache.set(space, c);
+      const mesh = new THREE.Mesh(g, this.mat), wire = new THREE.Mesh(g, this.wire), xray = new THREE.Mesh(g, this.xray);
+      xray.renderOrder = 3; mesh.renderOrder = 4; wire.renderOrder = 5; mesh.frustumCulled = wire.frustumCulled = xray.frustumCulled = false;
+      c = { data: d, mesh, wire, xray, lift: 10 }; this.cache.set(space, c);
     }
     return c;
   }
@@ -81,7 +89,7 @@ export class WalkLayer {
     this.group.visible = this.zones.visible = shown;
     if (shown) {
       const c = this.drawn(S);
-      if (c) { this.group.add(c.mesh); if (v.rig.dist < 9000) this.group.add(c.wire); }
+      if (c) { this.group.add(c.xray, c.mesh); if (v.rig.dist < 9000) this.group.add(c.wire); }
       this.drawZones(S);
     }
     this.legend(); this.drawLabels(); v.redraw();
@@ -136,7 +144,11 @@ export class WalkLayer {
     const zAt = (p) => p[2] ?? (S === 'exterior' ? a.terrain?.heightAt(p[0], p[1]) : 0) ?? 0;
     const c = this.cache.get(S);
     if (c) {
-      for (const isl of c.data.islands.slice(0, 60)) {
+      // the larger cut-off pieces always, every one close up; the nearest to where the view looks first
+      const t = v.rig.target, o2 = v.origin, close = v.rig.dist < 5000;
+      const near = c.data.islands.filter((i) => close || i.tris >= 30)
+        .map((i) => [Math.hypot(i.at[0] - o2[0] - t.x, i.at[1] - o2[1] - t.y), i]).sort((p, q) => p[0] - q[0]).slice(0, 40).map((p) => p[1]);
+      for (const isl of near) {
         const q = v.toScreen([isl.at[0], isl.at[1], isl.at[2] + 40]); if (!vis(q)) continue;
         const g = add('g', { class: 'wm-island', transform: `translate(${q.x},${q.y})` });
         add('circle', { r: 11 }, g); const t = add('text', { y: 4, 'text-anchor': 'middle' }, g); t.textContent = isl.tris > 99 ? '99+' : String(isl.tris);

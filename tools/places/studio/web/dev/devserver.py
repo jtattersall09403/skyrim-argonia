@@ -124,7 +124,7 @@ class State:
                 nb += [tri_of(i, j, 0), tri_of(i, j + 1, 0) if j < n - 1 else -1, tri_of(i - 1, j, 0) if i else -1]
                 kind += [0, 0]
         o = len(verts) // 3
-        for x, y in ((6500, 6500), (6800, 6500), (6800, 6800), (6500, 6800)):
+        for x, y in ((6200, 1000), (6500, 1000), (6500, 1300), (6200, 1300)):
             verts += [x, y, round(self.height(pid, x, y)[0] or 0)]
         t0 = len(kind)
         tris += [o, o + 1, o + 2, o, o + 2, o + 3]

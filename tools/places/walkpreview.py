@@ -92,13 +92,14 @@ def preview(place_id: str, save_id: str, places: Path, out: Path) -> dict:
         shutil.rmtree(work, ignore_errors=True)
 
 
-def start(place_id: str, save_id: str, repo: Path) -> str:
+def start(place_id: str, save_id: str, repo: Path, out: Path, places: Path) -> str:
     """Launch a preview under tooling/job_guard.sh; returns the job's name."""
     import subprocess
     name = f"walkmesh.{place_id}"
     py = os.environ.get("PLACES_PY") or sys.executable
     subprocess.Popen([str(repo / "tooling/job_guard.sh"), "run", name, "--", py, "-m", "tools.places", "walkpreview", place_id,
-                      "--save", save_id], cwd=repo, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+                      "--save", save_id, "--out", str(out), "--places-dir", str(places)],
+                     cwd=repo, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     return name
 
 

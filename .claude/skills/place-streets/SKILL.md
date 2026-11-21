@@ -31,6 +31,9 @@ lays every street, stop and patrol on the network as built.
 - **Door arrivals** stand on the network at their own level; work stops and outdoor day stops are moved onto it.
 - **A door and its arrival are one thing**: an arrival moved by hand or with its door keeps its partner door's landing (`to_pos`) at the same point; a door moved by an edit carries both, and `streets` re-seats the arrival on the walkable ground before it.
 - **Patrols** are taken from the streets, each point on the network and out of the water, at least two points.
+- **The owner's walking zones** (`walk.jsonl`: No walking here, Walk here, Join these) are authoritative, like hand
+  placement: the build applies them to the mesh on every rebuild; never route a street, patrol or arrival through a
+  block zone, nor move or delete a zone.
 
 ## A wholesale place walks on its source's mesh
 

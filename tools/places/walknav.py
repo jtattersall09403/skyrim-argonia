@@ -30,6 +30,7 @@ MAX_GAP = 512.0     # and never more than this
 REACH = 192.0       # a join's point finds the open edge within this of it in plan ...
 REACH_Z = 128.0     # ... and this in height
 WIDTH = 128.0       # a bridge's width along each edge (two agent widths)
+LEVEL = 96.0        # a zone holds the mesh within this of its own surface: a deck over it or the ground under it is kept
 KINDS = ("block", "walk", "join")
 
 
@@ -216,10 +217,14 @@ def apply(meshes: dict, rows: list, cell_of=None, neighbours: dict | None = None
         st[r["kind"]] += 1
         hs = [_planes(p) for p in parts]
         pbb = [_bb(p) for p in parts]
+        fan = [(p[0], p[j], p[j + 1]) for p in parts for j in range(1, len(p) - 1)]
         for k in touched:
             nxt = []
             for poly, f in soup[k]:
                 pp = poly if cn.area2(poly) > 0 else poly[::-1]
+                if not _on_level(pp, fan, out):      # a deck over the zone's ground, the ground under its deck: kept
+                    nxt.append((poly, f))
+                    continue
                 pieces = [pp]
                 hit = False
                 for h, bb in zip(hs, pbb):
@@ -276,6 +281,27 @@ def apply(meshes: dict, rows: list, cell_of=None, neighbours: dict | None = None
     for k in touched:
         done.setdefault(k, None)
     return done, st
+
+
+def _on_level(poly, fan, outline) -> bool:
+    """A piece of mesh is on a zone's level when its middle lies within LEVEL of the zone's surface there (the outline's
+    heights spread over its own triangles; outside them, the nearest outline point's)."""
+    cx = sum(p[0] for p in poly) / len(poly)
+    cy = sum(p[1] for p in poly) / len(poly)
+    cz = sum(p[2] for p in poly) / len(poly)
+    z = None
+    for a, b, c in fan:
+        d = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+        if abs(d) < 1e-9:
+            continue
+        l1 = ((b[1] - c[1]) * (cx - c[0]) + (c[0] - b[0]) * (cy - c[1])) / d
+        l2 = ((c[1] - a[1]) * (cx - c[0]) + (a[0] - c[0]) * (cy - c[1])) / d
+        if min(l1, l2, 1 - l1 - l2) >= -1e-6:
+            z = l1 * a[2] + l2 * b[2] + (1 - l1 - l2) * c[2]
+            break
+    if z is None:
+        z = min(outline, key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2)[2]
+    return abs(cz - z) <= LEVEL
 
 
 def cn_flags_new() -> int:

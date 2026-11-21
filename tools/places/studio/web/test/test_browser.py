@@ -1396,7 +1396,7 @@ def test_28_walking_mesh(browser, server):
     assert legend.is_visible() and "Walking mesh" in legend.inner_text()
     assert "What you see is from the last build" in legend.inner_text()
     d = pad.ev("(() => { const c = studio.walkLayer.cache.get('exterior'); return { tris: c.data.counts.tris, islands: c.data.islands.map((i) => i.tris), drawn: c.mesh.parent === studio.walkLayer.group }; })()")
-    assert d == {"tris": 452, "islands": [2], "drawn": True}, d
+    assert d == {"tris": 452, "islands": [2], "drawn": True}, (d, pad.ev("studio.walkLayer.focus()"))
     look_at(pad, "ours", [4100, 3600, pad.ev("studio.terrain.heightAt(4100, 3600)")], dist=4200, pitch=1.15)
     # a pin says what is wrong in one plain line when tapped
     pop = pad.page.locator("#view-ours .wm-pop")

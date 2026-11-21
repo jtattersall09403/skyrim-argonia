@@ -36,12 +36,19 @@ export function lineOutline(pts, width) {
   return [...left, ...right.reverse()];
 }
 
-// The surface heights of a stroke's points: each simplified point takes the height of the nearest pen sample.
+// The surface heights of a stroke's points: each simplified point takes the height of the pen's stroke where it passes
+// nearest (the samples as a line, the height along each stretch between two samples).
 export function liftOutline(pts2, samples) {
   return pts2.map(([x, y]) => {
-    let best = null, bd = Infinity;
-    for (const s of samples) { const d = (s[0] - x) ** 2 + (s[1] - y) ** 2; if (d < bd) { bd = d; best = s; } }
-    return [rnd(x), rnd(y), rnd(best ? best[2] : 0)];
+    let best = samples[0]?.[2] ?? 0, bd = Infinity;
+    for (let i = 0; i < samples.length; i++) {
+      const a = samples[i], b = samples[Math.min(i + 1, samples.length - 1)];
+      const dx = b[0] - a[0], dy = b[1] - a[1], L2 = dx * dx + dy * dy;
+      const t = L2 > 1e-9 ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L2)) : 0;
+      const d = (a[0] + t * dx - x) ** 2 + (a[1] + t * dy - y) ** 2;
+      if (d < bd) { bd = d; best = a[2] + t * (b[2] - a[2]); }
+    }
+    return [rnd(x), rnd(y), rnd(best)];
   });
 }
 
@@ -50,23 +57,53 @@ export class WalkTools {
     this.app = app; this.mode = 'block'; this.shape = 'outline'; this.width = 256; this.gap = 256; this.sel = null; this.joinA = null;
   }
   get layer() { return this.app.walkLayer; }
-  // The surface under the pen: the walking mesh where it lies (a deck, a stair, the ground), else a placed piece's
-  // walkable face near the last height read (a deck or stair the mesh has missed), else the ground.
-  surface(e, lastZ) {
-    const a = this.app, hit = this.layer.hit(e.ray);
-    if (hit) return hit.point;
-    const g = e.ground(); if (!g) return null;
-    const z = a.sticks?.groundAt ? a.sticks.groundAt(e.view, g[0], g[1], lastZ ?? g[2]) : g[2];
-    return [g[0], g[1], z ?? g[2]];
+  // The surface under the pen: whichever the pen's ray meets first of the walking mesh (a deck, a stair, the ground
+  // where the mesh lies) and a placed piece's walkable face (a deck or stair the mesh has missed), else the ground.
+  surface(e) {
+    const mesh = this.layer.hit(e.ray)?.point, piece = this.pieceHit(e.view, e.ray), o = e.ray.origin, v = e.view.origin;
+    const d = (p) => (p ? Math.hypot(p[0] - v[0] - o.x, p[1] - v[1] - o.y, p[2] - v[2] - o.z) : Infinity);
+    const best = d(piece) + 8 < d(mesh) ? piece : mesh;
+    if (best) return best.map((c) => rnd(c));
+    const g = e.ground(); return g ? g.map((c) => rnd(c)) : null;
   }
-  // Each outline point on the surface under it, at the level the pen was on there (its nearest sample's height):
-  // the walking mesh's own height at that level, else its nearest level there, else a placed piece's walkable face,
-  // else the ground.
+  // The nearest walkable face (facing up within 53 degrees) of a walkway piece's real mesh along a ray, as the sticks'
+  // walk reads a deck under the feet: each model's box is only the first reject.
+  pieceHit(view, ray) {
+    const T = globalThis.THREE || this._T; if (!T || !view.objects) return null;
+    const rc = this._rc || (this._rc = new T.Raycaster()); rc.ray.copy(ray); rc.far = 20000;
+    const tmp = this._mesh || (this._mesh = new T.Mesh()), inv = new T.Matrix4(), lr = new T.Ray(), box = new T.Box3(), n = new T.Vector3();
+    let best = null;
+    for (const layer of view.objects) {
+      if (layer.isGrass || !layer.groups || !layer.root.visible) continue;
+      for (const grp of layer.groups.values()) {
+        if (!grp.fullParts || grp.ghost || grp.fx || grp.bulb || grp.prim || grp.unseen) continue;
+        box.min.set(...grp.bmin); box.max.set(grp.bmin[0] + grp.bsize[0], grp.bmin[1] + grp.bsize[1], grp.bmin[2] + grp.bsize[2]);
+        for (let i = 0; i < grp.refs.length; i++) {
+          if (grp.refs[i].walk == null) continue;   // a walkway piece (deck, bridge, steps): never a roof
+          const m = grp.matrices[i]; inv.copy(m).invert(); lr.copy(rc.ray).applyMatrix4(inv); if (!lr.intersectsBox(box)) continue;
+          tmp.matrixWorld.copy(m);
+          for (const part of grp.fullParts) {
+            tmp.geometry = part.geometry; tmp.material = part.material;
+            for (const h of rc.intersectObject(tmp, false)) {
+              if (!h.face) continue;
+              n.copy(h.face.normal).transformDirection(m); if (Math.abs(n.z) < 0.6) continue;
+              if (!best || h.distance < best.distance) best = h;
+              break;
+            }
+          }
+        }
+      }
+    }
+    return best ? [best.point.x + view.origin[0], best.point.y + view.origin[1], best.point.z + view.origin[2]] : null;
+  }
+  // Each outline point on the surface under it, at the level the pen was on there (the stroke's height where it
+  // passes nearest): the walking mesh's own height at that level, else a placed piece's walkable face at that
+  // level, else the stroke's height.
   settle(pts) {
     const a = this.app, v = a.ours.view;
     return pts.map(([x, y, hint]) => {
-      let z = this.layer.heightAt(x, y, hint) ?? this.layer.heightAt(x, y, hint, 800);
-      if (z == null) z = a.sticks?.groundAt ? a.sticks.groundAt(v, x, y, hint - 40) : null;
+      let z = this.layer.heightAt(x, y, hint, 64);
+      if (z == null && a.sticks?.groundAt) { const g = a.sticks.groundAt(v, x, y, hint - 40); if (g != null && Math.abs(g - hint) <= 64) z = g; }
       if (z == null) z = hint;
       return [x, y, rnd(z)];
     });

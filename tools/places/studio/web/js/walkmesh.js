@@ -4,7 +4,7 @@
 // than the place. walk_layer.js draws them; test/walkmesh.test.mjs tests them on a fixture.
 
 export const COLOURS = {
-  main: [0.16, 0.62, 0.6],      // the main connected mesh: a calm teal
+  main: [0.1, 0.78, 0.72],      // the main connected mesh: a calm teal
   world: [0.45, 0.58, 0.6],     // the world's mesh round the place, beyond its reach: quieter
   island: [0.93, 0.5, 0.13],    // cut off from the main mesh: warning amber
   water: [0.22, 0.45, 0.78],    // wading
@@ -39,7 +39,8 @@ export function islands({ tris, nb }) {
 
 const triArea = (v, a, b, c) => Math.abs((v[3 * b] - v[3 * a]) * (v[3 * c + 1] - v[3 * a + 1]) - (v[3 * c] - v[3 * a]) * (v[3 * b + 1] - v[3 * a + 1])) / 2;
 
-// What to draw for one space's mesh. focus {x, y, r}: islands whose middle lies farther off are the world's (drawn
+// What to draw for one space's mesh. focus {x, y, r} or {box: [x0, y0, x1, y1]}: islands whose middle lies outside
+// it are the world's (drawn
 // quieter, never warned). Returns {positions: Float32Array (three corners per triangle, z lifted by `lift`), colours:
 // Float32Array, islands: [{label, tris, area_m2, at: [x, y, z]}] (the cut-off ones in reach, largest first), doors:
 // [{tri, ref, at}], counts: {tris, islands, main}}.
@@ -53,7 +54,8 @@ export function meshDraw(space, { focus = null, lift = 6 } = {}) {
     s[2] += ((v[3 * a + 2] + v[3 * b + 2] + v[3 * c + 2]) / 3) * ar; s[3] += ar; s[4]++;
   }
   const mid = sum.map((s) => (s[3] > 0 ? [s[0] / s[3], s[1] / s[3], s[2] / s[3]] : [0, 0, 0]));
-  const inReach = (l) => !focus || Math.hypot(mid[l][0] - focus.x, mid[l][1] - focus.y) <= focus.r;
+  const inReach = (l) => !focus || (focus.box ? mid[l][0] >= focus.box[0] && mid[l][0] <= focus.box[2] && mid[l][1] >= focus.box[1] && mid[l][1] <= focus.box[3]
+    : Math.hypot(mid[l][0] - focus.x, mid[l][1] - focus.y) <= focus.r);
   const doorTri = new Set((space.doors || []).map(([ti]) => ti));
   const positions = new Float32Array(n * 9), colours = new Float32Array(n * 9);
   for (let i = 0; i < n; i++) {

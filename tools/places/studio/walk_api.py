@@ -142,6 +142,6 @@ async def post_rebuild(req: web.Request) -> web.Response:
 
 def add_routes(app: web.Application) -> None:
     app["walk_lock"] = asyncio.Lock()
-    app.setdefault("walk_start", lambda pid, sid: walkpreview.start(pid, sid, ROOT))
+    app.setdefault("walk_start", lambda pid, sid: walkpreview.start(pid, sid, ROOT, app["cfg"].out, app["cfg"].places))
     app.router.add_get("/api/place/{place_id}/walkmesh", get_walkmesh)
     app.router.add_post("/api/place/{place_id}/walkmesh/rebuild", post_rebuild)
