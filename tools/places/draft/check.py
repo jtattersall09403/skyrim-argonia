@@ -95,6 +95,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]
+        from tools.places.draft import differs             # a later place on a shared source says how it differs
+        bad += differs.faults(place_id, places)
         from tools.places import units                     # a house stays on its platform; a tree is not moved with it
         bad += units.check_faults(place_id)
     for r in ledger:

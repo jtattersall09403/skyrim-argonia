@@ -1,55 +1,66 @@
 ---
 name: place-check
-description: Prove a drafted place - draft check, the seat check, the build of the place layer plugin with its navmesh, the build's seventeen checks and the walking mesh the studio draws, each heavy step run once at a milestone under job_guard and the machine-wide lock. Use at a draft's milestones, before hand-over and when a check fails, to find which skill owns the failure.
+description: Verify a drafted place once at the end - draft check, the seat check, the build with the carried walking mesh, the seventeen checks with their accepted findings, truth, units and joints, probe --all and --mesh, the playwalk tour, the survey and the owner captures - each heavy step run under job_guard and the machine-wide lock. Use before hand-over and when a check fails, to find which skill owns the failure.
 ---
 
-# Build and check
+# Verify once
 
-Step 10 of the place path ([place-system](../place-system/SKILL.md)).
+Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner loop is the look tool
+(`place-look`); these steps run once, when the adaptation is done, and again only for what a mend touched.
 
-## Heavy steps at milestones
+## Heavy steps
 
-`draft check`, a whole draft, a `streets` run and the build each take 10 to 40 minutes and queue on the
-machine-wide lock (`tools/places/heavy_lock.py`). They are never the inner loop: iterate with `look probe`,
-`look section` and the one stage that owns a change (`place-look`). Run each heavy step once at a milestone:
+`draft check`, the build and `check` take minutes each and queue on the machine-wide lock
+(`tools/places/heavy_lock.py`):
 
 1. Commit the place files by path.
 2. Run it under `tooling/job_guard.sh run <name> -- <cmd>` in the background, then `tooling/job_guard.sh wait
    <name>`.
-3. Touch nothing of the place (look session, quest spots, place files) until it ends.
+3. Touch nothing of the place until it ends.
 
-## The checks, in order
+## The steps, in order
 
-1. `python3 -m tools.places draft check <place_id>` PASS. It proves the place files against every draft rule (each
-   skill names the ones it owns), then builds the draft and runs every build check, so a draft that passes here
-   passes there. Its `measures` line gives the patched cells and the streets' length.
-2. `python3 -m tools.places seat <place_id>` reports 0 refs moved.
+1. `python3 -m tools.places draft check <place_id>` PASS: every draft rule, then the draft built and every build
+   check run.
+2. `python3 -m tools.places seat <place_id>`: 0 refs moved.
 3. Correct the record's radius to what was built: `place.json` `radius_m` into the research record's
    `footprint_radius_m`, then `python3 -m tools.newworld.build_db`.
-4. `python3 -m tools.places build <place_id> --plan` (lists every problem), then the build under job_guard. It builds
-   the place layer plugin and its navmesh, meeting the world's navmesh edge for edge; the world file, its refs shards
-   and its navmesh must be of one build. The build stamps the world records it stands on
-   (`out/places/shards/<place_id>/world.json`); a stale place is refused by `infra/gpu-box/places_deploy.sh`.
-5. `python3 -m tools.places check <place_id>`: all seventeen checks green (`plugin`, `seat`, `overlap`, `doors`,
-   `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`, `levelled`, `jail`,
-   `primitives`, `stock`, `promises`). A place that fines passes `jail` with a note saying why.
-   A `plugin` failure naming records of our own plugin means it was written by a build older than its shards: write it again with this tree's tool.
-6. `python3 -m tools.places navexport <place_id>` writes the walking mesh the studio draws routes on.
-7. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
+4. `python3 -m tools.places build <place_id> --plan` (lists every problem), then the build: the place layer plugin
+   and its navmesh, the source's own mesh carried where `wholesale.navmesh` is `"source"`. It stamps the world records
+   it stands on; a stale place is refused by `infra/gpu-box/places_deploy.sh`. A `plugin` failure naming records of
+   our own plugin means it was written by an older build: build again with this tree's tool.
+5. `python3 -m tools.places check <place_id>`: the seventeen checks green (`plugin`, `seat`, `overlap`, `doors`,
+   `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`, `levelled`, `jail`, `primitives`,
+   `stock`, `promises`).
+6. `python3 -m tools.places navexport <place_id>`: the walking mesh the studio draws.
+7. `look truth <place_id> --sample 40`: the pictures hold against the numbers for this place.
+8. `units <place_id>` and `units <place_id> --joints`: every flag mended or accepted.
+9. `look <place> probe --all` and `probe --mesh`: nothing open; no door or street point off the main network.
+10. `look <place> playwalk` and `playwalk --rooms`, read at full size; `look <place> survey` and `survey <unit>` for
+    every structure, each tile read; the owner captures (`place-look`, the hand-over look).
+11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
+    the two apart.
+12. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
+
+## Accepted findings
+
+A finding that is right as built after looking is accepted with what was seen (a reason of at least a sentence),
+shown apart and never failing; an entry that no longer matches a finding fails as stale and is deleted:
+
+- a build check's (`overlap`, `doors`, `clear`, `nordic`): `place.json` `draft.accepted_checks` `[{check, ids, why}]`;
+- a unit's flag: `draft.accepted` `[{unit, flag, why}]` (`place-site`);
+- a probe fault: `draft.accepted_faults` `[{id, fault, why}]` (`place-look`).
 
 ## A failure
 
 Each failure's full list is in `out/places/shards/<place_id>/check_failures/<check>.txt`; `check <place_id> --reach
-[person]` says what is cut off from what. An `overlap`, `doors`, `clear` or `nordic` finding that is right after
-looking at it (`place-look`) is accepted in place.json `draft.accepted_checks` as `{check, ids, why}`: the ref ids the
-finding names and a reason of at least a sentence saying what was seen. It is then shown as `accepted: <why>`, counted
-apart and never fails; an entry that no longer matches a finding fails as stale and is deleted. Mend every other
-failure at its cause, by the skill that owns it:
+[person]` says what is cut off from what. Mend it at its cause, by the skill that owns it:
 
 | Failure | Skill |
 |---|---|
-| `plan` faults, a structure dropped with a piece standing | `place-plan` |
-| `seat`, `overlap`, `land`, `clear`, `nordic`, `levelled`, floating or buried pieces | `place-site` (and `place-look`) |
+| `plan` faults | `place-plan` |
+| `seat`, `land`, `clear`, `nordic`, `levelled`, floating or buried pieces, unit flags | `place-site` (and `place-look`) |
+| `overlap` with something added, moved or pruned | `place-adapt` |
 | `streets`, `doors`, `navmesh`, reach | `place-streets` |
 | `rooms`, room names | `place-rooms` |
 | `people`, `services`, `jail` | `place-routines` |
@@ -57,4 +68,4 @@ failure at its cause, by the skill that owns it:
 | `promises`, needs | `place-story`, or `place-stock` for a promise of what the place holds |
 | `stock` | `place-stock` |
 
-A finding beyond the checks is weighed by what the player would notice (skill `world-build`).
+A finding beyond the checks is weighed by what the player would notice.

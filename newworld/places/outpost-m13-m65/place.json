@@ -1,6 +1,13 @@
 {
  "place_id": "outpost-m13-m65",
  "source_id": "bmv.imperial-barge",
+ "redraft": {
+  "source_id": "skyrim.marker.militarycamphjaalmarchimperialmapmarker",
+  "similar": [
+   "bmv.imperial-barge"
+  ],
+  "why": "source changed to Military Camp Hjaalmarch 2026-11-21 for the camp, the ship and its hold carried from the Imperial barge as the second source; this draft is still the barge's, kept until it is redrafted"
+ },
  "similar": [],
  "draft": {
   "drop": {

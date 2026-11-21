@@ -5,27 +5,27 @@ description: A place's dressing - lights with their fixtures, lights on what we 
 
 # Lights, lanterns, sap and stations
 
-Step 7 of the place path ([place-system](../place-system/SKILL.md)). Stages: `lights`, `hang`, `sap`, `stations`,
-`primitives`.
+Step 9 of the place path ([place-system](../place-system/SKILL.md)). Stages: `lights`, `hang`, `sap`, `stations`,
+`primitives`. Each runs on the place as it stands (`draft <stage> <place_id>`) and is then looked at; what the
+baseline carried from the source (its lights with fixtures, its lanterns, its collision boxes) stays as it came.
 
 ## Lights
 
 - A light belongs to its fixture: the nearest lantern, sconce, window or fire within 128 units in the source. It
-  shares the fixture's cluster, stands at its source offset, is seated `on` it and goes when the fixture goes (the `lights` stage drops it and writes the reason in the ledger).
-  `draft check` fails a light more than 16 units off.
+  stands at its source offset and goes when the fixture goes; `draft check` fails a light more than 16 units off.
 - What we add is lit as Skyrim lights it: an added forge carries LightForgeFire01 in its own frame (`draft check`
-  fails an unlit added forge); an added smelter or alchemy lab carries none. Laid streets, bridges and steps are lit
-  at the rate the source lit its own walkway pieces (a light within 256 units), usually none.
+  fails an unlit added forge); an added smelter or alchemy lab carries none. Added walks and steps are lit at the rate
+  the source lit its own, usually none.
 - A guard's torch is stock (`place-stock`).
 
 ## Hanging lanterns
 
 A place's Hist and the trees within 15 m carry King of the Murkmire's rope lanterns (`DLC2DarkElfLantern05Rope`,
 `04Rope`, self-lit), 1 to 5 per tree (`newworld/sources/dressing/kinds.json`), each on a hang point of the tree's
-mesh, seated `on` the tree. The whole draft hangs them; on a drafted place run `draft hang <place>` (dry run:
+mesh, seated `on` the tree. Run `draft hang <place>` (dry run:
 `python3 -m tools.places.draft.hang <place>`) after a tree is moved, turned or swapped. A lantern floating in the
 air means its tree moved: `look probe` it, then `draft hang`. `draft check` fails a lantern not on a limb of its
-tree. A source's own hanging lanterns come with their cluster.
+tree. A source's own hanging lanterns come with the baseline.
 
 ## Hist sap
 
@@ -54,7 +54,7 @@ exterior row seated `stilts` on a flat low spot between roots, clear of streets,
 
 ## Collision boxes and triggers
 
-The `primitives` stage keeps a source collision box that touches a kept piece (a balcony wall, a doorway plug) and
-carries it with that piece; a box that met only the source's ground is dropped. A wall for a hole the fit left or a ledge people would fall from is
-drafted with its own reason. A trigger whose script reaches no kept piece is dropped; a trap's trigger
+The baseline carries the source's collision boxes; `draft primitives` keeps one that touches a kept piece (a
+balcony wall, a doorway plug) and drops one that met only the source's ground or a pruned piece (look with
+`--helpers`). A wall for a ledge people would fall from is added with its own reason. A trigger whose script reaches no kept piece is dropped; a trap's trigger
 stays with its trap. The build's `primitives` check enforces both.

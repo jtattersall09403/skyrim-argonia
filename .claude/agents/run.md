@@ -20,3 +20,4 @@ You run the job the brief names, exactly as named, and report the result tersely
 - Hand off at 100k context.
 
 - No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.
+- Tests and gates: only the tests the change reaches; never a full run unless the brief names a deploy or a phase's close (`make check-all WHY=deploy|phase-close`).

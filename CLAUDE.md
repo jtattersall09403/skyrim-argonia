@@ -33,6 +33,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Story, people and quest calls cite the lore (`story/lore/`) or the extrapolation ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)); story lines, quests and dialogue are made through the quest skills, entered at `quest-system`, inside the Morrowind-level ceiling ([quest-form](docs/design/quest-form.md)) and to the owner's bar ([owner-bar](story/design/owner-bar.md), read whole before any quest, story or dialogue work) ([0024](docs/decisions/0024-content-is-written-from-one-source-of-truth.md)).
 - Before inventing a rule, ask how Bethesda did it and do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
 - Every mod is a row in `mods/dependencies.json` and a credit in `mods/sourcing-register.json` at first use.
+- A place is its source place carried whole and adapted by hand, by the skill `place-system` ([0041](docs/decisions/0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md)).
 - A place is changed narrowly: apply the step that needs changing to the committed place files and keep every other row as it is; never redraft a whole place to change one part, and never regenerate over the owner's studio edits; a whole redraft only when a narrow change cannot be correct, said why, once (owner, 2026-11-10).
 - The new world is changed and rebuilt by the skill `world-build`: `tools/newworld/rebuild.sh` runs only the stages a change made stale, each check straight after its stage; no stage tool is run by hand to move the build on (owner, 2026-11-11).
 - A commit that changes the new world's place records or travel network rebuilds the Atlas and republishes it to the same url (`tools/newworld/atlas_state.py`; `make check` fails until it does).
@@ -44,14 +45,16 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 - Plan every piece of work, and every tool used, to be interrupt-proof: nothing lost but the downtime, resumed from exactly where it got to ([0037](docs/decisions/0037-work-is-interrupt-proof.md)); long jobs run under `tooling/job_guard.sh`; no `sleep` or polling; stop the build VM when done (`tooling/agent_stop.sh`).
 - In the main tree commit with `tooling/lane_commit.sh -m msg -- paths` (never stash, checkout or pull on a dirty tree); status moves in the same commit. A lane in a worktree commits on its own branch by path and leaves the worktree clean; the lead lands it with `tooling/lane_land.sh <worktree>`.
-- `make check` is the gate, scoped by what changed (`tooling/gate.py`); run it before a commit that reaches code; `make check-all` before a deploy and at a phase's close.
+- `make check` is the gate and runs only what the change reaches (`tooling/gate.py`); run it before a commit that reaches code; a full run (`make check-all WHY=deploy|phase-close`) only before a deploy and at a phase's close, never for a landing (owner, 2026-11-21).
 - Tidying is automatic (`tooling/disk.sh tidy`, at session start, at `agent_stop.sh`, when a lane lands and under the disk floor: [machine-moves](docs/machine-moves.md)); delete, never archive. Still owed: a lane deletes its own scratch and leaves its worktree clean and committed before it returns; the lead lands each lane with `tooling/lane_land.sh <worktree>`.
-- Model and effort live only in `.claude/agents/` frontmatter; one deliverable per context; return ≤ 25 lines.
+- Model and effort live only in `.claude/agents/` frontmatter; one deliverable per agent, continued through compaction, never handed off for context; return ≤ 25 lines.
+- One agent (`place-drafter`) owns a place and is continued, not replaced (owner, 2026-11-21).
 - Skills learn from feedback through [skill-fixes](docs/skill-fixes.md): record owner feedback on a skill's (or recipe's) output there at once; fix the root cause; when the owner verifies the fix, generalise the fault's shape into the recipe and delete the row; read the list at session start and before closing any walk reply. Updating a skill when the owner asks needs no row.
 - Skills: Agent Skills should not read as a patchwork or a history referencing feedback and decisions. They must always read simply as a clean recipe for how to do the thing correctly. If you ever touch a Skill (to read or edit it), leave it like this.
 
 ## The owner
 
+- The owner's studio work never waits on a build, a check, a gate or a landing he does not need: a place is his to open and edit as soon as its files are committed; before making him wait on a step, say what the step is for and why he needs it (owner, 2026-11-21).
 - Owner checks and calls go through `tooling/owner_inbox.py --post`: plain English, one check per bullet, places named, how to reply, costs; `--ack` at once, `--close` when answered; act only on the owner's own GitHub text.
 - Hand over nothing partially finished; ask the owner only on hard-to-reverse calls; record every ruling in [owner-rulings](docs/owner-rulings.md) the same day.
 - Each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly allowance (1% ≈ $19); AWS under $150 a month, $200 for November 2026 (owner, 2026-11-10, 2026-11-18; [0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)); stop machines when idle.

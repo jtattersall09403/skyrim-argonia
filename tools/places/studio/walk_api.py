@@ -122,6 +122,10 @@ async def post_rebuild(req: web.Request) -> web.Response:
     sid = (body.get("save_id") if isinstance(body, dict) else None) or AUTOSAVE
     if not PLACE_ID.match(pid) or not (sid == AUTOSAVE or SAVE_ID.match(sid)):
         return jerr(400, "bad place or save id")
+    from tools.places import variant
+    if variant.is_variant(pid):
+        return jerr(409, "A variant's walking mesh is not rebuilt from the studio: it is built when the variant is "
+                         "chosen as the place. Your walking zones are kept with it.")
     if not (cfg.places / pid / "place.json").exists():
         return jerr(404, "no such place")
     async with req.app["walk_lock"]:

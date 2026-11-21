@@ -120,6 +120,7 @@ def _room_bases(src_dir: Path) -> dict:
 
 
 class Scene:
+    ring: dict | None = None  # a source view's footprint ring: {centre, radius_m}
     info: dict = {}           # a room's space.json (the exterior: none)
     plan_box: list | None = None   # a room's plan box: its cut, else its shell's
 
@@ -134,6 +135,7 @@ class Scene:
         if space != "exterior":
             self._room(place_id, space, out)
             return
+        self.ring = self.files["place"].get("look_ring")   # a source view's footprint ring (look/srcview.py)
         g = st["ground"]
         self.ground = Ground({k: list(v) for k, v in g.cells.items()}, g.water_by_cell, g.default_water, g.sha)
         self.ground.apply_patches(self.files.get("land") or [])
@@ -190,6 +192,9 @@ class Scene:
 
     def faults(self) -> list[dict]:
         """The open faults: every fault the probe finds less those the drafter accepted (`accepted_faults`)."""
+        if ((getattr(self, "files", None) or {}).get("place") or {}).get("view_only"):   # a source seen as it stands (look/srcview.py): nothing to mend
+            self._accepted = []
+            return []
         if getattr(self, "_faults", None) is None:
             found = geom.faults(self.pieces, self.ground, self.world)
             if self.space != "exterior":

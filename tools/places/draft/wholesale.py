@@ -1,12 +1,18 @@
-"""A place laid wholesale from its source (the by-hand experiment): every source exterior piece inside the place's
-footprint at the fit's one main transform and its source height plus one common offset, and the source's whole relief
-inside the footprint carried as land rows at the same offset (no cap; the band's slope held to SLOPE_DEG; our water
-line kept by the ground stage's own rule). No fit per cluster, no seating, no drop rule but these three: an actor
-(people come from the place's people rows), the source's water plane (our world's water stands where it stands) and
-a levelled base (decision 0035). The place's people, quest spots, interiors and stock rows are left as they are; the
-draft's added pieces, streets, land patches and agent edits are cleared, since the experiment starts from the source.
+"""A place's baseline: every source exterior piece inside the place's footprint at one transform (place.json `fit`:
+`pivot` in the source, `anchor` in ours, `rot_deg`) and its source height plus one common offset, with the source's
+relief inside the footprint carried as land rows at the same offset (the band's slope held to SLOPE_DEG; our water
+line kept by the ground stage's own rule). Nothing is fitted per cluster or seated; the only pieces left out are an
+actor (people come from the place's people rows), the source's water plane (our water stands where it stands) and a
+levelled base (decision 0035). The place's people, quest spots, interiors and stock rows are left as they are; the
+draft's added pieces, streets, land rows and agent edits are cleared, since the baseline starts from the source.
+How much ground comes: all of it (default), only within `--carry-radius` of the centre (a camp's own platform), at
+most `--cap` units of change; `--keep-wet` carries a source pond's bed as a mud hollow. Then `--rooms` carries the
+source's rooms and door pairs onto the laid doors and `--walks x,y` its walks as path rows; place.json
+`wholesale.navmesh: "source"` makes the build write the source's own walking mesh (docs/design/place-studio.md,
+Navmesh; skill place-site).
 
-    python -m tools.places.draft.wholesale <place_id> --offset <units> [--dry]
+    python -m tools.places draft wholesale <place_id> --offset <units> [--carry-radius u] [--cap u] [--keep-wet] [--dry]
+    python -m tools.places draft wholesale <place_id> --offset <units> --rooms | --walks x,y
 """
 from __future__ import annotations
 
@@ -14,6 +20,7 @@ import argparse
 import json
 import math
 import shutil
+import sys
 
 from tools.places.draft import geom, ground, io
 from tools.places.draft.stages import Standing
@@ -255,8 +262,26 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
     return rows
 
 
+def hand_refusal(pdir) -> str | None:
+    """Why a whole re-lay of this place is refused, or None: it re-lays every exterior piece and clears paths, land
+    rows and agent edits, so the hands' work (agent saves, the owner's studio saves, hand-placed rows) would be lost."""
+    from tools.places import hands
+    from tools.places.draft.stages import owner_saves
+    rows = hands.placed(pdir)
+    agent = sorted(p.stem for p in (pdir / "agent-edits").glob("*.json")) if (pdir / "agent-edits").exists() else []
+    owner = owner_saves(pdir)
+    if not (rows or agent or owner):
+        return None
+    return (f"draft wholesale {pdir.name}: refused: the place holds hand edits ({len(rows)} hand-placed rows; agent "
+            f"saves {', '.join(agent) or 'none'}; owner's finalised saves {', '.join(owner) or 'none'}), and a whole "
+            f"re-lay replaces every exterior piece and clears paths, land rows and agent edits. Change it narrowly "
+            f"instead: `--rooms` re-carries the rooms and `--walks x,y` the walks without touching pieces; a piece or "
+            f"unit is changed by hand (look, `look commit`); a rule's output by its stage (`draft <stage>`). A "
+            f"deliberate whole re-lay that loses them: --discard-hand-edits.")
+
+
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(prog="python -m tools.places draft wholesale", description=__doc__.split("\n")[0])
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
     ap.add_argument("--carry-radius", type=float, default=None,
@@ -264,10 +289,18 @@ def main(argv=None) -> int:
     ap.add_argument("--cap", type=float, default=1e9, help="units: the most the carried relief changes our ground")
     ap.add_argument("--keep-wet", action="store_true", help="the source's pond bed carried as a mud hollow (not faded to ours)")
     ap.add_argument("--dry", action="store_true")
-    ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
+    ap.add_argument("--rooms", action="store_true", help="carry the source's rooms, door pairs and arrivals onto the laid doors (the pieces as they stand)")
     ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
+    ap.add_argument("--discard-hand-edits", action="store_true",
+                    help="re-lay the whole baseline over a place that holds hand edits, losing them")
     ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)
+    from tools.places.draft import differs
+    owe = [f for f in differs.faults(a.place_id, io.PLACES, laying=True) if "the same part of the source" not in f]
+    if owe:
+        print(f"draft wholesale {a.place_id}: refused: this place shares its source with a place laid first, and its "
+              f"plan does not yet say how it differs:\n  " + "\n  ".join(owe), file=sys.stderr)
+        return 1
     st = Standing(a.place_id)
     if a.walks:
         hub = tuple(float(v) for v in a.walks.split(","))
@@ -284,6 +317,11 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
+    if not a.dry and not a.discard_hand_edits:
+        why = hand_refusal(st.pdir)
+        if why:
+            print(why, file=sys.stderr)
+            return 1
     ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
@@ -301,6 +339,8 @@ def main(argv=None) -> int:
                                                   "band_steepest_deg", "source_water_area_m2", "held_by_water")}
     if walk:
         place["wholesale"]["navmesh"] = walk
+    import datetime   # when the baseline was laid: which of two places on one source came first (differs.py)
+    place["wholesale"]["laid"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     place["agent_saves_applied"] = []
     place.pop("steps", None)
     (pdir / "place.json").write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")

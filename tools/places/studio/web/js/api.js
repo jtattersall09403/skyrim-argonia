@@ -37,6 +37,7 @@ const NEEDS_MACHINE = {
   finalise: 'Finalising needs the build machine. Your work is kept on this tablet: when you are back online, send it and finalise from the Offline panel.',
   sendNotes: 'Sending notes to the agent needs the build machine. Your notes are kept on this tablet and go with your offline work when you send it.',
   run: 'A finalise run can only be followed online.',
+  useVariant: 'Choosing which draft is the place needs the build machine: do it when you are back online.',
 };
 const isNetFail = (e) => e instanceof TypeError || /: 5\d\d$/.test(String(e?.message));
 const online = {
@@ -57,6 +58,13 @@ const online = {
   finalise: (id, save_id) => getJSON(`/place/${id}/finalise`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ save_id }) }),
   run: (id, rid) => getJSON(`/place/${id}/runs/${rid}`),
+  // "Use this version": a variant draft becomes its place (tools/places/variant.py use); {place_id, said}
+  async useVariant(id) {
+    const r = await fetch(`${BASE}/place/${id}/variant/use`, { method: 'POST', credentials: 'same-origin' });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || `using the draft: ${r.status}`);
+    return j;
+  },
   seat: (id, x, y) => getJSON(`/place/${id}/seat?x=${x}&y=${y}`),
   // the built place's walking mesh (tools/places/navexport.py); null when the place has not been built
   nav: (id) => getJSON(`/place/${id}/nav`, { optional: true }),

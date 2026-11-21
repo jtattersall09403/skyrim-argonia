@@ -286,8 +286,8 @@ def write_notes(run: Run, save: dict) -> None:
     (run.dir / "notes.json").write_text(json.dumps({"notes": said}, indent=1, ensure_ascii=False) + "\n")
 
 
-DRAFT_SKILLS = ("place-plan", "place-site", "place-streets", "place-rooms", "place-routines", "place-dressing",
-                "place-story", "place-look", "place-check", "place-change")
+DRAFT_SKILLS = ("place-plan", "place-site", "place-adapt", "place-rooms", "place-streets", "place-routines",
+                "place-story", "place-dressing", "place-look", "place-check", "place-change")
 
 
 def draft_skills(run: Run) -> list[tuple[str, Path, Path]]:
@@ -579,10 +579,13 @@ def finalise(run: Run, skip_build=False, budget=BUDGET_USD, turns=MAX_TURNS) -> 
         run.put(step=step)
         run.log(f"step {step}")
         try:
+            from tools.places import variant
             if step == "record":
                 res = step_record(run)
-            elif step == "build":
-                res = step_build(run, skip_build)
+            elif step == "build":   # a variant draft is never built into the game
+                res = step_build(run, skip_build or variant.is_variant(run.place_id))
+            elif step == "learn" and variant.is_variant(run.place_id):
+                res = {"status": "did not run", "why": "a variant draft teaches the recipes only once it is used"}
             elif step == "learn":
                 res = step_learn(run, budget, turns)
             else:

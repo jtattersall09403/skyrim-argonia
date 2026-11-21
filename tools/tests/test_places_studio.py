@@ -412,3 +412,44 @@ def test_a_nav_export_that_fails_is_tried_once_per_build(tmp_path, monkeypatch):
     import os
     os.utime(tmp_path / "plugin" / "build.json", (time.time() + 5, time.time() + 5))   # a new build
     assert navexport.current("p", tmp_path) is None and calls == ["p", "p"]
+
+
+def test_a_variant_draft_is_listed_under_its_place_reads_its_ground_and_can_be_used(env):
+    out, places = env / "out", env / "places"
+    g = out / "bundles" / "ground.fxplace"
+    g.mkdir(parents=True, exist_ok=True)
+    (g / "bundle.json").write_text(json.dumps({"bundle_id": "ground.fxplace", "kind": "ground", "stamp": {"tool": "g"}}))
+    d = out / "bundles" / "draft.fxplace@alt"
+    d.mkdir(parents=True)
+    (d / "bundle.json").write_text(json.dumps({"bundle_id": "draft.fxplace@alt", "kind": "draft", "stamp": {"tool": "d"}}))
+    (places / "fxplace@alt").mkdir()
+    (places / "fxplace@alt" / "place.json").write_text(json.dumps(
+        {"place_id": "fxplace@alt", "variant_of": "fxplace", "variant": "alt", "title": "Fx (alt draft)",
+         "source_id": "fx.village", "similar": []}))
+
+    async def body(c):
+        rows = await (await c.get("/api/places")).json()
+        assert [p["place_id"] for p in rows] == ["fxplace", "fxplace@alt"]
+        alt = rows[1]
+        assert alt["variant_of"] == "fxplace" and alt["title"] == "Fx (alt draft)" and alt["stamps"]["ground"] == {"tool": "g"}
+        r = await c.get("/api/bundle/ground.fxplace@alt/bundle.json")
+        assert r.status == 200 and (await r.json())["bundle_id"] == "ground.fxplace"
+        assert (await c.post("/api/place/fxplace/variant/use")).status == 400
+        (out / "autosave").mkdir(exist_ok=True)
+        (out / "autosave" / "fxplace.json").write_text(json.dumps({"final": False, "ops": [{"op": "move"}]}))
+        r = await c.post("/api/place/fxplace@alt/variant/use")
+        assert r.status == 409 and "unsaved" in (await r.json())["error"]
+        (out / "autosave" / "fxplace.json").unlink()
+        for p in (places / "fxplace" / "edits").glob("*.json"):
+            p.unlink()
+        r = await c.post("/api/place/fxplace@alt/variant/use")
+        assert r.status == 200 and (await r.json())["place_id"] == "fxplace"
+        assert json.loads((places / "fxplace" / "place.json").read_text()).get("title") is None
+        assert json.loads((places / "fxplace@previous" / "place.json").read_text())["variant"] == "previous"
+    try:
+        run(env, body)
+    finally:
+        for p in places.glob("fxplace@*"):
+            shutil.rmtree(p)
+        (places / "fxplace" / "place.json").write_text(json.dumps({"place_id": "fxplace", "source_id": "fx.village",
+                                                                    "similar": []}))

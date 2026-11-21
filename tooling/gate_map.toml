@@ -3,13 +3,15 @@
 #      or is a repo path its code names in a string or in a `REPO / "a" / "b"` chain;
 #   2. by a rule below: path globs -> make stages and pytest files or directories;
 #   3. by `full` below, or by matching nothing at all: the whole gate runs.
+# An edit to this file is scoped like any other change: only the rules added, removed or altered count as changed
+# (their stages, their tests and the paths they name run); an edit to a structural part (`full`, `named_direct`, the
+# `[stages]` table, each of which applies to every change) runs the whole gate.
 # The guard and ruff always run. Globs are fnmatch patterns on repo-relative paths ("*" crosses "/").
 
-# A change to any of these runs the whole gate: the gate and its map, test set-up, the build of the gate, and the
+# A change to any of these runs the whole gate: the gate, test set-up, the build of the gate, and the
 # shell libraries every tool leans on.
 full = [
   "tooling/gate.py",
-  "tooling/gate_map.toml",
   "Makefile",
   "*conftest.py",
   "ruff.toml",

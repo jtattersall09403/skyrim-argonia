@@ -20,14 +20,14 @@ import warnings
 
 from aiohttp import web
 
-from tools.places import needs, notes, quest_spots
+from tools.places import navexport, needs, notes, quest_spots
 from tools.places.studio import awake, links, offline, walk_api
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
 ROOT = Path(__file__).resolve().parents[3]
 WEB = Path(__file__).resolve().parent / "web"
 NO_COMPRESS = {".webp", ".png", ".jpg", ".jpeg", ".gz", ".br", ".zip", ".woff2", ".mp4"}
-RUN_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,127}$")
+RUN_ID = re.compile(r"^[a-z0-9][a-z0-9._@-]{0,127}$")   # @: a variant draft
 warnings.filterwarnings("ignore", category=web.NotAppKeyWarning)
 NOTE_BYTES = 512 * 1024   # a note: 4,000 characters of words and up to 200 things
 BUCKET = os.environ.get("STUDIO_BUCKET", "s3://argonia-private-050977237313/places/autosave")
@@ -166,17 +166,24 @@ async def places(req: web.Request) -> web.Response:
     cfg: Config = req.app["cfg"]
     titles = place_titles()
     out = []
-    for pj in sorted(cfg.places.glob("*/place.json")):
-        pid = pj.parent.name
+    from tools.places import variant
+    ids = variant.game_places(cfg.places)
+    ids = [x for p in ids for x in [p] + [variant.variant_id(p, v) for v in variant.variants_of(p, cfg.places)]]
+    for pid in ids:   # each place, then its variant drafts under it
+        pj = cfg.places / pid / "place.json"
         draft_error = await fresh_draft(req.app, pid)
         draft = bundle_stamp(cfg, f"draft.{pid}")
         draft_error = ([{"error": draft_error}] if draft_error else []) + list((draft or {}).get("missing_bases") or [])
         if draft is None and not (pj.parent / "spaces").exists():
             continue
         pl = json.loads(pj.read_text(encoding="utf-8"))
-        out.append({"place_id": pid, "title": titles.get(pid) or pl.get("title") or pid,
+        title = titles.get(pid) or pl.get("title") or pid
+        if variant.is_variant(pid):
+            title = pl.get("title") or f"{titles.get(variant.record_id(pid)) or variant.record_id(pid)} ({pid.split('@', 1)[1]} draft)"
+        out.append({"place_id": pid, "title": title,
+                    **({"variant_of": variant.record_id(pid), "variant": pid.split("@", 1)[1]} if variant.is_variant(pid) else {}),
                     "source_id": pl.get("source_id"), "similar": pl.get("similar") or [],
-                    "stamps": {"draft": draft, "ground": bundle_stamp(cfg, f"ground.{pid}"),
+                    "stamps": {"draft": draft, "ground": bundle_stamp(cfg, variant.ground(pid)),
                                "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")},
                     "fit": pl.get("fit"),
                     "bytes": bundle_bytes(cfg, f"draft.{pid}") + bundle_bytes(cfg, f"src.{pl.get('source_id')}"),
@@ -191,7 +198,8 @@ async def bundle_file(req: web.Request) -> web.StreamResponse:
         return jerr(400, "bad bundle id")
     if bid.startswith("draft.") and req.match_info["path"] == "bundle.json":
         await fresh_draft(req.app, bid[len("draft."):])
-    p = inside(cfg.out / "bundles" / bid, req.match_info["path"])
+    from tools.places import variant
+    p = inside(cfg.out / "bundles" / variant.bundle(bid), req.match_info["path"])   # a variant: its place's ground
     return await send_file(req, p) if p else jerr(404, "no such bundle file")
 
 
@@ -303,6 +311,33 @@ async def search(req: web.Request) -> web.Response:
 
 # ---- what a place holds and who its people are (Stock) -------------------------------------------------------------
 
+def record(pid: str) -> str:
+    """The place whose record, people, stock and needs a draft reads: a variant draft reads its place's."""
+    from tools.places import variant
+    return variant.record_id(pid)
+
+
+async def variant_use(req: web.Request) -> web.Response:
+    """"Use this version": the variant draft becomes the place, the draft it replaces becomes variant `previous`
+    (tools/places/variant.py use); refused while either has unsaved studio edits. Both folders are committed."""
+    from tools.places import variant
+    pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    if not PLACE_ID.match(pid) or not variant.is_variant(pid):
+        return jerr(400, "only a variant draft can be used instead of its place")
+    place, name = variant.record_id(pid), pid.split("@", 1)[1]
+    async with req.app["locks"].setdefault(place, asyncio.Lock()):
+        try:
+            said = await asyncio.get_running_loop().run_in_executor(
+                None, lambda: variant.use(place, name, cfg.places, cfg.out / "autosave"))
+        except ValueError as e:
+            return jerr(409, str(e))
+    if cfg.commit:
+        dirs = tuple(sorted({str((cfg.places / d).relative_to(ROOT)) for d in
+                             (place, variant.variant_id(place, name), variant.variant_id(place, variant.PREVIOUS))}))
+        await req.app["commit_q"].put((dirs, f"places: the owner chose {pid} as {place}"))   # one commit of the renames
+    return jok({"place_id": place, "said": said})
+
+
 def _stock_args(req: web.Request):
     from tools.places.studio import stock
     cfg: Config = req.app["cfg"]
@@ -316,7 +351,7 @@ async def stock_get(req: web.Request) -> web.Response:
         return jerr(400, "bad place id")
     stock, src, cat = _stock_args(req)
     out = await asyncio.get_running_loop().run_in_executor(
-        None, lambda: stock.payload(pid, src, stock.Catalogue.open(cat)))
+        None, lambda: stock.payload(record(pid), src, stock.Catalogue.open(cat)))
     return jok(out)
 
 
@@ -332,7 +367,7 @@ async def items_get(req: web.Request) -> web.Response:
     stock, src, cat = _stock_args(req)
     q, kind = req.query.get("q", ""), req.query.get("kind") or None
     out = await asyncio.get_running_loop().run_in_executor(
-        None, lambda: stock.search(pid, q, kind, limit, src, stock.Catalogue.open(cat)))
+        None, lambda: stock.search(record(pid), q, kind, limit, src, stock.Catalogue.open(cat)))
     return jok(out)
 
 
@@ -417,7 +452,12 @@ async def nav_get(req: web.Request) -> web.StreamResponse:
         return jerr(400, "bad place id")
     async with req.app["nav_locks"].setdefault(pid, asyncio.Lock()):
         p = await asyncio.get_running_loop().run_in_executor(None, walk_api.nav_path, pid, req.app["cfg"].out)
-    return await send_file(req, p) if p else jerr(404, "this place has not been built")
+    if not p:
+        return jerr(404, "this place has not been built")
+    stale = navexport.older_than_files(p, req.app["cfg"].places / pid)
+    return await send_file(req, p) if not stale else web.Response(
+        text=json.dumps({**json.loads(p.read_text(encoding="utf-8")), "from_last_build": True}),
+        content_type="application/json")
 
 
 async def notes_get(req: web.Request) -> web.Response:
@@ -481,7 +521,7 @@ async def needs_get(req: web.Request) -> web.Response:
     if not PLACE_ID.match(pid):
         return jerr(400, "bad place id")
     out = await asyncio.get_running_loop().run_in_executor(
-        None, lambda: needs.payload(pid, cfg.sources / "needs", cfg.sources / "people", cfg.places))
+        None, lambda: needs.payload(record(pid), cfg.sources / "needs", cfg.sources / "people", cfg.places))
     return jok(out)
 
 
@@ -505,10 +545,10 @@ async def needs_changed_post(req: web.Request) -> web.Response:
         if not isinstance(body, dict):
             raise ValueError("body must be a change")
         row = await asyncio.get_running_loop().run_in_executor(
-            None, lambda: needs.record_change(pid, body, cfg.sources / "needs"))
+            None, lambda: needs.record_change(record(pid), body, cfg.sources / "needs"))
     except (ValueError, TypeError) as e:
         return jerr(400, str(e))
-    p = needs.changes_path(pid, cfg.sources / "needs")
+    p = needs.changes_path(record(pid), cfg.sources / "needs")
     if cfg.commit and p.is_relative_to(ROOT):
         rel = str(p.relative_to(ROOT))
         req.app["pending"][rel] = True
@@ -534,7 +574,7 @@ async def commit_worker(app: web.Application) -> None:
             latest[r2] = m2
         for path, m in latest.items():
             proc = await asyncio.create_subprocess_exec(
-                str(ROOT / "tooling" / "lane_commit.sh"), "-m", m, "--", path, cwd=ROOT,
+                str(ROOT / "tooling" / "lane_commit.sh"), "-m", m, "--", *([path] if isinstance(path, str) else path), cwd=ROOT,
                 stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT)
             out, _ = await proc.communicate()
             print(f"commit {path}: rc={proc.returncode} {out.decode(errors='replace')[-300:]}", flush=True)
@@ -812,6 +852,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/saves/{save_id}", save_get)
     r.add_put("/api/place/{place_id}/saves/{save_id}", save_put)
     r.add_post("/api/place/{place_id}/finalise", finalise)
+    r.add_post("/api/place/{place_id}/variant/use", variant_use)
     r.add_get("/api/place/{place_id}/nav", nav_get)
     r.add_get("/api/place/{place_id}/notes", notes_get)
     r.add_get("/api/place/{place_id}/stock", stock_get)

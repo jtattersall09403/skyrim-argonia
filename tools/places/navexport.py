@@ -149,6 +149,13 @@ def current(place_id: str, out: Path) -> Path | None:
         return None
 
 
+def older_than_files(export_path: Path, place_dir: Path) -> bool:
+    """Is this walking mesh from a build older than the place's committed files? The studio then says it is from the
+    last build; it never keeps the owner from opening or editing the place."""
+    newest = max((f.stat().st_mtime for f in Path(place_dir).rglob("*") if f.is_file()), default=0.0)
+    return newest > Path(export_path).stat().st_mtime
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="python -m tools.places navexport")
     ap.add_argument("place_id")

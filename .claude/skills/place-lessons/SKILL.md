@@ -10,8 +10,8 @@ The owner edits an agent's draft of a place in the studio and finalises the save
 recipe that produced them, and change the recipe so a fresh agent working on any place gets that whole class of
 thing right first time. The recipe for where things stand, the streets, the rooms, the lights and people's placement
 is the place sub-skill that owns the class, as the map `place-system` routes it (`place-plan`, `place-site`,
-`place-streets`, `place-rooms`, `place-routines`, `place-dressing`, `place-story`, `place-look`, `place-check`,
-`place-change`); the recipe for who a person is (name, household, trade, wealth, backstory) is `place-people`; the
+`place-adapt`, `place-rooms`, `place-streets`, `place-routines`, `place-story`, `place-dressing`, `place-look`,
+`place-check`, `place-change`); the recipe for who a person is (name, household, trade, wealth, backstory) is `place-people`; the
 recipe for what a container, a person or a trader holds is `place-stock`. The prompt names every input and the files you may edit; beside them you may add rows to the skill-fixes list.
 
 The place itself is already right: the owner's edit is in its files. You change recipes for the next place. You
@@ -65,7 +65,7 @@ never change this place, and no lesson asks for it to be drafted again.
      the lesson with that skill's name.
    - The stocker's **judgement** (what a holder holds, at what tier, behind what lock, whose it is): the text of
      `place-stock`. Rewrite it the same way, and mark the lesson `"skill": "place-stock"`.
-   - A **tool's fixed rule** (a number or a computation in `tools/places/draft`, `seat` or `stock`): do not edit
+   - A **tool's fixed rule** (a number or a computation in `tools/places/draft`, `look`, `seat` or `stock`): do not edit
      code. Add one row to the skill-fixes list for the skill that describes the tool, naming the tool, the rule
      and the fault, with "lessons run" as who reported it, and list it in the lessons file as a tool change owed.
    - **Who a person is** (a name, a household, a trade, a wealth band, a backstory: `identity.edit`): the text

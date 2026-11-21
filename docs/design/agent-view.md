@@ -162,17 +162,24 @@ fix at its station. Bare ground is not a fault: the viewer draws no grass. Light
 
 `move <thing> dx dy dz`, `turn <thing> deg` (clockwise from above, about the thing's middle), `sink <thing>
 [units | --until-feet-buried]`, `delete <thing>`, `duplicate <thing> [dx dy] --why "<why the copy is here>"`,
-`steps <from deck, structure or door> <to point or thing> [--why ...]`. `move` and `sink` answer with each deck
+`steps <from deck, structure or door> <to point or thing> [--why ...]`, `place` and `land` (below). `move` and `sink` answer with each deck
 piece's walked top over the ground before and after (`decks`). A copy gets its own id, its own reason (`--why`,
 required) and its own seat where it stands: a seat on the ground keeps its rule, measured afresh there; a piece the
 original stood on that is not copied is never the copy's (it goes on what is under it, else on the ground at the
-original's height over it). `steps` lays one flight the way the streets stage does: the place's own steps pieces
+original's height over it). `steps` lays one flight: the place's own steps pieces
 first, then its decks' kit, hung square off the deck's edge facing the point with its top tread at the deck's
 height, its foot where a tread meets the ground; it answers with the piece, its top and its foot. Each is one stroke of the studio's
 own ops (`ref.move`, `ref.remove`, `ref.add`, the same kind of change as the owner's), kept in a scratch session
 (`out/places/look/<tree>/<place>/session.json`; each checkout, the main tree or a lane's worktree, has its own daemon, session and port) and never written to the place files or the owner's saves. A seated piece
 keeps its seat rule: its height moves with its seat's `dz`. Pieces are seated by sinking them into the ground;
 nothing is stretched. Add `--view <view verb...>` to any hand for the same look before and after, side by side.
+
+`place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why>"` adds one piece of any base (seat free at
+z, or `above` dz over the ground there). `land <x,y> <radius> <dz> --why "<why>"` raises or lowers the ground inside
+the place's footprint, eased to nothing at the radius, as `land.jsonl` rows: a mound under legs that stop short, a
+ramp to an added door; a vertex past the land bound (`fit.patch_max`; carried ground by `draft.ground_cap`) is
+refused. A probe fault seen to be right as built is accepted in `place.json` `draft.accepted_faults` `[{id, fault,
+why}]`: `probe --all` lists it under `accepted` and the views draw it without red.
 
 `undo` takes back the last stroke; `snapshot <name>` keeps the session's state; `restore <name>` returns to it;
 `compare <a> <b> <view verb...>` shows one look at two states side by side (`now` is the current state); `reset`
@@ -184,6 +191,19 @@ the owner's: the save is kept at `newworld/places/<place>/agent-edits/<save_id>.
 and listed in `place.json` `agent_saves_applied`; no word gets the owner's tier and no preference is written. A stroke
 that touches a row an owner's finalised save touched is left out whole and listed in `left_for_owner`. The session
 (and its snapshots) is then emptied; commit the place files by path.
+
+## A source by itself
+
+The first step of a draft is choosing its source by looking at the best three or four candidates as places, judging
+each against the record, choosing and pinning (`place-plan`). `look --source <source_id> <verb>` shows a candidate on
+its own ground from its bundle (extracted on demand), as a view-only place grouped into the source's own structures:
+every view verb works (`overview`, `at`, `orbit`, `section`, `survey`, `walk`, `probe`, `pick`), no hand does, and no
+faults are marked. `--ring <metres>` [`--centre x,y`] draws the footprint of a place of that radius on the ground and
+across sections (centred on the source's anchor by default); the overview and the whole-place survey then frame what
+stands inside it, the rest being the structure `outside`. `look --source <source_id> units --ring <metres>` counts
+what stands inside it: houses with rooms, beds, work stations, docks, boats, palisades, towers, tents, shrines,
+mines, farms, the pieces by class and by culture (Nordic, Imperial, orc, Dunmer, Argonian), the people by role. The
+view runs its own daemon (`look --source stop`).
 
 ## Working a place
 

@@ -1,6 +1,10 @@
 {
  "place_id": "outpost-m6-m66",
  "source_id": "kingofthemurkmire.marker.ree-an-wo",
+ "redraft": {
+  "source_id": "kingofthemurkmire.huluxinoagvillagelocation",
+  "why": "source changed to Huluxinoag 2026-11-21 (its Hist, roots and platforms; Ree-An-Wo's tents added); this draft is still Ree-An-Wo's, kept until it is redrafted"
+ },
  "similar": [],
  "draft": {
   "rot_deg": 338,

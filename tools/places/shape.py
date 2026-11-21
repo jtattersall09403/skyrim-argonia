@@ -852,15 +852,15 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structur
             if structures is not None and i not in structures and i not in walls:
                 continue
             what = name_of.get(i)
-            held = rests_on(o, s)
+            rests = rests_on(o, s)
             cv = cover(s, o)
             if i in walls:
                 ov = overlap(s, o, 8.0)
-                fl = o.body().get("floor") if held and cv is not None else None
+                fl = o.body().get("floor") if rests and cv is not None else None
                 floor = (fl is not None and bool(deck) and min(deck) - STEP <= fl <= max(deck) + STEP and cv["share"] >= 0.1
                          and (cv["share"] >= FLOOR_SHARE or not cv["across"]))
                 cut = ov is not None and ov["cells"] >= 2 and cv is not None and cv["clear"] < CLEAR_WALK and not floor
-                if cut and (cv["across"] or not held):
+                if cut and (cv["across"] or not rests):
                     v = "crossed by wall" if cv["across"] else "runs into wall"
                     out.append({**row, "verdict": f"{v} {i}" + (f" ({what})" if what else ""), "area": ov["area"]})
                     continue
@@ -869,7 +869,7 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structur
                                                                       if what else f" ({cv['share'] * 100:.0f}% under it)"),
                                 "share": round(cv["share"], 2)})
                     continue
-            if not held:
+            if not rests:
                 continue
             width, clear = (cv["width"], cv["clear"]) if cv else (0.0, None)
             blocked = clear is not None and clear < CLEAR_WALK

@@ -57,10 +57,18 @@ FIXED_WHY = {"helstrom": "the place is drafted from this source",
 # Sources judged by hand for the places the main quest uses (decision 0040, 4): place -> (source id, why). A source
 # may serve several places, each adapted differently (owner, 2026-11-19); the source note says how.
 JUDGED = {
-    "outpost-m11-m63": ("kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
-                        "Reed-Sill Weir is drafted from the Argonian weir-sized camp near Loreisian"),
-    "outpost-m6-m66": ("kingofthemurkmire.marker.ree-an-wo",
-                       "Teel-Fen Weir is drafted from Ree-An-Wo's hide tents on cypress platforms"),
+    "outpost-m11-m63": ("kingofthemurkmire.marker.ree-an-wo",
+                        "one small platform of Ree-An-Wo's pale hide tents with its landing and cooking pot, by the "
+                        "creek beside the weir; the camp near Loreisian has no camp in the footprint (source view, "
+                        "2026-11-21)"),
+    "outpost-m6-m66": ("kingofthemurkmire.huluxinoagvillagelocation",
+                       "Huluxinoag's Hist with its roots and glands, some dead, on platforms and mud-hut walkways by "
+                       "water: its trunk swapped for a young Hist, Ree-An-Wo's tents and a tanning rack added "
+                       "(source view, 2026-11-21)"),
+    "outpost-m13-m65": ("skyrim.marker.militarycamphjaalmarchimperialmapmarker",
+                        "Military Camp Hjaalmarch's Imperial tents, bedrolls and fire with a spit are the old road "
+                        "post, its Civil War props and smithy pruned; the ship and its hold are carried from Black "
+                        "Marsh & Valenwood's Imperial barge, which the main quest names (source view, 2026-11-21)"),
     "jal-veesa": ("kingofthemurkmire.seekhatyollocation",
                   "pale reed-thatched stilt houses on platforms round a Hist: the closest match to the record's look"),
     "natai": ("kingofthemurkmire.seekhatyollocation", "Seekhat Yol's huts and docks strung along a salvage beach"),
@@ -737,6 +745,9 @@ def pin(place_ids: list[str]) -> int:
 
 
 def main(argv: list[str]) -> int:
+    if argv[:1] in (["-h"], ["--help"]):
+        print(__doc__)
+        return 0
     if argv[:1] == ["--population"]:
         return repopulate()
     if argv[:1] == ["--pin"]:

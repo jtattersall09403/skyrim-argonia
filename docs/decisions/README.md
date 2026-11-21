@@ -22,3 +22,4 @@ decision changes. Numbers missing from this list were superseded by the pivot
 - [0038](0038-the-pivot-bmv-is-the-world.md) The pivot: BM&V is the world; we mod our story on top
 - [0039](0039-the-play-machine-is-a-g4dn-on-demand.md) The play machine is a g4dn.xlarge on demand
 - [0040](0040-records-fit-the-story-and-the-ground.md) Place records fit the story and the ground; sources serve the record
+- [0041](0041-a-place-is-its-source-carried-whole-and-adapted-by-hand.md) A place is its source carried whole and adapted by hand

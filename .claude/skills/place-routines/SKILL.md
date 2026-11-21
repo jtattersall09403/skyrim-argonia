@@ -5,16 +5,24 @@ description: Where a place's people sleep, work and walk - beds, households unde
 
 # Beds, routines and law
 
-Step 6 of the place path ([place-system](../place-system/SKILL.md)). Stages: `people`, `stations` (the worker's
-stop), `jail`. Who each person is (name, household's story, trade, wealth) is the next skill, `place-people`; the
-draft gives placeholder names.
+Step 7 of the place path ([place-system](../place-system/SKILL.md)). Stages: `people`, `stations` (the worker's
+stop), `jail`. Who each person is (name, household's story, trade, wealth) is `place-people`; the draft gives
+placeholder names.
+
+## On the source's own furniture
+
+The carried place already holds its people's furniture: beds, the trader's counter, the fire and cook stand, racks,
+idle and sit markers. Put each person there by hand, by trade and household: their `bed` on a carried bed, their
+`work` stop on the source's own marker or furniture of that trade, a day spot where the source's people stood. A
+person whose role the source has no furniture for gets it added beside the place's own (`place-adapt`). Look at
+each spot (`look at <person>`); every spot stands on the walking mesh.
 
 ## How complete people are
 
 A place's people are as complete as King of the Murkmire's own places, by type of person and place, and no more:
 
 - every named person with a role has a bed (their own, or a shared bunk of their faction), a sleep package and a
-  work pin;
+  work spot;
 - ferrymen and hostiles have none;
 - no crowds: the record's population, no more.
 
@@ -22,7 +30,7 @@ A place's people are as complete as King of the Murkmire's own places, by type o
 
 1. Every promised service person works; residents fill the homes' remaining beds, then the open beds (a camp's tents
    and bedrolls), until the place holds its record's population, each with a routine. A place short of beds is given
-   them (`draft.add`, then `add` and `people`).
+   them (`place-adapt`, then `draft add` and `draft people`).
 2. One household per house: a family headed by the working person who lives there, then a partner, then kin;
    never strangers together. A couple shares a double bed owned by their household's faction.
 3. An inn that rents a room keeps one bed unowned (`stations.rent_bed`); the innkeeper keeps the inn day and night
@@ -53,7 +61,7 @@ beast, a levelled character or a template that is no fitting base.
 
 ## The law
 
-The sentence follows `place_law` (`docs/design/law.md`); the `jail` stage builds it after the streets.
+The sentence follows `place_law` (`docs/design/law.md`); the `jail` stage builds it (`draft jail <place_id>`) once the walks and doors stand.
 
 - No law: no sentence; guards speak no arrest lines.
 - A foreign law jails, in the copied room holding the jail kit; the tools place the prisoner's bed, the jail marker,

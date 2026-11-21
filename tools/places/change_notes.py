@@ -67,7 +67,8 @@ def base_names(place_id: str | None, bundles: Path = BUNDLES) -> dict[str, str]:
     out: dict[str, str] = {}
     if not place_id:
         return out
-    for b in (f"ground.{place_id}", f"draft.{place_id}"):
+    from tools.places import variant
+    for b in (variant.ground(place_id), f"draft.{place_id}"):
         p = bundles / b / "bases.jsonl"
         if not p.exists():
             continue

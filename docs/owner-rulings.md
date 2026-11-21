@@ -207,6 +207,36 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
+- The owner has seen the comparison of the two drafting methods (issue #82) and taken the places over to edit in
+  the studio himself; the studio shows both drafts of Jal-Veesa side by side as two places (2026-11-21, #80).
+- One agent owns a place and works through it iteratively (do, look, do more); a place is not passed between
+  many agents. An agent's context compacts itself and a resumed agent keeps its history, so a brief never offers
+  running short of room as a reason to stop, and an agent that says its context is full is continued, not replaced
+  (owner, 2026-11-21, #80).
+- The carried-whole method is the way places are built from here; stale skills, tools, instructions and CLAUDE.md
+  lines are tidied to it and what is not used is deleted, leaving a clean set of skills for drafters and planner
+  sessions (owner, 2026-11-21, #80).
+- The owner can see both drafts of a place in the studio, edit either and choose either: a place may hold named
+  variant drafts. He can also see the walking mesh in the studio and change it himself (2026-11-21, #80).
+- The lane's source recommendations are applied: Reed-Sill Weir and Karsh-Naal Camp from Ree-An-Wo, Teel-Fen Weir
+  from Huluxinoag, Ashgate Landing from the Hjaalmarch military camp with the Imperial barge's ship. Sharing a
+  source is governed only by the ruling of 2026-11-19 above (a source may serve several places, each adapted
+  differently, judged case by case); nothing may add a rule or tie-break against it (owner, 2026-11-21, #80).
+- Where two places share a source, part of each one's hand adaptation is making it its own: different parts of
+  the source, a different layout or centre, different added buildings, dressing and people's spots, so that no
+  two places feel like clones; the drafter looks at the two side by side before handing over (owner, 2026-11-21,
+  #80).
+- The build machine stays awake only while it is genuinely busy (a real job or lane working) or while the owner
+  has a studio tab open (the studio's own heartbeat); no timer job is run just to hold it awake (owner,
+  2026-11-21, #80).
+- Place work runs at medium effort (the `place-drafter` agent). The remaining Act I places are drafted by the new
+  method in quest order, Ashgate Landing first, then Reed-Sill Weir and on, while the owner edits Jal-Veesa and
+  Karsh-Naal Camp in the studio (owner, 2026-11-21, #80).
+- A fault passed to the owner is explained in plain English (what is wrong, as a player would see it, and what
+  was tried) and says precisely where to look: the place, the thing by its name, where it stands (which house or
+  landmark it is beside and on which side), and the capture that shows it, so he can go straight to it in the
+  studio (owner, 2026-11-21, #80).
+- Files the tools leave uncommitted are the lead's to handle, never the owner's (2026-11-21, #80).
 - Before a place is built from its source, the drafter looks at the source as a place and judges it against the
   record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
   structure's own platform, or none); and, where too little of it is useful, takes a better source. These are the

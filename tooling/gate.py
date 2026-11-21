@@ -1,12 +1,13 @@
 """The scoped gate: run only the checks a change can reach.
 
-`make check` runs this; `make check-all` runs every stage and every test. Run `make check-all` before a deploy and
-at a phase's close.
+`make check` runs this and runs only what the change reaches; a landing runs `make check GATE_BASE=origin/main`.
+`make check-all WHY=deploy|phase-close` runs every stage and every test, and only for those two occasions: it, and
+`gate.py run --all`, refuse without one of them (FULL_WHY).
 
     python tooling/gate.py run              # the working tree and index against HEAD (before a commit)
     python tooling/gate.py run --base origin/main   # everything on this branch since main (a lane landing)
     python tooling/gate.py plan [--base REF] [paths...]   # print what would run, run nothing
-    python tooling/gate.py run --all        # the whole gate
+    python tooling/gate.py run --all --why deploy|phase-close   # the whole gate
 
 How a change picks its checks (the map is tooling/gate_map.toml, one comment per rule):
   - the no-assets guard and ruff always run (seconds);
@@ -17,7 +18,10 @@ How a change picks its checks (the map is tooling/gate_map.toml, one comment per
   - the map's rules add stages and tests for path globs (story markdown -> the explorer and story tests, skse/** ->
     the C++ tests, and so on);
   - a path in the map's `full` list, or a path nothing above picks up, runs the whole gate; so does any error in
-    the picker itself.
+    the picker itself;
+  - an edit to the map is scoped like any other change: the map at the base ref against the map now, and only the
+    entries added, removed or altered count as changed (their stages, their tests, their named paths); an edit to the
+    map's structural parts (`full`, `named_direct`, the `[stages]` table) runs the whole gate.
 It prints one line saying what it ran and what it skipped, and why.
 """
 from __future__ import annotations
@@ -185,15 +189,57 @@ def _glob(path: str, globs) -> bool:
 
 # ---- the picker ---------------------------------------------------------------------------------------------
 
-def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
+MAP_REL = "tooling/gate_map.toml"
+
+
+def _rule_key(r: dict) -> str:
+    return repr((sorted(r["globs"]), sorted(r.get("stages", [])), sorted(r.get("tests", []))))
+
+
+def map_delta(old: dict, new: dict) -> tuple[list[dict], list[str]] | None:
+    """The rules added, removed or altered between two maps, and a line naming them; None when a structural part
+    (`full`, `named_direct`, `[stages]`) differs, which the caller runs whole."""
+    for part in ("full", "named_direct", "stages"):
+        if old.get(part) != new.get(part):
+            return None
+    a = {_rule_key(r): r for r in old.get("rule", [])}
+    b = {_rule_key(r): r for r in new.get("rule", [])}
+    rules = [r for k, r in {**a, **b}.items() if (k in a) != (k in b)]
+    return rules, [", ".join(r["globs"][:2]) + ("..." if len(r["globs"]) > 2 else "") for r in rules]
+
+
+def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP, base_map: str | None = None) -> Plan:
+    """`base_map` is the map's text at the base ref; with it an edit to the map is scoped to its changed entries."""
     gate = tomllib.loads(mapfile.read_text())
     plan = Plan()
     changed = sorted({c for c in changed if c})
+    extra: set[str] = set()      # paths the map's changed entries name: picked, never "unmatched"
+    delta_rules: list[dict] = []
+    notes: list[str] = []
+    if MAP_REL in changed:
+        d = map_delta(tomllib.loads(base_map), gate) if base_map is not None else None
+        if d is None:
+            return Plan(full=True, reason=f"{MAP_REL}: a structural part changed (or no base map to compare with)")
+        changed.remove(MAP_REL)
+        delta_rules, notes = d
+        for r in delta_rules:
+            extra |= {g for g in r["globs"] if "*" not in g}
     for c in changed:
         if _glob(c, gate.get("full", [])):
             return Plan(full=True, reason=f"{c} is shared by every check")
-    if not changed:
+    if not changed and not delta_rules:
         return plan
+    changed = sorted(set(changed) | extra)
+    for r in delta_rules:     # a changed entry's own stages and tests run (a removed entry's, if they still exist)
+        for s in r.get("stages", []):
+            if s not in STAGES:
+                raise ValueError(f"unknown stage {s}")
+            plan.stages.add(s); plan.why.setdefault(s, "gate_map.toml entry " + r["globs"][0])
+        for t in r.get("tests", []):
+            if (repo / t).exists():
+                plan.tests.add(t); plan.why.setdefault(t, "gate_map.toml entry " + r["globs"][0])
+    if notes:
+        plan.reason = "gate_map.toml entries treated as changed: " + "; ".join(notes)
     idx = Index(repo)
     matched: set[str] = set()
     direct = frozenset(gate.get("named_direct", []))
@@ -224,7 +270,7 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
                     if not (repo / t).exists():
                         raise FileNotFoundError(f"map names a missing test {t}")
                     plan.tests.add(t); plan.why.setdefault(t, c)
-    unmatched = [c for c in changed if c not in matched]
+    unmatched = [c for c in changed if c not in matched and c not in extra]
     if unmatched:
         return Plan(full=True, reason=f"{unmatched[0]} matches no rule" + (f" (+{len(unmatched)-1})" if len(unmatched) > 1 else ""))
     # a directory named as a test covers its files
@@ -233,6 +279,17 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP) -> Plan:
             plan.tests.discard(t)
             plan.tests |= {x for x in idx.tests() if x.startswith(t.rstrip("/") + "/")}
     return plan
+
+
+def base_map_text(base: str | None, repo: Path = REPO) -> str | None:
+    """The map as it stood at the base ref (the merge base of a lane landing, else HEAD); None when there is none."""
+    try:
+        ref = subprocess.run(["git", "-C", str(repo), "merge-base", base, "HEAD"], check=True, capture_output=True,
+                             text=True).stdout.strip() if base else "HEAD"
+        return subprocess.run(["git", "-C", str(repo), "show", f"{ref}:{MAP_REL}"], check=True, capture_output=True,
+                              text=True).stdout
+    except subprocess.CalledProcessError:
+        return None
 
 
 def changed_paths(base: str | None, repo: Path = REPO) -> list[str]:
@@ -257,15 +314,23 @@ def _pytest(tests: list[str]) -> int:
     return 0 if rc in (0, 5) else rc
 
 
+FULL_WHY = ("deploy", "phase-close")
+FULL_REFUSED = ("refused: a full run is only for a deploy or a phase's close (WHY=deploy or WHY=phase-close); a "
+                "landing runs `make check GATE_BASE=origin/main`, which picks what the change reaches")
+
+
 def summary(plan: Plan, n_tests: int) -> str:
     if plan.full:
-        return f"gate: FULL (all {n_tests} test files, every stage): {plan.reason}"
+        asked = plan.reason.startswith("asked for")
+        return (f"gate: FULL (all {n_tests} test files, every stage): {plan.reason}"
+                + ("" if asked else "; a full run is expected only when such a file changes"))
+    note = f" [{plan.reason}]" if plan.reason else ""
     ran = sorted(plan.stages)
     skipped = [s for s in STAGES if s not in plan.stages]
     return (f"gate: scoped: guard, lint, {len(plan.tests)}/{n_tests} test files"
             + (f", {', '.join(ran)}" if ran else "")
             + f"; skipped {', '.join(skipped) or 'nothing'} and {n_tests - len(plan.tests)} test files"
-            + " (no changed path reaches them; `make check-all` runs everything)")
+            + " (no changed path reaches them; `make check-all` runs everything)" + note)
 
 
 def run(plan: Plan, all_tests: list[str]) -> int:
@@ -289,15 +354,19 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("cmd", choices=("run", "plan"))
     ap.add_argument("--base", help="diff from this ref's merge base (a lane landing: origin/main)")
-    ap.add_argument("--all", action="store_true", help="the whole gate")
+    ap.add_argument("--all", action="store_true", help="the whole gate: only with --why deploy|phase-close")
+    ap.add_argument("--why", default="", help="why a full run: deploy or phase-close")
     ap.add_argument("paths", nargs="*", help="changed paths (default: from git)")
     a = ap.parse_args(argv)
     all_tests = Index(REPO).tests()
     if a.all:
-        plan = Plan(full=True, reason="asked for (make check-all)")
+        if a.why not in FULL_WHY:
+            print(FULL_REFUSED, file=sys.stderr)
+            return 2
+        plan = Plan(full=True, reason=f"asked for ({a.why})")
     else:
         try:
-            plan = pick(a.paths or changed_paths(a.base))
+            plan = pick(a.paths or changed_paths(a.base), base_map=base_map_text(a.base))
         except Exception as e:   # the picker never makes the gate weaker: any error runs everything
             plan = Plan(full=True, reason=f"the picker failed ({type(e).__name__}: {e})")
     line = summary(plan, len(all_tests))
