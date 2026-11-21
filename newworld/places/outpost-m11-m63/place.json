@@ -93,7 +93,34 @@
      "why": "kept as built: the camp's high deck, now with a warden's tent; the ramp that climbed from it to the towers pruned"
     }
    ]
-  }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "foot not reaching the ground",
+    "why": "the 'feet' are the underside of the east deck's floor (CypressStockadeScaffoldFloor01), which stands on its own cypress post base (HPEA3GW2) as the source builds every deck, base below and floor on top; the unit table holds the floor apart from its base. probe --all: nothing floats; seen from E and N at eye level (151142399-0025)"
+   },
+   {
+    "unit": "dock.01",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own ramp from the middle low deck up to the high deck: its foot rests on its own post base (6MQGM5XW) beside the low deck, as Ree-An-Wo built it; seen from NE at eye level (151138012-0024): the ramp climbs from the low deck to the high deck"
+   },
+   {
+    "unit": "small.01",
+    "flag": "foot buried deeper than its leg",
+    "why": "the high deck's cypress post bases stand 88 into our bank, as Ree-An-Wo's posts stood in its mud (its bases at -110 under a -50 bank); posts going into the ground read as built; the deck stands 3 m over the bank"
+   },
+   {
+    "unit": "added.small.01",
+    "flag": "foot not reaching the ground",
+    "why": "the high deck's tent and its bedroll stand on the high deck's floor (top 387), not on the ground 3 m below; probe --all: nothing floats"
+   },
+   {
+    "unit": "QBWSJSRPF1J3",
+    "flag": "stands on: LOOK0340000",
+    "why": "the ground ramp lands on the east deck; the fourth deck that closes the square only touches its south rail at the corner, seen from above (151558492-0026): the walk up the ramp onto the east deck is open"
+   }
+  ]
  },
  "fit": {
   "pivot": [
