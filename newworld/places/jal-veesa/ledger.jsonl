@@ -320,8 +320,8 @@
 {"src":"King of the Murkmire.esp:193A8A","space":"exterior","status":"placed","as":"jal-veesa.D46912MVHB1ARHMQMXCQATXKCB"}
 {"src":"King of the Murkmire.esp:193A8B","space":"exterior","status":"placed","as":"jal-veesa.QVQ243DXQRYRAS3M5EZ90J0F7Z"}
 {"src":"King of the Murkmire.esp:193A8C","space":"exterior","status":"placed","as":"jal-veesa.2G8MT6G955FY0AS9EEPB175B9R"}
-{"src":"King of the Murkmire.esp:193A8D","space":"exterior","status":"placed","as":"jal-veesa.XBH0EQWR345Y09C23R3AZ332W3"}
-{"src":"King of the Murkmire.esp:193A8E","space":"exterior","status":"placed","as":"jal-veesa.0F6DRDTQBKWGWCVFE51VX2767K"}
+{"src":"King of the Murkmire.esp:193A8D","space":"exterior","status":"dropped","why":"a collision box of the source's lagoon bank, 3-4 m under our ground (it walled the bank the source had over water); deleted by hand"}
+{"src":"King of the Murkmire.esp:193A8E","space":"exterior","status":"dropped","why":"a collision box of the source's lagoon bank, 3-4 m under our ground (it walled the bank the source had over water); deleted by hand"}
 {"src":"King of the Murkmire.esp:193A8F","space":"exterior","status":"placed","as":"jal-veesa.WCPBM3M6AAY6P4HFSYEFXP4E30"}
 {"src":"King of the Murkmire.esp:193A90","space":"exterior","status":"placed","as":"jal-veesa.MFXGT7WAV2KNN40F3SJEV3Z0G0"}
 {"src":"King of the Murkmire.esp:193A91","space":"exterior","status":"placed","as":"jal-veesa.VQTS8HWWCR6RJ1NT3DX3R6DZ32"}
@@ -624,7 +624,7 @@
 {"src":"King of the Murkmire.esp:82B761","space":"exterior","status":"placed","as":"jal-veesa.PB5SEJQHBHT0BNAMEHPF0VCG6E"}
 {"src":"King of the Murkmire.esp:82B764","space":"exterior","status":"placed","as":"jal-veesa.Q4GK9TVF8NYWFS4S8TRSVM1W89"}
 {"src":"King of the Murkmire.esp:82B765","space":"exterior","status":"placed","as":"jal-veesa.VWREY2K1R00S01JVM5JZ23AKQJ"}
-{"src":"King of the Murkmire.esp:92322A","space":"exterior","status":"placed","as":"jal-veesa.Y5DSS2BZY6GQ5173P1VFR3TSYT"}
+{"src":"King of the Murkmire.esp:92322A","space":"exterior","status":"dropped","why":"a collision box of the source's lagoon bank, 3-4 m under our ground (it walled the bank the source had over water); deleted by hand"}
 {"src":"King of the Murkmire.esp:9BCE2C","space":"exterior","status":"placed","as":"jal-veesa.P1MTWAVRHKX64838B9NPXMPXFD"}
 {"src":"King of the Murkmire.esp:A6AD61","space":"exterior","status":"placed","as":"jal-veesa.SDG3647RYFMTYYQ8KPXXSEE7NA"}
 {"src":"King of the Murkmire.esp:A6AD63","space":"exterior","status":"placed","as":"jal-veesa.HGPCZVTTNBGZPMG3C5V2MRJGGQ"}
