@@ -1,0 +1,74 @@
+{
+ "save_id": "agent-20261121T211426",
+ "place_id": "outpost-m6-m66",
+ "name": "the two last tall source cliffs round the young Hist pruned: from every side of the survey they buried the young tree in a rock mound",
+ "at": "2026-11-21T21:14:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.37N3FNEZA4W6Y9V333ZA6A4VYC",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.37N3FNEZA4W6Y9V333ZA6A4VYC",
+    "base": "King of the Murkmire.esp:071A83",
+    "kind": "rock",
+    "pos": [
+     -45520.05,
+     -538153.55,
+     62.86
+    ],
+    "rot": [
+     0,
+     0,
+     3.97946
+    ],
+    "scale": 2.34,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD7C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:14:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.Z6TWMY8R53JS2E6FCSKCA8T7VS",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.Z6TWMY8R53JS2E6FCSKCA8T7VS",
+    "base": "King of the Murkmire.esp:071A82",
+    "kind": "rock",
+    "pos": [
+     -45520.2,
+     -539197.86,
+     33.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.37946
+    ],
+    "scale": 2.34,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD7D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T21:14:26Z"
+  }
+ ]
+}
