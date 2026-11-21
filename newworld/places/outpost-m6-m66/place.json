@@ -233,15 +233,11 @@
   "agent-20261121T152114",
   "agent-20261121T152629",
   "agent-20261121T153945",
-  "agent-20261121T160535"
+  "agent-20261121T160535",
+  "agent-20261121T160841"
  ],
  "sap": {
-  "added": [
-   {
-    "id": "outpost-m6-m66.sap.1TM9YA0T28YKK1KV2ZZDH3QYCM",
-    "on": "1TM9YA0T28YKK1KV2ZZDH3QYCM"
-   }
-  ]
+  "added": []
  },
  "clearance": {
   "tree": {

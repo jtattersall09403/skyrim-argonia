@@ -1,0 +1,254 @@
+{
+ "save_id": "agent-20261121T160841",
+ "place_id": "outpost-m6-m66",
+ "name": "beds and bedrolls up 2 onto their decks (they read as inside the platforms); the lone ground gland pair buried among the rocks behind the Hist pruned (its sap pool lay unseen under the rocks; the Hist keeps its own glands, living and dead)",
+ "at": "2026-11-21T16:08:41Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF21BED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44885.8,
+     -540518.6,
+     207.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44885.8,
+     -540518.6,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T16:08:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF22BED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44967.0,
+     -540668.0,
+     207.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44967.0,
+     -540668.0,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T16:08:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF23BEDROLL",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41850.6,
+     -537896.7,
+     88.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41850.6,
+     -537896.7,
+     90.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T16:08:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF24BEDROLL",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41741.0,
+     -537766.8,
+     88.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41741.0,
+     -537766.8,
+     90.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T16:08:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1TM9YA0T28YKK1KV2ZZDH3QYCM",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1TM9YA0T28YKK1KV2ZZDH3QYCM",
+    "base": "King of the Murkmire.esp:08992E",
+    "kind": "tree",
+    "pos": [
+     -45791.58,
+     -539783.31,
+     123.52
+    ],
+    "rot": [
+     -0.18458267,
+     0.07744285,
+     5.27228
+    ],
+    "scale": 0.71,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE0B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T16:08:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ZFSG5T0EWWV1WYQS68KB2FDWJY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.ZFSG5T0EWWV1WYQS68KB2FDWJY",
+    "base": "King of the Murkmire.esp:5376A7",
+    "kind": "tree",
+    "pos": [
+     -45791.58,
+     -539783.31,
+     123.52
+    ],
+    "rot": [
+     -0.18458267,
+     0.07744285,
+     5.27228
+    ],
+    "scale": 0.71,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDA0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T16:08:41Z"
+  }
+ ]
+}
