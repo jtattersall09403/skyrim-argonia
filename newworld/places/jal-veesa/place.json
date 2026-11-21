@@ -1430,12 +1430,9 @@
  },
  "draft_key": "b342e67c323af19d",
  "sap": {
-  "added": [
-   {
-    "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
-    "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
-   }
-  ]
+  "none": {
+   "jal-veesa.RNQ1281B2E5X8752E8TM05G1YV": "the hatchery's gland in the egg-tenders' grove: its sap is the hatchery's own steaming pool at its foot (the source's ArgoniaSteamPool01), and the grove has no open level ground for another"
+  }
  },
  "agent_saves_applied": [
   "agent-20261121T075359",
