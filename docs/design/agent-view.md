@@ -89,41 +89,58 @@ hid it), and `--canopy` keeps it.
 | `walk <from> <to>` | Six eye-level frames along the place's streets and paths between two doors or points: whether the way is open and reads as a street. |
 | `overview` | The whole place obliquely and from above, every structure labelled: where to look next. |
 | `survey [<structure or unit> ...] [--changed]` | One contact sheet per thing named, else the whole place: near and far from the four compass sides at eye level, two high obliques, a top view with the crowns cut, sections on two axes with the ground line and a height scale, in the neutral fill, and one tile in the place's own light (labelled "viewer light, not the game's"). Every tile is drawn at 1280x960 and saved as its own file, `tiles/NN-<side>-<near|far|high|top|lit>.png` or `tiles/NN-section-<axis>.png` (with its id buffer, drawn 384 wide and enlarged, so `pick` works on it), carrying its side, distance and score; a failed tile is retried once, else struck through with its reason. The sheet is the index: the same tiles at 640x480, four across (2560 wide); `pick` on a sheet answers from the tile under the pixel. Beside the sheet, `table.json` and `table.txt` list what each tile shows with each tile's file; all under `out/places/look/<tree>/<place>/survey/<thing>/`. Read the tiles one by one for detail, the sheet to choose which. `--changed` takes only the structures whose rows changed since this checkout's last survey. Prints one line per thing: its sheet and its failed tiles. The tiles go in one page call: seconds a structure on a warm daemon. |
-| `playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again]` | The place walked as a player meets it, on its built walkable mesh (below). |
+| `playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--full]` | The place walked as a player meets it, as a tour on its built walkable mesh (below). |
 
 ## Playwalk: the place as a player walks it
 
-`playwalk` with no names plans the place's routes: from where the player arrives (the landing, each road's end
-that leaves the place, a quest arrival) to the centre (the landing, else the middle of the stalls, else of the
-doors); from the centre to each door's arrival, each stall, each crafting station, the Hist and its sap pool and
-each quest spot; and along each street. Each route is the shortest walk over the BUILT mesh's triangles
-(`playwalk.astar`, straightened inside the corridor), so it climbs the stairs and crosses the bridges a person
-would. A thing the mesh cannot reach from the arrival is listed "CANNOT BE WALKED TO" with where and how the mesh
-breaks, and the route is walked to the break. A mesh older than the place files is said STALE and every strip is
-marked so; with no built mesh the place's paths are walked instead and the plan says "walked on the place's paths,
-not the mesh". `playwalk <from> <to>` walks one route (names as for every verb, plus `landing`, `centre`,
-`market`). `--plan` prints the plan only: routes, lengths, stations, how many are new.
+`playwalk` with no names walks the place as a TOUR: one closed walk from where the player arrives (the landing,
+else a road's end that leaves the place, else a quest arrival) through the centre (the landing, else the middle of
+the stalls, else of the doors), past every door's arrival, stall, crafting station, the Hist and its sap pool (one
+stop) and every quest spot, once each, and back. The stops are ordered by walking distance over the mesh (nearest
+neighbour, then 2-opt). A stretch already walked costs three times as much to walk again, so the tour loops where
+the mesh allows and retraces only where there is no other way; a station within 400 units of one already shot is
+not shot again. One tour is walked per island of the mesh an arrival stands on, and a place whose tour is longer
+than 90000 units is cut into two or three tours that each leave and return to the centre. A thing on no arrival's
+island is listed "CANNOT BE WALKED TO" with where and how the mesh breaks, and walked to the break (one look
+there). A street with a building beside an unwalked stretch that no station is within 600 units of gets a short
+spur to the end of that stretch. Each route is the shortest walk over the BUILT mesh's triangles (`playwalk.astar`,
+straightened inside the corridor), so it climbs the stairs and crosses the bridges a person would. A mesh older than
+the place files is said STALE and every strip is marked so; with no built mesh the place's paths are walked instead
+and the plan says "walked on the place's paths, not the mesh". `playwalk <from> <to>` walks one route (names as for
+every verb, plus `landing`, `centre`, `market`) with a station every 256 units and the old full look set.
+`--full` plans one route from the arrival to every thing and along every street, every route with the old look set
+(about 15 times the looks of a tour). `--plan` prints the plan only: the count of routes, stations and looks, each
+route with its stops.
 
-Stations stand on the mesh: one every 256 units on a named route (768 on a whole place, `--stride u`), and always
-at each stair or ramp foot and head, each bridge or walkway start, middle and end, each doorway, each turn sharper
-than 45 degrees and each stretch within 150 units of a deck edge with a drop beside it. A station seen on an
-earlier route (same spot, same heading) is not shot again; the table names where it was. At each station, from a
-person's eye: ahead, 20 degrees down, 20 degrees up, left, right, back, and at stairs, bridges, doorways and turns
-the two forward diagonals; 80 degrees across at 4:3 (the game's first-person view), in the neutral fill.
+Stations stand on the mesh: one every 768 units on a tour (`--stride u`), and always at each stair or ramp foot and
+head, each bridge or walkway start, middle and end, each doorway, the approach to a door (320 units before it) and
+the end of each stop; turns and deck edges are not stations on a tour. At an ordinary station, from a person's eye:
+ahead and 20 degrees down (80 degrees across at 4:3, the game's first-person view, in the neutral fill), and left
+or right where a building stands within 600 units to that side and no earlier look took it (every house is seen
+once from the way past it). The full set (ahead, down, up, left, right, back and the two forward diagonals) is
+taken only at a doorway (the door from the walk, then from the doorstep, the way back), the foot and head of
+stairs and ramps, a bridge's or walkway's start and middle, a quest spot, the Hist and its pool, and where the tour
+first enters the place; a bridge, walkway, stair or ramp station within 700 units of an earlier full-set station,
+and a doorstep within 700 of one, takes the short set (a door: ahead, down, back); the approach to a door is
+ahead only. Where a stop is a thing (a stall, a station, the Hist), the eye faces it from the end of the walk. A
+`<from> <to>` route and `--full` keep a station every 256 units (768 on `--full`), and at each: ahead, down, up,
+left, right, back, and at stairs, bridges, doorways and turns the two forward diagonals.
 
 Each look is judged by its id buffer. A capture fault (the camera in a piece, one thing nearer than 100 units over
 60% of the frame, no ground drawn) is shot again from a nudged spot (along the walk up to 64 units, sideways on the
 mesh), else struck through in red with its reason. The same evidence names faults of the place, marked PLACE in
-orange: every spot near the station inside one piece (the way passes through it; indoors, a ceiling lower than a
-person); a wall filling the view ahead at a doorway (the door opens onto a wall); no boards under a bridge's middle
-looking down (a gap); in a room, the void seen.
+orange: every spot near the station inside one piece (the way passes through it); a wall filling the view ahead at
+a doorway (the door opens onto a wall); no boards under a bridge's middle looking down (a gap); in a room, the void
+seen.
 
-Out, under `out/places/look/<tree>/<place>/playwalk/<route>/`: `strip-NN.png` (one row a station, a column a
-look, at most 8 stations a strip), `forward.png` (the walk facing ahead), `map.png` (the route over the mesh,
-numbered), `tiles/` (every look full size) and `table.txt`/`table.json` (each look's file, verdict and the three
-things filling most of the frame). A route already shot as planned is skipped on a rerun (`--again` shoots it
-anew), so an interrupted walk resumes. `--changed` walks only the routes passing within 1000 units of a structure
-changed since this checkout's last playwalk.
+Out, under `out/places/look/<tree>/<place>/playwalk/<route>/` (a tour is `tour`, or `tour-1`.. when there are
+several; a spur `spur-<street>-<n>`): `strip-NN.jpg` (JPEG at quality 88; one row a station, a column a look, at
+most 8 stations a strip), `forward.jpg` (the walk facing ahead), `map.png` (the route over the mesh, numbered),
+`tiles/` (every look full size, PNG) and `table.txt`/`table.json` (each look's file, verdict and the three things
+filling most of the frame). The plan's counts are the first line of the output and the seconds and megabytes the
+last. A route already shot as planned is skipped on a rerun (`--again` shoots it anew), so an interrupted walk
+resumes. `--changed` walks only the routes passing within 1000 units of a structure changed since this checkout's
+last playwalk.
 
 Rooms: `in <room> playwalk` and `playwalk --rooms` (every room, one line each). A room copied whole and unchanged
 gets the entering set at each door: just inside, looking in, left and right. A room we changed (a cut, source
@@ -171,7 +188,7 @@ that touches a row an owner's finalised save touched is left out whole and liste
 5. `survey --changed` after every structure placed or changed; `survey` of the whole place after each group; judge
    only from good captures, and of each ask whether it shows what it was meant to.
 6. `playwalk <from> <to>` across every stair, bridge, door or street you changed, straight after the change.
-7. Judge the whole with the place's survey and `playwalk` (every route, then `playwalk --rooms`) once the numbers
+7. Judge the whole with the place's survey and `playwalk` (the tour, then `playwalk --rooms`) once the numbers
    are clean.
 
 Every call appends a line to `out/places/look/<tree>/session.log` (verb, arguments, image, milliseconds). A sequence that

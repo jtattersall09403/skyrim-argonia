@@ -130,7 +130,6 @@ def test_classifier_capture_or_place():
     assert c("ahead", "stride", {"land": 0, "water": 0, "pieces": 0.5})["fault"] == "capture"
     assert c("up", "stride", {"land": 0, "water": 0, "pieces": 0.5})["verdict"] == "good"
     assert c("ahead", "way in", {"void": 0.2}, inside=True)["fault"] == "place"
-    assert c("ahead", "way in", {"all_inside": "Beam", "low_ceiling": True}, inside=True)["why"].startswith("the ceiling")
 
 
 def test_room_kind():
@@ -189,3 +188,108 @@ def test_a_roof_at_head_height_and_a_trunk_beside():
     trunk = {"all_inside": "TreeX", "in_piece": "TreeX", "fills": [{"edid": "TreeX", "share": 0.9}], "land": 0.1}
     assert pw.classify("left", "stride", trunk)["fault"] == "capture"      # standing beside it
     assert pw.classify("ahead", "stride", trunk)["fault"] == "place"       # walking into it
+
+
+# ---------- the tour ----------
+def tee_mesh():
+    """A road along +x (the strip profile: a stair at 1024, a deck at 192 to 3200) and a spur street leaving it
+    northward at x=448..512 (flat, at 0); an island of its own far off at x=9000."""
+    M = strip_mesh(profile)
+    V = M.V.tolist()
+    T = M.T.tolist()
+    base = len(V)
+    for i in range(7):
+        V += [[448, 64 + 128 * i, 0.0], [512, 64 + 128 * i, 0.0]]
+    for i in range(6):
+        a, b, c, d = base + 2 * i, base + 2 * i + 1, base + 2 * i + 2, base + 2 * i + 3
+        T += [[a, c, b], [b, c, d]]
+    isl = len(V)
+    V += [[9000, -64, 0], [9000, 64, 0], [9128, -64, 0], [9128, 64, 0]]
+    T += [[isl, isl + 2, isl + 1], [isl + 1, isl + 2, isl + 3]]
+    nb = pw._neighbours(np.asarray(T), np.asarray(V, float), weld=1.0)
+    return Mesh(V, T, nb.tolist())
+
+
+def box(x, y, w=200, h=200, z=300):
+    return (np.array([x - w / 2, y - h / 2, 0.0]), np.array([x + w / 2, y + h / 2, z]))
+
+
+def tour_fixture():
+    M = tee_mesh()
+    g = Ground(water=-100, x0=1600, x1=2400)
+    arrivals = [{"name": "landing", "pos": [32, 0, 0], "kind": "arrival"}]
+    centre = {"name": "landing", "pos": [32, 0, 0], "kind": "arrival"}
+    stops = [{"name": "door of House A", "pos": [700, 0, 0], "kind": "doorway"},
+             {"name": "stall Fish", "pos": [1800, 0, 192], "kind": "stall"},
+             {"name": "door of House B", "pos": [3000, 0, 192], "kind": "doorway"},
+             {"name": "quest spot q", "pos": [3500, 0, 100], "kind": "quest"},
+             {"name": "the Hist", "pos": [4000, 0, 0], "kind": "hist"},
+             {"name": "door of Island", "pos": [9064, 0, 0], "kind": "doorway"}]
+    boxes = [box(700, 300), box(3000, -300)]
+    return M, g, arrivals, centre, stops, boxes
+
+
+def test_a_tour_passes_every_stop_once_and_splits_islands():
+    M, g, arrivals, centre, stops, boxes = tour_fixture()
+    routes = pw.plan_tour(M, g, arrivals, centre, stops, boxes, [])
+    tours = [r for r in routes if r["kind"] == "tour"]
+    assert len(tours) == 1
+    t = tours[0]
+    assert set(t["stops"]) == {s["name"] for s in stops[:-1]}
+    assert len(t["stops"]) == len(set(t["stops"]))
+    ends = [st for st in t["stations"] if st.get("stop") in ("doorway", "stall", "quest", "hist")]
+    assert sorted(st["stop"] for st in ends) == ["doorway", "doorway", "hist", "quest", "stall"]
+    far = [r for r in routes if r["kind"] == "broken"]
+    assert len(far) == 1 and "cannot be walked to" in far[0]["broken"]["why"]
+    assert "Island" in far[0]["broken"]["why"]
+
+
+def test_a_stretch_walked_is_not_shot_again_and_the_order_is_short():
+    M, g, arrivals, centre, stops, boxes = tour_fixture()
+    t = pw.plan_tour(M, g, arrivals, centre, stops[:-1], boxes, [])[0]
+    assert t["stops"][:2] == ["door of House A", "stall Fish"]    # nearest first along the road
+    assert t["length"] < 2 * 4000 + 400                            # out and back once
+    seen = [s for s in t["stations"] if "seen" in s]
+    assert seen and not any(s.get("stop") or s["what"].startswith(("start", "doorway")) for s in seen)
+    n, ns, nl = pw.plan_totals([t])
+    assert ns == sum("seen" not in s for s in t["stations"]) and nl > ns
+
+
+def test_look_sets_by_station_kind():
+    st = lambda what, **k: {"what": what, "pos": [500, 0, 0], "dir": [1, 0], **k}  # noqa: E731
+    names = lambda s, b=None: [x[0] for x in pw.tour_looks(s, b)]  # noqa: E731
+    assert names(st("stride")) == ["ahead", "down"]
+    assert names(st("stride"), [box(500, 300)]) == ["ahead", "down", "left"]    # +y is to the left of +x
+    assert names(st("stride"), [box(500, -300)]) == ["ahead", "down", "right"]
+    assert names(st("stride"), [box(500, 2000)]) == ["ahead", "down"]           # too far to matter
+    full = ["ahead", "down", "up", "left", "right", "back", "ahead-left", "ahead-right"]
+    for what in ("doorway of Hut", "stair foot", "ramp head", "bridge start", "walkway middle"):
+        assert names(st(what)) == full, what
+    assert names(st("start: landing", enter=True)) == full
+    assert names(st("start: landing")) == ["ahead", "down"]
+    for stop in ("quest", "hist"):
+        assert names(st("at x", stop=stop)) == full
+    for what in ("bridge end", "at stall Fish"):
+        assert names(st(what)) == ["ahead", "down"], what
+
+
+def test_a_spur_walks_a_street_the_tour_missed():
+    M, g, arrivals, centre, stops, boxes = tour_fixture()
+    street = {"name": "lane", "pts": [[480, 64, 0], [480, 800, 0]]}
+    on_road = {"name": "high", "pts": [[100, 0, 0], [900, 0, 0]]}
+    house = box(700, 900)    # beside the lane, far from every tour station
+    routes = pw.plan_tour(M, g, arrivals, centre, stops[:-1], boxes + [house], [street, on_road])
+    sp = [r for r in routes if r["kind"] == "spur"]
+    assert len(sp) == 1 and sp[0]["name"].startswith("spur-lane")
+    assert sp[0]["walk"][:, 1].max() > 600
+    none = pw.plan_tour(M, g, arrivals, centre, stops[:-1], boxes, [street, on_road])   # no missed building: no spur
+    assert not [r for r in none if r["kind"] == "spur"]
+
+
+def test_a_large_place_is_cut_into_tours():
+    M, g, arrivals, centre, stops, boxes = tour_fixture()
+    routes = pw.plan_tour(M, g, arrivals, centre, stops[:-1], boxes, [], split=4000)
+    tours = [r for r in routes if r["kind"] == "tour"]
+    assert 2 <= len(tours) <= 3
+    got = [n for t in tours for n in t["stops"]]
+    assert sorted(got) == sorted(s["name"] for s in stops[:-1])
