@@ -340,7 +340,7 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "free-bed: the guest mat in the elders' long house (place record: 'a mat in the elders' long house'), unowned",
+    "why": "free-bed: the guest mat in the elders' hut (place record: 'a mat in the elders' hut'), unowned",
     "key": "21"
    },
    {
@@ -474,8 +474,8 @@
     },
     {
      "kind": "free-bed",
-     "by": "Seekhat Yol's elder's hut as the elders' long house, its guest mat an unowned bed",
-     "line": "a mat in the elders' long house"
+     "by": "Seekhat Yol's elder's hut as the elders' hut, its guest mat an unowned bed",
+     "line": "a mat in the elders' hut"
     },
     {
      "kind": "trainer",
@@ -542,9 +542,9 @@
     },
     {
      "cluster": "b05",
-     "what": "the elders' long house",
+     "what": "the elders' hut",
      "verdict": "kept",
-     "why": "Vosh-Leera's House, the elders' long house mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
+     "why": "Vosh-Leera's House, the elders' hut mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
     },
     {
      "cluster": "landing",

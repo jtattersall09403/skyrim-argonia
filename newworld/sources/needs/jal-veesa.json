@@ -3,42 +3,78 @@
  "needs": [
   {
    "seq": 0,
-   "from": ["af1a9afb2e"],
+   "from": [
+    "af1a9afb2e"
+   ],
    "thing": "the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"},
+   "rests": {
+    "space": "exterior",
+    "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"
+   },
    "signs": [],
    "met": false,
    "why": "Partly met. Seekhat Yol's own Hist (King of the Murkmire's HistTree01, some 23 metres tall at its source scale) stands in the middle of the town with its roots, glands and flowers, its ring of prayer platforms level with its base, and its sap pool at the east foot of its mound, open on the mud between the landing bridge and the boardwalk; the root-tender works beside it. Not met yet: its bark is the living tree's (the sick-bark block is owed), and its pool is the stage's living sap, not a cooling one.",
    "fit": "The Hist as placed, in the middle of the town, its pool at its east foot.",
    "narrow": "Yes: the darkened bark and a cooling pool are the owed sick-bark block; place-people names the root-tender Weeltul.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: spot A has many Hist trees but nothing says they are dry, dead or dark; no pool, no roots, no rootworm or transport stop seen"
+   }
   },
   {
    "seq": 1,
-   "from": ["813f5dd530"],
+   "from": [
+    "813f5dd530"
+   ],
    "thing": "a house for the root-herald (one of the source town's houses)",
    "line": "main",
-   "rests": {"space": "SeekhatEldersHut"},
-   "signs": [{"sign": "label", "detail": "its door shows Vosh-Leera's House"}, {"sign": "person", "detail": "Vosh-Leera heads its household and is home there; Weeltul sends the player back to her house", "person": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33"}],
+   "rests": {
+    "space": "SeekhatEldersHut"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "its door shows Vosh-Leera's House"
+    },
+    {
+     "sign": "person",
+     "detail": "Vosh-Leera heads its household and is home there; Weeltul sends the player back to her house",
+     "person": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33"
+    }
+   ],
    "met": true,
    "why": "Met. Seekhat Yol's elders' hut (SeekhatEldersHut: a table and beds, in the middle of the town by the Hist) is Vosh-Leera's house; she heads its household and the quest door door.mn02.vosh-leera-house is its door.",
    "fit": "The councillor's house, near the middle of the town.",
    "narrow": "Yes: place-people casts its head as Vosh-Leera and draft names renames the door.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: every house is named for an ordinary person with no title; if forced I'd pick Vosh-Leera's House, the only one I could go into, with a book and an amulet: a weak guess"
+   }
   },
   {
    "seq": 2,
-   "from": ["21b571479b"],
+   "from": [
+    "21b571479b"
+   ],
    "thing": "its Hist dead and blackened, its people gone",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"},
+   "rests": {
+    "space": "exterior",
+    "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"
+   },
    "signs": [],
    "met": false,
    "why": "Not met. The ending's dead tree is a state the quest switches in (the living Hist disabled, a dead one enabled, the people gone): King of the Murkmire's HistTree01Dead is the same tree dead and stands ready as the base; nothing is placed for it yet.",
    "fit": "The Hist as placed.",
    "narrow": "Yes: one disabled HistTree01Dead at the same spot, enabled by the ending; the quest's to switch.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "not recognised",
+    "said": "none: the Hist trees look living, guards on duty, fires lit, homes occupied; nothing blackened or abandoned"
+   }
   }
  ],
  "dismissed": []
