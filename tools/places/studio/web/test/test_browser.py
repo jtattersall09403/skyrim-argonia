@@ -1099,7 +1099,7 @@ def test_24_note_bar(pad, server):
     # the bar is in the page's flow: below the views, never over the panel or a view's controls
     pad.page.click("#rail [data-tool=history]")
     over = pad.ev(f"""(() => {{ const b = {bar}.getBoundingClientRect(), p = document.getElementById('panel').getBoundingClientRect(),
-                      t = document.querySelector('#view-ours .tilt').getBoundingClientRect();
+                      t = document.querySelector('#view-ours .compass').getBoundingClientRect();
                       return [b.top >= p.bottom - 1, b.top >= t.bottom - 1, b.bottom <= innerHeight + 1, b.height]; }})()""")
     assert over[:3] == [True, True, True] and over[3] <= 120, over
     pad.ev("studio.panels.close()")
@@ -1262,4 +1262,120 @@ def test_25_day_and_night(pad):
     pad.page.click("#view-src .daynight [data-mode=day]")
     assert pad.ev("studio.time") == 12 and pad.ev("studio.ours.view.lighting.mode") == "day"
     pad.ev("studio.tools.use('select'); studio.ours.world.root.visible = true; studio.ours.place.root.visible = true; studio.ours.view.redraw()")
+    assert not pad.errors, pad.errors
+
+
+# ---------- 26: leaving a place lets go of its GPU memory; a lost context during a switch still draws ----------
+MEM = "({ ...studio.ours.view.renderer.info.memory })"
+DREW = "studio.ours.view.drew?.calls || 0"
+
+
+def reopen(pad, lose=False):
+    pad.ev("studio.ready = false")
+    pad.ev("""(lose) => { studio.openPlaceSafe(studio.place.place_id);
+             if (lose) setTimeout(() => { const e = studio.ours.view.renderer.getContext().getExtension('WEBGL_lose_context');
+               e.loseContext(); setTimeout(() => e.restoreContext(), 400); }, 150); }""", lose)
+    pad.page.wait_for_function("studio.ready && document.getElementById('loading').hidden", timeout=60000 * SLOW)
+    if pad.page.locator("#start .sheet").is_visible():
+        pad.page.get_by_role("button", name="Start from the builder's draft").click()
+    pad.page.wait_for_timeout(1500 * SLOW)
+
+
+def test_26_place_switch_releases_gpu_memory(pad):
+    """Opening a place again after the first (the fixture has one place: a switch is the same path) lets go of the
+    last place's geometries and textures: GPU memory returns near where it started instead of growing each time."""
+    pad.ev("studio.panels.close()")
+    m0 = pad.ev(MEM)
+    for _ in range(3):
+        reopen(pad)
+    m1 = pad.ev(MEM)
+    assert m1["geometries"] <= m0["geometries"] * 1.15 + 8 and m1["textures"] <= m0["textures"] * 1.15 + 4, (m0, m1)
+    assert pad.ev(DREW) > 0
+    assert not pad.errors, pad.errors
+
+
+def test_26_context_lost_during_switch_still_draws(pad):
+    """The graphics context taken away while the next place loads and given back: the place draws (draw calls above
+    zero), the log is told, and no 'drew nothing' note is left over the views."""
+    reopen(pad, lose=True)
+    pad.page.wait_for_timeout(3500)
+    st = pad.ev("(() => { const s = studio.ours.view.renderer; return { lost: s.getContext().isContextLost(), calls: studio.ours.view.drew?.calls || 0 }; })()")
+    assert not st["lost"] and st["calls"] > 0, st
+    assert pad.ev("!document.getElementById('blank-note') || document.getElementById('blank-note').hidden")
+    pad.shot("26-after-context-loss")
+    assert not pad.errors, pad.errors
+
+
+def test_26_blank_view_says_so(pad):
+    """A view that drew nothing 3 s after a place is ready says so in words, with a button to load the place again."""
+    pad.ev("studio.showBlank(studio.place.place_id, 'Our place drew nothing')")
+    assert pad.page.get_by_role("button", name="Reload this place").is_visible()
+    assert "drawn nothing" in pad.ev("document.getElementById('blank-note').textContent")
+    pad.ev("studio.hideBlank()")
+
+
+# ---------- 27: the thumb sticks ----------
+CAM = """(() => { const v = studio.ours.view; v.updateCamera(); const p = v.camera.position;
+          return { x: p.x, y: p.y, z: p.z, heading: v.heading(), pitch: v.rig.pitch }; })()"""
+
+
+def hold(pad, sel, dx, dy, ms=600, tid=0):
+    c = pad.ev("(s) => { const r = document.querySelector(s).getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }", sel)
+    pt = lambda x, y: [{"x": x, "y": y, "id": tid}]  # noqa: E731
+    pad.cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": pt(*c)})
+    for i in range(1, 5):
+        pad.cdp.send("Input.dispatchTouchEvent", {"type": "touchMove", "touchPoints": pt(c[0] + dx * i / 4, c[1] + dy * i / 4)})
+    pad.page.wait_for_timeout(ms)
+    pad.cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
+    pad.page.wait_for_timeout(100)
+    return c
+
+
+def test_27_thumb_sticks(pad):
+    """The left stick moves the camera where it faces, the right stick turns it right and looks up; a finger on a
+    stick changes nothing selected; the sticks sit inside the views, clear of the bars; the tilt slider is gone."""
+    pad.ev("studio.panels.close(); studio.focusView(studio.ours.view)")
+    assert pad.ev("!document.querySelector('.tilt')"), "the tilt slider is replaced by the right stick"
+    assert pad.ev("!document.querySelector('.sticks').hidden"), "shown on a touch device"
+    rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
+    pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
+    boxes = pad.ev("""(() => { const b = (s) => { const r = document.querySelector(s).getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom]; };
+              return { l: b('.stick.left'), r: b('.stick.right'), views: b('#views'), bar: b('#view-ours .view-bar'), compass: b('#view-ours .compass') }; })()""")
+    for k in ("l", "r"):
+        s = boxes[k]
+        assert s[0] >= boxes["views"][0] and s[2] <= boxes["views"][2] + 1 and s[3] <= boxes["views"][3] + 1, boxes
+        assert s[1] > boxes["bar"][3], boxes
+    assert boxes["l"][0] >= boxes["compass"][2], "the left stick is beside the compass, not over it"
+    pad.ev("studio.ours.view.rig.pitch = 0.4; studio.ours.view.changed()")
+    a = pad.ev(CAM)
+    hold(pad, ".stick.left", 0, -70)   # pushed up to the edge: forward at a run
+    b = pad.ev(CAM)
+    h = a["heading"] * 3.141592653589793 / 180
+    fwd = (b["x"] - a["x"]) * __import__("math").sin(h) + (b["y"] - a["y"]) * __import__("math").cos(h)
+    assert fwd > 50, (a, b, fwd)
+    hold(pad, ".stick.right", 60, 0, ms=400)   # right: turns right (the heading grows clockwise)
+    c = pad.ev(CAM)
+    assert 5 < (c["heading"] - b["heading"]) % 360 < 180, (b, c)
+    hold(pad, ".stick.right", 0, -60, ms=400)   # up: looks up (the orbit pitch falls)
+    d = pad.ev(CAM)
+    assert d["pitch"] < c["pitch"] - 0.1, (c, d)
+    assert pad.ev("[...studio.selection]") == [rid], "a finger on a stick selects nothing"
+    # the pen never moves a stick
+    e0 = pad.ev(CAM)
+    sx, sy = pad.ev("(() => { const r = document.querySelector('.stick.left').getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; })()")
+    pad.pen_drag([(sx, sy), (sx, sy - 60)])
+    pad.page.wait_for_timeout(200)
+    assert abs(pad.ev(CAM)["x"] - e0["x"]) < 1 and abs(pad.ev(CAM)["y"] - e0["y"]) < 1
+    assert pad.ev("[...studio.selection]") == [rid]
+    # walk: the eye at a person's height over the ground, kept there while moving
+    pad.ev("""(id) => { const v = studio.ours.view, r = studio.model.spaces.exterior.refs.get(id);
+              v.rig.target.set(r.pos[0] - v.origin[0] - 600, r.pos[1] - v.origin[1] - 600, r.pos[2] - v.origin[2]); v.changed(); }""", rid)
+    pad.page.click(".stick-btn[data-act=walk]")
+    hold(pad, ".stick.left", 0, -40, ms=500)
+    w = pad.ev("""(() => { const v = studio.ours.view, s = studio.sticks, e = s.eyeOf(v), g = s.groundAt(v, e.x, e.y, e.z - 120);
+                  return { z: e.z, g }; })()""")
+    assert w["g"] is not None and abs(w["z"] - (w["g"] + 120)) < 2, w
+    pad.shot("27-sticks-walk")
+    assert pad.ev("JSON.parse(localStorage.getItem('studio.sticks.v1')).walk") is True
+    pad.page.click(".stick-btn[data-act=walk]")
     assert not pad.errors, pad.errors
