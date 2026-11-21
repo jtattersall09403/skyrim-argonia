@@ -12,6 +12,7 @@ from tools.places.look import capture, geom
 EAVES_MIN = 150.0    # a house's eaves this little over the ground: a person cannot pass under, it reads as buried
 EAVES_SHARE = 0.45   # a house body's eaves taken this share of its height under its top (an estimate from the box)
 COLLAR_MAX = 60.0    # a tree's root collar this far under the ground: buried
+COLLAR_FLOAT = 120.0  # a tree's feet this far over the ground with nothing under them: floating
 LOOSE_TOL = geom.FLOAT_TOL
 
 
@@ -37,6 +38,17 @@ def collar(tree: dict, ground) -> dict | None:
     return {"collar_over_ground": round(float(z - g)), "flag": z - g < -COLLAR_MAX}
 
 
+def tree_floats(tree: dict, sc) -> bool:
+    """A tree whose feet stand over the ground with nothing holding them: the rock it grew on sunk or pruned, or a
+    source bank that our ground lies under."""
+    if "hanging" in str(tree.get("edid") or "").lower():   # moss hangs from what is over it
+        return False
+    boxes = {q["id"]: geom.aabb(q) for q in sc.everything()}
+    r = geom.probe_piece(tree, sc.ground, sc.everything(), boxes)
+    low = r.get("lowest_over_ground")
+    return low is not None and low > COLLAR_FLOAT and not r.get("held_by")
+
+
 def table(sc, pl, units_text: str) -> str:
     """The units' table, then eaves, collars and loose pieces, each flagged where it fails its rule."""
     out = [units_text, "", f"eaves over the ground (estimate: box top less {EAVES_SHARE:.0%} of its height; "
@@ -51,7 +63,8 @@ def table(sc, pl, units_text: str) -> str:
             e = eaves(p, sc.ground)
             out.append(f"{un['id'][:34]:34} {e['eaves_over_ground'] if e['eaves_over_ground'] is not None else '-':>6} "
                        f"{'EAVES LOW' if e.get('flag') else 'ok'}")
-    out += ["", f"trees: root collar against the ground (flag more than {COLLAR_MAX:.0f} under)",
+    out += ["", f"trees: root collar against the ground (flag more than {COLLAR_MAX:.0f} under, or feet more than "
+            f"{COLLAR_FLOAT:.0f} over with nothing under them)",
             f"{'tree':40} {'collar':>7} flag"]
     in_unit = {pid for un in pl.units if un["kind"] != "thing" for ids in un["pieces"].values() for pid in ids}
     for p in sc.pieces:
@@ -60,8 +73,10 @@ def table(sc, pl, units_text: str) -> str:
         c = collar(p, sc.ground)
         if c is None:
             continue
-        out.append(f"{(p.get('edid') or '')[:24] + ' ' + p['id'][-14:]:40} {c['collar_over_ground']:>7} "
-                   f"{'COLLAR BURIED' if c['flag'] else 'ok'}")
+        word = "COLLAR BURIED" if c["flag"] else "ok"
+        if c["collar_over_ground"] > COLLAR_FLOAT and tree_floats(p, sc):
+            word = "COLLAR FLOATS"
+        out.append(f"{(p.get('edid') or '')[:24] + ' ' + p['id'][-14:]:40} {c['collar_over_ground']:>7} {word}")
     out += ["", f"loose pieces (not in a unit): lowest point over what is under it, shown when over {LOOSE_TOL:.0f} "
             "or buried", f"{'piece':48} {'lowest':>7} held by / fault"]
     faults = {f["id"]: f["fault"] for f in sc.faults()}
@@ -86,4 +101,4 @@ def run(sc, place: str) -> dict:
     _rows, text = units.table(pl)
     t = table(sc, pl, text)
     return {"text": t, "flags": sum(1 for ln in t.splitlines() if any(w in ln for w in (
-        "EAVES LOW", "COLLAR BURIED", "flags", "floor under", "through", "mismatched", "unsupported", "not reaching")))}
+        "EAVES LOW", "COLLAR BURIED", "COLLAR FLOATS", "flags", "floor under", "through", "mismatched", "unsupported", "not reaching")))}
