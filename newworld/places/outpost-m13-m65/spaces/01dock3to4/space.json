@@ -1,8 +1,0 @@
-{
- "space_id": "01dock3to4",
- "copy_of": "bmv.imperial-barge/01dock3to4",
- "name": "Barge Hold",
- "door_from": "outpost-m13-m65.9EWV90ZDDA3QMXE0W393QE157M",
- "parent": "exterior",
- "room": "Black Marsh.esm:1BECCD"
-}
