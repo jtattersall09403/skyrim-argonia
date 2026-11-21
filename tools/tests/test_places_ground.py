@@ -133,3 +133,28 @@ def test_a_cluster_set_apart_reads_through_its_own_map():
     g.apply_patches(rows)
     top = g.height(1000.0, 0) - rep["our_ref"] + rep["src_ref"]       # the source's height read at x=1000
     assert top > 250                    # its mound's top (300), not the main map's reading there (50)
+
+
+def test_a_cluster_set_apart_carries_its_own_relief_at_its_own_level():
+    # the fit moved a cluster 3000 east from a spot of the source 2000 higher than the main body, onto our flat
+    # ground: it keeps the mound round itself, not a 2000 step, and the gap between the two is not carried
+    def f(x, y):
+        return mound(x, y) + mound(x - 9000.0, y) + (2000.0 if x > 4000 else 0.0)
+    main = [(-800.0, -800.0), (-800.0, 800.0), (800.0, -800.0), (800.0, 800.0)]
+    east = [(5200.0, -800.0), (5200.0, 800.0), (6800.0, -800.0), (6800.0, 800.0)]
+    global CELLS
+    keep = CELLS
+    CELLS = [(cx, cy) for cx in range(-3, 6) for cy in range(-3, 3)]
+    try:
+        src, ours = flat(0, f=f), flat(0)
+        maps = [((0, 0), (0, 0), 0.0, (0.0, 0.0), main, False),
+                ((9000.0, 0), (6000.0, 0), 0.0, (6000.0, 0.0), east, True)]
+        rows, rep = gr.carry(ours, src, (0, 0), (0, 0), 0.0, main + east, maps=maps)
+        g = flat(0)
+        g.apply_patches(rows)
+    finally:
+        CELLS = keep
+    assert rep["clusters_own_levels"] == 1
+    assert abs(rep["raised_max"]) < 400 and rep["capped"] == 0, rep      # no 2000 step, nothing capped
+    assert g.height(6000.0, 0) - g.height(5200.0, 900.0) > 150          # the source's mound read at 9000 (its own)
+    assert abs(g.height(3000.0, 0) - ours.height(3000.0, 0)) < 1.0      # the gap between them untouched
