@@ -24,7 +24,8 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
    check run.
 2. `python3 -m tools.places seat <place_id>`: 0 refs moved.
 3. Correct the record's radius to what was built: `place.json` `radius_m` into the research record's
-   `footprint_radius_m`, then `python3 -m tools.newworld.build_db`.
+   `footprint_radius_m`, then `python3 -m tools.newworld.refresh`: the tables, the story digest and the story explorer, in order; it says
+   what changed (commit it by path) and whether the story explorer or the Atlas needs republishing.
 4. `python3 -m tools.places build <place_id> --plan` (lists every problem), then the build: the place layer plugin
    and its navmesh, the source's own mesh carried where `wholesale.navmesh` is `"source"`. It stamps the world records
    it stands on; a stale place is refused by `infra/gpu-box/places_deploy.sh`. A `plugin` failure naming records of

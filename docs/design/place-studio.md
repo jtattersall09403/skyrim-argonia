@@ -354,8 +354,10 @@ regions are. Placement lives in the place files. Each fact has one home:
 | The exceptional: uniques and every T6 thing, counted game-wide | `newworld/sources/stock/unique.json` | `unique_item` |
 | Where a person sleeps, works and walks; the refs, rooms, stations | the place files (`people.jsonl`, `spaces/`, `place.json`) | none: the build reads them |
 
-`python3 -m tools.newworld.build_db` loads everything. `python3 -m tools.newworld.stockdb load` rewrites these tables
-alone from their sources (a whole build needs the map's extraction). Every column is described in
+`python3 -m tools.newworld.refresh` brings everything generated from these sources level, in order: the tables (`build_db`, `wealth derive`,
+`stockdb load`), the story digest, the story explorer; it says what changed and whether the story explorer or the
+Atlas needs republishing, and runs nothing when nothing changed. `python3 -m tools.newworld.stockdb load` rewrites
+these tables alone from their sources (a whole build needs the map's extraction). Every column is described in
 `newworld/story/data/schema.sql`. A person id and a ref id are the place files' own (`<place_id>.<ulid>`, or a copied room's source key), so a
 row in the database and a row in the place files name the same thing. A person's `role` is held in both: the
 people source is its home. `people.jsonl` holds the drafter's copy, and `identities check` confirms the two are equal.
@@ -1119,7 +1121,8 @@ household) is derived from the people source, never stored.
     python -m tools.places needs check <place>          every rest exists; every need judged; every unmet one fitted
     python -m tools.places needs show <place>
     python -m tools.places needs changed [<place>]      the owner's changes: the stories to change to fit
-    python -m tools.places needs load                   the tables from the sources
+    python -m tools.places needs load                   the tables from the sources (python -m tools.newworld.refresh: all generated)
+    python -m tools.places needs sight <place> <seq> --result recognised|"not recognised" --said "..."   a sight test's result
     python -m tools.places sight <place>                the sight test's input
 
 **The sight test.** `sight` writes, for each need's spot, only what a player would meet there: what stands within

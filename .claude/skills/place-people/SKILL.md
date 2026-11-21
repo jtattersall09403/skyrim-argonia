@@ -146,7 +146,7 @@ remove it. Build the rest of the person round it.
 
 ## 7. Check, review and hand on
 
-1. `python3 -m tools.newworld.stockdb load` loads the source into the database. A load error is mended in the source, never in the table.
+1. `python3 -m tools.newworld.refresh` loads the source into the database and brings the story digest and explorer level. A load error is mended in the source, never in the table.
 2. `python3 -m tools.places identities check <place_id>` shows 0 problems. It proves a row for every placed person
    and a person for every row, roles equal to `people.jsonl`'s, names unique in the new world (every other place's
    people source, the story's roster, BM&V's talkers) and by the naming rules, one roof and one head for each

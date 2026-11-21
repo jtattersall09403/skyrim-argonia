@@ -149,8 +149,8 @@ delivery `open`, `by: person`, naming them, with a `why` that says which service
 ## 7. Load, check and iterate
 
 1. `python3 -m tools.newworld.stockdb items` (adds every item you named to the catalogue), then
-   `python3 -m tools.newworld.stockdb load`. A load error reports the row and the column: fix the source, never the
-   table.
+   `python3 -m tools.newworld.refresh` (the tables, the story digest and the story explorer, in order). A load error reports the row and the
+   column: fix the source, never the table.
 2. `python3 -m tools.newworld.stockdb promises <place>`: nothing open.
 3. Build and check the place (`python3 -m tools.places build <place>`, `check <place>`). Its `stock` check passes
    only when every significant thing traces to a row, every row is built, owners and locks are set, every keyed lock's key is with its holder, nothing respawns
