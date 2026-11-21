@@ -222,6 +222,16 @@ added here the day they are made, with the date and the issue.
   from Huluxinoag, Ashgate Landing from the Hjaalmarch military camp with the Imperial barge's ship. Sharing a
   source is governed only by the ruling of 2026-11-19 above (a source may serve several places, each adapted
   differently, judged case by case); nothing may add a rule or tie-break against it (owner, 2026-11-21, #80).
+- Where two places share a source, part of each one's hand adaptation is making it its own: different parts of
+  the source, a different layout or centre, different added buildings, dressing and people's spots, so that no
+  two places feel like clones; the drafter looks at the two side by side before handing over (owner, 2026-11-21,
+  #80).
+- The build machine stays awake only while it is genuinely busy (a real job or lane working) or while the owner
+  has a studio tab open (the studio's own heartbeat); no timer job is run just to hold it awake (owner,
+  2026-11-21, #80).
+- Place work runs at medium effort (the `place-drafter` agent). The remaining Act I places are drafted by the new
+  method in quest order, Ashgate Landing first, then Reed-Sill Weir and on, while the owner edits Jal-Veesa and
+  Karsh-Naal Camp in the studio (owner, 2026-11-21, #80).
 - Files the tools leave uncommitted are the lead's to handle, never the owner's (2026-11-21, #80).
 - Before a place is built from its source, the drafter looks at the source as a place and judges it against the
   record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
