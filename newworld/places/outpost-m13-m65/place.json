@@ -450,7 +450,11 @@
       "Black Marsh.esm:1BEB52": "a bandit chest of levelled loot (decision 0035): the hold holds the gang's own stores",
       "Black Marsh.esm:1BEBE6": "a bandit chest of levelled loot (decision 0035)",
       "Black Marsh.esm:1BECF8": "a bandit chest of levelled loot (decision 0035)",
-      "Black Marsh.esm:1BEAF9": "a knapsack of levelled loot (decision 0035)"
+      "Black Marsh.esm:1BEAF9": "a knapsack of levelled loot (decision 0035)",
+      "Black Marsh.esm:1BEB5F": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BEC4D": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BECE9": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BECE7": "the Thieves Guild's crown gem activator, a quest thing of another story"
      }
     },
     "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
@@ -495,6 +499,22 @@
    "AshgateHut": {
     "name": "Gang-Master's Hut",
     "why": "the old road post's stone hut where Dralin Uveran the gang-master sleeps and keeps his strongbox (record look and hook)"
+   }
+  },
+  "guards": 0,
+  "guards_why": "the record holds no watch: a Dunmer gang-master and his Owing reed-cutters (held by), so the camp keeps no guard; its people are the gang-master, the cook and the cutters",
+  "free_beds": [
+   "outpost-m13-m65.LOOK033PLACE"
+  ],
+  "roles": {
+   "merchant": {
+    "space": "01dock3to4",
+    "pos": [
+     3167,
+     3640,
+     7020
+    ],
+    "why": "Okeeh the cook (main quest 1: she asks the new gang's names in the hold, a few steps from where the player wakes): her work spot is the hold's mess table, by its food barrels"
    }
   }
  }
