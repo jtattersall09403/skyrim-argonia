@@ -6,8 +6,6 @@
 {"id":"outpost-m13-m65.FWPK5JTEPHKV7XHHR9ZSREY34W","src":"Black Marsh.esm:1C9449","removed":true}
 {"id":"outpost-m13-m65.HGRHRXRDHHYBBKFFBAGP92HTEA","src":"Black Marsh.esm:1BEC30","removed":true}
 {"id":"outpost-m13-m65.KEYM9VQV7C0QR0FJM38JXX6TTG","src":"Black Marsh.esm:1BEB3F","removed":true}
-{"id":"outpost-m13-m65.LOOK035PLACE","base":"Skyrim.esm:03B3CD","kind":"furniture","pos":[2650.0,3250.0,7012.0],"rot":[0.0,0.0,1.5708],"scale":1,"layer":"place","flags":[],"seat":{"mode":"free","dz":0.0},"why":"a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)","tier":"AGENT_INVENTED"}
-{"id":"outpost-m13-m65.LOOK036PLACE","base":"Skyrim.esm:03B3CD","kind":"furniture","pos":[2650.0,3420.0,7012.0],"rot":[0.0,0.0,1.5708],"scale":1,"layer":"place","flags":[],"seat":{"mode":"free","dz":0.0},"why":"a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)","tier":"AGENT_INVENTED"}
 {"id":"outpost-m13-m65.LOOK037PLACE","base":"King of the Murkmire.esp:1AD602","kind":"furniture","pos":[3260.0,3700.0,7012.0],"rot":[0.0,0.0,4.71239],"scale":1,"layer":"place","flags":[],"seat":{"mode":"free","dz":0.0},"why":"the hold's cook-pot (main quest 1: Okeeh sits by the hold's cook-pot a few steps from where the player wakes): King of the Murkmire's small cooking pot by the mess table and its food barrels","tier":"AGENT_INVENTED"}
 {"id":"outpost-m13-m65.PBD7PABDKCAKQ35XHRDBBMBS5B","src":"Black Marsh.esm:1BEB59","removed":true}
 {"id":"outpost-m13-m65.PKH4DM6SA0X5VX039RX7E90TPB","src":"Black Marsh.esm:1BECB9","removed":true}

@@ -408,7 +408,8 @@
   "agent-20261121T152802",
   "agent-20261121T152932",
   "agent-20261121T153752",
-  "agent-20261121T154543"
+  "agent-20261121T154543",
+  "agent-20261121T161336"
  ],
  "draft": {
   "add": [
@@ -588,49 +589,10 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB",
-     "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB",
-     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
-    ],
-    "why": "two cutters' bedrolls lie inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, each on the ground under its canvas"
-   },
-   {
-    "check": "overlap",
-    "ids": [
      "outpost-m13-m65.LOOK013PLACE",
      "outpost-m13-m65.LOOK012PLACE"
     ],
     "why": "the stone hut's door frame stands in its doorway, as Baan Malur frames the same house's door"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LANDINGPLANKDOWN",
-     "outpost-m13-m65.LOOK006PLACE",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, the plank rests on the rail"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK006PLACE",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK019PLACE",
-     "outpost-m13-m65.LOOK020PLACE",
-     "outpost-m13-m65.LOOK021PLACE",
-     "outpost-m13-m65.LOOK022PLACE",
-     "outpost-m13-m65.LOOK023PLACE",
-     "outpost-m13-m65.LOOK024PLACE",
-     "outpost-m13-m65.LOOK025PLACE"
-    ],
-    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and two are laid on top of the others"
    },
    {
     "check": "overlap",
@@ -641,12 +603,100 @@
     "why": "the guest's bedroll is laid on the hut's rug, seen from above in the room's overview"
    },
    {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LANDINGPLANKDOWN",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LANDINGPLANKDOWN",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
+   },
+   {
     "check": "doors",
     "ids": [
      "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
      "outpost-m13-m65.LOOK007PLACE"
     ],
-    "why": "the hold door's arrival is on the barge's open waist deck; the masts' rigging model spans the whole deck, so its bounds take in the arrival, though nothing stands there (eye view from the rail into the waist)"
+    "why": "the hold door's arrival is on the barge's open waist deck; the masts' rigging model spans the whole deck, so its bounds take in the arrival though nothing stands there (eye view from the rail into the waist)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMYB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK022PLACE",
+     "outpost-m13-m65.LOOK019PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK022PLACE",
+     "outpost-m13-m65.LOOK020PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK023PLACE",
+     "outpost-m13-m65.LOOK020PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK023PLACE",
+     "outpost-m13-m65.LOOK021PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK025PLACE",
+     "outpost-m13-m65.LOOK024PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
    }
   ]
  }

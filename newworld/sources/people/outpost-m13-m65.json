@@ -298,7 +298,7 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.hold",
+    "id": "outpost-m13-m65.household.tent-b",
     "role": "lodger"
    },
    "role": "resident",
@@ -482,7 +482,7 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.hold",
+    "id": "outpost-m13-m65.household.tent-d",
     "role": "lodger"
    },
    "role": "resident",
