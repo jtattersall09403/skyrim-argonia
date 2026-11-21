@@ -1441,12 +1441,6 @@
  },
  "draft_key": "b342e67c323af19d",
  "sap": {
-  "added": [
-   {
-    "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
-    "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
-   }
-  ],
   "offset": {
    "7SWK29SQSJ276Q5JVM1M6FCTK4": [
     1450.0,
@@ -1457,6 +1451,12 @@
    "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4
   },
   "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21)",
+  "added": [
+   {
+    "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
+    "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
+   }
+  ],
   "none": [
    {
     "on": "RNQ1281B2E5X8752E8TM05G1YV",

@@ -323,7 +323,7 @@ def apply(st, log=print) -> None:
             have[r["id"]].update({k: r[k] for k in ("base", "pos", "rot", "scale", "seat", "why")})
         else:
             st.ext.append(r)
-    hollow = dish(G, st.ext, {**st.bases, **bases}, {tuple(r["cell"]) for r in other})
+    hollow = dish(G, st.ext, {**st.bases, **bases}, set())   # the place's own rows add (build.plan_land): its ground's cells are dug too
     st.files["land"][:] = other + hollow
     G.apply_patches(hollow)
     st.G = G

@@ -115,3 +115,17 @@ def test_a_place_sets_a_pools_offset_and_scale_and_lists_a_hist_with_none():
     assert math.dist(sap.centre(out[0]), (2300.0, 1900.0)) < 0.1 and out[0]["scale"] == 2.4
     assert not [f for f in sap.faults(ext() + out, BASES, own["none"]) if "p.B" in f]
     assert sap.faults(ext() + out, BASES, {"B": "no level ground"}) == sap.faults(ext() + out, BASES, own["none"])
+
+
+def test_the_bowl_is_dug_in_a_cell_the_places_own_ground_rows_hold(monkeypatch):
+    from types import SimpleNamespace
+    e = ext()[:1]
+    ground_row = {"cell": [0, 0], "verts": [[5, 5, 10.0]], "by": "ground"}
+    monkeypatch.setattr(Ground, "load", classmethod(lambda cls, *a, **k: slope()))
+    monkeypatch.setattr(sap, "seat_all", lambda *a, **k: None, raising=False)
+    st = SimpleNamespace(place_id="p", ext=e, bases=dict(BASES), place={}, files={"land": [ground_row]},
+                         grd=SimpleNamespace(path="x"))
+    sap.apply(st, log=lambda *a: None)
+    dug = [r for r in st.files["land"] if r["by"] == "sap"]
+    assert dug and dug[0]["cell"] == [0, 0] and min(v for _, _, v in dug[0]["verts"]) < -40
+    assert ground_row in st.files["land"]
