@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261121T153500",
+ "place_id": "outpost-m11-m63",
+ "name": "the Hist-shoot post at the landing (a young Hist shoot and its tie post on the bank east of the decks); the fifth bedroll laid afresh on the bank south-west of the fire",
+ "at": "2026-11-21T15:35:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK043PLACE",
+    "base": "King of the Murkmire.esp:0D72B9",
+    "kind": "tree",
+    "pos": [
+     -81610.0,
+     -514060.0,
+     20.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 0.5,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the Hist-shoot post's young Hist shoot on the bank at the landing, where the wardens leave the first catch (record faith note; Ula-ja leaves the first fish of the dawn there)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:35:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK044PLACE",
+    "base": "King of the Murkmire.esp:01FA38",
+    "kind": "static",
+    "pos": [
+     -81665.0,
+     -514010.0,
+     21.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -10.0
+    },
+    "why": "the post the Hist shoot is tied to at the landing (record faith note: a Hist-shoot post stands at the landing)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:35:00Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK041PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK041PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82470.0,
+     -514100.0,
+     87.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 11.0
+    },
+    "why": "a weir-warden's bedroll in the open on the bank by the cook fire (the fifth bed: five wardens, the two guards one to a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:35:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK045PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82470.0,
+     -514100.0,
+     12.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the open on the bank south-west of the cook fire (the fifth bed: five wardens, the two guards one to a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:35:00Z"
+  }
+ ]
+}
