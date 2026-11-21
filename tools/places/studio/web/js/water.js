@@ -1,12 +1,14 @@
 // The look of water in the studio's scene (water_look.js says what a water's record gives). A placed water is a
 // Lambert surface like everything else, so the lights, the night, the game's fog and the instancing all apply, with
 // the liquid's own shading added to it:
-//   colour    the water type's shallow colour at the rim, its deep colour where the water is deeper (the depth is the
-//             surface over the ground under it, a small texture baked from the ground, so a hollow is darker in the middle);
-//   body      transparent and soft at the shore (the bank shows through), as opaque as the record says toward the deep;
-//             a thin darker wet line where it meets the ground;
-//   surface   a tiling ripple normal map made in code (still unless a time is set), and a fresnel sheen of the record's
-//             reflection colour that brightens at grazing angles; no environment render.
+//   colour    the water type's shallow colour at the rim, its deep colour where the water is deeper: the depth is the
+//             surface over the ground under it (a small texture baked from the ground), turned over the record's fog
+//             distance, so a hollow is light at its rim and clearly darker in its middle;
+//   body      transparent at the shore (the bank shows through), as opaque as the record says toward the deep; a thin
+//             darker wet line where it meets the ground;
+//   surface   a faint swell: a tiling value-noise normal map made in code (still unless a time is set), two samples at
+//             unrelated scales and turns so no tile repeats in view, and a soft fresnel sheen of the record's
+//             reflection colour that rises toward the far side at a low eye; no environment render.
 // The land's own cell water (terrain_mesh.js) takes the same sheen, analytic only, so the two agree.
 import * as THREE from 'three';
 import { DEPTH_MAX, INLAND_UNIT, depthGrid, rippleNormals, waterLook } from './water_look.js';
@@ -18,8 +20,9 @@ export function setWaterTime(t) { waterTime.value = t; }
 let rippleTex = null, noDepth = null;
 const ripple = () => {
   if (!rippleTex) {
-    rippleTex = new THREE.DataTexture(rippleNormals(64), 64, 64, THREE.RGBAFormat);
-    rippleTex.wrapS = rippleTex.wrapT = THREE.RepeatWrapping; rippleTex.magFilter = rippleTex.minFilter = THREE.LinearFilter; rippleTex.needsUpdate = true;
+    rippleTex = new THREE.DataTexture(rippleNormals(128), 128, 128, THREE.RGBAFormat);
+    rippleTex.wrapS = rippleTex.wrapT = THREE.RepeatWrapping; rippleTex.magFilter = THREE.LinearFilter; rippleTex.minFilter = THREE.LinearMipmapLinearFilter;
+    rippleTex.generateMipmaps = true; rippleTex.needsUpdate = true;
   }
   return rippleTex;
 };
@@ -51,19 +54,21 @@ uniform vec3 wShallow; uniform vec3 wDeep; uniform vec3 wRefl; uniform vec4 wP; 
     wD = max( wB.x - 1.0, 0.0 ) * ( ${DEPTH_MAX.toFixed(1)} / 254.0 );
     wIn = wB.y * ${INLAND_UNIT.toFixed(1)};
   }
-  float wT = smoothstep( 0.0, 1.0, clamp( ( wD + 0.5 * wIn ) / wP.y, 0.0, 1.0 ) );
-  vec2 wR = vLpW.xy / 190.0 + vec2( wTime * 0.03, wTime * 0.02 );
+  // shallow to deep over the record's fog distance, by the depth itself (the inland distance only lifts a flat floor)
+  float wT = smoothstep( 0.0, 1.0, clamp( ( wD + 0.06 * min( wIn, 160.0 ) ) / wP.y, 0.0, 1.0 ) );
+  vec2 wR = vLpW.xy / 610.0 + vec2( wTime * 0.012, wTime * 0.008 );
   vec2 wS = texture2D( wRip, wR ).xy * 2.0 - 1.0;
-  wS += ( texture2D( wRip, wR * -2.3 + vec2( 0.37 - wTime * 0.02, 0.11 ) ).xy * 2.0 - 1.0 ) * 0.7;
-  vec3 wN = normalize( vec3( wS * 2.2, 1.0 ) );
-  vec3 wCol = mix( wShallow, wDeep, wT );
+  vec2 wR2 = mat2( 0.8, -0.6, 0.6, 0.8 ) * vLpW.xy / 233.0 + vec2( 0.37 - wTime * 0.01, 0.11 );
+  wS += ( texture2D( wRip, wR2 ).xy * 2.0 - 1.0 ) * 0.5;
+  vec3 wN = normalize( vec3( wS * 1.4, 1.0 ) );
+  vec3 wCol = mix( wShallow * 1.08, wDeep * 0.8, wT );
   wCol *= 1.0 - 0.3 * smoothstep( 0.0, 6.0, wIn ) * ( 1.0 - smoothstep( 6.0, 26.0, wIn ) );
   float wO = wP.x;
   diffuseColor.rgb = wCol;
-  diffuseColor.a *= smoothstep( 0.0, mix( 14.0, 1.5, smoothstep( 0.5, 1.0, wO ) ), wD ) * mix( wO * mix( 0.35, 1.0, wO ), wO, wT );`)
+  diffuseColor.a *= smoothstep( 0.0, 3.0, wD ) * mix( 0.12, max( wO, 0.85 ), smoothstep( 0.15, 0.9, wT ) );`)
       .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
   normal = normalize( ( viewMatrix * vec4( wN, 0.0 ) ).xyz );`)
-      .replace('#include <opaque_fragment>', SHEEN.replaceAll('WN', 'wN').replaceAll('WF0', 'wP.z').replaceAll('WREFL', 'wRefl').replaceAll('WK', '( 0.6 + 2.2 * length( wN.xy ) ) * wP.w') + '\n#include <opaque_fragment>');
+      .replace('#include <opaque_fragment>', SHEEN.replaceAll('WN', 'wN').replaceAll('WF0', 'wP.z').replaceAll('WREFL', 'wRefl').replaceAll('WK', '( 0.75 + 0.5 * length( wN.xy ) ) * wP.w') + '\n#include <opaque_fragment>');
   };
 }
 

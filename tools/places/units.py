@@ -52,7 +52,6 @@ from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, RAIL_WO
                                    SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, GROUND_CLASSES, kind_of, post as _post)
 from tools.places.classify import LOOSE_KINDS as LOOSE  # noqa: E402
 SPANS = ("walkway", "bridge", "dock")
-LOOSE = {"light", "marker", "sound", "actor"}
 HIST_TRUNK = re.compile(r"^(ArgoniaTreeHist\d|Hist(Tree|Trunk)\d)", re.I)   # a Hist's tree or trunk, living or dead
 HIST_REACH = 256.0     # a root, gland, flower or vine floor of a Hist lies within this of its trunk's box
 HIST_SNAP = 128.0      # a draft's added Hist stands for the source's when it stands this near the source's spot

@@ -302,3 +302,10 @@ def test_an_added_row_swapped_in_place_keeps_its_id():
     (_, row), = adds.rows("p", place["draft"], bases)
     assert row["id"] == first and row["base"] == "b:sap"
     assert people.spots_of("p", place) == {"rootworm-stop": first}
+
+
+def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
+    from tools.places.own_bases import WATER
+    for w in WATER.values():
+        for name in ("Opacity", "DamagePerSecond"):   # byte and ushort in the WATR record: the build reads an integer
+            assert isinstance(w["set"].get(name, 0), int), name

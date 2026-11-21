@@ -15,7 +15,7 @@ Audit: truth [<place> --sample N]: the golden scene's known answers (or a real d
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
---until-feet-buried]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
+--until-feet-buried [--depth 8] [--force]]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
 each takes --view <view verb...> for a before/after.
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
 commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
@@ -36,19 +36,45 @@ SOCK = LOOK_OUT / "daemon.sock"
 PIDF = LOOK_OUT / "daemon.pid"
 
 
-def call(req: dict, timeout: float = 900.0) -> dict:
+RESET = (ConnectionResetError, BrokenPipeError)
+
+
+def _call_once(req: dict, timeout: float) -> dict:
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     s.settimeout(timeout)
-    s.connect(str(SOCK))
-    s.sendall((json.dumps(req) + "\n").encode())
-    buf = b""
-    while not buf.endswith(b"\n"):
-        chunk = s.recv(1 << 20)
-        if not chunk:
-            break
-        buf += chunk
-    s.close()
+    try:
+        s.connect(str(SOCK))
+        s.sendall((json.dumps(req) + "\n").encode())
+        buf = b""
+        while not buf.endswith(b"\n"):
+            chunk = s.recv(1 << 20)
+            if not chunk:
+                break
+            buf += chunk
+    finally:
+        s.close()
+    if not buf:
+        raise ConnectionResetError("the look daemon closed the connection without an answer")
     return json.loads(buf)
+
+
+def call(req: dict, timeout: float = 900.0) -> dict:
+    """One request to the daemon; a connection reset (the daemon restarting under the call) is retried once."""
+    try:
+        return _call_once(req, timeout)
+    except RESET:
+        if req.get("verb") in ("_ping", "_stop"):
+            raise
+        ensure()
+        return _call_once(req, timeout)
+
+
+def _alive() -> bool:
+    try:
+        os.kill(int(PIDF.read_text()), 0)
+        return True
+    except (OSError, ValueError):
+        return False
 
 
 def ensure() -> float:
@@ -58,6 +84,12 @@ def ensure() -> float:
         return 0.0
     except (OSError, ValueError):
         pass
+    if SOCK.exists() and _alive():   # a daemon busy on a long call answers one request at a time: wait for it
+        try:
+            call({"verb": "_ping", "place": "", "args": []}, 7200)
+            return 0.0
+        except (OSError, ValueError):
+            pass
     for _ in range(200):   # a daemon on its way out finishes first
         if not PIDF.exists():
             break

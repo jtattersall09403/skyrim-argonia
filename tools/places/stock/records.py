@@ -61,7 +61,10 @@ class Records:
         from tools.places.extract import find_plugin, search_dirs
         dirs = dirs or search_dirs()
         self = cls()
+        from tools.places.own_bases import PLUGIN as OWN
         for name in plugins:
+            if Path(name).name == OWN:          # our own bases' pseudo-plugin: written by the place layer, no file
+                continue
             path = Path(name) if Path(name).is_absolute() else find_plugin(str(name), dirs)
             p = esm.Plugin.read(path, SIGS)
             for rec in p.records():

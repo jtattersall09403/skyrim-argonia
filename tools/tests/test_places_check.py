@@ -620,3 +620,17 @@ def test_a_bed_owned_by_the_sleepers_household_is_theirs_and_a_vendor_factions_i
     d["npcs"][0]["faction_keys"].append(k(32))
     d["refs"][3]["owner"] = k(32)                  # a couple's bed, owned by their household
     assert not any("no bed owned" in b for b in C.check_people(c))
+
+
+def test_land_check_adds_a_cells_rows_at_a_vertex_as_the_build_does(monkeypatch):
+    import numpy as np
+    from tools.places import build as B
+    built = np.zeros((33, 33))
+    built[5, 5] = 2.0                       # two rows of +8 each: the build adds them to +16 (2 steps)
+    monkeypatch.setattr(C, "ground", lambda ctx: (None, {(0, 0): built}))
+    monkeypatch.setattr(B, "cell_steps", lambda c: np.zeros((33, 33)))
+    rows = [{"cell": [0, 0], "verts": [[5, 5, 8.0]]}, {"cell": [0, 0], "verts": [[5, 5, 8.0]]}]
+    ctx = {"land_rows": rows, "facts": {"cells": [{"x": 0, "y": 0, "deltas": "x"}]}, "dump": {"land": []}}
+    assert C.check_land(ctx) == []
+    built[5, 5] = 1.0
+    assert C.check_land(ctx) == ["land 0,0 [5,5]: built 8, land.jsonl wants 16"]

@@ -27,7 +27,7 @@ The source's builder shaped the land under the town and built on it, so the town
 and the largest change) carries the source's relief under the place's footprint (the hull of the carried pieces,
 grown 256) as land rows `by` "ground", blended into our ground over a band no steeper than the source's own
 steepest slope (or 35 degrees), each cluster reading the source through its own map from the fit. Nothing outside
-the footprint and band changes, no point crosses our water line, no change exceeds 600, the source's water is not
+the footprint and band changes, no point crosses our water line, no change exceeds 600 (or place.json `draft.ground_cap`), the source's water is not
 brought (its area is reported: pieces that stood in it need a decision), and no cell of another place is touched.
 Then put the carried pieces at the source's own levels (source height minus the source's reference level, plus
 ours), run `draft sap` again (its hollow is dug on top), and plan the units on the carried ground (section 3). The
@@ -87,7 +87,7 @@ after moving a structure that carries or meets a span, and mend each end that is
   Commit the place files by path, then look: the pictures draw what is committed. Apply one house at a time and
   survey it before the next; the spans follow the houses.
 - What an agent's edit or the owner's save placed stays where it was put: its seat is pinned to its height
-  (`seat.pin`) and the `seating` stage keeps it (`draft.stages.placed_rows`).
+  (`seat.pin`) and every stage keeps it (`hands.keep_placed`).
 - `draft check` refuses a house moved apart from its platform (its body's gap to its own deck changed by more than
   8 units from the source's) and a tree or root moved by an edit of a building.
 - A walked level with its own flights stands as one body: the `seating` stage keeps the source's relative heights of

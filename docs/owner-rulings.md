@@ -207,6 +207,10 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
+- Before a place is built from its source, the drafter looks at the source as a place and judges it against the
+  record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
+  structure's own platform, or none); and, where too little of it is useful, takes a better source. These are the
+  drafter's judgement calls (2026-11-21, #80).
 - A source place is adapted to our place's kind: what does not make sense for ours (mines, docks, landings and
   the like, by the place record) is taken out, relabelled to a use that fits, or moved to where it does make
   sense; adapt, relabel, prune, add (2026-11-21, #80; restating 2026-11-20). So Jal-Veesa, which its record puts

@@ -731,3 +731,55 @@ def test_a_house_platform_is_a_deck_steps_leave_from(monkeypatch):
     monkeypatch.setattr(C, "_up_faces", lambda m, b: top[:, :, :] * np.array([0.05, 1, 1]))
     assert hands.platform_top(base) is None                       # 40 wide: a beam, not a deck
     assert hands.platform_top({"model": "argonia/clutter/barrel.nif", "bounds": base["bounds"]}) is None
+
+
+def test_the_daemon_survives_a_caller_that_left_before_its_answer():
+    """A ping given up while a long call ran (or a call past its client timeout) left its socket closed: answering it
+    once raised out of the daemon's loop, the daemon stopped and every call queued behind it was reset."""
+    import json
+    import socket as so
+    from tools.places.look import daemon
+
+    class D:
+        def handle(self, req):
+            return {"lines": ["x" * 400000]}
+    for verb in ("_ping", "probe"):
+        a, b = so.socketpair()
+        b.sendall(json.dumps({"verb": verb, "place": "p", "args": []}).encode() + b"\n")
+        b.close()                                    # the caller is gone
+        assert daemon.answer(D(), a) is None         # no error: the daemon carries on
+        a.close()
+    a, b = so.socketpair()
+    b.sendall(b'{"verb": "_stop", "place": "", "args": []}\n')
+    assert daemon.answer(D(), a) == "stop" and b.recv(64) == b'{"ok": true}\n'
+
+
+def test_a_call_reset_under_it_is_retried_once(monkeypatch):
+    import tools.places.look as L
+    tries = []
+
+    def once(req, timeout):
+        tries.append(req["verb"])
+        if len(tries) == 1:
+            raise ConnectionResetError
+        return {"ok": True}
+    monkeypatch.setattr(L, "_call_once", once)
+    monkeypatch.setattr(L, "ensure", lambda: 0.0)
+    assert L.call({"verb": "probe", "place": "p", "args": []}) == {"ok": True} and tries == ["probe", "probe"]
+    tries.clear()
+    monkeypatch.setattr(L, "_call_once", lambda req, t: (_ for _ in ()).throw(ConnectionResetError()))
+    with pytest.raises(ConnectionResetError):
+        L.call({"verb": "probe", "place": "p", "args": []})
+
+
+def test_an_accepted_probe_fault_is_kept_apart_from_the_open_ones():
+    """place.json draft.accepted_faults [{id, fault, why}]: the fault leaves the open list (no red outline, no count)
+    and is listed as accepted with its why; a different fault of the same piece stays open."""
+    from tools.places.look.scene import split_accepted
+    found = [{"id": "a", "fault": "floats"}, {"id": "a", "fault": "buried"}, {"id": "b", "fault": "floats"}]
+    files = {"place": {"draft": {"accepted_faults": [{"id": "a", "fault": "floats", "why": "on its roots"},
+                                                     {"id": "b", "why": "any fault"}]}}}
+    open_, acc = split_accepted(found, files)
+    assert open_ == [{"id": "a", "fault": "buried"}]
+    assert [(f["id"], f["accepted"]) for f in acc] == [("a", "on its roots"), ("b", "any fault")]
+    assert split_accepted(found, None) == (found, [])

@@ -39,7 +39,7 @@ WATER = {
             "FogUnderWaterDistanceNearPlane": 0.0, "FogUnderWaterDistanceFarPlane": 56.0,
             "WaterReflectivity": 0.6, "WaterFresnel": 0.25, "WaterReflectionMagnitude": 0.35,
             "NoiseLayerOneWindSpeed": 0.007, "NoiseLayerTwoWindSpeed": 0.0145, "NoiseLayerThreeWindSpeed": 0.0225,
-            "DamagePerSecond": 0.0, "LinearVelocity": [0, 0, 0],
+            "DamagePerSecond": 0, "LinearVelocity": [0, 0, 0],   # damage is a whole number in the record (ushort)
         },
     },
 }

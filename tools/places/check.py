@@ -916,7 +916,7 @@ def check_land(ctx) -> list[str]:
     rows = ctx.get("land_rows", rows)
     _, steps = ground(ctx)
     world = {(c["x"], c["y"]): B.cell_steps(c) for c in ctx["facts"]["cells"] if c.get("deltas")}
-    for (cx, cy), verts in B.summed_land(rows).items():
+    for (cx, cy), verts in B.summed_land(rows).items():     # a cell's rows add, as the build adds them
         if (cx, cy) not in world or (cx, cy) not in steps:
             bad.append(f"land {cx},{cy}: land.jsonl patches a cell the world has no land for")
             continue

@@ -33,6 +33,15 @@ summary: dict = {}       # the last check's measures (patches, streets, aligned 
 DOOR_REACH = 160.0
 
 
+def patch_bound(row: dict, place: dict, pmax: float) -> float:
+    """How far one land row may move the ground: the place's carried ground (`by` "ground", draft/ground.py) up to its
+    own cap (`draft.ground_cap`, else the stage's CAP), every other row (the fit's patches, the sap bowl) `pmax`."""
+    if row.get("by") == "ground":
+        from tools.places.draft.ground import CAP
+        return float((place.get("draft") or {}).get("ground_cap") or CAP)
+    return pmax
+
+
 def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, gives: list | None = None) -> list[str]:
     pdir = places / place_id
     place = json.loads((pdir / "place.json").read_text())

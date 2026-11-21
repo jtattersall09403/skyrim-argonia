@@ -55,17 +55,25 @@ export function depthGrid(refs, groundAt, { step = 16, maxSide = 256, margin = 4
   return { data, w, h, min: [x0, y0], size: [w * s, h * s], step: s };
 }
 
-// One tile of ripple: a tangent-space normal map, RGBA bytes, `n` a side, periodic so it tiles. Sums of plane waves
-// (integer wave numbers, so the edges meet) at three scales with fixed phases: the same bytes every time.
-export function rippleNormals(n = 64) {
-  const out = new Uint8Array(n * n * 4), T = Math.PI * 2;
-  const waves = [[3, 1, 0.9, 0.4, 1.0], [-2, 4, 1.7, 2.1, 0.8], [5, -3, 2.6, 4.0, 0.6], [1, 6, 0.3, 5.2, 0.5], [-6, -2, 3.9, 1.3, 0.45], [7, 5, 4.4, 0.7, 0.3]];
+// One tile of ripple: a tangent-space normal map, RGBA bytes, `n` a side, tiling. The height under it is smooth value
+// noise (a hashed lattice, smoothstep-blended) at three octaves whose lattices wrap at the tile's edge, so it tiles
+// without a seam, yet no cell grid shows: no octave's lattice lines up with another's, and the slopes are small (a
+// still pool's faint swell, never a weave). The same bytes every time.
+export function rippleNormals(n = 128) {
+  const out = new Uint8Array(n * n * 4);
+  const hash = (i, j, o) => { let h = (i * 374761393 + j * 668265263 + o * 2147483647) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+  const ease = (t) => t * t * (3 - 2 * t);
+  const octaves = [[5, 1.0], [11, 0.5], [23, 0.25]];   // lattice cells across the tile (primes: no shared grid), weight
+  const H = new Float32Array(n * n);
+  for (const [c, w] of octaves) for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    const x = (i / n) * c, y = (j / n) * c, x0 = Math.floor(x), y0 = Math.floor(y), fx = ease(x - x0), fy = ease(y - y0);
+    const v = (a, b) => hash(((x0 + a) % c + c) % c, ((y0 + b) % c + c) % c, c);
+    const top = v(0, 0) + (v(1, 0) - v(0, 0)) * fx, bot = v(0, 1) + (v(1, 1) - v(0, 1)) * fx;
+    H[j * n + i] += (top + (bot - top) * fy) * w;
+  }
+  const at = (i, j) => H[((j + n) % n) * n + ((i + n) % n)], AMP = n * 0.011;   // slope scale: low contrast
   for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
-    let dx = 0, dy = 0;
-    for (const [kx, ky, ph, , a] of waves) {
-      const c = Math.cos(T * ((kx * i + ky * j) / n) + ph) * a * T * 0.012 / Math.hypot(kx, ky) * 4;
-      dx += c * kx; dy += c * ky;
-    }
+    const dx = (at(i + 1, j) - at(i - 1, j)) * AMP, dy = (at(i, j + 1) - at(i, j - 1)) * AMP;
     const l = Math.hypot(dx, dy, 1), k = (j * n + i) * 4;
     out[k] = Math.round((-dx / l * 0.5 + 0.5) * 255); out[k + 1] = Math.round((-dy / l * 0.5 + 0.5) * 255); out[k + 2] = Math.round((1 / l * 0.5 + 0.5) * 255); out[k + 3] = 255;
   }
