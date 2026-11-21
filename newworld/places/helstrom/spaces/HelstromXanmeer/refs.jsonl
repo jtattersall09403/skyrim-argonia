@@ -1,4 +1,3 @@
-{"id":"King of the Murkmire.esp:8406B8","src":"King of the Murkmire.esp:8406B8","removed":true}
 {"id":"helstrom.04837NRC5Z60V592XH7BDF69CM","src":"King of the Murkmire.esp:4F4DD4","removed":true}
 {"id":"helstrom.05WGFBFA7HZQ0PTR671C5AVE05","src":"King of the Murkmire.esp:4F4DD9","removed":true}
 {"id":"helstrom.07WYCE2T381VHHABH7E7XK25NA","src":"King of the Murkmire.esp:4F4E31","removed":true}
@@ -120,7 +119,7 @@
 {"id":"helstrom.WVABQKR0P6DVH5E8AHZY8HEF99","src":"King of the Murkmire.esp:4F4DB6","removed":true}
 {"id":"helstrom.X247C3E0CN8E7CMDG68FYPKMRK","src":"King of the Murkmire.esp:4F4DB2","removed":true}
 {"id":"helstrom.XEW2BNSFXY30CR3HY6JQ2064Z7","src":"King of the Murkmire.esp:840615","removed":true}
-{"id":"helstrom.XRX8GKGR8YACRG4EY3549K02X9","edid":null,"base":"King of the Murkmire.esp:056D53","kind":"door","pos":[16544,6352,80],"rot":[0,0,0],"scale":1.05,"layer":"place","flags":["persistent"],"src":"King of the Murkmire.esp:840718","door":{"to_space":"exterior","to_ref":"helstrom.TP78Z1NVDQ8JRJP893FR8G52S8","to_pos":[-51841.3,-590341.7,208.08],"to_rot":[0.0,0.0,5.49779],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.XRX8GKGR8YACRG4EY3549K02X9","edid":null,"base":"King of the Murkmire.esp:056D53","kind":"door","pos":[16544,6352,80],"rot":[0,0,0],"scale":1.05,"layer":"place","flags":["persistent"],"src":"King of the Murkmire.esp:840718","door":{"to_space":"exterior","to_ref":"helstrom.TP78Z1NVDQ8JRJP893FR8G52S8","to_pos":[-54838.3,-590661.7,275.39],"to_rot":[0.0,0.0,5.49779],"flags":"0"},"seat":{"mode":"free"}}
 {"id":"helstrom.XTN2118XCG4WW39WZZ0JA95Y8C","edid":null,"base":"King of the Murkmire.esp:5E2496","kind":"building","pos":[16544,1008,240],"rot":[1.5707964,-2.6226041e-06,1.5708],"scale":1,"layer":"place","flags":[],"src":"King of the Murkmire.esp:8405AC","seat":{"mode":"free"}}
 {"id":"helstrom.XVCQATEZ7TP2EEAXB6YBPHYQ51","src":"King of the Murkmire.esp:8406FF","removed":true}
 {"id":"helstrom.XYVG643WTCKJ3YP0F1HV4R1PMM","src":"King of the Murkmire.esp:84070B","removed":true}

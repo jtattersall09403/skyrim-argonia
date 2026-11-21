@@ -1,0 +1,274 @@
+{
+ "save_id": "agent-20261121T212215",
+ "place_id": "helstrom",
+ "name": "a source house's load door that led nowhere: our added door with its own room stands in its place",
+ "at": "2026-11-21T21:22:15Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FSJS2FZX8CK3E11HEJXVQV5MGM",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FSJS2FZX8CK3E11HEJXVQV5MGM",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -41127.91,
+     -615793.91,
+     126.3
+    ],
+    "rot": [
+     0,
+     0,
+     6.83599
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:207719",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b09"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.P5E0VDVWM7VWB3K7BDZ5G1J058",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.P5E0VDVWM7VWB3K7BDZ5G1J058",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -41642.22,
+     -617087.19,
+     192.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20771A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b10"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2M1BWFRTHMRPGDZZ2XAK09YT6T",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2M1BWFRTHMRPGDZZ2XAK09YT6T",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -42085.09,
+     -610801.62,
+     219.87
+    ],
+    "rot": [
+     0,
+     0,
+     5.436
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20771B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.278PZ4RN5CD5A663YW6WJE1E4Z",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.278PZ4RN5CD5A663YW6WJE1E4Z",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -46976.41,
+     -609533.1,
+     186.48
+    ],
+    "rot": [
+     0,
+     0,
+     11.31918
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20771C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TN5K02GF5B6PSE3QSEJM61BMPQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TN5K02GF5B6PSE3QSEJM61BMPQ",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -50186.03,
+     -606370.97,
+     191.15
+    ],
+    "rot": [
+     0,
+     0,
+     5.836
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20771D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b14"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6FAYXAS4TCV44JAXC6378B3AQB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6FAYXAS4TCV44JAXC6378B3AQB",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -52795.07,
+     -607696.87,
+     192.0
+    ],
+    "rot": [
+     0,
+     0,
+     8.63599
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20771E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RVQ0439W3CS5A1GWJDFTWYV9F5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RVQ0439W3CS5A1GWJDFTWYV9F5",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -54122.49,
+     -606878.85,
+     192.0
+    ],
+    "rot": [
+     0,
+     0,
+     8.83599
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:207720",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0W5KXKZE4E05W60XAFF72W7GEB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0W5KXKZE4E05W60XAFF72W7GEB",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -52702.24,
+     -603025.8,
+     192.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.036
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:207721",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b15"
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:15Z"
+  }
+ ]
+}

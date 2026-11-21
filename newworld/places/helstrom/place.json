@@ -39,19 +39,6 @@
   },
   "add": [
    {
-    "base": "Dragonborn.esm:03C364",
-    "kind": "container",
-    "pos": [
-     -28976.1,
-     -610383.4
-    ],
-    "name": "Sealed Spring",
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, 1150 units east of its trunk, past the great tree's roots and its sap, named so a player reads what it is; locked and owned by the town in the stock source",
-    "key": "0"
-   },
-   {
     "base": "King of the Murkmire.esp:B7F081",
     "kind": "container",
     "space": "01ArgonianHouseinside.8",
@@ -83,42 +70,26 @@
     "key": "2"
    },
    {
-    "base": "King of the Murkmire.esp:3D870E",
-    "stop": "rootworm-stop",
-    "kind": "activator",
-    "pos": [
-     -30246.87,
-     -610441.29
-    ],
-    "scale": 5.65,
-    "dz": 3.0,
-    "need": 11,
-    "tier": "AGENT_INVENTED",
-    "why": "the rootworm's root pool: the city tree's own pool of Hist sap at its roots (main story, 5. The Handler, 6. The Glass Eye, every ride; the Underground Express of the canon, whose riders board at a root pool); King of the Murkmire's WaterPuddleHist sized to the great tree, standing as the tree's sap pool (the sap stage keeps a hand-placed pool on the trunk)",
-    "rot_z": 1.25494,
-    "id_base": "Skyrim.esm:09727E",
-    "key": "3"
-   },
-   {
     "base": "King of the Murkmire.esp:0CF38A",
     "kind": "clutter",
     "pos": [
-     -31234.8,
-     -610383.4
+     -36150.0,
+     -627000.0
     ],
     "rot_z": 1.5708,
     "dz": -20.0,
     "need": 11,
     "tier": "AGENT_INVENTED",
     "why": "the mouth of the rootworm's tunnel at the root pool's west lip, where the worm comes up among the roots: King of the Murkmire's own rootworm tunnel entrance (RootWormTunnelsEnt01MarshMud02), sunk 20 units into the mud",
-    "key": "4"
+    "key": "4",
+    "stop": "rootworm-stop"
    },
    {
     "base": "Skyrim.esm:000010",
     "kind": "marker",
     "pos": [
-     -29017.3,
-     -610383.4
+     -35650.0,
+     -627450.0
     ],
     "map_marker": "Rootworm Landing (Helstrom)",
     "need": 11,
@@ -130,8 +101,8 @@
     "base": "King of the Murkmire.esp:05CCD1",
     "kind": "building",
     "pos": [
-     -28282.0,
-     -614700.5
+     -31300.0,
+     -625900.0
     ],
     "rot_z": 4.7124,
     "need": 6,
@@ -143,8 +114,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -27955.1,
-     -614447.5
+     -30973.1,
+     -625647.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
@@ -156,8 +127,8 @@
      "door": "King of the Murkmire.esp:864AD2",
      "space": "XeechLeelCouncilHouse",
      "arrival": [
-      -27854.8,
-      -614439.1
+      -30872.8,
+      -625638.6
      ],
      "drop": {
       "King of the Murkmire.esp:864C11": "Lilmoth's strong box of levelled gems and jewellery: nothing levelled is placed (decision 0035); the council's gold is the strongroom's, placed by its quest"
@@ -170,8 +141,8 @@
     "base": "King of the Murkmire.esp:1616CD",
     "kind": "static",
     "pos": [
-     -27566.5,
-     -615028.3
+     -30584.5,
+     -626227.8
     ],
     "rot_z": 0.0,
     "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
@@ -186,8 +157,8 @@
     "base": "King of the Murkmire.esp:0D45E5",
     "kind": "building",
     "pos": [
-     -29951.7,
-     -614501.3
+     -32969.7,
+     -625700.8
     ],
     "rot_z": 1.5708,
     "need": 6,
@@ -199,8 +170,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -29831.8,
-     -614057.5
+     -32849.8,
+     -625257.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.EZK9HHJ7SHHNK293XWGKGR71BN",
@@ -213,8 +184,8 @@
      "space": "XeechLeelWardensQuarters",
      "whole": true,
      "arrival": [
-      -29731.8,
-      -614057.5
+      -32749.8,
+      -625257.0
      ]
     },
     "why": "the wardens' quarters' door, where Lilmoth sets the barracks' ground door, into a copy of Dragonthorn Manor Barracks (its beds for the council's wardens)",
@@ -239,16 +210,16 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -29027.0,
-     -614481.5
+     -32045.0,
+     -625681.0
     ],
     "rot_z": 1.5708,
     "on": "helstrom.AM9WF1VR5PD1MJ3VWS1DMZYNC4",
     "dz": 8.86,
     "pair": "helstrom.EB2QYX38HZMAZ8YJJ19YG4ETDG",
     "arrival": [
-     -29162.0,
-     -614481.5
+     -32180.0,
+     -625681.0
     ],
     "need": 6,
     "tier": "AGENT_INVENTED",
@@ -372,8 +343,8 @@
     "base": "Black Marsh North.esp:07308C",
     "kind": "building",
     "pos": [
-     -53503.0,
-     -588680.0
+     -56500.0,
+     -589000.0
     ],
     "rot_z": 5.49779,
     "scale": 0.78,
@@ -386,8 +357,8 @@
     "base": "King of the Murkmire.esp:05CCD1",
     "kind": "building",
     "pos": [
-     -42122.0,
-     -587227.0
+     -32600.0,
+     -622900.0
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
@@ -398,8 +369,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -41795.1,
-     -586974.0
+     -32273.1,
+     -622647.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.SFC2MXK2C2949BFZTX887YKNXK",
@@ -410,8 +381,8 @@
      "door": "King of the Murkmire.esp:0CE762",
      "space": "MarketSmithy",
      "arrival": [
-      -41694.8,
-      -586965.6
+      -32172.8,
+      -622638.6
      ],
      "whole": true
     },
@@ -422,8 +393,8 @@
     "base": "King of the Murkmire.esp:05CCD1",
     "kind": "building",
     "pos": [
-     -38700.0,
-     -595500.0
+     -36600.0,
+     -622600.0
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
@@ -434,8 +405,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -38373.1,
-     -595247.0
+     -36273.1,
+     -622347.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.B4GMRVF5BZCJ6JHYW5D5RY8ZE5",
@@ -446,8 +417,8 @@
      "door": "King of the Murkmire.esp:85F791",
      "space": "LevyPost",
      "arrival": [
-      -38272.8,
-      -595238.6
+      -36172.8,
+      -622338.6
      ]
     },
     "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse",
@@ -457,8 +428,8 @@
     "base": "Black Marsh.esm:084B54",
     "kind": "building",
     "pos": [
-     -41286.2,
-     -593182.4
+     -35853.2,
+     -628500.4
     ],
     "rot_z": 0.0,
     "dz": -8.0,
@@ -470,8 +441,8 @@
     "base": "Black Marsh.esm:084B55",
     "kind": "building",
     "pos": [
-     -40866.2,
-     -593022.4
+     -35433.2,
+     -628340.4
     ],
     "rot_z": 0.0,
     "dz": -8.0,
@@ -483,8 +454,8 @@
     "base": "Black Marsh.esm:084B56",
     "kind": "building",
     "pos": [
-     -40946.2,
-     -593642.4
+     -35513.2,
+     -628960.4
     ],
     "rot_z": 0.0,
     "dz": -8.0,
@@ -496,8 +467,8 @@
     "base": "Black Marsh.esm:084B56",
     "kind": "building",
     "pos": [
-     -42177.9,
-     -596772.2
+     -37200.0,
+     -628150.0
     ],
     "rot_z": 2.35619,
     "dz": -8.0,
@@ -509,216 +480,224 @@
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -25360.24,
-     -612743.54
+     -41127.9,
+     -615793.9
     ],
-    "rot_z": 1.60001,
+    "rot_z": 0.5528,
     "scale": 1.3,
-    "dz": 10.67,
+    "dz": -165.7,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.10",
      "arrival": [
-      -25404.5,
-      -612295.0
+      -41538.5,
+      -615608.0
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "27"
+    "key": "27",
+    "on": "helstrom.5JNKD6HMXK9XW2R38QV1RJQ9N2"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -26909.51,
-     -614613.23
+     -41642.2,
+     -617087.2
     ],
-    "rot_z": 0.41461,
+    "rot_z": 0.1528,
     "scale": 1.3,
-    "dz": 16.0,
+    "dz": -180.0,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.11",
      "arrival": [
-      -27341.8,
-      -614485.6
+      -42092.8,
+      -617075.8
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "28"
+    "key": "28",
+    "on": "helstrom.QG6MPQM3Z6Q1R47VVM8CBMXD10"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -25139.39,
-     -608824.89
+     -42085.1,
+     -610801.6
     ],
-    "rot_z": 6.2214,
+    "rot_z": 5.436,
     "scale": 1.3,
-    "dz": 22.2,
+    "dz": -264.6,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.12",
      "arrival": [
-      -25582.1,
-      -608909.7
+      -42338.2,
+      -611174.6
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "29"
+    "key": "29",
+    "on": "helstrom.ZKG0JC4H0WD76MF1Z234H4BA3B"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -32462.97,
-     -607591.98
+     -46976.4,
+     -609533.1
     ],
-    "rot_z": 5.5596,
+    "rot_z": 5.03599,
     "scale": 1.3,
-    "dz": -53.36,
+    "dz": -277.1,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.13",
      "arrival": [
-      -32760.1,
-      -607930.9
+      -47064.3,
+      -609975.2
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "30"
+    "key": "30",
+    "on": "helstrom.RS1TJTWT05WDJC8V1G4MPRJRE5"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -33156.63,
-     -602434.85
+     -50186.0,
+     -606371.0
     ],
-    "rot_z": 6.0978,
+    "rot_z": 5.836,
     "scale": 1.3,
-    "dz": 15.18,
+    "dz": -156.7,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.14",
      "arrival": [
-      -33585.5,
-      -602573.6
+      -50564.3,
+      -606616.0
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "31"
+    "key": "31",
+    "on": "helstrom.W2F6APG3NXX4P82FV76190HCYA"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -36583.96,
-     -603092.43
+     -52795.1,
+     -607696.9
     ],
-    "rot_z": 2.87641,
+    "rot_z": 2.35281,
     "scale": 1.3,
-    "dz": 0.0,
+    "dz": -125.8,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.15",
      "arrival": [
-      -36167.5,
-      -602919.9
+      -52520.7,
+      -607339.3
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "32"
+    "key": "32",
+    "on": "helstrom.DQCCBF05D73YG7H9J32W1RXP3C"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -37324.53,
-     -601720.29
+     -54122.5,
+     -606878.8
     ],
-    "rot_z": 3.07641,
+    "rot_z": 2.5528,
     "scale": 1.3,
-    "dz": 0.0,
+    "dz": -184.5,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.16",
      "arrival": [
-      -36882.1,
-      -601634.0
+      -53782.5,
+      -606582.9
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "33"
+    "key": "33",
+    "on": "helstrom.1DS24VHR6937KRA5D95E3XFHTB"
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
     "kind": "door",
     "pos": [
-     -34337.31,
-     -598552.43
+     -52702.2,
+     -603025.8
     ],
-    "rot_z": 0.01461,
+    "rot_z": 6.036,
     "scale": 1.3,
-    "dz": 0.0,
+    "dz": -193.8,
     "tier": "AGENT_INVENTED",
     "room": {
      "copy_of": "bmv.helstrom/01ArgonianHouseinside",
      "door": "Black Marsh.esm:1E4419",
      "space": "01ArgonianHouseinside.17",
      "arrival": [
-      -34785.2,
-      -598603.2
+      -53121.7,
+      -603190.8
      ],
      "strip": {
       "CandlelightScroll": "the source house's loose stock: a new home's things are place-stock's, not the source's"
      }
     },
     "why": "the door of one of the source's Argonian houses, whose own load door led nowhere, into a further copy of the city's one-room Argonian house: a home for the families the record's 110 people need",
-    "key": "34"
+    "key": "34",
+    "on": "helstrom.BBZ9QX0W54HFA1AXW56PF38YJT"
    },
    {
     "base": "King of the Murkmire.esp:056D53",
     "kind": "door",
     "pos": [
-     -52018.1,
-     -590164.9
+     -55015.1,
+     -590484.9
     ],
     "rot_z": 5.49779,
     "dz": 0.0,
@@ -728,8 +707,8 @@
      "door": "King of the Murkmire.esp:840718",
      "space": "HelstromXanmeer",
      "arrival": [
-      -51841.3,
-      -590341.7
+      -54838.3,
+      -590661.7
      ],
      "cut": {
       "box": [
@@ -806,8 +785,8 @@
     "base": "King of the Murkmire.esp:05BF2B",
     "kind": "building",
     "pos": [
-     -52136.2,
-     -589881.4
+     -55133.2,
+     -590201.4
     ],
     "rot_z": 2.3562,
     "dz": 96.0,
@@ -819,8 +798,8 @@
     "base": "King of the Murkmire.esp:05BF2C",
     "kind": "building",
     "pos": [
-     -52301.6,
-     -590046.8
+     -55298.6,
+     -590366.8
     ],
     "rot_z": 2.3562,
     "dz": 96.0,
@@ -832,8 +811,8 @@
     "base": "King of the Murkmire.esp:056D2E",
     "kind": "static",
     "pos": [
-     -51749.4,
-     -589966.9
+     -54746.4,
+     -590286.9
     ],
     "rot_z": 5.49779,
     "dz": -10.0,
@@ -845,8 +824,8 @@
     "base": "King of the Murkmire.esp:056D2E",
     "kind": "static",
     "pos": [
-     -52216.1,
-     -590433.6
+     -55213.1,
+     -590753.6
     ],
     "rot_z": 5.49779,
     "dz": -10.0,
@@ -2035,7 +2014,9 @@
   "agent-20261121T210748",
   "agent-20261121T210749",
   "agent-20261121T210801",
-  "agent-20261121T211800"
+  "agent-20261121T211800",
+  "agent-20261121T212214",
+  "agent-20261121T212215"
  ],
  "wholesale": {
   "offset": 180.0,
