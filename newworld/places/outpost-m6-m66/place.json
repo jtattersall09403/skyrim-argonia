@@ -12,7 +12,7 @@
    "look": [
     {
      "line": "a young Hist",
-     "by": "Huluxinoag's Hist with its roots, glands and root bases, the whole composite scaled 0.55 about its axis (trunk 39 m to 21 m), at the creek head's west"
+     "by": "King of the Murkmire's young Hist (HistTree04) and its dead twin on Huluxinoag's own living/dead enable parent, in place of the source's great Hist, on the camp's west side within the source's walkways"
     },
     {
      "line": "pale hide tents",
@@ -32,7 +32,7 @@
     },
     {
      "line": "a reed hide by a lone dead tree on the bank to the west",
-     "by": "an added dead swamp tree (ArgoniaTreeSwampDead01) with a scale-hide lean-to, jars and the sap-takers' packs on the west bank, west of the weir"
+     "by": "an added scale-hide lean-to screened with woven reed fences and banked with reeds, beside King of the Murkmire's bare dead swamp tree on the west bank, with a crate, jars and the sap-takers' pack"
     },
     {
      "line": "the landing (source note)",
@@ -78,7 +78,7 @@
      "cluster": "b01",
      "what": "the Hist with its roots, glands, root bases and the walkways and steps round it",
      "verdict": "kept",
-     "why": "kept and relabelled: the record's young Hist (composite scaled 0.55); its hall entrance and door to Huluxinoag Roots pruned (no room: the record names none)"
+     "why": "kept: the walkways, steps and root rocks round the tree; the great Hist (crowns, trunk bases, roots, glands) replaced by a young Hist with its dead twin on the same enable parent; its hall entrance and door to Huluxinoag Roots pruned (no room: the record names none); three tall cliffs whose tops hung over our lower ground pruned"
     },
     {
      "cluster": "b02",
@@ -284,24 +284,14 @@
  "hang": {
   "added": [
    {
-    "id": "outpost-m6-m66.hang.99BYE0A4DTRN08517K3PMZPZ31.0",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31"
+    "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "on": "outpost-m6-m66.TF70YOUNGHIST"
    },
    {
-    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.0",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
-   },
-   {
-    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.1",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
-   },
-   {
-    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.2",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57"
+    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "on": "outpost-m6-m66.TF70YOUNGHISTDEAD"
    }
   ]
  },

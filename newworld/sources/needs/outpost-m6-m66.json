@@ -10,12 +10,12 @@
    "line": "main",
    "rests": {
     "space": "exterior",
-    "ref": "outpost-m6-m66.9YKDQWVX9RHB0TC7D6B66KK1WZ"
+    "ref": "outpost-m6-m66.TF70YOUNGHIST"
    },
    "signs": [
     {
      "sign": "look",
-     "detail": "a young Hist about 20 m tall on a mound of its own roots on the camp's west side, plank walkways round its foot, its amber sap pool at its east foot"
+     "detail": "a young Hist some 6 m tall on the camp's west side, plank walkways round its foot, its amber sap pool round its roots"
     },
     {
      "sign": "person",
@@ -23,7 +23,7 @@
     }
    ],
    "met": true,
-   "why": "Met. The young Hist (Huluxinoag's Hist, its whole tree scaled down) stands on its roots at the west of the camp; the source's plank walkways run from the north tent platform to its foot; Heem-Jasa works on the walkway by its sap pool; the sealed scar is the quest's own thing low on the trunk's east side, facing her.",
+   "why": "Met. King of the Murkmire's young Hist stands on the camp's west side in its sap pool; the source's plank walkways run from the north tent platform to its foot; Heem-Jasa works on the walkway beside it; the sealed scar is the quest's own thing low on the trunk's east side, facing her.",
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "recognised",
@@ -68,16 +68,16 @@
    "line": "main",
    "rests": {
     "space": "exterior",
-    "ref": "outpost-m6-m66.5AE5530GR6H2BKNP4CK6QEHZ11"
+    "ref": "outpost-m6-m66.TF70YOUNGHISTDEAD"
    },
    "signs": [
     {
      "sign": "look",
-     "detail": "the same Hist with its bark dead and its glands withered, in the living tree's place"
+     "detail": "the same young Hist dead, grey and leafless, in the living tree's place"
     }
    ],
    "met": true,
-   "why": "Met for the place. Huluxinoag's Hist carries its own dead state: a dead trunk and dead glands in the living ones' places, switched by one enable parent (the source's HuluxinoagCured marker, now starting enabled so the tree lives). An ending disables that marker and the dead tree shows; the empty platform is the ending disabling the place's people, the quest's to build.",
+   "why": "Met for the place. The young Hist's dead twin (King of the Murkmire's HistTree04Dead) stands in its place on the source's own enable parent: an ending disables the parent and the dead tree shows; the empty platform is the ending disabling the place's people, the quest's to build.",
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "not recognised",
