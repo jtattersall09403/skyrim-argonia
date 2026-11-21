@@ -132,15 +132,141 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
     return said
 
 
+GAP = 160.0     # units: the widest break in the source's own mesh a carried walk steps across
+
+
+def _island(adj: dict, start: int) -> set:
+    seen, stack = {start}, [start]
+    while stack:
+        for v in adj.get(stack.pop(), ()):
+            if v not in seen:
+                seen.add(v)
+                stack.append(v)
+    return seen
+
+
+def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> list[dict]:
+    """The source's own walked network carried as path rows: one row from each exterior door of the source (its landing,
+    where the source's room lands one) to the hub, routed over the source's own exterior navmesh (its triangles'
+    middles, joined across shared edges, within a mesh and between meshes), at the one transform; each point at the
+    mesh's height plus the offset."""
+    import heapq
+    fit = st.place["fit"]
+    pv, an = fit["pivot"], fit["anchor"]
+    rot = math.radians(float(fit.get("rot_deg", 0.0)))
+    c, s_ = math.cos(rot), math.sin(rot)
+
+    def ours(x, y, z):
+        dx, dy = x - pv[0], y - pv[1]
+        return (round(an[0] + dx * c - dy * s_, 1), round(an[1] + dx * s_ + dy * c, 1), round(z + offset, 1))
+    navs = io.read_jsonl(st.src.path / "spaces" / "exterior" / "navmesh.jsonl")
+    nodes, adj, base_of, links, seam = [], {}, {}, [], {}
+
+    def join(u, v):
+        adj.setdefault(u, set()).add(v)
+        adj.setdefault(v, set()).add(u)
+    for m in navs:
+        V = m["verts"]
+        base_of[m["id"]] = base = len(nodes)
+        for t in m["tris"]:
+            a, b, cc = (V[i] for i in t[:3])
+            nodes.append(((a[0] + b[0] + cc[0]) / 3, (a[1] + b[1] + cc[1]) / 3, (a[2] + b[2] + cc[2]) / 3))
+        for i, (t, te) in enumerate(zip(m["tris"], m["tri_edges"])):
+            for j in range(3):
+                if t[3] & (1 << j):                     # a portal edge (NVNM flag bit j): te[j] indexes edge_links
+                    lk = m["edge_links"][te[j]]
+                    links.append((base + i, lk["mesh"], lk["tri"]))
+                elif 0 <= te[j] < len(m["tris"]):       # the mesh's own neighbour across this edge
+                    join(base + i, base + te[j])
+                else:                                   # an open edge: joined to another mesh's sharing its two ends
+                    e = tuple(sorted((tuple(round(v / 32) for v in V[t[j]][:2]),
+                                      tuple(round(v / 32) for v in V[t[(j + 1) % 3]][:2]))))
+                    for k in seam.get(e, []):
+                        if k < base:
+                            join(base + i, k)
+                    seam.setdefault(e, []).append(base + i)
+    for u, mesh, tri in links:
+        if mesh in base_of:
+            join(u, base_of[mesh] + tri)
+
+    def near(x, y, z=None):
+        return min(range(len(nodes)), key=lambda k: math.dist(nodes[k][:2], (x, y)) + (abs(nodes[k][2] - z) if z is not None else 0))
+
+    def route(a, b):
+        dist, prev, q = {a: 0.0}, {}, [(0.0, a)]
+        while q:
+            d, u = heapq.heappop(q)
+            if u == b:
+                break
+            if d > dist.get(u, 1e18):
+                continue
+            for v in adj.get(u, ()):
+                nd = d + math.dist(nodes[u], nodes[v])
+                if nd < dist.get(v, 1e18):
+                    dist[v], prev[v] = nd, u
+                    heapq.heappush(q, (nd, v))
+        if b not in dist:
+            return None
+        out = [b]
+        while out[-1] != a:
+            out.append(prev[out[-1]])
+        return out[::-1]
+    hx, hy = hub_xy[0] - an[0], hub_xy[1] - an[1]
+    hub = near(pv[0] + hx * c + hy * s_, pv[1] - hx * s_ + hy * c)
+    rows, lost = [], []
+    for sp in sorted(st.src.spaces):
+        if sp == "exterior":
+            continue
+        for q in st.src.spaces[sp].refs:
+            d = q.get("door") or {}
+            if d.get("to_ref") not in st.by_src:
+                continue
+            x, y, z = d["to_pos"]
+            start = near(x, y, z)
+            got = route(start, hub)
+            if not got:   # the door's patch of mesh is cut off in the source: hop the narrowest gap (<= GAP) at level
+                isl = _island(adj, start)
+                main = _island(adj, hub)
+                gap = min(((math.dist(nodes[i], nodes[j]), i, j) for i in isl for j in main), default=None)
+                if gap and gap[0] <= GAP:
+                    print(f"{d['to_ref']}: its patch of the source's mesh is cut off; joined across {gap[0]:.0f} units")
+                    a_ = route(start, gap[1]) or [start]
+                    got = a_ + (route(gap[2], hub) or [])
+            if not got:
+                lost.append(d["to_ref"])
+                continue
+            pts = [ours(x, y, z)]
+            for k in got:
+                p_ = ours(*nodes[k])
+                if math.dist(p_[:2], pts[-1][:2]) >= 96:
+                    pts.append(p_)
+            rows.append({"id": io.mint(st.place_id, "walk", d["to_ref"]), "kind": "walkway", "points": [list(p_) for p_ in pts],
+                         "width": 128.0, "style": "boardwalk", "from": d["to_ref"], "to": "landing",
+                         "laid": "the source's own walked network (its exterior navmesh), from the door's landing to the "
+                                 "landing, carried at the one transform"})
+    if lost:
+        print("no walk on the source's navmesh from:", lost)
+    return rows
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
+    ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
     ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)
     st = Standing(a.place_id)
+    if a.walks:
+        hub = tuple(float(v) for v in a.walks.split(","))
+        rows = source_walks(st, a.offset, hub)
+        keep = [p for p in st.files["paths"] if not p["id"].startswith(f"{st.place_id}.walk.")]
+        print(len(rows), "walks:", [(r["from"][-6:], len(r["points"])) for r in rows])
+        if not a.dry:
+            io.write_jsonl(st.pdir / "paths.jsonl", keep + rows)
+        return 0
     if a.rooms:
         from tools.places import edits
         said = carry_rooms(st, a.offset, set(filter(None, a.whole.split(","))))
