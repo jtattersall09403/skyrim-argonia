@@ -114,7 +114,39 @@
      -538470.0
     ]
    }
-  }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "floor under the ground",
+    "why": "the waterside platforms stand at the creek head's edge: their deck is over the water and the shallow mud, and only their landward corner meets the bank, 29 under its highest point (survey dock.01, sections west-east and south-north); set there so the plank to the north platform meets both decks"
+   },
+   {
+    "unit": "dock.01",
+    "flag": "foot buried deeper than its leg",
+    "why": "the waterside platforms' landward posts run into the rising bank, 11 deeper than their own leg, as the source's posts run into its bank; nothing shows"
+   },
+   {
+    "unit": "hist.07",
+    "flag": "root HistGland03Roots",
+    "why": "the roots hanging from the Hist's glands, as the source hangs them from its tree (scaled with it): they hang in the air under the glands by design"
+   },
+   {
+    "unit": "walkway.02",
+    "flag": "walkway end mismatched",
+    "why": "the plank from the Hist's walkways to the north platform meets its deck 14 under it (units --joints: QWWD4YCMBNK5 meets X6A0XR, dz -14), within a step; the unit's own figure is taken at its other end"
+   },
+   {
+    "unit": "added.small.01",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the south-west cypress platform's deck, not on the ground"
+   },
+   {
+    "unit": "added.small.02",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the waterside cypress platform's deck, not on the ground"
+   }
+  ]
  },
  "fit": {
   "pivot": [
