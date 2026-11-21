@@ -16,6 +16,8 @@
 {"place_id":"helstrom","need_seq":11,"need_sign_id":"person","detail":"the root-tender Cheeval-Xu works at the pool's edge and sells the rootworm's rides","person_id":"helstrom.C2855503QH3SHVRJDJSG1E9MKM"}
 {"place_id":"helstrom","need_seq":12,"need_sign_id":"label","detail":"its door, at the back of the Market Cave, shows \"Ruusa-Wan's House\""}
 {"place_id":"helstrom","need_seq":12,"need_sign_id":"look","detail":"two lanterns on the sill by the door"}
+{"place_id":"jal-veesa","need_seq":1,"need_sign_id":"label","detail":"its door shows Vosh-Leera's House"}
+{"place_id":"jal-veesa","need_seq":1,"need_sign_id":"person","detail":"Vosh-Leera heads its household and is home there; Weeltul sends the player back to her house","person_id":"jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"label","detail":"looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of Saxhleel fences across the creek's west end, with a cypress log walk along its top and long grey moss draped on three of its fences"}
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}

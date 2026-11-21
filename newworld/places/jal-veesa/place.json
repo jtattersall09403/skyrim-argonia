@@ -641,6 +641,31 @@
     "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp (box z -393..124): the doors check takes one deck height for a ramp (its top) and reads the arrival 60 under it; the arrival is on the ramp and on the navmesh (probe --mesh), 2026-11-21"
    }
   ],
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.0DM6AFASR1VYJAF6383G5ADYFK",
+     "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"
+    ],
+    "why": "the source's own walkway runs through the Hist's root flare as in Seekhat Yol; the deck is clear up to the roots and a player walks to the Hist's foot (section and playwalk 069-back, 2026-11-21)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.GRXQZ37D4P47CB3SG34FNTN1VB",
+     "jal-veesa.3F866064EQ65PJXEY7ZTD5BEMV"
+    ],
+    "why": "the landing pair is the source's own two pieces laid into each other as one landing in Seekhat Yol, carried whole and seen as one landing, 2026-11-21"
+   },
+   {
+    "check": "doors",
+    "ids": [
+     "jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS"
+    ],
+    "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp: the doors check takes the ramp's top as its deck height; the arrival is on the ramp and on the navmesh (probe --mesh, 2026-11-21)"
+   }
+  ],
   "sap": {
    "offset": {
     "7SWK29SQSJ276Q5JVM1M6FCTK4": [

@@ -104,6 +104,11 @@ def centre(p: dict) -> tuple[float, float]:
     return p["pos"][0] + dx, p["pos"][1] + dy
 
 
+def holds(p: dict, t: dict) -> bool:
+    """A pool holds a Hist when the trunk's centre lies inside its sap (within its reach of the pool's centre)."""
+    return math.dist(centre(p), t["pos"][:2]) <= POOL_HALF * float(p.get("scale", 1.0))
+
+
 def outline(cx: float, cy: float, s: float, rz: float, n: int = 7) -> list[tuple[float, float]]:
     """Points over the pool's whole outline box (n x n), centred at (cx, cy)."""
     out = []
