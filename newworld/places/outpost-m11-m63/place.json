@@ -1,900 +1,268 @@
 {
  "place_id": "outpost-m11-m63",
- "source_id": "kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
- "redraft": {
-  "source_id": "kingofthemurkmire.marker.ree-an-wo",
-  "why": "source changed to Ree-An-Wo 2026-11-21 (the camp near Loreisian has no camp in the footprint); this draft is still the old source's, kept until it is redrafted"
- },
- "similar": [],
+ "source_id": "kingofthemurkmire.marker.ree-an-wo",
  "draft": {
-  "add": [
-   {
-    "base": "King of the Murkmire.esp:05555C",
-    "kind": "static",
-    "pos": [
-     -82550.0,
-     -514444.0
-    ],
-    "rot_z": 1.5708,
-    "dz": 72.4,
-    "tier": "AGENT_INVENTED",
-    "why": "the log walk along the top of the woven weir across the creek (place record: look note, 'a woven weir across the creek, with a log walk along its top'): King of the Murkmire's cypress log bridge, laid a hand over the water"
-   },
-   {
-    "base": "King of the Murkmire.esp:05555C",
-    "kind": "static",
-    "pos": [
-     -82550.0,
-     -515173.0
-    ],
-    "rot_z": 1.5708,
-    "dz": 64.6,
-    "tier": "AGENT_INVENTED",
-    "why": "the log walk along the top of the woven weir across the creek (place record: look note, 'a woven weir across the creek, with a log walk along its top'): King of the Murkmire's cypress log bridge, laid a hand over the water"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -514264.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -514472.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -514680.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -514888.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -515096.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -82454.0,
-     -515304.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek (place record: look note; fishing: 'the weir traps: eels and gar'): King of the Murkmire's woven Saxhleel fence set in the creek bed along the log walk"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD601",
-    "kind": "furniture",
-    "pos": [
-     -82380,
-     -514210
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "cooking-pot: promised by the place record ('by the landing'): King of the Murkmire's cooking pot on the bank at the weir's camp end, where the log walk comes ashore; the wardens have no cook to work it, so the stations stage adds none",
-    "dz": -32.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -82700.0,
-     -513430.0
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns), in a hide tent on its platform",
-    "on": "outpost-m11-m63.R094ZZC2PMXY45D7591NYHG2ZP",
-    "dz": 4.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -82960.0,
-     -513660.0
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open by the camp (place record: population 2, 'six or so wardens live here' by turns), in a hide tent on its platform",
-    "on": "outpost-m11-m63.E9M0AHKZT29T5SJDG9D65ZWMDM",
-    "dz": 4.0
-   },
-   {
-    "base": "Skyrim.esm:0BB951",
-    "kind": "flora",
-    "pos": [
-     -82436.0,
-     -515126.0
-    ],
-    "rot_z": 1.5708,
-    "scale": 0.6,
-    "on": "outpost-m11-m63.9G5XADACXJPSVEYJTCX1WEHEDN",
-    "dz": 48.0,
-    "tier": "AGENT_INVENTED",
-    "need": 0,
-    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
-   },
-   {
-    "base": "Skyrim.esm:0BB951",
-    "kind": "flora",
-    "pos": [
-     -82436.0,
-     -515264.0
-    ],
-    "rot_z": 1.5708,
-    "scale": 0.6,
-    "on": "outpost-m11-m63.N021WHAZSXJZ8ZKHJ1E27E150K",
-    "dz": 48.0,
-    "tier": "AGENT_INVENTED",
-    "need": 0,
-    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
-   },
-   {
-    "base": "Skyrim.esm:0BB951",
-    "kind": "flora",
-    "pos": [
-     -82436.0,
-     -514918.0
-    ],
-    "rot_z": 1.5708,
-    "scale": 0.6,
-    "on": "outpost-m11-m63.6B4B8XR7Z9VW56PAVN6HFGPBMG",
-    "dz": 48.0,
-    "tier": "AGENT_INVENTED",
-    "need": 0,
-    "why": "Sithis' beard, the grey moss the main quest's second quest sends the player to pick, draped over the woven weir's fences on its downstream face, where the log walk looks down on it (story: 'grey moss that hangs on the woven weir'); Skyrim's hanging moss, its top at the fence's top"
-   },
-   {
-    "base": "Skyrim.esm:10E888",
-    "kind": "container",
-    "pos": [
-     -82150.0,
-     -514125.0
-    ],
-    "rot_z": 0.6,
-    "name": "Thief's Sack",
-    "tier": "AGENT_INVENTED",
-    "why": "the thief's sack of stolen traps and coin hidden in the reeds at the waterline east of the weir (place record: treasure, \"a thief's sack of stolen traps and coin hidden in the reeds\"; hooks: the traps are robbed at night): Skyrim's flat sack that never respawns"
-   },
-   {
-    "base": "Skyrim.esm:10638E",
-    "kind": "activator",
-    "pos": [
-     -82150.0,
-     -514760.0
-    ],
-    "rot_z": 0.0,
-    "dz": 40.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the weir's catch (place record: fishing, 'the weir traps: eels and gar'): Skyrim's own deep-pond critter spawner, fish only, in the pool below the weir, its pond square clear of the weir's fences, the way Skyrim's streams give fish a player can catch"
-   },
-   {
-    "base": "King of the Murkmire.esp:05556C",
-    "kind": "static",
-    "pos": [
-     -82700.0,
-     -513430.0
-    ],
-    "rot_z": 0.8,
-    "dz": 48.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "static",
-    "pos": [
-     -82700.0,
-     -513430.0
-    ],
-    "rot_z": 0.8,
-    "scale": 0.6,
-    "on": "outpost-m11-m63.R094ZZC2PMXY45D7591NYHG2ZP",
-    "dz": 4.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's pale hide tent on its cypress platform (place record: look; source note: Ree-An-Wo's hide tents): King of the Murkmire's scale-hide tent"
-   },
-   {
-    "base": "King of the Murkmire.esp:05556C",
-    "kind": "static",
-    "pos": [
-     -82960.0,
-     -513660.0
-    ],
-    "rot_z": 0.8,
-    "dz": 30.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cypress platform of the wardens' camp on the mud bank (place record: look, 'pale hide tents on cypress platforms on a mud bank'): King of the Murkmire's cypress scaffold deck, as Ree-An-Wo's camp sets its tents"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "static",
-    "pos": [
-     -82960.0,
-     -513660.0
-    ],
-    "rot_z": 0.8,
-    "scale": 0.6,
-    "on": "outpost-m11-m63.E9M0AHKZT29T5SJDG9D65ZWMDM",
-    "dz": 4.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's pale hide tent on its cypress platform (place record: look; source note: Ree-An-Wo's hide tents): King of the Murkmire's scale-hide tent"
-   },
-   {
-    "base": "King of the Murkmire.esp:0D72B9",
-    "kind": "tree",
-    "pos": [
-     -82450.0,
-     -513650.0
-    ],
-    "rot_z": 0.0,
-    "scale": 0.5,
-    "tier": "AGENT_INVENTED",
-    "why": "the Hist-shoot post: a young shoot of Jal-Veesa's Hist the wardens keep at the camp (place record: source note, 'Still to add: ... the Hist-shoot post'): King of the Murkmire's smallest Hist, young"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA38",
-    "kind": "static",
-    "pos": [
-     -82409.0,
-     -513290.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the post the Hist shoot is tied to (place record: source note, 'the Hist-shoot post'): a cypress stake of King of the Murkmire's (MudHutWalkwayPole)"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA35",
-    "kind": "static",
-    "pos": [
-     -82200.0,
-     -514110.0
-    ],
-    "rot_z": 1.5708,
-    "dz": -95.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the landing: a plank jetty from the mud bank into the pool below the camp, by the cooking pot (place record: cooking-pot 'by the landing'; source note: 'Still to add: the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA35",
-    "kind": "static",
-    "pos": [
-     -82200.0,
-     -514360.0
-    ],
-    "rot_z": 1.5708,
-    "dz": -52.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the landing: a plank jetty from the mud bank into the pool below the camp, by the cooking pot (place record: cooking-pot 'by the landing'; source note: 'Still to add: the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -82780.0,
-     -513330.0
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -82860.0,
-     -513760.0
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -82820.0,
-     -513520.0
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll in the open beside the camp's tents: five wardens keep the weir (place record: population 5), so each has a bed"
-   }
-  ],
-  "drop": {
-   "King of the Murkmire.esp:046192": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
-   "King of the Murkmire.esp:046193": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
-   "King of the Murkmire.esp:046195": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
-   "King of the Murkmire.esp:046196": "a bog blight's ambush spot (King of the Murkmire's BogBlightAmbushFurniture, its quest's creatures): Reed-Sill's dangers are mudcrabs and a young crocodile (place record: dangers), and the drafter took the spot for a camp bed in the creek",
-   "King of the Murkmire.esp:04611C": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3E8": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:046119": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:04611A": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3F0": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3F2": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:046118": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3EB": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3EC": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3EF": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:04611B": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3E7": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:85A3F1": "a ruin column, chompy bust or bog beacon of the source's camp: Reed-Sill's record has pale hide tents on cypress platforms and no ruin or shrine (look)",
-   "King of the Murkmire.esp:03B511": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046147": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CAA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA4": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407E9": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:04618F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CBC": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:04614D": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB3": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407E6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9B": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046145": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B50A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046146": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:04618E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B510": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B50F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407E7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:04614A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407EA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B513": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C99": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B50E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C97": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407EE": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407ED": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C98": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB0": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA1": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9E": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9D": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CBB": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9A": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084C9F": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046190": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA7": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CBA": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA0": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407E5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:04614C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB5": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046197": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407E8": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B50B": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B50C": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:0407EC": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB1": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA2": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046148": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB4": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046144": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:046149": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA3": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CA6": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:03B4FD": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)",
-   "King of the Murkmire.esp:084CB2": "a piece of the source's trap field (vines, bones, a sleeping spot among the snares): Reed-Sill is a friendly weir camp whose record names no trap (dangers)"
-  },
-  "replace": {
-   "King of the Murkmire.esp:046191": {
-    "base": "Skyrim.esm:03B3CD",
-    "why": "King of the Murkmire's BogBlightAmbushFurniture is a bog blight's ambush spot with a bedroll's model; the one on the camp's bank is the wardens' bed, so it is a plain bedroll here (the four in the creek are dropped)"
-   }
-  },
   "plan": {
+   "source": "Ree-An-Wo (King of the Murkmire): its low cypress platform group on the south-west shore of the pool, four small decks with their ramps and planks over the water's edge, taken alone (draft wholesale --take 560) and set on our creek's north bank as the weir camp and its landing; the rest of the camp is Karsh-Naal Camp's and is not laid. The owner's rulings: main quest places get their closest match (2026-11-19); Reed-Sill and Karsh-Naal share Ree-An-Wo, each its own (2026-11-21).",
+   "differs": [
+    {
+     "place": "tribal-camp-m2-m68",
+     "takes": "Only the low cypress platform group at the south-west shore of Ree-An-Wo's pool (four small decks, their ramps and planks, within 560 units of its middle), where Karsh-Naal carries the whole camp round the pool.",
+     "turn_and_approach": "Turned 45 degrees, not 90, so the decks' water side faces our creek to the south; the player comes down the open mud bank from the north and sees the tents with the weir and the water beyond them.",
+     "landmark": "A woven fish weir across the head of the creek with a log walk along its top and grey moss on its fences: water and a crossing, where Karsh-Naal's landmark is its two stilt watch towers and longhouse.",
+     "prunes": "Both stilt watch towers, the ramp that climbed to them, the Xanmeer floor and busts, the fire camp's ground tents, the gas traps, the loot chest and the source's marsh trees and rocks round the pool are not laid.",
+     "adds": "The weir with its log walk and posts, pale hide tents set on the low decks themselves, the cooking pot and fire set at the landing deck by the water, the weir traps, Sithis' beard moss on the fences and the thief's sack in the reeds.",
+     "dressing_and_people": "Our own open riverbank plants instead of the source's cypress canopy, and no bones, cage or trophies; five weir-wardens sleep in the tents on the decks, work the weir walk and the landing and cook by the water, where Karsh-Naal's guards keep towers and a fire."
+    }
+   ],
    "look": [
     {
-     "line": "pale hide tents on cypress platforms on a mud bank",
-     "by": "2 added King of the Murkmire scale-hide tents (ALPAScaleTent03 at 0.6) each on a cypress scaffold deck (CypressStockadeScaffoldFloor01) on the north mud bank, a warden's bedroll in each"
+     "line": "pale hide tents",
+     "by": "three of Black Marsh's own small hide tents (Black Marsh.esm Tent, pale hide over poles), added one to a deck: Ree-An-Wo's scale-hide tents read dark, and its tents stood on the towers this place does not take"
+    },
+    {
+     "line": "on cypress platforms",
+     "by": "Ree-An-Wo's low cypress platform group kept as built (its decks on cypress posts, the ramp to its high deck and the ground ramp), the landing deck turned to close on the middle deck, a fourth deck of the same kit added to close the square"
+    },
+    {
+     "line": "on a mud bank",
+     "by": "our creek's north bank, kept as it is (no relief carried): the decks stand over its mud, the landing deck's posts in the water's edge"
     },
     {
      "line": "a woven weir across the creek",
-     "by": "6 added woven Saxhleel fences (ALPAFenceWoven04) set in the creek bed"
+     "by": "four of King of the Murkmire's woven Saxhleel fences set in the creek bed bank to bank across the creek's narrow head, west of the camp"
     },
     {
-     "line": "a log walk along its top",
-     "by": "2 added long cypress logs (CypressStockadeBridgeA03) along the fences"
+     "line": "with a log walk along its top",
+     "by": "two of King of the Murkmire's extra-long cypress log walks along the weir's top, each end on a bank"
     },
     {
-     "line": "long grey moss draped on its fences over the water",
-     "by": "3 added hanging moss (TreeFloraHangingMoss03) seated on the downstream fences"
+     "line": "and long grey moss draped on its fences over the water",
+     "by": "ten hanks of Skyrim's hanging moss hung on both faces of the weir's fences, draped from the log walk into the water"
     },
     {
-     "line": "the landing (source note) with the cooking pot by it (gives)",
-     "by": "2 added mud-hut walkways (MudHutWalkway01) from the bank into the pool; the Argonian cooking pot beside"
+     "line": "the landing and its cooking pot (source note)",
+     "by": "the landing deck at the water's edge with a fish basket and a lifted trap; Ree-An-Wo's own cook fire, cook stand and pot on the bank beside it"
     },
     {
-     "line": "the Hist-shoot post (source note)",
-     "by": "an added young Hist (HistTree05 at 0.5) in its sap pool, with a cypress stake beside it"
+     "line": "a Hist-shoot post stands at the landing (faith note)",
+     "by": "a young Hist shoot (King of the Murkmire HistTree05 at half size) tied to a cypress pole on the bank east of the landing decks; a cut shoot, so no sap pool (sap.none)"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "Skyrim's deep-pond fish spawner in the water below the weir; traps lifted on the landing and the log walk, a fish rack by the fire"
     },
     {
-     "line": "the hidden sack in the reeds (treasure x1)",
-     "by": "the added Thief's Sack at the waterline east of the weir"
+     "kind": "cooking-pot",
+     "by": "King of the Murkmire's cooking pot on its Argonian cook stand at the fire on the bank beside the landing"
     },
     {
-     "line": "the weir traps: eels and gar (fishing)",
-     "by": "Skyrim's deep-pond fish spawner below the weir"
+     "kind": "combat-creature",
+     "by": "quest 2's own placements (quests.jsonl): two young crocodiles in the shallows below the weir, two mudcrabs on the banks"
     },
     {
-     "line": "mudcrabs and a young crocodile (combat-creature x3)",
-     "by": "the quest places them (need judged)"
+     "kind": "treasure",
+     "by": "a flat sack hidden in the reeds at the south end of the log walk, on the far bank from the camp"
+    },
+    {
+     "kind": "harvest-rare",
+     "by": "the hanging moss on the weir's fences (Sithis' beard), picked from the log walk"
     }
    ],
    "structures": [
     {
-     "cluster": "s01,s03,s04,s06",
-     "what": "the source camp's Xanmeer columns, chompy busts and bog beacons",
-     "verdict": "dropped",
-     "why": "no ruin or shrine in the record: its camp is hide tents on cypress platforms"
-    },
-    {
-     "cluster": "s09",
-     "what": "the source's vine trap field (vines, pustule, bones, gas traps, a strongbox)",
-     "verdict": "dropped",
-     "why": "a friendly weir camp; its dangers name no trap; the treasure is the thief's sack"
-    },
-    {
-     "cluster": "s10",
-     "what": "gas traps and a gas fissure",
-     "verdict": "dropped",
-     "why": "the camp is safe"
-    },
-    {
-     "cluster": "s05",
-     "what": "Hist roots and a root-worm tunnel mouth in the marsh to the south-west",
+     "structure": "walls",
+     "what": "Ree-An-Wo's cypress stockade kit: the low platform decks on their posts, and the two stilt watch towers with their scale fences and the ramp up to them",
      "verdict": "kept",
-     "why": "an ordinary part of the marsh round a Hist-keeping camp; no building"
-    }
-   ],
-   "source": "The allocated source is already the camp near Loreisian (King of the Murkmire cluster -29,-29, camp-tribal, rank 2 of the card): the closest of the ranked sources to a two-warden camp of hide tents on platforms (Hunters Rest is a Nordic homestead, Ree-An-Wo a 31-building hamlet, Black Rose a ruin hamlet), so no switch is needed. Its ruin columns, busts, beacons and trap field are dropped; the tents on platforms, weir, log walk, moss, landing and Hist-shoot post are added from the pool.",
-   "gives": [
-    {
-     "kind": "fishing",
-     "by": "Skyrim's deep-pond fish spawner in the pool below the woven weir (draft.add), the weir's eel and gar traps"
+     "why": "kept in part: the twelve pieces of the low platform group are the camp's decks, kept as built; the towers, their fences and the ramp up to them were left outside the part taken or pruned by hand (Karsh-Naal Camp's landmark on this source; a weir camp of five keeps no watch towers)"
     },
     {
-     "kind": "cooking-pot",
-     "by": "King of the Murkmire's cooking pot by the landing (draft.add; place.json stations)"
+     "structure": "mine",
+     "what": "the source's mine piece",
+     "verdict": "dropped",
+     "why": "outside the part taken (--take 560); the record has no mine"
     },
     {
-     "kind": "combat-creature",
-     "by": "quest 2's own placements at a fixed level in quests.jsonl: two mudcrabs on the bank and two young crocodiles below the weir"
+     "cluster": "landing",
+     "what": "the low cypress platform group at the pool's south-west shore: three low decks, the ramp to the high deck, the ground ramp, the landing deck",
+     "verdict": "kept",
+     "why": "kept as built and relabelled as the wardens' camp and landing on our creek bank; the landing deck moved to close on the middle deck (its source planks screen pruned) so it is walked onto"
     },
     {
-     "kind": "treasure",
-     "by": "the Thief's Sack hidden in the reeds at the waterline east of the weir (draft.add), stocked at T1"
-    },
-    {
-     "kind": "harvest-rare",
-     "by": "three hanks of hanging moss (Sithis' beard) seated on the woven weir's fences (draft.add need 0), and the quest's own hank beside them"
+     "cluster": "w01",
+     "what": "the high cypress deck on its posts",
+     "verdict": "kept",
+     "why": "kept as built: the camp's high deck, now with a warden's tent; the ramp that climbed from it to the towers pruned"
     }
    ]
-  }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "foot not reaching the ground",
+    "why": "the 'feet' are the underside of the east deck's floor (CypressStockadeScaffoldFloor01), which stands on its own cypress post base (HPEA3GW2) as the source builds every deck, base below and floor on top; the unit table holds the floor apart from its base. probe --all: nothing floats; seen from E and N at eye level (151142399-0025)"
+   },
+   {
+    "unit": "dock.01",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own ramp from the middle low deck up to the high deck: its foot rests on its own post base (6MQGM5XW) beside the low deck, as Ree-An-Wo built it; seen from NE at eye level (151138012-0024): the ramp climbs from the low deck to the high deck"
+   },
+   {
+    "unit": "small.01",
+    "flag": "foot buried deeper than its leg",
+    "why": "the high deck's cypress post bases stand 88 into our bank, as Ree-An-Wo's posts stood in its mud (its bases at -110 under a -50 bank); posts going into the ground read as built; the deck stands 3 m over the bank"
+   },
+   {
+    "unit": "added.small.01",
+    "flag": "foot not reaching the ground",
+    "why": "the high deck's tent and its bedroll stand on the high deck's floor (top 387), not on the ground 3 m below; probe --all: nothing floats"
+   },
+   {
+    "unit": "QBWSJSRPF1J3",
+    "flag": "stands on: LOOK0340000",
+    "why": "the ground ramp lands on the east deck; the fourth deck that closes the square only touches its south rail at the corner, seen from above (151558492-0026): the walk up the ramp onto the east deck is open"
+   },
+   {
+    "unit": "2KZ0D8RPRFHQ",
+    "flag": "stands on: LOOK0460000",
+    "why": "the ramp up to the high deck runs beside the fifth deck, which closes on its east side; seen from above (154331971-0033) the ramp is clear from the middle deck to the high deck, the fifth deck and its tent beside it, not on it"
+   }
+  ],
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.6FVNJAGX5BA9R26921Y3DCDGXH",
+     "outpost-m11-m63.LOOK042PLACE"
+    ],
+    "why": "a pale hide tent set on its cypress deck, its poles' feet on the deck boards, as Ree-An-Wo sets its tents on its decks; seen at eye level from E and N (151142399-0025, 151138012-0024)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK037PLACE",
+     "outpost-m11-m63.6FVNJAGX5BA9R26921Y3DCDGXH"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK037PLACE",
+     "outpost-m11-m63.LOOK042PLACE"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK048PLACE",
+     "outpost-m11-m63.LOOK0460000"
+    ],
+    "why": "a pale hide tent set on its cypress deck, its poles' feet on the deck boards, as Ree-An-Wo sets its tents on its decks; seen at eye level from E and N (151142399-0025, 151138012-0024)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK048PLACE",
+     "outpost-m11-m63.LOOK038PLACE"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK038PLACE",
+     "outpost-m11-m63.LOOK0460000"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK0460000",
+     "outpost-m11-m63.LOOK0470000"
+    ],
+    "why": "the fifth deck's floor on its own cypress post base, base below and floor on top, as every deck of the source's kit is built"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK0340000",
+     "outpost-m11-m63.LOOK0350000"
+    ],
+    "why": "the fourth deck's floor on its own cypress post base, base below and floor on top, as every deck of the source's kit is built (the source's own pairs carry the same overlap)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK0340000",
+     "outpost-m11-m63.LOOK049PLACE"
+    ],
+    "why": "a pale hide tent set on its cypress deck, its poles' feet on the deck boards, as Ree-An-Wo sets its tents on its decks; seen at eye level from E and N (151142399-0025, 151138012-0024)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK0340000",
+     "outpost-m11-m63.LOOK039PLACE"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK049PLACE",
+     "outpost-m11-m63.LOOK039PLACE"
+    ],
+    "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK020PLACE",
+     "outpost-m11-m63.LOOK017PLACE"
+    ],
+    "why": "the log walk laid along the top of the woven weir's fences, which carry it: the weir is the fences with the walk on them (section 145744128-0017)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK021PLACE",
+     "outpost-m11-m63.LOOK019PLACE"
+    ],
+    "why": "the log walk laid along the top of the woven weir's fences, which carry it: the weir is the fences with the walk on them (section 145744128-0017)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK032PLACE",
+     "outpost-m11-m63.LOOK020PLACE"
+    ],
+    "why": "a lifted weir trap set down on the log walk's logs, its net frame resting on them (seen from the water below the weir, 150020188-0019)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK031PLACE",
+     "outpost-m11-m63.CTPG99Z82K1N8ZYDWPPBVPAAD8"
+    ],
+    "why": "a lifted weir trap set down on the landing deck, its frame on the boards"
+   }
+  ]
  },
  "fit": {
   "pivot": [
-   -113248.0,
-   -116983.6
+   -126530.8,
+   -118116.3
   ],
   "anchor": [
-   -80849.9,
-   -515522.6
+   -82123.9,
+   -513750.6
   ],
-  "rot_deg": 345.0,
-  "cost": 15.625,
-  "clusters": {
-   "landing": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s01": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s02": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80593.9,
-     -515010.6
-    ],
-    "rot": 6.02139,
-    "dx": 256.0,
-    "dy": 512.0,
-    "drot_deg": 0.0,
-    "cost_before": 1000.0,
-    "cost_after": 0.0
-   },
-   "s03": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80721.9,
-     -515394.6
-    ],
-    "rot": 6.02139,
-    "dx": 128.0,
-    "dy": 128.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s04": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80420.5,
-     -515862.0
-    ],
-    "rot": 6.15229,
-    "dx": 384.0,
-    "dy": -128.0,
-    "drot_deg": 7.5,
-    "cost_before": 150.0,
-    "cost_after": 0.0
-   },
-   "s05": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s06": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515778.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": -256.0,
-    "drot_deg": 0.0,
-    "cost_before": 821.429,
-    "cost_after": 0.0
-   },
-   "s07": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80721.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": 128.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s08": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s09": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80631.9,
-     -513545.0
-    ],
-    "rot": 5.23599,
-    "dx": 0.0,
-    "dy": 1280.0,
-    "drot_deg": -45.0,
-    "cost_before": 921.875,
-    "cost_after": 15.625
-   },
-   "s10": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80676.6,
-     -513962.5
-    ],
-    "rot": 6.54498,
-    "dx": 256.0,
-    "dy": 768.0,
-    "drot_deg": 30.0,
-    "cost_before": 312.5,
-    "cost_after": 0.0
-   },
-   "w01": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80977.9,
-     -515522.6
-    ],
-    "rot": 6.02139,
-    "dx": -128.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 100.0,
-    "cost_after": 0.0
-   },
-   "w02": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80849.9,
-     -515394.6
-    ],
-    "rot": 6.02139,
-    "dx": 0.0,
-    "dy": 128.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "w03": {
-    "pivot": [
-     -113248.0,
-     -116983.6
-    ],
-    "to": [
-     -80721.9,
-     -515266.6
-    ],
-    "rot": 6.02139,
-    "dx": 128.0,
-    "dy": 256.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   }
-  },
-  "separated": [],
-  "clusters_info": [
-   {
-    "id": "landing",
-    "kind": "landing",
-    "head": null,
-    "members": 5,
-    "centre": [
-     -114915.4,
-     -116110.8
-    ]
-   },
-   {
-    "id": "s01",
-    "kind": "street",
-    "head": null,
-    "members": 6,
-    "centre": [
-     -114632.9,
-     -115008.7
-    ]
-   },
-   {
-    "id": "s02",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -112565.8,
-     -116739.1
-    ]
-   },
-   {
-    "id": "s03",
-    "kind": "street",
-    "head": null,
-    "members": 6,
-    "centre": [
-     -112961.9,
-     -115272.1
-    ]
-   },
-   {
-    "id": "s04",
-    "kind": "street",
-    "head": null,
-    "members": 4,
-    "centre": [
-     -114900.9,
-     -117008.8
-    ]
-   },
-   {
-    "id": "s05",
-    "kind": "street",
-    "head": null,
-    "members": 10,
-    "centre": [
-     -118326.6,
-     -118026.2
-    ]
-   },
-   {
-    "id": "s06",
-    "kind": "street",
-    "head": null,
-    "members": 4,
-    "centre": [
-     -113635.9,
-     -117689.8
-    ]
-   },
-   {
-    "id": "s07",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -115965.2,
-     -116280.4
-    ]
-   },
-   {
-    "id": "s08",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -117319.9,
-     -118387.7
-    ]
-   },
-   {
-    "id": "s09",
-    "kind": "street",
-    "head": null,
-    "members": 79,
-    "centre": [
-     -113797.7,
-     -116202.8
-    ]
-   },
-   {
-    "id": "s10",
-    "kind": "street",
-    "head": null,
-    "members": 8,
-    "centre": [
-     -111717.8,
-     -116823.9
-    ]
-   },
-   {
-    "id": "w01",
-    "kind": "wet",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -112679.9,
-     -116001.1
-    ]
-   },
-   {
-    "id": "w02",
-    "kind": "wet",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -113365.8,
-     -117112.4
-    ]
-   },
-   {
-    "id": "w03",
-    "kind": "wet",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -112030.7,
-     -118710.2
-    ]
-   }
-  ],
+  "rot_deg": 45.0,
   "relief_norm": 64.0,
   "patch_max": 105.0
  },
@@ -945,24 +313,17 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m11-m63.PBF61HY6V53GZ8090HEFCFY3PB"
+    "outpost-m11-m63.LOOK013PLACE"
    ]
   },
-  "missing": [],
   "added": [],
-  "rent_bed": null
+  "missing": []
  },
  "lights": {
   "added": []
  },
  "hang": {
-  "added": [
-   {
-    "id": "outpost-m11-m63.hang.ZG6W1R67PYP08B8M1YQ1MSTJM5.0",
-    "base": "King of the Murkmire.esp:1A845D",
-    "on": "outpost-m11-m63.ZG6W1R67PYP08B8M1YQ1MSTJM5"
-   }
-  ]
+  "added": []
  },
  "ground": {
   "bundle": "ground.outpost-m11-m63",
@@ -973,7 +334,7 @@
   "bundle": "src.kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
   "stamp": "28927c19e386e2c7"
  },
- "radius_m": 85,
+ "radius_m": 55,
  "counts": {
   "source_refs": 224,
   "placed": 20,
@@ -993,11 +354,42 @@
  },
  "draft_key": "4719e555cf84fdd2",
  "sap": {
-  "added": [
+  "added": [],
+  "none": [
    {
-    "id": "outpost-m11-m63.sap.K4G3JJWT6J12E3CHEYZ37VRK1Z",
-    "on": "K4G3JJWT6J12E3CHEYZ37VRK1Z"
+    "on": "outpost-m11-m63.LOOK057PLACE",
+    "why": "the Hist-shoot post: a cut shoot of Jal-Veesa's Hist tied to its post at the landing (record faith note), not a rooted tree, so it holds no sap pool; the stage would put one 7 m off on the bank, which reads as nothing of the shoot's"
    }
   ]
- }
+ },
+ "wholesale": {
+  "offset": 110.0,
+  "band": 512.0,
+  "pieces": 32,
+  "dropped": 445,
+  "raised_max": 0.0,
+  "lowered_max": -0.0,
+  "band_steepest_deg": 0.0,
+  "source_water_area_m2": 120,
+  "held_by_water": 0,
+  "take": 560.0,
+  "laid": "2026-11-21T14:46:50Z"
+ },
+ "agent_saves_applied": [
+  "agent-20261121T144825",
+  "agent-20261121T145216",
+  "agent-20261121T145605",
+  "agent-20261121T145859",
+  "agent-20261121T145940",
+  "agent-20261121T150126",
+  "agent-20261121T150308",
+  "agent-20261121T151226",
+  "agent-20261121T151747",
+  "agent-20261121T152813",
+  "agent-20261121T153500",
+  "agent-20261121T154103",
+  "agent-20261121T155000",
+  "agent-20261121T160846",
+  "agent-20261121T161609"
+ ]
 }

@@ -250,6 +250,11 @@ class Scene:
 
     def piece(self, r: dict) -> dict | None:
         base = self.bases.get(r["base"])
+        if base is None:   # a base a hand placed from the whole pool (look place): the catalogue's row
+            from tools.places.draft_bundle import catalogue
+            base = catalogue().get(r["base"])
+            if base is not None:
+                self.bases[r["base"]] = base
         if base is None:
             return {"id": r["id"], "base": r["base"], "kind": r.get("kind"), "cluster": r.get("cluster"), "edid": None,
                     "model": None, "missing": True, "resolved": False, "m": xform.matrix(r["pos"], r.get("rot") or [0, 0, 0], r.get("scale", 1)),

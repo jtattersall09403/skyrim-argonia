@@ -3722,7 +3722,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian camp of hide tents and hide fences on cypress platforms and walkways by water, with no interior; its hide tents, bedrolls, campfire and cook spot make up the Naga camp. Its cypress platforms are the watch towers, a Xanmeer ruin stands in the middle of the camp, and the Naga loot chest stands by the cook fire. The longhouse and its cellar come from Dushnikh Yal (Skyrim): the Naga longhouse, where the pay and the stolen goods lie, on a knoll at the camp's east edge, reached by old Xanmeer steps. Reed-Sill Weir keeps one small platform of Ree-An-Wo's tents by its weir, and Ayiin is rebuilt in squared stone; Karsh-Naal uses the whole camp with its watch towers, with bone totems and trophies added. Added to the source: a fire pit before the longhouse, the stacked jars of sap by the longhouse wall, a pole of trophies, Skyrim's long metal cage at the camp's west edge and a covered boat on the creek bank.",
+     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian camp of hide tents and hide fences on cypress platforms and walkways by water, with no interior; its dark hide tents, bedrolls, campfire and cook spot make up the Naga camp. Its cypress platforms are the watch towers, a Xanmeer ruin stands in the middle of the camp, and the Naga loot chest stands by the cook fire. The longhouse and its cellar come from Dushnikh Yal (Skyrim): the Naga longhouse, where the pay and the stolen goods lie, on a knoll at the camp's east edge, reached by old Xanmeer steps. Reed-Sill Weir keeps only Ree-An-Wo's low cypress decks by its weir, and Ayiin is rebuilt in squared stone; Karsh-Naal uses the whole camp with its watch towers, with bone totems and trophies added. Added to the source: a fire pit before the longhouse, the stacked jars of sap by the longhouse wall, a pole of trophies, Skyrim's long metal cage at the camp's west edge and a covered boat on the creek bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5872,7 +5872,7 @@
    "status": "inhabited",
    "held_by": "Veesa-Teeleel weir-wardens",
    "population": 5,
-   "footprint_radius_m": 40,
+   "footprint_radius_m": 55,
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 1,
@@ -5925,7 +5925,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six or so wardens live here in hide tents on cypress platforms around a log weir with a landing, running the eel and fish traps that supply Jal-Veesa's market.",
+     "text": "Five wardens live here in hide tents on cypress platforms beside a woven weir and a landing, running the eel and fish traps that supply Jal-Veesa's market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6072,7 +6072,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian camp of hide tents and hide fences on cypress platforms and walkways by water, with no interior; one small platform of its pale tents, with its landing and its cooking pot, is the weir camp on the mud bank. Nothing in it is Nordic; the rest of the camp is dropped. Unlike Karsh-Naal Camp, which takes the whole camp with its watch towers and dresses it with bone totems, and Ayiin, rebuilt there in squared stone, Reed-Sill keeps a single platform beside its weir on the creek. Still to add: the woven weir across the creek with a log walk along its top, the long grey moss draped on the weir's fences over the water and the hidden sack in the reeds.",
+     "text": "Its main source, Ree-An-Wo (King of the Murkmire), is an Argonian camp of hide tents and hide fences on cypress platforms and walkways round a pool, with no rooms to enter. Reed-Sill Weir is built from Ree-An-Wo's low cypress decks on the shore of the pool and the landing among them, set on the creek's mud bank. Ree-An-Wo's own tents stand on its watch towers, which Reed-Sill does not take. The pale hide tents on Reed-Sill's decks are Black Marsh's own, and Ree-An-Wo's fire and cooking pot are laid beside the landing. None of these pieces is Nordic, and the rest of Ree-An-Wo is left out. Karsh-Naal Camp takes the whole camp with its watch towers, its Xanmeer ruin and its dark tents, and dresses it with bone totems, and Ayiin is rebuilt there in squared stone. Reed-Sill keeps only a few low decks beside its weir on the creek. Still to add: the woven weir across the creek with a log walk along its top, the long grey moss draped on the weir's fences over the water, the Hist-shoot post at the landing and the hidden sack in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

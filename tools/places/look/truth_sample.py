@@ -15,6 +15,14 @@ from tools.places.look import capture, geom, verbs
 
 TOL = 0.05   # the silhouette's centre within this share of the frame of the box's projected centre
 SEEN = 0.9   # ... when the capture sees at least this share of the piece (else what hides it moves the centre)
+SPARSE = 0.25  # ... and its drawn pixels fill at least this share of its box's projection: an alpha-cut plant (hanging
+               # moss, fronds) whose quads are mostly see-through draws a silhouette whose middle is not its box's
+
+
+def judged(out: float, seen: float, off: float, fill: float) -> bool:
+    """Drawn where its box is: (almost) no pixel outside the box's projection, and the silhouette centred on the box's
+    unless the piece is partly hidden or drawn sparsely inside its box (alpha-cut foliage)."""
+    return out <= 0.01 and (seen < SEEN or off <= TOL or (out == 0.0 and fill < SPARSE))
 # effects (fire, mist, glows) are never drawn by the viewer (objects.js isEffect): not sampled, counted in the census
 EFFECT = re.compile(r"^effects[\\/]|(^|[\\/])fx[^\\/]*\.nif$", re.I)
 
@@ -72,8 +80,9 @@ def run(d, place, n, check):
             sil = [(xs.min() + xs.max()) / 2, (ys.min() + ys.max()) / 2]
             box = [(bx[0] + bx[2]) / 2, (bx[1] + bx[3]) / 2]
             off = max(abs(sil[0] - box[0]) / w, abs(sil[1] - box[1]) / h)
-            ok = out <= 0.01 and (seen < SEEN or off <= TOL)
-            why = (f"{out:.1%} of its pixels outside its box's projection; seen {seen:.0%}, silhouette centre {off:.1%} "
+            fill = float(m.sum()) / max(1.0, (bx[2] - bx[0]) * (bx[3] - bx[1]))
+            ok = judged(out, seen, off, fill)
+            why = (f"{out:.1%} of its pixels outside its box's projection; seen {seen:.0%}, fills {fill:.0%} of it, silhouette centre {off:.1%} "
                    f"of the frame from the box's ({p.get('edid')}, {p.get('model')})")
         rows.append({"id": p["id"], "kind": p.get("kind"), "ok": ok, "why": why, "png": res["png"]})
         check("B sample", f"{p['id']} ({p.get('kind')}): drawn where its box is", ok, why, png=res["png"])

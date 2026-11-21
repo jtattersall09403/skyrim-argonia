@@ -1,0 +1,74 @@
+{
+ "save_id": "agent-20261121T145216",
+ "place_id": "outpost-m11-m63",
+ "name": "two pale hide tents (Black Marsh's own small hide tent) on the high deck and the east low deck",
+ "at": "2026-11-21T14:52:16Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK006PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -82345.9,
+     -513421.6,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the high cypress deck: a weir-warden's sleeping tent (record look: pale hide tents on cypress platforms)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T14:52:16Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK007PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -81890.9,
+     -513797.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the east low cypress deck by the water: a weir-warden's sleeping tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T14:52:16Z"
+  }
+ ]
+}
