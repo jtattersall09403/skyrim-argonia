@@ -17,7 +17,7 @@ stood on, as a land patch (`by` "ground" rows of land.jsonl) blended into our gr
   (the anchor and the pivot when the edge holds too little dry ground), so a mound stays a mound and the edge
   meets our ground with the least to blend; the change is that target minus our ground, times the
   blend weight (1 in the footprint, a smoothstep down to 0 across the band).
-- Limits: no change larger than CAP; no point carried across our water line (ground under our water stays under,
+- Limits: no change larger than CAP (or the place's `draft.ground_cap`); no point carried across our water line (ground under our water stays under,
   dry ground stays WATERLINE_GAP over it); the source's water is not brought: where the source's ground lay under its
   own water the change fades to nothing (the area is reported: pieces that stood in water there need a decision);
   no vertex of a cell another place's land rows hold. The ground is reckoned from the ground bundle and this place's
@@ -281,8 +281,9 @@ def plan(st, other_places: Path | None = None) -> tuple[list[dict], dict]:
         sh = math.dist(cf["to"], fit["anchor"]) if cf["pivot"] == fit.get("pivot") else 0.0
         if sh > 1 or abs(float(cf.get("rot", main_rot)) - main_rot) > 1e-4:
             apart.append({"cluster": cid, "shift": round(sh), "on": "its own map"})
+    cap = float((st.place.get("draft") or {}).get("ground_cap") or CAP)   # a place may hold its ground nearer ours
     rows, rep = carry(G0, st.S, fit["pivot"], fit["anchor"], float(fit.get("rot_deg", 0.0)), pieces,
-                      centre, radius, taken, maps=maps or None)
+                      centre, radius, taken, cap=cap, maps=maps or None)
     rep["clusters_apart"] = apart
     return rows, rep
 

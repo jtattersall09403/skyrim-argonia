@@ -1,0 +1,8737 @@
+{
+ "save_id": "agent-20261121T070844",
+ "place_id": "jal-veesa",
+ "name": "connections: every house, dock and span back at its own height before the cluster rejoin (the new ground had re-seated pieces one by one), each dock and span then raised or lowered whole so its ends meet what they met in the source (bridge.07 at dock.14 was 54 off), the Carpenter's stair lowered 115 to dock.09 where its head stood in the source; all pinned",
+ "at": "2026-11-21T07:08:44Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.56BXJA8X5HEKH1QSHQ3D849RF1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58757.65,
+     -508865.22,
+     543.54
+    ],
+    "rot": [
+     0.0,
+     0.25236,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 82.817
+    }
+   },
+   "after": {
+    "pos": [
+     -58757.65,
+     -508865.22,
+     520.14
+    ],
+    "rot": [
+     0.0,
+     0.25236,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 58.087
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.PTKRN30777A2TWYHQSTMWHB9YC",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58420.69,
+     -508279.69,
+     700.53
+    ],
+    "rot": [
+     6.01337,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -421.8,
+      -136.7,
+      424.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 176.779
+    }
+   },
+   "after": {
+    "pos": [
+     -58420.69,
+     -508279.69,
+     690.225
+    ],
+    "rot": [
+     6.01337,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -421.8,
+      -136.7,
+      424.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 184.929
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.04ABRQX4YWWCN57JJY4N8B3A0W",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58420.69,
+     -507221.68,
+     708.08
+    ],
+    "rot": [
+     0.21745,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -421.8,
+      -136.7,
+      424.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 137.611
+    }
+   },
+   "after": {
+    "pos": [
+     -58420.69,
+     -507221.68,
+     714.98
+    ],
+    "rot": [
+     0.21745,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -421.8,
+      -136.7,
+      424.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 144.451
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J7MMY7GY85JSE2GR7FSNG8JV9K",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -57643.49,
+     -507754.31,
+     895.99
+    ],
+    "rot": [
+     0.0,
+     0.18255,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -613.8,
+      -136.7,
+      616.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 364.109
+    }
+   },
+   "after": {
+    "pos": [
+     -57643.49,
+     -507754.31,
+     917.293
+    ],
+    "rot": [
+     0.0,
+     0.18255,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -613.8,
+      -136.7,
+      616.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 384.869
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.HEZ6AD7P3B0VFDXER8QY1GJ64S",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56107.08,
+     -506382.19,
+     1015.28
+    ],
+    "rot": [
+     6.19592,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 266.71
+    }
+   },
+   "after": {
+    "pos": [
+     -56107.08,
+     -506382.19,
+     999.381
+    ],
+    "rot": [
+     6.19592,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 247.51
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MMRA83VEK5YJWEQWG4ZS48YSSV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52748.35,
+     -505568.38,
+     943.01
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 477.852
+    }
+   },
+   "after": {
+    "pos": [
+     -52748.35,
+     -505568.38,
+     970.107
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 504.792
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YEXHES44BRTPYKFJ0HJEBNNFYD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52483.09,
+     -505571.58,
+     977.05
+    ],
+    "rot": [
+     0.0,
+     0.08727,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 537.752
+    }
+   },
+   "after": {
+    "pos": [
+     -52483.09,
+     -505571.58,
+     1004.148
+    ],
+    "rot": [
+     0.0,
+     0.08727,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 561.402
+    }
+   },
+   "n": 7,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.HC86FVBP47W780JNJYSYWX3Q16",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52883.18,
+     -505913.82,
+     896.7
+    ],
+    "rot": [
+     6.02139,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 418.788
+    }
+   },
+   "after": {
+    "pos": [
+     -52883.18,
+     -505913.82,
+     923.798
+    ],
+    "rot": [
+     6.02139,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 443.798
+    }
+   },
+   "n": 8,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KCS7WCP3BEBC3GEBB91YG7G3WJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52213.86,
+     -505568.38,
+     982.27
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 560.191
+    }
+   },
+   "after": {
+    "pos": [
+     -52213.86,
+     -505568.38,
+     1009.373
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 602.061
+    }
+   },
+   "n": 9,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.JG3QF14FHRWGPJ7X37N7BB7MJZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52804.24,
+     -506538.93,
+     390.44
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.24956
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -20.218
+    }
+   },
+   "after": {
+    "pos": [
+     -52804.24,
+     -506538.93,
+     417.539
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.24956
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -22.278
+    }
+   },
+   "n": 10,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.ADYEX0C1WCEJHERV1KWW56QKGS",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52809.51,
+     -506511.93,
+     434.26
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.98319
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "ground",
+     "dz": 22.478
+    }
+   },
+   "after": {
+    "pos": [
+     -52809.51,
+     -506511.93,
+     461.358
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.98319
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "ground",
+     "dz": 20.378
+    }
+   },
+   "n": 11,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VAG7A54MZ89HYCNP1QE2EM0G1P",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52798.26,
+     -506637.85,
+     369.7
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -37.792
+    }
+   },
+   "after": {
+    "pos": [
+     -52798.26,
+     -506637.85,
+     396.805
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -38.492
+    }
+   },
+   "n": 12,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WP0S0J3XRB3SJCJ1154C4S8Z8D",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52494.63,
+     -506189.91,
+     1047.72
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.70866
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.Z1FAQQM066ZQ4F5H88HTXP0BZM",
+     "dz": 153.67
+    }
+   },
+   "after": {
+    "pos": [
+     -52494.63,
+     -506189.91,
+     1068.416
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.70866
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.Z1FAQQM066ZQ4F5H88HTXP0BZM",
+     "dz": 183.06
+    }
+   },
+   "n": 13,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KZKX0BGXR3AAZFBNDCF8TC7W6F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -53183.04,
+     -505940.51,
+     1182.66
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.53,
+    "seat": {
+     "mode": "above",
+     "dz": 710.66
+    }
+   },
+   "after": {
+    "pos": [
+     -53183.04,
+     -505940.51,
+     1209.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.53,
+    "seat": {
+     "mode": "above",
+     "dz": 737.76
+    }
+   },
+   "n": 14,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5E9CSKQ3YXV05NK9FRQ2T46RPN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52811.79,
+     -506709.78,
+     369.7
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -36.714
+    }
+   },
+   "after": {
+    "pos": [
+     -52811.79,
+     -506709.78,
+     396.795
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -39.204
+    }
+   },
+   "n": 15,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NDX8Z6950908QXQWKZVVSAHE9Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52822.79,
+     -506812.38,
+     369.7
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -41.085
+    }
+   },
+   "after": {
+    "pos": [
+     -52822.79,
+     -506812.38,
+     396.798
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -38.215
+    }
+   },
+   "n": 16,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.SFPVSFCHT4Q9KG081DWSB0S6K0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52845.76,
+     -505541.36,
+     405.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.MMRA83VEK5YJWEQWG4ZS48YSSV",
+     "dz": -537.9
+    }
+   },
+   "after": {
+    "pos": [
+     -52845.76,
+     -505541.36,
+     432.207
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.MMRA83VEK5YJWEQWG4ZS48YSSV",
+     "dz": -537.9
+    }
+   },
+   "n": 17,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KKTX7YYBGW9TBB5GD0KWFB2Q0Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52969.92,
+     -505578.41,
+     471.61
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.9
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": -1.875
+    }
+   },
+   "after": {
+    "pos": [
+     -52969.92,
+     -505578.41,
+     498.708
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.9
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 21.485
+    }
+   },
+   "n": 18,
+   "stroke": 6,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VH9XAT727A4V6C8BVZX6B3760A",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51707.86,
+     -506492.49,
+     908.84
+    ],
+    "rot": [
+     0.0,
+     0.17453,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 198.129
+    }
+   },
+   "after": {
+    "pos": [
+     -51707.86,
+     -506492.49,
+     908.841
+    ],
+    "rot": [
+     0.0,
+     0.17453,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 284.449
+    }
+   },
+   "n": 19,
+   "stroke": 7,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GMS1NH6DRSH3FCH0F9GP6J0J4N",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51123.31,
+     -506049.89,
+     957.08
+    ],
+    "rot": [
+     6.10865,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 195.354
+    }
+   },
+   "after": {
+    "pos": [
+     -51123.31,
+     -506049.89,
+     957.084
+    ],
+    "rot": [
+     6.10865,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -229.8,
+      -136.7,
+      232.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 181.084
+    }
+   },
+   "n": 20,
+   "stroke": 8,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Y3N7A9H4XTZF4BXACGR81WQQGB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49507.16,
+     -506086.68,
+     790.16
+    ],
+    "rot": [
+     6.08244,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -613.8,
+      -136.7,
+      616.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 143.498
+    }
+   },
+   "after": {
+    "pos": [
+     -49507.16,
+     -506086.68,
+     793.66
+    ],
+    "rot": [
+     6.08244,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -613.8,
+      -136.7,
+      616.8,
+      130.4
+     ],
+     "mode": "clear",
+     "dz": 146.998
+    }
+   },
+   "n": 21,
+   "stroke": 9,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.E1Q1KN308CRYHY8DVFATPBMDRX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -59099.02,
+     -508992.86,
+     482.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 24.655
+    }
+   },
+   "after": {
+    "pos": [
+     -59099.02,
+     -508992.86,
+     443.598
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": -14.935
+    }
+   },
+   "n": 22,
+   "stroke": 10,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6W711XC9K7K9WMQTCWRYGXNG6D",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -59099.02,
+     -508738.86,
+     482.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 25.464
+    }
+   },
+   "after": {
+    "pos": [
+     -59099.02,
+     -508738.86,
+     443.597
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": -13.766
+    }
+   },
+   "n": 23,
+   "stroke": 10,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.02VANHC4KKTHD70M92TT6WA2SH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58288.8,
+     -507749.57,
+     786.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 256.146
+    }
+   },
+   "after": {
+    "pos": [
+     -58288.8,
+     -507749.57,
+     791.497
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 279.546
+    }
+   },
+   "n": 24,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58542.79,
+     -507749.57,
+     786.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 277.162
+    }
+   },
+   "after": {
+    "pos": [
+     -58542.79,
+     -507749.57,
+     791.502
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 294.842
+    }
+   },
+   "n": 25,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6P4S3T1752NKM163PC4BKT5Y03",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58563.47,
+     -507745.74,
+     802.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 16.2
+    }
+   },
+   "after": {
+    "pos": [
+     -58563.47,
+     -507745.74,
+     807.702
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 16.2
+    }
+   },
+   "n": 26,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J17MYCT6CTP83A2XF8NHFSGPEW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58511.31,
+     -507807.91,
+     929.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 143.13
+    }
+   },
+   "after": {
+    "pos": [
+     -58511.31,
+     -507807.91,
+     934.632
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 143.13
+    }
+   },
+   "n": 27,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5V57GZ6H4R17TN8N9CD1BD7C09",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58510.97,
+     -507810.89,
+     798.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 12.45
+    }
+   },
+   "after": {
+    "pos": [
+     -58510.97,
+     -507810.89,
+     803.952
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.4557B2CX6103V9A5K34S3RNTS4",
+     "dz": 12.45
+    }
+   },
+   "n": 28,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GG8ZVWV2V0X4GSJS8T9FNK9F5G",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58533.28,
+     -507835.75,
+     957.95
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.J17MYCT6CTP83A2XF8NHFSGPEW",
+     "dz": 28.72
+    }
+   },
+   "after": {
+    "pos": [
+     -58533.28,
+     -507835.75,
+     963.352
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.J17MYCT6CTP83A2XF8NHFSGPEW",
+     "dz": 28.72
+    }
+   },
+   "n": 29,
+   "stroke": 11,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9XNDM4D357X222FVC2EV5MT6WR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58413.73,
+     -506772.31,
+     591.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 52.565
+    }
+   },
+   "after": {
+    "pos": [
+     -58413.73,
+     -506772.31,
+     614.194
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 74.955
+    }
+   },
+   "n": 30,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.DN3JXTZT7FNCXCKCYF7679ZMPV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58413.73,
+     -506143.36,
+     591.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 133.934
+    }
+   },
+   "after": {
+    "pos": [
+     -58413.73,
+     -506143.36,
+     614.191
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 157.314
+    }
+   },
+   "n": 31,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CTSFZY80A2ESAX4ZBDEC9DK9CB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58413.73,
+     -506519.43,
+     591.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "above",
+     "dz": 59.495
+    }
+   },
+   "after": {
+    "pos": [
+     -58413.73,
+     -506519.43,
+     614.19
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "above",
+     "dz": 81.905
+    }
+   },
+   "n": 32,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BBAMSPB4VYK0VX4ZMWWE4Z308E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58413.73,
+     -506264.13,
+     591.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      0.0,
+      -126.8,
+      128.0,
+      130.7
+     ],
+     "mode": "above",
+     "dz": 127.897
+    }
+   },
+   "after": {
+    "pos": [
+     -58413.73,
+     -506264.13,
+     614.192
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      0.0,
+      -126.8,
+      128.0,
+      130.7
+     ],
+     "mode": "above",
+     "dz": 151.087
+    }
+   },
+   "n": 33,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q5MTE90W87RAYB3RRGFJFGW3RE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58399.64,
+     -506023.63,
+     543.56
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -86.3,
+      -76.6,
+      86.2,
+      77.2
+     ],
+     "mode": "on",
+     "on": "jal-veesa.DN3JXTZT7FNCXCKCYF7679ZMPV",
+     "dz": -47.83
+    }
+   },
+   "after": {
+    "pos": [
+     -58399.64,
+     -506023.63,
+     566.361
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -86.3,
+      -76.6,
+      86.2,
+      77.2
+     ],
+     "mode": "on",
+     "on": "jal-veesa.DN3JXTZT7FNCXCKCYF7679ZMPV",
+     "dz": -47.83
+    }
+   },
+   "n": 34,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5G1E0AG2T46NT3MC7RNZH75Y0Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58462.23,
+     -506169.21,
+     503.89
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -23.8,
+      -20.7,
+      36.8,
+      37.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": -13.45
+    }
+   },
+   "after": {
+    "pos": [
+     -58462.23,
+     -506169.21,
+     526.687
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -23.8,
+      -20.7,
+      36.8,
+      37.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": 12.69
+    }
+   },
+   "n": 35,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.973T94ZDCETENTTG4F5F2VSBBM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58358.78,
+     -506179.44,
+     505.69
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -23.8,
+      -20.7,
+      36.8,
+      37.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": -11.65
+    }
+   },
+   "after": {
+    "pos": [
+     -58358.78,
+     -506179.44,
+     528.487
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -23.8,
+      -20.7,
+      36.8,
+      37.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": 14.49
+    }
+   },
+   "n": 36,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J0RKPYK6FPDN18M6JKXDBFJBCJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58415.91,
+     -506617.61,
+     503.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": -13.95
+    }
+   },
+   "after": {
+    "pos": [
+     -58415.91,
+     -506617.61,
+     526.187
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.V64ABB7NYXSHE4D969B7AYJKJD",
+     "dz": 12.19
+    }
+   },
+   "n": 37,
+   "stroke": 12,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WBYBK1JP4277NAZ2HD5ZJVVFJN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58415.79,
+     -508736.74,
+     582.81
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 132.854
+    }
+   },
+   "after": {
+    "pos": [
+     -58415.79,
+     -508736.74,
+     562.209
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 110.584
+    }
+   },
+   "n": 38,
+   "stroke": 13,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.P9M44BPDXQCYBTKMFGC6SPD71B",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58415.8,
+     -508990.74,
+     582.81
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 133.576
+    }
+   },
+   "after": {
+    "pos": [
+     -58415.8,
+     -508990.74,
+     562.207
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 109.966
+    }
+   },
+   "n": 39,
+   "stroke": 13,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.F1BTR5CV6PH3TMCCEKMD1N3MV8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58417.01,
+     -509011.08,
+     599.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 0.9,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.P9M44BPDXQCYBTKMFGC6SPD71B",
+     "dz": 16.3
+    }
+   },
+   "after": {
+    "pos": [
+     -58417.01,
+     -509011.08,
+     578.507
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 0.9,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.P9M44BPDXQCYBTKMFGC6SPD71B",
+     "dz": 16.3
+    }
+   },
+   "n": 40,
+   "stroke": 13,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.X3DFXQ8SZ87077E5RQGFNX0CVR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58300.68,
+     -508862.58,
+     599.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.9,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.WBYBK1JP4277NAZ2HD5ZJVVFJN",
+     "dz": 16.3
+    }
+   },
+   "after": {
+    "pos": [
+     -58300.68,
+     -508862.58,
+     578.509
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.9,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.WBYBK1JP4277NAZ2HD5ZJVVFJN",
+     "dz": 16.3
+    }
+   },
+   "n": 41,
+   "stroke": 13,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.N4F3DA1J5X6VNTGE9P8MNPQ2M7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -57005.85,
+     -507752.03,
+     978.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 480.973
+    }
+   },
+   "after": {
+    "pos": [
+     -57005.85,
+     -507752.03,
+     1015.432
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 531.413
+    }
+   },
+   "n": 42,
+   "stroke": 14,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0W8YDRG1V37TGPNHQQ5ZRXVDB0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56319.15,
+     -504655.96,
+     1029.74
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.6,
+      128.0,
+      132.0
+     ],
+     "mode": "above",
+     "dz": 146.212
+    }
+   },
+   "after": {
+    "pos": [
+     -56319.15,
+     -504655.96,
+     997.937
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.6,
+      128.0,
+      132.0
+     ],
+     "mode": "above",
+     "dz": 111.462
+    }
+   },
+   "n": 43,
+   "stroke": 15,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56335.38,
+     -505743.91,
+     972.19
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 11.117
+    }
+   },
+   "after": {
+    "pos": [
+     -56335.38,
+     -505743.91,
+     940.391
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": -20.863
+    }
+   },
+   "n": 44,
+   "stroke": 15,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56335.38,
+     -505103.91,
+     972.19
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": 23.971
+    }
+   },
+   "after": {
+    "pos": [
+     -56335.38,
+     -505103.91,
+     940.392
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ],
+     "mode": "above",
+     "dz": -34.919
+    }
+   },
+   "n": 45,
+   "stroke": 15,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BE2F3M4QFRFWPC66WC0WKA9BRX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56106.78,
+     -506115.86,
+     1034.97
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 289.019
+    }
+   },
+   "after": {
+    "pos": [
+     -56106.78,
+     -506115.86,
+     1003.173
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 252.969
+    }
+   },
+   "n": 46,
+   "stroke": 15,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GV4N0GVP3M77HSNCVBRXPB7FMB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56623.76,
+     -507752.03,
+     969.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      0.0,
+      -126.8,
+      128.0,
+      130.7
+     ],
+     "mode": "clear",
+     "dz": 475.208
+    }
+   },
+   "after": {
+    "pos": [
+     -56623.76,
+     -507752.03,
+     969.535
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      0.0,
+      -126.8,
+      128.0,
+      130.7
+     ],
+     "mode": "clear",
+     "dz": 480.948
+    }
+   },
+   "n": 47,
+   "stroke": 16,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EFQ4CJPX6JKF81P5ZTKH7V2B6X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56369.15,
+     -507752.03,
+     969.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "clear",
+     "dz": 472.517
+    }
+   },
+   "after": {
+    "pos": [
+     -56369.15,
+     -507752.03,
+     969.527
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "clear",
+     "dz": 476.377
+    }
+   },
+   "n": 48,
+   "stroke": 16,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.R0EAPQAYFCWMC02C1J4B7S6HPX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56116.08,
+     -507752.03,
+     969.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 474.033
+    }
+   },
+   "after": {
+    "pos": [
+     -56116.08,
+     -507752.03,
+     969.529
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 479.303
+    }
+   },
+   "n": 49,
+   "stroke": 16,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KZBKTWC3GM21JYYG4DQFFEDP20",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55807.38,
+     -505567.91,
+     1054.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 289.912
+    }
+   },
+   "after": {
+    "pos": [
+     -55807.38,
+     -505567.91,
+     1054.005
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 276.522
+    }
+   },
+   "n": 50,
+   "stroke": 17,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.FBNF8MFJDHKNY21PJF0G7S67W4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55675.55,
+     -505666.63,
+     1070.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 514.365
+    }
+   },
+   "after": {
+    "pos": [
+     -55675.55,
+     -505666.63,
+     1070.203
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 510.255
+    }
+   },
+   "n": 51,
+   "stroke": 17,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1RYD28J0VMXTPFARVHHD8CK7VP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55675.55,
+     -505464.75,
+     1070.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 505.147
+    }
+   },
+   "after": {
+    "pos": [
+     -55675.55,
+     -505464.75,
+     1070.205
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 497.237
+    }
+   },
+   "n": 52,
+   "stroke": 17,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.KQ21R8XPADA30MMSV13CH3X45R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52884.04,
+     -506173.61,
+     881.09
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 474.002
+    }
+   },
+   "after": {
+    "pos": [
+     -52884.04,
+     -506173.61,
+     853.991
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 400.872
+    }
+   },
+   "n": 53,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52884.03,
+     -506429.61,
+     881.09
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 467.613
+    }
+   },
+   "after": {
+    "pos": [
+     -52884.03,
+     -506429.61,
+     853.986
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 406.843
+    }
+   },
+   "n": 54,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.DPQC1JJB93CBKKQ35B7945AXHT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52991.59,
+     -506303.88,
+     897.19
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -52991.59,
+     -506303.88,
+     870.086
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 16.1
+    }
+   },
+   "n": 55,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RDB06S6RJESD67EQMK6KVJ58PH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52944.29,
+     -506421.18,
+     936.47
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.9
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -33.2,
+      -30.1,
+      33.2,
+      29.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 55.38
+    }
+   },
+   "after": {
+    "pos": [
+     -52944.29,
+     -506421.18,
+     909.366
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.9
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -33.2,
+      -30.1,
+      33.2,
+      29.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 55.38
+    }
+   },
+   "n": 56,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9Y6HXXJDTQ70XDAR27C3F2ZXMA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52950.37,
+     -506355.38,
+     936.47
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.28319
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -33.2,
+      -30.1,
+      33.2,
+      29.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 55.38
+    }
+   },
+   "after": {
+    "pos": [
+     -52950.37,
+     -506355.38,
+     909.366
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.28319
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -33.2,
+      -30.1,
+      33.2,
+      29.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": 55.38
+    }
+   },
+   "n": 57,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VRPAFBVV7EBPR7VXZPAZFEQJ8M",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52910.83,
+     -506379.11,
+     472.49
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": -408.6
+    }
+   },
+   "after": {
+    "pos": [
+     -52910.83,
+     -506379.11,
+     445.386
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": -408.6
+    }
+   },
+   "n": 58,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CYP072KDHBFAHD6WP245H3CTG7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52825.98,
+     -506458.85,
+     411.99
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -28.3,
+      -22.0,
+      30.0,
+      26.2
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": -469.1
+    }
+   },
+   "after": {
+    "pos": [
+     -52825.98,
+     -506458.85,
+     384.886
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -28.3,
+      -22.0,
+      30.0,
+      26.2
+     ],
+     "mode": "on",
+     "on": "jal-veesa.GP66ZC6RQYSWB12HNQMCP6B7GJ",
+     "dz": -469.1
+    }
+   },
+   "n": 59,
+   "stroke": 18,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.C6VKFDKVKWC3YJRRM6HT2MK4G7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52065.46,
+     -507221.93,
+     864.66
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 315.671
+    }
+   },
+   "after": {
+    "pos": [
+     -52065.46,
+     -507221.93,
+     864.659
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 390.451
+    }
+   },
+   "n": 60,
+   "stroke": 19,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.92XG0SYYQ3QTRGS2ERX6APZE9H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50557.14,
+     -505360.33,
+     986.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 274.249
+    }
+   },
+   "after": {
+    "pos": [
+     -50557.14,
+     -505360.33,
+     986.871
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 244.669
+    }
+   },
+   "n": 61,
+   "stroke": 20,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CS3YHYZ1WBBBFDCEQ6QK4EHCN6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49505.88,
+     -506728.07,
+     669.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 26.839
+    }
+   },
+   "after": {
+    "pos": [
+     -49505.88,
+     -506728.07,
+     656.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 14.339
+    }
+   },
+   "n": 62,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2XQRQFXA21N0PRSJW0W08JW316",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49505.87,
+     -506983.29,
+     669.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 23.598
+    }
+   },
+   "after": {
+    "pos": [
+     -49505.87,
+     -506983.29,
+     656.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "ground",
+     "dz": 11.098
+    }
+   },
+   "n": 63,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CXQSTPFKRDACA11PDJ3THF3EXJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49400.99,
+     -506849.46,
+     692.27
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 44.509
+    }
+   },
+   "after": {
+    "pos": [
+     -49400.99,
+     -506849.46,
+     679.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 32.009
+    }
+   },
+   "n": 64,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Z3S3JS9G130FYH80HSJWEVWQFB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49610.93,
+     -506857.66,
+     692.27
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 44.597
+    }
+   },
+   "after": {
+    "pos": [
+     -49610.93,
+     -506857.66,
+     679.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 32.097
+    }
+   },
+   "n": 65,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9H96MEKS798QANHBZQA9H54MDV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49667.19,
+     -507069.18,
+     659.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 14.059
+    }
+   },
+   "after": {
+    "pos": [
+     -49667.19,
+     -507069.18,
+     647.26
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 1.459
+    }
+   },
+   "n": 66,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1A1X9BRK3VZ9DAC034BVMX5W8P",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49658.33,
+     -507101.38,
+     819.16
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+     "dz": 28.72
+    }
+   },
+   "after": {
+    "pos": [
+     -49658.33,
+     -507101.38,
+     806.66
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+     "dz": 28.72
+    }
+   },
+   "n": 67,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TK649G5M4GQFFX4RT475BWHQ2F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49669.9,
+     -507067.85,
+     790.44
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 144.909
+    }
+   },
+   "after": {
+    "pos": [
+     -49669.9,
+     -507067.85,
+     777.94
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 132.309
+    }
+   },
+   "n": 68,
+   "stroke": 21,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.ZPWC7P2V7BQGBS6D7PWX8SJMJW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49384.7,
+     -505359.86,
+     892.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 288.358
+    }
+   },
+   "after": {
+    "pos": [
+     -49384.7,
+     -505359.86,
+     901.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 297.458
+    }
+   },
+   "n": 69,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49639.9,
+     -505359.86,
+     892.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 265.381
+    }
+   },
+   "after": {
+    "pos": [
+     -49639.9,
+     -505359.86,
+     901.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "above",
+     "dz": 274.481
+    }
+   },
+   "n": 70,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.DA7E0SHJ71HESWZK08WV7VNYHG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49513.25,
+     -505257.83,
+     908.35
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -49513.25,
+     -505257.83,
+     917.35
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": 16.1
+    }
+   },
+   "n": 71,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.41N5ZDPG5GHFSKXDDQ0XD1HQH9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49368.07,
+     -505361.13,
+     908.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.ZPWC7P2V7BQGBS6D7PWX8SJMJW",
+     "dz": 16.3
+    }
+   },
+   "after": {
+    "pos": [
+     -49368.07,
+     -505361.13,
+     917.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.ZPWC7P2V7BQGBS6D7PWX8SJMJW",
+     "dz": 16.3
+    }
+   },
+   "n": 72,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5GB3Q7NGJ4PTA1X2DQ6J6GCRYK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49519.23,
+     -505392.77,
+     908.45
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": 16.2
+    }
+   },
+   "after": {
+    "pos": [
+     -49519.23,
+     -505392.77,
+     917.45
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": 16.2
+    }
+   },
+   "n": 73,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1MF3J40JN096K5FPMNSTMTC270",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49521.89,
+     -505376.44,
+     611.85
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": -280.4
+    }
+   },
+   "after": {
+    "pos": [
+     -49521.89,
+     -505376.44,
+     620.85
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6NPJHD27F131KZ76BH0HDCS5M6",
+     "dz": -280.4
+    }
+   },
+   "n": 74,
+   "stroke": 22,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9YGVVHSJYSPRSH2N4JV4PCDJNW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51351.07,
+     -505232.38,
+     976.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -476.2,
+      -552.7,
+      478.0,
+      552.7
+     ],
+     "mode": "clear",
+     "dz": 143.984
+    }
+   },
+   "after": {
+    "pos": [
+     -51351.07,
+     -505232.38,
+     976.635
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -476.2,
+      -552.7,
+      478.0,
+      552.7
+     ],
+     "mode": "clear",
+     "dz": 125.104
+    }
+   },
+   "n": 75,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XXDVTR4MCJF81WFKT12P62T04W",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51071.85,
+     -505296.38,
+     893.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 100.076
+    }
+   },
+   "after": {
+    "pos": [
+     -51071.85,
+     -505296.38,
+     893.221
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 96.236
+    }
+   },
+   "n": 76,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4W48ABY14M9MRPKTFT0DC9P6JE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51737.31,
+     -505296.38,
+     892.72
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 165.453
+    }
+   },
+   "after": {
+    "pos": [
+     -51737.31,
+     -505296.38,
+     892.719
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 177.453
+    }
+   },
+   "n": 77,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2DG39JV5CJJ38SK60XZ1NNWQJM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50675.6,
+     -504713.4,
+     983.04
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+     "dz": -6.3
+    }
+   },
+   "after": {
+    "pos": [
+     -50675.6,
+     -504713.4,
+     928.735
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+     "dz": -42.14
+    }
+   },
+   "n": 78,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1AWETEG3C7ZXEEYCZD178JYK8Z",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50819.85,
+     -504585.71,
+     983.04
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+     "dz": -6.3
+    }
+   },
+   "after": {
+    "pos": [
+     -50819.85,
+     -504585.71,
+     928.735
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+     "dz": -42.14
+    }
+   },
+   "n": 79,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.SS1J3QP1N6GMWTXE14ZGF0421R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52077.29,
+     -504956.66,
+     1105.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 669.311
+    }
+   },
+   "after": {
+    "pos": [
+     -52077.29,
+     -504956.66,
+     1105.554
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 691.411
+    }
+   },
+   "n": 80,
+   "stroke": 23,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54597.76,
+     -504847.91,
+     539.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -482.2,
+      -386.9,
+      370.9,
+      296.5
+     ],
+     "mode": "ground",
+     "dz": 185.52
+    }
+   },
+   "after": {
+    "pos": [
+     -54597.76,
+     -504847.91,
+     539.18
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -482.2,
+      -386.9,
+      370.9,
+      296.5
+     ],
+     "mode": "ground",
+     "dz": 185.52
+    }
+   },
+   "n": 81,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.T45MXQKG92QTNCXRQFHEAXG1BG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54386.18,
+     -505208.41,
+     532.9
+    ],
+    "rot": [
+     1.5708,
+     4.71239,
+     0.0
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "above",
+     "dz": 77.284
+    }
+   },
+   "after": {
+    "pos": [
+     -54386.18,
+     -505208.41,
+     532.983
+    ],
+    "rot": [
+     1.5708,
+     4.71239,
+     0.0
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "above",
+     "dz": 77.284
+    }
+   },
+   "n": 82,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.S4PMF0JVAFF4BRGV36VE2ZE77P",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54622.61,
+     -505930.29,
+     403.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -25.0,
+      -439.0,
+      188.7,
+      391.3
+     ],
+     "mode": "on",
+     "on": "jal-veesa.QPW0FXJXDC5R9A6XQ5VY1D40B4",
+     "dz": -376.98
+    }
+   },
+   "after": {
+    "pos": [
+     -54622.61,
+     -505930.29,
+     387.549
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -25.0,
+      -439.0,
+      188.7,
+      391.3
+     ],
+     "mode": "on",
+     "on": "jal-veesa.QPW0FXJXDC5R9A6XQ5VY1D40B4",
+     "dz": -492.15
+    }
+   },
+   "n": 83,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.8CAWQEJ40E07XH6DBAMDFZH96G",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54393.29,
+     -505679.22,
+     912.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.T39F3FKRVT4B8T332GW6NT3VMX",
+     "dz": 131.7
+    }
+   },
+   "after": {
+    "pos": [
+     -54393.29,
+     -505679.22,
+     1011.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.T39F3FKRVT4B8T332GW6NT3VMX",
+     "dz": 131.7
+    }
+   },
+   "n": 84,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54351.26,
+     -504990.02,
+     622.81
+    ],
+    "rot": [
+     6.28319,
+     6.17846,
+     4.71239
+    ],
+    "scale": 1.1,
+    "seat": {
+     "foot": [
+      -58.9,
+      -16.3,
+      62.1,
+      13.7
+     ],
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 83.81
+    }
+   },
+   "after": {
+    "pos": [
+     -54351.26,
+     -504990.02,
+     622.99
+    ],
+    "rot": [
+     6.28319,
+     6.17846,
+     4.71239
+    ],
+    "scale": 1.1,
+    "seat": {
+     "foot": [
+      -58.9,
+      -16.3,
+      62.1,
+      13.7
+     ],
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 83.81
+    }
+   },
+   "n": 85,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.82YNXBKMGQD778T1JQ522NTP51",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54317.03,
+     -504688.18,
+     562.57
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 23.57
+    }
+   },
+   "after": {
+    "pos": [
+     -54317.03,
+     -504688.18,
+     562.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 23.57
+    }
+   },
+   "n": 86,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.ZMK381101A7GD6KMBMAG39NM94",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54253.45,
+     -504688.99,
+     562.49
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 23.49
+    }
+   },
+   "after": {
+    "pos": [
+     -54253.45,
+     -504688.99,
+     562.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 23.49
+    }
+   },
+   "n": 87,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.09N2TR8Q4WVD42ATMRZQYT3ATA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54289.9,
+     -504694.71,
+     610.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 71.02
+    }
+   },
+   "after": {
+    "pos": [
+     -54289.9,
+     -504694.71,
+     610.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.B21MHYJ479TD79T1KMYBCQEVY9",
+     "dz": 71.02
+    }
+   },
+   "n": 88,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CV5CPVN72FXXSENTCSWYSM1FZW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54459.89,
+     -505309.79,
+     560.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 114.277
+    }
+   },
+   "after": {
+    "pos": [
+     -54459.89,
+     -505309.79,
+     560.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 114.277
+    }
+   },
+   "n": 89,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.F1KQD9SQMT6J8TS0SBACKA2R13",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54331.07,
+     -505833.01,
+     549.32
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -125.1,
+      -28.8,
+      112.9,
+      162.7
+     ],
+     "mode": "ground",
+     "dz": 144.206
+    }
+   },
+   "after": {
+    "pos": [
+     -54331.07,
+     -505833.01,
+     549.379
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -125.1,
+      -28.8,
+      112.9,
+      162.7
+     ],
+     "mode": "ground",
+     "dz": 144.206
+    }
+   },
+   "n": 90,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.H0VFGNWKWN9B2D5BHW1FX23C6X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54357.38,
+     -505591.52,
+     553.42
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -109.5,
+      -10.0,
+      41.8,
+      122.8
+     ],
+     "mode": "ground",
+     "dz": 133.274
+    }
+   },
+   "after": {
+    "pos": [
+     -54357.38,
+     -505591.52,
+     553.534
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -109.5,
+      -10.0,
+      41.8,
+      122.8
+     ],
+     "mode": "ground",
+     "dz": 133.274
+    }
+   },
+   "n": 91,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.7AQGHENB6VK9HJBBSNRECD3TVP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54523.11,
+     -505778.58,
+     543.46
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 132.393
+    }
+   },
+   "after": {
+    "pos": [
+     -54523.11,
+     -505778.58,
+     543.56
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.1
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 132.393
+    }
+   },
+   "n": 92,
+   "stroke": 24,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q41AVRE2HVRDYY5MVRQAQ8YS06",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56206.76,
+     -507203.38,
+     973.57
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -476.2,
+      -552.7,
+      478.0,
+      552.7
+     ],
+     "mode": "clear",
+     "dz": 362.812
+    }
+   },
+   "after": {
+    "pos": [
+     -56206.76,
+     -507203.38,
+     973.572
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -476.2,
+      -552.7,
+      478.0,
+      552.7
+     ],
+     "mode": "clear",
+     "dz": 359.142
+    }
+   },
+   "n": 93,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VPVC7W5VEK53V6Z39TDYPJPF6Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56750.94,
+     -507752.03,
+     973.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "clear",
+     "dz": 478.653
+    }
+   },
+   "after": {
+    "pos": [
+     -56750.94,
+     -507752.03,
+     973.528
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -128.0,
+      -127.3,
+      128.0,
+      133.4
+     ],
+     "mode": "clear",
+     "dz": 485.143
+    }
+   },
+   "n": 94,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55876.36,
+     -507140.08,
+     894.07
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 383.45
+    }
+   },
+   "after": {
+    "pos": [
+     -55876.36,
+     -507140.08,
+     893.867
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 383.45
+    }
+   },
+   "n": 95,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2TCPY4C3ZR0R10D9WRHTS1GXTY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56503.39,
+     -507140.08,
+     893.57
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 347.649
+    }
+   },
+   "after": {
+    "pos": [
+     -56503.39,
+     -507140.08,
+     893.572
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 350.119
+    }
+   },
+   "n": 96,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BVCZH9YZY5E52KAGWCCME4FHA8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56098.49,
+     -507765.02,
+     982.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.R0EAPQAYFCWMC02C1J4B7S6HPX",
+     "dz": -53.89
+    }
+   },
+   "after": {
+    "pos": [
+     -56098.49,
+     -507765.02,
+     915.639
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.R0EAPQAYFCWMC02C1J4B7S6HPX",
+     "dz": -48.62
+    }
+   },
+   "n": 97,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.W8HDEPY252WC7XZJSDHNKFRT7N",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55641.42,
+     -507648.89,
+     982.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "after": {
+    "pos": [
+     -55641.42,
+     -507648.89,
+     982.637
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "n": 98,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.G8ZWRANM0KF5CCFWZCRTDC24AN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55485.25,
+     -507466.3,
+     982.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "after": {
+    "pos": [
+     -55485.25,
+     -507466.3,
+     982.637
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "n": 99,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Z2FDHR2STZQHJ0YT83S6GZKGGV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55654.63,
+     -506623.75,
+     982.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "after": {
+    "pos": [
+     -55654.63,
+     -506623.75,
+     982.637
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "n": 100,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WAC8SHF7V8WAF1JX352BD9FJ42",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55472.04,
+     -506788.91,
+     982.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "after": {
+    "pos": [
+     -55472.04,
+     -506788.91,
+     982.637
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 88.77
+    }
+   },
+   "n": 101,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.WZRTGGE8QJ3E18Q69DNGD3JFFG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54847.28,
+     -507288.19,
+     415.15
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "ground",
+     "dz": 19.362
+    }
+   },
+   "after": {
+    "pos": [
+     -54847.28,
+     -507288.19,
+     415.145
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "ground",
+     "dz": 20.302
+    }
+   },
+   "n": 102,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3AKNP5XT4HTRJMXMAPV0Z379N6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54556.22,
+     -507337.66,
+     572.86
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.71,
+    "seat": {
+     "mode": "above",
+     "dz": 146.376
+    }
+   },
+   "after": {
+    "pos": [
+     -54556.22,
+     -507337.66,
+     572.531
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.71,
+    "seat": {
+     "mode": "above",
+     "dz": 146.376
+    }
+   },
+   "n": 103,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.C3H45S7D7E4D8PAXR0CAVT3517",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55548.43,
+     -507599.1,
+     1104.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.28319
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 646.442
+    }
+   },
+   "after": {
+    "pos": [
+     -55548.43,
+     -507599.1,
+     1104.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.28319
+    ],
+    "scale": 0.79,
+    "seat": {
+     "mode": "above",
+     "dz": 648.952
+    }
+   },
+   "n": 104,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.49MCZFVEM5ASWX15MV5PJMKK7R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55548.33,
+     -507596.1,
+     1055.85
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 161.78
+    }
+   },
+   "after": {
+    "pos": [
+     -55548.33,
+     -507596.1,
+     1055.647
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 161.78
+    }
+   },
+   "n": 105,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RVPJVA17Q1KMFFC1MNFWGFMKKB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55700.65,
+     -508024.44,
+     1317.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.78,
+    "seat": {
+     "mode": "above",
+     "dz": 864.485
+    }
+   },
+   "after": {
+    "pos": [
+     -55700.65,
+     -508024.44,
+     1317.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.78,
+    "seat": {
+     "mode": "above",
+     "dz": 873.425
+    }
+   },
+   "n": 106,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.FE5Q55KRSNSKSW5WH65JHD27WR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55628.02,
+     -506831.16,
+     983.46
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -55628.02,
+     -506831.16,
+     983.257
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.BMB6AKCBN0ATMTHZZ1WPTNWJNY",
+     "dz": 89.39
+    }
+   },
+   "n": 107,
+   "stroke": 25,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.547KQNCSANA2V5E1EFAVBH64YD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50912.29,
+     -506763.86,
+     925.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "clear",
+     "dz": 253.142
+    }
+   },
+   "after": {
+    "pos": [
+     -50912.29,
+     -506763.86,
+     925.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "clear",
+     "dz": 249.092
+    }
+   },
+   "n": 108,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50952.85,
+     -506679.96,
+     839.24
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 227.07
+    }
+   },
+   "after": {
+    "pos": [
+     -50952.85,
+     -506679.96,
+     839.422
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 227.07
+    }
+   },
+   "n": 109,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9Y7K9EA3J25SGFBNVVMA5JV8X0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50773.09,
+     -506493.43,
+     980.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 141.74
+    }
+   },
+   "after": {
+    "pos": [
+     -50773.09,
+     -506493.43,
+     981.162
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 141.74
+    }
+   },
+   "n": 110,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3NGCHKAPGVPJC7RS1QC3YWH1B6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50500.46,
+     -506339.01,
+     968.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.38319
+    ],
+    "scale": 1.15,
+    "seat": {
+     "foot": [
+      -34.1,
+      -30.9,
+      34.1,
+      30.4
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 129.6
+    }
+   },
+   "after": {
+    "pos": [
+     -50500.46,
+     -506339.01,
+     969.022
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.38319
+    ],
+    "scale": 1.15,
+    "seat": {
+     "foot": [
+      -34.1,
+      -30.9,
+      34.1,
+      30.4
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 129.6
+    }
+   },
+   "n": 111,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.M03TXVV6GXV1Y85ZJZR0K2C26D",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50490.24,
+     -506399.33,
+     928.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -50490.24,
+     -506399.33,
+     928.812
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "n": 112,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.14RYSHWKGWB4XGMAPZNM0WTKTR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50542.34,
+     -506318.53,
+     928.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.7
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -50542.34,
+     -506318.53,
+     928.812
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.7
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "n": 113,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.668660Z68A7R3K25ZX8MTNFP5B",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50483.71,
+     -506406.1,
+     947.73
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "after": {
+    "pos": [
+     -50483.71,
+     -506406.1,
+     947.912
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "n": 114,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.E6EV8EDRD4Y3G2FP0E0P0NDWCF",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50487.78,
+     -506391.86,
+     947.73
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "after": {
+    "pos": [
+     -50487.78,
+     -506391.86,
+     947.912
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "n": 115,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BM8N7WZCGENBT5Q1YW4EQR8DMG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50501.0,
+     -506401.33,
+     947.73
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "after": {
+    "pos": [
+     -50501.0,
+     -506401.33,
+     947.912
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 108.49
+    }
+   },
+   "n": 116,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.VEEY3973D00R0ZHVT59HKGJHEC",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51448.57,
+     -506224.01,
+     1486.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.83,
+    "seat": {
+     "mode": "above",
+     "dz": 880.696
+    }
+   },
+   "after": {
+    "pos": [
+     -51448.57,
+     -506224.01,
+     1486.545
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 0.83,
+    "seat": {
+     "mode": "above",
+     "dz": 811.966
+    }
+   },
+   "n": 117,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.12X5AA3GFZ2BBJ5NA9E9M109QZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51283.92,
+     -506720.03,
+     929.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.79
+    }
+   },
+   "after": {
+    "pos": [
+     -51283.92,
+     -506720.03,
+     929.212
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.79
+    }
+   },
+   "n": 118,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.47YQ040NSG9CT1DBFHZ0WZ4B6P",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50783.34,
+     -506541.43,
+     1009.34
+    ],
+    "rot": [
+     0.10472,
+     6.28319,
+     3.14159
+    ],
+    "scale": 1.1,
+    "seat": {
+     "foot": [
+      -58.9,
+      -16.3,
+      62.1,
+      13.7
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 170.1
+    }
+   },
+   "after": {
+    "pos": [
+     -50783.34,
+     -506541.43,
+     1009.522
+    ],
+    "rot": [
+     0.10472,
+     6.28319,
+     3.14159
+    ],
+    "scale": 1.1,
+    "seat": {
+     "foot": [
+      -58.9,
+      -16.3,
+      62.1,
+      13.7
+     ],
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 170.1
+    }
+   },
+   "n": 119,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3H94HNEQW9FT3D6YVYZV254T7X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50443.68,
+     -506450.19,
+     928.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -50443.68,
+     -506450.19,
+     928.812
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "n": 120,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.DPZ7NYF4HTM8Q26G6QFCMXHH1A",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50619.13,
+     -506286.93,
+     928.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -50619.13,
+     -506286.93,
+     928.812
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "n": 121,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MWMK32APFHBFA800Z6TTNKHCV1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51473.93,
+     -506921.21,
+     928.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "after": {
+    "pos": [
+     -51473.93,
+     -506921.21,
+     928.812
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.39
+    }
+   },
+   "n": 122,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TK0FDZ38D7RFFWF6Y4N2XVCXKE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51306.91,
+     -507075.14,
+     928.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.38
+    }
+   },
+   "after": {
+    "pos": [
+     -51306.91,
+     -507075.14,
+     928.802
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 89.38
+    }
+   },
+   "n": 123,
+   "stroke": 26,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Z1FAQQM066ZQ4F5H88HTXP0BZM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52329.68,
+     -506533.8,
+     887.65
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -403.0,
+      -267.2,
+      402.9,
+      267.2
+     ],
+     "mode": "clear",
+     "dz": 380.429
+    }
+   },
+   "after": {
+    "pos": [
+     -52329.68,
+     -506533.8,
+     887.646
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -403.0,
+      -267.2,
+      402.9,
+      267.2
+     ],
+     "mode": "clear",
+     "dz": 382.719
+    }
+   },
+   "n": 124,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XPDDR8F7G980AESEA45TFEVJXM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52346.34,
+     -506526.52,
+     796.17
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 396.165
+    }
+   },
+   "after": {
+    "pos": [
+     -52346.34,
+     -506526.52,
+     796.166
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.2,
+    "seat": {
+     "foot": [
+      -537.3,
+      -425.3,
+      529.3,
+      417.6
+     ],
+     "mode": "above",
+     "dz": 398.205
+    }
+   },
+   "n": 125,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.PQFDMPS2WTBSNA25S6C9QDTP92",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52065.47,
+     -506965.93,
+     858.26
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      130.7
+     ],
+     "mode": "above",
+     "dz": 343.42
+    }
+   },
+   "after": {
+    "pos": [
+     -52065.47,
+     -506965.93,
+     858.259
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      130.7
+     ],
+     "mode": "above",
+     "dz": 352.86
+    }
+   },
+   "n": 126,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.GF228Q0BW3A37CS8Z9WSAFE031",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51440.63,
+     -506233.35,
+     1250.91
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.12,
+    "seat": {
+     "mode": "above",
+     "dz": 638.839
+    }
+   },
+   "after": {
+    "pos": [
+     -51440.63,
+     -506233.35,
+     1250.906
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.12,
+    "seat": {
+     "mode": "above",
+     "dz": 575.099
+    }
+   },
+   "n": 127,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.SGYAM2F52XFHERTSD2JX95RDWJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51446.27,
+     -506243.72,
+     1250.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.36573
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 641.162
+    }
+   },
+   "after": {
+    "pos": [
+     -51446.27,
+     -506243.72,
+     1250.388
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.36573
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 579.152
+    }
+   },
+   "n": 128,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QS2NS9XQGD4X9HPFH7DQ5X5E13",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52734.83,
+     -506854.19,
+     571.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1.09,
+    "seat": {
+     "mode": "above",
+     "dz": 163.627
+    }
+   },
+   "after": {
+    "pos": [
+     -52734.83,
+     -506854.19,
+     571.526
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1.09,
+    "seat": {
+     "mode": "above",
+     "dz": 139.867
+    }
+   },
+   "n": 129,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0TGYS3TTVT7B1EPAE9EC20MGXT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52805.2,
+     -506582.21,
+     459.96
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 50.866
+    }
+   },
+   "after": {
+    "pos": [
+     -52805.2,
+     -506582.21,
+     459.96
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.78319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 21.956
+    }
+   },
+   "n": 130,
+   "stroke": 27,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.2MSDWJJDXY3605J1HYSJTHCSEJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55116.26,
+     -507149.58,
+     462.07
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "ground",
+     "dz": 68.109
+    }
+   },
+   "after": {
+    "pos": [
+     -55116.26,
+     -507149.58,
+     462.069
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "ground",
+     "dz": 69.199
+    }
+   },
+   "n": 131,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.8B3CAJCT2NVXY9SMCCBVDG7NKT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54794.83,
+     -507021.43,
+     466.9
+    ],
+    "rot": [
+     4.71239,
+     5.01239,
+     3.14159
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "ground",
+     "dz": 73.426
+    }
+   },
+   "after": {
+    "pos": [
+     -54794.83,
+     -507021.43,
+     466.902
+    ],
+    "rot": [
+     4.71239,
+     5.01239,
+     3.14159
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "ground",
+     "dz": 74.056
+    }
+   },
+   "n": 132,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.B8RDNFZ13TQHSMYG8PAK3PKH76",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54185.29,
+     -507315.38,
+     426.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.42036
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.JBG3BKYY51E27XQVFGZ6YDE3C7",
+     "dz": 66.1
+    }
+   },
+   "after": {
+    "pos": [
+     -54185.29,
+     -507315.38,
+     540.465
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.42036
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.JBG3BKYY51E27XQVFGZ6YDE3C7",
+     "dz": 66.1
+    }
+   },
+   "n": 133,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BZX1XJPDRMF8MFDCJGXTDN2BCJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54847.47,
+     -506943.69,
+     472.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.1
+    ],
+    "scale": 1.44,
+    "seat": {
+     "mode": "ground",
+     "dz": 70.318
+    }
+   },
+   "after": {
+    "pos": [
+     -54847.47,
+     -506943.69,
+     471.831
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.1
+    ],
+    "scale": 1.44,
+    "seat": {
+     "mode": "ground",
+     "dz": 70.318
+    }
+   },
+   "n": 134,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.ZBKMS9NH6VFSX8KEH1XM1S85F1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54855.24,
+     -506806.81,
+     474.13
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -103.0,
+      -142.6,
+      144.9,
+      145.5
+     ],
+     "mode": "ground",
+     "dz": 77.932
+    }
+   },
+   "after": {
+    "pos": [
+     -54855.24,
+     -506806.81,
+     474.128
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.28319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -103.0,
+      -142.6,
+      144.9,
+      145.5
+     ],
+     "mode": "ground",
+     "dz": 78.582
+    }
+   },
+   "n": 135,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.PPCE84Y4MKHPV0JKD8K4SSZC69",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54566.38,
+     -507232.05,
+     503.35
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 101.656
+    }
+   },
+   "after": {
+    "pos": [
+     -54566.38,
+     -507232.05,
+     502.89
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 101.656
+    }
+   },
+   "n": 136,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Z4Q0M7AME5EG29KPRYC5BE6J85",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54584.76,
+     -507227.93,
+     503.35
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.8
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 101.77
+    }
+   },
+   "after": {
+    "pos": [
+     -54584.76,
+     -507227.93,
+     502.861
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.8
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 101.77
+    }
+   },
+   "n": 137,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5689CD1DHG6JFGCXCGVP537WMV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54772.07,
+     -507050.77,
+     396.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -109.5,
+      -10.0,
+      41.8,
+      122.8
+     ],
+     "mode": "ground",
+     "dz": 4.604
+    }
+   },
+   "after": {
+    "pos": [
+     -54772.07,
+     -507050.77,
+     396.503
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -109.5,
+      -10.0,
+      41.8,
+      122.8
+     ],
+     "mode": "ground",
+     "dz": 5.254
+    }
+   },
+   "n": 138,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EWS55WA2HM7T5J132H2TNYSE06",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54696.56,
+     -506456.63,
+     472.32
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1.17,
+    "seat": {
+     "mode": "ground",
+     "dz": 59.949
+    }
+   },
+   "after": {
+    "pos": [
+     -54696.56,
+     -506456.63,
+     472.419
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1.17,
+    "seat": {
+     "mode": "ground",
+     "dz": 59.949
+    }
+   },
+   "n": 139,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.9V5JGR9K8YBGZMFJ4446JZXYYT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54696.98,
+     -506481.69,
+     472.32
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1.32,
+    "seat": {
+     "mode": "ground",
+     "dz": 61.296
+    }
+   },
+   "after": {
+    "pos": [
+     -54696.98,
+     -506481.69,
+     472.399
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1.32,
+    "seat": {
+     "mode": "ground",
+     "dz": 61.296
+    }
+   },
+   "n": 140,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.P9246P9CMW8CMFAGFVF1EVTXS4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54820.52,
+     -506949.27,
+     472.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 71.981
+    }
+   },
+   "after": {
+    "pos": [
+     -54820.52,
+     -506949.27,
+     471.831
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 71.981
+    }
+   },
+   "n": 141,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EGJQ7G4M9T00Y0CA9NGEMT9BRH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54596.63,
+     -507126.55,
+     474.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 76.826
+    }
+   },
+   "after": {
+    "pos": [
+     -54596.63,
+     -507126.55,
+     473.514
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 76.826
+    }
+   },
+   "n": 142,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3YCJ7MXGFZ83WCCR7G17AC9EAH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54149.12,
+     -507173.38,
+     426.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.JBG3BKYY51E27XQVFGZ6YDE3C7",
+     "dz": 66.1
+    }
+   },
+   "after": {
+    "pos": [
+     -54149.12,
+     -507173.38,
+     540.465
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.JBG3BKYY51E27XQVFGZ6YDE3C7",
+     "dz": 66.1
+    }
+   },
+   "n": 143,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NHT79H5HAZHFWDP00TG7FNQVDF",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54725.68,
+     -506927.08,
+     472.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 69.871
+    }
+   },
+   "after": {
+    "pos": [
+     -54725.68,
+     -506927.08,
+     472.065
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 69.871
+    }
+   },
+   "n": 144,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q4GKZXT7ZF1XJ60DY9G21GEZYE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54672.12,
+     -507124.93,
+     560.28
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 172.834
+    }
+   },
+   "after": {
+    "pos": [
+     -54672.12,
+     -507124.93,
+     560.279
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 173.444
+    }
+   },
+   "n": 145,
+   "stroke": 28,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NDSP252WX2X1M3ZB5NP4SV4P63",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56282.74,
+     -504163.12,
+     1041.59
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "clear",
+     "dz": 321.065
+    }
+   },
+   "after": {
+    "pos": [
+     -56282.74,
+     -504163.12,
+     1041.585
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -450.2,
+      -302.7,
+      428.7,
+      312.1
+     ],
+     "mode": "clear",
+     "dz": 325.345
+    }
+   },
+   "n": 146,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56303.15,
+     -504200.48,
+     976.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -447.7,
+      -354.4,
+      441.1,
+      348.0
+     ],
+     "mode": "above",
+     "dz": 574.052
+    }
+   },
+   "after": {
+    "pos": [
+     -56303.15,
+     -504200.48,
+     976.505
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -447.7,
+      -354.4,
+      441.1,
+      348.0
+     ],
+     "mode": "above",
+     "dz": 570.292
+    }
+   },
+   "n": 147,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.F8G53KCT4Q583HRF9H7Y6SQFPD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56419.72,
+     -504433.71,
+     1104.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 127.53
+    }
+   },
+   "after": {
+    "pos": [
+     -56419.72,
+     -504433.71,
+     1104.025
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.06,
+    "seat": {
+     "foot": [
+      -70.1,
+      26.4,
+      94.6,
+      59.5
+     ],
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 127.52
+    }
+   },
+   "n": 148,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.BRQTF960SJ2BZE6YNXTJGT739T",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56311.93,
+     -504415.44,
+     1051.01
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.9
+    ],
+    "scale": 1.59,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.51
+    }
+   },
+   "after": {
+    "pos": [
+     -56311.93,
+     -504415.44,
+     1051.005
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.9
+    ],
+    "scale": 1.59,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.5
+    }
+   },
+   "n": 149,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.W8ACXTH3R7R0CT5TAB5F24Q0V4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56285.11,
+     -504415.76,
+     1051.01
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.9
+    ],
+    "scale": 1.36,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.51
+    }
+   },
+   "after": {
+    "pos": [
+     -56285.11,
+     -504415.76,
+     1051.005
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.9
+    ],
+    "scale": 1.36,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.5
+    }
+   },
+   "n": 150,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.1M6YR6QX82FNG928V6HAXM7H7S",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56505.78,
+     -504416.52,
+     1051.01
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.0
+    ],
+    "scale": 1.59,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.51
+    }
+   },
+   "after": {
+    "pos": [
+     -56505.78,
+     -504416.52,
+     1051.005
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.0
+    ],
+    "scale": 1.59,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.5
+    }
+   },
+   "n": 151,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RWXQ0G8JC01FGF8PTNN7P0PAN7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56193.81,
+     -504425.38,
+     1050.99
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.49
+    }
+   },
+   "after": {
+    "pos": [
+     -56193.81,
+     -504425.38,
+     1050.985
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.C4HE49D0WZKH7FQNSVHN98TCRQ",
+     "dz": 74.48
+    }
+   },
+   "n": 152,
+   "stroke": 29,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0DM6AFASR1VYJAF6383G5ADYFK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56943.15,
+     -505535.96,
+     1000.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      153.9,
+      -542.5,
+      523.5,
+      786.9
+     ],
+     "mode": "above",
+     "dz": 427.883
+    }
+   },
+   "after": {
+    "pos": [
+     -56943.15,
+     -505535.96,
+     1000.902
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      153.9,
+      -542.5,
+      523.5,
+      786.9
+     ],
+     "mode": "above",
+     "dz": 108.033
+    }
+   },
+   "n": 153,
+   "stroke": 30,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RD4WFT8DRT0X4AKD63TK1V38KB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56595.09,
+     -506041.52,
+     1064.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 187.597
+    }
+   },
+   "after": {
+    "pos": [
+     -56595.09,
+     -506041.52,
+     1064.905
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 182.517
+    }
+   },
+   "n": 154,
+   "stroke": 30,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EEB8APQQ2KSFDQ2QJJXRAJS9PD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56732.84,
+     -505909.58,
+     1064.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 140.049
+    }
+   },
+   "after": {
+    "pos": [
+     -56732.84,
+     -505909.58,
+     1064.898
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 137.409
+    }
+   },
+   "n": 155,
+   "stroke": 30,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56623.09,
+     -508426.81,
+     985.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 532.267
+    }
+   },
+   "after": {
+    "pos": [
+     -56623.09,
+     -508426.81,
+     973.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 520.627
+    }
+   },
+   "n": 156,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RNFD2C7BGX8AFTEJBT41ZTWX6Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56622.86,
+     -508172.86,
+     985.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 519.236
+    }
+   },
+   "after": {
+    "pos": [
+     -56622.86,
+     -508172.86,
+     973.531
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 513.516
+    }
+   },
+   "n": 157,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XRN237F33FD78E5Y63GS6YH2YT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56623.43,
+     -508035.61,
+     995.37
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -192.0,
+      -48.0,
+      192.0,
+      48.0
+     ],
+     "mode": "clear",
+     "dz": 517.157
+    }
+   },
+   "after": {
+    "pos": [
+     -56623.43,
+     -508035.61,
+     983.475
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.68319
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -192.0,
+      -48.0,
+      192.0,
+      48.0
+     ],
+     "mode": "clear",
+     "dz": 513.387
+    }
+   },
+   "n": 158,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RT3M9KTDM2EVG3001NF759DA4H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56736.8,
+     -508300.17,
+     1001.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -56736.8,
+     -508300.17,
+     989.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 16.1
+    }
+   },
+   "n": 159,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.X8TTZHAN1FYH6ZZFYWYNC4J7AV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56506.2,
+     -508300.17,
+     1001.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -56506.2,
+     -508300.17,
+     989.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 16.1
+    }
+   },
+   "n": 160,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.16WTNZRTKSA1QC11W0SRXB928Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56621.24,
+     -508444.83,
+     997.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 12.24
+    }
+   },
+   "after": {
+    "pos": [
+     -56621.24,
+     -508444.83,
+     985.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.0KR0KWCCSWBYCHQX0QQJ06Z8B4",
+     "dz": 12.24
+    }
+   },
+   "n": 161,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MV8RG84P03MQP77NZJDJ49SJP8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56607.43,
+     -508291.67,
+     397.13
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": -51.768
+    }
+   },
+   "after": {
+    "pos": [
+     -56607.43,
+     -508291.67,
+     385.227
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.18319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": -64.818
+    }
+   },
+   "n": 162,
+   "stroke": 31,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Y34F3HAF3HXSW64R4M366GH5ST",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55997.04,
+     -504797.74,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 184.153
+    }
+   },
+   "after": {
+    "pos": [
+     -55997.04,
+     -504797.74,
+     1080.001
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 181.143
+    }
+   },
+   "n": 163,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.T6ZE6YGSB7EMQJ9PFPANWDARTG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55859.28,
+     -504929.68,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 228.614
+    }
+   },
+   "after": {
+    "pos": [
+     -55859.28,
+     -504929.68,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 266.764
+    }
+   },
+   "n": 164,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EK76D441R8SZTS0C1ZKXXBXSC3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55859.51,
+     -505921.96,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 365.428
+    }
+   },
+   "after": {
+    "pos": [
+     -55859.51,
+     -505921.96,
+     1080.001
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 359.928
+    }
+   },
+   "n": 165,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Q0AFQDR1EX0172769PZ0NYWH83",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56158.65,
+     -505186.79,
+     1076.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 72.72
+    }
+   },
+   "after": {
+    "pos": [
+     -56158.65,
+     -505186.79,
+     1044.912
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.98319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.A1P104JRWVAK46SDJ6N0C1B2MD",
+     "dz": 45.63
+    }
+   },
+   "n": 166,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56086.05,
+     -505437.86,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 161.477
+    }
+   },
+   "after": {
+    "pos": [
+     -56086.05,
+     -505437.86,
+     1080.001
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.88319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 115.867
+    }
+   },
+   "n": 167,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.W7XH4JJE0KWHKD6SAAGE266D8Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56185.9,
+     -505762.33,
+     1076.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+     "dz": 72.64
+    }
+   },
+   "after": {
+    "pos": [
+     -56185.9,
+     -505762.33,
+     1045.011
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.48319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.CFN6QC8NYGJT23ZFC7E67XFVM5",
+     "dz": 72.64
+    }
+   },
+   "n": 168,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.XHAK6GDKEW7DDARE5CT82WMN2Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55897.19,
+     -505562.72,
+     1080.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 202.154
+    }
+   },
+   "after": {
+    "pos": [
+     -55897.19,
+     -505562.72,
+     1079.995
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 187.324
+    }
+   },
+   "n": 169,
+   "stroke": 32,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.W9NC05HAB60XX929F64D2R78ZX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51770.17,
+     -504655.91,
+     993.86
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -192.0,
+      -48.0,
+      192.0,
+      48.0
+     ],
+     "mode": "clear",
+     "dz": 282.195
+    }
+   },
+   "after": {
+    "pos": [
+     -51770.17,
+     -504655.91,
+     977.858
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -192.0,
+      -48.0,
+      192.0,
+      48.0
+     ],
+     "mode": "clear",
+     "dz": 210.785
+    }
+   },
+   "n": 170,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51770.74,
+     -504518.68,
+     983.93
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 537.702
+    }
+   },
+   "after": {
+    "pos": [
+     -51770.74,
+     -504518.68,
+     967.926
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 496.702
+    }
+   },
+   "n": 171,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.AJ8S26MV0BGAV18C2YPGWR9B2H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51770.75,
+     -504264.68,
+     983.93
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 518.095
+    }
+   },
+   "after": {
+    "pos": [
+     -51770.75,
+     -504264.68,
+     967.934
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -48.1,
+      -127.6,
+      128.0,
+      131.8
+     ],
+     "mode": "clear",
+     "dz": 540.035
+    }
+   },
+   "n": 172,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YJADBSSRQGT6G034HDEJ16DMRJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51772.6,
+     -504246.66,
+     996.17
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.AJ8S26MV0BGAV18C2YPGWR9B2H",
+     "dz": 12.24
+    }
+   },
+   "after": {
+    "pos": [
+     -51772.6,
+     -504246.66,
+     980.174
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.AJ8S26MV0BGAV18C2YPGWR9B2H",
+     "dz": 12.24
+    }
+   },
+   "n": 173,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6NBDH5FY1RX3KGHPTXD2M924Y7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51657.04,
+     -504391.32,
+     1000.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -51657.04,
+     -504391.32,
+     984.026
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": 16.1
+    }
+   },
+   "n": 174,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.0K7K6BDMMTGB8GDX1VWJ2RWXWX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51887.63,
+     -504391.32,
+     1000.03
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": 16.1
+    }
+   },
+   "after": {
+    "pos": [
+     -51887.63,
+     -504391.32,
+     984.026
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 0.91,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": 16.1
+    }
+   },
+   "n": 175,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.PTK3YQYYZX6N3DVWWTJ0CM7Z8N",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51776.97,
+     -504402.6,
+     366.23
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": -617.7
+    }
+   },
+   "after": {
+    "pos": [
+     -51776.97,
+     -504402.6,
+     350.226
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+     "dz": -617.7
+    }
+   },
+   "n": 176,
+   "stroke": 33,
+   "at": "2026-11-21T07:08:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50675.67,
+     -504381.88,
+     935.04
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -523.5,
+      -34.5,
+      -87.3,
+      798.5
+     ],
+     "mode": "above",
+     "dz": 474.511
+    }
+   },
+   "after": {
+    "pos": [
+     -50675.67,
+     -504381.88,
+     935.035
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "foot": [
+      -523.5,
+      -34.5,
+      -87.3,
+      798.5
+     ],
+     "mode": "above",
+     "dz": 438.671
+    }
+   },
+   "n": 177,
+   "stroke": 34,
+   "at": "2026-11-21T07:08:44Z"
+  }
+ ]
+}

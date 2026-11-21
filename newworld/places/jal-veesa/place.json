@@ -635,7 +635,8 @@
     "RNQ1281B2E5X8752E8TM05G1YV": 0.75
    },
    "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21) The hatchery gland's pool (RNQ1281B) is set by hand at the gland's east foot (scale 0.75) as the least bad of five spots tried: west of the gland the hatchery's steaming mud covers it, east and north the rise's slope leaves a bank of 125-190 and the boardwalk hangs over it. Still open: no open level ground at this gland's foot (2026-11-21)."
-  }
+  },
+  "ground_cap": 450
  },
  "fit": {
   "pivot": [
@@ -671,15 +672,19 @@
      -162783.5
     ],
     "to": [
-     -53213.7,
-     -503804.4
+     -52858.9,
+     -503951.4
     ],
     "rot": 0.0,
     "dx": 0.0,
     "dy": 0.0,
     "drot_deg": 0.0,
     "cost_before": 0.0,
-    "cost_after": 0.0
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -53213.7,
+     -503804.4
+    ]
    },
    "b03": {
     "pivot": [
@@ -687,15 +692,19 @@
      -162783.5
     ],
     "to": [
-     -52587.4,
-     -503679.9
+     -52858.9,
+     -503951.4
     ],
     "rot": 0.0,
     "dx": 0.0,
     "dy": 0.0,
     "drot_deg": 0.0,
     "cost_before": 46.875,
-    "cost_after": 46.875
+    "cost_after": 46.875,
+    "rejoined_from": [
+     -52587.4,
+     -503679.9
+    ]
    },
    "b04": {
     "pivot": [
@@ -815,15 +824,19 @@
      -162783.5
     ],
     "to": [
-     -53039.9,
-     -504132.4
+     -52858.9,
+     -503951.4
     ],
     "rot": 0.0,
     "dx": 0.0,
     "dy": 0.0,
     "drot_deg": 0.0,
     "cost_before": 0.0,
-    "cost_after": 0.0
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -53039.9,
+     -504132.4
+    ]
    },
    "s06": {
     "pivot": [
@@ -831,15 +844,19 @@
      -162783.5
     ],
     "to": [
-     -52504.1,
-     -504098.4
+     -52858.9,
+     -503951.4
     ],
     "rot": 0.0,
     "dx": 0.0,
     "dy": 0.0,
     "drot_deg": 0.0,
     "cost_before": 0.0,
-    "cost_after": 0.0
+    "cost_after": 0.0,
+    "rejoined_from": [
+     -52504.1,
+     -504098.4
+    ]
    },
    "s07": {
     "pivot": [
@@ -1462,7 +1479,14 @@
   "agent-20261121T041650",
   "agent-20261121T050221",
   "agent-20261121T050732",
-  "agent-20261121T052145"
+  "agent-20261121T052145",
+  "agent-20261121T070111",
+  "agent-20261121T070844",
+  "agent-20261121T071057",
+  "agent-20261121T071111",
+  "agent-20261121T071131",
+  "agent-20261121T071236",
+  "agent-20261121T071303"
  ],
  "steps": {
   "kit": [
