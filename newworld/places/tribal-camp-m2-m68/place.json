@@ -1,783 +1,137 @@
 {
  "place_id": "tribal-camp-m2-m68",
- "source_id": "skyrim.dushnikhyallocation",
+ "source_id": "kingofthemurkmire.marker.ree-an-wo",
  "similar": [],
  "draft": {
   "people_from": [
    "kingofthemurkmire.seekhatyollocation",
    "kingofthemurkmire.keebahollowlocation"
   ],
-  "add": [
-   {
-    "base": "Skyrim.esm:0AA041",
-    "kind": "static",
-    "pos": [
-     -12700,
-     -553300
-    ],
-    "rot_z": 4.712,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "Sesk's Cage at the camp's west edge, far from the fire by the longhouse and open toward the reeds (place record: look and hooks; main quest 4, thing.mn04.cage): Skyrim's metal cage (MetalCage01), bars all round, whose own door (MetalCageDoor01, the quest's locked door) stands at its origin as Skyrim sets it; sunk a hand's breadth into the ground",
-    "dz": 104.0
-   },
-   {
-    "base": "Skyrim.esm:08632A",
-    "kind": "clutter",
-    "pos": [
-     -10760,
-     -552250
-    ],
-    "rot_z": 0.0,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
-   },
-   {
-    "base": "Skyrim.esm:08632A",
-    "kind": "clutter",
-    "pos": [
-     -10700,
-     -552300
-    ],
-    "rot_z": 0.9,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
-   },
-   {
-    "base": "Skyrim.esm:08632A",
-    "kind": "clutter",
-    "pos": [
-     -10735,
-     -552190
-    ],
-    "rot_z": 2.1,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (place record: economy and hooks notes; main quest 4's need): Skyrim's glazed urns, beside the quest's own stack of sap jars"
-   },
-   {
-    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
-    "kind": "static",
-    "pos": [
-     -9962,
-     -551919
-    ],
-    "rot_z": 0.0,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
-   },
-   {
-    "base": "ArgoniaNewWorld.esm:020B77",
-    "kind": "static",
-    "pos": [
-     -11213,
-     -550752
-    ],
-    "rot_z": 1.3,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
-   },
-   {
-    "base": "ArgoniaNewWorld.esm:020B7B",
-    "kind": "static",
-    "pos": [
-     -11550,
-     -550732
-    ],
-    "rot_z": 2.6,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
-   },
-   {
-    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
-    "kind": "static",
-    "pos": [
-     -10519,
-     -553421
-    ],
-    "rot_z": 3.9,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
-   },
-   {
-    "base": "ArgoniaNewWorld.esm:020B77",
-    "kind": "static",
-    "pos": [
-     -9952,
-     -552860
-    ],
-    "rot_z": 5.2,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "bones hung by a hide tent (place record look: hide tents hung with bones): Curse of Cipactli's bone totem beside the Ree-An-Wo tent"
-   },
-   {
-    "base": "ArgoniaNewWorld.esm:020B7B",
-    "kind": "static",
-    "pos": [
-     -10027,
-     -551907
-    ],
-    "rot_z": 0.0,
-    "scale": 1.6,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the pole of trophies by the fire (place record look; source note still to add): Curse of Cipactli's tall bone totem, raised a head above a man"
-   },
-   {
-    "base": "King of the Murkmire.esp:045C48",
-    "kind": "static",
-    "pos": [
-     -11420,
-     -550203
-    ],
-    "rot_z": 1.171,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
-   },
-   {
-    "base": "King of the Murkmire.esp:045C48",
-    "kind": "static",
-    "pos": [
-     -11747,
-     -550070
-    ],
-    "rot_z": 5.883,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
-   },
-   {
-    "base": "King of the Murkmire.esp:045C48",
-    "kind": "static",
-    "pos": [
-     -11880,
-     -550397
-    ],
-    "rot_z": 4.312,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
-   },
-   {
-    "base": "King of the Murkmire.esp:045C48",
-    "kind": "static",
-    "pos": [
-     -11553,
-     -550530
-    ],
-    "rot_z": 2.742,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the bone shrine's ring of standing stones (source note: the ring of standing stones of the Argonian camp near Loreisian): King of the Murkmire's Xanmeer obelisk, the marsh's own standing stone, in place of the camp's Doomstone circle, a Nordic sign (decision 0006)"
-   },
-   {
-    "base": "Skyrim.esm:0C49ED",
-    "kind": "clutter",
-    "pos": [
-     -11620,
-     -550320
-    ],
-    "rot_z": 1.0,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
-   },
-   {
-    "base": "Skyrim.esm:0C49EF",
-    "kind": "clutter",
-    "pos": [
-     -11690,
-     -550275
-    ],
-    "rot_z": 1.0,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
-   },
-   {
-    "base": "Skyrim.esm:0C49EB",
-    "kind": "clutter",
-    "pos": [
-     -11590,
-     -550250
-    ],
-    "rot_z": 1.0,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "scattered bones in the bone shrine's ring, as at the Argonian camp near Loreisian (source note)"
-   }
-  ],
+  "add": [],
   "room_names": {
    "DushnikhYalCellar": {
     "name": "Karsh-Naal Cellar",
     "why": "the cellar under the longhouse (main quest 4 need: the longhouse and its cellar), where the guards keep their pay and stolen goods"
    }
   },
-  "drop": {
-   "Skyrim.esm:05A34C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A34D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A359": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A35A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A35B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A35E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A360": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A362": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A363": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A365": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A368": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A369": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A36A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A36D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A36E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A36F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A60E": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A60F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A611": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A617": "the orc smithy: the record promises no forge here",
-   "Skyrim.esm:05A623": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A624": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A625": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A626": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A627": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A628": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A629": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05A63F": "the orc smithy: the record promises no forge here",
-   "Skyrim.esm:05A646": "the orc mine's and village's pieces: no mine or well in the record",
-   "Skyrim.esm:05AC8D": "the orc smithy: the record promises no forge here",
-   "Skyrim.esm:05ACA4": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05ACA5": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05ACA6": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05ACA7": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05ACAA": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:05ACAB": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06853F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068541": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068545": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068546": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068547": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068548": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068549": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06854A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06854B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06854C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06854D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06854F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068550": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068551": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068555": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068596": "an Imperial stable: no horses in a Naga marsh camp",
-   "Skyrim.esm:0685D5": "an Imperial stable: no horses in a Naga marsh camp",
-   "Skyrim.esm:0685D6": "an Imperial stable: no horses in a Naga marsh camp",
-   "Skyrim.esm:0685E0": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0685E7": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:068603": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068604": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068605": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068606": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068610": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:068621": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:068632": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068634": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068635": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068636": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068637": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068638": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068639": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06863A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068644": "the orc mine's and village's pieces: no mine or well in the record",
-   "Skyrim.esm:06864A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06864B": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06864C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06864D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:068683": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:068684": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:068686": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:06868A": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06868C": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06868D": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:06868F": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:0686CF": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:0686D7": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:0686E2": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:068720": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:06A8DF": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:06A8FB": "the orc smith's counter and display: no trader here",
-   "Skyrim.esm:099E85": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E86": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E87": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E88": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E92": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:099E93": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:099E95": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E96": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099E97": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099EB1": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099EBC": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:099EBD": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:099ED5": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099ED6": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099ED7": "an orc awning's side screen: each awning site takes one Ree-An-Wo hide tent (draft.replace)",
-   "Skyrim.esm:099EEF": "the orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes): the record's camp is hide tents round a fire, with no wall",
-   "Skyrim.esm:099EF3": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0A8935": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0A8939": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0CD959": "the orc smithy: the record promises no forge here",
-   "Skyrim.esm:0EC371": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0EC387": "an orc thing (mead, Malacath's code, orichalcum, orc furniture) out of place in a Naga camp",
-   "Skyrim.esm:0F762C": "a dragon perch: no dragons in this marsh camp",
-   "Skyrim.esm:05A348": "Dushnikh Mine's rock mouth: the record names no mine (a Naga camp of tents, a longhouse, a fire pit and a cage)",
-   "Skyrim.esm:099ED3": "a bench that stood on the orc palisade's walkway (the palisade is dropped): 5 m up with nothing under it"
-  },
-  "replace": {
-   "Skyrim.esm:0AF1A2": {
-    "base": "King of the Murkmire.esp:10A52B"
-   },
-   "Skyrim.esm:0AF1A3": {
-    "base": "King of the Murkmire.esp:10A52B"
-   },
-   "Skyrim.esm:0AF19F": {
-    "base": "King of the Murkmire.esp:10A52B"
-   },
-   "Skyrim.esm:042D30": {
-    "base": "King of the Murkmire.esp:08EAC7"
-   },
-   "Skyrim.esm:042B8A": {
-    "base": "King of the Murkmire.esp:08EACC"
-   },
-   "Skyrim.esm:0774C8": {
-    "base": "King of the Murkmire.esp:B7F081"
-   },
-   "Skyrim.esm:0727A1": {
-    "base": "King of the Murkmire.esp:0AAE85"
-   }
-  },
+  "drop": {},
+  "replace": {},
   "plan": {
+   "source": "Ree-An-Wo (King of the Murkmire): a Naga camp in the marsh, its hide tents on two stilt watch towers and round a ground fire, bedrolls, cook stand, a Naga chest, a Xanmeer floor with busts, laid wholesale at one transform (turn 90, +290) with its marsh relief; the owner's ruling (2026-11-21) that main quest places get their closest match. The timber longhouse and its cellar the story needs are added whole from Dushnikh Yal, the one source holding them.",
    "look": [
     {
      "line": "hide tents hung with bones",
-     "by": "each of the five orc awning sites takes King of the Murkmire's hide tent (ALPAScaleTent02, Ree-An-Wo's); the awnings' partitions dropped; a bone totem beside each tent"
+     "by": "Ree-An-Wo's own six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent"
     },
     {
      "line": "a timber longhouse",
-     "by": "the source's OrcLonghouse01 kept with its door and room (the Naga longhouse: pay and stolen goods); orc tables, chairs and chest replaced by King of the Murkmire's rustic pieces"
+     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added at the camp's east edge, its door facing the camp"
     },
     {
-     "line": "the cellar",
-     "by": "kept: main quest 4 needs the longhouse and its cellar"
-    },
-    {
-     "line": "a fire pit",
-     "by": "the source's campfire and fires kept"
+     "line": "around a fire pit",
+     "by": "the source's fire camp kept; a second fire of the source's own fire set before the longhouse door, where the guards keep"
     },
     {
      "line": "jars of sap stacked by the longhouse wall",
-     "by": "draft.add: urn stacks beside the longhouse door"
-    },
-    {
-     "line": "a pole of trophies",
-     "by": "draft.add: a tall bone totem by the fire"
-    },
-    {
-     "line": "structure: orc palisade (walls, walkways, towers, scaffolds, stairs, gates, pikes)",
-     "by": "dropped: the record names no wall"
-    },
-    {
-     "line": "structure: mine",
-     "by": "dropped: the record names none"
-    },
-    {
-     "line": "structure: orc smithy, stable, well, counter, dragon perch",
-     "by": "dropped: the record promises no smith, horses, trader or dragon"
-    },
-    {
-     "line": "tanning rack",
-     "by": "replaced by King of the Murkmire's scale tanning rack"
+     "by": "three glazed urns by the wall south of the longhouse door, beside the quest's own stack"
     },
     {
      "line": "a cage at the camp's edge",
-     "by": "Sesk's Cage: Skyrim's metal cage (MetalCage01) at the west edge, its door the quest's locked MetalCageDoor01 at the cage's origin (draft.add; quests.jsonl thing.mn04.cage)"
+     "by": "Skyrim's MetalCage01 at the west edge toward the reeds, its door the quest's MetalCageDoor01"
     },
     {
-     "line": "a bone shrine of standing stones",
-     "by": "draft.add: a ring of four King of the Murkmire Xanmeer obelisks with scattered bones (the Loreisian camp's ring, its Nordic Doomstone circle swapped for the marsh's own standing stone)"
+     "line": "a pole of trophies",
+     "by": "Curse of Cipactli's tall bone totem by the longhouse fire"
     }
    ],
-   "source": "Dushnikh Yal kept as the source of layout and rooms: main quest 4 needs the longhouse with its room and cellar, which only it holds; Ree-An-Wo (the closest Argonian camp) is Xanmeer ruins, scaffolds and six hide tents with no room, and the Loreisian camp is a shrine ring with no building. So Dushnikh Yal gives the longhouse, rooms and fire, and every orc piece is replaced from Ree-An-Wo or dropped",
    "gives": [
     {
      "kind": "combat-foes",
-     "by": "quest 4's own Naga guards at a fixed level in quests.jsonl: Jeeta-Sakka and two guards at the fire pit by the longhouse and one by the longhouse door, beside the camp's two Naga guards in people.jsonl"
+     "by": "quest 4's guards at the longhouse fire and door, the camp's two guards on their patrol between the fires"
     },
     {
      "kind": "treasure",
-     "by": "the longhouse's store chest (Skyrim.esm:097E36 in the copied longhouse), T3 behind an Adept lock: the guards' pay and stolen goods"
+     "by": "the longhouse's store chest (copied with the room) behind its lock: the guards' pay and stolen goods; the Naga loot chest by the fire camp"
     }
    ],
    "structures": [
     {
-     "structure": "mine",
-     "what": "Dushnikh Mine's mouth",
-     "verdict": "dropped",
-     "why": "the record names no mine: a Naga camp of tents, a longhouse, a fire pit and a cage"
+     "cluster": "landing",
+     "what": "the fire camp, the low platform and the Xanmeer floor with its busts",
+     "verdict": "kept",
+     "why": "the camp's fire, tents, bedrolls, cook spot and its old stone heart; its gas traps dropped (a lived camp does not trap its own ground)"
+    },
+    {
+     "cluster": "w01",
+     "what": "the north watch tower with two hide tents",
+     "verdict": "kept",
+     "why": "the guards' watch point and sleeping platform over the marsh"
+    },
+    {
+     "cluster": "s06",
+     "what": "the second watch tower with two hide tents",
+     "verdict": "kept",
+     "why": "the record's hide tents; a second watch over the approach"
+    },
+    {
+     "cluster": "s10",
+     "what": "rock outcrops and cypress east of the camp",
+     "verdict": "kept",
+     "why": "the marsh's own ground; one rock before the longhouse door and a cypress inside it removed"
     },
     {
      "structure": "walls",
-     "what": "the orc stronghold's palisade walls",
-     "verdict": "dropped",
-     "why": "the record names no wall: hide tents and a longhouse round a fire pit, open to the reeds so the cage can be reached unseen (main quest 4)"
+     "what": "the cypress stockade scaffolds, ramps and scale fences (the tool reads stockade as a wall)",
+     "verdict": "kept",
+     "why": "they are the camp's watch towers, raised tent platforms and low fences, not a town wall; the record's danger (the cage reached unseen) holds: no fence rings the camp"
     },
     {
-     "cluster": "b01",
-     "what": "the timber longhouse (OrcLonghouse01) with two hide tents beside it",
+     "structure": "mine",
+     "what": "one plank walk (CypressStockadePlanks01, a mine-plank mesh)",
      "verdict": "kept",
-     "why": "the record's timber longhouse round the fire pit, where the guards' pay and stolen goods lie, and its hide tents"
-    },
-    {
-     "cluster": "s04",
-     "what": "three hide tents on the camp's north side",
-     "verdict": "kept",
-     "why": "the record's hide tents hung with bones"
+     "why": "a plank walk off the low platform; nothing of a mine stands"
     }
    ]
-  }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own ramp from the low scaffold deck up to the watch tower: its foot rests on the deck (CypressStockadeScaffoldFloor02, top 375, shown by a section), not on the ground; the ground ramp to the low deck is FJAFMHX18J0E"
+   },
+   {
+    "unit": "small.01",
+    "flag": "foot not reaching the ground",
+    "why": "one foot of the source's tent platform 21 over our mud (0.3 m) among feet on the ground: not seen at eye level"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "floor under the ground",
+    "why": "the longhouse set into its knoll: from the uphill east side at eye level its stone plinth shows above the ground all along; no wall is buried"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "foot buried deeper",
+    "why": "the same: the uphill corner's plinth foot in the knoll"
+   }
+  ]
  },
  "fit": {
   "pivot": [
-   -145814.0,
-   -23757.1
+   -125387.0,
+   -117312.0
   ],
   "anchor": [
    -11059.2,
    -552960.0
   ],
-  "rot_deg": 0.0,
+  "rot_deg": 90.0,
   "cost": 0.0,
-  "clusters": {
-   "b01": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s01": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -10985.7,
-     -553137.4
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s02": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s03": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s04": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11251.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s05": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s06": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s07": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -10863.3,
-     -553433.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s08": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s09": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11330.7,
-     -553231.5
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s11": {
-    "pivot": [
-     -145814.0,
-     -23757.1
-    ],
-    "to": [
-     -11059.2,
-     -552960.0
-    ],
-    "rot": 0.0,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   }
-  },
-  "separated": [
-   {
-    "cluster": "s07",
-    "dx": 195.9,
-    "dy": -473.0,
-    "clear_of": "b01"
-   },
-   {
-    "cluster": "s01",
-    "dx": 73.5,
-    "dy": -177.4,
-    "clear_of": "b01"
-   },
-   {
-    "cluster": "s04",
-    "dx": -192.0,
-    "dy": -0.0,
-    "clear_of": "b01"
-   },
-   {
-    "cluster": "s09",
-    "dx": -271.5,
-    "dy": -271.5,
-    "clear_of": "b01"
-   }
-  ],
-  "clusters_info": [
-   {
-    "id": "b01",
-    "kind": "building",
-    "head": "Skyrim.esm:0975FE",
-    "members": 175,
-    "centre": [
-     -145814.0,
-     -23757.1
-    ]
-   },
-   {
-    "id": "s01",
-    "kind": "street",
-    "head": null,
-    "members": 13,
-    "centre": [
-     -144362.1,
-     -25860.9
-    ]
-   },
-   {
-    "id": "s02",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -142915.7,
-     -21054.1
-    ]
-   },
-   {
-    "id": "s03",
-    "kind": "street",
-    "head": null,
-    "members": 8,
-    "centre": [
-     -143259.0,
-     -21798.6
-    ]
-   },
-   {
-    "id": "s04",
-    "kind": "street",
-    "head": null,
-    "members": 203,
-    "centre": [
-     -145040.9,
-     -21953.3
-    ]
-   },
-   {
-    "id": "s05",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -143544.6,
-     -20604.7
-    ]
-   },
-   {
-    "id": "s06",
-    "kind": "street",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -145154.7,
-     -20707.8
-    ]
-   },
-   {
-    "id": "s07",
-    "kind": "street",
-    "head": null,
-    "members": 25,
-    "centre": [
-     -147016.9,
-     -24696.1
-    ]
-   },
-   {
-    "id": "s08",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -145092.5,
-     -25025.8
-    ]
-   },
-   {
-    "id": "s09",
-    "kind": "street",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -147089.5,
-     -23260.8
-    ]
-   },
-   {
-    "id": "s11",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -145517.4,
-     -25642.3
-    ]
-   }
-  ],
+  "clusters": {},
+  "separated": [],
+  "clusters_info": [],
   "relief_norm": 64.0,
-  "patch_max": 105.0
+  "patch_max": 180.0
  },
  "clearance": {
   "tree": {
@@ -832,11 +186,7 @@
   "sha": "55a7b4621b93be314c702d8a8be57d0cbdd3f102ce5456e6f347a95fdeddcafc",
   "stamp": "85df25bc9f0c645b"
  },
- "source": {
-  "bundle": "src.skyrim.dushnikhyallocation",
-  "stamp": "1d45dc45625dd059"
- },
- "radius_m": 130,
+ "radius_m": 45,
  "counts": {
   "source_refs": 520,
   "placed": 439,
@@ -855,5 +205,28 @@
   },
   "beds": 9
  },
- "draft_key": "22a7262c9e40d3f7"
+ "draft_key": "22a7262c9e40d3f7",
+ "wholesale": {
+  "offset": 290.0,
+  "band": 1828.0,
+  "pieces": 221,
+  "dropped": 256,
+  "raised_max": 363.0,
+  "lowered_max": 178.7,
+  "band_steepest_deg": 59.1,
+  "source_water_area_m2": 0,
+  "held_by_water": 108
+ },
+ "agent_saves_applied": [
+  "agent-20261121T090928",
+  "agent-20261121T091252",
+  "agent-20261121T092342",
+  "agent-20261121T093410",
+  "agent-20261121T094312",
+  "agent-20261121T100620",
+  "agent-20261121T100726",
+  "agent-20261121T103041",
+  "agent-20261121T110500",
+  "agent-20261121T110831"
+ ]
 }

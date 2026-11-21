@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T100620",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the dirt-bank lump two scaffold bases stood inside removed (the scaffolds stand on the mud)",
+ "at": "2026-11-21T10:06:20Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.BKAMHKAT2EG0Y786HFEAE3Q7A1",
+   "call": "fault",
+   "before": {
+    "id": "tribal-camp-m2-m68.BKAMHKAT2EG0Y786HFEAE3Q7A1",
+    "base": "King of the Murkmire.esp:03A8F1",
+    "kind": "rock",
+    "pos": [
+     -12089.14,
+     -551382.77,
+     132.69
+    ],
+    "rot": [
+     0,
+     0,
+     6.15398
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:855064",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T10:06:20Z"
+  }
+ ]
+}

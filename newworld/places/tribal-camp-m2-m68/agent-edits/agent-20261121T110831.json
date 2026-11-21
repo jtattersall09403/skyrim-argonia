@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261121T110831",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the two tower ramps sunk 30 onto the decks below them (their feet stood 67 over the deck tops, the draft rule's 48); the ruin's floating bust sunk into the rubble at its column's foot",
+ "at": "2026-11-21T11:08:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.DFSDWDX29EZ8EHA2SBWEGKBT1R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -11879.98,
+     -551679.98,
+     372.13
+    ],
+    "rot": [
+     0,
+     0,
+     5.06145
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11879.98,
+     -551679.98,
+     342.13
+    ],
+    "rot": [
+     0,
+     0,
+     5.06145
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T11:08:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.33HER4H8D4Z12SK9DK1WJKJ9T4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -11547.04,
+     -551512.12,
+     563.74
+    ],
+    "rot": [
+     0,
+     0,
+     6.63938
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11547.04,
+     -551512.12,
+     533.74
+    ],
+    "rot": [
+     0,
+     0,
+     6.63938
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T11:08:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.3AW92PGSX8YQEDJE8BFNB4EAJ6",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -12076.58,
+     -552557.9,
+     360.33
+    ],
+    "rot": [
+     0.033629354,
+     0.2,
+     4.71239
+    ],
+    "scale": 0.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -12076.58,
+     -552557.9,
+     184.03
+    ],
+    "rot": [
+     0.033629354,
+     0.2,
+     4.71239
+    ],
+    "scale": 0.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T11:08:31Z"
+  }
+ ]
+}

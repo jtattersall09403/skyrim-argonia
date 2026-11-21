@@ -1,0 +1,234 @@
+{
+ "save_id": "agent-20261121T091252",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "jar stack by the longhouse door, Sesk's cage at the west edge, the trophy pole by the fire, bone totems by the ground tents",
+ "at": "2026-11-21T09:12:52Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK014PLACE",
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -9500.0,
+     -552400.0,
+     688.49
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (record hooks and look; mn04's sap stack beside them): Skyrim's glazed urns",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK015PLACE",
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -9515.0,
+     -552455.0,
+     693.33
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.87266
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (record hooks and look; mn04's sap stack beside them): Skyrim's glazed urns",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK016PLACE",
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -9495.0,
+     -552510.0,
+     688.97
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.0944
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "jars of Hist sap stacked by the longhouse wall beside its door, more than any camp would need (record hooks and look; mn04's sap stack beside them): Skyrim's glazed urns",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK017PLACE",
+    "base": "Skyrim.esm:0AA041",
+    "kind": "static",
+    "pos": [
+     -12750.0,
+     -552300.0,
+     156.31
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -6.0
+    },
+    "why": "Sesk's Cage at the camp's west edge toward the reeds, far from both fires (record: a cage at the camp's edge; danger: the guards keep to the fire, away from the cage; mn04 thing.mn04.cage): Skyrim's MetalCage01, its door the quest's MetalCageDoor01 at its origin",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK018PLACE",
+    "base": "ArgoniaNewWorld.esm:020B7B",
+    "kind": "static",
+    "pos": [
+     -10230.0,
+     -551980.0,
+     463.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the pole of trophies by the fire before the longhouse (record look): Curse of Cipactli's tall bone totem",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK019PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:3410F7",
+    "kind": "static",
+    "pos": [
+     -11300.0,
+     -554700.0,
+     230.76
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.49066
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bones hung by a hide tent (record look: hide tents hung with bones): Cipactli's bone totem by the fire camp's tent",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T09:12:52Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK020PLACE",
+    "base": "ArgoniaNewWorld.esm:020B77",
+    "kind": "static",
+    "pos": [
+     -10880.0,
+     -554380.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "bones hung by a hide tent (record look): a bone totem by the second ground tent",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T09:12:52Z"
+  }
+ ]
+}

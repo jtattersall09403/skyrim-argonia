@@ -23,7 +23,7 @@ SLOPE_DEG = 35.0
 LEVELLED = {"LVLN", "LVLI", "LVLC"}
 
 
-def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict], dict]:
+def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: float = 1e9, keep_wet: bool = False) -> tuple[list[dict], list[dict], list[dict], dict]:
     from tools.places.extract import load_place
     fit = st.place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
@@ -35,7 +35,7 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
 
     def pt(x, y):
         dx, dy = x - pv[0], y - pv[1]
-        return an[0] + dx * c - dy * s, an[1] + dx * s + dy * c
+        return an[0] + dx * c + dy * s, an[1] - dx * s + dy * c   # clockwise, as geom.Xf and ground.carry
     ext, ledger, our_id = [], [], {}
     _, of, _ = st.clusters        # the source's own groups, as names for the look tool only; nothing is moved by them
     for r in st.src_ext:
@@ -84,8 +84,8 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
                 row.pop("linked")
     G0 = Ground.load(st.grd.path)
     pieces = [(r["pos"][0], r["pos"][1]) for r in ext]
-    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, centre, radius,
-                             cap=1e9, offset=offset, slope=SLOPE_DEG)
+    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, centre, carry_radius or radius,
+                             cap=cap, offset=offset, slope=SLOPE_DEG, keep_wet=keep_wet)
     for r in land:
         r["why"] = f"the source's whole relief carried wholesale at offset {offset:g}"
     rep.update(pieces=len(ext), dropped=sum(1 for lr in ledger if lr["status"] == "dropped"))
@@ -123,7 +123,7 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
             row = {k: q[k] for k in ("edid", "base", "kind", "pos", "rot", "scale", "layer", "flags") if k in q}
             row = {"id": io.mint(st.place_id, sp, q["id"]), **row, "src": q["id"],
                    "door": {**d, "to_space": "exterior", "to_ref": io.mint(st.place_id, "exterior", d["to_ref"]),
-                            "to_pos": [round(an[0] + dx * c - dy * s_, 2), round(an[1] + dx * s_ + dy * c, 2),
+                            "to_pos": [round(an[0] + dx * c + dy * s_, 2), round(an[1] - dx * s_ + dy * c, 2),
                                        round(float(z) + offset, 2)], "to_rot": to_rot},
                    "seat": {"mode": "free"}}
             rows.append(row)
@@ -164,7 +164,7 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
 
     def ours(x, y, z):
         dx, dy = x - pv[0], y - pv[1]
-        return (round(an[0] + dx * c - dy * s_, 1), round(an[1] + dx * s_ + dy * c, 1), round(z + offset, 1))
+        return (round(an[0] + dx * c + dy * s_, 1), round(an[1] - dx * s_ + dy * c, 1), round(z + offset, 1))
     navs = io.read_jsonl(st.src.path / "spaces" / "exterior" / "navmesh.jsonl")
     nodes, adj, base_of, links, seam = [], {}, {}, [], {}
 
@@ -259,6 +259,10 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
+    ap.add_argument("--carry-radius", type=float, default=None,
+                    help="units: the relief carried only this far from the centre (the camp's own platform), faded to ours by it")
+    ap.add_argument("--cap", type=float, default=1e9, help="units: the most the carried relief changes our ground")
+    ap.add_argument("--keep-wet", action="store_true", help="the source's pond bed carried as a mud hollow (not faded to ours)")
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
     ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
@@ -280,7 +284,7 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
-    ext, ledger, land, rep = lay(st, a.offset)
+    ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
         return 0

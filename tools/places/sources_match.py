@@ -114,8 +114,10 @@ JUDGED = {
     "thorn": ("blackmarshnorth.cluster.thorn.3.15", "the canon walled city of Thorn on the coast"),
     "toklea": ("heretherebemonsterscurseofcipactli.cluster.toil-s-end.-15.0",
                "a Kothringi river town whose one interior, the greathouse, holds the Chime-Keepers' elder (MN8)"),
-    "tribal-camp-m2-m68": ("skyrim.dushnikhyallocation",
-                           "a camp whose longhouse and cellar are the sap store and the Give ending's stronghold"),
+    "tribal-camp-m2-m68": ("kingofthemurkmire.marker.ree-an-wo",
+                           "a Naga camp in the marsh: hide tents, bedrolls, a campfire and cook spot, cypress watch "
+                           "platforms and a Naga loot chest in a Xanmeer ruin's lee; the longhouse and its cellar are "
+                           "added from Dushnikh Yal (owner, 2026-11-21: close matches for main quest places)"),
     "abandoned-village-m10-m100": ("kingofthemurkmire.rootwhispervillagelocation",
                                    "Root Whisper's tiered Argonian halls, emptied, for the clan's stilt halls round a dead Hist"),
     "khariton": ("kingofthemurkmire.cluster.eimeenuruinsext.-10.-44",

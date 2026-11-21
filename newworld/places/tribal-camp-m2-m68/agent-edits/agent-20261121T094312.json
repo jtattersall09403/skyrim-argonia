@@ -1,0 +1,225 @@
+{
+ "save_id": "agent-20261121T094312",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the longhouse fire and trophy pole moved down the new ramp to the mud at its foot (the knoll's bank was 43 deg)",
+ "at": "2026-11-21T09:43:12Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK008PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10063.0,
+     -552200.0,
+     586.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10900.0,
+     -552250.0,
+     275.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T09:43:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK009PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10063.0,
+     -552200.0,
+     648.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10900.0,
+     -552250.0,
+     337.98
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T09:43:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK011PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10009.0,
+     -552318.0,
+     587.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.49066
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10846.0,
+     -552368.0,
+     230.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.49066
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T09:43:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK012PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10116.0,
+     -552348.0,
+     473.28
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10953.0,
+     -552398.0,
+     230.28
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T09:43:12Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK018PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10230.0,
+     -551980.0,
+     463.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10950.0,
+     -552000.0,
+     230.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T09:43:12Z"
+  }
+ ]
+}
