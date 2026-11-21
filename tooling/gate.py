@@ -17,6 +17,7 @@ How a change picks its checks (the map is tooling/gate_map.toml, one comment per
   - the make stages adaptation, questtext, questform, reach, storyexplorer, atlas and consistency run the same way from their module;
   - the map's rules add stages and tests for path globs (story markdown -> the explorer and story tests, skse/** ->
     the C++ tests, and so on);
+  - a path of a map rule marked `only` (a place's edits/, the owner's saves) picks that rule's stages and nothing else;
   - a path in the map's `full` list, or a path nothing above picks up, runs the whole gate; so does any error in
     the picker itself;
   - an edit to the map is scoped like any other change: the map at the base ref against the map now, and only the
@@ -40,7 +41,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 MAP = REPO / "tooling" / "gate_map.toml"
 TEST_DIRS = ("tooling/tests", "tools/tests")
-STAGES = ("adaptation", "questtext", "questform", "reach", "storyexplorer", "atlas", "consistency", "skse")
+STAGES = ("adaptation", "questtext", "questform", "reach", "storyexplorer", "atlas", "consistency", "skse", "editsvalid")
 TOP = None  # top-level repo entries, filled lazily
 PATH_RE = re.compile(r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.*-]+)+/?$")
 MOD_RE = re.compile(r"^(tools|tooling)(\.[A-Za-z_][A-Za-z0-9_]*)+$")
@@ -53,6 +54,7 @@ class Plan:
     tests: set[str] = field(default_factory=set)
     stages: set[str] = field(default_factory=set)
     why: dict[str, str] = field(default_factory=dict)
+    inert: list[str] = field(default_factory=list)   # paths of an `only` rule: checked by their own stage, nothing else
 
 
 # ---- the dependency index -------------------------------------------------------------------------------------
@@ -240,6 +242,17 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP, base_map: s
                 plan.tests.add(t); plan.why.setdefault(t, "gate_map.toml entry " + r["globs"][0])
     if notes:
         plan.reason = "gate_map.toml entries treated as changed: " + "; ".join(notes)
+    # a path of an `only` rule (the owner's saves under a place's edits/) reaches nothing but that rule's own checks
+    only = [r for r in gate.get("rule", []) if r.get("only")]
+    plan.inert = [c for c in changed if _glob(c, [g for r in only for g in r["globs"]])]
+    for r in only:
+        for c in plan.inert:
+            if _glob(c, r["globs"]):
+                for st in r.get("stages", []):
+                    plan.stages.add(st); plan.why.setdefault(st, c)
+    changed = [c for c in changed if c not in plan.inert]
+    if not changed and not delta_rules:
+        return plan
     idx = Index(repo)
     matched: set[str] = set()
     direct = frozenset(gate.get("named_direct", []))
@@ -259,6 +272,8 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP, base_map: s
                 plan.stages.add(stage); plan.why.setdefault(stage, c); matched.add(c)
                 break
     for rule in gate.get("rule", []):
+        if rule.get("only"):
+            continue
         for c in changed:
             if _glob(c, rule["globs"]):
                 matched.add(c)
@@ -344,7 +359,13 @@ def run(plan: Plan, all_tests: list[str]) -> int:
             return rc
     for s in STAGES:
         if plan.full or s in plan.stages:
-            rc = (subprocess.run(["bash", str(REPO / "skse" / "check.sh")]).returncode if s == "skse" else _make(s))
+            if s == "editsvalid":
+                rc = subprocess.run([os.environ.get("GATE_PY", sys.executable), "-m", "tools.places.edits_valid",
+                                     *(plan.inert or ["--all"])], cwd=REPO).returncode
+            elif s == "skse":
+                rc = subprocess.run(["bash", str(REPO / "skse" / "check.sh")]).returncode
+            else:
+                rc = _make(s)
             if rc:
                 return rc
     return 0

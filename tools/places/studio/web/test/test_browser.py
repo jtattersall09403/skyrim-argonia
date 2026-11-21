@@ -215,7 +215,7 @@ def test_16_first_run_and_design(pad):
                      .filter(([, r]) => r.width < 44 || r.height < 44).map(([t, r]) => `${t} ${r.width}x${r.height}`)""")
     assert not small, f"touch targets under 44 px: {small}"
     labels = pad.ev("[...document.querySelectorAll('#rail button span')].map((s) => s.textContent)")
-    assert labels[:6] == ["Select", "Add", "People", "Land", "Plants", "Paths"]
+    assert labels[:8] == ["Select", "Add", "People", "Quests", "Land", "Plants", "Paths", "Walking"]
 
 
 # ---------- 1: two views, layout, full screen, link, fingerprint ----------
@@ -1379,3 +1379,90 @@ def test_27_thumb_sticks(pad):
     assert pad.ev("JSON.parse(localStorage.getItem('studio.sticks.v1')).walk") is True
     pad.page.click(".stick-btn[data-act=walk]")
     assert not pad.errors, pad.errors
+
+
+# ---------- 28: the walking mesh: see it, say what to change with the pen, rebuild ----------
+def test_28_walking_mesh(browser, server):
+    pad = open_pad(browser, server, {"width": 1180, "height": 820})
+    if pad.ev("studio.log.ops.length"):
+        pad.ev("studio.loadSave({ ops: [] })")
+    if pad.ev("!document.getElementById('intro').hidden"):
+        pad.page.click("#intro button")
+    pad.page.wait_for_function("studio.walkLayer.nav && studio.walkLayer.state", timeout=20000)
+    pad.page.click("#hide-src")   # our place alone: room for the mesh, its key and the panel
+    pad.page.click("#walkmesh-btn")
+    assert pad.ev("document.getElementById('walkmesh-btn').getAttribute('aria-pressed')") == "true"
+    legend = pad.page.locator("#view-ours .wm-legend")
+    assert legend.is_visible() and "Walking mesh" in legend.inner_text()
+    assert "What you see is from the last build" in legend.inner_text()
+    d = pad.ev("(() => { const c = studio.walkLayer.cache.get('exterior'); return { tris: c.data.counts.tris, islands: c.data.islands.map((i) => i.tris), drawn: c.mesh.parent === studio.walkLayer.group }; })()")
+    assert d == {"tris": 452, "islands": [2], "drawn": True}, (d, pad.ev("studio.walkLayer.focus()"))
+    look_at(pad, "ours", [4100, 3600, pad.ev("studio.terrain.heightAt(4100, 3600)")], dist=4200, pitch=1.15)
+    # a pin says what is wrong in one plain line when tapped
+    pop = pad.page.locator("#view-ours .wm-pop")
+    pad.page.wait_for_timeout(400)
+    assert pad.page.locator("#view-ours .walk-layer .wm-pin").count() == 2
+    pad.page.locator("#view-ours .walk-layer .wm-pin").first.dispatch_event("pointerdown", {"pointerType": "pen", "bubbles": True})
+    assert pop.is_visible() and ("walking mesh" in pop.inner_text())
+    pad.shot("28-walking-mesh-shown")
+    pop.get_by_role("button", name="Close").click()
+    # No walking here: an outline drawn with the pen is one op, saved
+    pad.page.click("#rail [data-tool=walking]")
+    pad.page.locator("#panel-body .seg button", has_text="No walking here").click()
+    z = pad.ev("studio.terrain.heightAt(3700, 3700)")
+    ring = [pad.screen("ours", [3700 + 300 * dx, 3700 + 300 * dy, z]) for dx, dy in ((-1, -1), (1, -1), (1, 1), (-1, 1), (-1, -1))]
+    pad.pen_drag(ring, steps=6)
+    op = pad.ev("studio.log.applied().at(-1)")
+    assert op["op"] == "walk.add" and op["walk"]["kind"] == "block" and len(op["walk"]["outline"]) >= 3, op
+    xs = [p[0] for p in op["walk"]["outline"]]
+    assert 3300 < min(xs) < 3500 and 3900 < max(xs) < 4100, xs
+    under = pad.ev("(pts) => pts.map((p) => studio.walkLayer.heightAt(p[0], p[1], p[2]))", op["walk"]["outline"])
+    assert all(g is not None and abs(p[2] - g) < 2 for p, g in zip(op["walk"]["outline"], under)), [(p, g) for p, g in zip(op["walk"]["outline"], under) if g is None or abs(p[2] - g) >= 2]   # on the walking mesh under the pen
+    assert "No walking here" in pad.page.locator("#panel-body").inner_text()
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=10000)
+    save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
+    assert any(o["op"] == "walk.add" and o["walk"]["id"] == op["walk"]["id"] for o in save["ops"])
+    # Join these: two taps on the mesh
+    pad.page.locator("#panel-body .seg button", has_text="Join these").click()
+    zj = pad.ev("studio.walkLayer.heightAt(4100, 4000, studio.terrain.heightAt(4100, 4000), 800)")
+    look_at(pad, "ours", [4100, 4000, zj], dist=2500, pitch=1.3)
+    pad.pen_tap(*pad.screen("ours", [4000, 4000, pad.ev("studio.walkLayer.heightAt(4000, 4000, %f, 800)" % zj)]))
+    pad.pen_tap(*pad.screen("ours", [4200, 4000, pad.ev("studio.walkLayer.heightAt(4200, 4000, %f, 800)" % zj)]))
+    j = pad.ev("studio.log.applied().at(-1)")
+    assert j["op"] == "walk.add" and j["walk"]["kind"] == "join" and len(j["walk"]["points"]) == 2, j
+    # a note on the chosen zone
+    pad.page.locator("#panel-body textarea").fill("the guards should not cut through the hatchery")
+    pad.page.get_by_role("button", name="Keep this zone's note").click()
+    assert pad.ev("studio.log.applied().at(-1).op") == "walk.edit"
+    assert pad.ev("[...studio.model.walk.values()].find((r) => r.kind === 'join').note") == "the guards should not cut through the hatchery"
+    # a finger drag with the Walk here tool draws too, on a tablet where no pen has been used (with a pen about a finger
+    # only moves the view: a resting palm never edits)
+    pad.ev("studio.penSeen = false")
+    pad.page.locator("#panel-body .seg button", has_text="Walk here").click()
+    pad.page.get_by_role("button", name="Line", exact=True).click()
+    a, b = pad.screen("ours", [4300, 3300, z]), pad.screen("ours", [4700, 3500, z])
+    pad.finger_drag(a, b, steps=10)
+    w = pad.ev("studio.log.applied().at(-1)")
+    assert w["op"] == "walk.add" and w["walk"]["kind"] == "walk" and w["walk"]["width"] == 256 and len(w["walk"]["outline"]) >= 4, w
+    pad.shot("28-walking-zones")
+    # rebuild: progress, then the mesh view reloads with the changes
+    pad.page.click("#walkmesh-btn")   # off: the zones still show while the Walking tool is in use
+    assert legend.is_visible()
+    pad.page.locator("#view-ours .wm-rebuild").click()
+    pad.page.wait_for_selector("#view-ours .wm-run", timeout=5000)
+    pad.page.wait_for_function("studio.walkLayer.meta && studio.walkLayer.meta.from === 'preview'", timeout=20000)
+    assert "with your changes" in legend.inner_text() or "since then" in legend.inner_text()
+    # undo takes the last zone away, redo brings it back
+    n = pad.ev("studio.model.walk.size")
+    pad.page.click("#undo")
+    pad.page.click("#undo")
+    assert pad.ev("studio.model.walk.size") == n - 1
+    pad.page.click("#redo")
+    pad.page.click("#redo")
+    assert pad.ev("studio.model.walk.size") == n
+    # the History panel says each change in plain words
+    pad.page.click("#rail [data-tool=history]")
+    h = pad.page.locator("#panel-body").inner_text()
+    assert 'Marked "No walking here"' in h and "Asked to join two walking areas" in h
+    assert not pad.errors, pad.errors
+    pad.page.context.close()

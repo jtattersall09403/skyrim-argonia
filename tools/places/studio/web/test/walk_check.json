@@ -1,0 +1,23 @@
+{
+ "at": "2026-11-21T10:00:00Z",
+ "results": {
+  "doors": {"failures": [
+   "door fx.door1: its arrival point is inside fx.house2",
+   "door fx.door2: its arrival point [5100, 2000, 64] is on no navmesh (facing a wall?)"
+  ]},
+  "navmesh": {"failures": [
+   "ArgoniaNWPlaces.esp:000801: open seam edge at [8000, 8192, 30] with navmesh across it (unjoined)",
+   "ArgoniaNWPlaces.esp:000802: tri 4 links 000803 tri 9, which does not link back (unjoined edge)"
+  ]},
+  "streets": {"failures": [
+   "street fx.s1 point [3000, 3000, 12] is off the built walkable network",
+   "street fx.s1 point [3050, 3020, 12] is off the built walkable network",
+   "street fx.s2 point [9000, 9000, 40] is off the built walkable network (a cut-off piece of 12 triangles)"
+  ]},
+  "people": {"failures": [
+   "fx.guard: ANP_fx_guard_patrol0 patrol marker 2 of 3 is not reachable from marker 1",
+   "fx.cook: ANP_fx_cook_eat1 is not reachable from the stop before",
+   "fx.cook: ANP_fx_cook_home is not a stop"
+  ]}
+ }
+}

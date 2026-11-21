@@ -1,0 +1,57 @@
+{
+ "save_id": "studio-test-move-var",
+ "place_id": "jal-veesa@pipeline",
+ "name": "studio test move",
+ "at": "2026-11-21T15:20:08Z",
+ "final": false,
+ "rev": 2,
+ "base": {
+  "draft_key": "80393ce32cb9af3e515193e3d096da876d7f56f9e6397099aa8ffe6d5828579e",
+  "ground_sha": null
+ },
+ "ops": [
+  {
+   "n": 1,
+   "at": "2026-11-21T14:52:13.078065Z",
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "jal-veesa.02F244QXPRSNS3CEBNS3VSF4NC",
+   "before": {
+    "pos": [
+     -59648.53,
+     -507878.49,
+     450.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 10.832
+    }
+   },
+   "after": {
+    "pos": [
+     -59638.53,
+     -507878.49,
+     450.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 10.832
+    }
+   }
+  }
+ ],
+ "notes": []
+}

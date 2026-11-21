@@ -243,7 +243,7 @@ def read_place(pdir: Path) -> dict:
                               "refs": jsonl(d / "refs.jsonl")}
     return {"place": json.loads((pdir / "place.json").read_text()), "spaces": spaces,
             "people": jsonl(pdir / "people.jsonl"), "clear": jsonl(pdir / "clear.jsonl"),
-            "land": jsonl(pdir / "land.jsonl"), "paths": jsonl(pdir / "paths.jsonl")}
+            "land": jsonl(pdir / "land.jsonl"), "paths": jsonl(pdir / "paths.jsonl"), "walk": jsonl(pdir / "walk.jsonl")}
 
 
 def place_key(pdir: Path, world_key: str) -> str:
@@ -1375,12 +1375,13 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
     return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in rooms.items()}}
 
 
-def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path, cleared=(), carry=None) -> tuple[list[dict], dict]:
+def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path, cleared=(), carry=None, walk=()) -> tuple[list[dict], dict]:
     """tools.navmesh over the window (touched cells + NAV_RING rings) with the place's land and collision, cut
     round everything the world has placed there (its refs shards, as the world's own navmesh is) but the world
     refs the place switches off (`cleared`: their positions); the touched cells and their first ring are ours
     (their seams are re-split at the changed neighbour), the second ring must come out byte-equal to the world's
-    own NAVM (the join is then edge for edge)."""
+    own NAVM (the join is then edge for edge). The owner's walking zones outside (`walk`, walk.jsonl rows) are applied
+    after the carried mesh and before the seams are linked (walknav.apply_exterior)."""
     from tools.navmesh import __main__ as nav, meshes, nvnm, stitch, world
     land = world.Land.load(WORLD_DIR)
     xs = [c[0] for c in touched]
@@ -1473,10 +1474,29 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
                      "nv": nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))})
     if carry is not None:   # a wholesale place's own mesh in its footprint (carried_navmesh); its links are made below
         seam["carried"] = carry(mine)
+    if walk:                # the owner's walking zones (walk.jsonl), after the hand-change rules
+        from tools.places import walknav
+        seam["walk"] = walknav.apply_exterior(mine, list(walk))
     seam["one_way_unlinked"] = unlink_one_way(mine, kept)
     # a carried cell meets a generated one up to a climb and a detail error apart in height (carrynav.WELD_Z)
     seam["joined_edges"] = join_seams(mine, 48.0 if carry is not None else 32.0)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
+
+
+def walk_cells(rows: list[dict]) -> set:
+    """The cells an owner's walking zones outside reach (each outline's or join's box, a join's reach round it): the
+    build ships them, so the zones are applied to meshes of ours."""
+    from tools.places import walknav
+    got = set()
+    for r in rows:
+        pts = r.get("points") if r.get("kind") == "join" else r.get("outline")
+        if not pts:
+            continue
+        pad = walknav.REACH if r.get("kind") == "join" else 0.0
+        xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+        got |= {(cx, cy) for cx in range(math.floor((min(xs) - pad) / CELL), math.floor((max(xs) + pad) / CELL) + 1)
+                for cy in range(math.floor((min(ys) - pad) / CELL), math.floor((max(ys) + pad) / CELL) + 1)}
+    return got
 
 
 def source_navmesh(P: dict) -> bool:
@@ -1958,13 +1978,16 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
         if source_navmesh(P):   # every cell the carried mesh can reach is ours, so its ring round them is shipped too
             touched |= footprint_cells(P["place"])
+        walk_ext = [r for r in P["walk"] if (r.get("space") or "exterior") == "exterior"]
+        touched |= walk_cells(walk_ext)
         if touched:
             objects, tally = collision_objects(S["refs"])
             polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
             carry = (lambda mine: carried_navmesh(mine, pid, pdir.parent)) if source_navmesh(P) else None
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
-                                              [r["pos"] for r in clear], carry)
+                                              [r["pos"] for r in clear], carry, walk_ext)
             nav_info["collision"] = tally
+            notes += [f"walking zone: {w}" for w in (nav_info.get("seam", {}).get("walk") or {}).get("refused", [])]
             navs += ext
         copied = [I for I in S["interiors"] if I["copy"] and not I.get("room_mesh")]
         for pl in dict.fromkeys(pl for I in copied for pl in I["src_plugins"]):  # each source plugin is read once
@@ -1984,6 +2007,12 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
                 else:
                     problem(f"space {I['space']}: no navmesh (the source has none and its collision gives no floor): "
                             f"nobody can walk in it")
+            room_walk = [r for r in P["walk"] if r.get("space") == I["space"]]
+            if room_walk and got:   # the owner's walking zones in the room (walk.jsonl)
+                from tools.places import walknav
+                wst = walknav.apply_interior(got, room_walk)
+                nav_info.setdefault("walk_rooms", {})[I["space"]] = wst
+                notes += [f"walking zone in {I['space']}: {w}" for w in wst.get("refused", [])]
             navs += got
     # a shipped mesh may lie past the cells asked of the world (an inner ring that came out unlike the world's, when
     # the window grew): its cell is asked too, so the plugin holds the cell its navmesh is written into

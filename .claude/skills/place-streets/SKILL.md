@@ -14,6 +14,9 @@ inside the footprint at the place's one transform and generates only round it an
 hand (`docs/design/place-studio.md`, Build, Navmesh). The walks carried with `draft wholesale --walks` and the
 source's patrols run on it, so nothing is laid for them. A hand change does this to it:
 
+- **The owner's walking zones** (`walk.jsonl`: No walking here, Walk here, Join these) are authoritative, like hand
+  placement: the build applies them on every rebuild; never route a street, patrol or arrival through a block zone,
+  nor move or delete a zone.
 - **Delete a source piece**: the build drops the triangles over its outline (grown by 64) and meshes that spot from
   what stands there now.
 - **Move a piece or a unit**: its own triangles go with it when they meet the mesh round its new spot; else the

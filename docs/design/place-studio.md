@@ -239,6 +239,13 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        name from it onto this row
 ledger.jsonl           one row per source ref: {src, space, status: placed|adapted|replaced|dropped, as?, why?,
                        cluster?, patch?}; every source ref has one
+walk.jsonl             the owner's walking zones, one per line (written only when it has rows): {id, kind: block |
+                       walk | join, space, outline: [[x, y, z]...] (block, walk) | points: [[x, y, z], [x, y, z]] (join),
+                       gap? (join: the most it bridges in plan, default 256, at most 512), line?, width? (a walk zone
+                       drawn as a line: the line and its width; `outline` is what the build reads), note?, by}. Each
+                       point's z is the surface the pen was on (the walking mesh there, a deck's or stair's walkable
+                       face, else the ground). The build honours them on every rebuild (Build, step 7: the owner's
+                       walking zones): a zone says what the mesh should do, never which triangles to move
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence
 ```
 
@@ -559,6 +566,7 @@ save is the list up to the cursor.
 notes:[{id, text, at}]}`.
 `rev` is raised by the server on every write. The autosave is the same shape at `out/places/autosave/<place_id>.json`
 (on disk and in the private bucket, never committed).
+A commit of only `edits/` files is gated by one cheap check, `python -m tools.places.edits_valid` (each file parses and passes the schema); the scoped gate picks no other test or stage for them (gate_map.toml, the `only` rule).
 An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...payload with before and after}`.
 
 | op | payload |
@@ -577,6 +585,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `stock.possessions.set` | `possessions` ({person, items, why} or null: removed), `before` (null: added) |
 | `stock.trader.set` | `trader` ({person, give_seq, gold, items, why, cites} or null), `before` (or null) |
 | `stock.delivery.set` | `delivery` ({give_seq, by, person?, ref?, status, why} or null), `before?` (found by the whole row) |
+| `walk.add` / `walk.remove` / `walk.edit` | `walk` (a `walk.jsonl` row), `before?`: `person.*`'s rules over `walk.jsonl` (keyed by `id`); a row of another `kind`, or an outline of fewer than three [x, y, z] points (a join's two), is a schema error |
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
@@ -674,7 +683,18 @@ GET  /api/place/<id>/nav                      the built place's walking mesh (to
                                               The studio finds people's routes on it (navroute.js), so a drawn
                                               route is the way taken in the game: every point lies on the mesh,
                                               and a stop that stands off it (a chair by a wall) is joined to the
-                                              mesh's nearest point; 404 before the first build
+                                              mesh's nearest point; 404 before the first build. A studio rebuild
+                                              (walkpreview) newer than the place's last build is served instead,
+                                              `from: "preview"`
+GET  /api/place/<id>/walkmesh                 the Walking mesh view's state (studio/walk_api.py): {nav: {from: build |
+                                              preview, built_at} | null, files_at (the place files' last change),
+                                              check: {at, results: {doors, navmesh, streets, people: {failures}}} |
+                                              null (the place's last check.json), run (the rebuild's run.json) | null,
+                                              busy: plain words while another place build holds the heavy lock | null}
+POST /api/place/<id>/walkmesh/rebuild {save_id?}  rebuilds the walking mesh from a save (default the autosave: what
+                                              the page shows) as the job_guard job walkmesh.<id> (walkpreview);
+                                              202 {job}; 409 {error} in plain words while one runs or another place
+                                              build holds the heavy lock (nothing is lost; try when it ends)
 GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
                                               [{id, space, base, name, kind, pos, src}], view: {space, at}, sent,
                                               sent_at, batch, done, done_at, reply}] (Notes for the agent, below)
@@ -743,6 +763,40 @@ track the world's land here carries, else the forest set; the build takes the gr
 screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
+
+**Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
+view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over
+the place, outside and in a room: a translucent surface lying 10 units over the ground, decks, bridges and stairs it
+was built on, one merged mesh per space (one draw, plus a faint wire close up). The main connected mesh (the largest
+island: triangles that share an edge) is a calm teal; every island cut off from it within the place's reach (its
+radius and 1,500 units) is amber with its size in triangles on a tap target (and about how many square metres);
+the world's mesh further off is quieter; door triangles are violet, marked close up. The findings of the place's
+last check (`check.json`: doors, navmesh, streets, people) are red pins where they stand (the coordinates in the
+line, else the door's arrival, else the person's patrol point or stop), findings within 160 units of each other
+sharing a pin with their count; a tap opens one plain line each ("This street runs off the walking mesh here:
+people cannot follow it."). A card at the view's right gives the key (open by itself in a wide view, a line in a
+narrow one), the mesh's age ("What you see is from the last build (date). 2 changes since then are not in it yet.":
+the place files changed after the mesh was built, or a change of a kind that reaches the mesh, refs, land, paths or
+walking zones, was made since) and Rebuild the walking mesh. Rebuild saves the autosave, starts the job and shows
+its steps (copying the place, applying your changes, building the walking mesh, reading the mesh back) every 3 s;
+when it is done the view (and people's routes) load the new mesh. While another place build holds the heavy lock
+it says so and starts nothing. The rebuild is the place's plan with its navmesh (`python -m tools.places
+walkpreview <id>`: the place files copied, the save applied to the copy, `build.plan_place`, the mesh exported from
+the plan to `out/places/walkpreview/<id>/nav.json`; no plugin is written, nothing committed): about six minutes for
+Jal-Veesa. The checks' pins stay those of the last full build.
+
+**Walking tools** (Walking in the left rail; the mesh shows while they are in use). The owner says what the mesh
+should do, never moves its triangles, so the edit holds over every rebuild: No walking here (an outline drawn with
+the pen round a spot people should not path through: through a house, off a ledge); Walk here (an outline, or a
+line with a width of 128, 256 or 400: a gap at a stair's foot, a missing link between two decks, a path over
+ground the generator refused); Join these (two taps on the mesh, with how far apart they may be: 128, 256 or 512).
+A stroke is simplified as a path's is and each point takes the surface under it at the level the pen was on: the pen's
+ray meets the walking mesh or a walkway piece's walkable face (a ref with `walk`: a deck, a bridge, steps; never a
+roof), whichever first, else the ground. Each is one `walk.add` op; Change (or a
+tap on a zone) chooses one: its round handle drags it (`walk.edit`), North, South, West and East nudge it, a note
+keeps the owner's words on it (shown over the zone), Delete removes it (`walk.remove`, also the Delete key). The
+panel lists the place's zones; History says each ("Marked \"No walking here\"", "Asked to join two walking areas").
+A finger draws only on a tablet where no pen has been used, as every tool.
 
 **Thumb sticks** (`sticks.js`). Two round sticks sit over the views, bottom left and bottom right, where the thumbs
 rest when the tablet is held in two hands; one pair drives the view last touched (with Link views on, both move).
@@ -1343,6 +1397,21 @@ their own cell (interior), as vanilla files them.
    partner's arrival marker in plan and height names the door, on whichever mesh of the space holds it (outside,
    the arrival's cell or one beside it); a prison marker's teleport is an arrest's, never a way people walk, and
    names no triangle. The NAVI override carries our NVMI only.
+   **The owner's walking zones** (`walk.jsonl`, `tools/places/walknav.py`), after the hand-change rules (a wholesale
+   place's carried mesh and its zones) and before the seams are linked (outside, in `exterior_navmesh`, every cell a
+   zone's outline or a join's reach touches being shipped) and before `finish_navmesh` (a room, its navmeshes first
+   joined into one). A zone holds its own level: only mesh within 96 of the surface its outline was drawn on (its
+   points' heights spread over its own triangles) is cut, so a deck over it or the ground under it stays. In id
+   order, blocks, then walk zones, then joins: a **block** cuts every triangle along its
+   outline (as convex parts: ear clipping, neighbours merged while convex) and drops what is inside; a **walk** zone
+   cuts what lay inside the same way and meshes the outline itself, each corner on the mesh that was there within a
+   step (64) of the height the pen read, else at that height; a **join** finds the open edge (not a cell border)
+   nearest each of its points (within 192 in plan and 128 in height) and bridges a strip 128 wide between them when
+   they are within its `gap` (at most 512) in plan, a step (64) in height and the walkable 45 degrees, else it is
+   refused with a note that says why ("walking zone: join <id>: the two edges are 140 apart in height, more than a
+   step (64)"). Each changed cell is then finished as a carried cell is (vertices within 8 of an outline put on it
+   first, T-junctions split, short edges merged, flat triangles dropped: no slivers), its NVNM replaced whole and
+   its links opened for `join_seams`. The seventeen checks judge the result as usual.
 8. Assemble every shard into the plugin (`ArgoniaPlacesBuild write`); the world ESM is read, never written.
 
 **Deploy** (run by the lead after the owner's walk; the build never deploys): `infra/gpu-box/places_deploy.sh`
