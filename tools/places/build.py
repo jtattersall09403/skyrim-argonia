@@ -1704,13 +1704,20 @@ def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
         for _, j, q, _ in open_edges(o, axis, line_v):
             for w in (o["nv"].tris["v"][j][q], o["nv"].tris["v"][j][(q + 1) % 3]):
                 pts[int(w)] = ov[int(w)]
+        # a vertex's snap: SEAM_SNAP, or under half the way to the next border vertex of its own side, so two vertices
+        # o keeps apart (a sliver edge on the seam) are told apart here too and the sliver gets its own partner
+        us = sorted((float(p[1 - axis]), w) for w, p in pts.items())
+        snap = {}
+        for r, (u, w) in enumerate(us):
+            gaps = [abs(u - us[r + d][0]) for d in (-1, 1) if 0 <= r + d < len(us)]
+            snap[w] = min([SEAM_SNAP] + [g / 2 - 0.01 for g in gaps if g / 2 - 0.01 > 0.01])
         for _, i, k, _ in open_edges(n, axis, line_v):
             v = np.asarray(nv.verts, np.float64)
             a, b = v[nv.tris["v"][i][k]], v[nv.tris["v"][i][(k + 1) % 3]]
             lo, hi = sorted((a[1 - axis], b[1 - axis]))
-            for p in pts.values():
+            for w, p in pts.items():
                 u = p[1 - axis]
-                if lo + SEAM_SNAP < u < hi - SEAM_SNAP:
+                if lo + snap[w] < u < hi - snap[w]:
                     f = (u - a[1 - axis]) / (b[1 - axis] - a[1 - axis])
                     m = a + f * (b - a)
                     if abs(m[2] - p[2]) <= tol_z:
