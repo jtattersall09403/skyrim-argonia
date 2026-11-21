@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T110500",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the trophy pole scaled 1.6 to read as a pole of trophies over a person and the ferns",
+ "at": "2026-11-21T11:05:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK018PLACE",
+   "call": "taste",
+   "before": {
+    "pos": [
+     -10750.0,
+     -552350.0,
+     230.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10750.0,
+     -552350.0,
+     230.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T11:05:00Z"
+  }
+ ]
+}

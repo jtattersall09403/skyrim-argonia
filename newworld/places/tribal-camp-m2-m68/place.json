@@ -92,7 +92,29 @@
      "why": "a plank walk off the low platform; nothing of a mine stands"
     }
    ]
-  }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own ramp from the low scaffold deck up to the watch tower: its foot rests on the deck (CypressStockadeScaffoldFloor02, top 375, shown by a section), not on the ground; the ground ramp to the low deck is FJAFMHX18J0E"
+   },
+   {
+    "unit": "small.01",
+    "flag": "foot not reaching the ground",
+    "why": "one foot of the source's tent platform 21 over our mud (0.3 m) among feet on the ground: not seen at eye level"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "floor under the ground",
+    "why": "the longhouse set into its knoll: from the uphill east side at eye level its stone plinth shows above the ground all along; no wall is buried"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "foot buried deeper",
+    "why": "the same: the uphill corner's plinth foot in the knoll"
+   }
+  ]
  },
  "fit": {
   "pivot": [
@@ -203,6 +225,7 @@
   "agent-20261121T094312",
   "agent-20261121T100620",
   "agent-20261121T100726",
-  "agent-20261121T103041"
+  "agent-20261121T103041",
+  "agent-20261121T110500"
  ]
 }
