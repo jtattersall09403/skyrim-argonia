@@ -220,7 +220,7 @@ It is to be built from Ree-An-Wo in King of the Murkmire.esp (a hamlet: 31 build
 
 ### Teel-Fen Weir
 
-An outpost, about 80 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 5 people live there. It is drafted: its place files are in newworld/places/outpost-m6-m66. <!-- place:outpost-m6-m66 -->
+An outpost, about 130 m across, sited on riverbank, of The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel). In 4E 201 it is inhabited, held by Veesa-Teeleel weir-wardens; 5 people live there. It is drafted: its place files are in newworld/places/outpost-m6-m66. <!-- place:outpost-m6-m66 -->
 
 Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the creek south of the town. A young Hist rose here from the roots of Jal-Veesa's tree, and the wardens' families tend it beside their traps. <!-- place_note:outpost-m6-m66/overview --> Three scale-hide tents stand on cypress platforms, raised on posts round the head of the creek. The camp has a landing, boats, a fire and a drying rack for fish. Plank walkways run from the platforms to the young Hist on the camp's west side. Three nights ago the young Hist's scar closed over a grey paste. The wardens and Heem-Jasa did not put it there. <!-- place_note:outpost-m6-m66/present --> Five Veesa-Teeleel live here: two wardens, two kin of the wardens and Heem-Jasa, who minds the young Hist. <!-- place_note:outpost-m6-m66/people --> The weirs here belong to the Sedge-Wardens, the Veesa-Teeleel who keep the traps for Jal-Veesa. <!-- place_note:outpost-m6-m66/history -->
 

@@ -226,7 +226,7 @@
   "sha": "8e7fc35f50767b002d6d75f9d8459c0c76a15dee44e9629a2949eac1ced79823",
   "stamp": "1e55808f3184277b"
  },
- "radius_m": 40,
+ "radius_m": 65,
  "wholesale": {
   "offset": 0.0,
   "band": 664.0,

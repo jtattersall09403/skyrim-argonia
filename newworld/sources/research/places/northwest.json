@@ -6570,7 +6570,7 @@
    "status": "inhabited",
    "held_by": "Veesa-Teeleel weir-wardens",
    "population": 5,
-   "footprint_radius_m": 40,
+   "footprint_radius_m": 65,
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 1,
