@@ -53,7 +53,9 @@ code changes.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
 3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
    [units | --until-feet-buried]`, `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `steps <deck,
-   structure or door> <point or thing>`. A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
+   structure, walkway or door> <point or thing>`, `land <x,y> <radius> <dz> --why "<why>"` (raise or lower the ground
+   inside the footprint, eased to nothing at the radius, refused past the land bound: a mud mound under legs that
+   stop short, a bank at a walk's free end; when a mound would need more, bring the unit down instead). A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
    is never moved without its deck unless `--piece` is given; `move` and
    `sink` answer with each deck's height over the ground before and after, which is the number to judge. A copy
    is seated where it stands and carries the reason you give it. `steps` lays one flight of the place's own kit

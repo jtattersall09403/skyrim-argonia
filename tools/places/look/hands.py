@@ -59,7 +59,13 @@ def decks(sc, rows: list[dict]) -> list[tuple[dict, float, tuple]]:
     have = {id(t[0]) for t in got}
     for r in rows:
         if id(r) not in have and r.get("kind") == "building":
-            d = platform_top(sc.bases.get(r["base"]) or {})
+            b = sc.bases.get(r["base"]) or {}
+            d = platform_top(b)
+            if d is None:   # a walkway's own level deck: a flight may leave its end as from any deck
+                try:
+                    d = _walk().deck_rect(b)
+                except Exception:  # noqa: BLE001
+                    d = None
             if d is not None:
                 got.append((r, r["pos"][2] + d[0] * float(r.get("scale") or 1.0), d[1]))
     return got

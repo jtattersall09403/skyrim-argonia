@@ -15,7 +15,7 @@ from tools.places.look import canopy, capture, draw, framing, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op")
+HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -958,6 +958,8 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         return _place(sc, pos, o, sess)
     if verb == "op":
         return _raw_ops(pos)
+    if verb == "land":
+        return land_ops(sc.files, sc.ground, pos, o)
     th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
@@ -1035,6 +1037,49 @@ def _place(sc, pos, o, sess) -> list[dict]:
            "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": 1, "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}
     return [{"op": "ref.add", "space": sc.space, "call": "fault", "ref": row}]
+
+
+def land_ops(files: dict, ground, pos, o) -> list[dict]:
+    """`land <x,y> <radius> <dz> --why "<why>"`: raise (dz > 0) or lower the ground by dz at x,y, easing to nothing at
+    radius (a cosine), as one land.patch per cell the circle reaches: a mound under legs, a bank at a walk's end. Inside
+    the place's footprint only; every vertex's patch stays within the draft check's land bound (`fit.patch_max`, 105)
+    and the stroke is refused when it would pass it. `undo` takes it back like any stroke."""
+    why = str(o.get("why") or "").strip()
+    if len(pos) < 3 or not why:
+        raise ValueError('land <x,y> <radius> <dz> --why "<why>"')
+    x0, y0 = (float(v) for v in pos[0].split(",")[:2])
+    rad, dz = float(pos[1]), float(pos[2])
+    place = files["place"]
+    bound = float((place.get("fit") or {}).get("patch_max", 105.0))
+    centre = (place.get("fit") or {}).get("anchor")
+    if centre and math.dist((x0, y0), centre) + rad > float(place.get("radius_m", 0)) * 70.0 > 0:
+        raise ValueError(f"land: the circle reaches outside the place's footprint ({place.get('radius_m')} m)")
+    cur: dict = {}
+    for r in files.get("land") or []:
+        for v in r["verts"]:
+            k = (int(r["cell"][0]), int(r["cell"][1]), int(v[0]), int(v[1]))
+            cur[k] = cur.get(k, 0.0) + float(v[2])
+    add: dict = {}
+    for gx in range(int(math.floor((x0 - rad) / 128)), int(math.ceil((x0 + rad) / 128)) + 1):
+        for gy in range(int(math.floor((y0 - rad) / 128)), int(math.ceil((y0 + rad) / 128)) + 1):
+            d = math.dist((gx * 128, gy * 128), (x0, y0))
+            if d < rad:
+                add[(gx, gy)] = round(dz * (0.5 + 0.5 * math.cos(math.pi * d / rad)), 1)
+    per: dict = {}
+    for (gx, gy), a in add.items():
+        if not a:
+            continue
+        for cx in {gx // 32, (gx - 1) // 32}:
+            for cy in {gy // 32, (gy - 1) // 32}:
+                col, row = gx - cx * 32, gy - cy * 32
+                if 0 <= col <= 32 and 0 <= row <= 32 and (ground is None or (cx, cy) in ground.cells):
+                    b = round(cur.get((cx, cy, row, col), 0.0), 3)
+                    if abs(b + a) > bound:
+                        raise ValueError(f"land: vertex {gx},{gy} would be patched by {b + a:.0f}, past the land bound {bound:.0f}: "
+                                         "bring the unit down instead")
+                    per.setdefault((cx, cy), []).append([row, col, b, round(b + a, 3)])
+    return [{"op": "land.patch", "cell": [cx, cy], "verts": sorted(v), "call": "fault", "note": why}
+            for (cx, cy), v in sorted(per.items())]
 
 
 def _raw_ops(pos) -> list[dict]:
