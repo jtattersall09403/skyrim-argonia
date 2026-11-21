@@ -592,6 +592,31 @@
     "unit": "house.SeekhatTreeminderHut",
     "flag": "foot not reaching the ground",
     "why": "the source's own: its deck corner stands over the cliff, posts down onto the rocks (looked at from E, eye, 2026-11-21)"
+   },
+   {
+    "unit": "house.SeekhatSmithyHut",
+    "flag": "foot not reaching the ground",
+    "why": "its walls meet the ground on every side (looked at from E, S and W, eye, 2026-11-21); the 52 is its porch plank over a shallow hollow in front of the door, no daylight under it at eye level. The source's posts and steps under that porch (150DC5, 184249) stood in the source's water and are dropped by the draft's water rule: a decision for the next draft run"
+   },
+   {
+    "unit": "small.02",
+    "flag": "foot not reaching the ground",
+    "why": "the hatchery: its eggs lie in the woven nest that stands in the steaming mud (looked at from S, 2026-11-21); the 43 is an egg on the nest, not on the ground"
+   },
+   {
+    "unit": "small.02",
+    "flag": "foot buried deeper than its leg",
+    "why": "the hatchery's steam pool is a pool: its mesh sinks into its own hollow"
+   },
+   {
+    "unit": "added.house.SeekhatEggTendersQuarters",
+    "flag": "floor under the ground",
+    "why": "the hut sits on the ground with its walls meeting it all round and its door 10 over the ground with its own step piece (looked at from S, eye, 2026-11-21); raising it 12 left a 18 gap under its low corner and the door 22 up, so it stays: the floor under the ground is the interior's floor plate, hidden inside a closed hut whose room is its own cell"
+   },
+   {
+    "unit": "added.house.SeekhatEggTendersQuarters",
+    "flag": "foot not reaching the ground",
+    "why": "as above: the 6 is the door sill over its step piece"
    }
   ],
   "sap": {
@@ -599,12 +624,17 @@
     "7SWK29SQSJ276Q5JVM1M6FCTK4": [
      1450.0,
      -250.0
+    ],
+    "RNQ1281B2E5X8752E8TM05G1YV": [
+     30.0,
+     260.0
     ]
    },
    "scale": {
-    "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4
+    "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4,
+    "RNQ1281B2E5X8752E8TM05G1YV": 0.85
    },
-   "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21)"
+   "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21) The hatchery gland's pool (RNQ1281B) placed by hand some 260 north of the gland, on the open ground between the gland and the boardwalk beside it, where a person on the boardwalk looks onto it; small (scale 0.85, some 300 across): the stage's own spot lay under the grove's floor and roots, seen by nobody (2026-11-21)."
   }
  },
  "fit": {
@@ -1431,7 +1461,8 @@
   "agent-20261121T041434",
   "agent-20261121T041650",
   "agent-20261121T050221",
-  "agent-20261121T050732"
+  "agent-20261121T050732",
+  "agent-20261121T052145"
  ],
  "steps": {
   "kit": [

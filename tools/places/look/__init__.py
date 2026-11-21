@@ -10,7 +10,7 @@ Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per
 Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--rooms]: the place walked as a player,
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
-failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries.
+failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries; `at` [--distance k] stands k times as far.
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |

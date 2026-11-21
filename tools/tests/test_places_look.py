@@ -594,6 +594,8 @@ def test_candidates_and_tall():
     assert {s for s, *_ in c[:5]} == {"n", "ne", "nw", "e", "w"}
     assert framing.is_tall([0, 0, 0], [400, 400, 2000]) and not framing.is_tall([0, 0, 0], [1500, 1400, 1540])
     assert framing.base_box([0, 0, 0], [400, 400, 2000])[1][2] == 400
+    far = framing.candidates("n", "eye", distance=2.0)
+    assert far[0] == ("n", "eye", 2.0, False) and ("n", "eye", 3.2, False) in far
 
 
 def test_stand_steps_out_of_pieces_onto_the_floor():

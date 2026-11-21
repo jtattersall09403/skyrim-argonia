@@ -178,7 +178,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False})
+                          "once": False, "grid": False, "distance": True})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -500,7 +500,8 @@ def framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, s
 
     def first_good(sub, hh0, title, part=False):
         best = None
-        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12):
+        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12,
+                                                   distance=float(o.get("distance") or 1.0)):
             c = make_cam(sc, place, sub, s, hh, w, h, o, inside, scale, gz)
             att = {"view": title, "side": s, "height": hh, "distance": scale, "canopy_cut": cut}
             if c is None:
