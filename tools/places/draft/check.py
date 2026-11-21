@@ -56,6 +56,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     G.apply_patches(land)
     S = src.ground
     refs = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
+    # a piece placed by hand from another plugin is known by its catalogue base (a bedroll is a bed), as the stages know it
+    bases.update(io.catalogue_bases({r["base"] for r in refs if r.get("base")} - set(bases)))
     ledger = io.read_jsonl(pdir / "ledger.jsonl")
     paths = io.read_jsonl(pdir / "paths.jsonl")
     folk = io.read_jsonl(pdir / "people.jsonl")

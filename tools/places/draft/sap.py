@@ -242,6 +242,7 @@ def faults(ext: list[dict], bases: dict, none=()) -> list[str]:
     skip = {n.get("on") if isinstance(n, dict) else n for n in none or ()}
     out = []
     owned = {id(owner_of(p, hists)) for p in pools}
+    owned |= {id(t) for p in pools if ".sap." not in p["id"] for t in hists if hand_holds(p, t)}
     for t in pooled(ext, bases):
         if id(t) not in owned and t["id"] not in skip:
             out.append(f"{t['id']}: a Hist without its sap pool")
