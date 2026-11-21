@@ -138,6 +138,7 @@ def resolve_districts(st: Standing, ext: list[dict], G0: Ground, pt, of: dict) -
             need.sort()
             off = need[len(need) // 2]
         out.append({"name": d["name"], "offset": round(float(off), 1), "clusters": sorted(cl),
+                    **({"terrace": False} if d.get("terrace") is False else {}),
                     "at": heights.thin((r["pos"][0], r["pos"][1]) for r in mine)})
     return out
 

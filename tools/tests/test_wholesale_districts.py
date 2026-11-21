@@ -68,6 +68,17 @@ def test_a_fixed_offset_and_the_terrace_capped(monkeypatch):
     assert 100.0 + 150 < G1.height(7000, 2000) < 100.0 + 200
 
 
+def test_a_district_without_its_terrace(monkeypatch):
+    # a landing whose source ground was the sea bed: laid rigidly at its offset, our ground kept about it
+    st = _standing(monkeypatch, [{"name": "landing", "clusters": ["b02"], "offset": 0, "terrace": False}])
+    ext, _, land, rep = wholesale.lay(st, 0.0, cap=280.0)
+    assert {r["src"]: r["pos"][2] for r in ext}["high.house"] == 1040.0
+    assert rep["districts"][0]["terrace"] is False
+    G1 = _ground(lambda x, y: 100.0)
+    G1.apply_patches(land)
+    assert abs(G1.height(7000, 2000) - 100.0) < 1
+
+
 def test_the_carried_mesh_reads_the_districts():
     place = {"fit": {"pivot": [0.0, 0.0], "anchor": [0.0, 0.0], "rot_deg": 0.0},
              "wholesale": {"offset": 5.0, "districts": [{"name": "high", "offset": -900.0, "at": [[7000.0, 0.0]]}]}}
