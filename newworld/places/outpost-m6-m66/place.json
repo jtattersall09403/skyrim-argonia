@@ -199,5 +199,19 @@
     "on": "1TM9YA0T28YKK1KV2ZZDH3QYCM"
    }
   ]
+ },
+ "clearance": {
+  "tree": {
+   "building": 0.0,
+   "door": 51.1,
+   "street": 0.0,
+   "samples": 112
+  },
+  "low": {
+   "building": 210.5,
+   "door": 487.2,
+   "street": 0.0,
+   "samples": 31
+  }
  }
 }

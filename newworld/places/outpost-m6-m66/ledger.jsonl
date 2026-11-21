@@ -226,14 +226,14 @@
 {"src":"King of the Murkmire.esp:673020","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:673021","space":"exterior","status":"placed","as":"outpost-m6-m66.1K4RDFW6TZGMBD8A3HAFDXCVYS"}
 {"src":"King of the Murkmire.esp:7D44EA","space":"exterior","status":"dropped","why":"a person: the place's people come from its people rows"}
-{"src":"King of the Murkmire.esp:7D44EF","space":"exterior","status":"placed","as":"outpost-m6-m66.FEGVB7WQPAK9DMPHK2Z9VT9NDV"}
+{"src":"King of the Murkmire.esp:7D44EF","space":"exterior","status":"dropped","why":"a trigger (defaultSetStageTRIGPlayerOnly, script defaultsetStageTrigSCRIPT) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
 {"src":"King of the Murkmire.esp:7D44F0","space":"exterior","status":"dropped","why":"a person: the place's people come from its people rows"}
 {"src":"King of the Murkmire.esp:7D44F1","space":"exterior","status":"placed","as":"outpost-m6-m66.8YQAH3EYGSC3JFABWMV1TC170C"}
 {"src":"King of the Murkmire.esp:7D44F2","space":"exterior","status":"placed","as":"outpost-m6-m66.TECMVMM2C5ANK6QQ3NW949YDXE"}
 {"src":"King of the Murkmire.esp:7D44F3","space":"exterior","status":"placed","as":"outpost-m6-m66.Y2SVH6E7Q3J4XAFVC5JNTM0SNZ"}
 {"src":"King of the Murkmire.esp:7EDC86","space":"exterior","status":"placed","as":"outpost-m6-m66.2KGZ0K1EJ4ASGP14WH2WPQJWFP"}
 {"src":"King of the Murkmire.esp:7F2E22","space":"exterior","status":"placed","as":"outpost-m6-m66.TWN2FC0GSDGRN4RM1A3310YXY3"}
-{"src":"King of the Murkmire.esp:7F2E25","space":"exterior","status":"placed","as":"outpost-m6-m66.71K31N5F427TW4FQKMRB0JNMNE"}
+{"src":"King of the Murkmire.esp:7F2E25","space":"exterior","status":"dropped","why":"a trigger (defaultSetStageTRIGPlayerOnly, script defaultsetStageTrigSCRIPT) whose activation reaches nothing the place keeps (no ref follows it, it links to none): the source's quest or scene, not ours"}
 {"src":"King of the Murkmire.esp:8C7036","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:8CC20D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"King of the Murkmire.esp:8CC20E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
