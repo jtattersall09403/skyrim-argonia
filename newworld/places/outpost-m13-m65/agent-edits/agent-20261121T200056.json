@@ -1,0 +1,109 @@
+{
+ "save_id": "agent-20261121T200056",
+ "place_id": "outpost-m13-m65",
+ "name": "two Reach trees and a dead shrub that stood inside the mess tent once it moved east off the bank, their trunks through its canvas, removed",
+ "at": "2026-11-21T20:00:56Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.EVBP6TKS505S7RACNNNMFWKP47",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.EVBP6TKS505S7RACNNNMFWKP47",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -100389.42,
+     -527820.48,
+     224.87
+    ],
+    "rot": [
+     0.01104978,
+     0.005332227,
+     11.37439
+    ],
+    "scale": 0.91999996,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E6A3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T20:00:56Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GMZJNCSXPPPNMYKA4QT7SGYPEP",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.GMZJNCSXPPPNMYKA4QT7SGYPEP",
+    "base": "Skyrim.esm:0B8A73",
+    "kind": "tree",
+    "pos": [
+     -100421.92,
+     -527580.15,
+     192.77
+    ],
+    "rot": [
+     -0.010732254,
+     0.0068006106,
+     10.34337
+    ],
+    "scale": 0.82,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:04E6A4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T20:00:56Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.11WAKBX1K8M8DFMRANNAD5RGN6",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.11WAKBX1K8M8DFMRANNAD5RGN6",
+    "base": "Skyrim.esm:0A731C",
+    "kind": "tree",
+    "pos": [
+     -100317.31,
+     -527693.68,
+     203.97
+    ],
+    "rot": [
+     0,
+     0,
+     8.96614
+    ],
+    "scale": 0.96,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0CBB2E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T20:00:56Z"
+  }
+ ]
+}
