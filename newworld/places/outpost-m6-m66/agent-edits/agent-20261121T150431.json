@@ -1,0 +1,1849 @@
+{
+ "save_id": "agent-20261121T150431",
+ "place_id": "outpost-m6-m66",
+ "name": "units onto our ground: the south-west platform (house.03) up 130 to stand over its higher ground, the waterside platforms and plank (dock.01) up 80, the north platform up 30, the second boat from dry mud onto the creek by the first; the Hist's hall entrance pruned (no room behind it); four glands 40 up onto their places on the scaled trunk",
+ "at": "2026-11-21T15:04:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.KKET59A47P4EW7QDBGF6E001FQ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44984.03,
+     -540562.14,
+     2.85
+    ],
+    "rot": [
+     0,
+     0,
+     4.30866
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44984.03,
+     -540562.14,
+     132.85
+    ],
+    "rot": [
+     0,
+     0,
+     4.30866
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.C7H7MMQA7FY3PYA04BTNYM6CQ4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44675.78,
+     -540268.36,
+     33.69
+    ],
+    "rot": [
+     0,
+     0,
+     5.87945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44675.78,
+     -540268.36,
+     163.69
+    ],
+    "rot": [
+     0,
+     0,
+     5.87945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9H6PBN7P4Z6V1BVNGTXA01K4RJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43944.97,
+     -540503.94,
+     34.44
+    ],
+    "rot": [
+     0,
+     0,
+     2.26706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43944.97,
+     -540503.94,
+     164.44
+    ],
+    "rot": [
+     0,
+     0,
+     2.26706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.18KF8T3ZT0W9WNREDAJS2SY131",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43932.21,
+     -540964.72,
+     33.69
+    ],
+    "rot": [
+     0,
+     0,
+     5.07945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43932.21,
+     -540964.72,
+     163.69
+    ],
+    "rot": [
+     0,
+     0,
+     5.07945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1E3XSWZF40F3WJYB2WXKZXMRSW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45221.71,
+     -540411.28,
+     77.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45221.71,
+     -540411.28,
+     207.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.XT9E6E4273SDCGAD7H5TJWXZ2Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45192.12,
+     -540480.54,
+     77.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45192.12,
+     -540480.54,
+     207.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.4JSC8WA7N4CXYZT558JWGKM7Z0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44918.57,
+     -540662.94,
+     102.05
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44918.57,
+     -540662.94,
+     232.05
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5GRKXPYKTYZRPZSDM0VA3VH4YH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44843.24,
+     -540592.47,
+     77.34
+    ],
+    "rot": [
+     0,
+     0,
+     4.29627
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44843.24,
+     -540592.47,
+     207.34
+    ],
+    "rot": [
+     0,
+     0,
+     4.29627
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.16S6M271DS8ZGCYVRV9ZEACKC8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43908.72,
+     -540354.53,
+     97.59
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43908.72,
+     -540354.53,
+     227.59
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9JRKAGG4FW1HWDT7CAQ4EGXE57",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41873.85,
+     -538367.31,
+     -36.44
+    ],
+    "rot": [
+     0,
+     0,
+     6.59406
+    ],
+    "scale": 1.25,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41873.85,
+     -538367.31,
+     43.56
+    ],
+    "rot": [
+     0,
+     0,
+     6.59406
+    ],
+    "scale": 1.25,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.VK1Z776EQE5NFKCZ3A5WAQNV2F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41721.71,
+     -537893.95,
+     -34.94
+    ],
+    "rot": [
+     0,
+     0,
+     6.59406
+    ],
+    "scale": 1.25,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41721.71,
+     -537893.95,
+     45.06
+    ],
+    "rot": [
+     0,
+     0,
+     6.59406
+    ],
+    "scale": 1.25,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.38FX35B7EQ8KQZ72HY9AMVQ0X9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42225.3,
+     -537980.46,
+     16.0
+    ],
+    "rot": [
+     0,
+     0,
+     2.89626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42225.3,
+     -537980.46,
+     96.0
+    ],
+    "rot": [
+     0,
+     0,
+     2.89626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WJPQPQSH9AECARKCYY262EAEB0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41970.66,
+     -537812.88,
+     54.36
+    ],
+    "rot": [
+     0,
+     0,
+     5.02326
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41970.66,
+     -537812.88,
+     134.36
+    ],
+    "rot": [
+     0,
+     0,
+     5.02326
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.XG3CJS5Z6RF4PAKDADM0PNSB9G",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41849.43,
+     -538054.46,
+     79.74
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41849.43,
+     -538054.46,
+     159.74
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 14,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.XDMPRQ6PSZF6JP4PR9SRQY1W05",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41796.99,
+     -538132.32,
+     77.83
+    ],
+    "rot": [
+     0,
+     0,
+     3.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41796.99,
+     -538132.32,
+     157.83
+    ],
+    "rot": [
+     0,
+     0,
+     3.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.N9N8A1DY7ZTT8VG7KQB064DDE0",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41780.27,
+     -538025.28,
+     79.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.49626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41780.27,
+     -538025.28,
+     159.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.49626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.0RZFM4JJCGWSXWZQ9ZRZQBA7EZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41940.49,
+     -537681.48,
+     79.62
+    ],
+    "rot": [
+     0,
+     0,
+     7.17945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41940.49,
+     -537681.48,
+     159.62
+    ],
+    "rot": [
+     0,
+     0,
+     7.17945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 17,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.0TSJE77P0H1PQTEXVKT8Z0QKJK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41860.41,
+     -537702.36,
+     54.36
+    ],
+    "rot": [
+     0,
+     0,
+     2.59626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41860.41,
+     -537702.36,
+     134.36
+    ],
+    "rot": [
+     0,
+     0,
+     2.59626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 18,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.B7NVMGDE97X3P7QPXGW008QVC7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41913.23,
+     -538713.33,
+     -6.09
+    ],
+    "rot": [
+     -1.5707965,
+     -0.57079643,
+     2.96706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41913.23,
+     -538713.33,
+     73.91
+    ],
+    "rot": [
+     -1.5707965,
+     -0.57079643,
+     2.96706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 19,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.V9W0V10H5GJVW7NZZ8YDWTEH8T",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41852.23,
+     -538747.84,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.09626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41852.23,
+     -538747.84,
+     80.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.09626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 20,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.SBBNHEBAEHCYGPAWGAZ5E6SYTM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42056.84,
+     -538547.09,
+     46.1
+    ],
+    "rot": [
+     0,
+     0,
+     3.29626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42056.84,
+     -538547.09,
+     126.1
+    ],
+    "rot": [
+     0,
+     0,
+     3.29626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 21,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.38765RGZGA8NXG7E1GJNDB79SB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42219.37,
+     -538516.31,
+     54.42
+    ],
+    "rot": [
+     0,
+     0,
+     4.09626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42219.37,
+     -538516.31,
+     134.42
+    ],
+    "rot": [
+     0,
+     0,
+     4.09626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 22,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.SHT7PSV3G9QK7AGV1RGJSR9MP3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42097.68,
+     -538356.66,
+     54.36
+    ],
+    "rot": [
+     0,
+     0,
+     3.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42097.68,
+     -538356.66,
+     134.36
+    ],
+    "rot": [
+     0,
+     0,
+     3.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 23,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1VTHB338986MSAGT4ZDSBVY685",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41863.23,
+     -538423.08,
+     54.36
+    ],
+    "rot": [
+     0,
+     0,
+     3.69626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41863.23,
+     -538423.08,
+     134.36
+    ],
+    "rot": [
+     0,
+     0,
+     3.69626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 24,
+   "stroke": 2,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5SCJEDAGZ6PGVSJQ3WNT7Q7B1F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43209.25,
+     -539806.42,
+     -48.59
+    ],
+    "rot": [
+     -0.05564795,
+     -0.16890801,
+     4.20556
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42350.25,
+     -539050.42,
+     -24.59
+    ],
+    "rot": [
+     -0.05564795,
+     -0.16890801,
+     4.20556
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 25,
+   "stroke": 3,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.8YQAH3EYGSC3JFABWMV1TC170C",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43214.62,
+     -539455.92,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42355.62,
+     -538699.92,
+     24.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 26,
+   "stroke": 3,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.R7HVN4CD4C8V3HD4YWA7X6A0XR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43043.47,
+     -538112.36,
+     -22.67
+    ],
+    "rot": [
+     0,
+     0,
+     6.10865
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43043.47,
+     -538112.36,
+     7.33
+    ],
+    "rot": [
+     0,
+     0,
+     6.10865
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.T34N6JD1CSW06KWGBN1TXHYT28",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42893.86,
+     -538565.97,
+     -25.07
+    ],
+    "rot": [
+     6.2308254,
+     6.2482786,
+     3.09627
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42893.86,
+     -538565.97,
+     4.93
+    ],
+    "rot": [
+     6.2308254,
+     6.2482786,
+     3.09627
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 28,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.DA9VHAM9EG08TBX4FW2WT66F0E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43352.82,
+     -538077.01,
+     51.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43352.82,
+     -538077.01,
+     81.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 29,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9GJ86J7DBJZVWK9YPW16H2S8VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43353.08,
+     -538111.36,
+     78.61
+    ],
+    "rot": [
+     -1.5707966,
+     -1.1707964,
+     2.96706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43353.08,
+     -538111.36,
+     108.61
+    ],
+    "rot": [
+     -1.5707966,
+     -1.1707964,
+     2.96706
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 30,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1KW1MT49RMM8QKYH32ZRR01AJ4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42944.19,
+     -538161.04,
+     72.75
+    ],
+    "rot": [
+     0,
+     0,
+     3.49626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42944.19,
+     -538161.04,
+     102.75
+    ],
+    "rot": [
+     0,
+     0,
+     3.49626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 31,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.0124E35MRNEZ0J2E5E59SGH3D5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43346.46,
+     -537957.4,
+     51.82
+    ],
+    "rot": [
+     0,
+     0,
+     7.37945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43346.46,
+     -537957.4,
+     81.82
+    ],
+    "rot": [
+     0,
+     0,
+     7.37945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 32,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.6MK72HMXBWK3S6B22KQ8QMZ36Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42892.7,
+     -537891.67,
+     83.51
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1.26,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42892.7,
+     -537891.67,
+     113.51
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1.26,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 33,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.91C59QKE0FE4MKMAPCSQ3A15DP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42797.81,
+     -537902.74,
+     71.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42797.81,
+     -537902.74,
+     101.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 34,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1J3Z44G8Q7H5BVBT3N9WQT1TKE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42952.69,
+     -537862.61,
+     51.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42952.69,
+     -537862.61,
+     81.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.19626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 35,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.3NXPDYE7JEWP28S4SZA2B0HD6V",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43255.78,
+     -538334.93,
+     73.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.47945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43255.78,
+     -538334.93,
+     103.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.47945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 36,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.MHKSSYPXWWF944YBTAM44PCT1R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42332.27,
+     -538939.64,
+     104.45
+    ],
+    "rot": [
+     0,
+     0,
+     6.37945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42332.27,
+     -538939.64,
+     134.45
+    ],
+    "rot": [
+     0,
+     0,
+     6.37945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 37,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.C65Q93EEJCDTQWRW7G6KQ4DXAK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43774.19,
+     -538280.95,
+     90.91
+    ],
+    "rot": [
+     0,
+     0,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43774.19,
+     -538280.95,
+     120.91
+    ],
+    "rot": [
+     0,
+     0,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 38,
+   "stroke": 4,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.00JAH73NQZJSHKA8BEAW34GYH3",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.00JAH73NQZJSHKA8BEAW34GYH3",
+    "base": "King of the Murkmire.esp:66DD92",
+    "kind": "building",
+    "pos": [
+     -44848.27,
+     -538739.86,
+     65.8
+    ],
+    "rot": [
+     0,
+     0,
+     5.27945
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD91",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 39,
+   "stroke": 5,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.QV658NBXGBB8DQB3QBP18FPWFY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     406.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     446.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 40,
+   "stroke": 6,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RH4YW1QZAKTT6708QXEHE0M6B1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     406.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     446.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 41,
+   "stroke": 7,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WETE9R5TEP18ZB4D4MYSCVSBN4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     406.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     446.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 42,
+   "stroke": 8,
+   "at": "2026-11-21T15:04:31Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1RPR7E23DYBN024R6SFJJGHSG4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     406.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     446.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 43,
+   "stroke": 9,
+   "at": "2026-11-21T15:04:31Z"
+  }
+ ]
+}
