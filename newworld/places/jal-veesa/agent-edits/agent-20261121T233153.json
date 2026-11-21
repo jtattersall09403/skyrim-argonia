@@ -1,0 +1,96 @@
+{
+ "save_id": "agent-20261121T233153",
+ "place_id": "jal-veesa",
+ "name": "the bottle plant moved out of the middle of the sap pool to its north-west rim",
+ "at": "2026-11-21T23:31:53Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NDRE5WZVMG04D33EEDHJTEQX97",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55104.76,
+     -505787.68,
+     522.626
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55404.76,
+     -505537.68,
+     522.626
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T23:31:53Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.NDRE5WZVMG04D33EEDHJTEQX97",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55404.76,
+     -505537.68,
+     522.626
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55404.76,
+     -505537.68,
+     522.626
+    ],
+    "rot": [
+     0,
+     0,
+     2.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T23:31:53Z"
+  }
+ ]
+}
