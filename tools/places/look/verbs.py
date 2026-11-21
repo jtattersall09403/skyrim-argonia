@@ -74,7 +74,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             by = {}
             for x in f:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
-            res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f}
+            res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f,
+                   "accepted": sc.accepted_faults()}
             if space != "exterior" and not o.get("no-void"):
                 res["openings"] = voids(d, place, sess["strokes"], sc)
                 if res["openings"]:

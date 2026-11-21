@@ -631,6 +631,11 @@
     "unit": "added.house.SeekhatEggTendersQuarters",
     "flag": "foot not reaching the ground",
     "why": "as above: the 6 is the door sill over its step piece"
+   },
+   {
+    "unit": "door.jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS",
+    "flag": "its arrival point is inside",
+    "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp (box z -393..124): the doors check takes one deck height for a ramp (its top) and reads the arrival 60 under it; the arrival is on the ramp and on the navmesh (probe --mesh), 2026-11-21"
    }
   ],
   "sap": {
@@ -648,7 +653,49 @@
     "RNQ1281B2E5X8752E8TM05G1YV": "the hatchery gland: the hatchery's own steam pool is at its foot and there is no open level ground for a sap pool (five spots tried, 2026-11-21); no pool (lead's decision, 2026-11-21)"
    }
   },
-  "ground_cap": 700
+  "ground_cap": 700,
+  "accepted_faults": [
+   {
+    "id": "jal-veesa.5406066NGPD3BYPCTJ28WR4AY9",
+    "fault": "floats",
+    "why": "the source's own: its posts stand on the source's root and rock pieces under it (section 085356296-0070: post feet on the roots at ~700); roots are not support in the probe's rule; looked at from W and S, 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.5J4748PJCYFKEG44G6WMPZ3R64",
+    "fault": "floats",
+    "why": "the source's own: its posts stand on the source's root and rock pieces under it (section 085356296-0070: post feet on the roots at ~700); roots are not support in the probe's rule; looked at from W and S, 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.AJ8S26MV0BGAV18C2YPGWR9B2H",
+    "fault": "floats",
+    "why": "the source's own: its posts stand on the source's root and rock pieces under it (section 085356296-0070: post feet on the roots at ~700); roots are not support in the probe's rule; looked at from W and S, 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.KCS7WCP3BEBC3GEBB91YG7G3WJ",
+    "fault": "floats",
+    "why": "the source's own: its posts stand on the source's root and rock pieces under it (section 085356296-0070: post feet on the roots at ~700); roots are not support in the probe's rule; looked at from W and S, 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.EK5YS50M9DFAAQ63KN8YR4PYTS",
+    "fault": "unsupported end",
+    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.GY96N76EJYAC7P59R8JGHEGSV3",
+    "fault": "unsupported end",
+    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.W9NC05HAB60XX929F64D2R78ZX",
+    "fault": "unsupported end",
+    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+   },
+   {
+    "id": "jal-veesa.YEXHES44BRTPYKFJ0HJEBNNFYD",
+    "fault": "unsupported end",
+    "why": "the source's own: this span end rests on the next deck's edge (unit tiles bridge.01-.11 and dock.* show it meeting the deck); the probe measures it to the ground; 2026-11-21"
+   }
+  ]
  },
  "fit": {
   "pivot": [

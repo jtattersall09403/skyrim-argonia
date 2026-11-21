@@ -189,12 +189,20 @@ class Scene:
             self.ground = room.flat_floor(float(lo[2]))
 
     def faults(self) -> list[dict]:
+        """The open faults: every fault the probe finds less those the drafter accepted (`accepted_faults`)."""
         if getattr(self, "_faults", None) is None:
-            self._faults = geom.faults(self.pieces, self.ground, self.world)
+            found = geom.faults(self.pieces, self.ground, self.world)
             if self.space != "exterior":
                 from tools.places.look import room
-                self._faults = room.held_by_shell(self._faults, self.pieces)
+                found = room.held_by_shell(found, self.pieces)
+            self._faults, self._accepted = split_accepted(found, getattr(self, "files", None))
         return self._faults
+
+    def accepted_faults(self) -> list[dict]:
+        """The faults the drafter accepted (place.json `draft.accepted_faults`: [{id, fault, why}]), each with its
+        why: drawn and counted apart from the open ones, never in red."""
+        self.faults()
+        return self._accepted
 
     def everything(self) -> list[dict]:
         """The place's pieces and the world's solid things about it."""
@@ -320,3 +328,18 @@ def _num(s: str) -> bool:
         return True
     except ValueError:
         return False
+
+
+def split_accepted(found: list[dict], files: dict | None) -> tuple[list[dict], list[dict]]:
+    """Split probe faults into (open, accepted) by place.json `draft.accepted_faults` rows {id, fault, why}: a row
+    accepts that piece's fault of that kind (any kind when `fault` is absent)."""
+    rows = (((files or {}).get("place") or {}).get("draft") or {}).get("accepted_faults") or []
+    acc = {}
+    for r in rows:
+        acc.setdefault(r.get("id"), []).append(r)
+    open_, accepted = [], []
+    for f in found:
+        a = next((r for r in acc.get(f["id"], ()) if r.get("fault") in (None, f["fault"])), None)
+        (open_ if a is None else accepted).append(f if a is None else {**f, "accepted": a.get("why", "")})
+    return open_, accepted
+
