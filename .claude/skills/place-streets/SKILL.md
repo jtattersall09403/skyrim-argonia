@@ -32,6 +32,25 @@ lays every street, stop and patrol on the network as built.
 - **A door and its arrival are one thing**: an arrival moved by hand or with its door keeps its partner door's landing (`to_pos`) at the same point; a door moved by an edit carries both, and `streets` re-seats the arrival on the walkable ground before it.
 - **Patrols** are taken from the streets, each point on the network and out of the water, at least two points.
 
+## A wholesale place walks on its source's mesh
+
+A place drafted wholesale (its source carried whole at one transform) sets `place.json` `wholesale.navmesh:
+"source"`: the build writes the source's own walking mesh inside the footprint and generates only round it and
+where the town was changed by hand (docs/design/place-studio.md, Build, Navmesh). Its streets and paths are the
+walks carried from that mesh, so no corridor is laid for them. What the drafter does:
+
+- **Delete a source piece**: nothing more; the build drops the source's triangles over the piece's outline (grown
+  by 64) and meshes that spot from what stands there now.
+- **Move a piece or a cluster**: its own triangles go with it when they meet the mesh round its new spot; else the
+  build meshes it where it now stands. Look at the move with `look <place> at <thing> --top --mesh` after the build.
+- **Add something** (a house, a flight, a deck, a path spur): the build meshes the added piece's outline (grown) and
+  joins it to the carried mesh; a flight or spur must reach the carried walk it serves, as any added walk must.
+- **Brush the land** (a mound, a bank): the carried ground follows it; a triangle the brush makes steeper than 45
+  degrees is meshed again, and the build's `nav.seam.carried.steep` counts them.
+
+A door's triangle is the carried one under its arrival; the build notes any arrival more than a step (64) from the
+mesh. Read the carried mesh as any other: `look <place> probe --mesh`, `--mesh` views.
+
 ## Read the network
 
 Every walked span's ends first: `python -m tools.places units <place> --joints` gives one row per end (foot and head,
