@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T083307",
+ "place_id": "jal-veesa",
+ "name": "the Hist's sap pool lay under the thin top shell of the source's rock ArgoniaRockCliff10 (011C95E8) at the mound's east foot: the rock sunk 200 so its shell is under the mud there while its mound face still shows (top view 083239538-0020; eye from E 0021 and S 0022: the pool is open)",
+ "at": "2026-11-21T08:33:07Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.CXK9BZ10H3J4B90ABH011C95E8",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55640.28,
+     -505480.57,
+     577.14
+    ],
+    "rot": [
+     0.034906585,
+     6.265732,
+     3.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55640.28,
+     -505480.57,
+     377.14
+    ],
+    "rot": [
+     0.034906585,
+     6.265732,
+     3.38319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:33:07Z"
+  }
+ ]
+}
