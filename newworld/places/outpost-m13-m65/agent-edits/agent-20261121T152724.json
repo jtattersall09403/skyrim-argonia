@@ -1,0 +1,586 @@
+{
+ "save_id": "agent-20261121T152724",
+ "place_id": "outpost-m13-m65",
+ "name": "the camp's additions: the old post's gate on the landward road, the grave-stake outside it, the cook's fish rack by the fire, two bedrolls by the mess tent, bundled reed by the landing, sedge and swamp fungus on the bank",
+ "at": "2026-11-21T15:27:24Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK014PLACE",
+    "base": "Skyrim.esm:01AE14",
+    "kind": "door",
+    "pos": [
+     -99050.0,
+     -528300.0,
+     336.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the old road post's gate, still standing on the landward road into the camp (record summary: where the old road post's gate still stands): a Legion stockade gate, the kind such a post was built with",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK015PLACE",
+    "base": "King of the Murkmire.esp:01FA38",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528520.0,
+     324.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    },
+    "why": "the grave-stake outside the old post's gate (record source note: still to add the grave-stake): a cypress pole driven upright where the camp buried one of its own",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK016PLACE",
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -99640.0,
+     -528530.0,
+     334.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the cook's stall of dried fish (record: trader-general, the cook's stall of dried fish and lamp oil): a fish drying rack beside the cook's fire, where Okeeh sells",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK017PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100560.0,
+     -528050.0,
+     222.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the open by the mess tent: fifteen people sleep at the camp (record) and the tents hold eleven",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK018PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100450.0,
+     -527960.0,
+     219.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the open by the mess tent: fifteen people sleep at the camp (record) and the tents hold eleven",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK019PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101160.0,
+     -527640.0,
+     152.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.48353
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK020PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101160.0,
+     -527675.0,
+     156.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.65806
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK021PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101160.0,
+     -527710.0,
+     160.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK022PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101160.0,
+     -527658.0,
+     180.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6057
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK023PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101160.0,
+     -527693.0,
+     185.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.46608
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK024PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101200.0,
+     -527870.0,
+     170.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.17453
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK025PLACE",
+    "base": "Journey to Baan Malur.esp:2E4CC9",
+    "kind": "static",
+    "pos": [
+     -101170.0,
+     -527870.0,
+     172.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.08727
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "bundled reed stacked by the landing (record look): a cut bundle of reed stalks at the jetty's land end, where the cutters load the barge",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK026PLACE",
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101420.0,
+     -528050.0,
+     36.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "marshmerrow sedge on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 13,
+   "stroke": 13,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK027PLACE",
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101380.0,
+     -528260.0,
+     -16.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "marshmerrow sedge on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 14,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK028PLACE",
+    "base": "King of the Murkmire.esp:03A575",
+    "kind": "plant",
+    "pos": [
+     -101360.0,
+     -527330.0,
+     111.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "marshmerrow sedge on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 15,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK029PLACE",
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -101300.0,
+     -528150.0,
+     68.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "swamp fungus on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 16,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK030PLACE",
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -101320.0,
+     -527450.0,
+     126.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "swamp fungus on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 17,
+   "stroke": 17,
+   "at": "2026-11-21T15:27:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK031PLACE",
+    "base": "Skyrim.esm:07E8B8",
+    "kind": "plant",
+    "pos": [
+     -101260.0,
+     -528360.0,
+     -16.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "swamp fungus on the river bank's reed beds (record: harvest-common, sedge and swamp fungus on the reed beds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 18,
+   "stroke": 18,
+   "at": "2026-11-21T15:27:24Z"
+  }
+ ]
+}
