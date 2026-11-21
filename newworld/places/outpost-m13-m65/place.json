@@ -415,7 +415,8 @@
   "agent-20261121T145013",
   "agent-20261121T145226",
   "agent-20261121T145820",
-  "agent-20261121T150205"
+  "agent-20261121T150205",
+  "agent-20261121T150757"
  ],
  "draft": {
   "add": [
@@ -449,7 +450,48 @@
      }
     },
     "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
+   },
+   {
+    "key": "hut-door",
+    "base": "Dragonborn.esm:03ABD2",
+    "kind": "door",
+    "pos": [
+     -99933.6,
+     -528901.5
+    ],
+    "rot_z": 3.05219,
+    "on": "outpost-m13-m65.LOOK012PLACE",
+    "dz": 90.1,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "journeytobaanmalur.baanmalurlocation/BaanDrHutSmall02",
+     "door": "Journey to Baan Malur.esp:2D06BE",
+     "space": "AshgateHut",
+     "arrival": [
+      -99935.0,
+      -528790.0
+     ],
+     "cut": {
+      "box": [
+       -860.0,
+       -2530.0,
+       -60.0,
+       -1960.0
+      ]
+     }
+    },
+    "why": "the stone hut's door, a Raven Rock door in the frame Baan Malur gives it, into a copy of that house's own room (its stone house part only, by a cut): where the gang-master sleeps, keeps his strongbox and lets a guest sleep on the bench (record: free-bed, treasure)"
    }
-  ]
+  ],
+  "room_names": {
+   "01dock3to4": {
+    "name": "Barge Hold",
+    "why": "the work barge's hold, where the new gang sleeps locked in (main quest 1 opens here; record hook)"
+   },
+   "AshgateHut": {
+    "name": "Gang-Master's Hut",
+    "why": "the old road post's stone hut where Dralin Uveran the gang-master sleeps and keeps his strongbox (record look and hook)"
+   }
+  }
  }
 }
