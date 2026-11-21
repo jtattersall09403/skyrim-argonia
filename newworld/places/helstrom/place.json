@@ -464,7 +464,8 @@
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
     "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
-    "key": "23"
+    "key": "23",
+    "scale": 1.0
    },
    {
     "base": "Black Marsh.esm:084B55",
@@ -477,7 +478,8 @@
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
     "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
-    "key": "24"
+    "key": "24",
+    "scale": 1.0
    },
    {
     "base": "Black Marsh.esm:084B56",
@@ -490,7 +492,8 @@
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
     "why": "a stall of the outdoor market square round the market trader's spot (the record's market is outdoors): Black Marsh & Valenwood's own market stand, as the source's market cave holds them, sunk 8 units into the ground",
-    "key": "25"
+    "key": "25",
+    "scale": 1.0
    },
    {
     "base": "Black Marsh.esm:084B56",
@@ -503,7 +506,8 @@
     "dz": -8.0,
     "tier": "AGENT_INVENTED",
     "why": "the sap-seller's stall beside its alchemy lab (the record's gives: alchemy lab at the sap-seller's stall): Black Marsh & Valenwood's own market stand, sunk 8 units into the ground",
-    "key": "26"
+    "key": "26",
+    "scale": 1.0
    },
    {
     "base": "Black Marsh.esm:1DE5DF",
@@ -8578,6 +8582,7 @@
   "agent-20261120T162820",
   "agent-20261120T163033",
   "agent-20261120T164244",
-  "agent-20261121T054004"
+  "agent-20261121T054004",
+  "agent-20261121T054320"
  ]
 }
