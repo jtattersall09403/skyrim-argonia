@@ -89,13 +89,65 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
     return ext, ledger, land, rep
 
 
+def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset()) -> list[str]:
+    """The source's rooms carried with their doors working: each way out of a room copied from this source leads to our
+    copy of the source's own exterior door and lands where the source landed one, at the one transform (the room's door
+    rows written afresh from the source's); `drop_removals`: rooms whose earlier `removed` rows are let go, so the room
+    stands whole as the source built it. Rooms copied from another source are left as they are."""
+    fit = st.place["fit"]
+    pv, an = fit["pivot"], fit["anchor"]
+    rot = math.radians(float(fit.get("rot_deg", 0.0)))
+    c, s_ = math.cos(rot), math.sin(rot)
+    said = []
+    for sp, space in st.files["spaces"].items():
+        meta = space.get("space") or {}
+        if sp == "exterior" or not str(meta.get("copy_of", "")).startswith(st.place["source_id"] + "/"):
+            continue
+        src_sp = st.src.spaces.get(sp)
+        if not src_sp:
+            continue
+        rows = [r for r in space["refs"] if not (r.get("door") and (r["door"].get("to_space") == "exterior"))
+                and not (sp in drop_removals and r.get("removed"))]
+        first = None
+        for q in src_sp.refs:
+            d = q.get("door") or {}
+            if not d.get("to_ref") or d["to_ref"] not in st.by_src:     # a way out to the source's exterior only
+                continue
+            x, y, z = d["to_pos"]
+            dx, dy = x - pv[0], y - pv[1]
+            to_rot = list(d.get("to_rot") or [0, 0, 0])
+            to_rot[2] = round(float(to_rot[2]) + rot, 6)
+            row = {k: q[k] for k in ("edid", "base", "kind", "pos", "rot", "scale", "layer", "flags") if k in q}
+            row = {"id": io.mint(st.place_id, sp, q["id"]), **row, "src": q["id"],
+                   "door": {**d, "to_space": "exterior", "to_ref": io.mint(st.place_id, "exterior", d["to_ref"]),
+                            "to_pos": [round(an[0] + dx * c - dy * s_, 2), round(an[1] + dx * s_ + dy * c, 2),
+                                       round(float(z) + offset, 2)], "to_rot": to_rot},
+                   "seat": {"mode": "free"}}
+            rows.append(row)
+            first = first or io.mint(st.place_id, "exterior", d["to_ref"])
+        space["refs"][:] = rows
+        if first:
+            meta["door_from"] = first
+        said.append(sp)
+    return said
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
+    ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)
     st = Standing(a.place_id)
+    if a.rooms:
+        from tools.places import edits
+        said = carry_rooms(st, a.offset, set(filter(None, a.whole.split(","))))
+        if not a.dry:
+            edits.write_place(st.pdir, st.files)
+        print("rooms carried:", ", ".join(said))
+        return 0
     ext, ledger, land, rep = lay(st, a.offset)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
