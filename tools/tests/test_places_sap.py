@@ -48,6 +48,17 @@ def test_a_pool_placed_by_hand_on_the_trunk_is_kept():
     assert [r["id"] for r in out] == ["p.sap.B"]
 
 
+def test_a_pool_brought_out_from_under_the_roots_to_the_trees_foot_is_its_own():
+    """A hand pool whose sap reaches the trunk is that tree's; one that stops short of it is not."""
+    t = ext()[1]
+    foot = dict(sap.pool_for("p", t, BASES["P:big"], (t["pos"][0], t["pos"][1] - 400)), id="p.add.F")
+    out = sap.plan("p", ext() + [foot], BASES)
+    assert [r["id"] for r in out] == ["p.sap.A"]
+    assert sap.faults(ext() + [foot] + out, BASES) == []
+    far = dict(foot, id="p.add.G", pos=[t["pos"][0] + 2500, t["pos"][1], 0.0])
+    assert [r["id"] for r in sap.plan("p", ext() + [far], BASES)] == ["p.sap.A", "p.sap.B"]
+
+
 def dig(G, e, pools):
     hollow = sap.dish(G, e + pools, BASES, set())
     dug = Ground({k: list(v) for k, v in G.cells.items()}, dict(G.water_by_cell))

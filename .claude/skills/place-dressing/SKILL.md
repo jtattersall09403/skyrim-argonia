@@ -34,7 +34,9 @@ puddle) carrying our water type `ArgoniaHistSapWater` (tools/places/own_bases.py
 (`land.jsonl` rows `by` "sap"): the surface a few units under a level rim, the floor falling smoothly to 64 units at
 the middle, so the water has depth to shade. Never on open water: a Hist standing in our water has its pool on the
 nearest dry bank at its foot, or none (place.json `sap.none`, and the draft's plan says how the place shows its
-sap). A pool placed by hand on the trunk is kept. Run `sap` after a Hist is added, moved, swapped or dies. `draft
+sap). A pool placed by hand on the trunk is kept, and so is one at the tree's foot whose sap reaches the trunk (where
+roots or rocks hide the trunk's own ground, bring the pool out to the side the player comes from). A Hist built of
+a crown over trunk bases is one Hist with one pool. Run `sap` after a Hist is added, moved, swapped or dies. `draft
 check` fails a living Hist with no pool that `sap.none` does not list. How the pool must read in the game, and which
 field to change if it does not: [dressing](../../../docs/design/dressing.md), Hist sap.
 
