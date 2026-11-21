@@ -125,6 +125,9 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
                    "seat": {"mode": "free"}}
             rows.append(row)
             first = first or io.mint(st.place_id, "exterior", d["to_ref"])
+            ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
+            if ext_door is not None and ext_door.get("door"):     # the outside door's arrival: the same landing
+                ext_door["door"]["arrival"] = list(row["door"]["to_pos"])
         space["refs"][:] = rows
         if first:
             meta["door_from"] = first
