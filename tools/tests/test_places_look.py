@@ -375,6 +375,8 @@ def test_stacked_floors_measure_a_piece_against_the_floor_under_it():
     hold = room.Floor(v + lower, [[4, 5, 6], [4, 6, 7], [8, 9, 10], [8, 10, 11], [0, 1, 2]])
     assert hold.height_below(200, 800, 10) is None       # at floor level under the deck, no hold floor walked there
     assert hold.height_below(200, 800, -300) == pytest.approx(250)    # in the bilge: against the floor over it
+    cargo = room.Floor(v[:4] + [[2000, 0, -200], [3000, 0, -200], [3000, 1000, -200]], [[0, 1, 2], [0, 2, 3], [4, 5, 6]])
+    assert cargo.height_below(500, 500, -150) is None    # a crate on the lower cargo deck, its mesh cut round the stack
     assert f.height_below(1500, 500, 0) is None
 
 
