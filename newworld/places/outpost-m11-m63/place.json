@@ -43,6 +43,10 @@
     {
      "line": "the landing and its cooking pot (source note)",
      "by": "the landing deck at the water's edge with a fish basket and a lifted trap; Ree-An-Wo's own cook fire, cook stand and pot on the bank beside it"
+    },
+    {
+     "line": "a Hist-shoot post stands at the landing (faith note)",
+     "by": "a young Hist shoot (King of the Murkmire HistTree05 at half size) tied to a cypress pole on the bank east of the landing decks; a cut shoot, so no sap pool (sap.none)"
     }
    ],
    "gives": [
@@ -350,7 +354,13 @@
  },
  "draft_key": "4719e555cf84fdd2",
  "sap": {
-  "added": []
+  "added": [],
+  "none": [
+   {
+    "on": "outpost-m11-m63.LOOK057PLACE",
+    "why": "the Hist-shoot post: a cut shoot of Jal-Veesa's Hist tied to its post at the landing (record faith note), not a rooted tree, so it holds no sap pool; the stage would put one 7 m off on the bank, which reads as nothing of the shoot's"
+   }
+  ]
  },
  "wholesale": {
   "offset": 110.0,
