@@ -92,6 +92,10 @@ class Standing:
         self.G.apply_patches(self.files["land"])
         self.S = self.src.ground
         self.ext: list[dict] = self.files["spaces"]["exterior"]["refs"]
+        # a piece placed by hand from another plugin (look place, the studio) is known by its catalogue base, so a
+        # stage sees it as what it is (a cooking pot is the place's cooking pot)
+        placed = {r["base"] for sp in self.files["spaces"].values() for r in sp.get("refs") or [] if r.get("base")}
+        self.bases.update(io.catalogue_bases(placed - set(self.bases)))
         lp = self.pdir / "ledger.jsonl"
         self.ledger = io.read_jsonl(lp) if lp.exists() else []
         self.src_ext = [r for r in self.src.exterior.refs]
@@ -540,6 +544,19 @@ def stations(st: Standing, log=print) -> None:
     every = {r["id"] for sp in st.files["spaces"].values() for r in sp["refs"]}
     found = {k: [i for i in v if i in every] for k, v in (stn.get("found") or {}).items()}
     added = [a for a in stn.get("added") or [] if a["id"] in every]
+    mine = {a["id"] for a in added}
+    for kind in need:   # a station standing in the place (the source's own, or one placed by hand) is the place's
+        kw = io.STATION_KEYWORD.get(kind)
+        hand = sorted(r["id"] for sp in st.files["spaces"].values() for r in sp["refs"]
+                      if kw and r["id"] not in mine and not r.get("removed")
+                      and kw in ((st.bases.get(r.get("base")) or {}).get("keywords") or []))
+        if hand:
+            found[kind] = hand + [i for i in found.get(kind) or [] if i not in hand and i not in mine]
+            for a in [a for a in added if a["station"] == kind]:   # the stage's own copy is no longer needed
+                added.remove(a)
+                for sp in st.files["spaces"].values():
+                    sp["refs"][:] = [r for r in sp["refs"] if r["id"] != a["id"]]
+                log(f"draft stations {st.place_id}: {kind} stands in the place ({hand[0]}); the added {a['id']} taken out")
     folk = st.files["people"]
     for kind in need:   # the place's own station outdoors is worked before one added in a room
         moved = outdoor_station(st, kind, found, added, folk)
