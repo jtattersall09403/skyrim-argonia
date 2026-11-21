@@ -8,6 +8,7 @@ never writes is never touched. A failed stage puts back only its own rows.
 from __future__ import annotations
 
 import contextlib
+import copy
 import json
 from pathlib import Path
 
@@ -204,3 +205,191 @@ def write_json(p: Path, obj: dict) -> None:
         return
     Path(p).parent.mkdir(parents=True, exist_ok=True)
     Path(p).write_text(dump(obj))
+
+
+# ---------- a hand's placement is authoritative ----------
+# Every draft stage (draft/stages.py `run`) ends with `keep_placed`: a row a committed agent edit (agent-edits/, listed
+# in place.json `agent_saves_applied`) or an owner's finalised studio save (edits/, `final`) moved, turned, sank,
+# dropped, added, un-dropped or edited stands as the hand left it, until a hand moves it again or `look release`
+# gives it back to the stages (place.json `released`; an owner's row is never released by an agent).
+TABLE_FILES = {"path": "paths.jsonl", "person": "people.jsonl", "quest": "quests.jsonl"}
+
+
+def _place(pdir: Path) -> dict:
+    try:
+        return json.loads((pdir / "place.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _saves(pdir: Path) -> list[tuple[str, list, int]]:
+    """(whose, ops, order) of every hand save of the place: the owner's finalised saves (order 0), then the agent's
+    in the order place.json `agent_saves_applied` lists them (order 1 + its index there)."""
+    out = []
+    ed = pdir / "edits"
+    for p in sorted(ed.glob("*.json")) if ed.is_dir() else []:
+        try:
+            s = json.loads(p.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if s.get("final"):
+            out.append((f"the owner's save {p.stem}", s.get("ops") or [], 0))
+    for i, sid in enumerate(_place(pdir).get("agent_saves_applied") or []):
+        p = pdir / "agent-edits" / f"{sid}.json"
+        if p.exists():
+            out.append((f"the agent's edit {sid}", json.loads(p.read_text(encoding="utf-8")).get("ops") or [], i + 1))
+    return out
+
+
+def _op_row(op: dict) -> tuple[str, str, set | None] | None:
+    """(file, row key, the fields the hand set; None: the whole row and whether it stands) that an op holds."""
+    kind = op.get("op", "")
+    sp = f"spaces/{op.get('space', 'exterior')}/refs.jsonl"
+    if kind == "ref.move":
+        return sp, str(op["id"]), set(op.get("after") or {}) or None
+    if kind == "ref.add":
+        return sp, str(op["ref"]["id"]), None
+    if kind == "ref.remove":
+        return sp, str(op["id"]), None
+    table, _, verb = kind.partition(".")
+    if table in TABLE_FILES and isinstance(op.get(table), dict) and op[table].get("id") is not None:
+        row, before = op[table], op.get("before")
+        if verb == "edit" and isinstance(before, dict):
+            return TABLE_FILES[table], str(row["id"]), {k for k in set(row) | set(before) if row.get(k) != before.get(k)}
+        return TABLE_FILES[table], str(row["id"]), None
+    return None
+
+
+def placed(pdir: Path) -> dict[tuple[str, str], dict]:
+    """{(file, row key): {fields, by, order}} of every row a hand placed and has not released: `fields` the fields
+    the hands set (None: the whole row, and whether it stands at all), `by` whose hand last touched it."""
+    pdir = Path(pdir)
+    out: dict[tuple[str, str], dict] = {}
+    for who, ops, order in _saves(pdir):
+        for op in ops:
+            got = _op_row(op)
+            if got is None:
+                continue
+            rel, key, fields = got
+            have = out.get((rel, key))
+            if have is not None and have["order"] == 0 and order > 0:
+                continue                     # an owner's row: the agent's stroke on it was left out at commit
+            if have is not None:
+                fields = None if have["fields"] is None or fields is None else have["fields"] | fields
+            out[(rel, key)] = {"fields": fields, "by": who, "order": order}
+    for r in _place(pdir).get("released") or []:
+        k = (f"spaces/{r.get('space', 'exterior')}/refs.jsonl", str(r["id"]))
+        if k in out and 0 < out[k]["order"] <= int(r.get("after", 0)):
+            out.pop(k)                       # given back to the stages, and no hand has touched it since
+    return out
+
+
+def _would(old, new, fields) -> str:
+    """What a stage would have done to a hand's row, in a few words."""
+    import math
+    if old is None:
+        return "put it back (a hand dropped it)"
+    if new is None:
+        return "taken it out"
+    said = []
+    for f in sorted(fields if fields is not None else set(old) | set(new)):
+        a, b = old.get(f), new.get(f)
+        if a == b:
+            continue
+        if f == "pos" and isinstance(a, list) and isinstance(b, list) and len(a) == len(b) == 3:
+            said.append(f"moved it {math.dist(a, b):.0f} units (dz {b[2] - a[2]:+.0f})")
+        elif f == "rot":
+            said.append("turned it")
+        else:
+            said.append(f"changed its {f}")
+    return ", ".join(said) or "rewritten it"
+
+
+def _in_order(rows: list, put: set, order: list) -> list:
+    """`rows` with each row put back (key in `put`) where it stood in the standing file: after the row before it."""
+    if not put:
+        return rows
+    back = {_key(r): r for r in rows if _key(r) in put}
+    out = [r for r in rows if _key(r) not in put]
+    for k in [k for k in order if k in back]:
+        i = order.index(k)
+        prev = next((order[j] for j in range(i - 1, -1, -1) if any(_key(r) == order[j] for r in out)), None)
+        at = 0 if prev is None else next(n for n, r in enumerate(out) if _key(r) == prev) + 1
+        out.insert(at, back[k])
+    return out
+
+
+def keep_placed(pdir: Path, before: dict[str, str], tag: str, log=print) -> list[str]:
+    """After a stage: every row a hand placed (`placed`) stands as the standing files (`before`: rel -> text) had it,
+    and a row carried `on` a row put back moves back with it. Logs and returns each row kept with what the stage
+    would have done. Writes through `write_rows`, so the hands' writes beside the run are kept too."""
+    pdir = Path(pdir)
+    held: dict[str, dict] = {}
+    for (rel, key), h in placed(pdir).items():
+        held.setdefault(rel, {})[key] = h
+    said = []
+    for rel, rows_held in sorted(held.items()):
+        p = pdir / rel
+        old_rows = {_key(r): r for r in _parse(p, before[rel])} if rel in before and before[rel].strip() else {}
+        if not p.exists() and not old_rows:
+            continue
+        rows: list = _parse(p, p.read_text(encoding="utf-8")) if p.exists() else []
+        by = {_key(r): i for i, r in enumerate(rows)}
+        shift: dict[str, list] = {}
+        put: set = set()
+        changed = False
+        for key, h in sorted(rows_held.items()):
+            old, cur = old_rows.get(key), (rows[by[key]] if key in by else None)
+            fields = h["fields"]
+            if fields is None:
+                if old == cur:
+                    continue
+                what = _would(old, cur, None)
+                if cur is None:
+                    rows.append(copy.deepcopy(old))
+                    put.add(key)
+                else:
+                    rows[by[key]] = copy.deepcopy(old)       # None: a dropped row stays dropped
+            else:
+                if old is None:
+                    continue                                 # nothing of the hand's stands to keep
+                off = set(fields) if cur is None else {f for f in fields if cur.get(f) != old.get(f)}
+                if not off:
+                    continue
+                what = _would(old, cur, off)
+                if cur is None:
+                    rows.append(copy.deepcopy(old))
+                    put.add(key)
+                else:
+                    new = dict(cur)
+                    for f in off:
+                        if f in old:
+                            new[f] = copy.deepcopy(old[f])
+                        else:
+                            new.pop(f, None)
+                    rows[by[key]] = new
+            if old is not None and cur is not None and isinstance(old.get("pos"), list) and isinstance(cur.get("pos"), list) \
+                    and len(old["pos"]) == len(cur["pos"]) == 3 and old["pos"] != cur["pos"]:
+                shift[key] = [o - c for o, c in zip(old["pos"], cur["pos"])]
+            changed = True
+            line = f"{tag}: {key} ({rel}) is placed by hand ({h['by']}): kept as the hand left it; the stage would have {what}"
+            log(line)
+            said.append(line)
+        live = _in_order([r for r in rows if r is not None], put, list(old_rows))
+        seen = set(shift)
+        while shift:                                         # what the stage carried on a row put back comes back too
+            nxt = {}
+            for r in live:
+                on, k = (r.get("seat") or {}).get("on"), _key(r)
+                if on not in shift or k in seen or k in rows_held or not isinstance(r.get("pos"), list) or len(r["pos"]) != 3:
+                    continue
+                was = (old_rows.get(k) or {}).get("pos")
+                back = [round(a + b, 3) for a, b in zip(r["pos"], shift[on])]
+                if was is not None and max(abs(a - b) for a, b in zip(back, was)) < 0.5:
+                    r["pos"] = list(was)                     # the stage moved it only with the row a hand placed
+                    nxt[k] = shift[on]
+                    seen.add(k)
+            shift = nxt
+        if changed:
+            write_rows(p, live)
+    return said

@@ -145,6 +145,11 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         d.scenes.clear()
         d.place = None   # the page reloads the place files as now written
         return res
+    if verb == "release":
+        res = release(place, args)
+        d.scenes.clear()
+        d.place = None
+        return res
     if verb == "compare":
         a, b, vw = args[0], args[1], args[2:]
         sa = sess["snapshots"][a] if a != "now" else sess["strokes"]
@@ -817,6 +822,33 @@ def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=Non
     (ad / f"{sid}.json").write_text(json.dumps(save, indent=1) + "\n")
     return {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
             "left_for_owner": left}
+
+
+def release(place: str, args: list[str], places=None) -> dict:
+    """`release <row id> [--space <space>] -m "<why>"`: give a row an agent's hand placed back to the draft stages
+    (place.json `released`), so the next stage run places it by its own rule; a later hand stroke on it holds it
+    again. A row the owner's finalised saves touched is the owner's and is never released here."""
+    from tools.places import hands
+    from tools.places.draft.stages import owner_rows
+    from tools.places.seat import PLACES
+    pos, o = _opts(args, {"space": True})
+    pos = [a for a in pos if a not in ("-m", "--m")]
+    o["m"] = " ".join(pos[1:])
+    if not pos:
+        raise ValueError('release <row id> [--space <space>] -m "<why>"')
+    pdir = (places or PLACES) / place
+    rid, space = pos[0], str(o.get("space") or "exterior")
+    if rid in owner_rows(pdir):
+        raise ValueError(f"{rid} is the owner's (a finalised save): only the owner moves it")
+    if (f"spaces/{space}/refs.jsonl", rid) not in hands.placed(pdir):
+        return {"released": None, "why": f"{rid} in {space} is not placed by an agent's hand"}
+    pj = pdir / "place.json"
+    pl = json.loads(pj.read_text())
+    pl["released"] = [r for r in pl.get("released") or [] if (r.get("space", "exterior"), r["id"]) != (space, rid)] + [
+        {"space": space, "id": rid, "after": len(pl.get("agent_saves_applied") or []),
+         "why": o["m"]}]
+    pj.write_text(json.dumps(pl, indent=1, ensure_ascii=False) + "\n")
+    return {"released": rid, "space": space}
 
 
 # ---------- hands ----------

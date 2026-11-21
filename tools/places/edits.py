@@ -627,6 +627,7 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
         raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
     out = apply(place_files, mark_owner(save["ops"]), source)   # the studio's edits are the owner's words
     out["place"]["saves_applied"] = done + [save["save_id"]]
+    _follow_adds(out["place"], save["ops"])
     said = _notes_by_op(save)
     prefs = [preference(op, save["save_id"], said.get(op["n"])) for op in save["ops"] if op.get("call", "fault") == "taste"]
     if prefs:
@@ -659,7 +660,16 @@ def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), sourc
             keep += g
     out = apply(place_files, keep, source)
     out["place"]["agent_saves_applied"] = done + [save["save_id"]]
+    _follow_adds(out["place"], keep)
     return out, left
+
+
+def _follow_adds(place: dict, ops: list) -> None:
+    """A hand's stroke on a thing the add stage places rewrites its `draft.add` row (draft/adds.py `follow`), so the
+    stage places it again where the hand put it."""
+    if place.get("place_id") and (place.get("draft") or {}).get("add"):
+        from tools.places.draft import adds
+        adds.follow(place, ops)
 
 
 def _notes_by_op(save: dict) -> dict:

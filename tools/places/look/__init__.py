@@ -18,6 +18,7 @@ Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <t
 each takes --view <view verb...> for a before/after.
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
 commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
+release <row id> [--space <space>] -m "<why>": give a row an agent's hand placed back to the draft stages.
 """
 from __future__ import annotations
 
