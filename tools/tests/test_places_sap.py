@@ -153,3 +153,20 @@ def test_a_pool_on_a_steep_side_goes_to_the_flat_side_of_its_trunk_so_no_bank_st
     sap.dish(G, e + [pool], BASES, set(), banks)
     assert not banks
     assert sap.plan("p", e, BASES, {"A": [0, 0]}, G)[0]["pos"][:2] == sap.plan("p", e, BASES, [0, 0])[0]["pos"][:2]
+
+
+def test_a_bank_raises_the_sap_over_the_dug_floor_so_no_ground_shows_through_it():
+    steep = Ground({(0, 0): [0.6 * 128 * (i % 33) for i in range(33 * 33)]}, {})
+    e = ext()[:1]
+    pools = sap.plan("p", e, BASES)
+    seat_all(pools, steep)
+    banks = []
+    hollow = sap.dish(steep, e + pools, BASES, set(), banks)
+    steep.apply_patches(hollow)
+    sap.cover_banks(pools, banks)
+    seat_all(pools, steep)
+    cx, cy = sap.centre(pools[0])
+    rad = sap.DISH * sap.POOL_HALF * pools[0]["scale"]
+    inside = [steep.height(cx + rad * k / 4 * math.cos(a), cy + rad * k / 4 * math.sin(a))
+              for k in range(4) for a in (0, 1.6, 3.1, 4.7)]
+    assert pools[0]["pos"][2] >= max(inside)

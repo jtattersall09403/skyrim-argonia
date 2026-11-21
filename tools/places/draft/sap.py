@@ -271,6 +271,16 @@ def dish(G, ext: list[dict], bases: dict, taken: set, banks: list | None = None)
              "why": "the hollow of a Hist's sap pool", "by": "sap"} for k, vs in sorted(cells.items()) if vs]
 
 
+def cover_banks(pools: list[dict], banks: list[dict]) -> None:
+    """A pool whose dig left a bank stands its sap that much higher (its seat's dz), so the sap covers the whole dug
+    floor at the foot of its Hist rather than the ground showing through it; its low rim then lies under the sap by
+    at most the bank."""
+    left = {b["pool"]: b["bank"] for b in banks}
+    for p in pools:
+        if p["id"] in left:
+            p.setdefault("seat", {"mode": "stilts"})["dz"] = round(DZ + left[p["id"]], 1)
+
+
 def apply(st, log=print) -> None:
     """The `sap` stage: the place's sap pools made again from its standing Hist trees, and their hollows; place.json's
     `sap` lists the pools. A pool row the owner's studio save touched is the owner's (the stage runner keeps it)."""
@@ -295,6 +305,7 @@ def apply(st, log=print) -> None:
     st.files["land"][:] = other + hollow
     G.apply_patches(hollow)
     st.G = G
+    cover_banks(pools, banks)
     seat_all(pools, G)                      # the pools on their dug floors; nothing else is moved by the dig
     for b in banks:
         log(f"draft sap {st.place_id}: {b['pool']}: the ground falls more than the dig limit across the pool; "
