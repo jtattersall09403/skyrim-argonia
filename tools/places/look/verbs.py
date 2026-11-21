@@ -356,7 +356,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
                    "pieces": len(sc.pieces)}
     elif verb == "overview":
         cl = sc.clusters()
-        keep_c = [c for c, ps in cl.items() if not c.startswith("w")] or list(cl)
+        keep_c = [c for c, ps in cl.items() if not c.startswith("w") and c != "outside"] or list(cl)
         allp = [p for c in keep_c for p in cl[c]]
         th = sc._of(place, "place", allp)
         c1 = geom.frame(th["lo"], th["hi"], side, "oblique", w, h, ground_z=sc.ground_under(th["lo"], th["hi"]), fill=0.95)

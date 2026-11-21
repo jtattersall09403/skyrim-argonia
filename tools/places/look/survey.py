@@ -206,7 +206,7 @@ def run(d, place: str, strokes, args: list[str]) -> dict:
     for n in names:
         if n == "_place":
             cl = sc.clusters()
-            allp = [p for c, ps in cl.items() if not c.startswith("w") for p in ps] or sc.pieces
+            allp = [p for c, ps in cl.items() if not c.startswith("w") and c != "outside" for p in ps] or sc.pieces
             th = sc._of(place, "place", allp)
         else:
             th = sc.resolve(n)

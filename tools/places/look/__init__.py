@@ -11,6 +11,8 @@ Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
 failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries; `at` [--distance k] stands k times as far.
+Sources: look --source <source id> <view verb> [--ring <metres>] [--centre x,y] | units: a candidate source seen
+as a place in its own ground, before a draft (srcview.py).
 Audit: truth [<place> --sample N]: the golden scene's known answers (or a real draft sampled) held against the pictures.
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
@@ -79,6 +81,9 @@ def ensure() -> float:
 
 
 def main(argv: list[str]) -> int:
+    if argv and argv[0] == "--source":   # a source place by itself, read-only (srcview.py)
+        from tools.places.look import srcview
+        return srcview.main(argv[1:])
     if argv and argv[0] == "truth":   # the audit of the tool itself: look truth [<place> --sample N]
         from tools.places.look import truth
         return truth.main(argv[1:])
