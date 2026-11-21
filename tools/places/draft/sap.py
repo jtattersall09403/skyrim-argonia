@@ -7,7 +7,9 @@ waterline never moves. It is turned by a yaw drawn from the tree's row id and si
 the crown: its reach is the trunk's radius at its foot (TRUNK_R per Hist base, measured from the mesh at ground
 height; else TRUNK_SHARE of the record's half-width), scaled, plus SAP_BAND of open sap, never under MIN_SCALE. It
 lies on the trunk's centre, or off it by an offset (`draft.sap.offset` of place.json: [dx, dy], or {hist id: [dx,
-dy]}), else one the stage chooses, the trunk kept inside the sap: each side (and the pool shrunk to SHRINK of its
+dy]}; with `draft.sap.scale`, a number or {hist id: number}, the pool's own scale: a pool placed BY HAND, wherever
+the hand put it, even off the trunk, never moved or resized by the stage's scoring, and logged as hand-placed; it is
+the Hist's pool by its id), else one the stage chooses, the trunk kept inside the sap: each side (and the pool shrunk to SHRINK of its
 size) is scored by the bank the dig would leave over the sap plus COVER_W times the share of the sap hidden from the
 sky (a deck, walkway, bridge or platform over it, or the trunk's own foot), and the lowest wins, so a pool is never
 put under the ring's platform when a side a person can look onto exists; without a bank the pool stays centred
@@ -82,10 +84,10 @@ def turned(u: float, v: float, rz: float) -> tuple[float, float]:
     return u * c + v * s, -u * s + v * c
 
 
-def pool_for(place_id: str, t: dict, base: dict, off=(0.0, 0.0), k: float = 1.0) -> dict:
+def pool_for(place_id: str, t: dict, base: dict, off=(0.0, 0.0), k: float = 1.0, scale: float | None = None) -> dict:
     """The sap pool row of one Hist row, its centre `off` the trunk's. Its seat's footprint is its whole outline box,
     scaled, so the surface is read from the lowest ground of the rim as well as inside it."""
-    s = round(k * reach(base, float(t.get("scale", 1.0))) / POOL_HALF, 2)
+    s = round(scale if scale is not None else k * reach(base, float(t.get("scale", 1.0))) / POOL_HALF, 2)
     rz = round(int(hashlib.sha256(f"{t['id']}/sap".encode()).hexdigest()[:8], 16) / 0xFFFFFFFF * 2 * math.pi, 5)
     dx, dy = turned(POOL_CENTRE[0] * s, POOL_CENTRE[1] * s, rz)
     foot = [round(b * s, 1) for b in BOX]
@@ -101,6 +103,12 @@ def centre(p: dict) -> tuple[float, float]:
     s, rz = float(p.get("scale", 1.0)), float((p.get("rot") or [0, 0, 0])[2])
     dx, dy = turned(POOL_CENTRE[0] * s, POOL_CENTRE[1] * s, rz)
     return p["pos"][0] + dx, p["pos"][1] + dy
+
+
+def of_hist(p: dict, t: dict) -> bool:
+    """A pool is a Hist's own: it holds the trunk, or it is the pool the stage set for that Hist (its id is the
+    Hist's with `.sap.` after the place), wherever a hand put it."""
+    return holds(p, t) or str(p.get("id", "")).endswith(".sap." + str(t.get("id", "")).split(".", 1)[-1])
 
 
 def holds(p: dict, t: dict) -> bool:
@@ -179,16 +187,29 @@ def offset(t: dict, base: dict, boxes: list[tuple], given=None, G=None) -> tuple
     return (o[0], o[1], k) if best < s0 - COVER_W * OPEN + 1e-9 else (0.0, 0.0, 1.0)
 
 
-def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None) -> list[dict]:
+def given_for(t: dict, v):
+    """A place's per-Hist value (`draft.sap.offset` or `.scale`): the Hist's own entry of a dict, else the value."""
+    return v.get(t["id"].split(".", 1)[-1], v.get(t["id"])) if isinstance(v, dict) else v
+
+
+def plan(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scales=None, log=None) -> list[dict]:
     """A pool for every living Hist row of a place's exterior, in row id order; a Hist already standing in a pool
-    placed by hand (`draft.add`, the studio) keeps that one. offsets: the place's `draft.sap.offset`."""
+    placed by hand (`draft.add`, the studio) keeps that one. offsets, scales: the place's `draft.sap.offset` and
+    `draft.sap.scale`; an offset with a scale is a pool placed by hand, taken as it stands."""
     own = [r for r in ext if r.get("base") == POOL and ".sap." not in r["id"]]
     boxes = covers(ext, bases)
     out = []
     for t in sorted(pooled(ext, bases), key=lambda r: r["id"]):
         if any(holds(p, t) for p in own):
             continue
-        given = offsets.get(t["id"].split(".", 1)[-1], offsets.get(t["id"])) if isinstance(offsets, dict) else offsets
+        given, sc = given_for(t, offsets), given_for(t, scales)
+        if given is not None and sc is not None:
+            p = pool_for(place_id, t, bases[t["base"]], (float(given[0]), float(given[1])), scale=float(sc))
+            p["why"] += f"; placed by hand (draft.sap.offset {list(given)}, scale {sc})"
+            if log:
+                log(f"draft sap {place_id}: {p['id']}: hand-placed at offset {list(given)}, scale {sc} (not scored)")
+            out.append(p)
+            continue
         dx, dy, k = offset(t, bases[t["base"]], boxes, given, G)
         out.append(pool_for(place_id, t, bases[t["base"]], (dx, dy), k))
     return out
@@ -210,7 +231,7 @@ def faults(ext: list[dict], bases: dict) -> list[str]:
     out = []
     hists = [t for t in ext if living(bases.get(t["base"]))]
     for t in pooled(ext, bases):
-        if not any(holds(p, t) for p in pools):
+        if not any(of_hist(p, t) for p in pools):
             out.append(f"{t['id']}: a Hist without its sap pool")
     ids = {t["id"].split(".", 1)[-1] for t in hists}
     for p in pools:
@@ -244,7 +265,7 @@ def dish(G, ext: list[dict], bases: dict, taken: set, banks: list | None = None,
     hists = [t for t in ext if living(bases.get(t["base"]))]
     cells: dict[tuple, dict] = {}
     for p in sorted(ext, key=lambda r: r["id"]):
-        if p.get("base") != POOL or not any(holds(p, t) for t in hists):
+        if p.get("base") != POOL or not any(of_hist(p, t) for t in hists):
             continue
         sd = p.get("seat") or {}
         floor = reference_z(G, "stilts", p["pos"][0], p["pos"][1], float(p["rot"][2]), sd.get("foot"))
@@ -308,7 +329,7 @@ def apply(st, log=print) -> None:
     """The `sap` stage: the place's sap pools made again from its standing Hist trees, and their hollows; place.json's
     `sap` lists the pools. A pool row the owner's studio save touched is the owner's (the stage runner keeps it)."""
     from tools.places.seat import Ground, seat_all
-    rows, bases = want(st)
+    rows, bases = want(st, log)
     old = {a["id"] for a in (st.place.get("sap") or {}).get("added") or []}
     keep = {r["id"] for r in rows}
     st.ext[:] = [r for r in st.ext if r["id"] not in old or r["id"] in keep]
@@ -343,21 +364,23 @@ def apply(st, log=print) -> None:
     log(f"draft sap {st.place_id}: {len(rows)} sap pools, hollows in {len(hollow)} cells")
 
 
-def want(st) -> tuple[list[dict], dict]:
+def want(st, log=None) -> tuple[list[dict], dict]:
     from tools.places.seat import Ground
     G = Ground.load(st.grd.path)
     G.apply_patches([r for r in st.files["land"] if r.get("by") != "sap"])   # the ground before the dig
-    return rows_for(st.place_id, st.ext, st.bases, ((st.place.get("draft") or {}).get("sap") or {}).get("offset"), G)
+    d = (st.place.get("draft") or {}).get("sap") or {}
+    return rows_for(st.place_id, st.ext, st.bases, d.get("offset"), G, d.get("scale"), log)
 
 
-def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None) -> tuple[list[dict], dict]:
+def rows_for(place_id: str, ext: list[dict], bases: dict, offsets=None, G=None, scales=None,
+             log=None) -> tuple[list[dict], dict]:
     """Pool rows for a place's exterior rows, and the bases with the pool's (none when the catalogue lacks it)."""
     from tools.places.draft.io import catalogue_bases
     bases = dict(bases)
     bases.update(catalogue_bases({POOL} - set(bases)))
     if POOL not in bases:
         return [], bases
-    return plan(place_id, ext, bases, offsets, G), bases
+    return plan(place_id, ext, bases, offsets, G, scales, log), bases
 
 
 def main(argv=None) -> int:
@@ -365,7 +388,7 @@ def main(argv=None) -> int:
     ap.add_argument("place_id")
     a = ap.parse_args(argv)
     from tools.places.draft.stages import Standing
-    rows, _ = want(Standing(a.place_id))
+    rows, _ = want(Standing(a.place_id), print)
     print(f"sap {a.place_id} (dry run): {len(rows)} pools")
     for r in rows:
         print(f"  {r['id']} at {r['pos'][:2]} scale {r['scale']}")

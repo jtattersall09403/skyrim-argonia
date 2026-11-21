@@ -202,3 +202,22 @@ def test_the_dig_never_moves_another_row_seated_on_the_ground():
     assert seat_z(post, dug) < post["pos"][2] - 1                     # the hollow reaches under it
     assert sap.hold_others([t, post] + pools, dug) == ["p.post"]
     assert seat_z(post, dug) == pytest.approx(post["pos"][2], abs=0.01)
+
+
+def test_a_pool_placed_by_hand_off_the_trunk_keeps_its_place_and_size_and_is_dug_and_logged():
+    bases = dict(BASES, **{"P:deck": {"edid": "MurkmirePlatformBase03", "kind": "building", "bounds": [[-300, -300, 0], [300, 300, 400]]}})
+    t = ext()[0]
+    deck = {"id": "p.K", "base": "P:deck", "kind": "building", "pos": [2900.0, 2000.0, 300.0], "rot": [0, 0, 0], "scale": 1.0}
+    said: list = []
+    r = sap.plan("p", [t, deck], bases, {"A": [900, 0]}, scales={"A": 2.3}, log=said.append)[0]
+    assert math.dist(sap.centre(r), (2900.0, 2000.0)) < 0.1 and r["scale"] == 2.3   # under the deck: the hand holds
+    assert not sap.holds(r, t) and sap.of_hist(r, t)                  # off the trunk, still the Hist's own pool
+    assert sap.faults([t, deck, r], bases) == []
+    assert said and "hand-placed" in said[0]
+    G = slope()
+    seat_all([r], G)
+    dug = sap.dish(G, [t, r], bases, set())
+    assert dug                                                         # its hollow is dug where the hand put it
+    assert {tuple(d["cell"]) for d in dug} == {(0, 0)}
+    # an offset alone (no scale) is still the stage's own size
+    assert sap.plan("p", [t], bases, {"A": [0, 100]})[0]["scale"] == sap.MIN_SCALE
