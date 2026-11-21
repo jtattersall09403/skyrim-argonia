@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T150308",
+ "place_id": "outpost-m11-m63",
+ "name": "a fifth bedroll by the fire",
+ "at": "2026-11-21T15:03:08Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK041PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82230.0,
+     -513720.0,
+     76.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the open on the bank by the cook fire (the fifth bed: five wardens, the two guards one to a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:08Z"
+  }
+ ]
+}
