@@ -39,6 +39,19 @@
   },
   "add": [
    {
+    "base": "Dragonborn.esm:03C364",
+    "kind": "container",
+    "pos": [
+     -33500.0,
+     -626900.0
+    ],
+    "name": "Sealed Spring",
+    "need": 1,
+    "tier": "AGENT_INVENTED",
+    "why": "the city tree's spring, shut away (main story, The Sour Spring): a lidded clay urn (Dragonborn's Dunmer urn, nothing Nordic) at the foot of the sacred tree, east of its trunk, past the great tree's roots and its sap, named so a player reads what it is; locked and owned by the town in the stock source",
+    "key": "0"
+   },
+   {
     "base": "King of the Murkmire.esp:B7F081",
     "kind": "container",
     "space": "01ArgonianHouseinside.8",
@@ -1359,8 +1372,8 @@
   "plan": {
    "look": [
     {
-     "line": "stilt and root-hollow houses of reed, mud and living wood",
-     "by": "the source's Argonian houses (01arghouse, 01arghousebig, 01argdirthouse, mud mounds) kept"
+     "line": "reed huts, mud domes and root-hollow houses of reed, mud and living wood",
+     "by": "the source's Argonian reed huts (01arghouse), great domes (01arghousebig), mud mounds and dirt houses kept, each district at its own height over our ground"
     },
     {
      "line": "no new stone",
@@ -1372,19 +1385,19 @@
     },
     {
      "line": "Black Heart-Mud pools between the roots; thick warm air",
-     "by": "five pools of near-black still water (Skyrim's WaterPuddle, its PuddleWater) set by hand on flat low spots between the roots of the north, middle, south and south-west districts (rows helstrom.MUD*); the source's fog and mist effects kept"
+     "by": "five pools of near-black still water (Skyrim's WaterPuddle) at trees' roots in the waterfront, the low town, the west terrace, the east heights and the mud quarter (rows helstrom.MUD*); the source's fog and mist kept"
     },
     {
      "line": "rafts and plank walks thread the districts",
-     "by": "the source's docks, dock steps, boats and walkways kept"
+     "by": "the landing's two piers into the south river with the moored ship and the boats, the ridge's plank bridge and the west heights' boardwalk, and the dock steps between the districts' terraces"
     },
     {
      "line": "the city tree (great)",
-     "by": "the shrine Hist stands as King of the Murkmire's HistTree03 at 1.5 scale (draft.shrine), with its sap pool, lanterns"
+     "by": "King of the Murkmire's HistTree03 at 2.3 (draft.shrine), placed by hand at the city's heart by the landing, a plaza cleared round it, its amber sap pool at its trunk"
     },
     {
      "line": "the root landing",
-     "by": "the city tree's sap pool is the rootworm stop; the tunnel mouth on its west lip and the Rootworm Landing marker on its east lip"
+     "by": "the rootworm's tunnel mouth, a mound of churned mud among the city tree's roots on its south-west side, with the map marker Rootworm Landing (Helstrom) beside it: the worm comes up through the mud, not the sap pool"
     },
     {
      "line": "the council house, its wardens' quarters and strongroom",
@@ -1396,11 +1409,11 @@
     },
     {
      "line": "the tree-minders' hall",
-     "by": "kept as the hall room with its arcane enchanter and the order's urn case (quests)"
+     "by": "the source's mossy cave mouth in its mud rocks, brought from the source's north shore (outside the footprint) to the city tree's north-west side, into the hall room with its arcane enchanter and the order's urn case"
     },
     {
      "line": "Imperial green tents",
-     "by": "replaced by King of the Murkmire's hide tents"
+     "by": "none laid: the source's green tents stood on its north shore, outside our footprint"
     },
     {
      "line": "timber stilt posts (01mosspost) and lamp posts (01lightpost)",
@@ -1416,7 +1429,7 @@
     },
     {
      "line": "the market (outdoors)",
-     "by": "the market square: three of Black Marsh & Valenwood's own market stands round the market trader's spot; the Market Cave stays only as the way to the quiet house off the market that the record's hook and the Chainbreakers' line name"
+     "by": "the market square: three of Black Marsh & Valenwood's own market stands between the city tree and the landing's piers, the sap-seller's stall beside them; the Market Cave stays only as the way to the quiet house off the market"
     },
     {
      "line": "the market smithy",
@@ -1432,10 +1445,10 @@
     },
     {
      "line": "only the old Xanmeer on the city's north-western edge, left by the ancients, stands in stone",
-     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) at 0.78 on the hidden ziggurat's footprint, the biggest thing in the city, its stair turned south-east to the city's way, King of the Murkmire's stone door framed by two wall pillars and two fire-bowls at the stair's foot, into the Helstrom Xanmeer hall (the Teeth of Sithis Halls' throne wing, cut and lit, benches for twelve facing the throne)"
+     "by": "Black Marsh & Valenwood's own stepped temple (01aztectemple2) at 0.78 on the city's north-western edge beyond the mud quarter, its stair turned south-east to the city, King of the Murkmire's stone door framed by two wall pillars and two fire-bowls at the stair's foot, into the Helstrom Xanmeer hall (the Teeth of Sithis Halls' throne wing, cut and lit, benches for twelve facing the throne)"
     }
    ],
-   "source": "bmv.helstrom kept: it is Black Marsh & Valenwood's own Helstrom on the river fork, with its stilt and root-hollow Argonian houses, landing and the rooms the quests already use; its Nordic, Imperial and Dwemer pieces are dropped or replaced",
+   "source": "bmv.helstrom kept: Black Marsh & Valenwood's own Helstrom, carried whole at one transform onto our peninsula between the west channels, the north-west channel and the south river, each of its fourteen districts at its own height with its own terrace (the source city stood on a hill); its Nordic, Imperial and Dwemer pieces are dropped or replaced",
    "gives": [
     {
      "kind": "rootworm-stop",
@@ -1517,7 +1530,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "by": "the city tree (King of the Murkmire's HistTree03 at 1.5, draft.shrine) carries the blessing"
+     "by": "the city tree (King of the Murkmire's HistTree03 at 2.3, draft.shrine) carries the blessing"
     }
    ],
    "structures": [
@@ -1541,9 +1554,9 @@
     },
     {
      "cluster": "b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16,b18,b19,b20,b24,b30,b31,b32,b33,b34,b35,b36,b37,b38,s11,s38,s42,s61",
-     "what": "the Argonian stilt, big and mud houses with their doors and lanterns",
+     "what": "the Argonian reed huts, great domes and mud houses with their doors and lanterns",
      "verdict": "kept",
-     "why": "the look's stilt and root-hollow houses of reed, mud and living wood; the nine copied houses are the homes"
+     "why": "the look's reed huts, mud domes and root-hollow houses of reed, mud and living wood; the nine copied houses are the homes"
     },
     {
      "cluster": "landing",
@@ -1570,16 +1583,10 @@
      "why": "the streets' lanterns"
     },
     {
-     "cluster": "b40,w57",
-     "what": "moss-grown broken ruin mounds",
-     "verdict": "kept",
-     "why": "old root-hollow ruins among the roots; no stone wall"
-    },
-    {
-     "cluster": "b39",
-     "what": "the old Xanmeer at the city's north-west edge with its fire pits and moored boats",
-     "verdict": "kept",
-     "why": "kept: the old Xanmeer, the record's one stone building; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint, with a door into its hall"
+     "cluster": "b39,b40,b26,b27,b28,b29",
+     "what": "the source's north shore (Imperial tents, the hidden ziggurat, waterfalls) and its stone ruins",
+     "verdict": "dropped",
+     "why": "the north shore lies outside our footprint at this transform; the ruins are stone the record does not hold (only the Xanmeer stands in stone)"
     }
    ]
   }
@@ -2026,7 +2033,10 @@
   "agent-20261121T213840",
   "agent-20261121T213840b",
   "agent-20261121T213841",
-  "agent-20261121T213848"
+  "agent-20261121T213848",
+  "agent-20261121T214915",
+  "agent-20261121T215018",
+  "agent-20261121T215028"
  ],
  "wholesale": {
   "offset": 180.0,

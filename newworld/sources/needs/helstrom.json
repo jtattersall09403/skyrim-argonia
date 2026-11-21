@@ -97,7 +97,7 @@
    "line": "main",
    "rests": {
     "space": "exterior",
-    "ref": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
+    "ref": "helstrom.LOOK001PLACE"
    },
    "signs": [],
    "met": false,
@@ -314,16 +314,16 @@
    "tier": "AGENT_INVENTED",
    "rests": {
     "space": "exterior",
-    "ref": "helstrom.NH7D6CHSYD27JCAJXRXG1NHRQ1"
+    "ref": "helstrom.TNC8WXFV335G5YAANE3XK77268"
    },
    "signs": [
     {
      "sign": "label",
-     "detail": "the world map marks \"Rootworm Landing (Helstrom)\" at the pool"
+     "detail": "the world map marks \"Rootworm Landing (Helstrom)\" beside the mud mouth"
     },
     {
      "sign": "look",
-     "detail": "the amber sap pool at the sacred tree's foot, with the rootworm's tunnel mouth at its far lip"
+     "detail": "the great city tree over the market by the landing, and the rootworm's mud mouth among its roots on its south-west side, apart from the tree's amber sap pool"
     },
     {
      "sign": "person",
@@ -331,10 +331,9 @@
      "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
     }
    ],
-   "met": false,
-   "why": "Partly met. Under the sacred tree (HistTree04), 900 units west of its trunk and apart from its own sap pool, the draft lays a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives). Not met: a Hist's root pool is its sap pool, never water (decision 0040, 3), so the stop, the tunnel mouth, the marker and Cheeval-Xu belong at the tree's own sap pool and the water puddle goes.",
-   "fit": "The water puddle stands where the stop is until the stop moves to the sap pool.",
-   "narrow": "Yes: move the tunnel mouth, the marker and Cheeval-Xu's work spot to the sap pool's lip and delete the puddle; no other row changes."
+   "met": true,
+   "why": "Met. The great city tree (King of the Murkmire's Hist at 2.3) stands over the plaza between the market and the city landing, its amber sap pool at its trunk; on its south-west side among the roots is the rootworm's tunnel mouth, a mound of churned mud where the worm comes up (owner, 2026-11-20: the worm surfaces through mud, never the sap pool), with the map marker \"Rootworm Landing (Helstrom)\" beside it; the root-tender Cheeval-Xu works between the mouth and the marker.",
+   "fit": "The root landing as placed."
   },
   {
    "seq": 12,
