@@ -48,7 +48,7 @@
 {"src":"Skyrim.esm:04B390","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04B397","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04CD3B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Skyrim.esm:04E286","space":"exterior","status":"placed","as":"outpost-m13-m65.NDG7JZVEP1JBQ3237DGJMGJEQ5"}
+{"src":"Skyrim.esm:04E286","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E28C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E28D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E28F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -74,7 +74,7 @@
 {"src":"Skyrim.esm:04E351","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E381","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E39B","space":"exterior","status":"placed","as":"outpost-m13-m65.8QZF1AYS2SNAC8Z0CT77N5D3S1"}
-{"src":"Skyrim.esm:04E3A8","space":"exterior","status":"placed","as":"outpost-m13-m65.R3HX12K73PAFCMG3QT5K5DZETQ"}
+{"src":"Skyrim.esm:04E3A8","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E3B3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E3B4","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E3C3","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -102,7 +102,7 @@
 {"src":"Skyrim.esm:04E51E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E628","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E629","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Skyrim.esm:04E62A","space":"exterior","status":"placed","as":"outpost-m13-m65.SXHNC6ZYZTSR765TBTZV51NS55"}
+{"src":"Skyrim.esm:04E62A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:04E669","space":"exterior","status":"placed","as":"outpost-m13-m65.QMG8HMTETYGGKTJ0V7PW6DCNEX"}
 {"src":"Skyrim.esm:04E66B","space":"exterior","status":"placed","as":"outpost-m13-m65.W78SCSTE5D2VZG32AA3W0PCBHH"}
 {"src":"Skyrim.esm:04E66C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -170,7 +170,7 @@
 {"src":"Skyrim.esm:051C05","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:051C06","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:051D3A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Skyrim.esm:051D3B","space":"exterior","status":"placed","as":"outpost-m13-m65.W97QXCK78Y8XVNNRH8KDJ3EN8H"}
+{"src":"Skyrim.esm:051D3B","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:051D3C","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:05297B","space":"exterior","status":"dropped","why":"a person: the place's people come from its people rows"}
 {"src":"Skyrim.esm:05297C","space":"exterior","status":"dropped","why":"a person: the place's people come from its people rows"}
@@ -194,8 +194,8 @@
 {"src":"Skyrim.esm:052EC9","space":"exterior","status":"placed","as":"outpost-m13-m65.MQP8XSDJ45VC6A3XRPP3FFWREN"}
 {"src":"Skyrim.esm:052ECB","space":"exterior","status":"placed","as":"outpost-m13-m65.P4EH5A25DQDAFN24QRX4S88ESS"}
 {"src":"Skyrim.esm:052F32","space":"exterior","status":"placed","as":"outpost-m13-m65.FBMVVP76V6KE9HTJ0F2H1CF9FY"}
-{"src":"Skyrim.esm:053025","space":"exterior","status":"placed","as":"outpost-m13-m65.78QW78NM61DY5SATHPQZ1AY0XM"}
-{"src":"Skyrim.esm:053026","space":"exterior","status":"placed","as":"outpost-m13-m65.8C2MRM8P49744K1HJGAWDBS3PA"}
+{"src":"Skyrim.esm:053025","space":"exterior","status":"dropped","why":"outside the place's footprint"}
+{"src":"Skyrim.esm:053026","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053027","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053028","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053029","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -205,9 +205,9 @@
 {"src":"Skyrim.esm:05302D","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:05302E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:05302F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Skyrim.esm:053030","space":"exterior","status":"placed","as":"outpost-m13-m65.634D1P491RKWEV9NJYNC2D0VMP"}
+{"src":"Skyrim.esm:053030","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053031","space":"exterior","status":"placed","as":"outpost-m13-m65.31ZA7R6WTDEHYXS6YZWVHV80KY"}
-{"src":"Skyrim.esm:053032","space":"exterior","status":"placed","as":"outpost-m13-m65.CPS6YCD15J2Q7DE81Z0BFK93QY"}
+{"src":"Skyrim.esm:053032","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053033","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:053034","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:05303A","space":"exterior","status":"dropped","why":"outside the place's footprint"}
@@ -263,7 +263,7 @@
 {"src":"Skyrim.esm:08480E","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:08480F","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:084810","space":"exterior","status":"dropped","why":"outside the place's footprint"}
-{"src":"Skyrim.esm:088CB5","space":"exterior","status":"placed","as":"outpost-m13-m65.6GASJWXXKMC96B6JAA5C7DFDYC"}
+{"src":"Skyrim.esm:088CB5","space":"exterior","status":"dropped","why":"outside the place's footprint"}
 {"src":"Skyrim.esm:088CBD","space":"exterior","status":"placed","as":"outpost-m13-m65.TJJW72NFVY5NCEMR7A3RS6227P"}
 {"src":"Skyrim.esm:088CBF","space":"exterior","status":"placed","as":"outpost-m13-m65.M8WBJ3ZFKYZZJ1Z8GFH85A7HC6"}
 {"src":"Skyrim.esm:088D0E","space":"exterior","status":"placed","as":"outpost-m13-m65.ANDFXBBDSX32RSETS3XP5ZMQFR"}

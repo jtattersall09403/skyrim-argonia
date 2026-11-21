@@ -10,8 +10,8 @@
    79300.0
   ],
   "anchor": [
-   -100650.0,
-   -528400.0
+   -100200.0,
+   -528350.0
   ],
   "rot_deg": 340.0,
   "cost": 0.0,
@@ -399,16 +399,16 @@
  },
  "draft_key": "32c5b4d82f50f645",
  "wholesale": {
-  "offset": 14110.0,
+  "offset": 14100.0,
   "band": 512.0,
-  "pieces": 147,
-  "dropped": 298,
-  "raised_max": 39.3,
-  "lowered_max": 74.0,
+  "pieces": 138,
+  "dropped": 307,
+  "raised_max": 126.6,
+  "lowered_max": 85.4,
   "band_steepest_deg": 0.0,
-  "source_water_area_m2": 692,
-  "held_by_water": 15,
-  "laid": "2026-11-21T14:44:43Z"
+  "source_water_area_m2": 572,
+  "held_by_water": 13,
+  "laid": "2026-11-21T14:46:39Z"
  },
  "agent_saves_applied": []
 }
