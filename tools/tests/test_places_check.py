@@ -634,3 +634,22 @@ def test_land_check_adds_a_cells_rows_at_a_vertex_as_the_build_does(monkeypatch)
     assert C.check_land(ctx) == []
     built[5, 5] = 1.0
     assert C.check_land(ctx) == ["land 0,0 [5,5]: built 8, land.jsonl wants 16"]
+
+
+def test_an_accepted_build_finding_is_reported_apart_and_a_stale_or_bare_entry_fails():
+    from tools.places import check as CK
+    res = {"overlap": ["a.1 stands inside b.2", "c.3 stands inside d.4"], "doors": [], "seat": []}
+    why = "The barrel sits in the hut's doorway as the source had it, seen from three sides."
+    rows = [{"check": "overlap", "ids": ["a.1", "b.2"], "why": why},
+            {"check": "doors", "ids": ["x.9"], "why": why},                       # matches nothing now: stale
+            {"check": "overlap", "ids": ["c.3"], "why": "fine"},                  # a reason under a sentence
+            {"check": "seat", "ids": ["a.1"], "why": why}]                        # not a check one may accept
+    fails, acc = CK.apply_accepted(res, rows)
+    assert acc["overlap"] == [f"accepted: {why} (a.1 stands inside b.2)"]
+    assert fails["overlap"][0] == "c.3 stands inside d.4" and "invalid" in fails["overlap"][1]
+    assert len(fails["overlap"]) == 2
+    assert fails["doors"] == ["stale accepted entry doors ['x.9']: no finding names them now; delete it"]
+    assert len(fails["seat"]) == 1 and "invalid" in fails["seat"][0]
+    # an id is matched whole: a.1 does not accept a.10
+    f2, a2 = CK.apply_accepted({"overlap": ["a.10 stands inside b.2"]}, rows[:1])
+    assert a2["overlap"] == [] and f2["overlap"][0] == "a.10 stands inside b.2" and "stale" in f2["overlap"][1]

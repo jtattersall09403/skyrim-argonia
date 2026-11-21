@@ -1618,9 +1618,57 @@ CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, 
           "primitives": check_primitives, "stock": check_stock, "promises": check_promises}
 
 
+ACCEPTABLE = ("overlap", "doors", "clear", "nordic")   # the checks a drafter may accept a finding of, after looking
+WHY_WORDS = 6                                           # an accepted finding's reason is at least a sentence
+
+
+def accepted_checks(ctx: dict) -> list[dict]:
+    """The build-check findings the drafter accepted after looking (place.json `draft.accepted_checks`:
+    [{check, ids, why}]): `check` one of ACCEPTABLE, `ids` the ref ids the finding names (an overlap's pair, a door),
+    `why` at least a sentence saying what was seen."""
+    pj = Path(ctx.get("place_dir") or B.PLACES / ctx.get("place_id", "")) / "place.json"
+    try:
+        place = json.loads(pj.read_text())
+    except (OSError, ValueError):
+        return []
+    return list((place.get("draft") or {}).get("accepted_checks") or [])
+
+
+def _names(finding: str, rid: str) -> bool:
+    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w.:-])", finding) is not None
+
+
+def apply_accepted(res: dict[str, list[str]], rows: list[dict]) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
+    """Split each check's findings into (failures, accepted): a finding is accepted by a row of its check whose every
+    id it names, shown as "accepted: <why> (<finding>)", counted apart, never failing. A row with no ids, an unknown
+    check or a reason under a sentence, and a row that matches no finding (stale: the list must not rot), are failures
+    of their check (`draft` when the check is unknown): never silent."""
+    fails = {k: list(v) for k, v in res.items()}
+    acc: dict[str, list[str]] = {k: [] for k in res}
+    for r in rows:
+        chk, ids, why = r.get("check"), [str(i) for i in (r.get("ids") or [])], str(r.get("why") or "").strip()
+        key = chk if chk in res else "draft"
+        if chk not in ACCEPTABLE or not ids or len(why.split()) < WHY_WORDS:
+            fails.setdefault(key, []).append(
+                f"accepted entry {chk} {ids} is invalid: a check of {', '.join(ACCEPTABLE)}, the ref ids and a reason "
+                f"of at least a sentence ({WHY_WORDS} words) are required")
+            continue
+        hit = [f for f in res.get(chk, []) if all(_names(f, i) for i in ids)]
+        if not hit:
+            fails.setdefault(key, []).append(f"stale accepted entry {chk} {ids}: no finding names them now; delete it")
+            continue
+        for f in hit:
+            if f in fails[chk]:
+                fails[chk].remove(f)
+                acc[chk].append(f"accepted: {why} ({f})")
+    return fails, acc
+
+
 def run(ctx: dict) -> dict[str, list[str]]:
     NOTES.clear()
-    return {name: fn(ctx) for name, fn in CHECKS.items()}
+    res = {name: fn(ctx) for name, fn in CHECKS.items()}
+    res, ctx["accepted"] = apply_accepted(res, accepted_checks(ctx))
+    return res
 
 
 def main(argv: list[str]) -> int:
@@ -1643,7 +1691,8 @@ def main(argv: list[str]) -> int:
     esp_sha = hashlib.sha256((Path(a.out) / "plugin" / B.PLUGIN).read_bytes()).hexdigest()  # which build was checked
     report = {"place_id": a.place_id, "check_s": round(time.time() - t0, 1), "masters": ctx["dump"]["masters"], "counts": counts,
               "esp_sha256": esp_sha,
-              "results": {k: {"ok": not v, "failures": v[:50], "n": len(v)} for k, v in res.items()},
+              "results": {k: {"ok": not v, "failures": v[:50], "n": len(v), "accepted": ctx["accepted"].get(k, []),
+                              "n_accepted": len(ctx["accepted"].get(k, []))} for k, v in res.items()},
               "notes": list(NOTES), "primitives": ctx.get("primitives")}
     shard = Path(a.out) / "shards" / a.place_id
     (shard / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
@@ -1660,8 +1709,12 @@ def main(argv: list[str]) -> int:
         for w in NOTES:
             print(f"note {w}")
         for k, v in res.items():
-            print(f"{'ok  ' if not v else 'FAIL'} {k}" + ("" if not v else f" ({len(v)})"))
+            ac = ctx["accepted"].get(k, [])
+            print(f"{'ok  ' if not v else 'FAIL'} {k}" + ("" if not v else f" ({len(v)})")
+                  + (f" ({len(ac)} accepted)" if ac else ""))
             for f in v[:20]:
+                print(f"     {f}")
+            for f in ac:
                 print(f"     {f}")
         print(f"check {a.place_id}: {sum(1 for v in res.values() if not v)}/{len(res)} green in {report['check_s']} s")
     return 0 if not any(res.values()) else 1
