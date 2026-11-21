@@ -1488,6 +1488,17 @@ def source_navmesh(P: dict) -> bool:
     return ((P["place"].get("wholesale") or {}).get("navmesh")) == "source"
 
 
+def footprint_cells(place: dict) -> set:
+    """The cells the footprint's polygon (and the carried triangles' reach past it, 512) overlaps."""
+    from tools.places import carrynav as cn
+    r = place["radius_m"] * 70 + 512.0
+    ax, ay = place["fit"]["anchor"][:2]
+    ring = cn.planes(cn.ccw(cn.disk((ax, ay), r)))
+    return {(cx, cy) for cx in range(math.floor((ax - r) / CELL), math.floor((ax + r) / CELL) + 1)
+            for cy in range(math.floor((ay - r) / CELL), math.floor((ay + r) / CELL) + 1)
+            if cn.intersect([(*p, 0.0) for p in cn.cell_box((cx, cy))], ring) is not None}
+
+
 def carried_navmesh(mine: list[dict], pid: str, places: Path) -> dict:
     """Write a wholesale place's source navmesh into the shipped cells its footprint touches (place.json
     `wholesale.navmesh: "source"`; docs/design/place-studio.md, Navmesh): inside the footprint the source's own
@@ -1949,6 +1960,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     if not no_navmesh:
         solid = [r for r in S["refs"] if r["space"] == "exterior" and (r.get("kind") in SOLID_KINDS or collision_box(r))]
         touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
+        if source_navmesh(P):   # every cell the carried mesh can reach is ours, so its ring round them is shipped too
+            touched |= footprint_cells(P["place"])
         if touched:
             objects, tally = collision_objects(S["refs"])
             polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
