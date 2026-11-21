@@ -546,8 +546,15 @@ def stations(st: Standing, log=print) -> None:
         if moved:
             log(f"draft stations {st.place_id}: {kind} worked at the place's own {found[kind][0]} outdoors by "
                 f"{', '.join(moved)}; the one added in a room taken out")
+    import re
     for kind in sorted(need, key=lambda x: (x != "forge", x)):
         if found.get(kind):
+            continue
+        own = sorted(r["id"] for r in st.ext if not r.get("removed") and r["id"] not in {a["id"] for a in added}
+                     and re.search(io.STATION_EDID[kind], str((st.bases.get(r["base"]) or {}).get("edid", "")), re.I)
+                     and not re.search(io.STATION_SKIP, str((st.bases.get(r["base"]) or {}).get("edid", ""))))
+        if own:          # the place's own station outdoors (the source's, or one a hand placed) is the one worked
+            found[kind] = own
             continue
         same = next((o for o in need if o != kind and found.get(o)
                      and io.STATION_KEYWORD.get(o) == io.STATION_KEYWORD.get(kind) and io.STATION_KEYWORD.get(o)), None)
