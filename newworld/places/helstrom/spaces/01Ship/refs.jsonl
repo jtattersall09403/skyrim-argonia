@@ -1,6 +1,6 @@
 {"id":"helstrom.621Y5WGCF6SMQWB8KM83QD89Q5","src":"Black Marsh North.esp:0830AD","removed":true}
 {"id":"helstrom.6KPNAEFFQFBDQSZVWMK8304P6N","src":"Black Marsh North.esp:0830AE","removed":true}
-{"id":"helstrom.6M9BJQP8WAX346SXKWQK6DSHZF","edid":"Helsshipdoor","base":"Skyrim.esm:0C227B","kind":"door","pos":[6038.05,5825.052,8054.3154],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:23D496","door":{"to_space":"exterior","to_ref":"helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE","to_pos":[-23964.07,-634124.41,228.24],"to_rot":[0.0,0.0,2.36109],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.6M9BJQP8WAX346SXKWQK6DSHZF","edid":"Helsshipdoor","base":"Skyrim.esm:0C227B","kind":"door","pos":[6038.05,5825.052,8054.3154],"rot":[0,0,0],"scale":1,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:23D496","door":{"to_space":"exterior","to_ref":"helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE","to_pos":[-31043.4,-632435.11,244.38],"to_rot":[0,0,7.435988],"flags":"0"},"seat":{"mode":"free"}}
 {"id":"helstrom.C2GXVT41VNED6EBMVW4G1WQYRX","src":"Black Marsh.esm:23D688","removed":true}
 {"id":"helstrom.CZR3BBFHBNJHSSAG8DVYTREE5E","src":"Black Marsh North.esp:0B8BC8","removed":true}
 {"id":"helstrom.DZ16WVDNRWQN5F83QYDVS9YM8G","base":"King of the Murkmire.esp:1AD601","kind":"furniture","pos":[5944.93,5655.63,8054.32],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"cooking-pot: promised by the place record (innkeeper's work), lacking in the source"}
