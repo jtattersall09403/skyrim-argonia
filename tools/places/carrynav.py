@@ -738,6 +738,16 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
                 poly = poly[::-1]
             for piece in region.generated(poly):
                 meshes[c].add_poly(piece, int(flags) & ~(EDGE_BITS | DOOR) & 0xFFFF, -1)
+    out = finish_cells(meshes, neighbours)
+    for c in out:
+        out[c]["stats"]["snapped"] = snapped
+    return out
+
+
+def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
+    """Cells of welded pieces finished as one mesh each: T-junctions split (a cell's border at the vertices of the cells
+    beside it, rebuilt here or not: `neighbours`), short edges merged, flat triangles dropped, borders a neighbour does
+    not split unsplit, neighbours read. Returns {cell: finish_cell dict} for every cell that holds a triangle."""
     # each cell's border vertices, so the cells beside it split their border edges at them
     border: dict = defaultdict(list)
     for c, m in meshes.items():
@@ -773,7 +783,6 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
         if got["tris"]:
             out[c] = got
     for c in out:
-        out[c]["stats"]["snapped"] = snapped
         out[c]["stats"]["splits"] = splits
         out[c]["stats"]["collapsed"] = collapsed
         out[c]["stats"]["unsplit"] = unsplit

@@ -8,7 +8,7 @@ order (by id, or by cell, or by base and position), so independent ops give the 
 Place files in memory:
     {"place": {...place.json...},
      "spaces": {space_id: {"refs": [row...], "space": {...} | None}},
-     "clear": [...], "land": [...], "paths": [...], "people": [...], "quests": [...] (only when it has rows),
+     "clear": [...], "land": [...], "paths": [...], "people": [...], "quests": [...], "walk": [...] (each only when it has rows),
      "identities": the people source (newworld/sources/people/<place_id>.json) | None,
      "stock": the stock source (newworld/sources/stock/places/<place_id>.json) | None}
 The last two are the database's sources for who the place's people are and what the place holds (Stock). The
@@ -26,10 +26,11 @@ CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove",
                "stock.loose.edit", "stock.possessions.set", "stock.trader.set", "stock.delivery.set")
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
        "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit",
-       "quest.add", "quest.remove", "quest.edit") + CONTENT_OPS
+       "quest.add", "quest.remove", "quest.edit", "walk.add", "walk.remove", "walk.edit") + CONTENT_OPS
 # a row table's op family -> its list in the place files (rows keyed by id); `quests` is where the quests' things
-# stand (tools/places/quest_spots.py)
-TABLES = {"path": "paths", "person": "people", "quest": "quests"}
+# stand (tools/places/quest_spots.py); `walk` the owner's walking-mesh zones (tools/places/walknav.py)
+TABLES = {"path": "paths", "person": "people", "quest": "quests", "walk": "walk"}
+WALK_KINDS = ("block", "walk", "join")
 # A content op's row: the op's payload key, the source it lives in, its list there, the fields that name it (a
 # delivery has none: it is found by its whole row)
 CONTENT = {"identity": ("person", "identities", "people", ("id",)),
@@ -93,10 +94,11 @@ def canonical(files: dict) -> dict:
         row["verts"].sort()
     out["paths"].sort(key=lambda r: r["id"])
     out["people"].sort(key=lambda r: r["id"])
-    if out.get("quests"):   # kept only when it has rows
-        out["quests"].sort(key=lambda r: r["id"])
-    else:
-        out.pop("quests", None)
+    for k in ("quests", "walk"):   # kept only when it has rows
+        if out.get(k):
+            out[k].sort(key=lambda r: r["id"])
+        else:
+            out.pop(k, None)
     for k in SOURCE_ORDER:   # the people and stock sources, when the files carry them
         if out.get(k) is not None:
             out[k] = canonical_source(k, out[k])
@@ -161,12 +163,30 @@ def check_op(op: dict) -> None:
                 raise EditError(f"op {op['n']} (land.patch): each vert is [row, col, before_dz, after_dz], row and col 0..32")
     elif kind in CONTENT_OPS:
         _check_content(op)
-    elif kind.startswith(("path.", "person.", "quest.")):
+    elif kind.startswith(("path.", "person.", "quest.", "walk.")):
         _need(op, kind.split(".")[0])
-        if "id" not in op[kind.split(".")[0]]:
+        row = op[kind.split(".")[0]]
+        if "id" not in row:
             raise EditError(f"op {op['n']} ({kind}): the row has no id")
         if kind.endswith(".edit"):
             _need(op, "before")
+        if kind.startswith("walk."):
+            _check_walk(op["n"], kind, row)
+
+
+def _check_walk(n, kind: str, row: dict) -> None:
+    """A walking-mesh zone row (walk.jsonl): a block or walk zone has an outline of at least three [x, y, z] points; a
+    join has two [x, y, z] points and a gap."""
+    k = row.get("kind")
+    if k not in WALK_KINDS:
+        raise EditError(f"op {n} ({kind}): kind must be one of {', '.join(WALK_KINDS)}")
+    pts = row.get("points" if k == "join" else "outline")
+    want = 2 if k == "join" else 3
+    ok = isinstance(pts, list) and (len(pts) == 2 if k == "join" else len(pts) >= 3) and all(
+        isinstance(p, list) and len(p) == 3 and all(isinstance(v, (int, float)) and math.isfinite(v) for v in p) for p in pts)
+    if not ok:
+        raise EditError(f"op {n} ({kind}): a {k} needs {'two' if want == 2 else 'at least three'} [x, y, z] points "
+                        f"in `{'points' if k == 'join' else 'outline'}`")
 
 
 def _content(kind: str):
@@ -744,7 +764,7 @@ def load_place(root: Path, sources: Path | None = None) -> dict:
         sj = sp / "space.json"
         files["spaces"][sp.name] = {"refs": _jsonl(sp / "refs.jsonl"),
                                     "space": json.loads(sj.read_text()) if sj.exists() else None}
-    for k in ("clear", "land", "paths", "people", "quests"):
+    for k in ("clear", "land", "paths", "people", "quests", "walk"):
         files[k] = _jsonl(root / f"{k}.jsonl")
     return canonical(files)
 
@@ -785,7 +805,7 @@ def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
             hands.write_json(root / "spaces" / sid / "space.json", sp["space"])
-    for k in ("clear", "land", "paths", "people", "quests"):
+    for k in ("clear", "land", "paths", "people", "quests", "walk"):
         if files.get(k) or (root / f"{k}.jsonl").exists():
             _write_jsonl(root / f"{k}.jsonl", files.get(k) or [])
 

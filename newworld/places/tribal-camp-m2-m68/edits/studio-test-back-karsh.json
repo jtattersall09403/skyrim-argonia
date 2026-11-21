@@ -1,0 +1,99 @@
+{
+ "save_id": "studio-test-back-karsh",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "studio test back",
+ "at": "2026-11-21T15:20:28Z",
+ "final": false,
+ "rev": 2,
+ "base": {
+  "draft_key": "e542247c1a2714fd13996804de11cd4d9f6c8ef5e91298b3c5775c5d4d7f54da",
+  "ground_sha": null
+ },
+ "ops": [
+  {
+   "n": 1,
+   "at": "2026-11-21T14:52:13.351071Z",
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "tribal-camp-m2-m68.29J3W65KY256W6P6DZAGY78B42",
+   "before": {
+    "pos": [
+     -11007.79,
+     -550794.38,
+     1249.95
+    ],
+    "rot": [
+     -3.1415925,
+     -4.6193594e-07,
+     7.50492
+    ],
+    "scale": 0.84,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10997.79,
+     -550794.38,
+     1249.95
+    ],
+    "rot": [
+     -3.1415925,
+     -4.6193594e-07,
+     7.50492
+    ],
+    "scale": 0.84,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   }
+  },
+  {
+   "n": 2,
+   "at": "2026-11-21T14:52:13.351080Z",
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "tribal-camp-m2-m68.29J3W65KY256W6P6DZAGY78B42",
+   "before": {
+    "pos": [
+     -10997.79,
+     -550794.38,
+     1249.95
+    ],
+    "rot": [
+     -3.1415925,
+     -4.6193594e-07,
+     7.50492
+    ],
+    "scale": 0.84,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11007.79,
+     -550794.38,
+     1249.95
+    ],
+    "rot": [
+     -3.1415925,
+     -4.6193594e-07,
+     7.50492
+    ],
+    "scale": 0.84,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   }
+  }
+ ],
+ "notes": []
+}
