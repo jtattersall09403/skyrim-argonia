@@ -92,6 +92,8 @@ class Standing:
         self.G.apply_patches(self.files["land"])
         self.S = self.src.ground
         self.ext: list[dict] = self.files["spaces"]["exterior"]["refs"]
+        # a piece a hand placed from the whole pool (look place) is known to every stage by its catalogue row
+        self.bases.update(io.catalogue_bases({r["base"] for r in self.ext if r.get("base")} - set(self.bases)))
         lp = self.pdir / "ledger.jsonl"
         self.ledger = io.read_jsonl(lp) if lp.exists() else []
         self.src_ext = [r for r in self.src.exterior.refs]
