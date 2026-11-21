@@ -98,7 +98,7 @@ actionPlan:
   reason: four Naga guards at fixed levels
 - skill: Archery
   use: shoot-from-cover
-  reason: the reeds round the camp
+  reason: the rocks and cypress round the camp
 - skill: Destruction
   use: fight-people
   reason: the guards
@@ -210,7 +210,7 @@ placements:
   anchor:
     place: tribal-camp-m2-m68
     rule: navmesh
-    need: inside Sesk's Cage at the camp's west edge, the side farthest from the fire, facing the reeds
+    need: inside Sesk's Cage at the camp's west edge, the side farthest from the fire; the cage faces the creek
     room: Sesk's Cage
   enabled: true
 - ref: thing.mn04.cage
@@ -223,8 +223,8 @@ placements:
   anchor:
     place: tribal-camp-m2-m68
     rule: surface
-    need: a whole cage of Skyrim's (bars all round and a door) at the camp's west edge, out of sight of the fire behind the reed-and-bone
-      huts, reachable from the reeds
+    need: a whole cage of Skyrim's (bars all round and a door) at the camp's west edge on the creek side; it can be reached from the creek bank, across
+      the open mud from the fire by the longhouse
   lock:
     level: novice
     key: thing.mn04.cage-key
@@ -241,7 +241,7 @@ placements:
   anchor:
     place: tribal-camp-m2-m68
     rule: navmesh
-    need: standing at the fire pit by the longhouse, his back to the huts
+    need: standing at the fire pit by the longhouse, with his back to the longhouse steps
   enabled: true
 - ref: thing.mn04.cage-key
   kind: thing
@@ -442,7 +442,7 @@ stages:
       not:
         npcAlive: npc.mn.sesk
   directions: Karsh-Naal Camp lies in the marsh east of Teel-Fen Weir, about as far as Jal-Veesa is from the weir. The cage
-    stands at the camp's west edge, behind the huts; the guards keep to the fire by the longhouse.
+    stands at the camp's west edge on the creek side, past the old stone ruin. The guards stand at the fire by the longhouse.
   information:
     going: The sap goes to Karsh-Naal Camp, a camp of Naga.
     next: Go to the camp and find out who takes the jars.
@@ -517,7 +517,8 @@ stages:
     when:
       not:
         npcAlive: npc.mn.sesk
-  directions: The cage stands at the camp's west edge, behind the huts; the guards keep to the fire by the longhouse.
+  directions: The cage stands at the camp's west edge on the creek side, past the old stone ruin. The guards stand at the
+    fire by the longhouse.
   information:
     going: The jars go to Karsh-Naal Camp, a camp of Naga, and someone is caged at its west edge.
     next: Reach the cage and speak to the prisoner.
@@ -569,7 +570,7 @@ stages:
     going: Sesk, caged by the Naga, knows where the sap goes and will tell me if I free her.
     next: Open the cage and speak to her.
     ways: Pick its Novice lock; lift the key from Jeeta-Sakka at the fire; or fight the four guards (or shoot them from the
-      reeds). The guards stay at the fire, so I can sneak to the cage; if they catch me, they all attack.
+      rocks). The guards stay at the fire, so I can sneak to the cage; if they catch me, they all attack.
     carriers:
     - know: open the cage and hear her
       by:

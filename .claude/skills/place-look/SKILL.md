@@ -111,8 +111,8 @@ Before a place goes to the owner (the bar in `place-system`):
 5. Judge the whole: does it read as the record's place sitting naturally on our land? If not, go back to the skill
    that owns what is wrong.
 6. The owner captures: each side at eye level, each structure the record names, each room a story needs, saved in
-   one folder the hand-over names. A close view whose subject rightly fills the frame (a door, a join) is judged by
-   eye and taken with `--clean`: its JSON still says why the camera's rule failed it, the image carries no banner.
+   one folder the hand-over names. A view you compose yourself is `at <thing> --stand x,y,z --plain`: the eye where
+   you put it, nothing drawn over the image; its verdict stays in the JSON, and you judge the picture.
 
 ## The machine
 

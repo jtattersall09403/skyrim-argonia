@@ -362,19 +362,6 @@ def _square_floor(z=0.0, size=1000.0):
     return room.Floor([[0, 0, z], [size, 0, z], [size, size, z], [0, size, z]], [[0, 1, 2], [0, 2, 3]])
 
 
-def test_a_clean_view_keeps_its_failed_verdict_without_the_banner():
-    from PIL import Image
-    from tools.places.look import verbs
-    img = Image.new("RGB", (640, 480), (10, 20, 30))
-    failed = {"capture": "failed", "why": "the subject fills the frame"}
-    assert verbs.mark(img.copy(), failed).tobytes() != img.tobytes()
-    verbs.CLEAN[0] = True
-    try:
-        assert verbs.mark(img.copy(), failed).tobytes() == img.tobytes()
-    finally:
-        verbs.CLEAN[0] = False
-
-
 def test_stacked_floors_measure_a_piece_against_the_floor_under_it():
     from tools.places.look import room
     v = [[0, 0, 0], [1000, 0, 0], [1000, 1000, 0], [0, 1000, 0],

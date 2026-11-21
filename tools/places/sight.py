@@ -63,15 +63,23 @@ def space_rows(pid: str, sid: str, places: Path, out: Path) -> list[dict]:
     return copy_space(info, rows, src)
 
 
+def marker_name(r: dict, place_name: str | None) -> str:
+    """The name the world map shows for a map marker row: the place's own for a marker carried from the source (the
+    build writes no source marker's map data; the world's marker of the place carries its name), else the row's."""
+    if r.get("src") and place_name:
+        return place_name
+    return r["map_marker"]["Name"]
+
+
 def _what(rows: list[dict], bases: dict, spaces: dict, x0: float, y0: float, radius: float | None,
-          locks: dict | None = None) -> tuple:
+          locks: dict | None = None, place_name: str | None = None) -> tuple:
     kinds, labels = Counter(), []
     for r in rows:
         if radius is not None and math.hypot(r["pos"][0] - x0, r["pos"][1] - y0) > radius:
             continue
         b = bases.get(r["base"], {})
         if (r.get("map_marker") or {}).get("Name"):
-            labels.append(f"the world map marks a place here named \"{r['map_marker']['Name']}\"")
+            labels.append(f"the world map marks a place here named \"{marker_name(r, place_name)}\"")
             continue
         door = r.get("door") or {}
         if door.get("to_space") and door["to_space"] != "exterior":
@@ -95,6 +103,16 @@ def _what(rows: list[dict], bases: dict, spaces: dict, x0: float, y0: float, rad
     things = [f"{count(n)} {k}" if n > 1 else f"one {k.rstrip('s') if k.endswith('s') and k != 'unrecognised objects' else k}"
               for k, n in kinds.most_common(14)]
     return things, sorted(Counter(labels).items())
+
+
+def shown_place_name(pid: str) -> str | None:
+    """The place's name as the database (and so the world's map marker) has it; None when it cannot be read."""
+    try:
+        from tools.argonia_world import db
+        row = db.open(N.ROOT / "newworld").get("place", pid)
+        return row.name if row else None
+    except Exception:  # noqa: BLE001  no database: the rows' own names
+        return None
 
 
 def _person(p: dict, ident: dict, place_row: dict) -> str:
@@ -154,7 +172,8 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
             keys |= {r["base"] for r in rooms[sp["room"]]}
     bases = bases_for(keys, out / "catalogue" / "bases.jsonl")
     names = N.place_names(pid)
-    stock = N._json(N.SOURCES / "stock" / "places" / f"{pid}.json") or {}
+    place_name = shown_place_name(pid)
+    stock =N._json(N.SOURCES / "stock" / "places" / f"{pid}.json") or {}
     locks = {c["ref"]: c["lock"] for c in stock.get("containers", []) if c.get("lock")}   # the lock the game shows
     markers = [r for r in ext if (r.get("map_marker") or {}).get("Name")]
     mark = next((r for r in markers if r["map_marker"]["Name"].lower() in names), markers[0] if markers else None)
@@ -171,7 +190,7 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
         lines.append(f"## Spot {letter}")
         lines.append(f"Where: {how_far(math.hypot(dx, dy))} {compass(dx, dy)} of the town's map marker." if math.hypot(dx, dy) > 300
                      else "Where: at the town's map marker.")
-        things, labels = _what(ext, bases, spaces, x, y, radius, locks)
+        things, labels = _what(ext, bases, spaces, x, y, radius, locks, place_name)
         lines.append(f"Within about {round(radius / 70)} metres: " + ("; ".join(things) or "nothing standing") + ".")
         for lab, c in labels:
             lines.append(f"- {lab}" + (f" (x{c})" if c > 1 else ""))

@@ -20,12 +20,12 @@
    "source": "Ree-An-Wo (King of the Murkmire): a Naga camp in the marsh, its hide tents on two stilt watch towers and round a ground fire, bedrolls, cook stand, a Naga chest, a Xanmeer floor with busts, laid wholesale at one transform (turn 90, +290) with its marsh relief; the owner's ruling (2026-11-21) that main quest places get their closest match. The timber longhouse and its cellar the story needs are added whole from Dushnikh Yal, the one source holding them.",
    "look": [
     {
-     "line": "hide tents hung with bones",
-     "by": "Ree-An-Wo's own six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent"
+     "line": "hide tents on stilt watch towers and round a cook fire, with bone totems beside them",
+     "by": "Ree-An-Wo's six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent. One stands south of the fire camp and one on the open mud by the fire camp's ramp; the totems are the camp's shrine of bones to Sithis"
     },
     {
-     "line": "a timber longhouse",
-     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added at the camp's east edge, its door facing the camp"
+     "line": "a timber longhouse on a knoll",
+     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added on the knoll at the camp's east edge, its door facing the camp, reached from the fire by four flights of King of the Murkmire's Xanmeer steps"
     },
     {
      "line": "around a fire pit",
@@ -37,7 +37,7 @@
     },
     {
      "line": "a cage at the camp's edge",
-     "by": "Skyrim's MetalCage01 at the west edge toward the reeds, its door the quest's MetalCageDoor01"
+     "by": "Skyrim's MetalCage01 at the west edge on the creek side, its door the quest's MetalCageDoor01"
     },
     {
      "line": "a pole of trophies",
@@ -113,6 +113,37 @@
     "unit": "added.house.DushnikhYalLonghouse",
     "flag": "foot buried deeper",
     "why": "the same: the uphill corner's plinth foot in the knoll"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "door sill under ground",
+    "why": "the longhouse door stands at the head of the Xanmeer steps on the knoll's crest; the mud meets the threshold there (owner capture 06, at eye level by the door) and the doors check lands the player clear of the steps, so the 29 units are the knoll's lip, not a buried door"
+   }
+  ],
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.3FRCMMZ748NN1B7AGZ3GW8F3JG",
+     "tribal-camp-m2-m68.FDBBBWQBFAWT4Y8Y6MJ15F7MR3"
+    ],
+    "why": "Two of the source's boulders on the south creek bank, sunk together onto our lower ground, now lean into each other as one outcrop; from the creek at eye level (survey landing, the bank view) they read as a single rock pile, as Skyrim stacks its cliff rocks."
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.453D6VK6650FQ0450PB5ZT2F89",
+     "tribal-camp-m2-m68.DCVYHQ0Y5KKGJRFN3XY68NP8ME"
+    ],
+    "why": "The source's marsh-grass rock south of the fire camp, sunk onto our ground, now sits into the dirt bank behind it; seen from the fire camp it reads as the bank's rocky face, one landform, not two things clashing."
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "tribal-camp-m2-m68.LOOK002PLACE",
+     "tribal-camp-m2-m68.HDSGW1N9X25C7KBF85A1849H20"
+    ],
+    "why": "The second flight of the Xanmeer steps up the longhouse knoll runs along the mossy rock outcrop on its north side and cuts into its foot; from below and from the door (owner 05, 02) the steps read as laid between the rocks, the way a stair is cut through a bank."
    }
   ]
  },
@@ -227,6 +258,13 @@
   "agent-20261121T100726",
   "agent-20261121T103041",
   "agent-20261121T110500",
-  "agent-20261121T110831"
+  "agent-20261121T110831",
+  "agent-20261121T154455",
+  "agent-20261121T154618",
+  "agent-20261121T154820",
+  "agent-20261121T155019",
+  "agent-20261121T155523",
+  "agent-20261121T163606",
+  "agent-20261121T165244"
  ]
 }

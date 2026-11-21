@@ -185,9 +185,8 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False, "distance": True, "stand": True, "clean": False})
+                          "once": False, "grid": False, "distance": True, "stand": True})
     d.helpers = bool(o.get("helpers"))
-    CLEAN[0] = bool(o.get("clean"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
     faults = {x["id"] for x in sc.faults()}
@@ -267,7 +266,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             if not plain:
                 img, _ = draw.annotate(img, c, sc, th, faults, f"{th['name']} from {','.join(f'{v:.0f}' for v in c['pos'])}",
                                        grid=bool(o.get("grid")))
-            img = mark(img, sco)
+                img = mark(img, sco)   # --plain: the stood view as the eye sees it; its verdict is in the JSON
             res = {"cam": c, "img": img}
             if not keep:
                 res = {"thing": th["name"], "kind": th["kind"], "stand": c["pos"], "stood_on": c["stood"]["on"], **sco}
@@ -508,13 +507,9 @@ def helper_label(sc):
     return label
 
 
-CLEAN = [False]   # `--clean`: the drafter has looked and judged the view; its image is kept without the banner
-
-
 def mark(img, score: dict | None):
-    """A failed capture carries its reason in a red banner across it (its JSON still says failed and why), unless the
-    view was asked `--clean` (an owner capture the drafter has looked at: a close view whose subject fills the frame)."""
-    if score and score.get("capture") == "failed" and not CLEAN[0]:
+    """A failed capture carries its reason in a red banner across it."""
+    if score and score.get("capture") == "failed":
         return capture.banner(img, score.get("why", ""))
     return img
 
@@ -1024,14 +1019,24 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         if not why:
             raise ValueError('duplicate needs --why "<why this copy is here>": a copy never carries the original\'s reason')
         dx, dy = (float(pos[1]), float(pos[2])) if len(pos) > 2 else (256.0, 0.0)
-        sess["n"] = sess.get("n", 0) + 1
-        n = sess["n"]
+        n = next_n(sc, sess, "")
         new = hands.duplicate_rows(sc, rows, dx, dy, why, lambda i: f"{sc.place_id}.LOOK{n:03d}{i:04d}")
         ops = [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr} for nr in new]
         if ops:
             ops[0]["_seats"] = [nr["seat"] for nr in new][:8]
         return ops
     raise ValueError(verb)
+
+
+def next_n(sc, sess, suffix: str) -> int:
+    """The session's next hand number whose LOOK id is free in the place. The counter restarts with each session
+    while the rows an earlier session committed keep their ids, so a number already taken is skipped."""
+    taken = set(getattr(sc, "refs", None) or {})
+    while True:
+        sess["n"] = sess.get("n", 0) + 1
+        stem = f"{sc.place_id}.LOOK{sess['n']:03d}"
+        if not any(t == stem + suffix or (not suffix and t.startswith(stem)) for t in taken):
+            return sess["n"]
 
 
 def _place(sc, pos, o, sess) -> list[dict]:
@@ -1050,7 +1055,7 @@ def _place(sc, pos, o, sess) -> list[dict]:
         if len(xyz) < 3:
             raise ValueError("place needs x,y,z, or x,y with --above dz")
         seat, z = {"mode": "free", "dz": 0.0}, xyz[2]
-    sess["n"] = sess.get("n", 0) + 1
+    next_n(sc, sess, "PLACE")
     row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
            "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
@@ -1122,7 +1127,7 @@ def _steps(sc, pos, o, sess) -> list[dict]:
     frm, to = sc.resolve(pos[0]), sc.resolve(pos[1])
     at = _point(to)
     deck = hands.deck_of(sc, frm, at)
-    sess["n"] = sess.get("n", 0) + 1
+    next_n(sc, sess, "STEPS")
     why = str(o.get("why") or f"steps from {frm['name']} down to {to['name']}")
     got = hands.lay_steps(sc, deck, at, f"{sc.place_id}.LOOK{sess['n']:03d}STEPS", why)
     return [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": got["row"],

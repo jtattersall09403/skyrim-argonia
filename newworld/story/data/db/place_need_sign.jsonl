@@ -29,7 +29,7 @@
 {"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"label","detail":"the game names the knapsack \"Sap-Takers' Pack\""}
 {"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall dead swamp tree, with a crate, two clay urns and a knapsack on its open west side"}
 {"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the young Hist by the platform"}
-{"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"look","detail":"Skyrim's long metal cage on the camp's west edge, some 2,700 units from the fire by the longhouse, open toward the reeds"}
-{"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"person","detail":"Jeeta-Sakka, cast on the camp's night guard, carries its key"}
+{"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"look","detail":"Skyrim's long metal cage, with bars all round and a roof, at the camp's west edge on the creek side; it stands some 1,850 units from the fire by the longhouse"}
+{"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"person","detail":"Sesk inside it; Jeeta-Sakka, who carries its key, stands at the fire by the longhouse with the other guards"}
 {"place_id":"tribal-camp-m2-m68","need_seq":1,"need_sign_id":"look","detail":"glazed urns stacked against the longhouse wall beside its door"}
 {"place_id":"tribal-camp-m2-m68","need_seq":2,"need_sign_id":"label","detail":"the longhouse door shows the household's name, and the cellar \"Karsh-Naal Cellar\""}
