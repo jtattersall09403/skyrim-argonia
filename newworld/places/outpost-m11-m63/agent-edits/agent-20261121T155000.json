@@ -1,0 +1,182 @@
+{
+ "save_id": "agent-20261121T155000",
+ "place_id": "outpost-m11-m63",
+ "name": "the fourth and fifth decks' tents at 0.82 (as the high deck's) so the way in round them stays open; the fourth deck's bedroll back under its tent",
+ "at": "2026-11-21T15:50:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK007PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK007PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -82000.9,
+     -513559.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the east low cypress deck by the water: a weir-warden's sleeping tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:50:00Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK0360000",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK0360000",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "why": "a pale hide tent on the new low deck: the third warden tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:50:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK048PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -82000.9,
+     -513559.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 0.82,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the fifth low deck, small enough that a warden walks in round it: a weir-warden's sleeping tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:50:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK049PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 0.82,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the fourth low deck by the landing, small enough that a warden walks in round it: a weir-warden's sleeping tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:50:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK039PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -81735.9,
+     -514045.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T15:50:00Z"
+  }
+ ]
+}

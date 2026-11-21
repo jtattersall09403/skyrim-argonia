@@ -154,7 +154,7 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m11-m63.LOOK007PLACE",
+     "outpost-m11-m63.LOOK048PLACE",
      "outpost-m11-m63.LOOK0460000"
     ],
     "why": "a pale hide tent set on its cypress deck, its poles' feet on the deck boards, as Ree-An-Wo sets its tents on its decks; seen at eye level from E and N (151142399-0025, 151138012-0024)"
@@ -162,7 +162,7 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m11-m63.LOOK007PLACE",
+     "outpost-m11-m63.LOOK048PLACE",
      "outpost-m11-m63.LOOK038PLACE"
     ],
     "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
@@ -195,7 +195,7 @@
     "check": "overlap",
     "ids": [
      "outpost-m11-m63.LOOK0340000",
-     "outpost-m11-m63.LOOK0360000"
+     "outpost-m11-m63.LOOK049PLACE"
     ],
     "why": "a pale hide tent set on its cypress deck, its poles' feet on the deck boards, as Ree-An-Wo sets its tents on its decks; seen at eye level from E and N (151142399-0025, 151138012-0024)"
    },
@@ -210,7 +210,7 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m11-m63.LOOK0360000",
+     "outpost-m11-m63.LOOK049PLACE",
      "outpost-m11-m63.LOOK039PLACE"
     ],
     "why": "a warden's bedroll laid on the deck inside the tent, as a camp bed lies under its tent; the deck under it carries it"
@@ -377,6 +377,7 @@
   "agent-20261121T151747",
   "agent-20261121T152813",
   "agent-20261121T153500",
-  "agent-20261121T154103"
+  "agent-20261121T154103",
+  "agent-20261121T155000"
  ]
 }
