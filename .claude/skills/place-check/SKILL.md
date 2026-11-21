@@ -52,7 +52,10 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     `survey <unit>` for every structure, each tile read; the owner captures (`place-look`, the hand-over look).
 11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
     the two apart.
-12. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
+12. Commit `newworld/places/<place_id>/` and the record change by path. The final build and check come after the
+    LAST edit of any kind to the place's files: `check` ends with whether the built check is current against them,
+    and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
+    consistency stage would refuse the landing). The place goes to `place-people`.
 
 ## Accepted findings
 

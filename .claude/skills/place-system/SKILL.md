@@ -114,6 +114,8 @@ with builds and checks run beside his editing:
 6. A place sharing its source with a place laid earlier passes `look <place> versus <other>` read whole (the same
    views of both on one sheet), confirming what its plan's `differs` fixed.
 7. The owner captures taken (each side at eye level, each structure the record names, each room a story needs).
+8. The final build and check come after the LAST edit of any kind to the place's files; `python3 -m tools.places
+   handover <place_id>` says "built check current" (the consistency stage's rule, `edits/` aside).
 
 ## Planner sessions: how the lead runs place work
 

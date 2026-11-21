@@ -51,6 +51,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from tools.places import variant
+from tools.places.handover import built_check_current, changed_at, out_root  # noqa: F401  the draft rule's home
 
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
@@ -62,16 +63,6 @@ def _m_per_px() -> float:
 
 
 M_PER_PX = _m_per_px()  # metres per Atlas raster pixel
-
-
-def out_root(repo: Path = REPO) -> Path:
-    """out/ is untracked; a lane's worktree reads the main checkout's."""
-    if (repo / "out" / "newworld").exists():
-        return repo / "out"
-    parts = repo.parts
-    if ".claude" in parts:
-        return Path(*parts[:parts.index(".claude")]) / "out"
-    return repo / "out"
 
 
 @dataclass
@@ -190,26 +181,8 @@ def load_drafts(root: Path, out: Path) -> dict:
                              if x.strip()} if (pj.parent / "quests.jsonl").exists() else set())
                            | cast_spots(root, pid),
                   "check": json.loads(chk.read_text()) if chk.exists() else None,
-                  "check_newer": chk.exists() and chk.stat().st_mtime >= changed_at(root, pj.parent)}
+                  "check_newer": built_check_current(root, out, pid)[0]}
     return d
-
-
-def changed_at(root: Path, d: Path) -> float:
-    """When a place's files last changed: the later of its last commit and any uncommitted edit (a checkout's
-    file times are the checkout's, so the commit time is the honest one). The owner's saves and notes (`edits/`) are
-    records of studio work, not the draft: a save does not make the built check old."""
-    import subprocess
-    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits"]
-    try:
-        ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
-                                  capture_output=True, text=True, timeout=30).stdout.strip() or 0)
-        dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", *only],
-                               capture_output=True, text=True, timeout=30).stdout.strip()
-    except (OSError, ValueError, subprocess.SubprocessError):
-        ct, dirty = 0.0, "x"
-    if dirty or not ct:
-        ct = max([ct] + [f.stat().st_mtime for f in d.glob("*.json*")])
-    return ct
 
 
 def main_places(ctx) -> set[str]:
