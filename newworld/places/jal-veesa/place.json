@@ -620,26 +620,6 @@
     "why": "as above: the 6 is the door sill over its step piece"
    },
    {
-    "unit": "dock.05",
-    "flag": "foot not reaching the ground",
-    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
-   },
-   {
-    "unit": "dock.07",
-    "flag": "foot not reaching the ground",
-    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
-   },
-   {
-    "unit": "house.SeekhatAccommodationHut",
-    "flag": "foot not reaching the ground",
-    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
-   },
-   {
-    "unit": "house.SeekhatEggTendersQuarters",
-    "flag": "foot not reaching the ground",
-    "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
-   },
-   {
     "unit": "house.SeekhatCarpenterHut",
     "flag": "steps not reaching the ground",
     "why": "the source's own: the Carpenter's stair (14BB38) comes down from its deck onto walkway.04's boardwalk, not the ground; its foot is on the boardwalk (joints: steps to walkway.04 by 36, seen in survey walkway.04 NE high, 2026-11-21)"
@@ -1516,7 +1496,9 @@
   "agent-20261121T072518",
   "agent-20261121T072556",
   "agent-20261121T072610",
-  "agent-20261121T080923"
+  "agent-20261121T080923",
+  "agent-20261121T081259",
+  "agent-20261121T081344"
  ],
  "steps": {
   "kit": [
