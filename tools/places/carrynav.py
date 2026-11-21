@@ -592,8 +592,8 @@ def _splits(m: Mesh, extra: list) -> dict:
 
 def fix_t_junctions(m: Mesh, extra: list = (), rounds: int = 64) -> int:
     """Split every open edge at each vertex lying on it (and at `extra` points: a neighbour cell's border vertices),
-    one point per triangle per round, the triangle (a, b, c) split at p on ab into (a, p, c) and (p, b, c), until none
-    is left. Returns how many splits were made."""
+    one edge per triangle per round, the triangle (a, b, c) with points p1..pn along ab fanned from c into
+    (a, p1, c), (p1, p2, c) ... (pn, b, c), until none is left. Returns how many splits were made."""
     total = 0
     for _ in range(rounds):
         sp = _splits(m, list(extra))
@@ -607,19 +607,24 @@ def fix_t_junctions(m: Mesh, extra: list = (), rounds: int = 64) -> int:
                 newF.append(m.F[ti])
                 newG.append(m.tag[ti])
                 continue
-            k, (_, x) = min(((k, r) for k, rows in s.items() for r in rows), key=lambda kr: abs(kr[1][0] - 0.5))
-            i = x if isinstance(x, int) else m.vert(x)
+            k = max(s, key=lambda kk: len(s[kk]))    # the edge with the most points: all of them at once
             a, b, c = t[k], t[(k + 1) % 3], t[(k + 2) % 3]
-            if i in t:
+            run = [a]
+            for _, x in sorted(s[k], key=lambda r: r[0]):
+                i = x if isinstance(x, int) else m.vert(x)
+                if i not in t and i not in run:
+                    run.append(i)
+            run.append(b)
+            if len(run) == 2:
                 newT.append(t)
                 newF.append(m.F[ti])
                 newG.append(m.tag[ti])
                 continue
-            for tt in ([a, i, c], [i, b, c]):
-                newT.append(tt)
+            for q in range(len(run) - 1):          # a fan from the corner across the split edge
+                newT.append([run[q], run[q + 1], c])
                 newF.append(m.F[ti])
                 newG.append(m.tag[ti])
-            total += 1
+            total += len(run) - 2
         m.T, m.F, m.tag = newT, newF, newG
     return total
 
@@ -792,17 +797,27 @@ def place_cells(carried: list, generated: dict, region: Region, water=None, neig
     by the generator instead (its triangles dropped, the generated ones kept). Returns (cells, {moved_kept, moved_island})."""
     tags = sorted({g for _, _, g in carried if g > 0})
     island: set = set()
-    while True:
+
+    def run(cells=None):
         use = [t for t in carried if t[2] not in island]
         live = [k for k in tags if k not in island]
-        gen = generated
+        gen = generated if cells is None else {c: r for c, r in generated.items() if c in cells}
+        if cells is not None:       # a trial of the moved units' cells alone: what lies over them
+            use = [t for t in use if any((math.floor(p[0] / CELL), math.floor(p[1] / CELL)) in cells for p in t[0])]
         if on_moved and live:
-            gen = {c: [(t, f) for t, f in rows if not any(on_moved[k - 1](t) for k in live)] for c, rows in generated.items()}
-        out = build_cells(use, gen, region, water, neighbours)
-        lone = set(live) - joined_tags(out)
-        if not lone:
-            return out, {"moved_kept": len(live), "moved_island": len(island)}
-        island |= lone
+            gen = {c: [(t, f) for t, f in rows if not any(on_moved[k - 1](t) for k in live)] for c, rows in gen.items()}
+        return build_cells(use, gen, region, water, neighbours), live
+    if tags:                        # which moved units join: tried on their own cells first
+        cells = {(math.floor(p[0] / CELL), math.floor(p[1] / CELL)) for t, _, g in carried if g > 0 for p in t}
+        cells |= {(c[0] + dx, c[1] + dy) for c in list(cells) for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+        while True:
+            out, live = run(cells)
+            lone = set(live) - joined_tags(out)
+            if not lone:
+                break
+            island |= lone
+    out, live = run()
+    return out, {"moved_kept": len(live), "moved_island": len(island)}
 
 
 def to_nvnm(cell: dict, template):

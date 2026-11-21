@@ -1266,8 +1266,10 @@ their own cell (interior), as vanilla files them.
    deleted (its true plan outline at the source pose, `shape.Posed`, grown by 64), moved (both outlines), a solid
    piece we added (its outline, grown), and each carried triangle a ground vertex of which followed our ground into
    a slope past the walkable 45 degrees (that triangle; listed as `steep`), and each carried triangle that joins a
-   deck or stair to the ground (corners on both) where the ground moved more than a climb (32; listed as `joints`):
-   the generator meshes that foot over the real piece and our ground. A carried vertex on the source's ground
+   deck or stair to the ground (corners on both) where the ground fell away by more than a climb (32; listed as
+   `joints`; ground that rose over the bottom steps is walked onto the stair), and each carried triangle a corner of
+   which, off the source's ground, now lies more than a climb under ours (a walkway our raised ground buries; listed
+   as `buried`): the generator meshes those spots over the real pieces and our ground. A carried vertex on the source's ground
    (within 40 of it) takes our patched ground's height (the land rows summed); a vertex on a deck keeps source +
    offset. A moved piece's own triangles (those resting on its walked surface at the source pose) move with it and
    replace the generated triangles on its surface in its new place, unless that patch shares no edge with the rest,

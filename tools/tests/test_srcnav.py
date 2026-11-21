@@ -90,6 +90,8 @@ def test_a_stair_foot_whose_ground_moved_more_than_a_climb_is_meshed_again():
     assert got["stats"]["joints"] == 2 and not got["tris"]          # both triangles hold a moved foot corner
     got = carried_tris(PLACE, run, lambda x, y: 0.0, lambda x, y: 450.0, 5000.0)
     assert got["stats"]["joints"] == 0 and got["stats"]["kept"] == 2   # 20 lower: within a climb, kept
+    got = carried_tris(PLACE, run, lambda x, y: 0.0, lambda x, y: 520.0, 5000.0)
+    assert got["stats"]["joints"] == 0 and got["stats"]["kept"] == 2   # 50 higher: the ground buries the bottom steps
 
 
 def test_a_walkway_our_raised_ground_buries_is_meshed_again():
