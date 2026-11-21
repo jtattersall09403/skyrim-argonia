@@ -5,7 +5,7 @@ description: The drafter's eyes and hands in the studio's own 3D scene, outside 
 
 # Look, probe and act
 
-Step 9 of the place path ([place-system](../place-system/SKILL.md)), and the inner loop of every other step. The
+The inner loop of every step of the place path ([place-system](../place-system/SKILL.md)), and its hand-over look. The
 tool is `python -m tools.places look <place> <verb> [args]`; its contract is `docs/design/agent-view.md`.
 
 ## Which verb
@@ -14,6 +14,9 @@ tool is `python -m tools.places look <place> <verb> [args]`; its contract is `do
   Whether a place reads well, a street is open or a group of huts looks right is a picture.
 - **Name what to look at; the tool places the camera**: a structure (`b04`), a piece id or its last characters, a
   door by its room, a person, a quest spot id, a unit (`house.SeekhatEldersHut`, `dock.03`), or `x,y`.
+- **A source place by itself**: `look --source <source_id> <verb> [--ring <m>] [--centre x,y]` (overview, at,
+  section, units), for choosing a source and its ground (`place-plan`, `place-site`); `look --source stop` ends its
+  daemon.
 
 ## Reading a capture
 
@@ -49,13 +52,15 @@ code changes.
 
 ## Working a fault
 
-1. `overview`, `probe --all` and `measure`; the measure table's flags are the fault list to start from.
+1. `overview`, `probe --all` and `measure`; the measure table's flags are the fault list to start from. A probe
+   fault seen to be the source's own arrangement and reading as built (posts on roots, a span's end on a deck) is
+   accepted in `place.json` `draft.accepted_faults` `[{id, fault, why}]`: listed apart, drawn without red.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
 3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
-   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `steps <deck,
+   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] --why "<why>"` (one piece of any base), `steps <deck,
    structure, walkway or door> <point or thing>`, `land <x,y> <radius> <dz> --why "<why>"` (raise or lower the ground
    inside the footprint, eased to nothing at the radius, refused past the land bound: a mud mound under legs that
-   stop short, a bank at a walk's free end; when a mound would need more, bring the unit down instead). A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
+   stop short, a ramp to an added door; when a mound would need more, bring the unit down instead). A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
    is never moved without its deck unless `--piece` is given; `move` and
    `sink` answer with each deck's height over the ground before and after, which is the number to judge. A copy
    is seated where it stands and carries the reason you give it. `steps` lays one flight of the place's own kit
@@ -70,12 +75,11 @@ code changes.
 Faults with a known cause:
 
 - **Missing bases** across many pieces: the draft bundle is older than the catalogue. Rebuild it with
-  `python -m tools.places draft_bundle <place_id> --force` and probe again.
+  `python -m tools.places draft-bundle <place_id> --force` and probe again.
 - **A lantern in the air**: its tree moved; `draft hang` (`place-dressing`).
-- **A piece floating over a dropped floor or a moved deck**: sink its whole structure, never the piece alone.
+- **A piece floating over a pruned floor or a moved deck**: sink or move its whole structure, never the piece alone.
 
-A `streets` run or a whole draft rewrites the place files: commit the look session first and use no hand until it
-ends, or its strokes are lost.
+A stage run rewrites the rows it owns: commit the look session first.
 
 ## Inside a room
 
@@ -93,17 +97,20 @@ shows; `door` names its way out. The room is drawn in its own light; `--lit` add
 
 Before a place goes to the owner (the bar in `place-system`):
 
-1. `probe --all` reports nothing.
+1. `probe --all` reports nothing open.
 2. `survey <place>` and `survey <place> <structure>` for each structure, every tile good or struck through with
    its reason; for each room a story needs, its `in <room> overview` and `probe --all`.
 3. `playwalk` of the whole place (one tour past every door, stall, station, the Hist and quest spot; its plan's counts print first) and `playwalk --rooms`; read the forward filmstrip of the tour, then its strips.
    A red struck tile is the camera's: judge nothing from it. An orange PLACE tile (the way passes through a piece,
    a door opens onto a wall, no boards under a bridge, the void in a room) is a fault: fix it. Every "cannot be
    walked to" is a fault for `place-streets`. Bare ground is not a fault (the viewer draws no grass).
+   Read the tour at full size.
 4. Read every image. Match each sentence of the record's `look` to an image that shows it; name each line not yet
    met in the hand-over.
 5. Judge the whole: does it read as the record's place sitting naturally on our land? If not, go back to the skill
    that owns what is wrong.
+6. The owner captures: each side at eye level, each structure the record names, each room a story needs, saved in
+   one folder the hand-over names.
 
 ## The machine
 

@@ -1,105 +1,59 @@
 ---
 name: place-plan
-description: Start a place draft of the new world - read the place record as the brief, choose the source place, read the source's character, write draft.plan (look, gives, structures) and judge each source structure kept or dropped against the record. Use before a place's first draft, and again when its source or plan changes.
+description: Start a place draft of the new world - read the place record as the brief, choose the source place by looking at candidates as places and testing them against the record, pin it, and write draft.plan (look, gives, structures kept, relabelled or pruned). Use before a place's first draft, and again when its source or plan changes.
 ---
 
-# Choose the source and write the plan
+# The record and the source
 
 Step 2 of the place path ([place-system](../place-system/SKILL.md)). Before: the record (`place-research`). After:
-the whole draft, judged stage by stage (`place-site` onwards).
+the ground and the baseline (`place-site`).
 
-## Inputs
+## 1. Read the record as the brief
 
-- The record, read whole before any draft and before any change: `python3 -m tools.newworld.place_card
-  <place_id>` (summary, `look`, people, `gives`, dangers, hooks, the `source` note). In the database
-  (`db.open("newworld")`): `place`, `place_give`, `place_source` (rank 0 is the allocated source, 1 to 3 the next
-  most similar), `source_place`.
-- `place.json`: `place_id`, `source_id`, `similar`. A source place is a row of `newworld/places/sources.jsonl`
-  (hand-written) or `sources_mined.jsonl` (`tools.places sources-match`).
-- The bundles under `out/places/bundles/`: `python3 -m tools.places source <place_id>` (or `extract
-  <source_id>`) writes `src.<source_id>`; `extract --ground <place_id>` writes `ground.<place_id>`, which must
-  stand on the deployed world file (`ground-check <place_id>` passes; the world is settled first, skill
-  `world-build`). The ground bundle and the build stamp the world records they read; `worldparts <place_id>` names
-  what moved under a place.
-- Skyrim's town rules: `docs/research/skyrim/town-life.md`.
+`python3 -m tools.newworld.place_card <place_id>`, read whole: what the place is, its kind and size (the footprint
+radius), where it sits (water, banks, slope), its people, its promises (`gives`), dangers, and what the stories need
+of it (the quests' rooms, things and persons at the place). In the database (`db.open("newworld")`): `place`,
+`place_give`, `place_source` (rank 0 the allocated source, 1 to 3 the next most similar), `source_place`. Skyrim's
+town rules: `docs/research/skyrim/town-life.md`.
 
-## 1. Choose the source
+## 2. Choose the source by looking
 
-The record's `source` note and the allocated source are a first idea, not a ruling.
+The record's `source` note and the allocated source are a first idea. Candidates: the card's `source 0..3`, the
+committed match (`newworld/sources/source_match/place_source.jsonl`), the catalogue search
+(`python3 -m tools.places search query "<kind of place>"`), and sources of the same kind and culture.
 
-1. Weigh the allocated source and its alternatives (the card's `source 0..3`, `python3 -m tools.places
-   sources-match`, the catalogue search) against the record: style and materials, layout (water, banks, streets),
-   buildings and interiors, size. Take the one that already looks most like the record, so the draft is mostly
-   kept pieces. A place the main quest uses always gets its closest match.
-2. A source may serve several places, each taking a different part, layout or adaptation; the plan says how this
-   one differs. Many places on one source are not fine; where another good source of the kind fits after a light
-   re-authoring of one record, the second place moves to it.
-3. When something must change to fit, change the cheapest thing with the fewest knock-on effects: a source note,
+1. Get each candidate's bundle (`python3 -m tools.places extract <source_id>`) and **look at it as a place**:
+   `python -m tools.places look --source <source_id> overview`, `at`, `section` and `units` with `--ring <m>` at the
+   record's footprint radius. Name what stands inside the ring: its structures, its water, its ground, its rooms.
+2. Test each against the record: **within the footprint, over half of the source's pieces would be kept as built**
+   against the record's look and promises, and **the quests' rooms are present or come cheaply from one other
+   source**. A place the main quest uses gets its closest match.
+3. A source another place already uses is allowed and never counted against a candidate. The plan then says what
+   this place takes and how it will differ from the other: a different part of the source, a different centre or
+   layout, different added buildings, dressing and people's spots. The adaptation (`place-adapt`) makes it so.
+4. Where too little of every candidate is useful, build from the asset pool round the nearest thing: the closest
+   source's layout or one structure, with everything else added (`place-adapt`). Say so in the plan.
+5. When something must change to fit, change the cheapest thing with the fewest knock-on effects: a source note,
    then a minor record, before a main-quest text or a drafted place. Where the record clashes with the ground, the
    record changes; the place is not moved.
-4. When no source is close (most buildings would be replaced), build from the whole asset pool, taking only what a
-   source gives cheaply (a street layout, interiors with furniture and navmesh), and say so in the plan.
-5. Pin the choice with `python -m tools.places sources-match --pin <place>` (its `JUDGED` table), never by hand;
-   the reason goes in the plan.
-
-## 2. Read the source's character
-
-1. `python3 -m tools.places draft <place_id>` once with an empty `draft` block, then `draft render <place_id>`;
-   look at `out/places/renders/<place_id>/source.png`, and at the source in the studio scene (`place-look`).
-2. Name in a few lines: where its water is and what stands in it; how its streets run between the doors; which
-   buildings are entered and where they lead (`place.json` `fit.clusters_info`, `ledger.jsonl`); how close its
-   plants come to buildings, streets and doors (`place.json` `clearance`).
+6. Pin it: add the place to the JUDGED table in `tools/places/sources_match.py` with the reason, then
+   `python -m tools.places sources-match --pin <place_id>`; set `place.json` `source_id` to it. Never edit the match
+   files by hand.
 
 ## 3. Write draft.plan
 
-Write `draft.plan` before the first stage runs. Its one shape (`tools/places/draft/plan.py`):
+`draft.plan` (`tools/places/draft/plan.py`) is the record of the judgement:
 
 ```
 {source, look: [{line, by}], gives: [{kind, by}],
  structures: [{cluster | structure, what, verdict: kept|dropped, why}]}
 ```
 
-- `source`: which source and why.
-- `look`: a row for each thing the record's look names (each building kind, the water and what stands in it, the
-  market, the shrine, the racks, the materials), with the source or added pieces that deliver it. The `source`
-  note's replacements are done whole ("houses replaced with stilt huts" swaps every house shell).
+- `source`: which source, why, and how this place differs from others on it.
+- `look`: a row for each thing the record's look names, with the source or added pieces that deliver it.
 - `gives`: a row for each promise of the record, by its kind.
-- `structures`: a row for each major source structure (by its class from `draft structures`) and each source
-  cluster with a standing building (by its cluster ids, comma-separated).
+- `structures`: a row for each major source structure (`python -m tools.places draft structures <place_id>`) and each
+  source group with a standing building: kept (as built, or relabelled to a new use: say which), or dropped (pruned).
 
 `python -m tools.places draft plan <place_id>` prints the plan's faults; `draft check` and the consistency checker
-fail on the same ones.
-
-## 4. Judge each source structure
-
-`python -m tools.places draft structures <place_id>` lists each major structure (walls, terraces, keeps, mines,
-caves, harbours, temples, forts) with its pieces. Keep one only when the record names it or it is an ordinary part
-of such a place; otherwise drop it with its doors, rooms and pieces (`draft.drop` `{source ref id: reason}`, the
-`pieces` stage). A source site the record never names (a mine, a cave, a crypt) is left out by the tools with its
-door, room and mouth. A kept structure stays whole: body, deck, steps, what hangs on it and the bridges that bind
-it.
-
-The source brings nothing the record does not promise: the `pieces` stage drops traps and hazards a friendly
-place's dangers do not name, loot containers beyond the record's treasure count, and every Nordic sign (a
-Doomstone, a word wall, a shrine of Talos); `draft check` and the build's `nordic` check fail one that stands. A
-source piece the record needs, or that such a place plainly has (a town's general trader), stays.
-
-## 5. Plan the layout
-
-Once the source sits on our ground, plan every unit's height for the place as a whole before seating any by hand:
-`python -m tools.places units plan <place_id>` (the units are in `place-site`). It first puts each unit back
-together at its source's own relative levels (its `reassemble` per piece), then gives each one vertical offset so
-that its floor or deck stands over the highest ground under it (30 units; a stilt house's deck 60), every foot is in
-the ground by at least 16 units and never deeper than its leg, every door stays on its floor, every walkway end
-meets what it rests on within a step and steps reach the ground. Joined units are solved together for the least
-movement. Where no offset seats a unit on its ground, the plan says so and gives, in order, a spot within the place
-where it fits and keeps its joins, else the joins it would give up; it never changes terrain or water, moves the
-place or stretches a piece.
-
-Apply the plan unit by unit in the studio (`look move <unit> 0 0 <dz>`), look at each, and decide each unit the plan
-could not seat: a better spot, a dropped join, or a structure left out.
-
-## 6. The draft is finished only when it reads as the record
-
-A check that passes on a place that does not look like its record is not finished. The look is judged in
-`place-look`.
+fail on the same ones. The plan is updated whenever the adaptation changes a verdict.

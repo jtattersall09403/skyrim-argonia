@@ -7,12 +7,16 @@ description: What the stories need of a place - first spots for every quest thin
 
 Step 8 of the place path ([place-system](../place-system/SKILL.md)). Stages: `quests`, `add`.
 
+Every quest thing and person at the place stands where a player finds it and recognises it: placed by hand, then
+sight-tested at eye level from where the player comes (`look <place> at <spot> --stand x,y`: the eye at that point).
+
 ## Quest things get first spots
 
 Every quest placement at the place gets a first spot without being asked: the `quests` stage (every whole draft
 runs it last; `python3 -m tools.places draft quests <place_id>`, or `quest-draft <place_id>`) drafts a row in
 `quests.jsonl` from the placement's words on the place's rows and walking mesh. The owner's rows (no `drafted`) are
-never changed. Read its `unresolved` list and look at each spot (`look at <spot id>`). A quest thing with no spot
+never changed. Read its `unresolved` list and look at each spot (`look at <spot id>`); move a first spot by hand onto the thing the
+words name (a guard at the fire, the key holder at the door) and commit it. A quest thing with no spot
 after the stage names nothing the place holds: give the place the thing the words name, or fix the words.
 
 A quest person who lives in the place is cast as the place's person in that role: one person, never two

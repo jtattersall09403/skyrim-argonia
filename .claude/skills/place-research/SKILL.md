@@ -43,14 +43,14 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    evidence ("Bonestrewn Grove, from King of the Murkmire, has cypress walkways on posts and two hide tents"),
    never a command or an id. The `source` note is a first-idea build plan that agrees with the allocated source
    (rank 0 of the place card): it names that source and what it gives (layout, which interior serves as what),
-   what is dropped, what is replaced with which pieces (a Nordic piece always), and ends "Still to add: ...". When
+   what is dropped, what is replaced with which pieces (a Nordic piece where an easy swap exists), and ends "Still to add: ...". When
    the allocated source gives little, the note says the place is built "from the pool", what the source still
    gives, and which pieces of the pool make the rest. It never says the source does not fit or that another
    source fits better; a better source is taken by `python -m tools.places sources-match --pin` (its `JUDGED`
    table) or its pieces are named as pool pieces. A source may serve several places; each is adapted
-   differently, and the note says how this place differs from the others built from the same source. Reuse
-   is judged by place-plan's rule ("Choose the source"): two differently adapted users are fine, many are
-   not, and the cheapest change that makes a place fit is made first. Check: `pytest tools/tests/test_newworld_source_note.py`. Each note is about this
+   differently, and the note says how this place differs from the others built from the same source. Sharing
+   a source is never counted against it; each place on it is adapted to feel its own (place-plan, "Choose the
+   source by looking"), and the cheapest change that makes a place fit is made first. Check: `pytest tools/tests/test_newworld_source_note.py`. Each note is about this
    place alone, drawn from what is particular to it; no sentence is shared with another place, with only the
    names changed. The overview adds what the summary does not. An unnamed place gets a name in its culture's
    style, unique in the province. Importance: 5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour.

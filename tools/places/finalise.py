@@ -286,8 +286,8 @@ def write_notes(run: Run, save: dict) -> None:
     (run.dir / "notes.json").write_text(json.dumps({"notes": said}, indent=1, ensure_ascii=False) + "\n")
 
 
-DRAFT_SKILLS = ("place-plan", "place-site", "place-streets", "place-rooms", "place-routines", "place-dressing",
-                "place-story", "place-look", "place-check", "place-change")
+DRAFT_SKILLS = ("place-plan", "place-site", "place-adapt", "place-rooms", "place-streets", "place-routines",
+                "place-story", "place-dressing", "place-look", "place-check", "place-change")
 
 
 def draft_skills(run: Run) -> list[tuple[str, Path, Path]]:
