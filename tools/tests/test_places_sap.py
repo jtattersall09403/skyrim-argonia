@@ -3,7 +3,7 @@ slope, and found missing when a Hist has none."""
 import math
 
 from tools.places.draft import sap
-from tools.places.seat import Ground, seat_all
+from tools.places.seat import Ground
 
 BASES = {"P:hist": {"edid": "HistTree04", "kind": "static", "bounds": [[-254, -278, -24], [333, 296, 593]]},
          "P:big": {"edid": "HistTree03", "kind": "static", "bounds": [[-658, -731, -162], [734, 713, 1381]]},
