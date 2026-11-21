@@ -207,11 +207,11 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
-- Decided by the lead, for the owner to confirm (2026-11-21, #80), in the by-hand trial of Jal-Veesa only: the
-  source town stands in a lagoon and our site is dry high ground, so the trial restores the lagoon as placed water
-  inside the footprint (the source's own pond pieces, like a sap pool; the world's water line does not move),
-  provided the carried ground contains it all round and no water edge hangs or shows straight; otherwise it stays
-  dry. This reverses the lead's earlier call that source ponds are not brought, for the trial.
+- A source place is adapted to our place's kind: what does not make sense for ours (mines, docks, landings and
+  the like, by the place record) is taken out, relabelled to a use that fits, or moved to where it does make
+  sense; adapt, relabel, prune, add (2026-11-21, #80; restating 2026-11-20). So Jal-Veesa, which its record puts
+  on dry mud banks beside a Hist pool with its boats at the creek, gets no lagoon: the lead's call to restore the
+  source's lagoon as placed water was withdrawn the same hour.
 - Decided by the lead, for the owner to confirm (2026-11-21, #80): on carried ground a source piece is dropped
   for water only if it would stand in our water with no ground of ours for it; a piece whose own carried ground
   lies under it is kept (the old rule had dropped 22 landing pieces at Jal-Veesa, the Smithy's porch posts among
