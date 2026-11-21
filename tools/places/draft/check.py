@@ -79,7 +79,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     if any(r.get("base") in hang.LANTERNS for r in refs):   # each hanging lantern on a limb of the tree it hangs from
         bad += hang.faults(refs, bases, *hang.measurers(bases))
     from tools.places.draft import sap
-    bad += sap.faults(refs, bases)                         # every living Hist stands in its sap pool
+    bad += sap.faults(refs, bases, (place.get("sap") or {}).get("none"))                       # every living Hist stands in its sap pool
     from tools.places.draft import obvious                 # no stand-in box, nothing floating, no bridge on one leg
     wrefs = grd.exterior.refs if grd.exterior else []
     bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs + wrefs} - set(bases)), **bases}, G, wrefs)

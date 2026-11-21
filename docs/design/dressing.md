@@ -81,3 +81,39 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
 5. **The check.** Each hanging thing's anchor is within 5 cm of its own hang point of a tree that stands after the
    edits; it has the air, ground and road clearance of step 4; a carrier holds at most the source's largest count,
    one carrier a cell; each region's count per 100 eligible cells is within tolerance of the bound.
+
+## Hist sap
+
+Every living Hist of a built place has a still pool of thick amber sap at its roots (Lore:Hatching_Pools), made from
+Skyrim's own water machinery and nothing of ours but records and ground (research:
+[sap-water-bethesda](../research/sap-water-bethesda.md); records and values: `tools/places/own_bases.py`; the stage:
+`tools/places/draft/sap.py`, place-dressing).
+
+- **The water.** `ArgoniaHistSapWater`: Bethesda's Eastmarch hot-spring water (DefaultVolcanicWater, as Tropical
+  Skyrim has it), its noise textures, directions and displacement kept; amber colours (shallow 196,128,24, deep
+  86,40,6, reflection 150,106,44), opacity 70, fog far plane 56, reflectivity 0.6, fresnel 0.25, reflection magnitude
+  0.35, noise at half the hot spring's speed, no current, no damage. Each place that has a pool carries its own copy
+  (the place layer's writer, `Own.cs`).
+- **The pool.** `ArgoniaHistSapPool`: vanilla's round puddle (WaterPuddleLiteFog's model and bounds) with that water,
+  scaled to the tree.
+- **The bowl.** The rim is the lowest ground under the pool's outline, the surface 4 units under it, the floor a
+  cosine from the rim to 64 units under the surface at the middle, higher ground round it eased down over 128 units.
+  The dig only lowers, at most 105 units, and keeps dry land 8 units over our water, so a pool near the water is
+  shallower.
+- **Never on open water.** A Hist standing in our water has its pool on the nearest dry bank at its foot; with none
+  within 600 units of its crown it has no pool, place.json `sap.none` says so, and the place's plan says how it shows
+  its sap.
+
+**The in-game check** (the lead posts it as an owner check at the next deploy that carries a rebuilt place; a driver
+agent may take the stills). Stand at the rim of Jal-Veesa's Hist pool (the big Hist in the middle of the village) by
+day, clear weather: one still at eye height from the rim looking across, one from a few steps back at a low angle,
+one from above (a deck). Good: the surface moves slowly (ripples drifting, not still glass, not a running river); the
+sky shows as a sheen at the low angle; at the rim the bank shows through the sap; the middle is darker brown-amber
+than the rim; no edge of the pool hangs in the air or stops at a step; it reads as liquid in a hollow, not a flat
+coloured disc. Then the same at outpost m11-m63, whose Hist stands at the water: its pool is on the bank, never on
+the river. If it reads wrong, change only `own_bases.py` and rebuild the places:
+- too opaque, a painted disc: lower `Opacity` (70 -> 50) and raise `FogAboveWaterDistanceFarPlane` (56 -> 80);
+- too glassy or clear, like water: raise `Opacity` (-> 85), lower `WaterReflectivity` (0.6 -> 0.45);
+- too orange or too bright: darken `ShallowColor` toward (170,104,20) and `DeepColor` toward (60,28,4);
+- no sheen at a low angle: raise `WaterFresnel` (0.25 -> 0.35) and `WaterReflectionMagnitude` (0.35 -> 0.5);
+- moving like water rather than sap: halve the three `NoiseLayer*WindSpeed` again.

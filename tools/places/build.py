@@ -1906,6 +1906,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     boats, waiting = plan_travel(P, people, ids, facts)
     notes += [f"travel: {x}" for x in waiting]
     shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads
+    from tools.places.own_bases import plan_own
+    own = plan_own(S["refs"], ids, pid)  # our own bases (the Hist sap pool): the place's copies, the refs swapped to them
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
     plan = {
@@ -1916,7 +1918,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "stock": stock, "notes": notes,
+        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "own": own, "stock": stock, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

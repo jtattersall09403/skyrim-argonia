@@ -220,6 +220,12 @@ def run(out: Path | None = None) -> dict:
             by_source[mod] += 1
             by_type[b["type"]] += 1
             n += 1
+        from tools.places.own_bases import own_rows   # our own bases, as the place layer writes them
+        for b in own_rows():
+            b.update(nordic=False, kind=kind(b), source="argonia", has_model=True, text=descriptor(b, "Argonia"))
+            fo.write(json.dumps(b, ensure_ascii=False) + "\n")
+            by_source["argonia"] += 1
+            n += 1
     os.replace(tmp, out / "bases.jsonl")
     (out / "bases.raw.jsonl").unlink()
     summary = {"bases": n, "plugins": [f for f, *_ in plugins], "by_source": dict(by_source.most_common()),

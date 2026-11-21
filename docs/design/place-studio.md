@@ -713,6 +713,20 @@ that drew nothing, or a context that has not come back, is said in words over th
 button, and logged as `blank` with the reason. A lost graphics context is logged (`context-lost`,
 `context-restored`) and everything is drawn again when it returns.
 
+**Placed water** (`water_look.js`, `water.js`). A base with a `water` entry in the catalogue (a puddle, a Hist's sap pool, the
+Heart-Mud pools, any placed water plane) is drawn as a liquid of its water type, as the game shades it from the record: the
+catalogue carries the type's shallow, deep and reflection colours, opacity (0 to 100), reflectivity, fresnel and the fog
+distance over which the water turns from shallow to deep. The surface is one Lambert material per base, so lights, night
+and fog apply, with four terms added: its colour runs from the shallow colour at the rim to the deep colour with the depth
+of water over the ground under it (a small depth grid baked from the ground at the placed refs, 16 units a texel, plus the
+distance in from the water's edge so a flat hollow still deepens toward its middle) and a thin darker wet line at the
+shore; its alpha follows the record's opacity (soft over 14 units of depth for a see-through water, over about 1.5 for one
+the record calls opaque) and is zero where the ground stands above the surface; a ripple normal map made in code (one
+64-texel tile, two scales, nothing committed) bends its normal, drifting only when `setWaterTime` is given a time; and a
+fresnel sheen in the record's reflection colour brightens it toward grazing views. The model's own vertex colours are not
+used. The land's cell water takes the same sheen on its up normal, nothing sampled, so the two agree. Node tests the
+look, the depth grid and the tile (`test/water_look.test.mjs`).
+
 **Lights** (`objects.js`, `lights.js`). A light record has no model in the game, so the views draw each light as a
 small bulb of its own colour (a few pixels across at any distance), every bulb of a layer in one instanced mesh, with
 a faint ring at its radius for a selected light, the lights of a selected fixture, and any light within 1,500 units
