@@ -90,3 +90,12 @@ def test_a_stair_foot_whose_ground_moved_more_than_a_climb_is_meshed_again():
     assert got["stats"]["joints"] == 2 and not got["tris"]          # both triangles hold a moved foot corner
     got = carried_tris(PLACE, run, lambda x, y: 0.0, lambda x, y: 450.0, 5000.0)
     assert got["stats"]["joints"] == 0 and got["stats"]["kept"] == 2   # 20 lower: within a climb, kept
+
+
+def test_a_walkway_our_raised_ground_buries_is_meshed_again():
+    # a walkway 100 over the source's ground (off it), our ground raised 200 there: buried, dropped and listed
+    deck = [{"verts": [[0, 0, 100], [256, 0, 100], [0, 256, 100]], "tris": [[0, 1, 2, 0]]}]
+    got = carried_tris(PLACE, deck, lambda x, y: 0.0, lambda x, y: 470.0 + 200.0, 5000.0)
+    assert got["stats"]["buried"] == 1 and not got["tris"] and len(got["steep"]) == 1
+    got = carried_tris(PLACE, deck, lambda x, y: 0.0, lambda x, y: 470.0 + 90.0, 5000.0)
+    assert got["stats"]["buried"] == 0 and got["stats"]["kept"] == 1       # within a climb of our ground: kept

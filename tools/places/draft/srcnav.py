@@ -94,14 +94,16 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
     them on our cell lines and the footprint): {tris: [(tri, flags, ground_moved)], steep: [tri], stats}. Rule 1 as
     `carry`; a triangle a ground vertex of which moved (our ground differs there) and is now steeper than the walkable
     angle, or that joins a deck or stair to the ground (corners on both) where the ground moved more than a climb
-    (JOINT_DZ), is dropped and listed in `steep` (the build meshes that patch again, over the real pieces and ground)."""
+    (JOINT_DZ), or a corner of which off the source's ground now lies more than a climb under ours (a walkway our
+    raised ground buries), is dropped and listed in `steep` (the build meshes that patch again, over the real pieces
+    and ground)."""
     from tools.places.carrynav import MAX_SLOPE_DEG, slope_deg
     ours, off = _transform(place)
     centre = place["fit"]["anchor"]
-    st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "joints": 0, "regrounded": 0, "ground_moved_max": 0.0}
+    st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "joints": 0, "buried": 0, "regrounded": 0, "ground_moved_max": 0.0}
     tris, steep = [], []
     for m in navs:
-        V, moved, on = [], [], []
+        V, moved, on, buried = [], [], [], set()
         for x, y, z in (v[:3] for v in m["verts"]):
             X, Y, Z = ours(x, y, z)
             g = src_ground(x, y)
@@ -112,6 +114,10 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
                 if h is not None:
                     dz = (h + (z - g)) - Z
                     Z = h + (z - g)
+            else:                       # a deck vertex our ground has risen over by more than a climb: buried
+                h = our_ground(X, Y)
+                if h is not None and Z < h - JOINT_DZ:
+                    buried.add(len(V))
             V.append((X, Y, Z))
             moved.append(abs(dz))
             on.append(grounded)
@@ -121,6 +127,10 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
             mx, my = sum(p[0] for p in tri) / 3, sum(p[1] for p in tri) / 3
             if math.dist((mx, my), centre) > radius:
                 st["outside"] += 1
+                continue
+            if any(i in buried for i in t[:3]):
+                st["buried"] += 1
+                steep.append(tri)
                 continue
             dz = max(moved[i] for i in t[:3])
             st["ground_moved_max"] = round(max(st["ground_moved_max"], dz), 1)
