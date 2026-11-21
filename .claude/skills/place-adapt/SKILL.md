@@ -31,9 +31,10 @@ Write the reason per group in the place's notes.
 
 ## A place sharing its source
 
-When another place is drafted from the same source, the adaptation also makes this one unmistakably its own, as the
-plan says: its own part or centre of the source, its own added buildings, dressing and people's spots. Compare the two
-side by side from matching eye-level views and name what tells them apart.
+When another place is drafted from the same source, the plan's `differs` entry (`place-plan`, written before the
+baseline) already fixed this place's own part of the source, turn, landmark, prunes and additions; the adaptation
+carries out its prunes, additions, dressing and people's spots. The side-by-side look from matching eye-level views at
+hand-over only confirms what tells them apart.
 
 ## An added building
 

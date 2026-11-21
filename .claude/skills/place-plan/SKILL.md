@@ -28,9 +28,13 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 2. Test each against the record: **within the footprint, over half of the source's pieces would be kept as built**
    against the record's look and promises, and **the quests' rooms are present or come cheaply from one other
    source**. A place the main quest uses gets its closest match.
-3. A source another place already uses is allowed and never counted against a candidate. The plan then says what
-   this place takes and how it will differ from the other: a different part of the source, a different centre or
-   layout, different added buildings, dressing and people's spots. The adaptation (`place-adapt`) makes it so.
+3. A source another place already uses is allowed and never counted against a candidate. Then, first, before any
+   baseline: look at the other place as drafted (`look <other> at <middle> --top` and eye-level views from four
+   sides) and at the source (`look --source`), and write a `differs` entry in `draft.plan` fixing the big choices:
+   which part of the source this place takes (another quarter or centre: the ring placed elsewhere), its own turn and
+   approach, the landmark it is built round, what it prunes that the other kept, what it alone adds, its own dressing
+   and people's spots. The baseline is laid to that plan (`pivot`, ring and turn chosen by it), so the difference is
+   structural; the side-by-side look at hand-over only confirms it.
 4. Where too little of every candidate is useful, build from the asset pool round the nearest thing: carry the closest
    source with `--carry-radius` round the one structure or layout worth keeping, prune the rest, and add everything
    else (`place-adapt`). Say so in the plan.
@@ -46,7 +50,7 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 `draft.plan` (`tools/places/draft/plan.py`) is the record of the judgement:
 
 ```
-{source, look: [{line, by}], gives: [{kind, by}],
+{source, differs?: [{from: <place_id>, what}], look: [{line, by}], gives: [{kind, by}],
  structures: [{cluster | structure, what, verdict: kept|dropped, why}]}
 ```
 
