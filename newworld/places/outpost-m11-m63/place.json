@@ -149,5 +149,7 @@
   "take": 560.0,
   "laid": "2026-11-21T14:46:50Z"
  },
- "agent_saves_applied": []
+ "agent_saves_applied": [
+  "agent-20261121T144825"
+ ]
 }
