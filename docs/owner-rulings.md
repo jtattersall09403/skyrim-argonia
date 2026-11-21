@@ -207,6 +207,11 @@ added here the day they are made, with the date and the issue.
   lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
+- A source place is adapted to our place's kind: what does not make sense for ours (mines, docks, landings and
+  the like, by the place record) is taken out, relabelled to a use that fits, or moved to where it does make
+  sense; adapt, relabel, prune, add (2026-11-21, #80; restating 2026-11-20). So Jal-Veesa, which its record puts
+  on dry mud banks beside a Hist pool with its boats at the creek, gets no lagoon: the lead's call to restore the
+  source's lagoon as placed water was withdrawn the same hour.
 - Decided by the lead, for the owner to confirm (2026-11-21, #80): on carried ground a source piece is dropped
   for water only if it would stand in our water with no ground of ours for it; a piece whose own carried ground
   lies under it is kept (the old rule had dropped 22 landing pieces at Jal-Veesa, the Smithy's porch posts among
