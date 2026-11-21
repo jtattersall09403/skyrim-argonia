@@ -8,6 +8,11 @@
 # `[stages]` table, each of which applies to every change) runs the whole gate.
 # A path of a rule marked `only` (a place's edits/: the owner's saves and notes, read by no build or check) picks that
 # rule's stages and nothing else: a save's commit costs seconds, whatever else the gate would reach.
+# THE LINE for a place's own files (newworld/places/<id>/...): a change reaches the checks that read that place's data
+# (the consistency stage and the tests that assert facts about the committed place files), and the quest stages and
+# the story explorer only when a file they read from a place folder changes (quests.jsonl, ledger.jsonl). A tool that
+# names the whole newworld/places tree only reads whichever place it is given: it is not reached by one place's file
+# (`trees`), so one moved barrel runs seconds-to-a-minute of checks, never the tool tests, the quest stages or the explorer.
 # The guard and ruff always run. Globs are fnmatch patterns on repo-relative paths ("*" crosses "/").
 
 # A change to any of these runs the whole gate: the gate, test set-up, the build of the gate, and the
@@ -30,6 +35,9 @@ full = [
 # names them. Each stage's module is what its make target runs, for the automatic closure.
 # modules that read a whole story tree: the paths they name reach only the tests and stages that import them directly
 named_direct = ["tools/places/needs.py"]
+# folders of independent members: code that names the whole folder is reached by a root file of it, or by a file of a
+# member it names itself (newworld/places/<id>), never by a file inside some other member
+trees = ["newworld/places"]
 
 [stages]
 adaptation = "tools.argonia_world.adaptation_check"
@@ -65,9 +73,11 @@ tests = [
   "tools/tests/test_newworld_source_note.py",
 ]
 
-# The rest of the new world's committed files: the place tests and the explorer.
+# The rest of the new world's committed files: the place tests and the explorer. A place's own folder has its rules
+# below.
 [[rule]]
 globs = ["newworld/*"]
+not = ["newworld/places/*/*"]
 stages = ["storyexplorer"]
 tests = ["tools/tests/test_newworld_place.py", "tools/tests/test_places_check.py"]
 
@@ -161,8 +171,30 @@ tests = ["tools/tests/test_places_truth.py", "tools/tests/test_places_shape.py"]
 globs = ["tools/places/carrynav.py", "tools/places/draft/srcnav.py", "tools/places/build.py", "tools/navmesh/nvnm.py"]
 tests = ["tools/tests/test_carrynav.py", "tools/tests/test_srcnav.py"]
 
+# One place's own files: the consistency stage (above, `newworld/places/*`) guards them against the records, quests and
+# story. These tests read the real committed place folders and assert facts about them (found by tracing which of the
+# tests a place file used to pick opened a real place file: the helstrom edits round trip, the committed variant, the
+# needs of the drafted places); every other test that names newworld/places builds its own fixture places.
+[[rule]]
+globs = ["newworld/places/*/*"]
+tests = ["tools/tests/test_places_edits.py", "tools/tests/test_places_variant.py", "tools/tests/test_places_needs.py"]
+
+# What the quest compiler and the story explorer read from a place folder: the quest spots (quests.jsonl, read by
+# tools/questform/compile.py) and the drafted mark (ledger.jsonl, read by tools/newworld/story_digest.py). A change to
+# one of them runs the quest stages and the explorer; a change to the rest of a place's files does not.
+[[rule]]
+globs = ["newworld/places/*/quests.jsonl", "newworld/places/*/ledger.jsonl"]
+stages = ["questform", "reach", "questtext", "storyexplorer"]
+tests = ["tools/tests/test_questform_spots.py", "tools/tests/test_places_quest_spots.py"]
+
 # The owner's saves and notes under a place's (or a variant's) edits/: only their own validity check, nothing else.
 [[rule]]
 globs = ["newworld/places/*/edits/*"]
 only = true
 stages = ["editsvalid"]
+
+# The place skills' text (.claude/skills/place-*): recipes the place chain's lessons step rewrites and the place agents
+# read; no test or stage checks their words (the dialogue-write lints read the dialogue-write skill, which is not here).
+[[rule]]
+globs = [".claude/skills/place-*"]
+only = true
