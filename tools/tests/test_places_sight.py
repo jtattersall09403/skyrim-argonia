@@ -9,3 +9,9 @@ def test_a_harvestable_tree_is_named_and_a_plain_one_is_counted():
     things, labels = sight._what(rows, bases, {}, 0.0, 0.0, None)
     assert ('a thing the game names "Hanging Moss"', 1) in labels
     assert not any("Hanging Moss" in t for t in things) and things
+
+
+def test_woven_fences_are_called_so_not_walls():
+    from tools.argonia_world.surroundings import kind_of
+    assert kind_of("argonia/clutter/saxhleelfence02.nif alpafencewoven03")[1] == "woven fences"
+    assert kind_of("architecture/whiterun/wrfence01.nif")[1] == "walls"
