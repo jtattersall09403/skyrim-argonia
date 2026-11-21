@@ -201,11 +201,11 @@
   "band": 1577.0,
   "pieces": 221,
   "dropped": 256,
-  "raised_max": 596.8,
-  "lowered_max": 64.1,
+  "raised_max": 613.0,
+  "lowered_max": 306.8,
   "band_steepest_deg": 63.6,
-  "source_water_area_m2": 846,
-  "held_by_water": 109
+  "source_water_area_m2": 0,
+  "held_by_water": 110
  },
  "agent_saves_applied": []
 }

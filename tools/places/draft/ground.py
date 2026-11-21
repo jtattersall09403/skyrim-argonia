@@ -120,7 +120,7 @@ def owners(gx: int, gy: int):
 def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list[tuple[float, float]],
           centre=None, radius: float | None = None, taken: set = frozenset(), gap: float | None = None,
           margin: float = MARGIN, cap: float = CAP, maps: list | None = None, offset: float | None = None,
-          slope: float | None = None) -> tuple[list[dict], dict]:
+          slope: float | None = None, keep_wet: bool = False) -> tuple[list[dict], dict]:
     """(land rows `by` "ground", report) carrying src's relief under `pieces` (our coordinates) onto `ours`. `maps`:
     [(pivot, to, rot radians, centre in ours)] per cluster the fit set apart; a vertex reads the source through each,
     weighted by nearness to the cluster's centre (the main map alone when none). `offset`: one fixed height from the
@@ -216,7 +216,7 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
     if band + margin + 0 > 4096 + reach0 - margin:
         band = 4096 + reach0 - 2 * margin
     # the source's water fades out over one band
-    wet = SW & ~np.isnan(HS)
+    wet = SW & ~np.isnan(HS) & (not keep_wet)     # keep_wet: the source's pond bed carried as mud, not faded
     nfade = max(1, int(math.ceil(band / STEP)))
     fade = smooth(grow(wet, nfade) / nfade) if wet.any() else np.zeros(X.shape)
     edge_w = np.minimum(smooth(D / band), smooth(dist_src * STEP / band))   # the lesser fade: never two slopes added
