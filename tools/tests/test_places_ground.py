@@ -133,3 +133,23 @@ def test_a_cluster_set_apart_reads_through_its_own_map():
     g.apply_patches(rows)
     top = g.height(1000.0, 0) - rep["our_ref"] + rep["src_ref"]       # the source's height read at x=1000
     assert top > 250                    # its mound's top (300), not the main map's reading there (50)
+
+
+def test_no_wall_where_the_source_holds_no_ground_or_the_radius_ends():
+    # the source's land is only its western cells: a plateau 400 over ours carried there must fade, not end in a wall
+    full = flat(400)
+    src = Ground({k: v for k, v in full.cells.items() if k[0] < 0}, {}, None)
+    rows, rep, g = run(flat(0), src, offset=0.0, cap=1e9)
+
+    def steepest(gr_):
+        worst = 0.0
+        for (cx, cy), h in gr_.cells.items():
+            for row in range(33):
+                for col in range(32):
+                    worst = max(worst, abs(h[row * 33 + col + 1] - h[row * 33 + col]) / STEP)
+        return math.degrees(math.atan(worst))
+    assert g.vertex(-4, 0) > 390                     # carried where the source has ground
+    assert steepest(g) < 45                          # and faded, not cut, where it has none
+    # the record's radius fades the change to nothing at the circle rather than cutting it there
+    _, _, g2 = run(flat(0), flat(400), offset=0.0, cap=1e9, centre=(0, 0), radius=1600.0)
+    assert steepest(g2) < 45 and abs(g2.vertex(0, 0) - 400) < 1

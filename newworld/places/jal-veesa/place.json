@@ -1443,9 +1443,9 @@
   "band": 1411.0,
   "pieces": 612,
   "dropped": 11,
-  "raised_max": 651.1,
-  "lowered_max": 31.8,
-  "band_steepest_deg": 65.0,
+  "raised_max": 630.0,
+  "lowered_max": 45.4,
+  "band_steepest_deg": 35.6,
   "source_water_area_m2": 4975,
   "held_by_water": 0
  }

@@ -183,8 +183,9 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
     X, Y, H0, HS, W, SW = sample(GX, GY)
     D = outside(poly, X, Y) - margin                     # <= 0: in the footprint
     core = (D <= 0) & ~np.isnan(HS)
-    gy_, gx_ = np.gradient(np.where(np.isnan(HS), 0, HS), STEP)
-    src_steep = float(np.degrees(np.arctan(np.hypot(gx_, gy_)[core & ~SW].max()))) if (core & ~SW).any() else 0.0
+    gy_, gx_ = np.gradient(HS, STEP)               # nan where a neighbour has no source ground: no false cliff there
+    sl_ = np.hypot(gx_, gy_)[core & ~SW]
+    src_steep = float(np.degrees(np.arctan(np.nanmax(sl_)))) if np.isfinite(sl_).any() else 0.0
     limit = slope if slope is not None else max(SLOPE_DEG, src_steep)
     rep.update(src_steepest_deg=round(src_steep, 1), slope_limit_deg=round(limit, 1))
     # the reference levels: the median of each ground round the footprint's edge (dry source ground), so the
@@ -200,6 +201,15 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
         rep["ref"] = "the anchor"
     target = our_ref + (HS - src_ref)
     delta = np.clip(np.where(np.isnan(HS) | np.isnan(H0), 0.0, target - H0), -cap, cap)
+    # where the source holds no ground (past its own cells) the change is the nearest change it does hold, faded
+    # over the band below, so the carried relief never ends in a wall at the source's edge
+    have = ~np.isnan(HS) & ~np.isnan(H0)
+    if have.any() and not have.all():
+        from scipy.ndimage import distance_transform_edt
+        dist_src, (ii, jj) = distance_transform_edt(~have, return_indices=True)
+        delta = np.where(have, delta, delta[ii, jj])
+    else:
+        dist_src = np.zeros(X.shape)
     rep["capped"] = int((np.abs(np.where(np.isnan(HS) | np.isnan(H0), 0, target - H0)) > cap)[D <= 0].sum())
     edge = float(np.abs(delta[(D <= 0) & (D > -2 * STEP)]).max()) if ((D <= 0) & (D > -2 * STEP)).any() else 0.0
     band = max(BAND_MIN, 1.5 * edge / math.tan(math.radians(limit)) + STEP)
@@ -209,9 +219,10 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
     wet = SW & ~np.isnan(HS)
     nfade = max(1, int(math.ceil(band / STEP)))
     fade = smooth(grow(wet, nfade) / nfade) if wet.any() else np.zeros(X.shape)
-    wt = smooth(D / band) * (1 - fade)
-    if centre is not None and radius is not None:
-        wt = np.where(np.hypot(X - centre[0], Y - centre[1]) <= radius, wt, 0.0)
+    edge_w = np.minimum(smooth(D / band), smooth(dist_src * STEP / band))   # the lesser fade: never two slopes added
+    if centre is not None and radius is not None:   # faded to nothing at the record's radius, never cut there
+        edge_w = np.minimum(edge_w, smooth((np.hypot(X - centre[0], Y - centre[1]) - (radius - band)) / band))
+    wt = edge_w * (1 - fade)
     dz = delta * wt
     # our water line
     newh = H0 + dz
