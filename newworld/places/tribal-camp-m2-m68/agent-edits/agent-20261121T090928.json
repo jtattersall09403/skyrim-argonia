@@ -81,9 +81,9 @@
      ],
      "flags": "0",
      "arrival": [
-      -9640.0,
+      -9990.0,
       -552200.0,
-      676.0
+      610.3
      ]
     },
     "why": "the record's timber longhouse round the fire (quests mn04, mn19; its cellar the story's Karsh-Naal Cellar): Dushnikh Yal's OrcLonghouse01 and its door, added whole as the source lays them, the building Ree-An-Wo lacks",
@@ -358,7 +358,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 0.0
+     "dz": -33.8
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -390,7 +390,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 46.0
+     "dz": 12.2
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -422,7 +422,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 108.0
+     "dz": 74.2
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -454,7 +454,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 1.0
+     "dz": -24.2
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set",
     "tier": "AGENT_INVENTED"
@@ -486,7 +486,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 0.0
+     "dz": -14.1
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set: a warm-hands spot for a guard",
     "tier": "AGENT_INVENTED"
@@ -518,7 +518,7 @@
     "flags": [],
     "seat": {
      "mode": "above",
-     "dz": 0.0
+     "dz": -75.7
     },
     "why": "the fire pit before the longhouse door, where the guards keep to the fire (record look: a timber longhouse round a fire pit; mn04: guards at the fire by the longhouse): the source's own camp-fire set: a seat by the fire",
     "tier": "AGENT_INVENTED"
