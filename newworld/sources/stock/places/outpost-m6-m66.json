@@ -20,7 +20,7 @@
  ],
  "containers": [
   {
-   "ref": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "ref": "outpost-m6-m66.TF41CHEST",
    "space": "exterior",
    "kind": "chest",
    "owner_household": "outpost-m6-m66.household.exterior",
@@ -36,7 +36,7 @@
    "lock": null
   },
   {
-   "ref": "outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G",
+   "ref": "outpost-m6-m66.TF16PACK",
    "space": "exterior",
    "kind": "satchel",
    "lock": null,
@@ -252,7 +252,7 @@
   {
    "give_seq": 6,
    "by": "container",
-   "ref": "outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G",
+   "ref": "outpost-m6-m66.TF16PACK",
    "status": "delivered",
    "why": "the sap-takers' pack stands at the reed hide (draft.add, need 1), stocked at T2"
   },
@@ -265,7 +265,7 @@
   {
    "give_seq": 0,
    "by": "ref",
-   "ref": "outpost-m6-m66.2KFNDEJD7XDRHH82HTAZBMQ0CJ",
+   "ref": "outpost-m6-m66.TF10FISH",
    "status": "delivered",
    "why": "the traps: a fishing spot stands on the woven weir across the creek (draft.add, need 0), where eels and carp are taken"
   }
@@ -273,1155 +273,1155 @@
  "taken_out": [
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.03
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B46",
    "edid": "GemAmethyst",
    "chance": 0.03
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.03
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B46",
    "edid": "GemAmethyst",
    "chance": 0.03
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.03
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.01
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.01
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.01
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.001
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.01
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8911",
    "edid": "ReligiousAkatoshTime",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC848",
    "edid": "ReligiousArkayLifeDeath",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8915",
    "edid": "ReligiousDibellaBeauty",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8917",
    "edid": "ReligiousJulianosMagic",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8919",
    "edid": "ReligiousKynarethAir",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C891B",
    "edid": "ReligiousMaraLove",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC844",
    "edid": "ReligiousStendarrMercy",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC846",
    "edid": "ReligiousTalosMankind",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0878BB",
    "edid": "ReligiousZenitharCommerce",
    "chance": 0.003
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.2
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B46",
    "edid": "GemAmethyst",
    "chance": 0.2
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.2
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B46",
    "edid": "GemAmethyst",
    "chance": 0.2
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:063B45",
    "edid": "GemGarnet",
    "chance": 0.2
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.067
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.067
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.067
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877D5",
    "edid": "JewelryNecklaceGold",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:09171B",
    "edid": "JewelryNecklaceSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:03B97C",
    "edid": "JewelryRingSilver",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0877AB",
    "edid": "JewelryRingSilverGarnet",
    "chance": 0.008
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0166FF",
    "edid": "ClothesCirclet05",
    "chance": 0.067
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8911",
    "edid": "ReligiousAkatoshTime",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC848",
    "edid": "ReligiousArkayLifeDeath",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8915",
    "edid": "ReligiousDibellaBeauty",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8917",
    "edid": "ReligiousJulianosMagic",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C8919",
    "edid": "ReligiousKynarethAir",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0C891B",
    "edid": "ReligiousMaraLove",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC844",
    "edid": "ReligiousStendarrMercy",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0CC846",
    "edid": "ReligiousTalosMankind",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "Skyrim.esm:0878BB",
    "edid": "ReligiousZenitharCommerce",
    "chance": 0.022
   },
   {
    "holder": "container",
-   "where": "outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM",
+   "where": "outpost-m6-m66.TF41CHEST",
    "item": "ccBGSSSE025-AdvDSGS.esm:000BC6",
    "edid": "ccBGSSSE025_OreAmber",
    "chance": 0.05

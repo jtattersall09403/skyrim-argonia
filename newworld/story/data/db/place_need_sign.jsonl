@@ -23,11 +23,11 @@
 {"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"inside the gang-master's large tent, by his bed"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"label","detail":"the game shows \"Dralin's Strongbox\" on it"}
-{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"look","detail":"a young Hist some 6 m tall standing in the wardens' pool, against the east side of the cypress tent platform"}
-{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"person","detail":"Heem-Jasa, the tree's minder, works on the platform beside it and sleeps there"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"look","detail":"a young Hist about 20 m tall on a mound of its own roots on the camp's west side, plank walkways round its foot, its amber sap pool at its east foot"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"person","detail":"Heem-Jasa, the tree's minder, works on the walkway by its sap pool all day"}
 {"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"label","detail":"the game names the knapsack \"Sap-Takers' Pack\""}
-{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall dead swamp tree, with a crate, two clay urns and a knapsack on its open west side"}
-{"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the young Hist by the platform"}
+{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall lone dead swamp tree, with a crate, two clay jars and a knapsack beside it"}
+{"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the same Hist with its bark dead and its glands withered, in the living tree's place"}
 {"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"look","detail":"Skyrim's long metal cage on the camp's west edge, some 2,700 units from the fire by the longhouse, open toward the reeds"}
 {"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"person","detail":"Jeeta-Sakka, cast on the camp's night guard, carries its key"}
 {"place_id":"tribal-camp-m2-m68","need_seq":1,"need_sign_id":"look","detail":"glazed urns stacked against the longhouse wall beside its door"}
