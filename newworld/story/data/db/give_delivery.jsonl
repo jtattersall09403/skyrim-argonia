@@ -1010,8 +1010,8 @@
 {"place_id":"outpost-m3-m83","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a giant spider)"}
 {"place_id":"outpost-m3-m83","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-m6-m66","give_seq":0,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.2KFNDEJD7XDRHH82HTAZBMQ0CJ","status":"delivered","why":"the traps: a fishing spot stands on the woven weir across the creek (draft.add, need 0), where eels and carp are taken"}
-{"place_id":"outpost-m6-m66","give_seq":1,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.VQHCG9NFJASJMQ0G2VYY8JHYVQ","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
-{"place_id":"outpost-m6-m66","give_seq":2,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.G2SVD727X29WD3AMEVP8X75B8P","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
+{"place_id":"outpost-m6-m66","give_seq":1,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.TF29POT","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
+{"place_id":"outpost-m6-m66","give_seq":2,"seq":0,"by":"ref","ref_id":"outpost-m6-m66.TF33TANNING","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
 {"place_id":"outpost-m6-m66","give_seq":3,"seq":0,"by":"person","person_id":"outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","status":"delivered","why":"Heem-Jasa (apothecary) gives it (people.jsonl services)"}
 {"place_id":"outpost-m6-m66","give_seq":4,"seq":0,"by":"person","person_id":"outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V","status":"delivered","why":"Heem-Jasa (apothecary) gives it (people.jsonl services)"}
 {"place_id":"outpost-m6-m66","give_seq":5,"seq":0,"by":"record","status":"delivered","why":"combat-foes 'three Unbound sap-takers at the reed hide': the quest's own placements at a fixed level (main quest 3: three hostile sap-takers at the hide), each standing at its spot in the studio's Quests layer: quest.main.mn03/npc.mn03.sap-taker-1, quest.main.mn03/npc.mn03.sap-taker-2, quest.main.mn03/npc.mn03.sap-taker-3"}
