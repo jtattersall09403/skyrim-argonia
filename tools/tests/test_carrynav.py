@@ -125,3 +125,12 @@ def test_t_junction_is_split():
     for e in cell["edges"]:
         nb[sum(1 for x in e if x >= 0)] += 1
     assert sum(k * v for k, v in nb.items()) == 2 * 4   # four inner edges, each seen from both sides
+
+
+def test_sides_a_climb_apart_in_height_still_join():
+    """Recast and the source read a bank or a stair up to a climb and a detail error apart: the boundary still joins."""
+    car = [(t, 0, 0) for t in grid(100, 100, 1500, 1500, 97.3, 0.0)]
+    out = cn.build_cells(car, gen_cells([(0, 0)], z=40.0), cn.Region(cn.disk((800, 800), 500, 16)))
+    cell = out[(0, 0)]
+    sound(cell)
+    assert components(cell) == 1

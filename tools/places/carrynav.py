@@ -31,7 +31,8 @@ DISK_SIDES = 96
 MARGIN = 64.0           # a zone is a changed piece's outline grown by this (two agent radii: the gap a mesh leaves round it)
 SNAP = 8.0              # a vertex this near a boundary line is put on it before a cut: no sliver at a near miss
 WELD_XY = 1.0           # two vertices this near in plan ...
-WELD_Z = 16.0           # ... and this near in height are one (params.WELD_Z)
+WELD_Z = 48.0           # ... and this near in height are one: the carried and generated sides of a boundary differ by
+#                         up to a climb and a detail error (32 + 16): the source mesh and Recast read a stair or a bank apart
 ON_EDGE = 0.75          # a vertex this near an open edge in plan lies on it (a T-junction to split)
 MIN_AREA = 0.5          # a triangle smaller in plan (units^2) is degenerate and dropped
 SLIVER = 16.0           # reported: triangles under this plan area (units^2) left after the cut
