@@ -1,0 +1,493 @@
+{
+ "save_id": "agent-20261121T212721",
+ "place_id": "helstrom",
+ "name": "a source tree, plant or rock standing inside a thing the draft added (the city tree and its ground, an added house, stall or the Xanmeer): cleared so the added thing stands clear",
+ "at": "2026-11-21T21:27:21Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3B9K1S0XSZSFNHMPG94H6ACSSP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3B9K1S0XSZSFNHMPG94H6ACSSP",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -57111.95,
+     -590859.55,
+     300.75
+    ],
+    "rot": [
+     0,
+     0,
+     9.81918
+    ],
+    "scale": 1.8,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F015E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ECPYCCA4Q7QNNX35J3HHHT4ZYC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ECPYCCA4Q7QNNX35J3HHHT4ZYC",
+    "base": "Black Marsh.esm:11FE7E",
+    "kind": "tree",
+    "pos": [
+     -57733.6,
+     -590843.11,
+     503.94
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 1.7,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F0130",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NMMQ284VFV7RCZ583W7W6V5WJW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NMMQ284VFV7RCZ583W7W6V5WJW",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -56544.2,
+     -591215.49,
+     333.53
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 1.8,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F0165",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XFBW3JG2P77R7TJR2FZE6VVD7X",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XFBW3JG2P77R7TJR2FZE6VVD7X",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -31076.35,
+     -626173.33,
+     57.35
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9DB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.W29AB325YXF0TJDTAVSYFPP18B",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.W29AB325YXF0TJDTAVSYFPP18B",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -33594.51,
+     -626148.13,
+     -27.22
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9DC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2EX4RYPM85P7ZNH7FBXCRD62KR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2EX4RYPM85P7ZNH7FBXCRD62KR",
+    "base": "Black Marsh.esm:089DB1",
+    "kind": "tree",
+    "pos": [
+     -35291.37,
+     -626532.81,
+     -112.37
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9E7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3MPAF859TEAJ5GK7WJ18PFEWMF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3MPAF859TEAJ5GK7WJ18PFEWMF",
+    "base": "Black Marsh.esm:17BD1B",
+    "kind": "plant",
+    "pos": [
+     -34476.69,
+     -627602.37,
+     101.91
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D66",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5VAB9JFY2DEED3V0ZAGMV65HXZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5VAB9JFY2DEED3V0ZAGMV65HXZ",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -34788.84,
+     -627406.33,
+     168.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D67",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s63"
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9GTW4CT2D5HSWED6Y8EDARGQ7K",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9GTW4CT2D5HSWED6Y8EDARGQ7K",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -35728.04,
+     -626482.34,
+     190.8
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D90",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BEXEPQDX73YWNP787HDXGJJ1CW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BEXEPQDX73YWNP787HDXGJJ1CW",
+    "base": "Black Marsh.esm:17BD1B",
+    "kind": "plant",
+    "pos": [
+     -35154.55,
+     -627741.04,
+     140.77
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D6A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MRCTSFY2DTGPBBMYB0PY7TX94C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MRCTSFY2DTGPBBMYB0PY7TX94C",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -36138.14,
+     -626376.92,
+     4.25
+    ],
+    "rot": [
+     0,
+     0,
+     11.31917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D8E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PTXHTKG7WC8FFWE5FWZ7X9V8RE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PTXHTKG7WC8FFWE5FWZ7X9V8RE",
+    "base": "Black Marsh.esm:17BD1B",
+    "kind": "plant",
+    "pos": [
+     -35827.89,
+     -625907.69,
+     17.81
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D82",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QSPXWH56GGYTT7V3R47APCJC15",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QSPXWH56GGYTT7V3R47APCJC15",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -36213.37,
+     -626197.04,
+     137.01
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D8F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VQQA93NEA1QJ3CD6FCYQFZMDTN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VQQA93NEA1QJ3CD6FCYQFZMDTN",
+    "base": "Black Marsh.esm:17BD1B",
+    "kind": "plant",
+    "pos": [
+     -35456.68,
+     -627515.75,
+     107.72
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D65",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s63"
+   },
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VTVD2V707NP3XKJA8Y7WNZ0PXG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VTVD2V707NP3XKJA8Y7WNZ0PXG",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -34871.29,
+     -626968.69,
+     -231.78
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEECE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s63"
+   },
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:21Z"
+  }
+ ]
+}
