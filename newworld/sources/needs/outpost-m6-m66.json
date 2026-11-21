@@ -24,7 +24,8 @@
    ],
    "met": true,
    "why": "Met. The young Hist (Huluxinoag's Hist, its whole tree scaled down) stands on its roots at the west of the camp; the source's plank walkways run from the north tent platform to its foot; Heem-Jasa works on the walkway by its sap pool; the sealed scar is the quest's own thing low on the trunk's east side, facing her.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": "Read as the camp among Hist trees and plank walkways, by its map marker; which tree is the young one and its scar were not told by the place alone: the quest's own Sealed Scar (a named thing on the trunk) and Heem-Jasa standing by it tell the player (2026-11-21)."
   },
   {
    "seq": 1,
@@ -49,7 +50,8 @@
    ],
    "met": true,
    "why": "Met for the place. The hide stands on the west bank some 2,500 units west-south-west of the woven weir (six Saxhleel fences across the creek below the camp, a log boom above them), beside a lone dead swamp tree, with a crate for the note, jars beside the quest's own jar of sap and the sap-takers' pack. The three Unbound, the note and the jar are the quest's, at their spots by hand.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": "Read as a quiet outlying tent camp with urns, a crate and a knapsack, not yet as the hide: the quest's three Unbound standing there, the vision's words, its map marker and Heem-Jasa's pointing west of the weir tell the player; nothing of the place alone names it (2026-11-21)."
   },
   {
    "seq": 2,
@@ -70,7 +72,8 @@
    ],
    "met": true,
    "why": "Met for the place. Huluxinoag's Hist carries its own dead state: a dead trunk and dead glands in the living ones' places, switched by one enable parent (the source's HuluxinoagCured marker, now starting enabled so the tree lives). An ending disables that marker and the dead tree shows; the empty platform is the ending disabling the place's people, the quest's to build.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": "Not seen in the draft: the dead state shows only when an ending disables the living state's parent (2026-11-21)."
   }
  ]
 }
