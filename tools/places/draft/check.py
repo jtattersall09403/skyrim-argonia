@@ -91,7 +91,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     bad += sap.faults(refs, bases, (place.get("sap") or {}).get("none"))                       # every living Hist stands in its sap pool
     from tools.places.draft import obvious                 # no stand-in box, nothing floating, no bridge on one leg
     wrefs = grd.exterior.refs if grd.exterior else []
-    bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs + wrefs} - set(bases)), **bases}, G, wrefs)
+    bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs + wrefs} - set(bases)), **bases}, G, wrefs,
+                          (place.get("draft") or {}).get("accepted_faults") or [])
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]

@@ -64,7 +64,7 @@ shown apart and never failing; an entry that no longer matches a finding fails a
 
 - a build check's (`overlap`, `doors`, `clear`, `nordic`): `place.json` `draft.accepted_checks` `[{check, ids, why}]`;
 - a unit's flag: `draft.accepted` `[{unit, flag, why}]` (`place-site`);
-- a probe fault: `draft.accepted_faults` `[{id, fault, why}]` (`place-look`).
+- a probe fault (`draft check` reads the same rows): `draft.accepted_faults` `[{id, fault, why}]` (`place-look`).
 
 ## A failure
 

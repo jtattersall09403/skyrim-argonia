@@ -43,6 +43,10 @@ def test_a_floating_piece_is_refused_unless_something_carries_it():
     assert obvious.faults([ref("l", 500, 500, 30, "lamp")], BASES, flat()) == []
     # a parked (disabled) piece is never seen, so never judged
     assert obvious.faults([ref("l", 500, 500, 900, "lamp", flags=["initially_disabled"])], BASES, flat()) == []
+    # a float the drafter accepted after looking (draft.accepted_faults) is split off, as probe --all splits it
+    seen = [{"id": "l", "fault": "floats", "why": "it hangs from the tree's limb, seen from two sides"}]
+    assert obvious.faults([lamp], BASES, flat(), (), seen) == []
+    assert obvious.faults([lamp], BASES, flat(), (), [dict(seen[0], fault="unsupported end")]) != []
 
 
 def test_a_bridge_needs_support_at_both_ends():
