@@ -134,3 +134,20 @@ def test_sides_a_climb_apart_in_height_still_join():
     cell = out[(0, 0)]
     sound(cell)
     assert components(cell) == 1
+
+
+def test_a_hole_in_the_source_mesh_is_filled_by_the_generator_and_joined():
+    """Inside the footprint, where the source left no triangle (water there, a bank on our ground), the generated mesh
+    stands; a strip thinner than HOLE_THICK along the carried edge is not a hole."""
+    car = [(t, 0, 0) for t in grid(0, 0, 2000, 2000, 100.0, 0.0)
+           if not all(700 <= p[0] <= 1300 and 700 <= p[1] <= 1300 for p in t)]      # a 600-unit hole
+    out = cn.build_cells(car, gen_cells([(0, 0)]), cn.Region(cn.disk((1000, 1000), 900, 32)))
+    cell = out[(0, 0)]
+    sound(cell)
+    assert components(cell) == 1
+    V = np.asarray(cell["verts"])
+    mids = [(V[t].mean(axis=0), g) for t, g in zip(cell["tris"], cell["tags"])]
+    assert {g for m, g in mids if 750 < m[0] < 1250 and 750 < m[1] < 1250} == {-1}
+    assert not any(g == -1 and np.hypot(m[0] - 1000, m[1] - 1000) < 850 and not (700 < m[0] < 1300 and 700 < m[1] < 1300)
+                   for m, g in mids)                   # no generated scrap over the carried mesh round the hole
+    assert cn.thick([(0, 0), (100, 0), (100, 100), (0, 100)]) and not cn.thick([(0, 0), (400, 0), (400, 10), (0, 10)])

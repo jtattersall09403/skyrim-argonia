@@ -1260,7 +1260,9 @@ their own cell (interior), as vanilla files them.
    The window is generated as above first; then every shipped cell the footprint (a 96-sided polygon at the
    footprint radius) or a carried triangle reaches is rebuilt whole from two regions, split in plan only (every
    level of a deck and the ground under it falls on one side): CARRIED, inside the footprint less every zone; and
-   GENERATED, the rest of the cell and the zones. A zone is where the source's mesh no longer holds: a source piece
+   GENERATED, the rest of the cell, the zones, and every hole the source's mesh leaves inside the footprint where
+   ours is walkable (a bank the edge band raised out of the source's water; a generated piece there at least 16
+   thick, 2 area / perimeter, so the strips between the source's edge and Recast's along a wall stay out). A zone is where the source's mesh no longer holds: a source piece
    deleted (its true plan outline at the source pose, `shape.Posed`, grown by 64), moved (both outlines), a solid
    piece we added (its outline, grown), and each carried triangle a ground vertex of which followed our ground into
    a slope past the walkable 45 degrees (that triangle; listed as `steep`). A carried vertex on the source's ground

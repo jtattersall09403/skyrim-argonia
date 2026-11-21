@@ -215,7 +215,52 @@ class Region:
                 if _overlap(_bbox(q), self.zone_box[j]):
                     pieces = [r for p in pieces for r in minus(p, self.zone_h[j])]
             out += pieces
+        if self.cover is not None:      # a hole in the source's mesh where our ground is walkable: generated
+            free = [inside]
+            for h, bb in zip(self.zone_h, self.zone_box):
+                free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
+            for i in self._covering(bbi):
+                h, bb = self.cover[i]
+                free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
+                if not free:
+                    break
+            out += [p for p in free if thick(p)]
         return out
+
+    cover = None
+
+    def set_cover(self, tris) -> None:
+        """The carried triangles (plan): where none lies inside the footprint, out of every zone, the generated mesh
+        fills (a spot the source left unwalked that our ground makes walkable: a bank the edge band raised)."""
+        self.cover = []
+        grid: dict = defaultdict(list)
+        for t in tris:
+            p = ccw([(q[0], q[1]) for q in t])
+            if abs(area2(p)) < 1e-6:
+                continue
+            bb = _bbox(p)
+            i = len(self.cover)
+            self.cover.append((planes(p), bb))
+            for gx in range(math.floor(bb[0] / 256), math.floor(bb[2] / 256) + 1):
+                for gy in range(math.floor(bb[1] / 256), math.floor(bb[3] / 256) + 1):
+                    grid[(gx, gy)].append(i)
+        self._grid = grid
+
+    def _covering(self, bb) -> list:
+        got = set()
+        for gx in range(math.floor(bb[0] / 256), math.floor(bb[2] / 256) + 1):
+            for gy in range(math.floor(bb[1] / 256), math.floor(bb[3] / 256) + 1):
+                got.update(self._grid.get((gx, gy), ()))
+        return sorted(got)
+
+
+HOLE_THICK = 16.0      # a generated piece in a hole of the source's mesh is kept when at least this thick (2 area /
+#                        perimeter): the strips between the source's edge and Recast's along a wall are not holes
+
+
+def thick(poly) -> bool:
+    P = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(poly, poly[1:] + poly[:1]))
+    return P > 0 and abs(area2(poly)) / P >= HOLE_THICK
 
 
 # ---- snapping, welding, T-junctions ------------------------------------------------------------------------------------
@@ -589,6 +634,7 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
     CV = np.asarray([p for t, _, _ in carried for p in t], float).reshape(-1, 3)
     snapped = snap(CV, segs) + snap_cell_lines(CV)
     carried = [(CV[3 * i:3 * i + 3].tolist(), f, g) for i, (_, f, g) in enumerate(carried)]
+    region.set_cover([t for t, _, g in carried if g == 0])
     gen = {}
     for c, rows in generated.items():
         GV = np.asarray([p for t, _ in rows for p in t], float).reshape(-1, 3)
