@@ -37,6 +37,7 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
         dx, dy = x - pv[0], y - pv[1]
         return an[0] + dx * c - dy * s, an[1] + dx * s + dy * c
     ext, ledger, our_id = [], [], {}
+    _, of, _ = st.clusters        # the source's own groups, as names for the look tool only; nothing is moved by them
     for r in st.src_ext:
         rid = r["id"]
         x, y = pt(r["pos"][0], r["pos"][1])
@@ -59,6 +60,8 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
                "pos": [round(x, 2), round(y, 2), round(float(r["pos"][2]) + offset, 2)], "rot": rz,
                "scale": r.get("scale", 1.0), "layer": "place", "flags": r.get("flags") or [], "src": rid,
                "seat": {"mode": "free", "dz": 0.0}}
+        if of.get(rid):
+            row["cluster"] = of[rid]
         for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
             if r.get(k) is not None:
                 row[k] = r[k]
