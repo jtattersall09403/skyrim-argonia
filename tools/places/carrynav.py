@@ -418,9 +418,9 @@ def drop_flat(m: Mesh) -> int:
         flat = abs(a2) < 2 * MIN_AREA
         if not flat:
             for k in range(3):
-                p, q, r = P[k], P[(k + 1) % 3], P[(k + 2) % 3]
+                p, q = P[k], P[(k + 1) % 3]
                 L = math.hypot(q[0] - p[0], q[1] - p[1])
-                if L > 0 and abs(a2) / L <= ON_EDGE:       # r's distance to the line pq
+                if L > 0 and abs(a2) / L <= ON_EDGE:       # the third corner's distance to the line pq
                     flat = True
                     break
         if not flat:
@@ -608,7 +608,8 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
                 q = intersect(poly, planes(cell_box((cx, cy))))
                 if q is None:
                     continue
-                for piece in region.carried(q):
+                # a moved unit's own triangles (tag > 0) stand where the unit now is, in its zone: cut by cells only
+                for piece in (region.carried(q) if tag == 0 else [q]):
                     meshes[(cx, cy)].add_poly(piece, f, tag)
     for c, rows in gen.items():
         for tri, flags in rows:
@@ -650,6 +651,36 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
         out[c]["stats"]["splits"] = splits
         out[c]["stats"]["collapsed"] = collapsed
     return out
+
+
+def joined_tags(out: dict) -> set:
+    """The moved units' tags (> 0) whose triangles share an edge with a triangle of another tag in some cell."""
+    got = set()
+    for cell in out.values():
+        tags = cell["tags"]
+        for i, e in enumerate(cell["edges"]):
+            if tags[i] > 0 and any(j >= 0 and tags[j] != tags[i] for j in e):
+                got.add(tags[i])
+    return got
+
+
+def place_cells(carried: list, generated: dict, region: Region, water=None, neighbours=None, on_moved=None) -> tuple[dict, dict]:
+    """build_cells with the moved units' rule: a moved unit's own triangles (tag k > 0) replace the generated triangles
+    resting on its surface in its new place (`on_moved[k - 1](tri)`); a unit whose patch joins nothing else is meshed
+    by the generator instead (its triangles dropped, the generated ones kept). Returns (cells, {moved_kept, moved_island})."""
+    tags = sorted({g for _, _, g in carried if g > 0})
+    island: set = set()
+    while True:
+        use = [t for t in carried if t[2] not in island]
+        live = [k for k in tags if k not in island]
+        gen = generated
+        if on_moved and live:
+            gen = {c: [(t, f) for t, f in rows if not any(on_moved[k - 1](t) for k in live)] for c, rows in generated.items()}
+        out = build_cells(use, gen, region, water, neighbours)
+        lone = set(live) - joined_tags(out)
+        if not lone:
+            return out, {"moved_kept": len(live), "moved_island": len(island)}
+        island |= lone
 
 
 def to_nvnm(cell: dict, template):

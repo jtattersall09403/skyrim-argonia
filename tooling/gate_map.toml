@@ -150,3 +150,9 @@ globs = ["tools/places/classify.py", "tools/places/truth.py", "tools/places/unit
          "tools/places/draft/sap.py", "tools/places/check.py", "tools/places/build.py",
          "tools/tests/fixtures/truth_place.json", "tools/places/shape.py", "tools/tests/fixtures/truth_meshes.json"]
 tests = ["tools/tests/test_places_truth.py", "tools/tests/test_places_shape.py"]
+
+# A wholesale place's carried walking mesh (docs/design/place-studio.md, Navmesh): the cut, the join, the hand-change
+# rules and the build's hook.
+[[rule]]
+globs = ["tools/places/carrynav.py", "tools/places/draft/srcnav.py", "tools/places/build.py", "tools/navmesh/nvnm.py"]
+tests = ["tools/tests/test_carrynav.py", "tools/tests/test_srcnav.py"]

@@ -21,6 +21,8 @@ import math
 import sys
 from pathlib import Path
 
+import numpy as np
+
 ON_GROUND = 40.0
 CELL = 4096.0
 
@@ -84,6 +86,146 @@ def carry(place: dict, navs: list[dict], src_ground, our_ground, changed_boxes: 
     for cl in cells.values():
         cl.pop("_ix")
     return {"cells": cells, "stats": st}
+
+
+def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: float) -> dict:
+    """Every source triangle whose middle lies within `radius` of the anchor, in our coordinates, flat (the build cuts
+    them on our cell lines and the footprint): {tris: [(tri, flags, ground_moved)], steep: [tri], stats}. Rule 1 as
+    `carry`; a triangle a ground vertex of which moved (our ground differs there) and is now steeper than the walkable
+    angle is dropped and listed in `steep` (the build meshes that patch again)."""
+    from tools.places.carrynav import MAX_SLOPE_DEG, slope_deg
+    ours, off = _transform(place)
+    centre = place["fit"]["anchor"]
+    st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "regrounded": 0, "ground_moved_max": 0.0}
+    tris, steep = [], []
+    for m in navs:
+        V, moved = [], []
+        for x, y, z in (v[:3] for v in m["verts"]):
+            X, Y, Z = ours(x, y, z)
+            g = src_ground(x, y)
+            dz = 0.0
+            if g is not None and abs(z - g) <= ON_GROUND:
+                h = our_ground(X, Y)
+                if h is not None:
+                    dz = (h + (z - g)) - Z
+                    Z = h + (z - g)
+            V.append((X, Y, Z))
+            moved.append(abs(dz))
+        for t in m["tris"]:
+            st["tris_in"] += 1
+            tri = [V[i] for i in t[:3]]
+            mx, my = sum(p[0] for p in tri) / 3, sum(p[1] for p in tri) / 3
+            if math.dist((mx, my), centre) > radius:
+                st["outside"] += 1
+                continue
+            dz = max(moved[i] for i in t[:3])
+            st["ground_moved_max"] = round(max(st["ground_moved_max"], dz), 1)
+            if dz > 1.0:
+                st["regrounded"] += 1
+                if slope_deg(tri) > MAX_SLOPE_DEG:
+                    st["steep"] += 1
+                    steep.append(tri)
+                    continue
+            tris.append((tri, int(t[3]) if len(t) > 3 else 0, dz))
+            st["kept"] += 1
+    return {"tris": tris, "steep": steep, "stats": st}
+
+
+def on_surface(posed, tri, r: float = 24.0, dz: float = 24.0) -> bool:
+    """A triangle rests on a piece's walked surface (tools/places/shape.py): its middle, or every corner, within r in
+    plan and dz in height of the piece's top or walked height there."""
+    mx, my, mz = (sum(p[i] for p in tri) / 3 for i in range(3))
+    if posed.surface_near(mx, my, mz, r, dz) is not None:
+        return True
+    return all(posed.surface_near(p[0], p[1], p[2], r, dz) is not None for p in tri)
+
+
+SOLID = {"building", "static", "furniture", "door", "container", "rock", "tree", "activator"}
+SKIP_KINDS = ("actor", "marker", "light", "plant", "clutter")
+
+
+def place_carry(pid: str, places: Path | None = None) -> dict:
+    """The carried mesh of a wholesale place and the zones the build meshes again (carrynav): the source's triangles
+    (carried_tris), and a zone for every source piece deleted (its true outline at the source pose, grown), moved (both
+    outlines; its own triangles, those resting on its walked surface, move with it as a patch of their own), every
+    solid piece we added (its outline, grown), every triangle too steep after re-grounding (the triangle itself).
+    {tris, zones, moved: [(tri, flags, tag)], moved_on: [Posed now], ground, radius, centre, stats}."""
+    from tools.places import carrynav as cn
+    from tools.places.look.scene import Scene
+    from tools.places.seat import Ground
+    from tools.places.shape import Posed
+    root = Path(__file__).resolve().parents[3]
+    places = places or root / "newworld" / "places"
+    sc = Scene(pid, places=places)
+    place = sc.files["place"]
+    bdir = root / "out" / "places" / "bundles" / f"src.{place['source_id']}"
+    navs = [json.loads(ln) for ln in (bdir / "spaces/exterior/navmesh.jsonl").read_text().splitlines() if ln.strip()]
+    sg = Ground.load(bdir)
+    ours, off = _transform(place)
+    rot = math.radians(float(place["fit"].get("rot_deg", 0.0)))
+    radius = place["radius_m"] * 70
+    centre = place["fit"]["anchor"]
+    got = carried_tris(place, navs, sg.height, sc.ground.height, radius + 512.0)
+    led = places / pid / "ledger.jsonl"
+    dropped = {e.get("src") for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
+               if e.get("status") == "dropped"} if led.exists() else set()
+    now = {r["src"]: sc.by_id[r["id"]] for r in sc.refs.values() if r.get("src") and r["id"] in sc.by_id}
+    zones, moved_pairs = [], []
+    st = {"deleted": 0, "moved": 0, "added": 0}
+
+    def zone_of(p):
+        po = Posed(p)
+        h = po.outline()
+        return (cn.grow(h) if len(h) >= 3 else None), po
+    for r in (json.loads(ln) for ln in (bdir / "spaces/exterior/refs.jsonl").read_text().splitlines() if ln.strip()):
+        if r.get("kind") in SKIP_KINDS:
+            continue
+        X, Y, Z = ours(*r["pos"])
+        if math.dist((X, Y), centre) > radius + 512.0:
+            continue
+        rr = list(r.get("rot") or [0, 0, 0])
+        rr[2] = float(rr[2]) + rot
+        sp = sc.piece({"id": "src:" + r["id"], "base": r["base"], "kind": r.get("kind"), "pos": [X, Y, Z], "rot": rr,
+                       "scale": r.get("scale", 1)})
+        p = now.get(r["id"])
+        if p is None:
+            if r["id"] in dropped:      # never laid (wholesale's own drops: water, people, levelled)
+                continue
+            z, _ = zone_of(sp)
+            if z:
+                zones.append(z)
+                st["deleted"] += 1
+            continue
+        A, B = np.asarray(p["m"], float), np.asarray(sp["m"], float)
+        if np.abs(A[:3, 3] - B[:3, 3]).max() > 10 or np.abs(A[:3, :3] - B[:3, :3]).max() > 0.01:
+            z0, po0 = zone_of(sp)
+            z1, po1 = zone_of(p)
+            zones += [z for z in (z0, z1) if z]
+            moved_pairs.append((po0, po1, A @ np.linalg.inv(B)))
+            st["moved"] += 1
+    for p in sc.pieces:
+        r = sc.refs.get(p["id"]) or {}
+        if r.get("src") or p.get("kind") not in SOLID or r.get("disabled"):
+            continue
+        if math.dist((p["m"][0][3], p["m"][1][3]), centre) > radius + 512.0:
+            continue
+        z, _ = zone_of(p)
+        if z:
+            zones.append(z)
+            st["added"] += 1
+    zones += [cn.ccw([(q[0], q[1]) for q in t]) for t in got["steep"]]
+    moved, keep = [], []
+    for tri, flags, _ in got["tris"]:
+        k = next((j for j, (po0, _, _) in enumerate(moved_pairs) if on_surface(po0, tri)), None)
+        if k is None:
+            keep.append((tri, flags, 0))
+            continue
+        M = moved_pairs[k][2]
+        moved.append(([list((M @ np.array([*q, 1.0]))[:3]) for q in tri], flags, k + 1))
+    st["zones"] = len(zones)
+    st["moved_tris"] = len(moved)
+    return {"tris": keep, "zones": zones, "moved": moved, "moved_on": [po1 for _, po1, _ in moved_pairs],
+            "ground": sc.ground, "radius": radius, "centre": centre, "stats": {**got["stats"], **st}}
 
 
 def edge_report(cell: dict) -> dict:
