@@ -1,0 +1,96 @@
+{
+ "save_id": "agent-20261121T152813",
+ "place_id": "outpost-m11-m63",
+ "name": "the fifth bedroll moved off the ramp's post to the bank south-west of the fire",
+ "at": "2026-11-21T15:28:13Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK041PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82230.0,
+     -513720.0,
+     76.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82470.0,
+     -514100.0,
+     76.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:28:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK041PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82470.0,
+     -514100.0,
+     76.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82470.0,
+     -514100.0,
+     87.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 11.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:28:13Z"
+  }
+ ]
+}
