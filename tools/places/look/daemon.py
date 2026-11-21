@@ -18,7 +18,7 @@ from tools.places.look import draw
 from tools.places.look.scene import LOOK_OUT, LOOK_PORT, ROOT, Scene, data_out, state
 
 PORT = int(os.environ.get("LOOK_PORT", LOOK_PORT))
-IDLE = float(os.environ.get("LOOK_IDLE", "900"))
+IDLE = float(os.environ.get("LOOK_IDLE", "1200"))   # seconds with no request: the daemon leaves
 SOCK = LOOK_OUT / "daemon.sock"
 PIDF = LOOK_OUT / "daemon.pid"
 LOG = LOOK_OUT / "session.log"
@@ -201,6 +201,44 @@ class Daemon:
         return out
 
 
+def why_leave(d, last: float, now: float, root: Path = ROOT) -> str | None:
+    """Why the daemon should leave now, or None: no request for IDLE seconds, its checkout gone, its browser or its
+    studio server dead."""
+    if now - last >= IDLE:
+        return f"idle {now - last:.0f} s"
+    if not (root / "tools" / "places").is_dir():
+        return f"its checkout {root} is gone"
+    if d.browser is not None and not d.browser.is_connected():
+        return "its browser died"
+    if d.server is not None and d.server.poll() is not None:
+        return "its studio server died"
+    return None
+
+
+def reap(dry: bool = False) -> list[str]:
+    """Every look daemon on this machine whose checkout is gone, whose working directory is deleted, or whose
+    socket is gone: killed with its process group (its browser and server). Run by `look stop` and the tidy."""
+    out = []
+    for proc in Path("/proc").iterdir():
+        if not proc.name.isdigit():
+            continue
+        try:
+            cmd = (proc / "cmdline").read_bytes().split(b"\0")
+            if b"tools.places.look.daemon" not in cmd:
+                continue
+            cwd = os.readlink(proc / "cwd")
+        except OSError:
+            continue
+        if cwd.endswith(" (deleted)") or not Path(cwd, "tools", "places").is_dir():
+            out.append(f"look daemon {proc.name} in {cwd}")
+            if not dry:
+                try:
+                    os.killpg(os.getpgid(int(proc.name)), signal.SIGTERM)
+                except OSError:
+                    pass
+    return out
+
+
 def _plain(o):
     """numpy numbers and flags as plain JSON."""
     return o.item() if hasattr(o, "item") else o.tolist() if hasattr(o, "tolist") else str(o)
@@ -232,9 +270,13 @@ def serve() -> int:
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         s.bind(str(SOCK))
         s.listen(4)
-        s.settimeout(30)
+        s.settimeout(30)   # a blocking wait for a request, waking every 30 s to ask whether to leave: never a busy loop
         last = time.time()
-        while time.time() - last < IDLE:
+        while True:
+            why = why_leave(d, last, time.time())
+            if why:
+                print(f"look daemon leaves: {why}", flush=True)
+                break
             try:
                 conn, _ = s.accept()
             except socket.timeout:

@@ -86,6 +86,9 @@ def main(argv: list[str]) -> int:
         print(__doc__)
         return 0 if argv else 2
     if argv[0] == "stop":
+        from tools.places.look import daemon
+        for line in daemon.reap():   # daemons of checkouts that are gone
+            print(f"stopped {line}")
         try:
             call({"verb": "_stop", "place": "", "args": []}, 10)
         except OSError:
