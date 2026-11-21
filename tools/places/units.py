@@ -40,8 +40,8 @@ GROUND_LEG = 96.0      # how far a body standing on the ground (no deck) may sin
 TOUCH = 16.0
 SMALL_SINK = 48.0      # a small unit (a rack, a cart) may sink this far into the ground at its lowest corner's ground
 # the word lists are the one classifier's (tools/places/classify.py)
-from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, POST_WORDS, RAIL_WORDS,  # noqa: E402
-                                   SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, kind_of, post as _post)
+from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, RAIL_WORDS,  # noqa: E402
+                                   SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, GROUND_CLASSES, kind_of, post as _post)
 from tools.places.classify import LOOSE_KINDS as LOOSE  # noqa: E402
 SPANS = ("walkway", "bridge", "dock")
 
@@ -53,7 +53,7 @@ def _words(p: dict) -> str:
 
 def ground_piece(p: dict) -> bool:
     """A tree, rock, root, plant or ground cover: it belongs to the ground, never to a building."""
-    return p.get("kind") in GROUND_KINDS or "root" in _words(p) or "/landscape/" in _words(p)
+    return p.get("kind") in GROUND_KINDS or kind_of(p) in GROUND_CLASSES
 
 
 def pieces_of(rows: list[dict], bases: dict, bounds) -> list[dict]:

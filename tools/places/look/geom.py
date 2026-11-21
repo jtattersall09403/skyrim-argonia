@@ -26,7 +26,7 @@ PART_SHARE = 0.5           # a door, window or floor is buried when more than th
 from tools.places.classify import (HANG_WORDS, HULL_WORDS, PART_WORDS, WALL_WORDS,  # noqa: E402  the one classifier's lists
                                    WALKED_SPAN_WORDS as SPAN_WORDS, PLANT_KINDS as PLANTS,
                                    STRUCTURAL_KINDS as STRUCTURAL, NO_SOLID_KINDS as NO_SOLID)
-from tools.places.classify import effect as _effect  # noqa: E402
+from tools.places.classify import effect as _effect, kind_of as _kind_of  # noqa: E402
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
 REACH = 160.0               # a supporter's top may rise this far past what rests on it (a post through a deck)
 
@@ -121,7 +121,7 @@ def out_of_reach(p: dict) -> bool:
 
 
 def solid(p: dict) -> bool:
-    return bool(p.get("resolved")) and p.get("kind") not in NO_SOLID
+    return bool(p.get("resolved")) and p.get("kind") not in NO_SOLID and _kind_of(p) not in ("effect", "marker", "light")   # smoke, a critter spawn or a cloud holds nothing up
 
 
 def support_under(pieces: list[dict], x: float, y: float, z: float, tol: float, skip: str | None = None,
@@ -150,8 +150,11 @@ def probe_piece(p: dict, ground, pieces: list[dict], boxes: dict | None = None) 
     known = [f["over"] for f in feet if f["over"] is not None]
     low = float(lo[2])
     gmax = max((f["ground"] for f in feet if f["ground"] is not None), default=None)
-    sup = support_under(pieces, (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, low, FLOAT_TOL, p["id"], boxes) \
-        or next((s for x, y, z in bottom_points(p) for s in [support_under(pieces, x, y, low, FLOAT_TOL, p["id"], boxes)] if s), None)
+    # held_by: what its underside rests on by the floating rule (any box under its plan whose top meets its lowest
+    # point), the highest-topped first; never a tree, never something whose top rises far past it
+    B = Boxes([q for q in pieces if q["id"] != p["id"]], boxes)
+    under = sorted(B.under_box(lo, hi, low, FLOAT_TOL), key=lambda i: (-float(B.hi[i][2]), B.ids[i]))
+    sup = B.ids[under[0]] if len(under) else None
     out = {"id": p["id"], "base": p.get("base"), "edid": p.get("edid"), "kind": p.get("kind"), "cluster": p.get("cluster"),
            "model": p.get("model"), "resolved": bool(p.get("resolved")),
            "box": [[round(float(v), 1) for v in lo], [round(float(v), 1) for v in hi]],
@@ -233,6 +236,14 @@ class Boxes:
         return np.nonzero(self._over(x, y) & (hi[:, 2] >= z - tol) & ((hi[:, 2] <= z + reach) | self.hull)
                           & (lo[:, 2] < z - 1) & ~self.tree)[0]
 
+    def under_box(self, lo, hi, z: float, tol: float, reach: float = None) -> np.ndarray:
+        """Indexes of the boxes under any part of the plan box [lo, hi] (not only its sample points) whose top is
+        within tol under z to `reach` over it: a post set in from a deck's corners holds the deck."""
+        reach = REACH if reach is None else reach
+        L, H = self.lo, self.hi
+        return np.nonzero((L[:, 0] <= hi[0] - 1) & (lo[0] + 1 <= H[:, 0]) & (L[:, 1] <= hi[1] - 1) & (lo[1] + 1 <= H[:, 1])
+                          & (H[:, 2] >= z - tol) & ((H[:, 2] <= z + reach) | self.hull) & (L[:, 2] < z - 1) & ~self.tree)[0]
+
     def touching(self, lo, hi, gap: float = TOUCH) -> np.ndarray:
         """Indexes of the boxes (no trees) that touch or enter the box [lo, hi]: the wall or post a thing is fixed to."""
         return np.nonzero((self.lo[:, 0] - gap <= hi[0]) & (lo[0] <= self.hi[:, 0] + gap) & (self.lo[:, 1] - gap <= hi[1])
@@ -264,11 +275,10 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
         over = round(low - max(gs), 1) if gs else None
         on = set()
         if over is not None and over > tol:
-            for x, y in [((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2)] + [(q[0], q[1]) for q in pts]:
-                on.update(B.ids[i] for i in B.under(x, y, low, tol))
+            on.update(B.ids[i] for i in B.under_box(lo, hi, low, tol))
             if hangs(p):   # a lantern, a sconce, a sign: held by what its top hangs from
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, float(hi[2])))
-            if wall_fixed(p):   # a lantern, sconce, window or sign on a wall or post: held by what it touches
+            if wall_fixed(p) or p.get("kind") == "door":   # a lantern, sconce, window, sign or door: held by the wall it is set in
                 on.update(B.ids[i] for i in B.touching(lo, hi))
             if p.get("kind") not in STRUCTURAL:   # a flower, a vine, a pot: held by the trunk or wall it grows on or sits in
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
