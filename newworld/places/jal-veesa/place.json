@@ -106,7 +106,7 @@
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
     "key": "6",
     "scale": 1.0,
-    "dz": -0.61
+    "dz": 4.5
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
@@ -1459,7 +1459,8 @@
   "agent-20261121T081430",
   "agent-20261121T082655",
   "agent-20261121T083307",
-  "agent-20261121T084445"
+  "agent-20261121T084445",
+  "agent-20261121T085408"
  ],
  "wholesale": {
   "offset": 470.0,

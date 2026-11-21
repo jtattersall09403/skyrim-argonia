@@ -1,0 +1,65 @@
+{
+ "save_id": "agent-20261121T085408",
+ "place_id": "jal-veesa",
+ "name": "the middle weir's stakes stood 34 over the creek bed at one end: sunk 40 into the bed (its top still above the water)",
+ "at": "2026-11-21T08:54:08Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.J1YX9GMSD6J1FZ7M753WAK644Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49660.0,
+     -519252.0,
+     -35.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 44.5,
+     "foot": [
+      -104.6,
+      -13.3,
+      104.6,
+      13.3
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -49660.0,
+     -519252.0,
+     -75.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 4.5,
+     "foot": [
+      -104.6,
+      -13.3,
+      104.6,
+      13.3
+     ]
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:54:08Z"
+  }
+ ]
+}
