@@ -1,0 +1,128 @@
+{
+ "save_id": "agent-20261121T155019",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the trophy pole off the steps' foot, the hidden bone totem onto open mud by the fire camp, Druuz's flat boat on the creek bank",
+ "at": "2026-11-21T15:50:19Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK018PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10750.0,
+     -552350.0,
+     230.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10790.0,
+     -552530.0,
+     230.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:50:19Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10630.0,
+     -554530.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -10900.0,
+     -554050.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:50:19Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK007PLACE",
+    "base": "King of the Murkmire.esp:16B9CA",
+    "kind": "static",
+    "pos": [
+     -14100.0,
+     -552900.0,
+     51.53
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 40.0
+    },
+    "why": "Druuz's flat boat pulled up on the creek bank west of the camp, which he poles downriver with the stacked jars (people: Druuz)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:50:19Z"
+  }
+ ]
+}

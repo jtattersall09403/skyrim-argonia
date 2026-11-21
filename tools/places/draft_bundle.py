@@ -202,6 +202,11 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
         for r in rows:
             if r.get("base"):
                 used[r["base"]] = used.get(r["base"], 0) + 1
+    for f in sorted((pdir / "agent-edits").glob("*.json")) if (pdir / "agent-edits").is_dir() else []:
+        for op in json.loads(f.read_text(encoding="utf-8")).get("ops") or []:   # a hand's piece from the whole pool
+            b = (op.get("ref") or {}).get("base") if op.get("op") == "ref.add" else None
+            if b:
+                used[b] = used.get(b, 0) + 1
     # every base a ref uses: the source bundle first (then the ground's), else the catalogue; none: reported
     bases = {r["key"]: r for f in (*(o / "bases.jsonl" for o in others), ground / "bases.jsonl", src / "bases.jsonl")
              for r in jsonl(f)}

@@ -92,6 +92,8 @@ class Standing:
         self.G.apply_patches(self.files["land"])
         self.S = self.src.ground
         self.ext: list[dict] = self.files["spaces"]["exterior"]["refs"]
+        # a piece a hand placed from the whole pool (look place) is known to every stage by its catalogue row
+        self.bases.update(io.catalogue_bases({r["base"] for r in self.ext if r.get("base")} - set(self.bases)))
         lp = self.pdir / "ledger.jsonl"
         self.ledger = io.read_jsonl(lp) if lp.exists() else []
         self.src_ext = [r for r in self.src.exterior.refs]
@@ -449,7 +451,7 @@ def people_stage(st: Standing, log=print) -> None:
     if short:
         log(f"draft people {st.place_id}: {short} people short of a bed: add beds (draft.add) and run add, then people")
     pool, npcs, _ = people.base_pool(st.src, dec, lambda sid: io.load(f"src.{sid}", st.src.path.parent))
-    rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs)
+    rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs, who)
     if rebased:
         log(f"draft people {st.place_id}: a person's base given for {', '.join(rebased)}")
     people.give_to_residents(st.files["people"], gives, who, hist, routes)
@@ -546,8 +548,15 @@ def stations(st: Standing, log=print) -> None:
         if moved:
             log(f"draft stations {st.place_id}: {kind} worked at the place's own {found[kind][0]} outdoors by "
                 f"{', '.join(moved)}; the one added in a room taken out")
+    import re
     for kind in sorted(need, key=lambda x: (x != "forge", x)):
         if found.get(kind):
+            continue
+        own = sorted(r["id"] for r in st.ext if not r.get("removed") and r["id"] not in {a["id"] for a in added}
+                     and re.search(io.STATION_EDID[kind], str((st.bases.get(r["base"]) or {}).get("edid", "")), re.I)
+                     and not re.search(io.STATION_SKIP, str((st.bases.get(r["base"]) or {}).get("edid", ""))))
+        if own:          # the place's own station outdoors (the source's, or one a hand placed) is the one worked
+            found[kind] = own
             continue
         same = next((o for o in need if o != kind and found.get(o)
                      and io.STATION_KEYWORD.get(o) == io.STATION_KEYWORD.get(kind) and io.STATION_KEYWORD.get(o)), None)

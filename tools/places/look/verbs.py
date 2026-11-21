@@ -266,7 +266,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             if not plain:
                 img, _ = draw.annotate(img, c, sc, th, faults, f"{th['name']} from {','.join(f'{v:.0f}' for v in c['pos'])}",
                                        grid=bool(o.get("grid")))
-            img = mark(img, sco)
+                img = mark(img, sco)   # --plain: the stood view as the eye sees it; its verdict is in the JSON
             res = {"cam": c, "img": img}
             if not keep:
                 res = {"thing": th["name"], "kind": th["kind"], "stand": c["pos"], "stood_on": c["stood"]["on"], **sco}
@@ -970,7 +970,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 def _hand(sc, verb, args, sess) -> list[dict]:
     pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False, "rot": True, "above": True,
-                          "kind": True, "depth": True, "force": False})
+                          "kind": True, "depth": True, "force": False, "scale": True})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
     if verb == "place":
@@ -1019,8 +1019,7 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         if not why:
             raise ValueError('duplicate needs --why "<why this copy is here>": a copy never carries the original\'s reason')
         dx, dy = (float(pos[1]), float(pos[2])) if len(pos) > 2 else (256.0, 0.0)
-        sess["n"] = sess.get("n", 0) + 1
-        n = sess["n"]
+        n = next_n(sc, sess, "")
         new = hands.duplicate_rows(sc, rows, dx, dy, why, lambda i: f"{sc.place_id}.LOOK{n:03d}{i:04d}")
         ops = [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": nr} for nr in new]
         if ops:
@@ -1029,12 +1028,23 @@ def _hand(sc, verb, args, sess) -> list[dict]:
     raise ValueError(verb)
 
 
+def next_n(sc, sess, suffix: str) -> int:
+    """The session's next hand number whose LOOK id is free in the place. The counter restarts with each session
+    while the rows an earlier session committed keep their ids, so a number already taken is skipped."""
+    taken = set(getattr(sc, "refs", None) or {})
+    while True:
+        sess["n"] = sess.get("n", 0) + 1
+        stem = f"{sc.place_id}.LOOK{sess['n']:03d}"
+        if not any(t == stem + suffix or (not suffix and t.startswith(stem)) for t in taken):
+            return sess["n"]
+
+
 def _place(sc, pos, o, sess) -> list[dict]:
-    """`place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
+    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
     as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above)."""
     why = str(o.get("why") or "").strip()
     if len(pos) < 2 or not why:
-        raise ValueError('place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why it is here>"')
+        raise ValueError('place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why it is here>"')
     xyz = [float(v) for v in pos[1].split(",")]
     above = o.get("above")
     if above is not None:
@@ -1045,10 +1055,10 @@ def _place(sc, pos, o, sess) -> list[dict]:
         if len(xyz) < 3:
             raise ValueError("place needs x,y,z, or x,y with --above dz")
         seat, z = {"mode": "free", "dz": 0.0}, xyz[2]
-    sess["n"] = sess.get("n", 0) + 1
+    next_n(sc, sess, "PLACE")
     row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
-           "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": 1, "layer": "place",
+           "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}
     return [{"op": "ref.add", "space": sc.space, "call": "fault", "ref": row}]
 
@@ -1117,7 +1127,7 @@ def _steps(sc, pos, o, sess) -> list[dict]:
     frm, to = sc.resolve(pos[0]), sc.resolve(pos[1])
     at = _point(to)
     deck = hands.deck_of(sc, frm, at)
-    sess["n"] = sess.get("n", 0) + 1
+    next_n(sc, sess, "STEPS")
     why = str(o.get("why") or f"steps from {frm['name']} down to {to['name']}")
     got = hands.lay_steps(sc, deck, at, f"{sc.place_id}.LOOK{sess['n']:03d}STEPS", why)
     return [{"op": "ref.add", "space": "exterior", "call": "fault", "ref": got["row"],

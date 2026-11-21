@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261121T155523",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the steps' top flight sunk flush with the crest; the bone totem onto open mud by the fire camp's ramp, its feet in the ground",
+ "at": "2026-11-21T15:55:23Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK006PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -9828.0,
+     -552210.0,
+     685.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    }
+   },
+   "after": {
+    "pos": [
+     -9828.0,
+     -552210.0,
+     660.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": -37.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:55:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -10900.0,
+     -554050.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11150.0,
+     -553680.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:55:23Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -11150.0,
+     -553680.0,
+     249.71
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11150.0,
+     -553680.0,
+     206.404
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:55:23Z"
+  }
+ ]
+}

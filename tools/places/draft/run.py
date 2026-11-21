@@ -729,7 +729,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
     # --- people ---
     folk, factions, stations = draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of,
-                                            nodes_our, paths_our, dec, ledger, G)
+                                            nodes_our, paths_our, dec, ledger, G, identities.read(place_id, places))
     lit = lights.station_lights(place_id, our, stations)   # what we add is lit as Skyrim lights it
     our.extend(lit)
     from tools.places.draft import hang
@@ -1037,7 +1037,8 @@ def room_station(place_id, st, b, bases, src_refs, overrides, pts, into, k, owne
     return row
 
 
-def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger, G):
+def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger, G,
+                 who: dict | None = None):
     roles_override = dec.get("roles") or {}
     # beds of each copy
     slots: dict[str, list[dict]] = {}
@@ -1313,6 +1314,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     for p in folk:
         if p["id"] in filled:
             p["base_from"] = pick_base("resident")
+    people.rebase(folk, src.npcs, pool, pool_npcs, who)   # each person on a base of their identity's sex and race
     # the source's own actors: stand-ins for ours, or left to the town rule
     base_users: dict[str, list[str]] = {}
     for p in folk:

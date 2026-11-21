@@ -166,6 +166,16 @@ SOLID = {"building", "static", "furniture", "door", "container", "rock", "tree",
 SKIP_KINDS = ("actor", "marker", "light", "plant", "clutter")
 
 
+def carried_disc(place: dict) -> tuple[list, float, float]:
+    """Where the source's walking mesh is carried: (centre, radius, reach past it). The whole footprint round the
+    anchor, reaching 512 past it; or, for a place that takes one part of its source (place.json `wholesale.take`,
+    units round the pivot), only that part round the anchor, reaching no further, the rest meshed as ours."""
+    take = (place.get("wholesale") or {}).get("take")
+    if take:
+        return place["fit"]["anchor"], float(take), 0.0
+    return place["fit"]["anchor"], place["radius_m"] * 70, 512.0
+
+
 def place_carry(pid: str, places: Path | None = None) -> dict:
     """The carried mesh of a wholesale place and the zones the build meshes again (carrynav): the source's triangles
     (carried_tris), and a zone for every source piece deleted (its true outline at the source pose, grown), moved (both
@@ -185,9 +195,8 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
     sg = Ground.load(bdir)
     ours, off = _transform(place)
     rot = math.radians(float(place["fit"].get("rot_deg", 0.0)))
-    radius = place["radius_m"] * 70
-    centre = place["fit"]["anchor"]
-    got = carried_tris(place, navs, sg.height, sc.ground.height, radius + 512.0)
+    centre, radius, reach = carried_disc(place)
+    got = carried_tris(place, navs, sg.height, sc.ground.height, radius + reach)
     led = places / pid / "ledger.jsonl"
     dropped = {e.get("src") for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
                if e.get("status") == "dropped"} if led.exists() else set()
@@ -203,7 +212,7 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
         if r.get("kind") in SKIP_KINDS:
             continue
         X, Y, Z = ours(*r["pos"])
-        if math.dist((X, Y), centre) > radius + 512.0:
+        if math.dist((X, Y), centre) > radius + reach:
             continue
         rr = list(r.get("rot") or [0, 0, 0])
         rr[2] = float(rr[2]) + rot
@@ -229,7 +238,7 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
         r = sc.refs.get(p["id"]) or {}
         if r.get("src") or p.get("kind") not in SOLID or r.get("disabled"):
             continue
-        if math.dist((p["m"][0][3], p["m"][1][3]), centre) > radius + 512.0:
+        if math.dist((p["m"][0][3], p["m"][1][3]), centre) > radius + reach:
             continue
         z, _ = zone_of(p)
         if z:
@@ -283,6 +292,7 @@ def main(argv: list[str]) -> int:
               (Path("newworld/places") / pid / "spaces/exterior/refs.jsonl").read_text().splitlines() if ln.strip())}
     now = {src_of.get(p["id"]): p for p in sc.pieces if src_of.get(p["id"])}
     changed = []
+    centre, radius, _ = carried_disc(place)
     led = Path("newworld/places") / pid / "ledger.jsonl"
     dropped = {e.get("src") for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
                if e.get("status") == "dropped"}
@@ -291,13 +301,13 @@ def main(argv: list[str]) -> int:
             continue
         X, Y, _ = ours(*r["pos"])
         p = now.get(r["id"])
-        if p is None and math.dist((X, Y), place["fit"]["anchor"]) <= place["radius_m"] * 70:
+        if p is None and math.dist((X, Y), centre) <= radius:
             if r["id"] in dropped:     # never laid (wholesale's own drops: water, people, levelled)
                 continue
             changed.append((X - 150, Y - 150, X + 150, Y + 150))
         elif p is not None and math.dist((p["m"][0][3], p["m"][1][3], p["m"][2][3]), (X, Y, r["pos"][2] + off)) > 10:
             changed.append((X - 150, Y - 150, X + 150, Y + 150))
-    res = carry(place, navs, sg.height, sc.ground.height, changed, place["radius_m"] * 70)
+    res = carry(place, navs, sg.height, sc.ground.height, changed, radius)
     rep = {"stats": res["stats"], "changed_pieces": len(changed),
            "cells": {f"{k[0]},{k[1]}": edge_report(v) for k, v in sorted(res["cells"].items())}}
     if only:

@@ -1,0 +1,333 @@
+{
+ "save_id": "agent-20261121T160846",
+ "place_id": "outpost-m11-m63",
+ "name": "longer hanks of grey moss draped from the weir's log walk into the water along its downstream face (eight in all), so the moss reads from the landing",
+ "at": "2026-11-21T16:08:46Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK022PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK022PLACE",
+    "base": "Skyrim.esm:0BB951",
+    "kind": "tree",
+    "pos": [
+     -82894.0,
+     -514250.0,
+     19.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard, record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) hung from the woven weir's downstream face",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK024PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK024PLACE",
+    "base": "Skyrim.esm:0BB951",
+    "kind": "tree",
+    "pos": [
+     -82894.0,
+     -514790.0,
+     19.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard, record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) hung from the woven weir's downstream face",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK025PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK025PLACE",
+    "base": "Skyrim.esm:0BB951",
+    "kind": "tree",
+    "pos": [
+     -82894.0,
+     -514960.0,
+     19.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard, record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) hung from the woven weir's downstream face",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK050PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514230.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK051PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514350.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK052PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514470.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK053PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514590.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK054PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514760.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK055PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -514880.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-21T16:08:46Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK056PLACE",
+    "base": "Skyrim.esm:0BB94F",
+    "kind": "tree",
+    "pos": [
+     -82892.0,
+     -515010.0,
+     -10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "long grey moss (Sithis' beard; record gives: harvest-rare x2; look: long grey moss draped on its fences over the water) draped from the weir's log walk down its downstream face into the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-21T16:08:46Z"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T165244",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the mounted elk head in the longhouse pruned (no elk in Black Marsh; the hall keeps its other trophies)",
+ "at": "2026-11-21T16:52:44Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "DushnikhYalLonghouse",
+   "id": "Skyrim.esm:097E72",
+   "call": "fault",
+   "before": {
+    "id": "Skyrim.esm:097E72",
+    "edid": null,
+    "base": "Skyrim.esm:03F94E",
+    "kind": "clutter",
+    "pos": [
+     0,
+     376,
+     200
+    ],
+    "rot": [
+     0,
+     0,
+     3.1415927
+    ],
+    "scale": 1.15,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:097E72",
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T16:52:44Z"
+  }
+ ]
+}

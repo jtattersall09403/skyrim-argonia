@@ -633,16 +633,27 @@ def rests_on(a: Posed, b: Posed, tol: float = 24.0, reach: float = 160.0, a_band
     if w is None:
         return False
     sa, sb = w
-    au, bu = a.under[sa], b.under[sb]
-    m0 = ~np.isnan(au) & (au <= a.low() + a_band) & ~np.isnan(bu)
-    if not m0.any():
+    au = a.under[sa]
+    foot = ~np.isnan(au) & (au <= a.low() + a_band)
+    if not foot.any():
         return False
-    bt = b.top[sb]
-    if (m0 & (bt >= au - tol) & (bt <= au + reach)).any():
-        return True
-    for F in (b.walk[sb], b.walk_low[sb]):
-        if (m0 & ~np.isnan(F) & (F >= au - tol) & (F <= au + STEP)).any():
-            return True
+    # b's surfaces in the same column or the one beside it (a column, SPACING): two sampled clouds of small or
+    # turned pieces (a bowl on a table) can fill alternate columns where both surfaces are whole
+    r0, r1, c0, c1 = sb[0].start, sb[0].stop, sb[1].start, sb[1].stop
+    pad = {k: np.pad(g, 1, constant_values=np.nan) for k, g in
+           (("under", b.under), ("top", b.top), ("walk", b.walk), ("walk_low", b.walk_low))}
+    for di in (0, -1, 1):
+        for dj in (0, -1, 1):
+            win = (slice(r0 + 1 + di, r1 + 1 + di), slice(c0 + 1 + dj, c1 + 1 + dj))
+            m0 = foot & ~np.isnan(pad["under"][win])
+            if not m0.any():
+                continue
+            bt = pad["top"][win]
+            if (m0 & (bt >= au - tol) & (bt <= au + reach)).any():
+                return True
+            for F in (pad["walk"][win], pad["walk_low"][win]):
+                if (m0 & ~np.isnan(F) & (F >= au - tol) & (F <= au + STEP)).any():
+                    return True
     return False
 
 

@@ -5,13 +5,15 @@ line kept by the ground stage's own rule). Nothing is fitted per cluster or seat
 actor (people come from the place's people rows), the source's water plane (our water stands where it stands) and a
 levelled base (decision 0035). The place's people, quest spots, interiors and stock rows are left as they are; the
 draft's added pieces, streets, land rows and agent edits are cleared, since the baseline starts from the source.
+What is laid: every source piece in the footprint, or with `--take <u>` only the part of the source within u of the
+pivot (a place taking one part of a source another place shares; its walking mesh carried for that part alone).
 How much ground comes: all of it (default), only within `--carry-radius` of the centre (a camp's own platform), at
 most `--cap` units of change; `--keep-wet` carries a source pond's bed as a mud hollow. Then `--rooms` carries the
 source's rooms and door pairs onto the laid doors and `--walks x,y` its walks as path rows; place.json
 `wholesale.navmesh: "source"` makes the build write the source's own walking mesh (docs/design/place-studio.md,
 Navmesh; skill place-site).
 
-    python -m tools.places draft wholesale <place_id> --offset <units> [--carry-radius u] [--cap u] [--keep-wet] [--dry]
+    python -m tools.places draft wholesale <place_id> --offset <units> [--take u] [--carry-radius u] [--cap u] [--keep-wet] [--dry]
     python -m tools.places draft wholesale <place_id> --offset <units> --rooms | --walks x,y
 """
 from __future__ import annotations
@@ -30,7 +32,8 @@ SLOPE_DEG = 35.0
 LEVELLED = {"LVLN", "LVLI", "LVLC"}
 
 
-def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: float = 1e9, keep_wet: bool = False) -> tuple[list[dict], list[dict], list[dict], dict]:
+def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: float = 1e9, keep_wet: bool = False,
+        take: float | None = None) -> tuple[list[dict], list[dict], list[dict], dict]:
     from tools.places.extract import load_place
     fit = st.place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
@@ -52,6 +55,8 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
         why = None
         if math.dist((x, y), centre) > radius:
             why = "outside the place's footprint"
+        elif take and math.dist(r["pos"][:2], pv[:2]) > take:
+            why = f"outside the part of the source this place takes (within {take:g} of the pivot)"
         elif r.get("kind") == "actor":
             why = "a person: the place's people come from its people rows"
         elif r.get("kind") == "water":
@@ -91,7 +96,8 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
                 row.pop("linked")
     G0 = Ground.load(st.grd.path)
     pieces = [(r["pos"][0], r["pos"][1]) for r in ext]
-    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, centre, carry_radius or radius,
+    g_centre, g_radius = ((an[0], an[1]), carry_radius or take) if take else (centre, carry_radius or radius)
+    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, g_centre, g_radius,
                              cap=cap, offset=offset, slope=SLOPE_DEG, keep_wet=keep_wet)
     for r in land:
         r["why"] = f"the source's whole relief carried wholesale at offset {offset:g}"
@@ -287,6 +293,9 @@ def main(argv=None) -> int:
     ap.add_argument("--carry-radius", type=float, default=None,
                     help="units: the relief carried only this far from the centre (the camp's own platform), faded to ours by it")
     ap.add_argument("--cap", type=float, default=1e9, help="units: the most the carried relief changes our ground")
+    ap.add_argument("--take", type=float, default=None,
+                    help="units round the pivot: only this part of the source is laid (and its walking mesh and ground "
+                         "carried); for a place taking one part of a source another place shares")
     ap.add_argument("--keep-wet", action="store_true", help="the source's pond bed carried as a mud hollow (not faded to ours)")
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--rooms", action="store_true", help="carry the source's rooms, door pairs and arrivals onto the laid doors (the pieces as they stand)")
@@ -322,7 +331,7 @@ def main(argv=None) -> int:
         if why:
             print(why, file=sys.stderr)
             return 1
-    ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet)
+    ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet, a.take)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
         return 0
@@ -339,6 +348,8 @@ def main(argv=None) -> int:
                                                   "band_steepest_deg", "source_water_area_m2", "held_by_water")}
     if walk:
         place["wholesale"]["navmesh"] = walk
+    if a.take:
+        place["wholesale"]["take"] = a.take       # the part of the source taken: srcnav.carried_disc carries only it
     import datetime   # when the baseline was laid: which of two places on one source came first (differs.py)
     place["wholesale"]["laid"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     place["agent_saves_applied"] = []

@@ -38,5 +38,6 @@ a row on `Skyrim.esm:000010` with `map_marker` (the name the map shows).
    (a room's name, a map marker, a named thing), what stands by it, or a named person who tells them. A building that
    could serve is not met: say what narrow addition (a name, a lock, a thing, a person's spot) closes the gap.
 2. `python3 -m tools.places sight <place_id>` prepares what a player sees at each need's spot; one fresh `reader`
-   says what each spot is before being shown the needs; record each need's `sight`.
+   says what each spot is before being shown the needs; record each need's result with
+   `python3 -m tools.places needs sight <place_id> <seq> --result recognised|"not recognised" --said "<the reader's words>"`.
 3. `python3 -m tools.places needs check <place_id>` passes.

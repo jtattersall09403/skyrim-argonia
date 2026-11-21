@@ -181,7 +181,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She hunts the reeds round the camp for meat and hangs the best skulls on the trophy pole. She watches the cage more often than the guards do.",
+     "text": "She hunts the marsh round the camp for meat and sets the best skulls at the foot of the bone totems. She watches the cage more often than the guards do.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:tribal-camp-m2-m68/look",
@@ -239,7 +239,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He poles a flat boat that takes the stacked jars to where the Unbound's crews collect them. He is paid by the trip and asks nothing of what the jars hold.",
+     "text": "He poles a covered boat with the stacked jars from the creek bank to the place where the Unbound's crews collect them. He is paid by the trip and asks nothing of what the jars hold.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:tribal-camp-m2-m68/economy"
