@@ -151,3 +151,18 @@ def test_a_hole_in_the_source_mesh_is_filled_by_the_generator_and_joined():
     assert not any(g == -1 and np.hypot(m[0] - 1000, m[1] - 1000) < 850 and not (700 < m[0] < 1300 and 700 < m[1] < 1300)
                    for m, g in mids)                   # no generated scrap over the carried mesh round the hole
     assert cn.thick([(0, 0), (100, 0), (100, 100), (0, 100)]) and not cn.thick([(0, 0), (400, 0), (400, 10), (0, 10)])
+
+
+def test_ground_under_a_carried_deck_is_generated_where_the_source_had_none():
+    """A walkway the source laid over its water, now over our dry ground: the deck is carried, the ground under it
+    generated (a deck far over the ground covers nothing at the ground's level)."""
+    ground = [(t, 0, 0) for t in grid(0, 0, 2000, 2000, 100.0, 0.0)
+              if not all(700 <= p[0] <= 1300 and 700 <= p[1] <= 1300 for p in t)]
+    deck = [(t, 0, 0) for t in grid(800, 800, 1200, 1200, 100.0, 300.0)]
+    out = cn.build_cells(ground + deck, gen_cells([(0, 0)], z=0.0), cn.Region(cn.disk((1000, 1000), 900, 32)))
+    cell = out[(0, 0)]
+    V = np.asarray(cell["verts"])
+    under = [g for t, g in zip(cell["tris"], cell["tags"]) if 850 < V[t].mean(axis=0)[0] < 1150
+             and 850 < V[t].mean(axis=0)[1] < 1150 and V[t].mean(axis=0)[2] < 50]
+    top = [g for t, g in zip(cell["tris"], cell["tags"]) if V[t].mean(axis=0)[2] > 250]
+    assert under and set(under) == {-1} and top and set(top) == {0}

@@ -219,8 +219,11 @@ class Region:
             free = [inside]
             for h, bb in zip(self.zone_h, self.zone_box):
                 free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
+            zlo, zhi = min(q[2] for q in inside) - COVER_DZ, max(q[2] for q in inside) + COVER_DZ
             for i in self._covering(bbi):
-                h, bb = self.cover[i]
+                h, bb, lo, hi = self.cover[i]
+                if hi < zlo or lo > zhi:    # a deck far over the ground (or the ground far under it) covers nothing
+                    continue
                 free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
                 if not free:
                     break
@@ -230,8 +233,9 @@ class Region:
     cover = None
 
     def set_cover(self, tris) -> None:
-        """The carried triangles (plan): where none lies inside the footprint, out of every zone, the generated mesh
-        fills (a spot the source left unwalked that our ground makes walkable: a bank the edge band raised)."""
+        """The carried triangles: where none lies at a generated triangle's level (within COVER_DZ) inside the footprint,
+        out of every zone, the generated mesh fills (a spot the source left unwalked that our ground makes walkable: a
+        bank the edge band raised, dry ground under a walkway over the source's water)."""
         self.cover = []
         grid: dict = defaultdict(list)
         for t in tris:
@@ -240,7 +244,7 @@ class Region:
                 continue
             bb = _bbox(p)
             i = len(self.cover)
-            self.cover.append((planes(p), bb))
+            self.cover.append((planes(p), bb, min(q[2] for q in t), max(q[2] for q in t)))
             for gx in range(math.floor(bb[0] / 256), math.floor(bb[2] / 256) + 1):
                 for gy in range(math.floor(bb[1] / 256), math.floor(bb[3] / 256) + 1):
                     grid[(gx, gy)].append(i)
@@ -254,6 +258,7 @@ class Region:
         return sorted(got)
 
 
+COVER_DZ = 64.0        # a carried triangle covers a generated one within this in height (two climbs)
 HOLE_THICK = 16.0      # a generated piece in a hole of the source's mesh is kept when at least this thick (2 area /
 #                        perimeter): the strips between the source's edge and Recast's along a wall are not holes
 
