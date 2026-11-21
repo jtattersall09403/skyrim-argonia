@@ -166,6 +166,18 @@ def test_who_words_and_check_hold_rests_to_the_place_files(world):
     assert any("no person fenwick.Z" in e for e in errs)
 
 
+def test_a_rest_may_be_a_copied_rooms_kept_source_ref(tmp_path, monkeypatch):
+    from types import SimpleNamespace as NS
+    from tools.places.draft import io as dio
+    room = tmp_path / "p" / "spaces" / "Hold"
+    room.mkdir(parents=True)
+    (room / "space.json").write_text('{"space_id": "Hold", "copy_of": "ship/HoldCell"}')
+    (room / "refs.jsonl").write_text('{"id": "p.x", "src": "S:2", "removed": true}\n')
+    cell = NS(refs=[{"id": "S:1"}, {"id": "S:2"}])
+    monkeypatch.setattr(dio, "_other", lambda sid, root: NS(spaces={"HoldCell": cell}))
+    assert "S:1" in N._place_refs("p", tmp_path)["Hold"]     # a chest of the source room the file never changes
+
+
 def test_owner_changes_are_recorded_and_listed(world):
     _judged(world)
     with pytest.raises(ValueError):

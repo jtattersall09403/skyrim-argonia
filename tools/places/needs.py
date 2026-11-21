@@ -437,10 +437,23 @@ def payload(pid: str, root: Path = NEEDS, people_root: Path = PEOPLE, places: Pa
 
 # ---- checks and listings -------------------------------------------------------------------------------------------
 
-def _place_refs(pid: str, places: Path = PLACES) -> dict[str, set[str]]:
+def _place_refs(pid: str, places: Path = PLACES, bundles: Path | None = None) -> dict[str, set[str]]:
+    """{space: the ref ids a judgement may rest on}: each space's own rows, and a copied room's source refs it keeps
+    (a chest of the source room the room's file never changes), by their source id."""
+    from tools.places.draft import io
     out = {}
     for sdir in (places / pid / "spaces").iterdir():
-        out[sdir.name] = {i for r in _jsonl(sdir / "refs.jsonl") for i in (r["id"], r.get("src") or r["id"])}
+        rows = _jsonl(sdir / "refs.jsonl")
+        out[sdir.name] = {i for r in rows for i in (r["id"], r.get("src") or r["id"])}
+        info = _json(sdir / "space.json") or {}
+        source_id, _, cell = str(info.get("copy_of") or "").partition("/")
+        if cell:
+            try:
+                src = io._other(source_id, str(bundles or io.BUNDLES))
+            except FileNotFoundError:
+                continue
+            gone = {r.get("src") for r in rows if r.get("removed")}
+            out[sdir.name] |= {r["id"] for r in (src.spaces[cell].refs if cell in src.spaces else []) if r["id"] not in gone}
     return out
 
 
