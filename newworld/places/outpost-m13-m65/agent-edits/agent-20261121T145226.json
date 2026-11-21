@@ -1,0 +1,171 @@
+{
+ "save_id": "agent-20261121T145226",
+ "place_id": "outpost-m13-m65",
+ "name": "trial hut candidates",
+ "at": "2026-11-21T14:52:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK001PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK001PLACE",
+    "base": "Black Marsh.esm:09AEAD",
+    "kind": "building",
+    "pos": [
+     -99950.0,
+     -529050.0,
+     308.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -10.0
+    },
+    "why": "the gang-master's low stone hut (record look: a low stone hut on the river bank; the cook's fire by the hut): Black Marsh & Valenwood's one-storey stone swamp house, beside the camp's fire",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T14:52:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK002PLACE",
+    "base": "Black Marsh.esm:084B30",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -527400.0,
+     259.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T14:52:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK003PLACE",
+    "base": "Journey to Baan Malur.esp:04442B",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -528300.0,
+     337.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T14:52:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK004PLACE",
+    "base": "Journey to Baan Malur.esp:044433",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -529200.0,
+     413.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T14:52:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK005PLACE",
+    "base": "Journey to Baan Malur.esp:04443F",
+    "kind": "building",
+    "pos": [
+     -97900.0,
+     -528300.0,
+     382.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T14:52:26Z"
+  }
+ ]
+}
