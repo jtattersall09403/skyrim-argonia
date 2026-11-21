@@ -2040,7 +2040,11 @@ def main(argv: list[str]) -> int:
     a = ap.parse_args(argv)
     t0 = time.time()
     root, out = Path(a.places_dir), Path(a.out)
-    ids = a.places or sorted(d.name for d in root.iterdir() if (d / "place.json").exists())
+    from tools.places import variant
+    ids = a.places or variant.game_places(root)   # a variant draft never reaches the layer plugin
+    if any(variant.is_variant(p) for p in ids):
+        print("a variant draft is never built: `variant use` it first", file=sys.stderr)
+        return 2
     build_tool()
     world_sha = sha256(WORLD_ESM)
     report = {"places": {}, "world_sha256": world_sha}

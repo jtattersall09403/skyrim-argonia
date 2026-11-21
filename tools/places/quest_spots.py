@@ -194,7 +194,9 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
     by_id = {q["id"]: q for q in recs}
     sw = switches(recs)
     ref_base = {r["ref"]: r["base"] for q in recs for r in q.get("placements") or [] if r.get("ref") and r.get("base")}   # a ref placed again takes its base
-    rooms, cast = _rooms(place_dir), _cast(place_id, sources)
+    from tools.places import variant
+    rec = variant.record_id(place_id)   # a variant's quests are its place's
+    rooms, cast = _rooms(place_dir), _cast(rec, sources)
     spots = read(place_dir)
     rows = _catalogue_rows(catalogue)
     have = {r["id"]: r for r in spots}
@@ -203,7 +205,7 @@ def payload(place_id: str, places: Path = PLACES, quests: Path = QUESTS, sources
         start = q.get("start") if q.get("start") is not None else ((q.get("stages") or [{}])[0].get("id"))
         for r in q.get("placements") or []:
             a = r.get("anchor") if isinstance(r.get("anchor"), dict) else {}
-            if a.get("place") != place_id or not r.get("ref"):
+            if a.get("place") != rec or not r.get("ref"):
                 continue
             sid = spot_id(q["id"], r["ref"])
             seen.add(sid)

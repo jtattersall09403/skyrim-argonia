@@ -48,6 +48,8 @@ import tempfile
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from tools.places import variant
+
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
 
@@ -168,8 +170,8 @@ def load_drafts(root: Path, out: Path) -> dict:
         return {f"cast/{p['cast']}" for p in json.loads(src.read_text()).get("people") or [] if p.get("cast")}
 
     d = {}
-    for pj in sorted((root / "newworld/places").glob("*/place.json")):
-        pid = pj.parent.name
+    for pid in variant.game_places(root / "newworld/places"):   # a variant draft is never checked or counted
+        pj = root / "newworld/places" / pid / "place.json"
         people = pj.parent / "people.jsonl"
         spaces = pj.parent / "spaces"
         chk = out / "places/shards" / pid / "check.json"

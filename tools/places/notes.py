@@ -34,7 +34,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PLACES = ROOT / "newworld" / "places"
 AUTOSAVES = ROOT / "out" / "places" / "autosave"
-PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,95}$")
+PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._@-]{0,95}$")   # @: a variant
 NOTE_ID = re.compile(r"n(\d+)")
 MAX_TEXT, MAX_THINGS = 4000, 200
 CLIENT_ID = re.compile(r"[A-Za-z0-9._-]{1,64}")

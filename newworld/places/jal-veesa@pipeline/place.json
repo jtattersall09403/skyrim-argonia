@@ -1,5 +1,8 @@
 {
- "place_id": "jal-veesa-pipeline",
+ "place_id": "jal-veesa@pipeline",
+ "variant_of": "jal-veesa",
+ "variant": "pipeline",
+ "title": "Jal-Veesa (pipeline draft)",
  "source_id": "kingofthemurkmire.seekhatyollocation",
  "similar": [
   "kingofthemurkmire.altenmeerhleellocation"
@@ -1506,6 +1509,5 @@
   "kit": [
    "King of the Murkmire.esp:050D80"
   ]
- },
- "title": "Jal-Veesa (pipeline version, to compare)"
+ }
 }

@@ -40,7 +40,8 @@ SENTENCE = re.compile(r"[.!?](?:\s+|$)")
 
 def source(place_id: str, places: Path = PLACES) -> Path:
     """The people source file of a place: newworld/sources/people/<place>.json beside newworld/places."""
-    return places.parent / "sources" / "people" / f"{place_id}.json"
+    from tools.places import variant
+    return places.parent / "sources" / "people" / f"{variant.record_id(place_id)}.json"
 
 
 def person_rows(place_id: str, places: Path = PLACES) -> list[dict]:

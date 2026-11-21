@@ -20,7 +20,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SAVE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,63}$")
-PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,95}$")
+PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._@-]{0,95}$")   # @: a variant
 AUTOSAVE = "autosave"
 
 

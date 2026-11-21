@@ -43,7 +43,8 @@ CELL = 4096.0
 
 
 def built_places() -> list[str]:
-    return sorted(p.name for p in PLACES.iterdir() if p.is_dir()) if PLACES.exists() else []
+    from tools.places import variant
+    return variant.game_places(PLACES)   # a variant draft is never built and holds no ground
 
 
 def rows() -> dict:
