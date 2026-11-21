@@ -153,3 +153,11 @@ def test_no_wall_where_the_source_holds_no_ground_or_the_radius_ends():
     # the record's radius fades the change to nothing at the circle rather than cutting it there
     _, _, g2 = run(flat(0), flat(400), offset=0.0, cap=1e9, centre=(0, 0), radius=1600.0)
     assert steepest(g2) < 45 and abs(g2.vertex(0, 0) - 400) < 1
+
+
+def test_the_check_bounds_carried_ground_by_the_ground_cap_and_other_rows_by_the_patch_bound():
+    from tools.places.draft.check import land_bound
+    assert land_bound({"by": "ground"}, {"draft": {"ground_cap": 700}}) == 700
+    assert land_bound({"by": "ground"}, {}) == gr.CAP
+    assert land_bound({"by": "sap"}, {"fit": {"patch_max": 105.0}}) == 105.0
+    assert land_bound({}, {}) == 105.0

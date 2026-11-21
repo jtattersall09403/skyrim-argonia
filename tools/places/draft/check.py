@@ -222,14 +222,14 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
 
     # 8. land patches: small, bounded, never across the waterline
     G0 = Ground.load(grd.path)
-    pmax = place.get("fit", {}).get("patch_max", 105.0)
     points = 0
     for p in land:
         cx, cy = p["cell"]
+        bound = land_bound(p, place)
         for row, col, dz in p["verts"]:
             points += 1
-            if abs(dz) > pmax + 0.5:
-                bad.append(f"land patch at cell {p['cell']} ({row},{col}) changes the ground by {dz:.0f} (bound {pmax:.0f})")
+            if abs(dz) > bound + 0.5:
+                bad.append(f"land patch at cell {p['cell']} ({row},{col}) changes the ground by {dz:.0f} (bound {bound:.0f})")
             gx, gy = cx * 32 + col, cy * 32 + row
             h0 = G0.vertex(gx, gy)
             w = G0.water(gx * 128.0, gy * 128.0)
@@ -391,6 +391,16 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     placed = [r for r in refs if r.get("kind") in geom.SOLID_KINDS]
     bad += clearmod.stray(world, cleared, placed, bases, paths)
     return bad
+
+
+def land_bound(row: dict, place: dict) -> float:
+    """The most a land row may change the ground: the source's ground carried (`by` "ground") is bounded by the ground
+    stage's cap (the place's `draft.ground_cap`, else ground.CAP); any other row eases the ground under a building, by
+    `fit.patch_max` at most."""
+    if row.get("by") == "ground":
+        from tools.places.draft.ground import CAP
+        return float((place.get("draft") or {}).get("ground_cap") or CAP)
+    return float((place.get("fit") or {}).get("patch_max", 105.0))
 
 
 def plan_checks(place: dict, refs: list[dict]) -> list[str]:

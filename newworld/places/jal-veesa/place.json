@@ -576,6 +576,12 @@
      "what": "platform ends",
      "verdict": "kept",
      "why": "deck ends carrying the walkways at the ring's east side"
+    },
+    {
+     "cluster": "s01",
+     "what": "the Hist on its mound with its glands, roots, flowers and the prayer decks round it",
+     "verdict": "kept",
+     "why": "the record's Hist at the heart of the town (the rootworm stop, the blessing, the main story's sick Hist), as the source built it"
     }
    ],
    "source": "the source: Seekhat Yol: Seekhat Yol (King of the Murkmire): an Argonian village of pale reed-thatched stilt houses on platforms round its Hist, the closest match to the record's look; its seven rooms, topped up with three of Alten Meerhleel's (King of the Murkmire) rooms (market, bunkhouse, dockmaster's house), house the town's nine households and its jetty market. Cormaris (the allocated source) was Imperial and Dunmer and needed every house replaced"
@@ -634,7 +640,7 @@
     "RNQ1281B2E5X8752E8TM05G1YV": "the hatchery gland: the hatchery's own steam pool is at its foot and there is no open level ground for a sap pool (five spots tried, 2026-11-21); no pool (lead's decision, 2026-11-21)"
    }
   },
-  "ground_cap": 450
+  "ground_cap": 700
  },
  "fit": {
   "pivot": [
