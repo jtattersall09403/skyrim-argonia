@@ -38,7 +38,7 @@ def ctx(**over):
                           "s2": {"id": "s2", "title": "Teeba (KotM)", "name": "Teeba", "culture_tags": "argonian"}},
          "tiers": TIERS, "symbols": SYMS, "regions": {"r": {"name": "Reg"}}, "cultures": {"c": {"name": "Cul"}},
          "on_road": {"a", "b"}, "on_route": set(), "aliases": {}, "person_names": {"weeltul"}, "factions": {"faction.known"},
-         "quests": [], "lines": {}, "drafts": {}, "main": {"b"}, "ground": {}, "map_page": None,
+         "quests": [], "lines": {}, "drafts": {}, "main": {"b"}, "ground": {},
          "generated": {"digest": []}, "cell_region": {}}
     c.update(over)
     return c
@@ -125,15 +125,12 @@ def test_source_note_against_source():
 
 
 def test_atlas_against_record():
-    page = {"a": {"n": "Alpha", "symid": "s.village", "reg": "r", "pop": 20, "radius": 50.0},
-            "b": {"n": "Beta", "symid": "s.town", "reg": "r", "pop": 40, "radius": 50.0}}
-    assert causes(ctx(map_page=page), "atlas")[0] == set()
-    c = ctx(map_page=copy.deepcopy(page), cell_region={"0,0": "other"})
-    c["map_page"]["a"]["pop"] = 3
+    assert causes(ctx(), "atlas")[0] == set()
+    c = ctx(cell_region={"0,0": "other"})
     c["on_road"] = set()
     c["places"]["b"]["footprint_radius_m"] = 500.0
     got, R = causes(c, "atlas")
-    assert {"the map page is behind the records", "the record's region differs from its cell's",
+    assert {"the record's region differs from its cell's",
             "a town or city on no road or travel route", "the footprint is too big for its tier"} <= got
     assert {f.place for f in R.items if f.cause.startswith("a town or city")} == {"b"}  # a village needs no road
 

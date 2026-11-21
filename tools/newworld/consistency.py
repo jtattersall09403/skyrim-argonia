@@ -20,8 +20,10 @@ Check families, each a function of one context dict so the tests feed it a small
              record that names a Hist pool and never says sap
   source     the source note against the allocated source (place_source rank 0); main-quest sources judged;
              a shared source's notes say how each adaptation differs
-  atlas      symbol, tier, footprint and region against the record; a town or city (by its tier or kind) is on a
-             road or on a travel route; the map page's data against the record
+  atlas      tier, footprint and region against the record (the region is derived from its cell at build: the rule
+             guards that derivation's freshness); a town or city (by its tier or kind) is on a road or on a travel
+             route. A record's region, culture and symbol are foreign keys the database build enforces, and the map
+             page is generated from the records (its freshness is the generated family's), so neither is checked here
   story      every place, person, faction named by the quests and the line pages exists; what a quest says of a
              place is in its record or draft; each placement's place exists, and a drafted place has its spot
              (quests.jsonl), or, for a person, a person of its people source cast as that ref; an undrafted
@@ -150,7 +152,6 @@ def load(root: Path = REPO, out: Path | None = None) -> dict:
     ctx["drafts"] = load_drafts(root, out)
     ctx["main"] = main_places(ctx)
     ctx["ground"] = load_ground(out, ctx["places"])
-    ctx["map_page"] = load_map_page(out)
     ctx["generated"] = generated_state(root)
     return ctx
 
@@ -249,20 +250,6 @@ def load_ground(out: Path, places: dict) -> dict:
             g[pid] = {"d": {k: float(a[y, x]) for k, a in edt.items()}, "water": bool(water[y, x]),
                       "ev": f"out/newworld/raster/water.png px {x},{y}"}
     return g
-
-
-def load_map_page(out: Path) -> dict | None:
-    p = out / "newworld/map/index.html"
-    if not p.exists():
-        return None
-    html = p.read_text(encoding="utf-8", errors="replace")
-    rows = {}
-    for m in re.finditer(r'\{"id":"([^"]+)","n":"([^"]*)",[^{}]*?"symid":"([^"]*)"[^{}]*?"reg":"([^"]*)"'
-                         r'[^{}]*?"pop":(\d+|null),"radius":([\d.]+|null)', html):
-        rows[m.group(1)] = {"n": m.group(2), "symid": m.group(3), "reg": m.group(4),
-                            "pop": None if m.group(5) == "null" else int(m.group(5)),
-                            "radius": None if m.group(6) == "null" else float(m.group(6))}
-    return rows
 
 
 def generated_state(root: Path) -> dict:
@@ -572,19 +559,12 @@ def check_atlas(ctx, R: Report, only=None):
     names: dict = collections.defaultdict(list)
     for pid, p in P.items():
         names[norm(p["name"])].append(pid)
-    mp = ctx.get("map_page")
     for pid, p in P.items():
         if only and pid != only:
             continue
         ev = ctx["place_ev"][pid]
         if len(names[norm(p["name"])]) > 1:
             R.add("atlas", "two places share a name", pid, f"'{p['name']}' also {names[norm(p['name'])]}", ev)
-        if p.get("region_id") not in ctx["regions"]:
-            R.add("atlas", "an unknown region or culture", pid, f"region {p.get('region_id')}", ev)
-        if p.get("culture_id") and p["culture_id"] not in ctx["cultures"]:
-            R.add("atlas", "an unknown region or culture", pid, f"culture {p['culture_id']}", ev)
-        if p.get("symbol_id") not in ctx["symbols"]:
-            R.add("atlas", "an unknown symbol", pid, f"symbol {p.get('symbol_id')}", ev)
         cr = ctx.get("cell_region", {}).get(f"{p.get('cell_x')},{p.get('cell_y')}")
         if cr and cr != p.get("region_id"):
             R.add("atlas", "the record's region differs from its cell's", pid,
@@ -603,19 +583,6 @@ def check_atlas(ctx, R: Report, only=None):
             R.add("atlas", "a town or city on no road or travel route", pid,
                   f"{p.get('place_kind_id')} drawn as {t['id'] if t else p.get('symbol_id')}, pop {p.get('population')}",
                   ev)
-        if mp is not None:
-            row = mp.get(pid)
-            if row is None:
-                R.add("atlas", "the map page is behind the records", pid, "not on the map page", "out/newworld/map/index.html")
-            else:
-                diffs = [f"{k} {row[k]}!={v}" for k, v in (("n", p["name"]), ("symid", p.get("symbol_id")),
-                                                            ("reg", p.get("region_id")), ("pop", p.get("population")),
-                                                            ("radius", p.get("footprint_radius_m"))) if row[k] != v]
-                if diffs:
-                    R.add("atlas", "the map page is behind the records", pid, "; ".join(diffs),
-                          f"out/newworld/map/index.html; {ev}")
-    if mp is None and not only:
-        R.add("atlas", "the map page is missing", None, "no out/newworld/map/index.html", "out/newworld/map")
 
 
 # ---------------------------------------------------------------- 5 story
