@@ -189,17 +189,14 @@
   "agent-20261121T150431",
   "agent-20261121T150648",
   "agent-20261121T152009",
-  "agent-20261121T152114"
+  "agent-20261121T152114",
+  "agent-20261121T152629"
  ],
  "sap": {
   "added": [
    {
     "id": "outpost-m6-m66.sap.1TM9YA0T28YKK1KV2ZZDH3QYCM",
     "on": "1TM9YA0T28YKK1KV2ZZDH3QYCM"
-   },
-   {
-    "id": "outpost-m6-m66.sap.99BYE0A4DTRN08517K3PMZPZ31",
-    "on": "99BYE0A4DTRN08517K3PMZPZ31"
    }
   ]
  }
