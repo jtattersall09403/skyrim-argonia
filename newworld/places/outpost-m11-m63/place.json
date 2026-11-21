@@ -119,6 +119,11 @@
     "unit": "QBWSJSRPF1J3",
     "flag": "stands on: LOOK0340000",
     "why": "the ground ramp lands on the east deck; the fourth deck that closes the square only touches its south rail at the corner, seen from above (151558492-0026): the walk up the ramp onto the east deck is open"
+   },
+   {
+    "unit": "2KZ0D8RPRFHQ",
+    "flag": "stands on: LOOK0460000",
+    "why": "the ramp up to the high deck runs beside the fifth deck, which closes on its east side; seen from above (154331971-0033) the ramp is clear from the middle deck to the high deck, the fifth deck and its tent beside it, not on it"
    }
   ],
   "accepted_checks": [
@@ -232,7 +237,7 @@
      "outpost-m11-m63.LOOK032PLACE",
      "outpost-m11-m63.LOOK020PLACE"
     ],
-    "why": "a lifted weir trap set down on the log walk's logs, its net frame resting on them (145758...-stand view 150020188-0019)"
+    "why": "a lifted weir trap set down on the log walk's logs, its net frame resting on them (seen from the water below the weir, 150020188-0019)"
    },
    {
     "check": "overlap",
