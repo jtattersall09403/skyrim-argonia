@@ -1,0 +1,1246 @@
+{
+ "save_id": "agent-20261121T205650",
+ "place_id": "outpost-m6-m66",
+ "name": "the great Hist made a young one: Huluxinoag's composite Hist (two crowns, trunk bases, roots, glands, living and dead) and its lanterns replaced by King of the Murkmire's young Hist and its dead twin on the source's own enable parent (the living state starts on; an ending shows the dead tree); the hand pool taken up for the sap stage",
+ "at": "2026-11-21T20:56:50Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.19WPHKC7Z9Q8MF8PBT1WTN29FZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.19WPHKC7Z9Q8MF8PBT1WTN29FZ",
+    "base": "King of the Murkmire.esp:089930",
+    "kind": "tree",
+    "pos": [
+     -44906.13,
+     -538436.3,
+     269.7
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE0D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1RPR7E23DYBN024R6SFJJGHSG4",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1RPR7E23DYBN024R6SFJJGHSG4",
+    "base": "King of the Murkmire.esp:089930",
+    "kind": "tree",
+    "pos": [
+     -45167.99,
+     -538552.26,
+     446.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE0C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5AE5530GR6H2BKNP4CK6QEHZ11",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.5AE5530GR6H2BKNP4CK6QEHZ11",
+    "base": "King of the Murkmire.esp:52D306",
+    "kind": "tree",
+    "pos": [
+     -45005.37,
+     -538559.96,
+     402.71
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 0.8855,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD86",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5FM7P6P34WYHK03X2DJ0ECV109",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.5FM7P6P34WYHK03X2DJ0ECV109",
+    "base": "King of the Murkmire.esp:673011",
+    "kind": "tree",
+    "pos": [
+     -44914.9,
+     -538919.31,
+     -124.6
+    ],
+    "rot": [
+     0.04749402,
+     0.26771814,
+     2.68603
+    ],
+    "scale": 0.319,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.6AKW8KJWPEMM6EB3ZE8C56JWAP",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.6AKW8KJWPEMM6EB3ZE8C56JWAP",
+    "base": "King of the Murkmire.esp:67300F",
+    "kind": "tree",
+    "pos": [
+     -45015.89,
+     -538984.36,
+     170.79
+    ],
+    "rot": [
+     0,
+     0,
+     2.89626
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD81",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31",
+    "base": "King of the Murkmire.esp:0E67B3",
+    "kind": "tree",
+    "pos": [
+     -45005.37,
+     -538559.96,
+     357.04
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 0.759,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE09",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9YKDQWVX9RHB0TC7D6B66KK1WZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.9YKDQWVX9RHB0TC7D6B66KK1WZ",
+    "base": "King of the Murkmire.esp:0E67B0",
+    "kind": "tree",
+    "pos": [
+     -45005.37,
+     -538559.96,
+     402.71
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 0.8855,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE07",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.A13S5510JCZPKN7DKY9AZCVJPJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.A13S5510JCZPKN7DKY9AZCVJPJ",
+    "base": "King of the Murkmire.esp:673010",
+    "kind": "tree",
+    "pos": [
+     -44869.24,
+     -538292.15,
+     63.77
+    ],
+    "rot": [
+     -0.2245825,
+     -0.33385065,
+     4.41745
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD9A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.AMN04PPMJEK7G09PGXDX87GM4Z",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.AMN04PPMJEK7G09PGXDX87GM4Z",
+    "base": "King of the Murkmire.esp:67300E",
+    "kind": "tree",
+    "pos": [
+     -45280.38,
+     -538854.31,
+     273.43
+    ],
+    "rot": [
+     0,
+     0,
+     3.99626
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD9D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.B73DNYQ7VQEDTASR2SBTW1CTT1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.B73DNYQ7VQEDTASR2SBTW1CTT1",
+    "base": "King of the Murkmire.esp:67300F",
+    "kind": "tree",
+    "pos": [
+     -44866.33,
+     -538793.69,
+     60.55
+    ],
+    "rot": [
+     0,
+     0,
+     3.47946
+    ],
+    "scale": 0.682,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD93",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.CH3WQS5RV3Q224RB90EK4VWNSE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.CH3WQS5RV3Q224RB90EK4VWNSE",
+    "base": "King of the Murkmire.esp:673011",
+    "kind": "tree",
+    "pos": [
+     -45305.24,
+     -538576.26,
+     -117.58
+    ],
+    "rot": [
+     0.20619835,
+     0.04512377,
+     5.57687
+    ],
+    "scale": 0.319,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD89",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+    "base": "King of the Murkmire.esp:52D309",
+    "kind": "tree",
+    "pos": [
+     -45005.37,
+     -538559.96,
+     357.04
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 0.759,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JCRC1EBHP7CD13XYQP0RVM7KE9",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.JCRC1EBHP7CD13XYQP0RVM7KE9",
+    "base": "King of the Murkmire.esp:67300F",
+    "kind": "tree",
+    "pos": [
+     -44764.65,
+     -538790.21,
+     87.52
+    ],
+    "rot": [
+     0,
+     0,
+     6.67946
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JRTQVNWAHZ92YBGBVEWF547S6Q",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.JRTQVNWAHZ92YBGBVEWF547S6Q",
+    "base": "King of the Murkmire.esp:5376A7",
+    "kind": "tree",
+    "pos": [
+     -45128.27,
+     -537888.38,
+     78.3
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.33,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDA4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.MWEB508W5EDQ0G3DJM0F49AYAZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.MWEB508W5EDQ0G3DJM0F49AYAZ",
+    "base": "King of the Murkmire.esp:089931",
+    "kind": "tree",
+    "pos": [
+     -45186.71,
+     -538542.37,
+     349.94
+    ],
+    "rot": [
+     -1.259768,
+     0.26172298,
+     1.50128
+    ],
+    "scale": 0.5335,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD9F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.NT2F2YW929YF6A4KT8WS1T8D8E",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.NT2F2YW929YF6A4KT8WS1T8D8E",
+    "base": "King of the Murkmire.esp:673011",
+    "kind": "tree",
+    "pos": [
+     -44858.61,
+     -538429.12,
+     -144.68
+    ],
+    "rot": [
+     -0.1999846,
+     0.0024639897,
+     6.26241
+    ],
+    "scale": 0.319,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD88",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.PE5FNEAYHXSETPF661TWJTA2NC",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.PE5FNEAYHXSETPF661TWJTA2NC",
+    "base": "King of the Murkmire.esp:673010",
+    "kind": "tree",
+    "pos": [
+     -44678.75,
+     -538581.94,
+     28.9
+    ],
+    "rot": [
+     0,
+     0,
+     5.07945
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.QV658NBXGBB8DQB3QBP18FPWFY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.QV658NBXGBB8DQB3QBP18FPWFY",
+    "base": "King of the Murkmire.esp:52D305",
+    "kind": "tree",
+    "pos": [
+     -45167.99,
+     -538552.26,
+     446.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RH4YW1QZAKTT6708QXEHE0M6B1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.RH4YW1QZAKTT6708QXEHE0M6B1",
+    "base": "King of the Murkmire.esp:52D305",
+    "kind": "tree",
+    "pos": [
+     -44900.95,
+     -538641.25,
+     446.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD9E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RN9WAHVXKKNS69V8EY7AHYFTYW",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.RN9WAHVXKKNS69V8EY7AHYFTYW",
+    "base": "King of the Murkmire.esp:52D305",
+    "kind": "tree",
+    "pos": [
+     -44906.13,
+     -538436.3,
+     269.7
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD85",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.SSW39YVDZ17DPPB2VTEVG8057F",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.SSW39YVDZ17DPPB2VTEVG8057F",
+    "base": "King of the Murkmire.esp:089931",
+    "kind": "tree",
+    "pos": [
+     -44885.16,
+     -538655.34,
+     349.94
+    ],
+    "rot": [
+     1.2290168,
+     -0.49069977,
+     4.72598
+    ],
+    "scale": 0.5335,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD8C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF40SAPPOOL",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.TF40SAPPOOL",
+    "base": "ArgoniaOwn.esp:000A01",
+    "kind": "activator",
+    "pos": [
+     -44674.03,
+     -538589.65,
+     44.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.2
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "the young Hist's pool of amber sap, brought out from under its roots to its east foot where the walkways come to it and the player sees it, its sap reaching the trunk (record hooks: its sap no longer runs; owner 2026-11-19: a Hist pool is always a pool of Hist sap)"
+   },
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.V3TA14D17GW5GSZ2GAEWV6CRZ8",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.V3TA14D17GW5GSZ2GAEWV6CRZ8",
+    "base": "King of the Murkmire.esp:035B37",
+    "kind": "tree",
+    "pos": [
+     -45570.68,
+     -539862.11,
+     160.89
+    ],
+    "rot": [
+     -0.37134808,
+     0.15223292,
+     5.8508
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD9B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.W16EAMQ6MGW3QJE0X5XTV5M9BJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.W16EAMQ6MGW3QJE0X5XTV5M9BJ",
+    "base": "King of the Murkmire.esp:08992E",
+    "kind": "tree",
+    "pos": [
+     -45128.27,
+     -537888.38,
+     78.3
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.33,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE0E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WETE9R5TEP18ZB4D4MYSCVSBN4",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.WETE9R5TEP18ZB4D4MYSCVSBN4",
+    "base": "King of the Murkmire.esp:089930",
+    "kind": "tree",
+    "pos": [
+     -44900.95,
+     -538641.25,
+     446.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE0A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WF5JWE2MPDPH3JGXJ4SV4W0BWK",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.WF5JWE2MPDPH3JGXJ4SV4W0BWK",
+    "base": "King of the Murkmire.esp:67300E",
+    "kind": "tree",
+    "pos": [
+     -44735.87,
+     -538975.82,
+     60.23
+    ],
+    "rot": [
+     0.11873306,
+     -0.16132244,
+     5.16984
+    ],
+    "scale": 0.6655,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD7E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WHK2QBSY9PVX0MZJ8HXR4S00AX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.WHK2QBSY9PVX0MZJ8HXR4S00AX",
+    "base": "King of the Murkmire.esp:67300E",
+    "kind": "tree",
+    "pos": [
+     -45029.04,
+     -538278.64,
+     96.89
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 0.6545,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD98",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WNAKDRWGHRH6CZ4ANVH4E48XDD",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.WNAKDRWGHRH6CZ4ANVH4E48XDD",
+    "base": "King of the Murkmire.esp:089931",
+    "kind": "tree",
+    "pos": [
+     -44877.53,
+     -538423.7,
+     218.04
+    ],
+    "rot": [
+     0.9706136,
+     0.7473359,
+     4.28993
+    ],
+    "scale": 0.5335,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD84",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 28,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ZFREB3W8N7YQ26RP8BH8G4KXEV",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.ZFREB3W8N7YQ26RP8BH8G4KXEV",
+    "base": "King of the Murkmire.esp:673011",
+    "kind": "tree",
+    "pos": [
+     -45175.6,
+     -538463.42,
+     -130.08
+    ],
+    "rot": [
+     0.023618469,
+     -0.19861862,
+     4.5603
+    ],
+    "scale": 0.319,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD7A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 29,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ZHERXS8GZD6943SGG787QRTNMD",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.ZHERXS8GZD6943SGG787QRTNMD",
+    "base": "King of the Murkmire.esp:67300F",
+    "kind": "tree",
+    "pos": [
+     -44712.7,
+     -538375.78,
+     118.68
+    ],
+    "rot": [
+     -0.17605287,
+     -0.0953913,
+     7.08788
+    ],
+    "scale": 0.55,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD99",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 30,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.99BYE0A4DTRN08517K3PMZPZ31.0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.hang.99BYE0A4DTRN08517K3PMZPZ31.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "kind": "clutter",
+    "pos": [
+     -44433.92,
+     -538621.84,
+     593.14
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.9472
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31",
+     "dz": 236.1
+    },
+    "why": "a rope lantern on hang point 0 of ArgoniaTreeHist02"
+   },
+   "n": 31,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.0",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "kind": "clutter",
+    "pos": [
+     -44646.62,
+     -539028.57,
+     484.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71311
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+     "dz": 127.48
+    },
+    "why": "a rope lantern on hang point 4 of HistTree02Dead"
+   },
+   "n": 32,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.1",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "kind": "clutter",
+    "pos": [
+     -44433.06,
+     -538621.84,
+     593.14
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.35272
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+     "dz": 236.1
+    },
+    "why": "a rope lantern on hang point 0 of HistTree02Dead"
+   },
+   "n": 33,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.2",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.hang.DG5F4G6J2WVYQY98JSV3R4AP57.2",
+    "base": "King of the Murkmire.esp:2F01D6",
+    "kind": "clutter",
+    "pos": [
+     -44468.86,
+     -538374.57,
+     494.47
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.67491
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+     "dz": 137.43
+    },
+    "why": "a rope lantern on hang point 2 of HistTree02Dead"
+   },
+   "n": 34,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF70YOUNGHIST",
+    "base": "King of the Murkmire.esp:0D72B8",
+    "kind": "tree",
+    "pos": [
+     -44750.0,
+     -538560.0,
+     42.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "the young Hist that grew from Jal-Veesa's roots (record summary and look): King of the Murkmire's young Hist, its living state"
+   },
+   "n": 35,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF70YOUNGHISTDEAD",
+    "base": "King of the Murkmire.esp:551538",
+    "kind": "tree",
+    "pos": [
+     -44750.0,
+     -538560.0,
+     42.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "the same young Hist dead and blackened, shown when an ending disables the living state's parent (main quest's Take and Give endings): King of the Murkmire's dead young Hist"
+   },
+   "n": 36,
+   "stroke": 1,
+   "at": "2026-11-21T20:56:50Z"
+  }
+ ]
+}
