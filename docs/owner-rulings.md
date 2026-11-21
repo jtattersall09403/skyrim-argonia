@@ -209,9 +209,20 @@ added here the day they are made, with the date and the issue.
   not fixed one accident at a time (2026-11-21, #80).
 - The owner has seen the comparison of the two drafting methods (issue #82) and taken the places over to edit in
   the studio himself; the studio shows both drafts of Jal-Veesa side by side as two places (2026-11-21, #80).
-- One agent owns a place and works through it iteratively (do, look, do more); a place is not passed between many
-  agents (owner, 2026-11-21, #80). Where an agent's context forces a hand-over, the lead keeps the state short
-  enough that this is rare and says so.
+- One agent owns a place and works through it iteratively (do, look, do more); a place is not passed between
+  many agents. An agent's context compacts itself and a resumed agent keeps its history, so a brief never offers
+  running short of room as a reason to stop, and an agent that says its context is full is continued, not replaced
+  (owner, 2026-11-21, #80).
+- The carried-whole method is the way places are built from here; stale skills, tools, instructions and CLAUDE.md
+  lines are tidied to it and what is not used is deleted, leaving a clean set of skills for drafters and planner
+  sessions (owner, 2026-11-21, #80).
+- The owner can see both drafts of a place in the studio, edit either and choose either: a place may hold named
+  variant drafts. He can also see the walking mesh in the studio and change it himself (2026-11-21, #80).
+- The lane's source recommendations are applied: Reed-Sill Weir and Karsh-Naal Camp from Ree-An-Wo, Teel-Fen Weir
+  from Huluxinoag, Ashgate Landing from the Hjaalmarch military camp with the Imperial barge's ship. Sharing a
+  source is governed only by the ruling of 2026-11-19 above (a source may serve several places, each adapted
+  differently, judged case by case); nothing may add a rule or tie-break against it (owner, 2026-11-21, #80).
+- Files the tools leave uncommitted are the lead's to handle, never the owner's (2026-11-21, #80).
 - Before a place is built from its source, the drafter looks at the source as a place and judges it against the
   record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
   structure's own platform, or none); and, where too little of it is useful, takes a better source. These are the
