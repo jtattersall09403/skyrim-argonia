@@ -110,7 +110,8 @@ def key(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> str:
     root, tree = committed(place_id, places, bundles)
     h = hashlib.sha256(TOOL.encode() + tree.encode())
     src_id = place_json(place_id, root).get("source_id")
-    for b in (f"src.{src_id}", f"ground.{place_id}"):
+    from tools.places import variant
+    for b in (f"src.{src_id}", variant.ground(place_id)):
         bj = bundles / b / "bundle.json"
         h.update(b.encode() + (bj.read_bytes() if bj.exists() else b"-"))
     return h.hexdigest()

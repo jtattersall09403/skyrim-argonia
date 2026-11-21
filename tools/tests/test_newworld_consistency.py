@@ -220,3 +220,21 @@ def test_a_finding_fails_the_run(monkeypatch, capsys):
     monkeypatch.setattr(C, "load", lambda: broken)
     assert C.main(["--family", "internal"]) == 1
     assert not hasattr(C, "BASELINE")
+
+
+def test_a_draft_of_another_source_fails_unless_marked_awaiting_its_redraft():
+    d = {"place": {"source_id": "s1", "draft": {"plan": {"gives": [{"kind": "trader-general", "by": "the stall"}]}}},
+         "rel": "newworld/places/a/place.json", "people": 20, "spaces": [], "spots": set(),
+         "check": {"results": {}}, "check_newer": True}
+    assert "a draft from another source than its allocated one" not in causes(ctx(drafts={"a": d}), "draft")[0]
+    old = copy.deepcopy(d)
+    old["place"]["source_id"] = "s9"
+    assert "a draft from another source than its allocated one" in causes(ctx(drafts={"a": old}), "draft")[0]
+    old["place"]["redraft"] = {"source_id": "s1", "why": "source changed to s1 2026-11-21; drafted from s9"}
+    got, R = causes(ctx(drafts={"a": old}), "draft")
+    assert not {c for c in got if "source" in c or "redraft" in c}
+    assert [f.cause for f in R.owed] == ["a draft awaiting its redraft from a new source"]
+    old["place"]["redraft"] = {"source_id": "s7", "why": "source changed to s7 2026-11-21 by hand"}
+    assert "a redraft mark naming another source than the allocated one" in causes(ctx(drafts={"a": old}), "draft")[0]
+    d["place"]["redraft"] = {"source_id": "s1", "why": "source changed to s1 2026-11-21 by hand"}
+    assert "a redraft mark on a draft already of its source" in causes(ctx(drafts={"a": d}), "draft")[0]

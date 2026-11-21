@@ -23,8 +23,8 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 (`python3 -m tools.places search query "<kind of place>"`), and sources of the same kind and culture.
 
 1. Get each candidate's bundle (`python3 -m tools.places extract <source_id>`) and **look at it as a place**:
-   `python -m tools.places look --source <source_id> overview`, `at`, `section` and `units` with `--ring <m>` at the
-   record's footprint radius. Name what stands inside the ring: its structures, its water, its ground, its rooms.
+   `python -m tools.places look --source <source_id> survey --ring <radius_m>` (the whole-place sheet), `section`
+   through its relief and `units --ring <radius_m>` for what it holds inside the ring. Name what stands inside the ring: its structures, its water, its ground, its rooms.
 2. Test each against the record: **within the footprint, over half of the source's pieces would be kept as built**
    against the record's look and promises, and **the quests' rooms are present or come cheaply from one other
    source**. A place the main quest uses gets its closest match.
@@ -44,6 +44,9 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 6. Pin it: add the place to the JUDGED table in `tools/places/sources_match.py` with the reason, then
    `python -m tools.places sources-match --pin <place_id>`; set `place.json` `source_id` to it. Never edit the match
    files by hand.
+7. A place whose `place.json` carries a `redraft` mark (its source was re-chosen after it was drafted) is redrafted
+   fresh from the new source: `source_id` set to the mark's, the mark removed, then this skill and `place-site` from
+   the start; nothing of the old draft is carried over. Its `differs` duty is reckoned from the new source.
 
 ## 3. Write draft.plan
 

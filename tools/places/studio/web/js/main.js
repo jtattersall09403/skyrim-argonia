@@ -75,7 +75,8 @@ class Studio {
     this.places = await api.places();
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }
     const sel = $('#place-pick'); sel.innerHTML = '';
-    for (const p of this.places) sel.add(new Option(p.title || p.place_id, p.place_id));
+    // a variant draft is listed under its place, labelled as a draft of it
+    for (const p of this.places) sel.add(new Option((p.variant_of ? '\u2003\u21b3 ' : '') + (p.title || p.place_id), p.place_id));
     // the place asked for in the address, else the one this browser last had open, else the lightest
     const has = (id) => id && this.places.some((p) => p.place_id === id);
     const asked = new URLSearchParams(location.search).get('place'), last = AGENT ? null : store.get('studio.place');
@@ -124,6 +125,7 @@ class Studio {
   }
   async openPlace(id, checkKey = true) {
     this.place = this.places.find((p) => p.place_id === id); this.placeFit = normaliseFit(this.place.fit);
+    $('#use-variant').hidden = !this.place.variant_of;
     this.loading(`Loading ${this.place.title || id}: the ground`);
     this.landTex = this.landTex || await new LandTex().init();
     // who the place's people are and what it holds: a small JSON beside the bundles, needed before a save's ops apply
@@ -540,11 +542,20 @@ class Studio {
     this.ours.trail = []; this.showSpace(this.ours, 'exterior');
     this.refreshSide(this.ours); this.panels.historyChanged(); this.panels.notesChanged(); this.updateUndo(); this.noteBar.changed('load');
   }
+  // "Use this version": the variant draft open now becomes its place; the draft it replaces is kept as variant
+  // `previous`. Refused (and said why) while either has unsaved studio edits.
+  async useVariant() {
+    const p = this.place; if (!p?.variant_of) return;
+    if (!confirm(`Use "${p.title}" as ${p.variant_of}? The current draft is kept as a variant called "previous".`)) return;
+    try { await api.useVariant(p.place_id); } catch (e) { this.toast(`Not changed: ${e?.message || e}`, 8000); return; }
+    location.search = '?place=' + encodeURIComponent(p.variant_of);
+  }
   // ---------- chrome ----------
   wireChrome() {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => (off.active ? this.offline.finaliseOffline() : this.panels.finalise());
     $('#settings-btn').onclick = () => this.panels.settings();
+    $('#use-variant').onclick = () => this.useVariant();
     $('#player-names').onclick = () => this.needs.setNames(!this.needs.names);
     const sb = $('#sticks-btn'), sticksShown = () => sb.setAttribute('aria-pressed', String(!!this.sticks?.state.shown));
     sb.onclick = () => { this.sticks?.setShown(!this.sticks.state.shown); sticksShown(); }; sticksShown();

@@ -181,10 +181,6 @@ ramp to an added door; a vertex past the land bound (`fit.patch_max`; carried gr
 refused. A probe fault seen to be right as built is accepted in `place.json` `draft.accepted_faults` `[{id, fault,
 why}]`: `probe --all` lists it under `accepted` and the views draw it without red.
 
-`look --source <source_id> <verb> [--ring m] [--centre x,y]` shows a source place by itself (overview, at, section,
-units), with a ring at a footprint radius, for choosing a source and how much of its ground to bring; it runs its
-own daemon (`look --source stop`) and shows only the source's extracted cells.
-
 `undo` takes back the last stroke; `snapshot <name>` keeps the session's state; `restore <name>` returns to it;
 `compare <a> <b> <view verb...>` shows one look at two states side by side (`now` is the current state); `reset`
 empties the session.
@@ -195,6 +191,19 @@ the owner's: the save is kept at `newworld/places/<place>/agent-edits/<save_id>.
 and listed in `place.json` `agent_saves_applied`; no word gets the owner's tier and no preference is written. A stroke
 that touches a row an owner's finalised save touched is left out whole and listed in `left_for_owner`. The session
 (and its snapshots) is then emptied; commit the place files by path.
+
+## A source by itself
+
+The first step of a draft is choosing its source by looking at the best three or four candidates as places, judging
+each against the record, choosing and pinning (`place-plan`). `look --source <source_id> <verb>` shows a candidate on
+its own ground from its bundle (extracted on demand), as a view-only place grouped into the source's own structures:
+every view verb works (`overview`, `at`, `orbit`, `section`, `survey`, `walk`, `probe`, `pick`), no hand does, and no
+faults are marked. `--ring <metres>` [`--centre x,y`] draws the footprint of a place of that radius on the ground and
+across sections (centred on the source's anchor by default); the overview and the whole-place survey then frame what
+stands inside it, the rest being the structure `outside`. `look --source <source_id> units --ring <metres>` counts
+what stands inside it: houses with rooms, beds, work stations, docks, boats, palisades, towers, tents, shrines,
+mines, farms, the pieces by class and by culture (Nordic, Imperial, orc, Dunmer, Argonian), the people by role. The
+view runs its own daemon (`look --source stop`).
 
 ## Working a place
 

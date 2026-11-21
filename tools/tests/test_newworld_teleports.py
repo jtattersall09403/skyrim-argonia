@@ -70,6 +70,10 @@ def test_a_built_place_keeps_landings_out_of_its_buildings_and_on_its_patched_gr
     p, g = world(tmp_path, h, cx0=-8, cy_top=-148)
     built = tmp_path / "places"
     (built / "helstrom" / "spaces" / "exterior").mkdir(parents=True)
+    (built / "helstrom" / "place.json").write_text("{}")
+    (built / "helstrom@other" / "spaces" / "exterior").mkdir(parents=True)   # a variant draft: never built, never read
+    (built / "helstrom@other" / "place.json").write_text("{}")
+    (built / "helstrom@other" / "land.jsonl").write_text(json.dumps({"cell": [-8, -148], "verts": [[16, 16, 900.0]]}) + "\n")
     cx, cy = -8 * 4096 + 16 * 128, -148 * 4096 + 16 * 128  # the cell's middle
     house = {"pos": [cx, cy, 40.0], "scale": 1.0, "seat": {"foot": [-600, -200, -380, 200]}}
     (built / "helstrom" / "spaces" / "exterior" / "refs.jsonl").write_text(json.dumps(house) + "\n")

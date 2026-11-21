@@ -57,6 +57,8 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from tools.places import variant
+
 REPO = Path(__file__).resolve().parents[2]
 PLUGIN = "out/newworld/plugin"
 GAME = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
@@ -130,7 +132,8 @@ IDSPACE_EDITS = IDSPACE + "#added,placed,placed-high,navmesh"
 IDSPACE_ECOLOGY = IDSPACE + "#ecology"
 IDSPACE_DRESSING = IDSPACE + "#dressing"
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
-BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
+BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl",
+                "src:tools/places/__init__.py", "src:tools/places/variant.py")   # which folders are built places
 DBPY = "src:tools/argonia_world/db.py"
 LAID = "laid:NewWorld"
 ESM = "out:newworld/plugin/ArgoniaNewWorld.esm"
@@ -205,6 +208,7 @@ STAGES: tuple[Stage, ...] = (
                  "src:newworld/sources/region_relief.json", "src:newworld/sources/terrain_held.json",
                  "src:newworld/sources/water_overrides.json", "src:newworld/sources/water_owner_bodies.png",
                  "src:tools/newworld/terrain.py", "src:tools/newworld/terrain_*.py", "src:tools/newworld/frame.py",
+                 "src:tools/places/__init__.py", "src:tools/places/variant.py",
                  "src:tools/newworld/tiles.py", "src:tools/newworld/water_held.py"),
           writes=("out:newworld/terrain/build.json", "out:newworld/terrain/inputs.json",
                   "out:newworld/terrain/heightmap.npy", "out:newworld/terrain/check.json",
@@ -926,7 +930,7 @@ def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
     miss = [a for a in acc if not (tree.repo / a).exists()]
     out.append(("the accepted records are present (water kinds, terrain needs, held ground, the owner's water)", not miss, ", ".join(miss)))
     held = tree.repo / "newworld/sources/terrain_held.json"
-    built = sorted(p.parent.name for p in (tree.repo / "newworld/places").glob("*/place.json"))
+    built = variant.game_places(tree.repo / "newworld/places")
     rows_held = set(json.loads(held.read_text()).get("places", {})) if held.exists() else set()
     out.append(("every built place has its held-ground row", set(built) <= rows_held, "no row for " + ", ".join(sorted(set(built) - rows_held)) if set(built) - rows_held else ", ".join(built)))
     # the small world first: a stale stage's code is the code its last green run on the block proved
@@ -1213,7 +1217,7 @@ class Run:
 
 
 def downstream(tree: Tree, ran: list[str]) -> list[str]:
-    places = sorted(p.parent.name for p in (tree.repo / "newworld/places").glob("*/place.json"))
+    places = variant.game_places(tree.repo / "newworld/places")
     out = []
     for what, feeders, where in DOWNSTREAM:
         hit = [f for f in feeders if f in ran]

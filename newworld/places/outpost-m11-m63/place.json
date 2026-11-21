@@ -1,6 +1,10 @@
 {
  "place_id": "outpost-m11-m63",
  "source_id": "kingofthemurkmire.cluster.argoniaworld-29-29.-29.-29",
+ "redraft": {
+  "source_id": "kingofthemurkmire.marker.ree-an-wo",
+  "why": "source changed to Ree-An-Wo 2026-11-21 (the camp near Loreisian has no camp in the footprint); this draft is still the old source's, kept until it is redrafted"
+ },
  "similar": [],
  "draft": {
   "add": [

@@ -26,7 +26,8 @@ _glock = threading.Lock()
 
 
 def seat_at(place_id: str, x: float, y: float, bundles: Path, places: Path) -> dict:
-    bj = bundles / f"ground.{place_id}" / "bundle.json"
+    from tools.places import variant
+    bj = bundles / variant.ground(place_id) / "bundle.json"
     if not bj.exists():
         raise FileNotFoundError(f"no ground bundle for {place_id}")
     land = places / place_id / "land.jsonl"

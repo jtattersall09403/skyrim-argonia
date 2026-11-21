@@ -19,6 +19,14 @@ def _place(root, pid, src="s", laid=None, base=True, pivot=(0, 0), rot=0, diff=N
     (d / "place.json").write_text(json.dumps(p))
 
 
+def test_a_redraft_mark_names_the_source_the_place_is_next_laid_from(tmp_path):
+    _place(tmp_path, "first")
+    _place(tmp_path, "second", src="old", base=False)
+    pj = tmp_path / "second" / "place.json"
+    pj.write_text(json.dumps({**json.loads(pj.read_text()), "redraft": {"source_id": "s", "why": "re-chosen"}}))
+    assert differs.owed("second", tmp_path) == ["first"]
+
+
 def test_the_earlier_place_owes_nothing_and_the_later_owes_an_entry(tmp_path):
     _place(tmp_path, "first")                                   # laid before stamps: the earliest
     _place(tmp_path, "second", base=False)                      # not laid yet
@@ -60,5 +68,6 @@ def test_draft_wholesale_refuses_until_the_entry_is_written(tmp_path, monkeypatc
     class St:
         pdir = tmp_path / "second"
     monkeypatch.setattr(wholesale, "Standing", lambda pid: St())
+    monkeypatch.setattr(wholesale.io, "PLACES", tmp_path)
     assert wholesale.main(["second", "--offset", "0"]) == 1
     assert "first" in capsys.readouterr().err

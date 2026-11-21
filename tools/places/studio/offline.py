@@ -111,7 +111,8 @@ class Bundles:
         self.source_id = self.place.get("source_id")
 
     def dir(self, bid: str) -> Path:
-        return self.out / "bundles" / bid
+        from tools.places import variant
+        return self.out / "bundles" / variant.bundle(bid)   # a variant stands on its place's ground
 
     def ids(self) -> list[str]:
         out = [f"ground.{self.pid}", f"draft.{self.pid}"]

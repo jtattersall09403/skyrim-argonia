@@ -48,6 +48,8 @@ import tempfile
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from tools.places import variant
+
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
 
@@ -82,9 +84,13 @@ class Finding:
 class Report:
     def __init__(self):
         self.items: list[Finding] = []
+        self.owed: list[Finding] = []   # known work still owed, listed and never failing (a draft awaiting its redraft)
 
     def add(self, family, cause, place, what, evidence):
         self.items.append(Finding(family, cause, place, what, evidence))
+
+    def owe(self, family, cause, place, what, evidence):
+        self.owed.append(Finding(family, cause, place, what, evidence))
 
 
 # ---------------------------------------------------------------- loading
@@ -168,8 +174,8 @@ def load_drafts(root: Path, out: Path) -> dict:
         return {f"cast/{p['cast']}" for p in json.loads(src.read_text()).get("people") or [] if p.get("cast")}
 
     d = {}
-    for pj in sorted((root / "newworld/places").glob("*/place.json")):
-        pid = pj.parent.name
+    for pid in variant.game_places(root / "newworld/places"):   # a variant draft is never checked or counted
+        pj = root / "newworld/places" / pid / "place.json"
         people = pj.parent / "people.jsonl"
         spaces = pj.parent / "spaces"
         chk = out / "places/shards" / pid / "check.json"
@@ -779,6 +785,28 @@ def check_story(ctx, R: Report, only=None):
 
 
 # ---------------------------------------------------------------- 6 drafts
+def check_redraft(ctx, R: Report, pid: str, d: dict):
+    """A draft is of its allocated source (place_source rank 0). One whose source was changed after it was drafted
+    carries place.json `redraft` {source_id: the allocated source, why}: listed as owed, never failing, until it is
+    redrafted; a draft of another source with no such mark, or a mark naming another source, fails."""
+    pl, rel = d["place"], d["rel"]
+    alloc = next((r["source_place_id"] for r in ctx["place_source"].get(pid, []) if r["rank"] == 0), None)
+    src, red = pl.get("source_id"), pl.get("redraft")
+    if red is not None and not (isinstance(red, dict) and red.get("source_id") and len(red.get("why") or "") >= 20):
+        R.add("draft", "a redraft mark without its new source and a reason", pid, json.dumps(red)[:160], rel)
+    elif red and src == red["source_id"]:
+        R.add("draft", "a redraft mark on a draft already of its source", pid, f"drafted from {src}", rel)
+    elif red and red["source_id"] != alloc:
+        R.add("draft", "a redraft mark naming another source than the allocated one", pid,
+              f"mark {red['source_id']}, allocated {alloc}", rel)
+    elif red:
+        R.owe("draft", "a draft awaiting its redraft from a new source", pid,
+              f"drafted from {src}; {red['why']}", rel)
+    elif alloc and src and src != alloc:
+        R.add("draft", "a draft from another source than its allocated one", pid,
+              f"drafted from {src}, allocated {alloc} (redraft it, or mark place.json `redraft`)", rel)
+
+
 def check_drafts(ctx, R: Report, only=None):
     for pid, d in ctx["drafts"].items():
         if only and pid != only:
@@ -788,6 +816,7 @@ def check_drafts(ctx, R: Report, only=None):
         if not p:
             R.add("draft", "a draft with no place record", pid, rel, rel)
             continue
+        check_redraft(ctx, R, pid, d)
         draft = d["place"].get("draft") or {}
         from tools.places.draft import plan
         gives = ctx["gives"].get(pid, [])
@@ -856,6 +885,9 @@ def render(R: Report) -> str:
         lines.append(f"\n## {fam}: {cause}  ({len(fs)})")
         for f in fs:
             lines.append(f"- {f.place or '-'}: {f.what}  [{f.evidence}]")
+    if R.owed:
+        lines.append(f"\n## owed, not failing  ({len(R.owed)})")
+        lines += [f"- {f.place or '-'}: {f.cause}: {f.what}  [{f.evidence}]" for f in R.owed]
     lines.append(f"\n{len(R.items)} inconsistencies in {len(by)} causes")
     return "\n".join(lines)
 
@@ -873,11 +905,12 @@ def main(argv: list[str] | None = None) -> int:
     R = run(ctx, a.place, a.family)
     c = counts(R)
     if a.json:
-        print(json.dumps({"total": len(R.items), "causes": c, "findings": [asdict(f) for f in R.items]}, indent=1))
+        print(json.dumps({"total": len(R.items), "causes": c, "findings": [asdict(f) for f in R.items],
+                          "owed": [asdict(f) for f in R.owed]}, indent=1))
     elif a.summary:
         for k, v in c.items():
             print(f"{v:5d}  {k}")
-        print(f"{len(R.items):5d}  total")
+        print(f"{len(R.items):5d}  total" + (f" ({len(R.owed)} owed, not failing)" if R.owed else ""))
     else:
         print(render(R))
     return 1 if R.items else 0

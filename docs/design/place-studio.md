@@ -309,6 +309,20 @@ identities, two rooms with one name.
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.
 
+### Variant drafts: `newworld/places/<place_id>@<variant>/`
+
+A place may hold other drafts of itself beside it, each a full set of place files whose place.json says
+`variant_of` (the place id), `variant` (its name) and `title` (the label in the studio's place picker, such as
+"Jal-Veesa (pipeline draft)"). The studio lists each under its place and opens, edits, saves and finalises it exactly
+as a place; its ground, record, people sources, stock, quests and needs are its place's (`tools/places/variant.py`
+`record_id` and `ground`, the one place a variant's id is resolved). A variant is never built and never counted:
+everything that walks the places for the game or the gate (the layer plugin's build, the consistency check, the
+world rebuild's place rows, the held ground, the teleport clearances, an edit's reach) walks `variant.game_places`;
+its finalise records the edits and skips the build and the lessons. `python -m tools.places variant list | use
+<place> <variant> | drop <place> <variant>`: `use` (also the studio's "Use this version" on a variant) makes the
+variant the place and keeps the draft it replaces as variant `previous`, refused while either has unsaved studio
+edits; the renames are committed by path as one commit.
+
 ## Stock: people, goods and what a place holds
 
 Building a place includes what is in it (nw-03, Stocking). Nothing is random and nothing is levelled (decision 0035).

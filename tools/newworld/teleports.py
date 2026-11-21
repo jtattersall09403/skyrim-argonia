@@ -40,6 +40,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.newworld.world import units as su
+from tools.places import variant
 
 REPO = Path(__file__).resolve().parents[2]
 DB = REPO / "newworld/story/data/db"
@@ -117,7 +118,8 @@ def refs_by_cell(plugin: Path, places: Path | None = PLACES, world: bool = True)
                 r = json.loads(ln)
                 x, y = r.get("x", r.get("pos", [0, 0])[0]), r.get("y", r.get("pos", [0, 0])[1])
                 acc.setdefault((int(x // su.CELL_UNITS), int(y // su.CELL_UNITS)), []).append((x, y, CLEAR))
-    for f in sorted(glob.glob(str(places / "*" / "spaces" / "exterior" / "refs.jsonl"))) if places else []:
+    for f in sorted(str(Path(places) / p / "spaces" / "exterior" / "refs.jsonl") for p in variant.game_places(places)
+                    if (Path(places) / p / "spaces" / "exterior" / "refs.jsonl").exists()) if places else []:
         with open(f) as fh:
             for ln in fh:
                 if not ln.strip():
@@ -136,7 +138,8 @@ def ground(plugin: Path, g: su.Grid, places: Path | None = PLACES) -> np.ndarray
     # the limited heights are VHGT steps (world/land.py): x 8 for the game units every measure here is in
     h = np.asarray(np.load(plugin / "land" / "limited.npy", mmap_mode="r"), np.float32) * su.VHGT_STEP_UNITS
     pat: dict[tuple[int, int], float] = {}
-    for f in sorted(glob.glob(str(places / "*" / "land.jsonl"))) if places else []:
+    for f in sorted(str(Path(places) / p / "land.jsonl") for p in variant.game_places(places)
+                    if (Path(places) / p / "land.jsonl").exists()) if places else []:
         for ln in Path(f).read_text().splitlines():
             if not ln.strip():
                 continue

@@ -125,9 +125,13 @@ def test_held_ground_identical_inside(tmp_path, monkeypatch):
 
 def test_held_rows_need_every_built_place(tmp_path, monkeypatch):
     (tmp_path / "places" / "newplace").mkdir(parents=True)
+    (tmp_path / "places" / "newplace" / "place.json").write_text("{}")
+    (tmp_path / "places" / "newplace@draft2").mkdir()   # a variant draft holds no ground: never asked for a row
+    (tmp_path / "places" / "newplace@draft2" / "place.json").write_text("{}")
     monkeypatch.setattr(th, "PLACES", tmp_path / "places")
     monkeypatch.setattr(th, "HELD", tmp_path / "held.json")
     (tmp_path / "held.json").write_text(json.dumps({"places": {}}))
+    assert th.built_places() == ["newplace"]
     with pytest.raises(SystemExit):
         th.rows()
 

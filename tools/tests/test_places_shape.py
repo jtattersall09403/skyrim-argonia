@@ -255,8 +255,21 @@ def test_legs_on_a_mound_hold_only_when_the_mound_itself_stands():
         assert rows and all(r["verdict"].startswith(want) for r in rows), (held, [r["verdict"] for r in rows])
 
 
+def test_the_grounded_set_reaches_every_span_after_the_first():
+    """units --joints passes the grounded ids as `held`; a piece beside the first span must not replace that set with
+    a bool for the spans after it (TypeError: argument of type 'bool' is not iterable)."""
+    c = C["legs"]
+    spans, pieces = [], []
+    for k, x in enumerate((0, 5000)):
+        d = (f"d{k}", posed(f"d{k}", c["model"], (x, 0, 0)))
+        spans.append(d)
+        pieces += [d, (f"r{k}", posed(f"r{k}", c["rock"], (x, 0, -c["legs"])))]
+    rows = _ends(shape.joints(spans, pieces, Flat(-1000), held={"r0", "r1"}))
+    assert len(rows) == 4 and all(r["verdict"].startswith("on its own legs") for r in rows), rows
+
+
 def test_a_span_after_one_crossed_by_a_wall_still_reads_its_legs_by_the_ids_that_stand():
-    """The held ids reach every span's ends, not only the first span's: a later deck's legs on a standing rock."""
+    """The held ids reach every span's ends after a wall beside the first: a later deck's legs on a standing rock."""
     c, w = C["legs"], C["walls"]
     bw, wall = posed("bw", w["boardwalk"], (0, 0, 0)), posed("w", w["wall"], (300, 0, 0))
     deck, rock = posed("d", c["model"], (9000, 0, 0)), posed("r", c["rock"], (9000, 0, -c["legs"]))

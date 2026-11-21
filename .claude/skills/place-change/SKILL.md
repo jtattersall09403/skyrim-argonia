@@ -35,6 +35,14 @@ A place drafted before the carried method has further stages of its own until it
 Then verify what the change reaches (`place-check`): a hand change to a structure, a door or the ground is followed
 by the build and its checks; a stage's counts are the whole change.
 
+## Variants: drafts the owner compares
+
+A place may hold other drafts beside it, `newworld/places/<place_id>@<variant>/`, which the owner opens, edits and
+saves in the studio as places and chooses with "Use this version". `python -m tools.places variant list [<place>]`,
+`variant use <place> <variant>` (the current draft becomes `previous`), `variant drop <place> <variant>`. A variant
+never reaches the built plugin or a gate count. A second way of drafting a place for him to compare is made as a
+variant, never over the place.
+
 ## A hand's placement is authoritative
 
 - A row a committed agent edit (`agent-edits/`, place.json `agent_saves_applied`) or an owner's finalised save

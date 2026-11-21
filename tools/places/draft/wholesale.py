@@ -295,6 +295,12 @@ def main(argv=None) -> int:
                     help="re-lay the whole baseline over a place that holds hand edits, losing them")
     ap.add_argument("--whole", default="", help="rooms (comma-separated) whose removals are let go")
     a = ap.parse_args(argv)
+    from tools.places.draft import differs
+    owe = [f for f in differs.faults(a.place_id, io.PLACES, laying=True) if "the same part of the source" not in f]
+    if owe:
+        print(f"draft wholesale {a.place_id}: refused: this place shares its source with a place laid first, and its "
+              f"plan does not yet say how it differs:\n  " + "\n  ".join(owe), file=sys.stderr)
+        return 1
     st = Standing(a.place_id)
     if a.walks:
         hub = tuple(float(v) for v in a.walks.split(","))
@@ -311,12 +317,6 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
-    from tools.places.draft import differs
-    owe = [f for f in differs.faults(a.place_id, st.pdir.parent, laying=True) if "the same part of the source" not in f]
-    if owe:
-        print(f"draft wholesale {a.place_id}: refused: this place shares its source with a place laid first, and its "
-              f"plan does not yet say how it differs:\n  " + "\n  ".join(owe), file=sys.stderr)
-        return 1
     if not a.dry and not a.discard_hand_edits:
         why = hand_refusal(st.pdir)
         if why:

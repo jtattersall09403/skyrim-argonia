@@ -474,7 +474,8 @@ def write_jsonl(p: Path, rows: list[dict]) -> None:
 
 
 def ground_for(place_id: str, bundles: Path = BUNDLES, places: Path = PLACES) -> Ground:
-    g = Ground.load(bundles / f"ground.{place_id}")
+    from tools.places import variant
+    g = Ground.load(bundles / variant.ground(place_id))
     g.apply_patches(read_jsonl(places / place_id / "land.jsonl"))
     return g
 

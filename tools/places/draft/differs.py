@@ -40,6 +40,11 @@ def _read(pdir: Path) -> dict:
         return {}
 
 
+def source_of(place: dict) -> str | None:
+    """The source the place is (or is next) laid from: a `redraft` mark's new source, else its `source_id`."""
+    return (place.get("redraft") or {}).get("source_id") or place.get("source_id")
+
+
 def _order(pid: str, place: dict) -> tuple:
     w = place.get("wholesale")
     if not w:
@@ -51,7 +56,7 @@ def sharing(place_id: str, places: Path | None = None) -> list[str]:
     """The other drafted places (each with a baseline) on this place's source, variants left out."""
     root = _places_dir(places)
     me = _read(root / place_id)
-    src = me.get("source_id")
+    src = source_of(me)
     if not src:
         return []
     out = []
@@ -59,7 +64,7 @@ def sharing(place_id: str, places: Path | None = None) -> list[str]:
         if d.name == place_id or "@" in d.name or not d.is_dir():
             continue
         p = _read(d)
-        if p.get("source_id") == src and p.get("wholesale"):
+        if source_of(p) == src and p.get("wholesale"):
             out.append(d.name)
     return out
 
@@ -93,9 +98,9 @@ def faults(place_id: str, places: Path | None = None, laying: bool = False) -> l
         theirs |= {str(v).strip().lower() for k in ("source",) for v in [((other.get("draft") or {}).get("plan") or {}).get(k)] if v}
         r = rows.get(o)
         if r is None:
-            bad.append(f"differs: {o} was laid first from the same source ({me.get('source_id')}): write draft.plan.differs "
+            bad.append(f"differs: {o} was laid first from the same source ({source_of(me)}): write draft.plan.differs "
                        f"{{place: {o}, {', '.join(FIELDS)}}} before laying this baseline; see it with `look {o} at <middle> "
-                       f"--top` and eye-level views, and the source with `look --source {me.get('source_id')} overview`")
+                       f"--top` and eye-level views, and the source with `look --source {source_of(me)} survey`")
             continue
         for f in FIELDS:
             v = r.get(f)

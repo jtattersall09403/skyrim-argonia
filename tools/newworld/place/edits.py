@@ -652,8 +652,9 @@ def places_touched(spots: list, cells: set, places: Path | None = None) -> dict:
     """Built places an edit reaches: {place: {"clear": rows of its clear.jsonl standing where an edited thing stood,
     "cells": True when its exterior or land patches lie in the edit's cells}}."""
     out = {}
-    for d in sorted(Path(places or PLACES).glob("*/place.json")):
-        d = d.parent
+    from tools.places import variant
+    for d in variant.game_places(places or PLACES):   # a variant draft is never built
+        d = Path(places or PLACES) / d
         hit = {"clear": 0, "cells": False}
         f = d / "clear.jsonl"
         for ln in (f.read_text(encoding="utf-8").splitlines() if f.exists() else ()):

@@ -64,6 +64,59 @@ def _inside(p, w, h, pad=0):
     return p[2] > 0 and -pad <= p[0] <= w + pad and -pad <= p[1] <= h + pad
 
 
+RING = (255, 140, 0, 235)
+
+
+def ring_points(ring: dict, n: int = 96) -> list[tuple[float, float]]:
+    """The footprint ring of a source view (place.json look_ring: centre, radius_m) as n+1 points round it, closed."""
+    cx, cy = ring["centre"]
+    r = float(ring["radius_m"]) * geom.UNITS_PER_M
+    return [(cx + r * math.cos(2 * math.pi * i / n), cy + r * math.sin(2 * math.pi * i / n)) for i in range(n + 1)]
+
+
+def ring_crossings(ring: dict, a, b) -> list[float]:
+    """Where a section line a->b (plan points) crosses the ring: distances along it from a."""
+    a, b = np.asarray(a[:2], float), np.asarray(b[:2], float)
+    c, r = np.asarray(ring["centre"], float), float(ring["radius_m"]) * geom.UNITS_PER_M
+    L = float(np.linalg.norm(b - a))
+    if L == 0:
+        return []
+    t = (b - a) / L
+    f = a - c
+    p, q = float(f @ t), float(f @ f) - r * r
+    disc = p * p - q
+    if disc < 0:
+        return []
+    return [s for s in (-p - math.sqrt(disc), -p + math.sqrt(disc)) if 0 <= s <= L]
+
+
+def draw_ring(d: ImageDraw.ImageDraw, cam: dict, scene, w: int, h: int, k: float) -> None:
+    """The footprint ring on the ground, in pieces wherever it is in front of the camera, with its radius."""
+    ring = getattr(scene, "ring", None)
+    if not ring:
+        return
+    pts = ring_points(ring)
+    zs = [scene.ground.height(x, y) for x, y in pts]
+    known = [z for z in zs if z is not None]
+    z0 = scene.ground.height(*ring["centre"]) or (sorted(known)[len(known) // 2] if known else 0.0)
+    world = [(x, y, (z if z is not None else z0) + 4) for (x, y), z in zip(pts, zs)]   # past the bundle's land: level
+    pp = geom.project(cam, world)
+    seg, best = [], None
+    for q in pp:
+        if q[2] > 0:
+            seg.append((float(q[0]), float(q[1])))
+            if _inside(q, w, h) and (best is None or q[1] > best[1]):
+                best = q
+        else:
+            if len(seg) > 1:
+                d.line(seg, fill=RING, width=max(2, round(3 * k)))
+            seg = []
+    if len(seg) > 1:
+        d.line(seg, fill=RING, width=max(2, round(3 * k)))
+    if best is not None:
+        tag(d, (float(best[0]), float(best[1]) - 10 * k), f"ring {ring['radius_m']:g} m", fill=(255, 220, 170, 235), size=11)
+
+
 def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids: set[str], side_text: str,
              grid: bool = False) -> tuple[Image.Image, list[dict]]:
     """A perspective look's labels. Returns the image and the labels drawn [{text, at}]."""
@@ -91,6 +144,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
                 seg = [(float(p[0]), float(p[1])) for p in pp if p[2] > 0]
                 if len(seg) > 1:
                     d.line(seg, fill=(255, 255, 255, 70), width=max(1, round(k)))
+    draw_ring(d, cam, scene, w, h, k)
     # red outlines on faulted pieces in frame
     for p in scene.pieces:
         if p["id"] not in fault_ids:
@@ -177,6 +231,11 @@ def annotate_section(img: Image.Image, cam: dict, scene, prof, crossed: list[dic
             if len(r) > 1:
                 d.line([px(s, wz) for s, wz in r], fill=(20, 110, 255, 255), width=round(4 * k))
         tag(d, (max(px(wl[0][0], wl[0][1])[0], 0) + 110 * k, px(wl[0][0], wl[0][1])[1] - 3 * k), f"water {wl[0][1]:.0f}", fill=(200, 225, 255, 235), size=11)
+    ring = getattr(scene, "ring", None)
+    for s_ in ring_crossings(ring, a, b) if ring else []:   # the footprint ring where the section crosses it
+        x_, _ = px(s_, cam["target"][2])
+        d.line([(x_, 0), (x_, h)], fill=RING, width=max(2, round(3 * k)))
+        tag(d, (x_, 40 * k), f"ring {ring['radius_m']:g} m", fill=(255, 220, 170, 235), size=11)
     # height scale at the left
     upp = cam["upp"]
     zc = cam["target"][2]
