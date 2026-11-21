@@ -70,15 +70,33 @@ COPY = [
     {"n": 3, "op": "ref.add", "space": "FixHouse02", "ref": ref("32", "0D7032", "furniture", (50, 50, 0), mode="free")},
 ]
 DRAFT_ROW = PLACE["clear"][0]
+# The owner's walking-mesh zones (walk.jsonl): a block zone, a walk zone moved, a join with a note, one removed.
+BLOCK = {"id": "fix.w1", "kind": "block", "space": "exterior", "by": "owner",
+         "outline": [[900, 1900, 50], [1100, 1900, 50], [1100, 2100, 50], [900, 2100, 50]]}
+WALKZ = {"id": "fix.w2", "kind": "walk", "space": "exterior", "by": "owner",
+         "outline": [[1300, 1900, 48], [1500, 1900, 48], [1500, 1980, 60]]}
+JOIN = {"id": "fix.w3", "kind": "join", "space": "exterior", "by": "owner", "gap": 256,
+        "points": [[1200, 1800, 50], [1260, 1800, 70]]}
+WALK = [
+    {"n": 1, "op": "walk.add", "space": "exterior", "walk": BLOCK},
+    {"n": 2, "op": "walk.add", "space": "exterior", "walk": WALKZ},
+    {"n": 3, "op": "walk.add", "space": "exterior", "walk": JOIN},
+    {"n": 4, "op": "walk.edit", "space": "exterior", "walk": dict(WALKZ, outline=[[x + 40, y, z] for x, y, z in WALKZ["outline"]]),
+     "before": WALKZ},
+    {"n": 5, "op": "walk.edit", "space": "exterior", "walk": dict(JOIN, note="the guards should cross here"), "before": JOIN},
+    {"n": 6, "op": "walk.remove", "space": "exterior", "walk": BLOCK},
+]
 # Added cases (round 2): copying an enterable building with its room; a draft clearance row restored whole.
 CASES2 = {
     "interior_copy": COPY,
     "veg_restore_draft_row": [{"n": 1, "op": "veg.restore", "space": "exterior", "items": [DRAFT_ROW]}],
+    "walk_zones": WALK,
 }
 CONFLICTS2 = {
     "interior_door_unpaired": ([COPY[0], dict(COPY[1], ref=dict(DOOR_IN, door=dict(DOOR_IN["door"], to_ref="fix.99"))), COPY[2]],
                                "does not lead back"),
     "interior_copy_into_existing": ([dict(COPY[1], space="FixHouse01")], "already exists"),
+    "walk_remove_missing": ([dict(WALK[5], n=1)], "does not exist"),
 }
 
 
