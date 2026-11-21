@@ -43,6 +43,7 @@ RIM_LIP = 2.0                               # units: the dug rim stands this far
 OPEN = 0.1                                  # an offset is chosen only when it opens this share more of the pool
 COVER = re.compile(r"platform|deck|walkway|bridge|dock|pier|boardwalk|scaffold", re.I)
 DZ = 3.0                                    # units of sap over the hollow's floor
+SEAT_REACH = max(abs(v) for v in BOX) / POOL_HALF   # the share of the pool's half-width its seat reads the ground over
 DISH = 0.85                                 # the share of the pool's half-width its sap covers (the puddle's outline)
 PATCH_MAX = 105.0                           # units: the most the hollow lowers any point (the draft's land bound)
 LIVING = re.compile(r"^Hist(Tree|Trunk|Gland)\d+[A-Za-z]*$")
@@ -146,7 +147,7 @@ def offset(t: dict, base: dict, boxes: list[tuple], given=None, G=None) -> tuple
     x, y = t["pos"][0], t["pos"][1]
 
     def bank(o):
-        return max(0.0, relief(G, x + o[0], y + o[1], DISH * rad) - PATCH_MAX) if G is not None else 0.0
+        return max(0.0, relief(G, x + o[0], y + o[1], SEAT_REACH * rad) - PATCH_MAX) if G is not None else 0.0
     foot = (x, y, tr)
     cands = [(0.0, 0.0)] + [(round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.cos(a * math.pi / 4), 1),
                              round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.sin(a * math.pi / 4), 1))

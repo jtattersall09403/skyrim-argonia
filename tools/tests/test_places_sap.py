@@ -146,7 +146,7 @@ def test_a_pool_on_a_steep_side_goes_to_the_flat_side_of_its_trunk_so_no_bank_st
     cx, cy = sap.centre(pool)
     assert cx > 2000.0                                           # moved toward the flat side
     assert sap.holds(pool, e[0])                                 # the trunk kept in its sap
-    rad = sap.DISH * sap.reach(BASES["P:hist"], 1.0)
+    rad = sap.SEAT_REACH * sap.reach(BASES["P:hist"], 1.0)
     assert sap.relief(G, cx, cy, rad) <= sap.PATCH_MAX
     seat_all([pool], G)
     banks = []
