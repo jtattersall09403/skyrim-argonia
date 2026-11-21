@@ -91,6 +91,8 @@ onto one. Each step takes its facts from what exists at that step and passes on 
 So a story may be written before its places are built; a quest's record and its words may not. Journal entries say
 only what the player has just done; nothing is said that the game's systems do not do.
 
+Read `docs/design/consistency.md` before any work: one world, told the same everywhere, and which side changes when two disagree.
+
 ## The order of work
 
 | # | Step | Skill | Leaves behind |

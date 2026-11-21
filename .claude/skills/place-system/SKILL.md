@@ -66,6 +66,8 @@ Which skill for a common job:
 | A quest thing with no spot | `place-story` |
 | An owner's note | `place-change` |
 
+Read `docs/design/consistency.md` before any work: one world, told the same everywhere, and which side changes when two disagree.
+
 ## The working method
 
 - **One agent owns a place**, the `place-drafter` agent, from the record to the hand-over (or one change to a

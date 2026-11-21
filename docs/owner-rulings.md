@@ -232,6 +232,15 @@ added here the day they are made, with the date and the issue.
 - Place work runs at medium effort (the `place-drafter` agent). The remaining Act I places are drafted by the new
   method in quest order, Ashgate Landing first, then Reed-Sill Weir and on, while the owner edits Jal-Veesa and
   Karsh-Naal Camp in the studio (owner, 2026-11-21, #80).
+- Complete consistency is the standing goal and every agent works by it from the start, never finding out at the
+  end: place records (every table), lore (canon and extrapolated; a slight deviation where forced), quests, story,
+  people and drafted places all agree. What gives way when two disagree, from kept to changed: the main quest's
+  sequence, plot and key events and the lore they rest on (main quest above factions); then what can be delivered
+  well with the source place and easy, reliable hand work; then cosmetic detail, which is re-authored to fit what
+  is built (a record's "light hide tents" over dark source tents becomes "dark hide tents"). Place-record prose is
+  the cheapest to change. The rule is docs/design/consistency.md, named in CLAUDE.md (owner, 2026-11-21, #80).
+- The owner will look at and edit all six Act I places in the studio on 2026-11-22; Jal-Veesa and Karsh-Naal Camp
+  are finished by agents first, with the other four (owner, 2026-11-21, #80).
 - A fault passed to the owner is explained in plain English (what is wrong, as a player would see it, and what
   was tried) and says precisely where to look: the place, the thing by its name, where it stands (which house or
   landmark it is beside and on which side), and the capture that shows it, so he can go straight to it in the
