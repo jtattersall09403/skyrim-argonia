@@ -451,7 +451,7 @@ def people_stage(st: Standing, log=print) -> None:
     if short:
         log(f"draft people {st.place_id}: {short} people short of a bed: add beds (draft.add) and run add, then people")
     pool, npcs, _ = people.base_pool(st.src, dec, lambda sid: io.load(f"src.{sid}", st.src.path.parent))
-    rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs)
+    rebased = people.rebase(st.files["people"], st.src.npcs, pool, npcs, who)
     if rebased:
         log(f"draft people {st.place_id}: a person's base given for {', '.join(rebased)}")
     people.give_to_residents(st.files["people"], gives, who, hist, routes)

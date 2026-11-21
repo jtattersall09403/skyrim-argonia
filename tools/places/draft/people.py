@@ -348,23 +348,46 @@ def base_pool(src, dec: dict, load) -> tuple[list, dict, list[str]]:
     return pool, npcs, named or list(PEOPLE_FALLBACK)
 
 
+class NoBase(ValueError):
+    """No usable base in the pool has the sex a person's identity names: the draft refuses, never builds them on the
+    other sex."""
+
+
+def fits(npc: dict, want: dict | None) -> tuple[bool, bool]:
+    """(sex fits, race fits) of a base for an identity row (`sex` male or female, `race` an edid such as
+    ArgonianRace); what the row leaves out fits anything."""
+    want = want or {}
+    sx, rc = want.get("sex"), want.get("race")
+    return (not sx or str(npc.get("sex") or "").lower() == str(sx).lower(),
+            not rc or str(npc.get("race_edid") or "").lower() == str(rc).lower())
+
+
 def base_picker(pool: list, npcs: dict, used: dict[str, int] | None = None):
-    """pick(role): the usable base that best fits the role, the least used first."""
+    """pick(role, want=None): the usable base that best fits the role, the least used first. `want` (the person's
+    identity row) is honoured: only a base of its sex, and one of its race whenever the pool has one; NoBase when
+    the pool has no usable base of that sex."""
     used = {} if used is None else used
     cands = sorted({r["base"] for _, r in pool if usable(npcs[r["base"]], npcs)})
 
-    def pick(role: str) -> str | None:
+    def pick(role: str, want: dict | None = None, who: str = "a person") -> str | None:
         if not cands:
             return None
-        best = max(cands, key=lambda k: (role_score(npcs[k], role), -used.get(k, 0), k))
+        ok = [k for k in cands if fits(npcs[k], want)[0]]
+        if not ok:
+            raise NoBase(f"{who}: the identity is {want.get('sex')}, and no usable actor base in the pool is "
+                         f"({', '.join(sorted({str(npcs[k].get('sex')) for k in cands}))} only): name a source with "
+                         f"one in draft.people_from, or recast the person")
+        best = max(ok, key=lambda k: (fits(npcs[k], want)[1], role_score(npcs[k], role), -used.get(k, 0), k))
         used[best] = used.get(best, 0) + 1
         return best
     return pick
 
 
-def rebase(folk: list[dict], src_npcs: dict, pool: list, npcs: dict) -> list[str]:
-    """Give a new base to each person built on none, or on one of the source's that is no person to build on (a
-    beast, a levelled or Nordic actor). Returns the ids changed."""
+def rebase(folk: list[dict], src_npcs: dict, pool: list, npcs: dict, who: dict[str, dict] | None = None) -> list[str]:
+    """Give a new base to each person built on none, on one of the source's that is no person to build on (a
+    beast, a levelled or Nordic actor), or on one whose sex or race is not their identity's (`who`, the people
+    source's rows by person id). Returns the ids changed; NoBase when an identity's sex has no base in the pool."""
+    who = who or {}
     used: dict[str, int] = {}
     for p in folk:
         if p.get("base_from"):
@@ -372,9 +395,12 @@ def rebase(folk: list[dict], src_npcs: dict, pool: list, npcs: dict) -> list[str
     pick, out = base_picker(pool, npcs, used), []
     for p in folk:
         b = p.get("base_from")
-        if b and not (b in src_npcs and not usable(src_npcs[b], src_npcs)):
+        want = who.get(p["id"])
+        have = npcs.get(b) or src_npcs.get(b) if b else None
+        if b and not (b in src_npcs and not usable(src_npcs[b], src_npcs)) and \
+                (have is None or all(fits(have, want))):
             continue
-        nb = pick(p.get("role") or "resident")
+        nb = pick(p.get("role") or "resident", want, p["id"])
         if nb and nb != b:
             p["base_from"] = nb
             out.append(p["id"])
