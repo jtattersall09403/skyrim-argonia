@@ -1643,9 +1643,43 @@ def prune_links(nv) -> int:
     return gone
 
 
+SEAM_SNAP = 1.0  # two border vertices on one cell line closer than this along it are one vertex; farther, one splits
+
+
+def split_seam_edge(nv, i: int, k: int, m) -> int:
+    """Split triangle i's edge k (a to b) at the point m on it: i keeps a to m, a new triangle takes m to b with i's
+    old edge from b, and the triangle across that edge is told. Returns the new triangle's index."""
+    from tools.navmesh import nvnm
+    nv.verts = np.vstack([nv.verts, np.asarray(m, nv.verts.dtype)[None]])
+    vm = len(nv.verts) - 1
+    t = nv.tris[i].copy()
+    k1, k2 = (k + 1) % 3, (k + 2) % 3
+    b, c = int(t["v"][k1]), int(t["v"][k2])
+    j = len(nv.tris)
+    nt = t.copy()
+    nt["v"][k], nt["v"][k1], nt["v"][k2] = vm, b, c
+    nt["e"][k], nt["e"][k1], nt["e"][k2] = -1, t["e"][k1], i
+    nt["flags"] = int(t["flags"]) & ~(nvnm.EDGE_LINK[k] | nvnm.EDGE_LINK[k2]) & 0xFFFF
+    t["v"][k1] = vm
+    t["e"][k1] = j
+    t["flags"] = int(t["flags"]) & ~nvnm.EDGE_LINK[k1] & 0xFFFF
+    nv.tris[i] = t
+    nv.tris = np.append(nv.tris, nt[None])
+    nb = int(nt["e"][k1])
+    if nb >= 0 and not nt["flags"] & nvnm.EDGE_LINK[k1]:  # the triangle across b to c now meets the new one
+        for q in range(3):
+            T = nv.tris[nb]
+            if int(T["e"][q]) == i and not T["flags"] & nvnm.EDGE_LINK[q] and {int(T["v"][q]), int(T["v"][(q + 1) % 3])} == {b, c}:
+                nv.tris["e"][nb][q] = j
+    return j
+
+
 def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
     """Join, edge for edge, every open edge on the seam between two shipped cells to the matching open edge across it
-    (same two end points in plan, heights within tol_z): a portal link both ways. Returns how many pairs joined."""
+    (heights within tol_z): a portal link both ways. The two sides' border vertices are matched first: a vertex of one
+    side that falls inside an open edge of the other, more than SEAM_SNAP from its ends, splits that edge there, so
+    the sides meet one edge to one edge (a side split where the other is not would leave the extra piece open).
+    Returns how many pairs joined."""
     from tools.navmesh import nvnm
     by_cell = {tuple(n["cell"]): n for n in navs if n["space"] == "exterior"}
 
@@ -1662,6 +1696,30 @@ def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
                 out.append((key, int(i), k, (float(a[i, 2]) + float(b[i, 2])) / 2))
         return sorted(out)
 
+    def match_vertices(n, o, axis, line_v):
+        """Split n's open edges on the line at o's border vertices inside them (at a like height). Returns how many."""
+        nv, done = n["nv"], 0
+        pts = {}
+        ov = np.asarray(o["nv"].verts, np.float64)
+        for _, j, q, _ in open_edges(o, axis, line_v):
+            for w in (o["nv"].tris["v"][j][q], o["nv"].tris["v"][j][(q + 1) % 3]):
+                pts[int(w)] = ov[int(w)]
+        for _, i, k, _ in open_edges(n, axis, line_v):
+            v = np.asarray(nv.verts, np.float64)
+            a, b = v[nv.tris["v"][i][k]], v[nv.tris["v"][i][(k + 1) % 3]]
+            lo, hi = sorted((a[1 - axis], b[1 - axis]))
+            for p in pts.values():
+                u = p[1 - axis]
+                if lo + SEAM_SNAP < u < hi - SEAM_SNAP:
+                    f = (u - a[1 - axis]) / (b[1 - axis] - a[1 - axis])
+                    m = a + f * (b - a)
+                    if abs(m[2] - p[2]) <= tol_z:
+                        m[axis] = line_v
+                        split_seam_edge(nv, i, k, m)
+                        n["joined"] = True
+                        return 1  # the edges changed: look again
+        return done
+
     def link(n, i, k, fid, ti):
         nv = n["nv"]
         nv.links = np.append(nv.links, np.array([(nvnm.PORTAL, fid, ti)], nvnm.LINK))
@@ -1676,6 +1734,8 @@ def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
             if o is None:
                 continue
             v = (cx + 1) * CELL if axis == 0 else (cy + 1) * CELL
+            while match_vertices(n, o, axis, v) + match_vertices(o, n, axis, v):
+                pass
             mine_e, theirs = open_edges(n, axis, v), open_edges(o, axis, v)
             # pair by the longest shared stretch of seam at a like height (the two sides may split the seam differently)
             pairs = []
