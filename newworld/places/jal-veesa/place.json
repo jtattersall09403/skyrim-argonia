@@ -586,7 +586,14 @@
    "King of the Murkmire.esp:198C28": "the egg-tenders' hut's door on its platform: the platform stands where the town's ground cannot reach it; the hut's room is behind the hut added on the dry ground (draft.add)",
    "King of the Murkmire.esp:198C2B": "the egg-tenders' hut's back door on its platform: as its front door",
    "King of the Murkmire.esp:1C1D4C": "a Creation Club curio the catalogue judges Nordic (decision 0006); the hut keeps its own things"
-  }
+  },
+  "accepted": [
+   {
+    "unit": "house.SeekhatTreeminderHut",
+    "flag": "foot not reaching the ground",
+    "why": "the source's own: its deck corner stands over the cliff, posts down onto the rocks (looked at from E, eye, 2026-11-21)"
+   }
+  ]
  },
  "fit": {
   "pivot": [
