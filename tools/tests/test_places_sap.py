@@ -132,6 +132,21 @@ def test_one_hist_built_of_a_crown_and_trunk_bases_has_one_pool():
     assert sap.faults(ext() + [crown] + feet + out, bases) == []
 
 
+def test_a_hist_the_drafter_says_has_no_pool_gets_none(monkeypatch):
+    """sap.none with the drafter's own reason (a cut shoot on a post) holds: the stage lays no pool for that Hist,
+    keeps the drafter's row, and still pools the others."""
+    from types import SimpleNamespace
+    monkeypatch.setattr(Ground, "load", classmethod(lambda cls, *a, **k: slope()))
+    monkeypatch.setattr(sap, "seat_all", lambda *a, **k: None, raising=False)
+    said = {"on": "p.A", "why": "a cut shoot tied to its post, not a rooted tree"}
+    st = SimpleNamespace(place_id="p", ext=ext()[:2], bases=dict(BASES), place={"sap": {"none": [said]}},
+                         files={"land": []}, grd=SimpleNamespace(path="x"))
+    sap.apply(st, log=lambda *a: None)
+    assert [a["id"] for a in st.place["sap"]["added"]] == ["p.sap.B"]
+    assert st.place["sap"]["none"] == [said]
+    assert not any(r["id"] == "p.sap.A" for r in st.ext)
+
+
 def test_the_bowl_is_dug_in_a_cell_the_places_own_ground_rows_hold(monkeypatch):
     from types import SimpleNamespace
     e = ext()[:1]

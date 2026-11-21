@@ -280,6 +280,24 @@ def test_draft_bundle_resolves_a_placed_waters_type_from_the_catalogue(tmp_path,
     assert got["Fx.esm:000900"]["water"] == water
 
 
+def test_draft_bundle_holds_the_bases_a_hand_placed_from_the_pool(tmp_path, monkeypatch):
+    """A piece an agent placed by hand (`look place`, kept in agent-edits) of a base no bundle holds is drawn from the
+    catalogue's row, as a draft stage's added piece is."""
+    from tools.places import draft_bundle as db
+    fake_rooms(monkeypatch)
+    places, bundles = _draft_fixture(tmp_path)
+    tent = {"key": "BM.esm:0396CA", "edid": "Tent", "model": "architecture/tents/smallnordictent01a.nif"}
+    cat = tmp_path / "catalogue.jsonl"
+    cat.write_text(json.dumps(tent) + "\n")
+    monkeypatch.setenv("PLACES_CATALOGUE", str(cat))
+    (places / "fxd" / "agent-edits").mkdir()
+    (places / "fxd" / "agent-edits" / "agent-1.json").write_text(json.dumps({"ops": [
+        {"op": "ref.add", "space": "exterior", "ref": {"id": "fxd.LOOK001PLACE", "base": tent["key"], "pos": [0, 0, 0]}}]}))
+    r = db.build("fxd", places, bundles)
+    got = {b["key"] for b in db.jsonl(bundles / "draft.fxd" / "bases.jsonl")}
+    assert tent["key"] in got and not r["missing_bases"]
+
+
 def test_missing_texture_is_a_marked_stand_in(env, monkeypatch):
     from tools.places.studio import links
     monkeypatch.setattr(links, "asset", lambda kind, *a: None)

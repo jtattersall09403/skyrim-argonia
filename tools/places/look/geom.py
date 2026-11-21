@@ -25,7 +25,7 @@ SUNK_SHARE = 0.6           # a plant is buried when more than this share of its 
 PART_SHARE = 0.5           # a door, window or floor is buried when more than this share of it is
 from tools.places.classify import (HANG_WORDS, HULL_WORDS, PART_WORDS, WALL_WORDS,  # noqa: E402  the one classifier's lists
                                    WALKED_SPAN_WORDS as SPAN_WORDS, PLANT_KINDS as PLANTS,
-                                   STRUCTURAL_KINDS as STRUCTURAL, NO_SOLID_KINDS as NO_SOLID)
+                                   STRUCTURAL_KINDS as STRUCTURAL, NO_SOLID_KINDS as NO_SOLID)  # noqa: F401  STRUCTURAL: scene.py
 from tools.places import shape  # noqa: E402  every geometric number comes from the piece's mesh
 from tools.places.classify import effect as _effect, kind_of as _kind_of  # noqa: E402
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
@@ -395,8 +395,8 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, float(hi[2])))
             if wall_fixed(p) or p.get("kind") == "door":   # a lantern, sconce, window, sign or door: held by the wall it is set in
                 on.update(B.ids[i] for i in B.touching(lo, hi))
-            if p.get("kind") not in STRUCTURAL:   # a flower, a vine, a pot: held by the trunk or wall it grows on or sits in
-                on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
+            # a plant, a clutter piece or a rock is held only by a surface under its own foot (the rests_on test
+            # above) or, hanging, by what its top hangs from: never by a box it merely sits inside (a Hist's, a hut's)
             on.discard(p["id"])
         afloat = False
         if vessel(p) and hasattr(ground, "water"):   # a boat floats on the water: held when its hull dips into it

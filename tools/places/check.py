@@ -1721,4 +1721,12 @@ def main(argv: list[str]) -> int:
             for f in ac:
                 print(f"     {f}")
         print(f"check {a.place_id}: {sum(1 for v in res.values() if not v)}/{len(res)} green in {report['check_s']} s")
+        print(handover_line(a.place_id, Path(a.places_dir)))
     return 0 if not any(res.values()) else 1
+
+
+def handover_line(pid: str, places_dir: Path = B.PLACES) -> str:
+    """Whether the built check is current against the place files, by the consistency stage's own rule."""
+    from tools.places import handover
+    root = places_dir.resolve().parents[1]
+    return handover.built_check_current(root, handover.out_root(root), pid)[1]

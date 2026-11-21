@@ -1,0 +1,106 @@
+{
+ "save_id": "agent-20261121T154455",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "Xanmeer stone steps up the longhouse knoll (first lay, to be judged)",
+ "at": "2026-11-21T15:44:55Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK001PLACE",
+    "base": "King of the Murkmire.esp:0263CC",
+    "kind": "static",
+    "pos": [
+     -10685.0,
+     -552210.0,
+     271.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    },
+    "why": "old Xanmeer stone steps up the longhouse knoll, so the way from the fire to the longhouse door reads as a path people climb (the bare 25-degree mud ramp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:44:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK002PLACE",
+    "base": "King of the Murkmire.esp:0263CC",
+    "kind": "static",
+    "pos": [
+     -10399.0,
+     -552210.0,
+     404.82
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    },
+    "why": "old Xanmeer stone steps up the longhouse knoll, so the way from the fire to the longhouse door reads as a path people climb (the bare 25-degree mud ramp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:44:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "tribal-camp-m2-m68.LOOK003PLACE",
+    "base": "King of the Murkmire.esp:0263CC",
+    "kind": "static",
+    "pos": [
+     -10113.0,
+     -552210.0,
+     538.33
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    },
+    "why": "old Xanmeer stone steps up the longhouse knoll, so the way from the fire to the longhouse door reads as a path people climb (the bare 25-degree mud ramp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:44:55Z"
+  }
+ ]
+}

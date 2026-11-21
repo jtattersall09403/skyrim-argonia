@@ -1,0 +1,234 @@
+{
+ "save_id": "agent-20261121T150126",
+ "place_id": "outpost-m11-m63",
+ "name": "a fourth low deck closing the square by the landing with the third pale tent; four bedrolls (one in each tent, one by the fire)",
+ "at": "2026-11-21T15:01:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK0340000",
+    "base": "King of the Murkmire.esp:05556C",
+    "kind": "static",
+    "pos": [
+     -81780.86,
+     -514035.52,
+     190.83
+    ],
+    "rot": [
+     0,
+     0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "landing",
+    "walk": 0.8,
+    "why": "a fourth low cypress deck of the platform's own kit, closing the square beside the landing: the third warden tent's platform (record look: tents on cypress platforms)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK0350000",
+    "base": "King of the Murkmire.esp:055563",
+    "kind": "static",
+    "pos": [
+     -81780.86,
+     -514035.52,
+     -0.24
+    ],
+    "rot": [
+     0,
+     0,
+     1.13446
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "cluster": "landing",
+    "why": "a fourth low cypress deck of the platform's own kit, closing the square beside the landing: the third warden tent's platform (record look: tents on cypress platforms)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK0360000",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "why": "a pale hide tent on the new low deck: the third warden tent (record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK037PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82345.9,
+     -513421.6,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the tent on the high deck (5 wardens: two guards on day and night shifts share one bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK038PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -81890.9,
+     -513797.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the tent on the east deck",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK039PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -81780.9,
+     -514035.6,
+     195.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.84685
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the tent on the deck by the landing",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T15:01:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK040PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -82290.0,
+     -513790.0,
+     72.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a weir-warden's bedroll in the open on the bank by the cook fire, as Ree-An-Wo lays bedrolls by its fire (the fourth bed for five wardens)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T15:01:26Z"
+  }
+ ]
+}

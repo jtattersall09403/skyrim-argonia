@@ -162,7 +162,7 @@ class Daemon:
             self.page_strokes.append(s)
 
     def added_bases(self, ops: list[dict]) -> list[dict]:
-        """The base rows of the pieces these ops add that only the asset catalogue holds (scene.py `_resolve_bases`)."""
+        """The base rows of the pieces these ops add that only the asset catalogue holds (scene.py `fill_from_catalogue`)."""
         keys = {(op.get("ref") or {}).get("base") for op in ops if op.get("op") == "ref.add"} - {None}
         if not keys:
             return []

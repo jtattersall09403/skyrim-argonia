@@ -1,0 +1,161 @@
+{
+ "save_id": "agent-20261121T151226",
+ "place_id": "outpost-m11-m63",
+ "name": "the high deck's tent set back from the ramp's head at 0.82 with its bedroll; the second log walk drawn north to meet the first over the weir",
+ "at": "2026-11-21T15:12:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK006PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m11-m63.LOOK006PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -82345.9,
+     -513421.6,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the high cypress deck: a weir-warden's sleeping tent (record look: pale hide tents on cypress platforms)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:12:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK042PLACE",
+    "base": "Black Marsh.esm:0396CA",
+    "kind": "static",
+    "pos": [
+     -82366.0,
+     -513376.0,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 0.82,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a pale hide tent (Black Marsh's own) on the high cypress deck, set back from the ramp's head so the way up stays open: a weir-warden's sleeping tent (record look: pale hide tents on cypress platforms)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:12:26Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK037PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82345.9,
+     -513421.6,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82365.9,
+     -513376.6,
+     387.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.13446
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:12:26Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK021PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82973.9,
+     -515095.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82973.9,
+     -514965.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:12:26Z"
+  }
+ ]
+}

@@ -17,12 +17,16 @@ How a change picks its checks (the map is tooling/gate_map.toml, one comment per
   - the make stages adaptation, questtext, questform, reach, storyexplorer, atlas and consistency run the same way from their module;
   - the map's rules add stages and tests for path globs (story markdown -> the explorer and story tests, skse/** ->
     the C++ tests, and so on);
-  - a path of a map rule marked `only` (a place's edits/, the owner's saves) picks that rule's stages and nothing else;
+  - a path of a map rule marked `only` (a place's edits/, the owner's saves; the place skills' text) picks that rule's
+    stages and nothing else;
+  - a folder of independent members (the map's `trees`: newworld/places) named by a tool is reached by a root file of
+    it, never by a file inside one member: one place's files run that place's data checks, not the tools that read any
+    place;
   - a path in the map's `full` list, or a path nothing above picks up, runs the whole gate; so does any error in
     the picker itself;
   - an edit to the map is scoped like any other change: the map at the base ref against the map now, and only the
     entries added, removed or altered count as changed (their stages, their tests, their named paths); an edit to the
-    map's structural parts (`full`, `named_direct`, the `[stages]` table) runs the whole gate.
+    map's structural parts (`full`, `named_direct`, `trees`, the `[stages]` table) runs the whole gate.
 It prints one line saying what it ran and what it skipped, and why.
 """
 from __future__ import annotations
@@ -179,14 +183,29 @@ class Index:
         return out
 
 
-def _named(path: str, named: set[str]) -> bool:
+def _named(path: str, named: set[str], trees: frozenset[str] = frozenset()) -> bool:
     """A named file, or anything under a named directory of two or more parts (a bare top-level directory such as
-    REPO / "docs" / name is too coarse to pick by; the map's rules cover those trees)."""
-    return any(path == n or (n.count("/") >= 1 and path.startswith(n + "/")) for n in named)
+    REPO / "docs" / name is too coarse to pick by; the map's rules cover those trees). A named `tree` (the map's
+    `trees`: a folder of many independent folders, newworld/places) covers a path only directly under it or in a
+    place's folder the code names itself (newworld/places/<id>), never a path inside any other member: a tool that
+    names the whole tree reads whichever member it is given, and a change to one member does not reach it."""
+    for n in named:
+        if path == n:
+            return True
+        if n.count("/") >= 1 and path.startswith(n + "/"):
+            if n in trees and "/" in path[len(n) + 1:]:
+                continue
+            return True
+    return False
 
 
 def _glob(path: str, globs) -> bool:
     return any(fnmatch.fnmatchcase(path, g) for g in globs)
+
+
+def _rule_hit(path: str, rule: dict) -> bool:
+    """A rule's `globs` minus its `not` globs (a more exact rule's paths, which the broader rule leaves to it)."""
+    return _glob(path, rule["globs"]) and not _glob(path, rule.get("not", []))
 
 
 # ---- the picker ---------------------------------------------------------------------------------------------
@@ -195,13 +214,13 @@ MAP_REL = "tooling/gate_map.toml"
 
 
 def _rule_key(r: dict) -> str:
-    return repr((sorted(r["globs"]), sorted(r.get("stages", [])), sorted(r.get("tests", []))))
+    return repr((sorted(r["globs"]), sorted(r.get("not", [])), sorted(r.get("stages", [])), sorted(r.get("tests", []))))
 
 
 def map_delta(old: dict, new: dict) -> tuple[list[dict], list[str]] | None:
     """The rules added, removed or altered between two maps, and a line naming them; None when a structural part
     (`full`, `named_direct`, `[stages]`) differs, which the caller runs whole."""
-    for part in ("full", "named_direct", "stages"):
+    for part in ("full", "named_direct", "trees", "stages"):
         if old.get(part) != new.get(part):
             return None
     a = {_rule_key(r): r for r in old.get("rule", [])}
@@ -256,10 +275,11 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP, base_map: s
     idx = Index(repo)
     matched: set[str] = set()
     direct = frozenset(gate.get("named_direct", []))
+    trees = frozenset(gate.get("trees", []))
     for t in idx.tests():
         files, named = idx.closure(repo / t, direct)
         for c in changed:
-            if c in files or _named(c, named):
+            if c in files or _named(c, named, trees):
                 plan.tests.add(t); plan.why.setdefault(t, c); matched.add(c)
                 break
     for stage, mod in gate.get("stages", {}).items():
@@ -268,14 +288,14 @@ def pick(changed: list[str], repo: Path = REPO, mapfile: Path = MAP, base_map: s
             raise FileNotFoundError(f"stage {stage}: no module {mod}")
         files, named = idx.closure(mf, direct)
         for c in changed:
-            if c in files or _named(c, named):
+            if c in files or _named(c, named, trees):
                 plan.stages.add(stage); plan.why.setdefault(stage, c); matched.add(c)
                 break
     for rule in gate.get("rule", []):
         if rule.get("only"):
             continue
         for c in changed:
-            if _glob(c, rule["globs"]):
+            if _rule_hit(c, rule):
                 matched.add(c)
                 for s in rule.get("stages", []):
                     if s not in STAGES:
@@ -361,7 +381,8 @@ def run(plan: Plan, all_tests: list[str]) -> int:
         if plan.full or s in plan.stages:
             if s == "editsvalid":
                 rc = subprocess.run([os.environ.get("GATE_PY", sys.executable), "-m", "tools.places.edits_valid",
-                                     *(plan.inert or ["--all"])], cwd=REPO).returncode
+                                     *([i for i in plan.inert if fnmatch.fnmatchcase(i, "newworld/places/*/edits/*")]
+                                       or ["--all"])], cwd=REPO).returncode
             elif s == "skse":
                 rc = subprocess.run(["bash", str(REPO / "skse" / "check.sh")]).returncode
             else:

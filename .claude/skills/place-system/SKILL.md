@@ -103,14 +103,19 @@ with builds and checks run beside his editing:
 1. `look <place> probe --all` reports nothing open (accepted faults listed with their reasons).
 2. `draft check` PASS, `needs check` PASS, `seat` 0 refs moved, the build's seventeen checks green with accepted
    findings named, `units` and `units --joints` read and every flag mended or accepted (`place-check`).
-3. `look survey` of the place and of every structure read; the playwalk tour and every room read at full size; no
-   PLACE tile and no "cannot be walked to" left.
+3. `look survey` of the place and of every structure read; the playwalk tour walked and read (its strips and map
+   whole, full size where a strip is doubtful and at every door, stair, bridge end and quest spot) and every room's
+   entering view read; no PLACE tile and no "cannot be walked to" left. A place that passes its checks but has not
+   been walked is not done: a full walk, the issues fixed and only their views recaptured until none is left, then
+   a full walk again, until one is clean (`place-check`).
 4. Every sentence of the record's `look` matched to an image that shows it; a line not yet met named.
 5. Every named person with a role has a bed, a work spot and a sleep package; every quest thing and person at the
    place has a spot a player finds and recognises (`place-story`).
 6. A place sharing its source with a place laid earlier passes `look <place> versus <other>` read whole (the same
    views of both on one sheet), confirming what its plan's `differs` fixed.
 7. The owner captures taken (each side at eye level, each structure the record names, each room a story needs).
+8. The final build and check come after the LAST edit of any kind to the place's files; `python3 -m tools.places
+   handover <place_id>` says "built check current" (the consistency stage's rule, `edits/` aside).
 
 ## Planner sessions: how the lead runs place work
 

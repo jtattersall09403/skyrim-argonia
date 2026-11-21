@@ -28,7 +28,8 @@
   "hist": {"edid": "HistTree03", "kind": "static", "model": "argonia/trees/hist trees/histtree02a.nif", "bounds": [[-100, -100, 0], [100, 100, 1500]]},
   "window": {"edid": "01mudwindow", "kind": "static", "model": "t/casextwindow01.nif", "bounds": [[-30, -5, 0], [30, 5, 60]]},
   "basket": {"edid": "Basket01", "kind": "static", "model": "clutter/basket01.nif", "bounds": [[-15, -15, 0], [15, 15, 20]]},
-  "boat": {"edid": "TestRowBoat01", "kind": "static", "model": "t/rowboat01.nif", "bounds": [[-60, -150, 0], [60, 150, 80]]}
+  "boat": {"edid": "TestRowBoat01", "kind": "static", "model": "t/rowboat01.nif", "bounds": [[-60, -150, 0], [60, 150, 80]]},
+  "moss": {"edid": "TestHangingMoss01", "kind": "plant", "model": "t/hangingmoss01.nif", "bounds": [[-20, -20, -100], [20, 20, 0]]}
  },
  "refs": [
   {"id": "f.plat", "base": "plat", "pos": [1000, 3000, 340], "expect": {"class": "deck", "fault": null, "role": "deck"}},
@@ -50,6 +51,10 @@
   {"id": "f.hist", "base": "hist", "pos": [3800, 3600, 380], "expect": {"class": "tree", "role_ground": true}},
   {"id": "f.window", "base": "window", "pos": [800, 3800, 100], "expect": {"class": "wall part"}},
   {"id": "f.basket", "base": "basket", "pos": [1100, 3100, 340], "expect": {"class": "clutter"}},
-  {"id": "f.boat", "base": "boat", "pos": [6000, 3000, 650], "expect": {"class": "boat", "fault": null}}
+  {"id": "f.boat", "base": "boat", "pos": [6000, 3000, 650], "expect": {"class": "boat", "fault": null}},
+  {"id": "f.fern_in_tree", "base": "fern", "pos": [3850, 3600, 685], "expect": {"class": "plant", "fault": "floats"}},
+  {"id": "f.fern_deck", "base": "fern", "pos": [1250, 2760, 340], "expect": {"class": "plant", "fault": null}},
+  {"id": "f.moss_beam", "base": "moss", "pos": [1100, 2800, 335], "expect": {"class": "plant", "fault": null}},
+  {"id": "f.fern_under_deck", "base": "fern", "pos": [900, 2800, 90], "expect": {"class": "plant", "fault": null}}
  ]
 }
