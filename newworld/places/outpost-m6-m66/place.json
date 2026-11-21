@@ -6,7 +6,106 @@
   "people_from": [
    "kingofthemurkmire.keebahollowlocation",
    "kingofthemurkmire.seekhatyollocation"
-  ]
+  ],
+  "plan": {
+   "source": "Huluxinoag (King of the Murkmire): the only candidate with a Hist, the place's heart and the quest's object, with its roots and glands in a living and a dead state (the dead state serves the Take and Give endings), platforms, mud-hut walkways, a waterside landing and boats. Ree-An-Wo (palisaded stockade hamlet, no Hist) already serves Reed-Sill Weir and Karsh-Naal Camp and lends only its tents here; argoniaworld-29-29 (no camp) and Black Rose (marble arches) were rejected on looking. No other place is laid from Huluxinoag's exterior (Tailfall Mound takes only its Roots room), so no differs entry is owed. Laid turned 80 degrees at the source's own height so its waterfront wraps our creek head.",
+   "look": [
+    {
+     "line": "a young Hist",
+     "by": "Huluxinoag's Hist with its roots, glands and root bases, the whole composite scaled 0.55 about its axis (trunk 39 m to 21 m), at the creek head's west"
+    },
+    {
+     "line": "pale hide tents",
+     "by": "three Ree-An-Wo scale-hide tents added on the source's cypress platforms (ALPAScaleTent02 x2, ALPAScaleTent03)"
+    },
+    {
+     "line": "a small cypress platform round the young Hist",
+     "by": "the source's cypress platforms and mud-hut walkways round the Hist, kept as built and seated on our ground"
+    },
+    {
+     "line": "a woven weir across the creek",
+     "by": "woven Saxhleel fences (ALPAFenceWoven04) added across the creek below the camp, with a fishing spot at it"
+    },
+    {
+     "line": "the log boom where the crocodiles gather (dangers)",
+     "by": "cypress cut logs added end to end across the creek just above the weir"
+    },
+    {
+     "line": "a reed hide by a lone dead tree on the bank to the west",
+     "by": "an added dead swamp tree (ArgoniaTreeSwampDead01) with a scale-hide lean-to, jars and the sap-takers' packs on the west bank, west of the weir"
+    },
+    {
+     "line": "the landing (source note)",
+     "by": "the source's waterside platform, plank and boats on our creek head, kept as built"
+    },
+    {
+     "line": "the drying rack with the cooking pot by it",
+     "by": "an added fish drying rack beside Ree-An-Wo's Argonian cooking stand and pot over a fire on the bank by the north platform"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "the source's fishing markers and gear on the waterside platform, and a fishing spot added at the weir (the traps: eels and carp)"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "Ree-An-Wo's Argonian cooking pot on its stand, added by the drying rack"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "Ree-An-Wo's scale tanning rack added on the waterside platform"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Heem-Jasa, the tree's minder, at the Hist with her merchant chest (place-stock)"
+    },
+    {
+     "kind": "trainer",
+     "by": "Heem-Jasa trains Alchemy (place-people)"
+    },
+    {
+     "kind": "combat-foes",
+     "by": "the three Unbound sap-takers of main quest 3 at the reed hide (the quest's own people)"
+    },
+    {
+     "kind": "treasure",
+     "by": "jars of sap and the sap-takers' packs at the reed hide (place-stock)"
+    }
+   ],
+   "structures": [
+    {
+     "cluster": "b01",
+     "what": "the Hist with its roots, glands, root bases and the walkways and steps round it",
+     "verdict": "kept",
+     "why": "kept and relabelled: the record's young Hist (composite scaled 0.55); its hall entrance and door to Huluxinoag Roots pruned (no room: the record names none)"
+    },
+    {
+     "cluster": "b02",
+     "what": "the north cypress platforms: a thatch house and a thatch ruin on their platforms, furniture, crates, the workbench and fishing gear",
+     "verdict": "kept",
+     "why": "kept as platforms with their furniture; the thatch house and ruin shells pruned for hide tents (the record's look)"
+    },
+    {
+     "cluster": "b03",
+     "what": "the south-west cypress platform with a thatch ruin, beds and a bench",
+     "verdict": "kept",
+     "why": "kept and moved up 130 onto our higher ground; the ruin shell pruned for a hide tent over its beds"
+    },
+    {
+     "cluster": "landing",
+     "what": "the waterside: boats, a walkway into the water, crates, the map marker",
+     "verdict": "kept",
+     "why": "kept as the record's landing; a boat left on dry mud moved onto the creek; the map marker named Teel-Fen Weir"
+    },
+    {
+     "cluster": "s01",
+     "what": "stairs, clay mud and gas traps across the source's channel",
+     "verdict": "kept",
+     "why": "kept: the stairs and clay; the gas traps and stage triggers pruned (the record's dangers name none)"
+    }
+   ]
+  }
  },
  "fit": {
   "pivot": [
@@ -82,11 +181,13 @@
   "band_steepest_deg": 20.9,
   "source_water_area_m2": 1174,
   "held_by_water": 2,
-  "laid": "2026-11-21T15:01:39Z"
+  "laid": "2026-11-21T15:01:39Z",
+  "navmesh": "source"
  },
  "agent_saves_applied": [
   "agent-20261121T150341",
   "agent-20261121T150431",
-  "agent-20261121T150648"
+  "agent-20261121T150648",
+  "agent-20261121T152009"
  ]
 }
