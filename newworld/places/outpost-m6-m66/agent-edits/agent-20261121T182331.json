@@ -1,0 +1,44 @@
+{
+ "save_id": "agent-20261121T182331",
+ "place_id": "outpost-m6-m66",
+ "name": "a flight from the waterside platform (the tanning rack's deck) down to the landing's bank: the playwalk could not reach it",
+ "at": "2026-11-21T18:23:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK008STEPS",
+    "base": "King of the Murkmire.esp:025C36",
+    "kind": "building",
+    "pos": [
+     -42341.47,
+     -538215.07,
+     41.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.45247
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.9JRKAGG4FW1HWDT7CAQ4EGXE57",
+     "dz": 45.11
+    },
+    "why": "a flight from the waterside platform down to the landing's bank, where the tanning rack's deck stood a step and a half over the mud with no way onto it",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T18:23:31Z"
+  }
+ ]
+}
