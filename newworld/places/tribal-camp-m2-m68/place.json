@@ -458,7 +458,7 @@
    -11059.2,
    -552960.0
   ],
-  "rot_deg": 0.0,
+  "rot_deg": 120.0,
   "cost": 0.0,
   "clusters": {
    "b01": {
@@ -836,7 +836,7 @@
   "bundle": "src.skyrim.dushnikhyallocation",
   "stamp": "1d45dc45625dd059"
  },
- "radius_m": 130,
+ "radius_m": 45,
  "counts": {
   "source_refs": 520,
   "placed": 439,
@@ -855,5 +855,17 @@
   },
   "beds": 9
  },
- "draft_key": "22a7262c9e40d3f7"
+ "draft_key": "22a7262c9e40d3f7",
+ "wholesale": {
+  "offset": 1215.0,
+  "band": 878.0,
+  "pieces": 466,
+  "dropped": 39,
+  "raised_max": 350.0,
+  "lowered_max": 343.2,
+  "band_steepest_deg": 25.9,
+  "source_water_area_m2": 0,
+  "held_by_water": 0
+ },
+ "agent_saves_applied": []
 }

@@ -23,7 +23,7 @@ SLOPE_DEG = 35.0
 LEVELLED = {"LVLN", "LVLI", "LVLC"}
 
 
-def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict], dict]:
+def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: float = 1e9) -> tuple[list[dict], list[dict], list[dict], dict]:
     from tools.places.extract import load_place
     fit = st.place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
@@ -81,8 +81,8 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
                 row.pop("linked")
     G0 = Ground.load(st.grd.path)
     pieces = [(r["pos"][0], r["pos"][1]) for r in ext]
-    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, centre, radius,
-                             cap=1e9, offset=offset, slope=SLOPE_DEG)
+    land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, centre, carry_radius or radius,
+                             cap=cap, offset=offset, slope=SLOPE_DEG)
     for r in land:
         r["why"] = f"the source's whole relief carried wholesale at offset {offset:g}"
     rep.update(pieces=len(ext), dropped=sum(1 for lr in ledger if lr["status"] == "dropped"))
@@ -256,6 +256,9 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("place_id")
     ap.add_argument("--offset", type=float, required=True)
+    ap.add_argument("--carry-radius", type=float, default=None,
+                    help="units: the relief carried only this far from the centre (the camp's own platform), faded to ours by it")
+    ap.add_argument("--cap", type=float, default=1e9, help="units: the most the carried relief changes our ground")
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--rooms", action="store_true", help="carry only the rooms' doors (the town as it stands)")
     ap.add_argument("--walks", default="", help="x,y of the hub: the source's walks carried as path rows")
@@ -277,7 +280,7 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
-    ext, ledger, land, rep = lay(st, a.offset)
+    ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap)
     print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
     if a.dry:
         return 0
