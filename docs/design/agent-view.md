@@ -174,7 +174,7 @@ own ops (`ref.move`, `ref.remove`, `ref.add`, the same kind of change as the own
 keeps its seat rule: its height moves with its seat's `dz`. Pieces are seated by sinking them into the ground;
 nothing is stretched. Add `--view <view verb...>` to any hand for the same look before and after, side by side.
 
-`place <base> <x,y[,z]> [--rot deg] [--above dz] [--kind k] --why "<why>"` adds one piece of any base (seat free at
+`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why>"` adds one piece of any base (seat free at
 z, or `above` dz over the ground there). `land <x,y> <radius> <dz> --why "<why>"` raises or lowers the ground inside
 the place's footprint, eased to nothing at the radius, as `land.jsonl` rows: a mound under legs that stop short, a
 ramp to an added door; a vertex past the land bound (`fit.patch_max`; carried ground by `draft.ground_cap`) is

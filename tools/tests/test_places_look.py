@@ -503,6 +503,9 @@ def test_a_hand_places_any_base_and_a_studio_op_as_one_stroke(tmp_path):
     assert r["why"] == "fish racks" and r["rot"][2] == pytest.approx(math.pi / 2, abs=1e-4)
     (op2,) = verbs._hand(sc, "place", ["B:pole", "1,2,300", "--why", "a pole"], sess)
     assert op2["ref"]["seat"]["mode"] == "free" and op2["ref"]["pos"][2] == 300 and op2["ref"]["id"] != r["id"]
+    assert r["scale"] == 1 and op2["ref"]["scale"] == 1
+    (op3,) = verbs._hand(sc, "place", ["B:tent", "1,2,300", "--scale", "0.56", "--why", "a tent on a small deck"], sess)
+    assert op3["ref"]["scale"] == pytest.approx(0.56)
     with pytest.raises(ValueError):
         verbs._hand(sc, "place", ["B:pole", "1,2,300"], sess)          # no reason, no piece
     f = tmp_path / "op.json"

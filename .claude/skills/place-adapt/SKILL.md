@@ -26,7 +26,7 @@ Write the reason per group in the place's notes.
   hides the Hist's pool. A unit moves whole (`look move <unit> dx dy dz`), then is seated (`place-site`).
 - **Add**: what the record and stories need that the source lacks: a building and its rooms, a cage, a jar stack, a
   trophy pole, market stalls, a footing rock, a flight of steps (`look steps <deck> <point>`), a single piece (`look
-  place <base> <x,y[,z]> --why "<why>"`, `look duplicate <thing> --why "<why>"`). Take additions from the place's own
+  place <base> <x,y[,z]> [--scale s] --why "<why>"`, `look duplicate <thing> --why "<why>"`). Take additions from the place's own
   source first, then one other source of the same culture; nothing levelled, no Nordic sign.
 
 ## A place sharing its source
