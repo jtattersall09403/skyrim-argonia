@@ -63,7 +63,8 @@ def key(place_id: str) -> str:
 
 def plugins_of(keys) -> list[str]:
     """The plugins a set of form keys come from, masters first in their load order."""
-    names = {k.rsplit(":", 1)[0] for k in keys if isinstance(k, str) and ":" in k} - {OUR_PLUGIN, "ArgoniaNewWorld.esm"}
+    from tools.places.own_bases import PLUGIN as OWN   # our own bases: written by the place layer, in no plugin to read
+    names = {k.rsplit(":", 1)[0] for k in keys if isinstance(k, str) and ":" in k} - {OUR_PLUGIN, "ArgoniaNewWorld.esm", OWN}
     return [m for m in MASTER_ORDER] + sorted(names - set(MASTER_ORDER))
 
 
