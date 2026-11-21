@@ -1,0 +1,78 @@
+{
+ "save_id": "agent-20261121T081404",
+ "place_id": "jal-veesa",
+ "name": "jv-joins-2: the mud-hut stair re-laid from its deck to the ground (its old flight's foot lay 98 in the ground after the plan)",
+ "at": "2026-11-21T08:14:04Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK0010000",
+    "base": "King of the Murkmire.esp:050D80",
+    "kind": "building",
+    "pos": [
+     -50880.12,
+     -506141.97,
+     963.63
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "walk": -124.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 86.09
+    },
+    "why": "brings jal-veesa.47YQ040NSG9CT1DBFHZ0WZ4B6P's deck (Vosh-Leera's House) down to the town's network: one flight of the kit's steps off the porch's free north edge"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:14:04Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK016STEPS",
+    "base": "King of the Murkmire.esp:050D80",
+    "kind": "building",
+    "pos": [
+     -50956.8,
+     -506148.03,
+     913.65
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT",
+     "dz": 87.73
+    },
+    "why": "steps from jal-veesa.2YTRFFZBV5P5YESC2KRJYEBXRT down to -50880,-505990",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T08:14:04Z"
+  }
+ ]
+}
