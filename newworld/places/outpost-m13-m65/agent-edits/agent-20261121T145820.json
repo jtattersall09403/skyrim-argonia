@@ -1,0 +1,334 @@
+{
+ "save_id": "agent-20261121T145820",
+ "place_id": "outpost-m13-m65",
+ "name": "the work barge's hull, masts and deck lanterns moored in the pool along the east bank, at the source's own waterline; the trial huts removed",
+ "at": "2026-11-21T14:58:20Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK002PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK002PLACE",
+    "base": "Black Marsh.esm:084B30",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -527400.0,
+     259.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK003PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK003PLACE",
+    "base": "Journey to Baan Malur.esp:04442B",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -528300.0,
+     337.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK004PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK004PLACE",
+    "base": "Journey to Baan Malur.esp:044433",
+    "kind": "building",
+    "pos": [
+     -98800.0,
+     -529200.0,
+     413.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK005PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK005PLACE",
+    "base": "Journey to Baan Malur.esp:04443F",
+    "kind": "building",
+    "pos": [
+     -97900.0,
+     -528300.0,
+     382.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK006PLACE",
+    "base": "Black Marsh.esm:0D8483",
+    "kind": "building",
+    "pos": [
+     -102250.0,
+     -527900.0,
+     68.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship, its hull at its own waterline",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK007PLACE",
+    "base": "Black Marsh.esm:0D8484",
+    "kind": "building",
+    "pos": [
+     -102269.7,
+     -527895.1,
+     0.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: its masts and rigging, as the source sets them on the hull",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK008PLACE",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -102337.8,
+     -527560.4,
+     193.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: its deck lantern by the hold door, as the source hangs it",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK009PLACE",
+    "base": "Skyrim.esm:02EE05",
+    "kind": "light",
+    "pos": [
+     -102335.2,
+     -527554.2,
+     227.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: the deck lantern's light",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK010PLACE",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -102072.4,
+     -527560.5,
+     193.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: its deck lantern by the hold door, as the source hangs it",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-21T14:58:20Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK011PLACE",
+    "base": "Skyrim.esm:02EE05",
+    "kind": "light",
+    "pos": [
+     -102067.5,
+     -527553.8,
+     226.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: the deck lantern's light",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-21T14:58:20Z"
+  }
+ ]
+}
