@@ -302,15 +302,9 @@
    "kind": "crime",
    "name": "Ashgate Landing",
    "jail": null,
-   "owing": {
-    "work": "outpost-m13-m65.S2AM7P262GYVA6ESBJWFZVR63Y",
-    "return": "outpost-m13-m65.KVD02EV6HSJQZN2BXFE5WNKFBK",
-    "bed": "outpost-m13-m65.H7T7ZWP0A1C70F4KPYSA1NQTJM",
-    "stolen": "outpost-m13-m65.8Y11H9B8FV5BAVYZK92TAC43W7",
-    "work_at": "the work stop 2 of the place's people share, on the nearest street with footing"
-   },
-   "law": "native",
-   "law_why": "Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters"
+   "owing": null,
+   "law": "none",
+   "law_why": "no one keeps law: no guards here (Argonian law, no cell: A Dunmer gang-master and his Owing reed-cutters)"
   },
   {
    "id": "outpost-m13-m65.guard",
@@ -343,20 +337,11 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K",
-    "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS"
+    "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K"
    ]
   },
   "missing": [],
-  "added": [
-   {
-    "station": "cooking-pot",
-    "id": "outpost-m13-m65.J0KTQNPTJ7JCY9BYWXXXAPV5ZS",
-    "base": "King of the Murkmire.esp:1AD601",
-    "space": "exterior",
-    "by": "outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S"
-   }
-  ],
+  "added": [],
   "rent_bed": null
  },
  "lights": {
