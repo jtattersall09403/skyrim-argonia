@@ -81,3 +81,12 @@ def test_moved_unit_patch_joining_nothing_falls_back_to_the_generator():
     on = lambda t: abs(np.mean([p[0] for p in t]) - 1962.7) < 1 and abs(np.mean([p[1] for p in t]) - 1877.3) < 1  # noqa: E731
     out, mv = cn.place_cells(ramp, gen, region, on_moved=[on])
     assert mv["moved_island"] == 0 and 1 in out[(0, 0)]["tags"]
+
+
+def test_a_stair_foot_whose_ground_moved_more_than_a_climb_is_meshed_again():
+    # two corners on the source's ground, two on a landing 200 up (a stair's run); our ground 50 lower at the foot
+    run = [{"verts": [[0, 0, 0], [256, 0, 0], [0, 256, 200], [256, 256, 200]], "tris": [[0, 1, 2, 0], [1, 3, 2, 0]]}]
+    got = carried_tris(PLACE, run, lambda x, y: 0.0, lambda x, y: 420.0, 5000.0)
+    assert got["stats"]["joints"] == 2 and not got["tris"]          # both triangles hold a moved foot corner
+    got = carried_tris(PLACE, run, lambda x, y: 0.0, lambda x, y: 450.0, 5000.0)
+    assert got["stats"]["joints"] == 0 and got["stats"]["kept"] == 2   # 20 lower: within a climb, kept

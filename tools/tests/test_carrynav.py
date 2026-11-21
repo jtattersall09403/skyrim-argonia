@@ -166,3 +166,16 @@ def test_ground_under_a_carried_deck_is_generated_where_the_source_had_none():
              and 850 < V[t].mean(axis=0)[1] < 1150 and V[t].mean(axis=0)[2] < 50]
     top = [g for t, g in zip(cell["tris"], cell["tags"]) if V[t].mean(axis=0)[2] > 250]
     assert under and set(under) == {-1} and top and set(top) == {0}
+
+
+def test_border_with_a_cell_not_rebuilt_keeps_that_cells_vertices_only():
+    """A cut through a big generated triangle leaves points on its edge; on a border with a cell that is not rebuilt
+    (whose triangles the world's links name) ours are taken back, so the two sides match edge for edge."""
+    car = [(t, 0, 0) for t in grid(600, 600, 3400, 3400, 120.0, 0.0)]
+    gen = gen_cells([(0, 0)], s=4096.0, z=0.0)
+    out = cn.build_cells(car, gen, cn.Region(cn.disk((2000, 2000), 1300, 24)),
+                         neighbours={(1, 0): [(4096.0, 0.0, 0.0), (4096.0, 4096.0, 0.0)]})
+    cell = out[(0, 0)]
+    border = sorted(round(float(p[1])) for p in cell["verts"] if abs(p[0] - 4096) < 0.5)
+    assert border == [0, 4096]
+    assert cell["stats"]["nonmanifold_edges"] == 0 and components(cell) == 1

@@ -1265,7 +1265,9 @@ their own cell (interior), as vanilla files them.
    thick, 2 area / perimeter, so the strips between the source's edge and Recast's along a wall stay out). A zone is where the source's mesh no longer holds: a source piece
    deleted (its true plan outline at the source pose, `shape.Posed`, grown by 64), moved (both outlines), a solid
    piece we added (its outline, grown), and each carried triangle a ground vertex of which followed our ground into
-   a slope past the walkable 45 degrees (that triangle; listed as `steep`). A carried vertex on the source's ground
+   a slope past the walkable 45 degrees (that triangle; listed as `steep`), and each carried triangle that joins a
+   deck or stair to the ground (corners on both) where the ground moved more than a climb (32; listed as `joints`):
+   the generator meshes that foot over the real piece and our ground. A carried vertex on the source's ground
    (within 40 of it) takes our patched ground's height (the land rows summed); a vertex on a deck keeps source +
    offset. A moved piece's own triangles (those resting on its walked surface at the source pose) move with it and
    replace the generated triangles on its surface in its new place, unless that patch shares no edge with the rest,

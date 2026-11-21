@@ -462,6 +462,65 @@ def collapse_short(m: Mesh, length: float = SNAP, cell=None) -> int:
     return gone
 
 
+def unsplit_border(m: Mesh, cell, sides: dict) -> int:
+    """On each border side of `cell` whose neighbour is not rebuilt (`sides`: (axis, line value) -> the neighbour's
+    border vertices there), take back every vertex of ours the neighbour does not have: merged into the next vertex
+    along the line where nothing flips. The neighbour's triangles and the links into them stay as they are, and our
+    border then matches its edge for edge (a cut through a big generated triangle leaves such points on its edge).
+    Returns how many went."""
+    def area(t):
+        a, b, c = (m.V[i] for i in t)
+        return 0.5 * ((b[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (b[1] - a[1]))
+    gone = 0
+    for (ax, line), pts in sides.items():
+        theirs = {round(float(p[1 - ax]), 1) for p in pts}
+        for _ in range(64):
+            on = sorted((m.V[i][1 - ax], i) for i in {i for t in m.T for i in t} if abs(m.V[i][ax] - line) < 0.5)
+            extra = [(u, i) for u, i in on if round(u, 1) not in theirs]
+            if not extra:
+                break
+            around: dict = defaultdict(list)
+            for ti, t in enumerate(m.T):
+                for i in t:
+                    around[i].append(ti)
+            done = False
+            for u, v in extra:
+                k = [j for j, (_, i) in enumerate(on) if i == v][0]
+                for j in (k - 1, k + 1):
+                    if not 0 <= j < len(on):
+                        continue
+                    keep = on[j][1]
+                    if not any(keep in m.T[ti] for ti in around[v]):
+                        continue
+                    ok = True
+                    for ti in around[v]:
+                        t = m.T[ti]
+                        if keep in t:
+                            continue
+                        nt = [keep if i == v else i for i in t]
+                        if area(nt) <= 0 or len(set(nt)) < 3:
+                            ok = False
+                            break
+                    if not ok:
+                        continue
+                    dead = {ti for ti in around[v] if keep in m.T[ti]}
+                    for ti in around[v]:
+                        if ti not in dead:
+                            m.T[ti] = [keep if i == v else i for i in m.T[ti]]
+                    keep_t = [ti for ti in range(len(m.T)) if ti not in dead]
+                    m.T = [m.T[i] for i in keep_t]
+                    m.F = [m.F[i] for i in keep_t]
+                    m.tag = [m.tag[i] for i in keep_t]
+                    gone += 1
+                    done = True
+                    break
+                if done:
+                    break
+            if not done:
+                break
+    return gone
+
+
 def drop_flat(m: Mesh) -> int:
     """Remove every flat triangle: under MIN_AREA in plan, or a corner within ON_EDGE of the edge across from it (a
     needle a cut leaves along a near-tangent boundary). The hole it leaves is closed by splitting the neighbour's long
@@ -682,7 +741,7 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
     for c, pts in (neighbours or {}).items():
         border[c] += [list(p) for p in pts]
     out = {}
-    splits = collapsed = 0
+    splits = collapsed = unsplit = 0
     for c in sorted(meshes):
         m = meshes[c]
         x0, y0 = c[0] * CELL, c[1] * CELL
@@ -699,6 +758,12 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
             splits += fix_t_junctions(m, extra)
             if not flats:
                 break
+        sides = {}
+        for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
+                            ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
+            if o in (neighbours or {}):
+                sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
+        unsplit += unsplit_border(m, c, sides)
         got = finish_cell(m)
         if got["tris"]:
             out[c] = got
@@ -706,6 +771,7 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
         out[c]["stats"]["snapped"] = snapped
         out[c]["stats"]["splits"] = splits
         out[c]["stats"]["collapsed"] = collapsed
+        out[c]["stats"]["unsplit"] = unsplit
     return out
 
 

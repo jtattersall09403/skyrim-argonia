@@ -1479,7 +1479,8 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
     if carry is not None:   # a wholesale place's own mesh in its footprint (carried_navmesh); its links are made below
         seam["carried"] = carry(mine)
     seam["one_way_unlinked"] = unlink_one_way(mine, kept)
-    seam["joined_edges"] = join_seams(mine)
+    # a carried cell meets a generated one up to a climb and a detail error apart in height (carrynav.WELD_Z)
+    seam["joined_edges"] = join_seams(mine, 48.0 if carry is not None else 32.0)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
 
 

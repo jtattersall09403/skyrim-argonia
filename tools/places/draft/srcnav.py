@@ -24,6 +24,7 @@ from pathlib import Path
 import numpy as np
 
 ON_GROUND = 40.0
+JOINT_DZ = 32.0   # tools.navmesh.params.AGENT_CLIMB
 CELL = 4096.0
 
 
@@ -92,25 +93,28 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
     """Every source triangle whose middle lies within `radius` of the anchor, in our coordinates, flat (the build cuts
     them on our cell lines and the footprint): {tris: [(tri, flags, ground_moved)], steep: [tri], stats}. Rule 1 as
     `carry`; a triangle a ground vertex of which moved (our ground differs there) and is now steeper than the walkable
-    angle is dropped and listed in `steep` (the build meshes that patch again)."""
+    angle, or that joins a deck or stair to the ground (corners on both) where the ground moved more than a climb
+    (JOINT_DZ), is dropped and listed in `steep` (the build meshes that patch again, over the real pieces and ground)."""
     from tools.places.carrynav import MAX_SLOPE_DEG, slope_deg
     ours, off = _transform(place)
     centre = place["fit"]["anchor"]
-    st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "regrounded": 0, "ground_moved_max": 0.0}
+    st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "joints": 0, "regrounded": 0, "ground_moved_max": 0.0}
     tris, steep = [], []
     for m in navs:
-        V, moved = [], []
+        V, moved, on = [], [], []
         for x, y, z in (v[:3] for v in m["verts"]):
             X, Y, Z = ours(x, y, z)
             g = src_ground(x, y)
             dz = 0.0
-            if g is not None and abs(z - g) <= ON_GROUND:
+            grounded = g is not None and abs(z - g) <= ON_GROUND
+            if grounded:
                 h = our_ground(X, Y)
                 if h is not None:
                     dz = (h + (z - g)) - Z
                     Z = h + (z - g)
             V.append((X, Y, Z))
             moved.append(abs(dz))
+            on.append(grounded)
         for t in m["tris"]:
             st["tris_in"] += 1
             tri = [V[i] for i in t[:3]]
@@ -122,6 +126,11 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
             st["ground_moved_max"] = round(max(st["ground_moved_max"], dz), 1)
             if dz > 1.0:
                 st["regrounded"] += 1
+                mixed = len({on[i] for i in t[:3]}) == 2
+                if mixed and dz > JOINT_DZ:     # a deck's or stair's foot whose ground moved more than a climb
+                    st["joints"] += 1
+                    steep.append(tri)
+                    continue
                 if slope_deg(tri) > MAX_SLOPE_DEG:
                     st["steep"] += 1
                     steep.append(tri)
