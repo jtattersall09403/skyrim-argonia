@@ -211,6 +211,8 @@ def end_report(e: dict, ground, pieces, skip, boxes) -> dict:
     held = end_support(pieces, x, y, z, skip, boxes)
     under = float(e["under"]) if e.get("under") is not None else z
     over = None if g is None else round(under - g, 1)
+    if over is not None and over > END_TOL and e.get("reach") is not None and e["reach"] - g <= END_TOL:
+        over = round(float(e["reach"]) - g, 1)    # the end stands on its own legs (a flight's post under its head)
     w = ground.water(x, y) if hasattr(ground, "water") else None
     if w is not None and under <= w + END_TOL and g is not None and g < w:
         over = min(over, round(under - w, 1))      # an end at or in the water (a dock's steps down): it meets the water
@@ -368,8 +370,12 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
         g = gr.get(p["id"])
         top = g["top"] if g else float(boxes[p["id"]][1][2])
         # buried: its top under the ground even where the ground under it is lowest (a rock half in a bank shows)
-        sunk = g and g["gmin"] is not None and not out_of_reach(p) and \
-            is_buried(g["low"], top, g["gmin"], p.get("kind") in PLANTS, is_part(p))
+        if p.get("kind") in PLANTS:   # a plant: most of it under the ground by height AND cell by cell over its plan
+            sunk = g and g["gmin"] is not None and not out_of_reach(p) and is_buried(g["low"], top, g["gmin"], True) \
+                and shape.posed(p).sunk_share(ground) > 0.5
+        else:
+            sunk = g and g["gmin"] is not None and not out_of_reach(p) and \
+                is_buried(g["low"], top, g["gmin"], False, is_part(p))
         if sunk:
             out.append({"id": p["id"], "fault": "buried", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"],

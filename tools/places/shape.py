@@ -416,6 +416,25 @@ class Posed:
                 "z": round(float(best[3]), 1), "ground": round(float(best[4]), 1),
                 "gmin": round(float(min(gs)), 1), "gmax": round(float(max(gs)), 1)}
 
+    def sunk_share(self, ground) -> float:
+        """How much of the piece is in the ground, cell by cell over its plan (every second cell): the mean share of
+        each cell's height span [underside, top] under the ground there. A plant mostly in the ground scores high; a
+        stem reaching down under fronds that stand in the air does not."""
+        U, T = self.under, self.top
+        if not U.size:
+            return 0.0
+        ii, jj = np.nonzero(~np.isnan(U))
+        sel = ((ii + jj) % 2 == 0) if len(ii) > 8 else np.ones(len(ii), bool)
+        ii, jj = ii[sel], jj[sel]
+        xs, ys = self.cell_xy(ii, jj)
+        got = []
+        for x, y, u, t in zip(xs.tolist(), ys.tolist(), U[ii, jj].tolist(), T[ii, jj].tolist()):
+            g = ground.height(x, y)
+            if g is None:
+                continue
+            got.append(min(max((g - u) / (t - u), 0.0), 1.0) if t > u else float(t < g))
+        return float(np.mean(got)) if got else 0.0
+
     # derived parts
     def feet(self, band: float = 48.0, radius: int = 2) -> list[dict]:
         """Where the mesh comes lowest: connected cells that are local minima of the underside (within 2 cells), each
@@ -451,7 +470,7 @@ class Posed:
         its long axis (PCA of the walk), each end line's middle (x, y, z: the median walked height there: the planks,
         not a rail's top), its width across,
         the outward axis, `under`: the underside of its deck there (the lowest point within a cell of the end and
-        DECK_DEPTH under the walk) and `reach`: the lowest point of anything of it there (its own legs). Lowest first:
+        DECK_DEPTH under the walk) and `reach`: the lowest point of anything of it within LEG_REACH (its own legs). Lowest first:
         a stair's FOOT, then its HEAD."""
         P, nz = self.P, self.N[:, 2]
         W = P[nz >= WALK_NZ]
@@ -472,13 +491,14 @@ class Posed:
             side = (pts[:, :2] - c) @ np.array([-ax[1], ax[0]])
             mid = c + ax * ext + np.array([-ax[1], ax[0]]) * (side.max() + side.min()) / 2
             near = P[np.abs(tall - ext) <= CELL]
+            legs = P[np.abs(tall - ext) <= LEG_REACH]
             zw = float(np.median(pts[:, 2]))
             deck = near[(near[:, 2] <= zw + 1.0) & (near[:, 2] >= zw - DECK_DEPTH)] if len(near) else near
             out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(float(np.median(pts[:, 2])), 1)],
                         "width": round(float(side.max() - side.min()), 1),
                         "out": [round(float(sgn * ax[0]), 4), round(float(sgn * ax[1]), 4)],
                         "under": round(float(deck[:, 2].min()), 1) if len(deck) else None,
-                        "reach": round(float(near[:, 2].min()), 1) if len(near) else None})
+                        "reach": round(float(legs[:, 2].min()), 1) if len(legs) else None})
         out.sort(key=lambda e: e["at"][2])
         return out
 
@@ -639,6 +659,7 @@ MEET_BACK = 64.0       # a surface reaching this far back under the end still co
 LOOK_AHEAD = 192.0     # how far past an end a surface it should meet is looked for
 SINK = 48.0            # an end's underside this far in the ground is buried
 DECK_DEPTH = 64.0      # a walked span's deck is at most this thick under its walk: lower parts are its own legs
+LEG_REACH = 64.0       # its own legs within this of an end (along the span) hold that end
 
 
 def walk_points(s: Posed) -> np.ndarray:

@@ -148,5 +148,5 @@ globs = ["tools/places/classify.py", "tools/places/truth.py", "tools/places/unit
          "tools/places/look/geom.py", "tools/places/look/scene.py", "tools/places/look/mesh.py",
          "tools/places/draft/geom.py", "tools/places/draft/obvious.py", "tools/places/draft/overlap.py",
          "tools/places/draft/sap.py", "tools/places/check.py", "tools/places/build.py",
-         "tools/tests/fixtures/truth_place.json"]
-tests = ["tools/tests/test_places_truth.py"]
+         "tools/tests/fixtures/truth_place.json", "tools/places/shape.py", "tools/tests/fixtures/truth_meshes.json"]
+tests = ["tools/tests/test_places_truth.py", "tools/tests/test_places_shape.py"]

@@ -29,6 +29,7 @@ from pathlib import Path
 
 import numpy as np
 
+from tools.places import shape
 from tools.places.look import geom
 
 MARGIN = 30.0          # a floor stands this far over the highest ground under its footprint
@@ -46,6 +47,9 @@ from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, RAIL_WO
                                    SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, GROUND_CLASSES, kind_of, post as _post)
 from tools.places.classify import LOOSE_KINDS as LOOSE  # noqa: E402
 SPANS = ("walkway", "bridge", "dock")
+
+
+FOOT_BAND = 48.0   # a mesh's feet within this of its lowest point are the feet it stands on
 
 
 # ---------- pieces ----------
@@ -484,9 +488,8 @@ def measure(pl: Place, un: dict, dz: dict | None = None, shift=(0.0, 0.0)) -> di
     # footprint: the body and decks (a walkway: its decks)
     fp_ids = (body + decks) or list(P)
     fp_pts = []
-    for i in fp_ids:
-        for x, y, _ in geom.bottom_points(P[i], 4):
-            fp_pts.append((x, y))
+    for i in fp_ids:   # the meshes' own footprint cells (every second one: the ground's grid is 128)
+        fp_pts += [(float(x), float(y)) for x, y, _ in shape.posed(P[i]).cells("under")[::2]]
     gs = [g for g in (G.height(x + shift[0], y + shift[1]) for x, y in fp_pts) if g is not None]
     water = [w for w in (G.water(x + shift[0], y + shift[1]) for x, y in fp_pts[:: max(1, len(fp_pts) // 8)]) if w is not None]
     gmin, gmax = (min(gs), max(gs)) if gs else (None, None)
@@ -503,8 +506,8 @@ def measure(pl: Place, un: dict, dz: dict | None = None, shift=(0.0, 0.0)) -> di
     if not foot_ids and un["kind"] not in ("walkway", "bridge"):
         foot_ids = body or [i for i in roles.get("on", []) if i in P][:1]
     for i in foot_ids:
-        lo, hi = box(i)
-        pts = geom.bottom_points(P[i], 2)
+        S = shape.posed(P[i])   # the mesh's feet: where it comes lowest (posts, legs, a body's bottom), not box corners
+        pts = [(f["at"][0], f["at"][1], f["z"]) for f in S.feet() if f["z"] <= S.low() + FOOT_BAND][:8]
         for x, y, z in pts:
             z = float(z) + dz.get(i, 0.0)
             g = gh(float(x), float(y))
@@ -519,10 +522,10 @@ def measure(pl: Place, un: dict, dz: dict | None = None, shift=(0.0, 0.0)) -> di
     out["feet"] = feet
     steps = []
     for i in [i for i in roles.get("steps", []) if i in P]:
-        ends = geom.end_points(P[i])
-        e = min(ends, key=lambda q: q[2])
+        ends = geom.end_points(P[i])   # the mesh's foot line, at its underside
+        e = min(ends, key=lambda q: q[2]) if len(ends) else geom.bottom_points(P[i])[0]
         lo, hi = box(i)
-        z = float(lo[2])
+        z = float(e[2]) + dz.get(i, 0.0)
         g = gh(float(e[0]), float(e[1]))
         steps.append({"piece": i, "foot": _r(z), "ground": _r(g), "over": _r(z - g) if g is not None else None,
                       "height": _r(float(hi[2] - lo[2]))})
