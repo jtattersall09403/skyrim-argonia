@@ -76,3 +76,11 @@ def test_two_containers_of_one_ref_in_different_spaces_load_and_stay_apart():
     assert set(st.containers) == {("h.10", "R"), ("h.11", "R")}
     assert [i.item_id for i in st.container_items[("h.10", "R")]] == ["A"]
     assert [i.item_id for i in st.container_items[("h.11", "R")]] == ["B"]
+
+
+def test_stock_reads_no_plugin_for_our_own_bases(tmp_path):
+    from tools.places.own_bases import PLUGIN
+    from tools.places.stock.plan import plugins_of
+    from tools.places.stock.records import Records
+    assert PLUGIN not in plugins_of([f"{PLUGIN}:000A01", "Skyrim.esm:000001"])
+    assert Records.load([PLUGIN], [str(tmp_path)]).raw == {}      # never looked up as a file
