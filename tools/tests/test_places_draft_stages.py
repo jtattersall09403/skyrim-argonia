@@ -33,6 +33,8 @@ def rows(p: Path) -> list[dict]:
 
 @pytest.mark.parametrize("stage", [s for s in stages.STAGES if s != "streets"])
 def test_a_stage_on_a_settled_place_changes_nothing(fx, stage):
+    if stage == "ground":       # not part of a whole draft: a place carries its ground by choice; once carried, settled
+        stages.run(stage, "fx", fx / "places", fx / "bundles", log=lambda *_: None)
     before = stages.snapshot(fx / "places/fx")
     counts = stages.run(stage, "fx", fx / "places", fx / "bundles", log=lambda *_: None)
     assert counts == {}, counts
@@ -91,7 +93,7 @@ def test_a_whole_draft_is_refused_over_the_owners_saves(fx, capsys):
     assert D.refusal("fx", None, fx / "places") is None          # a save not finalised is no edit of record
     (pdir / "edits/s1.json").write_text(json.dumps({"save_id": "s1", "final": True, "ops": []}))
     why = D.refusal("fx", None, fx / "places")
-    assert "s1" in why and "draft <fit|pieces|seating" in why and "--force" in why
+    assert "s1" in why and "draft <fit|pieces|ground|seating" in why and "--force" in why
     assert D.refusal("fx", "", fx / "places") == why             # --force with no reason is still refused
     assert D.refusal("fx", "the ground bundle changed under the whole town", fx / "places") is None
 

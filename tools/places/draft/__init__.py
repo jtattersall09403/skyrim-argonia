@@ -2,7 +2,8 @@
 first draft. A place that holds the owner's finalised studio saves is never drafted whole again without
 `--force "<why no narrow stage can be correct>"`.
 `draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that
-stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, pieces, seating, clearance,
+stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, ground (`--dry` prints what
+it would do), pieces, seating, clearance,
 streets (also `join`), people, lights, stations, jail, primitives, hang, sap, add, names. A whole draft places its
 things in rooms (`add`) and names its rooms (`names`), then ends with `primitives`, the join and then `jail` (the
 jail's release point is the arrival the join lays).
@@ -46,6 +47,11 @@ def main(argv: list[str]) -> int:
         from tools.places.draft.structures import main as m
         return m(argv[1:])
     from tools.places.draft import stages
+    if argv[0] == "ground" and "--dry" in argv:
+        from tools.places.draft import ground
+        ids = [a for a in argv[1:] if not a.startswith("--")]
+        ground.apply(stages.Standing(ids[0]), dry=True)
+        return 0
     if argv[0] == "join" or argv[0] in stages.STAGES:
         if len(argv) != 2:
             print(USAGE, file=sys.stderr)

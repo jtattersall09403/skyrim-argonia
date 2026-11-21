@@ -16,8 +16,22 @@ Step 3 of the place path ([place-system](../place-system/SKILL.md)). Stages: `fi
    at its true size. If the record's position does not serve, set `draft.anchor` `[x, y]` to the point the
    source's middle should take. Set `draft.rot_deg` only when the search turns the town against the way it faces
    its water.
-3. Our water and land never change to fit the source. Ground a place needs (a pad, a rise, a landing) is asked for
-   in the record and shaped by the world's terrain (skill `world-build`).
+3. Our water never changes to fit the source, and our land changes only inside the place's footprint (below).
+   Ground a place needs beyond its footprint (a pad, a landing) is asked for in the record and shaped by the world's
+   terrain (skill `world-build`).
+
+## 1b. Carry the source's ground, then plan the units on it
+
+The source's builder shaped the land under the town and built on it, so the town fits only the ground it stood on.
+`python -m tools.places draft ground <place_id>` (`--dry` first: read the relief, the band, the source-water area
+and the largest change) carries the source's relief under the place's footprint (the hull of the carried pieces,
+grown 256) as land rows `by` "ground", blended into our ground over a band no steeper than the source's own
+steepest slope (or 35 degrees), each cluster reading the source through its own map from the fit. Nothing outside
+the footprint and band changes, no point crosses our water line, no change exceeds 600, the source's water is not
+brought (its area is reported: pieces that stood in it need a decision), and no cell of another place is touched.
+Then put the carried pieces at the source's own levels (source height minus the source's reference level, plus
+ours), run `draft sap` again (its hollow is dug on top), and plan the units on the carried ground (section 3). The
+look tool, `units`, the seat and the build all read the patched ground from `land.jsonl`.
 
 ## 2. Read the fit
 

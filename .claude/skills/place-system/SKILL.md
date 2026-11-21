@@ -34,7 +34,7 @@ never write mod record or asset content into a place file.
 |---|---|---|
 | 1 | The place's record: what it is, what it promises, its danger | `place-research` |
 | 2 | Choose the source, read it, write `draft.plan`, judge each source structure | `place-plan` |
-| 3 | Where it sits on our land; fit, seating, sinking whole structures, clearance, pieces dropped or replaced | `place-site` |
+| 3 | Where it sits on our land; fit, the source's ground carried under it (`draft ground`), units planned on it, seating, clearance, pieces dropped or replaced | `place-site` |
 | 4 | Streets, decks, bridges, flights, joins and door arrivals | `place-streets` |
 | 5 | Rooms: copied whole or in part, added buildings, inner doors, room names | `place-rooms` |
 | 6 | Beds, routines, guards, services, travel stops, the law and the jail | `place-routines` |

@@ -13,7 +13,8 @@ the offset uncovers a tenth more of it. Its surface is seated `stilts` over its 
 above), so a person at the rim looks down onto sap, never up over a lip. The stage's hollow (a land patch, `by`
 "sap") lowers the ground inside the outline to under the surface, and the rim one vertex round it to the surface
 (RIM_LIP over it), so the rim is level all round; never raised, never across the waterline, no vertex lowered more
-than PATCH_MAX and no vertex of a cell another patch row holds. Where the ground falls more than PATCH_MAX across
+than PATCH_MAX and no vertex of a cell another patch row holds (the carried ground's rows excepted: the hollow is
+dug on top of them, and the build adds a vertex's changes). Where the ground falls more than PATCH_MAX across
 the pool, the high side keeps a bank of what is left and the stage says so (`banks`). The seat stays where it is
 after the dig (nothing is dug below it).
 
@@ -265,7 +266,7 @@ def apply(st, log=print) -> None:
     pools = [r for r in st.ext if r.get("base") == POOL]
     seat_all(pools, G)
     banks: list = []
-    hollow = dish(G, st.ext, {**st.bases, **bases}, {tuple(r["cell"]) for r in other}, banks)
+    hollow = dish(G, st.ext, {**st.bases, **bases}, {tuple(r["cell"]) for r in other if r.get("by") != "ground"}, banks)
     st.files["land"][:] = other + hollow
     G.apply_patches(hollow)
     st.G = G
