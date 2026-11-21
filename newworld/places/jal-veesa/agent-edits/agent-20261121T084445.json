@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T084445",
+ "place_id": "jal-veesa",
+ "name": "a jungle tree's root tips (3CT69FJ6, ArgoniaTreeJungle09) lay as two black flat quads on the ground by dock.07 (the source's own root splay grazing our ground): tree sunk 40",
+ "at": "2026-11-21T08:44:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.3CT69FJ6FT571EZG462SEFBCM3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55697.53,
+     -508030.2,
+     608.35
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55697.53,
+     -508030.2,
+     568.35
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T08:44:45Z"
+  }
+ ]
+}
