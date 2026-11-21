@@ -26,7 +26,8 @@
    "why": "Met. Eight long hanks of grey moss hang from the log walk's edge down the weir's downstream face into the water (two more on the upstream face); the shallows below are where the quest's two young crocodiles lie, and the quest's own hank of Sithis' beard hangs among them. Seen from the landing and from the log walk.",
    "fit": "The woven weir itself, picked from the log walk or from its bank end.",
    "narrow": "Yes: ten hanging-moss pieces hung on the weir's fences by hand (look place).",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": "A fresh reader shown spot A (2026-11-21) called it a guarded Argonian camp and took its four woven fences, two bridges (the log walk) and the Hanging Moss (x11) for the woven weir and the moss; it saw no water or crocodiles because the sheet names neither water nor the quest's own creatures, and it could not tell the moss is called Sithis' beard: Dralin names it and the quest's marker points at it (main-plot quest 1-2)."
   }
  ]
 }
