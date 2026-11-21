@@ -18,21 +18,17 @@ END_TOL = 48.0              # a bridge or walkway end this far over the ground w
 DOOR_TOL = 64.0             # the ground before a door within this of the door's sill: walkable
 SIDES = {"n": 90.0, "ne": 45.0, "e": 0.0, "se": -45.0, "s": -90.0, "sw": -135.0, "w": 180.0, "nw": 135.0}
 ELEV = {"eye": None, "oblique": 32.0, "high": 60.0, "top": 89.0}
-SPAN_WORDS = ("bridge", "walkway", "dock", "boardwalk", "pier", "plank", "gangway", "stair", "ramp", "deck")
-HANG_WORDS = ("lantern", "sconce", "rope", "chain", "hang", "banner", "sign", "lamp", "bell", "cage", "net", "candle")
-WALL_WORDS = HANG_WORDS + ("window",)   # fixed to a wall or post: held by the solid its box touches
 TOUCH = 8.0                 # a wall-fixed thing's box this close to a solid's box touches it
-PLANTS = {"plant", "groundcover", "flora"}   # buried only when most of its height is under the ground
-STRUCTURAL = {"building", "static", "furniture", "door", "container", "activator"}
 DRAUGHT = 160.0            # a boat's hull may dip this far under the water surface and still float
 BURIED = 64.0              # a piece whose top is this far under the ground is lost in it
 SUNK_SHARE = 0.6           # a plant is buried when more than this share of its height is under even the lowest ground under it
 PART_SHARE = 0.5           # a door, window or floor is buried when more than this share of it is
-PART_WORDS = ("door", "window", "floor")
-HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")   # a vessel: whatever stands inside its box rests on its deck
+from tools.places.classify import (HANG_WORDS, HULL_WORDS, PART_WORDS, WALL_WORDS,  # noqa: E402  the one classifier's lists
+                                   WALKED_SPAN_WORDS as SPAN_WORDS, PLANT_KINDS as PLANTS,
+                                   STRUCTURAL_KINDS as STRUCTURAL, NO_SOLID_KINDS as NO_SOLID)
+from tools.places.classify import effect as _effect  # noqa: E402
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
 REACH = 160.0               # a supporter's top may rise this far past what rests on it (a post through a deck)
-NO_SOLID = {"light", "marker", "sound", "actor", "groundcover", "plant"}
 
 
 # ---------- pieces ----------
@@ -74,8 +70,7 @@ def is_span(p: dict) -> bool:
 
 def effect(p: dict) -> bool:
     """A game effect (mist, fire, a waterfall's spray): the studio draws none and nothing need hold it up."""
-    m, e = str(p.get("model") or "").lower().replace("\\", "/"), str(p.get("edid") or "").lower()
-    return m.startswith("effects/") or e.startswith("fx")
+    return _effect(p)
 
 
 def wall_fixed(p: dict) -> bool:
