@@ -1,0 +1,1644 @@
+{
+ "save_id": "agent-20261121T211800",
+ "place_id": "helstrom",
+ "name": "a house of a source cluster whose houses stood at different heights on the source's hill, laid at its cluster's height: brought, with its door, lights and steps, to stand on the carried ground at its own height over its own ground",
+ "at": "2026-11-21T21:18:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.ZFPKBRSJPTKFG3K1Z1T6235DC3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44250.17,
+     -623641.18,
+     535.95
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44250.17,
+     -623641.18,
+     -453.55
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6QVGD24CW8YGNYQMPJKR8TV9BW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44312.75,
+     -623711.34,
+     257.13
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44312.75,
+     -623711.34,
+     -732.37
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.C5WWYN4F2Z79097WNBZABE3EVP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44699.33,
+     -623690.9,
+     1474.57
+    ],
+    "rot": [
+     0,
+     0,
+     8.83599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44699.33,
+     -623690.9,
+     485.07
+    ],
+    "rot": [
+     0,
+     0,
+     8.83599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.F6E29WXSQMRMNZW189S8ZVP9JG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44237.36,
+     -623653.07,
+     462.89
+    ],
+    "rot": [
+     -3.0036502,
+     0.03206972,
+     6.57979
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44237.36,
+     -623653.07,
+     -526.61
+    ],
+    "rot": [
+     -3.0036502,
+     0.03206972,
+     6.57979
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.JH09XJC68VF3HNXMSW7PEYHT4J",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     1408.28
+    ],
+    "rot": [
+     0,
+     0,
+     10.41919
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     418.78
+    ],
+    "rot": [
+     0,
+     0,
+     10.41919
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.RCE6ATW1YGEXEYC7RKYJ201G4F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44257.79,
+     -623652.32,
+     1534.46
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44257.79,
+     -623652.32,
+     544.96
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.74Z82C6WE1QR64B7X6N7PYS5D2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45352.41,
+     -624144.26,
+     1635.04
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45352.41,
+     -624144.26,
+     25.24
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.YVSMXR1RR3B2JBRXR349R4G63E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49631.6,
+     -612240.57,
+     421.36
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49631.6,
+     -612240.57,
+     -866.64
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6FCNG8A3WSR1YD4MTAZA70XHDD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49549.92,
+     -612273.7,
+     719.07
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49549.92,
+     -612273.7,
+     -568.93
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.8G0W6WGVFYPYQSBA3QY9D2XFWZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49780.68,
+     -611893.58,
+     1905.63
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49780.68,
+     -611893.58,
+     617.63
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HB02QFEQDTRGVS7ATGK2TN9E4K",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49997.64,
+     -611862.0,
+     2042.32
+    ],
+    "rot": [
+     0,
+     0,
+     10.91918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49997.64,
+     -611862.0,
+     754.32
+    ],
+    "rot": [
+     0,
+     0,
+     10.91918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.JC5FH223GR0VM0WJ449DAH21T7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49986.55,
+     -611866.8,
+     1777.77
+    ],
+    "rot": [
+     0,
+     0,
+     9.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49986.55,
+     -611866.8,
+     489.77
+    ],
+    "rot": [
+     0,
+     0,
+     9.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.S2D67WK9GVM69K4P6DKN2BXN23",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49550.96,
+     -612238.85,
+     1983.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49550.96,
+     -612238.85,
+     695.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TAEDAZ4VSCS9GYM8SX0FSGXZSJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49537.26,
+     -612254.05,
+     627.12
+    ],
+    "rot": [
+     -3.0682387,
+     0.12122558,
+     5.78203
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49537.26,
+     -612254.05,
+     -660.88
+    ],
+    "rot": [
+     -3.0682387,
+     0.12122558,
+     5.78203
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.Y104RDFNPZM7Z44FZ790ASBSAY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50055.45,
+     -609410.82,
+     367.0
+    ],
+    "rot": [
+     0,
+     0,
+     7.836
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50055.45,
+     -609410.82,
+     218.9
+    ],
+    "rot": [
+     0,
+     0,
+     7.836
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.1TS7A5V3QWCH5CNQ90WDJE5874",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50053.33,
+     -609403.84,
+     188.81
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50053.33,
+     -609403.84,
+     40.71
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.M0HYWEEZ2S3WJRNWSA9769G4KA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49967.88,
+     -609372.93,
+     360.98
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49967.88,
+     -609372.93,
+     212.88
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.SKZ2EVZ4XBQMGZ9T8SGK769RT7",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49810.77,
+     -609191.8,
+     387.2
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49810.77,
+     -609191.8,
+     239.1
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.WZ2WV1ZWNVGW1A8F3KGC1DM72Y",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50827.45,
+     -614308.61,
+     568.29
+    ],
+    "rot": [
+     3.068238,
+     0.12122512,
+     10.97312
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50827.45,
+     -614308.61,
+     417.89
+    ],
+    "rot": [
+     3.068238,
+     0.12122512,
+     10.97312
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.0MNWRB7W3Y0PHB0CMTTNSDDE74",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50859.72,
+     -614218.95,
+     362.53
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50859.72,
+     -614218.95,
+     212.13
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.1H9N9V96ZSYQVW3WTNDFFMHGAM",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50810.6,
+     -614305.21,
+     641.41
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50810.6,
+     -614305.21,
+     491.01
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2CTHZTHZCTSZ2YWCKFWFYEEC7F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50820.44,
+     -614289.39,
+     780.96
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50820.44,
+     -614289.39,
+     630.56
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.8J7VRXQGC2S9SX1T72SAH74P1Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51240.77,
+     -614318.15,
+     668.47
+    ],
+    "rot": [
+     0,
+     0,
+     5.936
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51240.77,
+     -614318.15,
+     518.07
+    ],
+    "rot": [
+     0,
+     0,
+     5.936
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.V8C5N1RP6KG3RDKK2AV344DS1X",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51339.73,
+     -614113.68,
+     868.44
+    ],
+    "rot": [
+     0,
+     0,
+     5.83599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51339.73,
+     -614113.68,
+     718.04
+    ],
+    "rot": [
+     0,
+     0,
+     5.83599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TNG8EDV0X30N2EXC8WMW5AS456",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50771.55,
+     -611011.17,
+     934.31
+    ],
+    "rot": [
+     0,
+     0,
+     7.23599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50771.55,
+     -611011.17,
+     -345.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.23599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.NZ0SG8YJDSSAN3DVH1HW4PM05B",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52385.21,
+     -609598.8,
+     611.69
+    ],
+    "rot": [
+     0.02013822,
+     0.08221734,
+     8.82852
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52385.21,
+     -609598.8,
+     62.49
+    ],
+    "rot": [
+     0.02013822,
+     0.08221734,
+     8.82852
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.44MTVB8X2WWTVPRS80BH5N6H06",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52424.51,
+     -609631.02,
+     782.61
+    ],
+    "rot": [
+     0,
+     0,
+     8.836
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52424.51,
+     -609631.02,
+     233.41
+    ],
+    "rot": [
+     0,
+     0,
+     8.836
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6S0M50ADSQBDQX7WQTQKMZK04E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52799.76,
+     -609872.8,
+     775.26
+    ],
+    "rot": [
+     0,
+     0,
+     5.75281
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52799.76,
+     -609872.8,
+     226.06
+    ],
+    "rot": [
+     0,
+     0,
+     5.75281
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 28,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.8CFQEXA9QAGK942B5KFZM57VZN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51733.01,
+     -612905.59,
+     1273.37
+    ],
+    "rot": [
+     0,
+     0,
+     9.71918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51733.01,
+     -612905.59,
+     479.47
+    ],
+    "rot": [
+     0,
+     0,
+     9.71918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 29,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.629VJPNRKGY700ZMPWA023W23D",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -46604.16,
+     -608642.15,
+     577.74
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -46604.16,
+     -608642.15,
+     398.44
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 30,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50641.76,
+     -610226.81,
+     773.84
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50641.76,
+     -610226.81,
+     -390.46
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 31,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2XKEN1M2M7W8WYCGBKNQPPFD0R",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50948.94,
+     -611900.52,
+     2156.47
+    ],
+    "rot": [
+     0,
+     0,
+     9.11918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50948.94,
+     -611900.52,
+     876.47
+    ],
+    "rot": [
+     0,
+     0,
+     9.11918
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 32,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.N87NY0E4YS74BKPDPCXF6RYJTE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54673.33,
+     -601375.47,
+     -623.9
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54673.33,
+     -601375.47,
+     117.3
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 33,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.E8B99MX1CJD8QZ0TCWV8SW3WV4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54735.64,
+     -601817.51,
+     -616.54
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54735.64,
+     -601817.51,
+     124.66
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 34,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.KBKMCC6TTGAFAX3CK99J963YJX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54738.92,
+     -601838.45,
+     -793.1
+    ],
+    "rot": [
+     0,
+     0,
+     11.11919
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54738.92,
+     -601838.45,
+     -51.9
+    ],
+    "rot": [
+     0,
+     0,
+     11.11919
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 35,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.8F1TH8FD9SHQ127M8TC5X6PE4E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54916.77,
+     -599916.42,
+     -309.36
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54916.77,
+     -599916.42,
+     -435.86
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 36,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.048H9FQV5HRRDBBPHSDA3CT9K2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55017.88,
+     -599497.54,
+     -344.76
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55017.88,
+     -599497.54,
+     -471.26
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 37,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.32V773K3TT2KFAJA6N6GFQ0V3K",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55785.12,
+     -599705.91,
+     -505.23
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55785.12,
+     -599705.91,
+     -601.83
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 38,
+   "stroke": 1,
+   "at": "2026-11-21T21:18:00Z"
+  }
+ ]
+}
