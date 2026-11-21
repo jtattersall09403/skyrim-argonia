@@ -5,6 +5,12 @@
   "kingofthemurkmire.altenmeerhleellocation"
  ],
  "draft": {
+  "room_names": {
+   "AltenGeneralStore": {
+    "name": "Jetty Market",
+    "why": "the market the record promises at the jetty (trader-general: reed boats, mats, rope and dried fish at the jetty market); the source's name, Meerhleel Market, names the source town"
+   }
+  },
   "add": [
    {
     "base": "King of the Murkmire.esp:15731E",

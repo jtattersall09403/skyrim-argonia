@@ -190,7 +190,7 @@ things:
   kind: thing
   name: Jal-Veesa's Hist
   source: the town's Hist in its pool, dry and dark with dead roots round it (main-plot §9 sick Hist)
-  where: Jal-Veesa, the pool in the middle of the town
+  where: Jal-Veesa, on its mound in the middle of the town, its sap pool at its foot
 placements:
 - ref: thing.mn02.sithis-beard
   kind: thing
@@ -290,7 +290,7 @@ placements:
   anchor:
     place: jal-veesa
     rule: surface
-    need: one of the town's stilt houses on the ring of mud banks round the pool, its door showing "Vosh-Leera's House";
+    need: one of the town's stilt houses on the ring of mud banks round the Hist, its door showing "Vosh-Leera's House";
       a house with a table and a bed inside
   enabled: true
   placeName: Vosh-Leera's House
@@ -462,7 +462,7 @@ stages:
       not:
         npcAlive: npc.mn.vosh-leera
   directions: Jal-Veesa is a short walk on east along the road from the weir. Vosh-Leera's House is one of the stilt
-    houses on the ring of mud banks round the town's pool; its door bears her name.
+    houses on the ring of mud banks round the town's Hist; its door bears her name.
   information:
     going: I have the moss Vosh-Leera asked for; she will have work for me when I bring it.
     next: Bring the moss to Vosh-Leera's House in Jal-Veesa.
@@ -514,8 +514,8 @@ stages:
     Weeltul tends it at the pool's edge.
   information:
     going: Vosh-Leera, root-herald of Jal-Veesa, freed me. She gives work only to one who helps the tree-minder first; the
-      moss is for the town's sick Hist. A Hist is a great thinking tree; Jal-Veesa's stands in the pool in the middle of
-      the town.
+      moss is for the town's sick Hist. A Hist is a great thinking tree; Jal-Veesa's stands on its mound in the middle
+      of the town. Its pool is at its foot.
     next: Bring the moss to Weeltul, the tree-minder, at the Hist pool, then go back to Vosh-Leera.
     ways: One way, handing it to her.
     carriers:
@@ -576,8 +576,8 @@ stages:
   learns:
   - fact.mn02.sick
   - fact.mn02.loses
-  directions: Vosh-Leera's House is one of the stilt houses on the ring of mud banks round the pool; its door bears her
-    name.
+  directions: Vosh-Leera's House is one of the stilt houses on the ring of mud banks round the Hist; its door bears
+    her name.
   information:
     going: Jal-Veesa's tree is sick (dry dark bark, a closed scar, a cooling egg-pool) for no known reason; if it dies the
       town's eggs never hatch. I have its blessing for a time.
@@ -829,8 +829,8 @@ topics:
   person: npc.mn.jal-veesa-minder
   stages: [20, 25, 30, 90]
   essential: false
-  intent: 'Weeltul. Tells: the great thinking tree every Argonian town stands round; this one is the tall grey tree in the
-    pool behind her, Jal-Veesa''s own. Its bark should be pale and soft; feel how dry it is now. Checks: nothing. Does:
+  intent: 'Weeltul. Tells: the great thinking tree every Argonian town stands round; this one is the tall grey tree on its
+    mound behind her, Jal-Veesa''s own. Its bark should be pale and soft; feel how dry it is now. Checks: nothing. Does:
     nothing.'
   new: true
 - id: topic.mn02-weeltul-who

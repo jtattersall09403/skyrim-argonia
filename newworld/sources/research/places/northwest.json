@@ -395,7 +395,7 @@
     },
     {
      "aspect": "present",
-     "text": "A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
+     "text": "A town of stilt houses round a Hist, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -458,7 +458,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
+     "text": "A Hist tree stands on a mound at the heart of the town, with its sap pool at its foot. A tree-minder tends it, and hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -480,7 +480,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes cut through the sedge down to the creek, mats drying on racks, fish racks smoking on the road side.",
+     "text": "Pale reed-thatched stilt houses on a ring of mud banks round the Hist and its sap pool, a lane down to the jetty and the weirs on the creek, mats drying on racks, fish racks smoking along the lane.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -522,7 +522,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. The elders' long house is Vosh-Leera's: she heads the elders' household.",
+     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. The elders' hut is Vosh-Leera's: she heads the elders' household.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms house the households and its elder's hut serves as the elders' long house. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool: the jetty market on the stream, the levy's bunkhouse and a fisher household's house. Seekhat Yol's Nordic timber sheds and carved posts are replaced with Ree-An-Wo's hide tents and cypress posts. Unlike Natai, a salt-white line of huts on a beach, and Seafalls, platforms climbing a cliff over the surf, Jal-Veesa keeps the source's ring of houses round its Hist pool, inland on a stream. Still to add: the jetty and the weirs on the stream, the fish racks and the mat racks.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms are the households' homes, and its elder's hut is the elders' hut. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool and stand at the town's south edge: the jetty market, the levy's bunkhouse and the dockmaster's house. Seekhat Yol's Nordic timber sheds and carved posts are replaced with Ree-An-Wo's hide tents and cypress posts. Unlike Natai, a salt-white line of huts on a beach, and Seafalls, platforms climbing a cliff over the surf, Jal-Veesa keeps the source's ring of houses round its Hist, inland on a stream. Its jetty, weirs and racks lie along the lane to the creek.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -568,7 +568,7 @@
    "gives": [
     {
      "kind": "rootworm-stop",
-     "detail": "the Hist pool at the heart of the town, where the tree-minder calls the rootworm",
+     "detail": "the Hist's sap pool at the heart of the town, where the tree-minder calls the rootworm",
      "count": 1
     },
     {
@@ -578,12 +578,12 @@
     },
     {
      "kind": "trader-innkeeper",
-     "detail": "a fish-smoker's stall on the road side",
+     "detail": "a fish-smoker's stall by the fish racks on the lane to the jetty",
      "count": 1
     },
     {
      "kind": "free-bed",
-     "detail": "a mat in the elders' long house",
+     "detail": "a mat in the elders' hut",
      "count": 1
     },
     {

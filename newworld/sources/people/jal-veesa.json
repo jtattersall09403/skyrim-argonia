@@ -98,7 +98,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She walks the town by night for the levy and sleeps at the barracks by day. She walks the mud banks round the Hist pool, where the boat lanes are hardest to make out after dark.",
+     "text": "She walks the town by night for the levy and sleeps at the barracks by day. She walks the mud banks round the Hist and the lane down to the jetty, where the boat lanes are hardest to make out after dark.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:jal-veesa/people",
@@ -127,7 +127,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She sells the town's reed boats, mats, rope and dried fish to Stormhold's buyers and runs the smoker's stall on the road side. She took her name from the buyers, and her birth name is not used in the town.",
+     "text": "She sells the town's reed boats, mats, rope and dried fish to Stormhold's buyers at the market by the jetty. She took her name from the buyers, and her birth name is not used in the town.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:jal-veesa/economy",
@@ -297,7 +297,7 @@
     "role": "partner"
    },
    "role": "merchant",
-   "trade": "fish drier and smoker; keeps the fish-smoker's stall on the road side by the racks",
+   "trade": "fish drier and smoker; keeps the fish-smoker's stall by the racks on the lane to the jetty",
    "wealth": "W3",
    "level": null,
    "status": "alive",
@@ -305,7 +305,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She dries and smokes fish at the racks on the road side. She says nothing of the lights Jeshun-Tal sees at Nenria, and she walks home by the ruin road.",
+     "text": "She dries and smokes fish at the racks on the lane to the jetty. She says nothing of the lights Jeshun-Tal sees at Nenria, and she walks home by the ruin road.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:jal-veesa/economy",
@@ -340,7 +340,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "A ruin-warden of the Veesa-Teeleel, she teaches archery at the edge of the town between her turns at Gemin. She lives alone and stores her bowstrings in the rafters out of the damp.",
+     "text": "A ruin-warden of the Veesa-Teeleel, she teaches archery in the town between her turns at Gemin. She lives alone and stores her bowstrings in the rafters out of the damp.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:jal-veesa/economy",
@@ -522,7 +522,7 @@
     "role": "partner"
    },
    "role": "resident",
-   "trade": "tender of the elders' long house and its guest mat",
+   "trade": "tender of the elders' hut and its guest mat",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -530,7 +530,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She tends the elders' long house, sweeping its mats and laying out the guest mat for any traveller who asks for a bed. She and Vosh-Leera have eaten at one table for twenty years.",
+     "text": "She tends the elders' hut, sweeping its mats and laying out the guest mat for any traveller who asks for a bed. She and Vosh-Leera have eaten at one table for twenty years.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:jal-veesa/3",
@@ -716,7 +716,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She cut sedge for forty years and now mends the weirs' reed baskets on the platform by her son's door. She taught Tsemeena to plait mats and still finds fault with every one.",
+     "text": "She cut sedge for forty years and now mends the weirs' reed baskets on the step by her son's door. She taught Tsemeena to plait mats and still finds fault with every one.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:jal-veesa/economy",
