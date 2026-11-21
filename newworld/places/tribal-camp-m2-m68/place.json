@@ -113,6 +113,11 @@
     "unit": "added.house.DushnikhYalLonghouse",
     "flag": "foot buried deeper",
     "why": "the same: the uphill corner's plinth foot in the knoll"
+   },
+   {
+    "unit": "added.house.DushnikhYalLonghouse",
+    "flag": "door sill under ground",
+    "why": "the longhouse door stands at the head of the Xanmeer steps on the knoll's crest; the mud meets the threshold there (owner capture 06, at eye level by the door) and the doors check lands the player clear of the steps, so the 29 units are the knoll's lip, not a buried door"
    }
   ],
   "accepted_checks": [
