@@ -1,0 +1,935 @@
+{
+ "save_id": "agent-20261121T152501",
+ "place_id": "outpost-m13-m65",
+ "name": "the camp tidied: the war table's lean and browse markers and the pond's current marker pruned; the field hospital's static pallets swapped for bedrolls; the small tents' ground levelled into the slope",
+ "at": "2026-11-21T15:25:01Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.318Q2MS7JQTDR45VTCC4HG0EA3",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.318Q2MS7JQTDR45VTCC4HG0EA3",
+    "base": "Skyrim.esm:0C4EF1",
+    "kind": "furniture",
+    "pos": [
+     -100871.87,
+     -527785.0,
+     288.0
+    ],
+    "rot": [
+     0,
+     0,
+     9.01732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a lean marker at the Legion war table, which is gone",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.41SWT4W7CP9RAD4XJZHCXKYZ47",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.41SWT4W7CP9RAD4XJZHCXKYZ47",
+    "base": "Skyrim.esm:0C4EF1",
+    "kind": "furniture",
+    "pos": [
+     -100938.95,
+     -527896.4,
+     288.03
+    ],
+    "rot": [
+     0,
+     0,
+     7.48413
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a lean marker at the Legion war table, which is gone",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FPJ00J1MD3KHVS2HW0K1GHH7P6",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.FPJ00J1MD3KHVS2HW0K1GHH7P6",
+    "base": "Skyrim.esm:0C4EF1",
+    "kind": "furniture",
+    "pos": [
+     -100745.98,
+     -527828.93,
+     288.5
+    ],
+    "rot": [
+     0,
+     0,
+     10.61732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a lean marker at the Legion war table, which is gone",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.MEH5PMSM31HDH8QN091XEF7B19",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.MEH5PMSM31HDH8QN091XEF7B19",
+    "base": "Skyrim.esm:0C4EF1",
+    "kind": "furniture",
+    "pos": [
+     -100815.75,
+     -527938.4,
+     288.33
+    ],
+    "rot": [
+     0,
+     0,
+     12.20051
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a lean marker at the Legion war table, which is gone",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.E3T0AE4TM2KCH10T056C812703",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.E3T0AE4TM2KCH10T056C812703",
+    "base": "Skyrim.esm:0A2BBF",
+    "kind": "marker",
+    "pos": [
+     -100747.77,
+     -527947.9,
+     286.32
+    ],
+    "rot": [
+     0,
+     0,
+     11.96731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a browse marker at the Legion war table and map, which are gone",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.NXT4F7SFCDSR1PRGVTSNVARFVR",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.NXT4F7SFCDSR1PRGVTSNVARFVR",
+    "base": "Skyrim.esm:0A2BBF",
+    "kind": "marker",
+    "pos": [
+     -100813.91,
+     -527730.55,
+     286.32
+    ],
+    "rot": [
+     0,
+     0,
+     9.36732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF018",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a browse marker at the Legion war table and map, which are gone",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.W0YJJW9RPEG5MMJ2PR215S92AR",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.W0YJJW9RPEG5MMJ2PR215S92AR",
+    "base": "Skyrim.esm:0A2BBF",
+    "kind": "marker",
+    "pos": [
+     -100957.56,
+     -527796.59,
+     286.32
+    ],
+    "rot": [
+     0,
+     0,
+     8.46732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF019",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a browse marker at the Legion war table and map, which are gone",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.XT5YN9MZAM9W5KARTS99SNCR9D",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.XT5YN9MZAM9W5KARTS99SNCR9D",
+    "base": "Skyrim.esm:0A2BBF",
+    "kind": "marker",
+    "pos": [
+     -100881.3,
+     -527990.12,
+     286.32
+    ],
+    "rot": [
+     0,
+     0,
+     6.18412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0FF01A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "note": "a browse marker at the Legion war table and map, which are gone",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.QT9MXWDG8G7JERR95J371SXB7K",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.QT9MXWDG8G7JERR95J371SXB7K",
+    "base": "Skyrim.esm:000061",
+    "kind": "marker",
+    "pos": [
+     -100148.56,
+     -526831.88,
+     146.84
+    ],
+    "rot": [
+     0,
+     0,
+     11.11742
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Update.esm:002C7B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w02"
+   },
+   "note": "the source pond's water-current marker; our river runs as it runs",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73Y",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73Y",
+    "base": "Skyrim.esm:094AC6",
+    "kind": "static",
+    "pos": [
+     -100457.81,
+     -529175.85,
+     285.98
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096818",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a field hospital's static bedroll nobody can lie on: swapped for a bedroll a cutter sleeps in",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "pos": [
+     -100457.81,
+     -529175.85,
+     285.98
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "id": "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the long tent, where the source laid the field hospital's pallets (record: fifteen people sleep at the camp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMY",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMY",
+    "base": "Skyrim.esm:094AC6",
+    "kind": "static",
+    "pos": [
+     -100404.99,
+     -529357.22,
+     287.26
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096822",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a field hospital's static bedroll nobody can lie on: swapped for a bedroll a cutter sleeps in",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "pos": [
+     -100404.99,
+     -529357.22,
+     287.26
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "id": "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMYB",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the long tent, where the source laid the field hospital's pallets (record: fifteen people sleep at the camp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTC",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTC",
+    "base": "Skyrim.esm:094AC6",
+    "kind": "static",
+    "pos": [
+     -100433.4,
+     -529266.29,
+     287.32
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096824",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a field hospital's static bedroll nobody can lie on: swapped for a bedroll a cutter sleeps in",
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "pos": [
+     -100433.4,
+     -529266.29,
+     287.32
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "id": "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the long tent, where the source laid the field hospital's pallets (record: fifteen people sleep at the camp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQM",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQM",
+    "base": "Skyrim.esm:094AC6",
+    "kind": "static",
+    "pos": [
+     -100492.54,
+     -529089.5,
+     284.58
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:096823",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "note": "a field hospital's static bedroll nobody can lie on: swapped for a bedroll a cutter sleeps in",
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "pos": [
+     -100492.54,
+     -529089.5,
+     284.58
+    ],
+    "rot": [
+     0,
+     0,
+     10.62571
+    ],
+    "scale": 1,
+    "layer": "place",
+    "id": "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll in the long tent, where the source laid the field hospital's pallets (record: fifteen people sleep at the camp)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -130
+   ],
+   "verts": [
+    [
+     32,
+     21,
+     0.0,
+     -0.5
+    ],
+    [
+     32,
+     22,
+     0.0,
+     -2.8
+    ],
+    [
+     32,
+     23,
+     0.0,
+     -1.5
+    ]
+   ],
+   "call": "fault",
+   "note": "the small tents' ground levelled into the slope, as the source's camp stood level",
+   "space": "exterior",
+   "n": 18,
+   "stroke": 2,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     0,
+     21,
+     0.0,
+     -0.5
+    ],
+    [
+     0,
+     22,
+     0.0,
+     -2.8
+    ],
+    [
+     0,
+     23,
+     0.0,
+     -1.5
+    ],
+    [
+     1,
+     20,
+     0.0,
+     -1.4
+    ],
+    [
+     1,
+     21,
+     0.0,
+     -14.8
+    ],
+    [
+     1,
+     22,
+     0.0,
+     -25.8
+    ],
+    [
+     1,
+     23,
+     0.0,
+     -20.3
+    ],
+    [
+     1,
+     24,
+     0.0,
+     -5.3
+    ],
+    [
+     2,
+     20,
+     0.0,
+     -7.6
+    ],
+    [
+     2,
+     21,
+     0.0,
+     -32.8
+    ],
+    [
+     2,
+     22,
+     0.0,
+     -50.3
+    ],
+    [
+     2,
+     23,
+     0.0,
+     -41.7
+    ],
+    [
+     2,
+     24,
+     0.0,
+     -16.1
+    ],
+    [
+     2,
+     25,
+     0.0,
+     -0.2
+    ],
+    [
+     3,
+     20,
+     0.0,
+     -7.8
+    ],
+    [
+     3,
+     21,
+     0.0,
+     -33.5
+    ],
+    [
+     3,
+     22,
+     0.0,
+     -51.2
+    ],
+    [
+     3,
+     23,
+     0.0,
+     -42.5
+    ],
+    [
+     3,
+     24,
+     0.0,
+     -16.5
+    ],
+    [
+     3,
+     25,
+     0.0,
+     -0.2
+    ],
+    [
+     4,
+     20,
+     0.0,
+     -1.7
+    ],
+    [
+     4,
+     21,
+     0.0,
+     -16.1
+    ],
+    [
+     4,
+     22,
+     0.0,
+     -27.6
+    ],
+    [
+     4,
+     23,
+     0.0,
+     -21.9
+    ],
+    [
+     4,
+     24,
+     0.0,
+     -6.0
+    ],
+    [
+     5,
+     21,
+     0.0,
+     -0.8
+    ],
+    [
+     5,
+     22,
+     0.0,
+     -3.7
+    ],
+    [
+     5,
+     23,
+     0.0,
+     -2.1
+    ]
+   ],
+   "call": "fault",
+   "note": "the small tents' ground levelled into the slope, as the source's camp stood level",
+   "space": "exterior",
+   "n": 19,
+   "stroke": 2,
+   "at": "2026-11-21T15:25:01Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     1,
+     19,
+     0.0,
+     -0.5
+    ],
+    [
+     1,
+     20,
+     -1.4,
+     -4.1
+    ],
+    [
+     1,
+     21,
+     -14.8,
+     -15.7
+    ],
+    [
+     2,
+     18,
+     0.0,
+     -0.1
+    ],
+    [
+     2,
+     19,
+     0.0,
+     -9.2
+    ],
+    [
+     2,
+     20,
+     -7.6,
+     -25.4
+    ],
+    [
+     2,
+     21,
+     -32.8,
+     -44.0
+    ],
+    [
+     2,
+     22,
+     -50.3,
+     -51.0
+    ],
+    [
+     3,
+     18,
+     0.0,
+     -0.8
+    ],
+    [
+     3,
+     19,
+     0.0,
+     -13.9
+    ],
+    [
+     3,
+     20,
+     -7.8,
+     -32.5
+    ],
+    [
+     3,
+     21,
+     -33.5,
+     -49.9
+    ],
+    [
+     3,
+     22,
+     -51.2,
+     -53.1
+    ],
+    [
+     4,
+     19,
+     0.0,
+     -6.0
+    ],
+    [
+     4,
+     20,
+     -1.7,
+     -14.4
+    ],
+    [
+     4,
+     21,
+     -16.1,
+     -23.6
+    ],
+    [
+     4,
+     22,
+     -27.6,
+     -27.7
+    ],
+    [
+     5,
+     20,
+     0.0,
+     -0.4
+    ]
+   ],
+   "call": "fault",
+   "note": "the small tents' ground levelled into the slope, as the source's camp stood level",
+   "space": "exterior",
+   "n": 20,
+   "stroke": 3,
+   "at": "2026-11-21T15:25:01Z"
+  }
+ ]
+}

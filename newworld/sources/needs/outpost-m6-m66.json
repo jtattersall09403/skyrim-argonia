@@ -26,8 +26,8 @@
    "why": "Met. King of the Murkmire's young Hist stands on the camp's west side in its sap pool; the source's plank walkways run from the north tent platform to its foot; Heem-Jasa works on the walkway beside it; the sealed scar is the quest's own thing low on the trunk's east side, facing her.",
    "tier": "AGENT_INVENTED",
    "sight": {
-    "result": "recognised",
-    "said": "Spot A. It is the only spot with Hist trees and plank walkways. I'd guess the platform is among them, but nothing I saw says which tree is young, has a scar or has paste. Only partly identifiable."
+    "result": "not recognised",
+    "said": "the Hist trees are the only candidate, and the scar and paste are not visible"
    }
   },
   {
@@ -56,7 +56,7 @@
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "not recognised",
-    "said": "none. Spot B has urns and a knapsack, but nothing marks them as this. The people are named and nobody is called Unbound."
+    "said": "nothing I saw says hide, Unbound or note"
    }
   },
   {
@@ -81,7 +81,7 @@
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "not recognised",
-    "said": "none. Nothing I saw shows a dead or burnt tree or an empty platform."
+    "said": "I'd see nothing that says dead or burnt"
    }
   }
  ]

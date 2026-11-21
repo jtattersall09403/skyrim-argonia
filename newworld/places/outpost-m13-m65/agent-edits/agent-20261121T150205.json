@@ -1,0 +1,106 @@
+{
+ "save_id": "agent-20261121T150205",
+ "place_id": "outpost-m13-m65",
+ "name": "the landing: a Raven Rock jetty from the bank to the barge's side and two ship's planks over its rail into the waist",
+ "at": "2026-11-21T15:02:05Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m13-m65.LANDINGJETTY",
+    "base": "Dragonborn.esm:038A35",
+    "kind": "building",
+    "pos": [
+     -101530.0,
+     -527750.0,
+     26.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the landing (record look: bundled reed stacked by the landing; main quest 1: the player comes ashore from the barge): a Raven Rock jetty, the same Dunmer dock the gang-master's stone hut stands by in its own source, run from the bank out to the barge's side at the height of its waist",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:02:05Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m13-m65.LANDINGPLANKUP",
+    "base": "Journey to Baan Malur.esp:042C7F",
+    "kind": "static",
+    "pos": [
+     -101692.0,
+     -527750.0,
+     127.0
+    ],
+    "rot": [
+     0.0,
+     -0.2,
+     3.14159
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the barge's boarding plank (main quest 1: the player walks out of the hold and off the barge): a ship's plank laid from the jetty up over the barge's rail",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T15:02:05Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m13-m65.LANDINGPLANKDOWN",
+    "base": "Journey to Baan Malur.esp:042C7F",
+    "kind": "static",
+    "pos": [
+     -102068.0,
+     -527750.0,
+     127.0
+    ],
+    "rot": [
+     0.0,
+     0.2,
+     3.14159
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the barge's boarding plank (main quest 1): its second plank from the rail down into the waist, where the hold door stands",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T15:02:05Z"
+  }
+ ]
+}

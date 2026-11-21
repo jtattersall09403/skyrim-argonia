@@ -1639,7 +1639,7 @@ def accepted_checks(ctx: dict) -> list[dict]:
 
 
 def _names(finding: str, rid: str) -> bool:
-    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w.:-])", finding) is not None
+    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w.-]|:\w)", finding) is not None   # "door <id>: ..." names it
 
 
 def apply_accepted(res: dict[str, list[str]], rows: list[dict]) -> tuple[dict[str, list[str]], dict[str, list[str]]]:

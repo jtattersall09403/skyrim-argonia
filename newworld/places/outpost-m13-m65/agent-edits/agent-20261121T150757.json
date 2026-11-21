@@ -1,0 +1,74 @@
+{
+ "save_id": "agent-20261121T150757",
+ "place_id": "outpost-m13-m65",
+ "name": "the gang-master's stone hut and its door frame, south of the cook's fire, its door facing the fire",
+ "at": "2026-11-21T15:07:57Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK012PLACE",
+    "base": "Journey to Baan Malur.esp:04442B",
+    "kind": "building",
+    "pos": [
+     -99900.0,
+     -529150.0,
+     230.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.06096
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the gang-master's low stone hut, the old road post's (record look: a low stone hut on the river bank; the cook's fire by the hut): Journey to Baan Malur's one-room stone house with its reed thatch, as Baan Malur builds it, set into the slope with its door at the ground on the camp side",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:07:57Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK013PLACE",
+    "base": "Journey to Baan Malur.esp:018D79",
+    "kind": "building",
+    "pos": [
+     -99928.5,
+     -528964.2,
+     302.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.05223
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the gang-master's low stone hut, the old road post's (record look: a low stone hut on the river bank; the cook's fire by the hut): Journey to Baan Malur's one-room stone house with its reed thatch, as Baan Malur builds it: its door frame, as the source frames the door",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:07:57Z"
+  }
+ ]
+}

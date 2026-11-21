@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T153752",
+ "place_id": "outpost-m13-m65",
+ "name": "the hold's cook-pot by the mess table",
+ "at": "2026-11-21T15:37:52Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "01dock3to4",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK037PLACE",
+    "base": "King of the Murkmire.esp:1AD602",
+    "kind": "furniture",
+    "pos": [
+     3260.0,
+     3700.0,
+     7012.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the hold's cook-pot (main quest 1: Okeeh sits by the hold's cook-pot a few steps from where the player wakes): King of the Murkmire's small cooking pot by the mess table and its food barrels",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:37:52Z"
+  }
+ ]
+}

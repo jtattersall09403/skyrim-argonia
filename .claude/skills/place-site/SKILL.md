@@ -103,5 +103,7 @@ check). Run it again after buildings or doors move, then look.
 The source's own pieces stay as they come, lit or unlit as the source has them. Nordic pieces are judged case by
 case: keep one that is nearly fine, take a Tropical Skyrim version or an easy swap where there is one (a piece of
 like size and use, `search query "<what it is>"`, swapped by hand: `look delete` the old, `look place` the new at its
-pose), never laboriously replace; Nordic signs (a Doomstone, a word wall, a shrine of Talos) never stand (the build's `nordic` check).
+pose), never laboriously replace; a piece added from elsewhere that is judged fine gets its looked-at verdict in
+`newworld/places/nordic_review.jsonl` (`neutral`, with what was seen), which a copied room and the build's `nordic`
+check both follow; Nordic signs (a Doomstone, a word wall, a shrine of Talos) never stand (the build's `nordic` check).
 Nothing levelled is ever placed (decision 0035; the build's `levelled` check).

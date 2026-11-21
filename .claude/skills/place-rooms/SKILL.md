@@ -23,7 +23,8 @@ y2]}`; close every opening the cut leaves with the kit's own door or wall piece.
 ## A building's rooms from one other source
 
 The building is placed by `place-adapt`. Its door row carries `room`: `copy_of` `<source_id>/<cell>`, `door` (the
-cell's way out), `space` (our space id), `arrival` (in front of the door, on the walk it is reached by), `drop`.
+cell's way out), `space` (our space id), `arrival` (in front of the door, on the walk it is reached by: `[x, y]` on the ground, `[x, y, z]` on a deck or a
+ship), `drop`.
 Where the door opens onto a porch, set the door `on` its building and the arrival at the porch's foot. Run
 `python3 -m tools.places draft add <place_id>`: it copies the room, pairs the doors and removes every further way
 out. A room's own inner door (a cellar off a hall) is kept by copying the cell whole.
