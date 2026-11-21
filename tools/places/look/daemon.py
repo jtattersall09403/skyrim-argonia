@@ -158,8 +158,17 @@ class Daemon:
             self.page.evaluate("agent.undo()")
             self.page_strokes.pop()
         for s in strokes[k:]:
-            self.page.evaluate("(ops) => agent.push(ops)", s)
+            self.page.evaluate("([ops, bases]) => agent.push(ops, bases)", [s, self.added_bases(s)])
             self.page_strokes.append(s)
+
+    def added_bases(self, ops: list[dict]) -> list[dict]:
+        """The base rows of the pieces these ops add that only the asset catalogue holds (scene.py `_resolve_bases`)."""
+        keys = {(op.get("ref") or {}).get("base") for op in ops if op.get("op") == "ref.add"} - {None}
+        if not keys:
+            return []
+        from tools.places import draft_bundle
+        cat = draft_bundle.catalogue()
+        return [cat[k] for k in keys if k in cat]
 
     def go(self, space: str) -> dict:
         """The page into a space (the exterior or a room), lit as the studio lights it."""
