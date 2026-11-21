@@ -155,24 +155,17 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m11-m63.PBF61HY6V53GZ8090HEFCFY3PB"
+    "outpost-m11-m63.LOOK013PLACE"
    ]
   },
-  "missing": [],
   "added": [],
-  "rent_bed": null
+  "missing": []
  },
  "lights": {
   "added": []
  },
  "hang": {
-  "added": [
-   {
-    "id": "outpost-m11-m63.hang.ZG6W1R67PYP08B8M1YQ1MSTJM5.0",
-    "base": "King of the Murkmire.esp:1A845D",
-    "on": "outpost-m11-m63.ZG6W1R67PYP08B8M1YQ1MSTJM5"
-   }
-  ]
+  "added": []
  },
  "ground": {
   "bundle": "ground.outpost-m11-m63",
@@ -203,12 +196,7 @@
  },
  "draft_key": "4719e555cf84fdd2",
  "sap": {
-  "added": [
-   {
-    "id": "outpost-m11-m63.sap.K4G3JJWT6J12E3CHEYZ37VRK1Z",
-    "on": "K4G3JJWT6J12E3CHEYZ37VRK1Z"
-   }
-  ]
+  "added": []
  },
  "wholesale": {
   "offset": 110.0,
