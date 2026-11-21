@@ -1639,7 +1639,8 @@ def accepted_checks(ctx: dict) -> list[dict]:
 
 
 def _names(finding: str, rid: str) -> bool:
-    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w.:-])", finding) is not None
+    # an id is never part of a longer id or key ("id.x", "id:x"); a colon or full stop that ends a clause may follow it
+    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w-]|[.:][\w-])", finding) is not None
 
 
 def apply_accepted(res: dict[str, list[str]], rows: list[dict]) -> tuple[dict[str, list[str]], dict[str, list[str]]]:

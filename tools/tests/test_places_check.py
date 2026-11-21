@@ -653,3 +653,13 @@ def test_an_accepted_build_finding_is_reported_apart_and_a_stale_or_bare_entry_f
     # an id is matched whole: a.1 does not accept a.10
     f2, a2 = CK.apply_accepted({"overlap": ["a.10 stands inside b.2"]}, rows[:1])
     assert a2["overlap"] == [] and f2["overlap"][0] == "a.10 stands inside b.2" and "stale" in f2["overlap"][1]
+
+
+def test_an_accepted_door_is_matched_when_its_id_ends_a_clause():
+    """The doors check names a door as "door <id>: ..."; the colon ending the clause is not part of the id."""
+    from tools.places import check as CK
+    why = "The carpenter's arrival is on the low ramp walkway, seen at eye level from the door."
+    res = {"doors": ["door p.D1: its arrival point is inside p.W2"]}
+    fails, acc = CK.apply_accepted(res, [{"check": "doors", "ids": ["p.D1"], "why": why}])
+    assert fails["doors"] == [] and acc["doors"] == [f"accepted: {why} (door p.D1: its arrival point is inside p.W2)"]
+    assert not CK._names("door p.D1:x is another key", "p.D1") and not CK._names("p.D1.2 stands", "p.D1")
