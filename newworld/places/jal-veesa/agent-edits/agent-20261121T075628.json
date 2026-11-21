@@ -1,0 +1,1165 @@
+{
+ "save_id": "agent-20261121T075628",
+ "place_id": "jal-veesa",
+ "name": "the town's added houses and things the record promises (jetty market with its jetty, weirs and fishing spot; the levy's bunkhouse; a fisher household's house; fish racks with the cooking pot; mat racks; the Owing's chest, mat and spots), at the places the plan chose south of the town; KotM's scripted ghost token (its own quest) and the smithy's smelter and ore (the record has no smith) deleted",
+ "at": "2026-11-21T07:56:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.0DM99692T637PJRX1CWQXYNEGW",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50804.0,
+     -519252.0,
+     263.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 174.287,
+     "foot": [
+      -104.6,
+      -13.3,
+      104.6,
+      13.3
+     ]
+    },
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.0H4GEY01V530ENNKV0VRZTJWYX",
+    "base": "Skyrim.esm:0267E7",
+    "kind": "container",
+    "pos": [
+     -54182.9,
+     -504349.4,
+     -1533.57
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "owner": "jal-veesa.crime",
+    "why": "the jal-veesa crime faction's Owing (the stolen goods chest, out of reach): native law's sentence, no cell (draft jail)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.36B1H5WHKR61FZMKFDCAE7YYHY",
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -50600.0,
+     -517700.0,
+     117.782
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7854
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -40.0,
+     "foot": [
+      -122.6,
+      -65.2,
+      133.9,
+      62.9
+     ]
+    },
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "tier": "AGENT_INVENTED",
+    "walk": 101.2
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.37Q3WXKAF09T4VM640TY6HTAB8",
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -50250.0,
+     -518050.0,
+     78.665
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7854
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -40.0,
+     "foot": [
+      -122.6,
+      -65.2,
+      133.9,
+      62.9
+     ]
+    },
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "tier": "AGENT_INVENTED",
+    "walk": 101.2
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.4AG1NBWX7FDHGBNKNKZCB3M7TR",
+    "base": "King of the Murkmire.esp:157397",
+    "kind": "building",
+    "pos": [
+     -52763.2,
+     -516371.0,
+     468.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 296.6
+    },
+    "why": "the house's upper storey (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.4W3FNZJSVXKGJQP0TQVY27VW65",
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -49800.0,
+     -503000.0,
+     459.731
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -12.269,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    },
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+    "base": "King of the Murkmire.esp:157320",
+    "kind": "building",
+    "pos": [
+     -52700.0,
+     -516300.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    },
+    "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.A2EEK16TY8SZ4XAAEN95M6A527",
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51850.0,
+     -510350.0,
+     360.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    },
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.BWGZYY2V55DD1Q62J0GPAHKZC7",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50304.0,
+     -519252.0,
+     321.225
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 262.3,
+     "foot": [
+      -104.6,
+      -13.3,
+      104.6,
+      13.3
+     ]
+    },
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST",
+    "base": "King of the Murkmire.esp:1AD601",
+    "kind": "furniture",
+    "pos": [
+     -51850.0,
+     -509950.0,
+     325.525
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -50.6
+    },
+    "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.D1F5Q4Q2HVXNTT6R6F58E1ZXQR",
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -50554.0,
+     -519002.0,
+     314.375
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 226.75
+    },
+    "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty",
+    "need": 5,
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.F4P5E0382SKCVR4YKKBP7NRRTJ",
+    "base": "Skyrim.esm:036ED3",
+    "kind": "furniture",
+    "pos": [
+     -52730.9,
+     -503951.4,
+     496.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "why": "the jal-veesa crime faction's Owing (the worker's mat: lying down on it serves the sentence): native law's sentence, no cell (draft jail)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.G00TQY0X2QE752859XQ7QWRGMT",
+    "base": "Skyrim.esm:000004",
+    "kind": "marker",
+    "pos": [
+     -54182.9,
+     -504349.4,
+     514.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.42038
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "door": {
+     "to_space": "exterior",
+     "to_ref": "jal-veesa.M0EXWP2X1F3VQ1KXNPX2JMGWZY",
+     "to_pos": [
+      -52858.9,
+      -503951.4,
+      503.04
+     ],
+     "to_rot": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "why": "the jal-veesa crime faction's Owing (the return spot: where the player stands when the sentence ends): native law's sentence, no cell (draft jail)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.GDTF4MP4E66E699C7FW3YPRHS2",
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -55500.0,
+     -506900.0,
+     456.204
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    },
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.J1YX9GMSD6J1FZ7M753WAK644Y",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -50554.0,
+     -519252.0,
+     276.675
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 195.587,
+     "foot": [
+      -104.6,
+      -13.3,
+      104.6,
+      13.3
+     ]
+    },
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.KW6A8AR0SAXCJJA8DSTMEXNKQQ",
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -53167.6,
+     -510496.4,
+     390.375
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.954
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
+     "dz": 96.3
+    },
+    "why": "the bunkhouse door, where Alten Meerhleel sets it, into a copy of Alten Meerhleel Lodging House",
+    "tier": "AGENT_INVENTED",
+    "door": {
+     "to_space": "AltenBunkhouse",
+     "to_ref": "jal-veesa.QJ8DDTECYEFBFQ14XFD1ZJEF6J",
+     "to_pos": [
+      8041.9736,
+      -3898.909,
+      5839.798
+     ],
+     "to_rot": [
+      0,
+      0,
+      4.6539865
+     ],
+     "flags": "0",
+     "arrival": [
+      -53047.6,
+      -510530.4,
+      381.57
+     ]
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.M0EXWP2X1F3VQ1KXNPX2JMGWZY",
+    "base": "Skyrim.esm:000004",
+    "kind": "marker",
+    "pos": [
+     -52858.9,
+     -503951.4,
+     503.04
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "door": {
+     "to_space": "exterior",
+     "to_ref": "jal-veesa.G00TQY0X2QE752859XQ7QWRGMT",
+     "to_pos": [
+      -54182.9,
+      -504349.4,
+      514.43
+     ],
+     "to_rot": [
+      0.0,
+      0.0,
+      4.42038
+     ]
+    },
+    "why": "the jal-veesa crime faction's Owing (the work spot: the work stop 14 of the place's people share): native law's sentence, no cell (draft jail)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.MFSTZXD2ETFP05RGHR25KX19F5",
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -52556.3,
+     -516155.6,
+     266.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 94.3
+    },
+    "why": "the house's door, where Alten Meerhleel sets it, into a copy of Mexhira's House",
+    "tier": "AGENT_INVENTED",
+    "door": {
+     "to_space": "AltenDockmasterHouse",
+     "to_ref": "jal-veesa.0HNDHKE3JHQ9S4QBRFN9J6XX2B",
+     "to_pos": [
+      7845.0967,
+      -4664.551,
+      5839.798
+     ],
+     "to_rot": [
+      0,
+      0,
+      6.224781
+     ],
+     "flags": "0",
+     "arrival": [
+      -52461.3,
+      -516057.6,
+      266.3
+     ]
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.QQ1RHE1BDVM3N6G97XP7DFY90J",
+    "base": "King of the Murkmire.esp:093D0D",
+    "kind": "door",
+    "pos": [
+     -51336.6,
+     -517236.1,
+     277.578
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+     "dz": 94.4
+    },
+    "why": "the jetty market's door, where Alten Meerhleel sets it on its market house, into a copy of Meerhleel Market",
+    "tier": "AGENT_INVENTED",
+    "door": {
+     "to_space": "AltenGeneralStore",
+     "to_ref": "jal-veesa.1WY1CK29XGQCX9N9BYX5CQPCFQ",
+     "to_pos": [
+      7836.8486,
+      -5502.705,
+      5839.798
+     ],
+     "to_rot": [
+      0,
+      0,
+      0.041598175
+     ],
+     "flags": "0",
+     "arrival": [
+      -51446.6,
+      -517288.1,
+      200.0
+     ]
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.RWASB486WWKY0RC88FKQGM04YB",
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51500.0,
+     -510200.0,
+     367.438
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    },
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.T1QCGPRJRYG45YCEJ0S0BJ25VK",
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -55250.0,
+     -507150.0,
+     423.267
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.621,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    },
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.TYRF43FZ7YCVYXMGSE860Q7JSA",
+    "base": "King of the Murkmire.esp:157397",
+    "kind": "building",
+    "pos": [
+     -53691.5,
+     -510671.5,
+     294.075
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.3832
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
+     "dz": 0.0
+    },
+    "why": "the bunkhouse's lean-to (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.TZCZRS4GE0B23Y79Z23T27BWW5",
+    "base": "King of the Murkmire.esp:01FA35",
+    "kind": "building",
+    "pos": [
+     -49900.0,
+     -518400.0,
+     -26.801
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7854
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -40.0,
+     "foot": [
+      -122.6,
+      -65.2,
+      133.9,
+      62.9
+     ]
+    },
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "tier": "AGENT_INVENTED",
+    "walk": 101.2
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
+    "base": "King of the Murkmire.esp:157321",
+    "kind": "building",
+    "pos": [
+     -53600.0,
+     -510300.0,
+     294.075
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.3832
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": -61.9,
+     "foot": [
+      -447.7,
+      -354.4,
+      441.1,
+      351.5
+     ]
+    },
+    "why": "the levy's bunkhouse (the town's two wardens of the levy sleep here: place record dangers 'its own wardens patrol'): Alten Meerhleel's bunkhouse (MurkmireHouse04)",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.YVSQSAXAR7PNMCWF2Z5B3SDZH3",
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -52200.0,
+     -510200.0,
+     360.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    },
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+    "base": "King of the Murkmire.esp:15731E",
+    "kind": "building",
+    "pos": [
+     -51150.0,
+     -517150.0,
+     183.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    },
+    "why": "the jetty market's house (place record: trader-general 'at the jetty market'): Alten Meerhleel's market house (MurkmireHouse01) on the stream bank south of the town, where the town's road comes down to the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.AFSMY87FPWDMSXHJ3KTT2Q81YV",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.AFSMY87FPWDMSXHJ3KTT2Q81YV",
+    "base": "King of the Murkmire.esp:0157EF",
+    "kind": "clutter",
+    "pos": [
+     -59633.51,
+     -507889.45,
+     617.66
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:4871D8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s09"
+   },
+   "n": 27,
+   "stroke": 2,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.W3VK2E8SJJ7VNPAP4YH5ZECV1G",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.W3VK2E8SJJ7VNPAP4YH5ZECV1G",
+    "base": "King of the Murkmire.esp:1AD5CE",
+    "kind": "furniture",
+    "pos": [
+     -54728.42,
+     -507349.42,
+     570.24
+    ],
+    "rot": [
+     0,
+     0,
+     2.4
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:1B78D5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04"
+   },
+   "n": 28,
+   "stroke": 3,
+   "at": "2026-11-21T07:56:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.Y3ES2Q97CMAW2XJHX8CC4SV1AD",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.Y3ES2Q97CMAW2XJHX8CC4SV1AD",
+    "base": "King of the Murkmire.esp:1A8443",
+    "kind": "static",
+    "pos": [
+     -54519.25,
+     -507220.79,
+     565.11
+    ],
+    "rot": [
+     0,
+     0,
+     1.78319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:1B78DE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04"
+   },
+   "n": 29,
+   "stroke": 4,
+   "at": "2026-11-21T07:56:28Z"
+  }
+ ]
+}
