@@ -10,9 +10,28 @@ Step 13 of the place path ([place-system](../place-system/SKILL.md)).
 ## The stage that owns it
 
 `python3 -m tools.places draft <stage> <place_id>` runs one stage on the place files as they stand. It changes only
-the rows it owns, leaves every other row byte for byte, never changes a row a finalised studio save touched, and
-prints the rows changed per file; a stage that would write outside what it owns fails. A single piece or structure
-that must move, turn or sink is done by hand in the studio scene and `look commit` (`place-look`).
+the rows it owns, leaves every other row byte for byte, and prints the rows changed per file; a stage that would
+write outside what it owns fails. A single piece or structure that must move, turn or sink is done by hand in the
+studio scene and `look commit` (`place-look`).
+
+## A hand's placement is authoritative
+
+A stage is a helper; a thing placed by hand stays where it was put until a hand moves it again.
+
+- A row a committed agent edit (`look commit`: `agent-edits/`, place.json `agent_saves_applied`) or an owner's
+  finalised save moved, turned, sank, dropped, added, un-dropped, duplicated or edited stands as the hand left it
+  after every stage: the fields the hand set (a move's pose and seat; an edit's changed fields) or, for an add or a
+  drop, the whole row and whether it stands. A row carried `on` it goes back with it.
+- When a stage would write something else it says so in its log, one line per row:
+  `<row> (<file>) is placed by hand (<whose edit>): kept as the hand left it; the stage would have <moved it N
+  units / turned it / taken it out / put it back / changed its <field>>`. A line there is a stage disagreeing
+  with a hand: look at the row and decide which is right.
+- The add stage's own source follows the hand: a stroke on an added thing rewrites its `draft.add` row (`pos`,
+  `rot_z`, `scale`, `dz`; a drop marks it `dropped`, adding it back clears that), so the stage places it there.
+- To give a row back to the stages: `look <place> release <row id> [--space <space>] -m "<why>"` (place.json
+  `released`); the next stage run places it by its own rule, and a later hand stroke holds it again. An owner's row
+  is never released by an agent.
+- An edit made straight in a refs file is no hand: commit every placement through `look commit`.
 A stage reads the files at its start and writes only its own rows: rows it does not own (a quest spot) and edits applied while it runs are kept as the hands left them, and a failed stage puts back only its own rows (`tools/places/hands.py`).
 An added thing keeps its id for good: `draft.add` rows carry a `key` that the `add` stage pins, never a list position.
 
@@ -55,5 +74,4 @@ runs `place-lessons`.
    `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"` in plain English. A question,
    or a change larger than a narrow one, is closed with a reply saying what it would take, and nothing changes.
 2. A note on changes travels in its save and is answered by the lessons step when the save is finalised.
-3. What the owner changed stays as he left it: no stage or later pass moves, renames or removes a row a finalised
-   save touched.
+3. What the owner changed stays as he left it (a hand's placement is authoritative, above).
