@@ -3,7 +3,7 @@
  "place_id": "jal-veesa@pipeline",
  "name": "Final",
  "at": "2026-11-21T15:40:49Z",
- "final": false,
+ "final": true,
  "rev": 1,
  "base": {
   "draft_key": "cb9ec703b51ad6a7d41eca1980661b54b8b4adf801abf295bb0bb0382f1f28db",
