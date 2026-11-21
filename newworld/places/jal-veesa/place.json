@@ -71,14 +71,15 @@
     "base": "King of the Murkmire.esp:01FA35",
     "kind": "building",
     "pos": [
-     -49900,
-     -518400
+     -49900.0,
+     -518400.0
     ],
     "rot_z": 0.7854,
-    "dz": -40.0,
+    "dz": 34.0,
     "tier": "AGENT_INVENTED",
     "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
-    "key": "4"
+    "key": "4",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
@@ -1487,7 +1488,8 @@
   "agent-20261121T071516",
   "agent-20261121T072321",
   "agent-20261121T072518",
-  "agent-20261121T072556"
+  "agent-20261121T072556",
+  "agent-20261121T072610"
  ],
  "steps": {
   "kit": [

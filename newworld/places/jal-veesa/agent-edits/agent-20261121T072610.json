@@ -1,0 +1,65 @@
+{
+ "save_id": "agent-20261121T072610",
+ "place_id": "jal-veesa",
+ "name": "jv-joins-2: added.walkway.03 raised 74 out of the ground",
+ "at": "2026-11-21T07:26:10Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.TZCZRS4GE0B23Y79Z23T27BWW5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49900.0,
+     -518400.0,
+     -26.801
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -40.0,
+     "foot": [
+      -122.6,
+      -65.2,
+      133.9,
+      62.9
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -49900.0,
+     -518400.0,
+     47.199
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 34.0,
+     "foot": [
+      -122.6,
+      -65.2,
+      133.9,
+      62.9
+     ]
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:26:10Z"
+  }
+ ]
+}
