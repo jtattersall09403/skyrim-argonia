@@ -1,0 +1,406 @@
+{
+ "save_id": "agent-20261121T213839",
+ "place_id": "helstrom",
+ "name": "a lantern or sconce that hung from a tree or bridge the place does not hold here: it would hang in the air or lie under the ground",
+ "at": "2026-11-21T21:38:39Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1NQQT0Y725A08QDFAYD2FZC9VC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1NQQT0Y725A08QDFAYD2FZC9VC",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -42363.04,
+     -619939.04,
+     -400.53
+    ],
+    "rot": [
+     0,
+     0,
+     10.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D9175",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b23"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5MXT3X4370PCZ9JXGESD11XFWQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5MXT3X4370PCZ9JXGESD11XFWQ",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -42203.34,
+     -619910.07,
+     -400.53
+    ],
+    "rot": [
+     0,
+     0,
+     10.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D9177",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b23"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.66PG7NB91QP702V4FSWWET2ZQS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.66PG7NB91QP702V4FSWWET2ZQS",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -27920.09,
+     -616764.22,
+     1052.03
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20172A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w32"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AP5RC9GM805BPT92XV6M39GXMZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AP5RC9GM805BPT92XV6M39GXMZ",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -35022.7,
+     -631008.11,
+     -888.47
+    ],
+    "rot": [
+     0,
+     0,
+     7.63599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEA2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s62"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AR58V6PWV2Z6DAZVEGY8HR5B84",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AR58V6PWV2Z6DAZVEGY8HR5B84",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -36703.19,
+     -613243.86,
+     1650.97
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E984B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b11"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.CYBZ6JD6K7G66234GM11D17CRM",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.CYBZ6JD6K7G66234GM11D17CRM",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -50678.09,
+     -627410.89,
+     -242.81
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:200AFF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s151"
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.E2DAMH1W4YYBB06KTMVZWFAVH1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.E2DAMH1W4YYBB06KTMVZWFAVH1",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23443.75,
+     -623795.61,
+     1432.21
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AD8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w46"
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.N7628X6FR1M1MBSSXE3EKTX9NM",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.N7628X6FR1M1MBSSXE3EKTX9NM",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -36838.99,
+     -613332.72,
+     1650.97
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9849",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b11"
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QWVZ947BNX5J1A741VKE8DVCYB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QWVZ947BNX5J1A741VKE8DVCYB",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27957.86,
+     -616685.28,
+     1029.26
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201722",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w32"
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RHV79BS6XKMRVPGVN2ZCVB4XV3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RHV79BS6XKMRVPGVN2ZCVB4XV3",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -50770.88,
+     -627277.76,
+     -242.81
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:200AF6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s151"
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RJBFMMSW3HQ2432B36B3VFZ7B9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RJBFMMSW3HQ2432B36B3VFZ7B9",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27865.06,
+     -616818.42,
+     1029.26
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20172B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w32"
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZER74W6H3T4TSYR2PHWEHKF4R7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZER74W6H3T4TSYR2PHWEHKF4R7",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -36783.19,
+     -613279.3,
+     1673.75
+    ],
+    "rot": [
+     0,
+     0,
+     10.31918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9848",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b11"
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:39Z"
+  }
+ ]
+}
