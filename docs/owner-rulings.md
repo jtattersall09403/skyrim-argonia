@@ -196,6 +196,14 @@ added here the day they are made, with the date and the issue.
   our ground at the footprint's edge. Nothing outside the footprint changes, no water line moves, and the world's
   terrain is not regenerated. This amends "terrain is not touched" of 2026-11-19 for place footprints
   (2026-11-21, #80).
+- A cliff or steep bank inside a place, for instance down to one of our channels, is not in itself a fault: it is
+  allowed where it is made to look good, faced with cliff and rock pieces (Tropical Skyrim's among them); it is a
+  fault only where it looks obviously broken, such as a bare wall of stretched ground (2026-11-21, #80).
+- A sap pool must read as a pool of liquid, never a flat coloured plane: it is real water (a water surface in a
+  hollow with a sap-coloured water type), and if the mod's own sap water looks poor in the game we make our own
+  water type from a good vanilla one, recoloured (2026-11-21, #80).
+- The measuring and capture tools are audited against known answers and against each other, and made reliable,
+  not fixed one accident at a time (2026-11-21, #80).
 - Decided by the lead while the owner was away, for him to confirm (2026-11-21, #80): we do not bring a source's
   pond with its ground (a dock that leads somewhere is seated on our ground; what only made sense in water is
   dropped or moved to our real water); a unit's flag that faithfully copies the source's own arrangement is
