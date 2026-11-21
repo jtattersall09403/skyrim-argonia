@@ -140,3 +140,13 @@ globs = ["newworld/story/data/*", "newworld/sources/research/*", "newworld/sourc
          "tools/newworld/record_check.py"]
 stages = ["consistency"]
 tests = ["tools/tests/test_newworld_consistency.py", "tools/tests/test_newworld_record_check.py"]
+
+# The measuring tools and their golden place: every number a drafter is shown, against known answers
+# (docs/design/place-truth.md).
+[[rule]]
+globs = ["tools/places/classify.py", "tools/places/truth.py", "tools/places/units.py", "tools/places/seat.py",
+         "tools/places/look/geom.py", "tools/places/look/scene.py", "tools/places/look/mesh.py",
+         "tools/places/draft/geom.py", "tools/places/draft/obvious.py", "tools/places/draft/overlap.py",
+         "tools/places/draft/sap.py", "tools/places/check.py", "tools/places/build.py",
+         "tools/tests/fixtures/truth_place.json"]
+tests = ["tools/tests/test_places_truth.py"]
