@@ -227,7 +227,10 @@ class Region:
                 free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
                 if not free:
                     break
-            out += [p for p in free if thick(p)]
+            # the cut splits what is left into wedges: judged together, a hole is a share of the triangle; a strip
+            # along the source's edge is a scrap of it, kept only where it is thick
+            share = sum(abs(area2(p)) for p in free) / max(abs(area2(inside)), 1e-9)
+            out += [p for p in free if share >= HOLE_SHARE or thick(p)]
         return out
 
     cover = None
@@ -259,8 +262,9 @@ class Region:
 
 
 COVER_DZ = 64.0        # a carried triangle covers a generated one within this in height (two climbs)
-HOLE_THICK = 16.0      # a generated piece in a hole of the source's mesh is kept when at least this thick (2 area /
-#                        perimeter): the strips between the source's edge and Recast's along a wall are not holes
+HOLE_SHARE = 0.3       # a generated triangle a third or more of which no carried triangle covers lies in a hole: kept
+HOLE_THICK = 16.0      # a scrap of a mostly covered one is kept when at least this thick (2 area / perimeter): the
+#                        strips between the source's edge and Recast's along a wall are not holes
 
 
 def thick(poly) -> bool:
