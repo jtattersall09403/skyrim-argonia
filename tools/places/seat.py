@@ -84,14 +84,29 @@ class Ground:
 
     # --- land patches (land.jsonl rows: {cell:[cx,cy], verts:[[row,col,dz]...]}) ---
     def apply_patches(self, rows: list[dict]) -> None:
+        """The build's rule (tools/places/build.py plan_land): each row's dz is relative to the ground as loaded; a
+        vertex is one global vertex, so a dz on a cell's edge moves every cell's copy of it, and two rows naming the
+        same vertex must agree (the first is kept and the clash listed in `clashes`, as the build refuses it)."""
+        target: dict[tuple[int, int], float] = {}
+        self.clashes = getattr(self, "clashes", [])
         for r in rows:
-            key = (int(r["cell"][0]), int(r["cell"][1]))
-            h = self.cells.get(key)
-            if h is None:
+            cx, cy = int(r["cell"][0]), int(r["cell"][1])
+            if (cx, cy) not in self.cells:
                 continue
             for row, col, dz in r["verts"]:
-                h[int(row) * 33 + int(col)] += float(dz)
-            self.patched.add(key)
+                g = (cx * 32 + int(col), cy * 32 + int(row))
+                if g in target and abs(target[g] - float(dz)) > 1e-6:
+                    self.clashes.append((g, target[g], float(dz)))
+                    continue
+                target[g] = float(dz)
+        for (gx, gy), dz in target.items():
+            for cx in {gx // 32, (gx - 1) // 32}:
+                for cy in {gy // 32, (gy - 1) // 32}:
+                    col, row = gx - cx * 32, gy - cy * 32
+                    h = self.cells.get((cx, cy))
+                    if h is not None and 0 <= col <= 32 and 0 <= row <= 32:
+                        h[row * 33 + col] += dz
+                        self.patched.add((cx, cy))
 
     # --- queries ---
     def vertex(self, gx: int, gy: int) -> float | None:
