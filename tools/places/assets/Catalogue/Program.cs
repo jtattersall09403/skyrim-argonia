@@ -30,6 +30,8 @@ static Mutagen.Bethesda.Plugins.Binary.Parameters.BinaryReadParameters StringsFo
     return new() { StringsParam = new Mutagen.Bethesda.Strings.StringsReadParameters { StringsFolderOverride = dir, BsaFolderOverride = dir } };
 }
 string Key(FormKey k) => $"{k.ModKey.FileName}:{k.ID:X6}";
+// one numeric field of a water record by its property name (null when the record has no such field)
+double? WaterField(IWaterGetter w, string name) => w.GetType().GetProperty(name)?.GetValue(w) is IConvertible v ? Convert.ToDouble(v) : null;
 
 var kinds = new (string code, Func<ISkyrimModGetter, IEnumerable<IMajorRecordGetter>> get)[] {
     ("STAT", m => m.Statics), ("MSTT", m => m.MoveableStatics), ("FURN", m => m.Furniture), ("DOOR", m => m.Doors),
@@ -89,7 +91,12 @@ foreach (var m in mods)
                 // sap): its water's colours, so the studio draws the surface the colour the game shades it
                 if (r is IActivatorGetter act && !act.WaterType.IsNull && cache.TryResolve<IWaterGetter>(act.WaterType.FormKey, out var wt))
                     rows[key]["water"] = new { edid = wt.EditorID, shallow = new int[] { wt.ShallowColor.R, wt.ShallowColor.G, wt.ShallowColor.B },
-                                               deep = new int[] { wt.DeepColor.R, wt.DeepColor.G, wt.DeepColor.B } };
+                                               deep = new int[] { wt.DeepColor.R, wt.DeepColor.G, wt.DeepColor.B },
+                                               // the rest of what shades the surface: opacity 0..100, the reflection colour, reflectivity, fresnel
+                                               // and the distance the water takes to turn from its shallow to its deep colour
+                                               opacity = (int)wt.Opacity, reflect = new int[] { wt.ReflectionColor.R, wt.ReflectionColor.G, wt.ReflectionColor.B },
+                                               reflectivity = WaterField(wt, "WaterReflectivity"), fresnel = WaterField(wt, "WaterFresnel"),
+                                               fog_far = WaterField(wt, "FogAboveWaterDistanceFarPlane") };
                 // an item form's value and enchantment (the record's own, as the stocking extractor reads it), so its
                 // tier on the stocking scale is right before stockdb measures it
                 (long? value, FormKey ench) = r switch

@@ -1,0 +1,55 @@
+{
+ "about": "The measuring tools' golden place (tools/tests/test_places_truth.py). Ground: two cells (0,0) and (1,0), height 0.1 * x (a slope east), water at 700 in cell (1,0). Every ref carries its exact expected verdicts: class (tools/places/classify.py), fault (look geom.faults: none, floats, buried, unsupported end), low_over (the probe's lowest point over the highest ground under its feet, within 1 unit) and unit role where units must place it.",
+ "ground": {"cells": [[0, 0], [1, 0]], "slope_x": 0.1, "water": {"1,0": 700.0}},
+ "land": [
+  {"cell": [0, 0], "verts": [[10, 10, 40.0], [10, 11, 40.0]], "why": "a mound, first patch"},
+  {"cell": [0, 0], "verts": [[10, 11, 40.0], [10, 12, 24.0]], "why": "a mound, second patch over the first (adds 40 more at 10,11)"},
+  {"cell": [0, 0], "verts": [[20, 32, -16.0]], "why": "an edge vertex patched in one cell's copy only"}
+ ],
+ "land_expect": [
+  {"x": 1280, "y": 1280, "h": 168.0, "why": "vertex 10,10: 128 + 40"},
+  {"x": 1408, "y": 1280, "h": 220.8, "why": "vertex 10,11: 140.8 + 40 + 40, a cell's rows add"},
+  {"x": 1536, "y": 1280, "h": 177.6, "why": "vertex 10,12: 153.6 + 24"},
+  {"x": 4096, "y": 2560, "h": 393.6, "why": "edge vertex: 409.6 - 16, read the same from either cell"}
+ ],
+ "bases": {
+  "hut": {"edid": "TestThatchHouse01", "kind": "building", "model": "t/thatchhouse01.nif", "bounds": [[-200, -200, 0], [200, 200, 300]]},
+  "plat": {"edid": "TestHousePlatform01", "kind": "building", "model": "t/houseplatform01.nif", "bounds": [[-300, -300, -20], [300, 300, 0]]},
+  "post": {"edid": "TestStiltPost01", "kind": "static", "model": "t/stiltpost01.nif", "bounds": [[-10, -10, -260], [10, 10, 0]]},
+  "lamp": {"edid": "TestRopeLantern01", "kind": "static", "model": "t/ropelantern01.nif", "bounds": [[-10, -10, -30], [10, 10, 30]]},
+  "hutlight": {"edid": "HutLight01", "kind": "light", "model": "t/hutlight01.nif", "bounds": [[-16, -16, -16], [16, 16, 16]]},
+  "fog": {"edid": "FXFogBank01", "kind": "static", "model": "effects/fxfogbank01.nif", "bounds": [[-500, -500, 0], [500, 500, 200]]},
+  "critter": {"edid": "critterSpawnPond", "kind": "activator", "model": "markers/crittermarkers/pond.nif", "bounds": [[-128, -128, 0], [128, 128, 16]]},
+  "mound": {"edid": "TestMudMound01", "kind": "static", "model": "t/mudmound01.nif", "bounds": [[-150, -150, 0], [150, 150, 100]]},
+  "wood": {"edid": "TestFirewoodPile01", "kind": "static", "model": "t/firewoodpile01.nif", "bounds": [[-40, -40, 0], [40, 40, 50]]},
+  "plank": {"edid": "TestPlank01", "kind": "static", "model": "t/plank01.nif", "bounds": [[-20, -150, -5], [20, 150, 0]]},
+  "fern": {"edid": "TestFern01", "kind": "plant", "model": "t/fern01.nif", "bounds": [[-30, -30, 0], [30, 30, 100]]},
+  "rock": {"edid": "TestRock01", "kind": "rock", "model": "t/rock01.nif", "bounds": [[-100, -100, -100], [100, 100, 100]]},
+  "hist": {"edid": "HistTree03", "kind": "static", "model": "argonia/trees/hist trees/histtree02a.nif", "bounds": [[-100, -100, 0], [100, 100, 1500]]},
+  "window": {"edid": "01mudwindow", "kind": "static", "model": "t/casextwindow01.nif", "bounds": [[-30, -5, 0], [30, 5, 60]]},
+  "basket": {"edid": "Basket01", "kind": "static", "model": "clutter/basket01.nif", "bounds": [[-15, -15, 0], [15, 15, 20]]},
+  "boat": {"edid": "TestRowBoat01", "kind": "static", "model": "t/rowboat01.nif", "bounds": [[-60, -150, 0], [60, 150, 80]]}
+ },
+ "refs": [
+  {"id": "f.plat", "base": "plat", "pos": [1000, 3000, 340], "expect": {"class": "deck", "fault": null, "role": "deck"}},
+  {"id": "f.hut", "base": "hut", "pos": [1000, 3000, 340], "expect": {"class": "building body", "fault": null, "role": "body", "low_over": 220.0}},
+  {"id": "f.post1", "base": "post", "pos": [740, 2740, 320], "expect": {"class": "post", "fault": null, "role": "posts", "low_over": -15.0}},
+  {"id": "f.post2", "base": "post", "pos": [1260, 3260, 320], "expect": {"class": "post", "fault": null, "role": "posts"}},
+  {"id": "f.lamp_wall", "base": "lamp", "pos": [1210, 3000, 500], "expect": {"class": "hanging fixture", "fault": null, "role": "hanging"}},
+  {"id": "f.hutlight", "base": "hutlight", "pos": [1000, 3000, 560], "expect": {"class": "light", "fault": null, "not_role": ["body", "deck", "posts"]}},
+  {"id": "f.lamp_air", "base": "lamp", "pos": [2500, 500, 700], "expect": {"class": "hanging fixture", "fault": "floats"}},
+  {"id": "f.fog", "base": "fog", "pos": [3000, 3000, 900], "expect": {"class": "effect", "fault": null, "solid": false}},
+  {"id": "f.critter", "base": "critter", "pos": [3500, 1000, 340], "expect": {"class": "marker", "solid": false}},
+  {"id": "f.mound", "base": "mound", "pos": [2000, 1000, 315], "rot": [3.14159265, 0, 0], "expect": {"class": "ground piece", "fault": null, "low_over": 0.0, "not_role": ["body", "deck", "posts"]}},
+  {"id": "f.wood", "base": "wood", "pos": [1500, 3600, 150], "expect": {"class": "furniture", "not_role": ["posts", "deck"]}},
+  {"id": "f.plank", "base": "plank", "pos": [600, 600, 267], "expect": {"class": "span", "fault": "floats", "low_over": 200.0}},
+  {"id": "f.fern10", "base": "fern", "pos": [2200, 2200, 210], "expect": {"class": "plant", "fault": null}},
+  {"id": "f.fern80", "base": "fern", "pos": [2400, 2200, 160], "expect": {"class": "plant", "fault": "buried"}},
+  {"id": "f.rock", "base": "rock", "pos": [3200, 400, 320], "expect": {"class": "rock", "fault": null}},
+  {"id": "f.lost", "base": "rock", "pos": [3200, 1800, -20000], "expect": {"class": "rock", "fault": "buried"}},
+  {"id": "f.hist", "base": "hist", "pos": [3800, 3600, 380], "expect": {"class": "tree", "role_ground": true}},
+  {"id": "f.window", "base": "window", "pos": [800, 3800, 100], "expect": {"class": "wall part"}},
+  {"id": "f.basket", "base": "basket", "pos": [1100, 3100, 340], "expect": {"class": "clutter"}},
+  {"id": "f.boat", "base": "boat", "pos": [6000, 3000, 650], "expect": {"class": "boat", "fault": null}}
+ ]
+}

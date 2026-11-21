@@ -18,21 +18,18 @@ END_TOL = 48.0              # a bridge or walkway end this far over the ground w
 DOOR_TOL = 64.0             # the ground before a door within this of the door's sill: walkable
 SIDES = {"n": 90.0, "ne": 45.0, "e": 0.0, "se": -45.0, "s": -90.0, "sw": -135.0, "w": 180.0, "nw": 135.0}
 ELEV = {"eye": None, "oblique": 32.0, "high": 60.0, "top": 89.0}
-SPAN_WORDS = ("bridge", "walkway", "dock", "boardwalk", "pier", "plank", "gangway", "stair", "ramp", "deck")
-HANG_WORDS = ("lantern", "sconce", "rope", "chain", "hang", "banner", "sign", "lamp", "bell", "cage", "net", "candle")
-WALL_WORDS = HANG_WORDS + ("window",)   # fixed to a wall or post: held by the solid its box touches
 TOUCH = 8.0                 # a wall-fixed thing's box this close to a solid's box touches it
-PLANTS = {"plant", "groundcover", "flora"}   # buried only when most of its height is under the ground
-STRUCTURAL = {"building", "static", "furniture", "door", "container", "activator"}
 DRAUGHT = 160.0            # a boat's hull may dip this far under the water surface and still float
 BURIED = 64.0              # a piece whose top is this far under the ground is lost in it
 SUNK_SHARE = 0.6           # a plant is buried when more than this share of its height is under even the lowest ground under it
 PART_SHARE = 0.5           # a door, window or floor is buried when more than this share of it is
-PART_WORDS = ("door", "window", "floor")
-HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")   # a vessel: whatever stands inside its box rests on its deck
+from tools.places.classify import (HANG_WORDS, HULL_WORDS, PART_WORDS, WALL_WORDS,  # noqa: E402  the one classifier's lists
+                                   WALKED_SPAN_WORDS as SPAN_WORDS, PLANT_KINDS as PLANTS,
+                                   STRUCTURAL_KINDS as STRUCTURAL, NO_SOLID_KINDS as NO_SOLID)
+from tools.places import shape  # noqa: E402  every geometric number comes from the piece's mesh
+from tools.places.classify import effect as _effect, kind_of as _kind_of  # noqa: E402
 GAME_MASTERS = ("skyrim.esm:", "update.esm:", "dawnguard.esm:", "hearthfires.esm:", "dragonborn.esm:")
 REACH = 160.0               # a supporter's top may rise this far past what rests on it (a post through a deck)
-NO_SOLID = {"light", "marker", "sound", "actor", "groundcover", "plant"}
 
 
 # ---------- pieces ----------
@@ -57,14 +54,15 @@ def bottom_points(p: dict, n: int = 3) -> np.ndarray:
 
 
 def end_points(p: dict) -> np.ndarray:
-    """The bottom middles of a span's two ends (along its longer model axis), in the world."""
-    lo, hi, m = p["lo"], p["hi"], np.asarray(p["m"], float)
-    cx, cy = (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2
-    if hi[0] - lo[0] >= hi[1] - lo[1]:
-        pts = [[lo[0], cy, lo[2], 1.0], [hi[0], cy, lo[2], 1.0]]
-    else:
-        pts = [[cx, lo[1], lo[2], 1.0], [cx, hi[1], lo[2], 1.0]]
-    return (m @ np.array(pts).T).T[:, :3]
+    """A span's two end lines' middles, from its mesh (shape.ends), at the underside there: what stands on the
+    ground. Foot first. `end_lines` gives the whole end (walked height, width, outward axis)."""
+    e = end_lines(p)
+    return np.array([[a["at"][0], a["at"][1], a["under"] if a["under"] is not None else a["at"][2]] for a in e],
+                    float).reshape(-1, 3)
+
+
+def end_lines(p: dict) -> list[dict]:
+    return shape.posed(p).ends() or []
 
 
 def is_span(p: dict) -> bool:
@@ -74,8 +72,7 @@ def is_span(p: dict) -> bool:
 
 def effect(p: dict) -> bool:
     """A game effect (mist, fire, a waterfall's spray): the studio draws none and nothing need hold it up."""
-    m, e = str(p.get("model") or "").lower().replace("\\", "/"), str(p.get("edid") or "").lower()
-    return m.startswith("effects/") or e.startswith("fx")
+    return _effect(p)
 
 
 def wall_fixed(p: dict) -> bool:
@@ -126,44 +123,66 @@ def out_of_reach(p: dict) -> bool:
 
 
 def solid(p: dict) -> bool:
-    return bool(p.get("resolved")) and p.get("kind") not in NO_SOLID
+    return bool(p.get("resolved")) and p.get("kind") not in NO_SOLID and _kind_of(p) not in ("effect", "marker", "light")   # smoke, a critter spawn or a cloud holds nothing up
 
 
 def support_under(pieces: list[dict], x: float, y: float, z: float, tol: float, skip: str | None = None,
                   boxes: dict | None = None) -> str | None:
     """A solid piece whose box holds (x, y) and reaches up to within tol of z from below: what holds z up."""
     for q in pieces:
-        if q["id"] == skip or not solid(q):
+        if q["id"] == skip:
             continue
         lo, hi = boxes[q["id"]] if boxes else aabb(q)
-        if lo[0] - 1 <= x <= hi[0] + 1 and lo[1] - 1 <= y <= hi[1] + 1 and hi[2] >= z - tol and lo[2] < z - 1:
-            return q["id"]
+        if lo[0] - 1 <= x <= hi[0] + 1 and lo[1] - 1 <= y <= hi[1] + 1 and hi[2] >= z - tol and lo[2] < z - 1 \
+                and solid(q):
+            S = shape.posed(q)                       # the box was the first reject; the mesh's own top decides
+            t = _near_top(S, x, y)
+            if t is not None and t >= z - tol and S.low() < z - 1:
+                return q["id"]
     return None
+
+
+def _near_top(S, x: float, y: float) -> float | None:
+    """The mesh's highest surface at (x, y) or in the cells next to it (an end line on a cell's edge)."""
+    best = None
+    for dx in (-shape.CELL, 0.0, shape.CELL):
+        for dy in (-shape.CELL, 0.0, shape.CELL):
+            t = S.at(x + dx, y + dy, "top")
+            if t is not None and (best is None or t > best):
+                best = t
+    return best
 
 
 # ---------- probe ----------
 def probe_piece(p: dict, ground, pieces: list[dict], boxes: dict | None = None) -> dict:
-    """One piece's numbers: its box, each foot's height over the ground (negative: buried), what holds it up."""
+    """One piece's numbers, from its mesh in its pose (shape.py): its box (the mesh's extent), its feet (where the
+    mesh comes lowest) each over the ground under it, its lowest point over the ground under its own footprint, what
+    its underside actually rests on, a span's two end lines, a door's sill."""
     boxes = boxes or {q["id"]: aabb(q) for q in pieces}
-    lo, hi = boxes[p["id"]]
+    S = shape.posed(p)
+    lo, hi = S.lo, S.hi
     feet = []
-    for x, y, z in bottom_points(p):
+    for f in S.feet()[:12]:
+        x, y = f["at"]
         g = ground.height(x, y)
         w = ground.water(x, y) if hasattr(ground, "water") else None
-        feet.append({"at": [round(x, 1), round(y, 1)], "z": round(z, 1), "ground": None if g is None else round(g, 1),
-                     "over": None if g is None else round(z - g, 1), "water": None if w is None else round(w, 1)})
+        feet.append({"at": [x, y], "z": f["z"], "ground": None if g is None else round(g, 1),
+                     "over": None if g is None else round(f["z"] - g, 1), "water": None if w is None else round(w, 1)})
     known = [f["over"] for f in feet if f["over"] is not None]
-    low = float(lo[2])
-    gmax = max((f["ground"] for f in feet if f["ground"] is not None), default=None)
-    sup = support_under(pieces, (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, low, FLOAT_TOL, p["id"], boxes) \
-        or next((s for x, y, z in bottom_points(p) for s in [support_under(pieces, x, y, low, FLOAT_TOL, p["id"], boxes)] if s), None)
+    cl = S.clearance(ground)
+    sup = None
+    B = Boxes([q for q in pieces if q["id"] != p["id"]], boxes)
+    for k in sorted(B.under_box(lo, hi, float(lo[2]), FLOAT_TOL), key=lambda i: (-float(B.hi[i][2]), B.ids[i])):
+        if shape.rests_on(S, shape.posed(B.by[B.ids[k]]), FLOAT_TOL, REACH):   # the box first, then the meshes
+            sup = B.ids[k]
+            break
     out = {"id": p["id"], "base": p.get("base"), "edid": p.get("edid"), "kind": p.get("kind"), "cluster": p.get("cluster"),
-           "model": p.get("model"), "resolved": bool(p.get("resolved")),
+           "model": p.get("model"), "resolved": bool(p.get("resolved")), "mesh": S.mesh,
            "box": [[round(float(v), 1) for v in lo], [round(float(v), 1) for v in hi]],
-           "lowest_over_ground": None if gmax is None else round(low - gmax, 1),
+           "lowest_over_ground": None if cl is None else cl["over"],
            "feet_over_ground": [min(known), max(known)] if known else None, "feet": feet, "held_by": sup}
     if is_span(p):
-        out["ends"] = [end_report(e, ground, pieces, p["id"], boxes) for e in end_points(p)]
+        out["ends"] = [end_report(e, ground, pieces, p["id"], boxes) for e in end_lines(p)]
     if p.get("kind") == "door":
         out["door_ground"] = door_report(p, ground, pieces, boxes)
     near = []
@@ -184,19 +203,43 @@ def box_gap(alo, ahi, blo, bhi) -> float:
     return max(d) if max(d) < 0 else math.sqrt(sum(max(v, 0.0) ** 2 for v in d))
 
 
-def end_report(e, ground, pieces, skip, boxes) -> dict:
-    x, y, z = (float(v) for v in e)
+def end_report(e: dict, ground, pieces, skip, boxes) -> dict:
+    """A span's end line (shape.ends): its underside over the ground there, and the solid piece whose mesh has a
+    surface within END_TOL of its walked height and a cell and a half in plan (a deck's lip, a post's top, a landing)."""
+    x, y, z = (float(v) for v in e["at"])
     g = ground.height(x, y)
-    held = support_under(pieces, x, y, z, END_TOL, skip, boxes)
-    over = None if g is None else round(z - g, 1)
+    held = end_support(pieces, x, y, z, skip, boxes)
+    under = float(e["under"]) if e.get("under") is not None else z
+    over = None if g is None else round(under - g, 1)
+    if over is not None and over > END_TOL and e.get("reach") is not None and e["reach"] - g <= END_TOL:
+        over = round(float(e["reach"]) - g, 1)    # the end stands on its own legs (a flight's post under its head)
+    w = ground.water(x, y) if hasattr(ground, "water") else None
+    if w is not None and under <= w + END_TOL and g is not None and g < w:
+        over = min(over, round(under - w, 1))      # an end at or in the water (a dock's steps down): it meets the water
     return {"at": [round(x, 1), round(y, 1), round(z, 1)], "over_ground": over, "held_by": held,
             "supported": held is not None or (over is not None and over <= END_TOL)}
 
 
+def end_support(pieces, x: float, y: float, z: float, skip, boxes, r: float = 24.0) -> str | None:
+    """The solid piece (no tree) whose mesh meets an end line at (x, y, z): the box first, then its surfaces."""
+    best = None
+    for q in pieces:
+        if q["id"] == skip:
+            continue
+        lo, hi = boxes[q["id"]] if boxes else aabb(q)
+        if not (lo[0] - r <= x <= hi[0] + r and lo[1] - r <= y <= hi[1] + r and lo[2] - END_TOL <= z <= hi[2] + END_TOL):
+            continue
+        if not solid(q) or (q.get("kind") == "tree" and "root" not in str(q.get("edid") or "").lower()):
+            continue
+        h = shape.posed(q).surface_near(x, y, z, r, END_TOL)
+        if h is not None and (best is None or abs(h - z) < best[0]):
+            best = (abs(h - z), q["id"])
+    return best[1] if best else None
+
+
 def door_report(p, ground, pieces, boxes) -> dict:
     """The ground where one comes out of the door (its arrival point, else 100 units each way along its model y)."""
-    lo = boxes[p["id"]][0]
-    sill = float(lo[2])
+    sill = shape.posed(p).low()
     arr = (p.get("door") or {}).get("arrival")
     pts = [arr[:2]] if arr else [[float(v) for v in (np.asarray(p["m"], float) @ np.array([0, s, p["lo"][2], 1.0]))[:2]]
                                  for s in (-100.0, 100.0)]
@@ -219,6 +262,7 @@ class Boxes:
     def __init__(self, pieces: list[dict], boxes: dict):
         keep = [q for q in pieces if solid(q)]
         self.ids = [q["id"] for q in keep]
+        self.by = {q["id"]: q for q in keep}
         self.lo = np.array([boxes[i][0] for i in self.ids]).reshape(-1, 3)
         self.hi = np.array([boxes[i][1] for i in self.ids]).reshape(-1, 3)
         # a tree holds nothing up from below; a Hist's great roots are walked on like ground (furniture stands on them)
@@ -237,6 +281,14 @@ class Boxes:
         reach = REACH if reach is None else reach
         return np.nonzero(self._over(x, y) & (hi[:, 2] >= z - tol) & ((hi[:, 2] <= z + reach) | self.hull)
                           & (lo[:, 2] < z - 1) & ~self.tree)[0]
+
+    def under_box(self, lo, hi, z: float, tol: float, reach: float = None) -> np.ndarray:
+        """Indexes of the boxes under any part of the plan box [lo, hi] (not only its sample points) whose top is
+        within tol under z to `reach` over it: a post set in from a deck's corners holds the deck."""
+        reach = REACH if reach is None else reach
+        L, H = self.lo, self.hi
+        return np.nonzero((L[:, 0] <= hi[0] - 1) & (lo[0] + 1 <= H[:, 0]) & (L[:, 1] <= hi[1] - 1) & (lo[1] + 1 <= H[:, 1])
+                          & (H[:, 2] >= z - tol) & ((H[:, 2] <= z + reach) | self.hull) & (L[:, 2] < z - 1) & ~self.tree)[0]
 
     def touching(self, lo, hi, gap: float = TOUCH) -> np.ndarray:
         """Indexes of the boxes (no trees) that touch or enter the box [lo, hi]: the wall or post a thing is fixed to."""
@@ -262,18 +314,18 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
     for p in pieces:
         if not p.get("model") or p.get("missing") or not p.get("resolved") or p.get("kind") in ("light", "marker") or effect(p):
             continue
-        lo, hi = boxes[p["id"]]
-        low = float(lo[2])
-        pts = bottom_points(p)
-        gs = [g for g in (ground.height(x, y) for x, y, _ in pts) if g is not None]
-        over = round(low - max(gs), 1) if gs else None
+        S = shape.posed(p)
+        lo, hi = S.lo, S.hi
+        low = S.low()
+        cl = S.clearance(ground)
+        over = cl["over"] if cl else None
         on = set()
         if over is not None and over > tol:
-            for x, y in [((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2)] + [(q[0], q[1]) for q in pts]:
-                on.update(B.ids[i] for i in B.under(x, y, low, tol))
+            on.update(B.ids[i] for i in B.under_box(lo, hi, low, tol)          # the box first, then the meshes
+                      if shape.rests_on(S, shape.posed(B.by[B.ids[i]]), tol, REACH))
             if hangs(p):   # a lantern, a sconce, a sign: held by what its top hangs from
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, float(hi[2])))
-            if wall_fixed(p):   # a lantern, sconce, window or sign on a wall or post: held by what it touches
+            if wall_fixed(p) or p.get("kind") == "door":   # a lantern, sconce, window, sign or door: held by the wall it is set in
                 on.update(B.ids[i] for i in B.touching(lo, hi))
             if p.get("kind") not in STRUCTURAL:   # a flower, a vine, a pot: held by the trunk or wall it grows on or sits in
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (low + float(hi[2])) / 2))
@@ -285,7 +337,7 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
             afloat = w is not None and w - DRAUGHT <= low <= w + 8.0
         info[p["id"]] = {"over": over, "low": round(low, 1), "on": sorted(on),
                          "grounded": over is None or over <= tol or afloat,
-                         "gmin": round(min(gs), 1) if gs else None}
+                         "gmin": cl["gmin"] if cl else None, "top": round(float(hi[2]), 1)}
     changed = True
     while changed:
         changed = False
@@ -316,10 +368,14 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
         if not p.get("model") or p.get("kind") in ("light", "marker"):
             continue
         g = gr.get(p["id"])
-        top = float(boxes[p["id"]][1][2])
+        top = g["top"] if g else float(boxes[p["id"]][1][2])
         # buried: its top under the ground even where the ground under it is lowest (a rock half in a bank shows)
-        sunk = g and g["gmin"] is not None and not out_of_reach(p) and \
-            is_buried(g["low"], top, g["gmin"], p.get("kind") in PLANTS, is_part(p))
+        if p.get("kind") in PLANTS:   # a plant: most of it under the ground by height AND cell by cell over its plan
+            sunk = g and g["gmin"] is not None and not out_of_reach(p) and is_buried(g["low"], top, g["gmin"], True) \
+                and shape.posed(p).sunk_share(ground) > 0.5
+        else:
+            sunk = g and g["gmin"] is not None and not out_of_reach(p) and \
+                is_buried(g["low"], top, g["gmin"], False, is_part(p))
         if sunk:
             out.append({"id": p["id"], "fault": "buried", "edid": p.get("edid"), "cluster": p.get("cluster"),
                         "over": g["over"], "z": g["low"],
@@ -330,7 +386,7 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
             return (r["held_by"] and gr.get(r["held_by"], {"grounded": True})["grounded"]) or \
                 (r["over_ground"] is not None and r["over_ground"] <= END_TOL)
         # a bridge hung between two held ends (a rope bridge sagging between decks) floats over nothing in between
-        slung = "bridge" in str(p.get("edid") or "").lower() and all(end_held(e) for e in end_points(p))
+        slung = "bridge" in str(p.get("edid") or "").lower() and all(end_held(e) for e in end_lines(p))
         if g and not g["grounded"] and not slung:
             sup = [i for i in g["on"]]
             out.append({"id": p["id"], "fault": "floats", "edid": p.get("edid"), "cluster": p.get("cluster"),
@@ -338,7 +394,7 @@ def faults(pieces: list[dict], ground, world=()) -> list[dict]:
                         "why": f"its lowest point is {g['over']:.0f} units ({g['over'] / UNITS_PER_M:.1f} m) over the ground"
                         + (f", resting only on {len(sup)} piece(s) that do not reach the ground themselves" if sup else " with nothing under it")})
         if is_span(p):
-            for e in end_points(p):
+            for e in end_lines(p):
                 r = end_report(e, ground, allp, p["id"], boxes)
                 held = r["held_by"] and gr.get(r["held_by"], {"grounded": True})["grounded"]
                 if not (held or (r["over_ground"] is not None and r["over_ground"] <= END_TOL)):

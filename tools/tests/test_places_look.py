@@ -11,7 +11,9 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from tools.places import xform
+from tools.places import shape, xform
+
+shape.REAL = False   # measure the fixtures by their boxes (registered meshes only): no converted model is read
 from tools.places.look import geom
 
 
@@ -142,7 +144,7 @@ def test_span_ends_doors_and_unresolved():
                "m": xform.matrix([0, 0, 0], [0, 0, 0]), "lo": [0, 0, 0], "hi": [1, 1, 1]}
     f = geom.faults([bridge, post, door, box, missing], g)
     ends = [x for x in f if x["fault"] == "unsupported end"]
-    assert len(ends) == 1 and ends[0]["at"][0] == pytest.approx(400)          # the far end only
+    assert len(ends) == 1 and ends[0]["at"][0] == pytest.approx(400, abs=2)          # the far end only
     assert any(x["fault"] == "no ground at door" and x["id"] == "door" for x in f)
     assert any(x["fault"] == "unresolved" and x["id"] == "box" for x in f)
     assert any(x["fault"] == "missing base" and x["id"] == "gone" for x in f)

@@ -638,23 +638,13 @@
     "unit": "house.SeekhatEggTendersQuarters",
     "flag": "foot not reaching the ground",
     "why": "at the town's one source offset (+328, the carried ground's own) so its bridges and walkways meet as in the source; the post the check names stands over the source's rock and hollow by about 55 (section along dock.07, 2026-11-21): a short visible leg is kept over breaking the joins"
+   },
+   {
+    "unit": "house.SeekhatCarpenterHut",
+    "flag": "steps not reaching the ground",
+    "why": "the source's own: the Carpenter's stair (14BB38) comes down from its deck onto walkway.04's boardwalk, not the ground; its foot is on the boardwalk (joints: steps to walkway.04 by 36, seen in survey walkway.04 NE high, 2026-11-21)"
    }
   ],
-  "sap": {
-   "offset": {
-    "7SWK29SQSJ276Q5JVM1M6FCTK4": [
-     1450.0,
-     -250.0
-    ]
-   },
-   "scale": {
-    "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4
-   },
-   "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21)",
-   "none": {
-    "RNQ1281B2E5X8752E8TM05G1YV": "the hatchery gland: the hatchery's own steam pool is at its foot and there is no open level ground for a sap pool (five spots tried, 2026-11-21); no pool (lead's decision, 2026-11-21)"
-   }
-  },
   "ground_cap": 450
  },
  "fit": {
@@ -1455,6 +1445,22 @@
    {
     "id": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
     "on": "7SWK29SQSJ276Q5JVM1M6FCTK4"
+   }
+  ],
+  "offset": {
+   "7SWK29SQSJ276Q5JVM1M6FCTK4": [
+    1450.0,
+    -250.0
+   ]
+  },
+  "scale": {
+   "7SWK29SQSJ276Q5JVM1M6FCTK4": 2.4
+  },
+  "why": "the Hist's pool placed by hand at the foot of its rise on the east, beside the stair of the way up from the landing, below the prayer ring: the one stretch of the rise's foot level enough (no bank) with no deck, walkway or house over it; the Hist's roots K0EQ9QTK and P459B616 run down toward it (lead's decision, 2026-11-21)",
+  "none": [
+   {
+    "on": "RNQ1281B2E5X8752E8TM05G1YV",
+    "why": "the hatchery gland: the hatchery's own steam pool is at its foot and there is no open level ground for a sap pool (five spots tried, 2026-11-21); no pool (lead's decision, 2026-11-21)"
    }
   ]
  },

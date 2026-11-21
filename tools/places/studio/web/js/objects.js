@@ -6,6 +6,8 @@ import { getMesh } from './api.js';
 import { refMatrix } from './xform.js';
 import { colourOf } from './lights.js';
 import { halfExtents, hasPrim, isRound } from './prims.js';
+import { isPlacedWater } from './water_look.js';
+import { WaterSurface } from './water.js';
 
 export const KIND_COLOUR = {
   building: '#a08f78', static: '#9a9488', clutter: '#c4a46a', tree: '#4f6b3a', plant: '#6f9a4a', groundcover: '#86a35a',
@@ -75,8 +77,8 @@ const loaderFor = (kind) => new GLTFLoader().register((parser) => new QuietTextu
 // thing's kind from the land's palette), cut-out alpha for leaves and lily pads (blending does not sort inside
 // an instanced mesh, and draws a blended pad's empty rim as a pale ring), both faces where the model wants them.
 const matCache = new Map();
-// A placed water (a puddle, King of the Murkmire's Hist sap) is drawn in its water's colour (`tint`, the catalogue's
-// water.shallow), as the game shades its surface.
+// A placed water (a puddle, King of the Murkmire's Hist sap) is drawn as a liquid by water.js, per group; this plain
+// material, in its water's colour (`tint`, the catalogue's water.shallow), is only what a part is made with first.
 export function plainMaterial(m, kind, tint = null) {
   const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
   const cut = m.alphaTest > 0 || m.transparent;
@@ -122,7 +124,7 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
           });
           resolve(parts);
-        } catch (e) { console.info(`studio: ${e.message}`); resolve(null); }
+        } catch (e) { console.info(`studio: ${e.message}`); const none = []; none.failed = e.message; resolve(none); }
       } });
       pump();
     }));
@@ -134,6 +136,7 @@ const LIGHT = new Set(['tree', 'plant', 'groundcover', 'rock']);
 
 const boxGeo = new THREE.BoxGeometry(1, 1, 1).translate(0.5, 0.5, 0.5);
 const coneGeo = new THREE.ConeGeometry(0.5, 1, 6, 1).rotateX(Math.PI / 2).translate(0.5, 0.5, 0.5);
+const standInMat = new THREE.MeshLambertMaterial({ color: '#ff00ff', transparent: true, opacity: 0.5, side: THREE.DoubleSide, name: 'placeholder' });
 const boxMats = new Map();
 function boxMaterial(kind, ghost) {
   const k = `${kind}|${ghost}`;
@@ -165,7 +168,7 @@ function sendInstances(mesh, n) {
 
 // Models that have arrived wait here and are switched on a few at a time, their textures sent to the GPU first,
 // so a burst of arrivals never stalls a frame (view.js calls drainReady before each draw).
-const ready = { jobs: [], push(fn, parts, layer) { this.jobs.push({ fn, parts, layer }); } };
+const ready = { jobs: [], push(fn, parts, layer) { if (!layer?.disposed) this.jobs.push({ fn, parts, layer }); } };
 const sent = new WeakMap(); // renderer -> WeakSet of textures and materials already on its GPU
 // Shader programs are linked off the main thread (compileAsync, parallel compile) before a model is switched
 // on: a link done inside a draw stalls the page for a second or more on a slow GPU.
@@ -267,6 +270,8 @@ class Group {
     // refs with a primitive are a group of their own (setRefs), drawn as their boxes with the helpers
     this.prim = prim && !ghost;
     this.unseen = !base?.model && !ghost && !this.bulb && !this.prim;
+    // a placed water: a liquid's surface over the ground under it (water.js), with the look of its water type
+    this.surface = isPlacedWater(base) && !ghost && !this.prim ? new WaterSurface(base.water) : null;
     if (this.bulb) this.colour = lightColour(base);
     // effects and markers carry the record's "everything" bounds; draw them as a small box (a bulb: its sphere)
     let b = this.bulb ? [[-BULB, -BULB, -BULB], [BULB, BULB, BULB]] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];
@@ -288,8 +293,9 @@ class Group {
     // every part of one model shares one buffer of instance matrices
     let shared = null;
     this.full = this.fullParts.map((p) => {
-      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : p.material, shared ? 1 : this.cap);
+      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : this.surface ? this.surface.material(p.material) : p.material, shared ? 1 : this.cap);
       if (shared) m.instanceMatrix = shared; else shared = m.instanceMatrix;
+      if (this.surface) m.renderOrder = 3;
       m.count = 0; m.frustumCulled = false; m.userData.group = this; this.layer.root.add(m); return m;
     });
   }
@@ -298,6 +304,13 @@ class Group {
     this.matrices = refs.map((r) => matrixOf(r, this.layer.origin));
     let s = 1; for (const r of refs) if ((r.scale ?? 1) > s) s = r.scale;
     this.big = this.radius * 2 * s > BIG;
+    if (this.surface) this.setSurface();
+  }
+  // the ground under the placed waters, as depth, for the surface's shading
+  setSurface() {
+    const ax = Math.max(Math.abs(this.bmin[0]), Math.abs(this.bmin[0] + this.bsize[0])), ay = Math.max(Math.abs(this.bmin[1]), Math.abs(this.bmin[1] + this.bsize[1]));
+    const r0 = Math.hypot(ax, ay) || 64;
+    this.surface.setGrid(this.refs.map((r) => ({ pos: r.pos, r: r0 * (r.scale ?? 1) })), this.layer.origin, this.layer.groundAt);
   }
   // Fill instance buffers from what the camera can see.
   cull(cam, frustum, sphere) {
@@ -341,19 +354,46 @@ class Group {
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null).then((parts) => {
-        if (!parts || !parts.length) return;
+        // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists
+        // it), never left out unseen; a model that loads and holds nothing drawable (a furniture marker) is empty
+        if (parts && !parts.length && !parts.failed) { this.empty = true; return; }
+        if (!parts || !parts.length || parts.placeholder) parts = this.standIn(parts?.failed || 'the converter could not read it');
         ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
         this.layer.onDirty();   // a view at rest draws again, so a model that arrives is switched on without waiting for a touch
       });
     }
     return nf + nb;
   }
+  standIn(why) {
+    const parts = [{ geometry: boxGeo.clone().applyMatrix4(this.boxLocal), material: standInMat }];
+    parts.placeholder = true; parts.why = why; return parts;
+  }
   dispose() {
     for (const m of [this.box, ...(this.full || [])]) if (m) { this.layer.root.remove(m); m.dispose(); }
   }
 }
 
+// Leaving a place: every model, material and texture loaded so far is let go of, on the GPU and in memory, and the
+// models still queued are dropped, so the next place starts from what the device had before the last one (a tablet
+// that has drawn Helstrom has little left). Called after the old place's layers are disposed.
+export function releaseModels() {
+  queue.length = 0; ready.jobs.length = 0;
+  for (const p of meshCache.values()) p.then((parts) => { for (const x of parts || []) x.geometry.dispose(); });
+  meshCache.clear();
+  for (const m of matCache.values()) m.dispose();
+  matCache.clear();
+  for (const p of texCache.values()) p.then((t) => { if (t) { t.dispose(); t.image?.close?.(); } });
+  texCache.clear();
+}
+
 export class ObjectLayer {
+  // Leaving the place: its instanced meshes let go of; models that arrive later for it are not switched on.
+  dispose() {
+    this.disposed = true;
+    for (const g of this.groups.values()) g.dispose();
+    for (const m of [this.primBoxes, this.primSpheres, this.bulbs, this.rings]) if (m) { this.root.remove(m); m.dispose(); }
+    this.groups.clear(); this.root.removeFromParent();
+  }
   constructor(origin, bases) {
     this.origin = origin; this.bases = bases; this.root = new THREE.Group(); this.groups = new Map();
     this.rangeScale = 1; this.refs = []; this.byId = new Map(); this._dirty = true; this.onDirty = () => {};

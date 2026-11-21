@@ -1,0 +1,861 @@
+"""A piece's real shape, from its model's MESH, for every tool that measures, checks, places, seats or avoids.
+
+One structure per model, computed once from its triangles and cached on disk by the converted model's content key
+(out/places/shapes/v<VERSION>/<key>.npz, an index.json beside it): a SURFACE CLOUD (points laid over every triangle
+at most SPACING apart, plus every vertex, each with its face's normal), kept on disk thinned to one point per VOX
+cube, and the model-frame COLUMNS read from the full cloud (lowest, highest, highest and lowest walked height per
+COL square). An untilted piece (any yaw, any uniform scale) reads its grid from the turned columns; a tilted one
+from the cloud in its pose. Every derived number below is read in the world:
+
+- a 16-unit world grid of the UNDERSIDE (lowest surface) and the TOP (highest surface) over the plan, and the
+  occupancy that is the piece's true plan outline;
+- FEET: connected local minima of the underside (a house's posts, a stair's foot, a bridge's two ends);
+- WALK: the top-facing surfaces (normal within ~30 degrees of up) big enough to stand on, as a height field;
+- ENDS of a walked span: its walk field's two extremes along its long axis, as end lines (middle, width, height);
+- a body's floor, wall footprint and EAVES (the lowest underside outside the walls);
+- a tree's ROOT COLLAR (where the trunk's section stops shrinking going up), trunk lean and crown extent;
+- a hanging thing's hang point (its top).
+
+Error bounds, on the real models: heights in the grid are exact to SPACING (8 units) along a face (coarser for a huge
+model capped at MAX_POINTS: the spacing is in its cache); an untilted piece's cells are placed to COL * 0.71 = 6
+units in plan; numbers read from the thinned cloud (a tilted piece's grid, end lines, a tree's collar) to VOX * 1.73
+= 10 units. The golden fixture's registered meshes keep their full cloud: exact to the 2-unit tolerance. A model with no readable mesh is listed by name in `unread()` and measured by its box's 12 triangles,
+marked `mesh=False` on its Posed; never silently.
+
+The box (`p["lo"]`, `p["hi"]`) is used only as a first reject before two shapes are compared."""
+from __future__ import annotations
+
+import math
+import os
+from pathlib import Path
+
+import numpy as np
+
+VERSION = 5
+SPACING = 8.0
+MAX_POINTS = 400_000
+CELL = 16.0
+WALK_NZ = 0.85         # a face this near level (cos of ~32 degrees) is walked on
+WALK_MIN_CELLS = 3     # a walked surface this many 16-unit cells or larger is one a person stands on
+STEP = 32.0            # a person steps up this much
+ROOT = Path(__file__).resolve().parents[2]
+
+REAL = True           # read the converted models; a test sets it False to measure only registered meshes and boxes
+_REG: dict[str, np.ndarray] = {}      # fixture or hand-given meshes: model -> tris (n, 3, 3)
+_MODEL: dict[str, "Model"] = {}
+_UNREAD: dict[str, str] = {}
+
+
+def cache_dir() -> Path:
+    base = Path(os.environ.get("PLACES_OUT", ROOT / "out" / "places"))
+    return base / "shapes" / f"v{VERSION}"
+
+
+def register(model: str, verts, tris) -> None:
+    """A mesh given as vertex and triangle lists (the golden fixture's tiny meshes)."""
+    V = np.asarray(verts, float).reshape(-1, 3)
+    T = np.asarray(tris, int).reshape(-1, 3)
+    _REG[str(model).lower()] = V[T]
+    _MODEL.pop(str(model).lower(), None)
+
+
+def unread() -> dict[str, str]:
+    """Every model that could not be read as a mesh this run, with why: measured by its box, and said so."""
+    return dict(_UNREAD)
+
+
+# ---------- the model ----------
+COL = 8.0              # the model-frame column size of the untilted fast path
+VOX = 6.0              # the thinned cloud's cube, for tilted pieces
+
+
+class Model:
+    """A model's surface cloud in its own frame: points (n, 3) float32, normals (n, 3) float32, spacing; and its
+    COLUMNS (k, 5): each COL-unit model-frame column's middle x, y, lowest z, highest z and highest walked z (nan when
+    nothing walkable). An untilted piece (any yaw, any uniform scale) reads its fields from the turned columns (plan
+    error at most COL * 0.71 = 6 units); a tilted one from the cloud itself."""
+    def __init__(self, P, N, spacing: float, mesh: bool, cols: np.ndarray | None = None, load=None, hull=None):
+        self._P, self._N, self.spacing, self.mesh, self._load = P, N, spacing, mesh, load
+        self.cols = columns(P, N) if cols is None else cols
+        self.hull = _plan_hull(P) if hull is None else hull
+
+    @property
+    def D(self) -> tuple[np.ndarray, np.ndarray]:
+        """The cloud thinned to one point per VOX-unit cube (3D error at most VOX * 1.73 = 10 units): what a tilted
+        piece's fields are read from."""
+        if getattr(self, "_D", None) is None and getattr(self, "_Dload", None):
+            self._D = self._Dload()
+        if getattr(self, "_D", None) is None:
+            P = self.P
+            if not len(P):
+                self._D = (P, self.N)
+            else:
+                k = np.floor(P / VOX).astype(np.int64)
+                k -= k.min(0)
+                span = k.max(0) + 1
+                _, idx = np.unique((k[:, 0] * span[1] + k[:, 1]) * span[2] + k[:, 2], return_index=True)
+                self._D = (P[idx], self.N[idx])
+        return self._D
+
+    def _get(self):
+        if self._P is None:
+            self._P, self._N = self._load()
+
+    @property
+    def P(self) -> np.ndarray:
+        self._get()
+        return self._P
+
+    @property
+    def N(self) -> np.ndarray:
+        self._get()
+        return self._N
+
+
+def columns(P: np.ndarray, N: np.ndarray) -> np.ndarray:
+    if not len(P):
+        return np.zeros((0, 5), np.float32)
+    I = np.floor(P[:, 0] / COL).astype(np.int64)
+    J = np.floor(P[:, 1] / COL).astype(np.int64)
+    key = (I - I.min()) * (int(J.max() - J.min()) + 1) + (J - J.min())
+    o = np.argsort(key, kind="stable")
+    k, z, up = key[o], P[o, 2], N[o, 2] >= WALK_NZ
+    st = np.flatnonzero(np.r_[True, k[1:] != k[:-1]])
+    zmin = np.minimum.reduceat(z, st)
+    zmax = np.maximum.reduceat(z, st)
+    wz = np.where(up, z, -np.inf)
+    wmax = np.maximum.reduceat(wz, st)
+    wmax = np.where(np.isfinite(wmax), wmax, np.nan)
+    wmin = np.minimum.reduceat(np.where(up, z, np.inf), st)
+    wmin = np.where(np.isfinite(wmin), wmin, np.nan)
+    ii, jj = I[o][st], J[o][st]
+    return np.stack([(ii + 0.5) * COL, (jj + 0.5) * COL, zmin, zmax, wmax, wmin], 1).astype(np.float32)
+
+
+def cloud(tris: np.ndarray, spacing: float = SPACING) -> tuple[np.ndarray, np.ndarray, float]:
+    """Points over every triangle at most `spacing` apart, with the face normal; spacing grows to keep MAX_POINTS."""
+    tris = np.asarray(tris, float).reshape(-1, 3, 3)
+    if not len(tris):
+        return np.zeros((0, 3), np.float32), np.zeros((0, 3), np.float32), spacing
+    e = np.stack([np.linalg.norm(tris[:, 1] - tris[:, 0], axis=1), np.linalg.norm(tris[:, 2] - tris[:, 1], axis=1),
+                  np.linalg.norm(tris[:, 0] - tris[:, 2], axis=1)], 1).max(1)
+    while True:
+        n = np.maximum(1, np.ceil(e / spacing)).astype(int)
+        total = int(((n + 1) * (n + 2) // 2).sum())
+        if total <= MAX_POINTS:
+            break
+        spacing *= 1.5
+    nrm = np.cross(tris[:, 1] - tris[:, 0], tris[:, 2] - tris[:, 0])
+    ln = np.linalg.norm(nrm, axis=1, keepdims=True)
+    nrm = np.where(ln > 1e-12, nrm / np.maximum(ln, 1e-12), 0.0)
+    Ps, Ns = [], []
+    for k in np.unique(n):
+        idx = np.nonzero(n == k)[0]
+        ij = np.array([(i, j) for i in range(k + 1) for j in range(k + 1 - i)], float) / k
+        w = np.stack([1 - ij[:, 0] - ij[:, 1], ij[:, 0], ij[:, 1]], 1)          # (m, 3) barycentric
+        T = tris[idx]                                                          # (t, 3, 3)
+        Ps.append(np.einsum("mk,tkd->tmd", w, T).reshape(-1, 3))
+        Ns.append(np.repeat(nrm[idx], len(w), axis=0))
+    return np.concatenate(Ps).astype(np.float32), np.concatenate(Ns).astype(np.float32), spacing
+
+
+def box_tris(lo, hi) -> np.ndarray:
+    x0, y0, z0 = lo
+    x1, y1, z1 = hi
+    c = np.array([[x, y, z] for x in (x0, x1) for y in (y0, y1) for z in (z0, z1)], float)
+    f = [(0, 2, 6), (0, 6, 4), (1, 5, 7), (1, 7, 3), (0, 1, 3), (0, 3, 2), (4, 6, 7), (4, 7, 5),
+         (0, 4, 5), (0, 5, 1), (2, 3, 7), (2, 7, 6)]
+    return c[np.array(f)]
+
+
+_INDEX: dict | None = None
+
+
+def _index() -> dict:
+    """model -> converted model key, kept beside the cache so a warm run skips the archive lookup; an entry whose
+    cached shape is gone is looked up again (`shape.py --fresh` forgets them all)."""
+    global _INDEX
+    if _INDEX is None:
+        import json
+        try:
+            _INDEX = json.loads((cache_dir() / "index.json").read_text())
+        except (OSError, ValueError):
+            _INDEX = {}
+    return _INDEX
+
+
+def _save_index() -> None:
+    import json
+    f = cache_dir() / "index.json"
+    f.parent.mkdir(parents=True, exist_ok=True)
+    tmp = f.with_suffix(f".{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(_index()))
+    os.replace(tmp, f)
+
+
+def _glb_key(model: str) -> tuple[str | None, str | None]:
+    k = _index().get(model)
+    if k and (cache_dir() / f"{k}.npz").exists():
+        return k, None
+    got = _glb_key_fresh(model)
+    if got[0]:
+        _index()[model] = got[0]
+        _save_index()
+    return got
+
+
+def _glb_key_fresh(model: str) -> tuple[str | None, str | None]:
+    try:
+        from tools.places import assets
+        info = assets.mesh_info(model)
+    except Exception as e:  # noqa: BLE001
+        return None, f"{type(e).__name__}: {e}"[:200]
+    if not info.get("tris") or info.get("placeholder"):
+        return None, str(info.get("why") or info.get("reason") or "no readable mesh (the converter's stand-in box)")
+    return Path(info["glb"]).name.split(".")[0], None
+
+
+def model(name: str | None, lo=None, hi=None) -> Model:
+    """The model's cloud: from the registered mesh, the disk cache, or its converted model's triangles (cached)."""
+    k = str(name or "").lower()
+    if k in _MODEL:
+        return _MODEL[k]
+    m = None
+    if k in _REG:
+        P, N, s = cloud(_REG[k])
+        m = Model(P, N, s, True)
+    elif k and not REAL:
+        why = "real models off (a test)"
+    elif k:
+        key, why = _glb_key(k)
+        if key:
+            f = cache_dir() / f"{key}.npz"
+            if f.exists():
+                z = np.load(f)
+                m = Model(None, None, float(z["s"]), True, z["C"],
+                          load=lambda z=z: (z["DP"], z["DN"].astype(np.float32) / 127.0), hull=z["H"])
+                m._D = None
+                m._Dload = m._load
+            else:
+                from tools.places.look import outline
+                T = outline.model_tris(k)
+                if T is not None and len(T):
+                    P, N, s = cloud(T)
+                    f.parent.mkdir(parents=True, exist_ok=True)
+                    tmp = f.with_suffix(f".{os.getpid()}.tmp.npz")
+                    m = Model(P, N, s, True)
+                    DP, DN = m.D
+                    np.savez_compressed(tmp, s=np.float32(s), C=m.cols, DP=DP, DN=np.round(DN * 127).astype(np.int8), H=m.hull)
+                    os.replace(tmp, f)
+                else:
+                    why = "the converted model has no triangles"
+    if m is None and k:
+        _UNREAD[k] = why or "unreadable"
+    if m is None:
+        if lo is None:
+            m = Model(np.zeros((0, 3), np.float32), np.zeros((0, 3), np.float32), SPACING, False)
+            return m
+        P, N, s = cloud(box_tris(lo, hi), 32.0)
+        m = Model(P, N, s, False)
+        return m                       # a box stand-in is per piece's bounds: not cached under the model's name
+    _MODEL[k] = m
+    return m
+
+
+# ---------- a piece in its pose ----------
+class Posed:
+    """A piece's shape in the world. Grid cells are world-aligned CELL squares keyed (i, j) = floor(x / CELL)."""
+    def __init__(self, p: dict):
+        self.M = M = np.asarray(p["m"], float)
+        self._mod = mod = model(p.get("model"), p.get("lo"), p.get("hi"))
+        self.mesh = mod.mesh
+        self.spacing = mod.spacing
+        A = M[:3, :3]
+        sc = max(np.cbrt(abs(np.linalg.det(A))), 1e-9)
+        self.tilted = abs(A[2, 2] / sc - 1.0) > 1e-4 or abs(A[2, 0]) > 1e-4 * sc or abs(A[2, 1]) > 1e-4 * sc
+        self._P = None
+        if not len(mod.cols):
+            self._empty()
+        elif self.tilted:
+            DP, DN = mod.D
+            A = M[:3, :3]
+            P = DP.astype(float) @ A.T + M[:3, 3]
+            nz = (DN @ (A / sc).T)[:, 2]
+            wz = np.where(nz >= WALK_NZ, P[:, 2], np.nan)
+            self._grid(P[:, 0], P[:, 1], P[:, 2], P[:, 2], wz, wz)
+        else:
+            C = mod.cols.astype(float)
+            xy = C[:, :2] @ A[:2, :2].T + M[:2, 3]
+            zz = C[:, 2:6] * A[2, 2] + M[2, 3]
+            self._grid(xy[:, 0], xy[:, 1], zz[:, 0], zz[:, 1], zz[:, 2], zz[:, 3])
+            H = mod.hull.astype(float) @ A[:2, :2].T + M[:2, 3]       # the plan's exact extent, from its hull
+            if len(H):
+                self.lo[:2], self.hi[:2] = H.min(0), H.max(0)
+            if A[2, 2] < 0:
+                self.lo[2], self.hi[2] = self.hi[2], self.lo[2]
+
+    @property
+    def P(self) -> np.ndarray:
+        """The surface cloud in the world (computed when first asked)."""
+        if self._P is None:
+            mod, M = self._mod, self.M
+            self._P = mod.P.astype(float) @ M[:3, :3].T + M[:3, 3] if len(mod.cols) else np.zeros((0, 3))
+        return self._P
+
+    @property
+    def N(self) -> np.ndarray:
+        A = self.M[:3, :3]
+        return self._mod.N @ (A / max(np.cbrt(abs(np.linalg.det(A))), 1e-9)).T
+
+    def _empty(self):
+        self.i0 = self.j0 = 0
+        self.under = self.top = self.walk = self.walk_low = np.full((0, 0), np.nan)
+        self.lo = self.hi = np.zeros(3)
+
+    def _grid(self, x, y, zlo, zhi, zwalk, zwalk_low):
+        self.lo = np.array([x.min(), y.min(), zlo.min()])
+        self.hi = np.array([x.max(), y.max(), zhi.max()])
+        I = np.floor(x / CELL).astype(np.int64)
+        J = np.floor(y / CELL).astype(np.int64)
+        self.i0, self.j0 = int(I.min()), int(J.min())
+        ni, nj = int(I.max()) - self.i0 + 1, int(J.max()) - self.j0 + 1
+        flat = (I - self.i0) * nj + (J - self.j0)
+        o = np.argsort(flat, kind="stable")
+        k = flat[o]
+        st = np.flatnonzero(np.r_[True, k[1:] != k[:-1]])
+        cells = k[st]
+
+        def field(v, red):
+            out = np.full(ni * nj, np.nan)
+            out[cells] = red.reduceat(v[o], st)
+            return out.reshape(ni, nj)
+        self.under, self.top = field(zlo, np.minimum), field(zhi, np.maximum)
+        w = field(np.where(np.isnan(zwalk), -np.inf, zwalk), np.maximum)
+        w[~np.isfinite(w)] = np.nan
+        self.walk = _keep_big(w, WALK_MIN_CELLS)
+        wl = field(np.where(np.isnan(zwalk_low), np.inf, zwalk_low), np.minimum)
+        wl[~np.isfinite(wl)] = np.nan
+        self.walk_low = wl
+
+    @property
+    def occ(self) -> np.ndarray:
+        return ~np.isnan(self.under)
+
+    def cell_xy(self, ii, jj):
+        return (self.i0 + np.asarray(ii) + 0.5) * CELL, (self.j0 + np.asarray(jj) + 0.5) * CELL
+
+    def low(self) -> float:
+        return float(self.lo[2])
+
+    def top_z(self) -> float:
+        return float(self.hi[2])
+
+    def cells(self, field: str = "under"):
+        """(x, y, z) of every occupied cell of a field."""
+        F = getattr(self, field)
+        ii, jj = np.nonzero(~np.isnan(F))
+        x, y = self.cell_xy(ii, jj)
+        return np.stack([x, y, F[ii, jj]], 1) if len(ii) else np.zeros((0, 3))
+
+    def at(self, x: float, y: float, field: str = "under") -> float | None:
+        F = getattr(self, field)
+        i, j = int(math.floor(x / CELL)) - self.i0, int(math.floor(y / CELL)) - self.j0
+        if 0 <= i < F.shape[0] and 0 <= j < F.shape[1] and not np.isnan(F[i, j]):
+            return float(F[i, j])
+        return None
+
+    def surface_near(self, x: float, y: float, z: float, r: float, dz: float) -> float | None:
+        """The height of this mesh's top or walked surface within r of (x, y) in plan and dz of z, nearest z; None
+        when it has none there (what an end line rests on)."""
+        best = None
+        i0, i1 = int(math.floor((x - r) / CELL)) - self.i0, int(math.floor((x + r) / CELL)) - self.i0 + 1
+        j0, j1 = int(math.floor((y - r) / CELL)) - self.j0, int(math.floor((y + r) / CELL)) - self.j0 + 1
+        i0, j0 = max(i0, 0), max(j0, 0)
+        if i0 >= self.under.shape[0] or j0 >= self.under.shape[1] or i1 <= 0 or j1 <= 0:
+            return None
+        for F in (self.top, self.walk, self.walk_low):
+            w = F[i0:i1, j0:j1]
+            m = ~np.isnan(w) & (np.abs(w - z) <= dz)
+            if m.any():
+                v = w[m][np.argmin(np.abs(w[m] - z))]
+                if best is None or abs(v - z) < abs(best - z):
+                    best = float(v)
+        return best
+
+    def outline(self) -> list[list[float]]:
+        """The true plan outline as the occupied cells' convex hull (for the drawing); occupancy is `occ`."""
+        pts = self.cells("under")[:, :2]
+        return [[round(float(a), 1), round(float(b), 1)] for a, b in _hull(pts)] if len(pts) else []
+
+    # ground against the mesh
+    def clearance(self, ground, band: float = 48.0) -> dict | None:
+        """The mesh's underside against the ground under its own cells: `over` the least underside-over-ground of its
+        cells within `band` of its lowest point and of every other cell (taken at every second cell: the ground's
+        grid is 128), negative: in the ground; `gmin`/`gmax` the lowest and highest ground under the footprint;
+        `at` where the least is."""
+        U = self.under
+        if not U.size:
+            return None
+        occ = ~np.isnan(U)
+        ii, jj = np.nonzero(occ & ((U <= self.low() + band)
+                                   | ((np.arange(U.shape[0])[:, None] % 2 == 0) & (np.arange(U.shape[1])[None, :] % 2 == 0))))
+        xs, ys = self.cell_xy(ii, jj)
+        zs = U[ii, jj]
+        best = None
+        gs = []
+        for x, y, z in zip(xs.tolist(), ys.tolist(), zs.tolist()):
+            g = ground.height(x, y)
+            if g is None:
+                continue
+            gs.append(g)
+            if best is None or z - g < best[0]:
+                best = (z - g, x, y, z, g)
+        if best is None:
+            return None
+        return {"over": round(float(best[0]), 1), "at": [round(float(best[1]), 1), round(float(best[2]), 1)],
+                "z": round(float(best[3]), 1), "ground": round(float(best[4]), 1),
+                "gmin": round(float(min(gs)), 1), "gmax": round(float(max(gs)), 1)}
+
+    def sunk_share(self, ground) -> float:
+        """How much of the piece is in the ground, cell by cell over its plan (every second cell): the mean share of
+        each cell's height span [underside, top] under the ground there. A plant mostly in the ground scores high; a
+        stem reaching down under fronds that stand in the air does not."""
+        U, T = self.under, self.top
+        if not U.size:
+            return 0.0
+        ii, jj = np.nonzero(~np.isnan(U))
+        sel = ((ii + jj) % 2 == 0) if len(ii) > 8 else np.ones(len(ii), bool)
+        ii, jj = ii[sel], jj[sel]
+        xs, ys = self.cell_xy(ii, jj)
+        got = []
+        for x, y, u, t in zip(xs.tolist(), ys.tolist(), U[ii, jj].tolist(), T[ii, jj].tolist()):
+            g = ground.height(x, y)
+            if g is None:
+                continue
+            got.append(min(max((g - u) / (t - u), 0.0), 1.0) if t > u else float(t < g))
+        return float(np.mean(got)) if got else 0.0
+
+    # derived parts
+    def feet(self, band: float = 48.0, radius: int = 2) -> list[dict]:
+        """Where the mesh comes lowest: connected cells that are local minima of the underside (within 2 cells), each
+        foot with its middle, height and size in cells, lowest first."""
+        U = self.under
+        if not U.size:
+            return []
+        V = np.where(np.isnan(U), np.inf, U)
+        pad = np.pad(V, radius, constant_values=np.inf)
+        mn = np.full_like(V, np.inf)
+        for di in range(2 * radius + 1):
+            for dj in range(2 * radius + 1):
+                mn = np.minimum(mn, pad[di:di + V.shape[0], dj:dj + V.shape[1]])
+        m = np.isfinite(V) & (V <= mn + 2.0)
+        lab = _label(m)
+        out = []
+        for k in range(1, int(lab.max()) + 1 if lab.size else 1):
+            ii, jj = np.nonzero(lab == k)
+            if not len(ii):
+                continue
+            x, y = self.cell_xy(ii, jj)
+            z = V[ii, jj]
+            out.append({"at": [round(float(x.mean()), 1), round(float(y.mean()), 1)], "z": round(float(z.min()), 1),
+                        "cells": int(len(ii))})
+        out.sort(key=lambda f: f["z"])
+        return out
+
+    def walk_cells(self) -> np.ndarray:
+        return self.cells("walk")
+
+    def ends(self) -> list[dict] | None:
+        """A walked span's two end lines, from its walked points (the cloud's top-facing points): the extremes along
+        its long axis (PCA of the walk), each end line's middle (x, y, z: the median walked height there: the planks,
+        not a rail's top), its width across,
+        the outward axis, `under`: the underside of its deck there (the lowest point within a cell of the end and
+        DECK_DEPTH under the walk) and `reach`: the lowest point of anything of it within LEG_REACH (its own legs). Lowest first:
+        a stair's FOOT, then its HEAD."""
+        P, nz = self.P, self.N[:, 2]
+        W = P[nz >= WALK_NZ]
+        if len(W) < 3:
+            W = P
+        if len(W) < 3:
+            return None
+        xy = W[:, :2]
+        c = xy.mean(0)
+        _, _, vt = np.linalg.svd(xy - c, full_matrices=False)
+        ax = vt[0]
+        t = (xy - c) @ ax
+        tall = (P[:, :2] - c) @ ax
+        out = []
+        for sgn, ext in ((-1, t.min()), (1, t.max())):
+            sel = np.abs(t - ext) <= 2.0
+            pts = W[sel]
+            side = (pts[:, :2] - c) @ np.array([-ax[1], ax[0]])
+            mid = c + ax * ext + np.array([-ax[1], ax[0]]) * (side.max() + side.min()) / 2
+            near = P[np.abs(tall - ext) <= CELL]
+            legs = P[np.abs(tall - ext) <= LEG_REACH]
+            zw = float(np.median(pts[:, 2]))
+            deck = near[(near[:, 2] <= zw + 1.0) & (near[:, 2] >= zw - DECK_DEPTH)] if len(near) else near
+            out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(float(np.median(pts[:, 2])), 1)],
+                        "width": round(float(side.max() - side.min()), 1),
+                        "out": [round(float(sgn * ax[0]), 4), round(float(sgn * ax[1]), 4)],
+                        "under": round(float(deck[:, 2].min()), 1) if len(deck) else None,
+                        "reach": round(float(legs[:, 2].min()), 1) if len(legs) else None})
+        out.sort(key=lambda e: e["at"][2])
+        return out
+
+    def body(self) -> dict:
+        """A building body: its ROOF cells (underside in the upper 40% of its height), its WALL footprint (the other
+        occupied cells: walls, floor, legs), its FLOOR (the most common lowest walked surface over the wall cells,
+        above its legs), and its EAVES (the lowest underside of the roof cells outside the walls, grown by a cell:
+        the roof where it overhangs); eaves None when the roof does not overhang."""
+        U = self.under
+        if not U.size:
+            return {}
+        low, top = self.low(), self.top_z()
+        occ = ~np.isnan(U)
+        roof = occ & (U >= low + 0.6 * (top - low))
+        wall = occ & ~roof
+        over = roof & ~_dilate(wall, 1)
+        eaves = float(np.nanmin(U[over])) if over.any() else None
+        W = self.walk_low[wall]
+        W = W[~np.isnan(W)]
+        W = W[W > low + 1.0] if (W > low + 1.0).any() else W
+        floor = None
+        if len(W):
+            v, n = np.unique(np.round(W / 2.0) * 2.0, return_counts=True)
+            floor = float(v[np.argmax(n)])
+        ii, jj = np.nonzero(wall)
+        x, y = self.cell_xy(ii, jj)
+        return {"floor": floor, "eaves": None if eaves is None else round(eaves, 1),
+                "footprint": [[round(float(a), 1), round(float(b), 1)] for a, b in _hull(np.stack([x, y], 1))] if len(ii) else []}
+
+    def tree(self, slab: float = 8.0, fine: float = 4.0) -> dict:
+        """A tree or plant: its ROOT COLLAR (going up from its lowest point, the height where the section's area
+        stops shrinking: where root flare becomes trunk), its root tips (feet), its trunk lean (the slice middles'
+        line from the collar up), crown extent (the plan extent of its upper half) and top."""
+        P = self.P
+        if not len(P):
+            return {}
+        low, top = float(P[:, 2].min()), float(P[:, 2].max())
+        h = top - low
+        zs = np.arange(low, low + min(h * 0.6, 600.0), slab)
+        areas, mids = [], []
+        for z in zs:
+            s = P[(P[:, 2] >= z) & (P[:, 2] < z + slab)]
+            if not len(s):
+                areas.append(0.0); mids.append(None); continue  # noqa: E702
+            k = np.unique(np.floor(s[:, :2] / fine).astype(int), axis=0)
+            areas.append(len(k) * fine * fine)
+            mids.append(s[:, :2].mean(0))
+        areas = np.array(areas)
+        collar = low
+        if len(areas) > 2:
+            sm = np.convolve(areas, np.ones(3) / 3, mode="same")
+            peak = int(np.argmax(sm[: max(2, len(sm) // 2)]))
+            collar_i = peak
+            for i in range(peak + 1, len(sm) - 1):
+                collar_i = i
+                if sm[i + 1] >= sm[i] * 0.97:
+                    break
+            collar = float(zs[collar_i])
+        trunk = [(z, m) for z, m in zip(zs, mids) if m is not None and z >= collar]
+        lean = None
+        if len(trunk) >= 3:
+            Z = np.array([z for z, _ in trunk])
+            XY = np.array([m for _, m in trunk])
+            dx = np.polyfit(Z, XY[:, 0], 1)[0]
+            dy = np.polyfit(Z, XY[:, 1], 1)[0]
+            lean = round(math.degrees(math.atan(math.hypot(dx, dy))), 1)
+        up = P[P[:, 2] >= low + h / 2]
+        crown = [[round(float(v), 1) for v in up[:, :2].min(0)], [round(float(v), 1) for v in up[:, :2].max(0)]] if len(up) else None
+        return {"collar": round(collar, 1), "low": round(low, 1), "top": round(top, 1), "lean": lean, "crown": crown,
+                "roots": self.feet()[:8]}
+
+    def hang_point(self) -> list[float]:
+        T = self.top
+        z = float(np.nanmax(T))
+        ii, jj = np.nonzero(T >= z - 1.0)
+        x, y = self.cell_xy(ii, jj)
+        return [round(float(x.mean()), 1), round(float(y.mean()), 1), round(z, 1)]
+
+
+_POSED: dict = {}
+
+
+def posed(p: dict) -> Posed:
+    """The piece's Posed, cached by model and pose for the run."""
+    k = (str(p.get("model") or "").lower(), tuple(np.round(np.asarray(p["m"], float).ravel(), 3)),
+         tuple(p.get("lo") or ()), tuple(p.get("hi") or ()))
+    s = _POSED.get(k)
+    if s is None:
+        s = _POSED[k] = Posed(p)
+    return s
+
+
+# ---------- two shapes ----------
+def _shared(a: Posed, b: Posed):
+    """The two grids' overlapping window as (a slice, b slice) or None."""
+    i0, j0 = max(a.i0, b.i0), max(a.j0, b.j0)
+    i1 = min(a.i0 + a.under.shape[0], b.i0 + b.under.shape[0])
+    j1 = min(a.j0 + a.under.shape[1], b.j0 + b.under.shape[1])
+    if i0 >= i1 or j0 >= j1:
+        return None
+    return ((slice(i0 - a.i0, i1 - a.i0), slice(j0 - a.j0, j1 - a.j0)),
+            (slice(i0 - b.i0, i1 - b.i0), slice(j0 - b.j0, j1 - b.j0)))
+
+
+def boxes_apart(a: Posed, b: Posed, gap: float = 0.0) -> bool:
+    """The first reject: the two shapes' world boxes do not come within gap."""
+    return bool(((a.lo - gap) > b.hi).any() or ((b.lo - gap) > a.hi).any())
+
+
+def rests_on(a: Posed, b: Posed, tol: float = 24.0, reach: float = 160.0, a_band: float = 48.0) -> bool:
+    """Does a's underside (its cells within a_band of its lowest point: where it comes down) rest on b? In a shared
+    cell, one of b's surfaces meets it: b's top within tol under a's underside to `reach` over it (a post rising
+    through a deck holds it), or one of b's walked surfaces (its highest or lowest: a floor inside a hut, a deck under
+    a roof) within tol under to a step over it; b must have substance under that height there."""
+    if boxes_apart(a, b, tol):
+        return False
+    w = _shared(a, b)
+    if w is None:
+        return False
+    sa, sb = w
+    au, bu = a.under[sa], b.under[sb]
+    m0 = ~np.isnan(au) & (au <= a.low() + a_band) & ~np.isnan(bu)
+    if not m0.any():
+        return False
+    bt = b.top[sb]
+    if (m0 & (bt >= au - tol) & (bt <= au + reach)).any():
+        return True
+    for F in (b.walk[sb], b.walk_low[sb]):
+        if (m0 & ~np.isnan(F) & (F >= au - tol) & (F <= au + STEP)).any():
+            return True
+    return False
+
+
+def overlap(a: Posed, b: Posed, margin: float = 0.0) -> dict | None:
+    """Two meshes' shared occupancy: cells both occupy whose height spans [under, top] cross by more than margin.
+    None when they do not. A spreading root under a deck between its posts, an egg beside a cliff and a deck round a
+    trunk share no cell at a height both fill; a house inside a house does (their walls' spans cross)."""
+    if boxes_apart(a, b):
+        return None
+    w = _shared(a, b)
+    if w is None:
+        return None
+    sa, sb = w
+    au, at_, bu, bt = a.under[sa], a.top[sa], b.under[sb], b.top[sb]
+    both = ~np.isnan(au) & ~np.isnan(bu)
+    if not both.any():
+        return None
+    depth = np.minimum(at_, bt) - np.maximum(au, bu)
+    m = both & (depth > margin)
+    if not m.any():
+        return None
+    return {"cells": int(m.sum()), "area": round(float(m.sum() * CELL * CELL)), "depth": round(float(np.nanmax(np.where(m, depth, np.nan))), 1)}
+
+
+# ---------- connections ----------
+MEET_ALONG = 16.0      # an end within this of a surface along its axis meets it
+MEET_BACK = 64.0       # a surface reaching this far back under the end still counts (an end resting on a deck's lip)
+LOOK_AHEAD = 192.0     # how far past an end a surface it should meet is looked for
+SINK = 48.0            # an end's underside this far in the ground is buried
+DECK_DEPTH = 64.0      # a walked span's deck is at most this thick under its walk: lower parts are its own legs
+LEG_REACH = 64.0       # its own legs within this of an end (along the span) hold that end
+
+
+def walk_points(s: Posed) -> np.ndarray:
+    P = s.P
+    return P[s.N[:, 2] >= WALK_NZ] if len(P) else P
+
+
+def end_meets(e: dict, others: list, ground) -> dict:
+    """What one end line meets: the walked surface of another piece just past (or under) it, else the ground. Gives
+    `along` (the gap past the end to the surface; negative: the surface runs under the end that far), `dz` (the
+    surface's height less the end's), the ground at the end and the end's underside over it, and the verdict:
+    meets <id> | rests on ground | short of <id> by N | step to <id> of N | buried end by N | mid-air by N."""
+    x, y, z = e["at"]
+    ox, oy = e["out"]
+    half = e["width"] / 2 + CELL
+    best = None
+    for pid, o in others:
+        if (o.lo[0] > x + LOOK_AHEAD + half or o.hi[0] < x - LOOK_AHEAD - half or o.lo[1] > y + LOOK_AHEAD + half
+                or o.hi[1] < y - LOOK_AHEAD - half or o.lo[2] > z + 96 or o.hi[2] < z - 96):
+            continue                                       # the first reject: its box is nowhere near the end
+        W = walk_points(o)
+        if not len(W):
+            continue
+        d = W[:, :2] - [x, y]
+        along = d @ [ox, oy]
+        side = np.abs(d @ [-oy, ox])
+        m = (side <= half) & (along >= -MEET_BACK) & (along <= LOOK_AHEAD) & (np.abs(W[:, 2] - z) <= 96)
+        if not m.any():
+            continue
+        a, zz = along[m], W[m, 2]
+        gap = float(a.min())
+        near = np.abs(a - max(gap, 0.0)) <= CELL
+        if not near.any():
+            near = np.abs(a - gap) <= CELL
+        dz = float(zz[near][np.argmin(np.abs(zz[near] - z))]) - z
+        score = max(gap, 0.0) + abs(dz)
+        if best is None or score < best[0]:
+            best = (score, pid, gap, dz)
+    g = ground.height(x + ox * 4, y + oy * 4) if ground is not None else None
+    under = e.get("under")
+    under = z if under is None else under
+    over = None if g is None else round(float(under - g), 1)
+    row = {"at": e["at"], "width": e["width"], "ground": None if g is None else round(float(g), 1), "over_ground": over,
+           "meets": None, "along": None, "dz": None}
+    if best is not None:
+        row.update(meets=best[1], along=round(best[2], 1), dz=round(best[3], 1))
+    if best is not None and best[2] <= MEET_ALONG and abs(best[3]) <= STEP:
+        v = f"meets {best[1]}"
+    elif over is not None and -SINK <= over <= STEP:
+        v = "rests on ground"
+    elif over is not None and over > STEP and e.get("reach") is not None and g is not None \
+            and e["reach"] - g <= STEP:
+        v = "on its own legs"
+    elif over is not None and over < -SINK:
+        v = f"buried end by {-over:.0f}"
+    elif best is not None and best[2] > MEET_ALONG and abs(best[3]) <= STEP:
+        v = f"short of {best[1]} by {best[2]:.0f}"
+    elif best is not None:
+        v = f"step to {best[1]} of {best[3]:.0f}"
+    else:
+        v = f"mid-air by {over:.0f}" if over is not None else "mid-air"
+    row["verdict"] = v
+    return row
+
+
+def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None) -> list[dict]:
+    """One row per end of every walked span (spans: [(id, Posed)]): what it meets and the verdict (end_meets); then,
+    per span, every piece of another unit standing ON its walked top (`stands on`), every other span of another unit
+    overlapping it along its length (`spans overlap`) and every wall crossing it (`crossed by wall`).
+    unit_of: piece id -> unit id; walls: ids of building bodies and wall parts; structures: the ids whose standing on
+    a span is named (bodies, decks, steps, spans, walls; None: every piece)."""
+    unit_of = unit_of or {}
+    walls = walls or set()
+    out = []
+    span_ids = {i for i, _ in spans}
+    for sid, s in spans:
+        others = [(i, o) for i, o in pieces if i != sid]
+        for k, e in enumerate(s.ends() or []):
+            out.append({"span": sid, "unit": unit_of.get(sid), "end": "foot" if k == 0 else "head",
+                        **end_meets(e, others, ground)})
+        for i, o in others:
+            if boxes_apart(s, o, STEP):
+                continue
+            same = unit_of.get(i) is not None and unit_of.get(i) == unit_of.get(sid)
+            if same:
+                continue
+            if i in span_ids:
+                ov = overlap(s, o, 8.0)
+                if ov and i > sid and ov["cells"] >= 0.25 * min(int(s.occ.sum()), int(o.occ.sum())):
+                    out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"spans overlap {i}",
+                                "area": ov["area"]})
+                continue
+            if i in walls:
+                ov = overlap(s, o, 8.0)
+                if ov and ov["cells"] >= 2:
+                    out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"crossed by wall {i}",
+                                "area": ov["area"]})
+                    continue
+            if (structures is None or i in structures) and rests_on(o, s):
+                out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"stands on: {i}"})
+    return out
+
+
+# ---------- helpers ----------
+def _label(m: np.ndarray) -> np.ndarray:
+    """4-connected labels of a boolean grid."""
+    from scipy import ndimage
+    return ndimage.label(m)[0] if m.size else np.zeros(m.shape, int)
+
+
+def _keep_big(F: np.ndarray, n: int) -> np.ndarray:
+    m = ~np.isnan(F)
+    if not m.any():
+        return F
+    lab = _label(m)
+    cnt = np.bincount(lab.ravel())
+    small = cnt < n
+    small[0] = False
+    out = F.copy()
+    out[small[lab]] = np.nan
+    return out
+
+
+def _dilate(m: np.ndarray, r: int) -> np.ndarray:
+    pad = np.pad(m, r)
+    out = np.zeros_like(m)
+    for di in range(2 * r + 1):
+        for dj in range(2 * r + 1):
+            out |= pad[di:di + m.shape[0], dj:dj + m.shape[1]]
+    return out
+
+
+def _plan_hull(P: np.ndarray) -> np.ndarray:
+    """The cloud's plan as its convex hull's corners (exact: the cloud holds every vertex)."""
+    if P is None or len(P) < 3:
+        return np.zeros((0, 2), np.float32)
+    try:
+        from scipy.spatial import ConvexHull
+        xy = np.asarray(P[:, :2], float)
+        return xy[ConvexHull(xy).vertices].astype(np.float32)
+    except Exception:  # noqa: BLE001  a degenerate (flat-in-plan) cloud: its extreme points
+        xy = np.asarray(P[:, :2], float)
+        return xy[[xy[:, 0].argmin(), xy[:, 0].argmax(), xy[:, 1].argmin(), xy[:, 1].argmax()]].astype(np.float32)
+
+
+def _hull(pts: np.ndarray) -> list:
+    pts = sorted(set(map(tuple, np.round(np.asarray(pts, float), 3))))
+    if len(pts) <= 2:
+        return pts
+    def cross(o, a, b): return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])  # noqa: E704
+    lo, up = [], []
+    for p in pts:
+        while len(lo) >= 2 and cross(lo[-2], lo[-1], p) <= 0:
+            lo.pop()
+        lo.append(p)
+    for p in reversed(pts):
+        while len(up) >= 2 and cross(up[-2], up[-1], p) <= 0:
+            up.pop()
+        up.append(p)
+    return lo[:-1] + up[:-1]
+
+
+def warm(models, workers: int = 0) -> dict:
+    """Build the cache for these models; returns {built, cached, unread, seconds}."""
+    import time
+    t = time.time()
+    got = {"built": 0, "cached": 0, "unread": 0}
+    for m in models:
+        k = str(m).lower()
+        key, _ = _glb_key(k)
+        if key and (cache_dir() / f"{key}.npz").exists():
+            got["cached"] += 1
+        before = k in _UNREAD
+        mod = model(k)
+        if not mod.mesh and not before:
+            got["unread"] += 1
+        elif key and mod.mesh:
+            got["built"] += 1
+    got["built"] -= got["cached"]
+    got["seconds"] = round(time.time() - t, 1)
+    return got
+
+
+def main(argv: list[str]) -> int:
+    """python -m tools.places.shape <place>... : build the shape cache for every model the places draw."""
+    import json
+    from tools.places.look.scene import Scene
+    for pl in argv:
+        sc = Scene(pl)
+        ms = sorted({str(p.get("model") or "").lower() for p in sc.pieces if p.get("model")})
+        print(pl, len(ms), "models", json.dumps(warm(ms)))
+    if _UNREAD:
+        print("unread:", json.dumps(_UNREAD, indent=1))
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(sys.argv[1:]))

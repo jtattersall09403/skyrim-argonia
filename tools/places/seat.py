@@ -28,7 +28,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLES = ROOT / "out" / "places" / "bundles"
-PLACES = ROOT / "newworld" / "places"
+PLACES = Path(os.environ.get("PLACES_DIR") or ROOT / "newworld" / "places")   # the look audit points it at its golden scene
 CELL = 4096.0
 STEP = CELL / 32
 NO_WATER = -1.0e6
@@ -84,14 +84,35 @@ class Ground:
 
     # --- land patches (land.jsonl rows: {cell:[cx,cy], verts:[[row,col,dz]...]}) ---
     def apply_patches(self, rows: list[dict]) -> None:
+        """The build's rule (tools/places/build.py plan_land): each row's dz is relative to the ground as loaded; a
+        cell's rows add (edits.py and edits.js write a patch against their sum); a vertex is one global vertex, so a
+        dz on a cell's edge moves every cell's copy of it, and two cells' copies of the same vertex must agree (the
+        first is kept and the clash listed in `clashes`, as the build refuses it)."""
+        per: dict[tuple[int, int], dict[tuple[int, int], float]] = {}
+        self.clashes = getattr(self, "clashes", [])
         for r in rows:
-            key = (int(r["cell"][0]), int(r["cell"][1]))
-            h = self.cells.get(key)
-            if h is None:
+            cx, cy = int(r["cell"][0]), int(r["cell"][1])
+            if (cx, cy) not in self.cells:
                 continue
+            d = per.setdefault((cx, cy), {})
             for row, col, dz in r["verts"]:
-                h[int(row) * 33 + int(col)] += float(dz)
-            self.patched.add(key)
+                g = (cx * 32 + int(col), cy * 32 + int(row))
+                d[g] = d.get(g, 0.0) + float(dz)
+        target: dict[tuple[int, int], float] = {}
+        for d in per.values():
+            for g, dz in d.items():
+                if g in target and abs(target[g] - dz) > 1e-6:
+                    self.clashes.append((g, target[g], dz))
+                    continue
+                target[g] = dz
+        for (gx, gy), dz in target.items():
+            for cx in {gx // 32, (gx - 1) // 32}:
+                for cy in {gy // 32, (gy - 1) // 32}:
+                    col, row = gx - cx * 32, gy - cy * 32
+                    h = self.cells.get((cx, cy))
+                    if h is not None and 0 <= col <= 32 and 0 <= row <= 32:
+                        h[row * 33 + col] += dz
+                        self.patched.add((cx, cy))
 
     # --- queries ---
     def vertex(self, gx: int, gy: int) -> float | None:

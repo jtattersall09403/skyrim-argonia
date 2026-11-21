@@ -340,11 +340,16 @@ def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
     if not rows:
         return [], {}, set()
     target: dict[tuple[int, int], int] = {}
-    for (cx, cy), verts in summed_land(rows).items():
+    per: dict[tuple[int, int], dict[tuple[int, int], float]] = {}   # a cell's rows add (seat.Ground.apply_patches)
+    for r in rows:
+        d = per.setdefault((int(r["cell"][0]), int(r["cell"][1])), {})
+        for row, col, dz in r["verts"]:
+            d[(int(row), int(col))] = d.get((int(row), int(col)), 0.0) + float(dz)
+    for (cx, cy), d in per.items():
         base = cell_steps(facts["by_cell"][(cx, cy)])
-        for (row, col), dz in sorted(verts.items()):
-            gx, gy = cx * 32 + int(col), cy * 32 + int(row)  # global vertex index: x east, y north
-            v = int(round(base[int(row), int(col)] + dz / 8.0))
+        for (row, col), dz in d.items():
+            gx, gy = cx * 32 + col, cy * 32 + row  # global vertex index: x east, y north
+            v = int(round(base[row, col] + dz / 8.0))
             if target.get((gx, gy), v) != v:
                 problem(f"land.jsonl: vertex {gx},{gy} patched to two heights")
                 continue
@@ -1916,6 +1921,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     boats, waiting = plan_travel(P, people, ids, facts)
     notes += [f"travel: {x}" for x in waiting]
     shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads
+    from tools.places.own_bases import plan_own
+    own = plan_own(S["refs"], ids, pid)  # our own bases (the Hist sap pool): the place's copies, the refs swapped to them
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
     plan = {
@@ -1926,7 +1933,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "stock": stock, "notes": notes,
+        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "own": own, "stock": stock, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

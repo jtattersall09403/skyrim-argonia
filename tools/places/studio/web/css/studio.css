@@ -73,8 +73,6 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 /* the source place put away to the right: our place takes the whole stage until it is asked back */
 #views[data-src="hidden"] #view-src, #views[data-src="hidden"] .view-link { display: none; }
 .bar-gap { flex: 1; }
-/* tilt: a slider at each view's right edge (top of the slider looks from above, bottom along the ground) */
-.tilt { position: absolute; right: 10px; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 10px; border-radius: 14px; background: var(--panel); box-shadow: var(--shadow); font-size: 12px; font-weight: 600; z-index: 2; }
 /* compass: lower left of each view; the needle shows north on screen, a tap turns the view to face north */
 .compass { position: absolute; left: 10px; bottom: 16px; z-index: 2; width: 52px; height: 52px; padding: 2px; border-radius: 50%; background: var(--panel); box-shadow: var(--shadow); border: 0; display: grid; place-items: center; cursor: pointer; touch-action: manipulation; }
 .compass svg { width: 46px; height: 46px; overflow: visible; stroke: none; }
@@ -83,7 +81,18 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .compass .north { fill: var(--fault); }
 .compass .south { fill: var(--muted); }
 .compass .n { font-size: 9px; font-weight: 700; fill: var(--ink); }
-.tilt input { writing-mode: vertical-lr; direction: rtl; block-size: 44px; inline-size: 150px; min-width: 44px; touch-action: none; }
+/* thumb sticks (sticks.js): one pair over both views, bottom left and bottom right where the thumbs rest */
+.sticks { position: absolute; inset: auto 0 0 0; height: 0; z-index: 4; pointer-events: none; }
+.sticks[hidden] { display: none; }
+.stick { position: absolute; bottom: 18px; width: 136px; height: 136px; border-radius: 50%; background: color-mix(in srgb, var(--panel) 38%, transparent); border: 2px solid color-mix(in srgb, var(--ink) 25%, transparent); box-shadow: var(--shadow); pointer-events: auto; touch-action: none; display: grid; place-items: center; }
+.stick.left { left: 76px; } .stick.right { right: 18px; }
+.stick i { width: 58px; height: 58px; border-radius: 50%; background: color-mix(in srgb, var(--panel) 75%, transparent); border: 2px solid color-mix(in srgb, var(--ink) 35%, transparent); pointer-events: none; }
+.stick.active { border-color: var(--accent); } .stick.active i { background: color-mix(in srgb, var(--accent) 55%, transparent); }
+.stick-tools { position: absolute; bottom: 162px; display: flex; gap: 8px; pointer-events: auto; }
+.stick-tools.left { left: 76px; } .stick-tools.right { right: 18px; }
+.stick-btn { min-width: 52px; min-height: 44px; padding: 0 12px; border-radius: 12px; background: color-mix(in srgb, var(--panel) 80%, transparent); box-shadow: var(--shadow); font-size: 14px; font-weight: 700; touch-action: none; }
+.stick-btn[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.stick-btn[hidden] { display: none; }
 /* with the side panel open the views are narrow: the source chooser keeps its room and Hide is its arrow alone */
 .view-bar .pick select { min-width: 8.5em; }
 #stage:has(#panel:not([hidden])) #hide-src span { display: none; }
@@ -302,3 +311,7 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 #player-names span { white-space: nowrap; }
 #view-ours .view-bar { flex-wrap: wrap; row-gap: 8px; }
 #player-names[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+/* a view that drew nothing after a place loaded says so, with a way to load it again (main.js showBlank) */
+.blank-note { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 6; max-width: min(460px, 90%); padding: 16px 18px; border-radius: 14px; background: var(--panel); box-shadow: var(--shadow); text-align: center; }
+.blank-note[hidden] { display: none; }
+.blank-note p { margin: 0 0 12px; }

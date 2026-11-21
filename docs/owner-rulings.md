@@ -196,6 +196,30 @@ added here the day they are made, with the date and the issue.
   our ground at the footprint's edge. Nothing outside the footprint changes, no water line moves, and the world's
   terrain is not regenerated. This amends "terrain is not touched" of 2026-11-19 for place footprints
   (2026-11-21, #80).
+- A cliff or steep bank inside a place, for instance down to one of our channels, is not in itself a fault: it is
+  allowed where it is made to look good, faced with cliff and rock pieces (Tropical Skyrim's among them); it is a
+  fault only where it looks obviously broken, such as a bare wall of stretched ground (2026-11-21, #80).
+- A sap pool must read as a pool of liquid, never a flat coloured plane: it is real water (a water surface in a
+  hollow with a sap-coloured water type), and if the mod's own sap water looks poor in the game we make our own
+  water type from a good vanilla one, recoloured (2026-11-21, #80).
+- We build with real shaped meshes, not boxes: every tool that measures, checks, places, seats or avoids a piece
+  reasons about its mesh in its real pose (its feet, its surfaces, its eaves, a tree's root collar, a span's end
+  lines); a box is only ever a first reject (2026-11-21, #80).
+- The measuring and capture tools are audited against known answers and against each other, and made reliable,
+  not fixed one accident at a time (2026-11-21, #80).
+- Decided by the lead, for the owner to confirm (2026-11-21, #80): on carried ground a source piece is dropped
+  for water only if it would stand in our water with no ground of ours for it; a piece whose own carried ground
+  lies under it is kept (the old rule had dropped 22 landing pieces at Jal-Veesa, the Smithy's porch posts among
+  them). The hatchery gland at Jal-Veesa gets no sap pool: the hatchery's steam pool is at its foot and there is
+  no open level ground. Helstrom's place work runs alone, after the tool lanes, because its viewer is too slow
+  beside them.
+- Decided by the lead while the owner was away, for him to confirm (2026-11-21, #80): we do not bring a source's
+  pond with its ground (a dock that leads somewhere is seated on our ground; what only made sense in water is
+  dropped or moved to our real water); a unit's flag that faithfully copies the source's own arrangement is
+  accepted with its reason where it reads as built; Jal-Veesa's Hist stands on a rocky rise where no spot at the
+  trunk is open and level, so its sap pool is placed by hand at the foot of the rise where the town looks onto it,
+  the tree's lowest roots reaching down to it, and does not surround the trunk; a player's-walk tour is filmed at
+  960 by 720.
 - The lead reflects periodically on the approach to place drafting, whether it is making progress and whether
   another approach would do better, and may change method on his own judgement (2026-11-20, #80).
 - A place's layout is planned properly: every structure is seated and sunk by the amount it needs for the place to

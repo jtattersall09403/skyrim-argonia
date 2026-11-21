@@ -37,7 +37,7 @@ export function drawState() {
     canvas: c ? [c.width, c.height, c.clientWidth, c.clientHeight] : null,
     calls: r?.info.render.calls ?? null, triangles: r?.info.render.triangles ?? null, textures: r?.info.memory.textures ?? null,
     views: shared.views.map((v) => { const b = v.el.getBoundingClientRect(), top = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
-      return { name: v.name, hidden: !!v.hidden?.(), rect: [Math.round(b.width), Math.round(b.height)], objects: (v.objects || []).length,
+      return { name: v.name, hidden: !!v.hidden?.(), drew: !!v.drew?.calls, last: v.drew || null, rect: [Math.round(b.width), Math.round(b.height)], objects: (v.objects || []).length,
         over: top ? `${top.tagName.toLowerCase()}${top.id ? '#' + top.id : ''}${typeof top.className === 'string' && top.className ? '.' + top.className.split(' ')[0] : ''}` : null }; }) };
 }
 
@@ -89,6 +89,7 @@ export class View {
     this.lighting?.beforeDraw();
     this.renderer.setViewport(x, y, r.width, r.height); this.renderer.setScissor(x, y, r.width, r.height);
     this.renderer.render(this.scene, this.camera);
+    this.drew = { calls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, at: Math.round(performance.now()) };
   }
   redraw() { this.needs = true; }
   changed(fromLink) {
@@ -103,7 +104,6 @@ export class View {
     this.lighting?.cameraMoved();
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
     this.camera.userData.focus = r.target;  // where the view looks: what is near it shows its detail (a light's ring)
-    if (this.tiltIn && document.activeElement !== this.tiltIn) this.tiltIn.value = Math.round(r.pitch * 100);
     if (this.rose) { const h = this.heading(); this.rose.style.transform = `rotate(${-h}deg)`; this.compass.dataset.heading = Math.round(h) % 360; }
   }
   // Which way the camera looks, in degrees clockwise from north (game +Y north, +X east): 0 north, 90 east.
@@ -140,8 +140,6 @@ export class View {
     c.addEventListener('pointercancel', (e) => this.up(e, true));
     // the wheel (two fingers on a trackpad) zooms; with Shift held it tilts
     c.addEventListener('wheel', (e) => { e.preventDefault(); if (e.shiftKey) this.tilt(this.rig.pitch + (e.deltaY || e.deltaX) * 0.003); else this.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
-    this.tiltIn = this.el.querySelector('.tilt input');
-    if (this.tiltIn) this.tiltIn.oninput = () => this.tilt(Number(this.tiltIn.value) / 100);
     c.addEventListener('contextmenu', (e) => e.preventDefault());
   }
   info(e) {
@@ -205,10 +203,11 @@ export class View {
     // with a pen about, a finger tap only selects (a resting palm never edits)
     if (isTap && (p.role === 'tool' || p.role === 'touch' || (p.role === 'nav' && tool?.fingerTap))) tool?.tap?.(this.info(e));
   }
-  // how steeply the view looks down: 0.08 (along the ground) to 1.52 (from straight above)
+  // how steeply the view looks down (Shift and the wheel): 0.08 (along the ground) to 1.52 (from straight above); the
+  // thumb sticks (sticks.js) look up past level
   tilt(p) { this.rig.pitch = Math.max(0.08, Math.min(1.52, p)); this.changed(); }
   orbit(dx, dy) {
-    this.rig.yaw -= dx * 0.006; this.rig.pitch = Math.max(0.08, Math.min(1.52, this.rig.pitch + dy * 0.005)); this.changed();
+    this.rig.yaw -= dx * 0.006; this.rig.pitch = Math.max(Math.min(0.08, this.rig.pitch), Math.min(1.52, this.rig.pitch + dy * 0.005)); this.changed();
   }
   pan(dx, dy, quiet) {
     const k = this.rig.dist * 0.0016, c = Math.cos(this.rig.yaw), s = Math.sin(this.rig.yaw);

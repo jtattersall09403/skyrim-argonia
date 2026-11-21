@@ -73,6 +73,9 @@ Which skill for a common job:
   its floor and door are clear of the ground, its legs are in the ground by what they need, its door is reached on
   foot and joined decks share a level; decide it for the place as a whole. Neither "the source's height" nor "sink
   until low" is a rule.
+- **Real shapes, not boxes.** A piece is its mesh in its pose: its feet, the surfaces a person stands on, its
+  eaves, a tree's root collar, a stair's foot and head lines. Judge and place by those; a box is only a first
+  reject.
 - **Look as you go, not at the end.** After each structure is placed or changed: capture it from several sides and
   distances, at eye level and from above, with a section on two axes; read each capture; mend; then go on to the
   next. After each group of structures, survey the whole place again. A fault found at hand-over was a look

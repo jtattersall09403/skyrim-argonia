@@ -370,11 +370,19 @@ def _apply_one(files, op):
             files["clear"].pop(idx[0])
     elif kind == "land.patch":
         cell = list(op["cell"])
-        row = next((r for r in files["land"] if list(r["cell"]) == cell), None)
+        # a cell's land rows add (the ground reads them so, seat.Ground.apply_patches): a patch is made against their
+        # sum, and the cell's rows become one
+        rows = [r for r in files["land"] if list(r["cell"]) == cell]
+        row = rows[0] if rows else None
         if row is None:
             row = {"cell": cell, "verts": [], "why": op.get("note", "")}
             files["land"].append(row)
-        cur = {(v[0], v[1]): v[2] for v in row["verts"]}
+        cur: dict = {}
+        for r_ in rows or [row]:
+            for v in r_["verts"]:
+                cur[(v[0], v[1])] = cur.get((v[0], v[1]), 0.0) + v[2]
+        for r_ in rows[1:]:
+            files["land"].remove(r_)
         for r, c, b, a in op["verts"]:
             if not same(cur.get((r, c), 0.0), b):
                 _conflict(op, f"cell {cell} vertex {r},{c} is {cur.get((r, c), 0.0)}, the save expected {b}")

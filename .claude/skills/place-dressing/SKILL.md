@@ -29,24 +29,15 @@ tree. A source's own hanging lanterns come with their cluster.
 
 ## Hist sap
 
-Every living Hist stands in a pool of its own sap (King of the Murkmire's `WaterPuddleHist` with
-`DefaultHistSapWater`), never the cell's water. The `sap` stage lays one on each living Hist and digs its hollow
-(`land.jsonl` rows `by` "sap"); a pool placed by hand holding the trunk is kept. Run `sap` after a Hist is added,
-moved, swapped or dies. `draft check` fails a living Hist with no pool.
-
-- **Size**: by the trunk at the ground (its radius per Hist base, `TRUNK_R`, measured from the mesh), plus a band of
-  open sap; never by the crown.
-- **Where**: on the trunk, the trunk always kept in the sap. The stage scores each side and size (full, or shrunk
-  to `SHRINK` of it) by the bank its dig would leave plus `COVER_W` times the share of sap a deck, walkway, bridge or
-  platform hides from the sky, and takes the lowest, so a pool is never put under the ring's platform when a side a
-  person can look onto exists. A place may set its own: `draft.sap.offset` in place.json (`[dx, dy]`, or by Hist id).
-- **Height**: the surface is the lowest rim; the sap never stands over its own rim. The hollow lowers the ground
-  under the sap and the rim round it to the surface. No vertex is dug more than `PATCH_MAX`; ground falling more than
-  that is what the stage moves or shrinks the pool away from, and a bank left over is logged (ground standing out of
-  the sap on its high side).
-- **Nothing else moves**: every other row seated on the ground keeps its height on the dug ground (its seat's dz
-  pinned, a hand's row too: only its dz changes, its pose stays).
-- Judge it by eye from the rim, from the nearest deck and from the nearest doors: amber at the Hist's foot.
+Every living Hist has a still pool of its own amber sap at its roots: our `ArgoniaHistSapPool` (vanilla's round
+puddle) carrying our water type `ArgoniaHistSapWater` (tools/places/own_bases.py), in a bowl the `sap` stage digs
+(`land.jsonl` rows `by` "sap"): the surface a few units under a level rim, the floor falling smoothly to 64 units at
+the middle, so the water has depth to shade. Never on open water: a Hist standing in our water has its pool on the
+nearest dry bank at its foot, or none (place.json `sap.none`, and the draft's plan says how the place shows its
+sap). A place may set a Hist's pool itself in place.json's `sap`: `offset` ({hist id: [dx, dy]} from the
+trunk) and `scale` ({hist id: s}). A pool placed by hand on the trunk is kept. Run `sap` after a Hist is added, moved, swapped or dies. `draft
+check` fails a living Hist with no pool that `sap.none` does not list. How the pool must read in the game, and which
+field to change if it does not: [dressing](../../../docs/design/dressing.md), Hist sap.
 
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
 water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an

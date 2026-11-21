@@ -19,17 +19,21 @@ tool is `python -m tools.places look <place> <verb> [args]`; its contract is `do
 
 Every view answers, per image, what it shows: `subject_seen` (the share of the subject's own pixels visible and in
 the frame), `subject_fills` (its share of the frame), `occluders` (the three biggest things over the rest), and
-`capture: good` or `failed` with `why`. A capture fails when under 35% of its subject is seen, the camera stands
-inside or under something, no ground is drawn, or one piece covers half the lens; its image then carries the reason
+`capture: good` or `failed` with `why`. A capture fails when under 35% of its subject is seen, the subject is small
+while something else fills more, the camera stands on its subject, inside or under something, no ground is drawn,
+one piece covers half the lens, or a near thing covers the lens; its image then carries the reason
 in a red banner and `at` tries again by itself (other sides, further, higher, the canopy cut) until one is good, or
 says no good capture is to be had and why. A failed capture is a fault of the camera, never of the place: judge
 nothing from it. Of every capture you keep, ask whether it shows what it was meant to. Light is not judged from the
-viewer: the game lights the place differently.
+viewer: the game lights the place differently. When something looks impossible, suspect the viewer first: read the
+view's `census` and `drew`, and run `look truth`; run `look truth` whenever the look tool or the studio's drawing
+code changes.
 
 | Need | Verb |
 |---|---|
 | Every fault in the place | `probe --all` (floats, missing base, unresolved model, walkway end with nothing under it, door with no ground) |
 | One piece's feet, rest and neighbours | `probe <thing>` |
+| Where each stair, bridge and walkway end meets its deck or the ground | `python -m tools.places units <place> --joints`, then a `section` through each end it names |
 | Heights at a glance; proof a piece is seated | `section <thing> --axis` or `section <x1,y1> <x2,y2>` |
 | Judge a structure from every side at once | `survey <place> [<structure or unit> ...]`, `survey <place> --changed`: the sheet is the index; read each tile in `survey/<structure>/tiles/` (1280x960, listed with its score in `table.txt`) for detail |
 | One more look at a structure | `at <thing> [--from n..nw] [--eye\|--high\|--top]` (1920x1440; `--grid` adds the ground grid, off by default), `orbit <thing>` (each panel its own file) |

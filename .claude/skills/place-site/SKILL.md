@@ -70,6 +70,10 @@ Each unit is measured on our ground: its standing level (floor or deck) against 
 footprint, each foot against the ground under it and its leg (how far it reaches below the standing level in the
 source), its body against its own deck (as in the source), each door sill against its floor and the ground before
 it, each join against the source's relative height. The units table flags each fault by name.
+`units <place> --joints` lists every stair, ramp, bridge, walkway and boardwalk end against what it meets (a deck, the
+ground, another span), with the gap along and in height, and whatever stands on a span that is not its own: read it
+after moving a structure that carries or meets a span, and mend each end that is not `meets`, `rests on ground` or
+`on its own legs`.
 
 - A piece is seated by sinking it into the ground until it stands; nothing is stretched or extended to reach the
   ground.

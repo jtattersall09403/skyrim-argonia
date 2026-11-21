@@ -1,0 +1,6 @@
+{
+ "copy_of": "fx_src/RoomCell",
+ "name": "Fx Room",
+ "parent": "exterior",
+ "door_from": "fx_truth.door"
+}

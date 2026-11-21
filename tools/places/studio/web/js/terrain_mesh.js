@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
 import { cellLayers } from './path_paint.js';
+import { worldWaterPatch } from './water.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
 
@@ -65,7 +66,7 @@ export class TerrainMesh {
     let i = 0;
     const slice = (ms) => { const t0 = performance.now(); while (i < order.length && performance.now() - t0 < ms) this.buildCell(order[i++]); onProgress(i, order.length); };
     while (i < Math.min(first, order.length)) { slice(12); await nextFrame(); }
-    this.built = (async () => { while (i < order.length) { slice(8); this.onChange(); await nextFrame(); } this.onChange(); })();
+    this.built = (async () => { while (i < order.length && !this.disposed) { slice(8); this.onChange(); await nextFrame(); } this.onChange(); })();
     return this;
   }
   waterMat(deep) {
@@ -73,6 +74,7 @@ export class TerrainMesh {
     if (!this._waterMats.has(key)) {
       this._waterMats.set(key, new THREE.MeshLambertMaterial({ vertexColors: !deep, color: deep ? new THREE.Color(...deep) : 0xffffff,
         transparent: true, opacity: deep ? 0.75 : 1, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+      this._waterMats.get(key).onBeforeCompile = worldWaterPatch;   // the same fresnel sheen as a placed water (water.js)
     }
     return this._waterMats.get(key);
   }
@@ -182,13 +184,14 @@ export class TerrainMesh {
   }
   async pump() {
     if (this.pumping) return; this.pumping = true;
-    while (this.queue.length) {
+    while (this.queue.length && !this.disposed) {
       const e = this.queue.shift();
       const keys = new Set(); for (const q of e.c.quadrants) { keys.add(q.base); for (const l of q.layers) keys.add(l.tex); }
       for (const p of this.paths()) for (const k of this.pathStyles[p.style]?.texs || []) keys.add(k);
       await Promise.all([...keys].filter(Boolean).map((k) => this.lt?.load(k, this.t.ltex)));
       if (!e.canvas) { e.canvas = document.createElement('canvas'); e.canvas.width = e.canvas.height = TEX_PX; e.tex = new THREE.CanvasTexture(e.canvas); e.tex.colorSpace = THREE.SRGBColorSpace; e.tex.anisotropy = 4; }
       e.mat = e.mat || new THREE.MeshLambertMaterial({ map: e.tex, vertexColors: true });
+      if (this.disposed) break;
       this.bake(e); e.mesh.material = e.mat; e.geo.setIndex(this.fine); e.lod = 'near'; e.pending = false; this.baked.add(e);
       this.tintCell(e); this.onChange();
       await new Promise((r) => setTimeout(r, 0));
@@ -198,6 +201,17 @@ export class TerrainMesh {
   unbake(e) {
     e.mesh.material = this.farMat; e.geo.setIndex(this.coarse); e.lod = 'far';
     e.tex?.dispose(); e.mat?.dispose(); e.canvas = null; e.tex = null; e.mat = null; this.baked.delete(e); this.tintCell(e);
+  }
+  // Leaving the place: every cell's geometry, baked texture and material, and the water, let go of on the GPU; the
+  // build and the baking stop.
+  dispose() {
+    this.disposed = true; this.queue.length = 0; this.group.removeFromParent();
+    for (const e of this.cells.values()) {
+      e.geo.dispose(); e.tex?.dispose(); e.mat?.dispose(); e.canvas = null;
+      if (e.water?.userData.kind === 'shore') e.water.geometry.dispose();
+    }
+    this.cells.clear(); this.baked.clear(); this.farMat.dispose(); this._quad?.dispose();
+    for (const m of this._waterMats?.values() || []) m.dispose();
   }
   setPathStyles(styles) { this.pathStyles = styles; this.pathsSet = true; this.rebakeAll(); }
   // Texture layers, then paths over the land as the game will dress them.
