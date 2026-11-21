@@ -329,12 +329,16 @@ def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
     if not rows:
         return [], {}, set()
     target: dict[tuple[int, int], int] = {}
+    per: dict[tuple[int, int], dict[tuple[int, int], float]] = {}   # a cell's rows add (seat.Ground.apply_patches)
     for r in rows:
-        cx, cy = r["cell"]
-        base = cell_steps(facts["by_cell"][(cx, cy)])
+        d = per.setdefault((int(r["cell"][0]), int(r["cell"][1])), {})
         for row, col, dz in r["verts"]:
-            gx, gy = cx * 32 + int(col), cy * 32 + int(row)  # global vertex index: x east, y north
-            v = int(round(base[int(row), int(col)] + dz / 8.0))
+            d[(int(row), int(col))] = d.get((int(row), int(col)), 0.0) + float(dz)
+    for (cx, cy), d in per.items():
+        base = cell_steps(facts["by_cell"][(cx, cy)])
+        for (row, col), dz in d.items():
+            gx, gy = cx * 32 + col, cy * 32 + row  # global vertex index: x east, y north
+            v = int(round(base[row, col] + dz / 8.0))
             if target.get((gx, gy), v) != v:
                 problem(f"land.jsonl: vertex {gx},{gy} patched to two heights")
                 continue

@@ -41,7 +41,7 @@ BUILT_TOL = 4.0     # the build stores heights in 8-unit steps (VHGT): a height 
 # ---------------- ground ----------------
 class Reference:
     """An independent ground: one table of global vertices (world / 128), the bundle's heights with every land row's
-    dz applied once per vertex, the game's triangle split. Written without seat.py so the two can be compared."""
+    dz applied once per vertex (a cell's rows adding), the game's triangle split. Written without seat.py so the two can be compared."""
 
     def __init__(self, cells: dict, rows: list[dict]):
         self.v: dict[tuple[int, int], float] = {}
@@ -50,18 +50,23 @@ class Reference:
                 for col in range(33):
                     self.v.setdefault((cx * 32 + col, cy * 32 + row), float(h[row * 33 + col]))
         self.clashes, self.one_sided, done = [], [], {}
+        per: dict = {}   # a cell's rows add; two cells' copies of one vertex must agree
         for r in rows:
             cx, cy = int(r["cell"][0]), int(r["cell"][1])
             if (cx, cy) not in cells:
                 continue
+            d = per.setdefault((cx, cy), {})
             for row, col, dz in r["verts"]:
                 g = (cx * 32 + int(col), cy * 32 + int(row))
+                d[g] = d.get(g, 0.0) + float(dz)
+        for d in per.values():
+            for g, dz in d.items():
                 if g in done:
-                    if abs(done[g] - float(dz)) > 1e-6:
-                        self.clashes.append((g, done[g], float(dz)))
+                    if abs(done[g] - dz) > 1e-6:
+                        self.clashes.append((g, done[g], dz))
                     continue
-                done[g] = float(dz)
-                self.v[g] += float(dz)
+                done[g] = dz
+                self.v[g] += dz
         # an edge vertex named in one cell's row and not in a loaded neighbour's: the page reads the two copies apart
         named: dict[tuple[int, int], set] = {}
         for r in rows:
@@ -88,7 +93,7 @@ class Reference:
 
 class PageGround:
     """The studio page's reading (web/js/edits.js modelFromFiles + seat.js): each cell keeps its own copy of the land
-    rows' dz, the last row at a vertex wins, and a point reads the cell it lies in."""
+    rows' dz, a cell's rows adding, and a point reads the cell it lies in."""
 
     def __init__(self, cells: dict, rows: list[dict]):
         from tools.places.seat import Ground
@@ -96,7 +101,7 @@ class PageGround:
         for r in rows:
             cm = over.setdefault((int(r["cell"][0]), int(r["cell"][1])), {})
             for row, col, dz in r["verts"]:
-                cm[int(row) * 33 + int(col)] = float(dz)
+                cm[int(row) * 33 + int(col)] = cm.get(int(row) * 33 + int(col), 0.0) + float(dz)
         cs = {k: list(v) for k, v in cells.items()}
         for k, cm in over.items():
             if k in cs:
