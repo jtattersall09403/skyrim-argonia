@@ -1,0 +1,3324 @@
+{
+ "save_id": "agent-20261121T075715",
+ "place_id": "jal-veesa",
+ "name": "each person's day spot by hand at the source's own furniture and markers that fit their household and trade (fishers on the landing's ledges, the tree-minder at the Hist's roots, the carpenters at the boat yard's bench, the egg-tenders by the hatchery, the fish-smoker at the cooking pot by the racks, the stream household at the jetty and weirs)",
+ "at": "2026-11-21T07:57:15Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
+    "name": "Okazhu",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "kin"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAFB",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.41NFAP0D10N6QEG6T0C5CS1B04",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAFB",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.41NFAP0D10N6QEG6T0C5CS1B04",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.41NFAP0D10N6QEG6T0C5CS1B04",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
+    "name": "Okazhu",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "kin"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAFB",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAFB",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "a fisher: on the landing's ledge, by the boats",
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+    "name": "Weeltul",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1A",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+     "radius": 256
+    },
+    "services": [
+     {
+      "seq": 0,
+      "kind": "rootworm-stop",
+      "detail": "the Hist pool at the heart of the town, where the tree-minder calls the rootworm",
+      "destinations": [
+       "helstrom"
+      ]
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1A",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+       "radius": 256
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.XP3JHQY8EH33EMN1R36V8AC8RG",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+    "name": "Weeltul",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1A",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 0,
+      "kind": "rootworm-stop",
+      "detail": "the Hist pool at the heart of the town, where the tree-minder calls the rootworm",
+      "destinations": [
+       "helstrom"
+      ]
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1A",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.sap.7SWK29SQSJ276Q5JVM1M6FCTK4",
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the tree-minder: crouched in prayer at the Hist's roots, where the rootworm is called",
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC",
+    "name": "Jeshun-Tal",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAE8",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.XG4CCRCGRD4T46H3Q66YVW02TB",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAE8",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.XG4CCRCGRD4T46H3Q66YVW02TB",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.XG4CCRCGRD4T46H3Q66YVW02TB",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC",
+    "name": "Jeshun-Tal",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAE8",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAE8",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "a fisher: on the landing's other ledge",
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
+    "name": "Keeshu-Ra",
+    "base_from": "Black Marsh.esm:160E6A",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub",
+     "relation": "head"
+    },
+    "role": "trainer",
+    "home": "SeekhatTreeminderHut",
+    "bed": {
+     "space": "SeekhatTreeminderHut",
+     "ref": "King of the Murkmire.esp:198CEB",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.EVXHJTP1GVZV6GPGGBBJ4QBRQZ",
+     "radius": 256
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trainer",
+      "detail": "Adept Archery trainer, a ruin-warden of the Veesa-Teeleel"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "ref": "King of the Murkmire.esp:198CEB",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.EVXHJTP1GVZV6GPGGBBJ4QBRQZ",
+       "radius": 256
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.EVXHJTP1GVZV6GPGGBBJ4QBRQZ",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
+    "name": "Keeshu-Ra",
+    "base_from": "Black Marsh.esm:160E6A",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub",
+     "relation": "head"
+    },
+    "role": "trainer",
+    "home": "SeekhatTreeminderHut",
+    "bed": {
+     "space": "SeekhatTreeminderHut",
+     "ref": "King of the Murkmire.esp:198CEB",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -56147.9,
+      -506981.4,
+      621.3
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trainer",
+      "detail": "Adept Archery trainer, a ruin-warden of the Veesa-Teeleel"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "ref": "King of the Murkmire.esp:198CEB",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -56147.9,
+        -506981.4,
+        621.3
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatTreeminderHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the ruin-warden and archery trainer: on his deck chair by the treeminder's hut, over the Hist",
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6",
+    "name": "Dazhul-Tei",
+    "household": {
+     "id": "jal-veesa.household.CormarisLabourersHouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatCarpenterHut",
+    "bed": {
+     "space": "SeekhatCarpenterHut",
+     "ref": "King of the Murkmire.esp:1A31F5",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.MJ96GF6WDS5HV64QR6P0WD3T4W",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "ref": "King of the Murkmire.esp:1A31F5",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.MJ96GF6WDS5HV64QR6P0WD3T4W",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.MJ96GF6WDS5HV64QR6P0WD3T4W",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6",
+    "name": "Dazhul-Tei",
+    "household": {
+     "id": "jal-veesa.household.CormarisLabourersHouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatCarpenterHut",
+    "bed": {
+     "space": "SeekhatCarpenterHut",
+     "ref": "King of the Murkmire.esp:1A31F5",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "ref": "King of the Murkmire.esp:1A31F5",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the carpenter's household: at the source's carpenter's workbench in the boat yard",
+   "call": "fault",
+   "space": "exterior",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.66SDMA56E38FGAF0NT42B0GGE7",
+    "name": "Walks-To-Stormhold",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub.2",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatSmithyHut",
+    "bed": {
+     "space": "SeekhatSmithyHut",
+     "ref": "King of the Murkmire.esp:1A845F",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.652AAPBBMPEYNDHZQVG5W8WZ4G",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "ref": "King of the Murkmire.esp:1A845F",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.652AAPBBMPEYNDHZQVG5W8WZ4G",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.652AAPBBMPEYNDHZQVG5W8WZ4G",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.66SDMA56E38FGAF0NT42B0GGE7",
+    "name": "Walks-To-Stormhold",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub.2",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatSmithyHut",
+    "bed": {
+     "space": "SeekhatSmithyHut",
+     "ref": "King of the Murkmire.esp:1A845F",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "ref": "King of the Murkmire.esp:1A845F",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "works with his hands at the hut's wall bench (the source's hammer marker)",
+   "call": "fault",
+   "space": "exterior",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33",
+    "name": "Vosh-Leera",
+    "household": {
+     "id": "jal-veesa.household.CormarisCouncillorsHouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEldersHut",
+    "bed": {
+     "space": "SeekhatEldersHut",
+     "ref": "King of the Murkmire.esp:1C6F1E",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.WHPAS9FBWPTZCR70E54M3HRWX8",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "ref": "King of the Murkmire.esp:1C6F1E",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.WHPAS9FBWPTZCR70E54M3HRWX8",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.WHPAS9FBWPTZCR70E54M3HRWX8",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33",
+    "name": "Vosh-Leera",
+    "household": {
+     "id": "jal-veesa.household.CormarisCouncillorsHouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEldersHut",
+    "bed": {
+     "space": "SeekhatEldersHut",
+     "ref": "King of the Murkmire.esp:1C6F1E",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "ref": "King of the Murkmire.esp:1C6F1E",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the head of the elders: on the bench on the long house's deck",
+   "call": "fault",
+   "space": "exterior",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
+    "name": "Kuxan-Deel",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF97",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.973T94ZDCETENTTG4F5F2VSBBM",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF97",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.973T94ZDCETENTTG4F5F2VSBBM",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.973T94ZDCETENTTG4F5F2VSBBM",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
+    "name": "Kuxan-Deel",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF97",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF97",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "an egg-tender: sat by the hatchery's steaming nest in the gland grove",
+   "call": "fault",
+   "space": "exterior",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
+    "name": "Tsemeena",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF98",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.5G1E0AG2T46NT3MC7RNZH75Y0Y",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF98",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.5G1E0AG2T46NT3MC7RNZH75Y0Y",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.5G1E0AG2T46NT3MC7RNZH75Y0Y",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
+    "name": "Tsemeena",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF98",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF98",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "an egg-tender: sat by the hatchery's steaming nest",
+   "call": "fault",
+   "space": "exterior",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
+    "name": "Mizeera",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "merchant",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAE8",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST",
+     "radius": 256
+    },
+    "services": [
+     {
+      "seq": 2,
+      "kind": "trader-innkeeper",
+      "detail": "a fish-smoker's stall on the road side"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAE8",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.CAK78VP38XXGSGJ4R3KE4KQAST",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
+    "name": "Mizeera",
+    "household": {
+     "id": "jal-veesa.household.CormarisMareinFarmhouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "merchant",
+    "home": "SeekhatFishersHut",
+    "bed": {
+     "space": "SeekhatFishersHut",
+     "ref": "King of the Murkmire.esp:1BCAE8",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -51850.0,
+      -510200.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 2,
+      "kind": "trader-innkeeper",
+      "detail": "a fish-smoker's stall on the road side"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "ref": "King of the Murkmire.esp:1BCAE8",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -51850.0,
+        -510200.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatFishersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the fish-smoker's stall: at the cooking pot by the fish racks on the road side",
+   "call": "fault",
+   "space": "exterior",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
+    "name": "Luxeela",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "grown child"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1B",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.CYP072KDHBFAHD6WP245H3CTG7",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1B",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.CYP072KDHBFAHD6WP245H3CTG7",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.CYP072KDHBFAHD6WP245H3CTG7",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
+    "name": "Luxeela",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "grown child"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1B",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1B",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "on the ledge of the fishers' deck",
+   "call": "fault",
+   "space": "exterior",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.7W40EGBARBV6S6HWTT0D8284JX",
+    "name": "Azhuuk-Ma",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhut",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "AltenDockmasterHouse",
+    "bed": {
+     "space": "AltenDockmasterHouse",
+     "ref": "King of the Murkmire.esp:0FCDFC",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.36B1H5WHKR61FZMKFDCAE7YYHY",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "ref": "King of the Murkmire.esp:0FCDFC",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.36B1H5WHKR61FZMKFDCAE7YYHY",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.36B1H5WHKR61FZMKFDCAE7YYHY",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.7W40EGBARBV6S6HWTT0D8284JX",
+    "name": "Azhuuk-Ma",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhut",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "AltenDockmasterHouse",
+    "bed": {
+     "space": "AltenDockmasterHouse",
+     "ref": "King of the Murkmire.esp:0FCDFC",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "ref": "King of the Murkmire.esp:0FCDFC",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the fisher household by the stream: on the jetty",
+   "call": "fault",
+   "space": "exterior",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
+    "name": "Ixheela",
+    "household": {
+     "id": "jal-veesa.household.CormarisCouncillorsHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatEldersHut",
+    "bed": {
+     "space": "SeekhatEldersHut",
+     "ref": "King of the Murkmire.esp:1C6F1E",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.B16Z0JKD93MYAG8GQ2V4BX8HAK",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "ref": "King of the Murkmire.esp:1C6F1E",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.B16Z0JKD93MYAG8GQ2V4BX8HAK",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.B16Z0JKD93MYAG8GQ2V4BX8HAK",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
+    "name": "Ixheela",
+    "household": {
+     "id": "jal-veesa.household.CormarisCouncillorsHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatEldersHut",
+    "bed": {
+     "space": "SeekhatEldersHut",
+     "ref": "King of the Murkmire.esp:1C6F1E",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "ref": "King of the Murkmire.esp:1C6F1E",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEldersHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the elders' household: on the chair on the long house's deck",
+   "call": "fault",
+   "space": "exterior",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
+    "name": "Sheeluxa",
+    "household": {
+     "id": "jal-veesa.household.CormarisLabourersHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatCarpenterHut",
+    "bed": {
+     "space": "SeekhatCarpenterHut",
+     "ref": "King of the Murkmire.esp:1A31F6",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.F1KQD9SQMT6J8TS0SBACKA2R13",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "ref": "King of the Murkmire.esp:1A31F6",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.F1KQD9SQMT6J8TS0SBACKA2R13",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.F1KQD9SQMT6J8TS0SBACKA2R13",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
+    "name": "Sheeluxa",
+    "household": {
+     "id": "jal-veesa.household.CormarisLabourersHouse",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatCarpenterHut",
+    "bed": {
+     "space": "SeekhatCarpenterHut",
+     "ref": "King of the Murkmire.esp:1A31F6",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "ref": "King of the Murkmire.esp:1A31F6",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatCarpenterHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the carpenter's household: at the chopping block beside the yard",
+   "call": "fault",
+   "space": "exterior",
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
+    "name": "Pezuul-Ja",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhut",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "AltenDockmasterHouse",
+    "bed": {
+     "space": "AltenDockmasterHouse",
+     "ref": "King of the Murkmire.esp:0FCDFC",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.D1F5Q4Q2HVXNTT6R6F58E1ZXQR",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "ref": "King of the Murkmire.esp:0FCDFC",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.D1F5Q4Q2HVXNTT6R6F58E1ZXQR",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.D1F5Q4Q2HVXNTT6R6F58E1ZXQR",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
+    "name": "Pezuul-Ja",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhut",
+     "relation": "partner"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "AltenDockmasterHouse",
+    "bed": {
+     "space": "AltenDockmasterHouse",
+     "ref": "King of the Murkmire.esp:0FCDFC",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "ref": "King of the Murkmire.esp:0FCDFC",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AltenDockmasterHouse",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "the fisher household by the stream: at the weir channels",
+   "call": "fault",
+   "space": "exterior",
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
+    "name": "Hokaxu",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "sibling"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1C",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.QH4V20MENMJWEW70G3ATSZN3PS",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1C",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.QH4V20MENMJWEW70G3ATSZN3PS",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.QH4V20MENMJWEW70G3ATSZN3PS",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
+    "name": "Hokaxu",
+    "household": {
+     "id": "jal-veesa.household.CormarisBlacksmithHouse",
+     "relation": "sibling"
+    },
+    "base_from": "Black Marsh.esm:00FF4D",
+    "role": "resident",
+    "home": "SeekhatAccommodationHut",
+    "bed": {
+     "space": "SeekhatAccommodationHut",
+     "ref": "King of the Murkmire.esp:1C1D1C",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "ref": "King of the Murkmire.esp:1C1D1C",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatAccommodationHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "on the bench of the egg-tenders' deck",
+   "call": "fault",
+   "space": "exterior",
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33",
+    "name": "Taxhu-Neel",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub.2",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatSmithyHut",
+    "bed": {
+     "space": "SeekhatSmithyHut",
+     "ref": "King of the Murkmire.esp:1A8455",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.5689CD1DHG6JFGCXCGVP537WMV",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "ref": "King of the Murkmire.esp:1A8455",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.5689CD1DHG6JFGCXCGVP537WMV",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.5689CD1DHG6JFGCXCGVP537WMV",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33",
+    "name": "Taxhu-Neel",
+    "household": {
+     "id": "jal-veesa.household.CormarisCornerclub.2",
+     "relation": "head"
+    },
+    "base_from": "Black Marsh.esm:02A1EE",
+    "role": "resident",
+    "home": "SeekhatSmithyHut",
+    "bed": {
+     "space": "SeekhatSmithyHut",
+     "ref": "King of the Murkmire.esp:1A8455",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "ref": "King of the Murkmire.esp:1A8455",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatSmithyHut",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "at the woodpile by the hut",
+   "call": "fault",
+   "space": "exterior",
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "jal-veesa.YVMAKC3EE6DW3J23J5Y51VZA33",
+    "name": "Tikaasi",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "kin"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF9A",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "ref": "jal-veesa.X8WXQR5N4SBAW6GK2G2FN9YV45",
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF9A",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.X8WXQR5N4SBAW6GK2G2FN9YV45",
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "ref": "jal-veesa.X8WXQR5N4SBAW6GK2G2FN9YV45",
+       "radius": 256
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "jal-veesa.YVMAKC3EE6DW3J23J5Y51VZA33",
+    "name": "Tikaasi",
+    "household": {
+     "id": "jal-veesa.household.CormarisFarmhouse",
+     "relation": "kin"
+    },
+    "base_from": "Black Marsh.esm:160E6A",
+    "role": "resident",
+    "home": "SeekhatEggTendersQuarters",
+    "bed": {
+     "space": "SeekhatEggTendersQuarters",
+     "ref": "King of the Murkmire.esp:19DF9A",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -52858.9,
+      -503951.4
+     ],
+     "radius": 1024
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "jal-veesa.crime",
+      "rank": 0
+     },
+     {
+      "faction": "jal-veesa.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "ref": "King of the Murkmire.esp:19DF9A",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "SeekhatEggTendersQuarters",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "radius": 1024,
+       "pos": [
+        -52858.9,
+        -503951.4
+       ]
+      }
+     }
+    ]
+   },
+   "note": "at the tanning rack on the egg-tenders' deck (the record's tanning rack)",
+   "call": "fault",
+   "space": "exterior",
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T07:57:15Z"
+  }
+ ]
+}
