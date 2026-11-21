@@ -1,0 +1,65 @@
+{
+ "save_id": "agent-20261121T041650",
+ "place_id": "jal-veesa",
+ "name": "the Smithy's floor (a plank wall laid flat) back under it: a probe's float of it was the hut's own floor",
+ "at": "2026-11-21T04:16:50Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.8B3CAJCT2NVXY9SMCCBVDG7NKT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54794.83,
+     -507021.43,
+     393.7
+    ],
+    "rot": [
+     4.71239,
+     5.01239,
+     3.14159
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "ground",
+     "dz": 0.226
+    }
+   },
+   "after": {
+    "pos": [
+     -54794.83,
+     -507021.43,
+     466.9
+    ],
+    "rot": [
+     4.71239,
+     5.01239,
+     3.14159
+    ],
+    "scale": 1.28,
+    "seat": {
+     "foot": [
+      -475.2,
+      -5.4,
+      476.6,
+      10.5
+     ],
+     "mode": "ground",
+     "dz": 73.426
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T04:16:50Z"
+  }
+ ]
+}
