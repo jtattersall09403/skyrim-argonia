@@ -146,6 +146,16 @@
     "flag": "foot not reaching the ground",
     "why": "a scale-hide tent standing on the waterside cypress platform's deck, not on the ground"
    }
+  ],
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m6-m66.G2G59CNBHHSXYM8TDQY8MF7ZVG",
+     "outpost-m6-m66.37N3FNEZA4W6Y9V333ZA6A4VYC"
+    ],
+    "why": "two of the source's own rocks laid into each other as one outcrop behind the Hist in Huluxinoag, carried whole; seen as one rock pile in the Hist views (2026-11-21)"
+   }
   ]
  },
  "fit": {
