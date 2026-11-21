@@ -164,6 +164,26 @@ def legs(S) -> list[dict]:
     return [f for f in S.feet() if low is not None and f["z"] <= low + FOOT_BAND]
 
 
+def feet_held(S, B: "Boxes", skip: str | None = None) -> set:
+    """The pieces this mesh's own feet stand on or are set into (shape.legs_held, one foot at a time): a platform whose
+    posts stand on a root mound or in a rock is held by it however far over the mud its lowest point is and however
+    high the mound's box rises past the posts' feet (Boxes.under_box rejects a supporter whose box top passes REACH)."""
+    out = set()
+    U = S.under[~np.isnan(S.under)]
+    body = float(np.median(U)) if U.size else None
+    for f in legs(S):
+        if body is None or f["z"] > body - shape.STEP:
+            continue                 # no leg: the underside itself (a slab, a plank) stands on what is under it or not
+        (x, y), z = f["at"], f["z"]
+        near = np.nonzero(B._over(x, y) & (B.hi[:, 2] >= z - shape.STEP) & (B.lo[:, 2] <= z + shape.STEP) & ~B.tree)[0]
+        for k in near:
+            i = B.ids[k]
+            if i != skip and i not in out and \
+                    shape.legs_held({"reach": z, "reach_at": [x, y], "at": [x, y, z]}, [(i, shape.posed(B.by[i]))], None):
+                out.add(i)
+    return out
+
+
 def bury_dz(pieces: list[dict], ground, depth: float = 8.0) -> float | None:
     """How far down a structure sinks until every foot of its solid pieces is `depth` in the ground: the highest
     foot over the ground of the piece standing lowest goes `depth` under. Never up (0.0 when already buried); None
@@ -203,6 +223,8 @@ def probe_piece(p: dict, ground, pieces: list[dict], boxes: dict | None = None) 
         if shape.rests_on(S, shape.posed(B.by[B.ids[k]]), FLOAT_TOL, REACH):   # the box first, then the meshes
             sup = B.ids[k]
             break
+    if sup is None:
+        sup = next(iter(sorted(feet_held(S, B, p["id"]))), None)   # its posts on (or in) a mesh under them
     out = {"id": p["id"], "base": p.get("base"), "edid": p.get("edid"), "kind": p.get("kind"), "cluster": p.get("cluster"),
            "model": p.get("model"), "resolved": bool(p.get("resolved")), "mesh": S.mesh,
            "box": [[round(float(v), 1) for v in lo], [round(float(v), 1) for v in hi]],
@@ -240,11 +262,29 @@ def end_report(e: dict, ground, pieces, skip, boxes) -> dict:
     over = None if g is None else round(under - g, 1)
     if over is not None and over > END_TOL and e.get("reach") is not None and e["reach"] - g <= END_TOL:
         over = round(float(e["reach"]) - g, 1)    # the end stands on its own legs (a flight's post under its head)
-    w = ground.water(x, y) if hasattr(ground, "water") else None
+    if held is None and over is not None and over > END_TOL and e.get("reach") is not None:
+        held = legs_support(e, pieces, skip, boxes)   # its own legs on (or in) a mesh: a post on a root mound
+    w =ground.water(x, y) if hasattr(ground, "water") else None
     if w is not None and under <= w + END_TOL and g is not None and g < w:
         over = min(over, round(under - w, 1))      # an end at or in the water (a dock's steps down): it meets the water
     return {"at": [round(x, 1), round(y, 1), round(z, 1)], "over_ground": over, "held_by": held,
             "supported": held is not None or (over is not None and over <= END_TOL)}
+
+
+def legs_support(e: dict, pieces, skip, boxes) -> str | None:
+    """The solid piece (no tree) a span end's own legs stand on or are set into (shape.legs_held), else None."""
+    x, y = e.get("reach_at") or e["at"][:2]
+    r = float(e["reach"])
+    for q in pieces:
+        if q["id"] == skip or not solid(q) or (q.get("kind") == "tree" and "root" not in str(q.get("edid") or "").lower()):
+            continue
+        lo, hi = boxes[q["id"]] if boxes else aabb(q)
+        if not (lo[0] - shape.CELL <= x <= hi[0] + shape.CELL and lo[1] - shape.CELL <= y <= hi[1] + shape.CELL
+                and lo[2] - shape.STEP <= r <= hi[2] + shape.STEP):
+            continue
+        if shape.legs_held(e, [(q["id"], shape.posed(q))], None):
+            return q["id"]
+    return None
 
 
 def end_support(pieces, x: float, y: float, z: float, skip, boxes, r: float = 24.0) -> str | None:
@@ -350,6 +390,7 @@ def grounding(pieces: list[dict], ground, boxes: dict | None = None, tol: float 
         if over is not None and over > tol:
             on.update(B.ids[i] for i in B.under_box(lo, hi, low, tol)          # the box first, then the meshes
                       if shape.rests_on(S, shape.posed(B.by[B.ids[i]]), tol, REACH))
+            on.update(feet_held(S, B, p["id"]))   # its own legs on or in a mesh: held by it (grounded if that is)
             if hangs(p):   # a lantern, a sconce, a sign: held by what its top hangs from
                 on.update(B.ids[i] for i in B.around((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, float(hi[2])))
             if wall_fixed(p) or p.get("kind") == "door":   # a lantern, sconce, window, sign or door: held by the wall it is set in

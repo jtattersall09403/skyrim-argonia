@@ -1357,7 +1357,15 @@ def joint_rows(pl: Place) -> list[dict]:
     posed = [(p["id"], shape.posed(p)) for p in solid]
     by = dict(posed)
     name_of = {p["id"]: f"{p.get('edid') or classify.kind_of(p)}, {role_of.get(p['id']) or classify.kind_of(p)}" for p in solid}
-    rows = shape.joints([(p["id"], by[p["id"]]) for p in spans], posed, pl.sc.ground, unit_of, walls, structures, name_of)
+    # what a span's legs may stand on: the pieces of ours and the ground's own (a root mound, a rock, a root tangle)
+    # and the world's things about the place, each only when it stands itself (geom.grounding)
+    world = list(getattr(pl.sc, "world", None) or [])
+    holders = [p for p in pl.sc.pieces if p.get("model") and geom.solid(p) and p["id"] not in by] + \
+        [q for q in world if geom.solid(q)]
+    gr = geom.grounding(pl.sc.pieces, pl.sc.ground, world=world)
+    held = {i for i, r in gr.items() if r["grounded"]} | {q["id"] for q in world}
+    rows = shape.joints([(p["id"], by[p["id"]]) for p in spans], posed + [(q["id"], shape.posed(q)) for q in holders],
+                        pl.sc.ground, unit_of, walls, structures, name_of, held)
     for r in rows:
         p = pl.by.get(r["span"]) or {}
         r["edid"] = p.get("edid")
