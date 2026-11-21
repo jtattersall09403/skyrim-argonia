@@ -266,7 +266,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
             if not plain:
                 img, _ = draw.annotate(img, c, sc, th, faults, f"{th['name']} from {','.join(f'{v:.0f}' for v in c['pos'])}",
                                        grid=bool(o.get("grid")))
-            img = mark(img, sco)
+                img = mark(img, sco)   # --plain: the stood view as the eye sees it; its verdict is in the JSON
             res = {"cam": c, "img": img}
             if not keep:
                 res = {"thing": th["name"], "kind": th["kind"], "stand": c["pos"], "stood_on": c["stood"]["on"], **sco}
