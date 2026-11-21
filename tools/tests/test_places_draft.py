@@ -218,6 +218,24 @@ def test_a_copied_rooms_nordic_pieces_follow_the_review():
     assert adds.room_nordic({"J:1", "J:2", "J:3", "J:4", "J:5"}, bases, review) == {"J:2", "J:3"}
 
 
+def test_an_added_doors_arrival_on_a_deck_keeps_its_height():
+    from types import SimpleNamespace as NS
+    from tools.places.draft import adds
+
+    class G:
+        def height(self, x, y):
+            return -80.0          # the river bed under a moored ship
+
+    back = {"id": "S:2", "base": "D:1", "kind": "door", "pos": [0, 0, 0], "rot": [0, 0, 0],
+            "door": {"to_space": "exterior", "to_ref": "S:1"}}
+    sp = NS(refs=[back], meta={"name": "Hold"})
+    src = NS(spaces={"Hold": sp}, bases={})
+    for arrival, z in (([10.0, 20.0, 95.0], 95.0), ([10.0, 20.0], -80.0)):
+        door = {"id": "p.door", "pos": [0, 0, 83.0], "rot": [0, 0, 0]}
+        adds.room("p", door, {"copy_of": "s/Hold", "arrival": arrival}, src, {}, set(), G())
+        assert door["door"]["arrival"] == [10.0, 20.0, z]
+
+
 def test_a_replacement_keeps_the_walking_top():
     from tools.places.draft import io as dio
     steps = {"edid": "DockStepsDown02", "bounds": [[-258, -150, -508], [257, 157, 190]]}

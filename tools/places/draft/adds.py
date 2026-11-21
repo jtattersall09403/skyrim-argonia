@@ -15,7 +15,7 @@ minted from when its base is swapped in place (the ids the stories rest on stay)
 
 A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
 (default the cell's), whole?: true to copy a cell of several ways out whole (one building; its other ways out
-removed), arrival: where one steps out ([x, y] outside, [x, y, z] in a room), drop?: {source ref id: why}
+removed), arrival: where one steps out ([x, y] outside on the ground, [x, y, z] on a deck or a ship and in a room), drop?: {source ref id: why}
 for a piece the room must not have (a container of levelled treasure: decision 0035; a door on to a further room)}
 brings that interior of any source we hold as a copied room of ours behind the door, outside or in another room (of
 a cell that packs several rooms, the one behind that way out):
@@ -232,7 +232,7 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
         arrival = [float(v) for v in spec["arrival"][:3]]
     elif arrival is None:
         ax, ay = (float(v) for v in spec["arrival"][:2])
-        h = G.height(ax, ay)
+        h = float(spec["arrival"][2]) if len(spec["arrival"]) > 2 else G.height(ax, ay)    # a deck's height is given
         arrival = [round(ax, 2), round(ay, 2), round(h if h is not None else door["pos"][2], 2)]
     back_id = io.mint(place_id, sid, back["id"])
     into = next(((r["door"].get("to_pos"), r["door"].get("to_rot")) for s_ in src.spaces.values() for r in s_.refs
