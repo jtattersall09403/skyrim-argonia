@@ -157,7 +157,9 @@ def test_seat_on_the_device_equals_seat_py(tmp_path):
     raw = array("f", [h for c in cells for h in heights[c]])
     (tmp_path / "terrain.f32").write_bytes(raw.tobytes())
     (tmp_path / "terrain.json").write_text(json.dumps({"cells": rows, "ltex": {}}))
-    patches = [{"cell": [0, 0], "verts": [[5, 6, 40.0], [5, 7, -32.0], [32, 32, 16.0]]}, {"cell": [1, 0], "verts": [[0, 0, 8.0]]}]
+    # a vertex on a cell's edge is one vertex: rows carry every loaded cell's copy of it, as the build reads it
+    patches = [{"cell": [0, 0], "verts": [[0, 32, 8.0], [5, 6, 40.0], [5, 7, -32.0], [32, 32, 16.0]]},
+               {"cell": [1, 0], "verts": [[0, 0, 8.0], [32, 0, 16.0]]}, {"cell": [0, 1], "verts": [[0, 32, 16.0]]}]
     g = seat.Ground({c: list(array("f", heights[c])) for c in cells}, {(1, 0): -50.0}, default_water=12.5)
     g.apply_patches(json.loads(json.dumps(patches)))
     pts = [(rnd.uniform(-4096, 8192), rnd.uniform(-4096, 8192)) for _ in range(300)]
