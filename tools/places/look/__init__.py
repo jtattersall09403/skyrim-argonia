@@ -11,6 +11,7 @@ Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
 failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries.
+Audit: truth [<place> --sample N]: the golden scene's known answers (or a real draft sampled) held against the pictures.
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
@@ -78,10 +79,16 @@ def ensure() -> float:
 
 
 def main(argv: list[str]) -> int:
+    if argv and argv[0] == "truth":   # the audit of the tool itself: look truth [<place> --sample N]
+        from tools.places.look import truth
+        return truth.main(argv[1:])
     if not argv or argv[0] in ("-h", "--help") or (len(argv) < 2 and argv[0] != "stop"):
         print(__doc__)
         return 0 if argv else 2
     if argv[0] == "stop":
+        from tools.places.look import daemon
+        for line in daemon.reap():   # daemons of checkouts that are gone
+            print(f"stopped {line}")
         try:
             call({"verb": "_stop", "place": "", "args": []}, 10)
         except OSError:

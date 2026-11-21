@@ -122,7 +122,7 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
           });
           resolve(parts);
-        } catch (e) { console.info(`studio: ${e.message}`); resolve(null); }
+        } catch (e) { console.info(`studio: ${e.message}`); const none = []; none.failed = e.message; resolve(none); }
       } });
       pump();
     }));
@@ -134,6 +134,7 @@ const LIGHT = new Set(['tree', 'plant', 'groundcover', 'rock']);
 
 const boxGeo = new THREE.BoxGeometry(1, 1, 1).translate(0.5, 0.5, 0.5);
 const coneGeo = new THREE.ConeGeometry(0.5, 1, 6, 1).rotateX(Math.PI / 2).translate(0.5, 0.5, 0.5);
+const standInMat = new THREE.MeshLambertMaterial({ color: '#ff00ff', transparent: true, opacity: 0.5, side: THREE.DoubleSide, name: 'placeholder' });
 const boxMats = new Map();
 function boxMaterial(kind, ghost) {
   const k = `${kind}|${ghost}`;
@@ -341,12 +342,19 @@ class Group {
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null).then((parts) => {
-        if (!parts || !parts.length) return;
+        // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists
+        // it), never left out unseen; a model that loads and holds nothing drawable (a furniture marker) is empty
+        if (parts && !parts.length && !parts.failed) { this.empty = true; return; }
+        if (!parts || !parts.length || parts.placeholder) parts = this.standIn(parts?.failed || 'the converter could not read it');
         ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
         this.layer.onDirty();   // a view at rest draws again, so a model that arrives is switched on without waiting for a touch
       });
     }
     return nf + nb;
+  }
+  standIn(why) {
+    const parts = [{ geometry: boxGeo.clone().applyMatrix4(this.boxLocal), material: standInMat }];
+    parts.placeholder = true; parts.why = why; return parts;
   }
   dispose() {
     for (const m of [this.box, ...(this.full || [])]) if (m) { this.layer.root.remove(m); m.dispose(); }

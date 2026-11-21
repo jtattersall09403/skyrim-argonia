@@ -530,6 +530,14 @@ def stale_scratch(now: float, days: float = JOB_DAYS, tmp: Path = None, projects
 def tidy_disk(main: Path, dry: bool, log) -> int:
     now, freed = time.time(), 0
     verb = "would delete" if dry else "deleted"
+    try:   # look daemons of checkouts that are gone (tools/places/look/daemon.py reap)
+        import sys
+        sys.path.insert(0, str(main))
+        from tools.places.look.daemon import reap
+        for line in reap(dry):
+            log(f"{'would stop' if dry else 'stopped'} {line}")
+    except Exception as e:
+        log(f"look daemons not reaped: {e}")
     jobs = stale_jobs(JOBS, now) if JOBS.is_dir() else []
     if jobs:
         n = sum(sum(f.stat().st_size for f in fs) for _, fs in jobs)
