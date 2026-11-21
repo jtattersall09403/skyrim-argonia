@@ -188,7 +188,8 @@ def tool(*args: str) -> None:
 def code_key() -> str:
     h = hashlib.sha256()
     world = ROOT / "tools" / "newworld" / "world"  # the road rule and the ground's road sets the paths are painted by
-    for p in sorted([Path(__file__), Path(__file__).with_name("people.py"), world / "roadpaint.py", world / "texture.py"]
+    for p in sorted([Path(__file__), Path(__file__).with_name("people.py"), Path(__file__).with_name("carrynav.py"),
+                     Path(__file__).parent / "draft" / "srcnav.py", world / "roadpaint.py", world / "texture.py"]
                     + list(TOOL_PROJ.glob("*.cs"))):
         if p.exists():
             h.update(p.name.encode() + p.read_bytes())
@@ -1374,7 +1375,7 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
     return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in rooms.items()}}
 
 
-def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path, cleared=()) -> tuple[list[dict], dict]:
+def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path, cleared=(), carry=None) -> tuple[list[dict], dict]:
     """tools.navmesh over the window (touched cells + NAV_RING rings) with the place's land and collision, cut
     round everything the world has placed there (its refs shards, as the world's own navmesh is) but the world
     refs the place switches off (`cleared`: their positions); the touched cells and their first ring are ours
@@ -1470,9 +1471,88 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path,
         rec = base64.b64decode(e["navm"])
         kept.append({"fid": struct.unpack_from("<I", rec, 12)[0], "space": "exterior",
                      "nv": nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))})
+    if carry is not None:   # a wholesale place's own mesh in its footprint (carried_navmesh); its links are made below
+        seam["carried"] = carry(mine)
     seam["one_way_unlinked"] = unlink_one_way(mine, kept)
-    seam["joined_edges"] = join_seams(mine)
+    # a carried cell meets a generated one up to a climb and a detail error apart in height (carrynav.WELD_Z)
+    seam["joined_edges"] = join_seams(mine, 48.0 if carry is not None else 32.0)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
+
+
+def source_navmesh(P: dict) -> bool:
+    """A wholesale place whose walking mesh is its source's own (place.json `wholesale.navmesh: "source"`)."""
+    return ((P["place"].get("wholesale") or {}).get("navmesh")) == "source"
+
+
+def footprint_cells(place: dict) -> set:
+    """The cells the footprint's polygon (and the carried triangles' reach past it, 512) overlaps."""
+    from tools.places import carrynav as cn
+    r = place["radius_m"] * 70 + 512.0
+    ax, ay = place["fit"]["anchor"][:2]
+    ring = cn.planes(cn.ccw(cn.disk((ax, ay), r)))
+    return {(cx, cy) for cx in range(math.floor((ax - r) / CELL), math.floor((ax + r) / CELL) + 1)
+            for cy in range(math.floor((ay - r) / CELL), math.floor((ay + r) / CELL) + 1)
+            if cn.intersect([(*p, 0.0) for p in cn.cell_box((cx, cy))], ring) is not None}
+
+
+def carried_navmesh(mine: list[dict], pid: str, places: Path) -> dict:
+    """Write a wholesale place's source navmesh into the shipped cells its footprint touches (place.json
+    `wholesale.navmesh: "source"`; docs/design/place-studio.md, Navmesh): inside the footprint the source's own
+    triangles (srcnav.place_carry: carried at the place's one transform, ground vertices on our ground), in its zones
+    (what was deleted, moved or added by hand, and what re-grounding made too steep) and round it the generated mesh,
+    cut on our cell lines and joined with shared vertices (carrynav). Each changed cell's NVNM is replaced whole and its
+    links opened; unlink_one_way and join_seams then join every shipped seam edge for edge, as for a generated place."""
+    from tools.places import carrynav as cn
+    from tools.places.draft import srcnav
+    g = srcnav.place_carry(pid, places)
+    region = cn.Region(cn.disk(g["centre"], g["radius"]), g["zones"])
+    by_cell = {tuple(n["cell"]): n for n in mine if n["space"] == "exterior"}
+    ring = cn.planes(region.outer)
+    changed = {c for c in by_cell if cn.intersect([(*p, 0.0) for p in cn.cell_box(c)], ring) is not None}
+    for tri, _, _ in g["tris"] + g["moved"]:
+        changed |= {cell_of(p[0], p[1]) for p in tri}
+    missing = sorted(c for c in changed if c not in by_cell)
+    for c in missing:
+        problem(f"navmesh: the carried mesh reaches cell {c[0]},{c[1]}, which the window does not ship")
+    changed -= set(missing)
+    outside = sorted({(c[0] + dx, c[1] + dy) for c in changed for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))} - set(by_cell))
+    if outside:
+        problem(f"navmesh: cells {outside[:6]} beside the carried mesh are not shipped: its seams there cannot be joined")
+    generated = {}
+    for c in changed:
+        nv = by_cell[c]["nv"]
+        v = np.asarray(nv.verts, float)
+        generated[c] = [(v[t].tolist(), int(f)) for t, f in zip(nv.tris["v"].astype(int), nv.tris["flags"])]
+    neighbours = {}
+    for c, n in by_cell.items():
+        if c in changed:
+            continue
+        v = np.asarray(n["nv"].verts, float)
+        x0, y0 = c[0] * CELL, c[1] * CELL
+        on = (np.abs(v[:, 0] - x0) < 0.5) | (np.abs(v[:, 0] - x0 - CELL) < 0.5) | (np.abs(v[:, 1] - y0) < 0.5) | (np.abs(v[:, 1] - y0 - CELL) < 0.5)
+        neighbours[c] = v[on].tolist()
+    on_moved = [lambda t, po=po: srcnav.on_surface(po, t) for po in g["moved_on"]]
+    cells, mv = cn.place_cells(g["tris"] + g["moved"], generated, region, g["ground"].water, neighbours, on_moved)
+    st = {"cells": len(changed), "carried_in": len(g["tris"]), **g["stats"], **mv, "tris": 0, "carried_tris": 0,
+          "slivers": 0, "t_junctions": 0, "nonmanifold_edges": 0, "min_area": None}
+    for c in sorted(changed):
+        n = by_cell[c]
+        cell = cells.get(c)
+        if cell is None:
+            problem(f"navmesh: cell {c[0]},{c[1]} has no walkable triangle once the carried mesh is written")
+            continue
+        n["nv"] = cn.to_nvnm(cell, n["nv"])
+        n["joined"] = True
+        n["nvmi"] = None
+        s = cell["stats"]
+        st["tris"] += s["tris"]
+        st["carried_tris"] += sum(1 for t in cell["tags"] if t >= 0)
+        st["slivers"] += s["slivers"]
+        st["nonmanifold_edges"] += s["nonmanifold_edges"]
+        st["t_junctions"] += cn.t_junctions(cell)
+        if s["min_area"] is not None:
+            st["min_area"] = round(float(min(st["min_area"] or 1e9, s["min_area"])), 2)
+    return st
 
 
 def shipped_differ(ship: set, differ: set) -> set:
@@ -1876,11 +1956,14 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     if not no_navmesh:
         solid = [r for r in S["refs"] if r["space"] == "exterior" and (r.get("kind") in SOLID_KINDS or collision_box(r))]
         touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
+        if source_navmesh(P):   # every cell the carried mesh can reach is ours, so its ring round them is shipped too
+            touched |= footprint_cells(P["place"])
         if touched:
             objects, tally = collision_objects(S["refs"])
             polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
+            carry = (lambda mine: carried_navmesh(mine, pid, pdir.parent)) if source_navmesh(P) else None
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
-                                              [r["pos"] for r in clear])
+                                              [r["pos"] for r in clear], carry)
             nav_info["collision"] = tally
             navs += ext
         copied = [I for I in S["interiors"] if I["copy"] and not I.get("room_mesh")]
@@ -1913,6 +1996,9 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2
+    if source_navmesh(P) and not no_navmesh:
+        from tools.places.carrynav import door_faults
+        notes += door_faults(navs, S)
     boats, waiting = plan_travel(P, people, ids, facts)
     notes += [f"travel: {x}" for x in waiting]
     shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads

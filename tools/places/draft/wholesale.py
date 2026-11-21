@@ -292,8 +292,11 @@ def main(argv=None) -> int:
     io.write_jsonl(pdir / "land.jsonl", land)
     io.write_jsonl(pdir / "paths.jsonl", [])
     place = json.loads((pdir / "place.json").read_text())
+    walk = (place.get("wholesale") or {}).get("navmesh")    # the drafter's choice of walking mesh stays (build.source_navmesh)
     place["wholesale"] = {k: rep.get(k) for k in ("offset", "band", "pieces", "dropped", "raised_max", "lowered_max",
                                                   "band_steepest_deg", "source_water_area_m2", "held_by_water")}
+    if walk:
+        place["wholesale"]["navmesh"] = walk
     place["agent_saves_applied"] = []
     place.pop("steps", None)
     (pdir / "place.json").write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")

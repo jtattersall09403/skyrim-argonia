@@ -1254,6 +1254,36 @@ their own cell (interior), as vanilla files them.
    side does not answer is opened (its row leaves the mesh's link table, so the NVMI lists only meshes it is joined
    to), and every open seam edge is paired with the
    open edge across it that shares the longest stretch of seam at a like height: a portal link both ways.
+   **A wholesale place's own mesh** (`place.json` `wholesale.navmesh: "source"`; every other place is generated as
+   above): inside the footprint the build writes the source's own exterior navmesh, carried at the place's one
+   transform (`tools/places/draft/srcnav.py` `place_carry`, `tools/places/carrynav.py`, `build.carried_navmesh`).
+   The window is generated as above first; then every shipped cell the footprint (a 96-sided polygon at the
+   footprint radius) or a carried triangle reaches is rebuilt whole from two regions, split in plan only (every
+   level of a deck and the ground under it falls on one side): CARRIED, inside the footprint less every zone; and
+   GENERATED, the rest of the cell, the zones, and every hole the source's mesh leaves inside the footprint where
+   ours is walkable (a bank the edge band raised out of the source's water; a generated piece there at least 16
+   thick, 2 area / perimeter, so the strips between the source's edge and Recast's along a wall stay out). A zone is where the source's mesh no longer holds: a source piece
+   deleted (its true plan outline at the source pose, `shape.Posed`, grown by 64), moved (both outlines), a solid
+   piece we added (its outline, grown), and each carried triangle a ground vertex of which followed our ground into
+   a slope past the walkable 45 degrees (that triangle; listed as `steep`), and each carried triangle that joins a
+   deck or stair to the ground (corners on both) where the ground fell away by more than a climb (32; listed as
+   `joints`; ground that rose over the bottom steps is walked onto the stair), and each carried triangle a corner of
+   which, off the source's ground, now lies more than a climb under ours (a walkway our raised ground buries; listed
+   as `buried`): the generator meshes those spots over the real pieces and our ground. A carried vertex on the source's ground
+   (within 40 of it) takes our patched ground's height (the land rows summed); a vertex on a deck keeps source +
+   offset. A moved piece's own triangles (those resting on its walked surface at the source pose) move with it and
+   replace the generated triangles on its surface in its new place, unless that patch shares no edge with the rest,
+   when the generator's mesh stands there instead (`moved_island`). Each triangle is clipped to our cell lines and
+   its region (every vertex within 8 of a boundary line is put on it first, so a near miss never cuts a sliver),
+   then per cell the pieces are welded (one vertex within 1 unit in plan and 16 in height), every vertex lying on an
+   open edge splits that edge (the carried and generated sides share their boundary vertices; a cell's border is
+   split where the cell beside it has vertices), edges under 8 units are merged where nothing folds, needles (a
+   corner within 0.75 of the edge across) go and their neighbours are split instead, and neighbours are read from
+   shared edges. A carried triangle keeps the source's preferred and no-large-creatures flags; water follows our
+   water (its middle under our level); doors, links and cover are cleared. The rebuilt cells' links are opened and
+   the seams joined as above; the build's stats (`nav.seam.carried`) give the counts, t-junctions, slivers under 16
+   square units and non-manifold edges left. Door triangles follow vanilla's rule below on the carried mesh; a door
+   whose arrival is more than a step (64) from the nearest triangle is a note.
    An interior keeps its source cell's navmeshes when they make one walkable island (each read from the plugin of
    the source whose version of it wins, the links between them kept, links out of the cell opened); a `room` copy
    takes its room's island from the room rule; an interior whose source has none, or has one in pieces that do not
