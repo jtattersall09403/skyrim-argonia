@@ -153,6 +153,33 @@ def _near_top(S, x: float, y: float) -> float | None:
     return best
 
 
+FOOT_BAND = 48.0            # a mesh's feet within this of its lowest point are the feet it stands on (units.py)
+SINK_LIMIT = 200.0          # `sink --until-feet-buried` refuses a larger move without --force
+
+
+def legs(S) -> list[dict]:
+    """The feet a mesh stands on: its lowest places (shape.feet) within FOOT_BAND of its lowest point. A deck's flat
+    underside is a local low of the mesh too, high over its posts' feet: it is no foot."""
+    low = S.low()
+    return [f for f in S.feet() if low is not None and f["z"] <= low + FOOT_BAND]
+
+
+def bury_dz(pieces: list[dict], ground, depth: float = 8.0) -> float | None:
+    """How far down a structure sinks until every foot of its solid pieces is `depth` in the ground: the highest
+    foot over the ground of the piece standing lowest goes `depth` under. Never up (0.0 when already buried); None
+    when no foot stands over known ground."""
+    per = []
+    for p in pieces:
+        if not solid(p):
+            continue
+        over = [f["z"] - g for f in legs(shape.posed(p)) if (g := ground.height(*f["at"])) is not None]
+        if over:
+            per.append(max(over))
+    if not per:
+        return None
+    return min(-(min(per) + depth), 0.0)
+
+
 # ---------- probe ----------
 def probe_piece(p: dict, ground, pieces: list[dict], boxes: dict | None = None) -> dict:
     """One piece's numbers, from its mesh in its pose (shape.py): its box (the mesh's extent), its feet (where the

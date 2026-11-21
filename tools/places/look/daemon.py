@@ -244,6 +244,52 @@ def _plain(o):
     return o.item() if hasattr(o, "item") else o.tolist() if hasattr(o, "tolist") else str(o)
 
 
+def _send(conn, data: bytes) -> bool:
+    """Send an answer; a caller that went away first (its timeout ran out, a ping given up while a long call ran) is
+    logged and skipped, never an error that takes the daemon down and resets every call queued behind it."""
+    try:
+        conn.sendall(data)
+        return True
+    except OSError as e:
+        print(f"look daemon: the caller left before its answer ({type(e).__name__})", flush=True)
+        return False
+
+
+def answer(d, conn) -> str | None:
+    """Read one request from `conn`, run it (the page reloaded first when the place files changed) and send the
+    answer. Returns "stop" for `_stop`."""
+    conn.settimeout(None)
+    buf = b""
+    try:
+        while not buf.endswith(b"\n"):
+            chunk = conn.recv(65536)
+            if not chunk:
+                break
+            buf += chunk
+    except OSError:
+        return None
+    if not buf.strip():
+        return None
+    try:
+        req = json.loads(buf)
+        if req.get("verb") == "_ping":
+            _send(conn, b'{"ok": true}\n')
+            return None
+        if req.get("verb") == "_stop":
+            _send(conn, b'{"ok": true}\n')
+            return "stop"
+        out = {"ok": True, **d.handle(req)}
+    except Exception as e:   # one bad call never takes the daemon down
+        import traceback
+        out = {"ok": False, "error": f"{type(e).__name__}: {e}", "trace": traceback.format_exc()[-1500:]}
+    try:
+        text = json.dumps(out, default=_plain)
+    except (TypeError, ValueError) as e:
+        text = json.dumps({"ok": False, "error": f"the answer would not encode: {e}"})
+    _send(conn, (text + "\n").encode())
+    return None
+
+
 def serve() -> int:
     LOOK_OUT.mkdir(parents=True, exist_ok=True)
     if PIDF.exists():
@@ -269,7 +315,7 @@ def serve() -> int:
             pass
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         s.bind(str(SOCK))
-        s.listen(4)
+        s.listen(16)   # callers wait their turn behind a long call
         s.settimeout(30)   # a blocking wait for a request, waking every 30 s to ask whether to leave: never a busy loop
         last = time.time()
         while True:
@@ -283,30 +329,8 @@ def serve() -> int:
                 continue
             last = time.time()
             with conn:
-                conn.settimeout(None)
-                buf = b""
-                while not buf.endswith(b"\n"):
-                    chunk = conn.recv(65536)
-                    if not chunk:
-                        break
-                    buf += chunk
-                try:
-                    req = json.loads(buf)
-                    if req.get("verb") == "_ping":
-                        conn.sendall(b'{"ok": true}\n')
-                        continue
-                    if req.get("verb") == "_stop":
-                        conn.sendall(b'{"ok": true}\n')
-                        break
-                    out = {"ok": True, **d.handle(req)}
-                except Exception as e:   # one bad call never takes the daemon down
-                    import traceback
-                    out = {"ok": False, "error": f"{type(e).__name__}: {e}", "trace": traceback.format_exc()[-1500:]}
-                try:
-                    text = json.dumps(out, default=_plain)
-                except (TypeError, ValueError) as e:
-                    text = json.dumps({"ok": False, "error": f"the answer would not encode: {e}"})
-                conn.sendall((text + "\n").encode())
+                if answer(d, conn) == "stop":
+                    break
             last = time.time()
     finally:
         d.stop()

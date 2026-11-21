@@ -52,7 +52,7 @@ code changes.
 1. `overview`, `probe --all` and `measure`; the measure table's flags are the fault list to start from.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
 3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
-   [units | --until-feet-buried]`, `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `steps <deck,
+   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `steps <deck,
    structure or door> <point or thing>`. A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
    is never moved without its deck unless `--piece` is given; `move` and
    `sink` answer with each deck's height over the ground before and after, which is the number to judge. A copy

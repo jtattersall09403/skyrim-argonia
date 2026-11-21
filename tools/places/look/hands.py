@@ -51,10 +51,41 @@ def thing(sc, name: str, piece: bool = False) -> dict:
 
 def decks(sc, rows: list[dict]) -> list[tuple[dict, float, tuple]]:
     """The deck pieces among rows (floors, platforms, planks: a level walked top): [(row, deck height, own rect)]."""
+    rows = [r for r in rows if r.get("pos")]
     try:
-        return _walk().decks([r for r in rows if r.get("pos")], sc.bases)
+        got = _walk().decks(rows, sc.bases)
     except Exception:  # noqa: BLE001  a model whose collision cannot be read is no deck the tool can measure
-        return []
+        got = []
+    have = {id(t[0]) for t in got}
+    for r in rows:
+        if id(r) not in have and r.get("kind") == "building":
+            d = platform_top(sc.bases.get(r["base"]) or {})
+            if d is not None:
+                got.append((r, r["pos"][2] + d[0] * float(r.get("scale") or 1.0), d[1]))
+    return got
+
+
+def platform_top(base: dict) -> tuple[float, tuple] | None:
+    """A house's own platform (a stilt base whose model is no walkway, e.g. blackwood/house04platform.nif): its
+    flat top, (height over the origin, (x0, y0, x1, y1)) of the upward faces at the piece's top, when they are at
+    least DECK_MIN wide both ways; None otherwise. The house's deck one leaves its door by."""
+    from tools.places import check as C
+    from tools.places.draft import paths
+    m, bb = str(base.get("model") or "").lower(), base.get("bounds")
+    if not m or not bb or "platform" not in m or paths.walked(base):
+        return None
+    try:
+        up = C._up_faces(m, [*bb[0], *bb[1]])
+    except Exception:  # noqa: BLE001
+        return None
+    if not len(up):
+        return None
+    top = float(up[:, :, 2].max())
+    up = up[abs(up[:, :, 2] - top).max(axis=1) <= C.ON_TOP]
+    lo, hi = up[:, :, :2].min(axis=(0, 1)), up[:, :, :2].max(axis=(0, 1))
+    if min(hi[0] - lo[0], hi[1] - lo[1]) < paths.DECK_MIN:
+        return None
+    return round(top, 1), (float(lo[0]), float(lo[1]), float(hi[0]), float(hi[1]))
 
 
 def deck_heights(sc, rows: list[dict], dx: float = 0.0, dy: float = 0.0, dz: float = 0.0) -> list[dict]:
@@ -162,7 +193,7 @@ def lay_steps(sc, deck_row: dict, to_xy, new_id: str, why: str) -> dict:
     tread meets the ground. Returns {row, top, foot, base, tried}; raises when no piece of the kit comes down."""
     w = _walk()
     base = sc.bases.get(deck_row["base"]) or {}
-    dr = w.deck_rect(base)
+    dr = w.deck_rect(base) or platform_top(base)
     if dr is None:
         raise ValueError(f"{deck_row['id']} has no level deck to hang steps from")
     dz = deck_row["pos"][2] + dr[0] * float(deck_row.get("scale") or 1.0)

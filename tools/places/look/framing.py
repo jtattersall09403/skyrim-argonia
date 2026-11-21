@@ -19,13 +19,16 @@ def by_turn(side: str) -> list[str]:
     return [SIDES8[(i + k) % 8] for k in (0, 1, -1, 2, -2, 3, -3, 4)]
 
 
-def candidates(side: str, height: str, canopy_cut: bool = False, n: int = 12) -> list[tuple[str, str, float, bool]]:
+def candidates(side: str, height: str, canopy_cut: bool = False, n: int = 12,
+               distance: float = 1.0) -> list[tuple[str, str, float, bool]]:
     """The tries of one view, in order: (side, height, distance scale, canopy cut). The one asked for first, then the
-    other sides, then further away, then higher, then with the canopy cut away."""
+    other sides, then further away, then higher, then with the canopy cut away. `distance` scales every try's
+    distance (`at --distance 2` stands twice as far back, 0.5 half as far)."""
     out: list[tuple[str, str, float, bool]] = []
     sides = by_turn(side)
 
     def add(t):
+        t = (t[0], t[1], round(t[2] * distance, 3), t[3])
         if t not in out:
             out.append(t)
     add((side, height, 1.0, canopy_cut))

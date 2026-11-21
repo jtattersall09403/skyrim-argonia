@@ -211,3 +211,16 @@ def test_a_stair_foot_on_a_wide_boardwalk_leaving_100_clear_is_carried_one_block
     st = posed("st", c["stair"], (200, 0, 0))                  # 100 wide on a walk 120 wide
     rows = [r for r in shape.joints([("bw", narrow)], [("bw", narrow), ("st", st)], Flat(-500), units) if r["end"] == "-"]
     assert len(rows) == 1 and rows[0]["verdict"].startswith("stands on: st") and rows[0]["clear"] < 64, rows
+
+
+def test_sink_until_feet_buried_reads_the_posts_feet_not_the_decks_underside(monkeypatch):
+    """A lone platform 340 over the ground on its posts: its flat underside is a low of the mesh too (240 higher), but
+    the posts' feet are what go into the ground; the move is theirs plus the depth, never the underside's."""
+    from tools.places.look import geom
+    monkeypatch.setattr(geom, "solid", lambda p: True)          # the fixture's fx/ path reads as an effect by name
+    d = dict(piece("d", C["ldeck"]["model"], (0, 0, 600)), resolved=True, kind="static")
+    assert len(geom.legs(shape.posed(d))) == C["ldeck"]["feet"]
+    assert geom.bury_dz([d], Flat(0.0)) == pytest.approx(-(600 - 260 + 8), abs=TOL)
+    assert geom.bury_dz([d], Flat(0.0), depth=30) == pytest.approx(-(340 + 30), abs=TOL)
+    assert geom.bury_dz([d], Flat(400.0)) == 0.0                 # already in the ground: never lifted
+    assert -geom.bury_dz([d], Flat(0.0)) > geom.SINK_LIMIT      # the hand refuses this without --force

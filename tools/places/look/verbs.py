@@ -123,7 +123,7 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                 op.pop("_dz", None)
         save_session(place, sess)
         if verb in ("move", "sink"):   # the decks a person stands on: their height over the ground before and after
-            p_, _o = _opts(act, {"until-feet-buried": False})
+            p_, _o = _opts(act, {"until-feet-buried": False, "depth": True, "force": False})
             mv = [float(v) for v in p_[1:4]] if verb == "move" else [0.0, 0.0, float(res["dz"] or 0)]
             res["decks"] = hands.deck_heights(sc, _rows(sc, sc.resolve(p_[0])), *mv)
         if vw:
@@ -183,7 +183,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False})
+                          "once": False, "grid": False, "distance": True})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -560,7 +560,8 @@ def framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, s
 
     def first_good(sub, hh0, title, part=False):
         best = None
-        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12):
+        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12,
+                                                   distance=float(o.get("distance") or 1.0)):
             c = make_cam(sc, place, sub, s, hh, w, h, o, inside, scale, gz)
             att = {"view": title, "side": s, "height": hh, "distance": scale, "canopy_cut": cut}
             if c is None:
@@ -948,7 +949,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 
 def _hand(sc, verb, args, sess) -> list[dict]:
-    pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False})
+    pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False, "depth": True, "force": False})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
     th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
@@ -974,17 +975,12 @@ def _hand(sc, verb, args, sess) -> list[dict]:
     if verb == "sink":
         if len(pos) > 1 and not o.get("until-feet-buried"):
             dz = -abs(float(pos[1]))
-        else:   # until every foot is in the ground: the highest foot of the lowest-standing solid piece goes 8 under
-            boxes = {q["id"]: geom.aabb(q) for q in sc.everything()}
-            feet = []
-            for p in th["pieces"]:
-                if not geom.solid(p):
-                    continue
-                r = geom.probe_piece(p, sc.ground, sc.everything(), boxes)
-                if r["feet_over_ground"]:
-                    feet.append(r["feet_over_ground"][1])
-            dz = -(min(feet) + 8.0) if feet else 0.0
-            dz = min(dz, 0.0)
+        else:   # until every foot is in the ground by --depth (8): its mesh's feet, never a deck's underside
+            depth = float(o.get("depth") or 8.0)
+            dz = geom.bury_dz(th["pieces"], sc.ground, depth) or 0.0
+            if -dz > geom.SINK_LIMIT and not o.get("force"):
+                raise ValueError(f"sink --until-feet-buried would move {pos[0]} {dz:.0f}, over {geom.SINK_LIMIT:.0f}: "
+                                 f"look at its feet (probe) and give a depth, or add --force")
         ops = [_move_op(r, _shift(r, 0, 0, dz, moved=ids)) for r in rows]
         if ops:
             ops[0]["_dz"] = round(dz, 1)
