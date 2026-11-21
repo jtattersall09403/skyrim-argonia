@@ -1,0 +1,115 @@
+{
+ "save_id": "agent-20261121T184236",
+ "place_id": "jal-veesa",
+ "name": "a mud bank up to the dockmaster's house door: its floor stood 80 over our ground with no way up",
+ "at": "2026-11-21T18:42:36Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "land.patch",
+   "cell": [
+    -13,
+    -125
+   ],
+   "verts": [
+    [
+     8,
+     6,
+     0.0,
+     2.2
+    ],
+    [
+     8,
+     7,
+     0.0,
+     1.3
+    ],
+    [
+     9,
+     5,
+     0.0,
+     11.3
+    ],
+    [
+     9,
+     6,
+     0.0,
+     48.1
+    ],
+    [
+     9,
+     7,
+     0.0,
+     41.8
+    ],
+    [
+     9,
+     8,
+     0.0,
+     4.8
+    ],
+    [
+     10,
+     5,
+     0.0,
+     24.8
+    ],
+    [
+     10,
+     6,
+     0.0,
+     78.2
+    ],
+    [
+     10,
+     7,
+     0.0,
+     69.5
+    ],
+    [
+     10,
+     8,
+     0.0,
+     13.7
+    ],
+    [
+     11,
+     5,
+     0.0,
+     7.8
+    ],
+    [
+     11,
+     6,
+     0.0,
+     39.3
+    ],
+    [
+     11,
+     7,
+     0.0,
+     33.7
+    ],
+    [
+     11,
+     8,
+     0.0,
+     2.7
+    ],
+    [
+     12,
+     6,
+     0.0,
+     0.2
+    ]
+   ],
+   "call": "fault",
+   "note": "a mud bank up to the dockmaster's house door: its floor stands 80 over our ground and the house has no steps (in its source it opened on a dock)",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T18:42:36Z"
+  }
+ ]
+}

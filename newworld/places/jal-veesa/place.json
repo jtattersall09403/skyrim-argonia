@@ -645,6 +645,46 @@
     "unit": "door.jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS",
     "flag": "its arrival point is inside",
     "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp (box z -393..124): the doors check takes one deck height for a ramp (its top) and reads the arrival 60 under it; the arrival is on the ramp and on the navmesh (probe --mesh), 2026-11-21"
+   },
+   {
+    "unit": "house.SeekhatAccommodationHut",
+    "flag": "foot not reaching the ground",
+    "why": "its platform's west posts (4W48AB, x about -52115) end 54 to 110 over the mud inside the source's cliff rocks (ArgoniaRockCliff08/11) that dress that bank: from the west at eye level the rocks hide the post ends (at --stand -52750,-505100, 2026-11-21); a mound is refused there (the ground is already raised 97 of the land bound's 105) and bringing the hut down would break its bridges"
+   },
+   {
+    "unit": "house.SeekhatSmithyHut",
+    "flag": "floor under the ground",
+    "why": "the floor plate's uphill west edge is 12 under the slope; the walls meet the ground on every side (from SE at eye level, 2026-11-21): nothing shows"
+   },
+   {
+    "unit": "dock.11",
+    "flag": "floor under the ground",
+    "why": "the low jetty's bottom beam lies 15 to 25 in the mud under its stair piece (section along dock.11, 2026-11-21): a jetty foot sunk in mud, as it reads"
+   },
+   {
+    "unit": "dock.11",
+    "flag": "foot buried deeper than its leg",
+    "why": "the same beam sunk in the mud (section along dock.11, 2026-11-21)"
+   },
+   {
+    "unit": "dock.12",
+    "flag": "floor under the ground",
+    "why": "3 into the mud; seen from SW at eye level the jetty rests on the ground (2026-11-21)"
+   },
+   {
+    "unit": "added.house.AltenBunkhouse",
+    "flag": "floor under the ground",
+    "why": "the two bunkhouse huts' floors sit level with the ground (section along the unit, 2026-11-21); the 45 is the uphill corner's floor plate, inside closed walls"
+   },
+   {
+    "unit": "house.SeekhatFishersHut",
+    "flag": "steps not reaching the ground",
+    "why": "the 81 is the Murkmire stair's foot (HHGDS3), which rests on the low walkway C4P35R's deck as in the source (section along the stair, 2026-11-21); a walk-here zone carries the walking mesh up its treads"
+   },
+   {
+    "unit": "dock.07",
+    "flag": "foot not reaching the ground",
+    "why": "2 over: a foot touching the ground"
    }
   ],
   "accepted_checks": [
@@ -1544,7 +1584,8 @@
   "agent-20261121T085408",
   "agent-20261121T095803",
   "agent-20261121T112121",
-  "agent-20261121T115012"
+  "agent-20261121T115012",
+  "agent-20261121T184236"
  ],
  "wholesale": {
   "offset": 470.0,
