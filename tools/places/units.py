@@ -1357,7 +1357,8 @@ def joint_rows(pl: Place) -> list[dict]:
     structures = walls | {p["id"] for p in solid if classify.kind_of(p) in ("deck", "steps", "span")}
     posed = [(p["id"], shape.posed(p)) for p in solid]
     by = dict(posed)
-    rows = shape.joints([(p["id"], by[p["id"]]) for p in spans], posed, pl.sc.ground, unit_of, walls, structures)
+    name_of = {p["id"]: f"{p.get('edid') or classify.kind_of(p)}, {role_of.get(p['id']) or classify.kind_of(p)}" for p in solid}
+    rows = shape.joints([(p["id"], by[p["id"]]) for p in spans], posed, pl.sc.ground, unit_of, walls, structures, name_of)
     for r in rows:
         p = pl.by.get(r["span"]) or {}
         r["edid"] = p.get("edid")
@@ -1373,7 +1374,7 @@ def joints_text(rows: list[dict]) -> str:
                    f"{_s(r.get('along')):>6} {_s(r.get('dz')):>6}  {r['verdict']}")
     kinds: dict[str, int] = {}
     for r in rows:
-        k = r["verdict"].split(" ")[0] if not r["verdict"].startswith(("rests", "stands", "spans", "crossed", "buried", "short", "step", "on its"))\
+        k = r["verdict"].split(" ")[0] if not r["verdict"].startswith(("rests", "stands", "spans", "crossed", "buried", "short", "step", "on its", "floor", "runs"))\
             else " ".join(r["verdict"].split(" ")[:2])
         kinds[k] = kinds.get(k, 0) + 1
     out.append("counts: " + ", ".join(f"{k} {n}" for k, n in sorted(kinds.items(), key=lambda kv: -kv[1])))

@@ -466,15 +466,18 @@ class Posed:
         return self.cells("walk")
 
     def ends(self) -> list[dict] | None:
-        """A walked span's two end lines, from its walked points (the cloud's top-facing points): the extremes along
-        its long axis (PCA of the walk), each end line's middle (x, y, z: the median walked height there: the planks,
-        not a rail's top), its width across,
-        the outward axis, `under`: the underside of its deck there (the lowest point within a cell of the end and
-        DECK_DEPTH under the walk) and `reach`: the lowest point of anything of it within LEG_REACH (its own legs). Lowest first:
-        a stair's FOOT, then its HEAD."""
+        """A walked span's two end lines, from its DECK: the one walked surface running its length (`_deck`: rails,
+        rope tops, post caps and end frames standing above or beyond the planks are not it). The ends are the deck's
+        extremes along its axis (the walk's long axis, or its climb where it rises CLIMB a unit: a flight wider than
+        it is long); each end line's middle (x, y, z: the median deck height at
+        the end edge, the last plank's), its width across, the outward axis, `under`: the underside of its deck there
+        (the lowest point within a cell of the end and DECK_DEPTH under the walk) and `reach`/`reach_at`: the lowest
+        point of anything of it within LEG_REACH (its own legs' feet) and where it is. Lowest first: a stair's FOOT,
+        then its HEAD."""
         P, nz = self.P, self.N[:, 2]
         W = P[nz >= WALK_NZ]
-        if len(W) < 3:
+        walked = len(W) >= 3
+        if not walked:
             W = P
         if len(W) < 3:
             return None
@@ -482,23 +485,34 @@ class Posed:
         c = xy.mean(0)
         _, _, vt = np.linalg.svd(xy - c, full_matrices=False)
         ax = vt[0]
+        if walked:                     # a flight climbs along its axis even when it is wider than it is long
+            g = np.linalg.lstsq(np.c_[xy - c, np.ones(len(xy))], W[:, 2], rcond=None)[0][:2]
+            if np.hypot(*g) >= CLIMB:
+                ax = g / np.hypot(*g)
+        across = np.array([-ax[1], ax[0]])
         t = (xy - c) @ ax
+        sd = (xy - c) @ across
+        if walked:
+            keep = _deck(W[:, 2], t, sd)
+            W, t, sd = W[keep], t[keep], sd[keep]
         tall = (P[:, :2] - c) @ ax
         out = []
         for sgn, ext in ((-1, t.min()), (1, t.max())):
-            sel = np.abs(t - ext) <= 2.0
-            pts = W[sel]
-            side = (pts[:, :2] - c) @ np.array([-ax[1], ax[0]])
-            mid = c + ax * ext + np.array([-ax[1], ax[0]]) * (side.max() + side.min()) / 2
+            sel = np.abs(t - ext) <= END_EDGE
+            edge = np.abs(t - ext) <= CELL
+            side = sd[edge]
+            mid = c + ax * ext + across * (side.max() + side.min()) / 2
             near = P[np.abs(tall - ext) <= CELL]
             legs = P[np.abs(tall - ext) <= LEG_REACH]
-            zw = float(np.median(pts[:, 2]))
+            zw = float(np.median(W[sel, 2]))
             deck = near[(near[:, 2] <= zw + 1.0) & (near[:, 2] >= zw - DECK_DEPTH)] if len(near) else near
-            out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(float(np.median(pts[:, 2])), 1)],
+            foot = legs[np.argmin(legs[:, 2])] if len(legs) else None
+            out.append({"at": [round(float(mid[0]), 1), round(float(mid[1]), 1), round(zw, 1)],
                         "width": round(float(side.max() - side.min()), 1),
                         "out": [round(float(sgn * ax[0]), 4), round(float(sgn * ax[1]), 4)],
                         "under": round(float(deck[:, 2].min()), 1) if len(deck) else None,
-                        "reach": round(float(legs[:, 2].min()), 1) if len(legs) else None})
+                        "reach": None if foot is None else round(float(foot[2]), 1),
+                        "reach_at": None if foot is None else [round(float(foot[0]), 1), round(float(foot[1]), 1)]})
         out.sort(key=lambda e: e["at"][2])
         return out
 
@@ -660,6 +674,10 @@ LOOK_AHEAD = 192.0     # how far past an end a surface it should meet is looked 
 SINK = 48.0            # an end's underside this far in the ground is buried
 DECK_DEPTH = 64.0      # a walked span's deck is at most this thick under its walk: lower parts are its own legs
 LEG_REACH = 64.0       # its own legs within this of an end (along the span) hold that end
+DECK_TOL = STEP + 4    # a deck rises at most this from one CELL slice to the next (a stair's riser; a rail is higher)
+DECK_GAP = 2           # this many empty CELL slices (gaps between planks) are crossed when following a deck
+CLIMB = 0.25           # a walk whose height rises this much a unit (a flight) takes its climb as its axis
+END_EDGE = CELL       # an end line's height is the median of the deck within this of its end edge (its last plank)
 
 
 def walk_points(s: Posed) -> np.ndarray:
@@ -667,11 +685,40 @@ def walk_points(s: Posed) -> np.ndarray:
     return P[s.N[:, 2] >= WALK_NZ] if len(P) else P
 
 
+def legs_held(e: dict, others: list, ground) -> bool:
+    """Does the span's own mesh stand on legs under this end: is the lowest point of it within LEG_REACH of the end
+    (`reach`, at `reach_at`: a post's foot) within STEP over the ground (or in it), on another mesh (its top or a
+    walked surface within STEP of the foot, a cell round: a rock, a deck) or set into one all round (a cell round
+    it, the foot between its underside and its top: a post in a rock, not a post beside another post)?"""
+    r, at = e.get("reach"), e.get("reach_at")
+    if r is None:
+        return False
+    x, y = at if at else e["at"][:2]
+    g = ground.height(x, y) if ground is not None else None
+    if g is not None and r - g <= STEP:
+        return True
+    for _, o in others:
+        if o.lo[0] > x + CELL or o.hi[0] < x - CELL or o.lo[1] > y + CELL or o.hi[1] < y - CELL \
+                or o.lo[2] > r + STEP or o.hi[2] < r - STEP:
+            continue
+        inside = 0
+        for dx in (-CELL, 0.0, CELL):
+            for dy in (-CELL, 0.0, CELL):
+                if o.surface_near(x + dx, y + dy, r, 0.0, STEP) is not None:
+                    return True               # the foot on its top or a walked surface of it
+                u, tp = o.at(x + dx, y + dy, "under"), o.at(x + dx, y + dy, "top")
+                inside += u is not None and u - STEP <= r <= tp
+        if inside == 9:
+            return True                       # set into it, all round (a post in a rock; not beside another post)
+    return False
+
+
 def end_meets(e: dict, others: list, ground) -> dict:
     """What one end line meets: the walked surface of another piece just past (or under) it, else the ground. Gives
     `along` (the gap past the end to the surface; negative: the surface runs under the end that far), `dz` (the
     surface's height less the end's), the ground at the end and the end's underside over it, and the verdict:
-    meets <id> | rests on ground | short of <id> by N | step to <id> of N | buried end by N | mid-air by N."""
+    meets <id> | rests on ground | on its own legs (legs_held) | buried end by N | short of <id> by N | step to <id> of N |
+    mid-air by N."""
     x, y, z = e["at"]
     ox, oy = e["out"]
     half = e["width"] / 2 + CELL
@@ -710,8 +757,7 @@ def end_meets(e: dict, others: list, ground) -> dict:
         v = f"meets {best[1]}"
     elif over is not None and -SINK <= over <= STEP:
         v = "rests on ground"
-    elif over is not None and over > STEP and e.get("reach") is not None and g is not None \
-            and e["reach"] - g <= STEP:
+    elif over is not None and over > STEP and legs_held(e, others, ground):
         v = "on its own legs"
     elif over is not None and over < -SINK:
         v = f"buried end by {-over:.0f}"
@@ -725,19 +771,65 @@ def end_meets(e: dict, others: list, ground) -> dict:
     return row
 
 
-def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None) -> list[dict]:
+CLEAR_WALK = 64.0      # a walk keeping this clear width beside what stands on it is not blocked
+FLOOR_SHARE = 0.5      # a span this much under a body resting on it is that body's floor
+
+
+def cover(s: Posed, o: Posed) -> dict | None:
+    """What o covers of span s's walk at walking height (o's underside at most a person's height over the walk):
+    `share` of the walk's cells covered; in the band along the span where it covers, `width` the share of the walk's
+    width covered and `clear` the widest clear run left beside it (the walk's side extent less the covered one, either
+    side); `across`: under CLEAR_WALK left there and open walk on both sides of the band along the span (a wall cut
+    across the walked line). None when o covers none of it."""
+    w = _shared(s, o)
+    if w is None:
+        return None
+    sa, sb = w
+    walk = ~np.isnan(s.walk)
+    Wf, ou = s.walk[sa], o.under[sb]
+    cov = np.zeros_like(walk)
+    cov[sa] = ~np.isnan(Wf) & ~np.isnan(ou) & (ou <= Wf + 160.0)
+    if not cov.any() or walk.sum() < 2:
+        return None
+    ii, jj = np.nonzero(walk)
+    x, y = s.cell_xy(ii, jj)
+    xy = np.stack([x, y], 1)
+    c = xy.mean(0)
+    ax = np.linalg.svd(xy - c, full_matrices=False)[2][0]
+    t = (xy - c) @ ax
+    sd = (xy - c) @ np.array([-ax[1], ax[0]])
+    k = cov[ii, jj]
+    t0, t1 = t[k].min(), t[k].max()
+    band = (t >= t0 - CELL / 2) & (t <= t1 + CELL / 2)
+    smin, smax = sd[band].min(), sd[band].max()
+    cmin, cmax = sd[k].min(), sd[k].max()
+    clear = max(cmin - smin, smax - cmax, 0.0)
+    before, after = int((~k & (t < t0 - CELL)).sum()), int((~k & (t > t1 + CELL)).sum())
+    return {"share": float(k.mean()), "width": float(min((cmax - cmin + CELL) / (smax - smin + CELL), 1.0)),
+            "clear": float(clear), "across": bool(clear < CLEAR_WALK and before >= 2 and after >= 2)}
+
+
+def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structures=None, name_of=None) -> list[dict]:
     """One row per end of every walked span (spans: [(id, Posed)]): what it meets and the verdict (end_meets); then,
-    per span, every piece of another unit standing ON its walked top (`stands on`), every other span of another unit
-    overlapping it along its length (`spans overlap`) and every wall crossing it (`crossed by wall`).
+    per span and piece of another unit: `spans overlap <id>` (another span overlapping it along its length);
+    `crossed by wall <id>` (a wall or body cutting across its walked line, under CLEAR_WALK left, with open walk on
+    both sides: `cover`); `runs into wall <id>` (one not resting on it blocking its walk at one end: a dead end);
+    `floor of <id>` (a body resting on it, its floor within a STEP of the deck's ends, over FLOOR_SHARE of the walk or not
+    cutting across the walked line: the house's floor, the rest a porch; not a fault);
+    `stands on: <id>` (a piece resting on its walk leaving under CLEAR_WALK clear beside it) or `carries <id>` (one
+    leaving that clear: not a fault), each saying what stands there, its share of the walk's width and the clear left.
     unit_of: piece id -> unit id; walls: ids of building bodies and wall parts; structures: the ids whose standing on
-    a span is named (bodies, decks, steps, spans, walls; None: every piece)."""
+    a span is named (bodies, decks, steps, spans, walls; None: every piece); name_of: id -> what it is, for the row."""
     unit_of = unit_of or {}
     walls = walls or set()
+    name_of = name_of or {}
     out = []
     span_ids = {i for i, _ in spans}
     for sid, s in spans:
         others = [(i, o) for i, o in pieces if i != sid]
-        for k, e in enumerate(s.ends() or []):
+        ends = s.ends() or []
+        deck = [e["at"][2] for e in ends]
+        for k, e in enumerate(ends):
             out.append({"span": sid, "unit": unit_of.get(sid), "end": "foot" if k == 0 else "head",
                         **end_meets(e, others, ground)})
         for i, o in others:
@@ -746,24 +838,83 @@ def joints(spans: list, pieces: list, ground, unit_of=None, walls=None, structur
             same = unit_of.get(i) is not None and unit_of.get(i) == unit_of.get(sid)
             if same:
                 continue
+            row = {"span": sid, "unit": unit_of.get(sid), "end": "-", "on": i}
             if i in span_ids:
                 ov = overlap(s, o, 8.0)
                 if ov and i > sid and ov["cells"] >= 0.25 * min(int(s.occ.sum()), int(o.occ.sum())):
-                    out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"spans overlap {i}",
-                                "area": ov["area"]})
+                    out.append({**row, "verdict": f"spans overlap {i}", "area": ov["area"]})
                 continue
+            if structures is not None and i not in structures and i not in walls:
+                continue
+            what = name_of.get(i)
+            held = rests_on(o, s)
+            cv = cover(s, o)
             if i in walls:
                 ov = overlap(s, o, 8.0)
-                if ov and ov["cells"] >= 2:
-                    out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"crossed by wall {i}",
-                                "area": ov["area"]})
+                fl = o.body().get("floor") if held and cv is not None else None
+                floor = (fl is not None and bool(deck) and min(deck) - STEP <= fl <= max(deck) + STEP and cv["share"] >= 0.1
+                         and (cv["share"] >= FLOOR_SHARE or not cv["across"]))
+                cut = ov is not None and ov["cells"] >= 2 and cv is not None and cv["clear"] < CLEAR_WALK and not floor
+                if cut and (cv["across"] or not held):
+                    v = "crossed by wall" if cv["across"] else "runs into wall"
+                    out.append({**row, "verdict": f"{v} {i}" + (f" ({what})" if what else ""), "area": ov["area"]})
                     continue
-            if (structures is None or i in structures) and rests_on(o, s):
-                out.append({"span": sid, "unit": unit_of.get(sid), "end": "-", "verdict": f"stands on: {i}"})
+                if floor:
+                    out.append({**row, "verdict": f"floor of {i}" + (f" ({what}, {cv['share'] * 100:.0f}% under it)"
+                                                                      if what else f" ({cv['share'] * 100:.0f}% under it)"),
+                                "share": round(cv["share"], 2)})
+                    continue
+            if not held:
+                continue
+            width, clear = (cv["width"], cv["clear"]) if cv else (0.0, None)
+            blocked = clear is not None and clear < CLEAR_WALK
+            note = ", ".join(x for x in (what, f"{width * 100:.0f}% of the walk's width",
+                                         f"{clear:.0f} clear" if clear is not None else "") if x)
+            out.append({**row, "verdict": f"{'stands on:' if blocked else 'carries'} {i} ({note})",
+                        "width": round(width, 2), "clear": None if clear is None else round(clear)})
     return out
 
 
 # ---------- helpers ----------
+def _deck(z: np.ndarray, t: np.ndarray, sd: np.ndarray) -> np.ndarray:
+    """Which walked points are the span's deck: the one walked surface running its length. Seeded in the middle third
+    at the height level that spans the most 16-unit cells across, then followed slice by slice (CELL along the axis)
+    out to both ends, each slice taking the points within DECK_TOL of the last deck height (a sagging deck rises to its
+    ends, a stair climbs a riser a slice) that span at least a quarter of the seed's cells across; up to DECK_GAP
+    empty slices (the gaps between planks) are crossed. Rails, rope tops and post caps above the deck and beams under
+    it are left out; where nothing is found, every point is kept."""
+    b = np.floor((t - t.min()) / CELL).astype(int)
+    nb = int(b.max()) + 1
+    sc = np.floor(sd / CELL).astype(int)
+    q = np.round(z / 8.0).astype(int)
+    seed = None
+    for k in range(nb // 3, max(nb - nb // 3, nb // 3 + 1)):
+        ik = np.flatnonzero(b == k)
+        for v in np.unique(q[ik]):
+            m = ik[np.abs(q[ik] - v) <= 1]
+            n = len(np.unique(sc[m]))
+            if seed is None or n > seed[0]:
+                seed = (n, k, float(np.median(z[m])))
+    if seed is None:
+        return np.ones(len(z), bool)
+    need = max(1, seed[0] // 4)
+    keep = np.zeros(len(z), bool)
+    for step in (1, -1):
+        zprev, k, gap = seed[2], seed[1], 0
+        while 0 <= k < nb:
+            ik = np.flatnonzero(b == k)
+            m = ik[np.abs(z[ik] - zprev) <= DECK_TOL]
+            if len(m) and len(np.unique(sc[m])) >= need:
+                keep[m] = True
+                zprev, gap = float(np.median(z[m])), 0
+            else:
+                gap += 1
+                if gap > DECK_GAP:
+                    break
+            k += step
+    return keep if keep.sum() >= 3 else np.ones(len(z), bool)
+
+
 def _label(m: np.ndarray) -> np.ndarray:
     """4-connected labels of a boolean grid."""
     from scipy import ndimage
