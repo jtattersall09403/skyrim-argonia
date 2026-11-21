@@ -7,7 +7,7 @@ import { loadBundle, seatZ } from './bundle.js';
 import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
 import { View, drawState, onRendererEvent } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
-import { ObjectLayer } from './objects.js';
+import { ObjectLayer, releaseModels } from './objects.js';
 import { GrassLayer } from './grass.js';
 import { pathLtexes, roadSetName } from './path_paint.js';
 import { setupAtlas } from './atlas.js';
@@ -22,6 +22,7 @@ import { Governor } from './governor.js';
 import { NoteBar } from './notes_bar.js';
 import { ViewLighting, lightOf, nightOutside, lightInside, isNight } from './lighting.js';
 import { getJSON } from './api.js';
+import { Sticks } from './sticks.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 // The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
@@ -53,6 +54,7 @@ class Studio {
     for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
     this.tools = new Tools(this); this.people = new People(this); this.needs = new Needs(this); this.quests = new Quests(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.offline = new OfflineUI(this);
+    if (!AGENT) this.sticks = new Sticks(this, $('#views'));
     // offline, the search, the item search and the seat are answered here from what is held (offline.js)
     off.providers = { bases: () => [...(this.srcBases?.values() || []), ...(this.bases?.values() || [])], items: () => this.stockItems || new Map(),
       terrain: () => (this.terrain ? { terrain: this.terrain, water: this.ground?.spaces.exterior?.info?.water?.default_height ?? null } : null) };
@@ -74,7 +76,11 @@ class Studio {
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }
     const sel = $('#place-pick'); sel.innerHTML = '';
     for (const p of this.places) sel.add(new Option(p.title || p.place_id, p.place_id));
-    const asked = new URLSearchParams(location.search).get('place'), want = this.places.some((p) => p.place_id === asked) ? asked : this.places[0].place_id;
+    // the place asked for in the address, else the one this browser last had open, else the lightest
+    const has = (id) => id && this.places.some((p) => p.place_id === id);
+    const asked = new URLSearchParams(location.search).get('place'), last = AGENT ? null : store.get('studio.place');
+    const lightest = [...this.places].sort((a, b) => (a.bytes ?? Infinity) - (b.bytes ?? Infinity))[0].place_id;
+    const want = has(asked) ? asked : has(last) ? last : lightest;
     sel.value = want; sel.onchange = () => this.openPlaceSafe(sel.value);
     if (!AGENT) this.heartbeat(), this.statusCheck();
     // the guide shows while the place loads, and can be put away at once
@@ -143,6 +149,7 @@ class Studio {
     api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) this.people.setNav(d.spaces); }).catch(() => {});
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops)); this.noteBar.render();
+    this.leavePlace();
     this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place'); this._wbk = null;
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
@@ -173,15 +180,57 @@ class Studio {
       for (const o of hid) o.visible = false;
       v.draw(); await new Promise((r) => requestAnimationFrame(r));
     }
-    this.ready = true; this.loading(false);
-    setTimeout(() => { try { report('drawn', { place: id, ...drawState() }); } catch (e) { report('error', { message: `drawState: ${e.message}` }); } }, 3000);
+    this.ready = true; this.loading(false); if (!AGENT) store.set('studio.place', id);
+    this.watchDrawn(id);
     if (!AGENT) this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
     this.tools.use('select');
   }
+  // Leaving a place: its layers, land and every model, material and texture it loaded are let go of on the GPU, so
+  // the next place has the memory the last one held (renderer.info.memory returns to where it started).
+  leavePlace() {
+    this.ready = false; clearTimeout(this.drawnT); this.hideBlank();
+    for (const s of [this.ours, this.src]) {
+      for (const l of [s.world, s.place, s.grass, s.layer]) l?.dispose();
+      s.terrainMesh?.dispose();
+      s.returnRig = null; s.trail = [];   // a room's way back belongs to the place left: never the next place's camera
+      s.view.setContent({ origin: s.origin || [0, 0, 0], objects: [] }); s.view.overlay.clear();
+    }
+    releaseModels();
+    report('released', { memory: { ...this.ours.view.renderer.info.memory } });
+  }
+  // 3 s after a place is ready, what each view drew goes to the client log; a shown view that drew nothing says so in
+  // words over it, with a button to load the place again.
+  watchDrawn(id) {
+    clearTimeout(this.drawnT);
+    this.drawnT = setTimeout(() => {
+      if (this.place?.place_id !== id || !this.ready) return;
+      let st; try { st = drawState(); } catch (e) { report('error', { message: `drawState: ${e.message}` }); return; }
+      for (const v of [this.ours.view, this.src.view]) if (!v.hidden()) { v.redraw(); v.render(performance.now()); }
+      const after = drawState(), blank = after.views.filter((v) => !v.hidden && !v.drew);
+      report('drawn', { place: id, ...st, after: { lost: after.lost, glError: after.glError, views: after.views } });
+      if (blank.length || after.lost) {
+        const why = after.lost ? 'the graphics context was lost and has not come back' : `${blank.map((v) => v.name).join(' and ')} drew nothing`;
+        report('blank', { place: id, why, state: after }); this.showBlank(id, why);
+      }
+    }, 3000);
+  }
+  showBlank(id, why) {
+    let el = $('#blank-note');
+    if (!el) {
+      el = document.createElement('div'); el.id = 'blank-note'; el.className = 'blank-note'; el.setAttribute('role', 'alert');
+      el.innerHTML = '<p></p><button type="button" class="primary">Reload this place</button>'; $('#views').append(el);
+    }
+    el.querySelector('p').textContent = `This view has drawn nothing (${why}). The log on the build machine has the details.`;
+    el.querySelector('button').onclick = () => { this.hideBlank(); report('blank-reload', { place: id }); this.openPlaceSafe(id); };
+    el.hidden = false;
+  }
+  hideBlank() { const el = $('#blank-note'); if (el) el.hidden = true; }
   async openSource(sid) {
     this.loading(`Loading the source place ${sid}`);
     const bid = `src.${sid}`;
     this.srcBundle = await loadBundle(bid);
+    for (const l of [this.src.layer, this.src.grass]) l?.dispose();
+    this.src.terrainMesh?.dispose();
     this.fit = sid === this.place.source_id && this.placeFit ? this.placeFit : this.fitFromAnchors();
     this.srcBases = this.srcBundle.bases; this.sourceId = sid;
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
@@ -497,6 +546,8 @@ class Studio {
     $('#finalise-btn').onclick = () => (off.active ? this.offline.finaliseOffline() : this.panels.finalise());
     $('#settings-btn').onclick = () => this.panels.settings();
     $('#player-names').onclick = () => this.needs.setNames(!this.needs.names);
+    const sb = $('#sticks-btn'), sticksShown = () => sb.setAttribute('aria-pressed', String(!!this.sticks?.state.shown));
+    sb.onclick = () => { this.sticks?.setShown(!this.sticks.state.shown); sticksShown(); }; sticksShown();
     setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms), offline: () => off.active });
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     // the source place can be put away to make room, and asked back; remembered on this device
@@ -530,7 +581,7 @@ class Studio {
     });
     // no page zoom, pull to refresh, double-tap zoom or long-press menus
     for (const ev of ['gesturestart', 'gesturechange', 'dblclick']) document.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
-    // (a slider is still dragged with a finger: the tilt sliders and the time of day)
+    // (a slider is still dragged with a finger: the time of day)
     document.addEventListener('touchmove', (e) => { if (!e.target.closest('#panel-body, input[type=range], .sheet')) e.preventDefault(); }, { passive: false });
     document.addEventListener('contextmenu', (e) => { if (!e.target.closest('input, textarea')) e.preventDefault(); });
     const mq = matchMedia('(prefers-color-scheme: dark)');
@@ -578,6 +629,7 @@ class Studio {
     const tick = (now) => {
       // the view in use draws every frame it changes; the other, while the first moves, every srcEvery-th frame
       const main = this.focused === this.src.view ? this.src.view : this.ours.view, other = main === this.ours.view ? this.src.view : this.ours.view;
+      this.sticks?.frame(now);   // a held thumb stick moves the view it drives every frame (sticks.js)
       const t0 = performance.now(), a = main.render(now);
       const b = (!a || ++n % this.governor.srcEvery() === 0) ? other.render(now) : false;
       this.governor.frame(now, a || b, performance.now() - t0);

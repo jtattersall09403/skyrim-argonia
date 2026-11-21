@@ -139,6 +139,12 @@ def bundle_stamp(cfg: Config, bundle_id: str) -> dict | None:
     return json.loads(bj.read_text(encoding="utf-8")).get("stamp")
 
 
+def bundle_bytes(cfg: Config, bundle_id: str) -> int:
+    """How much a bundle weighs on disk: the studio opens the lightest place first on a device with nothing remembered."""
+    d = cfg.out / "bundles" / bundle_id
+    return sum(f.stat().st_size for f in d.iterdir() if f.is_file()) if d.is_dir() else 0
+
+
 async def fresh_draft(app: web.Application, pid: str) -> str | None:
     """Rebuild draft.<pid> when its key is stale (off the event loop; concurrent callers wait on one build).
     Returns an error message, or None."""
@@ -173,6 +179,7 @@ async def places(req: web.Request) -> web.Response:
                     "stamps": {"draft": draft, "ground": bundle_stamp(cfg, f"ground.{pid}"),
                                "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")},
                     "fit": pl.get("fit"),
+                    "bytes": bundle_bytes(cfg, f"draft.{pid}") + bundle_bytes(cfg, f"src.{pl.get('source_id')}"),
                     **({"draft_error": draft_error} if draft_error else {})})
     return jok(out)
 

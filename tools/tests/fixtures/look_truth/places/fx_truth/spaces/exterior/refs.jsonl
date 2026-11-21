@@ -1,0 +1,15 @@
+{"id": "fx_truth.house", "base": "GsTruth.esm:000802", "kind": "building", "pos": [1000, 1000, 200], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.deck", "base": "GsTruth.esm:000800", "kind": "static", "pos": [1000, 1000, 200], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.post0", "base": "GsTruth.esm:000805", "kind": "static", "pos": [720, 720, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.post1", "base": "GsTruth.esm:000805", "kind": "static", "pos": [1280, 720, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.post2", "base": "GsTruth.esm:000805", "kind": "static", "pos": [720, 1280, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.post3", "base": "GsTruth.esm:000805", "kind": "static", "pos": [1280, 1280, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.stair", "base": "GsTruth.esm:00080A", "kind": "static", "pos": [550, 1000, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s01", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.tree", "base": "GsTruth.esm:00080B", "kind": "tree", "pos": [2600, 1000, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s02", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.wall", "base": "GsTruth.esm:00080C", "kind": "static", "pos": [1000, 1800, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s03", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.marker", "base": "GsTruth.esm:00080E", "kind": "marker", "pos": [1800, 600, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s04", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.gone", "base": "GsTruth.esm:000801", "kind": "static", "pos": [1800, 1400, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s04", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.bridge", "base": "GsTruth.esm:00080D", "kind": "static", "pos": [2600, 2600, 120], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s05", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.pool", "base": "GsTruth.esm:000804", "kind": "water", "pos": [1408, 5504, -60], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s06", "seat": {"mode": "free", "dz": 0.0}}
+{"id": "fx_truth.door", "base": "GsTruth.esm:000806", "kind": "door", "pos": [3200, 600, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s07", "seat": {"mode": "free", "dz": 0.0}, "door": {"to_space": "fx_room"}}
+{"id": "fx_truth.leaf", "base": "GsTruth.esm:000803", "kind": "clutter", "pos": [1000, 300, 160], "rot": [0, 0, 0], "scale": 1.0, "layer": "place", "cluster": "s08", "seat": {"mode": "free", "dz": 0.0}}

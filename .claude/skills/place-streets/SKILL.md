@@ -34,6 +34,11 @@ lays every street, stop and patrol on the network as built.
 
 ## Read the network
 
+Every walked span's ends first: `python -m tools.places units <place> --joints` gives one row per end (foot and head,
+or two ends) with what its end line meets, the gap past it (`along`) and in height (`dz`) and the verdict (meets,
+rests on ground, on its own legs, short of, step to, buried end, mid-air), then any house or stair standing on a
+span, spans of two structures overlapping and walls crossing a span. An end not meeting is a walk that breaks.
+
 1. Look at every street close up, not only the whole-town render: `look walk <door> <door>` along it, `look at`
    on each bridge, flight and gangway, `look section` across each deck end.
 2. A straight run longer than a few houses, a line beside a deck and not on it, a bridge ending on an empty bank,

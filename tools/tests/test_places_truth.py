@@ -10,6 +10,9 @@ import pytest
 from tools.places import classify, truth, units, xform
 from tools.places.look import geom
 from tools.places.seat import Ground
+from tools.places import shape
+
+shape.REAL = False   # the golden place is measured by its own meshes and boxes, never a converted game model
 
 FIX = json.loads((Path(__file__).parent / "fixtures" / "truth_place.json").read_text())
 GROUND_TOL, LOW_TOL = 1.0, 1.0
@@ -50,13 +53,13 @@ def test_the_ground_reader_and_the_reference_give_the_known_height(pt):
     assert abs(ref.height(pt["x"], pt["y"]) - pt["h"]) <= GROUND_TOL
 
 
-def test_two_patches_sharing_a_vertex_count_it_once_and_a_clash_is_listed():
+def test_a_cells_rows_add_and_two_cells_copies_that_disagree_are_a_clash():
     g = ground(FIX["land"])
     assert g.clashes == []
-    clash = FIX["land"] + [{"cell": [0, 0], "verts": [[10, 10, 8.0]]}]
+    clash = FIX["land"] + [{"cell": [1, 0], "verts": [[20, 0, -8.0]]}]   # the edge vertex's other copy, another dz
     g2, ref = ground(clash), truth.Reference(cells(), clash)
     assert len(g2.clashes) == 1 and len(ref.clashes) == 1
-    assert abs(g2.height(1280, 1280) - 168.0) <= GROUND_TOL   # the first row is kept, as the build keeps it
+    assert abs(g2.height(4096, 2560) - 393.6) <= GROUND_TOL   # the first cell's copy is kept, as the build keeps it
 
 
 def test_an_edge_vertex_in_one_cell_reads_alike_from_both_and_is_named_one_sided():

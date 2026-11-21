@@ -140,11 +140,37 @@ function idPass(view, studio, c, w, h, subject, refW) {
     }
     // counted at a quarter of the pixels over nine times the area: scaled to the frame's own pixels
     const k = (9 * rw * rh) / (ww * wh);
-    wide = { total: total * k, in_frame: centre * k };
+    // the subject alone in this very frame at the pass's own resolution: what is seen is counted against it pixel
+    // for pixel (thin branches across it count as they cover it); the wide pass only adds the part outside the frame
+    const ab = readIds(r, tmp, c, rw, rh);
+    let alone = 0;
+    for (let i = 0; i < rw * rh; i++) if (ab[i * 4] === 5) alone++;
+    wide = { total: total * k, in_frame: centre * k, alone };
     for (const m of made) { m.material.dispose(); m.dispose(); }
   }
   for (const [o, mat, hid] of swap) { o.material = mat; if (hid === null) o.visible = true; }
   return { ids: b64(ids), ref: [rw, rh], table, id0: ID0, wide };
+}
+
+// What the place layer holds and what this frame drew: refs sent to the scene, refs whose model arrived, refs drawn as
+// a stand-in (a model that would not load, listed with why), refs never drawn by rule (effects, no model), helpers
+// hidden, and the instances drawn in the frame by kind. Returned with every shot: nothing that exists goes unreported.
+function census(layer) {
+  const c = { sent: 0, loaded: 0, stand_in: 0, waiting: 0, empty: 0, effects: 0, no_model: 0, lights: 0, helpers_hidden: 0, drawn: {}, failed: [] };
+  for (const g of layer?.groups?.values() || []) {
+    const n = g.refs.length; c.sent += n;
+    if (g.fx) { c.effects += n; continue; }
+    if (g.unseen) { c.no_model += n; continue; }
+    if (g.bulb || g.prim) { c.lights += n; continue; }
+    if (g.empty) { c.empty += n; continue; }   // a model with nothing drawable in it (a furniture marker)
+    if (!g.fullParts) c.waiting += n;
+    else if (g.fullParts.placeholder) { c.stand_in += n; c.failed.push({ model: g.base?.model || '', refs: n, why: g.fullParts.why || 'the converter could not read it' }); }
+    else c.loaded += n;
+    if (isHelper(g)) { if (!g.full?.[0]?.visible) c.helpers_hidden += n; }
+    const k = g.full?.[0]?.visible ? g.full[0].count : 0;
+    if (k) c.drawn[g.kind || 'other'] = (c.drawn[g.kind || 'other'] || 0) + k;
+  }
+  return c;
 }
 
 export function install(studio) {
@@ -251,6 +277,7 @@ export function install(studio) {
         if (!isHelper(g)) continue;
         for (const m of g.full || []) if (m.visible) { m.visible = false; hidden.push(m); }
       }
+      const counts = census(studio.ours.place);
       const tw = performance.now();
       r.setPixelRatio(1); r.setSize(w, h, false); r.setScissorTest(false); r.setViewport(0, 0, w, h);
       view.lighting?.beforeDraw();
@@ -280,7 +307,7 @@ export function install(studio) {
       for (const m of hidden) m.visible = true;
       r.clippingPlanes = []; r.setScissorTest(true);
       const info = { calls: r.info.render.calls, triangles: r.info.render.triangles, render_ms: Math.round(tr - tw), png_ms: Math.round(tid - tr), ids_ms: Math.round(tdone - tid) };
-      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, ...info, ...(idp || {}) };
+      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, census: counts, ...info, ...(idp || {}) };
     },
     // Several shots in one call (a survey's tiles): the same scene, warm, one page round trip.
     async shots(cams) { const out = []; for (const c of cams) out.push(await this.shot(c)); return out; },

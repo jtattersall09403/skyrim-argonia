@@ -17,7 +17,7 @@ const MAX_SPOTS = 6000;
 export class GrassLayer extends ObjectLayer {
   // terrain: bundle.js Terrain (or a getter); blocked(x, y): a drawn path; buildings(): [{pos, r}]
   constructor(origin, { terrain, blocked = () => false, buildings = () => [] }) {
-    super(origin, new Map());
+    super(origin, new Map()); this.isGrass = true;
     this.always = true; // the ring does its own thinning by distance: the blades it grows are all drawn
     this.terrain = terrain; this.blocked = blocked; this.buildings = buildings; this.view = null;
     this.on = true; this.centre = null; this.stale = true; this.good = new Map(); // grass key -> model usable (true) or missing (false)

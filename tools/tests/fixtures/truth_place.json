@@ -3,12 +3,12 @@
  "ground": {"cells": [[0, 0], [1, 0]], "slope_x": 0.1, "water": {"1,0": 700.0}},
  "land": [
   {"cell": [0, 0], "verts": [[10, 10, 40.0], [10, 11, 40.0]], "why": "a mound, first patch"},
-  {"cell": [0, 0], "verts": [[10, 11, 40.0], [10, 12, 24.0]], "why": "a mound, second patch over the first (shares 10,11 at the same dz)"},
+  {"cell": [0, 0], "verts": [[10, 11, 40.0], [10, 12, 24.0]], "why": "a mound, second patch over the first (adds 40 more at 10,11)"},
   {"cell": [0, 0], "verts": [[20, 32, -16.0]], "why": "an edge vertex patched in one cell's copy only"}
  ],
  "land_expect": [
   {"x": 1280, "y": 1280, "h": 168.0, "why": "vertex 10,10: 128 + 40"},
-  {"x": 1408, "y": 1280, "h": 180.8, "why": "vertex 10,11: 140.8 + 40, the shared vertex counted once"},
+  {"x": 1408, "y": 1280, "h": 220.8, "why": "vertex 10,11: 140.8 + 40 + 40, a cell's rows add"},
   {"x": 1536, "y": 1280, "h": 177.6, "why": "vertex 10,12: 153.6 + 24"},
   {"x": 4096, "y": 2560, "h": 393.6, "why": "edge vertex: 409.6 - 16, read the same from either cell"}
  ],

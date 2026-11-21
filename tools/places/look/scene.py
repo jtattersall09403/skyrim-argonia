@@ -36,6 +36,36 @@ LOOK_OUT = Path(os.environ.get("LOOK_OUT", ROOT / "out" / "places" / "look" / TR
 LOOK_PORT = 8791 if TREE == "main" else 8800 + int(TREE, 16) % 180
 
 
+def state(place_id: str, places: Path | None = None) -> dict:
+    """Which state of a place a look draws and measures: a hash of its place files as they stand in the working tree,
+    the commit they sit on and whether they differ from it, and the source and ground bundles' stamps. Every look
+    result carries it; a change to any of it reloads the page and the scene (daemon.py)."""
+    import subprocess
+    pdir = (places or PLACES) / place_id
+    h = hashlib.sha256()
+    for p in sorted(pdir.rglob("*")):
+        if p.is_file() and "edits" not in p.relative_to(pdir).parts:
+            h.update(str(p.relative_to(pdir)).encode() + b"\0" + p.read_bytes())
+
+    def git(*a):
+        return subprocess.run(["git", "-C", str(pdir), *a], capture_output=True, text=True, timeout=30)
+    head = git("rev-parse", "--short=12", "HEAD")
+    dirty = git("status", "--porcelain", "--", ".") if head.returncode == 0 else None
+    out, bundles = data_out(), {}
+    try:
+        src = json.loads((pdir / "place.json").read_text()).get("source_id")
+    except (OSError, ValueError):
+        src = None
+    for b in (f"src.{src}", f"ground.{place_id}"):
+        bj = out / "bundles" / b / "bundle.json"
+        try:
+            bundles[b] = f"{(json.loads(bj.read_text()).get('stamp') or {}).get('key')}@{bj.stat().st_mtime_ns}"
+        except (OSError, ValueError):
+            bundles[b] = None
+    return {"files": h.hexdigest()[:16], "commit": head.stdout.strip() if head.returncode == 0 else None,
+            "working_tree": bool(dirty and dirty.stdout.strip()), "bundles": bundles}
+
+
 def _jsonl(p: Path) -> list[dict]:
     return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()] if p.exists() else []
 
@@ -45,8 +75,16 @@ _STATIC: dict[str, dict] = {}
 
 def _static(place_id: str, source_id: str, out: Path) -> dict:
     """What does not change with an edit, read once per place: bases, the ground as built, the models' extents."""
-    key = f"{place_id}|{source_id}"
+    stamps = []
+    for b in (f"src.{source_id}", f"ground.{place_id}"):   # a stage rerun (a new ground or source) is read again
+        try:
+            stamps.append((out / "bundles" / b / "bundle.json").stat().st_mtime_ns)
+        except OSError:
+            stamps.append(None)
+    key = f"{place_id}|{source_id}|{stamps}"
     if key not in _STATIC:
+        for k in [k for k in _STATIC if k.startswith(f"{place_id}|")]:
+            del _STATIC[k]
         bdir = out / "bundles"
         from tools.places.draft import io   # the draft's own bases: the source's, the ground's and the catalogue's
         src = io.load(f"src.{source_id}", bdir)
@@ -171,7 +209,7 @@ class Scene:
             try:   # the studio's own converter: no triangles is the stand-in box
                 from tools.places import assets
                 info = assets.mesh_info(m, bounds=base.get("bounds"))
-                self.footprints[m] = info.get("bounds") if info.get("tris") else None
+                self.footprints[m] = info.get("bounds") if info.get("tris") and not info.get("placeholder") else None
             except Exception:
                 self.footprints[m] = None
         b = self.footprints.get(m)

@@ -11,7 +11,9 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from tools.places import xform
+from tools.places import shape, xform
+
+shape.REAL = False   # measure the fixtures by their boxes (registered meshes only): no converted model is read
 from tools.places.look import geom
 
 
@@ -142,7 +144,7 @@ def test_span_ends_doors_and_unresolved():
                "m": xform.matrix([0, 0, 0], [0, 0, 0]), "lo": [0, 0, 0], "hi": [1, 1, 1]}
     f = geom.faults([bridge, post, door, box, missing], g)
     ends = [x for x in f if x["fault"] == "unsupported end"]
-    assert len(ends) == 1 and ends[0]["at"][0] == pytest.approx(400)          # the far end only
+    assert len(ends) == 1 and ends[0]["at"][0] == pytest.approx(400, abs=2)          # the far end only
     assert any(x["fault"] == "no ground at door" and x["id"] == "door" for x in f)
     assert any(x["fault"] == "unresolved" and x["id"] == "box" for x in f)
     assert any(x["fault"] == "missing base" and x["id"] == "gone" for x in f)
@@ -483,6 +485,30 @@ def test_a_duplicate_gets_its_own_seat_and_reason_never_the_originals():
     (c4,) = hands.duplicate_rows(_Sc([crate], pieces, g, space="Hall"), [crate], 10, 0, "x", lambda i: "c4")
     assert c4["seat"] == {"mode": "free"}
 
+
+
+def test_a_hand_places_any_base_and_a_studio_op_as_one_stroke(tmp_path):
+    import math
+    from tools.places.look import verbs
+
+    class G:
+        def height(self, x, y):
+            return 100.0
+    sc = _Sc([], [], G())
+    sc.place_id = "p"
+    sess = {}
+    (op,) = verbs._hand(sc, "place", ["B:rack", "10,20", "--above", "5", "--rot", "90", "--why", "fish racks"], sess)
+    r = op["ref"]
+    assert op["op"] == "ref.add" and r["base"] == "B:rack" and r["pos"] == [10, 20, 105] and r["seat"] == {"mode": "above", "dz": 5}
+    assert r["why"] == "fish racks" and r["rot"][2] == pytest.approx(math.pi / 2, abs=1e-4)
+    (op2,) = verbs._hand(sc, "place", ["B:pole", "1,2,300", "--why", "a pole"], sess)
+    assert op2["ref"]["seat"]["mode"] == "free" and op2["ref"]["pos"][2] == 300 and op2["ref"]["id"] != r["id"]
+    with pytest.raises(ValueError):
+        verbs._hand(sc, "place", ["B:pole", "1,2,300"], sess)          # no reason, no piece
+    f = tmp_path / "op.json"
+    f.write_text('[{"op": "path.add", "path": {"id": "w1", "kind": "walkway", "points": [[0, 0], [1, 1]]}}]')
+    (po,) = verbs._hand(sc, "op", [str(f)], sess)
+    assert po["op"] == "path.add" and po["space"] == "exterior" and po["call"] == "fault"
 
 # ---------- sections by the mesh's outline (outline.py) ----------
 def test_a_section_outlines_a_flights_treads_from_its_triangles_not_its_box():

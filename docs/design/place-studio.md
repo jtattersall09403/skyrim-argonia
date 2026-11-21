@@ -693,6 +693,28 @@ screen; a tap turns the view to face north), and the Selected panel gives the po
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
 
+**Thumb sticks** (`sticks.js`). Two round sticks sit over the views, bottom left and bottom right, where the thumbs
+rest when the tablet is held in two hands; one pair drives the view last touched (with Link views on, both move).
+The left stick moves the camera where it faces (forward, back, strafe), its speed proportional to the push up to a
+walk of 160 game units a second, Skyrim's run of 370 at the edge, times the x1/x2/x4 step beside it. The right stick
+turns and looks up and down (pitch held between 83 degrees down and 74 up). Walk puts the camera at a person's eye
+height (120 units) over the land, a room's floor, or the highest walkable face of a placed model's real mesh under
+it no more than 70 units above the feet (decks, floors, steps), and keeps it there as it moves; it does not collide
+with walls. With Walk off the sticks fly the camera and two buttons raise and lower it. A finger that starts on a
+stick drives it alone; both sticks work at once; the pen never moves a stick; the one-finger, two-finger and pen
+gestures are unchanged. Movement is integrated each animation frame (frame-rate independent); the views draw while
+a stick is held. The sticks show on a touch device and are switched by Sticks in our view's bar; shown, walk and
+step are remembered per browser. Shift with the wheel still tilts the view from a mouse.
+
+**Opening and leaving a place.** The studio opens the place in the address, else the one this browser last had
+open, else the lightest place (the draft and source bundles' bytes, `bytes` in `/api/places`). Leaving a place lets
+go of its layers, its land and every model, material and texture it loaded (`releaseModels`), so the next place has
+the GPU memory the last one held. 3 s after a place is ready the page sends `drawn` to the client log
+(`out/places/studio-client.log`: the context's state, GL error, canvas size, what each view last drew); a shown view
+that drew nothing, or a context that has not come back, is said in words over the views with a Reload this place
+button, and logged as `blank` with the reason. A lost graphics context is logged (`context-lost`,
+`context-restored`) and everything is drawn again when it returns.
+
 **Placed water** (`water_look.js`, `water.js`). A base with a `water` entry in the catalogue (a puddle, a Hist's sap pool, the
 Heart-Mud pools, any placed water plane) is drawn as a liquid of its water type, as the game shades it from the record: the
 catalogue carries the type's shallow, deep and reflection colours, opacity (0 to 100), reflectivity, fresnel and the fog
