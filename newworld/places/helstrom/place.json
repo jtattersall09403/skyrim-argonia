@@ -1561,7 +1561,8 @@
      "why": "kept: the old Xanmeer, the record's one stone building; its visible model was hidden by the source's own builders, so BM&V's own Xanmeer piece stands on its footprint, with a door into its hall"
     }
    ]
-  }
+  },
+  "ground_cap": 1200
  },
  "fit": {
   "pivot": [
