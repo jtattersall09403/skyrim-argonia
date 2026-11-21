@@ -196,6 +196,13 @@ added here the day they are made, with the date and the issue.
   our ground at the footprint's edge. Nothing outside the footprint changes, no water line moves, and the world's
   terrain is not regenerated. This amends "terrain is not touched" of 2026-11-19 for place footprints
   (2026-11-21, #80).
+- Decided by the lead while the owner was away, for him to confirm (2026-11-21, #80): we do not bring a source's
+  pond with its ground (a dock that leads somewhere is seated on our ground; what only made sense in water is
+  dropped or moved to our real water); a unit's flag that faithfully copies the source's own arrangement is
+  accepted with its reason where it reads as built; Jal-Veesa's Hist stands on a rocky rise where no spot at the
+  trunk is open and level, so its sap pool is placed by hand at the foot of the rise where the town looks onto it,
+  the tree's lowest roots reaching down to it, and does not surround the trunk; a player's-walk tour is filmed at
+  960 by 720.
 - The lead reflects periodically on the approach to place drafting, whether it is making progress and whether
   another approach would do better, and may change method on his own judgement (2026-11-20, #80).
 - A place's layout is planned properly: every structure is seated and sunk by the amount it needs for the place to
