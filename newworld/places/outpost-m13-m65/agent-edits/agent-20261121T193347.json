@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T193347",
+ "place_id": "outpost-m13-m65",
+ "name": "Ra-tah's bedroll out from under the mess tent's table to the open ground south of it",
+ "at": "2026-11-21T19:33:47Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK018PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -100450.0,
+     -527960.0,
+     219.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100450.0,
+     -528330.0,
+     219.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T19:33:47Z"
+  }
+ ]
+}
