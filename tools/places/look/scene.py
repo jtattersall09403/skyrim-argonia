@@ -73,6 +73,25 @@ def _jsonl(p: Path) -> list[dict]:
 _STATIC: dict[str, dict] = {}
 
 
+def fill_from_catalogue(bases: dict, keys, catalogue=None) -> list[str]:
+    """Bases a row names that no bundle holds yet, taken from the asset catalogue: a piece of a new base placed and
+    committed is known to the numbers before the daemon's own draft bundle is rebuilt (by the next page load).
+    Returns the keys filled."""
+    want = [k for k in keys if k and k not in bases]
+    if not want:
+        return []
+    if catalogue is None:
+        try:
+            from tools.places.draft_bundle import catalogue as load
+            catalogue = load()
+        except Exception:  # noqa: BLE001  no catalogue on this machine: the bundles alone
+            return []
+    got = [k for k in want if k in catalogue]
+    for k in got:
+        bases[k] = catalogue[k]
+    return got
+
+
 def _static(place_id: str, source_id: str, out: Path) -> dict:
     """What does not change with an edit, read once per place: bases, the ground as built, the models' extents."""
     stamps = []
@@ -140,6 +159,7 @@ class Scene:
         self.ground = Ground({k: list(v) for k, v in g.cells.items()}, g.water_by_cell, g.default_water, g.sha)
         self.ground.apply_patches(self.files.get("land") or [])
         refs = [r for r in copy.deepcopy(self.files["spaces"]["exterior"]["refs"]) if not r.get("removed")]
+        fill_from_catalogue(self.bases, {r["base"] for r in refs})
         seat_all(refs, self.ground)
         self.refs = {r["id"]: r for r in refs}
         self.pieces = [p for p in (self.piece(r) for r in refs) if p]
