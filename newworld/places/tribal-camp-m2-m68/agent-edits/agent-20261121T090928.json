@@ -62,7 +62,8 @@
      "persistent"
     ],
     "seat": {
-     "mode": "free",
+     "mode": "on",
+     "on": "tribal-camp-m2-m68.QTQNYZ565SZ476EQS642TVNZHW",
      "dz": 0.0
     },
     "door": {

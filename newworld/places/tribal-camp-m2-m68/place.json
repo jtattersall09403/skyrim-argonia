@@ -78,6 +78,18 @@
      "what": "rock outcrops and cypress east of the camp",
      "verdict": "kept",
      "why": "the marsh's own ground; one rock before the longhouse door and a cypress inside it removed"
+    },
+    {
+     "structure": "walls",
+     "what": "the cypress stockade scaffolds, ramps and scale fences (the tool reads stockade as a wall)",
+     "verdict": "kept",
+     "why": "they are the camp's watch towers, raised tent platforms and low fences, not a town wall; the record's danger (the cage reached unseen) holds: no fence rings the camp"
+    },
+    {
+     "structure": "mine",
+     "what": "one plank walk (CypressStockadePlanks01, a mine-plank mesh)",
+     "verdict": "kept",
+     "why": "a plank walk off the low platform; nothing of a mine stands"
     }
    ]
   }
