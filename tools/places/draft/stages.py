@@ -207,7 +207,7 @@ def pieces(st: Standing, log=print) -> None:
             row = {"id": io.mint(st.place_id, "exterior", sid), "base": r["base"], "kind": r.get("kind"),
                    "pos": [x, y, r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0), "layer": "place",
                    "flags": r.get("flags") or [], "src": sid, "seat": {"mode": "free"}, "cluster": of[sid]}
-            for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
+            for k in io.CARRIED_KEYS:
                 if r.get(k) is not None:
                     row[k] = r[k]
             if row.get("linked"):    # a link leads only to a thing the place carries

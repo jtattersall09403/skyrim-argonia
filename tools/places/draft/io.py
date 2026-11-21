@@ -99,6 +99,10 @@ def mint(place_id: str, *parts: str) -> str:
     return f"{place_id}.{s}"
 
 
+# what a carried source ref keeps of its own record besides base and pose; never its map marker: a place's marker on
+# the world map is the world ESM's ANW_MapMarker_<place>, named from the place record, and a source marker's name is
+# the source's (the place build writes no marker data on a carried ref)
+CARRIED_KEYS = ("owner", "lock", "door", "linked", "enable_parent", "primitive", "edid", "radius", "count")
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 NORDIC_REVIEW = ROOT / "newworld" / "places" / "nordic_review.jsonl"
 

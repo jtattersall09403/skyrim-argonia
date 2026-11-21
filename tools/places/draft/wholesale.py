@@ -72,7 +72,7 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
         w = geom.walk(b)       # a walked deck's height over its origin: one stands on it, not in it (as adds.py)
         if w is not None:
             row["walk"] = w
-        for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
+        for k in io.CARRIED_KEYS:
             if r.get(k) is not None:
                 row[k] = r[k]
         our_id[rid] = row["id"]
