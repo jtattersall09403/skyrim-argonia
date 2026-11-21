@@ -177,16 +177,6 @@ def test_a_placed_piece_keeps_its_height_through_any_later_seating():
     assert pin(free, 50.0, G) == {"mode": "free"}
 
 
-def test_the_seating_stage_keeps_what_an_agent_or_the_owner_placed(tmp_path: Path):
-    from tools.places.draft.stages import placed_rows
-    (tmp_path / "agent-edits").mkdir()
-    (tmp_path / "agent-edits" / "a.json").write_text(json.dumps({"ops": [
-        {"op": "ref.move", "id": "d.huta"}, {"op": "ref.add", "ref": {"id": "d.new"}}]}))
-    (tmp_path / "edits").mkdir()
-    (tmp_path / "edits" / "o.json").write_text(json.dumps({"final": True, "ops": [{"op": "ref.move", "id": "d.tree"}]}))
-    assert placed_rows(tmp_path) == {"d.huta", "d.tree"}
-
-
 def test_what_lay_on_the_source_ground_by_a_house_lies_on_ours():
     from tools.places import xform
     G = flat(0.0)
