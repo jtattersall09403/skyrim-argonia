@@ -232,6 +232,10 @@ added here the day they are made, with the date and the issue.
 - Place work runs at medium effort (the `place-drafter` agent). The remaining Act I places are drafted by the new
   method in quest order, Ashgate Landing first, then Reed-Sill Weir and on, while the owner edits Jal-Veesa and
   Karsh-Naal Camp in the studio (owner, 2026-11-21, #80).
+- A fault passed to the owner is explained in plain English (what is wrong, as a player would see it, and what
+  was tried) and says precisely where to look: the place, the thing by its name, where it stands (which house or
+  landmark it is beside and on which side), and the capture that shows it, so he can go straight to it in the
+  studio (owner, 2026-11-21, #80).
 - Files the tools leave uncommitted are the lead's to handle, never the owner's (2026-11-21, #80).
 - Before a place is built from its source, the drafter looks at the source as a place and judges it against the
   record: what of it is useful; how much of its ground to bring over, if any (the whole relief, only a
