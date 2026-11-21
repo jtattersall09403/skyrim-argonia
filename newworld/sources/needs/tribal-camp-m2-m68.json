@@ -25,7 +25,11 @@
    "met": true,
    "why": "Met. Skyrim's long metal cage stands at the camp's west edge, past the old stone ruin. This is the side farthest from the fire in front of the longhouse. The quest sets its own door on it, with a Novice lock, and puts Sesk inside. A player who comes in from the west reaches the cage first, far from the guards. Jeeta-Sakka stands at the fire with the key.",
    "fit": "The edge farthest from the fire, which is also the edge nearest the creek, where a player comes in.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "Reader (2026-11-21), told nothing: took spot A for the cage and expected a captive in it, but could not tell it was a prisoner's cage from the sheet alone. In game Sesk stands inside it (the quest's person, not on the sheet) and the journal and marker name her on arrival, so the cage is recognised."
+   }
   },
   {
    "seq": 1,
@@ -46,7 +50,11 @@
    ],
    "met": true,
    "why": "Met. Three urns stand stacked against the longhouse wall beside its door, where the quest puts its own stack of sap jars; together they are more than a camp would need.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "not recognised",
+    "said": "Reader (2026-11-21): named the three Glazed Urns by the house door but did not call them sap, since nothing is named sap. The player arrives holding the crew master's note, which says to stack the jars by the longhouse with the rest, so the urns by the longhouse door read as the rest; the quest's own stack of clay jars stands beside them."
+   }
   },
   {
    "seq": 2,
@@ -67,7 +75,11 @@
    ],
    "met": true,
    "why": "Met. Dushnikh Yal's longhouse and its cellar are copied whole behind the longhouse door; the Naga band sleeps in the longhouse and the cellar is named Karsh-Naal Cellar. Its door reads by the household's head (Hesseth's House) until the Give ending names it the player's.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "not recognised",
+    "said": "Reader (2026-11-21): called the building at spot B Hesseth's House from its door and did not see a longhouse in the sheet's words (one house). At eye level it is the camp's one long timber hall on its knoll up the Xanmeer steps (owner capture 05), and the note sends the player to the longhouse; its door keeps the household's name until the Give ending."
+   }
   }
  ]
 }
