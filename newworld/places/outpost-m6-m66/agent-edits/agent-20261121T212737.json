@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T212737",
+ "place_id": "outpost-m6-m66",
+ "name": "a reed clump out of the hide's woven screen",
+ "at": "2026-11-21T21:27:37Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF68REED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43185.1,
+     -542482.6,
+     117.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.874
+    ],
+    "scale": 3.2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43185.1,
+     -542602.6,
+     117.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.874
+    ],
+    "scale": 3.2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:27:37Z"
+  }
+ ]
+}
