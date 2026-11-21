@@ -1641,7 +1641,7 @@ def bank_stairs(place_id: str, paths: list[dict], Wd: "Walkable", rows: list[dic
     tops = [top_end(r) for r in rows if str(r.get("why") or "").endswith(BANK_WHY)]
     out: list[dict] = []
     for p in paths:
-        S = [q for _, q in samples(p.get("points") or [], BANK_STEP)]
+        S = [q[:2] for _, q in samples(p.get("points") or [], BANK_STEP)]   # in plan: a street laid on a deck is 3-d
         on = [deck_at(q) for q in S]
         for i in range(len(S) - 1):
             for a, b, step in ((i, i + 1, 1), (i + 1, i, -1)):       # the street leaves a deck at a for the land at b
