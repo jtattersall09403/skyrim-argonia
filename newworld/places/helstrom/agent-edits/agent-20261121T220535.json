@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261121T220535",
+ "place_id": "helstrom",
+ "name": "the mud house's mound and windows brought down with its door, so the house stands whole",
+ "at": "2026-11-21T22:05:35Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.B0BVN4XCH21DJD3CTRGGG9E874",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41174.4,
+     -603978.58,
+     -177.13
+    ],
+    "rot": [
+     3.0101018,
+     -0.033820204,
+     7.44837
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41174.4,
+     -603978.58,
+     -405.13
+    ],
+    "rot": [
+     3.0101018,
+     -0.033820204,
+     7.44837
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:35Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.D0WX6ZQCPHVZ0JPSZ62GSZT6DS",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41945.27,
+     -603824.91,
+     588.81
+    ],
+    "rot": [
+     -0.5565005,
+     -0.23718989,
+     9.58723
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41945.27,
+     -603824.91,
+     360.81
+    ],
+    "rot": [
+     -0.5565005,
+     -0.23718989,
+     9.58723
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:35Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.VYYJ5VZ2C4PZSSAV8PNRJT4R4G",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -40937.89,
+     -604841.51,
+     602.76
+    ],
+    "rot": [
+     0.2960571,
+     -0.37913626,
+     7.52199
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -40937.89,
+     -604841.51,
+     374.76
+    ],
+    "rot": [
+     0.2960571,
+     -0.37913626,
+     7.52199
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:35Z"
+  }
+ ]
+}
