@@ -566,6 +566,7 @@ save is the list up to the cursor.
 notes:[{id, text, at}]}`.
 `rev` is raised by the server on every write. The autosave is the same shape at `out/places/autosave/<place_id>.json`
 (on disk and in the private bucket, never committed).
+A commit of only `edits/` files is gated by one cheap check, `python -m tools.places.edits_valid` (each file parses and passes the schema); the scoped gate picks no other test or stage for them (gate_map.toml, the `only` rule).
 An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...payload with before and after}`.
 
 | op | payload |
