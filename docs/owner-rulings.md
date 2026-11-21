@@ -202,6 +202,9 @@ added here the day they are made, with the date and the issue.
 - A sap pool must read as a pool of liquid, never a flat coloured plane: it is real water (a water surface in a
   hollow with a sap-coloured water type), and if the mod's own sap water looks poor in the game we make our own
   water type from a good vanilla one, recoloured (2026-11-21, #80).
+- We build with real shaped meshes, not boxes: every tool that measures, checks, places, seats or avoids a piece
+  reasons about its mesh in its real pose (its feet, its surfaces, its eaves, a tree's root collar, a span's end
+  lines); a box is only ever a first reject (2026-11-21, #80).
 - The measuring and capture tools are audited against known answers and against each other, and made reliable,
   not fixed one accident at a time (2026-11-21, #80).
 - Decided by the lead while the owner was away, for him to confirm (2026-11-21, #80): we do not bring a source's
