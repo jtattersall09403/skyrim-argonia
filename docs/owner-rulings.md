@@ -239,6 +239,12 @@ added here the day they are made, with the date and the issue.
   well with the source place and easy, reliable hand work; then cosmetic detail, which is re-authored to fit what
   is built (a record's "light hide tents" over dark source tents becomes "dark hide tents"). Place-record prose is
   the cheapest to change. The rule is docs/design/consistency.md, named in CLAUDE.md (owner, 2026-11-21, #80).
+- Decided by the lane, for the owner to see (2026-11-21, #80, "one home"): every checker rule is sorted in
+  docs/design/consistency-rules.md. Few facts were really stored twice: a place's region and on_water are already
+  derived from the map at build, and its region, culture and symbol are database keys, so the rules re-checking
+  those keys and the map page's copy of the records were removed (the Atlas freshness check covers the page).
+  Population stays the record's estimate that drafts deliver (0040), not a count of drafted people; prose restating
+  a fact keeps its check. Names stay plain text in quests: only 3 places and 4 people were ever renamed.
 - The owner will look at and edit all six Act I places in the studio on 2026-11-22; Jal-Veesa and Karsh-Naal Camp
   are finished by agents first, with the other four (owner, 2026-11-21, #80).
 - A place is not done until it has been walked: a full walk-through with every issue recorded; the issues fixed;

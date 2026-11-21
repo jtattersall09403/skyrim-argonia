@@ -13,6 +13,11 @@ or a person by id; a place's population is the count of its people; whether it s
 ground. When you find the same fact stored twice, the fix is to stop storing one of them, not to keep the two in
 step. What cannot be reduced this way is prose and the built place itself: for those, the ladder below.
 
+Every checker rule, what it compares, where each side lives and why it stays a check is in
+[consistency-rules](consistency-rules.md). To add a fact, find its home first (the column, table or source a build
+derives it from), store it there once and derive any copy; a new rule is only for a judgement or a sentence that
+restates the fact.
+
 ## When two things disagree, which one changes
 
 Change the thing that matters least and costs least, so that what matters most is delivered as authored. In order,
