@@ -170,8 +170,10 @@ spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>", 
                        and inside it (the cell's name); the stage `names` gives it (Room names, below)
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
                        ref at build by base and nearest position, so a world rebuild re-applies it
-land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort, only to ease
-                       the ground under a building: |dz| <= place.json fit.patch_max (1.5 m), never across the waterline
+land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why, by}; rows of one vertex add up.
+                       `by` "ground": the source's ground carried under the footprint (`draft ground`, up to 600,
+                       blended at the edge, never across the waterline); "sap": a Hist pool's hollow, dug on top;
+                       other rows ease the ground under a building: |dz| <= fit.patch_max (1.5 m), never across the waterline
 paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkway, points:[[x,y]...], width, style,
                        from?, to?, laid?}; style is a land texture key (the source place's own road texture) or the
                        draft's style word (dirt, boardwalk). The points are the line as walked: routed on our ground

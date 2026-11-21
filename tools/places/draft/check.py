@@ -33,6 +33,15 @@ summary: dict = {}       # the last check's measures (patches, streets, aligned 
 DOOR_REACH = 160.0
 
 
+def patch_bound(row: dict, place: dict, pmax: float) -> float:
+    """How far one land row may move the ground: the place's carried ground (`by` "ground", draft/ground.py) up to its
+    own cap (`draft.ground_cap`, else the stage's CAP), every other row (the fit's patches, the sap bowl) `pmax`."""
+    if row.get("by") == "ground":
+        from tools.places.draft.ground import CAP
+        return float((place.get("draft") or {}).get("ground_cap") or CAP)
+    return pmax
+
+
 def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, gives: list | None = None) -> list[str]:
     pdir = places / place_id
     place = json.loads((pdir / "place.json").read_text())
@@ -228,8 +237,9 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         cx, cy = p["cell"]
         for row, col, dz in p["verts"]:
             points += 1
-            if abs(dz) > pmax + 0.5:
-                bad.append(f"land patch at cell {p['cell']} ({row},{col}) changes the ground by {dz:.0f} (bound {pmax:.0f})")
+            bound = patch_bound(p, place, pmax)
+            if abs(dz) > bound + 0.5:
+                bad.append(f"land patch at cell {p['cell']} ({row},{col}) changes the ground by {dz:.0f} (bound {bound:.0f})")
             gx, gy = cx * 32 + col, cy * 32 + row
             h0 = G0.vertex(gx, gy)
             w = G0.water(gx * 128.0, gy * 128.0)

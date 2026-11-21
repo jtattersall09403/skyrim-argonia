@@ -11,6 +11,8 @@ owns changes nothing and fails.
              stands now; where a cluster sits on our land is the whole draft's search and is never run again here
   pieces     `draft.replace` and `draft.drop` as place.json has them: a row of another base than they give goes
              back to its source's piece or takes its replacement; a piece no longer dropped comes back
+  ground     the source's ground carried under the place's footprint as land rows `by` "ground", blended into ours
+             at the footprint's edge (tools/places/draft/ground.py); `draft ground <place> --dry` prints what it would do
   seating    each source piece's seat rule as measured in the source (a light `on` its fixture), then its height
   clearance  the world's plants cleared by the source's own measure round the standing buildings, doors and streets
   streets    the build's network: flights, joins, arrivals, streets and patrols (`draft join`)
@@ -44,11 +46,12 @@ from tools.places.seat import Ground, seat_all
 
 ANY = None
 # what each stage owns: {file pattern: the fields of a standing row it may change (ANY: the whole row), and whether
-# it may add or remove rows}
+# it may add or remove rows, and optionally the one `by` of land rows it may touch}
 OWNS: dict[str, dict[str, tuple]] = {
     "fit": {"spaces/exterior/refs.jsonl": ({"pos", "rot", "cluster"}, True), "ledger.jsonl": (ANY, False)},
     "pieces": {"spaces/*/refs.jsonl": ({"base", "pos", "rot", "align", "seat", "linked"}, True), "spaces/*/space.json": (ANY, True),
                "ledger.jsonl": (ANY, True)},
+    "ground": {"land.jsonl": (ANY, True, "ground")},
     "seating": {"spaces/exterior/refs.jsonl": ({"seat", "pos"}, False)},
     "clearance": {"clear.jsonl": (ANY, True)},
     "streets": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
@@ -360,7 +363,7 @@ def seating_stage(st: Standing, log=print) -> None:
     walk.flush_steps(st.ext, st.bases, log=lambda *_: None)
     was = {r["id"]: r["pos"][2] for r in st.ext}
     seat_all(st.ext, st.G)
-    seating.carry(st.ext, was)
+    seating.carry(st.ext, was)      # a row a hand placed is put back after the stage (hands.py `keep_placed`)
 
 
 def clearance(st: Standing, log=print) -> None:
@@ -629,7 +632,12 @@ def names_stage(st: Standing, log=print) -> None:
     names.apply(st, log)
 
 
-RUN = {"fit": fit, "pieces": pieces, "seating": seating_stage, "clearance": clearance, "people": people_stage,
+def ground_stage(st: Standing, log=print) -> None:
+    from tools.places.draft import ground
+    ground.apply(st, log)
+
+
+RUN = {"fit": fit, "ground": ground_stage, "pieces": pieces, "seating": seating_stage, "clearance": clearance, "people": people_stage,
        "lights": lights_stage, "stations": stations, "jail": jail_stage, "primitives": primitives_stage,
        "hang": hang_stage, "sap": sap_stage, "add": add_stage, "names": names_stage}
 
@@ -659,7 +667,7 @@ def _rows(rel: str, text: str) -> dict:
         if not line.strip():
             continue
         r = json.loads(line)
-        key = r.get("id") or r.get("ref") or (f"{r.get('space')}|{r.get('src')}|{r.get('copy')}" if "status" in r else None) or line
+        key = (f"land|{r.get('by')}|{r['cell'][0]},{r['cell'][1]}" if "verts" in r and "cell" in r else None) or r.get("id") or r.get("ref") or (f"{r.get('space')}|{r.get('src')}|{r.get('copy')}" if "status" in r else None) or line
         out[key] = r
     return out
 
@@ -713,7 +721,11 @@ def diff(before: dict[str, str], after: dict[str, str], owns: dict | None = None
         if rule is None:
             bad.append(f"{rel}: not a file this stage owns")
             continue
-        fields, adds = rule
+        fields, adds = rule[:2]
+        if len(rule) > 2:
+            off = [k for k in set(ch) | set(ad) | set(rm) if not str(k).startswith(f"land|{rule[2]}|")]
+            if off:
+                bad.append(f"{rel}: rows not `by` {rule[2]} ({sorted(off)[:3]})")
         if (ad or rm) and not adds and not (rel.endswith(".json") and fields is not ANY):
             bad.append(f"{rel}: rows added or removed ({(ad + rm)[:3]})")
         if rel.endswith(".json"):

@@ -89,6 +89,27 @@ def place(moves, ground_h=0.0, z0=0.0):
     return U.Place.of("t", sc, U.pieces_of(town(), BASES, bounds), flat())
 
 
+def test_a_join_given_up_for_a_flight_is_measured_but_not_flagged():
+    pl = place({"s.walk": -300.0})
+    assert [j["flag"] for j in U.joins(pl) if j["flag"]]                      # both ends of the lowered walkway
+    pl.sc.files["place"]["draft"] = {"joins_given_up": [{"walk": "house.RoomA", "unit": "walkway.01", "why": "a flight"}]}
+    js = {j["unit"]: j for j in U.joins(pl)}
+    assert js["house.RoomA"]["flag"] is None and js["house.RoomA"]["given_up"] == "a flight"
+    assert js["house.RoomB"]["flag"]                                          # the other end is still a fault
+
+
+def test_an_accepted_flag_prints_its_reason_and_is_no_fault():
+    pl = place({"s.huta": -120.0, "s.doora": 0.0})
+    _, before = U.table(pl)
+    assert "body through its deck" in before
+    pl.sc.files["place"]["draft"] = {"accepted": [{"unit": "house.RoomA", "flag": "body through its deck", "why": "as the source"}]}
+    rows, text = U.table(pl)
+    a = next(r for r in rows if r["id"] == "house.RoomA")
+    assert not any(f.startswith("body through") for f in a["flags"])
+    assert any(n.startswith("accepted: as the source") for n in a["accepted"]) and "accepted: as the source" in text
+    assert any("door sill off its floor" in f for f in a["flags"])          # only the named flag is accepted
+
+
 def test_a_house_pushed_down_through_its_platform_is_measured_and_flagged():
     pl = place({"s.huta": -120.0, "s.doora": 0.0})
     m = U.measure(pl, pl.unit("house.RoomA"))
@@ -113,6 +134,25 @@ def test_the_plan_puts_a_house_back_on_its_platform_and_seats_both_with_the_walk
     assert abs(walk["dz"] - by["house.RoomA"]["dz"]) <= U.STEP and not walk.get("give_up")
 
 
+def test_units_apply_writes_the_plan_as_moves_that_put_a_house_back_together_and_trees_back_on_the_ground(tmp_path):
+    pl = place({"s.huta": -120.0, "s.tree": -300.0}, ground_h=100.0)
+    ed = tmp_path / "t" / "agent-edits"
+    ed.mkdir(parents=True)
+    (ed / "a.json").write_text(json.dumps({"ops": [   # an earlier stroke sank the house and dragged the tree with it
+        {"op": "ref.move", "space": "exterior", "id": "d.huta", "stroke": 1, "before": {"pos": [0, 0, 500]}, "after": {"pos": [0, 0, 380]}},
+        {"op": "ref.move", "space": "exterior", "id": "d.tree", "stroke": 1, "before": {"pos": [450, 0, 0]}, "after": {"pos": [450, 0, -300]}}]}))
+    p = U.plan(pl)
+    strokes, report = U.apply_strokes(pl, p, ["house.RoomA"], places=tmp_path, files=pl.sc.files)
+    after = {op["id"]: op["after"]["pos"][2] for st in strokes for op in st}
+    dz = {u["unit"]: u for u in p["units"]}["house.RoomA"]["dz"]
+    plat = after.get("d.plata", 500.0)
+    assert after["d.huta"] - plat == pytest.approx(0.0)                     # the body back on its deck, as in the source
+    assert plat == pytest.approx(500.0 + dz)                                # the whole house took the plan's one offset
+    assert after["d.tree"] == pytest.approx(0.0)                           # the tree back where the ground puts it
+    assert "d.platb" not in after                                          # a unit not named is not touched
+    assert len(strokes) == 2 and all(op["op"] == "ref.move" for op in strokes[-1])
+
+
 def test_a_house_on_ground_too_steep_for_its_legs_is_said_so():
     pl = place({}, ground_h=0.0)
     pl.sc.ground = Ground({(c, d): [0.0 if c < 0 else 600.0] * 33 * 33 for c in range(-2, 2) for d in range(-2, 2)}, {}, None)
@@ -130,7 +170,35 @@ def test_a_tree_moved_in_the_stroke_of_a_building_is_refused(tmp_path: Path):
                            "before": {"pos": [0, 0, 0]}, "after": {"pos": [0, 0, dz]}}
     (ed / "a.json").write_text(json.dumps({"ops": [mv("d.huta", -300, 1), mv("d.tree", -300, 1), mv("d.tree", -40, 2)]}))
     bad = U.edit_faults(files, BASES, tmp_path)
-    assert len(bad) == 1 and "d.tree" in bad[0] and "stroke 1" in bad[0]
+    assert len(bad) == 1 and "d.tree" in bad[0] and "-340" in bad[0]
+    # a later stroke of the ground alone that puts it back (units apply's restore) clears it
+    (ed / "b.json").write_text(json.dumps({"ops": [mv("d.tree", 340, 1)]}))
+    assert U.edit_faults(files, BASES, tmp_path) == []
+
+
+def test_a_placed_piece_keeps_its_height_through_any_later_seating():
+    from tools.places.seat import pin, seat_all
+    G = flat(100.0)
+    deck = {"id": "deck", "pos": [0, 0, 400.0], "rot": [0, 0, 0], "seat": {"mode": "ground", "dz": 0.0}}
+    hut = {"id": "hut", "pos": [0, 0, 650.0], "rot": [0, 0, 0], "seat": {"mode": "on", "on": "deck", "dz": 0.0}}
+    deck["seat"] = pin(deck, 400.0, G, {})
+    hut["seat"] = pin(hut, 650.0, G, {"deck": deck})
+    assert deck["seat"]["dz"] == 300.0 and hut["seat"]["dz"] == 250.0
+    assert seat_all([hut, deck], G) == 0 and hut["pos"][2] == 650.0
+    free = {"id": "f", "pos": [0, 0, 5.0], "seat": {"mode": "free"}}
+    assert pin(free, 50.0, G) == {"mode": "free"}
+
+
+def test_what_lay_on_the_source_ground_by_a_house_lies_on_ours():
+    from tools.places import xform
+    G = flat(0.0)
+
+    def piece(z):
+        return {"lo": [-20, -20, 0], "hi": [20, 20, 40], "m": xform.matrix([0, 0, z], [0, 0, 0], 1)}
+    assert U._on_src_ground(piece(20.0), G) == pytest.approx(20.0)                  # on the ground
+    assert U._on_src_ground(piece(300.0), G) is None                                # on the deck
+    assert U._on_src_ground(piece(150.0), G, stand=500.0) == pytest.approx(150.0)   # a fire pit under the deck
+    assert U._on_src_ground(piece(480.0), G, stand=500.0) is None                   # on the deck
 
 
 SEEKHAT = Path(__file__).resolve().parents[2] / "out" / "places" / "bundles" / "src.kingofthemurkmire.seekhatyollocation"
@@ -175,3 +243,61 @@ def test_the_hands_act_on_a_unit_and_refuse_a_body_without_its_deck():
         hands.thing(sc, "d.huta")
     assert hands.thing(sc, "d.huta", piece=True)["pieces"][0]["id"] == "d.huta"
     assert hands.thing(sc, "d.tree")["pieces"][0]["id"] == "d.tree"
+
+
+HIST_BASES = {
+    "hist": {"edid": "ArgoniaTreeHist01", "kind": "tree", "model": "t/histtree01.nif", "bounds": [[-900, -900, -100], [900, 900, 1600]]},
+    "swap": {"edid": "HistTree01", "kind": "static", "model": "t/histtree01.nif", "bounds": [[-900, -900, -100], [900, 900, 1600]]},
+    "root": {"edid": "HistRoot03", "kind": "tree", "model": "t/histroot03.nif", "bounds": [[-60, -340, -130], [90, 120, 540]]},
+    "gland": {"edid": "HistGland03", "kind": "tree", "model": "t/histgland03.nif", "bounds": [[-100, -100, -270], [100, 100, 300]]},
+    "vine": {"edid": "HistMossyVinesFloor01", "kind": "plant", "model": "t/histmossyvinesfloor01.nif", "bounds": [[-210, -240, -15], [260, 260, 10]]},
+    "sap": {"edid": "WaterPuddleHist", "kind": "activator", "model": "water/waterpuddle01.nif", "bounds": [[-150, -150, 0], [150, 200, 0]]},
+}
+
+
+def test_a_hist_is_one_unit_with_its_roots_glands_and_sap_and_is_seated_by_its_own_rule():
+    """A Hist the draft swapped for another base is found where the source's stood; what hung on the source's tree goes
+    back to its height on the trunk, a root that stood on the source's ground is sunk until its foot is in ours."""
+    bases = {**BASES, **HIST_BASES}
+    src = [row("s.hist", "plat", 0, 0, 700), row("s.root", "plat", 1000, 0, 300), row("s.gland", "plat", 300, 0, 1300),
+           row("s.vine", "plat", 2000, 0, 1500)]
+    for r, b in zip(src, ("hist", "root", "gland", "vine")):
+        r["base"], r["kind"] = b, HIST_BASES[b]["kind"]
+    # our ground is flat at 500 (the source's mound gone): the trunk stands lower against the gland, the root hangs
+    rows = [dict(row("d.trunk", "plat", 50, 0, 600), base="swap", kind="static", src=None),
+            dict(row("d.root", "plat", 1050, 0, 700), base="root", kind="tree", src="s.root"),
+            dict(row("d.gland", "plat", 350, 0, 1300), base="gland", kind="tree", src="s.gland"),
+            dict(row("d.sap", "plat", 50, 0, 500), base="sap", kind="activator", src=None)]
+
+    def bnd(b):
+        return (b.get("bounds") or [[-32, -32, 0], [32, 32, 64]]), True
+
+    class Sc(FakeScene):
+        def __init__(self):
+            self.bases, self.ground, self.space = bases, flat(500.0), "exterior"
+            self.refs = {r["id"]: r for r in rows}
+            self.pieces = U.pieces_of(rows, bases, bnd)
+            self.by_id = {p["id"]: p for p in self.pieces}
+            self.files = {"place": {"place_id": "t", "source_id": "t"}, "spaces": {"exterior": {"refs": rows}}}
+    src_ground = Ground({(c, d): [300.0] * 33 * 33 for c in range(-2, 2) for d in range(-2, 2)}, {}, None)
+    pl = U.Place.of("t", Sc(), U.pieces_of(src, bases, bnd), src_ground)
+    hist = [u for u in pl.units if u["kind"] == "hist"]
+    assert len(hist) == 1, [u["id"] for u in pl.units]
+    un = hist[0]
+    assert un["pieces"]["trunk"] == ["d.trunk"] and un["pieces"]["sap"] == ["d.sap"]
+    assert un["pieces"]["root"] == ["d.root"] and un["pieces"]["gland"] == ["d.gland"]
+    assert "s.vine" not in [i for v in pl.src_units[0]["pieces"].values() for i in v]   # too far from the trunk
+    m = U.measure(pl, un)
+    assert any("root HistRoot03" in f and "hangs" in f for f in m["flags"]), m["flags"]
+    assert any("gland HistGland03" in f and "off its place on the trunk (+100)" in f for f in m["flags"]), m["flags"]
+    assert not any("floor" in f for f in m["flags"])
+    dz = U.hist_reassembly(pl, un)
+    assert dz["d.gland"] == -100.0                  # back at the source's 600 over the trunk
+    assert dz["d.root"] == -(70.0 + U.BURY_MIN)     # its foot (570) sunk BURY_MIN into our ground
+
+
+def test_a_join_a_step_off_its_source_is_within_a_step_and_more_is_mismatched():
+    assert not U.mismatched(-152.9, -168.9000001)          # 16.0000001: a step, to float noise
+    assert not U.mismatched(73.5, 57.4)                    # 16.1
+    assert U.mismatched(-26.4, 4.8) and U.mismatched(59.2, 10.2)
+    assert not U.mismatched(None, 3.0)

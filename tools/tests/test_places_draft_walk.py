@@ -698,3 +698,10 @@ def test_rehome_gives_a_bedless_sleeper_a_bed_of_a_room_copied_from_another_sour
     assert walk.rehome("p", W, {}, src, p, log=lambda *_: None) == 1
     g = walk.io.read_jsonl(p / "people.jsonl")[0]
     assert g["bed"]["space"] == "Bunk" and g["bed"]["ref"] == "b1" and g["routine"][0]["at"]["ref"] == "b1"
+
+
+def test_a_piece_from_the_source_water_stands_on_carried_ground_and_only_dry_land_in_our_water_moves():
+    from tools.places.draft.run import water_kept
+    assert water_kept(True, False)        # the source's water, our (carried) ground: kept, its legs sunk
+    assert water_kept(True, True) and water_kept(False, False)
+    assert not water_kept(False, True)    # the source's dry land in our water: nudged or dropped

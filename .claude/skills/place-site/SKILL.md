@@ -16,8 +16,22 @@ Step 3 of the place path ([place-system](../place-system/SKILL.md)). Stages: `fi
    at its true size. If the record's position does not serve, set `draft.anchor` `[x, y]` to the point the
    source's middle should take. Set `draft.rot_deg` only when the search turns the town against the way it faces
    its water.
-3. Our water and land never change to fit the source. Ground a place needs (a pad, a rise, a landing) is asked for
-   in the record and shaped by the world's terrain (skill `world-build`).
+3. Our water never changes to fit the source, and our land changes only inside the place's footprint (below).
+   Ground a place needs beyond its footprint (a pad, a landing) is asked for in the record and shaped by the world's
+   terrain (skill `world-build`).
+
+## 1b. Carry the source's ground, then plan the units on it
+
+The source's builder shaped the land under the town and built on it, so the town fits only the ground it stood on.
+`python -m tools.places draft ground <place_id>` (`--dry` first: read the relief, the band, the source-water area
+and the largest change) carries the source's relief under the place's footprint (the hull of the carried pieces,
+grown 256) as land rows `by` "ground", blended into our ground over a band no steeper than the source's own
+steepest slope (or 35 degrees), each cluster reading the source through its own map from the fit. Nothing outside
+the footprint and band changes, no point crosses our water line, no change exceeds 600 (or place.json `draft.ground_cap`), the source's water is not
+brought (its area is reported: pieces that stood in it need a decision), and no cell of another place is touched.
+Then put the carried pieces at the source's own levels (source height minus the source's reference level, plus
+ours), run `draft sap` again (its hollow is dug on top), and plan the units on the carried ground (section 3). The
+look tool, `units`, the seat and the build all read the patched ground from `land.jsonl`.
 
 ## 2. Read the fit
 
@@ -46,6 +60,11 @@ source's own arrangement, where every piece rests on what it should, and carried
   dock, the ground).
 - A boat, a rack, a stall is a small unit. Trees, rocks, roots and ground cover belong to the ground and are judged
   against it, never moved with a building; a plant standing on a deck is part of that deck's unit.
+- A **Hist** is one unit (`hist.01`): its trunk with its roots, glands, flowers, vine floors, the lights and chimes in
+  its crown and its sap pool, in the source's arrangement about the trunk (a Hist the draft swapped stands in for the
+  source's). Its row flags a root that stood on the source's ground and hangs over ours, and anything off its height
+  on the trunk; `units apply <place> hist.01` seats it by that rule. Keep the source's own Hist model where there is
+  a placeable one (`HistTree01` is `ArgoniaTreeHist01`'s), so what hung on it meets its limbs.
 
 Each unit is measured on our ground: its standing level (floor or deck) against the highest ground under its
 footprint, each foot against the ground under it and its leg (how far it reaches below the standing level in the
@@ -61,6 +80,14 @@ after moving a structure that carries or meets a span, and mend each end that is
 - A unit is sunk, moved or turned whole: in the studio scene, name it by its unit id (`look sink
   house.SeekhatEldersHut 40`, `look move walkway.04 dx dy dz`), check with `probe` and `section`, then `look commit`
   (`place-look`). A house's body is never moved without its deck; `--piece` moves the one piece named.
+- The layout is planned for the place as a whole (`units plan <place>`: each unit put back together at the source's
+  levels within it, then one offset) and written unit by unit with `units apply <place> <unit> ...`, through the
+  same path as `look commit`: what lay on the source's ground by or under a house (a net, a fire pit) lies on ours,
+  and every tree, fern, rock and root an earlier edit of a building moved goes back to its own seat on the ground.
+  Commit the place files by path, then look: the pictures draw what is committed. Apply one house at a time and
+  survey it before the next; the spans follow the houses.
+- What an agent's edit or the owner's save placed stays where it was put: its seat is pinned to its height
+  (`seat.pin`) and every stage keeps it (`hands.keep_placed`).
 - `draft check` refuses a house moved apart from its platform (its body's gap to its own deck changed by more than
   8 units from the source's) and a tree or root moved by an edit of a building.
 - A walked level with its own flights stands as one body: the `seating` stage keeps the source's relative heights of
