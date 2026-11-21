@@ -788,7 +788,7 @@ export class Panels {
   intro() {
     const o = $('#intro'); o.hidden = false;
     o.innerHTML = `<div class="sheet" role="dialog" aria-label="How to use the studio"><h2>Place Studio</h2><ul>
-      <li>${ICON.move}<span><strong>Look around with your fingers.</strong> One finger turns the view, two fingers drag, pinch and twist.</span></li>
+      <li>${ICON.move}<span><strong>Look around with your fingers.</strong> One finger turns the view, two fingers drag, pinch and twist. Or use the two thumb sticks at the bottom, as in a game: the left one moves, the right one turns and looks up and down; Walk keeps you at a person's eye height on the ground.</span></li>
       <li>${ICON.select}<span><strong>Work with the pen.</strong> Tap to select, draw round things to select several, draw paths and land. Your palm and fingers never change anything while the pen is in use.</span></li>
       <li>${ICON.search}<span><strong>Copy from the source.</strong> Tap something in the source place on the right, then tap our place where it should go.</span></li>
       <li>${ICON.history}<span><strong>Every change is a fault</strong> unless you mark it a taste call in the bar under the views. Say what was wrong in that bar too: one note for all the changes since your last note. Undo and redo are at the top.</span></li>

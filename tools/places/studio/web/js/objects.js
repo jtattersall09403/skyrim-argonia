@@ -166,7 +166,7 @@ function sendInstances(mesh, n) {
 
 // Models that have arrived wait here and are switched on a few at a time, their textures sent to the GPU first,
 // so a burst of arrivals never stalls a frame (view.js calls drainReady before each draw).
-const ready = { jobs: [], push(fn, parts, layer) { this.jobs.push({ fn, parts, layer }); } };
+const ready = { jobs: [], push(fn, parts, layer) { if (!layer?.disposed) this.jobs.push({ fn, parts, layer }); } };
 const sent = new WeakMap(); // renderer -> WeakSet of textures and materials already on its GPU
 // Shader programs are linked off the main thread (compileAsync, parallel compile) before a model is switched
 // on: a link done inside a draw stalls the page for a second or more on a slow GPU.
@@ -361,7 +361,27 @@ class Group {
   }
 }
 
+// Leaving a place: every model, material and texture loaded so far is let go of, on the GPU and in memory, and the
+// models still queued are dropped, so the next place starts from what the device had before the last one (a tablet
+// that has drawn Helstrom has little left). Called after the old place's layers are disposed.
+export function releaseModels() {
+  queue.length = 0; ready.jobs.length = 0;
+  for (const p of meshCache.values()) p.then((parts) => { for (const x of parts || []) x.geometry.dispose(); });
+  meshCache.clear();
+  for (const m of matCache.values()) m.dispose();
+  matCache.clear();
+  for (const p of texCache.values()) p.then((t) => { if (t) { t.dispose(); t.image?.close?.(); } });
+  texCache.clear();
+}
+
 export class ObjectLayer {
+  // Leaving the place: its instanced meshes let go of; models that arrive later for it are not switched on.
+  dispose() {
+    this.disposed = true;
+    for (const g of this.groups.values()) g.dispose();
+    for (const m of [this.primBoxes, this.primSpheres, this.bulbs, this.rings]) if (m) { this.root.remove(m); m.dispose(); }
+    this.groups.clear(); this.root.removeFromParent();
+  }
   constructor(origin, bases) {
     this.origin = origin; this.bases = bases; this.root = new THREE.Group(); this.groups = new Map();
     this.rangeScale = 1; this.refs = []; this.byId = new Map(); this._dirty = true; this.onDirty = () => {};
