@@ -12,8 +12,18 @@ import re
 import numpy as np
 
 NOTHING, LAND, WATER, OTHER, HELPER = 0, 1, 2, 3, 4
-MIN_SEEN = 0.35       # a capture shows under this share of its subject: failed
-LENS = 0.5            # one piece other than the subject over this share of the frame: it covers the lens
+# Every judgement's threshold, in one place (docs/design/agent-view.md, What a capture guarantees; proved by
+# `look truth`). A capture with a subject fails when:
+MIN_SEEN = 0.35       # under this share of its subject is seen (visible and in the frame, of its whole projection)
+MIN_FILL = 0.03       # the subject fills under this share of the frame and some other piece fills more than it
+LENS = 0.5            # one piece other than the subject covers over this share of the frame
+NEAR = 200.0          # a piece other than the subject within this many units of the camera ...
+NEAR_SHARE = 0.04     # ... covers over this share of the frame (a leaf, a sail, a post across the lens)
+ON_SUBJECT = 1.5      # the camera stands inside its subject's box or on it (up to this many eye heights over its top)
+# `seen` counts the subject's pixels at the id pass's own resolution (at most 768 wide) against the subject drawn
+# alone at that resolution in the same frame (plus its part outside the frame from a wider pass): occlusion by thin
+# branches is counted pixel for pixel; the error is about one pixel along the subject's outline (SEEN_ERROR).
+SEEN_ERROR = 0.02
 SOLID_KINDS = {"building", "static", "rock", "tree", "door", "furniture", "container", "activator", "clutter"}
 
 # Things the game never draws: editor markers, collision boxes, triggers, occlusion planes (agent.js isHelper).
@@ -118,9 +128,12 @@ def _size(p: dict) -> float:
 
 
 def score(ids: np.ndarray, table: list, id0: int, subject: set[str], wide: dict | None, names: dict,
-          inside: str | None = None, ground_needed: bool = True, part: bool = False) -> dict:
+          inside: str | None = None, ground_needed: bool = True, part: bool = False, near: dict | None = None,
+          on_subject: str | None = None) -> dict:
     """The capture's score. names: ref id -> {edid, kind} for the occluder list. part: the view frames a part of its
-    subject (a tall thing's base), so what is seen is measured against the subject inside the frame."""
+    subject (a tall thing's base), so what is seen is measured against the subject inside the frame. near: ref id ->
+    its distance from the camera, for the pieces that cover the frame. on_subject: why the camera stands on or in its
+    subject."""
     h, w = ids.shape
     n = float(w * h)
     vals, counts = np.unique(ids, return_counts=True)
@@ -142,14 +155,20 @@ def score(ids: np.ndarray, table: list, id0: int, subject: set[str], wide: dict 
             sky += c
         elif v == HELPER:
             helper += c
-    total = (wide or {}).get("total") or 0.0
-    if part:
-        total = (wide or {}).get("in_frame") or 0.0
+    wide = wide or {}
+    alone = wide.get("alone")
+    if alone is not None:   # the subject alone at this resolution in this frame, plus its part outside the frame
+        outside = max(0.0, (wide.get("total") or 0.0) - (wide.get("in_frame") or 0.0))
+        total = alone + (0.0 if part else outside)
+        in_frame = alone
+    else:
+        total = wide.get("in_frame") if part else wide.get("total")
+        total, in_frame = total or 0.0, wide.get("in_frame", 0)
     seen = min(1.0, subj / total) if total else 0.0
     occ = sorted(by.items(), key=lambda kv: -kv[1])[:3]
     res = {
         "subject_seen": round(seen, 3),
-        "subject_in_frame": round(min(1.0, (wide or {}).get("in_frame", 0) / total), 3) if total else 0.0,
+        "subject_in_frame": round(min(1.0, in_frame / total), 3) if total else 0.0,
         "subject_fills": round(subj / n, 3),
         "land": round(land / n, 3), "water": round(water / n, 3), "sky": round(sky / n, 3),
         "occluders": [{"piece": rid, "edid": (names.get(rid) or {}).get("edid"), "kind": (names.get(rid) or {}).get("kind"),
@@ -169,6 +188,16 @@ def score(ids: np.ndarray, table: list, id0: int, subject: set[str], wide: dict 
     if occ and occ[0][1] / n > LENS:
         o = res["occluders"][0]
         why.append(f"{o['edid'] or o['piece']} ({o['kind']}) covers {o['share']:.0%} of the lens")
+    elif near:
+        close = [(rid, c) for rid, c in by.items() if c / n > NEAR_SHARE and near.get(rid, 1e9) < NEAR]
+        if close:
+            rid, c = max(close, key=lambda kv: kv[1])
+            why.append(f"{(names.get(rid) or {}).get('edid') or rid} lies {near[rid]:.0f} u from the lens and covers {c / n:.0%} of it")
+    if subject and total and subj / n < MIN_FILL and occ and occ[0][1] > subj:
+        o = res["occluders"][0]
+        why.append(f"the subject fills {subj / n:.1%} of the frame and {o['edid'] or o['piece']} fills more ({o['share']:.0%})")
+    if subject and on_subject:
+        why.append(on_subject)
     res["capture"] = "failed" if why else "good"
     if why:
         res["why"] = "; ".join(why)

@@ -37,7 +37,12 @@ def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
 def _out(place: str, name: str) -> str:
     d = LOOK_OUT / place
     d.mkdir(parents=True, exist_ok=True)
-    return str(d / f"{time.strftime('%H%M%S')}{int(time.time() * 1000) % 1000:03d}-{name}.png")   # two looks in one second keep both
+    global _SEQ
+    _SEQ += 1   # two looks in one millisecond keep both: a running number besides the time
+    return str(d / f"{time.strftime('%H%M%S')}{int(time.time() * 1000) % 1000:03d}-{_SEQ % 10000:04d}-{name}.png")
+
+
+_SEQ = 0
 
 
 def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) -> str:
@@ -196,6 +201,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     raw_shot = d.shot
     seen_past: dict = {}
     spent: dict = {}   # where a view's seconds went: the page's shot (and its ids), then the score
+    counted: dict = {}   # the last shot's census: pieces sent, loaded, drawn as stand-ins, drawn in the frame
 
     def past_trees(c, th):
         """The canopy cut over the subject's ground: always with --no-canopy; by itself from high or above when the
@@ -220,6 +226,9 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         t1 = time.time()
         img_, r_ = raw_shot(c | {"ids": True, "subject": [p_["id"] for p_ in (th_ or {}).get("pieces", [])][:400]})
         t2 = time.time()
+        if r_.get("census"):
+            counted.clear()
+            counted.update(r_["census"])
         if "ids" in r_:
             r_["score"], ids_ = judge(sc, c, r_, th_, inside)
             img_ = capture.hatch(img_, ids_, r_["table"], r_["id0"], helper_label(sc))
@@ -367,10 +376,31 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
         res["canopy"] = seen_past
     if mesh_facts and not keep:
         res["mesh"] = {k: v for k, v in mesh_facts.items() if k not in ("built", "build")}
+    if counted and not keep:
+        res["census"] = census(sc, counted, d)
     if not keep:
         res["timing"] = timing | spent | {"total_s": round(time.time() - t0, 2)}
         res["size"] = list(img.size)
     return res
+
+
+def census(sc, c: dict, d=None) -> dict:
+    """What exists and what was drawn, said loudly: the page's count of pieces sent against the scene's (the numbers'),
+    every model drawn as a stand-in with why, and the page's own errors since the last answer."""
+    out = dict(c) | {"scene_pieces": len(sc.pieces)}
+    warn = []
+    if c.get("sent") is not None and c["sent"] != len(sc.pieces):
+        warn.append(f"the page holds {c['sent']} pieces, the numbers {len(sc.pieces)}: they are not of one state")
+    if c.get("failed"):
+        warn.append(f"{c['stand_in']} pieces drawn as stand-in boxes, their model would not load: "
+                    + ", ".join(f['model'] for f in c['failed'][:6]))
+    errs = getattr(d, "page_errors", None) if d is not None else None
+    if errs:
+        out["page_errors"] = errs[:10]
+        errs.clear()
+    if warn:
+        out["warn"] = warn
+    return out
 
 
 def units_aware(sc, place: str) -> None:
@@ -407,8 +437,23 @@ def judge(sc, c, r, th, inside) -> tuple[dict, np.ndarray]:
     if not c.get("ortho"):
         ins = _blocker(sc, inside)(c["pos"], (c.get("canopy") or {}).get("z"))
     subj = {p["id"] for p in (th or {}).get("pieces", [])}
+    near, on = {}, None
+    if not c.get("ortho"):
+        pos = np.asarray(c["pos"], float)
+        n = float(scored.size)
+        vals, counts = np.unique(scored, return_counts=True)
+        for v, k in zip(vals.tolist(), counts.tolist()):   # how far each piece that covers the frame lies from the lens
+            if v >= r["id0"] and v - r["id0"] < len(r["table"]) and k / n > capture.NEAR_SHARE:
+                p = sc.by_id.get(r["table"][v - r["id0"]][0])
+                if p is not None:
+                    lo, hi = geom.aabb(p)
+                    near[p["id"]] = float(np.linalg.norm(np.maximum(0, np.maximum(np.asarray(lo) - pos, pos - np.asarray(hi)))))
+        if th and th.get("pieces") and not c.get("part"):   # taken from on or inside its own subject
+            lo, hi = np.asarray(th["lo"], float), np.asarray(th["hi"], float)
+            if np.all(pos[:2] >= lo[:2]) and np.all(pos[:2] <= hi[:2]) and lo[2] <= pos[2] <= hi[2] + capture.ON_SUBJECT * geom.EYE:
+                on = "the camera stands on or inside its own subject"
     s = capture.score(scored, r["table"], r["id0"], subj, r.get("wide"), sc._names, ins,
-                      ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")))
+                      ground_needed=not inside and not c.get("ortho"), part=bool(c.get("part")), near=near, on_subject=on)
     return s, ids
 
 

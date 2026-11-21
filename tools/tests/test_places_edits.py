@@ -223,6 +223,18 @@ def test_a_malformed_op_is_an_edit_error():
             edits.check_op(op)
 
 
+def test_land_rows_of_one_cell_add():
+    """Two land rows of one cell add (the ground reads them so); a patch is made against their sum and leaves one row."""
+    files = copy.deepcopy(PLACE)
+    files["land"] = [{"cell": [5, 5], "verts": [[1, 1, -40.0], [1, 2, -40.0]], "why": "first"},
+                     {"cell": [5, 5], "verts": [[1, 1, -40.0]], "why": "second"}]
+    with pytest.raises(EditConflict):   # the vertex is at -80, not -40
+        apply(files, [{"n": 1, "op": "land.patch", "space": "exterior", "cell": [5, 5], "verts": [[1, 1, -40.0, -60.0]]}])
+    out = apply(files, [{"n": 1, "op": "land.patch", "space": "exterior", "cell": [5, 5], "verts": [[1, 1, -80.0, -60.0]]}])
+    rows = [r for r in out["land"] if r["cell"] == [5, 5]]
+    assert len(rows) == 1 and sorted(rows[0]["verts"]) == [[1, 1, -60.0], [1, 2, -40.0]]
+
+
 STOCK = FIX / "stock"   # the content ops (identity.edit, stock.*) on a people and a stock source (base.json)
 STOCK_BASE = json.loads((STOCK / "base.json").read_text())
 

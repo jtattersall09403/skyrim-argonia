@@ -28,7 +28,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLES = ROOT / "out" / "places" / "bundles"
-PLACES = ROOT / "newworld" / "places"
+PLACES = Path(os.environ.get("PLACES_DIR") or ROOT / "newworld" / "places")   # the look audit points it at its golden scene
 CELL = 4096.0
 STEP = CELL / 32
 NO_WATER = -1.0e6

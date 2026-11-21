@@ -23,7 +23,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PLACES = ROOT / "newworld" / "places"
+PLACES = Path(os.environ.get("PLACES_DIR") or ROOT / "newworld" / "places")   # the look audit points it at its golden scene
 BUNDLES = ROOT / "out" / "places" / "bundles"
 # A bundle ref's kind as the record type the build's room rule reads (tools.places.build.kind_of, inverted)
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
@@ -66,9 +66,10 @@ def committed(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> 
     """The place files as committed: (a places root holding <place_id>/, its id). Inside a git work tree that is
     a snapshot of HEAD:<places>/<place_id> under out/places/snapshots/, keyed by the path's tree sha, so a redraft
     in the working tree is never seen until it is committed. Outside git (tests), the folder itself and a hash of
-    its files."""
+    its files. PLACES_DRAFT_FROM=worktree (the look tool's own studio) reads the working tree as it stands, as the
+    look tool's numbers do, so a picture and its numbers are of one state."""
     top = git(places, "rev-parse", "--show-toplevel", text=True)
-    if top.returncode == 0:
+    if top.returncode == 0 and os.environ.get("PLACES_DRAFT_FROM") != "worktree":
         rel = (places / place_id).resolve().relative_to(Path(top.stdout.strip()).resolve()).as_posix()
         t = git(places, "rev-parse", f"HEAD:{rel}", text=True)
         if t.returncode != 0:

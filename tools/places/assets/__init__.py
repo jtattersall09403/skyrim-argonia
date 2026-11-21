@@ -76,7 +76,7 @@ def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
         else:
             try:
                 raw = resolver().read(k) if raw is None else raw
-                data, meta = _mesh.build(_mesh.dump(raw, cache.root()), level)
+                data, meta = _glb_as_is(raw) if raw[:4] == b"glTF" else _mesh.build(_mesh.dump(raw, cache.root()), level)
             except _mesh.NotNow as e:  # not the mesh's fault: a placeholder for now, under a name no later call reads
                 data, meta = _mesh.placeholder(bounds, str(e))
                 meta["retry"] = True
@@ -88,6 +88,19 @@ def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
         cache.write(side, json.dumps(meta).encode())
         cache.write(glb, data)
     return meta | {"glb": str(glb)}
+
+
+def _glb_as_is(raw: bytes) -> tuple[bytes, dict]:
+    """A model file that is already a GLB (the look audit's golden scene, tools/tests/fixtures/look_truth) is served
+    as it is; its facts from its own accessors."""
+    from tools.places.assets import glb
+    j, _ = glb.read(raw)
+    pos = [j["accessors"][p["attributes"]["POSITION"]] for m in j.get("meshes", []) for p in m["primitives"]]
+    tris = sum(j["accessors"][p["indices"]]["count"] // 3 for m in j.get("meshes", []) for p in m["primitives"] if "indices" in p)
+    lo = [min(a["min"][i] for a in pos) for i in range(3)] if pos else [-32] * 3
+    hi = [max(a["max"][i] for a in pos) for i in range(3)] if pos else [32] * 3
+    return raw, {"level": 0, "tris": tris, "tris_full": tris, "shapes": len(pos), "textures": [], "placeholder": False,
+                 "bounds": [lo, hi]}
 
 
 def mesh(model: str, level: int = 0, bounds=None) -> Path:
