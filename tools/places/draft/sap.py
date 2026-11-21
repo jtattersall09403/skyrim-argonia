@@ -146,8 +146,15 @@ def offset(t: dict, base: dict, boxes: list[tuple], given=None, G=None) -> tuple
     rad, tr = reach(base, s), trunk_r(base, s)
     x, y = t["pos"][0], t["pos"][1]
 
-    def bank(o):
-        return max(0.0, relief(G, x + o[0], y + o[1], SEAT_REACH * rad) - PATCH_MAX) if G is not None else 0.0
+    def bank(o):            # what the dig would leave standing over the sap with the pool there (dish's own reckoning)
+        if G is None:
+            return 0.0
+        from tools.places.seat import seat_all
+        p = pool_for("", t, base, o)
+        seat_all([p], G)
+        got: list = []
+        dish(G, [t, p], {t["base"]: base, POOL: {}}, set(), got)
+        return got[0]["bank"] if got else 0.0
     foot = (x, y, tr)
     cands = [(0.0, 0.0)] + [(round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.cos(a * math.pi / 4), 1),
                              round(min(k * max(0.0, rad - tr), 0.8 * rad) * math.sin(a * math.pi / 4), 1))
