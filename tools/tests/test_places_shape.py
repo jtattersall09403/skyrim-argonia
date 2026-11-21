@@ -253,3 +253,13 @@ def test_legs_on_a_mound_hold_only_when_the_mound_itself_stands():
     for held, want in (({"r"}, "on its own legs"), (set(), "mid-air")):
         rows = _ends(shape.joints([("d", deck)], [("d", deck), ("r", rock)], Flat(-1000), held=held))
         assert rows and all(r["verdict"].startswith(want) for r in rows), (held, [r["verdict"] for r in rows])
+
+
+def test_a_span_after_one_crossed_by_a_wall_still_reads_its_legs_by_the_ids_that_stand():
+    """The held ids reach every span's ends, not only the first span's: a later deck's legs on a standing rock."""
+    c, w = C["legs"], C["walls"]
+    bw, wall = posed("bw", w["boardwalk"], (0, 0, 0)), posed("w", w["wall"], (300, 0, 0))
+    deck, rock = posed("d", c["model"], (9000, 0, 0)), posed("r", c["rock"], (9000, 0, -c["legs"]))
+    rows = _ends(shape.joints([("bw", bw), ("d", deck)], [("bw", bw), ("w", wall), ("d", deck), ("r", rock)],
+                              Flat(-1000), {"bw": "walk", "w": "house"}, walls={"w"}, held={"r", "w"}))
+    assert [r["verdict"] for r in rows if r["span"] == "d"] == ["on its own legs"] * 2, rows
