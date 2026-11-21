@@ -1,0 +1,877 @@
+{
+ "save_id": "agent-20261121T205527",
+ "place_id": "outpost-m6-m66",
+ "name": "the reed hide made to read as told: the lone tree swapped for King of the Murkmire's bare dead swamp tree, woven reed screens on the hide's two sides, reeds banked round it, cut sticks against it; the landing's barrel and crate that stood tilted in the water pruned; three tall source cliffs west of the Hist pruned (13-14 m faces whose flat tops hung over our lower ground, one with its foot 1.5 m in the air)",
+ "at": "2026-11-21T20:55:27Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.B7NVMGDE97X3P7QPXGW008QVC7",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.B7NVMGDE97X3P7QPXGW008QVC7",
+    "base": "King of the Murkmire.esp:672FEB",
+    "kind": "clutter",
+    "pos": [
+     -41913.23,
+     -538713.33,
+     26.91
+    ],
+    "rot": [
+     -1.5707965,
+     -0.57079643,
+     2.96706
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FEC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.V9W0V10H5GJVW7NZZ8YDWTEH8T",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.V9W0V10H5GJVW7NZZ8YDWTEH8T",
+    "base": "King of the Murkmire.esp:672FE6",
+    "kind": "clutter",
+    "pos": [
+     -41852.23,
+     -538747.84,
+     33.0
+    ],
+    "rot": [
+     0,
+     0,
+     6.09626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FED",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF11DEADTREE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.TF11DEADTREE",
+    "base": "King of the Murkmire.esp:15B1ED",
+    "kind": "tree",
+    "pos": [
+     -43260.0,
+     -542140.0,
+     108.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the lone dead tree the reed hide stands by, west of the weir (record hooks and dangers; main quest 3's vision): King of the Murkmire's tall dead swamp tree",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF51DEADTREE",
+    "base": "King of the Murkmire.esp:15B1EF",
+    "kind": "tree",
+    "pos": [
+     -43260.0,
+     -542140.0,
+     88.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 0.75,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the lone dead tree the reed hide stands by, west of the weir (record hooks; main quest 3's vision): King of the Murkmire's dead swamp tree, bare-limbed, of the place's own set",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF52SCREEN",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -43110.0,
+     -542125.0,
+     144.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a woven reed screen on the hide's side, hiding it from the camp (record: a reed hide): King of the Murkmire's woven Saxhleel fence",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF53SCREEN",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42890.0,
+     -542125.0,
+     123.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a woven reed screen on the hide's side, hiding it from the camp (record: a reed hide): King of the Murkmire's woven Saxhleel fence",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF54SCREEN",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -43110.0,
+     -542475.0,
+     112.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a woven reed screen on the hide's side, hiding it from the camp (record: a reed hide): King of the Murkmire's woven Saxhleel fence",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF55SCREEN",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -42890.0,
+     -542475.0,
+     105.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a woven reed screen on the hide's side, hiding it from the camp (record: a reed hide): King of the Murkmire's woven Saxhleel fence",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF56REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43244.3,
+     -542211.1,
+     140.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF57REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43213.6,
+     -542089.3,
+     148.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.37
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF58REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43120.6,
+     -541982.1,
+     140.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.74
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 11,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF59REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42982.6,
+     -542040.6,
+     139.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.11
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 12,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF60REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42857.0,
+     -542036.3,
+     125.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.48
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 13,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF61REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42728.2,
+     -542095.7,
+     112.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.567
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF62REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42746.0,
+     -542244.6,
+     98.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.937
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF63REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42706.9,
+     -542363.9,
+     89.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.307
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF64REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42728.2,
+     -542504.3,
+     80.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.677
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 17,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF65REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42876.1,
+     -542528.6,
+     99.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.047
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 18,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF66REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -42979.9,
+     -542599.3,
+     96.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.134
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 19,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF67REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43120.6,
+     -542617.9,
+     103.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.504
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 20,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF68REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43185.1,
+     -542482.6,
+     117.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.874
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 21,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF69REED",
+    "base": "Black Marsh.esm:11DC5A",
+    "kind": "static",
+    "pos": [
+     -43281.9,
+     -542402.6,
+     126.7
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.244
+    ],
+    "scale": 3.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "reeds banked round the hide (record: a reed hide by a lone dead tree): Black Marsh's reeds",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 22,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF70STICKS",
+    "base": "King of the Murkmire.esp:1AD5D3",
+    "kind": "clutter",
+    "pos": [
+     -43150.0,
+     -542180.0,
+     152.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "cut cypress sticks against the hide (Ree-An-Wo's own bundle)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 23,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF71STICKS",
+    "base": "King of the Murkmire.esp:1AD5D3",
+    "kind": "clutter",
+    "pos": [
+     -42850.0,
+     -542410.0,
+     111.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "cut cypress sticks against the hide (Ree-An-Wo's own bundle)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 24,
+   "stroke": 3,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.15BYA92ND428H8QEMNJGHR3ASX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.15BYA92ND428H8QEMNJGHR3ASX",
+    "base": "King of the Murkmire.esp:071A84",
+    "kind": "rock",
+    "pos": [
+     -46544.66,
+     -538529.93,
+     387.92
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 2.34,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD6E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 25,
+   "stroke": 4,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.YEJ1Z1JFVXC0YVJJYY23D8QRFJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.YEJ1Z1JFVXC0YVJJYY23D8QRFJ",
+    "base": "King of the Murkmire.esp:02ACCB",
+    "kind": "rock",
+    "pos": [
+     -46536.92,
+     -539687.98,
+     40.85
+    ],
+    "rot": [
+     0,
+     0,
+     6.17945
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:044E18",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 26,
+   "stroke": 5,
+   "at": "2026-11-21T20:55:27Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.G2G59CNBHHSXYM8TDQY8MF7ZVG",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.G2G59CNBHHSXYM8TDQY8MF7ZVG",
+    "base": "King of the Murkmire.esp:02ACD1",
+    "kind": "rock",
+    "pos": [
+     -45873.55,
+     -538477.55,
+     217.11
+    ],
+    "rot": [
+     0,
+     0,
+     6.27945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DD6F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 6,
+   "at": "2026-11-21T20:55:27Z"
+  }
+ ]
+}
