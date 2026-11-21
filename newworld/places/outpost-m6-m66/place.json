@@ -145,6 +145,11 @@
     "unit": "added.small.02",
     "flag": "foot not reaching the ground",
     "why": "a scale-hide tent standing on the waterside cypress platform's deck, not on the ground"
+   },
+   {
+    "unit": "added.small.03",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the north cypress platform's deck, not on the ground"
    }
   ],
   "accepted_checks": [
@@ -248,7 +253,8 @@
   "agent-20261121T163626",
   "agent-20261121T170630",
   "agent-20261121T172846",
-  "agent-20261121T182331"
+  "agent-20261121T182331",
+  "agent-20261121T184007"
  ],
  "sap": {
   "added": []
