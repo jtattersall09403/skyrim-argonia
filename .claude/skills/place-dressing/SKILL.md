@@ -29,10 +29,14 @@ tree. A source's own hanging lanterns come with their cluster.
 
 ## Hist sap
 
-Every living Hist stands in a pool of its own sap (King of the Murkmire's `WaterPuddleHist` with
-`DefaultHistSapWater`), never the cell's water. The `sap` stage centres, sizes and seats one on each living Hist and
-lowers the ground inside it (`land.jsonl` rows `by` "sap"); a pool placed by hand on the trunk is kept. Run `sap`
-after a Hist is added, moved, swapped or dies. `draft check` fails a living Hist with no pool.
+Every living Hist has a still pool of its own amber sap at its roots: our `ArgoniaHistSapPool` (vanilla's round
+puddle) carrying our water type `ArgoniaHistSapWater` (tools/places/own_bases.py), in a bowl the `sap` stage digs
+(`land.jsonl` rows `by` "sap"): the surface a few units under a level rim, the floor falling smoothly to 64 units at
+the middle, so the water has depth to shade. Never on open water: a Hist standing in our water has its pool on the
+nearest dry bank at its foot, or none (place.json `sap.none`, and the draft's plan says how the place shows its
+sap). A pool placed by hand on the trunk is kept. Run `sap` after a Hist is added, moved, swapped or dies. `draft
+check` fails a living Hist with no pool that `sap.none` does not list. How the pool must read in the game, and which
+field to change if it does not: [dressing](../../../docs/design/dressing.md), Hist sap.
 
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
 water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an
