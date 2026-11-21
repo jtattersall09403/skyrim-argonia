@@ -15,3 +15,10 @@ def test_stock_reads_no_plugin_for_our_own_bases():
     from tools.places.own_bases import PLUGIN
     from tools.places.stock.plan import plugins_of
     assert PLUGIN not in plugins_of([f"{PLUGIN}:000A01", "Skyrim.esm:000001"])
+
+
+def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
+    from tools.places.own_bases import WATER
+    for w in WATER.values():
+        for name in ("Opacity", "DamagePerSecond"):   # byte and ushort in the WATR record: the build reads an integer
+            assert isinstance(w["set"].get(name, 0), int), name
