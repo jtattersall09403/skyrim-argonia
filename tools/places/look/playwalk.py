@@ -1,13 +1,17 @@
-"""`look <place> playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--rooms]` and `look <place> in <room>
+"""`look <place> playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--full] [--rooms]` and `look <place> in <room>
 playwalk`: walk a place as a player would, along routes planned on the place's BUILT walkable mesh (the shortest walk
 over its triangles, so up the stairs and over the bridges), with a station every few steps and at every stair foot
 and head, bridge end and middle, doorway, sharp turn and deck edge; at each station the player's looks (ahead, down,
 up, left, right, back, and the two forward diagonals where the way is tricky) from a person's eye on the mesh.
 
+With no names the walk is a TOUR: one closed walk (two or three when the place is large, one an island) from the
+arrival through the centre past every door, stall, station, the Hist and its pool and every quest spot once, with ahead
+and ahead-down at an ordinary station and the full set only where it tells something (`tour_looks`); `--full` plans
+every route to every thing as before.
+
 Every look is judged by its id buffer. A capture fault (the camera in a piece, a lens filled by one near thing, no
 ground drawn) is retried by nudging the camera along the walk and sideways on the mesh; what the same evidence says
-of the PLACE (the walk passes through a solid piece, a door opens onto a wall, no floor under a bridge's middle, a
-ceiling lower than a person, the void seen through a room's shell) is reported as a fault of the place.
+of the PLACE (the walk passes through a solid piece, a door opens onto a wall, no floor under a bridge's middle, the void seen through a room's shell) is reported as a fault of the place.
 
 Out: LOOK_OUT/<place>/playwalk/<route>/ (strips of at most 8 stations, a forward-only filmstrip, a map, tiles/ with
 every look full size, table.txt and table.json). Pure parts (planning, stations, the classifier, dedup, the room
@@ -46,11 +50,23 @@ REACH_Z = 220.0
 OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
 EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this over the eye: its roof is at head height
 DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
-TOOL = 6             # the judging rules version: a route shot under older rules is shot again
+TOUR_STRIDE = 768.0   # a station every this many units on a tour
+TIMES = {"page": 0.0, "judge": 0.0, "save": 0.0}   # seconds a run spent in the page, judging and saving
+TILE = (960, 720)     # the size of every look: detail a reader can judge (a tour of a village is about ten minutes)
+JPEG_Q = 88           # strips and the forward filmstrip are JPEG at this quality (tiles stay PNG)
+TOUR_SPLIT = 90000.0  # a tour longer than this (units walked) is cut into two or three
+FULL_GAP = 700.0      # a bridge, walkway, stair or ramp event this near an earlier full-set station gets the short set
+SIDE_NEAR = 600.0     # a building this near a station to one side adds that side's look
+AVOID = 2.0           # a stretch already walked costs this many times as much to walk again
+SPUR_MIN = 256.0      # an unwalked stretch of street shorter than this is not worth a spur
+TOOL = 7             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
 DIAGONALS = (("ahead-left", 45, 0), ("ahead-right", -45, 0))
+AHEAD_SET = (LOOKS[0], LOOKS[1])   # an ordinary station on a tour: ahead and 20 degrees down
+FULL_STOPS = ("doorway", "quest", "hist")   # the kinds of stop that get the full set
+FULL_EVENTS = ("stair", "ramp", "bridge start", "bridge middle", "walkway start", "walkway middle")
 TRICKY = ("stair", "ramp", "bridge", "walkway", "doorway", "turn", "way in")
 FURNITURE_RE = re.compile(r"bed|chair|bench|stool|table|throne|workbench|chest|barrel|crate|sack|wardrobe|dresser|"
                           r"cupboard|endtable|counter|desk|crafting|anvil|forge|grindstone|smelter|tanning|alchemy|"
@@ -85,12 +101,20 @@ def snap(M, pt, reach: float = REACH, reach_z: float = REACH_Z) -> tuple[int, li
     return i, M.C[i].tolist(), off
 
 
-def astar(M, a: int, b: int) -> list[int] | None:
-    """The triangles of the shortest walk from triangle a to b (preferred-path triangles cheaper, water dearer)."""
+def _weights(M) -> np.ndarray:
+    return np.where(M.kind == 1, 0.6, np.where(M.kind == 2, 3.0, 1.0))
+
+
+def astar(M, a: int, b: int, used: set | None = None) -> list[int] | None:
+    """The triangles of the shortest walk from triangle a to b (preferred-path triangles cheaper, water dearer, the
+    triangles in `used` (already walked) AVOID times dearer, so a tour loops rather than retraces where it can)."""
     if a == b:
         return [a]
     C = M.C
-    w = np.where(M.kind == 1, 0.6, np.where(M.kind == 2, 3.0, 1.0))
+    w = _weights(M)
+    if used:
+        w = w.copy()
+        w[np.fromiter(used, int)] *= AVOID
     g = {a: 0.0}
     prev = {}
     goal = C[b]
@@ -467,8 +491,6 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         ev = dict(ev, all_inside=None, inside=None)
     if ev.get("all_inside"):
         p = ev["all_inside"]
-        if inside and ev.get("low_ceiling"):
-            return {"verdict": "failed", "fault": "place", "why": f"the ceiling is lower than a person here ({p})"}
         if look in ("ahead", "down"):
             return {"verdict": "failed", "fault": "place", "why": f"the way passes through {p}: every spot near the station is inside it"}
         return {"verdict": "failed", "fault": "capture", "why": f"the eye stands against {p}, which fills the view {look}"}
@@ -588,6 +610,13 @@ def points_of_interest(sc, files: dict) -> dict:
             (arrivals if re.search(r"landing|arriv", str(q.get("ref"))) else targets).append(
                 {"name": name, "pos": list(q["pos"]), "kind": "quest"})
     seen, uniq = set(), []
+    hist = []
+    for t in list(targets):   # the Hist and its pool are one stop
+        if t["kind"] == "hist":
+            if any(math.dist(t["pos"][:2], h[:2]) < 500 for h in hist):
+                targets.remove(t)
+            else:
+                hist.append(t["pos"])
     for t in targets:   # one walk to each spot: things within 96 units of one already listed are the same walk
         k = (round(t["pos"][0] / 96), round(t["pos"][1] / 96))
         if k not in seen:
@@ -625,6 +654,326 @@ def outdoor_plan(M, sc, files: dict) -> list[dict]:
             b = {"name": f"{q['id'].rsplit('.', 1)[-1]} end", "pos": _on_ground(sc, q["points"][-1]), "kind": "street"}
             want.append((a, b))
     return want
+
+
+# ---------- the tour: a few routes that between them pass everything once ----------
+def _dists(M, w, src: int, goals: set[int]) -> dict[int, float]:
+    """Walking distance over the mesh from triangle src to each goal triangle (Dijkstra, stopping once all are met)."""
+    C = M.C.tolist()
+    nb = M.nb.tolist()
+    wl = w.tolist()
+    g = {src: 0.0}
+    done: set[int] = set()
+    left = set(goals)
+    q = [(0.0, src)]
+    while q and left:
+        d, u = heapq.heappop(q)
+        if u in done:
+            continue
+        done.add(u)
+        left.discard(u)
+        cu = C[u]
+        for v in nb[u]:
+            if v < 0 or v in done:
+                continue
+            nd = d + math.dist(cu, C[v]) * wl[v]
+            if nd < g.get(v, math.inf):
+                g[v] = nd
+                heapq.heappush(q, (nd, v))
+    return {t: g.get(t, math.inf) for t in goals}
+
+
+def tour_order(D: list[list[float]], fixed: int = 1) -> list[int]:
+    """The visiting order of a closed tour over the distance matrix D: nodes 0..fixed-1 stay first in order, the rest
+    are ordered nearest-neighbour, then improved by 2-opt. Returns node indexes (the tour returns to node 0)."""
+    n = len(D)
+    order = list(range(min(fixed, n)))
+    rest = [i for i in range(n) if i not in order]
+    while rest:
+        k = min(rest, key=lambda j: D[order[-1]][j])
+        order.append(k)
+        rest.remove(k)
+
+    def cost(o):
+        return sum(D[o[i]][o[(i + 1) % len(o)]] for i in range(len(o)))
+
+    best = cost(order)
+    improved = True
+    while improved and n - fixed > 2:
+        improved = False
+        for i in range(max(fixed, 1), n - 1):
+            for j in range(i + 1, n):
+                o = order[:i] + order[i:j + 1][::-1] + order[j + 1:]
+                c = cost(o)
+                if c < best - 1e-6:
+                    order, best, improved = o, c, True
+    return order
+
+
+def tour_looks(st: dict, boxes: list | None = None, seen: set | None = None) -> list[tuple[str, float, float]]:
+    """The looks of one station on a tour: the full set at a doorway, stair or ramp foot and head, bridge or walkway
+    start and middle, a quest spot, the Hist and its pool and where the tour first enters; else ahead and ahead-down,
+    plus left or right where a building stands within SIDE_NEAR to that side. boxes: [(lo, hi)] of the buildings;
+    seen: the indexes of buildings an earlier station's side look already took (each building is seen once from the
+    way past it); it is added to."""
+    w = st["what"]
+    if st.get("approach"):
+        return [LOOKS[0]]
+    door = st.get("stop") == "doorway" or "doorway" in w
+    full = st.get("stop") in FULL_STOPS or st.get("enter") or door or (
+        any(e in w for e in FULL_EVENTS) and not st.get("near_full"))
+    out = list(LOOKS) + list(DIAGONALS) if full else list(AHEAD_SET)
+    if door and st.get("near_full"):   # a doorstep beside a place already seen all round: the door, and the way back
+        out = [LOOKS[0], LOOKS[1], LOOKS[5]]
+    left = right = False
+    px, py = st["pos"][0], st["pos"][1]
+    dx, dy = st["dir"]
+    for k, (lo, hi) in enumerate(boxes or []):
+        qx, qy = min(max(px, lo[0]), hi[0]), min(max(py, lo[1]), hi[1])
+        if math.hypot(qx - px, qy - py) > SIDE_NEAR or (seen is not None and k in seen):
+            continue
+        cross = dx * ((lo[1] + hi[1]) / 2 - py) - dy * ((lo[0] + hi[0]) / 2 - px)
+        if abs(cross) < 1e-6:
+            continue
+        left, right = left or cross > 0, right or cross < 0
+        if seen is not None:
+            seen.add(k)
+    if not full:
+        if left:
+            out.append(LOOKS[3])
+        if right:
+            out.append(LOOKS[4])
+    return out
+
+
+def _stop_label(t: dict) -> str:
+    return f"doorway of {t['name'][8:]}" if t.get("kind") == "doorway" else f"at {t['name']}"
+
+
+def tour_events(P, ground, drops) -> list[tuple[float, str]]:
+    """The walk's events a tour keeps: stairs, ramps, bridges and walkways (a turn or a deck edge is seen from the
+    stride stations either side)."""
+    return [(s, w) for s, w in events(P, ground, drops) if w not in ("turn", "deck edge")]
+
+
+def _leg(M, used, a, b, ground, drops, stride, start_label, end_label, approach: bool):
+    """One leg of a tour from a to b (each {name, pos, tri, pt, kind}): its triangles, way, walk and stations."""
+    tris = astar(M, a["tri"], b["tri"], used) or [a["tri"]]
+    way = corridor_line(M, tris, a["pt"], b["pt"])
+    P = resample(M, tris, way)
+    evs = tour_events(P, ground, drops)
+    if approach and P[-1, 3] > 480:
+        evs.append((float(P[-1, 3]) - 320, "approach"))
+    sts = stations(P, sorted(evs), stride, start_label, end_label)
+    if sts:
+        sts[-1]["stop"] = b.get("kind")
+        if b.get("kind") not in ("doorway", "centre", "arrival", "street"):
+            v = np.asarray(b["pos"][:2], float) - np.asarray(sts[-1]["pos"][:2], float)
+            if 40 < np.linalg.norm(v) < 600:   # at a thing, the eye is on the thing
+                v = v / np.linalg.norm(v)
+                sts[-1]["dir"] = [round(float(v[0]), 4), round(float(v[1]), 4)]
+                sts[-1]["heading"] = round((math.degrees(math.atan2(v[0], v[1])) + 360) % 360)
+    return tris, way, P, sts
+
+
+def _join(legs: list[tuple], name: str, frm: str, to: str, stops: list[str]) -> dict:
+    """The legs of one tour as one route: ways and triangles joined, stations renumbered along the whole walk."""
+    way, tris, rows, sts, off = [], [], [], [], 0.0
+    for k, (t, wy, P, ss) in enumerate(legs):
+        tris += t
+        way += wy if k == 0 else wy[1:]
+        Q = P.copy()
+        Q[:, 3] += off
+        rows.append(Q if k == 0 else Q[1:])
+        for st in (ss if k == 0 else ss[1:]):   # a leg's first station is the last leg's last
+            sts.append(dict(st, s=round(st["s"] + off)))
+        off += float(P[-1, 3])
+    for n, st in enumerate(sts):
+        st["n"] = n + 1
+    return {"name": name, "from": frm, "to": to, "from_kind": "arrival", "to_kind": "arrival", "tris": tris,
+            "way": [[round(v, 1) for v in q] for q in way], "length": round(off, 1), "walk": np.vstack(rows),
+            "stations": sts, "stops": stops, "kind": "tour"}
+
+
+def _skip_near(routes: list[dict], gap: float = 400.0, gap_z: float = 80.0) -> None:
+    """On a tour a station near one already shot (any heading) is not shot again: a stretch walked back is seen once.
+    Events, doorways, the start and the stops keep theirs. The earlier one is named in `seen`."""
+    keep: list[tuple] = []
+    for r in routes:
+        for st in r["stations"]:
+            p = st["pos"]
+            ordinary = not st.get("stop") and not st["what"].startswith(("start", "doorway"))
+            hit = next((k for k in keep if abs(k[0] - p[0]) < gap and abs(k[1] - p[1]) < gap and abs(k[2] - p[2]) < gap_z), None) \
+                if ordinary else None
+            if hit:
+                st["seen"] = hit[3]
+            else:
+                keep.append((p[0], p[1], p[2], (r["name"], st["n"])))
+    for r in routes:
+        sts = r["stations"]
+        if len(sts) > 2 and all("seen" in s or s["what"].startswith("start") for s in sts):
+            r["same_as"] = sorted({s["seen"][0] for s in sts if "seen" in s})
+
+
+def plan_tour(M, ground, arrivals: list[dict], centre: dict | None, stops: list[dict], boxes: list, streets: list[dict],
+              stride: float = TOUR_STRIDE, drops=None, split: float = TOUR_SPLIT) -> list[dict]:
+    """The place walked as a tour: for each island an arrival stands on, one closed tour (cut in two or three when
+    longer than `split`) from the arrival through the centre past every stop of that island, ordered by walking
+    distance (nearest neighbour, then 2-opt), a stretch walked before costing AVOID times as much so it is not
+    retraced where another way exists; a stop on no arrival's island is a route walked to the break, said
+    "cannot be walked to"; a street with a building the tour missed beside an unwalked stretch gets a spur.
+    arrivals, stops: [{name, pos, kind}]; boxes: [(lo, hi)] of buildings; streets: [{name, pts}]."""
+    w = _weights(M)
+
+    def node(t):
+        tri, pt, off = snap(M, t["pos"])
+        return {**t, "tri": tri, "pt": pt, "off": off}
+
+    bases: dict[int, dict] = {}
+    for a in arrivals or ([centre] if centre else []):
+        n = node(a)
+        if n["tri"] >= 0 and int(M.lab[n["tri"]]) not in bases:
+            bases[int(M.lab[n["tri"]])] = n
+    if not bases:
+        return []
+    cn = node(centre) if centre else None
+    mine: dict[int, list[dict]] = {lab: [] for lab in bases}
+    lost: list[dict] = []
+    for t in stops:
+        n = node(t)
+        if n["tri"] < 0:   # off the mesh: walked to its nearest spot on the first island
+            lab = next(iter(bases))
+            d = np.where(M.lab == lab, np.hypot(M.C[:, 0] - t["pos"][0], M.C[:, 1] - t["pos"][1]), np.inf)
+            i = int(np.argmin(d))
+            n = {**t, "tri": i, "pt": M.C[i].tolist(), "off": float(d[i])}
+        lab = int(M.lab[n["tri"]])
+        (mine[lab] if lab in mine else lost).append(n)
+    routes: list[dict] = []
+    used: set[int] = set()
+    for lab, base in bases.items():
+        via = [cn] if cn and cn["tri"] >= 0 and int(M.lab[cn["tri"]]) == lab and cn["tri"] != base["tri"] else []
+        nodes = [base] + via + mine[lab]
+        if len(nodes) == 1:
+            continue
+        goals = {n["tri"] for n in nodes}
+        dm = {n["tri"]: _dists(M, w, n["tri"], goals) for n in nodes}
+        D = [[dm[a["tri"]][b["tri"]] for b in nodes] for a in nodes]
+        order = tour_order(D, 1 + len(via))
+        legd = [D[order[i]][order[(i + 1) % len(order)]] for i in range(len(order))]
+        total = sum(legd)
+        k = max(1, min(3, math.ceil(total / split)))
+        parts: list[list[int]] = [[] for _ in range(k)]
+        for j in range(1 + len(via), len(order)):
+            parts[min(k - 1, int(sum(legd[:j]) / max(total, 1.0) * k))].append(order[j])
+        for pi, part in enumerate([p for p in parts if p] or [[]]):
+            home = base if pi == 0 or not via else via[0]
+            seq = ([base] + via if pi == 0 else [home]) + [nodes[i] for i in part] + [home]
+            legs, names = [], []
+            for a, b in zip(seq, seq[1:]):
+                last = b is seq[-1]
+                sl = f"start: {a['name']}" if not legs else "stride"
+                el = f"back at {b['name']}" if last else _stop_label(b)
+                legs.append(_leg(M, used, a, b, ground, drops, stride, sl, el, b.get("kind") == "doorway"))
+                used.update(legs[-1][0])
+                names.append(b["name"])
+            nm = "tour" if len(bases) == 1 and k == 1 else f"tour-{len(routes) + 1}"
+            routes.append(_join(legs, nm, home["name"], home["name"], names[:-1]))
+    first = next(iter(bases.values()))
+    for lab in sorted({int(M.lab[n["tri"]]) for n in lost}):   # a stop on no arrival's island: walked to the break
+        grp = [n for n in lost if int(M.lab[n["tri"]]) == lab]
+        r = plan_route(M, route_name(first, grp[0]), first, grp[0])
+        if len(grp) > 1 and r.get("broken"):
+            r["broken"]["why"] += "; also on that island: " + ", ".join(g["name"] for g in grp[1:])
+        P = r.get("walk")
+        r["stations"] = stations(P, [], stride, "start", "end (the walk breaks here)")[-1:] if P is not None and len(P) else []
+        for st in r["stations"]:
+            st["stop"] = "break"
+        r["kind"] = "broken"
+        routes.append(r)
+    if routes and routes[0].get("stations"):
+        routes[0]["stations"][0]["enter"] = True   # where the tour first enters the place: the full set
+    _skip_near(routes)
+    routes += spurs(M, ground, routes, boxes, streets, stride, drops)
+    full: list[list[float]] = []   # a full-set event within FULL_GAP of an earlier full station adds nothing
+    for r in routes:
+        for st in r["stations"]:
+            if "seen" in st:
+                continue
+            if st["what"].startswith("approach"):
+                st["approach"] = True
+            elif (any(e in st["what"] for e in FULL_EVENTS) and not st.get("stop") and not st.get("enter")) \
+                    or st.get("stop") == "doorway":
+                if any(math.dist(st["pos"][:2], q[:2]) < FULL_GAP for q in full):
+                    st["near_full"] = True
+            if len(tour_looks(st)) > len(AHEAD_SET) + 1 and not st.get("near_full") and not st.get("approach"):
+                full.append(st["pos"])
+    seen_b: set[int] = set()
+    for r in routes:
+        for st in r["stations"]:
+            if "seen" not in st:
+                st["looks"] = tour_looks(st, boxes, seen_b)
+    return routes
+
+
+def spurs(M, ground, routes: list[dict], boxes: list, streets: list[dict], stride: float, drops) -> list[dict]:
+    """A short spur for each stretch of street the tours do not pass that has a building beside it the tours missed
+    (no station within SIDE_NEAR of it): from the tours' nearest walked point along the street's unwalked stretch."""
+    walks = [r["walk"] for r in routes if r.get("walk") is not None and len(r["walk"]) and r.get("kind") == "tour"]
+    if not walks or not streets:
+        return []
+    W = np.vstack([p[:, :3] for p in walks])
+    sp = np.asarray([s["pos"] for r in routes for s in r["stations"] if "seen" not in s], float).reshape(-1, 3)
+
+    def gap(lo, hi, X):
+        return np.hypot(np.clip(X[:, 0], lo[0], hi[0]) - X[:, 0], np.clip(X[:, 1], lo[1], hi[1]) - X[:, 1])
+
+    missed = [(lo, hi) for lo, hi in boxes if not len(sp) or gap(lo, hi, sp).min() > SIDE_NEAR]
+    out = []
+    for q in streets:
+        pts = np.asarray(q["pts"], float)
+        if len(pts) < 2:
+            continue
+        S = []
+        for a, b in zip(pts, pts[1:]):
+            n = max(1, int(np.linalg.norm(b[:2] - a[:2]) // 128))
+            S += [a + (b - a) * i / n for i in range(n)]
+        S = np.asarray(S + [pts[-1]])
+        cov = np.array([np.min(np.hypot(W[:, 0] - p[0], W[:, 1] - p[1]) + 3 * np.abs(W[:, 2] - p[2])) < 200 for p in S])
+        for k, (i, j) in enumerate(_runs(~cov)):
+            run = S[i:j + 1]
+            if np.linalg.norm(run[-1, :2] - run[0, :2]) < SPUR_MIN or not any(gap(lo, hi, run).min() < 400 for lo, hi in missed):
+                continue
+            d0 = np.min(np.hypot(W[:, 0] - run[0, 0], W[:, 1] - run[0, 1]))
+            d1 = np.min(np.hypot(W[:, 0] - run[-1, 0], W[:, 1] - run[-1, 1]))
+            a_, b_ = (run[0], run[-1]) if d0 <= d1 else (run[-1], run[0])
+            src = W[int(np.argmin(np.hypot(W[:, 0] - a_[0], W[:, 1] - a_[1])))]
+            nm = f"spur-{re.sub(r'[^a-z0-9]+', '-', str(q['name']).lower()).strip('-')}-{k + 1}"
+            r = plan_route(M, nm, {"name": "the tour", "pos": src.tolist(), "kind": "arrival"},
+                           {"name": f"{q['name']} spur", "pos": b_.tolist(), "kind": "street"})
+            P = r.get("walk")
+            if P is None or not len(P) or r.get("broken"):
+                continue
+            r["stations"] = stations(P, tour_events(P, ground, drops), stride, "start: off the tour", f"end: {q['name']} spur")
+            r["kind"] = "spur"
+            out.append(r)
+    _skip_near(routes + out)
+    return out
+
+
+def tour_stops(sc, files: dict) -> tuple[list[dict], dict | None, list[dict], list, list[dict]]:
+    """What a tour of the place is made of: (arrivals, centre, stops, building boxes, streets)."""
+    poi = points_of_interest(sc, files)
+    c = centre_of(sc, poi)
+    boxes = [geom.aabb(p) for p in sc.pieces if p.get("kind") == "building" and p.get("m")]
+    streets = [{"name": q["id"].rsplit(".", 1)[-1], "pts": [_on_ground(sc, p) for p in q["points"]]}
+               for q in files.get("paths") or [] if q.get("kind") == "street" and q.get("points")]
+    return poi["arrivals"], c, poi["targets"], boxes, streets
+
+
+def plan_totals(routes: list[dict]) -> tuple[int, int, int]:
+    """(routes, stations to shoot, looks to take) of a plan."""
+    sts = [s for r in routes for s in r["stations"] if "seen" not in s]
+    return len(routes), len(sts), sum(len(looks_of(s)) for s in sts)
 
 
 def room_kind(info: dict, rows: list[dict], quests: list[dict], people: list[dict], space: str) -> dict:
@@ -799,6 +1148,8 @@ def plan_lines(routes: list[dict], stale: dict | None) -> list[str]:
         n = len(r["stations"])
         new = sum("seen" not in s for s in r["stations"])
         line = f"{r['name']}: {r.get('length', 0):.0f} u, {n} stations ({new} new)"
+        if r.get("stops"):
+            line += f", {len(r['stops'])} stops: " + ", ".join(r["stops"])
         if r.get("same_as"):
             line += f"; every station already seen in {', '.join(r['same_as'])}"
         if r.get("broken"):
@@ -811,19 +1162,22 @@ def plan_lines(routes: list[dict], stale: dict | None) -> list[str]:
 
 # ---------- the page: shooting, strips, tables ----------
 def tile_size() -> tuple[int, int]:
-    from tools.places.look import survey
-    return survey.TW, survey.TH
+    """A look's size: 960x720, the strips' tiles at twice their size (a look at the survey's 1280x960 costs seconds)."""
+    return TILE
 
 
 def run(d, place: str, strokes, args: list[str], space: str = "exterior") -> dict:
     from tools.places.look import verbs
     from tools.places.look.scene import LOOK_OUT
     t0 = time.time()
-    pos, o = verbs._opts(args, {"plan": False, "changed": False, "stride": True, "rooms": False, "again": False})
+    TIMES.update(page=0.0, judge=0.0, save=0.0)
+    pos, o = verbs._opts(args, {"plan": False, "changed": False, "stride": True, "rooms": False, "again": False,
+                                  "full": False})
     if o.get("rooms") and space == "exterior":
         return run_rooms(d, place, strokes, o)
-    stride = float(o.get("stride", STRIDE if len(pos) >= 2 or space != "exterior" else PLACE_STRIDE))
     inside = space != "exterior"
+    tour = not inside and len(pos) < 2 and not o.get("full")
+    stride = float(o.get("stride", STRIDE if len(pos) >= 2 or inside else TOUR_STRIDE if tour else PLACE_STRIDE))
     sc = d.scene(place, strokes, space)
     M, facts = verbs.built_mesh(place, space)
     fallback = M is None
@@ -837,11 +1191,16 @@ def run(d, place: str, strokes, args: list[str], space: str = "exterior") -> dic
         want = []
     elif len(pos) >= 2:
         want = [(named(sc, M, pos[0]), named(sc, M, pos[1]))]
-    else:
+    elif not tour:
         want = outdoor_plan(M, sc, sc.files)
     drops = None
     if inside:
         routes = room_plan(M, rk, sc.pieces)
+    elif tour:
+        arr, c, stops, boxes, streets = tour_stops(sc, sc.files)
+        pts = np.asarray([p["pos"] for p in arr + stops + ([c] if c else [])] or [[0, 0, 0]], float)
+        drops = drop_edges(M, sc.ground, [pts[:, 0].min() - 1500, pts[:, 1].min() - 1500, pts[:, 0].max() + 1500, pts[:, 1].max() + 1500])
+        routes = plan_tour(M, sc.ground, arr, c, stops, boxes, streets, stride, drops)
     else:
         pts = np.asarray([p for a, b in want for p in (a["pos"], b["pos"])], float)
         box = [pts[:, 0].min() - 1500, pts[:, 1].min() - 1500, pts[:, 0].max() + 1500, pts[:, 1].max() + 1500]
@@ -850,6 +1209,8 @@ def run(d, place: str, strokes, args: list[str], space: str = "exterior") -> dic
     if o.get("changed") and not inside:
         routes = changed_only(sc, place, routes)
     lines = plan_lines(routes, facts)
+    nr, ns, nl = plan_totals(routes)
+    lines.insert(0, f"plan: {nr} routes, {ns} stations, {nl} looks" + (" (a tour)" if tour else ""))
     if inside:
         lines.insert(0, f"{space}: {rk['kind']}" + (f" ({', '.join(rk['why'])})" if rk["why"] else " (copied whole)"))
     if fallback:
@@ -874,12 +1235,13 @@ def run(d, place: str, strokes, args: list[str], space: str = "exterior") -> dic
         state_save(sc, place)
     looks = sum(x["looks"] for x in res)
     failed = sum(x["failed"] for x in res)
-    mb = sum(f.stat().st_size for f in root.rglob("*.png")) / 1e6
+    mb = sum(f.stat().st_size for f in root.rglob("*") if f.suffix in (".png", ".jpg")) / 1e6
     return {"lines": lines + [x["line"] for x in res], "routes": len(routes), "stations": sum(x["stations"] for x in res),
             "looks": looks, "failed": failed, "place_faults": [f for x in res for f in x["place_faults"]]
             + [f"{r['name']}: the door is {r['door_above']} u over the end of the walk" for r in routes if r.get("door_above")]
             + [f"{r['name']}: {r['broken']['why']}" for r in routes if r.get("broken")],
-            "seconds": round(time.time() - t0, 1), "megabytes": round(mb, 1), "out": str(root)}
+            "seconds": round(time.time() - t0, 1), "megabytes": round(mb, 1), "page_s": round(TIMES["page"], 1),
+            "judge_s": round(TIMES["judge"], 1), "save_s": round(TIMES["save"], 1), "out": str(root)}
 
 
 def named(sc, M, n: str) -> dict:
@@ -973,7 +1335,8 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
     from tools.places.look import framing
     w, h = tile_size()
     out = root / r["name"]
-    key = hashlib.sha1(json.dumps([TOOL, r.get("way"), [s.get("seen") for s in r["stations"]], w, h, fill]).encode()).hexdigest()[:12]
+    key = hashlib.sha1(json.dumps([TOOL, r.get("way"), [s.get("seen") for s in r["stations"]],
+                                      [len(looks_of(s)) for s in r["stations"]], w, h, fill]).encode()).hexdigest()[:12]
     done = out / "table.json"
     if done.exists() and not again:
         old = json.loads(done.read_text())
@@ -992,7 +1355,9 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
             continue
         lks = looks_of(st)
         cams = [cam_of(st, lk, w, h, inside=inside) for lk in lks]
+        t1 = time.time()
         got = d.page.evaluate("(cs) => agent.shots(cs)", [c | {"ids": True, "fill": fill, "grass": False} for c in cams])
+        TIMES["page"] += time.time() - t1
         eye = cams[0]["pos"]
         ins0 = blocked(eye) or blocked([eye[0], eye[1], st["pos"][2] + 40])
         alts = nudges(M, P, st) if P is not None else []
@@ -1001,7 +1366,9 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
         if ins0 and not free:
             all_in = ins0.split("inside ", 1)[-1] if "inside" in ins0 else ins0
         for k, (lk, c, rr) in enumerate(zip(lks, cams, got)):
+            t1 = time.time()
             img, ev, verdict, at = _judge(sc, c, rr, by_id, lk, st, inside, ins0, all_in)
+            TIMES["judge"] += time.time() - t1
             tries = 0
             if verdict["fault"] == "capture":   # nudge: the first free spot, then the next
                 for q in free[:2]:
@@ -1013,7 +1380,9 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
                         img, ev, verdict, c = i2, ev2, v2, c2
                         break
             f = tiles / f"{st['n']:03d}-{lk[0]}.png"
+            t1 = time.time()
             img.convert("RGB").save(f, compress_level=3)
+            TIMES["save"] += time.time() - t1
             row = {"station": st["n"], "s": st["s"], "heading": st["heading"], "what": st["what"], "look": lk[0],
                    "file": str(f), "capture": verdict["verdict"], "fault": verdict["fault"], "why": verdict["why"],
                    "nudged": tries, "fills": [f"{x['edid']} {x['share']:.0%}" + (f" at {x['dist']} u" if x.get("dist") is not None else "") for x in ev["fills"]],
@@ -1041,14 +1410,14 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
 def _judge(sc, c, rr, by_id, lk, st, inside, ins, all_in):
     from tools.places.look import capture, draw, verbs
     img = draw.from_data_url(rr["png"])
-    ids = capture.decode(rr["ids"], c["w"], c["h"])
+    scored = capture.decode(rr["ids"], *rr["ref"])   # the id pass is at most 768 wide, whatever the image's size
+    ids = capture.enlarge(scored, c["w"], c["h"])
     img = capture.hatch(img, ids, rr["table"], rr["id0"], verbs.helper_label(sc))
-    ev = evidence(ids, rr["table"], rr["id0"], by_id, c["pos"])
+    ev = evidence(scored, rr["table"], rr["id0"], by_id, c["pos"])
     ev["inside"], ev["all_inside"] = ins, all_in
     ev["in_piece"] = in_piece(ins)
     if ev["in_piece"] and (OPEN_UNDER.search(ev["in_piece"]) or inside):   # a deck on stilts, a room's shell: a box of air
         ev["inside"] = ev["all_inside"] = ev["in_piece"] = None
-    ev["low_ceiling"] = bool(inside and all_in)
     v = classify(lk[0], st["what"], ev, inside)
     return img, ev, v, c
 
@@ -1106,8 +1475,8 @@ def make_strips(r, rows, imgs, out: Path, inside: bool, fill: bool, stale: bool)
                 got = imgs.get((sn, cn))
                 if got:
                     img.paste(_label(*got).convert("RGB"), (j * tw, 28 + i * th))
-        p = out / f"strip-{k // 8 + 1:02d}.png"
-        img.save(p, compress_level=3)
+        p = out / f"strip-{k // 8 + 1:02d}.jpg"
+        img.save(p, quality=JPEG_Q)
         paths.append(str(p))
     return paths
 
@@ -1122,8 +1491,8 @@ def filmstrip(r, imgs, out: Path, stale: bool) -> str | None:
     img = Image.new("RGB", (tw * cols, th * rows_n), (30, 30, 30))
     for i, (_, (im, row)) in enumerate(ahead):
         img.paste(_label(im, row).convert("RGB"), ((i % cols) * tw, (i // cols) * th))
-    p = out / "forward.png"
-    img.save(p, compress_level=3)
+    p = out / "forward.jpg"
+    img.save(p, quality=JPEG_Q)
     return str(p)
 
 

@@ -112,7 +112,7 @@ A place goes to the owner only when all of these are true and seen:
    placed with the completeness `place-routines` sets.
 5. Nothing plainly wrong is left: every building and door arrival on ground, no street through a building, no
    island people use, no bridge with one support.
-6. Every route and every room playwalked (`look <place> playwalk`, `playwalk --rooms`) and read: no PLACE tile, no
+6. The tour and every room playwalked (`look <place> playwalk`, `playwalk --rooms`) and read: no PLACE tile, no
    "cannot be walked to" left.
 
 ## Lanes beside each other
