@@ -6126,7 +6126,7 @@
    "status": "inhabited",
    "held_by": "A Dunmer gang-master and his Owing reed-cutters",
    "population": 15,
-   "footprint_radius_m": 35,
+   "footprint_radius_m": 50,
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
