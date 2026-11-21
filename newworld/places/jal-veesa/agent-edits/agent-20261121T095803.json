@@ -1,0 +1,82 @@
+{
+ "save_id": "agent-20261121T095803",
+ "place_id": "jal-veesa",
+ "name": "a rock footing under the fishers' walkway's legs (the source's lagoon walkway over our mud)",
+ "at": "2026-11-21T09:58:03Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0010000",
+    "base": "King of the Murkmire.esp:03A899",
+    "kind": "rock",
+    "pos": [
+     -50675.48,
+     -504380.71,
+     811.28
+    ],
+    "rot": [
+     0,
+     0,
+     1.3
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free"
+    },
+    "why": "a rock under the walkway's legs by the fishers' house: the source's lagoon walkway now stands over our mud, its legs need a footing",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T09:58:03Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK0010000",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50675.48,
+     -504380.71,
+     811.28
+    ],
+    "rot": [
+     0,
+     0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "after": {
+    "pos": [
+     -50675.48,
+     -504380.71,
+     551.28
+    ],
+    "rot": [
+     0,
+     0,
+     1.3
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free"
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T09:58:03Z"
+  }
+ ]
+}
