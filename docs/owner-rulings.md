@@ -241,9 +241,11 @@ added here the day they are made, with the date and the issue.
   the cheapest to change. The rule is docs/design/consistency.md, named in CLAUDE.md (owner, 2026-11-21, #80).
 - The owner will look at and edit all six Act I places in the studio on 2026-11-22; Jal-Veesa and Karsh-Naal Camp
   are finished by agents first, with the other four (owner, 2026-11-21, #80).
-- A place is not done until it has been walked: the walk-through tour and its captures are part of "passes every
-  check", read lean (faults, strips and map first; full size only where doubtful and at doors, stairs, bridge ends
-  and quest spots), so it does not take for ever (owner, 2026-11-21, #80).
+- A place is not done until it has been walked: a full walk-through with every issue recorded; the issues fixed;
+  only the views that showed them recaptured, and again, until none is left; then one more full walk to see that
+  no fix broke something else; and so on until a full walk is clean, or until an issue has stopped moving after
+  several rounds, when it goes to the owner. Read lean: faults, strips and map first; full size only where doubtful
+  and at doors, stairs, bridge ends and quest spots (owner, 2026-11-21, #80).
 - Every fact has one home and everything else refers to it or is derived from it: where the checker compares two
   copies of a fact, the better fix is to stop storing one. An audit of the checker's rules on this follows the
   Act I places; no schema changes before the owner sees it (owner's question and the lead's answer, 2026-11-21).

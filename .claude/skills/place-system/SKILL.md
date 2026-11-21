@@ -106,7 +106,8 @@ with builds and checks run beside his editing:
 3. `look survey` of the place and of every structure read; the playwalk tour walked and read (its strips and map
    whole, full size where a strip is doubtful and at every door, stair, bridge end and quest spot) and every room's
    entering view read; no PLACE tile and no "cannot be walked to" left. A place that passes its checks but has not
-   been walked is not done.
+   been walked is not done: a full walk, the issues fixed and only their views recaptured until none is left, then
+   a full walk again, until one is clean (`place-check`).
 4. Every sentence of the record's `look` matched to an image that shows it; a line not yet met named.
 5. Every named person with a role has a bed, a work spot and a sleep package; every quest thing and person at the
    place has a spot a player finds and recognises (`place-story`).

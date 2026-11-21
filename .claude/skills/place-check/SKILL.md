@@ -36,11 +36,18 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
 7. `look truth <place_id> --sample 40`: the pictures hold against the numbers for this place.
 8. `units <place_id>` and `units <place_id> --joints`: every flag mended or accepted.
 9. `look <place> probe --all` and `probe --mesh`: nothing open; no door or street point off the main network.
-10. The walk-through, required of every place: `look <place> playwalk` (one tour past every door, stall, station,
-    Hist and quest spot) and `playwalk --rooms` (entering views). Read it the lean way: the table's faults first,
-    then every strip and the map; open a look at full size only where a strip or the table shows something
-    doubtful, and for the stops at each door, stair, bridge end and quest spot. Run it once, after the last
-    mend; after a later mend re-walk only the legs that pass what changed. Then `look <place> survey` and
+10. The walk-through, required of every place, run as a loop that runs down:
+    a. One FULL walk: `look <place> playwalk` (one tour past every door, stall, station, Hist and quest spot) and
+       `playwalk --rooms` (entering views). Read the table's faults first, then every strip and the map; open a
+       look at full size only where a strip or the table shows something doubtful, and at each door, stair, bridge
+       end and quest spot. Write every issue down in `STATE.md`: what, where, the look that shows it.
+    b. Fix the issues. Then recapture ONLY the views that showed them: `playwalk --changed` (the stations near what
+       changed since the last walk), or `playwalk <from> <to>` for one leg, or `at --stand` for one view. Read
+       those. Still wrong: fix and recapture those views again. Repeat until the list is empty.
+    c. One more FULL walk, to see that no fix broke something else. New issues: back to b.
+    d. Done when a full walk is clean. An issue that has not moved after several rounds is not chased further: it
+       goes under "For the owner" in `STATE.md` in plain English, with where it stands and the look that shows it.
+    Then `look <place> survey` and
     `survey <unit>` for every structure, each tile read; the owner captures (`place-look`, the hand-over look).
 11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
     the two apart.
