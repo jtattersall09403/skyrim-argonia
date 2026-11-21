@@ -176,6 +176,14 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         for b in interiors.beds_in(copied.refs if copied else [], known, sj.get("room"), sj["copy_of"], sj.get("cut")):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
+        own = [r for r in io.read_jsonl(sdir / "refs.jsonl") if not r.get("src") and not r.get("removed")] \
+            if (sdir / "refs.jsonl").exists() else []
+        known = {**io.catalogue_bases({r["base"] for r in own} - set(known)), **known}
+        for r in own:   # a bed added in the room by hand (a bedroll in a ship's hold)
+            if r.get("kind") == "furniture" and interiors.is_bed(known.get(r.get("base")) or {}):
+                n_ = interiors.sleeps(known.get(r["base"]) or {})
+                beds_total += n_
+                bed_refs[(sdir.name, r["id"])] = n_
     for r in refs:   # the guard camp's beds, outdoors
         if r.get("kind") == "furniture" and not r.get("removed") and interiors.is_bed(bases.get(r.get("base")) or {}):
             n_ = interiors.sleeps(bases.get(r["base"]) or {})
@@ -444,6 +452,7 @@ def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -
     from outside the source place must not be Nordic (the review's verdict, else the folder rule). A room added from
     another source (`draft.add` `room`) is all from outside: none of its pieces may be Nordic."""
     bad = []
+    review = io.nordic_review()
     for sj in sorted((pdir / "spaces").glob("*/space.json")):
         sp = json.loads(sj.read_text())
         if sp.get("space_id") == "exterior" or not sp.get("copy_of"):
@@ -458,10 +467,10 @@ def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -
             if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
                 continue
             row = rows.get(r["id"], r)
-            if not row.get("removed") and (bases.get(row.get("base")) or {}).get("nordic"):
+            if not row.get("removed") and io.is_nordic(row.get("base"), bases.get(row.get("base")) or {}, review):
                 bad.append(f"{sp['space_id']}/{r['id']} keeps a Nordic base {row['base']}")
         for row in io.read_jsonl(sj.parent / "refs.jsonl"):
-            if not row.get("src") and (bases.get(row.get("base")) or {}).get("nordic"):
+            if not row.get("src") and io.is_nordic(row.get("base"), bases.get(row.get("base")) or {}, review):
                 bad.append(f"{sp['space_id']}/{row['id']} adds a Nordic base {row['base']}")
     return bad
 

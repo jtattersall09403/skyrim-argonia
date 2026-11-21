@@ -218,6 +218,20 @@ def test_a_copied_rooms_nordic_pieces_follow_the_review():
     assert adds.room_nordic({"J:1", "J:2", "J:3", "J:4", "J:5"}, bases, review) == {"J:2", "J:3"}
 
 
+def test_a_copied_rooms_nordic_check_follows_the_review(tmp_path, monkeypatch):
+    from types import SimpleNamespace as NS
+    from tools.places.draft import check, io as dio
+    room = tmp_path / "spaces" / "Hut"
+    room.mkdir(parents=True)
+    (room / "space.json").write_text('{"space_id": "Hut", "copy_of": "other/Hut", "added": true}')
+    (room / "refs.jsonl").write_text("")
+    cell = NS(refs=[{"id": "S:1", "base": "J:1", "kind": "building"}, {"id": "S:2", "base": "J:2", "kind": "static"}])
+    monkeypatch.setattr(dio, "copied_space", lambda *a, **k: cell)
+    monkeypatch.setattr(dio, "catalogue_bases", lambda keys, *a: {"J:1": {"nordic": True}, "J:2": {"nordic": True}})
+    monkeypatch.setattr(dio, "nordic_review", lambda *a: {"J:1": {"base": "J:1", "verdict": "neutral", "why": "plain"}})
+    assert check.nordic_in_copies(tmp_path, NS(meta={"source_id": "mine"}), {}) == ["Hut/S:2 keeps a Nordic base J:2"]
+
+
 def test_an_added_doors_arrival_on_a_deck_keeps_its_height():
     from types import SimpleNamespace as NS
     from tools.places.draft import adds
