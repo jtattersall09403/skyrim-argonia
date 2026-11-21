@@ -47,7 +47,11 @@ def check_file(p: Path) -> str | None:
 def main(argv: list[str]) -> int:
     paths = [REPO / p for p in argv if p != "--all"]
     if "--all" in argv:
-        paths += sorted((REPO / "newworld" / "places").glob("*/edits/*"))
+        from tools.places import variant   # every place of the game and each one's variant drafts
+        root = REPO / "newworld" / "places"
+        for pid in variant.game_places():
+            for d in [pid, *variant.variants_of(pid)]:
+                paths += sorted((root / d / "edits").glob("*"))
     bad = [(p, why) for p in paths if (why := check_file(p))]
     for p, why in bad:
         print(f"{p.relative_to(REPO)}: {why}", file=sys.stderr)

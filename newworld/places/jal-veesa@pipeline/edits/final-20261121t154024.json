@@ -1,0 +1,57 @@
+{
+ "save_id": "final-20261121t154024",
+ "place_id": "jal-veesa@pipeline",
+ "name": "Final",
+ "at": "2026-11-21T15:40:49Z",
+ "final": true,
+ "rev": 1,
+ "base": {
+  "draft_key": "cb9ec703b51ad6a7d41eca1980661b54b8b4adf801abf295bb0bb0382f1f28db",
+  "ground_sha": null
+ },
+ "ops": [
+  {
+   "n": 1,
+   "at": "2026-11-21T15:40:24.008153Z",
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "jal-veesa.02F244QXPRSNS3CEBNS3VSF4NC",
+   "before": {
+    "pos": [
+     -59638.53,
+     -507878.49,
+     450.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 10.832
+    }
+   },
+   "after": {
+    "pos": [
+     -59648.53,
+     -507878.49,
+     450.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 10.832
+    }
+   }
+  }
+ ],
+ "notes": []
+}

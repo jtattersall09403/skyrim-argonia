@@ -9,6 +9,12 @@ gate = importlib.util.module_from_spec(_spec)
 sys.modules["gate"] = gate
 _spec.loader.exec_module(gate)
 
+def _pl(place, rel):
+    """A path in a place's folder, built so that this file does not itself name the folder (and so is not picked by
+    every change to that place's files)."""
+    return "newworld/places/%s/%s" % (place, rel)
+
+
 STORY = {"tools/tests/test_newworld_story_explorer.py", "tools/tests/test_newworld_plot_check.py",
          "tools/tests/test_places_needs.py", "tools/tests/test_newworld_story_digest.py"}
 
@@ -167,15 +173,62 @@ def test_a_full_run_the_change_forces_names_the_file_that_forced_it():
 
 
 def test_an_edits_only_change_picks_only_the_validity_check():
-    for path in ("newworld/places/jal-veesa/edits/save-1.json", "newworld/places/jal-veesa/edits/notes.jsonl",
-                 "newworld/places/jal-veesa@pipeline/edits/save-2.json"):
+    for path in (_pl("jal-veesa", "edits/save-1.json"), _pl("jal-veesa", "edits/notes.jsonl"),
+                 _pl("jal-veesa@pipeline", "edits/save-2.json")):
         p = gate.pick([path])
         assert not p.full and p.stages == {"editsvalid"} and p.tests == set(), path
         assert p.inert == [path]
 
 
 def test_edits_beside_place_files_are_picked_as_the_place_files_are():
-    p = gate.pick(["newworld/places/jal-veesa/edits/save-1.json", "newworld/places/jal-veesa/place.json"])
+    p = gate.pick([_pl("jal-veesa", "edits/save-1.json"), _pl("jal-veesa", "place.json")])
     assert "consistency" in p.stages and "editsvalid" in p.stages and p.tests
-    assert p.inert == ["newworld/places/jal-veesa/edits/save-1.json"]
-    assert "consistency" in gate.pick(["newworld/places/jal-veesa/place.json"]).stages
+    assert p.inert == [_pl("jal-veesa", "edits/save-1.json")]
+    assert "consistency" in gate.pick([_pl("jal-veesa", "place.json")]).stages
+
+
+QUEST_STAGES = {"questform", "reach", "questtext", "storyexplorer"}
+TOOL_TESTS = {"tools/tests/test_playtest.py", "tools/tests/test_questform.py", "tools/tests/test_places_studio.py",
+              "tools/tests/test_places_truth.py", "tools/tests/test_newworld_story_explorer.py"}
+
+
+def test_one_places_refs_or_place_json_runs_its_data_checks_not_the_tools_or_the_quest_stages():
+    for path in (_pl("jal-veesa", "spaces/exterior/refs.jsonl"), _pl("jal-veesa", "place.json"),
+                 _pl("jal-veesa", "people.jsonl"), _pl("jal-veesa", "formids.json")):
+        p = gate.pick([path])
+        assert not p.full and p.stages == {"consistency"}, path
+        assert "tools/tests/test_newworld_consistency.py" in p.tests, path
+        assert not (p.tests & TOOL_TESTS) and len(p.tests) < 15, (path, sorted(p.tests))
+
+
+def test_a_place_file_the_quest_compiler_or_the_explorer_reads_runs_the_quest_stages():
+    for path in (_pl("jal-veesa", "quests.jsonl"), _pl("jal-veesa", "ledger.jsonl")):
+        p = gate.pick([path])
+        assert not p.full and QUEST_STAGES | {"consistency"} == p.stages, path
+
+
+def test_a_tree_root_file_and_a_place_the_code_names_still_pick_by_name():
+    assert "tools/tests/test_places_truth.py" in gate.pick(["newworld/places/formid_blocks.json"]).tests
+    assert "tools/tests/test_places_look.py" in gate.pick([_pl("jal-veesa", "place.json")]).tests
+
+
+def test_a_place_skills_text_runs_nothing_but_the_dialogue_skill_still_runs_its_lints():
+    p = gate.pick([".claude/skills/place-people/SKILL.md", ".claude/skills/place-lessons/SKILL.md"])
+    assert not p.full and not p.tests and not p.stages
+    d = gate.pick([".claude/skills/dialogue-write/SKILL.md"])
+    assert "tooling/tests/test_dialogue_lint_place_rules.py" in d.tests
+
+
+def test_edits_run_only_their_own_validity_check_with_a_skill_beside_them(monkeypatch):
+    seen = []
+    monkeypatch.setattr(gate.subprocess, "run", lambda cmd, **k: seen.append(cmd) or type("R", (), {"returncode": 0})())
+    monkeypatch.setattr(gate, "_make", lambda t: 0)
+    plan = gate.pick([_pl("jal-veesa", "edits/s.json"), ".claude/skills/place-people/SKILL.md"])
+    assert gate.run(plan, []) == 0
+    assert seen[-1][-1] == _pl("jal-veesa", "edits/s.json") and ".claude" not in " ".join(seen[-1])
+
+
+def test_a_rules_not_globs_leave_those_paths_to_a_more_exact_rule():
+    rule = {"globs": ["newworld/*"], "not": ["newworld/places/*/*"]}
+    assert not gate._rule_hit("newworld/places/a/place.json", rule)
+    assert gate._rule_hit("newworld/places/formid_blocks.json", rule)
