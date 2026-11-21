@@ -39,15 +39,11 @@ HIGH_DECK = 250.0      # a deck this far over the ground needs steps
 GROUND_LEG = 96.0      # how far a body standing on the ground (no deck) may sink: its foundation
 TOUCH = 16.0
 SMALL_SINK = 48.0      # a small unit (a rack, a cart) may sink this far into the ground at its lowest corner's ground
-BODY_WORDS = ("house", "hut", "shack", "tent", "hall", "home", "cabin", "shop", "stall", "tower", "yurt", "longhouse", "inn")
-DECK_WORDS = ("platform", "deck", "floor", "dock", "pier", "boardwalk", "scaffold")
-SPAN_WORDS = ("walkway", "bridge", "gangway", "plank", "boardwalk", "pier", "dock", "platform")
-STEPS_RE = re.compile(r"stair|steps|ramp|ladder")
-RAIL_WORDS = ("rail", "fence", "wall", "balust", "banister")
-POST_WORDS = ("post", "pillar", "stilt", "pole", "pile", "column", "support")
-GROUND_KINDS = {"tree", "rock", "plant", "groundcover", "flora", "grass", "landscape", "water"}
+# the word lists are the one classifier's (tools/places/classify.py)
+from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, POST_WORDS, RAIL_WORDS,  # noqa: E402
+                                   SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, kind_of, post as _post)
+from tools.places.classify import LOOSE_KINDS as LOOSE  # noqa: E402
 SPANS = ("walkway", "bridge", "dock")
-LOOSE = {"light", "marker", "sound", "actor"}
 
 
 # ---------- pieces ----------
@@ -121,6 +117,8 @@ def _role0(p: dict) -> str:
         return "door"
     if p.get("kind") in LOOSE and not p.get("model"):
         return "loose"
+    if kind_of(p) in NOT_STRUCTURE:
+        return "fixture"   # a light, effect, marker, fixture or mound: never a body, deck, post, steps or span
     if STEPS_RE.search(w) and p.get("kind") in ("building", "static"):
         return "steps"
     if p.get("kind") == "building" and any(x in w for x in BODY_WORDS) and not any(x in w for x in DECK_WORDS + ("plank", "walkway", "bridge")):
@@ -225,7 +223,7 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
                         add(s, u, "posts")
             for d in [q for q, k in unit_of.items() if k == u and role[q] == "deck"]:
                 for p in pieces:
-                    if p["id"] not in unit_of and any(x in _words(p) for x in POST_WORDS) and role0[p["id"]] == "thing" \
+                    if p["id"] not in unit_of and _post(p) and role0[p["id"]] == "thing" \
                             and gap(p["id"], d) <= TOUCH and boxes[p["id"]][0][2] < boxes[d][0][2]:
                         add(p["id"], u, "posts")
 
@@ -310,13 +308,13 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
             add(s, len(units) - 1, "body" if s == big else "on")
     # lights and markers: the unit whose piece holds them
     for p in pieces:
-        if p["id"] in unit_of or role0[p["id"]] != "loose":
+        if p["id"] in unit_of or role0[p["id"]] not in ("loose", "fixture"):
             continue
         x, y, z = p["m"][0][3], p["m"][1][3], p["m"][2][3]
         for q, u in list(unit_of.items()):
             lo, hi = boxes[q]
             if units[u]["kind"] != "thing" and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
-                add(p["id"], u, "hanging" if p.get("kind") == "light" else "on")
+                add(p["id"], u, "hanging" if p.get("kind") == "light" or role0[p["id"]] == "fixture" else "on")
                 break
 
     for pid, u in unit_of.items():
