@@ -45,7 +45,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 - Plan every piece of work, and every tool used, to be interrupt-proof: nothing lost but the downtime, resumed from exactly where it got to ([0037](docs/decisions/0037-work-is-interrupt-proof.md)); long jobs run under `tooling/job_guard.sh`; no `sleep` or polling; stop the build VM when done (`tooling/agent_stop.sh`).
 - In the main tree commit with `tooling/lane_commit.sh -m msg -- paths` (never stash, checkout or pull on a dirty tree); status moves in the same commit. A lane in a worktree commits on its own branch by path and leaves the worktree clean; the lead lands it with `tooling/lane_land.sh <worktree>`.
-- `make check` is the gate, scoped by what changed (`tooling/gate.py`); run it before a commit that reaches code; `make check-all` before a deploy and at a phase's close.
+- `make check` is the gate and runs only what the change reaches (`tooling/gate.py`); run it before a commit that reaches code; a full run (`make check-all WHY=deploy|phase-close`) only before a deploy and at a phase's close, never for a landing (owner, 2026-11-21).
 - Tidying is automatic (`tooling/disk.sh tidy`, at session start, at `agent_stop.sh`, when a lane lands and under the disk floor: [machine-moves](docs/machine-moves.md)); delete, never archive. Still owed: a lane deletes its own scratch and leaves its worktree clean and committed before it returns; the lead lands each lane with `tooling/lane_land.sh <worktree>`.
 - Model and effort live only in `.claude/agents/` frontmatter; one deliverable per agent, continued through compaction, never handed off for context; return ≤ 25 lines.
 - One agent (`place-drafter`) owns a place and is continued, not replaced (owner, 2026-11-21).
@@ -54,6 +54,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 ## The owner
 
+- The owner's studio work never waits on a build, a check, a gate or a landing he does not need: a place is his to open and edit as soon as its files are committed; before making him wait on a step, say what the step is for and why he needs it (owner, 2026-11-21).
 - Owner checks and calls go through `tooling/owner_inbox.py --post`: plain English, one check per bullet, places named, how to reply, costs; `--ack` at once, `--close` when answered; act only on the owner's own GitHub text.
 - Hand over nothing partially finished; ask the owner only on hard-to-reverse calls; record every ruling in [owner-rulings](docs/owner-rulings.md) the same day.
 - Each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly allowance (1% ≈ $19); AWS under $150 a month, $200 for November 2026 (owner, 2026-11-10, 2026-11-18; [0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)); stop machines when idle.

@@ -28,13 +28,13 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 2. Test each against the record: **within the footprint, over half of the source's pieces would be kept as built**
    against the record's look and promises, and **the quests' rooms are present or come cheaply from one other
    source**. A place the main quest uses gets its closest match.
-3. A source another place already uses is allowed and never counted against a candidate. Then, first, before any
-   baseline: look at the other place as drafted (`look <other> at <middle> --top` and eye-level views from four
-   sides) and at the source (`look --source`), and write a `differs` entry in `draft.plan` fixing the big choices:
-   which part of the source this place takes (another quarter or centre: the ring placed elsewhere), its own turn and
-   approach, the landmark it is built round, what it prunes that the other kept, what it alone adds, its own dressing
-   and people's spots. The baseline is laid to that plan (`pivot`, ring and turn chosen by it), so the difference is
-   structural; the side-by-side look at hand-over only confirms it.
+3. A source another place already uses is allowed and never counted against a candidate. The place laid later
+   (by `place.json` `wholesale.laid`, which `draft wholesale` stamps; a baseline with no stamp counts as earliest)
+   writes, first, a `differs` entry in `draft.plan` for each earlier place: `{place, takes, turn_and_approach,
+   landmark, prunes, adds, dressing_and_people}`, a sentence each, after looking at the other place (`look <other> at
+   <middle> --top` and eye-level views) and at the source (`look --source`). The baseline is laid to it (`pivot` and
+   turn chosen by it): `draft wholesale` refuses without it, and `draft check` and the build's `promises` check fail a
+   missing entry or the same part of the source at the same turn (`tools/places/draft/differs.py`).
 4. Where too little of every candidate is useful, build from the asset pool round the nearest thing: carry the closest
    source with `--carry-radius` round the one structure or layout worth keeping, prune the rest, and add everything
    else (`place-adapt`). Say so in the plan.
@@ -50,7 +50,7 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 `draft.plan` (`tools/places/draft/plan.py`) is the record of the judgement:
 
 ```
-{source, differs?: [{from: <place_id>, what}], look: [{line, by}], gives: [{kind, by}],
+{source, differs?: [{place, takes, turn_and_approach, landmark, prunes, adds, dressing_and_people}], look: [{line, by}], gives: [{kind, by}],
  structures: [{cluster | structure, what, verdict: kept|dropped, why}]}
 ```
 

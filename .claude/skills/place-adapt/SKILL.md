@@ -31,10 +31,8 @@ Write the reason per group in the place's notes.
 
 ## A place sharing its source
 
-When another place is drafted from the same source, the plan's `differs` entry (`place-plan`, written before the
-baseline) already fixed this place's own part of the source, turn, landmark, prunes and additions; the adaptation
-carries out its prunes, additions, dressing and people's spots. The side-by-side look from matching eye-level views at
-hand-over only confirms what tells them apart.
+A place laid after another on the same source carries out its plan's `differs` entry (`place-plan`): its prunes,
+additions, dressing and people's spots; `look <place> versus <other>` at hand-over only confirms it.
 
 ## An added building
 

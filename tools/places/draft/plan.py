@@ -4,6 +4,8 @@ draft.plan"). The one shape, read by `draft plan`, `draft check` and the consist
   {"source"?: "<which source and why>",
    "look":       [{"line": "<a thing the record's look names>", "by": "<the pieces that deliver it>"}],
    "gives":      [{"kind": "<a promise kind of the record>", "by": "<what delivers it>", "line"?: "<its words>"}],
+   "differs"?:   [{"place": "<an earlier place on the same source>", "takes", "turn_and_approach", "landmark",
+                   "prunes", "adds", "dressing_and_people": "<a sentence each>"}]   (tools/places/draft/differs.py),
    "structures": [{"cluster"?: "<source cluster ids, comma-separated>", "structure"?: "<a major structure class>",
                    "what": "<what it is>", "verdict": "kept" | "dropped", "why": "<the reason>"}]}
 
@@ -39,6 +41,14 @@ def faults(plan, gives: list[dict], structures: dict[str, dict] | None = None, d
         for k, row in enumerate(plan.get(key) or []):
             if not str((row or {}).get(need) or "").strip():
                 bad.append((UNDELIVERED, f"{key}[{k}] '{row.get('line') or row.get('kind') or row.get('what')}' has no {need}"))
+    from tools.places.draft.differs import FIELDS, MIN_WORDS
+    for k, row in enumerate(plan.get("differs") or []):
+        row = row if isinstance(row, dict) else {}
+        if not str(row.get("place") or "").strip():
+            bad.append((UNDELIVERED, f"differs[{k}] names no place"))
+        for f in FIELDS:
+            if len(str(row.get(f) or "").split()) < MIN_WORDS:
+                bad.append((UNDELIVERED, f"differs[{k}] ({row.get('place')}) has no sentence for {f}"))
     said = {g.get("kind") for g in plan.get("gives") or []}
     for g in gives:
         kind = g.get("kind") or g.get("give_kind_id")

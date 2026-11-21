@@ -12,7 +12,7 @@ on its built walkable mesh: strips of every station's looks, faults of the captu
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
 failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries; `at` [--distance k] stands k times as far; `at` [--stand x,y[,z]] stands at that point (the eye over the deck or ground under it).
 Audit: truth [<place> --sample N]: the golden scene's known answers (or a real draft sampled) held against the pictures.
-Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
+Compare: versus <other place>: two places on one source from above and at eye level from four sides, one sheet.\nNumbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
 --until-feet-buried [--depth 8] [--force]]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
@@ -132,6 +132,13 @@ def main(argv: list[str]) -> int:
         return 0
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()
+    if verb == "versus":   # two places on one source, the same views on one sheet (look/versus.py)
+        from tools.places.look import versus
+        if not args:
+            raise SystemExit("look <place> versus <other place>")
+        out = versus.run(place, args[0], lambda p, v, a: call({"place": p, "verb": v, "args": a}, 900.0))
+        print(json.dumps(out, indent=1))
+        return 0
     t0 = time.time()
     out = call({"place": place, "verb": verb, "args": args}, 7200.0 if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)

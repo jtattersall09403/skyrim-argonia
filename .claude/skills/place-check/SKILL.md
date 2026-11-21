@@ -38,7 +38,9 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
 9. `look <place> probe --all` and `probe --mesh`: nothing open; no door or street point off the main network.
 10. `look <place> playwalk` and `playwalk --rooms`, read at full size; `look <place> survey` and `survey <unit>` for
     every structure, each tile read; the owner captures (`place-look`, the hand-over look).
-11. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
+11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
+    the two apart.
+12. Commit `newworld/places/<place_id>/` and the record change by path. The place goes to `place-people`.
 
 ## Accepted findings
 

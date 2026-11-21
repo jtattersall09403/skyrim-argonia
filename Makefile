@@ -1,15 +1,19 @@
 # The gate. `make check` runs only the checks the change can reach (tooling/gate.py, its map tooling/gate_map.toml):
 # the working tree against HEAD, or GATE_BASE=origin/main for a lane's branch, or GATE_PATHS="a b" for given paths.
-# `make check-all` runs every stage and every test: before a deploy and at a phase's close.
+# `make check-all WHY=deploy|phase-close` runs every stage and every test, only for those two occasions; without
+# one of them it, and `make unit`, refuse (a landing runs `make check GATE_BASE=origin/main`).
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: atlas storyexplorer consistency check check-all guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
+.PHONY: atlas storyexplorer consistency check check-all full-why guard lint unit adaptation questtext questform reach hooks deploy plugin plugin-check plugin-seed map
 
 check:
 	@GATE_PY=$(PY) $(PY) tooling/gate.py run $(if $(GATE_BASE),--base $(GATE_BASE)) $(GATE_PATHS)
 
-check-all: guard lint unit adaptation questtext questform reach storyexplorer atlas consistency
+full-why:
+	@case "$(WHY)" in deploy|phase-close) ;; *) echo "make: refused: a full run is only for a deploy or a phase's close (WHY=deploy or WHY=phase-close); a landing runs \`make check GATE_BASE=origin/main\`, which picks what the change reaches" >&2; exit 2 ;; esac
+
+check-all: full-why guard lint unit adaptation questtext questform reach storyexplorer atlas consistency
 	@echo "CHECK GREEN (all)"
 
 guard:
@@ -18,7 +22,7 @@ guard:
 lint:
 	@$(RUFF) check -q tooling tools infra .claude
 
-unit:
+unit: full-why
 	@$(PY) -m pytest -q tooling/tests tools/tests; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ]
 	@bash skse/check.sh
 

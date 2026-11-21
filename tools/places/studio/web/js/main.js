@@ -146,7 +146,7 @@ class Studio {
     if (this.terrain) this.terrain.override = this.model.land;
     this.people.invalidateRoutes(); this.people.setNav(null);
     // the built place's walking mesh, for people's routes: fetched beside the rest, never waited for
-    api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) this.people.setNav(d.spaces); }).catch(() => {});
+    api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) { this.people.setNav(d.spaces); if (d.from_last_build) this.toast('The walking mesh and routes are from the last build, older than the place as it stands now.', 6000); } }).catch(() => {});
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops)); this.noteBar.render();
     this.leavePlace();

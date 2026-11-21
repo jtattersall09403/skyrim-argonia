@@ -1,12 +1,13 @@
 """The scoped gate: run only the checks a change can reach.
 
-`make check` runs this; `make check-all` runs every stage and every test. Run `make check-all` before a deploy and
-at a phase's close.
+`make check` runs this and runs only what the change reaches; a landing runs `make check GATE_BASE=origin/main`.
+`make check-all WHY=deploy|phase-close` runs every stage and every test, and only for those two occasions: it, and
+`gate.py run --all`, refuse without one of them (FULL_WHY).
 
     python tooling/gate.py run              # the working tree and index against HEAD (before a commit)
     python tooling/gate.py run --base origin/main   # everything on this branch since main (a lane landing)
     python tooling/gate.py plan [--base REF] [paths...]   # print what would run, run nothing
-    python tooling/gate.py run --all        # the whole gate
+    python tooling/gate.py run --all --why deploy|phase-close   # the whole gate
 
 How a change picks its checks (the map is tooling/gate_map.toml, one comment per rule):
   - the no-assets guard and ruff always run (seconds);
@@ -313,9 +314,16 @@ def _pytest(tests: list[str]) -> int:
     return 0 if rc in (0, 5) else rc
 
 
+FULL_WHY = ("deploy", "phase-close")
+FULL_REFUSED = ("refused: a full run is only for a deploy or a phase's close (WHY=deploy or WHY=phase-close); a "
+                "landing runs `make check GATE_BASE=origin/main`, which picks what the change reaches")
+
+
 def summary(plan: Plan, n_tests: int) -> str:
     if plan.full:
-        return f"gate: FULL (all {n_tests} test files, every stage): {plan.reason}"
+        asked = plan.reason.startswith("asked for")
+        return (f"gate: FULL (all {n_tests} test files, every stage): {plan.reason}"
+                + ("" if asked else "; a full run is expected only when such a file changes"))
     note = f" [{plan.reason}]" if plan.reason else ""
     ran = sorted(plan.stages)
     skipped = [s for s in STAGES if s not in plan.stages]
@@ -346,12 +354,16 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("cmd", choices=("run", "plan"))
     ap.add_argument("--base", help="diff from this ref's merge base (a lane landing: origin/main)")
-    ap.add_argument("--all", action="store_true", help="the whole gate")
+    ap.add_argument("--all", action="store_true", help="the whole gate: only with --why deploy|phase-close")
+    ap.add_argument("--why", default="", help="why a full run: deploy or phase-close")
     ap.add_argument("paths", nargs="*", help="changed paths (default: from git)")
     a = ap.parse_args(argv)
     all_tests = Index(REPO).tests()
     if a.all:
-        plan = Plan(full=True, reason="asked for (make check-all)")
+        if a.why not in FULL_WHY:
+            print(FULL_REFUSED, file=sys.stderr)
+            return 2
+        plan = Plan(full=True, reason=f"asked for ({a.why})")
     else:
         try:
             plan = pick(a.paths or changed_paths(a.base), base_map=base_map_text(a.base))

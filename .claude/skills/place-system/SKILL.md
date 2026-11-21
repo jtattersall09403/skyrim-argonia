@@ -95,7 +95,8 @@ Which skill for a common job:
 
 ## The hand-over bar
 
-A place goes to the owner only when all of these are true and seen:
+A place is drafted to this bar; the owner may open and edit it in the studio as soon as its files are committed,
+with builds and checks run beside his editing:
 
 1. `look <place> probe --all` reports nothing open (accepted faults listed with their reasons).
 2. `draft check` PASS, `needs check` PASS, `seat` 0 refs moved, the build's seventeen checks green with accepted
@@ -105,8 +106,8 @@ A place goes to the owner only when all of these are true and seen:
 4. Every sentence of the record's `look` matched to an image that shows it; a line not yet met named.
 5. Every named person with a role has a bed, a work spot and a sleep package; every quest thing and person at the
    place has a spot a player finds and recognises (`place-story`).
-6. A place sharing its source with another is looked at beside it from matching eye-level views, and what tells
-   them apart is named; they do not feel like clones.
+6. A place sharing its source with a place laid earlier passes `look <place> versus <other>` read whole (the same
+   views of both on one sheet), confirming what its plan's `differs` fixed.
 7. The owner captures taken (each side at eye level, each structure the record names, each room a story needs).
 
 ## Planner sessions: how the lead runs place work
@@ -118,6 +119,9 @@ A place goes to the owner only when all of these are true and seen:
   notes; start another only when the first cannot be reached. Never two agents on one place at once.
 - **Split only tool work** into separate lanes (`deliver`): a tool fault the drafter names becomes a tool lane while
   the drafter carries on.
+- **A brief never asks for a full gate**: a lane runs the scoped gate its change reaches.
+- **Hand the place to the owner's studio first**: as soon as its files are committed it is his to open and edit;
+  builds and checks run beside his editing, never before it.
 - **Read the final captures yourself** before telling the owner anything; a passing check is not a look.
 - **Record your own calls** as "decided by the lead, for the owner to confirm" in `docs/owner-rulings.md`; when
   unattended, decide and carry on: never ask or wait.

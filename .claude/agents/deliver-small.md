@@ -15,7 +15,7 @@ Return at once with what you found when the acceptance cannot be checked quickly
 finding changes the scope: a file the brief did not name must change, a choice it did not make is needed, or the
 cause is in another system. Returning early is correct, never a failure.
 
-- Read, search and run your tests directly. Prose or images you must judge go to a `reader`.
+- Read, search and run your tests directly: only the tests the change reaches; never a full run unless the brief names a deploy or a phase's close (`make check-all WHY=deploy|phase-close`). Prose or images you must judge go to a `reader`.
 - Each turn re-reads your context: batch what you know you need as parallel calls.
 - At the context marker (300k) commit what is green and write the hand-off note.
 - Report path: the brief's; the return is at most 25 lines. Numbers and test output, never an unmeasured claim.

@@ -311,6 +311,12 @@ def main(argv=None) -> int:
             edits.write_place(st.pdir, st.files)
         print("rooms carried:", ", ".join(said))
         return 0
+    from tools.places.draft import differs
+    owe = [f for f in differs.faults(a.place_id, st.pdir.parent, laying=True) if "the same part of the source" not in f]
+    if owe:
+        print(f"draft wholesale {a.place_id}: refused: this place shares its source with a place laid first, and its "
+              f"plan does not yet say how it differs:\n  " + "\n  ".join(owe), file=sys.stderr)
+        return 1
     if not a.dry and not a.discard_hand_edits:
         why = hand_refusal(st.pdir)
         if why:
@@ -333,6 +339,8 @@ def main(argv=None) -> int:
                                                   "band_steepest_deg", "source_water_area_m2", "held_by_water")}
     if walk:
         place["wholesale"]["navmesh"] = walk
+    import datetime   # when the baseline was laid: which of two places on one source came first (differs.py)
+    place["wholesale"]["laid"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     place["agent_saves_applied"] = []
     place.pop("steps", None)
     (pdir / "place.json").write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")

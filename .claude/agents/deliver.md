@@ -15,7 +15,7 @@ Deliver the goals in your brief and check them against its `Acceptance:` line.
 - Survey, then fix once: every failure in one pass, one coherent fix set; a tool over a set is iterated on its
   smallest sample, then run once.
 - Your context compacts itself as it fills and the lead continues you with your history; never stop or hand off for context. On a long job keep a short state note (done, next, decisions) so work carries across a compaction; commit what is green as you go.
-- Run only the tests the change can reach.
+- Run only the tests the change reaches; never a full run unless the brief names a deploy or a phase's close (`make check-all WHY=deploy|phase-close`).
 - Report path: the brief's; the return is at most 25 lines. Numbers and test output, never an unmeasured claim.
 - Commit only your paths, by pathspec: `git pull --rebase`, then `git commit -- <paths>`.
 - Long jobs: `tooling/job_guard.sh run <name> -- <cmd>` in the background, then `tooling/job_guard.sh wait <name>`; never `sleep` or poll.

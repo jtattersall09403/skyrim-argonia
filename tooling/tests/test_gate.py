@@ -149,3 +149,18 @@ def test_a_map_edit_merges_with_the_other_changed_files(tmp_path):
 
 def test_the_gate_code_still_runs_everything_with_a_map_edit():
     assert gate.pick(["tooling/gate_map.toml", "tooling/gate.py"], base_map=MAP_TEXT).full
+
+
+def test_a_full_run_is_refused_without_a_deploy_or_a_phase_close(capsys):
+    assert gate.main(["run", "--all"]) == 2
+    assert gate.main(["run", "--all", "--why", "landing"]) == 2
+    assert "only for a deploy or a phase's close" in capsys.readouterr().err
+    import subprocess
+    r = subprocess.run(["make", "-s", "full-why", "WHY=landing"], cwd=REPO, capture_output=True, text=True)
+    assert r.returncode != 0 and "GATE_BASE=origin/main" in r.stderr
+    assert subprocess.run(["make", "-s", "full-why", "WHY=phase-close"], cwd=REPO).returncode == 0
+
+
+def test_a_full_run_the_change_forces_names_the_file_that_forced_it():
+    line = gate.summary(gate.pick(["Makefile"]), 10)
+    assert line.startswith("gate: FULL") and "Makefile" in line and "expected only when such a file changes" in line

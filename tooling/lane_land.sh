@@ -10,6 +10,8 @@
 #   5. fast-forward the main tree, keeping its uncommitted edits; skipped, and said, while a job runs from it (a job that only
 #      waits, its command a sleep, does not count)
 #   6. remove the worktree and delete its branch, once everything in it is on main (tooling/tidy.py's content rule)
+# The only way a lane lands; its gate is the scoped one, never a full run (`make check-all WHY=deploy|phase-close` is for a
+# deploy and a phase's close only; owner, 2026-11-21).
 # Never runs stash, reset --hard or a checkout of paths; never touches another lane's worktree.
 set -euo pipefail
 die() { echo "lane_land: $*" >&2; exit 1; }

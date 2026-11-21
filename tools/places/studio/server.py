@@ -417,7 +417,12 @@ async def nav_get(req: web.Request) -> web.StreamResponse:
         return jerr(400, "bad place id")
     async with req.app["nav_locks"].setdefault(pid, asyncio.Lock()):
         p = await asyncio.get_running_loop().run_in_executor(None, navexport.current, pid, req.app["cfg"].out)
-    return await send_file(req, p) if p else jerr(404, "this place has not been built")
+    if not p:
+        return jerr(404, "this place has not been built")
+    stale = navexport.older_than_files(p, req.app["cfg"].places / pid)
+    return await send_file(req, p) if not stale else web.Response(
+        text=json.dumps({**json.loads(p.read_text(encoding="utf-8")), "from_last_build": True}),
+        content_type="application/json")
 
 
 async def notes_get(req: web.Request) -> web.Response:

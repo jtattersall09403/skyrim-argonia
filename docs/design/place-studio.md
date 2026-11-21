@@ -41,7 +41,10 @@ the map marker. Left out (`ledger.jsonl`): actors, the source's water plane, lev
 inside the footprint comes as land rows `by` "ground" (all of it, `--carry-radius` round the middle, at most `--cap`;
 `--keep-wet` keeps a pond's bed as mud), eased into ours over a band no steeper than 35 degrees, never across our
 water line. `--rooms` gives each laid door its source room, door pair and arrival; `--walks x,y` writes the source's
-walks routed on its own mesh as `paths.jsonl` rows. `place.json` `wholesale` records the offset and the counts;
+walks routed on its own mesh as `paths.jsonl` rows. `place.json` `wholesale` records the offset, the counts and
+`laid` (when the baseline was laid: of two places on one source the later owes `draft.plan.differs`, and the baseline
+is refused without it; `tools/places/draft/differs.py`); a whole re-lay over hand edits is refused without
+`--discard-hand-edits`;
 `wholesale.navmesh: "source"` makes the build write the source's own walking mesh (Build, Navmesh). Hand changes are
 look-tool strokes committed as agent edits (Edits); the rule stages (`sap`, `lights`, `hang`, `stations`,
 `primitives`, `clearance`, `people`, `names`, `add`, `jail`, `quests`) run on the place as it stands.
