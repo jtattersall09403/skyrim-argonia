@@ -206,8 +206,9 @@ before that.
 `python -m tools.places look truth` proves the guarantees on a golden scene of coloured-box models whose answers are
 known (`tools/tests/fixtures/look_truth`), against a ray caster of its own: about two minutes, one daemon of its own,
 one line per check and a report (`truth.json`) with each failure's image. `look truth <place> --sample 40` audits a
-real draft: forty pieces at random across kinds, each by the tool's own `at`, must be drawn in frame with their
-silhouette's centre within 5% of the frame of where their box projects. Run it when the look tool or the studio's
+real draft: forty pieces at random across kinds (effects and helpers aside), each by the tool's own `at`, must be
+drawn in frame with every drawn pixel inside their box's projection, and, when at least 90% of the piece is seen, the
+silhouette's centre within 5% of the frame of the box's. Run it when the look tool or the studio's
 drawing code changes; `LOOK_TRUTH=1 pytest tools/tests/test_places_look_truth.py` runs the same.
 
 Guaranteed, each by an assertion:
@@ -222,7 +223,8 @@ Guaranteed, each by an assertion:
 - Every piece sent is counted; a model that fails to load is a listed, hatched stand-in; markers are hidden unless
   `--helpers`.
 - A look draws the place files as they stand in the working tree, as the numbers read them: a change to the files,
-  a commit, a new ground or source bundle, an undo or a restore shows at the next look without a restart, and every
+  a commit, an undo or a restore shows at the next look without a restart (a new ground or source bundle reloads
+  too, not yet asserted), and every
   answer names the state it drew (`drew`: the files' hash, the commit, whether the tree differs, the bundles'
   stamps). Each checkout has its own daemon, port and draft bundles; looks in one millisecond keep separate files.
 - A room draws every piece of its source room.
