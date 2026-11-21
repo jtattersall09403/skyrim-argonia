@@ -15,7 +15,7 @@ import json
 import math
 import shutil
 
-from tools.places.draft import ground, io
+from tools.places.draft import geom, ground, io
 from tools.places.draft.stages import Standing
 from tools.places.seat import Ground
 
@@ -62,6 +62,9 @@ def lay(st: Standing, offset: float) -> tuple[list[dict], list[dict], list[dict]
                "seat": {"mode": "free", "dz": 0.0}}
         if of.get(rid):
             row["cluster"] = of[rid]
+        w = geom.walk(b)       # a walked deck's height over its origin: one stands on it, not in it (as adds.py)
+        if w is not None:
+            row["walk"] = w
         for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
             if r.get(k) is not None:
                 row[k] = r[k]
