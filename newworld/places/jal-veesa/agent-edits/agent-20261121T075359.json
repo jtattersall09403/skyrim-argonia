@@ -1,0 +1,75 @@
+{
+ "save_id": "agent-20261121T075359",
+ "place_id": "jal-veesa",
+ "name": "the town's Hist as King of the Murkmire's HistTree01 static in the source's own pose: the source's is a tree record that carries no quest use; the sick Hist of mn02, the rootworm stop and the blessing stand on it",
+ "at": "2026-11-21T07:53:59Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "id": "jal-veesa.XP6DB9MDS9N8880ZY52W1ZV2Y9",
+   "before": {
+    "id": "jal-veesa.XP6DB9MDS9N8880ZY52W1ZV2Y9",
+    "base": "King of the Murkmire.esp:0E67B0",
+    "kind": "tree",
+    "pos": [
+     -56511.4,
+     -505471.9,
+     1238.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 1.64,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:14BB1E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:53:59Z"
+  },
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4",
+    "base": "King of the Murkmire.esp:035B34",
+    "kind": "static",
+    "pos": [
+     -56511.4,
+     -505471.9,
+     1238.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 1.64,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "src": null,
+    "tier": "AGENT_INVENTED",
+    "why": "the town's Hist, Seekhat Yol's own (same model, pose and scale) as King of the Murkmire's HistTree01 static: the source's is a tree record, which carries no quest use; the main story's sick Hist (mn02) and the rootworm stop and shrine blessing are on it; the quest's id kept"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T07:53:59Z"
+  }
+ ]
+}
