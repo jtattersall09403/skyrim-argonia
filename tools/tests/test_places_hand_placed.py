@@ -242,3 +242,11 @@ def test_a_stage_that_agrees_with_the_hands_logs_nothing(fx, stage):
     r = next(r for r in rows(pdir / EXT) if r.get("src") and r.get("kind") != "building")
     commit(pdir, [move(r, rz=0.0)])
     assert not [x for x in run(fx, stage) if "placed by hand" in x]
+
+
+def test_a_stage_that_only_repins_a_hand_rows_seat_keeps_it_where_the_hand_put_it():
+    old = {"id": "a", "pos": [1.0, 2.0, 30.0], "seat": {"mode": "above", "dz": 10.0}}
+    assert hands.repinned(old, dict(old, seat={"mode": "above", "dz": 115.0}))       # same pose, ground dug under it
+    assert not hands.repinned(old, dict(old, pos=[1.0, 2.0, 50.0], seat={"mode": "above", "dz": 30.0}))   # moved
+    assert not hands.repinned(old, dict(old, seat={"mode": "stilts", "dz": 10.0}))   # another rule
+    assert not hands.repinned(old, dict(old))

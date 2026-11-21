@@ -151,14 +151,44 @@ class Daemon:
         place, verb, args = req["place"], req["verb"], list(req.get("args") or [])
         sess = load_session(place)
         t0 = time.time()
+        stamp = files_stamp(place)
+        if getattr(self, "stamps", {}).get(place) != stamp:   # the place files changed under a warm daemon: reload
+            self.scenes = {k: v for k, v in self.scenes.items() if k[0] != place}
+            if self.place == place:
+                self.place = None
+            self.stamps = {**getattr(self, "stamps", {}), place: stamp}
         from tools.places.look import verbs
         out = verbs.run(self, place, sess, verb, args)
         out["ms"] = round((time.time() - t0) * 1000)
+        if uncommitted(place):
+            out["warning"] = ("the place files differ from the committed ones: the pictures draw what is committed, the "
+                              "numbers what is in the working tree; commit the place files by path and look again")
         LOG.parent.mkdir(parents=True, exist_ok=True)
         with LOG.open("a") as f:
             f.write(json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%S"), "place": place, "verb": verb, "args": args,
                                 "png": out.get("png"), "ms": out["ms"]}) + "\n")
         return out
+
+
+def files_stamp(place: str, places=None) -> str:
+    """What the daemon's scene and page were drawn from: the place files' sizes and times in the working tree and the
+    committed tree the studio page draws (draft_bundle.committed), so a change made outside the session (a `units
+    apply`, a commit, a draft stage) is never judged from a stale picture."""
+    import subprocess
+    from tools.places.seat import PLACES
+    pdir = (places or PLACES) / place
+    parts = [f"{p.relative_to(pdir)}:{p.stat().st_size}:{p.stat().st_mtime_ns}"
+             for p in sorted(pdir.rglob("*.json*")) if p.is_file()] if pdir.is_dir() else []
+    t = subprocess.run(["git", "-C", str(pdir), "rev-parse", "HEAD:./"], capture_output=True, text=True)
+    return "|".join(parts) + "|" + (t.stdout.strip() if t.returncode == 0 else "")
+
+
+def uncommitted(place: str, places=None) -> bool:
+    import subprocess
+    from tools.places.seat import PLACES
+    pdir = (places or PLACES) / place
+    t = subprocess.run(["git", "-C", str(pdir), "status", "--porcelain", "--", "."], capture_output=True, text=True)
+    return t.returncode == 0 and any(ln and "agent-edits" not in ln for ln in t.stdout.splitlines())
 
 
 def _plain(o):

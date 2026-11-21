@@ -178,7 +178,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,
                           "slab": True, "axis": False, "grass": False, "n": True, "helpers": False,
                           "mesh": False, "lit": False, "ceiling": True, "no-canopy": False, "canopy": False,
-                          "once": False, "grid": False})
+                          "once": False, "grid": False, "distance": True})
     d.helpers = bool(o.get("helpers"))
     d.fill = bool(o.get("lit"))
     w, h = (int(v) for v in o.get("size", f"{draw_w()}x{draw_h()}").split("x"))
@@ -500,7 +500,8 @@ def framed(sc, place, th, side, height, w, h, o, inside, space, faults, plain, s
 
     def first_good(sub, hh0, title, part=False):
         best = None
-        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12):
+        for s, hh, scale, cut in framing.candidates(side, hh0, bool(o.get("no-canopy")), n=1 if o.get("once") else 12,
+                                                   distance=float(o.get("distance") or 1.0)):
             c = make_cam(sc, place, sub, s, hh, w, h, o, inside, scale, gz)
             att = {"view": title, "side": s, "height": hh, "distance": scale, "canopy_cut": cut}
             if c is None:
@@ -783,21 +784,33 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
     (edits.apply_agent_save), as the agent's draft edits: the save kept at <place>/agent-edits/<save_id>.json and
     listed in place.json `agent_saves_applied`; a stroke on a row the owner's finalised saves touched is left out and
     reported. The session is then emptied (its snapshots too: they name the old files)."""
-    from tools.places import edits
-    from tools.places.draft.stages import owner_rows
     from tools.places.look.daemon import save_session
-    from tools.places.look.scene import data_out
-    from tools.places.seat import PLACES
     why = " ".join(a for a in args if a not in ("-m", "--m")).strip()
     if not why:
         raise ValueError('commit needs -m "<why>"')
     if not sess["strokes"]:
         return {"committed": 0, "why": "the session has no strokes"}
+    got = write_agent_save(place, sess["strokes"], why, places, bundles)
+    sess["strokes"], sess["snapshots"] = [], {}
+    save_session(place, sess)
+    return got
+
+
+def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=None, bundles=None) -> dict:
+    """Strokes of ref ops written into the committed place files as one agent's draft-edit save (the path of `look
+    commit`, also taken by `units apply`); a stroke on an owner's row is left out and reported."""
+    from tools.places import edits
+    from tools.places.draft.stages import owner_rows
+    from tools.places.look.scene import data_out
+    from tools.places.seat import PLACES
     pdir = (places or PLACES) / place
     at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     sid = "agent-" + time.strftime("%Y%m%dT%H%M%S", time.gmtime())
+    ad = pdir / "agent-edits"
+    while (ad / f"{sid}.json").exists():
+        sid += "b"
     ops, n = [], 0
-    for k, stroke in enumerate(sess["strokes"], 1):
+    for k, stroke in enumerate(strokes, 1):
         for op in stroke:
             n += 1
             ops.append({kk: v for kk, v in op.items() if not kk.startswith("_")} | {"n": n, "stroke": k, "at": at})
@@ -806,11 +819,8 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
     out, left = edits.apply_agent_save(files, save, owner_rows(pdir),
                                        edits.bundle_source(bundles or (data_out() / "bundles")))
     edits.write_place(pdir, out)
-    ad = pdir / "agent-edits"
     ad.mkdir(exist_ok=True)
     (ad / f"{sid}.json").write_text(json.dumps(save, indent=1) + "\n")
-    sess["strokes"], sess["snapshots"] = [], {}
-    save_session(place, sess)
     return {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
             "left_for_owner": left}
 

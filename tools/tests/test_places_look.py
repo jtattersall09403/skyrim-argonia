@@ -575,6 +575,9 @@ def test_camera_inside_ground_box_and_tree():
     assert capture.camera_inside([1150, 0, 112], [tree], 0.0) is None          # under the crown, beside the trunk
     assert "trunk" in capture.camera_inside([1000, 0, 112], [tree], 0.0)
     assert "crown" in capture.camera_inside([1150, 0, 700], [tree], 0.0)
+    hist = piece("H", (1000, 0, 0), (-200, -200, 0), (200, 200, 1000), edid="HistTree01")   # a Hist placed as a static
+    assert capture.camera_inside([1150, 0, 112], [hist], 0.0) is None          # on the ring under its crown
+    assert "trunk" in capture.camera_inside([1000, 0, 112], [hist], 0.0)
 
 
 def test_helper_kind_names_what_the_game_never_draws():
@@ -591,6 +594,8 @@ def test_candidates_and_tall():
     assert {s for s, *_ in c[:5]} == {"n", "ne", "nw", "e", "w"}
     assert framing.is_tall([0, 0, 0], [400, 400, 2000]) and not framing.is_tall([0, 0, 0], [1500, 1400, 1540])
     assert framing.base_box([0, 0, 0], [400, 400, 2000])[1][2] == 400
+    far = framing.candidates("n", "eye", distance=2.0)
+    assert far[0] == ("n", "eye", 2.0, False) and ("n", "eye", 3.2, False) in far
 
 
 def test_stand_steps_out_of_pieces_onto_the_floor():
@@ -685,3 +690,18 @@ def test_measure_eaves_and_collar():
     tree = piece("t", (0, 0, 20), (-50, -50, 0), (50, 50, 900), kind="tree")
     assert measure.collar(tree, _Flat(100.0)) == {"collar_over_ground": -80, "flag": True}
     assert not measure.collar(tree, _Flat(50.0))["flag"]
+
+
+def test_a_house_platform_is_a_deck_steps_leave_from(monkeypatch):
+    """A stilt house's own platform (a model that is no walkway, e.g. blackwood/house04platform.nif) is the deck a
+    flight is laid from: its flat top at least DECK_MIN wide both ways; a narrow top or a walkway model is not."""
+    from tools.places import check as C
+    from tools.places.look import hands
+    top = np.array([[[-400, -300, 74], [400, -300, 74], [400, 300, 74]], [[-400, -300, 74], [400, 300, 74], [-400, 300, 74]],
+                    [[-10, -10, 10], [10, -10, 10], [10, 10, 10]]], dtype=float)
+    monkeypatch.setattr(C, "_up_faces", lambda m, b: top)
+    base = {"model": "argonia/blackwood/house04platform.nif", "bounds": [[-447, -354, -412], [441, 347, 74]]}
+    assert hands.platform_top(base) == (74.0, (-400.0, -300.0, 400.0, 300.0))
+    monkeypatch.setattr(C, "_up_faces", lambda m, b: top[:, :, :] * np.array([0.05, 1, 1]))
+    assert hands.platform_top(base) is None                       # 40 wide: a beam, not a deck
+    assert hands.platform_top({"model": "argonia/clutter/barrel.nif", "bounds": base["bounds"]}) is None

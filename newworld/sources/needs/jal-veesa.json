@@ -6,12 +6,12 @@
    "from": ["af1a9afb2e"],
    "thing": "the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"},
+   "rests": {"space": "exterior", "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"},
    "signs": [],
    "met": false,
-   "why": "Partly met. A grown Hist (King of the Murkmire's HistTree03, some 14 metres tall) carries the shrine blessing and the rootworm stop, with four of King of the Murkmire's dead roots laid out from its trunk; the root-tender works beside it. Not met yet: the story puts the tree in the middle of the town, at its sap pool, and the draft stands it at the town's east edge with a stand-in water puddle; the draft moves the tree, its roots, the stop and the root-tender to the middle of the town, round a pool of its own sap. Its bark is the living tree's (the sick-bark block is owed), and no person is named yet.",
-   "fit": "The tree stands at the east edge until the draft moves it to the middle of the town.",
-   "narrow": "Yes: move the tree, its dead roots and the stop to the middle of the town and lay a sap pool at its foot; place-people names the root-tender Weeltul; the darkened bark is the owed sick-bark block.",
+   "why": "Partly met. Seekhat Yol's own Hist (King of the Murkmire's HistTree01, some 23 metres tall at its source scale) stands in the middle of the town with its roots, glands and flowers, its ring of prayer platforms level with its base, and its sap pool at its foot on the south side, out from under the platforms; the root-tender works beside it. Not met yet: its bark is the living tree's (the sick-bark block is owed), and its pool is the stage's living sap, not a cooling one.",
+   "fit": "The Hist as placed, in the middle of the town, its pool at its south foot.",
+   "narrow": "Yes: the darkened bark and a cooling pool are the owed sick-bark block; place-people names the root-tender Weeltul.",
    "tier": "AGENT_INVENTED"
   },
   {
@@ -32,12 +32,12 @@
    "from": ["21b571479b"],
    "thing": "its Hist dead and blackened, its people gone",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "jal-veesa.6GZR9CZ8M4AJEMAJW5108FW37F"},
+   "rests": {"space": "exterior", "ref": "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"},
    "signs": [],
    "met": false,
-   "why": "Not met. The ending's dead tree is a state the quest switches in (the living Hist disabled, a dead one enabled, the people gone): King of the Murkmire's HistTree03Dead is the same tree dead and stands ready as the base; nothing is placed for it yet.",
+   "why": "Not met. The ending's dead tree is a state the quest switches in (the living Hist disabled, a dead one enabled, the people gone): King of the Murkmire's HistTree01Dead is the same tree dead and stands ready as the base; nothing is placed for it yet.",
    "fit": "The Hist as placed.",
-   "narrow": "Yes: one disabled HistTree03Dead at the same spot, enabled by the ending; the quest's to switch.",
+   "narrow": "Yes: one disabled HistTree01Dead at the same spot, enabled by the ending; the quest's to switch.",
    "tier": "AGENT_INVENTED"
   }
  ],

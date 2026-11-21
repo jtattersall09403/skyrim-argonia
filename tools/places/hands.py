@@ -319,6 +319,18 @@ def _in_order(rows: list, put: set, order: list) -> list:
     return out
 
 
+def repinned(old: dict | None, cur: dict | None) -> bool:
+    """A stage that changed only a row's seat dz, its pose unchanged: the row kept where the hand put it on ground
+    the stage changed (the seat pinned to the hand's z), which is the hand's placement held, not undone."""
+    if not old or not cur or old.get("pos") != cur.get("pos"):
+        return False
+    a, b = dict(old), dict(cur)
+    sa, sb = dict(a.pop("seat", None) or {}), dict(b.pop("seat", None) or {})
+    sa.pop("dz", None)
+    sb.pop("dz", None)
+    return a == b and sa == sb and old.get("seat") != cur.get("seat")
+
+
 def keep_placed(pdir: Path, before: dict[str, str], tag: str, log=print) -> list[str]:
     """After a stage: every row a hand placed (`placed`) stands as the standing files (`before`: rel -> text) had it,
     and a row carried `on` a row put back moves back with it. Logs and returns each row kept with what the stage
@@ -341,6 +353,8 @@ def keep_placed(pdir: Path, before: dict[str, str], tag: str, log=print) -> list
         for key, h in sorted(rows_held.items()):
             old, cur = old_rows.get(key), (rows[by[key]] if key in by else None)
             fields = h["fields"]
+            if repinned(old, cur):
+                continue                                     # the hand's pose kept on ground a stage changed
             if fields is None:
                 if old == cur:
                     continue

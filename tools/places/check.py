@@ -637,8 +637,8 @@ def rests(a: dict, b: dict) -> bool:
 
 def sap_of(pool: dict, hist: dict) -> bool:
     """`pool` is the sap pool the draft's sap stage set at the roots of the Hist `hist` (its id is the Hist's with
-    `.sap.` after the place: draft.sap.pool_for). The pool is centred on the trunk by design, so each stands in the
-    other."""
+    `.sap.` after the place: draft.sap.pool_for). The pool holds the trunk (on it or offset beside it), so each stands
+    in the other."""
     pid, _, rest = str(hist.get("id") or "").partition(".")
     if bool(rest) and pool.get("id") == f"{pid}.sap.{rest}":
         return True
@@ -647,7 +647,7 @@ def sap_of(pool: dict, hist: dict) -> bool:
     from tools.places.draft import sap
     if pool.get("base") not in sap.POOLS or not pool.get("pos") or not hist.get("pos"):
         return False
-    return math.dist(sap.centre(pool), hist["pos"][:2]) <= sap.TOL
+    return sap.holds(pool, hist)
 
 
 FRAME_WORDS = ("door", "entrance", "pillar", "arch", "frame", "gate", "portal", "jamb")
@@ -916,12 +916,11 @@ def check_land(ctx) -> list[str]:
     rows = ctx.get("land_rows", rows)
     _, steps = ground(ctx)
     world = {(c["x"], c["y"]): B.cell_steps(c) for c in ctx["facts"]["cells"] if c.get("deltas")}
-    for r in rows:
-        cx, cy = r["cell"]
+    for (cx, cy), verts in B.summed_land(rows).items():
         if (cx, cy) not in world or (cx, cy) not in steps:
             bad.append(f"land {cx},{cy}: land.jsonl patches a cell the world has no land for")
             continue
-        for row, col, dz in r["verts"]:
+        for (row, col), dz in sorted(verts.items()):
             want = round(world[(cx, cy)][int(row), int(col)] + dz / 8.0)
             got = steps[(cx, cy)][int(row), int(col)]
             if abs(got - want) > 0.5:

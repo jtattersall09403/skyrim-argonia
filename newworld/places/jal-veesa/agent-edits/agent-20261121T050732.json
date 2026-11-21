@@ -1,0 +1,49 @@
+{
+ "save_id": "agent-20261121T050732",
+ "place_id": "jal-veesa",
+ "name": "the Hist root HistRoot01 A396GQAE wholly under the carried rise (top 790, ground 495-950 under it) dropped: raised whole it would float 160+ at its low end",
+ "at": "2026-11-21T05:07:32Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.A396GQAE683QHV8J5144T8165M",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.A396GQAE683QHV8J5144T8165M",
+    "base": "King of the Murkmire.esp:035B37",
+    "kind": "tree",
+    "pos": [
+     -57345.91,
+     -505281.96,
+     608.82
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:16560C",
+    "seat": {
+     "foot": [
+      -438.4,
+      -129.7,
+      576.2,
+      594.1
+     ],
+     "mode": "above",
+     "dz": 7.206
+    },
+    "cluster": "s04"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T05:07:32Z"
+  }
+ ]
+}

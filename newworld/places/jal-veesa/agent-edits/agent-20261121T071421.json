@@ -1,0 +1,49 @@
+{
+ "save_id": "agent-20261121T071421",
+ "place_id": "jal-veesa",
+ "name": "the hatchery gland's sap pool removed (draft.sap.none)",
+ "at": "2026-11-21T07:14:21Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.sap.RNQ1281B2E5X8752E8TM05G1YV",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.sap.RNQ1281B2E5X8752E8TM05G1YV",
+    "base": "King of the Murkmire.esp:3D870E",
+    "kind": "activator",
+    "pos": [
+     -57252.19,
+     -505382.06,
+     422.965
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.27505
+    ],
+    "scale": 0.75,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": -5.356,
+     "foot": [
+      -115.8,
+      -114.4,
+      111.1,
+      149.6
+     ]
+    },
+    "why": "the sap pool at the roots of HistGland02 (Lore:Hatching_Pools): King of the Murkmire's WaterPuddleHist, its Hist sap water; placed by hand (draft.sap.offset [120.0, 60.0], scale 0.75)"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T07:14:21Z"
+  }
+ ]
+}

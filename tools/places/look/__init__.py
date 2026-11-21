@@ -10,7 +10,7 @@ Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per
 Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--rooms]: the place walked as a player,
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
-failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries.
+failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries; `at` [--distance k] stands k times as far.
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
@@ -94,7 +94,7 @@ def main(argv: list[str]) -> int:
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()
     t0 = time.time()
-    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if "playwalk" in (verb, *args[:2]) else 900.0)
+    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)
     if "playwalk" in (verb, *args[:2]) and out.get("ok") and (out.get("lines") or out.get("plan")):   # the plan and each route, one line each
         print("\n".join(out.get("plan") or out["lines"]))

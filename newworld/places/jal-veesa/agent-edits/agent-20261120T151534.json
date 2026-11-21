@@ -1,0 +1,124 @@
+{
+ "save_id": "agent-20261120T151534",
+ "place_id": "jal-veesa",
+ "name": "EggTenders' quarters put back together (units apply); Accommodation's ivy back on its deck",
+ "at": "2026-11-20T15:15:34Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.SEJ11M72565VMJVTEA857630VG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50886.54,
+     -504522.86,
+     753.37
+    ],
+    "rot": [
+     5.68977,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -112.6,
+      -20.5,
+      117.9,
+      24.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.9YGVVHSJYSPRSH2N4JV4PCDJNW",
+     "dz": 18.62
+    }
+   },
+   "after": {
+    "pos": [
+     -50886.54,
+     -504522.86,
+     815.07
+    ],
+    "rot": [
+     5.68977,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.12,
+    "seat": {
+     "foot": [
+      -112.6,
+      -20.5,
+      117.9,
+      24.6
+     ],
+     "mode": "on",
+     "on": "jal-veesa.9YGVVHSJYSPRSH2N4JV4PCDJNW",
+     "dz": 80.32
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-20T15:15:34Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.D46912MVHB1ARHMQMXCQATXKCB",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51084.96,
+     -504823.13,
+     792.77
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.41,
+    "seat": {
+     "foot": [
+      -124.2,
+      -31.0,
+      124.2,
+      31.0
+     ],
+     "mode": "on",
+     "on": "jal-veesa.9YGVVHSJYSPRSH2N4JV4PCDJNW",
+     "dz": 58.02
+    }
+   },
+   "after": {
+    "pos": [
+     -51084.96,
+     -504823.13,
+     854.47
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.41,
+    "seat": {
+     "foot": [
+      -124.2,
+      -31.0,
+      124.2,
+      31.0
+     ],
+     "mode": "on",
+     "on": "jal-veesa.9YGVVHSJYSPRSH2N4JV4PCDJNW",
+     "dz": 119.72
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-20T15:15:34Z"
+  }
+ ]
+}

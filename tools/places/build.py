@@ -322,6 +322,17 @@ def cell_steps(c: dict) -> np.ndarray:
 
 # ---- land -----------------------------------------------------------------------------------------------------------
 
+def summed_land(rows: list[dict]) -> dict[tuple[int, int], dict[tuple[int, int], float]]:
+    """{cell: {(row, col): dz}} with the rows' changes to one vertex of one cell added (the carried ground and the sap
+    hollow dug on it), as the seat's Ground applies them."""
+    out: dict = {}
+    for r in rows:
+        c = out.setdefault((int(r["cell"][0]), int(r["cell"][1])), {})
+        for row, col, dz in r["verts"]:
+            c[(int(row), int(col))] = c.get((int(row), int(col)), 0.0) + float(dz)
+    return out
+
+
 def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
     """Land patches -> LAND overrides: heights (VHGT) and normals (VNML) of every cell whose heights or normals the
     patches change. Returns (overrides, patched global vertex steps {(gx, gy): steps}, changed cells)."""
@@ -329,10 +340,9 @@ def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
     if not rows:
         return [], {}, set()
     target: dict[tuple[int, int], int] = {}
-    for r in rows:
-        cx, cy = r["cell"]
+    for (cx, cy), verts in summed_land(rows).items():
         base = cell_steps(facts["by_cell"][(cx, cy)])
-        for row, col, dz in r["verts"]:
+        for (row, col), dz in sorted(verts.items()):
             gx, gy = cx * 32 + int(col), cy * 32 + int(row)  # global vertex index: x east, y north
             v = int(round(base[int(row), int(col)] + dz / 8.0))
             if target.get((gx, gy), v) != v:

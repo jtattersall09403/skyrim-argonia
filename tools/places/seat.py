@@ -419,6 +419,18 @@ def seat_z(ref: dict, g: Ground, placed: dict[str, dict] | None = None) -> float
     return round(base + float(s.get("dz", 0.0)), 3)
 
 
+def pin(ref: dict, z: float, g: Ground, placed: dict[str, dict] | None = None) -> dict | None:
+    """ref's seat with its dz set so that seat_z gives `z`: a piece placed by plan or by hand keeps its seat rule true,
+    so every later seating finds it where it was put. A free seat, or one whose support is unknown, is kept."""
+    s = ref.get("seat")
+    if not s or s.get("mode", "free") == "free":
+        return s
+    if s.get("mode") == "on" and (placed or {}).get(s.get("on")) is None:
+        return s
+    base = seat_z(dict(ref, seat=dict(s, dz=0.0)), g, placed)
+    return dict(s, dz=round(z - base, 3))
+
+
 def seat_all(refs: list[dict], g: Ground) -> int:
     """Seat refs in dependency order (supporters first); returns how many z values changed."""
     by_id = {r["id"]: r for r in refs}

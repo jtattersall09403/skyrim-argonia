@@ -47,6 +47,14 @@ TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear
               "geom.py", "io.py", "walk.py", "overlap.py", "lights.py", "adds.py", "promised.py"]
 
 
+def water_kept(src_wet: bool, our_wet: bool) -> bool:
+    """A source piece stands where it was fitted unless our water and land disagree with it the wrong way: a piece
+    that stood in the source's water and now has our ground under it (the place carries the source's ground) stands
+    on that ground, its legs sunk; only a piece of the source's dry land that lands in our water must be nudged or
+    dropped."""
+    return src_wet or not our_wet
+
+
 def tool_key() -> str:
     h = hashlib.sha256()
     here = Path(__file__).parent
@@ -271,7 +279,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         if not row.get("src") or row["seat"].get("mode") in ("on", "free", "above") or row.get("kind") not in PATCH_KINDS:
             return False
         r_src = by_src[row["src"]]
-        return G.wet(row["pos"][0], row["pos"][1], 16) != S.wet(r_src["pos"][0], r_src["pos"][1], 16)
+        return not water_kept(S.wet(r_src["pos"][0], r_src["pos"][1], 16), G.wet(row["pos"][0], row["pos"][1], 16))
 
     # a door never leaves its building: a cluster whose door is on the wrong side moves whole
     by_cluster: dict[str, list[dict]] = {}
@@ -318,7 +326,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         r_src = by_src[row["src"]]
         want = S.wet(r_src["pos"][0], r_src["pos"][1], 16)
         x, y = row["pos"][0], row["pos"][1]
-        if G.wet(x, y, 16) == want:
+        if water_kept(want, G.wet(x, y, 16)):
             continue
         solid = row.get("kind") in overlap.SOLID
 

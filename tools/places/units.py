@@ -2,11 +2,15 @@
 
     python -m tools.places units <place> [--all] [--source] [--json]
     python -m tools.places units plan <place> [--margin 30] [--out plan.json]
+    python -m tools.places units apply <place> [UNIT ...] [--why=...]   (the plan written as the agent's draft edits;
+        a Hist unit is seated by its own rule: what lay on the source's ground on ours, the rest on its trunk)
 
 A house unit is its building body with the platform or deck it stands on, the posts under them, the steps and
 railings at its deck, the doors set in its walls (and the room they lead to) and what rests on, hangs on or is fixed
 to it; a walkway, bridge or dock is a unit of its own whose joins name the units it rests on; a boat, a rack, a stall
-is a small unit. Trees, rocks, roots and ground cover belong to the ground (a plant standing on a deck excepted).
+is a small unit. A Hist is one unit: its trunk with its roots, glands, gland roots, flowers, vine floors, the gland
+lights and chimes hung in its crown, and its sap pool, kept in the source's arrangement about the trunk. Other trees,
+rocks, roots and ground cover belong to the ground (a plant standing on a deck excepted).
 Membership comes from contact and support among the SOURCE's pieces at the source's positions (the look tool's
 rules, tools/places/look/geom.py), carried to the draft by each row's `src`; draft rows with no source ref are
 grouped the same way where they stand.
@@ -19,6 +23,7 @@ vertical offset, solved over the join graph, or a spot nearby where it fits, or 
 """
 from __future__ import annotations
 
+import copy
 import json
 import math
 import re
@@ -44,6 +49,10 @@ from tools.places.classify import (BODY_WORDS, DECK_WORDS, GROUND_KINDS, RAIL_WO
                                    SPAN_UNIT_WORDS as SPAN_WORDS, STEPS_RE, NOT_STRUCTURE, GROUND_CLASSES, kind_of, post as _post)
 from tools.places.classify import LOOSE_KINDS as LOOSE  # noqa: E402
 SPANS = ("walkway", "bridge", "dock")
+LOOSE = {"light", "marker", "sound", "actor"}
+HIST_TRUNK = re.compile(r"^(ArgoniaTreeHist\d|Hist(Tree|Trunk)\d)", re.I)   # a Hist's tree or trunk, living or dead
+HIST_REACH = 256.0     # a root, gland, flower or vine floor of a Hist lies within this of its trunk's box
+HIST_SNAP = 128.0      # a draft's added Hist stands for the source's when it stands this near the source's spot
 
 
 # ---------- pieces ----------
@@ -109,6 +118,29 @@ def deck_top(p: dict, bases: dict | None) -> float:
 
 
 # ---------- derivation ----------
+def hist_trunk(p: dict) -> bool:
+    return bool(HIST_TRUNK.match(str(p.get("edid") or "")))
+
+
+def hist_role(p: dict) -> str | None:
+    """A piece's part of a Hist, by its words: root (a HistRoot or a gland's roots), gland, floor (a mossy vine
+    floor), sap (the Hist's sap water), hanging (a gland light, a flower, a chime); None when it is no part of one."""
+    e, w = str(p.get("edid") or ""), _words(p)
+    if hist_trunk(p):
+        return None
+    if "hist" in w and "sap" in w or e == "WaterPuddleHist":
+        return "sap"
+    if re.match(r"^HistRoot|^HistGland\d*Roots", e):
+        return "root"
+    if re.match(r"^HistGland\d", e):
+        return "gland"
+    if "mossyvinesfloor" in w:
+        return "floor"
+    if "hist" in w or "chime" in w:
+        return "hanging"
+    return None
+
+
 def _role0(p: dict) -> str:
     w = _words(p)
     if ground_piece(p):
@@ -165,6 +197,24 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
         got.discard(pid)
         return sorted(got, key=lambda q: (-float(boxes[q][1][2]), q))   # the nearest under first, in one order
 
+    unit_of: dict[str, int] = {}
+    role: dict[str, str] = {}
+    units: list[dict] = []
+    for t in sorted((p for p in pieces if hist_trunk(p)), key=lambda p: p["id"]):
+        units.append({"kind": "hist", "pieces": {}})
+        unit_of[t["id"]], role[t["id"]] = len(units) - 1, "trunk"
+    trunks = [i for i, r in role.items() if r == "trunk"]
+    for p in pieces:
+        r = hist_role(p)
+        if r is None or p["id"] in unit_of or not trunks:
+            continue
+        d, t = min((gap(p["id"], t), t) for t in trunks)
+        lo, hi = boxes[p["id"]]
+        tlo, thi = boxes[t]
+        if r == "hanging" and not ("hist" in _words(p) or (tlo <= lo).all() and (hi <= thi).all()):
+            continue   # a chime or lantern counts only inside the crown's box
+        if d <= HIST_REACH:
+            unit_of[p["id"]], role[p["id"]] = unit_of[t], r
     # bodies: by their words, or a large building piece a door is set in; bodies standing in each other are one
     doors = [p["id"] for p in pieces if role0[p["id"]] == "door"]
     for p in pieces:
@@ -192,9 +242,6 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
             if room in by_room:
                 union(bodies.index(b), bodies.index(by_room[room]))
             by_room[room] = b
-    unit_of: dict[str, int] = {}
-    role: dict[str, str] = {}
-    units: list[dict] = []
     groups: dict = {}
     for i, b in enumerate(bodies):
         groups.setdefault(find(i), []).append(b)
@@ -208,6 +255,8 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
 
     # decks: what the bodies stand on; posts: what the decks stand on (twice: a deck on beams on posts)
     for u in range(len(units)):
+        if units[u]["kind"] != "house":
+            continue
         mine = [b for b, k in unit_of.items() if k == u]
         for b in mine:
             blo = float(boxes[b][0][2])
@@ -313,7 +362,7 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
         x, y, z = p["m"][0][3], p["m"][1][3], p["m"][2][3]
         for q, u in list(unit_of.items()):
             lo, hi = boxes[q]
-            if units[u]["kind"] != "thing" and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
+            if units[u]["kind"] not in ("thing", "hist") and lo[0] - 32 <= x <= hi[0] + 32 and lo[1] - 32 <= y <= hi[1] + 32 and lo[2] - 32 <= z <= hi[2] + 64:
                 add(p["id"], u, "hanging" if p.get("kind") == "light" or role0[p["id"]] == "fixture" else "on")
                 break
 
@@ -389,7 +438,7 @@ class Place:
         sc = scene or Scene(place_id)
         src = io.load(f"src.{sc.files['place']['source_id']}", data_out() / "bundles")
         bounds = lambda b: sc.bounds_of(b)  # noqa: E731  the look tool's own extents, so the numbers match its sections
-        self.build(place_id, sc, pieces_of(src.exterior.refs, sc.bases, bounds), src.ground)
+        self.build(place_id, sc, pieces_of(src.exterior.refs, {**src.bases, **sc.bases}, bounds), src.ground)
 
     @classmethod
     def of(cls, place_id: str, scene, src_pieces: list[dict], src_ground) -> "Place":
@@ -400,7 +449,7 @@ class Place:
 
     def build(self, place_id: str, sc, src_pieces: list[dict], src_ground) -> None:
         self.sc, self.place_id = sc, place_id
-        self.src_pieces = src_pieces
+        self.src_pieces, self.src_ground = src_pieces, src_ground
         self.src_by = {p["id"]: p for p in self.src_pieces}
         self.src_units = derive(self.src_pieces, src_ground, sc.bases)
         for p in sc.pieces:
@@ -421,6 +470,12 @@ class Place:
             taken.update(i for v in pcs.values() for i in v)
             self.units.append(dict(su, pieces=pcs, doors=pcs.get("door", []), src_pieces=su["pieces"]))
         rest = [p for p in sc.pieces if p["id"] not in taken and p["src"] not in self.src_by]
+        for un in self.units:   # a Hist the draft added where the source's stood (a swapped tree) is that Hist's trunk
+            if un["kind"] == "hist":
+                got = _stand_ins(self, un, rest)
+                for r, ids in got.items():
+                    un["pieces"].setdefault(r, []).extend(ids)
+                rest = [p for p in rest if not any(p["id"] in v for v in got.values())]
         for un in derive(rest, sc.ground, sc.bases, prefix="added."):
             self.units.append(dict(un, src_pieces=None))
         self.by_unit = {u["id"]: u for u in self.units}
@@ -443,6 +498,112 @@ class Place:
         return None
 
 
+def _stand_ins(pl: Place, un: dict, rest: list[dict]) -> dict:
+    """For a source Hist whose trunk the draft does not carry: the draft's added Hist standing where the source's
+    stood (the source's spot moved as the unit's carried pieces moved, within HIST_SNAP), and the sap pool on that
+    trunk (a WaterPuddleHist within its box). {role: [ids]}."""
+    if un["pieces"].get("trunk"):
+        trunk = un["pieces"]["trunk"][0]
+    else:
+        st = [s for s in un["src_pieces"].get("trunk", []) if s in pl.src_by]
+        moved = [np.array([pl.by[i]["m"][k][3] - pl.src_by[pl.by[i]["src"]]["m"][k][3] for k in range(2)])
+                 for v in un["pieces"].values() for i in v if pl.by.get(i, {}).get("src") in pl.src_by]
+        if not st or not moved:
+            return {}
+        d = np.median(np.array(moved), axis=0)
+        sx, sy = pl.src_by[st[0]]["m"][0][3] + d[0], pl.src_by[st[0]]["m"][1][3] + d[1]
+        near = sorted((math.hypot(p["m"][0][3] - sx, p["m"][1][3] - sy), p["id"]) for p in rest if hist_trunk(p))
+        if not near or near[0][0] > HIST_SNAP:
+            return {}
+        trunk = near[0][1]
+    out = {} if un["pieces"].get("trunk") else {"trunk": [trunk]}
+    lo, hi = geom.aabb(pl.by[trunk])
+    pools = [p["id"] for p in rest if hist_role(p) == "sap" and lo[0] <= p["m"][0][3] <= hi[0] and lo[1] <= p["m"][1][3] <= hi[1]]
+    if pools:
+        tx, ty = pl.by[trunk]["m"][0][3], pl.by[trunk]["m"][1][3]
+        out["sap"] = [min(pools, key=lambda i: math.hypot(pl.by[i]["m"][0][3] - tx, pl.by[i]["m"][1][3] - ty))]
+    return out
+
+
+def measure_hist(pl: Place, un: dict) -> dict:
+    """A Hist's numbers: each root, gland, floor and hanging piece against our ground and against the trunk. A piece
+    that rested on the source's ground (its lowest point within GROUND_REST of it) must reach ours, by its lowest
+    point; every other piece keeps its height on the trunk as the source has it, within STEP. A sap pool's surface is
+    given with the highest ground inside its box."""
+    G, roles = pl.sc.ground, un["pieces"]
+    trunk = (roles.get("trunk") or [None])[0]
+    sg = getattr(pl, "src_ground", None)
+    st = [s for s in (un.get("src_pieces") or {}).get("trunk", []) if s in pl.src_by]
+    tz = pl.by[trunk]["m"][2][3] if trunk in pl.by else None
+    stz = pl.src_by[st[0]]["m"][2][3] if st else None
+    out = {"id": un["id"], "kind": "hist", "n": sum(len(v) for v in roles.values()), "stand": _r(tz), "floor": None,
+           "deck": None, "flags": [], "steps": [], "doors": [], "parts": []}
+    gs, depths = [], []
+    for r in ("root", "floor", "gland", "hanging"):
+        for i in [i for i in roles.get(r, []) if i in pl.by]:
+            p = pl.by[i]
+            pts = geom.bottom_points(p, 3)
+            lows = [(float(z) - g, g) for x, y, z in pts if (g := G.height(float(x), float(y))) is not None]
+            if not lows:
+                continue
+            over, g = min(lows)
+            gs.append(g)
+            top = float(geom.aabb(p)[1][2])
+            sp = pl.src_by.get(p.get("src"))
+            src_over = rel = src_rel = None
+            if sp is not None and sg is not None:
+                sl = [float(z) - h for x, y, z in geom.bottom_points(sp, 3) if (h := sg.height(float(x), float(y))) is not None]
+                src_over = min(sl) if sl else None
+            if sp is not None and tz is not None and stz is not None:
+                rel, src_rel = p["m"][2][3] - tz, sp["m"][2][3] - stz
+            grounded = src_over is not None and src_over <= GROUND_REST and r != "hanging"
+            part = {"piece": i, "role": r, "edid": p.get("edid"), "over": _r(over), "src_over": _r(src_over),
+                    "on_trunk": _r(None if rel is None else rel - src_rel), "grounded": grounded}
+            out["parts"].append(part)
+            name = f"{r} {p.get('edid')} ...{i[-8:]}"
+            if grounded:
+                depths.append(-over)
+                if over > STEP:
+                    out["flags"].append(f"{name} hangs {over:.0f} over the ground")
+                if top < max(h for _, h in lows):
+                    out["flags"].append(f"{name} buried whole")
+            elif r == "floor" and over is not None and -STEP <= over <= STEP:
+                pass                    # a vine floor lying on our ground is seated, wherever the source's mound had it
+            elif part["on_trunk"] is not None and abs(part["on_trunk"]) > STEP:
+                out["flags"].append(f"{name} off its place on the trunk ({part['on_trunk']:+.0f})")
+            elif part["on_trunk"] is None and over > STEP and r in ("root", "floor"):
+                out["flags"].append(f"{name} hangs {over:.0f} over the ground")
+    for i in roles.get("sap", []):
+        p = pl.by.get(i)
+        if p is None:
+            continue
+        lo, hi = geom.aabb(p)
+        rim = [g for x in np.linspace(lo[0], hi[0], 7) for y in np.linspace(lo[1], hi[1], 7)
+               if (g := G.height(float(x), float(y))) is not None]
+        out["sap"] = {"piece": i, "surface": _r(p["m"][2][3]), "rim_max": _r(max(rim)) if rim else None}
+    out["gmin"], out["gmax"] = (_r(min(gs)), _r(max(gs))) if gs else (None, None)
+    out["min_depth"] = _r(min(depths)) if depths else None
+    out["max_depth"] = _r(max(depths)) if depths else None
+    out["feet"] = []
+    return out
+
+
+def hist_reassembly(pl: Place, un: dict) -> dict:
+    """Per piece of a Hist, the height that seats it (measure_hist's rule): a piece that rested on the source's ground
+    sunk until its lowest point is BURY_MIN into ours (a vine floor flush on it), never lifted; every other piece back at its height on the trunk as the source has it. {piece id: dz}."""
+    out = {}
+    for part in measure_hist(pl, un)["parts"]:
+        if part["grounded"] and part["over"] is not None:   # its lowest point sunk into the ground, never lifted
+            d = min(0.0, (0.0 if part["role"] == "floor" else -BURY_MIN) - part["over"])
+        elif part["on_trunk"] is not None:
+            d = -part["on_trunk"]
+        else:
+            continue
+        if abs(d) > 0.5:
+            out[part["piece"]] = round(d, 1)
+    return out
+
+
 def _rel_src(pl: Place, un: dict, did: str) -> str | None:
     p = pl.by.get(did)
     return p and p.get("src")
@@ -451,6 +612,8 @@ def _rel_src(pl: Place, un: dict, did: str) -> str | None:
 def measure(pl: Place, un: dict, dz: dict | None = None, shift=(0.0, 0.0)) -> dict:
     """One unit's numbers on our ground. dz: piece id -> extra height (a plan's reassembly and offset); shift: a
     plan move (dx, dy) of the whole unit."""
+    if un["kind"] == "hist" and not dz and shift == (0.0, 0.0):
+        return measure_hist(pl, un)
     sc, dz = pl.sc, dz or {}
     G = sc.ground
     roles = un["pieces"]
@@ -630,10 +793,17 @@ def _source_rel(pl: Place, un: dict) -> dict:
     return rel
 
 
+def mismatched(rel: float | None, rs: float | None) -> bool:
+    """A join's end is mismatched when it stands more than a step off the source's: a difference of a step itself
+    (to float noise, a bridge one plank step off) is within a step."""
+    return rel is not None and rs is not None and abs(rel - rs) > STEP + 0.5
+
+
 def joins(pl: Place) -> list[dict]:
     """Every join of a walkway or dock with what it rests on: {walk, unit, piece, with, rel, rel_src, flag}. rel: the
     walkway piece's top over the unit's standing level now; rel_src: the same in the source."""
     out = []
+    given = {(g["walk"], g["unit"]): g.get("why", "") for g in given_up(pl)}
     for un in pl.units:
         for j in un.get("joins", []):
             if j["unit"] == "ground":
@@ -652,14 +822,44 @@ def joins(pl: Place) -> list[dict]:
                 if srel is not None:
                     rs = deck_top(pl.src_by[j["piece"]], pl.sc.bases) - srel
             flag = None
-            if rel is not None and rs is not None and abs(rel - rs) > STEP:
+            if mismatched(rel, rs):
                 flag = f"walkway end mismatched ({rel - rs:+.0f})"
-            out.append({"walk": un["id"], "unit": tgt["id"], "piece": ws[0], "rel": _r(rel), "rel_src": _r(rs), "flag": flag})
+            gone = given.get((un["id"], tgt["id"]), given.get((tgt["id"], un["id"])))
+            if gone is not None:
+                flag = None
+            out.append({"walk": un["id"], "unit": tgt["id"], "piece": ws[0], "rel": _r(rel), "rel_src": _r(rs), "flag": flag,
+                        **({"given_up": gone} if gone is not None else {})})
     return out
 
 
+def given_up(pl: Place) -> list[dict]:
+    """The joins the drafter gave up for a flight where two levels cannot agree (`draft.joins_given_up` of place.json:
+    [{walk, unit, why}], either order): measured as ever, never flagged as a mismatched end."""
+    files = getattr(pl.sc, "files", None) or {}
+    return list(((files.get("place") or {}).get("draft") or {}).get("joins_given_up") or [])
+
+
+def accepted(pl: Place) -> list[dict]:
+    """The flags the drafter accepted because they copy the source's own arrangement (`draft.accepted` of place.json:
+    [{unit, flag, why}]; `flag` is a prefix of the measured flag): shown as "accepted: why", never as a fault."""
+    files = getattr(pl.sc, "files", None) or {}
+    return list(((files.get("place") or {}).get("draft") or {}).get("accepted") or [])
+
+
+def apply_accepted(unit_id: str, flags: list[str], acc: list[dict]) -> tuple[list[str], list[str]]:
+    """Split a unit's flags into (faults, accepted notes) by the `draft.accepted` rows."""
+    faults, notes = [], []
+    for f in flags:
+        a = next((a for a in acc if a.get("unit") == unit_id and f.startswith(a.get("flag", "\0"))), None)
+        if a is None:
+            faults.append(f)
+        else:
+            notes.append(f"accepted: {a.get('why', '')} ({f})")
+    return faults, notes
+
+
 def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
-    rows, js = [], joins(pl)
+    rows, js, acc = [], joins(pl), accepted(pl)
     for un in pl.units:
         if un["kind"] == "thing" and not everything:
             continue
@@ -672,6 +872,7 @@ def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
                 pass
         if un["kind"] in ("walkway", "bridge") and not un.get("joins"):
             m["flags"].append("walkway end unsupported (rests on nothing named)")
+        m["flags"], m["accepted"] = apply_accepted(un["id"], m["flags"], acc)
         m["joins"] = [j["unit"] for j in un.get("joins", [])]
         m["roles"] = {r: len(v) for r, v in un["pieces"].items()}
         rows.append(m)
@@ -684,7 +885,7 @@ def table(pl: Place, everything: bool = False) -> tuple[list[dict], str]:
         fd = "" if m["min_depth"] is None else f"{m['min_depth']:.0f}..{m['max_depth']:.0f}"
         roles = ",".join(f"{k}{v}" for k, v in sorted(m["roles"].items()))
         lines.append(f"{m['id'][:34]:34} {m['kind']:7} {m['n']:>3} {_f(m['stand']):>7} {_f(m['gmin']):>7} {_f(m['gmax']):>7} "
-                     f"{_f(fg):>8} {gp:>11} {fd:>13} {roles}; {' '.join(m['joins']) or '-'}; {'; '.join(m['flags']) or 'ok'}")
+                     f"{_f(fg):>8} {gp:>11} {fd:>13} {roles}; {' '.join(m['joins']) or '-'}; {'; '.join(m['flags'] + m['accepted']) or 'ok'}")
     return rows, "\n".join(lines)
 
 
@@ -712,16 +913,55 @@ def reassembly(pl: Place, un: dict) -> dict:
     else:
         shift = float(np.median([moved(i) for i in core]))
     out = {}
-    for v in un["pieces"].values():
+    sg, G = getattr(pl, "src_ground", None), pl.sc.ground
+    tops = [float(geom.aabb(pl.src_by[pl.by[i]["src"]])[1][2]) for i in un["pieces"].get("deck", [])
+            if i in pl.by and pl.by[i]["src"] in pl.src_by]
+    src_stand = max(tops) if tops else None
+    lying: dict[str, float] = {}     # what lay on the source's ground: {id: how far its underside was over it}
+    for r, v in un["pieces"].items():
+        for i in v:
+            p = pl.by.get(i)
+            if p and p["src"] in pl.src_by and r in ("on", "hanging", "railing", "door"):
+                over = _on_src_ground(pl.src_by[p["src"]], sg, src_stand if r in ("on", "door") else None)
+                if over is not None:
+                    lying[i] = over
+    # a group under the deck (a fire pit with its firewood and smoke) keeps its own heights, its lowest on the ground
+    up = [o for o in lying.values() if o > GROUND_REST]
+    drop = min(up) if up else 0.0
+    for r, v in un["pieces"].items():
         for i in v:
             p = pl.by.get(i)
             if not p or p["src"] not in pl.src_by:
                 continue
             want = pl.src_by[p["src"]]["m"][2][3] + shift
+            if i in lying:   # it lay on the source's ground by or under the house (a net, a fire pit): it lies on ours
+                lo, hi = geom.aabb(p)
+                g = G.height(float(lo[0] + hi[0]) / 2, float(lo[1] + hi[1]) / 2)
+                if g is not None:
+                    over = lying[i] - drop if lying[i] > GROUND_REST else lying[i]
+                    want = p["m"][2][3] + (g + over - float(lo[2]))
             d = want - p["m"][2][3]
             if abs(d) > 0.5:
                 out[i] = round(d, 1)
     return out
+
+
+GROUND_REST = 64.0     # a piece of a unit whose underside was this close to the source's ground rested on the ground
+
+
+def _on_src_ground(sp: dict, sg, stand: float | None = None) -> float | None:
+    """How far over the source's ground a piece's underside was, when it belonged to that ground: it rested on it, or
+    it stood wholly under the unit's standing level (a fire pit and its smoke under a stilt house, a door into the
+    space under the deck); else None."""
+    if sg is None:
+        return None
+    lo, hi = geom.aabb(sp)
+    g = sg.height(float(lo[0] + hi[0]) / 2, float(lo[1] + hi[1]) / 2)
+    if g is None:
+        return None
+    over = float(lo[2]) - g
+    under = stand is not None and float(hi[2]) < stand - STEP * 3 and over < stand - g - STEP * 3
+    return over if -GROUND_REST <= over <= GROUND_REST or under else None
 
 
 def interval(m: dict, un: dict, margin: float, steps: bool = True) -> tuple[float, float, list[str]]:
@@ -963,32 +1203,132 @@ def check_faults(place_id: str, places: Path | None = None, pl: Place | None = N
 
 
 def edit_faults(files: dict, bases: dict, places: Path | None = None) -> list[str]:
-    """A tree or root moved up or down in a stroke of an agent's edit that also moved a building."""
+    """A tree or root left moved up or down by a stroke of an agent's edit that also moved a building (net of the
+    strokes of the ground alone that put it back)."""
+    rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
+    bad = []
+    for i, dz in sorted(moved_by_buildings(files, bases, places).items()):
+        r = rows.get(i) or {}
+        b = bases.get(r.get("base")) or {}
+        k, ed = r.get("kind") or b.get("kind"), str(b.get("edid") or "").lower()
+        if (k == "tree" or "root" in ed) and abs(dz) > BURY_MIN:
+            bad.append(f"{i} ({ed or k}) moved {dz:+.0f} off its seat on the ground by an edit of a building: a tree or "
+                       f"root is judged against the ground, not moved with a house (units apply puts it back)")
+    return bad
+
+
+def moved_by_buildings(files: dict, bases: dict, places: Path | None = None) -> dict[str, float]:
+    """{id: dz} of every tree, fern, rock or root a stroke of an agent's edit moved together with a building, net of
+    the strokes of the ground alone that came after."""
     from tools.places.seat import PLACES
     pdir = (places or PLACES) / files["place"]["place_id"] / "agent-edits"
     rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
-    bad = []
+    owed: dict[str, float] = {}
     for f in sorted(pdir.glob("*.json")) if pdir.is_dir() else []:
-        ops = (json.loads(f.read_text()).get("ops") or [])
         strokes: dict = {}
-        for op in ops:
+        for op in json.loads(f.read_text()).get("ops") or []:
             if op.get("op") == "ref.move" and op.get("space", "exterior") == "exterior":
                 strokes.setdefault(op.get("stroke"), []).append(op)
-        for s, group in strokes.items():
-            def kind(op):
+        for group in strokes.values():
+            def piece(op):
                 r = rows.get(op["id"]) or {}
                 b = bases.get(r.get("base")) or {}
-                return r.get("kind") or b.get("kind"), str(b.get("edid") or "").lower()
-            if not any(kind(op)[0] == "building" for op in group):
-                continue
+                return {"kind": r.get("kind") or b.get("kind"), "edid": b.get("edid"), "model": b.get("model")}
+            building = any(piece(op)["kind"] == "building" for op in group)
             for op in group:
-                k, ed = kind(op)
-                if k == "tree" or "root" in ed:
-                    dz = op["after"]["pos"][2] - op["before"]["pos"][2]
-                    if abs(dz) > BURY_MIN:
-                        bad.append(f"{op['id']} ({ed or k}) moved {dz:+.0f} off its seat on the ground by an edit of a "
-                                   f"building ({f.name} stroke {s}): a tree or root is judged against the ground, not moved with a house")
-    return bad
+                if ground_piece(piece(op)) and (building or op["id"] in owed):
+                    owed[op["id"]] = owed.get(op["id"], 0.0) + op["after"]["pos"][2] - op["before"]["pos"][2]
+    return {i: dz for i, dz in owed.items() if abs(dz) > 0.5}
+
+
+# ---------- applying the plan ----------
+def apply_strokes(pl: Place, p: dict, names: list[str] | None = None, places: Path | None = None,
+                  files: dict | None = None) -> tuple[list, list[str]]:
+    """The plan `p` as strokes of ref moves on the place files: one stroke per unit named (default every unit the plan
+    seats), each piece moved by its own reassembly plus the unit's dz (and the unit's move in plan), then one stroke
+    of the ground alone putting back every tree, fern, rock and root an earlier edit of a building moved. Each moved
+    piece's seat is pinned (seat.pin) so the seating stage finds it where it was put. Returns (strokes, report)."""
+    from tools.places import edits
+    from tools.places.look.verbs import _move_op
+    from tools.places.seat import PLACES, pin, seat_z
+    files = files or edits.load_place((places or PLACES) / pl.place_id)
+    rows = {r["id"]: r for r in files["spaces"]["exterior"]["refs"]}
+    seated = pl.sc.refs
+    G = pl.sc.ground
+    plan_by = {u["unit"]: u for u in p["units"]}
+    want = names or [u["unit"] for u in p["units"] if u.get("dz") is not None and not u.get("after")]
+    strokes, report = [], []
+    for name in want:
+        u, un = plan_by.get(name), pl.by_unit.get(name)
+        if u is None or un is None:
+            raise ValueError(f"{name}: no such unit in the plan of {pl.place_id}")
+        if u.get("dz") is None or u.get("after"):
+            report.append(f"{name}: not applied: the plan cannot seat it ({'; '.join(u.get('after') or []) or 'no offset'})")
+            continue
+        mv = u.get("move") or {}
+        dx, dy = float(mv.get("dx", 0.0)), float(mv.get("dy", 0.0))
+        ids = [i for v in un["pieces"].values() for i in v if i in rows and i in seated]
+        new = {}
+        for i in ids:
+            d = float(u.get("reassemble", {}).get(i, 0.0)) + float(u["dz"])
+            s = seated[i]["pos"]
+            new[i] = dict(copy.deepcopy(rows[i]), pos=[round(s[0] + dx, 3), round(s[1] + dy, 3), round(s[2] + d, 3)])
+        placed = {**seated, **new}
+        stroke = []
+        for i in ids:
+            r = new[i]
+            r["seat"] = pin(r, r["pos"][2], G, placed)
+            if r.get("seat") is None:
+                r.pop("seat", None)
+            if math.dist(r["pos"], rows[i]["pos"]) > 0.05 or r.get("seat") != rows[i].get("seat"):
+                stroke.append(_move_op(rows[i], {"pos": r["pos"], "rot": r.get("rot") or [0, 0, 0],
+                                                 "scale": r.get("scale", 1), "seat": r.get("seat")}))
+        if stroke:
+            strokes.append(stroke)
+        report.append(f"{name}: dz {float(u['dz']):+.0f}, {len(u.get('reassemble') or {})} piece(s) reassembled, "
+                      f"{len(stroke)} row(s) written")
+    ground = []
+    built = {i for un in pl.units for v in un["pieces"].values() for i in v}   # a plant on a deck moves with its deck
+    for i, dz in sorted(moved_by_buildings(files, pl.sc.bases, places).items()):
+        if i not in rows or i not in seated or i in built:
+            continue
+        r = copy.deepcopy(rows[i])
+        s = r.get("seat") or {}
+        if s.get("mode", "free") == "free":
+            r["pos"][2] = round(r["pos"][2] - dz, 3)
+        else:
+            r["seat"] = dict(s, dz=round(float(s.get("dz", 0.0)) - dz, 3))
+            r["pos"][2] = seat_z(r, G, seated)
+        ground.append(_move_op(rows[i], {"pos": r["pos"], "rot": r.get("rot") or [0, 0, 0], "scale": r.get("scale", 1),
+                                          "seat": r.get("seat")}))
+        report.append(f"{i}: back to its own seat on the ground ({-dz:+.0f})")
+    if ground:
+        strokes.append(ground)
+    return strokes, report
+
+
+def apply_cli(place_id: str, names: list[str], why: str | None = None) -> int:
+    from tools.places.look.verbs import write_agent_save
+    pl = Place(place_id)
+    hists = [n for n in names if pl.by_unit.get(n, {}).get("kind") == "hist"]
+    if hists:   # a Hist is seated by its own rule (hist_reassembly), never by the houses' offsets
+        p = {"units": [{"unit": n, "dz": 0.0, "reassemble": hist_reassembly(pl, pl.by_unit[n])} for n in hists]}
+        strokes, report = apply_strokes(pl, p, hists)
+        names = [n for n in names if n not in hists]
+        if names:
+            more, rep = apply_strokes(pl, plan(pl), names)
+            strokes, report = strokes + more, report + rep
+    else:
+        strokes, report = apply_strokes(pl, plan(pl), names or None)
+    print("\n".join(report))
+    if not strokes:
+        print("nothing to write")
+        return 0
+    got = write_agent_save(place_id, strokes, why or f"units apply: {' '.join(names) or 'every unit the plan seats'}")
+    print(f"wrote {got['ops']} op(s) in {got['strokes']} stroke(s): {got['save']}")
+    for lf in got["left_for_owner"]:
+        print(f"left for the owner: stroke {lf['stroke']} touches {lf['owner_rows']}")
+    return 0
 
 
 # ---------- CLI ----------
@@ -998,6 +1338,8 @@ def main(argv: list[str]) -> int:
     if not args:
         print(__doc__.split("\n\n")[0])
         return 2
+    if args[0] == "apply":
+        return apply_cli(args[1], args[2:], opts.get("--why") if isinstance(opts.get("--why"), str) else None)
     if args[0] == "plan":
         pl = Place(args[1])
         p = plan(pl, float(opts.get("--margin", MARGIN)))

@@ -102,5 +102,7 @@ Before a place goes to the owner (the bar in `place-system`):
 ## The machine
 
 The first call starts the daemon (its own studio server and a headless browser), which leaves after 15 minutes
-idle (`look stop` ends it). Each checkout has its own daemon, session and port. Every call is logged to
+idle (`look stop`, with no place, ends it). The pictures draw the committed place files and the numbers the working
+tree: commit the place files by path before you look (a call says so when they differ); the daemon reloads by itself
+when the place files change. Each checkout has its own daemon, session and port. Every call is logged to
 `out/places/look/<tree>/session.log`.
