@@ -84,7 +84,7 @@
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -50804.0,
+     -49910.0,
      -519252.0
     ],
     "rot_z": 0.0,
@@ -92,13 +92,13 @@
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
     "key": "5",
     "scale": 1.0,
-    "dz": 174.29
+    "dz": -4.71
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -50554.0,
+     -49660.0,
      -519252.0
     ],
     "rot_z": 0.0,
@@ -106,13 +106,13 @@
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
     "key": "6",
     "scale": 1.0,
-    "dz": 195.59
+    "dz": -0.61
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
     "kind": "static",
     "pos": [
-     -50304.0,
+     -49410.0,
      -519252.0
     ],
     "rot_z": 0.0,
@@ -120,7 +120,7 @@
     "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
     "key": "7",
     "scale": 1.0,
-    "dz": 262.3
+    "dz": 5.6
    },
    {
     "base": "King of the Murkmire.esp:157321",
@@ -264,7 +264,7 @@
     "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
     "key": "16",
     "scale": 1.0,
-    "dz": 7.7
+    "dz": 0.0
    },
    {
     "base": "King of the Murkmire.esp:1AD601",
@@ -278,7 +278,7 @@
     "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks",
     "key": "17",
     "scale": 1.0,
-    "dz": -34.2
+    "dz": -50.6
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -292,7 +292,7 @@
     "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
     "key": "18",
     "scale": 1.0,
-    "dz": 102.4
+    "dz": 0.0
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -306,7 +306,7 @@
     "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
     "key": "19",
     "scale": 1.0,
-    "dz": 86.72
+    "dz": 0.62
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -393,7 +393,7 @@
     "base": "Skyrim.esm:10638E",
     "kind": "activator",
     "pos": [
-     -50554.0,
+     -49660.0,
      -519002.0
     ],
     "rot_z": 0.0,
@@ -1455,7 +1455,8 @@
   "agent-20261121T080250",
   "agent-20261121T080943",
   "agent-20261121T081014",
-  "agent-20261121T081155"
+  "agent-20261121T081155",
+  "agent-20261121T081430"
  ],
  "wholesale": {
   "offset": 470.0,
