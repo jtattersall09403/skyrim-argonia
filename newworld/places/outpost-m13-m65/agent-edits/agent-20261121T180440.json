@@ -1,0 +1,138 @@
+{
+ "save_id": "agent-20261121T180440",
+ "place_id": "outpost-m13-m65",
+ "name": "the bare earth bank below the camp faced with four large rocks",
+ "at": "2026-11-21T18:04:40Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK040PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101470.0,
+     -527940.0,
+     -60.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the steep earth bank below the camp faced with rock, as such a bank is dressed (owner ruling 2026-11-21: a steep bank inside a place is faced with rock, never left a bare wall)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T18:04:40Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK041PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101500.0,
+     -528170.0,
+     -70.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.49066
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the steep earth bank below the camp faced with rock, as such a bank is dressed (owner ruling 2026-11-21: a steep bank inside a place is faced with rock, never left a bare wall)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T18:04:40Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK042PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101470.0,
+     -528420.0,
+     -60.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.65806
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the steep earth bank below the camp faced with rock, as such a bank is dressed (owner ruling 2026-11-21: a steep bank inside a place is faced with rock, never left a bare wall)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T18:04:40Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK043PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101400.0,
+     -528650.0,
+     -60.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the steep earth bank below the camp faced with rock, as such a bank is dressed (owner ruling 2026-11-21: a steep bank inside a place is faced with rock, never left a bare wall)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T18:04:40Z"
+  }
+ ]
+}
