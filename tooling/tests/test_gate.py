@@ -38,7 +38,7 @@ def test_unknown_path_runs_everything():
 
 
 def test_map_or_gate_change_runs_everything():
-    assert gate.pick(["tooling/gate_map.toml"]).full
+    assert gate.pick(["tooling/gate_map.toml"]).full     # no base map to compare with
     assert gate.pick(["tooling/gate.py"]).full
     assert gate.pick(["tools/tests/conftest.py"]).full
 
@@ -108,3 +108,44 @@ def test_records_quests_story_drafts_and_the_checker_run_the_consistency_stage()
         p = gate.pick([path])
         assert "consistency" in p.stages, path
         assert p.full or "tools/tests/test_newworld_consistency.py" in p.tests, path
+
+
+MAP_TEXT = (REPO / "tooling" / "gate_map.toml").read_text()
+NEW_RULE = '\n[[rule]]\nglobs = ["tools/zzz/*"]\ntests = ["tooling/tests/test_gate.py"]\n'
+
+
+def _pick_map(new_text, tmp_path):
+    m = tmp_path / "map.toml"
+    m.write_text(new_text)
+    return gate.pick(["tooling/gate_map.toml"], mapfile=m, base_map=MAP_TEXT)
+
+
+def test_a_map_edit_adding_one_entry_runs_that_entrys_tests_not_everything(tmp_path):
+    p = _pick_map(MAP_TEXT + NEW_RULE, tmp_path)
+    assert not p.full and p.tests == {"tooling/tests/test_gate.py"} and not p.stages
+    assert "tools/zzz/*" in gate.summary(p, 100)
+
+
+def test_a_map_edit_to_the_full_list_a_stage_or_named_direct_runs_everything(tmp_path):
+    assert _pick_map(MAP_TEXT.replace("full = [", 'full = [\n  "extra.txt",'), tmp_path).full
+    assert _pick_map(MAP_TEXT.replace('atlas = "tools.newworld.atlas_state"', 'atlas = "tools.newworld.map_page"'), tmp_path).full
+    assert _pick_map(MAP_TEXT.replace("named_direct = [", 'named_direct = ["x/y.py", '), tmp_path).full
+
+
+def test_a_removed_entry_runs_the_tests_it_named_if_they_still_exist(tmp_path):
+    base = MAP_TEXT + '\n[[rule]]\nglobs = ["tools/zzz/*"]\nstages = ["skse"]\ntests = ["tooling/tests/test_gate.py", "tooling/tests/gone.py"]\n'
+    m = tmp_path / "map.toml"
+    m.write_text(MAP_TEXT)
+    p = gate.pick(["tooling/gate_map.toml"], mapfile=m, base_map=base)
+    assert not p.full and p.tests == {"tooling/tests/test_gate.py"} and p.stages == {"skse"}
+
+
+def test_a_map_edit_merges_with_the_other_changed_files(tmp_path):
+    m = tmp_path / "map.toml"
+    m.write_text(MAP_TEXT + NEW_RULE)
+    p = gate.pick(["tooling/gate_map.toml", "docs/PLAN.md"], mapfile=m, base_map=MAP_TEXT)
+    assert not p.full and "tooling/tests/test_gate.py" in p.tests and "storyexplorer" in p.stages
+
+
+def test_the_gate_code_still_runs_everything_with_a_map_edit():
+    assert gate.pick(["tooling/gate_map.toml", "tooling/gate.py"], base_map=MAP_TEXT).full
