@@ -53,6 +53,8 @@
 {"id":"outpost-m13-m65.K9PK38NDY669TZYWXM35E8ZA1D","src":"Black Marsh.esm:1BEB34","removed":true}
 {"id":"outpost-m13-m65.KEYM9VQV7C0QR0FJM38JXX6TTG","src":"Black Marsh.esm:1BEB3F","removed":true}
 {"id":"outpost-m13-m65.KGWH62DJ4QS21ZQ74HZ5WYR535","src":"Black Marsh.esm:1BEB00","removed":true}
+{"id":"outpost-m13-m65.LOOK035PLACE","base":"Skyrim.esm:03B3CD","kind":"furniture","pos":[2650.0,3250.0,7012.0],"rot":[0.0,0.0,1.5708],"scale":1,"layer":"place","flags":[],"seat":{"mode":"free","dz":0.0},"why":"a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)","tier":"AGENT_INVENTED"}
+{"id":"outpost-m13-m65.LOOK036PLACE","base":"Skyrim.esm:03B3CD","kind":"furniture","pos":[2650.0,3420.0,7012.0],"rot":[0.0,0.0,1.5708],"scale":1,"layer":"place","flags":[],"seat":{"mode":"free","dz":0.0},"why":"a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)","tier":"AGENT_INVENTED"}
 {"id":"outpost-m13-m65.MBWED4XQZ4RX550B2WKPA5W791","src":"Black Marsh.esm:1BEC85","removed":true}
 {"id":"outpost-m13-m65.NJ4R8JX2XWW4FHJ8V7VJAVP18W","src":"Black Marsh.esm:1BECD3","removed":true}
 {"id":"outpost-m13-m65.NJGPBPW32HYTWKBX2KT7EN7XZ4","src":"Black Marsh.esm:1BEB46","removed":true}
