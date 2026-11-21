@@ -1,0 +1,852 @@
+{
+ "save_id": "agent-20261121T112121",
+ "place_id": "jal-veesa",
+ "name": "the jetty market drawn in to the town's south edge: the market house (General Store) and the dockmaster's house moved whole beside the levy's bunkhouse, the fish racks and the cooking pot, so the walk from the town to the creek passes through the market; the boat-lane dressed with two fish racks and two mat racks",
+ "at": "2026-11-21T11:21:21Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51150.0,
+     -517150.0,
+     183.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -51400.0,
+     -510900.0,
+     183.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QQ1RHE1BDVM3N6G97XP7DFY90J",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51336.6,
+     -517236.1,
+     277.578
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+     "dz": 94.4
+    }
+   },
+   "after": {
+    "pos": [
+     -51586.6,
+     -510986.1,
+     277.578
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+     "dz": 94.4
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4AG1NBWX7FDHGBNKNKZCB3M7TR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52763.2,
+     -516371.0,
+     468.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 296.6
+    }
+   },
+   "after": {
+    "pos": [
+     -52763.2,
+     -511071.0,
+     468.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 296.6
+    }
+   },
+   "n": 3,
+   "stroke": 2,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52700.0,
+     -516300.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -52700.0,
+     -511000.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "n": 4,
+   "stroke": 2,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MFSTZXD2ETFP05RGHR25KX19F5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52556.3,
+     -516155.6,
+     266.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 94.3
+    }
+   },
+   "after": {
+    "pos": [
+     -52556.3,
+     -510855.6,
+     266.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 94.3
+    }
+   },
+   "n": 5,
+   "stroke": 2,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51400.0,
+     -510900.0,
+     183.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -51400.0,
+     -510900.0,
+     333.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 150.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "n": 6,
+   "stroke": 3,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QQ1RHE1BDVM3N6G97XP7DFY90J",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51586.6,
+     -510986.1,
+     277.578
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+     "dz": 94.4
+    }
+   },
+   "after": {
+    "pos": [
+     -51586.6,
+     -510986.1,
+     427.578
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+     "dz": 94.4
+    }
+   },
+   "n": 7,
+   "stroke": 3,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52700.0,
+     -511000.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -52700.0,
+     -511000.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "n": 8,
+   "stroke": 4,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52700.0,
+     -511000.0,
+     171.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -76.1,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -52700.0,
+     -511000.0,
+     271.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 23.9,
+     "foot": [
+      -339.1,
+      -369.2,
+      345.4,
+      361.0
+     ]
+    }
+   },
+   "n": 9,
+   "stroke": 5,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4AG1NBWX7FDHGBNKNKZCB3M7TR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52763.2,
+     -511071.0,
+     468.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 296.6
+    }
+   },
+   "after": {
+    "pos": [
+     -52763.2,
+     -511071.0,
+     568.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 396.6
+    }
+   },
+   "n": 10,
+   "stroke": 6,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MFSTZXD2ETFP05RGHR25KX19F5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52556.3,
+     -510855.6,
+     266.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 94.3
+    }
+   },
+   "after": {
+    "pos": [
+     -52556.3,
+     -510855.6,
+     366.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 194.3
+    }
+   },
+   "n": 11,
+   "stroke": 7,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.4AG1NBWX7FDHGBNKNKZCB3M7TR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52763.2,
+     -511071.0,
+     568.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 396.6
+    }
+   },
+   "after": {
+    "pos": [
+     -52763.2,
+     -511071.0,
+     468.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.727
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 296.6
+    }
+   },
+   "n": 12,
+   "stroke": 8,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MFSTZXD2ETFP05RGHR25KX19F5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52556.3,
+     -510855.6,
+     366.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 194.3
+    }
+   },
+   "after": {
+    "pos": [
+     -52556.3,
+     -510855.6,
+     266.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.8686
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
+     "dz": 94.3
+    }
+   },
+   "n": 13,
+   "stroke": 9,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0020000",
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51850.0,
+     -512900.0,
+     304.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    },
+    "why": "the boat-lane from the town's south market down to the jetty, dressed as used (place record: fish racks smoking on the road side)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 10,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0030000",
+    "base": "Skyrim.esm:0A56FD",
+    "kind": "static",
+    "pos": [
+     -51700.0,
+     -515800.0,
+     256.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -151.0,
+      -145.0,
+      151.0,
+      145.0
+     ]
+    },
+    "why": "the boat-lane from the town's south market down to the jetty, dressed as used (place record: fish racks smoking on the road side)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 11,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0040000",
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -51900.0,
+     -514600.0,
+     275.541
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "ground",
+     "dz": -12.269,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    },
+    "why": "the boat-lane from the town's south market down to the jetty: mats drying on racks by the lane (place record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 12,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK0050000",
+    "base": "Journey to Baan Malur.esp:0960CD",
+    "kind": "static",
+    "pos": [
+     -50900.0,
+     -516100.0,
+     242.06
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.6
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "ground",
+     "dz": 0.0,
+     "foot": [
+      -60.3,
+      -64.4,
+      67.1,
+      53.1
+     ]
+    },
+    "why": "the boat-lane from the town's south market down to the jetty: mats drying on racks by the lane (place record look)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 17,
+   "stroke": 13,
+   "at": "2026-11-21T11:21:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51400.0,
+     -510900.0,
+     333.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": 150.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -51400.0,
+     -510900.0,
+     145.178
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.1854
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "ground",
+     "dz": -38.0,
+     "foot": [
+      -324.4,
+      -238.4,
+      330.4,
+      240.6
+     ]
+    }
+   },
+   "n": 18,
+   "stroke": 14,
+   "at": "2026-11-21T11:21:21Z"
+  }
+ ]
+}

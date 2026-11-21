@@ -10,20 +10,22 @@
     "base": "King of the Murkmire.esp:15731E",
     "kind": "building",
     "pos": [
-     -51150.0,
-     -517150.0
+     -51400.0,
+     -510900.0
     ],
     "rot_z": 1.1854,
     "tier": "AGENT_INVENTED",
     "why": "the jetty market's house (place record: trader-general 'at the jetty market'): Alten Meerhleel's market house (MurkmireHouse01) on the stream bank south of the town, where the town's road comes down to the water",
-    "key": "0"
+    "key": "0",
+    "scale": 1.0,
+    "dz": -38.0
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -51336.6,
-     -517236.1
+     -51586.6,
+     -510986.1
     ],
     "rot_z": 1.1854,
     "on": "jal-veesa.YWKWJP1J49Y5YNNZ1KE7TSVQ69",
@@ -39,7 +41,8 @@
      ]
     },
     "why": "the jetty market's door, where Alten Meerhleel sets it on its market house, into a copy of Meerhleel Market",
-    "key": "1"
+    "key": "1",
+    "scale": 1.0
    },
    {
     "base": "King of the Murkmire.esp:01FA35",
@@ -180,12 +183,12 @@
     "kind": "building",
     "pos": [
      -52700.0,
-     -516300.0
+     -511000.0
     ],
     "rot_z": 0.727,
     "tier": "AGENT_INVENTED",
     "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
-    "dz": -76.1,
+    "dz": 23.9,
     "key": "11",
     "scale": 1.0
    },
@@ -194,7 +197,7 @@
     "kind": "building",
     "pos": [
      -52763.2,
-     -516371.0
+     -511071.0
     ],
     "rot_z": 0.727,
     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
@@ -209,7 +212,7 @@
     "kind": "door",
     "pos": [
      -52556.3,
-     -516155.6
+     -510855.6
     ],
     "rot_z": 3.8686,
     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
@@ -1508,7 +1511,8 @@
   "agent-20261121T083307",
   "agent-20261121T084445",
   "agent-20261121T085408",
-  "agent-20261121T095803"
+  "agent-20261121T095803",
+  "agent-20261121T112121"
  ],
  "wholesale": {
   "offset": 470.0,
