@@ -17,6 +17,8 @@ test('errors, rejections and context loss reach the client log', () => {
 
 test('each ready place reports what its views drew', () => {
   const main = js('main.js'), view = js('view.js');
-  assert.match(main, /report\('drawn', \{ place: id, \.\.\.drawState\(\) \}\)/);
-  for (const k of ['lost', 'glError', 'canvas', 'calls', 'triangles', 'views', 'over']) assert.ok(view.includes(`${k}:`), k);
+  assert.match(main, /report\('drawn', \{ place: id, \.\.\.st,/);
+  assert.match(main, /report\('blank', \{ place: id, why/);
+  assert.match(main, /this\.watchDrawn\(id\)/);
+  for (const k of ['lost', 'glError', 'canvas', 'calls', 'triangles', 'views', 'over', 'drew']) assert.ok(view.includes(`${k}:`), k);
 });
