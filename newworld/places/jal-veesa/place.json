@@ -15,7 +15,8 @@
     ],
     "rot_z": 1.1854,
     "tier": "AGENT_INVENTED",
-    "why": "the jetty market's house (place record: trader-general 'at the jetty market'): Alten Meerhleel's market house (MurkmireHouse01) on the stream bank south of the town, where the town's road comes down to the water"
+    "why": "the jetty market's house (place record: trader-general 'at the jetty market'): Alten Meerhleel's market house (MurkmireHouse01) on the stream bank south of the town, where the town's road comes down to the water",
+    "key": "0"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -37,7 +38,8 @@
       -517288.1
      ]
     },
-    "why": "the jetty market's door, where Alten Meerhleel sets it on its market house, into a copy of Meerhleel Market"
+    "why": "the jetty market's door, where Alten Meerhleel sets it on its market house, into a copy of Meerhleel Market",
+    "key": "1"
    },
    {
     "base": "King of the Murkmire.esp:01FA35",
@@ -49,7 +51,8 @@
     "rot_z": 0.7854,
     "dz": -40.0,
     "tier": "AGENT_INVENTED",
-    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water"
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "2"
    },
    {
     "base": "King of the Murkmire.esp:01FA35",
@@ -61,7 +64,8 @@
     "rot_z": 0.7854,
     "dz": -40.0,
     "tier": "AGENT_INVENTED",
-    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water"
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "3"
    },
    {
     "base": "King of the Murkmire.esp:01FA35",
@@ -73,7 +77,8 @@
     "rot_z": 0.7854,
     "dz": -40.0,
     "tier": "AGENT_INVENTED",
-    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water"
+    "why": "the jetty from the market down to the stream (place record: 'boat-lanes cut through the sedge down to the creek', the jetty market): Alten Meerhleel's mud-hut walkway, laid as Alten lays its own toward the water",
+    "key": "4"
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
@@ -84,7 +89,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir"
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "5"
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
@@ -95,7 +101,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir"
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "6"
    },
    {
     "base": "King of the Murkmire.esp:1AD5F2",
@@ -106,7 +113,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir"
+    "why": "the weirs across the stream below the jetty (place record: fishing 'the weir channels: eels and gar'): King of the Murkmire's woven weir fence, as at Teel-Fen Weir",
+    "key": "7"
    },
    {
     "base": "King of the Murkmire.esp:157321",
@@ -117,7 +125,8 @@
     ],
     "rot_z": 3.3832,
     "tier": "AGENT_INVENTED",
-    "why": "the levy's bunkhouse (the town's two wardens of the levy sleep here: place record dangers 'its own wardens patrol'): Alten Meerhleel's bunkhouse (MurkmireHouse04)"
+    "why": "the levy's bunkhouse (the town's two wardens of the levy sleep here: place record dangers 'its own wardens patrol'): Alten Meerhleel's bunkhouse (MurkmireHouse04)",
+    "key": "8"
    },
    {
     "base": "King of the Murkmire.esp:157397",
@@ -130,7 +139,8 @@
     "on": "jal-veesa.Y5TZQ6TKAQCM3X9ERW37TETSZW",
     "dz": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "the bunkhouse's lean-to (MurkmireHouse01Shorter), at Alten Meerhleel's offset"
+    "why": "the bunkhouse's lean-to (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "key": "9"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -152,7 +162,8 @@
       -510530.4
      ]
     },
-    "why": "the bunkhouse door, where Alten Meerhleel sets it, into a copy of Alten Meerhleel Lodging House"
+    "why": "the bunkhouse door, where Alten Meerhleel sets it, into a copy of Alten Meerhleel Lodging House",
+    "key": "10"
    },
    {
     "base": "King of the Murkmire.esp:157320",
@@ -164,7 +175,8 @@
     "rot_z": 0.727,
     "tier": "AGENT_INVENTED",
     "why": "a fisher household's house above the jetty: Alten Meerhleel's dockmaster's house (MurkmireHouse03)",
-    "dz": -84.0
+    "dz": -84.0,
+    "key": "11"
    },
    {
     "base": "King of the Murkmire.esp:157397",
@@ -177,7 +189,8 @@
     "on": "jal-veesa.6Y8NWDPFXDQ2G07V31KEXXTZHN",
     "dz": 296.6,
     "tier": "AGENT_INVENTED",
-    "why": "the house's upper storey (MurkmireHouse01Shorter), at Alten Meerhleel's offset"
+    "why": "the house's upper storey (MurkmireHouse01Shorter), at Alten Meerhleel's offset",
+    "key": "12"
    },
    {
     "base": "King of the Murkmire.esp:093D0D",
@@ -199,7 +212,8 @@
       -516057.6
      ]
     },
-    "why": "the house's door, where Alten Meerhleel sets it, into a copy of Mexhira's House"
+    "why": "the house's door, where Alten Meerhleel sets it, into a copy of Mexhira's House",
+    "key": "13"
    },
    {
     "base": "Skyrim.esm:0A56FD",
@@ -210,7 +224,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty"
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "14"
    },
    {
     "base": "Skyrim.esm:0A56FD",
@@ -221,7 +236,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty"
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "15"
    },
    {
     "base": "Skyrim.esm:0A56FD",
@@ -232,7 +248,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty"
+    "why": "fish racks smoking on the road side (place record look: 'fish racks smoking on the road side'), by the road out of town toward the jetty",
+    "key": "16"
    },
    {
     "base": "King of the Murkmire.esp:1AD601",
@@ -243,7 +260,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks"
+    "why": "cooking-pot: promised by the place record ('at the fish racks'): King of the Murkmire's cooking pot by the fish racks",
+    "key": "17"
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -254,7 +272,8 @@
     ],
     "rot_z": 0.6,
     "tier": "AGENT_INVENTED",
-    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit"
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "18"
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -265,7 +284,8 @@
     ],
     "rot_z": 0.6,
     "tier": "AGENT_INVENTED",
-    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit"
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "19"
    },
    {
     "base": "Journey to Baan Malur.esp:0960CD",
@@ -276,7 +296,8 @@
     ],
     "rot_z": 0.6,
     "tier": "AGENT_INVENTED",
-    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit"
+    "why": "mats drying on racks (place record look: 'mats drying on racks'): a wooden hanging rack of Journey to Baan Malur's Morrowind kit",
+    "key": "20"
    },
    {
     "base": "Skyrim.esm:03B3CD",
@@ -289,7 +310,8 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "free-bed: the guest mat in the elders' long house (place record: 'a mat in the elders' long house'), unowned"
+    "why": "free-bed: the guest mat in the elders' long house (place record: 'a mat in the elders' long house'), unowned",
+    "key": "21"
    },
    {
     "base": "King of the Murkmire.esp:11684E",
@@ -301,7 +323,8 @@
     "rot_z": 4.7124,
     "dz": -80.0,
     "tier": "AGENT_INVENTED",
-    "why": "the sedge cutter's household's house: Seekhat Yol's egg-tenders' thatch hut (MurkmireThatchHouse07), set on the town's dry ground at its south edge, since its own platform stands where the town's ground cannot reach it"
+    "why": "the sedge cutter's household's house: Seekhat Yol's egg-tenders' thatch hut (MurkmireThatchHouse07), set on the town's dry ground at its south edge, since its own platform stands where the town's ground cannot reach it",
+    "key": "22"
    },
    {
     "base": "King of the Murkmire.esp:0259D2",
@@ -325,7 +348,8 @@
       -510143.0
      ]
     },
-    "why": "the hut's door, where Seekhat Yol sets it, into a copy of the egg-tenders' quarters (its other way out removed)"
+    "why": "the hut's door, where Seekhat Yol sets it, into a copy of the egg-tenders' quarters (its other way out removed)",
+    "key": "23"
    },
    {
     "base": "King of the Murkmire.esp:035B34",
@@ -341,7 +365,8 @@
     "why": "the town's Hist at the heart of the town (place record: 'the Hist pool at the heart of the town'; main story, The Dry Tree): King of the Murkmire's HistTree01, the model of Seekhat Yol's own Hist (ArgoniaTreeHist01, a plant of its land the draft leaves to our world) at its scale and turn, standing where it stood, so its glands, gland roots and hanging roots hang on its limbs as the source has them; 136 over our ground as it stood over its mound; it carries the rootworm stop and the shrine blessing",
     "id_base": "King of the Murkmire.esp:0D72B7",
     "scale": 1.64,
-    "dz": 136.0
+    "dz": 136.0,
+    "key": "24"
    },
    {
     "base": "Skyrim.esm:10638E",
@@ -354,7 +379,8 @@
     "dz": 40,
     "need": 5,
     "tier": "AGENT_INVENTED",
-    "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty"
+    "why": "the weir channels (place record: fishing, 'the weir channels: eels and gar'): a fishing spot set at the weirs below the jetty",
+    "key": "25"
    }
   ],
   "people_from": [
@@ -1373,7 +1399,8 @@
   "agent-20261120T164535",
   "agent-20261120T165212",
   "agent-20261120T170114",
-  "agent-20261121T034625"
+  "agent-20261121T034625",
+  "agent-20261121T041059"
  ],
  "steps": {
   "kit": [
