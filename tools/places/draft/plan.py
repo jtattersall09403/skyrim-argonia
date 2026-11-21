@@ -84,7 +84,12 @@ def for_place(place_id: str) -> tuple[dict, list[tuple[str, str]]]:
     from tools.places.draft.run import place_record
     dec = json.loads((io.PLACES / place_id / "place.json").read_text()).get("draft") or {}
     plan = dec.get("plan")
-    return plan, faults(plan, place_record(place_id)[1], structures.for_place(place_id), dec.get("drop") or {})
+    found = structures.for_place(place_id)
+    # a dropped structure's piece is gone when draft.drop names it or the place does not hold it (left outside the
+    # part of the source a wholesale baseline takes, or deleted by hand)
+    standing = {r.get("src") for r in io.read_jsonl(io.PLACES / place_id / "spaces" / "exterior" / "refs.jsonl")}
+    gone = {x: "not in the place" for v in found.values() for x in v["refs"] if x not in standing}
+    return plan, faults(plan, place_record(place_id)[1], found, gone | (dec.get("drop") or {}))
 
 
 def main(argv: list[str]) -> int:

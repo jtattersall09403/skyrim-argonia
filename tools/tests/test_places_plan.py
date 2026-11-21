@@ -31,6 +31,23 @@ def test_each_fault_is_named():
     assert "walls is dropped but 1" in text
 
 
+def test_a_dropped_structure_piece_the_place_does_not_hold_is_gone(tmp_path, monkeypatch):
+    """A wholesale place that takes one part of its source never lays the rest: those pieces are gone without a
+    draft.drop row; one it holds still stands."""
+    import json
+
+    from tools.places.draft import io, run, structures
+    pdir = tmp_path / "p" / "spaces" / "exterior"
+    pdir.mkdir(parents=True)
+    (pdir / "refs.jsonl").write_text(json.dumps({"id": "p.a", "src": "w2"}) + "\n")
+    (tmp_path / "p" / "place.json").write_text(json.dumps({"draft": {"plan": FULL}}))
+    monkeypatch.setattr(io, "PLACES", tmp_path)
+    monkeypatch.setattr(structures, "for_place", lambda pid: STRUCT)
+    monkeypatch.setattr(run, "place_record", lambda pid: (None, GIVES))
+    _, bad = plan.for_place("p")
+    assert [d for c, d in bad if c == plan.STANDS] == ["the walls is dropped but 1 of its pieces are not in draft.drop"]
+
+
 def test_no_plan_or_another_shape_is_missing():
     for p in (None, {}, [{"thing": "x", "by": "y"}]):
         assert causes(plan.faults(p, GIVES)) == {plan.MISSING}
