@@ -237,5 +237,6 @@ pictures are software-rendered, seconds a view on a warm daemon and minutes for 
 ## The machine
 
 The first call starts the daemon (its own studio server and one headless Chromium, software GL) and
-loads the place; later calls reuse both. The daemon leaves after 15 minutes without a call, browser and server with
-it (`look stop` ends it at once). Its session lives on disk, so a restart picks up where it was.
+loads the place; later calls reuse both. The daemon leaves after 20 minutes without a call, when its checkout is gone, or
+when its browser or server dies, browser and server with it (`look stop` ends it at once, and `look stop` and the
+tidy stop any daemon whose checkout is gone). Its session lives on disk, so a restart picks up where it was.
