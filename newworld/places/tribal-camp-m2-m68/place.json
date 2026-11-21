@@ -20,12 +20,12 @@
    "source": "Ree-An-Wo (King of the Murkmire): a Naga camp in the marsh, its hide tents on two stilt watch towers and round a ground fire, bedrolls, cook stand, a Naga chest, a Xanmeer floor with busts, laid wholesale at one transform (turn 90, +290) with its marsh relief; the owner's ruling (2026-11-21) that main quest places get their closest match. The timber longhouse and its cellar the story needs are added whole from Dushnikh Yal, the one source holding them.",
    "look": [
     {
-     "line": "hide tents hung with bones",
-     "by": "Ree-An-Wo's own six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent"
+     "line": "hide tents on stilt watch towers and round a cook fire, with bone totems beside them",
+     "by": "Ree-An-Wo's six hide tents (four on the watch towers, two by the fire camp), a bone totem beside each ground tent. One stands south of the fire camp and one on the open mud by the fire camp's ramp; the totems are the camp's shrine of bones to Sithis"
     },
     {
-     "line": "a timber longhouse",
-     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added at the camp's east edge, its door facing the camp"
+     "line": "a timber longhouse on a knoll",
+     "by": "Dushnikh Yal's OrcLonghouse01 with its door and both rooms, added on the knoll at the camp's east edge, its door facing the camp, reached from the fire by four flights of King of the Murkmire's Xanmeer steps"
     },
     {
      "line": "around a fire pit",
@@ -37,7 +37,7 @@
     },
     {
      "line": "a cage at the camp's edge",
-     "by": "Skyrim's MetalCage01 at the west edge toward the reeds, its door the quest's MetalCageDoor01"
+     "by": "Skyrim's MetalCage01 at the west edge on the creek side, its door the quest's MetalCageDoor01"
     },
     {
      "line": "a pole of trophies",
