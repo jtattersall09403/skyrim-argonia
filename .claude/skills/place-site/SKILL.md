@@ -22,13 +22,19 @@ Step 3 of the place path ([place-system](../place-system/SKILL.md)). Stages: `fi
 
 ## 1b. Carry the source's ground, then plan the units on it
 
-The source's builder shaped the land under the town and built on it, so the town fits only the ground it stood on.
-`python -m tools.places draft ground <place_id>` (`--dry` first: read the relief, the band, the source-water area
-and the largest change) carries the source's relief under the place's footprint (the hull of the carried pieces,
-grown 256) as land rows `by` "ground", blended into our ground over a band no steeper than the source's own
-steepest slope (or 35 degrees), each cluster reading the source through its own map from the fit. Nothing outside
-the footprint and band changes, no point crosses our water line, no change exceeds 600, the source's water is not
-brought (its area is reported: pieces that stood in it need a decision), and no cell of another place is touched.
+What a builder shaped under a house group is the ground just round it: the bank a mud house is cut into, the hollow
+under a stilt deck, the step between neighbours. That, not the hill a whole town climbs, makes its pieces sit.
+`python -m tools.places draft ground <place_id>` (`--dry` first) carries each body's LOCAL relief: the fit's clusters
+sharing one map and lying close make one body (a compact place is one); inside its footprint (the hull of its
+pieces grown 256) the source's ground, read through the body's map, loses its trend (the plane fitted at the
+footprint's edge, a quadratic for a body wider than 8000 m2), so a mound inside the body stays and the hill's slope
+goes; the slope the feet stood on is kept up to 20 degrees. The change is capped per body at 300
+(`draft.ground_cap` raises it for a place), blended no steeper than 35 degrees (45 between two bodies), faded to
+nothing over 384 before our water and over a band round the source's; our water line never moves, nothing outside
+the footprints changes, no cell of another place is touched; `draft.ground_leave_out` names clusters whose body
+keeps our ground. The report's measure is feet to ground per cluster (the gap between the source's ground under
+each piece and the patched ground, after the cluster's median), before and after: read it, the share capped per
+body and the steepest blend before applying.
 Then put the carried pieces at the source's own levels (source height minus the source's reference level, plus
 ours), run `draft sap` again (its hollow is dug on top), and plan the units on the carried ground (section 3). The
 look tool, `units`, the seat and the build all read the patched ground from `land.jsonl`.
