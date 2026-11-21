@@ -119,10 +119,13 @@ def owners(gx: int, gy: int):
 
 def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list[tuple[float, float]],
           centre=None, radius: float | None = None, taken: set = frozenset(), gap: float | None = None,
-          margin: float = MARGIN, cap: float = CAP, maps: list | None = None) -> tuple[list[dict], dict]:
+          margin: float = MARGIN, cap: float = CAP, maps: list | None = None, offset: float | None = None,
+          slope: float | None = None) -> tuple[list[dict], dict]:
     """(land rows `by` "ground", report) carrying src's relief under `pieces` (our coordinates) onto `ours`. `maps`:
     [(pivot, to, rot radians, centre in ours)] per cluster the fit set apart; a vertex reads the source through each,
-    weighted by nearness to the cluster's centre (the main map alone when none)."""
+    weighted by nearness to the cluster's centre (the main map alone when none). `offset`: one fixed height from the
+    source's frame to ours in place of the edge medians; `slope`: the band's slope limit in place of the source's
+    own steepest."""
     from tools.places.draft.fit import WATERLINE_GAP
     gap = WATERLINE_GAP if gap is None else gap
     rep = {"rows": 0}
@@ -182,12 +185,15 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
     core = (D <= 0) & ~np.isnan(HS)
     gy_, gx_ = np.gradient(np.where(np.isnan(HS), 0, HS), STEP)
     src_steep = float(np.degrees(np.arctan(np.hypot(gx_, gy_)[core & ~SW].max()))) if (core & ~SW).any() else 0.0
-    limit = max(SLOPE_DEG, src_steep)
+    limit = slope if slope is not None else max(SLOPE_DEG, src_steep)
     rep.update(src_steepest_deg=round(src_steep, 1), slope_limit_deg=round(limit, 1))
     # the reference levels: the median of each ground round the footprint's edge (dry source ground), so the
     # source's mound becomes a mound on ours and the patch meets our ground with the least to blend
     ring = (D <= 0) & (D > -3 * STEP) & ~np.isnan(HS) & ~np.isnan(H0) & ~SW
-    if ring.sum() >= 8:
+    if offset is not None:
+        our_ref, src_ref = float(offset), 0.0
+        rep.update(offset=round(float(offset), 1), ref="a fixed offset")
+    elif ring.sum() >= 8:
         our_ref, src_ref = float(np.median(H0[ring])), float(np.median(HS[ring]))
         rep.update(our_ref=round(our_ref, 1), src_ref=round(src_ref, 1), ref="the footprint's edge")
     else:
