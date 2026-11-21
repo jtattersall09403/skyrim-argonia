@@ -14,10 +14,10 @@
    -142700.0
   ],
   "anchor": [
-   -43909.1,
+   -42709.1,
    -538869.8
   ],
-  "rot_deg": 20,
+  "rot_deg": 80,
   "cost": 0.0,
   "clusters": {},
   "separated": [],
@@ -73,18 +73,16 @@
  },
  "radius_m": 40,
  "wholesale": {
-  "offset": 120.0,
-  "band": 672.0,
-  "pieces": 185,
-  "dropped": 61,
-  "raised_max": 58.3,
-  "lowered_max": 60.0,
-  "band_steepest_deg": 10.0,
-  "source_water_area_m2": 1551,
-  "held_by_water": 17,
-  "laid": "2026-11-21T14:39:01Z"
+  "offset": 50.0,
+  "band": 2030.0,
+  "pieces": 164,
+  "dropped": 82,
+  "raised_max": 250.6,
+  "lowered_max": 30.5,
+  "band_steepest_deg": 12.3,
+  "source_water_area_m2": 1093,
+  "held_by_water": 1,
+  "laid": "2026-11-21T15:00:05Z"
  },
- "agent_saves_applied": [
-  "agent-20261121T144950"
- ]
+ "agent_saves_applied": []
 }
