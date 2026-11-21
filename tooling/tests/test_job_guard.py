@@ -10,11 +10,14 @@ GUARD = Path(__file__).resolve().parents[1] / "job_guard.sh"
 
 
 def clean_env(home):
-    """The environment a test runs the script in: its own spool and none of the caller's job_guard settings (a gate run
-    inside a job, or a resumed job, carries the real spool's JOBS_DIR, a lane, a seq, a wait)."""
+    """The environment a test runs the script in: its own spool, none of the caller's job_guard settings (a gate run
+    inside a job, or a resumed job, carries the real spool's JOBS_DIR, a lane, a seq, a wait) and no disk floor (the
+    floor's own test sets one)."""
     e = {k: v for k, v in os.environ.items()
          if k not in ("ARGONIA_PLAY", "ARGONIA_LANE", "JOB_SEQ", "GPU_WAIT", "SLOT_IDLE", "JOB_GUARD_NO_SYSTEMD", "JOB_RESUMED")}
     e.update(HOME=str(home), JOBS_DIR=str(Path(home) / ".argonia" / "jobs"))
+    e["DISK_FLOOR_GB"] = "0"   # the machine's disk tidy (13 s on a disk under the floor) never runs from a test: it
+    #                            delayed each `run`, so a timed test's job had ended before the next run looked
     return e
 
 
