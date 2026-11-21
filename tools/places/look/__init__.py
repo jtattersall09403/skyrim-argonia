@@ -7,6 +7,8 @@ section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every v
 [--no-canopy | --canopy] [--lit] [--ceiling u].
 Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
 Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per thing, one page call.
+Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--rooms]: the place walked as a player,
+on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
 failed capture by itself; [--helpers] shows what the game never draws, labelled; [--once] no retries.
 Numbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
@@ -91,8 +93,12 @@ def main(argv: list[str]) -> int:
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()
     t0 = time.time()
-    out = call({"place": place, "verb": verb, "args": args})
+    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if "playwalk" in (verb, *args[:2]) else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)
+    if "playwalk" in (verb, *args[:2]) and out.get("ok") and (out.get("lines") or out.get("plan")):   # the plan and each route, one line each
+        print("\n".join(out.get("plan") or out["lines"]))
+        print(json.dumps({k: v for k, v in out.items() if k not in ("lines", "plan", "trace")}, indent=1))
+        return 0
     if verb == "measure" and out.get("ok"):   # the table as text
         print(out["text"], end="")
         return 0
