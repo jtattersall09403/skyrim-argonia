@@ -1655,5 +1655,137 @@
   "notes": "author Max. Records read for stock and copied into our plugins under our names; assets the player's own download.",
   "permission": "dependency only (player's own download)",
   "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Telvanni Robes (Nexus 11207)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/11207?tab=files&file_id=30288",
+  "version": "1.0.0 (row telvanni-robes)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author KataPUMB. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Indoril Ordinator Armor - Rework (Nexus 37981)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/37981?tab=files&file_id=148972",
+  "version": "V1 (row indoril-ordinator)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author DylanF1 - Hohn - Felix Lukas. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Buoyant Armiger Glass Armory (Nexus 152146)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/152146?tab=files&file_id=726615",
+  "version": "3.0 (row buoyant-armiger)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Luke Sein. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Dres Slavemaster Outfit- Mihail Armors and Clothes (SE-AE version) (''morrowind'') (Nexus 42008)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/42008?tab=files&file_id=298250",
+  "version": "1.1 (row dres-slavemaster)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Temple Watchman Set- Mihail Armors and Clothes (SE-AE) (''morrowind'') (Nexus 142955)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/142955?tab=files&file_id=599358",
+  "version": "1 (row temple-watchman)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Bonemold and Chitin Weapons - Morrowind Armory - Remade (Nexus 10044)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/10044?tab=files&file_id=41247",
+  "version": "2.1 (row bonemold-chitin-weapons)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Kelsenellenelvian. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Armory Extended - Dunmeri Moonstone Weaponry (Nexus 185188)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/185188?tab=files&file_id=802906",
+  "version": "1.2 (row dunmeri-moonstone)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author PrivateEye. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Bosmer Armor Pack (Nexus 5597)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/5597?tab=files&file_id=12429",
+  "version": "1.0 (row bosmer-armor-pack)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Maty743. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "TDN Bosmer Skull Headdresses by TheDNightshade - Ported to SSE by bchick3 (Nexus 12959)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/12959?tab=files&file_id=36542",
+  "version": "1.0 (row bosmer-skull-headdresses)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author TheDNightshade - Ported by bchick3 and dianka33. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Arrowsong A Bosmer Bow (Nexus 6030)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/6030?tab=files&file_id=13810",
+  "version": "1.0 (row arrowsong-bosmer-bow)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author jet4571. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Ave's Necklaces (Nexus 41666)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/41666?tab=files&file_id=166751",
+  "version": "1.0 (row aves-necklaces)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Avebrave. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Moon Monk's Robes (Nexus 82495)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/82495?tab=files&file_id=799998",
+  "version": "2 (row moon-monk-robes)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Kadraeus. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
  }
 ]

@@ -192,9 +192,13 @@ def kits_for(w, person) -> list:
     """The trade kit a person takes (the first whose pattern fits their trade or whose roles hold their role) and the
     overlays their race takes."""
     kits = sorted(w.rows("trade_kit"), key=lambda k: k.ord)
-    base = next((k for k in kits if not k.races and ((k.roles and person.person_role_id in k.roles.split())
+    base = next((k for k in kits if not k.races and not k.cultures and ((k.roles and person.person_role_id in k.roles.split())
                                                      or (k.match and re.search(k.match, person.trade or "", re.I)))), None)
     over = [k for k in kits if k.races and person.race_id in k.races.split()]
+    # a tribe's own leaning (the place's culture), for its Argonians: which pieces they favour and what they never use
+    if person.race_id == "ArgonianRace" and any(k.cultures for k in kits):
+        culture = getattr(w.get("place", person.place_id), "culture_id", None)
+        over += [k for k in kits if k.cultures and culture in k.cultures.split()]
     return ([base] if base else []) + over
 
 

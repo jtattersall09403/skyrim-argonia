@@ -13,12 +13,14 @@
 {"material_id":"crossbow","kind":"people","value":"imperial","why":"Imperial and Company armouries"}
 {"material_id":"flint","kind":"people","value":"argonian","why":"knapped in every village"}
 {"material_id":"flint","kind":"people","value":"naga","why":"the Naga's macahuitl are flint-edged wood"}
+{"material_id":"greenwood","kind":"people","value":"bosmer","why":"Bosmer craft"}
 {"material_id":"hide","kind":"people","value":"argonian","why":"every household dresses hide and weaves fibre"}
 {"material_id":"hide","kind":"people","value":"naga","why":"Naga wear their own hide"}
 {"material_id":"hist-amber","kind":"people","value":"argonian","why":"worked at the Hist by its keepers"}
 {"material_id":"imperial","kind":"culture","value":"pale-green","why":"Gideon's Imperial-descended families"}
 {"material_id":"leather","kind":"people","value":"argonian","why":"tanned wherever hunters bring hides"}
 {"material_id":"masu-plate","kind":"good","value":"ironwork","why":"a master smith"}
+{"material_id":"moonstone","kind":"people","value":"dunmer","why":"Dunmer houses' smiths"}
 {"material_id":"netch-leather","kind":"people","value":"dunmer","why":"Morrowind's make"}
 {"material_id":"obsidian","kind":"good","value":"flint-and-obsidian","why":"the few who still knap and set volcanic glass"}
 {"material_id":"saxhleel","kind":"people","value":"argonian","why":"the Saxhleel bone-workers and tanners"}

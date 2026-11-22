@@ -570,7 +570,16 @@
      "why": "a ritual knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "saxhleel"
+     ],
+     "why": "Water-clan vestments and a priest's mask (an alternative)"
+    }
+   ],
    "home": [
     {
      "good": "sap",
@@ -993,6 +1002,51 @@
    "never": []
   },
   {
+   "id": "slaver",
+   "label": "Slaver, slave-taker (House Dres's heirs)",
+   "match": "\\b(slavers?|slave-?takers?|slavemasters?)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bonemold",
+      "chitin"
+     ],
+     "why": "a Dres bonemold blade"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWhip",
+     "materials": [
+      "bog-iron",
+      "copper-steel"
+     ],
+     "why": "the slaver's whip"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "netch-leather"
+     ],
+     "why": "the Dres slavemaster's netch"
+    }
+   ],
+   "home": [
+    {
+     "good": "salvage",
+     "why": "slave-irons and takings"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": []
+  },
+  {
    "id": "pirate",
    "label": "Pirate, smuggler, corsair",
    "match": "\\b(pirate|smuggler|corsair|privateer)s?\\b",
@@ -1104,7 +1158,8 @@
      "typ": "WeapTypeDagger",
      "materials": [
       "bonemold",
-      "chitin"
+      "chitin",
+      "moonstone"
      ],
      "why": "Morrowind's make, kept"
     }
@@ -1114,11 +1169,11 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
+      "netch-leather",
       "chitin",
-      "bonemold",
-      "netch-leather"
+      "bonemold"
      ],
-     "why": "chitin and bonemold, kept and traded"
+     "why": "netch, chitin and bonemold"
     }
    ],
    "home": [
@@ -1137,7 +1192,8 @@
      ],
      "why": "a Dunmer holdout keeps nothing of the Empire's issue without a reason"
     }
-   ]
+   ],
+   "tell": "you can tell them by netch leather, chitin, bonemold and Telvanni robes"
   },
   {
    "id": "imperial-household",
@@ -1230,7 +1286,8 @@
    "food": [
     "saltrice"
    ],
-   "never": []
+   "never": [],
+   "tell": "you can tell them by curved caravan scimitars, khukuris and the Apex cuirasses"
   },
   {
    "id": "bosmer-household",
@@ -1243,10 +1300,18 @@
      "slot": "weapon",
      "typ": "WeapTypeBow",
      "materials": [
-      "wood",
-      "caravan-steel"
+      "greenwood",
+      "wood"
      ],
-     "why": "a Bosmer's bow"
+     "why": "a Bosmer's greenwood bow"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "greenwood"
+     ],
+     "why": "a Bosmer short blade"
     }
    ],
    "wear": [
@@ -1254,10 +1319,10 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
-      "leather",
-      "caravan-steel"
+      "greenwood",
+      "leather"
      ],
-     "why": "light leathers"
+     "why": "bark-and-hide Bosmer armour"
     }
    ],
    "home": [
@@ -1269,6 +1334,687 @@
    "food": [
     "river-fish"
    ],
+   "never": [],
+   "tell": "you can tell them by greenwood bows and bark-and-hide hoods"
+  },
+  {
+   "id": "tribe-crimson-red",
+   "label": "The Warden Marches: the tribe's own leaning",
+   "cultures": [
+    "crimson-red"
+   ],
+   "tell": "you can tell them by pikes and Imperial-cut plate on Argonian wardens",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypePike",
+     "materials": [
+      "copper-steel",
+      "imperial",
+      "bog-iron"
+     ],
+     "why": "the warden's pike, Imperial drill kept by Argonian garrisons"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "heavy",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "imperial",
+      "copper-steel"
+     ],
+     "why": "the old forts' Imperial-cut plate, kept and mended"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-forest-green",
+   "label": "The Root-Folk of Helstrom: the tribe's own leaning",
+   "cultures": [
+    "forest-green"
+   ],
+   "tell": "you can tell them by staves and hide, never forged plate",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeQtrStaff",
+     "materials": [
+      "wood",
+      "bone"
+     ],
+     "why": "the Hist-wood staff of the deep forest"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "hide",
+      "saxhleel"
+     ],
+     "why": "bark-dyed hide; nothing forged under the Hist"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": [
+    {
+     "slot": "heavy",
+     "groups": [
+      "metal"
+     ],
+     "why": "the Root-Folk wear no forged plate under the Hist"
+    }
+   ]
+  },
+  {
+   "id": "tribe-gold",
+   "label": "The Archon Harbour Folk: the tribe's own leaning",
+   "cultures": [
+    "gold"
+   ],
+   "tell": "you can tell them by harpoons and shell harness, never heavy armour",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "bog-iron",
+      "bone-plate"
+     ],
+     "why": "harpoons and tridents of the harbour pilots"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "shell",
+      "saxhleel"
+     ],
+     "why": "shell-plated harness that swims"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "harbour folk swim: no heavy armour"
+    }
+   ]
+  },
+  {
+   "id": "tribe-indigo",
+   "label": "The Naka-Desh (Riverbacks): the tribe's own leaning",
+   "cultures": [
+    "indigo"
+   ],
+   "tell": "you can tell them by spear-and-bow river hunters in scale",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "flint",
+      "bone",
+      "wood"
+     ],
+     "why": "the river spear"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood",
+      "chitin"
+     ],
+     "why": "the river bow"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "scale",
+      "hide"
+     ],
+     "why": "riverback scale"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-jade",
+   "label": "The Sedge-Wardens of Jal-Veesa: the tribe's own leaning",
+   "cultures": [
+    "jade"
+   ],
+   "tell": "you can tell them by reed-cane bows and border-traded leather",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood"
+     ],
+     "why": "the reed-cane bow of the northern sedges"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather",
+      "netch-leather"
+     ],
+     "why": "leather traded over the Morrowind border"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-lime",
+   "label": "The Agaceph: the tribe's own leaning",
+   "cultures": [
+    "lime"
+   ],
+   "tell": "you can tell them by claws and chitin",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeClaw",
+     "materials": [
+      "bone",
+      "chitin"
+     ],
+     "why": "the Agaceph's claws, worn like their own"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "chitin",
+      "scale"
+     ],
+     "why": "chitin plates"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-magenta",
+   "label": "The Hutan-Tzel: the tribe's own leaning",
+   "cultures": [
+    "magenta"
+   ],
+   "tell": "you can tell them by blowguns and hide, never heavy",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood"
+     ],
+     "why": "the blowgun and dart of the Panther River"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "flint",
+      "bone"
+     ],
+     "why": "a flint knife"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "hide"
+     ],
+     "why": "panther hide"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "Panther River stalkers wear nothing heavy"
+    }
+   ]
+  },
+  {
+   "id": "tribe-olive",
+   "label": "The Island of Blackrose: the tribe's own leaning",
+   "cultures": [
+    "olive"
+   ],
+   "tell": "you can tell them by mauls, crossbows and patched Imperial leftovers",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarhammer",
+     "materials": [
+      "bog-iron",
+      "wood"
+     ],
+     "why": "the prison yard's maul"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "crossbow"
+     ],
+     "why": "deserters' crossbows"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "imperial",
+      "corsair",
+      "leather"
+     ],
+     "why": "old prison and deserter gear, patched"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-oxblood",
+   "label": "The Chime-Keepers: the tribe's own leaning",
+   "cultures": [
+    "oxblood"
+   ],
+   "tell": "you can tell them by Kothringi maces and plate on Argonians",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "kothringi-relic",
+      "bog-iron"
+     ],
+     "why": "Kothringi chime-maces kept in the towns"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "heavy",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "kothringi-relic"
+     ],
+     "why": "Kothringi plate, kept and worn"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-pale-green",
+   "label": "The Gideon Frontier: the tribe's own leaning",
+   "cultures": [
+    "pale-green"
+   ],
+   "tell": "you can tell them by Imperial short swords and crossbows",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "imperial",
+      "bog-iron"
+     ],
+     "why": "the Nibenese short sword"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "crossbow",
+      "wood"
+     ],
+     "why": "frontier crossbows"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "imperial",
+      "leather"
+     ],
+     "why": "Nibenese-cut leathers"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-pearl",
+   "label": "The Spray-Folk of Seafalls: the tribe's own leaning",
+   "cultures": [
+    "pearl"
+   ],
+   "tell": "you can tell them by fishbone tridents and shell, never forged plate",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "bone-plate",
+      "shell",
+      "bone"
+     ],
+     "why": "the fishbone trident"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "shell"
+     ],
+     "why": "shell harness"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": [
+    {
+     "slot": "heavy",
+     "groups": [
+      "metal"
+     ],
+     "why": "beyond the Hist's reach the Spray-Folk work bone and shell, not iron"
+    }
+   ]
+  },
+  {
+   "id": "tribe-plum",
+   "label": "The Three Waters Tribe: the tribe's own leaning",
+   "cultures": [
+    "plum"
+   ],
+   "tell": "you can tell them by flails and Saxhleel cloth",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWhip",
+     "materials": [
+      "copper-steel",
+      "bog-iron"
+     ],
+     "why": "the bayou flail"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "saxhleel"
+     ],
+     "why": "the Saxhleel blade"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "saxhleel"
+     ],
+     "why": "Saxhleel robes and harness"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-rose",
+   "label": "Lilmoth and the Murkmire Coast: the tribe's own leaning",
+   "cultures": [
+    "rose"
+   ],
+   "tell": "you can tell them by rapiers and fine cloth on the docks, masu plate on the guard",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeRapier",
+     "materials": [
+      "copper-steel",
+      "corsair"
+     ],
+     "why": "the dockside rapier"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "masu-plate",
+      "copper-steel"
+     ],
+     "why": "a guard's blade"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "saxhleel",
+      "masu-plate"
+     ],
+     "why": "fine Saxhleel cloth; masu plate on the guard"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-rust",
+   "label": "The Clay-Mound People of Aroxhu: the tribe's own leaning",
+   "cultures": [
+    "rust"
+   ],
+   "tell": "you can tell them by macuahuitls and bone plate",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "flint",
+      "wood"
+     ],
+     "why": "the flint-toothed macuahuitl"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "bone-plate",
+      "hide"
+     ],
+     "why": "bone plate over clay-dyed hide"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-sky-blue",
+   "label": "The Stone-Sleepers of Tsonac: the tribe's own leaning",
+   "cultures": [
+    "sky-blue"
+   ],
+   "tell": "you can tell them by glaives and volcanic glass",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeHalberd",
+     "materials": [
+      "obsidian",
+      "flint"
+     ],
+     "why": "the upland glaive"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "obsidian",
+      "flint"
+     ],
+     "why": "a volcanic-glass knife"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "scale",
+      "hide"
+     ],
+     "why": "upland scale"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-steel-blue",
+   "label": "The Mine-Burners of the Banujha: the tribe's own leaning",
+   "cultures": [
+    "steel-blue"
+   ],
+   "tell": "you can tell them by axes and heavy bog iron of their own smelting",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarAxe",
+     "materials": [
+      "bog-iron",
+      "copper-steel"
+     ],
+     "why": "the miner's axe"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "heavy",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "bog-iron"
+     ],
+     "why": "heavy bog-iron of their own smelting"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-stone-grey",
+   "label": "The Shadowfen Border (Stormhold): the tribe's own leaning",
+   "cultures": [
+    "stone-grey"
+   ],
+   "tell": "you can tell them by Dunmer chitin, netch and bonemold on Argonians",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bonemold",
+      "chitin",
+      "bog-iron"
+     ],
+     "why": "Dunmer-made blades of the border"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "netch-leather",
+      "chitin",
+      "bonemold"
+     ],
+     "why": "netch and chitin of the Dunmer border"
+    }
+   ],
+   "home": [],
+   "food": [],
+   "never": []
+  },
+  {
+   "id": "tribe-umber",
+   "label": "Soulrest and the Topal Coast: the tribe's own leaning",
+   "cultures": [
+    "umber"
+   ],
+   "tell": "you can tell them by curved Khajiit-traded steel",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "caravan-steel",
+      "corsair"
+     ],
+     "why": "curved coast steel off the Khajiit ships"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "caravan-steel",
+      "leather"
+     ],
+     "why": "caravan mail"
+    }
+   ],
+   "home": [],
+   "food": [],
    "never": []
   }
  ]

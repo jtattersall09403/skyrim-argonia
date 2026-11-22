@@ -5122,7 +5122,25 @@
    "plugins": [
     "PrvtI_HeavyArmory.esp"
    ],
-   "install_note": "FOMOD: the main plugin PrvtI_HeavyArmory.esp and its BSA (Options/HeavyArmoryBSA) are what the ladder reads; its Animated Armoury patch (Patches/AA/PrvtI_HeavyArmory_AnimatedArmoury_Patch.esp) is owed to `stack.py stage`'s FOMOD picks for the NewWorld profile (asset-only: the plugin is never active, so the patch changes no record we copy)"
+   "install_note": "FOMOD picks recorded in \"fomod\" for `stack.py stage`: the main plugin and its BSA, every OAR folder, and the Animated Armoury patch; no WACCF, USSEP, AOS/ISC or Fishing patch (none of those is loaded). Asset-only: the plugins are never active, so the patch changes no record we copy; the ladder reads PrvtI_HeavyArmory.esp.",
+   "fomod": {
+    "Heavy Armory": [
+     "Main"
+    ],
+    "Meshes": [
+     "BSA"
+    ],
+    "OAR Folders": [
+     "Full Install"
+    ],
+    "Animated Armoury": [
+     "Animated Armory"
+    ],
+    "WACCF and CCOR": [],
+    "Unofficial Skyrim Special Edition Patch": [],
+    "AOS and ISC": [],
+    "CC: Fishing": []
+   }
   },
   {
    "id": "naga-kur-armor",
@@ -5926,6 +5944,378 @@
    "from": "items ladder (packet three)",
    "asset_only": true,
    "sha256": "644a78c2824398f71c66db8193e41576fc42c94c4f3a7e2ee117c6443147330d"
+  },
+  {
+   "id": "telvanni-robes",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 11207,
+    "file": 30288
+   },
+   "name": "Telvanni Robes",
+   "author": "KataPUMB",
+   "version": "1.0.0",
+   "archive": "Telvanni Robes 1.0.0-11207-1-0-0.rar",
+   "size_kb": 40364,
+   "why": "Telvanni robes for the House Telvanni holdouts (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (789 endorsements, updated 2017-07-29, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "1c4d68ab7723bb3cd2e685daed497b580726242f12858462f8b77539bc7a0816",
+   "plugins": [
+    "TelvanniRobes.esp"
+   ]
+  },
+  {
+   "id": "indoril-ordinator",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 37981,
+    "file": 148972
+   },
+   "name": "Indoril Ordinator Armor - Rework",
+   "author": "DylanF1 - Hohn - Felix Lukas",
+   "version": "V1",
+   "archive": "Indoril Ordinator Armor -Honh Rework-37981-V1-1593989106.zip",
+   "size_kb": 75333,
+   "why": "Indoril Ordinator armour for the Temple's remnants (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (935 endorsements, updated 2020-07-05, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "43dcc16c69dc727114cdb75ba83fb045cb947bf14ea834d2dd3372cdc8b7f084",
+   "plugins": [
+    "Indoril_Armor.esp"
+   ]
+  },
+  {
+   "id": "buoyant-armiger",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 152146,
+    "file": 726615
+   },
+   "name": "Buoyant Armiger Glass Armory",
+   "author": "Luke Sein",
+   "version": "3.0",
+   "archive": "Buoyant Armiger Armory 2K - ESL Flagged-152146-3-0-1772304457.zip",
+   "size_kb": 150947,
+   "why": "Buoyant Armiger glass for Redoran-and-Temple knights (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (391 endorsements, updated 2026-02-28, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "a2346b4832ff51b1d0d0615099bc2abc47252b3cde7bceb340ae0abf594fb784",
+   "plugins": [
+    "Buoyant Armiger Weapons.esp"
+   ]
+  },
+  {
+   "id": "dres-slavemaster",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 42008,
+    "file": 298250
+   },
+   "name": "Dres Slavemaster Outfit- Mihail Armors and Clothes (SE-AE version) (''morrowind'')",
+   "author": "Mihail",
+   "version": "1.1",
+   "archive": "dres slavemaster oufit (se-ae) 1.1-42008-1-1-1657589231.rar",
+   "size_kb": 12556,
+   "why": "House Dres slavers' outfit (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (278 endorsements, updated 2022-07-12, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "f7c55298632ee162ad2f6cfb304c5ddb43f1d7a5c6d461a003ace123f26f4320",
+   "plugins": [
+    "mihailslavemasteroutfit.esp"
+   ]
+  },
+  {
+   "id": "temple-watchman",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 142955,
+    "file": 599358
+   },
+   "name": "Temple Watchman Set- Mihail Armors and Clothes (SE-AE) (''morrowind'')",
+   "author": "Mihail",
+   "version": "1",
+   "archive": "temple watchman set (se-ae)-142955-1-1740585663.rar",
+   "size_kb": 32655,
+   "why": "Temple watchman set (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (132 endorsements, updated 2025-02-26, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "700b2bd783c78e9bdfee624fd6843c16285c7c21487389be56aacc24992f3930",
+   "plugins": [
+    "mihailtemplewatchmanset.esp"
+   ]
+  },
+  {
+   "id": "bonemold-chitin-weapons",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 10044,
+    "file": 41247
+   },
+   "name": "Bonemold and Chitin Weapons - Morrowind Armory - Remade",
+   "author": "Kelsenellenelvian",
+   "version": "2.1",
+   "archive": "Bonemold and Chitin Weapons - Morrowind Armory - Remade-10044-2-1.7z",
+   "size_kb": 51338,
+   "why": "Bonemold and chitin weapons (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (745 endorsements, updated 2017-12-13, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "056a50f64937ccd168d412f0c4242a1373649e559bb4eb7bb1ed340aae5784b0",
+   "plugins": [
+    "BonemoldWeapons.esp"
+   ]
+  },
+  {
+   "id": "dunmeri-moonstone",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 185188,
+    "file": 802906
+   },
+   "name": "Armory Extended - Dunmeri Moonstone Weaponry",
+   "author": "PrivateEye",
+   "version": "1.2",
+   "archive": "Armory Extended - Dunmeri Moonstone Weaponry 185188 1.2 2026-09-09T18-10Z gbrZ4tQBB.7z",
+   "size_kb": 7952,
+   "why": "Dunmer moonstone weapons (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (111 endorsements, updated 2026-09-09, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "d077e2d34376de81035e44bff2ce2e9d89d95d543987e6081e9f7354cb2ef167",
+   "plugins": [
+    "Prvti_MoonstoneArmory.esp"
+   ]
+  },
+  {
+   "id": "bosmer-armor-pack",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 5597,
+    "file": 12429
+   },
+   "name": "Bosmer Armor Pack",
+   "author": "Maty743",
+   "version": "1.0",
+   "archive": "Bosmer Armor pack SE1.0-5597-1-0.zip",
+   "size_kb": 266810,
+   "why": "Bosmer armour for the Bosmer pilots (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (7188 endorsements, updated 2016-12-04, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "141272489d1a04bd567f95ea616d73565d467b06d95a2d0533506aadd244dbeb",
+   "plugins": [
+    "BosmerArmorMATY743.esp"
+   ]
+  },
+  {
+   "id": "bosmer-skull-headdresses",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 12959,
+    "file": 36542
+   },
+   "name": "TDN Bosmer Skull Headdresses by TheDNightshade - Ported to SSE by bchick3",
+   "author": "TheDNightshade - Ported by bchick3 and dianka33",
+   "version": "1.0",
+   "archive": "TDN Bosmer Skull Headdresses SSE Eng-12959-1-0.7z",
+   "size_kb": 7515,
+   "why": "Bosmer skull headdresses (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (518 endorsements, updated 2017-10-17, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "09ba8ac263f0980871ce3e4c0c34214967c0e5c26a588a6f29b5b57d1ace9484",
+   "plugins": [
+    "BosmerHeaddresses.esp"
+   ]
+  },
+  {
+   "id": "arrowsong-bosmer-bow",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 6030,
+    "file": 13810
+   },
+   "name": "Arrowsong A Bosmer Bow",
+   "author": "jet4571",
+   "version": "1.0",
+   "archive": "Arrowsong 1 0-6030-1-0.zip",
+   "size_kb": 5226,
+   "why": "a Bosmer bow (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (336 endorsements, updated 2016-12-11, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "42ae0ac4656f3003dadea068122afe97e2a7101b7ecb65edd07904785ce26a01",
+   "plugins": [
+    "RoyalElvenBow.esp"
+   ]
+  },
+  {
+   "id": "aves-necklaces",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 41666,
+    "file": 166751
+   },
+   "name": "Ave's Necklaces",
+   "author": "Avebrave",
+   "version": "1.0",
+   "archive": "Ave's Necklaces 1.0 - Base Files-41666-1-0-1603476184.7z",
+   "size_kb": 13072,
+   "why": "necklaces for tribal jewellery (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (296 endorsements, updated 2020-10-23, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "2086482fe0ff98e7e9345308e5d28d956687da60fb8eceff67b363748507d954",
+   "plugins": [
+    "Aves SkyAmulet.esp"
+   ]
+  },
+  {
+   "id": "moon-monk-robes",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82495,
+    "file": 799998
+   },
+   "name": "Moon Monk's Robes",
+   "author": "Kadraeus",
+   "version": "2",
+   "archive": "Moon Monk's Robes - 2K 82495 2 2026-09-04T03-08Z pQ0AZ3jwp.zip",
+   "size_kb": 168532,
+   "why": "priests' vestments for the Hist priests and the cults (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (5771 endorsements, updated 2026-09-04, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "9d70732330194b03ad7d31382ea84954558e90c34a8c957dbfce75231c34986c",
+   "plugins": [
+    "Kad_MoonMonkRobes.esp"
+   ]
   },
   {
    "id": "dx-necromancer-robes",

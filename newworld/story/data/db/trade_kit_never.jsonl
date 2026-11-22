@@ -31,6 +31,10 @@
 {"kit_id":"tanner","seq":0,"slot":"heavy","why":"no heavy armour"}
 {"kit_id":"thief","seq":0,"slot":"heavy","why":"a thief works light"}
 {"kit_id":"trader","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"tribe-forest-green","seq":0,"slot":"heavy","groups":"metal","why":"the Root-Folk wear no forged plate under the Hist"}
+{"kit_id":"tribe-gold","seq":0,"slot":"heavy","why":"harbour folk swim: no heavy armour"}
+{"kit_id":"tribe-magenta","seq":0,"slot":"heavy","why":"Panther River stalkers wear nothing heavy"}
+{"kit_id":"tribe-pearl","seq":0,"slot":"heavy","groups":"metal","why":"beyond the Hist's reach the Spray-Folk work bone and shell, not iron"}
 {"kit_id":"weaver","seq":0,"slot":"heavy","why":"no armour"}
 {"kit_id":"weaver","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}
 {"kit_id":"weaver","seq":2,"bands":"rare ruin unique","why":"nothing rare"}

@@ -35,6 +35,8 @@
 {"material_id":"flint","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"glass","seq":0,"kind":"place-family","value":"ruin","why":"a ruin's hoard"}
 {"material_id":"glass","seq":1,"kind":"place-family","value":"sunken","why":"a drowned ruin's hoard"}
+{"material_id":"greenwood","seq":0,"kind":"record","value":"\\b(bosmer|wood elf|wood elves|valenwood)\\b","why":"the record names Bosmer"}
+{"material_id":"greenwood","seq":1,"kind":"culture","value":"umber","why":"Soulrest's Bosmer seafarers"}
 {"material_id":"hide","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"hist-amber","seq":0,"kind":"anywhere","why":"rare: its tier (T5) keeps it to a shrine's or a rich city's treasury"}
 {"material_id":"imperial","seq":0,"kind":"culture","value":"crimson-red","why":"the Warden Marches' forts are Imperial foundations"}
@@ -49,6 +51,9 @@
 {"material_id":"kothringi-relic","seq":2,"kind":"record","value":"\\bkothringi\\b","why":"the record names the Kothringi"}
 {"material_id":"leather","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"masu-plate","seq":0,"kind":"anywhere","why":"rare: its tier keeps it to a capital's treasury"}
+{"material_id":"moonstone","seq":0,"kind":"culture","value":"stone-grey","why":"Stormhold's Argonians and Dunmer"}
+{"material_id":"moonstone","seq":1,"kind":"place-kind","value":"velothi-ruin","why":"a Velothi ruin"}
+{"material_id":"moonstone","seq":2,"kind":"record","value":"\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b","why":"the record names Dunmer"}
 {"material_id":"netch-leather","seq":0,"kind":"culture","value":"stone-grey","why":"Stormhold's Argonians and Dunmer"}
 {"material_id":"netch-leather","seq":1,"kind":"place-kind","value":"velothi-ruin","why":"a Velothi ruin"}
 {"material_id":"netch-leather","seq":2,"kind":"record","value":"\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b","why":"the record names Dunmer"}

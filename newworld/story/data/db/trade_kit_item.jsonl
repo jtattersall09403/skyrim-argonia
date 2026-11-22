@@ -5,10 +5,11 @@
 {"kit_id":"boatman","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"wood","why":"a pole or club"}
 {"kit_id":"boatman","seq":2,"use":"home","good_id":"reed-weaving","why":"rope"}
 {"kit_id":"boatman","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
-{"kit_id":"bosmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood caravan-steel","why":"a Bosmer's bow"}
-{"kit_id":"bosmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather caravan-steel","why":"light leathers"}
-{"kit_id":"bosmer-household","seq":2,"use":"home","good_id":"river-goods","why":"goods off the boats"}
-{"kit_id":"bosmer-household","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"bosmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"greenwood wood","why":"a Bosmer's greenwood bow"}
+{"kit_id":"bosmer-household","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"greenwood","why":"a Bosmer short blade"}
+{"kit_id":"bosmer-household","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"greenwood leather","why":"bark-and-hide Bosmer armour"}
+{"kit_id":"bosmer-household","seq":3,"use":"home","good_id":"river-goods","why":"goods off the boats"}
+{"kit_id":"bosmer-household","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"builder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"flint bog-iron bone","why":"an axe for timber"}
 {"kit_id":"builder","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"wood","why":"a maul"}
 {"kit_id":"builder","seq":2,"use":"home","good_id":"timber-and-stone","why":"timber and pegs"}
@@ -20,8 +21,8 @@
 {"kit_id":"clerk","seq":1,"use":"home","good_id":"river-goods","why":"ledgers and the post's stores"}
 {"kit_id":"clerk","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"clerk","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
-{"kit_id":"dunmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bonemold chitin","why":"Morrowind's make, kept"}
-{"kit_id":"dunmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin bonemold netch-leather","why":"chitin and bonemold, kept and traded"}
+{"kit_id":"dunmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bonemold chitin moonstone","why":"Morrowind's make, kept"}
+{"kit_id":"dunmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"netch-leather chitin bonemold","why":"netch, chitin and bonemold"}
 {"kit_id":"dunmer-household","seq":2,"use":"home","good_id":"saltrice","why":"saltrice, the plantations' crop"}
 {"kit_id":"dunmer-household","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"elder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"obsidian bone","why":"a ceremonial blade"}
@@ -87,9 +88,10 @@
 {"kit_id":"pirate","seq":3,"use":"home","good_id":"salvage","why":"the takings"}
 {"kit_id":"pirate","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"priest","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone obsidian","why":"a ritual knife"}
-{"kit_id":"priest","seq":1,"use":"home","good_id":"sap","why":"Hist offerings"}
-{"kit_id":"priest","seq":2,"use":"food","good_id":"eggs","why":"food in the house"}
-{"kit_id":"priest","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"priest","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"saxhleel","why":"Water-clan vestments and a priest's mask (an alternative)"}
+{"kit_id":"priest","seq":2,"use":"home","good_id":"sap","why":"Hist offerings"}
+{"kit_id":"priest","seq":3,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"priest","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"resident","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a knife"}
 {"kit_id":"resident","seq":1,"use":"home","good_id":"river-fish","why":"food"}
 {"kit_id":"resident","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
@@ -99,6 +101,11 @@
 {"kit_id":"sellsword","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"bog-iron leather caravan-steel","why":"light mail"}
 {"kit_id":"sellsword","seq":3,"use":"home","good_id":"salvage","why":"pay in kind"}
 {"kit_id":"sellsword","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"slaver","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bonemold chitin","why":"a Dres bonemold blade"}
+{"kit_id":"slaver","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWhip","materials":"bog-iron copper-steel","why":"the slaver's whip"}
+{"kit_id":"slaver","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"netch-leather","why":"the Dres slavemaster's netch"}
+{"kit_id":"slaver","seq":3,"use":"home","good_id":"salvage","why":"slave-irons and takings"}
+{"kit_id":"slaver","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"smith","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"bog-iron","why":"the forge hammer"}
 {"kit_id":"smith","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"a leather apron"}
 {"kit_id":"smith","seq":2,"use":"home","good_id":"ironwork","why":"bog iron and tools"}
@@ -116,6 +123,49 @@
 {"kit_id":"trader","seq":1,"use":"home","good_id":"river-goods","why":"the stall's stock"}
 {"kit_id":"trader","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"trader","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"tribe-crimson-red","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypePike","materials":"copper-steel imperial bog-iron","why":"the warden's pike, Imperial drill kept by Argonian garrisons"}
+{"kit_id":"tribe-crimson-red","seq":1,"use":"wear","slot":"heavy","typ":"ArmorCuirass","materials":"imperial copper-steel","why":"the old forts' Imperial-cut plate, kept and mended"}
+{"kit_id":"tribe-forest-green","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeQtrStaff","materials":"wood bone","why":"the Hist-wood staff of the deep forest"}
+{"kit_id":"tribe-forest-green","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"hide saxhleel","why":"bark-dyed hide; nothing forged under the Hist"}
+{"kit_id":"tribe-gold","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeGreatsword","materials":"bog-iron bone-plate","why":"harpoons and tridents of the harbour pilots"}
+{"kit_id":"tribe-gold","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"shell saxhleel","why":"shell-plated harness that swims"}
+{"kit_id":"tribe-indigo","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeGreatsword","materials":"flint bone wood","why":"the river spear"}
+{"kit_id":"tribe-indigo","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood chitin","why":"the river bow"}
+{"kit_id":"tribe-indigo","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"scale hide","why":"riverback scale"}
+{"kit_id":"tribe-jade","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood","why":"the reed-cane bow of the northern sedges"}
+{"kit_id":"tribe-jade","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather netch-leather","why":"leather traded over the Morrowind border"}
+{"kit_id":"tribe-lime","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeClaw","materials":"bone chitin","why":"the Agaceph's claws, worn like their own"}
+{"kit_id":"tribe-lime","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin scale","why":"chitin plates"}
+{"kit_id":"tribe-magenta","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood","why":"the blowgun and dart of the Panther River"}
+{"kit_id":"tribe-magenta","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a flint knife"}
+{"kit_id":"tribe-magenta","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"hide","why":"panther hide"}
+{"kit_id":"tribe-olive","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"bog-iron wood","why":"the prison yard's maul"}
+{"kit_id":"tribe-olive","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"crossbow","why":"deserters' crossbows"}
+{"kit_id":"tribe-olive","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"imperial corsair leather","why":"old prison and deserter gear, patched"}
+{"kit_id":"tribe-oxblood","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"kothringi-relic bog-iron","why":"Kothringi chime-maces kept in the towns"}
+{"kit_id":"tribe-oxblood","seq":1,"use":"wear","slot":"heavy","typ":"ArmorCuirass","materials":"kothringi-relic","why":"Kothringi plate, kept and worn"}
+{"kit_id":"tribe-pale-green","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"imperial bog-iron","why":"the Nibenese short sword"}
+{"kit_id":"tribe-pale-green","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"crossbow wood","why":"frontier crossbows"}
+{"kit_id":"tribe-pale-green","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"imperial leather","why":"Nibenese-cut leathers"}
+{"kit_id":"tribe-pearl","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeGreatsword","materials":"bone-plate shell bone","why":"the fishbone trident"}
+{"kit_id":"tribe-pearl","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"shell","why":"shell harness"}
+{"kit_id":"tribe-plum","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWhip","materials":"copper-steel bog-iron","why":"the bayou flail"}
+{"kit_id":"tribe-plum","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"saxhleel","why":"the Saxhleel blade"}
+{"kit_id":"tribe-plum","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"saxhleel","why":"Saxhleel robes and harness"}
+{"kit_id":"tribe-rose","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeRapier","materials":"copper-steel corsair","why":"the dockside rapier"}
+{"kit_id":"tribe-rose","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"masu-plate copper-steel","why":"a guard's blade"}
+{"kit_id":"tribe-rose","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"saxhleel masu-plate","why":"fine Saxhleel cloth; masu plate on the guard"}
+{"kit_id":"tribe-rust","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"flint wood","why":"the flint-toothed macuahuitl"}
+{"kit_id":"tribe-rust","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"bone-plate hide","why":"bone plate over clay-dyed hide"}
+{"kit_id":"tribe-sky-blue","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeHalberd","materials":"obsidian flint","why":"the upland glaive"}
+{"kit_id":"tribe-sky-blue","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"obsidian flint","why":"a volcanic-glass knife"}
+{"kit_id":"tribe-sky-blue","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"scale hide","why":"upland scale"}
+{"kit_id":"tribe-steel-blue","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"bog-iron copper-steel","why":"the miner's axe"}
+{"kit_id":"tribe-steel-blue","seq":1,"use":"wear","slot":"heavy","typ":"ArmorCuirass","materials":"bog-iron","why":"heavy bog-iron of their own smelting"}
+{"kit_id":"tribe-stone-grey","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bonemold chitin bog-iron","why":"Dunmer-made blades of the border"}
+{"kit_id":"tribe-stone-grey","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"netch-leather chitin bonemold","why":"netch and chitin of the Dunmer border"}
+{"kit_id":"tribe-umber","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"caravan-steel corsair","why":"curved coast steel off the Khajiit ships"}
+{"kit_id":"tribe-umber","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"caravan-steel leather","why":"caravan mail"}
 {"kit_id":"weaver","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a reed knife"}
 {"kit_id":"weaver","seq":1,"use":"home","good_id":"reed-weaving","why":"reed, mats and rope"}
 {"kit_id":"weaver","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}

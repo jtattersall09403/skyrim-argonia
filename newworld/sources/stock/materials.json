@@ -1178,6 +1178,77 @@
      "why": "Archon's harbour, where the caravans land"
     }
    ]
+  },
+  {
+   "id": "moonstone",
+   "label": "Moonstone and Temple glass (Dunmer fine work)",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "ladder_tier": "T4",
+   "lore": "the Dunmer houses' and the Temple's fine arms, carried by house knights and armigers among the holdouts (foreign-powers.md, House Dres)",
+   "power": {
+    "weapon": "WeapMaterialElven",
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "dunmer",
+     "why": "Dunmer houses' smiths"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "culture",
+     "value": "stone-grey",
+     "why": "Stormhold's Argonians and Dunmer"
+    },
+    {
+     "kind": "place-kind",
+     "value": "velothi-ruin",
+     "why": "a Velothi ruin"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b",
+     "why": "the record names Dunmer"
+    }
+   ]
+  },
+  {
+   "id": "greenwood",
+   "label": "Greenwood (Bosmer make)",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "ladder_tier": "T3",
+   "lore": "Bosmer pilots and seafarers of the Topal coast keep their own bone, bark and hide gear and their bows (regions.json peoples)",
+   "power": {
+    "weapon": "WeapMaterialElven",
+    "armour": "ArmorMaterialElven"
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "bosmer",
+     "why": "Bosmer craft"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "record",
+     "value": "\\b(bosmer|wood elf|wood elves|valenwood)\\b",
+     "why": "the record names Bosmer"
+    },
+    {
+     "kind": "culture",
+     "value": "umber",
+     "why": "Soulrest's Bosmer seafarers"
+    }
+   ]
   }
  ],
  "never": {

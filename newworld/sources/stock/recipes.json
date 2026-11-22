@@ -3975,6 +3975,2158 @@
    "why": "the mod's own recipe (TemperBoneCultistHelmetOpen): every ingredient is one of ours"
   },
   {
+   "item": "BonemoldWeapons.esp:0036C9",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0036CC",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0036C9",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0036CD",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A2",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B5",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldBattleAxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A2",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B6",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldBattleAxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A3",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065A7",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A3",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065A8",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A4",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065AD",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldGreatsword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A4",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065AE",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldGreatsword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A5",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065A9",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldMace): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A5",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065AA",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldMace): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A6",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065AB",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldSword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A6",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065AC",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldSword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065AF",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B0",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldWarhammer): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065AF",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B1",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldWarhammer): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B2",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B3",
+   "why": "the mod's own recipe (DLC2RecipeWeapBonemoldAxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B2",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B4",
+   "why": "the mod's own recipe (DLC2TemperWeapBonemoldAxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B8",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0065B9",
+   "why": "the mod's own recipe (DLC2RecipeArrowBonemold): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B8",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with bonemold's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "BonemoldWeapons.esp:00C34E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:00C350",
+   "why": "Skyrim's greatsword shape (4 main, 3 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:00C34E",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:00C34F",
+   "why": "the mod's own recipe (DLC2TemperWeapChitinGreatsword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0120E8",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:0120EA",
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0120E8",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:0120E9",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:014FB6",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:014FB8",
+   "why": "Skyrim's waraxe shape (2 main, 2 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:014FB6",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:014FB9",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinWaraxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:017E83",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     3
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:017E85",
+   "why": "Skyrim's mace shape (3 main, 1 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:017E83",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:017E86",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinMace): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01AD50",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:01AD51",
+   "why": "Skyrim's sword shape (2 main, 1 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01AD50",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:01AD52",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinSword): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01DC1D",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:01DC1E",
+   "why": "Skyrim's battleaxe shape (4 main, 2 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01DC1D",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:01DC1F",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinBattleaxe): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEA",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:038155",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEA",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:020AEE",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinWarhammer): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEB",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     2
+    ]
+   ],
+   "source": "overrides:BonemoldWeapons.esp:020AEC",
+   "why": "Skyrim's bow shape (2 main, 0 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of WeapMaterialSteel"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEB",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:020AED",
+   "why": "the mod's own recipe (DLC2TemperWeaponChitinBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0239BA",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Dragonborn.esm:01CD7C",
+     1
+    ],
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:BonemoldWeapons.esp:02F4E2",
+   "why": "the mod's own recipe (DLC2RecipeWeapChitinArrow): every ingredient is one of ours"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0239BA",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with chitin's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D62",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     4
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:0073FF",
+   "why": "the mod's own recipe (RecipeArmorBosmerCuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D62",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007977",
+   "why": "the mod's own recipe (TemperArmorBosmerCuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D63",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007400",
+   "why": "the mod's own recipe (RecipeArmorBosmerGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D63",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00797F",
+   "why": "the mod's own recipe (TemperArmorBosmerGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D64",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     2
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:0073FE",
+   "why": "the mod's own recipe (RecipeArmorBosmerBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D64",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007975",
+   "why": "the mod's own recipe (TemperArmorBosmerBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D65",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007401",
+   "why": "the mod's own recipe (RecipeArmorBosmerHelmet): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D65",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007985",
+   "why": "the mod's own recipe (TemperArmorBosmerHelmet): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D66",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     3
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007402",
+   "why": "the mod's own recipe (RecipeArmorBosmerHelmHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D66",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007986",
+   "why": "the mod's own recipe (TemperArmorBosmerHelmHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D67",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     2
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007403",
+   "why": "the mod's own recipe (RecipeArmorBosmerHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D67",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007987",
+   "why": "the mod's own recipe (TemperArmorBosmerHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DD9",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007407",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DD9",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007979",
+   "why": "the mod's own recipe (TemperArmorBosmerElderCuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDA",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007408",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDA",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00797A",
+   "why": "the mod's own recipe (TemperArmorBosmerElderGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDB",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00740A",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDB",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00797C",
+   "why": "the mod's own recipe (TemperArmorBosmerElderHelmHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDC",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00740B",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDC",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00797D",
+   "why": "the mod's own recipe (TemperArmorBosmerElderHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E33",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     5
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00740E",
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E33",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007981",
+   "why": "the mod's own recipe (TemperArmorBosmerHeavyCuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E36",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00740F",
+   "why": "Skyrim's heavy-gauntlets shape (2 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E36",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007982",
+   "why": "the mod's own recipe (TemperArmorBosmerHeavyGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5D",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007409",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5D",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00797B",
+   "why": "the mod's own recipe (TemperArmorBosmerElderHelmet): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007406",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5E",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007978",
+   "why": "the mod's own recipe (TemperArmorBosmerElderBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5F",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     3
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00740D",
+   "why": "Skyrim's heavy-boots shape (3 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5F",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007980",
+   "why": "the mod's own recipe (TemperArmorBosmerHeavyBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E60",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     3
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007410",
+   "why": "Skyrim's heavy-helmet shape (3 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E60",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007983",
+   "why": "the mod's own recipe (TemperArmorBosmerHeavyHelmet): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E61",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     3
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:007411",
+   "why": "Skyrim's heavy-helmet shape (3 main, 2 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E61",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:007984",
+   "why": "the mod's own recipe (TemperArmorBosmerHeavyHelmHood): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00845F",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00948C",
+   "why": "the mod's own recipe (RecipeWeaponBosmerDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00845F",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:009490",
+   "why": "the mod's own recipe (TemperWeaponBosmerDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:0089C2",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00948E",
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of WeapMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:0089C2",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:009491",
+   "why": "the mod's own recipe (TemperWeaponBosmerElderDagger): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009488",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     5
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:00948B",
+   "why": "the mod's own recipe (RecipeWeaponBosmerBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009488",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:009492",
+   "why": "the mod's own recipe (TemperWeaponBosmerBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00948A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:00948D",
+   "why": "Skyrim's bow shape (2 main, 0 strips) in greenwood: seasoned wood and leather strips; perk of WeapMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00948A",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:009493",
+   "why": "the mod's own recipe (TemperWeaponBosmerElderBow): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0D",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ]
+   ],
+   "source": "kept:BosmerArmorMATY743.esp:009A11",
+   "why": "the mod's own recipe (RecipeWeaponBosmerArrow): every ingredient is one of ours"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0D",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with greenwood's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:BosmerArmorMATY743.esp:009A12",
+   "why": "Skyrim's piece shape (1 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0E",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with greenwood's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000002",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000004",
+   "why": "Skyrim's greatsword shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000002",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000003",
+   "why": "the mod's own recipe (TemperWeaponBAGreatsword): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000006",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000008",
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000006",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000007",
+   "why": "the mod's own recipe (TemperWeaponBADagger): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000009",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00000C",
+   "why": "Skyrim's waraxe shape (2 main, 2 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000009",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:00000B",
+   "why": "the mod's own recipe (TemperWeaponBAWarAxe): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00000E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00000F",
+   "why": "Skyrim's battleaxe shape (4 main, 2 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00000E",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000010",
+   "why": "the mod's own recipe (TemperWeaponBAHalberd): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000013",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00001B",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000013",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:00001C",
+   "why": "the mod's own recipe (TemperWeaponBABattleStaff): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000029",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00002B",
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000029",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:00002A",
+   "why": "the mod's own recipe (TemperWeaponBAKnife): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00002E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00002F",
+   "why": "Skyrim's shield shape (4 main, 1 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00002E",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000030",
+   "why": "the mod's own recipe (TemperArmorBAShield): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000033",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000035",
+   "why": "Skyrim's shield shape (4 main, 1 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000033",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000036",
+   "why": "the mod's own recipe (TemperArmorBATowerShield): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000037",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000040",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000037",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000044",
+   "why": "the mod's own recipe (TemperArmorBACuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003C",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00003F",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003C",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000043",
+   "why": "the mod's own recipe (TemperArmorBABoots): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003D",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000041",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003D",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000045",
+   "why": "the mod's own recipe (TemperArmorBAGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000042",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003E",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000046",
+   "why": "the mod's own recipe (TemperArmorBAHelmet): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000055",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     3
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000057",
+   "why": "Skyrim's mace shape (3 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000055",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000058",
+   "why": "the mod's own recipe (TemperWeaponBAMace): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00005A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:00005B",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00005A",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:00005C",
+   "why": "the mod's own recipe (TemperWeaponBAWarhammer): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000060",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000061",
+   "why": "Skyrim's bow shape (2 main, 0 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000060",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000062",
+   "why": "the mod's own recipe (TemperWeaponBABow): every ingredient is one of ours"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000065",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000067",
+   "why": "Skyrim's piece shape (1 main, 1 strips) in moonstone: Refined Moonstone; perk of no keyword"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000065",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000D63",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Buoyant Armiger Weapons.esp:000D65",
+   "why": "Skyrim's sword shape (2 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000D63",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ADA1",
+     1
+    ]
+   ],
+   "source": "kept:Buoyant Armiger Weapons.esp:000D64",
+   "why": "the mod's own recipe (TemperWeaponBALongsword): every ingredient is one of ours"
+  },
+  {
    "item": "Cyrodiilic Thief.esp:000872",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -9930,6 +12082,166 @@
    "why": "the mod's own recipe (JS_TemperImperialShield): every ingredient is one of ours"
   },
   {
+   "item": "Indoril_Armor.esp:000D61",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     5
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Indoril_Armor.esp:001D8F",
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in bonemold: Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear); perk of DLC2ArmorMaterialBonemoldHeavy"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D61",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     1
+    ]
+   ],
+   "source": "kept:Indoril_Armor.esp:001D93",
+   "why": "the mod's own recipe (TemperArmorIndorilCuirass): every ingredient is one of ours"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D62",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     3
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Indoril_Armor.esp:001D8E",
+   "why": "Skyrim's heavy-boots shape (3 main, 2 strips) in bonemold: Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear); perk of DLC2ArmorMaterialBonemoldHeavy"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D62",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     1
+    ]
+   ],
+   "source": "kept:Indoril_Armor.esp:001D92",
+   "why": "the mod's own recipe (TemperArmorIndorilBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D63",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Indoril_Armor.esp:001D90",
+   "why": "Skyrim's heavy-gauntlets shape (2 main, 2 strips) in bonemold: Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear); perk of DLC2ArmorMaterialBonemoldHeavy"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D63",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     1
+    ]
+   ],
+   "source": "kept:Indoril_Armor.esp:001D94",
+   "why": "the mod's own recipe (TemperArmorIndorilGauntlets): every ingredient is one of ours"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D64",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:034CDD",
+     3
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Indoril_Armor.esp:001D91",
+   "why": "Skyrim's heavy-helmet shape (3 main, 2 strips) in bonemold: Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear); perk of DLC2ArmorMaterialBonemoldHeavy"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D64",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     1
+    ]
+   ],
+   "source": "kept:Indoril_Armor.esp:001D95",
+   "why": "the mod's own recipe (TemperArmorIndorilHelmet): every ingredient is one of ours"
+  },
+  {
    "item": "Journey to Baan Malur.esp:014C69",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -10862,6 +13174,460 @@
    ],
    "source": "kept:Kad_BogBlightMask.esp:000817",
    "why": "the mod's own recipe (00TemperArmorBogBlight): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080B",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:000877",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobes): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080C",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B7",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMask): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080E",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     2
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008C9",
+   "why": "the mod's own recipe (0TemperArmorKhajiitBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089E",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008BF",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskRegal): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A8",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B3",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesRegal): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089F",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008C0",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskWater): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A9",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B4",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesWater): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089B",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in imperial: Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear); perk of ArmorMaterialImperialLight"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008BB",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskLightRed): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A5",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in imperial: Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear); perk of ArmorMaterialImperialLight"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B0",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesLightRed): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "AdvancedArmors"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+     4
+    ],
+    [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A2",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in shadowscale: obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots; perk of ArmorMaterialScaled"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008AD",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesAssassin): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008DD",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008DC",
+   "why": "the mod's own recipe (0TemperArmorKhajiitGauntlets_Unenchanted): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008E1",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008E4",
+   "why": "the mod's own recipe (0TemperArmorKhajiitGauntletsWater_Unenchanted): every ingredient is one of ours"
   },
   {
    "item": "King of the Murkmire.esp:0008D1",
@@ -18304,6 +21070,312 @@
    "why": "tempered with obsidian's main ingredient, as Skyrim tempers with one of its material"
   },
   {
+   "item": "Prvti_MoonstoneArmory.esp:000809",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000812",
+   "why": "Skyrim's greatsword shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000809",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081B",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000813",
+   "why": "Skyrim's battleaxe shape (4 main, 2 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080A",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081C",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080B",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     3
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000814",
+   "why": "Skyrim's mace shape (3 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080B",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081D",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080C",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000815",
+   "why": "Skyrim's waraxe shape (2 main, 2 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080C",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081E",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080D",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000816",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080D",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081F",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000817",
+   "why": "Skyrim's sword shape (2 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080E",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000820",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080F",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000818",
+   "why": "Skyrim's sword shape (2 main, 1 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080F",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000821",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000810",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000819",
+   "why": "Skyrim's greatsword shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000810",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000822",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000811",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:00081A",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in moonstone: Refined Moonstone; perk of WeapMaterialElven"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000811",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "overrides:Prvti_MoonstoneArmory.esp:000823",
+   "why": "tempered with moonstone's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
    "item": "Redguard Assasin Armor.esp:000800",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -19070,6 +22142,116 @@
    ],
    "source": "kept:RedoranTombWarden.esp:000E47",
    "why": "the mod's own recipe (TemperWeaponRedoranScythe): every ingredient is one of ours"
+  },
+  {
+   "item": "RoyalElvenBow.esp:007ECE",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's bow shape (2 main, 0 strips) in greenwood: seasoned wood and leather strips; perk of WeapMaterialElven"
+  },
+  {
+   "item": "RoyalElvenBow.esp:007ECE",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:RoyalElvenBow.esp:007ECF",
+   "why": "the mod's own recipe (AATemperWeaponRoyalElvenBowNamed): every ingredient is one of ours"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02CE35",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "overrides:RoyalElvenBow.esp:02CE36",
+   "why": "Skyrim's bow shape (2 main, 0 strips) in greenwood: seasoned wood and leather strips; perk of WeapMaterialElven"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02CE35",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:RoyalElvenBow.esp:02CE37",
+   "why": "the mod's own recipe (AATemperWeaponRoyalElvenBow): every ingredient is one of ours"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02F5D6",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:RoyalElvenBow.esp:02F5DA",
+   "why": "Skyrim's piece shape (1 main, 1 strips) in greenwood: seasoned wood and leather strips; perk of ArmorMaterialElven"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02F5D6",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with greenwood's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "SilvBoneArsenal.esp:000808",
@@ -20384,6 +23566,182 @@
    "why": "the mod's own recipe (mihailgrummiteweapon_shieldheavy_temper): every ingredient is one of ours"
   },
   {
+   "item": "mihailslavemasteroutfit.esp:00FB0E",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Dragonborn.esm:01CD7C",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in netch-leather: Netch Leather, as Dragonborn's own netch gear asks; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "mihailslavemasteroutfit.esp:00FB0E",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:mihailslavemasteroutfit.esp:00FB11",
+   "why": "the mod's own recipe (TemperArmorHideBootsdresoutfit): every ingredient is one of ours"
+  },
+  {
+   "item": "mihailslavemasteroutfit.esp:00FB0F",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Dragonborn.esm:01CD7C",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in netch-leather: Netch Leather, as Dragonborn's own netch gear asks; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "mihailslavemasteroutfit.esp:00FB0F",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:mihailslavemasteroutfit.esp:00FB10",
+   "why": "the mod's own recipe (TemperArmorHideCuirassdresoutfit): every ingredient is one of ours"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000803",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     5
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of DLC2ArmorMaterialChitinLight"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000803",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     2
+    ]
+   ],
+   "source": "kept:mihailtemplewatchmanset.esp:00080C",
+   "why": "the mod's own recipe (mihailtemplewatchemen_cuirass_temper): every ingredient is one of ours"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000807",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     3
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's heavy-helmet shape (3 main, 2 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of DLC2ArmorMaterialChitinLight"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000807",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     2
+    ]
+   ],
+   "source": "kept:mihailtemplewatchmanset.esp:00080D",
+   "why": "the mod's own recipe (mihailtemplewatchemen_helmet_temper): every ingredient is one of ours"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000809",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's shield shape (4 main, 1 strips) in chitin: Chitin Plate (Dragonborn), as Skyrim's own chitin asks; perk of DLC2ArmorMaterialChitinLight"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000809",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Dragonborn.esm:02B04E",
+     1
+    ]
+   ],
+   "source": "kept:mihailtemplewatchmanset.esp:00080E",
+   "why": "the mod's own recipe (mihailtemplewatchemen_shield_temper): every ingredient is one of ours"
+  },
+  {
    "item": "s6o6tStormholdWarriorArmor.esp:000803",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -20799,8 +24157,8 @@
   }
  ],
  "audit": {
-  "mod_recipes": 770,
-  "kept": 499,
-  "overridden": 263
+  "mod_recipes": 940,
+  "kept": 594,
+  "overridden": 338
  }
 }

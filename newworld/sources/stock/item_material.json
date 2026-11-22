@@ -539,6 +539,305 @@
    "name": "Bone-plate Helmet"
   },
   {
+   "item": "BonemoldWeapons.esp:0036C9",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A2",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A3",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A4",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A5",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065A6",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065AF",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B2",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0065B8",
+   "material": "bonemold",
+   "why": "Redoran and Dres bonemold arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:00C34E",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0120E8",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:014FB6",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:017E83",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01AD50",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:01DC1D",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEA",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:020AEB",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BonemoldWeapons.esp:0239BA",
+   "material": "chitin",
+   "why": "Ashlander and Hlaalu chitin arms"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D62",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D63",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D64",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D65",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D66",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:000D67",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DD9",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDA",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDB",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:002DDC",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E33",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:004E36",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5D",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5E",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E5F",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E60",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:005E61",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00845F",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:0089C2",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009488",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:00948A",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0D",
+   "material": "greenwood",
+   "why": "Bosmer bark-and-hide gear"
+  },
+  {
+   "item": "BosmerArmorMATY743.esp:009A0E",
+   "material": "greenwood",
+   "why": "a Bosmer elder's set; tier T4: an elder's make",
+   "tier": "T4"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000002",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000006",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000009",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00000E",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000013",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000029",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00002E",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000033",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000037",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003C",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003D",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00003E",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000055",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:00005A",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000060",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000065",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
+   "item": "Buoyant Armiger Weapons.esp:000D63",
+   "material": "moonstone",
+   "why": "the Buoyant Armigers' glass (Temple knights among the holdouts)"
+  },
+  {
    "item": "Cyrodiilic Thief.esp:000872",
    "material": "leather",
    "why": "thieves' leathers (Night-Reed Chapter, faction 32)",
@@ -1446,6 +1745,31 @@
    "tier": "T3"
   },
   {
+   "item": "Indoril_Armor.esp:000D61",
+   "material": "bonemold",
+   "why": "House Indoril's Ordinator plate; tier T4: the Temple's guard",
+   "name": "Indoril Cuirass",
+   "tier": "T4"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D62",
+   "material": "bonemold",
+   "why": "House Indoril's Ordinator plate; tier T4: the Temple's guard",
+   "tier": "T4"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D63",
+   "material": "bonemold",
+   "why": "House Indoril's Ordinator plate; tier T4: the Temple's guard",
+   "tier": "T4"
+  },
+  {
+   "item": "Indoril_Armor.esp:000D64",
+   "material": "bonemold",
+   "why": "House Indoril's Ordinator plate; tier T4: the Temple's guard",
+   "tier": "T4"
+  },
+  {
    "item": "Journey to Baan Malur.esp:014C69",
    "material": "netch-leather",
    "why": "Dunmer netch leather"
@@ -1585,6 +1909,78 @@
    "material": "saxhleel",
    "why": "a carved Argonian funerary mask (priests, mourners, tomb-keepers)",
    "name": "Funerary Mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Robes",
+   "why": "a Khajiit moon-monk's robes (the caravans' priests)"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Mask",
+   "why": "a moon-monk's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Boots",
+   "why": "a moon-monk's boots"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "material": "caravan-steel",
+   "name": "Regal Monk's Mask",
+   "why": "a senior moon-monk's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "material": "caravan-steel",
+   "name": "Regal Monk's Robes",
+   "why": "a senior moon-monk's robes"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "material": "saxhleel",
+   "name": "Water-clan Mask",
+   "why": "a Hist priest's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "material": "saxhleel",
+   "name": "Water-clan Robes",
+   "why": "blue-green vestments for a Hist priest"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "material": "imperial",
+   "name": "Emissary's Mask",
+   "why": "an Imperial emissary's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "material": "imperial",
+   "name": "Emissary's Robes",
+   "why": "an Imperial emissary's robes"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "material": "shadowscale",
+   "name": "Shadow-robe",
+   "why": "dark robes for a Shadowscale"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Wraps",
+   "why": "a moon-monk's hand wraps"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "material": "saxhleel",
+   "name": "Water-clan Wraps",
+   "why": "a Hist priest's hand wraps"
   },
   {
    "item": "King of the Murkmire.esp:0008D1",
@@ -2720,6 +3116,51 @@
    "name": "Ash-glass Bow"
   },
   {
+   "item": "Prvti_MoonstoneArmory.esp:000809",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080A",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080B",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080C",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080D",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080E",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:00080F",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000810",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
+   "item": "Prvti_MoonstoneArmory.esp:000811",
+   "material": "moonstone",
+   "why": "Hlaalu and Indoril moonstone arms (no katanas)"
+  },
+  {
    "item": "Redguard Assasin Armor.esp:000800",
    "material": "shadowscale",
    "why": "an assassin's light armour (the Empty Cradle, hired blades)",
@@ -2823,6 +3264,25 @@
    "item": "RedoranTombWarden.esp:000E44",
    "material": "bonemold",
    "why": "Redoran house guards' bonemold (the Dunmer houses' holdouts)"
+  },
+  {
+   "item": "RoyalElvenBow.esp:007ECE",
+   "material": "greenwood",
+   "why": "the finest Bosmer bow; tier T4",
+   "name": "Greenwood Longbow",
+   "tier": "T4"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02CE35",
+   "material": "greenwood",
+   "why": "a Bosmer longbow",
+   "name": "Greenwood Bow"
+  },
+  {
+   "item": "RoyalElvenBow.esp:02F5D6",
+   "material": "greenwood",
+   "why": "Bosmer arrows",
+   "name": "Greenwood Arrow"
   },
   {
    "item": "SilvBoneArsenal.esp:000808",
@@ -3034,6 +3494,31 @@
    "material": "bog-iron",
    "why": "a rustic shield",
    "name": "Marsh Heavy Shield"
+  },
+  {
+   "item": "mihailslavemasteroutfit.esp:00FB0E",
+   "material": "netch-leather",
+   "why": "House Dres slavers' boots"
+  },
+  {
+   "item": "mihailslavemasteroutfit.esp:00FB0F",
+   "material": "netch-leather",
+   "why": "House Dres slavers' outfit"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000803",
+   "material": "chitin",
+   "why": "the Temple watchman's chitin"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000807",
+   "material": "chitin",
+   "why": "the Temple watchman's chitin"
+  },
+  {
+   "item": "mihailtemplewatchmanset.esp:000809",
+   "material": "chitin",
+   "why": "the Temple watchman's chitin"
   },
   {
    "item": "s6o6tStormholdWarriorArmor.esp:000803",
@@ -3800,6 +4285,114 @@
    "good": "sap",
    "why": "amber refined at the Hist, for amber work (a smithing ingredient)",
    "name": "Refined Hist Amber"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036F2",
+   "good": "river-goods",
+   "name": "Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D6",
+   "good": "river-goods",
+   "name": "Red Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D5",
+   "good": "river-goods",
+   "name": "Green Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D4",
+   "good": "river-goods",
+   "name": "Crimson Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D3",
+   "good": "river-goods",
+   "name": "Blue Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D2",
+   "good": "river-goods",
+   "name": "Black Telvanni Robes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036DB",
+   "good": "river-goods",
+   "name": "Red Telvanni Hood",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036DA",
+   "good": "river-goods",
+   "name": "Green Telvanni Hood",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D7",
+   "good": "river-goods",
+   "name": "Black Telvanni Hood",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "TelvanniRobes.esp:0036F3",
+   "good": "river-goods",
+   "name": "Telvanni Shoes",
+   "why": "Telvanni robes: a Telvanni holdout's dress, traded cloth"
+  },
+  {
+   "item": "BosmerHeaddresses.esp:000D63",
+   "good": "bone-and-horn",
+   "name": "Deer Skull Headdress",
+   "why": "a Bosmer bone-and-feather headdress"
+  },
+  {
+   "item": "BosmerHeaddresses.esp:000D65",
+   "good": "bone-and-horn",
+   "name": "Antlered Skull Headdress",
+   "why": "a Bosmer bone-and-feather headdress"
+  },
+  {
+   "item": "BosmerHeaddresses.esp:000D6B",
+   "good": "bone-and-horn",
+   "name": "Feather Headdress",
+   "why": "a Bosmer bone-and-feather headdress"
+  },
+  {
+   "item": "Aves SkyAmulet.esp:00659D",
+   "good": "shell-work",
+   "name": "Bronze and Green-stone Necklace",
+   "why": "a necklace: tribal and traders' jewellery"
+  },
+  {
+   "item": "Aves SkyAmulet.esp:00659F",
+   "good": "shell-work",
+   "name": "Bronze and Blue-stone Necklace",
+   "why": "a necklace: tribal and traders' jewellery"
+  },
+  {
+   "item": "Aves SkyAmulet.esp:0065A6",
+   "good": "river-goods",
+   "name": "Gold and Red-stone Necklace",
+   "why": "a necklace: tribal and traders' jewellery"
+  },
+  {
+   "item": "Aves SkyAmulet.esp:0065AC",
+   "good": "river-goods",
+   "name": "Silver and Blue-stone Necklace",
+   "why": "a necklace: tribal and traders' jewellery"
+  },
+  {
+   "item": "Aves SkyAmulet.esp:0065A3",
+   "good": "river-goods",
+   "name": "Black and Violet Necklace",
+   "why": "a necklace: tribal and traders' jewellery"
   }
  ]
 }

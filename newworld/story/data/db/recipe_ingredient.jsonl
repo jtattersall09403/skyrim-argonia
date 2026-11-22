@@ -381,6 +381,202 @@
 {"item_id":"Bone Cultist Armor.esp:000811","kind":"forge","seq":1,"ingredient":"Skyrim.esm:034CDD","count":1}
 {"item_id":"Bone Cultist Armor.esp:000811","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"Bone Cultist Armor.esp:000811","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0036C9","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0036C9","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0036C9","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0036C9","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A2","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A2","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A2","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A2","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A3","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A3","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A3","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A3","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A4","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A4","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A4","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A4","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A5","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A5","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A5","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A5","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A6","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065A6","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A6","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065A6","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065AF","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065AF","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065AF","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065AF","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065B2","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065B2","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"BonemoldWeapons.esp:0065B2","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0065B2","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065B8","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"BonemoldWeapons.esp:0065B8","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BonemoldWeapons.esp:0065B8","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":1}
+{"item_id":"BonemoldWeapons.esp:00C34E","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":4}
+{"item_id":"BonemoldWeapons.esp:00C34E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"BonemoldWeapons.esp:00C34E","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:0120E8","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:0120E8","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BonemoldWeapons.esp:0120E8","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:014FB6","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
+{"item_id":"BonemoldWeapons.esp:014FB6","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BonemoldWeapons.esp:014FB6","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:017E83","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":3}
+{"item_id":"BonemoldWeapons.esp:017E83","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BonemoldWeapons.esp:017E83","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:01AD50","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
+{"item_id":"BonemoldWeapons.esp:01AD50","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BonemoldWeapons.esp:01AD50","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:01DC1D","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":4}
+{"item_id":"BonemoldWeapons.esp:01DC1D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BonemoldWeapons.esp:01DC1D","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:020AEA","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":4}
+{"item_id":"BonemoldWeapons.esp:020AEA","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"BonemoldWeapons.esp:020AEA","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:020AEB","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
+{"item_id":"BonemoldWeapons.esp:020AEB","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:0239BA","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BonemoldWeapons.esp:0239BA","kind":"forge","seq":1,"ingredient":"Dragonborn.esm:01CD7C","count":1}
+{"item_id":"BonemoldWeapons.esp:0239BA","kind":"forge","seq":2,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BonemoldWeapons.esp:0239BA","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D62","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"BosmerArmorMATY743.esp:000D62","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":4}
+{"item_id":"BosmerArmorMATY743.esp:000D62","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D64","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D64","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D64","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D65","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D65","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D65","kind":"forge","seq":2,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D65","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D66","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D66","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":3}
+{"item_id":"BosmerArmorMATY743.esp:000D66","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D66","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:000D67","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D67","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"BosmerArmorMATY743.esp:000D67","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DD9","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":4}
+{"item_id":"BosmerArmorMATY743.esp:002DD9","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DD9","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"BosmerArmorMATY743.esp:002DD9","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDA","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDA","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDA","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:002DDA","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDB","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:002DDB","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDB","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDB","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDC","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:002DDC","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDC","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:002DDC","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:004E33","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":5}
+{"item_id":"BosmerArmorMATY743.esp:004E33","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:004E33","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"BosmerArmorMATY743.esp:004E33","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:004E36","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:004E36","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:004E36","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:004E36","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5D","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E5D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5D","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5D","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E5E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5E","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E5E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5F","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":3}
+{"item_id":"BosmerArmorMATY743.esp:005E5F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E5F","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E5F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E60","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":3}
+{"item_id":"BosmerArmorMATY743.esp:005E60","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E60","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E60","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E61","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":3}
+{"item_id":"BosmerArmorMATY743.esp:005E61","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:005E61","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"BosmerArmorMATY743.esp:005E61","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:00845F","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"BosmerArmorMATY743.esp:00845F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:00845F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"BosmerArmorMATY743.esp:0089C2","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:0089C2","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:0089C2","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:0089C2","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009488","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009488","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":5}
+{"item_id":"BosmerArmorMATY743.esp:009488","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:00948A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:00948A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:00948A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009A0D","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"BosmerArmorMATY743.esp:009A0D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"BosmerArmorMATY743.esp:009A0D","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009A0E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009A0E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009A0E","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"BosmerArmorMATY743.esp:009A0E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000002","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:000002","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Buoyant Armiger Weapons.esp:000002","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000006","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000006","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000006","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000009","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:000009","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:000009","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00000E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:00000E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:00000E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000013","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:000013","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Buoyant Armiger Weapons.esp:000013","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000029","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000029","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000029","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00002E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:00002E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00002E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000033","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:000033","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000033","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000037","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:000037","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Buoyant Armiger Weapons.esp:000037","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00003C","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:00003C","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:00003C","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00003D","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00003D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:00003D","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00003E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:00003E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00003E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000055","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":3}
+{"item_id":"Buoyant Armiger Weapons.esp:000055","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000055","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:00005A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Buoyant Armiger Weapons.esp:00005A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Buoyant Armiger Weapons.esp:00005A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000060","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:000060","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000065","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000065","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000065","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Buoyant Armiger Weapons.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Buoyant Armiger Weapons.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
 {"item_id":"Cyrodiilic Thief.esp:000872","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":4}
 {"item_id":"Cyrodiilic Thief.esp:000872","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":4}
 {"item_id":"Cyrodiilic Thief.esp:000872","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
@@ -917,6 +1113,22 @@
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:00331A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE5","count":4}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:00331A","kind":"forge","seq":2,"ingredient":"Skyrim.esm:06F993","count":8}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:00331A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Indoril_Armor.esp:000D61","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":5}
+{"item_id":"Indoril_Armor.esp:000D61","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Indoril_Armor.esp:000D61","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Indoril_Armor.esp:000D61","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Indoril_Armor.esp:000D62","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":3}
+{"item_id":"Indoril_Armor.esp:000D62","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Indoril_Armor.esp:000D62","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Indoril_Armor.esp:000D62","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Indoril_Armor.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":2}
+{"item_id":"Indoril_Armor.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Indoril_Armor.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Indoril_Armor.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Indoril_Armor.esp:000D64","kind":"forge","seq":0,"ingredient":"Skyrim.esm:034CDD","count":3}
+{"item_id":"Indoril_Armor.esp:000D64","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Indoril_Armor.esp:000D64","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Indoril_Armor.esp:000D64","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
 {"item_id":"Journey to Baan Malur.esp:014C69","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:01CD7C","count":2}
 {"item_id":"Journey to Baan Malur.esp:014C69","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"Journey to Baan Malur.esp:014C69","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:01CD7C","count":1}
@@ -1009,6 +1221,52 @@
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":4}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
@@ -1731,6 +1989,33 @@
 {"item_id":"Prvti_AshenArmory.esp:0008B9","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
 {"item_id":"Prvti_AshenArmory.esp:0008B9","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":1}
 {"item_id":"Prvti_AshenArmory.esp:0008B9","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:000809","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Prvti_MoonstoneArmory.esp:000809","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Prvti_MoonstoneArmory.esp:000809","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080B","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":3}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080B","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080B","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080C","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080C","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080C","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080D","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080D","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080E","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080F","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":2}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:00080F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:000810","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Prvti_MoonstoneArmory.esp:000810","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Prvti_MoonstoneArmory.esp:000810","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Prvti_MoonstoneArmory.esp:000811","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":4}
+{"item_id":"Prvti_MoonstoneArmory.esp:000811","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Prvti_MoonstoneArmory.esp:000811","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
 {"item_id":"Redguard Assasin Armor.esp:000800","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"Redguard Assasin Armor.esp:000800","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
 {"item_id":"Redguard Assasin Armor.esp:000800","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
@@ -1806,6 +2091,16 @@
 {"item_id":"RedoranTombWarden.esp:000E44","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":1}
 {"item_id":"RedoranTombWarden.esp:000E44","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"RedoranTombWarden.esp:000E44","kind":"temper","seq":0,"ingredient":"Skyrim.esm:034CDD","count":1}
+{"item_id":"RoyalElvenBow.esp:007ECE","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"RoyalElvenBow.esp:007ECE","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"RoyalElvenBow.esp:007ECE","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"RoyalElvenBow.esp:02CE35","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"RoyalElvenBow.esp:02CE35","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"RoyalElvenBow.esp:02CE35","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"RoyalElvenBow.esp:02F5D6","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"RoyalElvenBow.esp:02F5D6","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"RoyalElvenBow.esp:02F5D6","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"RoyalElvenBow.esp:02F5D6","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":2}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":1,"ingredient":"Skyrim.esm:034CDD","count":1}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
@@ -1936,6 +2231,21 @@
 {"item_id":"mihailgrummiteweaponry.esp:000809","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":4}
 {"item_id":"mihailgrummiteweaponry.esp:000809","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"mihailgrummiteweaponry.esp:000809","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0E","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:01CD7C","count":2}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0F","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:01CD7C","count":4}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"mihailslavemasteroutfit.esp:00FB0F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"mihailtemplewatchmanset.esp:000803","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":5}
+{"item_id":"mihailtemplewatchmanset.esp:000803","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"mihailtemplewatchmanset.esp:000803","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
+{"item_id":"mihailtemplewatchmanset.esp:000807","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":3}
+{"item_id":"mihailtemplewatchmanset.esp:000807","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"mihailtemplewatchmanset.esp:000807","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
+{"item_id":"mihailtemplewatchmanset.esp:000809","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":4}
+{"item_id":"mihailtemplewatchmanset.esp:000809","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"mihailtemplewatchmanset.esp:000809","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000803","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":4}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000803","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000803","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
