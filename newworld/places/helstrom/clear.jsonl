@@ -778,6 +778,8 @@
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-56775.2,-607706.2,268.1],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:303E5A"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-56358.4,-586470.6,277.6],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:67E220"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-55870.6,-587780.5,283.6],"by":"draft","why":"building","ref":"ArgoniaNewWorld.esm:479F16"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-55515.6,-596906.4,248.1],"ref":"ArgoniaNewWorld.esm:54069D","by":"owner"}
+{"base":"ArgoniaNewWorld.esm:002500","pos":[-55496.9,-596989.6,241.6],"ref":"ArgoniaNewWorld.esm:2E264F","by":"owner"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-54806.3,-607245.6,228.8],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:20355B"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-54552.4,-600417.9,210.7],"by":"draft","why":"inside a placed footprint","ref":"ArgoniaNewWorld.esm:312476"}
 {"base":"ArgoniaNewWorld.esm:002500","pos":[-54147.3,-605525.8,211.6],"by":"draft","why":"street","ref":"ArgoniaNewWorld.esm:41D5A3"}

@@ -1,0 +1,39 @@
+{
+ "save_id": "agent-20261122T132854",
+ "place_id": "helstrom",
+ "name": "two world Hist roots cleared off the west-heights walk",
+ "at": "2026-11-22T13:28:54Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "veg.clear",
+   "call": "fault",
+   "note": "two of the world's great Hist roots stood across the west-heights walk once the floating source slab there was dropped (the walk passed through their roots: playwalk leg)",
+   "items": [
+    {
+     "base": "ArgoniaNewWorld.esm:002500",
+     "pos": [
+      -55496.9,
+      -596989.6,
+      241.6
+     ],
+     "ref": "ArgoniaNewWorld.esm:2E264F"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002500",
+     "pos": [
+      -55515.6,
+      -596906.4,
+      248.1
+     ],
+     "ref": "ArgoniaNewWorld.esm:54069D"
+    }
+   ],
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T13:28:54Z"
+  }
+ ]
+}
