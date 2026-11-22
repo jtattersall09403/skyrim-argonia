@@ -1,0 +1,83 @@
+{
+ "save_id": "agent-20261122T052236",
+ "place_id": "outpost-m13-m65",
+ "name": "the cook's fire swapped for the same fire without the slope apron",
+ "at": "2026-11-22T05:22:36Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.NXM99WZH4NB1H2HNM2X58MDMCW",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.NXM99WZH4NB1H2HNM2X58MDMCW",
+    "base": "Skyrim.esm:0CBB23",
+    "kind": "clutter",
+    "pos": [
+     -99927.83,
+     -528542.13,
+     298.27
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:09681E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:22:36Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.COOKFIRE",
+    "base": "Skyrim.esm:035F49",
+    "kind": "clutter",
+    "pos": [
+     -99927.83,
+     -528542.13,
+     306.9
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -4.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    },
+    "why": "the cook's fire by the hut (record: cooking-pot, the cook's fire by the hut): the Hjaalmarch camp's own fire of logs in a ring of stones, without the slope variant's dirt apron, which stood out of our level camp floor as a hard-edged slab; the ash round it is ground paint, feathered",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T05:22:36Z"
+  }
+ ]
+}

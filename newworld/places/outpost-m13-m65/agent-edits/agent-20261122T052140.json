@@ -1,0 +1,80 @@
+{
+ "save_id": "agent-20261122T052140",
+ "place_id": "outpost-m13-m65",
+ "name": "fire dirt base sunk into the ground; dark earth feathered round it",
+ "at": "2026-11-22T05:21:40Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.NXM99WZH4NB1H2HNM2X58MDMCW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99927.83,
+     -528542.13,
+     320.27
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99927.83,
+     -528542.13,
+     298.27
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:21:40Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0005",
+    "brush": "scatter",
+    "by": "agent",
+    "why": "ash and trodden dark earth round the cook's fire, feathered into the camp ground so the fire's own dirt base has no hard edge",
+    "texture": "ArgoniaNewWorld.esm:00093B",
+    "size": 260.0,
+    "softness": 1.0,
+    "strength": 0.8,
+    "seed": 134,
+    "points": [
+     [
+      -99930.0,
+      -528540.0,
+      1.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "ash and trodden dark earth round the cook's fire, feathered into the camp ground so the fire's own dirt base has no hard edge",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:21:40Z"
+  }
+ ]
+}
