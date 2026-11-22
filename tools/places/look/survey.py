@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import time
 from pathlib import Path
 
@@ -21,6 +22,7 @@ from tools.places.look.scene import LOOK_OUT
 
 TW, TH = 1280, 960         # a tile, as drawn and as saved
 SW, SH = 640, 480           # a tile on the contact sheet
+SECTION_SPAN = 4800.0       # a section longer than this is cut to its middle this long (a town at true scale is a line)
 SCORE_W = 384               # the width of the id pass a tile is scored on (and picked from)
 OWN_LIGHT = "viewer light, not the game's"
 NEAR, FAR = 0.55, 1.3   # eye-level distances, as shares of the distance that frames the whole structure
@@ -84,6 +86,9 @@ def _cam(sc, place, th, t, gz, retry=False):
         lo, hi = th["lo"], th["hi"]
         my, mx = (lo[1] + hi[1]) / 2, (lo[0] + hi[0]) / 2
         A, B = ([lo[0] - 300, my], [hi[0] + 300, my]) if t["section"] == "west-east" else ([mx, lo[1] - 300], [mx, hi[1] + 300])
+        if math.dist(A, B) > SECTION_SPAN:   # a whole town at true scale is a hair's-breadth line: its middle, readable
+            k = SECTION_SPAN / 2 / math.dist(A, B)
+            A, B = [mx + (A[0] - mx) * 2 * k, my + (A[1] - my) * 2 * k], [mx + (B[0] - mx) * 2 * k, my + (B[1] - my) * 2 * k]
         cam, crossed, prof = verbs.section_setup(sc, A, B, 96.0, TW, TH)
         return cam | {"_section": (crossed, prof)}
     # a retry: the next side round, nearer at the eye (past what stood in the way), further from high
@@ -113,7 +118,9 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
     calls = []
 
     def run(idx):
-        page = [dict(_page(cams[i]), ids=True, ref_w=SCORE_W, subject=subj, fill=not tiles[i].get("own_light"), grass=False)
+        # a section's subject is what it cuts through (a place's first 400 pieces may lie nowhere near its line)
+        page = [dict(_page(cams[i]), ids=True, ref_w=SCORE_W, fill=not tiles[i].get("own_light"), grass=False,
+                     subject=[x["id"] for x in cams[i]["_section"][0]][:400] if cams[i].get("_section") else subj)
                 for i in idx]
         tc = time.time()
         got = d.page.evaluate("(cs) => agent.shots(cs)", page)
