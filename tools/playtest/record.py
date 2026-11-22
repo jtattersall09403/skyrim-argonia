@@ -673,6 +673,7 @@ class Game:
         st = self.R.stages[n]
         self.s["stage"] = n
         self.s["done"].append(n)
+        slot = len(self.s["pending"])   # this stage's entry comes before any stage its own results set, as in Skyrim
         out = self.apply(st.get("onEnter"))
         if st.get("ending"):
             e = self.R.endings.get(st.get("endingId")) or {}
@@ -685,7 +686,7 @@ class Game:
                     names = [self.R.must_name(t.strip()) for t in str(o.get("target") or "").split(",") if t.strip()]
                     objs.append(f"{o.get('objectiveText')}" + (f" (marker: {', '.join(names)})" if names else ""))
             kind = "ending" if st.get("ending") else "start" if first else "stage"
-            self.s["pending"].append({"stage": n, "kind": kind, "ending": st.get("ending"), "title": self.R.title,
+            self.s["pending"].insert(slot, {"stage": n, "kind": kind, "ending": st.get("ending"), "title": self.R.title,
                                       "journal": st.get("journalText") or "", "objectives": objs,
                                       "plan": M.plan_of(st, self.R.terms)})
         return out

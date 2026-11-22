@@ -72,6 +72,18 @@ def test_a_choice_to_an_ending_then_notes_and_the_end():
     assert g.s["notes"] == "Hanu-Mah has the satchel." and g.do("look") == "The game is over."
 
 
+def test_a_stage_that_sets_the_next_shows_its_own_entry_first():
+    q = rec()
+    st20 = next(s for s in q["stages"] if s["id"] == 20)
+    st20.setdefault("onEnter", []).append({"setStage": [q["id"], 30]})
+    g, _ = started(q)
+    g.do(A)
+    g.do("go hanu-mah")
+    g.do("talk hanu-mah")
+    g.do("say 1")
+    assert [m["stage"] for m in g.s["pending"]] == [20, 30]
+
+
 def test_a_check_is_passed_or_failed_by_the_players_word():
     g, _ = started()
     g.s.update(stage=20, done=[10, 20], pending=[], at="yulca-hut")

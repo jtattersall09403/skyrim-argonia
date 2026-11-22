@@ -114,6 +114,10 @@ added here the day they are made, with the date and the issue.
   bands of docs/design/items.md; bog iron uncommon; chitin traded, bonemold only in Dunmer places; smithing
   perks kept through a power class per material; two mods added (New Armory Argonian Weapons, Beyond Skyrim
   Bonemold Weapon Pack).
+- No starter kit in the barge's hold: Dralin says the player will need to look after themselves on the road, he
+  has not much to spare but can offer one of these, take your pick: a low two-handed hammer, a one-handed sword,
+  a bow with arrows and a dagger, or an offensive spell tome (2026-11-22). Built in MN01 as his offer on the
+  landing, Black Marsh pieces at Skyrim's iron tier.
 
 ## The game
 
