@@ -35,27 +35,3 @@
 {"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from the dry ground before it can close"}
 {"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought among the dry ground in the basin of 0D7883"}
 {"quest_id":"quest.local.lq30","ord":2,"skill":"speechcraft","use":"persuade","reason":"Sei-Wan is talked into coming home (Speech 25)"}
-{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"interrogate","reason":"the player questions Nesh-Deeka about the Veiled Reed (what it is, whom it answers to, what it pays, what became of its courier, what she keeps back) before giving their word; no check: stage 30 is a pure choice stage (quest-write §3 item 3)"}
-{"quest_id":"quest.main.mq03","ord":0,"skill":"Lockpicking","use":"pick-a-lock","reason":"Dives-Without-A-Rope keeps the jar in a lockbox locked (Novice), and lockpicks lie on the hold's floor beside it"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"Speechcraft","use":"persuade","reason":"she gives up the key to someone who can tell her the Reed means to find who cut her tree (Speechcraft 25)"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"Pickpocket","use":"pickpocket","reason":"the key is on her"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"Alchemy","use":"test-a-sample","reason":"at Nesh-Deeka's table a tester reads the sap before the taste: fresh-drawn, and the rings of many jars on it"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"Pays-Late is talked round to tell what he hid (Speech 25)"}
-{"quest_id":"quest.main.mq04","ord":1,"skill":"Sneak","use":"steal","reason":"his gum pot is taken from the gum box at his feet under his eyes; the crime engine sees a theft"}
-{"quest_id":"quest.main.mq04","ord":2,"skill":"Lockpicking","use":"pick-a-lock","reason":"the gum box is locked (Novice)"}
-{"quest_id":"quest.main.mq04","ord":3,"skill":"OneHanded","use":"fight","reason":"the two cell men at the giant tree are fought (fixed level, band 2)"}
-{"quest_id":"quest.main.mq04","ord":4,"skill":"Sneak","use":"sneak-past","reason":"or slipped past to the jars"}
-{"quest_id":"quest.main.mq05","ord":0,"skill":"OneHanded","use":"fight","reason":"two giant wasps the size of ponies keep the way's far bend (fixed level, band 1): the quest's high point"}
-{"quest_id":"quest.main.mq05","ord":1,"skill":"Sneak","use":"sneak-past","reason":"the other way past the wasps"}
-{"quest_id":"quest.main.mq05","ord":2,"skill":"Speech","use":"persuade","reason":"Kaska-Meen hears a stranger only if talked round (Speech 25)"}
-{"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
-{"quest_id":"quest.mr.mr01","ord":1,"skill":"swimming","use":"swim","reason":"three sampling sites in the drowned stair"}
-{"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}
-{"quest_id":"quest.mr.mr01","ord":3,"skill":"destruction","use":"burn-a-nest","reason":"parasite swarms between the sites"}
-{"quest_id":"quest.mr.mr01","ord":4,"skill":"spear","use":"fight","reason":"or fight through the swarms"}
-{"quest_id":"quest.mr.mr01","ord":5,"skill":"speechcraft","use":"present-evidence","reason":"the council payoff: discover in danger, decide in council"}
-{"quest_id":"quest.tg.tg01","ord":0,"skill":"Lockpicking","use":"open-a-strongbox","reason":"the necklace is taken out of the thief's own strongbox"}
-{"quest_id":"quest.tg.tg01","ord":1,"skill":"speechcraft","use":"persuade","reason":"or he is talked out of it where he keeps to the shore"}
-{"quest_id":"quest.tg.tg02","ord":0,"skill":"athletics","use":"dive","reason":"the lockbox lies on the floor of the deep water"}
-{"quest_id":"quest.tg.tg02","ord":1,"skill":"Lockpicking","use":"open-a-strongbox","reason":"the lockbox is opened where it lies"}
-{"quest_id":"quest.tg.tg02","ord":2,"skill":"speechcraft","use":"persuade","reason":"each client is shown the lie and made to pay a fair price"}

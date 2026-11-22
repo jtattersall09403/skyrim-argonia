@@ -54,7 +54,7 @@ recordSources:
       place_card arorha --mined]
   plot: story/design/quests/lines/main-plot.md §3, §4, §5 quests 10 to 13, §9 (travel, what each quest needs)
   lore: ['story/lore/extrapolation/argonia-4e201-state.md §1, §2.5, §11.2', story/lore/topics/hist-and-sap.md, story/lore/topics/umbriel.md,
-    docs/phases/new-worldspace-plan/research/rulers-rename-map.md]
+    story/design/retired-names.json]
 centrepiece: RECOVER
 actionPlan:
 - {skill: One-Handed, use: fight-guards, reason: the Collector's hired men camp at the foot of the goat-path and dig in

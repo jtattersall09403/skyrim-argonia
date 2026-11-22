@@ -60,7 +60,7 @@ recordSources:
   - §2.5
   - story/lore/topics/hist-and-sap.md (amber)
   - story/lore/topics/lost-peoples.md (Kothringi)
-  - docs/phases/new-worldspace-plan/research/rulers-rename-map.md
+  - story/design/retired-names.json
 centrepiece: STEAL
 actionPlan:
 - skill: Speech

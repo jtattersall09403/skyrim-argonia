@@ -323,7 +323,7 @@ Reasoning for preferring this over an invented secret society:
 `AGENT_INVENTED` flag: the waiting communities are ours. The category reading is
 `EXTRAPOLATED` and safe; the surviving vigil-settlements are an invention on top
 of it and should be owner-visible. Raised as **Round 2 Q6** in
-[../extrapolation/owner-questions.md](../extrapolation/owner-questions.md).
+../extrapolation/owner-questions.md.
 
 ---
 

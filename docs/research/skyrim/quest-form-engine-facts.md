@@ -1,6 +1,6 @@
 # Engine facts for the quest form (walk 6, lane R3)
 
-The measured facts the kit lane (K) needs for [walk-6-quests](../../phases/walk-6-quests.md): markers, a person who
+The measured facts the kit lane (K) needs for walk-6-quests: markers, a person who
 speaks first, mortality, the death message, generic scripts, and "away from the player". Decision 0034: each answer
 says how Bethesda did it, counted, and ends in **Do this:**.
 

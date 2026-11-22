@@ -9,7 +9,7 @@ with a stated reason and a phase it belongs to.
 on, and a status:
 
 - `FILLED` — answered, with the file and section that answers it.
-- `DECIDED` — owner decision of 2026-08-24 ([owner-questions.md](owner-questions.md)).
+- `DECIDED` — owner decision of 2026-08-24 (owner-questions.md).
 - `DEFER` — genuinely does not need a lore answer; the remaining work is
   technical or belongs to a later phase. Reason and phase given.
 - `MYSTERY` — canon leaves it open on purpose and so do we.

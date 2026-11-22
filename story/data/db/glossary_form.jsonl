@@ -47,14 +47,10 @@
 {"glossary_term_id":"term.imperial","ord":2,"value":"Imperial-built"}
 {"glossary_term_id":"term.imperial-legion-remnant","ord":0,"value":"Imperial Legion remnant"}
 {"glossary_term_id":"term.imperial-legion-remnant","ord":1,"value":"Legion"}
-{"glossary_term_id":"term.league-of-open-water","ord":0,"value":"League of Open Water"}
 {"glossary_term_id":"term.lighter-flotilla","ord":0,"value":"Lighter Flotilla"}
 {"glossary_term_id":"term.lilmoth","ord":0,"value":"Lilmoth"}
 {"glossary_term_id":"term.long-water-hold","ord":0,"value":"Long-Water Hold"}
 {"glossary_term_id":"term.lukiul","ord":0,"value":"lukiul"}
-{"glossary_term_id":"term.many-root-conclave","ord":0,"value":"Many-Root Conclave"}
-{"glossary_term_id":"term.many-root-conclave","ord":1,"value":"Conclave"}
-{"glossary_term_id":"term.marsh-charter","ord":0,"value":"Marsh Charter"}
 {"glossary_term_id":"term.morrowind","ord":0,"value":"Morrowind"}
 {"glossary_term_id":"term.morrowind-veterans","ord":0,"value":"Morrowind veterans"}
 {"glossary_term_id":"term.murkmire","ord":0,"value":"Murkmire"}
@@ -63,12 +59,7 @@
 {"glossary_term_id":"term.naga","ord":0,"value":"Naga"}
 {"glossary_term_id":"term.naga-kur","ord":0,"value":"Naga-Kur"}
 {"glossary_term_id":"term.naheesh","ord":0,"value":"naheesh"}
-{"glossary_term_id":"term.night-reed-chapter","ord":0,"value":"Night-Reed Chapter"}
 {"glossary_term_id":"term.nine-bends","ord":0,"value":"Nine Bends"}
-{"glossary_term_id":"term.nisswo","ord":0,"value":"Nisswo"}
-{"glossary_term_id":"term.nisswo","ord":1,"value":"Clutch of Nisswo"}
-{"glossary_term_id":"term.nisswo-of-the-turning-path","ord":0,"value":"Nisswo of the Turning Path"}
-{"glossary_term_id":"term.nisswo-of-the-turning-path","ord":1,"value":"Turning Path"}
 {"glossary_term_id":"term.north-cut","ord":0,"value":"North Cut"}
 {"glossary_term_id":"term.ojel","ord":0,"value":"ojel"}
 {"glossary_term_id":"term.onkobra","ord":0,"value":"Onkobra"}
@@ -81,16 +72,11 @@
 {"glossary_term_id":"term.prison-road","ord":0,"value":"Prison road"}
 {"glossary_term_id":"term.prison-road","ord":1,"value":"Border road"}
 {"glossary_term_id":"term.prison-road","ord":2,"value":"Mile House"}
-{"glossary_term_id":"term.reed-sail-compact","ord":0,"value":"Reed-Sail Compact"}
-{"glossary_term_id":"term.reed-sail-compact","ord":1,"value":"Compact"}
 {"glossary_term_id":"term.riverwalk","ord":0,"value":"Riverwalk"}
 {"glossary_term_id":"term.root-talk","ord":0,"value":"Root Talk"}
 {"glossary_term_id":"term.root-talk","ord":1,"value":"Helstrom Assembly"}
 {"glossary_term_id":"term.root-talk","ord":2,"value":"Assembly"}
 {"glossary_term_id":"term.root-whisper-tribe","ord":0,"value":"Root-Whisper tribe"}
-{"glossary_term_id":"term.rootworm-waykeepers","ord":0,"value":"Rootworm Waykeepers"}
-{"glossary_term_id":"term.rootworm-waykeepers","ord":1,"value":"Waykeepers"}
-{"glossary_term_id":"term.salt-teeth","ord":0,"value":"Salt-Teeth"}
 {"glossary_term_id":"term.scalded-throne","ord":0,"value":"Scalded Throne"}
 {"glossary_term_id":"term.sealed-vault","ord":0,"value":"Sealed Vault"}
 {"glossary_term_id":"term.shadowfen","ord":0,"value":"Shadowfen"}
@@ -102,22 +88,19 @@
 {"glossary_term_id":"term.southern-sea","ord":0,"value":"Southern Sea"}
 {"glossary_term_id":"term.stillrise","ord":0,"value":"Stillrise"}
 {"glossary_term_id":"term.sul-xan","ord":0,"value":"Sul-Xan"}
-{"glossary_term_id":"term.sunken-archive","ord":0,"value":"Sunken Archive"}
 {"glossary_term_id":"term.synod","ord":0,"value":"Synod"}
 {"glossary_term_id":"term.tag-house","ord":0,"value":"Tag House"}
 {"glossary_term_id":"term.tear","ord":0,"value":"Tear"}
 {"glossary_term_id":"term.teeth-of-sithis","ord":0,"value":"Teeth of Sithis"}
 {"glossary_term_id":"term.the-empty-cradle","ord":0,"value":"The Empty Cradle"}
 {"glossary_term_id":"term.thorn","ord":0,"value":"Thorn"}
-{"glossary_term_id":"term.thorn-ash-reed-accord","ord":0,"value":"Thorn Ash-Reed Accord"}
+{"glossary_term_id":"term.toh-reel-ka","ord":0,"value":"Toh-Reel-Ka"}
 {"glossary_term_id":"term.tree-minder","ord":0,"value":"tree-minder"}
 {"glossary_term_id":"term.tree-minder","ord":1,"value":"Tree-Minder"}
 {"glossary_term_id":"term.tribeless-naga","ord":0,"value":"Tribeless Naga"}
 {"glossary_term_id":"term.tribeless-naga","ord":1,"value":"Cut-Rope"}
 {"glossary_term_id":"term.umbriel","ord":0,"value":"Umbriel"}
-{"glossary_term_id":"term.umbriel-witness-society","ord":0,"value":"Umbriel Witness Society"}
-{"glossary_term_id":"term.unbound-root","ord":0,"value":"Unbound Root"}
-{"glossary_term_id":"term.unbound-root-cutting","ord":0,"value":"Unbound Root cutting"}
-{"glossary_term_id":"term.veiled-reed","ord":0,"value":"Veiled Reed"}
+{"glossary_term_id":"term.unbound","ord":0,"value":"Unbound"}
+{"glossary_term_id":"term.unbound-cutting","ord":0,"value":"Unbound cutting"}
 {"glossary_term_id":"term.xanmeer","ord":0,"value":"xanmeer"}
 {"glossary_term_id":"term.xit-xaht","ord":0,"value":"Xit-Xaht"}

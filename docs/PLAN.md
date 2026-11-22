@@ -71,11 +71,11 @@ file in [phases/](phases/), edited as the phase goes.
 
 | Phase | What | Ends when the owner can say |
 |---|---|---|
-| [0](phases/0-play-machine.md) | the play machine is back and vanilla Skyrim streams | no owner test: the machine, Steam and the pinned game are checked by the agent; the owner tries the Vanilla card in the first walk (owner, 2026-11-05) |
+| 0 (done) | the play machine is back and vanilla Skyrim streams | no owner test: the machine, Steam and the pinned game are checked by the agent; the owner tries the Vanilla card in the first walk (owner, 2026-11-05) |
 | [1](phases/1-stack-in-bmv.md) | the stack, in BM&V as the default world | "I started in Black Marsh, fought, climbed, cast a Morrowind spell and nothing from Skyrim followed me" |
-| [2](phases/2-first-act-on-paper.md) | the first act written as quest records, and the small composable block set it needs, derived from them | "the act reads right and the block list is enough" (read, not played) |
+| 2 (done) | the small composable block set quests are built from | "the act reads right and the block list is enough" (read, not played) |
 | [3](phases/3-building-blocks.md) | each block proved once, plus one composite quest for the connectors (the induction) | "I saw every block and the composite work in game" |
-| [4](phases/4-first-act-built.md) | the first act built from the proven blocks, with its dialogue | "I played the first act from a new game" |
+| 4 (superseded) | the BM&V first act's quests are retired; the main quest is the new world's ([nw-05c](phases/new-worldspace-plan/nw-05c-factions-overhaul.md)) | - |
 | [4a](phases/4a-talk-to-everyone.md) | every BM&V person outside Lilmoth gets a backstory and topics of their own (W-talk, proved on Lilmoth's 12), settlement by settlement; runs beside Phase 4 | "I can talk to anyone I meet, and what they tell me is true" |
 | 4b (after Phase 4 is accepted) | the method as skills: a set that lets an agent put a full quest system onto a new world, cut from [quests-on-a-world](design/quests-on-a-world.md) (its ten parts: the world as the game's world, census, fitting and re-authoring the system with quest-write and quest-review, light world edits, building from the proven blocks without a test quest, talk-write, quest dialogue, read-back and deploy, the owner's walks, parallel lanes); first the four quest kits and read-backs become one shared kit | "an agent with only the skills could do it again on another world" |
 | [5 and on](phases/5-scale.md) | scale | "the story is in, milestone by milestone" |

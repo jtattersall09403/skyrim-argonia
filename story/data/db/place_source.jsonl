@@ -509,7 +509,7 @@
 {"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":3,"value":"world/sources/catalogue/type-recipes.json#collapsing-pinnacle"}
 {"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":4,"value":"world/sources/lore/topics/ecology-encounters-loot.md"}
 {"place_id":"place.hist-heartland.collapsing-pinnacle-interior","ord":5,"value":"docs/world/50-hydrology-climate.md"}
-{"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":0,"value":"docs/quests/30-main-quest.md (the Unbound Root)"}
+{"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":0,"value":"docs/quests/30-main-quest.md (the Unbound)"}
 {"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":1,"value":"Lore:Sul-Xan (jade death masks, green raider tattoos, soul-snares; Xi-Tsei, Rockgrove, the Silent Halls)"}
 {"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":2,"value":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"place_id":"place.hist-heartland.cult-raid-camp-unbound","ord":3,"value":"world/sources/lore/topics/hist-placement.md"}
@@ -617,7 +617,7 @@
 {"place_id":"place.hist-heartland.hist-first-rain-trunk","ord":3,"value":"world/sources/lore/topics/hist-placement.md"}
 {"place_id":"place.hist-heartland.hist-first-rain-trunk","ord":4,"value":"world/sources/lore/topics/hist-and-sap.md"}
 {"place_id":"place.hist-heartland.hist-first-rain-trunk","ord":5,"value":"world/sources/lore/duskfall.md"}
-{"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":0,"value":"Lore:Lukiul; League of Open Water (quest plan); Lore:Hist"}
+{"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":0,"value":"Lore:Lukiul; the lukiul petitioners (quest plan); Lore:Hist"}
 {"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":1,"value":"uesp:Lore:Lukiul"}
 {"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":2,"value":"world/sources/lore/topics/hist-placement.md"}
 {"place_id":"place.hist-heartland.hist-less-refuge-wild","ord":3,"value":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
@@ -1199,7 +1199,7 @@
 {"place_id":"place.imperial-fringe.the-second-hearth","ord":0,"value":"uesp:Lore:Lukiul"}
 {"place_id":"place.imperial-fringe.the-second-hearth","ord":1,"value":"uesp:Lore:Hist"}
 {"place_id":"place.imperial-fringe.the-second-hearth","ord":2,"value":"uesp:Lore:Gideon"}
-{"place_id":"place.imperial-fringe.the-second-hearth","ord":3,"value":"docs/quests/20-world-provisions.md §12b (League of Open Water)"}
+{"place_id":"place.imperial-fringe.the-second-hearth","ord":3,"value":"docs/quests/20-world-provisions.md §12b (the lukiul petitioners)"}
 {"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":0,"value":"uesp:Lore:Glenbridge"}
 {"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":1,"value":"uesp:Lore:Nisswo"}
 {"place_id":"place.imperial-fringe.the-sermon-road-camp","ord":2,"value":"docs/quests/20-world-provisions.md §12b"}
@@ -2247,7 +2247,7 @@
 {"place_id":"place.pirate-freeholds.careening-hard","ord":3,"value":"lore: Lore:Sea Transportation; material-culture (Argonians crew foreign hulls, build small craft)"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"uesp:Lore:Alten Corimont"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"world/sources/lore/alten-corimont.md"}
-{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":2,"value":"docs/quests/40-factions.md §43 (the Salt-Teeth arc)"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":2,"value":"docs/quests/40-factions.md §43 (the wreckers arc)"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":3,"value":"docs/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md §2 (pirate-freeholds: zero hostile camps)"}
 {"place_id":"place.pirate-freeholds.chasecreek","ord":0,"value":"uesp:Lore:Alten Corimont (neighbours)"}
 {"place_id":"place.pirate-freeholds.chasecreek","ord":1,"value":"world/sources/lore/extrapolation/settlement-register.md §4 (Chasecreek, NE of Alten Corimont: creek-mouth fishing hamlet and smuggler's lay-by)"}
@@ -2281,7 +2281,7 @@
 {"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":2,"value":"world/sources/lore/extrapolation/settlement-register.md §2 (Alten Corimont: Hist — NONE)"}
 {"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":3,"value":"world/sources/lore/topics/hist-placement.md"}
 {"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":4,"value":"world/sources/catalogue/type-recipes.json#hist-less-refuge"}
-{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":5,"value":"lore: Lore:Lukiul; League of Open Water (quest plan); Lore:Hist"}
+{"place_id":"place.pirate-freeholds.corimont-hist-less-camp","ord":5,"value":"lore: Lore:Lukiul; the lukiul petitioners (quest plan); Lore:Hist"}
 {"place_id":"place.pirate-freeholds.corimont-low-store","ord":0,"value":"docs/research/quests-and-cast/opening-hours-and-start-area.md §6.3 (a trivial first dungeon at 150-400 m)"}
 {"place_id":"place.pirate-freeholds.corimont-low-store","ord":1,"value":"docs/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md §2 (minor delve band)"}
 {"place_id":"place.pirate-freeholds.corimont-low-store","ord":2,"value":"world/sources/lore/topics/labour-and-bondage.md"}
@@ -2340,7 +2340,7 @@
 {"place_id":"place.pirate-freeholds.gorge-whitewater-reach","ord":2,"value":"lore: region grammar: deep river corridor; Arena:Seafalls; the arterial class needs its own hazards"}
 {"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":0,"value":"uesp:Lore:Alten Corimont"}
 {"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":1,"value":"world/sources/lore/alten-corimont.md"}
-{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":2,"value":"docs/quests/40-factions.md §43 (the Salt-Teeth arc; RS05 pirate crew)"}
+{"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":2,"value":"docs/quests/40-factions.md §43 (the wreckers arc; RS05 pirate crew)"}
 {"place_id":"place.pirate-freeholds.half-chartered-anchorage","ord":3,"value":"world/sources/catalogue/README.md"}
 {"place_id":"place.pirate-freeholds.kothringi-river-ruin","ord":0,"value":"uesp:Lore:Kothringi"}
 {"place_id":"place.pirate-freeholds.kothringi-river-ruin","ord":1,"value":"uesp:Lore:Knahaten Flu"}
@@ -2550,7 +2550,7 @@
 {"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":1,"value":"uesp:Lore:Hissmir"}
 {"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":2,"value":"world/sources/lore/topics/hist-placement.md"}
 {"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":3,"value":"world/sources/catalogue/type-recipes.json#hist-less-refuge"}
-{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":4,"value":"lore: Lore:Lukiul; League of Open Water (quest plan); Lore:Hist"}
+{"place_id":"place.saxhleel-coast.coast-hist-less-refuge","ord":4,"value":"lore: Lore:Lukiul; the lukiul petitioners (quest plan); Lore:Hist"}
 {"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":0,"value":"uesp:Lore:Argonian (a comer cannot be refused)"}
 {"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":1,"value":"world/sources/catalogue/type-recipes.json#hearth-house"}
 {"place_id":"place.saxhleel-coast.coast-road-hearth-house","ord":2,"value":"lore: Lore:Argonian (a comer cannot be refused); pacing: a hostile province needs a safety floor outside its cities"}
