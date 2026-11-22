@@ -108,6 +108,12 @@ added here the day they are made, with the date and the issue.
   only when the player has no marker, journal line or spoken pointer to it; the sight test's bare result is not
   an owner item. Everything a place's record promises (the eggs in Jal-Veesa's and Teel-Fen Weir's sap pools)
   is audited against the built place before it lands (2026-11-22, #88).
+- Items and gear are tailored to Black Marsh, with their data in the database: every tier of Skyrim's gear
+  progression has our own equivalent, some Skyrim materials shared where the feel stays Black Marsh; Imperial
+  gear is rare and situational (2026-11-22). Decided by the lead, for the owner to confirm (#89): the ladder and
+  bands of docs/design/items.md; bog iron uncommon; chitin traded, bonemold only in Dunmer places; smithing
+  perks kept through a power class per material; two mods added (New Armory Argonian Weapons, Beyond Skyrim
+  Bonemold Weapon Pack).
 
 ## The game
 
