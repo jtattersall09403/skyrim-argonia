@@ -257,10 +257,10 @@
    "person": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "eel-trap setter in the weir channels: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "eel-trap setter: the fisher's flint knife for the traps' catch (kit fisher), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -275,28 +275,34 @@
    "person": "jal-veesa.1ZD5FP21NH5G9GMN9PEJNWE58E",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the town levy, leads the day watch: a sword of T2 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB5",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
-     "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "worn": false,
+     "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB4",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:000D6B",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:013922",
@@ -329,10 +335,10 @@
    "person": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
-     "why": "tree-minder; rootworm handler at the Hist pool, who gives the blessing at the pool: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "tree-minder: a bone knife, nothing forged at the Hist (kit priest), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -353,10 +359,10 @@
    "person": "jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "weir keeper, collects the fee for each fish trap: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "weir keeper: the fisher's flint knife (kit fisher), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -377,10 +383,16 @@
    "person": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
      "worn": true,
-     "why": "Adept Archery trainer, a ruin-warden of the Veesa-Teeleel: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "archery trainer and ruin-warden: her own plain Saxhleel bow, made here"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
+     "count": 1,
+     "worn": true,
+     "why": "archery trainer: a bone knife (kit resident), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -404,7 +416,7 @@
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
-     "why": "boat-wright: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "boat-wright: an iron knife for shaping reed and pole (kit boatman: bog iron), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -428,7 +440,7 @@
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
-     "why": "carrier of rope and mats to the buyers at Stormhold: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "carrier on the road to Stormhold: an iron knife bought there (bog iron), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -443,10 +455,10 @@
    "person": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
-     "why": "root-herald of Jal-Veesa, speaks for the elders: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "root-herald who speaks for the elders: a bone knife (kit elder: obsidian or bone), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -467,10 +479,10 @@
    "person": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "sedge cutter: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "sedge cutter: a flint cutting knife for the reed beds (kit resident), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -485,10 +497,10 @@
    "person": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "mat plaiter: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "mat plaiter: a flint knife to trim the sedge (kit weaver), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -503,10 +515,10 @@
    "person": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "PrvtI_ArgonianWeapons.esp:00083F",
      "count": 1,
      "worn": true,
-     "why": "fish drier and smoker at the racks: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "fish drier and smoker: an iron fish knife to split the catch for the racks (kit host: bog iron), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -521,10 +533,10 @@
    "person": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "mat plaiter: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "mat plaiter: a flint knife to trim the sedge (kit weaver), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -539,10 +551,16 @@
    "person": "jal-veesa.7W40EGBARBV6S6HWTT0D8284JX",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
      "worn": true,
-     "why": "ruin-warden of the Veesa-Teeleel, on turn at Loriasel: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "ruin-warden of the Veesa-Teeleel at Gemin: a plain Saxhleel bow for the watch on the ruins, made here"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
+     "count": 1,
+     "worn": true,
+     "why": "ruin-warden: a bone knife (kit resident), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -563,10 +581,10 @@
    "person": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "tender of the elders' hut and its guest mat: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "tender of the elders' hut: a flint knife for the house (kit resident), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -581,28 +599,34 @@
    "person": "jal-veesa.EWE1V6BCWS3V6JR7BDCBAJ6SSK",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the town levy, night watch: a sword of T2 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB5",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
-     "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "worn": false,
+     "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB4",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:000D6B",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:013922",
@@ -632,7 +656,7 @@
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
-     "why": "seller of reed boats, mats, rope and dried fish at the jetty market; runs the fish-smoker's stall on the road side: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "seller at the market: an iron knife (kit trader: bog iron), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -653,28 +677,34 @@
    "person": "jal-veesa.KQAS45HH44MD7ES41DPSY2BG52",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the town levy, day watch: a sword of T2 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB5",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
-     "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "worn": false,
+     "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "King of the Murkmire.esp:00ADB4",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "King of the Murkmire.esp:000D6B",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "worn": true,
+     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:013922",
@@ -701,10 +731,10 @@
    "person": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "rope-twister: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "rope-twister: a flint knife to cut the cord (kit weaver), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -719,10 +749,16 @@
    "person": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "eel and gar fisher of the weir channels: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "eel and gar fisher: the fisher's flint knife (kit fisher), made here"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00080D",
+     "count": 1,
+     "worn": true,
+     "why": "eel and gar fisher: a bone fish-spear for the gar in the weir channels (kit fisher)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -737,10 +773,10 @@
    "person": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "fish hauler from the weir traps to the racks: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "fish hauler: a flint gutting knife (kit fisher), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -755,10 +791,10 @@
    "person": "jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "rope-maker: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "rope-maker: a flint knife to cut the cord (kit weaver), made here"
     },
     {
      "item": "Skyrim.esm:03B97C",
@@ -779,10 +815,10 @@
    "person": "jal-veesa.YVMAKC3EE6DW3J23J5Y51VZA33",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "mender of the fish traps' reed baskets: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "mender of the traps' reed baskets: a small flint knife (kit resident), made here"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -811,14 +847,49 @@
      "why": "eels from the weir channels, made here"
     },
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 3,
-     "why": "T1 dagger (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "T1 flint fishing knives, the weirs' own, made here"
     },
     {
-     "item": "Skyrim.esm:03B562",
+     "item": "King of the Murkmire.esp:098ECB",
      "count": 3,
-     "why": "T1 bow (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "T1 plain Saxhleel bows of marsh wood, made here"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00080D",
+     "count": 2,
+     "why": "T1 bone fish-spears for the weir channels, made here"
+    },
+    {
+     "item": "King of the Murkmire.esp:57AA3E",
+     "count": 3,
+     "why": "T2 iron knives (bog iron), (from a neighbour (an import gate or maker, 7 km by road))"
+    },
+    {
+     "item": "Skyrim.esm:013790",
+     "count": 2,
+     "why": "T1 iron hand-axes (bog iron) for cutting sedge and poles, (from a neighbour (an import gate or maker, 7 km by road))"
+    },
+    {
+     "item": "King of the Murkmire.esp:57AA3D",
+     "count": 2,
+     "why": "T2 Saxhleel bone daggers, made here"
+    },
+    {
+     "item": "King of the Murkmire.esp:57AA41",
+     "count": 2,
+     "why": "T2 ornate Saxhleel bows, made here"
+    },
+    {
+     "item": "BSMBonemoldSet.esp:000D70",
+     "count": 1,
+     "why": "T3 a bonemold dagger through Stormhold's Dunmer trade (bonemold reaches the region's Dunmer minority), 7 km by road"
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 6,
+     "why": "leather strips, every recipe's binding (the derive's smithing wares)"
     },
     {
      "item": "Skyrim.esm:02E4E2",
@@ -831,16 +902,6 @@
      "why": "T1 RestoreHealth (grade 1)"
     },
     {
-     "item": "Skyrim.esm:013986",
-     "count": 2,
-     "why": "T2 dagger (from a neighbour (an import gate or maker, 7 km by road))"
-    },
-    {
-     "item": "Dawnguard.esm:0037E5",
-     "count": 2,
-     "why": "T2 bow (from a neighbour (an import gate or maker, 7 km by road))"
-    },
-    {
      "item": "Skyrim.esm:02E4E4",
      "count": 2,
      "why": "T2 soul gem"
@@ -849,16 +910,6 @@
      "item": "Skyrim.esm:03EADE",
      "count": 2,
      "why": "T2 RestoreHealth (grade 2)"
-    },
-    {
-     "item": "Skyrim.esm:013996",
-     "count": 1,
-     "why": "T3 dagger (from a neighbour (an import gate or maker, 7 km by road))"
-    },
-    {
-     "item": "Skyrim.esm:013995",
-     "count": 1,
-     "why": "T3 bow (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:02E4E6",
@@ -885,7 +936,7 @@
     {
      "item": "Skyrim.esm:065C9F",
      "count": 10,
-     "why": "smoked fish from the road-side racks, made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold')"
+     "why": "smoked fish from the racks on the lane to the jetty, made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold')"
     },
     {
      "item": "Skyrim.esm:064B3B",
