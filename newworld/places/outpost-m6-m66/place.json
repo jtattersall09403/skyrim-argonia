@@ -27,7 +27,7 @@
      "by": "woven Saxhleel fences (ALPAFenceWoven04) added across the creek below the camp, with a fishing spot at it"
     },
     {
-     "line": "the log boom where the crocodiles gather (dangers)",
+     "line": "the log boom (dangers: leeches cling to it)",
      "by": "cypress cut logs added end to end across the creek just above the weir"
     },
     {
@@ -250,7 +250,8 @@
   "agent-20261121T205527",
   "agent-20261121T205650",
   "agent-20261121T211426",
-  "agent-20261121T212737"
+  "agent-20261121T212737",
+  "agent-20261122T033055"
  ],
  "sap": {
   "added": [

@@ -40,7 +40,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste.",
+     "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste. She turns the wardens' clutch in the sap pool each morning and sells the shells the hatchlings leave.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m6-m66/3",
@@ -107,7 +107,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He sets and lifts the eel traps along the weir, standing on the log boom with his feet wide. He learned the work from his father Hulzeeth and has yet to be bitten by a crocodile.",
+     "text": "He sets and lifts the eel traps along the weir, standing on the log boom with his feet wide. He learned the work from his father Hulzeeth. He picks the leeches off his legs with a knife.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m6-m66/0",
@@ -136,7 +136,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She works the eel traps by day and loads the catch for Urvyn Farm. She keeps the crocodiles off the log boom with a pole and a loud voice.",
+     "text": "She works the eel traps by day and loads the catch for Urvyn Farm. She clears the drift off the log boom with a pole.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:outpost-m6-m66/economy",
