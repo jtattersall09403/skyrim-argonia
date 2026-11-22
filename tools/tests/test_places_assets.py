@@ -62,7 +62,8 @@ def test_hidden_shapes_left_out_skinned_kept_and_garbage_texture_ignored():
 def test_a_fires_flames_are_left_out_and_an_all_effect_mesh_kept():
     flame = shape("flame", shader={"type": "BSEffectShaderProperty", "two_sided": True, "vertex_colors": False,
                                    "vertex_alpha": False, "flags2": 0, "uv_offset": [0, 0], "uv_scale": [1, 1]})
-    meta = nifglb.build({"shapes": [shape("logs"), flame]})[1]
+    haze = shape("haze", tex=["textures\\effects\\VaporTileNormal_n.dds", ""])   # a lit refraction plane
+    meta = nifglb.build({"shapes": [shape("logs"), flame, haze]})[1]
     assert meta["shapes"] == 1
     assert nifglb.build({"shapes": [flame]})[1]["shapes"] == 1      # a mist effect alone is still drawn
 

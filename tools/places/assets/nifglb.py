@@ -34,7 +34,7 @@ import numpy as np
 from tools.places.assets.glb import Builder
 
 NIFDUMP = Path(os.environ.get("ARGONIA_NIFDUMP", Path.home() / ".argonia" / "bin" / "nifdump"))
-VERSION = 7  # bump when the GLB this writes changes; it is part of every cache key
+VERSION = 8  # bump when the GLB this writes changes; it is part of every cache key
 LIGHT_TRIS = 1500
 ALPHA_BLEND, ALPHA_TEST = 0x1, 0x200
 TREE_ANIM = 1 << 29
@@ -121,7 +121,10 @@ def _simplify(s: dict, ratio: float) -> dict:
 
 
 def is_effect(s: dict) -> bool:
-    return "effect" in str((s.get("shader") or {}).get("type", "")).lower()
+    """An effect shader's shape, or a lit plane textured from the effects folder (a fire's heat-haze plane, whose
+    "diffuse" is a refraction normal map and would be drawn as a rainbow sheet)."""
+    tex = str((s.get("tex") or [""])[0] or "").replace("/", "\\").lower()
+    return "effect" in str((s.get("shader") or {}).get("type", "")).lower() or tex.startswith("textures\\effects\\")
 
 
 def drawable(head: dict) -> list[dict]:
