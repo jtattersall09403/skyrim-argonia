@@ -67,3 +67,14 @@ def test_every_answer_says_which_state_it_drew(monkeypatch):
     assert daemon.drew_of(P(), "b") == {"files": "f", "commit": "c", "working_tree": False, "page": False}
     P.drew = None
     assert daemon.drew_of(P(), "a")["page"] is False
+
+
+def test_a_stroke_that_adds_a_piece_from_another_plugin_sends_its_base_to_the_page(monkeypatch):
+    """The page draws a hand-placed piece as its model: the stroke carries the catalogue's base row for what it adds."""
+    from tools.places import draft_bundle
+    tent = {"key": "Other.esp:000001", "model": "argonia/clutter/scaletent02.nif"}
+    monkeypatch.setattr(draft_bundle, "catalogue", lambda path=None: {tent["key"]: tent})
+    ops = [{"op": "ref.add", "ref": {"base": "Other.esp:000001"}}, {"op": "ref.move", "id": "x"},
+           {"op": "ref.add", "ref": {"base": "Gone.esp:000002"}}]
+    assert daemon.Daemon.added_bases(None, ops) == [tent]
+    assert daemon.Daemon.added_bases(None, [{"op": "ref.remove", "id": "y"}]) == []

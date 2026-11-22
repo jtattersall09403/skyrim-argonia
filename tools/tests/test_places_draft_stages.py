@@ -304,6 +304,24 @@ def test_an_added_row_swapped_in_place_keeps_its_id():
     assert people.spots_of("p", place) == {"rootworm-stop": first}
 
 
+def test_a_station_placed_by_hand_is_the_places_and_the_stages_own_copy_goes(monkeypatch):
+    """A cooking pot placed by hand (look place) is the place's cooking pot: the stage finds it by its crafting keyword,
+    adds none, and takes out a copy it added before."""
+    from types import SimpleNamespace
+    monkeypatch.setattr(run, "place_record", lambda place_id: ({}, [{"give_kind_id": "cooking-pot"}]))
+    pot = {"key": "M:pot", "keywords": ["CraftingCookpot"]}
+    hand = {"id": "p.TF29POT", "base": "M:pot", "kind": "furniture", "pos": [0, 0, 0], "rot": [0, 0, 0]}
+    old = {"id": "p.OLD", "base": "M:pot", "kind": "furniture", "pos": [500, 0, 0], "rot": [0, 0, 0]}
+    ext = [hand, old]
+    st = SimpleNamespace(place_id="p", bases={"M:pot": pot}, ext=ext, G=None, files={"spaces": {"exterior": {"refs": ext}}, "people": [], "paths": []},
+                         place={"stations": {"found": {"cooking-pot": ["p.OLD"]},
+                                             "added": [{"station": "cooking-pot", "id": "p.OLD", "base": "M:pot", "space": "exterior", "by": "x"}]}})
+    monkeypatch.setattr(stages, "seat_all", lambda *a, **k: None)
+    stages.stations(st, log=lambda *a: None)
+    assert [r["id"] for r in ext] == ["p.TF29POT"]
+    assert st.place["stations"]["found"]["cooking-pot"] == ["p.TF29POT"] and st.place["stations"]["added"] == []
+
+
 def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
     from tools.places.own_bases import WATER
     for w in WATER.values():

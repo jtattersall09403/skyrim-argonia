@@ -184,7 +184,12 @@ export function install(studio) {
       return { place: studio.place.place_id, origin: studio.ours.origin, ops: studio.log.cursor, ms: Math.round(performance.now() - t0) };
     },
     // Edits: the same ops a save holds, pushed through the studio's own log (one stroke per call); undo takes the last stroke.
-    push(ops) { const out = studio.log.push(ops.map((o) => ({ ...o }))); return out.map((o) => o.n); },
+    // `bases`: the base rows of pieces it adds that the place's own set lacks (a piece placed by hand from another
+    // plugin), registered as the studio's search registers a chosen base, so they draw as their models.
+    push(ops, bases = []) {
+      for (const b of bases) if (b && b.key && !studio.bases.has(b.key)) studio.bases.set(b.key, b);
+      const out = studio.log.push(ops.map((o) => ({ ...o }))); return out.map((o) => o.n);
+    },
     undo() { return studio.log.undo().length; },
     reset() { studio.log.goto(0); studio.log.ops.length = 0; studio.log.cursor = 0; return true; },
     // Which space the view shows: 'exterior' or a room, as the studio enters it (main.js showSpace); a room is lit by

@@ -1,0 +1,17 @@
+{
+ "space_id": "AshgateHut",
+ "copy_of": "journeytobaanmalur.baanmalurlocation/BaanDrHutSmall02",
+ "name": "Gang-Master's Hut",
+ "door_from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+ "parent": "exterior",
+ "room": null,
+ "added": true,
+ "cut": {
+  "box": [
+   -860.0,
+   -2530.0,
+   -60.0,
+   -1960.0
+  ]
+ }
+}

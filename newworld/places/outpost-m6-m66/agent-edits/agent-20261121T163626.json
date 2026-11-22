@@ -1,0 +1,624 @@
+{
+ "save_id": "agent-20261121T163626",
+ "place_id": "outpost-m6-m66",
+ "name": "a flight of the place's own mud-hut stairs from the north tent platform down to the bank by the fire (the decks were an island); fourteen ferns and two branch piles left in the air by the pruned roofs and the scaled Hist pruned, a fern through the waterside deck pruned; a chair off the pruned ruin's floor onto the deck; the chest up 2 onto the deck",
+ "at": "2026-11-21T16:36:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK005STEPS",
+    "base": "King of the Murkmire.esp:025C36",
+    "kind": "building",
+    "pos": [
+     -43121.63,
+     -537685.17,
+     36.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53785
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.R7HVN4CD4C8V3HD4YWA7X6A0XR",
+     "dz": 28.78
+    },
+    "why": "a flight from the north tent platform down to the bank by the fire: the deck stands a step and more over the mud and the build left it an island with the waterside platform",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1PD7WS1NS5H3FNZVW90EW2A3QQ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1PD7WS1NS5H3FNZVW90EW2A3QQ",
+    "base": "Skyrim.esm:0B8A70",
+    "kind": "tree",
+    "pos": [
+     -44243.99,
+     -539444.23,
+     238.74
+    ],
+    "rot": [
+     0.562281,
+     -0.22169363,
+     1.732
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE47",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.286H7Y8H8SWRFCBVQK91FCVP4E",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.286H7Y8H8SWRFCBVQK91FCVP4E",
+    "base": "King of the Murkmire.esp:03A588",
+    "kind": "tree",
+    "pos": [
+     -45429.16,
+     -540832.35,
+     297.51
+    ],
+    "rot": [
+     0.12985398,
+     -0.15254156,
+     1.78633
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDEB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 3,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.4P3DXT2AXQS7M0KG44H5ZSD5MJ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.4P3DXT2AXQS7M0KG44H5ZSD5MJ",
+    "base": "Skyrim.esm:0B8A6E",
+    "kind": "tree",
+    "pos": [
+     -44616.83,
+     -538967.79,
+     445.57
+    ],
+    "rot": [
+     0,
+     0,
+     7.57945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE49",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 4,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.67DJKF4SWYHXXPKED6E6ZPZ0ZZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.67DJKF4SWYHXXPKED6E6ZPZ0ZZ",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -43220.26,
+     -537902.97,
+     261.43
+    ],
+    "rot": [
+     0,
+     0,
+     6.17945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:67301A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 5,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.77YSD4GZCZ473WTK323G1YM2GS",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.77YSD4GZCZ473WTK323G1YM2GS",
+    "base": "Skyrim.esm:0B8A70",
+    "kind": "tree",
+    "pos": [
+     -41723.91,
+     -537804.44,
+     60.32
+    ],
+    "rot": [
+     0,
+     0,
+     7.37945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673014",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 6,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.798G13Q4TX2JF1DBQ1Z97YEEJQ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.798G13Q4TX2JF1DBQ1Z97YEEJQ",
+    "base": "Skyrim.esm:0B8A70",
+    "kind": "tree",
+    "pos": [
+     -45114.48,
+     -540279.55,
+     376.37
+    ],
+    "rot": [
+     0.6000003,
+     0,
+     2.69626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE3B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 7,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.8TKMEW97RM7NP8P0K6EHENF8N0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.8TKMEW97RM7NP8P0K6EHENF8N0",
+    "base": "Skyrim.esm:0B8A70",
+    "kind": "tree",
+    "pos": [
+     -41580.93,
+     -538197.43,
+     315.26
+    ],
+    "rot": [
+     -0.3399389,
+     -0.29711223,
+     3.31345
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673017",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 8,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9BBK1493B9FZ30ZJ2VNV89EZAV",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.9BBK1493B9FZ30ZJ2VNV89EZAV",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -44605.36,
+     -539314.56,
+     386.0
+    ],
+    "rot": [
+     0,
+     0,
+     3.49626
+    ],
+    "scale": 1.17,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE44",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 9,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.D0Q02Z191TSWSCKJV9VZHZ1PQ0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.D0Q02Z191TSWSCKJV9VZHZ1PQ0",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -41866.92,
+     -537949.94,
+     314.96
+    ],
+    "rot": [
+     0,
+     0,
+     1.89626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673016",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 10,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.FYHTW8JN62D021D8TGHN8HTTCN",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.FYHTW8JN62D021D8TGHN8HTTCN",
+    "base": "Skyrim.esm:0B8A6E",
+    "kind": "tree",
+    "pos": [
+     -44617.53,
+     -539389.36,
+     432.12
+    ],
+    "rot": [
+     0,
+     0,
+     5.87945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE46",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 11,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.J7XQVKANX3RP6VNCD6ZBBXWR6Q",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.J7XQVKANX3RP6VNCD6ZBBXWR6Q",
+    "base": "King of the Murkmire.esp:03A587",
+    "kind": "tree",
+    "pos": [
+     -45246.34,
+     -540507.72,
+     322.61
+    ],
+    "rot": [
+     -0.5906506,
+     -0.11241271,
+     7.51368
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDEA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 12,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JPFS24HRP4BY29KSTTEGW1BX6J",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.JPFS24HRP4BY29KSTTEGW1BX6J",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -44430.05,
+     -538559.26,
+     314.35
+    ],
+    "rot": [
+     0,
+     0,
+     4.57945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE48",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 13,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.K4ZM2FGBJQMF35ENVVC739FEJ4",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.K4ZM2FGBJQMF35ENVVC739FEJ4",
+    "base": "Skyrim.esm:0B8A6F",
+    "kind": "tree",
+    "pos": [
+     -44651.58,
+     -539438.84,
+     375.31
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 1.17,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE45",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 14,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.KMB7J4BW85E4PFT6HCDEH0CFY0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.KMB7J4BW85E4PFT6HCDEH0CFY0",
+    "base": "Skyrim.esm:0B8A6E",
+    "kind": "tree",
+    "pos": [
+     -41812.05,
+     -538002.66,
+     382.77
+    ],
+    "rot": [
+     -0.25700077,
+     -0.30998138,
+     6.21982
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673018",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 15,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ST7VVR21HPZV1ZQVVN2RB2DBGC",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.ST7VVR21HPZV1ZQVVN2RB2DBGC",
+    "base": "Skyrim.esm:0B8A64",
+    "kind": "tree",
+    "pos": [
+     -43177.27,
+     -536910.66,
+     128.62
+    ],
+    "rot": [
+     0,
+     0,
+     4.59626
+    ],
+    "scale": 1.39,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE57",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 2,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.91C59QKE0FE4MKMAPCSQ3A15DP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42617.81,
+     -537982.74,
+     101.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42617.81,
+     -537982.74,
+     81.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 17,
+   "stroke": 3,
+   "at": "2026-11-21T16:36:26Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF41CHEST",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43020.0,
+     -538260.0,
+     81.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.98
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43020.0,
+     -538260.0,
+     83.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.98
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 18,
+   "stroke": 4,
+   "at": "2026-11-21T16:36:26Z"
+  }
+ ]
+}

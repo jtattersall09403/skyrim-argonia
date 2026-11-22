@@ -48,6 +48,17 @@ def test_a_pool_placed_by_hand_on_the_trunk_is_kept():
     assert [r["id"] for r in out] == ["p.sap.B"]
 
 
+def test_a_pool_brought_out_from_under_the_roots_to_the_trees_foot_is_its_own():
+    """A hand pool whose sap reaches the trunk is that tree's; one that stops short of it is not."""
+    t = ext()[1]
+    foot = dict(sap.pool_for("p", t, BASES["P:big"], (t["pos"][0], t["pos"][1] - 400)), id="p.add.F")
+    out = sap.plan("p", ext() + [foot], BASES)
+    assert [r["id"] for r in out] == ["p.sap.A"]
+    assert sap.faults(ext() + [foot] + out, BASES) == []
+    far = dict(foot, id="p.add.G", pos=[t["pos"][0] + 2500, t["pos"][1], 0.0])
+    assert [r["id"] for r in sap.plan("p", ext() + [far], BASES)] == ["p.sap.A", "p.sap.B"]
+
+
 def dig(G, e, pools):
     hollow = sap.dish(G, e + pools, BASES, set())
     dug = Ground({k: list(v) for k, v in G.cells.items()}, dict(G.water_by_cell))
@@ -106,6 +117,19 @@ def test_a_gland_within_a_trees_pool_is_part_of_that_tree_and_a_gland_apart_has_
     out = sap.plan("p", rows, bases)
     assert [r["id"] for r in out] == ["p.sap.A", "p.sap.B", "p.sap.H"]
     assert sap.faults(rows + out, bases) == []
+
+
+def test_one_hist_built_of_a_crown_and_trunk_bases_has_one_pool():
+    """King of the Murkmire builds a Hist from a crown (ArgoniaTreeHist01) over several trunk bases (HistTrunk02Moss):
+    the bases standing within the crown's pool are pieces of that one tree, and the crown is a Hist too."""
+    bases = dict(BASES, **{"P:crown": {"edid": "ArgoniaTreeHist01", "kind": "tree", "bounds": [[-904, -902, -99], [844, 1003, 1612]]},
+                           "P:base": {"edid": "HistTrunk02Moss", "kind": "tree", "bounds": [[-300, -300, 0], [300, 300, 600]]}})
+    crown = {"id": "p.K", "base": "P:crown", "kind": "tree", "pos": [8000.0, 8000.0, 500.0], "rot": [0, 0, 0], "scale": 0.9}
+    feet = [{"id": f"p.F{i}", "base": "P:base", "kind": "tree", "pos": [8000.0 + dx, 8000.0 + dy, -100.0], "rot": [0, 0, 0],
+             "scale": 0.3} for i, (dx, dy) in enumerate(((350, 0), (-300, 200), (100, -400)))]
+    out = sap.plan("p", ext() + [crown] + feet, bases)
+    assert sorted(r["id"] for r in out) == ["p.sap.A", "p.sap.B", "p.sap.K"]
+    assert sap.faults(ext() + [crown] + feet + out, bases) == []
 
 
 def test_a_hist_the_drafter_says_has_no_pool_gets_none(monkeypatch):

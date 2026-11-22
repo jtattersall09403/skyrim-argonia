@@ -44,6 +44,7 @@ class Floor:
         self.lo = np.minimum(np.minimum(a, b), c)
         self.hi = np.maximum(np.maximum(a, b), c)
         self.floor = float(np.median(self.V[self.T].reshape(-1, 3)[:, 2])) if len(self.T) else 0.0
+        self.zmin = float(self.V[self.T].reshape(-1, 3)[:, 2].min()) if len(self.T) else 0.0
 
     def height(self, x: float, y: float):
         if not len(self.T):
@@ -55,6 +56,22 @@ class Floor:
             if h is not None and (best is None or h > best):
                 best = h
         return best
+
+    def height_below(self, x: float, y: float, z: float, tol: float = 64.0):
+        """Where floors stack (a ship's hold under its deck): the floor a thing at height z stands over, the highest
+        surface no more than `tol` over z; a thing under the room's lowest walked floor is measured against the lowest
+        surface there; one where only a deck above it is walked (the walkable mesh cut round the cargo and clutter it
+        stands among, on a lower deck) has no floor to judge by: None."""
+        if not len(self.T):
+            return None
+        m = np.nonzero((self.lo[:, 0] <= x) & (x <= self.hi[:, 0]) & (self.lo[:, 1] <= y) & (y <= self.hi[:, 1]))[0]
+        hs = [h for h in (_height_in(self.a[i], self.b[i], self.c[i], x, y) for i in m) if h is not None]
+        if not hs:
+            return None
+        under = [h for h in hs if h <= z + tol]
+        if under:
+            return max(under)
+        return min(hs) if z + tol < self.zmin else None
 
     def water(self, x, y):
         return None

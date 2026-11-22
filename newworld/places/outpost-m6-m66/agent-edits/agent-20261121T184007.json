@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T184007",
+ "place_id": "outpost-m6-m66",
+ "name": "a clay jar out of the reed hide's lean-to beside the crate on its open side",
+ "at": "2026-11-21T18:40:07Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF14URN",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43060.0,
+     -542220.0,
+     145.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43190.0,
+     -542420.0,
+     133.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T18:40:07Z"
+  }
+ ]
+}

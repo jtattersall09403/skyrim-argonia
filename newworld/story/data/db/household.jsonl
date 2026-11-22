@@ -31,6 +31,8 @@
 {"id":"jal-veesa.household.CormarisMareinFarmhouse","place_id":"jal-veesa","home_space":"SeekhatFishersHut"}
 {"id":"outpost-m11-m63.household.exterior","place_id":"outpost-m11-m63","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.exterior","place_id":"outpost-m13-m65","home_space":"exterior"}
+{"id":"outpost-m13-m65.household.hold","place_id":"outpost-m13-m65","home_space":"01dock3to4"}
+{"id":"outpost-m13-m65.household.hut","place_id":"outpost-m13-m65","home_space":"AshgateHut"}
 {"id":"outpost-m13-m65.household.tent-a","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.tent-b","place_id":"outpost-m13-m65","home_space":"exterior"}
 {"id":"outpost-m13-m65.household.tent-c","place_id":"outpost-m13-m65","home_space":"exterior"}

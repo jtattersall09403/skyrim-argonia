@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261121T193243",
+ "place_id": "outpost-m6-m66",
+ "name": "the beds stood further out from their tents' mouths (the build's stop for a bed by a tent took the tent's own island)",
+ "at": "2026-11-21T19:32:43Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.0124E35MRNEZ0J2E5E59SGH3D5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42853.9,
+     -538107.4,
+     81.82
+    ],
+    "rot": [
+     0,
+     0,
+     1.97274
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42743.9,
+     -538154.4,
+     81.82
+    ],
+    "rot": [
+     0,
+     0,
+     1.97274
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T19:32:43Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF21BED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44885.8,
+     -540518.6,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44780.8,
+     -540576.6,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T19:32:43Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF22BED",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44967.0,
+     -540668.0,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44862.0,
+     -540726.0,
+     209.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.06878
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T19:32:43Z"
+  }
+ ]
+}

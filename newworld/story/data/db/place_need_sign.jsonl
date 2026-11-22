@@ -20,14 +20,15 @@
 {"place_id":"jal-veesa","need_seq":1,"need_sign_id":"person","detail":"Vosh-Leera heads its household and is home there; Weeltul sends the player back to her house","person_id":"jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"label","detail":"looking at the moss, the game names it \"Hanging Moss\" and lets it be picked"}
 {"place_id":"outpost-m11-m63","need_seq":0,"need_sign_id":"look","detail":"a woven weir of four Saxhleel fences across the creek's narrow head, with a cypress log walk along its top and long grey moss draped on both faces of its fences"}
-{"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}
-{"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"inside the gang-master's large tent, by his bed"}
+{"place_id":"outpost-m13-m65","need_seq":0,"need_sign_id":"look","detail":"Black Marsh & Valenwood's Imperial ship moored along the camp's bank, masts up, its hold door in the waist, a jetty and two planks over its rail to the bank"}
+{"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"beside","detail":"in the Gang-Master's Hut, beside his hammock"}
 {"place_id":"outpost-m13-m65","need_seq":1,"need_sign_id":"label","detail":"the game shows \"Dralin's Strongbox\" on it"}
-{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"look","detail":"a young Hist some 6 m tall standing in the wardens' pool, against the east side of the cypress tent platform"}
-{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"person","detail":"Heem-Jasa, the tree's minder, works on the platform beside it and sleeps there"}
-{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"label","detail":"the game names the knapsack \"Sap-Takers' Pack\""}
-{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall dead swamp tree, with a crate, two clay urns and a knapsack on its open west side"}
-{"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the young Hist by the platform"}
+{"place_id":"outpost-m13-m65","need_seq":2,"need_sign_id":"beside","detail":"a knapsack in the Barge Hold a few steps from where the player wakes, among the gang's sacks and barrels"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"look","detail":"a young Hist some 6 m tall on the camp's west side, plank walkways round its foot, its amber sap pool round its roots"}
+{"place_id":"outpost-m6-m66","need_seq":0,"need_sign_id":"person","detail":"Heem-Jasa, the tree's minder, works on the walkway by its sap pool all day"}
+{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"label","detail":"the game names it a Knapsack, lying with the jars at the hide (a container of ours keeps its base's name)"}
+{"place_id":"outpost-m6-m66","need_seq":1,"need_sign_id":"look","detail":"a scale-hide lean-to on the west bank, beside a tall lone dead swamp tree, with a crate, two clay jars and a knapsack beside it"}
+{"place_id":"outpost-m6-m66","need_seq":2,"need_sign_id":"look","detail":"the same young Hist dead, grey and leafless, in the living tree's place"}
 {"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"look","detail":"Skyrim's long metal cage, with bars all round and a roof, at the camp's west edge on the creek side; it stands some 1,850 units from the fire by the longhouse"}
 {"place_id":"tribal-camp-m2-m68","need_seq":0,"need_sign_id":"person","detail":"Sesk inside it; Jeeta-Sakka, who carries its key, stands at the fire by the longhouse with the other guards"}
 {"place_id":"tribal-camp-m2-m68","need_seq":1,"need_sign_id":"look","detail":"glazed urns stacked against the longhouse wall beside its door"}

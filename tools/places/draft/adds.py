@@ -15,7 +15,7 @@ minted from when its base is swapped in place (the ids the stories rest on stay)
 
 A door with `room` {copy_of: "<source_id>/<cell>", door?: the cell's way out (source ref id), space?: our space id
 (default the cell's), whole?: true to copy a cell of several ways out whole (one building; its other ways out
-removed), arrival: where one steps out ([x, y] outside, [x, y, z] in a room), drop?: {source ref id: why}
+removed), arrival: where one steps out ([x, y] outside on the ground, [x, y, z] on a deck or a ship and in a room), drop?: {source ref id: why}
 for a piece the room must not have (a container of levelled treasure: decision 0035; a door on to a further room)}
 brings that interior of any source we hold as a copied room of ours behind the door, outside or in another room (of
 a cell that packs several rooms, the one behind that way out):
@@ -232,7 +232,7 @@ def room(place_id: str, door: dict, spec: dict, src, replace: dict, nordic: set,
         arrival = [float(v) for v in spec["arrival"][:3]]
     elif arrival is None:
         ax, ay = (float(v) for v in spec["arrival"][:2])
-        h = G.height(ax, ay)
+        h = float(spec["arrival"][2]) if len(spec["arrival"]) > 2 else G.height(ax, ay)    # a deck's height is given
         arrival = [round(ax, 2), round(ay, 2), round(h if h is not None else door["pos"][2], 2)]
     back_id = io.mint(place_id, sid, back["id"])
     into = next(((r["door"].get("to_pos"), r["door"].get("to_rot")) for s_ in src.spaces.values() for r in s_.refs
@@ -314,6 +314,12 @@ def spurs(st, doors: list[dict], log=print) -> None:
             paths[have] = row
 
 
+def room_nordic(keys: set[str], bases: dict[str, dict], review: dict[str, dict]) -> set[str]:
+    """The bases of a copied room that are taken out as Nordic: by the Nordic review's looked-at verdict where there
+    is one (a stone house's shell looked at and judged neutral stays), else by the catalogue's folder rule."""
+    return {k for k in keys if k in bases and io.is_nordic(k, bases[k], review)}
+
+
 def apply(st, log=print) -> None:
     """The `add` stage: every `draft.add` row placed again as `rows` gives it, and every room a row brings copied
     again; rows and rooms it made before and no longer lists are taken out; nothing else is touched."""
@@ -338,6 +344,7 @@ def apply(st, log=print) -> None:
     rooms: dict[str, tuple[dict, list[dict]]] = {}
     srcs: dict[str, object] = {}
     replace = io.replacements(dec, st.bases)
+    review = io.nordic_review()
     standing = {r["id"]: r for r in st.files["spaces"]["exterior"]["refs"]}
     for (sid, r), a in zip(want, adds):
         if not a.get("room"):
@@ -347,7 +354,7 @@ def apply(st, log=print) -> None:
             srcs[source_id] = st.src if source_id == st.place.get("source_id") else io.load(f"src.{source_id}", st.bundles)
         src = srcs[source_id]
         keys = {x["base"] for x in (src.spaces[cell].refs if cell in src.spaces else [])}
-        nordic = {k for k, b in io.catalogue_bases(keys).items() if b.get("nordic")}
+        nordic = room_nordic(keys, io.catalogue_bases(keys), review)
         moved = ((standing.get(r["id"]) or {}).get("door") or {}).get("arrival")
         rid, info, refs = room(st.place_id, r, a["room"], src, replace, nordic, st.G, moved, sid)
         have = (st.files["spaces"].get(rid) or {}).get("space")
