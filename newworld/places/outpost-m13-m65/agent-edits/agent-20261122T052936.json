@@ -1,0 +1,82 @@
+{
+ "save_id": "agent-20261122T052936",
+ "place_id": "outpost-m13-m65",
+ "name": "the cook's fire light rebound to the new fire",
+ "at": "2026-11-22T05:29:36Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FS90X5XAF26JAY5Q59Z743Q5PW",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.FS90X5XAF26JAY5Q59Z743Q5PW",
+    "base": "Skyrim.esm:0AF8BA",
+    "kind": "light",
+    "pos": [
+     -99930.84,
+     -528530.76,
+     364.19
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Skyrim.esm:0CEDF4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "enable_parent": {
+     "ref": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+     "flags": "0"
+    },
+    "radius": -6.0265503
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:29:36Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.COOKFIRELIGHT",
+    "base": "Skyrim.esm:0AF8BA",
+    "kind": "light",
+    "pos": [
+     -99930.84,
+     -528530.76,
+     364.19
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m13-m65.COOKFIRE",
+     "dz": 57.29
+    },
+    "radius": -6.0265503,
+    "why": "the cook's fire's light, the Hjaalmarch camp's own fire light, over the fire that replaced the slope fire",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T05:29:36Z"
+  }
+ ]
+}

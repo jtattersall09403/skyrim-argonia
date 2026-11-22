@@ -1,0 +1,191 @@
+{
+ "save_id": "agent-20261122T051905",
+ "place_id": "outpost-m13-m65",
+ "name": "the grave: a body-long mound of heaped earth with the stake at its head, clay candles at the stake's foot, dark turned earth round it feathered into the camp",
+ "at": "2026-11-22T05:19:05Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GRAVEMOUND",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.GRAVEMOUND",
+    "base": "King of the Murkmire.esp:0B02A0",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528620.0,
+     334.75
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 0.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -8.0
+    },
+    "why": "the grave at the grave-stake's foot, for the cutters who died here (record faith): a low mound of earth, so the stake reads as a grave marker",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:19:05Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.GRAVEEARTH",
+    "base": "Skyrim.esm:045605",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528630.0,
+     347.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.25,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 4.0
+    },
+    "why": "the grave at the grave-stake's foot, for the cutters who died here (record faith: a grave-stake by the gate): a low body-long mound of heaped earth with the stake at its head",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:19:05Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.GRAVECANDLES",
+    "base": "Skyrim.esm:0C842B",
+    "kind": "static",
+    "pos": [
+     -98925.0,
+     -528530.0,
+     339.44
+    ],
+    "rot": [
+     0,
+     0,
+     0.6
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "clay candles the gang left burnt down at the grave-stake's foot, the camp's one mark of worship (record faith)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 2,
+   "at": "2026-11-22T05:19:05Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0003",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the grave's turned dark earth round the mound, feathered into the camp ground",
+    "texture": "ArgoniaNewWorld.esm:00093B",
+    "size": 90.0,
+    "softness": 0.9,
+    "polygon": [
+     [
+      -98890.0,
+      -528630.0
+     ],
+     [
+      -98895.0,
+      -528582.0
+     ],
+     [
+      -98911.0,
+      -528542.0
+     ],
+     [
+      -98933.0,
+      -528515.0
+     ],
+     [
+      -98960.0,
+      -528505.0
+     ],
+     [
+      -98987.0,
+      -528515.0
+     ],
+     [
+      -99009.0,
+      -528542.0
+     ],
+     [
+      -99025.0,
+      -528582.0
+     ],
+     [
+      -99030.0,
+      -528630.0
+     ],
+     [
+      -99025.0,
+      -528678.0
+     ],
+     [
+      -99009.0,
+      -528718.0
+     ],
+     [
+      -98987.0,
+      -528745.0
+     ],
+     [
+      -98960.0,
+      -528755.0
+     ],
+     [
+      -98933.0,
+      -528745.0
+     ],
+     [
+      -98911.0,
+      -528718.0
+     ],
+     [
+      -98895.0,
+      -528678.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the grave's turned dark earth round the mound, feathered into the camp ground",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 3,
+   "at": "2026-11-22T05:19:05Z"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T044957",
+ "place_id": "outpost-m13-m65",
+ "name": "the lamp-oil barrel beside the table, clear of it and the rock",
+ "at": "2026-11-22T04:49:57Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK047PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99580.0,
+     -528610.0,
+     329.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99495.0,
+     -528560.0,
+     329.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:49:57Z"
+  }
+ ]
+}

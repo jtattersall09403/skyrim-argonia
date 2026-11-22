@@ -1,0 +1,75 @@
+{
+ "save_id": "agent-20261122T050601",
+ "place_id": "outpost-m13-m65",
+ "name": "the grave at the stake's foot a low earth mound in place of the carved stone cairn",
+ "at": "2026-11-22T05:06:01Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK048PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK048PLACE",
+    "base": "Skyrim.esm:0D9304",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528610.0,
+     332.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -10.0
+    },
+    "why": "the grave-stake by the gate for the cutters who died here (record faith): a low cairn of stones over a grave at the stake's foot, so the stake reads as a grave marker",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:06:01Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.GRAVEMOUND",
+    "base": "King of the Murkmire.esp:0B02A0",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528620.0,
+     334.75
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 0.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -8.0
+    },
+    "why": "the grave at the grave-stake's foot, for the cutters who died here (record faith): a low mound of earth, so the stake reads as a grave marker",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:06:01Z"
+  }
+ ]
+}

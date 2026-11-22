@@ -1,0 +1,74 @@
+{
+ "save_id": "agent-20261122T055009",
+ "place_id": "outpost-m13-m65",
+ "name": "two more rocks west along the stepped bank",
+ "at": "2026-11-22T05:50:09Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK060PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -103330.0,
+     -529660.0,
+     30.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.23599
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the stepped earth bank south-west of the camp faced with rock along the water: the world's bank there is a sheer grid-stepped wall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:50:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK061PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -103560.0,
+     -529740.0,
+     30.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.0472
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the stepped earth bank south-west of the camp faced with rock along the water: the world's bank there is a sheer grid-stepped wall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:50:09Z"
+  }
+ ]
+}

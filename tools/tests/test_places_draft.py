@@ -218,6 +218,14 @@ def test_a_copied_rooms_nordic_pieces_follow_the_review():
     assert adds.room_nordic({"J:1", "J:2", "J:3", "J:4", "J:5"}, bases, review) == {"J:2", "J:3"}
 
 
+def test_a_placed_bases_nordic_check_follows_the_review():
+    from tools.places.draft import check
+    review = {"J:1": {"base": "J:1", "verdict": "neutral", "why": "a plain stone house"}}
+    assert check.added_nordic("J:1", {"nordic": True, "edid": "Stonehouse"}, review) is None
+    assert check.added_nordic("J:2", {"nordic": True, "edid": "NordPost"}, review) == " from outside the source place"
+    assert check.added_nordic("J:1", {"nordic": False, "edid": "DoomstoneLord"}, review) == " (a Nordic sign)"
+
+
 def test_a_copied_rooms_nordic_check_follows_the_review(tmp_path, monkeypatch):
     from types import SimpleNamespace as NS
     from tools.places.draft import check, io as dio
