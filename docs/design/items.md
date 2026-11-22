@@ -200,25 +200,41 @@ ingredients, the binding, the stations, the materials that can only be tempered,
 The test (`tools/tests/test_stock_ladder.py`) proves that every piece has both recipes, or a written reason, and that
 every ingredient can be obtained.
 
-**Into the world file.** The world build's `smithing` stage (`tools/newworld/world/smithing.py run`, by the skill
-world-build) writes `out/newworld/plugin/smithing/records.json`. The `esm` stage's writer (`NewWorld.cs` `Smithing`)
-then does four things:
+**Into the game.** The ladder's records are built from `smithing.records()` (`tools/newworld/world/smithing.py`) by
+`ItemLadder.cs`, a writer shared by two builds:
 
-- copies every ladder item into `ArgoniaNewWorld.esm` as ours (ForeignCopy);
-- sets the stat overrides on those copies;
-- adds `ANW_Flint`;
-- writes one COBJ per forge or tempering recipe, with its bench keyword and perk taken from Skyrim.esm.
+- every ladder item copied as ours (ForeignCopy);
+- the stat overrides set on those copies;
+- `ANW_Flint` added;
+- one COBJ per forge or tempering recipe, with its bench keyword and perk taken from Skyrim.esm.
 
-It writes `smithing/copies.json`: each source key mapped to our copy. A place's build links its stock to those
-copies (`ForeignCopy.Linked`), so a place's items are the ones the recipes make, with ladder stats. The mods are
-asset-only, so their own plugins and recipes never load: every recipe, kept or overridden, is written as ours,
-and none of theirs needs switching off. `smithing check` reads the built file back and proves three things:
+**The places plugin carries them for now.** Every places build (`tools.places build`, daily from main) writes
+`items.json` beside `ArgoniaNWPlaces.esp`. Its writer then does one of two things:
+
+- When the world file does not carry the ladder, which is the case today, the writer puts the ladder into the
+  places plugin and says so: "items ladder: the world file does not carry it yet; written into this plugin".
+- Once `ArgoniaNewWorld.esm` carries the ladder, the writer links to it instead. That happens when its `smithing`
+  stage and `esm` writer have run and `smithing/copies.json` beside it names records the file holds. The writer
+  then says "items ladder: linked to the world file's copies".
+
+So the ladder reaches the game with the places deploy alone: no ground stage needs to run. Its home moves to the
+world file by itself at the next main-tree world rebuild. That rebuild is stale for other reasons, and
+`rebuild.sh run --to esm` runs every stale ground stage before `esm`.
+
+The mods are asset-only, so their own plugins and recipes never load. Every recipe, kept or overridden, is written
+as ours, and none of theirs needs switching off. The stock check reads either copy back to its source:
+`<esp>.copies.json`, or the world's `smithing/copies.json` inverted.
+
+A stock row whose tier the ladder raised is listed as owed to the place's restock and does not fail the check, so
+long as its tier under the keyword-and-value rule it was stocked by fits. A row that was always wrong still fails.
+
+`smithing check` reads a world file that carries the ladder and proves three things:
 
 - every item is copied;
 - every override's stats are the ladder's, and every item has its tier's power;
 - every recipe is one COBJ at the right bench, with the right perk and ingredients.
 
-The small test world proves the stage in a lane; the full rebuild runs in the main tree after landing.
+The small test world proves it, and a places build in a scratch `--out` proves the places path.
 
 ## Mods
 
