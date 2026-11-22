@@ -196,6 +196,7 @@ export class People {
       const nm = p.name || 'Person', short = nm.length > 16 ? `${nm.slice(0, 15)}…` : nm;
       add('text', { class: mine ? 'who name sel' : 'who name', x: q.x, y: q.y, 'text-anchor': 'middle' }, short);
     }
+    if (this.shown && this.sel) { const q = scr(this.shown); if (!q.behind) add('circle', { class: 'spot-shown', cx: q.x, cy: q.y, r: 22 }); }
     if (!this.active) return;
     for (const p of this.list()) {
       const c = this.colour(p), mine = this.sel === p.id;
@@ -250,6 +251,86 @@ export class People {
     });
   }
   select(id) { this.sel = id; this.armed = null; this.refresh(); this.app.panels.open('people'); }
+  // A person's spots, each {label, kind, at, start}: where they sleep (their bed), work, eat, and stand by day and by
+  // night (the other stops), then their patrol; `at` is the stop's own (a ref or a position), `start` an hour they are there.
+  spots(p) {
+    const out = [], label = (s) => {
+      if (s.kind === 'sleep') return 'Where they sleep';
+      if (s.kind === 'work') return 'Where they work';
+      if (s.kind === 'eat') return 'Where they eat';
+      const night = s.start >= 20 || s.start < 6;
+      return night ? 'Where they stand at night' : 'Where they stand by day';
+    };
+    for (const s of this.sorted(p)) {
+      const at = s.kind === 'sleep' && p.bed ? (typeof p.bed === 'string' ? { space: p.home, ref: p.bed } : p.bed) : s.at;
+      out.push({ label: `${label(s)} (${clock(s.start)})`, kind: s.kind, at, start: s.start + Math.min(1, s.hours / 2), stop: s });
+    }
+    patrolOf(p).forEach((q, i) => out.push({ label: `Patrol point ${i + 1}`, kind: 'patrol', at: Array.isArray(q) ? { space: 'exterior', pos: q } : q, i }));
+    return out;
+  }
+  // A spot shown in the view: the hour they are there, the room it is in, the view framed on it and marked.
+  showSpot(p, sp) {
+    const a = this.app;
+    if (sp.start != null) a.setTime(sp.start % 24);
+    const pt = sp.kind === 'patrol' ? this.patrolPts(p)[sp.i] : this.stopPoint({ at: sp.at }).p, space = (sp.at || {}).space || 'exterior';
+    if (space !== a.ours.space) { const door = this.doorTo('exterior', space); if (space === 'exterior') a.leave(a.ours, 0); else if (door) a.enter(a.ours, door); }
+    if (!pt) { a.toast('This spot has no place yet.'); return; }
+    const v = a.ours.view; v.rig.pitch = Math.max(v.rig.pitch, 0.8); v.frame([pt[0] - 700, pt[1] - 700, pt[0] + 700, pt[1] + 700, pt[2] ?? 0]);
+    this.shown = pt; this.drawRoutes();
+  }
+  // What dragging a person now changes, in plain words.
+  moveWords(p) {
+    const a = this.app, w = this.where(p, a.time, a.ours.space); if (!w) return `${p.name || 'They'} is not in this space at this hour.`;
+    const s = w.stop, at = s.kind === 'sleep' && p.bed ? (typeof p.bed === 'string' ? { ref: p.bed } : p.bed) : s.at || {};
+    const nm = p.name || 'This person', what = STOP_KINDS[s.kind] ? STOP_KINDS[s.kind].toLowerCase() : s.kind;
+    if (at.ref) {
+      const r = this.app.findRef(at.ref), b = r && (a.bases.get(r.base) || {});
+      const thing = b ? (b.name || b.edid || 'the thing') : 'the thing';
+      return `${nm} is ${what} at ${thing} now: dragging them moves ${thing} itself, and everyone whose routine names it follows it.`;
+    }
+    if (s.kind === 'patrol' || s.kind === 'work' && patrolOf(p).length) return `${nm} is on patrol now: dragging them moves the whole patrol with them.`;
+    return `${nm} is ${what} now, at a spot of their own: dragging them moves that spot (${clock(s.start)} for ${s.hours} hours); their other stops stay.`;
+  }
+  // The person dragged from where they stand to g ([x, y, z]): the stop they are at moves (its ref, when it names one:
+  // a bed, a station; else its own spot; on patrol, the whole patrol). Returns the ops, or [].
+  dragOps(p, from, g) {
+    const a = this.app, w = this.where(p, a.time, a.ours.space); if (!w) return [];
+    const s = w.stop, dx = g[0] - from[0], dy = g[1] - from[1];
+    const at = s.kind === 'sleep' && p.bed ? (typeof p.bed === 'string' ? { ref: p.bed } : p.bed) : s.at || {};
+    if (at.ref) {
+      const r = a.placeRefsById().get(at.ref); if (!r) return [];
+      const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);
+      after.pos[0] = rnd(after.pos[0] + dx); after.pos[1] = rnd(after.pos[1] + dy);
+      return a.tools.withFollowers([r], [{ op: 'ref.move', id: r.id, before, after }]);
+    }
+    const before = clone(p), after = clone(p);
+    if (s.kind === 'patrol' || (s.kind === 'work' && patrolOf(after).length)) {
+      setPatrol(after, patrolOf(after).map((q) => (Array.isArray(q) ? [rnd(q[0] + dx), rnd(q[1] + dy), ...q.slice(2)] : q)));
+    }
+    const st = after.routine.find((x) => x.start === s.start && x.kind === s.kind);
+    if (st && !(s.kind === 'patrol')) st.at = { ...st.at, space: a.ours.space, pos: [rnd(g[0]), rnd(g[1]), rnd(g[2])] };
+    return JSON.stringify(before) === JSON.stringify(after) ? [] : [{ op: 'person.edit', person: after, before }];
+  }
+  // A drag on a person in the view: the marker follows the pen; letting go moves their spot as dragOps says.
+  dragStart(e) {
+    const id = this.pick(e); if (!id) return false;
+    const m = this.markers.get(id); this.drag = { id, from: [...m.userData.at], at: [...m.userData.at] };
+    if (this.sel !== id) this.select(id);
+    return true;
+  }
+  dragMove(e) {
+    const d = this.drag, g = d && e.ground(); if (!g) return;
+    d.at = g; const m = this.markers.get(d.id), o = this.app.ours.origin;
+    m.position.set(g[0] - o[0], g[1] - o[1], g[2] - o[2]); this.app.ours.view.redraw();
+  }
+  dragEnd() {
+    const d = this.drag; this.drag = null; if (!d) return;
+    const a = this.app, p = a.model.people.get(d.id); if (!p) return;
+    if (Math.hypot(d.at[0] - d.from[0], d.at[1] - d.from[1]) < 8) { this.refresh(); return; }
+    const words = this.moveWords(p), ops = this.dragOps(p, d.from, d.at);
+    if (ops.length) { a.push(ops); a.toast(words, 6000); }
+    this.refresh(); a.panels.open('people');
+  }
   arm(kind, extra = {}) { this.armed = { kind, ...extra }; this.app.panels.open('people'); }
   placeArmed(e) {
     const a = this.app, g = e.ground(); if (!g) return;
@@ -295,3 +376,30 @@ export class People {
 }
 
 export const isInnkeeper = (p) => /innkeeper/i.test(p.role || '');
+
+// Who names a ref in their day (pure): [{person, how}] where how is 'sleeps' (their bed or a sleep stop), 'works',
+// 'eats' or 'stops' (another stop), each at most once per person. A routine names a bed, a station or any spot by
+// its ref, so moving that ref moves where they go: nothing of theirs needs changing.
+export function usersOf(people, refId, srcId) {
+  const out = [], is = (at) => at && (at.ref === refId || (srcId && at.ref === srcId));
+  const HOW = { sleep: 'sleeps', work: 'works', eat: 'eats' };
+  for (const p of people) {
+    const bed = typeof p.bed === 'string' ? { ref: p.bed } : p.bed;
+    const hows = new Set();
+    if (is(bed)) hows.add('sleeps');
+    if (is(p.work)) hows.add('works');
+    for (const s of p.routine || []) if (is(s.at)) hows.add(HOW[s.kind] || 'stops');
+    for (const q of patrolOf(p)) if (!Array.isArray(q) && is(q)) hows.add('patrols');
+    for (const how of hows) out.push({ person: p, how });
+  }
+  return out;
+}
+// The plain sentence for the people a ref serves: "Hara-Jeel sleeps here: his routine follows this bed."
+export function followsLine(users, thing = 'this') {
+  if (!users.length) return '';
+  const by = new Map(); for (const u of users) { if (!by.has(u.person.id)) by.set(u.person.id, { p: u.person, hows: [] }); by.get(u.person.id).hows.push(u.how); }
+  const one = (x) => `${x.p.name || 'Someone'} ${x.hows.join(' and ')} here`;
+  const list = [...by.values()].map(one);
+  const who = list.length === 1 ? list[0] : `${list.slice(0, -1).join('; ')} and ${list.at(-1)}`;
+  return `${who}: ${by.size === 1 ? 'their routine follows' : 'their routines follow'} ${thing}.`;
+}

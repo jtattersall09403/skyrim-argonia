@@ -607,7 +607,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
 | `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive,unit}` (the fields it changes), `after:{...}` |
-| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]` |
+| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -625,7 +625,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
 - `unit.move` applies each member as a `ref.move` (its `door`, when given, set as given rather than shifted), then
-  each person and quest row as a `person.edit` and `quest.edit`; a door whose arrival changes moves the landing
+  each person, quest and walking-zone row as a `person.edit`, `quest.edit` and `walk.edit`; a door whose arrival changes moves the landing
   (`to_pos`) of every door leading to it by as much, so a move and its inverse give it back exactly (a plain
   `ref.move` of a door does the same with the door's own shift). Its inverse swaps every before and after.
   `edits.expand` (and `expand` in `edits.js`) writes it as those plain ops for whatever reads ops one row at a time:
@@ -834,9 +834,27 @@ moves every member rigidly as one `unit.move` op, one undo: what sits on the gro
 and is seated again where it lands; a free piece rises or falls with the ground under the unit's head, so the unit
 stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
 the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
-with it: a person's work place, routine stops and patrol points given as positions, and the quest spots on it. A
+with it: a person's work place, routine stops and patrol points given as positions, the quest spots on it, and the
+owner's walking zones lying wholly in it. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
+
+**People in Select** (`people.js`). A tap on a person with Select picks them (before anything behind) and opens
+their People panel: who they are, then Their spots, each where it is (a thing by its name, or a spot of their own)
+with Show it, which sets the hour they are there, goes to its room and frames it with a ring: where they sleep (their
+bed), work and eat, where they stand by day and at night (their other stops), their patrol points. A line says in
+plain words what dragging them now changes. Dragging a person (the pen, or a finger that lands on them) moves the
+spot they are at at the hour shown: a stop that names a thing (a bed, a station) moves that thing, as an ordinary
+move with what follows it, and every routine naming it follows; a stop at a spot of their own moves for them alone
+(`person.edit`); on patrol, the whole patrol shifts.
+
+A routine names a bed, a station or a spot by its ref, or a position; the build makes each stop a package aimed at
+that ref, or at a heading marker placed at the position (`tools/places/people.py`), and the game finds its way
+between them on the walking mesh, so no route is stored to go stale. What does not follow a moved thing on its own:
+a stop or patrol point given as a position (a unit's move carries those standing in it), a walking zone's outline (a
+unit's move carries those wholly in it), and the walking mesh itself, which the next build makes again under what
+moved. The Selected panel of a thing a routine names says so ("Ada sleeps here: their routine follows it wherever it
+goes"), and moving it says it at the moment of the move.
 
 **Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
 view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over

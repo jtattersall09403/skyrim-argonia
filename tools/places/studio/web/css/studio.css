@@ -372,3 +372,8 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .unit-card .members { list-style: none; padding: 0; margin: 0; }
 .unit-card .members li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
 .row.member p { flex-basis: 100%; margin: 4px 0; }
+
+/* a person's spot shown from the People panel */
+.spot-shown { fill: none; stroke: var(--accent); stroke-width: 4; }
+.spots { list-style: none; padding: 0; margin: 0; }
+.spots li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }

@@ -18,6 +18,8 @@ changes (the lead continues it); a change is as narrow as it can be correct.
   raised whole as its unit, one `unit.move` that carries its doors' arrivals, its people's spots and its quest spots
   (`docs/design/place-studio.md`, Units). A piece the unit rule leaves out or takes in wrongly is put right with the
   piece's `unit` (Add to this unit, Take out of this unit), never by moving the pieces one by one.
+- A person's spot is moved by dragging the person in the studio (or the stop's Put on map): a stop naming a bed or a
+  station moves that thing and every routine naming it follows; a routine is never edited to chase a moved bed.
 - A rule's output is changed by its stage alone: `python3 -m tools.places draft <stage> <place_id>` changes only the
   rows the stage owns, leaves every other row byte for byte and prints the rows changed per file.
 

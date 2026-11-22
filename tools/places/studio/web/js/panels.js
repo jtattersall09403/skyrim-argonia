@@ -3,7 +3,7 @@
 import { api, off } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
-import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
+import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol, usersOf, followsLine } from './people.js';
 import { clock, parseClock } from './geom.js';
 import { whereOf, whereRows } from './where.js';
 import { Contents } from './contents.js';
@@ -179,6 +179,7 @@ export class Panels {
     if (side === 'ours' && r.align) facts.push(['Lined up with', `the original it replaces (${r.align.of}), turned ${Math.round(r.align.turn_deg)} degrees`]);
     if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
     if (r.owner) facts.push(['Belongs to', r.owner]);
+    if (side === 'ours') { const u = usersOf(a.people.list(), r.id, r.src); if (u.length) facts.push(['Whose routine', followsLine(u, 'it wherever it goes')]); }
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     const lit = this.lightFacts(r, base, side);
     facts.push(...lit.facts);
@@ -326,6 +327,15 @@ export class Panels {
       for (const msg of P.problems(p)) parts.push(el(`<p class="tag nordic">${esc(msg)}</p>`));
       if (isInnkeeper(p) && !p.bed) parts.push(el('<p class="note">Keeps no bed and works all day, as Skyrim\'s innkeepers do.</p>'));
       parts.push(this.contents.personSection(p));
+      parts.push(el('<h3>Their spots</h3>'), el(`<p class="note">${esc(P.moveWords(p))}</p>`));
+      const spots = el('<ul class="spots"></ul>');
+      for (const sp of P.spots(p)) {
+        const at = sp.at || {}, r = at.ref && a.findRef(at.ref), b = r && (a.bases.get(r.base) || {});
+        const where = r ? (b.name || b.edid || 'a thing') : at.pos ? `a spot of their own${(at.space || 'exterior') !== 'exterior' ? ` in ${a.spaceName(a.ours, at.space)}` : ''}` : 'no spot yet';
+        const li = el(`<li><span><strong>${esc(sp.label)}</strong>: ${esc(where)}</span></li>`);
+        const show = el('<button class="quiet">Show it</button>'); show.onclick = () => P.showSpot(p, sp); li.append(show); spots.append(li);
+      }
+      parts.push(spots);
       parts.push(el('<h3>Their day</h3>'));
       const list = el('<ol class="history"></ol>');
       P.sorted(p).forEach((s, i) => {

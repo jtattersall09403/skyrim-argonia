@@ -1659,3 +1659,45 @@ def test_30_units_move_whole(pad):
     assert "fixplace.porch1" in pad.ev("studio.unitIndex().units.get('h01').members")
     pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
     assert pad.ev(UNIT_STATE) == start
+
+
+# ---------- 31: people are selected and moved from Select; a routine follows the bed it names ----------
+def test_31_people_select_and_move(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("if (studio.ours.space !== 'exterior') studio.leave(studio.ours, 0)")
+    pad.ev("studio.setTime(10)")   # a smith or a guard at work outside, at a spot of their own
+    assert pad.ev("[...studio.people.markers.values()].some((m) => m.visible)"), pad.ev("[...studio.model.people.keys()]")
+    at = pad.ev("studio.people.markers.get(studio.model.people.has('fixplace.p1') ? 'fixplace.p1' : 'fixplace.p2').userData.at")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    pad.pen_tap(x, y)
+    assert pad.ev("studio.people.sel") in ("fixplace.p1", "fixplace.p2")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "Their spots" in body and "Where they work" in body and "dragging them moves" in body, body
+    # Show it frames a spot
+    pad.page.locator("ul.spots li", has_text="Where they work").first.get_by_role("button", name="Show it").click()
+    assert pad.ev("studio.ours.space") == "exterior"
+    assert pad.ev("!!studio.people.shown")
+    pad.ev("studio.setTime(10)")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    n0 = len(pad.ops())
+    pad.pen_drag([(x, y), (x + 90, y + 20)])
+    ops = pad.ev("(n) => studio.log.applied().slice(n)", n0)
+    assert [o["op"] for o in ops] == ["person.edit"], ops
+    stop0 = next(s for s in ops[0]["before"]["routine"] if s["kind"] == "work")
+    stop1 = next(s for s in ops[0]["person"]["routine"] if s["kind"] == "work")
+    assert abs(stop1["at"]["pos"][0] - stop0["at"]["pos"][0]) + abs(stop1["at"]["pos"][1] - stop0["at"]["pos"][1]) > 20
+    pad.ev("studio.log.undo()")
+    # a bed moved: Bram's sleep stop names it, so it follows with no change of his, and the studio says so
+    bed = "fixplaceFixHouse02.bed"
+    line = pad.ev("""(id) => import('./js/people.js').then((m) => m.followsLine(m.usersOf(studio.people.list(), id), 'this bed'))""", bed)
+    assert line.startswith("Bram Fixguard sleeps") and "routine follows this bed" in line, line
+    pad.ev("""(id) => { const r = studio.model.spaces.FixHouse02.refs.get(id), before = { pos: [...r.pos] };
+             studio.push([{ op: 'ref.move', id, before, after: { pos: [r.pos[0] + 120, r.pos[1], r.pos[2]] } }], 'FixHouse02'); }""", bed)
+    got = pad.ev("""(id) => { const p = studio.model.people.get('fixplace.p2'), s = p.routine.find((x) => x.kind === 'sleep');
+             return [s.at.ref, studio.people.stopPoint(s).p, studio.model.spaces.FixHouse02.refs.get(id).pos]; }""", bed)
+    assert got[0] == bed and got[1][0] == got[2][0], got
+    pad.ev("studio.log.undo(); studio.people.select(null); studio.tools.use('select')")

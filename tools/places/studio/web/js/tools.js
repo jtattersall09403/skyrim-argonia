@@ -9,7 +9,9 @@ import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
 import { spotIn, rigid } from './units.js';
-import { patrolOf } from './people.js';
+import { patrolOf, usersOf, followsLine } from './people.js';
+// what a thing is in a sentence: "bed", "bedroll", "work bench", else its kind
+const plainThing = (base, r) => { const n = `${base?.edid || ''} ${base?.name || ''}`; return /bedroll/i.test(n) ? 'bedroll' : /bed/i.test(n) ? 'bed' : r.kind === 'furniture' ? 'seat or station' : (base?.name || r.kind || 'thing').toLowerCase(); };
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
@@ -126,13 +128,18 @@ export class Tools {
     const t = this, a = this.app;
     return this._sel || (this._sel = {
       fingerTap: true,
-      wantsDrag: (e) => e.pointerType === 'pen' || e.pointerType === 'mouse',
-      // a quest thing's pin is picked before the place's own things under it
-      tap: (e) => { const q = a.quests.pick(e); if (q) { t.use('quests'); a.quests.select(q); return; } t.tapPick(e, a.ours, a.selection); },
-      down: (e) => { t.lasso = { pts: [[e.x, e.y]], el: t.svg(e.view, t.opts.selMode === 'box' ? 'rect' : 'polygon', { class: 'lasso' }) }; },
-      move: (e) => t.lassoMove(e),
-      up: (e) => t.lassoEnd(e, a.ours),
-      cancel: (e) => { t.lasso?.el.remove(); t.lasso = null; t.clearSketch(e.view); },
+      // the pen and the mouse draw round things; a finger drags only a person it lands on (the view turns otherwise)
+      wantsDrag: (e) => e.pointerType === 'pen' || e.pointerType === 'mouse' || !!a.people.pick(e),
+      // a person is picked first, then a quest thing's pin, then the place's own things under them
+      tap: (e) => {
+        const pid = a.people.pick(e); if (pid) { a.people.select(pid); return; }
+        const q = a.quests.pick(e); if (q) { t.use('quests'); a.quests.select(q); return; }
+        t.tapPick(e, a.ours, a.selection);
+      },
+      down: (e) => { if (a.people.dragStart(e)) return; t.lasso = { pts: [[e.x, e.y]], el: t.svg(e.view, t.opts.selMode === 'box' ? 'rect' : 'polygon', { class: 'lasso' }) }; },
+      move: (e) => { if (a.people.drag) a.people.dragMove(e); else t.lassoMove(e); },
+      up: (e) => { if (a.people.drag) { const d = a.people.drag; if (Math.hypot(d.at[0] - d.from[0], d.at[1] - d.from[1]) < 8) { a.people.drag = null; return; } a.people.dragEnd(); } else t.lassoEnd(e, a.ours); },
+      cancel: (e) => { if (a.people.drag) { a.people.drag = null; a.people.refresh(); } t.lasso?.el.remove(); t.lasso = null; t.clearSketch(e.view); },
     });
   }
   lassoMove(e) {
@@ -382,8 +389,15 @@ export class Tools {
     if (this.app.ours.space !== 'exterior') return;
     if (this.opts.snapGround) { if (!r.seat || r.seat.mode === 'free') r.seat = { mode: 'ground', dz: 0 }; r.pos[2] = rnd(seatZ(this.app.terrain, r, this.app.placeRefsById())); }
   }
+  // At the moment a thing a routine names is moved: "Hara-Jeel sleeps here: his routine follows this bed."
+  sayFollows(refs) {
+    const a = this.app, ppl = [...(a.model?.people.values() || [])], lines = [];
+    for (const r of refs) { const u = usersOf(ppl, r.id, r.src); if (u.length) lines.push(followsLine(u, `this ${plainThing(this.baseOf(r), r)}`)); }
+    if (lines.length) a.toast(lines.slice(0, 2).join(' ') + (lines.length > 2 ? ` And ${lines.length - 2} more.` : ''), 6000);
+  }
   gizmoUp(e) {
     const d = this.drag; if (!d) return;
+    if (!(e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3)) this.sayFollows(d.refs);
     // a tap on a handle with no movement changes nothing (it never re-seats things where they stand)
     if (e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3) { this.gizmoCancel(); return; }
     this.drag = null;
@@ -475,7 +489,14 @@ export class Tools {
       if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
       quests.push({ quest: after, before: clone(q) });
     }
-    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}) };
+    // the owner's walking zones lying wholly in it (a "walk here" at its steps): their outline moves with it
+    const walks = [];
+    for (const w of a.model.walk.values()) {
+      const k = w.kind === 'join' ? 'points' : 'outline', pts = w[k];
+      if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
+      walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
+    }
+    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}) };
   }
   // A unit moved by the panel's buttons: the same op as a drag.
   moveUnit(u, turn, sh, dz) {
@@ -502,7 +523,7 @@ export class Tools {
   }
   // Nudge by a step in the game's directions, or turn by the snap step.
   nudge(dx, dy, dz, drot = 0, dscale = 0) {
-    const u = this.selUnit();
+    const u = this.selUnit(); if (dx || dy || dz || drot) this.sayFollows(this.selRefs());
     if (u && !dscale) { this.moveUnit(u, drot, [dx, dy], dz); return; }
     const ops = [];
     for (const r of this.selRefs()) {

@@ -219,7 +219,7 @@ export function applyOp(m, op) {
         applyOp(m, { n: op.n, op: 'ref.move', space: sp, id: u.id, before, after: u.after });
         if ('door' in u.after) linkPartner(m, space(m, sp).refs.get(u.id), u.before.door?.arrival);
       }
-      for (const [key, table] of [['people', 'person'], ['quests', 'quest']])
+      for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk']])
         for (const u of op[key] || []) applyOp(m, { n: op.n, op: `${table}.edit`, [table]: u[table], before: u.before });
       break;
     }
@@ -281,6 +281,7 @@ export function inverse(op) {
       inv.refs = op.refs.map((u) => ({ ...clone(u), before: clone(u.after), after: clone(u.before) }));
       if (op.people) inv.people = op.people.map((u) => ({ person: clone(u.before), before: clone(u.person) }));
       if (op.quests) inv.quests = op.quests.map((u) => ({ quest: clone(u.before), before: clone(u.quest) }));
+      if (op.walks) inv.walks = op.walks.map((u) => ({ walk: clone(u.before), before: clone(u.walk) }));
       break;
     case 'veg.clear': inv.op = 'veg.restore'; break;
     case 'veg.restore': inv.op = 'veg.clear'; break;
@@ -314,6 +315,7 @@ export function expand(ops) {
     for (const u of op.refs || []) out.push({ ...keep, op: 'ref.move', id: u.id, before: u.before, after: u.after, unit: op.unit });
     for (const u of op.people || []) out.push({ ...keep, op: 'person.edit', person: u.person, before: u.before });
     for (const u of op.quests || []) out.push({ ...keep, op: 'quest.edit', quest: u.quest, before: u.before });
+    for (const u of op.walks || []) out.push({ ...keep, op: 'walk.edit', walk: u.walk, before: u.before });
   }
   return out;
 }

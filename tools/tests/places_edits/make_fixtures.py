@@ -112,8 +112,12 @@ CASES2["unit_move"] = [
               {"id": "fix.30", "before": {"pos": [1000, 1700, 50], "door": UDOOR["door"]},
                "after": {"pos": [1000, 2300, 50], "door": dict(UDOOR["door"], arrival=[1000, 2400, 50])}}],
      "people": [{"person": dict(P1, routine=[dict(P1["routine"][0], at=dict(P1["routine"][0]["at"], pos=[1400, 1900, 50]))]), "before": P1}],
-     "quests": [{"quest": dict(UQ, pos=[1290, 2020, 60]), "before": UQ}]},
+     "quests": [{"quest": dict(UQ, pos=[1290, 2020, 60]), "before": UQ}],
+     "walks": [{"walk": dict(WALKZ, outline=[[x + 300, y, z] for x, y, z in WALKZ["outline"]]), "before": WALKZ}]},
 ]
+CASES2["unit_move"].insert(3, {"n": 3, "op": "walk.add", "space": "exterior", "walk": WALKZ})   # a zone at its steps moves with it
+for i, o in enumerate(CASES2["unit_move"]):
+    o["n"] = i + 1
 # a thing put into a unit by hand, another taken out of every unit ("" ), and a third given back to the rule (null)
 CASES2["unit_member"] = [
     {"n": 1, "op": "ref.move", "space": "exterior", "id": "fix.02", "before": {"unit": None}, "after": {"unit": "u.house"}},

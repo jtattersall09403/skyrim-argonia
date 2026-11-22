@@ -276,7 +276,32 @@
     ],
     "space": null
    }
-  }
+  },
+  "walk": [
+   {
+    "by": "owner",
+    "id": "fix.w2",
+    "kind": "walk",
+    "outline": [
+     [
+      1600,
+      1900,
+      48
+     ],
+     [
+      1800,
+      1900,
+      48
+     ],
+     [
+      1800,
+      1980,
+      60
+     ]
+    ],
+    "space": "exterior"
+   }
+  ]
  },
  "ops": [
   {
@@ -375,8 +400,36 @@
    "space": "exterior"
   },
   {
-   "call": "fault",
    "n": 4,
+   "op": "walk.add",
+   "space": "exterior",
+   "walk": {
+    "by": "owner",
+    "id": "fix.w2",
+    "kind": "walk",
+    "outline": [
+     [
+      1300,
+      1900,
+      48
+     ],
+     [
+      1500,
+      1900,
+      48
+     ],
+     [
+      1500,
+      1980,
+      60
+     ]
+    ],
+    "space": "exterior"
+   }
+  },
+  {
+   "call": "fault",
+   "n": 5,
    "name": "the house",
    "op": "unit.move",
    "people": [
@@ -585,7 +638,57 @@
     }
    ],
    "space": "exterior",
-   "unit": "u.house"
+   "unit": "u.house",
+   "walks": [
+    {
+     "before": {
+      "by": "owner",
+      "id": "fix.w2",
+      "kind": "walk",
+      "outline": [
+       [
+        1300,
+        1900,
+        48
+       ],
+       [
+        1500,
+        1900,
+        48
+       ],
+       [
+        1500,
+        1980,
+        60
+       ]
+      ],
+      "space": "exterior"
+     },
+     "walk": {
+      "by": "owner",
+      "id": "fix.w2",
+      "kind": "walk",
+      "outline": [
+       [
+        1600,
+        1900,
+        48
+       ],
+       [
+        1800,
+        1900,
+        48
+       ],
+       [
+        1800,
+        1980,
+        60
+       ]
+      ],
+      "space": "exterior"
+     }
+    }
+   ]
   }
  ]
 }
