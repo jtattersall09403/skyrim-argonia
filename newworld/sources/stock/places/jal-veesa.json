@@ -278,7 +278,7 @@
      "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the town levy, leads the day watch: the levy's issue blade, an iron sword of bog iron (scale.json guard_issue plain issue, kit guard: bog iron first) (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "King of the Murkmire.esp:098ECB",
@@ -287,25 +287,25 @@
      "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
      "count": 1,
      "worn": true,
-     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF3",
+     "item": "King of the Murkmire.esp:00ADB4",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF7",
+     "item": "King of the Murkmire.esp:000D6B",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Skyrim.esm:013922",
+     "item": "King of the Murkmire.esp:00ADB8",
      "count": 1,
      "worn": true,
      "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
@@ -602,7 +602,7 @@
      "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the town levy, night watch: the levy's issue blade, an iron sword of bog iron (scale.json guard_issue plain issue, kit guard: bog iron first) (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "King of the Murkmire.esp:098ECB",
@@ -611,25 +611,25 @@
      "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
      "count": 1,
      "worn": true,
-     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF3",
+     "item": "King of the Murkmire.esp:00ADB4",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF7",
+     "item": "King of the Murkmire.esp:000D6B",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Skyrim.esm:013922",
+     "item": "King of the Murkmire.esp:00ADB8",
      "count": 1,
      "worn": true,
      "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
@@ -680,7 +680,7 @@
      "item": "Skyrim.esm:012EB7",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue blade, bog iron (kit guard; the scale set has no weapon of its own), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the town levy, day watch: the levy's issue blade, an iron sword of bog iron (scale.json guard_issue plain issue, kit guard: bog iron first) (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "King of the Murkmire.esp:098ECB",
@@ -689,25 +689,25 @@
      "why": "the watch's bow, a plain Saxhleel bow (kit guard: wood), made here"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
      "count": 1,
      "worn": true,
-     "why": "the levy's cuirass: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's cuirass at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF3",
+     "item": "King of the Murkmire.esp:00ADB4",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's boots at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Black Marsh North.esp:037DF7",
+     "item": "King of the Murkmire.esp:000D6B",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets: BM&V's Argonian scale guard armour (scale.json guard_issue, T3), the issue of a T3 town (ceiling T3), (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "the levy's gauntlets at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
-     "item": "Skyrim.esm:013922",
+     "item": "King of the Murkmire.esp:00ADB8",
      "count": 1,
      "worn": true,
      "why": "the levy's helmet at T2, light for the marsh (from a neighbour (an import gate or maker, 7 km by road))"
