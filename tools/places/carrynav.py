@@ -22,6 +22,7 @@ join_seams the links). Pure numpy: no game data here."""
 from __future__ import annotations
 
 import math
+import os
 from collections import defaultdict
 
 import numpy as np
@@ -170,6 +171,9 @@ def _overlap(a, b) -> bool:
     return a[0] <= b[2] and b[0] <= a[2] and a[1] <= b[3] and b[1] <= a[3]
 
 
+ZONE_GRID = 512.0   # units: the square the zones are indexed by
+
+
 class Region:
     """The carried region: inside `outer` (convex), outside every zone (convex)."""
 
@@ -179,6 +183,19 @@ class Region:
         self.zones = [ccw(list(z)) for z in zones if len(z) >= 3]
         self.zone_h = [planes(z) for z in self.zones]
         self.zone_box = [_bbox(z) for z in self.zones]
+        self._zgrid: dict = defaultdict(list)   # the zones by ZONE_GRID square of their box: a piece meets only those near it
+        for i, bb in enumerate(self.zone_box):
+            for gx in range(math.floor(bb[0] / ZONE_GRID), math.floor(bb[2] / ZONE_GRID) + 1):
+                for gy in range(math.floor(bb[1] / ZONE_GRID), math.floor(bb[3] / ZONE_GRID) + 1):
+                    self._zgrid[(gx, gy)].append(i)
+
+    def near(self, bb) -> list:
+        """The zones whose box meets box bb, in their order: every other zone leaves a piece inside bb as it is."""
+        got = set()
+        for gx in range(math.floor(bb[0] / ZONE_GRID), math.floor(bb[2] / ZONE_GRID) + 1):
+            for gy in range(math.floor(bb[1] / ZONE_GRID), math.floor(bb[3] / ZONE_GRID) + 1):
+                got.update(self._zgrid.get((gx, gy), ()))
+        return sorted(i for i in got if _overlap(bb, self.zone_box[i]))
 
     def segments(self) -> list:
         segs = []
@@ -191,7 +208,8 @@ class Region:
         if p is None:
             return []
         pieces = [p]
-        for h, bb in zip(self.zone_h, self.zone_box):
+        for i in self.near(_bbox(p)):   # every piece lies inside p: a zone clear of p's box cuts none of them
+            h, bb = self.zone_h[i], self.zone_box[i]
             nxt = []
             for q in pieces:
                 nxt += minus(q, h) if _overlap(_bbox(q), bb) else [q]
@@ -204,20 +222,22 @@ class Region:
         if inside is None:
             return out
         bbi = _bbox(inside)
-        for k, (h, bb) in enumerate(zip(self.zone_h, self.zone_box)):
-            if not _overlap(bbi, bb):
-                continue
+        near = self.near(bbi)           # every piece below lies inside `inside`: the zones clear of its box touch none
+        for n, k in enumerate(near):
+            h = self.zone_h[k]
             q = intersect(inside, h)
             if q is None:
                 continue
             pieces = [q]
-            for j in range(k):          # a spot two zones share is generated once
-                if _overlap(_bbox(q), self.zone_box[j]):
+            bq = _bbox(q)
+            for j in near[:n]:          # a spot two zones share is generated once
+                if _overlap(bq, self.zone_box[j]):
                     pieces = [r for p in pieces for r in minus(p, self.zone_h[j])]
             out += pieces
         if self.cover is not None:      # a hole in the source's mesh where our ground is walkable: generated
             free = [inside]
-            for h, bb in zip(self.zone_h, self.zone_box):
+            for k in near:
+                h, bb = self.zone_h[k], self.zone_box[k]
                 free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
             zlo, zhi = min(q[2] for q in inside) - COVER_DZ, max(q[2] for q in inside) + COVER_DZ
             for i in self._covering(bbi):
@@ -753,7 +773,9 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
                   (np.abs(GV[:, 1] - y0) < 0.5) | (np.abs(GV[:, 1] - y0 - CELL) < 0.5) if len(GV) else np.zeros(0, bool)
         snapped += snap(GV, segs, fixed=on_line)
         gen[c] = [(GV[3 * i:3 * i + 3].tolist(), f) for i, (_, f) in enumerate(rows)]
-    meshes: dict = defaultdict(Mesh)
+    # each cell's triangles in the order the cells take them (the carried in their order, then the generated): a cell's
+    # mesh is assembled from its own pieces alone, so the cells are cut side by side
+    rows_of: dict = defaultdict(list)
     for tri, flags, tag in carried:
         poly = [tuple(p) for p in tri]
         if area2(poly) < 0:
@@ -762,23 +784,85 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
         x0, y0, x1, y1 = _bbox(poly)
         for cx in range(math.floor(x0 / CELL), math.floor(x1 / CELL) + 1):
             for cy in range(math.floor(y0 / CELL), math.floor(y1 / CELL) + 1):
-                q = intersect(poly, planes(cell_box((cx, cy))))
-                if q is None:
-                    continue
-                # a moved unit's own triangles (tag > 0) stand where the unit now is, in its zone: cut by cells only
-                for piece in (region.carried(q) if tag == 0 else [q]):
-                    meshes[(cx, cy)].add_poly(piece, f, tag)
-    for c, rows in gen.items():
-        for tri, flags in rows:
-            poly = [tuple(p) for p in tri]
-            if area2(poly) < 0:
-                poly = poly[::-1]
-            for piece in region.generated(poly):
-                meshes[c].add_poly(piece, int(flags) & ~(EDGE_BITS | DOOR) & 0xFFFF, -1)
+                rows_of[(cx, cy)].append((poly, f, tag))
+    order = list(rows_of) + [c for c in gen if c not in rows_of]
+    got = _cells_side_by_side(_cut_cell, order, {"rows": rows_of, "gen": gen, "region": region})
+    meshes = {c: m for c, m in zip(order, got) if m is not None}
     out = finish_cells(meshes, neighbours)
     for c in out:
         out[c]["stats"]["snapped"] = snapped
     return out
+
+
+def _cut_cell(c):
+    """One cell's mesh from its carried pieces (cut by the cell's box and the region) and its generated triangles (cut
+    by the region); None when nothing lands in it."""
+    J = _JOB
+    m, n = Mesh(), 0
+    box = planes(cell_box(c))
+    for poly, f, tag in J["rows"].get(c, ()):
+        q = intersect(poly, box)
+        if q is None:
+            continue
+        # a moved unit's own triangles (tag > 0) stand where the unit now is, in its zone: cut by cells only
+        for piece in (J["region"].carried(q) if tag == 0 else [q]):
+            m.add_poly(piece, f, tag)
+            n += 1
+    for tri, flags in J["gen"].get(c, ()):
+        poly = [tuple(p) for p in tri]
+        if area2(poly) < 0:
+            poly = poly[::-1]
+        for piece in J["region"].generated(poly):
+            m.add_poly(piece, int(flags) & ~(EDGE_BITS | DOOR) & 0xFFFF, -1)
+            n += 1
+    return m if n else None
+
+
+JOBS = int(os.environ.get("ARGONIA_PLACES_JOBS") or min(3, os.cpu_count() or 1))   # worker processes for the cells
+_JOB: dict = {}
+
+
+def _cells_side_by_side(fn, cells: list, job: dict) -> list:
+    """fn(cell) for every cell, in order: in JOBS forked workers that read `job` (as _JOB) from the parent's memory,
+    or here when one job is asked or the cells are few. Each cell's work reads nothing another cell's writes, so the
+    answers are the same either way."""
+    global _JOB
+    _JOB = job
+    try:
+        if JOBS <= 1 or len(cells) < 4:
+            return [fn(c) for c in cells]
+        import multiprocessing as mp
+        with mp.get_context("fork").Pool(min(JOBS, len(cells))) as pool:
+            return pool.map(fn, cells, chunksize=1)
+    finally:
+        _JOB = {}
+
+
+def _finish_one(c):
+    J = _JOB
+    m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
+    x0, y0 = c[0] * CELL, c[1] * CELL
+    extra = []
+    for o in ((c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)):
+        for v in border.get(o, ()):
+            if (abs(v[0] - x0) < 0.5 or abs(v[0] - x0 - CELL) < 0.5) and y0 - 0.5 <= v[1] <= y0 + CELL + 0.5 or \
+               (abs(v[1] - y0) < 0.5 or abs(v[1] - y0 - CELL) < 0.5) and x0 - 0.5 <= v[0] <= x0 + CELL + 0.5:
+                extra.append(v)
+    splits = fix_t_junctions(m, extra)
+    collapsed = collapse_short(m, cell=c)
+    for _ in range(8):                        # a flat triangle goes; its long edge's neighbour is split instead
+        flats = drop_flat(m)
+        splits += fix_t_junctions(m, extra)
+        if not flats:
+            break
+    sides = {}
+    for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
+                        ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
+        if o in neighbours and o not in meshes:  # a neighbour rebuilt here matches by its new border
+            sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
+    unsplit = unsplit_border(m, c, sides)
+    folds = drop_folds(m, c)
+    return finish_cell(m), (splits, collapsed, unsplit, folds)
 
 
 def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
@@ -794,30 +878,10 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
         border[c] += [list(p) for p in pts]
     out = {}
     splits = collapsed = unsplit = folds = 0
-    for c in sorted(meshes):
-        m = meshes[c]
-        x0, y0 = c[0] * CELL, c[1] * CELL
-        extra = []
-        for o in ((c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)):
-            for v in border.get(o, ()):
-                if (abs(v[0] - x0) < 0.5 or abs(v[0] - x0 - CELL) < 0.5) and y0 - 0.5 <= v[1] <= y0 + CELL + 0.5 or \
-                   (abs(v[1] - y0) < 0.5 or abs(v[1] - y0 - CELL) < 0.5) and x0 - 0.5 <= v[0] <= x0 + CELL + 0.5:
-                    extra.append(v)
-        splits += fix_t_junctions(m, extra)
-        collapsed += collapse_short(m, cell=c)
-        for _ in range(8):                        # a flat triangle goes; its long edge's neighbour is split instead
-            flats = drop_flat(m)
-            splits += fix_t_junctions(m, extra)
-            if not flats:
-                break
-        sides = {}
-        for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
-                            ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
-            if o in (neighbours or {}) and o not in meshes:  # a neighbour rebuilt here matches by its new border
-                sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
-        unsplit += unsplit_border(m, c, sides)
-        folds += drop_folds(m, c)
-        got = finish_cell(m)
+    cells = sorted(meshes)
+    done = _cells_side_by_side(_finish_one, cells, {"meshes": meshes, "neighbours": neighbours or {}, "border": border})
+    for c, (got, n) in zip(cells, done):
+        splits, collapsed, unsplit, folds = splits + n[0], collapsed + n[1], unsplit + n[2], folds + n[3]
         if got["tris"]:
             out[c] = got
     for c in out:
