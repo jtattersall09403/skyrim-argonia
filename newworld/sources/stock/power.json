@@ -32,6 +32,44 @@
      "DaedricDagger": 11.0,
      "DLC1DragonboneDagger": 12.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronDagger",
+     "power": 4.0,
+     "weight": 2.0,
+     "value": 10
+    },
+    "T2": {
+     "edid": "SteelDagger",
+     "power": 5.0,
+     "weight": 2.5,
+     "value": 18
+    },
+    "T3": {
+     "edid": "ElvenDagger",
+     "power": 8.0,
+     "weight": 4.0,
+     "value": 95
+    },
+    "T4": {
+     "edid": "GlassDagger",
+     "power": 9.0,
+     "weight": 4.5,
+     "value": 165
+    },
+    "T5": {
+     "edid": "EbonyDagger",
+     "power": 10.0,
+     "weight": 5.0,
+     "value": 290
+    },
+    "T6": {
+     "edid": "DaedricDagger",
+     "power": 11.0,
+     "weight": 6.0,
+     "value": 500
+    }
    }
   },
   "sword": {
@@ -64,6 +102,44 @@
     "T6": {
      "DaedricSword": 14.0,
      "DLC1DragonboneSword": 15.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronSword",
+     "power": 7.0,
+     "weight": 9.0,
+     "value": 25
+    },
+    "T2": {
+     "edid": "SteelSword",
+     "power": 8.0,
+     "weight": 10.0,
+     "value": 45
+    },
+    "T3": {
+     "edid": "ElvenSword",
+     "power": 11.0,
+     "weight": 13.0,
+     "value": 235
+    },
+    "T4": {
+     "edid": "GlassSword",
+     "power": 12.0,
+     "weight": 14.0,
+     "value": 410
+    },
+    "T5": {
+     "edid": "EbonySword",
+     "power": 13.0,
+     "weight": 15.0,
+     "value": 720
+    },
+    "T6": {
+     "edid": "DaedricSword",
+     "power": 14.0,
+     "weight": 16.0,
+     "value": 1250
     }
    }
   },
@@ -98,6 +174,44 @@
      "DaedricWarAxe": 15.0,
      "DLC1DragonboneWarAxe": 16.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronWarAxe",
+     "power": 8.0,
+     "weight": 11.0,
+     "value": 30
+    },
+    "T2": {
+     "edid": "SteelWarAxe",
+     "power": 9.0,
+     "weight": 12.0,
+     "value": 55
+    },
+    "T3": {
+     "edid": "ElvenWarAxe",
+     "power": 12.0,
+     "weight": 15.0,
+     "value": 280
+    },
+    "T4": {
+     "edid": "GlassWarAxe",
+     "power": 13.0,
+     "weight": 16.0,
+     "value": 490
+    },
+    "T5": {
+     "edid": "EbonyWarAxe",
+     "power": 14.0,
+     "weight": 17.0,
+     "value": 865
+    },
+    "T6": {
+     "edid": "DaedricWarAxe",
+     "power": 15.0,
+     "weight": 18.0,
+     "value": 1500
+    }
    }
   },
   "mace": {
@@ -130,6 +244,44 @@
     "T6": {
      "DaedricMace": 16.0,
      "DLC1DragonboneMace": 17.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronMace",
+     "power": 9.0,
+     "weight": 13.0,
+     "value": 35
+    },
+    "T2": {
+     "edid": "SteelMace",
+     "power": 10.0,
+     "weight": 14.0,
+     "value": 65
+    },
+    "T3": {
+     "edid": "ElvenMace",
+     "power": 13.0,
+     "weight": 17.0,
+     "value": 330
+    },
+    "T4": {
+     "edid": "GlassMace",
+     "power": 14.0,
+     "weight": 18.0,
+     "value": 575
+    },
+    "T5": {
+     "edid": "EbonyMace",
+     "power": 15.0,
+     "weight": 19.0,
+     "value": 1000
+    },
+    "T6": {
+     "edid": "DaedricMace",
+     "power": 16.0,
+     "weight": 20.0,
+     "value": 1750
     }
    }
   },
@@ -164,6 +316,44 @@
      "DaedricGreatsword": 24.0,
      "DLC1DragonboneGreatsword": 25.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronGreatsword",
+     "power": 15.0,
+     "weight": 16.0,
+     "value": 50
+    },
+    "T2": {
+     "edid": "SteelGreatsword",
+     "power": 17.0,
+     "weight": 17.0,
+     "value": 90
+    },
+    "T3": {
+     "edid": "ElvenGreatsword",
+     "power": 20.0,
+     "weight": 20.0,
+     "value": 470
+    },
+    "T4": {
+     "edid": "GlassGreatsword",
+     "power": 21.0,
+     "weight": 22.0,
+     "value": 820
+    },
+    "T5": {
+     "edid": "EbonyGreatsword",
+     "power": 22.0,
+     "weight": 22.0,
+     "value": 1440
+    },
+    "T6": {
+     "edid": "DaedricGreatsword",
+     "power": 24.0,
+     "weight": 23.0,
+     "value": 2500
+    }
    }
   },
   "battleaxe": {
@@ -196,6 +386,44 @@
     "T6": {
      "DaedricBattleaxe": 25.0,
      "DLC1DragonboneBattleaxe": 26.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronBattleaxe",
+     "power": 16.0,
+     "weight": 20.0,
+     "value": 55
+    },
+    "T2": {
+     "edid": "SteelBattleaxe",
+     "power": 18.0,
+     "weight": 21.0,
+     "value": 100
+    },
+    "T3": {
+     "edid": "ElvenBattleaxe",
+     "power": 21.0,
+     "weight": 24.0,
+     "value": 520
+    },
+    "T4": {
+     "edid": "GlassBattleaxe",
+     "power": 22.0,
+     "weight": 25.0,
+     "value": 900
+    },
+    "T5": {
+     "edid": "EbonyBattleaxe",
+     "power": 23.0,
+     "weight": 26.0,
+     "value": 1585
+    },
+    "T6": {
+     "edid": "DaedricBattleaxe",
+     "power": 25.0,
+     "weight": 27.0,
+     "value": 2750
     }
    }
   },
@@ -230,6 +458,44 @@
      "DaedricWarhammer": 27.0,
      "DLC1DragonboneWarhammer": 28.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronWarhammer",
+     "power": 18.0,
+     "weight": 24.0,
+     "value": 60
+    },
+    "T2": {
+     "edid": "SteelWarhammer",
+     "power": 20.0,
+     "weight": 25.0,
+     "value": 110
+    },
+    "T3": {
+     "edid": "ElvenWarhammer",
+     "power": 23.0,
+     "weight": 28.0,
+     "value": 565
+    },
+    "T4": {
+     "edid": "GlassWarhammer",
+     "power": 24.0,
+     "weight": 29.0,
+     "value": 985
+    },
+    "T5": {
+     "edid": "EbonyWarhammer",
+     "power": 25.0,
+     "weight": 30.0,
+     "value": 1725
+    },
+    "T6": {
+     "edid": "DaedricWarhammer",
+     "power": 27.0,
+     "weight": 31.0,
+     "value": 4000
+    }
    }
   },
   "bow": {
@@ -263,6 +529,44 @@
     "T6": {
      "DaedricBow": 19.0,
      "DLC1DragonboneBow": 20.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "HuntingBow",
+     "power": 7.0,
+     "weight": 7.0,
+     "value": 50
+    },
+    "T2": {
+     "edid": "ImperialBow",
+     "power": 9.0,
+     "weight": 8.0,
+     "value": 90
+    },
+    "T3": {
+     "edid": "ElvenBow",
+     "power": 13.0,
+     "weight": 12.0,
+     "value": 470
+    },
+    "T4": {
+     "edid": "GlassBow",
+     "power": 15.0,
+     "weight": 14.0,
+     "value": 820
+    },
+    "T5": {
+     "edid": "EbonyBow",
+     "power": 17.0,
+     "weight": 16.0,
+     "value": 1440
+    },
+    "T6": {
+     "edid": "DaedricBow",
+     "power": 19.0,
+     "weight": 18.0,
+     "value": 2500
     }
    }
   },
@@ -299,6 +603,44 @@
     "T6": {
      "ArmorDragonscaleCuirass": 41.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorHideCuirass",
+     "power": 20.0,
+     "weight": 5.0,
+     "value": 50
+    },
+    "T2": {
+     "edid": "ArmorLeatherCuirass",
+     "power": 26.0,
+     "weight": 6.0,
+     "value": 125
+    },
+    "T3": {
+     "edid": "ArmorScaledCuirass",
+     "power": 32.0,
+     "weight": 6.0,
+     "value": 350
+    },
+    "T4": {
+     "edid": "ArmorElvenGildedCuirass",
+     "power": 35.0,
+     "weight": 4.0,
+     "value": 550
+    },
+    "T5": {
+     "edid": "ArmorGlassCuirass",
+     "power": 38.0,
+     "weight": 7.0,
+     "value": 900
+    },
+    "T6": {
+     "edid": "ArmorDragonscaleCuirass",
+     "power": 41.0,
+     "weight": 10.0,
+     "value": 1500
+    }
    }
   },
   "light-helmet": {
@@ -329,6 +671,44 @@
     },
     "T6": {
      "ArmorDragonscaleHelmet": 17.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorHideHelmet",
+     "power": 10.0,
+     "weight": 2.0,
+     "value": 25
+    },
+    "T2": {
+     "edid": "ArmorLeatherHelmet",
+     "power": 12.0,
+     "weight": 2.0,
+     "value": 60
+    },
+    "T3": {
+     "edid": "ArmorScaledHelmet",
+     "power": 14.0,
+     "weight": 2.0,
+     "value": 175
+    },
+    "T4": {
+     "edid": "ArmorElvenHelmet",
+     "power": 13.0,
+     "weight": 1.0,
+     "value": 110
+    },
+    "T5": {
+     "edid": "ArmorGlassHelmet",
+     "power": 16.0,
+     "weight": 2.0,
+     "value": 450
+    },
+    "T6": {
+     "edid": "ArmorDragonscaleHelmet",
+     "power": 17.0,
+     "weight": 4.0,
+     "value": 750
     }
    }
   },
@@ -361,6 +741,44 @@
     "T6": {
      "ArmorDragonscaleGauntlets": 12.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorHideGauntlets",
+     "power": 5.0,
+     "weight": 1.0,
+     "value": 10
+    },
+    "T2": {
+     "edid": "ArmorLeatherGauntlets",
+     "power": 7.0,
+     "weight": 2.0,
+     "value": 25
+    },
+    "T3": {
+     "edid": "ArmorScaledGauntlets",
+     "power": 9.0,
+     "weight": 2.0,
+     "value": 70
+    },
+    "T4": {
+     "edid": "ArmorElvenGauntlets",
+     "power": 8.0,
+     "weight": 1.0,
+     "value": 45
+    },
+    "T5": {
+     "edid": "ArmorGlassGauntlets",
+     "power": 11.0,
+     "weight": 2.0,
+     "value": 190
+    },
+    "T6": {
+     "edid": "ArmorDragonscaleGauntlets",
+     "power": 12.0,
+     "weight": 3.0,
+     "value": 300
+    }
    }
   },
   "light-boots": {
@@ -391,6 +809,44 @@
     },
     "T6": {
      "ArmorDragonscaleBoots": 12.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorHideBoots",
+     "power": 5.0,
+     "weight": 1.0,
+     "value": 10
+    },
+    "T2": {
+     "edid": "ArmorLeatherBoots",
+     "power": 7.0,
+     "weight": 2.0,
+     "value": 25
+    },
+    "T3": {
+     "edid": "ArmorScaledBoots",
+     "power": 9.0,
+     "weight": 2.0,
+     "value": 70
+    },
+    "T4": {
+     "edid": "ArmorElvenBoots",
+     "power": 8.0,
+     "weight": 1.0,
+     "value": 45
+    },
+    "T5": {
+     "edid": "ArmorGlassBoots",
+     "power": 11.0,
+     "weight": 2.0,
+     "value": 190
+    },
+    "T6": {
+     "edid": "ArmorDragonscaleBoots",
+     "power": 12.0,
+     "weight": 3.0,
+     "value": 300
     }
    }
   },
@@ -426,6 +882,44 @@
      "ArmorDaedricCuirass": 49.0,
      "ArmorDragonplateCuirass": 46.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorIronCuirass",
+     "power": 25.0,
+     "weight": 30.0,
+     "value": 125
+    },
+    "T2": {
+     "edid": "ArmorSteelCuirassA",
+     "power": 31.0,
+     "weight": 35.0,
+     "value": 275
+    },
+    "T3": {
+     "edid": "ArmorDwarvenCuirass",
+     "power": 34.0,
+     "weight": 45.0,
+     "value": 400
+    },
+    "T4": {
+     "edid": "ArmorOrcishCuirass",
+     "power": 40.0,
+     "weight": 35.0,
+     "value": 1000
+    },
+    "T5": {
+     "edid": "ArmorEbonyCuirass",
+     "power": 43.0,
+     "weight": 38.0,
+     "value": 1500
+    },
+    "T6": {
+     "edid": "ArmorDaedricCuirass",
+     "power": 49.0,
+     "weight": 50.0,
+     "value": 3200
+    }
    }
   },
   "heavy-helmet": {
@@ -459,6 +953,44 @@
     "T6": {
      "ArmorDaedricHelmet": 23.0,
      "ArmorDragonplateHelmet": 22.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorIronHelmet",
+     "power": 15.0,
+     "weight": 5.0,
+     "value": 60
+    },
+    "T2": {
+     "edid": "ArmorSteelHelmetA",
+     "power": 17.0,
+     "weight": 5.0,
+     "value": 125
+    },
+    "T3": {
+     "edid": "ArmorDwarvenHelmet",
+     "power": 18.0,
+     "weight": 12.0,
+     "value": 200
+    },
+    "T4": {
+     "edid": "ArmorOrcishHelmet",
+     "power": 20.0,
+     "weight": 8.0,
+     "value": 500
+    },
+    "T5": {
+     "edid": "ArmorEbonyHelmet",
+     "power": 21.0,
+     "weight": 10.0,
+     "value": 750
+    },
+    "T6": {
+     "edid": "ArmorDaedricHelmet",
+     "power": 23.0,
+     "weight": 15.0,
+     "value": 1600
     }
    }
   },
@@ -494,6 +1026,44 @@
      "ArmorDaedricGauntlets": 18.0,
      "ArmorDragonplateGauntlets": 17.0
     }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorIronGauntlets",
+     "power": 10.0,
+     "weight": 5.0,
+     "value": 25
+    },
+    "T2": {
+     "edid": "ArmorSteelGauntletsA",
+     "power": 12.0,
+     "weight": 4.0,
+     "value": 55
+    },
+    "T3": {
+     "edid": "ArmorDwarvenGauntlets",
+     "power": 13.0,
+     "weight": 8.0,
+     "value": 85
+    },
+    "T4": {
+     "edid": "ArmorOrcishGauntlets",
+     "power": 15.0,
+     "weight": 7.0,
+     "value": 200
+    },
+    "T5": {
+     "edid": "ArmorEbonyGauntlets",
+     "power": 16.0,
+     "weight": 7.0,
+     "value": 275
+    },
+    "T6": {
+     "edid": "ArmorDaedricGauntlets",
+     "power": 18.0,
+     "weight": 6.0,
+     "value": 625
+    }
    }
   },
   "heavy-boots": {
@@ -527,6 +1097,44 @@
     "T6": {
      "ArmorDaedricBoots": 18.0,
      "ArmorDragonplateBoots": 17.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorIronBoots",
+     "power": 10.0,
+     "weight": 6.0,
+     "value": 25
+    },
+    "T2": {
+     "edid": "ArmorSteelBootsA",
+     "power": 12.0,
+     "weight": 8.0,
+     "value": 55
+    },
+    "T3": {
+     "edid": "ArmorDwarvenBoots",
+     "power": 13.0,
+     "weight": 10.0,
+     "value": 85
+    },
+    "T4": {
+     "edid": "ArmorOrcishBoots",
+     "power": 15.0,
+     "weight": 7.0,
+     "value": 200
+    },
+    "T5": {
+     "edid": "ArmorEbonyBoots",
+     "power": 16.0,
+     "weight": 7.0,
+     "value": 275
+    },
+    "T6": {
+     "edid": "ArmorDaedricBoots",
+     "power": 18.0,
+     "weight": 10.0,
+     "value": 625
     }
    }
   },
@@ -567,6 +1175,44 @@
      "ArmorDaedricShield": 36.0,
      "ArmorDragonscaleShield": 29.0,
      "ArmorDragonplateShield": 34.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "ArmorIronShield",
+     "power": 20.0,
+     "weight": 12.0,
+     "value": 60
+    },
+    "T2": {
+     "edid": "ArmorSteelShield",
+     "power": 24.0,
+     "weight": 12.0,
+     "value": 150
+    },
+    "T3": {
+     "edid": "ArmorDwarvenShield",
+     "power": 26.0,
+     "weight": 12.0,
+     "value": 225
+    },
+    "T4": {
+     "edid": "ArmorOrcishShield",
+     "power": 30.0,
+     "weight": 14.0,
+     "value": 500
+    },
+    "T5": {
+     "edid": "ArmorEbonyShield",
+     "power": 32.0,
+     "weight": 14.0,
+     "value": 750
+    },
+    "T6": {
+     "edid": "ArmorDaedricShield",
+     "power": 36.0,
+     "weight": 15.0,
+     "value": 1600
     }
    }
   }

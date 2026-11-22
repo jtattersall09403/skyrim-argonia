@@ -81,7 +81,7 @@ def test_a_ref_the_place_removes_is_not_owed_by_the_room(monkeypatch, tmp_path):
 def test_a_capitals_guards_wear_their_cultures_set_and_a_poor_places_the_plain_issue():
     plugins = ["Skyrim.esm", "Black Marsh.esm", "Black Marsh North.esp"]
     got = split.guard_issue("forest-green", "T4", plugins)
-    assert got["set"]["id"] == "argonian" and got["tier"] == "T4" and got["torch"] == "Skyrim.esm:01D4EC"
-    assert split.guard_issue("forest-green", "T3", plugins)["set"] is None  # the band does not reach the set's tier (T4 by power)
+    assert got["set"]["id"] == "argonian" and got["tier"] == "T3" and got["torch"] == "Skyrim.esm:01D4EC"
+    assert split.guard_issue("forest-green", "T2", plugins)["set"] is None  # the band does not reach the set's tier
     assert split.guard_issue("forest-green", "T4", ["Skyrim.esm"])["set"] is None  # the place's mods do not provide it
     assert split.guard_issue("forest-green", "T2", plugins)["tier"] == "T2"

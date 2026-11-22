@@ -110,7 +110,12 @@ def plan(P: dict, S: dict, people: dict, ids, problem, notes: list[str], st: "St
         return None
     rules = split.rules()
     if rec is None:
+        # the plugins of the place's bases and people, and of every item its stock rows name (an item of a mod the
+        # source place never used, a ladder piece of HTBM's at a KotM place, is still read: its record decides whether
+        # a worn row is armour for the outfit)
         keys = [r.get("base") for r in S["refs"]] + [n.get("from") for n in (people or {}).get("npcs", [])]
+        keys += [i.item_id for v in (st.container_items, st.person_items, st.trader_items) for rows in v.values() for i in rows]
+        keys += [r.item_id for r in st.loose.values()]
         rec = Records.load(plugins_of(keys))
     out = {"containers": [], "outfits": [], "keys": [], "taken_out": [], "kept_loose": [], "placed_loose": []}
 

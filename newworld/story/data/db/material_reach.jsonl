@@ -5,6 +5,7 @@
 {"material_id":"bonemold","seq":2,"kind":"record","value":"\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b","why":"the record names Dunmer"}
 {"material_id":"bronze","seq":0,"kind":"anywhere","why":"rare: its tier keeps it to the rich and the old"}
 {"material_id":"chitin","seq":0,"kind":"anywhere","why":"traded: the lead's call 2 (issue #89)"}
+{"material_id":"copper-steel","seq":0,"kind":"anywhere","why":"uncommon; its tier keeps it to the towns"}
 {"material_id":"daedric","seq":0,"kind":"unique","why":"a row of the world ledger (unique.json)"}
 {"material_id":"dragon","seq":0,"kind":"unique","why":"a row of the world ledger (unique.json)"}
 {"material_id":"ebony","seq":0,"kind":"place-family","value":"ruin","why":"a ruin's hoard"}
@@ -26,7 +27,9 @@
 {"material_id":"kothringi-relic","seq":1,"kind":"culture","value":"oxblood","why":"the Chime-Keepers live in the Kothringi towns"}
 {"material_id":"kothringi-relic","seq":2,"kind":"record","value":"\\bkothringi\\b","why":"the record names the Kothringi"}
 {"material_id":"leather","seq":0,"kind":"anywhere","why":"the marsh's own make"}
+{"material_id":"masu-plate","seq":0,"kind":"anywhere","why":"rare: its tier keeps it to a capital's treasury"}
 {"material_id":"obsidian","seq":0,"kind":"anywhere","why":"rare: its tiers (T4 and up) keep it to a city's locked stores"}
+{"material_id":"saxhleel","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"scale","seq":0,"kind":"anywhere","why":"the marsh's own make; the tier ceiling keeps it to the towns"}
 {"material_id":"shadowscale","seq":0,"kind":"record","value":"\\bshadowscales?\\b","why":"the record names the Shadowscales"}
 {"material_id":"shell","seq":0,"kind":"anywhere","why":"the marsh's own make"}

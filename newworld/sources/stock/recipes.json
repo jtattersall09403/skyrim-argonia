@@ -208,15 +208,17 @@
    "item": "1AncArgArm.esp:000801",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:1AncArgArm.esp:000808",
-   "why": "tempered with bronze's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:1AncArgArm.esp:000808",
+   "why": "the mod's own recipe (1AAATemperArmorCuirass): every ingredient is one of ours"
   },
   {
    "item": "1AncArgArm.esp:000802",
@@ -246,15 +248,17 @@
    "item": "1AncArgArm.esp:000802",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:1AncArgArm.esp:000807",
-   "why": "tempered with bronze's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:1AncArgArm.esp:000807",
+   "why": "the mod's own recipe (1AAATemperArmorGauntlets): every ingredient is one of ours"
   },
   {
    "item": "1AncArgArm.esp:000804",
@@ -284,15 +288,17 @@
    "item": "1AncArgArm.esp:000804",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:1AncArgArm.esp:00080A",
-   "why": "tempered with bronze's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:1AncArgArm.esp:00080A",
+   "why": "the mod's own recipe (1AAATemperArmorTail): every ingredient is one of ours"
   },
   {
    "item": "BSMBonemoldSet.esp:000D6D",
@@ -925,11 +931,26 @@
   {
    "item": "Black Marsh North.esp:037DED",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "shadowscale T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "AdvancedArmors"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+     2
+    ],
+    [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in shadowscale: obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots; perk of ArmorMaterialScaled"
   },
   {
    "item": "Black Marsh North.esp:037DED",
@@ -1216,7 +1237,7 @@
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -1224,12 +1245,16 @@
      2
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's sword shape (2 main, 1 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's sword shape (2 main, 1 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "Black Marsh North.esp:03E3F9",
@@ -1243,7 +1268,7 @@
     ]
    ],
    "source": "generated",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012437",
@@ -1269,15 +1294,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012437",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F33",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F33",
+   "why": "the mod's own recipe (CIPHTBMLegionLightBootsTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012438",
@@ -1303,15 +1330,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012438",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
-     1
+     "Skyrim.esm:05AD93",
+     2
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F45",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F45",
+   "why": "the mod's own recipe (CIPHTBMLegionLightCuirassTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012439",
@@ -1337,15 +1366,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012439",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F44",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F44",
+   "why": "the mod's own recipe (CIPHTBMLegionLightBracersTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:01243A",
@@ -1371,15 +1402,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:01243A",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F46",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F46",
+   "why": "the mod's own recipe (CIPHTBMLegionLightHelmetTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:01243C",
@@ -1405,15 +1438,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:01243C",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F48",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F48",
+   "why": "the mod's own recipe (CIPHTBMLegionHeavyHelmetTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:01243D",
@@ -1655,15 +1690,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012445",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F37",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F37",
+   "why": "the mod's own recipe (CIPHTBMLegionKopisTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012446",
@@ -1717,15 +1754,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EA6",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F3D",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F3D",
+   "why": "the mod's own recipe (CIPHTBMLegionXiphosTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EBE",
@@ -1749,15 +1788,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EBE",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F39",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F39",
+   "why": "the mod's own recipe (CIPHTBMLegionSpearTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEE",
@@ -1766,7 +1807,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T3: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEE",
@@ -1791,7 +1832,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T3: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEF",
@@ -1816,7 +1857,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF9",
@@ -1896,15 +1937,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:038DCB",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F47",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F47",
+   "why": "the mod's own recipe (CIPHTBMLegionLightHelmet2Temper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:038DCF",
@@ -1930,15 +1973,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:038DCF",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F49",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F49",
+   "why": "the mod's own recipe (CIPHTBMLegionHeavyHelmet2Temper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:03BCA2",
@@ -2087,7 +2132,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:076D60",
@@ -2127,15 +2172,17 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:109C01",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F3A",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F3A",
+   "why": "the mod's own recipe (CIPHTBMLegionSpear2HTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:113E10",
@@ -2243,15 +2290,21 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:113E15",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
+    [
+     "Skyrim.esm:05AD93",
+     1
+    ],
     [
      "Skyrim.esm:05ACE5",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F3C",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F3C",
+   "why": "the mod's own recipe (CIPHTBMLegionWarhammerTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:113E18",
@@ -2413,15 +2466,21 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F4D",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F51",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F51",
+   "why": "the mod's own recipe (CIPHTBMLegionHeavyShieldTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F4E",
@@ -2447,15 +2506,21 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F4E",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:118F52",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:118F52",
+   "why": "the mod's own recipe (CIPHTBMLegionHeavyShield2Temper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5B",
@@ -2464,7 +2529,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5B",
@@ -2489,7 +2554,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5C",
@@ -2514,7 +2579,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5D",
@@ -2539,7 +2604,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F65",
@@ -2585,7 +2650,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF8",
@@ -2610,7 +2675,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AFA",
@@ -2635,7 +2700,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:155C03",
@@ -2658,7 +2723,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:155C05",
@@ -4325,7 +4390,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:197A10",
@@ -4350,7 +4415,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:197A12",
@@ -4375,7 +4440,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:197A14",
@@ -4400,7 +4465,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:197A16",
@@ -4686,7 +4751,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:20EE15",
@@ -4749,7 +4814,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T3: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6C9",
@@ -4778,7 +4843,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T3: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CB",
@@ -4807,7 +4872,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CC",
@@ -4836,7 +4901,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CD",
@@ -4865,7 +4930,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CE",
@@ -4894,7 +4959,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CF",
@@ -4923,7 +4988,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6D0",
@@ -4967,24 +5032,41 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:4A642A",
    "kind": "temper",
    "station": "CraftingSmithingSharpeningWheel",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:05ACE5",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:4A642B",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:4A642B",
+   "why": "the mod's own recipe (CIPHTBMLegionFalcataTemper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:4C4C1C",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "obsidian T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "GlassSmithing"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+     4
+    ],
+    [
+     "Skyrim.esm:06F993",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in obsidian: Obsidian (HTBM) set in wood: the macahuitl's make; perk of WeapMaterialGlass"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:4C4C1C",
@@ -5051,7 +5133,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "kothringi-relic T1: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "kothringi-relic T2: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5A996D",
@@ -5074,7 +5156,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FD9",
@@ -5097,7 +5179,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDA",
@@ -5122,7 +5204,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDB",
@@ -5145,7 +5227,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T5: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDC",
@@ -5268,7 +5350,7 @@
    "perk": [],
    "ingredients": [],
    "source": "none",
-   "why": "xanmeer-relic T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "why": "xanmeer-relic T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:5DC62F",
@@ -5310,15 +5392,21 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:63CCFA",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
      "Skyrim.esm:05ACE5",
      1
+    ],
+    [
+     "Skyrim.esm:05AD93",
+     1
     ]
    ],
-   "source": "overrides:Here There Be Monsters - Curse of Cipactli.esp:63CCFD",
-   "why": "tempered with imperial's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:Here There Be Monsters - Curse of Cipactli.esp:63CCFD",
+   "why": "the mod's own recipe (CIPHTBMLegionHeavyHelmet3Temper): every ingredient is one of ours"
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:781D12",
@@ -5463,8 +5551,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5472,7 +5564,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0008D1",
@@ -5497,8 +5589,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5506,7 +5602,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0008F8",
@@ -5531,8 +5627,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5540,7 +5640,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0008FA",
@@ -5565,8 +5665,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5574,7 +5678,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0008FC",
@@ -5599,8 +5703,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5608,7 +5716,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:000D63",
@@ -5633,6 +5741,10 @@
    "perk": [],
    "ingredients": [
     [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
+    [
      "Skyrim.esm:0DB5D2",
      1
     ],
@@ -5642,7 +5754,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:000D6B",
@@ -5701,7 +5813,7 @@
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "EbonySmithing"
    ],
    "ingredients": [
     [
@@ -5709,12 +5821,16 @@
      5
     ],
     [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      3
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of ArmorMaterialSteel"
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in masu-plate: Bog Iron plate over Masu Scales (KotM); perk of ArmorMaterialEbony"
   },
   {
    "item": "King of the Murkmire.esp:00ADB0",
@@ -5728,7 +5844,7 @@
     ]
    ],
    "source": "generated",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with masu-plate's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:00ADB1",
@@ -5737,8 +5853,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5746,21 +5866,27 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB1",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
+     "King of the Murkmire.esp:000964",
      1
     ]
    ],
-   "source": "overrides:King of the Murkmire.esp:01A80E",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:King of the Murkmire.esp:01A80E",
+   "why": "the mod's own recipe (TemperAnWamasuPlateCuirass): every ingredient is one of ours"
   },
   {
    "item": "King of the Murkmire.esp:00ADB2",
@@ -5768,6 +5894,10 @@
    "station": "CraftingSmithingForge",
    "perk": [],
    "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
     [
      "Skyrim.esm:0DB5D2",
      1
@@ -5778,7 +5908,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB2",
@@ -5803,6 +5933,10 @@
    "perk": [],
    "ingredients": [
     [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
+    [
      "Skyrim.esm:0DB5D2",
      1
     ],
@@ -5812,7 +5946,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB3",
@@ -5837,8 +5971,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5846,7 +5984,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-boots shape (2 main, 2 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB4",
@@ -5871,8 +6009,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5880,7 +6022,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB5",
@@ -5889,21 +6031,36 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:00ADB6",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "ebony T4: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "EbonySmithing"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     5
+    ],
+    [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "generated",
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in masu-plate: Bog Iron plate over Masu Scales (KotM); perk of ArmorMaterialEbony"
   },
   {
    "item": "King of the Murkmire.esp:00ADB6",
@@ -5912,12 +6069,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:05AD9D",
+     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with ebony's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with masu-plate's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:00ADB7",
@@ -5966,8 +6123,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -5975,7 +6136,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:00ADB8",
@@ -6382,7 +6543,7 @@
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "EbonySmithing"
    ],
    "ingredients": [
     [
@@ -6390,33 +6551,43 @@
      5
     ],
     [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      3
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of ArmorMaterialSteel"
+   "why": "Skyrim's heavy-cuirass shape (5 main, 3 strips) in masu-plate: Bog Iron plate over Masu Scales (KotM); perk of ArmorMaterialEbony"
   },
   {
    "item": "King of the Murkmire.esp:05AC98",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05ACE5",
      1
+    ],
+    [
+     "Skyrim.esm:05AD93",
+     2
     ]
    ],
-   "source": "overrides:King of the Murkmire.esp:57AA50",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:King of the Murkmire.esp:57AA50",
+   "why": "the mod's own recipe (TemperArgonianWarriorCuirass): every ingredient is one of ours"
   },
   {
    "item": "King of the Murkmire.esp:05AC99",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "EbonySmithing"
    ],
    "ingredients": [
     [
@@ -6424,33 +6595,39 @@
      2
     ],
     [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      2
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's heavy-gauntlets shape (2 main, 2 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of ArmorMaterialSteel"
+   "why": "Skyrim's heavy-gauntlets shape (2 main, 2 strips) in masu-plate: Bog Iron plate over Masu Scales (KotM); perk of ArmorMaterialEbony"
   },
   {
    "item": "King of the Murkmire.esp:05AC99",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:King of the Murkmire.esp:57AA52",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:King of the Murkmire.esp:57AA52",
+   "why": "the mod's own recipe (TemperArgonianWarriorBracers): every ingredient is one of ours"
   },
   {
    "item": "King of the Murkmire.esp:05AC9A",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "EbonySmithing"
    ],
    "ingredients": [
     [
@@ -6458,26 +6635,32 @@
      3
     ],
     [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      2
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's heavy-boots shape (3 main, 2 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of ArmorMaterialSteel"
+   "why": "Skyrim's heavy-boots shape (3 main, 2 strips) in masu-plate: Bog Iron plate over Masu Scales (KotM); perk of ArmorMaterialEbony"
   },
   {
    "item": "King of the Murkmire.esp:05AC9A",
    "kind": "temper",
    "station": "CraftingSmithingArmorTable",
-   "perk": [],
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
    "ingredients": [
     [
-     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     "Skyrim.esm:05AD93",
      1
     ]
    ],
-   "source": "overrides:King of the Murkmire.esp:57AA51",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "source": "kept:King of the Murkmire.esp:57AA51",
+   "why": "the mod's own recipe (TemperArgonianWarriorBoots): every ingredient is one of ours"
   },
   {
    "item": "King of the Murkmire.esp:086686",
@@ -6598,7 +6781,7 @@
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6606,12 +6789,16 @@
      4
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      2
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's battleaxe shape (4 main, 2 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's battleaxe shape (4 main, 2 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC0",
@@ -6625,7 +6812,7 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA53",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC1",
@@ -6662,11 +6849,15 @@
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
      "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     1
+    ],
+    [
+     "Skyrim.esm:05AD93",
      1
     ],
     [
@@ -6675,7 +6866,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's dagger shape (1 main, 1 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC2",
@@ -6689,14 +6880,14 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA60",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC3",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6704,12 +6895,16 @@
      4
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      3
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's greatsword shape (4 main, 3 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's greatsword shape (4 main, 3 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC3",
@@ -6723,14 +6918,14 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA54",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC4",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6738,12 +6933,16 @@
      3
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's mace shape (3 main, 1 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's mace shape (3 main, 1 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC4",
@@ -6757,14 +6956,14 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA55",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC5",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6772,12 +6971,16 @@
      2
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's sword shape (2 main, 1 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's sword shape (2 main, 1 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC5",
@@ -6791,14 +6994,14 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA56",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC6",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6806,12 +7009,16 @@
      2
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      2
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's waraxe shape (2 main, 2 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's waraxe shape (2 main, 2 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC6",
@@ -6825,14 +7032,14 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA57",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098EC7",
    "kind": "forge",
    "station": "CraftingSmithingForge",
    "perk": [
-    "SteelSmithing"
+    "ElvenSmithing"
    ],
    "ingredients": [
     [
@@ -6840,12 +7047,16 @@
      4
     ],
     [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      3
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's warhammer shape (4 main, 3 strips) in bog-iron: Bog Iron (HTBM), in place of Skyrim's iron and steel ingots; perk of WeapMaterialSteel"
+   "why": "Skyrim's warhammer shape (4 main, 3 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
   },
   {
    "item": "King of the Murkmire.esp:098EC7",
@@ -6859,7 +7070,7 @@
     ]
    ],
    "source": "overrides:King of the Murkmire.esp:57AA58",
-   "why": "tempered with bog-iron's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with copper-steel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:098ECA",
@@ -6928,8 +7139,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -6937,7 +7152,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0AD634",
@@ -6946,12 +7161,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:0AD635",
@@ -6960,8 +7175,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -6969,7 +7188,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0AD635",
@@ -6978,12 +7197,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:0AD636",
@@ -6992,8 +7211,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -7001,7 +7224,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0AD636",
@@ -7010,12 +7233,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:0AD637",
@@ -7024,8 +7247,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -7033,7 +7260,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0AD637",
@@ -7042,12 +7269,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:0CC279",
@@ -7056,8 +7283,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -7065,7 +7296,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:0CC279",
@@ -7074,12 +7305,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:10C482",
@@ -7304,12 +7535,16 @@
      2
     ],
     [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's sword shape (2 main, 1 strips) in bone: Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk; perk of WeapMaterialSteel"
+   "why": "Skyrim's sword shape (2 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of WeapMaterialSteel"
   },
   {
    "item": "King of the Murkmire.esp:27504F",
@@ -7340,12 +7575,16 @@
      2
     ],
     [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's sword shape (2 main, 1 strips) in bone: Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk; perk of WeapMaterialSteel"
+   "why": "Skyrim's sword shape (2 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of WeapMaterialSteel"
   },
   {
    "item": "King of the Murkmire.esp:275050",
@@ -7370,6 +7609,10 @@
    "perk": [],
    "ingredients": [
     [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
+    [
      "Skyrim.esm:0DB5D2",
      1
     ],
@@ -7379,7 +7622,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:27A2B7",
@@ -7388,12 +7631,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "King of the Murkmire.esp:27A2BB",
@@ -7572,12 +7815,16 @@
      1
     ],
     [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's dagger shape (1 main, 1 strips) in bone: Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk; perk of WeapMaterialSteel"
+   "why": "Skyrim's dagger shape (1 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of WeapMaterialSteel"
   },
   {
    "item": "King of the Murkmire.esp:57AA3D",
@@ -7644,12 +7891,16 @@
      3
     ],
     [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
      "Skyrim.esm:0800E4",
      1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's mace shape (3 main, 1 strips) in bone: Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk; perk of WeapMaterialSteel"
+   "why": "Skyrim's mace shape (3 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of WeapMaterialSteel"
   },
   {
    "item": "King of the Murkmire.esp:57AA3F",
@@ -7714,10 +7965,14 @@
     [
      "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's bow shape (2 main, 0 strips) in bone: Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk; perk of WeapMaterialSteel"
+   "why": "Skyrim's bow shape (2 main, 0 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of WeapMaterialSteel"
   },
   {
    "item": "King of the Murkmire.esp:57AA41",
@@ -7846,8 +8101,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
     ],
     [
      "Skyrim.esm:0800E4",
@@ -7855,7 +8114,7 @@
     ]
    ],
    "source": "generated",
-   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in leather: Leather; perk of ArmorMaterialLeather"
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
   },
   {
    "item": "King of the Murkmire.esp:99E4A2",
@@ -7864,12 +8123,12 @@
    "perk": [],
    "ingredients": [
     [
-     "Skyrim.esm:0DB5D2",
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
      1
     ]
    ],
    "source": "generated",
-   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+   "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
    "item": "PrvtI_ArgonianWeapons.esp:000800",
@@ -8708,11 +8967,18 @@
   {
    "item": "shadowscaleset.esp:000806",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "shadowscale T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "EbonySmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9D",
+     3
+    ]
+   ],
+   "source": "kept:shadowscaleset.esp:000D83",
+   "why": "the mod's own recipe (RecipeShadowScale_Sword): every ingredient is one of ours"
   },
   {
    "item": "shadowscaleset.esp:000806",
@@ -8769,11 +9035,22 @@
   {
    "item": "shadowscaleset.esp:00080C",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "shadowscale T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "AdvancedArmors"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "kept:shadowscaleset.esp:000813",
+   "why": "the mod's own recipe (RecipeShadowscaleCowl): every ingredient is one of ours"
   },
   {
    "item": "shadowscaleset.esp:00080C",
@@ -8826,11 +9103,26 @@
   {
    "item": "shadowscaleset.esp:000D80",
    "kind": "forge",
-   "station": null,
-   "perk": [],
-   "ingredients": [],
-   "source": "none",
-   "why": "shadowscale T6: a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "AdvancedArmors"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+     2
+    ],
+    [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:shadowscaleset.esp:000D7F",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in shadowscale: obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots; perk of ArmorMaterialScaled"
   },
   {
    "item": "shadowscaleset.esp:000D80",
@@ -8849,7 +9141,7 @@
  ],
  "audit": {
   "mod_recipes": 215,
-  "kept": 149,
-  "overridden": 55
+  "kept": 174,
+  "overridden": 33
  }
 }

@@ -1340,7 +1340,10 @@ def check_levelled(ctx) -> list[str]:
 
 def check_stock(ctx) -> list[str]:
     from tools.places.stock import verify
-    return verify.check_stock(ctx)
+    bad = verify.check_stock(ctx)
+    for o in (ctx.get("stock") or {}).get("owed", []):   # the items ladder retiered it: the place's restock owes it
+        NOTES.append(f"stock owed to the restock (the items ladder retiered it; out/places/stock-audit): {o}")
+    return bad
 
 
 def check_promises(ctx) -> list[str]:

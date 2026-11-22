@@ -227,6 +227,10 @@ def item_tier(it: dict, sc: dict | None = None) -> tuple[str | None, str]:
     row = item_materials()["gear"].get(_key(it))
     if row and row.get("tier"):
         return row["tier"], f"its item_material row ({row['why']})"
+    if row:
+        t = materials()["materials"][row["material"]].get("ladder_tier")
+        if t:
+            return t, f"its material ({row['material']}, ladder tier {t})"
     mat = power_tier(it, sc)
     if mat[0] is None:
         kws = set(it.get("keywords") or []) | {it.get("material")}
@@ -240,6 +244,70 @@ def item_tier(it: dict, sc: dict | None = None) -> tuple[str | None, str]:
     if by_ench and (mat[0] is None or rank[by_ench] > rank[mat[0]]):
         return by_ench, f"its enchantment's grade ({grade})"
     return mat
+
+
+def ladder_stats(it: dict, sc: dict | None = None) -> dict | None:
+    """The stats a ladder item takes (its tier's Skyrim base for its kind, power.json `stats`): {edid, power, weight,
+    value}; None for an item off the ladder or of no kind (a staff, clothing)."""
+    if _key(it) not in item_materials()["gear"]:
+        return None
+    kind = power_kind(it)
+    t = item_tier(it, sc)[0]
+    return ((power_table().get(kind) or {}).get("stats") or {}).get(t) if kind else None
+
+
+def misfiled(it: dict) -> str | None:
+    """Why a record's own keywords misfile it, or None: a magic staff typed as a sword or axe (King of the Murkmire's
+    staff of soul trapping is WeapTypeSword; a quarterstaff, warhammer-typed, is a weapon), an enchanted piece filed
+    on the ladder (the ladder is plain gear), ammunition read as a weapon."""
+    edid = it.get("edid") or ""
+    kind = power_kind(it)
+    if "Staff" in edid and kind not in (None, "warhammer"):
+        return f"{edid} is a magic staff its record types as a {kind}"
+    if (it.get("sig") or it.get("record")) == "AMMO" and kind:
+        return f"{edid} is ammunition read as a {kind}"
+    if (it.get("ench") or it.get("enchanted")) and _key(it) in item_materials()["gear"]:
+        return f"{edid} is enchanted: the ladder files plain gear only"
+    return None
+
+
+def legacy_tier(it: dict, sc: dict | None = None) -> str | None:
+    """The tier an item had by the rule the places were first stocked under (its Skyrim material keyword, else its
+    value), so the stock check can tell a row the items ladder retiered (owed to the place's restock) from a row
+    that was always wrong."""
+    sc = sc or scale()
+    kws = set(it.get("keywords") or [])
+    t = next((t["id"] for t in sc["tiers"] for k in t.get("power_weapon", []) + t.get("power_armour", []) if k in kws), None)
+    if t is None and it.get("value") is not None:
+        t = next((t["id"] for t in sc["tiers"] if it["value"] <= t["value_max"]), sc["tiers"][-1]["id"])
+    return t
+
+
+def ladder_override(it: dict, sc: dict | None = None) -> dict | None:
+    """What the world build writes over a ladder item's record: {power, value} of its tier's Skyrim base when its own
+    damage or rating differs from that base's (weight, speed and reach stay its own); None when it already stands at
+    its tier (an iron-level Naga macana is left as it is) or is off the ladder."""
+    st = ladder_stats(it, sc)
+    pw = power_of(it)
+    if st is None or pw is None or abs(pw - st["power"]) < 0.5:
+        return None
+    return {"power": st["power"], "value": st["value"], "base": st["edid"], "was": {"power": pw, "value": it.get("value")}}
+
+
+@lru_cache(maxsize=1)
+def ladder() -> dict:
+    """{(tier, slot): [material, ...]}: which of our materials stand at each tier, by slot, read from the filed gear
+    (item_material and items.json): the ladder table, derived, never authored."""
+    items = {i["id"]: i for i in json.loads((STOCK / "items.json").read_text(encoding="utf-8"))["items"]}
+    out: dict = {}
+    for k, row in item_materials()["gear"].items():
+        i = items.get(k)
+        if i is None or not slot_of(i):
+            continue
+        lst = out.setdefault((item_tier(i)[0], slot_of(i)), [])
+        if row["material"] not in lst:
+            lst.append(row["material"])
+    return out
 
 
 def never_reason(it: dict, sc: dict | None = None) -> str | None:

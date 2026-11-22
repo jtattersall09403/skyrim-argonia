@@ -428,7 +428,7 @@ each promise and what delivers it, and exits 1 while any is open. A promise is d
 record, with the reason (`status: dropped`, `why` naming the edit), never to avoid the work.
 
 **The scale** (`scale.json`, with its reasons): one fixed ladder T1 Common .. T5 Precious, and T6 Exceptional, which
-is entered only in the ledger. An item's tier is its power against Skyrim's base gear of its kind (the ladder, [items](items.md)). Each tier lists its materials of ours by slot (weapon, heavy, light, shield), enchantment grade, soul gem, gems, jewellery,
+is entered only in the ledger. An item of ours takes its material's tier and that tier's Skyrim stats (the ladder, [items](items.md)). Each tier lists its materials of ours by slot (weapon, heavy, light, shield), enchantment grade, soul gem, gems, jewellery,
 potion grade, gold range, lock and the most its container may hold (`value_max`). The tiers are checked against
 vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's band is set:
 - Wild ground: the place's reward band (`place_danger`, docs/design/danger.md) sets the tier (`danger_tier`: D0
@@ -441,7 +441,7 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
   tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band
   (`guard_issue`): their own culture's guard set where the place's mods provide one (the set's plugin is one of the
-  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian scale guard armour, T4 by its rating, for a
+  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian scale guard armour, T3, the scale material's tier, for a
   Black Marsh place of ceiling T3 or more), with the set's weapon where the source's guards carried one; else the
   plain issue at the `owner` faction's `issue_tier` (sound gear, T2). Every guard also carries one plain torch
   (`guard_issue.torch`, Skyrim.esm 01D4EC, never a levelled list), as Skyrim's guards do; the guard packages

@@ -142,8 +142,18 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
     exp = expected_mix(w, pid)
     none_of = {g for t in exp["targets"] if t["pct"] == 0 for g in t["groups"]}
     bad = []
+    guards = {p.id for p in w.rows("person", place_id=pid) if p.person_role_id == "guard"}
     for row in stock_rows(doc):
         it = items.get(row["item"])
+        if it is not None and not row["exception"]:
+            wrong = split.misfiled({"edid": it.edid, "record": it.record, "power_kind": it.power_kind,
+                                    "enchanted": it.enchanted, "id": it.id})
+            if not wrong and row["person"] in guards and it.enchanted and it.item_kind_id in ("weapon", "armour"):
+                wrong = f"{it.edid} is enchanted: never a guard's routine issue"
+            if wrong:
+                bad.append({"holder": row["holder"], "item": row["item"], "edid": it.edid, "count": row["count"],
+                            "material": it.material_id, "rule": "misfiled", "why": wrong})
+                continue
         mid = getattr(it, "material_id", None) if it else None
         if mid is None or row["exception"]:
             continue
