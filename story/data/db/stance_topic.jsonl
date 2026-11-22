@@ -60,26 +60,26 @@
 {"person_id":"npc.dunmer-north.riverwalk.n2-3","opinion_class":"work","lean":1,"from":"culture.group.riverwalk.boat-crew"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"danger","lean":0,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"directions","lean":1,"from":"culture.settlement.riverwalk"}
-{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"empire","lean":-2,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"empire","lean":-2,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"faction","lean":1,"from":"culture.group.riverwalk.toll-office"}
-{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"hist","lean":1,"from":"culture.faction.an-xileel"}
-{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"people","lean":0,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"hist","lean":1,"from":"culture.faction.xeech-leel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"people","lean":0,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"place","lean":1,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"trade","lean":1,"from":"culture.group.riverwalk.toll-office"}
 {"person_id":"npc.dunmer-north.riverwalk.n3","opinion_class":"work","lean":1,"from":"culture.group.riverwalk.toll-office"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"danger","lean":0,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"directions","lean":1,"from":"culture.settlement.riverwalk"}
-{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"empire","lean":-2,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"empire","lean":-2,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"faction","lean":1,"from":"culture.group.riverwalk.toll-office","deviation_lean":0,"deviation_reason":"Carries the toll box up from the spit at dusk and has heard both claimants by name; she keeps her own counsel on the state's claim."}
-{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"hist","lean":1,"from":"culture.faction.an-xileel"}
-{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"people","lean":0,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"hist","lean":1,"from":"culture.faction.xeech-leel"}
+{"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"people","lean":0,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"place","lean":1,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"trade","lean":1,"from":"culture.group.riverwalk.toll-office"}
 {"person_id":"npc.dunmer-north.riverwalk.n3-2","opinion_class":"work","lean":1,"from":"culture.group.riverwalk.toll-office"}
 {"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"danger","lean":0,"from":"culture.settlement.riverwalk"}
-{"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"directions","lean":1,"from":"culture.settlement.riverwalk","deviation_lean":2,"deviation_reason":"Holds the Reed-Sail Compact post at the stage and gives every route from it."}
+{"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"directions","lean":1,"from":"culture.settlement.riverwalk","deviation_lean":2,"deviation_reason":"Holds the ferry pilots post at the stage and gives every route from it."}
 {"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"faction","lean":-1,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"hist","lean":2,"from":"culture.people.argonian-tribal"}
@@ -90,10 +90,10 @@
 {"person_id":"npc.dunmer-north.riverwalk.stage-mistress","opinion_class":"work","lean":1,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"danger","lean":0,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"directions","lean":1,"from":"culture.settlement.riverwalk"}
-{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"empire","lean":-2,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"empire","lean":-2,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"faction","lean":1,"from":"culture.group.riverwalk.toll-office"}
-{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"hist","lean":1,"from":"culture.faction.an-xileel"}
-{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"people","lean":0,"from":"culture.faction.an-xileel"}
+{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"hist","lean":1,"from":"culture.faction.xeech-leel"}
+{"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"people","lean":0,"from":"culture.faction.xeech-leel"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"place","lean":1,"from":"culture.settlement.riverwalk"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.dunmer-north.riverwalk.toll-holder","opinion_class":"trade","lean":1,"from":"culture.group.riverwalk.toll-office","deviation_lean":0,"deviation_reason":"Writes each boat in two columns and knows the levy funds a quarrel as much as the state."}
@@ -161,9 +161,9 @@
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"danger","lean":-2,"from":"culture.settlement.greenspring"}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"directions","lean":1,"from":"culture.settlement.greenspring"}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
-{"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"faction","lean":0,"from":"culture.group.greenspring.office-holders","deviation_lean":-1,"deviation_reason":"The Veiled Reed's factors pass through on the road to Helstrom."}
+{"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"faction","lean":0,"from":"culture.group.greenspring.office-holders","deviation_lean":-1,"deviation_reason":"the Toh-Reel-Ka's factors pass through on the road to Helstrom."}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"hist","lean":2,"from":"culture.group.greenspring.office-holders"}
-{"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"people","lean":0,"from":"culture.settlement.greenspring","deviation_lean":-1,"deviation_reason":"Sends the cult couriers and Veiled Reed factors on before dark once their loads are entered."}
+{"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"people","lean":0,"from":"culture.settlement.greenspring","deviation_lean":-1,"deviation_reason":"Sends the cult couriers and Toh-Reel-Ka factors on before dark once their loads are entered."}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"place","lean":2,"from":"culture.settlement.greenspring"}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"rumour","lean":0,"from":"culture.settlement.greenspring"}
 {"person_id":"npc.hist-heartland.greenspring.root-herald","opinion_class":"trade","lean":1,"from":"culture.settlement.greenspring","deviation_lean":2,"deviation_reason":"Keeps the tribe's ledger of the goods that go down the road to Helstrom."}
@@ -522,7 +522,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis","deviation_lean":1,"deviation_reason":"Personal: she came to the Teeth from the travelling Nisswo, who teach that each village should hear many readings; one more reading of the temple does not frighten her (faction sheet norm, inferred)."}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n1","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -532,7 +531,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -542,7 +540,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis","deviation_lean":1,"deviation_reason":"Sleeps on a bedroll in the upper rooms between day watches; the temple is where he rests more than where he worships."}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -552,7 +549,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-3","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -562,7 +558,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo","deviation_lean":0,"deviation_reason":"Spends his days among offerings to Sithis; the Hist seldom enters his talk."}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis","deviation_lean":0,"deviation_reason":"Carries each pilgrim's offering in himself; he meets the givers whom the band only watches."}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.n2-4","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -572,7 +567,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis","deviation_lean":2,"deviation_reason":"Meets every pilgrim where the way meets the water; the way in is his daily office."}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.nisswo-teeth","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -582,7 +576,6 @@
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"directions","lean":1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"faction","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
-{"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"hist","lean":1,"from":"culture.faction.nisswo"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"people","lean":-1,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"place","lean":2,"from":"culture.settlement.teeth-of-sithis"}
 {"person_id":"npc.mercantile-coast.teeth-of-sithis.the-one","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal"}
@@ -808,11 +801,8 @@
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.n2-3","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal","deviation_lean":-1,"deviation_reason":"Will not hear talk of who has not come back."}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.n2-3","opinion_class":"trade","lean":0,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.n2-3","opinion_class":"work","lean":1,"from":"culture.people.argonian-tribal","deviation_lean":-1,"deviation_reason":"Her kin-house is kept swept for adults who went down on the roll and have not come back."}
-{"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"danger","lean":-1,"from":"culture.faction.many-root-conclave"}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"directions","lean":1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"empire","lean":-1,"from":"culture.people.argonian-tribal"}
-{"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"faction","lean":0,"from":"culture.faction.many-root-conclave"}
-{"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"hist","lean":2,"from":"culture.faction.many-root-conclave"}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"people","lean":-1,"from":"culture.people.argonian-tribal"}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"place","lean":2,"from":"culture.people.argonian-tribal","deviation_lean":0,"deviation_reason":"She fills the offering bowls and sees each year fewer come to them."}
 {"person_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","opinion_class":"rumour","lean":0,"from":"culture.people.argonian-tribal","deviation_lean":-1,"deviation_reason":"The rumour is her own tree going quiet; she will not trade it as talk."}

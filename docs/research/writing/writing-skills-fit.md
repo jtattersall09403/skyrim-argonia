@@ -16,7 +16,7 @@ Lane 0.1-i, 2026-10-29 (decisions 0024, 0025).
   approaches, resolve), keeps one target across a plan and picks settings a use allows. `brief.py` reads the
   registry, stance, culture sheets, place facts, topic web and condition vocabulary, refuses a record with a
   non-vocabulary term, a missing stage field, a missing fail-forward or fewer than two endings, and writes a
-  journal brief. LH38 is rebuilt in the new format; MR01 (Many-Root) is new.
+  journal brief. LH38 is rebuilt in the new format; MR01 was new.
 - **quest-review.** Paths to the world records; the gaps in its numbering filled (evidence and accusation,
   journal register, vocabulary and fail-forward, novelty rule, registry match); item 18 completed; findings go
   to the record's `review`.

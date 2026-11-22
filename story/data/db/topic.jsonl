@@ -1,6 +1,6 @@
 {"id":"topic.about-alten-corimont","topic_class":"newcomer","label":"What is Alten Corimont?","glossary_term":"term.alten-corimont"}
 {"id":"topic.about-alten-meerhleel","topic_class":"newcomer","label":"What is Alten Meerhleel?","glossary_term":"term.alten-meerhleel"}
-{"id":"topic.about-an-xileel","topic_class":"newcomer","label":"Who rules Argonia?","glossary_term":"term.an-xileel","keys_faction":"faction.an-xileel"}
+{"id":"topic.about-an-xileel","topic_class":"newcomer","label":"Who rules Argonia?","glossary_term":"term.an-xileel","keys_faction":"faction.xeech-leel"}
 {"id":"topic.about-archein","topic_class":"newcomer","label":"Who were the Archeins?","glossary_term":"term.archein"}
 {"id":"topic.about-archon","topic_class":"newcomer","label":"What is Archon?","glossary_term":"term.archon"}
 {"id":"topic.about-argonia","topic_class":"newcomer","label":"What is Argonia?","glossary_term":"term.argonia"}
@@ -35,13 +35,10 @@
 {"id":"topic.about-house-dres-remnant","topic_class":"newcomer","label":"Are the Dres still here?","glossary_term":"term.house-dres-remnant","keys_faction":"faction.dres-remnant"}
 {"id":"topic.about-imperial","topic_class":"newcomer","label":"What did the Empire leave?","glossary_term":"term.imperial"}
 {"id":"topic.about-imperial-legion-remnant","topic_class":"newcomer","label":"Why are there legionaries here?","glossary_term":"term.imperial-legion-remnant","keys_faction":"faction.imperial-legion-remnant"}
-{"id":"topic.about-league-of-open-water","topic_class":"newcomer","label":"What is the League?","glossary_term":"term.league-of-open-water","keys_faction":"faction.league-of-open-water"}
 {"id":"topic.about-lighter-flotilla","topic_class":"newcomer","label":"What is Lighter Flotilla?","glossary_term":"term.lighter-flotilla","keys_place":"place.mercantile-coast.lighter-flotilla"}
 {"id":"topic.about-lilmoth","topic_class":"newcomer","label":"What happened at Lilmoth?","glossary_term":"term.lilmoth"}
 {"id":"topic.about-long-water-hold","topic_class":"newcomer","label":"What is Long-Water Hold?","glossary_term":"term.long-water-hold"}
 {"id":"topic.about-lukiul","topic_class":"newcomer","label":"What is a lukiul?","glossary_term":"term.lukiul"}
-{"id":"topic.about-many-root-conclave","topic_class":"newcomer","label":"What is the Conclave?","glossary_term":"term.many-root-conclave","keys_faction":"faction.many-root-conclave"}
-{"id":"topic.about-marsh-charter","topic_class":"newcomer","label":"Who hires fighters?","glossary_term":"term.marsh-charter","keys_faction":"faction.marsh-charter"}
 {"id":"topic.about-morrowind","topic_class":"newcomer","label":"What is north of the marsh?","glossary_term":"term.morrowind"}
 {"id":"topic.about-morrowind-veterans","topic_class":"newcomer","label":"Why are there Dunmer soldiers?","glossary_term":"term.morrowind-veterans","keys_faction":"faction.morrowind-veterans"}
 {"id":"topic.about-murkmire","topic_class":"newcomer","label":"What is Murkmire?","glossary_term":"term.murkmire"}
@@ -49,10 +46,7 @@
 {"id":"topic.about-naga","topic_class":"newcomer","label":"Who are the Naga?","glossary_term":"term.naga"}
 {"id":"topic.about-naga-kur","topic_class":"newcomer","label":"Who are the Naga-Kur?","glossary_term":"term.naga-kur","keys_faction":"faction.naga-kur"}
 {"id":"topic.about-naheesh","topic_class":"newcomer","label":"Who leads here?","glossary_term":"term.naheesh"}
-{"id":"topic.about-night-reed-chapter","topic_class":"newcomer","label":"Who are the thieves here?","glossary_term":"term.night-reed-chapter","keys_faction":"faction.night-reed-chapter"}
 {"id":"topic.about-nine-bends","topic_class":"newcomer","label":"What is Nine Bends?","glossary_term":"term.nine-bends","keys_place":"place.pirate-freeholds.upriver-hist-village"}
-{"id":"topic.about-nisswo","topic_class":"newcomer","label":"Who are the Nisswo?","glossary_term":"term.nisswo"}
-{"id":"topic.about-nisswo-of-the-turning-path","topic_class":"newcomer","label":"What is the Turning Path?","glossary_term":"term.nisswo-of-the-turning-path","keys_faction":"faction.nisswo"}
 {"id":"topic.about-north-cut","topic_class":"newcomer","label":"What is North Cut?","glossary_term":"term.north-cut","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north"}
 {"id":"topic.about-ojel","topic_class":"newcomer","label":"What does ojel mean?","glossary_term":"term.ojel"}
 {"id":"topic.about-onkobra","topic_class":"newcomer","label":"What river is that?","glossary_term":"term.onkobra"}
@@ -61,12 +55,9 @@
 {"id":"topic.about-panther-race","topic_class":"newcomer","label":"What is Panther Race?","glossary_term":"term.panther-race"}
 {"id":"topic.about-portdun-mont","topic_class":"newcomer","label":"Where is Portdun-Mont?","glossary_term":"term.portdun-mont"}
 {"id":"topic.about-prison-road","topic_class":"newcomer","label":"Where does this road go?","glossary_term":"term.prison-road"}
-{"id":"topic.about-reed-sail-compact","topic_class":"newcomer","label":"Who runs the boats?","glossary_term":"term.reed-sail-compact","keys_faction":"faction.reed-sail-compact"}
 {"id":"topic.about-riverwalk","topic_class":"newcomer","label":"What is this place?","glossary_term":"term.riverwalk","keys_place":"place.dunmer-north.riverwalk"}
 {"id":"topic.about-root-talk","topic_class":"newcomer","label":"Who governs Helstrom?","glossary_term":"term.root-talk"}
 {"id":"topic.about-root-whisper-tribe","topic_class":"newcomer","label":"What happened to Root-Whisper?","glossary_term":"term.root-whisper-tribe","keys_faction":"faction.root-whisper"}
-{"id":"topic.about-rootworm-waykeepers","topic_class":"newcomer","label":"Who keeps the worm-roads?","glossary_term":"term.rootworm-waykeepers","keys_faction":"faction.rootworm-waykeepers"}
-{"id":"topic.about-salt-teeth","topic_class":"newcomer","label":"Who are the Salt-Teeth?","glossary_term":"term.salt-teeth","keys_faction":"faction.salt-teeth"}
 {"id":"topic.about-scalded-throne","topic_class":"newcomer","label":"Is there a king?","glossary_term":"term.scalded-throne"}
 {"id":"topic.about-sealed-vault","topic_class":"newcomer","label":"What is Sealed Vault?","glossary_term":"term.sealed-vault","keys_place":"place.imperial-penal-south.voriplasm-vault"}
 {"id":"topic.about-shadowfen","topic_class":"newcomer","label":"What is Shadowfen?","glossary_term":"term.shadowfen"}
@@ -77,21 +68,18 @@
 {"id":"topic.about-southern-sea","topic_class":"newcomer","label":"What is south?","glossary_term":"term.southern-sea"}
 {"id":"topic.about-stillrise","topic_class":"newcomer","label":"What is Stillrise?","glossary_term":"term.stillrise","keys_faction":"faction.stillrise"}
 {"id":"topic.about-sul-xan","topic_class":"newcomer","label":"Who are the Sul-Xan?","glossary_term":"term.sul-xan","keys_faction":"faction.sul-xan"}
-{"id":"topic.about-sunken-archive","topic_class":"newcomer","label":"What is the Sunken Archive?","glossary_term":"term.sunken-archive","keys_faction":"faction.sunken-archive"}
 {"id":"topic.about-synod","topic_class":"newcomer","label":"Who are the Synod?","glossary_term":"term.synod","keys_faction":"faction.synod"}
 {"id":"topic.about-tag-house","topic_class":"newcomer","label":"What is Tag House?","glossary_term":"term.tag-house","keys_place":"place.imperial-penal-south.rose-bone-waystation"}
 {"id":"topic.about-tear","topic_class":"newcomer","label":"Where does the Tear road go?","glossary_term":"term.tear"}
 {"id":"topic.about-teeth-of-sithis","topic_class":"newcomer","label":"What was the temple built to do?","glossary_term":"term.teeth-of-sithis","keys_place":"place.mercantile-coast.teeth-of-sithis"}
 {"id":"topic.about-the-empty-cradle","topic_class":"newcomer","label":"Who sends the Shadowscales?","glossary_term":"term.the-empty-cradle","keys_faction":"faction.shadowscales"}
 {"id":"topic.about-thorn","topic_class":"newcomer","label":"What is Thorn?","glossary_term":"term.thorn"}
-{"id":"topic.about-thorn-ash-reed-accord","topic_class":"newcomer","label":"Who owns the fields?","glossary_term":"term.thorn-ash-reed-accord","keys_faction":"faction.thorn-ash-reed-accord"}
+{"id":"topic.about-toh-reel-ka","topic_class":"newcomer","label":"Who are the Toh-Reel-Ka?","glossary_term":"term.toh-reel-ka"}
 {"id":"topic.about-tree-minder","topic_class":"newcomer","label":"Who is the tree-minder?","glossary_term":"term.tree-minder"}
 {"id":"topic.about-tribeless-naga","topic_class":"newcomer","label":"Who raids the tracks?","glossary_term":"term.tribeless-naga","keys_faction":"faction.tribeless-naga"}
 {"id":"topic.about-umbriel","topic_class":"newcomer","label":"What happened in 4E 48?","glossary_term":"term.umbriel"}
-{"id":"topic.about-umbriel-witness-society","topic_class":"newcomer","label":"Who remembers Umbriel?","glossary_term":"term.umbriel-witness-society","keys_faction":"faction.umbriel-witness-society"}
-{"id":"topic.about-unbound-root","topic_class":"newcomer","label":"Who are the Unbound Root?","glossary_term":"term.unbound-root","keys_faction":"faction.unbound-root"}
-{"id":"topic.about-unbound-root-cutting","topic_class":"newcomer","label":"What is a cutting?","glossary_term":"term.unbound-root-cutting"}
-{"id":"topic.about-veiled-reed","topic_class":"newcomer","label":"Who are the Veiled Reed?","glossary_term":"term.veiled-reed","keys_faction":"faction.veiled-reed"}
+{"id":"topic.about-unbound","topic_class":"newcomer","label":"Who are the Unbound?","glossary_term":"term.unbound"}
+{"id":"topic.about-unbound-cutting","topic_class":"newcomer","label":"What is a cutting?","glossary_term":"term.unbound-cutting"}
 {"id":"topic.about-xanmeer","topic_class":"newcomer","label":"What are the stone pyramids?","glossary_term":"term.xanmeer"}
 {"id":"topic.about-xit-xaht","topic_class":"newcomer","label":"Who are the Xit-Xaht?","glossary_term":"term.xit-xaht","keys_faction":"faction.xit-xaht"}
 {"id":"topic.archon-gideon-mere-neck","topic_class":"local","label":"the Mere Neck","keys_place":"place.route.archon-gideon-mere-neck","keys_aspect":"place"}
@@ -111,7 +99,7 @@
 {"id":"topic.border-road-greenspring-crossings-directions","topic_class":"local","label":"the way from the Greenspring crossings","keys_place":"place.route.border-road-greenspring-crossings","keys_aspect":"directions"}
 {"id":"topic.border-road-greenspring-crossings-people","topic_class":"local","label":"the people of the Greenspring crossings","keys_place":"place.route.border-road-greenspring-crossings","keys_aspect":"people"}
 {"id":"topic.border-road-greenspring-crossings-work","topic_class":"local","label":"work at the Greenspring crossings","keys_place":"place.route.border-road-greenspring-crossings","keys_aspect":"work"}
-{"id":"topic.broke-column-levy","topic_class":"quest","label":"the column's levy","keys_quest":"quest.fg.fg07"}
+{"id":"topic.broke-column-levy","topic_class":"quest","label":"the column's levy"}
 {"id":"topic.broke-column-pardon","topic_class":"quest","label":"a pardon for the column","keys_quest":"quest.local.lf21"}
 {"id":"topic.broke-column-schedules","topic_class":"quest","label":"the toll office's schedules","keys_quest":"quest.local.lq15"}
 {"id":"topic.broke-column-terms","topic_class":"quest","label":"the column's terms","keys_quest":"quest.local.lf21"}
@@ -138,7 +126,6 @@
 {"id":"topic.claywater-two-charges","topic_class":"quest","label":"two charges at Claywater","keys_quest":"quest.local.lf83"}
 {"id":"topic.dead-papers","topic_class":"quest","label":"papers of the dead","keys_quest":"quest.local.lr24"}
 {"id":"topic.deep-lot-pearl","topic_class":"quest","label":"the pearl from the deep lot","keys_quest":"quest.local.sx06"}
-{"id":"topic.faction-an-xileel","topic_class":"faction","label":"the An-Xileel","keys_faction":"faction.an-xileel"}
 {"id":"topic.faction-blackguards","topic_class":"faction","label":"the Blackguards","keys_faction":"faction.blackguards"}
 {"id":"topic.faction-bright-throat-tribe","topic_class":"faction","label":"the Bright-Throat tribe","keys_faction":"faction.bright-throat-tribe"}
 {"id":"topic.faction-chainbreakers","topic_class":"faction","label":"the Blackrose Chainbreakers","keys_faction":"faction.chainbreakers"}
@@ -146,40 +133,30 @@
 {"id":"topic.faction-cyrodilic-collections","topic_class":"faction","label":"the Cyrodilic Collections","keys_faction":"faction.cyrodilic-collections"}
 {"id":"topic.faction-dres-remnant","topic_class":"faction","label":"the Dres remnant","keys_faction":"faction.dres-remnant"}
 {"id":"topic.faction-imperial-legion-remnant","topic_class":"faction","label":"the Imperial Legion remnant","keys_faction":"faction.imperial-legion-remnant"}
-{"id":"topic.faction-league-of-open-water","topic_class":"faction","label":"the League of Open Water","keys_faction":"faction.league-of-open-water"}
-{"id":"topic.faction-many-root-conclave","topic_class":"faction","label":"the Many-Root Conclave","keys_faction":"faction.many-root-conclave"}
-{"id":"topic.faction-marsh-charter","topic_class":"faction","label":"the Marsh Charter","keys_faction":"faction.marsh-charter"}
 {"id":"topic.faction-morrowind-veterans","topic_class":"faction","label":"the Morrowind veterans","keys_faction":"faction.morrowind-veterans"}
 {"id":"topic.faction-murkwater-tribe","topic_class":"faction","label":"the Murkwater tribe","keys_faction":"faction.murkwater-tribe"}
 {"id":"topic.faction-naga-kur","topic_class":"faction","label":"the Naga-Kur","keys_faction":"faction.naga-kur"}
-{"id":"topic.faction-night-reed-chapter","topic_class":"faction","label":"the Night-Reed Chapter","keys_faction":"faction.night-reed-chapter"}
-{"id":"topic.faction-nisswo","topic_class":"faction","label":"the Nisswo of the Turning Path","keys_faction":"faction.nisswo"}
-{"id":"topic.faction-reed-sail-compact","topic_class":"faction","label":"the Reed-Sail Compact","keys_faction":"faction.reed-sail-compact"}
 {"id":"topic.faction-root-whisper","topic_class":"faction","label":"the Root-Whisper tribe","keys_faction":"faction.root-whisper"}
-{"id":"topic.faction-rootworm-waykeepers","topic_class":"faction","label":"the Rootworm Waykeepers","keys_faction":"faction.rootworm-waykeepers"}
-{"id":"topic.faction-salt-teeth","topic_class":"faction","label":"the Salt-Teeth","keys_faction":"faction.salt-teeth"}
 {"id":"topic.faction-shadowscales","topic_class":"faction","label":"the Shadowscales","keys_faction":"faction.shadowscales"}
 {"id":"topic.faction-stillrise","topic_class":"faction","label":"Stillrise village","keys_faction":"faction.stillrise"}
 {"id":"topic.faction-sul-xan","topic_class":"faction","label":"the Sul-Xan","keys_faction":"faction.sul-xan"}
-{"id":"topic.faction-sunken-archive","topic_class":"faction","label":"the Sunken Archive","keys_faction":"faction.sunken-archive"}
 {"id":"topic.faction-synod","topic_class":"faction","label":"the Synod","keys_faction":"faction.synod"}
-{"id":"topic.faction-thorn-ash-reed-accord","topic_class":"faction","label":"the Thorn Ash-Reed Accord","keys_faction":"faction.thorn-ash-reed-accord"}
+{"id":"topic.faction-toh-reel-ka","topic_class":"faction","label":"the Toh-Reel-Ka"}
 {"id":"topic.faction-tribeless-naga","topic_class":"faction","label":"Tribeless Naga","keys_faction":"faction.tribeless-naga"}
-{"id":"topic.faction-umbriel-witness-society","topic_class":"faction","label":"the Umbriel Witness Society","keys_faction":"faction.umbriel-witness-society"}
-{"id":"topic.faction-unbound-root","topic_class":"faction","label":"the Unbound Root","keys_faction":"faction.unbound-root"}
-{"id":"topic.faction-veiled-reed","topic_class":"faction","label":"the Veiled Reed","keys_faction":"faction.veiled-reed"}
+{"id":"topic.faction-unbound","topic_class":"faction","label":"the Unbound"}
+{"id":"topic.faction-xeech-leel","topic_class":"faction","label":"the An-Xileel","keys_faction":"faction.xeech-leel"}
 {"id":"topic.faction-xit-xaht","topic_class":"faction","label":"the Xit-Xaht","keys_faction":"faction.xit-xaht"}
-{"id":"topic.flotilla-floating-house","topic_class":"quest","label":"the speaker's hull","keys_quest":"quest.tg.tg04"}
+{"id":"topic.flotilla-floating-house","topic_class":"quest","label":"the speaker's hull"}
 {"id":"topic.flotilla-licence-terms","topic_class":"quest","label":"licensing the lighters","keys_quest":"quest.local.lm08"}
 {"id":"topic.flotilla-night-cargo","topic_class":"quest","label":"cargo landed at night","keys_quest":"quest.local.lm23"}
-{"id":"topic.flotilla-tally-handover","topic_class":"quest","label":"the hull tally","keys_quest":"quest.tg.tg04"}
+{"id":"topic.flotilla-tally-handover","topic_class":"quest","label":"the hull tally"}
 {"id":"topic.greenspring","topic_class":"local","label":"Greenspring","keys_place":"place.hist-heartland.greenspring","keys_aspect":"place"}
 {"id":"topic.greenspring-danger","topic_class":"local","label":"danger near Greenspring","keys_place":"place.hist-heartland.greenspring","keys_aspect":"danger"}
 {"id":"topic.greenspring-directions","topic_class":"local","label":"the way from Greenspring","keys_place":"place.hist-heartland.greenspring","keys_aspect":"directions"}
 {"id":"topic.greenspring-drinker","topic_class":"quest","label":"the body in the spring","keys_quest":"quest.local.lh38"}
 {"id":"topic.greenspring-drinker-raised","topic_class":"quest","label":"what the households said","keys_quest":"quest.local.lh38"}
 {"id":"topic.greenspring-people","topic_class":"local","label":"the people of Greenspring","keys_place":"place.hist-heartland.greenspring","keys_aspect":"people"}
-{"id":"topic.greenspring-sick-root","topic_class":"quest","label":"the sick root","keys_quest":"quest.mr.mr01"}
+{"id":"topic.greenspring-sick-root","topic_class":"quest","label":"the sick root"}
 {"id":"topic.greenspring-spring-terms","topic_class":"quest","label":"the use of the spring","keys_quest":"quest.local.lh37"}
 {"id":"topic.greenspring-work","topic_class":"local","label":"work at Greenspring","keys_place":"place.hist-heartland.greenspring","keys_aspect":"work"}
 {"id":"topic.greenspring-written-terms","topic_class":"quest","label":"the spring terms in writing","keys_quest":"quest.local.lh37"}
@@ -205,15 +182,15 @@
 {"id":"topic.little-advice","topic_class":"newcomer","label":"little advice"}
 {"id":"topic.living-tags","topic_class":"quest","label":"tags for the living","keys_quest":"quest.local.lr39"}
 {"id":"topic.lot-four","topic_class":"quest","label":"the death on lot four","keys_quest":"quest.local.sx05"}
-{"id":"topic.mq04-the-boat","topic_class":"quest","label":"Did you see who came to the tree?","keys_quest":"quest.main.mq04"}
-{"id":"topic.mq04-the-cut","topic_class":"quest","label":"This is your gum pot. Who cut the root?","keys_quest":"quest.main.mq04"}
-{"id":"topic.mq04-the-village","topic_class":"quest","label":"May I see the Hist?","keys_quest":"quest.main.mq04"}
-{"id":"topic.mq05-tell-minder","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one.","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-tell-nisswo","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one.","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-basin","topic_class":"quest","label":"What is the warning here?","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-quarrel","topic_class":"quest","label":"What do you and Kaska-Meen quarrel over?","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-watch","topic_class":"quest","label":"What is your place here?","keys_quest":"quest.main.mq05"}
-{"id":"topic.mq05-the-word","topic_class":"quest","label":"I saw the cut root at Low-Reed Village.","keys_quest":"quest.main.mq05"}
+{"id":"topic.mq04-the-boat","topic_class":"quest","label":"Did you see who came to the tree?"}
+{"id":"topic.mq04-the-cut","topic_class":"quest","label":"This is your gum pot. Who cut the root?"}
+{"id":"topic.mq04-the-village","topic_class":"quest","label":"May I see the Hist?"}
+{"id":"topic.mq05-tell-minder","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one."}
+{"id":"topic.mq05-tell-nisswo","topic_class":"quest","label":"I saw a Hist cut at the root. It is not the same as a silent one."}
+{"id":"topic.mq05-the-basin","topic_class":"quest","label":"What is the warning here?"}
+{"id":"topic.mq05-the-quarrel","topic_class":"quest","label":"What do you and Kaska-Meen quarrel over?"}
+{"id":"topic.mq05-the-watch","topic_class":"quest","label":"What is your place here?"}
+{"id":"topic.mq05-the-word","topic_class":"quest","label":"I saw the cut root at Low-Reed Village."}
 {"id":"topic.naga-highway-camp-active-north","topic_class":"local","label":"the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"place"}
 {"id":"topic.naga-highway-camp-active-north-danger","topic_class":"local","label":"danger near the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"danger"}
 {"id":"topic.naga-highway-camp-active-north-directions","topic_class":"local","label":"the way from the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"directions"}
@@ -296,13 +273,13 @@
 {"id":"topic.rose-bone-waystation-work","topic_class":"local","label":"work at the Tag House","keys_place":"place.imperial-penal-south.rose-bone-waystation","keys_aspect":"work"}
 {"id":"topic.service-barter","topic_class":"service","label":"What do you have for sale?"}
 {"id":"topic.tag-seventeen","topic_class":"quest","label":"Tag 17","keys_quest":"quest.local.lr24"}
-{"id":"topic.teeth-lost-purpose","topic_class":"quest","label":"the Teeth's lost purpose","keys_quest":"quest.ni.ni05"}
+{"id":"topic.teeth-lost-purpose","topic_class":"quest","label":"the Teeth's lost purpose"}
 {"id":"topic.teeth-of-sithis","topic_class":"local","label":"the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"place"}
 {"id":"topic.teeth-of-sithis-danger","topic_class":"local","label":"danger near the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"danger"}
 {"id":"topic.teeth-of-sithis-directions","topic_class":"local","label":"the way from the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"directions"}
 {"id":"topic.teeth-of-sithis-people","topic_class":"local","label":"the people of the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"people"}
 {"id":"topic.teeth-of-sithis-work","topic_class":"local","label":"work at the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"work"}
-{"id":"topic.teeth-offering","topic_class":"quest","label":"an offering for the Teeth","keys_quest":"quest.ni.ni05"}
+{"id":"topic.teeth-offering","topic_class":"quest","label":"an offering for the Teeth"}
 {"id":"topic.the-broke-column","topic_class":"local","label":"the Broke Column","keys_place":"place.imperial-fringe.the-broke-column","keys_aspect":"place"}
 {"id":"topic.the-broke-column-danger","topic_class":"local","label":"danger near the Broke Column","keys_place":"place.imperial-fringe.the-broke-column","keys_aspect":"danger"}
 {"id":"topic.the-broke-column-directions","topic_class":"local","label":"the way from the Broke Column","keys_place":"place.imperial-fringe.the-broke-column","keys_aspect":"directions"}

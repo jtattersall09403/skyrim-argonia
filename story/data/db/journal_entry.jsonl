@@ -1,8 +1,6 @@
 {"id":"text.journal.bc05.10","quest_id":"quest.bc.bc05","surface":"journal","text":"Ux-Vakka, the tag-keeper at the Tag House, told me Graves of Argonians who died mid-Owing, far from their Hist, lie at White Rose Prison. The Chainbreakers carry such bones home. I'm to ask Okan-Sei, who carries for the villages."}
 {"id":"text.journal.bc05.20","quest_id":"quest.bc.bc05","surface":"journal","text":"Okan-Sei told me the White Rose bones are carried from White Rose Prison."}
 {"id":"text.journal.bc05.90","quest_id":"quest.bc.bc05","surface":"journal","text":"Ux-Vakka or Okan-Sei has died at the Tag House. The White Rose bones will not be carried from the Tag House now."}
-{"id":"text.journal.fg07.10","quest_id":"quest.fg.fg07","surface":"journal","text":"Gnaeus Martius, serjeant of the Broke Column, asked me for the column's levy. Gideon's governor will not pay to clear the column. The toll company's officers want to use the column themselves. I'm to kill the chief of the bandits who camp there."}
-{"id":"text.journal.fg07.20","quest_id":"quest.fg.fg07","surface":"journal","text":"I killed the bandits' chief at the Broke Column camp. No levy is taken on the track below it now."}
 {"id":"text.journal.ld65.10","quest_id":"quest.local.ld65","surface":"journal","text":"The headwoman at the Shrine of Haynekhtnamet told me four villages bring offerings to the shrine each wet season. This year is her village's turn. The flooding got worse. Coin is no use on the offering shelf. I'm to bring her river salt to lay on it."}
 {"id":"text.journal.ld65.20","quest_id":"quest.local.ld65","surface":"journal","text":"The headwoman at the Shrine of Haynekhtnamet asked me for river salt to lay on the offering shelf. I have the salt. I must tell her the shelf is laid."}
 {"id":"text.journal.ld65.30","quest_id":"quest.local.ld65","surface":"journal","text":"I laid river salt on the offering shelf at the Shrine of Haynekhtnamet, among older offerings corroding where they lie. The headwoman says her village's turn is kept for this wet season."}
@@ -90,13 +88,6 @@
 {"id":"text.journal.lv40.20","quest_id":"quest.local.lv40","surface":"journal","text":"Deesh-Ra told me the villagers sound the way across the cove every morning. I'm to ask Runs-The-Line-Out, a toll hand, about sounding it again."}
 {"id":"text.journal.lv40.30","quest_id":"quest.local.lv40","surface":"journal","text":"Runs-The-Line-Out sounded the way across the cove again. Boats can reach the ferry stage."}
 {"id":"text.journal.lv40.90","quest_id":"quest.local.lv40","surface":"journal","text":"Deesh-Ra or Runs-The-Line-Out is dead. The way across the cove was never sounded again. The cove stays silted."}
-{"id":"text.journal.mr01.10","quest_id":"quest.mr.mr01","surface":"journal","text":"Vees-Wai, the tree-minder at Greenspring, told me the village's Hist has begun to sicken. The villagers blame salt from the works upstream. I'm to ask Im-Moro, the spring-keeper, what she reads in the water."}
-{"id":"text.journal.mr01.20","quest_id":"quest.mr.mr01","surface":"journal","text":"Im-Moro, the spring-keeper at Greenspring, told me salt is reaching the spring. The villagers blame the salt works upstream. Vees-Wai, the tree-minder, says the sick Hist is judged below its roots, in the drowned galleries under the village."}
-{"id":"text.journal.mr01.90","quest_id":"quest.mr.mr01","surface":"journal","text":"Vees-Wai the tree-minder or Im-Moro the spring-keeper has died at Greenspring. The sick Hist's roots are closed to me now."}
-{"id":"text.journal.ni05.10","quest_id":"quest.ni.ni05","surface":"journal","text":"Ohl-Nakka, the nisswo of the Teeth of Sithis, meets each pilgrim at the last bend of the pilgrim water and asks what offering they bring. He took mine. The Clutch of Nisswo will accept me. He spoke of a faction that claims to have found the temple's lost first purpose. I'm to hear the rest from him at the last bend."}
-{"id":"text.journal.ni05.20","quest_id":"quest.ni.ni05","surface":"journal","text":"Ohl-Nakka sent me into the temple with word of the claim. I'm to give it to Zaxi-Rekh, a priest of the Teeth."}
-{"id":"text.journal.ni05.30","quest_id":"quest.ni.ni05","surface":"journal","text":"I gave Zaxi-Rekh word of the claim. The Clutch accept that the temple's first purpose is lost. They teach the loss to pilgrims."}
-{"id":"text.journal.ni05.90","quest_id":"quest.ni.ni05","surface":"journal","text":"Ohl-Nakka or Zaxi-Rekh is dead. I cannot learn more about the claim at the Teeth of Sithis now."}
 {"id":"text.journal.sx05.10","quest_id":"quest.local.sx05","surface":"journal","text":"Deeka-Kaya, the surface tender at the Counted Lots, told me a diver came up dead on lot four. She had no right to work that lot. I'm to ask Ohl-Jei, who dives beside it."}
 {"id":"text.journal.sx05.20","quest_id":"quest.local.sx05","surface":"journal","text":"Ohl-Jei told me lot four was never the dead diver's. Lots pass by inheritance. Disputes over them are settled in Archon."}
 {"id":"text.journal.sx05.90","quest_id":"quest.local.sx05","surface":"journal","text":"Deeka-Kaya or Ohl-Jei has died at the Counted Lots. I will learn nothing more here of the death on lot four."}
@@ -106,12 +97,7 @@
 {"id":"text.journal.sx06.90","quest_id":"quest.local.sx06","surface":"journal","text":"Deeka-Kaya has died at the Counted Lots. The heirless lot will not be valued at the Counted Lots now."}
 {"id":"text.journal.sx08.10","quest_id":"quest.local.sx08","surface":"journal","text":"I took a forager's billhook from the bones outside a cave mouth among the roots at Takes-The-Tools. Something has made a lair of the hollow."}
 {"id":"text.journal.sx08.20","quest_id":"quest.local.sx08","surface":"journal","text":"I killed the wamasu that laired in the hollow at Takes-The-Tools. The hirelings at the camp a kilometre east can forage west again. Their overseers pay in goods."}
-{"id":"text.journal.tg04.10","quest_id":"quest.tg.tg04","surface":"journal","text":"Ninx-Ossa keeps the purse for the Lighter Flotilla. She told me the speaker keeps a tally of cargo off a hull that never reached the quay. She wants the list. I'm to take it."}
-{"id":"text.journal.tg04.20","quest_id":"quest.tg.tg04","surface":"journal","text":"I took the list. I'm to bring it to Ninx-Ossa."}
-{"id":"text.journal.tg04.30","quest_id":"quest.tg.tg04","surface":"journal","text":"I gave Ninx-Ossa the list. Now she knows what the hidden cache holds."}
-{"id":"text.journal.tg04.90","quest_id":"quest.tg.tg04","surface":"journal","text":"Ninx-Ossa is dead."}
 {"id":"text.objective.bc05.ask-okan-sei","quest_id":"quest.bc.bc05","surface":"journal","text":"Ask Okan-Sei about the graves at White Rose"}
-{"id":"text.objective.fg07.clear-camp","quest_id":"quest.fg.fg07","surface":"journal","text":"Clear the Broke Column camp"}
 {"id":"text.objective.ld65.bring-salt","quest_id":"quest.local.ld65","surface":"journal","text":"Bring river salt to the headwoman at the shrine"}
 {"id":"text.objective.ld65.tell-headwoman","quest_id":"quest.local.ld65","surface":"journal","text":"Tell the headwoman the salt is on the shelf"}
 {"id":"text.objective.lf21.hear-terms","quest_id":"quest.local.lf21","surface":"journal","text":"Hear the column's terms from Gnaeus Martius below the camp"}
@@ -155,12 +141,7 @@
 {"id":"text.objective.lv39.ask-toll-holder","quest_id":"quest.local.lv39","surface":"journal","text":"Ask Lifts-Two-Traps about the accusation"}
 {"id":"text.objective.lv40.ask-line-hand","quest_id":"quest.local.lv40","surface":"journal","text":"Ask Runs-The-Line-Out about the sounded way"}
 {"id":"text.objective.lv40.ask-stage-mistress","quest_id":"quest.local.lv40","surface":"journal","text":"Ask Deesh-Ra about the silted cove"}
-{"id":"text.objective.mr01.hear-keeper","quest_id":"quest.mr.mr01","surface":"journal","text":"Ask Im-Moro what she reads in the spring water"}
-{"id":"text.objective.ni05.ask-priest","quest_id":"quest.ni.ni05","surface":"journal","text":"Ask Zaxi-Rekh about the claim on the temple"}
-{"id":"text.objective.ni05.hear-claim","quest_id":"quest.ni.ni05","surface":"journal","text":"Hear Ohl-Nakka out about the claimed purpose"}
 {"id":"text.objective.sx05.ask-ohl-jei","quest_id":"quest.local.sx05","surface":"journal","text":"Ask Ohl-Jei about the death on lot four"}
 {"id":"text.objective.sx06.show-tender","quest_id":"quest.local.sx06","surface":"journal","text":"Show Deeka-Kaya the deep-lot pearl"}
 {"id":"text.objective.sx06.take-pearl","quest_id":"quest.local.sx06","surface":"journal","text":"Dive to the drowned diver's basket by the fourth lot and take the deep-lot pearl"}
 {"id":"text.objective.sx08.clear-hollow","quest_id":"quest.local.sx08","surface":"journal","text":"Clear the lair at Takes-The-Tools"}
-{"id":"text.objective.tg04.hand-tally","quest_id":"quest.tg.tg04","surface":"journal","text":"Give the hull tally to Ninx-Ossa"}
-{"id":"text.objective.tg04.take-tally","quest_id":"quest.tg.tg04","surface":"journal","text":"Take the hull tally from the speaker's hull unseen"}

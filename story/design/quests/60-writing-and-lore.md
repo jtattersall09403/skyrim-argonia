@@ -1,7 +1,7 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/60-writing-and-lore.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # Lore layers, dialogue, twists and rewards
 
-> Module of the quest/narrative master plan (see [README](README.md)).
+> Module of the quest/narrative master plan (see README).
 
 # Part X — Lore, dialogue and writing strategy
 
@@ -97,7 +97,7 @@ asking basic questions is in character.
 ## 45e. TES voice, and the AI-voice failure mode (binding)
 
 Decision
-[0042 §6](../old-decisions/0042-buildout-steers-and-engineering-standards.md).
+0042 §6.
 **Model-written prose reaches for gravitas and produces constructions nobody
 writes.** The owner's example, from a death message: *"With this death, a root
 the story grew along is severed"* — a stranded preposition wrapped round a
@@ -110,7 +110,7 @@ syntax. When a line feels portentous, cut it in half; what remains is usually
 the line.
 
 **All three stages below are built** (decision
-[0043](../old-decisions/0043-text-quality-workstream.md)): the research
+0043): the research
 pass is done, the rulebook is [docs/standards/text/](../standards/text/README.md), and the reviewer's
 brief is [docs/standards/text/review-process.md](../standards/text/review-process.md). Writers read
 that shelf; **this section keeps the banned-constructions table below**, which is
@@ -136,7 +136,7 @@ Engineering standard 4 (one keyed text catalogue,
 ### 45e.1 Banned constructions (grows — add on sight)
 
 Evidence, examples and the reviewer's qualitative tests:
-[docs/research/text-and-voice/ai-writing-tells.md](../research/text-and-voice/ai-writing-tells.md). **Density is the
+docs/research/text-and-voice/ai-writing-tells.md. **Density is the
 tell, not any single instance** — these are checks, not a lint.
 
 | Don't | Do | Why |
@@ -166,7 +166,7 @@ tell, not any single instance** — these are checks, not a lint.
 | A one-word address sentence in a greeting or bark ("Citizen.", "Friend.", "Traveller.") | fold the address into a sentence ("Mind the step, citizen.") | the bare word repeats across the province; the dialogue duplicate gate reds it |
 | The same label-field SHAPE across a whole set ("adjective pair, and appended judgement" in 77 of 134 moods) | vary the shape between records | convergence is a set property; fix the set, not the line |
 | Game or session references in `note` fields ("the game's first loss", "before the game does") | describe the thing | the in-world-prose row was being dodged via notes |
-| Contrast joined with *and* where the sense is *but* ("The bridge is new and no one uses it") | use **but** — it is allowed and usually better — or cut the second clause | the model avoids *but*; see the and/but test in [research/text-and-voice/ai-writing-tells.md](../research/text-and-voice/ai-writing-tells.md) §5 |
+| Contrast joined with *and* where the sense is *but* ("The bridge is new and no one uses it") | use **but** — it is allowed and usually better — or cut the second clause | the model avoids *but*; see the and/but test in research/text-and-voice/ai-writing-tells.md §5 |
 | Sentence-final antithesis pair ("…the one thing everyone knows and nobody will talk about") | end at the first half | a balanced closer bolted to a finished sentence; the most distinctive AI beat in the Phase 11 catalogue |
 | Negative parallelism ("it is not a shrine, it is a warning"; "not just a ford but a boundary") | say the true half only | ~3× more frequent in post-2022 web text (Pew); reads as machine contrast |
 | Colon-reveal ("The garrison has one purpose: fear") | write it as a sentence | the colon doing a drum-roll |
@@ -206,11 +206,11 @@ tell, not any single instance** — these are checks, not a lint.
 
 **Reader-only rows.** No regex can catch these; a `reader` or `voice-reader`
 checks them by the tests in the
-[research §5](../research/text-and-voice/ai-writing-tells.md). Each has a
+research §5. Each has a
 fault, a fix and a ceiling: past the ceiling it is a finding on the set,
 not a line edit. The ceilings are counted in words of the text under review
 and are set from the Morrowind yardstick in
-[corpus §10](../research/text-and-voice/morrowind-dialogue-corpus.md#10-what-the-corpus-shows):
+corpus §10:
 greeting median 6 words, bark 3, topic 32, rumour 34; 3% of lines end on a
 flourish and 93% on a fact or instruction; 67% of topic lines and 78% of
 rumours carry a particular; contractions run 4% (Argonian, Khajiit) to 37%
@@ -443,7 +443,7 @@ unlock; a salary with a strategy attached; a base built in phases; consumables
 with a unique rule; a permanent change with real trade-offs; new abilities;
 prestige gear and a title at the finale; and recognition that changes how the
 world treats you — are catalogued with evidence in
-[../research/quests-and-cast/tes-quest-and-faction-rewards.md](../research/quests-and-cast/tes-quest-and-faction-rewards.md).
+../research/quests-and-cast/tes-quest-and-faction-rewards.md.
 
 Two structural rules taken from that research:
 

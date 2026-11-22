@@ -349,7 +349,7 @@
 {"place_id":"place.imperial-fringe.gideon","ord":0,"value":"Ordinary D1 townsfolk, mostly Argonian, with a large Imperial minority"}
 {"place_id":"place.imperial-fringe.gideon","ord":1,"value":"competent D2 council guard"}
 {"place_id":"place.imperial-fringe.gideon","ord":2,"value":"Strong D3 who serves as the magistrate's champion"}
-{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":0,"value":"D1 Rootworm Waykeepers who staff the stop in season"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":0,"value":"D1 rootworm keepers who staff the stop in season"}
 {"place_id":"place.imperial-fringe.gideon-rootworm-terminus","ord":1,"value":"closed out of season"}
 {"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":0,"value":"D2 Synod adepts"}
 {"place_id":"place.imperial-fringe.gideon-synod-outstation","ord":1,"value":"one D3 magister"}
@@ -567,7 +567,7 @@
 {"place_id":"place.pirate-freeholds.alten-corimont","ord":4,"value":"D2 captain of the port, who counts cargo and does not fight"}
 {"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":0,"value":"D1 bone-carriers"}
 {"place_id":"place.pirate-freeholds.careening-hard","ord":0,"value":"2-5 D2 boatwrights"}
-{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"D3 Salt-Teeth crew"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"D3 wreckers crew"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"D3 crew boss"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":2,"value":"D1 pressed hands who will not fight hard"}
 {"place_id":"place.pirate-freeholds.chasecreek","ord":0,"value":"D1 fisher households"}
@@ -653,7 +653,7 @@
 {"place_id":"place.saxhleel-coast.dead-air-lane","ord":0,"value":"0-10 D4 boarders"}
 {"place_id":"place.saxhleel-coast.dead-air-lane","ord":1,"value":"what takes ships here"}
 {"place_id":"place.saxhleel-coast.delta-boatwright","ord":0,"value":"2-5 D1 boatwrights"}
-{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":0,"value":"D2 rootworm waykeepers"}
+{"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","ord":0,"value":"D2 rootworm rootworm-keepers"}
 {"place_id":"place.saxhleel-coast.estuary-boom-tower","ord":0,"value":"2-4 D1 toll-takers"}
 {"place_id":"place.saxhleel-coast.estuary-ferry-stage","ord":0,"value":"1-3 D1 ferrymen"}
 {"place_id":"place.saxhleel-coast.estuary-keepers-lodge","ord":0,"value":"1-4 D1 keepers"}
