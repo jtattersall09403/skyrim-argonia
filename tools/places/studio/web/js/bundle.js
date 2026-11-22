@@ -32,9 +32,10 @@ export async function loadBundle(id, { extras = false, optional = false, terrain
     b.spaces[sid] = s;
   }
   if (extras) {
-    const [people, paths, clear, land, walk] = await Promise.all(['people', 'paths', 'clear', 'land', 'walk']
+    // every place file a draft bundle carries (tools/places/draft_bundle.py FILES)
+    const [people, paths, clear, land, walk, paint] = await Promise.all(['people', 'paths', 'clear', 'land', 'walk', 'paint']
       .map((f) => getJsonl(`${at}${f}.jsonl`, { optional: true })));
-    b.files = { people, paths, clear, land, walk };
+    b.files = { people, paths, clear, land, walk, paint };
   }
   return b;
 }
