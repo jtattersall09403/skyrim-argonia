@@ -1,7 +1,7 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/50-side-quests.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # Standalone, local, mythic and Daedric quests
 
-> Module of the quest/narrative master plan (see [README](README.md)).
+> Module of the quest/narrative master plan (see README).
 
 # Part IX — Standalone and local quests
 
@@ -38,7 +38,7 @@ Three additions from the 2026-08-25 review, binding on every regional packet:
   the Unbound). Never import another line's character. Every packet also
   contains at least one **oddity** from the roster ([36-cast-roster.md](36-cast-roster.md) §58) — no faction stakes, no meaningful
   reward, no explanation anywhere in the game.
-- **Declare a delivery tier** ([00-overview.md](00-overview.md) §4). Local quests
+- **Declare a delivery tier** (00-overview.md §4). Local quests
   should be overwhelmingly D-A: static world, moved evidence, schedule swaps,
   aftermath rather than event, retrieval rather than escort.
 

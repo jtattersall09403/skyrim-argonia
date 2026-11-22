@@ -7,8 +7,8 @@ in [creatures.json](../../../world/sources/registries/creatures.json) (the
 home table; this doc is its design and its readable view). The table is
 province-wide; 2.4 places only the slice's places, routes and the wild
 between them. Every other wilderness is a Part 4 packet that reads the
-same table. Decisions [0004](../old-decisions/0004-fixed-difficulty-constraint.md)
-(fixed danger) and [0138](../old-decisions/0138-people-and-creatures-live-by-the-place-record-and-the-lamp-clock.md)
+same table. Decisions 0004
+(fixed danger) and 0138
 (creatures live on the same shape, clock and loops as people) bind it.
 
 ## Sources
@@ -18,7 +18,7 @@ Every row stands on a lore dossier:
 [ecology, encounters and loot](../../../world/sources/lore/topics/ecology-encounters-loot.md),
 both UESP extracts under the era policy (0002). The UESP pages a row
 names are the ones those dossiers record. What can be shown is bounded by
-[creature asset availability](../research/lore/creature-asset-availability.md)
+creature asset availability
 and the [Murkmire adoption plan](../research/placement-settlements/king-of-the-murkmire-adoption-plan.md)
 §3.7 keep list. Counts, notice ranges, day patterns and the
 Fight/Flee/Alarm values are design numbers set from the dossiers'

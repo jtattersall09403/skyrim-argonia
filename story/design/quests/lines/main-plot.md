@@ -770,7 +770,7 @@ Blackrose's garrison is placed hostile, and the gate's toll, persuasion or yield
   Root beyond the gate), Thul-Kesh Spire (no sealed door), Karsh-Naal Camp (the Unbound), Bell Station (an islet; no
   diving bell) and the Kelp Lantern (a wreck, not a brass sphere).
 - *Names.* The rulers are the Xeech-Leel and the order is the Toh-Reel-Ka (owner, #74); the ranks and the other
-  renamed terms follow `docs/phases/new-worldspace-plan/research/rulers-rename-map.md`. Alten Corimont (the place
+  renamed terms follow `story/design/retired-names.json`. Alten Corimont (the place
   that was Yulca) is not a stop of the hunt: the map of quest 10 already leads to Skeith Isle, and a second sea-chart
   would only repeat it.
 - *The consistency ledger, the province plan and the cast roster* follow this page.
@@ -782,7 +782,7 @@ Blackrose's garrison is placed hostile, and the gate's toll, persuasion or yield
 ## 10. Credit
 
 The plot keeps the core of Matthew Aaron Evans's fan pitch for a Black Marsh game: a treasure hunt for the Eye of
-Argonia, sick Hist trees and a cult at the centre of it (credited in [sources](../99-sources-credits.md), C01).
+Argonia, sick Hist trees and a cult at the centre of it (credited in sources, C01).
 Valerie Marie's reading of the Eye as the old kings' jewel stays (C02).
 
 ## 11. Read on paper

@@ -1,8 +1,3 @@
-{"culture_sheet_id":"culture.faction.an-xileel","opinion_class":"empire","lean":-2,"text":"The Empire is the thing Argonia ended.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","opinion_class":"faction","lean":1,"text":"The Organism governs; the rest is detail.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","opinion_class":"hist","lean":1,"text":"The state honours the Hist and claims no tree.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","opinion_class":"people","lean":0,"text":"Citizens are welcome to their opinions.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.an-xileel","opinion_class":"trade","lean":1,"text":"Customs duty at the recognised ports funds the screen.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.faction.blackguards","opinion_class":"faction","lean":-2,"text":"The Wardens want us gone.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.blackguards","opinion_class":"place","lean":1,"text":"Blackrose Prison is ours.","source":"world/sources/lore/topics/foreign-powers.md"}
 {"culture_sheet_id":"culture.faction.blackguards","opinion_class":"trade","lean":1,"text":"Merchants on the road are the income.","source":"world/sources/lore/topics/foreign-powers.md"}
@@ -24,15 +19,6 @@
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","opinion_class":"danger","lean":-1,"text":"The Blackwood road.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","opinion_class":"empire","lean":2,"text":"The Legion is the Empire here.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","opinion_class":"faction","lean":-1,"text":"The Wardens tolerate us.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","opinion_class":"faction","lean":-1,"text":"The Wardens rule by exclusion.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","opinion_class":"people","lean":1,"text":"Everyone in the city is a citizen or should be.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","opinion_class":"trade","lean":0,"text":"Open water, open trade.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","opinion_class":"danger","lean":-1,"text":"A drained tree leaves its souls mad and homeless.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","opinion_class":"faction","lean":0,"text":"The state is one voice at the Root Talk, not the loudest.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","opinion_class":"hist","lean":2,"text":"The Hist are a council of individuals and must be asked, each.","source":"world/sources/lore/topics/hist-and-sap.md"}
-{"culture_sheet_id":"culture.faction.marsh-charter","opinion_class":"danger","lean":-1,"text":"Wamasu and Sul-Xan.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.marsh-charter","opinion_class":"faction","lean":0,"text":"The state hires us when its levies cannot.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","opinion_class":"work","lean":1,"text":"Wamasu, raiders, escorts: paid work.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","opinion_class":"danger","lean":-1,"text":"The border screen.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","opinion_class":"empire","lean":0,"text":"Irrelevant.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","opinion_class":"faction","lean":-1,"text":"The Wardens are the enemy we fought.","source":"world/sources/lore/topics/foreign-powers.md"}
@@ -43,25 +29,9 @@
 {"culture_sheet_id":"culture.faction.naga-kur","opinion_class":"hist","lean":2,"text":"The tree, painted red in the dream-wallow.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.naga-kur","opinion_class":"people","lean":-2,"text":"Outsiders are owed nothing.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.naga-kur","opinion_class":"place","lean":2,"text":"The inner swamp is ours.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","opinion_class":"danger","lean":0,"text":"Ripper eels; eel-slime keeps them off.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","opinion_class":"faction","lean":-1,"text":"The Wardens look away for a price.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","opinion_class":"place","lean":1,"text":"Pusbottom and the canals.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.nisswo","opinion_class":"danger","lean":0,"text":"Death is a change, mourned and released.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","opinion_class":"faction","lean":0,"text":"Every faction holds something too tightly.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.nisswo","opinion_class":"hist","lean":1,"text":"The Hist and Sithis do not compete.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.nisswo","opinion_class":"work","lean":0,"text":"An Owing that outlives its cause is shunatei; so is a grudge against the holders.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","opinion_class":"directions","lean":1,"text":"Routes are ours to give.","source":"world/sources/lore/topics/roads-and-routes-4e201.md"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","opinion_class":"faction","lean":0,"text":"The Salt-Teeth are cousins, not friends.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","opinion_class":"trade","lean":1,"text":"Every cargo on our water pays the Compact.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.root-whisper","opinion_class":"danger","lean":-1,"text":"Relic-hunters at the twin temples.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.root-whisper","opinion_class":"hist","lean":1,"text":"Our tree sleeps; we keep it.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.root-whisper","opinion_class":"place","lean":2,"text":"Between Xul-Thuxis and Vakka-Bok.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","opinion_class":"directions","lean":0,"text":"The way is not given in words.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","opinion_class":"hist","lean":1,"text":"The routes run under the roots.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","opinion_class":"trade","lean":-1,"text":"The way is not for cargo.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","opinion_class":"danger","lean":0,"text":"The Charter hunts us; the sea does worse.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","opinion_class":"faction","lean":-1,"text":"The Compact takes its cut and pretends not to know us.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","opinion_class":"trade","lean":1,"text":"Cargo is whatever comes past.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.shadowscales","opinion_class":"danger","lean":0,"text":"The last of us dies this year.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.shadowscales","opinion_class":"faction","lean":-1,"text":"Three bidders, no authority; the order belongs to none of them.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.stillrise","opinion_class":"danger","lean":-1,"text":"Anyone who touches the array.","source":"inferred"}
@@ -70,27 +40,17 @@
 {"culture_sheet_id":"culture.faction.sul-xan","opinion_class":"danger","lean":2,"text":"We are the end that comes.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.sul-xan","opinion_class":"hist","lean":-1,"text":"Soft-tree talk.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.sul-xan","opinion_class":"people","lean":-2,"text":"Outsiders and Argonians alike are offerings.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","opinion_class":"empire","lean":-1,"text":"Hierem's order set Umbriel moving.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","opinion_class":"faction","lean":-1,"text":"The Synod and the College want what is ours.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","opinion_class":"hist","lean":1,"text":"Kothringi and Argonian records belong here.","source":"world/sources/lore/topics/lost-peoples.md"}
 {"culture_sheet_id":"culture.faction.synod","opinion_class":"empire","lean":1,"text":"The Elder Council's favour matters.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","opinion_class":"faction","lean":-1,"text":"The College is a disgrace to the art.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","opinion_class":"hist","lean":0,"text":"An unparalleled field of study.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","opinion_class":"faction","lean":-1,"text":"The veterans and the Dres both remember the wrong war.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","opinion_class":"place","lean":1,"text":"Thorn's grassland is the border's memory.","source":"world/sources/lore/thorn.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","opinion_class":"work","lean":0,"text":"The fields are worked under ledgers.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","opinion_class":"danger","lean":0,"text":"We are the road's weather.","source":"world/sources/lore/topics/foreign-powers.md"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","opinion_class":"faction","lean":-1,"text":"No tribe owns us.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","opinion_class":"trade","lean":1,"text":"Caravans are the harvest.","source":"world/sources/lore/topics/foreign-powers.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","opinion_class":"danger","lean":-1,"text":"Umbriel's dead still lie preserved.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","opinion_class":"empire","lean":-1,"text":"Hierem sealed it at the city tree.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","opinion_class":"faction","lean":-1,"text":"The administration inherited the offices that brought Umbriel.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.unbound-root","opinion_class":"empire","lean":-2,"text":"The Empire and the Wardens are one colonial habit.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","opinion_class":"faction","lean":-2,"text":"The state is a lie with a customs house.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","opinion_class":"hist","lean":2,"text":"The Hist should rule and need no council.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","opinion_class":"danger","lean":-1,"text":"The Unbound Root is the danger.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","opinion_class":"faction","lean":2,"text":"The office serves the Organism.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","opinion_class":"rumour","lean":1,"text":"Rumour is the office's raw material.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xeech-leel","opinion_class":"empire","lean":-2,"text":"The Empire is the thing Argonia ended.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","opinion_class":"faction","lean":1,"text":"The council governs; the rest is detail.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","opinion_class":"hist","lean":1,"text":"The state honours the Hist and claims no tree.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","opinion_class":"people","lean":0,"text":"Citizens are welcome to their opinions.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xeech-leel","opinion_class":"trade","lean":1,"text":"Customs duty at the recognised ports funds the screen.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.faction.xit-xaht","opinion_class":"danger","lean":1,"text":"We are feared and right to be.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.xit-xaht","opinion_class":"hist","lean":2,"text":"Our tree speaks and we build.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.xit-xaht","opinion_class":"people","lean":-2,"text":"Others are labour or prey.","source":"world/sources/lore/tribes.md"}
@@ -144,7 +104,7 @@
 {"culture_sheet_id":"culture.office.an-xileel.owing-assessor","opinion_class":"faction","lean":0,"text":"The state has never regulated the Owing; the assessor does it by hand.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.office.an-xileel.owing-assessor","opinion_class":"work","lean":1,"text":"Work owed is work assessed, and then it is over.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","opinion_class":"danger","lean":0,"text":"Unlicensed travel is the danger.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.office.an-xileel.senior","opinion_class":"faction","lean":2,"text":"The Organism's writ, stated as settled.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.office.an-xileel.senior","opinion_class":"faction","lean":2,"text":"The council's writ, stated as settled.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.office.blackguards.senior","opinion_class":"danger","lean":0,"text":"We are the danger here.","source":"world/sources/lore/topics/foreign-powers.md"}
 {"culture_sheet_id":"culture.office.bright-throat-tribe.senior","opinion_class":"trade","lean":1,"text":"Trade is relationship.","source":"world/sources/lore/topics/material-culture.md"}
 {"culture_sheet_id":"culture.office.chainbreakers.senior","opinion_class":"work","lean":-2,"text":"Burn it.","source":"world/sources/lore/topics/labour-and-bondage.md"}
@@ -154,32 +114,15 @@
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.penal-warden","opinion_class":"danger","lean":-1,"text":"The lower levels.","source":"world/sources/lore/topics/prisons.md"}
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.penal-warden","opinion_class":"work","lean":0,"text":"Sentences are balances.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.senior","opinion_class":"danger","lean":-1,"text":"The road.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","opinion_class":"faction","lean":0,"text":"The council can be persuaded.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","opinion_class":"danger","lean":-2,"text":"Egg-thieves and the Ghost People.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","opinion_class":"hist","lean":2,"text":"Every egg is the tree's.","source":"world/sources/lore/topics/hist-and-sap.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","opinion_class":"faction","lean":1,"text":"The council is the way.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","opinion_class":"hist","lean":2,"text":"The tree is heard, never ventriloquised.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","opinion_class":"people","lean":0,"text":"All who come are heard.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","opinion_class":"work","lean":1,"text":"Contracts.","source":"inferred"}
 {"culture_sheet_id":"culture.office.morrowind-veterans.senior","opinion_class":"danger","lean":-1,"text":"The screen.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.office.murkwater-tribe.senior","opinion_class":"danger","lean":0,"text":"Prey.","source":"inferred"}
 {"culture_sheet_id":"culture.office.naga-kur.senior","opinion_class":"danger","lean":1,"text":"The rite decides.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","opinion_class":"trade","lean":1,"text":"Fences pay.","source":"inferred"}
-{"culture_sheet_id":"culture.office.nisswo.senior","opinion_class":"hist","lean":1,"text":"The tree and the turning.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","opinion_class":"trade","lean":1,"text":"Fees keep the routes.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","opinion_class":"hist","lean":1,"text":"Sleep.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","opinion_class":"directions","lean":0,"text":"Unspoken.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","opinion_class":"trade","lean":1,"text":"Shares.","source":"inferred"}
 {"culture_sheet_id":"culture.office.shadowscales.senior","opinion_class":"danger","lean":0,"text":"Necessary.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.office.stillrise.senior","opinion_class":"danger","lean":-1,"text":"Meddlers.","source":"inferred"}
 {"culture_sheet_id":"culture.office.sul-xan.senior","opinion_class":"danger","lean":2,"text":"Offerings.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","opinion_class":"trade","lean":-1,"text":"Knowledge is not for sale.","source":"inferred"}
 {"culture_sheet_id":"culture.office.synod.senior","opinion_class":"trade","lean":1,"text":"Everything has a buyer.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","opinion_class":"place","lean":1,"text":"The map.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","opinion_class":"trade","lean":1,"text":"Take.","source":"world/sources/lore/topics/foreign-powers.md"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","opinion_class":"danger","lean":-1,"text":"The dead under the mud.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","opinion_class":"hist","lean":2,"text":"The tree commands.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","opinion_class":"faction","lean":2,"text":"The office knows best.","source":"inferred"}
 {"culture_sheet_id":"culture.office.xit-xaht.senior","opinion_class":"hist","lean":2,"text":"Command.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.people.altmer-newcomer","opinion_class":"danger","lean":-1,"text":"Damp ruins the stock.","source":"inferred"}
 {"culture_sheet_id":"culture.people.altmer-newcomer","opinion_class":"directions","lean":0,"text":"Directions, precisely.","source":"inferred"}
@@ -394,7 +337,7 @@
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"danger","lean":-1,"text":"Crocodiles come inside town limits; the fens south of Stormhold are worse.","source":"world/sources/lore/regions/shadowfen.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"directions","lean":0,"text":"Ways are given by the trunk road: Stormhold, Tenmar Wall, Alten Corimont, Riverwalk, Thorn.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"empire","lean":-1,"text":"The Empire fought the Dres here and left both sides worse off.","source":"world/sources/lore/regions/shadowfen.md"}
-{"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"faction","lean":-1,"text":"The Ash-Reed Accord argues saltrice title; the Dres heirs still have papers.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"faction","lean":-1,"text":"The Thorn's council argues saltrice title; the Dres heirs still have papers.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"hist","lean":1,"text":"The Hist at the Pools is the region's; outsiders go to Hissmir to touch a tree.","source":"world/sources/lore/regions/shadowfen.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"people","lean":0,"text":"A neighbour may be Dunmer; that says little about whose side his family took.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.region.dunmer-north","opinion_class":"place","lean":1,"text":"The north is dry enough to farm and old enough to have ruins stacked three deep.","source":"world/sources/lore/regions/shadowfen.md"}
@@ -454,7 +397,7 @@
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"danger","lean":-1,"text":"The river kills drunks and the camps kill debtors.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"directions","lean":0,"text":"Ways are given in bends and landings: Nine Bends, the camp, the port.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"empire","lean":-1,"text":"The navy that came here is a memorial on the waterfront.","source":"world/sources/lore/alten-corimont.md"}
-{"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"faction","lean":0,"text":"The Compact owns the boats; the Salt-Teeth own the rest.","source":"inferred"}
+{"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"faction","lean":0,"text":"The Compact owns the boats; the wreckers own the rest.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"hist","lean":1,"text":"The tree upriver knows who is gone; the families answer to it.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"people","lean":0,"text":"Mixed crews. A hand is asked what he can lift, never his homeland.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","opinion_class":"place","lean":0,"text":"The river is home; a camp is where the work is this season.","source":"inferred"}

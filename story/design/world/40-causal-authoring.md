@@ -98,7 +98,7 @@ social function — law, worship, burial, healing, learning, waste, defence,
 vice, refuge, quarantine, labour, the dead — condition state, season,
 scale); set and check variety targets; and run a completeness critic whose
 only job is naming what is absent. Full practice:
-[decision 0041](../old-decisions/0041-phase11-settlement-decisions.md).
+decision 0041.
 
 **The distinctiveness ladder.** Variety is designed, not discovered at
 build time, and it is hierarchical: province (one coherent house style) →

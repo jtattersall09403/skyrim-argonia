@@ -155,7 +155,7 @@ Morrowind ratio — Balmora reads as a city on roughly 40 buildings and
 structures, so an M5 is 50–80 of them, with the rest of the register's figure
 made up of the props and dressing that make the place look inhabited
 (97 D7 and C5b; implementation-lead decision, recorded in
-[decision 0041](../old-decisions/0041-phase11-settlement-decisions.md)).
+decision 0041).
 
 ## 83c. Population caps
 

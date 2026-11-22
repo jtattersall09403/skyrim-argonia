@@ -9,7 +9,7 @@
 #   movement:   words that are movement, not skills (swimming, climbing): an action on one is a supporting act
 #   supporting: acts with no skill (reading, handing over, going through a door); a stage may list them as
 #               `{system: ..., use: ...}` beside its skill actions; they never stand alone
-#   verbTags:   the dramatic centrepiece tags (story/design/quests/00-overview.md §4, "Dramatic register") -> the uses
+#   verbTags:   the dramatic centrepiece tags (the dramatic register) -> the uses
 #               that make a stage carry that tag. A record's `centrepiece` is one of these.
 
 aliases:   # a record's skill word, lower case with letters only -> the key below
@@ -98,7 +98,7 @@ supporting:   # acts with no skill: listed beside a stage's skill actions, never
   dive:             {system: movement}
   climb:            {system: movement}
 
-verbTags:   # 00-overview §4; a quest's `centrepiece` must be one of these and one of its actions must carry it
+verbTags:   # a quest's `centrepiece` must be one of these and one of its actions must carry it
   COMBAT:      [fight, duel, clear-a-place, hunt, snipe, kill-from-range, sneak-attack, stand-a-hard-fight, summon-help, banish, turn-the-dead]
   STEALTH:     [sneak-past, steal, sneak-attack, pickpocket, lift-a-key, pick-a-lock, open-a-strongbox, become-invisible]
   HEIST:       [steal, pick-a-lock, open-a-strongbox, pickpocket, lift-a-key]

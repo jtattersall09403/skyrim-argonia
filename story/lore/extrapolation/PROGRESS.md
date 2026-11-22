@@ -48,7 +48,7 @@ That is itself a finding: those places are ours to author.
 | 5 | Per-faction extrapolation | **done** — [../topics/guilds-and-orders.md](../topics/guilds-and-orders.md): Synod, College of Whispers, Fighters/Thieves Guild, Dark Brotherhood, Cyrodilic Collections, the Conclaves, the Wild Ones |
 | — | **Hist placement** (G2.10/G5.7, Phase 11 blocker) | **done** — [../topics/hist-placement.md](../topics/hist-placement.md): rules R1–R6 + a per-settlement register |
 | 6 | Ecology/encounter/loot lore feed (Phase 13) | **done** — [../topics/ecology-encounters-loot.md](../topics/ecology-encounters-loot.md) |
-| 7 | Re-verify + quest-plan deltas | **done** — D1–D16 in [quest-plan-deltas.md](quest-plan-deltas.md); **not applied** (a follow-up agent owns `docs/quests/`) |
+| 7 | Re-verify + quest-plan deltas | **done** — D1–D16 in quest-plan-deltas.md; **not applied** (a follow-up agent owns `docs/quests/`) |
 
 **Gap register status: zero `OPEN`.** Everything is `FILLED`, `DECIDED`, `DEFER`
 (with a phase and a reason) or `MYSTERY`. See [gap-register.md](gap-register.md).
@@ -182,5 +182,5 @@ closed and every remaining fetch is enrichment, not a dependency.
 | 5 | [../topics/guilds-and-orders.md](../topics/guilds-and-orders.md) |
 | Blocker | [../topics/hist-placement.md](../topics/hist-placement.md) |
 | 6 | [../topics/ecology-encounters-loot.md](../topics/ecology-encounters-loot.md) |
-| 7 | [quest-plan-deltas.md](quest-plan-deltas.md) — D1–D16, **not applied** |
-| — | [owner-questions.md](owner-questions.md) — Round 1 decided, Round 2 open |
+| 7 | quest-plan-deltas.md — D1–D16, **not applied** |
+| — | owner-questions.md — Round 1 decided, Round 2 open |

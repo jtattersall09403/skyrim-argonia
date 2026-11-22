@@ -1,7 +1,7 @@
 # Walk 6 post-mortem: why the built opening (MQ01) went wrong
 
-Lane R2 of [walk 6 (quests)](../phases/walk-6-quests.md), deliverable 7 of the
-[handover](../phases/walk-6-quests-handover.md). Diagnosed from the files only (2026-11-12): the builder
+Lane R2 of walk 6 (quests), deliverable 7 of the
+handover. Diagnosed from the files only (2026-11-12): the builder
 `tools/ArgoniaPlugin/MainQuest.cs` and `QuestKit.cs`, the quest script `papyrus/ARG_QF_MQ01.psc` (and `ARG_QF_MQ03.psc`),
 the built records in `plugin/Argonia` (worldspace `BlackMarsh - 23D689`, `Persistent` refs; quest `ARG_MQ01` 000E2D),
 the quest record (`quest_record export quest.main.mq01`), `story/data/quest_lines/mq01.json` and `quest_people.json`,
