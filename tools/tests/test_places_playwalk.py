@@ -299,3 +299,19 @@ def test_a_large_place_is_cut_into_tours():
     assert 2 <= len(tours) <= 3
     got = [n for t in tours for n in t["stops"]]
     assert sorted(got) == sorted(s["name"] for s in stops[:-1])
+
+
+
+def test_a_quest_spot_on_a_door_is_walked_to_at_the_door_s_arrival():
+    """A quest spot standing on a house door (its porch may be no walked ground) is walked to where one stands to open
+    the door: the door's arrival; a spot away from any door is walked to where it stands."""
+    from types import SimpleNamespace
+    from tools.places.look import playwalk as pw
+    door = {"id": "d", "kind": "door", "m": [[1, 0, 0, 100.0], [0, 1, 0, 200.0], [0, 0, 1, 50.0]],
+            "door": {"to_space": "house", "arrival": [100.0, 120.0, 0.0]}}
+    sc = SimpleNamespace(pieces=[door], by_id={"d": door})
+    files = {"quests": [{"ref": "door.q.house", "pos": [102.0, 198.0, 52.0]},
+                        {"ref": "marker.q.field", "pos": [900.0, 900.0, 0.0]}]}
+    got = [t["pos"] for t in pw.points_of_interest(sc, files)["targets"]]
+    assert [102.0, 198.0, 52.0] not in got and [100.0, 120.0, 0.0] in got   # one walk: the door's, at its arrival
+    assert [900.0, 900.0, 0.0] in got

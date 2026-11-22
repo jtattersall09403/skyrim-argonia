@@ -61,6 +61,7 @@ AVOID = 2.0           # a stretch already walked costs this many times as much t
 SPUR_MIN = 256.0      # an unwalked stretch of street shorter than this is not worth a spur
 TOOL = 7             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
+DOOR_SPOT = 128.0   # a quest spot this near a door (across the plan and in height) is that door's
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
 DIAGONALS = (("ahead-left", 45, 0), ("ahead-right", -45, 0))
@@ -577,7 +578,7 @@ def points_of_interest(sc, files: dict) -> dict:
         dd = p.get("door") or {}
         if p.get("kind") == "door" and dd.get("to_space"):
             doors.append({"name": f"door of {dd['to_space']}", "pos": list(dd.get("arrival") or _xyz(p)), "kind": "doorway",
-                          "id": p["id"], "door_z": _xyz(p)[2]})
+                          "id": p["id"], "door_z": _xyz(p)[2], "door_at": _xyz(p)})
     arrivals = []
     paths = [q for q in files.get("paths") or [] if q.get("points")]
     ends = []
@@ -614,8 +615,11 @@ def points_of_interest(sc, files: dict) -> dict:
     for q in files.get("quests") or []:
         if q.get("space", "exterior") == "exterior" and q.get("pos"):
             name = f"quest spot {q.get('ref')}"
+            # a quest spot on a door is reached as the door is: at its arrival, where one stands to open it
+            door = next((d for d in doors if math.dist(d.get("door_at", d["pos"])[:2], q["pos"][:2]) <= DOOR_SPOT
+                         and abs(d["door_z"] - q["pos"][2]) <= DOOR_SPOT), None)
             (arrivals if re.search(r"landing|arriv", str(q.get("ref"))) else targets).append(
-                {"name": name, "pos": list(q["pos"]), "kind": "quest"})
+                {"name": name, "pos": list(door["pos"] if door else q["pos"]), "kind": "quest"})
     seen, uniq = set(), []
     hist = []
     for t in list(targets):   # the Hist and its pool are one stop
