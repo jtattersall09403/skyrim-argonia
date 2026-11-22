@@ -669,3 +669,15 @@ def test_an_accepted_door_is_matched_when_its_id_ends_a_clause():
     fails, acc = CK.apply_accepted(res, [{"check": "doors", "ids": ["p.D1"], "why": why}])
     assert fails["doors"] == [] and acc["doors"] == [f"accepted: {why} (door p.D1: its arrival point is inside p.W2)"]
     assert not CK._names("door p.D1:x is another key", "p.D1") and not CK._names("p.D1.2 stands", "p.D1")
+
+
+def test_two_states_of_one_thing_on_one_enable_parent_may_stand_in_each_other():
+    """A living Hist and its dead twin share a pose: one shows while the parent is off, the other while it is on."""
+    from tools.places import check as CK
+    opp = "SetEnableStateToOppositeOfParent"
+    living = {"id": "p.H", "enable_parent": {"ref": "p.DEAD", "flags": opp}}
+    dead = {"id": "p.D", "enable_parent": {"ref": "p.DEAD", "flags": "0"}}
+    assert CK.never_together(living, dead) and CK.never_together(dead, living)
+    assert not CK.never_together(living, dict(dead, enable_parent={"ref": "p.DEAD", "flags": opp}))   # shown together
+    assert not CK.never_together(living, dict(dead, enable_parent={"ref": "p.OTHER", "flags": "0"}))
+    assert not CK.never_together({"id": "a"}, {"id": "b"})
