@@ -191,3 +191,31 @@ def test_the_act_one_places_keep_their_promises(place):
     pdir = ROOT / "newworld" / "places" / place
     assert (pdir / "promises.jsonl").exists(), f"{place} has no promise list"
     assert P.faults(place, pdir) == []
+
+
+def test_a_copied_rooms_own_refs_are_evidence(tmp_path):
+    """A pay chest carried with a copied room keeps its source key as its id: a promise may name it."""
+    pd = tmp_path / "places" / "camp"
+    jl(pd / "spaces" / "Hall" / "refs.jsonl", [{"id": "camp.GONE", "src": "Src.esm:000002", "removed": True}])
+    (pd / "spaces" / "Hall" / "space.json").write_text(json.dumps({"copy_of": "srcplace/HallCell"}))
+    bundles = tmp_path / "bundles"
+    jl(bundles / "src.srcplace" / "spaces" / "HallCell" / "refs.jsonl", [
+        {"id": "Src.esm:000001", "kind": "container", "base": "Src.esm:0000AA", "pos": [0, 0, 0], "src": "Src.esm:000001"},
+        {"id": "Src.esm:000002", "kind": "static", "base": "Src.esm:0000AB", "pos": [1, 0, 0], "src": "Src.esm:000002"},
+        {"id": "Src.esm:000003", "kind": "actor", "base": "Src.esm:0000AC", "pos": [2, 0, 0], "src": "Src.esm:000003"}])
+    got = P.copied_refs(pd, "srcplace", bundles)
+    assert "Src.esm:000001" in got            # the chest the room carries
+    assert "Src.esm:000002" not in got        # pruned by our row
+    assert "Src.esm:000003" not in got        # no actors in a copied room
+    assert P.copied_refs(pd, None, bundles) == set()
+
+
+def test_a_state_hides_a_quest_person_by_its_quest_ref(world):
+    """An ending that switches off a quest's person (disableRef) hides that person's spot in the state."""
+    (world["pdir"] / "states.jsonl").write_text(
+        json.dumps({"id": "start", "default": True, "key": ["weir.POT"]}) + "\n"
+        + json.dumps({"id": "gone", "set_by": {"quest": "quest.q1", "endings": ["e1"]}, "hide": ["npc.q1.keeper"],
+                      "key": ["weir.POT"]}) + "\n")
+    assert "quest.q1/npc.q1.keeper" in S.resolve(world["pdir"], "gone")["hidden"]
+    assert "quest.q1/npc.q1.keeper" not in S.resolve(world["pdir"], "start")["hidden"]
+    assert S.faults(world["pdir"]) == []
