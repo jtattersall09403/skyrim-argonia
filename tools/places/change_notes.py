@@ -148,6 +148,16 @@ def say(op: dict, names: dict[str, str] | None = None, refs: dict[str, dict] | N
             bits.append(f"seated {((a.get('seat') or {}).get('mode'))} instead of {((b.get('seat') or {}).get('mode'))}")
         out |= {"what": f"{thing(op['id'], op.get('base'))}: " + "; ".join(bits), "from": b, "to": a,
                 "where": _xyz(a.get("pos") or (refs.get(op["id"]) or {}).get("pos"))}
+    elif kind == "unit.move":
+        head = next((m for m in op["refs"] if "pos" in m["after"]), op["refs"][0] if op["refs"] else None)
+        b, a = (head or {}).get("before", {}), (head or {}).get("after", {})
+        bits = [f"moved {_way(b['pos'], a['pos'])}"] if "pos" in a else []
+        if "rot" in a and b.get("rot") != a.get("rot"):
+            bits.append(f"turned from {_deg(b['rot'])} to {_deg(a['rot'])}")
+        carried = len(op.get("people") or []) + len(op.get("quests") or [])
+        out |= {"what": f"the whole of {op.get('name') or 'unit ' + str(op['unit'])} ({len(op['refs'])} pieces"
+                        f"{f', {carried} spots of people or quests with it' if carried else ''}): " + "; ".join(bits or ["moved"]),
+                "from": b, "to": a, "where": _xyz(a.get("pos") or b.get("pos"))}
     elif kind in ("veg.clear", "veg.restore"):
         items = op["items"]
         kinds = sorted({names.get(i["base"], i["base"]) for i in items})

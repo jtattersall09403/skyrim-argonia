@@ -8,6 +8,8 @@ import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
+import { spotIn, rigid } from './units.js';
+import { patrolOf } from './people.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
@@ -48,7 +50,8 @@ export function smoothLine(pts, tol = 60) {
 
 export class Tools {
   constructor(app) {
-    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, selMode: 'lasso', adds: false };
+    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, selMode: 'lasso', adds: false, pieces: false };
+    this.unit = null; this.inside = null;   // the unit selected whole; the unit whose one piece is selected
     this.land = { kind: 'raise', radius: 384, strength: 0.5, level: null, picking: false };
     this.veg = { mode: 'clear', radius: 512 };
     this.path = { mode: 'draw', width: 256, style: null, kind: 'path', sel: null };
@@ -159,11 +162,18 @@ export class Tools {
     let idx = 0;
     if (same && hits.length > 1) idx = (this.lastTap.idx + 1) % hits.length;
     this.lastTap = { side, x: e.x, y: e.y, idx, t: performance.now(), n: hits.length };
-    const h = hits[idx];
+    let h = hits[idx];
     if (side === this.app.ours) {
       if (h && !same && this.app.selection.size === 1 && this.app.selection.has(h.ref.id) && h.ref.door?.to_space) { this.app.enter(side, this.app.findRef(h.ref.id) || h.ref); return; }
+      // a tap selects a whole unit; a second tap on it goes inside to the piece tapped; tapping away comes back out
+      const whole = this.selUnit(), byUnit = !this.opts.pieces && !this.opts.adds;
+      if (!h && byUnit && this.inside) { const iu = this.units().units.get(this.inside); if (iu) { this.cycleNote = ''; this.selectUnit(iu); return; } }
+      const u = h && byUnit ? this.unitOfRef(h.ref.id) : null;
+      if (u && whole?.id !== u.id && this.inside !== u.id) { this.cycleNote = ''; this.selectUnit(u); return; }
+      if (u && whole?.id === u.id && same) { h = hits[0]; this.lastTap.idx = 0; }
       if (!this.opts.adds) selSet.clear();
       if (h) { selSet.has(h.ref.id) && this.opts.adds ? selSet.delete(h.ref.id) : selSet.add(h.ref.id); }
+      this.unit = null; this.inside = u ? u.id : null;
       this.cycleNote = hits.length > 1 ? `${idx + 1} of ${hits.length} things here. Tap again for the next.` : '';
       this.selectionChanged();
     } else {
@@ -194,14 +204,26 @@ export class Tools {
   }
   stopPlacing() { this.placing = null; this.app.srcSel = []; this.drawOutline(this.app.src, [], this.srcOutline); this.app.panels.placingChanged?.(); this.placeGizmo(); }
   // ---------- selection outline and gizmo ----------
+  // ---------- units: a tap selects one whole, a second goes inside to one piece (units.js) ----------
+  units() { return this.app.unitIndex(); }
+  unitOfRef(id) { const ix = this.units(), u = ix.of.get(id); return u ? ix.units.get(u) : null; }
+  // the unit selected whole, or null
+  selUnit() {
+    if (!this.unit || !this.app.model) return null;
+    const u = this.units().units.get(this.unit), s = this.app.selection;
+    return u && s.size === u.members.length && u.members.every((id) => s.has(id)) ? u : null;
+  }
+  selectUnit(u) { this.app.selection = new Set(u.members); this.unit = u.id; this.inside = null; this.selectionChanged(); }
   selectionChanged() {
     const a = this.app; if (!a.model) return;
+    if (this.unit && !this.selUnit()) this.unit = null;
+    if (this.inside) { const iu = this.units().units.get(this.inside); if (!iu || !a.selection.size || ![...a.selection].every((id) => iu.members.includes(id))) this.inside = null; }
     this.drawSelection(); a.panels.selectionInfo([...a.selection].map((id) => a.placeRefsById().get(id)).filter(Boolean), this.cycleNote);
   }
   drawSelection() {
     const a = this.app; if (!a.model) return;
-    const sel = this.selRefs();
-    this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
+    const sel = this.selRefs(), u = this.selUnit();
+    if (u) this.drawBoxes(a.ours, [u.box], this.outline); else this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
     // a selected light, and the lights of a selected fixture, show their radius rings
     a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).filter((f) => !f.wall).map((f) => f.ref)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
@@ -214,6 +236,27 @@ export class Tools {
     line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
     if (line.parent !== side.view.overlay) side.view.overlay.add(line);
     side.view.redraw();
+  }
+  // world boxes {x0,y0,x1,y1,z0,z1} as outlines (a unit is drawn as one)
+  drawBoxes(side, boxes, line) {
+    const E = [[0, 1], [0, 2], [1, 3], [2, 3], [4, 5], [4, 6], [5, 7], [6, 7], [0, 4], [1, 5], [2, 6], [3, 7]], pos = [], o = side.view.origin;
+    for (const b of boxes) {
+      const c = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => [(i & 1 ? b.x1 : b.x0) - o[0], (i & 2 ? b.y1 : b.y0) - o[1], (i & 4 ? b.z1 : b.z0) - o[2]]);
+      for (const [i, j] of E) pos.push(...c[i], ...c[j]);
+    }
+    line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    if (line.parent !== side.view.overlay) side.view.overlay.add(line);
+    side.view.redraw();
+  }
+  // the label over a unit selected whole, or over the unit whose piece is selected
+  placeLabel() {
+    const v = this.app.ours.view; let el = v.el.querySelector('.unit-label');
+    const u = this.selUnit() || (this.inside && this.units().units.get(this.inside)), on = u && ['select', 'search'].includes(this.current);
+    if (!on) { if (el) el.hidden = true; return; }
+    if (!el) { el = document.createElement('div'); el.className = 'unit-label'; v.el.append(el); }
+    const b = u.box, s = v.toScreen([(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, b.z1 + 40]);
+    el.hidden = s.behind; el.style.left = `${s.x}px`; el.style.top = `${s.y}px`;
+    el.textContent = this.selUnit() ? `${u.name} (${u.members.length} pieces)` : `${u.name}: one piece`;
   }
   buildGizmo() {
     const g = document.querySelector('#view-ours .gizmo');
@@ -268,6 +311,7 @@ export class Tools {
   }
   centre(refs) { const n = refs.length || 1; return [0, 1, 2].map((i) => refs.reduce((s, r) => s + this.app.seated(r).pos[i], 0) / n); }
   placeGizmo() {
+    this.placeLabel();
     const g = this.gizmo, refs = this.selRefs(), v = this.app.ours.view;
     const show = refs.length && ['select', 'search'].includes(this.current) && !this.placing;
     g.hidden = !show; if (!show) return;
@@ -282,8 +326,9 @@ export class Tools {
   gizmoDown(kind, e) {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
     const v = this.app.ours.view, info = v.info(e);
-    this.drag = { kind, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
-      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: this.centre(refs), fol: this.followers(refs) };
+    const unit = this.selUnit(); if (unit && kind === 'scale') return;   // a unit moves, turns and rises whole; its pieces are resized one by one
+    this.drag = { kind, refs, unit, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
+      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: unit ? this.unitCentre(unit) : this.centre(refs), fol: this.followers(refs) };
     const sc = v.toScreen(this.drag.c), rect = v.canvas.getBoundingClientRect();
     this.drag.sx = sc.x + rect.left; this.drag.sy = sc.y + rect.top; this.drag.a0 = Math.atan2(e.clientY - this.drag.sy, e.clientX - this.drag.sx);
   }
@@ -291,6 +336,18 @@ export class Tools {
     const d = this.drag; if (!d) return;
     const v = this.app.ours.view, a = this.app;
     for (const r of d.refs) { const b = d.before.get(r.id); r.pos = [...b.pos]; r.rot = [...(b.rot || [0, 0, 0])]; r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat; }
+    if (d.unit) {
+      const g = d.kind === 'move' ? v.info(e).ground() : null;
+      if (d.kind === 'move' && (!g || !d.g0)) return;
+      let turn = 0, sh = [0, 0], dz = 0;
+      if (d.kind === 'move') sh = [g[0] - d.g0[0], g[1] - d.g0[1]];
+      else if (d.kind === 'lift') dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
+      else if (d.kind === 'rotate') { turn = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0; if (this.opts.snapRot) turn = Math.round(turn / (Math.PI / 12)) * (Math.PI / 12); }
+      d.xf = this.poseUnit(d, turn, sh, dz); d.turn = turn;
+      this.carry(d.fol);
+      this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
+      return;
+    }
     if (d.kind === 'move') {
       const g = v.info(e).ground(); if (!g || !d.g0) return;
       const dx = g[0] - d.g0[0], dy = g[1] - d.g0[1];
@@ -330,6 +387,7 @@ export class Tools {
     // a tap on a handle with no movement changes nothing (it never re-seats things where they stand)
     if (e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3) { this.gizmoCancel(); return; }
     this.drag = null;
+    if (d.unit) { if (d.xf) this.pushUnit(d); else this.gizmoCancel(d); return; }
     const ops = [];
     for (const r of d.refs) {
       const after = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), before = d.before.get(r.id);
@@ -343,8 +401,8 @@ export class Tools {
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     this.app.push(ops);
   }
-  gizmoCancel() {
-    const d = this.drag; this.drag = null; if (!d) return;
+  gizmoCancel(done) {
+    const d = done || this.drag; this.drag = null; if (!d) return;
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     for (const f of d.fol || []) Object.assign(f.ref, clone(f.before));
     this.app.refreshSide(this.app.ours, { world: false });
@@ -358,12 +416,94 @@ export class Tools {
     for (const r of refs) Object.assign(r, before.get(r.id));
     return [...ops, ...extra];
   }
+  // ---------- a unit moved, turned or raised whole ----------
+  unitCentre(u) { const b = u.box; return [(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, (b.z0 + b.z1) / 2]; }
+  // Every member of the unit dragged, posed from where it stood: turned by `turn` about the unit's centre, shifted
+  // by sh and raised by dz. What sits on the ground (or on another member) keeps its seat, which re-seats it where
+  // it lands; a free piece rises with the ground under the unit's head, so the unit stays whole. Returns the move as
+  // a function of a point, for the doors' arrivals and the spots the unit carries.
+  poseUnit(d, turn, sh, dz) {
+    const a = this.app, ext = a.ours.space === 'exterior', head = d.before.get(d.unit.head), t = a.terrain;
+    const plan = rigid(d.c, turn, [sh[0], sh[1], 0]);
+    let gdz = 0;
+    if (ext && t && head && this.opts.snapGround && (sh[0] || sh[1])) {
+      const q = plan(head.pos), h0 = t.heightAt(head.pos[0], head.pos[1]), h1 = t.heightAt(q[0], q[1]);
+      if (h0 != null && h1 != null) gdz = h1 - h0;
+    }
+    for (const r of d.refs) {
+      const b = d.before.get(r.id), p = plan(b.pos);
+      r.pos = [rnd(p[0]), rnd(p[1]), b.pos[2]]; r.rot = [b.rot?.[0] || 0, b.rot?.[1] || 0, rnd(norm((b.rot?.[2] || 0) + turn), 10000)];
+      r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat;
+      const s = r.seat, held = s && s.mode !== 'free' && ext && (s.mode !== 'on' || a.placeRefsById().get(s.on));
+      if (held) { if (dz) r.seat = { ...s, dz: rnd((s.dz || 0) + dz) }; } else r.pos[2] = rnd(b.pos[2] + dz + gdz);
+    }
+    return rigid(d.c, turn, [sh[0], sh[1], dz + gdz]);
+  }
+  // The one op of a unit's move (edits: unit.move): every member's pose, a door's arrival turned with it, the lights
+  // and invisible walls that follow its pieces, and the people's and quest spots standing in it.
+  unitOp(d) {
+    const a = this.app, ext = a.ours.space === 'exterior', refs = [], after = new Map();
+    const moved = (p) => { const q = d.xf(p); return p.map((v, i) => (i < q.length ? rnd(q[i]) : v)); };
+    for (const r of d.refs) {
+      const b = clone(d.before.get(r.id)), x = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat });
+      if (r.seat && r.seat.mode !== 'free' && ext) x.pos[2] = rnd(seatZ(a.terrain, r, a.placeRefsById()));
+      after.set(r.id, x);
+      if (r.door?.arrival) { b.door = clone(r.door); x.door = { ...clone(r.door), arrival: moved(r.door.arrival) }; }
+      if (JSON.stringify(x) !== JSON.stringify(b)) refs.push({ id: r.id, before: b, after: x });
+    }
+    for (const r of d.refs) { const x = after.get(r.id); Object.assign(r, { pos: x.pos, rot: x.rot, scale: x.scale, seat: x.seat }); }
+    this.carry(d.fol);
+    for (const o of this.followerOps(d.fol)) refs.push({ id: o.id, before: o.before, after: o.after });
+    for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
+    return { op: 'unit.move', unit: d.unit.id, name: d.unit.name, refs, ...this.spotsMoved(d.unit, moved, d.turn || 0) };
+  }
+  // The people's spots (work, routine stops, patrol points) and the quest spots standing in a unit, moved with it.
+  // A bed, a station or anything a stop names by its ref goes with its ref, needing no change of the person.
+  spotsMoved(u, moved, turn) {
+    const a = this.app, S = a.ours.space, people = [], quests = [];
+    for (const p of a.model.people.values()) {
+      const after = clone(p); let hit = false;
+      const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
+      at(after.work); for (const st of after.routine || []) at(st.at);
+      const pts = patrolOf(after);
+      pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
+      if (hit) people.push({ person: after, before: clone(p) });
+    }
+    for (const q of a.model.quests.values()) {
+      if ((q.space || 'exterior') !== S || !Array.isArray(q.pos) || !spotIn(u, q.pos)) continue;
+      const after = { ...clone(q), pos: moved(q.pos) };
+      if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
+      quests.push({ quest: after, before: clone(q) });
+    }
+    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}) };
+  }
+  // A unit moved by the panel's buttons: the same op as a drag.
+  moveUnit(u, turn, sh, dz) {
+    const refs = u.members.map((id) => this.app.placeRefsById().get(id)).filter(Boolean);
+    const d = { unit: u, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
+      c: this.unitCentre(u), fol: this.followers(refs), turn };
+    d.xf = this.poseUnit(d, turn, sh, dz);
+    this.pushUnit(d);
+  }
+  // The unit op pushed, and the unit (as it now stands, with what its new spot gives it) kept selected whole.
+  pushUnit(d) {
+    this.app.push([this.unitOp(d)]);
+    const u = this.units().units.get(d.unit.id); if (u) this.selectUnit(u);
+  }
+  // Put a thing into a unit, take it out of every unit (""), or give it back to the rule (null): its own `unit`.
+  setUnit(r, unit) {
+    const before = { unit: typeof r.unit === 'string' ? r.unit : null };
+    if (before.unit === unit) return;
+    this.app.push([{ op: 'ref.move', id: r.id, before, after: { unit } }]);
+  }
   cameraMoved(view) {
     if (view === this.app.ours.view) this.placeGizmo();
     this.clearSketch(view);
   }
   // Nudge by a step in the game's directions, or turn by the snap step.
   nudge(dx, dy, dz, drot = 0, dscale = 0) {
+    const u = this.selUnit();
+    if (u && !dscale) { this.moveUnit(u, drot, [dx, dy], dz); return; }
     const ops = [];
     for (const r of this.selRefs()) {
       const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);

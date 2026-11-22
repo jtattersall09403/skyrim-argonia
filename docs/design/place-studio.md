@@ -606,7 +606,8 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 |---|---|
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
-| `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive}` (the fields it changes), `after:{...}` |
+| `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive,unit}` (the fields it changes), `after:{...}` |
+| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -623,6 +624,13 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
+- `unit.move` applies each member as a `ref.move` (its `door`, when given, set as given rather than shifted), then
+  each person and quest row as a `person.edit` and `quest.edit`; a door whose arrival changes moves the landing
+  (`to_pos`) of every door leading to it by as much, so a move and its inverse give it back exactly (a plain
+  `ref.move` of a door does the same with the door's own shift). Its inverse swaps every before and after.
+  `edits.expand` (and `expand` in `edits.js`) writes it as those plain ops for whatever reads ops one row at a time:
+  hand placements (`hands.placed`), the draft's adds (`draft/adds.follow`), the needs' warnings.
+- A ref's `unit` (`ref.move`) is its unit by hand, `""` none; null drops the field, so the unit rule decides again.
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
   and `before` the row before.
 - `veg.clear` writes the item as the row (`by: owner` unless the item names `by`); `veg.restore` items carry the
@@ -797,6 +805,38 @@ track the world's land here carries, else the forest set; the build takes the gr
 screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
+
+**Units: composite things select and move as one** (`units.js` the rule, `tools.js` the selection and the move).
+A unit is what a builder would call one structure: a house with its porch, door, steps and lamps; a ship with its
+masts, rigging, gangplank and what stands on its deck; a tent with its bedrolls and chests. One rule says what is in
+a unit, worked out afresh from the space's refs whenever the place changes:
+1. a ref's own `unit` names its unit (`""` takes it out of every unit); else the draft's `cluster` does (never for a
+   plant, tree, ground cover, rock or person, which belong to the ground);
+2. a building in no unit starts its own; a unit lying at least half inside another's body (its buildings and pieces
+   of 200 by 200 units or more, never a marker or an effect), within its height, is part of it, the smaller into the
+   larger: a ship's sail into its hull, a doorframe into its house, a tent's bedding cluster into the tent;
+3. a ref still in no unit belongs to the unit of what it is seated `on`, else to the smallest unit whose body piece
+   it stands within, in plan and from 48 units under that piece's floor to 16 over its roof (a bedroll inside a tent,
+   a lantern on a deck);
+4. two or more pieces one sees make a unit: a building with only its lights or invisible walls is none.
+A unit is named for its head piece, the lowest of its buildings (the hull under the sail), else its biggest piece.
+
+A tap with Select picks the whole unit of the thing tapped: one outline round all of it and its name over it
+("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
+panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
+comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
+Tap adds to selection. The Selected panel of a unit names it and its pieces, each with Take out of this unit; a piece
+in no unit offers Add to this unit for the nearest unit within 600 units, and one whose unit was set by hand Let the
+unit rule decide. Membership by hand is a `ref.move` of the ref's `unit` (null gives it back to the rule).
+
+Moving, turning (about the unit's centre) or raising a unit selected whole, by its handles or the panel's buttons,
+moves every member rigidly as one `unit.move` op, one undo: what sits on the ground or on a member keeps its seat
+and is seated again where it lands; a free piece rises or falls with the ground under the unit's head, so the unit
+stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
+the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
+with it: a person's work place, routine stops and patrol points given as positions, and the quest spots on it. A
+bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
+resized whole; its pieces are, one by one.
 
 **Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
 view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over

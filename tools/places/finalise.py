@@ -555,7 +555,7 @@ def step_report(run: Run) -> dict:
 
 
 def describe(p: dict) -> str:
-    return {"ref.move": "an object moved", "ref.remove": "an object removed", "ref.add": "an object added",
+    return {"ref.move": "an object moved", "unit.move": "a whole unit moved", "ref.remove": "an object removed", "ref.add": "an object added",
             "veg.clear": "plants cleared", "veg.restore": "plants put back", "land.patch": "the ground reshaped",
             "identity.edit": "who a person is changed", "stock.container.set": "what a container holds changed",
             "stock.container.remove": "a container's stock taken away", "stock.possessions.set": "what a person carries changed",

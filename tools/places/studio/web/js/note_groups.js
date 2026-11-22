@@ -57,6 +57,10 @@ export function newNoteId(notes) {
 export function touched(ops) {
   const out = [];
   for (const op of ops) {
+    if (op.op === 'unit.move') {   // a unit moved whole touches each of its members
+      for (const u of op.refs || []) out.push({ id: u.id, space: op.space || 'exterior', kind: 'ref' });
+      continue;
+    }
     const id = op.ref?.id || op.id || op.path?.id || op.person?.id;
     if (id) out.push({ id, space: op.space || 'exterior', kind: op.op.split('.')[0] });
   }

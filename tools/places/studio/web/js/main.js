@@ -4,7 +4,8 @@ import { api, API_BASE } from './api.js';
 import { off } from './offline.js';
 import { OfflineUI } from './offline_ui.js';
 import { loadBundle, seatZ } from './bundle.js';
-import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
+import { EditLog, modelFromFiles, describe, vegKey, expand } from './edits.js';
+import { unitsOf } from './units.js';
 import { View, drawState, onRendererEvent } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer, releaseModels } from './objects.js';
@@ -285,7 +286,7 @@ class Studio {
   // ---------- spaces: outside or a room ----------
   showSpace(side, sid, first) {
     side.space = sid; const v = side.view;
-    if (side === this.ours) { this.selection.clear(); this.tools.selectionChanged(); }
+    if (side === this.ours) { this._units = null; this.selection.clear(); this.tools.selectionChanged(); }
     const interior = sid !== 'exterior';
     v.terrainData = interior ? null : (side === this.ours ? this.terrain : side.terrain);
     const layers = side === this.ours ? [this.ours.world, this.ours.place] : [side.layer];
@@ -395,6 +396,14 @@ class Studio {
     this._srcState = { bundle, id: st.id, hidden }; return hidden;
   }
   placeRefsById() { return this.model.spaces[this.ours.space]?.refs || new Map(); }
+  // The units of the space shown (units.js), worked out once per change of the place.
+  unitIndex() {
+    if (!this._units || this._units.space !== this.ours.space) {
+      const ix = unitsOf([...this.placeRefsById().values()], (r) => this.bases.get(r.base) || this.srcBases?.get(r.base), (r) => this.seated(r).pos);
+      this._units = Object.assign(ix, { space: this.ours.space });
+    }
+    return this._units;
+  }
   // A placed ref as drawn: seated on the land as it is now.
   // The answer is kept with the pose, seat rule and nearby land it came from, so a redraw only re-seats what moved
   // or stands on land that changed (a thing seated on another thing is always worked out afresh).
@@ -511,7 +520,8 @@ class Studio {
   // ---------- edits ----------
   push(ops, space) { return this.log.push(ops, space ?? this.ours.space); }
   afterEdit(kind, ops) {
-    this.noteBar.changed(kind);
+    this.noteBar.changed(kind); this._units = null;
+    ops = expand(ops);   // a unit moved whole touches its members, its people's spots and its quest spots
     // a fault-or-taste call or a note changes no thing in the place: only the lists that show them
     if (kind === 'call' || kind === 'note') { this.markUnsaved(); this.panels.historyChanged(); this.panels.notesChanged(); return; }
     const touched = new Set(ops.map((o) => o.op.split('.')[0]));

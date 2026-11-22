@@ -365,3 +365,10 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .paint-swatch { display: flex; flex-direction: column; align-items: stretch; gap: 4px; padding: 4px; min-height: 44px; border-radius: 10px; background: var(--panel-2); font-size: 12px; line-height: 1.2; text-align: left; }
 .paint-swatch img, .paint-swatch .noimg { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; background: #6e5a41; display: block; }
 .paint-swatch[aria-selected="true"] { outline: 3px solid var(--accent); }
+
+/* a unit selected whole: its name over it */
+.unit-label { position: absolute; transform: translate(-50%, -100%); z-index: 3; pointer-events: none; padding: 4px 10px; border-radius: 6px;
+  background: var(--accent); color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+.unit-card .members { list-style: none; padding: 0; margin: 0; }
+.unit-card .members li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
+.row.member p { flex-basis: 100%; margin: 4px 0; }

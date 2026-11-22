@@ -88,7 +88,8 @@ export class Panels {
     if (!refs.length) {
       parts.push(el(`<p>Tap a thing in our place to select it. Draw round several with the pen to select them all. Tap the same spot again to reach what is behind.</p>`));
       parts.push(el('<p>To copy from the source place, tap a thing on the source side, then tap our place where it should go.</p>'));
-    } else if (refs.length === 1) parts.push(this.refCard(refs[0], a.bases, 'ours'));
+    } else if (T.selUnit()) parts.push(this.unitCard(T.selUnit()));
+    else if (refs.length === 1) { parts.push(this.refCard(refs[0], a.bases, 'ours')); parts.push(this.memberLine(refs[0])); }
     else {
       const counts = {}; for (const r of refs) counts[plainKind(r.kind)] = (counts[plainKind(r.kind)] || 0) + 1;
       parts.push(el(`<p><strong>${refs.length} things selected</strong>: ${Object.entries(counts).map(([k, n]) => `${n} × ${esc(k.toLowerCase())}`).join(', ')}.</p>`));
@@ -114,13 +115,48 @@ export class Panels {
     parts.push(el('<h3>How selecting works</h3>'));
     const r = el('<div class="row"></div>');
     r.append(seg('Pen selects with', [['lasso', 'Draw round'], ['box', 'Box']], T.opts.selMode, (v) => { T.opts.selMode = v; }),
-      toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }));
+      toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }),
+      toggle('Pieces: a tap picks one piece, not its whole unit', T.opts.pieces, (v) => { T.opts.pieces = v; }));
     const r2 = el('<div class="row"></div>');
     r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }));
     const r3 = el('<div class="row"></div>');
     r3.append(toggle('Lights and invisible walls: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
     parts.push(r, r2, r3);
     this.show(refs.length ? 'Selected' : 'Select', parts);
+  }
+  // A unit selected whole: what it is, its pieces (each can be taken out), and how to reach one piece.
+  unitCard(u) {
+    const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById();
+    w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every piece with it, `
+      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, and its lights.</p>'));
+    w.append(el('<p class="tag">Tap a piece again to select only that piece. Tap away from it to come back to the whole.</p>'));
+    w.append(this.whereEl(u.members.map((id) => refs.get(id)).filter(Boolean), 'ours'));
+    const list = el('<ul class="members"></ul>');
+    for (const id of u.members) {
+      const r = refs.get(id); if (!r) continue;
+      const b = a.bases.get(r.base) || {}, li = el(`<li><span>${esc(b.name || b.edid || r.base)} <small>${esc(plainKind(r.kind))}</small></span></li>`);
+      const out = el('<button class="quiet">Take out of this unit</button>'); out.onclick = () => T.setUnit(r, '');
+      li.append(out); list.append(li);
+    }
+    w.append(el('<h3>Pieces in it</h3>'), list);
+    return w;
+  }
+  // A piece's unit: which it belongs to, with "take out"; or the unit nearest it, with "add to".
+  memberLine(r) {
+    const a = this.app, T = this.T, u = T.unitOfRef(r.id), w = el('<div class="row member"></div>');
+    if (u) {
+      w.append(el(`<p>Part of <strong>${esc(u.name)}</strong> (${u.members.length} pieces): it moves with the rest.</p>`));
+      const all = el('<button class="quiet">Select the whole unit</button>'); all.onclick = () => T.selectUnit(u);
+      const out = el('<button class="quiet">Take out of this unit</button>'); out.onclick = () => T.setUnit(r, '');
+      w.append(all, out);
+    } else {
+      const p = a.seated(r).pos, near = [...T.units().units.values()].map((x) => ({ x, d: Math.hypot(Math.max(x.box.x0 - p[0], 0, p[0] - x.box.x1), Math.max(x.box.y0 - p[1], 0, p[1] - x.box.y1)) }))
+        .filter((o) => o.d < 600).sort((m, n) => m.d - n.d)[0];
+      w.append(el('<p>In no unit: it moves alone.</p>'));
+      if (near) { const add = el(`<button class="quiet">Add to this unit: ${esc(near.x.name)}</button>`); add.onclick = () => T.setUnit(r, near.x.id); w.append(add); }
+      if (typeof r.unit === 'string') { const back = el('<button class="quiet">Let the unit rule decide</button>'); back.onclick = () => T.setUnit(r, null); w.append(back); }
+    }
+    return w;
   }
   refCard(r, bases, side) {
     const a = this.app, base = bases.get(r.base) || a.srcBases?.get(r.base) || {};

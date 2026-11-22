@@ -277,6 +277,7 @@ def test_02_performance_and_lazy_models(pad):
 
 # ---------- 3: select, cycle, lasso, gizmo, nudge, duplicate, remove, info ----------
 def test_03_select_and_manipulate(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     pad.page.click("#rail [data-tool=select]")
     # a building with nothing that follows it (no invisible wall on it): each change is its one op
     b = pad.ev("(() => { const rs = [...studio.model.spaces.exterior.refs.values()]; "
@@ -328,6 +329,7 @@ def test_03_select_and_manipulate(pad):
 
 # ---------- 4: copy from the source, a group, an enterable building ----------
 def test_04_from_the_source(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     if pad.page.locator("#panel-close").is_visible():  # the panel floats over the source view's right side
         pad.page.click("#panel-close")
     src = pad.ev("studio.srcBundle.spaces.exterior.refs.find((r) => r.kind === 'building')")
@@ -764,6 +766,7 @@ def test_21_selected_shows_where(pad):
 
 
 def test_21_lights_seen_and_handled(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a light has no model of its own: while selecting it is a small bulb of its colour, picked like anything else
     pad.page.click("#rail [data-tool=select]")
     light = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0')")
@@ -836,6 +839,7 @@ def test_21_lights_seen_and_handled(pad):
 
 
 def test_21_invisible_walls(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a kept collision box shows with the helpers as a faint outlined box of its real size, one instanced draw
     pad.page.click("#rail [data-tool=select]")
     wall = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0')")
@@ -922,6 +926,7 @@ def test_21_invisible_walls(pad):
 
 
 def test_21_grass_at_viewing_distance(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
     assert pad.ev("studio.ours.grass.on")
     g = pad.ev("studio.seated([...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building')).pos")
@@ -1565,3 +1570,92 @@ def test_23_raise_of_a_seated_door_stays(pad, browser, server):
     assert abs(other.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door) - z1) < 0.01
     other.page.context.close()
     pad.ev("studio.log.undo(); studio.log.undo()")
+
+
+# ---------- 30: composite things move as one ----------
+UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2 = (v) => Math.round(v * 100) / 100;
+  const refs = {}; for (const [id, r] of ex) refs[id] = { pos: r.pos.map(r2), rot: (r.rot || []).map((v) => Math.round(v * 1e4)), seat: r.seat ?? null, door: r.door || null };
+  const room = m.spaces.FixHouse02.refs.get('fixplaceFixHouse02.door');
+  return { refs, bram: m.people.get('fixplace.p2'), room: room.door }; })()"""
+
+
+def gizmo_handle(pad, name):
+    return pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+
+
+def test_30_units_move_whole(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.pieces = false; studio.tools.opts.adds = false; studio.selection.clear(); studio.tools.selectionChanged()")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", house, dist=2600, pitch=1.1)
+    start = pad.ev(UNIT_STATE)
+    # one tap selects the whole house: its door, its porch and the bedroll standing inside it, with one outline and a label
+    pad.pen_tap(*pad.screen("ours", [house[0], house[1], house[2] + 300]))
+    sel = set(pad.ev("[...studio.selection]"))
+    assert {"fixplace.b1", "fixplace.d1", "fixplace.porch1", "fixplace.bedroll1"} <= sel, sel
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01"
+    assert "Smithy (" in pad.ev("document.querySelector('#view-ours .unit-label').textContent")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "one structure of" in body and "Take out of this unit" in body, body
+    pad.shot("22-unit-selected")
+    # dragged whole: one op, every member shifted alike, the door's arrival and its room's landing with it, Bram's work spot too
+    h = gizmo_handle(pad, "move")
+    n0 = len(pad.ops())
+    pad.pen_drag([h, (h[0] + 80, h[1] + 30)])
+    ops = pad.ops()[n0:]
+    assert [o["op"] for o in ops] == ["unit.move"], ops
+    now = pad.ev(UNIT_STATE)
+    dx = now["refs"]["fixplace.b1"]["pos"][0] - start["refs"]["fixplace.b1"]["pos"][0]
+    dy = now["refs"]["fixplace.b1"]["pos"][1] - start["refs"]["fixplace.b1"]["pos"][1]
+    assert abs(dx) + abs(dy) > 20, (dx, dy)
+    for rid in sel:
+        a, b = start["refs"][rid]["pos"], now["refs"][rid]["pos"]
+        assert abs(b[0] - a[0] - dx) < 0.6 and abs(b[1] - a[1] - dy) < 0.6, rid
+    arr0, arr1 = start["refs"]["fixplace.d1"]["door"]["arrival"], now["refs"]["fixplace.d1"]["door"]["arrival"]
+    assert abs(arr1[0] - arr0[0] - dx) < 0.6 and abs(arr1[1] - arr0[1] - dy) < 0.6
+    shift = lambda a, b: [round(y - x, 1) for x, y in zip(a, b)]  # noqa: E731
+    assert shift(start["room"]["to_pos"], now["room"]["to_pos"]) == shift(arr0, arr1) and now["room"]["to_ref"] == "fixplace.d1"
+    assert now["refs"]["fixplace.d1"]["door"]["to_space"] == "FixHouse02"
+    assert now["refs"]["fixplace.d1"]["door"]["to_ref"] == start["refs"]["fixplace.d1"]["door"]["to_ref"]
+    w0, w1 = start["bram"]["work"]["pos"], now["bram"]["work"]["pos"]
+    assert abs(w1[0] - w0[0] - dx) < 0.6 and abs(w1[1] - w0[1] - dy) < 0.6, (w0, w1)
+    # turned whole by the panel: the bedroll keeps its distance from the house and turns with it
+    pad.page.get_by_role("button", name="Turn right", exact=True).click()
+    t = pad.ev(UNIT_STATE)
+    assert pad.ops()[-1]["op"] == "unit.move"
+
+    def dist(s):
+        a, b = s["refs"]["fixplace.bedroll1"]["pos"], s["refs"]["fixplace.b1"]["pos"]
+        return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5
+    assert abs(dist(t) - dist(start)) < 1, (dist(t), dist(start))
+    turned = lambda rid: t["refs"][rid]["rot"][2] - now["refs"][rid]["rot"][2]  # noqa: E731
+    assert abs(turned("fixplace.bedroll1") - turned("fixplace.b1")) <= 1 and abs(turned("fixplace.b1")) > 100
+    assert shift(start["room"]["to_pos"], t["room"]["to_pos"]) == shift(arr0, t["refs"]["fixplace.d1"]["door"]["arrival"])
+    # one undo each gives everything back
+    pad.ev("studio.log.undo(); studio.log.undo()")
+    assert pad.ev(UNIT_STATE) == start
+    # a second tap on a piece goes inside to it; tapping away comes back out to the whole
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    porch = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.porch1")
+    pad.page.wait_for_timeout(300)
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    assert pad.ev("[...studio.selection]") == ["fixplace.porch1"], pad.ev("[...studio.selection]")
+    assert "Part of" in pad.ev("document.getElementById('panel-body').textContent")
+    pad.ev("studio.tools.lastTap = null")
+    hx, hy = pad.screen("ours", house)
+    pad.pen_tap(hx - 160, hy + 170)
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01", pad.ev("[[...studio.selection], studio.tools.inside, studio.tools.unit]")
+    # Pieces on: a tap picks one piece
+    pad.ev("studio.tools.opts.pieces = true; studio.tools.lastTap = null; studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    assert pad.ev("[...studio.selection]") == ["fixplace.porch1"]
+    pad.ev("studio.tools.opts.pieces = false")
+    # membership by hand: the porch taken out, then given back to the rule
+    pad.ev("studio.selection = new Set(['fixplace.porch1']); studio.tools.selectionChanged()")
+    pad.page.get_by_role("button", name="Take out of this unit").click()
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.porch1').unit") == ""
+    assert "fixplace.porch1" not in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.page.get_by_role("button", name="Let the unit rule decide").click()
+    assert "fixplace.porch1" in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert pad.ev(UNIT_STATE) == start
