@@ -33,7 +33,13 @@ def main(argv: list[str]) -> int:
     modules read their folders and ports when imported."""
     keep = argv[argv.index("--keep") + 1] if "--keep" in argv else None
     pos = [a for i, a in enumerate(argv) if not a.startswith("--") and (i == 0 or argv[i - 1] not in ("--keep", "--sample"))]
-    root = Path(keep or tempfile.mkdtemp(prefix="look-truth-"))
+    if keep:
+        root = Path(keep)
+    elif pos:   # a real place: one folder per place, made again each run, so runs never pile up on the disk
+        root = ROOT / "out" / "places" / "look-truth" / pos[0]
+        subprocess.run(["rm", "-rf", str(root)])
+    else:
+        root = Path(tempfile.mkdtemp(prefix="look-truth-"))
     root.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ, LOOK_OUT=str(root / "look"), LOOK_PORT=str(free_port()), PYTHONPATH=str(ROOT))
     if not pos:
