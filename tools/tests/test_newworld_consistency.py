@@ -251,3 +251,34 @@ def test_a_studio_save_does_not_make_the_built_check_old(tmp_path):
     assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # an uncommitted save: still the draft's
     g("add", "."); g("commit", "-q", "-m", "save", when="2026-01-01T00:00:00Z")
     assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # a committed save: still the draft's
+
+
+def test_a_retired_name_fails_outside_its_allowed_sense_and_owed_paths_shrink(tmp_path):
+    import json
+    table = {"names": [
+        {"id": "night-reed", "new": "the Eelskins", "match": ["night[-_ ]?reed"], "allow": ["not called the Night-Reed"]},
+        {"id": "rulers", "new": "the Xeech-Leel", "match": ["An-Xileel (officers?|rulers?)"]},
+        {"id": "organism", "new": "cut", "case": True, "match": ["\\bthe Organism\\b"], "allow_paths": ["story/lore/**"]}],
+        "scope": {"exempt": [{"glob": "docs/owner-rulings.md", "why": "history"}],
+                  "quoted": {"globs": ["docs/phases/**"]},
+                  "owed": [{"glob": "plugin/**", "why": "next quest build"}, {"glob": "gone/**", "why": "cleared"}]}}
+    files = {"story/design/a.md": "The Night-Reed meet at dusk.\nA guild not called the Night-Reed.",
+             "story/lore/b.md": "The An-Xileel fell after Umbriel. the Organism died with them.",
+             "story/design/c.md": "An-Xileel officers man the toll. A living organism.",
+             "docs/phases/p.md": "> the Night Reed, in the owner's words",
+             "plugin/q.yaml": "faction_night_reed_chapter",
+             "docs/owner-rulings.md": "the Night-Reed"}
+    (tmp_path / "story/design").mkdir(parents=True)
+    (tmp_path / "story/design/retired-names.json").write_text(json.dumps(table))
+    for rel, text in files.items():
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / rel).write_text(text)
+    t, f = C.load_names(tmp_path)
+    assert "docs/owner-rulings.md" not in f
+    R = C.Report()
+    C.check_names({"names_table": t, "name_files": f}, R)
+    assert sorted((x.cause, x.evidence) for x in R.items) == [
+        ("a retired name in a live file", "story/design/a.md:1"),
+        ("a retired name in a live file", "story/design/c.md:1"),
+        ("an owed path with no retired name left", "story/design/retired-names.json")]
+    assert [x.evidence.split(" ")[0] for x in R.owed] == ["plugin/q.yaml:1"]

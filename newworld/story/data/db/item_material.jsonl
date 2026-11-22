@@ -1,6 +1,16 @@
 {"item_id":"1AncArgArm.esp:000801","material_id":"bronze","why":"Ancient Argonian Cuirass: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000802","material_id":"bronze","why":"Ancient Argonian Gauntlets: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000804","material_id":"bronze","why":"Ancient Argonian Tail Armor: Ancient Argonian Armor: pre-Duskfall war gear"}
+{"item_id":"1AncientImperial.esp:000001","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000002","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000003","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000004","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000005","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000006","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000007","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000008","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:00000A","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000D63","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
 {"item_id":"1ChitinBow.esl:000002","material_id":"chitin","why":"a chitin bow"}
 {"item_id":"1ChitinBow.esl:000003","material_id":"chitin","why":"chitin arrows"}
 {"item_id":"1IvoryBow.esl:000004","material_id":"bone-plate","why":"bone arrows"}
@@ -158,12 +168,13 @@
 {"item_id":"Buoyant Armiger Weapons.esp:000060","material_id":"moonstone","why":"the Buoyant Armigers' glass (Temple knights among the holdouts)"}
 {"item_id":"Buoyant Armiger Weapons.esp:000065","material_id":"moonstone","why":"the Buoyant Armigers' glass (Temple knights among the holdouts)"}
 {"item_id":"Buoyant Armiger Weapons.esp:000D63","material_id":"moonstone","why":"the Buoyant Armigers' glass (Temple knights among the holdouts)"}
-{"item_id":"Cyrodiilic Thief.esp:000872","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
-{"item_id":"Cyrodiilic Thief.esp:000873","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
-{"item_id":"Cyrodiilic Thief.esp:000874","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000872","material_id":"leather","why":"thieves' leathers (Eelskins Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000873","material_id":"leather","why":"thieves' leathers (Eelskins Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000874","material_id":"leather","why":"thieves' leathers (Eelskins Chapter, faction 32)"}
 {"item_id":"Cyrodiilic Thief.esp:000875","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
 {"item_id":"Cyrodiilic Thief.esp:00087E","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
 {"item_id":"Cyrodiilic Thief.esp:00087F","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","material_id":"shadowscale","why":"a curved killing knife: the Shadowscales"}
 {"item_id":"Dawnguard.esm:000801","material_id":"crossbow","why":"a crossbow"}
 {"item_id":"Dawnguard.esm:000BB3","material_id":"crossbow","why":"steel bolts for the crossbow"}
 {"item_id":"Dawnguard.esm:00F19E","material_id":"crossbow","stock_tier_id":"T3","why":"an enhanced crossbow; tier T3: the finer make of the crossbow, armour-piercing"}
@@ -325,6 +336,10 @@
 {"item_id":"Here There Be Monsters.esp:053522","material_id":"copper-steel","why":"a harpoon edged with copper"}
 {"item_id":"Here There Be Monsters.esp:05352A","material_id":"bog-iron","why":"a two-handed harpoon"}
 {"item_id":"Here There Be Monsters.esp:053532","material_id":"copper-steel","why":"a two-handed harpoon edged with copper"}
+{"item_id":"Imperial Agent Armor.esp:000807","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:000808","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:000809","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:00080A","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001828","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001D8C","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
@@ -428,7 +443,7 @@
 {"item_id":"King of the Murkmire.esp:10C484","material_id":"obsidian","why":"Ceremonial Tusik: a ceremonial tusik toothed with volcanic glass"}
 {"item_id":"King of the Murkmire.esp:1C1C62","material_id":"wood","why":"Saxhleel Warclub: a wooden war club"}
 {"item_id":"King of the Murkmire.esp:1C1C63","material_id":"wood","why":"Tum-Taleel Club: a wooden war club"}
-{"item_id":"King of the Murkmire.esp:2565F1","material_id":"wood","why":"An-Xileel Mask: a carved wooden mask"}
+{"item_id":"King of the Murkmire.esp:2565F1","material_id":"wood","why":"Xeech-Leel Mask: a carved wooden mask"}
 {"item_id":"King of the Murkmire.esp:27504F","material_id":"saxhleel","why":"Saxhleel Bone Shortsword: Saxhleel bone"}
 {"item_id":"King of the Murkmire.esp:275050","material_id":"saxhleel","why":"Saxhleel Bone Sword: Saxhleel bone"}
 {"item_id":"King of the Murkmire.esp:27A2B7","material_id":"saxhleel","why":"Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"}
@@ -446,16 +461,17 @@
 {"item_id":"King of the Murkmire.esp:57AA46","material_id":"flint","why":"Saxhleel Great Tusik: a tusik: wood toothed with flint"}
 {"item_id":"King of the Murkmire.esp:57AA47","material_id":"wood","why":"Saxhleel Wooden Longmace: Saxhleel wood (its record calls it wooden)"}
 {"item_id":"King of the Murkmire.esp:99E4A2","material_id":"saxhleel","why":"Callia's Jacket: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D49","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D4A","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D66","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D67","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D68","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D69","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D6B","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D7B","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D7C","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
-{"item_id":"Mercenary Light Iron Armor.esp:000D7D","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Maleficus' Blackjack.esp:000D65","material_id":"leather","why":"a leather sap for knocking a guard down quietly: the Eelskins"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D49","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D4A","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D66","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D67","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D68","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D69","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D6B","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7B","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7C","material_id":"bog-iron","why":"a sellsword's light mail"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7D","material_id":"bog-iron","why":"a sellsword's light mail"}
 {"item_id":"NagaKurArmor.esp:000804","material_id":"leather","why":"Naga-Kur leather and bone"}
 {"item_id":"NagaKurArmor.esp:000805","material_id":"leather","why":"Naga-Kur leather and bone"}
 {"item_id":"NagaKurArmor.esp:000806","material_id":"leather","why":"Naga-Kur leather and bone"}
@@ -507,16 +523,16 @@
 {"item_id":"Obsidian Weapons Update 4.esp:00334E","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
 {"item_id":"Obsidian Weapons Update 4.esp:003356","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
 {"item_id":"Obsidian Weapons Update 4.esp:003357","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
-{"item_id":"Pirate Armor.esp:000801","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:000803","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:000805","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:00080B","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:00080F","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:000811","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:000817","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:00081C","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:00081D","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
-{"item_id":"Pirate Armor.esp:00082A","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000801","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000803","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000805","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00080B","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00080F","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000811","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000817","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00081C","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00081D","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00082A","material_id":"corsair","why":"pirates' coats and blades (Bramman's Brethren, pirate waters)"}
 {"item_id":"Pirates Wield Cutlasses.esp:000D63","material_id":"corsair","why":"a pirate's cutlass"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000800","material_id":"bone","why":"Argonian Bone Mace: Argonian bone (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000806","material_id":"wood","why":"Argonian Shortspear: Argonian wood (New Armory)"}
@@ -590,11 +606,11 @@
 {"item_id":"Prvti_MoonstoneArmory.esp:00080F","material_id":"moonstone","why":"Hlaalu and Indoril moonstone arms (no katanas)"}
 {"item_id":"Prvti_MoonstoneArmory.esp:000810","material_id":"moonstone","why":"Hlaalu and Indoril moonstone arms (no katanas)"}
 {"item_id":"Prvti_MoonstoneArmory.esp:000811","material_id":"moonstone","why":"Hlaalu and Indoril moonstone arms (no katanas)"}
-{"item_id":"Redguard Assasin Armor.esp:000800","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
-{"item_id":"Redguard Assasin Armor.esp:000801","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
-{"item_id":"Redguard Assasin Armor.esp:000802","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
-{"item_id":"Redguard Assasin Armor.esp:000803","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
-{"item_id":"Redguard Assasin Armor.esp:00080E","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000800","material_id":"shadowscale","why":"an assassin's light armour (the Shadowscales, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000801","material_id":"shadowscale","why":"an assassin's light armour (the Shadowscales, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000802","material_id":"shadowscale","why":"an assassin's light armour (the Shadowscales, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000803","material_id":"shadowscale","why":"an assassin's light armour (the Shadowscales, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:00080E","material_id":"shadowscale","why":"an assassin's light armour (the Shadowscales, hired blades)"}
 {"item_id":"RedoranTombWarden.esp:000DDE","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
 {"item_id":"RedoranTombWarden.esp:000DE6","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
 {"item_id":"RedoranTombWarden.esp:000DE7","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
@@ -613,6 +629,8 @@
 {"item_id":"RoyalElvenBow.esp:007ECE","material_id":"greenwood","stock_tier_id":"T4","why":"the finest Bosmer bow; tier T4"}
 {"item_id":"RoyalElvenBow.esp:02CE35","material_id":"greenwood","why":"a Bosmer longbow"}
 {"item_id":"RoyalElvenBow.esp:02F5D6","material_id":"greenwood","why":"Bosmer arrows"}
+{"item_id":"SemperFi.esp:000D63","material_id":"imperial","stock_tier_id":"T3","why":"a Legion officer's cuirass; tier T3"}
+{"item_id":"SerpentDagger.esp:000D65","material_id":"shadowscale","why":"a serpent-hilted dagger: the Shadowscales"}
 {"item_id":"SilvBoneArsenal.esp:000808","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:000809","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:00080A","material_id":"bone-plate","why":"woven bone with bright edges"}
@@ -622,12 +640,46 @@
 {"item_id":"SilvBoneArsenal.esp:00080E","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:00080F","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:000D63","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"Skyrim.esm:05ABC4","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales"}
+{"item_id":"Skyrim.esm:05DB85","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB86","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB87","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB88","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:07A917","material_id":"copper-steel","stock_tier_id":"T4","why":"the chapter's master blade (the Nightingale Blade); tier T4"}
+{"item_id":"Skyrim.esm:07E5C3","material_id":"wood","stock_tier_id":"T4","why":"the chapter's master bow (the Nightingale Bow); tier T4"}
+{"item_id":"Skyrim.esm:09CCDC","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's own blade (the Blade of Woe): the Shadowscales; tier T5"}
+{"item_id":"Skyrim.esm:0D2842","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales"}
+{"item_id":"Skyrim.esm:0D2843","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales"}
+{"item_id":"Skyrim.esm:0D2844","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales"}
+{"item_id":"Skyrim.esm:0D2845","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales"}
+{"item_id":"Skyrim.esm:0E1F14","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales; tier T5"}
+{"item_id":"Skyrim.esm:0E1F15","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales; tier T5"}
+{"item_id":"Skyrim.esm:0E1F16","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales; tier T5"}
+{"item_id":"Skyrim.esm:0E1F17","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales; tier T5"}
 {"item_id":"SpikedClub_by_Flarescale.esp:000804","material_id":"wood","why":"a thorn-studded club"}
 {"item_id":"SpikedClub_by_Flarescale.esp:000805","material_id":"wood","why":"a thorn-studded two-handed club"}
 {"item_id":"SpikedMace_by_Flarescale.esp:000804","material_id":"bog-iron","why":"a spiked iron mace"}
 {"item_id":"SpikedMace_by_Flarescale.esp:000805","material_id":"bog-iron","why":"a spiked two-handed mace"}
+{"item_id":"Stiletto Collection.esp:000D63","material_id":"shadowscale","stock_tier_id":"T5","why":"the Writ-Keeper's stiletto: the Shadowscales; tier T5: a senior's blade"}
+{"item_id":"Stiletto Collection.esp:001D8E","material_id":"copper-steel","why":"a thin stiletto: the Eelskins"}
+{"item_id":"Stiletto Collection.esp:0048A8","material_id":"shadowscale","why":"a needle stiletto: the Shadowscales"}
+{"item_id":"Stiletto Collection.esp:004E0D","material_id":"bog-iron","why":"a thin stiletto: the Eelskins"}
+{"item_id":"Stiletto Collection.esp:004E10","material_id":"copper-steel","why":"a thin stiletto: the Eelskins"}
+{"item_id":"Stinger-Poisoner.esp:000D63","material_id":"shadowscale","why":"a poisoner's barbed sword: the Shadowscales"}
+{"item_id":"ThievesGuildDagger_SE_ENG.esl:000D62","material_id":"bog-iron","why":"the chapter's knife: the Eelskins"}
+{"item_id":"TribuneArmor.esp:005901","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:005906","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:005907","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:019D11","material_id":"imperial","stock_tier_id":"T3","why":"a tribune's sword; tier T3"}
+{"item_id":"WarSickles of the East.esp:00080B","material_id":"bog-iron","why":"an eel-hook: the Eelskins"}
+{"item_id":"WarSickles of the East.esp:00080E","material_id":"copper-steel","why":"an eel-hook: the Eelskins"}
+{"item_id":"WarSickles of the East.esp:000A60","material_id":"bog-iron","why":"a cane-cutter's hook: the Eelskins"}
+{"item_id":"WarSickles of the East.esp:000B62","material_id":"shadowscale","why":"a hooked sickle: the Shadowscales"}
+{"item_id":"WarSickles of the East.esp:000B6A","material_id":"shadowscale","why":"a blackened sickle: the Shadowscales"}
 {"item_id":"WoodenClub_by_Flarescale.esp:000803","material_id":"wood","why":"a heavy wooden war club"}
 {"item_id":"WoodenClub_by_Flarescale.esp:000804","material_id":"bog-iron","why":"an iron-studded maul"}
+{"item_id":"[Dyuz]HookSword.esp:000D63","material_id":"copper-steel","why":"a hooked sword for catching a blade or a rope: the Eelskins"}
+{"item_id":"[Dyuz]HookSword.esp:001D8F","material_id":"bog-iron","why":"a barbed hook sword: the Eelskins"}
 {"item_id":"bobmods_macua.esp:000D62","material_id":"flint","stock_tier_id":"T2","why":"a wooden club edged with flint teeth; tier T2: the finest flint work"}
 {"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC0","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
 {"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC1","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}

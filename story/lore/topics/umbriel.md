@@ -104,5 +104,4 @@ spore fallen from the floating island (Lore:Umbriel).
   legitimate template for any 4E 48-derived undead we place, and notably
   suited to drowned interiors.
 - The Deepmire **Umbriel memorial** (settlement register) is the province's
-  formal remembrance site; the Umbriel Witness Society (UW line) hangs off
-  this dossier.
+  formal remembrance site.

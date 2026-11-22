@@ -18,7 +18,7 @@ Every narrative datum should use the existing source-confidence categories:
 
 **King of the Murkmire (KotM) text** ([KotM plan](../research/placement-settlements/king-of-the-murkmire-adoption-plan.md) § 3.8): its dialogue, books and names are a register reference for Saxhleel speech, never a source; cite UESP for canon books. The extracted corpus lives in the vault (`elder-scrolls-asset-pipeline/derived/text/king-of-the-murkmire/`), never in the repo. Never reuse its invented names: [86-never-reuse-names.md](86-never-reuse-names.md).
 
-The Xeech-Leel, the Toh-Reel-Ka, the Unbound Root and the Root of Accord are project-original. The Eye of Argonia, Hist, Sithis, Nisswo, An-Xileel, Shadowscales, Duskfall, Xanmeers, Lilmoth/Umbriel and Black Marsh cities are grounded in established lore.
+The Xeech-Leel, the Toh-Reel-Ka, the Unbound and the Root of Accord are project-original. The Eye of Argonia, Hist, Sithis, Nisswo, An-Xileel, Shadowscales, Duskfall, Xanmeers, Lilmoth/Umbriel and Black Marsh cities are grounded in established lore.
 
 ## 45b. Argonian register — and the layered model it sits in
 
@@ -156,7 +156,7 @@ tell, not any single instance** — these are checks, not a lint.
 | Adjective or abstract-noun tricolons in label fields ("callous, efficient, deeply resented"; "Contested reverence") | two beats, or one concrete fact | the tricolon rule applies to fragments; the third term is the reader's reaction |
 | Design or pipeline voice inside world prose ("the reveal IS the beat", "per the two-culture kit rule", "the province's default dungeon", "band 5", "POI", "Owner decision Q2") | describe the place; put the decision in a decision record or a typed field | authorial rationale is not fiction |
 | Game/session references in in-world prose ("where the game starts", "the first quiet the player gets") | describe the place, not the playthrough | |
-| Sentence restated with an appended clause ("The seal leaks. The seal leaks, and the Waykeepers…") | write the long sentence once | a Phase 11 writer artefact, ~400 instances province-wide |
+| Sentence restated with an appended clause ("The seal leaks. The seal leaks, and the keepers…") | write the long sentence once | a Phase 11 writer artefact, ~400 instances province-wide |
 | Two stock phrases welded with an em dash ("worn but sound — everything load-bearing is new") | one clause | the dash doing the work a choice should do; often contradictory |
 | Modern idiom no one in the world could hold ("unionised", "brute-forced", "ordinary until it isn't", "infrastructure", "leverage") | the plain word for the thing | |
 | "X — the only such thing in the province" flourish after a concrete image | end at the image; uniqueness goes in a fact field | |
@@ -456,5 +456,5 @@ Two structural rules taken from that research:
 
 The main quest's four allegiance reward tracks — their DNA, five tiers each,
 the stack-low/lock-high rule and the single phased stronghold — are specified in
-[30-main-quest.md](30-main-quest.md) §24b.
+[the main plot](lines/main-plot.md).
 

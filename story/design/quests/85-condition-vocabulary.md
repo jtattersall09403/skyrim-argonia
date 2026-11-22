@@ -223,8 +223,8 @@ A quest record's optional `startWhen` is any condition above: the first tick aft
     { "questStage": ["quest.mq.05", "≥", 20] },
     { "not": { "knowsTopic": "topic.the-third-name" } },
     { "any": [
-      { "factionRankAtLeast": ["faction.veiled-reed", 3] },
-      { "deedCountAtLeast": ["faction.veiled-reed", "deed.quiet-favour", 3] }
+      { "factionRankAtLeast": ["faction.toh-reel-ka", 3] },
+      { "deedCountAtLeast": ["faction.toh-reel-ka", "deed.quiet-favour", 3] }
     ]}
   ]
 }

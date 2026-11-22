@@ -9,7 +9,7 @@ Black Marsh is independent of the Mede Empire. The **An-Xileel** did not survive
 
 Project interpretation:
 
-- the Xeech-Leel kept the apparatus the province could not do without: the **Archwardens**, now their office for the wardens who hold the forts, roads, crossings and tolls, a customs regime at the recognised ports and the frontier screen facing Morrowind; their council sits at Helstrom, their working offices are at Stormhold and Archon; the Organism died with the An-Xileel;
+- the Xeech-Leel kept the apparatus the province could not do without: the **Archwardens**, now their office for the wardens who hold the forts, roads, crossings and tolls, a customs regime at the recognised ports and the frontier screen facing Morrowind; their council sits at Helstrom, their working offices are at Stormhold and Archon; the An-Xileel's council died with them;
 - their open writ is real at the borders and the ports and thin everywhere else; **Gideon** and **Lilmoth**, the two cities the An-Xileel's weapon killed, keep them at arm's length;
 - officially the Xeech-Leel; ordinary people say "the Wardens"; to call a Xeech-Leel officer "An-Xileel" is the gravest insult in the province, and the young have begun to make it a joke — who makes it, and to whom, places a speaker politically in one word;
 - cities retain councils, merchants, militias, old offices and local political traditions;
@@ -24,7 +24,7 @@ Project interpretation:
 - Lukiul and other urban or culturally mixed Argonians disagree over what sovereignty and “authentic” Argonian identity require;
 - there are no courts, no treasury and no state prisons, so punishment and civil damages are paid in **owed labour** — **the Owing** — assessed by whoever holds the crossing, the estate or the hiring office, which in much of the province means the surviving ex-**Archein** families. It is native in origin, humane where it works, and has drifted into transferable, extendable, effectively heritable bondage where it does not (lore: topics/labour-and-bondage.md). It is the province's central *civilian* political question and it is not universal — never write it as a province-wide grey.
 
-The Xeech-Leel must contain genuine defenders, administrators, veterans, reformers, opportunists and authoritarian centralisers. The Unbound Root must contain genuine victims of state abuse, philosophical radicals, fanatics, frightened converts and political infiltrators. Neither side is a single moral answer. The ruling party's history sharpens both: it rose on the promise that no faction would ever again speak with the trees in secret, and its own secret warriors now do exactly that.
+The Xeech-Leel must contain genuine defenders, administrators, veterans, reformers, opportunists and authoritarian centralisers. The Unbound must contain genuine victims of state abuse, philosophical radicals, fanatics, frightened converts and political infiltrators. Neither side is a single moral answer. The ruling party's history sharpens both: it rose on the promise that no faction would ever again speak with the trees in secret, and its own secret warriors now do exactly that.
 
 ## 6. The Toh-Reel-Ka
 
@@ -43,11 +43,11 @@ The Toh-Reel-Ka provide a Morrowind-like main-quest handler structure. They take
 
 The organisation’s internal contradiction is central: it guards an independent province against a real danger, another Umbriel, by keeping dreamers fed on sap in secret, which is the An-Xileel's crime in a new form; by those means the party it serves is becoming the party it replaced (lore: extrapolation/argonia-4e201-state.md §1, §2.5, §11.2).
 
-## 7. Mainstream Sithis belief and the Unbound Root
+## 7. Mainstream Sithis belief and the Unbound
 
 Argonian reverence for Sithis cannot be written as generic evil cultism. Nisswo understand Sithis through change, endings, transformation and uncertainty. Their interpretations are plural and often suspicious of fixed dogma.
 
-The **Unbound Root** is a radical movement, not the definitive Argonian faith. Its doctrine argues:
+The **Unbound** is a radical movement, not the definitive Argonian faith. Its doctrine argues:
 
 - the Hist nurture Argonians but also influence form, memory and social belonging;
 - modern authorities turn that bond into proof of citizenship and obedience;
@@ -72,7 +72,7 @@ it, permanently, on behalf of people who did not ask. *Vastei* is change;
 argument costs nothing, is entirely canon-native, cannot be answered by pointing
 at state abuses — because the state abuses are real — and is a far better critique
 than "cultists are dangerous". It also cuts back: a Nisswo who says this must
-also say it to the Umbriel Witness Society and to the Chainbreakers' oldest
+also say it to the survivors of Umbriel and to the Chainbreakers' oldest
 grudges, and mean it.
 
 **And the cult's grievance has a civilian twin.** The Root of Accord is
@@ -123,7 +123,7 @@ danger-tier vocabulary below maps onto that field via the table in
 | Alten Corimont and connected managed marsh | D0–D2 | Argonian-majority river population with Dunmer traders, boatfolk and transient outsiders. | Penal work route/opening location, ferries, early Hist settlement and first Toh-Reel-Ka recruitment. |
 | Thorn / north-east | D0–D3 | About 75% Argonian; large Dunmer minority (~20%), smaller Nord/Imperial presence. | Border-security city shaped by slavery, the Accession War, trade and mixed families; later treasure-hunt lead and independent Accord line. **Region note:** Thornmarsh is temperate **grassland with saltrice plantations**, not swamp — the world build must not default it to marsh (lore: regions/thornmarsh-and-east.md). |
 | Gideon / western frontier | D0–D2 | Canonically **majority Lukiul** Argonian — the Lukiul city — plus the strongest Imperial-descended presence (~22% prior), Khajiit traders and smaller Dunmer/Redguard groups. | Civic, estate and intelligence centre. Imported roads, forts and records support investigations without making the Empire the main plot. Gideon lost its Lukiul majority to the An-Xileel's own weapon in 4E 48 — the strongest grounding for the plan's Lukiul-versus-sovereignty theme (lore: gideon.md). |
-| Soulrest / south-west | D0–D2; coastal D3 | About 60% Argonian; high Khajiit presence (~19%), Imperial-descended population (~13%), Bosmer and maritime minorities. | Most cosmopolitan port. Heists, salvage, trade, pirates and Reed-Sail/Thieves content. |
+| Soulrest / south-west | D0–D2; coastal D3 | About 60% Argonian; high Khajiit presence (~19%), Imperial-descended population (~13%), Bosmer and maritime minorities. | Most cosmopolitan port. Heists, salvage, trade, pirates and thieves' content. |
 | Blackrose / south | D0–D2 | Argonian-majority regional population; descendants of prison staff, ex-prisoners, deserters, refugees and coerced migrants create unusual diversity. | Infamous city beside the Rose — a prison **ruin** a day's march south, reoccupied by the Blackguards' heirs with Umbriel's undead below — used by main treasure-hunt and Chainbreakers, without being mandatory opening location. |
 | Lilmoth / south-east | D0–D2 | About 80% Argonian in the southern prior, with Imperial-descended, Khajiit, Bosmer, Dunmer and Altmer communities on the docks. | Rebuilt-but-not-restored port on the site of its own 4E 48 destruction: commercially significant, wary of the ruling Xeech-Leel, drowned Imperial quarter unrepaired, feared third Hist, Pusbottom, major Thieves Guild heist and civic disputes (lore: extrapolation/argonia-4e201-state.md §4). |
 | Archon / east | D0–D3 | About 79% Argonian; substantial Dunmer minority (~15%) and smaller Imperial presence. | Eastern port and mixed maritime city; lighthouse, pilots, smugglers and route research. Founded by the Barsaebic Ayleids — the same substratum as Stormhold, Gideon and Thorn (lore: archon.md). |

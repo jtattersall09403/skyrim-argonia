@@ -55,7 +55,7 @@ quest.local.lq25` (local).
 
 | # | Section | What it holds | Built from |
 |---|---|---|---|
-| 1 | `recordStatus`, `foundation` | `design`, `reviewed`, `briefed`, `written`; which imported design it rebuilds (the row, its 40-factions or 50-side-quests entry) and what changed | the import |
+| 1 | `recordStatus`, `foundation` | `design`, `reviewed`, `briefed`, `written`; which imported design it rebuilds (its line's plot under story/design/quests/lines/, or its 50-side-quests entry) and what changed | the import |
 | 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id; `lore`: each lore file and section checked (quest-write §5) | world data |
 | 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags; 00-overview §4) | profile, place, shapes |
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |

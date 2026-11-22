@@ -24,7 +24,7 @@ packet's briefs make):
    routes and POI skeleton from the lore registers and causal rules, as the
    phase already specifies.
 2. **Quest-brief pass.** A quest-design agent then runs the **novelty check**
-   against [55-quest-index.md](55-quest-index.md) (shape tags, collision test,
+   against [index/README.md](index/README.md) (shape tags, collision test,
    the region's shape budget, the standing coverage gaps) and drafts the
    region's local quests **to brief level only** — premise, cast (per 35-cast rules), choice,
    S/M/L + delivery tier, and a provision list — using LQ-table entries where
@@ -133,7 +133,7 @@ This tests dialogue, evidence, local state, swimming, climbing, combat, transpor
 Implement:
 
 - MQ06–MQ10;
-- first 3–4 Night-Reed quests;
+- first 3–4 Eelskin quests;
 - first 3–4 Shadowscale quests;
 - 6–8 standalone quests in the opening/southern packet.
 

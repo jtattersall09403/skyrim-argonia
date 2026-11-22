@@ -61,7 +61,7 @@ Narrative requirement (quests 30, MQ05; owner decision): an
 **escorted boat convoy** from the Stormhold/Alten Corimont opening region into
 Helstrom must exist early — realised on the solved AC–Helstrom marsh channel —
 introducing the safe heart city while its basin stays lethal. Rootworm transit
-remains the deeper, access-restricted network (Waykeepers, tribes, late game).
+remains the deeper, access-restricted network (tribes, late game).
 
 ## 20. The Hist as a spatial, cultural and systemic layer
 

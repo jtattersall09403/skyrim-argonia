@@ -16,8 +16,8 @@
 
 **Build implications:** underwrites the quest plan's political frame (party ≠
 monolith; strongest in Lilmoth; uncertainty of 4E 201 constitutional position
-is canonical space we use). Lukiul tension feeds the League of Open Water line
-and mixed-city demographics. The party fell after Umbriel; its successors in
+is canonical space we use). Lukiul tension feeds
+mixed-city demographics. The party fell after Umbriel; its successors in
 power are the Xeech-Leel, who rose by being its opposite (below).
 
 **Confidence:** CANON_FIXED (formation, independence, nativism, Lukiul term);

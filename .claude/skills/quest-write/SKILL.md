@@ -49,7 +49,7 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
   `bmv_shell` (by `settlement`, class A first).
 - **Cast**: a recurring person from `story/design/quests/36-cast-roster.md` under `35-cast.md`; a placed person is
   an `npc` row; a person in neither, nor placed by Black Marsh & Valenwood, is an `invented` persona to add.
-- **Novelty**: scan `story/design/quests/index/coverage.md` and the other quests at the place. The quest collides if it shares its primary shape with
+- **Novelty**: scan the other quests of the line and at the place. The quest collides if it shares its primary shape with
   a quest of the same region packet, faction line, reversal or resolution; then differentiate it, merge it or drop it.
   Declare `touches` (shared people, places, numbers, things). No primary shape over about a fifth of a line, nor in
   consecutive larger quests (a departure goes in `budgetExceptions` with its reason).

@@ -4,7 +4,7 @@ using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
 
-// The slice's clean-ups (Phase 4 part B; adaptation.md §5 "The clean-up"; blocks.md W-ref removal and W-fixed): every
+// The slice's clean-ups (Phase 4 part B; the Phase 2 adaptation plan's "The clean-up", in git history; blocks.md W-ref removal and W-fixed): every
 // world_edit_target of the slice's we.clean.* edits. "disabled: ..." is the placement's own override with the initially
 // disabled flag (0x800), in its cell (the worldspace's persistent cell for a persistent ref); "fixed level: ..." is the
 // placement's base overridden to a fixed level with PC-level-mult and the Stats template flag off (decision 0035), the

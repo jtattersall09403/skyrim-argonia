@@ -836,17 +836,42 @@
   {
    "id": "thief",
    "label": "Thief, fence, cutpurse",
-   "match": "\\b(thie(f|ves)|fences?|cutpurses?|burglars?|night-reed)\\b",
+   "match": "\\b(thie(f|ves)|fences?|cutpurses?|burglars?|eelskins?)\\b",
    "carry": [
     {
      "slot": "weapon",
      "typ": "WeapTypeDagger",
      "materials": [
       "bog-iron",
-      "flint",
-      "chitin"
+      "copper-steel"
      ],
-     "why": "a quiet blade"
+     "why": "the Eelskins knife or a thin stiletto"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "leather",
+      "wood"
+     ],
+     "why": "a sap for a quiet knock-down"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarAxe",
+     "materials": [
+      "bog-iron",
+      "copper-steel"
+     ],
+     "why": "an eel-hook"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood"
+     ],
+     "why": "a short bow or a blowgun"
     }
    ],
    "wear": [
@@ -874,12 +899,13 @@
      "slot": "heavy",
      "why": "a thief works light"
     }
-   ]
+   ],
+   "tell": "you can tell them by eel-dark leathers, a sap, an eel-hook and the Eelskin knife; the masters' signature is the Eelskin blade, bow and leathers"
   },
   {
    "id": "sellsword",
    "label": "Sellsword, caravan guard, hired blade",
-   "match": "\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?|marsh charter)\\b",
+   "match": "\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?)\\b",
    "carry": [
     {
      "slot": "weapon",
@@ -927,17 +953,41 @@
   {
    "id": "assassin",
    "label": "Assassin, Shadowscale",
-   "match": "\\b(assassins?|shadowscales?|empty cradle)\\b",
+   "match": "\\b(assassins?|shadowscales?)\\b",
    "carry": [
     {
      "slot": "weapon",
      "typ": "WeapTypeDagger",
      "materials": [
       "shadowscale",
-      "obsidian",
-      "chitin"
+      "obsidian"
      ],
-     "why": "a killing blade"
+     "why": "the serpent's tooth, the needle, the curved knife"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "shadowscale"
+     ],
+     "why": "the barbed poisoner's sword"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarAxe",
+     "materials": [
+      "shadowscale"
+     ],
+     "why": "the black sickle"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood",
+      "obsidian"
+     ],
+     "why": "a blowgun or an ash-glass bow"
     }
    ],
    "wear": [
@@ -945,10 +995,9 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
-      "shadowscale",
-      "leather"
+      "shadowscale"
      ],
-     "why": "dark close-fitting armour"
+     "why": "the order's cradle-black leathers"
     }
    ],
    "home": [],
@@ -960,7 +1009,8 @@
      "slot": "heavy",
      "why": "an assassin works light"
     }
-   ]
+   ],
+   "tell": "you can tell them by cradle-black leathers, a serpent-hilted dagger and a black sickle; the signature is the Blade of the Shadowscales"
   },
   {
    "id": "marine",

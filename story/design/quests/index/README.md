@@ -2,26 +2,16 @@
 # The quest index — why it exists, the taxonomy, the novelty rule
 
 > Module of the quest/narrative master plan (see [../README.md](../README.md)).
-> **Every agent authoring a new quest reads this file first.** Everything else
-> in this directory is generated: the data lives in
-> [`world/sources/quests/`](../../../../world/sources/quests/README.md) and the
-> markdown is rendered by `python3 -m worldgen.export_quest_index`.
+> **Every agent authoring a new quest reads this file first.** The first plan's generated quest views that sat
+> beside it are retired with that plan; the quests to scan are the line's and the place's own records.
 
-| File | What it shows |
-|---|---|
-| [main.md](main.md) | the main-quest spine |
-| [factions.md](factions.md) | the twelve faction lines, spine table then per-line rows |
-| [standalone.md](standalone.md) | LQ, DQ, ST and the ex-main rows |
-| [proposed.md](proposed.md) | the PP proposals, not authored |
-| `local-<region>.md` | one per catalogue region |
-| [coverage.md](coverage.md) | **the commissioning brief**: shape gaps, per-region budget, the demand ladder |
 
 ## 47a. Why this index exists
 
 Quests are authored packet by packet, by fresh agents. Without a shared view,
 three regions will each get a smuggler-with-a-secret and a haunted ruin, and
 nobody will notice until playtest. The full briefs live in
-[30-main-quest.md](../30-main-quest.md), [40-factions.md](../40-factions.md) and
+[the main plot](../lines/main-plot.md), [the faction plots](../lines/) and
 [50-side-quests.md](../50-side-quests.md); reading all three before writing one
 village quest is context bloat. **The index is the cheap summary layer**: one
 row per quest, enough to spot a collision.
@@ -61,8 +51,7 @@ verb tags (`COMBAT`, `DIVE`, `HEIST`) already exist in
 
 Before a brief is written, the authoring agent must:
 
-1. **Scan the index** — [coverage.md](coverage.md) first, then the view for the
-   proposed quest's `shape` + `region`.
+1. **Scan the quests** of the line and of the place for the proposed quest's `shape`.
 2. Apply the **collision test** — a proposed quest collides if it shares its
    **primary shape** with an existing quest *and* one of:
    - the same region packet;
@@ -75,7 +64,7 @@ Before a brief is written, the authoring agent must:
    is missing.
 4. **Declare the row's `touches` list** (shared NPCs, LOCs, STATEs, items,
    variables — read or write) and check tier direction per
-   [40-factions.md](../40-factions.md) §30b: a brief may not write anything
+   [the owner's bar ('Anyone can die')](../../owner-bar.md): a brief may not write anything
    owned by a higher tier.
 5. **Add the row to the data in the same change** as the brief — to
    `world/sources/quests/local-<region>.json` for a region agent — then run
@@ -92,9 +81,7 @@ Two supporting rules:
   a departure is recorded in the packet file's `budgetExceptions`; three
   are recorded today.
 - **Cover the board.** Each packet introduces at least one shape new to that
-  region **or draws from the gap list in [coverage.md](coverage.md)**, and
-  includes at least one `WONDER`. The gaps in coverage.md are the commissioning
-  brief for the next packet — that is the "jigsaw" view.
+  region, and includes at least one `WONDER`.
 
 Validator support is specified in
 [80-technical-architecture.md](../80-technical-architecture.md) §63 and

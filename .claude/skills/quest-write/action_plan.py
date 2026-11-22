@@ -6,7 +6,7 @@ Usage: python3 action_plan.py [--profile NAME] [--shapes SHAPE,...] [--band D2] 
 
 A plan follows the primary shape's beats (find, get there, the crux, resolve; SHAPE_BEATS below): each beat
 draws a skill use from that beat's pool, weighted by the profile (profiles.yaml: a line key such as
-`many-root`, a line id `quest.line.many-root`, or a faction id), the secondary shapes' pools, and against what
+`eelskins`, a line id `quest.line.eelskins`, or a faction id), the secondary shapes' pools, and against what
 the quest records in --line (the line or region packet so far) already use. The crux offers two approaches
 from different skill families. Settings come from the use's allowed settings (skill-uses.yaml settingsFor),
 the profile's favoured ones first; one target group is kept across the plan where the uses allow it.
