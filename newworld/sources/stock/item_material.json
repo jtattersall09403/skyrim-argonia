@@ -17,6 +17,56 @@
    "why": "Ancient Argonian Tail Armor: Ancient Argonian Armor: pre-Duskfall war gear"
   },
   {
+   "item": "1AncientImperial.esp:000001",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000002",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000003",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000004",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000005",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000006",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000007",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000008",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:00000A",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
+   "item": "1AncientImperial.esp:000D63",
+   "material": "imperial",
+   "why": "old-pattern Imperial issue kept at the Warden forts"
+  },
+  {
    "item": "1ChitinBow.esl:000002",
    "material": "chitin",
    "why": "a chitin bow"
@@ -877,6 +927,12 @@
    "tier": "T3"
   },
   {
+   "item": "Daggerkiin - Johnskyrim.esp:000D62",
+   "material": "shadowscale",
+   "why": "a curved killing knife: the Shadowscales (the Empty Cradle)",
+   "name": "Writ-Keeper's Knife"
+  },
+  {
    "item": "Dawnguard.esm:000801",
    "material": "crossbow",
    "why": "a crossbow"
@@ -1707,6 +1763,30 @@
    "material": "copper-steel",
    "why": "a two-handed harpoon edged with copper",
    "name": "Large Copper-edged Harpoon"
+  },
+  {
+   "item": "Imperial Agent Armor.esp:000807",
+   "material": "imperial",
+   "why": "a Company agent's or marine's light armour: Imperial posts and the Company",
+   "name": "Company Agent's Cuirass"
+  },
+  {
+   "item": "Imperial Agent Armor.esp:000808",
+   "material": "imperial",
+   "why": "a Company agent's or marine's light armour: Imperial posts and the Company",
+   "name": "Company Agent's Boots"
+  },
+  {
+   "item": "Imperial Agent Armor.esp:000809",
+   "material": "imperial",
+   "why": "a Company agent's or marine's light armour: Imperial posts and the Company",
+   "name": "Company Agent's Helmet"
+  },
+  {
+   "item": "Imperial Agent Armor.esp:00080A",
+   "material": "imperial",
+   "why": "a Company agent's or marine's light armour: Imperial posts and the Company",
+   "name": "Company Agent's Bracers"
   },
   {
    "item": "Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62",
@@ -3285,6 +3365,19 @@
    "name": "Greenwood Arrow"
   },
   {
+   "item": "SemperFi.esp:000D63",
+   "material": "imperial",
+   "why": "a Legion officer's cuirass; tier T3",
+   "name": "Legion Officer's Cuirass",
+   "tier": "T3"
+  },
+  {
+   "item": "SerpentDagger.esp:000D65",
+   "material": "shadowscale",
+   "why": "a serpent-hilted dagger: the Shadowscales (the Empty Cradle)",
+   "name": "Serpent's Tooth"
+  },
+  {
    "item": "SilvBoneArsenal.esp:000808",
    "material": "bone-plate",
    "why": "woven bone with bright edges",
@@ -3339,6 +3432,129 @@
    "name": "Coiled-bone Dagger"
   },
   {
+   "item": "Skyrim.esm:05ABC4",
+   "material": "shadowscale",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "name": "Cradle-black Open Cowl",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:05DB85",
+   "material": "leather",
+   "why": "the chapter masters' leathers (Nightingale); tier T4",
+   "name": "Night-Reed Boots",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:05DB86",
+   "material": "leather",
+   "why": "the chapter masters' leathers (Nightingale); tier T4",
+   "name": "Night-Reed Leathers",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:05DB87",
+   "material": "leather",
+   "why": "the chapter masters' leathers (Nightingale); tier T4",
+   "name": "Night-Reed Gloves",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:05DB88",
+   "material": "leather",
+   "why": "the chapter masters' leathers (Nightingale); tier T4",
+   "name": "Night-Reed Hood",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:07A917",
+   "material": "copper-steel",
+   "why": "the chapter's master blade (the Nightingale Blade); tier T4",
+   "name": "Night-Reed Blade",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:07E5C3",
+   "material": "wood",
+   "why": "the chapter's master bow (the Nightingale Bow); tier T4",
+   "name": "Night-Reed Bow",
+   "tier": "T4",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:09CCDC",
+   "material": "shadowscale",
+   "why": "the order's own blade (the Blade of Woe): the Shadowscales (the Empty Cradle); tier T5",
+   "name": "Blade of the Empty Cradle",
+   "tier": "T5",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0D2842",
+   "material": "shadowscale",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "name": "Cradle-black Cowl",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0D2843",
+   "material": "shadowscale",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "name": "Cradle-black Gloves",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0D2844",
+   "material": "shadowscale",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "name": "Cradle-black Armour",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0D2845",
+   "material": "shadowscale",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "name": "Cradle-black Boots",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0E1F14",
+   "material": "shadowscale",
+   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "name": "Old Cradle Boots",
+   "tier": "T5",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0E1F15",
+   "material": "shadowscale",
+   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "name": "Old Cradle Armour",
+   "tier": "T5",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0E1F16",
+   "material": "shadowscale",
+   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "name": "Old Cradle Gloves",
+   "tier": "T5",
+   "disenchant": true
+  },
+  {
+   "item": "Skyrim.esm:0E1F17",
+   "material": "shadowscale",
+   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "name": "Old Cradle Cowl",
+   "tier": "T5",
+   "disenchant": true
+  },
+  {
    "item": "SpikedClub_by_Flarescale.esp:000804",
    "material": "wood",
    "why": "a thorn-studded club",
@@ -3361,6 +3577,104 @@
    "material": "bog-iron",
    "why": "a spiked two-handed mace",
    "name": "Bog-iron Spiked War Mace"
+  },
+  {
+   "item": "Stiletto Collection.esp:000D63",
+   "material": "shadowscale",
+   "why": "the Writ-Keeper's stiletto: the Shadowscales (the Empty Cradle); tier T5: a senior's blade",
+   "name": "Cradle Needle",
+   "tier": "T5"
+  },
+  {
+   "item": "Stiletto Collection.esp:001D8E",
+   "material": "copper-steel",
+   "why": "a thin stiletto: the Night-Reed Chapter",
+   "name": "Bright Stiletto"
+  },
+  {
+   "item": "Stiletto Collection.esp:0048A8",
+   "material": "shadowscale",
+   "why": "a needle stiletto: the Shadowscales (the Empty Cradle)",
+   "name": "Black-glass Needle"
+  },
+  {
+   "item": "Stiletto Collection.esp:004E0D",
+   "material": "bog-iron",
+   "why": "a thin stiletto: the Night-Reed Chapter",
+   "name": "Reed Stiletto"
+  },
+  {
+   "item": "Stiletto Collection.esp:004E10",
+   "material": "copper-steel",
+   "why": "a thin stiletto: the Night-Reed Chapter",
+   "name": "Copper Stiletto"
+  },
+  {
+   "item": "Stinger-Poisoner.esp:000D63",
+   "material": "shadowscale",
+   "why": "a poisoner's barbed sword: the Shadowscales (the Empty Cradle)",
+   "name": "Stinger",
+   "disenchant": true
+  },
+  {
+   "item": "ThievesGuildDagger_SE_ENG.esl:000D62",
+   "material": "bog-iron",
+   "why": "the chapter's knife: the Night-Reed Chapter",
+   "name": "Night-Reed Knife"
+  },
+  {
+   "item": "TribuneArmor.esp:005901",
+   "material": "imperial",
+   "why": "an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3",
+   "tier": "T3"
+  },
+  {
+   "item": "TribuneArmor.esp:005906",
+   "material": "imperial",
+   "why": "an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3",
+   "tier": "T3"
+  },
+  {
+   "item": "TribuneArmor.esp:005907",
+   "material": "imperial",
+   "why": "an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3",
+   "tier": "T3"
+  },
+  {
+   "item": "TribuneArmor.esp:019D11",
+   "material": "imperial",
+   "why": "a tribune's sword; tier T3",
+   "tier": "T3"
+  },
+  {
+   "item": "WarSickles of the East.esp:00080B",
+   "material": "bog-iron",
+   "why": "a reed-cutter's sickle: the Night-Reed Chapter",
+   "name": "Reed-cutter's Sickle"
+  },
+  {
+   "item": "WarSickles of the East.esp:00080E",
+   "material": "copper-steel",
+   "why": "a reed-cutter's sickle: the Night-Reed Chapter",
+   "name": "Copper Reed Sickle"
+  },
+  {
+   "item": "WarSickles of the East.esp:000A60",
+   "material": "bog-iron",
+   "why": "a cane-cutter's hook: the Night-Reed Chapter",
+   "name": "Cane Sickle"
+  },
+  {
+   "item": "WarSickles of the East.esp:000B62",
+   "material": "shadowscale",
+   "why": "a hooked sickle: the Shadowscales (the Empty Cradle)",
+   "name": "Cradle Sickle"
+  },
+  {
+   "item": "WarSickles of the East.esp:000B6A",
+   "material": "shadowscale",
+   "why": "a blackened sickle: the Shadowscales (the Empty Cradle)",
+   "name": "Black Sickle"
   },
   {
    "item": "WoodenClub_by_Flarescale.esp:000803",

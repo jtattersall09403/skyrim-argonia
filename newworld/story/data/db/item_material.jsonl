@@ -1,6 +1,16 @@
 {"item_id":"1AncArgArm.esp:000801","material_id":"bronze","why":"Ancient Argonian Cuirass: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000802","material_id":"bronze","why":"Ancient Argonian Gauntlets: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000804","material_id":"bronze","why":"Ancient Argonian Tail Armor: Ancient Argonian Armor: pre-Duskfall war gear"}
+{"item_id":"1AncientImperial.esp:000001","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000002","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000003","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000004","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000005","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000006","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000007","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000008","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:00000A","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
+{"item_id":"1AncientImperial.esp:000D63","material_id":"imperial","why":"old-pattern Imperial issue kept at the Warden forts"}
 {"item_id":"1ChitinBow.esl:000002","material_id":"chitin","why":"a chitin bow"}
 {"item_id":"1ChitinBow.esl:000003","material_id":"chitin","why":"chitin arrows"}
 {"item_id":"1IvoryBow.esl:000004","material_id":"bone-plate","why":"bone arrows"}
@@ -164,6 +174,7 @@
 {"item_id":"Cyrodiilic Thief.esp:000875","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
 {"item_id":"Cyrodiilic Thief.esp:00087E","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
 {"item_id":"Cyrodiilic Thief.esp:00087F","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","material_id":"shadowscale","why":"a curved killing knife: the Shadowscales (the Empty Cradle)"}
 {"item_id":"Dawnguard.esm:000801","material_id":"crossbow","why":"a crossbow"}
 {"item_id":"Dawnguard.esm:000BB3","material_id":"crossbow","why":"steel bolts for the crossbow"}
 {"item_id":"Dawnguard.esm:00F19E","material_id":"crossbow","stock_tier_id":"T3","why":"an enhanced crossbow; tier T3: the finer make of the crossbow, armour-piercing"}
@@ -325,6 +336,10 @@
 {"item_id":"Here There Be Monsters.esp:053522","material_id":"copper-steel","why":"a harpoon edged with copper"}
 {"item_id":"Here There Be Monsters.esp:05352A","material_id":"bog-iron","why":"a two-handed harpoon"}
 {"item_id":"Here There Be Monsters.esp:053532","material_id":"copper-steel","why":"a two-handed harpoon edged with copper"}
+{"item_id":"Imperial Agent Armor.esp:000807","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:000808","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:000809","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
+{"item_id":"Imperial Agent Armor.esp:00080A","material_id":"imperial","why":"a Company agent's or marine's light armour: Imperial posts and the Company"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001828","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001D8C","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
@@ -613,6 +628,8 @@
 {"item_id":"RoyalElvenBow.esp:007ECE","material_id":"greenwood","stock_tier_id":"T4","why":"the finest Bosmer bow; tier T4"}
 {"item_id":"RoyalElvenBow.esp:02CE35","material_id":"greenwood","why":"a Bosmer longbow"}
 {"item_id":"RoyalElvenBow.esp:02F5D6","material_id":"greenwood","why":"Bosmer arrows"}
+{"item_id":"SemperFi.esp:000D63","material_id":"imperial","stock_tier_id":"T3","why":"a Legion officer's cuirass; tier T3"}
+{"item_id":"SerpentDagger.esp:000D65","material_id":"shadowscale","why":"a serpent-hilted dagger: the Shadowscales (the Empty Cradle)"}
 {"item_id":"SilvBoneArsenal.esp:000808","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:000809","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:00080A","material_id":"bone-plate","why":"woven bone with bright edges"}
@@ -622,10 +639,42 @@
 {"item_id":"SilvBoneArsenal.esp:00080E","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:00080F","material_id":"bone-plate","why":"woven bone with bright edges"}
 {"item_id":"SilvBoneArsenal.esp:000D63","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"Skyrim.esm:05ABC4","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)"}
+{"item_id":"Skyrim.esm:05DB85","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB86","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB87","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:05DB88","material_id":"leather","stock_tier_id":"T4","why":"the chapter masters' leathers (Nightingale); tier T4"}
+{"item_id":"Skyrim.esm:07A917","material_id":"copper-steel","stock_tier_id":"T4","why":"the chapter's master blade (the Nightingale Blade); tier T4"}
+{"item_id":"Skyrim.esm:07E5C3","material_id":"wood","stock_tier_id":"T4","why":"the chapter's master bow (the Nightingale Bow); tier T4"}
+{"item_id":"Skyrim.esm:09CCDC","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's own blade (the Blade of Woe): the Shadowscales (the Empty Cradle); tier T5"}
+{"item_id":"Skyrim.esm:0D2842","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)"}
+{"item_id":"Skyrim.esm:0D2843","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)"}
+{"item_id":"Skyrim.esm:0D2844","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)"}
+{"item_id":"Skyrim.esm:0D2845","material_id":"shadowscale","why":"the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)"}
+{"item_id":"Skyrim.esm:0E1F14","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales (the Empty Cradle); tier T5"}
+{"item_id":"Skyrim.esm:0E1F15","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales (the Empty Cradle); tier T5"}
+{"item_id":"Skyrim.esm:0E1F16","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales (the Empty Cradle); tier T5"}
+{"item_id":"Skyrim.esm:0E1F17","material_id":"shadowscale","stock_tier_id":"T5","why":"the order's old leathers: the Shadowscales (the Empty Cradle); tier T5"}
 {"item_id":"SpikedClub_by_Flarescale.esp:000804","material_id":"wood","why":"a thorn-studded club"}
 {"item_id":"SpikedClub_by_Flarescale.esp:000805","material_id":"wood","why":"a thorn-studded two-handed club"}
 {"item_id":"SpikedMace_by_Flarescale.esp:000804","material_id":"bog-iron","why":"a spiked iron mace"}
 {"item_id":"SpikedMace_by_Flarescale.esp:000805","material_id":"bog-iron","why":"a spiked two-handed mace"}
+{"item_id":"Stiletto Collection.esp:000D63","material_id":"shadowscale","stock_tier_id":"T5","why":"the Writ-Keeper's stiletto: the Shadowscales (the Empty Cradle); tier T5: a senior's blade"}
+{"item_id":"Stiletto Collection.esp:001D8E","material_id":"copper-steel","why":"a thin stiletto: the Night-Reed Chapter"}
+{"item_id":"Stiletto Collection.esp:0048A8","material_id":"shadowscale","why":"a needle stiletto: the Shadowscales (the Empty Cradle)"}
+{"item_id":"Stiletto Collection.esp:004E0D","material_id":"bog-iron","why":"a thin stiletto: the Night-Reed Chapter"}
+{"item_id":"Stiletto Collection.esp:004E10","material_id":"copper-steel","why":"a thin stiletto: the Night-Reed Chapter"}
+{"item_id":"Stinger-Poisoner.esp:000D63","material_id":"shadowscale","why":"a poisoner's barbed sword: the Shadowscales (the Empty Cradle)"}
+{"item_id":"ThievesGuildDagger_SE_ENG.esl:000D62","material_id":"bog-iron","why":"the chapter's knife: the Night-Reed Chapter"}
+{"item_id":"TribuneArmor.esp:005901","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:005906","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:005907","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial tribune's officer pieces: Imperial posts and the Company; tier T3"}
+{"item_id":"TribuneArmor.esp:019D11","material_id":"imperial","stock_tier_id":"T3","why":"a tribune's sword; tier T3"}
+{"item_id":"WarSickles of the East.esp:00080B","material_id":"bog-iron","why":"a reed-cutter's sickle: the Night-Reed Chapter"}
+{"item_id":"WarSickles of the East.esp:00080E","material_id":"copper-steel","why":"a reed-cutter's sickle: the Night-Reed Chapter"}
+{"item_id":"WarSickles of the East.esp:000A60","material_id":"bog-iron","why":"a cane-cutter's hook: the Night-Reed Chapter"}
+{"item_id":"WarSickles of the East.esp:000B62","material_id":"shadowscale","why":"a hooked sickle: the Shadowscales (the Empty Cradle)"}
+{"item_id":"WarSickles of the East.esp:000B6A","material_id":"shadowscale","why":"a blackened sickle: the Shadowscales (the Empty Cradle)"}
 {"item_id":"WoodenClub_by_Flarescale.esp:000803","material_id":"wood","why":"a heavy wooden war club"}
 {"item_id":"WoodenClub_by_Flarescale.esp:000804","material_id":"bog-iron","why":"an iron-studded maul"}
 {"item_id":"bobmods_macua.esp:000D62","material_id":"flint","stock_tier_id":"T2","why":"a wooden club edged with flint teeth; tier T2: the finest flint work"}

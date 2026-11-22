@@ -81,10 +81,10 @@ The table below is the ladder as the data holds it, one line per material:
 | T1 | Flint and jadeflint | 23 |  |  |  | common | IronSword |
 | T1 | Hide and fibre |  |  | 4 | 1 | common | IronSword |
 | T1 | Wood and bamboo | 38 |  | 13 |  | common | IronSword |
-| T2 | Bog iron | 25 | 1 | 10 | 2 | uncommon | SteelSword |
+| T2 | Bog iron | 29 | 1 | 10 | 2 | uncommon | SteelSword |
 | T2 | Corsair's steel | 5 |  | 8 |  | situational | SteelSword |
 | T2 | Crossbow work (bog iron and wood) | 1 |  |  |  | situational | SteelSword |
-| T2 | Imperial issue | 17 | 7 | 20 | 4 | situational | SteelSword |
+| T2 | Imperial issue | 18 | 11 | 28 | 5 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
 | T2 | Marsh leather |  |  | 8 |  | common | SteelSword |
 | T2 | Netch leather and Ashlander make |  |  | 25 | 2 | situational | SteelSword |
@@ -96,11 +96,11 @@ The table below is the ladder as the data holds it, one line per material:
 | T3 | Bonemold | 24 | 8 | 4 | 5 | situational | ElvenSword |
 | T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 25 | 2 | situational | ElvenSword |
 | T3 | Chitin | 10 | 6 | 4 | 2 | uncommon | ElvenSword |
-| T3 | Copper-edged steel | 19 |  |  |  | uncommon | ElvenSword |
+| T3 | Copper-edged steel | 22 |  |  |  | uncommon | ElvenSword |
 | T3 | Greenwood (Bosmer make) | 3 | 5 | 6 |  | situational | ElvenSword |
 | T4 | Moonstone and Temple glass (Dunmer fine work) | 19 |  | 4 | 2 | situational | GlassSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |
-| T4 | Shadowscale make | 4 |  | 12 |  | situational | GlassSword |
+| T4 | Shadowscale make | 10 |  | 17 |  | situational | GlassSword |
 | T4 | Skyrim glass |  |  |  |  | ruin | GlassSword |
 | T4 | Volcanic glass | 33 |  | 4 | 1 | rare | GlassSword |
 | T5 | Ebony |  |  |  |  | ruin | EbonySword |
@@ -137,6 +137,11 @@ Written at another tier than their material's, each with its reason:
 - T3: PI_SmotheredAshenLongMace: the poorer glass
 - T3: PI_AshenShield: the poorer glass
 - T3: PI_SmotheredAshenBow: the poorer glass
+- T3: ArmorSteelImperialCuirass: T3
+- T3: ImperialTribuneBoots: T3
+- T3: ImperialTribuneGauntlets: T3
+- T3: ImperialTribuneHelmet: T3
+- T3: ImperialTribuneSword: T3
 - T4: ArmorBosmerEngravedCuirass: an elder's make
 - T4: ArmorBosmerEngravedGauntlets: an elder's make
 - T4: ArmorBosmerEngravedHelmHood: an elder's make
@@ -151,6 +156,12 @@ Written at another tier than their material's, each with its reason:
 - T4: 000IndorilGauntlets: the Temple's guard
 - T4: 000IndorilHelmet: the Temple's guard
 - T4: AARoyalElvenBowNamed: T4
+- T4: ArmorNightingaleBootsPlayer02: T4
+- T4: ArmorNightingaleCuirassPlayer01: T4
+- T4: ArmorNightingaleGauntletsPlayer01: T4
+- T4: ArmorNightingaleHelmetPlayer01: T4
+- T4: NightingaleBlade01: T4
+- T4: NightingaleBow01: T4
 - T5: CIPHTBMXanmeerBattleaxe: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerWarhammer1: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerGreatsword: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
@@ -160,6 +171,12 @@ Written at another tier than their material's, each with its reason:
 - T5: CIPHTBMXanmeerKnightCuirassLight: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)
 - T5: CIPHTBMXanmeerKnightGlovesLight: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)
 - T5: CIPHTBMXanmeerKnightHelmetLight: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)
+- T5: DBBladeOfWoeReward: T5
+- T5: DBArmorBootsSP: T5
+- T5: DBArmorSP: T5
+- T5: DBArmorGlovesSP: T5
+- T5: DBArmorHelmetSP: T5
+- T5: EbonyStiletto: a senior's blade
 <!-- ladder:end -->
 
 ## Weapon types and how they swing
@@ -239,10 +256,10 @@ Peoples and factions (gear rows as weapons / light / heavy / shields; "before" i
 | House Dres slavers | 0 | slaver kit | You can tell them by the netch slavemaster's coat, a bonemold blade and a whip. |
 | Bosmer pilots and seafarers (greenwood) | 0 | 6/12/5/0 | You can tell them by greenwood bows and bark-and-hide hoods; skull and feather headdresses are sold as wares. |
 | Khajiit traders (caravan steel, moon-monk robes) | 8/19/19/2 | 8/25/19/2 | You can tell them by curved scimitars, khukuris, Apex cuirasses and moon-monk robes and masks. |
-| Shadowscales (the Empty Cradle) | 4/11/0/0 | 4/12/0/0 | You can tell them by dark close-fitting armour and the shadow-robe. Their weapons are borrowed: obsidian and chitin daggers and claws. No dedicated pack was found. |
-| The Night-Reed Chapter (thieves) | 0/11/0/0 | unchanged | You can tell them by soft thieves' leathers and quiet daggers. No thieves' weapon pack was found. |
+| Shadowscales (the Empty Cradle) | 4/12/0/0 | 12/21/0/0 | You can tell them by cradle-black leathers (the Shrouded set, reskinned by Dark Brotherhood Armor SE), a serpent-hilted dagger, needle stilettos and a black sickle; ranged is a blowgun or an ash-glass bow. Their signature is the Blade of the Empty Cradle (the Blade of Woe, disenchanted, T5). |
+| The Night-Reed Chapter (thieves) | 0/11/0/0 | 8 weapons, 4 master pieces added | You can tell them by soft leathers, a reed-cutter's sickle, thin stilettos and the Night-Reed knife; ranged is a short bow or a blowgun. The masters' signature is the Night-Reed blade, bow and leathers (Nightingale, disenchanted, T4). |
 | The Marsh Charter (sellswords) | 25/10/1/2 | unchanged | You can tell them by light mail jerkins, working swords and crossbows. |
-| Imperials, Warden forts, the Topal Bay Company, East Empire Company marines | 20/18/11/5 | 20/20/11/5 | You can tell them by the centurion's plate, Company issue, crossbows and the emissary's robes. Legion officer, auxiliary and marine variants have no pack that adds new records (the packs found only replace vanilla armour). The Topal Bay Company has no livery pack, so it wears East Empire Company armour. |
+| Imperials, Warden forts, the Topal Bay Company, East Empire Company marines | 20/20/11/5 | 22/28/19/6 | You can tell them by old-pattern and Perfect Legionnaire Legion plate, a tribune's officer helm and bracers, the Legion officer's cuirass, Company agents' light armour and crossbows. The Topal Bay Company wears East Empire Company armour; no livery pack exists. |
 | Pirates, the Salt-Teeth (the Reed-Sail Compact's pirate branch) | 5/8/0/0 | unchanged | You can tell them by corsair coats, bandanas and cutlasses. The story names no other crews. |
 | Hist priests, the Many-Root Conclave, Nisswo of the Turning Path | 13/33/5/1 | 13/36/5/1 | You can tell them by Water-clan vestments and masks, funerary masks and ritual knives. |
 | Bone cultists, the Umbriel Witness Society | 11/0/4/0 | unchanged | You can tell them by bone-plate armour. No other cult vestments were found that work without an extra framework. |
@@ -480,6 +497,31 @@ That is 833 MB in packet four; with packets three and the widening, about 2.2 GB
 Left out: Armors of the Velothi I and II and the Colovian Prince Set (they need the Faster HDT-SMP physics
 framework, which we do not load); Styles of Skyrim robes (it needs SkyPatcher); Imperial Legion Armors (it only
 replaces vanilla armour, and its new records are enchanted swords).
+
+**Added in packet five** (replacers reconsidered; the Shadowscales' and the Night-Reed's own arms):
+
+| Mod | Nexus | Endorsements | Size | Filed as; what it changes globally |
+|---|---|---|---|---|
+| Perfect Legionnaire | 1061 | 9,931 | 72 MB | a replacer: it reskins Skyrim's own Imperial armour, which with us is only Imperial issue (situational). Its plugin only re-equips Skyrim's soldiers and is never active. |
+| Dark Brotherhood Armor SE | 57539 | 10,803 | 25 MB | a replacer with no plugin: it reskins the Shrouded set, which with us is only the Shadowscales' cradle-black gear |
+| Imperial Tribune Armor | 54294 | 1,796 | 39 MB | imperial, T3. The cuirass carries no slot keyword, so it is left out. |
+| Ancient Imperial Armor | 142655 | 2,942 | 40 MB | imperial (old-pattern issue) |
+| Imperial Agent Armor (standalone) | 94300 | 226 | 16 MB | imperial (Company agents and marines) |
+| Semper Fi (standalone) | 693 | 2,597 | 26 MB | imperial, the Legion officer's cuirass |
+| Serpent Dagger | 45038 | 1,173 | 42 MB | shadowscale |
+| Stinger-Poisoner | 8919 | 325 | 8 MB | shadowscale (disenchanted) |
+| Daggerkiin | 29058 | 1,508 | 18 MB | shadowscale |
+| Stiletto Collection | 4429 | 290 | 108 MB | shadowscale needles; bog-iron and copper-steel stilettos for the Night-Reed |
+| WarSickles of the East | 177841 | 158 | 6 MB | black sickles (shadowscale); reed-cutters' sickles (Night-Reed); the Nordic and Falmer ones left out |
+| Thieves Guild Dagger | 43278 | 795 | 2 MB | the Night-Reed knife |
+
+Already owned and now filed: the Blade of Woe and the Shrouded and Ancient Shrouded sets (Shadowscales), the
+Nightingale blade, bow and armour (the Night-Reed's masters), all disenchanted. Conflicts: no mod we load replaces
+Skyrim's Imperial or Shrouded meshes as loose files. USSEP's archive holds mesh fixes, and a loose replacer wins
+over an archive, so the replacers win. Neither touches iron, steel or any piece filed as bog iron.
+Left out: Frankly HD Imperial and Imperial Armors Retexture (they would fight Perfect Legionnaire for the same
+textures); hand crossbows and throwing knives (they need the One-Handed Crossbow framework or scripts); Blade of Woe
+replacers (one Blade of Woe is enough); karambits, katars, kris and garrotes (no pack of fitting quality was found).
 
 **Left out after looking at them:**
 

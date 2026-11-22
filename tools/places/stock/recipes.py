@@ -103,7 +103,7 @@ def generate() -> dict:
                             "source": "none", "why": f"{mid} {tier}: {rules['temper_only']['why']}"})
                 continue
             have = mod[key].get(kind_)
-            if have and rules["keep_when_ours"] and all(k in ours for k, _ in have["ings"]) and \
+            if have and have["ings"] and rules["keep_when_ours"] and all(k in ours for k, _ in have["ings"]) and \
                     (kind_ == "temper" or [edid.get(p) for p in have["perks"]] in (perk, [])):
                 out.append({"item": key, "kind": kind_, "station": edid[station], "perk": [edid.get(p) for p in have["perks"]],
                             "ingredients": have["ings"], "source": f"kept:{have['key']}",

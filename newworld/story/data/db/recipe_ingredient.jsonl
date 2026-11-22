@@ -10,6 +10,36 @@
 {"item_id":"1AncArgArm.esp:000804","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD9E","count":1}
 {"item_id":"1AncArgArm.esp:000804","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"1AncArgArm.esp:000804","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000001","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":3}
+{"item_id":"1AncientImperial.esp:000001","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"1AncientImperial.esp:000001","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000002","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"1AncientImperial.esp:000002","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"1AncientImperial.esp:000002","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000003","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":5}
+{"item_id":"1AncientImperial.esp:000003","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"1AncientImperial.esp:000003","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000004","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"1AncientImperial.esp:000004","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"1AncientImperial.esp:000004","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000005","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"1AncientImperial.esp:000005","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"1AncientImperial.esp:000005","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000006","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"1AncientImperial.esp:000006","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"1AncientImperial.esp:000006","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000007","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"1AncientImperial.esp:000007","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"1AncientImperial.esp:000007","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000008","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"1AncientImperial.esp:000008","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"1AncientImperial.esp:000008","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:00000A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"1AncientImperial.esp:00000A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"1AncientImperial.esp:00000A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"1AncientImperial.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":3}
+{"item_id":"1AncientImperial.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"1AncientImperial.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
 {"item_id":"1ChitinBow.esl:000002","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
 {"item_id":"1ChitinBow.esl:000002","kind":"temper","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":1}
 {"item_id":"1ChitinBow.esl:000003","kind":"forge","seq":0,"ingredient":"Dragonborn.esm:02B04E","count":2}
@@ -595,6 +625,10 @@
 {"item_id":"Cyrodiilic Thief.esp:00087F","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"Cyrodiilic Thief.esp:00087F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
 {"item_id":"Cyrodiilic Thief.esp:00087F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Daggerkiin - Johnskyrim.esp:000D62","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
 {"item_id":"Dawnguard.esm:000801","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":1}
 {"item_id":"Dawnguard.esm:000801","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":1}
 {"item_id":"Dawnguard.esm:000801","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
@@ -1088,6 +1122,22 @@
 {"item_id":"Here There Be Monsters.esp:053532","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
 {"item_id":"Here There Be Monsters.esp:053532","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"Here There Be Monsters.esp:053532","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"Imperial Agent Armor.esp:000807","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":2}
+{"item_id":"Imperial Agent Armor.esp:000807","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Imperial Agent Armor.esp:000807","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":3}
+{"item_id":"Imperial Agent Armor.esp:000807","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:000808","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:000808","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Imperial Agent Armor.esp:000808","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Imperial Agent Armor.esp:000808","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:000809","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:000809","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Imperial Agent Armor.esp:000809","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"Imperial Agent Armor.esp:000809","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:00080A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Imperial Agent Armor.esp:00080A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Imperial Agent Armor.esp:00080A","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Imperial Agent Armor.esp:00080A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":2}
 {"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","kind":"forge","seq":2,"ingredient":"Skyrim.esm:05ACE5","count":2}
@@ -2101,6 +2151,15 @@
 {"item_id":"RoyalElvenBow.esp:02F5D6","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"RoyalElvenBow.esp:02F5D6","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"RoyalElvenBow.esp:02F5D6","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"SemperFi.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"SemperFi.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"SemperFi.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"SemperFi.esp:000D63","kind":"forge","seq":3,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"SemperFi.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"SerpentDagger.esp:000D65","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"SerpentDagger.esp:000D65","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"SerpentDagger.esp:000D65","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"SerpentDagger.esp:000D65","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":2}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":1,"ingredient":"Skyrim.esm:034CDD","count":1}
 {"item_id":"SilvBoneArsenal.esp:000808","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
@@ -2137,6 +2196,64 @@
 {"item_id":"SilvBoneArsenal.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:034CDD","count":1}
 {"item_id":"SilvBoneArsenal.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"SilvBoneArsenal.esp:000D63","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":1}
+{"item_id":"Skyrim.esm:05ABC4","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Skyrim.esm:05ABC4","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:05ABC4","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:05ABC4","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Skyrim.esm:05DB85","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"Skyrim.esm:05DB85","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:05DB85","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:05DB86","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":4}
+{"item_id":"Skyrim.esm:05DB86","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Skyrim.esm:05DB86","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:05DB87","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:05DB87","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:05DB87","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:05DB88","kind":"forge","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"Skyrim.esm:05DB88","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:05DB88","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:07A917","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":2}
+{"item_id":"Skyrim.esm:07A917","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"Skyrim.esm:07A917","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:07A917","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Skyrim.esm:07E5C3","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":2}
+{"item_id":"Skyrim.esm:07E5C3","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Skyrim.esm:09CCDC","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Skyrim.esm:09CCDC","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:09CCDC","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:09CCDC","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Skyrim.esm:0D2842","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Skyrim.esm:0D2842","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0D2842","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:0D2842","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0D2843","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Skyrim.esm:0D2843","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0D2843","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:0D2843","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0D2844","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":4}
+{"item_id":"Skyrim.esm:0D2844","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0D2844","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Skyrim.esm:0D2844","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0D2845","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Skyrim.esm:0D2845","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0D2845","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:0D2845","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0E1F14","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Skyrim.esm:0E1F14","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0E1F14","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:0E1F14","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0E1F15","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":4}
+{"item_id":"Skyrim.esm:0E1F15","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0E1F15","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Skyrim.esm:0E1F15","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0E1F16","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Skyrim.esm:0E1F16","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0E1F16","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Skyrim.esm:0E1F16","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Skyrim.esm:0E1F17","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Skyrim.esm:0E1F17","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Skyrim.esm:0E1F17","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Skyrim.esm:0E1F17","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"SpikedClub_by_Flarescale.esp:000804","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":3}
 {"item_id":"SpikedClub_by_Flarescale.esp:000804","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":2}
 {"item_id":"SpikedClub_by_Flarescale.esp:000804","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
@@ -2153,6 +2270,62 @@
 {"item_id":"SpikedMace_by_Flarescale.esp:000805","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":3}
 {"item_id":"SpikedMace_by_Flarescale.esp:000805","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"SpikedMace_by_Flarescale.esp:000805","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"Stiletto Collection.esp:000D63","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Stiletto Collection.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
+{"item_id":"Stiletto Collection.esp:001D8E","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":1}
+{"item_id":"Stiletto Collection.esp:001D8E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"Stiletto Collection.esp:001D8E","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Stiletto Collection.esp:001D8E","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":1}
+{"item_id":"Stiletto Collection.esp:0048A8","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"Stiletto Collection.esp:0048A8","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Stiletto Collection.esp:0048A8","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Stiletto Collection.esp:0048A8","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ADA1","count":1}
+{"item_id":"Stiletto Collection.esp:004E0D","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Stiletto Collection.esp:004E0D","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Stiletto Collection.esp:004E0D","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Stiletto Collection.esp:004E10","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":1}
+{"item_id":"Stiletto Collection.esp:004E10","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"Stiletto Collection.esp:004E10","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Stiletto Collection.esp:004E10","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"Stinger-Poisoner.esp:000D63","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"Stinger-Poisoner.esp:000D63","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Stinger-Poisoner.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Stinger-Poisoner.esp:000D63","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"ThievesGuildDagger_SE_ENG.esl:000D62","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":1}
+{"item_id":"ThievesGuildDagger_SE_ENG.esl:000D62","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"ThievesGuildDagger_SE_ENG.esl:000D62","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"TribuneArmor.esp:005901","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"TribuneArmor.esp:005901","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"TribuneArmor.esp:005901","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"TribuneArmor.esp:005901","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"TribuneArmor.esp:005906","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"TribuneArmor.esp:005906","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"TribuneArmor.esp:005906","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"TribuneArmor.esp:005906","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"TribuneArmor.esp:005907","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"TribuneArmor.esp:005907","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"TribuneArmor.esp:005907","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"TribuneArmor.esp:005907","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"TribuneArmor.esp:019D11","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"TribuneArmor.esp:019D11","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"TribuneArmor.esp:019D11","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"WarSickles of the East.esp:00080B","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":3}
+{"item_id":"WarSickles of the East.esp:00080B","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"WarSickles of the East.esp:00080B","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"WarSickles of the East.esp:00080E","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":2}
+{"item_id":"WarSickles of the East.esp:00080E","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"WarSickles of the East.esp:00080E","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"WarSickles of the East.esp:00080E","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"WarSickles of the East.esp:000A60","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":2}
+{"item_id":"WarSickles of the East.esp:000A60","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"WarSickles of the East.esp:000B62","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"WarSickles of the East.esp:000B62","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"WarSickles of the East.esp:000B62","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"WarSickles of the East.esp:000B62","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":1}
+{"item_id":"WarSickles of the East.esp:000B6A","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":2}
+{"item_id":"WarSickles of the East.esp:000B6A","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"WarSickles of the East.esp:000B6A","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"WarSickles of the East.esp:000B6A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
 {"item_id":"WoodenClub_by_Flarescale.esp:000803","kind":"forge","seq":0,"ingredient":"Skyrim.esm:06F993","count":4}
 {"item_id":"WoodenClub_by_Flarescale.esp:000803","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"WoodenClub_by_Flarescale.esp:000803","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
