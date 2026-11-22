@@ -2,11 +2,12 @@
  "place_id": "outpost-m6-m66",
  "about": "Teel-Fen Weir's stock (place-stock skill): derived by `stock derive`, read against the place's facts. The camp chest by the wardens' beds is the household's store; the Owing's goods chest under the ground is the jail stage's and holds nothing; the sap-takers' pack at the reed hide delivers the treasure. Who the people are is newworld/sources/people/outpost-m6-m66.json.",
  "facts": {
-  "wealth": "P2",
-  "ceiling": "T2",
+  "wealth": "P1",
+  "ceiling": "T1",
   "open": "T1",
   "danger": "D3",
-  "why": "score 32 = outpost 6 + importance 1 5 + population 23 14 + trade 4 (1 roads, 1 traders) + economy +3 (+market) -> P2 Modest; ceiling T2 (wary: its people's own goods, its wealth's T2; reward band D2 T2)"
+  "why": "score 26 = outpost 6 + importance 1 5 + population 5 8 + trade 4 (1 roads, 1 traders) + economy +3 (+market) -> P1 Poor; ceiling T1 (the database's place_wealth row: the record's population is 5)",
+  "mix_why": "metal 0% against an expected 24%: bog iron stands at T2 on the ladder and the weir's ceiling is T1, so its wardens carry the marsh's own bone, flint and wood; their only bought make is the levy's Saxhleel issue"
  },
  "goods": [
   {
@@ -57,10 +58,10 @@
    "person": "outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3F",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16D",
      "count": 1,
      "worn": true,
-     "why": "the night watch's weapon at the levy's T2: a Saxhleel bone mace (Saxhleel bone, the region's own make): he walks the log boom in the dark, where a club serves better than a blade (kit guard)"
+     "why": "the night watch's weapon within the weir's T1 ceiling: a Naga macana, a wooden club edged with flint, traded from the Naga bands of the marsh; he walks the log boom in the dark with a club, not a blade (kit guard: a flint blade)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -105,16 +106,16 @@
    "person": "outpost-m6-m66.VH5KST5J9YZKCX5FDTFKQCG8CS",
    "items": [
     {
-     "item": "King of the Murkmire.esp:27504F",
+     "item": "PrvtI_ArgonianWeapons.esp:000807",
      "count": 1,
      "worn": true,
-     "why": "the day watch's sidearm at the levy's T2: a Saxhleel bone shortsword (Saxhleel bone), short enough to wear while she wades the traps (kit guard)"
+     "why": "the day watch's sidearm within the weir's T1 ceiling: an Argonian bone shortsword, short enough to wear while she wades the traps (kit guard: a bone blade)"
     },
     {
-     "item": "PrvtI_ArgonianWeapons.esp:00083F",
+     "item": "PrvtI_ArgonianWeapons.esp:000826",
      "count": 1,
      "worn": false,
-     "why": "the iron fishing knife she cuts the eel traps free with (bog iron, T2, tolled in up the creek from Jal-Veesa; her trade: works the eel traps)"
+     "why": "the wooden-handled fishing knife she cuts the eel traps free with (Argonian wood, T1; her trade: works the eel traps)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -177,10 +178,10 @@
    "person": "outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH",
    "items": [
     {
-     "item": "PrvtI_ArgonianWeapons.esp:00083F",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "an eel-trapper's gutting knife: an iron fishing knife (bog iron, T2), tolled in up the creek from Jal-Veesa with the catch's money (kit fisher)"
+     "why": "an eel-trapper's gutting knife: a Saxhleel flint fishing knife (flint, T1; kit fisher)"
     },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00080D",
@@ -201,10 +202,10 @@
    "person": "outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "the cook's kitchen knife for the day's eels and gar: a Saxhleel iron dagger (bog iron, T2), the camp's one bought blade (kit host)"
+     "why": "the cook's knife for the day's eels and gar: a Naga tecpatl, a flint blade on a wooden haft traded from the Naga bands (flint, T1; kit host: a flint kitchen knife)"
     },
     {
      "item": "Skyrim.esm:00000F",
