@@ -17,6 +17,10 @@ the skill for each step.
   judgement.
 - Decide inside the brief and the owner's rulings; record each call of your own with what you saw. Ask nothing.
 - When a tool misleads you, fix the tool with a test (or say exactly what is wrong for a tool lane), then go on.
+- Keep the place's time log: `python -m tools.places timelog <place> phase "<step>"` as you start each step of the
+  order of work (a tool fix is `tool fix: <tool>`; idle until the lead answers is `waiting on lead`) and `timelog <place>
+  pass start|end "<what the lead asked>"` around each pass; every verb logs itself. Put `timelog <place> report --md`
+  in your hand-back.
 - Heavy steps once, at the end: `tooling/job_guard.sh run <name> -- <cmd>` in the background, then
   `tooling/job_guard.sh wait <name>`; never `sleep` or poll.
 - Commit only your paths, by pathspec, on your branch, in small steps; leave the worktree clean.

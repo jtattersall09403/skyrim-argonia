@@ -30,7 +30,16 @@ def main(argv: list[str]) -> int:
             raise
         print(f"unknown verb {argv[0]!r}; verbs: " + " ".join(verbs), file=sys.stderr)
         return 2
-    return int(mod.main(argv[1:]) or 0)
+    from tools.places import timelog
+    st, rc = timelog.begin(argv), 1
+    try:
+        rc = int(mod.main(argv[1:]) or 0)
+        return rc
+    except SystemExit as e:
+        rc = e.code if isinstance(e.code, int) else (0 if e.code is None else 1)
+        raise
+    finally:
+        timelog.record(argv, st, rc)
 
 
 if __name__ == "__main__":

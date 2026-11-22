@@ -193,6 +193,12 @@ globs = ["newworld/places/*/edits/*"]
 only = true
 stages = ["editsvalid"]
 
+# A place's time log (tools/places/timelog.py): appended by every verb, read by its own report only; no stage or test.
+[[rule]]
+globs = ["newworld/places/*/timelog.jsonl"]
+only = true
+stages = []
+
 # The place skills' text (.claude/skills/place-*): recipes the place chain's lessons step rewrites and the place agents
 # read; no test or stage checks their words (the dialogue-write lints read the dialogue-write skill, which is not here).
 [[rule]]
