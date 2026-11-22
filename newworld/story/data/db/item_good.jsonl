@@ -125,6 +125,7 @@
 {"item_id":"Skyrim.esm:03ADA4","good_id":"salvage","why":"Dragon Bone: only by story (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:05ACE4","good_id":"ironwork","why":"Iron Ingot: a bog-iron smith's bar, and Dunmer and Imperial trade (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:05ACE5","good_id":"ironwork","why":"Steel Ingot: for Imperial issue, carried in (a smithing ingredient: recipe_rules.json)"}
+{"item_id":"Skyrim.esm:05AD93","good_id":"ironwork","why":"Corundum Ingot: copper alloy for copper-edged steel, carried in to the smiths (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:05AD9D","good_id":"salvage","why":"Ebony Ingot: only from ruin salvage (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:05AD9E","good_id":"salvage","why":"Gold Ingot: salvaged and melted from old emblems (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:05AD9F","good_id":"salvage","why":"Refined Moonstone: only from Ayleid salvage (a smithing ingredient: recipe_rules.json)"}

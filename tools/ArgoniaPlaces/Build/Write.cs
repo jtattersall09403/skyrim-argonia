@@ -137,6 +137,26 @@ static class Write
         mod.ModHeader.Author = "Argonia";
         mod.ModHeader.Description = "The new world's places: built by tools/places/build.py";
         var fc = new ForeignCopy(mod, Masters.Select(m => ModKey.FromFileName(m)).Append(world.ModKey), C.Data, CopyFirst);
+        // the items ladder (docs/design/items.md): when the world file carries it (smithing/copies.json beside it, its
+        // copies in it), a stock row naming a mod's item gets the world's copy; until then this plugin writes the ladder
+        // itself (items.json beside it, from tools/places/build.py): the ladder items, their stat overrides, the new
+        // ingredient items and every recipe, so a place's stock is the ladder's whichever file holds it
+        var smith = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(worldEsm))!, "smithing", "copies.json");
+        var ladder = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(esp))!, "items.json");
+        var worldItems = File.Exists(smith)
+            ? world.Weapons.Select(r => r.FormKey).Concat(world.Armors.Select(r => r.FormKey)).Concat(world.MiscItems.Select(r => r.FormKey))
+                .Concat(world.Ammunitions.Select(r => r.FormKey)).Concat(world.Ingredients.Select(r => r.FormKey)).ToHashSet() : new HashSet<FormKey>();
+        var worldHas = File.Exists(smith) && JsonDocument.Parse(File.ReadAllText(smith)).RootElement.EnumerateObject()
+            .All(kv => worldItems.Contains(ItemLadder.Src(kv.Value.GetString()!)));
+        if (worldHas)
+        {
+            foreach (var kv in JsonDocument.Parse(File.ReadAllText(smith)).RootElement.EnumerateObject())
+                if (!kv.Name.StartsWith("new:")) fc.Linked[ItemLadder.Src(kv.Name)] = ItemLadder.Src(kv.Value.GetString()!);
+            Console.WriteLine($"items ladder: linked to the world file's copies ({fc.Linked.Count})");
+        }
+        else if (File.Exists(ladder))
+            Console.WriteLine("items ladder: the world file does not carry it yet; written into this plugin: "
+                              + ItemLadder.Write(mod, fc, _ => fc.NextIdTake(), ladder).line);
         var ctx = new Ctx { Mod = mod, Fc = fc, World = world };
         People.Fc = fc;
         ctx.Allowed.UnionWith(Masters.Select(m => ModKey.FromFileName(m)));

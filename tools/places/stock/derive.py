@@ -67,7 +67,7 @@ class Picker:
         self.rec, self.scale, self.reach, self.region = rec, scale, reach, region or {}
         self.none_groups: set[str] = set()       # groups the place's expected mix holds at 0% (a tribal camp's metal)
         self.words = [w.lower() for w in scale["never"]["edid_words"]]
-        self.order = {(t["id"], s): t[s] for t in scale["tiers"] for s in ("weapon", "heavy", "light", "shield")}
+        self.order = split.ladder()          # {(tier, slot): materials}: the ladder, derived from each material's tier
         self.by_edid = {}
         self.items = []
         seen = set()
@@ -85,7 +85,10 @@ class Picker:
         or quest's own piece."""
         e = (it["edid"] or "").lower()
         mid = split.material_of(it)[0]
-        if it["ench"] or mid is None or split.never_reason(it, self.scale):
+        if it["ench"] or mid is None or split.never_reason(it, self.scale) or split.misfiled(it):
+            return False
+        # a mod's piece is issued only when the ladder files it (item_material); Skyrim's own gear by its keyword
+        if it["key"].rsplit(":", 1)[0] not in VANILLA_PLUGINS and it["key"] not in split.item_materials()["gear"]:
             return False
         if self.reach is not None and not self.reach.get(mid, (False,))[0]:
             return False
@@ -100,7 +103,7 @@ class Picker:
         region's local ones, then the tier's own order."""
         rank = [t["id"] for t in self.scale["tiers"]]
         for t in reversed(rank[:rank.index(tier) + 1]):
-            base = self.order[(t, slot)]
+            base = self.order.get((t, slot), [])
             local = [m for m in base if self.region.get(m) == "local"]
             order = list(dict.fromkeys([m for m in prefer or [] if m in base] + local + base))
             fit = [i for i in self.items if typ in i["keywords"] and split.slot_of(i) == slot and self.ok(i)
@@ -119,6 +122,38 @@ class Picker:
             if it:
                 return it
         return None
+
+
+VANILLA_PLUGINS = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"}
+SMITH_WARES = {"trader-blacksmith": None, "trader-general": {"hide-and-leather", "timber-and-stone"}}
+WARE_COUNT = {"made here": 5, "the region's": 3, "binding": 6}
+
+
+def smithing_wares(w, pid: str, region_id: str, give_kind: str) -> list[dict]:
+    """The smithing ingredients a trader sells (recipe_ingredient, item_good): a smith every ingredient whose good the
+    place makes or its region lists among its goods, a general trader the leather and wood of those; leather strips,
+    every recipe's binding, wherever either trades. Fixed counts by where the good comes from (made here, the
+    region's), never a roll (decision 0035)."""
+    if give_kind not in SMITH_WARES:
+        return []
+    goods_here = {g.good_id for g in w.rows("place_good", place_id=pid) if g.relation == "makes"}
+    goods_region = {g.good_id for g in w.rows("region_good", region_id=region_id)}
+    only = SMITH_WARES[give_kind]
+    binding = json.loads((split.STOCK / "recipe_rules.json").read_text())["binding"]["item"]
+    ware = {r.item_id: r.good_id for r in w.rows("item_good")}
+    used = sorted({r.ingredient for r in w.rows("recipe_ingredient") if not r.ingredient.startswith("new:")})
+    out = []
+    for k in used:
+        g = ware.get(k)
+        if g is None or (only is not None and g not in only):
+            continue
+        if k == binding:
+            out.append({"item": k, "count": WARE_COUNT["binding"], "why": "leather strips, every recipe's binding"})
+        elif g in goods_here:
+            out.append({"item": k, "count": WARE_COUNT["made here"], "why": f"a smithing ingredient made here ({g})"})
+        elif g in goods_region:
+            out.append({"item": k, "count": WARE_COUNT["the region's"], "why": f"a smithing ingredient of the region ({g})"})
+    return out
 
 
 def road_km(w, pid: str) -> dict[str, float]:
@@ -294,7 +329,7 @@ def derive(p: Place) -> dict:
         prefer = carry.materials.split() if carry and carry.materials else None
         tw = t if wt != "WeapTypeDagger" else "T1"
         if guard:  # the guard's issue (scale `guard_issue`): the weapon of its set, else the plain issue's sword
-            tw = issue_plain
+            tw = tier_cap(issue_plain)   # the plain issue, never above the place's ceiling
         weap = None if guard and issue["set"] and issue["set"].get("weapon") else pick.gear(tw, "weapon", wt, prefer)
         if guard and issue["set"] and issue["set"].get("weapon"):
             items.append({"item": issue["set"]["weapon"], "count": 1, "worn": True,
@@ -374,6 +409,7 @@ def derive(p: Place) -> dict:
                         if it and it["value"] * n <= budget:
                             budget -= it["value"] * n
                             items.append({"item": it["key"], "count": n, "why": f"{t} {eff} (grade {tiers[t]['potion_grade']})"})
+        items += smithing_wares(w, pid, place.region_id, g.give_kind_id)
         out["traders"].append({"person": who["id"], "give_seq": g.seq, "gold": gold, "items": items,
                                "why": f"{g.detail}: vanilla's {g.give_kind_id} gold times {pw.place_wealth_band_id}'s "
                                       f"{band['trader_gold_mult'] if band else 1}; tiers T1 to {ceiling}, fewer of each "

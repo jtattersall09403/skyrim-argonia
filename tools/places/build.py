@@ -2217,6 +2217,10 @@ def main(argv: list[str]) -> int:
     esp = out / "plugin" / PLUGIN
     esp.parent.mkdir(parents=True, exist_ok=True)
     t2 = time.time()
+    # the items ladder's records (docs/design/items.md): the writer links the world file's copies when it carries
+    # them, else writes these into the places plugin itself
+    from tools.newworld.world import smithing
+    atomic_json(esp.parent / "items.json", smithing.records())
     tool("write", str(esp), str(WORLD_ESM), *shards)
     report["write_s"] = round(time.time() - t2, 1)
     report["total_s"] = round(time.time() - t0, 1)

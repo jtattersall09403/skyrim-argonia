@@ -17,11 +17,7 @@
    "jewellery": ["JewelryRingSilver"],
    "about": "What anyone may own and what lies about on safe ground. Vanilla hands these out from level 1 (measured gates: iron, steel weapons, hide, iron, studded armour at 1; leather at 6, taken here because it is the marsh's own make).",
    "power_weapon": ["WeapMaterialIron", "WeapMaterialSteel"],
-   "power_armour": ["ArmorMaterialHide", "ArmorMaterialIron", "ArmorMaterialIronBanded", "ArmorMaterialStudded", "ArmorMaterialLeather"],
-   "weapon": ["wood", "flint", "bone", "bog-iron", "bonemold", "kothringi-relic", "imperial"],
-   "heavy": ["shell", "bog-iron", "imperial"],
-   "light": ["hide", "leather", "scale", "wood", "imperial", "xanmeer-relic", "kothringi-relic"],
-   "shield": ["hide", "shell", "wood", "scale", "bog-iron", "bonemold", "kothringi-relic", "imperial"]
+   "power_armour": ["ArmorMaterialHide", "ArmorMaterialIron", "ArmorMaterialIronBanded", "ArmorMaterialStudded", "ArmorMaterialLeather"]
   },
   {
    "id": "T2",
@@ -39,11 +35,7 @@
    "jewellery": ["JewelryRingSilver", "JewelryNecklaceSilver", "JewelryRingGold"],
    "about": "Good working gear: the D2 reward band (foes at level 10). Vanilla gates: imperial at 4, steel armour, leather and orcish weapons at 6, imperial armour at 7 to 8; enchantment grade 2 at 4 and 3 at 9.",
    "power_weapon": ["WeapMaterialSteel", "WeapMaterialImperial", "WeapMaterialOrcish"],
-   "power_armour": ["ArmorMaterialLeather", "ArmorMaterialSteel", "ArmorMaterialImperialLight", "ArmorMaterialImperialStudded", "ArmorMaterialImperialHeavy"],
-   "weapon": ["bone", "wood", "flint", "bog-iron", "kothringi-relic", "imperial", "bonemold"],
-   "heavy": ["shell", "bog-iron", "kothringi-relic", "imperial"],
-   "light": ["leather", "scale", "imperial"],
-   "shield": ["shell", "scale", "bog-iron", "kothringi-relic", "imperial", "bonemold"]
+   "power_armour": ["ArmorMaterialLeather", "ArmorMaterialSteel", "ArmorMaterialImperialLight", "ArmorMaterialImperialStudded", "ArmorMaterialImperialHeavy"]
   },
   {
    "id": "T3",
@@ -61,11 +53,7 @@
    "jewellery": ["JewelryRingGold", "JewelryNecklaceGold", "JewelryRingSilverGarnet", "JewelryRingSilverAmethyst", "JewelryRingSilverRuby"],
    "about": "Fine, foreign or old-made gear: the D3 reward band (foes at level 20). Vanilla gates: dwarven and elven armour at 12, steel plate and elven weapons at 18 to 19, scaled at 19; enchantment grade 4 at 17.",
    "power_weapon": ["WeapMaterialDwarven", "WeapMaterialElven"],
-   "power_armour": ["ArmorMaterialScaled", "ArmorMaterialElven", "ArmorMaterialDwarven", "ArmorMaterialSteelPlate", "DLC2ArmorMaterialChitinLight", "DLC2ArmorMaterialChitinHeavy", "DLC2ArmorMaterialBonemoldLight", "DLC2ArmorMaterialBonemoldHeavy"],
-   "weapon": ["bone", "bog-iron", "flint", "wood", "obsidian", "chitin", "bonemold", "shadowscale", "kothringi-relic", "imperial", "elven"],
-   "heavy": ["bog-iron", "shell", "chitin", "bonemold", "kothringi-relic", "imperial"],
-   "light": ["scale", "leather", "chitin", "shadowscale", "imperial", "elven"],
-   "shield": ["shell", "chitin", "bonemold", "imperial", "elven"]
+   "power_armour": ["ArmorMaterialScaled", "ArmorMaterialElven", "ArmorMaterialDwarven", "ArmorMaterialSteelPlate", "DLC2ArmorMaterialChitinLight", "DLC2ArmorMaterialChitinHeavy", "DLC2ArmorMaterialBonemoldLight", "DLC2ArmorMaterialBonemoldHeavy"]
   },
   {
    "id": "T4",
@@ -83,11 +71,7 @@
    "jewellery": ["JewelryNecklaceSilverGems", "JewelryRingGoldSapphire", "JewelryNecklaceGoldGems", "JewelryNecklaceGoldRuby"],
    "about": "What a capital's treasury or a deep ruin holds: the D4 reward band (foes at level 35). Vanilla gates: orcish armour 25, elven gilded and glass weapons 27, ebony armour 32; enchantment grade 5 at 30.",
    "power_weapon": ["WeapMaterialGlass"],
-   "power_armour": ["ArmorMaterialElvenGilded", "ArmorMaterialOrcish", "ArmorMaterialEbony"],
-   "weapon": ["obsidian", "bone", "kothringi-relic", "glass"],
-   "heavy": ["bronze", "xanmeer-relic", "kothringi-relic", "imperial", "ebony"],
-   "light": ["obsidian", "scale", "leather", "shadowscale", "imperial", "elven"],
-   "shield": ["obsidian", "xanmeer-relic", "kothringi-relic", "ebony"]
+   "power_armour": ["ArmorMaterialElvenGilded", "ArmorMaterialOrcish", "ArmorMaterialEbony"]
   },
   {
    "id": "T5",
@@ -105,11 +89,7 @@
    "jewellery": ["JewelryRingGoldEmerald", "JewelryRingGoldDiamond", "JewelryNecklaceSilverEmerald", "JewelryNecklaceGoldDiamond"],
    "about": "The best a place can hold without a story: the D5 reward band (foes at level 50) and the richest cities' vaults. Vanilla gates: glass armour and ebony weapons at 36.",
    "power_weapon": ["WeapMaterialEbony"],
-   "power_armour": ["ArmorMaterialGlass"],
-   "weapon": ["obsidian", "shadowscale", "ebony"],
-   "heavy": ["xanmeer-relic", "ebony"],
-   "light": ["obsidian", "leather", "xanmeer-relic", "imperial", "glass"],
-   "shield": ["xanmeer-relic", "glass"]
+   "power_armour": ["ArmorMaterialGlass"]
   },
   {
    "id": "T6",
@@ -127,11 +107,7 @@
    "jewellery": ["JewelryNecklaceGoldDiamond"],
    "about": "Uniques and the best gear: authored by story only and counted in the world ledger (newworld/sources/stock/unique.json); never derived. Vanilla gates: dragonplate 40, daedric and dragonscale 46 to 48; enchantment grade 6 at 43.",
    "power_weapon": ["WeapMaterialDaedric", "DLC1WeapMaterialDragonbone"],
-   "power_armour": ["ArmorMaterialDaedric", "ArmorMaterialDragonscale", "ArmorMaterialDragonplate"],
-   "weapon": ["obsidian", "shadowscale", "daedric", "dragon"],
-   "heavy": ["xanmeer-relic", "daedric", "dragon"],
-   "light": ["shadowscale", "xanmeer-relic", "dragon"],
-   "shield": ["xanmeer-relic", "daedric", "dragon"]
+   "power_armour": ["ArmorMaterialDaedric", "ArmorMaterialDragonscale", "ArmorMaterialDragonplate"]
   }
  ],
  "danger_tier": {"D0": "T1", "D1": "T1", "D2": "T2", "D3": "T3", "D4": "T4", "D5": "T5"},
@@ -213,9 +189,9 @@
     "outfit": "Black Marsh North.esp:037DF8",
     "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"],
     "weapon": null,
-    "tier": "T4",
+    "tier": "T3",
     "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
-    "why": "The guard armour BM&V gives the Argonian soldiers of its own cities (outfit BMArgSet: cuirass, boots, gauntlets): Argonian scale (item_material), light; its cuirass's rating (35) is Skyrim's gilded elven, so by power the set is T4 and only a place whose ceiling reaches T4 issues it. Every culture of Black Marsh is Argonian. The source's guards carry Ebony and Daedric swords, which are no part of a set, so the plain issue's sword stays."
+    "why": "The guard armour BM&V gives the Argonian soldiers of its own cities (outfit BMArgSet: cuirass, boots, gauntlets): Argonian scale (item_material), light: the scale material stands at T3, and the world build gives it Skyrim's scaled armour stats, so a place whose ceiling reaches T3 issues it. Every culture of Black Marsh is Argonian. The source's guards carry Ebony and Daedric swords, which are no part of a set, so the plain issue's sword stays."
    }
   ]
  },
@@ -349,7 +325,27 @@
    "heavy-gauntlets": {"T1": ["ArmorIronGauntlets"], "T2": ["ArmorSteelGauntletsA", "ArmorImperialGauntlets"], "T3": ["ArmorDwarvenGauntlets", "ArmorSteelPlateGauntlets", "DLC2ArmorChitinHeavyGauntlets", "DLC2ArmorBonemoldGauntlets"], "T4": ["ArmorOrcishGauntlets", "ArmorEbonyGauntlets"], "T5": [], "T6": ["ArmorDaedricGauntlets", "ArmorDragonplateGauntlets"]},
    "heavy-boots": {"T1": ["ArmorIronBoots"], "T2": ["ArmorSteelBootsA", "ArmorImperialBoots"], "T3": ["ArmorDwarvenBoots", "ArmorSteelPlateBoots", "DLC2ArmorChitinHeavyBoots", "DLC2ArmorBonemoldBoots"], "T4": ["ArmorOrcishBoots", "ArmorEbonyBoots"], "T5": [], "T6": ["ArmorDaedricBoots", "ArmorDragonplateBoots"]},
    "shield": {"T1": ["ArmorHideShield", "ArmorIronShield", "ArmorIronBandedShield"], "T2": ["ArmorSteelShield", "ArmorImperialShield", "ArmorImperialLightShield"], "T3": ["ArmorDwarvenShield", "ArmorElvenShield", "DLC2ArmorChitinShield", "DLC2ArmorBonemoldShield"], "T4": ["ArmorOrcishShield", "ArmorEbonyShield"], "T5": ["ArmorGlassShield"], "T6": ["ArmorDaedricShield", "ArmorDragonscaleShield", "ArmorDragonplateShield"]}
-  }
+  },
+  "stat_bases": {
+   "dagger": {"T1": "IronDagger", "T2": "SteelDagger", "T3": "ElvenDagger", "T4": "GlassDagger", "T5": "EbonyDagger", "T6": "DaedricDagger"},
+   "sword": {"T1": "IronSword", "T2": "SteelSword", "T3": "ElvenSword", "T4": "GlassSword", "T5": "EbonySword", "T6": "DaedricSword"},
+   "waraxe": {"T1": "IronWarAxe", "T2": "SteelWarAxe", "T3": "ElvenWarAxe", "T4": "GlassWarAxe", "T5": "EbonyWarAxe", "T6": "DaedricWarAxe"},
+   "mace": {"T1": "IronMace", "T2": "SteelMace", "T3": "ElvenMace", "T4": "GlassMace", "T5": "EbonyMace", "T6": "DaedricMace"},
+   "greatsword": {"T1": "IronGreatsword", "T2": "SteelGreatsword", "T3": "ElvenGreatsword", "T4": "GlassGreatsword", "T5": "EbonyGreatsword", "T6": "DaedricGreatsword"},
+   "battleaxe": {"T1": "IronBattleaxe", "T2": "SteelBattleaxe", "T3": "ElvenBattleaxe", "T4": "GlassBattleaxe", "T5": "EbonyBattleaxe", "T6": "DaedricBattleaxe"},
+   "warhammer": {"T1": "IronWarhammer", "T2": "SteelWarhammer", "T3": "ElvenWarhammer", "T4": "GlassWarhammer", "T5": "EbonyWarhammer", "T6": "DaedricWarhammer"},
+   "bow": {"T1": "HuntingBow", "T2": "ImperialBow", "T3": "ElvenBow", "T4": "GlassBow", "T5": "EbonyBow", "T6": "DaedricBow"},
+   "light-cuirass": {"T1": "ArmorHideCuirass", "T2": "ArmorLeatherCuirass", "T3": "ArmorScaledCuirass", "T4": "ArmorElvenGildedCuirass", "T5": "ArmorGlassCuirass", "T6": "ArmorDragonscaleCuirass"},
+   "light-helmet": {"T1": "ArmorHideHelmet", "T2": "ArmorLeatherHelmet", "T3": "ArmorScaledHelmet", "T4": "ArmorElvenHelmet", "T5": "ArmorGlassHelmet", "T6": "ArmorDragonscaleHelmet"},
+   "light-gauntlets": {"T1": "ArmorHideGauntlets", "T2": "ArmorLeatherGauntlets", "T3": "ArmorScaledGauntlets", "T4": "ArmorElvenGauntlets", "T5": "ArmorGlassGauntlets", "T6": "ArmorDragonscaleGauntlets"},
+   "light-boots": {"T1": "ArmorHideBoots", "T2": "ArmorLeatherBoots", "T3": "ArmorScaledBoots", "T4": "ArmorElvenBoots", "T5": "ArmorGlassBoots", "T6": "ArmorDragonscaleBoots"},
+   "heavy-cuirass": {"T1": "ArmorIronCuirass", "T2": "ArmorSteelCuirassA", "T3": "ArmorDwarvenCuirass", "T4": "ArmorOrcishCuirass", "T5": "ArmorEbonyCuirass", "T6": "ArmorDaedricCuirass"},
+   "heavy-helmet": {"T1": "ArmorIronHelmet", "T2": "ArmorSteelHelmetA", "T3": "ArmorDwarvenHelmet", "T4": "ArmorOrcishHelmet", "T5": "ArmorEbonyHelmet", "T6": "ArmorDaedricHelmet"},
+   "heavy-gauntlets": {"T1": "ArmorIronGauntlets", "T2": "ArmorSteelGauntletsA", "T3": "ArmorDwarvenGauntlets", "T4": "ArmorOrcishGauntlets", "T5": "ArmorEbonyGauntlets", "T6": "ArmorDaedricGauntlets"},
+   "heavy-boots": {"T1": "ArmorIronBoots", "T2": "ArmorSteelBootsA", "T3": "ArmorDwarvenBoots", "T4": "ArmorOrcishBoots", "T5": "ArmorEbonyBoots", "T6": "ArmorDaedricBoots"},
+   "shield": {"T1": "ArmorIronShield", "T2": "ArmorSteelShield", "T3": "ArmorDwarvenShield", "T4": "ArmorOrcishShield", "T5": "ArmorEbonyShield", "T6": "ArmorDaedricShield"}
+  },
+  "stat_about": "The one Skyrim base each ladder tier takes its stats from, per kind (iron, steel, elven, glass, ebony, daedric weapons; hide, leather, scaled, gilded elven, glass, dragonscale light armour; iron, steel, dwarven, orcish, ebony, daedric heavy armour and shields): an item of our material takes its tier's base's damage or rating, weight and value; its speed and reach stay its type's (`stockdb power` measures them into power.json `stats`; the world build writes them as overrides)."
  },
  "mix": {
   "about": "The target mix of gear by our material's group (materials.json `groups`), by the place's class; `python -m tools.places stock mix <place>` prints a place's stock against it. A target, never a rule: it says what a place of the class looks like on the whole (issue #89).",

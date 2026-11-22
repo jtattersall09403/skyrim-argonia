@@ -25,7 +25,7 @@
 {"item_id":"Black Marsh North.esp:037E0C","material_id":"scale","why":"Boots: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"}
 {"item_id":"Black Marsh North.esp:03E3E0","material_id":"scale","why":"Argonian Metal Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"}
 {"item_id":"Black Marsh North.esp:03E3E2","material_id":"scale","why":"Argonian Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"}
-{"item_id":"Black Marsh North.esp:03E3F9","material_id":"bog-iron","stock_tier_id":"T3","why":"Argonian Sword: BM&V's Argonian sword: steel; its damage (17) is above every Skyrim sword's while its value (235) is an elven sword's: the mod's number is its error, so it stands at its value's tier"}
+{"item_id":"Black Marsh North.esp:03E3F9","material_id":"copper-steel","why":"Argonian Sword: BM&V's Argonian sword: steel"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012437","material_id":"imperial","why":"Legion Light Greaves: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012438","material_id":"imperial","why":"Legion Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012439","material_id":"imperial","why":"Legion Light Bracers: Legion issue: Imperial"}
@@ -98,13 +98,13 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1928BA","material_id":"hide","why":"Naga Chimalli: a hide chimalli"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1928BD","material_id":"scale","why":"Naga Elite Tall Shield: the Naga elite's and priests' scale"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979CE","material_id":"obsidian","why":"Xanmeer Yaomitl: a volcanic-glass weapon of the Xanmeer make"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979CF","material_id":"obsidian","why":"Xanmeer Huey Macahuitl: a volcanic-glass weapon of the Xanmeer make"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979CF","material_id":"obsidian","stock_tier_id":"T5","why":"Xanmeer Huey Macahuitl: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D0","material_id":"obsidian","why":"Xanmeer Tlahhuitolli: a volcanic-glass weapon of the Xanmeer make"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D1","material_id":"obsidian","why":"Xanmeer Tecpatl: a volcanic-glass weapon of the Xanmeer make"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D3","material_id":"obsidian","why":"Xanmeer Macana: a volcanic-glass weapon of the Xanmeer make"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D4","material_id":"obsidian","why":"Xanmeer Macahuitl: a volcanic-glass weapon of the Xanmeer make"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D5","material_id":"obsidian","why":"Xanmeer Quauhololli: a volcanic-glass weapon of the Xanmeer make"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D7","material_id":"obsidian","why":"Xanmeer Huey Macana: a volcanic-glass weapon of the Xanmeer make"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D5","material_id":"obsidian","stock_tier_id":"T5","why":"Xanmeer Quauhololli: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D7","material_id":"obsidian","stock_tier_id":"T5","why":"Xanmeer Huey Macana: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979D8","material_id":"obsidian","why":"Xanmeer Sacrificial Tecpatl: a volcanic-glass weapon of the Xanmeer make"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979DA","material_id":"obsidian","why":"Xanmeer Huitzauqui: a volcanic-glass weapon of the Xanmeer make"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1979DC","material_id":"flint","why":"Xanmeer Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)"}
@@ -126,7 +126,7 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1B0F87","material_id":"wood","why":"Bamboo Staff: bamboo"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:1B0F88","material_id":"wood","why":"Bamboo Staff: bamboo"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:20EE15","material_id":"xanmeer-relic","why":"Xanmeer Burial Mask: a Xanmeer burial mask"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:23D5B9","material_id":"obsidian","why":"Xanmeer War Staff: a volcanic-glass weapon of the Xanmeer make"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:23D5B9","material_id":"obsidian","stock_tier_id":"T5","why":"Xanmeer War Staff: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:2AD6C9","material_id":"kothringi-relic","why":"Zuuk's Axe: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:2AD6CB","material_id":"kothringi-relic","why":"Zuuk's Sword: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:2AD6CC","material_id":"kothringi-relic","why":"Zuuk's Boots: a Kothringi relic (their towns died in 2E 560)"}
@@ -135,13 +135,13 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:2AD6CF","material_id":"kothringi-relic","why":"Zuuk's Helmet: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:2AD6D0","material_id":"kothringi-relic","why":"Zuuk's Shield: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:4A642A","material_id":"imperial","why":"Falcata: Legion issue: Imperial"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:4C4C1C","material_id":"obsidian","why":"Xanmeer Warhammer: a volcanic-glass weapon of the Xanmeer make"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:53EB2A","material_id":"scale","stock_tier_id":"T1","why":"Naga Priest Armor: the Naga elite's and priests' scale; its record files a body armour as a helmet, so its rating (25) reads as a helmet's (above T6); as the body piece it is (light cuirass 25) it is T1"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:4C4C1C","material_id":"obsidian","stock_tier_id":"T5","why":"Xanmeer Warhammer: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:53EB2A","material_id":"scale","why":"Naga Priest Armor: the Naga elite's and priests' scale"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5A996D","material_id":"kothringi-relic","why":"Kothringi Burial Mask: a Kothringi relic (their towns died in 2E 560)"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FD9","material_id":"xanmeer-relic","why":"Xanmeer Light Boots: a Xanmeer knight's or Ocelotl relic of the old layer"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDA","material_id":"xanmeer-relic","why":"Xanmeer Light Armor: a Xanmeer knight's or Ocelotl relic of the old layer"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDB","material_id":"xanmeer-relic","why":"Xanmeer Light Gloves: a Xanmeer knight's or Ocelotl relic of the old layer"}
-{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDC","material_id":"xanmeer-relic","why":"Xanmeer Light Helmet: a Xanmeer knight's or Ocelotl relic of the old layer"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FD9","material_id":"xanmeer-relic","stock_tier_id":"T5","why":"Xanmeer Light Boots: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDA","material_id":"xanmeer-relic","stock_tier_id":"T5","why":"Xanmeer Light Armor: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDB","material_id":"xanmeer-relic","stock_tier_id":"T5","why":"Xanmeer Light Gloves: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDC","material_id":"xanmeer-relic","stock_tier_id":"T5","why":"Xanmeer Light Helmet: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDD","material_id":"xanmeer-relic","why":"Xanmeer Heavy Boots: a Xanmeer knight's or Ocelotl relic of the old layer"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDE","material_id":"xanmeer-relic","why":"Xanmeer Heavy Armor: a Xanmeer knight's or Ocelotl relic of the old layer"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:5C2FDF","material_id":"xanmeer-relic","why":"Xanmeer Heavy Gloves: a Xanmeer knight's or Ocelotl relic of the old layer"}
@@ -152,22 +152,22 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:781D13","material_id":"imperial","why":"Legion Heavy Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:781D1D","material_id":"imperial","why":"Vesper's Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:786E47","material_id":"imperial","why":"Vesper's Helmet: Legion issue: Imperial"}
-{"item_id":"King of the Murkmire.esp:0008D1","material_id":"leather","why":"Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0008F8","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0008FA","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0008FC","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:000D63","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:000D6B","material_id":"leather","why":"Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0008D1","material_id":"saxhleel","why":"Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0008F8","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0008FA","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0008FC","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:000D63","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:000D6B","material_id":"saxhleel","why":"Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:005911","material_id":"shell","why":"Naga Spiked Shield: a spiked shell shield"}
-{"item_id":"King of the Murkmire.esp:00ADB0","material_id":"bog-iron","why":"Masu Skin Plate Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
-{"item_id":"King of the Murkmire.esp:00ADB1","material_id":"leather","why":"Masu Skin Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:00ADB2","material_id":"leather","why":"Masu Skin Gloves: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:00ADB3","material_id":"leather","why":"Masu Skin Fingerless Gloves: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:00ADB4","material_id":"leather","why":"Masu Skin Boots: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:00ADB5","material_id":"leather","why":"Masu Skin Robe: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:00ADB6","material_id":"ebony","why":"Masu Skin Ebony Cuirass: masu skin with ebony plates"}
+{"item_id":"King of the Murkmire.esp:00ADB0","material_id":"masu-plate","why":"Masu Skin Plate Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
+{"item_id":"King of the Murkmire.esp:00ADB1","material_id":"saxhleel","why":"Masu Skin Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB2","material_id":"saxhleel","why":"Masu Skin Gloves: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB3","material_id":"saxhleel","why":"Masu Skin Fingerless Gloves: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB4","material_id":"saxhleel","why":"Masu Skin Boots: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB5","material_id":"saxhleel","why":"Masu Skin Robe: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB6","material_id":"masu-plate","why":"Masu Skin Ebony Cuirass: masu skin with ebony plates"}
 {"item_id":"King of the Murkmire.esp:00ADB7","material_id":"bog-iron","why":"Masu Skin Iron Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
-{"item_id":"King of the Murkmire.esp:00ADB8","material_id":"leather","why":"Masu Skin Hood: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:00ADB8","material_id":"saxhleel","why":"Masu Skin Hood: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:030638","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
 {"item_id":"King of the Murkmire.esp:030639","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
 {"item_id":"King of the Murkmire.esp:03063A","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
@@ -180,50 +180,50 @@
 {"item_id":"King of the Murkmire.esp:030641","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
 {"item_id":"King of the Murkmire.esp:030642","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
 {"item_id":"King of the Murkmire.esp:030643","material_id":"wood","why":"Argonian Funerary Mask: a carved wooden mask"}
-{"item_id":"King of the Murkmire.esp:05AC98","material_id":"bog-iron","why":"Reel-ka Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
-{"item_id":"King of the Murkmire.esp:05AC99","material_id":"bog-iron","why":"Reel-ka Bracers: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
-{"item_id":"King of the Murkmire.esp:05AC9A","material_id":"bog-iron","why":"Reel-ka Boots: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
+{"item_id":"King of the Murkmire.esp:05AC98","material_id":"masu-plate","why":"Reel-ka Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
+{"item_id":"King of the Murkmire.esp:05AC99","material_id":"masu-plate","why":"Reel-ka Bracers: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
+{"item_id":"King of the Murkmire.esp:05AC9A","material_id":"masu-plate","why":"Reel-ka Boots: bog-iron plate over masu skin (Reel-ka, Masu plate)"}
 {"item_id":"King of the Murkmire.esp:086686","material_id":"scale","why":"Scale Cuirass: Naga scale"}
 {"item_id":"King of the Murkmire.esp:086687","material_id":"scale","why":"Scale Boots: Naga scale"}
 {"item_id":"King of the Murkmire.esp:086688","material_id":"scale","why":"Scale Bracers: Naga scale"}
-{"item_id":"King of the Murkmire.esp:098EC0","material_id":"bog-iron","why":"Saxhleel Battleaxe: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC0","material_id":"copper-steel","why":"Saxhleel Battleaxe: the Saxhleel set: copper-edged steel"}
 {"item_id":"King of the Murkmire.esp:098EC1","material_id":"wood","why":"Saxhleel Green Bow: a wooden bow"}
-{"item_id":"King of the Murkmire.esp:098EC2","material_id":"bog-iron","why":"Saxhleel Dagger: the Saxhleel set: copper-edged steel"}
-{"item_id":"King of the Murkmire.esp:098EC3","material_id":"bog-iron","why":"Saxhleel Tusik: the Saxhleel set: copper-edged steel"}
-{"item_id":"King of the Murkmire.esp:098EC4","material_id":"bog-iron","why":"Saxhleel Mace: the Saxhleel set: copper-edged steel"}
-{"item_id":"King of the Murkmire.esp:098EC5","material_id":"bog-iron","why":"Saxhleel Sabre: the Saxhleel set: copper-edged steel"}
-{"item_id":"King of the Murkmire.esp:098EC6","material_id":"bog-iron","why":"Saxhleel Axe: the Saxhleel set: copper-edged steel"}
-{"item_id":"King of the Murkmire.esp:098EC7","material_id":"bog-iron","why":"Saxhleel Longmace: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC2","material_id":"copper-steel","why":"Saxhleel Dagger: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC3","material_id":"copper-steel","why":"Saxhleel Tusik: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC4","material_id":"copper-steel","why":"Saxhleel Mace: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC5","material_id":"copper-steel","why":"Saxhleel Sabre: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC6","material_id":"copper-steel","why":"Saxhleel Axe: the Saxhleel set: copper-edged steel"}
+{"item_id":"King of the Murkmire.esp:098EC7","material_id":"copper-steel","why":"Saxhleel Longmace: the Saxhleel set: copper-edged steel"}
 {"item_id":"King of the Murkmire.esp:098ECA","material_id":"wood","why":"Saxhleel Red Bow: a wooden bow"}
 {"item_id":"King of the Murkmire.esp:098ECB","material_id":"wood","why":"Saxhleel Yellow Bow: a wooden bow"}
-{"item_id":"King of the Murkmire.esp:0AD634","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0AD635","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0AD636","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0AD637","material_id":"leather","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
-{"item_id":"King of the Murkmire.esp:0CC279","material_id":"leather","why":"Elder's Armour: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0AD634","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0AD635","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0AD636","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0AD637","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:0CC279","material_id":"saxhleel","why":"Elder's Armour: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:10C482","material_id":"shadowscale","why":"Shadowscale Blade: the Shadowscales' blade"}
 {"item_id":"King of the Murkmire.esp:10C483","material_id":"shadowscale","why":"Shadowscale Dagger: the Shadowscales' blade"}
 {"item_id":"King of the Murkmire.esp:10C484","material_id":"obsidian","why":"Ceremonial Tusik: a ceremonial tusik toothed with volcanic glass"}
 {"item_id":"King of the Murkmire.esp:1C1C62","material_id":"wood","why":"Saxhleel Warclub: a wooden war club"}
 {"item_id":"King of the Murkmire.esp:1C1C63","material_id":"wood","why":"Tum-Taleel Club: a wooden war club"}
 {"item_id":"King of the Murkmire.esp:2565F1","material_id":"wood","why":"An-Xileel Mask: a carved wooden mask"}
-{"item_id":"King of the Murkmire.esp:27504F","material_id":"bone","why":"Saxhleel Bone Shortsword: Saxhleel bone"}
-{"item_id":"King of the Murkmire.esp:275050","material_id":"bone","why":"Saxhleel Bone Sword: Saxhleel bone"}
-{"item_id":"King of the Murkmire.esp:27A2B7","material_id":"leather","why":"Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:27504F","material_id":"saxhleel","why":"Saxhleel Bone Shortsword: Saxhleel bone"}
+{"item_id":"King of the Murkmire.esp:275050","material_id":"saxhleel","why":"Saxhleel Bone Sword: Saxhleel bone"}
+{"item_id":"King of the Murkmire.esp:27A2B7","material_id":"saxhleel","why":"Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:27A2BB","material_id":"hide","why":"Saxhleel Tribal Boots: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"}
 {"item_id":"King of the Murkmire.esp:27F427","material_id":"hide","why":"Saxhleel Tribal Robes: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"}
 {"item_id":"King of the Murkmire.esp:27F428","material_id":"hide","why":"Saxhleel Tribal Bracers: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"}
 {"item_id":"King of the Murkmire.esp:27F429","material_id":"hide","why":"Saxhleel Tribal Headband: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"}
 {"item_id":"King of the Murkmire.esp:57AA3C","material_id":"flint","why":"Saxhleel Fishing Knife: a flint fishing knife"}
-{"item_id":"King of the Murkmire.esp:57AA3D","material_id":"bone","why":"Saxhleel Bone Dagger: Saxhleel bone"}
+{"item_id":"King of the Murkmire.esp:57AA3D","material_id":"saxhleel","why":"Saxhleel Bone Dagger: Saxhleel bone"}
 {"item_id":"King of the Murkmire.esp:57AA3E","material_id":"bog-iron","why":"Saxhleel Iron Dagger: a bog-iron dagger"}
-{"item_id":"King of the Murkmire.esp:57AA3F","material_id":"bone","why":"Saxhleel Bone Mace: Saxhleel bone"}
+{"item_id":"King of the Murkmire.esp:57AA3F","material_id":"saxhleel","why":"Saxhleel Bone Mace: Saxhleel bone"}
 {"item_id":"King of the Murkmire.esp:57AA40","material_id":"flint","why":"Saxhleel Tusik: a tusik: wood toothed with flint"}
-{"item_id":"King of the Murkmire.esp:57AA41","material_id":"bone","why":"Saxhleel Bone Bow: a bone bow"}
+{"item_id":"King of the Murkmire.esp:57AA41","material_id":"saxhleel","why":"Saxhleel Bone Bow: a bone bow"}
 {"item_id":"King of the Murkmire.esp:57AA42","material_id":"wood","why":"Saxhleel Wooden Club: Saxhleel wood (its record calls it wooden)"}
 {"item_id":"King of the Murkmire.esp:57AA46","material_id":"flint","why":"Saxhleel Great Tusik: a tusik: wood toothed with flint"}
 {"item_id":"King of the Murkmire.esp:57AA47","material_id":"wood","why":"Saxhleel Wooden Longmace: Saxhleel wood (its record calls it wooden)"}
-{"item_id":"King of the Murkmire.esp:99E4A2","material_id":"leather","why":"Callia's Jacket: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"King of the Murkmire.esp:99E4A2","material_id":"saxhleel","why":"Callia's Jacket: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000800","material_id":"bone","why":"Argonian Bone Mace: Argonian bone (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000806","material_id":"wood","why":"Argonian Shortspear: Argonian wood (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000807","material_id":"bone","why":"Argonian Bone Shortsword: Argonian bone (New Armory)"}
@@ -241,12 +241,12 @@
 {"item_id":"PrvtI_ArgonianWeapons.esp:00083F","material_id":"bog-iron","why":"Iron Fishing Knife: a bog-iron fishing knife"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000974","material_id":"wood","why":"Argonian Wooden Tusik: Argonian wood (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000976","material_id":"flint","why":"Argonian Great Tusik: flint-toothed wood (New Armory)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:000803","material_id":"leather","why":"Saxhleel Leather Pants: Saxhleel leather (Stormhold Warrior)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:000806","material_id":"leather","why":"Saxhleel Leather Armor - No Pauldron: Saxhleel leather (Stormhold Warrior)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:000808","material_id":"leather","why":"Saxhleel Leather Armor - Left Pauldron: Saxhleel leather (Stormhold Warrior)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:00080A","material_id":"leather","why":"Saxhleel Leather Armor - Right Pauldron: Saxhleel leather (Stormhold Warrior)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:000D63","material_id":"leather","why":"Saxhleel Leather Armor: Saxhleel leather (Stormhold Warrior)"}
-{"item_id":"s6o6tStormholdWarriorArmor.esp:000D6B","material_id":"leather","why":"Saxhleel Leather Gloves: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:000803","material_id":"saxhleel","why":"Saxhleel Leather Pants: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:000806","material_id":"saxhleel","why":"Saxhleel Leather Armor - No Pauldron: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:000808","material_id":"saxhleel","why":"Saxhleel Leather Armor - Left Pauldron: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:00080A","material_id":"saxhleel","why":"Saxhleel Leather Armor - Right Pauldron: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:000D63","material_id":"saxhleel","why":"Saxhleel Leather Armor: Saxhleel leather (Stormhold Warrior)"}
+{"item_id":"s6o6tStormholdWarriorArmor.esp:000D6B","material_id":"saxhleel","why":"Saxhleel Leather Gloves: Saxhleel leather (Stormhold Warrior)"}
 {"item_id":"shadowscaleset.esp:000802","material_id":"shadowscale","why":"Shadowscale Armor: Shadowscale Reborn"}
 {"item_id":"shadowscaleset.esp:000806","material_id":"shadowscale","why":"Shadowscale Sword: Shadowscale Reborn"}
 {"item_id":"shadowscaleset.esp:000807","material_id":"shadowscale","why":"Shadowscale Bracers: Shadowscale Reborn"}

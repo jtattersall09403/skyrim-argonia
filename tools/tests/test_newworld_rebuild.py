@@ -458,7 +458,7 @@ def test_the_world_file_is_written_anew_for_a_new_build_key_and_its_check_holds_
     (repo / "tools/newworld/world/world.sh").write_bytes((REPO / "tools/newworld/world/world.sh").read_bytes())
     os.chmod(repo / "tools/newworld/world/world.sh", 0o755)
     (repo / "tools/ArgoniaPlugin").mkdir(parents=True)
-    for n in ("NewWorld", "WaterBlend", "ForeignCopy", "FormIds", "NewWorldNavmesh", "NewWorldAtmosphere", "NewWorldTravel", "NewWorldMusic"):
+    for n in ("NewWorld", "WaterBlend", "ForeignCopy", "ItemLadder", "FormIds", "NewWorldNavmesh", "NewWorldAtmosphere", "NewWorldTravel", "NewWorldMusic"):
         (repo / f"tools/ArgoniaPlugin/{n}.cs").write_text(n)
     for n in ("travel/menu.json", "music/records.json", "music/pieces.json", "atmosphere/regions.json"):
         (repo / "newworld/sources" / n).parent.mkdir(parents=True, exist_ok=True)

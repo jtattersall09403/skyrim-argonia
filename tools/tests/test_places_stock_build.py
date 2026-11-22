@@ -291,3 +291,15 @@ def test_each_key_fault_fails(name):
     X = _keyed_stock()
     KEY_BROKEN[name](X)
     assert [b for b in verify.check_stock({"stock": X, "plan": {"refs": []}}) if b.startswith("keys:")], name
+
+
+def test_a_row_the_ladder_retiered_is_owed_not_failing_and_a_row_always_wrong_still_fails():
+    X = copy.deepcopy(SF.stock())
+    X["person_items"]["t.head"].append((SF.EBONY, 1, False))
+    X["built"]["npcs"]["t.head"]["inventory"].append((SF.EBONY, 1))
+    X["items"][SF.EBONY]["legacy_tier"] = "T1"        # stocked as T1 under the keyword rule, T5 on the ladder
+    assert verify.check_stock({"stock": X, "plan": {"refs": []}}) == [] and X["owed"]
+    X = copy.deepcopy(SF.stock())
+    X["person_items"]["t.head"].append((SF.EBONY, 1, False))
+    X["built"]["npcs"]["t.head"]["inventory"].append((SF.EBONY, 1))
+    assert verify.check_stock({"stock": X, "plan": {"refs": []}})      # no legacy tier that fits: it fails
