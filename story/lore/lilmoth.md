@@ -120,7 +120,7 @@ of 2026-08-24: **rebuilt, but not restored.**
 - **Politics**: Lilmoth is commercially significant and **keeps the ruling
   Xeech-Leel at arm's length**, refusing their wardens inside its walls. It was the
   An-Xileel's seat, and the An-Xileel killed it. Correction to the quest plan recorded at
-  [extrapolation/quest-plan-deltas.md](extrapolation/quest-plan-deltas.md) D2.
+  extrapolation/quest-plan-deltas.md D2.
 
 Province context:
 [extrapolation/argonia-4e201-state.md](extrapolation/argonia-4e201-state.md) §4

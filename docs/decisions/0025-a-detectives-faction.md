@@ -1,4 +1,4 @@
-# 0025: A detectives' faction, rival to the Shadowscales and the Night-Reed Chapter
+# 0025: A detectives' faction, rival to the Shadowscales and the Eelskins
 
 **Status:** decided 2026-10-27 (owner: "let's have a detectives faction! As rivals to those two. Solving murders
 and thefts, with quests escalating up from petty crimes to some big grand murder mystery finale. It will need
@@ -8,7 +8,7 @@ right point without the owner having to remember). Numbered 0018 on the side bra
 ## Decision
 
 1. **A new joinable faction** whose members solve crimes in Black Marsh, set against the Shadowscales (the
-   assassins) and the Night-Reed Chapter (the thieves). Its name, founding, patrons and headquarters come from
+   assassins) and the Eelskins (the thieves). Its name, founding, patrons and headquarters come from
    the lore pass below, not from this record.
 2. **Its line escalates by case** from petty crimes to a **grand finale** via escalating series' of thefts, larcenies and murder mysteries on the way. The final murder mystery must involve highly important NPCs in the world of Black Marsh. Its structure comes
    from the old repo's quest foundation and faction designs (imported in 0.1 §f), which already cover much of
@@ -16,7 +16,7 @@ right point without the owner having to remember). Numbered 0018 on the side bra
    (and their research packs) are applied on top.
 3. **Grounded in lore.** Before design, the lore pass reads the imported lore dossiers and the lore
    extrapolation (`world/sources/lore/`, `world/sources/lore/extrapolation/`) and the Shadowscales and
-   Night-Reed records, and writes the faction's place in 4E 201 Black Marsh as an extrapolation entry with
+   Eelskins' records, and writes the faction's place in 4E 201 Black Marsh as an extrapolation entry with
    sources and confidence. Who would pay for detectives here, and why they are trusted, must have an answer
    the lore supports. Must also be grounded in popular mystery storyline tropes. There are certain structures that are known to 'work' for detective/mystery storylines. We don't need to create completely original stories here. Let's take some simple classic structures that are known to work and just apply them to our game and world in a way that is lore consistent and fun to play through and meets our quest write/review requirements.
 4. **Built with the writing skills** (decision 0024): a line record, then quest records through `quest-write`

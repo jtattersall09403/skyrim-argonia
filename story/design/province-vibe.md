@@ -7,7 +7,7 @@ extrapolated (`EXTRAPOLATED`, or an owner decision recorded there). Short names 
 `extrapolation/argonia-4e201-state.md`, *register* is `extrapolation/settlement-register.md`, *labour* is
 `topics/labour-and-bondage.md`, *culture* is `topics/material-culture.md`, *guilds* is
 `topics/guilds-and-orders.md`, *faith* is `topics/sithis-nisswo-shadowscales.md`, *frame* is
-`../design/quests/10-political-frame.md`. A claim that is not on this page and not in the lore is a gap. It goes
+`../lore/extrapolation/argonia-4e201-state.md`. A claim that is not on this page and not in the lore is a gap. It goes
 to `extrapolation/gap-register.md`; it is never assumed.
 
 ## 1. In one paragraph

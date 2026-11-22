@@ -121,7 +121,7 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   the map falls back to Tamriel (inferred; the plan's first owner check settles it). BM&V does ship terrain LOD (levels
   4 to 32, .btr under meshes/terrain/<world>, object LOD .bto for three worlds), but only Valenwood has a
   `lodsettings/*.lod` file. The earlier line here ("map data ... bounds", "no terrain LOD") was wrong. The fix is
-  built as block W-wrld-map in [Phase 4](4-first-act-built.md) (2026-11-08: MNAM pan boxes, derived lodsettings,
+  built as block W-wrld-map in Phase 4 (2026-11-08: MNAM pan boxes, derived lodsettings,
   "Lilmoth" marker name; owner check owed); the fallbacks in [Phase 5](5-scale.md). Doors and
   boats to Skyrim are left as BM&V made them.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
