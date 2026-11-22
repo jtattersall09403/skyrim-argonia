@@ -1688,6 +1688,19 @@ def test_30_units_move_whole(pad):
     assert "fixplace.porch1" in pad.ev("studio.unitIndex().units.get('h01').members")
     pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
     assert pad.ev(UNIT_STATE) == start
+    # a street ending at its door: the end follows the house, the street's far end stays
+    d1 = start["refs"]["fixplace.d1"]["pos"]
+    pad.ev("""(d) => studio.push([{ op: 'path.add', path: { id: 'fixplace.path9', kind: 'street', width: 200, style: 'fix_path', to: 'fixplace.d1',
+             points: [[d[0] - 1500, d[1] - 900], [d[0] - 600, d[1] - 400], [d[0], d[1]]] } }], 'exterior')""", d1)
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    op = pad.ev("studio.log.applied().at(-1)")
+    assert op["op"] == "unit.move" and op["paths"][0]["path"]["id"] == "fixplace.path9", op.get("paths")
+    pts = op["paths"][0]["path"]["points"]
+    assert abs(pts[-1][0] - d1[0] - 10) < 0.6 and pts[0] == [d1[0] - 1500, d1[1] - 900] and abs(pts[1][0] - (d1[0] - 600) - 5) < 0.6, pts
+    assert "streets" in pad.ev("document.getElementById('panel-body').textContent")
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert pad.ev(UNIT_STATE) == start
 
 
 # ---------- 31: people are selected and moved from Select; a routine follows the bed it names ----------

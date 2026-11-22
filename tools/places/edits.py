@@ -160,7 +160,7 @@ def check_op(op: dict) -> None:
             if not isinstance(m, dict) or "id" not in m or set(m.get("before") or {}) != set(m.get("after") or {}) \
                     or not m.get("after") or not set(m["after"]) <= set(UNIT_FIELDS):
                 raise EditError(f"op {op['n']} (unit.move): each member needs id, and before and after naming the same fields of {UNIT_FIELDS}")
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             for m in op.get(key) or []:
                 if not isinstance(m, dict) or table not in m or "before" not in m or m[table].get("id") != m["before"].get("id"):
                     raise EditError(f"op {op['n']} (unit.move): each of {key} needs {table} and before, of the same id")
@@ -334,7 +334,7 @@ def expand(ops: list) -> list:
         keep = {k: op[k] for k in ("n", "at", "call", "note_group", "note", "stroke", "space", "state") if k in op}
         for m in op.get("refs") or []:
             out.append(dict(keep, op="ref.move", id=m["id"], before=m["before"], after=m["after"], unit=op.get("unit")))
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             for m in op.get(key) or []:
                 out.append(dict(keep, op=f"{table}.edit", **{table: m[table]}, before=m["before"]))
     return out
@@ -370,7 +370,7 @@ def _move_unit(files, op) -> None:
         if "door" in m["after"]:
             rows = _space(files, op)
             _link_partner(files, rows[_find(rows, m["id"])], (m["before"]["door"] or {}).get("arrival"))
-    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
         for m in op.get(key) or []:
             _apply_one(files, {"n": op["n"], "op": f"{table}.edit", table: m[table], "before": m["before"]})
 
@@ -687,7 +687,7 @@ def inverse(op: dict) -> dict:
         inv.update(before=op["after"], after=op["before"])
     elif kind == "unit.move":
         inv["refs"] = [dict(m, before=m["after"], after=m["before"]) for m in op["refs"]]
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             if key in op:
                 inv[key] = [{table: m["before"], "before": m[table]} for m in op[key]]
     elif kind == "veg.clear":

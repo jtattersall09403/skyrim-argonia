@@ -607,7 +607,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
 | `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive,unit}` (the fields it changes), `after:{...}` |
-| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]` |
+| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]`, `paths?:[{path, before}]` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -625,7 +625,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
 - `unit.move` applies each member as a `ref.move` (its `door`, when given, set as given rather than shifted), then
-  each person, quest and walking-zone row as a `person.edit`, `quest.edit` and `walk.edit`; a door whose arrival changes moves the landing
+  each person, quest, walking-zone and street row as a `person.edit`, `quest.edit`, `walk.edit` and `path.edit`; a door whose arrival changes moves the landing
   (`to_pos`) of every door leading to it by as much, so a move and its inverse give it back exactly (a plain
   `ref.move` of a door does the same with the door's own shift). Its inverse swaps every before and after.
   `edits.expand` (and `expand` in `edits.js`) writes it as those plain ops for whatever reads ops one row at a time:
@@ -835,7 +835,8 @@ and is seated again where it lands; a free piece rises or falls with the ground 
 stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
 the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
 with it: a person's work place, routine stops and patrol points given as positions, the quest spots on it, and the
-owner's walking zones lying wholly in it. A
+owner's walking zones lying wholly in it. A street that ends at one of its doors (`from` or `to`) or on its footprint keeps its course: its end point moves with
+the unit and the point before it half as far, so it bends to the door; the panel says so. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 

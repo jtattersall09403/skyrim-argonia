@@ -131,7 +131,7 @@ export class Panels {
   unitCard(u) {
     const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById();
     w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every piece with it, `
-      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, and its lights.</p>'));
+      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, its lights, and the ends of the streets that lead to its doors, which bend to follow.</p>'));
     w.append(el('<p class="tag">Tap a piece again to select only that piece. Tap away from it to come back to the whole.</p>'));
     w.append(this.whereEl(u.members.map((id) => refs.get(id)).filter(Boolean), 'ours'));
     const list = el('<ul class="members"></ul>');
