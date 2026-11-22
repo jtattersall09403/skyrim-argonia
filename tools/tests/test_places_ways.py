@@ -161,3 +161,16 @@ def test_owed_blockers_are_reported_new_ones_fail_and_the_list_only_shrinks(tmp_
     (tmp_path / "ways_owed.jsonl").write_text(json.dumps(dict(row, why="the toll tent stands on the road on purpose")) + "\n")
     assert ways.handover_line("p", tmp_path)[0]
     assert ways.handover_line("other", tmp_path) == (True, "ways: nothing owed")
+
+
+def test_the_ways_verb_reports_failing_owed_and_stale(monkeypatch, capsys):
+    """`python -m tools.places ways <place>` says each blocker and its standing; it fails while one fails or a row
+    of the owed list is stale."""
+    b = {"way": "p.path.01", "id": "p.TENT", "edid": "Tent", "at": [0, 0, 0], "from_middle": 10}
+    monkeypatch.setattr(ways, "place_blockers", lambda pid: [b])
+    monkeypatch.setattr(ways, "split_owed", lambda pid, found: ([], found, []))
+    assert ways.main(["p"]) == 0
+    assert "1 owed" in capsys.readouterr().out
+    monkeypatch.setattr(ways, "split_owed", lambda pid, found: (found, [], []))
+    assert ways.main(["p"]) == 1
+    assert "FAIL way p.path.01" in capsys.readouterr().out
