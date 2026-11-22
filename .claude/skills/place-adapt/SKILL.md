@@ -30,7 +30,13 @@ Work from the promise list (`promises.jsonl`, made by `place-plan`): each row sh
 - **Add**: what the record and stories need that the source lacks: a building and its rooms, a cage, a jar stack, a
   trophy pole, market stalls, a footing rock, a flight of steps (`look steps <deck> <point>`), a single piece (`look
   place <base> <x,y[,z]> [--scale s] --why "<why>"`, `look duplicate <thing> --why "<why>"`). Take additions from the place's own
-  source first, then one other source of the same culture; nothing levelled, no Nordic sign.
+  source first, then one other source of the same culture; nothing levelled, no Nordic sign. A thing its source
+  makes of several models (a ship's hull and its masts and rigging) is added as the source sets it: every model at
+  the source's offsets turned with the first, and moved as one after (`draft check` holds them together).
+
+Every keep, move and addition stands off the world's road and the place's walks (`place-streets`, Walks first):
+what the source pitched on a line our road now takes moves off it as the unit it is; an addition is sited beside a
+walk, never in it.
 
 ## A place sharing its source
 
@@ -52,5 +58,5 @@ own.
 ## Every change is tested
 
 After each verdict ask what it could break: a joint that met (`units --joints`), a door that landed, a walk across
-it, a person's spot on it, a quest spot by it, the plants it now stands in (`draft clearance`). Look again from two
-sides. Commit the session (`look commit -m "<why>"`) group by group.
+it, a person's spot on it, a quest spot by it, the plants it now stands in (`draft clearance`), a road or walk it now
+stands in (`look probe --all`, `ways`). Look again from two sides. Commit the session (`look commit -m "<why>"`) group by group.

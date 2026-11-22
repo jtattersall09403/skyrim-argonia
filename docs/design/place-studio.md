@@ -199,7 +199,8 @@ spaces/<space_id>/refs.jsonl     the place layer's refs, same row shape as a bun
                        in water, free) and src (the source ref it came from, if any). A light is seated `on` its
                        fixture (the lantern, sconce, window or fire within 128 units of it in the source) and
                        stands at its source offset from it. A copied room's lights stand on the bases the source
-                       placed, shadow casters among them (no cap on shadow-casting lights in a room)
+                       placed, shadow casters among them (no cap on shadow-casting lights in a room). `blocks_way`
+                       (a sentence): why the thing stands in the world's road or a walk on purpose (tools/places/ways.py)
 spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>", name}; the refs file holds only our
                        changes to the copy (moved, removed, added). `name` is what the game shows on the room's door
                        and inside it (the cell's name); the stage `names` gives it (Room names, below)
@@ -218,7 +219,11 @@ paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkw
                        then says so); a guard's patrol points lie on it too; `from` and `to`
                        name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
                        draws a person's way between two stops outside by the same rules (round buildings, never
-                       through open water, along these lines where one leads the right way)
+                       through open water, along these lines where one leads the right way). `blocked_by` {ref or spot
+                       id: a sentence}: what stands in this way on purpose (a toll gate, a jetty's own posts). The
+                       world's road (as the ground paints it), each path and the way from each door's arrival to the
+                       nearest path are kept clear of solid things and spots (tools/places/ways.py; the build's
+                       `streets` check fails what stands in one)
 quests.jsonl           where the quests' things at the place stand, one per line: {id: "<quest id>/<ref>", quest,
                        ref, space, pos, rot: [0, 0, heading], drafted?, why?}; `drafted` marks a first spot the
                        draft took from the placement's words, `why` says what it stands by; the one spot of a quest record's placement anchored

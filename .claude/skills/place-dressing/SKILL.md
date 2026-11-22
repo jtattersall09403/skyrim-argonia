@@ -28,7 +28,10 @@ carries none, since no one is left to hang them in the ending that shows it. Run
 air means its tree moved: `look probe` it, then `draft hang`. `draft check` fails a lantern not on a limb of its
 tree. A source's own hanging lanterns come with the baseline.
 
-A promised station, stall, pool or shrine is a promise-list row; it turns `built` with the refs placed here. A
+A promised station, stall, pool or shrine is a promise-list row; it turns `built` with the refs placed here. A camp's
+fire, its spit and pot, its seats and the stall beside it, and every stack, crate and rack of clutter, stand off the
+world's road and the walks (`place-streets`, Walks first): beside the way, near enough that the cook works at her
+fire and its light falls on the tents, never in it; moved, they move together with their lights. A
 Hist's sap pool, its clutch and its lanterns go on the living tree's enable parent where the place has quest states,
 so a dead ending takes them with the tree (`place-story`, Quest states).
 
