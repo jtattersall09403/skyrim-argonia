@@ -127,6 +127,14 @@ def clip(poly, h):
             out.append(p)
         if (dp > 0 and dq < 0) or (dp < 0 and dq > 0):
             out.append(_cut(p, q, h))
+    return _cleaned(out)
+
+
+SURE = 1e-3   # units: a corner this far inside (or outside) a half-plane is in it (or out of it) beyond any rounding
+
+
+def _cleaned(out):
+    """clip's clean-up of its points: runs of one point made one, and None for what is left without area."""
     ded = []
     for p in out:
         if not ded or (abs(p[0] - ded[-1][0]) > 1e-6 or abs(p[1] - ded[-1][1]) > 1e-6):
@@ -180,6 +188,8 @@ class Region:
     def __init__(self, outer, zones=()):
         self.outer = ccw(list(outer))
         self.outer_h = planes(self.outer)
+        self._outer_ab = np.asarray([h[:2] for h in self.outer_h], float).reshape(-1, 2)
+        self._outer_c = np.asarray([h[2] for h in self.outer_h], float)
         self.zones = [ccw(list(z)) for z in zones if len(z) >= 3]
         self.zone_h = [planes(z) for z in self.zones]
         self.zone_box = [_bbox(z) for z in self.zones]
@@ -197,6 +207,28 @@ class Region:
                 got.update(self._zgrid.get((gx, gy), ()))
         return sorted(i for i in got if _overlap(bb, self.zone_box[i]))
 
+    def outer_cut(self, poly):
+        """intersect(poly, self.outer_h), with the two plain cases answered at once: a polygon whose every corner lies
+        well inside every edge of the ring is what clip makes of it (clip's own clean-up, once: a clip that cuts
+        nothing changes nothing more), and one whose corners all lie well outside one edge is nothing. Otherwise
+        the clips, edge by edge."""
+        side = np.asarray(poly, float)[:, :2] @ self._outer_ab.T + self._outer_c
+        if (side > SURE).all():
+            return _cleaned(list(poly))
+        if (side < -SURE).all(axis=0).any():
+            return None
+        return intersect(poly, self.outer_h)
+
+    def outer_minus(self, poly) -> list:
+        """minus(poly, self.outer_h) by outer_cut: untouched, whole; wholly inside, nothing; else minus itself."""
+        q = self.outer_cut(poly)
+        if q is None:
+            return [poly]
+        side = np.asarray(poly, float)[:, :2] @ self._outer_ab.T + self._outer_c
+        if (side > SURE).all():
+            return []
+        return minus(poly, self.outer_h)
+
     def segments(self) -> list:
         segs = []
         for poly in [self.outer] + self.zones:
@@ -204,7 +236,7 @@ class Region:
         return segs
 
     def carried(self, poly) -> list:
-        p = intersect(poly, self.outer_h)
+        p = self.outer_cut(poly)
         if p is None:
             return []
         pieces = [p]
@@ -217,8 +249,8 @@ class Region:
         return pieces
 
     def generated(self, poly) -> list:
-        out = minus(poly, self.outer_h)
-        inside = intersect(poly, self.outer_h)
+        out = self.outer_minus(poly)
+        inside = self.outer_cut(poly)
         if inside is None:
             return out
         bbi = _bbox(inside)
@@ -301,7 +333,19 @@ def snap(V: np.ndarray, segs, fixed: np.ndarray | None = None, tol: float = SNAP
         return 0
     moved = np.zeros(len(V), bool)
     free = np.ones(len(V), bool) if fixed is None else ~fixed
-    for a, b in segs:
+    if not free.any():
+        return 0
+    # a segment whose box, grown by tol, misses every free vertex moves none: only the others are walked, the free
+    # vertices' box kept up to date as vertices move (onto a segment, so never further than its grown box)
+    F = V[free]
+    bx0, by0, bx1, by1 = float(F[:, 0].min()), float(F[:, 1].min()), float(F[:, 0].max()), float(F[:, 1].max())
+    S = np.asarray([[a[0], a[1], b[0], b[1]] for a, b in segs], float)
+    sx0, sx1 = np.minimum(S[:, 0], S[:, 2]) - tol, np.maximum(S[:, 0], S[:, 2]) + tol
+    sy0, sy1 = np.minimum(S[:, 1], S[:, 3]) - tol, np.maximum(S[:, 1], S[:, 3]) + tol
+    for si in range(len(segs)):
+        if sx1[si] < bx0 or sx0[si] > bx1 or sy1[si] < by0 or sy0[si] > by1:
+            continue
+        a, b = segs[si]
         a = np.asarray(a[:2], float)
         b = np.asarray(b[:2], float)
         d = b - a
@@ -326,6 +370,9 @@ def snap(V: np.ndarray, segs, fixed: np.ndarray | None = None, tol: float = SNAP
         on = (t > 0) & (t < 1) & (dist <= tol) & (dist > 0)
         V[idx[on], 0], V[idx[on], 1] = proj[on, 0], proj[on, 1]
         moved[idx[on]] = True
+        Q = V[idx, :2]
+        bx0, by0 = min(bx0, float(Q[:, 0].min())), min(by0, float(Q[:, 1].min()))
+        bx1, by1 = max(bx1, float(Q[:, 0].max())), max(by1, float(Q[:, 1].max()))
     return int(moved.sum())
 
 

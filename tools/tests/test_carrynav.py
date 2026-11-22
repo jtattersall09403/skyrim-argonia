@@ -216,3 +216,24 @@ def test_splits_paired_at_once_are_the_loops_own():
         got, want = cn._splits(m, ex), cn._splits_loop(m, ex)
         assert {t: dict(s) for t, s in got.items()} == {t: dict(s) for t, s in want.items()}
         assert sum(len(v) for s in want.values() for v in s.values()) > 0
+
+
+def test_the_rings_plain_cases_are_the_clips_own():
+    """Region.outer_cut and outer_minus answer as intersect and minus do over the ring, for triangles inside it,
+    outside it and across its edge; snap moves what the plain walk over every segment moves."""
+    import random
+    rnd = random.Random(3)
+    R = cn.Region(cn.disk((1000.0, 2000.0), 1500.0), [cn.cell_box((0, 0))])
+    for _ in range(400):
+        x, y = rnd.uniform(-1500, 3500), rnd.uniform(-500, 4500)
+        tri = [(x, y, 1.0), (x + rnd.uniform(5, 400), y, 2.0), (x, y + rnd.uniform(5, 400), 3.0)]
+        assert R.outer_cut(tri) == cn.intersect(tri, R.outer_h)
+        assert R.outer_minus(tri) == cn.minus(tri, R.outer_h)
+    V = np.array([[rnd.uniform(-600, 4600), rnd.uniform(-600, 4600), 0.0] for _ in range(3000)])
+    segs = R.segments()
+    a, b = V.copy(), V.copy()
+    n = cn.snap(a, segs)
+    m = 0
+    for s in segs:                        # the walk over every segment, one at a time, as it was
+        m += cn.snap(b, [s])
+    assert np.array_equal(a, b) and n > 0
