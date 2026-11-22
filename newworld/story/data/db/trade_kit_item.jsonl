@@ -5,10 +5,11 @@
 {"kit_id":"boatman","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"wood","why":"a pole or club"}
 {"kit_id":"boatman","seq":2,"use":"home","good_id":"reed-weaving","why":"rope"}
 {"kit_id":"boatman","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
-{"kit_id":"bosmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood caravan-steel","why":"a Bosmer's bow"}
-{"kit_id":"bosmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather caravan-steel","why":"light leathers"}
-{"kit_id":"bosmer-household","seq":2,"use":"home","good_id":"river-goods","why":"goods off the boats"}
-{"kit_id":"bosmer-household","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"bosmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"greenwood wood","why":"a Bosmer's greenwood bow"}
+{"kit_id":"bosmer-household","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"greenwood","why":"a Bosmer short blade"}
+{"kit_id":"bosmer-household","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"greenwood leather","why":"bark-and-hide Bosmer armour"}
+{"kit_id":"bosmer-household","seq":3,"use":"home","good_id":"river-goods","why":"goods off the boats"}
+{"kit_id":"bosmer-household","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"builder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"flint bog-iron bone","why":"an axe for timber"}
 {"kit_id":"builder","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"wood","why":"a maul"}
 {"kit_id":"builder","seq":2,"use":"home","good_id":"timber-and-stone","why":"timber and pegs"}
@@ -20,8 +21,8 @@
 {"kit_id":"clerk","seq":1,"use":"home","good_id":"river-goods","why":"ledgers and the post's stores"}
 {"kit_id":"clerk","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"clerk","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
-{"kit_id":"dunmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bonemold chitin","why":"Morrowind's make, kept"}
-{"kit_id":"dunmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin bonemold netch-leather","why":"chitin and bonemold, kept and traded"}
+{"kit_id":"dunmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bonemold chitin moonstone","why":"Morrowind's make, kept"}
+{"kit_id":"dunmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"netch-leather chitin bonemold","why":"netch, chitin and bonemold"}
 {"kit_id":"dunmer-household","seq":2,"use":"home","good_id":"saltrice","why":"saltrice, the plantations' crop"}
 {"kit_id":"dunmer-household","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"elder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"obsidian bone","why":"a ceremonial blade"}
@@ -99,6 +100,11 @@
 {"kit_id":"sellsword","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"bog-iron leather caravan-steel","why":"light mail"}
 {"kit_id":"sellsword","seq":3,"use":"home","good_id":"salvage","why":"pay in kind"}
 {"kit_id":"sellsword","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"slaver","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bonemold chitin","why":"a Dres bonemold blade"}
+{"kit_id":"slaver","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWhip","materials":"bog-iron copper-steel","why":"the slaver's whip"}
+{"kit_id":"slaver","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"netch-leather","why":"the Dres slavemaster's netch"}
+{"kit_id":"slaver","seq":3,"use":"home","good_id":"salvage","why":"slave-irons and takings"}
+{"kit_id":"slaver","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"smith","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"bog-iron","why":"the forge hammer"}
 {"kit_id":"smith","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"a leather apron"}
 {"kit_id":"smith","seq":2,"use":"home","good_id":"ironwork","why":"bog iron and tools"}

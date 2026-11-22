@@ -87,16 +87,18 @@ The table below is the ladder as the data holds it, one line per material:
 | T2 | Imperial issue | 17 | 7 | 18 | 4 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
 | T2 | Marsh leather |  |  | 8 |  | common | SteelSword |
-| T2 | Netch leather and Ashlander make |  |  | 23 | 2 | situational | SteelSword |
+| T2 | Netch leather and Ashlander make |  |  | 25 | 2 | situational | SteelSword |
 | T2 | Saxhleel bone-and-leather work | 5 |  | 29 |  | common | SteelSword |
 | T2 | Turtle shell |  | 4 |  | 2 | uncommon | SteelSword |
 | T3 | Argonian scale |  |  | 16 | 2 | uncommon | ElvenSword |
 | T3 | Ayleid elven |  |  |  |  | ruin | ElvenSword |
 | T3 | Bone plate | 11 | 4 |  |  | uncommon | ElvenSword |
-| T3 | Bonemold | 16 | 8 | 4 | 5 | situational | ElvenSword |
+| T3 | Bonemold | 24 | 8 | 4 | 5 | situational | ElvenSword |
 | T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 19 | 2 | situational | ElvenSword |
-| T3 | Chitin | 2 | 4 | 4 | 1 | uncommon | ElvenSword |
+| T3 | Chitin | 10 | 6 | 4 | 2 | uncommon | ElvenSword |
 | T3 | Copper-edged steel | 19 |  |  |  | uncommon | ElvenSword |
+| T3 | Greenwood (Bosmer make) | 3 | 5 | 6 |  | situational | ElvenSword |
+| T4 | Moonstone and Temple glass (Dunmer fine work) | 19 |  | 4 | 2 | situational | GlassSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |
 | T4 | Shadowscale make | 4 |  | 11 |  | situational | GlassSword |
 | T4 | Skyrim glass |  |  |  |  | ruin | GlassSword |
@@ -135,6 +137,20 @@ Written at another tier than their material's, each with its reason:
 - T3: PI_SmotheredAshenLongMace: the poorer glass
 - T3: PI_AshenShield: the poorer glass
 - T3: PI_SmotheredAshenBow: the poorer glass
+- T4: ArmorBosmerEngravedCuirass: an elder's make
+- T4: ArmorBosmerEngravedGauntlets: an elder's make
+- T4: ArmorBosmerEngravedHelmHood: an elder's make
+- T4: ArmorBosmerEngravedHood: an elder's make
+- T4: ArmorBosmerEngravedHelm: an elder's make
+- T4: ArmorBosmerEngravedBoots: an elder's make
+- T4: BosmerElderDagger: an elder's make
+- T4: BosmerElderBow: an elder's make
+- T4: BosmerElderArrow: an elder's make
+- T4: 000IndorilArmor: the Temple's guard
+- T4: 000IndorilBoots: the Temple's guard
+- T4: 000IndorilGauntlets: the Temple's guard
+- T4: 000IndorilHelmet: the Temple's guard
+- T4: AARoyalElvenBowNamed: T4
 - T5: CIPHTBMXanmeerBattleaxe: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerWarhammer1: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerGreatsword: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)

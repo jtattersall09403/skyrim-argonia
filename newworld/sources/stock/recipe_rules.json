@@ -115,6 +115,15 @@
    "main": "Skyrim.esm:05ACE5",
    "second": "Skyrim.esm:0DB5D2",
    "why": "steel ingots and leather strips"
+  },
+  "moonstone": {
+   "main": "Skyrim.esm:05AD9F",
+   "why": "Refined Moonstone"
+  },
+  "greenwood": {
+   "main": "Skyrim.esm:06F993",
+   "second": "Skyrim.esm:0DB5D2",
+   "why": "seasoned wood and leather strips"
   }
  },
  "temper_only": {

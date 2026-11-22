@@ -993,6 +993,51 @@
    "never": []
   },
   {
+   "id": "slaver",
+   "label": "Slaver, slave-taker (House Dres's heirs)",
+   "match": "\\b(slavers?|slave-?takers?|slavemasters?)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bonemold",
+      "chitin"
+     ],
+     "why": "a Dres bonemold blade"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWhip",
+     "materials": [
+      "bog-iron",
+      "copper-steel"
+     ],
+     "why": "the slaver's whip"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "netch-leather"
+     ],
+     "why": "the Dres slavemaster's netch"
+    }
+   ],
+   "home": [
+    {
+     "good": "salvage",
+     "why": "slave-irons and takings"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": []
+  },
+  {
    "id": "pirate",
    "label": "Pirate, smuggler, corsair",
    "match": "\\b(pirate|smuggler|corsair|privateer)s?\\b",
@@ -1104,7 +1149,8 @@
      "typ": "WeapTypeDagger",
      "materials": [
       "bonemold",
-      "chitin"
+      "chitin",
+      "moonstone"
      ],
      "why": "Morrowind's make, kept"
     }
@@ -1114,11 +1160,11 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
+      "netch-leather",
       "chitin",
-      "bonemold",
-      "netch-leather"
+      "bonemold"
      ],
-     "why": "chitin and bonemold, kept and traded"
+     "why": "netch, chitin and bonemold"
     }
    ],
    "home": [
@@ -1137,7 +1183,8 @@
      ],
      "why": "a Dunmer holdout keeps nothing of the Empire's issue without a reason"
     }
-   ]
+   ],
+   "tell": "you can tell them by netch leather, chitin, bonemold and Telvanni robes"
   },
   {
    "id": "imperial-household",
@@ -1230,7 +1277,8 @@
    "food": [
     "saltrice"
    ],
-   "never": []
+   "never": [],
+   "tell": "you can tell them by curved caravan scimitars, khukuris and the Apex cuirasses"
   },
   {
    "id": "bosmer-household",
@@ -1243,10 +1291,18 @@
      "slot": "weapon",
      "typ": "WeapTypeBow",
      "materials": [
-      "wood",
-      "caravan-steel"
+      "greenwood",
+      "wood"
      ],
-     "why": "a Bosmer's bow"
+     "why": "a Bosmer's greenwood bow"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "greenwood"
+     ],
+     "why": "a Bosmer short blade"
     }
    ],
    "wear": [
@@ -1254,10 +1310,10 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
-      "leather",
-      "caravan-steel"
+      "greenwood",
+      "leather"
      ],
-     "why": "light leathers"
+     "why": "bark-and-hide Bosmer armour"
     }
    ],
    "home": [
@@ -1269,7 +1325,8 @@
    "food": [
     "river-fish"
    ],
-   "never": []
+   "never": [],
+   "tell": "you can tell them by greenwood bows and bark-and-hide hoods"
   },
   {
    "id": "tribe-crimson-red",
