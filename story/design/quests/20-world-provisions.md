@@ -37,7 +37,7 @@ During world generation, preserve:
 ### Tier-0 protection (hard rule)
 
 Main-quest `LOC`/`STATE`/evidence ids are **tier-0-owned** under the tier rule
-in [40-factions.md](40-factions.md) §30b: nothing breaks the main quest. When
+in [the owner's bar ('Anyone can die')](../owner-bar.md): nothing breaks the main quest. When
 reconciling a region packet, world agents must not let a lower-tier quest's
 provisions overwrite, repurpose or destroy a tier-0 id — the provision tables
 in this document are the registry of what is protected.
@@ -198,29 +198,24 @@ extrapolation/quest-plan-deltas.md D8/D16.)
 
 | Place / system | Canon character | Serves |
 |---|---|---|
-| **Hissmir** (S Shadowfen) | Pilgrimage xanmeer; Trials of the Burnished Scales; **Root Stewards who cannot refuse a comer**; Fish Boon Feast | League of Open Water (LW01), Many-Root Conclave |
 | **Glenbridge** (SE Blackwood) | Village around a ruined Sithis xanmeer whose Nisswo read its decay as the god's sermon; the voriplasm-sorcerer Rectavius sealed beneath | Nisswo of the Turning Path |
 | **Teeth of Sithis** (Murkmire) | Largest Sithis temple; still tended by the Clutch of Nisswo | Nisswo (NI05) |
-| **Deepmire, "the Refuge"** | Cursed plateau even locals avoid; the tribes' shelter of last resort; xanmeers and swamp-leviathan bones; site of the province's **Umbriel memorial** | Umbriel Witness Society; a D4/D5 space that is not the Lost City |
-| **Stonewastes** (Blackwood) | Hist in the town centre, a xanmeer keep, and the **Four Winds** hereditary defenders | Marsh Charter — a canon-native martial tradition |
-| **Alten Meerhleel** (Murkmire) | Port built to trade with outsiders; tribes placated with a **Teeba-Enoo court** | League of Open Water, Reed-Sail |
-| **Bramman's river** (Soulrest→Blackrose) | Concealed navigable mangrove channel a fleet once sailed. Realised as a **hidden navigable channel — deliberately NOT a scheduled boat-graph lane** (it is a concealed smugglers' route); navigability verified at watershed refinement (decision 0012 mechanism) | Reed-Sail Compact / Salt-Teeth |
-| **Murkwood** | The forest that ever moves; located only by the **Conclave of Baal at Stormhold** reading the Elder Scrolls with an ancient tablet. Realised as a **single fixed hidden site** locatable via the Conclave; its "movement" is off-screen lore between visits | Sunken Archive, artifact quests |
+| **Deepmire, "the Refuge"** | Cursed plateau even locals avoid; the tribes' shelter of last resort; xanmeers and swamp-leviathan bones; site of the province's **Umbriel memorial** | a D4/D5 space that is not the Lost City |
+| **Bramman's river** (Soulrest→Blackrose) | Concealed navigable mangrove channel a fleet once sailed. Realised as a **hidden navigable channel — deliberately NOT a scheduled boat-graph lane** (it is a concealed smugglers' route); navigability verified at watershed refinement (decision 0012 mechanism) | Bramman's Brethren (the bay's pirates, Bramman's heirs) |
+| **Murkwood** | The forest that ever moves; located only by the **Conclave of Baal at Stormhold** reading the Elder Scrolls with an ancient tablet. Realised as a **single fixed hidden site** locatable via the Conclave; its "movement" is off-screen lore between visits | artifact quests |
 | **White Rose Prison** (W burn country) | Abandoned, structurally sound, full of Argonian dead whose bones must be brought to the dirt | Blackrose Chainbreakers (BC05) |
 | **The Archon Shadowscale facility** | Closed 4E 187; standing, sealed; the Cheydinhal Listener wanted it back | The Empty Cradle (SS01) |
-| **The great Root Talk at Helstrom**, month of Hist-Tsoko | Owner decision Q2; extends the canon Root Talk into an occasional convocation — an occasion, not a council | Main quest, Many-Root Conclave, Nisswo |
+| **The great Root Talk at Helstrom**, month of Hist-Tsoko | Owner decision Q2; extends the canon Root Talk into an occasional convocation — an occasion, not a council | Main quest |
 | **Grave-stakes (xul-vaat)** province-wide interactable | Each carries the dead one's whole life story; pulling one raises a **bog blight** | Every line — the province's signature diegetic system |
 | **Wamasu electrify the water around them** | Canon: the beast "curs[ed] all the water to deadly convulsions" | Encounter design; swimming systems |
 | **Miregaunts return when killed, loot with provenance** | "Part of the land"; the midsection cavity may hold a relic "taken in to protect or imprison it" | Fixed-danger guardians, Phase 13 |
-| **Wintertide rootworm migration south to Gideon** | Canon-named; red clay marks the stop. Gideon is a **seasonal wintertide migration stop only, never a standing station** — no quest may require year-round Gideon root transit | Rootworm Waykeepers; seasonal fast travel |
-| **Fort Swampmoth**, held but not by the Empire | Canon fort, never located; placed on the Blackwood Road | Border content, Marsh Charter |
+| **Wintertide rootworm migration south to Gideon** | Canon-named; red clay marks the stop. Gideon is a **seasonal wintertide migration stop only, never a standing station** — no quest may require year-round Gideon root transit | seasonal fast travel |
+| **Fort Swampmoth**, held but not by the Empire | Canon fort, never located; placed on the Blackwood Road | Border content |
 | **Cyrodilic Collections, refounded at Gideon** | Its museum was never built | A foreign presence Argonians can argue with rather than fight |
 | **The Owing** — owed-labour gangs, ledger offices, hiring halls | `EXTRAPOLATED` from canon penal labour ("Tunnel Rats" worked for limited freedom), owed labour as currency, and surviving Archein brokerage (lore: topics/labour-and-bondage.md) | The Chainbreakers, MQ01, MQ11, TA03, TG03, RS-line, LW-line, and **every tolled crossing in the route graph** |
 | **`washed-out` NPC material variant** | Canon *gloor*: Argonian traits fade with distance from their Hist and return on coming home | The single cheapest legible-injustice signifier in the build — one material variant, usable province-wide on anyone held long in an Owing, and on MQ19's subject |
-| **Deepmire, "the Refuge"** as a D4 destination with an approach route | Canon cursed plateau, caretaker few, swamp-leviathan bones; the province's Umbriel memorial | UW04 — the Umbriel Witness Society's only traversal spike |
-| **The player stronghold site** — one reoccupied xanmeer or abandoned river station | `EXTRAPOLATED`; Morrowind Great House stronghold model | 30 §24b.5 — **one** site, three phase states, four allegiance re-skins (cult sanctum / Reed safehouse / village hall / your seat); reserve in 16g, build the interior in Phase 12 (Xanmeer family; 0061) |
-| **Stonewastes and the Four Winds hall** | Canon hereditary defenders, xanmeer keep, Hist in the town centre | FG08 and the Marsh Charter's re-anchored premise |
-| **Warden writ enforcement points** | `EXTRAPOLATED` from the Xeech-Leel's paper government: **toll/crossing points on the major road and boat routes**, and a **restricted-door flag class** on civic archives, guarded districts, bonded stores and dock offices — the doors the Toh-Reel-Ka allegiance writs open | 30 §24b.2 — Reed track tier rewards |
+| **The player stronghold site** — one reoccupied xanmeer or abandoned river station | `EXTRAPOLATED`; Morrowind Great House stronghold model | 30 §24b.5 — **one** site, three phase states, four allegiance re-skins (cult sanctum / Toh-Reel-Ka safehouse / village hall / your seat); reserve in 16g, build the interior in Phase 12 (Xanmeer family; 0061) |
+| **Warden writ enforcement points** | `EXTRAPOLATED` from the Xeech-Leel's paper government: **toll/crossing points on the major road and boat routes**, and a **restricted-door flag class** on civic archives, guarded districts, bonded stores and dock offices — the doors the Toh-Reel-Ka allegiance writs open | 30 §24b.2 — Toh-Reel-Ka track tier rewards |
 
 **Root-transit network note.** 16g re-authored the rootworm network on the
 places (decision 0068). `world/sources/routes/rootworm-stations.json` holds
@@ -228,7 +223,7 @@ four sited stations — `root-node.helstrom` (the hub, on the Helstrom rootworm
 station), `root-node.north-shadowfen` (Stormhold), `root-node.naga-deeps`
 (Dead Water village) and `root-node.east-estuary` (the east estuary station) —
 joined by three rootways out of Helstrom, each carried into the travel-service
-graph with a Waykeeper slot. Gideon is seasonal rather than a standing
+graph with an operator's slot. Gideon is seasonal rather than a standing
 station (§12b). The Underway stays story-only: it carries no travel service.
 Quests and rewards that touch root transit are finalised in the packet
 co-design loop (per 16k slice; then Phase 15).

@@ -99,8 +99,8 @@ Hist is one of:
 - **foreign-founded** (Blackrose Prison, Hereguard Plantation, Slough Point,
   Castle Giovesse, the Imperial forts);
 - **outlaw or transient** (Alten Corimont, Blackguard holdings, pirate camps);
-- **lukiul or mixed-urban and dependent on a neighbour's tree** — the condition
-  the League of Open Water exists to argue about;
+- **lukiul or mixed-urban and dependent on a neighbour's tree** — a condition
+  Argonians argue about;
 - **bereaved** — its tree died or was taken, which is the strongest single
   backstory a ruined Argonian village can have.
 
@@ -166,7 +166,7 @@ Binding owner decisions (2026-08-24) applied.
 | **Xanmeers generally** (Xul-Thuxis, Vakka-Bok, Ixtaxh, Lakemire, Teeth of Sithis, Xi-Tsei, Rockgrove, Silent Halls, Xal Ithix, Xal Thak, Atanaz, Chid-Moska, Deep Graves, Forsaken Hamlet, Hatchling's Crown, Sunscale Strand, Xal Irasotl, Xi-Tsei) | Each **had** a Hist chamber. `EXTRAPOLATED`: most are empty — the tree died with the tribe or was never replaced — but **a small number still hold a living, sealed, utterly isolated tree**, and finding one is a genuine event. Recommend **no more than two or three in the whole province**, hand-placed. | mixed | `CANON_EXPLICIT` (the chamber rule) + `EXTRAPOLATED` (how many survive) |
 | **Greenspring** (hist-heartland) | A tribal Hist at the Panther fork, the village's own tree | **Sick** (R3): its roots are failing and the village blames salt from upstream (quest MR01) | `EXTRAPOLATED` under R1-R3: canon names the village and its springs (Lore:Panther River); the tree and its state come from MR01 |
 | **Nine Bends** (pirate-freeholds) | A tribal Hist on a low river island nine bends above Alten Corimont; the tree the gang families of the lower channel answer to. Its hatchery pool is cut into the bank among its roots | **Speaking, and beginning to withdraw** (R3): it sees fewer of its adults each year, and in MQ01 it withdraws over the dead clutch at the work camp | `EXTRAPOLATED` under R1, R3 and R4: Alten Corimont has no tree (above), so its Argonians need one upriver; a tree-minder speaks for it (R2, tribal Hist) |
-| **Low-Reed Village** (mercantile-coast, east of Lilmoth) | A tribal Hist over terraced tended pools at the foot of the village's stilts, with the village's own look (R6): its egg-tenders keep the uxith, its tree-minder the pools and roots | **Withdrawn and severed at one root** (R3): a cut root, its sap drawn into jars by the Unbound Root's cell, turns its face in MQ04 and severs its uxith, whose clutch dies; the jars go back to the tree-minder for the root, and the light comes back low and slow (QA11), unless the player keeps them for the Toh-Reel-Ka as proof, and then the tree stays dark | `EXTRAPOLATED` under R1-R3 and QA6: the village and its tree come from MQ04 |
+| **Low-Reed Village** (mercantile-coast, east of Lilmoth) | A tribal Hist over terraced tended pools at the foot of the village's stilts, with the village's own look (R6): its egg-tenders keep the uxith, its tree-minder the pools and roots | **Withdrawn and severed at one root** (R3): a cut root, its sap drawn into jars by the Unbound's cell, turns its face in MQ04 and severs its uxith, whose clutch dies; the jars go back to the tree-minder for the root, and the light comes back low and slow (QA11), unless the player keeps them for the Toh-Reel-Ka as proof, and then the tree stays dark | `EXTRAPOLATED` under R1-R3 and QA6: the village and its tree come from MQ04 |
 
 ### The interior tribes
 
@@ -247,7 +247,7 @@ is a **direct, legible, diegetic reaction to 4E 48** and is exactly the kind of
 - **Phase 13** gets an ecology anchor: red bioluminescent flowers as the standard,
   blue for the Naga-Kur, and root-tunnel systems beneath every speaking tree.
 - **The quest plan** gets MR03 ("The Borrowed Tree") sited at Gideon with a canon
-  mechanism, and the League of Open Water's "Citizen of No Hist" grounded in a
+  mechanism, grounded in a
   province where Hist-less settlements are catalogued rather than hypothetical.
 - **Cost**: the Gideon cutting, the Thorn field-edge tree, the Soulrest absence,
   the Blackrose drowned tree and the Rockpark death are `EXTRAPOLATED` — defensible

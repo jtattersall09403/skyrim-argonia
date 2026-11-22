@@ -1,4 +1,4 @@
-"""The adaptation ledger's checks over the whole set (phase 2, story/design/quests/adaptation.md).
+"""The adaptation ledger's checks over the whole set (phase 2; its plan page is in git history).
 
     python3 -m tools.argonia_world.adaptation_check          # every check; exit 1 on any finding
 

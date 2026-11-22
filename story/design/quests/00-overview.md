@@ -20,11 +20,11 @@ The game’s main story now uses a largely static province in the same productio
 
 The player begins as an unnamed prisoner on a penal work detail travelling through the managed marsh near Stormhold and Alten Corimont. An attack by a radical Sithis movement destroys the work party and leaves the player officially recorded as dead. The **Toh-Reel-Ka**, the secret warriors of the ruling Xeech-Leel (lore: extrapolation/argonia-4e201-state.md §1, §2.5), recruits the player as a deniable agent: a person with no established local allegiance, no surviving official identity and direct knowledge of the attack.
 
-The investigation concerns several Hist communities that have suffered deliberate acts of ritual interference. The movement responsible—the **Unbound Root**—argues that the Hist–Argonian relationship has been converted into a political instrument by the Xeech-Leel. Its members seek the legendary **Eye of Argonia**, an established but scarcely described king’s jewel said to be the key to a Lost City. The Eye is treated as a gem, cipher and perceptive key, following the official fragment and several credited fan interpretations.
+The investigation concerns several Hist communities that have suffered deliberate acts of ritual interference. The movement responsible—the **Unbound**—argues that the Hist–Argonian relationship has been converted into a political instrument by the Xeech-Leel. Its members seek the legendary **Eye of Argonia**, an established but scarcely described king’s jewel said to be the key to a Lost City. The Eye is treated as a gem, cipher and perceptive key, following the official fragment and several credited fan interpretations.
 
 The player follows a province-wide treasure hunt through prison ruins, drowned archives, auctions, mixed cities, underwater Xanmeers and disputed histories — and the hunt is a race: a courteous rival collector shadows the same leads, a second Hist withdraws mid-hunt, and the cult's method is being tested while the player reads maps. Helstrom is introduced during the first act by escorted boat convoy up the guarded marsh channels. The city itself is safe and becomes a recurring political and religious hub, while its surrounding dark basin remains D5 endgame country from the start. Players may walk out of the gates early; the world does not scale down for them.
 
-After recovering the Eye, the Toh-Reel-Ka orders the player to infiltrate the Unbound Root. The player may remain loyal, become a genuine double agent for the cult, pursue an independent course, or work toward a difficult reform outcome. Most of the questline shares the same locations and stages. Branching is implemented through hidden objectives, evidence, trust, cover integrity and a small number of late scene variations.
+After recovering the Eye, the Toh-Reel-Ka orders the player to infiltrate the Unbound. The player may remain loyal, become a genuine double agent for the cult, pursue an independent course, or work toward a difficult reform outcome. Most of the questline shares the same locations and stages. Branching is implemented through hidden objectives, evidence, trust, cover integrity and a small number of late scene variations.
 
 The climax is an expedition from Helstrom through the highest-danger marshes to a fixed Lost City dungeon, an ancient Wamasu guardian, and a sanctuary confrontation with a named antagonist the player has known since the opening hour — resolvable by hard-won words or the game's hardest duel. Then the ending: three families, named by what the player takes. **CUT** — join the cult's victory and rule what the severance makes, as its overlord. **CLAIM** — defeat the cult and press the claim canon left open: the Eye is a king's jewel and the Scalded Throne has been empty for centuries; the player can be crowned at Helstrom, choosing which of three sympathetic coalitions carries them. **MEND** — defeat the cult, repair what it broke, hand the levers to a custodian the player trusts (or seal them beyond use), and walk away. A hidden dark variant (the Kept Key) survives inside MEND.
 
@@ -37,8 +37,8 @@ Two targets are defined. **Milestone 1** is the smallest version of the game tha
 | Content family | Milestone 1 (shippable core) | Mature target | Typical direct playtime at maturity |
 |---|---:|---:|---:|
 | Main quest | 24 core quests including the modular epilogue (Morrowind main-line length; three ex-main quests sit in the regional pool) | same | 25–35 hours |
-| Deep faction lines (Shadowscales, Night-Reed, Nisswo, Many-Root) | 4 lines, 10–12 substantial quests each | same | 12–18 hours per line |
-| Standard faction lines (Marsh Charter, Sunken Archive, Reed-Sail, League) | 4 lines, 6–8 quests each | 8–10 quests each | 8–14 hours per line |
+| Deep faction lines | 4 lines, 10–12 substantial quests each | same | 12–18 hours per line |
+| Standard faction lines | 4 lines, 6–8 quests each | 8–10 quests each | 8–14 hours per line |
 | Compact/regional/secret lines | 2 lines | 4 lines, 4–6 quests each | 4–8 hours per line |
 | Regional, city and standalone authored quests | 60–80 | 250–330 (Morrowind density on our larger land area — research/placement-settlements/morrowind-content-density.md) | highly variable |
 | Mythic/artifact/Daedric-scale quests | 4–6 | 10–14 | 1–3 hours each |
@@ -72,7 +72,7 @@ These are end-state targets. The world-generation programme builds the spaces an
 - Major faction lines are mostly independent of the main quest. Membership may offer alternate methods or recognition, but faction completion is not required for main-quest progress.
 - Some senior faction paths are mutually exclusive.
 - The player does not automatically become supreme leader of every organisation.
-- Serious topics—the Owing and the end of slavery ([40 §39](40-factions.md#39-blackrose-chainbreakers)), colonialism, retaliation, nationalism, cultural assimilation, state surveillance, religious authority and political violence—receive serious, multi-perspective treatment.
+- Serious topics—the Owing and the end of slavery ([the Chainbreakers](lines/chainbreakers-newworld.md)), colonialism, retaliation, nationalism, cultural assimilation, state surveillance, religious authority and political violence—receive serious, multi-perspective treatment.
 
 ## 2. Quantitative benchmark
 
@@ -204,9 +204,9 @@ The plan's political depth only works if it is *delivered through* danger, movem
 Concrete rules:
 
 - **Per-act minimum (main quest):** every act contains at least two quests whose centrepiece is physical — a dungeon, heist, chase, ambush, rescue, escape, boarding, infiltration under threat, or monster encounter. (Act I: MQ01 attack/escape, MQ04 marsh investigation with hostile interference. Act II: MQ09 prison tunnels, MQ10 wreck dive with rival pressure, MQ13 intercept, MQ14 night boat run, MQ16 guardian dungeon. Act III: MQ18 undercover with a live blown-cover escape route, MQ21 lab assault/rescue. Acts IV–V: MQ23's manhunt stage, MQ25 council under attack, MQ27 expedition and D5 crossing, MQ29 Lost City and Warden, MQ31 sanctuary duel.)
-- **Per-faction minimum:** every major line contains at least three physically dramatic quests — at least one combat/monster set piece, one stealth/infiltration or chase, and one traversal set piece (dive, climb, boat, escape). Deep lines should exceed this comfortably; the Shadowscale and Night-Reed lines are action lines by nature, and the "talkier" lines (Nisswo, League, Sunken Archive, Umbriel Witness) meet the minimum through their existing spikes (NI05 violent sect raid, LW04 delegate-murder pursuit, SA08 read-the-wake construct intercept, UW03 submerged dwelling; Many-Root: MR05 predator den, MR04 night-harvest infiltration, MR01/MR02 dive and flood-run) plus the added beats specified in their tables.
+- **Per-faction minimum:** every major line contains at least three physically dramatic quests — at least one combat/monster set piece, one stealth/infiltration or chase, and one traversal set piece (dive, climb, boat, escape). Deep lines should exceed this comfortably; the Shadowscale and Eelskin lines are action lines by nature, and the "talkier" lines meet the minimum through set pieces of their own.
 - **Peril in investigation:** at least half of all evidence sockets in M/L quests should sit somewhere that costs something to reach — submerged, guarded, trapped, contested, collapsing or watched — rather than on an office shelf.
-- **Cult sacrifice and horror are on-screen, not reported:** the Unbound Root's experiments (MQ21), the second Hist withdrawal (MQ15) and at least one interrupted ritual are witnessed spaces the player moves through, with bodies, restrained victims, ritual dressing and survivors — within the mature-content rules and existing assets.
+- **Cult sacrifice and horror are on-screen, not reported:** the Unbound's experiments (MQ21), the second Hist withdrawal (MQ15) and at least one interrupted ritual are witnessed spaces the player moves through, with bodies, restrained victims, ritual dressing and survivors — within the mature-content rules and existing assets.
 - **Validation:** quest briefs tag their dramatic centrepiece (`COMBAT`, `STEALTH`, `CHASE`, `DIVE`, `CLIMB`, `HEIST`, `ESCAPE`, `SOCIAL`, `INVESTIGATE`); the validator reports per-act and per-line ratios, and flags any faction line or region packet where `SOCIAL`/`INVESTIGATE` exceed two-thirds of M/L quests.
 
 ### Wonder budget
@@ -350,7 +350,7 @@ Applied here:
 6. **Vary the verb across a run of quests.** Six investigations in a row is a
    structural boredom risk even when each is individually good; the Act II
    treasure hunt is the plan's most exposed stretch and is handled explicitly in
-   [30-main-quest.md](30-main-quest.md) §21b.
+   [the main plot](lines/main-plot.md).
 
 ---
 
@@ -393,4 +393,4 @@ The narrative programme succeeds when:
 31. Every region contains at least one purely strange non-political *person* as well as one strange place, and none of them is explained by any NPC or by the epilogue.
 32. Every quest declares a delivery tier (D-A/D-B/D-C); D-C beats are ≤10% of quests, never more than one per faction line, and each has a D-B fallback authored alongside it. No quest brief ships containing an unconverted free-roaming chase, escort or simulated crowd.
 33. Every quest passes the boredom test: every M/L quest contains at least one reversal, every S-tier quest declares a reversal or a memorable element, no quest is a bare collection objective, and every S-tier quest has a quest-giver worth quoting.
-34. Tier protection holds ([40-factions.md](40-factions.md) §30b — hard rule): no quest breaks the main quest, and side quests break nothing above their tier; violations are validator failures.
+34. Tier protection holds ([the owner's bar ('Anyone can die')](../owner-bar.md) — hard rule): no quest breaks the main quest, and side quests break nothing above their tier; violations are validator failures.

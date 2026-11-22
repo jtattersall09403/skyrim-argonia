@@ -249,7 +249,7 @@ the place facts record and the shipped route graph
 - every substantial quest includes at least two required design dimensions from Section 4;
 - every quest declares a reversal **or a declared memorable element** (the boredom test, [00-overview.md](00-overview.md) §4); a reversal is mandatory at M/L, and every S-tier quest declares a quest-giver with a stated want and vivid trait;
 - no run of three consecutive quests in a line shares the same dramatic centrepiece tag;
-- **quest novelty** ([55-quest-index.md](55-quest-index.md)): every quest declares one primary and ≤2 secondary shape tags and has a row in the index (hard); the collision rules and shape budgets are checked as 55 states them — 55 is canonical for the numbers and their strengths (the budgets are strong defaults);
+- **quest novelty** ([index/README.md](index/README.md)): every quest declares one primary and ≤2 secondary shape tags and has a row in the index (hard); the collision rules and shape budgets are checked as 55 states them — 55 is canonical for the numbers and their strengths (the budgets are strong defaults);
 - every twist lists its seed-stage IDs (`twists[].seedStageIds`, §58) and each resolves to a real stage; whether the seeding lands is §63b work;
 - **lore onboarding** (60 §45d, glossary per §59b): every glossary proper noun resolves to a newcomer-phrased dialogue topic, core terms are flagged Act-I-available, and `opaque` entries are exempt; no quest brief's stakes depend on out-of-game lore;
 - project-original lore carries source-confidence and author notes.
@@ -277,12 +277,12 @@ the place facts record and the shipped route graph
 - every scene survives an actor failing to reach a mark;
 - named-NPC casualties are authored at fixed points, never emergent from allied combat AI.
 
-### Tier protection (hard rule — canonical text in [40-factions.md](40-factions.md) §30b)
+### Tier protection (hard rule — canonical text in [the owner's bar ('Anyone can die')](../owner-bar.md))
 
 - every brief carries a `touches` list (§58) of the shared ids it reads or writes;
 - fail any **write** to an id owned by a higher tier (tier 2 → tiers 1/0; tier 1 → tier 0);
 - fail any removal or consumption of a topic or evidence id flagged `essential` in data by a higher tier. Essential-marking is a **data flag**: everything unmarked is fair game;
-- runtime behaviour: all NPCs are player-killable. Killing one flagged essential to tier 0/1 shows the doom-warning message (text in [30-main-quest.md](30-main-quest.md) §23) — never a silent break.
+- runtime behaviour: all NPCs are player-killable. Killing one flagged essential to tier 0/1 shows the doom-warning message (text in [the main plot](lines/main-plot.md)) — never a silent break.
 
 ### Fail-forward
 
@@ -323,7 +323,7 @@ Agents should read traces and validator output by default. The owner judges pros
 ## 65. Agent-authored content workflow
 
 1. Read only the relevant regional, faction, lore and asset docs.
-2. **Run the novelty check** ([55-quest-index.md](55-quest-index.md) §47c): declare the proposed shape tags, scan the index for collisions in the same region/line/reversal/resolution, and differentiate, merge or drop before writing anything.
+2. **Run the novelty check** ([index/README.md](index/README.md) §47c): declare the proposed shape tags, scan the index for collisions in the same region/line/reversal/resolution, and differentiate, merge or drop before writing anything.
 3. Inspect the final world IDs and causal location records.
 4. Draft a quest brief with premise, characters, methods, choice, aftermath and world-provision links — and **add its row to the quest index in the same change**.
 5. Run a narrative critic before implementation.

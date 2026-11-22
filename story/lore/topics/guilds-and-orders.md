@@ -136,8 +136,7 @@ function was absorbed by native institutions that were already doing it — the
 whoever a village hires to deal with a wamasu. The old Hissmir and Alten Corimont
 halls are lodging and warehouse.
 
-This is precisely the space the quest plan's **Marsh Charter** line occupies, and
-canon supports it well: a martial tradition arguing about whether to accept a
+Canon supports this space well: a martial tradition arguing about whether to accept a
 charter is arguing about whether to become foreign.
 
 ### The Conclaves and the cult of Seth — `CANON_EXPLICIT` (thin) + `EXTRAPOLATED`
@@ -191,7 +190,7 @@ never really was. What exists is native and canon-attested:
 - **The mangrove river** — Bramman's concealed channel from Topal Bay to the
   Blackrose lakes. `CANON_EXPLICIT`
 
-The quest plan's **Night-Reed Chapter** should therefore be read as a *native*
+Our thieves' guild, **the Eelskins**, should therefore be read as a *native*
 organisation that a Cyrodiilic guild would recognise as a peer, not a franchise.
 That is more distinctive and it is what canon implies.
 

@@ -164,7 +164,7 @@ Every major faction line has:
 - **A cast that comes and goes around the desks**: targets, victims, witnesses
   and contacts are single-use, per rule 6.
 - **At least one desk that can die, leave or turn**, with a fail-forward path
-  per [30-main-quest.md](30-main-quest.md) §23. No character may be introduced
+  per [the main plot](lines/main-plot.md). No character may be introduced
   in the quest where they die.
 
 ### 6. Nothing friendly recurs across lines
@@ -175,7 +175,7 @@ instead of importing characters:
 
 - **Shared places.** A fixed figure sits where several lines happen to go
   (Balmora holds five factions' desks). Ahnjazzi never leaves Soulrest harbour;
-  the main quest, the Reed-Sail line and the heists all *come to her*.
+  the main quest, the sea's lines and the heists all *come to her*.
 - **The same conflict from both sides.** When two lines collide, they collide
   over the *same named people and the same stakes*, seen from opposite ends —
   our Fighters/Thieves-war analogues, declared per line in

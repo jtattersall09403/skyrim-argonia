@@ -63,7 +63,7 @@ rewordings, and those were applied without another review (`story/design/quests/
   [owner-rulings](../owner-rulings.md) (2026-11-06, #50).
 - **The seven slice quests as full records** in the story database: BC01 to BC03 (Chainbreakers), TG01 and TG02
   (Night-Reed), LQ25 and LQ30 (Helstrom). The Marsh Charter is left out (Gideon has no room).
-- **The main line outline:** [main-line-outline](../../story/design/quests/main-line-outline.md), the spirit and
+- **The main line outline:** `main-line-outline.md` (since superseded by the main plot and deleted), the spirit and
   shape of the whole main quest (Acts II on as outline), with Act I's flags and joins.
 - **The block set:** [blocks.md](../design/blocks.md), now with C-detected (sneak that must go unseen, on the
   `detectedBy` term) and the `sceneEnded` predicate mapped to TR-scene; every Act I and slice stage maps to the set, and
@@ -130,7 +130,7 @@ The method, in order:
 
 ## Done earlier (2026-11-05)
 
-- **The adaptation:** [act1-on-bmv](../../story/design/quests/act1-on-bmv.md). The act's spirit and shape are kept; its
+- **The adaptation:** `act1-on-bmv.md` (since superseded and deleted). The act's spirit and shape are kept; its
   beats move to BM&V's Lilmoth (Dock1, Pusbottom, its Hist grove), Hereguard Plantation, the tribal Village east of
   Lilmoth (as the Hatching Pools, `place_bmv` row added), and Helstrom by BM&V's ship. Minor edits only: placed
   people and fixed-level enemies, enable parents, locks, a few statics; levelled and Nordic-look BM&V placements in the

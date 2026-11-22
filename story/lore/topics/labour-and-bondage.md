@@ -174,7 +174,7 @@ nobody.
 ## 5. What this gives the build
 
 - **The Chainbreakers get a real enemy** that is diffuse, deniable, legally
-  respectable and impossible to storm — see `docs/quests/40-factions.md` §39.
+  respectable and impossible to storm.
 - **The ex-Archeins get their canon gap closed** with a class antagonism that needs
   no foreign villain, exactly as
   [../extrapolation/argonia-4e201-state.md](../extrapolation/argonia-4e201-state.md) §2

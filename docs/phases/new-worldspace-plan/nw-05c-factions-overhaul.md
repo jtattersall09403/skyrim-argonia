@@ -270,16 +270,15 @@ Written by the lead on 2026-11-16. The owner's words above are the brief; this s
 
    | Lane | Factions | Cities to cover between them |
    |---|---|---|
-   | the three rivals | the Lamps, the thieves, the Shadowscales | Archon, Blackrose, Lilmoth, Soulrest, Truowa |
+   | the three rivals | the detectives, the thieves, the Shadowscales | Archon, Blackrose, Lilmoth, Soulrest, Truowa |
    | the living and the dead | the Argonian order of magic and alchemy, the Dunmer necromancers | Thorn, Tsonac, Aroxhu, Helstrom |
    | the sea | the pirates, the Imperial merchants | Gideon, Soulrest, the Topal Bay coast and islands |
    | the Owing | the Chainbreakers, the Dunmer Owing house (not joinable, a page of background) | Stormhold, Thorn, the east and north interior |
 
    The cities are where a lane starts looking, checked against the lore; a faction may sit elsewhere with a reason.
-5. **The old stories go.** Every old line file is deleted when the new plots land (git keeps them): the League, the
-   Night-Reed, the Nisswo, the Reed-Sail, the Sunken Archive, the Thorn Ash-Reed, the Umbriel Witness, the
-   Waykeepers, Many-Root, the Marsh Charter, the old Lamp-Bearers, Shadowscales and Chainbreakers stories and
-   the old main quest line. The consistency ledger and the province plan are cut down to what the new plots hold.
+5. **The old stories go.** Every old line file is deleted when the new plots land (git keeps them): the fourteen old
+   line stories and the old main quest line. Each old faction name, with what replaced it or that it was cut, is in
+   [retired-names](../../../story/design/retired-names.json). The consistency ledger and the province plan are cut down to what the new plots hold.
    Done on 2026-11-16.
 6. **The explorer** shows a faction as its plot page, with what the faction is at the top, one paragraph a quest,
    and the page "Spells by use" ([spell-groups](../../../story/design/quests/spell-groups.md)).

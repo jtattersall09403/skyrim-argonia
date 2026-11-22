@@ -15,9 +15,8 @@ setting; reveals prepared route-marks/inscriptions; cipher for selected
 pre-Duskfall systems; politically symbolic: it grants no
 kingship by any power of its own, but it is a king's jewel, and a bearer who
 holds it and the Lost City's door can press a claim to the empty throne that
-others back for what the jewel means to them (the CLAIM ending,
-story/design/quests/main-line-outline.md: the coronation is people's act, not
-the jewel's); occasionally shows unbidden visions (wonder budget). Fan
+others back for what the jewel means to them (the CLAIM ending:
+the coronation is people's act, not the jewel's); occasionally shows unbidden visions (wonder budget). Fan
 interpretations credited per quests/99.
 
 **Build implications:** the Lost City reservation in the deep basin (plan §86

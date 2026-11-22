@@ -12,13 +12,12 @@ tells the world build what to provide and the runtime what to be.
 
 | You are… | Read |
 |---|---|
-| **Placing, moving or cutting a place; or authoring a quest that needs one** | [25-quest-place-map.md](25-quest-place-map.md) — the provision → catalogue-place table, the questline → anchor-places view, and the four standing rules that keep the two halves in sync. Read it before you touch `world/sources/catalogue/places-*.json` or write a brief. |
-| **Any world-generation agent** (terrain, settlements, POIs, dungeons, routes, danger, ecology) | [20-world-provisions.md](20-world-provisions.md) — handoff contract, provision tags, danger tiers (incl. the D↔danger-band mapping), location packet, consequence budget, exit gate. Then the quest tables for whatever region/city you're building: [30-main-quest.md](30-main-quest.md), [40-factions.md](40-factions.md), [50-side-quests.md](50-side-quests.md) each carry per-quest **World-generation provision** columns — those are requirements. |
+| **Any world-generation agent** (terrain, settlements, POIs, dungeons, routes, danger, ecology) | [20-world-provisions.md](20-world-provisions.md) — handoff contract, provision tags, danger tiers (incl. the D↔danger-band mapping), location packet, consequence budget, exit gate. Then the quest tables for whatever region/city you're building: [the main plot](lines/main-plot.md), [the faction plots](lines/), [50-side-quests.md](50-side-quests.md) each carry per-quest **World-generation provision** columns — those are requirements. |
 | Anyone needing the story/design picture | [00-overview.md](00-overview.md) — summary, content targets, frozen decisions, design rules (cost tiers, dramatic register, wonder budget, **cast rules, delivery tiers, the boredom test**), acceptance criteria. |
-| **Authoring any new quest** | [index/README.md](index/README.md) — **mandatory before writing a brief**: the shape taxonomy, the novelty/collision rule and the per-packet shape budget (§47a–c). Then [index/coverage.md](index/coverage.md), the generated commissioning brief (shape gaps, per-region budget, the settlement demand ladder). The rows themselves are DATA in [world/sources/quests/](../../../world/sources/quests/README.md): add yours to `local-<region>.json`, then run `python3 -m worldgen.quests --check --sync` and `python3 -m worldgen.export_quest_index`. |
+| **Authoring any new quest** | [index/README.md](index/README.md) — **mandatory before writing a brief**: the shape taxonomy, the novelty/collision rule and the per-packet shape budget (§47a–c). |
 | **Wiring a quest into a place that is already built** | `world/sources/sites/purpose-ledger.json` (`worldgen.export_purpose_ledger`) — every promise a blueprint makes the player, with its parcel, its socket and the phase that must deliver it. The rows marked `deliveredBy: "quests"` are the quest-giver and quest-stage doors already drawn on the map, each naming its `questSockets[]` entry and, where the blueprint knows it, the quest id. |
 | **Writing any named NPC** — main quest, faction, local, texture | [35-cast.md](35-cast.md) — **the rules, mandatory before naming anybody** (~5k tokens): depth tiers, the six character rules (Morrowind desk model, UESP-mined), the canon naming system, the texture kit, validation. Then [36-cast-roster.md](36-cast-roster.md) — **lookup-only**: the principal cast, per-faction desks, shared places, oddities — consult only the lines/places your brief touches. |
-| **Authoring one local/texture quest brief** | The minimal chain: [index/README.md](index/README.md) + [index/coverage.md](index/coverage.md) + your region's `index/local-<region>.md`; [00-overview.md](00-overview.md) §1 + §4; [35-cast.md](35-cast.md) rules; [70-assets.md](70-assets.md) §51; [20-world-provisions.md](20-world-provisions.md) §11–12 tags. |
+| **Authoring one local/texture quest brief** | The minimal chain: [index/README.md](index/README.md); [00-overview.md](00-overview.md) §1 + §4; [35-cast.md](35-cast.md) rules; [70-assets.md](70-assets.md) §51; [20-world-provisions.md](20-world-provisions.md) §11–12 tags. |
 | Political/cultural framing for places or NPCs | [10-political-frame.md](10-political-frame.md) (+ the lore dossiers, per the CLAUDE.md lore rule). |
 | Writing, dialogue, lore-confidence layers | [60-writing-and-lore.md](60-writing-and-lore.md) — **incl. §45e, the TES-voice rules and the banned-constructions list, binding on every line written.** Strings live in `packages/text-catalogue`, never as literals (engineering standard 4). |
 | **Gating anything on world state** — a stage requirement, a dialogue line's availability, a faction check, a reward | [85-condition-vocabulary.md](85-condition-vocabulary.md) — the only language conditions and actions may be written in. Need a predicate that isn't there? Add it there, then use it. Never prose. |
@@ -36,7 +35,7 @@ tells the world build what to provide and the runtime what to be.
     protection). Never depart. The hard rules are: no new art; no level
     scaling; the delivery-tier conversions (no free-roaming chase/escort/
     simulated crowd); canon grounding; the traversal-fallback rule; race
-    completability; and tier protection (canonical text: 40-factions §30b).
+    completability; and tier protection (canonical text: the owner's bar ('Anyone can die') in story/design/owner-bar.md).
   - **Strong default** — depart only with a recorded one-line reason.
   - **Target** — an aim: report against it, don't block on it.
 
@@ -56,7 +55,7 @@ tells the world build what to provide and the runtime what to be.
   (decision [0018](../old-decisions/0018-cast-lore-deliverability-review.md)):
   added [35-cast.md](35-cast.md); introduced the Owing
   (`world/sources/lore/topics/labour-and-bondage.md`); grounded the cult's method
-  on the canon Mnemic Egg; re-anchored the Marsh Charter and Sunken Archive on
+  on the canon Mnemic Egg; re-anchored two lines since cut on
   canon; and converted every chase, escort and crowd beat in the plan into a
   cheap pattern.
 - The main quest was sharpened on 2026-08-26 (decision
@@ -79,17 +78,16 @@ tells the world build what to provide and the runtime what to be.
   [0028](../old-decisions/0028-allegiance-reward-tracks.md), research in
   `docs/research/quests-and-cast/tes-quest-and-faction-rewards.md`): four **allegiance reward
   tracks** of five tiers each (30 §24b) — cult power with corprus-style
-  trade-offs, Reed access and informants, the tribes' welcome and safe routes,
+  trade-offs, Toh-Reel-Ka access and informants, the tribes' welcome and safe routes,
   and the Eye-and-crown; stack tiers 1–3, lock 4–5; one phased stronghold
   re-skinned by allegiance. And [index/README.md](index/README.md) is
   **mandatory reading before authoring any quest** — shape taxonomy, novelty
-  rule — with the coverage gaps generated into
-  [index/coverage.md](index/coverage.md).
+  rule.
 
 - The **quest ↔ place co-design pass** ran on 2026-09-04 (decision
   [0041](../old-decisions/0041-phase11-settlement-decisions.md) § Part 4 step 2):
   every provision in this plan now names the catalogue place that satisfies it
-  ([25-quest-place-map.md](25-quest-place-map.md)), four records were added and
+  (the quest-place map, since deleted), four records were added and
   eight promoted to close gaps, fifteen places were re-sited for quest value,
   and eighteen *proposed* rows written from what the plotted province offers
-  ([index/proposed.md](index/proposed.md), PP01–PP18).
+  (PP01–PP18, since retired).

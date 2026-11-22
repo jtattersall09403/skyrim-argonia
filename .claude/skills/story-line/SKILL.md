@@ -22,8 +22,8 @@ outlines; the plot page's shape is [main-plot](../../../story/design/quests/line
   (what a quest may use, the owner's bar as craft, the trail, choices and rewards), and
   [principles/choices.md](../quest-write/principles/choices.md) (what each outcome of a choice or ending gives and
   costs in play, and the result that builds each kind).
-- The line's old design, which is the foundation, improved and never replaced: the main line in
-  `story/design/quests/30-main-quest.md` and `main-line-outline.md`; a faction's section of `40-factions.md`; its
+- The line's plot, which is the foundation, improved and never replaced: the main quest's in
+  `story/design/quests/lines/main-plot.md`; a faction's in its page under `story/design/quests/lines/`; its
   rows in `story/design/quests/review/walk6-ceiling.md` (each premise already brought under the ceiling); its
   people in `36-cast-roster.md` under the rules of `35-cast.md`.
 - The lore: `story/lore/` (topics, regions, settlements) and the agreed extrapolation

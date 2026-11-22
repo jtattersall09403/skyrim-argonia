@@ -92,11 +92,14 @@ His words on each faction (skills, how it is joined, its rival, its choice and i
 a faction is written. Every earlier ruling of his on factions, from this repository and the first one, is gathered
 with its source in [owner-rulings-on-factions](../../docs/research/writing/owner-rulings-on-factions.md).
 
-- The joinable factions are eight: the Chainbreakers, the detectives (the Lampbearers), a thieves' guild (not called the
-  Night-Reed), the Shadowscales (back in secret; the death of the "last" one was cover), the pirates, an Argonian
-  order of magic and alchemy with a name in Jel, Dunmer necromancers behind a respectable trading house at Thorn,
-  and Imperial merchants at Gideon. The main quest has the Toh-Reel-Ka and the Unbound. A Dunmer house that profits
-  from the Owing cannot be joined. Every other line is cut, the League among them (OR 2026-11-16).
+- The joinable factions are eight: the Chainbreakers, the detectives (the Lampbearers), a thieves' guild (the
+  Eelskins; not called the Night-Reed), the Shadowscales (back in secret; the death of the "last" one was cover), the
+  pirates (Bramman's Brethren), an Argonian order of magic and alchemy with a name in Jel (the Sisei-Xul), Dunmer
+  necromancers behind a respectable trading house at Thorn (House Cardruhn), and Imperial merchants at Gideon (the
+  Topal Bay Company). The main quest has the Toh-Reel-Ka and the Unbound. A Dunmer house that profits from the Owing
+  (House Ulvarys) cannot be joined. Every other line is cut, the League among them (OR 2026-11-16). The names are the
+  owner's (#74, OR 2026-11-17); every retired name, with what replaced it, is in [retired-names](retired-names.json)
+  and the consistency check fails a live page that uses one.
 - Rivals: the Lampbearers, the thieves and the Shadowscales, three ways; the Argonian order and the necromancers; the
   pirates and the Imperials; the Chainbreakers (the pirates' allies) and the Owing house. "It's fun if they're in
   conflict with each other in various combinations" (OR 2026-11-16).

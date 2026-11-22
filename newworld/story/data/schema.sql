@@ -819,8 +819,8 @@ CREATE TABLE "give_delivery" (
 
 -- The story lines, named for a reader who knows none of them.
 CREATE TABLE "story_line" (
-  "id" TEXT NOT NULL PRIMARY KEY,        -- main, many-root, waykeepers ... (the line story's file name)
-  "name" TEXT NOT NULL,                  -- the line's own name: 'Many-Root'
+  "id" TEXT NOT NULL PRIMARY KEY,        -- main, lamps, thieves ... (the line story's file name)
+  "name" TEXT NOT NULL,                  -- the line's own name: 'the Lampbearers'
   "plain" TEXT NOT NULL                  -- what it is, assuming nothing: 'a faction of tree-healers'
 );
 

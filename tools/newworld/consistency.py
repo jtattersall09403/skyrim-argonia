@@ -32,6 +32,8 @@ Check families, each a function of one context dict so the tests feed it a small
   draft      a drafted place: draft.plan has a delivered row per gives row and look line and a verdict per structure;
              people against population; the built check (nordic, seat, primitives) green and newer than the draft
   generated  the story digest, the story explorer and the Atlas current with their sources
+  names      no live file uses a retired faction, order, house, company or office name outside its allowed sense
+             (story/design/retired-names.json: the names, their allowed senses, the exempt history and the owed paths)
 
 draft.plan's shape and faults are tools/places/draft/plan.py's.
 
@@ -44,6 +46,7 @@ import argparse
 import collections
 import glob
 import json
+import os
 import re
 import sys
 import tempfile
@@ -144,6 +147,7 @@ def load(root: Path = REPO, out: Path | None = None) -> dict:
     ctx["main"] = main_places(ctx)
     ctx["ground"] = load_ground(out, ctx["places"])
     ctx["generated"] = generated_state(root)
+    ctx["names_table"], ctx["name_files"] = load_names(root)
     return ctx
 
 
@@ -801,8 +805,103 @@ def check_generated(ctx, R: Report, only=None):
         R.add("generated", "the story digest is behind its sources", None, f, f)
 
 
+RETIRED = Path("story/design/retired-names.json")
+NAME_SKIP_DIRS = {".git", "out", "worktrees", "node_modules", "__pycache__", ".venv"}
+NAME_SUFFIXES = {".md", ".json", ".jsonl", ".yaml", ".yml", ".py", ".txt", ".tsv", ".sql", ".psc", ".cs", ".sh", ".toml"}
+
+
+def _glob_rx(g: str) -> re.Pattern:
+    """A path glob (`**` any depth, `*` within one segment, `[..]` a class) as an anchored pattern."""
+    out, i = "", 0
+    while i < len(g):
+        if g.startswith("**", i):
+            out, i = out + ".*", i + 2
+        elif g[i] == "*":
+            out, i = out + "[^/]*", i + 1
+        elif g[i] == "[":
+            j = g.index("]", i)
+            out, i = out + g[i:j + 1], j + 1
+        else:
+            out, i = out + re.escape(g[i]), i + 1
+    return re.compile(out + r"\Z")
+
+
+def _needles(row: dict) -> set[str]:
+    """A cheap literal sieve for a row: each pattern's longest run of letters, looked for in lower-cased text."""
+    return {max(re.findall(r"[a-z]+", re.sub(r"\\.", " ", m.lower())), key=len) for m in row["match"]}
+
+
+def load_names(root: Path) -> tuple[dict, dict[str, str]]:
+    """The retired-names table and every text file it governs (exempt paths are not read)."""
+    p = root / RETIRED
+    if not p.exists():
+        return {}, {}
+    table = json.loads(p.read_text(encoding="utf-8"))
+    exempt = [_glob_rx(e["glob"]) for e in table["scope"]["exempt"]]
+    needles = {k for n in table["names"] for k in _needles(n)}
+    files: dict[str, str] = {}
+    for d, ds, fs in os.walk(root):
+        ds[:] = [x for x in ds if x not in NAME_SKIP_DIRS]
+        for f in fs:
+            fp = Path(d) / f
+            if fp.suffix not in NAME_SUFFIXES or fp.is_symlink():
+                continue
+            rel = fp.relative_to(root).as_posix()
+            if any(rx.match(rel) for rx in exempt):
+                continue
+            try:
+                text = fp.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            low = text.lower()
+            if any(k in low for k in needles):   # only files that could hold a retired name are kept
+                files[rel] = text
+    return table, files
+
+
+def check_names(ctx, R: Report, only=None):
+    """No live file uses a retired faction, order, house, company or office name outside its allowed sense
+    (story/design/retired-names.json); a path on its owed list is reported as owed until its work lands, and an owed
+    path with nothing left to clear fails until it leaves the list."""
+    if only:
+        return
+    table, files = ctx.get("names_table") or {}, ctx.get("name_files") or {}
+    if not table:
+        return
+    owed = [(_glob_rx(o["glob"]), o) for o in table["scope"]["owed"]]
+    quoted = [_glob_rx(g) for g in table["scope"].get("quoted", {}).get("globs", [])]
+    rows = []
+    for n in table["names"]:
+        fl = 0 if n.get("case") else re.I
+        rows.append((n, re.compile("|".join(f"(?:{m})" for m in n["match"]), fl), _needles(n),
+                     [re.compile(a) for a in n.get("allow", [])], [_glob_rx(g) for g in n.get("allow_paths", [])]))
+    owed_hit: set[str] = set()
+    for rel, text in sorted(files.items()):
+        ow = next((o for rx, o in owed if rx.match(rel)), None)
+        quotes = any(q.match(rel) for q in quoted)
+        low = text.lower()
+        for n, rx, needles, allow, apaths in rows:
+            if not any(k in low for k in needles) or any(a.match(rel) for a in apaths) or not rx.search(text):
+                continue
+            for i, line in enumerate(text.splitlines(), 1):
+                if not any(k in line.lower() for k in needles):
+                    continue
+                m = rx.search(line)
+                if not m or any(a.search(line) for a in allow) or (quotes and line.lstrip().startswith(">")):
+                    continue
+                what = f"'{m.group(0)}' is retired: {n['new']}"
+                if ow:
+                    owed_hit.add(ow["glob"])
+                    R.owe("names", "a retired name in a live file", None, what, f"{rel}:{i} ({ow['why']})")
+                else:
+                    R.add("names", "a retired name in a live file", None, what, f"{rel}:{i}")
+    for rx, o in owed:
+        if o["glob"] not in owed_hit:
+            R.add("names", "an owed path with no retired name left", None, o["glob"], str(RETIRED))
+
+
 FAMILIES = {"internal": check_internal, "ground": check_ground, "source": check_source, "atlas": check_atlas,
-            "story": check_story, "draft": check_drafts, "generated": check_generated}
+            "story": check_story, "draft": check_drafts, "generated": check_generated, "names": check_names}
 
 
 def run(ctx, only=None, families=None) -> Report:

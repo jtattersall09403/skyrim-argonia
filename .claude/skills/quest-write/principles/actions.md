@@ -61,8 +61,7 @@ A pattern is two to four uses from at least two families; fill it with a place, 
 
 ## Profiles
 
-`profiles.yaml` holds one profile per line (`quest_line` row; key = the line id's last part) and the planned
-`detectives`. A profile names the line's signature skills (most of its steps), its support skills, and what is rare
+`profiles.yaml` holds one profile per line (`quest_line` row; key = the line id's last part). A profile names the line's signature skills (most of its steps), its support skills, and what is rare
 for it, so that a player could tell the faction from any three of its quests [AS FP]. A local quest takes `local`
 and leans by its place: its danger band, its water and heights, its people's work.
 

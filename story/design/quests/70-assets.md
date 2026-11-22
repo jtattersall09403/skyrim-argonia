@@ -129,12 +129,6 @@ are the house-style pool. Creature entries confirmed for quest use:
 |---|---|
 | Shadowscales | A02, A03, V03, A18, A20–A22 |
 | Thieves Guild | V02, V11, A10, A13, A18–A20 |
-| Marsh Charter | A03–A08, V06, V01 |
-| Sunken Archive | A01, A10, A20, V04/V09 |
-| Nisswo | A15–A17, A20, V09/common robes |
-| Many-Root | A15–A17, A24–A25, V01/V04 |
-| Reed-Sail Compact | A11–A14, A19, V07 |
-| League of Open Water | A15, A18–A20, V12 |
 
 ## 56. Asset-ingestion priorities for narrative readiness
 
