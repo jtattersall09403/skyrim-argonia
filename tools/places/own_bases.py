@@ -50,6 +50,33 @@ ACTIVATORS = {
 }
 
 
+# King of the Murkmire's dead Hists: the living tree's model with the crown shapes' alternate textures (MODS) pointed
+# at Skyrim.esm:000028, a form no plugin holds; the game draws a set it cannot find in its missing-texture purple.
+# Ours are copies of those statics with those rows pointed at our clear texture set: vanilla's sky alpha
+# (textures/sky/alpha.dds, Skyrim - Textures5.bsa, alpha 3 of 255 at most), under the crown shapes' own alpha test
+# (threshold 128), so the crown is cut away whole and the bare tree stands. Places keep the mod's bases; the build
+# swaps each ref of a replaced base to the place's copy, and the studio draws the replaced base as the copy.
+CLEAR_TXST = f"{PLUGIN}:000A03"
+TEXTURE_SETS = {
+    CLEAR_TXST: {"edid": "ArgoniaClearTextureSet", "diffuse": "textures/sky/alpha.dds"},
+}
+STATICS = {
+    f"{PLUGIN}:000A04": {"edid": "ArgoniaHistTree01Dead", "copy": "King of the Murkmire.esp:52D306", "clear": CLEAR_TXST},
+    f"{PLUGIN}:000A05": {"edid": "ArgoniaHistTree04Dead", "copy": "King of the Murkmire.esp:551538", "clear": CLEAR_TXST},
+}
+REPLACES = {s["copy"]: k for k, s in STATICS.items()}
+
+
+def alt_tex(key: str, alt: list[dict] | None) -> list[dict] | None:
+    """A base's alternate textures as the game will draw them with our plugin: a replaced base's rows that resolve to
+    no texture set take our clear set."""
+    if key not in REPLACES or not alt:
+        return alt
+    t = TEXTURE_SETS[STATICS[REPLACES[key]]["clear"]]
+    return [a if a.get("textures") else {**a, "txst": STATICS[REPLACES[key]]["clear"], "edid": t["edid"],
+                                         "textures": {"diffuse": t["diffuse"], "normal": None}} for a in alt]
+
+
 def is_own(key: str) -> bool:
     return str(key).startswith(PLUGIN + ":")
 
@@ -73,9 +100,20 @@ def plan_own(refs: list[dict], ids, place_id: str) -> list[dict]:
     """The records of ours one place needs, under the place's form ids (`ids(name)` -> its form key), and every ref
     whose base is ours swapped to the place's copy (editor id: ours + "_" + the place). Returns the writer's rows."""
     tag = "".join(c for c in place_id.title() if c.isalnum())
+    for r in refs:   # a replaced base (a dead Hist of the mod's): the ref takes our copy
+        if r.get("base") in REPLACES:
+            r["base"] = REPLACES[r["base"]]
     used = sorted({r["base"] for r in refs if is_own(r.get("base", ""))})
     out, fk = [], {}
-    for k in used:
+    for k in [u for u in used if u in STATICS]:
+        s = STATICS[k]
+        if s["clear"] not in fk:
+            fk[s["clear"]] = ids(f"txst:own:{s['clear']}")
+            t = TEXTURE_SETS[s["clear"]]
+            out.append({"kind": "txst", "fk": fk[s["clear"]], "edid": f"{t['edid']}_{tag}", "diffuse": t["diffuse"]})
+        fk[k] = ids(f"stat:own:{k}")
+        out.append({"kind": "static", "fk": fk[k], "edid": f"{s['edid']}_{tag}", "copy": s["copy"], "clear": fk[s["clear"]]})
+    for k in [u for u in used if u in ACTIVATORS]:
         a = ACTIVATORS[k]
         for wk in (a["water"],):
             if wk not in fk:

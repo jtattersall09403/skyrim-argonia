@@ -82,7 +82,8 @@ const matCache = new Map();
 export function plainMaterial(m, kind, tint = null) {
   const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
   const cut = m.alphaTest > 0 || m.transparent;
-  const colour = map ? m.color.getHexString() : tint ? tint.map((v) => v.toString(16).padStart(2, '0')).join('') : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
+  // a shape whose alternate texture set does not exist: the game's missing-texture purple, never hidden or toned down
+  const colour = m.name === 'missing-texture' ? 'ff00ff' : map ? m.color.getHexString() : tint ? tint.map((v) => v.toString(16).padStart(2, '0')).join('') : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
   const key = `${map?.uuid || '-'}|${colour}|${cut}|${m.side}|${m.vertexColors}`;
   if (!matCache.has(key)) {
     matCache.set(key, new THREE.MeshLambertMaterial({ map, color: `#${colour}`, side: m.side, vertexColors: m.vertexColors,
@@ -106,12 +107,9 @@ function pump() {
   }
 }
 const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
-// A shape name as three's glTF loader keeps it (it drops `[ ] . : /` and turns spaces into `_`), so a base's
-// `hide_shapes` (the record's alternate textures that resolve to nothing: tools/places/assets/alttex.py) match it.
-export const shapeName = (s) => String(s || '').replace(/\s/g, '_').replace(/[[\].:/]/g, '');
-export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, hide = null, alt = null) {
-  const hidden = new Set((hide || []).map(shapeName));
-  const key = `${model}|${level}|${tint || ''}|${[...hidden].sort().join(',')}|${alt || ''}`;
+// `alt`: a base key whose alternate textures make its own variant of the model (the converter swaps them).
+export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, alt = null) {
+  const key = `${model}|${level}|${tint || ''}|${alt || ''}`;
   if (!meshCache.has(key)) {
     meshCache.set(key, new Promise((resolve) => {
       queue.push({ pri, run: async () => {
@@ -126,8 +124,6 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             if (o.name === 'placeholder' || o.material?.name === 'placeholder') parts.placeholder = true;
             // geometry the game never draws: editor markers (and all under them) show only in the Creation Kit
             for (let q = o; q; q = q.parent) if (/^editormarker/i.test(q.name || '')) return;
-            // shapes the record's alternate textures leave undrawn in the game (a dead Hist's leaves)
-            if (hidden.size) for (let q = o; q; q = q.parent) if (hidden.has(shapeName(q.name))) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
@@ -362,7 +358,7 @@ class Group {
     if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true; asked++;
-      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null, this.base.hide_shapes,
+      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null,
         this.base.alt_tex?.length ? this.base.key : null).then((parts) => {
         asked = Math.max(0, asked - 1);   // handed over in this same turn: queued below, or marked empty
         // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists

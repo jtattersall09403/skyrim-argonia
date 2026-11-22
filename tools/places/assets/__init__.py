@@ -59,12 +59,13 @@ def _source(k: str, version: int) -> tuple[str | None, bytes | None]:
 
 
 def swap_of(base_key: str | None) -> list[dict] | None:
-    """A base's alternate textures (the catalogue's alt_tex) as the converter applies them: [{shape, index,
+    """A base's alternate textures (the catalogue's alt_tex, with our plugin's replacements: own_bases.alt_tex) as the
+    converter applies them: [{shape, index,
     textures: {diffuse, normal} or None}] in a fixed order; None when the base swaps nothing."""
     if not base_key:
         return None
-    from tools.places import draft_bundle
-    alt = (draft_bundle.catalogue().get(base_key) or {}).get("alt_tex")
+    from tools.places import draft_bundle, own_bases
+    alt = own_bases.alt_tex(base_key, (draft_bundle.catalogue().get(base_key) or {}).get("alt_tex"))
     if not alt:
         return None
     return sorted(({"shape": a.get("shape") or "", "index": a.get("index"),
@@ -83,7 +84,7 @@ def mesh_info(model: str, level: int = 0, bounds=None, alt: str | None = None) -
     if not found:
         key = _key(("missing:" + k + json.dumps(bounds)).encode(), _mesh.VERSION)
     elif swap:
-        key = _key((key + "|swap:" + json.dumps(swap, sort_keys=True)).encode(), _mesh.VERSION)
+        key = _key((key + f"|swap{_mesh.SWAP_VERSION}:" + json.dumps(swap, sort_keys=True)).encode(), _mesh.VERSION)
     glb = cache.path("mesh", key, f"l{level}.glb")
     side = glb.with_suffix(".json")
     if glb.exists() and side.exists():
