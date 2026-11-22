@@ -1,0 +1,109 @@
+{
+ "save_id": "agent-20261122T193635",
+ "place_id": "helstrom",
+ "name": "the lights of fixtures removed in this pass (the pruned stairs' red lights, the sunk candle lanterns): a light goes with its fixture",
+ "at": "2026-11-22T19:36:35Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Q9TF53MEMYZA5ZNHT1D7WG7XFZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Q9TF53MEMYZA5ZNHT1D7WG7XFZ",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -56109.91,
+     -628615.44,
+     -64.48
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20098A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s140"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T19:36:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SA6C062X94ZHADAYMJV9V9VZDK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SA6C062X94ZHADAYMJV9V9VZDK",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -56234.49,
+     -628475.85,
+     -51.72
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:200991",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s140"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T19:36:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SKSY5ZKSWV63J4G8463H4WNHPP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SKSY5ZKSWV63J4G8463H4WNHPP",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -41071.67,
+     -623228.4,
+     549.61
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9803",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T19:36:35Z"
+  }
+ ]
+}

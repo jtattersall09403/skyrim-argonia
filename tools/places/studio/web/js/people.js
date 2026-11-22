@@ -188,7 +188,7 @@ export class People {
     const cam = v.camera.position, o = a.ours.origin, near = Math.max(1800, Math.min(4000, v.rig.dist * 1.2));
     for (const p of v.origin ? this.list() : []) {
       const m = this.markers.get(p.id), mine = this.sel === p.id;
-      if (!m?.visible) continue;
+      if (!m?.visible || !m.userData.at) continue;   // a figure not placed yet (its refresh still to come)
       const d = Math.hypot(m.userData.at[0] - o[0] - cam.x, m.userData.at[1] - o[1] - cam.y, m.userData.at[2] - o[2] - cam.z);
       if (!mine && d > near) continue;
       const q = v.toScreen([m.userData.at[0], m.userData.at[1], m.userData.at[2] + 200]);

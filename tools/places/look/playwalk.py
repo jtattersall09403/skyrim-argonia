@@ -61,6 +61,7 @@ SIDE_NEAR = 600.0     # a building this near a station to one side adds that sid
 AVOID = 2.0           # a stretch already walked costs this many times as much to walk again
 SPUR_MIN = 256.0      # an unwalked stretch of street shorter than this is not worth a spur
 TOOL = 7             # the judging rules version: a route shot under older rules is shot again
+VIEW_REACH = 3000.0  # a route's looks see this far past its stations: a change within it makes the route's looks stale
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
 DOOR_SPOT = 128.0   # a quest spot this near a door (across the plan and in height) is that door's
 
@@ -1342,6 +1343,28 @@ def state_save(sc, place):
     p.write_text(json.dumps(survey.structure_hashes(sc.files["spaces"]["exterior"]["refs"]), indent=1))
 
 
+def view_digest(sc, r: dict, reach: float = VIEW_REACH) -> str:
+    """What a route's looks can see, as a digest: every piece and world thing (as it stands), every cleared plant,
+    land patch and paint stroke within `reach` of its stations. A route shot before any of them changed is stale."""
+    pts = [s["pos"] for s in r.get("stations") or [] if s.get("pos")]
+    if not pts:
+        return ""
+    x0, y0 = min(p[0] for p in pts) - reach, min(p[1] for p in pts) - reach
+    x1, y1 = max(p[0] for p in pts) + reach, max(p[1] for p in pts) + reach
+
+    def inside(x, y):
+        return x0 <= x <= x1 and y0 <= y <= y1
+    things = sorted((p.get("id") or "", p.get("base") or "", [round(float(v), 1) for row in p["m"][:3] for v in row])
+                    for p in sc.everything() if p.get("m") and inside(p["m"][0][3], p["m"][1][3]))
+    files = getattr(sc, "files", {}) or {}
+    clear = sorted(json.dumps(c, sort_keys=True) for c in files.get("clear") or []
+                   if c.get("pos") and inside(c["pos"][0], c["pos"][1]))
+    land = sorted(json.dumps(c, sort_keys=True) for c in files.get("land") or []
+                  if x0 - 4096 <= c["cell"][0] * 4096 <= x1 and y0 - 4096 <= c["cell"][1] * 4096 <= y1)
+    paint = sorted(json.dumps(c, sort_keys=True) for c in files.get("paint") or [])
+    return hashlib.sha1(json.dumps([things, clear, land, paint]).encode()).hexdigest()[:12]
+
+
 def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: str, stale: bool, again=False) -> dict:
     """Every new station of one route shot (each station's looks in one page call, failures retried by nudging),
     judged, and laid out as strips, a forward filmstrip, a map, tiles and a table."""
@@ -1351,7 +1374,8 @@ def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: st
     w, h = tile_size()
     out = root / r["name"]
     key = hashlib.sha1(json.dumps([TOOL, r.get("way"), [s.get("seen") for s in r["stations"]],
-                                      [len(looks_of(s)) for s in r["stations"]], w, h, fill]).encode()).hexdigest()[:12]
+                                      [len(looks_of(s)) for s in r["stations"]], w, h, fill,
+                                      view_digest(sc, r)]).encode()).hexdigest()[:12]
     done = out / "table.json"
     if done.exists() and not again:
         old = json.loads(done.read_text())
