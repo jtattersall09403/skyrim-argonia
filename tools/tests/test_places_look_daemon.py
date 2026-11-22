@@ -67,3 +67,13 @@ def test_every_answer_says_which_state_it_drew(monkeypatch):
     assert daemon.drew_of(P(), "b") == {"files": "f", "commit": "c", "working_tree": False, "page": False}
     P.drew = None
     assert daemon.drew_of(P(), "a")["page"] is False
+
+
+def test_a_studio_left_on_the_port_by_a_dead_daemon_of_this_checkout_is_found():
+    """Only this checkout's studio on this port is taken for stale; another tree's or another port's is left."""
+    from tools.places.look import daemon
+    procs = [(11, ["python", "-m", "tools.places", "studio", "--port", "8967"], "/w/a"),
+             (12, ["python", "-m", "tools.places", "studio", "--port", "8967"], "/w/b"),
+             (13, ["python", "-m", "tools.places", "studio", "--port", "8765"], "/w/a"),
+             (14, ["python", "-m", "tools.places", "look", "p", "probe"], "/w/a")]
+    assert daemon.own_stale_servers(procs, "/w/a", 8967) == [11]

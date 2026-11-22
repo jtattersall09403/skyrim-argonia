@@ -73,6 +73,27 @@ def flat(strokes: list[list[dict]]) -> list[dict]:
     return [op for s in strokes for op in s]
 
 
+
+def _procs() -> list[tuple[int, list[str], str]]:
+    """(pid, argv, cwd) of this user's processes, from /proc."""
+    out = []
+    for d in Path("/proc").iterdir():
+        if not d.name.isdigit():
+            continue
+        try:
+            argv = (d / "cmdline").read_bytes().decode(errors="replace").split("\0")
+            out.append((int(d.name), [a for a in argv if a], os.readlink(d / "cwd")))
+        except OSError:
+            continue
+    return out
+
+
+def own_stale_servers(procs, root: str, port: int) -> list[int]:
+    """The studio servers of this checkout (`tools.places studio --port <port>` run in `root`) among procs."""
+    want = ["tools.places", "studio", "--port", str(port)]
+    return [pid for pid, argv, cwd in procs if cwd == root and pid != os.getpid()
+            and any(argv[i:i + len(want)] == want for i in range(len(argv)))]
+
 class Daemon:
     def __init__(self):
         self.server = None
@@ -86,6 +107,17 @@ class Daemon:
 
     # ---------- start and stop ----------
     def start_server(self):
+        # a studio of this checkout left on our port by a daemon that died (its child outlives it) answers in place of
+        # ours, and ours cannot bind: it goes first
+        for pid in own_stale_servers(_procs(), str(ROOT), PORT):
+            try:
+                os.kill(pid, 15)
+            except OSError:
+                pass
+        for _ in range(50):
+            if not own_stale_servers(_procs(), str(ROOT), PORT):
+                break
+            time.sleep(0.1)
         # the working tree as it stands (the numbers read it too), never the last commit
         env = dict(os.environ, PLACES_OUT=str(data_out()), STUDIO_COMMIT="0", STUDIO_BUCKET_SYNC="0", STUDIO_AWAKE="0",
                    PLACES_DRAFT_FROM="worktree")
