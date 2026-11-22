@@ -326,3 +326,12 @@ def test_a_stall_s_awning_over_the_eye_is_no_sunk_house_but_a_roof_at_head_heigh
     ok = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=129)})
     bad = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=40)})
     assert ok["fault"] != "place" and bad["fault"] == "place" and "eaves" in bad["why"]
+
+
+def test_at_a_doorway_the_door_filling_the_view_is_the_door_but_a_wall_is_a_fault():
+    """Walking up to a door, the door itself fills the view ahead; a wall or building there is the fault."""
+    from tools.places.look import playwalk as pw
+    door = {"kind": "door", "edid": "01loaddoorArg", "share": 0.8, "dist": 14.0}
+    wall = dict(door, kind="building", edid="01arghouse")
+    assert pw.classify("ahead", "doorway of house", {"near": door})["fault"] != "place"
+    assert pw.classify("ahead", "doorway of house", {"near": wall})["fault"] == "place"

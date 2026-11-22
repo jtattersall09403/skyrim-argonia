@@ -507,7 +507,8 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         return {"verdict": "failed", "fault": "capture", "why": ev["inside"]}
     nr = ev.get("near")
     if nr and nr.get("share", 0) > LENS and nr.get("dist", 1e9) < NEAR_LENS:
-        if "doorway" in what and look == "ahead" and nr.get("kind") in ("building", "static", "door"):
+        # at a doorway the door itself filling the view ahead is the door one walked to, never a wall
+        if "doorway" in what and look == "ahead" and nr.get("kind") in ("building", "static"):
             return {"verdict": "failed", "fault": "place", "why": f"the door opens onto a wall: {nr.get('edid')} fills {nr['share']:.0%} of the view {nr['dist']:.0f} u ahead"}
         if nr.get("kind") == "building" and nr.get("top_over_eye") is not None and nr["top_over_eye"] < EAVES_OVER_EYE:
             return {"verdict": "failed", "fault": "place", "why": f"the top of {nr.get('edid')} is {nr['top_over_eye']} u over the eye, "
