@@ -1320,7 +1320,8 @@ CREATE TABLE "trade_kit" (
   "ord" INTEGER NOT NULL UNIQUE,         -- the order kits are tried in; overlays after every kit
   "match" TEXT,                          -- a pattern over the trade (case-insensitive)
   "roles" TEXT,                          -- person_role ids, space-separated
-  "races" TEXT                           -- an overlay's RACE editor ids, space-separated
+  "races" TEXT,                          -- an overlay's RACE editor ids, space-separated
+  "cultures" TEXT                        -- a culture overlay's culture ids (the place's culture), space-separated
 );
 
 -- What a kit expects: carried, worn, kept at home, eaten.

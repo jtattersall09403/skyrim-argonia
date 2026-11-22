@@ -191,7 +191,8 @@ def _regions_and_kits(w) -> None:
     kd = _json(STOCK / "kits.json")
     for i, k in enumerate(kd["kits"] + kd["overlays"]):
         w.insert("trade_kit", id=k["id"], label=k["label"], ord=i, match=k.get("match"),
-                 roles=" ".join(k.get("roles", [])) or None, races=" ".join(k.get("races", [])) or None)
+                 roles=" ".join(k.get("roles", [])) or None, races=" ".join(k.get("races", [])) or None,
+                 cultures=" ".join(k.get("cultures", [])) or None)
         seq = 0
         for use in ("carry", "wear", "home"):
             for x in k.get(use, []):

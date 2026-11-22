@@ -342,3 +342,18 @@ def test_crossbows_are_on_the_ladder():
     assert gear["Dawnguard.esm:000BB3"]["material"] == "crossbow"
     assert not [k for k in gear if k.startswith("Dawnguard.esm:") and "armor" in (gear[k].get("why") or "").lower()]
     assert json.loads((STOCK / "power.json").read_text())["kinds"]["crossbow"]["stats"]["T2"]["power"] == 19.0
+
+
+def test_every_culture_has_its_own_leaning(w):
+    """Each culture.jsonl row has a tribe overlay with a signature weapon and look, and its Argonians take it."""
+    kits = json.loads((STOCK / "kits.json").read_text())["overlays"]
+    by = {c: o for o in kits for c in o.get("cultures", [])}
+    cultures = [json.loads(l)["id"] for l in (STOCK.parents[1] / "story/data/db/culture.jsonl").read_text().splitlines() if l.strip()]
+    assert sorted(by) == sorted(cultures)
+    assert all(o["carry"] and o["wear"] and o["tell"].startswith("you can tell") for o in by.values())
+    sigs = {(o["carry"][0]["typ"], o["carry"][0]["materials"][0], o["wear"][0]["materials"][0]) for o in by.values()}
+    assert len(sigs) == len(by)          # no two tribes lean the same way
+    person = next(p for p in w.rows("person") if p.race_id == "ArgonianRace")
+    culture = w.get("place", person.place_id).culture_id
+    if culture:
+        assert any(k.cultures and culture in k.cultures.split() for k in reach.kits_for(w, person))

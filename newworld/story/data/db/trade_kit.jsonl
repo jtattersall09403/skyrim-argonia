@@ -23,4 +23,22 @@
 {"id":"tanner","label":"Tanner, hide-curer","ord":7,"match":"\\b(tann\\w*|hide-\\w+|curer|scraper|leather-\\w+)\\b"}
 {"id":"thief","label":"Thief, fence, cutpurse","ord":16,"match":"\\b(thie(f|ves)|fences?|cutpurses?|burglars?|night-reed)\\b"}
 {"id":"trader","label":"Trader, merchant, tally-keeper","ord":11,"match":"\\b(trader|merchant|seller|market|tally)\\b","roles":"merchant apothecary"}
+{"id":"tribe-crimson-red","label":"The Warden Marches: the tribe's own leaning","ord":26,"cultures":"crimson-red"}
+{"id":"tribe-forest-green","label":"The Root-Folk of Helstrom: the tribe's own leaning","ord":27,"cultures":"forest-green"}
+{"id":"tribe-gold","label":"The Archon Harbour Folk: the tribe's own leaning","ord":28,"cultures":"gold"}
+{"id":"tribe-indigo","label":"The Naka-Desh (Riverbacks): the tribe's own leaning","ord":29,"cultures":"indigo"}
+{"id":"tribe-jade","label":"The Sedge-Wardens of Jal-Veesa: the tribe's own leaning","ord":30,"cultures":"jade"}
+{"id":"tribe-lime","label":"The Agaceph: the tribe's own leaning","ord":31,"cultures":"lime"}
+{"id":"tribe-magenta","label":"The Hutan-Tzel: the tribe's own leaning","ord":32,"cultures":"magenta"}
+{"id":"tribe-olive","label":"The Island of Blackrose: the tribe's own leaning","ord":33,"cultures":"olive"}
+{"id":"tribe-oxblood","label":"The Chime-Keepers: the tribe's own leaning","ord":34,"cultures":"oxblood"}
+{"id":"tribe-pale-green","label":"The Gideon Frontier: the tribe's own leaning","ord":35,"cultures":"pale-green"}
+{"id":"tribe-pearl","label":"The Spray-Folk of Seafalls: the tribe's own leaning","ord":36,"cultures":"pearl"}
+{"id":"tribe-plum","label":"The Three Waters Tribe: the tribe's own leaning","ord":37,"cultures":"plum"}
+{"id":"tribe-rose","label":"Lilmoth and the Murkmire Coast: the tribe's own leaning","ord":38,"cultures":"rose"}
+{"id":"tribe-rust","label":"The Clay-Mound People of Aroxhu: the tribe's own leaning","ord":39,"cultures":"rust"}
+{"id":"tribe-sky-blue","label":"The Stone-Sleepers of Tsonac: the tribe's own leaning","ord":40,"cultures":"sky-blue"}
+{"id":"tribe-steel-blue","label":"The Mine-Burners of the Banujha: the tribe's own leaning","ord":41,"cultures":"steel-blue"}
+{"id":"tribe-stone-grey","label":"The Shadowfen Border (Stormhold): the tribe's own leaning","ord":42,"cultures":"stone-grey"}
+{"id":"tribe-umber","label":"Soulrest and the Topal Coast: the tribe's own leaning","ord":43,"cultures":"umber"}
 {"id":"weaver","label":"Reed-cutter, weaver, rope-twister","ord":4,"match":"\\b(weav\\w*|plait\\w*|mat|basket\\w*|rope-\\w+|reed-\\w+|bundler|lacer)\\b"}
