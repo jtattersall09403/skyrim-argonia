@@ -1482,9 +1482,24 @@ def test_29_paint_ground(browser, server):
     swatches.last.click()
     key = swatches.last.get_attribute("data-key")
     pad.page.locator("#panel-body .seg button", has_text="Hard round").click()
+    # each swatch is the texture's own picture from the land table, loaded
+    pad.page.wait_for_function("[...document.querySelectorAll('#panel-body .paint-swatch img')].every((i) => i.complete)", timeout=10000)
+    pics = pad.ev("[...document.querySelectorAll('#panel-body .paint-swatch')].map((b) => [b.dataset.key, b.querySelector('img')?.src, b.querySelector('img')?.naturalWidth])")
+    table = pad.ev("studio.landTex.table")
+    assert all(src and ("/" + table[k]["file"] + "?v=") in src and w > 0 for k, src, w in pics), pics
     z = pad.ev("studio.terrain.heightAt(3700, 3700)")
     look_at(pad, "ours", [3700, 3700, z], dist=4200, pitch=1.15)
     line = [pad.screen("ours", [3300 + 200 * k, 3700, z]) for k in range(5)]
+    # live under the pen: mid-stroke the land already draws the stroke, before it is an op
+    n0 = pad.ev("studio.log.ops.length")
+    pad.pen("mouseMoved", *line[0]); pad.pen("mousePressed", *line[0], 0.9)
+    for x, y in line[1:]:
+        pad.pen("mouseMoved", x, y, 0.9)
+    pad.page.wait_for_timeout(100)
+    live = pad.ev("({ ops: studio.log.ops.length, drawn: studio.ours.terrainMesh.paint().length, model: studio.model.paint.size })")
+    assert live == {"ops": n0, "drawn": 1, "model": 0}, live
+    pad.pen("mouseReleased", *line[-1]); pad.page.wait_for_timeout(80)
+    pad.ev("studio.log.undo()")
     pad.pen_drag(line, pressure=0.9, steps=6)
     op = pad.ev("studio.log.applied().at(-1)")
     assert op["op"] == "paint.add" and op["paint"]["texture"] == key and op["paint"]["brush"] == "hard", op

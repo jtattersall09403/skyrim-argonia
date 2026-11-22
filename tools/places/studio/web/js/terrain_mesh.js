@@ -16,7 +16,7 @@ export class LandTex {
   async init() { try { this.table = await getJSON('/asset/land', { optional: true }); } catch { this.table = null; } return this; }
   url(key, ltex) {
     const row = this.table?.[key];
-    if (row?.file) return `${window.STUDIO_API || ''}/api/asset/land/${encodeURIComponent(row.file)}`;
+    if (row?.file) return `${window.STUDIO_API || ''}/api/asset/land/${encodeURIComponent(row.file)}?v=${encodeURIComponent(row.avg || '')}`;   // a file converted again is fetched again
     const diffuse = ltex?.[key]?.diffuse || (key && key.includes('/') ? key : null);
     return diffuse ? texUrl(diffuse.replace(/^textures\//, 'textures/'), 256) : null;
   }

@@ -20,15 +20,15 @@ export function plainName(edid, diffuse, key) {
 }
 
 // The palette: every land texture the place's ground and its source list, most used first (the place's own ground
-// counted before the source's), each {key, name, used}.
-export function palette(terrains) {
+// counted before the source's), each {key, name, used}; with the land table, only those it has a picture of.
+export function palette(terrains, table = null) {
   const used = new Map(), ltex = {};
   terrains.forEach((t, i) => {
     if (!t) return;
     Object.assign(ltex, t.ltex || {});
     for (const c of t.list || []) for (const q of c.quadrants || []) for (const k of [q.base, ...(q.layers || []).map((l) => l.tex)]) if (k) used.set(k, (used.get(k) || 0) + (i === 0 ? 2 : 1));
   });
-  return Object.keys(ltex).map((key) => ({ key, name: plainName(ltex[key]?.edid, ltex[key]?.diffuse, key), used: used.get(key) || 0 }))
+  return Object.keys(ltex).filter((key) => !table || table[key]?.file).map((key) => ({ key, name: plainName(ltex[key]?.edid, ltex[key]?.diffuse, key), used: used.get(key) || 0 }))
     .sort((a, b) => b.used - a.used || a.name.localeCompare(b.name));
 }
 
@@ -84,7 +84,7 @@ export class PaintTool {
   panel() {
     const a = this.app, o = this.o, P = a.panels;
     const body = document.createElement('div');
-    const pal = palette([a.terrain, a.src?.terrain]);
+    const pal = palette([a.terrain, a.src?.terrain], a.landTex?.table);
     if (!o.texture && pal.length) o.texture = pal[0].key;
     body.innerHTML = `<p>Paint the ground with the pen: pick a texture and a brush, press harder for a wider, stronger mark. The eraser brings back the world's own ground. Undo and redo as for any edit; Save keeps it.</p>
       <div class="seg" role="group" aria-label="Brush">${BRUSH_KINDS.map(([v, l]) => `<button data-brush="${v}" aria-pressed="${v === o.brush}">${l}</button>`).join('')}</div>

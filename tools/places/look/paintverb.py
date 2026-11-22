@@ -75,6 +75,8 @@ def run(sc, args: list[str], out) -> list[dict] | dict:
     from tools.places.look.verbs import _opts
     pos, o = _opts(args, FLAGS)
     pal = palette(sc.place_id, sc.files, out)
+    from tools.places.assets import land
+    land.ensure()   # every palette texture has its picture for the views (the studio's land table)
     if pos[:1] == ["textures"]:
         return {"textures": [{k: t[k] for k in ("key", "name", "edid", "used")} for t in pal]}
     why = str(o.get("why") or "").strip()
