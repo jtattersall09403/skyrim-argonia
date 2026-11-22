@@ -92,3 +92,36 @@ def test_a_door_way_runs_from_its_arrival_to_the_nearest_walk():
     w = [w for w in ways.ways(f) if w["id"] == "door out.door"]
     assert w and w[0]["points"] == [[500, 800], [500.0, 0.0]]
     assert ids(ways.blockers(f, [piece("box", "test/ways/crate.nif", 500, 400)], Flat())) == ["box"]
+
+
+def test_the_time_log_is_not_a_change_the_pictures_miss(tmp_path):
+    """The look daemon warns when the place files differ from the committed ones its pictures draw; the time log
+    written by every verb during a pass is drawn by nothing, so it never raises the warning."""
+    import subprocess
+    from tools.places.look.daemon import uncommitted
+    pdir = tmp_path / "pl"
+    pdir.mkdir()
+    (pdir / "place.json").write_text("{}\n")
+    subprocess.run(["git", "init", "-q", str(tmp_path)], check=True)
+    subprocess.run(["git", "-C", str(tmp_path), "add", "."], check=True)
+    subprocess.run(["git", "-C", str(tmp_path), "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "x"], check=True)
+    (pdir / "timelog.jsonl").write_text("{}\n")
+    assert not uncommitted("pl", tmp_path)
+    (pdir / "paths.jsonl").write_text("{}\n")
+    assert uncommitted("pl", tmp_path)
+
+
+def test_the_world_road_as_painted_is_kept_clear_in_the_footprint():
+    # the road's track textures show on a band of ground vertices along y = 0 (128-unit vertices), x 0 to 2048
+    road = ways.RoadPaint({(i, j): 1.0 for i in range(0, 17) for j in (-1, 0, 1)})
+    f = files(paths=[])
+    f["place"] = {"fit": {"anchor": [1000, 0]}, "radius_m": 20}
+    on = piece("tent", "test/ways/crate.nif", 600, 40)
+    off = piece("barrel", "test/ways/crate.nif", 600, 600)
+    far = piece("far", "test/ways/crate.nif", 600, 40)
+    far["m"] = xform.matrix([9600, 40, 0], [0, 0, 0], 1.0)
+    assert ids(ways.blockers(f, [on, off, far], Flat(), road=road)) == ["tent"]
+    assert road.at(600, 40) == 1.0 and road.at(600, 600) == 0.0
+    allowed = ways.blockers(dict(f, spaces={"exterior": {"refs": [
+        {"id": "tent", "blocks_way": "a toll booth the road is meant to pass through here"}]}}), [on], Flat(), road=road)
+    assert ids(allowed) == [] and allowed[0]["reason"]

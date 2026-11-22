@@ -278,11 +278,14 @@ def files_stamp(place: str, places=None) -> str:
 
 
 def uncommitted(place: str, places=None) -> bool:
+    """Whether the place files in the working tree differ from the committed ones the pictures draw: its agent
+    edits and its time log (`timelog.jsonl`, written by every verb while a pass is open) are drawn by nothing."""
     import subprocess
     from tools.places.seat import PLACES
     pdir = (places or PLACES) / place
     t = subprocess.run(["git", "-C", str(pdir), "status", "--porcelain", "--", "."], capture_output=True, text=True)
-    return t.returncode == 0 and any(ln and "agent-edits" not in ln for ln in t.stdout.splitlines())
+    return t.returncode == 0 and any(ln and "agent-edits" not in ln and not ln.endswith("timelog.jsonl")
+                                     for ln in t.stdout.splitlines())
 
 
 def why_leave(d, last: float, now: float, root: Path = ROOT) -> str | None:

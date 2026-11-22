@@ -96,7 +96,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                    "accepted": sc.accepted_faults(), "notes": alt_tex_notes(sc)}
             if space == "exterior" and getattr(sc, "files", None):   # what stands in a walk (tools/places/ways.py)
                 from tools.places import ways
-                bl = ways.blockers(sc.files, sc.everything(), sc.ground, ways.spots(sc.files))
+                bl = ways.blockers(sc.files, sc.everything(), sc.ground, ways.spots(sc.files),
+                                   road=ways.road_paint(place))
                 res["ways"] = [b for b in bl if not b.get("reason")]
                 res["ways_allowed"] = [b for b in bl if b.get("reason")]
                 if res["ways"]:
