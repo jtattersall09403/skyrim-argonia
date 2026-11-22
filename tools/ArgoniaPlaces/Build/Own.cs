@@ -33,7 +33,8 @@ static class Own
             }
             if (kind == "static")   // a copy of a static whose alternate textures that resolve to nothing take `clear`
             {
-                var st = (Static)Cache.Resolve<IStaticGetter>(C.Fk(r.GetProperty("copy").GetString()!)).Duplicate(fk);
+                var src = C.Fk(r.GetProperty("copy").GetString()!);   // a mod's static, read from its own plugin
+                var st = (Static)ctx.Fc.Plugin(src.ModKey.FileName).Statics.First(x => x.FormKey == src).Duplicate(fk);
                 st.EditorID = r.GetProperty("edid").GetString();
                 var clear = C.Fk(r.GetProperty("clear").GetString()!);
                 foreach (var a in st.Model?.AlternateTextures ?? new())
