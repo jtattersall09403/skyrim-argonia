@@ -114,6 +114,12 @@ added here the day they are made, with the date and the issue.
   bands of docs/design/items.md; bog iron uncommon; chitin traded, bonemold only in Dunmer places; smithing
   perks kept through a power class per material; two mods added (New Armory Argonian Weapons, Beyond Skyrim
   Bonemold Weapon Pack).
+- All weapons and armour have smithing recipes (2026-11-22).
+- MN01: no starter kit in the barge. Dralin says the player will need to look after themselves on the road, has
+  not much to spare, and offers a pick of one: a low two-handed hammer, a one-handed sword, a bow with arrows
+  and a dagger, or an offensive spell tome (2026-11-22).
+- Item types and frequency vary by region and locality as part of each region's identity, and make sense at
+  every level from one fisherman's hut up through locality and region to the province (2026-11-22).
 
 ## The game
 
