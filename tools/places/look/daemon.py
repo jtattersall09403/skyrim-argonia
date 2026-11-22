@@ -262,21 +262,24 @@ def why_leave(d, last: float, now: float, root: Path = ROOT) -> str | None:
 
 
 def reap(dry: bool = False) -> list[str]:
-    """Every look daemon on this machine whose checkout is gone, whose working directory is deleted, or whose
-    socket is gone: killed with its process group (its browser and server). Run by `look stop` and the tidy."""
+    """Every look daemon on this machine whose checkout is gone or whose working directory is deleted, killed with its
+    process group (its browser and server), and every studio server left running in such a checkout (it holds the
+    port the checkout's next daemon starts its own on). Run by `look stop` and the tidy."""
     out = []
     for proc in Path("/proc").iterdir():
         if not proc.name.isdigit():
             continue
         try:
             cmd = (proc / "cmdline").read_bytes().split(b"\0")
-            if b"tools.places.look.daemon" not in cmd:
+            what = "look daemon" if b"tools.places.look.daemon" in cmd else \
+                "studio server" if b"tools.places" in cmd and b"studio" in cmd else None
+            if what is None:
                 continue
             cwd = os.readlink(proc / "cwd")
         except OSError:
             continue
         if cwd.endswith(" (deleted)") or not Path(cwd, "tools", "places").is_dir():
-            out.append(f"look daemon {proc.name} in {cwd}")
+            out.append(f"{what} {proc.name} in {cwd}")
             if not dry:
                 try:
                     os.killpg(os.getpgid(int(proc.name)), signal.SIGTERM)

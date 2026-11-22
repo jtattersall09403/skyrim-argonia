@@ -8,7 +8,8 @@ order (by id, or by cell, or by base and position), so independent ops give the 
 Place files in memory:
     {"place": {...place.json...},
      "spaces": {space_id: {"refs": [row...], "space": {...} | None}},
-     "clear": [...], "land": [...], "paths": [...], "people": [...], "quests": [...], "walk": [...] (each only when it has rows),
+     "clear": [...], "land": [...], "paths": [...], "people": [...], "quests": [...], "walk": [...], "paint": [...]
+     (the last three only when they have rows),
      "identities": the people source (newworld/sources/people/<place_id>.json) | None,
      "stock": the stock source (newworld/sources/stock/places/<place_id>.json) | None}
 The last two are the database's sources for who the place's people are and what the place holds (Stock). The
@@ -26,10 +27,12 @@ CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove",
                "stock.loose.edit", "stock.possessions.set", "stock.trader.set", "stock.delivery.set")
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
        "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit",
-       "quest.add", "quest.remove", "quest.edit", "walk.add", "walk.remove", "walk.edit") + CONTENT_OPS
+       "quest.add", "quest.remove", "quest.edit", "walk.add", "walk.remove", "walk.edit",
+       "paint.add", "paint.remove") + CONTENT_OPS
 # a row table's op family -> its list in the place files (rows keyed by id); `quests` is where the quests' things
-# stand (tools/places/quest_spots.py); `walk` the owner's walking-mesh zones (tools/places/walknav.py)
-TABLES = {"path": "paths", "person": "people", "quest": "quests", "walk": "walk"}
+# stand (tools/places/quest_spots.py); `walk` the owner's walking-mesh zones (tools/places/walknav.py); `paint` the
+# ground paint's strokes (tools/places/paint.py), applied in id order
+TABLES = {"path": "paths", "person": "people", "quest": "quests", "walk": "walk", "paint": "paint"}
 WALK_KINDS = ("block", "walk", "join")
 # A content op's row: the op's payload key, the source it lives in, its list there, the fields that name it (a
 # delivery has none: it is found by its whole row)
@@ -94,7 +97,7 @@ def canonical(files: dict) -> dict:
         row["verts"].sort()
     out["paths"].sort(key=lambda r: r["id"])
     out["people"].sort(key=lambda r: r["id"])
-    for k in ("quests", "walk"):   # kept only when it has rows
+    for k in ("quests", "walk", "paint"):   # kept only when it has rows
         if out.get(k):
             out[k].sort(key=lambda r: r["id"])
         else:
@@ -163,7 +166,7 @@ def check_op(op: dict) -> None:
                 raise EditError(f"op {op['n']} (land.patch): each vert is [row, col, before_dz, after_dz], row and col 0..32")
     elif kind in CONTENT_OPS:
         _check_content(op)
-    elif kind.startswith(("path.", "person.", "quest.", "walk.")):
+    elif kind.startswith(("path.", "person.", "quest.", "walk.", "paint.")):
         _need(op, kind.split(".")[0])
         row = op[kind.split(".")[0]]
         if "id" not in row:
@@ -172,6 +175,12 @@ def check_op(op: dict) -> None:
             _need(op, "before")
         if kind.startswith("walk."):
             _check_walk(op["n"], kind, row)
+        if kind.startswith("paint."):
+            from tools.places import paint
+            try:
+                paint.check_row(row)
+            except paint.PaintError as e:
+                raise EditError(f"op {op['n']} ({kind}): {e}") from None
 
 
 def _check_walk(n, kind: str, row: dict) -> None:
@@ -764,7 +773,7 @@ def load_place(root: Path, sources: Path | None = None) -> dict:
         sj = sp / "space.json"
         files["spaces"][sp.name] = {"refs": _jsonl(sp / "refs.jsonl"),
                                     "space": json.loads(sj.read_text()) if sj.exists() else None}
-    for k in ("clear", "land", "paths", "people", "quests", "walk"):
+    for k in ("clear", "land", "paths", "people", "quests", "walk", "paint"):
         files[k] = _jsonl(root / f"{k}.jsonl")
     return canonical(files)
 
@@ -805,7 +814,7 @@ def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
             hands.write_json(root / "spaces" / sid / "space.json", sp["space"])
-    for k in ("clear", "land", "paths", "people", "quests", "walk"):
+    for k in ("clear", "land", "paths", "people", "quests", "walk", "paint"):
         if files.get(k) or (root / f"{k}.jsonl").exists():
             _write_jsonl(root / f"{k}.jsonl", files.get(k) or [])
 

@@ -69,6 +69,24 @@ def test_a_hand_placed_sap_pool_on_the_trunk_is_the_trees_own():
     assert C.overlap_pairs([hist, {**pool, "base": "K:puddle"}])
 
 
+def test_eggs_lie_in_a_sap_pool_and_in_their_nest():
+    """A pool of Hist sap is water: an egg laid in its shallow edge stands in it as in any water; eggs set `on` their
+    nest rest on it, and two eggs on one nest rest together (King of the Murkmire's clutches at Seekhat Yol's Hist)."""
+    box = [-200, -200, -10, 200, 200, 10]
+    pool = {"id": "p.sap.H1", "kind": "activator", "space": "exterior", "pos": [0.0, 0.0, 0.0],
+            "rot": [0, 0, 0], "bounds": box}
+    egg = {"id": "p.EGG", "base": "K:egg", "kind": "static", "space": "exterior", "pos": [20.0, 0.0, 0.0], "rot": [0, 0, 0],
+           "bounds": [-12, -15, -12, 12, 16, 12]}
+    assert C.overlap_pairs([egg, pool]) == []
+    nest = {"id": "p.NEST", "base": "K:nest", "kind": "static", "space": "exterior", "pos": [500.0, 0.0, 0.0],
+            "rot": [0, 0, 0], "bounds": [-40, -40, -20, 40, 40, 20]}
+    on = {"mode": "on", "on": "p.NEST", "dz": 7.0}
+    e1 = {**egg, "id": "p.E1", "pos": [500.0, 0.0, 7.0], "seat": on}
+    e2 = {**egg, "id": "p.E2", "pos": [505.0, 3.0, 7.0], "seat": on}
+    assert C.overlap_pairs([nest, e1, e2]) == []
+    assert C.overlap_pairs([nest, {**e1, "seat": None}])
+
+
 def test_a_source_mesh_that_misses_a_bed_or_an_arrival_is_not_kept():
     tris = np.zeros(2, [("v", "<i4", 3)])
     tris["v"] = [[0, 1, 2], [0, 2, 3]]

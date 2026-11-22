@@ -1,0 +1,377 @@
+{
+ "save_id": "agent-20261122T033055",
+ "place_id": "outpost-m6-m66",
+ "name": "the wardens' clutch at the young Hist: two moss nests on the sap pool's rim with eggs, two eggs half sunk in the sap's shallow edge (King of the Murkmire's eggs and nests as at Seekhat Yol's Hist); a bedroll the source left 1.5 m over the ground on the Hist's walkway set on its deck; the source's volcanic steam-pool slab east of the Hist and its mist pruned (issue #87's dark flat patches)",
+ "at": "2026-11-22T03:30:55Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.YTSFPTPFNAPWSXQPJKBTQ9FGNG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44081.74,
+     -538701.02,
+     201.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.00KD9D822DJ5RQBVP0TRV8G6FQ",
+     "dz": 266.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44231.74,
+     -538701.02,
+     143.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.00KD9D822DJ5RQBVP0TRV8G6FQ",
+     "dz": 208.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.S4703AXRR27HB5P7QP1BB19PVT",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.S4703AXRR27HB5P7QP1BB19PVT",
+    "base": "King of the Murkmire.esp:45DF87",
+    "kind": "static",
+    "pos": [
+     -44524.2,
+     -537142.98,
+     16.22
+    ],
+    "rot": [
+     0,
+     0,
+     2.79626
+    ],
+    "scale": 0.79,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDBE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s02"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1K4RDFW6TZGMBD8A3HAFDXCVYS",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1K4RDFW6TZGMBD8A3HAFDXCVYS",
+    "base": "Skyrim.esm:077772",
+    "kind": "other",
+    "pos": [
+     -44424.41,
+     -537065.82,
+     162.91
+    ],
+    "rot": [
+     0,
+     0,
+     6.37945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673021",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s02"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF81NEST",
+    "base": "King of the Murkmire.esp:1655F6",
+    "kind": "static",
+    "pos": [
+     -44545.6,
+     -538745.6,
+     50.1
+    ],
+    "rot": [
+     0,
+     0,
+     0.698
+    ],
+    "scale": 1.6,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's egg nest of moss and twigs on the pool's rim, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF82EGG",
+    "base": "King of the Murkmire.esp:1655EC",
+    "kind": "static",
+    "pos": [
+     -44545.6,
+     -538745.6,
+     57.1
+    ],
+    "rot": [
+     -2.4,
+     0.6,
+     5.7
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg set in the nest, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF83EGG",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -44531.6,
+     -538735.6,
+     57.1
+    ],
+    "rot": [
+     -2.1,
+     -0.3,
+     3.7
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg set in the nest, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF84NEST",
+    "base": "King of the Murkmire.esp:1655F6",
+    "kind": "static",
+    "pos": [
+     -44659.5,
+     -538826.9,
+     53.9
+    ],
+    "rot": [
+     0,
+     0,
+     1.92
+    ],
+    "scale": 1.6,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's egg nest of moss and twigs on the pool's rim, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF85EGG",
+    "base": "King of the Murkmire.esp:1655EC",
+    "kind": "static",
+    "pos": [
+     -44659.5,
+     -538826.9,
+     60.9
+    ],
+    "rot": [
+     -2.4,
+     0.6,
+     5.7
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg set in the nest, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF86EGG",
+    "base": "King of the Murkmire.esp:1655EC",
+    "kind": "static",
+    "pos": [
+     -44671.5,
+     -538817.9,
+     60.9
+    ],
+    "rot": [
+     -2.1,
+     -0.3,
+     3.7
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg set in the nest, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF87EGGSAP",
+    "base": "King of the Murkmire.esp:1655EC",
+    "kind": "static",
+    "pos": [
+     -44648.2,
+     -538718.0,
+     36.8
+    ],
+    "rot": [
+     -2.0,
+     0.4,
+     1.1
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg lying half sunk in the sap at the pool's shallow edge, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF88EGGSAP",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -44607.8,
+     -538645.7,
+     36.8
+    ],
+    "rot": [
+     -1.5,
+     0.4,
+     3.1
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the wardens' clutch at the young Hist's sap pool (record faith: 'the wardens hatch their eggs in the sap pool'): King of the Murkmire's Argonian egg lying half sunk in the sap at the pool's shallow edge, laid as it lays its eggs at Seekhat Yol's Hist",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 11,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:55Z"
+  }
+ ]
+}

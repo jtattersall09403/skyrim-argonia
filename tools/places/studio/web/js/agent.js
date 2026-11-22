@@ -269,7 +269,7 @@ export function install(studio) {
         for (const lay of view.objects || []) lay.cull(c);
         drainAll(r);
         const tm = studio.ours.terrainMesh;
-        if (!pendingModels() && !(tm && (tm.pumping || tm.queue.length))) break;
+        if (!pendingModels() && !(tm && (tm.pumping || tm.queue.length || tm.paintLoading))) break;
         if (performance.now() - t0 > 120000) break;
         waits++; await tick();
       }

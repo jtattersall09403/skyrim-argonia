@@ -72,4 +72,10 @@ runs `place-lessons`.
    `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"` in plain English. A question,
    or a change larger than a narrow one, is closed with a reply saying what it would take, and nothing changes.
 2. A note on changes travels in its save and is answered by the lessons step when the save is finalised.
-3. What the owner changed stays as he left it.
+3. What the owner changed stays as he left it, his ground paint (`paint.jsonl` rows `by: owner`) too: a stage never
+   writes paint, and an agent's repaint is a new stroke over his, never an edit of his rows.
+
+In the studio the owner paints the ground with **Paint ground**: a texture from the palette (pictures and plain names,
+the most used here first), a brush (soft round, hard round, scatter, eraser) with its size, softness and strength,
+pen pressure widening and strengthening the mark. Each stroke is a `paint.add` op, undone and saved like every edit;
+the land in the studio and in `look` captures shows it as the build will lay it.

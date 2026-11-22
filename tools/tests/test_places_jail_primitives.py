@@ -85,6 +85,16 @@ def test_the_owing_works_at_the_landing_and_returns_the_player_to_the_street_bes
     assert jail.work_spot(people_ + [{"id": "t.r2", "work": {"pos": [900.0, 900.0]}}])[0] == (900.0, 900.0)
 
 
+def test_a_walkway_is_stood_on_at_its_deck_not_at_the_top_of_its_posts():
+    """A mud-hut walkway's box reaches up its posts; one stands on it at its walked deck (the row's `walk`), so the
+    Owing's bedroll lies on the planks, not in the air over them."""
+    walkway = {"key": "S:walk", "edid": "MudHutWalkway01", "bounds": [[-244, -130, -8], [266, 124, 133]]}
+    things = [{"id": "t.w", "base": "S:walk", "kind": "building", "pos": [0.0, 0.0, -65.0], "rot": [0, 0, 0], "scale": 2.0,
+               "walk": 101.2}]
+    z, piece = jail.stand(0.0, 0.0, things, {"S:walk": walkway}, Ground())
+    assert piece["id"] == "t.w" and z == -65.0 + 2 * 101.2
+
+
 def test_the_faction_names_its_jail_rows_and_a_missing_row_is_a_problem():
     rows = {i: {"id": i, "fk": f"P.esp:{n:06X}"} for n, i in enumerate(("t.ext", "t.in", "t.stol", "t.plcn", "t.bed"), 1)}
     P = {"place": {"factions": [{"id": "t.crime", "kind": "crime", "jail": {

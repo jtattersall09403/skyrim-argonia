@@ -10,6 +10,7 @@ import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer, releaseModels } from './objects.js';
 import { GrassLayer } from './grass.js';
 import { pathLtexes, roadSetName } from './path_paint.js';
+import { bounds as paintBounds } from './paint_rule.js';
 import { setupAtlas } from './atlas.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
@@ -25,6 +26,7 @@ import { getJSON } from './api.js';
 import { Sticks } from './sticks.js';
 import { WalkLayer } from './walk_layer.js';
 import { WalkTools } from './walk_tools.js';
+import { PaintTool } from './paint_tool.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 // The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
@@ -56,7 +58,7 @@ class Studio {
     for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
     this.tools = new Tools(this); this.people = new People(this); this.needs = new Needs(this); this.quests = new Quests(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.offline = new OfflineUI(this);
-    this.walkLayer = new WalkLayer(this); this.walkTools = new WalkTools(this);
+    this.walkLayer = new WalkLayer(this); this.walkTools = new WalkTools(this); this.paintTool = new PaintTool(this);
     if (!AGENT) this.sticks = new Sticks(this, $('#views'));
     // offline, the search, the item search and the seat are answered here from what is held (offline.js)
     off.providers = { bases: () => [...(this.srcBases?.values() || []), ...(this.bases?.values() || [])], items: () => this.stockItems || new Map(),
@@ -167,7 +169,7 @@ class Studio {
     this.ours.grass.view = this.ours.view;
     this.loading('Drawing the land');
     const focus = focusOf([...(this.model.spaces.exterior?.refs.values() || [])], origin, this.ground.meta.place);
-    this.ours.terrainMesh = this.terrain ? await new TerrainMesh(this.terrain, origin, { paths: () => [...this.model.paths.values()], landTex: this.landTex })
+    this.ours.terrainMesh = this.terrain ? await new TerrainMesh(this.terrain, origin, { paths: () => [...this.model.paths.values()], paint: () => this.paintTool.rows(), landTex: this.landTex })
       .build({ focus, onProgress: (n, of) => this.progress('Drawing the land', n, of) }) : null;
     if (this.ours.terrainMesh) this.ours.terrainMesh.onChange = () => this.ours.view.redraw();
     // sources: the allocated one first, then the similar places
@@ -468,6 +470,7 @@ class Studio {
     if (touched.has('land') || touched.has('path')) { this.ours.grass?.invalidate(); }
     if (touched.has('land')) { const keys = new Set(ops.filter((o) => o.op === 'land.patch').map((o) => o.cell.join(','))); this.ours.terrainMesh?.refreshCells(keys); this.ours.terrainMesh?.tintCells(keys); }
     if (touched.has('path')) this.ours.terrainMesh?.rebakeAll(pathsBox(ops));
+    if (touched.has('paint')) this.ours.terrainMesh?.rebakeAll(paintBox(ops));
     if (touched.has('veg') || touched.has('path')) this.refreshSide(this.ours);
     else this.refreshSide(this.ours, { world: false });
     if (touched.has('ref') || touched.has('path') || touched.has('land')) this.people.invalidateRoutes();
@@ -685,6 +688,15 @@ function townBox(refs, radiusM) {
 const STYLE_WORD = { boardwalk: { colour: '#8b6b47', label: 'Wooden boards' }, dirt: { colour: '#7a6446', label: 'Dirt' },
   mud: { colour: '#5f4d38', label: 'Mud' }, gravel: { colour: '#8d8678', label: 'Gravel' }, stone: { colour: '#80796d', label: 'Stone' } };
 // The ground a set of path ops touches (each path as it was and as it is), for redrawing only those cells.
+// the box the paint ops reach (game units), so only the cells under them are drawn again
+function paintBox(ops) {
+  let b = null;
+  for (const o of ops) {
+    const r = o.paint; if (!r) continue; const q = paintBounds(r);
+    b = b ? [Math.min(b[0], q[0]), Math.min(b[1], q[1]), Math.max(b[2], q[2]), Math.max(b[3], q[3])] : q;
+  }
+  return b;
+}
 function pathsBox(ops) {
   const b = [Infinity, Infinity, -Infinity, -Infinity];
   for (const o of ops) for (const p of [o.path, o.before]) {

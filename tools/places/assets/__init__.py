@@ -155,6 +155,9 @@ def thumb(model: str, size: int = 256) -> Path:
 
 
 def land_table() -> Path | None:
+    """The land texture table, brought level first with every land texture the bundles list (land.ensure)."""
+    from tools.places.assets import land
+    land.ensure()
     p = cache.root() / "land" / "land.json"
     return p if p.exists() else None
 

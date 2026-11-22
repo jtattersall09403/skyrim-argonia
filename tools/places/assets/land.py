@@ -35,6 +35,28 @@ def gather() -> dict[str, dict]:
     return out
 
 
+_seen: tuple | None = None
+
+
+def ensure() -> bool:
+    """Write the table again when a land texture the bundles or the catalogue list is not in it (a new ground or
+    source bundle names textures the table has never converted): -> whether it was written. Checked again only when
+    a terrain file or the catalogue changes."""
+    global _seen
+    files = sorted(bundles_dir().glob("*/spaces/*/terrain.json"))
+    cat = cache.root().parent / "catalogue" / "ltex.jsonl"
+    stamp = tuple((str(f), f.stat().st_mtime_ns) for f in files + ([cat] if cat.exists() else []))
+    t = cache.root() / "land" / "land.json"
+    if _seen == stamp and t.exists():
+        return False
+    have = set(json.loads(t.read_text()).keys()) if t.exists() else set()
+    wrote = bool(set(gather()) - have)
+    if wrote:
+        run()
+    _seen = stamp
+    return wrote
+
+
 def run() -> dict:
     d = cache.root() / "land"
     d.mkdir(parents=True, exist_ok=True)
@@ -50,6 +72,8 @@ def run() -> dict:
         else:
             try:
                 data, meta = dds.to_webp(raw, LAND_SIZE, keep_alpha=False)
+                if meta["avg"] == "#000000":   # a read that gave nothing (a mod being rewritten): no picture is better
+                    raise ValueError("the texture read as black")
                 tmp = d / f".{name}.tmp"
                 tmp.write_bytes(data)
                 os.replace(tmp, d / name)
