@@ -37,12 +37,17 @@ def add_states(fx: Path):
     bases = [json.loads(x) for x in bp.read_text().splitlines() if x.strip()]
     tb = next(b for b in bases if b["key"] == tree["base"])
     dead = dict(tb, key="Fix.esm:00DEAD", edid="FixDeadTwin", model="fix/fixdeadtwin.nif", kind="tree")
-    bp.write_text("".join(json.dumps(b) + "\n" for b in bases + [dead]))
+    # a second twin of its own base on the living tree's model: the model is in the page before the switch, so it
+    # arrives as a promise already kept (the case the agent shot used to miss)
+    same = dict(tb, key="Fix.esm:00DEA2", edid="FixDeadTwinSameModel")
+    bp.write_text("".join(json.dumps(b) + "\n" for b in bases + [dead, same]))
     at = tree["pos"]
     mk = lambda rid, **kw: dict(tree, id=rid, pos=[at[0] + 1500, at[1] + 1500, at[2]], src=None, seat={"mode": "free", "dz": 0}, **kw)  # noqa: E731
     rows += [dict(mk("fixplace.PARENT"), kind="marker"),
              dict(mk("fixplace.HIST", enable_parent={"ref": "fixplace.PARENT", "flags": "0"}), pos=[at[0] + 3000, at[1] + 3000, at[2]]),
-             dict(mk("fixplace.DEAD", enable_parent={"ref": "fixplace.PARENT", "flags": OPP}), base=dead["key"], kind="tree")]
+             dict(mk("fixplace.DEAD", enable_parent={"ref": "fixplace.PARENT", "flags": OPP}), base=dead["key"], kind="tree"),
+             dict(mk("fixplace.DEAD2", enable_parent={"ref": "fixplace.PARENT", "flags": OPP}), pos=[at[0] + 1500, at[1] + 2200, at[2]],
+                  base=same["key"])]
     p.write_text("".join(json.dumps(r) + "\n" for r in rows))
     (d / "states.jsonl").write_text(
         json.dumps({"id": "living", "name": "Hist living", "default": True, "parents": {"fixplace.PARENT": True}}) + "\n"
@@ -125,19 +130,21 @@ def test_a_switch_draws_the_ref_it_shows(page):
 
 
 def test_the_agent_shot_waits_for_a_model_a_switch_asks_for(page):
-    """Back to the start, then the agent switches to the dead state and shoots at once (the look verbs' path): the
-    shot waits for the twin's model, so its census has nothing waiting and the twin is drawn in that shot."""
+    """The look verbs' page in the start, then the agent switches to the dead state and shoots at once: the shot
+    waits for the second twin's model (one the page already holds), so nothing is waiting and the twin is drawn."""
     page.goto(page.base + "/?agent=1")     # the look verbs' page: it starts in the game's start, the twin hidden
     page.wait_for_function("window.agent && studio.ready", timeout=60000)
     assert not page.evaluate("studio.ours.place.byId.has('fixplace.DEAD')")
     x, y, z = page.spot
     out = page.evaluate("""async ([x, y, z]) => {
-        const cam = { w: 320, h: 240, pos: [x - 3000, y - 3000, z + 2500], target: [x, y, z + 300] };
-        // the twin's model fetched once (dead), its group let go of (the start), then shown again: the model is
-        // already in the page, so its arrival is a promise already kept, which the shot must still wait for
-        agent.questState('dead'); await agent.shot(cam); agent.questState(null); await agent.shot(cam);
+        // on the second twin from the north, its own-model brother (DEAD) behind the camera, out of the frame
+        const cam = { w: 320, h: 240, fov: 30, pos: [x, y + 700 + 3000, z + 1500], target: [x, y + 700, z + 300] };
+        await agent.shot({ ...cam, pos: [x - 1500, y - 1500, z + 2500], target: [x + 1500, y + 1500, z + 300] });   // the start: the living tree and its model
+        const hist = [...studio.ours.place.groups.values()].find((g) => g.refs.some((r) => r.id === "fixplace.HIST"));
+        if (!hist?.fullParts) return { setup: "the living tree did not load" };
+        await agent.shot(cam); await agent.shot(cam);   // everything the frame needs in the start settled first
         agent.questState('dead');
-        const s = await agent.shot({ w: 320, h: 240, pos: [x - 3000, y - 3000, z + 2500], target: [x, y, z + 300] });
-        const g = [...studio.ours.place.groups.values()].find((g) => g.refs.some((r) => r.id === 'fixplace.DEAD'));
+        const s = await agent.shot(cam);
+        const g = [...studio.ours.place.groups.values()].find((g) => g.refs.some((r) => r.id === 'fixplace.DEAD2'));
         return { census: s.census, loaded: !!g?.fullParts, drawn: g?.full?.[0]?.count || 0 }; }""", [x, y, z])
     assert out["census"]["waiting"] == 0 and out["loaded"] and out["drawn"] == 1, out
