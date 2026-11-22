@@ -36,3 +36,14 @@ def test_a_changed_tree_leaves_them_in_the_air():
 def test_no_hist_no_lanterns():
     ext = [{"id": "p.f", "base": "P:fern", "kind": "plant", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0], "scale": 1.0}]
     assert hang.plan("p", ext, BASES, lambda x, y: 0.0, lambda m: PTS, lambda b: SHAPE, [3]) == []
+
+
+def test_a_dead_twin_carries_none_and_a_lantern_follows_its_trees_parent():
+    on = {"ref": "p.parent", "flags": "0"}
+    ext = [{"id": "p.hist", "base": "P:hist", "kind": "tree", "pos": [1000.0, 2000.0, 50.0], "rot": [0, 0, 0],
+            "scale": 1.0, "enable_parent": on},
+           {"id": "p.histdead", "base": "P:hist", "kind": "tree", "pos": [1000.0, 2000.0, 50.0], "rot": [0, 0, 0],
+            "scale": 1.0, "enable_parent": {"ref": "p.parent", "flags": hang.OPPOSITE}}]
+    out = hang.plan("p", ext, BASES, lambda x, y: 50.0, lambda m: PTS if m == "hist.nif" else [], lambda b: SHAPE, [2])
+    assert out and {r["seat"]["on"] for r in out} == {"p.hist"}
+    assert all(r["enable_parent"] == on for r in out)

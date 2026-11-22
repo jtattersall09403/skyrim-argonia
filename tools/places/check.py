@@ -1759,6 +1759,9 @@ def main(argv: list[str]) -> int:
                 print(f"     {f}")
             for f in ac:
                 print(f"     {f}")
+        from tools.places import timelog
+        timelog.count("checks_green", sum(1 for v in res.values() if not v))
+        timelog.count("checks", len(res))
         print(f"check {a.place_id}: {sum(1 for v in res.values() if not v)}/{len(res)} green in {report['check_s']} s")
         print(handover_line(a.place_id, Path(a.places_dir)))
     return 0 if not any(res.values()) else 1

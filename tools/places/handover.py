@@ -28,9 +28,10 @@ def changed_at(root: Path, d: Path) -> float:
     """When a place's files last changed: the later of its last commit and any uncommitted edit (a checkout's
     file times are the checkout's, so the commit time is the honest one). The owner's saves and notes (`edits/`) are
     records of studio work, not the draft: a save does not make the built check old. The promise list and the quest
-    states (`promises.jsonl`, `states.jsonl`) are read by the checks, never built into the plugin: they do not either."""
+    states (`promises.jsonl`, `states.jsonl`) are read by the checks, never built into the plugin: they do not either, nor does the time log
+    (`timelog.jsonl`, tools/places/timelog.py)."""
     import subprocess
-    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits", f":(exclude){rel}/promises.jsonl", f":(exclude){rel}/states.jsonl"]
+    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits", f":(exclude){rel}/promises.jsonl", f":(exclude){rel}/states.jsonl", f":(exclude){rel}/timelog.jsonl"]
     try:
         ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
                                   capture_output=True, text=True, timeout=30).stdout.strip() or 0)
@@ -39,7 +40,7 @@ def changed_at(root: Path, d: Path) -> float:
     except (OSError, ValueError, subprocess.SubprocessError):
         ct, dirty = 0.0, "x"
     if dirty or not ct:
-        ct = max([ct] + [f.stat().st_mtime for f in d.rglob("*.json*") if f.relative_to(d).parts[0] not in ("edits", "promises.jsonl", "states.jsonl")])
+        ct = max([ct] + [f.stat().st_mtime for f in d.rglob("*.json*") if f.relative_to(d).parts[0] not in ("edits", "promises.jsonl", "states.jsonl", "timelog.jsonl")])
     return ct
 
 
@@ -70,7 +71,27 @@ def main(argv: list[str]) -> int:
     print(line)
     reach_ok, reach_line = stock_reach(a.place_id)
     print(reach_line)
-    return 0 if ok and reach_ok else 1
+    log_ok, log_line = timelog_marked(Path(a.places_dir) / a.place_id)
+    print(log_line)
+    return 0 if ok and reach_ok and log_ok else 1
+
+
+def timelog_marked(d: Path) -> tuple[bool, str]:
+    """(passes, a line saying so): a place whose time log has commands (tools/places/timelog.py) has phase markers too,
+    one for each step of the order of work the draft did. A place with no log passes (drafted before the log)."""
+    import json
+    try:
+        rows = [json.loads(x) for x in (d / "timelog.jsonl").read_text().splitlines() if x.strip()]
+    except (OSError, ValueError):
+        return True, "time log: none (drafted before the log)"
+    phases = {r["name"] for r in rows if r.get("t") == "phase"}
+    if any(r.get("t") == "cmd" for r in rows) and not phases:
+        return False, "time log FAILS: commands logged but no phase marked; `python -m tools.places timelog <place> phase \"<step>\"` at each step (place-system)"
+    op = [r for r in rows if r.get("t") == "pass"][-1:]
+    if op and op[0].get("edge") == "start":
+        return True, (f"time log: pass {op[0].get('what')!r} is still open; end it (`timelog <place> pass end`) and put "
+                      f"`timelog <place> report --md` in the hand-back")
+    return True, f"time log: {len(rows)} rows, {len(phases)} phases marked"
 
 
 def stock_reach(pid: str) -> tuple[bool, str]:

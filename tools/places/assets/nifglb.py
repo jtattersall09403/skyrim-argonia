@@ -136,10 +136,40 @@ def drawable(head: dict) -> list[dict]:
     return solid or shapes
 
 
-def build(head: dict, level: int = 0) -> tuple[bytes, dict]:
-    shapes = drawable(head)
+SWAP_VERSION = 3   # bump when how a swap is drawn changes: part of a swapped variant's cache key only
+
+
+def swapped(shapes: list[dict], swap: list[dict] | None) -> list[dict]:
+    """The shapes as a record's alternate textures (MODS) have the game draw them: a shape named in the swap takes the
+    swap's texture set (its diffuse and normal map in place of the NIF's); a shape swapped to the engine's hardcoded
+    NullTextureSet (`null: true`, a set with no textures, which mods use to take a shape away) is not drawn; a shape
+    whose set is absent from every plugin (`textures` null, not the null set) keeps the mesh's own textures. A shape
+    is matched by its 3D name; where the NIF has two shapes of one name, by the swap's 3D index (the shape's place
+    among the NIF's shapes) as well."""
+    if not swap:
+        return shapes
+    named: dict[str, list[dict]] = {}
+    for s in shapes:
+        named.setdefault(s["name"] or "", []).append(s)
+    gone, retex = set(), {}
+    for a in swap:
+        cands = named.get(a.get("shape") or "", [])
+        if len(cands) > 1:
+            cands = [s for s in cands if s.get("order") == a.get("index")] or cands
+        for s in cands:
+            if a.get("textures"):
+                retex[id(s)] = [a["textures"].get("diffuse") or "", a["textures"].get("normal") or ""]
+            elif a.get("null"):
+                gone.add(id(s))
+    return [dict(s, tex=retex[id(s)] + list(s["tex"][2:])) if id(s) in retex else s for s in shapes if id(s) not in gone]
+
+
+def build(head: dict, level: int = 0, swap: list[dict] | None = None) -> tuple[bytes, dict]:
+    for i, s in enumerate(head["shapes"]):
+        s.setdefault("order", i)
+    shapes = swapped(drawable(head), swap)
     if not shapes:
-        raise MeshError("no drawable shape (all hidden, skinned or empty)")
+        raise MeshError("no drawable shape (all hidden, skinned, empty or swapped away)")
     full = sum(s["tris"] for s in shapes)
     if level >= 1 and full > LIGHT_TRIS:
         ratio = 1.0 - max(LIGHT_TRIS, full // 4) / full

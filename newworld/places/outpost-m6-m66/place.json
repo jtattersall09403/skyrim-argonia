@@ -252,7 +252,8 @@
   "agent-20261121T211426",
   "agent-20261121T212737",
   "agent-20261122T033055",
-  "agent-20261122T120000"
+  "agent-20261122T120000",
+  "agent-20261122T134711"
  ],
  "sap": {
   "added": [
@@ -282,11 +283,6 @@
     "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
     "base": "King of the Murkmire.esp:1A845D",
     "on": "outpost-m6-m66.TF70YOUNGHIST"
-   },
-   {
-    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
-    "base": "King of the Murkmire.esp:1A845D",
-    "on": "outpost-m6-m66.TF70YOUNGHISTDEAD"
    }
   ]
  },

@@ -1339,6 +1339,8 @@ def state_save(sc, place):
 def shoot_route(d, sc, M, r: dict, root: Path, inside: bool, fill: bool, tag: str, stale: bool, again=False) -> dict:
     """Every new station of one route shot (each station's looks in one page call, failures retried by nudging),
     judged, and laid out as strips, a forward filmstrip, a map, tiles and a table."""
+    from tools.places import timelog
+    timelog.count("routes")
     from tools.places.look import framing
     w, h = tile_size()
     out = root / r["name"]

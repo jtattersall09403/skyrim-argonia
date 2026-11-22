@@ -1,0 +1,85 @@
+{
+ "save_id": "agent-20261122T120547",
+ "place_id": "jal-veesa",
+ "name": "the dead Hist's dry pool: a bed of cracked marsh mud in the hollow",
+ "at": "2026-11-22T12:05:47Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK046PLACE",
+    "base": "King of the Murkmire.esp:45DEFC",
+    "kind": "rock",
+    "pos": [
+     -55100.0,
+     -505950.0,
+     470.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the dead Hist's dry pool (hist-dead): a bed of cracked marsh mud in the hollow where the sap lay, shown only in the dead state, over the source's rock the sap covered",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T12:05:47Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK046PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55100.0,
+     -505950.0,
+     470.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55100.0,
+     -505950.0,
+     432.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T12:05:47Z"
+  }
+ ]
+}

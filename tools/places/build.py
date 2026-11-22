@@ -182,7 +182,10 @@ def _build_tool() -> None:
 
 def tool(*args: str) -> None:
     with heavy_lock():   # 5 to 7 GB each: one at a time across every worktree
+        t0 = time.time()
         r = subprocess.run(["dotnet", str(TOOL), *args], env=DOTNET_ENV, capture_output=True, text=True)
+        from tools.places import timelog
+        timelog.count("dotnet_s", int(time.time() - t0))
     if r.returncode:
         raise SystemExit(f"ArgoniaPlacesBuild {args[0]} failed\n{(r.stdout + r.stderr)[-4000:]}")
     if r.stdout.strip():
@@ -2213,6 +2216,8 @@ def main(argv: list[str]) -> int:
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
         log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(plan['refs'])} refs, {len(plan['interiors'])} interiors, "
             f"{len(plan['land'])} land cells, {len(plan['clear'])} cleared, {len(plan['navmesh']['navm'])} navmeshes")
+        from tools.places import timelog
+        timelog.count("refs", len(plan["refs"]))
         for n in plan["notes"]:
             log(f"  note: {n}")
     if a.plan:

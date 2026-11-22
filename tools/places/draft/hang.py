@@ -2,7 +2,8 @@
 
 The hang points of a tree are measured from its mesh (tools/newworld/dressing/hang_points.py: limb undersides 2.5 to
 7 m up, thick enough, with clear air below and a lantern's width from the trunk). A carrier is an exterior tree row
-whose base names Hist, or a tree within NEAR of one. Each carrier takes a count drawn from the source mod's own
+whose base names Hist, or a tree within NEAR of one; a dead twin (enabled opposite to its parent) carries none, and a
+lantern follows its tree's enable parent, so it goes with the tree in a quest state. Each carrier takes a count drawn from the source mod's own
 counts per carrier (King of the Murkmire: the `hanging-hist-lanterns` row of newworld/sources/dressing/kinds.json),
 seeded by the tree's row id, one lantern per hang point. A lantern hangs from the point by its rope's top, posed by
 the tree's rotation and scale, with a free yaw and no tilt; it is seated `on` the tree (its dz the drop from the
@@ -27,6 +28,7 @@ LANTERNS = ("King of the Murkmire.esp:1A845D", "King of the Murkmire.esp:2F01D6"
 NEAR = 1536.0          # units: a tree this close to a Hist carries too
 PART = 300.0           # units: rows this close to the carrier are parts of the same tree
 BELOW_MIN = 60.0       # units of air under a lantern's bottom
+OPPOSITE = "SetEnableStateToOppositeOfParent"
 SOLID = ("building", "static", "clutter", "furniture", "container", "door", "rock", "tree", "activator")  # rows with a body
 
 
@@ -34,9 +36,15 @@ def per_carrier(root) -> list[int]:
     return json.loads((root / KINDS).read_text())["kinds"][KIND]["per_carrier"]
 
 
+def dead_twin(r: dict) -> bool:
+    """A tree shown only when its enable parent is off (a dead Hist standing in for a living one in an ending): the
+    people who hang lanterns are gone with the living tree, so it carries none."""
+    return OPPOSITE in str((r.get("enable_parent") or {}).get("flags") or "")
+
+
 def carriers(ext: list[dict], bases: dict) -> list[dict]:
     """Tree rows that carry: a Hist, and the trees within NEAR of one."""
-    trees = [r for r in ext if (bases.get(r["base"]) or {}).get("kind") == "tree"]
+    trees = [r for r in ext if (bases.get(r["base"]) or {}).get("kind") == "tree" and not dead_twin(r)]
     hist = [r for r in trees if "Hist" in ((bases.get(r["base"]) or {}).get("edid") or "")]
     return [r for r in trees if r in hist or any(math.dist(r["pos"][:2], h["pos"][:2]) <= NEAR for h in hist)]
 
@@ -88,7 +96,8 @@ def plan(place_id: str, ext: list[dict], bases: dict, ground, points_of, shape_o
                         "pos": [round(x, 2), round(y, 2), round(z, 2)], "rot": [0.0, 0.0, round(rz, 5)], "scale": 1.0,
                         "layer": "place", "flags": [], "src": None,
                         "seat": {"mode": "on", "on": t["id"], "dz": round(z - t["pos"][2], 2)},
-                        "why": f"a rope lantern on hang point {int(hn)} of {bases[t['base']].get('edid')}"})
+                        "why": f"a rope lantern on hang point {int(hn)} of {bases[t['base']].get('edid')}"}
+                       | ({"enable_parent": dict(t["enable_parent"])} if t.get("enable_parent") else {}))
             n += 1
     return out
 
@@ -130,7 +139,7 @@ def apply(st, log=print) -> None:
     have = {r["id"]: r for r in st.ext}
     for r in rows:
         if r["id"] in have:
-            have[r["id"]].update({k: r[k] for k in ("base", "pos", "rot", "seat", "why")})
+            have[r["id"]].update({k: r[k] for k in ("base", "pos", "rot", "seat", "why", "enable_parent") if k in r})
         else:
             st.ext.append(r)
     st.place["hang"] = {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in rows]}
