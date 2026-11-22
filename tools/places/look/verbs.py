@@ -1067,7 +1067,10 @@ def _place(sc, pos, o, sess) -> list[dict]:
             fill_from_catalogue(bases, [pos[0]])
         except Exception:  # noqa: BLE001 - no catalogue here: the kind falls back below
             pass
-    own = ((bases or {}).get(pos[0]) or {}).get("kind") if isinstance(bases, dict) else None
+    b = ((bases or {}).get(pos[0]) or {}) if isinstance(bases, dict) else {}
+    model = str(b.get("model") or "").replace("\\", "/").lower()
+    # an effect (smoke, a fire's flames) is `other` as the extractor files it (Extractor.KindOfBase), never a solid
+    own = "other" if model.startswith("effects/") or model.rsplit("/", 1)[-1].startswith("fx") else b.get("kind")
     next_n(sc, sess, "PLACE")
     row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or own or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
