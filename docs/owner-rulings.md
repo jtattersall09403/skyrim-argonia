@@ -132,6 +132,11 @@ added here the day they are made, with the date and the issue.
   owner to check it (2026-11-22).
 - No owner capture sets for places: the owner looks in the studio. Reports do not repeat that nothing has been seen
   in game or that feel is untested (2026-11-22).
+- Gear and item rules are authored for our place (its region, culture, kind, tier, wealth, its holders' trades),
+  never from what the source place's mods happened to supply; most sources will have no Argonian gear of their own
+  (2026-11-22; Jal-Veesa's stock stays as it is).
+- A piece is never hidden by pointing it at a missing texture: the game draws that as a lilac block. Hide it with a
+  fully transparent texture or another proper way (2026-11-22, on the dead Hists' leaves).
 
 ## The game
 
