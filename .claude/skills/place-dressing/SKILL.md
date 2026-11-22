@@ -40,6 +40,16 @@ a crown over trunk bases is one Hist with one pool. Run `sap` after a Hist is ad
 check` fails a living Hist with no pool that `sap.none` does not list. How the pool must read in the game, and which
 field to change if it does not: [dressing](../../../docs/design/dressing.md), Hist sap.
 
+Where the record, its people or a quest say eggs are kept or hatched at the Hist (an egg-pool, hatchlings at the
+pool), the pool holds them: King of the Murkmire's `ArgonianEgg*01` (Pale, Bronze, Black, Blue, Red) at scale 1.3
+to 1.5, tilted on their sides as Seekhat Yol's hatchery lays them (rot x about 2 to 2.7, y up to 1), their middles
+at the sap's surface so each shows a dome over the amber, a hand's breadth apart over most of the pool; and on its
+rim a few `ArgonianEggNest01` (scale about 1.9) with an egg or two in each. The size of the clutch says whose it
+is: a town's egg-pool fills the pool, a small warden's or a camp's clutch keeps to one side of it. Each egg is
+probed: one over the pool's deeper middle is sunk until its feet are in the sap. The tree-minder or the egg-tenders
+the people rows name are the eggs' keepers (`place-people`), and an ending that kills the Hist takes the eggs with
+it (the quest's dead-tree state).
+
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
 water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an
 exterior row seated `stilts` on a flat low spot between roots, clear of streets, houses and the water line.

@@ -1,0 +1,235 @@
+{
+ "save_id": "agent-20261122T033221",
+ "place_id": "jal-veesa",
+ "name": "baskets of fish on the fish-smoker's stall",
+ "at": "2026-11-22T03:32:21Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK036PLACE",
+    "base": "ccBGSSSE001-Fish.esm:000D6E",
+    "kind": "static",
+    "pos": [
+     -51690.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "baskets of fish on the fish-smoker's stall (trader-innkeeper: a fish-smoker's stall), as the source's fishers set them",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:32:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK037PLACE",
+    "base": "ccBGSSSE001-Fish.esm:000D6E",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "baskets of fish on the fish-smoker's stall (trader-innkeeper: a fish-smoker's stall), as the source's fishers set them",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:32:21Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK038PLACE",
+    "base": "ccBGSSSE001-Fish.esm:000D6E",
+    "kind": "static",
+    "pos": [
+     -51550.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "baskets of fish on the fish-smoker's stall (trader-innkeeper: a fish-smoker's stall), as the source's fishers set them",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:32:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK036PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51690.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51690.0,
+     -509790.0,
+     453.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:32:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK037PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51620.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51620.0,
+     -509790.0,
+     453.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T03:32:21Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK038PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51550.0,
+     -509790.0,
+     478.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51550.0,
+     -509790.0,
+     453.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-22T03:32:21Z"
+  }
+ ]
+}
