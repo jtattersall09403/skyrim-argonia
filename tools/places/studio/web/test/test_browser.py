@@ -1745,3 +1745,34 @@ def test_32_drag_maps_to_the_view(pad):
     pad.page.locator("#panel-body").get_by_role("button", name="Undo", exact=True).click()
     assert len(pad.ops()) == n - 1
     pad.ev("studio.tools.opts.snapFaces = true; studio.tools.opts.step = 10; studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 33: the camera turns about the selection ----------
+def test_33_camera_about_the_selection(pad):
+    pad.page.click("#rail [data-tool=select]")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", [house[0] + 600, house[1] + 300, house[2]], dist=3000, pitch=0.9)
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    c = pad.ev("studio.pivotFor(studio.ours.view)")
+    box = pad.ev("(() => { const b = document.querySelector('#view-ours .canvas-holder').getBoundingClientRect(); return [b.x, b.y, b.width, b.height]; })()")
+    a = (box[0] + box[2] * 0.15, box[1] + box[3] * 0.8)
+    s0, yaw0 = pad.screen("ours", c), pad.ev("studio.ours.view.rig.yaw")
+    pad.finger_drag(a, (a[0] + 120, a[1] - 30))
+    s1 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.yaw") != yaw0
+    assert abs(s1[0] - s0[0]) < 6 and abs(s1[1] - s0[1]) < 6, (s0, s1)
+    d0 = pad.ev("studio.ours.view.rig.dist")
+    pad.pinch((box[0] + box[2] * 0.3, box[1] + box[3] * 0.5), 60, 140)
+    s2 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.dist") < d0 and abs(s2[0] - s1[0]) < 14 and abs(s2[1] - s1[1]) < 14, (s1, s2)
+    # nothing selected: the view turns about where it looks, as before
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    t0 = pad.ev("studio.ours.view.rig.target.toArray()")
+    pad.finger_drag(a, (a[0] + 80, a[1]))
+    assert pad.ev("studio.ours.view.rig.target.toArray()") == t0
+    # Frame brings the selection into the middle
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    pad.page.click("#frame-sel")
+    sc = pad.screen("ours", c)
+    assert abs(sc[0] - (box[0] + box[2] / 2)) < box[2] * 0.15 and abs(sc[1] - (box[1] + box[3] / 2)) < box[3] * 0.2, (sc, box)
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")

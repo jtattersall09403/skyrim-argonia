@@ -860,6 +860,12 @@ along the axis being moved); Stay on what it sits on (off: a thing seated on ano
 when moved). `test/move_map.test.mjs` proves the mapping at a view nearly straight down, three-quarter and nearly
 level; the browser test drags at the same three.
 
+**The camera about the selection** (`view.js`). With something selected in our place, turning the view (one
+finger, the mouse's other button, the right thumb stick's look excepted) turns it about the selection, a unit's middle
+when a unit is selected whole, which stays where it is on the screen; pinching or the wheel zooms towards it. With
+nothing selected the view turns and zooms about where it looks. Frame in the view's bar brings the selection into
+view whole.
+
 **People in Select** (`people.js`). A tap on a person with Select picks them (before anything behind) and opens
 their People panel: who they are, then Their spots, each where it is (a thing by its name, or a spot of their own)
 with Show it, which sets the hour they are there, goes to its room and frames it with a ring: where they sleep (their
