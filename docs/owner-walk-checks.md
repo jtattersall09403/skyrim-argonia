@@ -140,30 +140,12 @@ All 11 quests are built and every stage reads back from the plugin; none has run
 quest broke or stopped making sense. Positions marked * were picked from navmesh and never walked: say if anyone floats,
 sinks or stands in a wall.
 
-- [ ] (superseded by 9.2 and 9.3) **7.1 The opening (MQ01).** The race menu opens in a barge hold at Lilmoth's dock; you wear a tunic and footwraps.
-      Ask Wuleen-Sei "Why am I here?" and answer; leave by the hold's door and follow the gang along the shore to the
-      camp's fire at the edge of Hereguard Plantation. The attack: Mee-Tuja is killed and the huts burn; run to the shed
-      or into the water under the huts, then south to the shore; the one you saved follows.
-- [ ] **7.2 The Veiled Reed (MQ03).** On the shore: taste the spilled sap in the shed or dive for the brass tag in the
-      sunk fish-trap; "I am ready to go". In the house in Lilmoth*: tell Nesh-Deeka what you saw, get Ties to talk, answer
-      "I will serve the Reed" or "Not yet"; the dream in the hold, then back in the house.
-- [ ] **7.3 MQ04 and MQ05.** Low-Reed Village's Hist (dead tree while it is turned, a living one after: does it look
-      right?), Pays-Late's gum pot lifted after dark; then the coast ship to Helstrom's river landing, using the new door
-      between the ship's two halves both ways (a new building block), and on to Helstrom.
-- [ ] **7.4 Helstrom's locals.** LQ30: Haj-Wan inside the basin gate, the viper among the roots, Sei-Wan. LQ25 (after MQ05
-      reaches its basin warning): Okan-Zish by the landing's houses, the crocodile under the plank walk, the Bait Bucket.
-- [ ] **7.5 Night-Reed (TG01, TG02).** At Soulrest's house on the dock, Tilts-The-Jug's test and the thief Keeps-What-Floats;
-      the trapdoor north of Pusbottom, Bent-Spine, the lockbox in the deep water (does the horker-tusk "Worn Bone Figurine"
-      pass as a bone trinket?).
 - [ ] **7.6 Chainbreakers (BC01 to BC03).** In Blackrose, Never-Sold sends you to the estate landing* north of town;
       Rows-For-Another down the channel at night; then the fire in the old stone house* on the shore at Blackrose's east
       edge, its two gate-keepers outside its west wall (BC02); then Heavy-Rope and Ussa-Rekh on Soulrest's open dock (BC03).
 - [ ] **7.7 Warmth and afterwards.** A quest person you have helped greets you more warmly than a stranger does. After
       BC01 ends, speak to Rows-For-Another: a short greeting about being out of the estate's hands (say the line, or
       "silent").
-- [ ] (superseded: all eleven now proven on a real floor or moved onto one) **7.8 Eleven spots the off-game check could not prove** (the navmesh is there, but no visible floor under it): say
-      if anyone floats or stands in nothing at MQ04's camp by Low-Reed Village (the likeliest problem), BC02's keep and
-      gate, LQ30's Sei-Wan and the viper, MQ05's second wasp, and MQ01's Ri-Sakka and Never-Sold.
 
 ## 8. Walk 4's fixes (built and deployed 2026-11-08)
 
@@ -231,9 +213,6 @@ why the gang could not march to the old camp; the new camp is on the same stretc
       Wuleen-Sei explains that months are added for food; the others each say something of their own or send you to
       her. The same rule was applied to every place the first act's quests visit: say if you meet two people in one
       place telling you the same thing in nearly the same words.
-- [ ] **10.4 The Reed's house, without the oath** (part of 7.2). In the house in Lilmoth answer "Not yet" instead of
-      swearing. You can still leave the house and come back in, and Nesh-Deeka still gives you the next task. Before,
-      the door was locked to a key only the oath gave, so this path could not continue.
 - [ ] **10.5 Markers and plain steps in every quest** (as you play 7.2 to 7.7). Every objective now has a marker,
       every journal entry tells only the next step, and a person who has already given you a quest no longer offers
       it again once it is done. Say which quest and step if a marker is missing or points at nothing, or if someone
@@ -274,60 +253,6 @@ Do 12.1 to 12.3 in one game, in order. 12.4 and 12.5 can follow in the same game
 optional. **How to reply:** on the walk's issue, give each check's number and either "passed" or what you saw
 instead (the step, and the words, marker or message that was wrong or missing).
 
-- [ ] **12.1 The opening: "No Name on the Work Roll"** (a new game, about twenty minutes). You make your character in
-      the hold of a ship, as before. The journal (J) already shows "No Name on the Work Roll" with "I woke in the hold
-      of a ship, moored below Hereguard Plantation, west of Lilmoth in Black Marsh...". Go up the stairs and through
-      the door at the top onto the deck.
-      1. Buys-The-Months, a broker (a man who hires out the work of people who owe him months of work), stands on the
-         deck a step from the door, facing it, with a quest marker over him. He speaks first without being asked and
-         without walking up (the deck has no ground he can walk on, so he stays where he stands). Pass: he begins "I
-         am Buys-The-Months, a broker. This is my ship, moored below Hereguard Plantation." and ends "You are no
-         affair of mine. Get off my ship." If he does not speak first, speak to him: asking "Who are you?" gives the
-         same words. The objective is "Speak to Buys-The-Months on the deck of the ship."
-      2. Ask him "Where can I find work, then?". Pass: the objective becomes "Find Nesh-Deeka in Salts-The-Catch's
-         house, south of the second big ship, anchored off Lilmoth's own dock." with a marker on the compass and on
-         the map. Follow it: east along the shore, past the old lighthouse, into Lilmoth. Salts-The-Catch's house
-         stands south of the second big ship, beside a wooden walkway, and Nesh-Deeka stands upstairs in it.
-      3. Say "Buys-The-Months says you pay for anyone off his ship." Pass: she tells you of the burnt camp and of the
-         Veiled Reed (the quiet service of the state that rules Black Marsh), and the objective becomes "Hear Nesh-Deeka
-         out, then give her an answer on the Veiled Reed's offer." Before saying yes, ask her the questions she now
-         offers ("Who was the woman with the knotted cord?", "What is the Veiled Reed?", "Why would the Reed want
-         me?", "What does the Reed pay?", "Who does the Reed answer to?", "Was the courier who died at the camp one
-         of yours?", "What are you not telling me?"); each is answered and none moves the quest on. Then say "I will
-         work for the Reed."
-      Pass at the end: she gives you 50 gold, the journal lists the quest as completed with "I took work with the
-      Veiled Reed, and Nesh-Deeka put fifty gold in my hand. She has told me the first work the Reed wants of me.",
-      and a new quest, "The Cutters' Jar", appears with "Nesh-Deeka gave me the Veiled Reed's first work...".
-- [ ] **12.2 Anyone can die** (straight after 12.1, in Nesh-Deeka's house). Save first. Kill Nesh-Deeka. Pass: one
-      message box reads "With this death the root of what was to come is cut: the main story can no longer be
-      finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.", and the journal
-      lists "The Cutters' Jar" as failed with "Nesh-Deeka is dead. I will not learn from her what the cutters wanted
-      with the jar." The message shows once and not again. Then load the save you made.
-- [ ] **12.3 The quest after it: "The Cutters' Jar"** (the same game, after loading). Dives-Without-A-Rope is one of
-      the broker's gang; she carried a jar of sap off the burnt camp.
-      1. The objective "Ask Dives-Without-A-Rope for the jar, in the ship's hold." marks her. Go back west to the ship
-         you woke in and down into its hold. Say "Nesh-Deeka wants the jar you carried off the camp." Pass: she
-         refuses ("No. That jar holds sap of Nine Bends, my own tree...") and offers three answers, each showing its
-         label: "(Persuade) The one I work for means to find who cut your tree. We can learn it from the jar.", "I
-         will give you twenty gold for the key. (20 gold)" and "Then I will take it."
-      2. Pick the "(Persuade)" answer. A new character's Speech is below the 25 it needs, so it fails. Pass: she
-         answers in her own words, "Words cost nothing. I have heard plenty in this hold, and none of them gave me
-         back my tree. Pay me twenty gold, a month off my roll, and the key is yours...", and the quest does not move.
-      3. Ask again and pick "I will give you twenty gold for the key. (20 gold)". Pass: 20 gold leaves you, you get
-         "Key to Dives-Without-A-Rope's Lockbox", the journal says "I paid Dives-Without-A-Rope twenty gold. She gave
-         me the key to her lockbox in the ship's hold. I'm to take the jar from the lockbox and bring it to
-         Nesh-Deeka.", and the objective "Bring the jar from Dives-Without-A-Rope's lockbox to Nesh-Deeka." puts a
-         marker over the lockbox ("Dives-Without-A-Rope's Lockbox", among the crates under the lanterns in the hold)
-         and one on Nesh-Deeka. (The other ways, if you want to see them on a reload: pick the lockbox's Novice lock,
-         or pick her pocket for the key.)
-      4. Open the lockbox with the key and take the "Cutters' Jar of Sap". Pass: it is a plain take, not a theft
-         (the prompt says "Take", not "Steal", and nobody reacts), because she gave you the key.
-      5. Back in Salts-The-Catch's house, say "Here is the jar Dives-Without-A-Rope carried off the camp.", then
-         "I will taste a drop." Pass: the jar leaves you; you get 25 gold and "Nesh-Deeka's Page"; the quest is
-         completed with "I tasted the cutters' sap in Salts-The-Catch's house. Nesh-Deeka wrote down what I said
-         under it..."; the page, read from your inventory, says "Under the sap you spoke of a ship's hold, empty,
-         with roots grown up through its deck in a ring like trees..."; and the next quest, "The Tree That Turned
-         Its Face", appears.
 - [ ] **12.4 One faction quest: the Chainbreakers' first, "Four Months for a Boat", by the break-in** (the same game
       or a new one; about half an hour). The Chainbreakers are a small band in Blackrose, a walled town in the
       south-east of Black Marsh, who free people held by an Owing (years of work owed for a debt). Their leader,
@@ -356,33 +281,6 @@ instead (the step, and the words, marker or message that was wrong or missing).
          there more work?" Pass: the second quest, "One Out of the Smoke", starts with "Never-Sold sent me to the
          heirs' post on Blackrose's east shore...".
       Say also whether anyone saw you take the leaf.
-- [ ] **12.5 One Night-Reed quest: "A Dry Hand in a Wet City", and one locked door** (the same game or a new one;
-      about twenty minutes). The Night-Reed Chapter is a guild of careful thieves. Soulrest is the small dock town
-      east of Lilmoth along the shore. With the console: `coc 01cabinintDUPLICATE001` puts you inside the dock house
-      where Tilts-The-Jug stands; S'Tabi, the Khajiit trader, stands on the dock a few steps east of its door.
-      1. Ask S'Tabi "Is there quiet work on this dock?" Pass: "A Dry Hand in a Wet City" starts and marks
-         Tilts-The-Jug, inside the house just west of him.
-      2. Ask Tilts-The-Jug "Is there work here for careful hands?" Pass: she gives you three lockpicks; the objective
-         "Take the Blue Jasper Necklace from Keeps-What-Floats's strongbox, or get his key from him (Speech 35, or 60
-         gold)." marks the necklace (still inside the strongbox) and Keeps-What-Floats, a thief on the shore near her
-         door; and "Keeps-What-Floats's Strongbox" now stands by the houses at the water's edge.
-      3. Pick the strongbox's Novice lock, or pay him sixty gold for the key ("I will pay you sixty gold for the key
-         to your strongbox. (60 gold)"), and take the "Blue Jasper Necklace". Pass: the journal says "I took the Blue
-         Jasper Necklace out of Keeps-What-Floats's strongbox..." and marks Tilts-The-Jug.
-      4. Say to her "I have the necklace." Pass: she takes it and pays you 100 gold, and the objective marks the
-         coast ship's door on Soulrest's dock, the trapdoor on the ruin east of Lilmoth, and Bent-Spine. (To see that
-         the step also raised her regard for you: open the console, click her and type `getrelationshiprank player`;
-         it shows 3.)
-      5. Take the coast ship to Lilmoth and go down the trapdoor, or use the console: `coc 01LilmothDungeon` puts you
-         in the Night-Reed Chapter under Lilmoth. Say to Bent-Spine, the Chapter's fence, "Tilts-The-Jug sent me."
-         Pass: the quest is completed, and the Night-Reed's second quest, "The Drowned Lockbox", starts with
-         "Bent-Spine, the Night-Reed Chapter's fence, has work for me now that I am a Lookout...".
-      6. One locked door, while at Soulrest. The Chainbreakers' third quest has a doorkeeper, Feldril Nethri, who
-         unbars the door of the Broker's house (the north one of the three houses by Soulrest's dock) when talked
-         round. That quest comes after two others, so jump to that moment with the console: first try the door (it
-         is locked), then type `setstage ARG_BC03 21`. Pass: the journal shows "The Broker's Mercy" with "I talked
-         Feldril Nethri round. He unbarred the Broker's door for me...", and the door now opens without a key or a
-         lockpick.
 - [ ] **12.6 Optional, if you have time: one small local quest, "The River Monster"** (any game). Helstrom is the
       walled city in the north of Black Marsh, and the landing is on its river. With the console: `player.moveto
       0B08D5EE` puts you beside Okan-Zish, a rafter of the landing crew, who stands on the rock roots at the landing

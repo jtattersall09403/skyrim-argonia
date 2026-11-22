@@ -55,7 +55,7 @@
 {"place_id":"place.hist-heartland.helstrom","ord":5,"value":"quest.provision.helstrom-inner-city"}
 {"place_id":"place.hist-heartland.helstrom","ord":6,"value":"quest.provision.helstrom-root-archive"}
 {"place_id":"place.hist-heartland.helstrom","ord":7,"value":"quest.provision.helstrom-scalded-throne"}
-{"place_id":"place.hist-heartland.helstrom","ord":8,"value":"quest.provision.helstrom-veiled-reed-office"}
+{"place_id":"place.hist-heartland.helstrom","ord":8,"value":"quest.provision.helstrom-toh-reel-ka-office"}
 {"place_id":"place.hist-heartland.helstrom","ord":9,"value":"quest.provision.lq06-anchor"}
 {"place_id":"place.hist-heartland.helstrom","ord":10,"value":"quest.provision.mq32-epilogue-sockets"}
 {"place_id":"place.hist-heartland.hermit-hut-mad-basin","ord":0,"value":"quest.provision.lq22-anchor"}
@@ -182,7 +182,7 @@
 {"place_id":"place.mercantile-coast.soulrest","ord":2,"value":"quest.provision.st04-anchor"}
 {"place_id":"place.mercantile-coast.soulrest-breaking-yard","ord":0,"value":"quest.provision.soulrest-salvage-market"}
 {"place_id":"place.mercantile-coast.soulrest-divers-yard","ord":0,"value":"quest.provision.soulrest-salvage-market"}
-{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":0,"value":"quest.provision.soulrest-night-reed-den"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","ord":0,"value":"quest.provision.soulrest-eelskins-den"}
 {"place_id":"place.mercantile-coast.sunkfoot","ord":0,"value":"quest.provision.uw03-anchor"}
 {"place_id":"place.mercantile-coast.teeba-enoo-court","ord":0,"value":"quest.provision.canon.alten-meerhleel"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","ord":0,"value":"quest.provision.murkmire-teeth-of-sithis"}
@@ -202,7 +202,7 @@
 {"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":0,"value":"quest.provision.bone-repatriation"}
 {"place_id":"place.pirate-freeholds.bone-repatriation-waystation","ord":1,"value":"quest.provision.lq02-anchor"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"quest.provision.rs05-anchor"}
-{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"quest.provision.salt-teeth-reach-crew"}
+{"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"quest.provision.wreckers-reach-crew"}
 {"place_id":"place.pirate-freeholds.corimont-crosstrees","ord":0,"value":"quest.provision.opening-vantage"}
 {"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":1,"value":"quest.provision.canon.the-owing"}
 {"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":2,"value":"quest.provision.canon.washed-out-variant"}
@@ -239,4 +239,4 @@
 {"place_id":"place.saxhleel-coast.quarantine-village-lagoon","ord":0,"value":"quest.provision.lapsed-cordon"}
 {"place_id":"place.saxhleel-coast.tide-run-delta","ord":0,"value":"quest.provision.tide-gated-route"}
 {"place_id":"place.saxhleel-coast.tide-street-village","ord":0,"value":"quest.provision.drowned-street-dive"}
-{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":0,"value":"quest.provision.umbriel-witness-site"}
+{"place_id":"place.saxhleel-coast.umbriel-shore-memorial","ord":0,"value":"quest.provision.umbriel-mourners-site"}

@@ -9,7 +9,7 @@ consume when raw canon runs out.
 overrides a cited dossier fact.
 
 **Owner decisions of 2026-08-24 are applied and binding** throughout — see the
-decisions block at the foot of [owner-questions.md](owner-questions.md). In
+decisions block at the foot of owner-questions.md. In
 summary: the Hist speak through an
 occasional **great Root Talk convocation at Helstrom** (Q2); **Blackrose Prison is
 a ruin reoccupied by the Blackguards' heirs** (Q3); **Lilmoth is rebuilt but not
@@ -482,7 +482,7 @@ the quest plan's community priors ([docs/quests/10-political-frame.md](../../../
   wary of the Xeech-Leel**, not one of their strongholds. It was
   the An-Xileel's seat, and the An-Xileel killed it; it keeps the Xeech-Leel at
   arm's length and their wardens outside its walls (§1). See
-  [quest-plan-deltas.md](quest-plan-deltas.md) D2.
+  quest-plan-deltas.md D2.
 - **The Hist**: the third tree is **feared and tended anyway** — walled and open,
   a rotating tree-minder's post so no one person ever holds sole communion again,
   a second tender always present when the first listens, and a city rule
@@ -730,7 +730,7 @@ status of every gap. The items this synthesis deliberately hands off:
 | Every settlement's 4E 201 status, magnitude class, ruler and economy | [settlement-register.md](settlement-register.md) |
 | Guilds, orders, foreign magical interests and the Wild Ones | [../topics/guilds-and-orders.md](../topics/guilds-and-orders.md) |
 | Encounter composition, loot provenance, seasonal keying | [../topics/ecology-encounters-loot.md](../topics/ecology-encounters-loot.md) |
-| Proposed quest-plan changes (not applied) | [quest-plan-deltas.md](quest-plan-deltas.md) |
+| Proposed quest-plan changes (not applied) | quest-plan-deltas.md |
 
 ---
 

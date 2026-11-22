@@ -256,18 +256,18 @@ def test_a_studio_save_does_not_make_the_built_check_old(tmp_path):
 def test_a_retired_name_fails_outside_its_allowed_sense_and_owed_paths_shrink(tmp_path):
     import json
     table = {"names": [
-        {"id": "night-reed", "new": "the Eelskins", "match": ["night[-_ ]?reed"], "allow": ["not called the Night-Reed"]},
-        {"id": "rulers", "new": "the Xeech-Leel", "match": ["An-Xileel (officers?|rulers?)"]},
-        {"id": "organism", "new": "cut", "case": True, "match": ["\\bthe Organism\\b"], "allow_paths": ["story/lore/**"]}],
+        {"id": "old-guild", "new": "the New Guild", "match": ["old[-_ ]?guild"], "allow": ["not called the Old Guild"]},
+        {"id": "rulers", "new": "the New Party", "match": ["Old Party (officers?|rulers?)"]},
+        {"id": "council", "new": "cut", "case": True, "match": ["\\bthe Synarchy\\b"], "allow_paths": ["story/lore/**"]}],
         "scope": {"exempt": [{"glob": "docs/owner-rulings.md", "why": "history"}],
                   "quoted": {"globs": ["docs/phases/**"]},
                   "owed": [{"glob": "plugin/**", "why": "next quest build"}, {"glob": "gone/**", "why": "cleared"}]}}
-    files = {"story/design/a.md": "The Night-Reed meet at dusk.\nA guild not called the Night-Reed.",
-             "story/lore/b.md": "The An-Xileel fell after Umbriel. the Organism died with them.",
-             "story/design/c.md": "An-Xileel officers man the toll. A living organism.",
-             "docs/phases/p.md": "> the Night Reed, in the owner's words",
-             "plugin/q.yaml": "faction_night_reed_chapter",
-             "docs/owner-rulings.md": "the Night-Reed"}
+    files = {"story/design/a.md": "The Old Guild meet at dusk.\nA guild not called the Old Guild.",
+             "story/lore/b.md": "The Old Party fell long ago. the Synarchy died with them.",
+             "story/design/c.md": "Old Party officers man the toll. A living synarchy.",
+             "docs/phases/p.md": "> the Old Guild, in the owner's words",
+             "plugin/q.yaml": "faction_old_guild",
+             "docs/owner-rulings.md": "the Old Guild"}
     (tmp_path / "story/design").mkdir(parents=True)
     (tmp_path / "story/design/retired-names.json").write_text(json.dumps(table))
     for rel, text in files.items():

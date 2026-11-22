@@ -37,8 +37,8 @@
 {"id":"deed.claim.sabinus","name":"Claim sabinus","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.claywater.well-mended","name":"Claywater well Mended","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.coast.cargoes-run","name":"Coast cargoes Run","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
-{"id":"deed.coast.salt-stolen","name":"Salt stolen","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: White Fields' occupant group turns hostile at one (Reed-Sail Compact)."}
-{"id":"deed.coast.toll-evaded","name":"Toll evaded","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: The Paid Arch's occupant group turns hostile at two (Reed-Sail Compact)."}
+{"id":"deed.coast.salt-stolen","name":"Salt stolen","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: White Fields' occupant group turns hostile at one (the ferry pilots)."}
+{"id":"deed.coast.toll-evaded","name":"Toll evaded","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: The Paid Arch's occupant group turns hostile at two (the ferry pilots)."}
 {"id":"deed.coast.wreckers-broken","name":"Coast wreckers Broken","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.cold-gallery.mapped","name":"Cold Gallery mapped","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.cold-holding.opened","name":"Cold Holding opened","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
@@ -114,7 +114,7 @@
 {"id":"deed.dunmer-north.wild-rootworm","name":"Dunmer North wild Rootworm","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.dunmer-north.withdrawal-house-helped","name":"Dunmer North withdrawal House Helped","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.duskfall.taught","name":"Duskfall taught","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
-{"id":"deed.egg-taken","name":"Hist egg taken","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: Hatching Pools turns hostile at one (Many-Root Conclave)."}
+{"id":"deed.egg-taken","name":"Hist egg taken","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: Hatching Pools turns hostile at one (the tree-tenders)."}
 {"id":"deed.eggs.quota-kept","name":"Eggs quota Kept","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.eight-steps.run","name":"Eight Steps run","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.estate.workers-freed","name":"Estate workers Freed","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
@@ -163,7 +163,7 @@
 {"id":"deed.hist.imperial-fringe.gideon.regard","name":"Hist imperial Fringe gideon regard","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.hist.imperial-fringe.stone-talkers-watch.regard","name":"Hist imperial Fringe stone Talkers Watch regard","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.hist.mercantile-coast.lilmoth.regard","name":"Hist mercantile Coast lilmoth regard","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
-{"id":"deed.hist.mercantile-coast.regard","name":"Regard shown the coast Hist","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: Ashroot turns friendly at one and Root-Sakka at two (Many-Root Conclave)."}
+{"id":"deed.hist.mercantile-coast.regard","name":"Regard shown the coast Hist","kind":"counter","status":"derived","notes":"Deed counter read by a hostility flip: Ashroot turns friendly at one and Root-Sakka at two (the tree-tenders)."}
 {"id":"deed.hist.saxhleel-coast.archon-harbour-hist.regard","name":"Hist saxhleel Coast archon Harbour Hist regard","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.hixinoag.found","name":"Hixinoag found","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.hunt.licensed","name":"Hunt licensed","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
@@ -278,6 +278,7 @@
 {"id":"deed.thorn.smuggling-run","name":"Thorn smuggling Run","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.thorn.titles-settled","name":"Thorn titles Settled","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.tide-fair.traded","name":"Tide Fair traded","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
+{"id":"deed.toh-reel-ka.writ-points","name":"Toh-Reel-Ka writ Points","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.tolls.evaded","name":"Tolls evaded","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.tolls.paid","name":"Tolls paid","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.tradehouse.rested","name":"Tradehouse rested","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
@@ -286,7 +287,6 @@
 {"id":"deed.twyllbek.finds-declared","name":"Twyllbek finds Declared","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.umbriel.witnessed","name":"Umbriel witnessed","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.urns.judged","name":"Urns judged","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
-{"id":"deed.veiled-reed.writ-points","name":"Veiled Reed writ Points","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.veterans.heard","name":"Veterans heard","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.vice.debts-run","name":"Vice debts Run","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.vista.reached","name":"Vista reached","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
@@ -294,7 +294,6 @@
 {"id":"deed.wamasu.offered","name":"Wamasu offered","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.watch.kept","name":"Watch kept","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.watch.signals-read","name":"Watch signals Read","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
-{"id":"deed.waykeepers.passages-taken","name":"Waykeepers passages Taken","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.wells.charged","name":"Wells charged","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.westfield.harvest-helped","name":"Westfield harvest Helped","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}
 {"id":"deed.whispers.dig-found","name":"Whispers dig Found","kind":"counter","status":"derived","notes":"Deed counter incremented by play at the place(s) that declare it."}

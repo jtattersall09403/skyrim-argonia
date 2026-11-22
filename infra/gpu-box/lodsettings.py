@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LODSettings for the worlds whose terrain LOD ships without one (the map, docs/phases/4-first-act-built.md W-wrld-map).
+"""LODSettings for the worlds whose terrain LOD ships without one (the map).
 
 The engine reads `Data\\LODSettings\\<world editor id>.lod` to place a world's terrain LOD, and the world map is drawn
 from that LOD. BM&V ships .btr terrain for BlackMarsh, BlackMarsh2, BlackMarshNorth and Valenwood but a .lod for

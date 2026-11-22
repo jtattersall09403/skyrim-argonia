@@ -1,7 +1,7 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/35-cast.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # Cast — the character rules
 
-> Module of the quest/narrative master plan (see [README](README.md)).
+> Module of the quest/narrative master plan (see README).
 > **Read this before writing any named NPC.** It holds the character-design
 > rules: depth tiers, the six character rules, the naming system, the texture
 > kit and the validation checks. The rosters themselves — principal cast,
@@ -39,10 +39,10 @@ Research anchors: the "one distinctive thing, one clear want, doing something"
 formula and the von Restorff 2–3 vivid traits rule; the archetype-plus-
 contradiction fix for stereotype; and the budget rule — *if an NPC can be
 replaced by a door, a sign or a die roll, they do not need a backstory*.
-Sources are listed in [99-sources-credits.md](99-sources-credits.md).
+Sources are listed in 99-sources-credits.md.
 
 **The structural model is Morrowind's, mined from UESP** (evidence with citations in
-[../research/quests-and-cast/morrowind-cast-structure.md](../research/quests-and-cast/morrowind-cast-structure.md)).
+../research/quests-and-cast/morrowind-cast-structure.md).
 The five inferred principles, which §53 turns into rules:
 
 1. **Desks, not companions.** Every Morrowind faction is 3–7 quest-givers, each
@@ -74,7 +74,7 @@ The five inferred principles, which §53 turns into rules:
 ## 52. Depth tiers — effort proportionate to role
 
 Depth is rationed the same way production cost is (the S/M/L tiers in
-[00-overview.md](00-overview.md) §4). **A character gets backstory in proportion
+00-overview.md §4). **A character gets backstory in proportion
 to the player's chances of discovering it.**
 
 | Tier | Who | Required | Forbidden |
@@ -143,7 +143,7 @@ principle is not):
 
 This is Morrowind's actual anti-sameiness mechanism, and it is the rule
 (evidence in
-[../research/quests-and-cast/morrowind-cast-structure.md](../research/quests-and-cast/morrowind-cast-structure.md)).
+../research/quests-and-cast/morrowind-cast-structure.md).
 Every major faction line has:
 
 - **3–5 stationary patrons ("desks")**, each fixed at one post in one
@@ -234,7 +234,7 @@ read whole.
 
 ## 58. The oddities — the wonder budget, for people
 
-[00-overview.md](00-overview.md) §4 requires one purely strange, non-political
+00-overview.md §4 requires one purely strange, non-political
 encounter per region. That rule covered places; the oddities are the people,
 and the roster of instances lives in [36-cast-roster.md](36-cast-roster.md)
 §58.
@@ -282,7 +282,7 @@ world is a C3 we did not budget for.
 
 ## 60. Cast audit and validation
 
-Checks added to [80-technical-architecture.md](80-technical-architecture.md)
+Checks added to 80-technical-architecture.md
 §63, which also marks each check's rule strength (README's hard-rule /
 strong-default / target vocabulary) — checks 4 and 9 below are strong
 defaults, not hard rules:
