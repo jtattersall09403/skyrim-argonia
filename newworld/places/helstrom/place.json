@@ -370,8 +370,8 @@
     "base": "King of the Murkmire.esp:05CCD1",
     "kind": "building",
     "pos": [
-     -32600.0,
-     -622900.0
+     -33112.0,
+     -623412.0
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
@@ -382,8 +382,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -32273.1,
-     -622647.0
+     -32785.1,
+     -623159.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.SFC2MXK2C2949BFZTX887YKNXK",
@@ -394,8 +394,8 @@
      "door": "King of the Murkmire.esp:0CE762",
      "space": "MarketSmithy",
      "arrival": [
-      -32172.8,
-      -622638.6
+      -32684.8,
+      -623150.6
      ],
      "whole": true
     },
@@ -406,8 +406,8 @@
     "base": "King of the Murkmire.esp:05CCD1",
     "kind": "building",
     "pos": [
-     -36600.0,
-     -622600.0
+     -36408.0,
+     -621704.0
     ],
     "rot_z": 4.7124,
     "tier": "AGENT_INVENTED",
@@ -418,8 +418,8 @@
     "base": "King of the Murkmire.esp:093D0D",
     "kind": "door",
     "pos": [
-     -36273.1,
-     -622347.0
+     -36081.1,
+     -621451.0
     ],
     "rot_z": 4.7124,
     "on": "helstrom.B4GMRVF5BZCJ6JHYW5D5RY8ZE5",
@@ -430,8 +430,8 @@
      "door": "King of the Murkmire.esp:85F791",
      "space": "LevyPost",
      "arrival": [
-      -36172.8,
-      -622338.6
+      -35980.8,
+      -621442.6
      ]
     },
     "why": "the levy's post's door (MudHutLDoor02), into a copy of King of the Murkmire's Lilmoth Guardhouse",
