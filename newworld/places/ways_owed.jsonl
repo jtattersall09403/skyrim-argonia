@@ -123,8 +123,6 @@
 {"place": "jal-veesa", "way": "the world's road", "id": "jal-veesa.MSXJX4JYHJQ0DZVC4YQ9YQW6XA", "edid": "ArgoniaTreeSwamp01", "at": [-54641, -503033, 599], "since": "2026-11-22"}
 {"place": "jal-veesa", "way": "the world's road", "id": "jal-veesa.RVMCKJKRH7BYF0TD48RD42GNN1", "edid": "ArgoniaRockCliff10Rainforest", "at": [-51047, -509034, 555], "since": "2026-11-22"}
 {"place": "jal-veesa", "way": "the world's road", "id": "jal-veesa.Y793XRW2J0NHPVFAWTRD233DVE", "edid": "ArgoniaRockCliff11Rainforest", "at": [-51840, -504353, 563], "since": "2026-11-22"}
-{"place": "outpost-m11-m63", "way": "outpost-m11-m63.path.01", "id": "outpost-m11-m63.LOOK016PLACE", "edid": "ALPAFenceWoven03", "at": [-82974, -514077, 83], "since": "2026-11-22"}
-{"place": "outpost-m11-m63", "way": "outpost-m11-m63.path.01", "id": "quest.main.mn02/npc.mn02.crocodile-2", "edid": "quest spot npc.mn02.crocodile-2", "at": [-82760, -514165, -12], "since": "2026-11-22"}
 {"place": "outpost-m13-m65", "way": "outpost-m13-m65.path.01", "id": "outpost-m13-m65.COOKFIRE", "edid": "Campfire01Burning", "at": [-100059, -528585, 332], "since": "2026-11-22"}
 {"place": "outpost-m13-m65", "way": "outpost-m13-m65.path.01", "id": "outpost-m13-m65.LOOK007PLACE", "edid": "0shipsail", "at": [-101894, -527747, 49], "since": "2026-11-22"}
 {"place": "outpost-m13-m65", "way": "outpost-m13-m65.path.01", "id": "outpost-m13-m65.LOOK021PLACE", "edid": "MorrClutterStickBundle", "at": [-101167, -527735, 177], "since": "2026-11-22"}
