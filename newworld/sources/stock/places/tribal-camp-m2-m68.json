@@ -51,17 +51,7 @@
     {
      "item": "Skyrim.esm:0877AB",
      "count": 1,
-     "why": "stolen goods (record: the guards' pay and stolen goods in the longhouse): a silver garnet ring taken from a traveller on the Stormhold road (history: the Naga lived off that road), T3 at the chest's tier"
-    },
-    {
-     "item": "Skyrim.esm:01CF2B",
-     "count": 1,
-     "why": "stolen goods: a gold ring from the same road, T2"
-    },
-    {
-     "item": "Skyrim.esm:063B45",
-     "count": 2,
-     "why": "stolen goods: garnets prised from a traveller's purse, T2"
+     "why": "stolen goods (record: the guards' pay and stolen goods in the longhouse): a silver garnet ring taken from a traveller on the Stormhold road (history: the Naga lived off that road), T3 at the chest's tier, inside its budget beside the pay"
     }
    ],
    "why": "the guards' pay and stolen goods in the longhouse (treasure: 'the guards' pay and stolen goods in the longhouse'; economy note: 'The Unbound pay the guards in coin'): the band's store, at the reward band's tier T3 (D3) behind an Adept lock, gold 200 of T3's 120-300",
@@ -138,9 +128,9 @@
      "why": "ripper eggs from the reeds (kit food eggs)"
     },
     {
-     "item": "King of the Murkmire.esp:000964",
-     "count": 2,
-     "why": "masu scales drying by the tanning rack for Nakhoo's tent mending (hide, the valley's local material)"
+     "item": "Skyrim.esm:0800E4",
+     "count": 3,
+     "why": "leather strips by the tanning rack for Nakhoo's tent mending (hide-and-leather; hide is the valley's local material)"
     }
    ],
    "why": "a chest in a shared space of Karsh-Naal Camp: the town's, ordinary (T1), the least gold",
