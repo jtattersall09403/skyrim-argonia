@@ -650,6 +650,13 @@ def sap_of(pool: dict, hist: dict) -> bool:
     return sap.holds(pool, hist)
 
 
+def in_pool(a: dict, b: dict) -> bool:
+    """`a` lies in `b`, a pool of Hist sap: the pool is water, not a solid, so what is laid in it (eggs in the sap's
+    shallow edge, a root) stands in it as things stand in any water."""
+    from tools.places.draft import sap
+    return b.get("base") in sap.POOLS or a.get("base") in sap.POOLS
+
+
 FRAME_WORDS = ("door", "entrance", "pillar", "arch", "frame", "gate", "portal", "jamb")
 FRAME_RING = 0.5  # a door whose origin is outside this share of a building's box stands in its wall
 
@@ -668,7 +675,7 @@ def _source_had(a: dict, b: dict) -> bool:
     """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
     pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
     moves a cluster as one rigid piece)."""
-    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a):
+    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a) or in_pool(a, b):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False
