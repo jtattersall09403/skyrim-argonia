@@ -2069,10 +2069,7 @@
   "beds": 55
  },
  "draft_key": "6fb8d25862ca4fe7",
- "saves_applied": [
-  "end-to-end-proof",
-  "real-edit-proof"
- ],
+ "saves_applied": [],
  "lights": {
   "added": [
    {
@@ -2151,7 +2148,8 @@
   "agent-20261122T040729",
   "agent-20261122T040745",
   "agent-20261122T041046",
-  "agent-20261122T041056"
+  "agent-20261122T041056",
+  "agent-20261122T050605"
  ],
  "wholesale": {
   "offset": 180.0,
