@@ -72,7 +72,6 @@ def test_a_hand_placed_sap_pool_on_the_trunk_is_the_trees_own():
 def test_eggs_lie_in_a_sap_pool_and_in_their_nest():
     """A pool of Hist sap is water: an egg laid in its shallow edge stands in it as in any water; eggs set `on` their
     nest rest on it, and two eggs on one nest rest together (King of the Murkmire's clutches at Seekhat Yol's Hist)."""
-    from tools.places.draft import sap
     box = [-200, -200, -10, 200, 200, 10]
     pool = {"id": "p.sap.H1", "kind": "activator", "space": "exterior", "pos": [0.0, 0.0, 0.0],
             "rot": [0, 0, 0], "bounds": box}
