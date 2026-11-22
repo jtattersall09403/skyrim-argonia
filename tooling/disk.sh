@@ -8,6 +8,8 @@
 #                   that is not on main is kept and named, loudly once idle TIDY_LOUD_H hours (default 24)
 #       disk        job spools ended over two days ago, scratch untouched for two days (a session's only once the session has ended), superseded LOD step markers,
 #                   cached mod archives the bucket holds (stack.py evict)
+#                   subagent transcripts unwritten over 7 days (ended sessions only), VS Code servers but the newest and
+#                   any in use, Claude CLI versions but the current and the newest other, the pip cache over 200 MB
 #       bucket      under nw/terrain, nw/plugin and nw/lod only what is referenced, or the newest, stays; once a day
 #                   (--bucket: now; --disk-only: never). mods/ and every other prefix are never touched.
 #       --dry-run prints exactly what would go and why, and what is kept and by which reference.
@@ -26,7 +28,7 @@ report)
   df -h / | tail -1 | awk '{print "disk: " $3 " used of " $2 " (" $5 "), " $4 " free; AWS bills the size, not the use"}'
   echo "staged mods (~/.argonia/stack; stack push reads it): $(gb "$HOME/.argonia/stack")"
   echo "owned games (~/games: Skyrim SE data read for vanilla records): $(gb "$HOME/games")"
-  echo "Claude transcripts (~/.claude/projects): $(gb "$HOME/.claude/projects")"
+  echo "Claude transcripts (~/.claude/projects): $(gb "$HOME/.claude/projects"), of which subagent transcripts $(gb $(find "$HOME/.claude/projects" -type d -name subagents 2>/dev/null))"
   echo "main tree out/: $(gb "$main/out")   lane worktrees: $(gb "$main/.claude/worktrees")"
   echo "mod archives (~/.argonia/mods): $(gb "$HOME/.argonia/mods")   job spool (~/.argonia/jobs): $(gb "$HOME/.argonia/jobs")"
   "$PY" "$here/tidy.py" tidy --dry-run --disk-only ;;

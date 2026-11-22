@@ -336,3 +336,85 @@ def test_a_job_that_only_waits_is_left_out_on_request(tmp_path):
     job("sleepy", ["bash", "-c", "sleep 5; make"], "/main")
     assert {n for n, _ in tidy.job_cwds(tmp_path)} == {"hold", "hold2", "build", "sleepy"}
     assert {n for n, _ in tidy.job_cwds(tmp_path, waits=False)} == {"build", "sleepy"}
+
+
+def _age(p, days):
+    t = time.time() - days * 86400
+    os.utime(p, (t, t))
+
+
+def test_old_subagent_transcripts(tmp_path):
+    proj = tmp_path / "projects" / "-p"
+    now = time.time()
+    for sid in ("ended", "live"):
+        top = proj / f"{sid}.jsonl"
+        write(top, "{}")
+        old, new = proj / sid / "subagents" / "old.jsonl", proj / sid / "subagents" / "new.jsonl"
+        write(old, "x")
+        write(new, "x")
+        for q in (top, old, proj / sid / "subagents", proj / sid):
+            _age(q, 10)
+        if sid == "live":
+            os.utime(new, (now, now))      # a live session wrote just now: its old subagent files stay
+        else:
+            _age(new, 5)
+    got = tidy.old_subagent_transcripts(now, 7, tmp_path / "projects", set())
+    assert [(p.parent.parent.name, p.name) for p, _ in got] == [("ended", "old.jsonl")]
+    assert tidy.old_subagent_transcripts(now, 7, tmp_path / "projects", {"ended"}) == []
+    assert (proj / "ended.jsonl").exists()
+
+
+def test_vscode_servers_keep_newest_and_in_use(tmp_path):
+    for i, n in enumerate(("Stable-a", "Stable-b", "Stable-c", "Stable-d")):
+        write(tmp_path / n / "f", "x")
+        _age(tmp_path / n, 10 - i)
+    p = subprocess.Popen(["sleep", "30"], cwd=tmp_path / "Stable-b")
+    try:
+        assert {d.name for d, _ in tidy.old_vscode_servers(tmp_path)} == {"Stable-a", "Stable-c"}
+    finally:
+        p.kill()
+        p.wait()
+    assert {d.name for d, _ in tidy.old_vscode_servers(tmp_path)} == {"Stable-a", "Stable-b", "Stable-c"}
+
+
+def test_claude_versions_keep_current_and_newest_other(tmp_path):
+    for i, n in enumerate(("1", "2", "3", "4")):
+        write(tmp_path / n, "x")
+        _age(tmp_path / n, 10 - i)
+    assert {d.name for d, _ in tidy.old_claude_versions(tmp_path, tmp_path / "2")} == {"1", "3"}
+
+
+def test_pip_cache_only_when_big(tmp_path):
+    write(tmp_path / "pip" / "a", "x" * 1000)
+    assert tidy.big_pip_cache(tmp_path / "pip", 200) == []
+    assert [p for p, _ in tidy.big_pip_cache(tmp_path / "pip", 0.0005)] == [tmp_path / "pip"]
+    assert tidy.big_pip_cache(tmp_path / "none", 200) == []
+
+
+def test_tidy_disk_applies_the_four_rules(tmp_path, monkeypatch):
+    home = tmp_path / "home"
+    monkeypatch.setattr(tidy, "HOME", home)
+    monkeypatch.setattr(tidy, "PIP_MB", 0.0005)
+    monkeypatch.setattr(tidy, "session_procs", lambda: set())
+    monkeypatch.setattr(tidy, "stale_scratch", lambda now: [])
+    monkeypatch.setattr(tidy.shutil, "which", lambda *a, **k: str(home / ".local/share/claude/versions/2"))
+    old = home / ".claude/projects/-p/s/subagents/a.jsonl"
+    write(old, "x")
+    for q in (old, old.parent, old.parent.parent):
+        _age(q, 20)
+    write(home / ".cache/pip/x", "y" * 1000)
+    for n, d in (("Stable-a", 9), ("Stable-b", 1)):
+        write(home / ".vscode/cli/servers" / n / "f", "x")
+        _age(home / ".vscode/cli/servers" / n, d)
+    for n, d in (("1", 9), ("2", 5), ("3", 1)):
+        write(home / ".local/share/claude/versions" / n, "x")
+        _age(home / ".local/share/claude/versions" / n, d)
+    lines = []
+    tidy.tidy_disk(tmp_path, True, lines.append)
+    assert old.exists() and (home / ".cache/pip/x").exists()
+    tidy.tidy_disk(tmp_path, False, lines.append)
+    tidy.tidy_disk(tmp_path, False, lines.append)     # twice is safe
+    assert not old.exists() and not (home / ".cache/pip").exists()
+    assert not (home / ".vscode/cli/servers/Stable-a").exists() and (home / ".vscode/cli/servers/Stable-b").exists()
+    assert not (home / ".local/share/claude/versions/1").exists()
+    assert any("subagent transcripts" in l for l in lines)
