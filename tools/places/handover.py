@@ -2,7 +2,9 @@
 stage's own rule (built_check_current here, which tools/newworld/consistency reads; `edits/` aside). Run it as the last step before
 returning: an edit of any kind after the final build and check makes the check old, and the landing is refused.
 
-    python -m tools.places handover <place_id>      # exit 1 when the built check is older than the place files
+    python -m tools.places handover <place_id>      # exit 1 when the built check is older than the place files,
+                                                    # or `stock reach` flags a stock row (material reach,
+                                                    # region, trade kit)
 """
 from __future__ import annotations
 
@@ -65,4 +67,22 @@ def main(argv: list[str]) -> int:
     root = Path(a.places_dir).resolve().parents[1]
     ok, line = built_check_current(root, out_root(root), a.place_id)
     print(line)
-    return 0 if ok else 1
+    reach_ok, reach_line = stock_reach(a.place_id)
+    print(reach_line)
+    return 0 if ok and reach_ok else 1
+
+
+def stock_reach(pid: str) -> tuple[bool, str]:
+    """(passes, a line saying so): every stock row's material is one the place reaches (tools/places/stock/reach.py;
+    docs/design/items.md). A place with no stock source passes."""
+    from tools.argonia_world import db
+    from tools.newworld import frame
+    from tools.places.stock import reach
+    doc = reach.load_source(pid)
+    if not doc:
+        return True, "stock reach: no stock source yet"
+    bad = reach.flagged(db.open(frame.ROOT), pid, doc)
+    if not bad:
+        return True, "stock reach: every stock row fits the place's reach, its region and its holder's trade kit"
+    return False, (f"stock reach FAILS: {len(bad)} stock row(s) flagged by the material reach, region or trade kit "
+                   f"rules (`python -m tools.places stock reach {pid}` lists them with their rules)")

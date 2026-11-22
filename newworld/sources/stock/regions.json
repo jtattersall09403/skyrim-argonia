@@ -1,0 +1,1130 @@
+{
+ "about": "Each region's stock profile (docs/design/items.md, section Regions): the peoples present and their share, the materials of ours that are local, traded in or absent there, its signature goods (whose wares are item_good rows), the things a player should notice and what is notably missing. Grounded in the region's notes (region_note: people, economy) and the lore; the cultures' shares are not stored here, they are counted from the places (region_culture, generated). What grows and drops in each region stays in the ecology (newworld/sources/ecology/harvestables.json, region_flora). Read by tools/newworld/stockdb.py (region_people, region_material, region_good, region_profile) and tools/places/stock/reach.py (the expected mix, the region check). A material a region marks absent fails the reach check there unless the stock row gives an exception.",
+ "peoples": {
+  "argonian": "Argonians of any tribe",
+  "naga": "Naga and Naga-Kur bands",
+  "paatru": "the toad-like Paatru",
+  "dunmer": "Dunmer: the old minority, traders, holdouts",
+  "imperial": "Imperial-descended families, garrisons, officials",
+  "khajiit": "Khajiit coasters and traders",
+  "bosmer": "Bosmer seafarers and pilots",
+  "outlaw": "pirates and smugglers of mixed origin"
+ },
+ "regions": {
+  "althii-archipelago": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Lilmoth-coast Argonians and the Three Waters Tribe (region_note people)"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "garrison families of the Warden forts"
+    }
+   ],
+   "materials": [
+    {
+     "material": "shell",
+     "band": "local",
+     "why": "a sea-cut coast of turtles and shellfish"
+    },
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "Warden forts and Imperial ruins on the islands"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "salvage and Lilmoth's market"
+    }
+   ],
+   "goods": [
+    {
+     "good": "saltrice",
+     "why": "the islands live on rice"
+    },
+    {
+     "good": "salvage",
+     "why": "salvage and ferrying (region_note economy)"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    },
+    {
+     "good": "shell-work",
+     "why": "turtle and shellfish of the sea-cut coast"
+    }
+   ],
+   "signature": "saltrice dishes and salvaged coast goods in every house; estate tenants' plain gear beside garrison issue",
+   "missing": "no Hist forest goods: feathers and sap come from the mainland"
+  },
+  "aphon-isle": {
+   "peoples": [
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "the watchers at the belvedere"
+    },
+    {
+     "people": "outlaw",
+     "share": "minor",
+     "why": "smugglers at the cave"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "a customs belvedere and signal tower"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "smuggled and salvaged"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "salvage in Topal Bay"
+    }
+   ],
+   "signature": "contraband in the smugglers' cave: moon sugar, foreign coin, salvaged Imperial kit",
+   "missing": "no farms and no craft: everything is landed or taken"
+  },
+  "arnesian-jungle": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Stone-Sleepers and Root-Folk hunters"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "Warden garrisons round Thorn"
+    },
+    {
+     "people": "dunmer",
+     "share": "few",
+     "why": "Dunmer traders on the road"
+    }
+   ],
+   "materials": [
+    {
+     "material": "wood",
+     "band": "local",
+     "why": "timber is the jungle's first export"
+    },
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "hides sold to Thorn"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "tools come back from Thorn"
+    },
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "the Warden forts"
+    }
+   ],
+   "goods": [
+    {
+     "good": "timber-and-stone",
+     "why": "timber and quarried stone"
+    },
+    {
+     "good": "hide-and-leather",
+     "why": "hides"
+    },
+    {
+     "good": "sap",
+     "why": "sap"
+    },
+    {
+     "good": "flint-and-obsidian",
+     "why": "stone from the quarries"
+    }
+   ],
+   "signature": "stone-cutters' tools and heavy timber axes; the Stone-Sleepers' stone ware",
+   "missing": "little fish or reed: an upland people"
+  },
+  "aunike-ridge": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "the Chime-Keepers of Nacydes and Tydeos"
+    },
+    {
+     "people": "paatru",
+     "share": "minor",
+     "why": "Paatru at the camps"
+    },
+    {
+     "people": "naga",
+     "share": "minor",
+     "why": "Naga at the margin"
+    }
+   ],
+   "materials": [
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "penned marsh-lizards and hunting"
+    },
+    {
+     "material": "leather",
+     "band": "local",
+     "why": "lizard hides"
+    },
+    {
+     "material": "bog-iron",
+     "band": "scarce",
+     "why": "only tin comes in, for the chimes"
+    }
+   ],
+   "goods": [
+    {
+     "good": "chimes",
+     "why": "tin chimes traded at the Root Talk"
+    },
+    {
+     "good": "hide-and-leather",
+     "why": "hides"
+    },
+    {
+     "good": "bone-and-horn",
+     "why": "hunting and penned lizards: bone and horn"
+    }
+   ],
+   "signature": "tin chimes in every doorway; penned-lizard hides and hunting spears",
+   "missing": "iron: tin is the only metal worked"
+  },
+  "banujha-basin": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Mine-Burners, Chime-Keepers, Root-Folk"
+    },
+    {
+     "people": "paatru",
+     "share": "few",
+     "why": "Paatru hunters"
+    }
+   ],
+   "materials": [
+    {
+     "material": "bog-iron",
+     "band": "local",
+     "why": "salvaged mine metal from the burned Imperial mines"
+    },
+    {
+     "material": "imperial",
+     "band": "scarce",
+     "why": "only the wreckage of the mines: what the Mine-Burners burned"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "salvaged mine metal"
+    },
+    {
+     "good": "river-fish",
+     "why": "fishing"
+    },
+    {
+     "good": "ironwork",
+     "why": "salvaged mine metal reworked"
+    }
+   ],
+   "signature": "salvaged Imperial mine iron reworked into tools and blades; the Mine-Burners' scorched trophies",
+   "missing": "whole Imperial gear: the basin burned it"
+  },
+  "barsaebica": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Veesa-Teeleel reed-wardens and the Lukiul of Slough Point"
+    },
+    {
+     "people": "naga",
+     "share": "minor",
+     "why": "Naga bands"
+    }
+   ],
+   "materials": [
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "reed and fibre"
+    },
+    {
+     "material": "elven",
+     "band": "local",
+     "why": "scavenging in the Ayleid ruins (region_note economy)"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "tolls and the roads"
+    }
+   ],
+   "goods": [
+    {
+     "good": "reed-weaving",
+     "why": "reed"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    },
+    {
+     "good": "salvage",
+     "why": "scavenging in the Ayleid ruins"
+    }
+   ],
+   "signature": "reed mats and weirs; an Ayleid oddment kept as a charm in a reed-warden's house",
+   "missing": "smiths: metal is tolled in, not worked"
+  },
+  "benthic-yobesh": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "few",
+     "why": "Bell Station's divers"
+    }
+   ],
+   "materials": [
+    {
+     "material": "xanmeer-relic",
+     "band": "local",
+     "why": "the drowned spires"
+    },
+    {
+     "material": "glass",
+     "band": "local",
+     "why": "coral-crusted glass from the spires"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "drowned metal, carved stone and coral-crusted glass"
+    }
+   ],
+   "signature": "coral-crusted relics and drowned metal",
+   "missing": "people: no one lives on the sea floor"
+  },
+  "blackwood": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Lukiul, Naka-Desh and Hutan-Tzel"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "Nibenese-descended families"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "the Gideon frontier and the Blackwood Road"
+    },
+    {
+     "material": "kothringi-relic",
+     "band": "local",
+     "why": "the dead Kothringi towns"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "the Blackwood Road from Leyawiin"
+    }
+   ],
+   "goods": [
+    {
+     "good": "pottery",
+     "why": "clay"
+    },
+    {
+     "good": "sap",
+     "why": "herbs"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    }
+   ],
+   "signature": "Cyrodiilic goods off the Blackwood Road beside Hutan-Tzel hunting gear",
+   "missing": "Dunmer goods: the west looks to Cyrodiil"
+  },
+  "cape-percar": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "umber coast folk"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "Imperial-descended families"
+    },
+    {
+     "people": "khajiit",
+     "share": "minor",
+     "why": "Khajiit coasters"
+    }
+   ],
+   "materials": [
+    {
+     "material": "bog-iron",
+     "band": "local",
+     "why": "the derelict mines' metal"
+    },
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "Soulrest's hinterland"
+    },
+    {
+     "material": "wood",
+     "band": "local",
+     "why": "timber"
+    }
+   ],
+   "goods": [
+    {
+     "good": "timber-and-stone",
+     "why": "timber and stone for Soulrest"
+    },
+    {
+     "good": "salt",
+     "why": "salt"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    }
+   ],
+   "signature": "Khajiit coasters' wares and moon sugar beside Imperial-descended households' crockery",
+   "missing": "Hist goods: beyond the forest"
+  },
+  "chixathe-mesa": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Stone-Sleepers, Root-Folk, Agaceph, Sedge-Wardens, Clay-Mound families"
+    },
+    {
+     "people": "naga",
+     "share": "few",
+     "why": "the Sarpa to the west"
+    }
+   ],
+   "materials": [
+    {
+     "material": "flint",
+     "band": "local",
+     "why": "quarries and chalk pits"
+    },
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "hides"
+    }
+   ],
+   "goods": [
+    {
+     "good": "timber-and-stone",
+     "why": "quarried stone, chalk and lime"
+    },
+    {
+     "good": "hide-and-leather",
+     "why": "hides"
+    },
+    {
+     "good": "flint-and-obsidian",
+     "why": "flint knapped from the quarries and chalk pits"
+    }
+   ],
+   "signature": "books off the mesa and quarrymen's picks; dry stone stores",
+   "missing": "fish and reed: a dry upland"
+  },
+  "hatandros-bight": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "clay-mound people, Stone-Sleepers, Root-Folk"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "Warden Marches families at the posts"
+    },
+    {
+     "people": "outlaw",
+     "share": "few",
+     "why": "smugglers at the landings"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "the wardens' posts"
+    },
+    {
+     "material": "shell",
+     "band": "local",
+     "why": "mud-flats and coast"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salt",
+     "why": "salt"
+    },
+    {
+     "good": "pottery",
+     "why": "clay and pottery"
+    },
+    {
+     "good": "timber-and-stone",
+     "why": "stone and timber"
+    },
+    {
+     "good": "shell-work",
+     "why": "the mud-flats' shell"
+    }
+   ],
+   "signature": "salt pans and pottery; smugglers' landings",
+   "missing": "Hist goods"
+  },
+  "kotherra-mangroves": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Lukiul and Naka-Desh river-folk"
+    },
+    {
+     "people": "imperial",
+     "share": "major",
+     "why": "Nibenese-descended families of Gideon"
+    },
+    {
+     "people": "khajiit",
+     "share": "few",
+     "why": "Khajiit sailors"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "Gideon, the province's one civic Imperial legacy"
+    },
+    {
+     "material": "bog-iron",
+     "band": "local",
+     "why": "the Leyawiin trade"
+    }
+   ],
+   "goods": [
+    {
+     "good": "pottery",
+     "why": "red-clay pottery"
+    },
+    {
+     "good": "sap",
+     "why": "herbs"
+    },
+    {
+     "good": "river-fish",
+     "why": "fishing"
+    }
+   ],
+   "signature": "red-clay pottery and Cyrodiilic household goods: the most Imperial houses in the province",
+   "missing": "tribal gear: few tribal camps"
+  },
+  "lake-ulaish": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Root-Folk, clay-mound people, Tumnatu fishers"
+    },
+    {
+     "people": "dunmer",
+     "share": "minor",
+     "why": "stone-footed hamlets in the Stormhold manner"
+    },
+    {
+     "people": "imperial",
+     "share": "few",
+     "why": "the Archein garrison at Gysilla"
+    }
+   ],
+   "materials": [
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "the through trade in tin and salt"
+    },
+    {
+     "material": "bonemold",
+     "band": "traded",
+     "why": "Stormhold-manner households"
+    }
+   ],
+   "goods": [
+    {
+     "good": "river-fish",
+     "why": "fish and eels"
+    },
+    {
+     "good": "saltrice",
+     "why": "saltrice"
+    },
+    {
+     "good": "pottery",
+     "why": "pottery"
+    }
+   ],
+   "signature": "eel traps and boats as the roads; cloth, tin and salt from the through trade",
+   "missing": "nothing local is forged"
+  },
+  "murkwood": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "the Root-Folk and the Hutan-Tzel"
+    },
+    {
+     "people": "naga",
+     "share": "minor",
+     "why": "tribeless Naga at the margin"
+    },
+    {
+     "people": "paatru",
+     "share": "minor",
+     "why": "the Paatru"
+    }
+   ],
+   "materials": [
+    {
+     "material": "wood",
+     "band": "local",
+     "why": "the Hist forest"
+    },
+    {
+     "material": "bone",
+     "band": "local",
+     "why": "hunting"
+    },
+    {
+     "material": "leather",
+     "band": "local",
+     "why": "hides"
+    },
+    {
+     "material": "imperial",
+     "band": "absent",
+     "why": "no invader has taken the forest; outsiders who enter do not come out (region_note people)"
+    },
+    {
+     "material": "bonemold",
+     "band": "absent",
+     "why": "no Dunmer in the forest"
+    }
+   ],
+   "goods": [
+    {
+     "good": "feathers",
+     "why": "fellrunner feathers"
+    },
+    {
+     "good": "sap",
+     "why": "sap"
+    },
+    {
+     "good": "eggs",
+     "why": "eggs"
+    },
+    {
+     "good": "river-fish",
+     "why": "river fish"
+    },
+    {
+     "good": "bone-and-horn",
+     "why": "the hunters' bone and horn"
+    }
+   ],
+   "signature": "fellrunner down and sacks of feathers; sap jars; the most traditional Argonian gear",
+   "missing": "anything Imperial or Dunmer"
+  },
+  "nha-enasa": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Naka-Desh river-folk and Lukiul traders"
+    },
+    {
+     "people": "paatru",
+     "share": "few",
+     "why": "Paatru hunters"
+    }
+   ],
+   "materials": [
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "salt-and-iron barter"
+    },
+    {
+     "material": "kothringi-relic",
+     "band": "local",
+     "why": "Kothringi ruins"
+    }
+   ],
+   "goods": [
+    {
+     "good": "river-fish",
+     "why": "gar fishing"
+    },
+    {
+     "good": "salt",
+     "why": "salt-and-iron barter"
+    }
+   ],
+   "signature": "gar spears and salt bags; caravan barter goods",
+   "missing": "crafts of its own beyond fishing"
+  },
+  "nushara-bayou": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "the Three Waters Argonians"
+    },
+    {
+     "people": "outlaw",
+     "share": "few",
+     "why": "back-water freight past the customs men"
+    }
+   ],
+   "materials": [
+    {
+     "material": "shell",
+     "band": "local",
+     "why": "shellfish"
+    },
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "reed"
+    },
+    {
+     "material": "imperial",
+     "band": "scarce",
+     "why": "the customs men are avoided, not hosted"
+    }
+   ],
+   "goods": [
+    {
+     "good": "saltrice",
+     "why": "rice"
+    },
+    {
+     "good": "reed-weaving",
+     "why": "reed"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish and shellfish"
+    },
+    {
+     "good": "shell-work",
+     "why": "shellfish of the bayou"
+    }
+   ],
+   "signature": "raft-houses with rice and shellfish; untaxed goods hidden in the reeds",
+   "missing": "forged metal"
+  },
+  "okuwun-rahei": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Oxhu-Teeleel, Agaceph, Spray-Folk"
+    },
+    {
+     "people": "outlaw",
+     "share": "minor",
+     "why": "the free port at Alten Corimont"
+    },
+    {
+     "people": "naga",
+     "share": "few",
+     "why": "Sarpa camps"
+    }
+   ],
+   "materials": [
+    {
+     "material": "wood",
+     "band": "local",
+     "why": "raft-folk"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "the river trade to Archon and Thorn"
+    }
+   ],
+   "goods": [
+    {
+     "good": "pottery",
+     "why": "clay, pottery, dye and ochre"
+    },
+    {
+     "good": "saltrice",
+     "why": "rice"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    }
+   ],
+   "signature": "painted clay ware and ochre dyes; Agaceph books",
+   "missing": "Imperial goods"
+  },
+  "padomaic-ocean": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "pilots and fishers"
+    },
+    {
+     "people": "outlaw",
+     "share": "major",
+     "why": "pirate crews and smuggler boats"
+    },
+    {
+     "people": "dunmer",
+     "share": "minor",
+     "why": "Dunmer traders from Tear"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "traded",
+     "why": "what pirates take from ships"
+    },
+    {
+     "material": "bonemold",
+     "band": "traded",
+     "why": "Dunmer traders from Tear"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "salvage and piracy"
+    },
+    {
+     "good": "river-fish",
+     "why": "fishing"
+    }
+   ],
+   "signature": "wreck goods of three eras",
+   "missing": "people ashore"
+  },
+  "sea-of-mists": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Argonian fishers"
+    },
+    {
+     "people": "khajiit",
+     "share": "minor",
+     "why": "Khajiit coasters"
+    },
+    {
+     "people": "bosmer",
+     "share": "few",
+     "why": "Bosmer seafarers"
+    }
+   ],
+   "materials": [
+    {
+     "material": "shell",
+     "band": "local",
+     "why": "the coast"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "wreck salvage"
+    },
+    {
+     "good": "river-fish",
+     "why": "fishing"
+    }
+   ],
+   "signature": "wreck salvage and coasters' wares",
+   "missing": "people ashore"
+  },
+  "skeith-isle": {
+   "peoples": [
+    {
+     "people": "outlaw",
+     "share": "major",
+     "why": "about forty outlaws"
+    },
+    {
+     "people": "dunmer",
+     "share": "minor",
+     "why": "Dunmer from Tear"
+    },
+    {
+     "people": "khajiit",
+     "share": "few",
+     "why": "Khajiit dealers"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "traded",
+     "why": "taken from ships and the old keep"
+    },
+    {
+     "material": "bonemold",
+     "band": "traded",
+     "why": "Dunmer from Tear"
+    },
+    {
+     "material": "bog-iron",
+     "band": "traded",
+     "why": "taken"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "piracy and salvage"
+    }
+   ],
+   "signature": "a pirates' mixed hoard: Imperial, Dunmer and Argonian pieces side by side, moon sugar",
+   "missing": "food: imported from the mainland"
+  },
+  "topal-bay": {
+   "peoples": [
+    {
+     "people": "khajiit",
+     "share": "major",
+     "why": "seafarers, many of them Khajiit"
+    },
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Argonian fishers"
+    },
+    {
+     "people": "bosmer",
+     "share": "minor",
+     "why": "Bosmer pilots"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "traded",
+     "why": "shipping to Soulrest and Gideon"
+    }
+   ],
+   "goods": [
+    {
+     "good": "salvage",
+     "why": "salvage"
+    },
+    {
+     "good": "river-fish",
+     "why": "fishing"
+    }
+   ],
+   "signature": "sailors' gear and moon sugar",
+   "missing": "people ashore"
+  },
+  "tulmek-washes": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "lake-folk, Chime-Keepers, delta farmers"
+    },
+    {
+     "people": "imperial",
+     "share": "minor",
+     "why": "the Blackguards' heirs and umber carters"
+    },
+    {
+     "people": "naga",
+     "share": "minor",
+     "why": "Naga"
+    }
+   ],
+   "materials": [
+    {
+     "material": "imperial",
+     "band": "local",
+     "why": "Blackrose's prison and its heirs"
+    },
+    {
+     "material": "shell",
+     "band": "local",
+     "why": "the lake"
+    }
+   ],
+   "goods": [
+    {
+     "good": "chimes",
+     "why": "chimes"
+    },
+    {
+     "good": "saltrice",
+     "why": "rice"
+    },
+    {
+     "good": "reed-weaving",
+     "why": "reeds"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    }
+   ],
+   "signature": "prison-made goods, chimes and toll tokens at the confluence",
+   "missing": "Hist forest goods"
+  },
+  "ultherus-swamp": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "the Chime-Keepers and Tumnatu hunters"
+    }
+   ],
+   "materials": [
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "pelts and rope"
+    },
+    {
+     "material": "wood",
+     "band": "local",
+     "why": "boats from Korydon"
+    },
+    {
+     "material": "imperial",
+     "band": "absent",
+     "why": "deep swamp: no Imperial presence"
+    }
+   ],
+   "goods": [
+    {
+     "good": "sap",
+     "why": "dragon's-tongue and swamp herbs"
+    },
+    {
+     "good": "chimes",
+     "why": "chimes"
+    },
+    {
+     "good": "reed-weaving",
+     "why": "rope"
+    }
+   ],
+   "signature": "dragon's-tongue drying in every house; rope and boats",
+   "missing": "metal and anything Imperial"
+  },
+  "valley-of-storms": {
+   "peoples": [
+    {
+     "people": "argonian",
+     "share": "major",
+     "why": "Argonians of Stormhold and the Veesa-Teeleel reed-wardens"
+    },
+    {
+     "people": "dunmer",
+     "share": "minor",
+     "why": "the oldest Dunmer minority in the province"
+    }
+   ],
+   "materials": [
+    {
+     "material": "bonemold",
+     "band": "local",
+     "why": "the Dunmer minority and the Morrowind trade"
+    },
+    {
+     "material": "chitin",
+     "band": "local",
+     "why": "river and road trade with Morrowind"
+    },
+    {
+     "material": "hide",
+     "band": "local",
+     "why": "reed"
+    }
+   ],
+   "goods": [
+    {
+     "good": "saltrice",
+     "why": "saltrice"
+    },
+    {
+     "good": "reed-weaving",
+     "why": "reed"
+    },
+    {
+     "good": "river-fish",
+     "why": "fish"
+    },
+    {
+     "good": "chitin-work",
+     "why": "chitin from the Morrowind trade"
+    }
+   ],
+   "signature": "Morrowind goods in Argonian houses: chitin, saltrice and crystals; reed everywhere",
+   "missing": "Cyrodiilic goods: the valley looks to Morrowind"
+  }
+ }
+}

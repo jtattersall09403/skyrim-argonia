@@ -25,7 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from tools.argonia_world import db
-from tools.places.stock import split
+from tools.places.stock import reach, split
 from tools.places.stock.classify import classify
 from tools.places.stock.place import Place
 
@@ -42,35 +42,73 @@ TRADER_LISTS = {  # what a trader kind sells: (slot or kind, types) at each tier
 }
 
 
-class Picker:
-    """The first base by value and key that has every keyword asked for: unenchanted, named, never a never-material."""
+def ladder_records():
+    """The records of every item the ladder files (item_material.json `gear`), or None where its plugins are not
+    on this machine."""
+    keys = list(split.item_materials()["gear"])
+    plugins = ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"]
+    plugins += sorted({k.rsplit(":", 1)[0] for k in keys} - set(plugins))
+    try:
+        from tools.places.stock.records import Records
+        return Records.load(plugins)
+    except FileNotFoundError:
+        return None
 
-    def __init__(self, rec, scale):
-        self.rec, self.scale = rec, scale
-        self.never = set(scale["never"]["materials"])
+
+class Picker:
+    """Gear from the material ladder (docs/design/items.md): the first item of a tier, slot and type whose material of
+    ours the place reaches, the tier's own materials in the ladder's order (scale.json tiers), Black Marsh pieces
+    (item_material) before Skyrim's own, then by value and key; unenchanted, named, never a never material. Other
+    things (jewellery, gems, soul gems, potions) by editor id."""
+
+    BAND = ("common", "uncommon", "rare", "situational", "ruin", "unique", "never")
+
+    def __init__(self, rec, scale, reach: dict | None = None, ladder=None, region: dict | None = None):
+        self.rec, self.scale, self.reach, self.region = rec, scale, reach, region or {}
+        self.none_groups: set[str] = set()       # groups the place's expected mix holds at 0% (a tribal camp's metal)
         self.words = [w.lower() for w in scale["never"]["edid_words"]]
-        self.scale_mats = {m for t in scale["tiers"] for s in ("weapon", "armour") for m in t[s]}
+        self.order = {(t["id"], s): t[s] for t in scale["tiers"] for s in ("weapon", "heavy", "light", "shield")}
         self.by_edid = {}
         self.items = []
-        for k, r in rec.raw.items():
-            if r.sig in ("WEAP", "ARMO", "MISC", "SLGM", "ALCH"):
-                it = rec.item(k)
-                if it and it["name"]:
-                    self.items.append(it)
-                    self.by_edid.setdefault(it["edid"], it)
+        seen = set()
+        for r in (ladder, rec):
+            for k, raw in (r.raw.items() if r else []):
+                if raw.sig in ("WEAP", "ARMO", "MISC", "SLGM", "ALCH") and k not in seen:
+                    it = r.item(k)
+                    if it and (it["name"] or k in split.item_materials()["gear"]):
+                        seen.add(k)
+                        self.items.append(it)
+                        self.by_edid.setdefault(it["edid"], it)
 
     def ok(self, it) -> bool:
-        """Unenchanted, of no never material, of no material off the scale's tiers (a vampire's or a creature's), and
-        no creature's or quest's own piece."""
+        """Unenchanted, of a material of ours that is no never material and that the place reaches, and no creature's
+        or quest's own piece."""
         e = (it["edid"] or "").lower()
-        mats = {k for k in it["keywords"] if "Material" in k}
-        return not it["ench"] and not (set(it["keywords"]) & self.never) and not any(w in e for w in self.words) \
-            and mats <= self.scale_mats and not re.match(r"^(dlc\d)?cr[a-z]", e) \
-            and "nonplayable" not in e and not e.startswith(("dun", "mq", "ms", "da", "tg", "db", "cw", "mg", "c0"))
+        mid = split.material_of(it)[0]
+        if it["ench"] or mid is None or split.never_reason(it, self.scale):
+            return False
+        if self.reach is not None and not self.reach.get(mid, (False,))[0]:
+            return False
+        if self.region.get(mid) == "absent" or split.materials()["materials"][mid]["group"] in self.none_groups:
+            return False
+        return not re.match(r"^(dlc\d)?cr[a-z]", e) and "nonplayable" not in e and \
+            not e.startswith(("dun", "mq", "ms", "da", "tg", "db", "cw", "mg", "c0"))
 
-    def by_keywords(self, *kws) -> dict | None:
-        fit = [i for i in self.items if self.ok(i) and all(k in i["keywords"] for k in kws)]
-        return min(fit, key=lambda i: (i["value"], i["key"])) if fit else None
+    def gear(self, tier: str, slot: str, typ: str, prefer: list[str] | None = None) -> dict | None:
+        """The ladder's first piece of `slot` (weapon, heavy, light, shield) with keyword `typ` (WeapTypeDagger,
+        ArmorCuirass) at `tier`, else at the nearest tier below: a trade kit's preferred materials first, then the
+        region's local ones, then the tier's own order."""
+        rank = [t["id"] for t in self.scale["tiers"]]
+        for t in reversed(rank[:rank.index(tier) + 1]):
+            base = self.order[(t, slot)]
+            local = [m for m in base if self.region.get(m) == "local"]
+            order = list(dict.fromkeys([m for m in prefer or [] if m in base] + local + base))
+            fit = [i for i in self.items if typ in i["keywords"] and split.slot_of(i) == slot and self.ok(i)
+                   and split.item_tier(i, self.scale)[0] == t and split.material_of(i)[0] in order]
+            if fit:
+                return min(fit, key=lambda i: (order.index(split.material_of(i)[0]),
+                                               i["key"] not in split.item_materials()["gear"], i["value"], i["key"]))
+        return None
 
     def edid(self, e: str) -> dict | None:
         return self.by_edid.get(e)
@@ -126,21 +164,24 @@ def derive(p: Place) -> dict:
     members = defaultdict(list)
     for r in persons.values():
         members[r.household_id].append(r)
-    pick = Picker(p.rec, sc)
+    pick = Picker(p.rec, sc, reach.reaches(w, pid), ladder_records(),
+                  {r.material_id: r.band for r in w.rows("region_material", region_id=place.region_id)})
+    pick.none_groups = {g for t in reach.expected_mix(w, pid)["targets"] if t["pct"] == 0 for g in t["groups"]}
     cite_wealth = f"place_wealth:{pid}"
 
-    # provenance: the nearest maker of each material keyword or item kind, on the roads
+    # provenance: the nearest maker of each material of ours or item kind, on the roads (good_material, good_kind)
     km = road_km(w, pid)
     makers = defaultdict(set)
-    for g in w.query("SELECT pg.place_id, gm.keyword FROM place_good pg JOIN good_material gm ON gm.good_id = pg.good_id "
-                     "WHERE pg.relation = 'makes'"):
-        makers[g["keyword"]].add(g["place_id"])
+    for g in w.query("SELECT pg.place_id, gm.material_id AS k FROM place_good pg JOIN good_material gm ON "
+                     "gm.good_id = pg.good_id WHERE pg.relation = 'makes' UNION SELECT pg.place_id, gk.item_kind_id "
+                     "FROM place_good pg JOIN good_kind gk ON gk.good_id = pg.good_id WHERE pg.relation = 'makes'"):
+        makers[g["k"]].add(g["place_id"])
     gates = {r["place_id"] for r in w.query("SELECT g.place_id FROM place_give g JOIN place p ON p.id = g.place_id "
                                             "WHERE g.give_kind_id = 'boat-stop' AND p.siting IN ('coast', 'island')")}
     steps = sc["provenance"]["steps"]
 
     def provenance(it: dict, kind: str) -> tuple[dict, str]:
-        keys = [k for k in it["keywords"] if "Material" in k] + [kind]
+        keys = [k for k in (split.material_of(it)[0], kind) if k]
         if any(pid in makers[k] for k in keys):
             return steps[0], "made here"
         near = min([km.get(m, 1e9) for k in keys for m in makers[k]] + [km.get(g, 1e9) for g in gates] + [1e9])
@@ -197,7 +238,7 @@ def derive(p: Place) -> dict:
             continue
         if kind == "corpse":
             t = tiers[open_tier]["id"] if place.danger_band_id in ("D0", "D1") else tiers[ceiling]["below"]
-            it = pick.by_keywords(tiers[t]["weapon"][0], "WeapTypeDagger")
+            it = pick.gear(t, "weapon", "WeapTypeDagger")
             out["containers"].append({
                 "ref": ref, "space": space, "kind": kind, "security": "S0", "effort": "E1", "tier": t,
                 "gold": gold_in(*tiers[t]["gold"], 0.0),
@@ -246,28 +287,31 @@ def derive(p: Place) -> dict:
         guard = r.person_role_id == "guard"
         t = person_tier(b["id"]) if not guard else tier_cap(tier_of[max(1, min(b["rank"], 3))])
         items = []
-        wt = ROLE_WEAPON.get(r.person_role_id, "WeapTypeDagger")
+        kits = reach.kits_for(w, r)       # the trade kit (kits.json) and the household's race overlay
+        carry = next((x for k in kits for x in w.rows("trade_kit_item", kit_id=k.id)
+                      if x.use == "carry" and x.slot == "weapon"), None)
+        wt = carry.typ if carry else ROLE_WEAPON.get(r.person_role_id, "WeapTypeDagger")
+        prefer = carry.materials.split() if carry and carry.materials else None
         tw = t if wt != "WeapTypeDagger" else "T1"
         if guard:  # the guard's issue (scale `guard_issue`): the weapon of its set, else the plain issue's sword
             tw = issue_plain
-        weap = None if guard and issue["set"] and issue["set"].get("weapon") else \
-            next((pick.by_keywords(m, wt) for m in tiers[tw]["weapon"] if pick.by_keywords(m, wt)), None)
+        weap = None if guard and issue["set"] and issue["set"].get("weapon") else pick.gear(tw, "weapon", wt, prefer)
         if guard and issue["set"] and issue["set"].get("weapon"):
             items.append({"item": issue["set"]["weapon"], "count": 1, "worn": True,
                           "why": f"the levy's issue: the weapon of {issue['why']}"})
         if weap:
             step, prov = provenance(weap, "weapon")
             items.append({"item": weap["key"], "count": 1, "worn": True,
-                          "why": f"{r.trade}: a {wt[8:].lower()} of {tw} ({prov})"})
+                          "why": f"{r.trade}: a {wt[8:].lower()} of {tw}, {split.material_of(weap)[0]}"
+                                 f"{' (' + carry.why + ', kit ' + carry.kit_id + ')' if carry else ''} ({prov})"})
         if guard and issue["set"]:
             for k in issue["set"]["items"]:
                 items.append({"item": k, "count": 1, "worn": True,
                               "why": f"the levy's issue: {place.name}'s guards wear {issue['why']}"})
         elif guard:
             ti = issue_plain
-            mats = [m for m in tiers[ti]["armour"] if pick.by_keywords(m, "ArmorLight", "ArmorCuirass")] or tiers[ti]["armour"]
             for slot in ARMOUR_SLOTS:
-                a = next((pick.by_keywords(m, slot) for m in mats if pick.by_keywords(m, slot)), None)
+                a = pick.gear(ti, "light", slot)
                 if a:
                     step, prov = provenance(a, "armour")
                     items.append({"item": a["key"], "count": 1, "worn": True,
@@ -310,7 +354,8 @@ def derive(p: Place) -> dict:
             for kind, types in spec or []:
                 if kind in ("weapon", "armour"):
                     for typ in types:
-                        it = next((pick.by_keywords(m, typ) for m in tiers[t][kind] if pick.by_keywords(m, typ)), None)
+                        slots = ["weapon"] if kind == "weapon" else ["shield"] if typ == "ArmorShield" else ["light", "heavy"]
+                        it = next((g for s in slots if (g := pick.gear(t, s, typ))), None)
                         if it:
                             step, prov = provenance(it, kind)
                             cnt = max(1, int(n * step["count"]))

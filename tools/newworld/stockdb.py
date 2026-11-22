@@ -3,7 +3,10 @@
 Sources (all committed, the single truth for these world facts):
 - `newworld/sources/stock/scale.json`: the scale (tiers, materials, locks, security, effort, kinds, the split);
 - `newworld/sources/stock/place_wealth.json`: every place's wealth (tools/newworld/wealth.py);
-- `newworld/sources/stock/items.json`: the item catalogue (generated: `items`), `goods.json`, `unique.json`;
+- `newworld/sources/stock/materials.json`: Black Marsh's materials, who makes them and where they may be held;
+- `newworld/sources/stock/item_material.json`: each item of gear's material and each ware's good (authored);
+- `newworld/sources/stock/items.json`: the item catalogue (generated: `items`), `power.json` (generated: `power`),
+  `goods.json`, `unique.json`;
 - `newworld/sources/people/lookups.json` and `people/<place_id>.json`: households, people, their notes and ties;
 - `newworld/sources/stock/places/<place_id>.json`: a place's goods, containers, loose things, possessions, traders
   and the deliveries stocking owns.
@@ -12,6 +15,7 @@ place.json's stations are read here only to tie each promise (place_give) to wha
 
     python3 -m tools.newworld.stockdb load         # rewrite these tables alone (build_db does it with the rest)
     python3 -m tools.newworld.stockdb items        # regenerate items.json for every item the sources name
+    python3 -m tools.newworld.stockdb power        # measure Skyrim's base gear per tier into power.json (before items)
     python3 -m tools.newworld.stockdb promises <place_id>   # each promise and what delivers it
 """
 from __future__ import annotations
@@ -31,9 +35,12 @@ PEOPLE = SRC / "people"
 PLACES = f.ROOT / "places"
 REPO = f.ROOT.parent
 
-TABLES = ("lock_level", "stock_tier", "place_wealth_band", "person_wealth_band", "place_wealth", "tier_material",
-          "tier_item", "never_material", "security_level", "effort_level", "container_kind", "item_kind", "item",
-          "good", "good_material", "place_good", "race", "person_role", "household_role", "relation_kind",
+TABLES = ("lock_level", "stock_tier", "place_wealth_band", "person_wealth_band", "place_wealth", "material",
+          "material_keyword", "material_maker", "material_reach", "tier_material", "never_material",
+          "security_level", "effort_level", "container_kind", "item_kind", "item", "tier_item", "item_material",
+          "good", "good_material", "good_kind", "item_good", "place_good", "region_profile", "region_people",
+          "region_culture", "region_material", "region_good", "trade_kit", "trade_kit_item", "trade_kit_never",
+          "recipe", "recipe_ingredient", "race", "person_role", "household_role", "relation_kind",
           "household", "person", "person_note", "person_note_source", "person_relation", "person_faction",
           "stock_container", "stock_container_item", "stock_container_key", "stock_loose", "person_item", "trader", "trader_item",
           "stock_container_source", "trader_source", "unique_item", "give_delivery")
@@ -75,11 +82,18 @@ def load(w) -> None:
     sc = _json(STOCK / "scale.json")
     w.insert_many("lock_level", [{"id": k, "level": v} for k, v in sc["lock_level"].items()])
     wealth.load(w)
+    md = _json(STOCK / "materials.json")
+    for m in md["materials"]:
+        w.insert("material", id=m["id"], label=m["label"], group=m["group"], band=m["band"], lore=m["lore"],
+                 statement_tier_id=m["tier"], power_weapon=m["power"]["weapon"], power_armour=m["power"]["armour"])
+        w.insert_many("material_keyword", [{"keyword": k, "material_id": m["id"]} for k in m["keywords"]])
+        w.insert_many("material_maker", [{"material_id": m["id"], **x} for x in m["makers"]])
+        w.insert_many("material_reach", [{"material_id": m["id"], "seq": i, **x} for i, x in enumerate(m["reach"])])
     for t in sc["tiers"]:
-        for slot in ("weapon", "armour"):
-            w.insert_many("tier_material", [{"stock_tier_id": t["id"], "slot": slot, "keyword": k, "ord": i}
+        for slot in ("weapon", "heavy", "light", "shield"):
+            w.insert_many("tier_material", [{"stock_tier_id": t["id"], "slot": slot, "material_id": k, "ord": i}
                                             for i, k in enumerate(t[slot])])
-    w.insert_many("never_material", [{"keyword": k, "why": sc["never"]["why"]} for k in sc["never"]["materials"]])
+    w.insert_many("never_material", [{"material_id": k, "why": md["never"]["why"]} for k in md["never"]["materials"]])
     w.insert_many("security_level", [{"id": s["id"], "rank": i, "label": s["label"], "means": s["means"]}
                                      for i, s in enumerate(sc["security"])])
     w.insert_many("effort_level", [{"id": e["id"], "rank": i, "means": e["means"], "tier": e["tier"]}
@@ -100,7 +114,20 @@ def load(w) -> None:
 
     goods = _json(STOCK / "goods.json")["goods"]
     w.insert_many("good", [{k: g[k] for k in ("id", "name", "kind", "about")} for g in goods])
-    w.insert_many("good_material", [{"good_id": g["id"], "keyword": m} for g in goods for m in g["materials"]])
+    w.insert_many("good_material", [{"good_id": g["id"], "material_id": m} for g in goods for m in g["materials"]])
+    w.insert_many("good_kind", [{"good_id": g["id"], "item_kind_id": k} for g in goods for k in g["item_kinds"]])
+    im = _json(STOCK / "item_material.json")
+    w.insert_many("item_material", [{"item_id": r["item"], "material_id": r["material"],
+                                     "stock_tier_id": r.get("tier"), "why": r["why"]} for r in im["gear"]])
+    w.insert_many("item_good", [{"item_id": r["item"], "good_id": r["good"], "harvestable": r.get("harvestable"),
+                                 "why": r["why"]} for r in im["wares"]])
+    _regions_and_kits(w)
+    if (STOCK / "recipes.json").exists():
+        for r in _json(STOCK / "recipes.json")["recipes"]:
+            w.insert("recipe", item_id=r["item"], kind=r["kind"], station=r["station"], perk=" ".join(r["perk"]) or None,
+                     source=r["source"], why=r["why"])
+            w.insert_many("recipe_ingredient", [{"item_id": r["item"], "kind": r["kind"], "seq": i, "ingredient": k,
+                                                 "count": n} for i, (k, n) in enumerate(r["ingredients"])])
 
     lk = _json(PEOPLE / "lookups.json")
     for t in ("race", "person_role", "household_role", "relation_kind"):
@@ -136,6 +163,41 @@ def load(w) -> None:
         w.insert("unique_item", **{k: u[k] for k in ("id", "item_id", "place_id", "held_by", "story", "why")})
     for pid in sorted({r[0] for r in w.query("SELECT DISTINCT place_id FROM place_give")}):
         _deliveries(w, pid)
+
+
+def _regions_and_kits(w) -> None:
+    """regions.json (each region's profile, peoples, materials and goods; region_culture counted from the places)
+    and kits.json (the trade kits and the household overlays)."""
+    rd = _json(STOCK / "regions.json")["regions"]
+    for rid, r in sorted(rd.items()):
+        w.insert("region_profile", region_id=rid, signature=r["signature"], missing=r["missing"])
+        w.insert_many("region_people", [{"region_id": rid, **p} for p in r["peoples"]])
+        w.insert_many("region_material", [{"region_id": rid, "material_id": m["material"], "band": m["band"],
+                                           "why": m["why"]} for m in r["materials"]])
+        w.insert_many("region_good", [{"region_id": rid, "good_id": g["good"], "why": g["why"]} for g in r["goods"]])
+    counts: dict[tuple[str, str], int] = {}
+    for p in w.rows("place"):
+        if getattr(p, "culture_id", None):
+            counts[(p.region_id, p.culture_id)] = counts.get((p.region_id, p.culture_id), 0) + 1
+    w.insert_many("region_culture", [{"region_id": r, "culture_id": c, "places": n} for (r, c), n in sorted(counts.items())])
+    kd = _json(STOCK / "kits.json")
+    for i, k in enumerate(kd["kits"] + kd["overlays"]):
+        w.insert("trade_kit", id=k["id"], label=k["label"], ord=i, match=k.get("match"),
+                 roles=" ".join(k.get("roles", [])) or None, races=" ".join(k.get("races", [])) or None)
+        seq = 0
+        for use in ("carry", "wear", "home"):
+            for x in k.get(use, []):
+                w.insert("trade_kit_item", kit_id=k["id"], seq=seq, use=use, slot=x.get("slot"), typ=x.get("typ"),
+                         materials=" ".join(x.get("materials", [])) or None, good_id=x.get("good"), why=x["why"])
+                seq += 1
+        for g in k.get("food", []):
+            w.insert("trade_kit_item", kit_id=k["id"], seq=seq, use="food", slot=None, typ=None, materials=None,
+                     good_id=g, why="food in the house")
+            seq += 1
+        for j, n in enumerate(k.get("never", [])):
+            w.insert("trade_kit_never", kit_id=k["id"], seq=j, slot=n.get("slot"), types=" ".join(n.get("types", [])) or None,
+                     materials=" ".join(n.get("materials", [])) or None, groups=" ".join(n.get("groups", [])) or None,
+                     bands=" ".join(n.get("bands", [])) or None, why=n["why"])
 
 
 def _load_place_stock(w, doc: dict) -> None:
@@ -254,6 +316,8 @@ def items() -> int:
         for h in doc.get("possessions", []) + doc.get("traders", []):
             keys |= {i["item"] for i in h.get("items", [])}
     keys |= {u["item_id"] for u in _json(STOCK / "unique.json")["items"]}
+    im = _json(STOCK / "item_material.json")
+    keys |= {r["item"] for r in im["gear"] + im["wares"]}
     order = ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm",
              "Black Marsh.esm", "Black Marsh North.esp"]
     # and every other plugin a source names an item of (a person built on King of the Murkmire's villagers carries its gear)
@@ -261,8 +325,6 @@ def items() -> int:
     rec = Records.load(order)
     edids = {t["soul_gem"] for t in sc["tiers"]} | {n for t in sc["tiers"] for n in t["gem"] + t["jewellery"]}
     keys |= {k for k, r in rec.raw.items() if r.edid in edids and r.sig in ("MISC", "ARMO", "SLGM")}
-    never = set(sc["never"]["materials"])
-    words = [w_.lower() for w_ in sc["never"]["edid_words"]]
     out = []
     for k in sorted(keys):
         it = rec.item(k)
@@ -274,14 +336,58 @@ def items() -> int:
         tier = split.item_tier(it, sc)[0]
         out.append({"id": k, "form_key": form_key(k), "plugin": k.rsplit(":", 1)[0], "edid": it["edid"], "name": None,
                     "record": it["sig"], "item_kind_id": kind if kind in ITEM_KINDS else "clutter",
-                    "value": it["value"], "material": mat, "stock_tier_id": tier, "enchanted": bool(it["ench"]),
-                    "significant": sig, "never": bool(mat in never or any(x in (it["edid"] or "").lower() for x in words))})
+                    "value": it["value"], "material": mat, "material_id": split.material_of(it)[0],
+                    "power_kind": split.power_kind(it), "power": split.power_of(it) if split.power_kind(it) else None,
+                    "stock_tier_id": tier, "enchanted": bool(it["ench"]),
+                    "significant": sig, "never": split.never_reason(it, sc) is not None})
     (STOCK / "items.json").write_text(json.dumps(
         {"about": "Generated by `python3 -m tools.newworld.stockdb items` from the plugins: every item a stock source, "
                   "the ledger or the scale names (ids and measured numbers only; names come from the game). Do not edit.",
          "items": out}, indent=1) + "\n", encoding="utf-8")
     print(f"items.json: {len(out)} items")
     return 0
+
+
+def power() -> int:
+    """power.json: each base of scale.json `power` measured from the plugins, and each tier's ceiling per kind (the
+    strongest base at that tier or below; a tier with no base lies midway between its neighbours)."""
+    from tools.places.stock.records import Records
+    sc = _json(STOCK / "scale.json")
+    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"])
+    by_edid = {r.edid: k for k, r in rec.raw.items() if r.sig in ("WEAP", "ARMO") and r.edid}
+    tiers = [t["id"] for t in sc["tiers"]]
+    kinds, missing = {}, []
+    for kind, per in sc["power"]["bases"].items():
+        bases = {}
+        for t in tiers:
+            got = {}
+            for e in per.get(t, []):
+                it = rec.item(by_edid[e]) if e in by_edid else None
+                if it is None:
+                    missing.append(e)
+                    continue
+                got[e] = float(it.get("damage") if it["sig"] == "WEAP" else it.get("rating") or 0)
+            bases[t] = got
+        top, ceil = 0.0, {}
+        for t in tiers:
+            if bases[t]:
+                top = max([top] + list(bases[t].values()))
+                ceil[t] = top
+        known = [t for t in tiers if t in ceil]
+        for i, t in enumerate(tiers):        # a tier with no base: midway between its neighbours
+            if t not in ceil:
+                lo = max((ceil[k] for k in known if tiers.index(k) < i), default=None)
+                hi = min((ceil[k] for k in known if tiers.index(k) > i), default=None)
+                if lo is not None and hi is not None:
+                    ceil[t] = float(int((lo + hi) / 2))
+        kinds[kind] = {"ceiling": {t: ceil[t] for t in tiers if t in ceil}, "bases": bases}
+    (STOCK / "power.json").write_text(json.dumps(
+        {"about": "Generated by `python3 -m tools.newworld.stockdb power` from scale.json `power` and the plugins: Skyrim's "
+                  "own base gear per kind and tier, and each tier's ceiling (the strongest base at that tier or below; a "
+                  "tier with no base midway between its neighbours). split.item_tier reads it. Do not edit.",
+         "kinds": kinds}, indent=1) + "\n", encoding="utf-8")
+    print(f"power.json: {len(kinds)} kinds" + (f"; missing bases: {', '.join(missing)}" if missing else ""))
+    return 1 if missing else 0
 
 
 def promises(pid: str) -> int:
@@ -304,6 +410,14 @@ def main(argv: list[str]) -> int:
         return 0
     if argv[:1] == ["items"]:
         return items()
+    if argv[:1] == ["power"]:
+        return power()
+    if argv[:1] == ["recipes"]:
+        from tools.places.stock import recipes
+        doc = recipes.generate()
+        (STOCK / "recipes.json").write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8")
+        print(f"recipes.json: {len(doc['recipes'])} recipes; {doc['audit']}")
+        return 0
     if argv[:1] == ["promises"] and len(argv) == 2:
         return promises(argv[1])
     print(__doc__)

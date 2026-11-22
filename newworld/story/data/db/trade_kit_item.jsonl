@@ -1,0 +1,90 @@
+{"kit_id":"boatman","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone","why":"a rope knife"}
+{"kit_id":"boatman","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"wood","why":"a pole or club"}
+{"kit_id":"boatman","seq":2,"use":"home","good_id":"reed-weaving","why":"rope"}
+{"kit_id":"boatman","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"builder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"flint bog-iron bone","why":"an axe for timber"}
+{"kit_id":"builder","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"wood","why":"a maul"}
+{"kit_id":"builder","seq":2,"use":"home","good_id":"timber-and-stone","why":"timber and pegs"}
+{"kit_id":"builder","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"carver","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone flint","why":"carving knives"}
+{"kit_id":"carver","seq":1,"use":"home","good_id":"bone-and-horn","why":"bone and horn to work"}
+{"kit_id":"carver","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"clerk","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron imperial","why":"a belt knife"}
+{"kit_id":"clerk","seq":1,"use":"home","good_id":"river-goods","why":"ledgers and the post's stores"}
+{"kit_id":"clerk","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"clerk","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"dunmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bonemold chitin","why":"Morrowind's make, kept"}
+{"kit_id":"dunmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin bonemold","why":"chitin and bonemold, kept and traded"}
+{"kit_id":"dunmer-household","seq":2,"use":"home","good_id":"saltrice","why":"saltrice, the plantations' crop"}
+{"kit_id":"dunmer-household","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"elder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"obsidian bone","why":"a ceremonial blade"}
+{"kit_id":"elder","seq":1,"use":"home","good_id":"sap","why":"gifts and tribute"}
+{"kit_id":"elder","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"elder","seq":3,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"elder","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"fisher","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone wood","why":"a fishing knife"}
+{"kit_id":"fisher","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeGreatsword","materials":"bone wood","why":"a harpoon or trident (the New Armory harpoons are greatsword-type)"}
+{"kit_id":"fisher","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"hide leather","why":"wraps and a leather jerkin at most"}
+{"kit_id":"fisher","seq":3,"use":"home","good_id":"river-fish","why":"the catch, smoked and dried"}
+{"kit_id":"fisher","seq":4,"use":"home","good_id":"reed-weaving","why":"nets, twine and traps"}
+{"kit_id":"fisher","seq":5,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"fisher","seq":6,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"fisher","seq":7,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"gatherer","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a cutting knife"}
+{"kit_id":"gatherer","seq":1,"use":"home","good_id":"sap","why":"jars of sap and dried herbs"}
+{"kit_id":"gatherer","seq":2,"use":"home","good_id":"eggs","why":"eggs"}
+{"kit_id":"gatherer","seq":3,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"gatherer","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"guard","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bog-iron bone flint","why":"the issue's blade (scale.json guard_issue)"}
+{"kit_id":"guard","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood bone","why":"a watch's bow"}
+{"kit_id":"guard","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"scale leather hide","why":"light for the marsh"}
+{"kit_id":"guard","seq":3,"use":"home","good_id":"river-fish","why":"rations"}
+{"kit_id":"guard","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"guard","seq":5,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"host","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone flint","why":"a kitchen knife"}
+{"kit_id":"host","seq":1,"use":"home","good_id":"river-fish","why":"the pot's fish"}
+{"kit_id":"host","seq":2,"use":"home","good_id":"saltrice","why":"saltrice"}
+{"kit_id":"host","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"host","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"host","seq":5,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"hunter","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood bone","why":"the hunting bow"}
+{"kit_id":"hunter","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone flint","why":"a skinning knife"}
+{"kit_id":"hunter","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather hide scale","why":"hackwing or crocodile leather: quick and quiet"}
+{"kit_id":"hunter","seq":3,"use":"home","good_id":"hide-and-leather","why":"hides drying"}
+{"kit_id":"hunter","seq":4,"use":"home","good_id":"feathers","why":"feathers for fletching"}
+{"kit_id":"hunter","seq":5,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"hunter","seq":6,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"imperial-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"imperial bog-iron","why":"a short sword of Imperial issue"}
+{"kit_id":"imperial-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"imperial leather","why":"Imperial light issue"}
+{"kit_id":"imperial-household","seq":2,"use":"home","good_id":"river-goods","why":"Cyrodiilic goods off the roads"}
+{"kit_id":"imperial-household","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"overseer","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bog-iron bonemold chitin","why":"a blade to keep order"}
+{"kit_id":"overseer","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"bog-iron bonemold","why":"a cudgel"}
+{"kit_id":"overseer","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin leather bonemold","why":"light armour"}
+{"kit_id":"overseer","seq":3,"use":"home","good_id":"river-goods","why":"the work's stores"}
+{"kit_id":"overseer","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"priest","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone obsidian","why":"a ritual knife"}
+{"kit_id":"priest","seq":1,"use":"home","good_id":"sap","why":"Hist offerings"}
+{"kit_id":"priest","seq":2,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"priest","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"resident","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a knife"}
+{"kit_id":"resident","seq":1,"use":"home","good_id":"river-fish","why":"food"}
+{"kit_id":"resident","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"resident","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"smith","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"bog-iron","why":"the forge hammer"}
+{"kit_id":"smith","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"a leather apron"}
+{"kit_id":"smith","seq":2,"use":"home","good_id":"ironwork","why":"bog iron and tools"}
+{"kit_id":"smith","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"smith","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"tanner","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone flint bog-iron","why":"a scraping knife"}
+{"kit_id":"tanner","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"their own leather"}
+{"kit_id":"tanner","seq":2,"use":"home","good_id":"hide-and-leather","why":"hides and leather"}
+{"kit_id":"tanner","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"trader","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone","why":"a belt knife"}
+{"kit_id":"trader","seq":1,"use":"home","good_id":"river-goods","why":"the stall's stock"}
+{"kit_id":"trader","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"trader","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"weaver","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a reed knife"}
+{"kit_id":"weaver","seq":1,"use":"home","good_id":"reed-weaving","why":"reed, mats and rope"}
+{"kit_id":"weaver","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"weaver","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}

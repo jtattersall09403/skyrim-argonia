@@ -1,0 +1,33 @@
+{"kit_id":"boatman","seq":0,"slot":"heavy","why":"a boatman swims: no heavy armour"}
+{"kit_id":"builder","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"builder","seq":1,"bands":"rare ruin unique","why":"nothing rare"}
+{"kit_id":"carver","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"carver","seq":1,"slot":"weapon","groups":"foreign","why":"a carver's blades are the marsh's own"}
+{"kit_id":"clerk","seq":0,"slot":"heavy","why":"a clerk wears no armour"}
+{"kit_id":"clerk","seq":1,"bands":"ruin unique","why":"nothing a clerk could explain"}
+{"kit_id":"dunmer-household","seq":0,"materials":"imperial","why":"a Dunmer holdout keeps nothing of the Empire's issue without a reason"}
+{"kit_id":"elder","seq":0,"groups":"foreign","why":"an Argonian elder's goods are the marsh's own unless the record names a foreign tie"}
+{"kit_id":"fisher","seq":0,"slot":"heavy","why":"a fisher wades and swims: no heavy armour"}
+{"kit_id":"fisher","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","groups":"metal foreign","why":"a metal two-handed weapon is a soldier's, not a fisher's"}
+{"kit_id":"fisher","seq":2,"bands":"rare ruin unique","why":"a fisher's hut holds nothing of a rare or relic make"}
+{"kit_id":"gatherer","seq":0,"slot":"heavy","why":"no armour beyond wraps"}
+{"kit_id":"gatherer","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}
+{"kit_id":"gatherer","seq":2,"bands":"rare ruin unique","why":"nothing rare"}
+{"kit_id":"guard","seq":0,"groups":"foreign","why":"a levy carries the place's own issue, never foreign gear, unless the record makes them a foreign garrison"}
+{"kit_id":"guard","seq":1,"slot":"heavy","materials":"xanmeer-relic bronze","why":"relic plate is no levy issue"}
+{"kit_id":"host","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"host","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}
+{"kit_id":"hunter","seq":0,"slot":"heavy","why":"a hunter moves quietly: no heavy armour"}
+{"kit_id":"hunter","seq":1,"slot":"weapon","groups":"foreign","why":"a hunter's arms are the marsh's own"}
+{"kit_id":"imperial-household","seq":0,"materials":"bonemold","why":"no Dunmer make in an Imperial household without a reason"}
+{"kit_id":"overseer","seq":0,"bands":"ruin unique","why":"no relics"}
+{"kit_id":"priest","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"priest","seq":1,"slot":"weapon","groups":"foreign metal","why":"nothing forged at the Hist"}
+{"kit_id":"resident","seq":0,"slot":"heavy","why":"a resident wears no heavy armour"}
+{"kit_id":"resident","seq":1,"bands":"ruin unique","why":"nothing a household could explain"}
+{"kit_id":"smith","seq":0,"bands":"ruin unique","why":"a smith sells what they make and trade, never relics"}
+{"kit_id":"tanner","seq":0,"slot":"heavy","why":"no heavy armour"}
+{"kit_id":"trader","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"weaver","seq":0,"slot":"heavy","why":"no armour"}
+{"kit_id":"weaver","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}
+{"kit_id":"weaver","seq":2,"bands":"rare ruin unique","why":"nothing rare"}

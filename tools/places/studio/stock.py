@@ -101,15 +101,10 @@ def _listed_tier(row: dict, scale: dict) -> tuple[str | None, str]:
 
 def never_of(row: dict, scale: dict) -> str | None:
     """Why the item may not be used (decision 0006), or None."""
-    nv = scale.get("never") or {}
-    mat = next((k for k in row.get("keywords") or [] if k in set(nv.get("materials", []))), None)
-    if mat:
-        return f"{mat} is Skyrim's own gear, which has no road into Black Marsh (decision 0006)"
-    edid = (row.get("edid") or "").lower()
-    word = next((w for w in nv.get("edid_words", []) if w.lower() in edid), None)
-    if word:
-        return f"it is {word} gear, Skyrim's own, which has no road into Black Marsh (decision 0006)"
-    return None
+    from tools.places.stock import split
+    if not (scale.get("never") or {}).get("edid_words"):
+        return None
+    return split.never_reason(row, scale)
 
 
 def item_facts(key: str, measured: dict | None, cat: dict | None, scale: dict) -> dict:
