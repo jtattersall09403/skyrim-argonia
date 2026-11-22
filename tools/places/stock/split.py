@@ -256,6 +256,18 @@ def ladder_stats(it: dict, sc: dict | None = None) -> dict | None:
     return ((power_table().get(kind) or {}).get("stats") or {}).get(t) if kind else None
 
 
+def legacy_tier(it: dict, sc: dict | None = None) -> str | None:
+    """The tier an item had by the rule the places were first stocked under (its Skyrim material keyword, else its
+    value), so the stock check can tell a row the items ladder retiered (owed to the place's restock) from a row
+    that was always wrong."""
+    sc = sc or scale()
+    kws = set(it.get("keywords") or [])
+    t = next((t["id"] for t in sc["tiers"] for k in t.get("power_weapon", []) + t.get("power_armour", []) if k in kws), None)
+    if t is None and it.get("value") is not None:
+        t = next((t["id"] for t in sc["tiers"] if it["value"] <= t["value_max"]), sc["tiers"][-1]["id"])
+    return t
+
+
 def ladder_override(it: dict, sc: dict | None = None) -> dict | None:
     """What the world build writes over a ladder item's record: {power, value} of its tier's Skyrim base when its own
     damage or rating differs from that base's (weight, speed and reach stay its own); None when it already stands at

@@ -121,7 +121,7 @@ DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
 IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
 WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
              "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
-             "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs",
+             "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs", "src:tools/ArgoniaPlugin/ItemLadder.cs",
              "src:tools/ArgoniaPlugin/FormIds.cs", "src:tools/ArgoniaPlugin/NewWorldTravel.cs",
              "src:newworld/sources/travel/menu.json", "src:tools/ArgoniaPlugin/NewWorldMusic.cs",
              "src:newworld/sources/music/records.json", "src:newworld/sources/music/pieces.json",

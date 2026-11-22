@@ -585,79 +585,20 @@ static class NewWorld
         return res;
     }
 
-    // The items ladder (<plugin dir>/smithing/records.json, tools/newworld/world/smithing.py; docs/design/items.md):
-    // every ladder item copied as ours, the overrides of its damage or rating and value to its tier's Skyrim base,
-    // the new MISC records an ingredient needs, and one COBJ per forge or tempering recipe (bench keyword and perk
-    // from Skyrim.esm by editor id). Writes smithing/copies.json: each source key ("Plugin:XXXXXX") -> our copy's.
+    // The items ladder (<plugin dir>/smithing/records.json, tools/newworld/world/smithing.py; ItemLadder.cs), when the
+    // world file is to carry it; writes smithing/copies.json (each source key -> our copy's), which the places' build
+    // then links to instead of writing the ladder into the places plugin itself.
     static void Smithing(string plugDir, ForeignCopy fc, FormIds ids, SkyrimMod mod)
     {
         var dir = Path.Combine(plugDir, "smithing");
         var rj = Path.Combine(dir, "records.json");
         if (!File.Exists(rj)) return;
-        var doc = JsonDocument.Parse(File.ReadAllText(rj)).RootElement;
-        string PK(FormKey k) => $"{k.ModKey.FileName}:{k.ID:X6}";
-        FormKey Src(string key) { var i = key.LastIndexOf(':'); return FormKey.Factory($"{key[(i + 1)..]}:{key[..i]}"); }
-        var copies = new SortedDictionary<string, string>(StringComparer.Ordinal);
-        FormKey Of(string key)
-        {
-            if (copies.TryGetValue(key, out var c)) return Src(c);
-            var s = Src(key);
-            var ours = fc.Get(s, s.ModKey.FileName);
-            if (ours != s) copies[key] = PK(ours);
-            return ours;
-        }
         var kind = fc.Kind;
         fc.Kind = "base";
-        foreach (var it in doc.GetProperty("items").EnumerateArray()) Of(it.GetProperty("item").GetString()!);
-        foreach (var o in doc.GetProperty("overrides").EnumerateArray())
-        {
-            var k = Of(o.GetProperty("item").GetString()!);
-            var pw = o.GetProperty("power").GetDouble();
-            var val = (uint)o.GetProperty("value").GetInt32();
-            if (mod.Weapons.TryGetValue(k, out var w)) { w.BasicStats ??= new WeaponBasicStats(); w.BasicStats.Damage = (ushort)Math.Round(pw); w.BasicStats.Value = val; }
-            else if (mod.Armors.TryGetValue(k, out var a)) { a.ArmorRating = (float)pw; a.Value = val; }
-            else throw new InvalidDataException($"smithing override {o.GetProperty("item").GetString()}: {k} is no weapon or armour of ours");
-        }
-        foreach (var n in doc.GetProperty("new_items").EnumerateArray())
-        {
-            var edid = n.GetProperty("edid").GetString()!;
-            var from = Src(n.GetProperty("model_from").GetString()!);
-            var srcRec = fc.Plugin(from.ModKey.FileName).EnumerateMajorRecords().First(x => x.FormKey == from);
-            var key = fc.CopyAs(srcRec, from.ModKey.FileName, ids.Take("base", "smithing-new:" + edid));
-            var m = mod.MiscItems[key];
-            m.EditorID = edid;
-            m.Name = new TranslatedString(Language.English, n.GetProperty("name").GetString()!);
-            m.Value = (uint)n.GetProperty("value").GetInt32();
-            m.Weight = (float)n.GetProperty("weight").GetDouble();
-            copies["new:" + edid] = PK(key);
-        }
-        var skyrim = new Dictionary<string, FormKey>();
-        FormKey Vanilla(string edid) => skyrim.TryGetValue(edid, out var f) ? f : skyrim[edid] = fc.Find("Skyrim.esm", edid).FormKey;
-        int n2 = 0;
-        foreach (var r in doc.GetProperty("recipes").EnumerateArray())
-        {
-            var item = r.GetProperty("item").GetString()!;
-            var rk = r.GetProperty("kind").GetString()!;
-            var co = new ConstructibleObject(new FormKey(mod.ModKey, ids.Take("base", $"smithing:{rk}:{item}")), SkyrimRelease.SkyrimSE)
-            { CreatedObjectCount = 1, Items = [] };
-            co.EditorID = $"ANW_Smith_{(rk == "forge" ? "Forge" : "Temper")}_{item.Replace(' ', '_').Replace(':', '_').Replace('.', '_').Replace('-', '_')}";
-            co.CreatedObject.SetTo(Of(item));
-            co.WorkbenchKeyword.SetTo(Vanilla(r.GetProperty("bench").GetString()!));
-            foreach (var ing in r.GetProperty("ingredients").EnumerateArray())
-            {
-                var key = ing[0].GetString()!;
-                var ik = key.StartsWith("new:") ? Src(copies[key]) : Of(key);
-                co.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(ik), Count = ing[1].GetInt32() } });
-            }
-            foreach (var p in r.GetProperty("perks").EnumerateArray())
-                co.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1,
-                    Data = new HasPerkConditionData { Perk = { Link = { FormKey = Vanilla(p.GetString()!) } } } });
-            mod.ConstructibleObjects.Add(co);
-            n2++;
-        }
+        var (copies, line) = ItemLadder.Write(mod, fc, n => ids.Take("base", n), rj);
         fc.Kind = kind;
         File.WriteAllText(Path.Combine(dir, "copies.json"), JsonSerializer.Serialize(copies, new JsonSerializerOptions { WriteIndented = true }));
-        Console.WriteLine($"  smithing: {copies.Count} copies, {doc.GetProperty("overrides").GetArrayLength()} overrides, {n2} recipes");
+        Console.WriteLine("  smithing: " + line);
     }
 
     // The small signature things (<plugin dir>/dressing/cy*.jsonl, tools/newworld/dressing/place.py): one reference a line,

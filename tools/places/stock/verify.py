@@ -79,7 +79,8 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         kind, sig, _ = split.item_class(it, rules)
         tier = split.item_tier(it, sc)[0]
         lad = split.ladder_override(it, sc)
-        return {"known": True, "significant": sig, "value": lad["value"] if lad else it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
+        return {"known": True, "significant": sig, "value": lad["value"] if lad else it["value"], "tier": tier,
+                "legacy_tier": split.legacy_tier(it, sc), "kind": kind, "edid": it["edid"],
                 "sig": it["sig"], "name": it["name"], "never": split.never_reason(it, sc) is not None}
 
     items = {k: info(k) for k in keys if k}
@@ -221,10 +222,15 @@ def check_stock(ctx) -> list[str]:
             bad.append(f"never: {holder}: {i.get('edid')} ({k}) is of a never material or a Skyrim-only kit")
         if (i.get("tier") == "T6" or k in unique_items) and k not in unique_items:
             bad.append(f"ledger: {holder}: {i.get('edid')} ({k}) is {i.get('tier')} with no unique_item row")
+        # a row the items ladder retiered (its tier by the keyword and value rule it was stocked under fits) is owed
+        # to the place's restock (out/places/stock-audit/<place>.md), listed and never failing (docs/design/items.md)
+        old = R.get(i.get("legacy_tier"), 99)
         if i.get("significant") and k not in unique_items and R.get(i.get("tier"), 0) > top:
-            bad.append(f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above the place's ceiling {X['ceiling']}")
+            (X.setdefault("owed", []).append if old <= top else bad.append)(
+                f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above the place's ceiling {X['ceiling']}")
         if cap_tier and i.get("significant") and k != GOLD and k not in unique_items and R.get(i.get("tier"), 0) > R[cap_tier]:
-            bad.append(f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above its holder's {cap_tier}")
+            (X.setdefault("owed", []).append if old <= R[cap_tier] else bad.append)(
+                f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above its holder's {cap_tier}")
 
     # containers: every one of the place traces to its row (a container with no row holds nothing significant)
     for key, b in sorted(B["containers"].items()):
