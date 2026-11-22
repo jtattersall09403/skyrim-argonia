@@ -51,8 +51,8 @@ ACTIVATORS = {
 
 
 # King of the Murkmire's dead Hists: the living tree's model with the crown shapes' alternate textures (MODS) pointed
-# at Skyrim.esm:000028, a form no plugin holds; the game draws a set it cannot find in its missing-texture purple.
-# Ours are copies of those statics with those rows pointed at our clear texture set: vanilla's sky alpha
+# at Skyrim.esm:000028, the engine's hardcoded NullTextureSet (no textures; that it hides the shape in game is inferred
+# from the mods' use, not proven). Ours do not lean on it. Ours are copies of those statics with those rows pointed at our clear texture set: vanilla's sky alpha
 # (textures/sky/alpha.dds, Skyrim - Textures5.bsa, alpha 3 of 255 at most), under the crown shapes' own alpha test
 # (threshold 128), so the crown is cut away whole and the bare tree stands. Places keep the mod's bases; the build
 # swaps each ref of a replaced base to the place's copy, and the studio draws the replaced base as the copy.

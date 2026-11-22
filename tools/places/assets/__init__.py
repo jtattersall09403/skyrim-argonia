@@ -60,7 +60,7 @@ def _source(k: str, version: int) -> tuple[str | None, bytes | None]:
 
 def swap_of(base_key: str | None) -> list[dict] | None:
     """A base's alternate textures (the catalogue's alt_tex, with our plugin's replacements: own_bases.alt_tex) as the
-    converter applies them: [{shape, index,
+    converter applies them: [{shape, index, null (the engine's NullTextureSet),
     textures: {diffuse, normal} or None}] in a fixed order; None when the base swaps nothing."""
     if not base_key:
         return None
@@ -68,7 +68,7 @@ def swap_of(base_key: str | None) -> list[dict] | None:
     alt = own_bases.alt_tex(base_key, (draft_bundle.catalogue().get(base_key) or {}).get("alt_tex"))
     if not alt:
         return None
-    return sorted(({"shape": a.get("shape") or "", "index": a.get("index"),
+    return sorted(({"shape": a.get("shape") or "", "index": a.get("index"), "null": bool(a.get("null_set")),
                     "textures": ({"diffuse": a["textures"].get("diffuse"), "normal": a["textures"].get("normal")}
                                  if a.get("textures") else None)} for a in alt), key=lambda a: (a["shape"], a["index"] or 0))
 

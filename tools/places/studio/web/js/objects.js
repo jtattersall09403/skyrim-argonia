@@ -82,8 +82,7 @@ const matCache = new Map();
 export function plainMaterial(m, kind, tint = null) {
   const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
   const cut = m.alphaTest > 0 || m.transparent;
-  // a shape whose alternate texture set does not exist: the game's missing-texture purple, never hidden or toned down
-  const colour = m.name === 'missing-texture' ? 'ff00ff' : map ? m.color.getHexString() : tint ? tint.map((v) => v.toString(16).padStart(2, '0')).join('') : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
+  const colour = map ? m.color.getHexString() : tint ? tint.map((v) => v.toString(16).padStart(2, '0')).join('') : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
   const key = `${map?.uuid || '-'}|${colour}|${cut}|${m.side}|${m.vertexColors}`;
   if (!matCache.has(key)) {
     matCache.set(key, new THREE.MeshLambertMaterial({ map, color: `#${colour}`, side: m.side, vertexColors: m.vertexColors,

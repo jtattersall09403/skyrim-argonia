@@ -93,7 +93,7 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
             for x in f:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
             res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f,
-                   "accepted": sc.accepted_faults()}
+                   "accepted": sc.accepted_faults(), "notes": alt_tex_notes(sc)}
             if space != "exterior" and not o.get("no-void"):
                 res["openings"] = voids(d, place, sess["strokes"], sc)
                 if res["openings"]:
@@ -1276,6 +1276,22 @@ def street_point(sc, M, q) -> tuple[int, float]:
             if t2 >= 0 and M.lab[t2] == M.main:
                 return t2, z2
     return (t, z) if t >= 0 else (-1, g)
+
+
+def alt_tex_notes(sc) -> list[dict]:
+    """Notes, not faults: the bases at the place whose alternate textures point at a set in no plugin, the engine's
+    NullTextureSet (the shape taken away) or a set absent everywhere (the swap does not apply)."""
+    from tools.places import draft_bundle
+    cat, out = draft_bundle.catalogue(), {}
+    for p in sc.pieces:
+        row = cat.get(p.get("base") or "") or {}
+        rows = [a for a in row.get("alt_tex") or [] if a.get("null_set") or a.get("set_absent")]
+        if rows:
+            n = out.setdefault(row["key"], {"base": row["key"], "edid": row.get("edid"), "refs": 0,
+                                            "shapes": [f"{a['shape']} ({'NullTextureSet' if a.get('null_set') else 'set absent'})"
+                                                       for a in rows]})
+            n["refs"] += 1
+    return sorted(out.values(), key=lambda n: n["base"])
 
 
 def mesh_probe(sc, place: str, names: list[str]) -> dict:

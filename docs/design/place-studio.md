@@ -1205,22 +1205,31 @@ disk) the box also has `retry: true`, is served `no-store` and is not kept: the 
 
 **Alternate textures.** A base record can draw named shapes of its model with another texture set (its model's
 MODS: per shape, the shape's 3D name and index and a TXST). The catalogue lists them as the base's `alt_tex`
-`[{shape, index, txst, edid, textures: {diffuse, normal, glow, env, specular}}]`, `textures` null when the set
-resolves to no texture set; the draft bundle carries `alt_tex` onto every base it uses, as the game will draw it
-with our plugin (`own_bases.alt_tex`). `mesh(model, level, bounds, alt=<base key>)` (`/api/asset/mesh?...&alt=<base
-key>`) is that base's variant of the model: a swapped shape takes the set's diffuse and normal map under the shape's
-own alpha test, so a clear set cuts the shape away; a shape whose set does not exist is drawn in the game's
-missing-texture purple, never hidden; shapes are matched by name and, for two of one name, by index. The variant is
-cached under the model's bytes and the swap, so bases sharing a model and a swap share a file and different swaps
-never collide. The studio asks for it when a base has `alt_tex`; the offline download fetches the same URL. A
-placed ref carries no alternate textures in Skyrim's records, so the base's are the only ones.
+`[{shape, index, txst, edid, textures: {diffuse, normal, glow, env, specular}, null_set?, set_absent?}]`;
+`textures` is null when the set is in no plugin, marked `null_set` when it is the engine's hardcoded NullTextureSet
+(Skyrim.esm:000028, a TXST with no textures, held only in the executable: xEdit's `Core/Hardcoded/Skyrim.esp`) and
+`set_absent` otherwise. The draft bundle carries `alt_tex` onto every base it uses, as the game will draw it with our
+plugin (`own_bases.alt_tex`). `mesh(model, level, bounds, alt=<base key>)` (`/api/asset/mesh?...&alt=<base key>`) is
+that base's variant of the model: a swapped shape takes the set's diffuse and normal map under the shape's own alpha
+test, so a clear set cuts the shape away; a shape swapped to NullTextureSet is not drawn; a shape whose set is
+absent keeps the mesh's own textures (the swap does not apply). Shapes are matched by name and, for two of one name,
+by index. The variant is cached under the model's bytes and the swap, so bases sharing a model and a swap share a
+file and different swaps never collide. The studio asks for it when a base has `alt_tex`; the offline download
+fetches the same URL. `look <place> probe --all` lists the place's bases with NullTextureSet or absent-set rows under
+`notes` (not faults). A placed ref carries no alternate textures in Skyrim's records, so the base's are the only ones.
 
-King of the Murkmire's dead Hists (HistTree01Dead to 05Dead) point their crown shapes at Skyrim.esm:000028, a form
-no plugin holds, which the game draws purple. Our plugin replaces the ones the places use (`own_bases.STATICS`:
-HistTree01Dead, HistTree04Dead) by copies whose crown rows take our clear texture set, ArgoniaClearTextureSet
-(vanilla's `textures/sky/alpha.dds`, alpha 3 of 255 at most, under the crown's alpha test at 128): the build swaps
-each ref of a replaced base to the place's copy, and the studio draws the replaced base as the copy. HistTree02Dead
-cannot be cleared this way (one of its crown shapes has no alpha test); it is not used by any place.
+What is known and what is not: 591 rows in five mods (King of the Murkmire, Journey to Baan Malur, Explore Skyrim,
+Depths of Skyrim, Grey Quarter) point at NullTextureSet to take a shape away (a rock's moss, a lantern's glass, a
+dead Hist's crown), and those mods do not show purple in play; that a NullTextureSet row hides its shape in game is
+inferred from that use, not read from the engine. A set absent from every plugin (none in our mods today) is drawn
+unswapped on the same inference.
+
+King of the Murkmire's dead Hists (HistTree01Dead to 05Dead) take their crowns away that way. Our plugin does not
+lean on it for the dead Hists the places use: `own_bases.STATICS` (HistTree01Dead, HistTree04Dead) are copies whose
+crown rows take our clear texture set, ArgoniaClearTextureSet (vanilla's `textures/sky/alpha.dds`, alpha 3 of 255
+at most, under the crown's alpha test at 128), which cuts the crown away whatever the engine does with the null
+set. The build swaps each ref of a replaced base to the place's copy, and the studio draws the replaced base as the
+copy. HistTree02Dead cannot be cleared this way (one of its crown shapes has no alpha test); no place uses it.
 
 **Textures.** DDS (BC1 to BC7, uncompressed) to lossy WebP, halved to the largest power of two not over the
 requested size (64 to 2048); alpha kept on diffuse textures, dropped on normal maps and land textures.

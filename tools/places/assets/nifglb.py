@@ -136,33 +136,32 @@ def drawable(head: dict) -> list[dict]:
     return solid or shapes
 
 
-MISSING = "missing-texture"   # the material of a shape whose alternate texture set does not exist
-SWAP_VERSION = 2   # bump when how a swap is drawn changes: part of a swapped variant's cache key only
+SWAP_VERSION = 3   # bump when how a swap is drawn changes: part of a swapped variant's cache key only
 
 
 def swapped(shapes: list[dict], swap: list[dict] | None) -> list[dict]:
-    """The shapes as a record's alternate textures (MODS) have the game draw them: a shape named in the swap takes
-    the swap's texture set (its diffuse and normal map in place of the NIF's), and a shape whose set resolves to no
-    texture set (`textures` null) is drawn as the game draws a missing texture, plain purple (`missing: true`). A shape is matched by its 3D name; where the NIF has two shapes of
-    one name, by the swap's 3D index (the shape's place among the NIF's shapes) as well."""
+    """The shapes as a record's alternate textures (MODS) have the game draw them: a shape named in the swap takes the
+    swap's texture set (its diffuse and normal map in place of the NIF's); a shape swapped to the engine's hardcoded
+    NullTextureSet (`null: true`, a set with no textures, which mods use to take a shape away) is not drawn; a shape
+    whose set is absent from every plugin (`textures` null, not the null set) keeps the mesh's own textures. A shape
+    is matched by its 3D name; where the NIF has two shapes of one name, by the swap's 3D index (the shape's place
+    among the NIF's shapes) as well."""
     if not swap:
         return shapes
     named: dict[str, list[dict]] = {}
     for s in shapes:
         named.setdefault(s["name"] or "", []).append(s)
-    missing, retex = set(), {}
+    gone, retex = set(), {}
     for a in swap:
         cands = named.get(a.get("shape") or "", [])
         if len(cands) > 1:
             cands = [s for s in cands if s.get("order") == a.get("index")] or cands
         for s in cands:
-            if a.get("textures") is None:
-                missing.add(id(s))
-            else:
-                t = a["textures"]
-                retex[id(s)] = [t.get("diffuse") or "", t.get("normal") or ""]
-    return [dict(s, tex=retex[id(s)] + list(s["tex"][2:])) if id(s) in retex
-            else dict(s, tex=["", ""] + list(s["tex"][2:]), missing=True) if id(s) in missing else s for s in shapes]
+            if a.get("textures"):
+                retex[id(s)] = [a["textures"].get("diffuse") or "", a["textures"].get("normal") or ""]
+            elif a.get("null"):
+                gone.add(id(s))
+    return [dict(s, tex=retex[id(s)] + list(s["tex"][2:])) if id(s) in retex else s for s in shapes if id(s) not in gone]
 
 
 def build(head: dict, level: int = 0, swap: list[dict] | None = None) -> tuple[bytes, dict]:
@@ -180,9 +179,6 @@ def build(head: dict, level: int = 0, swap: list[dict] | None = None) -> tuple[b
     for s in shapes:
         sh = s.get("shader") or {}
         mat: dict = {"name": s["name"] or "shape", "pbrMetallicRoughness": {"metallicFactor": 0.0, "roughnessFactor": 1.0}}
-        if s.get("missing"):   # a swap to a texture set that does not exist: the game's missing-texture purple
-            mat = {"name": MISSING, "pbrMetallicRoughness": {"baseColorFactor": [1.0, 0.0, 1.0, 1.0], "metallicFactor": 0.0,
-                                                               "roughnessFactor": 1.0}}
         diffuse, normal = (tex_uri(t) for t in s["tex"])
         if diffuse and s["UV"] is not None:
             mat["pbrMetallicRoughness"]["baseColorTexture"] = {"index": g.texture(image_uri(diffuse, 512))}
@@ -190,7 +186,7 @@ def build(head: dict, level: int = 0, swap: list[dict] | None = None) -> tuple[b
             if normal and "effect" not in sh.get("type", "").lower():
                 mat["normalTexture"] = {"index": g.texture(image_uri(normal, 256))}
                 textures.add(normal)
-        al = None if s.get("missing") else s.get("alpha")
+        al = s.get("alpha")
         if al and al["flags"] & ALPHA_TEST:
             mat["alphaMode"], mat["alphaCutoff"] = "MASK", round(al["threshold"] / 255, 4)
         elif al and al["flags"] & ALPHA_BLEND:

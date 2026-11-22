@@ -22,13 +22,14 @@ def shape(name, tex=("bark.dds", "bark_n.dds")):
             "tex": list(tex), "shader": {}}
 
 
-def test_a_swap_retextures_its_shape_and_a_missing_set_draws_purple():
+def test_a_swap_retextures_the_null_set_takes_away_and_an_absent_set_does_not_apply():
     shapes = [shape("trunk"), shape("crown:1", ("leaf.dds", "leaf_n.dds")), shape("crown:2", ("leaf.dds", ""))]
     swap = [{"shape": "trunk", "index": 0, "textures": {"diffuse": "deadbark.dds", "normal": "deadbark_n.dds"}},
-            {"shape": "crown:1", "index": 1, "textures": None}]
+            {"shape": "crown:1", "index": 1, "textures": None, "null": True},     # the engine's NullTextureSet
+            {"shape": "crown:2", "index": 2, "textures": None, "null": False}]    # a set in no plugin
     out = nifglb.swapped(shapes, swap)
-    assert [s["name"] for s in out] == ["trunk", "crown:1", "crown:2"]
-    assert out[1].get("missing") and not out[2].get("missing")       # the game's missing texture: shown, not hidden
+    assert [s["name"] for s in out] == ["trunk", "crown:2"]
+    assert out[1]["tex"][0] == "leaf.dds"
     assert out[0]["tex"][:2] == ["deadbark.dds", "deadbark_n.dds"] and shapes[0]["tex"][0] == "bark.dds"
     assert nifglb.swapped(shapes, None) is shapes
 
@@ -37,8 +38,8 @@ def test_two_shapes_of_one_name_are_told_apart_by_the_swaps_index():
     shapes = [shape("leaf"), shape("leaf")]
     for i, s in enumerate(shapes):
         s["order"] = i
-    out = nifglb.swapped(shapes, [{"shape": "leaf", "index": 1, "textures": None}])
-    assert [bool(s.get("missing")) for s in out] == [False, True]
+    out = nifglb.swapped(shapes, [{"shape": "leaf", "index": 1, "textures": None, "null": True}])
+    assert [s["order"] for s in out] == [0]
 
 
 def test_the_converter_keeps_one_variant_per_swap(monkeypatch):
@@ -46,7 +47,7 @@ def test_the_converter_keeps_one_variant_per_swap(monkeypatch):
     same for two bases with the same swap, another for a different swap."""
     if not CAT.exists() or not assets.resolver().read(assets.norm(HIST, "meshes")):
         pytest.skip("needs the catalogue and King of the Murkmire's Hist model")
-    gone = [{"shape": "cedartree1:1", "index": 3, "txst": "Skyrim.esm:000028", "edid": None, "textures": None}]
+    gone = [{"shape": "cedartree1:1", "index": 3, "txst": "Skyrim.esm:000028", "edid": None, "textures": None, "null_set": True}]
     other = [{"shape": "cedartree1:1", "index": 3, "txst": "X:1", "edid": "T",
               "textures": {"diffuse": "textures/landscape/dirt01.dds", "normal": None}}]
     rows = {"A:1": {"model": HIST, "alt_tex": gone}, "B:1": {"model": HIST, "alt_tex": gone},
@@ -54,10 +55,7 @@ def test_the_converter_keeps_one_variant_per_swap(monkeypatch):
     monkeypatch.setattr(draft_bundle, "catalogue", lambda path=None: rows)
     plain, a, b, c, d = (assets.mesh_info(HIST, 1, None, k) for k in (None, "A:1", "B:1", "C:1", "D:1"))
     assert a["glb"] == b["glb"] != plain["glb"] != c["glb"] != a["glb"] and d["glb"] == plain["glb"]
-    assert a["shapes"] == plain["shapes"] == c["shapes"]
-    from tools.places.assets import glb
-    j, _ = glb.read(Path(a["glb"]).read_bytes())
-    assert sum(m["name"] == nifglb.MISSING for m in j["materials"]) == 1   # the crown shape's purple
+    assert a["shapes"] == plain["shapes"] - 1 and c["shapes"] == plain["shapes"]
     assert "textures/landscape/dirt01.dds" in c["textures"]
 
 
@@ -73,7 +71,7 @@ def test_the_catalogue_lists_a_bases_alternate_textures():
         pytest.skip("the catalogue predates alt_tex: python -m tools.places assets catalogue")
     alt = rows[DEAD]["alt_tex"]
     assert {a["shape"] for a in alt} == {"cedartree1:1", "cedartree1:2"}
-    assert all(a["textures"] is None and a["txst"] == "Skyrim.esm:000028" for a in alt)   # a set no plugin holds
+    assert all(a["textures"] is None and a["txst"] == "Skyrim.esm:000028" and a["null_set"] for a in alt)   # NullTextureSet
     assert "alt_tex" not in rows[LIVING]
 
 
