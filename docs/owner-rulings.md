@@ -137,6 +137,11 @@ added here the day they are made, with the date and the issue.
   (2026-11-22; Jal-Veesa's stock stays as it is).
 - A piece is never hidden by pointing it at a missing texture: the game draws that as a lilac block. Hide it with a
   fully transparent texture or another proper way (2026-11-22, on the dead Hists' leaves).
+- A place's closing full walk-through is owed only when a fix since the last full walk could reach beyond its own
+  views (a structure or ground moved, walks re-routed, walk zones changed); otherwise each fix's recaptured views,
+  the mesh probe and the checks close the loop (2026-11-22, on Helstrom's 40-minute walks).
+- A wider gear ladder (more packs, relabelled where they fit the feel) is for places from here on: the six Act I
+  places are not restocked for it (2026-11-22).
 
 ## The game
 

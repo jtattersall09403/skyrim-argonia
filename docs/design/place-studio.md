@@ -448,10 +448,11 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
   tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band
-  (`guard_issue`): their own culture's guard set where the place's mods provide one (the set's plugin is one of the
-  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian scale guard armour, T3, the scale material's tier, for a
-  Black Marsh place of ceiling T3 or more), with the set's weapon where the source's guards carried one; else the
-  plain issue at the `owner` faction's `issue_tier` (sound gear, T2). Every guard also carries one plain torch
+  (`guard_issue.table`, one row chosen by the place's kind, culture, region, holder and ceiling, never by the
+  source's plugins): BM&V's Argonian scale guard armour (T3) for an Argonian city, town, fort, keep or prison of
+  ceiling T3 or more, Saxhleel bone-and-leather for other settled Argonian places, bonemold at a Dunmer holdout, Imperial
+  issue at an Imperial post, hide and flint at a tribal camp; else the plain issue at the `owner` faction's
+  `issue_tier` (sound gear, T2). Every guard also carries one plain torch
   (`guard_issue.torch`, Skyrim.esm 01D4EC, never a levelled list), as Skyrim's guards do; the guard packages
   (copies of vanilla guard packages, their flags unchanged) let them carry it lit at night.
 - An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's

@@ -7,6 +7,12 @@ random and nothing is levelled (decision 0035). Frequency is set by three things
 conditions that let a material appear, and the fixed counts of authored stock rows. This page explains the model. The
 tables hold the facts, and each fact has one home (below).
 
+**Gear is decided for our place.** What a place's people wear and carry follows from what the place is in our world: its
+region's profile, its culture, its kind and settlement tier, its wealth band and ceiling, and each holder's trade kit and
+faction. What the place's source held or its source's mods supplied is never a reason, for or against: most sources have
+no Argonian gear of their own, and every item of the ladder is ours (copied into our plugin by the build), so any ladder
+item is available to any place the rules allow, whatever plugin it came from.
+
 ## Where each fact lives
 
 | Fact | Home | Tables |
@@ -19,6 +25,7 @@ tables hold the facts, and each fact has one home (below).
 | Goods and what they yield | `goods.json` | `good`, `good_material`, `good_kind` |
 | A region's peoples, materials, signature goods, what a player should notice, what is missing | `newworld/sources/stock/regions.json` | `region_people`, `region_material`, `region_good`, `region_profile`; `region_culture` is counted from the places |
 | The target mix per place class and how region, culture and trade bend it | `scale.json` `mix` | none (read by `stock mix`) |
+| What a place's guards wear and carry: a table of rows, the first that fits the place's kind, culture, region, holder and ceiling | `newworld/sources/stock/scale.json` `guard_issue.table` | `guard_issue` |
 | Trade kits: what a trade carries, wears, keeps and eats, and never owns | `newworld/sources/stock/kits.json` | `trade_kit`, `trade_kit_item`, `trade_kit_never` |
 | What grows and drops where | `newworld/sources/ecology/harvestables.json`, `region_flora` | ecology tables (a ware links to them and does not copy them) |
 
@@ -51,7 +58,7 @@ material:
 
 - **T1:** wood, bone, flint, hide and fibre.
 - **T2:** marsh leather, shell, bog iron, Saxhleel bone-and-leather work, Kothringi relics and Imperial issue.
-- **T3:** chitin, Argonian scale (BM&V's guard set, so a T3 town issues it), copper-edged steel and bonemold.
+- **T3:** chitin, Argonian scale (BM&V's guard set, issued to the watch of an Argonian town or city of ceiling T3), copper-edged steel and bonemold.
 - **T4:** obsidian, bronze (Ancient Argonian) and Shadowscale.
 - **T5:** Masu plate (Reel-ka, Masu plate and Masu ebony).
 - **T6:** Xanmeer relics.
@@ -163,6 +170,27 @@ keeps Imperial issue. A household's store follows its head's kit. A kit lists:
 For example, a fisher never owns heavy armour, a metal two-handed weapon, or anything rare. The derive draws a
 person's weapon from their kit, and the reach check reports each contradiction under the rule of the kit that flags
 it. Any stock row may carry an `exception` giving its reason in words, and is then never flagged.
+
+## Guard issue
+
+A place's guards are issued by a table of ours (`guard_issue.table`), read top to bottom; the first row whose
+conditions all hold is the place's issue. The conditions are the place's kind, its culture, its region, words of its
+holder, and a ceiling that reaches the row's `min_ceiling`. A row names either a set filed whole (`items`) or materials
+in order of preference, filled slot by slot from the ladder at or below the row's tier and the place's ceiling, then
+its fallback materials; the sidearm is the row's weapon or weapon materials, else the plain issue's sword. Every guard
+also carries the torch.
+
+| Row | Where | Issue |
+|---|---|---|
+| Imperial post | a place whose holder is the Legion or an Imperial garrison (none in 4E 201) | Imperial issue, T2 |
+| Dunmer holdout | a place whose holder is Dunmer, ceiling T2 and up | Dunmer bonemold, leather where the ceiling stops short |
+| Argonian scale | a city, town, fort, keep or prison of an Argonian culture, ceiling T3 and up | BM&V's Argonian scale guard armour, T3 |
+| Saxhleel issue | any other settled place of an Argonian culture (village, hamlet, outpost, farm, ferry, mine and the like), ceiling T2 and up | Saxhleel bone-and-leather, T2 |
+| Hide and flint | a tribal or outlaw camp, or a cave | hide, with flint, bone or wood arms |
+| Plain issue | everything else | light armour at the faction's issue tier |
+
+`stock reach` flags a guard's armour that is not of the place's row (rule `guard issue`); a place that keeps another
+issue by choice gives the row an `exception` that says so.
 
 ## Checks and staging
 
