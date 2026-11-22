@@ -681,3 +681,5 @@ def test_two_states_of_one_thing_on_one_enable_parent_may_stand_in_each_other():
     assert not CK.never_together(living, dict(dead, enable_parent={"ref": "p.DEAD", "flags": opp}))   # shown together
     assert not CK.never_together(living, dict(dead, enable_parent={"ref": "p.OTHER", "flags": "0"}))
     assert not CK.never_together({"id": "a"}, {"id": "b"})
+    built = {"id": "f1", "enable_parent": "000801:P.esp", "enable_parent_flags": opp}     # a build row's shape
+    assert CK.never_together(built, {"id": "f2", "enable_parent": "000801:P.esp"})

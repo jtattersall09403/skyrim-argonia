@@ -685,9 +685,14 @@ def never_together(a: dict, b: dict) -> bool:
     """The pair are two states of one thing on one enable parent, one shown while the parent is enabled and the other
     while it is not (a living Hist and its dead twin): the game never shows them together, so they may stand in each
     other."""
-    ea, eb = a.get("enable_parent") or {}, b.get("enable_parent") or {}
+    def parent(r):   # a place row's {ref, flags}, or a build row's enable_parent key with enable_parent_flags beside it
+        ep = r.get("enable_parent")
+        if isinstance(ep, dict):
+            return ep.get("ref"), str(ep.get("flags") or "")
+        return ep, str(r.get("enable_parent_flags") or "")
+    (ra, fa), (rb, fb) = parent(a), parent(b)
     opp = "SetEnableStateToOppositeOfParent"
-    return bool(ea.get("ref")) and ea.get("ref") == eb.get("ref") and ((ea.get("flags") == opp) != (eb.get("flags") == opp))
+    return bool(ra) and ra == rb and ((opp in fa) != (opp in fb))
 
 
 def _source_had(a: dict, b: dict) -> bool:
