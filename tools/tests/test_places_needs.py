@@ -254,5 +254,16 @@ def test_studio_endpoints(world, monkeypatch, tmp_path):
             assert r.status == 200 and (await r.json())["tier"] == "OWNER_STATED"
             assert (await c.post("/api/place/fenwick/needs/changed", json={"change": "moved", "what": "x"})).status == 400
             assert (await c.post("/api/place/fenwick/needs/changed", data=b"nope")).status == 400
-            assert N.changes("fenwick", world["root"])[0]["what"] == "moved 40 m"
+            # an autosave is a working state: held outside the tracked change log until a named save
+            assert N.changes("fenwick", world["root"]) == [] and not N.changes_path("fenwick", world["root"]).exists()
+            r = await c.post("/api/place/fenwick/needs/changed", json={"need": 0, "change": "moved", "what": "moved 41 m", "save": "autosave"})
+            assert r.status == 200 and N.changes("fenwick", world["root"]) == []
+            r = await c.put("/api/place/fenwick/saves/autosave", json={"ops": []})
+            assert r.status == 200 and N.changes("fenwick", world["root"]) == []
+            r = await c.put("/api/place/fenwick/saves/mine", json={"ops": []})
+            assert r.status == 200
+            got = N.changes("fenwick", world["root"])
+            assert [g["what"] for g in got] == ["moved 40 m", "moved 41 m"] and {g["save"] for g in got} == {"mine"}
+            r = await c.put("/api/place/fenwick/saves/mine2", json={"ops": []})
+            assert len(N.changes("fenwick", world["root"])) == 2, "held changes are written once"
     asyncio.run(go())
