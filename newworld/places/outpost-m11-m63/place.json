@@ -250,6 +250,14 @@
      "outpost-m11-m63.CTPG99Z82K1N8ZYDWPPBVPAAD8"
     ],
     "why": "a lifted weir trap set down on the landing deck, its frame on the boards"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK059PLACE",
+     "outpost-m11-m63.LOOK060PLACE"
+    ],
+    "why": "the two small river-mud rock piles laid into each other as one heap of offal stones at the water's edge below the weir (look 063947014-0001)"
    }
   ]
  },
