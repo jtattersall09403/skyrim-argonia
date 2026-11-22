@@ -191,7 +191,9 @@ function figuresIn(studio, overlay, cam, w, h) {
     if (p.z > 1 || Math.abs(p.x) > 1 || Math.abs(p.y) > 1) continue;
     const name = ch.userData.person ? (studio.people?.list().find((x) => x.id === id)?.name || id)
       : (studio.quests?.item(id)?.name || studio.quests?.item(id)?.ref || id);
-    out.push({ id, name, x: Math.round((p.x + 1) / 2 * w), y: Math.round((1 - p.y) / 2 * h) });
+    const f = { id, name, x: Math.round((p.x + 1) / 2 * w), y: Math.round((1 - p.y) / 2 * h) };
+    // one person placed alike by several quests (one spot a row each) is one figure and one name
+    if (!out.some((g) => g.name === f.name && Math.abs(g.x - f.x) < 4 && Math.abs(g.y - f.y) < 4)) out.push(f);
   }
   return out;
 }
