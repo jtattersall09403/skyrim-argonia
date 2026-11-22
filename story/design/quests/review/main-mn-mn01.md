@@ -48,3 +48,25 @@ Classes of miss that a change cleared:
 
 Harness note for the lead: the paper game puts the barge's hold and the landing in one place, so MN01's player
 lists Dralin as present in the hold.
+
+## Dralin's offer of gear (2026-11-22)
+
+The owner's ruling of 2026-11-22 replaced the hold's starter kit with Dralin's offer on the landing: his
+speaks-first line now ends with the offer and sets stage 50; four pick topics (stages 51 to 54, each giving its
+pieces and setting 90) and a decline (to 90) close it, and Dralin's death at stage 50 moves the quest on to 90, so
+MN02 still starts on stage 90. The pieces are Cipactli's Naga warhammer, sword, flint arrows and knife and bamboo
+bow at Skyrim's iron tier, and Skyrim's tome of Sparks. The kit is gone from main-plot.md and the place's needs.
+
+| Quest | Run | Grade |
+|---|---|---|
+| MN01 | quest.main.mn01/20261122T053302Z-designed (hunter, took the bow) | pass |
+
+Harness fix in the same change: a stage whose own results set the next stage now shows its journal entry first, as
+Skyrim does (tools/playtest/record.py, with its test).
+| MN01 | quest.main.mn01/20261122T054214Z-designed (after review: the bow) | pass |
+
+Review round (fresh quest-reviewer): fixed, Naga glossed in Dralin's line; the Naga item names credited to the dead
+cutters who carried them, not to a Naga tongue; stage 90 entry no longer says Dralin has nothing more (untrue if he
+was killed at 50); e-freed covers his death; the walk-off case stated in the foundation. Stands: the decline stays
+(the lead's brief asks for it; it costs the player the gear and nothing else, a plain refusal as in Morrowind). The
+hold's kit rows in the place's stock are the place agent's to remove (not this lane's files).

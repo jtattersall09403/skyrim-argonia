@@ -46,27 +46,6 @@
    "met": true,
    "why": "Met. A strong box named Dralin's Strongbox stands in the Gang-Master's Hut beside his hammock, behind a Novice lock whose key Dralin carries (stock), holding 100 gold, an iron dagger, a Ring of Minor Health and the two scrolls.",
    "tier": "AGENT_INVENTED"
-  },
-  {
-   "seq": 2,
-   "from": [
-    "bcd46e1a2b"
-   ],
-   "thing": "in the barge's hold, plain gear for a new fighter: an Imperial sword, an Imperial light shield, Imperial light armour (cuirass, boots, bracers, helmet), a hunting bow, twenty iron arrows and three potions of minor healing (Skyrim's)",
-   "line": "main",
-   "rests": {
-    "space": "01dock3to4",
-    "ref": "Black Marsh.esm:1BEAF9"
-   },
-   "signs": [
-    {
-     "sign": "beside",
-     "detail": "a knapsack in the Barge Hold a few steps from where the player wakes, among the gang's sacks and barrels"
-    }
-   ],
-   "met": true,
-   "why": "Met. The hold's knapsack (stock) holds the Imperial sword, light shield, cuirass, boots, bracers and helmet, the hunting bow, twenty iron arrows and three potions of minor healing; a player searching the hold finds it.",
-   "tier": "AGENT_INVENTED"
   }
  ]
 }

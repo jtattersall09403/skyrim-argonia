@@ -167,12 +167,15 @@ gold in its place.
 gives Okeeh their name and trade in the hold. As they finish, the bar is lifted from the door outside, and Okeeh
 tells them they can go out onto the landing, where the gang-master waits. Dralin speaks first on the landing and frees
 them. He tells them only this: Vosh-Leera of Jal-Veesa will have work for them if they bring her some Sithis' beard,
-a grey moss that hangs on the woven weir at Reed-Sill Weir, on the road to the town. The player's pack holds two
-lockpicks (Skyrim's). *Leads on:* Dralin's directions and a marker on the moss at the weir. The barge is Black Marsh &
-Valenwood's own Imperial ship: its plugin has the hull as a building and a furnished hold as an interior cell, with
-chests, loose things and furniture in it (section 9 gives the measures). Among the hold's things is plain gear enough
-for a new fighter to face the weir's crocodiles: an Imperial sword and light shield, a set of Imperial light armour,
-a hunting bow with twenty iron arrows and three potions of minor healing (Skyrim's, stocked by the place).
+a grey moss that hangs on the woven weir at Reed-Sill Weir, on the road to the town. Then he says the player will
+need to look after themselves on the road: he has not got much to spare, but he can offer one of the things dead
+cutters left behind, their pick of a Naga warhammer, a Naga sword, a bamboo bow with twenty flint arrows and a flint
+knife, or a spell tome of Sparks. The player takes one, which he hands over at once and puts the rest away, or goes
+without; the journal records the pick (Black Marsh flint, wood and bamboo of Here There Be Monsters: Curse of
+Cipactli at Skyrim's iron tier, and Skyrim's novice tome). The player's pack holds two lockpicks (Skyrim's). *Leads
+on:* Dralin's directions and a marker on the moss at the weir. The barge is Black Marsh & Valenwood's own Imperial
+ship: its plugin has the hull as a building and a furnished hold as an interior cell, with chests, loose things and
+furniture in it (section 9 gives the measures).
 
 **A side quest here: What the Herald Sent.** Vosh-Leera sent things for the player with her order: a purse of 100
 gold, a knife (Skyrim's iron dagger), an ordinary enchanted ring that keeps its wearer hale (Skyrim's Ring of Minor
@@ -698,7 +701,6 @@ place its rows, and the place is built to them.
 | Place | The thing | Quest | What happens there | How the player knows it |
 |---|---|---|---|---|
 | Ashgate Landing | a barge moored in the river pool by the camp, with a furnished hold a person can stand in and a door that locks (Black Marsh & Valenwood's Imperial ship and its hold cell `01dock3to4`) | 1. No Name on the Work Roll | The player starts in the hold, gives their name and trade, and comes out to be freed. | Okeeh speaks in the hold; Dralin speaks first at the door |
-| Ashgate Landing | in the barge's hold, plain gear for a new fighter: an Imperial sword, an Imperial light shield, Imperial light armour (cuirass, boots, bracers, helmet), a hunting bow, twenty iron arrows and three potions of minor healing (Skyrim's) | 1. No Name on the Work Roll; 2. The Dry Tree | A new character of any build can arm before the crocodiles at the weir. | their look and names in the hold's chests |
 | Ashgate Landing | a strongbox with the easiest lock in the hut, its key on the gang-master's belt, holding 100 gold, an iron dagger, a Ring of Minor Health and a scroll each of firebolt and fast healing | What the Herald Sent | The player gets what Vosh-Leera sent them. | the game names it as Dralin's strongbox; Okeeh tells them of it |
 | Reed-Sill Weir | Sithis' beard hanging on the woven weir's fences, over the shallows where the crocodiles lie | 2. The Dry Tree | The player kills, shoots or slips past the crocodiles to pick the moss. | the game names the moss; a marker; Dralin tells them Vosh-Leera wants it |
 | Jal-Veesa | the town's Hist dry and dark, with dead roots round it and its pool cooling, which is also the rootworm's stop (the town's record has the tree, its pool and the rootworm stop) | 2. The Dry Tree; 4. The Sap Camp | The player sees a sick tree, hears what the town loses if it dies, and later rides the rootworm from its pool. | its look; Vosh-Leera sends them; Weeltul, the tree-minder and root-tender, tells them; a marker on Weeltul |
