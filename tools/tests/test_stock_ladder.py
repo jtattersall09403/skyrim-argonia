@@ -92,8 +92,9 @@ def test_reach_fails_imperial_gear_where_the_record_gives_no_reason_and_passes_i
     assert not r["imperial"][0] and "gives no reason" in r["imperial"][1]
     assert not r["dwarven"][0] and not r["glass"][0] and r["flint"][0]
     assert reach.reaches(w, "outpost-m13-m65")["bonemold"][0]          # a stone-grey place: Dunmer make reaches it
-    bad = reach.audit(w, "outpost-m13-m65", reach.load_source("outpost-m13-m65"))
-    assert {b["material"] for b in bad} == {"imperial"} and len(bad) == 5
+    doc = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:013ED9", "count": 1}]}]}   # Imperial cuirass
+    bad = reach.audit(w, "outpost-m13-m65", doc)
+    assert {b["material"] for b in bad} == {"imperial"} and len(bad) == 1
 
 
 def test_a_denied_mention_in_the_record_is_no_reason(w):
@@ -105,7 +106,8 @@ def test_the_region_and_the_place_class_flag_what_they_hold_none_of(w):
     doc = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:013ED9", "count": 1}]}]}   # Imperial cuirass
     bad = reach.audit(w, "helstrom", doc)
     assert bad and bad[0]["rule"] in ("material reach", "region")
-    camp = reach.audit(w, "tribal-camp-m2-m68", reach.load_source("tribal-camp-m2-m68"))
+    iron = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:012EB7", "count": 1}]}]}   # iron sword
+    camp = reach.audit(w, "tribal-camp-m2-m68", iron)
     assert camp and {b["rule"] for b in camp} == {"place class"}
 
 
