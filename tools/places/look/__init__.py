@@ -45,6 +45,50 @@ PIDF = LOOK_OUT / "daemon.pid"
 RESET = (ConnectionResetError, BrokenPipeError)
 
 
+def kill_daemon(grace: float = 5.0) -> str:
+    """The daemon of PIDF killed with its process group (its browser and studio server share it: it starts in a
+    session of its own), SIGTERM then SIGKILL after `grace` seconds; the pid and socket files removed. The way
+    `look stop` ends a daemon busy on a verb that never returns."""
+    import signal
+    try:
+        pid = int(PIDF.read_text())
+    except (OSError, ValueError):
+        pid = None
+    what = "no daemon"
+    if pid:
+        try:
+            pg = os.getpgid(pid)
+        except OSError:
+            pg = None
+        if pg is not None and pg == pid:   # never another group (a reused pid in this shell's group)
+            for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, 2.0)):
+                try:
+                    os.killpg(pg, sig)
+                except OSError:
+                    break
+                t = time.time()
+                while time.time() - t < wait:
+                    try:
+                        os.kill(pid, 0)
+                    except OSError:
+                        break
+                    try:
+                        os.waitpid(pid, os.WNOHANG)
+                    except ChildProcessError:
+                        pass
+                    time.sleep(0.1)
+                else:
+                    continue
+                break
+            what = f"look daemon {pid} and its group"
+    for f in (SOCK, PIDF):
+        try:
+            f.unlink()
+        except OSError:
+            pass
+    return what
+
+
 def _call_once(req: dict, timeout: float) -> dict:
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     s.settimeout(timeout)
@@ -136,10 +180,12 @@ def main(argv: list[str]) -> int:
             call({"verb": "_stop", "place": "", "args": []}, 10)
         except OSError:
             pass
-        for _ in range(200):   # gone, browser and server with it
+        for _ in range(50):   # gone, browser and server with it
             if not PIDF.exists():
                 break
             time.sleep(0.1)
+        if PIDF.exists():   # busy on a long verb (it reads the next request only after it): its whole group goes
+            print(f"stopped {kill_daemon()}")
         return 0
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()

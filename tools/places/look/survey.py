@@ -7,7 +7,7 @@ distance and capture score; a failed tile is retried once and else struck throug
 the same tiles at 640x480, four across. Beside each sheet a table (JSON and plain text) of what each tile shows,
 with each tile's file. `--changed` surveys only the structures whose rows changed since this checkout's last survey.
 
-The tiles of a sheet are drawn in one page call on the warm scene. Pure parts (the tile plan, the row hashes, the
+The tiles of a sheet are drawn one page call each on the warm scene, within the sheet's time budget. Pure parts (the tile plan, the row hashes, the
 table) are tested in tools/tests/test_places_look.py."""
 from __future__ import annotations
 
@@ -25,7 +25,8 @@ SW, SH = 640, 480           # a tile on the contact sheet
 SECTION_SPAN = 4800.0       # a section longer than this is cut to its middle this long (a town at true scale is a line)
 SCORE_W = 384               # the width of the id pass a tile is scored on (and picked from)
 OWN_LIGHT = "viewer light, not the game's"
-NEAR, FAR = 0.55, 1.3   # eye-level distances, as shares of the distance that frames the whole structure
+SHEET_BUDGET = 600.0     # seconds one sheet may take before its remaining tiles are failed
+NEAR, FAR = 0.55, 1.3  # eye-level distances, as shares of the distance that frames the whole structure
 
 
 def tile_file(i: int, t: dict) -> str:
@@ -113,8 +114,11 @@ def _cam(sc, place, th, t, gz, retry=False):
     return c
 
 
-def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
-    """One structure's sheet: every tile in one page call, failed tiles retried once in a second."""
+def sheet(d, place, strokes, sc, th, faults, out_dir: Path, budget: float | None = None) -> dict:
+    """One structure's sheet: its tiles drawn one page call each, failed tiles retried once; once the sheet has taken
+    `budget` seconds (SHEET_BUDGET) the tiles left are failed with that reason, so no structure (a great tree whose
+    every frame is a crown of leaves in software drawing) holds the daemon without end."""
+    budget = SHEET_BUDGET if budget is None else budget
     t0 = time.time()
     gz = sc.ground_under(th["lo"], th["hi"])
     tiles = plan()
@@ -131,9 +135,15 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
                      subject=[x["id"] for x in cams[i]["_section"][0]][:400] if cams[i].get("_section") else subj)
                 for i in idx]
         tc = time.time()
-        got = d.page.evaluate("(cs) => agent.shots(cs)", page)
+        got = []
+        for i, pg in zip(idx, page):   # tile by tile, so the sheet's budget is held between them
+            if time.time() - t0 > budget:
+                rows[i] = {"tile": tiles[i]["name"], "capture": "failed",
+                           "why": f"the sheet's time budget ({budget:.0f} s) was spent before this tile"}
+                continue
+            got.append((i, d.page.evaluate("(cs) => agent.shots(cs)", [pg])[0]))
         calls.append(round(time.time() - tc, 2))
-        for i, r in zip(idx, got):
+        for i, r in got:
             c = cams[i]
             img = draw.from_data_url(r["png"])
             s, ids = verbs.judge(sc, c, r, th, False)
@@ -157,7 +167,7 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
         if c is None:
             rows[i] = {"tile": tiles[i]["name"], "capture": "failed", "why": "no spot a person can stand there"}
     run(first)
-    again = [i for i in first if rows[i]["capture"] == "failed" and not tiles[i].get("section")]
+    again = [i for i in first if rows[i]["capture"] == "failed" and not tiles[i].get("section") and imgs[i] is not None]
     if again:
         for i in again:
             c = _cam(sc, place, th, tiles[i], gz, retry=True)
