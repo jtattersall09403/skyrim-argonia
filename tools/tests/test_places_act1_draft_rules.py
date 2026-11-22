@@ -74,7 +74,7 @@ def test_eggs_lie_in_a_sap_pool_and_in_their_nest():
     nest rest on it, and two eggs on one nest rest together (King of the Murkmire's clutches at Seekhat Yol's Hist)."""
     from tools.places.draft import sap
     box = [-200, -200, -10, 200, 200, 10]
-    pool = {"id": "p.sap.H1", "base": sap.POOL, "kind": "activator", "space": "exterior", "pos": [0.0, 0.0, 0.0],
+    pool = {"id": "p.sap.H1", "kind": "activator", "space": "exterior", "pos": [0.0, 0.0, 0.0],
             "rot": [0, 0, 0], "bounds": box}
     egg = {"id": "p.EGG", "base": "K:egg", "kind": "static", "space": "exterior", "pos": [20.0, 0.0, 0.0], "rot": [0, 0, 0],
            "bounds": [-12, -15, -12, 12, 16, 12]}
