@@ -94,8 +94,9 @@ Worked examples:
   Imperial), wears plain clothes and no armour, and keeps the post's ledgers and Cyrodiilic goods. He owns no
   bonemold and no relic.
 
-A smith's trader list sells the ingredients their forge's recipes ask for (`recipe_ingredient`): the place's own
-goods first (bog iron where it makes ironwork, chitin plate where chitin is worked), leather strips everywhere.
+The derive puts the smithing ingredients on the traders' lists. A smith sells every recipe ingredient whose good
+the place makes (five of each) or its region lists (three of each). A general trader sells the leather and wood
+among those. Both sell leather strips (six). Keep these rows unless the facts say otherwise.
 
 `python -m tools.places stock reach <place>` flags every row that breaks one of these rules, naming the rule
 (`material reach`, `region`, `place class` or `kit <id>`) and the record text it read. Bring it to zero before
@@ -111,7 +112,7 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - Each person's gear follows their trade kit and their region (section 4).
 - Guards carry the guard's issue (scale.json `guard_issue`, which the derive applies). Where the place's mods
   provide its own culture's guard set and the place's ceiling reaches the set's tier, the guards wear that set
-  (in Black Marsh, BM&V's Argonian scale guard armour, T4 by its rating), with the set's weapon if the source's guards carried one.
+  (in Black Marsh, BM&V's Argonian scale guard armour, T3, the scale material's tier), with the set's weapon if the source's guards carried one.
   Otherwise they wear the plain issue (T2). Every guard also carries one plain torch to light the way after dark. Each
   reason says why the place earns the set, such as a capital or a city of standing.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a

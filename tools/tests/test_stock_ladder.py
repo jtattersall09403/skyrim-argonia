@@ -50,32 +50,49 @@ def test_never_is_joined_on_our_material_not_the_keyword():
     assert "decision 0006" in split.never_reason(nord)
 
 
-def test_the_tier_is_set_by_power_against_skyrim_s_base_gear():
+def test_power_tier_measures_an_item_off_the_ladder_against_skyrim_s_base_gear():
     table = {"sword": {"ceiling": {"T1": 8, "T2": 9, "T3": 11, "T4": 12, "T5": 13, "T6": 15}},
              "light-cuirass": {"ceiling": {"T1": 26, "T2": 26, "T3": 32, "T4": 35, "T5": 38, "T6": 41}}}
-    bone_sword = {"sig": "WEAP", "keywords": ["WeapTypeSword", "WeapMaterialGlass"], "damage": 12, "value": 165}
-    assert split.power_tier(bone_sword, table=table)[0] == "T4"           # glass-grade damage, whatever its price
+    sword = {"sig": "WEAP", "keywords": ["WeapTypeSword", "WeapMaterialGlass"], "damage": 12, "value": 165}
+    assert split.power_tier(sword, table=table)[0] == "T4"
     leather = {"sig": "ARMO", "keywords": ["ArmorLight", "ArmorCuirass"], "rating": 38}
     assert split.power_tier(leather, table=table)[0] == "T5"
-    assert split.power_tier({**leather, "rating": 26}, table=table)[0] == "T1"
-    assert split.power_tier({**bone_sword, "damage": 17}, table=table)[0] == "T6"   # above every ceiling
+    assert split.power_tier({**sword, "damage": 17}, table=table)[0] == "T6"   # above every ceiling
     assert split.power_tier({"sig": "WEAP", "keywords": ["WeapTypeStaff"], "damage": 9}, table=table) == (None, "")
 
 
-def test_an_item_material_row_s_tier_is_the_one_exception_to_power():
-    priest = {"key": "Here There Be Monsters - Curse of Cipactli.esp:53EB2A", "sig": "ARMO", "edid": "CIPHTBMNagaPriestArmor",
-              "keywords": ["ArmorLight", "ArmorHelmet", "ArmorMaterialScaled"], "rating": 25}
-    assert split.item_tier(priest)[0] == "T1"
+KOTM, HTBM, BMN = "King of the Murkmire.esp:", "Here There Be Monsters - Curse of Cipactli.esp:", "Black Marsh North.esp:"
 
 
-def test_every_itemised_piece_stands_on_the_ladder_at_its_measured_tier():
-    sc = split.scale()
-    lists = {(t["id"], s): set(t[s]) for t in sc["tiers"] for s in ("weapon", "heavy", "light", "shield")}
-    bands = {m: r["band"] for m, r in split.materials()["materials"].items()}
-    off = [(i["edid"], i["material_id"], i["stock_tier_id"]) for i in json.loads((STOCK / "items.json").read_text())["items"]
-           if split.slot_of(i) and i["material_id"] and bands[i["material_id"]] != "never"
-           and i["material_id"] not in lists[(i["stock_tier_id"], split.slot_of(i))]]
+def test_a_ladder_item_s_tier_is_its_material_s_whatever_the_mod_s_numbers():
+    bone_sword = {"key": KOTM + "275050", "sig": "WEAP", "keywords": ["WeapTypeSword", "WeapMaterialGlass"], "damage": 12}
+    leather = {"key": KOTM + "000D63", "sig": "ARMO", "keywords": ["ArmorLight", "ArmorCuirass"], "rating": 38}
+    guard = {"key": BMN + "037DF0", "sig": "ARMO", "keywords": ["ArmorLight", "ArmorCuirass", "ArmorMaterialElven"], "rating": 35}
+    assert split.item_tier(bone_sword)[0] == "T2" and split.item_tier(leather)[0] == "T2"     # Saxhleel work
+    assert split.item_tier(guard)[0] == "T3"                                                  # Argonian scale
+    great = {"key": HTBM + "1979CF", "sig": "WEAP", "keywords": ["WeapTypeBattleaxe"], "damage": 22}
+    assert split.item_tier(great) == ("T5", split.item_tier(great)[1]) and "great obsidian" in split.item_tier(great)[1]
+    # every ladder item takes its tier's Skyrim stats: the bone sword a steel sword's, the guard cuirass scaled's
+    assert split.ladder_override(bone_sword)["power"] == 8.0
+    assert split.ladder_override(guard)["power"] == 32.0
+
+
+def test_mn01_s_gifts_already_stand_at_their_tier_and_are_left_as_they_are():
+    gifts = {HTBM + "16F16F": ("WeapTypeWarhammer", 18), HTBM + "16F16D": ("WeapTypeSword", 7),
+             HTBM + "1B0F7F": ("WeapTypeBow", 7), HTBM + "16F16A": ("WeapTypeDagger", 4)}
+    for k, (typ, dmg) in gifts.items():
+        it = {"key": k, "sig": "WEAP", "keywords": [typ], "damage": dmg}
+        assert split.item_tier(it)[0] == "T1" and split.ladder_override(it) is None, k
+
+
+def test_the_ladder_holds_one_tier_per_material_but_for_the_written_exceptions():
+    tiers = {m: r["ladder_tier"] for m, r in split.materials()["materials"].items()}
+    exc = {r["item"] for r in split.item_materials()["gear"].values() if r.get("tier")}
+    items = {i["id"]: i for i in json.loads((STOCK / "items.json").read_text())["items"]}
+    off = [(k, i["stock_tier_id"]) for k, i in items.items() if k in split.item_materials()["gear"] and k not in exc
+           and i["stock_tier_id"] != tiers[i["material_id"]]]
     assert off == []
+    assert all(r["why"] for r in split.item_materials()["gear"].values() if r.get("tier"))
 
 
 def test_wares_name_real_goods_and_harvestables():
@@ -135,3 +152,32 @@ def test_every_piece_has_a_forge_and_a_tempering_recipe_of_obtainable_ingredient
     bone = forged["PrvtI_ArgonianWeapons.esp:00082D"]                          # the bone dagger: no horker tusk
     assert "Skyrim.esm:03AD68" not in {k for k, _ in bone["ingredients"]}
     assert len(w.rows("recipe")) == len(doc["recipes"])
+
+
+def test_a_smith_sells_the_ingredients_its_place_and_region_make(w):
+    from tools.places.stock.derive import smithing_wares
+    rid = w.get("place", "helstrom").region_id
+    got = {r["item"]: r for r in smithing_wares(w, "helstrom", rid, "trader-blacksmith")}
+    assert got[HTBM + "81A1F3"]["count"] == 5 and "made here" in got[HTBM + "81A1F3"]["why"]   # bog iron: ironwork
+    assert got["Skyrim.esm:0800E4"]["count"] == 6                                              # leather strips
+    general = {r["item"] for r in smithing_wares(w, "helstrom", rid, "trader-general")}
+    assert HTBM + "81A1F3" not in general and "Skyrim.esm:0800E4" in general
+    assert smithing_wares(w, "helstrom", rid, "trader-apothecary") == []
+
+
+def test_the_ladder_table_in_the_doc_is_the_data_s():
+    from tools.newworld import stockdb
+    s = stockdb.LADDER_DOC.read_text()
+    block = s[s.index(stockdb.LADDER_MARK[0]) + len(stockdb.LADDER_MARK[0]) + 1: s.index(stockdb.LADDER_MARK[1])]
+    assert block.strip() == stockdb.ladder_table().strip(), "run python3 -m tools.newworld.stockdb ladder"
+
+
+def test_the_world_build_gets_every_ladder_item_its_overrides_and_its_recipes():
+    from tools.newworld.world import smithing
+    doc = smithing.records()
+    assert len(doc["items"]) == len(split.item_materials()["gear"])
+    assert all(o["power"] != o["was"]["power"] for o in doc["overrides"])
+    assert HTBM + "16F16D" not in {o["item"] for o in doc["overrides"]}        # the iron-level macana stands
+    assert all(r["bench"] in ("CraftingSmithingForge", "CraftingSmithingSharpeningWheel", "CraftingSmithingArmorTable")
+               for r in doc["recipes"])
+    assert [n["edid"] for n in doc["new_items"]] == ["ANW_Flint"]

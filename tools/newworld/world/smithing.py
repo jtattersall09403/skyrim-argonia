@@ -72,7 +72,7 @@ def _cobjs(esm: Path) -> tuple[dict, dict, list[dict]]:
     from tools.argonia_world import esm as E
     from tools.places.extract import find_plugin, search_dirs
     from tools.places.stock.records import Records, place_key
-    rec = Records.load(VANILLA + ["Black Marsh.esm", str(esm)])
+    rec = Records.load(VANILLA + ["Black Marsh.esm", str(Path(esm).resolve())])
     p = E.Plugin.read(esm, {"COBJ"})
     out = []
     for r in p.records():

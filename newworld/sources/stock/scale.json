@@ -189,9 +189,9 @@
     "outfit": "Black Marsh North.esp:037DF8",
     "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"],
     "weapon": null,
-    "tier": "T4",
+    "tier": "T3",
     "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
-    "why": "The guard armour BM&V gives the Argonian soldiers of its own cities (outfit BMArgSet: cuirass, boots, gauntlets): Argonian scale (item_material), light; its cuirass's rating (35) is Skyrim's gilded elven, so by power the set is T4 and only a place whose ceiling reaches T4 issues it. Every culture of Black Marsh is Argonian. The source's guards carry Ebony and Daedric swords, which are no part of a set, so the plain issue's sword stays."
+    "why": "The guard armour BM&V gives the Argonian soldiers of its own cities (outfit BMArgSet: cuirass, boots, gauntlets): Argonian scale (item_material), light: the scale material stands at T3, and the world build gives it Skyrim's scaled armour stats, so a place whose ceiling reaches T3 issues it. Every culture of Black Marsh is Argonian. The source's guards carry Ebony and Daedric swords, which are no part of a set, so the plain issue's sword stays."
    }
   ]
  },

@@ -121,6 +121,37 @@ class Picker:
         return None
 
 
+SMITH_WARES = {"trader-blacksmith": None, "trader-general": {"hide-and-leather", "timber-and-stone"}}
+WARE_COUNT = {"made here": 5, "the region's": 3, "binding": 6}
+
+
+def smithing_wares(w, pid: str, region_id: str, give_kind: str) -> list[dict]:
+    """The smithing ingredients a trader sells (recipe_ingredient, item_good): a smith every ingredient whose good the
+    place makes or its region lists among its goods, a general trader the leather and wood of those; leather strips,
+    every recipe's binding, wherever either trades. Fixed counts by where the good comes from (made here, the
+    region's), never a roll (decision 0035)."""
+    if give_kind not in SMITH_WARES:
+        return []
+    goods_here = {g.good_id for g in w.rows("place_good", place_id=pid) if g.relation == "makes"}
+    goods_region = {g.good_id for g in w.rows("region_good", region_id=region_id)}
+    only = SMITH_WARES[give_kind]
+    binding = json.loads((split.STOCK / "recipe_rules.json").read_text())["binding"]["item"]
+    ware = {r.item_id: r.good_id for r in w.rows("item_good")}
+    used = sorted({r.ingredient for r in w.rows("recipe_ingredient") if not r.ingredient.startswith("new:")})
+    out = []
+    for k in used:
+        g = ware.get(k)
+        if g is None or (only is not None and g not in only):
+            continue
+        if k == binding:
+            out.append({"item": k, "count": WARE_COUNT["binding"], "why": "leather strips, every recipe's binding"})
+        elif g in goods_here:
+            out.append({"item": k, "count": WARE_COUNT["made here"], "why": f"a smithing ingredient made here ({g})"})
+        elif g in goods_region:
+            out.append({"item": k, "count": WARE_COUNT["the region's"], "why": f"a smithing ingredient of the region ({g})"})
+    return out
+
+
 def road_km(w, pid: str) -> dict[str, float]:
     """Shortest road distance in km from the place to every place on the road graph."""
     node_place = {n.id: n.place_id for n in w.rows("road_node")}
@@ -374,6 +405,7 @@ def derive(p: Place) -> dict:
                         if it and it["value"] * n <= budget:
                             budget -= it["value"] * n
                             items.append({"item": it["key"], "count": n, "why": f"{t} {eff} (grade {tiers[t]['potion_grade']})"})
+        items += smithing_wares(w, pid, place.region_id, g.give_kind_id)
         out["traders"].append({"person": who["id"], "give_seq": g.seq, "gold": gold, "items": items,
                                "why": f"{g.detail}: vanilla's {g.give_kind_id} gold times {pw.place_wealth_band_id}'s "
                                       f"{band['trader_gold_mult'] if band else 1}; tiers T1 to {ceiling}, fewer of each "
