@@ -21,7 +21,13 @@ def pdir(tmp_path, monkeypatch):
     monkeypatch.setenv("ARGONIA_PLACES_DIR", str(d))
     monkeypatch.setenv("JOBS_DIR", str(tmp_path / "nojobs"))
     monkeypatch.setenv("ARGONIA_TIMELOG_DEPTH", "0")
+    monkeypatch.setenv("ARGONIA_TIMELOG_TREE", str(tmp_path / "lane"))
     return d
+
+
+def open_pass(d):
+    """What `pass start` leaves: the log exists with an open pass of this worktree."""
+    assert timelog.main(["fen", "pass", "start", "an", "ask"]) == 0
 
 
 def rows(d):
@@ -29,17 +35,19 @@ def rows(d):
 
 
 def test_main_appends_a_row_and_returns_the_verbs_code(pdir, monkeypatch):
+    open_pass(pdir)
     from tools.places import __main__ as M
     mod = types.ModuleType("tools.places.zzfake")
     mod.main = lambda argv: (timelog.count("views", 3) or 7)
     monkeypatch.setitem(sys.modules, "tools.places.zzfake", mod)
     assert M.main(["zzfake", "fen", "x"]) == 7
-    r = rows(pdir)[0]
+    r = rows(pdir)[-1]
     assert (r["place"], r["verb"], r["rc"], r["depth"], r["counts"]) == ("fen", "zzfake", 7, 0, {"views": 3})
     assert r["secs"] >= 0 and r["end"] >= r["start"]
 
 
 def test_look_verb_is_classified_and_queue_wait_recorded(pdir, monkeypatch):
+    open_pass(pdir)
     jobs = pdir.parent / "jobs"
     jobs.mkdir()
     monkeypatch.setenv("JOBS_DIR", str(jobs))
@@ -49,13 +57,14 @@ def test_look_verb_is_classified_and_queue_wait_recorded(pdir, monkeypatch):
     st = timelog.begin(["look", "fen", "sink", "post"])
     assert 39 < st["queue"] < 41 and st["job"] == "j1"
     timelog.record(["look", "fen", "sink", "post"], st, 0)
-    r = rows(pdir)[0]
+    r = rows(pdir)[-1]
     assert (r["sub"], r["kind"]) == ("sink", "editing") and r["queue"] == st["queue"]
     nested = timelog.begin(['look', 'fen', 'sink'])
     assert nested["queue"] == 0 and nested["depth"] == 1   # a nested verb is depth 1, no second wait
 
 
 def test_a_read_only_or_missing_log_never_breaks_a_command(pdir, monkeypatch):
+    open_pass(pdir)
     p = pdir / "fen/timelog.jsonl"
     p.write_text("")
     p.chmod(0o444)
@@ -69,18 +78,19 @@ def test_a_read_only_or_missing_log_never_breaks_a_command(pdir, monkeypatch):
 
 
 def test_concurrent_appends_keep_every_row(pdir):
+    n0 = 0
     def w(i):
         for j in range(50):
             timelog.append("fen", {"t": "phase", "at": i * 100 + j, "name": "x" * 500})
     ts = [threading.Thread(target=w, args=(i,)) for i in range(8)]
     [t.start() for t in ts]
     [t.join() for t in ts]
-    assert len(rows(pdir)) == 400
+    assert len(rows(pdir)) == 400 + n0
     code = ("from tools.places import timelog as t\n"
             "for j in range(30): t.append('fen', {'t': 'phase', 'at': j, 'name': 'y' * 300})")
     procs = [subprocess.Popen([sys.executable, "-c", code], env=os.environ.copy()) for _ in range(4)]
     [p.wait() for p in procs]
-    assert len(rows(pdir)) == 520
+    assert len(rows(pdir)) == 520 + n0
 
 
 def cmd(start, secs, verb, kind, queue=0.0, args="", depth=0, sub=""):
@@ -148,3 +158,38 @@ def test_handover_and_the_gate_leave_the_log_out(tmp_path):
     assert handover.changed_at(root, d) == t0
     plan = gate.pick(["newworld/places/fen/timelog.jsonl"])
     assert plan.inert == ["newworld/places/fen/timelog.jsonl"] and not plan.stages and not plan.tests
+
+
+def test_nothing_is_written_outside_an_open_pass_or_from_another_tree(pdir, monkeypatch):
+    log = pdir / "fen/timelog.jsonl"
+    timelog.record(["build", "fen"], timelog.begin(["build", "fen"]), 0)     # no log, no pass: nothing, no file
+    assert not log.exists()
+    assert timelog.main(["fen", "phase", "site"]) == 0 and not log.exists()  # a phase needs a pass too
+    assert timelog.main(["fen", "pass", "end"]) == 0 and not log.exists()
+    open_pass(pdir)
+    timelog.main(["fen", "phase", "site"])
+    st = {**timelog.begin(["build", "fen"]), "depth": 0}
+    timelog.record(["studio", "fen"], st, 0)                                  # the studio is never logged
+    timelog.record(["build", "fen"], st, 0)
+    r = rows(pdir)
+    start = r[0]
+    assert start["edge"] == "start" and start["tree"] and "branch" in start and start["id"]
+    assert [x["t"] for x in r] == ["pass", "phase", "cmd"] and r[2]["pass"] == start["id"] == r[1]["pass"]
+    monkeypatch.setenv("ARGONIA_TIMELOG_TREE", "/elsewhere")                  # another worktree or the main tree
+    timelog.record(["check", "fen"], st, 0)
+    assert timelog.main(["fen", "phase", "x"]) == 0 and timelog.main(["fen", "pass", "end"]) == 0
+    assert len(rows(pdir)) == 3
+    monkeypatch.undo()
+    monkeypatch.setenv("ARGONIA_PLACES_DIR", str(pdir))
+    monkeypatch.setenv("ARGONIA_TIMELOG_TREE", str(pdir.parent / "lane"))
+    assert timelog.main(["fen", "pass", "end"]) == 0                          # closed: nothing more is written after it
+    timelog.record(["build", "fen"], st, 0)
+    assert [x.get("edge") for x in rows(pdir) if x["t"] == "pass"] == ["start", "end"] and len(rows(pdir)) == 4
+
+
+def test_handover_warns_of_an_open_pass_but_does_not_fail(pdir):
+    d = pdir / "fen"
+    open_pass(pdir)
+    timelog.main(["fen", "phase", "check"])
+    ok, line = handover.timelog_marked(d)
+    assert ok and "still open" in line and "pass end" in line

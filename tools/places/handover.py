@@ -87,6 +87,10 @@ def timelog_marked(d: Path) -> tuple[bool, str]:
     phases = {r["name"] for r in rows if r.get("t") == "phase"}
     if any(r.get("t") == "cmd" for r in rows) and not phases:
         return False, "time log FAILS: commands logged but no phase marked; `python -m tools.places timelog <place> phase \"<step>\"` at each step (place-system)"
+    op = [r for r in rows if r.get("t") == "pass"][-1:]
+    if op and op[0].get("edge") == "start":
+        return True, (f"time log: pass {op[0].get('what')!r} is still open; end it (`timelog <place> pass end`) and put "
+                      f"`timelog <place> report --md` in the hand-back")
     return True, f"time log: {len(rows)} rows, {len(phases)} phases marked"
 
 

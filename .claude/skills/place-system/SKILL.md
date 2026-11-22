@@ -100,7 +100,7 @@ Read `docs/design/consistency.md` before any work: one world, told the same ever
 
 ## The time log
 
-Every `python -m tools.places` verb appends a row to `newworld/places/<id>/timelog.jsonl` when it ends (what, how long,
+While a pass is open (`timelog <place> pass start`, which creates the log; nothing is written outside one, and only from the worktree that started it), every `python -m tools.places` verb appends a row to `newworld/places/<id>/timelog.jsonl` when it ends (what, how long,
 its queue wait under job_guard). The drafter adds the meaning: `timelog <place> phase "<step>"` at each step of the
 order of work above (plan, site, adapt, streets, rooms, routines, story, dressing, stock, check, walk loop, fixes after
 lead's read, `tool fix: <tool>`, waiting on lead) and `timelog <place> pass start|end "<ask>"` around each pass the

@@ -1,12 +1,17 @@
 """A place's time log: where a place draft's time went, kept beside the place and committed with it.
 
-`newworld/places/<id>/timelog.jsonl`, one JSON row per line, appended (never rewritten):
+`newworld/places/<id>/timelog.jsonl`, one JSON row per line, appended (never rewritten). A log exists only for a place
+whose drafter started a pass (`pass start` creates it); rows are written only while a pass is open (the last pass row is
+a start) and only by commands run from the worktree the pass was started in. Outside an open pass nothing is written, by
+anyone: the studio, a lead's landing commands and other agents' commands leave a place's files alone.
   - cmd rows, written by `python -m tools.places` itself when any verb ends (tools/places/__main__.py calls `record`):
     place, verb, sub (the look verb), kind (looking|editing|building|checking|walking|surveying|content|other), start,
     end, secs, rc, queue (seconds a job_guard run waited between the ask and its start), depth (a verb run inside
-    another one is depth 1 and never counted twice), counts (what the verb knew: views, checks...).
+    another one is depth 1 and never counted twice), counts (what the verb knew: views, checks...), pass (the pass id).
+    The queue wait is inferred from the job_guard spool (the ask is the `.cmd` file's time, the start the `.started`
+    file's), matched to the job by its command line; it is not recorded by job_guard itself. The `studio` verb is never logged.
   - phase rows, by the agent:   timelog <place> phase "<name>" [--note "..."]
-  - pass rows, by the agent:    timelog <place> pass start|end "<what the lead asked>"
+  - pass rows, by the agent:    timelog <place> pass start|end "<what the lead asked>" (start records id, worktree, branch)
 The log is read by nothing but its report: the build, the handover check, the consistency stage and the gate leave it out.
 
     python -m tools.places timelog <place> report [--md] [--gap 60]
@@ -62,6 +67,23 @@ def append(place: str, row: dict) -> bool:
         return True
     except Exception:
         return False
+
+
+def tree() -> str:
+    """The worktree this code runs from: a pass belongs to the one it was started in."""
+    return str(Path(os.environ.get("ARGONIA_TIMELOG_TREE") or Path(__file__).resolve().parents[2]))
+
+
+def open_pass(place: str) -> dict | None:
+    """The pass row (a start) still open in the place's log, else None."""
+    cur = None
+    try:
+        for r in load(place):
+            if r.get("t") == "pass":
+                cur = r if r.get("edge") == "start" else None
+    except Exception:
+        return None
+    return cur
 
 
 def find_place(argv: list[str]) -> str | None:
@@ -121,16 +143,17 @@ def begin(argv: list[str] | None = None) -> dict:
 
 def record(argv: list[str], st: dict, rc: int) -> None:
     try:
-        if not argv or argv[0] == "timelog":
+        if not argv or argv[0] in ("timelog", "studio"):
             return
         place = find_place(argv)
-        if not place:
+        op = open_pass(place) if place else None
+        if not op or op.get("tree") != tree():
             return
         end = time.time()
         verb, sub, kind = classify(argv)
         append(place, {"t": "cmd", "place": place, "verb": verb, "sub": sub, "kind": kind, "start": round(st["start"], 2),
                        "end": round(end, 2), "secs": round(end - st["start"], 1), "rc": rc, "queue": st["queue"],
-                       "depth": st["depth"], "job": st.get("job", ""),
+                       "depth": st["depth"], "job": st.get("job", ""), "pass": op.get("id", ""),
                        "args": " ".join(argv[1:])[:160], "counts": dict(COUNT)})
     except Exception:
         pass
@@ -270,6 +293,15 @@ def render(place: str, rep: dict, md: bool = False) -> str:
     return "\n".join(out)
 
 
+def _branch() -> str:
+    import subprocess
+    try:
+        return subprocess.run(["git", "-C", tree(), "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True,
+                              timeout=10).stdout.strip()
+    except Exception:
+        return ""
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="python -m tools.places timelog", description=__doc__.split("\n\n")[0])
     ap.add_argument("place")
@@ -286,16 +318,31 @@ def main(argv: list[str]) -> int:
         print(render(a.place, report(load(a.place), a.gap), a.md))
         return 0
     now = round(time.time(), 2)
+    op = open_pass(a.place)
+    mine = bool(op and op.get("tree") == tree())
     if a.what == "phase":
         if not a.args:
             print("phase needs a name; the steps: " + ", ".join(PHASES), file=sys.stderr)
             return 2
-        ok = append(a.place, {"t": "phase", "at": now, "name": " ".join(a.args), "note": a.note})
+        if not mine:
+            print("timelog: no pass open here; `timelog <place> pass start \"<ask>\"` first (nothing written)", file=sys.stderr)
+            return 0
+        ok = append(a.place, {"t": "phase", "at": now, "name": " ".join(a.args), "note": a.note, "pass": op["id"]})
     else:
         if not a.args or a.args[0] not in ("start", "end"):
             print('pass needs start|end and what the lead asked: timelog <place> pass start "<ask>"', file=sys.stderr)
             return 2
-        ok = append(a.place, {"t": "pass", "at": now, "edge": a.args[0], "what": " ".join(a.args[1:]) or "(unnamed)"})
+        what = " ".join(a.args[1:]) or "(unnamed)"
+        if a.args[0] == "end":
+            if not mine:
+                print("timelog: no pass of this worktree is open (nothing written)", file=sys.stderr)
+                return 0
+            ok = append(a.place, {"t": "pass", "at": now, "edge": "end", "what": op["what"], "pass": op["id"]})
+        else:
+            if op:   # an earlier pass left open is closed at this ask
+                append(a.place, {"t": "pass", "at": now, "edge": "end", "what": op["what"], "pass": op["id"]})
+            ok = append(a.place, {"t": "pass", "at": now, "edge": "start", "what": what, "id": f"p{int(now)}",
+                                  "tree": tree(), "branch": _branch()})
     if not ok:
         print("timelog: could not write the log (not fatal)", file=sys.stderr)
     return 0
