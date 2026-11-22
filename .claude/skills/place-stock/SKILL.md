@@ -102,6 +102,9 @@ among those. Both sell leather strips (six). Keep these rows unless the facts sa
 (`material reach`, `region`, `place class` or `kit <id>`) and the record text it read. Bring it to zero before
 hand-over, by changing the row or by giving it an `exception`.
 
+Gear is decided for our place, never copied from what the source held: any item of the ladder may be given to a place
+whose region, culture, kind, wealth and the holder's kit allow it, whatever plugin it is from.
+
 ## 5. Author the stock source
 
 Write `newworld/sources/stock/places/<place>.json` from the draft and the facts. For each kind of holder:
@@ -110,11 +113,12 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - The baseline is the archetype of role × band × culture: the band's carried gold and clothes, a tool or weapon
   of the trade, and jewellery from W3 up.
 - Each person's gear follows their trade kit and their region (section 4).
-- Guards carry the guard's issue (scale.json `guard_issue`, which the derive applies). Where the place's mods
-  provide its own culture's guard set and the place's ceiling reaches the set's tier, the guards wear that set
-  (in Black Marsh, BM&V's Argonian scale guard armour, T3, the scale material's tier), with the set's weapon if the source's guards carried one.
-  Otherwise they wear the plain issue (T2). Every guard also carries one plain torch to light the way after dark. Each
-  reason says why the place earns the set, such as a capital or a city of standing.
+- Guards carry the guard's issue, a table of ours (scale.json `guard_issue.table`, which the derive applies and
+  `stock reach` checks): the first row that fits the place's kind, culture, holder and ceiling. An Argonian city, town,
+  fort, keep or prison of ceiling T3 or more issues BM&V's Argonian scale armour; any other settled Argonian place of
+  ceiling T2 or more, Saxhleel bone-and-leather; a Dunmer holdout, bonemold; an Imperial post, Imperial issue; a tribal
+  camp, hide and flint; anywhere else the plain issue (T2). Every guard also carries one plain torch to light the way
+  after dark. Each reason names the row. A place that keeps another issue by choice gives the rows an `exception`.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a
   household's elder the family's old ring. Draw them from the person's trade, household and backstory.
 - A notable person is written by hand: the leader, the richest household, anyone the record's hooks name.

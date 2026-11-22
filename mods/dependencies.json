@@ -5093,6 +5093,841 @@
    ]
   },
   {
+   "id": "heavy-armory",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 6308,
+    "file": 839777
+   },
+   "name": "Heavy Armory - New Weapons",
+   "author": "PrivateEye",
+   "version": "6.4.2",
+   "archive": "Heavy Armory FOMOD Installer 6308 6.4.2 2026-11-16T11-17Z XnIqaSnE0.7z",
+   "size_kb": 145903,
+   "why": "tridents, spears, shortspears, clubs, hatchets and quarterstaves for the items ladder's wood, bone and bog-iron tiers (docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "\"Can I use assets from your mod...? Sure, but notify me\" (description); we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (18844 endorsements, updated 2026-11-16, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "87a274283dca383883115d9b95ede6d70b3218f5008aa36576ea73bfec33a361",
+   "plugins": [
+    "PrvtI_HeavyArmory.esp"
+   ],
+   "install_note": "FOMOD: the main plugin PrvtI_HeavyArmory.esp and its BSA (Options/HeavyArmoryBSA) are what the ladder reads; its Animated Armoury patch (Patches/AA/PrvtI_HeavyArmory_AnimatedArmoury_Patch.esp) is owed to `stack.py stage`'s FOMOD picks for the NewWorld profile (asset-only: the plugin is never active, so the patch changes no record we copy)"
+  },
+  {
+   "id": "naga-kur-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 199418,
+    "file": 840110
+   },
+   "name": "Naga-Kur Armor",
+   "author": "Deydranos",
+   "version": "1",
+   "archive": "Naga Kur Armor - 2k 199418 1 2026-11-17T00-13Z OyYrP2yRK.7z",
+   "size_kb": 58032,
+   "why": "Naga-Kur light armour for Naga country (the items ladder, T3 scale); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "\"open to make any patch, port or tweak\" (description); we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (110 endorsements, updated 2026-11-18, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "736a946b73ee7d53071c5cac12e20d5dd701b75e1ed0e5deeba504a3c6b4ec3b",
+   "plugins": [
+    "NagaKurArmor.esp"
+   ]
+  },
+  {
+   "id": "bone-cultist-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 111224,
+    "file": 469296
+   },
+   "name": "Bone Cultist Armor",
+   "author": "furexarot",
+   "version": "1.0",
+   "archive": "Bone Cultist Armor-111224-1-0-1707499470.7z",
+   "size_kb": 27380,
+   "why": "bone plate heavy armour, the ladder's first T3 heavy (Xit-Xaht bone plate); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "no permission line in the description; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (6903 endorsements, updated 2024-02-09, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "cd8bcdac4240d1ab4f6a7594170496d9b49bf03bf8bb3144351662a020909c69",
+   "plugins": [
+    "Bone Cultist Armor.esp"
+   ]
+  },
+  {
+   "id": "grummite-weaponry",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 46354,
+    "file": 215701
+   },
+   "name": "Grummite Weaponry (Mihail)",
+   "author": "Mihail",
+   "version": "1.1",
+   "archive": "grummite weaponry sse 1.1-46354-1-1-1626809360.rar",
+   "size_kb": 39058,
+   "why": "rustic iron-and-bone swamp-people weapons (the ladder's bog-iron and bone tiers); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "no permission line in the description; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (384 endorsements, updated 2021-07-20, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "b6121576e1832eb65477ed7bc3615e97cf04f9290884cf14cb1676709a4e9a39",
+   "plugins": [
+    "mihailgrummiteweaponry.esp"
+   ]
+  },
+  {
+   "id": "pirates-wield-cutlasses",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 31753,
+    "file": 762584
+   },
+   "name": "Pirates Wield Cutlasses",
+   "author": "Tate Taylor",
+   "version": "3.2.0",
+   "archive": "Pirates Wield Cutlasses 31753 3.2.0 2026-06-12T02-30Z JrECN2gqR.zip",
+   "size_kb": 5080,
+   "why": "the pirates' cutlass (situational: pirate waters); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "not stated; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (1203 endorsements, updated 2026-06-12, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "b4e30200cb8d2a29202b673a51eed19c5aea2c21b05c5bd2069d73ae43aecceb",
+   "plugins": [
+    "Pirates Wield Cutlasses.esp"
+   ]
+  },
+  {
+   "id": "east-empire-company-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 54990,
+    "file": 768104
+   },
+   "name": "East Empire Company Armor",
+   "author": "Tate Taylor and Jelidity",
+   "version": "3.0.1",
+   "archive": "East Empire Company Armor 54990 3.0.1 2026-06-26T00-00Z N2AYL5JQw.zip",
+   "size_kb": 59790,
+   "why": "the East Empire Company's and the Topal Bay Company's uniform (situational: the EEC wharves); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "not stated; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (2396 endorsements, updated 2026-06-26, not adult-flagged); the lead's plan (items ladder, packet three)",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "b246c20ea9467c6399f80558382ce9950d3f5fa01beeb26cbd6de3d561d14ac7",
+   "plugins": [
+    "EastEmpireCompanyArmor.esp"
+   ]
+  },
+  {
+   "id": "cyrodiilic-thief-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 29667,
+    "file": 110194
+   },
+   "name": "Cyrodiilic Thief Armor",
+   "author": "Eferas and FrankFamily",
+   "version": "1.0",
+   "archive": "Cyrodiilic Thief - Ver.1.0-29667-1-0-1570972109.rar",
+   "size_kb": 39601,
+   "why": "thieves' leathers for the Night-Reed Chapter (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (7068 endorsements, updated 2019-10-13, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "6aa761207ce8f71c9525de96a642381a19c336bf3f2746172fb99a65a95a2028",
+   "plugins": [
+    "Cyrodiilic Thief.esp"
+   ]
+  },
+  {
+   "id": "redguard-assassin-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 61714,
+    "file": 262111
+   },
+   "name": "Redguard Assassin Armor",
+   "author": "Max",
+   "version": "1.0.4",
+   "archive": "Redguard Assassin Armor-61714-1-0-4-1644135917.zip",
+   "size_kb": 18809,
+   "why": "an assassin's light armour for the Shadowscales and hired blades (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (1145 endorsements, updated 2022-02-06, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "5781a39de906ea3c7ad690497cb21a682b532f3ddf06de30a309cd1f9ac2a682",
+   "plugins": [
+    "Redguard Assasin Armor.esp"
+   ]
+  },
+  {
+   "id": "mercenary-light-iron-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 59897,
+    "file": 253574
+   },
+   "name": "Mercenary Light Iron Armor",
+   "author": "Max",
+   "version": "1.0.6",
+   "archive": "Mercenary Light Iron Armor-59897-1-0-6-1641199177.zip",
+   "size_kb": 50897,
+   "why": "a sellsword's light iron armour for the Marsh Charter (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (1939 endorsements, updated 2022-01-03, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "5f2d6c1ab9948a86aec6e2bb4b0899cdea69d733413843d942f4ca7f4a9f6119",
+   "plugins": [
+    "Mercenary Light Iron Armor.esp"
+   ]
+  },
+  {
+   "id": "obsidian-weapons",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 42572,
+    "file": 171506
+   },
+   "name": "Obsidian Weapons",
+   "author": "Holzey",
+   "version": "1.3",
+   "archive": "Obsidian Weapons(Manual Download)-42572-1-3-1606247762.rar",
+   "size_kb": 34514,
+   "why": "more volcanic-glass weapons beside the Xanmeer set (a glass recolour, relabelled obsidian) (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (17 endorsements, updated 2020-11-24, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "1e3f3dab0e7fe1b06cf1fdd26b7c2dfb8601d383b96c9106675a819462444d2f",
+   "plugins": [
+    "Obsidian Weapons Update 4.esp"
+   ]
+  },
+  {
+   "id": "seagrave-trident",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 125243,
+    "file": 525084
+   },
+   "name": "Seagrave Trident - Scourge of the Depths",
+   "author": "Noctis3DArts",
+   "version": "1.1",
+   "archive": "Seagrave Trident - Scourge of the Depths-125243-1-1-1721986193.zip",
+   "size_kb": 11787,
+   "why": "a fishbone trident (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (48 endorsements, updated 2025-09-07, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "c318e29ab0d83c8888fbbcccc48c8342ae2edfdc54150a714dc825c169bd44ff",
+   "plugins": [
+    "Noct_SeagraveTrident.esp"
+   ]
+  },
+  {
+   "id": "argonian-macuahuitl",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 46353,
+    "file": 188573
+   },
+   "name": "Argonian Macuahuitl",
+   "author": "hrodeberht1 and Bella",
+   "version": "1.0",
+   "archive": "Macuahuitl-46353-1-0-1614523299.7z",
+   "size_kb": 6388,
+   "why": "a macuahuitl, flint-toothed (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (198 endorsements, updated 2021-02-28, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "b9fc0af75f4167f5fa2757f88c50eda42cfc7d6c8639d557940f159e3635e8f0",
+   "plugins": [
+    "bobmods_macua.esp"
+   ]
+  },
+  {
+   "id": "black-marsh-weapons",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 101017,
+    "file": 428738
+   },
+   "name": "Black marsh weapons set",
+   "author": "Mavrion",
+   "version": "1.6.640",
+   "archive": "Black marsh weapons 2K-101017-1-6-640-1695575471.7z",
+   "size_kb": 2605,
+   "why": "Black Marsh weapons (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (18 endorsements, updated 2023-10-02, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "a12def5962ff818539548b015a3b2b1c2e74ac5522a5adb1bbaba87cd0c01900",
+   "plugins": [
+    "Black Marsh weapons 2K.esp"
+   ]
+  },
+  {
+   "id": "ash-spawn-weapons",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 72728,
+    "file": 796210
+   },
+   "name": "New Armory Series - Ash Spawn Weapons",
+   "author": "PrivateEye",
+   "version": "1.5",
+   "archive": "New Armory Series - Ash Spawn Weapons 72728 1.5 2026-08-28T01-18Z gbrZ4tK5A.7z",
+   "size_kb": 3381,
+   "why": "ember-steel weapons read as volcanic glass work (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (1340 endorsements, updated 2026-08-28, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "4d3ee6179307b52d40fac9304cedd75c67738a41d94d175d08746725751ec0e4",
+   "plugins": [
+    "Prvti_AshenArmory.esp"
+   ]
+  },
+  {
+   "id": "blowgun",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 12910,
+    "file": 36313
+   },
+   "name": "Blowgun_by_Ruddy88",
+   "author": "Ruddy88",
+   "version": "V1.0",
+   "archive": "Blowgun_by_Ruddy88-12910-V1-0.zip",
+   "size_kb": 16235,
+   "why": "the only blowgun: a hunter's dart gun (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (558 endorsements, updated 2017-10-14, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "a4c55ba85b35f3dec457d23b329b3f1d1e071ef63a46a805f37d89cfc1565af0",
+   "plugins": [
+    "Blowgun_by_Ruddy88.esp"
+   ]
+  },
+  {
+   "id": "spiked-club",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 68768,
+    "file": 287162
+   },
+   "name": "Spiked Club",
+   "author": "Muoviori",
+   "version": "1.0",
+   "archive": "Spiked Club-68768-1-0-1653759816.7z",
+   "size_kb": 7260,
+   "why": "a spiked wooden club (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (104 endorsements, updated 2022-05-28, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "7ab9034f22f1afe45fe25084f51c2f1713e8e26666a4d6ac14da4d58c81898ca",
+   "plugins": [
+    "SpikedClub_by_Flarescale.esp"
+   ]
+  },
+  {
+   "id": "spiked-mace",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 67926,
+    "file": 283141
+   },
+   "name": "Spiked Mace",
+   "author": "Muoviori",
+   "version": "1.0",
+   "archive": "Spiked Mace-67926-1-0-1652363758.7z",
+   "size_kb": 12153,
+   "why": "a spiked mace (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (120 endorsements, updated 2022-05-12, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "7d0d52287878db5395f7bf47e95d286e7fc9fc661cd0a510369f8ed79498664e",
+   "plugins": [
+    "SpikedMace_by_Flarescale.esp"
+   ]
+  },
+  {
+   "id": "wooden-war-club",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 55676,
+    "file": 228761
+   },
+   "name": "Wooden War Club (standalone version)",
+   "author": "Muoviori",
+   "version": "1.0",
+   "archive": "Tenderizer - Wooden War Club-55676-1-0-1631812091.7z",
+   "size_kb": 15470,
+   "why": "a wooden war club (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (132 endorsements, updated 2021-09-16, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "ffe8717b53af86e1345fe1505e389b327e80f3116dc3f000dbb1d2c4eeb8479d",
+   "plugins": [
+    "WoodenClub_by_Flarescale.esp"
+   ]
+  },
+  {
+   "id": "chitin-bow",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 162526,
+    "file": 681232
+   },
+   "name": "Chitin Bow SE",
+   "author": "4-52 AM",
+   "version": "2",
+   "archive": "1ChitinBowSE-162526-2-1761637626.7z",
+   "size_kb": 22455,
+   "why": "a chitin bow (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (471 endorsements, updated 2025-10-28, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "889446b78c0b3d64b6db63aabeaffa1b6016985f0ddddfbb7032b917f800bedc",
+   "plugins": [
+    "1ChitinBow.esl"
+   ]
+  },
+  {
+   "id": "ivory-bow",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 115856,
+    "file": 488921
+   },
+   "name": "Ivory Bow SE",
+   "author": "authorname",
+   "version": "2",
+   "archive": "1IvoryBow-115856-2-1712648933.7z",
+   "size_kb": 22264,
+   "why": "a bone bow (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (1148 endorsements, updated 2024-04-09, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "743c96f1af61aa42faf2f9316e206a8a6493bd83ca85c65fe6b42a3e2b4c8c49",
+   "plugins": [
+    "1IvoryBow.esl"
+   ]
+  },
+  {
+   "id": "bamboo-bows",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 46406,
+    "file": 188830
+   },
+   "name": "Bamboo Bows",
+   "author": "Alrock",
+   "version": "1",
+   "archive": "Bamboo Bows-46406-1-1614621133.7z",
+   "size_kb": 10943,
+   "why": "bamboo bows (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (108 endorsements, updated 2021-03-03, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "a3750628dd7f2499d9a51985cded4229d84800c14ca16cbd71fcdf7fa2dce5db",
+   "plugins": [
+    "Bamboo Bows.esp"
+   ]
+  },
+  {
+   "id": "bamboo-quarterstaffs",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 8887,
+    "file": 22398
+   },
+   "name": "Bamboo Quarterstaffs For Skyrim Special Edition",
+   "author": "Majistik",
+   "version": "5.0",
+   "archive": "SE Quarterstaffs 5.0 - 8 one-handed Bamboo Quarterstaffs HD RES TEXTURES-8887-5-0.zip",
+   "size_kb": 55520,
+   "why": "bamboo quarterstaves (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (48 endorsements, updated 2017-03-13, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "530c38a659277f0cd03172349e5a5cdfee242f400bd6fa396f14bbf527a61e46",
+   "plugins": [
+    "Bamboo_Quarterstaffs_MasterCollection_4.5.esp"
+   ]
+  },
+  {
+   "id": "netch-leather-armor-thusky",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 26215,
+    "file": 178039
+   },
+   "name": "Morrowind Armor - Netch Leather - SSE",
+   "author": "THusky",
+   "version": "1.3SE",
+   "archive": "Morrowind Armor - Netch Leather - SSE-26215-1-3SE-1609965931.7z",
+   "size_kb": 27031,
+   "why": "Dunmer netch leather armour (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (858 endorsements, updated 2021-01-06, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "7f769a76907b378fdd66846e5c375f2c8dea44c78a6ed6d5c42ff36bccb35ec1",
+   "plugins": [
+    "NetchLeather.esp"
+   ]
+  },
+  {
+   "id": "redoran-tombwarden",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 139546,
+    "file": 749836
+   },
+   "name": "Redoran Tombwarden Armors",
+   "author": "TXTEC and AriesThe_Ram",
+   "version": "1.5",
+   "archive": "Redoran Tombwarden Armors-139546-1-5-1778221108.7z",
+   "size_kb": 248818,
+   "why": "Redoran tomb-warden armour for the Dunmer houses (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (488 endorsements, updated 2026-05-08, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "1703d838e5b9be17d93bcc2b4f1e89e19244d60cbd525331f29f2620de2fac79",
+   "plugins": [
+    "RedoranTombWarden.esp"
+   ]
+  },
+  {
+   "id": "khajiiti-apex-armory",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 17114,
+    "file": 659646
+   },
+   "name": "VickusDickus' Khajiiti Apex Armory Reforged",
+   "author": "VickusDickus",
+   "version": "2.2.2",
+   "archive": "VickusDickus' Apex Khajiit Armory Reforged 1K-17114-2-2-2-1756268126.rar",
+   "size_kb": 53001,
+   "why": "the Khajiit caravans' armour and weapons (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (3850 endorsements, updated 2026-10-30, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "83b5f962de17b804a116c73873810c6f3b52bc22da7bdf9d1ccde179a3f5dad9",
+   "plugins": [
+    "Apex_Khajiit.esp"
+   ]
+  },
+  {
+   "id": "argonian-funerary-masks",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 143402,
+    "file": 605035
+   },
+   "name": "Argonian Funerary Masks",
+   "author": "Kadraeus",
+   "version": "1.2",
+   "archive": "Argonian Funerary Masks - 2K-143402-1-2-1741846139.zip",
+   "size_kb": 27308,
+   "why": "Argonian funerary masks (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (261 endorsements, updated 2025-03-13, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "2244ed9d76d559d6b7279a2ad83acdcc494352a2b32019ded1b31c98d29c0b40",
+   "plugins": [
+    "Kad_BogBlightMask.esp"
+   ]
+  },
+  {
+   "id": "silvered-boneweave-arsenal",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 110924,
+    "file": 468052
+   },
+   "name": "Silvered Boneweave Arsenal",
+   "author": "Noctis3DArts",
+   "version": "1.1",
+   "archive": "Silvered Boneweave Arsenal-110924-1-1-1707156152.7z",
+   "size_kb": 63018,
+   "why": "coiled-bone weapons with bright edges (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (127 endorsements, updated 2024-02-05, not adult-flagged); the owner's ruling 2026-11-22: breadth first, fit to the feel second",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet three)",
+   "asset_only": true,
+   "sha256": "644a78c2824398f71c66db8193e41576fc42c94c4f3a7e2ee117c6443147330d"
+  },
+  {
    "id": "dx-necromancer-robes",
    "group": "newworld",
    "source": {
@@ -5118,7 +5953,8 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`",
+   "sha256": "e6faea25f772530dd7684449a17658a2e8740452d672b8abbce9512160340121"
   },
   {
    "id": "pirate-armor-nordwar",
@@ -5146,7 +5982,10 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "sha256": "04ed580aa9f8896ce1eebb94daf3c723ac40da9d3d7a7e4e00d212b389b91b0c",
+   "plugins": [
+    "Pirate Armor.esp"
+   ]
   },
   {
    "id": "imperial-guard-centurion",
@@ -5174,7 +6013,10 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "sha256": "cfe7132c297ae3179e25a80dd2b1b561565123524b9775165d78a461a30f5c97",
+   "plugins": [
+    "Imperial Guard Centurion Armor SE - Johnskyrim.esp"
+   ]
   },
   {
    "id": "arcane-mage-armor",
@@ -5202,7 +6044,8 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`",
+   "sha256": "5080c67c8d204151099bdfa1bc25828f9ecb0ecb4efe2467cdaa3de6db5df75c"
   }
  ]
 }

@@ -45,11 +45,15 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     b. Fix the issues. Then recapture ONLY the views that showed them: `playwalk --changed` (the stations near what
        changed since the last walk), or `playwalk <from> <to>` for one leg, or `at --stand` for one view. Read
        those. Still wrong: fix and recapture those views again. Repeat until the list is empty.
-    c. One more FULL walk, to see that no fix broke something else. New issues: back to b.
-    d. Done when a full walk is clean. An issue that has not moved after several rounds is not chased further: it
-       goes under "For the owner" in `STATE.md` in plain English, with where it stands and the look that shows it.
+    c. Close the loop the cheap way when every fix was local: each fix's own views recaptured and read clean,
+       `look <place> probe --mesh` showing every door and street point on the main walking network, and the checks
+       green. A second FULL walk is owed only when a fix since the last one could reach beyond its own views: a
+       structure or ground moved, walks re-routed, or walk zones changed how the mesh joins. New issues: back to b.
+    d. Done when the loop is closed that way. An issue that has not moved after several rounds is not chased
+       further: it goes under "For the owner" in `STATE.md` in plain English, with where it stands and the look
+       that shows it.
     Then `look <place> survey` and
-    `survey <unit>` for every structure, each tile read; the owner captures (`place-look`, the hand-over look).
+    `survey <unit>` for every structure, each tile read. No capture set is made for the owner: he looks in the studio.
 11. The promises check is green: `python -m tools.places promises <place_id> --check` passes (the build's `promises`
     check runs the same): every gathered sentence of the record, its people and its quests has a row, every built row
     its evidence in the place files, every quest state its `states.jsonl` row with its key refs. Look at each state
@@ -62,6 +66,7 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
     consistency stage would refuse the landing). For a stocked place, `handover` also needs `python -m tools.places
     stock reach <place_id>` to flag no row (material reach, region, place class, trade kit; `place-stock`, section 4).
+    `handover` also needs the place's time log to have its phase markers (`place-system`, The time log).
     The place goes to `place-people`.
 
 ## Accepted findings

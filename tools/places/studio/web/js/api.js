@@ -21,9 +21,11 @@ export function parseJsonl(text) {
 export const getJsonl = async (p, o) => parseJsonl(await getText(p, o));
 
 // A converted mesh: the server may answer 202 + Retry-After while it converts; wait and ask again.
-export async function getMesh(model, { tries = 30, signal, level = 0 } = {}) {
+// `alt`: a base key whose alternate textures make its own variant of the model (the base's alt_tex).
+export async function getMesh(model, { tries = 30, signal, level = 0, alt = null } = {}) {
+  const extra = alt ? `&alt=${encodeURIComponent(alt)}` : '';
   for (let i = 0; i < tries; i++) {
-    const r = await fetch(`${BASE}/asset/mesh?model=${encodeURIComponent(model)}&level=${level}`, { signal, credentials: 'same-origin' });
+    const r = await fetch(`${BASE}/asset/mesh?model=${encodeURIComponent(model)}&level=${level}${extra}`, { signal, credentials: 'same-origin' });
     if (r.status === 200) return r.arrayBuffer();
     if (r.status !== 202) throw new Error(`mesh ${model}: ${r.status}`);
     const wait = Math.min(10, Number(r.headers.get('Retry-After')) || 1) * 1000;

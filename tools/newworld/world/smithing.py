@@ -45,7 +45,9 @@ def records() -> dict:
         it = rec.item(k)
         if it is None:
             continue
-        items.append({"item": k, "sig": it["sig"], "tier": split.item_tier(it)[0], "edid": it["edid"]})
+        items.append({"item": k, "sig": it["sig"], "tier": split.item_tier(it)[0], "edid": it["edid"],
+                      **({"name": gear[k]["name"]} if gear[k].get("name") else {}),
+                      **({"disenchant": True} if gear[k].get("disenchant") else {})})
         o = split.ladder_override(it)
         if o:
             overrides.append({"item": k, "sig": it["sig"], "power": o["power"], "value": o["value"], "base": o["base"],
@@ -54,7 +56,8 @@ def records() -> dict:
     recipes = [{"item": r["item"], "kind": r["kind"], "bench": r["station"], "perks": r["perk"],
                 "ingredients": r["ingredients"]} for r in rdoc["recipes"] if r["station"]]
     rules = json.loads((STOCK / "recipe_rules.json").read_text())
-    return {"items": items, "overrides": overrides, "recipes": recipes, "new_items": rules["new_items"]}
+    names = {r["item"]: r["name"] for r in split.item_materials()["wares"].values() if r.get("name")}
+    return {"items": items, "overrides": overrides, "recipes": recipes, "new_items": rules["new_items"], "ware_names": names}
 
 
 def run(out: Path = OUT) -> int:

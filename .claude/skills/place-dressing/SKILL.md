@@ -22,7 +22,8 @@ baseline carried from the source (its lights with fixtures, its lanterns, its co
 
 A place's Hist and the trees within 15 m carry King of the Murkmire's rope lanterns (`DLC2DarkElfLantern05Rope`,
 `04Rope`, self-lit), 1 to 5 per tree (`newworld/sources/dressing/kinds.json`), each on a hang point of the tree's
-mesh, seated `on` the tree. Run `draft hang <place>` (dry run:
+mesh, seated `on` the tree and switched by the tree's enable parent; a dead twin (enabled opposite to its parent)
+carries none, since no one is left to hang them in the ending that shows it. Run `draft hang <place>` (dry run:
 `python3 -m tools.places.draft.hang <place>`) after a tree is moved, turned or swapped. A lantern floating in the
 air means its tree moved: `look probe` it, then `draft hang`. `draft check` fails a lantern not on a limb of its
 tree. A source's own hanging lanterns come with the baseline.

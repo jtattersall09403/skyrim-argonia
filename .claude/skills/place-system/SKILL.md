@@ -98,6 +98,16 @@ Read `docs/design/consistency.md` before any work: one world, told the same ever
 - **Never bend a place to a check, or a check to a place.** A check that disagrees with how Skyrim does it is the
   tool's fault. A finding seen to be right as built is accepted with its reason (`place-check`), never hidden.
 
+## The time log
+
+While a pass is open (`timelog <place> pass start`, which creates the log; nothing is written outside one, and only from the worktree that started it), every `python -m tools.places` verb appends a row to `newworld/places/<id>/timelog.jsonl` when it ends (what, how long,
+its queue wait under job_guard). The drafter adds the meaning: `timelog <place> phase "<step>"` at each step of the
+order of work above (plan, site, adapt, streets, rooms, routines, story, dressing, stock, check, walk loop, fixes after
+lead's read, `tool fix: <tool>`, waiting on lead) and `timelog <place> pass start|end "<ask>"` around each pass the
+lead sends. `timelog <place> report [--md]` gives wall time by phase and by kind of activity, the ten longest commands,
+builds, full walks and each pass's elapsed time; the drafter's hand-back carries its table, so the lead and the owner
+see where a place's time went. The log is committed with the place and read by nothing else.
+
 ## The hand-over bar
 
 A place is drafted to this bar; the owner may open and edit it in the studio as soon as its files are committed,

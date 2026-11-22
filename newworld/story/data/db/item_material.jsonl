@@ -1,6 +1,59 @@
 {"item_id":"1AncArgArm.esp:000801","material_id":"bronze","why":"Ancient Argonian Cuirass: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000802","material_id":"bronze","why":"Ancient Argonian Gauntlets: Ancient Argonian Armor: pre-Duskfall war gear"}
 {"item_id":"1AncArgArm.esp:000804","material_id":"bronze","why":"Ancient Argonian Tail Armor: Ancient Argonian Armor: pre-Duskfall war gear"}
+{"item_id":"1ChitinBow.esl:000002","material_id":"chitin","why":"a chitin bow"}
+{"item_id":"1ChitinBow.esl:000003","material_id":"chitin","why":"chitin arrows"}
+{"item_id":"1IvoryBow.esl:000004","material_id":"bone-plate","why":"bone arrows"}
+{"item_id":"1IvoryBow.esl:000D62","material_id":"bone-plate","why":"a bow of carved bone"}
+{"item_id":"Apex_Khajiit.esp:000800","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000801","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000802","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000803","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000804","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080A","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080B","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080C","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080D","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080E","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00080F","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000810","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00081D","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000824","material_id":"caravan-steel","why":"caravan arrows"}
+{"item_id":"Apex_Khajiit.esp:000839","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00083B","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00083C","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00083D","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00083E","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00083F","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00086A","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00086B","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00086C","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00086E","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:00086F","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000870","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000872","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000873","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:000874","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008B9","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BA","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BB","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BC","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BD","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BE","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008BF","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C0","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C1","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C2","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C3","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C4","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C5","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C6","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C7","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C8","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008C9","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008CA","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008CF","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
+{"item_id":"Apex_Khajiit.esp:0008D0","material_id":"caravan-steel","why":"Khajiit caravan guards' steel and mail"}
 {"item_id":"BSMBonemoldSet.esp:000D6D","material_id":"bonemold","why":"BSMAnBonemoldArrow: Dunmer bonemold"}
 {"item_id":"BSMBonemoldSet.esp:000D6E","material_id":"bonemold","why":"BSMAnBonemoldBattleaxe: Dunmer bonemold"}
 {"item_id":"BSMBonemoldSet.esp:000D6F","material_id":"bonemold","why":"BSMAnBonemoldGreatsword: Dunmer bonemold"}
@@ -14,6 +67,16 @@
 {"item_id":"BSMBonemoldSet.esp:003C42","material_id":"bonemold","why":"BSMAnArmorBonemoldShield02: Dunmer bonemold"}
 {"item_id":"BSMBonemoldSet.esp:003C43","material_id":"bonemold","why":"BSMAnArmorBonemoldShield03: Dunmer bonemold"}
 {"item_id":"BSMBonemoldSet.esp:006B14","material_id":"bonemold","why":"BSMAnBonemoldBow: Dunmer bonemold"}
+{"item_id":"Bamboo Bows.esp:000D64","material_id":"wood","why":"cane bows of the reed beds"}
+{"item_id":"Bamboo Bows.esp:002852","material_id":"wood","why":"cane bows of the reed beds"}
+{"item_id":"Bamboo Bows.esp:002DB8","material_id":"wood","why":"cane bows of the reed beds"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:000D62","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:00182F","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:001830","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:001831","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:001832","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:001833","material_id":"wood","why":"a one-handed cane staff"}
+{"item_id":"Bamboo_Quarterstaffs_MasterCollection_4.5.esp:001834","material_id":"wood","why":"a one-handed cane staff"}
 {"item_id":"Black Marsh North.esp:037DDE","material_id":"shadowscale","why":"ShadowScale: BM&V's ShadowScale set"}
 {"item_id":"Black Marsh North.esp:037DE5","material_id":"shadowscale","why":"Shadowscale Boots: BM&V's ShadowScale set"}
 {"item_id":"Black Marsh North.esp:037DEA","material_id":"shadowscale","why":"SchadowScale Gloves: BM&V's ShadowScale set"}
@@ -26,6 +89,40 @@
 {"item_id":"Black Marsh North.esp:03E3E0","material_id":"scale","why":"Argonian Metal Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"}
 {"item_id":"Black Marsh North.esp:03E3E2","material_id":"scale","why":"Argonian Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"}
 {"item_id":"Black Marsh North.esp:03E3F9","material_id":"copper-steel","why":"Argonian Sword: BM&V's Argonian sword: steel"}
+{"item_id":"Black Marsh weapons 2K.esp:000D62","material_id":"flint","why":"Black Marsh stone weapons"}
+{"item_id":"Black Marsh weapons 2K.esp:000D66","material_id":"flint","why":"Black Marsh stone weapons"}
+{"item_id":"Black Marsh weapons 2K.esp:000D6A","material_id":"flint","why":"Black Marsh stone weapons"}
+{"item_id":"Black Marsh weapons 2K.esp:000D6E","material_id":"flint","why":"Black Marsh stone weapons"}
+{"item_id":"Black Marsh weapons 2K.esp:000D72","material_id":"flint","why":"Black Marsh stone weapons"}
+{"item_id":"Blowgun_by_Ruddy88.esp:000800","material_id":"wood","stock_tier_id":"T2","why":"the hunter's dart tube; tier T2: the crossbow's lowest rung (it takes the crossbow's action)"}
+{"item_id":"Blowgun_by_Ruddy88.esp:000802","material_id":"wood","stock_tier_id":"T2","why":"darts for the blowgun"}
+{"item_id":"Bone Cultist Armor.esp:000806","material_id":"bone-plate","why":"bone plate"}
+{"item_id":"Bone Cultist Armor.esp:000807","material_id":"bone-plate","why":"bone plate"}
+{"item_id":"Bone Cultist Armor.esp:00080A","material_id":"bone-plate","why":"bone plate"}
+{"item_id":"Bone Cultist Armor.esp:000811","material_id":"bone-plate","why":"bone plate"}
+{"item_id":"Cyrodiilic Thief.esp:000872","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000873","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000874","material_id":"leather","why":"thieves' leathers (Night-Reed Chapter, faction 32)"}
+{"item_id":"Cyrodiilic Thief.esp:000875","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
+{"item_id":"Cyrodiilic Thief.esp:00087E","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
+{"item_id":"Cyrodiilic Thief.esp:00087F","material_id":"leather","stock_tier_id":"T3","why":"the master thief's set; tier T3: a guild master's make"}
+{"item_id":"Dawnguard.esm:000801","material_id":"crossbow","why":"a crossbow"}
+{"item_id":"Dawnguard.esm:000BB3","material_id":"crossbow","why":"steel bolts for the crossbow"}
+{"item_id":"Dawnguard.esm:00F19E","material_id":"crossbow","stock_tier_id":"T3","why":"an enhanced crossbow; tier T3: the finer make of the crossbow, armour-piercing"}
+{"item_id":"Dragonborn.esm:01B935","material_id":"wood","why":"a plain wooden spear"}
+{"item_id":"Dragonborn.esm:01CD82","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD86","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD87","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD88","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD89","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD8A","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD8B","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:01CD8C","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"Dragonborn.esm:026235","material_id":"chitin","why":"Dragonborn's chitin"}
+{"item_id":"EastEmpireCompanyArmor.esp:000801","material_id":"imperial","why":"the East Empire Company's uniform"}
+{"item_id":"EastEmpireCompanyArmor.esp:000807","material_id":"imperial","why":"the East Empire Company's uniform"}
+{"item_id":"EastEmpireCompanyArmor.esp:000809","material_id":"imperial","why":"the East Empire Company's uniform"}
+{"item_id":"EastEmpireCompanyArmor.esp:00080B","material_id":"imperial","why":"the East Empire Company's uniform"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012437","material_id":"imperial","why":"Legion Light Greaves: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012438","material_id":"imperial","why":"Legion Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:012439","material_id":"imperial","why":"Legion Light Bracers: Legion issue: Imperial"}
@@ -43,6 +140,9 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EBE","material_id":"imperial","why":"Legion Doru: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EEE","material_id":"kothringi-relic","why":"Kothringi Scimitar: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EEF","material_id":"kothringi-relic","why":"Kothringi War Axe: a Kothringi relic (their towns died in 2E 560)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EF1","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EF2","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EF3","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:035EF9","material_id":"kothringi-relic","why":"Kothringi Arrow: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:038DC9","material_id":"imperial","why":"Legion Heavy Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:038DCB","material_id":"imperial","why":"Legion Light Helmet: Legion issue: Imperial"}
@@ -50,7 +150,11 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:03BCA2","material_id":"imperial","why":"Legion Gladius: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:03EB73","material_id":"imperial","why":"Legion Hoplon: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:04D922","material_id":"imperial","why":"Legion Leather Cuirass: Legion issue: Imperial"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:06E0AB","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:06E0AC","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:06E0AD","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:073E7D","material_id":"leather","why":"Naga Leathers: Naga leathers"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:076D56","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:076D60","material_id":"kothringi-relic","why":"Kothringi Skull Club: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:109C01","material_id":"imperial","why":"Legion Xyston: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:113E10","material_id":"imperial","why":"Legion Heavy Boots: Legion issue: Imperial"}
@@ -66,6 +170,10 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:118F5C","material_id":"kothringi-relic","why":"Kothringi Great Scimitar: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:118F5D","material_id":"kothringi-relic","why":"Kothringi Cleaver: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:118F65","material_id":"kothringi-relic","why":"Kothringi Battle Staff: a Kothringi relic (their towns died in 2E 560)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:11E06E","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:11E070","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:11E072","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
+{"item_id":"Here There Be Monsters - Curse of Cipactli.esp:11E074","material_id":"kothringi-relic","why":"a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:150AF6","material_id":"kothringi-relic","why":"Kothringi Heavy Shield: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:150AF8","material_id":"kothringi-relic","why":"Kothringi Wheel Shield: a Kothringi relic (their towns died in 2E 560)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:150AFA","material_id":"kothringi-relic","why":"Kothringi Bone Shield: a Kothringi relic (their towns died in 2E 560)"}
@@ -152,6 +260,46 @@
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:781D13","material_id":"imperial","why":"Legion Heavy Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:781D1D","material_id":"imperial","why":"Vesper's Cuirass: Legion issue: Imperial"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:786E47","material_id":"imperial","why":"Vesper's Helmet: Legion issue: Imperial"}
+{"item_id":"Here There Be Monsters.esp:053503","material_id":"flint","why":"a flint diving knife"}
+{"item_id":"Here There Be Monsters.esp:05350A","material_id":"bog-iron","why":"a diver's knife"}
+{"item_id":"Here There Be Monsters.esp:053512","material_id":"corsair","why":"a corsair's knife"}
+{"item_id":"Here There Be Monsters.esp:05351A","material_id":"bog-iron","why":"a fisher's harpoon"}
+{"item_id":"Here There Be Monsters.esp:053522","material_id":"copper-steel","why":"a harpoon edged with copper"}
+{"item_id":"Here There Be Monsters.esp:05352A","material_id":"bog-iron","why":"a two-handed harpoon"}
+{"item_id":"Here There Be Monsters.esp:053532","material_id":"copper-steel","why":"a two-handed harpoon edged with copper"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:000D62","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001828","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:001D8C","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:0022F0","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:002DB7","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Imperial Guard Centurion Armor SE - Johnskyrim.esp:00331A","material_id":"imperial","stock_tier_id":"T3","why":"an Imperial officer's heavy set; tier T3: an officer's make"}
+{"item_id":"Journey to Baan Malur.esp:014C69","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:014C6A","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:019D72","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:019D75","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:019D76","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:01EEAE","material_id":"netch-leather","why":"Dunmer netch leather"}
+{"item_id":"Journey to Baan Malur.esp:0E03E4","material_id":"netch-leather","why":"raider's gear"}
+{"item_id":"Journey to Baan Malur.esp:0E03E9","material_id":"netch-leather","why":"raider's gear"}
+{"item_id":"Journey to Baan Malur.esp:0E03EA","material_id":"netch-leather","why":"raider's gear"}
+{"item_id":"Journey to Baan Malur.esp:0E03EB","material_id":"netch-leather","why":"raider's gear"}
+{"item_id":"Journey to Baan Malur.esp:0E562E","material_id":"netch-leather","why":"Ashlander gear"}
+{"item_id":"Journey to Baan Malur.esp:0E5630","material_id":"netch-leather","why":"Ashlander gear"}
+{"item_id":"Journey to Baan Malur.esp:0E5631","material_id":"netch-leather","why":"Ashlander gear"}
+{"item_id":"Journey to Baan Malur.esp:0E5632","material_id":"netch-leather","why":"Ashlander gear"}
+{"item_id":"Journey to Baan Malur.esp:0E563C","material_id":"chitin","why":"a chitin bow"}
+{"item_id":"Journey to Baan Malur.esp:0E5640","material_id":"bonemold","why":"Dunmer raider's blade"}
+{"item_id":"Journey to Baan Malur.esp:0E5643","material_id":"bonemold","why":"Dunmer raider's blade"}
+{"item_id":"Journey to Baan Malur.esp:0E5644","material_id":"bonemold","why":"Dunmer raider's blade"}
+{"item_id":"Journey to Baan Malur.esp:28DDA1","material_id":"netch-leather","stock_tier_id":"T1","why":"plated netch leather boots; tier T1: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot"}
+{"item_id":"Journey to Baan Malur.esp:28DDA2","material_id":"netch-leather","stock_tier_id":"T1","why":"plated netch leather: hardened hide plates, the lightest heavy make; tier T1: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot"}
+{"item_id":"Journey to Baan Malur.esp:28DDA8","material_id":"bonemold","why":"Gah-Julan bonemold"}
+{"item_id":"Journey to Baan Malur.esp:29D418","material_id":"bonemold","why":"Gah-Julan bonemold"}
+{"item_id":"Journey to Baan Malur.esp:29D41A","material_id":"bonemold","why":"Gah-Julan bonemold"}
+{"item_id":"Kad_BogBlightMask.esp:00080E","material_id":"saxhleel","why":"a carved Argonian funerary mask (priests, mourners, tomb-keepers)"}
+{"item_id":"Kad_BogBlightMask.esp:00080F","material_id":"saxhleel","why":"a carved Argonian funerary mask (priests, mourners, tomb-keepers)"}
+{"item_id":"Kad_BogBlightMask.esp:000810","material_id":"saxhleel","why":"a carved Argonian funerary mask (priests, mourners, tomb-keepers)"}
+{"item_id":"Kad_BogBlightMask.esp:000D63","material_id":"saxhleel","why":"a carved Argonian funerary mask (priests, mourners, tomb-keepers)"}
 {"item_id":"King of the Murkmire.esp:0008D1","material_id":"saxhleel","why":"Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:0008F8","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
 {"item_id":"King of the Murkmire.esp:0008FA","material_id":"saxhleel","why":"Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"}
@@ -224,6 +372,78 @@
 {"item_id":"King of the Murkmire.esp:57AA46","material_id":"flint","why":"Saxhleel Great Tusik: a tusik: wood toothed with flint"}
 {"item_id":"King of the Murkmire.esp:57AA47","material_id":"wood","why":"Saxhleel Wooden Longmace: Saxhleel wood (its record calls it wooden)"}
 {"item_id":"King of the Murkmire.esp:99E4A2","material_id":"saxhleel","why":"Callia's Jacket: marsh leather (Saxhleel or masu skin)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D49","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D4A","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D66","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D67","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D68","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D69","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D6B","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7B","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7C","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"Mercenary Light Iron Armor.esp:000D7D","material_id":"bog-iron","why":"a sellsword's light mail (the Marsh Charter, faction 33)"}
+{"item_id":"NagaKurArmor.esp:000804","material_id":"leather","why":"Naga-Kur leather and bone"}
+{"item_id":"NagaKurArmor.esp:000805","material_id":"leather","why":"Naga-Kur leather and bone"}
+{"item_id":"NagaKurArmor.esp:000806","material_id":"leather","why":"Naga-Kur leather and bone"}
+{"item_id":"NagaKurArmor.esp:000807","material_id":"leather","why":"Naga-Kur leather and bone"}
+{"item_id":"NetchLeather.esp:00080F","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000810","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000811","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000812","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000820","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:00082B","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:00082C","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000D62","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000D63","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000D64","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NetchLeather.esp:000D65","material_id":"netch-leather","why":"Dunmer netch leather (holdouts, Stormhold)"}
+{"item_id":"NewArmoury.esp:005903","material_id":"corsair","why":"a corsair's rapier"}
+{"item_id":"NewArmoury.esp:019D0C","material_id":"imperial","why":"Gideon's and the Legion's rapier"}
+{"item_id":"NewArmoury.esp:019D0D","material_id":"copper-steel","why":"a rapier"}
+{"item_id":"NewArmoury.esp:153BA6","material_id":"bog-iron","why":"a pike"}
+{"item_id":"NewArmoury.esp:153BB4","material_id":"copper-steel","why":"a pike"}
+{"item_id":"NewArmoury.esp:153BB6","material_id":"bone","why":"a pike of bone and chitin"}
+{"item_id":"NewArmoury.esp:153BB8","material_id":"bone","why":"a feathered bone pike"}
+{"item_id":"NewArmoury.esp:153BBC","material_id":"imperial","why":"Legion issue"}
+{"item_id":"NewArmoury.esp:167FFF","material_id":"bog-iron","why":"a halberd"}
+{"item_id":"NewArmoury.esp:168010","material_id":"copper-steel","why":"a halberd"}
+{"item_id":"NewArmoury.esp:16801B","material_id":"imperial","why":"Legion issue"}
+{"item_id":"NewArmoury.esp:16801C","material_id":"bone","why":"a feathered bone halberd"}
+{"item_id":"NewArmoury.esp:18B756","material_id":"bog-iron","why":"an iron-shod quarterstaff"}
+{"item_id":"NewArmoury.esp:18B760","material_id":"copper-steel","why":"a steel-shod quarterstaff"}
+{"item_id":"NewArmoury.esp:18B762","material_id":"bone","why":"a spiked bone staff"}
+{"item_id":"NewArmoury.esp:18B766","material_id":"imperial","why":"Legion issue"}
+{"item_id":"NewArmoury.esp:19AAA5","material_id":"bog-iron","why":"claws worn over the hand"}
+{"item_id":"NewArmoury.esp:19AAA6","material_id":"copper-steel","why":"claws worn over the hand"}
+{"item_id":"NewArmoury.esp:31BDDD","material_id":"bog-iron","why":"a chain flail, a slaver's weapon"}
+{"item_id":"NewArmoury.esp:31BDDE","material_id":"copper-steel","why":"a chain flail"}
+{"item_id":"Noct_SeagraveTrident.esp:000D65","material_id":"bone-plate","why":"a trident of great fish bones"}
+{"item_id":"Obsidian Weapons Update 4.esp:000D6A","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:001836","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:001837","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:001DA1","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:001DA2","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:00230B","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:002310","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:002876","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:002877","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:003344","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:003345","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:00334D","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:00334E","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:003356","material_id":"obsidian","why":"volcanic glass, the clear make (Obsidian Weapons)"}
+{"item_id":"Obsidian Weapons Update 4.esp:003357","material_id":"obsidian","why":"volcanic glass, the black make (Obsidian Weapons)"}
+{"item_id":"Pirate Armor.esp:000801","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000803","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000805","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00080B","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00080F","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000811","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:000817","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00081C","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00081D","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirate Armor.esp:00082A","material_id":"corsair","why":"pirates' coats and blades (the Salt-Teeth, pirate waters)"}
+{"item_id":"Pirates Wield Cutlasses.esp:000D63","material_id":"corsair","why":"a pirate's cutlass"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000800","material_id":"bone","why":"Argonian Bone Mace: Argonian bone (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000806","material_id":"wood","why":"Argonian Shortspear: Argonian wood (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000807","material_id":"bone","why":"Argonian Bone Shortsword: Argonian bone (New Armory)"}
@@ -241,6 +461,107 @@
 {"item_id":"PrvtI_ArgonianWeapons.esp:00083F","material_id":"bog-iron","why":"Iron Fishing Knife: a bog-iron fishing knife"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000974","material_id":"wood","why":"Argonian Wooden Tusik: Argonian wood (New Armory)"}
 {"item_id":"PrvtI_ArgonianWeapons.esp:000976","material_id":"flint","why":"Argonian Great Tusik: flint-toothed wood (New Armory)"}
+{"item_id":"PrvtI_HeavyArmory.esp:000D6F","material_id":"bog-iron","why":"a shortsword"}
+{"item_id":"PrvtI_HeavyArmory.esp:00798A","material_id":"bog-iron","why":"a halberd"}
+{"item_id":"PrvtI_HeavyArmory.esp:0089C3","material_id":"bog-iron","why":"a spiked club"}
+{"item_id":"PrvtI_HeavyArmory.esp:009A0D","material_id":"copper-steel","why":"a spear"}
+{"item_id":"PrvtI_HeavyArmory.esp:00A4EB","material_id":"bog-iron","why":"a spear"}
+{"item_id":"PrvtI_HeavyArmory.esp:00AA53","material_id":"bone","why":"a bone and antler spear"}
+{"item_id":"PrvtI_HeavyArmory.esp:00AA54","material_id":"bone","why":"a bone club"}
+{"item_id":"PrvtI_HeavyArmory.esp:00FBC8","material_id":"bog-iron","why":"a shortspear"}
+{"item_id":"PrvtI_HeavyArmory.esp:010133","material_id":"imperial","why":"Legion issue"}
+{"item_id":"PrvtI_HeavyArmory.esp:0121C5","material_id":"bog-iron","why":"a hatchet"}
+{"item_id":"PrvtI_HeavyArmory.esp:0147D8","material_id":"bone","why":"a bone shortspear"}
+{"item_id":"PrvtI_HeavyArmory.esp:0A512B","material_id":"bog-iron","why":"a long mace"}
+{"item_id":"PrvtI_HeavyArmory.esp:0D7B8C","material_id":"bog-iron","why":"a fisher's trident"}
+{"item_id":"PrvtI_HeavyArmory.esp:1054D7","material_id":"copper-steel","why":"a fine trident"}
+{"item_id":"PrvtI_HeavyArmory.esp:1C5CAB","material_id":"wood","why":"a wooden quarterstaff"}
+{"item_id":"PrvtI_HeavyArmory.esp:1C5CAC","material_id":"wood","why":"a wooden club"}
+{"item_id":"PrvtI_HeavyArmory.esp:21BE01","material_id":"bone","why":"a bone-spiked staff"}
+{"item_id":"PrvtI_HeavyArmory.esp:220F0E","material_id":"wood","why":"a wooden warhammer"}
+{"item_id":"PrvtI_HeavyArmory.esp:29F908","material_id":"copper-steel","why":"a trident"}
+{"item_id":"PrvtI_HeavyArmory.esp:2B8FB9","material_id":"wood","why":"a wooden spear"}
+{"item_id":"PrvtI_HeavyArmory.esp:2B8FBA","material_id":"wood","why":"a wooden shortspear"}
+{"item_id":"PrvtI_HeavyArmory.esp:314EFD","material_id":"bone","why":"a bone hatchet"}
+{"item_id":"Prvti_AshenArmory.esp:00083C","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:00083D","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:00083E","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000840","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000842","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000849","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:00084A","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:00084B","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:00084C","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:00084E","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000850","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000851","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000856","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000863","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000866","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000870","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000871","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000875","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:00087C","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:000880","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:000897","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:00089E","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Prvti_AshenArmory.esp:0008B6","material_id":"obsidian","stock_tier_id":"T3","why":"cooled, cloudy volcanic glass; tier T3: the poorer glass"}
+{"item_id":"Prvti_AshenArmory.esp:0008B9","material_id":"obsidian","why":"ember-veined volcanic glass"}
+{"item_id":"Redguard Assasin Armor.esp:000800","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000801","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000802","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:000803","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"Redguard Assasin Armor.esp:00080E","material_id":"shadowscale","why":"an assassin's light armour (the Empty Cradle, hired blades)"}
+{"item_id":"RedoranTombWarden.esp:000DDE","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DE6","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DE7","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DE8","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DE9","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DED","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DEE","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DEF","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DF0","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000DF1","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000E01","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000E40","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000E41","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000E42","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"RedoranTombWarden.esp:000E44","material_id":"bonemold","why":"Redoran house guards' bonemold (the Dunmer houses' holdouts)"}
+{"item_id":"SilvBoneArsenal.esp:000808","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:000809","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080A","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080B","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080C","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080D","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080E","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:00080F","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SilvBoneArsenal.esp:000D63","material_id":"bone-plate","why":"woven bone with bright edges"}
+{"item_id":"SpikedClub_by_Flarescale.esp:000804","material_id":"wood","why":"a thorn-studded club"}
+{"item_id":"SpikedClub_by_Flarescale.esp:000805","material_id":"wood","why":"a thorn-studded two-handed club"}
+{"item_id":"SpikedMace_by_Flarescale.esp:000804","material_id":"bog-iron","why":"a spiked iron mace"}
+{"item_id":"SpikedMace_by_Flarescale.esp:000805","material_id":"bog-iron","why":"a spiked two-handed mace"}
+{"item_id":"WoodenClub_by_Flarescale.esp:000803","material_id":"wood","why":"a heavy wooden war club"}
+{"item_id":"WoodenClub_by_Flarescale.esp:000804","material_id":"bog-iron","why":"an iron-studded maul"}
+{"item_id":"bobmods_macua.esp:000D62","material_id":"flint","stock_tier_id":"T2","why":"a wooden club edged with flint teeth; tier T2: the finest flint work"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC0","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC1","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC2","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC3","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC4","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BDB","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BDC","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BDD","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BDE","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BDF","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BE0","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BE1","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BE2","material_id":"hist-amber","why":"the amber set: translucent resin over dark wood"}
+{"item_id":"mihailgrummiteweaponry.esp:000800","material_id":"bog-iron","why":"a rustic bow"}
+{"item_id":"mihailgrummiteweaponry.esp:000803","material_id":"bog-iron","why":"a rustic dagger of iron and bone"}
+{"item_id":"mihailgrummiteweaponry.esp:000804","material_id":"bog-iron","why":"a rustic cudgel"}
+{"item_id":"mihailgrummiteweaponry.esp:000805","material_id":"bog-iron","why":"a rustic cleaver"}
+{"item_id":"mihailgrummiteweaponry.esp:000807","material_id":"bog-iron","why":"a rustic shield"}
+{"item_id":"mihailgrummiteweaponry.esp:000809","material_id":"bog-iron","why":"a rustic shield"}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000803","material_id":"saxhleel","why":"Saxhleel Leather Pants: Saxhleel leather (Stormhold Warrior)"}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000806","material_id":"saxhleel","why":"Saxhleel Leather Armor - No Pauldron: Saxhleel leather (Stormhold Warrior)"}
 {"item_id":"s6o6tStormholdWarriorArmor.esp:000808","material_id":"saxhleel","why":"Saxhleel Leather Armor - Left Pauldron: Saxhleel leather (Stormhold Warrior)"}

@@ -49,6 +49,11 @@ sealed class ForeignCopy : IDisposable
 
     public bool IsAllowed(ModKey m) => allowed.Contains(m);
 
+    public ISkyrimModGetter? PluginOrNull(string file)
+    {
+        try { return Plugin(file); } catch (FileNotFoundException) { return null; }
+    }
+
     public ISkyrimModGetter Plugin(string file)
     {
         if (plugins.TryGetValue(file, out var p)) return p;
@@ -93,7 +98,14 @@ sealed class ForeignCopy : IDisposable
         if (Linked.TryGetValue(fk, out var l)) return l;
         if (!forceCopy && allowed.Contains(fk.ModKey)) return fk;
         var r = Plugin(file).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk)
-                ?? Plugin(fk.ModKey.FileName).EnumerateMajorRecords().First(x => x.FormKey == fk);
+                ?? (PluginOrNull(fk.ModKey.FileName)?.EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk));
+        // a link into a record no plugin we can read holds (Heavy Armory's keywords of a patch it does not ship) is
+        // nulled in every copy that names it, and said so
+        if (r is null)
+        {
+            Console.WriteLine($"foreign copy: {fk} is in no plugin we read; links to it are nulled");
+            return Map[fk] = FormKey.Null;
+        }
         return Get(r, file, forceCopy);
     }
 

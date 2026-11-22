@@ -39,6 +39,11 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "salvage and Lilmoth's market"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -85,6 +90,16 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "smuggled and salvaged"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -134,6 +149,11 @@
      "material": "imperial",
      "band": "local",
      "why": "the Warden forts"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -355,6 +375,11 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "the Blackwood Road from Leyawiin"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -407,6 +432,16 @@
      "material": "wood",
      "band": "local",
      "why": "timber"
+    },
+    {
+     "material": "caravan-steel",
+     "band": "local",
+     "why": "Khajiit and Bosmer traders' steel"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -496,6 +531,16 @@
      "material": "shell",
      "band": "local",
      "why": "mud-flats and coast"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -547,6 +592,16 @@
      "material": "bog-iron",
      "band": "local",
      "why": "the Leyawiin trade"
+    },
+    {
+     "material": "caravan-steel",
+     "band": "local",
+     "why": "Khajiit and Bosmer traders' steel"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -594,6 +649,16 @@
      "material": "bonemold",
      "band": "traded",
      "why": "Stormhold-manner households"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -654,6 +719,16 @@
     },
     {
      "material": "bonemold",
+     "band": "absent",
+     "why": "no Dunmer in the forest"
+    },
+    {
+     "material": "hist-amber",
+     "band": "local",
+     "why": "the Hist forest's amber, kept by its shrines"
+    },
+    {
+     "material": "netch-leather",
      "band": "absent",
      "why": "no Dunmer in the forest"
     }
@@ -749,6 +824,11 @@
      "material": "imperial",
      "band": "scarce",
      "why": "the customs men are avoided, not hosted"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -800,6 +880,11 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "the river trade to Archon and Thorn"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -847,6 +932,21 @@
      "material": "bonemold",
      "band": "traded",
      "why": "Dunmer traders from Tear"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -885,6 +985,16 @@
      "material": "shell",
      "band": "local",
      "why": "the coast"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "caravan-steel",
+     "band": "local",
+     "why": "Khajiit and Bosmer traders' steel"
     }
    ],
    "goods": [
@@ -933,6 +1043,26 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "taken"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "caravan-steel",
+     "band": "local",
+     "why": "Khajiit and Bosmer traders' steel"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -967,6 +1097,16 @@
      "material": "imperial",
      "band": "traded",
      "why": "shipping to Soulrest and Gideon"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
+    },
+    {
+     "material": "caravan-steel",
+     "band": "local",
+     "why": "Khajiit and Bosmer traders' steel"
     }
    ],
    "goods": [
@@ -1010,6 +1150,11 @@
      "material": "shell",
      "band": "local",
      "why": "the lake"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [
@@ -1103,6 +1248,16 @@
      "material": "hide",
      "band": "local",
      "why": "reed"
+    },
+    {
+     "material": "netch-leather",
+     "band": "local",
+     "why": "the Dunmer minority's netch leather and Ashlander gear"
+    },
+    {
+     "material": "crossbow",
+     "band": "traded",
+     "why": "crossbows of Imperial posts, Dunmer holdouts and pirates"
     }
    ],
    "goods": [

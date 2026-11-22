@@ -1,0 +1,48 @@
+{
+ "save_id": "agent-20261122T134711",
+ "place_id": "outpost-m6-m66",
+ "name": "the dead twin's rope lantern taken off: in the dead ending the camp is empty and no one hangs a lantern on the dead tree; the living tree's lantern goes with it (hist-dead)",
+ "at": "2026-11-22T13:47:11Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "kind": "clutter",
+    "pos": [
+     -44617.88,
+     -538469.32,
+     328.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.01054
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.TF70YOUNGHISTDEAD",
+     "dz": 286.4
+    },
+    "why": "a rope lantern on hang point 2 of HistTree04Dead",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T13:47:11Z"
+  }
+ ]
+}

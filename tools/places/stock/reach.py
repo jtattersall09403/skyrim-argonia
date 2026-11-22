@@ -143,6 +143,9 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
     none_of = {g for t in exp["targets"] if t["pct"] == 0 for g in t["groups"]}
     bad = []
     guards = {p.id for p in w.rows("person", place_id=pid) if p.person_role_id == "guard"}
+    issue = split.guard_issue(split.place_facts(w, pid), w.get("place_wealth", pid).ceiling_tier_id)["set"]
+    issue_keys = set((issue or {}).get("items") or [])
+    issue_mats = set((issue or {}).get("materials", []) + (issue or {}).get("fallback", []))
     for row in stock_rows(doc):
         it = items.get(row["item"])
         if it is not None and not row["exception"]:
@@ -156,6 +159,13 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
                 continue
         mid = getattr(it, "material_id", None) if it else None
         if mid is None or row["exception"]:
+            continue
+        if issue and row["person"] in guards and it.item_kind_id == "armour" and "shield" not in (it.power_kind or "") \
+                and row["item"] not in issue_keys and mid not in issue_mats:
+            bad.append({"holder": row["holder"], "item": row["item"], "edid": it.edid, "count": row["count"],
+                        "material": mid, "rule": "guard issue",
+                        "why": f"the place's guards wear {issue['label']} (scale.json guard_issue `{issue['id']}`, by the "
+                               f"place's kind, culture and ceiling): {it.edid} is of {mid}"})
             continue
         ok, why = reach.get(mid, (False, f"{mid} is no material of ours"))
         rule = "material reach"
@@ -173,7 +183,9 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
     return bad
 
 
-TYPE_OF = {v: k for k, v in split.WEAP_KINDS.items()}
+TYPE_OF = {v: k for k, v in split.WEAP_KINDS.items()} | {   # a new type is judged as the vanilla type it swings as
+    "pike": "WeapTypeGreatsword", "halberd": "WeapTypeBattleaxe", "quarterstaff": "WeapTypeWarhammer", "rapier": "WeapTypeSword",
+    "whip": "WeapTypeMace", "claw": "WeapTypeDagger"}
 
 
 def kits_for(w, person) -> list:
@@ -208,7 +220,8 @@ def contradictions(w, pid: str, doc: dict) -> list[dict]:
         for k in kits_for(w, who):
             for n in nevers.get(k.id, []):
                 conds = [(n.slot, slot), (n.types, typ), (n.materials, m.id), (n.groups, m.group), (n.bands, m.band)]
-                if all(want is None or (have is not None and have in want.split()) for want, have in conds):
+                spared = n.except_ and re.search(n.except_, it.edid or "")
+                if not spared and all(want is None or (have is not None and have in want.split()) for want, have in conds):
                     bad.append({"holder": row["holder"], "item": row["item"], "edid": it.edid, "count": row["count"],
                                 "kit": k.id, "rule": f"kit {k.id}",
                                 "why": f"{who.name} ({who.trade}) takes the kit '{k.label}': {n.why}"})

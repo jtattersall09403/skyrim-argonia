@@ -1,33 +1,154 @@
 {
  "about": "How every weapon and armour piece of the items ladder is forged and tempered (docs/design/items.md, section Smithing), as Skyrim does it (decision 0034): `python3 -m tools.newworld.stockdb recipes` measures the shape of Skyrim's own forge recipes per weapon type and armour slot (how many of the main material, how many leather strips) and the perk each Skyrim material keyword asks for, then writes newworld/sources/stock/recipes.json (generated) for every item of item_material: a forge recipe (CraftingSmithingForge) and a tempering recipe (CraftingSmithingSharpeningWheel for a weapon, CraftingSmithingArmorTable for armour), the ingredients our material's (below), the perk its power class's. A mod's own recipe is kept where every ingredient is one of ours (keep_when_ours); otherwise it is overridden. Ruin, unique and relic materials, and every T6 piece, temper but are never forged. Every ingredient is a ware with an item_good row, so who makes or sells it is known.",
- "stations": {"forge": "CraftingSmithingForge", "temper_weapon": "CraftingSmithingSharpeningWheel", "temper_armour": "CraftingSmithingArmorTable"},
- "binding": {"item": "Skyrim.esm:0800E4", "why": "Leather Strips bind every grip and strap, as in Skyrim; leather is the marsh's own"},
- "materials": {
-  "wood": {"main": "Skyrim.esm:06F993", "why": "Firewood: seasoned wood, as Skyrim's own wooden things ask"},
-  "bone": {"main": "Here There Be Monsters - Curse of Cipactli.esp:0F5791", "why": "Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk"},
-  "flint": {"main": "new:ANW_Flint", "second": "Skyrim.esm:06F993", "why": "a flint nodule set in wood: no owned mod has flint, so a MISC record of ours (ANW_Flint, below)"},
-  "hide": {"main": "Skyrim.esm:0DB5D2", "why": "Leather (hide and fibre are worked as Skyrim's hide armour is: leather and strips)"},
-  "leather": {"main": "Skyrim.esm:0DB5D2", "why": "Leather"},
-  "scale": {"main": "King of the Murkmire.esp:000964", "second": "Skyrim.esm:0DB5D2", "why": "Masu Scales (KotM) sewn on leather"},
-  "shell": {"main": "Here There Be Monsters - Curse of Cipactli.esp:0B8A8C", "second": "Skyrim.esm:0DB5D2", "why": "Turtle Shell (HTBM) on a leather backing"},
-  "chitin": {"main": "Dragonborn.esm:02B04E", "why": "Chitin Plate (Dragonborn), as Skyrim's own chitin asks"},
-  "bog-iron": {"main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3", "why": "Bog Iron (HTBM), in place of Skyrim's iron and steel ingots"},
-  "saxhleel": {"main": "Here There Be Monsters - Curse of Cipactli.esp:0F5791", "second": "Skyrim.esm:0DB5D2", "why": "Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work"},
-  "copper-steel": {"main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3", "second": "Skyrim.esm:05AD93", "why": "Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy"},
-  "masu-plate": {"main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3", "second": "King of the Murkmire.esp:000964", "why": "Bog Iron plate over Masu Scales (KotM)"},
-  "obsidian": {"main": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1", "second": "Skyrim.esm:06F993", "why": "Obsidian (HTBM) set in wood: the macahuitl's make"},
-  "bronze": {"main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3", "second": "Skyrim.esm:05AD9E", "why": "bog iron alloyed and gilded with gold: pre-Duskfall bronze and its gold emblems"},
-  "shadowscale": {"main": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1", "second": "King of the Murkmire.esp:000964", "why": "obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots"},
-  "imperial": {"main": "Skyrim.esm:05ACE5", "why": "Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear)"},
-  "bonemold": {"main": "Skyrim.esm:034CDD", "second": "Skyrim.esm:05ACE4", "why": "Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear)"}
+ "stations": {
+  "forge": "CraftingSmithingForge",
+  "temper_weapon": "CraftingSmithingSharpeningWheel",
+  "temper_armour": "CraftingSmithingArmorTable"
  },
- "temper_only": {"materials": ["xanmeer-relic", "kothringi-relic", "elven", "glass", "ebony", "daedric", "dragon"], "tier": "T6",
-                 "why": "a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"},
- "temper_main": {"xanmeer-relic": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1", "kothringi-relic": "Skyrim.esm:05ACE4",
-                 "elven": "Skyrim.esm:05AD9F", "glass": "Skyrim.esm:05ADA1", "ebony": "Skyrim.esm:05AD9D", "daedric": "Skyrim.esm:05AD9D", "dragon": "Skyrim.esm:03ADA4"},
+ "binding": {
+  "item": "Skyrim.esm:0800E4",
+  "why": "Leather Strips bind every grip and strap, as in Skyrim; leather is the marsh's own"
+ },
+ "materials": {
+  "wood": {
+   "main": "Skyrim.esm:06F993",
+   "why": "Firewood: seasoned wood, as Skyrim's own wooden things ask"
+  },
+  "bone": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+   "why": "Brushboar Tusk (HTBM): bone and horn of the marsh, in place of the mods' horker tusk"
+  },
+  "flint": {
+   "main": "new:ANW_Flint",
+   "second": "Skyrim.esm:06F993",
+   "why": "a flint nodule set in wood: no owned mod has flint, so a MISC record of ours (ANW_Flint, below)"
+  },
+  "hide": {
+   "main": "Skyrim.esm:0DB5D2",
+   "why": "Leather (hide and fibre are worked as Skyrim's hide armour is: leather and strips)"
+  },
+  "leather": {
+   "main": "Skyrim.esm:0DB5D2",
+   "why": "Leather"
+  },
+  "scale": {
+   "main": "King of the Murkmire.esp:000964",
+   "second": "Skyrim.esm:0DB5D2",
+   "why": "Masu Scales (KotM) sewn on leather"
+  },
+  "shell": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0B8A8C",
+   "second": "Skyrim.esm:0DB5D2",
+   "why": "Turtle Shell (HTBM) on a leather backing"
+  },
+  "chitin": {
+   "main": "Dragonborn.esm:02B04E",
+   "why": "Chitin Plate (Dragonborn), as Skyrim's own chitin asks"
+  },
+  "bog-iron": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "why": "Bog Iron (HTBM), in place of Skyrim's iron and steel ingots"
+  },
+  "saxhleel": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+   "second": "Skyrim.esm:0DB5D2",
+   "why": "Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work"
+  },
+  "copper-steel": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "second": "Skyrim.esm:05AD93",
+   "why": "Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy"
+  },
+  "masu-plate": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "second": "King of the Murkmire.esp:000964",
+   "why": "Bog Iron plate over Masu Scales (KotM)"
+  },
+  "obsidian": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+   "second": "Skyrim.esm:06F993",
+   "why": "Obsidian (HTBM) set in wood: the macahuitl's make"
+  },
+  "bronze": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "second": "Skyrim.esm:05AD9E",
+   "why": "bog iron alloyed and gilded with gold: pre-Duskfall bronze and its gold emblems"
+  },
+  "shadowscale": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+   "second": "King of the Murkmire.esp:000964",
+   "why": "obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots"
+  },
+  "imperial": {
+   "main": "Skyrim.esm:05ACE5",
+   "why": "Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear)"
+  },
+  "bonemold": {
+   "main": "Skyrim.esm:034CDD",
+   "second": "Skyrim.esm:05ACE4",
+   "why": "Bone Meal and an Iron Ingot: bonemold keeps Dragonborn's own recipe (situational foreign gear)"
+  },
+  "hist-amber": {
+   "main": "ccBGSSSE025-AdvDSGS.esm:000BC7",
+   "second": "Skyrim.esm:06F993",
+   "why": "Refined Hist Amber over seasoned wood"
+  },
+  "netch-leather": {
+   "main": "Dragonborn.esm:01CD7C",
+   "why": "Netch Leather, as Dragonborn's own netch gear asks"
+  },
+  "bone-plate": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+   "second": "Skyrim.esm:034CDD",
+   "why": "Brushboar Tusk plates bound with Bone Meal"
+  },
+  "corsair": {
+   "main": "Skyrim.esm:05ACE5",
+   "why": "Steel Ingot: what the ships carry"
+  },
+  "crossbow": {
+   "main": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "second": "Skyrim.esm:06F993",
+   "why": "Bog Iron for the prod and lock, seasoned wood for the stock"
+  },
+  "caravan-steel": {
+   "main": "Skyrim.esm:05ACE5",
+   "second": "Skyrim.esm:0DB5D2",
+   "why": "steel ingots and leather strips"
+  }
+ },
+ "temper_only": {
+  "materials": [
+   "xanmeer-relic",
+   "kothringi-relic",
+   "elven",
+   "glass",
+   "ebony",
+   "daedric",
+   "dragon"
+  ],
+  "tier": "T6",
+  "why": "a relic, a ruin find or a ledger piece: it can be tempered with its material's main ingredient, never forged"
+ },
+ "temper_main": {
+  "xanmeer-relic": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+  "kothringi-relic": "Skyrim.esm:05ACE4",
+  "elven": "Skyrim.esm:05AD9F",
+  "glass": "Skyrim.esm:05ADA1",
+  "ebony": "Skyrim.esm:05AD9D",
+  "daedric": "Skyrim.esm:05AD9D",
+  "dragon": "Skyrim.esm:03ADA4"
+ },
  "keep_when_ours": true,
  "new_items": [
-  {"edid": "ANW_Flint", "name": "Flint", "record": "MISC", "value": 4, "weight": 1.0, "model_from": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
-   "why": "a knapped flint nodule: no owned mod has flint; a MISC record of ours, built through the plugin's record pipeline, its model HTBM's Obsidian (a dark knapped stone; no new art)"}
+  {
+   "edid": "ANW_Flint",
+   "name": "Flint",
+   "record": "MISC",
+   "value": 4,
+   "weight": 1.0,
+   "model_from": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+   "why": "a knapped flint nodule: no owned mod has flint; a MISC record of ours, built through the plugin's record pipeline, its model HTBM's Obsidian (a dark knapped stone; no new art)"
+  }
  ]
 }

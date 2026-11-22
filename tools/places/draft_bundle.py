@@ -29,7 +29,7 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land", "walk", "paint", "states")
-TOOL = "tools/places/draft_bundle.py v6"
+TOOL = "tools/places/draft_bundle.py v9"
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 _catalogue: dict = {}
 
@@ -222,6 +222,15 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
             cat = cat if cat is not None else catalogue()
             if isinstance((cat.get(bk) or {}).get("water"), dict):
                 bases[bk] = {**bases[bk], "water": cat[bk]["water"]}
+    # the model's alternate textures (the catalogue's alt_tex: a named shape drawn with another texture set) as the
+    # game will draw them with our plugin (own_bases.alt_tex: a replaced dead Hist's crown takes our clear set), so
+    # the studio asks for the base's own variant of its model
+    from tools.places import own_bases
+    cat = cat if cat is not None else catalogue()
+    for bk in used:
+        b, row = bases.get(bk), cat.get(bk) or {}
+        if b and row.get("alt_tex") and b.get("model") == row.get("model"):
+            bases[bk] = {**b, "alt_tex": own_bases.alt_tex(bk, row["alt_tex"])}
     write_jsonl(out / "bases.jsonl", bases.values())
     write_jsonl(out / "npcs.jsonl", jsonl(src / "npcs.jsonl"))
     for name in FILES:

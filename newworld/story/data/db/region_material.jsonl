@@ -1,9 +1,13 @@
 {"region_id":"althii-archipelago","material_id":"bog-iron","band":"traded","why":"salvage and Lilmoth's market"}
+{"region_id":"althii-archipelago","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"althii-archipelago","material_id":"imperial","band":"local","why":"Warden forts and Imperial ruins on the islands"}
 {"region_id":"althii-archipelago","material_id":"shell","band":"local","why":"a sea-cut coast of turtles and shellfish"}
 {"region_id":"aphon-isle","material_id":"bog-iron","band":"traded","why":"smuggled and salvaged"}
+{"region_id":"aphon-isle","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
+{"region_id":"aphon-isle","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"aphon-isle","material_id":"imperial","band":"local","why":"a customs belvedere and signal tower"}
 {"region_id":"arnesian-jungle","material_id":"bog-iron","band":"traded","why":"tools come back from Thorn"}
+{"region_id":"arnesian-jungle","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"arnesian-jungle","material_id":"hide","band":"local","why":"hides sold to Thorn"}
 {"region_id":"arnesian-jungle","material_id":"imperial","band":"local","why":"the Warden forts"}
 {"region_id":"arnesian-jungle","material_id":"wood","band":"local","why":"timber is the jungle's first export"}
@@ -18,38 +22,63 @@
 {"region_id":"benthic-yobesh","material_id":"glass","band":"local","why":"coral-crusted glass from the spires"}
 {"region_id":"benthic-yobesh","material_id":"xanmeer-relic","band":"local","why":"the drowned spires"}
 {"region_id":"blackwood","material_id":"bog-iron","band":"traded","why":"the Blackwood Road from Leyawiin"}
+{"region_id":"blackwood","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"blackwood","material_id":"imperial","band":"local","why":"the Gideon frontier and the Blackwood Road"}
 {"region_id":"blackwood","material_id":"kothringi-relic","band":"local","why":"the dead Kothringi towns"}
 {"region_id":"cape-percar","material_id":"bog-iron","band":"local","why":"the derelict mines' metal"}
+{"region_id":"cape-percar","material_id":"caravan-steel","band":"local","why":"Khajiit and Bosmer traders' steel"}
+{"region_id":"cape-percar","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"cape-percar","material_id":"imperial","band":"local","why":"Soulrest's hinterland"}
 {"region_id":"cape-percar","material_id":"wood","band":"local","why":"timber"}
 {"region_id":"chixathe-mesa","material_id":"flint","band":"local","why":"quarries and chalk pits"}
 {"region_id":"chixathe-mesa","material_id":"hide","band":"local","why":"hides"}
+{"region_id":"hatandros-bight","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
+{"region_id":"hatandros-bight","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"hatandros-bight","material_id":"imperial","band":"local","why":"the wardens' posts"}
 {"region_id":"hatandros-bight","material_id":"shell","band":"local","why":"mud-flats and coast"}
 {"region_id":"kotherra-mangroves","material_id":"bog-iron","band":"local","why":"the Leyawiin trade"}
+{"region_id":"kotherra-mangroves","material_id":"caravan-steel","band":"local","why":"Khajiit and Bosmer traders' steel"}
+{"region_id":"kotherra-mangroves","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"kotherra-mangroves","material_id":"imperial","band":"local","why":"Gideon, the province's one civic Imperial legacy"}
 {"region_id":"lake-ulaish","material_id":"bog-iron","band":"traded","why":"the through trade in tin and salt"}
 {"region_id":"lake-ulaish","material_id":"bonemold","band":"traded","why":"Stormhold-manner households"}
+{"region_id":"lake-ulaish","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
+{"region_id":"lake-ulaish","material_id":"netch-leather","band":"traded","why":"Dunmer households and traders carry it in"}
 {"region_id":"murkwood","material_id":"bone","band":"local","why":"hunting"}
 {"region_id":"murkwood","material_id":"bonemold","band":"absent","why":"no Dunmer in the forest"}
+{"region_id":"murkwood","material_id":"hist-amber","band":"local","why":"the Hist forest's amber, kept by its shrines"}
 {"region_id":"murkwood","material_id":"imperial","band":"absent","why":"no invader has taken the forest; outsiders who enter do not come out (region_note people)"}
 {"region_id":"murkwood","material_id":"leather","band":"local","why":"hides"}
+{"region_id":"murkwood","material_id":"netch-leather","band":"absent","why":"no Dunmer in the forest"}
 {"region_id":"murkwood","material_id":"wood","band":"local","why":"the Hist forest"}
 {"region_id":"nha-enasa","material_id":"bog-iron","band":"traded","why":"salt-and-iron barter"}
 {"region_id":"nha-enasa","material_id":"kothringi-relic","band":"local","why":"Kothringi ruins"}
+{"region_id":"nushara-bayou","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"nushara-bayou","material_id":"hide","band":"local","why":"reed"}
 {"region_id":"nushara-bayou","material_id":"imperial","band":"scarce","why":"the customs men are avoided, not hosted"}
 {"region_id":"nushara-bayou","material_id":"shell","band":"local","why":"shellfish"}
 {"region_id":"okuwun-rahei","material_id":"bog-iron","band":"traded","why":"the river trade to Archon and Thorn"}
+{"region_id":"okuwun-rahei","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"okuwun-rahei","material_id":"wood","band":"local","why":"raft-folk"}
 {"region_id":"padomaic-ocean","material_id":"bonemold","band":"traded","why":"Dunmer traders from Tear"}
+{"region_id":"padomaic-ocean","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
+{"region_id":"padomaic-ocean","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"padomaic-ocean","material_id":"imperial","band":"traded","why":"what pirates take from ships"}
+{"region_id":"padomaic-ocean","material_id":"netch-leather","band":"traded","why":"Dunmer households and traders carry it in"}
+{"region_id":"sea-of-mists","material_id":"caravan-steel","band":"local","why":"Khajiit and Bosmer traders' steel"}
+{"region_id":"sea-of-mists","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
 {"region_id":"sea-of-mists","material_id":"shell","band":"local","why":"the coast"}
 {"region_id":"skeith-isle","material_id":"bog-iron","band":"traded","why":"taken"}
 {"region_id":"skeith-isle","material_id":"bonemold","band":"traded","why":"Dunmer from Tear"}
+{"region_id":"skeith-isle","material_id":"caravan-steel","band":"local","why":"Khajiit and Bosmer traders' steel"}
+{"region_id":"skeith-isle","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
+{"region_id":"skeith-isle","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"skeith-isle","material_id":"imperial","band":"traded","why":"taken from ships and the old keep"}
+{"region_id":"skeith-isle","material_id":"netch-leather","band":"traded","why":"Dunmer households and traders carry it in"}
+{"region_id":"topal-bay","material_id":"caravan-steel","band":"local","why":"Khajiit and Bosmer traders' steel"}
+{"region_id":"topal-bay","material_id":"corsair","band":"local","why":"pirate and smuggler waters: cutlasses and rapiers off the ships"}
 {"region_id":"topal-bay","material_id":"imperial","band":"traded","why":"shipping to Soulrest and Gideon"}
+{"region_id":"tulmek-washes","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"tulmek-washes","material_id":"imperial","band":"local","why":"Blackrose's prison and its heirs"}
 {"region_id":"tulmek-washes","material_id":"shell","band":"local","why":"the lake"}
 {"region_id":"ultherus-swamp","material_id":"hide","band":"local","why":"pelts and rope"}
@@ -57,4 +86,6 @@
 {"region_id":"ultherus-swamp","material_id":"wood","band":"local","why":"boats from Korydon"}
 {"region_id":"valley-of-storms","material_id":"bonemold","band":"local","why":"the Dunmer minority and the Morrowind trade"}
 {"region_id":"valley-of-storms","material_id":"chitin","band":"local","why":"river and road trade with Morrowind"}
+{"region_id":"valley-of-storms","material_id":"crossbow","band":"traded","why":"crossbows of Imperial posts, Dunmer holdouts and pirates"}
 {"region_id":"valley-of-storms","material_id":"hide","band":"local","why":"reed"}
+{"region_id":"valley-of-storms","material_id":"netch-leather","band":"local","why":"the Dunmer minority's netch leather and Ashlander gear"}

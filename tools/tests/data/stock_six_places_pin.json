@@ -1,0 +1,226 @@
+{
+ "helstrom": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bog-iron": 46,
+    "bone": 21,
+    "copper-steel": 3,
+    "flint": 24,
+    "hide": 6,
+    "leather": 7,
+    "saxhleel": 1,
+    "scale": 45,
+    "wood": 4
+   },
+   "targets": [
+    [
+     [
+      "organic"
+     ],
+     43,
+     40
+    ],
+    [
+     [
+      "metal"
+     ],
+     39,
+     31
+    ],
+    [
+     [
+      "plate"
+     ],
+     9,
+     29
+    ],
+    [
+     [
+      "foreign"
+     ],
+     9,
+     0
+    ]
+   ]
+  }
+ },
+ "jal-veesa": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bog-iron": 12,
+    "bone": 7,
+    "bonemold": 1,
+    "flint": 14,
+    "leather": 3,
+    "saxhleel": 13,
+    "wood": 8
+   },
+   "targets": [
+    [
+     [
+      "organic",
+      "plate"
+     ],
+     67,
+     78
+    ],
+    [
+     [
+      "metal"
+     ],
+     24,
+     21
+    ],
+    [
+     [
+      "foreign"
+     ],
+     10,
+     2
+    ]
+   ]
+  }
+ },
+ "outpost-m11-m63": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bog-iron": 3,
+    "bone": 1,
+    "flint": 1,
+    "leather": 2,
+    "saxhleel": 8
+   },
+   "targets": [
+    [
+     [
+      "organic",
+      "plate"
+     ],
+     71,
+     80
+    ],
+    [
+     [
+      "metal"
+     ],
+     24,
+     20
+    ],
+    [
+     [
+      "foreign"
+     ],
+     5,
+     0
+    ]
+   ]
+  }
+ },
+ "outpost-m13-m65": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bog-iron": 22
+   },
+   "targets": [
+    [
+     [
+      "organic",
+      "plate"
+     ],
+     68,
+     0
+    ],
+    [
+     [
+      "metal"
+     ],
+     23,
+     100
+    ],
+    [
+     [
+      "foreign"
+     ],
+     9,
+     0
+    ]
+   ]
+  }
+ },
+ "outpost-m6-m66": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bone": 3,
+    "flint": 3,
+    "leather": 2,
+    "saxhleel": 6,
+    "wood": 1
+   },
+   "targets": [
+    [
+     [
+      "organic",
+      "plate"
+     ],
+     71,
+     100
+    ],
+    [
+     [
+      "metal"
+     ],
+     24,
+     0
+    ],
+    [
+     [
+      "foreign"
+     ],
+     5,
+     0
+    ]
+   ]
+  }
+ },
+ "tribal-camp-m2-m68": {
+  "flagged": [],
+  "mix": {
+   "by_material": {
+    "bone": 4,
+    "flint": 5,
+    "hide": 4,
+    "leather": 2,
+    "wood": 1
+   },
+   "targets": [
+    [
+     [
+      "organic",
+      "plate"
+     ],
+     100,
+     100
+    ],
+    [
+     [
+      "metal"
+     ],
+     0,
+     0
+    ],
+    [
+     [
+      "foreign"
+     ],
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}

@@ -267,7 +267,7 @@ placements:
   anchor:
     place: outpost-m6-m66
     rule: navmesh
-    need: asleep in the hide's lean-to, east side
+    need: asleep at the mouth of the hide's lean-to, west side
   enabled: true
 - ref: thing.mn.unbound-note
   kind: thing

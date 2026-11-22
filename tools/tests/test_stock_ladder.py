@@ -3,6 +3,7 @@ the expected mix, on the committed sources and the database built from them."""
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -187,11 +188,8 @@ def test_a_magic_staff_typed_as_a_sword_is_misfiled_and_flagged_and_never_issued
     assert "magic staff" in split.misfiled(staff)
     assert split.misfiled({"key": HTBM + "1B0F87", "edid": "CIPHTBMBambooStaff1", "sig": "WEAP",
                            "keywords": ["WeapTypeWarhammer"]}) is None          # a quarterstaff is a weapon
-    guard = next(p for p in w.rows("person", place_id="outpost-m6-m66") if p.person_role_id == "guard")
-    doc = {"possessions": [{"person": guard.id, "items": [{"item": STAFF, "count": 1}]}]}
-    assert [b["rule"] for b in reach.audit(w, "outpost-m6-m66", doc)] == ["misfiled"]
     items = json.loads((STOCK / "items.json").read_text())["items"]
-    assert [i["edid"] for i in items if split.misfiled(i)] == ["SaxhleelStaffSoulTrap"]   # the catalogue's only one
+    assert [i["edid"] for i in items if split.misfiled(i)] == []      # no catalogue item is misfiled now
 
 
 def test_a_t2_guard_s_sidearm_is_a_real_t2_marsh_weapon_never_a_staff():
@@ -218,3 +216,141 @@ def test_the_world_build_gets_every_ladder_item_its_overrides_and_its_recipes():
     assert all(r["bench"] in ("CraftingSmithingForge", "CraftingSmithingSharpeningWheel", "CraftingSmithingArmorTable")
                for r in doc["recipes"])
     assert [n["edid"] for n in doc["new_items"]] == ["ANW_Flint"]
+
+
+# ---- the guard issue is a table of ours, decided by the place and never by what its source gave ----------------------
+
+def _facts(kind, culture="jade", held_by=""):
+    return {"kind": kind, "culture": culture, "region": "barsaebica", "held_by": held_by}
+
+
+def test_the_guard_table_is_decided_by_kind_culture_holder_and_ceiling():
+    g = split.guard_issue
+    assert g(_facts("city", "forest-green"), "T4")["row"]["id"] == "argonian-scale" and g(_facts("city", "forest-green"), "T4")["tier"] == "T3"
+    assert g(_facts("town"), "T3")["row"]["id"] == "argonian-scale"
+    assert g(_facts("town"), "T2")["row"]["id"] == "saxhleel-issue"          # the ceiling stops short of the scale set
+    assert g(_facts("village"), "T2")["row"]["id"] == "saxhleel-issue" and g(_facts("outpost"), "T3")["row"]["id"] == "saxhleel-issue"
+    assert g(_facts("tribal-camp", None), "T1")["row"]["id"] == "tribal-hide"
+    assert g(_facts("outpost", "stone-grey", "A Dunmer gang-master and his reed-cutters"), "T2")["row"]["id"] == "dunmer-holdout"
+    assert g(_facts("fort", "crimson-red", "An Imperial garrison"), "T2")["row"]["id"] == "imperial-post"
+    assert g(_facts("outpost", "crimson-red", "Archwardens keeping the old Imperial fort"), "T2")["row"]["id"] == "saxhleel-issue"
+    assert g(_facts("lighthouse", None), "T1")["set"] is None and g(_facts("lighthouse", None), "T1")["tier"] == "T2"   # the plain issue
+    assert g(_facts("city", "forest-green"), "T4")["torch"] == "Skyrim.esm:01D4EC"
+
+
+def test_every_row_of_the_guard_table_names_pieces_the_ladder_files_and_is_in_the_database(w):
+    items = {i.id for i in w.rows("item")}
+    mats = {m.id for m in w.rows("material")}
+    table = split.scale()["guard_issue"]["table"]
+    assert [r.id for r in sorted(w.rows("guard_issue"), key=lambda r: r.ord)] == [r["id"] for r in table]
+    for r in table:
+        assert set(r.get("items", [])) <= items, r["id"]
+        assert set(r.get("materials", []) + r.get("fallback", []) + r.get("weapon_materials", [])) <= mats, r["id"]
+        assert r["id"] == "plain" or r.get("kinds") or r.get("holder_pattern") or r.get("regions"), r["id"]
+
+
+def test_a_materials_row_dresses_a_guard_slot_by_slot_from_the_ladder_whatever_the_source_used():
+    from tools.places.stock.derive import ARMOUR_SLOTS, Picker, ladder_records
+    pick = Picker(ladder_records(), split.scale(), None, None)
+    row = next(r for r in split.scale()["guard_issue"]["table"] if r["id"] == "saxhleel-issue")
+    got = [pick.issue_piece(row["materials"] + row["fallback"], s, "T2") for s in ARMOUR_SLOTS]
+    assert all(got) and {split.material_of(g)[0] for g in got} <= {"saxhleel", "leather", "hide"}
+    assert any(split.material_of(g)[0] == "saxhleel" for g in got)
+    hide = next(r for r in split.scale()["guard_issue"]["table"] if r["id"] == "tribal-hide")
+    assert pick.issue_piece(hide["materials"], "ArmorCuirass", "T1")["edid"] == "ArmorHideCuirass"
+
+
+def test_a_stock_row_naming_an_item_of_a_plugin_the_source_never_used_passes_and_is_read(w):
+    from tools.places.stock.plan import plugins_of
+    pid = "outpost-m6-m66"
+    src = json.loads((STOCK.parents[2] / "newworld" / "places" / pid / "place.json").read_text())["source_id"]
+    used = set()
+    for ln in (STOCK.parents[2] / "newworld" / "places" / "sources.jsonl").read_text().splitlines():
+        row = json.loads(ln) if ln.strip() else {}
+        if row.get("source_id") == src:
+            used = set(row.get("plugins", [])) | set(row.get("extra_refs_plugins", []))
+    guard = next(p for p in w.rows("person", place_id=pid) if p.person_role_id == "guard")
+    foreign = [i for i in w.rows("item") if i.plugin not in used and i.item_kind_id == "weapon" and i.material_id in ("flint", "bone", "wood")
+               and not reach.audit(w, pid, {"possessions": [{"person": guard.id, "items": [{"item": i.id, "count": 1}]}]})]
+    assert foreign, "a ladder weapon of a plugin the source never used stands in the stock check"
+    assert foreign[0].plugin in plugins_of([foreign[0].id])
+
+
+def test_the_guard_issue_is_checked_against_the_table_and_a_written_exception_passes(w):
+    pid = "jal-veesa"                                      # a town: the scale set, unless a row carries the exception
+    guard = next(p for p in w.rows("person", place_id=pid) if p.person_role_id == "guard")
+    cuirass = "Here There Be Monsters - Curse of Cipactli.esp:073E7D"
+    row = {"item": cuirass, "count": 1}
+    bad = reach.audit(w, pid, {"possessions": [{"person": guard.id, "items": [row]}]})
+    assert [b["rule"] for b in bad] == ["guard issue"]
+    row["exception"] = "guard issue: kept as stocked, owner 2026-11-22"
+    assert reach.audit(w, pid, {"possessions": [{"person": guard.id, "items": [row]}]}) == []
+    assert reach.audit(w, pid, reach.load_source(pid)) == []   # the stocked levy keeps its plain issue by that exception
+
+
+def test_no_rule_of_the_stock_reads_the_plugins_of_a_place_s_source():
+    import inspect
+    from tools.places.stock import derive, verify
+    assert not hasattr(split, "source_plugins")
+    assert "plugins" not in inspect.signature(split.guard_issue).parameters
+    for mod in (split, reach, derive, verify):
+        src = inspect.getsource(mod)
+        assert "source_plugins" not in src and "p.plugins()" not in src, mod.__name__
+    text = json.dumps(split.scale()["guard_issue"])
+    assert '"plugin"' not in text and "source plugin" not in text.replace("No plugin of the place's source is read", "")
+
+
+SIX = Path(__file__).parent / "data" / "stock_six_places_pin.json"
+
+
+def test_the_six_act_i_places_read_exactly_as_before_the_ladder_was_widened(w):
+    """The wider ladder is for places from here on (owner, 2026-11-22): the six Act I places' reach flags and gear mix
+    are pinned as they stood before it (tools/tests/data/stock_six_places_pin.json)."""
+    pin = json.loads(SIX.read_text())
+    for p, want in pin.items():
+        doc = reach.load_source(p)
+        m = reach.mix(w, p, doc)
+        got = {"flagged": sorted([b["rule"], b["holder"], b["item"]] for b in reach.flagged(w, p, doc)),
+               "mix": {"by_material": m["by_material"], "targets": [[t["groups"], t["target"], t["pct"]] for t in m["targets"]]}}
+        assert json.dumps(got, sort_keys=True) == json.dumps(want, sort_keys=True), p
+
+
+def test_the_new_weapon_types_take_animated_armoury_s_stats_per_tier():
+    table = split.power_table()
+    want = {"pike": (11, 13, 16, 17, 19, 20), "halberd": (14, 16, 19, 20, 21, 23), "quarterstaff": (10, 11, 14, 15, 17, 16),
+            "rapier": (5, 6, 9, 10, 11, 12), "whip": (7, 8, 11, 12, 13, 14), "claw": (5, 6, 9, 10, 11, 12)}
+    for kind, powers in want.items():
+        assert tuple(int(table[kind]["stats"][f"T{i + 1}"]["power"]) for i in range(6)) == powers, kind
+    pike = {"key": "NewArmoury.esp:153BA6", "sig": "WEAP", "keywords": ["WeapMaterialIron", "WeapTypePike", "WeapTypeGreatsword"],
+            "damage": 11}
+    assert split.power_kind(pike) == "pike" and split.slot_of(pike) == "weapon"
+    assert split.item_tier(pike)[0] == "T2" and split.ladder_override(pike)["power"] == 13.0   # bog iron: a steel pike's
+
+
+def test_every_renamed_piece_has_a_black_marsh_name_and_none_keeps_a_skyrim_people_s():
+    gear = split.item_materials()["gear"]
+    named = {k: r["name"] for k, r in gear.items() if r.get("name")}
+    assert len(named) >= 50
+    assert not [n for n in named.values() if re.search(r"Forsworn|Falmer|Riekling|Grummite|Steel|Iron\b", n)]
+    assert gear["ccBGSSSE025-AdvDSGS.esm:000BE0"]["name"] == "Hist Amber Sword"
+
+
+def test_the_widened_ladder_fills_the_named_gaps():
+    items = {i["id"]: i for i in json.loads((STOCK / "items.json").read_text())["items"]}
+    gear = split.item_materials()["gear"]
+    on = [(items[k]["stock_tier_id"], split.slot_of(items[k]), items[k]["power_kind"], r["material"])
+          for k, r in gear.items() if k in items]
+    assert sum(m == "chitin" for *_, m in on) >= 9
+    assert {"T1", "T3"} <= {t for t, s, *_ in on if s == "heavy"}
+    assert {"sword", "dagger", "mace", "waraxe", "bow"} <= {k for t, s, k, _ in on if t == "T5"}
+    assert not [m for t, s, k, m in on if t == "T6" and s == "weapon"]                    # T6 weapons stay relics only
+    assert {m for t, s, k, m in on if t == "T2" and s == "light"} - {"saxhleel"}
+
+
+def test_crossbows_are_on_the_ladder():
+    """Dawnguard's crossbow and bolts are itemised as crossbow work, with crossbow stats; the order's armour is not."""
+    gear = {r["item"]: r for r in json.loads((STOCK / "item_material.json").read_text())["gear"]}
+    assert gear["Dawnguard.esm:000801"]["material"] == "crossbow"
+    assert gear["Dawnguard.esm:000BB3"]["material"] == "crossbow"
+    assert not [k for k in gear if k.startswith("Dawnguard.esm:") and "armor" in (gear[k].get("why") or "").lower()]
+    assert json.loads((STOCK / "power.json").read_text())["kinds"]["crossbow"]["stats"]["T2"]["power"] == 19.0

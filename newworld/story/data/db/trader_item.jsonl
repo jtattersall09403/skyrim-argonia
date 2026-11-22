@@ -95,23 +95,26 @@
 {"person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","item_id":"Skyrim.esm:0A2727","count":1,"why":"Restoration, Adept"}
 {"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:064B3B","count":6,"why":"fish cooked at the stall, made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold')"}
 {"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:065C97","count":3,"why":"flat bread carried in from Stormhold's buyers, 7 km by road"}
-{"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:065C9F","count":10,"why":"smoked fish from the road-side racks, made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold')"}
+{"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:065C9F","count":10,"why":"smoked fish from the racks on the lane to the jetty, made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold')"}
 {"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:0F431E","count":4,"why":"a reed-root stew for travellers on the northern road, made here"}
 {"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:106E18","count":6,"why":"eels and gar from the weir channels (place record: fishing 'the weir channels: eels and gar'), made here"}
 {"person_id":"jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV","item_id":"Skyrim.esm:106E1A","count":3,"why":"the weirs' rarer catch, made here"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Dawnguard.esm:0037E5","count":2,"why":"T2 bow (from a neighbour (an import gate or maker, 7 km by road))"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:57AA3E","count":3,"why":"T1 dagger (from a neighbour (an import gate or maker, 7 km by road))"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:013986","count":2,"why":"T2 dagger (from a neighbour (an import gate or maker, 7 km by road))"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:013995","count":1,"why":"T3 bow (from a neighbour (an import gate or maker, 7 km by road))"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:013996","count":1,"why":"T3 dagger (from a neighbour (an import gate or maker, 7 km by road))"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"BSMBonemoldSet.esp:000D70","count":1,"why":"T3 a bonemold dagger through Stormhold's Dunmer trade (bonemold reaches the region's Dunmer minority), 7 km by road"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:098ECB","count":3,"why":"T1 plain Saxhleel bows of marsh wood, made here"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:57AA3C","count":3,"why":"T1 flint fishing knives, the weirs' own, made here"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:57AA3D","count":2,"why":"T2 Saxhleel bone daggers, made here"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:57AA3E","count":3,"why":"T2 iron knives (bog iron), (from a neighbour (an import gate or maker, 7 km by road))"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"King of the Murkmire.esp:57AA41","count":2,"why":"T2 ornate Saxhleel bows, made here"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"PrvtI_ArgonianWeapons.esp:00080D","count":2,"why":"T1 bone fish-spears for the weir channels, made here"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:013790","count":2,"why":"T1 iron hand-axes (bog iron) for cutting sedge and poles, (from a neighbour (an import gate or maker, 7 km by road))"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:02E4E2","count":3,"why":"T1 soul gem"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:02E4E4","count":2,"why":"T2 soul gem"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:02E4E6","count":1,"why":"T3 soul gem"}
-{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:03B562","count":3,"why":"T1 bow (from a neighbour (an import gate or maker, 7 km by road))"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:03EADD","count":3,"why":"T1 RestoreHealth (grade 1)"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:03EADE","count":2,"why":"T2 RestoreHealth (grade 2)"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:03EADF","count":1,"why":"T3 RestoreHealth (grade 3)"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:065C9F","count":8,"why":"dried fish of the racks, the market's own staple (made here: the town's dried fish (place record economy: 'dried fish sold to Stormhold'))"}
+{"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:0800E4","count":6,"why":"leather strips, every recipe's binding (the derive's smithing wares)"}
 {"person_id":"jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF","item_id":"Skyrim.esm:106E18","count":4,"why":"eels from the weir channels, made here"}
 {"person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","item_id":"Dawnguard.esm:0037E5","count":1,"why":"T2 bow (from a neighbour (an import gate or maker, 8 km by road))"}
 {"person_id":"outpost-m13-m65.RP1ZWTTMYJ5QZ7EKY4SZEHE05S","item_id":"Skyrim.esm:01397E","count":2,"why":"T1 dagger (from a neighbour (an import gate or maker, 8 km by road))"}

@@ -36,7 +36,7 @@ PLACES = f.ROOT / "places"
 REPO = f.ROOT.parent
 
 TABLES = ("lock_level", "stock_tier", "place_wealth_band", "person_wealth_band", "place_wealth", "material",
-          "material_keyword", "material_maker", "material_reach", "tier_material", "never_material",
+          "material_keyword", "material_maker", "material_reach", "tier_material", "never_material", "guard_issue",
           "security_level", "effort_level", "container_kind", "item_kind", "item", "tier_item", "item_material",
           "good", "good_material", "good_kind", "item_good", "place_good", "region_profile", "region_people",
           "region_culture", "region_material", "region_good", "trade_kit", "trade_kit_item", "trade_kit_never",
@@ -94,6 +94,14 @@ def load(w) -> None:
         w.insert_many("tier_material", [{"stock_tier_id": tier, "slot": slot, "material_id": k, "ord": i}
                                         for i, k in enumerate(mats)])
     w.insert_many("never_material", [{"material_id": k, "why": md["never"]["why"]} for k in md["never"]["materials"]])
+    w.insert_many("guard_issue", [
+        {"id": r["id"], "ord": i, "label": r["label"], "kinds": " ".join(r.get("kinds", [])) or None,
+         "cultures": " ".join(r.get("cultures", [])) or None, "regions": " ".join(r.get("regions", [])) or None,
+         "holder_pattern": r.get("holder_pattern"), "min_ceiling": r["min_ceiling"], "tier": r["tier"],
+         "items": " ".join(r.get("items", [])) or None, "materials": " ".join(r.get("materials", [])) or None,
+         "fallback": " ".join(r.get("fallback", [])) or None,
+         "weapon_materials": " ".join(r.get("weapon_materials", [])) or None, "why": r["why"]}
+        for i, r in enumerate(sc["guard_issue"]["table"])])
     w.insert_many("security_level", [{"id": s["id"], "rank": i, "label": s["label"], "means": s["means"]}
                                      for i, s in enumerate(sc["security"])])
     w.insert_many("effort_level", [{"id": e["id"], "rank": i, "means": e["means"], "tier": e["tier"]}
@@ -195,9 +203,12 @@ def _regions_and_kits(w) -> None:
                      good_id=g, why="food in the house")
             seq += 1
         for j, n in enumerate(k.get("never", [])):
-            w.insert("trade_kit_never", kit_id=k["id"], seq=j, slot=n.get("slot"), types=" ".join(n.get("types", [])) or None,
-                     materials=" ".join(n.get("materials", [])) or None, groups=" ".join(n.get("groups", [])) or None,
-                     bands=" ".join(n.get("bands", [])) or None, why=n["why"])
+            w.insert("trade_kit_never", {"kit_id": k["id"], "seq": j, "slot": n.get("slot"),
+                                         "types": " ".join(n.get("types", [])) or None,
+                                         "materials": " ".join(n.get("materials", [])) or None,
+                                         "groups": " ".join(n.get("groups", [])) or None,
+                                         "bands": " ".join(n.get("bands", [])) or None, "except": n.get("except"),
+                                         "why": n["why"]})
 
 
 def _load_place_stock(w, doc: dict) -> None:
@@ -355,7 +366,7 @@ def power() -> int:
     strongest base at that tier or below; a tier with no base lies midway between its neighbours)."""
     from tools.places.stock.records import Records
     sc = _json(STOCK / "scale.json")
-    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"])
+    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "NewArmoury.esp"])
     by_edid = {r.edid: k for k, r in rec.raw.items() if r.sig in ("WEAP", "ARMO") and r.edid}
     tiers = [t["id"] for t in sc["tiers"]]
     kinds, missing = {}, []

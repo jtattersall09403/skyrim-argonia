@@ -30,6 +30,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import time
@@ -167,7 +168,10 @@ def build_tool() -> None:
 
 
 def _build_tool() -> None:
-    if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in TOOL_PROJ.glob("*.cs*")):
+    # its own sources and the shared ones its project links (ForeignCopy.cs, ItemLadder.cs ...)
+    linked = [(TOOL_PROJ / m).resolve() for f in TOOL_PROJ.glob("*.csproj")
+              for m in re.findall(r'Compile Include="([^"]+)"', f.read_text())]
+    if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in [*TOOL_PROJ.glob("*.cs*"), *linked] if p.exists()):
         return  # up to date: `dotnet build` alone takes seconds
     r = subprocess.run(["dotnet", "build", str(TOOL_PROJ), "-c", "Release", "-o", str(TOOL_DIR), "-nologo", "-v", "q"],
                        env=DOTNET_ENV, capture_output=True, text=True)
@@ -178,7 +182,10 @@ def _build_tool() -> None:
 
 def tool(*args: str) -> None:
     with heavy_lock():   # 5 to 7 GB each: one at a time across every worktree
+        t0 = time.time()
         r = subprocess.run(["dotnet", str(TOOL), *args], env=DOTNET_ENV, capture_output=True, text=True)
+        from tools.places import timelog
+        timelog.count("dotnet_s", int(time.time() - t0))
     if r.returncode:
         raise SystemExit(f"ArgoniaPlacesBuild {args[0]} failed\n{(r.stdout + r.stderr)[-4000:]}")
     if r.stdout.strip():
@@ -2218,6 +2225,8 @@ def main(argv: list[str]) -> int:
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
         log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(plan['refs'])} refs, {len(plan['interiors'])} interiors, "
             f"{len(plan['land'])} land cells, {len(plan['clear'])} cleared, {len(plan['navmesh']['navm'])} navmeshes")
+        from tools.places import timelog
+        timelog.count("refs", len(plan["refs"]))
         for n in plan["notes"]:
             log(f"  note: {n}")
     if a.plan:
