@@ -2,7 +2,7 @@
 
 What "nothing above Morrowind level" means for an Argonia quest: how Morrowind's quests were actually built, five
 real quests taken apart, each Morrowind mechanism set beside Skyrim's matching record, a test of the ceiling in
-[walk-6-quests](../phases/walk-6-quests.md#the-ceiling-what-a-quest-may-use), the essential-death message, and
+walk-6-quests, the essential-death message, and
 rules for the quest writer. Skyrim counts are from [quest-block-precedent](skyrim/quest-block-precedent.md)
 (Skyrim.esm, measured); block names are from [blocks](../design/blocks.md).
 

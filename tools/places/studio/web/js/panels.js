@@ -3,7 +3,8 @@
 import { api, off } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
-import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
+import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol, usersOf, followsLine } from './people.js';
+import { isHelper, helperWhat, usesOf } from './markers.js';
 import { clock, parseClock } from './geom.js';
 import { whereOf, whereRows } from './where.js';
 import { Contents } from './contents.js';
@@ -88,7 +89,8 @@ export class Panels {
     if (!refs.length) {
       parts.push(el(`<p>Tap a thing in our place to select it. Draw round several with the pen to select them all. Tap the same spot again to reach what is behind.</p>`));
       parts.push(el('<p>To copy from the source place, tap a thing on the source side, then tap our place where it should go.</p>'));
-    } else if (refs.length === 1) parts.push(this.refCard(refs[0], a.bases, 'ours'));
+    } else if (T.selUnit()) parts.push(this.unitCard(T.selUnit()));
+    else if (refs.length === 1) { parts.push(this.refCard(refs[0], a.bases, 'ours')); parts.push(this.memberLine(refs[0])); }
     else {
       const counts = {}; for (const r of refs) counts[plainKind(r.kind)] = (counts[plainKind(r.kind)] || 0) + 1;
       parts.push(el(`<p><strong>${refs.length} things selected</strong>: ${Object.entries(counts).map(([k, n]) => `${n} × ${esc(k.toLowerCase())}`).join(', ')}.</p>`));
@@ -97,11 +99,12 @@ export class Panels {
     if (note) parts.push(el(`<p class="tag">${esc(note)}</p>`));
     if (refs.length) {
       parts.push(el('<h3>Move a little</h3>'));
-      const step = 32, turn = Math.PI / 12, pad = el('<div class="row"></div>');
+      const turn = Math.PI / 12, pad = el('<div class="row"></div>'), st = () => T.opts.step;
       const btn = (label, fn) => { const b = el(`<button class="quiet">${label}</button>`); b.onclick = fn; return b; };
-      pad.append(btn('North', () => T.nudge(0, step, 0)), btn('South', () => T.nudge(0, -step, 0)), btn('West', () => T.nudge(-step, 0, 0)), btn('East', () => T.nudge(step, 0, 0)),
-        btn('Up', () => T.nudge(0, 0, 8)), btn('Down', () => T.nudge(0, 0, -8)), btn('Turn left', () => T.nudge(0, 0, 0, -turn)), btn('Turn right', () => T.nudge(0, 0, 0, turn)),
-        btn('Bigger', () => T.nudge(0, 0, 0, 0, 0.05)), btn('Smaller', () => T.nudge(0, 0, 0, 0, -0.05)));
+      pad.append(seg('Step', [['1', '1 unit'], ['10', '10'], ['50', '50']], String(T.opts.step), (v) => { T.opts.step = Number(v); }));
+      pad.append(btn('North', () => T.nudge(0, st(), 0)), btn('South', () => T.nudge(0, -st(), 0)), btn('West', () => T.nudge(-st(), 0, 0)), btn('East', () => T.nudge(st(), 0, 0)),
+        btn('Up', () => T.nudge(0, 0, st())), btn('Down', () => T.nudge(0, 0, -st())), btn('Turn left', () => T.nudge(0, 0, 0, -turn)), btn('Turn right', () => T.nudge(0, 0, 0, turn)),
+        btn('Bigger', () => T.nudge(0, 0, 0, 0, 0.05)), btn('Smaller', () => T.nudge(0, 0, 0, 0, -0.05)), btn('Undo', () => a.log.undo()));
       parts.push(pad);
       const acts = el('<div class="row"></div>');
       acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
@@ -114,13 +117,49 @@ export class Panels {
     parts.push(el('<h3>How selecting works</h3>'));
     const r = el('<div class="row"></div>');
     r.append(seg('Pen selects with', [['lasso', 'Draw round'], ['box', 'Box']], T.opts.selMode, (v) => { T.opts.selMode = v; }),
-      toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }));
+      toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }),
+      toggle('Pieces: a tap picks one piece, not its whole unit', T.opts.pieces, (v) => { T.opts.pieces = v; }));
     const r2 = el('<div class="row"></div>');
-    r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }));
+    r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }),
+      toggle('Snap flush against what is beside it', T.opts.snapFaces, (v) => { T.opts.snapFaces = v; }), toggle('Stay on what it sits on', T.opts.keepSeat, (v) => { T.opts.keepSeat = v; }));
     const r3 = el('<div class="row"></div>');
     r3.append(toggle('Lights and invisible walls: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
     parts.push(r, r2, r3);
     this.show(refs.length ? 'Selected' : 'Select', parts);
+  }
+  // A unit selected whole: what it is, its pieces (each can be taken out), and how to reach one piece.
+  unitCard(u) {
+    const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById();
+    w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every piece with it, `
+      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, its lights, and the ends of the streets that lead to its doors, which bend to follow.</p>'));
+    w.append(el('<p class="tag">Tap a piece again to select only that piece. Tap away from it to come back to the whole.</p>'));
+    w.append(this.whereEl(u.members.map((id) => refs.get(id)).filter(Boolean), 'ours'));
+    const list = el('<ul class="members"></ul>');
+    for (const id of u.members) {
+      const r = refs.get(id); if (!r) continue;
+      const b = a.bases.get(r.base) || {}, li = el(`<li><span>${esc(b.name || b.edid || r.base)} <small>${esc(plainKind(r.kind))}</small></span></li>`);
+      const out = el('<button class="quiet">Take out of this unit</button>'); out.onclick = () => T.setUnit(r, '');
+      li.append(out); list.append(li);
+    }
+    w.append(el('<h3>Pieces in it</h3>'), list);
+    return w;
+  }
+  // A piece's unit: which it belongs to, with "take out"; or the unit nearest it, with "add to".
+  memberLine(r) {
+    const a = this.app, T = this.T, u = T.unitOfRef(r.id), w = el('<div class="row member"></div>');
+    if (u) {
+      w.append(el(`<p>Part of <strong>${esc(u.name)}</strong> (${u.members.length} pieces): it moves with the rest.</p>`));
+      const all = el('<button class="quiet">Select the whole unit</button>'); all.onclick = () => T.selectUnit(u);
+      const out = el('<button class="quiet">Take out of this unit</button>'); out.onclick = () => T.setUnit(r, '');
+      w.append(all, out);
+    } else {
+      const p = a.seated(r).pos, near = [...T.units().units.values()].map((x) => ({ x, d: Math.hypot(Math.max(x.box.x0 - p[0], 0, p[0] - x.box.x1), Math.max(x.box.y0 - p[1], 0, p[1] - x.box.y1)) }))
+        .filter((o) => o.d < 600).sort((m, n) => m.d - n.d)[0];
+      w.append(el('<p>In no unit: it moves alone.</p>'));
+      if (near) { const add = el(`<button class="quiet">Add to this unit: ${esc(near.x.name)}</button>`); add.onclick = () => T.setUnit(r, near.x.id); w.append(add); }
+      if (typeof r.unit === 'string') { const back = el('<button class="quiet">Let the unit rule decide</button>'); back.onclick = () => T.setUnit(r, null); w.append(back); }
+    }
+    return w;
   }
   refCard(r, bases, side) {
     const a = this.app, base = bases.get(r.base) || a.srcBases?.get(r.base) || {};
@@ -135,6 +174,10 @@ export class Panels {
     if (enter || building.length) tags.append(el(`<span class="tag enter">${building.length ? `Can be entered: comes with its room inside and ${building.length} door${building.length > 1 ? 's' : ''}` : 'Door into a room'}</span>`));
     if (tags.children.length) w.append(tags);
     const facts = [['Made from', `${base.edid || ''} (${r.base})`]];
+    if (isHelper(r, base)) {   // a marker the game never shows: what it is, and what uses it
+      const refs = side === 'ours' ? [...a.placeRefsById().values()] : a.refsOf(a.src), nm = (x) => { const b = bases.get(x.base) || a.srcBases?.get(x.base) || {}; return b.name || b.edid || x.id; };
+      facts.unshift(['What it is', helperWhat(base)], ['What uses it', usesOf(r, { refs, people: side === 'ours' ? a.people.list() : [], quests: side === 'ours' ? [...a.model.quests.values()] : [], states: a.states || [], nameOf: nm }).join('; ')]);
+    }
     if (side === 'ours') facts.push(['Copied from', r.src ? `${a.sourceId} thing ${r.src}` : 'Added here, not copied']);
     if (side === 'ours') facts.push(['How it sits', seatWords(r.seat)]);
     const station = side === 'ours' && stationOf(a.place, r.id);
@@ -143,6 +186,7 @@ export class Panels {
     if (side === 'ours' && r.align) facts.push(['Lined up with', `the original it replaces (${r.align.of}), turned ${Math.round(r.align.turn_deg)} degrees`]);
     if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
     if (r.owner) facts.push(['Belongs to', r.owner]);
+    if (side === 'ours') { const u = usersOf(a.people.list(), r.id, r.src); if (u.length) facts.push(['Whose routine', followsLine(u, 'it wherever it goes')]); }
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     const lit = this.lightFacts(r, base, side);
     facts.push(...lit.facts);
@@ -290,6 +334,15 @@ export class Panels {
       for (const msg of P.problems(p)) parts.push(el(`<p class="tag nordic">${esc(msg)}</p>`));
       if (isInnkeeper(p) && !p.bed) parts.push(el('<p class="note">Keeps no bed and works all day, as Skyrim\'s innkeepers do.</p>'));
       parts.push(this.contents.personSection(p));
+      parts.push(el('<h3>Their spots</h3>'), el(`<p class="note">${esc(P.moveWords(p))}</p>`));
+      const spots = el('<ul class="spots"></ul>');
+      for (const sp of P.spots(p)) {
+        const at = sp.at || {}, r = at.ref && a.findRef(at.ref), b = r && (a.bases.get(r.base) || {});
+        const where = r ? (b.name || b.edid || 'a thing') : at.pos ? `a spot of their own${(at.space || 'exterior') !== 'exterior' ? ` in ${a.spaceName(a.ours, at.space)}` : ''}` : 'no spot yet';
+        const li = el(`<li><span><strong>${esc(sp.label)}</strong>: ${esc(where)}</span></li>`);
+        const show = el('<button class="quiet">Show it</button>'); show.onclick = () => P.showSpot(p, sp); li.append(show); spots.append(li);
+      }
+      parts.push(spots);
       parts.push(el('<h3>Their day</h3>'));
       const list = el('<ol class="history"></ol>');
       P.sorted(p).forEach((s, i) => {
@@ -645,6 +698,9 @@ export class Panels {
     let list = [];
     try { list = (await api.saves(pid)) || []; } catch (e) { if (!/404/.test(e.message)) a.toast(`Your saves could not be listed: ${e.message}`, 8000); return null; }
     const nOps = (x) => (Array.isArray(x.ops) ? x.ops.length : x.ops ?? 0);
+    // an emptied autosave (a finalise empties it) still has its revision: this tab's first save goes on from it
+    const auto = (list.saves || list).find((x) => x.save_id === 'autosave');
+    if (auto && !a.revs.autosave) a.revs.autosave = auto.rev || 0;
     list = (list.saves || list).map((x) => ({ ...x, ops: nOps(x) })).filter((x) => x.ops > 0 && !x.final)
       .sort((x, y) => (y.save_id === 'autosave') - (x.save_id === 'autosave') || String(y.at).localeCompare(String(x.at)));
     if (!list.length) return null;

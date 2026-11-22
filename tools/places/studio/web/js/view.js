@@ -206,9 +206,27 @@ export class View {
   // how steeply the view looks down (Shift and the wheel): 0.08 (along the ground) to 1.52 (from straight above); the
   // thumb sticks (sticks.js) look up past level
   tilt(p) { this.rig.pitch = Math.max(0.08, Math.min(1.52, p)); this.changed(); }
+  // Turning the view turns it about what is selected (app.pivotFor: a unit's middle, the selection's), which stays
+  // where it is on the screen; with nothing selected, about where the view looks.
   orbit(dx, dy) {
-    this.rig.yaw -= dx * 0.006; this.rig.pitch = Math.max(Math.min(0.08, this.rig.pitch), Math.min(1.52, this.rig.pitch + dy * 0.005)); this.changed();
+    const r = this.rig, yaw0 = r.yaw, pitch0 = r.pitch;
+    r.yaw -= dx * 0.006; r.pitch = Math.max(Math.min(0.08, r.pitch), Math.min(1.52, r.pitch + dy * 0.005));
+    const P = this.pivot();
+    if (P) {
+      const cam = (yaw, pitch) => [Math.cos(pitch) * Math.cos(yaw), Math.cos(pitch) * Math.sin(yaw), Math.sin(pitch)];
+      // the camera turns rigidly about P: the target's offset from P turns by the yaw about the up axis, then by the
+      // pitch about the view's own sideways axis (no roll, so P stays where it is on the screen)
+      const v = new THREE.Vector3(r.target.x - P[0], r.target.y - P[1], r.target.z - P[2]);
+      v.applyAxisAngle(new THREE.Vector3(0, 0, 1), r.yaw - yaw0);
+      const side = new THREE.Vector3(-Math.sin(r.yaw), Math.cos(r.yaw), 0), dir = new THREE.Vector3(...cam(r.yaw, pitch0)).applyAxisAngle(side, -(r.pitch - pitch0));
+      const sign = dir.distanceTo(new THREE.Vector3(...cam(r.yaw, r.pitch))) < 1e-6 ? -1 : 1;
+      v.applyAxisAngle(side, sign * (r.pitch - pitch0));
+      r.target.set(P[0] + v.x, P[1] + v.y, P[2] + v.z);
+    }
+    this.changed();
   }
+  // The point turned and zoomed about, in view coordinates, or null.
+  pivot() { const g = this.app.pivotFor?.(this); return g && this.origin ? [g[0] - this.origin[0], g[1] - this.origin[1], g[2] - this.origin[2]] : null; }
   pan(dx, dy, quiet) {
     const k = this.rig.dist * 0.0016, c = Math.cos(this.rig.yaw), s = Math.sin(this.rig.yaw);
     // dragging right slides the land right; dragging down pulls the land towards the camera
@@ -216,7 +234,13 @@ export class View {
     this.rig.target.y += (-c * dx - s * dy) * k;
     if (!quiet) this.changed(); else this.updateCamera();
   }
-  zoom(f, quiet) { this.rig.dist = Math.max(150, Math.min(80000, this.rig.dist * f)); quiet ? this.updateCamera() : this.changed(); }
+  // Zooming goes towards what is selected (it stays where it is on the screen), else towards where the view looks.
+  zoom(f, quiet) {
+    const d0 = this.rig.dist; this.rig.dist = Math.max(150, Math.min(80000, d0 * f));
+    const P = this.pivot(), k = this.rig.dist / d0, t = this.rig.target;
+    if (P && k !== 1) t.set(P[0] + (t.x - P[0]) * k, P[1] + (t.y - P[1]) * k, P[2] + (t.z - P[2]) * k);
+    quiet ? this.updateCamera() : this.changed();
+  }
   // ---- the ground under a ray: the land (or an interior's floor) ----
   groundAt(ray) {
     const t = this.terrainData;

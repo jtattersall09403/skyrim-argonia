@@ -240,7 +240,6 @@
 {"item_id":"item.elven-trident","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
 {"item_id":"item.elven-war-arrow","ord":0,"value":"world/sources/lore/topics/foreign-powers.md:71"}
 {"item_id":"item.elven-war-arrow","ord":1,"value":"world/sources/lore/regions/waters.md:25"}
-{"item_id":"item.eye-of-the-root","ord":0,"value":"docs/quests/30-main-quest.md"}
 {"item_id":"item.falmer-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
 {"item_id":"item.falmer-blunt-arrow","ord":1,"value":"world/sources/lore/topics/fauna-hazards.md"}
 {"item_id":"item.falmer-flight-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:59"}
@@ -280,7 +279,6 @@
 {"item_id":"item.fleshfly-husks","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.fleshfly-husks","ord":1,"value":"Morrowind:Kwama Cuttle (UESP)"}
 {"item_id":"item.flint-vine","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md"}
-{"item_id":"item.flotilla-hull-tally","ord":0,"value":"world/sources/placement/facts/place.mercantile-coast.lighter-flotilla.json"}
 {"item_id":"item.fly-amanita","ord":0,"value":"Skyrim.esm:INGR Mushroom01"}
 {"item_id":"item.fork","ord":0,"value":"Skyrim.esm:MISC BasicFork01"}
 {"item_id":"item.forsworn-blunt-arrow","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:124"}
@@ -305,7 +303,6 @@
 {"item_id":"item.giant-leech-blood","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.giant-leech-blood","ord":1,"value":"Morrowind:Chokeweed (UESP)"}
 {"item_id":"item.giant-lichen","ord":0,"value":"Skyrim.esm:INGR GiantLichen"}
-{"item_id":"item.glass-bead-strand","ord":0,"value":"world/sources/lore/topics/lost-peoples.md:30"}
 {"item_id":"item.glass-blunt-arrow","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
 {"item_id":"item.glass-blunt-arrow","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:47"}
 {"item_id":"item.glass-boots","ord":0,"value":"world/sources/lore/topics/material-culture.md:61"}
@@ -531,8 +528,6 @@
 {"item_id":"item.marshweed","ord":0,"value":"world/sources/lore/topics/fauna-hazards.md:99"}
 {"item_id":"item.medusa-scales","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.medusa-scales","ord":1,"value":"Morrowind:Scales (UESP)"}
-{"item_id":"item.mnemic-egg","ord":0,"value":"UESP:Lore:Mnemic Egg"}
-{"item_id":"item.mnemic-egg","ord":1,"value":"King of the Murkmire.esp:STAT ArgonianEggBlack01"}
 {"item_id":"item.moon-adder-venom","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.moon-adder-venom","ord":1,"value":"world/sources/lore/topics/material-culture.md#drugs-and-medicine"}
 {"item_id":"item.moon-adder-venom","ord":2,"value":"Morrowind:Poison (UESP)"}
@@ -610,7 +605,6 @@
 {"item_id":"item.rootworm-mucus","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.rootworm-mucus","ord":1,"value":"Morrowind:Sload Soap (UESP)"}
 {"item_id":"item.salt-pile","ord":0,"value":"Skyrim.esm:INGR SaltPile"}
-
 {"item_id":"item.saltrice-flatbread","ord":0,"value":"King of the Murkmire.esp:ALCH SaltriceFlatbread"}
 {"item_id":"item.saltrice-loaf","ord":0,"value":"world/sources/lore/topics/material-culture.md:139"}
 {"item_id":"item.saltrice-loaf","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:89"}
@@ -824,4 +818,3 @@
 {"item_id":"item.wooden-ball-club","ord":1,"value":"world/sources/lore/topics/history-timeline.md:19"}
 {"item_id":"item.wooden-ladle","ord":0,"value":"Skyrim.esm:MISC WoodenLadle01"}
 {"item_id":"item.wooden-plate","ord":0,"value":"Skyrim.esm:MISC BasicWoodenPlate01"}
-{"item_id":"item.work-roll","ord":0,"value":"docs/quests/30-main-quest.md"}

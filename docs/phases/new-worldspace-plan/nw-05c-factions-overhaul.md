@@ -302,7 +302,7 @@ one province. The pages are `main-plot.md`, `lamps.md` (the Lampbearers), `thiev
 `shadowscales.md`, `sisei-xul.md`, `house-cardruhn.md` (House Cardruhn), `pirates.md` (Bramman's Brethren, seated at
 Bramman's Watch on Aphon Isle), `merchants.md` (the Topal Bay Company) and `chainbreakers-newworld.md`, with
 `owing-house.md` (House Ulvarys) as background. The rulers are the Xeech-Leel and the main quest's order the
-Toh-Reel-Ka ([rename map](research/rulers-rename-map.md)). The rules between the pages are in the
+Toh-Reel-Ka (rename map). The rules between the pages are in the
 [consistency ledger](../../../story/design/quests/lines/consistency.md); every faction can be played at any point of
 the main quest. Gear for each faction's ranks is in [reward-gear](../../../story/design/quests/reward-gear.md). The
 reconciliation call's recommendations (#75) stand as working defaults until the owner answers.

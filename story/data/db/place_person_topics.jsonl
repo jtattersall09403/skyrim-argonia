@@ -97,7 +97,6 @@
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":0,"value":"topic.about-archon"}
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":1,"value":"topic.about-hissmir"}
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":2,"value":"topic.about-prison-road"}
-{"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":3,"value":"topic.about-reed-sail-compact"}
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":4,"value":"topic.about-riverwalk"}
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":5,"value":"topic.about-tear"}
 {"place_id":"place.dunmer-north.riverwalk","people_ord":8,"ord":6,"value":"topic.about-thorn"}
@@ -227,7 +226,7 @@
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":6,"value":"topic.about-tear"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":7,"value":"topic.about-thorn"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":8,"value":"topic.about-tree-minder"}
-{"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":9,"value":"topic.about-veiled-reed"}
+{"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":9,"value":"topic.about-toh-reel-ka"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":10,"value":"topic.greenspring"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":11,"value":"topic.greenspring-danger"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":6,"ord":12,"value":"topic.greenspring-directions"}
@@ -263,13 +262,11 @@
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":0,"value":"topic.about-greenspring"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":1,"value":"topic.about-helstrom"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":2,"value":"topic.about-hist"}
-{"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":3,"value":"topic.about-many-root-conclave"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":4,"value":"topic.about-prison-road"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":5,"value":"topic.about-tear"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":6,"value":"topic.about-thorn"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":7,"value":"topic.about-tree-minder"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":8,"value":"topic.burnished-scales-leave"}
-{"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":9,"value":"topic.faction-many-root-conclave"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":10,"value":"topic.greenspring"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":11,"value":"topic.greenspring-danger"}
 {"place_id":"place.hist-heartland.greenspring","people_ord":9,"ord":12,"value":"topic.greenspring-directions"}
@@ -559,8 +556,6 @@
 {"place_id":"place.mercantile-coast.chasepoint","people_ord":5,"ord":12,"value":"topic.role-station"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":0,"value":"topic.about-lighter-flotilla"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":1,"value":"topic.about-lilmoth"}
-{"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":2,"value":"topic.about-reed-sail-compact"}
-{"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":3,"value":"topic.faction-reed-sail-compact"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":4,"value":"topic.flotilla-licence-terms"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":5,"value":"topic.lighter-flotilla"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":6,"value":"topic.lighter-flotilla-danger"}
@@ -570,7 +565,6 @@
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":0,"ord":10,"value":"topic.role-flotillas-business"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":0,"value":"topic.about-lighter-flotilla"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":1,"value":"topic.about-lilmoth"}
-{"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":2,"value":"topic.faction-reed-sail-compact"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":3,"value":"topic.flotilla-licence-terms"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":4,"value":"topic.flotilla-night-cargo"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":1,"ord":5,"value":"topic.lighter-flotilla"}
@@ -625,8 +619,6 @@
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":6,"ord":9,"value":"topic.role-net-mending"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":0,"value":"topic.about-lighter-flotilla"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":1,"value":"topic.about-lilmoth"}
-{"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":2,"value":"topic.about-reed-sail-compact"}
-{"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":3,"value":"topic.faction-reed-sail-compact"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":4,"value":"topic.flotilla-floating-house"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":5,"value":"topic.flotilla-tally-handover"}
 {"place_id":"place.mercantile-coast.lighter-flotilla","people_ord":7,"ord":6,"value":"topic.lighter-flotilla"}
@@ -679,7 +671,6 @@
 {"place_id":"place.mercantile-coast.lilmoth","people_ord":4,"ord":7,"value":"topic.opening-work-camp-people"}
 {"place_id":"place.mercantile-coast.lilmoth","people_ord":4,"ord":8,"value":"topic.opening-work-camp-work"}
 {"place_id":"place.mercantile-coast.lilmoth","people_ord":4,"ord":9,"value":"topic.role-bearing-witness"}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":0,"ord":0,"value":"topic.about-nisswo"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":0,"ord":1,"value":"topic.about-prison-road"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":0,"ord":2,"value":"topic.about-sithis"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":0,"ord":3,"value":"topic.latest-rumours"}
@@ -698,7 +689,6 @@
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":1,"ord":5,"value":"topic.teeth-of-sithis-directions"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":1,"ord":6,"value":"topic.teeth-of-sithis-people"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":1,"ord":7,"value":"topic.teeth-of-sithis-work"}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":2,"ord":0,"value":"topic.about-nisswo"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":2,"ord":1,"value":"topic.about-prison-road"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":2,"ord":2,"value":"topic.about-sithis"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":2,"ord":3,"value":"topic.role-temple-duties"}
@@ -722,7 +712,6 @@
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":4,"ord":5,"value":"topic.teeth-of-sithis-directions"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":4,"ord":6,"value":"topic.teeth-of-sithis-people"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":4,"ord":7,"value":"topic.teeth-of-sithis-work"}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":5,"ord":0,"value":"topic.about-nisswo"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":5,"ord":1,"value":"topic.about-prison-road"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":5,"ord":2,"value":"topic.about-sithis"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","people_ord":5,"ord":3,"value":"topic.latest-rumours"}
@@ -919,7 +908,6 @@
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":0,"value":"topic.about-alten-corimont"}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":1,"value":"topic.about-gang-ground"}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":2,"value":"topic.about-hist"}
-{"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":3,"value":"topic.about-many-root-conclave"}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":4,"value":"topic.about-nine-bends"}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":5,"value":"topic.about-prison-road"}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","people_ord":7,"ord":6,"value":"topic.about-tree-minder"}

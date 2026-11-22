@@ -241,6 +241,17 @@ def source_refs(bases, rng, cells, pfx, nbuild, nenter):
     refs.append(ref(f"{pfx}.wall0", bases.get("CollisionMarker", "marker", model=None), "marker",
                     [b0["pos"][0] - 330 * sn, b0["pos"][1] + 330 * c, b0["pos"][2] + 120], list(b0["rot"]),
                     primitive={"type": "Box", "bounds": [400.0, 16.0, 120.0], "color": [255, 255, 0], "unknown": 0.15}))
+    # the second building made a composite house: a porch before it and a bedroll inside it (the draft's unit `h01`
+    # holds the building, its door and its porch; the bedroll is in it by standing within it)
+    b1 = next(r for r in refs if r["id"] == f"{pfx}.b1")
+    c, sn = math.cos(b1["rot"][2]), math.sin(b1["rot"][2])
+    at = lambda lx, ly: [b1["pos"][0] + c * lx + sn * ly, b1["pos"][1] - sn * lx + c * ly]  # noqa: E731  (the game's clockwise turn)
+    refs.append(ref(f"{pfx}.porch1", bases.get("Fix_Porch", "static", size=(500, 200, 40)), "static", [*at(0, -380), 380], list(b1["rot"])))
+    refs.append(ref(f"{pfx}.bedroll1", bases.get("Fix_Bedroll", "furniture", furniture={"markers": [{"type": "sleep", "pos": [0, 0, 10]}]}),
+                    "furniture", [*at(150, 80), 380], list(b1["rot"])))
+    # an invisible marker that switches a crate on and off with it (its enable parent)
+    refs.append(ref(f"{pfx}.xm0", bases.get("XMarker", "marker", size=(32, 32, 32)), "marker", [x0 + 4800, y0 + 1600, 380], [0, 0, 0]))
+    next(r for r in refs if r["id"] == f"{pfx}.c1")["enable_parent"] = {"ref": f"{pfx}.xm0", "flags": "0"}
     return refs, back, npcs
 
 
@@ -338,6 +349,12 @@ def main():
             nr["door"] = dict(r["door"], to_ref=r["door"]["to_ref"].replace("src", "fixplace", 1))
         if "primitive" in r:   # a kept collision box travels with the piece it stands on
             nr["seat"] = {"mode": "on", "on": "fixplace.b0", "dz": 120.0}
+        if "enable_parent" in r:
+            nr["enable_parent"] = dict(r["enable_parent"], ref=r["enable_parent"]["ref"].replace("src", "fixplace", 1))
+        if r["id"] in ("src.b1", "src.d1", "src.porch1"):
+            nr["cluster"] = "h01"
+        if r["id"] == "src.d1":   # where one arrives coming out of the house
+            nr["door"]["arrival"] = [round(x, 2), round(y - 120, 2), round(z, 2)]
         drefs.append(nr)
     dint = {}
     for sid, rs in sint.items():
@@ -370,7 +387,7 @@ def main():
                      stop(22, 8, "sleep", {"space": "FixHouse01", "ref": bed["FixHouse01"]["id"], "radius": 50})]},
         {"id": "fixplace.p2", "name": "Bram Fixguard", "base_from": "Fix.esm:002001", "role": "guard",
          "home": "FixHouse02", "bed": {"space": "FixHouse02", "ref": bed["FixHouse02"]["id"]},
-         "work": {"space": "exterior", "pos": [hp[0] + 800, hp[1], hp[2]], "radius": 200}, "services": [],
+         "work": {"space": "exterior", "pos": next(r["pos"] for r in drefs if r["id"] == "fixplace.b1"), "radius": 200}, "services": [],
          "faction_ranks": [{"faction": "FixVillage", "rank": 2}],
          "routine": [stop(6, 12, "work", {"space": "exterior", "pos": hp, "radius": 400}),
                      stop(18, 2, "eat", {"space": "FixHouse02", "ref": "fixplace.FixHouse02.table", "radius": 150}),

@@ -63,5 +63,5 @@ one row per state, exactly one `default` (the game's start):
 5. `key` names the refs that make the state recognisable; the promises check fails a state sentence with no state
    row and a state with no key shown in it.
 6. Check each state as the player sees it: `python -m tools.places states <place_id>` lists them and what each hides;
-   `look <place> at <key ref> --state <state>` for a capture per state; the owner chooses it in the studio's Quest
+   `look <place> at <key ref> --state <state>` for a capture per state (its people drawn as named stand-in figures where the state has them; `--people` draws them in any capture); the owner chooses it in the studio's Quest
    state switch (both views), where his edits are marked with the state they were made in.

@@ -287,6 +287,11 @@ masts, is named as the list of them). A flight of steps is seated `on` the deck 
 the deck's height; a flight down onto a ship's deck also names the ship as its `carrier`. `steps.kit` in
 `place.json` names the steps bases a flight was taken from out of a deck's own kit (the source having none).
 
+Raising or lowering a seated thing (the lift handle, the Up and Down buttons) changes the seat's own `dz`, in every
+mode (`on`, `ground`, `clear`, `above`, `water`, `stilts`), and the move op records the seat before and after with the
+`pos` z the seat works out; the seat pass then finds it where it was put and moves nothing. A free seat, an
+interior's ref, or a thing `on` a ref that is gone has its z changed directly.
+
 `place.json` also holds: `draft` (the agent's calls: `plan`, `add`, `roles`, `room_names`, `people_from`,
 `accepted_checks`, `accepted`, `accepted_faults`, `ground_cap`, `sap`; and, for drafts awaiting redraft, `anchor`,
 `rot_deg`, `search`, `replace`, `drop`, `keep_patches`; the place skills, `place-system`), `wholesale` (the
@@ -606,7 +611,8 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 |---|---|
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
-| `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive}` (the fields it changes), `after:{...}` |
+| `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive,unit}` (the fields it changes), `after:{...}` |
+| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]`, `paths?:[{path, before}]` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -623,6 +629,13 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
+- `unit.move` applies each member as a `ref.move` (its `door`, when given, set as given rather than shifted), then
+  each person, quest, walking-zone and street row as a `person.edit`, `quest.edit`, `walk.edit` and `path.edit`; a door whose arrival changes moves the landing
+  (`to_pos`) of every door leading to it by as much, so a move and its inverse give it back exactly (a plain
+  `ref.move` of a door does the same with the door's own shift). Its inverse swaps every before and after.
+  `edits.expand` (and `expand` in `edits.js`) writes it as those plain ops for whatever reads ops one row at a time:
+  hand placements (`hands.placed`), the draft's adds (`draft/adds.follow`), the needs' warnings.
+- A ref's `unit` (`ref.move`) is its unit by hand, `""` none; null drops the field, so the unit rule decides again.
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
   and `before` the row before.
 - `veg.clear` writes the item as the row (`by: owner` unless the item names `by`); `veg.restore` items carry the
@@ -792,7 +805,7 @@ are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.
 thing is drawn whole at any zoom, its placed ground cover too. Geometry the game never shows is left out: effects
 (models under `effects\` or named `fx*`, records named `FX*`: the game's shader tricks, wherever a mod keeps
 them, as Dragonborn's Apocrypha mist in `dlc02\dungeons`), things with no model (markers, triggers, sounds; a light is drawn as a bulb, below) and any part of a
-model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Grass
+model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Markers with a model are the exception, shown while Markers is on (below). Grass
 is grown as the game grows it, from each land texture's grass list (`grass.js`, rules in `grass_rules.js`): a ring
 round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
 4,500 units, a spot kept with chance (4500 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
@@ -808,6 +821,92 @@ track the world's land here carries, else the forest set; the build takes the gr
 screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
+
+**Units: composite things select and move as one** (`units.js` the rule, `tools.js` the selection and the move).
+A unit is what a builder would call one structure: a house with its porch, door, steps and lamps; a ship with its
+masts, rigging, gangplank and what stands on its deck; a tent with its bedrolls and chests. One rule says what is in
+a unit, worked out afresh from the space's refs whenever the place changes:
+1. a ref's own `unit` names its unit (`""` takes it out of every unit); else the draft's `cluster` does (never for a
+   plant, tree, ground cover, rock or person, which belong to the ground);
+2. a building in no unit starts its own; a unit lying at least half inside another's body (its buildings and pieces
+   of 200 by 200 units or more, never a marker or an effect), within its height, is part of it, the smaller into the
+   larger: a ship's sail into its hull, a doorframe into its house, a tent's bedding cluster into the tent;
+3. a ref still in no unit belongs to the unit of what it is seated `on`, else to the smallest unit whose body piece
+   it stands within, in plan and from 48 units under that piece's floor to 16 over its roof (a bedroll inside a tent,
+   a lantern on a deck);
+4. two or more pieces one sees make a unit: a building with only its lights or invisible walls is none.
+A unit is named for its head piece, the lowest of its buildings (the hull under the sail), else its biggest piece.
+
+A tap with Select picks the whole unit of the thing tapped: one outline round all of it and its name over it
+("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
+panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
+comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
+Tap adds to selection. The Selected panel of a unit names it and its pieces, each with Take out of this unit; a piece
+in no unit offers Add to this unit for the nearest unit within 600 units, and one whose unit was set by hand Let the
+unit rule decide. Membership by hand is a `ref.move` of the ref's `unit` (null gives it back to the rule).
+
+Moving, turning (about the unit's centre) or raising a unit selected whole, by its handles or the panel's buttons,
+moves every member rigidly as one `unit.move` op, one undo: what sits on the ground or on a member keeps its seat
+and is seated again where it lands; a free piece rises or falls with the ground under the unit's head, so the unit
+stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
+the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
+with it: a person's work place, routine stops and patrol points given as positions, the quest spots on it, and the
+owner's walking zones lying wholly in it. A street that ends at one of its doors (`from` or `to`) or on its footprint keeps its course: its end point moves with
+the unit and the point before it half as far, so it bends to the door; the panel says so. A
+bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
+resized whole; its pieces are, one by one.
+
+**Moving** (`move_map.js` the mapping, `tools.js` the handles). Round a selection stand its handles, each one way of
+moving, big enough for a finger, and each named over the gizmo while the pen hovers on it and through its drag:
+- the middle (64 px) slides along the ground ("Slides along the ground; keeps how it sits"): the drag moves the thing
+  over a level plane at its own height, fixed when the drag starts, so the point under the pen stays under it, as
+  The Sims and Planet Coaster move things; what sits on the ground or on another thing keeps that seat and is seated
+  again where it lands. When the view looks along the ground (the pen's ray meets that plane at under about 10
+  degrees, where the plane would throw the thing far off), the drag maps the screen instead: right on the screen is
+  right in the view, up the screen is away from the camera, at the thing's distance. Which of the two is chosen when
+  the drag starts and never changes during it;
+- E–W and N–S, two handles pointing the way east and north lie on the screen, move along that axis only, with the
+  axis drawn through the selection as a dashed line;
+- Height, a separate large handle above, raises or lowers it (a seated thing's seat `dz`);
+- the turn handle on the ring turns it about the up axis, in 15 degree steps unless Turn in 15° steps is off;
+- the corner handle resizes it (never a unit whole).
+The panel's Move a little nudges by a step of 1, 10 or 50 units (North, South, West, East, Up, Down), turns by 15
+degrees and has Undo. Snaps, each a switch under How selecting works: Keep on the ground when moving; Snap flush
+against what is beside it (a dragged thing's plan box comes flush with a neighbour's opposite face within 24 units,
+along the axis being moved); Stay on what it sits on (off: a thing seated on another lets go and sits on the ground
+when moved). `test/move_map.test.mjs` proves the mapping at a view nearly straight down, three-quarter and nearly
+level; the browser test drags at the same three.
+
+**The camera about the selection** (`view.js`). With something selected in our place, turning the view (one
+finger, the mouse's other button, the right thumb stick's look excepted) turns it about the selection, a unit's middle
+when a unit is selected whole, which stays where it is on the screen; pinching or the wheel zooms towards it. With
+nothing selected the view turns and zooms about where it looks. Frame in the view's bar brings the selection into
+view whole.
+
+**Markers** (`markers.js`). The helpers the game never shows in play (heading and plain markers, the map marker, the
+editor's start point, the north marker, idle and patrol markers, furniture markers, sound, room and light markers, an
+enable parent) are drawn as their editor shapes while Markers in the view's bar is on (the default, remembered per
+browser), and are neither drawn nor picked while it is off. Selecting one says in one plain sentence what it is (one
+table, `HELPERS`) and what uses it: the things it switches on and off (their enable parent), what is linked to it,
+the doors that lead to it, the people whose routine names it, the quest spots and quest states that name it, or
+"nothing we can see uses it". Invisible walls and lights keep their own switch.
+
+**People in Select** (`people.js`). A tap on a person with Select picks them (before anything behind) and opens
+their People panel: who they are, then Their spots, each where it is (a thing by its name, or a spot of their own)
+with Show it, which sets the hour they are there, goes to its room and frames it with a ring: where they sleep (their
+bed), work and eat, where they stand by day and at night (their other stops), their patrol points. A line says in
+plain words what dragging them now changes. Dragging a person (the pen, or a finger that lands on them) moves the
+spot they are at at the hour shown: a stop that names a thing (a bed, a station) moves that thing, as an ordinary
+move with what follows it, and every routine naming it follows; a stop at a spot of their own moves for them alone
+(`person.edit`); on patrol, the whole patrol shifts.
+
+A routine names a bed, a station or a spot by its ref, or a position; the build makes each stop a package aimed at
+that ref, or at a heading marker placed at the position (`tools/places/people.py`), and the game finds its way
+between them on the walking mesh, so no route is stored to go stale. What does not follow a moved thing on its own:
+a stop or patrol point given as a position (a unit's move carries those standing in it), a walking zone's outline (a
+unit's move carries those wholly in it), and the walking mesh itself, which the next build makes again under what
+moved. The Selected panel of a thing a routine names says so ("Ada sleeps here: their routine follows it wherever it
+goes"), and moving it says it at the moment of the move.
 
 **Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
 view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over

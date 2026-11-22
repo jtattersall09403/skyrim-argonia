@@ -185,4 +185,4 @@ describing Argonian faith; not a constraint on the Nisswo material.
   system for the whole province.
 - The Shadowscale collapse in 4E 187/201 is a ready-made faction premise: an
   order in its last generation. See
-  [../extrapolation/quest-plan-deltas.md](../extrapolation/quest-plan-deltas.md).
+  ../extrapolation/quest-plan-deltas.md.

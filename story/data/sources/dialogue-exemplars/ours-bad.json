@@ -971,7 +971,7 @@
   {
    "id": "bad.y2-031",
    "tell": "restated fact",
-   "note": "restates about-many-root-conclave in the same speaker",
+   "note": "restates about-tree-tenders in the same speaker",
    "wrong": "...No steward lifts a tool to a tree without its consent. Any village that wants a minder gets one sent. Even small ones.",
    "right": "The Conclave sent me here. Any village that wants a minder gets one, even a small one like this. I read this Hist's signs. When the tribe is in trouble I know first.",
    "round": "2.6 corpus read batch A, FIX 31 (Greenspring, tree-minder)",
@@ -982,7 +982,7 @@
    "tell": "restated fact",
    "note": "clone of tree-minder's own words",
    "wrong": "...He reads its signs and tells us what it wants. Trouble in the nests or the kin, he feels first.",
-   "right": "Vees-Wai holds that post. The Many-Root Conclave sends each village one minder. He reads the tree's signs and tells us what it wants.",
+   "right": "Vees-Wai holds that post. The tree-tenders send each village one minder. He reads the tree's signs and tells us what it wants.",
    "round": "2.6 corpus read batch A, FIX 32 (Greenspring, n2)",
    "source": "lanes/2.6/dialogue/corpus-read-batch-A.md"
   },
@@ -1511,7 +1511,7 @@
   {
    "id": "bad.y2-091",
    "tell": "restated fact",
-   "note": "restates about-many-root-conclave; clumsy",
+   "note": "restates about-tree-tenders; clumsy",
    "wrong": "My office is the one who tends it. The Conclave, whose stewards care for every tree, sent me out...",
    "right": "I do not prune it. The Conclave sent me out to this village.",
    "round": "2.6 corpus read batch B, FIX 41 (upriver, minder)",
@@ -1864,7 +1864,7 @@
    "tell": "ungrounded talk",
    "note": "invented colour",
    "wrong": "Last week I spent a full morning settling a feud over whose pennant hangs lowest on the mast.",
-   "right": "Boats that haul goods round the river mouths or down the shore all sail under the Reed-Sail Compact: the guild of ferries, routes and hands, from the smallest punt to the biggest barge. Raiders sail with us. The Salt-Teeth fly the same mark as honest crews.",
+   "right": "Boats that haul goods round the river mouths or down the shore all sail under the ferry pilots: the guild of ferries, routes and hands, from the smallest punt to the biggest barge. Raiders sail with us. the wreckers fly the same mark as honest crews.",
    "round": "2.6 corpus read batch C, FIX 35 (Lighter, flotilla-speaker)",
    "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
   },
@@ -1989,8 +1989,8 @@
    "id": "bad.y2-144",
    "tell": "packed clause-chain",
    "note": "wrong guild; garbled",
-   "wrong": "The Reed-Sail Compact, a trading guild, owns every leading place on our crews.",
-   "right": "The Reed-Sail Compact, the guild of the boat crews, holds every leading post here. The council pressed for licences once, but every crew downed its lines for a fortnight.",
+   "wrong": "The ferry pilots, a trading guild, owns every leading place on our crews.",
+   "right": "The ferry pilots, the guild of the boat crews, holds every leading post here. The council pressed for licences once, but every crew downed its lines for a fortnight.",
    "round": "2.6 corpus read batch C, FIX 49 (Lighter, n1-2)",
    "source": "lanes/2.6/dialogue/corpus-read-batch-C.md"
   },
@@ -2556,8 +2556,8 @@
    "id": "bad.y2-207",
    "tell": "restated fact",
    "note": "restates n2-2",
-   "wrong": "House Dres raided the saltrice city of Thorn long ago, took slaves off its streets and grew fat on the harvest of its fields. It sits on our northern border. The Tear road reaches it. Now the Ash-Reed Accord disputes who owns those fields by right.",
-   "right": "Thorn is the saltrice town on our northern border, at the end of the Tear road. House Dres raided it once. Now the Ash-Reed Accord argues over who owns its fields.",
+   "wrong": "House Dres raided the saltrice city of Thorn long ago, took slaves off its streets and grew fat on the harvest of its fields. It sits on our northern border. The Tear road reaches it. Now Thorn's council disputes who owns those fields by right.",
+   "right": "Thorn is the saltrice town on our northern border, at the end of the Tear road. House Dres raided it once. Now Thorn's council argues over who owns its fields.",
    "round": "2.6 corpus read close 3, FIX 8 (Riverwalk, Lifts-Two-Traps (toll-holder))",
    "source": "lanes/2.6/dialogue/corpus-read-close-3.md"
   },
@@ -2574,7 +2574,7 @@
    "id": "bad.y2-209",
    "tell": "one construction carrying the set",
    "note": "third copy of the factors rumour (n2-3, n3) in one shape",
-   "wrong": "Haj-Tei the bed-keeper says several hushed lodgers are factors who serve the Veiled Reed. Couriers and tappers crowd his lodge on the road to Helstrom, so every bed is taken. I guess the factors are the reason.",
+   "wrong": "Haj-Tei the bed-keeper says several hushed lodgers are factors who serve the Toh-Reel-Ka. Couriers and tappers crowd his lodge on the road to Helstrom, so every bed is taken. I guess the factors are the reason.",
    "right": "Couriers and tappers crowd Haj-Tei's lodge on the road to Helstrom. Every bed is taken. I write their loads in my ledger and ask the quiet ones nothing.",
    "round": "2.6 corpus read close 3, FIX 12 (Greenspring, Ixo-Vaal (root-herald))",
    "source": "lanes/2.6/dialogue/corpus-read-close-3.md"

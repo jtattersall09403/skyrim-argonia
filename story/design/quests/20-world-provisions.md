@@ -1,7 +1,7 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/20-world-provisions.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # World-generation handoff contract
 
-> Module of the quest/narrative master plan (see [README](README.md)).
+> Module of the quest/narrative master plan (see README).
 > **This is the file world-generation agents read**: it defines what the
 > world build must provide for quests, per phase.
 
@@ -13,7 +13,7 @@ Every quest below has an explicit **World-generation provision**. Those provisio
 
 **For Phases 11–15 the contract is two-way**: each
 region packet runs the **quest–world co-design loop** of
-[90-production-sequence.md](90-production-sequence.md) §65b — world drafts the
+90-production-sequence.md §65b — world drafts the
 settlements, a quest agent drafts the region's local-quest *briefs* and
 requests placements, the packet reconciles and freezes with both halves
 consistent. Main-quest and faction sites are confirmed from the tables here in
@@ -48,7 +48,7 @@ Every physical thing a quest specifies — a building form, a boat, a creature, 
 prop, a trap — must be **representable from assets we can actually get**:
 vanilla Skyrim/Creation, the vault (incl. the Beyond Skyrim Black Marsh &
 Vvardenfell pools), the candidate tables in
-[70-assets.md](70-assets.md) §52–53 and world module 90 §71/§74.3, or a new
+70-assets.md §52–53 and world module 90 §71/§74.3, or a new
 Nexus sourcing job. The five-question check in 70-assets §51 applies to every
 brief, old and new.
 
@@ -126,7 +126,7 @@ Do not create speculative cross-system TypeScript contracts solely because this 
 
 Quest briefs also declare a **delivery tier** — D-A (static), D-B (one bounded
 dynamic element), D-C (bespoke runtime behaviour) —
-[00-overview.md](00-overview.md) §4. This bears on world generation in one
+00-overview.md §4. This bears on world generation in one
 concrete way: **the world must make the cheap patterns possible.** Where a quest
 would otherwise want a chase, an escort or a crowd, the world provides instead
 

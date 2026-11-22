@@ -19,9 +19,10 @@ import pytest
 
 pw = pytest.importorskip("playwright.sync_api")
 WEB = Path(__file__).resolve().parents[1]
-SHOTS = Path(os.environ.get("SHOTS") or tempfile.mkdtemp(prefix="studio-shots-"))
+SHOTS = Path(os.environ["SHOTS"]) if os.environ.get("SHOTS") else None   # screenshots only when asked for: software GL draws them slowly
 REAL = bool(os.environ.get("STUDIO_URL"))
 SLOW = 5 if REAL else 1  # real bundles under software GL load in ~45 s, not ~3 s
+WAIT = 90000 * SLOW   # every playwright wait: generous, for a build machine under load (each still ends on its condition)
 LANDSCAPE, PORTRAIT = {"width": 1280, "height": 800}, {"width": 800, "height": 1280}  # MatePad Pro 12.6 at DPR 2
 
 
@@ -50,8 +51,20 @@ def refuse_shared_saves(url):
         f"the server at {url} would write autosaves to {autosave}, outside its clone {root}"
 
 
+@pytest.fixture(scope="module", autouse=True)
+def one_run_at_a_time():
+    """Two runs of this suite on one machine fight for its CPU, memory and software GL: a second run waits here (as
+    long as the first takes, about ten minutes) for the machine-wide lock, then runs alone."""
+    import fcntl
+    lock = Path.home() / ".argonia" / "state" / "studio-browser-tests.lock"
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    with open(lock, "w") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        yield
+
+
 @pytest.fixture(scope="module")
-def server():
+def server(one_run_at_a_time):
     if os.environ.get("STUDIO_URL"):
         url = os.environ["STUDIO_URL"].rstrip("/")
         refuse_shared_saves(url)
@@ -123,6 +136,16 @@ class Pad:
         self.touch("touchEnd", [])
         self.page.wait_for_timeout(60)
 
+    def mouse_turn(self, a, b, steps=8):
+        """Turn the view with the mouse's other button, as from a trackpad: each step waits for the view to take it."""
+        send = lambda kind, x, y, btns: self.cdp.send("Input.dispatchMouseEvent", {"type": kind, "x": x, "y": y, "button": "right", "buttons": btns, "clickCount": 1, "pointerType": "mouse"})  # noqa: E731
+        send("mouseMoved", *a, 0)
+        send("mousePressed", *a, 2)
+        for i in range(1, steps + 1):
+            send("mouseMoved", a[0] + (b[0] - a[0]) * i / steps, a[1] + (b[1] - a[1]) * i / steps, 2)
+        send("mouseReleased", *b, 0)
+        self.page.wait_for_timeout(60)
+
     def pinch(self, c, d0, d1, steps=6):
         pts = lambda d: [(c[0] - d, c[1]), (c[0] + d, c[1])]  # noqa: E731
         self.touch("touchStart", pts(d0))
@@ -139,24 +162,32 @@ class Pad:
         return self.ev("studio.log.applied().map((o) => ({ n: o.n, op: o.op, call: o.call, note: o.note || studio.log.notes.get(o.note_group)?.text, note_group: o.note_group, space: o.space, stroke: o.stroke, id: o.id || o.ref?.id || o.path?.id || o.person?.id, src: o.ref?.src, base: o.ref?.base, space_copy_of: o.space_copy_of }))")
 
     def shot(self, name):
-        self.page.screenshot(path=str(SHOTS / f"{name}.png"))
+        """A screenshot kept for a look, never a check: on a loaded machine software GL can take longer than the
+        screenshot's wait, which then skips the picture rather than failing the test."""
+        if SHOTS is None:
+            return
+        try:
+            self.page.screenshot(path=str(SHOTS / f"{name}.png"), timeout=WAIT)
+        except pw.TimeoutError:
+            print(f"screenshot {name} skipped: the page took too long to draw")
 
 
 def open_pad(browser, server, viewport, scheme="light", fresh=True, choose="draft"):
     ctx = browser.new_context(viewport=viewport, device_scale_factor=1, has_touch=True, color_scheme=scheme)
     page = ctx.new_page()
+    page.set_default_timeout(WAIT)
     pad = Pad(page)
     page.goto(server + "/")
-    page.wait_for_function("window.studio && studio.ready && studio.log", timeout=60000 * SLOW)
+    page.wait_for_function("window.studio && studio.ready && studio.log", timeout=WAIT)
     if REAL:  # the real place builds its land in slices after the first frame
-        page.wait_for_function("document.getElementById('progress').hidden", timeout=120000 * SLOW)
+        page.wait_for_function("document.getElementById('progress').hidden", timeout=WAIT)
     page.wait_for_timeout(500)
     if choose and page.locator("#start .sheet").is_visible():  # saved work: nothing applied until chosen
         if choose == "draft":
             page.get_by_role("button", name="Start from the builder's draft").click()
         else:
             page.get_by_role("button", name=choose).click()
-        page.wait_for_function("document.getElementById('start').hidden", timeout=30000 * SLOW)
+        page.wait_for_function("document.getElementById('start').hidden", timeout=WAIT)
     return pad
 
 
@@ -175,6 +206,37 @@ def pad(browser, server):
     yield p
     assert not p.errors, p.errors
     p.page.context.close()
+
+
+@pytest.fixture(autouse=True)
+def fresh_ui(request):
+    """Each test that drives the module's tab starts from the same studio state: outside, Select, nothing selected,
+    default switches, no panel, so no test depends on what an earlier one (or a failure in one) left behind."""
+    if "pad" in request.fixturenames:
+        pad = request.getfixturevalue("pad")
+        pad.ev("""(() => { const s = studio, T = s.tools;
+          if (s.ours.space !== 'exterior') s.leave(s.ours, 0);
+          T.use('select'); Object.assign(T.opts, { pieces: false, adds: false, snapFaces: true, snapGround: true, snapRot: true, keepSeat: true, step: 10 });
+          s.people.sel = null; s.people.drag = null; T.lastTap = null; T.unit = null; T.inside = null;
+          s.selection.clear(); T.selectionChanged(); s.panels.close(); })()""")
+    yield
+
+
+@pytest.fixture(scope="module")
+def pad0(pad):
+    """The module's tab, for tests that open a tab of their own beside it."""
+    return pad
+
+
+def empty_spot(pad, x0=0.3, x1=0.95):
+    """Page coordinates of a spot of our view where the canvas itself is under the pen and nothing of the place, no
+    person and no quest pin stands."""
+    return pad.ev("""([x0, x1]) => { const v = studio.ours.view, r = v.canvas.getBoundingClientRect();
+      for (let gy = 0.15; gy < 0.9; gy += 0.05) for (let gx = x0; gx < x1; gx += 0.05) {
+        const x = r.left + r.width * gx, y = r.top + r.height * gy, top = document.elementFromPoint(x, y);
+        const e = v.info({ clientX: x, clientY: y, pointerType: 'pen' });
+        if (top?.closest('#view-ours .canvas-holder') && !studio.ours.place.pick(e.ray).length && !studio.people.pick(e) && !studio.quests.pick(e)) return [x, y]; }
+      return null; }""", [x0, x1])
 
 
 def first_ref(pad, kind, space="exterior"):
@@ -215,13 +277,13 @@ def test_16_first_run_and_design(pad):
                      .filter(([, r]) => r.width < 44 || r.height < 44).map(([t, r]) => `${t} ${r.width}x${r.height}`)""")
     assert not small, f"touch targets under 44 px: {small}"
     labels = pad.ev("[...document.querySelectorAll('#rail button span')].map((s) => s.textContent)")
-    assert labels[:8] == ["Select", "Add", "People", "Quests", "Land", "Plants", "Paths", "Walking"]
+    assert labels[:9] == ["Select", "Add", "People", "Quests", "Land", "Paint ground", "Plants", "Paths", "Walking"]
 
 
 # ---------- 1: two views, layout, full screen, link, fingerprint ----------
 def test_01_two_views(pad):
     # built things show as their models arrive (no stand-in boxes)
-    pad.page.wait_for_function("studio.stats().drawn.place > 0 && studio.stats().drawn.src > 0", timeout=120000 * SLOW)
+    pad.page.wait_for_function("studio.stats().drawn.place > 0 && studio.stats().drawn.src > 0", timeout=WAIT)
     st = pad.ev("studio.stats()")
     assert st["refs"]["world"] > 0 and st["refs"]["src"] > 0
     # the real ground keeps none of its own things inside the place: from the town, at the lowest detail software GL
@@ -262,7 +324,7 @@ def test_01_mismatch_warning(browser, server):
     page = ctx.new_page()
     page.route("**/api/status", lambda r: r.fulfill(json={"ground_sha": "aaaaaaaaaaaa", "deployed_sha": "bbbbbbbbbbbb", "match": False}))
     page.goto(server + "/")
-    page.wait_for_function("window.studio && studio.status", timeout=30000 * SLOW)
+    page.wait_for_function("window.studio && studio.status", timeout=WAIT)
     assert page.evaluate("!document.getElementById('warn').hidden")
     assert "not the one on the play machine" in page.evaluate("document.getElementById('warn').textContent")
     ctx.close()
@@ -270,13 +332,14 @@ def test_01_mismatch_warning(browser, server):
 
 # ---------- 2: performance, lazy meshes, thumbnails ----------
 def test_02_performance_and_lazy_models(pad):
-    pad.page.wait_for_function("[...studio.ours.place.groups.values()].some((g) => g.full)", timeout=30000 * SLOW)
+    pad.page.wait_for_function("[...studio.ours.place.groups.values()].some((g) => g.full)", timeout=WAIT)
     url = pad.ev("import('./js/thumbs.js').then((m) => m.thumb(studio.bases.values().next().value))")
     assert "/api/asset/thumb" in url or url.startswith("data:image/")
 
 
 # ---------- 3: select, cycle, lasso, gizmo, nudge, duplicate, remove, info ----------
 def test_03_select_and_manipulate(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     pad.page.click("#rail [data-tool=select]")
     # a building with nothing that follows it (no invisible wall on it): each change is its one op
     b = pad.ev("(() => { const rs = [...studio.model.spaces.exterior.refs.values()]; "
@@ -328,6 +391,7 @@ def test_03_select_and_manipulate(pad):
 
 # ---------- 4: copy from the source, a group, an enterable building ----------
 def test_04_from_the_source(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     if pad.page.locator("#panel-close").is_visible():  # the panel floats over the source view's right side
         pad.page.click("#panel-close")
     src = pad.ev("studio.srcBundle.spaces.exterior.refs.find((r) => r.kind === 'building')")
@@ -372,7 +436,7 @@ def test_05_search(pad):
     pad.page.click("#rail [data-tool=search]")
     box = pad.page.locator("#panel-body input[type=search]")
     box.fill("house")
-    pad.page.wait_for_function("studio.panels.search.results.length > 0", timeout=10000 * SLOW)
+    pad.page.wait_for_function("studio.panels.search.results.length > 0", timeout=WAIT)
     pad.page.get_by_role("button", name="Everything we have").click()
     pad.page.wait_for_timeout(600)
     res = pad.ev("studio.panels.search.results")
@@ -563,15 +627,15 @@ def test_12_paths(pad):
 
 # ---------- 13 and 15: saves, reload, finalise, heartbeat ----------
 def test_13_15_saves_finalise_heartbeat(pad, browser, server):
-    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=15000 * SLOW)
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=WAIT)
     pad.page.click("#rail [data-tool=saves]")
     pad.page.fill("#panel-body input[type=text]", "Test save one")
     pad.page.get_by_role("button", name="Save a copy").click()
-    pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Test save one')", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Test save one')", timeout=WAIT)
     n, ops, digest = len(pad.ops()), json.dumps(pad.ops(), sort_keys=True), pad.ev(DIGEST)
     # another session: the autosave is picked up after the machine was off
     other = open_pad(browser, server, PORTRAIT, choose="Continue the unsaved work")
-    other.page.wait_for_function(f"studio.log.applied().length === {n}", timeout=15000 * SLOW)
+    other.page.wait_for_function(f"studio.log.applied().length === {n}", timeout=WAIT)
     assert other.ev("studio.log.applied().length") == n, (other.errors, other.ev("document.getElementById('toast').textContent"))
     assert json.dumps(other.ops(), sort_keys=True) == ops and other.ev(DIGEST) == digest, "the same edits make the same place"
     assert other.ev("document.getElementById('views').dataset.layout") == "stack"
@@ -609,9 +673,9 @@ def test_14_choosers(pad):
         assert pad.ev("studio.sourceId") == opts[0]
         return
     pad.page.select_option("#source-pick", opts[1])
-    pad.page.wait_for_function(f"studio.sourceId === {json.dumps(opts[1])} && document.getElementById('loading').hidden", timeout=30000 * SLOW)
+    pad.page.wait_for_function(f"studio.sourceId === {json.dumps(opts[1])} && document.getElementById('loading').hidden", timeout=WAIT)
     pad.page.select_option("#source-pick", opts[0])
-    pad.page.wait_for_function(f"studio.sourceId === {json.dumps(opts[0])} && document.getElementById('loading').hidden", timeout=30000 * SLOW)
+    pad.page.wait_for_function(f"studio.sourceId === {json.dumps(opts[0])} && document.getElementById('loading').hidden", timeout=WAIT)
 
 
 # ---------- 16: dark and portrait look ----------
@@ -669,7 +733,7 @@ def test_20_notes_for_the_agent(pad, browser, server):
     pad.page.wait_for_selector("textarea.note-text")
     pad.page.fill("textarea.note-text", "Turn this to face the water")
     pad.page.get_by_role("button", name="Keep the note", exact=True).click()
-    pad.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 3", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 3", timeout=WAIT)
     notes = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/notes"))
     assert [n["text"] for n in notes] == ["More reeds along the bank", "A note to delete", "Turn this to face the water"]
     assert all(n["sent"] is False for n in notes), "kept, not sent"
@@ -687,19 +751,19 @@ def test_20_notes_for_the_agent(pad, browser, server):
     assert send.inner_text() == "Send notes to the agent (3)"
     row = other.page.locator("ol.free-notes li", has_text="A note to delete")
     row.get_by_role("button", name="Delete").click()
-    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 2", timeout=10000 * SLOW)
+    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 2", timeout=WAIT)
     row = other.page.locator("ol.free-notes li", has_text="More reeds along the bank")
     row.get_by_role("button", name="Edit").click()
     row.locator("textarea").fill("More reeds along the east bank")
     row.get_by_role("button", name="Keep").click()
-    other.page.wait_for_function("document.querySelector('ol.free-notes').textContent.includes('east bank')", timeout=10000 * SLOW)
+    other.page.wait_for_function("document.querySelector('ol.free-notes').textContent.includes('east bank')", timeout=WAIT)
     assert other.page.locator("button.send-notes-btn").inner_text() == "Send notes to the agent (2)"
     other.page.locator("button.send-notes-btn").click()
     assert other.page.locator(".confirm-send p").inner_text() == "An agent will read these two notes and make the changes. You can keep editing."
     other.shot("20-notes-confirm")
     assert not json.load(urllib.request.urlopen(f"{server}/api/_notes_sent")), "nothing is sent before the confirmation"
     other.page.get_by_role("button", name="Send them").click()
-    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li[data-state=sent]').length === 2", timeout=10000 * SLOW)
+    other.page.wait_for_function("document.querySelectorAll('ol.free-notes li[data-state=sent]').length === 2", timeout=WAIT)
     assert json.load(urllib.request.urlopen(f"{server}/api/_notes_sent")) == [["n1", "n3"]], "one batch: both notes"
     assert other.page.locator("button.send-notes-btn").is_disabled()
     assert other.page.locator("ol.free-notes li[data-state=sent] button", has_text="Edit").count() == 0, "a sent note no longer changes"
@@ -754,7 +818,7 @@ def test_21_selected_shows_where(pad):
     assert f"Cell{pos[0] // 4096}, {pos[1] // 4096}" in w and "Turned" in w, w
     # it follows the thing when it moves
     pad.page.get_by_role("button", name="East", exact=True).click()
-    pad.page.wait_for_function("(x) => document.querySelector('#panel-body dl.where').textContent.includes(`x ${x},`)", arg=pos[0] + 32, timeout=5000 * SLOW)
+    pad.page.wait_for_function("(x) => document.querySelector('#panel-body dl.where').textContent.includes(`x ${x},`)", arg=pos[0] + 10, timeout=WAIT)
     pad.shot("21-selected-where")
     # several: the middle of them
     ids = pad.ev("[...studio.model.spaces.exterior.refs.values()].filter((r) => r.kind === 'building').slice(0, 2).map((r) => r.id)")
@@ -764,6 +828,7 @@ def test_21_selected_shows_where(pad):
 
 
 def test_21_lights_seen_and_handled(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a light has no model of its own: while selecting it is a small bulb of its colour, picked like anything else
     pad.page.click("#rail [data-tool=select]")
     light = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0')")
@@ -771,10 +836,10 @@ def test_21_lights_seen_and_handled(pad):
     lp = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", light["id"])
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     look_at(pad, "ours", lp, dist=1800, pitch=1.15)
-    pad.page.wait_for_function("studio.ours.place.nBulb >= 2 && studio.ours.place.nRing >= 1", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 2 && studio.ours.place.nRing >= 1", timeout=WAIT)
     pad.shot("21-lights-overview")
     look_at(pad, "ours", lp, dist=700, pitch=1.3)
-    pad.page.wait_for_function("studio.ours.place.nBulb >= 1 && studio.ours.place.bulbs.visible", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1 && studio.ours.place.bulbs.visible", timeout=WAIT)
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     pad.pen_tap(*pad.screen("ours", lp))
     assert pad.ev("[...studio.selection]") == [light["id"]], pad.ev("[...studio.selection]")
@@ -791,7 +856,7 @@ def test_21_lights_seen_and_handled(pad):
     ops = pad.ops()[n0:]
     assert sorted(o["id"] for o in ops) == sorted([lantern["id"], light["id"]]) and ops[0]["stroke"] == ops[1]["stroke"], ops
     moved = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0').pos")
-    assert abs(moved[0] - light["pos"][0] - 32) < 0.6 and abs(moved[1] - light["pos"][1]) < 0.6, (moved, light["pos"])
+    assert abs(moved[0] - light["pos"][0] - 10) < 0.6 and abs(moved[1] - light["pos"][1]) < 0.6, (moved, light["pos"])
     # a turn carries it round the lantern
     pad.page.get_by_role("button", name="Turn right", exact=True).click()
     last2 = pad.ev("studio.log.applied().slice(-2).map((o) => o.id)")
@@ -813,9 +878,9 @@ def test_21_lights_seen_and_handled(pad):
     # other tools hide the lights unless the Lights toggle is on
     pad.page.click("#rail [data-tool=land]")
     assert not pad.ev("studio.ours.place.showLights")
-    pad.page.wait_for_function("studio.ours.place.nBulb === 0 && !studio.ours.place.bulbs.visible", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nBulb === 0 && !studio.ours.place.bulbs.visible", timeout=WAIT)
     pad.ev("studio.tools.opts.lights = true; studio.tools.lightsShown()")
-    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=WAIT)
     pad.ev("studio.tools.opts.lights = false; studio.tools.lightsShown()")
     pad.page.click("#rail [data-tool=select]")
     # inside: the room's lamp is a bulb too, and belongs to its lantern
@@ -826,23 +891,24 @@ def test_21_lights_seen_and_handled(pad):
     body = pad.ev("document.getElementById('panel-body').textContent")
     assert "casts shadows" in body and "Fix Lantern" in body, body
     look_at(pad, "ours", lamp["pos"], dist=600, pitch=1.0)
-    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=WAIT)
     pad.shot("21-light-inside")
     pad.page.locator("#view-ours .crumbs button").first.click()
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     # back outside, the view restored to where it stood (the next tests start from it)
-    pad.page.wait_for_function("studio.ours.space === 'exterior' && !studio.ours.returnRig", timeout=30000 * SLOW)
+    pad.page.wait_for_function("studio.ours.space === 'exterior' && !studio.ours.returnRig", timeout=WAIT)
     pad.page.wait_for_timeout(500)
 
 
 def test_21_invisible_walls(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a kept collision box shows with the helpers as a faint outlined box of its real size, one instanced draw
     pad.page.click("#rail [data-tool=select]")
     wall = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0')")
     wp = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", wall["id"])
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     look_at(pad, "ours", wp, dist=2500, pitch=1.2)
-    pad.page.wait_for_function("studio.ours.place.nPrim >= 1 && studio.ours.place.primBoxes.visible", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nPrim >= 1 && studio.ours.place.primBoxes.visible", timeout=WAIT)
     assert pad.ev("studio.ours.place.root.children.filter((m) => m.userData.prims && m.visible).length") == 1
     pad.page.wait_for_timeout(300)
     pad.shot("21-invisible-wall")
@@ -916,25 +982,26 @@ def test_21_invisible_walls(pad):
     # the plain view never shows it (nor picks it: picking skips helpers while they are hidden)
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     pad.page.click("#rail [data-tool=land]")
-    pad.page.wait_for_function("studio.ours.place.nPrim === 0 && !studio.ours.place.primBoxes.visible", timeout=5000 * SLOW)
+    pad.page.wait_for_function("studio.ours.place.nPrim === 0 && !studio.ours.place.primBoxes.visible", timeout=WAIT)
     assert not pad.ev("studio.ours.place.showLights")
     pad.page.click("#rail [data-tool=select]")
 
 
 def test_21_grass_at_viewing_distance(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
     assert pad.ev("studio.ours.grass.on")
     g = pad.ev("studio.seated([...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building')).pos")
     for dist in (1500, 9000):
         look_at(pad, "ours", g, dist=dist, pitch=0.8)
-        pad.page.wait_for_function("studio.ours.grass.refs.length > 0 && studio.ours.grass.drawn > 0", timeout=60000 * SLOW)
+        pad.page.wait_for_function("studio.ours.grass.refs.length > 0 && studio.ours.grass.drawn > 0", timeout=WAIT)
     # thinned with distance: fewer blades per area from afar, and the larger ring is capped
     assert pad.ev("studio.ours.grass.refs.length") <= 6000
     pad.shot("21-grass-town-distance")
 
 
 def test_21_world_map(pad, browser, server):
-    pad.page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '1'", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '1'", timeout=WAIT)
     pad.page.click("#atlas-btn")
     assert pad.ev("!document.getElementById('atlas').hidden")
     assert pad.ev("document.querySelector('#atlas iframe').src").endswith(f"/atlas/index.html#place={pad.pid}")
@@ -949,7 +1016,7 @@ def test_21_world_map(pad, browser, server):
     page = ctx.new_page()
     page.route("**/atlas/**", lambda r: r.fulfill(status=404, body="the Atlas has not been built"))
     page.goto(server + "/")
-    page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '0'", timeout=30000 * SLOW)
+    page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '0'", timeout=WAIT)
     assert "not built" in page.evaluate("document.getElementById('atlas-btn').textContent")
     ctx.close()
 
@@ -970,13 +1037,13 @@ def test_22_start_choice(pad, browser, server):
     assert p.ev("studio.log.applied().length") == 0, "nothing applied before the choice"
     text = p.ev("document.getElementById('start').textContent")
     assert "Unsaved work from" in text and f"{auto['ops']} edits" in text and "Older draft work" in text
-    p.page.wait_for_function("document.querySelector('#start .older')", timeout=10000 * SLOW)
+    p.page.wait_for_function("document.querySelector('#start .older')", timeout=WAIT)
     assert "Made on an older draft" in p.ev("document.querySelector('#start .older').textContent")
     p.shot("22-start-choice")
     b = p.page.get_by_role("button", name="Discard the unsaved work")
     b.click()
     b.click()
-    p.page.wait_for_function("!document.getElementById('start').textContent.includes('Unsaved work from')", timeout=10000 * SLOW)
+    p.page.wait_for_function("!document.getElementById('start').textContent.includes('Unsaved work from')", timeout=WAIT)
     left = {x["save_id"]: x["ops"] for x in json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))}
     assert left.get("autosave", 0) == 0 and left["older-draft"] == auto["ops"]
     p.page.get_by_role("button", name="Start from the builder's draft").click()
@@ -1029,7 +1096,7 @@ def test_23_contents_and_identities(browser, server):
     # a thing above the place's ceiling is listed with its reason and refused
     p.page.fill("#panel-body input[aria-label='Find a thing to add']", "glass")
     refused = p.page.locator("#panel-body li.refused", has_text="Glass Sword")
-    refused.wait_for(timeout=10000)
+    refused.wait_for(timeout=WAIT)
     assert "above this place's ceiling T2 Sound" in refused.inner_text()
     p.page.get_by_role("button", name="Add Glass Sword").click()
     assert len(p.ops()) == n0, "a refused thing is never added"
@@ -1079,7 +1146,7 @@ def test_23_contents_and_identities(browser, server):
     p.page.click("#rail [data-tool=saves]")
     p.page.fill("#panel-body input[type=text]", "Stock test")
     p.page.get_by_role("button", name="Save a copy").click()
-    p.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Stock test')", timeout=10000)
+    p.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Stock test')", timeout=WAIT)
     save = json.load(urllib.request.urlopen(f"{server}/api/place/{p.ev('studio.place.place_id')}/saves/stock-test"))
     kinds = [o["op"] for o in save["ops"]]
     assert {"stock.container.set", "identity.edit", "person.edit", "stock.trader.set", "stock.possessions.set"} <= set(kinds), kinds
@@ -1145,7 +1212,7 @@ def test_24_note_bar(pad, server):
     pad.page.click("#rail [data-tool=saves]")
     pad.page.fill("#panel-body input[type=text]", "Notes test")
     pad.page.get_by_role("button", name="Save a copy").click()
-    pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Notes test')", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Notes test')", timeout=WAIT)
     save = json.load(urllib.request.urlopen(f"{server}/api/place/{pad.ev('studio.place.place_id')}/saves/notes-test"))
     assert [n["text"] for n in save["notes"]].count("stalls must never block a walkway") == 1
     assert [o["n"] for o in save["ops"] if o.get("note_group") == gid] == [o["n"] for o in three]
@@ -1275,7 +1342,7 @@ def reopen(pad, lose=False):
     pad.ev("""(lose) => { studio.openPlaceSafe(studio.place.place_id);
              if (lose) setTimeout(() => { const e = studio.ours.view.renderer.getContext().getExtension('WEBGL_lose_context');
                e.loseContext(); setTimeout(() => e.restoreContext(), 400); }, 150); }""", lose)
-    pad.page.wait_for_function("studio.ready && document.getElementById('loading').hidden", timeout=60000 * SLOW)
+    pad.page.wait_for_function("studio.ready && document.getElementById('loading').hidden", timeout=WAIT)
     if pad.page.locator("#start .sheet").is_visible():
         pad.page.get_by_role("button", name="Start from the builder's draft").click()
     pad.page.wait_for_timeout(1500 * SLOW)
@@ -1382,13 +1449,15 @@ def test_27_thumb_sticks(pad):
 
 
 # ---------- 28: the walking mesh: see it, say what to change with the pen, rebuild ----------
-def test_28_walking_mesh(browser, server):
+def test_28_walking_mesh(pad0, browser, server):
+    # the module's tab has finished saving first: a save of its own landing later would conflict with this tab's
+    pad0.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state) || !studio.dirtySave || studio.finalised", timeout=WAIT)
     pad = open_pad(browser, server, {"width": 1180, "height": 820})
     if pad.ev("studio.log.ops.length"):
         pad.ev("studio.loadSave({ ops: [] })")
     if pad.ev("!document.getElementById('intro').hidden"):
         pad.page.click("#intro button")
-    pad.page.wait_for_function("studio.walkLayer.nav && studio.walkLayer.state", timeout=20000)
+    pad.page.wait_for_function("studio.walkLayer.nav && studio.walkLayer.state", timeout=WAIT)
     pad.page.click("#hide-src")   # our place alone: room for the mesh, its key and the panel
     pad.page.click("#walkmesh-btn")
     assert pad.ev("document.getElementById('walkmesh-btn').getAttribute('aria-pressed')") == "true"
@@ -1419,7 +1488,8 @@ def test_28_walking_mesh(browser, server):
     under = pad.ev("(pts) => pts.map((p) => studio.walkLayer.heightAt(p[0], p[1], p[2]))", op["walk"]["outline"])
     assert all(g is not None and abs(p[2] - g) < 2 for p, g in zip(op["walk"]["outline"], under)), [(p, g) for p, g in zip(op["walk"]["outline"], under) if g is None or abs(p[2] - g) >= 2]   # on the walking mesh under the pen
     assert "No walking here" in pad.page.locator("#panel-body").inner_text()
-    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=10000)
+    pad.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state)", timeout=WAIT)
+    assert pad.ev("document.getElementById('save-state').dataset.state") == "saved", pad.ev("[document.getElementById('save-state').textContent, studio.finalised, studio.revs]")
     save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
     assert any(o["op"] == "walk.add" and o["walk"]["id"] == op["walk"]["id"] for o in save["ops"])
     # Join these: two taps on the mesh
@@ -1449,8 +1519,8 @@ def test_28_walking_mesh(browser, server):
     pad.page.click("#walkmesh-btn")   # off: the zones still show while the Walking tool is in use
     assert legend.is_visible()
     pad.page.locator("#view-ours .wm-rebuild").click()
-    pad.page.wait_for_selector("#view-ours .wm-run", timeout=5000)
-    pad.page.wait_for_function("studio.walkLayer.meta && studio.walkLayer.meta.from === 'preview'", timeout=20000)
+    pad.page.wait_for_selector("#view-ours .wm-run", timeout=WAIT)
+    pad.page.wait_for_function("studio.walkLayer.meta && studio.walkLayer.meta.from === 'preview'", timeout=WAIT)
     assert "with your changes" in legend.inner_text() or "since then" in legend.inner_text()
     # undo takes the last zone away, redo brings it back
     n = pad.ev("studio.model.walk.size")
@@ -1470,7 +1540,9 @@ def test_28_walking_mesh(browser, server):
 
 
 # ---------- 29: paint ground: a texture and a brush from the panel, a pen stroke with pressure, undo, redo, save ----------
-def test_29_paint_ground(browser, server):
+def test_29_paint_ground(pad0, browser, server):
+    # the module's tab has finished saving first: a save of its own landing later would conflict with this tab's
+    pad0.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state) || !studio.dirtySave || studio.finalised", timeout=WAIT)
     pad = open_pad(browser, server, {"width": 1180, "height": 820})
     if pad.ev("studio.log.ops.length"):
         pad.ev("studio.loadSave({ ops: [] })")
@@ -1483,7 +1555,7 @@ def test_29_paint_ground(browser, server):
     key = swatches.last.get_attribute("data-key")
     pad.page.locator("#panel-body .seg button", has_text="Hard round").click()
     # each swatch is the texture's own picture from the land table, loaded
-    pad.page.wait_for_function("[...document.querySelectorAll('#panel-body .paint-swatch img')].every((i) => i.complete)", timeout=10000)
+    pad.page.wait_for_function("[...document.querySelectorAll('#panel-body .paint-swatch img')].every((i) => i.complete)", timeout=WAIT)
     pics = pad.ev("[...document.querySelectorAll('#panel-body .paint-swatch')].map((b) => [b.dataset.key, b.querySelector('img')?.src, b.querySelector('img')?.naturalWidth])")
     table = pad.ev("studio.landTex.table")
     assert all(src and ("/" + table[k]["file"] + "?v=") in src and w > 0 for k, src, w in pics), pics
@@ -1498,7 +1570,8 @@ def test_29_paint_ground(browser, server):
     pad.page.wait_for_timeout(100)
     live = pad.ev("({ ops: studio.log.ops.length, drawn: studio.ours.terrainMesh.paint().length, model: studio.model.paint.size })")
     assert live == {"ops": n0, "drawn": 1, "model": 0}, live
-    pad.pen("mouseReleased", *line[-1]); pad.page.wait_for_timeout(80)
+    pad.pen("mouseReleased", *line[-1])
+    pad.page.wait_for_function("(n) => studio.log.ops.length === n + 1", arg=n0, timeout=WAIT)   # the stroke is an op
     pad.ev("studio.log.undo()")
     pad.pen_drag(line, pressure=0.9, steps=6)
     op = pad.ev("studio.log.applied().at(-1)")
@@ -1507,9 +1580,14 @@ def test_29_paint_ground(browser, server):
     assert len(pts) >= 2 and all(abs(p[2] - 0.9) < 0.01 for p in pts), pts    # the pen's pressure kept with each point
     assert 3200 < min(p[0] for p in pts) < 3600 and 3800 < max(p[0] for p in pts) < 4200, pts
     # the land draws it: the painted texture is full under the stroke's middle (the rule the build shares)
-    full = pad.ev("""async (k) => { const { cellPaint } = await import('./js/paint_rule.js');
-                     const c = cellPaint(studio.ours.terrainMesh.paint(), [0, 0]); return c ? c.w.get(k)[29 * 33 + 29] : null; }""", key)
-    assert full is not None and abs(full - 0.8 * (0.5 + 0.5 * 0.9)) < 0.01, full   # strength 80%, pressure 0.9
+    # read at the land vertex nearest the stroke's own middle point (where the pen met the ground, which an earlier
+    # test's finalised land may have raised), not at a fixed vertex
+    mid = pts[len(pts) // 2]
+    col, row = round(mid[0] / 128), round(mid[1] / 128)
+    full = pad.ev("""async ([k, cell, i]) => { const { cellPaint } = await import('./js/paint_rule.js');
+                     const c = cellPaint(studio.ours.terrainMesh.paint(), cell); return c ? c.w.get(k)[i] : null; }""",
+                  [key, [col // 32, row // 32], (row % 32) * 33 + col % 32])
+    assert full is not None and abs(full - 0.8 * (0.5 + 0.5 * 0.9)) < 0.01, (full, pts)   # strength 80%, pressure 0.9
     pad.shot("29-paint-ground")
     # the eraser: a second stroke; undo takes it away, redo brings it back
     pad.page.locator("#panel-body .seg button", has_text="Eraser").click()
@@ -1520,7 +1598,344 @@ def test_29_paint_ground(browser, server):
     assert pad.ev("studio.model.paint.size") == 1
     pad.ev("studio.log.redo()")
     assert pad.ev("studio.model.paint.size") == 2
-    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=10000)
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=WAIT)
     save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
     assert [o["paint"]["id"] for o in save["ops"] if o["op"] == "paint.add"] == [op["paint"]["id"], op2["paint"]["id"]]
     assert not pad.errors, pad.errors
+
+
+# ---------- a thing seated on another keeps a raise or lower ----------
+def test_23_raise_of_a_seated_door_stays(pad, browser, server):
+    # an earlier test finalised this tab's save and other tabs saved the place since: carry on from the latest save, as
+    # opening the studio again would (a finalised tab saves nothing more)
+    pad.ev("async () => { const s = await (await fetch(`/api/place/${studio.place.place_id}/saves`)).json(); const a = s.find((x) => x.save_id === 'autosave'); if (a) studio.revs.autosave = a.rev; studio.finalised = false; }")
+    pad.page.click("#rail [data-tool=select]")
+    ids = pad.ev("""(() => { const rs = [...studio.model.spaces.exterior.refs.values()];
+        const d = rs.find((r) => r.kind === 'door'), b = rs.find((r) => r.kind === 'building'); return [d.id, b.id]; })()""")
+    door, house = ids
+    # the door is made to sit `on` the house, as the gang-master's hut door does
+    pad.ev("""([d, h]) => { const r = studio.model.spaces.exterior.refs.get(d), before = { pos: [...r.pos], seat: r.seat };
+        const after = { pos: [...r.pos], seat: { mode: 'on', on: h, dz: 120 } };
+        after.pos[2] = studio.model.spaces.exterior.refs.get(h).pos[2] + 120;
+        studio.push([{ op: 'ref.move', id: d, before, after }]); }""", [door, house])
+    z = lambda: pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door)  # noqa: E731
+    dz = lambda: pad.ev("(id) => studio.model.spaces.exterior.refs.get(id).seat.dz", door)  # noqa: E731
+    z0, dz0 = z(), dz()
+    pos = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", door)
+    look_at(pad, "ours", pos)
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", door)
+    h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=lift]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
+    pad.pen_drag([h, (h[0], h[1] - 60)])
+    pad.page.wait_for_timeout(400)
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert last["op"] == "ref.move" and last["after"]["seat"]["mode"] == "on" and last["before"]["seat"]["dz"] == dz0, last
+    assert last["after"]["seat"]["dz"] > dz0 and last["after"]["pos"][2] > last["before"]["pos"][2], last
+    assert z() > z0 + 5 and abs(z() - (pad.ev("(h) => studio.model.spaces.exterior.refs.get(h).pos[2]", house) + dz())) < 0.01
+    z1, dz1 = z(), dz()
+    pad.ev("studio.refreshSide(studio.ours, { world: false, grass: false })")  # the refresh after letting go
+    assert z() == z1, "the raise stays after the refresh"
+    # the numeric nudge agrees, and undo gives the height back
+    pad.ev("studio.tools.nudge(0, 0, 8)")
+    assert z() == pytest.approx(z1 + 8, abs=0.01)
+    pad.ev("studio.log.undo()")
+    assert z() == z1
+    # Save and reload: the same height
+    pad.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state)", timeout=WAIT)
+    assert pad.ev("document.getElementById('save-state').dataset.state") == 'saved', pad.ev("document.getElementById('save-state').textContent")
+    other = open_pad(browser, server, LANDSCAPE, choose="Continue the unsaved work")
+    other.page.wait_for_function("([id, v]) => studio.model.spaces.exterior.refs.get(id)?.seat?.dz === v", arg=[door, dz1], timeout=WAIT)
+    assert abs(other.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door) - z1) < 0.01
+    other.page.context.close()
+    pad.ev("studio.log.undo(); studio.log.undo()")
+
+
+# ---------- 30: composite things move as one ----------
+UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2 = (v) => Math.round(v * 100) / 100;
+  const refs = {}; for (const [id, r] of ex) refs[id] = { pos: r.pos.map(r2), rot: (r.rot || []).map((v) => Math.round(v * 1e4)), seat: r.seat ?? null, door: r.door || null };
+  const room = m.spaces.FixHouse02.refs.get('fixplaceFixHouse02.door');
+  return { refs, bram: m.people.get('fixplace.p2'), room: room.door }; })()"""
+
+
+def gizmo_handle(pad, name):
+    return pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+
+
+def test_30_units_move_whole(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.pieces = false; studio.tools.opts.adds = false; studio.selection.clear(); studio.tools.selectionChanged()")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", house, dist=2600, pitch=1.1)
+    start = pad.ev(UNIT_STATE)
+    # one tap selects the whole house: its door, its porch and the bedroll standing inside it, with one outline and a label
+    pad.pen_tap(*pad.screen("ours", [house[0], house[1], house[2] + 300]))
+    sel = set(pad.ev("[...studio.selection]"))
+    assert {"fixplace.b1", "fixplace.d1", "fixplace.porch1", "fixplace.bedroll1"} <= sel, sel
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01"
+    assert "Smithy (" in pad.ev("document.querySelector('#view-ours .unit-label').textContent")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "one structure of" in body and "Take out of this unit" in body, body
+    pad.shot("22-unit-selected")
+    # dragged whole: one op, every member shifted alike, the door's arrival and its room's landing with it, Bram's work spot too
+    h = gizmo_handle(pad, "move")
+    n0 = len(pad.ops())
+    pad.pen_drag([h, (h[0] + 80, h[1] + 30)])
+    ops = pad.ops()[n0:]
+    assert [o["op"] for o in ops] == ["unit.move"], ops
+    now = pad.ev(UNIT_STATE)
+    dx = now["refs"]["fixplace.b1"]["pos"][0] - start["refs"]["fixplace.b1"]["pos"][0]
+    dy = now["refs"]["fixplace.b1"]["pos"][1] - start["refs"]["fixplace.b1"]["pos"][1]
+    assert abs(dx) + abs(dy) > 20, (dx, dy)
+    for rid in sel:
+        a, b = start["refs"][rid]["pos"], now["refs"][rid]["pos"]
+        assert abs(b[0] - a[0] - dx) < 0.6 and abs(b[1] - a[1] - dy) < 0.6, rid
+    arr0, arr1 = start["refs"]["fixplace.d1"]["door"]["arrival"], now["refs"]["fixplace.d1"]["door"]["arrival"]
+    assert abs(arr1[0] - arr0[0] - dx) < 0.6 and abs(arr1[1] - arr0[1] - dy) < 0.6
+    shift = lambda a, b: [round(y - x, 1) for x, y in zip(a, b)]  # noqa: E731
+    assert shift(start["room"]["to_pos"], now["room"]["to_pos"]) == shift(arr0, arr1) and now["room"]["to_ref"] == "fixplace.d1"
+    assert now["refs"]["fixplace.d1"]["door"]["to_space"] == "FixHouse02"
+    assert now["refs"]["fixplace.d1"]["door"]["to_ref"] == start["refs"]["fixplace.d1"]["door"]["to_ref"]
+    w0, w1 = start["bram"]["work"]["pos"], now["bram"]["work"]["pos"]
+    assert abs(w1[0] - w0[0] - dx) < 0.6 and abs(w1[1] - w0[1] - dy) < 0.6, (w0, w1)
+    # turned whole by the panel: the bedroll keeps its distance from the house and turns with it
+    pad.page.get_by_role("button", name="Turn right", exact=True).click()
+    t = pad.ev(UNIT_STATE)
+    assert pad.ops()[-1]["op"] == "unit.move"
+
+    def dist(s):
+        a, b = s["refs"]["fixplace.bedroll1"]["pos"], s["refs"]["fixplace.b1"]["pos"]
+        return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5
+    assert abs(dist(t) - dist(start)) < 1, (dist(t), dist(start))
+    turned = lambda rid: t["refs"][rid]["rot"][2] - now["refs"][rid]["rot"][2]  # noqa: E731
+    assert abs(turned("fixplace.bedroll1") - turned("fixplace.b1")) <= 1 and abs(turned("fixplace.b1")) > 100
+    assert shift(start["room"]["to_pos"], t["room"]["to_pos"]) == shift(arr0, t["refs"]["fixplace.d1"]["door"]["arrival"])
+    # one undo each gives everything back
+    pad.ev("studio.log.undo(); studio.log.undo()")
+    assert pad.ev(UNIT_STATE) == start
+    # a second tap on a piece goes inside to it; tapping away comes back out to the whole
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    porch = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.porch1")
+    pad.page.wait_for_timeout(300)
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    one = pad.ev("[...studio.selection]")   # the piece under the pen there (the porch, or the house over it)
+    assert len(one) == 1 and one[0] in pad.ev("studio.unitIndex().units.get('h01').members"), one
+    assert "Part of" in pad.ev("document.getElementById('panel-body').textContent")
+    pad.ev("studio.tools.lastTap = null")
+    # a spot of our view where nothing of the place stands
+    empty = empty_spot(pad)
+    assert empty, "no empty spot in the view"
+    pad.pen_tap(*empty)
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01", pad.ev("[[...studio.selection], studio.tools.inside, studio.tools.unit]")
+    # Pieces on: a tap picks one piece
+    pad.ev("studio.tools.opts.pieces = true; studio.tools.lastTap = null; studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    assert len(pad.ev("[...studio.selection]")) == 1
+    pad.ev("studio.tools.opts.pieces = false")
+    # membership by hand: the porch taken out, then given back to the rule
+    pad.ev("studio.selection = new Set(['fixplace.porch1']); studio.tools.selectionChanged()")
+    pad.page.get_by_role("button", name="Take out of this unit").click()
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.porch1').unit") == ""
+    assert "fixplace.porch1" not in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.page.get_by_role("button", name="Let the unit rule decide").click()
+    assert "fixplace.porch1" in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert pad.ev(UNIT_STATE) == start
+    # a street ending at its door: the end follows the house, the street's far end stays
+    d1 = start["refs"]["fixplace.d1"]["pos"]
+    pad.ev("""(d) => studio.push([{ op: 'path.add', path: { id: 'fixplace.path9', kind: 'street', width: 200, style: 'fix_path', to: 'fixplace.d1',
+             points: [[d[0] - 1500, d[1] - 900], [d[0] - 600, d[1] - 400], [d[0], d[1]]] } }], 'exterior')""", d1)
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    op = pad.ev("studio.log.applied().at(-1)")
+    assert op["op"] == "unit.move" and op["paths"][0]["path"]["id"] == "fixplace.path9", op.get("paths")
+    pts = op["paths"][0]["path"]["points"]
+    assert abs(pts[-1][0] - d1[0] - 10) < 0.6 and pts[0] == [d1[0] - 1500, d1[1] - 900] and abs(pts[1][0] - (d1[0] - 600) - 5) < 0.6, pts
+    assert "streets" in pad.ev("document.getElementById('panel-body').textContent")
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert pad.ev(UNIT_STATE) == start
+
+
+# ---------- 31: people are selected and moved from Select; a routine follows the bed it names ----------
+def test_31_people_select_and_move(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("if (studio.ours.space !== 'exterior') studio.leave(studio.ours, 0)")
+    pad.ev("studio.setTime(10)")   # a smith or a guard at work outside, at a spot of their own
+    assert pad.ev("[...studio.people.markers.values()].some((m) => m.visible)"), pad.ev("[...studio.model.people.keys()]")
+    at = pad.ev("studio.people.markers.get(studio.model.people.has('fixplace.p1') ? 'fixplace.p1' : 'fixplace.p2').userData.at")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    pad.pen_tap(x, y)
+    assert pad.ev("studio.people.sel") in ("fixplace.p1", "fixplace.p2")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "Their spots" in body and "Where they work" in body and "dragging them moves" in body, body
+    # Show it frames a spot
+    pad.page.locator("ul.spots li", has_text="Where they work").first.get_by_role("button", name="Show it").click()
+    assert pad.ev("studio.ours.space") == "exterior"
+    assert pad.ev("!!studio.people.shown")
+    pad.ev("studio.setTime(10)")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    n0 = len(pad.ops())
+    pad.pen_drag([(x, y), (x + 90, y + 20)])
+    ops = pad.ev("(n) => studio.log.applied().slice(n)", n0)
+    assert [o["op"] for o in ops] == ["person.edit"], ops
+    stop0 = next(s for s in ops[0]["before"]["routine"] if s["kind"] == "work")
+    stop1 = next(s for s in ops[0]["person"]["routine"] if s["kind"] == "work")
+    assert abs(stop1["at"]["pos"][0] - stop0["at"]["pos"][0]) + abs(stop1["at"]["pos"][1] - stop0["at"]["pos"][1]) > 20
+    pad.ev("studio.log.undo()")
+    # a bed moved: Bram's sleep stop names it, so it follows with no change of his, and the studio says so
+    bed = "fixplaceFixHouse02.bed"
+    line = pad.ev("""(id) => import('./js/people.js').then((m) => m.followsLine(m.usersOf(studio.people.list(), id), 'this bed'))""", bed)
+    assert line.startswith("Bram Fixguard sleeps") and "routine follows this bed" in line, line
+    pad.ev("""(id) => { const r = studio.model.spaces.FixHouse02.refs.get(id), before = { pos: [...r.pos] };
+             studio.push([{ op: 'ref.move', id, before, after: { pos: [r.pos[0] + 120, r.pos[1], r.pos[2]] } }], 'FixHouse02'); }""", bed)
+    got = pad.ev("""(id) => { const p = studio.model.people.get('fixplace.p2'), s = p.routine.find((x) => x.kind === 'sleep');
+             return [s.at.ref, studio.people.stopPoint(s).p, studio.model.spaces.FixHouse02.refs.get(id).pos]; }""", bed)
+    assert got[0] == bed and got[1][0] == got[2][0], got
+    pad.ev("studio.log.undo(); studio.people.select(null); studio.tools.use('select')")
+
+
+# ---------- 32: moving in the plane you mean, at three camera angles ----------
+def test_32_drag_maps_to_the_view(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.snapFaces = false")
+    rid = "fixplace.c3"
+    p = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", rid)
+    for pitch in (1.45, 0.8, 0.15):
+        look_at(pad, "ours", p, dist=1800, pitch=pitch)
+        pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.unit = null; studio.tools.selectionChanged(); }", rid)
+        yaw = pad.ev("studio.ours.view.rig.yaw")
+        import math
+        right, fwd = (-math.sin(yaw), math.cos(yaw)), (-math.cos(yaw), -math.sin(yaw))
+        for (dx, dy), want in (((70, 0), right), ((0, -70), fwd)):
+            h = gizmo_handle(pad, "move")
+            assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == "move"
+            pad.pen("mouseMoved", *h)
+            pad.pen("mousePressed", *h)
+            assert pad.ev("document.querySelector('.gizmo .gz-hint').textContent").startswith("Slides along the ground")
+            for i in range(1, 5):
+                pad.pen("mouseMoved", h[0] + dx * i / 4, h[1] + dy * i / 4)
+            pad.pen("mouseReleased", h[0] + dx, h[1] + dy)
+            pad.page.wait_for_timeout(80)
+            last = pad.ev("studio.log.applied().at(-1)")
+            assert last["op"] == "ref.move" and last["id"] == rid, last
+            m = (last["after"]["pos"][0] - last["before"]["pos"][0], last["after"]["pos"][1] - last["before"]["pos"][1])
+            size = math.hypot(*m)
+            assert size > 10 and (m[0] * want[0] + m[1] * want[1]) > 0.85 * size, (pitch, (dx, dy), m, want)
+            pad.ev("studio.log.undo()")
+        # the east-west handle moves east or west only
+        h = gizmo_handle(pad, "ax")
+        pad.pen_drag([h, (h[0] + 50, h[1] + 40)])
+        last = pad.ev("studio.log.applied().at(-1)")
+        assert last["op"] == "ref.move" and abs(last["after"]["pos"][1] - last["before"]["pos"][1]) < 0.01, last
+        pad.ev("studio.log.undo()")
+    # the nudge step and one-tap undo
+    pad.page.get_by_role("button", name="50", exact=True).click()
+    pad.page.get_by_role("button", name="North", exact=True).click()
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert abs(last["after"]["pos"][1] - last["before"]["pos"][1] - 50) < 0.01
+    n = len(pad.ops())
+    pad.page.locator("#panel-body").get_by_role("button", name="Undo", exact=True).click()
+    assert len(pad.ops()) == n - 1
+    pad.ev("studio.tools.opts.snapFaces = true; studio.tools.opts.step = 10; studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 33: the camera turns about the selection ----------
+def test_33_camera_about_the_selection(pad):
+    pad.page.click("#rail [data-tool=select]")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", [house[0] + 600, house[1] + 300, house[2]], dist=3000, pitch=0.9)
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    c = pad.ev("studio.pivotFor(studio.ours.view)")
+    box = pad.ev("(() => { const b = document.querySelector('#view-ours .canvas-holder').getBoundingClientRect(); return [b.x, b.y, b.width, b.height]; })()")
+    a = empty_spot(pad, 0.55, 0.95)   # on the canvas itself: never a handle, the label or a thumb stick
+    assert a, 'no empty spot'
+    s0, yaw0 = pad.screen("ours", c), pad.ev("studio.ours.view.rig.yaw")
+    pad.mouse_turn(a, (a[0] + 120, a[1] - 30))
+    s1 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.yaw") != yaw0
+    assert abs(s1[0] - s0[0]) < 6 and abs(s1[1] - s0[1]) < 6, (s0, s1, c, pad.ev("studio.pivotFor(studio.ours.view)"), pad.ev("[studio.sticks?.active(), studio.sticks?.state, studio.linked, studio.ours.view.rig.pitch, studio.ours.view.rig.dist]"))
+    d0 = pad.ev("studio.ours.view.rig.dist")
+    pad.cdp.send("Input.dispatchMouseEvent", {"type": "mouseWheel", "x": a[0], "y": a[1], "deltaX": 0, "deltaY": -300})
+    pad.page.wait_for_function("(d) => studio.ours.view.rig.dist < d", arg=d0)
+    s2 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.dist") < d0 and abs(s2[0] - s1[0]) < 14 and abs(s2[1] - s1[1]) < 14, (s1, s2)
+    # nothing selected: the view turns about where it looks, as before
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    t0 = pad.ev("studio.ours.view.rig.target.toArray()")
+    pad.mouse_turn(a, (a[0] + 80, a[1]))
+    assert pad.ev("studio.ours.view.rig.target.toArray()") == t0
+    # Frame brings the selection into the middle
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    pad.page.click("#frame-sel")
+    sc = pad.screen("ours", c)
+    assert abs(sc[0] - (box[0] + box[2] / 2)) < box[2] * 0.15 and abs(sc[1] - (box[1] + box[3] / 2)) < box[3] * 0.2, (sc, box)
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 34: markers explain themselves, and one switch hides them ----------
+def test_34_markers(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.pieces = true")
+    mk = "fixplace.xm0"
+    p = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", mk)
+    look_at(pad, "ours", p, dist=1200, pitch=1.2)
+    assert pad.ev("document.getElementById('markers-btn').getAttribute('aria-pressed')") == "true"
+    drawn = lambda: pad.ev("(id) => studio.ours.place.byId.has(id)", mk)  # noqa: E731
+    assert drawn()
+    pad.pen_tap(*pad.screen("ours", [p[0], p[1], p[2] + 16]))
+    assert pad.ev("[...studio.selection]") == [mk], pad.ev("[...studio.selection]")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "An invisible marker" in body and "enable parent" in body and "What uses it" in body, body
+    pad.page.click("#markers-btn")
+    assert not drawn() and pad.ev("[...studio.selection]") == []
+    assert pad.ev("document.getElementById('markers-btn').getAttribute('aria-pressed')") == "false"
+    pad.page.click("#markers-btn")
+    assert drawn()
+    pad.ev("studio.tools.opts.pieces = false; studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 35: the tablet layout of the new controls, landscape and upright ----------
+LAYOUT = """(() => {
+  const vis = (e) => e && e.offsetParent !== null && !e.hidden && getComputedStyle(e).visibility !== 'hidden';
+  const R = (e) => e.getBoundingClientRect(), view = R(document.querySelector('#view-ours')), out = [];
+  const inside = (r, b) => r.left >= b.left - 1 && r.right <= b.right + 1 && r.top >= b.top - 1 && r.bottom <= b.bottom + 1;
+  const hs = [...document.querySelectorAll('#view-ours .gizmo .h')].filter(vis);
+  for (const h of hs) { const r = R(h); if (r.width < 44 || r.height < 44) out.push(`handle ${h.dataset.h} ${r.width}x${r.height}`); }
+  for (let i = 0; i < hs.length; i++) for (let j = i + 1; j < hs.length; j++) {
+    const a = R(hs[i]), b = R(hs[j]);
+    if (a.left < b.right - 2 && b.left < a.right - 2 && a.top < b.bottom - 2 && b.top < a.bottom - 2) out.push(`handles ${hs[i].dataset.h} and ${hs[j].dataset.h} overlap`);
+  }
+  for (const sel of ['#frame-sel', '#markers-btn']) {
+    const b = document.querySelector(sel); if (!vis(b)) { out.push(`${sel} not shown`); continue; }
+    const r = R(b); if (r.width < 44 || r.height < 44) out.push(`${sel} ${r.width}x${r.height}`);
+    if (!inside(r, view)) out.push(`${sel} cut off`);
+    if (document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2)?.closest(sel) == null) out.push(`${sel} covered`);
+  }
+  const lab = document.querySelector('#view-ours .unit-label'); if (vis(lab) && !inside(R(lab), view)) out.push('unit label cut off');
+  for (const b of [...document.querySelectorAll('#panel-body button')].filter(vis)) { const r = R(b); if (r.width < 44 || r.height < 44) out.push(`panel button "${b.textContent.trim()}" ${r.width}x${r.height}`); }
+  return out; })()"""
+
+
+@pytest.mark.parametrize("viewport", [LANDSCAPE, PORTRAIT], ids=["landscape", "portrait"])
+def test_35_tablet_layout_of_the_new_controls(browser, server, viewport):
+    p = open_pad(browser, server, viewport)
+    if p.ev("!document.getElementById('intro').hidden"):
+        p.page.click("#intro button")
+    p.page.click("#rail [data-tool=select]")
+    house = p.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(p, "ours", house, dist=3000, pitch=1.0)
+    p.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    p.page.wait_for_timeout(200)
+    assert p.ev(LAYOUT) == [], f"unit selected: {p.ev(LAYOUT)}"
+    p.shot(f"35-unit-{viewport['width']}")
+    one = p.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'clutter').id")
+    p.ev("(id) => { studio.tools.opts.pieces = true; studio.selection = new Set([id]); studio.tools.selectionChanged(); }", one)
+    look_at(p, "ours", p.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", one), dist=2000, pitch=1.0)
+    assert p.ev(LAYOUT) == [], f"one piece: {p.ev(LAYOUT)}"
+    p.ev("studio.people.select('fixplace.p2')")
+    assert p.ev(LAYOUT) == [], f"people panel: {p.ev(LAYOUT)}"
+    p.shot(f"35-people-{viewport['width']}")
+    assert not p.errors, p.errors
+    p.page.context.close()

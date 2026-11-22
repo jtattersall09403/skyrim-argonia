@@ -91,7 +91,41 @@ CASES2 = {
     "interior_copy": COPY,
     "veg_restore_draft_row": [{"n": 1, "op": "veg.restore", "space": "exterior", "items": [DRAFT_ROW]}],
     "walk_zones": WALK,
+    # raising a thing seated `on` another is its seat's own dz (the pos z is what the seat then works out)
+    "seated_raise": [{"n": 1, "op": "ref.move", "space": "exterior", "id": "fix.03", "call": "fault",
+                      "before": {"pos": [1010, 2050, 51], "rot": [0, 0, 0], "scale": 0.8, "seat": {"mode": "on", "dz": 0.0}},
+                      "after": {"pos": [1010, 2050, 81], "rot": [0, 0, 0], "scale": 0.8, "seat": {"mode": "on", "dz": 30.0}}}],
 }
+# a unit moved and turned whole: its building, what sits on it, its door with the arrival turned with it, the
+# person's spot and the quest spot standing in it, all in one op
+UDOOR = dict(ref("30", "0D7030", "door", (1000, 1700, 50)), door={"to_space": "Elsewhere", "to_ref": "x.1", "arrival": [1000, 1600, 50]})
+UQ = {"id": "q.fix/thing", "quest": "q.fix", "ref": "thing", "space": "exterior", "pos": [1020, 2010, 60], "rot": [0, 0, 0]}
+P1 = PLACE["people"][0]
+UBACK = dict(ref("31", "0D7031", "door", (5000, 5000, 0)), door={"to_space": "Elsewhere", "to_ref": "fix.30", "to_pos": [1000, 1610, 50]})
+CASES2["unit_move"] = [
+    {"n": 1, "op": "ref.add", "space": "exterior", "ref": UDOOR},
+    {"n": 2, "op": "ref.add", "space": "exterior", "ref": UBACK},   # leads to the door: its landing shifts as the arrival does
+    {"n": 3, "op": "quest.add", "space": "exterior", "quest": UQ},
+    {"n": 4, "op": "unit.move", "space": "exterior", "unit": "u.house", "name": "the house", "call": "fault",
+     "refs": [{"id": "fix.01", "before": {"pos": [1000, 2000, 50], "rot": [0, 0, 1.57]}, "after": {"pos": [1300, 2000, 50], "rot": [0, 0, 3.14]}},
+              {"id": "fix.03", "before": {"pos": [1010, 2050, 51], "rot": [0, 0, 0]}, "after": {"pos": [1350, 1990, 51], "rot": [0, 0, 1.57]}},
+              {"id": "fix.30", "before": {"pos": [1000, 1700, 50], "door": UDOOR["door"]},
+               "after": {"pos": [1000, 2300, 50], "door": dict(UDOOR["door"], arrival=[1000, 2400, 50])}}],
+     "people": [{"person": dict(P1, routine=[dict(P1["routine"][0], at=dict(P1["routine"][0]["at"], pos=[1400, 1900, 50]))]), "before": P1}],
+     "quests": [{"quest": dict(UQ, pos=[1290, 2020, 60]), "before": UQ}],
+     "walks": [{"walk": dict(WALKZ, outline=[[x + 300, y, z] for x, y, z in WALKZ["outline"]]), "before": WALKZ}],
+     # the street ending at its door: the end moves with it, the point before it half as far
+     "paths": [{"path": dict(PLACE["paths"][0], points=[[1300, 1900], [1550, 1900]]), "before": PLACE["paths"][0]}]},
+]
+CASES2["unit_move"].insert(3, {"n": 3, "op": "walk.add", "space": "exterior", "walk": WALKZ})   # a zone at its steps moves with it
+for i, o in enumerate(CASES2["unit_move"]):
+    o["n"] = i + 1
+# a thing put into a unit by hand, another taken out of every unit ("" ), and a third given back to the rule (null)
+CASES2["unit_member"] = [
+    {"n": 1, "op": "ref.move", "space": "exterior", "id": "fix.02", "before": {"unit": None}, "after": {"unit": "u.house"}},
+    {"n": 2, "op": "ref.move", "space": "exterior", "id": "fix.03", "before": {"unit": None}, "after": {"unit": ""}},
+    {"n": 3, "op": "ref.move", "space": "exterior", "id": "fix.02", "before": {"unit": "u.house"}, "after": {"unit": None}},
+]
 CONFLICTS2 = {
     "interior_door_unpaired": ([COPY[0], dict(COPY[1], ref=dict(DOOR_IN, door=dict(DOOR_IN["door"], to_ref="fix.99"))), COPY[2]],
                                "does not lead back"),

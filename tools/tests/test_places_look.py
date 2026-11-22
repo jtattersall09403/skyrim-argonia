@@ -880,3 +880,21 @@ def test_the_gap_between_islands_finds_the_nearest_pair_without_weighing_every_p
     M = mesh.Mesh(V, [[0, 1, 2], [3, 4, 5]], [[-1, -1, -1], [-1, -1, -1]])
     g = M.gap(int(M.lab[0]), int(M.lab[1]))
     assert g["kind"] == "missing strip" and 50 <= g["across"] <= 60 and abs(g["at"][0] - 500) <= 12
+
+
+def test_a_town_s_section_is_its_middle_at_a_readable_scale_and_its_subject_what_it_cuts(monkeypatch):
+    """A survey section across a whole town (16 km) is cut to its middle SECTION_SPAN, so a house is wider than a
+    hair; a structure's section keeps its whole length."""
+    from tools.places.look import survey, verbs
+    got = []
+    monkeypatch.setattr(verbs, "section_setup", lambda sc, A, B, slab, w, h: (got.append((A, B)) or {}, [], []))
+    survey._cam(None, "p", {"lo": [0, 0, 0], "hi": [16000, 8000, 500]}, {"section": "west-east"}, 0.0)
+    (A, B), = got
+    assert abs((B[0] - A[0]) - survey.SECTION_SPAN) < 1 and A[1] == B[1] == 4000 and abs((A[0] + B[0]) / 2 - 8000) < 1
+    got.clear()
+    survey._cam(None, "p", {"lo": [0, 0, 0], "hi": [1200, 800, 500]}, {"section": "south-north"}, 0.0)
+    (A, B), = got
+    assert A == [600.0, -300] and B == [600.0, 1100]
+    # a section that draws what it cuts is good though a tree fills more of it; one that draws nothing fails
+    assert survey.section_verdict({"capture": "failed", "subject_seen": 0.36, "why": "a tree fills more"})["capture"] == "good"
+    assert survey.section_verdict({"capture": "failed", "subject_seen": 0.0, "why": "not drawn"})["capture"] == "failed"

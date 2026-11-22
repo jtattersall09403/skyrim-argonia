@@ -174,6 +174,38 @@ function census(layer) {
   return c;
 }
 
+// People in a shot: the overlay's people and quest figures (people.js, quests.js) as the state shows them, every other
+// overlay helper switched off for the shot; returns the undo.
+function peopleOnly(overlay) {
+  const off = [];
+  for (const ch of overlay.children) if (!ch.userData?.person && !ch.userData?.quest && ch.visible) { ch.visible = false; off.push(ch); }
+  return () => { for (const ch of off) ch.visible = true; };
+}
+// The figures in the frame: [{id, name, x, y}] in pixels, each a person (people.jsonl) or a quest person or thing
+function figuresIn(studio, overlay, cam, w, h) {
+  const out = [], p = new THREE.Vector3();
+  for (const ch of overlay.children) {
+    const id = ch.userData?.person || ch.userData?.quest;
+    if (!id || !ch.visible) continue;
+    ch.updateMatrixWorld(); ch.getWorldPosition(p); p.z += 230; p.project(cam);
+    if (p.z > 1 || Math.abs(p.x) > 1 || Math.abs(p.y) > 1) continue;
+    const name = ch.userData.person ? (studio.people?.list().find((x) => x.id === id)?.name || id)
+      : (studio.quests?.item(id)?.name || studio.quests?.item(id)?.ref || id);
+    const f = { id, name, x: Math.round((p.x + 1) / 2 * w), y: Math.round((1 - p.y) / 2 * h) };
+    // one person placed alike by several quests (one spot a row each) is one figure and one name
+    if (!out.some((g) => g.name === f.name && Math.abs(g.x - f.x) < 4 && Math.abs(g.y - f.y) < 4)) out.push(f);
+  }
+  return out;
+}
+function nameFigures(g, figures) {
+  g.font = 'bold 13px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'bottom';
+  for (const f of figures) {
+    const tw = g.measureText(f.name).width + 8;
+    g.fillStyle = 'rgba(255,255,255,0.85)'; g.fillRect(f.x - tw / 2, f.y - 18, tw, 17);
+    g.fillStyle = '#3a1050'; g.fillText(f.name, f.x, f.y - 3);
+  }
+}
+
 export function install(studio) {
   const st = document.createElement('style'); st.textContent = css; document.head.append(st);
   const v = () => studio.ours.view;
@@ -267,7 +299,9 @@ export function install(studio) {
       if (studio.ours.grass) studio.ours.grass.root.visible = !!cam.grass;
       // the editor's helpers (light bulbs, collision boxes) only when asked: the agent judges what the player sees
       for (const l of [studio.ours.place, studio.ours.world]) l?.setShowLights(!!cam.helpers);
-      view.overlay.visible = !!cam.helpers;
+      // people (the place's and the quests') as their stand-in figures, as the state shows them, without the helpers
+      const offOverlay = cam.people && !cam.helpers ? peopleOnly(view.overlay) : null;
+      view.overlay.visible = !!cam.helpers || !!cam.people;
       const tgt = L(cam.target);
       studio.ours.terrainMesh?.update(tgt);
       // --no-canopy: tree crowns and hanging moss cut away over a height (game z), their trunks kept
@@ -313,6 +347,9 @@ export function install(studio) {
       const im = new ImageData(w, h);
       for (let y = 0; y < h; y++) im.data.set(pix.subarray((h - 1 - y) * w * 4, (h - y) * w * 4), y * w * 4);
       cv.getContext('2d').putImageData(im, 0, 0);
+      const figures = cam.people ? figuresIn(studio, view.overlay, c, w, h) : [];
+      if (figures.length) nameFigures(cv.getContext('2d'), figures);
+      offOverlay?.();
       const png = cv.toDataURL('image/png');
       const tid = performance.now();
       const idp = cam.ids ? idPass(view, studio, c, w, h, cam.subject, cam.ref_w) : null;
@@ -321,7 +358,7 @@ export function install(studio) {
       for (const m of hidden) m.visible = true;
       r.clippingPlanes = []; r.setScissorTest(true);
       const info = { calls: r.info.render.calls, triangles: r.info.render.triangles, render_ms: Math.round(tr - tw), png_ms: Math.round(tid - tr), ids_ms: Math.round(tdone - tid) };
-      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, census: counts, ...info, ...(idp || {}) };
+      return { png, ms: Math.round(performance.now() - t0), draw_ms: Math.round(performance.now() - tw), waits, census: counts, people: figures.map((f) => f.name), ...info, ...(idp || {}) };
     },
     // Several shots in one call (a survey's tiles): the same scene, warm, one page round trip.
     async shots(cams) { const out = []; for (const c of cams) out.push(await this.shot(c)); return out; },

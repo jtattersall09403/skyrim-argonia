@@ -29,7 +29,7 @@ dispute, an induction) is what the drama turns on, which the shape routing in se
 - **A minor quest with a row** (most places already hold quests as premises: `db query "SELECT id, code, premise
   FROM quest WHERE settlement = '<place id>'"`) starts from it: `python3 -m tools.argonia_world.quest_record export
   <quest id> -o <quest>.yaml`, its entry in `story/design/quests/50-side-quests.md`, its row in
-  `story/design/quests/review/walk6-ceiling.md` where it has one. Keep its premise, cast and beats.
+  Keep its premise, cast and beats.
 - **A new premise** with no row: export a small worked quest of the same group (`quest.local.lq25`) as the shape to
   fill, and give it a new id and code. The code is two capitals and two digits: take the prefix the place's quests
   already use (`db query "SELECT code FROM quest WHERE settlement = '<place id>' ORDER BY code"`; the longest run

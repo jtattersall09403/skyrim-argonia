@@ -7,12 +7,6 @@
    "placement",
    "start"
   ],
-  "quest.fg.fg07": [
-   "objective target",
-   "objective text",
-   "placement",
-   "start"
-  ],
   "quest.local.ht01": [
    "start"
   ],
@@ -198,27 +192,6 @@
    "objective target",
    "objective text",
    "placement"
-  ],
-  "quest.main.mq32": [
-   "start"
-  ],
-  "quest.mr.mr01": [
-   "changeDisposition",
-   "objective target",
-   "objective text",
-   "placement"
-  ],
-  "quest.ni.ni05": [
-   "objective target",
-   "objective text",
-   "placement",
-   "start"
-  ],
-  "quest.tg.tg04": [
-   "objective target",
-   "objective text",
-   "placement",
-   "start"
   ]
  }
 }

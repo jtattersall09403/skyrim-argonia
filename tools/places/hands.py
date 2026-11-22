@@ -11,6 +11,7 @@ import contextlib
 import copy
 import json
 from pathlib import Path
+from tools.places.edits import expand
 
 _active: "Guard | None" = None
 SKIP_PARTS = ("edits",)
@@ -266,7 +267,7 @@ def placed(pdir: Path) -> dict[tuple[str, str], dict]:
     pdir = Path(pdir)
     out: dict[tuple[str, str], dict] = {}
     for who, ops, order in _saves(pdir):
-        for op in ops:
+        for op in expand(ops):   # a unit moved whole is its members moved
             got = _op_row(op)
             if got is None:
                 continue

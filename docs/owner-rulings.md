@@ -145,6 +145,15 @@ added here the day they are made, with the date and the issue.
 - The gear ladder's priorities are breadth and fit to the feel and lore, across all our factions and cultures;
   a piece need not be exact, only fit when relabelled. Crossbows (Dawnguard) are in; a glass-recolour obsidian
   is fine unless a better one exists (2026-11-22).
+- The repository is the clean current truth: no history is kept for its own sake. Files that only record
+  retired names, dead quests or superseded plans are deleted; records we need are brought current (2026-11-22).
+- Walks through a place (roads, streets, walkways, gangplanks) are kept clear of tents, fires, cooking gear,
+  rigging, plants and clutter unless a walk is deliberately blocked for a written reason (2026-11-22, Ashgate
+  Landing). The owner deleting one barge's rigging because it blocked its gangplank is his call for that barge,
+  never a rule that ships lose their rigging: a lesson drawn from an owner edit is the fault's shape, not the fix.
+- The studio: the camera turns about what is selected; a thing made of several pieces (a house with its porch and
+  door, a ship with masts and rigging, a tent with its bedrolls) is selected and moved as one; people can be
+  selected and moved; moving in the wanted plane must be easy on a tablet (2026-11-22).
 
 ## The game
 
@@ -680,7 +689,7 @@ added here the day they are made, with the date and the issue.
   new updated skill." Every line the B13 lint and talk_check flag (a count of paces, yards or metres) is rewritten whole
   through the dialogue skills with the Morrowind find step: directions by landmarks, compass words and distance
   words, never a number.
-- 2026-11-12 (walk 6, the quests; tmp/walk-6-quests-feedback.md, kept whole in docs/phases/walk-6-quests-handover.md):
+- 2026-11-12 (walk 6, the quests; tmp/walk-6-quests-feedback.md):
   the opening and the start of the main quest were "a complete mess". "Let's have nothing more complicated than
   Morrowind-level scripting for all of our quests, and do much less world-editing for each quest." The barge is
   kept; outside its door the man starts the talk himself: the player is not on his list, owes nobody, and is sent
@@ -688,7 +697,7 @@ added here the day they are made, with the date and the issue.
   reviewed and rowed back, keeping the spirit. Quest markers on the map and in game for objectives and things to
   pick up or use. "Anyone in our game can die", with a message like Morrowind's when a main-quest person dies. An
   off-game paper playtest played by a fresh agent, on the game's own built version, part of authoring, never a
-  gate, with a broad brief and an artifact to explore the runs. The plan: docs/phases/walk-6-quests.md, issue #68.
+  gate, with a broad brief and an artifact to explore the runs. Issue #68.
 - 2026-11-12 (in session, walk 6, anyone can die): "only people who are essential for *major* quests get our version
   of the 'thread of prophecy' message if they die. Main quest and factions, not just any old minor side quest. If
   you kill someone necessary for a minor side quest it should just close the quest as failed or something with a
@@ -856,24 +865,21 @@ added here the day they are made, with the date and the issue.
   choice is weighed, never required: each option must have an honest case and something of its own to give in play,
   and then the choice stands however the readers chose.
 - 2026-11-13 (story explorer notes on the main plot, read from his drafts): (a) the main quest's plot is
-  overhauled to his outline: freed from an Owing gang by the Reed, which hauls ties-less outsiders out of gangs as
+  overhauled to his outline: freed from an Owing gang by the Toh-Reel-Ka, which hauls ties-less outsiders out of gangs as
   disposable spies; sick Hist trees; the Unbound draining sap; a long treasure hunt "like the film National
-  Treasure" for the Eye of Argonia; the Reed's dream cellars as the twist; three endings (take, use, give) with play
+  Treasure" for the Eye of Argonia; the Toh-Reel-Ka's dream cellars as the twist; three endings (take, use, give) with play
   effects; Opus at medium effort rewrites the overall plot alone, with no review loop and no faction changes yet.
   (b) Everything in a story must be known to be deliverable, chosen while writing from the known set. (c) "Talker"
   is not a build; builds are melee, ranged, stealth and magic in their mixes, stealth always paired. (d) Every story
   and quest passes through the text rules; paragraphs a few sentences at most. (e) Something early "sells" why the
   trees matter. (f) Riddle side quests with no marker until found, their rewards made for the final fight. (g) Faction
   ranks with proportionate rewards. (h) A power explained once at the right point needs no "each says why". (i) He
-  leans to fewer factions and could cut the League. (j) Endings as visions with end music, trees shown dying and
+  leans to fewer factions. (j) Endings as visions with end music, trees shown dying and
   villages abandoned; post-game hard dungeons with a mark of achievement. Recorded in owner-bar the same day.
 - 2026-11-13 (in session, the knock-ons of the main plot's rewrite): (a) "Studio story panels mist be made to update
   automatically": the place studio's story panel is generated from the story sources whenever it is opened, never
-  hand-written. (b) "First act in old world - leave it": the first act built from the old plot stays as it is.
-  (c) "Ledger, part of province plan, roster - update then": the consistency ledger, the province plan's main-quest
-  section and the cast roster are brought up to the new plot. (d) "Six faction stories - mark them as needing to be
-  rewritten. But don't rewrite yet": the Reed-Sail, Sunken Archive, Waykeepers, Many-Root, Chainbreakers and
-  Umbriel Witness stories carry a "to be rewritten" status and are not rewritten yet.
+  hand-written. (c) "Ledger, part of province plan, roster - update then": the consistency ledger, the province plan's main-quest
+  section and the cast roster are brought up to the new plot.
 - 2026-11-13 (#71, the main plot's six ceiling calls): "Approved on all 6." Each is approved only for its use in the
   plot: one staged ending scene (fade to black, music, the trees shown changing) for the endings' visions; the final
   choice on a message box; Cuts-the-Old-Knot called and sent away by a power as the Give ending's reward; a stage
@@ -890,30 +896,30 @@ added here the day they are made, with the date and the issue.
   starting base skills"); then the door unlocks. (b) The strongbox is a side quest: it holds what the friend in
   high places said the player should have; the player starts with a lockpick or two; lock and pocket are easy
   enough for level one. (c) The mystery is subtler than cut roots: the trees shrivel and stop giving sap; the
-  Unbound drain too much and seal the tree with a paralysis poison of their own recipe, to starve the Reed's
+  Unbound drain too much and seal the tree with a paralysis poison of their own recipe, to starve the Toh-Reel-Ka's
   dreamers; the player finds the poison by clues and is left asking why she seals trees when she could kill them;
-  the recipe is a reward. Every "cutting" and "cutter" goes. (d) The handler does not want the Eye for the Reed:
-  it must stay locked and guarded where it is. A Reed officer was the enemy's captor and lies about her. (e) The
+  the recipe is a reward. Every "cutting" and "cutter" goes. (d) The handler does not want the Eye for the Toh-Reel-Ka:
+  it must stay locked and guarded where it is. A Toh-Reel-Ka officer was the enemy's captor and lies about her. (e) The
   Collector stays in the hunt and out of the ending. (f) Quest places must fit the danger band of their point in
   the line (Nenria is D4), and this goes into the skills. (g) Stories are written from each place's source place.
   (h) Blackrose's branches are worked through as he set out (stopped at the gate: pay, persuade or duel to a
   yield). (i) Divers tell the way; nobody is followed. (j) The final guardian is the hydra of Nexus mod 63082,
   with custom boss music. (k) Side quest rewards include attacking scrolls and spell tomes. (l) Taking the Eye is
   what cuts the Root; about 30% of the province's trees die; the Use ending turns the Unbound's friends on the
-  player; the visions are cutscenes made in a later phase, with the cellars and the Reed's rage as text. (m) Quest
+  player; the visions are cutscenes made in a later phase, with the cellars and the Toh-Reel-Ka's rage as text. (m) Quest
   1 is "No Name on the Work Roll". **The explorer:** the note bar clear of Chrome's popup; "The story"; the app's
   own text to the writing rules; faction pages cut down, what the faction is at the top, acts and one paragraph a
   quest. **The atlas:** each place's source place, in prose, with how it is adapted and what it needs; place
   records reviewed for what can be delivered (Bell Station's lowered bells; a platform that the map shows on an
   island). **The factions:** overhauled completely to his list (the Chainbreakers, the detectives, a thieves'
-  guild not called the Night-Reed, the Shadowscales, the pirates, an Argonian magic and alchemy order with a Jel
-  name, Dunmer necromancers at Thorn, Imperial merchants at Gideon; the Veiled Reed and the Unbound of the main
+  guild (now the Eelskins), the Shadowscales, the pirates, an Argonian magic and alchemy order with a Jel
+  name, Dunmer necromancers at Thorn, Imperial merchants at Gideon; the Toh-Reel-Ka and the Unbound of the main
   quest; a Dunmer house of Owing-profiteers that cannot be joined), with as many quests as Morrowind's and
   Skyrim's guilds, his earlier faction rulings found and used, the lessons of the main quest's overhaul put into
   the skills first, the old faction stories and quests deleted, the plots written first with no reader or player
   loops, by Opus 5.5 at medium effort. Every faction's line climbs an objective ladder of difficulty with
   hand-made rewards in proportion. Recorded in owner-bar the same day.
-- 2026-11-16, reward gear: "Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me." Stormhold Warrior Armor (Nexus 96559) is the Veiled Reed's rank armour; six more asset-only reward mods were chosen and added as rows and credits without asking; the table is story/design/quests/reward-gear.md.
+- 2026-11-16, reward gear: "Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me." Stormhold Warrior Armor (Nexus 96559) is the Toh-Reel-Ka's rank armour; six more asset-only reward mods were chosen and added as rows and credits without asking; the table is story/design/quests/reward-gear.md.
 - 2026-11-16, tests: "Are there any tests that aren't necessary? Either unnecessary for this work specifically (in which case skip them for this work), or unnecessary in general and leftover from some legacy thing, in which case we can delete them?" and "can you make it so future work only runs the tests it needs, automatically, without me having to remember to ask". `make check` now runs only the checks a change reaches (tooling/gate.py, map tooling/gate_map.toml), lane_commit and lane_land use it, and `make check-all` runs everything before a deploy and at a phase's close. No test was found guarding dead code, so none was deleted.
 - 2026-11-16 (in session, on #73): "I'm happy with all 11 ceiling things on that issue". The eleven blocks beyond
   the ceiling that the main plot and the faction plots use are approved, each only for its named use and each
@@ -934,7 +940,7 @@ added here the day they are made, with the date and the issue.
   staged scene. That was my intention anyway". The cutscenes he asked for at the endings are the staged ending
   scene of #71, not a recorded film. There is no film block. One added block is narrow (the staged ending scene,
   for the main quest's ending visions only); the other fifteen are open to any quest.
-- 2026-11-16 (in session): "I don't like the 'Free Marque' name for the pirates. All factions should have well
+- 2026-11-16 (in session): "I don't like the [old] name for the pirates (now Bramman's Brethren). All factions should have well
   researched lore-grounded names appropriate for their region and culture and role in society and goals. Change that
   one, and give me some alternative options for all of them (but don't change the others yet, post as an issue for
   my call)". The pirates are renamed Bramman's Brethren, after Red Bramman, the canon pirate-king of Topal Bay whose
@@ -954,14 +960,14 @@ added here the day they are made, with the date and the issue.
   idea of it being a new party/faction who gained power largely by being *not* the An-Xileel, but who are now
   becoming increasingly like them, ironically, by the means they use to try to prevent the atrocity that is the
   reason everybody wanted rid of them (Umbriel). Let's call this party Xeech-Leel — People of the New Beginning.
-  And the veiled reed becomes the Toh-Reel-Ka — Secret Warriors. ... The Toh-Reel-Ka would be the Xeech-Leel's
+  And the [main quest's order] becomes the Toh-Reel-Ka — Secret Warriors. ... The Toh-Reel-Ka would be the Xeech-Leel's
   elite intelligence and security organisation." And on a faction page: "Stuff like this ['The Archwardens'] (here
   and for all factions) will need to be reconciled with whatever we rewrite for the main quest regarding the ruling
   party/faction that succeeded the An-Xileel, and the titles and roles they use". Owner decision Q1 of 2026-08-24
   is superseded: the An-Xileel fell after Umbriel; the Xeech-Leel rule from Helstrom and keep the Archwardens as
   their office of fort, road and toll wardens; the Toh-Reel-Ka keep the dreamers. Written into the lore
   (argonia-4e201-state.md §1, §2.5, §10, §11.2), the rename map and owner-bar; every other mismatch goes to him as
-  a call (`docs/phases/new-worldspace-plan/research/reconciliation-call.md`).
+  a call (issue #75).
 - 2026-11-17 (story explorer notes on the main plot): what quests and stories should be like. Every major thing
   asked of a place, every item and every creature is checked against its source and says how it is made ("every
   time you refer to something that requires something major of a source place, check that the source place has

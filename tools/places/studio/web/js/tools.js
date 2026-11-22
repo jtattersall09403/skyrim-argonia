@@ -8,6 +8,11 @@ import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
+import { spotIn, rigid, boxOf } from './units.js';
+import { dragDelta, dragMode, snapFaces } from './move_map.js';
+import { patrolOf, usersOf, followsLine } from './people.js';
+// what a thing is in a sentence: "bed", "bedroll", "work bench", else its kind
+const plainThing = (base, r) => { const n = `${base?.edid || ''} ${base?.name || ''}`; return /bedroll/i.test(n) ? 'bedroll' : /bed/i.test(n) ? 'bed' : r.kind === 'furniture' ? 'seat or station' : (base?.name || r.kind || 'thing').toLowerCase(); };
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
@@ -48,7 +53,8 @@ export function smoothLine(pts, tol = 60) {
 
 export class Tools {
   constructor(app) {
-    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, selMode: 'lasso', adds: false };
+    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, snapFaces: true, keepSeat: true, step: 10, selMode: 'lasso', adds: false, pieces: false };
+    this.unit = null; this.inside = null;   // the unit selected whole; the unit whose one piece is selected
     this.land = { kind: 'raise', radius: 384, strength: 0.5, level: null, picking: false };
     this.veg = { mode: 'clear', radius: 512 };
     this.path = { mode: 'draw', width: 256, style: null, kind: 'path', sel: null };
@@ -123,13 +129,18 @@ export class Tools {
     const t = this, a = this.app;
     return this._sel || (this._sel = {
       fingerTap: true,
-      wantsDrag: (e) => e.pointerType === 'pen' || e.pointerType === 'mouse',
-      // a quest thing's pin is picked before the place's own things under it
-      tap: (e) => { const q = a.quests.pick(e); if (q) { t.use('quests'); a.quests.select(q); return; } t.tapPick(e, a.ours, a.selection); },
-      down: (e) => { t.lasso = { pts: [[e.x, e.y]], el: t.svg(e.view, t.opts.selMode === 'box' ? 'rect' : 'polygon', { class: 'lasso' }) }; },
-      move: (e) => t.lassoMove(e),
-      up: (e) => t.lassoEnd(e, a.ours),
-      cancel: (e) => { t.lasso?.el.remove(); t.lasso = null; t.clearSketch(e.view); },
+      // the pen and the mouse draw round things; a finger drags only a person it lands on (the view turns otherwise)
+      wantsDrag: (e) => e.pointerType === 'pen' || e.pointerType === 'mouse' || !!a.people.pick(e),
+      // a person is picked first, then a quest thing's pin, then the place's own things under them
+      tap: (e) => {
+        const pid = a.people.pick(e); if (pid) { a.people.select(pid); return; }
+        const q = a.quests.pick(e); if (q) { t.use('quests'); a.quests.select(q); return; }
+        t.tapPick(e, a.ours, a.selection);
+      },
+      down: (e) => { if (a.people.dragStart(e)) return; t.lasso = { pts: [[e.x, e.y]], el: t.svg(e.view, t.opts.selMode === 'box' ? 'rect' : 'polygon', { class: 'lasso' }) }; },
+      move: (e) => { if (a.people.drag) a.people.dragMove(e); else t.lassoMove(e); },
+      up: (e) => { if (a.people.drag) { const d = a.people.drag; if (Math.hypot(d.at[0] - d.from[0], d.at[1] - d.from[1]) < 8) { a.people.drag = null; return; } a.people.dragEnd(); } else t.lassoEnd(e, a.ours); },
+      cancel: (e) => { if (a.people.drag) { a.people.drag = null; a.people.refresh(); } t.lasso?.el.remove(); t.lasso = null; t.clearSketch(e.view); },
     });
   }
   lassoMove(e) {
@@ -143,7 +154,7 @@ export class Tools {
     if (l.pts.length < 4) { this.tapPick(e, side, side === this.app.ours ? this.app.selection : null); return; }
     let poly = l.pts;
     if (this.opts.selMode === 'box') { const [x0, y0] = l.pts[0], [x1, y1] = l.pts[l.pts.length - 1]; poly = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
-    const refs = side === this.app.ours ? [...(this.app.model.spaces[side.space]?.refs.values() || [])].map((r) => this.app.seated(r)) : this.app.refsOf(side);
+    const refs = side === this.app.ours ? [...(this.app.model.spaces[side.space]?.refs.values() || [])].filter((r) => this.app.helperShown(r)).map((r) => this.app.seated(r)) : this.app.refsOf(side);
     const hit = refs.filter((r) => { const s = side.view.toScreen(r.pos); return !s.behind && inPoly([s.x, s.y], poly); });
     if (side === this.app.ours) {
       if (!this.opts.adds) this.app.selection.clear();
@@ -159,11 +170,18 @@ export class Tools {
     let idx = 0;
     if (same && hits.length > 1) idx = (this.lastTap.idx + 1) % hits.length;
     this.lastTap = { side, x: e.x, y: e.y, idx, t: performance.now(), n: hits.length };
-    const h = hits[idx];
+    let h = hits[idx];
     if (side === this.app.ours) {
       if (h && !same && this.app.selection.size === 1 && this.app.selection.has(h.ref.id) && h.ref.door?.to_space) { this.app.enter(side, this.app.findRef(h.ref.id) || h.ref); return; }
+      // a tap selects a whole unit; a second tap on it goes inside to the piece tapped; tapping away comes back out
+      const whole = this.selUnit(), byUnit = !this.opts.pieces && !this.opts.adds;
+      if (!h && byUnit && this.inside) { const iu = this.units().units.get(this.inside); if (iu) { this.cycleNote = ''; this.selectUnit(iu); return; } }
+      const u = h && byUnit ? this.unitOfRef(h.ref.id) : null;
+      if (u && whole?.id !== u.id && this.inside !== u.id) { this.cycleNote = ''; this.selectUnit(u); return; }
+      if (u && whole?.id === u.id && same) { h = hits[0]; this.lastTap.idx = 0; }
       if (!this.opts.adds) selSet.clear();
       if (h) { selSet.has(h.ref.id) && this.opts.adds ? selSet.delete(h.ref.id) : selSet.add(h.ref.id); }
+      this.unit = null; this.inside = u ? u.id : null;
       this.cycleNote = hits.length > 1 ? `${idx + 1} of ${hits.length} things here. Tap again for the next.` : '';
       this.selectionChanged();
     } else {
@@ -194,14 +212,26 @@ export class Tools {
   }
   stopPlacing() { this.placing = null; this.app.srcSel = []; this.drawOutline(this.app.src, [], this.srcOutline); this.app.panels.placingChanged?.(); this.placeGizmo(); }
   // ---------- selection outline and gizmo ----------
+  // ---------- units: a tap selects one whole, a second goes inside to one piece (units.js) ----------
+  units() { return this.app.unitIndex(); }
+  unitOfRef(id) { const ix = this.units(), u = ix.of.get(id); return u ? ix.units.get(u) : null; }
+  // the unit selected whole, or null
+  selUnit() {
+    if (!this.unit || !this.app.model) return null;
+    const u = this.units().units.get(this.unit), s = this.app.selection;
+    return u && s.size === u.members.length && u.members.every((id) => s.has(id)) ? u : null;
+  }
+  selectUnit(u) { this.app.selection = new Set(u.members); this.unit = u.id; this.inside = null; this.selectionChanged(); }
   selectionChanged() {
     const a = this.app; if (!a.model) return;
+    if (this.unit && !this.selUnit()) this.unit = null;
+    if (this.inside) { const iu = this.units().units.get(this.inside); if (!iu || !a.selection.size || ![...a.selection].every((id) => iu.members.includes(id))) this.inside = null; }
     this.drawSelection(); a.panels.selectionInfo([...a.selection].map((id) => a.placeRefsById().get(id)).filter(Boolean), this.cycleNote);
   }
   drawSelection() {
     const a = this.app; if (!a.model) return;
-    const sel = this.selRefs();
-    this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
+    const sel = this.selRefs(), u = this.selUnit();
+    if (u) this.drawBoxes(a.ours, [u.box], this.outline); else this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
     // a selected light, and the lights of a selected fixture, show their radius rings
     a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).filter((f) => !f.wall).map((f) => f.ref)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
@@ -215,18 +245,46 @@ export class Tools {
     if (line.parent !== side.view.overlay) side.view.overlay.add(line);
     side.view.redraw();
   }
+  // world boxes {x0,y0,x1,y1,z0,z1} as outlines (a unit is drawn as one)
+  drawBoxes(side, boxes, line) {
+    const E = [[0, 1], [0, 2], [1, 3], [2, 3], [4, 5], [4, 6], [5, 7], [6, 7], [0, 4], [1, 5], [2, 6], [3, 7]], pos = [], o = side.view.origin;
+    for (const b of boxes) {
+      const c = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => [(i & 1 ? b.x1 : b.x0) - o[0], (i & 2 ? b.y1 : b.y0) - o[1], (i & 4 ? b.z1 : b.z0) - o[2]]);
+      for (const [i, j] of E) pos.push(...c[i], ...c[j]);
+    }
+    line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    if (line.parent !== side.view.overlay) side.view.overlay.add(line);
+    side.view.redraw();
+  }
+  // the label over a unit selected whole, or over the unit whose piece is selected
+  placeLabel() {
+    const v = this.app.ours.view; let el = v.el.querySelector('.unit-label');
+    const u = this.selUnit() || (this.inside && this.units().units.get(this.inside)), on = u && ['select', 'search'].includes(this.current);
+    if (!on) { if (el) el.hidden = true; return; }
+    if (!el) { el = document.createElement('div'); el.className = 'unit-label'; v.el.append(el); }
+    const b = u.box, s = v.toScreen([(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, b.z1 + 40]);
+    el.hidden = s.behind; el.style.left = `${s.x}px`; el.style.top = `${s.y}px`;
+    el.textContent = this.selUnit() ? `${u.name} (${u.members.length} pieces)` : `${u.name}: one piece`;
+  }
   buildGizmo() {
     const g = document.querySelector('#view-ours .gizmo');
-    g.innerHTML = `<div class="ring"></div><div class="h move" data-h="move" role="button" aria-label="Drag to move">${ICON.move}</div>
-      <div class="h" data-h="lift" role="button" aria-label="Drag up or down to lift">${ICON.lift}</div>
+    // one handle per way of moving, each big enough for a finger, its plane or axis named before the drag starts
+    g.innerHTML = `<div class="ring"></div>
+      <div class="h move" data-h="move" role="button" aria-label="Drag to slide along the ground">${ICON.move}</div>
+      <div class="h axis" data-h="ax" role="button" aria-label="Drag to move east or west only">E–W</div>
+      <div class="h axis" data-h="ay" role="button" aria-label="Drag to move north or south only">N–S</div>
+      <div class="h lift" data-h="lift" role="button" aria-label="Drag up or down to change the height">${ICON.lift}<span>Height</span></div>
       <div class="h" data-h="rotate" role="button" aria-label="Drag round to turn">${ICON.rotate}</div>
-      <div class="h" data-h="scale" role="button" aria-label="Drag to resize">${ICON.scale}</div>`;
+      <div class="h" data-h="scale" role="button" aria-label="Drag to resize">${ICON.scale}</div>
+      <div class="gz-hint" hidden></div>`;
     this.gizmo = g;
-    g.querySelectorAll('.h').forEach((h) => {
-      h.addEventListener('pointerdown', (e) => { e.stopPropagation(); if (e.pointerType === 'touch' && this.app.penSeen) return; h.setPointerCapture(e.pointerId); this.gizmoDown(h.dataset.h, e); });
+    g.querySelectorAll('[data-h]').forEach((h) => {
+      h.addEventListener('pointerenter', () => { if (!this.drag) this.hint(h.dataset.h); });
+      h.addEventListener('pointerleave', () => { if (!this.drag) this.hint(null); });
+      h.addEventListener('pointerdown', (e) => { e.stopPropagation(); if (e.pointerType === 'touch' && this.app.penSeen) return; h.setPointerCapture(e.pointerId); this.hint(h.dataset.h); this.gizmoDown(h.dataset.h, e); });
       h.addEventListener('pointermove', (e) => this.gizmoMove(e));
-      h.addEventListener('pointerup', (e) => this.gizmoUp(e));
-      h.addEventListener('pointercancel', () => this.gizmoCancel());
+      h.addEventListener('pointerup', (e) => { this.gizmoUp(e); this.hint(null); });
+      h.addEventListener('pointercancel', () => { this.gizmoCancel(); this.hint(null); });
     });
   }
   selRefs() { const m = this.app.placeRefsById(); return [...this.app.selection].map((id) => m.get(id)).filter(Boolean); }
@@ -268,22 +326,41 @@ export class Tools {
   }
   centre(refs) { const n = refs.length || 1; return [0, 1, 2].map((i) => refs.reduce((s, r) => s + this.app.seated(r).pos[i], 0) / n); }
   placeGizmo() {
+    this.placeLabel();
     const g = this.gizmo, refs = this.selRefs(), v = this.app.ours.view;
     const show = refs.length && ['select', 'search'].includes(this.current) && !this.placing;
     g.hidden = !show; if (!show) return;
     const c = this.centre(refs), s = v.toScreen(c);
     if (s.behind) { g.hidden = true; return; }
-    const R = 78;
+    const R = 100, unit = this.selUnit();
     g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
-    const set = (h, x, y) => { const el = g.querySelector(`[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
-    set('move', 0, 0); set('lift', 0, -R); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
+    const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
+    set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
+    // the axis handles lie along the way east and north run on the screen, on whichever side of the middle keeps them
+    // clear of the other handles (an axis drags both ways)
+    const taken = [[0, 0], [0, -R * 1.2], [R, 0], [R * 0.72, R * 0.72]];
+    for (const [h, d] of [['ax', [400, 0, 0]], ['ay', [0, 400, 0]]]) {
+      const q = v.toScreen([c[0] + d[0], c[1] + d[1], c[2]]), dx = q.x - s.x, dy = q.y - s.y, l = Math.hypot(dx, dy) || 1;
+      const k = R * 0.62, opts = [[(dx / l) * k, (dy / l) * k], [(-dx / l) * k, (-dy / l) * k]];
+      const room = (p) => Math.min(...taken.map((t) => Math.hypot(p[0] - t[0], p[1] - t[1])));
+      const at = room(opts[0]) >= room(opts[1]) ? opts[0] : opts[1];
+      set(h, at[0], at[1]); taken.push(at);
+    }
+    g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
   }
   gizmoDown(kind, e) {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
     const v = this.app.ours.view, info = v.info(e);
-    this.drag = { kind, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
-      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: this.centre(refs), fol: this.followers(refs) };
+    const unit = this.selUnit(); if (unit && kind === 'scale') return;   // a unit moves, turns and rises whole; its pieces are resized one by one
+    this.drag = { kind, refs, unit, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
+      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: unit ? this.unitCentre(unit) : this.centre(refs), fol: this.followers(refs) };
+    // the plane or axis of a slide, fixed now for the whole drag (move_map.js)
+    const d = this.drag, o = v.origin, ray = (inf) => ({ o: [inf.ray.origin.x + o[0], inf.ray.origin.y + o[1], inf.ray.origin.z + o[2]], d: [inf.ray.direction.x, inf.ray.direction.y, inf.ray.direction.z] });
+    d.ray = ray; d.r0 = ray(info); d.mode = dragMode(d.r0); d.axis = kind === 'ax' ? 'x' : kind === 'ay' ? 'y' : null;
+    const cam = v.camera.position, far = Math.hypot(cam.x + o[0] - d.c[0], cam.y + o[1] - d.c[1], cam.z + o[2] - d.c[2]);
+    d.perPx = far * 2 * Math.tan((v.camera.fov * Math.PI) / 360) / (v.h || 800); d.yaw = v.rig.yaw;
+    d.others = this.opts.snapFaces ? this.neighbourBoxes(refs, d.c) : [];
     const sc = v.toScreen(this.drag.c), rect = v.canvas.getBoundingClientRect();
     this.drag.sx = sc.x + rect.left; this.drag.sy = sc.y + rect.top; this.drag.a0 = Math.atan2(e.clientY - this.drag.sy, e.clientX - this.drag.sx);
   }
@@ -291,13 +368,23 @@ export class Tools {
     const d = this.drag; if (!d) return;
     const v = this.app.ours.view, a = this.app;
     for (const r of d.refs) { const b = d.before.get(r.id); r.pos = [...b.pos]; r.rot = [...(b.rot || [0, 0, 0])]; r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat; }
-    if (d.kind === 'move') {
-      const g = v.info(e).ground(); if (!g || !d.g0) return;
-      const dx = g[0] - d.g0[0], dy = g[1] - d.g0[1];
+    const slide = ['move', 'ax', 'ay'].includes(d.kind) ? this.slideOf(d, e) : null;
+    if (d.unit) {
+      let turn = 0, sh = [0, 0], dz = 0;
+      if (slide) sh = slide;
+      else if (d.kind === 'lift') dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
+      else if (d.kind === 'rotate') { turn = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0; if (this.opts.snapRot) turn = Math.round(turn / (Math.PI / 12)) * (Math.PI / 12); }
+      d.xf = this.poseUnit(d, turn, sh, dz); d.turn = turn;
+      this.carry(d.fol);
+      this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
+      return;
+    }
+    if (slide) {
+      const [dx, dy] = slide;
       for (const r of d.refs) { r.pos[0] = rnd(r.pos[0] + dx); r.pos[1] = rnd(r.pos[1] + dy); this.reseat(r); }
     } else if (d.kind === 'lift') {
       const dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
-      for (const r of d.refs) { if (r.seat && r.seat.mode !== 'free' && r.seat.mode !== 'on') r.seat = { ...r.seat, dz: rnd((r.seat.dz || 0) + dz) }; else r.pos[2] = rnd(r.pos[2] + dz); }
+      for (const r of d.refs) this.raise(r, dz);
     } else if (d.kind === 'rotate') {
       let ang = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0;
       if (this.opts.snapRot) ang = Math.round(ang / (Math.PI / 12)) * (Math.PI / 12);
@@ -315,15 +402,68 @@ export class Tools {
     this.carry(d.fol);
     this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
   }
+  // A vertical move of a seated thing is the seat's own offset (dz), in every mode, so the seat keeps it; a thing
+  // with no seat, a free one, an interior's, or one whose support is gone has its height moved directly.
+  raise(r, dz) {
+    const s = r.seat, held = s && s.mode !== 'free' && this.app.ours.space === 'exterior' && (s.mode !== 'on' || this.app.placeRefsById().get(s.on));
+    if (held) r.seat = { ...s, dz: rnd((s.dz || 0) + dz) }; else r.pos[2] = rnd(r.pos[2] + dz);
+  }
   reseat(r) {
     if (this.app.ours.space !== 'exterior') return;
+    if (r.seat?.mode === 'on' && !this.opts.keepSeat) r.seat = { mode: 'ground', dz: 0 };   // let go of what it sat on
     if (this.opts.snapGround) { if (!r.seat || r.seat.mode === 'free') r.seat = { mode: 'ground', dz: 0 }; r.pos[2] = rnd(seatZ(this.app.terrain, r, this.app.placeRefsById())); }
+  }
+  // At the moment a thing a routine names is moved: "Hara-Jeel sleeps here: his routine follows this bed."
+  sayFollows(refs) {
+    const a = this.app, ppl = [...(a.model?.people.values() || [])], lines = [];
+    for (const r of refs) { const u = usersOf(ppl, r.id, r.src); if (u.length) lines.push(followsLine(u, `this ${plainThing(this.baseOf(r), r)}`)); }
+    if (lines.length) a.toast(lines.slice(0, 2).join(' ') + (lines.length > 2 ? ` And ${lines.length - 2} more.` : ''), 6000);
+  }
+  // The slide of a drag now: along the plane or axis fixed when it began, then flush with a neighbour's face.
+  slideOf(d, e) {
+    const v = this.app.ours.view, inf = v.info(e);
+    let m = dragDelta({ mode: d.mode, r0: d.r0, r1: d.ray(inf), z: d.c[2], px: [e.clientX - d.x0, e.clientY - d.y0], perPx: d.perPx, yaw: d.yaw, axis: d.axis });
+    if (d.others.length) {
+      const b = d.box || (d.box = this.planBox(d.refs, d.before));
+      const [sx, sy] = snapFaces({ x0: b.x0 + m[0], y0: b.y0 + m[1], x1: b.x1 + m[0], y1: b.y1 + m[1] }, d.others);
+      m = [m[0] + (d.axis === 'y' ? 0 : sx), m[1] + (d.axis === 'x' ? 0 : sy)];
+    }
+    return m;
+  }
+  planBox(refs, before) {
+    const bs = refs.filter((r) => r.kind !== 'light' && !r.primitive).map((r) => boxOf({ ...r, ...before.get(r.id) }, this.baseOf(r), before.get(r.id).pos));
+    return bs.length ? bs.reduce((u, b) => ({ x0: Math.min(u.x0, b.x0), y0: Math.min(u.y0, b.y0), x1: Math.max(u.x1, b.x1), y1: Math.max(u.y1, b.y1) })) : { x0: 0, y0: 0, x1: 0, y1: 0 };
+  }
+  // The plan boxes of the things near what is dragged (not lights, invisible walls, plants or people), for face snaps.
+  neighbourBoxes(refs, c) {
+    const ids = new Set(refs.map((r) => r.id)), out = [];
+    for (const r of this.app.placeRefsById().values()) {
+      if (ids.has(r.id) || r.removed || !r.pos || r.kind === 'light' || r.primitive || ['tree', 'plant', 'groundcover', 'actor', 'marker'].includes(r.kind)) continue;
+      if (Math.hypot(r.pos[0] - c[0], r.pos[1] - c[1]) > 2500) continue;
+      out.push(boxOf(r, this.baseOf(r), this.app.seated(r).pos));
+    }
+    return out;
+  }
+  // What a handle does, said over the gizmo before and during its drag; an axis is drawn through the selection.
+  hint(kind) {
+    const el = this.gizmo?.querySelector('.gz-hint'); if (!el) return;
+    const v = this.app.ours.view; this.sketch(v).querySelector('.axis-line')?.remove();
+    const words = { move: 'Slides along the ground; keeps how it sits', ax: 'East and west only', ay: 'North and south only', lift: 'Up and down only',
+      rotate: `Turns about the up axis${this.opts.snapRot ? ', in 15° steps' : ''}`, scale: 'Bigger or smaller' }[kind];
+    el.hidden = !words; el.textContent = words || '';
+    if (kind === 'ax' || kind === 'ay') {
+      const c = this.selUnit() ? this.unitCentre(this.selUnit()) : this.centre(this.selRefs()), k = kind === 'ax' ? [1, 0] : [0, 1];
+      const a = v.toScreen([c[0] - k[0] * 3000, c[1] - k[1] * 3000, c[2]]), b = v.toScreen([c[0] + k[0] * 3000, c[1] + k[1] * 3000, c[2]]);
+      this.svg(v, 'line', { class: 'axis-line', x1: a.x, y1: a.y, x2: b.x, y2: b.y });
+    }
   }
   gizmoUp(e) {
     const d = this.drag; if (!d) return;
+    if (!(e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3)) this.sayFollows(d.refs);
     // a tap on a handle with no movement changes nothing (it never re-seats things where they stand)
     if (e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3) { this.gizmoCancel(); return; }
     this.drag = null;
+    if (d.unit) { if (d.xf) this.pushUnit(d); else this.gizmoCancel(d); return; }
     const ops = [];
     for (const r of d.refs) {
       const after = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), before = d.before.get(r.id);
@@ -337,8 +477,8 @@ export class Tools {
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     this.app.push(ops);
   }
-  gizmoCancel() {
-    const d = this.drag; this.drag = null; if (!d) return;
+  gizmoCancel(done) {
+    const d = done || this.drag; this.drag = null; if (!d) return;
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     for (const f of d.fol || []) Object.assign(f.ref, clone(f.before));
     this.app.refreshSide(this.app.ours, { world: false });
@@ -352,17 +492,122 @@ export class Tools {
     for (const r of refs) Object.assign(r, before.get(r.id));
     return [...ops, ...extra];
   }
+  // ---------- a unit moved, turned or raised whole ----------
+  unitCentre(u) { const b = u.box; return [(b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2, (b.z0 + b.z1) / 2]; }
+  // Every member of the unit dragged, posed from where it stood: turned by `turn` about the unit's centre, shifted
+  // by sh and raised by dz. What sits on the ground (or on another member) keeps its seat, which re-seats it where
+  // it lands; a free piece rises with the ground under the unit's head, so the unit stays whole. Returns the move as
+  // a function of a point, for the doors' arrivals and the spots the unit carries.
+  poseUnit(d, turn, sh, dz) {
+    const a = this.app, ext = a.ours.space === 'exterior', head = d.before.get(d.unit.head), t = a.terrain;
+    const plan = rigid(d.c, turn, [sh[0], sh[1], 0]);
+    let gdz = 0;
+    if (ext && t && head && this.opts.snapGround && (sh[0] || sh[1])) {
+      const q = plan(head.pos), h0 = t.heightAt(head.pos[0], head.pos[1]), h1 = t.heightAt(q[0], q[1]);
+      if (h0 != null && h1 != null) gdz = h1 - h0;
+    }
+    for (const r of d.refs) {
+      const b = d.before.get(r.id), p = plan(b.pos);
+      r.pos = [rnd(p[0]), rnd(p[1]), b.pos[2]]; r.rot = [b.rot?.[0] || 0, b.rot?.[1] || 0, rnd(norm((b.rot?.[2] || 0) + turn), 10000)];
+      r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat;
+      const s = r.seat, held = s && s.mode !== 'free' && ext && (s.mode !== 'on' || a.placeRefsById().get(s.on));
+      if (held) { if (dz) r.seat = { ...s, dz: rnd((s.dz || 0) + dz) }; } else r.pos[2] = rnd(b.pos[2] + dz + gdz);
+    }
+    return rigid(d.c, turn, [sh[0], sh[1], dz + gdz]);
+  }
+  // The one op of a unit's move (edits: unit.move): every member's pose, a door's arrival turned with it, the lights
+  // and invisible walls that follow its pieces, and the people's and quest spots standing in it.
+  unitOp(d) {
+    const a = this.app, ext = a.ours.space === 'exterior', refs = [], after = new Map();
+    const moved = (p) => { const q = d.xf(p); return p.map((v, i) => (i < q.length ? rnd(q[i]) : v)); };
+    for (const r of d.refs) {
+      const b = clone(d.before.get(r.id)), x = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat });
+      if (r.seat && r.seat.mode !== 'free' && ext) x.pos[2] = rnd(seatZ(a.terrain, r, a.placeRefsById()));
+      after.set(r.id, x);
+      if (r.door?.arrival) { b.door = clone(r.door); x.door = { ...clone(r.door), arrival: moved(r.door.arrival) }; }
+      if (JSON.stringify(x) !== JSON.stringify(b)) refs.push({ id: r.id, before: b, after: x });
+    }
+    for (const r of d.refs) { const x = after.get(r.id); Object.assign(r, { pos: x.pos, rot: x.rot, scale: x.scale, seat: x.seat }); }
+    this.carry(d.fol);
+    for (const o of this.followerOps(d.fol)) refs.push({ id: o.id, before: o.before, after: o.after });
+    for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
+    return { op: 'unit.move', unit: d.unit.id, name: d.unit.name, refs, ...this.spotsMoved(d.unit, moved, d.turn || 0) };
+  }
+  // The people's spots (work, routine stops, patrol points) and the quest spots standing in a unit, moved with it.
+  // A bed, a station or anything a stop names by its ref goes with its ref, needing no change of the person.
+  spotsMoved(u, moved, turn) {
+    const a = this.app, S = a.ours.space, people = [], quests = [];
+    for (const p of a.model.people.values()) {
+      const after = clone(p); let hit = false;
+      const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
+      at(after.work); for (const st of after.routine || []) at(st.at);
+      const pts = patrolOf(after);
+      pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
+      if (hit) people.push({ person: after, before: clone(p) });
+    }
+    for (const q of a.model.quests.values()) {
+      if ((q.space || 'exterior') !== S || !Array.isArray(q.pos) || !spotIn(u, q.pos)) continue;
+      const after = { ...clone(q), pos: moved(q.pos) };
+      if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
+      quests.push({ quest: after, before: clone(q) });
+    }
+    // the owner's walking zones lying wholly in it (a "walk here" at its steps): their outline moves with it
+    const walks = [];
+    for (const w of a.model.walk.values()) {
+      const k = w.kind === 'join' ? 'points' : 'outline', pts = w[k];
+      if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
+      walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
+    }
+    // a street that ends at one of its doors or on its footprint: its last point moves with it and the one before it
+    // half as far, so the street bends to the door rather than dragging its whole length
+    const paths = [], doors = new Set(u.members.filter((id) => a.placeRefsById().get(id)?.door));
+    for (const w of a.model.paths.values()) {
+      if (S !== 'exterior' || !Array.isArray(w.points) || w.points.length < 2) continue;
+      const pts = w.points.map((q) => [...q]), n = pts.length; let hit = false;
+      const end = (i, j, linked) => {
+        if (!linked && !spotIn(u, pts[i])) return;
+        const m = moved(pts[i]), dx = m[0] - pts[i][0], dy = m[1] - pts[i][1];
+        pts[i] = [rnd(m[0]), rnd(m[1]), ...pts[i].slice(2)];
+        if (n > 2 && !spotIn(u, pts[j])) pts[j] = [rnd(pts[j][0] + dx / 2), rnd(pts[j][1] + dy / 2), ...pts[j].slice(2)];
+        hit = true;
+      };
+      end(0, 1, doors.has(w.from)); end(n - 1, n - 2, doors.has(w.to));
+      if (hit) paths.push({ path: { ...clone(w), points: pts }, before: clone(w) });
+    }
+    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}), ...(paths.length ? { paths } : {}) };
+  }
+  // A unit moved by the panel's buttons: the same op as a drag.
+  moveUnit(u, turn, sh, dz) {
+    const refs = u.members.map((id) => this.app.placeRefsById().get(id)).filter(Boolean);
+    const d = { unit: u, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
+      c: this.unitCentre(u), fol: this.followers(refs), turn };
+    d.xf = this.poseUnit(d, turn, sh, dz);
+    this.pushUnit(d);
+  }
+  // The unit op pushed, and the unit (as it now stands, with what its new spot gives it) kept selected whole.
+  pushUnit(d) {
+    this.app.push([this.unitOp(d)]);
+    const u = this.units().units.get(d.unit.id); if (u) this.selectUnit(u);
+  }
+  // Put a thing into a unit, take it out of every unit (""), or give it back to the rule (null): its own `unit`.
+  setUnit(r, unit) {
+    const before = { unit: typeof r.unit === 'string' ? r.unit : null };
+    if (before.unit === unit) return;
+    this.app.push([{ op: 'ref.move', id: r.id, before, after: { unit } }]);
+  }
   cameraMoved(view) {
     if (view === this.app.ours.view) this.placeGizmo();
     this.clearSketch(view);
   }
   // Nudge by a step in the game's directions, or turn by the snap step.
   nudge(dx, dy, dz, drot = 0, dscale = 0) {
+    const u = this.selUnit(); if (dx || dy || dz || drot) this.sayFollows(this.selRefs());
+    if (u && !dscale) { this.moveUnit(u, drot, [dx, dy], dz); return; }
     const ops = [];
     for (const r of this.selRefs()) {
       const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);
       after.pos[0] = rnd(after.pos[0] + dx); after.pos[1] = rnd(after.pos[1] + dy);
-      if (dz) { if (after.seat && after.seat.mode !== 'free' && after.seat.mode !== 'on') after.seat.dz = rnd((after.seat.dz || 0) + dz); else after.pos[2] = rnd(after.pos[2] + dz); }
+      if (dz) this.raise(after, dz);
       after.rot = [after.rot?.[0] || 0, after.rot?.[1] || 0, rnd(norm((after.rot?.[2] || 0) + drot), 10000)];
       if (dscale) after.scale = rnd(Math.max(0.1, after.scale * (1 + dscale)), 1000);
       if (after.seat && after.seat.mode !== 'free' && this.app.ours.space === 'exterior') after.pos[2] = rnd(seatZ(this.app.terrain, { ...r, ...after }, this.app.placeRefsById()));
