@@ -357,7 +357,7 @@
 {"place_id":"helstrom","give_seq":7,"seq":0,"by":"person","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","status":"delivered","why":"Sleeps-Last (innkeeper) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":8,"seq":0,"by":"ref","ref_id":"helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T","status":"delivered","why":"the place's forge (place.json stations)"}
 {"place_id":"helstrom","give_seq":9,"seq":0,"by":"ref","ref_id":"helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T","status":"delivered","why":"the place's anvil (place.json stations)"}
-{"place_id":"helstrom","give_seq":10,"seq":0,"by":"ref","ref_id":"helstrom.RWV7F7ANRB8VRVSFQNH32BG6XM","status":"delivered","why":"the place's armour-workbench (place.json stations)"}
+{"place_id":"helstrom","give_seq":10,"seq":0,"by":"ref","ref_id":"helstrom.TKWH3EDTCQS7B8HSWB1PX2PF7Z","status":"delivered","why":"the place's armour-workbench (place.json stations)"}
 {"place_id":"helstrom","give_seq":11,"seq":0,"by":"ref","ref_id":"helstrom.HGT709T7FF8VKBXS8H9XHKEBQZ","status":"delivered","why":"the place's grindstone (place.json stations)"}
 {"place_id":"helstrom","give_seq":12,"seq":0,"by":"ref","ref_id":"helstrom.EQGCM9VMDRKVB9Y63HFYQ615DM","status":"delivered","why":"the place's smelter (place.json stations)"}
 {"place_id":"helstrom","give_seq":13,"seq":0,"by":"ref","ref_id":"helstrom.WY5Z0Z38ZC52P6PFFY7EBQ29JJ","status":"delivered","why":"the place's tanning-rack (place.json stations)"}
@@ -366,7 +366,7 @@
 {"place_id":"helstrom","give_seq":16,"seq":0,"by":"ref","ref_id":"helstrom.DZ16WVDNRWQN5F83QYDVS9YM8G","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
 {"place_id":"helstrom","give_seq":17,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Taleeka-Ma (spell-trader) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":18,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Wujeel (apothecary) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":19,"seq":0,"by":"ref","ref_id":"helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE","status":"delivered","why":"the place's shrine (place.json stations)"}
+{"place_id":"helstrom","give_seq":19,"seq":0,"by":"ref","ref_id":"helstrom.LOOK001PLACE","status":"delivered","why":"the place's shrine (place.json stations)"}
 {"place_id":"hirecan","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: an Agaceph illusionist selling Illusion tomes up to Expert, and scrolls)"}
 {"place_id":"hirecan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Illusion, Expert, the same illusionist)"}
 {"place_id":"hirecan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-bookseller: the keeper of the mission books, who also sells spell tomes)"}

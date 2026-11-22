@@ -11,8 +11,8 @@
 {"place_id":"helstrom","need_seq":8,"need_sign_id":"person","detail":"the innkeeper Sleeps-Last keeps it and rents its bed","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
 {"place_id":"helstrom","need_seq":9,"need_sign_id":"label","detail":"its door shows \"Tree-Minders' Hall\"; inside, the case names itself \"Urn Case\", locked (Expert)"}
 {"place_id":"helstrom","need_seq":10,"need_sign_id":"person","detail":"the raft-master Poles-Upriver works the city landing","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
-{"place_id":"helstrom","need_seq":11,"need_sign_id":"label","detail":"the world map marks \"Rootworm Landing (Helstrom)\" at the pool"}
-{"place_id":"helstrom","need_seq":11,"need_sign_id":"look","detail":"the amber sap pool at the sacred tree's foot, with the rootworm's tunnel mouth at its far lip"}
+{"place_id":"helstrom","need_seq":11,"need_sign_id":"label","detail":"the world map marks \"Rootworm Landing (Helstrom)\" beside the mud mouth"}
+{"place_id":"helstrom","need_seq":11,"need_sign_id":"look","detail":"the great city tree over the market by the landing, and the rootworm's mud mouth among its roots on its south-west side, apart from the tree's amber sap pool"}
 {"place_id":"helstrom","need_seq":11,"need_sign_id":"person","detail":"the root-tender Cheeval-Xu works at the pool's edge and sells the rootworm's rides","person_id":"helstrom.C2855503QH3SHVRJDJSG1E9MKM"}
 {"place_id":"helstrom","need_seq":12,"need_sign_id":"label","detail":"its door, at the back of the Market Cave, shows \"Ruusa-Wan's House\""}
 {"place_id":"helstrom","need_seq":12,"need_sign_id":"look","detail":"two lanterns on the sill by the door"}
