@@ -4,7 +4,7 @@ started on first use and gone when idle; prints JSON (a PNG path and/or numbers)
 
 Views: at <thing> [--from n|ne|e|se|s|sw|w|nw] [--eye|--high|--top]; orbit <thing>; walk <from> <to>;
 section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every view: [--plain] [--size WxH] [--grid] [--mesh]
-[--no-canopy | --canopy] [--lit] [--ceiling u]. Every verb: [--state <quest state>] sees the place as the player
+[--no-canopy | --canopy] [--lit] [--ceiling u]. Every verb: [--people] draws people as named stand-ins; [--state <quest state>] sees the place as the player
 does in that state of the place's states.jsonl (`python -m tools.places states <place>` lists them; none: the game's start).
 Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
 Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per thing, one page call.

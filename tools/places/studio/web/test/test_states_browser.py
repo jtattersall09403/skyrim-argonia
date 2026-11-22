@@ -124,3 +124,26 @@ def test_an_edit_in_a_state_says_which_state_it_belongs_to(page):
     assert op2["state"] is None             # the start's edits are the place's as ever
     assert page.evaluate(SHOWN, "fixplace.HIST") and page.evaluate("studio.people.markers.get('fixplace.p1')?.visible") is not False
     assert not page.errors, page.errors
+
+
+def test_a_capture_draws_the_people_a_state_shows_and_not_those_it_hides(server, page):
+    """The look verbs' shots (the agent page) draw people as named stand-in figures when asked: the start shows the
+    smith at her work, the state that switches her off does not draw her."""
+    pg = page.context.new_page()
+    pg.goto(server + "/?agent=1")
+    pg.wait_for_function("window.agent && studio.ready", timeout=60000)
+    out = pg.evaluate("""async () => {
+        agent.questState(null);
+        const m = studio.people.markers.get('fixplace.p1');
+        if (!m?.userData.at) return { setup: 'the smith has no spot' };
+        const [x, y, z] = m.userData.at;
+        const cam = { w: 320, h: 240, fov: 40, pos: [x - 900, y - 900, z + 700], target: [x, y, z + 80], people: true };
+        const start = (await agent.shot(cam)).people;
+        agent.questState('dead');
+        const dead = (await agent.shot(cam)).people;
+        const plain = (await agent.shot({ ...cam, people: false })).people;
+        agent.questState(null);
+        return { start, dead, plain }; }""")
+    pg.close()
+    assert "Ada Fixwright" in (out.get("start") or []), out
+    assert "Ada Fixwright" not in out["dead"] and out["plain"] == [], out

@@ -68,6 +68,8 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
     from tools.places.look.daemon import save_session
     space = "exterior"
     args, d.qstate = take_state(args)
+    d.people = "--people" in args   # people drawn as named stand-ins (always in a quest state)
+    args = [x for x in args if x != "--people"]
     if d.qstate:
         from tools.places import states
         from tools.places.look.scene import PLACES

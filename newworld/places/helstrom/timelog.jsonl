@@ -1,2 +1,3 @@
 {"t": "pass", "at": 1795362210.62, "edge": "start", "what": "structure surveys and tool gaps", "id": "p1795362210", "tree": "/home/ubuntu/skyrim-argonia/.claude/worktrees/agent-ad80c90ca8a548efe", "branch": "worktree-agent-ad80c90ca8a548efe"}
 {"t": "phase", "at": 1795362215.39, "name": "tool fix: playwalk stale looks", "note": "", "pass": "p1795362210"}
+{"t": "phase", "at": 1795362274.72, "name": "tool fix: state people drawn", "note": "", "pass": "p1795362210"}

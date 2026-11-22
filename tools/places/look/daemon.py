@@ -227,8 +227,11 @@ class Daemon:
         return self.scenes[key]
 
     def shot(self, cam: dict):
+        # people (the place's and the quests') are drawn as named stand-in figures in a quest state or when asked:
+        # a state that only switches people is judged by them
+        people = bool(getattr(self, "qstate", None) or getattr(self, "people", False))
         r = self.page.evaluate("(c) => agent.shot(c)", cam | {"helpers": getattr(self, "helpers", False),
-                                                               "fill": getattr(self, "fill", False)})
+                                                               "fill": getattr(self, "fill", False), "people": people})
         return draw.from_data_url(r["png"]), r
 
     # ---------- requests ----------
