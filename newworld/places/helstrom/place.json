@@ -1672,7 +1672,8 @@
    {
     "check": "doors",
     "ids": [
-     "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE"
+     "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE",
+     "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM"
     ],
     "why": "the Boatmen's Lodge's door is the source's own auto-load door at the moored ship's side (an AutoLoadDoor01, no leaf that opens); its rider lands on the pier beside the ship, where the ship's bulk stands near"
    }
@@ -2145,7 +2146,9 @@
   "agent-20261122T024901",
   "agent-20261122T024906",
   "agent-20261122T024911",
-  "agent-20261122T032108"
+  "agent-20261122T032108",
+  "agent-20261122T040720",
+  "agent-20261122T040729"
  ],
  "wholesale": {
   "offset": 180.0,
