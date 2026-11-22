@@ -97,6 +97,8 @@ def ensure() -> float:
             break
         time.sleep(0.1)
     t0 = time.time()
+    from tools.places.look import daemon as _daemon
+    _daemon.reap()   # what a deleted checkout left running (a studio on this checkout's port) goes first
     LOOK_OUT.mkdir(parents=True, exist_ok=True)
     log = open(LOOK_OUT / "daemon.log", "a")
     subprocess.Popen([sys.executable, "-m", "tools.places.look.daemon"], stdout=log, stderr=subprocess.STDOUT,
