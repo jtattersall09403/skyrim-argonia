@@ -103,8 +103,12 @@ function pump() {
   }
 }
 const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
-export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null) {
-  const key = `${model}|${level}|${tint || ''}`;
+// A shape name as three's glTF loader keeps it (it drops `[ ] . : /` and turns spaces into `_`), so a base's
+// `hide_shapes` (the record's alternate textures that resolve to nothing: tools/places/assets/alttex.py) match it.
+export const shapeName = (s) => String(s || '').replace(/\s/g, '_').replace(/[[\].:/]/g, '');
+export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, hide = null) {
+  const hidden = new Set((hide || []).map(shapeName));
+  const key = `${model}|${level}|${tint || ''}|${[...hidden].sort().join(',')}`;
   if (!meshCache.has(key)) {
     meshCache.set(key, new Promise((resolve) => {
       queue.push({ pri, run: async () => {
@@ -119,6 +123,8 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             if (o.name === 'placeholder' || o.material?.name === 'placeholder') parts.placeholder = true;
             // geometry the game never draws: editor markers (and all under them) show only in the Creation Kit
             for (let q = o; q; q = q.parent) if (/^editormarker/i.test(q.name || '')) return;
+            // shapes the record's alternate textures leave undrawn in the game (a dead Hist's leaves)
+            if (hidden.size) for (let q = o; q; q = q.parent) if (hidden.has(shapeName(q.name))) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
@@ -353,7 +359,7 @@ class Group {
     if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
-      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null).then((parts) => {
+      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null, this.base.hide_shapes).then((parts) => {
         // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists
         // it), never left out unseen; a model that loads and holds nothing drawable (a furniture marker) is empty
         if (parts && !parts.length && !parts.failed) { this.empty = true; return; }
@@ -480,7 +486,9 @@ export class ObjectLayer {
       if (!buckets.has(k)) buckets.set(k, { base, kind, ghost: !!e.ghost, prim, refs: [] });
       buckets.get(k).refs.push(e.ref);
     }
-    for (const [k, g] of this.groups) if (!buckets.has(k)) { g.dispose(); this.groups.delete(k); }
+    // a group left with no refs (a quest state hiding its pieces, a delete undone later) keeps its loaded model, so
+    // the pieces draw again at once when they come back; only a layer that is let go disposes its groups
+    for (const [k, g] of this.groups) if (!buckets.has(k)) g.setRefs([]);
     for (const [k, b] of buckets) {
       let g = this.groups.get(k);
       if (!g) { g = new Group(this, b.base, b.kind, b.ghost, b.prim); this.groups.set(k, g); }
