@@ -120,6 +120,10 @@ added here the day they are made, with the date and the issue.
   and a dagger, or an offensive spell tome (2026-11-22).
 - Item types and frequency vary by region and locality as part of each region's identity, and make sense at
   every level from one fisherman's hut up through locality and region to the province (2026-11-22).
+- A place's ground is changed as little as possible: much went into generating the world, and editing the place
+  is the expensive end of the ladder. Ground is repainted or reshaped only where a check, a walk fault or a plain
+  visible fault needs it; where the words are only cosmetic, the record, quest or story prose is changed to fit
+  what is there (2026-11-22).
 
 ## The game
 

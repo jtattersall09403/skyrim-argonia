@@ -39,6 +39,11 @@ Place-record prose is the cheapest thing to change; a quest's stage order, a key
 plot is the dearest. If the cheapest change touches rung 1 or 2, it is not cheap: find another, and if there is none
 that is a call for the owner.
 
+The built place is dearer to change than any prose, and its ground dearest of all: much went into generating the
+world. Before changing what is built to match the words, ask whether the words are only cosmetic; if they are, the
+words change. Ground is repainted or reshaped only where a check, a walk fault or a plain visible fault needs it,
+and then as little as does the job.
+
 ## How an agent works by it
 
 - **Before** changing a place, a quest, a person or a record, read what the others say about it: the place's record
