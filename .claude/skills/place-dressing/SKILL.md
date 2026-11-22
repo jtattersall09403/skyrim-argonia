@@ -27,6 +27,10 @@ mesh, seated `on` the tree. Run `draft hang <place>` (dry run:
 air means its tree moved: `look probe` it, then `draft hang`. `draft check` fails a lantern not on a limb of its
 tree. A source's own hanging lanterns come with the baseline.
 
+A promised station, stall, pool or shrine is a promise-list row; it turns `built` with the refs placed here. A
+Hist's sap pool, its clutch and its lanterns go on the living tree's enable parent where the place has quest states,
+so a dead ending takes them with the tree (`place-story`, Quest states).
+
 ## Hist sap
 
 Every living Hist has a still pool of its own amber sap at its roots: our `ArgoniaHistSapPool` (vanilla's round

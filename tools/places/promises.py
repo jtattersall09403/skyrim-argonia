@@ -228,7 +228,8 @@ def evidence(pdir: Path) -> dict:
     refs = {r["id"] for r in S.place_refs(pdir)}
     for r in jsonl(pdir / "ledger.jsonl"):
         if r.get("status") in ("placed", "adapted", "replaced", "kept") or r.get("as"):
-            refs.add(r.get("as"))
+            a = r.get("as")
+            refs.update(a if isinstance(a, list) else [a])
             refs.add(r.get("src"))
     refs.discard(None)
     place = json.loads((pdir / "place.json").read_text()) if (pdir / "place.json").exists() else {}
