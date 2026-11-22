@@ -167,6 +167,18 @@ def test_a_smith_sells_the_ingredients_its_place_and_region_make(w):
     assert smithing_wares(w, "helstrom", rid, "trader-apothecary") == []
 
 
+
+def test_a_trader_with_a_gear_list_is_derived_with_its_smithing_wares():
+    """The derive of a city with a weapon-selling smith lists the smith's gear and its smithing ingredients (a name
+    bound in the gear pick never takes the place of the trader's give)."""
+    from tools.places.stock.derive import Place, derive
+    out = Path(__file__).resolve().parents[2] / "out" / "places"
+    if not (out / "bundles" / "draft.helstrom" / "bundle.json").exists():
+        pytest.skip("no built bundle of helstrom here")
+    doc = derive(Place.load("helstrom", out))
+    smith = [t for t in doc["traders"] if any("ingredient" in i["why"] for i in t["items"])]
+    assert any(any("sword" in i["why"] for i in t["items"]) for t in smith)
+
 STAFF = KOTM + "735249"     # SaxhleelStaffSoulTrap: a magic staff its record types as a sword
 
 
