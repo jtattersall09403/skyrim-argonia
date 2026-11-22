@@ -33,6 +33,16 @@ CONT_RESPAWNS = 0x2
 GOLD = "Skyrim.esm:00000F"
 
 
+@lru_cache(maxsize=1)
+def asset_only_plugins() -> frozenset[str]:
+    """The plugins of mods/dependencies.json's asset-only rows (lower case): never active in the game."""
+    import json
+    dep = Path(__file__).resolve().parents[3] / "mods" / "dependencies.json"
+    if not dep.exists():
+        return frozenset()
+    return frozenset(p.lower() for m in json.loads(dep.read_text())["mods"] if m.get("asset_only") for p in m.get("plugins", []))
+
+
 def place_key(form_key: str) -> str:
     """esm.py's "06X:Plugin" to the places' "Plugin:06X"."""
     hexid, plugin = form_key.split(":", 1)
@@ -67,8 +77,14 @@ class Records:
                 continue
             path = Path(name) if Path(name).is_absolute() else find_plugin(str(name), dirs)
             p = esm.Plugin.read(path, SIGS)
+            own = Path(name).name.lower() in asset_only_plugins()
             for rec in p.records():
-                self.raw[place_key(rec.key)] = rec
+                k = place_key(rec.key)
+                # an asset-only mod's plugin is never active: its overrides of another plugin's records never reach
+                # the game, so only its own new records are read (Heavy Armory re-keywords Skyrim's bows)
+                if own and k in self.raw and k.rsplit(":", 1)[0].lower() != Path(name).name.lower():
+                    continue
+                self.raw[k] = rec
         self.kw = {k: r.edid or k for k, r in self.raw.items() if r.sig == "KYWD"}
         return self
 

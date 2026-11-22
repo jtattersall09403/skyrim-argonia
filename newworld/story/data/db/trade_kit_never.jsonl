@@ -8,7 +8,7 @@
 {"kit_id":"dunmer-household","seq":0,"materials":"imperial","why":"a Dunmer holdout keeps nothing of the Empire's issue without a reason"}
 {"kit_id":"elder","seq":0,"groups":"foreign","why":"an Argonian elder's goods are the marsh's own unless the record names a foreign tie"}
 {"kit_id":"fisher","seq":0,"slot":"heavy","why":"a fisher wades and swims: no heavy armour"}
-{"kit_id":"fisher","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","groups":"metal foreign","why":"a metal two-handed weapon is a soldier's, not a fisher's"}
+{"kit_id":"fisher","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","groups":"metal foreign","except":"(?i)harpoon|trident","why":"a metal two-handed weapon is a soldier's, not a fisher's (a harpoon or trident is a fisher's)"}
 {"kit_id":"fisher","seq":2,"bands":"rare ruin unique","why":"a fisher's hut holds nothing of a rare or relic make"}
 {"kit_id":"gatherer","seq":0,"slot":"heavy","why":"no armour beyond wraps"}
 {"kit_id":"gatherer","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}
@@ -21,6 +21,7 @@
 {"kit_id":"hunter","seq":1,"slot":"weapon","groups":"foreign","why":"a hunter's arms are the marsh's own"}
 {"kit_id":"imperial-household","seq":0,"materials":"bonemold","why":"no Dunmer make in an Imperial household without a reason"}
 {"kit_id":"overseer","seq":0,"bands":"ruin unique","why":"no relics"}
+{"kit_id":"pirate","seq":0,"slot":"heavy","why":"a sailor swims: no heavy armour"}
 {"kit_id":"priest","seq":0,"slot":"heavy","why":"no armour"}
 {"kit_id":"priest","seq":1,"slot":"weapon","groups":"foreign metal","why":"nothing forged at the Hist"}
 {"kit_id":"resident","seq":0,"slot":"heavy","why":"a resident wears no heavy armour"}

@@ -1215,6 +1215,414 @@
      "value": 1600
     }
    }
+  },
+  "pike": {
+   "ceiling": {
+    "T1": 11.0,
+    "T2": 13.0,
+    "T3": 16.0,
+    "T4": 17.0,
+    "T5": 19.0,
+    "T6": 20.0
+   },
+   "bases": {
+    "T1": {
+     "IronPike": 11.0
+    },
+    "T2": {
+     "SteelPike": 13.0
+    },
+    "T3": {
+     "ElvenPike": 16.0
+    },
+    "T4": {
+     "GlassPike": 17.0
+    },
+    "T5": {
+     "EbonyPike": 19.0
+    },
+    "T6": {
+     "DaedricPike": 20.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronPike",
+     "power": 11.0,
+     "weight": 13.0,
+     "value": 54
+    },
+    "T2": {
+     "edid": "SteelPike",
+     "power": 13.0,
+     "weight": 15.0,
+     "value": 99
+    },
+    "T3": {
+     "edid": "ElvenPike",
+     "power": 16.0,
+     "weight": 17.0,
+     "value": 509
+    },
+    "T4": {
+     "edid": "GlassPike",
+     "power": 17.0,
+     "weight": 18.0,
+     "value": 887
+    },
+    "T5": {
+     "edid": "EbonyPike",
+     "power": 19.0,
+     "weight": 19.0,
+     "value": 1553
+    },
+    "T6": {
+     "edid": "DaedricPike",
+     "power": 20.0,
+     "weight": 20.0,
+     "value": 3400
+    }
+   }
+  },
+  "halberd": {
+   "ceiling": {
+    "T1": 14.0,
+    "T2": 16.0,
+    "T3": 19.0,
+    "T4": 20.0,
+    "T5": 21.0,
+    "T6": 23.0
+   },
+   "bases": {
+    "T1": {
+     "IronHalberd": 14.0
+    },
+    "T2": {
+     "SteelHalberd": 16.0
+    },
+    "T3": {
+     "ElvenHalberd": 19.0
+    },
+    "T4": {
+     "GlassHalberd": 20.0
+    },
+    "T5": {
+     "EbonyHalberd": 21.0
+    },
+    "T6": {
+     "DaedricHalberd": 23.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronHalberd",
+     "power": 14.0,
+     "weight": 17.0,
+     "value": 55
+    },
+    "T2": {
+     "edid": "SteelHalberd",
+     "power": 16.0,
+     "weight": 18.0,
+     "value": 100
+    },
+    "T3": {
+     "edid": "ElvenHalberd",
+     "power": 19.0,
+     "weight": 21.0,
+     "value": 520
+    },
+    "T4": {
+     "edid": "GlassHalberd",
+     "power": 20.0,
+     "weight": 22.0,
+     "value": 900
+    },
+    "T5": {
+     "edid": "EbonyHalberd",
+     "power": 21.0,
+     "weight": 23.0,
+     "value": 1585
+    },
+    "T6": {
+     "edid": "DaedricHalberd",
+     "power": 23.0,
+     "weight": 24.0,
+     "value": 2750
+    }
+   }
+  },
+  "quarterstaff": {
+   "ceiling": {
+    "T1": 10.0,
+    "T2": 11.0,
+    "T3": 14.0,
+    "T4": 15.0,
+    "T5": 17.0,
+    "T6": 17.0
+   },
+   "bases": {
+    "T1": {
+     "IronQStaff": 10.0
+    },
+    "T2": {
+     "SteelQStaff": 11.0
+    },
+    "T3": {
+     "ElvenQStaff": 14.0
+    },
+    "T4": {
+     "GlassQStaff": 15.0
+    },
+    "T5": {
+     "EbonyQStaff": 17.0
+    },
+    "T6": {
+     "DaedricQStaff": 16.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronQStaff",
+     "power": 10.0,
+     "weight": 15.0,
+     "value": 30
+    },
+    "T2": {
+     "edid": "SteelQStaff",
+     "power": 11.0,
+     "weight": 15.0,
+     "value": 55
+    },
+    "T3": {
+     "edid": "ElvenQStaff",
+     "power": 14.0,
+     "weight": 18.0,
+     "value": 280
+    },
+    "T4": {
+     "edid": "GlassQStaff",
+     "power": 15.0,
+     "weight": 19.0,
+     "value": 490
+    },
+    "T5": {
+     "edid": "EbonyQStaff",
+     "power": 17.0,
+     "weight": 20.0,
+     "value": 865
+    },
+    "T6": {
+     "edid": "DaedricQStaff",
+     "power": 16.0,
+     "weight": 21.0,
+     "value": 1500
+    }
+   }
+  },
+  "rapier": {
+   "ceiling": {
+    "T1": 5.0,
+    "T2": 6.0,
+    "T3": 9.0,
+    "T4": 10.0,
+    "T5": 11.0,
+    "T6": 12.0
+   },
+   "bases": {
+    "T1": {
+     "IronRapier": 5.0
+    },
+    "T2": {
+     "SteelRapier": 6.0
+    },
+    "T3": {
+     "ElvenRapier": 9.0
+    },
+    "T4": {
+     "GlassRapier": 10.0
+    },
+    "T5": {
+     "EbonyRapier": 11.0
+    },
+    "T6": {
+     "DaedricRapier": 12.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronRapier",
+     "power": 5.0,
+     "weight": 6.0,
+     "value": 25
+    },
+    "T2": {
+     "edid": "SteelRapier",
+     "power": 6.0,
+     "weight": 7.0,
+     "value": 45
+    },
+    "T3": {
+     "edid": "ElvenRapier",
+     "power": 9.0,
+     "weight": 10.0,
+     "value": 235
+    },
+    "T4": {
+     "edid": "GlassRapier",
+     "power": 10.0,
+     "weight": 11.0,
+     "value": 410
+    },
+    "T5": {
+     "edid": "EbonyRapier",
+     "power": 11.0,
+     "weight": 12.0,
+     "value": 720
+    },
+    "T6": {
+     "edid": "DaedricRapier",
+     "power": 12.0,
+     "weight": 13.0,
+     "value": 1250
+    }
+   }
+  },
+  "whip": {
+   "ceiling": {
+    "T1": 7.0,
+    "T2": 8.0,
+    "T3": 11.0,
+    "T4": 12.0,
+    "T5": 13.0,
+    "T6": 14.0
+   },
+   "bases": {
+    "T1": {
+     "IronWhip": 7.0
+    },
+    "T2": {
+     "SteelWhip": 8.0
+    },
+    "T3": {
+     "ElvenWhip": 11.0
+    },
+    "T4": {
+     "GlassWhip": 12.0
+    },
+    "T5": {
+     "EbonyWhip": 13.0
+    },
+    "T6": {
+     "DaedricWhip": 14.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronWhip",
+     "power": 7.0,
+     "weight": 8.0,
+     "value": 30
+    },
+    "T2": {
+     "edid": "SteelWhip",
+     "power": 8.0,
+     "weight": 9.0,
+     "value": 55
+    },
+    "T3": {
+     "edid": "ElvenWhip",
+     "power": 11.0,
+     "weight": 11.0,
+     "value": 280
+    },
+    "T4": {
+     "edid": "GlassWhip",
+     "power": 12.0,
+     "weight": 10.0,
+     "value": 490
+    },
+    "T5": {
+     "edid": "EbonyWhip",
+     "power": 13.0,
+     "weight": 11.0,
+     "value": 865
+    },
+    "T6": {
+     "edid": "DaedricWhip",
+     "power": 14.0,
+     "weight": 14.0,
+     "value": 1500
+    }
+   }
+  },
+  "claw": {
+   "ceiling": {
+    "T1": 5.0,
+    "T2": 6.0,
+    "T3": 9.0,
+    "T4": 10.0,
+    "T5": 11.0,
+    "T6": 12.0
+   },
+   "bases": {
+    "T1": {
+     "IronClaws": 5.0
+    },
+    "T2": {
+     "SteelClaws": 6.0
+    },
+    "T3": {
+     "ElvenClaws": 9.0
+    },
+    "T4": {
+     "GlassClaws": 10.0
+    },
+    "T5": {
+     "EbonyClaws": 11.0
+    },
+    "T6": {
+     "DaedricClaws": 12.0
+    }
+   },
+   "stats": {
+    "T1": {
+     "edid": "IronClaws",
+     "power": 5.0,
+     "weight": 3.0,
+     "value": 10
+    },
+    "T2": {
+     "edid": "SteelClaws",
+     "power": 6.0,
+     "weight": 4.0,
+     "value": 45
+    },
+    "T3": {
+     "edid": "ElvenClaws",
+     "power": 9.0,
+     "weight": 6.0,
+     "value": 235
+    },
+    "T4": {
+     "edid": "GlassClaws",
+     "power": 10.0,
+     "weight": 6.0,
+     "value": 410
+    },
+    "T5": {
+     "edid": "EbonyClaws",
+     "power": 11.0,
+     "weight": 7.0,
+     "value": 720
+    },
+    "T6": {
+     "edid": "DaedricClaws",
+     "power": 12.0,
+     "weight": 8.0,
+     "value": 1250
+    }
+   }
   }
  }
 }

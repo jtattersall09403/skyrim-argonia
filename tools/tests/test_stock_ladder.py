@@ -3,6 +3,7 @@ the expected mix, on the committed sources and the database built from them."""
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -175,11 +176,8 @@ def test_a_magic_staff_typed_as_a_sword_is_misfiled_and_flagged_and_never_issued
     assert "magic staff" in split.misfiled(staff)
     assert split.misfiled({"key": HTBM + "1B0F87", "edid": "CIPHTBMBambooStaff1", "sig": "WEAP",
                            "keywords": ["WeapTypeWarhammer"]}) is None          # a quarterstaff is a weapon
-    guard = next(p for p in w.rows("person", place_id="outpost-m6-m66") if p.person_role_id == "guard")
-    doc = {"possessions": [{"person": guard.id, "items": [{"item": STAFF, "count": 1}]}]}
-    assert [b["rule"] for b in reach.audit(w, "outpost-m6-m66", doc)] == ["misfiled"]
     items = json.loads((STOCK / "items.json").read_text())["items"]
-    assert [i["edid"] for i in items if split.misfiled(i)] == ["SaxhleelStaffSoulTrap"]   # the catalogue's only one
+    assert [i["edid"] for i in items if split.misfiled(i)] == []      # no catalogue item is misfiled now
 
 
 def test_a_t2_guard_s_sidearm_is_a_real_t2_marsh_weapon_never_a_staff():
@@ -288,3 +286,50 @@ def test_no_rule_of_the_stock_reads_the_plugins_of_a_place_s_source():
         assert "source_plugins" not in src and "p.plugins()" not in src, mod.__name__
     text = json.dumps(split.scale()["guard_issue"])
     assert '"plugin"' not in text and "source plugin" not in text.replace("No plugin of the place's source is read", "")
+
+
+SIX = Path(__file__).parent / "data" / "stock_six_places_pin.json"
+
+
+def test_the_six_act_i_places_read_exactly_as_before_the_ladder_was_widened(w):
+    """The wider ladder is for places from here on (owner, 2026-11-22): the six Act I places' reach flags and gear mix
+    are pinned as they stood before it (tools/tests/data/stock_six_places_pin.json)."""
+    pin = json.loads(SIX.read_text())
+    for p, want in pin.items():
+        doc = reach.load_source(p)
+        m = reach.mix(w, p, doc)
+        got = {"flagged": sorted([b["rule"], b["holder"], b["item"]] for b in reach.flagged(w, p, doc)),
+               "mix": {"by_material": m["by_material"], "targets": [[t["groups"], t["target"], t["pct"]] for t in m["targets"]]}}
+        assert json.dumps(got, sort_keys=True) == json.dumps(want, sort_keys=True), p
+
+
+def test_the_new_weapon_types_take_animated_armoury_s_stats_per_tier():
+    table = split.power_table()
+    want = {"pike": (11, 13, 16, 17, 19, 20), "halberd": (14, 16, 19, 20, 21, 23), "quarterstaff": (10, 11, 14, 15, 17, 16),
+            "rapier": (5, 6, 9, 10, 11, 12), "whip": (7, 8, 11, 12, 13, 14), "claw": (5, 6, 9, 10, 11, 12)}
+    for kind, powers in want.items():
+        assert tuple(int(table[kind]["stats"][f"T{i + 1}"]["power"]) for i in range(6)) == powers, kind
+    pike = {"key": "NewArmoury.esp:153BA6", "sig": "WEAP", "keywords": ["WeapMaterialIron", "WeapTypePike", "WeapTypeGreatsword"],
+            "damage": 11}
+    assert split.power_kind(pike) == "pike" and split.slot_of(pike) == "weapon"
+    assert split.item_tier(pike)[0] == "T2" and split.ladder_override(pike)["power"] == 13.0   # bog iron: a steel pike's
+
+
+def test_every_renamed_piece_has_a_black_marsh_name_and_none_keeps_a_skyrim_people_s():
+    gear = split.item_materials()["gear"]
+    named = {k: r["name"] for k, r in gear.items() if r.get("name")}
+    assert len(named) >= 50
+    assert not [n for n in named.values() if re.search(r"Forsworn|Falmer|Riekling|Grummite|Steel|Iron\b", n)]
+    assert gear["ccBGSSSE025-AdvDSGS.esm:000BE0"]["name"] == "Hist Amber Sword"
+
+
+def test_the_widened_ladder_fills_the_named_gaps():
+    items = {i["id"]: i for i in json.loads((STOCK / "items.json").read_text())["items"]}
+    gear = split.item_materials()["gear"]
+    on = [(items[k]["stock_tier_id"], split.slot_of(items[k]), items[k]["power_kind"], r["material"])
+          for k, r in gear.items() if k in items]
+    assert sum(m == "chitin" for *_, m in on) >= 9
+    assert {"T1", "T3"} <= {t for t, s, *_ in on if s == "heavy"}
+    assert {"sword", "dagger", "mace", "waraxe", "bow"} <= {k for t, s, k, _ in on if t == "T5"}
+    assert not [m for t, s, k, m in on if t == "T6" and s == "weapon"]                    # T6 weapons stay relics only
+    assert {m for t, s, k, m in on if t == "T2" and s == "light"} - {"saxhleel"}

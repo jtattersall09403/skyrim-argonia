@@ -184,8 +184,30 @@
   "table": [
    {"id": "imperial-post", "label": "Imperial issue", "holder_pattern": "\\b(Legion|Imperial (garrison|soldiers?|troops?|officers?|guards?))\\b", "min_ceiling": "T2", "tier": "T2", "materials": ["imperial"], "fallback": ["leather", "hide"], "weapon_materials": ["imperial", "bog-iron"], "why": "Only a post the Empire itself holds issues Imperial gear; in 4E 201 the Legion is gone from Black Marsh, so no place of ours matches today and the row waits for one that does."},
    {"id": "dunmer-holdout", "label": "Dunmer bonemold issue", "holder_pattern": "\\bDunmer\\b", "min_ceiling": "T2", "tier": "T3", "materials": ["bonemold"], "fallback": ["leather", "hide"], "weapon_materials": ["bonemold", "bog-iron"], "why": "A Dunmer holdout arms its hands in its own people's bonemold, as Morrowind's garrisons do; where the ceiling stops short of a bonemold piece the slot falls to leather."},
-   {"id": "argonian-scale", "label": "BM&V's Argonian scale guard armour", "kinds": ["city", "town", "fort", "keep", "prison"], "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"], "min_ceiling": "T3", "tier": "T3", "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"], "outfit": "Black Marsh North.esp:037DF8", "weapon": null, "why": "The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."},
-   {"id": "saxhleel-issue", "label": "Saxhleel bone-and-leather issue", "kinds": ["village", "hamlet", "outpost", "farm", "estate", "homestead", "ferry", "station", "lighthouse", "logging-camp", "quarry", "mine", "belvedere", "city", "town", "fort", "keep", "prison"], "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"], "min_ceiling": "T2", "tier": "T2", "materials": ["saxhleel"], "fallback": ["leather", "hide"], "weapon_materials": ["saxhleel", "bog-iron"], "why": "The marsh's own working issue for the posts and villages of the Argonian cultures, and for a town or city whose ceiling stops short of the scale set: Saxhleel bone-and-leather work (T2), the sidearm Saxhleel or bog iron."},
+   {
+    "id": "argonian-scale",
+    "label": "BM&V's Argonian scale guard armour",
+    "kinds": ["city", "town", "fort", "keep", "prison"],
+    "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
+    "min_ceiling": "T3",
+    "tier": "T3",
+    "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"],
+    "outfit": "Black Marsh North.esp:037DF8",
+    "weapon": null,
+    "why": "The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
+   },
+   {
+    "id": "saxhleel-issue",
+    "label": "Saxhleel bone-and-leather issue",
+    "kinds": ["village", "hamlet", "outpost", "farm", "estate", "homestead", "ferry", "station", "lighthouse", "logging-camp", "quarry", "mine", "belvedere", "city", "town", "fort", "keep", "prison"],
+    "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
+    "min_ceiling": "T2",
+    "tier": "T2",
+    "materials": ["saxhleel"],
+    "fallback": ["leather", "hide"],
+    "weapon_materials": ["saxhleel", "bog-iron"],
+    "why": "The marsh's own working issue for the posts and villages of the Argonian cultures, and for a town or city whose ceiling stops short of the scale set: Saxhleel bone-and-leather work (T2), the sidearm Saxhleel or bog iron."
+   },
    {"id": "tribal-hide", "label": "Hide and flint", "kinds": ["tribal-camp", "outlaw-camp", "cave"], "min_ceiling": "T1", "tier": "T1", "materials": ["hide"], "fallback": ["leather"], "weapon_materials": ["flint", "bone", "wood"], "why": "A tribal camp's fighters wear what the hunt gives, hide, and carry flint or bone."},
    {"id": "plain", "label": "Plain issue", "min_ceiling": "T1", "tier": "T2", "why": "Any other place: the faction's plain issue (light armour at the faction's issue tier, the plain issue's sword)."}
   ]
@@ -319,7 +341,13 @@
    "heavy-helmet": {"T1": ["ArmorIronHelmet"], "T2": ["ArmorSteelHelmetA", "ArmorImperialHelmet"], "T3": ["ArmorDwarvenHelmet", "ArmorSteelPlateHelmet", "DLC2ArmorChitinHeavyHelmet", "DLC2ArmorBonemoldHelmet"], "T4": ["ArmorOrcishHelmet", "ArmorEbonyHelmet"], "T5": [], "T6": ["ArmorDaedricHelmet", "ArmorDragonplateHelmet"]},
    "heavy-gauntlets": {"T1": ["ArmorIronGauntlets"], "T2": ["ArmorSteelGauntletsA", "ArmorImperialGauntlets"], "T3": ["ArmorDwarvenGauntlets", "ArmorSteelPlateGauntlets", "DLC2ArmorChitinHeavyGauntlets", "DLC2ArmorBonemoldGauntlets"], "T4": ["ArmorOrcishGauntlets", "ArmorEbonyGauntlets"], "T5": [], "T6": ["ArmorDaedricGauntlets", "ArmorDragonplateGauntlets"]},
    "heavy-boots": {"T1": ["ArmorIronBoots"], "T2": ["ArmorSteelBootsA", "ArmorImperialBoots"], "T3": ["ArmorDwarvenBoots", "ArmorSteelPlateBoots", "DLC2ArmorChitinHeavyBoots", "DLC2ArmorBonemoldBoots"], "T4": ["ArmorOrcishBoots", "ArmorEbonyBoots"], "T5": [], "T6": ["ArmorDaedricBoots", "ArmorDragonplateBoots"]},
-   "shield": {"T1": ["ArmorHideShield", "ArmorIronShield", "ArmorIronBandedShield"], "T2": ["ArmorSteelShield", "ArmorImperialShield", "ArmorImperialLightShield"], "T3": ["ArmorDwarvenShield", "ArmorElvenShield", "DLC2ArmorChitinShield", "DLC2ArmorBonemoldShield"], "T4": ["ArmorOrcishShield", "ArmorEbonyShield"], "T5": ["ArmorGlassShield"], "T6": ["ArmorDaedricShield", "ArmorDragonscaleShield", "ArmorDragonplateShield"]}
+   "shield": {"T1": ["ArmorHideShield", "ArmorIronShield", "ArmorIronBandedShield"], "T2": ["ArmorSteelShield", "ArmorImperialShield", "ArmorImperialLightShield"], "T3": ["ArmorDwarvenShield", "ArmorElvenShield", "DLC2ArmorChitinShield", "DLC2ArmorBonemoldShield"], "T4": ["ArmorOrcishShield", "ArmorEbonyShield"], "T5": ["ArmorGlassShield"], "T6": ["ArmorDaedricShield", "ArmorDragonscaleShield", "ArmorDragonplateShield"]},
+   "pike": {"T1": ["IronPike"], "T2": ["SteelPike"], "T3": ["ElvenPike"], "T4": ["GlassPike"], "T5": ["EbonyPike"], "T6": ["DaedricPike"]},
+   "halberd": {"T1": ["IronHalberd"], "T2": ["SteelHalberd"], "T3": ["ElvenHalberd"], "T4": ["GlassHalberd"], "T5": ["EbonyHalberd"], "T6": ["DaedricHalberd"]},
+   "quarterstaff": {"T1": ["IronQStaff"], "T2": ["SteelQStaff"], "T3": ["ElvenQStaff"], "T4": ["GlassQStaff"], "T5": ["EbonyQStaff"], "T6": ["DaedricQStaff"]},
+   "rapier": {"T1": ["IronRapier"], "T2": ["SteelRapier"], "T3": ["ElvenRapier"], "T4": ["GlassRapier"], "T5": ["EbonyRapier"], "T6": ["DaedricRapier"]},
+   "whip": {"T1": ["IronWhip"], "T2": ["SteelWhip"], "T3": ["ElvenWhip"], "T4": ["GlassWhip"], "T5": ["EbonyWhip"], "T6": ["DaedricWhip"]},
+   "claw": {"T1": ["IronClaws"], "T2": ["SteelClaws"], "T3": ["ElvenClaws"], "T4": ["GlassClaws"], "T5": ["EbonyClaws"], "T6": ["DaedricClaws"]}
   },
   "stat_bases": {
    "dagger": {"T1": "IronDagger", "T2": "SteelDagger", "T3": "ElvenDagger", "T4": "GlassDagger", "T5": "EbonyDagger", "T6": "DaedricDagger"},
@@ -338,9 +366,16 @@
    "heavy-helmet": {"T1": "ArmorIronHelmet", "T2": "ArmorSteelHelmetA", "T3": "ArmorDwarvenHelmet", "T4": "ArmorOrcishHelmet", "T5": "ArmorEbonyHelmet", "T6": "ArmorDaedricHelmet"},
    "heavy-gauntlets": {"T1": "ArmorIronGauntlets", "T2": "ArmorSteelGauntletsA", "T3": "ArmorDwarvenGauntlets", "T4": "ArmorOrcishGauntlets", "T5": "ArmorEbonyGauntlets", "T6": "ArmorDaedricGauntlets"},
    "heavy-boots": {"T1": "ArmorIronBoots", "T2": "ArmorSteelBootsA", "T3": "ArmorDwarvenBoots", "T4": "ArmorOrcishBoots", "T5": "ArmorEbonyBoots", "T6": "ArmorDaedricBoots"},
-   "shield": {"T1": "ArmorIronShield", "T2": "ArmorSteelShield", "T3": "ArmorDwarvenShield", "T4": "ArmorOrcishShield", "T5": "ArmorEbonyShield", "T6": "ArmorDaedricShield"}
+   "shield": {"T1": "ArmorIronShield", "T2": "ArmorSteelShield", "T3": "ArmorDwarvenShield", "T4": "ArmorOrcishShield", "T5": "ArmorEbonyShield", "T6": "ArmorDaedricShield"},
+   "pike": {"T1": "IronPike", "T2": "SteelPike", "T3": "ElvenPike", "T4": "GlassPike", "T5": "EbonyPike", "T6": "DaedricPike"},
+   "halberd": {"T1": "IronHalberd", "T2": "SteelHalberd", "T3": "ElvenHalberd", "T4": "GlassHalberd", "T5": "EbonyHalberd", "T6": "DaedricHalberd"},
+   "quarterstaff": {"T1": "IronQStaff", "T2": "SteelQStaff", "T3": "ElvenQStaff", "T4": "GlassQStaff", "T5": "EbonyQStaff", "T6": "DaedricQStaff"},
+   "rapier": {"T1": "IronRapier", "T2": "SteelRapier", "T3": "ElvenRapier", "T4": "GlassRapier", "T5": "EbonyRapier", "T6": "DaedricRapier"},
+   "whip": {"T1": "IronWhip", "T2": "SteelWhip", "T3": "ElvenWhip", "T4": "GlassWhip", "T5": "EbonyWhip", "T6": "DaedricWhip"},
+   "claw": {"T1": "IronClaws", "T2": "SteelClaws", "T3": "ElvenClaws", "T4": "GlassClaws", "T5": "EbonyClaws", "T6": "DaedricClaws"}
   },
-  "stat_about": "The one Skyrim base each ladder tier takes its stats from, per kind (iron, steel, elven, glass, ebony, daedric weapons; hide, leather, scaled, gilded elven, glass, dragonscale light armour; iron, steel, dwarven, orcish, ebony, daedric heavy armour and shields): an item of our material takes its tier's base's damage or rating, weight and value; its speed and reach stay its type's (`stockdb power` measures them into power.json `stats`; the world build writes them as overrides)."
+  "stat_about": "The one Skyrim base each ladder tier takes its stats from, per kind (iron, steel, elven, glass, ebony, daedric weapons; hide, leather, scaled, gilded elven, glass, dragonscale light armour; iron, steel, dwarven, orcish, ebony, daedric heavy armour and shields): an item of our material takes its tier's base's damage or rating, weight and value; its speed and reach stay its type's (`stockdb power` measures them into power.json `stats`; the world build writes them as overrides).",
+  "new_types_about": "Pike, halberd, quarterstaff, rapier, whip and claw have no Skyrim base: their bases are Animated Armoury's (NewArmoury.esp, loaded by the collection) iron, steel, elven, glass, ebony and daedric pieces, measured from its plugin by `stockdb power`."
  },
  "mix": {
   "about": "The target mix of gear by our material's group (materials.json `groups`), by the place's class; `python -m tools.places stock mix <place>` prints a place's stock against it. A target, never a rule: it says what a place of the class looks like on the whole (issue #89).",

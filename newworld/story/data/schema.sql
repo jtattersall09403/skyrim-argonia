@@ -1345,6 +1345,7 @@ CREATE TABLE "trade_kit_never" (
   "materials" TEXT,
   "groups" TEXT,
   "bands" TEXT,
+  "except" TEXT,                         -- a pattern over the editor id that the row does not reach (a fisher's harpoon)
   "why" TEXT NOT NULL,
   PRIMARY KEY ("kit_id", "seq")
 );

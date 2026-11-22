@@ -102,6 +102,10 @@ def guard_issue(facts: dict, ceiling: str, sc: dict | None = None) -> dict:
 WEAP_KINDS = {"WeapTypeDagger": "dagger", "WeapTypeSword": "sword", "WeapTypeWarAxe": "waraxe", "WeapTypeMace": "mace",
               "WeapTypeGreatsword": "greatsword", "WeapTypeBattleaxe": "battleaxe", "WeapTypeWarhammer": "warhammer",
               "WeapTypeBow": "bow"}
+# Animated Armoury's own weapon types, read before the vanilla type each also carries (a pike is greatsword-typed for
+# its animation, but its power is measured against pikes)
+WEAP_KINDS_FIRST = {"WeapTypePike": "pike", "WeapTypeHalberd": "halberd", "WeapTypeQtrStaff": "quarterstaff",
+                    "WeapTypeRapier": "rapier", "WeapTypeWhip": "whip", "WeapTypeClaw": "claw"}
 ARMOUR_SLOTS = {"ArmorCuirass": "cuirass", "ArmorHelmet": "helmet", "ArmorGauntlets": "gauntlets", "ArmorBoots": "boots"}
 
 
@@ -160,7 +164,7 @@ def power_kind(it: dict) -> str | None:
     kws = set(it.get("keywords") or [])
     sig = it.get("sig") or it.get("record")
     if sig == "WEAP":
-        return next((v for k, v in WEAP_KINDS.items() if k in kws), None)
+        return next((v for k, v in (WEAP_KINDS_FIRST | WEAP_KINDS).items() if k in kws), None)
     if sig == "ARMO":
         if "ArmorShield" in kws:
             return "shield"
@@ -175,7 +179,7 @@ def slot_of(it: dict) -> str | None:
     kind = power_kind(it)
     if kind is None:
         return None
-    if kind in WEAP_KINDS.values():
+    if kind in WEAP_KINDS.values() or kind in WEAP_KINDS_FIRST.values():
         return "weapon"
     return "shield" if kind == "shield" else kind.split("-", 1)[0]
 
@@ -263,11 +267,12 @@ def misfiled(it: dict) -> str | None:
     on the ladder (the ladder is plain gear), ammunition read as a weapon."""
     edid = it.get("edid") or ""
     kind = power_kind(it)
-    if "Staff" in edid and kind not in (None, "warhammer"):
+    if "Staff" in edid and kind not in (None, "warhammer", "quarterstaff"):
         return f"{edid} is a magic staff its record types as a {kind}"
     if (it.get("sig") or it.get("record")) == "AMMO" and kind:
         return f"{edid} is ammunition read as a {kind}"
-    if (it.get("ench") or it.get("enchanted")) and _key(it) in item_materials()["gear"]:
+    row = item_materials()["gear"].get(_key(it))
+    if (it.get("ench") or it.get("enchanted")) and row and not row.get("disenchant"):
         return f"{edid} is enchanted: the ladder files plain gear only"
     return None
 

@@ -1,91 +1,1021 @@
 {
  "about": "Trade kits: what a person of a trade is expected to carry, wear and keep at home, the food in their house, and what they would never own (docs/design/items.md, section People and households; skill place-stock). A person takes the first kit whose `match` (a pattern over their trade, case-insensitive) or `roles` (person_role) fits, then every overlay whose `races` fits (a Dunmer or Imperial household's own goods). A household's store follows its head's kit. `carry`, `wear` and `home` are expectations the stocker draws from (a slot, a weapon type or armour slot keyword, the materials of ours in order of preference, and a good for wares); `never` rows are what `stock reach` reports as a contradiction when a person's possessions or their household's store hold one: every condition a row names must hold (slot, type keyword, materials, groups, bands). A stock row with an `exception` (its reason in words) is never reported. Nothing here is a roll (decision 0035). Read by tools/newworld/stockdb.py (trade_kit, trade_kit_item, trade_kit_never) and tools/places/stock/reach.py.",
  "kits": [
-  {"id": "guard", "label": "Guard or levy", "match": "\\b(levy|watch|guard|warden of the council)\\b", "roles": ["guard"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeSword", "materials": ["bog-iron", "bone", "flint"], "why": "the issue's blade (scale.json guard_issue)"}, {"slot": "weapon", "typ": "WeapTypeBow", "materials": ["wood", "bone"], "why": "a watch's bow"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["scale", "leather", "hide"], "why": "light for the marsh"}],
-   "home": [{"good": "river-fish", "why": "rations"}], "food": ["river-fish", "saltrice"],
-   "never": [{"groups": ["foreign"], "why": "a levy carries the place's own issue, never foreign gear, unless the record makes them a foreign garrison"}, {"slot": "heavy", "materials": ["xanmeer-relic", "bronze"], "why": "relic plate is no levy issue"}]},
-  {"id": "fisher", "label": "Fisher, net-maker, weir-warden", "match": "\\b(fish\\w*|net-\\w+|eel\\w*|trodh|weir\\w*|gar)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["flint", "bone", "wood"], "why": "a fishing knife"}, {"slot": "weapon", "typ": "WeapTypeGreatsword", "materials": ["bone", "wood"], "why": "a harpoon or trident (the New Armory harpoons are greatsword-type)"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["hide", "leather"], "why": "wraps and a leather jerkin at most"}],
-   "home": [{"good": "river-fish", "why": "the catch, smoked and dried"}, {"good": "reed-weaving", "why": "nets, twine and traps"}], "food": ["river-fish", "saltrice", "eggs"],
-   "never": [{"slot": "heavy", "why": "a fisher wades and swims: no heavy armour"}, {"slot": "weapon", "groups": ["metal", "foreign"], "types": ["WeapTypeGreatsword", "WeapTypeBattleaxe", "WeapTypeWarhammer"], "why": "a metal two-handed weapon is a soldier's, not a fisher's"}, {"bands": ["rare", "ruin", "unique"], "why": "a fisher's hut holds nothing of a rare or relic make"}]},
-  {"id": "hunter", "label": "Hunter, trapper, fletcher", "match": "\\b(hunt\\w*|trapper|snare\\w*|nest-finder|fletcher|arrow-\\w+)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeBow", "materials": ["wood", "bone"], "why": "the hunting bow"}, {"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bone", "flint"], "why": "a skinning knife"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["leather", "hide", "scale"], "why": "hackwing or crocodile leather: quick and quiet"}],
-   "home": [{"good": "hide-and-leather", "why": "hides drying"}, {"good": "feathers", "why": "feathers for fletching"}], "food": ["river-fish", "eggs"],
-   "never": [{"slot": "heavy", "why": "a hunter moves quietly: no heavy armour"}, {"groups": ["foreign"], "slot": "weapon", "why": "a hunter's arms are the marsh's own"}]},
-  {"id": "gatherer", "label": "Gatherer of eggs, sap, herbs or fruit", "match": "\\b(gather\\w*|picker|egg-\\w+|sap-\\w+|herb\\w*|fruit|lumberry|jar-sealer)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["flint", "bone"], "why": "a cutting knife"}],
-   "wear": [], "home": [{"good": "sap", "why": "jars of sap and dried herbs"}, {"good": "eggs", "why": "eggs"}], "food": ["eggs", "river-fish"],
-   "never": [{"slot": "heavy", "why": "no armour beyond wraps"}, {"slot": "weapon", "types": ["WeapTypeGreatsword", "WeapTypeBattleaxe", "WeapTypeWarhammer"], "why": "no war weapon"}, {"bands": ["rare", "ruin", "unique"], "why": "nothing rare"}]},
-  {"id": "weaver", "label": "Reed-cutter, weaver, rope-twister", "match": "\\b(weav\\w*|plait\\w*|mat|basket\\w*|rope-\\w+|reed-\\w+|bundler|lacer)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["flint", "bone"], "why": "a reed knife"}],
-   "wear": [], "home": [{"good": "reed-weaving", "why": "reed, mats and rope"}], "food": ["river-fish", "saltrice"],
-   "never": [{"slot": "heavy", "why": "no armour"}, {"slot": "weapon", "types": ["WeapTypeGreatsword", "WeapTypeBattleaxe", "WeapTypeWarhammer"], "why": "no war weapon"}, {"bands": ["rare", "ruin", "unique"], "why": "nothing rare"}]},
-  {"id": "carver", "label": "Carver of bone, wood or stakes", "match": "\\b(carv\\w*|whittl\\w*|bone-\\w+|grave-stake|depth-stick)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bone", "flint"], "why": "carving knives"}],
-   "wear": [], "home": [{"good": "bone-and-horn", "why": "bone and horn to work"}], "food": ["river-fish"],
-   "never": [{"slot": "heavy", "why": "no armour"}, {"groups": ["foreign"], "slot": "weapon", "why": "a carver's blades are the marsh's own"}]},
-  {"id": "builder", "label": "Builder, raft-builder, mender", "match": "\\b(build\\w*|raft-builder|plank|mender|pole-\\w+)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeWarAxe", "materials": ["flint", "bog-iron", "bone"], "why": "an axe for timber"}, {"slot": "weapon", "typ": "WeapTypeWarhammer", "materials": ["wood"], "why": "a maul"}],
-   "wear": [], "home": [{"good": "timber-and-stone", "why": "timber and pegs"}], "food": ["river-fish"],
-   "never": [{"slot": "heavy", "why": "no armour"}, {"bands": ["rare", "ruin", "unique"], "why": "nothing rare"}]},
-  {"id": "tanner", "label": "Tanner, hide-curer", "match": "\\b(tann\\w*|hide-\\w+|curer|scraper|leather-\\w+)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bone", "flint", "bog-iron"], "why": "a scraping knife"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["leather"], "why": "their own leather"}],
-   "home": [{"good": "hide-and-leather", "why": "hides and leather"}], "food": ["river-fish"],
-   "never": [{"slot": "heavy", "why": "no heavy armour"}]},
-  {"id": "smith", "label": "Smith", "match": "\\bsmith\\b", "roles": ["smith"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeWarhammer", "materials": ["bog-iron"], "why": "the forge hammer"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["leather"], "why": "a leather apron"}],
-   "home": [{"good": "ironwork", "why": "bog iron and tools"}], "food": ["river-fish", "saltrice"],
-   "never": [{"bands": ["ruin", "unique"], "why": "a smith sells what they make and trade, never relics"}]},
-  {"id": "elder", "label": "Elder, naheesh, leader", "match": "\\b(naheesh|elder|assembly|speaker|chief)\\b", "roles": ["leader"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["obsidian", "bone"], "why": "a ceremonial blade"}],
-   "wear": [], "home": [{"good": "sap", "why": "gifts and tribute"}], "food": ["river-fish", "eggs", "saltrice"],
-   "never": [{"groups": ["foreign"], "why": "an Argonian elder's goods are the marsh's own unless the record names a foreign tie"}]},
-  {"id": "priest", "label": "Tree-minder, grave-singer, priest", "match": "\\b(tree-minder|root-tender|grave-singer|priest|pilgrim|shaman)\\b", "roles": ["priest"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bone", "obsidian"], "why": "a ritual knife"}],
-   "wear": [], "home": [{"good": "sap", "why": "Hist offerings"}], "food": ["eggs", "river-fish"],
-   "never": [{"slot": "heavy", "why": "no armour"}, {"groups": ["foreign", "metal"], "slot": "weapon", "why": "nothing forged at the Hist"}]},
-  {"id": "trader", "label": "Trader, merchant, tally-keeper", "match": "\\b(trader|merchant|seller|market|tally)\\b", "roles": ["merchant", "apothecary"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bog-iron", "bone"], "why": "a belt knife"}],
-   "wear": [], "home": [{"good": "river-goods", "why": "the stall's stock"}], "food": ["saltrice", "river-fish"],
-   "never": [{"slot": "heavy", "why": "no armour"}]},
-  {"id": "host", "label": "Innkeeper, cook, smoker, pickler", "match": "\\b(inn\\w*|stew-pot|cook|pickler|smoker|lodge|lets a room)\\b", "roles": ["innkeeper"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bog-iron", "bone", "flint"], "why": "a kitchen knife"}],
-   "wear": [], "home": [{"good": "river-fish", "why": "the pot's fish"}, {"good": "saltrice", "why": "saltrice"}], "food": ["river-fish", "saltrice", "eggs"],
-   "never": [{"slot": "heavy", "why": "no armour"}, {"slot": "weapon", "types": ["WeapTypeGreatsword", "WeapTypeBattleaxe", "WeapTypeWarhammer"], "why": "no war weapon"}]},
-  {"id": "boatman", "label": "Boatman, porter, pilot, rootworm handler", "match": "\\b(boat\\w*|porter|pilot|rootworm|ferry\\w*)\\b", "roles": ["boatman", "carter"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bog-iron", "bone"], "why": "a rope knife"}, {"slot": "weapon", "typ": "WeapTypeMace", "materials": ["wood"], "why": "a pole or club"}],
-   "wear": [], "home": [{"good": "reed-weaving", "why": "rope"}], "food": ["river-fish"],
-   "never": [{"slot": "heavy", "why": "a boatman swims: no heavy armour"}]},
-  {"id": "clerk", "label": "Clerk, toll-keeper, scribe", "match": "\\b(clerk|toll\\w*|customs|scribe|tally-keeper|levy-master)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bog-iron", "imperial"], "why": "a belt knife"}],
-   "wear": [], "home": [{"good": "river-goods", "why": "ledgers and the post's stores"}], "food": ["saltrice", "river-fish"],
-   "never": [{"slot": "heavy", "why": "a clerk wears no armour"}, {"bands": ["ruin", "unique"], "why": "nothing a clerk could explain"}]},
-  {"id": "overseer", "label": "Gang-master, slave-catcher, overseer", "match": "\\b(gang-master|slave\\w*|catcher|overseer|enforcer)\\b",
-   "carry": [{"slot": "weapon", "typ": "WeapTypeSword", "materials": ["bog-iron", "bonemold", "chitin"], "why": "a blade to keep order"}, {"slot": "weapon", "typ": "WeapTypeMace", "materials": ["bog-iron", "bonemold"], "why": "a cudgel"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["chitin", "leather", "bonemold"], "why": "light armour"}],
-   "home": [{"good": "river-goods", "why": "the work's stores"}], "food": ["saltrice"],
-   "never": [{"bands": ["ruin", "unique"], "why": "no relics"}]},
-  {"id": "resident", "label": "Anyone else", "match": ".", "roles": ["resident", "child", "trainer", "spell-trader"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["flint", "bone"], "why": "a knife"}],
-   "wear": [], "home": [{"good": "river-fish", "why": "food"}], "food": ["river-fish", "saltrice"],
-   "never": [{"slot": "heavy", "why": "a resident wears no heavy armour"}, {"bands": ["ruin", "unique"], "why": "nothing a household could explain"}]}
+  {
+   "id": "guard",
+   "label": "Guard or levy",
+   "match": "\\b(levy|watch|guard|warden of the council)\\b",
+   "roles": [
+    "guard"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bog-iron",
+      "bone",
+      "flint"
+     ],
+     "why": "the issue's blade (scale.json guard_issue)"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood",
+      "bone"
+     ],
+     "why": "a watch's bow"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "bog-iron",
+      "bone",
+      "wood"
+     ],
+     "why": "an alternative: a levy's spear or pike"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "scale",
+      "leather",
+      "hide"
+     ],
+     "why": "light for the marsh"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-fish",
+     "why": "rations"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice"
+   ],
+   "never": [
+    {
+     "groups": [
+      "foreign"
+     ],
+     "why": "a levy carries the place's own issue, never foreign gear, unless the record makes them a foreign garrison"
+    },
+    {
+     "slot": "heavy",
+     "materials": [
+      "xanmeer-relic",
+      "bronze"
+     ],
+     "why": "relic plate is no levy issue"
+    }
+   ]
+  },
+  {
+   "id": "fisher",
+   "label": "Fisher, net-maker, weir-warden",
+   "match": "\\b(fish\\w*|net-\\w+|eel\\w*|trodh|weir\\w*|gar)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "flint",
+      "bone",
+      "wood"
+     ],
+     "why": "a fishing knife"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "bone",
+      "wood"
+     ],
+     "why": "a harpoon or trident (the New Armory harpoons are greatsword-type)"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "hide",
+      "leather"
+     ],
+     "why": "wraps and a leather jerkin at most"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-fish",
+     "why": "the catch, smoked and dried"
+    },
+    {
+     "good": "reed-weaving",
+     "why": "nets, twine and traps"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice",
+    "eggs"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a fisher wades and swims: no heavy armour"
+    },
+    {
+     "slot": "weapon",
+     "groups": [
+      "metal",
+      "foreign"
+     ],
+     "types": [
+      "WeapTypeGreatsword",
+      "WeapTypeBattleaxe",
+      "WeapTypeWarhammer"
+     ],
+     "why": "a metal two-handed weapon is a soldier's, not a fisher's (a harpoon or trident is a fisher's)",
+     "except": "(?i)harpoon|trident"
+    },
+    {
+     "bands": [
+      "rare",
+      "ruin",
+      "unique"
+     ],
+     "why": "a fisher's hut holds nothing of a rare or relic make"
+    }
+   ]
+  },
+  {
+   "id": "hunter",
+   "label": "Hunter, trapper, fletcher",
+   "match": "\\b(hunt\\w*|trapper|snare\\w*|nest-finder|fletcher|arrow-\\w+)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood",
+      "bone"
+     ],
+     "why": "the hunting bow"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bone",
+      "flint"
+     ],
+     "why": "a skinning knife"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeGreatsword",
+     "materials": [
+      "wood",
+      "bone",
+      "flint"
+     ],
+     "why": "an alternative: a hunting spear"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather",
+      "hide",
+      "scale"
+     ],
+     "why": "hackwing or crocodile leather: quick and quiet"
+    }
+   ],
+   "home": [
+    {
+     "good": "hide-and-leather",
+     "why": "hides drying"
+    },
+    {
+     "good": "feathers",
+     "why": "feathers for fletching"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "eggs"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a hunter moves quietly: no heavy armour"
+    },
+    {
+     "groups": [
+      "foreign"
+     ],
+     "slot": "weapon",
+     "why": "a hunter's arms are the marsh's own"
+    }
+   ]
+  },
+  {
+   "id": "gatherer",
+   "label": "Gatherer of eggs, sap, herbs or fruit",
+   "match": "\\b(gather\\w*|picker|egg-\\w+|sap-\\w+|herb\\w*|fruit|lumberry|jar-sealer)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "flint",
+      "bone"
+     ],
+     "why": "a cutting knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "sap",
+     "why": "jars of sap and dried herbs"
+    },
+    {
+     "good": "eggs",
+     "why": "eggs"
+    }
+   ],
+   "food": [
+    "eggs",
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour beyond wraps"
+    },
+    {
+     "slot": "weapon",
+     "types": [
+      "WeapTypeGreatsword",
+      "WeapTypeBattleaxe",
+      "WeapTypeWarhammer"
+     ],
+     "why": "no war weapon"
+    },
+    {
+     "bands": [
+      "rare",
+      "ruin",
+      "unique"
+     ],
+     "why": "nothing rare"
+    }
+   ]
+  },
+  {
+   "id": "weaver",
+   "label": "Reed-cutter, weaver, rope-twister",
+   "match": "\\b(weav\\w*|plait\\w*|mat|basket\\w*|rope-\\w+|reed-\\w+|bundler|lacer)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "flint",
+      "bone"
+     ],
+     "why": "a reed knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "reed-weaving",
+     "why": "reed, mats and rope"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    },
+    {
+     "slot": "weapon",
+     "types": [
+      "WeapTypeGreatsword",
+      "WeapTypeBattleaxe",
+      "WeapTypeWarhammer"
+     ],
+     "why": "no war weapon"
+    },
+    {
+     "bands": [
+      "rare",
+      "ruin",
+      "unique"
+     ],
+     "why": "nothing rare"
+    }
+   ]
+  },
+  {
+   "id": "carver",
+   "label": "Carver of bone, wood or stakes",
+   "match": "\\b(carv\\w*|whittl\\w*|bone-\\w+|grave-stake|depth-stick)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bone",
+      "flint"
+     ],
+     "why": "carving knives"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "bone-and-horn",
+     "why": "bone and horn to work"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    },
+    {
+     "groups": [
+      "foreign"
+     ],
+     "slot": "weapon",
+     "why": "a carver's blades are the marsh's own"
+    }
+   ]
+  },
+  {
+   "id": "builder",
+   "label": "Builder, raft-builder, mender",
+   "match": "\\b(build\\w*|raft-builder|plank|mender|pole-\\w+)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarAxe",
+     "materials": [
+      "flint",
+      "bog-iron",
+      "bone"
+     ],
+     "why": "an axe for timber"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarhammer",
+     "materials": [
+      "wood"
+     ],
+     "why": "a maul"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "timber-and-stone",
+     "why": "timber and pegs"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    },
+    {
+     "bands": [
+      "rare",
+      "ruin",
+      "unique"
+     ],
+     "why": "nothing rare"
+    }
+   ]
+  },
+  {
+   "id": "tanner",
+   "label": "Tanner, hide-curer",
+   "match": "\\b(tann\\w*|hide-\\w+|curer|scraper|leather-\\w+)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bone",
+      "flint",
+      "bog-iron"
+     ],
+     "why": "a scraping knife"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather"
+     ],
+     "why": "their own leather"
+    }
+   ],
+   "home": [
+    {
+     "good": "hide-and-leather",
+     "why": "hides and leather"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no heavy armour"
+    }
+   ]
+  },
+  {
+   "id": "smith",
+   "label": "Smith",
+   "match": "\\bsmith\\b",
+   "roles": [
+    "smith"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeWarhammer",
+     "materials": [
+      "bog-iron"
+     ],
+     "why": "the forge hammer"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather"
+     ],
+     "why": "a leather apron"
+    }
+   ],
+   "home": [
+    {
+     "good": "ironwork",
+     "why": "bog iron and tools"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice"
+   ],
+   "never": [
+    {
+     "bands": [
+      "ruin",
+      "unique"
+     ],
+     "why": "a smith sells what they make and trade, never relics"
+    }
+   ]
+  },
+  {
+   "id": "elder",
+   "label": "Elder, naheesh, leader",
+   "match": "\\b(naheesh|elder|assembly|speaker|chief)\\b",
+   "roles": [
+    "leader"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "obsidian",
+      "bone"
+     ],
+     "why": "a ceremonial blade"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "sap",
+     "why": "gifts and tribute"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "eggs",
+    "saltrice"
+   ],
+   "never": [
+    {
+     "groups": [
+      "foreign"
+     ],
+     "why": "an Argonian elder's goods are the marsh's own unless the record names a foreign tie"
+    }
+   ]
+  },
+  {
+   "id": "priest",
+   "label": "Tree-minder, grave-singer, priest",
+   "match": "\\b(tree-minder|root-tender|grave-singer|priest|pilgrim|shaman)\\b",
+   "roles": [
+    "priest"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bone",
+      "obsidian"
+     ],
+     "why": "a ritual knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "sap",
+     "why": "Hist offerings"
+    }
+   ],
+   "food": [
+    "eggs",
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    },
+    {
+     "groups": [
+      "foreign",
+      "metal"
+     ],
+     "slot": "weapon",
+     "why": "nothing forged at the Hist"
+    }
+   ]
+  },
+  {
+   "id": "trader",
+   "label": "Trader, merchant, tally-keeper",
+   "match": "\\b(trader|merchant|seller|market|tally)\\b",
+   "roles": [
+    "merchant",
+    "apothecary"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bog-iron",
+      "bone"
+     ],
+     "why": "a belt knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "the stall's stock"
+    }
+   ],
+   "food": [
+    "saltrice",
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    }
+   ]
+  },
+  {
+   "id": "host",
+   "label": "Innkeeper, cook, smoker, pickler",
+   "match": "\\b(inn\\w*|stew-pot|cook|pickler|smoker|lodge|lets a room)\\b",
+   "roles": [
+    "innkeeper"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bog-iron",
+      "bone",
+      "flint"
+     ],
+     "why": "a kitchen knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "river-fish",
+     "why": "the pot's fish"
+    },
+    {
+     "good": "saltrice",
+     "why": "saltrice"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice",
+    "eggs"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "no armour"
+    },
+    {
+     "slot": "weapon",
+     "types": [
+      "WeapTypeGreatsword",
+      "WeapTypeBattleaxe",
+      "WeapTypeWarhammer"
+     ],
+     "why": "no war weapon"
+    }
+   ]
+  },
+  {
+   "id": "boatman",
+   "label": "Boatman, porter, pilot, rootworm handler",
+   "match": "\\b(boat\\w*|porter|pilot|rootworm|ferry\\w*)\\b",
+   "roles": [
+    "boatman",
+    "carter"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bog-iron",
+      "bone"
+     ],
+     "why": "a rope knife"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "wood"
+     ],
+     "why": "a pole or club"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "reed-weaving",
+     "why": "rope"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a boatman swims: no heavy armour"
+    }
+   ]
+  },
+  {
+   "id": "clerk",
+   "label": "Clerk, toll-keeper, scribe",
+   "match": "\\b(clerk|toll\\w*|customs|scribe|tally-keeper|levy-master)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bog-iron",
+      "imperial"
+     ],
+     "why": "a belt knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "ledgers and the post's stores"
+    }
+   ],
+   "food": [
+    "saltrice",
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a clerk wears no armour"
+    },
+    {
+     "bands": [
+      "ruin",
+      "unique"
+     ],
+     "why": "nothing a clerk could explain"
+    }
+   ]
+  },
+  {
+   "id": "overseer",
+   "label": "Gang-master, slave-catcher, overseer",
+   "match": "\\b(gang-master|slave\\w*|catcher|overseer|enforcer)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bog-iron",
+      "bonemold",
+      "chitin"
+     ],
+     "why": "a blade to keep order"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "bog-iron",
+      "bonemold"
+     ],
+     "why": "a cudgel"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "chitin",
+      "leather",
+      "bonemold"
+     ],
+     "why": "light armour"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "the work's stores"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": [
+    {
+     "bands": [
+      "ruin",
+      "unique"
+     ],
+     "why": "no relics"
+    }
+   ]
+  },
+  {
+   "id": "pirate",
+   "label": "Pirate, smuggler, corsair",
+   "match": "\\b(pirate|smuggler|corsair|privateer)s?\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "corsair",
+      "bog-iron"
+     ],
+     "why": "a cutlass or rapier off a taken ship"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "corsair",
+      "bog-iron"
+     ],
+     "why": "a corsair's knife"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather",
+      "imperial"
+     ],
+     "why": "what fits off a taken ship"
+    }
+   ],
+   "home": [
+    {
+     "good": "salvage",
+     "why": "the takings"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a sailor swims: no heavy armour"
+    }
+   ]
+  },
+  {
+   "id": "resident",
+   "label": "Anyone else",
+   "match": ".",
+   "roles": [
+    "resident",
+    "child",
+    "trainer",
+    "spell-trader"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "flint",
+      "bone"
+     ],
+     "why": "a knife"
+    }
+   ],
+   "wear": [],
+   "home": [
+    {
+     "good": "river-fish",
+     "why": "food"
+    }
+   ],
+   "food": [
+    "river-fish",
+    "saltrice"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a resident wears no heavy armour"
+    },
+    {
+     "bands": [
+      "ruin",
+      "unique"
+     ],
+     "why": "nothing a household could explain"
+    }
+   ]
+  }
  ],
  "overlays": [
-  {"id": "dunmer-household", "label": "A Dunmer household", "races": ["DarkElfRace"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeDagger", "materials": ["bonemold", "chitin"], "why": "Morrowind's make, kept"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["chitin", "bonemold"], "why": "chitin and bonemold, kept and traded"}],
-   "home": [{"good": "saltrice", "why": "saltrice, the plantations' crop"}], "food": ["saltrice"],
-   "never": [{"materials": ["imperial"], "why": "a Dunmer holdout keeps nothing of the Empire's issue without a reason"}]},
-  {"id": "imperial-household", "label": "An Imperial or Imperial-descended household", "races": ["ImperialRace", "BretonRace"],
-   "carry": [{"slot": "weapon", "typ": "WeapTypeSword", "materials": ["imperial", "bog-iron"], "why": "a short sword of Imperial issue"}],
-   "wear": [{"slot": "light", "typ": "ArmorCuirass", "materials": ["imperial", "leather"], "why": "Imperial light issue"}],
-   "home": [{"good": "river-goods", "why": "Cyrodiilic goods off the roads"}], "food": ["saltrice"],
-   "never": [{"materials": ["bonemold"], "why": "no Dunmer make in an Imperial household without a reason"}]}
+  {
+   "id": "dunmer-household",
+   "label": "A Dunmer household",
+   "races": [
+    "DarkElfRace"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bonemold",
+      "chitin"
+     ],
+     "why": "Morrowind's make, kept"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "chitin",
+      "bonemold",
+      "netch-leather"
+     ],
+     "why": "chitin and bonemold, kept and traded"
+    }
+   ],
+   "home": [
+    {
+     "good": "saltrice",
+     "why": "saltrice, the plantations' crop"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": [
+    {
+     "materials": [
+      "imperial"
+     ],
+     "why": "a Dunmer holdout keeps nothing of the Empire's issue without a reason"
+    }
+   ]
+  },
+  {
+   "id": "imperial-household",
+   "label": "An Imperial or Imperial-descended household",
+   "races": [
+    "ImperialRace",
+    "BretonRace"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "imperial",
+      "bog-iron"
+     ],
+     "why": "a short sword of Imperial issue"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "imperial",
+      "leather"
+     ],
+     "why": "Imperial light issue"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "Cyrodiilic goods off the roads"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": [
+    {
+     "materials": [
+      "bonemold"
+     ],
+     "why": "no Dunmer make in an Imperial household without a reason"
+    }
+   ]
+  }
  ]
 }

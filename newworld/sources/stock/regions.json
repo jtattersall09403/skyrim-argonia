@@ -85,6 +85,11 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "smuggled and salvaged"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -496,6 +501,11 @@
      "material": "shell",
      "band": "local",
      "why": "mud-flats and coast"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -594,6 +604,11 @@
      "material": "bonemold",
      "band": "traded",
      "why": "Stormhold-manner households"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
     }
    ],
    "goods": [
@@ -654,6 +669,16 @@
     },
     {
      "material": "bonemold",
+     "band": "absent",
+     "why": "no Dunmer in the forest"
+    },
+    {
+     "material": "hist-amber",
+     "band": "local",
+     "why": "the Hist forest's amber, kept by its shrines"
+    },
+    {
+     "material": "netch-leather",
      "band": "absent",
      "why": "no Dunmer in the forest"
     }
@@ -847,6 +872,16 @@
      "material": "bonemold",
      "band": "traded",
      "why": "Dunmer traders from Tear"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -885,6 +920,11 @@
      "material": "shell",
      "band": "local",
      "why": "the coast"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -933,6 +973,16 @@
      "material": "bog-iron",
      "band": "traded",
      "why": "taken"
+    },
+    {
+     "material": "netch-leather",
+     "band": "traded",
+     "why": "Dunmer households and traders carry it in"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -967,6 +1017,11 @@
      "material": "imperial",
      "band": "traded",
      "why": "shipping to Soulrest and Gideon"
+    },
+    {
+     "material": "corsair",
+     "band": "local",
+     "why": "pirate and smuggler waters: cutlasses and rapiers off the ships"
     }
    ],
    "goods": [
@@ -1103,6 +1158,11 @@
      "material": "hide",
      "band": "local",
      "why": "reed"
+    },
+    {
+     "material": "netch-leather",
+     "band": "local",
+     "why": "the Dunmer minority's netch leather and Ashlander gear"
     }
    ],
    "goods": [

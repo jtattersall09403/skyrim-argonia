@@ -1358,5 +1358,71 @@
   "notes": "author Beyond Skyrim. No permission section on the page. Records read for stock and copied into our plugin under our names; assets the player's own download.",
   "permission": "dependency only (player's own download)",
   "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Heavy Armory - New Weapons (Nexus 6308)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/6308?tab=files&file_id=839777",
+  "version": "6.4.2 (row heavy-armory)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author PrivateEye. \"Can I use assets from your mod...? Sure, but notify me\" (description); we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Naga-Kur Armor (Nexus 199418)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/199418?tab=files&file_id=840110",
+  "version": "1 (row naga-kur-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Deydranos. \"open to make any patch, port or tweak\" (description); we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Bone Cultist Armor (Nexus 111224)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/111224?tab=files&file_id=469296",
+  "version": "1.0 (row bone-cultist-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author furexarot. no permission line in the description; we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Grummite Weaponry (Mihail) (Nexus 46354)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/46354?tab=files&file_id=215701",
+  "version": "1.1 (row grummite-weaponry)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. no permission line in the description; we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Pirates Wield Cutlasses (Nexus 31753)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/31753?tab=files&file_id=762584",
+  "version": "3.2.0 (row pirates-wield-cutlasses)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Tate Taylor. not stated; we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "East Empire Company Armor (Nexus 54990)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/54990?tab=files&file_id=768104",
+  "version": "3.0.1 (row east-empire-company-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Tate Taylor and Jelidity. not stated; we ship nothing of it and require it.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
  }
 ]

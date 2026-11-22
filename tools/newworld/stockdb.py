@@ -203,9 +203,12 @@ def _regions_and_kits(w) -> None:
                      good_id=g, why="food in the house")
             seq += 1
         for j, n in enumerate(k.get("never", [])):
-            w.insert("trade_kit_never", kit_id=k["id"], seq=j, slot=n.get("slot"), types=" ".join(n.get("types", [])) or None,
-                     materials=" ".join(n.get("materials", [])) or None, groups=" ".join(n.get("groups", [])) or None,
-                     bands=" ".join(n.get("bands", [])) or None, why=n["why"])
+            w.insert("trade_kit_never", {"kit_id": k["id"], "seq": j, "slot": n.get("slot"),
+                                         "types": " ".join(n.get("types", [])) or None,
+                                         "materials": " ".join(n.get("materials", [])) or None,
+                                         "groups": " ".join(n.get("groups", [])) or None,
+                                         "bands": " ".join(n.get("bands", [])) or None, "except": n.get("except"),
+                                         "why": n["why"]})
 
 
 def _load_place_stock(w, doc: dict) -> None:
@@ -363,7 +366,7 @@ def power() -> int:
     strongest base at that tier or below; a tier with no base lies midway between its neighbours)."""
     from tools.places.stock.records import Records
     sc = _json(STOCK / "scale.json")
-    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"])
+    rec = Records.load(["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "NewArmoury.esp"])
     by_edid = {r.edid: k for k, r in rec.raw.items() if r.sig in ("WEAP", "ARMO") and r.edid}
     tiers = [t["id"] for t in sc["tiers"]]
     kinds, missing = {}, []

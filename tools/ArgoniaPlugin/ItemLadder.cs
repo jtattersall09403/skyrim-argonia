@@ -21,15 +21,33 @@ static class ItemLadder
     {
         var doc = JsonDocument.Parse(File.ReadAllText(recordsJson)).RootElement;
         var copies = new SortedDictionary<string, string>(StringComparer.Ordinal);
-        FormKey Of(string key)
+        FormKey Of(string key, bool own = false)
         {
             if (copies.TryGetValue(key, out var c)) return Src(c);
             var s = Src(key);
-            var ours = fc.Get(s, s.ModKey.FileName);
+            // a ladder item is always our own copy (a vanilla or DLC piece too), so its stats and name are ours to set
+            var ours = fc.Get(s, s.ModKey.FileName, forceCopy: own);
             if (ours != s) copies[key] = PK(ours);
             return ours;
         }
-        foreach (var it in doc.GetProperty("items").EnumerateArray()) Of(it.GetProperty("item").GetString()!);
+        void Rename(FormKey k, string name)
+        {
+            if (mod.Weapons.TryGetValue(k, out var w)) w.Name = new TranslatedString(Language.English, name);
+            else if (mod.Armors.TryGetValue(k, out var a)) a.Name = new TranslatedString(Language.English, name);
+            else if (mod.MiscItems.TryGetValue(k, out var m)) m.Name = new TranslatedString(Language.English, name);
+            else if (mod.Ingredients.TryGetValue(k, out var g)) g.Name = new TranslatedString(Language.English, name);
+        }
+        int renamed = 0;
+        foreach (var it in doc.GetProperty("items").EnumerateArray())
+        {
+            var k = Of(it.GetProperty("item").GetString()!, own: true);
+            if (it.TryGetProperty("name", out var nm)) { Rename(k, nm.GetString()!); renamed++; }
+            if (it.TryGetProperty("disenchant", out var de) && de.GetBoolean())   // a relic filed as plain gear
+            {
+                if (mod.Weapons.TryGetValue(k, out var w)) w.ObjectEffect.Clear();
+                else if (mod.Armors.TryGetValue(k, out var a)) a.ObjectEffect.Clear();
+            }
+        }
         foreach (var o in doc.GetProperty("overrides").EnumerateArray())
         {
             var k = Of(o.GetProperty("item").GetString()!);
@@ -76,6 +94,9 @@ static class ItemLadder
             mod.ConstructibleObjects.Add(co);
             made++;
         }
-        return (copies, $"{copies.Count} copies, {doc.GetProperty("overrides").GetArrayLength()} overrides, {made} recipes");
+        if (doc.TryGetProperty("ware_names", out var wn))
+            foreach (var kv in wn.EnumerateObject())
+                if (copies.TryGetValue(kv.Name, out var c)) { Rename(Src(c), kv.Value.GetString()!); renamed++; }
+        return (copies, $"{copies.Count} copies, {doc.GetProperty("overrides").GetArrayLength()} overrides, {made} recipes, {renamed} renamed");
     }
 }

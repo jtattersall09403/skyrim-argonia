@@ -1,3 +1,4 @@
+{"item_id":"Dragonborn.esm:01CD7C","good_id":"hide-and-leather","why":"Netch Leather: the Dunmer's leather (a smithing ingredient)"}
 {"item_id":"Dragonborn.esm:02B04E","good_id":"chitin-work","why":"Chitin Plate: the chitin-worker's, and Morrowind's trade (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:0123BD","good_id":"eggs","harvestable":"hackwing-nest","why":"Hackwing's Egg: made or gathered by a place that makes eggs"}
 {"item_id":"Here There Be Monsters - Curse of Cipactli.esp:02A2E3","good_id":"reed-weaving","why":"Swamp Pad: made or gathered by a place that makes reed-weaving"}
@@ -133,3 +134,4 @@
 {"item_id":"Skyrim.esm:06F993","good_id":"timber-and-stone","why":"Firewood: seasoned wood for hafts, clubs and bows (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:0800E4","good_id":"hide-and-leather","why":"Leather Strips: the tanner's, for every grip and strap (a smithing ingredient: recipe_rules.json)"}
 {"item_id":"Skyrim.esm:0DB5D2","good_id":"hide-and-leather","why":"Leather: the tanner's (a smithing ingredient: recipe_rules.json)"}
+{"item_id":"ccBGSSSE025-AdvDSGS.esm:000BC7","good_id":"sap","why":"amber refined at the Hist, for amber work (a smithing ingredient)"}

@@ -183,7 +183,9 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
     return bad
 
 
-TYPE_OF = {v: k for k, v in split.WEAP_KINDS.items()}
+TYPE_OF = {v: k for k, v in split.WEAP_KINDS.items()} | {   # a new type is judged as the vanilla type it swings as
+    "pike": "WeapTypeGreatsword", "halberd": "WeapTypeBattleaxe", "quarterstaff": "WeapTypeWarhammer", "rapier": "WeapTypeSword",
+    "whip": "WeapTypeMace", "claw": "WeapTypeDagger"}
 
 
 def kits_for(w, person) -> list:
@@ -218,7 +220,8 @@ def contradictions(w, pid: str, doc: dict) -> list[dict]:
         for k in kits_for(w, who):
             for n in nevers.get(k.id, []):
                 conds = [(n.slot, slot), (n.types, typ), (n.materials, m.id), (n.groups, m.group), (n.bands, m.band)]
-                if all(want is None or (have is not None and have in want.split()) for want, have in conds):
+                spared = n.except_ and re.search(n.except_, it.edid or "")
+                if not spared and all(want is None or (have is not None and have in want.split()) for want, have in conds):
                     bad.append({"holder": row["holder"], "item": row["item"], "edid": it.edid, "count": row["count"],
                                 "kit": k.id, "rule": f"kit {k.id}",
                                 "why": f"{who.name} ({who.trade}) takes the kit '{k.label}': {n.why}"})

@@ -142,6 +142,101 @@
    "why": "Argonian Sword: BM&V's Argonian sword: steel"
   },
   {
+   "item": "Bone Cultist Armor.esp:000806",
+   "material": "bone-plate",
+   "why": "bone plate",
+   "name": "Bone-plate Boots"
+  },
+  {
+   "item": "Bone Cultist Armor.esp:000807",
+   "material": "bone-plate",
+   "why": "bone plate",
+   "name": "Bone-plate Armor"
+  },
+  {
+   "item": "Bone Cultist Armor.esp:00080A",
+   "material": "bone-plate",
+   "why": "bone plate",
+   "name": "Bone-plate Gauntlets"
+  },
+  {
+   "item": "Bone Cultist Armor.esp:000811",
+   "material": "bone-plate",
+   "why": "bone plate",
+   "name": "Bone-plate Helmet"
+  },
+  {
+   "item": "Dragonborn.esm:01B935",
+   "material": "wood",
+   "why": "a plain wooden spear",
+   "name": "Wooden Hunting Spear"
+  },
+  {
+   "item": "Dragonborn.esm:01CD82",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD86",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD87",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD88",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD89",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD8A",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD8B",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:01CD8C",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "Dragonborn.esm:026235",
+   "material": "chitin",
+   "why": "Dragonborn's chitin"
+  },
+  {
+   "item": "EastEmpireCompanyArmor.esp:000801",
+   "material": "imperial",
+   "why": "the East Empire Company's uniform"
+  },
+  {
+   "item": "EastEmpireCompanyArmor.esp:000807",
+   "material": "imperial",
+   "why": "the East Empire Company's uniform"
+  },
+  {
+   "item": "EastEmpireCompanyArmor.esp:000809",
+   "material": "imperial",
+   "why": "the East Empire Company's uniform"
+  },
+  {
+   "item": "EastEmpireCompanyArmor.esp:00080B",
+   "material": "imperial",
+   "why": "the East Empire Company's uniform"
+  },
+  {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:012437",
    "material": "imperial",
    "why": "Legion Light Greaves: Legion issue: Imperial"
@@ -227,6 +322,24 @@
    "why": "Kothringi War Axe: a Kothringi relic (their towns died in 2E 560)"
   },
   {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF1",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF2",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF3",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF9",
    "material": "kothringi-relic",
    "why": "Kothringi Arrow: a Kothringi relic (their towns died in 2E 560)"
@@ -262,9 +375,33 @@
    "why": "Legion Leather Cuirass: Legion issue: Imperial"
   },
   {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AB",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AC",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:06E0AD",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
    "material": "leather",
    "why": "Naga Leathers: Naga leathers"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:076D56",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:076D60",
@@ -340,6 +477,30 @@
    "item": "Here There Be Monsters - Curse of Cipactli.esp:118F65",
    "material": "kothringi-relic",
    "why": "Kothringi Battle Staff: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:11E06E",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:11E070",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:11E072",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:11E074",
+   "material": "kothringi-relic",
+   "why": "a Kothringi heavy or chief's relic; its record's enchantment is cleared on our copy (plain ladder gear)",
+   "disenchant": true
   },
   {
    "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF6",
@@ -781,6 +942,163 @@
    "why": "Vesper's Helmet: Legion issue: Imperial"
   },
   {
+   "item": "Here There Be Monsters.esp:053503",
+   "material": "flint",
+   "why": "a flint diving knife"
+  },
+  {
+   "item": "Here There Be Monsters.esp:05350A",
+   "material": "bog-iron",
+   "why": "a diver's knife",
+   "name": "Bog-iron Diving Knife"
+  },
+  {
+   "item": "Here There Be Monsters.esp:053512",
+   "material": "corsair",
+   "why": "a corsair's knife"
+  },
+  {
+   "item": "Here There Be Monsters.esp:05351A",
+   "material": "bog-iron",
+   "why": "a fisher's harpoon",
+   "name": "Bog-iron Harpoon"
+  },
+  {
+   "item": "Here There Be Monsters.esp:053522",
+   "material": "copper-steel",
+   "why": "a harpoon edged with copper",
+   "name": "Copper-edged Harpoon"
+  },
+  {
+   "item": "Here There Be Monsters.esp:05352A",
+   "material": "bog-iron",
+   "why": "a two-handed harpoon",
+   "name": "Large Bog-iron Harpoon"
+  },
+  {
+   "item": "Here There Be Monsters.esp:053532",
+   "material": "copper-steel",
+   "why": "a two-handed harpoon edged with copper",
+   "name": "Large Copper-edged Harpoon"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:014C69",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:014C6A",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:019D72",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:019D75",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:019D76",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:01EEAE",
+   "material": "netch-leather",
+   "why": "Dunmer netch leather"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E03E4",
+   "material": "netch-leather",
+   "why": "raider's gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E03E9",
+   "material": "netch-leather",
+   "why": "raider's gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E03EA",
+   "material": "netch-leather",
+   "why": "raider's gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E03EB",
+   "material": "netch-leather",
+   "why": "raider's gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E562E",
+   "material": "netch-leather",
+   "why": "Ashlander gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5630",
+   "material": "netch-leather",
+   "why": "Ashlander gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5631",
+   "material": "netch-leather",
+   "why": "Ashlander gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5632",
+   "material": "netch-leather",
+   "why": "Ashlander gear"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E563C",
+   "material": "chitin",
+   "why": "a chitin bow"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5640",
+   "material": "bonemold",
+   "why": "Dunmer raider's blade"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5643",
+   "material": "bonemold",
+   "why": "Dunmer raider's blade"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:0E5644",
+   "material": "bonemold",
+   "why": "Dunmer raider's blade"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:28DDA1",
+   "material": "netch-leather",
+   "why": "plated netch leather boots; tier T1: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot",
+   "tier": "T1"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:28DDA2",
+   "material": "netch-leather",
+   "why": "plated netch leather: hardened hide plates, the lightest heavy make; tier T1: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot",
+   "tier": "T1"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:28DDA8",
+   "material": "bonemold",
+   "why": "Gah-Julan bonemold"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:29D418",
+   "material": "bonemold",
+   "why": "Gah-Julan bonemold"
+  },
+  {
+   "item": "Journey to Baan Malur.esp:29D41A",
+   "material": "bonemold",
+   "why": "Gah-Julan bonemold"
+  },
+  {
    "item": "King of the Murkmire.esp:0008D1",
    "material": "saxhleel",
    "why": "Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"
@@ -1141,6 +1459,147 @@
    "why": "Callia's Jacket: marsh leather (Saxhleel or masu skin)"
   },
   {
+   "item": "NagaKurArmor.esp:000804",
+   "material": "leather",
+   "why": "Naga-Kur leather and bone"
+  },
+  {
+   "item": "NagaKurArmor.esp:000805",
+   "material": "leather",
+   "why": "Naga-Kur leather and bone"
+  },
+  {
+   "item": "NagaKurArmor.esp:000806",
+   "material": "leather",
+   "why": "Naga-Kur leather and bone"
+  },
+  {
+   "item": "NagaKurArmor.esp:000807",
+   "material": "leather",
+   "why": "Naga-Kur leather and bone"
+  },
+  {
+   "item": "NewArmoury.esp:005903",
+   "material": "corsair",
+   "why": "a corsair's rapier",
+   "name": "Corsair's Rapier"
+  },
+  {
+   "item": "NewArmoury.esp:019D0C",
+   "material": "imperial",
+   "why": "Gideon's and the Legion's rapier"
+  },
+  {
+   "item": "NewArmoury.esp:019D0D",
+   "material": "copper-steel",
+   "why": "a rapier",
+   "name": "Copper-edged Rapier"
+  },
+  {
+   "item": "NewArmoury.esp:153BA6",
+   "material": "bog-iron",
+   "why": "a pike",
+   "name": "Bog-iron Pike"
+  },
+  {
+   "item": "NewArmoury.esp:153BB4",
+   "material": "copper-steel",
+   "why": "a pike",
+   "name": "Copper-edged Pike"
+  },
+  {
+   "item": "NewArmoury.esp:153BB6",
+   "material": "bone",
+   "why": "a pike of bone and chitin",
+   "name": "Bone Pike"
+  },
+  {
+   "item": "NewArmoury.esp:153BB8",
+   "material": "bone",
+   "why": "a feathered bone pike",
+   "name": "Bone-tipped Pike"
+  },
+  {
+   "item": "NewArmoury.esp:153BBC",
+   "material": "imperial",
+   "why": "Legion issue"
+  },
+  {
+   "item": "NewArmoury.esp:167FFF",
+   "material": "bog-iron",
+   "why": "a halberd",
+   "name": "Bog-iron Halberd"
+  },
+  {
+   "item": "NewArmoury.esp:168010",
+   "material": "copper-steel",
+   "why": "a halberd",
+   "name": "Copper-edged Halberd"
+  },
+  {
+   "item": "NewArmoury.esp:16801B",
+   "material": "imperial",
+   "why": "Legion issue"
+  },
+  {
+   "item": "NewArmoury.esp:16801C",
+   "material": "bone",
+   "why": "a feathered bone halberd",
+   "name": "Bone Halberd"
+  },
+  {
+   "item": "NewArmoury.esp:18B756",
+   "material": "bog-iron",
+   "why": "an iron-shod quarterstaff",
+   "name": "Bog-iron Quarterstaff"
+  },
+  {
+   "item": "NewArmoury.esp:18B760",
+   "material": "copper-steel",
+   "why": "a steel-shod quarterstaff",
+   "name": "Copper-edged Quarterstaff"
+  },
+  {
+   "item": "NewArmoury.esp:18B762",
+   "material": "bone",
+   "why": "a spiked bone staff",
+   "name": "Bone-spiked Quarterstaff"
+  },
+  {
+   "item": "NewArmoury.esp:18B766",
+   "material": "imperial",
+   "why": "Legion issue"
+  },
+  {
+   "item": "NewArmoury.esp:19AAA5",
+   "material": "bog-iron",
+   "why": "claws worn over the hand",
+   "name": "Bog-iron Claws"
+  },
+  {
+   "item": "NewArmoury.esp:19AAA6",
+   "material": "copper-steel",
+   "why": "claws worn over the hand",
+   "name": "Copper-edged Claws"
+  },
+  {
+   "item": "NewArmoury.esp:31BDDD",
+   "material": "bog-iron",
+   "why": "a chain flail, a slaver's weapon",
+   "name": "Bog-iron Flail"
+  },
+  {
+   "item": "NewArmoury.esp:31BDDE",
+   "material": "copper-steel",
+   "why": "a chain flail",
+   "name": "Copper-edged Flail"
+  },
+  {
+   "item": "Pirates Wield Cutlasses.esp:000D63",
+   "material": "corsair",
+   "why": "a pirate's cutlass"
+  },
+  {
    "item": "PrvtI_ArgonianWeapons.esp:000800",
    "material": "bone",
    "why": "Argonian Bone Mace: Argonian bone (New Armory)"
@@ -1226,6 +1685,246 @@
    "why": "Argonian Great Tusik: flint-toothed wood (New Armory)"
   },
   {
+   "item": "PrvtI_HeavyArmory.esp:000D6F",
+   "material": "bog-iron",
+   "why": "a shortsword",
+   "name": "Bog-iron Shortsword"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:00798A",
+   "material": "bog-iron",
+   "why": "a halberd",
+   "name": "Bog-iron Glaive"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:0089C3",
+   "material": "bog-iron",
+   "why": "a spiked club",
+   "name": "Bog-iron Spiked Club"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:009A0D",
+   "material": "copper-steel",
+   "why": "a spear",
+   "name": "Copper-edged Spear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:00A4EB",
+   "material": "bog-iron",
+   "why": "a spear",
+   "name": "Bog-iron Spear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:00AA53",
+   "material": "bone",
+   "why": "a bone and antler spear",
+   "name": "Bone Spear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:00AA54",
+   "material": "bone",
+   "why": "a bone club",
+   "name": "Bone Club"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:00FBC8",
+   "material": "bog-iron",
+   "why": "a shortspear",
+   "name": "Bog-iron Shortspear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:010133",
+   "material": "imperial",
+   "why": "Legion issue"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:0121C5",
+   "material": "bog-iron",
+   "why": "a hatchet",
+   "name": "Bog-iron Hatchet"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:0147D8",
+   "material": "bone",
+   "why": "a bone shortspear",
+   "name": "Bone Shortspear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:0A512B",
+   "material": "bog-iron",
+   "why": "a long mace",
+   "name": "Bog-iron Long Mace"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:0D7B8C",
+   "material": "bog-iron",
+   "why": "a fisher's trident",
+   "name": "Bog-iron Trident"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:1054D7",
+   "material": "copper-steel",
+   "why": "a fine trident",
+   "name": "Bronze-collared Trident"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:1C5CAB",
+   "material": "wood",
+   "why": "a wooden quarterstaff"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:1C5CAC",
+   "material": "wood",
+   "why": "a wooden club"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:21BE01",
+   "material": "bone",
+   "why": "a bone-spiked staff",
+   "name": "Bone Quarterstaff"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:220F0E",
+   "material": "wood",
+   "why": "a wooden warhammer"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:29F908",
+   "material": "copper-steel",
+   "why": "a trident",
+   "name": "Copper-edged Trident"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:2B8FB9",
+   "material": "wood",
+   "why": "a wooden spear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:2B8FBA",
+   "material": "wood",
+   "why": "a wooden shortspear"
+  },
+  {
+   "item": "PrvtI_HeavyArmory.esp:314EFD",
+   "material": "bone",
+   "why": "a bone hatchet",
+   "name": "Bone Hatchet"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC0",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Shield"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC1",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Helmet"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC2",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Gauntlets"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC3",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Armor"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC4",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Boots"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BDB",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Battleaxe"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BDC",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Bow"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BDD",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Dagger"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BDE",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Greatsword"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BDF",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Mace"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BE0",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Sword"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BE1",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber War Axe"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BE2",
+   "material": "hist-amber",
+   "why": "the amber set: translucent resin over dark wood",
+   "name": "Hist Amber Warhammer"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000800",
+   "material": "bog-iron",
+   "why": "a rustic bow",
+   "name": "Marsh Bow"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000803",
+   "material": "bog-iron",
+   "why": "a rustic dagger of iron and bone",
+   "name": "Marsh Dagger"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000804",
+   "material": "bog-iron",
+   "why": "a rustic cudgel",
+   "name": "Marsh Cudgel"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000805",
+   "material": "bog-iron",
+   "why": "a rustic cleaver",
+   "name": "Marsh Cleaver"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000807",
+   "material": "bog-iron",
+   "why": "a rustic shield",
+   "name": "Marsh Light Shield"
+  },
+  {
+   "item": "mihailgrummiteweaponry.esp:000809",
+   "material": "bog-iron",
+   "why": "a rustic shield",
+   "name": "Marsh Heavy Shield"
+  },
+  {
    "item": "s6o6tStormholdWarriorArmor.esp:000803",
    "material": "saxhleel",
    "why": "Saxhleel Leather Pants: Saxhleel leather (Stormhold Warrior)"
@@ -1287,6 +1986,11 @@
   }
  ],
  "wares": [
+  {
+   "item": "Dragonborn.esm:01CD7C",
+   "good": "hide-and-leather",
+   "why": "Netch Leather: the Dunmer's leather (a smithing ingredient)"
+  },
   {
    "item": "Dragonborn.esm:02B04E",
    "good": "chitin-work",
@@ -1979,6 +2683,12 @@
    "item": "Skyrim.esm:0DB5D2",
    "good": "hide-and-leather",
    "why": "Leather: the tanner's (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "ccBGSSSE025-AdvDSGS.esm:000BC7",
+   "good": "sap",
+   "why": "amber refined at the Hist, for amber work (a smithing ingredient)",
+   "name": "Refined Hist Amber"
   }
  ]
 }

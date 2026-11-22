@@ -916,6 +916,132 @@
    "makers": [],
    "reach": [],
    "ladder_tier": null
+  },
+  {
+   "id": "hist-amber",
+   "label": "Hist amber",
+   "group": "plate",
+   "band": "rare",
+   "tier": "CANON_EXPLICIT",
+   "ladder_tier": "T5",
+   "lore": "Hist sap and, rarely, Hist amber: ritual, medicine and the province's most valuable contraband (ecology-encounters-loot.md:117-135); the Creation Club amber set relabelled",
+   "power": {
+    "weapon": "WeapMaterialEbony",
+    "armour": "ArmorMaterialGlass"
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "argonian",
+     "why": "worked at the Hist by its keepers"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "anywhere",
+     "value": null,
+     "why": "rare: its tier (T5) keeps it to a shrine's or a rich city's treasury"
+    }
+   ]
+  },
+  {
+   "id": "netch-leather",
+   "label": "Netch leather and Ashlander make",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "lore": "Morrowind's netch leather, Ashlander and raider light gear: the Dunmer minority and holdouts (argonia-4e201-state.md:430; Journey to Baan Malur)",
+   "power": {
+    "weapon": null,
+    "armour": "ArmorMaterialLeather"
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "dunmer",
+     "why": "Morrowind's make"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "culture",
+     "value": "stone-grey",
+     "why": "Stormhold's Argonians and Dunmer"
+    },
+    {
+     "kind": "place-kind",
+     "value": "velothi-ruin",
+     "why": "a Velothi ruin"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b",
+     "why": "the record names Dunmer"
+    }
+   ],
+   "ladder_tier": "T2"
+  },
+  {
+   "id": "bone-plate",
+   "label": "Bone plate",
+   "group": "plate",
+   "band": "uncommon",
+   "tier": "CANON_EXPLICIT",
+   "ladder_tier": "T3",
+   "lore": "Xit-Xaht bone plate armour, \"as effective as steel scale\" (material-culture.md:79-82); Bone Cultist Armor relabelled",
+   "power": {
+    "weapon": null,
+    "armour": "ArmorMaterialSteelPlate"
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "good",
+     "value": "bone-and-horn",
+     "why": "the bone-workers"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "anywhere",
+     "value": null,
+     "why": "uncommon; its tier keeps it to the towns"
+    }
+   ]
+  },
+  {
+   "id": "corsair",
+   "label": "Corsair's steel",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "ladder_tier": "T2",
+   "lore": "pirates and smugglers arm themselves from the ships they take (foreign-powers.md:107-118): cutlasses, rapiers and corsairs' knives",
+   "power": {
+    "weapon": "WeapMaterialSteel",
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [],
+   "reach": [
+    {
+     "kind": "place-kind",
+     "value": "outlaw-camp",
+     "why": "a pirate or smuggler camp"
+    },
+    {
+     "kind": "place-kind",
+     "value": "shipwreck",
+     "why": "a wreck"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(pirates?|smugglers?|corsairs?|privateers?|marque)\\b",
+     "why": "the record names pirates or smugglers"
+    }
+   ]
   }
  ],
  "never": {
