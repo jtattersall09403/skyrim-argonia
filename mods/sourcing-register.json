@@ -1336,5 +1336,27 @@
   "notes": "author TeluraVas. Page permission text: \"It is fine to port this mod over to PlayStation and Xbox, just make sure to give credit back to the original mod.\" Records to be copied into our plugin under our names; assets the player's own download.",
   "permission": "granted on condition (owner ruling 2026-11-16)",
   "permission_condition": "Owner, 2026-11-16: \"Yes to the Reed rank armour. Find unique interesting reward items for the other factions too if you can. I am happy to auto approve. You decide for me.\" Condition: its assets are never shipped by us, and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "New Armory Series - Argonian Weapons (Nexus 178432)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/178432?tab=files&file_id=800899",
+  "version": "1.6 (row new-armory-argonian-weapons)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): Black Marsh's common wood and bone weapons (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author PrivateEye. No permission section on the page. Records read for stock and copied into our plugin under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Beyond Skyrim Morrowind - Bonemold Weapon Pack (Nexus 66906)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/66906?tab=files&file_id=495482",
+  "version": "1.4 (row bonemold-weapon-pack)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the Dunmer bonemold weapon line (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Beyond Skyrim. No permission section on the page. Records read for stock and copied into our plugin under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
  }
 ]

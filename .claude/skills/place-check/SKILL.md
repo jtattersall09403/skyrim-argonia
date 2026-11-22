@@ -61,7 +61,9 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
 13. Commit `newworld/places/<place_id>/` and the record change by path. The final build and check come after the
     LAST edit of any kind to the place's files: `check` ends with whether the built check is current against them,
     and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
-    consistency stage would refuse the landing). The place goes to `place-people`.
+    consistency stage would refuse the landing). For a stocked place, `handover` also needs `python -m tools.places
+    stock reach <place_id>` to flag no row (material reach, region, place class, trade kit; `place-stock`, section 4).
+    The place goes to `place-people`.
 
 ## Accepted findings
 
@@ -87,6 +89,6 @@ Each failure's full list is in `out/places/shards/<place_id>/check_failures/<che
 | `people`, `services`, `jail` | `place-routines` |
 | lights, lanterns, sap, stations, `primitives` | `place-dressing` |
 | `promises`, needs | `place-story`, or `place-stock` for a promise of what the place holds |
-| `stock` | `place-stock` |
+| `stock`, `stock reach` | `place-stock` |
 
 A finding beyond the checks is weighed by what the player would notice.

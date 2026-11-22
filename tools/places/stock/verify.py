@@ -67,19 +67,15 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     keys |= {i.item_id for v in st.person_items.values() for i in v} | {i.item_id for v in st.trader_items.values() for i in v}
     rec = Records.load(plugins_of(keys))
     rules = sc["split"]
-    never_m = set(sc["never"]["materials"])
-    never_w = [x.lower() for x in sc["never"]["edid_words"]]
 
     def info(k: str) -> dict:
         it = rec.item(k)
         if it is None:
             return {"known": False, "significant": False, "value": 0, "tier": "T1", "kind": "?", "never": False, "edid": k}
         kind, sig, _ = split.item_class(it, rules)
-        mat = next((m for m in it["keywords"] if "Material" in m), None)
         tier = split.item_tier(it, sc)[0]
         return {"known": True, "significant": sig, "value": it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
-                "sig": it["sig"],
-                "name": it["name"], "never": bool(mat in never_m or any(x in (it["edid"] or "").lower() for x in never_w))}
+                "sig": it["sig"], "name": it["name"], "never": split.never_reason(it, sc) is not None}
 
     items = {k: info(k) for k in keys if k}
     pw = w.get("place_wealth", place_id)

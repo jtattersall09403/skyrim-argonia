@@ -42,7 +42,8 @@ def game_root() -> Path:
 
 def search_dirs() -> list[str]:
     """Where plugins are found, first hit wins: the game's Data, the staged mods in MO2 priority order (highest
-    first, as tools/ArgoniaPlugin/plugin.sh resolves them), the asset mods, our world file's directory."""
+    first, as tools/ArgoniaPlugin/plugin.sh resolves them), the asset mods, our world file's directory, then the
+    plugins the catalogue unpacked from archives (out/places/catalogue/plugins/<mod>/)."""
     data = game_root() / "Data"
     mo2 = Path.home() / ".argonia" / "stack" / "MO2"
     dirs = [data]
@@ -56,6 +57,10 @@ def search_dirs() -> list[str]:
     if assets.is_dir():
         dirs += sorted(p for p in assets.iterdir() if p.is_dir())
     dirs.append(WORLD_ESM.parent)
+    # a newworld row's plugin the catalogue unpacked from its archive (a mod whose assets are not laid here yet)
+    unpacked = REPO / "out" / "places" / "catalogue" / "plugins"
+    if unpacked.is_dir():
+        dirs += sorted(p for p in unpacked.iterdir() if p.is_dir())
     return [str(d) for d in dirs if d.is_dir()]
 
 

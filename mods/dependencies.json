@@ -4950,7 +4950,7 @@
    "version": "1.3",
    "archive": "Stormhold Warrior Armor-96559-1-2-1728837352.7z",
    "size_kb": 22297,
-   "why": "the Toh-Reel-Ka's rank armour (main-plot.md section 5: the heavier make at Reel-Ka and Ka-Deelith); owner approved 2026-11-16; asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "the Toh-Reel-Ka's rank armour (main-plot.md section 5: the heavier make at Reel-Ka and Ka-Deelith); owner approved 2026-11-16; asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active; its gear itemised on the items ladder (docs/design/items.md)",
    "required": true,
    "profile": "newworld",
    "licence": "custom terms on the page",
@@ -4963,7 +4963,10 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "sha256": "603fbe3144077ba7b2003419db9a1b29e040a12fdbb790755c5579c440316a20",
+   "plugins": [
+    "s6o6tStormholdWarriorArmor.esp"
+   ]
   },
   {
    "id": "shadowscale-set-reborn",
@@ -4978,7 +4981,7 @@
    "version": "1.1.1",
    "archive": "Shadowscale Reborn-79717-1-1-1-1675478748.rar",
    "size_kb": 18763,
-   "why": "the Shadowscales' rank armour and the line's last reward (reward-gear.md); asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "the Shadowscales' rank armour and the line's last reward (reward-gear.md); asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active; its gear itemised on the items ladder (docs/design/items.md)",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -4991,7 +4994,10 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "sha256": "26c40d6b2f2ce94f9fbd46265fe26c88af53a04b43167bb495e232ae1e12f0f4",
+   "plugins": [
+    "shadowscaleset.esp"
+   ]
   },
   {
    "id": "ancient-argonian-armor",
@@ -5006,7 +5012,7 @@
    "version": "1",
    "archive": "1AAASE-100724-1-1694866126.7z",
    "size_kb": 26441,
-   "why": "the Unbound's tribeless war gear and their leader's reward (reward-gear.md); asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "the Unbound's tribeless war gear and their leader's reward (reward-gear.md); asset-only: its records copied into our plugin under our names, assets loose in the NewWorld profile, plugin never active; its gear itemised on the items ladder (docs/design/items.md)",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -5019,7 +5025,72 @@
    "linked_or_forked_by": "none: depended on as the player's own download; our plugin will copy its armour and weapon records (ForeignCopy) and name its assets by path",
    "from": "nw-05c",
    "asset_only": true,
-   "check": "not yet fetched: its plugin name and sha256 come from `stack.py fetch --record`"
+   "sha256": "7718ae1324565a30e743259db4aad5d2bf2768affbf73e84876a1d742e85cd9d",
+   "plugins": [
+    "1AncArgArm.esp"
+   ]
+  },
+  {
+   "id": "new-armory-argonian-weapons",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 178432,
+    "file": 800899
+   },
+   "name": "New Armory Series - Argonian Weapons",
+   "author": "PrivateEye",
+   "version": "1.6",
+   "archive": "New Armory Series - Argonian Weapons 178432 1.6 2026-09-05T19-33Z qTl1SxHOA.7z",
+   "size_kb": 20337,
+   "why": "Black Marsh's common wood and bone weapons (the items ladder, docs/design/items.md, T1-T2): Argonian huntsmen's and fishermen's gear; asset-only: its records read for stock, assets loose in the NewWorld profile, plugin never active; needs CC Fishing (ccBGSSSE001-Fish.esm, already loaded)",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; we ship nothing of it and require it.",
+   "permission_evidence": "Nexus API v1 description and files read 2026-11-22 (427 endorsements, last updated 2026-09-05); no permission section in the page text; the lead's plan (issue #89) adds it as a dependency the player downloads",
+   "group": "newworld",
+   "required": true,
+   "profile": "newworld",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; our plugin copies its weapon records (ForeignCopy) and names its assets by path",
+   "asset_only": true,
+   "sha256": "e629961df17b927f8d67a0841c48ab0c48abe4fd6a53d2873908a735b40b8d91",
+   "from": "items ladder (issue #89)",
+   "plugins": [
+    "PrvtI_ArgonianWeapons.esp"
+   ]
+  },
+  {
+   "id": "bonemold-weapon-pack",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 66906,
+    "file": 495482
+   },
+   "name": "Beyond Skyrim Morrowind - Bonemold Weapon Pack",
+   "author": "Beyond Skyrim",
+   "version": "1.4",
+   "archive": "Bonemold Weapon Pack 1.4-66906-1-4-1714270165.7z",
+   "size_kb": 45089,
+   "why": "the Dunmer bonemold weapon line (the items ladder, docs/design/items.md: bonemold is Dunmer-only, situational, T3); asset-only: its records read for stock, assets loose in the NewWorld profile, plugin never active",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; we ship nothing of it and require it.",
+   "permission_evidence": "Nexus API v1 description and files read 2026-11-22 (3006 endorsements, last updated 2024-04-28); no requirements and no permission section in the page text; the lead's plan (issue #89) adds it as a dependency the player downloads",
+   "group": "newworld",
+   "required": true,
+   "profile": "newworld",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; our plugin copies its weapon records (ForeignCopy) and names its assets by path",
+   "asset_only": true,
+   "sha256": "bd8860b5cc4c8c13c513fec852408444d1505bbcdbff10b0394401358ab7153d",
+   "from": "items ladder (issue #89)",
+   "plugins": [
+    "BSMBonemoldSet.esp"
+   ]
   },
   {
    "id": "dx-necromancer-robes",
