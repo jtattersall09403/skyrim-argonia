@@ -161,3 +161,17 @@ def test_owed_blockers_are_reported_new_ones_fail_and_the_list_only_shrinks(tmp_
     (tmp_path / "ways_owed.jsonl").write_text(json.dumps(dict(row, why="the toll tent stands on the road on purpose")) + "\n")
     assert ways.handover_line("p", tmp_path)[0]
     assert ways.handover_line("other", tmp_path) == (True, "ways: nothing owed")
+
+
+def test_the_ways_command_marks_owed_and_failing_blockers(monkeypatch, capsys):
+    """`python -m tools.places ways <place>` prints each blocker as owed or failing and the owed list's stale rows."""
+    from tools.places import ways as W
+    b1 = {"way": "p.path.01", "id": "p.A", "edid": "Fence", "at": [1, 2, 3], "from_middle": 10}
+    b2 = {"way": "p.path.01", "id": "p.B", "edid": "Rock", "at": [4, 5, 6], "from_middle": 20}
+    monkeypatch.setattr(W, "place_blockers", lambda pid: [b1, b2])
+    monkeypatch.setattr(W, "owed", lambda pid, places=None: [{"way": "p.path.01", "id": "p.A", "since": W.STAGED}])
+    assert W.main(["p"]) == 1
+    out = capsys.readouterr().out
+    assert "owed  way p.path.01: p.A" in out and "FAIL  way p.path.01: p.B" in out and "1 failing, 1 owed" in out
+    monkeypatch.setattr(W, "place_blockers", lambda pid: [b1])
+    assert W.main(["p"]) == 0
