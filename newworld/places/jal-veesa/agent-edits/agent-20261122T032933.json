@@ -1,0 +1,170 @@
+{
+ "save_id": "agent-20261122T032933",
+ "place_id": "jal-veesa",
+ "name": "the fish-smoker's stall, fish racks and the smoke fire on the lane",
+ "at": "2026-11-22T03:29:33Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK028PLACE",
+    "base": "Black Marsh.esm:084B55",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509820.0,
+     400.82
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the fish-smoker's stall the record promises (trader-innkeeper: 'a fish-smoker's stall by the fish racks on the lane to the jetty'): Black Marsh's own market stand, as Helstrom's market sets it, beside Mizeera's cooking pot",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:29:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK029PLACE",
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -52020.0,
+     -510620.0,
+     358.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's fish racks smoking along the lane (look): a rack hung with fish over the smoke fire",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:29:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK030PLACE",
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -51700.0,
+     -510620.0,
+     360.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's fish racks smoking along the lane (look): a rack hung with fish over the smoke fire",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:29:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK031PLACE",
+    "base": "Skyrim.esm:04318B",
+    "kind": "static",
+    "pos": [
+     -51860.0,
+     -510620.0,
+     358.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the smoke fire under the fish racks (look: 'fish racks smoking along the lane')",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:29:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK032PLACE",
+    "base": "King of the Murkmire.esp:03B737",
+    "kind": "static",
+    "pos": [
+     -51860.0,
+     -510620.0,
+     358.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the smoke rising from the fish-smoking fire, as Seekhat Yol's smoke rises from its fires",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T03:29:33Z"
+  }
+ ]
+}
