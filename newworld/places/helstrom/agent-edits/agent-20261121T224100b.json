@@ -1,0 +1,359 @@
+{
+ "save_id": "agent-20261121T224100b",
+ "place_id": "helstrom",
+ "name": "seated by its own rule: the city tree on its root collar, the Heart-Mud pools on their ground, two trees back on their ground",
+ "at": "2026-11-21T22:41:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK001PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -35000.0,
+     -626300.0,
+     35.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.3,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -35000.0,
+     -626300.0,
+     76.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.3,
+    "seat": {
+     "mode": "above",
+     "dz": 41.1
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.MUD48549551EAF7E64E526A732",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -39396.5,
+     -609503.9,
+     360.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.7
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -39396.5,
+     -609503.9,
+     334.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.7
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": -23.5,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.MUD5D7A6D18246C3BBBE1F28DC",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58268.6,
+     -600087.4,
+     333.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.8
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -58268.6,
+     -600087.4,
+     314.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.8
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": -16.3,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.MUD8B707BEBCCEFDBD9F4E6EF5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51444.9,
+     -618887.7,
+     101.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.88
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -51444.9,
+     -618887.7,
+     73.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.88
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": -24.9,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.MUDF2D05750025D20B2C438315",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49149.6,
+     -608357.6,
+     192.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.32
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "after": {
+    "pos": [
+     -49149.6,
+     -608357.6,
+     187.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.32
+    ],
+    "scale": 1.2,
+    "seat": {
+     "mode": "stilts",
+     "dz": -2.9,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.EQDXG1VBEBXZWFYHNB4QNSDBRW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -58919.87,
+     -591299.1,
+     411.13
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 2.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -58919.87,
+     -591299.1,
+     503.13
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 2.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.G8TWA2MXHP98FZNBNEAQN2YA8H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55639.52,
+     -591939.19,
+     341.56
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55639.52,
+     -591939.19,
+     426.56
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  }
+ ]
+}

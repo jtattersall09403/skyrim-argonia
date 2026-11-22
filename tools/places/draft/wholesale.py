@@ -247,6 +247,9 @@ def rise(H: heights.Heights, offset: float, st: Standing, x: float, y: float, X:
 
 
 GAP = 160.0     # units: the widest break in the source's own mesh a carried walk steps across
+SEAM_STEP = 48.0   # units: an open edge sampled this often to find the edge of another mesh it runs along
+SEAM_REACH = 24.0  # units: two open edges this close in plan meet
+SEAM_DZ = 48.0     # units: ... and this close in height
 
 
 def _island(adj: dict, start: int) -> set:
@@ -276,7 +279,7 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
         X, Y = an[0] + dx * c + dy * s_, an[1] - dx * s_ + dy * c
         return (round(X, 1), round(Y, 1), round(z + rise(H, offset, st, x, y, X, Y), 1))
     navs = io.read_jsonl(st.src.path / "spaces" / "exterior" / "navmesh.jsonl")
-    nodes, adj, base_of, links, seam = [], {}, {}, [], {}
+    nodes, adj, base_of, links, seam, open_pts = [], {}, {}, [], {}, []
 
     def join(u, v):
         adj.setdefault(u, set()).add(v)
@@ -301,6 +304,21 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
                         if k < base:
                             join(base + i, k)
                     seam.setdefault(e, []).append(base + i)
+                    p, q = V[t[j]], V[t[(j + 1) % 3]]
+                    n = max(1, int(math.dist(p[:2], q[:2]) // SEAM_STEP))
+                    for s in range(n + 1):
+                        f = s / n
+                        open_pts.append((p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f, p[2] + (q[2] - p[2]) * f,
+                                         base + i, base))
+    # meshes the source left unlinked (one per cell piece, their shared edges split differently): an open edge of
+    # one that runs along an open edge of another is a seam the source's walkers cross
+    if open_pts:
+        from scipy.spatial import cKDTree
+        P = [(o[0], o[1]) for o in open_pts]
+        for a, b in cKDTree(P).query_pairs(SEAM_REACH):
+            oa, ob = open_pts[a], open_pts[b]
+            if oa[4] != ob[4] and abs(oa[2] - ob[2]) <= SEAM_DZ:
+                join(oa[3], ob[3])
     for u, mesh, tri in links:
         if mesh in base_of:
             join(u, base_of[mesh] + tri)

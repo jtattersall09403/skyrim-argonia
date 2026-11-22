@@ -1587,6 +1587,12 @@
      "what": "the source's north shore (Imperial tents, the hidden ziggurat, waterfalls) and its stone ruins",
      "verdict": "dropped",
      "why": "the north shore lies outside our footprint at this transform; the ruins are stone the record does not hold (only the Xanmeer stands in stone)"
+    },
+    {
+     "cluster": "s63",
+     "what": "two racked boats and a lantern on the shore beside the landing",
+     "verdict": "kept",
+     "why": "the landing's boats drawn up on the bank by the city tree, where the raft-masters work"
     }
    ]
   }
@@ -2046,7 +2052,10 @@
   "agent-20261121T220535",
   "agent-20261121T220539",
   "agent-20261121T220554",
-  "agent-20261121T220742"
+  "agent-20261121T220742",
+  "agent-20261121T224059",
+  "agent-20261121T224100",
+  "agent-20261121T224100b"
  ],
  "wholesale": {
   "offset": 180.0,
@@ -4628,5 +4637,49 @@
   ],
   "navmesh": "source",
   "laid": "2026-11-21T21:05:40Z"
- }
+ },
+ "released": [
+  {
+   "space": "exterior",
+   "id": "helstrom.LOOK001PLACE",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.MUD48549551EAF7E64E526A732",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.MUD5D7A6D18246C3BBBE1F28DC",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.MUD8B707BEBCCEFDBD9F4E6EF5",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.MUDF2D05750025D20B2C438315",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.EQDXG1VBEBXZWFYHNB4QNSDBRW",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  },
+  {
+   "space": "exterior",
+   "id": "helstrom.G8TWA2MXHP98FZNBNEAQN2YA8H",
+   "after": 44,
+   "why": "seated by its stage's rule (the hand's height ratcheted its seat): its place in plan stays"
+  }
+ ]
 }
