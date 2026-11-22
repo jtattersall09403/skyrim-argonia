@@ -1911,6 +1911,78 @@
    "name": "Funerary Mask"
   },
   {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Robes",
+   "why": "a Khajiit moon-monk's robes (the caravans' priests)"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Mask",
+   "why": "a moon-monk's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Boots",
+   "why": "a moon-monk's boots"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "material": "caravan-steel",
+   "name": "Regal Monk's Mask",
+   "why": "a senior moon-monk's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "material": "caravan-steel",
+   "name": "Regal Monk's Robes",
+   "why": "a senior moon-monk's robes"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "material": "saxhleel",
+   "name": "Water-clan Mask",
+   "why": "a Hist priest's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "material": "saxhleel",
+   "name": "Water-clan Robes",
+   "why": "blue-green vestments for a Hist priest"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "material": "imperial",
+   "name": "Emissary's Mask",
+   "why": "an Imperial emissary's mask"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "material": "imperial",
+   "name": "Emissary's Robes",
+   "why": "an Imperial emissary's robes"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "material": "shadowscale",
+   "name": "Shadow-robe",
+   "why": "dark robes for a Shadowscale"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "material": "caravan-steel",
+   "name": "Khajiit Monk's Wraps",
+   "why": "a moon-monk's hand wraps"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "material": "saxhleel",
+   "name": "Water-clan Wraps",
+   "why": "a Hist priest's hand wraps"
+  },
+  {
    "item": "King of the Murkmire.esp:0008D1",
    "material": "saxhleel",
    "why": "Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"

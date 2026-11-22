@@ -88,9 +88,10 @@
 {"kit_id":"pirate","seq":3,"use":"home","good_id":"salvage","why":"the takings"}
 {"kit_id":"pirate","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"priest","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone obsidian","why":"a ritual knife"}
-{"kit_id":"priest","seq":1,"use":"home","good_id":"sap","why":"Hist offerings"}
-{"kit_id":"priest","seq":2,"use":"food","good_id":"eggs","why":"food in the house"}
-{"kit_id":"priest","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"priest","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"saxhleel","why":"Water-clan vestments and a priest's mask (an alternative)"}
+{"kit_id":"priest","seq":2,"use":"home","good_id":"sap","why":"Hist offerings"}
+{"kit_id":"priest","seq":3,"use":"food","good_id":"eggs","why":"food in the house"}
+{"kit_id":"priest","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"resident","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"flint bone","why":"a knife"}
 {"kit_id":"resident","seq":1,"use":"home","good_id":"river-fish","why":"food"}
 {"kit_id":"resident","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}

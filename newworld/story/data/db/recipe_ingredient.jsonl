@@ -1221,6 +1221,52 @@
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"Kad_BogBlightMask.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:000801","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000803","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000804","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000830","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:000831","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000839","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00083A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:000869","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00086A","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0FA8E1","count":4}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":1,"ingredient":"King of the Murkmire.esp:000964","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
+{"item_id":"Kad_MoonMonkRobes.esp:00088B","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:0008D7","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":2}
+{"item_id":"Kad_MoonMonkRobes.esp:0008DA","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05AD9F","count":1}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":4}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"King of the Murkmire.esp:0008D1","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}

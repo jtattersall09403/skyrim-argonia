@@ -1776,5 +1776,16 @@
   "notes": "author Avebrave. Records read for stock and copied into our plugins under our names; assets the player's own download.",
   "permission": "dependency only (player's own download)",
   "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Moon Monk's Robes (Nexus 82495)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/82495?tab=files&file_id=799998",
+  "version": "2 (row moon-monk-robes)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Kadraeus. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
  }
 ]

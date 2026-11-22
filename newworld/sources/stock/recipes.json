@@ -13176,6 +13176,460 @@
    "why": "the mod's own recipe (00TemperArmorBogBlight): every ingredient is one of ours"
   },
   {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080B",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000801",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:000877",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobes): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080C",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000803",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B7",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMask): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00080E",
+   "why": "Skyrim's light-boots shape (2 main, 2 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000804",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     2
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008C9",
+   "why": "the mod's own recipe (0TemperArmorKhajiitBoots): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089E",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000830",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008BF",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskRegal): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A8",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000831",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B3",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesRegal): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     2
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089F",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000839",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008C0",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskWater): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     4
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A9",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00083A",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B4",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesWater): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:00089B",
+   "why": "Skyrim's light-helmet shape (2 main, 1 strips) in imperial: Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear); perk of ArmorMaterialImperialLight"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:000869",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008BB",
+   "why": "the mod's own recipe (0TemperArmorKhajiitMaskLightRed): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     4
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A5",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in imperial: Steel Ingot: Imperial issue keeps Skyrim's own recipe (situational foreign gear); perk of ArmorMaterialImperialLight"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00086A",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008B0",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesLightRed): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "AdvancedArmors"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+     4
+    ],
+    [
+     "King of the Murkmire.esp:000964",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     3
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008A2",
+   "why": "Skyrim's light-cuirass shape (4 main, 3 strips) in shadowscale: obsidian and masu scale, in place of Shadowscale Reborn's ebony ingots; perk of ArmorMaterialScaled"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:00088B",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008AD",
+   "why": "the mod's own recipe (0TemperArmorKhajiitRobesAssassin): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008DD",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in caravan-steel: steel ingots and leather strips; perk of no keyword"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008D7",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008DC",
+   "why": "the mod's own recipe (0TemperArmorKhajiitGauntlets_Unenchanted): every ingredient is one of ours"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+     1
+    ],
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     2
+    ]
+   ],
+   "source": "overrides:Kad_MoonMonkRobes.esp:0008E1",
+   "why": "Skyrim's light-gauntlets shape (1 main, 2 strips) in saxhleel: Brushboar Tusk and Leather: the Saxhleel's bone-and-leather work; perk of ArmorMaterialLeather"
+  },
+  {
+   "item": "Kad_MoonMonkRobes.esp:0008DA",
+   "kind": "temper",
+   "station": "CraftingSmithingArmorTable",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05AD9F",
+     1
+    ]
+   ],
+   "source": "kept:Kad_MoonMonkRobes.esp:0008E4",
+   "why": "the mod's own recipe (0TemperArmorKhajiitGauntletsWater_Unenchanted): every ingredient is one of ours"
+  },
+  {
    "item": "King of the Murkmire.esp:0008D1",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -23703,8 +24157,8 @@
   }
  ],
  "audit": {
-  "mod_recipes": 916,
-  "kept": 582,
-  "overridden": 326
+  "mod_recipes": 940,
+  "kept": 594,
+  "overridden": 338
  }
 }

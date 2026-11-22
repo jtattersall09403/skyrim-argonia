@@ -84,23 +84,23 @@ The table below is the ladder as the data holds it, one line per material:
 | T2 | Bog iron | 25 | 1 | 10 | 2 | uncommon | SteelSword |
 | T2 | Corsair's steel | 5 |  | 8 |  | situational | SteelSword |
 | T2 | Crossbow work (bog iron and wood) | 1 |  |  |  | situational | SteelSword |
-| T2 | Imperial issue | 17 | 7 | 18 | 4 | situational | SteelSword |
+| T2 | Imperial issue | 17 | 7 | 20 | 4 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
 | T2 | Marsh leather |  |  | 8 |  | common | SteelSword |
 | T2 | Netch leather and Ashlander make |  |  | 25 | 2 | situational | SteelSword |
-| T2 | Saxhleel bone-and-leather work | 5 |  | 29 |  | common | SteelSword |
+| T2 | Saxhleel bone-and-leather work | 5 |  | 32 |  | common | SteelSword |
 | T2 | Turtle shell |  | 4 |  | 2 | uncommon | SteelSword |
 | T3 | Argonian scale |  |  | 16 | 2 | uncommon | ElvenSword |
 | T3 | Ayleid elven |  |  |  |  | ruin | ElvenSword |
 | T3 | Bone plate | 11 | 4 |  |  | uncommon | ElvenSword |
 | T3 | Bonemold | 24 | 8 | 4 | 5 | situational | ElvenSword |
-| T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 19 | 2 | situational | ElvenSword |
+| T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 25 | 2 | situational | ElvenSword |
 | T3 | Chitin | 10 | 6 | 4 | 2 | uncommon | ElvenSword |
 | T3 | Copper-edged steel | 19 |  |  |  | uncommon | ElvenSword |
 | T3 | Greenwood (Bosmer make) | 3 | 5 | 6 |  | situational | ElvenSword |
 | T4 | Moonstone and Temple glass (Dunmer fine work) | 19 |  | 4 | 2 | situational | GlassSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |
-| T4 | Shadowscale make | 4 |  | 11 |  | situational | GlassSword |
+| T4 | Shadowscale make | 4 |  | 12 |  | situational | GlassSword |
 | T4 | Skyrim glass |  |  |  |  | ruin | GlassSword |
 | T4 | Volcanic glass | 33 |  | 4 | 1 | rare | GlassSword |
 | T5 | Ebony |  |  |  |  | ruin | EbonySword |
@@ -205,31 +205,50 @@ game and are never read.
 
 ## Coverage by people and faction
 
-Gear rows on the ladder by the materials each people or faction uses (weapons / light / heavy / shields), before
-the widening and after it. A material can serve more than one row.
+Every tribe of `culture.jsonl` has a culture overlay in `kits.json`. Its Argonians take it on top of their trade kit,
+read from the place's culture. Each overlay names the weapon type they favour first, the look they wear and what
+they never use. No model is made for any one tribe: the difference is carried by which owned and added pieces each
+tribe takes first. The sentence at the end of each row is one a player could check in game.
 
-| People or faction | Materials | Before | After | Still thin |
+| Tribe | Weapon first | Look | Never | How you can tell |
 |---|---|---|---|---|
-| Argonian tribes, marsh-wide | wood to copper-steel | 60 / 59 / 5 / 5 | 130 / 87 / 9 / 8 | heavy armour |
-| Argonian high craft, Hist priests | masu plate, bronze, Hist amber, obsidian | 12 / 4 / 8 / 0 | 57 / 8 / 8 / 3 | robes and masks (funerary masks only) |
-| Naga, Naga-Kur | shell, bone, leather, Naga-Kur set | 7 / 1 / 4 / 2 | 16 / 11 / 4 / 2 | no Naga weapon model anywhere |
-| Root-Folk, Lilmothiit-named towns | wood, hide, bone plate | 21 / 17 / 0 / 1 | 50 / 17 / 4 / 1 | Lilmothiit gear has no model |
-| Shadowscales (the Empty Cradle) | shadowscale | 4 / 6 / 0 / 0 | 4 / 11 / 0 / 0 | own weapons |
-| Chainbreakers, Archwardens, Warden forts | copper-steel, bog iron, imperial | 22 / 14 / 8 / 4 | 62 / 28 / 12 / 7 | |
-| Dunmer houses and holdouts | bonemold, chitin, netch leather | 9 / 0 / 0 / 3 | 18 / 31 / 14 / 8 | Telvanni, Hlaalu and Indoril looks |
-| Imperials, Topal Bay posts, East Empire Company | imperial, crossbow | 12 / 14 / 7 / 4 | 20 / 18 / 11 / 5 | |
-| Pirates, the Salt-Teeth, smugglers | corsair | 0 | 5 / 8 / 0 / 0 | |
-| Thieves (the Night-Reed Chapter) | leather | 0 / 1 / 0 / 0 | thieves' set 6 more | own weapons |
-| Sellswords (the Marsh Charter) | bog iron | 2 / 0 / 1 / 0 | 25 / 10 / 1 / 2 | |
-| Khajiit and Bosmer traders | caravan steel | 0 | 8 / 19 / 19 / 2 | Bosmer looks |
-| Kothringi remnants | Kothringi relic | 11 / 1 / 4 / 4 | 13 / 6 / 8 / 4 | |
-| Ayleid and Xanmeer ruins | elven, glass, ebony, Xanmeer relic | 0 / 5 / 8 / 2 | unchanged | weapons are relic-only by design |
-| Cults (bone cultists) | bone plate | 0 | 11 / 0 / 4 / 0 | priests' robes |
+| The Warden Marches | pike (copper-steel, imperial, bog-iron) | heavy imperial, copper-steel | nothing barred | You can tell them by pikes and Imperial-cut plate on Argonian wardens. |
+| The Root-Folk of Helstrom | quarterstaff (wood, bone) | light hide, saxhleel | the Root-Folk wear no forged plate under the Hist | You can tell them by staves and hide, never forged plate. |
+| The Archon Harbour Folk | greatsword (bog-iron, bone-plate) | light shell, saxhleel | harbour folk swim: no heavy armour | You can tell them by harpoons and shell harness, never heavy armour. |
+| The Naka-Desh (Riverbacks) | greatsword (flint, bone, wood) | light scale, hide | nothing barred | You can tell them by spear-and-bow river hunters in scale. |
+| The Sedge-Wardens of Jal-Veesa (Veesa-Teeleel) | bow (wood) | light leather, netch-leather | nothing barred | You can tell them by reed-cane bows and border-traded leather. |
+| The Agaceph | claw (bone, chitin) | light chitin, scale | nothing barred | You can tell them by claws and chitin. |
+| The Hutan-Tzel | bow (wood) | light hide | Panther River stalkers wear nothing heavy | You can tell them by blowguns and hide, never heavy. |
+| The Island of Blackrose | warhammer (bog-iron, wood) | light imperial, corsair, leather | nothing barred | You can tell them by mauls, crossbows and patched Imperial leftovers. |
+| The Chime-Keepers (Kothringi-named towns) | mace (kothringi-relic, bog-iron) | heavy kothringi-relic | nothing barred | You can tell them by Kothringi maces and plate on Argonians. |
+| The Gideon Frontier | sword (imperial, bog-iron) | light imperial, leather | nothing barred | You can tell them by Imperial short swords and crossbows. |
+| The Spray-Folk of Seafalls | greatsword (bone-plate, shell, bone) | light shell | beyond the Hist's reach the Spray-Folk work bone and shell, not iron | You can tell them by fishbone tridents and shell, never forged plate. |
+| The Three Waters Tribe | whip (copper-steel, bog-iron) | light saxhleel | nothing barred | You can tell them by flails and Saxhleel cloth. |
+| Lilmoth and the Murkmire Coast | rapier (copper-steel, corsair) | light saxhleel, masu-plate | nothing barred | You can tell them by rapiers and fine cloth on the docks, masu plate on the guard. |
+| The Clay-Mound People of Aroxhu (Oxhu-Teeleel) | mace (flint, wood) | light bone-plate, hide | nothing barred | You can tell them by macuahuitls and bone plate. |
+| The Stone-Sleepers of Tsonac (Tsona-Kaleel) | halberd (obsidian, flint) | light scale, hide | nothing barred | You can tell them by glaives and volcanic glass. |
+| The Mine-Burners of the Banujha (Banu-Jaleel) | waraxe (bog-iron, copper-steel) | heavy bog-iron | nothing barred | You can tell them by axes and heavy bog iron of their own smelting. |
+| The Shadowfen Border (Stormhold) | sword (bonemold, chitin, bog-iron) | light netch-leather, chitin, bonemold | nothing barred | You can tell them by Dunmer chitin, netch and bonemold on Argonians. |
+| Soulrest and the Topal Coast | sword (caravan-steel, corsair) | light caravan-steel, leather | nothing barred | You can tell them by curved Khajiit-traded steel. |
 
-Kits and overlays put these where each people is. There are four new kits: thief, sellsword, assassin, and marine
-(Company and Legion crossbowmen). Pirates wear corsair coats first. There are two new households, Khajiit and
-Bosmer. Regions with Khajiit or Bosmer peoples carry caravan steel, and regions with Imperial, outlaw or Dunmer
-peoples trade crossbows.
+Peoples and factions (gear rows as weapons / light / heavy / shields; "before" is the start of packet four):
+
+| People or faction | Before | Now | How you can tell, and what is still thin |
+|---|---|---|---|
+| Dunmer houses and holdouts (bonemold, chitin, netch, moonstone) | 18/31/14/8 | 53/37/20/11 | You can tell them by netch leather, chitin, bonemold and Telvanni robes. No house holds one of our places in 4E 201: House Dres is fallen, and the Dunmer are a minority at Stormhold. Dres colours turn up as slavers' relics (Thorn, the Dres slaver wreck off Thorn); Redoran Tombwarden and Indoril Ordinator gear lies in the Velothi tombs. Hlaalu has no pack that does not need physics. |
+| House Dres slavers | 0 | slaver kit | You can tell them by the netch slavemaster's coat, a bonemold blade and a whip. |
+| Bosmer pilots and seafarers (greenwood) | 0 | 6/12/5/0 | You can tell them by greenwood bows and bark-and-hide hoods; skull and feather headdresses are sold as wares. |
+| Khajiit traders (caravan steel, moon-monk robes) | 8/19/19/2 | 8/25/19/2 | You can tell them by curved scimitars, khukuris, Apex cuirasses and moon-monk robes and masks. |
+| Shadowscales (the Empty Cradle) | 4/11/0/0 | 4/12/0/0 | You can tell them by dark close-fitting armour and the shadow-robe. Their weapons are borrowed: obsidian and chitin daggers and claws. No dedicated pack was found. |
+| The Night-Reed Chapter (thieves) | 0/11/0/0 | unchanged | You can tell them by soft thieves' leathers and quiet daggers. No thieves' weapon pack was found. |
+| The Marsh Charter (sellswords) | 25/10/1/2 | unchanged | You can tell them by light mail jerkins, working swords and crossbows. |
+| Imperials, Warden forts, the Topal Bay Company, East Empire Company marines | 20/18/11/5 | 20/20/11/5 | You can tell them by the centurion's plate, Company issue, crossbows and the emissary's robes. Legion officer, auxiliary and marine variants have no pack that adds new records (the packs found only replace vanilla armour). The Topal Bay Company has no livery pack, so it wears East Empire Company armour. |
+| Pirates, the Salt-Teeth (the Reed-Sail Compact's pirate branch) | 5/8/0/0 | unchanged | You can tell them by corsair coats, bandanas and cutlasses. The story names no other crews. |
+| Hist priests, the Many-Root Conclave, Nisswo of the Turning Path | 13/33/5/1 | 13/36/5/1 | You can tell them by Water-clan vestments and masks, funerary masks and ritual knives. |
+| Bone cultists, the Umbriel Witness Society | 11/0/4/0 | unchanged | You can tell them by bone-plate armour. No other cult vestments were found that work without an extra framework. |
+| Kothringi remnants (the Chime-Keepers) | 13/6/8/4 | unchanged | You can tell them by Kothringi plate and chime-maces worn by Argonians. |
+| Lilmothiit | none | none | No model exists anywhere. They are carried by the Root-Folk's staves and hide, and by Kothringi relics in their old towns. |
+| The Sunken Archive, the League of Open Water, Rootworm Waykeepers, the Thorn Ash-Reed Accord | | | No gear of their own: they take their people's tribe overlay and their trade kit. |
 
 ## Bands, groups and reach
 
@@ -439,6 +458,28 @@ changes no record we copy.
 | Mercenary Light Iron Armor | 59897 | 1,939 | 51 MB | bog iron |
 | Pirate Armor | 53225 | 549 | 45 MB | corsair |
 | Imperial Guard Centurion | 50410 | (row already held) | | imperial, T3 |
+
+**Added in packet four** (Dunmer houses, Bosmer, Khajiit and priests):
+
+| Mod | Nexus | Endorsements | Size | Filed as |
+|---|---|---|---|---|
+| Indoril Ordinator Armor, Rework | 37981 | 935 | 75 MB | bonemold, T4 |
+| Buoyant Armiger Glass Armory 2K | 152146 | 391 | 151 MB | moonstone (new material, T4) |
+| Armory Extended: Dunmeri Moonstone | 185188 | 111 | 8 MB | moonstone (no katanas) |
+| Bonemold and Chitin Weapons | 10044 | 745 | 51 MB | bonemold, chitin |
+| Dres Slavemaster Outfit | 42008 | 278 | 13 MB | netch leather |
+| Temple Watchman Set | 142955 | 132 | 33 MB | chitin |
+| Telvanni Robes | 11207 | 789 | 40 MB | wares (cloth) |
+| Bosmer Armor Pack | 5597 | 7,188 | 267 MB | greenwood (new material, T3); the Wild Hunt and Stormcloak pieces left out |
+| Arrowsong (a Bosmer bow) | 6030 | 336 | 5 MB | greenwood |
+| TDN Bosmer Skull Headdresses | 12959 | 518 | 8 MB | wares (deer skull and feathers only) |
+| Ave's Necklaces | 41666 | 296 | 13 MB | wares (jewellery) |
+| Moon Monk's Robes 2K | 82495 | 5,771 | 169 MB | Khajiit monks, Water-clan Hist vestments, the shadow-robe, the emissary's robes |
+
+That is 833 MB in packet four; with packets three and the widening, about 2.2 GB of downloads for the ladder.
+Left out: Armors of the Velothi I and II and the Colovian Prince Set (they need the Faster HDT-SMP physics
+framework, which we do not load); Styles of Skyrim robes (it needs SkyPatcher); Imperial Legion Armors (it only
+replaces vanilla armour, and its new records are enchanted swords).
 
 **Left out after looking at them:**
 

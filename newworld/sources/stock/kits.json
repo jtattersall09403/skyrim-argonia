@@ -570,7 +570,16 @@
      "why": "a ritual knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "saxhleel"
+     ],
+     "why": "Water-clan vestments and a priest's mask (an alternative)"
+    }
+   ],
    "home": [
     {
      "good": "sap",

@@ -6287,6 +6287,37 @@
    ]
   },
   {
+   "id": "moon-monk-robes",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82495,
+    "file": 799998
+   },
+   "name": "Moon Monk's Robes",
+   "author": "Kadraeus",
+   "version": "2",
+   "archive": "Moon Monk's Robes - 2K 82495 2 2026-09-04T03-08Z pQ0AZ3jwp.zip",
+   "size_kb": 168532,
+   "why": "priests' vestments for the Hist priests and the cults (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (5771 endorsements, updated 2026-09-04, not adult-flagged); the owner's ruling 2026-11-22: breadth across every faction and culture",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet four)",
+   "asset_only": true,
+   "sha256": "9d70732330194b03ad7d31382ea84954558e90c34a8c957dbfce75231c34986c",
+   "plugins": [
+    "Kad_MoonMonkRobes.esp"
+   ]
+  },
+  {
    "id": "dx-necromancer-robes",
    "group": "newworld",
    "source": {
