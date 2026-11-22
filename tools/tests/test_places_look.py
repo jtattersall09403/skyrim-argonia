@@ -829,6 +829,16 @@ def test_at_stand_puts_the_eye_over_the_deck_under_the_point_not_the_roof_and_re
         framing.stand_camera(things, g, [0, 0, 530], *geom.aabb(door), 640, 480)  # in the roof itself
 
 
+def test_at_stand_on_a_raised_deck_stands_on_its_floor_not_on_a_beam_under_it():
+    """A raised deck (its floor slab over a cross-beam, the Hist deck at Jal-Veesa): the beam's top is walked too, but
+    an eye over it stands inside the deck, so the camera stands on the deck's floor."""
+    g = Flat(0)
+    beam = piece("beam", [0, 0, 900], [-300, -40, 0], [300, 40, 40])          # walked top at 940, the deck 1.2 m over it
+    deck = piece("deck", [0, 0, 1020], [-300, -300, 0], [300, 300, 30])       # its underside at 1020, its floor at 1050
+    assert framing.stand_surface([beam, deck], g, 0, 0) == (pytest.approx(1050, abs=2), "deck")
+    assert framing.stand_surface([beam], g, 0, 0) == (pytest.approx(940, abs=2), "beam")
+
+
 def test_a_hand_placed_base_from_the_pool_resolves_from_the_catalogue(monkeypatch):
     """`look place` of a base neither the source nor the ground holds is drawn from the catalogue's row, not a stand-in box."""
     import types

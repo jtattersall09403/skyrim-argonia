@@ -94,6 +94,7 @@ def blocker(pieces: list[dict], ground) -> callable:
 
 
 STAND_EYE = 120.0   # `at --stand x,y`: the eye this far over the surface under the point
+HEADROOM = 1.4 * geom.PERSON   # `--stand`: room over a surface for it to be stood on (a deck 1.2 m over a rock is not)
 
 
 def _posed_near(pieces: list[dict], x: float, y: float):
@@ -110,13 +111,23 @@ def stand_surface(pieces: list[dict], ground, x: float, y: float) -> tuple[float
     """The surface a person stands on at (x, y): the lowest walked surface of a piece's mesh (shape.py: its walk or
     lowest walk) over the ground there (a stilt deck, not the roof over it), else the ground. (height, piece id)."""
     g = ground.height(x, y) if ground is not None else None
-    best = None
+    found, unders = [], []
     for p, S in _posed_near(pieces, x, y):
+        u = S.at(x, y, "under")
+        if u is not None:
+            unders.append(u)
         for f in ("walk", "walk_low"):
             w = S.at(x, y, f)
-            if w is not None and (g is None or w >= g - 8.0) and (best is None or w < best[0]):
-                best = (w, p["id"])
-    return best if best is not None else (g, None)
+            if w is not None and (g is None or w >= g - 8.0):
+                found.append((w, p["id"]))
+    # the lowest with a person's room over it: a raised deck's beams and the walkways under it have walked tops too,
+    # and an eye over one of those stands in the deck's scaffolding (the Hist deck at Jal-Veesa: no ground drawn); a
+    # roof is well over a person's head, so a deck under an eave is still stood on
+    found.sort(key=lambda s: s[0])
+    for w, pid in found:
+        if not any(w + 8.0 < u <= w + HEADROOM for u in unders):
+            return w, pid
+    return found[0] if found else (g, None)
 
 
 def inside_mesh(pieces: list[dict], pt) -> str | None:
