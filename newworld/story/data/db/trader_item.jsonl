@@ -27,21 +27,24 @@
 {"person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","item_id":"Skyrim.esm:06F950","count":4,"why":"from the swamp"}
 {"person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","item_id":"Skyrim.esm:07E8B7","count":6,"why":"swamp herbs (made here)"}
 {"person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","item_id":"Skyrim.esm:0AE723","count":3,"why":"cures for the swamp's fevers, his best seller (made here)"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"King of the Murkmire.esp:000964","count":5,"why":"a smithing ingredient made here (hide-and-leather)"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"King of the Murkmire.esp:098EC1","count":1,"why":"a green-stained Saxhleel bow, for the feather trade's trappers"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"King of the Murkmire.esp:098ECB","count":1,"why":"a Saxhleel bow of marsh wood, made by the feather-trappers"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"King of the Murkmire.esp:57AA3D","count":1,"why":"the stall's best blade, a Saxhleel bone dagger carved in the city (replaces an Ayleid elven dagger the place does not reach)"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"PrvtI_ArgonianWeapons.esp:00082D","count":2,"why":"bone knives the city's carvers bring to the stall"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:01397D","count":40,"why":"arrows fletched with Murkwood feathers (T1, made here)"}
-{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:01397E","count":2,"why":"T1 knives from the market smithy (made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:01397F","count":20,"why":"steel-tipped arrows (T2, made here)"}
-{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:013985","count":1,"why":"a T2 bow"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:013986","count":1,"why":"a T2 knife (made here)"}
-{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:01399E","count":1,"why":"one T3 blade carried in from far away: fewer of each tier upward"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:023D6F","count":8,"why":"marsh-bird eggs (made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:02E4E2","count":2,"why":"petty soul gems carried in by the rafts"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:02E4E4","count":1,"why":"a lesser soul gem carried in"}
-{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:03B562","count":1,"why":"a T1 bow"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:03EADD","count":3,"why":"minor healing draughts brewed from local sap (T1, made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:03EADE","count":1,"why":"a healing draught (T1 by value, made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:063B5F","count":6,"why":"sap from the tree-minders' release (made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:065C9F","count":6,"why":"river fish (made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:07E8C8","count":8,"why":"marsh-bird eggs from the forest (made here)"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:0800E4","count":6,"why":"leather strips, every recipe's binding"}
+{"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:0DB5D2","count":5,"why":"a smithing ingredient made here (hide-and-leather)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:0E7ED0","count":12,"why":"Murkwood feathers, the stall's own trade (feathers are made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:106E18","count":6,"why":"river fish (made here)"}
 {"person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","item_id":"Skyrim.esm:106E1A","count":4,"why":"river fish (made here)"}
@@ -49,6 +52,10 @@
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Black Marsh North.esp:037DF3","count":1,"why":"T3: its leggings"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Black Marsh North.esp:037DF7","count":1,"why":"T3: its gloves"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Black Marsh North.esp:03E3F9","count":1,"why":"T3: one blade of the city's own pattern, his best work (BM&V's Argonian Sword)"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":3,"why":"a smithing ingredient of the region (bone-and-horn)"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":5,"why":"a smithing ingredient made here (ironwork)"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"King of the Murkmire.esp:000964","count":5,"why":"a smithing ingredient made here (hide-and-leather)"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"King of the Murkmire.esp:098EC2","count":1,"why":"the smith's finest piece, a Saxhleel copper-steel dagger of his own forge (replaces a glass dagger: glass is a ruin find, not a city smith's)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:012EB7","count":3,"why":"T1 (made here)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:013790","count":2,"why":"T1 (made here)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:013910","count":2,"why":"T1 hide (made here)"}
@@ -63,10 +70,11 @@
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:013986","count":3,"why":"T2 (made here)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:013988","count":1,"why":"T2 (made here)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:013989","count":3,"why":"T2: the levy's issue blade (made here)"}
-{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:0139A6","count":1,"why":"T4, the place's ceiling: one glass dagger carried in from far away (cost 2, count a quarter)"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:034CDD","count":3,"why":"a smithing ingredient of the region (bone-and-horn)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:03619E","count":2,"why":"T2 leather (made here)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:05ACE4","count":6,"why":"iron bought from the raft crews"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:05ACE5","count":4,"why":"steel for the T2 work"}
+{"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:05AD93","count":5,"why":"a smithing ingredient made here (ironwork)"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:0800E4","count":6,"why":"straps for fittings"}
 {"person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","item_id":"Skyrim.esm:0DB5D2","count":4,"why":"tanned leather from the smithy's rack"}
 {"person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","item_id":"Skyrim.esm:02E4E2","count":2,"why":"petty soul gems carried in"}
