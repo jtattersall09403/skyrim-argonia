@@ -524,6 +524,11 @@ def test_a_hand_places_any_base_and_a_studio_op_as_one_stroke(tmp_path):
     assert r["scale"] == 1 and op2["ref"]["scale"] == 1
     (op3,) = verbs._hand(sc, "place", ["B:tent", "1,2,300", "--scale", "0.56", "--why", "a tent on a small deck"], sess)
     assert op3["ref"]["scale"] == pytest.approx(0.56)
+    sc.bases = {"B:smoke": {"kind": "other"}, "B:egg": {"kind": "static"}}
+    (op4,) = verbs._hand(sc, "place", ["B:smoke", "1,2,300", "--why", "smoke over the fire"], sess)
+    assert op4["ref"]["kind"] == "other"                                 # the base's own kind, not "static"
+    (op5,) = verbs._hand(sc, "place", ["B:egg", "1,2,300", "--within", "p.nest", "--why", "an egg in its nest"], sess)
+    assert op5["ref"]["seat"]["carrier"] == "p.nest" and op5["ref"]["kind"] == "static"
     with pytest.raises(ValueError):
         verbs._hand(sc, "place", ["B:pole", "1,2,300"], sess)          # no reason, no piece
     f = tmp_path / "op.json"

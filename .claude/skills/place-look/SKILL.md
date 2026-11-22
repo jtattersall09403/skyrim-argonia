@@ -57,7 +57,7 @@ code changes.
    accepted in `place.json` `draft.accepted_faults` `[{id, fault, why}]`: listed apart, drawn without red.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
 3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
-   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] --why "<why>"` (one piece of any base), `steps <deck,
+   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] [--within <id>] --why "<why>"` (one piece of any base, of its own kind; `--within` the thing it rests in: an egg in its nest or pool, a basket on a stall), `steps <deck,
    structure, walkway or door> <point or thing>`, `land <x,y> <radius> <dz> --why "<why>"` (raise or lower the ground
    inside the footprint, eased to nothing at the radius, refused past the land bound: a mud mound under legs that
    stop short, a ramp to an added door; when a mound would need more, bring the unit down instead). A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body

@@ -970,7 +970,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 def _hand(sc, verb, args, sess) -> list[dict]:
     pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False, "rot": True, "above": True,
-                          "kind": True, "depth": True, "force": False, "scale": True})
+                          "kind": True, "depth": True, "force": False, "scale": True, "within": True})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
     if verb == "place":
@@ -1040,8 +1040,11 @@ def next_n(sc, sess, suffix: str) -> int:
 
 
 def _place(sc, pos, o, sess) -> list[dict]:
-    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
-    as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above)."""
+    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] [--within id] --why "<why>"`: one piece of
+    any base, by hand, as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above). Its
+    kind is the base's own (the catalogue's, as the source's rows of that base have it: an effect is `other`, a basket of
+    fish `clutter`), `--kind` over it; `--within` names what it rests in (an egg in its nest or a sap pool, a basket on a
+    stall), the one carrier rule the overlap check reads (check.rests)."""
     why = str(o.get("why") or "").strip()
     if len(pos) < 2 or not why:
         raise ValueError('place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why it is here>"')
@@ -1055,8 +1058,18 @@ def _place(sc, pos, o, sess) -> list[dict]:
         if len(xyz) < 3:
             raise ValueError("place needs x,y,z, or x,y with --above dz")
         seat, z = {"mode": "free", "dz": 0.0}, xyz[2]
+    if o.get("within"):
+        seat["carrier"] = str(o["within"])
+    bases = getattr(sc, "bases", None)
+    if isinstance(bases, dict) and pos[0] not in bases:
+        from tools.places.look.scene import fill_from_catalogue
+        try:
+            fill_from_catalogue(bases, [pos[0]])
+        except Exception:  # noqa: BLE001 - no catalogue here: the kind falls back below
+            pass
+    own = ((bases or {}).get(pos[0]) or {}).get("kind") if isinstance(bases, dict) else None
     next_n(sc, sess, "PLACE")
-    row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or "static",
+    row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or own or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
            "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}
