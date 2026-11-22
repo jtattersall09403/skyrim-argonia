@@ -172,6 +172,9 @@ def test_inside_a_box_is_a_fault_only_when_the_picture_agrees():
     assert pw.classify("ahead", "stride", air)["verdict"] == "good"     # under a deck on stilts: air
     solid = air | {"fills": [{"edid": "MurkmirePlatformBase01", "share": 0.9}]}
     assert pw.classify("ahead", "stride", solid)["fault"] == "place"
+    hull = {"all_inside": "0ShipImperial", "in_piece": "0ShipImperial", "fills": [{"edid": "0ShipImperial", "share": 0.6}]}
+    v = pw.classify("ahead", "doorway of Hold", hull)      # a ship's waist deck lies within its hull's shape
+    assert v["fault"] == "capture" and "deck" in v["why"]
 
 
 def test_a_deck_overhead_is_not_a_fault_looking_up():
