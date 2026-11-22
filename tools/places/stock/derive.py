@@ -85,7 +85,10 @@ class Picker:
         or quest's own piece."""
         e = (it["edid"] or "").lower()
         mid = split.material_of(it)[0]
-        if it["ench"] or mid is None or split.never_reason(it, self.scale):
+        if it["ench"] or mid is None or split.never_reason(it, self.scale) or split.misfiled(it):
+            return False
+        # a mod's piece is issued only when the ladder files it (item_material); Skyrim's own gear by its keyword
+        if it["key"].rsplit(":", 1)[0] not in VANILLA_PLUGINS and it["key"] not in split.item_materials()["gear"]:
             return False
         if self.reach is not None and not self.reach.get(mid, (False,))[0]:
             return False
@@ -121,6 +124,7 @@ class Picker:
         return None
 
 
+VANILLA_PLUGINS = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"}
 SMITH_WARES = {"trader-blacksmith": None, "trader-general": {"hide-and-leather", "timber-and-stone"}}
 WARE_COUNT = {"made here": 5, "the region's": 3, "binding": 6}
 
@@ -325,7 +329,7 @@ def derive(p: Place) -> dict:
         prefer = carry.materials.split() if carry and carry.materials else None
         tw = t if wt != "WeapTypeDagger" else "T1"
         if guard:  # the guard's issue (scale `guard_issue`): the weapon of its set, else the plain issue's sword
-            tw = issue_plain
+            tw = tier_cap(issue_plain)   # the plain issue, never above the place's ceiling
         weap = None if guard and issue["set"] and issue["set"].get("weapon") else pick.gear(tw, "weapon", wt, prefer)
         if guard and issue["set"] and issue["set"].get("weapon"):
             items.append({"item": issue["set"]["weapon"], "count": 1, "worn": True,

@@ -109,7 +109,7 @@ def test_reach_fails_imperial_gear_where_the_record_gives_no_reason_and_passes_i
     assert not r["imperial"][0] and "gives no reason" in r["imperial"][1]
     assert not r["dwarven"][0] and not r["glass"][0] and r["flint"][0]
     assert reach.reaches(w, "outpost-m13-m65")["bonemold"][0]          # a stone-grey place: Dunmer make reaches it
-    doc = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:013ED9", "count": 1}]}]}   # Imperial cuirass
+    doc = {"possessions": [{"person": "x", "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:012438", "count": 1}]}]}   # Legion cuirass (Imperial)
     bad = reach.audit(w, "outpost-m13-m65", doc)
     assert {b["material"] for b in bad} == {"imperial"} and len(bad) == 1
 
@@ -120,10 +120,10 @@ def test_a_denied_mention_in_the_record_is_no_reason(w):
 
 
 def test_the_region_and_the_place_class_flag_what_they_hold_none_of(w):
-    doc = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:013ED9", "count": 1}]}]}   # Imperial cuirass
+    doc = {"possessions": [{"person": "x", "items": [{"item": "Here There Be Monsters - Curse of Cipactli.esp:012438", "count": 1}]}]}   # Legion cuirass (Imperial)
     bad = reach.audit(w, "helstrom", doc)
     assert bad and bad[0]["rule"] in ("material reach", "region")
-    iron = {"possessions": [{"person": "x", "items": [{"item": "Skyrim.esm:012EB7", "count": 1}]}]}   # iron sword
+    iron = {"possessions": [{"person": "x", "items": [{"item": "King of the Murkmire.esp:57AA3E", "count": 1}]}]}   # a bog-iron dagger
     camp = reach.audit(w, "tribal-camp-m2-m68", iron)
     assert camp and {b["rule"] for b in camp} == {"place class"}
 
@@ -165,6 +165,29 @@ def test_a_smith_sells_the_ingredients_its_place_and_region_make(w):
     general = {r["item"] for r in smithing_wares(w, "helstrom", rid, "trader-general")}
     assert HTBM + "81A1F3" not in general and "Skyrim.esm:0800E4" in general
     assert smithing_wares(w, "helstrom", rid, "trader-apothecary") == []
+
+
+STAFF = KOTM + "735249"     # SaxhleelStaffSoulTrap: a magic staff its record types as a sword
+
+
+def test_a_magic_staff_typed_as_a_sword_is_misfiled_and_flagged_and_never_issued(w):
+    staff = {"key": STAFF, "edid": "SaxhleelStaffSoulTrap", "sig": "WEAP", "keywords": ["WeapTypeSword"]}
+    assert "magic staff" in split.misfiled(staff)
+    assert split.misfiled({"key": HTBM + "1B0F87", "edid": "CIPHTBMBambooStaff1", "sig": "WEAP",
+                           "keywords": ["WeapTypeWarhammer"]}) is None          # a quarterstaff is a weapon
+    guard = next(p for p in w.rows("person", place_id="outpost-m6-m66") if p.person_role_id == "guard")
+    doc = {"possessions": [{"person": guard.id, "items": [{"item": STAFF, "count": 1}]}]}
+    assert [b["rule"] for b in reach.audit(w, "outpost-m6-m66", doc)] == ["misfiled"]
+    items = json.loads((STOCK / "items.json").read_text())["items"]
+    assert [i["edid"] for i in items if split.misfiled(i)] == ["SaxhleelStaffSoulTrap"]   # the catalogue's only one
+
+
+def test_a_t2_guard_s_sidearm_is_a_real_t2_marsh_weapon_never_a_staff():
+    from tools.places.stock.derive import Picker, ladder_records
+    pick = Picker(None, split.scale(), None, ladder_records())
+    got = pick.gear("T2", "weapon", "WeapTypeSword")
+    assert got["key"] != STAFF and split.material_of(got)[0] in ("saxhleel", "bog-iron", "kothringi-relic", "imperial")
+    assert split.item_tier(got)[0] == "T2" and not split.misfiled(got)
 
 
 def test_the_ladder_table_in_the_doc_is_the_data_s():

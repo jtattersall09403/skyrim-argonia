@@ -256,6 +256,21 @@ def ladder_stats(it: dict, sc: dict | None = None) -> dict | None:
     return ((power_table().get(kind) or {}).get("stats") or {}).get(t) if kind else None
 
 
+def misfiled(it: dict) -> str | None:
+    """Why a record's own keywords misfile it, or None: a magic staff typed as a sword or axe (King of the Murkmire's
+    staff of soul trapping is WeapTypeSword; a quarterstaff, warhammer-typed, is a weapon), an enchanted piece filed
+    on the ladder (the ladder is plain gear), ammunition read as a weapon."""
+    edid = it.get("edid") or ""
+    kind = power_kind(it)
+    if "Staff" in edid and kind not in (None, "warhammer"):
+        return f"{edid} is a magic staff its record types as a {kind}"
+    if (it.get("sig") or it.get("record")) == "AMMO" and kind:
+        return f"{edid} is ammunition read as a {kind}"
+    if (it.get("ench") or it.get("enchanted")) and _key(it) in item_materials()["gear"]:
+        return f"{edid} is enchanted: the ladder files plain gear only"
+    return None
+
+
 def legacy_tier(it: dict, sc: dict | None = None) -> str | None:
     """The tier an item had by the rule the places were first stocked under (its Skyrim material keyword, else its
     value), so the stock check can tell a row the items ladder retiered (owed to the place's restock) from a row
