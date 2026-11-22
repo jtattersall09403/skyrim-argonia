@@ -249,6 +249,9 @@ def source_refs(bases, rng, cells, pfx, nbuild, nenter):
     refs.append(ref(f"{pfx}.porch1", bases.get("Fix_Porch", "static", size=(500, 200, 40)), "static", [*at(0, -380), 380], list(b1["rot"])))
     refs.append(ref(f"{pfx}.bedroll1", bases.get("Fix_Bedroll", "furniture", furniture={"markers": [{"type": "sleep", "pos": [0, 0, 10]}]}),
                     "furniture", [*at(150, 80), 380], list(b1["rot"])))
+    # an invisible marker that switches a crate on and off with it (its enable parent)
+    refs.append(ref(f"{pfx}.xm0", bases.get("XMarker", "marker", size=(32, 32, 32)), "marker", [x0 + 4800, y0 + 1600, 380], [0, 0, 0]))
+    next(r for r in refs if r["id"] == f"{pfx}.c1")["enable_parent"] = {"ref": f"{pfx}.xm0", "flags": "0"}
     return refs, back, npcs
 
 
@@ -346,6 +349,8 @@ def main():
             nr["door"] = dict(r["door"], to_ref=r["door"]["to_ref"].replace("src", "fixplace", 1))
         if "primitive" in r:   # a kept collision box travels with the piece it stands on
             nr["seat"] = {"mode": "on", "on": "fixplace.b0", "dz": 120.0}
+        if "enable_parent" in r:
+            nr["enable_parent"] = dict(r["enable_parent"], ref=r["enable_parent"]["ref"].replace("src", "fixplace", 1))
         if r["id"] in ("src.b1", "src.d1", "src.porch1"):
             nr["cluster"] = "h01"
         if r["id"] == "src.d1":   # where one arrives coming out of the house

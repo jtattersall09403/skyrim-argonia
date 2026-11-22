@@ -789,7 +789,7 @@ are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.
 thing is drawn whole at any zoom, its placed ground cover too. Geometry the game never shows is left out: effects
 (models under `effects\` or named `fx*`, records named `FX*`: the game's shader tricks, wherever a mod keeps
 them, as Dragonborn's Apocrypha mist in `dlc02\dungeons`), things with no model (markers, triggers, sounds; a light is drawn as a bulb, below) and any part of a
-model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Grass
+model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Markers with a model are the exception, shown while Markers is on (below). Grass
 is grown as the game grows it, from each land texture's grass list (`grass.js`, rules in `grass_rules.js`): a ring
 round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
 4,500 units, a spot kept with chance (4500 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
@@ -865,6 +865,14 @@ finger, the mouse's other button, the right thumb stick's look excepted) turns i
 when a unit is selected whole, which stays where it is on the screen; pinching or the wheel zooms towards it. With
 nothing selected the view turns and zooms about where it looks. Frame in the view's bar brings the selection into
 view whole.
+
+**Markers** (`markers.js`). The helpers the game never shows in play (heading and plain markers, the map marker, the
+editor's start point, the north marker, idle and patrol markers, furniture markers, sound, room and light markers, an
+enable parent) are drawn as their editor shapes while Markers in the view's bar is on (the default, remembered per
+browser), and are neither drawn nor picked while it is off. Selecting one says in one plain sentence what it is (one
+table, `HELPERS`) and what uses it: the things it switches on and off (their enable parent), what is linked to it,
+the doors that lead to it, the people whose routine names it, the quest spots and quest states that name it, or
+"nothing we can see uses it". Invisible walls and lights keep their own switch.
 
 **People in Select** (`people.js`). A tap on a person with Select picks them (before anything behind) and opens
 their People panel: who they are, then Their spots, each where it is (a thing by its name, or a spot of their own)

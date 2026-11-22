@@ -6,6 +6,7 @@ import { OfflineUI } from './offline_ui.js';
 import { loadBundle, seatZ } from './bundle.js';
 import { EditLog, modelFromFiles, describe, vegKey, expand } from './edits.js';
 import { unitsOf } from './units.js';
+import { isHelper } from './markers.js';
 import { View, drawState, onRendererEvent } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer, releaseModels } from './objects.js';
@@ -445,6 +446,14 @@ class Studio {
     g.on = this.grassOn(); return g;
   }
   grassOn() { return !AGENT && store.get('studio.grass.v1') !== 'off'; }
+  // The helpers the game never shows in play (markers.js): drawn and picked while Markers is on (on by default).
+  markersOn() { return store.get('studio.markers.v1') !== 'off'; }
+  setMarkers(on) {
+    store.set('studio.markers.v1', on ? 'on' : 'off'); $('#markers-btn')?.setAttribute('aria-pressed', String(on));
+    if (!on) { for (const id of [...this.selection]) { const r = this.placeRefsById().get(id); if (r && isHelper(r, this.bases.get(r.base))) this.selection.delete(id); } }
+    this.refreshSide(this.ours, { world: false, grass: false }); this.tools.selectionChanged();
+  }
+  helperShown(r) { return this.markersOn() || !isHelper(r, this.bases.get(r.base) || this.srcBases?.get(r.base)); }
   setGrass(on) {
     store.set('studio.grass.v1', on ? 'on' : 'off');
     for (const s of [this.ours, this.src]) s.grass?.setOn(on);
@@ -463,7 +472,7 @@ class Studio {
         side.world.setRefs(list);
       } else if (side.space !== 'exterior') side.world.setRefs([]);
       this.computeState();
-      side.place.setRefs(this.shownInState([...(this.model.spaces[side.space]?.refs.values() || [])]).map((r) => ({ ref: this.seated(r) })));
+      side.place.setRefs(this.shownInState([...(this.model.spaces[side.space]?.refs.values() || [])]).filter((r) => this.helperShown(r)).map((r) => ({ ref: this.seated(r) })));
       this.tools.drawSelection();
     } else side.layer.setRefs(this.refsOf(side).map((r) => ({ ref: r })));
     side.view.lighting?.invalidate();   // a light added, moved or taken away lights the night view at once
@@ -639,6 +648,7 @@ class Studio {
     if (store.get('studio.src.v1') === 'hidden') srcShown(false);
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     $('#frame-sel').onclick = () => this.frameSelection();
+    $('#markers-btn').onclick = () => this.setMarkers(!this.markersOn()); $('#markers-btn').setAttribute('aria-pressed', String(this.markersOn()));
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
     $('#time').oninput = (e) => this.setTime(Number(e.target.value));
     // each view's day and night switch; with the People tool on it moves the time of day, which both views follow
