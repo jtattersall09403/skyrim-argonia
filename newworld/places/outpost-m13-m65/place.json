@@ -777,54 +777,6 @@
      "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
     ],
     "why": "a cutter's bedroll laid under the mess tent's canvas, where the cutters sleep out of the rain, seen from above"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK051PLACE",
-     "outpost-m13-m65.LOOK050PLACE"
-    ],
-    "why": "rocks facing the steep bank south of the camp lie against each other along the water as a rock pile does, seen from the river at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK052PLACE",
-     "outpost-m13-m65.LOOK051PLACE"
-    ],
-    "why": "rocks facing the steep bank south of the camp lie against each other along the water as a rock pile does, seen from the river at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK055PLACE",
-     "outpost-m13-m65.LOOK045PLACE"
-    ],
-    "why": "rocks facing the steep bank south of the camp lie against each other along the water as a rock pile does, seen from the river at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK057PLACE",
-     "outpost-m13-m65.LOOK058PLACE"
-    ],
-    "why": "rocks facing the stepped bank south-west of the camp lie against each other along the water as a rock pile does, seen from above in the camp's high capture"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK058PLACE",
-     "outpost-m13-m65.LOOK060PLACE"
-    ],
-    "why": "rocks facing the stepped bank south-west of the camp lie against each other along the water as a rock pile does, seen from above in the camp's high capture"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK061PLACE",
-     "outpost-m13-m65.LOOK060PLACE"
-    ],
-    "why": "rocks facing the stepped bank south-west of the camp lie against each other along the water as a rock pile does, seen from above in the camp's high capture"
    }
   ],
   "accepted": [
