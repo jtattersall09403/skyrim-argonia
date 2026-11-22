@@ -396,11 +396,12 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
 
     # 7. nothing Nordic among what we add from elsewhere (the source place's own pieces are accepted as they come:
     # io.place_bases), and no levelled base placed
+    review = io.nordic_review()
     for r in refs:
         b = bases.get(r["base"]) or {}
-        if b.get("nordic"):
-            bad.append(f"{r['id']} places a Nordic base {r['base']}"
-                       + (" (a Nordic sign)" if io.is_nordic_sign(b) else " from outside the source place"))
+        why = added_nordic(r["base"], b, review)
+        if why:
+            bad.append(f"{r['id']} places a Nordic base {r['base']}{why}")
         if str(b.get("type")) in LEVELLED:
             bad.append(f"{r['id']} places a levelled base {r['base']}")
     bad += nordic_in_copies(pdir, src, bases, bundles)
@@ -448,6 +449,16 @@ def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) ->
         if r["id"] not in have:
             bad.append(f"added station {r['seat']['on']} lacks its light ({r['why']})")
     return bad
+
+
+def added_nordic(key: str, base: dict, review: dict) -> str | None:
+    """Why a placed base is refused as Nordic, or None: a Nordic sign always; otherwise a base marked Nordic unless the
+    Nordic review looked at it and judged it neutral (a stone house of Baan Malur)."""
+    if io.is_nordic_sign(base):
+        return " (a Nordic sign)"
+    if base.get("nordic") and io.is_nordic(key, base, review):
+        return " from outside the source place"
+    return None
 
 
 def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -> list[str]:
