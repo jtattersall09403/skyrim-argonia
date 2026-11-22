@@ -10,8 +10,9 @@ stepped over (a rug, a root, a deck's own boards), higher is walked under (an ar
 - The world's road (`RoadPaint`): where the road's track textures show at least ROAD_SHARE on the ground, within
   the place's footprint and ROAD_REACH past it; the level is the ground; a deck or bridge over it is not a blocker.
 - A path or door way: its corridor, half its width plus SHOULDER from its line; the level follows the line as it is
-  walked, on the built walking mesh where the check has it, else our ground or a deck's own walked surface reached
-  without a climb steeper than CLIMB a step (`levels`).
+  walked, on the built walking mesh where the check has it, else the line's own height, our ground or a deck's own
+  walked surface reached without a climb steeper than CLIMB a step (`levels`). A deck, walkway, stair or ship the
+  way runs on is its floor: its own rails and posts are the way's edges, not blockers.
 
 A creature's quest spot, and a person's fixed stop (any stop but wander, patrol and sleep, whose bed is furniture
 and checked as a piece), inside a way is a blocker too: a walker would walk into it.
@@ -28,6 +29,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
+from scipy.spatial import cKDTree
 
 from tools.places import shape
 from tools.places.classify import NO_SOLID_KINDS, effect, kind_of
@@ -36,6 +38,7 @@ SHOULDER = 32.0       # beyond the walking width either side: a walker's elbows 
 STEP = 24.0           # a thing lower than this over the walked level is stepped over
 HEAD = 150.0          # a thing higher than this over it is walked under (a person is 126 tall)
 SAMPLE = 32.0         # the line's level is read this often
+LINE_STEP = 8.0       # a point's distance from a way is read to the line's points this far apart
 CLIMB = 48.0          # a level change taken between two samples (a stair's run, a plank's rise); more is a drop
 HOLD = 96.0           # a gap this long in a deck's walked surface is walked over at the deck's level
 WADE = 40.0           # ground under water deeper than this is not walked
@@ -188,13 +191,25 @@ def _samples(pts: list, step: float = SAMPLE) -> list[tuple[int, tuple]]:
     return out
 
 
-def levels(S: np.ndarray, ground, decks: list) -> np.ndarray:
+def _heights_given(pts: list, step: float = SAMPLE) -> list:
+    """The line's own height at each sample where both ends of its stretch carry one (a walk laid on a deck at its
+    own level), else None."""
+    out = []
+    for a, b in zip(pts, pts[1:]):
+        n = max(1, math.ceil(math.dist(a[:2], b[:2]) / step))
+        both = len(a) > 2 and len(b) > 2
+        out += [(a[2] + (b[2] - a[2]) * k / n) if both else None for k in range(n)]
+    out.append(pts[-1][2] if len(pts[-1]) > 2 and len(pts) > 1 and len(pts[-2]) > 2 else None)
+    return out
+
+
+def levels(S: np.ndarray, ground, decks: list, given: list | None = None) -> np.ndarray:
     """The walked level at each of a line's sample points: our ground (unless under water deeper than WADE) or the
     walked surface of a deck, a stair, a span or a boat (`decks`; never clutter or a crate's top): the one nearest
     the level before, except that a deck rising within CLIMB of it that goes on to the next sample is stepped onto
     (a rail's narrow top is not); over a gap in a deck's walked surface the level before holds for HOLD. The first
-    sample: the ground, or a deck within CLIMB of it. Past HOLD over open water with nothing to stand on: NaN, not
-    walked."""
+    sample: the ground, or a deck within CLIMB of it. Where the line carries its own height (`given`), the level
+    nearest it. Past HOLD over open water with nothing to stand on: NaN, not walked."""
     G, D = [], []
     for x, y in S:
         g = ground.height(x, y) if ground is not None else None
@@ -204,6 +219,12 @@ def levels(S: np.ndarray, ground, decks: list) -> np.ndarray:
     z = np.zeros(len(S))
     prev, held = None, 0.0
     for k in range(len(S)):
+        if given is not None and given[k] is not None:       # the line's own height: the level nearest it
+            cands = G[k][1] + D[k]
+            near = [c for c in cands if abs(c - given[k]) <= CLIMB]
+            z[k] = min(near, key=lambda c: abs(c - given[k])) if near else given[k]
+            prev, held = z[k], 0.0
+            continue
         g, gnd = G[k]
         dk = D[k]
         nxt = D[k + 1] if k + 1 < len(S) else dk
@@ -242,6 +263,14 @@ def _dist_to_line(XY: np.ndarray, L: np.ndarray) -> tuple[np.ndarray, np.ndarray
     return best
 
 
+def _heights(ground, XY: np.ndarray, cell: float = 16.0) -> np.ndarray:
+    """The ground's height under many points, read once per CELL square (a cloud has many points to a square)."""
+    keys = np.floor(np.asarray(XY, float) / cell).astype(np.int64)
+    uk, inv = np.unique(keys, axis=0, return_inverse=True)
+    h = np.fromiter((_h(ground, (i + 0.5) * cell, (j + 0.5) * cell) for i, j in uk), float, len(uk))
+    return h[np.asarray(inv).reshape(-1)]
+
+
 def _h(ground, x, y) -> float:
     h = ground.height(x, y) if ground is not None else None
     return float(h) if h is not None else math.nan
@@ -260,26 +289,53 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), wa
     gives none, and everywhere without it (`look probe`)."""
     solid = [p for p in pieces if p.get("model") and p.get("resolved", True) and not p.get("missing")
              and (p.get("kind") or "") not in NO_SOLID_KINDS | {"door"} and not effect(p)]
-    posed = []
-    for p in solid:
-        try:
-            posed.append((p, shape.posed(p)))
-        except Exception:      # a model with no shape is reported by the probe's own rules, not here
-            continue
+    from tools.places.look.geom import aabb
+    boxes = [(p, aabb(p)) for p in solid]          # the box first: a shape is read only for a piece near a way
+    shapes: dict = {}
+
+    def shaped(p):
+        if p["id"] not in shapes:
+            try:
+                shapes[p["id"]] = shape.posed(p)
+            except Exception:  # a model with no shape is reported by the probe's own rules, not here
+                shapes[p["id"]] = None
+        return shapes[p["id"]]
+
+    def near_box(lo, hi):
+        out = []
+        for p, (a, b) in boxes:
+            if b[0] >= lo[0] and a[0] <= hi[0] and b[1] >= lo[1] and a[1] <= hi[1]:
+                P = shaped(p)
+                if P is not None:
+                    out.append((p, P))
+        return out
     rows = {r["id"]: r for r in ((files.get("spaces") or {}).get("exterior") or {}).get("refs") or []}
     found = []
     for w in ways(files):
         L = np.asarray([q[:2] for q in w["points"]], float)
         half = w["width"] / 2 + SHOULDER
         lo, hi = L.min(0) - half, L.max(0) + half
-        near = [(p, P) for p, P in posed if P.hi[0] >= lo[0] and P.lo[0] <= hi[0] and P.hi[1] >= lo[1] and P.lo[1] <= hi[1]]
+        near = [(p, P) for p, P in near_box(lo, hi)
+                if P.hi[0] >= lo[0] and P.lo[0] <= hi[0] and P.hi[1] >= lo[1] and P.lo[1] <= hi[1]]
         S = np.asarray([q for _, q in _samples(w["points"])], float)
-        Z = levels(S, ground, [P for p, P in near if kind_of(p) in LEVEL_CLASSES])
+        line = cKDTree(np.asarray([q for _, q in _samples(w["points"], LINE_STEP)], float))
+        Z = levels(S, ground, [P for p, P in near if kind_of(p) in LEVEL_CLASSES], _heights_given(w["points"]))
         if walked is not None:
             for k, h in enumerate(walked([tuple(q) for q in S])):
                 if h is not None:
                     Z[k] = h
+        walked_on = set()                 # the decks the way runs on: their own rails and posts are its edges
         for p, P in near:
+            if kind_of(p) not in LEVEL_CLASSES:
+                continue
+            for (x, y), z in zip(S, Z):
+                h = P.at(x, y, "walk")
+                if h is not None and np.isfinite(z) and abs(h - z) <= 6:
+                    walked_on.add(p["id"])
+                    break
+        for p, P in near:
+            if p["id"] in walked_on and not (rows.get(p["id"]) or {}).get("blocks_way"):
+                continue
             C = P.P
             if not len(C):
                 continue
@@ -287,14 +343,14 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), wa
             C = C[m]
             if not len(C):
                 continue
-            d = _dist_to_line(C[:, :2], L)
+            d = line.query(C[:, :2], distance_upper_bound=half + LINE_STEP)[0]
             keep = d <= half
             for q in w.get("doors") or []:
                 keep &= np.hypot(C[:, 0] - q[0], C[:, 1] - q[1]) > DOOR_GAP
             C, d = C[keep], d[keep]
             if not len(C):
                 continue
-            k = np.argmin(((C[:, None, :2] - S[None, :, :2]) ** 2).sum(-1), axis=1)
+            k = cKDTree(S[:, :2]).query(C[:, :2])[1]
             over = C[:, 2] - Z[k]
             hit = np.isfinite(over) & (over >= STEP) & (over <= HEAD)
             if not hit.any():
@@ -317,7 +373,11 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), wa
     anchor = (place.get("fit") or {}).get("anchor")
     reach = float(place.get("radius_m") or 50) * 70.0 + ROAD_REACH
     if road is not None and road.share and anchor:    # the world's road as painted, through the place: kept clear
-        for p, P in posed:
+        for p, P in near_box((anchor[0] - reach, anchor[1] - reach), (anchor[0] + reach, anchor[1] + reach)):
+            if not road.on(np.asarray([[(P.lo[0] + P.hi[0]) / 2, (P.lo[1] + P.hi[1]) / 2], [P.lo[0], P.lo[1]],
+                                       [P.hi[0], P.hi[1]], [P.lo[0], P.hi[1]], [P.hi[0], P.lo[1]]])).any() \
+                    and not road.on(P.P[:, :2]).any():
+                continue
             if math.dist(((P.lo[0] + P.hi[0]) / 2, (P.lo[1] + P.hi[1]) / 2), anchor) > reach:
                 continue
             if kind_of(p) in LEVEL_CLASSES:     # a bridge or deck over the road is walked on or under
@@ -328,7 +388,7 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), wa
             C = C[road.on(C[:, :2])]
             if not len(C):
                 continue
-            g = np.fromiter((_h(ground, x, y) for x, y in C[:, :2]), float, len(C))
+            g = _heights(ground, C[:, :2])
             over = C[:, 2] - g
             band = np.isfinite(over) & (over >= STEP) & (over <= HEAD)
             if not band.any():
