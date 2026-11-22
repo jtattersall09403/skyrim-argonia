@@ -1103,9 +1103,16 @@ def land_ops(files: dict, ground, pos, o) -> list[dict]:
     if centre and math.dist((x0, y0), centre) + rad > float(place.get("radius_m", 0)) * 70.0 > 0:
         raise ValueError(f"land: the circle reaches outside the place's footprint ({place.get('radius_m')} m)")
     cur: dict = {}
+    # a cell's rows become one when patched (edits.apply); that row is bounded as the draft check bounds it: the
+    # carried ground's by the ground cap, any other by patch_max
+    from tools.places.draft.check import land_bound
+    cell_bound: dict = {}
     for r in files.get("land") or []:
+        c = (int(r["cell"][0]), int(r["cell"][1]))
+        if c not in cell_bound:
+            cell_bound[c] = land_bound(r, place)
         for v in r["verts"]:
-            k = (int(r["cell"][0]), int(r["cell"][1]), int(v[0]), int(v[1]))
+            k = (c[0], c[1], int(v[0]), int(v[1]))
             cur[k] = cur.get(k, 0.0) + float(v[2])
     add: dict = {}
     for gx in range(int(math.floor((x0 - rad) / 128)), int(math.ceil((x0 + rad) / 128)) + 1):
@@ -1122,8 +1129,9 @@ def land_ops(files: dict, ground, pos, o) -> list[dict]:
                 col, row = gx - cx * 32, gy - cy * 32
                 if 0 <= col <= 32 and 0 <= row <= 32 and (ground is None or (cx, cy) in ground.cells):
                     b = round(cur.get((cx, cy, row, col), 0.0), 3)
-                    if abs(b + a) > bound:
-                        raise ValueError(f"land: vertex {gx},{gy} would be patched by {b + a:.0f}, past the land bound {bound:.0f}: "
+                    cap = cell_bound.get((cx, cy), bound)
+                    if abs(b + a) > cap:
+                        raise ValueError(f"land: vertex {gx},{gy} would be patched by {b + a:.0f}, past the land bound {cap:.0f}: "
                                          "bring the unit down instead")
                     per.setdefault((cx, cy), []).append([row, col, b, round(b + a, 3)])
     return [{"op": "land.patch", "cell": [cx, cy], "verts": sorted(v), "call": "fault", "note": why}

@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T090422",
+ "place_id": "helstrom",
+ "name": "a great source rock's flank stood on the walk west of the plaza (playwalk: the way passes through it): moved back off the walk",
+ "at": "2026-11-22T09:04:22Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.5Z22DPC75QE66M2Z077FSRAZVR",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -46351.22,
+     -621266.6,
+     -398.1
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -46511.22,
+     -621386.6,
+     -438.1
+    ],
+    "rot": [
+     0,
+     0,
+     11.11918
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T09:04:22Z"
+  }
+ ]
+}
