@@ -710,6 +710,14 @@
      "jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS"
     ],
     "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp: the doors check takes the ramp's top as its deck height; the arrival is on the ramp and on the navmesh (probe --mesh, 2026-11-21)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.Y793XRW2J0NHPVFAWTRD233DVE",
+     "jal-veesa.LOOK001PLACE"
+    ],
+    "why": "the rock footing under the Accommodation hut platform's south-west post is set into the source's cliff rock beside it, as rocks lie into each other on that bank; one rock pile seen from the west (2026-11-21)"
    }
   ],
   "sap": {
