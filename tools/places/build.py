@@ -30,6 +30,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import time
@@ -167,7 +168,10 @@ def build_tool() -> None:
 
 
 def _build_tool() -> None:
-    if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in TOOL_PROJ.glob("*.cs*")):
+    # its own sources and the shared ones its project links (ForeignCopy.cs, ItemLadder.cs ...)
+    linked = [(TOOL_PROJ / m).resolve() for f in TOOL_PROJ.glob("*.csproj")
+              for m in re.findall(r'Compile Include="([^"]+)"', f.read_text())]
+    if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in [*TOOL_PROJ.glob("*.cs*"), *linked] if p.exists()):
         return  # up to date: `dotnet build` alone takes seconds
     r = subprocess.run(["dotnet", "build", str(TOOL_PROJ), "-c", "Release", "-o", str(TOOL_DIR), "-nologo", "-v", "q"],
                        env=DOTNET_ENV, capture_output=True, text=True)

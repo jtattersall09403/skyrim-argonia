@@ -57,10 +57,12 @@ The world build writes the new stats as overrides on our copies of the mods' ite
 material:
 
 - **T1:** wood, bone, flint, hide and fibre.
-- **T2:** marsh leather, shell, bog iron, Saxhleel bone-and-leather work, Kothringi relics and Imperial issue.
-- **T3:** chitin, Argonian scale (BM&V's guard set, issued to the watch of an Argonian town or city of ceiling T3), copper-edged steel and bonemold.
+- **T2:** marsh leather (Naga-Kur among it), shell, bog iron, Saxhleel bone-and-leather work, Kothringi relics,
+  Imperial issue (East Empire Company among it), Dunmer netch leather and Ashlander make, and corsair's steel.
+- **T3:** chitin, bone plate (Xit-Xaht; Bone Cultist relabelled), Argonian scale (BM&V's guard set, issued to the watch of an Argonian town or city of ceiling T3), copper-edged steel and bonemold.
 - **T4:** obsidian, bronze (Ancient Argonian) and Shadowscale.
-- **T5:** Masu plate (Reel-ka, Masu plate and Masu ebony).
+- **T5:** Masu plate (Reel-ka, Masu plate and Masu ebony) and Hist amber (the Creation Club amber set relabelled: a
+  shrine's or a rich city's treasury).
 - **T6:** Xanmeer relics.
 
 A finer make of a material stays in its material's tier: a Saxhleel bone mace and a Saxhleel dagger are both T2.
@@ -116,6 +118,40 @@ Written at another tier than their material's, each with its reason:
 - T5: CIPHTBMXanmeerKnightGlovesLight: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)
 - T5: CIPHTBMXanmeerKnightHelmetLight: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)
 <!-- ladder:end -->
+
+## Weapon types and how they swing
+
+Six weapon types have no Skyrim base: pike, halberd, quarterstaff, rapier, whip (a chain flail) and claw. Each
+takes its stats per tier from Animated Armoury's iron, steel, elven, glass, ebony and daedric piece of that type
+(`scale.json` `power.bases`, measured by `stockdb power`). The records keep Animated Armoury's own type keywords,
+and `split.power_kind` reads those before the vanilla type each one also carries.
+
+Under the collection's combat set-up, attacks are keyed on the engine's animation type:
+
+| Type | Swings as | Notes |
+|---|---|---|
+| Pike | greatsword | |
+| Spear, trident, harpoon | greatsword | Heavy Armory's, HTBM's and New Armory's pieces are typed greatsword or sword |
+| Shortspear | sword | |
+| Halberd and glaive | battleaxe | |
+| Quarterstaff | battleaxe | Animated Armoury and Heavy Armory |
+| Whip | mace | Animated Armoury's own animations where its pack covers them |
+| Rapier | sword | the collection's SkySA rapier pack (keyed on Animated Armoury's keyword) |
+| Claw | dagger | the SkySA claw pack |
+
+The kit rules judge each new type as the vanilla type it swings as. For example, a fisher's metal two-handed weapon
+is barred, except a harpoon or a trident (the kit's `except`).
+
+## The six Act I places
+
+The wider ladder is for places from here on (owner, 2026-11-22). The six Act I places are not restocked for it. A
+test pins their `stock reach` flags and `stock mix` as they stood (`tools/tests/data/stock_six_places_pin.json`).
+New trade-kit options are added only as alternatives, after each kit's first carry row, which is the one the derive
+draws.
+
+Records of asset-only mods are read for their own new records only. Heavy Armory, for instance, re-keywords
+Skyrim's bows, but its plugin is never active, so its overrides of Skyrim's or another mod's records never reach the
+game and are never read.
 
 ## Bands, groups and reach
 
@@ -277,3 +313,48 @@ added for breadth and fetched by `infra/gpu-box/stack.py fetch --record`: New Ar
 Beyond Skyrim Bonemold Weapon Pack, Stormhold Warrior, Ancient Argonian Armor and Shadowscale Reborn. Their plugins
 are read from `out/places/catalogue/plugins/<mod>/`, which the catalogue unpacks. No model exists anywhere for jade,
 turtle-shell shields, Hist amber or crocodile-hide gear, so these stay as lore and trade goods.
+
+**Added for the wider ladder** (fetched with `stack.py fetch --record`, cached, rows and credits in
+`mods/dependencies.json` and `mods/sourcing-register.json`; asset-only, records copied under our names):
+
+| Mod | Nexus | Endorsements | Size |
+|---|---|---|---|
+| Heavy Armory | 6308 | 18,844 | 146 MB |
+| Naga-Kur Armor 2k | 199418 | 110 | 58 MB |
+| Bone Cultist Armor | 111224 | 6,903 | 27 MB |
+| Grummite Weaponry | 46354 | 384 | 39 MB |
+| Pirates Wield Cutlasses | 31753 | 1,203 | 5 MB |
+| East Empire Company Armor | 54990 | 2,396 | 60 MB |
+
+Already loaded and now filed:
+
+- HTBM's harpoons and knives;
+- Animated Armoury's pikes, halberds, staves, rapiers, flails and claws, chosen by look, with no katanas;
+- Dragonborn chitin;
+- Journey to Baan Malur's netch, Ashlander, raider, chitin and Gah-Julan gear;
+- the Creation Club amber set;
+- the Kothringi heavy and chief sets, with their enchantment cleared on our copy.
+
+Heavy Armory's Animated Armoury patch is a FOMOD option of the row: its plugin is never active, so the patch
+changes no record we copy.
+
+**Skipped after looking at them:**
+
+- Silvered Boneweave Arsenal (127 endorsements): silver blades, which read as polished Dunmer work.
+- Tribal Scimitar (372 endorsements): only first-person meshes, so it would be a crude blob in the world.
+- Pirates Wield Scurvy Cutlasses: textures only, with no records.
+- Maormer Seascale: needs a physics framework we do not load.
+- Seagrave Trident: 48 endorsements, and Heavy Armory covers tridents.
+- Adult-flagged packs and the big generic compilations.
+
+**Still no model anywhere:**
+
+- crocodile, hackwing and giant-snake hide armour;
+- a turtle-shell shield;
+- an Argonian crossbow;
+- coral, pearl and reed armour;
+- jade weapons;
+- the atlatl, net and gaff;
+- thrown weapons without scripts;
+- Lilmothiit and Naga-Kur weapons;
+- feather cloaks.

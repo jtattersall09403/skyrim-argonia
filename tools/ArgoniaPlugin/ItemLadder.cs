@@ -26,7 +26,9 @@ static class ItemLadder
             if (copies.TryGetValue(key, out var c)) return Src(c);
             var s = Src(key);
             // a ladder item is always our own copy (a vanilla or DLC piece too), so its stats and name are ours to set
-            var ours = fc.Get(s, s.ModKey.FileName, forceCopy: own);
+            FormKey ours;
+            try { ours = fc.Get(s, s.ModKey.FileName, forceCopy: own); }
+            catch (InvalidOperationException) { throw new InvalidDataException($"ladder item {key}: no such record in {s.ModKey.FileName}"); }
             if (ours != s) copies[key] = PK(ours);
             return ours;
         }
