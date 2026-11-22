@@ -1,0 +1,7 @@
+{"id":"helstrom.0G28D0XKWWVRFPKF28N8M7AWC8","src":"Journey to Baan Malur.esp:24B059","removed":true}
+{"id":"helstrom.59HDE9BB7XNG9ZXPM516HQXXYC","src":"Journey to Baan Malur.esp:24AFBD","removed":true}
+{"id":"helstrom.F4AFJGMT8TY7X3K803GEYRVH9S","src":"Journey to Baan Malur.esp:24B04A","removed":true}
+{"id":"helstrom.M28QYA9QZWBSHXBT3YG1K6RHVW","edid":null,"base":"Skyrim.esm:02834E","kind":"door","pos":[708.89307,-350.7208,84.210884],"rot":[0,0,3.1415927],"scale":1,"layer":"place","flags":["persistent"],"src":"Journey to Baan Malur.esp:24B01E","door":{"to_space":"XeechLeelCouncilHouse","to_ref":"helstrom.8YF723PHB7C82MEN1F9TPGV1ZJ","to_pos":[8300.0,-5870.0,5648.0],"to_rot":[0.0,0.0,0.0],"flags":"0"},"seat":{"mode":"free"}}
+{"id":"helstrom.QWAQR2SBW4G2MBJ9T91G42AXCB","src":"Journey to Baan Malur.esp:24B00D","removed":true}
+{"id":"helstrom.WYFXDBE43AKSSJKTFHG072P7MN","src":"Journey to Baan Malur.esp:24B04B","removed":true}
+{"id":"helstrom.XQDH942EDE36Q9GA2WEG2EX52F","src":"Journey to Baan Malur.esp:24B067","removed":true}

@@ -1,0 +1,43 @@
+{
+ "save_id": "agent-20261122T021312",
+ "place_id": "helstrom",
+ "name": "the great mud rock of the source's north-shore cave (scale 10, some 20 m across) is too big for the space by the plaza: it buried Nolu-Jeel's door; the cave mouth keeps its own nearer rock",
+ "at": "2026-11-22T02:13:12Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JB65E1GWCX2WD3XB7BHQA549RT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JB65E1GWCX2WD3XB7BHQA549RT",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -38529.33,
+     -625468.52,
+     287.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1EEB74",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the source's cave mouth in its mud rocks (the Tree-Minders' Hall's door), which stood outside the footprint on the source's north shore: brought whole beside the city tree, where the tree-minders keep it"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T02:13:12Z"
+  }
+ ]
+}

@@ -20,3 +20,14 @@ def test_land_refuses_past_the_bound_or_outside_the_footprint():
         land_ops(files, None, ["256,256", "300", "40"], {"why": "x"})
     with pytest.raises(ValueError, match="footprint"):
         land_ops({"place": PLACE, "land": []}, None, ["8300,0", "300", "40"], {"why": "x"})
+
+
+
+def test_a_cell_of_carried_ground_is_bounded_by_the_ground_cap_as_the_draft_check_bounds_it():
+    """A cell whose land row is the source's ground carried (`by` ground, beyond patch_max) may still be eased: the
+    row it merges into is bounded by the ground cap; a plain row by patch_max."""
+    from tools.places.draft.ground import CAP
+    files = {"place": PLACE, "land": [{"cell": [0, 0], "by": "ground", "verts": [[2, 2, -200.0]]}]}
+    ops = land_ops(files, None, ["256,256", "300", "-40"], {"why": "a cut where a walk climbs a ledge"})
+    v = {(r, c): (b, a) for op in ops if op["cell"] == [0, 0] for r, c, b, a in op["verts"]}
+    assert v[(2, 2)] == (-200.0, -240.0) and CAP >= 240

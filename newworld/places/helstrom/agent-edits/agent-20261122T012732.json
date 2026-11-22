@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261122T012732",
+ "place_id": "helstrom",
+ "name": "the landing's stocked barrel put back (its stock is the place's; it reads as a plain barrel on the dock), moved with the landing",
+ "at": "2026-11-22T01:27:32Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
+    "base": "Skyrim.esm:0FDBD0",
+    "kind": "container",
+    "pos": [
+     -33390.53,
+     -629805.93,
+     249.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E42A5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T01:27:32Z"
+  }
+ ]
+}

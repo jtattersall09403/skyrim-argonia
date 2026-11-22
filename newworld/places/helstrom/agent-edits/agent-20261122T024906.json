@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T024906",
+ "place_id": "helstrom",
+ "name": "the cave mouth's rock seated on its ground",
+ "at": "2026-11-22T02:49:06Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     640.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     511.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T02:49:06Z"
+  }
+ ]
+}

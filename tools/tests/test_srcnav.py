@@ -33,6 +33,18 @@ def test_carried_triangles_keep_flags_and_follow_our_patched_ground():
     assert z[10256] == 470.0 + 25.6                                # a land row's change summed into the ground
 
 
+def test_a_triangle_high_over_the_source_terrain_with_no_piece_under_it_floats_over_nothing():
+    """A source triangle laid well over the source's own terrain is held by a source piece under it (a deck) or by
+    nothing (the source's land changed after its mesh was made): only the unheld ones are dropped."""
+    from tools.places.draft.srcnav import unheld_tris
+    high = [{"verts": [[0, 0, 250], [256, 0, 250], [0, 256, 250], [256, 256, 250]], "tris": [[0, 1, 2, 0], [1, 3, 2, 0]]}]
+    got = carried_tris(PLACE, high, lambda x, y: 0.0, lambda x, y: 470.0, 5000.0)
+    assert got["high"] == {0, 1}
+    deck = np.array([[10000.0, 20000.0], [10200.0, 20000.0], [10000.0, 20200.0]])   # under the first triangle only
+    assert unheld_tris(got["tris"], got["high"], [deck]) == {1}
+    assert carried_tris(PLACE, FLAT, lambda x, y: 0.0, lambda x, y: 470.0, 5000.0)["high"] == set()
+
+
 def test_triangle_made_too_steep_by_our_ground_is_dropped_and_listed():
     mound = lambda x, y: 470.0 + (400.0 if x > 10200 else 0.0)    # noqa: E731  a land-brushed mound under one corner
     got = carried_tris(PLACE, FLAT, lambda x, y: 0.0, mound, 5000.0)

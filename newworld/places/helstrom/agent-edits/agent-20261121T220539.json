@@ -1,0 +1,78 @@
+{
+ "save_id": "agent-20261121T220539",
+ "place_id": "helstrom",
+ "name": "two flights of dock steps that climbed the source's hill in the low town to a house now standing on our level ground: they lead nowhere",
+ "at": "2026-11-21T22:05:39Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6NH7Y87TE6XP4QMJV6S11Y71FN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6NH7Y87TE6XP4QMJV6S11Y71FN",
+    "base": "Skyrim.esm:0AEDF3",
+    "kind": "building",
+    "pos": [
+     -51742.88,
+     -609791.16,
+     724.92
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.8,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE930",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20",
+    "walk": 190.0
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:39Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GX2G5BX3789YGE5F3FE75KNJP1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GX2G5BX3789YGE5F3FE75KNJP1",
+    "base": "Skyrim.esm:0AEDF3",
+    "kind": "building",
+    "pos": [
+     -52189.33,
+     -610579.97,
+     1194.07
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.8,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE931",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20",
+    "walk": 190.0
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:39Z"
+  }
+ ]
+}

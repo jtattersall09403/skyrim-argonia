@@ -1,0 +1,9 @@
+{
+ "space_id": "XeechLeelWardensQuarters",
+ "copy_of": "kingofthemurkmire.lilmothlocation/LilmothMerchantManor01Barracks",
+ "name": "Council Wardens' Quarters",
+ "door_from": "helstrom.VE03RAVKW4J54PQPFH4YHB5KVW",
+ "parent": "exterior",
+ "room": null,
+ "added": true
+}

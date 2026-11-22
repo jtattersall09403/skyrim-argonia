@@ -1,0 +1,76 @@
+{
+ "save_id": "agent-20261121T210732",
+ "place_id": "helstrom",
+ "name": "the leavings of the source's Imperial war camp and its stockade (war table, torture poles, pikes, a Thieves Guild cache, a test flame) and its traps: nothing of a friendly Argonian capital with no outward wall",
+ "at": "2026-11-21T21:07:32Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
+    "base": "Skyrim.esm:0FDBD0",
+    "kind": "container",
+    "pos": [
+     -35134.53,
+     -628827.93,
+     249.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E42A5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:32Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GCV4YZSQFFSDS3D6XH7NANGK8R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GCV4YZSQFFSDS3D6XH7NANGK8R",
+    "base": "Skyrim.esm:0B9FAD",
+    "kind": "other",
+    "pos": [
+     -33533.61,
+     -615063.77,
+     293.01
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E450D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w49"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:32Z"
+  }
+ ]
+}

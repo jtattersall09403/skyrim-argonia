@@ -1,0 +1,268 @@
+{
+ "save_id": "agent-20261121T213715",
+ "place_id": "helstrom",
+ "name": "a loose thing of a district laid off the district's terrace (its own ground lay higher or lower on the source's hill): brought to stand on the carried ground at its own height over it, with the lights and lanterns on it",
+ "at": "2026-11-21T21:37:15Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6QVGD24CW8YGNYQMPJKR8TV9BW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44312.75,
+     -623711.34,
+     -732.37
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44312.75,
+     -623711.34,
+     257.13
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.YVSMXR1RR3B2JBRXR349R4G63E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49631.6,
+     -612240.57,
+     -866.64
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49631.6,
+     -612240.57,
+     421.36
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.F6E29WXSQMRMNZW189S8ZVP9JG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44237.36,
+     -623653.07,
+     -526.61
+    ],
+    "rot": [
+     -3.0036502,
+     0.03206972,
+     6.57979
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44237.36,
+     -623653.07,
+     462.89
+    ],
+    "rot": [
+     -3.0036502,
+     0.03206972,
+     6.57979
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.ZFPKBRSJPTKFG3K1Z1T6235DC3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44250.17,
+     -623641.18,
+     -453.55
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44250.17,
+     -623641.18,
+     535.95
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6FCNG8A3WSR1YD4MTAZA70XHDD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49549.92,
+     -612273.7,
+     -568.93
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49549.92,
+     -612273.7,
+     719.07
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TAEDAZ4VSCS9GYM8SX0FSGXZSJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49537.26,
+     -612254.05,
+     -660.88
+    ],
+    "rot": [
+     -3.0682387,
+     0.12122558,
+     5.78203
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49537.26,
+     -612254.05,
+     627.12
+    ],
+    "rot": [
+     -3.0682387,
+     0.12122558,
+     5.78203
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:37:15Z"
+  }
+ ]
+}

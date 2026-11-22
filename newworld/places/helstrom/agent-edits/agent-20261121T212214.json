@@ -1,0 +1,155 @@
+{
+ "save_id": "agent-20261121T212214",
+ "place_id": "helstrom",
+ "name": "the Tree-Minders' Hall's cave mouth brought from outside the footprint to the city tree (the record's tree-minders keep the tree)",
+ "at": "2026-11-21T21:22:14Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4",
+    "base": "Black Marsh.esm:1EEB72",
+    "kind": "door",
+    "pos": [
+     -37600.0,
+     -624700.0,
+     166.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.7,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Black Marsh.esm:1EEB70",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the source's cave mouth in its mud rocks (the Tree-Minders' Hall's door), which stood outside the footprint on the source's north shore: brought whole beside the city tree, where the tree-minders keep it",
+    "door": {
+     "to_space": "01BlackRoseJail",
+     "to_ref": "Black Marsh.esm:1F5AE4",
+     "to_pos": [
+      10360.223,
+      -2571.6182,
+      7537.135
+     ],
+     "to_rot": [
+      0,
+      0,
+      2.083195
+     ],
+     "flags": "0"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:14Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.JB65E1GWCX2WD3XB7BHQA549RT",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -37829.33,
+     -623868.52,
+     265.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1EEB74",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the source's cave mouth in its mud rocks (the Tree-Minders' Hall's door), which stood outside the footprint on the source's north shore: brought whole beside the city tree, where the tree-minders keep it"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:14Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -37818.36,
+     -624603.18,
+     618.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1EEB75",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the source's cave mouth in its mud rocks (the Tree-Minders' Hall's door), which stood outside the footprint on the source's north shore: brought whole beside the city tree, where the tree-minders keep it"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:14Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.2RRAA10C99RD1ZB1DX2D1TDPG9",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -37503.27,
+     -625054.04,
+     850.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F07EF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the source's cave mouth in its mud rocks (the Tree-Minders' Hall's door), which stood outside the footprint on the source's north shore: brought whole beside the city tree, where the tree-minders keep it"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:22:14Z"
+  }
+ ]
+}

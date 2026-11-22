@@ -1,0 +1,9 @@
+{
+ "space_id": "LevyPost",
+ "copy_of": "kingofthemurkmire.lilmothlocation/LilmothGuardhouse01",
+ "name": "The Levy's Post",
+ "door_from": "helstrom.HQZ4KBZM0F9QCV0GW8Q4PKS7PW",
+ "parent": "exterior",
+ "room": null,
+ "added": true
+}

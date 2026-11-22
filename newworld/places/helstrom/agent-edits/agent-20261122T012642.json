@@ -1,0 +1,75 @@
+{
+ "save_id": "agent-20261122T012642",
+ "place_id": "helstrom",
+ "name": "a tree and a clump of rock grass in front of the Tree-Minders' Hall's cave mouth: cleared from its door",
+ "at": "2026-11-22T01:26:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4X7F8NF2KQ010M6YW4D5736YF0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4X7F8NF2KQ010M6YW4D5736YF0",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -38356.07,
+     -626746.67,
+     214.25
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D93",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:42Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DMYM25H8B5SQNNWKZG39PKSG1D",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DMYM25H8B5SQNNWKZG39PKSG1D",
+    "base": "Black Marsh.esm:069B19",
+    "kind": "rock",
+    "pos": [
+     -38326.7,
+     -625937.87,
+     167.71
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:069B5F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s87"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:42Z"
+  }
+ ]
+}

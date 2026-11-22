@@ -1,0 +1,67 @@
+{
+ "save_id": "agent-20261122T090641",
+ "place_id": "helstrom",
+ "name": "the ledge cut where the west-rise walk climbs it",
+ "at": "2026-11-22T09:06:41Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "land.patch",
+   "cell": [
+    -14,
+    -148
+   ],
+   "verts": [
+    [
+     26,
+     22,
+     -16.0,
+     -20.9
+    ],
+    [
+     26,
+     23,
+     -16.0,
+     -19.6
+    ],
+    [
+     27,
+     21,
+     -16.0,
+     -16.7
+    ],
+    [
+     27,
+     22,
+     -16.0,
+     -76.7
+    ],
+    [
+     27,
+     23,
+     -16.0,
+     -70.6
+    ],
+    [
+     28,
+     22,
+     -16.0,
+     -47.3
+    ],
+    [
+     28,
+     23,
+     -208.0,
+     -235.4
+    ]
+   ],
+   "call": "fault",
+   "note": "the walk up the terrace ledge in the west-rise runs under the ground's edge (playwalk: camera 66 u under the ground): the least cut that lets the ground meet the walk",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T09:06:41Z"
+  }
+ ]
+}

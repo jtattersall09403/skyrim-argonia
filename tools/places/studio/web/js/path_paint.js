@@ -105,6 +105,7 @@ export function pathLtex(style, ltex, setName = DEFAULT_ROAD) { return pathLtexe
 // [verge, track B, track A], or null when it does not reach the cell. terrain: bundle.js Terrain (size, step, grid,
 // h, cells) for the boardwalk rule.
 export function cellLayers(p, cell, t) {
+  if (p.style === 'trodden') return null;   // a walk over ground that already reads as walked: never painted
   const scale = SCALE[STYLE_CLASS[p.style] || 'minor'], half = (p.width ?? 256) / 2, reach = half + reachM(scale) / M_PER_UNIT;
   const g = t.grid, x0 = cell[0] * t.size, y0 = cell[1] * t.size, segs = [];
   for (let i = 1; i < p.points.length; i++) {

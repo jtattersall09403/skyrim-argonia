@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T215547",
+ "place_id": "helstrom",
+ "name": "the Market Cave's load door raised into its house's door frame, its foot on the ground: the source's hillside it was sunk into is not carried and it lay 156 units under our ground",
+ "at": "2026-11-21T21:55:47Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.1TS7A5V3QWCH5CNQ90WDJE5874",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50053.33,
+     -609403.84,
+     40.71
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50053.33,
+     -609403.84,
+     200.71
+    ],
+    "rot": [
+     0,
+     0,
+     7.83599
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:55:47Z"
+  }
+ ]
+}

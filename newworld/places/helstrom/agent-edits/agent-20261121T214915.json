@@ -1,0 +1,205 @@
+{
+ "save_id": "agent-20261121T214915",
+ "place_id": "helstrom",
+ "name": "the record's black Heart-Mud pools between the roots, one in each of five districts",
+ "at": "2026-11-21T21:49:15Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    },
+    "tier": "AGENT_INVENTED",
+    "id": "helstrom.MUD62740290B9E5EF626E20950",
+    "pos": [
+     -41921.3,
+     -614722.8,
+     163.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.67
+    ],
+    "why": "a pool of black Heart-Mud between the roots (the waterfront, at a 00thickpalm's roots, clear of the houses), as the record's look promises: Skyrim's still puddle, its water near-black"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:49:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    },
+    "tier": "AGENT_INVENTED",
+    "id": "helstrom.MUDF2D05750025D20B2C438315",
+    "pos": [
+     -49149.6,
+     -608357.6,
+     192.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.32
+    ],
+    "why": "a pool of black Heart-Mud between the roots (the low town, at a 00tropicpalm's roots, clear of the houses), as the record's look promises: Skyrim's still puddle, its water near-black"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:49:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    },
+    "tier": "AGENT_INVENTED",
+    "id": "helstrom.MUD8B707BEBCCEFDBD9F4E6EF5",
+    "pos": [
+     -51444.9,
+     -618887.7,
+     101.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.88
+    ],
+    "why": "a pool of black Heart-Mud between the roots (the west terrace, at a 00thickpalm's roots, clear of the houses), as the record's look promises: Skyrim's still puddle, its water near-black"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:49:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    },
+    "tier": "AGENT_INVENTED",
+    "id": "helstrom.MUD48549551EAF7E64E526A732",
+    "pos": [
+     -39396.5,
+     -609503.9,
+     360.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.7
+    ],
+    "why": "a pool of black Heart-Mud between the roots (the east heights, at a 01swamptreecoolmoss's roots, clear of the houses), as the record's look promises: Skyrim's still puddle, its water near-black"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:49:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "base": "Skyrim.esm:09727E",
+    "kind": "activator",
+    "scale": 1.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "stilts",
+     "dz": 3.0,
+     "foot": [
+      -112.7,
+      -98.6,
+      105.2,
+      154.9
+     ]
+    },
+    "tier": "AGENT_INVENTED",
+    "id": "helstrom.MUD5D7A6D18246C3BBBE1F28DC",
+    "pos": [
+     -58268.6,
+     -600087.4,
+     333.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.8
+    ],
+    "why": "a pool of black Heart-Mud between the roots (the mud quarter, at a 01cypressmoss's roots, clear of the houses), as the record's look promises: Skyrim's still puddle, its water near-black"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:49:15Z"
+  }
+ ]
+}

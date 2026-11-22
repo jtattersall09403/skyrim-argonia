@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T215742",
+ "place_id": "helstrom",
+ "name": "a moss post a little over the ground: seated",
+ "at": "2026-11-21T21:57:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.82GTXC19RWN14WFV4400EV0WY9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -56427.9,
+     -601037.38,
+     197.04
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 0.8,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -56427.9,
+     -601037.38,
+     154.04
+    ],
+    "rot": [
+     0,
+     0,
+     7.03599
+    ],
+    "scale": 0.8,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:57:42Z"
+  }
+ ]
+}

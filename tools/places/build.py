@@ -456,7 +456,8 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None,
     its straight ramp (full on the path, 0 by 8.55 m out for a road or a street, 6.8 m for a path, a dirt track or a
     boardwalk ashore); the track core (the two track materials of the ground province's road set, varying along it as
     the world's roads do) falls away over 6.5 m and the verge holds the rest. A style naming one land texture (`mud`, `sand`, `stone`,
-    `skirt`) or a land texture key the owner picked paints that texture alone, on the same ramp. Each reached quadrant
+    `skirt`) or a land texture key the owner picked paints that texture alone, on the same ramp; `trodden` paints
+    nothing (a walk over ground that already reads as walked: the world's own ground is not repainted to tidy it). Each reached quadrant
     is repainted whole: the world's composite there, the path blended over it, at most six textures kept (the path's
     first, then the heaviest), as a base and alpha layers that replace the world's in that quadrant. A texture a
     quadrant cannot keep fades to nothing over PATH_SEAM_FADE vertices toward it, in it and in its neighbours (which
@@ -479,6 +480,14 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None,
     specs = []
     for p in paths:
         style = str(p.get("style") or p.get("kind") or "path")
+        if style == "trodden":   # a walked line over ground that already reads as walked: routed, never painted
+            if walked is not None:
+                r = float(p.get("width", 256)) / 2 + PATH_WALK_REACH
+                for q in p["points"]:
+                    for dx in (-r, 0.0, r):
+                        for dy in (-r, 0.0, r):
+                            walked.add(cell_of(q[0] + dx, q[1] + dy))
+            continue
         if ":" in style:
             # a land texture named by its key (the ground the owner picked in the studio): the world's own, or one of
             # a plugin the place layer masters (the source place's road texture)

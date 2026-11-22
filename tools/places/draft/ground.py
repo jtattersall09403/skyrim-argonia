@@ -120,7 +120,7 @@ def owners(gx: int, gy: int):
 def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list[tuple[float, float]],
           centre=None, radius: float | None = None, taken: set = frozenset(), gap: float | None = None,
           margin: float = MARGIN, cap: float = CAP, maps: list | None = None, offset: float | None = None,
-          slope: float | None = None, keep_wet: bool = False) -> tuple[list[dict], dict]:
+          slope: float | None = None, keep_wet: bool = False, field=None) -> tuple[list[dict], dict]:
     """(land rows `by` "ground", report) carrying src's relief under `pieces` (our coordinates) onto `ours`. `maps`:
     [(pivot, to, rot radians, centre in ours)] per cluster the fit set apart; a vertex reads the source through each,
     weighted by nearness to the cluster's centre (the main map alone when none). `offset`: one fixed height from the
@@ -201,6 +201,14 @@ def carry(ours: Ground, src: Ground, pivot, anchor, rot_deg: float, pieces: list
         rep["ref"] = "the anchor"
     target = our_ref + (HS - src_ref)
     delta = np.clip(np.where(np.isnan(HS) | np.isnan(H0), 0.0, target - H0), -cap, cap)
+    if field is not None:   # districts (heights.Heights): each its own terrace at its own offset, ours between them
+        from tools.places.draft.heights import soft_cap
+        cr, sr = math.cos(rot), math.sin(rot)
+        dX, dY = X - anchor[0], Y - anchor[1]
+        Wd, Od = field(pivot[0] + dX * cr - dY * sr, pivot[1] + dX * sr + dY * cr)
+        change = np.where(np.isnan(HS) | np.isnan(H0), 0.0, Od + HS - H0)
+        delta = Wd * soft_cap(change, cap)
+        rep.update(ref="districts", in_districts=int((Wd >= 1.0).sum()))
     # where the source holds no ground (past its own cells) the change is the nearest change it does hold, faded
     # over the band below, so the carried relief never ends in a wall at the source's edge
     have = ~np.isnan(HS) & ~np.isnan(H0)

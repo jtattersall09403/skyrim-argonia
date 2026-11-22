@@ -48,7 +48,8 @@ NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
 OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
-EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this over the eye: its roof is at head height
+EAVES_OVER_EYE = 96.0   # a building filling the lens whose top is under this over the eye: its roof is at head height (a
+# market stall's awning or a mud dome stands 130 to 150 over it)
 DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
 TOUR_STRIDE = 768.0   # a station every this many units on a tour
 TIMES = {"page": 0.0, "judge": 0.0, "save": 0.0}   # seconds a run spent in the page, judging and saving
@@ -61,6 +62,7 @@ AVOID = 2.0           # a stretch already walked costs this many times as much t
 SPUR_MIN = 256.0      # an unwalked stretch of street shorter than this is not worth a spur
 TOOL = 7             # the judging rules version: a route shot under older rules is shot again
 KEY_XY, KEY_Z = 96.0, 64.0   # two stations in one such cell, facing within one eighth of a turn, are one view
+DOOR_SPOT = 128.0   # a quest spot this near a door (across the plan and in height) is that door's
 
 LOOKS = (("ahead", 0, 0), ("down", 0, -20), ("up", 0, 20), ("left", 90, 0), ("right", -90, 0), ("back", 180, 0))
 DIAGONALS = (("ahead-left", 45, 0), ("ahead-right", -45, 0))
@@ -505,7 +507,8 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         return {"verdict": "failed", "fault": "capture", "why": ev["inside"]}
     nr = ev.get("near")
     if nr and nr.get("share", 0) > LENS and nr.get("dist", 1e9) < NEAR_LENS:
-        if "doorway" in what and look == "ahead" and nr.get("kind") in ("building", "static", "door"):
+        # at a doorway the door itself filling the view ahead is the door one walked to, never a wall
+        if "doorway" in what and look == "ahead" and nr.get("kind") in ("building", "static"):
             return {"verdict": "failed", "fault": "place", "why": f"the door opens onto a wall: {nr.get('edid')} fills {nr['share']:.0%} of the view {nr['dist']:.0f} u ahead"}
         if nr.get("kind") == "building" and nr.get("top_over_eye") is not None and nr["top_over_eye"] < EAVES_OVER_EYE:
             return {"verdict": "failed", "fault": "place", "why": f"the top of {nr.get('edid')} is {nr['top_over_eye']} u over the eye, "
@@ -577,7 +580,7 @@ def points_of_interest(sc, files: dict) -> dict:
         dd = p.get("door") or {}
         if p.get("kind") == "door" and dd.get("to_space"):
             doors.append({"name": f"door of {dd['to_space']}", "pos": list(dd.get("arrival") or _xyz(p)), "kind": "doorway",
-                          "id": p["id"], "door_z": _xyz(p)[2]})
+                          "id": p["id"], "door_z": _xyz(p)[2], "door_at": _xyz(p)})
     arrivals = []
     paths = [q for q in files.get("paths") or [] if q.get("points")]
     ends = []
@@ -614,8 +617,11 @@ def points_of_interest(sc, files: dict) -> dict:
     for q in files.get("quests") or []:
         if q.get("space", "exterior") == "exterior" and q.get("pos"):
             name = f"quest spot {q.get('ref')}"
+            # a quest spot on a door is reached as the door is: at its arrival, where one stands to open it
+            door = next((d for d in doors if math.dist(d.get("door_at", d["pos"])[:2], q["pos"][:2]) <= DOOR_SPOT
+                         and abs(d["door_z"] - q["pos"][2]) <= DOOR_SPOT), None)
             (arrivals if re.search(r"landing|arriv", str(q.get("ref"))) else targets).append(
-                {"name": name, "pos": list(q["pos"]), "kind": "quest"})
+                {"name": name, "pos": list(door["pos"] if door else q["pos"]), "kind": "quest"})
     seen, uniq = set(), []
     hist = []
     for t in list(targets):   # the Hist and its pool are one stop

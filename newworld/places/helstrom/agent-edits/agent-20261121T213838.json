@@ -1,0 +1,241 @@
+{
+ "save_id": "agent-20261121T213838",
+ "place_id": "helstrom",
+ "name": "a dirt house the source dug deep into its hillside, door and all: on our level ground it lies buried and no height shows its door",
+ "at": "2026-11-21T21:38:38Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.048H9FQV5HRRDBBPHSDA3CT9K2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.048H9FQV5HRRDBBPHSDA3CT9K2",
+    "base": "Black Marsh.esm:1CE8FC",
+    "kind": "building",
+    "pos": [
+     -55017.88,
+     -599497.54,
+     -471.26
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D05",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.32V773K3TT2KFAJA6N6GFQ0V3K",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.32V773K3TT2KFAJA6N6GFQ0V3K",
+    "base": "Black Marsh.esm:1CE8D6",
+    "kind": "building",
+    "pos": [
+     -55785.12,
+     -599705.91,
+     -601.83
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3CF9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.44MTVB8X2WWTVPRS80BH5N6H06",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.44MTVB8X2WWTVPRS80BH5N6H06",
+    "base": "Black Marsh.esm:1CE8D6",
+    "kind": "building",
+    "pos": [
+     -52424.51,
+     -609631.02,
+     233.41
+    ],
+    "rot": [
+     0,
+     0,
+     8.836
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE935",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4NXXKFGVXWCXB6XPKFQ97076TF",
+    "base": "Black Marsh.esm:1CE8D6",
+    "kind": "building",
+    "pos": [
+     -50641.76,
+     -610226.81,
+     -390.46
+    ],
+    "rot": [
+     0,
+     0,
+     8.03599
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE8FF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8F1TH8FD9SHQ127M8TC5X6PE4E",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8F1TH8FD9SHQ127M8TC5X6PE4E",
+    "base": "Black Marsh.esm:1CE8D6",
+    "kind": "building",
+    "pos": [
+     -54916.77,
+     -599916.42,
+     -435.86
+    ],
+    "rot": [
+     0,
+     0,
+     6.03599
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3CDF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NZ0SG8YJDSSAN3DVH1HW4PM05B",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NZ0SG8YJDSSAN3DVH1HW4PM05B",
+    "base": "Black Marsh.esm:1DE5DF",
+    "kind": "door",
+    "pos": [
+     -52385.21,
+     -609598.8,
+     62.49
+    ],
+    "rot": [
+     0.02013822,
+     0.08221734,
+     8.82852
+    ],
+    "scale": 1.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:207724",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TNG8EDV0X30N2EXC8WMW5AS456",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TNG8EDV0X30N2EXC8WMW5AS456",
+    "base": "Black Marsh.esm:1CE8FC",
+    "kind": "building",
+    "pos": [
+     -50771.55,
+     -611011.17,
+     -345.69
+    ],
+    "rot": [
+     0,
+     0,
+     7.23599
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE900",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:38Z"
+  }
+ ]
+}

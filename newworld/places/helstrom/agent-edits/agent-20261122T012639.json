@@ -1,0 +1,182 @@
+{
+ "save_id": "agent-20261122T012639",
+ "place_id": "helstrom",
+ "name": "the Tree-Minders' Hall's cave mouth moved off Nolu-Jeel's mud house, which it had been set into, to open ground west of the city tree's plaza",
+ "at": "2026-11-22T01:26:39Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2RRAA10C99RD1ZB1DX2D1TDPG9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37503.27,
+     -625054.04,
+     850.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38203.27,
+     -626654.04,
+     840.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37600.0,
+     -624700.0,
+     166.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38300.0,
+     -626300.0,
+     156.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37818.36,
+     -624603.18,
+     618.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     608.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:39Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.JB65E1GWCX2WD3XB7BHQA549RT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37829.33,
+     -623868.52,
+     265.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38529.33,
+     -625468.52,
+     255.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-22T01:26:39Z"
+  }
+ ]
+}

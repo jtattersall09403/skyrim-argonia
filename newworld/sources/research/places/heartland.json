@@ -147,7 +147,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt and root-hollow houses of reed, mud and living wood, with no new stone and no outward wall, because the marsh is the wall; only the old Xanmeer on the city's north-western edge, left by the ancients, stands in stone. Black Heart-Mud pools between the roots, the air is thick and warm and rafts and plank walks thread the districts.",
+     "text": "Reed huts, mud domes and root-hollow houses of reed, mud and living wood stand with no new stone and no outward wall, because the marsh is the wall. Only the old Xanmeer on the city's north-western edge, left by the ancients, stands in stone. Pools of black Heart-Mud lie between the roots, the air is thick and warm, boats tie up at the city landing and plank walks thread the districts.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -208,7 +208,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Helstrom in Black Marsh & Valenwood (Black Marsh.esm), is a town of 308 buildings built in Nordic and Dunmer style with two interiors, one of them an Argonian house. Its Nordic and Dunmer pieces are replaced or dropped, and its Argonian houses, landing and moored ship are kept; the ship's hold is the boatmen's lodge. Lilmoth (King of the Murkmire) supplies the interiors a city needs: its ironworks is set here as the market smithy, its guardhouse as the levy's post, and Dragonthorn Manor as the council house, with its barracks for the wardens and a strongroom behind an added iron door. The city tree is King of the Murkmire's Hist in its sap pool, which is the root landing. The old Xanmeer is Black Marsh & Valenwood's stepped temple, set on the source's hidden ziggurat; its hall is the throne wing of King of the Murkmire's Teeth of Sithis Halls, copied alone and stripped of its king, guards, traps and treasure; it is lit and has benches for the council's open sittings, while Teku-Sul keeps the whole of that hall, dark, hostile and gated. Still to add: Lilmoth's healer's hut and apothecary as rooms of the tree-minders and the sap-seller, and a tree-minders' hall of living roots in place of the borrowed cave.",
+     "text": "Its main source, Helstrom in Black Marsh & Valenwood (Black Marsh.esm), is a town of 308 buildings built in Nordic and Dunmer style with two interiors, one of them an Argonian house. Its Nordic and Dunmer pieces are replaced or dropped, and its Argonian houses, landing and moored ship are kept; the ship's hold is the boatmen's lodge. Lilmoth (King of the Murkmire) supplies the interiors a city needs: its ironworks is set here as the market smithy, its guardhouse as the levy's post, and Dragonthorn Manor as the council house, with its barracks for the wardens and a strongroom behind an added iron door. The city tree is King of the Murkmire's Hist in its sap pool, and the root landing is the rootworm's mud mouth among its roots. The old Xanmeer is Black Marsh & Valenwood's stepped temple on the city's north-western edge; its hall is the throne wing of King of the Murkmire's Teeth of Sithis Halls, copied alone and stripped of its king, guards, traps and treasure; it is lit and has benches for the council's open sittings, while Teku-Sul keeps the whole of that hall, dark, hostile and gated. Still to add: Lilmoth's healer's hut and apothecary as rooms of the tree-minders and the sap-seller, and a tree-minders' hall of living roots in place of the borrowed cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

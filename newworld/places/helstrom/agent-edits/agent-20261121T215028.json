@@ -1,0 +1,397 @@
+{
+ "save_id": "agent-20261121T215028",
+ "place_id": "helstrom",
+ "name": "a house of a source cluster whose houses stood at different heights on the source's hill, laid at its cluster's height: brought, with its door, lights and steps, to stand on the carried ground at its own height over its own ground",
+ "at": "2026-11-21T21:50:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.WQFD82WZCKM2FW95Z6M120XWBP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37288.04,
+     -630545.68,
+     89.81
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37288.04,
+     -630545.68,
+     33.01
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.P882FY8G0D4C8Q4PNH1H168RTH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37358.01,
+     -630505.57,
+     364.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37358.01,
+     -630505.57,
+     307.34
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TPEFQJJ7YP2W66DEJ7Z8AC1X8H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37361.91,
+     -630485.49,
+     295.57
+    ],
+    "rot": [
+     3.1415927,
+     -0.14159817,
+     8.37758
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37361.91,
+     -630485.49,
+     238.77
+    ],
+    "rot": [
+     3.1415927,
+     -0.14159817,
+     8.37758
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.C9KJC9MNXATB4EYGRRW711GR3E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37672.82,
+     -630812.09,
+     185.24
+    ],
+    "rot": [
+     0,
+     0,
+     7.63599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37672.82,
+     -630812.09,
+     128.44
+    ],
+    "rot": [
+     0,
+     0,
+     7.63599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2ZE9BXJJ9BWGZ09JSQWSZKM8Z9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37680.57,
+     -630848.03,
+     347.37
+    ],
+    "rot": [
+     0,
+     0,
+     7.636
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37680.57,
+     -630848.03,
+     290.57
+    ],
+    "rot": [
+     0,
+     0,
+     7.636
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.4WVA0WFQVRQJBYKM2RE238M7JZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37765.32,
+     -630810.7,
+     302.27
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37765.32,
+     -630810.7,
+     245.47
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.A13KP7CH0GY9TQ4A3T740MR2F2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38086.96,
+     -630585.61,
+     499.38
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38086.96,
+     -630585.61,
+     442.58
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.QR40HQST9AW64BAAYKSDAQM10C",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38116.3,
+     -630676.28,
+     293.62
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38116.3,
+     -630676.28,
+     236.82
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.SAE5ZDB9ET7WFMB0BNYE6P78RX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38104.27,
+     -630596.53,
+     567.96
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38104.27,
+     -630596.53,
+     511.16
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:28Z"
+  }
+ ]
+}

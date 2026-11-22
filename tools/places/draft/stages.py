@@ -111,7 +111,8 @@ class Standing:
         return self._clusters
 
     def turn(self, cid) -> float:
-        return float((((self.place.get("fit") or {}).get("clusters") or {}).get(cid) or {}).get("rot", 0.0))
+        from tools.places.draft.lights import turn_of
+        return turn_of(self.place)(cid)
 
     def ours(self) -> dict[str, dict]:
         return {r["src"]: r for r in self.ext if r.get("src")}

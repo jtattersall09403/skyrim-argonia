@@ -1,0 +1,80 @@
+{
+ "save_id": "agent-20261121T213840b",
+ "place_id": "helstrom",
+ "name": "a piece the source keeps switched off (initially disabled) or a bird whose perch is not here",
+ "at": "2026-11-21T21:38:40Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.78NMMJZY37ZR5859MBD0GQC4TN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.78NMMJZY37ZR5859MBD0GQC4TN",
+    "base": "Skyrim.esm:076E9C",
+    "kind": "static",
+    "pos": [
+     -37078.95,
+     -626769.33,
+     409.52
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4512",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s72"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:40Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XFGBG5HECYYJ1RY98225KWWC1J",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XFGBG5HECYYJ1RY98225KWWC1J",
+    "base": "Skyrim.esm:036170",
+    "kind": "door",
+    "pos": [
+     -27789.08,
+     -633006.41,
+     31.59
+    ],
+    "rot": [
+     0,
+     0,
+     10.11918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent",
+     "initially_disabled"
+    ],
+    "src": "Black Marsh.esm:23D458",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing",
+    "edid": "Helstromdock"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:40Z"
+  }
+ ]
+}

@@ -24,7 +24,7 @@ import math
 import shutil
 import sys
 
-from tools.places.draft import geom, ground, io
+from tools.places.draft import geom, ground, heights, io
 from tools.places.draft.stages import Standing
 from tools.places.seat import Ground
 
@@ -97,37 +97,114 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
     G0 = Ground.load(st.grd.path)
     pieces = [(r["pos"][0], r["pos"][1]) for r in ext]
     g_centre, g_radius = ((an[0], an[1]), carry_radius or take) if take else (centre, carry_radius or radius)
+    dist = resolve_districts(st, ext, G0, pt, of) if fit.get("districts") else []
+    H = heights.Heights(dist, offset)
     land, rep = ground.carry(G0, st.S, pv, an, float(fit.get("rot_deg", 0.0)), pieces, g_centre, g_radius,
-                             cap=cap, offset=offset, slope=SLOPE_DEG, keep_wet=keep_wet)
+                             cap=cap, offset=offset, slope=SLOPE_DEG, keep_wet=keep_wet, field=H.field if H else None)
     for r in land:
-        r["why"] = f"the source's whole relief carried wholesale at offset {offset:g}"
+        r["why"] = (f"the source's terrace of each district carried at its own offset ({', '.join(d['name'] for d in dist)})"
+                    f", ours between them" if dist else f"the source's whole relief carried wholesale at offset {offset:g}")
+    if dist:
+        rises = raise_pieces(st, ext, of, dist, land, G0, offset)
+        for lr in ledger:      # the rise each piece was laid at: the carried mesh reads it (srcnav.laid_rise)
+            if lr["status"] == "placed":
+                lr["rise"] = rises[lr["src"]]
+        rep["districts"] = dist
     rep.update(pieces=len(ext), dropped=sum(1 for lr in ledger if lr["status"] == "dropped"))
     return ext, ledger, land, rep
+
+
+def resolve_districts(st: Standing, ext: list[dict], G0: Ground, pt, of: dict) -> list[dict]:
+    """place.json `fit.districts` resolved: each district's offset (`"auto"`: the median over its buildings and doors
+    of our ground less the source's under each) and its pieces' source positions (`at`, thinned)."""
+    by_src = {r["src"]: r for r in ext}
+    out = []
+    for d in st.place["fit"]["districts"]:
+        cl = set(d["clusters"])
+        mine = [st.by_src[s] for s in by_src if of.get(s) in cl]
+        if not mine:
+            raise ValueError(f"district {d['name']}: none of its clusters {sorted(cl)} has a piece laid")
+        off = d.get("offset", "auto")
+        if off == "auto":
+            need = []
+            for r in mine:
+                if r.get("kind") not in ("building", "door"):
+                    continue
+                g, h = st.S.height(r["pos"][0], r["pos"][1]), G0.height(*pt(r["pos"][0], r["pos"][1]))
+                if g is not None and h is not None:
+                    need.append(h - g)
+            if not need:
+                raise ValueError(f"district {d['name']}: no building or door to take its offset from; give a number")
+            need.sort()
+            off = need[len(need) // 2]
+        out.append({"name": d["name"], "offset": round(float(off), 1), "clusters": sorted(cl),
+                    **({"terrace": False} if d.get("terrace") is False else {}),
+                    "at": heights.thin((r["pos"][0], r["pos"][1]) for r in mine)})
+    return out
+
+
+def raise_pieces(st: Standing, ext: list[dict], of: dict, dist: list[dict], land: list[dict], G0: Ground,
+                 offset: float) -> dict[str, float]:
+    """Each laid piece's height under districts: a district's cluster at the district's offset; another source cluster
+    whole, by its pieces' median rise over their own ground onto the carried ground; a loose piece by its own."""
+    import copy
+    G1 = copy.deepcopy(G0)
+    G1.apply_patches(land)
+    d_of = {c: d["offset"] for d in dist for c in d["clusters"]}
+
+    def follow(r):
+        s = st.by_src[r["src"]]
+        g, h = st.S.height(s["pos"][0], s["pos"][1]), G1.height(r["pos"][0], r["pos"][1])
+        return (h - g) if g is not None and h is not None else offset
+    rise: dict[str, float] = {}
+    out: dict[str, float] = {}
+    groups: dict[str, list] = {}
+    for r in ext:
+        c = of.get(r["src"])
+        if c and c not in d_of:
+            groups.setdefault(c, []).append(follow(r))
+    for c, v in groups.items():
+        v.sort()
+        rise[c] = v[len(v) // 2]
+    for r in ext:
+        c = of.get(r["src"])
+        dz = d_of[c] if c in d_of else rise[c] if c in rise else follow(r)
+        r["pos"][2] = round(float(st.by_src[r["src"]]["pos"][2]) + dz, 2)
+        out[r["src"]] = round(float(dz), 2)
+    return out
 
 
 def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset()) -> list[str]:
     """The source's rooms carried with their doors working: each way out of a room copied from this source leads to our
     copy of the source's own exterior door and lands where the source landed one, at the one transform (the room's door
     rows written afresh from the source's); `drop_removals`: rooms whose earlier `removed` rows are let go, so the room
-    stands whole as the source built it. Rooms copied from another source are left as they are."""
+    stands whole as the source built it. A copy of one room of a cell the source shares among several doors (its
+    `room`: that room's way out) keeps its own way out alone, and the outside door leads into that copy. Rooms copied
+    from another source are left as they are."""
     fit = st.place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
     rot = math.radians(float(fit.get("rot_deg", 0.0)))
     c, s_ = math.cos(rot), math.sin(rot)
+    H = heights.of_place(st.place)
     said = []
     for sp, space in st.files["spaces"].items():
         meta = space.get("space") or {}
         if sp == "exterior" or not str(meta.get("copy_of", "")).startswith(st.place["source_id"] + "/"):
             continue
-        src_sp = st.src.spaces.get(sp)
+        if meta.get("added"):     # a room the draft added behind its own added door (place-rooms): not the source's
+            continue
+        src_sp = st.src.spaces.get(sp) or st.src.spaces.get(str(meta["copy_of"]).split("/", 1)[1])
         if not src_sp:
             continue
+        own = meta.get("room")   # a copy of one room of a shared cell: its own way out alone
         rows = [r for r in space["refs"] if not (r.get("door") and (r["door"].get("to_space") == "exterior"))
                 and not (sp in drop_removals and r.get("removed"))]
         first = None
         for q in src_sp.refs:
             d = q.get("door") or {}
             if not d.get("to_ref") or d["to_ref"] not in st.by_src:     # a way out to the source's exterior only
+                continue
+            if own and q["id"] != own:
                 continue
             x, y, z = d["to_pos"]
             dx, dy = x - pv[0], y - pv[1]
@@ -137,13 +214,23 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
             row = {"id": io.mint(st.place_id, sp, q["id"]), **row, "src": q["id"],
                    "door": {**d, "to_space": "exterior", "to_ref": io.mint(st.place_id, "exterior", d["to_ref"]),
                             "to_pos": [round(an[0] + dx * c + dy * s_, 2), round(an[1] - dx * s_ + dy * c, 2),
-                                       round(float(z) + offset, 2)], "to_rot": to_rot},
+                                       round(float(z) + rise(H, offset, st, x, y, an[0] + dx * c + dy * s_,
+                                                                  an[1] - dx * s_ + dy * c), 2)], "to_rot": to_rot},
                    "seat": {"mode": "free"}}
+            ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
+            src_door = st.by_src.get(d["to_ref"]) or {}
+            if ext_door is not None and src_door.get("pos"):   # the landing follows the door as it stands (a hand's move)
+                a = float(ext_door["rot"][2]) - float((src_door.get("rot") or [0, 0, 0])[2])
+                ca, sa = math.cos(a), math.sin(a)
+                vx, vy = x - src_door["pos"][0], y - src_door["pos"][1]
+                row["door"]["to_pos"] = [round(ext_door["pos"][0] + vx * ca + vy * sa, 2),
+                                         round(ext_door["pos"][1] - vx * sa + vy * ca, 2),
+                                         round(ext_door["pos"][2] + float(z) - src_door["pos"][2], 2)]
+                row["door"]["to_rot"] = list(to_rot[:2]) + [round(float((d.get("to_rot") or [0, 0, 0])[2]) + a, 6)]
             rows.append(row)
             first = first or io.mint(st.place_id, "exterior", d["to_ref"])
-            ext_door = next((r for r in st.ext if r.get("src") == d["to_ref"]), None)
             if ext_door is not None and ext_door.get("door"):     # the outside door's arrival: the same landing
-                ext_door["door"]["arrival"] = list(row["door"]["to_pos"])
+                ext_door["door"].update(arrival=list(row["door"]["to_pos"]), to_space=sp, to_ref=row["id"])
         space["refs"][:] = rows
         if first:
             meta["door_from"] = first
@@ -151,7 +238,18 @@ def carry_rooms(st: Standing, offset: float, drop_removals: set[str] = frozenset
     return said
 
 
+def rise(H: heights.Heights, offset: float, st: Standing, x: float, y: float, X: float, Y: float) -> float:
+    """The rise of source point (x, y), at (X, Y) in ours: the one offset, or under districts its district's offset or
+    the carried ground followed (heights.Heights.dz)."""
+    if not H:
+        return offset
+    return H.dz(x, y, src_ground=st.S.height, our_xy=(X, Y), our_ground=st.G.height)
+
+
 GAP = 160.0     # units: the widest break in the source's own mesh a carried walk steps across
+SEAM_STEP = 48.0   # units: an open edge sampled this often to find the edge of another mesh it runs along
+SEAM_REACH = 24.0  # units: two open edges this close in plan meet
+SEAM_DZ = 48.0     # units: ... and this close in height
 
 
 def _island(adj: dict, start: int) -> set:
@@ -174,12 +272,14 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
     pv, an = fit["pivot"], fit["anchor"]
     rot = math.radians(float(fit.get("rot_deg", 0.0)))
     c, s_ = math.cos(rot), math.sin(rot)
+    H = heights.of_place(st.place)
 
     def ours(x, y, z):
         dx, dy = x - pv[0], y - pv[1]
-        return (round(an[0] + dx * c + dy * s_, 1), round(an[1] - dx * s_ + dy * c, 1), round(z + offset, 1))
+        X, Y = an[0] + dx * c + dy * s_, an[1] - dx * s_ + dy * c
+        return (round(X, 1), round(Y, 1), round(z + rise(H, offset, st, x, y, X, Y), 1))
     navs = io.read_jsonl(st.src.path / "spaces" / "exterior" / "navmesh.jsonl")
-    nodes, adj, base_of, links, seam = [], {}, {}, [], {}
+    nodes, adj, base_of, links, seam, open_pts = [], {}, {}, [], {}, []
 
     def join(u, v):
         adj.setdefault(u, set()).add(v)
@@ -204,6 +304,21 @@ def source_walks(st: Standing, offset: float, hub_xy: tuple[float, float]) -> li
                         if k < base:
                             join(base + i, k)
                     seam.setdefault(e, []).append(base + i)
+                    p, q = V[t[j]], V[t[(j + 1) % 3]]
+                    n = max(1, int(math.dist(p[:2], q[:2]) // SEAM_STEP))
+                    for s in range(n + 1):
+                        f = s / n
+                        open_pts.append((p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f, p[2] + (q[2] - p[2]) * f,
+                                         base + i, base))
+    # meshes the source left unlinked (one per cell piece, their shared edges split differently): an open edge of
+    # one that runs along an open edge of another is a seam the source's walkers cross
+    if open_pts:
+        from scipy.spatial import cKDTree
+        P = [(o[0], o[1]) for o in open_pts]
+        for a, b in cKDTree(P).query_pairs(SEAM_REACH):
+            oa, ob = open_pts[a], open_pts[b]
+            if oa[4] != ob[4] and abs(oa[2] - ob[2]) <= SEAM_DZ:
+                join(oa[3], ob[3])
     for u, mesh, tri in links:
         if mesh in base_of:
             join(u, base_of[mesh] + tri)
@@ -332,7 +447,8 @@ def main(argv=None) -> int:
             print(why, file=sys.stderr)
             return 1
     ext, ledger, land, rep = lay(st, a.offset, a.carry_radius, a.cap, a.keep_wet, a.take)
-    print(json.dumps({k: v for k, v in rep.items() if k != "hull"}))
+    print(json.dumps({k: ([{**d, "at": len(d["at"])} for d in v] if k == "districts" else v)
+                      for k, v in rep.items() if k != "hull"}))
     if a.dry:
         return 0
     pdir = st.pdir
@@ -345,7 +461,8 @@ def main(argv=None) -> int:
     place = json.loads((pdir / "place.json").read_text())
     walk = (place.get("wholesale") or {}).get("navmesh")    # the drafter's choice of walking mesh stays (build.source_navmesh)
     place["wholesale"] = {k: rep.get(k) for k in ("offset", "band", "pieces", "dropped", "raised_max", "lowered_max",
-                                                  "band_steepest_deg", "source_water_area_m2", "held_by_water")}
+                                                  "band_steepest_deg", "source_water_area_m2", "held_by_water", "districts")
+                          if rep.get(k) is not None}
     if walk:
         place["wholesale"]["navmesh"] = walk
     if a.take:

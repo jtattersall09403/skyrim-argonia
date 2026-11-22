@@ -33,7 +33,11 @@ mesh.
 ## Walks, patrols and spots
 
 - Walks are the source's, carried as path rows; a walk to an added building is a spur from the nearest carried walk
-  to its arrival (a `paths.jsonl` row the drafter adds, its points on the walked surface).
+  to its arrival (a `paths.jsonl` row the drafter adds, its points on the walked surface). Where the source's own mesh
+  is unlinked patches and gives no walk, route each door's walk over the place's BUILT mesh (after a build), from the
+  door's landing along the mesh's own portals, and key the row's `from` as the check keys the door (its `src`, else
+  its id). A walk is painted onto the ground by its style; `trodden` paints nothing: the world's ground is repainted
+  only where a check, a walk or a plain fault needs it, never to tidy it.
 - Patrols are the source's own marker chains, kept where they still run on our place; a chain across water or a
   pruned part is redrawn by hand along the walks (`people.jsonl` `patrol`, at least two points).
 - Work stops and day spots stand on the mesh (`place-routines`).

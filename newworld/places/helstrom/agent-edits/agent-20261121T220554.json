@@ -1,0 +1,44 @@
+{
+ "save_id": "agent-20261121T220554",
+ "place_id": "helstrom",
+ "name": "dock steps that led down into the source's pond, which we do not bring: both ends lie under our ground",
+ "at": "2026-11-21T22:05:54Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RZDRBRKEP5DJNENSZBMS150Y4A",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RZDRBRKEP5DJNENSZBMS150Y4A",
+    "base": "Skyrim.esm:0AEDF3",
+    "kind": "building",
+    "pos": [
+     -45663.3,
+     -611858.99,
+     158.74
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE939",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s19",
+    "walk": 190.0
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:54Z"
+  }
+ ]
+}

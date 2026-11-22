@@ -179,3 +179,18 @@ def test_border_with_a_cell_not_rebuilt_keeps_that_cells_vertices_only():
     border = sorted(round(float(p[1])) for p in cell["verts"] if abs(p[0] - 4096) < 0.5)
     assert border == [0, 4096]
     assert cell["stats"]["nonmanifold_edges"] == 0 and components(cell) == 1
+
+
+def test_a_border_stretch_covered_twice_keeps_one_triangle():
+    """Two triangles sharing an edge on the cell's border, both on the cell's side (a generated sliver under a
+    carried piece, or the same triangle twice), leave that border edge used twice inside the cell, so the neighbour's
+    edge cannot be joined to it: the smaller goes and the border edge is open for the seam to join."""
+    m = cn.Mesh()
+    big = [(0.0, 100.0, 0.0), (0.0, 300.0, 0.0), (200.0, 200.0, 0.0)]
+    sliver = [(0.0, 100.0, 0.0), (0.0, 300.0, 0.0), (20.0, 200.0, 0.0)]
+    m.add_poly(big, 0, 0)
+    m.add_poly(sliver, 0, -1)
+    m.add_poly(big, 0, -1)
+    assert cn.drop_folds(m, (0, 0)) == 2 and len(m.T) == 1
+    cell = cn.finish_cell(m)
+    assert cell["stats"]["open_edges"] == 3 and cell["stats"]["nonmanifold_edges"] == 0

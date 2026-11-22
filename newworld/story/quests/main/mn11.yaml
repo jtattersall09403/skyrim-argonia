@@ -189,7 +189,7 @@ things:
 placements:
 - {ref: marker.mn11.helstrom, kind: marker, placeName: Helstrom, anchor: {place: helstrom, rule: surface, need: the city}}
 - {ref: marker.mn11.arorha, kind: marker, placeName: Arorha, anchor: {place: arorha, rule: surface, need: the quay}}
-- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: invented}, anchor: {place: helstrom,
+- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: as MN10 places her}, anchor: {place: helstrom,
     rule: navmesh, need: 'the back of Nesh-Deeka''s House (one-room interior), standing apart from Nesh-Deeka'}, enabled: true}
 - {ref: door.mn.nesh-deeka-house, kind: door, placeName: Nesh-Deeka's House, anchor: {place: helstrom, rule: surface,
     need: 'the door of the quiet house, showing "Nesh-Deeka''s House"'}}

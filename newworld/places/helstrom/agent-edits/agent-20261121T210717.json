@@ -1,0 +1,8852 @@
+{
+ "save_id": "agent-20261121T210717",
+ "place_id": "helstrom",
+ "name": "stood in the source's harbour water (its sea bed, below the landing), which we do not bring: mist, poison blooms, sunken trees and the lanterns hung over that water would stand on our dry ground",
+ "at": "2026-11-21T21:07:17Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.039G2ABEWPCRDX380NK8K9X1ZN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.039G2ABEWPCRDX380NK8K9X1ZN",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25656.21,
+     -625340.53,
+     1802.62
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w36"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.04N2CNSPREE52KKYYNGNRG84NF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.04N2CNSPREE52KKYYNGNRG84NF",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23048.32,
+     -618391.53,
+     2796.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201753",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0B088M5H3TFNX5FVK5SCDV5CW4",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0B088M5H3TFNX5FVK5SCDV5CW4",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -21266.87,
+     -615380.74,
+     2666.36
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0CVKXMA7WV69RHH4SC7HY7A5E9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0CVKXMA7WV69RHH4SC7HY7A5E9",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -29317.5,
+     -633132.83,
+     2516.65
+    ],
+    "rot": [
+     0,
+     0,
+     6.83599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E425A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0FH496FNGQHEPR5NWBEDNT0BNY",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0FH496FNGQHEPR5NWBEDNT0BNY",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -27871.91,
+     -623175.95,
+     1842.78
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0HMZ96H10RCH6MX8ES9PP8HYX7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0HMZ96H10RCH6MX8ES9PP8HYX7",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -25469.64,
+     -620773.41,
+     1031.74
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20173C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0KBXRGRV0ZRTSRF4YKSQ7T6XG1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0KBXRGRV0ZRTSRF4YKSQ7T6XG1",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -28267.0,
+     -620145.05,
+     1990.38
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0SZNTZD2ZRJ23B6HS2QPGCPMEA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0SZNTZD2ZRJ23B6HS2QPGCPMEA",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -29961.64,
+     -625027.44,
+     1689.59
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0W1J1NMZ3X55NTXC22JAY782TJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0W1J1NMZ3X55NTXC22JAY782TJ",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -29712.95,
+     -619926.41,
+     1516.12
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20170B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.0W7ZA0NBA9JJSP9YBRJZQN98T6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.0W7ZA0NBA9JJSP9YBRJZQN98T6",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -24329.31,
+     -618521.75,
+     2831.61
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201742",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.10M68EEQCK99TCQJQQ6E66KBJR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.10M68EEQCK99TCQJQQ6E66KBJR",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -23358.39,
+     -619332.0,
+     2073.82
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201768",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.16TYP5B2XF80ZWV7ZGG6FMRSNK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.16TYP5B2XF80ZWV7ZGG6FMRSNK",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -22725.64,
+     -620323.07,
+     1464.61
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201733",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1AP15QQWE8M7BFVYFF896YAF98",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1AP15QQWE8M7BFVYFF896YAF98",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -27498.86,
+     -619913.8,
+     2342.1
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1ATK29PN76K0ZEZHHX9PKMGCKE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1ATK29PN76K0ZEZHHX9PKMGCKE",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -29018.97,
+     -622248.3,
+     631.86
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201717",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1M1RM0F0VEC2V3VT2G3H099JRT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1M1RM0F0VEC2V3VT2G3H099JRT",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27139.66,
+     -620227.16,
+     2222.2
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1S78QG741BAPTX34P03P1RW5N5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1S78QG741BAPTX34P03P1RW5N5",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -25911.14,
+     -625528.79,
+     949.19
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.1YP5W0XAYHVX1MSBC4J99RW551",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.1YP5W0XAYHVX1MSBC4J99RW551",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -31942.44,
+     -632636.14,
+     1625.84
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9E0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.26QQKWHY1WERK51K7BWHHXAD6X",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.26QQKWHY1WERK51K7BWHHXAD6X",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -28548.93,
+     -620551.54,
+     1990.38
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201702",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.28NFG91TYJVZ8SKE5VYDYDGDVB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.28NFG91TYJVZ8SKE5VYDYDGDVB",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -30951.03,
+     -636934.51,
+     1641.28
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E428A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w25"
+   },
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2HW2NGQS2V5KYNZEHMBR0MYTD7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2HW2NGQS2V5KYNZEHMBR0MYTD7",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -22902.01,
+     -620562.51,
+     1043.98
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2MW4XC5WZCRDCHNMSN8W2SKDT8",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2MW4XC5WZCRDCHNMSN8W2SKDT8",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22056.55,
+     -620176.96,
+     1864.15
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201736",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2NEHVZ4WYD7A0KB22F6ZVV6WHY",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2NEHVZ4WYD7A0KB22F6ZVV6WHY",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -26934.24,
+     -630059.06,
+     710.62
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w20"
+   },
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2R90YSPMKZGF0NFFTWYN3V6H1C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2R90YSPMKZGF0NFFTWYN3V6H1C",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21257.38,
+     -618396.42,
+     2035.2
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201781",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2WMS2W86243F6GRMNT9MDXYKJ9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2WMS2W86243F6GRMNT9MDXYKJ9",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25304.59,
+     -620666.18,
+     1085.76
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20173E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2Z0V4XMMYR4K8KQVW1XJ3GCDSF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2Z0V4XMMYR4K8KQVW1XJ3GCDSF",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -28206.22,
+     -619536.2,
+     2814.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201707",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.30H2ZTG17K1DHK4BJPWA2SX6RV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.30H2ZTG17K1DHK4BJPWA2SX6RV",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -23011.14,
+     -620065.9,
+     2947.19
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201749",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.38VENP17TA3RDC1ST0NA4FXJTQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.38VENP17TA3RDC1ST0NA4FXJTQ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -23067.06,
+     -620669.74,
+     985.57
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20175C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3BZ8YTJBM8K3TYJ9JAN6CNH3EH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3BZ8YTJBM8K3TYJ9JAN6CNH3EH",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27585.09,
+     -622443.32,
+     2123.3
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201708",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 28,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3CSMWWKWQY66CXD811MRWQF717",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3CSMWWKWQY66CXD811MRWQF717",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -27078.45,
+     -623206.27,
+     587.13
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 29,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3F77BEBNRP97MVAJG7MK27PXG2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3F77BEBNRP97MVAJG7MK27PXG2",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -24856.46,
+     -625847.45,
+     746.67
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AAA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 30,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3G9DR1VBSFRS20Q3YMBXA9MVZN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3G9DR1VBSFRS20Q3YMBXA9MVZN",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -21321.9,
+     -615326.54,
+     2689.13
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201797",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 31,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3NVFHY819KADAQHVM3EVR492F0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3NVFHY819KADAQHVM3EVR492F0",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -25939.02,
+     -625145.4,
+     980.61
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 32,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.41P54KZT6ZXVJHZKMM471BMW68",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.41P54KZT6ZXVJHZKMM471BMW68",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -29240.2,
+     -632988.46,
+     2473.4
+    ],
+    "rot": [
+     -3.0840328,
+     -0.009921828,
+     6.97729
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4253",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 33,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.429Y56F6SWTTEBPC82WTHCXYRA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.429Y56F6SWTTEBPC82WTHCXYRA",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -27140.61,
+     -618260.48,
+     2836.87
+    ],
+    "rot": [
+     0,
+     0,
+     8.01918
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20172D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 34,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.46JYSKGZ1C28NYS4TMMY9H7ED8",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.46JYSKGZ1C28NYS4TMMY9H7ED8",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -22126.14,
+     -616292.08,
+     2471.55
+    ],
+    "rot": [
+     0,
+     0,
+     7.43599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201794",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 35,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.483GDG75ENY2B04A0VD1KYHMB4",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.483GDG75ENY2B04A0VD1KYHMB4",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22677.68,
+     -617269.84,
+     1827.99
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 36,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4AEV018M0GMWKKT1VS89HNG5HX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4AEV018M0GMWKKT1VS89HNG5HX",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -22700.75,
+     -615185.71,
+     1094.21
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201785",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 37,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4B6YFW5Y3NG1MXRX8DM6K2G3CX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4B6YFW5Y3NG1MXRX8DM6K2G3CX",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -22958.56,
+     -618884.76,
+     2032.92
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201740",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 38,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4CB0AS05AYS4X6D6KGC8QWY2BR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4CB0AS05AYS4X6D6KGC8QWY2BR",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23537.66,
+     -617647.01,
+     2153.25
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201744",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 39,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4E0GGHEZKC5CWHN70EE0DP5FSX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4E0GGHEZKC5CWHN70EE0DP5FSX",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27619.23,
+     -620749.38,
+     2198.96
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201713",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 40,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4JXSZWHSRZ7F730BAJ58W78QNV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4JXSZWHSRZ7F730BAJ58W78QNV",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -27298.96,
+     -619671.34,
+     3141.66
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 41,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4T05YH0E6XNH9R0P87TF448548",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4T05YH0E6XNH9R0P87TF448548",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20555.98,
+     -618781.1,
+     1944.92
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 42,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4V9DPDWZETTMK21GHPERE6HNV3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4V9DPDWZETTMK21GHPERE6HNV3",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -28199.35,
+     -622332.46,
+     1674.99
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201700",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 43,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4VG8M8HX1MHPPRYAJNNW9QAE37",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4VG8M8HX1MHPPRYAJNNW9QAE37",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -28099.97,
+     -619333.59,
+     2079.13
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20170D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 44,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.4WWXPKFZ4ZFDNK3R1F36ESA8TF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.4WWXPKFZ4ZFDNK3R1F36ESA8TF",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -22018.26,
+     -617600.37,
+     2348.18
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 45,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.51TEPMJRDH26BS8EGRPWBV4NCH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.51TEPMJRDH26BS8EGRPWBV4NCH",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -24555.04,
+     -618781.74,
+     1935.25
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20176D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 46,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.53317NHF3NJ3E4D9YN3YHW7C2A",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.53317NHF3NJ3E4D9YN3YHW7C2A",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -29300.78,
+     -633165.47,
+     2486.15
+    ],
+    "rot": [
+     -3.0840328,
+     -0.009921828,
+     6.97729
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E425D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 47,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.54QQ23P82VNPVESHZA10K20X6E",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.54QQ23P82VNPVESHZA10K20X6E",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -28957.61,
+     -621755.83,
+     1674.99
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 48,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5DNBPDXFNRW2185DB4N64FWQ7F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5DNBPDXFNRW2185DB4N64FWQ7F",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -20775.18,
+     -618153.28,
+     2765.98
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20177F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 49,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5H9TTHCK9QDPD6YH3ZHDS7D9XV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5H9TTHCK9QDPD6YH3ZHDS7D9XV",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25357.82,
+     -622834.56,
+     1173.91
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 50,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.63Y1MDTC8K4T6657S5HD66ZH3V",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.63Y1MDTC8K4T6657S5HD66ZH3V",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -25827.54,
+     -625784.24,
+     634.97
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 51,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.65AQJ3T9WMPA4RA5Y55NAPAD38",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.65AQJ3T9WMPA4RA5Y55NAPAD38",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -20892.49,
+     -614484.88,
+     2366.61
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 52,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.671QN635QP2RS1BS5H3A847746",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.671QN635QP2RS1BS5H3A847746",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -20559.51,
+     -615758.34,
+     2068.34
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 53,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6B1ZCVJT0WET0T57RC5D1B24ZC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6B1ZCVJT0WET0T57RC5D1B24ZC",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -21990.23,
+     -619138.04,
+     2250.27
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 54,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6FEHNMSF0Z47AS8Q6RAAKAFK9X",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6FEHNMSF0Z47AS8Q6RAAKAFK9X",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -25463.89,
+     -620110.36,
+     2005.22
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201748",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w33"
+   },
+   "n": 55,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6QQM546W1BTHVG6VN2WJKW6HRS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6QQM546W1BTHVG6VN2WJKW6HRS",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -23289.1,
+     -619865.77,
+     2010.83
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201735",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 56,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6RB09EW0F7KVCRTZZE9S8QY4E1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6RB09EW0F7KVCRTZZE9S8QY4E1",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -20539.49,
+     -618085.26,
+     1980.56
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20178C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 57,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6RBJNXWT10KZJZP7FXWM97WKAN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6RBJNXWT10KZJZP7FXWM97WKAN",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -29841.36,
+     -624717.97,
+     1687.31
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016A6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 58,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6SHXPJ4J2AJ35KXTJ2G9WE43QE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6SHXPJ4J2AJ35KXTJ2G9WE43QE",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21878.51,
+     -615489.3,
+     1936.03
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 59,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6SW54TST0045N4AAPPZGNRYEMH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6SW54TST0045N4AAPPZGNRYEMH",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25809.42,
+     -625971.08,
+     661.18
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 60,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6TZ1PQ03YCSZGT8MZM1CV3V7D5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6TZ1PQ03YCSZGT8MZM1CV3V7D5",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -27266.81,
+     -618672.2,
+     2223.58
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016EC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 61,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6W7D79EDN0RBADW1BVW8Q9FF1S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6W7D79EDN0RBADW1BVW8Q9FF1S",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -24298.53,
+     -624838.34,
+     -81.67
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ABB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 62,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6WMVK16DWHQS4YRQJ9Q3FCXZ1E",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6WMVK16DWHQS4YRQJ9Q3FCXZ1E",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28240.36,
+     -617842.26,
+     2206.5
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201725",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 63,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6YP0CG9E5ZHQJA3W09CFENJY1F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6YP0CG9E5ZHQJA3W09CFENJY1F",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23006.28,
+     -620060.9,
+     2990.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201764",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 64,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6Z7RWTZDFFEE76J731R9868QTA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6Z7RWTZDFFEE76J731R9868QTA",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -20023.94,
+     -615832.26,
+     2320.13
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201783",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 65,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7274RA9Y8Y76AMV4YR15JEP266",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7274RA9Y8Y76AMV4YR15JEP266",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -32616.66,
+     -633055.91,
+     292.23
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:0830A9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w47"
+   },
+   "n": 66,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.74J7ZA1VK0CARQS76HYTSA6YK2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.74J7ZA1VK0CARQS76HYTSA6YK2",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -20645.74,
+     -618287.86,
+     2796.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 67,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7CC5MYTDXZF0NCY46XC4T2TY1C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7CC5MYTDXZF0NCY46XC4T2TY1C",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -25128.22,
+     -620426.74,
+     1498.8
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201739",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 68,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7FNKCEQQBBZ81SFPVNNN13B3KY",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7FNKCEQQBBZ81SFPVNNN13B3KY",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -28335.66,
+     -619401.62,
+     2783.99
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201716",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 69,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7GT9WKGP2KKR1P4C6PVNHA29XN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7GT9WKGP2KKR1P4C6PVNHA29XN",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -28461.15,
+     -619724.46,
+     2037.7
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 70,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7K3643NCD8BHMCDDVBCH0YAGN6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7K3643NCD8BHMCDDVBCH0YAGN6",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -32285.03,
+     -630508.49,
+     2029.54
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9DF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 71,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7NDW7HATZ1ASD48KTZB20SDNX2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7NDW7HATZ1ASD48KTZB20SDNX2",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25225.2,
+     -626806.4,
+     1684.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A76",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 72,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.7PTK5GD40HCFCJWRJFPPVVN4NT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.7PTK5GD40HCFCJWRJFPPVVN4NT",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -20434.02,
+     -615435.5,
+     2789.23
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w34"
+   },
+   "n": 73,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.86F7XBWDVYSBRR3CNHQY38XB6K",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.86F7XBWDVYSBRR3CNHQY38XB6K",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25785.65,
+     -625205.94,
+     1772.12
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w36"
+   },
+   "n": 74,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.88JYVN0SXXH8Y07W81ACVVJTDS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.88JYVN0SXXH8Y07W81ACVVJTDS",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -31284.4,
+     -627970.15,
+     2038.93
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9DD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 75,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8APKZMXCQQDN108K5BFGHRCD1T",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8APKZMXCQQDN108K5BFGHRCD1T",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -30381.11,
+     -634385.92,
+     2274.6
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w21"
+   },
+   "n": 76,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8JPTC1S80APP17DC5Q6QP7VPH8",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8JPTC1S80APP17DC5Q6QP7VPH8",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -22079.62,
+     -618092.84,
+     1305.05
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017BB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 77,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8M2PVC64D1DG28V27TV033YZQC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8M2PVC64D1DG28V27TV033YZQC",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -28444.35,
+     -623354.66,
+     1681.42
+    ],
+    "rot": [
+     0,
+     0,
+     7.43599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 78,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8P0N5DP7EFMP85V09Y4M2TP0JC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8P0N5DP7EFMP85V09Y4M2TP0JC",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25661.06,
+     -625345.53,
+     1759.36
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w36"
+   },
+   "n": 79,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8PAXYS8D4RGTH23QPCE8EFYC6H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8PAXYS8D4RGTH23QPCE8EFYC6H",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25413.72,
+     -620169.57,
+     1939.19
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201755",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w33"
+   },
+   "n": 80,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8PWSQ0BHPVGNZJ76ZJW40SPZ3S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8PWSQ0BHPVGNZJ76ZJW40SPZ3S",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -30778.28,
+     -631423.82,
+     -27839.99
+    ],
+    "rot": [
+     0,
+     0,
+     10.11918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [
+     "initially_disabled"
+    ],
+    "src": "Black Marsh.esm:1DEEC2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 81,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8T8ES90590FP6RA6NQ7K9GXQ8N",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8T8ES90590FP6RA6NQ7K9GXQ8N",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28116.46,
+     -620029.44,
+     2050.92
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201710",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 82,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8VQECHXF927HK04DJW17AMM274",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8VQECHXF927HK04DJW17AMM274",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28817.86,
+     -619644.76,
+     2088.17
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20170F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 83,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9078353PESPG96G1C9CCZP2WBD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9078353PESPG96G1C9CCZP2WBD",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -29723.59,
+     -628562.34,
+     1236.38
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4236",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w23"
+   },
+   "n": 84,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.98JTXVFATECC6RE4YY4ND01DGW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.98JTXVFATECC6RE4YY4ND01DGW",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -29909.16,
+     -620016.53,
+     1125.4
+    ],
+    "rot": [
+     0,
+     0,
+     6.21919
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201718",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 85,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9B96C041HQF61VBHWA9C4EB2A1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9B96C041HQF61VBHWA9C4EB2A1",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -23053.17,
+     -618396.53,
+     2753.23
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201774",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 86,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9GPTBV0SYCXDMMSKGKK38QV7S7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9GPTBV0SYCXDMMSKGKK38QV7S7",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -20700.77,
+     -618233.66,
+     2819.26
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201793",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 87,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9JCQ141G94ATSMCPN2CTCXZ365",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9JCQ141G94ATSMCPN2CTCXZ365",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -23682.45,
+     -617099.58,
+     2939.59
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20178F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w45"
+   },
+   "n": 88,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9NHC68RVTYN5Y8A2A4AHS8PKNC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9NHC68RVTYN5Y8A2A4AHS8PKNC",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -28929.58,
+     -623293.49,
+     1577.08
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016AA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 89,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9XB4AJTMR1BM1R3WBMEGQ954MK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9XB4AJTMR1BM1R3WBMEGQ954MK",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -30451.13,
+     -634353.28,
+     2251.83
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEBA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w21"
+   },
+   "n": 90,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9Z9VSW3H9SKBZMV6DSJ6BR5KK3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9Z9VSW3H9SKBZMV6DSJ6BR5KK3",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -27640.12,
+     -622389.12,
+     2146.07
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016EF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 91,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AA7J2774JQ4QYKV3YWN7ZQ6KPQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AA7J2774JQ4QYKV3YWN7ZQ6KPQ",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -23061.32,
+     -620006.7,
+     3013.22
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201769",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 92,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AD2SHAXW91D946NSCEYH6FMTAG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AD2SHAXW91D946NSCEYH6FMTAG",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -27925.84,
+     -617427.27,
+     2229.15
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201727",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 93,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AD6R6N00D4YP505GDPEWXCCZTB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AD6R6N00D4YP505GDPEWXCCZTB",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22827.67,
+     -617660.7,
+     1972.5
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 94,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AFAQ89P40N8G5HAP927PMTK44C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AFAQ89P40N8G5HAP927PMTK44C",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23670.07,
+     -617949.47,
+     2138.59
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20175E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 95,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AJKZB9X1VK53RKX6YMEXNQ4DZF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AJKZB9X1VK53RKX6YMEXNQ4DZF",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -28957.87,
+     -633116.58,
+     1729.02
+    ],
+    "rot": [
+     0,
+     0,
+     6.63599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4259",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 96,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.AKRMAFNV5BR4FJBH4FK143T8V9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.AKRMAFNV5BR4FJBH4FK143T8V9",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -23177.76,
+     -618256.94,
+     2765.98
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 97,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ARTY1GZMAYR26EX9HNYS4WE9R4",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ARTY1GZMAYR26EX9HNYS4WE9R4",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -22367.93,
+     -617905.93,
+     2707.69
+    ],
+    "rot": [
+     0,
+     0,
+     9.61918
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20178D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 98,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BA5DRCD39T51APS22YTJK3ABRY",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BA5DRCD39T51APS22YTJK3ABRY",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -20365.36,
+     -616178.93,
+     1900.57
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 99,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BC1DX7KRC416XKATZMWTNT3MBX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BC1DX7KRC416XKATZMWTNT3MBX",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28248.88,
+     -620331.89,
+     2036.26
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016ED",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 100,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BJKGGV36PXVZX0W47S292TMKFA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BJKGGV36PXVZX0W47S292TMKFA",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25408.86,
+     -620164.57,
+     1982.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201775",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w33"
+   },
+   "n": 101,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BKDV9CJMM6MPSAQKW4QADQH00V",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BKDV9CJMM6MPSAQKW4QADQH00V",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23659.95,
+     -618500.09,
+     2070.17
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20175D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 102,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BNTKE6J58XTHBJHXE52Q294Y91",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BNTKE6J58XTHBJHXE52Q294Y91",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -21553.69,
+     -616113.37,
+     1869.64
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201796",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 103,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.BVBSDA71CH3K5B7XVWW6SRYZBG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.BVBSDA71CH3K5B7XVWW6SRYZBG",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -28963.81,
+     -628621.86,
+     564.88
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9DE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 104,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.CBQ4M8XEK6P1KAXXEDZ1V45BEQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.CBQ4M8XEK6P1KAXXEDZ1V45BEQ",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -28866.09,
+     -622573.54,
+     1491.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20169F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 105,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.CEHBBG9K6Q67EHH2BAAPQCAHK6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.CEHBBG9K6Q67EHH2BAAPQCAHK6",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25749.01,
+     -625207.39,
+     1802.62
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w36"
+   },
+   "n": 106,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.CNAVTZDP10FTZM4Q4TPR1BQJFG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.CNAVTZDP10FTZM4Q4TPR1BQJFG",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -20327.46,
+     -614516.74,
+     1891.25
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201790",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w54"
+   },
+   "n": 107,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.D5M5409JH6WGKWJ520S96WK0QC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.D5M5409JH6WGKWJ520S96WK0QC",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -32302.52,
+     -629333.49,
+     1750.34
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEE92",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 108,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DA9K4S0QBC4ZT18MY09PKNX7GS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DA9K4S0QBC4ZT18MY09PKNX7GS",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -21271.73,
+     -615385.74,
+     2623.1
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 109,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DARZBS338P2QA9QAMK1RXHWNW1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DARZBS338P2QA9QAMK1RXHWNW1",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -21609.58,
+     -616396.08,
+     1857.45
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 110,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DBSFPS6WCW5D7YQBAPF47YF1T6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DBSFPS6WCW5D7YQBAPF47YF1T6",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -29246.94,
+     -632986.68,
+     2516.65
+    ],
+    "rot": [
+     0,
+     0,
+     6.83599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4255",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 111,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DCSH5RKMVYCTWXBDEC3JW4EJEQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DCSH5RKMVYCTWXBDEC3JW4EJEQ",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -30922.93,
+     -636958.07,
+     1610.77
+    ],
+    "rot": [
+     -3.092428,
+     -0.031545043,
+     7.3768
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E428D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w25"
+   },
+   "n": 112,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DDEW30Q5R5J9G3ZH4H3VN4G9J3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DDEW30Q5R5J9G3ZH4H3VN4G9J3",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -25237.45,
+     -621998.98,
+     1236.74
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 113,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DE6S674697RJS1T6F16RGQBWRW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DE6S674697RJS1T6F16RGQBWRW",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -33222.12,
+     -630296.67,
+     745.11
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEE98",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 114,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DHHNC20ENP194HZ8NCCWYG5FJH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DHHNC20ENP194HZ8NCCWYG5FJH",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20916.22,
+     -615678.64,
+     2144.12
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 115,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DKCSHZRKXSWP5AQQMZW2GPFCGJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DKCSHZRKXSWP5AQQMZW2GPFCGJ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -20988.45,
+     -619303.2,
+     1899.93
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201762",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 116,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DMR79XANVMADD8P390JJS56DYX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DMR79XANVMADD8P390JJS56DYX",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -29785.61,
+     -628500.6,
+     1259.15
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E423A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w23"
+   },
+   "n": 117,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ECNFNJEVXSWC3ZVRT7QVRXKVYA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ECNFNJEVXSWC3ZVRT7QVRXKVYA",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23627.42,
+     -617153.78,
+     2916.82
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201789",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w45"
+   },
+   "n": 118,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.EGERJ56N651ADSZA410K9W9W7S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.EGERJ56N651ADSZA410K9W9W7S",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -27596.03,
+     -618996.65,
+     2202.26
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201701",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 119,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.EREV68RZ6MQ8V5SEBE99MH3REK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.EREV68RZ6MQ8V5SEBE99MH3REK",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -31273.93,
+     -633851.48,
+     1448.93
+    ],
+    "rot": [
+     0,
+     0,
+     7.31918
+    ],
+    "scale": 3.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEA4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 120,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ESJH8H36Z82TSJKQA0XQX9FZKW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ESJH8H36Z82TSJKQA0XQX9FZKW",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -29664.99,
+     -624478.53,
+     1675.25
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20168F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 121,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.EWNCW4SFV2FGW0SC5QCWYKEWZH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.EWNCW4SFV2FGW0SC5QCWYKEWZH",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27243.93,
+     -619725.54,
+     3118.89
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 122,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.EY64G97130HATS6EHY00A902SC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.EY64G97130HATS6EHY00A902SC",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27855.56,
+     -619834.1,
+     2392.57
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 123,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.F24X2H5ZREM4G4MKH992RQKTBN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.F24X2H5ZREM4G4MKH992RQKTBN",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -20706.52,
+     -618896.71,
+     1896.69
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 124,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.F2VD1Q97G3N1N5CN5JZ2PSAJFB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.F2VD1Q97G3N1N5CN5JZ2PSAJFB",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -24459.13,
+     -620280.62,
+     893.62
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201770",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 125,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FDA8W7HH78VWJHSGS2RYM1GRQG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FDA8W7HH78VWJHSGS2RYM1GRQG",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23022.29,
+     -620871.98,
+     1005.48
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201776",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 126,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FGJ6EY061ZZ2TCGXWEGXHE5C2F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FGJ6EY061ZZ2TCGXWEGXHE5C2F",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -26021.7,
+     -625363.65,
+     769.82
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 127,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FMM5N347SRGN3MQ6GK06E064C0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FMM5N347SRGN3MQ6GK06E064C0",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21415.24,
+     -616002.18,
+     1865.9
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 128,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FR0RZ05QA108CG66TH3C3SE67B",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FR0RZ05QA108CG66TH3C3SE67B",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -23109.1,
+     -619000.38,
+     1972.37
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201752",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 129,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FS4W2CF7S1ECNHR9T9QKSX0PXE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FS4W2CF7S1ECNHR9T9QKSX0PXE",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23617.92,
+     -620169.45,
+     1255.53
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201741",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 130,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FSVB4XZ812YNGAB9KGNNVME1A5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FSVB4XZ812YNGAB9KGNNVME1A5",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -25280.23,
+     -626752.2,
+     1707.22
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A7A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 131,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FV6B0X35C95ZXP4GW7F53C3V2W",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FV6B0X35C95ZXP4GW7F53C3V2W",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -20932.56,
+     -619020.49,
+     1928.29
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201779",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 132,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FVGR6BA3HS84CPJHHAQ7W0XMHG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FVGR6BA3HS84CPJHHAQ7W0XMHG",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -27714.53,
+     -622308.74,
+     2092.79
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 133,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FVNAA9VX59624Y9P5XX58TPYR0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FVNAA9VX59624Y9P5XX58TPYR0",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -23261.22,
+     -620249.16,
+     1187.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201765",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 134,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FX4J7X4BR6MCGGH2AGQJ2FXBQR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FX4J7X4BR6MCGGH2AGQJ2FXBQR",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21642.18,
+     -616404.58,
+     1847.09
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 135,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FY13XA82GEBVZ9HTNA4GYGRSVN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FY13XA82GEBVZ9HTNA4GYGRSVN",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -30932.59,
+     -636848.97,
+     1664.05
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E428E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w25"
+   },
+   "n": 136,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FY3BT8QS9ZXSFG7DDYQG31Y5TH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FY3BT8QS9ZXSFG7DDYQG31Y5TH",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -25480.13,
+     -626994.66,
+     942.46
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A7E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 137,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FYY0E50DKJNY11F5AZ5WX2D3QR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FYY0E50DKJNY11F5AZ5WX2D3QR",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -23498.78,
+     -623741.41,
+     1454.98
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ADA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w46"
+   },
+   "n": 138,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FZSZ7APCN6KXY5HHCW2CDZNWGH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FZSZ7APCN6KXY5HHCW2CDZNWGH",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22152.47,
+     -618678.07,
+     1935.25
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201737",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 139,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.G1N7YN2KVJZ6HR7T6MPDS7DB0S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.G1N7YN2KVJZ6HR7T6MPDS7DB0S",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -28995.9,
+     -624332.42,
+     1350.08
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201692",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 140,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.G21E13EYWFR8RT26EP2AB8B0FQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.G21E13EYWFR8RT26EP2AB8B0FQ",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -23907.58,
+     -619302.87,
+     2561.17
+    ],
+    "rot": [
+     0,
+     0,
+     7.43599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201732",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 141,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GACEHVE4RJ0EJ3SN8X5BDT80RY",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GACEHVE4RJ0EJ3SN8X5BDT80RY",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20679.89,
+     -616593.92,
+     2019.33
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 142,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GDJ83TEACSMDGJRT82PV1A0YG2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GDJ83TEACSMDGJRT82PV1A0YG2",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -29950.49,
+     -624221.36,
+     1125.03
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016A5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w41"
+   },
+   "n": 143,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GE59W6D4QXEYTRGP6A6NE0VFB3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GE59W6D4QXEYTRGP6A6NE0VFB3",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27259.94,
+     -620536.62,
+     2200.13
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201714",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 144,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.GMHGWE2268B2R096WWKYWVQ1T1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.GMHGWE2268B2R096WWKYWVQ1T1",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -27589.94,
+     -622448.33,
+     2080.04
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 145,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.H1DYREWSD260VZB9FX5J2GY76R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.H1DYREWSD260VZB9FX5J2GY76R",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -25891.12,
+     -627855.7,
+     501.19
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A85",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 146,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.H3EMMC38FP9WPJMDYZ8H9RXE1P",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.H3EMMC38FP9WPJMDYZ8H9RXE1P",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -21327.65,
+     -615989.59,
+     1827.07
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 147,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.H3EMVST5GB5JWGRMKV7X2GRT7F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.H3EMVST5GB5JWGRMKV7X2GRT7F",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -26340.08,
+     -629073.65,
+     1554.83
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A71",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 148,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.H4GP6MBMT2P7EFGY593E6519HP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.H4GP6MBMT2P7EFGY593E6519HP",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -30273.98,
+     -634090.5,
+     1490.91
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 149,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.H6MXA7X8CD3V55927H9NTVGEMN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.H6MXA7X8CD3V55927H9NTVGEMN",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -22902.96,
+     -618595.84,
+     2708.43
+    ],
+    "rot": [
+     0,
+     0,
+     8.01918
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201773",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 150,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HC4HRFNQAGSYV7BQFENA77HPTG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HC4HRFNQAGSYV7BQFENA77HPTG",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -23135.72,
+     -619926.31,
+     2959.94
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201746",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 151,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HF480RTN9M5RZD78PQA8H6W4D7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HF480RTN9M5RZD78PQA8H6W4D7",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -24002.72,
+     -618177.62,
+     2077.2
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201738",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 152,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HJ7S9ATT8RE5RKZ40HP7FCCYSB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HJ7S9ATT8RE5RKZ40HP7FCCYSB",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -20656.68,
+     -614841.19,
+     1901.25
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 153,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HSGTW1FKK6EMBBVK9JCPF09ZJ5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HSGTW1FKK6EMBBVK9JCPF09ZJ5",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -21160.62,
+     -615178.13,
+     1825.21
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 154,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J27S9RQR7R30TVD5NSNDNE8M5R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J27S9RQR7R30TVD5NSNDNE8M5R",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -25711.24,
+     -625286.33,
+     1825.39
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w36"
+   },
+   "n": 155,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J2QT79JR5VKWM8QYRCAP9C01PZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J2QT79JR5VKWM8QYRCAP9C01PZ",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -25663.79,
+     -620352.82,
+     1205.66
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201747",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 156,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J41GE8AWW7YN4DMKK89MF76817",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J41GE8AWW7YN4DMKK89MF76817",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22968.84,
+     -619849.55,
+     1870.7
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201759",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 157,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J6VKB1R948SFHG6K4H0DDB43QT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J6VKB1R948SFHG6K4H0DDB43QT",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20320.59,
+     -616381.16,
+     1940.4
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 158,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J7VWPEPAYCTN6T57B9DHGY5VJF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J7VWPEPAYCTN6T57B9DHGY5VJF",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -27831.84,
+     -618640.34,
+     2675.15
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 159,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J8BSK2KJJYZFA5Q0JKQ9QXWMZT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J8BSK2KJJYZFA5Q0JKQ9QXWMZT",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -24482.2,
+     -618196.5,
+     1224.34
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201757",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 160,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.J9KFWK10PPCY1N41DEF0SKHKZN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.J9KFWK10PPCY1N41DEF0SKHKZN",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -20309.44,
+     -615575.08,
+     2776.48
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w34"
+   },
+   "n": 161,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JACADF9FFK4CD1YKNDCNNE1540",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JACADF9FFK4CD1YKNDCNNE1540",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -23303.25,
+     -618579.79,
+     2019.7
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20175B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 162,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JB5SJY7XQD2C1PT8ZYPRKC8WVT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JB5SJY7XQD2C1PT8ZYPRKC8WVT",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -28493.04,
+     -620268.83,
+     2019.07
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 163,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JJX8EE3A3B9S4AFT3ZXVSQ5BXQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JJX8EE3A3B9S4AFT3ZXVSQ5BXQ",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -20304.58,
+     -615570.08,
+     2819.73
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201798",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w34"
+   },
+   "n": 164,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JP82MS0MK621T2M2VQA2B1E6KJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JP82MS0MK621T2M2VQA2B1E6KJ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25698.86,
+     -626136.22,
+     896.35
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AAB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 165,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JT9FS0SMN0BEYMTEVJYP1Z7X16",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JT9FS0SMN0BEYMTEVJYP1Z7X16",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25025.17,
+     -622606.42,
+     1235.3
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 166,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JXSRJKH91SBXP3E7JNZTMT3ZPD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JXSRJKH91SBXP3E7JNZTMT3ZPD",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27960.39,
+     -623467.16,
+     1719.68
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201696",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 167,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JYJZ0W1DKS2AWG0BTTSKGQGYXE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JYJZ0W1DKS2AWG0BTTSKGQGYXE",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25538.3,
+     -620029.98,
+     1951.94
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201767",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w33"
+   },
+   "n": 168,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.K1AHDMD6HYT3Y8M9HBVVFCHRW3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.K1AHDMD6HYT3Y8M9HBVVFCHRW3",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -20587.39,
+     -615374.96,
+     2009.86
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201792",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 169,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.K2V8MYYEE3N31RN3AREKANRM4Z",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.K2V8MYYEE3N31RN3AREKANRM4Z",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25230.05,
+     -626811.4,
+     1641.19
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A9C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 170,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.K6723S2QET79014BWXSZEEDN5T",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.K6723S2QET79014BWXSZEEDN5T",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -23346.77,
+     -617415.95,
+     2433.18
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201784",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 171,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.K9YVKS5ANZ3J8FS1WTM8BSH8GB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.K9YVKS5ANZ3J8FS1WTM8BSH8GB",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25501.66,
+     -620031.43,
+     1982.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201772",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w33"
+   },
+   "n": 172,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.KA5C237T4ZFY2FGQX2K2AJH9GG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.KA5C237T4ZFY2FGQX2K2AJH9GG",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -22547.87,
+     -615510.96,
+     2733.98
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201780",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 173,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.KHQFMPNEN0B0N6VXMAFFB5GE44",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.KHQFMPNEN0B0N6VXMAFFB5GE44",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27733.46,
+     -623064.76,
+     2002.95
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 174,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.KKR1NEHZDX6BAGBPF8CPB539P2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.KKR1NEHZDX6BAGBPF8CPB539P2",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -23335.14,
+     -619124.16,
+     2001.07
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201763",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 175,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.KMN773TZNV0A9KTT31ZYM43ZQA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.KMN773TZNV0A9KTT31ZYM43ZQA",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21177.11,
+     -615873.98,
+     1874.86
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 176,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.M3SGNNB8WF4KQ89BRTGKP5RRGP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.M3SGNNB8WF4KQ89BRTGKP5RRGP",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -29852.71,
+     -628461.63,
+     1193.12
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E422F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w23"
+   },
+   "n": 177,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MFENJVFYQSGK2YCD850HK18TJQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MFENJVFYQSGK2YCD850HK18TJQ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21309.53,
+     -616176.43,
+     1880.63
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201791",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 178,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MHTM6F87GHX9KWGWSZFHSM9ZWX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MHTM6F87GHX9KWGWSZFHSM9ZWX",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23423.62,
+     -619415.37,
+     1956.87
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20173D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 179,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MS7J68Z3HD1EXSYMMZNAR251YQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MS7J68Z3HD1EXSYMMZNAR251YQ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -26142.07,
+     -626199.23,
+     614.31
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201ACA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 180,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MTFA8YG4B5X7FR2J7SXJ6ZNVJ0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MTFA8YG4B5X7FR2J7SXJ6ZNVJ0",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -27927.8,
+     -623458.66,
+     1765.86
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016BE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 181,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MWRH9C02QMD58X5W0NZW06CK8H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MWRH9C02QMD58X5W0NZW06CK8H",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -21505.01,
+     -619199.2,
+     2521.24
+    ],
+    "rot": [
+     0,
+     0,
+     7.43599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201777",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 182,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.MZH56S5N68B72848R0GDDHQB6F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.MZH56S5N68B72848R0GDDHQB6F",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -27478.84,
+     -622240.71,
+     2121.28
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 183,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.N3DWYJK6SHCJB27WETGQDAB130",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.N3DWYJK6SHCJB27WETGQDAB130",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -29550.71,
+     -620386.37,
+     2268.27
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201715",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 184,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NF5GMYJ93J8PWHT5HS277QM2B1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NF5GMYJ93J8PWHT5HS277QM2B1",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -29307.28,
+     -622061.39,
+     1384.3
+    ],
+    "rot": [
+     0,
+     0,
+     9.61918
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 185,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NQ60SM9K6DTYWR8C2ZZG2CJ373",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NQ60SM9K6DTYWR8C2ZZG2CJ373",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -27840.02,
+     -622631.58,
+     1922.69
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 186,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NZ2QG2X9HP0V4QN3CNVF3MH1BZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NZ2QG2X9HP0V4QN3CNVF3MH1BZ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -23688.2,
+     -617762.62,
+     2092.71
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20176F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 187,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.P2A3WT2C8PGXR97WZWKAZ884G2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.P2A3WT2C8PGXR97WZWKAZ884G2",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -29767.02,
+     -621816.16,
+     767.17
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201709",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 188,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.P9QZNVYX024VADC35V0YN3164Q",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.P9QZNVYX024VADC35V0YN3164Q",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -20650.59,
+     -618292.87,
+     2753.23
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20178A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 189,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PEG8EJ6VKFRSXM7E1PSRV52JKD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PEG8EJ6VKFRSXM7E1PSRV52JKD",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23090.97,
+     -619187.22,
+     2018.26
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201761",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 190,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PFCAQK8SWXKRX327AQ1NSF4NZC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PFCAQK8SWXKRX327AQ1NSF4NZC",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -20359.61,
+     -615515.88,
+     2842.51
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201786",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w34"
+   },
+   "n": 191,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PHMG8NSC25ZBBXF93PMJ3P8QC4",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PHMG8NSC25ZBBXF93PMJ3P8QC4",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -25375.57,
+     -625602.7,
+     1272.76
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A79",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 192,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PHVNXE050AFDN0EFZNA78ZFEG3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PHVNXE050AFDN0EFZNA78ZFEG3",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -30942.96,
+     -636772.42,
+     1641.28
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4285",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w25"
+   },
+   "n": 193,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PKHC5MRG0NDCKGZF3GW6NY4VSX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PKHC5MRG0NDCKGZF3GW6NY4VSX",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -29487.22,
+     -619666.42,
+     2828.5
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 194,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PNX0W5XRXM0H0SMYK5CVYN21E2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PNX0W5XRXM0H0SMYK5CVYN21E2",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25594.15,
+     -621919.28,
+     1287.21
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 195,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PXB1AR24RC5QVD7ZNWCEBRV2CV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PXB1AR24RC5QVD7ZNWCEBRV2CV",
+    "base": "Skyrim.esm:034DAE",
+    "kind": "other",
+    "pos": [
+     -29640.1,
+     -619341.18,
+     1242.34
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016E1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 196,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PXCATGD906SXTQ3CWKYQFH49WP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PXCATGD906SXTQ3CWKYQFH49WP",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -24392.8,
+     -619241.7,
+     2250.27
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201730",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 197,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.PZKCV4NZYYXK2R7PVY7FKKKVDK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.PZKCV4NZYYXK2R7PVY7FKKKVDK",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -28211.08,
+     -619541.2,
+     2771.23
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201703",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 198,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Q0MC8K1EH5NZGAPENFK5580QMH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Q0MC8K1EH5NZGAPENFK5580QMH",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -21881.13,
+     -615269.88,
+     2218.05
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201795",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 199,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Q2DBW6STHBRHB66Q1C84C450RW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Q2DBW6STHBRHB66Q1C84C450RW",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -21926.74,
+     -618418.08,
+     2828.48
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201743",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 200,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Q2W3PZXE8APD45PF27JZ05EEKZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Q2W3PZXE8APD45PF27JZ05EEKZ",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -27373.37,
+     -619590.96,
+     3088.38
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201705",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 201,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Q65Q8SS4BWZCENKBTJR3AWVE2Y",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Q65Q8SS4BWZCENKBTJR3AWVE2Y",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -25354.64,
+     -626671.81,
+     1653.94
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A8C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 202,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QAP2CPQSZYHYW1XYG8AS1VNBQF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QAP2CPQSZYHYW1XYG8AS1VNBQF",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27336.73,
+     -619592.4,
+     3118.89
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20170E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 203,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QGDW33MW6W4RVH6BQ1RX71R6GG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QGDW33MW6W4RVH6BQ1RX71R6GG",
+    "base": "Skyrim.esm:0A918C",
+    "kind": "container",
+    "pos": [
+     -28885.44,
+     -633261.86,
+     2183.01
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4292",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 204,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QK31EYJVE8F3AEV5Y49QFNZDFJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QK31EYJVE8F3AEV5Y49QFNZDFJ",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -23103.35,
+     -618337.33,
+     2819.26
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201745",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 205,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QPDZYZSFS2ATFTNEXMDARX5HWP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QPDZYZSFS2ATFTNEXMDARX5HWP",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -22348.68,
+     -618768.19,
+     2457.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.21919
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 206,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QQBNXHWSYJDJDSC6AHK0THD4A0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QQBNXHWSYJDJDSC6AHK0THD4A0",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -26899.24,
+     -630048.14,
+     680.12
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w20"
+   },
+   "n": 207,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QRZVF8WRWAWZFBVWBXFC0NTX3H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QRZVF8WRWAWZFBVWBXFC0NTX3H",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -27645.87,
+     -623052.17,
+     1987.37
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20170A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 208,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QVVGNX1NTMB9PZPNZDED9W90RF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QVVGNX1NTMB9PZPNZDED9W90RF",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -19354.85,
+     -615686.14,
+     1719.08
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20179E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 209,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QYMHHWK5PYRVDQS316NFCNS41S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QYMHHWK5PYRVDQS316NFCNS41S",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -27677.89,
+     -622310.18,
+     2123.3
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20171B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w07"
+   },
+   "n": 210,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.R0EQ62TPS93T43AE5R0R0H74GJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.R0EQ62TPS93T43AE5R0R0H74GJ",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -28299.02,
+     -619403.06,
+     2814.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20171A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 211,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.R25Z0Y791S4CNB5QEASKBKZ38N",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.R25Z0Y791S4CNB5QEASKBKZ38N",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20794.11,
+     -618909.3,
+     1931.1
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201799",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 212,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.R3K6NZ06QEA810NASBCP880XJ2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.R3K6NZ06QEA810NASBCP880XJ2",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -25716.99,
+     -625949.38,
+     863.97
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AA5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 213,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RCKW6HYJ2YWZYHKNA3R2D1T2X3",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RCKW6HYJ2YWZYHKNA3R2D1T2X3",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -21260.0,
+     -618177.0,
+     2348.18
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 214,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RHHH6FPE1542KJ7EP722EG9R42",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RHHH6FPE1542KJ7EP722EG9R42",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -26963.29,
+     -619987.72,
+     2635.25
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 215,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RMGQ922XHA5W3YMDAM0FXFF64S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RMGQ922XHA5W3YMDAM0FXFF64S",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27495.33,
+     -622936.56,
+     2014.7
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 216,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RNP2Q0XPHZ01PF9WRY91MQD18C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RNP2Q0XPHZ01PF9WRY91MQD18C",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -23029.17,
+     -619007.56,
+     2095.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 217,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RNPH4922ZSRBFP7QNA4Q5FJVKE",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RNPH4922ZSRBFP7QNA4Q5FJVKE",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -27248.78,
+     -619730.55,
+     3075.63
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w12"
+   },
+   "n": 218,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RRKMWP9FJY1SE48B994P736NHG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RRKMWP9FJY1SE48B994P736NHG",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20688.4,
+     -619083.55,
+     1933.54
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201750",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 219,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RTV442W9SB2F6CST4FB798T1YD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RTV442W9SB2F6CST4FB798T1YD",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -24567.59,
+     -625513.69,
+     1189.15
+    ],
+    "rot": [
+     0,
+     0,
+     6.21919
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AB7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 220,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.RX50GSD4N12F91Y8K1BFZZ7ZSW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.RX50GSD4N12F91Y8K1BFZZ7ZSW",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27775.3,
+     -617311.66,
+     2289.69
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201724",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 221,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S15GX251KNRQCHS5T99YEG6KQN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S15GX251KNRQCHS5T99YEG6KQN",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -30319.09,
+     -634447.66,
+     2251.83
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEBB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w21"
+   },
+   "n": 222,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S2EMGT32ABTR23Q71VG6H40S3P",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S2EMGT32ABTR23Q71VG6H40S3P",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -29688.58,
+     -628551.41,
+     1205.87
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4239",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w23"
+   },
+   "n": 223,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S4ETRYCEJ2K7WT43RK2R771ECX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S4ETRYCEJ2K7WT43RK2R771ECX",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -23662.58,
+     -618280.66,
+     2348.18
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201751",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 224,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S82J5C1AEF2DK5RMV8MEV967M7",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S82J5C1AEF2DK5RMV8MEV967M7",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27907.72,
+     -617614.11,
+     2267.27
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20172C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 225,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SB13CT45ECCHEE8F6NWWRFZKNR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SB13CT45ECCHEE8F6NWWRFZKNR",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -27627.74,
+     -623239.01,
+     1689.88
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016AC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 226,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SMC2KRWHC2J5PFVQ5TXD5ZZ559",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SMC2KRWHC2J5PFVQ5TXD5ZZ559",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -27505.61,
+     -623901.34,
+     765.84
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20168B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 227,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SP7P6XYCERDCWJMCF9VCDVYH43",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SP7P6XYCERDCWJMCF9VCDVYH43",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -26378.4,
+     -625283.94,
+     739.38
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 228,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SVJ35GBCB4YPEVBEV73S8FV9YX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SVJ35GBCB4YPEVBEV73S8FV9YX",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -26031.51,
+     -626364.37,
+     861.27
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 229,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.SYFWSDBPWQ255GWDDH771V5WCZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.SYFWSDBPWQ255GWDDH771V5WCZ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -27304.71,
+     -620334.39,
+     2168.18
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 230,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.T4FD3ZVYN3152M26CEEV9PRTQW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.T4FD3ZVYN3152M26CEEV9PRTQW",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -20397.38,
+     -615436.94,
+     2819.73
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w34"
+   },
+   "n": 231,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.T4H9GRAXAHM2KAKS0EYE141J67",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.T4H9GRAXAHM2KAKS0EYE141J67",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -20900.67,
+     -618476.12,
+     1957.99
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20178B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 232,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.T58FTG13BPWB99MCGJTAKXE2AD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.T58FTG13BPWB99MCGJTAKXE2AD",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -22969.81,
+     -615861.07,
+     2384.09
+    ],
+    "rot": [
+     0,
+     0,
+     6.21919
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017BC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 233,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.T9V36QJN269Y1BZDVJH6BBTFJD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.T9V36QJN269Y1BZDVJH6BBTFJD",
+    "base": "Black Marsh.esm:200217",
+    "kind": "plant",
+    "pos": [
+     -24145.65,
+     -625163.58,
+     1410.61
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A94",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 234,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TJM19EXGXEKA7M0GM0VYR7C131",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TJM19EXGXEKA7M0GM0VYR7C131",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25566.45,
+     -625833.77,
+     945.12
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AB5",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 235,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TKCRYNRGH9JJ0971CZSZ8MWZBK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TKCRYNRGH9JJ0971CZSZ8MWZBK",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -28119.99,
+     -617006.68,
+     1952.23
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20172E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 236,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TKQRBP5EF2WT5T30Z09K3H9VRZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TKQRBP5EF2WT5T30Z09K3H9VRZ",
+    "base": "Skyrim.esm:035267",
+    "kind": "other",
+    "pos": [
+     -28820.48,
+     -619425.34,
+     2366.18
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 237,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TN87WBB9S0X7HF0A8H3R233EMF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TN87WBB9S0X7HF0A8H3R233EMF",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28354.59,
+     -620157.64,
+     2022.94
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201704",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 238,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TZD2ZZ2EHHYCNEXYJ9KW5TB826",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TZD2ZZ2EHHYCNEXYJ9KW5TB826",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -22773.6,
+     -615770.95,
+     1853.63
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017AF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 239,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.V1C4YZWXHG6EAJ2J5TVZFYR73B",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.V1C4YZWXHG6EAJ2J5TVZFYR73B",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -21359.67,
+     -615247.6,
+     2666.36
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017BE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 240,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.V4XH8TDQ7Z9CQ42HCAKVTXFW3T",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.V4XH8TDQ7Z9CQ42HCAKVTXFW3T",
+    "base": "Black Marsh.esm:1B331F",
+    "kind": "plant",
+    "pos": [
+     -24751.26,
+     -618871.85,
+     2457.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.21919
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201771",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 241,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.V5TKN2HH6SRNNMWZJCW2WAMZA6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.V5TKN2HH6SRNNMWZJCW2WAMZA6",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -23594.19,
+     -618975.69,
+     2546.71
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20174F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 242,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VF16A88NHQ5913HZTS0P6KZ5DQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VF16A88NHQ5913HZTS0P6KZ5DQ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -26145.74,
+     -628679.74,
+     1148.05
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A65",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 243,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VKYXBE1Z7TF60W59WHNFJKVQ1R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VKYXBE1Z7TF60W59WHNFJKVQ1R",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -29855.62,
+     -628467.96,
+     1236.38
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4231",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w23"
+   },
+   "n": 244,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VSVPTCJ669ZP9HJ47MWP5WEBA9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VSVPTCJ669ZP9HJ47MWP5WEBA9",
+    "base": "Skyrim.esm:0B945E",
+    "kind": "other",
+    "pos": [
+     -22611.36,
+     -616230.91,
+     2120.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017B9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 245,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VVXEG9Y0H3Z48XP7AQC6TW092H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VVXEG9Y0H3Z48XP7AQC6TW092H",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23099.09,
+     -619927.76,
+     2990.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20176B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 246,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VX38NB3FB4GD0ZXWFDC9AZN5DF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VX38NB3FB4GD0ZXWFDC9AZN5DF",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -29678.48,
+     -628205.19,
+     399.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4235",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 247,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.W8KWD882QAX44HPPCRYKHAB5W9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.W8KWD882QAX44HPPCRYKHAB5W9",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -29065.49,
+     -620447.54,
+     2579.18
+    ],
+    "rot": [
+     0,
+     0,
+     7.43599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 248,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.W9AYYWVE9Y48PWK888RTSG1HGP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.W9AYYWVE9Y48PWK888RTSG1HGP",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -20200.31,
+     -616071.7,
+     1936.09
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201782",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 249,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.WAN0NA80P3DFDARHSZ1DN9181E",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.WAN0NA80P3DFDARHSZ1DN9181E",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -30284.09,
+     -634436.73,
+     2221.32
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w21"
+   },
+   "n": 250,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.WDPMA816NA79PX1R08ZNKDKEA9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.WDPMA816NA79PX1R08ZNKDKEA9",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -30936.06,
+     -636771.44,
+     1598.02
+    ],
+    "rot": [
+     -3.092428,
+     -0.031545043,
+     7.3768
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E4283",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w25"
+   },
+   "n": 251,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.WNPHGJ5PQ5MBX259XFY2ENBKPA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.WNPHGJ5PQ5MBX259XFY2ENBKPA",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -21021.04,
+     -619311.7,
+     1884.87
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20173A",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 252,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.WQP658M3M4HF2ABSV02CK59D86",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.WQP658M3M4HF2ABSV02CK59D86",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -29945.63,
+     -624216.36,
+     1168.29
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016C0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w41"
+   },
+   "n": 253,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.X4NEKBCVWRNHM6B98NGSZ9A0GR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.X4NEKBCVWRNHM6B98NGSZ9A0GR",
+    "base": "Black Marsh.esm:20021A",
+    "kind": "plant",
+    "pos": [
+     -25622.98,
+     -627162.45,
+     1342.89
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AB4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 254,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.X651SFMK3C8R0CR63GNEHBBCRB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.X651SFMK3C8R0CR63GNEHBBCRB",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -25318.0,
+     -626673.26,
+     1684.44
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201AC0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w13"
+   },
+   "n": 255,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XB15D18TTCWRJF1P1D7B8BPKYX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XB15D18TTCWRJF1P1D7B8BPKYX",
+    "base": "Black Marsh.esm:1B32DC",
+    "kind": "tree",
+    "pos": [
+     -21521.8,
+     -615569.0,
+     1875.19
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017A1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 256,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XD0JHXW3Z356HDFKK5PX088NGK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XD0JHXW3Z356HDFKK5PX088NGK",
+    "base": "Black Marsh.esm:1961A5",
+    "kind": "plant",
+    "pos": [
+     -26284.19,
+     -628790.94,
+     225.72
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201A5B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 257,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XGZHWK22BD92ZX70HX77RS9DDJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XGZHWK22BD92ZX70HX77RS9DDJ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -27526.74,
+     -619530.42,
+     2294.77
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016EE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 258,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YEP6H0F3G4192ARG3M7SJW3374",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YEP6H0F3G4192ARG3M7SJW3374",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -29267.2,
+     -633061.23,
+     2539.43
+    ],
+    "rot": [
+     0,
+     0,
+     6.63599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E425E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w17"
+   },
+   "n": 259,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YHA56ARGKR4GR6DCW56Z42DMFQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YHA56ARGKR4GR6DCW56Z42DMFQ",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -30006.41,
+     -624825.2,
+     1369.28
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016B8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 260,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YHNTF4XR77X16JR415502KF9ZB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YHNTF4XR77X16JR415502KF9ZB",
+    "base": "Black Marsh.esm:17BD20",
+    "kind": "plant",
+    "pos": [
+     -22942.07,
+     -618188.92,
+     2061.13
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20173F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 261,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YQN5QPZS2PZPNPNJWXH81SCTHW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YQN5QPZS2PZPNPNJWXH81SCTHW",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28581.53,
+     -620560.04,
+     1974.87
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201706",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 262,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YQPYQXZFSERWARXSN180B1KYWJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YQPYQXZFSERWARXSN180B1KYWJ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -25424.86,
+     -620975.64,
+     1063.69
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201731",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 263,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YR46AN4H0GX4G0525PK24DXBRR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YR46AN4H0GX4G0525PK24DXBRR",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -23391.03,
+     -619406.87,
+     1972.37
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201756",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 264,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YTE2W0F3D71ECZTV6J1Z0HBZX6",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YTE2W0F3D71ECZTV6J1Z0HBZX6",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -28261.25,
+     -619482.0,
+     2837.26
+    ],
+    "rot": [
+     0,
+     0,
+     8.71918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016F3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w08"
+   },
+   "n": 265,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YYBRFH52WF7VPYMQCAER7XHEWR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YYBRFH52WF7VPYMQCAER7XHEWR",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -23141.12,
+     -618258.39,
+     2796.49
+    ],
+    "rot": [
+     0,
+     0,
+     8.91918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201758",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w03"
+   },
+   "n": 266,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YZAKM6VN1P3X29PHWBQSAMKN4S",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YZAKM6VN1P3X29PHWBQSAMKN4S",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -28196.73,
+     -622551.88,
+     1539.86
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016DD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 267,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Z6B9XKE4FEWRMJA1B6V50PNKYZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Z6B9XKE4FEWRMJA1B6V50PNKYZ",
+    "base": "Black Marsh.esm:11DC57",
+    "kind": "plant",
+    "pos": [
+     -23196.69,
+     -619012.96,
+     2004.94
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:20176C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 268,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.Z6H6D3DS2B1NZ0ZW4F98CWCTZ2",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.Z6H6D3DS2B1NZ0ZW4F98CWCTZ2",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -26294.2,
+     -619841.6,
+     2030.06
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016FA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 269,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZJBTGSVX0G5GBZ8AP35PNHD51D",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZJBTGSVX0G5GBZ8AP35PNHD51D",
+    "base": "Black Marsh.esm:196181",
+    "kind": "plant",
+    "pos": [
+     -29617.03,
+     -621425.3,
+     1225.18
+    ],
+    "rot": [
+     0,
+     0,
+     11.21917
+    ],
+    "scale": 5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:201711",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 270,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZQ8SS0F1PERP6KBS8C2NNQ2JV1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZQ8SS0F1PERP6KBS8C2NNQ2JV1",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -21396.31,
+     -615246.16,
+     2635.86
+    ],
+    "rot": [
+     3.1220067,
+     0.055029422,
+     11.17704
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2017BA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w09"
+   },
+   "n": 271,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZQNDZB6NGTSP36D04Q61N4BAGD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZQNDZB6NGTSP36D04Q61N4BAGD",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -25043.3,
+     -622419.57,
+     1189.42
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:2016D6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 272,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZVG1KY7NPP0J8X12SA9J4PYDV8",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZVG1KY7NPP0J8X12SA9J4PYDV8",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -30448.22,
+     -634346.95,
+     2208.57
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEB7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w21"
+   },
+   "n": 273,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:17Z"
+  }
+ ]
+}
