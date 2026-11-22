@@ -142,7 +142,9 @@ def helstrom_ops(files):
         op["n"] = len(ops) + 1
         ops.append(op)
     for mode in ("ground", "above", "stilts", "on", "water"):
-        r = next(x for x in ext if (x.get("seat") or {}).get("mode") == mode)
+        r = next((x for x in ext if (x.get("seat") or {}).get("mode") == mode), None)
+        if r is None:      # the place as drafted today may hold no ref seated this way
+            continue
         before = {"pos": r["pos"], "rot": r["rot"], "scale": r.get("scale", 1), "seat": r["seat"]}
         after = copy.deepcopy(before)
         after["pos"] = [before["pos"][0] + 100, before["pos"][1] - 50, before["pos"][2] + 3]
@@ -155,7 +157,7 @@ def helstrom_ops(files):
     add({"op": "veg.clear", "items": [{"base": "Skyrim.esm:0A7329", "pos": [1.0, 2.0, 3.0]}]})
     add({"op": "land.patch", "cell": [-1, -155], "verts": [[3, 4, 0.0, -20.0]],
          "tool": {"kind": "lower", "radius": 128, "strength": 0.5}})
-    walk = next(p for p in files["paths"] if p["kind"] == "walkway")
+    walk = next((p for p in files["paths"] if p["kind"] == "walkway"), files["paths"][0])
     add({"op": "path.edit", "path": dict(walk, width=200.0), "before": walk})
     other = next(p for p in files["paths"] if p["id"] != walk["id"])
     add({"op": "path.remove", "path": other, "before": other})
