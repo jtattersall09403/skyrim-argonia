@@ -894,3 +894,6 @@ def test_a_town_s_section_is_its_middle_at_a_readable_scale_and_its_subject_what
     survey._cam(None, "p", {"lo": [0, 0, 0], "hi": [1200, 800, 500]}, {"section": "south-north"}, 0.0)
     (A, B), = got
     assert A == [600.0, -300] and B == [600.0, 1100]
+    # a section that draws what it cuts is good though a tree fills more of it; one that draws nothing fails
+    assert survey.section_verdict({"capture": "failed", "subject_seen": 0.36, "why": "a tree fills more"})["capture"] == "good"
+    assert survey.section_verdict({"capture": "failed", "subject_seen": 0.0, "why": "not drawn"})["capture"] == "failed"

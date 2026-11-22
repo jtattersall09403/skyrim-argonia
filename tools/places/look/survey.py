@@ -81,6 +81,14 @@ def table_text(name: str, rows: list[dict]) -> str:
     return "\n".join(out) + "\n"
 
 
+def section_verdict(s: dict) -> dict:
+    """A section is a drawing of what its slab cuts, not a view: it is good when it draws any of what it cuts (a
+    tree or a world piece 'filling more' of a cut is no fault of the frame), failed only when it draws none."""
+    if s.get("subject_seen", 0) > 0:
+        return {k: v for k, v in s.items() if k != "why"} | {"capture": "good"}
+    return s
+
+
 def _cam(sc, place, th, t, gz, retry=False):
     if t.get("section"):
         lo, hi = th["lo"], th["hi"]
@@ -129,6 +137,8 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path) -> dict:
             c = cams[i]
             img = draw.from_data_url(r["png"])
             s, ids = verbs.judge(sc, c, r, th, False)
+            if c.get("_section"):
+                s = section_verdict(s)
             img = capture.hatch(img, ids, r["table"], r["id0"], verbs.helper_label(sc))
             title = f"{th['name']} {tiles[i]['name']}"
             if c.get("_section"):
