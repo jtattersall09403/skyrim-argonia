@@ -1,17 +1,3 @@
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"address-term","ord":0,"text":"Citizen, offered as an invitation.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"address-term","ord":1,"text":"Archwarden, Warden, by office.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"contempt","ord":0,"text":"Lukiul, as a weapon word, by the older hands.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"contempt","ord":1,"text":"Foreign institutions that come without a licence.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"grievance","ord":0,"text":"Gideon and Lilmoth deny the mandate openly.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"never-said","ord":0,"text":"That the predecessor tried to exterminate the lukiul.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"norm","ord":0,"text":"The administration still calls itself the An-Xileel; staff say the Wardens.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"norm","ord":1,"text":"Writ is held at the ports and the border; elsewhere it is argued.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"norm","ord":2,"text":"The Wild Ones are spoken of as the constituency.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"oath","ord":0,"text":"For the Marsh and its people.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"rumour","ord":0,"text":"The Organism is split on the Root Talk.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"taboo","ord":0,"text":"Mentioning Umbriel as the party's own act.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"value","ord":0,"text":"Argonian sovereignty.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.an-xileel","kind":"value","ord":1,"text":"The border screen and the customs regime.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.faction.blackguards","kind":"address-term","ord":0,"text":"Brother; fresh meat, to new hands.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.blackguards","kind":"contempt","ord":0,"text":"Neighbouring tribes who hate the occupation.","source":"world/sources/lore/topics/foreign-powers.md"}
 {"culture_sheet_id":"culture.faction.blackguards","kind":"grievance","ord":0,"text":"Tribes and Wardens both raid us.","source":"inferred"}
@@ -82,38 +68,6 @@
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","kind":"rumour","ord":0,"text":"A courier on the Leyawiin road.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","kind":"taboo","ord":0,"text":"Striking the colours.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.imperial-legion-remnant","kind":"value","ord":0,"text":"Duty, honour, plainly.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"address-term","ord":0,"text":"Citizen, meant.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"address-term","ord":1,"text":"Delegate.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"contempt","ord":0,"text":"Monopolies on the water.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"grievance","ord":0,"text":"Lukiul still cannot hold land in some wards.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"never-said","ord":0,"text":"Who funds the League.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"norm","ord":0,"text":"Petition, argue, file.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"norm","ord":1,"text":"Citizenship without a tree.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"oath","ord":0,"text":"On the open water.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"rumour","ord":0,"text":"A ward vote is being bought.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"taboo","ord":0,"text":"Asking a member's tribe.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.league-of-open-water","kind":"value","ord":0,"text":"Civic standing, public services.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"address-term","ord":0,"text":"Root-kin; tree-minder, egg-tender by office.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"contempt","ord":0,"text":"Sap crews and poachers.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"contempt","ord":1,"text":"Soul-takers.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"grievance","ord":0,"text":"Sap crews bleed trees for foreign buyers.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"never-said","ord":0,"text":"What a tree said in council.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"norm","ord":0,"text":"Discover in danger, decide in council.","source":"docs/quests/40-factions.md#36-the-many-root-conclave"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"norm","ord":1,"text":"No Hist speaks for all the Hist.","source":"world/sources/lore/topics/hist-and-sap.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"oath","ord":0,"text":"Under many roots.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"rumour","ord":0,"text":"A Hist in the south has gone silent.","source":"world/sources/lore/topics/hist-and-sap.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"taboo","ord":0,"text":"Claiming one tree's will binds another's people.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.many-root-conclave","kind":"value","ord":0,"text":"Consent and stewardship.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"address-term","ord":0,"text":"Blade; captain.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"contempt","ord":0,"text":"Foreign charters that would own them.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"grievance","ord":0,"text":"The charter question splits the company.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"never-said","ord":0,"text":"Who pays the auxiliary branch.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"norm","ord":0,"text":"A fighting company takes contracts and answers for them.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"norm","ord":1,"text":"Promotion needs competence and sponsors.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"oath","ord":0,"text":"On the contract.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"rumour","ord":0,"text":"A wamasu den near Tenmar.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"taboo","ord":0,"text":"Breaking a contract mid-job.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.marsh-charter","kind":"value","ord":0,"text":"Competence, public service.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","kind":"address-term","ord":0,"text":"Sera; by rank.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","kind":"contempt","ord":0,"text":"Argonian raiders, from the war.","source":"world/sources/lore/topics/foreign-powers.md"}
 {"culture_sheet_id":"culture.faction.morrowind-veterans","kind":"grievance","ord":0,"text":"Morrowind has forgotten them.","source":"inferred"}
@@ -143,39 +97,6 @@
 {"culture_sheet_id":"culture.faction.naga-kur","kind":"rumour","ord":0,"text":"A kaju hunt this moon.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.naga-kur","kind":"taboo","ord":0,"text":"Leaving a comrade's bones.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.naga-kur","kind":"value","ord":0,"text":"The deeps' discipline.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"address-term","ord":0,"text":"Reed; water-rat, to juniors.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"contempt","ord":0,"text":"Bosses who sell their own.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"grievance","ord":0,"text":"The League wants the flooded districts cleared.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"never-said","ord":0,"text":"The fence's name.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"norm","ord":0,"text":"Take from those who can bear it.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"norm","ord":1,"text":"Mutual aid among members; silence to outsiders.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"oath","ord":0,"text":"Dry feet.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"rumour","ord":0,"text":"The Tidal Palace vault changes hands at the new moon.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"taboo","ord":0,"text":"Blackmail as a trade.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.night-reed-chapter","kind":"value","ord":0,"text":"Skill and restraint.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"address-term","ord":0,"text":"Seeker; friend of the turning.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"contempt","ord":0,"text":"Dogma, including their own.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"contempt","ord":1,"text":"The Brotherhood's single untruth.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"grievance","ord":0,"text":"Asked to be judges with no law behind them.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"never-said","ord":0,"text":"One true reading.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"norm","ord":0,"text":"Travel so each village hears many interpretations.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"norm","ord":1,"text":"Teach letting go: make the art, then break it.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"oath","ord":0,"text":"Raj-Sithis turns.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"rumour","ord":0,"text":"An old ku-vastei is dying in Lilmoth.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"taboo","ord":0,"text":"Treating Sithis as evil.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"taboo","ord":1,"text":"Holding a grievance past its season.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"value","ord":0,"text":"Vastei, change.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.nisswo","kind":"value","ord":1,"text":"Mercy.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"address-term","ord":0,"text":"Deckhand; pilot.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"contempt","ord":0,"text":"Regulators from the League.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"grievance","ord":0,"text":"The League wants to license the water.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"never-said","ord":0,"text":"The Salt-Teeth share.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"norm","ord":0,"text":"The route is shared; the share is fixed.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"norm","ord":1,"text":"A pilot's word on the water is law.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"oath","ord":0,"text":"Fair water.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"rumour","ord":0,"text":"A new channel opened past Blackrose.","source":"world/sources/lore/blackrose.md"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"taboo","ord":0,"text":"Piloting without a route-mark.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.reed-sail-compact","kind":"value","ord":0,"text":"Mobility and the crew.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"address-term","ord":0,"text":"Friend of the sleeping tree.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"contempt","ord":0,"text":"Ayleid relic-hunters.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"grievance","ord":0,"text":"The tree has slept since the flu.","source":"inferred"}
@@ -186,26 +107,6 @@
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"rumour","ord":0,"text":"A sap-speaker dreamed the tree stirred.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"taboo","ord":0,"text":"Waking the tree.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.root-whisper","kind":"value","ord":0,"text":"Patience.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"address-term","ord":0,"text":"Traveller.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"contempt","ord":0,"text":"Mappers.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"grievance","ord":0,"text":"Smugglers want the root routes.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"never-said","ord":0,"text":"Where the way goes.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"norm","ord":0,"text":"The way is kept, never shown.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"norm","ord":1,"text":"Passage is a gift, not a fare.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"oath","ord":0,"text":"The way remembers.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"rumour","ord":0,"text":"The wintertide migration came early.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"taboo","ord":0,"text":"Speaking of the worm by name to outsiders.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.rootworm-waykeepers","kind":"value","ord":0,"text":"The sacred route.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"address-term","ord":0,"text":"Mate; nobody.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"contempt","ord":0,"text":"Charter captains.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"grievance","ord":0,"text":"The Charter is paid to hunt us.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"never-said","ord":0,"text":"The anchorage.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"norm","ord":0,"text":"The shortest thing that can be shouted across water.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"norm","ord":1,"text":"Shares by the old count.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"oath","ord":0,"text":"Teeth out.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"rumour","ord":0,"text":"A fat Khajiit hull is due off Quinrawl.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"taboo","ord":0,"text":"Naming who is ashore.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.salt-teeth","kind":"value","ord":0,"text":"The hull and the share.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.shadowscales","kind":"address-term","ord":0,"text":"Young one; brother, sister.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.shadowscales","kind":"contempt","ord":0,"text":"Brotherhood theology.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.shadowscales","kind":"grievance","ord":0,"text":"The Archon cradle has been shut since 4E 187.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
@@ -236,16 +137,6 @@
 {"culture_sheet_id":"culture.faction.sul-xan","kind":"rumour","ord":0,"text":"Soul snares set near Xi-Tsei.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.sul-xan","kind":"taboo","ord":0,"text":"Mercy.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.faction.sul-xan","kind":"value","ord":0,"text":"Destruction.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"address-term","ord":0,"text":"Reader; custodian.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"contempt","ord":0,"text":"Grave-robbing for foreign orders.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"grievance","ord":0,"text":"The Synod buys through third parties.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"never-said","ord":0,"text":"Where the archive is.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"norm","ord":0,"text":"Knowing whose ruin it is comes before reading it.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"norm","ord":1,"text":"Copy, return, publish.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"oath","ord":0,"text":"By the drowned shelves.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"rumour","ord":0,"text":"A Kothringi tablet surfaced at Gideon.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"taboo","ord":0,"text":"Selling a find to the Synod.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.sunken-archive","kind":"value","ord":0,"text":"Knowledge held in common.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.synod","kind":"address-term","ord":0,"text":"Attendant; First Adjunct.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","kind":"contempt","ord":0,"text":"The College of Whispers.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","kind":"grievance","ord":0,"text":"Unwelcome in the province.","source":"world/sources/lore/topics/guilds-and-orders.md"}
@@ -256,16 +147,6 @@
 {"culture_sheet_id":"culture.faction.synod","kind":"rumour","ord":0,"text":"A keystone is for sale.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","kind":"taboo","ord":0,"text":"Necromancy.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.faction.synod","kind":"value","ord":0,"text":"Artefacts of power.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"address-term","ord":0,"text":"Neighbour; sera, among Dunmer members.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"contempt","ord":0,"text":"Dres claimants.","source":"world/sources/lore/topics/foreign-powers.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"grievance","ord":0,"text":"The Branchmont fields are still under ex-Archein ledgers.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"never-said","ord":0,"text":"Which family held coffles.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"norm","ord":0,"text":"Title is argued with old maps and older memory.","source":"world/sources/lore/thorn.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"norm","ord":1,"text":"Dunmer and Argonian sit on the same bench.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"oath","ord":0,"text":"By ash and reed.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"rumour","ord":0,"text":"A Redoran factor asks about Dres deeds.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"taboo","ord":0,"text":"Claiming land by deed alone.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.thorn-ash-reed-accord","kind":"value","ord":0,"text":"Saltrice title to those who work it.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"address-term","ord":0,"text":"None; soft-skin.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"contempt","ord":0,"text":"The Naga-Kur's discipline.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"grievance","ord":0,"text":"The Naga-Kur hunt us.","source":"inferred"}
@@ -275,37 +156,20 @@
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"rumour","ord":0,"text":"A rich caravan on the Onkobra road.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"taboo","ord":0,"text":"Bowing to the Naga-Kur.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.tribeless-naga","kind":"value","ord":0,"text":"Freedom from any tribe.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"address-term","ord":0,"text":"Witness.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"contempt","ord":0,"text":"Those who would excuse the party.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"grievance","ord":0,"text":"The state will not open its 4E 48 records.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"never-said","ord":0,"text":"Forgiveness, lightly.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"norm","ord":0,"text":"Name the dead; argue the cause; forget neither.","source":"world/sources/lore/topics/umbriel.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"oath","ord":0,"text":"We remember 4E 48.","source":"world/sources/lore/topics/umbriel.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"rumour","ord":0,"text":"College scholars are digging in Murkmire.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"taboo","ord":0,"text":"Calling it a natural disaster.","source":"world/sources/lore/topics/umbriel.md"}
-{"culture_sheet_id":"culture.faction.umbriel-witness-society","kind":"value","ord":0,"text":"Witness.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"address-term","ord":0,"text":"Root-sibling.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"contempt","ord":0,"text":"The Wardens and their office.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"contempt","ord":1,"text":"Conclave consent-talk.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"grievance","ord":0,"text":"The Veiled Reed takes people in the night.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"never-said","ord":0,"text":"Who leads.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"norm","ord":0,"text":"The Hist above any law or state.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"norm","ord":1,"text":"Victims of the state are welcomed without questions.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"oath","ord":0,"text":"By the unbound root.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"rumour","ord":0,"text":"The trees are about to speak as one.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"taboo","ord":0,"text":"Speaking for the state.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"value","ord":0,"text":"Hist supremacy.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.unbound-root","kind":"value","ord":1,"text":"Revenge for abuse.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"address-term","ord":0,"text":"Friend; no names.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"contempt","ord":0,"text":"Movements that hide behind victims.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"grievance","ord":0,"text":"The Organism wants results and denies the methods.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"never-said","ord":0,"text":"Who reports to whom.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"norm","ord":0,"text":"Nothing is written that need not be.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"norm","ord":1,"text":"The handler speaks; the agent listens.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"oath","ord":0,"text":"Under the reed.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"rumour","ord":0,"text":"The Unbound Root has an agent inside Helstrom.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"taboo","ord":0,"text":"Naming another agent.","source":"inferred"}
-{"culture_sheet_id":"culture.faction.veiled-reed","kind":"value","ord":0,"text":"The state's survival.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"address-term","ord":0,"text":"Citizen, offered as an invitation.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"address-term","ord":1,"text":"Archwarden, Warden, by office.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"contempt","ord":0,"text":"Lukiul, as a weapon word, by the older hands.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"contempt","ord":1,"text":"Foreign institutions that come without a licence.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"grievance","ord":0,"text":"Gideon and Lilmoth deny the mandate openly.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"never-said","ord":0,"text":"That the predecessor tried to exterminate the lukiul.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"norm","ord":0,"text":"The administration still calls itself the An-Xileel; staff say the Wardens.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"norm","ord":1,"text":"Writ is held at the ports and the border; elsewhere it is argued.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"norm","ord":2,"text":"The Wild Ones are spoken of as the constituency.","source":"world/sources/lore/topics/guilds-and-orders.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"oath","ord":0,"text":"For the Marsh and its people.","source":"inferred"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"rumour","ord":0,"text":"The council of the Xeech-Leel is split on the Root Talk.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"taboo","ord":0,"text":"Mentioning Umbriel as the party's own act.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"value","ord":0,"text":"Argonian sovereignty.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.faction.xeech-leel","kind":"value","ord":1,"text":"The border screen and the customs regime.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.faction.xit-xaht","kind":"address-term","ord":0,"text":"Stone-kin; reed-folk, to others.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.xit-xaht","kind":"contempt","ord":0,"text":"The soft tribes who let go.","source":"world/sources/lore/tribes.md"}
 {"culture_sheet_id":"culture.faction.xit-xaht","kind":"grievance","ord":0,"text":"Other tribes call us mad.","source":"world/sources/lore/tribes.md"}
@@ -594,7 +458,7 @@
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"grievance","ord":0,"text":"Port duty is collected; interior villages ignore the office.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"never-said","ord":0,"text":"Doubt about the mandate.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"norm","ord":0,"text":"On duty a Warden recites the licence and the port rule before anything else.","source":"world/sources/lore/an-xileel.md"}
-{"culture_sheet_id":"culture.office.an-xileel.senior","kind":"oath","ord":0,"text":"By the authority of the Organism.","source":"world/sources/lore/an-xileel.md"}
+{"culture_sheet_id":"culture.office.an-xileel.senior","kind":"oath","ord":0,"text":"By the authority of the council.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"rumour","ord":0,"text":"A licence was forged at Archon.","source":"inferred"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"taboo","ord":0,"text":"Saying \"Wild Ones\" with a smile.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.office.an-xileel.senior","kind":"value","ord":0,"text":"The licence.","source":"world/sources/lore/an-xileel.md"}
@@ -671,53 +535,6 @@
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.senior","kind":"rumour","ord":0,"text":"Raiders near.","source":"inferred"}
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.senior","kind":"taboo","ord":0,"text":"Slack watch.","source":"inferred"}
 {"culture_sheet_id":"culture.office.imperial-legion-remnant.senior","kind":"value","ord":0,"text":"The post.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"address-term","ord":0,"text":"Citizen.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"contempt","ord":0,"text":"Bribes.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"grievance","ord":0,"text":"Wealth buys seats.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"never-said","ord":0,"text":"Who paid for the hall.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"norm","ord":0,"text":"Speaks in motions and seconds.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"oath","ord":0,"text":"So moved.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"rumour","ord":0,"text":"A delegate was paid off.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"taboo","ord":0,"text":"Shouting.","source":"inferred"}
-{"culture_sheet_id":"culture.office.league-of-open-water.senior","kind":"value","ord":0,"text":"The vote.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"address-term","ord":0,"text":"Visitor, at the pool's edge.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"contempt","ord":0,"text":"Egg-thieves.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"grievance","ord":0,"text":"The pools are thinly guarded.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"never-said","ord":0,"text":"How many eggs are in the pool.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"norm","ord":0,"text":"Tends the uxith; the hatching pools are passed only by leave.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"norm","ord":1,"text":"Counts aloud, always.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"oath","ord":0,"text":"By shell and pool.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"rumour","ord":0,"text":"Veeskhleel were seen near the pools.","source":"world/sources/lore/tribes.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"taboo","ord":0,"text":"Touching an egg uninvited.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.egg-tender","kind":"value","ord":0,"text":"The next clutch.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"address-term","ord":0,"text":"Both parties by name.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"contempt","ord":0,"text":"Shortcuts.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"grievance","ord":0,"text":"Councils take seasons.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"never-said","ord":0,"text":"Their own lean.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"norm","ord":0,"text":"A mediator states both sides before speaking.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"oath","ord":0,"text":"Heard and witnessed.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"rumour","ord":0,"text":"The Root Talk will be contested.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"taboo","ord":0,"text":"Taking a side early.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.senior","kind":"value","ord":0,"text":"Consent.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"address-term","ord":0,"text":"Child, to any age; ojel kindly.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"contempt","ord":0,"text":"Haste.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"grievance","ord":0,"text":"The young go to the cities.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"never-said","ord":0,"text":"The tree's dreams.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"norm","ord":0,"text":"Interprets the tree's signs and arbitrates; speaks slowly and last.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"norm","ord":1,"text":"Feels when the eggs or the tribe are wrong.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"oath","ord":0,"text":"As the root holds.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"rumour","ord":0,"text":"The eggs are slow this season.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"taboo","ord":0,"text":"Speaking the tree's mind before it is clear.","source":"inferred"}
-{"culture_sheet_id":"culture.office.many-root-conclave.tree-minder","kind":"value","ord":0,"text":"The tree's health.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"address-term","ord":0,"text":"Blade.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"contempt","ord":0,"text":"Shirkers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"grievance","ord":0,"text":"Sponsors are slow.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"never-said","ord":0,"text":"The fee.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"norm","ord":0,"text":"Recites the contract terms first.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"oath","ord":0,"text":"On the contract.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"rumour","ord":0,"text":"Double pay for wamasu.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"taboo","ord":0,"text":"Unpaid work.","source":"inferred"}
-{"culture_sheet_id":"culture.office.marsh-charter.senior","kind":"value","ord":0,"text":"The contract.","source":"inferred"}
 {"culture_sheet_id":"culture.office.morrowind-veterans.senior","kind":"address-term","ord":0,"text":"Sera.","source":"inferred"}
 {"culture_sheet_id":"culture.office.morrowind-veterans.senior","kind":"contempt","ord":0,"text":"Cowards.","source":"inferred"}
 {"culture_sheet_id":"culture.office.morrowind-veterans.senior","kind":"grievance","ord":0,"text":"Forgotten.","source":"inferred"}
@@ -745,34 +562,6 @@
 {"culture_sheet_id":"culture.office.naga-kur.senior","kind":"rumour","ord":0,"text":"A kaju.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
 {"culture_sheet_id":"culture.office.naga-kur.senior","kind":"taboo","ord":0,"text":"Snarling.","source":"inferred"}
 {"culture_sheet_id":"culture.office.naga-kur.senior","kind":"value","ord":0,"text":"The rite.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"address-term","ord":0,"text":"Reed.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"contempt","ord":0,"text":"Show-offs.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"grievance","ord":0,"text":"Too many eyes.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"never-said","ord":0,"text":"The vault.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"norm","ord":0,"text":"Gives a job as a weather report.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"oath","ord":0,"text":"Dry feet.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"rumour","ord":0,"text":"The palace guard changed.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"taboo","ord":0,"text":"Names in the open.","source":"inferred"}
-{"culture_sheet_id":"culture.office.night-reed-chapter.senior","kind":"value","ord":0,"text":"Clean work.","source":"inferred"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"address-term","ord":0,"text":"Child of change.","source":"inferred"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"contempt","ord":0,"text":"Fixed doctrine.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"grievance","ord":0,"text":"Villages want verdicts.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"never-said","ord":0,"text":"That they are certain.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"norm","ord":0,"text":"Preaches with a numbered sermon and one fixed formula, every time.","source":"inferred"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"norm","ord":1,"text":"Says both sides of the Owing in one sermon.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"oath","ord":0,"text":"Raj-Sithis, First Creator and Final Destroyer, turns.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"rumour","ord":0,"text":"A hut was burned and let go at Glenbridge.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"taboo","ord":0,"text":"Refusing a village.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.office.nisswo.senior","kind":"value","ord":0,"text":"Plural truth.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"address-term","ord":0,"text":"Deckhand.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"contempt","ord":0,"text":"Free riders.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"grievance","ord":0,"text":"The League.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"never-said","ord":0,"text":"The monopoly.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"norm","ord":0,"text":"States the route fee before the route.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"oath","ord":0,"text":"Fair water.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"rumour","ord":0,"text":"A pilot sold a route-mark.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"taboo","ord":0,"text":"Free passage.","source":"inferred"}
-{"culture_sheet_id":"culture.office.reed-sail-compact.senior","kind":"value","ord":0,"text":"The route.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"address-term","ord":0,"text":"Child.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"contempt","ord":0,"text":"Forgetting.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"grievance","ord":0,"text":"The young leave.","source":"inferred"}
@@ -782,24 +571,6 @@
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"rumour","ord":0,"text":"A dream.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"taboo","ord":0,"text":"Rushing.","source":"inferred"}
 {"culture_sheet_id":"culture.office.root-whisper.senior","kind":"value","ord":0,"text":"Memory.","source":"world/sources/lore/topics/material-culture.md"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"address-term","ord":0,"text":"Traveller.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"contempt","ord":0,"text":"Maps.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"grievance","ord":0,"text":"Smugglers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"never-said","ord":0,"text":"The way.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"norm","ord":0,"text":"Asks why before where.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"oath","ord":0,"text":"The way remembers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"rumour","ord":0,"text":"Early migration.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"taboo","ord":0,"text":"Naming the worm.","source":"inferred"}
-{"culture_sheet_id":"culture.office.rootworm-waykeepers.senior","kind":"value","ord":0,"text":"Secrecy.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"address-term","ord":0,"text":"Mate.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"contempt","ord":0,"text":"Talkers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"grievance","ord":0,"text":"Too few hands.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"never-said","ord":0,"text":"The next hull.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"norm","ord":0,"text":"Orders in two words.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"oath","ord":0,"text":"Teeth out.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"rumour","ord":0,"text":"A Charter boat off the point.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"taboo","ord":0,"text":"Talking ashore.","source":"inferred"}
-{"culture_sheet_id":"culture.office.salt-teeth.senior","kind":"value","ord":0,"text":"The share.","source":"inferred"}
 {"culture_sheet_id":"culture.office.shadowscales.senior","kind":"address-term","ord":0,"text":"Young one.","source":"inferred"}
 {"culture_sheet_id":"culture.office.shadowscales.senior","kind":"contempt","ord":0,"text":"Show.","source":"inferred"}
 {"culture_sheet_id":"culture.office.shadowscales.senior","kind":"grievance","ord":0,"text":"No authority to issue writs.","source":"inferred"}
@@ -827,15 +598,6 @@
 {"culture_sheet_id":"culture.office.sul-xan.senior","kind":"rumour","ord":0,"text":"A raid.","source":"inferred"}
 {"culture_sheet_id":"culture.office.sul-xan.senior","kind":"taboo","ord":0,"text":"Fear.","source":"inferred"}
 {"culture_sheet_id":"culture.office.sul-xan.senior","kind":"value","ord":0,"text":"The sacrifice.","source":"world/sources/lore/topics/sithis-nisswo-shadowscales.md"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"address-term","ord":0,"text":"Reader.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"contempt","ord":0,"text":"Collectors.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"grievance","ord":0,"text":"Too few copyists.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"never-said","ord":0,"text":"The archive's site.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"norm","ord":0,"text":"Asks provenance before price.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"oath","ord":0,"text":"Recorded and returned.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"rumour","ord":0,"text":"The College has a buyer in Gideon.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"taboo","ord":0,"text":"Unrecorded removal.","source":"inferred"}
-{"culture_sheet_id":"culture.office.sunken-archive.senior","kind":"value","ord":0,"text":"Provenance.","source":"inferred"}
 {"culture_sheet_id":"culture.office.synod.senior","kind":"address-term","ord":0,"text":"Attendant.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.office.synod.senior","kind":"contempt","ord":0,"text":"Amateurs.","source":"inferred"}
 {"culture_sheet_id":"culture.office.synod.senior","kind":"grievance","ord":0,"text":"No standing here.","source":"world/sources/lore/topics/guilds-and-orders.md"}
@@ -845,15 +607,6 @@
 {"culture_sheet_id":"culture.office.synod.senior","kind":"rumour","ord":0,"text":"A keystone.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.office.synod.senior","kind":"taboo","ord":0,"text":"Free knowledge.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.office.synod.senior","kind":"value","ord":0,"text":"The commission.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"address-term","ord":0,"text":"Neighbour.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"contempt","ord":0,"text":"Forgers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"grievance","ord":0,"text":"Courts in Thorn do not sit.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"never-said","ord":0,"text":"Disputed lines.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"norm","ord":0,"text":"Reads the boundary and the memory both.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"oath","ord":0,"text":"Ash and reed.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"rumour","ord":0,"text":"A forged deed.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"taboo","ord":0,"text":"Haste.","source":"inferred"}
-{"culture_sheet_id":"culture.office.thorn-ash-reed-accord.senior","kind":"value","ord":0,"text":"Title.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"address-term","ord":0,"text":"None.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"contempt","ord":0,"text":"Hesitation.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"grievance","ord":0,"text":"Thin roads.","source":"world/sources/lore/topics/foreign-powers.md"}
@@ -863,33 +616,6 @@
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"rumour","ord":0,"text":"A caravan.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"taboo","ord":0,"text":"Second warnings.","source":"inferred"}
 {"culture_sheet_id":"culture.office.tribeless-naga.senior","kind":"value","ord":0,"text":"The take.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"address-term","ord":0,"text":"Witness.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"contempt","ord":0,"text":"Excuse-makers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"grievance","ord":0,"text":"No records.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"never-said","ord":0,"text":"Their own family's side.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"norm","ord":0,"text":"Reads names at each meeting.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"oath","ord":0,"text":"We remember.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"rumour","ord":0,"text":"A new grave found.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"taboo","ord":0,"text":"Skipping a name.","source":"inferred"}
-{"culture_sheet_id":"culture.office.umbriel-witness-society.senior","kind":"value","ord":0,"text":"The roll.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"address-term","ord":0,"text":"Sibling.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"contempt","ord":0,"text":"Waverers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"grievance","ord":0,"text":"Too many waverers.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"never-said","ord":0,"text":"The cell's size.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"norm","ord":0,"text":"The cell-keeper gives the tree's will as fact.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"oath","ord":0,"text":"The root is unbound.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"rumour","ord":0,"text":"A Warden turned.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"taboo","ord":0,"text":"Doubt.","source":"inferred"}
-{"culture_sheet_id":"culture.office.unbound-root.senior","kind":"value","ord":0,"text":"Obedience to the root.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"address-term","ord":0,"text":"By the job, never the name.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"contempt","ord":0,"text":"Sloppy agents.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"grievance","ord":0,"text":"Too few agents.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"never-said","ord":0,"text":"The office.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"norm","ord":0,"text":"A handler gives an order as a question.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"oath","ord":0,"text":"The reed hears.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"rumour","ord":0,"text":"A leak in Lilmoth.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"taboo","ord":0,"text":"Saying the office's name aloud.","source":"inferred"}
-{"culture_sheet_id":"culture.office.veiled-reed.senior","kind":"value","ord":0,"text":"Deniability.","source":"inferred"}
 {"culture_sheet_id":"culture.office.xit-xaht.senior","kind":"address-term","ord":0,"text":"Stone-kin.","source":"inferred"}
 {"culture_sheet_id":"culture.office.xit-xaht.senior","kind":"contempt","ord":0,"text":"Weakness.","source":"inferred"}
 {"culture_sheet_id":"culture.office.xit-xaht.senior","kind":"grievance","ord":0,"text":"Few walls finished.","source":"inferred"}
@@ -934,7 +660,7 @@
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"norm","ord":1,"text":"A Tamrielic god, Dibella or Zenithar or Seth, is kept at home, quietly.","source":"world/sources/lore/topics/guilds-and-orders.md"}
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"norm","ord":2,"text":"Hissmir's trials are spoken of as a pilgrimage one might make someday.","source":"world/sources/lore/topics/hist-and-sap.md"}
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"oath","ord":0,"text":"By the Nine, or by Dibella, out of habit.","source":"world/sources/lore/topics/guilds-and-orders.md"}
-{"culture_sheet_id":"culture.people.argonian-lukiul","kind":"rumour","ord":0,"text":"The League means to petition for citizenship without a tribe again.","source":"inferred"}
+{"culture_sheet_id":"culture.people.argonian-lukiul","kind":"rumour","ord":0,"text":"The lukiul petitioners mean to petition for citizenship without a tribe again.","source":"inferred"}
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"taboo","ord":0,"text":"Saying the word lukiul about oneself.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"taboo","ord":1,"text":"Speaking of 4E 48 as anything but a massacre of people like us.","source":"world/sources/lore/an-xileel.md"}
 {"culture_sheet_id":"culture.people.argonian-lukiul","kind":"value","ord":0,"text":"Citizenship and property that do not depend on a tree.","source":"inferred"}
@@ -1095,7 +821,7 @@
 {"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"norm","ord":0,"text":"Illeism at full strength.","source":"inferred"}
 {"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"norm","ord":1,"text":"A question is answered with a better question.","source":"inferred"}
 {"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"oath","ord":0,"text":"By the moons.","source":"inferred"}
-{"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"rumour","ord":0,"text":"The Salt-Teeth are hiring hands with no questions.","source":"inferred"}
+{"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"rumour","ord":0,"text":"the wreckers are hiring hands with no questions.","source":"inferred"}
 {"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"taboo","ord":0,"text":"Naming a passenger.","source":"inferred"}
 {"culture_sheet_id":"culture.people.khajiit-newcomer","kind":"value","ord":0,"text":"A good price and a fast exit.","source":"inferred"}
 {"culture_sheet_id":"culture.people.nord-marsh-born","kind":"address-term","ord":0,"text":"Friend, or by name; never titles.","source":"inferred"}
@@ -1192,7 +918,7 @@
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"contempt","ord":0,"text":"Salt works and tappers that foul the springs.","source":"inferred"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"contempt","ord":1,"text":"Couriers of the state who arrive with orders for people who never gave consent.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"grievance","ord":0,"text":"Salt is reaching Greenspring's spring. The Hist there has begun to sicken.","source":"inferred"}
-{"culture_sheet_id":"culture.region.hist-heartland","kind":"grievance","ord":1,"text":"Cult couriers, tappers and Veiled Reed factors use the villages as inns.","source":"inferred"}
+{"culture_sheet_id":"culture.region.hist-heartland","kind":"grievance","ord":1,"text":"Cult couriers, tappers and Toh-Reel-Ka factors use the villages as inns.","source":"inferred"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"never-said","ord":0,"text":"What the Hist said to its minder, word for word.","source":"world/sources/lore/topics/hist-and-sap.md"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"never-said","ord":1,"text":"The way to the grove by dry ground.","source":"inferred"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"norm","ord":0,"text":"Villages are governed by their tree-minder and naheesh; disputes go to the tree, not a court.","source":"world/sources/lore/extrapolation/argonia-4e201-state.md"}
@@ -1201,8 +927,8 @@
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"norm","ord":3,"text":"Several tribes live here and nowhere else, each with its own breed and custom.","source":"world/sources/lore/regions/middle-argonia.md"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"oath","ord":0,"text":"By the root that holds us.","source":"inferred"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"oath","ord":1,"text":"As the tree hears it.","source":"inferred"}
-{"culture_sheet_id":"culture.region.hist-heartland","kind":"rumour","ord":0,"text":"An Unbound Root cell has been cutting at the edge of a grove.","source":"inferred"}
-{"culture_sheet_id":"culture.region.hist-heartland","kind":"rumour","ord":1,"text":"The Held Breath's seal leaks more each year. The Waykeepers will not reseal it unpaid.","source":"inferred"}
+{"culture_sheet_id":"culture.region.hist-heartland","kind":"rumour","ord":0,"text":"An Unbound cell has been cutting at the edge of a grove.","source":"inferred"}
+{"culture_sheet_id":"culture.region.hist-heartland","kind":"rumour","ord":1,"text":"The Held Breath's seal leaks more each year. The Rootworm keepers will not reseal it unpaid.","source":"inferred"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"taboo","ord":0,"text":"Cutting or burning near a grove; the grove is the city.","source":"world/sources/lore/helstrom.md"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"taboo","ord":1,"text":"Leading outsiders to a Hist without the minder's leave.","source":"world/sources/lore/topics/hist-and-sap.md"}
 {"culture_sheet_id":"culture.region.hist-heartland","kind":"value","ord":0,"text":"The health of the tree before any person's comfort.","source":"world/sources/lore/topics/hist-and-sap.md"}
@@ -1306,7 +1032,7 @@
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"norm","ord":3,"text":"Gang families keep their clutch in camp and their tree a day upriver.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"oath","ord":0,"text":"Fair shares.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"oath","ord":1,"text":"Sink me.","source":"inferred"}
-{"culture_sheet_id":"culture.region.pirate-freeholds","kind":"rumour","ord":0,"text":"The Salt-Teeth are hiring for something larger than a cargo.","source":"inferred"}
+{"culture_sheet_id":"culture.region.pirate-freeholds","kind":"rumour","ord":0,"text":"the wreckers are hiring for something larger than a cargo.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"rumour","ord":1,"text":"The port captain has been paid twice for the same berth.","source":"world/sources/lore/alten-corimont.md"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"taboo","ord":0,"text":"Asking a crew the origin of the last cargo.","source":"inferred"}
 {"culture_sheet_id":"culture.region.pirate-freeholds","kind":"taboo","ord":1,"text":"Taking sides in a quarrel at the port; neutrality is the town's whole policy.","source":"world/sources/lore/alten-corimont.md"}
@@ -1374,7 +1100,7 @@
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"address-term","ord":0,"text":"Travellers are called traveller, or by their errand.","source":"inferred"}
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"address-term","ord":1,"text":"The three office-holders are called by office: minder, keeper, herald.","source":"inferred"}
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"contempt","ord":0,"text":"The salt works upstream, which the village blames for the salt in the spring.","source":"inferred"}
-{"culture_sheet_id":"culture.settlement.greenspring","kind":"contempt","ord":1,"text":"Cult couriers, tappers and Veiled Reed factors who use the lodge as an inn.","source":"inferred"}
+{"culture_sheet_id":"culture.settlement.greenspring","kind":"contempt","ord":1,"text":"Cult couriers, tappers and Toh-Reel-Ka factors who use the lodge as an inn.","source":"inferred"}
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"grievance","ord":0,"text":"Salt is reaching the spring from upstream.","source":"inferred"}
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"never-said","ord":0,"text":"That the spring could sour for good.","source":"inferred"}
 {"culture_sheet_id":"culture.settlement.greenspring","kind":"norm","ord":0,"text":"Water from the spring is given free to any traveller.","source":"inferred"}

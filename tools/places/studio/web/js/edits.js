@@ -128,6 +128,28 @@ function matchesSource(m, sp, row) {
   return !!s && same(row, s);
 }
 
+// The door that leads to row lands where row's arrival went: its landing shifts as the arrival did from `was`
+// (edits.py _link_partner), so a move and its inverse give it back exactly.
+function linkPartner(m, row, was) {
+  const arr = row.door?.arrival; if (!arr || !was) return;
+  const delta = arr.map((v, i) => v - was[i]);
+  for (const sp of Object.values(m.spaces)) for (const [id, r] of sp.refs) {
+    if (r.door?.to_ref !== row.id || r.door.to_pos == null) continue;
+    const to = r.door.to_pos.map((v, i) => (i < delta.length ? Math.round((v + delta[i]) * 100) / 100 : v));
+    sp.refs.set(id, { ...r, door: { ...r.door, to_pos: to } });
+  }
+}
+// A door moved takes its arrival with it, and its partner's landing: both shift by the door's own move, unless the op
+// sets the door itself (edits.py _carry_arrival).
+function carryArrival(m, row, was, after) {
+  const d = row.door;
+  if ('door' in after || !('pos' in after) || was.length < 3 || !d?.arrival) return;
+  const delta = row.pos.map((v, i) => v - was[i]);
+  if (!delta.some((v) => Math.abs(v) > TOL)) return;
+  row.door = { ...d, arrival: d.arrival.map((v, i) => Math.round((v + delta[i]) * 100) / 100) };
+  linkPartner(m, row, d.arrival);
+}
+
 function space(m, sid) {
   if (!m.spaces[sid]) m.spaces[sid] = { refs: new Map(), space: null };
   return m.spaces[sid];
@@ -179,10 +201,26 @@ export function applyOp(m, op) {
         r = implicit(m, sp, op.id);
         if (!r) conflict(op, `ref ${op.id} is not in ${sp}`);
       }
-      for (const [k, v] of Object.entries(op.before)) if (!same(r[k], v)) conflict(op, `ref ${op.id} ${k} differs from what the save expected`);
-      const next = { ...r };
+      for (const [k, v] of Object.entries(op.before)) if (!same(r[k] ?? null, v ?? null)) conflict(op, `ref ${op.id} ${k} differs from what the save expected`);
+      const next = { ...r }, was = [...(r.pos || [])];
       for (const [k, v] of Object.entries(op.after)) next[k] = clone(v);
+      if (next.unit === null) delete next.unit;   // null: the unit rule decides again (units.js)
+      carryArrival(m, next, was, op.after);
       if (matchesSource(m, sp, next)) s.refs.delete(op.id); else s.refs.set(op.id, next);
+      break;
+    }
+    case 'unit.move': {
+      // a unit moved, turned or raised whole: each member as its own ref.move (a door's arrival as the op gives it,
+      // turned with the unit, its partner's landing following), then the people's and quest spots it carries
+      for (const u of op.refs) {
+        if ('door' in u.after) { const r = space(m, sp).refs.get(u.id); if (!r || !same(r.door, u.before.door)) conflict(op, `ref ${u.id} door differs from what the save expected`); }
+        // the door as the op gives it (its arrival turned with the unit), not ref.move's plain shift of it
+        const before = Object.fromEntries(Object.entries(u.before).filter(([k]) => k !== 'door'));
+        applyOp(m, { n: op.n, op: 'ref.move', space: sp, id: u.id, before, after: u.after });
+        if ('door' in u.after) linkPartner(m, space(m, sp).refs.get(u.id), u.before.door?.arrival);
+      }
+      for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk']])
+        for (const u of op[key] || []) applyOp(m, { n: op.n, op: `${table}.edit`, [table]: u[table], before: u.before });
       break;
     }
     case 'veg.clear': {
@@ -239,6 +277,12 @@ export function inverse(op) {
     case 'ref.add': inv.op = 'ref.remove'; inv.id = op.ref.id; inv.before = clone(op.ref); delete inv.ref; if (op.space_copy_of) inv.space_drop = true; break;
     case 'ref.remove': inv.op = 'ref.add'; inv.ref = clone(op.before); delete inv.id; delete inv.before; delete inv.space_drop; break;
     case 'ref.move': inv.before = clone(op.after); inv.after = clone(op.before); break;
+    case 'unit.move':
+      inv.refs = op.refs.map((u) => ({ ...clone(u), before: clone(u.after), after: clone(u.before) }));
+      if (op.people) inv.people = op.people.map((u) => ({ person: clone(u.before), before: clone(u.person) }));
+      if (op.quests) inv.quests = op.quests.map((u) => ({ quest: clone(u.before), before: clone(u.quest) }));
+      if (op.walks) inv.walks = op.walks.map((u) => ({ walk: clone(u.before), before: clone(u.walk) }));
+      break;
     case 'veg.clear': inv.op = 'veg.restore'; break;
     case 'veg.restore': inv.op = 'veg.clear'; break;
     case 'land.patch': inv.verts = op.verts.map(([r, c, b, a]) => [r, c, a, b]); break;
@@ -261,6 +305,20 @@ export function inverse(op) {
   return inv;
 }
 export function revertOp(m, op) { applyOp(m, inverse(op)); }
+// The ops with each unit.move written as the plain ops it is made of (edits.py `expand`): a ref.move per member, a
+// person.edit and quest.edit per spot, each keeping the unit op's n, call, note and stroke.
+export function expand(ops) {
+  const out = [];
+  for (const op of ops) {
+    if (op.op !== 'unit.move') { out.push(op); continue; }
+    const keep = Object.fromEntries(['n', 'at', 'call', 'note_group', 'note', 'stroke', 'space', 'state'].filter((k) => k in op).map((k) => [k, op[k]]));
+    for (const u of op.refs || []) out.push({ ...keep, op: 'ref.move', id: u.id, before: u.before, after: u.after, unit: op.unit });
+    for (const u of op.people || []) out.push({ ...keep, op: 'person.edit', person: u.person, before: u.before });
+    for (const u of op.quests || []) out.push({ ...keep, op: 'quest.edit', quest: u.quest, before: u.before });
+    for (const u of op.walks || []) out.push({ ...keep, op: 'walk.edit', walk: u.walk, before: u.before });
+  }
+  return out;
+}
 
 const sortKeys = (o) => (Array.isArray(o) ? o.map(sortKeys) : o && typeof o === 'object'
   ? Object.fromEntries(Object.keys(o).sort().filter((k) => o[k] !== undefined).map((k) => [k, sortKeys(o[k])])) : o);
@@ -388,6 +446,7 @@ export function describe(op, nameOf = (k) => k) {
     case 'ref.add': return `Added ${nameOf(op.ref.base)}`;
     case 'ref.remove': return `Removed ${nameOf(op.before?.base)}`;
     case 'ref.move': return `Moved ${nameOf(op.base || op.id)}`;
+    case 'unit.move': return `Moved the whole of ${op.name || 'a unit'} (${op.refs.length} pieces${(op.people?.length || 0) + (op.quests?.length || 0) ? `, with ${(op.people?.length || 0) + (op.quests?.length || 0)} spots` : ''})`;
     case 'veg.clear': return `Cleared ${op.items.length} plant${op.items.length === 1 ? '' : 's'}`;
     case 'veg.restore': return `Brought back ${op.items.length} plant${op.items.length === 1 ? '' : 's'}`;
     case 'land.patch': return `${{ raise: 'Raised', lower: 'Lowered', level: 'Levelled', smooth: 'Smoothed' }[op.tool?.kind] || 'Changed'} land (${op.verts.length} points)`;

@@ -4,7 +4,8 @@ import { api, API_BASE } from './api.js';
 import { off } from './offline.js';
 import { OfflineUI } from './offline_ui.js';
 import { loadBundle, seatZ } from './bundle.js';
-import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
+import { EditLog, modelFromFiles, describe, vegKey, expand } from './edits.js';
+import { unitsOf } from './units.js';
 import { View, drawState, onRendererEvent } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer, releaseModels } from './objects.js';
@@ -285,7 +286,7 @@ class Studio {
   // ---------- spaces: outside or a room ----------
   showSpace(side, sid, first) {
     side.space = sid; const v = side.view;
-    if (side === this.ours) { this.selection.clear(); this.tools.selectionChanged(); }
+    if (side === this.ours) { this._units = null; this.selection.clear(); this.tools.selectionChanged(); }
     const interior = sid !== 'exterior';
     v.terrainData = interior ? null : (side === this.ours ? this.terrain : side.terrain);
     const layers = side === this.ours ? [this.ours.world, this.ours.place] : [side.layer];
@@ -395,6 +396,14 @@ class Studio {
     this._srcState = { bundle, id: st.id, hidden }; return hidden;
   }
   placeRefsById() { return this.model.spaces[this.ours.space]?.refs || new Map(); }
+  // The units of the space shown (units.js), worked out once per change of the place.
+  unitIndex() {
+    if (!this._units || this._units.space !== this.ours.space) {
+      const ix = unitsOf([...this.placeRefsById().values()], (r) => this.bases.get(r.base) || this.srcBases?.get(r.base), (r) => this.seated(r).pos);
+      this._units = Object.assign(ix, { space: this.ours.space });
+    }
+    return this._units;
+  }
   // A placed ref as drawn: seated on the land as it is now.
   // The answer is kept with the pose, seat rule and nearby land it came from, so a redraw only re-seats what moved
   // or stands on land that changed (a thing seated on another thing is always worked out afresh).
@@ -511,7 +520,8 @@ class Studio {
   // ---------- edits ----------
   push(ops, space) { return this.log.push(ops, space ?? this.ours.space); }
   afterEdit(kind, ops) {
-    this.noteBar.changed(kind);
+    this.noteBar.changed(kind); this._units = null;
+    ops = expand(ops);   // a unit moved whole touches its members, its people's spots and its quest spots
     // a fault-or-taste call or a note changes no thing in the place: only the lists that show them
     if (kind === 'call' || kind === 'note') { this.markUnsaved(); this.panels.historyChanged(); this.panels.notesChanged(); return; }
     const touched = new Set(ops.map((o) => o.op.split('.')[0]));
@@ -628,6 +638,7 @@ class Studio {
     $('#hide-src').onclick = () => srcShown(false); $('#show-src').onclick = () => srcShown(true);
     if (store.get('studio.src.v1') === 'hidden') srcShown(false);
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
+    $('#frame-sel').onclick = () => this.frameSelection();
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
     $('#time').oninput = (e) => this.setTime(Number(e.target.value));
     // each view's day and night switch; with the People tool on it moves the time of day, which both views follow
@@ -674,6 +685,18 @@ class Studio {
     else w.hidden = true;
   }
   toolFor(view) { return this.tools.forView(view); }
+  // What the view of our place turns and zooms about: the selected unit's middle, else the selection's, else nothing.
+  pivotFor(view) {
+    if (view !== this.ours.view || !this.model || !this.selection.size) return null;
+    const u = this.tools.selUnit(); return u ? this.tools.unitCentre(u) : this.tools.centre(this.tools.selRefs());
+  }
+  // Frame the selection: the view looks at it from where it stands, close enough to see it whole.
+  frameSelection() {
+    const T = this.tools, u = T.selUnit(), refs = T.selRefs();
+    if (!u && !refs.length) { this.toast('Select something first.'); return; }
+    const b = u ? u.box : refs.map((r) => this.seated(r).pos).reduce((m, p) => ({ x0: Math.min(m.x0, p[0] - 150), y0: Math.min(m.y0, p[1] - 150), x1: Math.max(m.x1, p[0] + 150), y1: Math.max(m.y1, p[1] + 150), z0: Math.min(m.z0, p[2]) }), { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity, z0: Infinity });
+    this.ours.view.frame([b.x0, b.y0, b.x1, b.y1, b.z0]);
+  }
   focusView(view) { this.focused = view; }
   cameraMoved(view) {
     const side = view === this.ours.view ? this.ours : this.src;

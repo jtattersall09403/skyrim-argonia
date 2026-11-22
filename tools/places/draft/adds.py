@@ -30,6 +30,7 @@ from __future__ import annotations
 import copy
 
 from tools.places.draft import geom, interiors, io
+from tools.places.edits import expand
 
 FIELDS = ("name", "need", "tier", "lock")
 
@@ -74,7 +75,7 @@ def follow(place: dict, ops: list) -> list[str]:
     pin(place)
     by = {ident(place["place_id"], a, str(a["key"])): a for a in adds}
     done = []
-    for op in ops:
+    for op in expand(ops):   # a unit moved whole is its members moved
         a = by.get(op.get("id") or (op.get("ref") or {}).get("id"))
         if a is None:
             continue

@@ -38,6 +38,8 @@
 {"npc_id":"creature-at.hist-heartland.greenspring.eco-torchbug-6","ord":0,"value":"place.hist-heartland.greenspring life.creatures:eco-torchbug"}
 {"npc_id":"creature-at.hist-heartland.greenspring.eco-torchbug-7","ord":0,"value":"place.hist-heartland.greenspring life.creatures:eco-torchbug"}
 {"npc_id":"creature-at.hist-heartland.greenspring.eco-torchbug-8","ord":0,"value":"place.hist-heartland.greenspring life.creatures:eco-torchbug"}
+{"npc_id":"creature-at.hist-heartland.helstrom.lq25-river-beast","ord":0,"value":"we.lq25.beast"}
+{"npc_id":"creature-at.hist-heartland.helstrom.lq30-basin-beast","ord":0,"value":"we.lq30.beast"}
 {"npc_id":"creature-at.imperial-fringe.bog-iron-workings.c1","ord":0,"value":"place.imperial-fringe.bog-iron-workings life.creatures:c1"}
 {"npc_id":"creature-at.imperial-fringe.bog-iron-workings.eco-crow","ord":0,"value":"place.imperial-fringe.bog-iron-workings life.creatures:eco-crow"}
 {"npc_id":"creature-at.imperial-fringe.bog-iron-workings.eco-crow-2","ord":0,"value":"place.imperial-fringe.bog-iron-workings life.creatures:eco-crow"}
@@ -314,7 +316,7 @@
 {"npc_id":"npc.dunmer-north.the-veterans-ridge.keeper-taken-banners","ord":0,"value":"place.dunmer-north.the-veterans-ridge notableNpcSlots[1]"}
 {"npc_id":"npc.dunmer-north.the-wamasu-shrine.headwoman","ord":0,"value":"place.dunmer-north.the-wamasu-shrine blueprint occupants:headwoman"}
 {"npc_id":"npc.dunmer-north.the-wamasu-shrine.headwoman","ord":1,"value":"place.dunmer-north.the-wamasu-shrine life.groups:headwoman"}
-{"npc_id":"npc.dunmer-north.the-wild-mouth.waykeeper","ord":0,"value":"place.dunmer-north.the-wild-mouth notableNpcSlots[0]"}
+{"npc_id":"npc.dunmer-north.the-wild-mouth.rootworm-keeper","ord":0,"value":"place.dunmer-north.the-wild-mouth notableNpcSlots[0]"}
 {"npc_id":"npc.dunmer-north.the-xanmeer-hold.hold-holder","ord":0,"value":"place.dunmer-north.the-xanmeer-hold notableNpcSlots[0]"}
 {"npc_id":"npc.dunmer-north.the-xanmeer-hold.mechanism-keeper","ord":0,"value":"place.dunmer-north.the-xanmeer-hold notableNpcSlots[1]"}
 {"npc_id":"npc.dunmer-north.thorn-paddy-terraces.family","ord":0,"value":"place.dunmer-north.thorn-paddy-terraces notableNpcSlots[0]"}
@@ -348,7 +350,7 @@
 {"npc_id":"npc.hist-heartland.boardwalk-branching-many-ways.poler","ord":0,"value":"place.hist-heartland.boardwalk-branching-many-ways notableNpcSlots[1]"}
 {"npc_id":"npc.hist-heartland.bone-waystation-interior.waystation-s-carrier","ord":0,"value":"place.hist-heartland.bone-waystation-interior notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.cult-raid-camp-unbound.camp-s-speaker","ord":0,"value":"docs/quests/36-cast-roster.md:147"}
-{"npc_id":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound-root","ord":0,"value":"docs/quests/36-cast-roster.md"}
+{"npc_id":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.hist-heartland.cut-and-carried.naheesh","ord":0,"value":"place.hist-heartland.cut-and-carried notableNpcSlots[1]"}
 {"npc_id":"npc.hist-heartland.cut-and-carried.tree-minder","ord":0,"value":"place.hist-heartland.cut-and-carried notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.daril-fermentary-interior.fermenter","ord":0,"value":"place.hist-heartland.daril-fermentary-interior notableNpcSlots[0]"}
@@ -377,6 +379,7 @@
 {"npc_id":"npc.hist-heartland.harmed-hist-tapped.tree-minder","ord":0,"value":"place.hist-heartland.harmed-hist-tapped notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.helstrom.archivist","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.hist-heartland.helstrom.assembly-s-speaking-elder","ord":0,"value":"place.hist-heartland.helstrom notableNpcSlots[0]"}
+{"npc_id":"npc.hist-heartland.helstrom.boat-captain","ord":0,"value":"bmv_placement 08D5F1:Black Marsh North.esp"}
 {"npc_id":"npc.hist-heartland.helstrom.dock-factor","ord":0,"value":"place.hist-heartland.helstrom notableNpcSlots[3]"}
 {"npc_id":"npc.hist-heartland.helstrom.grove-s-senior-tree","ord":0,"value":"docs/quests/36-cast-roster.md:115"}
 {"npc_id":"npc.hist-heartland.helstrom.guild-merchant","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:guild-merchant"}
@@ -423,10 +426,10 @@
 {"npc_id":"npc.hist-heartland.helstrom.keeper-market-terraces-chime-seller-10","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-market-terraces-chime-seller-10"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-reed-office","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-reed-office"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-root-hub-packing-house-3","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-root-hub-packing-house-3"}
+{"npc_id":"npc.hist-heartland.helstrom.keeper-rootworm-keepers-house","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-rootworm-keepers-house"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-scalded-throne-hall","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-scalded-throne-hall"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-trader","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-trader"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-tree-minders-hall","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-tree-minders-hall"}
-{"npc_id":"npc.hist-heartland.helstrom.keeper-waykeepers-house","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-waykeepers-house"}
 {"npc_id":"npc.hist-heartland.helstrom.keeper-weighing-house","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:keeper-weighing-house"}
 {"npc_id":"npc.hist-heartland.helstrom.levy-drill-master","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:levy-drill-master"}
 {"npc_id":"npc.hist-heartland.helstrom.levy-warden-01","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:levy-warden-01"}
@@ -445,6 +448,10 @@
 {"npc_id":"npc.hist-heartland.helstrom.levy-warden-14","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:levy-warden-14"}
 {"npc_id":"npc.hist-heartland.helstrom.levy-warden-15","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:levy-warden-15"}
 {"npc_id":"npc.hist-heartland.helstrom.levy-warden-16","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:levy-warden-16"}
+{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-poler","ord":0,"value":"bmv_placement 08D5EE:Black Marsh North.esp"}
+{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-steerer","ord":0,"value":"bmv_placement 08D5EF:Black Marsh North.esp"}
+{"npc_id":"npc.hist-heartland.helstrom.lq30-kin","ord":0,"value":"we.lq30.youth"}
+{"npc_id":"npc.hist-heartland.helstrom.lq30-youth","ord":0,"value":"we.lq30.youth"}
 {"npc_id":"npc.hist-heartland.helstrom.market-trader","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:market-trader"}
 {"npc_id":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.hist-heartland.helstrom.resident-basin-gate-house-2-1","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-basin-gate-house-2-1"}
@@ -581,11 +588,11 @@
 {"npc_id":"npc.hist-heartland.helstrom.resident-root-hub-house-4-3","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-root-hub-house-4-3"}
 {"npc_id":"npc.hist-heartland.helstrom.resident-root-hub-house-4-4","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-root-hub-house-4-4"}
 {"npc_id":"npc.hist-heartland.helstrom.resident-root-hub-house-4-5","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-root-hub-house-4-5"}
-{"npc_id":"npc.hist-heartland.helstrom.resident-waykeepers-house-1","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-waykeepers-house-1"}
-{"npc_id":"npc.hist-heartland.helstrom.resident-waykeepers-house-2","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-waykeepers-house-2"}
-{"npc_id":"npc.hist-heartland.helstrom.resident-waykeepers-house-3","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-waykeepers-house-3"}
-{"npc_id":"npc.hist-heartland.helstrom.resident-waykeepers-house-4","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-waykeepers-house-4"}
-{"npc_id":"npc.hist-heartland.helstrom.resident-waykeepers-house-5","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-waykeepers-house-5"}
+{"npc_id":"npc.hist-heartland.helstrom.resident-rootworm-keepers-house-1","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-rootworm-keepers-house-1"}
+{"npc_id":"npc.hist-heartland.helstrom.resident-rootworm-keepers-house-2","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-rootworm-keepers-house-2"}
+{"npc_id":"npc.hist-heartland.helstrom.resident-rootworm-keepers-house-3","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-rootworm-keepers-house-3"}
+{"npc_id":"npc.hist-heartland.helstrom.resident-rootworm-keepers-house-4","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-rootworm-keepers-house-4"}
+{"npc_id":"npc.hist-heartland.helstrom.resident-rootworm-keepers-house-5","ord":0,"value":"place.hist-heartland.helstrom blueprint occupants:resident-rootworm-keepers-house-5"}
 {"npc_id":"npc.hist-heartland.helstrom.root-herald","ord":0,"value":"place.hist-heartland.helstrom notableNpcSlots[1]"}
 {"npc_id":"npc.hist-heartland.helstrom.slot.helstrom.cut-circle-attendee","ord":0,"value":"place.hist-heartland.helstrom notableNpcSlots[8]"}
 {"npc_id":"npc.hist-heartland.helstrom.slot.helstrom.kaska-meen","ord":0,"value":"place.hist-heartland.helstrom notableNpcSlots[7]"}
@@ -621,7 +628,7 @@
 {"npc_id":"npc.hist-heartland.root-gallery-helstrom-underway.line-keeper-helstrom-mouth","ord":0,"value":"place.hist-heartland.root-gallery-helstrom-underway notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.root-talk-ground.conclave-s-convening-voice","ord":0,"value":"place.hist-heartland.root-talk-ground notableNpcSlots[1]"}
 {"npc_id":"npc.hist-heartland.root-talk-ground.naheesh","ord":0,"value":"place.hist-heartland.root-talk-ground notableNpcSlots[0]"}
-{"npc_id":"npc.hist-heartland.rootworm-station-helstrom.waykeeper","ord":0,"value":"docs/quests/36-cast-roster.md:56"}
+{"npc_id":"npc.hist-heartland.rootworm-station-helstrom.rootworm-keeper","ord":0,"value":"docs/quests/36-cast-roster.md:56"}
 {"npc_id":"npc.hist-heartland.sap-tapping-licensed.licensed-tapper","ord":0,"value":"place.hist-heartland.sap-tapping-licensed notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.sap-touched-miredancer.sap-speaker-gold-tongue","ord":0,"value":"place.hist-heartland.sap-touched-miredancer notableNpcSlots[0]"}
 {"npc_id":"npc.hist-heartland.sleeping-in-the-ring.naheesh","ord":0,"value":"place.hist-heartland.sleeping-in-the-ring notableNpcSlots[1]"}
@@ -669,7 +676,7 @@
 {"npc_id":"npc.imperial-fringe.fig-market.xileel-buyer-everyone-pretends","ord":0,"value":"place.imperial-fringe.fig-market notableNpcSlots[3]"}
 {"npc_id":"npc.imperial-fringe.fort-swampmoth.captain-claim","ord":0,"value":"place.imperial-fringe.fort-swampmoth notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-fringe.fort-swampmoth.clerk","ord":0,"value":"place.imperial-fringe.fort-swampmoth notableNpcSlots[1]"}
-{"npc_id":"npc.imperial-fringe.gideon-rootworm-terminus.wintertide-waykeeper","ord":0,"value":"place.imperial-fringe.gideon-rootworm-terminus notableNpcSlots[0]"}
+{"npc_id":"npc.imperial-fringe.gideon-rootworm-terminus.wintertide-rootworm-keeper","ord":0,"value":"place.imperial-fringe.gideon-rootworm-terminus notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-fringe.gideon-synod-outstation.magister","ord":0,"value":"place.imperial-fringe.gideon-synod-outstation notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-fringe.gideon.advocate-courthouse","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.imperial-fringe.gideon.clerk-civic-registry","ord":0,"value":"docs/quests/36-cast-roster.md"}
@@ -679,7 +686,7 @@
 {"npc_id":"npc.imperial-fringe.gideon.league-delegate-hall","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.imperial-fringe.gideon.orsimer-smith","ord":0,"value":"place.imperial-fringe.gideon notableNpcSlots[8]"}
 {"npc_id":"npc.imperial-fringe.gideon.sitting-magistrate","ord":0,"value":"place.imperial-fringe.gideon notableNpcSlots[0]"}
-{"npc_id":"npc.imperial-fringe.gideon.wintertide-rootworm-waykeeper","ord":0,"value":"place.imperial-fringe.gideon notableNpcSlots[3]"}
+{"npc_id":"npc.imperial-fringe.gideon.wintertide-rootworm-rootworm-keeper","ord":0,"value":"place.imperial-fringe.gideon notableNpcSlots[3]"}
 {"npc_id":"npc.imperial-fringe.giovesse-lines.farmer-taking-road-metal","ord":0,"value":"place.imperial-fringe.giovesse-lines notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-fringe.giovesse-lines.records-court-clerk-opinion","ord":0,"value":"place.imperial-fringe.giovesse-lines notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-fringe.glenbridge-sermon-xanmeer.sealer-s-heir","ord":0,"value":"place.imperial-fringe.glenbridge-sermon-xanmeer notableNpcSlots[0]"}
@@ -768,8 +775,8 @@
 {"npc_id":"npc.imperial-penal-south.blackrose.rose-liaison","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[3]"}
 {"npc_id":"npc.imperial-penal-south.blackrose.toll-compact-s-outside","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.blackrose.xileel-resident-unwelcome","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[2]"}
+{"npc_id":"npc.imperial-penal-south.bramman-head.eelskins-fence-working","ord":0,"value":"place.imperial-penal-south.bramman-head notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.bramman-head.lagoon-pilot","ord":0,"value":"place.imperial-penal-south.bramman-head notableNpcSlots[0]"}
-{"npc_id":"npc.imperial-penal-south.bramman-head.night-reed-fence-working","ord":0,"value":"place.imperial-penal-south.bramman-head notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.chainbreaker-shelter.house-keeper","ord":0,"value":"place.imperial-penal-south.chainbreaker-shelter notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-penal-south.chainbreaker-shelter.third-generation-rose-born","ord":0,"value":"place.imperial-penal-south.chainbreaker-shelter notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.cordon-cellars.collector","ord":0,"value":"place.imperial-penal-south.cordon-cellars notableNpcSlots[0]"}
@@ -791,8 +798,8 @@
 {"npc_id":"npc.imperial-penal-south.rose-supply-town.released-prisoner-side-elder","ord":0,"value":"place.imperial-penal-south.rose-supply-town notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.rose-supply-town.staff-descended-side-elder","ord":0,"value":"place.imperial-penal-south.rose-supply-town notableNpcSlots[2]"}
 {"npc_id":"npc.mercantile-coast.alten-meerhleel.customs-clerk","ord":0,"value":"place.mercantile-coast.alten-meerhleel notableNpcSlots[2]"}
-{"npc_id":"npc.mercantile-coast.alten-meerhleel.marsh-charter-factor","ord":0,"value":"place.mercantile-coast.alten-meerhleel notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.alten-meerhleel.raft-quarter-speaker","ord":0,"value":"place.mercantile-coast.alten-meerhleel notableNpcSlots[1]"}
+{"npc_id":"npc.mercantile-coast.alten-meerhleel.sellswords-factor","ord":0,"value":"place.mercantile-coast.alten-meerhleel notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.ashfield.field-holder","ord":0,"value":"place.mercantile-coast.ashfield notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.ashroot-village.tree-minder-surviving-hist","ord":0,"value":"place.mercantile-coast.ashroot-village notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.bereaved-village-murkmire.reciter","ord":0,"value":"place.mercantile-coast.bereaved-village-murkmire notableNpcSlots[0]"}
@@ -830,7 +837,7 @@
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.n2","ord":0,"value":"place.mercantile-coast.lighter-flotilla blueprint occupants:n2"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.n2","ord":1,"value":"place.mercantile-coast.lighter-flotilla life.groups:n2"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.purser","ord":0,"value":"place.mercantile-coast.lighter-flotilla life.groups:purser"}
-{"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","ord":0,"value":"place.mercantile-coast.lilmoth"}
+{"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.eelskins-fence","ord":0,"value":"place.mercantile-coast.lilmoth"}
 {"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.valuer","ord":0,"value":"place.mercantile-coast.lilmoth-divers-yard notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.altmer-alchemist-licensed-dock","ord":0,"value":"place.mercantile-coast.lilmoth notableNpcSlots[10]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.canal-warden","ord":0,"value":"docs/quests/36-cast-roster.md"}
@@ -838,6 +845,9 @@
 {"npc_id":"npc.mercantile-coast.lilmoth.fence","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.lilmoth.keeper-descendants-room-behind","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.lilmoth.society-s-archive-room","ord":0,"value":"docs/quests/36-cast-roster.md"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-beads-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Eelskins: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-charm-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Eelskins: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Eelskins: TG01, TG02)"}
 {"npc_id":"npc.mercantile-coast.lilmoth.the-one","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.lilmoth.third-hist-tree-minder","ord":0,"value":"place.mercantile-coast.lilmoth notableNpcSlots[1]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.under-quarter-dive-master","ord":0,"value":"place.mercantile-coast.lilmoth notableNpcSlots[2]"}
@@ -854,19 +864,21 @@
 {"npc_id":"npc.mercantile-coast.oliis-ferry-stage.ferry-holder","ord":0,"value":"place.mercantile-coast.oliis-ferry-stage notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.pilgrim-xanmeer.sweeper","ord":0,"value":"place.mercantile-coast.pilgrim-xanmeer notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.quinrawl-anchorage.chartered-master-everyone-pretends","ord":0,"value":"place.mercantile-coast.quinrawl-anchorage notableNpcSlots[1]"}
-{"npc_id":"npc.mercantile-coast.quinrawl-anchorage.salt-teeth-shore-captain","ord":0,"value":"place.mercantile-coast.quinrawl-anchorage notableNpcSlots[0]"}
+{"npc_id":"npc.mercantile-coast.quinrawl-anchorage.wreckers-shore-captain","ord":0,"value":"place.mercantile-coast.quinrawl-anchorage notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.screen-watch.senior-pilot-household-head","ord":0,"value":"place.mercantile-coast.screen-watch notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.slaughter-memorial.wall-cutter","ord":0,"value":"place.mercantile-coast.slaughter-memorial notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.soulrest-breaking-yard.yard-master","ord":0,"value":"place.mercantile-coast.soulrest-breaking-yard notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.soulrest-quay-tradehouse.rate-caller","ord":0,"value":"place.mercantile-coast.soulrest-quay-tradehouse notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.soulrest.crew-boss","ord":0,"value":"story/design/quests/review/slice-premises.md"}
+{"npc_id":"npc.mercantile-coast.soulrest.ferry-pilots-s","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.free-pilot","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.keeper-harbour-den","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.khajiit-caravan-factor","ord":0,"value":"place.mercantile-coast.soulrest notableNpcSlots[1]"}
 {"npc_id":"npc.mercantile-coast.soulrest.marine-underwriter","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.orphaned-imperial-magistrate-no","ord":0,"value":"place.mercantile-coast.soulrest notableNpcSlots[0]"}
-{"npc_id":"npc.mercantile-coast.soulrest.reed-sail-compact-s","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.river-interest-broker-bramman","ord":0,"value":"place.mercantile-coast.soulrest notableNpcSlots[2]"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-friend","ord":0,"value":"story/design/quests/review/slice-premises.md (Eelskins: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-thief","ord":0,"value":"story/design/quests/review/slice-premises.md (Eelskins: TG01, TG02)"}
 {"npc_id":"npc.mercantile-coast.soulrest.tribal-delegate-lodging-palace","ord":0,"value":"place.mercantile-coast.soulrest notableNpcSlots[3]"}
 {"npc_id":"npc.mercantile-coast.stripped-village-north.witness-society-recorder-camped","ord":0,"value":"place.mercantile-coast.stripped-village-north notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.teeba-enoo-court.court-holder","ord":0,"value":"place.mercantile-coast.teeba-enoo-court notableNpcSlots[0]"}
@@ -935,7 +947,7 @@
 {"npc_id":"npc.pirate-freeholds.alten-corimont.npc-alten-corimont-dunmer","ord":0,"value":"place.pirate-freeholds.alten-corimont notableNpcSlots[1]"}
 {"npc_id":"npc.pirate-freeholds.alten-corimont.npc-alten-corimont-list","ord":0,"value":"place.pirate-freeholds.alten-corimont notableNpcSlots[2]"}
 {"npc_id":"npc.pirate-freeholds.alten-corimont.npc-alten-corimont-port","ord":0,"value":"place.pirate-freeholds.alten-corimont notableNpcSlots[0]"}
-{"npc_id":"npc.pirate-freeholds.channel-pirate-anchorage.npc-salt-teeth-reach","ord":0,"value":"place.pirate-freeholds.channel-pirate-anchorage notableNpcSlots[0]"}
+{"npc_id":"npc.pirate-freeholds.channel-pirate-anchorage.npc-wreckers-reach","ord":0,"value":"place.pirate-freeholds.channel-pirate-anchorage notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.chasecreek.npc-chasecreek-lay-by","ord":0,"value":"place.pirate-freeholds.chasecreek notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.corimont-crosstrees.npc-corimont-lookout","ord":0,"value":"place.pirate-freeholds.corimont-crosstrees notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.corimont-hiring-yard.charter-s-hiring-floor","ord":0,"value":"docs/quests/36-cast-roster.md"}
@@ -945,7 +957,7 @@
 {"npc_id":"npc.pirate-freeholds.corimont-tradehouse.npc-corimont-tradehouse-keeper","ord":0,"value":"place.pirate-freeholds.corimont-tradehouse notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.dunmer-frontier-holding.npc-holding-house-steward","ord":0,"value":"place.pirate-freeholds.dunmer-frontier-holding notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.freehold-smithy.npc-corimont-nord-smith","ord":0,"value":"place.pirate-freeholds.freehold-smithy notableNpcSlots[0]"}
-{"npc_id":"npc.pirate-freeholds.half-chartered-anchorage.npc-salt-teeth-passage","ord":0,"value":"place.pirate-freeholds.half-chartered-anchorage notableNpcSlots[0]"}
+{"npc_id":"npc.pirate-freeholds.half-chartered-anchorage.npc-wreckers-passage","ord":0,"value":"place.pirate-freeholds.half-chartered-anchorage notableNpcSlots[0]"}
 {"npc_id":"npc.pirate-freeholds.opening-work-barge.npc-opening-courier","ord":0,"value":"place.pirate-freeholds.opening-work-barge notableNpcSlots[2]"}
 {"npc_id":"npc.pirate-freeholds.opening-work-barge.npc-opening-overseer","ord":0,"value":"place.pirate-freeholds.opening-work-barge notableNpcSlots[1]"}
 {"npc_id":"npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader","ord":0,"value":"place.pirate-freeholds.opening-work-barge notableNpcSlots[0]"}
@@ -990,7 +1002,7 @@
 {"npc_id":"npc.saxhleel-coast.archon.npc-archon-dunmer-factor","ord":0,"value":"place.saxhleel-coast.archon notableNpcSlots[2]"}
 {"npc_id":"npc.saxhleel-coast.archon.npc-archon-harbour-master","ord":0,"value":"place.saxhleel-coast.archon notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.coast-hist-less-refuge.npc-refuge-speaker","ord":0,"value":"place.saxhleel-coast.coast-hist-less-refuge notableNpcSlots[0]"}
-{"npc_id":"npc.saxhleel-coast.east-estuary-rootworm-station.npc-east-estuary-waykeeper","ord":0,"value":"place.saxhleel-coast.east-estuary-rootworm-station notableNpcSlots[0]"}
+{"npc_id":"npc.saxhleel-coast.east-estuary-rootworm-station.npc-east-estuary-rootworm-keeper","ord":0,"value":"place.saxhleel-coast.east-estuary-rootworm-station notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.oliis-coast-lay-by.npc-saxhleel-coast-lay","ord":0,"value":"place.saxhleel-coast.oliis-coast-lay-by notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.padomaic-wrecker-beach.npc-saxhleel-coast-wrecker","ord":0,"value":"place.saxhleel-coast.padomaic-wrecker-beach notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.pearl-lots.n1","ord":0,"value":"place.saxhleel-coast.pearl-lots life.groups:n1"}
@@ -1004,15 +1016,3 @@
 {"npc_id":"npc.saxhleel-coast.quay-tradehouse.npc-archon-tradehouse-keeper","ord":0,"value":"place.saxhleel-coast.quay-tradehouse notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.seafalls.npc-seafalls-transfer-clerk","ord":0,"value":"place.saxhleel-coast.seafalls notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.wall-hist-village.npc-wall-village-naheesh","ord":0,"value":"place.saxhleel-coast.wall-hist-village notableNpcSlots[0]"}
-{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-poler","ord":0,"value":"bmv_placement 08D5EE:Black Marsh North.esp"}
-{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-steerer","ord":0,"value":"bmv_placement 08D5EF:Black Marsh North.esp"}
-{"npc_id":"npc.hist-heartland.helstrom.boat-captain","ord":0,"value":"bmv_placement 08D5F1:Black Marsh North.esp"}
-{"npc_id":"npc.hist-heartland.helstrom.lq30-youth","ord":0,"value":"we.lq30.youth"}
-{"npc_id":"npc.hist-heartland.helstrom.lq30-kin","ord":0,"value":"we.lq30.youth"}
-{"npc_id":"creature-at.hist-heartland.helstrom.lq25-river-beast","ord":0,"value":"we.lq25.beast"}
-{"npc_id":"creature-at.hist-heartland.helstrom.lq30-basin-beast","ord":0,"value":"we.lq30.beast"}
-{"npc_id":"npc.mercantile-coast.soulrest.tg01-thief","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
-{"npc_id":"npc.mercantile-coast.soulrest.tg01-friend","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
-{"npc_id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
-{"npc_id":"npc.mercantile-coast.lilmoth.tg02-charm-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
-{"npc_id":"npc.mercantile-coast.lilmoth.tg02-beads-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}

@@ -26,6 +26,22 @@ def test_fixture(case):
         assert re.search(c["error"], str(e.value))
 
 
+def test_unit_move_reads_as_its_members_moves():
+    """A unit's one op is its members' ref.moves and its spots' edits to whatever reads ops a row at a time, and a
+    save holding it passes the schema; its inverse gives the files back."""
+    from tools.places.edits import expand, inverse
+    from tools.places import hands
+    ops = json.loads((FIX / "unit_move.json").read_text())["ops"]
+    unit = ops[-1]
+    flat = expand([unit])
+    assert [o["op"] for o in flat] == ["ref.move"] * 3 + ["person.edit", "quest.edit", "walk.edit"]
+    assert all(o["n"] == unit["n"] and o.get("unit") == "u.house" for o in flat[:3])
+    assert [hands._op_row(o)[1] for o in flat[:5]] == ["fix.01", "fix.03", "fix.30", "fix.p1", "q.fix/thing"]
+    check_save({"save_id": "s", "place_id": "fixture", "ops": ops}, "fixture")
+    once = apply(PLACE, ops)
+    assert apply(once, [inverse(unit)]) == apply(PLACE, ops[:-1])
+
+
 def test_pure():
     before = copy.deepcopy(PLACE)
     apply(PLACE, json.loads((FIX / "all_ops.json").read_text())["ops"])

@@ -100,4 +100,4 @@ An-Xileel.**
 Developed in
 [extrapolation/argonia-4e201-state.md](extrapolation/argonia-4e201-state.md) §1–2,
 with §9 on how the resulting trauma is played. Proposed quest-plan wording:
-[extrapolation/quest-plan-deltas.md](extrapolation/quest-plan-deltas.md) D1.
+extrapolation/quest-plan-deltas.md D1.

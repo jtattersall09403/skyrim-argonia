@@ -287,6 +287,7 @@
 {"deed_id":"deed.thorn.smuggling-run","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.thorn.titles-settled","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.tide-fair.traded","ord":0,"value":"world/sources/catalogue"}
+{"deed_id":"deed.toh-reel-ka.writ-points","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.tolls.evaded","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.tolls.paid","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.tradehouse.rested","ord":0,"value":"world/sources/catalogue"}
@@ -295,7 +296,6 @@
 {"deed_id":"deed.twyllbek.finds-declared","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.umbriel.witnessed","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.urns.judged","ord":0,"value":"world/sources/catalogue"}
-{"deed_id":"deed.veiled-reed.writ-points","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.veterans.heard","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.vice.debts-run","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.vista.reached","ord":0,"value":"world/sources/catalogue"}
@@ -303,7 +303,6 @@
 {"deed_id":"deed.wamasu.offered","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.watch.kept","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.watch.signals-read","ord":0,"value":"world/sources/catalogue"}
-{"deed_id":"deed.waykeepers.passages-taken","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.wells.charged","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.westfield.harvest-helped","ord":0,"value":"world/sources/catalogue"}
 {"deed_id":"deed.whispers.dig-found","ord":0,"value":"world/sources/catalogue"}

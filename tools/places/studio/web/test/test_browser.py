@@ -277,6 +277,7 @@ def test_02_performance_and_lazy_models(pad):
 
 # ---------- 3: select, cycle, lasso, gizmo, nudge, duplicate, remove, info ----------
 def test_03_select_and_manipulate(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     pad.page.click("#rail [data-tool=select]")
     # a building with nothing that follows it (no invisible wall on it): each change is its one op
     b = pad.ev("(() => { const rs = [...studio.model.spaces.exterior.refs.values()]; "
@@ -328,6 +329,7 @@ def test_03_select_and_manipulate(pad):
 
 # ---------- 4: copy from the source, a group, an enterable building ----------
 def test_04_from_the_source(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     if pad.page.locator("#panel-close").is_visible():  # the panel floats over the source view's right side
         pad.page.click("#panel-close")
     src = pad.ev("studio.srcBundle.spaces.exterior.refs.find((r) => r.kind === 'building')")
@@ -764,6 +766,7 @@ def test_21_selected_shows_where(pad):
 
 
 def test_21_lights_seen_and_handled(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a light has no model of its own: while selecting it is a small bulb of its colour, picked like anything else
     pad.page.click("#rail [data-tool=select]")
     light = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0')")
@@ -836,6 +839,7 @@ def test_21_lights_seen_and_handled(pad):
 
 
 def test_21_invisible_walls(pad):
+    pad.ev("studio.tools.opts.pieces = true")  # these are about one piece, not its unit (test_30)
     # a kept collision box shows with the helpers as a faint outlined box of its real size, one instanced draw
     pad.page.click("#rail [data-tool=select]")
     wall = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0')")
@@ -922,6 +926,7 @@ def test_21_invisible_walls(pad):
 
 
 def test_21_grass_at_viewing_distance(pad):
+    pad.ev("studio.tools.opts.pieces = false")
     # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
     assert pad.ev("studio.ours.grass.on")
     g = pad.ev("studio.seated([...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building')).pos")
@@ -1524,3 +1529,250 @@ def test_29_paint_ground(browser, server):
     save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
     assert [o["paint"]["id"] for o in save["ops"] if o["op"] == "paint.add"] == [op["paint"]["id"], op2["paint"]["id"]]
     assert not pad.errors, pad.errors
+
+
+# ---------- a thing seated on another keeps a raise or lower ----------
+def test_23_raise_of_a_seated_door_stays(pad, browser, server):
+    pad.page.click("#rail [data-tool=select]")
+    ids = pad.ev("""(() => { const rs = [...studio.model.spaces.exterior.refs.values()];
+        const d = rs.find((r) => r.kind === 'door'), b = rs.find((r) => r.kind === 'building'); return [d.id, b.id]; })()""")
+    door, house = ids
+    # the door is made to sit `on` the house, as the gang-master's hut door does
+    pad.ev("""([d, h]) => { const r = studio.model.spaces.exterior.refs.get(d), before = { pos: [...r.pos], seat: r.seat };
+        const after = { pos: [...r.pos], seat: { mode: 'on', on: h, dz: 120 } };
+        after.pos[2] = studio.model.spaces.exterior.refs.get(h).pos[2] + 120;
+        studio.push([{ op: 'ref.move', id: d, before, after }]); }""", [door, house])
+    z = lambda: pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door)  # noqa: E731
+    dz = lambda: pad.ev("(id) => studio.model.spaces.exterior.refs.get(id).seat.dz", door)  # noqa: E731
+    z0, dz0 = z(), dz()
+    pos = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", door)
+    look_at(pad, "ours", pos)
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", door)
+    h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=lift]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
+    pad.pen_drag([h, (h[0], h[1] - 60)])
+    pad.page.wait_for_timeout(400)
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert last["op"] == "ref.move" and last["after"]["seat"]["mode"] == "on" and last["before"]["seat"]["dz"] == dz0, last
+    assert last["after"]["seat"]["dz"] > dz0 and last["after"]["pos"][2] > last["before"]["pos"][2], last
+    assert z() > z0 + 5 and abs(z() - (pad.ev("(h) => studio.model.spaces.exterior.refs.get(h).pos[2]", house) + dz())) < 0.01
+    z1, dz1 = z(), dz()
+    pad.ev("studio.refreshSide(studio.ours, { world: false, grass: false })")  # the refresh after letting go
+    assert z() == z1, "the raise stays after the refresh"
+    # the numeric nudge agrees, and undo gives the height back
+    pad.ev("studio.tools.nudge(0, 0, 8)")
+    assert z() == pytest.approx(z1 + 8, abs=0.01)
+    pad.ev("studio.log.undo()")
+    assert z() == z1
+    # Save and reload: the same height
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=15000 * SLOW)
+    other = open_pad(browser, server, LANDSCAPE, choose="Continue the unsaved work")
+    other.page.wait_for_function("([id, v]) => studio.model.spaces.exterior.refs.get(id)?.seat?.dz === v", arg=[door, dz1], timeout=15000 * SLOW)
+    assert abs(other.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door) - z1) < 0.01
+    other.page.context.close()
+    pad.ev("studio.log.undo(); studio.log.undo()")
+
+
+# ---------- 30: composite things move as one ----------
+UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2 = (v) => Math.round(v * 100) / 100;
+  const refs = {}; for (const [id, r] of ex) refs[id] = { pos: r.pos.map(r2), rot: (r.rot || []).map((v) => Math.round(v * 1e4)), seat: r.seat ?? null, door: r.door || null };
+  const room = m.spaces.FixHouse02.refs.get('fixplaceFixHouse02.door');
+  return { refs, bram: m.people.get('fixplace.p2'), room: room.door }; })()"""
+
+
+def gizmo_handle(pad, name):
+    return pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+
+
+def test_30_units_move_whole(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.pieces = false; studio.tools.opts.adds = false; studio.selection.clear(); studio.tools.selectionChanged()")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", house, dist=2600, pitch=1.1)
+    start = pad.ev(UNIT_STATE)
+    # one tap selects the whole house: its door, its porch and the bedroll standing inside it, with one outline and a label
+    pad.pen_tap(*pad.screen("ours", [house[0], house[1], house[2] + 300]))
+    sel = set(pad.ev("[...studio.selection]"))
+    assert {"fixplace.b1", "fixplace.d1", "fixplace.porch1", "fixplace.bedroll1"} <= sel, sel
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01"
+    assert "Smithy (" in pad.ev("document.querySelector('#view-ours .unit-label').textContent")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "one structure of" in body and "Take out of this unit" in body, body
+    pad.shot("22-unit-selected")
+    # dragged whole: one op, every member shifted alike, the door's arrival and its room's landing with it, Bram's work spot too
+    h = gizmo_handle(pad, "move")
+    n0 = len(pad.ops())
+    pad.pen_drag([h, (h[0] + 80, h[1] + 30)])
+    ops = pad.ops()[n0:]
+    assert [o["op"] for o in ops] == ["unit.move"], ops
+    now = pad.ev(UNIT_STATE)
+    dx = now["refs"]["fixplace.b1"]["pos"][0] - start["refs"]["fixplace.b1"]["pos"][0]
+    dy = now["refs"]["fixplace.b1"]["pos"][1] - start["refs"]["fixplace.b1"]["pos"][1]
+    assert abs(dx) + abs(dy) > 20, (dx, dy)
+    for rid in sel:
+        a, b = start["refs"][rid]["pos"], now["refs"][rid]["pos"]
+        assert abs(b[0] - a[0] - dx) < 0.6 and abs(b[1] - a[1] - dy) < 0.6, rid
+    arr0, arr1 = start["refs"]["fixplace.d1"]["door"]["arrival"], now["refs"]["fixplace.d1"]["door"]["arrival"]
+    assert abs(arr1[0] - arr0[0] - dx) < 0.6 and abs(arr1[1] - arr0[1] - dy) < 0.6
+    shift = lambda a, b: [round(y - x, 1) for x, y in zip(a, b)]  # noqa: E731
+    assert shift(start["room"]["to_pos"], now["room"]["to_pos"]) == shift(arr0, arr1) and now["room"]["to_ref"] == "fixplace.d1"
+    assert now["refs"]["fixplace.d1"]["door"]["to_space"] == "FixHouse02"
+    assert now["refs"]["fixplace.d1"]["door"]["to_ref"] == start["refs"]["fixplace.d1"]["door"]["to_ref"]
+    w0, w1 = start["bram"]["work"]["pos"], now["bram"]["work"]["pos"]
+    assert abs(w1[0] - w0[0] - dx) < 0.6 and abs(w1[1] - w0[1] - dy) < 0.6, (w0, w1)
+    # turned whole by the panel: the bedroll keeps its distance from the house and turns with it
+    pad.page.get_by_role("button", name="Turn right", exact=True).click()
+    t = pad.ev(UNIT_STATE)
+    assert pad.ops()[-1]["op"] == "unit.move"
+
+    def dist(s):
+        a, b = s["refs"]["fixplace.bedroll1"]["pos"], s["refs"]["fixplace.b1"]["pos"]
+        return ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5
+    assert abs(dist(t) - dist(start)) < 1, (dist(t), dist(start))
+    turned = lambda rid: t["refs"][rid]["rot"][2] - now["refs"][rid]["rot"][2]  # noqa: E731
+    assert abs(turned("fixplace.bedroll1") - turned("fixplace.b1")) <= 1 and abs(turned("fixplace.b1")) > 100
+    assert shift(start["room"]["to_pos"], t["room"]["to_pos"]) == shift(arr0, t["refs"]["fixplace.d1"]["door"]["arrival"])
+    # one undo each gives everything back
+    pad.ev("studio.log.undo(); studio.log.undo()")
+    assert pad.ev(UNIT_STATE) == start
+    # a second tap on a piece goes inside to it; tapping away comes back out to the whole
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    porch = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.porch1")
+    pad.page.wait_for_timeout(300)
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    assert pad.ev("[...studio.selection]") == ["fixplace.porch1"], pad.ev("[...studio.selection]")
+    assert "Part of" in pad.ev("document.getElementById('panel-body').textContent")
+    pad.ev("studio.tools.lastTap = null")
+    hx, hy = pad.screen("ours", house)
+    pad.pen_tap(hx - 160, hy + 170)
+    assert pad.ev("studio.tools.selUnit()?.id") == "h01", pad.ev("[[...studio.selection], studio.tools.inside, studio.tools.unit]")
+    # Pieces on: a tap picks one piece
+    pad.ev("studio.tools.opts.pieces = true; studio.tools.lastTap = null; studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.pen_tap(*pad.screen("ours", [porch[0], porch[1], porch[2] + 20]))
+    assert pad.ev("[...studio.selection]") == ["fixplace.porch1"]
+    pad.ev("studio.tools.opts.pieces = false")
+    # membership by hand: the porch taken out, then given back to the rule
+    pad.ev("studio.selection = new Set(['fixplace.porch1']); studio.tools.selectionChanged()")
+    pad.page.get_by_role("button", name="Take out of this unit").click()
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.porch1').unit") == ""
+    assert "fixplace.porch1" not in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.page.get_by_role("button", name="Let the unit rule decide").click()
+    assert "fixplace.porch1" in pad.ev("studio.unitIndex().units.get('h01').members")
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert pad.ev(UNIT_STATE) == start
+
+
+# ---------- 31: people are selected and moved from Select; a routine follows the bed it names ----------
+def test_31_people_select_and_move(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("if (studio.ours.space !== 'exterior') studio.leave(studio.ours, 0)")
+    pad.ev("studio.setTime(10)")   # a smith or a guard at work outside, at a spot of their own
+    assert pad.ev("[...studio.people.markers.values()].some((m) => m.visible)"), pad.ev("[...studio.model.people.keys()]")
+    at = pad.ev("studio.people.markers.get(studio.model.people.has('fixplace.p1') ? 'fixplace.p1' : 'fixplace.p2').userData.at")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    pad.pen_tap(x, y)
+    assert pad.ev("studio.people.sel") in ("fixplace.p1", "fixplace.p2")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "Their spots" in body and "Where they work" in body and "dragging them moves" in body, body
+    # Show it frames a spot
+    pad.page.locator("ul.spots li", has_text="Where they work").first.get_by_role("button", name="Show it").click()
+    assert pad.ev("studio.ours.space") == "exterior"
+    assert pad.ev("!!studio.people.shown")
+    pad.ev("studio.setTime(10)")
+    look_at(pad, "ours", at, dist=2200, pitch=1.0)
+    pad.ev("studio.people.refresh()")
+    x, y = pad.screen("ours", [at[0], at[1], at[2] + 80])
+    n0 = len(pad.ops())
+    pad.pen_drag([(x, y), (x + 90, y + 20)])
+    ops = pad.ev("(n) => studio.log.applied().slice(n)", n0)
+    assert [o["op"] for o in ops] == ["person.edit"], ops
+    stop0 = next(s for s in ops[0]["before"]["routine"] if s["kind"] == "work")
+    stop1 = next(s for s in ops[0]["person"]["routine"] if s["kind"] == "work")
+    assert abs(stop1["at"]["pos"][0] - stop0["at"]["pos"][0]) + abs(stop1["at"]["pos"][1] - stop0["at"]["pos"][1]) > 20
+    pad.ev("studio.log.undo()")
+    # a bed moved: Bram's sleep stop names it, so it follows with no change of his, and the studio says so
+    bed = "fixplaceFixHouse02.bed"
+    line = pad.ev("""(id) => import('./js/people.js').then((m) => m.followsLine(m.usersOf(studio.people.list(), id), 'this bed'))""", bed)
+    assert line.startswith("Bram Fixguard sleeps") and "routine follows this bed" in line, line
+    pad.ev("""(id) => { const r = studio.model.spaces.FixHouse02.refs.get(id), before = { pos: [...r.pos] };
+             studio.push([{ op: 'ref.move', id, before, after: { pos: [r.pos[0] + 120, r.pos[1], r.pos[2]] } }], 'FixHouse02'); }""", bed)
+    got = pad.ev("""(id) => { const p = studio.model.people.get('fixplace.p2'), s = p.routine.find((x) => x.kind === 'sleep');
+             return [s.at.ref, studio.people.stopPoint(s).p, studio.model.spaces.FixHouse02.refs.get(id).pos]; }""", bed)
+    assert got[0] == bed and got[1][0] == got[2][0], got
+    pad.ev("studio.log.undo(); studio.people.select(null); studio.tools.use('select')")
+
+
+# ---------- 32: moving in the plane you mean, at three camera angles ----------
+def test_32_drag_maps_to_the_view(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.snapFaces = false")
+    rid = "fixplace.c3"
+    p = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", rid)
+    for pitch in (1.45, 0.8, 0.15):
+        look_at(pad, "ours", p, dist=1800, pitch=pitch)
+        pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.unit = null; studio.tools.selectionChanged(); }", rid)
+        yaw = pad.ev("studio.ours.view.rig.yaw")
+        import math
+        right, fwd = (-math.sin(yaw), math.cos(yaw)), (-math.cos(yaw), -math.sin(yaw))
+        for (dx, dy), want in (((70, 0), right), ((0, -70), fwd)):
+            h = gizmo_handle(pad, "move")
+            pad.pen("mouseMoved", *h)
+            pad.pen("mousePressed", *h)
+            assert pad.ev("document.querySelector('.gizmo .gz-hint').textContent").startswith("Slides along the ground")
+            for i in range(1, 5):
+                pad.pen("mouseMoved", h[0] + dx * i / 4, h[1] + dy * i / 4)
+            pad.pen("mouseReleased", h[0] + dx, h[1] + dy)
+            pad.page.wait_for_timeout(80)
+            last = pad.ev("studio.log.applied().at(-1)")
+            assert last["op"] == "ref.move" and last["id"] == rid, last
+            m = (last["after"]["pos"][0] - last["before"]["pos"][0], last["after"]["pos"][1] - last["before"]["pos"][1])
+            size = math.hypot(*m)
+            assert size > 10 and (m[0] * want[0] + m[1] * want[1]) > 0.85 * size, (pitch, (dx, dy), m, want)
+            pad.ev("studio.log.undo()")
+        # the east-west handle moves east or west only
+        h = gizmo_handle(pad, "ax")
+        pad.pen_drag([h, (h[0] + 50, h[1] + 40)])
+        last = pad.ev("studio.log.applied().at(-1)")
+        assert last["op"] == "ref.move" and abs(last["after"]["pos"][1] - last["before"]["pos"][1]) < 0.01, last
+        pad.ev("studio.log.undo()")
+    # the nudge step and one-tap undo
+    pad.page.get_by_role("button", name="50", exact=True).click()
+    pad.page.get_by_role("button", name="North", exact=True).click()
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert abs(last["after"]["pos"][1] - last["before"]["pos"][1] - 50) < 0.01
+    n = len(pad.ops())
+    pad.page.locator("#panel-body").get_by_role("button", name="Undo", exact=True).click()
+    assert len(pad.ops()) == n - 1
+    pad.ev("studio.tools.opts.snapFaces = true; studio.tools.opts.step = 10; studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 33: the camera turns about the selection ----------
+def test_33_camera_about_the_selection(pad):
+    pad.page.click("#rail [data-tool=select]")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", [house[0] + 600, house[1] + 300, house[2]], dist=3000, pitch=0.9)
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    c = pad.ev("studio.pivotFor(studio.ours.view)")
+    box = pad.ev("(() => { const b = document.querySelector('#view-ours .canvas-holder').getBoundingClientRect(); return [b.x, b.y, b.width, b.height]; })()")
+    a = (box[0] + box[2] * 0.15, box[1] + box[3] * 0.8)
+    s0, yaw0 = pad.screen("ours", c), pad.ev("studio.ours.view.rig.yaw")
+    pad.finger_drag(a, (a[0] + 120, a[1] - 30))
+    s1 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.yaw") != yaw0
+    assert abs(s1[0] - s0[0]) < 6 and abs(s1[1] - s0[1]) < 6, (s0, s1)
+    d0 = pad.ev("studio.ours.view.rig.dist")
+    pad.pinch((box[0] + box[2] * 0.3, box[1] + box[3] * 0.5), 60, 140)
+    s2 = pad.screen("ours", c)
+    assert pad.ev("studio.ours.view.rig.dist") < d0 and abs(s2[0] - s1[0]) < 14 and abs(s2[1] - s1[1]) < 14, (s1, s2)
+    # nothing selected: the view turns about where it looks, as before
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    t0 = pad.ev("studio.ours.view.rig.target.toArray()")
+    pad.finger_drag(a, (a[0] + 80, a[1]))
+    assert pad.ev("studio.ours.view.rig.target.toArray()") == t0
+    # Frame brings the selection into the middle
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    pad.page.click("#frame-sel")
+    sc = pad.screen("ours", c)
+    assert abs(sc[0] - (box[0] + box[2] / 2)) < box[2] * 0.15 and abs(sc[1] - (box[1] + box[3] / 2)) < box[3] * 0.2, (sc, box)
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")

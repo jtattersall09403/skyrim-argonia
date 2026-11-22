@@ -288,7 +288,7 @@ def changes(pid: str, root: Path = NEEDS) -> list[dict]:
     return _jsonl(changes_path(pid, root))
 
 
-def record_change(pid: str, body: dict, root: Path = NEEDS) -> dict:
+def record_change(pid: str, body: dict, root: Path = NEEDS, write: bool = True) -> dict:
     """The owner carried on past a warning: the change stands as any other edit, and the need (or the person a
     story uses) is marked changed by the owner, so the story is changed to fit the place."""
     doc = read(pid, root)
@@ -312,6 +312,8 @@ def record_change(pid: str, body: dict, root: Path = NEEDS) -> dict:
     cid = body.get("client_id")
     if isinstance(cid, str) and cid:   # recorded on a tablet offline: sent again, it is the same change
         row["client_id"] = cid[:64]
+    if not write:
+        return row
     with _locked(root):
         p = changes_path(pid, root)
         if cid and p.exists():
@@ -323,6 +325,32 @@ def record_change(pid: str, body: dict, root: Path = NEEDS) -> dict:
             f.flush()
             os.fsync(f.fileno())
     return row
+
+
+def held_path(pid: str, held_dir: Path) -> Path:
+    return held_dir / f"{pid}.needs.jsonl"
+
+
+def hold_change(pid: str, record_id: str, body: dict, held_dir: Path, root: Path = NEEDS) -> dict:
+    """A change made in an unsaved (autosave) session is held beside the autosave, outside every tracked file; the
+    next named save writes it into the change log (flush_held)."""
+    row = record_change(record_id, body, root, write=False)
+    held_dir.mkdir(parents=True, exist_ok=True)
+    with open(held_path(pid, held_dir), "a", encoding="utf-8") as f:
+        f.write(json.dumps(body, ensure_ascii=False) + "\n")
+    return row
+
+
+def flush_held(pid: str, record_id: str, held_dir: Path, save_id: str, root: Path = NEEDS) -> int:
+    """Write the held changes into the change log under the named save's id; returns how many."""
+    p = held_path(pid, held_dir)
+    if not p.exists():
+        return 0
+    bodies = [json.loads(ln) for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    for b in bodies:
+        record_change(record_id, dict(b, save=save_id), root)
+    p.unlink()
+    return len(bodies)
 
 
 # ---- plain words ---------------------------------------------------------------------------------------------------

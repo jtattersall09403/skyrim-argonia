@@ -85,13 +85,13 @@ Fills the gap between what canon says and what the game needs to know
 | [extrapolation/gap-register.md](extrapolation/gap-register.md) | What the game must know that canon doesn't state. **Closed — zero `OPEN`.** |
 | [extrapolation/argonia-4e201-state.md](extrapolation/argonia-4e201-state.md) | The 4E 201 synthesis: government, cities, economy, routes, danger. **§9 is the binding trauma directive.** |
 | [extrapolation/settlement-register.md](extrapolation/settlement-register.md) | Magnitude ladder; every settlement's 4E 201 status; currency; drifting villages; xanmeer states; White Rose and Fort Swampmoth |
-| [extrapolation/owner-questions.md](extrapolation/owner-questions.md) | Round 1 **decided and binding**; Round 2 (Q6–Q9) open |
-| [extrapolation/quest-plan-deltas.md](extrapolation/quest-plan-deltas.md) | D1–D16 proposed `docs/quests/` changes — **not applied**; a follow-up agent owns these |
+| extrapolation/owner-questions.md | Round 1 **decided and binding**; Round 2 (Q6–Q9) open |
+| extrapolation/quest-plan-deltas.md | D1–D16 proposed `docs/quests/` changes — **not applied**; a follow-up agent owns these |
 
 ## Binding decisions (2026-08-24)
 
 Set by the owner; do not re-litigate. Full text at the foot of
-[extrapolation/owner-questions.md](extrapolation/owner-questions.md).
+extrapolation/owner-questions.md.
 
 1. The **An-Xileel fell after Umbriel**; the province is ruled by the **Xeech-Leel**,
    who rose by being not the An-Xileel, kept the Archwardens as their wardens of

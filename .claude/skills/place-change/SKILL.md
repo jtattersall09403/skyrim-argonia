@@ -12,6 +12,16 @@ changes (the lead continues it); a change is as narrow as it can be correct.
 
 - A thing to move, turn, sink, prune, add or relabel is done by hand in the studio scene and `look commit`
   (`place-look`), by the recipe of the step that owns it (`place-site`, `place-adapt`, `place-story`).
+- A raise or lower of a seated thing (a door on its house, a box on a deck) is the seat's own `dz`: the studio's lift
+  handle and Up and Down buttons write it in every seat mode, so `python3 -m tools.places seat <place_id>` keeps it.
+- A structure (a house with its porch and door, a ship with its masts, a tent with its bedding) is moved, turned or
+  raised whole as its unit, one `unit.move` that carries its doors' arrivals, its people's spots and its quest spots
+  (`docs/design/place-studio.md`, Units). A piece the unit rule leaves out or takes in wrongly is put right with the
+  piece's `unit` (Add to this unit, Take out of this unit), never by moving the pieces one by one.
+- A person's spot is moved by dragging the person in the studio (or the stop's Put on map): a stop naming a bed or a
+  station moves that thing and every routine naming it follows; a routine is never edited to chase a moved bed.
+- In the studio a thing slides along the ground by its middle handle, along one axis by E–W or N–S, up or down by
+  Height alone; a nudge of 1, 10 or 50 units is the panel's Move a little.
 - A rule's output is changed by its stage alone: `python3 -m tools.places draft <stage> <place_id>` changes only the
   rows the stage owns, leaves every other row byte for byte and prints the rows changed per file.
 

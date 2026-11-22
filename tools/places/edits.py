@@ -28,7 +28,7 @@ CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove",
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
        "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit",
        "quest.add", "quest.remove", "quest.edit", "walk.add", "walk.remove", "walk.edit",
-       "paint.add", "paint.remove") + CONTENT_OPS
+       "paint.add", "paint.remove", "unit.move") + CONTENT_OPS
 # a row table's op family -> its list in the place files (rows keyed by id); `quests` is where the quests' things
 # stand (tools/places/quest_spots.py); `walk` the owner's walking-mesh zones (tools/places/walknav.py); `paint` the
 # ground paint's strokes (tools/places/paint.py), applied in id order
@@ -47,7 +47,8 @@ SOURCE_ORDER = {"identities": {"households": ("id",), "people": ("id",)},
                 "stock": {"containers": ("space", "ref"), "loose": ("id",), "possessions": ("person",),
                           "traders": ("person",), "deliveries": ("give_seq", "by", "person", "ref", "status", "why")}}
 CALLS = ("fault", "taste")
-MOVE_FIELDS = ("pos", "rot", "scale", "seat", "primitive")
+MOVE_FIELDS = ("pos", "rot", "scale", "seat", "primitive", "unit")
+UNIT_FIELDS = MOVE_FIELDS + ("door",)   # a unit's member also carries its door's arrival, turned with the unit
 TOL = 1e-3  # game units and radians; a before that differs by less than this matches
 
 
@@ -138,7 +139,7 @@ def check_op(op: dict) -> None:
         raise EditError(f"op {op['n']}: unknown op '{kind}'")
     if op.get("call", "fault") not in CALLS:
         raise EditError(f"op {op['n']}: call must be fault or taste, got {op.get('call')!r}")
-    if kind.startswith(("ref.", "veg.", "land.")):
+    if kind.startswith(("ref.", "veg.", "land.", "unit.")):
         _need(op, "space")
     if kind == "ref.add":
         _need(op, "ref")
@@ -153,6 +154,16 @@ def check_op(op: dict) -> None:
         _need(op, "id", "before", "after")
         if set(op["before"]) != set(op["after"]) or not set(op["after"]) <= set(MOVE_FIELDS) or not op["after"]:
             raise EditError(f"op {op['n']} (ref.move): before and after must name the same fields of {MOVE_FIELDS}")
+    elif kind == "unit.move":
+        _need(op, "unit", "refs")
+        for m in op["refs"]:
+            if not isinstance(m, dict) or "id" not in m or set(m.get("before") or {}) != set(m.get("after") or {}) \
+                    or not m.get("after") or not set(m["after"]) <= set(UNIT_FIELDS):
+                raise EditError(f"op {op['n']} (unit.move): each member needs id, and before and after naming the same fields of {UNIT_FIELDS}")
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+            for m in op.get(key) or []:
+                if not isinstance(m, dict) or table not in m or "before" not in m or m[table].get("id") != m["before"].get("id"):
+                    raise EditError(f"op {op['n']} (unit.move): each of {key} needs {table} and before, of the same id")
     elif kind in ("veg.clear", "veg.restore"):
         _need(op, "items")
         for it in op["items"]:
@@ -307,17 +318,68 @@ def _carry_arrival(files, row, was, after) -> None:
     delta = [n - o for n, o in zip(row["pos"], was)]
     if not any(abs(v) > TOL for v in delta):
         return
-    arr = [round(v + dv, 2) for v, dv in zip(d["arrival"], delta)]
-    row["door"] = {**d, "arrival": arr}
+    row["door"] = {**d, "arrival": [round(v + dv, 2) for v, dv in zip(d["arrival"], delta)]}
+    _link_partner(files, row, d["arrival"])
+
+
+def expand(ops: list) -> list:
+    """The ops with each unit.move written as the plain ops it is made of (a ref.move per member, a person.edit and
+    quest.edit per spot it carries), each keeping the unit op's n, call, note_group and stroke: what reads ops one
+    row at a time (hand placements, the draft's adds, change notes) reads a unit's move as its members' moves."""
+    out = []
+    for op in ops:
+        if op.get("op") != "unit.move":
+            out.append(op)
+            continue
+        keep = {k: op[k] for k in ("n", "at", "call", "note_group", "note", "stroke", "space", "state") if k in op}
+        for m in op.get("refs") or []:
+            out.append(dict(keep, op="ref.move", id=m["id"], before=m["before"], after=m["after"], unit=op.get("unit")))
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+            for m in op.get(key) or []:
+                out.append(dict(keep, op=f"{table}.edit", **{table: m[table]}, before=m["before"]))
+    return out
+
+
+def _link_partner(files, row, was) -> None:
+    """The door that leads to row lands where row's arrival went: its landing shifts as the arrival did from `was`,
+    so a move and its inverse give the landing back exactly."""
+    arr = (row.get("door") or {}).get("arrival")
+    if not arr or not was:
+        return
+    delta = [n - o for n, o in zip(arr, was)]
     for sp in files["spaces"].values():
         for r in sp["refs"]:
             rd = r.get("door") or {}
             if rd.get("to_ref") == row["id"] and rd.get("to_pos") is not None:
-                r["door"] = {**rd, "to_pos": list(arr)}
+                to = [round(v + delta[i], 2) if i < len(delta) else v for i, v in enumerate(rd["to_pos"])]
+                r["door"] = {**rd, "to_pos": to}
+
+
+def _move_unit(files, op) -> None:
+    """One op for a unit moved, turned or raised whole: each member as its own ref.move (a door's arrival as the op
+    gives it, turned with the unit, its partner's landing following), then the people's and quest spots it carries."""
+    for m in op["refs"]:
+        if "door" in m["after"]:
+            rows = _space(files, op)
+            i = _find(rows, m["id"])
+            if i is None or not same(rows[i].get("door"), m["before"]["door"]):
+                _conflict(op, f"ref {m['id']} door differs from what the save expected")
+        # the door as the op gives it (its arrival turned with the unit), not ref.move's plain shift of it
+        _apply_one(files, {"n": op["n"], "op": "ref.move", "space": op["space"], "id": m["id"],
+                           "before": {k: v for k, v in m["before"].items() if k != "door"}, "after": m["after"]})
+        if "door" in m["after"]:
+            rows = _space(files, op)
+            _link_partner(files, rows[_find(rows, m["id"])], (m["before"]["door"] or {}).get("arrival"))
+    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for m in op.get(key) or []:
+            _apply_one(files, {"n": op["n"], "op": f"{table}.edit", table: m[table], "before": m["before"]})
 
 
 def _apply_one(files, op):
     kind = op["op"]
+    if kind == "unit.move":
+        _move_unit(files, op)
+        return
     if kind == "ref.add":
         new_space = op["space"] not in files["spaces"]
         rows = _space(files, op)
@@ -381,6 +443,8 @@ def _apply_one(files, op):
                 _conflict(op, f"ref {op['id']} {k} is {rows[i].get(k)}, the save expected {v}")
         was = list(rows[i].get("pos") or [])
         rows[i].update(copy.deepcopy(op["after"]))
+        if "unit" in op["after"] and op["after"]["unit"] is None:
+            rows[i].pop("unit")   # null: the unit rule decides again (tools/places/studio/web/js/units.js)
         _carry_arrival(files, rows[i], was, op["after"])
         if _matches_source(files, op, rows[i]):
             rows.pop(i)   # back to its source pose: the override goes
@@ -621,6 +685,11 @@ def inverse(op: dict) -> dict:
         inv.pop("space_drop", None)
     elif kind == "ref.move":
         inv.update(before=op["after"], after=op["before"])
+    elif kind == "unit.move":
+        inv["refs"] = [dict(m, before=m["after"], after=m["before"]) for m in op["refs"]]
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+            if key in op:
+                inv[key] = [{table: m["before"], "before": m[table]} for m in op[key]]
     elif kind == "veg.clear":
         inv["op"] = "veg.restore"
     elif kind == "veg.restore":

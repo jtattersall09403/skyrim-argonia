@@ -57,7 +57,7 @@ def test_module_change_runs_the_tests_that_import_it():
 
 
 def test_quest_data_runs_the_quest_stages():
-    p = gate.pick(["story/data/quest_lines/mq01.json"])
+    p = gate.pick(["story/data/quest_lines/bc01.json"])
     assert {"adaptation", "questtext", "questform", "reach"} <= p.stages
 
 

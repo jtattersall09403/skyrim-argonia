@@ -28,7 +28,7 @@ quest.local.lq25` (local).
 | `shapes` | primary first, up to two secondary, from the 16 (story/design/quests/index/README.md §47b) |
 | `region`, `settlement`, `anchorPlaces` | catalogue region; a live settlement `place.` id, also in `anchorPlaces` |
 | `premise` | one clause the player could say back afterwards |
-| `costTier`, `milestone` | `S`/`M`/`L` (00-overview, cost tiers); 1 or 2 |
+| `costTier`, `milestone` | `S`/`M`/`L` (cost tiers); 1 or 2 |
 | `touches`, `sockets`, `essentialTopics`, `sources` | shared ids read or written; placed sockets; topics never gated on regard (the column's name); the docs the row came from |
 | `startWhen`, `start` | optional: a condition that enters the quest at `start` (85 §D) |
 | `stages` | the stage graph below |
@@ -57,7 +57,7 @@ quest.local.lq25` (local).
 |---|---|---|---|
 | 1 | `recordStatus`, `foundation` | `design`, `reviewed`, `briefed`, `written`; which imported design it rebuilds (its line's plot under story/design/quests/lines/, or its 50-side-quests entry) and what changed | the import |
 | 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id; `lore`: each lore file and section checked (quest-write §5) | world data |
-| 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags; 00-overview §4) | profile, place, shapes |
+| 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags) | profile, place, shapes |
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
 | 6 | `cast` | each person by `npc` id with `wants`, `fears`, `knowledge` per fact (`knows`, `believes: <false version>`, `suspects`, `hides: <reason>`; absent = ignorant), `changes` per stage; `persona` only for what the registry and stance file lack, marked `invented` | `npc`, `stance`, culture sheets, 36-cast-roster |
