@@ -1,0 +1,109 @@
+{
+ "save_id": "agent-20261122T161724",
+ "place_id": "helstrom",
+ "name": "three hanging lanterns of a source bridge long pruned hung in the air over nothing (survey bridge.01: lanterns in the sky)",
+ "at": "2026-11-22T16:17:24Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2B3S1E9DJFY55ZGHX43ETY81NW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2B3S1E9DJFY55ZGHX43ETY81NW",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -40931.01,
+     -623144.55,
+     592.86
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9804",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T16:17:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DD4XHJ8D3KXQHQNAMH2VW2J3MH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DD4XHJ8D3KXQHQNAMH2VW2J3MH",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -41066.81,
+     -623233.41,
+     592.86
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9802",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T16:17:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.NB8B6QRMT08HQF9A7VG0AX9BDW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.NB8B6QRMT08HQF9A7VG0AX9BDW",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -40936.35,
+     -623139.84,
+     562.36
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E9800",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T16:17:24Z"
+  }
+ ]
+}
