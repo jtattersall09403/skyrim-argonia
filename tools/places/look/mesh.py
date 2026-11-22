@@ -13,6 +13,7 @@ import numpy as np
 
 CLIMB = 32.0       # the navmesh's climb: a height step over this between two edges is a step no one walks
 ON_TOL = 48.0      # a point this far over or under a triangle under it stands on it
+GAP_K = 16         # the nearest points of the other island each edge point is weighed against
 GAP_OPEN = 24.0    # two islands' edges further apart than this across the plan: a missing strip of triangles
 
 
@@ -72,16 +73,20 @@ class Mesh:
         if not len(A) or not len(B):
             return None
         pa, pb = _sample(A), _sample(B)
-        d2 = ((pa[:, None, :2] - pb[None, :, :2]) ** 2).sum(-1)
-        dz = np.abs(pa[:, None, 2] - pb[None, :, 2])
-        cost = np.sqrt(d2) + 0.5 * dz
+        # each of A's points against its nearest of B's in plan (a kd-tree: an island's edge is a million points and
+        # every pair would not fit in memory); the cost adds half the height step
+        from scipy.spatial import cKDTree
+        k = min(GAP_K, len(pb))
+        dist, idx = cKDTree(pb[:, :2]).query(pa[:, :2], k=k)
+        dist, idx = dist.reshape(len(pa), k), idx.reshape(len(pa), k)
+        cost = dist + 0.5 * np.abs(pa[:, None, 2] - pb[idx, 2])
         if near is not None:
             best = float(cost.min())
-            mid = (pa[:, None, :2] + pb[None, :, :2]) / 2
+            mid = (pa[:, None, :2] + pb[idx, :2]) / 2
             far = np.hypot(mid[..., 0] - near[0], mid[..., 1] - near[1])
             cost = np.where(cost <= best + 64, far, np.inf)
-        i, j = np.unravel_index(int(np.argmin(cost)), cost.shape)
-        a, b = pa[i], pb[j]
+        i, c = np.unravel_index(int(np.argmin(cost)), cost.shape)
+        a, b = pa[i], pb[idx[i, c]]
         across, step = float(math.dist(a[:2], b[:2])), float(abs(a[2] - b[2]))
         what = "missing strip" if across > GAP_OPEN else "height step" if step > CLIMB else "seam unjoined"
         return {"from": [round(float(v)) for v in a], "to": [round(float(v)) for v in b],
