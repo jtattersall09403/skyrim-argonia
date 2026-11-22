@@ -136,10 +136,36 @@ def drawable(head: dict) -> list[dict]:
     return solid or shapes
 
 
-def build(head: dict, level: int = 0) -> tuple[bytes, dict]:
-    shapes = drawable(head)
+def swapped(shapes: list[dict], swap: list[dict] | None) -> list[dict]:
+    """The shapes as a record's alternate textures (MODS) have the game draw them: a shape named in the swap takes
+    the swap's texture set (its diffuse and normal map in place of the NIF's), and a shape whose set resolves to no
+    texture set (`textures` null) is not drawn. A shape is matched by its 3D name; where the NIF has two shapes of
+    one name, by the swap's 3D index (the shape's place among the NIF's shapes) as well."""
+    if not swap:
+        return shapes
+    named: dict[str, list[dict]] = {}
+    for s in shapes:
+        named.setdefault(s["name"] or "", []).append(s)
+    hide, retex = set(), {}
+    for a in swap:
+        cands = named.get(a.get("shape") or "", [])
+        if len(cands) > 1:
+            cands = [s for s in cands if s.get("order") == a.get("index")] or cands
+        for s in cands:
+            if a.get("textures") is None:
+                hide.add(id(s))
+            else:
+                t = a["textures"]
+                retex[id(s)] = [t.get("diffuse") or "", t.get("normal") or ""]
+    return [dict(s, tex=retex[id(s)] + list(s["tex"][2:])) if id(s) in retex else s for s in shapes if id(s) not in hide]
+
+
+def build(head: dict, level: int = 0, swap: list[dict] | None = None) -> tuple[bytes, dict]:
+    for i, s in enumerate(head["shapes"]):
+        s.setdefault("order", i)
+    shapes = swapped(drawable(head), swap)
     if not shapes:
-        raise MeshError("no drawable shape (all hidden, skinned or empty)")
+        raise MeshError("no drawable shape (all hidden, skinned, empty or swapped away)")
     full = sum(s["tris"] for s in shapes)
     if level >= 1 and full > LIGHT_TRIS:
         ratio = 1.0 - max(LIGHT_TRIS, full // 4) / full

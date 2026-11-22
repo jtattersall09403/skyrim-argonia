@@ -1,7 +1,8 @@
 """Meshes and textures for the studio's browser, converted on demand and cached; land textures; the catalogue.
 
 API (lane V's server calls these for GET /api/asset/mesh and /api/asset/tex):
-    mesh(model, level=0, bounds=None) -> Path to a GLB      (always a file: a placeholder box when it cannot convert)
+    mesh(model, level=0, bounds=None, alt=None) -> Path to a GLB   (always a file: a placeholder box when it cannot
+                                                   convert; `alt` a base key: the model as its alternate textures draw it)
     mesh_info(model, level=0, bounds=None) -> dict          (tris, shapes, textures, bounds, placeholder, why, glb)
     tex(path, size=512) -> Path to a WebP, or None when the profile has no such texture
     thumb(model) -> Path to a 256-pixel WebP picture of the mesh (search results)
@@ -57,12 +58,32 @@ def _source(k: str, version: int) -> tuple[str | None, bytes | None]:
     return key, raw
 
 
-def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
+def swap_of(base_key: str | None) -> list[dict] | None:
+    """A base's alternate textures (the catalogue's alt_tex) as the converter applies them: [{shape, index,
+    textures: {diffuse, normal} or None}] in a fixed order; None when the base swaps nothing."""
+    if not base_key:
+        return None
+    from tools.places import draft_bundle
+    alt = (draft_bundle.catalogue().get(base_key) or {}).get("alt_tex")
+    if not alt:
+        return None
+    return sorted(({"shape": a.get("shape") or "", "index": a.get("index"),
+                    "textures": ({"diffuse": a["textures"].get("diffuse"), "normal": a["textures"].get("normal")}
+                                 if a.get("textures") else None)} for a in alt), key=lambda a: (a["shape"], a["index"] or 0))
+
+
+def mesh_info(model: str, level: int = 0, bounds=None, alt: str | None = None) -> dict:
+    """`alt`: a base key whose alternate textures (swap_of) make its own variant of the model, kept under the swap's
+    identity (the model's bytes and the swap), so bases sharing a model and a swap share one file and bases sharing
+    a model with different swaps never collide."""
     k = norm(model, "meshes")
     key, raw = _source(k, _mesh.VERSION)
     found = key is not None
+    swap = swap_of(alt)
     if not found:
         key = _key(("missing:" + k + json.dumps(bounds)).encode(), _mesh.VERSION)
+    elif swap:
+        key = _key((key + "|swap:" + json.dumps(swap, sort_keys=True)).encode(), _mesh.VERSION)
     glb = cache.path("mesh", key, f"l{level}.glb")
     side = glb.with_suffix(".json")
     if glb.exists() and side.exists():
@@ -76,7 +97,7 @@ def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
         else:
             try:
                 raw = resolver().read(k) if raw is None else raw
-                data, meta = _glb_as_is(raw) if raw[:4] == b"glTF" else _mesh.build(_mesh.dump(raw, cache.root()), level)
+                data, meta = _glb_as_is(raw) if raw[:4] == b"glTF" else _mesh.build(_mesh.dump(raw, cache.root()), level, swap)
             except _mesh.NotNow as e:  # not the mesh's fault: a placeholder for now, under a name no later call reads
                 data, meta = _mesh.placeholder(bounds, str(e))
                 meta["retry"] = True
@@ -103,8 +124,8 @@ def _glb_as_is(raw: bytes) -> tuple[bytes, dict]:
                  "bounds": [lo, hi]}
 
 
-def mesh(model: str, level: int = 0, bounds=None) -> Path:
-    return Path(mesh_info(model, level, bounds)["glb"])
+def mesh(model: str, level: int = 0, bounds=None, alt: str | None = None) -> Path:
+    return Path(mesh_info(model, level, bounds, alt)["glb"])
 
 
 def tex_info(path: str, size: int = 512, keep_alpha: bool | None = None) -> dict | None:

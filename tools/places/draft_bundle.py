@@ -29,7 +29,7 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land", "walk", "paint", "states")
-TOOL = "tools/places/draft_bundle.py v7"
+TOOL = "tools/places/draft_bundle.py v8"
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 _catalogue: dict = {}
 
@@ -222,6 +222,13 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
             cat = cat if cat is not None else catalogue()
             if isinstance((cat.get(bk) or {}).get("water"), dict):
                 bases[bk] = {**bases[bk], "water": cat[bk]["water"]}
+    # the model's alternate textures (the catalogue's alt_tex: a named shape drawn with another texture set, or not
+    # at all when the set resolves to nothing), so the studio asks for the base's own variant of its model
+    cat = cat if cat is not None else catalogue()
+    for bk in used:
+        b, row = bases.get(bk), cat.get(bk) or {}
+        if b and row.get("alt_tex") and "alt_tex" not in b and b.get("model") == row.get("model"):
+            bases[bk] = {**b, "alt_tex": row["alt_tex"]}
     # the shapes the game does not draw (a dead tree's leaves: an alternate texture set no plugin holds)
     from tools.places.assets import alttex
     for bk in used:

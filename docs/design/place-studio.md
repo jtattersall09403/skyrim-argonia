@@ -1203,6 +1203,19 @@ cannot be read is a magenta half-transparent box of the base's bounds with `plac
 nothing is dropped. When the fault is not the mesh's (the reader not built, out of time on a busy machine, the
 disk) the box also has `retry: true`, is served `no-store` and is not kept: the next request converts again.
 
+**Alternate textures.** A base record can draw named shapes of its model with another texture set (its model's
+MODS: per shape, the shape's 3D name and index and a TXST). The catalogue lists them as the base's `alt_tex`
+`[{shape, index, txst, edid, textures: {diffuse, normal, glow, env, specular}}]`, `textures` null when the set
+resolves to no texture set; the draft bundle carries `alt_tex` onto every base it uses. `mesh(model, level, bounds,
+alt=<base key>)` (`/api/asset/mesh?...&alt=<base key>`) is that base's variant of the model: a swapped shape takes
+the set's diffuse and normal map, a shape whose set resolves to nothing is left out (King of the Murkmire's dead
+Hists: the living tree's model with the crown pointed at a form no plugin holds, drawn bare), matched by name and,
+for two shapes of one name, by index. The variant is cached under the model's bytes and the swap, so bases sharing
+a model and a swap share a file and different swaps never collide. The studio asks for it when a base has
+`alt_tex`; the offline download fetches the same URL. A placed ref carries no alternate textures in Skyrim's
+records, so the base's are the only ones. (The draft bundle's `hide_shapes`, from `alttex.py`, names the same
+hidden shapes for the studio's own pass.)
+
 **Textures.** DDS (BC1 to BC7, uncompressed) to lossy WebP, halved to the largest power of two not over the
 requested size (64 to 2048); alpha kept on diffuse textures, dropped on normal maps and land textures.
 
