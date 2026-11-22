@@ -568,6 +568,84 @@ def drop_flat(m: Mesh) -> int:
 
 def _splits(m: Mesh, extra: list) -> dict:
     """{triangle: {edge k: [(t along the edge, vertex index or a point to add)]}}: every vertex of the mesh (or point
+    of `extra`, a neighbour cell's border vertices) lying on an open edge's inside. The open edges and the points near
+    each (by a grid of G squares) are paired all at once; the answer is _splits_loop's, edge by edge in triangle order
+    and each edge's points in the grid's order."""
+    G = 64.0
+    V = np.asarray(m.V, float).reshape(-1, 3)
+    X = np.asarray(extra, float).reshape(-1, 3)
+    P = np.concatenate([V, X]) if len(X) else V
+    pid = np.concatenate([np.arange(len(V)), np.full(len(X), -1)])
+    out: dict = defaultdict(lambda: defaultdict(list))
+    if not len(m.T) or not len(P):
+        return out
+    T = np.asarray(m.T, np.int64).reshape(-1, 3)
+    nT = len(T)
+    # the open edges (one use), in triangle order then edge order: as m.edges() meets them
+    U = np.stack([T[:, 0], T[:, 1], T[:, 2]], 1).ravel()
+    W = np.stack([T[:, 1], T[:, 2], T[:, 0]], 1).ravel()
+    lo, hi = np.minimum(U, W), np.maximum(U, W)
+    key = lo * (len(V) + 1) + hi
+    _, inv, cnt = np.unique(key, return_inverse=True, return_counts=True)
+    open_ = np.flatnonzero(cnt[inv] == 1)
+    if not len(open_):
+        return out
+    ti, kk = open_ // 3, open_ % 3
+    A, B = V[U[open_]], V[W[open_]]
+    D = B[:, :2] - A[:, :2]
+    L2 = D[:, 0] * D[:, 0] + D[:, 1] * D[:, 1]
+    keep = L2 >= 1e-9
+    ti, kk, A, B, D, L2, eu, ew = ti[keep], kk[keep], A[keep], B[keep], D[keep], L2[keep], U[open_][keep], W[open_][keep]
+    if not len(ti):
+        return out
+    # the points by grid square, in their own order within a square
+    gx = np.floor(P[:, 0] / G).astype(np.int64)
+    gy = np.floor(P[:, 1] / G).astype(np.int64)
+    gx0, gy0 = int(gx.min()), int(gy.min())
+    ny = int(gy.max()) - gy0 + 1
+    nx = int(gx.max()) - gx0 + 1
+    sq = (gx - gx0) * ny + (gy - gy0)
+    order = np.argsort(sq, kind="stable")
+    start = np.searchsorted(sq[order], np.arange(nx * ny), "left")
+    end = np.searchsorted(sq[order], np.arange(nx * ny), "right")
+    # each edge's squares, x then y, as the loop walks them
+    x0 = np.floor((np.minimum(A[:, 0], B[:, 0]) - ON_EDGE) / G).astype(np.int64)
+    y0 = np.floor((np.minimum(A[:, 1], B[:, 1]) - ON_EDGE) / G).astype(np.int64)
+    x1 = np.floor((np.maximum(A[:, 0], B[:, 0]) + ON_EDGE) / G).astype(np.int64)
+    y1 = np.floor((np.maximum(A[:, 1], B[:, 1]) + ON_EDGE) / G).astype(np.int64)
+    nxe, nye = x1 - x0 + 1, y1 - y0 + 1
+    ns = nxe * nye
+    e_of = np.repeat(np.arange(len(ti)), ns)
+    r = np.arange(len(e_of)) - np.repeat(np.cumsum(ns) - ns, ns)
+    sx = x0[e_of] + r // nye[e_of]
+    sy = y0[e_of] + r % nye[e_of]
+    inside = (sx >= gx0) & (sx < gx0 + nx) & (sy >= gy0) & (sy < gy0 + ny)
+    e_of, sx, sy = e_of[inside], sx[inside], sy[inside]
+    s_id = (sx - gx0) * ny + (sy - gy0)
+    n_in = end[s_id] - start[s_id]
+    e2 = np.repeat(e_of, n_in)
+    r2 = np.arange(len(e2)) - np.repeat(np.cumsum(n_in) - n_in, n_in)
+    q_ix = order[np.repeat(start[s_id], n_in) + r2]
+    if not len(e2):
+        return out
+    i_of = pid[q_ix]
+    Pq = P[q_ix]
+    Ae, De = A[e2], D[e2]
+    t = ((Pq[:, 0] - Ae[:, 0]) * De[:, 0] + (Pq[:, 1] - Ae[:, 1]) * De[:, 1]) / L2[e2]
+    ok = (i_of != eu[e2]) & (i_of != ew[e2]) & (t > 1e-4) & (t < 1 - 1e-4)
+    qx, qy = Ae[:, 0] + t * De[:, 0], Ae[:, 1] + t * De[:, 1]
+    ok &= np.hypot(Pq[:, 0] - qx, Pq[:, 1] - qy) <= ON_EDGE
+    z = Ae[:, 2] + t * (B[e2][:, 2] - Ae[:, 2])
+    ok &= np.abs(Pq[:, 2] - z) <= WELD_Z
+    for j in np.flatnonzero(ok):
+        e = int(e2[j])
+        i = int(i_of[j])
+        out[int(ti[e])][int(kk[e])].append((float(t[j]), i) if i >= 0 else (float(t[j]), (float(qx[j]), float(qy[j]), float(z[j]))))
+    return out
+
+
+def _splits_loop(m: Mesh, extra: list) -> dict:
+    """{triangle: {edge k: [(t along the edge, vertex index or a point to add)]}}: every vertex of the mesh (or point
     of `extra`, a neighbour cell's border vertices) lying on an open edge's inside."""
     V = np.asarray(m.V, float) if m.V else np.zeros((0, 3))
     pts = [(i, V[i]) for i in range(len(V))] + [(None, np.asarray(p, float)) for p in extra]

@@ -194,3 +194,25 @@ def test_a_border_stretch_covered_twice_keeps_one_triangle():
     assert cn.drop_folds(m, (0, 0)) == 2 and len(m.T) == 1
     cell = cn.finish_cell(m)
     assert cell["stats"]["open_edges"] == 3 and cell["stats"]["nonmanifold_edges"] == 0
+
+
+def test_splits_paired_at_once_are_the_loops_own():
+    """_splits (open edges and nearby points paired all at once) gives _splits_loop's answer exactly: the same edges,
+    points and order, on a mesh of fans with vertices and neighbour points lying on its open edges."""
+    import random
+    rnd = random.Random(7)
+    m = cn.Mesh()
+    for _ in range(60):
+        x, y, z = rnd.uniform(0, 3000), rnd.uniform(0, 3000), rnd.uniform(0, 50)
+        a, b, c = (x, y, z), (x + rnd.uniform(40, 300), y, z), (x, y + rnd.uniform(40, 300), z + 5)
+        m.add_poly([a, b, c], 0)
+        f = rnd.uniform(0.2, 0.8)            # a vertex of another triangle on this one's open edge ab
+        p = (a[0] + f * (b[0] - a[0]), y + rnd.choice([0.0, 0.3, -0.5]), z)
+        m.add_poly([p, (p[0], p[1] - 90, z), (p[0] + 60, p[1] - 90, z)], 0)
+    extra = [[rnd.uniform(0, 3000), rnd.uniform(0, 3000), 10.0] for _ in range(50)]
+    extra += [[m.V[t[0]][0] + 0.5 * (m.V[t[1]][0] - m.V[t[0]][0]), m.V[t[0]][1] + 0.5 * (m.V[t[1]][1] - m.V[t[0]][1]), m.V[t[0]][2]]
+              for t in m.T[::3]]
+    for ex in ([], extra):
+        got, want = cn._splits(m, ex), cn._splits_loop(m, ex)
+        assert {t: dict(s) for t, s in got.items()} == {t: dict(s) for t, s in want.items()}
+        assert sum(len(v) for s in want.values() for v in s.values()) > 0
