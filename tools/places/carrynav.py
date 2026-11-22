@@ -629,6 +629,43 @@ def fix_t_junctions(m: Mesh, extra: list = (), rounds: int = 64) -> int:
     return total
 
 
+def drop_folds(m: Mesh, cell) -> int:
+    """Remove the triangles that lie twice over one stretch of a cell's border: the same triangle twice (the carried and
+    the generated piece of a spot welded to the same corners), or two triangles sharing an edge on the cell's border
+    line, both on the cell's side of it, so one lies over the other (a sliver of the generated mesh under a carried
+    deck). The smaller of each such pair goes. A border edge used twice inside its own cell is never open, so the
+    neighbour's matching edge could not be joined to it (build.join_seams) and stayed open on the seam. Returns how
+    many went."""
+    x0, y0 = cell[0] * CELL, cell[1] * CELL
+
+    def on_border(p, q) -> bool:
+        return any(abs(p[a] - line) < 0.5 and abs(q[a] - line) < 0.5
+                   for a, line in ((0, x0), (0, x0 + CELL), (1, y0), (1, y0 + CELL)))
+    area = [abs(m.plan_area(t)) for t in m.T]
+    gone, seen, edge_use = set(), {}, defaultdict(list)
+    for ti, t in enumerate(m.T):
+        key = tuple(sorted(t))
+        if key in seen:                      # the same triangle twice: keep the first (the carried comes first)
+            gone.add(ti)
+            continue
+        seen[key] = ti
+        for k in range(3):
+            a, b = t[k], t[(k + 1) % 3]
+            if on_border(m.V[a], m.V[b]):
+                edge_use[(min(a, b), max(a, b))].append(ti)
+    for uses in edge_use.values():
+        live = [ti for ti in uses if ti not in gone]
+        if len(live) > 1:
+            live.sort(key=lambda ti: -area[ti])
+            gone.update(live[1:])
+    if gone:
+        keep = [i for i in range(len(m.T)) if i not in gone]
+        m.T = [m.T[i] for i in keep]
+        m.F = [m.F[i] for i in keep]
+        m.tag = [m.tag[i] for i in keep]
+    return len(gone)
+
+
 def finish_cell(m: Mesh) -> dict:
     """Drop degenerate triangles (plan area under MIN_AREA), orient every triangle counter-clockwise in plan, read
     neighbours from shared edges. {verts (n,3), tris [(v0,v1,v2)], edges [(e0,e1,e2)], flags, tags, stats}."""
@@ -756,7 +793,7 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
     for c, pts in (neighbours or {}).items():
         border[c] += [list(p) for p in pts]
     out = {}
-    splits = collapsed = unsplit = 0
+    splits = collapsed = unsplit = folds = 0
     for c in sorted(meshes):
         m = meshes[c]
         x0, y0 = c[0] * CELL, c[1] * CELL
@@ -779,6 +816,7 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
             if o in (neighbours or {}) and o not in meshes:  # a neighbour rebuilt here matches by its new border
                 sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
         unsplit += unsplit_border(m, c, sides)
+        folds += drop_folds(m, c)
         got = finish_cell(m)
         if got["tris"]:
             out[c] = got
@@ -786,6 +824,7 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
         out[c]["stats"]["splits"] = splits
         out[c]["stats"]["collapsed"] = collapsed
         out[c]["stats"]["unsplit"] = unsplit
+        out[c]["stats"]["folds_dropped"] = folds
     return out
 
 
