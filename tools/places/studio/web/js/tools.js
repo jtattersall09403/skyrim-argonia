@@ -154,7 +154,7 @@ export class Tools {
     if (l.pts.length < 4) { this.tapPick(e, side, side === this.app.ours ? this.app.selection : null); return; }
     let poly = l.pts;
     if (this.opts.selMode === 'box') { const [x0, y0] = l.pts[0], [x1, y1] = l.pts[l.pts.length - 1]; poly = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; }
-    const refs = side === this.app.ours ? [...(this.app.model.spaces[side.space]?.refs.values() || [])].map((r) => this.app.seated(r)) : this.app.refsOf(side);
+    const refs = side === this.app.ours ? [...(this.app.model.spaces[side.space]?.refs.values() || [])].filter((r) => this.app.helperShown(r)).map((r) => this.app.seated(r)) : this.app.refsOf(side);
     const hit = refs.filter((r) => { const s = side.view.toScreen(r.pos); return !s.behind && inPoly([s.x, s.y], poly); });
     if (side === this.app.ours) {
       if (!this.opts.adds) this.app.selection.clear();

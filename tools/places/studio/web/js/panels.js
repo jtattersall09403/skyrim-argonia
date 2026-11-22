@@ -4,6 +4,7 @@ import { api, off } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
 import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol, usersOf, followsLine } from './people.js';
+import { isHelper, helperWhat, usesOf } from './markers.js';
 import { clock, parseClock } from './geom.js';
 import { whereOf, whereRows } from './where.js';
 import { Contents } from './contents.js';
@@ -173,6 +174,10 @@ export class Panels {
     if (enter || building.length) tags.append(el(`<span class="tag enter">${building.length ? `Can be entered: comes with its room inside and ${building.length} door${building.length > 1 ? 's' : ''}` : 'Door into a room'}</span>`));
     if (tags.children.length) w.append(tags);
     const facts = [['Made from', `${base.edid || ''} (${r.base})`]];
+    if (isHelper(r, base)) {   // a marker the game never shows: what it is, and what uses it
+      const refs = side === 'ours' ? [...a.placeRefsById().values()] : a.refsOf(a.src), nm = (x) => { const b = bases.get(x.base) || a.srcBases?.get(x.base) || {}; return b.name || b.edid || x.id; };
+      facts.unshift(['What it is', helperWhat(base)], ['What uses it', usesOf(r, { refs, people: side === 'ours' ? a.people.list() : [], quests: side === 'ours' ? [...a.model.quests.values()] : [], states: a.states || [], nameOf: nm }).join('; ')]);
+    }
     if (side === 'ours') facts.push(['Copied from', r.src ? `${a.sourceId} thing ${r.src}` : 'Added here, not copied']);
     if (side === 'ours') facts.push(['How it sits', seatWords(r.seat)]);
     const station = side === 'ours' && stationOf(a.place, r.id);

@@ -1776,3 +1776,25 @@ def test_33_camera_about_the_selection(pad):
     sc = pad.screen("ours", c)
     assert abs(sc[0] - (box[0] + box[2] / 2)) < box[2] * 0.15 and abs(sc[1] - (box[1] + box[3] / 2)) < box[3] * 0.2, (sc, box)
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 34: markers explain themselves, and one switch hides them ----------
+def test_34_markers(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.pieces = true")
+    mk = "fixplace.xm0"
+    p = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", mk)
+    look_at(pad, "ours", p, dist=1200, pitch=1.2)
+    assert pad.ev("document.getElementById('markers-btn').getAttribute('aria-pressed')") == "true"
+    drawn = lambda: pad.ev("(id) => studio.ours.place.byId.has(id)", mk)  # noqa: E731
+    assert drawn()
+    pad.pen_tap(*pad.screen("ours", [p[0], p[1], p[2] + 16]))
+    assert pad.ev("[...studio.selection]") == [mk], pad.ev("[...studio.selection]")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "An invisible marker" in body and "enable parent" in body and "What uses it" in body, body
+    pad.page.click("#markers-btn")
+    assert not drawn() and pad.ev("[...studio.selection]") == []
+    assert pad.ev("document.getElementById('markers-btn').getAttribute('aria-pressed')") == "false"
+    pad.page.click("#markers-btn")
+    assert drawn()
+    pad.ev("studio.tools.opts.pieces = false; studio.selection.clear(); studio.tools.selectionChanged()")
