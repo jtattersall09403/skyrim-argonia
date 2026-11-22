@@ -1,0 +1,149 @@
+{
+ "save_id": "agent-20261122T064137",
+ "place_id": "outpost-m11-m63",
+ "name": "a clump of Black Marsh reeds at the weir's south end; the thief's sack drawn in among them (the record's sack hidden in the reeds)",
+ "at": "2026-11-22T06:41:37Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK061PLACE",
+    "base": "Black Marsh.esm:0D85C5",
+    "kind": "tree",
+    "pos": [
+     -82845.0,
+     -515110.0,
+     -14.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.69813
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -20.0
+    },
+    "why": "a clump of marsh reeds (Black Marsh's own) on the south bank at the weir's far end, which hides the thief's sack (record gives: a thief's sack hidden in the reeds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T06:41:37Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK062PLACE",
+    "base": "Black Marsh.esm:0D85C5",
+    "kind": "tree",
+    "pos": [
+     -82830.0,
+     -515205.0,
+     14.38
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.69813
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -20.0
+    },
+    "why": "a clump of marsh reeds (Black Marsh's own) on the south bank at the weir's far end, which hides the thief's sack (record gives: a thief's sack hidden in the reeds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T06:41:37Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK063PLACE",
+    "base": "Black Marsh.esm:0D85C5",
+    "kind": "tree",
+    "pos": [
+     -82870.0,
+     -515250.0,
+     25.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.69813
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -20.0
+    },
+    "why": "a clump of marsh reeds (Black Marsh's own) on the south bank at the weir's far end, which hides the thief's sack (record gives: a thief's sack hidden in the reeds)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T06:41:37Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK028PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82905.0,
+     -515170.0,
+     37.625
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.61087
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 2.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82845.0,
+     -515180.0,
+     37.625
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.61087
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 2.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T06:41:37Z"
+  }
+ ]
+}

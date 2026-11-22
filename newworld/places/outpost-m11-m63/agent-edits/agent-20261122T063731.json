@@ -1,0 +1,74 @@
+{
+ "save_id": "agent-20261122T063731",
+ "place_id": "outpost-m11-m63",
+ "name": "the offal stones at the water's edge below the weir (two small river-mud rock piles), which quest 2's crocodile faces",
+ "at": "2026-11-22T06:37:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK059PLACE",
+    "base": "Skyrim.esm:0BD137",
+    "kind": "rock",
+    "pos": [
+     -82620.0,
+     -514175.0,
+     -21.62
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -6.0
+    },
+    "why": "the offal stones at the water's edge below the weir, where the wardens throw the gutted catch's offal and the young crocodile waits (quest 2 need: the crocodile on the mud facing the offal stones; record dangers)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T06:37:31Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m11-m63.LOOK060PLACE",
+    "base": "Skyrim.esm:0F23F5",
+    "kind": "rock",
+    "pos": [
+     -82555.0,
+     -514200.0,
+     -23.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.44346
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -6.0
+    },
+    "why": "the offal stones at the water's edge below the weir, where the wardens throw the gutted catch's offal and the young crocodile waits (quest 2 need: the crocodile on the mud facing the offal stones; record dangers)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T06:37:31Z"
+  }
+ ]
+}

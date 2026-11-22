@@ -31,6 +31,8 @@
 {"place_id":"jal-veesa","space_id":"SeekhatFishersHut","ref_id":"King of the Murkmire.esp:1C1C95","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
 {"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:1CC12A","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
 {"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
+{"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK028PLACE","item_id":"Here There Be Monsters - Curse of Cipactli.esp:85C5A9","count":2,"why":"eel taken from the robbed weir traps (record hooks: the traps are robbed at night), stuffed in the thief's sack with the night's coin"}
+{"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK030PLACE","item_id":"Here There Be Monsters - Curse of Cipactli.esp:85C5A9","count":4,"why":"the day's catch from the weir traps waiting at the landing (kit fisher: home river-fish; record gives: fishing, eels and gar), bound for Jal-Veesa's market"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:065C97","count":1,"why":"a heel of bread a cutter of the new gang keeps for the morning"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0669A5","count":2,"why":"two leeks from the cook's pot"}
 {"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","item_id":"Skyrim.esm:01397E","count":1,"why":"an iron dagger (main plot, quest 1's side quest)"}
