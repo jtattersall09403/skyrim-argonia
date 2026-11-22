@@ -1668,6 +1668,13 @@
      "helstrom.BW3MJKVEFVDQXDWQ9VZB1S53NH"
     ],
     "why": "a bark window of a west house set against the boulder it leans on, as the source built it: the boulder hides the window's back; from the street the window reads in the house wall"
+   },
+   {
+    "check": "doors",
+    "ids": [
+     "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE"
+    ],
+    "why": "the Boatmen's Lodge's door is the source's own auto-load door at the moored ship's side (an AutoLoadDoor01, no leaf that opens); its rider lands on the pier beside the ship, where the ship's bulk stands near"
    }
   ]
  },
@@ -2137,7 +2144,8 @@
   "agent-20261122T021312",
   "agent-20261122T024901",
   "agent-20261122T024906",
-  "agent-20261122T024911"
+  "agent-20261122T024911",
+  "agent-20261122T032108"
  ],
  "wholesale": {
   "offset": 180.0,
