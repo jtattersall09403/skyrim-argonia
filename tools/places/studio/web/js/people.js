@@ -162,7 +162,9 @@ export class People {
       let m = this.markers.get(p.id);
       if (!m) { m = new THREE.Mesh(this.geo, new THREE.MeshLambertMaterial({ color: this.colour(p) })); m.userData.person = p.id; this.markers.set(p.id, m); }
       m.material.color.set(this.colour(p));
-      const w = this.where(p, a.time, S);
+      // a quest state shown (states.js) may switch a person off or move them
+      const st = a.questState, mv = st?.moves.get(p.id);
+      const w = st?.hidden.has(p.id) ? null : mv && S === 'exterior' ? { pos: mv, inside: false } : this.where(p, a.time, S);
       if (m.parent !== v.overlay) v.overlay.add(m);
       m.visible = !!w;
       if (w) {

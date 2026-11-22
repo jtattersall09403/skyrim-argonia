@@ -143,12 +143,20 @@ class Scene:
     info: dict = {}           # a room's space.json (the exterior: none)
     plan_box: list | None = None   # a room's plan box: its cut, else its shell's
 
-    def __init__(self, place_id: str, ops: list[dict] | None = None, places: Path = PLACES, space: str = "exterior"):
+    def __init__(self, place_id: str, ops: list[dict] | None = None, places: Path = PLACES, space: str = "exterior",
+                 state: str | None = None):
         self.place_id, self.space = place_id, space
         out = data_out()
         self.files = edits.load_place(places / place_id)
         if ops:
             self.files = edits.apply(self.files, ops, edits.bundle_source(out / "bundles"))
+        # a quest state (states.jsonl): the refs it switches off are not in the scene, as the game shows it then
+        from tools.places import states as quest_states
+        st = quest_states.find(quest_states.load(places / place_id), state) if (places / place_id / "states.jsonl").exists() else None
+        if st is not None:
+            for sp in self.files["spaces"].values():
+                sp["refs"] = [r for r in sp["refs"] if quest_states.enabled(r, st)]
+        self.state = (st or {}).get("id")
         st = _static(place_id, self.files["place"]["source_id"], out)
         self.bases, self.footprints = st["bases"], st["footprints"]
         if space != "exterior":
