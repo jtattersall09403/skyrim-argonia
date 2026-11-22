@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261122T042802",
+ "place_id": "outpost-m13-m65",
+ "name": "the cook's fire, its light and its spit raised onto the ground",
+ "at": "2026-11-22T04:28:02Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.NXM99WZH4NB1H2HNM2X58MDMCW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99927.83,
+     -528542.13,
+     265.27
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99927.83,
+     -528542.13,
+     320.27
+    ],
+    "rot": [
+     0,
+     0,
+     8.76731
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:28:02Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FS90X5XAF26JAY5Q59Z743Q5PW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99930.84,
+     -528530.76,
+     309.19
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99930.84,
+     -528530.76,
+     364.19
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T04:28:02Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99895.25,
+     -528491.71,
+     256.09
+    ],
+    "rot": [
+     0,
+     -1.2665987e-07,
+     3.85093
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99895.25,
+     -528491.71,
+     306.09
+    ],
+    "rot": [
+     0,
+     -1.2665987e-07,
+     3.85093
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T04:28:02Z"
+  }
+ ]
+}

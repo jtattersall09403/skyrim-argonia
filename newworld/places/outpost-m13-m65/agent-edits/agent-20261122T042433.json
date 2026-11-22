@@ -1,0 +1,138 @@
+{
+ "save_id": "agent-20261122T042433",
+ "place_id": "outpost-m13-m65",
+ "name": "the cook's stall given its table, a lantern and a barrel of lamp oil beside the fish rack; a grave cairn at the grave-stake's foot",
+ "at": "2026-11-22T04:24:33Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK046PLACE",
+    "base": "Skyrim.esm:02EC1F",
+    "kind": "static",
+    "pos": [
+     -99560.0,
+     -528620.0,
+     329.25
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the cook's stall of dried fish and lamp oil (record economy: the cook sells dried fish and lamp oil from a stall by the hut): the stall's table beside the fish rack",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:24:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK047PLACE",
+    "base": "Skyrim.esm:10C0E3",
+    "kind": "static",
+    "pos": [
+     -99500.0,
+     -528670.0,
+     328.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the cook's stall of dried fish and lamp oil (record economy: the cook sells dried fish and lamp oil from a stall by the hut): a barrel of lamp oil by the table",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T04:24:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK048PLACE",
+    "base": "Skyrim.esm:0D9304",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528610.0,
+     332.12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -10.0
+    },
+    "why": "the grave-stake by the gate for the cutters who died here (record faith): a low cairn of stones over a grave at the stake's foot, so the stake reads as a grave marker",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T04:24:33Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK049PLACE",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -99565.0,
+     -528615.0,
+     391.56
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 62.0
+    },
+    "why": "the cook's stall of dried fish and lamp oil (record economy): a lantern on the stall's table, the lamp oil it sells",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T04:24:33Z"
+  }
+ ]
+}
