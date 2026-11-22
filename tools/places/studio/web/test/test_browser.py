@@ -177,6 +177,12 @@ def pad(browser, server):
     p.page.context.close()
 
 
+@pytest.fixture(scope="module")
+def pad0(pad):
+    """The module's tab, for tests that open a tab of their own beside it."""
+    return pad
+
+
 def first_ref(pad, kind, space="exterior"):
     return pad.ev("([k, s]) => [...studio.model.spaces[s].refs.values()].find((r) => r.kind === k)", [kind, space])
 
@@ -215,7 +221,7 @@ def test_16_first_run_and_design(pad):
                      .filter(([, r]) => r.width < 44 || r.height < 44).map(([t, r]) => `${t} ${r.width}x${r.height}`)""")
     assert not small, f"touch targets under 44 px: {small}"
     labels = pad.ev("[...document.querySelectorAll('#rail button span')].map((s) => s.textContent)")
-    assert labels[:8] == ["Select", "Add", "People", "Quests", "Land", "Plants", "Paths", "Walking"]
+    assert labels[:9] == ["Select", "Add", "People", "Quests", "Land", "Paint ground", "Plants", "Paths", "Walking"]
 
 
 # ---------- 1: two views, layout, full screen, link, fingerprint ----------
@@ -1387,7 +1393,9 @@ def test_27_thumb_sticks(pad):
 
 
 # ---------- 28: the walking mesh: see it, say what to change with the pen, rebuild ----------
-def test_28_walking_mesh(browser, server):
+def test_28_walking_mesh(pad0, browser, server):
+    # the module's tab has finished saving first: a save of its own landing later would conflict with this tab's
+    pad0.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state) || !studio.dirtySave || studio.finalised", timeout=30000 * SLOW)
     pad = open_pad(browser, server, {"width": 1180, "height": 820})
     if pad.ev("studio.log.ops.length"):
         pad.ev("studio.loadSave({ ops: [] })")
@@ -1424,7 +1432,8 @@ def test_28_walking_mesh(browser, server):
     under = pad.ev("(pts) => pts.map((p) => studio.walkLayer.heightAt(p[0], p[1], p[2]))", op["walk"]["outline"])
     assert all(g is not None and abs(p[2] - g) < 2 for p, g in zip(op["walk"]["outline"], under)), [(p, g) for p, g in zip(op["walk"]["outline"], under) if g is None or abs(p[2] - g) >= 2]   # on the walking mesh under the pen
     assert "No walking here" in pad.page.locator("#panel-body").inner_text()
-    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=10000)
+    pad.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state)", timeout=30000 * SLOW)
+    assert pad.ev("document.getElementById('save-state').dataset.state") == "saved", pad.ev("[document.getElementById('save-state').textContent, studio.finalised, studio.revs]")
     save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
     assert any(o["op"] == "walk.add" and o["walk"]["id"] == op["walk"]["id"] for o in save["ops"])
     # Join these: two taps on the mesh
@@ -1475,7 +1484,9 @@ def test_28_walking_mesh(browser, server):
 
 
 # ---------- 29: paint ground: a texture and a brush from the panel, a pen stroke with pressure, undo, redo, save ----------
-def test_29_paint_ground(browser, server):
+def test_29_paint_ground(pad0, browser, server):
+    # the module's tab has finished saving first: a save of its own landing later would conflict with this tab's
+    pad0.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state) || !studio.dirtySave || studio.finalised", timeout=30000 * SLOW)
     pad = open_pad(browser, server, {"width": 1180, "height": 820})
     if pad.ev("studio.log.ops.length"):
         pad.ev("studio.loadSave({ ops: [] })")
@@ -1503,7 +1514,8 @@ def test_29_paint_ground(browser, server):
     pad.page.wait_for_timeout(100)
     live = pad.ev("({ ops: studio.log.ops.length, drawn: studio.ours.terrainMesh.paint().length, model: studio.model.paint.size })")
     assert live == {"ops": n0, "drawn": 1, "model": 0}, live
-    pad.pen("mouseReleased", *line[-1]); pad.page.wait_for_timeout(80)
+    pad.pen("mouseReleased", *line[-1])
+    pad.page.wait_for_function("(n) => studio.log.ops.length === n + 1", arg=n0, timeout=10000 * SLOW)   # the stroke is an op
     pad.ev("studio.log.undo()")
     pad.pen_drag(line, pressure=0.9, steps=6)
     op = pad.ev("studio.log.applied().at(-1)")
@@ -1512,9 +1524,14 @@ def test_29_paint_ground(browser, server):
     assert len(pts) >= 2 and all(abs(p[2] - 0.9) < 0.01 for p in pts), pts    # the pen's pressure kept with each point
     assert 3200 < min(p[0] for p in pts) < 3600 and 3800 < max(p[0] for p in pts) < 4200, pts
     # the land draws it: the painted texture is full under the stroke's middle (the rule the build shares)
-    full = pad.ev("""async (k) => { const { cellPaint } = await import('./js/paint_rule.js');
-                     const c = cellPaint(studio.ours.terrainMesh.paint(), [0, 0]); return c ? c.w.get(k)[29 * 33 + 29] : null; }""", key)
-    assert full is not None and abs(full - 0.8 * (0.5 + 0.5 * 0.9)) < 0.01, full   # strength 80%, pressure 0.9
+    # read at the land vertex nearest the stroke's own middle point (where the pen met the ground, which an earlier
+    # test's finalised land may have raised), not at a fixed vertex
+    mid = pts[len(pts) // 2]
+    col, row = round(mid[0] / 128), round(mid[1] / 128)
+    full = pad.ev("""async ([k, cell, i]) => { const { cellPaint } = await import('./js/paint_rule.js');
+                     const c = cellPaint(studio.ours.terrainMesh.paint(), cell); return c ? c.w.get(k)[i] : null; }""",
+                  [key, [col // 32, row // 32], (row % 32) * 33 + col % 32])
+    assert full is not None and abs(full - 0.8 * (0.5 + 0.5 * 0.9)) < 0.01, (full, pts)   # strength 80%, pressure 0.9
     pad.shot("29-paint-ground")
     # the eraser: a second stroke; undo takes it away, redo brings it back
     pad.page.locator("#panel-body .seg button", has_text="Eraser").click()
@@ -1533,6 +1550,9 @@ def test_29_paint_ground(browser, server):
 
 # ---------- a thing seated on another keeps a raise or lower ----------
 def test_23_raise_of_a_seated_door_stays(pad, browser, server):
+    # an earlier test finalised this tab's save and other tabs saved the place since: carry on from the latest save, as
+    # opening the studio again would (a finalised tab saves nothing more)
+    pad.ev("async () => { const s = await (await fetch(`/api/place/${studio.place.place_id}/saves`)).json(); const a = s.find((x) => x.save_id === 'autosave'); if (a) studio.revs.autosave = a.rev; studio.finalised = false; }")
     pad.page.click("#rail [data-tool=select]")
     ids = pad.ev("""(() => { const rs = [...studio.model.spaces.exterior.refs.values()];
         const d = rs.find((r) => r.kind === 'door'), b = rs.find((r) => r.kind === 'building'); return [d.id, b.id]; })()""")
@@ -1564,7 +1584,8 @@ def test_23_raise_of_a_seated_door_stays(pad, browser, server):
     pad.ev("studio.log.undo()")
     assert z() == z1
     # Save and reload: the same height
-    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=15000 * SLOW)
+    pad.page.wait_for_function("['saved', 'conflict', 'failed', 'tablet'].includes(document.getElementById('save-state').dataset.state)", timeout=15000 * SLOW)
+    assert pad.ev("document.getElementById('save-state').dataset.state") == 'saved', pad.ev("document.getElementById('save-state').textContent")
     other = open_pad(browser, server, LANDSCAPE, choose="Continue the unsaved work")
     other.page.wait_for_function("([id, v]) => studio.model.spaces.exterior.refs.get(id)?.seat?.dz === v", arg=[door, dz1], timeout=15000 * SLOW)
     assert abs(other.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door) - z1) < 0.01
@@ -1768,7 +1789,7 @@ def test_33_camera_about_the_selection(pad):
     pad.finger_drag(a, (a[0] + 120, a[1] - 30))
     s1 = pad.screen("ours", c)
     assert pad.ev("studio.ours.view.rig.yaw") != yaw0
-    assert abs(s1[0] - s0[0]) < 6 and abs(s1[1] - s0[1]) < 6, (s0, s1)
+    assert abs(s1[0] - s0[0]) < 6 and abs(s1[1] - s0[1]) < 6, (s0, s1, c, pad.ev("studio.pivotFor(studio.ours.view)"), pad.ev("[studio.sticks?.active(), studio.sticks?.state, studio.linked, studio.ours.view.rig.pitch, studio.ours.view.rig.dist]"))
     d0 = pad.ev("studio.ours.view.rig.dist")
     pad.pinch((box[0] + box[2] * 0.3, box[1] + box[3] * 0.5), 60, 140)
     s2 = pad.screen("ours", c)

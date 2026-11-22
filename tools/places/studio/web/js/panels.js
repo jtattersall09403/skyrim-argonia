@@ -683,6 +683,9 @@ export class Panels {
     let list = [];
     try { list = (await api.saves(pid)) || []; } catch (e) { if (!/404/.test(e.message)) a.toast(`Your saves could not be listed: ${e.message}`, 8000); return null; }
     const nOps = (x) => (Array.isArray(x.ops) ? x.ops.length : x.ops ?? 0);
+    // an emptied autosave (a finalise empties it) still has its revision: this tab's first save goes on from it
+    const auto = (list.saves || list).find((x) => x.save_id === 'autosave');
+    if (auto && !a.revs.autosave) a.revs.autosave = auto.rev || 0;
     list = (list.saves || list).map((x) => ({ ...x, ops: nOps(x) })).filter((x) => x.ops > 0 && !x.final)
       .sort((x, y) => (y.save_id === 'autosave') - (x.save_id === 'autosave') || String(y.at).localeCompare(String(x.at)));
     if (!list.length) return null;
