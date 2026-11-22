@@ -85,6 +85,9 @@ def resolve(pdir: Path, name: str | None = None, refs: list[dict] | None = None,
                  or any(r.get("id") in (s.get("hide") or []) + (s.get("show") or []) for s in states)]
     hidden = [r["id"] for r in refs if not enabled(r, st)]
     hidden += [p["id"] for p in people if st and p["id"] in (st.get("hide") or [])]
+    # a quest's person or thing at the place (quests.jsonl), named by its quest ref or its spot id
+    hidden += [q["id"] for q in jsonl(Path(pdir) / "quests.jsonl")
+               if st and ({q.get("ref"), q.get("id")} & set(st.get("hide") or []))]
     return {"state": st, "hidden": hidden, "shown": [r["id"] for r in switching if enabled(r, st)],
             "moves": dict((st or {}).get("moves") or {})}
 

@@ -220,6 +220,25 @@ def load(pdir: Path) -> list[dict]:
     return jsonl(Path(pdir) / "promises.jsonl")
 
 
+def copied_refs(pdir: Path, source_id: str | None, bundles: Path | None = None) -> set[str]:
+    """The refs of every room copied from a source cell (`copy_of`), as the build composes it: the source's own refs
+    keep their source keys as ids (a carried pay chest, a bed), so a promise can name them. Empty without the bundles."""
+    from tools.places import draft_bundle
+    bundles = Path(bundles) if bundles else ROOT / "out" / "places" / "bundles"
+    out: set[str] = set()
+    sp = Path(pdir) / "spaces"
+    for d in sorted(p for p in sp.iterdir() if p.is_dir()) if sp.is_dir() else []:
+        info = json.loads((d / "space.json").read_text()) if (d / "space.json").exists() else {}
+        if not info.get("copy_of") or not source_id:
+            continue
+        try:
+            rows = draft_bundle.copy_space(info, jsonl(d / "refs.jsonl"), bundles / f"src.{source_id}")
+        except (OSError, KeyError, ValueError):
+            continue
+        out |= {r["id"] for r in rows if r.get("id")}
+    return out
+
+
 def evidence(pdir: Path) -> dict:
     """What the place files hold, as ids: refs (every space's, the ledger's placed ids and source keys), people,
     quest spots, states and the plan's gives."""
@@ -233,6 +252,7 @@ def evidence(pdir: Path) -> dict:
             refs.add(r.get("src"))
     refs.discard(None)
     place = json.loads((pdir / "place.json").read_text()) if (pdir / "place.json").exists() else {}
+    refs |= copied_refs(pdir, place.get("source_id"))
     gives = {g.get("kind") for g in ((place.get("draft") or {}).get("plan") or {}).get("gives") or []}
     qs = jsonl(pdir / "quests.jsonl")
     return {"refs": refs, "people": {p["id"] for p in jsonl(pdir / "people.jsonl")} | {p.get("name") for p in jsonl(pdir / "people.jsonl")},
