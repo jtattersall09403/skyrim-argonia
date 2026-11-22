@@ -315,3 +315,14 @@ def test_a_quest_spot_on_a_door_is_walked_to_at_the_door_s_arrival():
     got = [t["pos"] for t in pw.points_of_interest(sc, files)["targets"]]
     assert [102.0, 198.0, 52.0] not in got and [100.0, 120.0, 0.0] in got   # one walk: the door's, at its arrival
     assert [900.0, 900.0, 0.0] in got
+
+
+
+def test_a_stall_s_awning_over_the_eye_is_no_sunk_house_but_a_roof_at_head_height_is():
+    """A building filling the lens whose top stands 130 u over the eye (a market stall's awning, a mud dome) is as
+    built; one whose top is at head height is a house sunk to its eaves."""
+    from tools.places.look import playwalk as pw
+    near = {"kind": "building", "edid": "01Market1", "share": 0.76, "dist": 21.0}
+    ok = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=129)})
+    bad = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=40)})
+    assert ok["fault"] != "place" and bad["fault"] == "place" and "eaves" in bad["why"]

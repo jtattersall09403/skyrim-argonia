@@ -48,7 +48,8 @@ NUDGES_SIDE = (24.0, -24.0, 48.0, -48.0)
 REACH = 300.0         # a target this far off the mesh across the plan is walked to from its nearest triangle
 REACH_Z = 220.0
 OPEN_UNDER = re.compile(r"platform|deck|walkway|dock|pier|bridge|boardwalk|stilt|gangway", re.I)
-EAVES_OVER_EYE = 150.0   # a building filling the lens whose top is under this over the eye: its roof is at head height
+EAVES_OVER_EYE = 96.0   # a building filling the lens whose top is under this over the eye: its roof is at head height (a
+# market stall's awning or a mud dome stands 130 to 150 over it)
 DOOR_OVER = 150.0   # a door this far over the end of the walk to it: its arrival lies under it
 TOUR_STRIDE = 768.0   # a station every this many units on a tour
 TIMES = {"page": 0.0, "judge": 0.0, "save": 0.0}   # seconds a run spent in the page, judging and saving
