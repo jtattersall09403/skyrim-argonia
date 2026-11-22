@@ -1,0 +1,185 @@
+{
+ "save_id": "agent-20261122T033401",
+ "place_id": "jal-veesa",
+ "name": "the straw mats taken out (they read as bedrolls); the stall turned to open on the lane",
+ "at": "2026-11-22T03:34:01Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK039PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK039PLACE",
+    "base": "Skyrim.esm:101A36",
+    "kind": "static",
+    "pos": [
+     -51330.0,
+     -509500.0,
+     438.13
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's mats laid out to dry beside the lane (look: 'mats drying'): woven straw mats from Tsemeena's plaiting, laid on the dry bank by the stall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:34:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK040PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK040PLACE",
+    "base": "Skyrim.esm:101A36",
+    "kind": "static",
+    "pos": [
+     -51300.0,
+     -509760.0,
+     416.17
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     -0.17453
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's mats laid out to dry beside the lane (look: 'mats drying'): woven straw mats from Tsemeena's plaiting, laid on the dry bank by the stall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:34:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK041PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK041PLACE",
+    "base": "Skyrim.esm:101A36",
+    "kind": "static",
+    "pos": [
+     -51130.0,
+     -509560.0,
+     469.55
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.61087
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's mats laid out to dry beside the lane (look: 'mats drying'): woven straw mats from Tsemeena's plaiting, laid on the dry bank by the stall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:34:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK042PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK042PLACE",
+    "base": "Skyrim.esm:101A36",
+    "kind": "static",
+    "pos": [
+     -51110.0,
+     -509820.0,
+     444.05
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.08727
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the record's mats laid out to dry beside the lane (look: 'mats drying'): woven straw mats from Tsemeena's plaiting, laid on the dry bank by the stall",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:34:01Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK033PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51620.0,
+     -509820.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51620.0,
+     -509820.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.14159
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T03:34:01Z"
+  }
+ ]
+}
