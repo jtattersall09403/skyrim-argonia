@@ -1,0 +1,182 @@
+{
+ "save_id": "agent-20261122T012700",
+ "place_id": "helstrom",
+ "name": "the cave mouth raised to its new ground",
+ "at": "2026-11-22T01:27:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2RRAA10C99RD1ZB1DX2D1TDPG9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38203.27,
+     -626654.04,
+     840.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38203.27,
+     -626654.04,
+     872.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T01:27:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38300.0,
+     -626300.0,
+     156.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38300.0,
+     -626300.0,
+     188.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.7,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T01:27:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     608.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     640.61
+    ],
+    "rot": [
+     -0.59999895,
+     0,
+     5.23599
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T01:27:00Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.JB65E1GWCX2WD3XB7BHQA549RT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38529.33,
+     -625468.52,
+     255.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38529.33,
+     -625468.52,
+     287.72
+    ],
+    "rot": [
+     0,
+     0,
+     6.23599
+    ],
+    "scale": 10,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-22T01:27:00Z"
+  }
+ ]
+}
