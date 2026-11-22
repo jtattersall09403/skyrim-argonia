@@ -1670,12 +1670,12 @@
     "why": "a bark window of a west house set against the boulder it leans on, as the source built it: the boulder hides the window's back; from the street the window reads in the house wall"
    },
    {
-    "check": "doors",
+    "check": "overlap",
     "ids": [
-     "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE",
-     "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM"
+     "helstrom.BYTMNX7Q8WSC0HGGRKJYBE21WF",
+     "helstrom.HNZ57ZW8PJPXDEZKGPCPN37D2S"
     ],
-    "why": "the Boatmen's Lodge's door is the source's own auto-load door at the moored ship's side (an AutoLoadDoor01, no leaf that opens); its rider lands on the pier beside the ship, where the ship's bulk stands near"
+    "why": "a red lamp hung in the crown of a great tree, as the source hangs it: its fixture sits among the branches"
    }
   ]
  },
