@@ -142,6 +142,9 @@ added here the day they are made, with the date and the issue.
   the mesh probe and the checks close the loop (2026-11-22, on Helstrom's 40-minute walks).
 - A wider gear ladder (more packs, relabelled where they fit the feel) is for places from here on: the six Act I
   places are not restocked for it (2026-11-22).
+- The gear ladder's priorities are breadth and fit to the feel and lore, across all our factions and cultures;
+  a piece need not be exact, only fit when relabelled. Crossbows (Dawnguard) are in; a glass-recolour obsidian
+  is fine unless a better one exists (2026-11-22).
 
 ## The game
 
