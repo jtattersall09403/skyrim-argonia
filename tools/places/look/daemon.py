@@ -209,12 +209,18 @@ class Daemon:
             self.space = space
         return getattr(self, "space_info", {})
 
+    def page_state(self) -> str | None:
+        """The page shows the place in the call's quest state (`--state`), else in the game's start."""
+        want = getattr(self, "qstate", None)
+        return self.page.evaluate("(s) => agent.questState(s)", want)
+
     def scene(self, place: str, strokes, space: str = "exterior") -> Scene:
-        key = (place, space, json.dumps(flat(strokes), sort_keys=True), json.dumps(self.drew, sort_keys=True))
+        qs = getattr(self, "qstate", None)
+        key = (place, space, json.dumps(flat(strokes), sort_keys=True), json.dumps(self.drew, sort_keys=True), qs)
         if key not in self.scenes:
             if len(self.scenes) > 3:
                 self.scenes.clear()
-            self.scenes[key] = Scene(place, flat(strokes), space=space)
+            self.scenes[key] = Scene(place, flat(strokes), space=space, state=qs)
             if space == "exterior":   # a unit's name (house.SeekhatEldersHut, dock.03) names the whole unit
                 from tools.places.look import verbs
                 verbs.units_aware(self.scenes[key], place)

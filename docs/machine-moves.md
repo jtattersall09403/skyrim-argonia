@@ -50,7 +50,12 @@ is never touched), tool scratch under `/tmp` untouched for two days, a session's
 has ended (no process of it runs, its transcript has not been written for three days) and nothing in the folder
 changed for two days, and the cached mod archives the
 bucket's `mods/` holds once they pass 1 GB or the disk is under its floor (`stack.py evict` checks each against the
-manifest's hash first; `stack.py fetch` takes it back in minutes).
+manifest's hash first; `stack.py fetch` takes it back in minutes). Also: subagent transcripts
+(`~/.claude/projects/<project>/<session>/subagents/`) unwritten for 7 days, of a session that has ended by the
+same test (top-level session transcripts are never touched); VS Code CLI servers (`~/.vscode/cli/servers/Stable-*`)
+but the newest and any a running process uses; Claude CLI versions (`~/.local/share/claude/versions`) but the one
+`claude` resolves to, the newest other and any a process runs; and the pip cache (`~/.cache/pip`) once it passes
+200 MB. `disk.sh report` shows how much of the transcripts is subagent transcripts.
 
 **Bucket** (`s3://argonia-private-050977237313`). Things are deleted only under `nw/terrain/`, `nw/plugin/` and
 `nw/lod/`, and there only a build that no reference names, that is not the newest, and that is over a day old.

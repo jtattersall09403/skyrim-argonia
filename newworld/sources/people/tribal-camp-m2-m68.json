@@ -21,7 +21,7 @@
     "role": "levy"
    },
    "role": "guard",
-   "trade": "the Unbound's hired warband, night watch; keeps the key to the cage",
+   "trade": "the Unbound's hired warband, day watch at the longhouse fire; keeps the key to the cage",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -52,7 +52,7 @@
     "role": "levy"
    },
    "role": "guard",
-   "trade": "the Unbound's hired warband, day watch",
+   "trade": "the Unbound's hired warband, night watch",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -60,7 +60,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She guards the jars by day for the Unbound's coin. She once took tolls on the road from Stormhold to Helstrom and misses the travellers more than the coin.",
+     "text": "She guards the jars by night for the Unbound's coin. She once took tolls on the road from Stormhold to Helstrom and misses the travellers more than the coin.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:tribal-camp-m2-m68/history",

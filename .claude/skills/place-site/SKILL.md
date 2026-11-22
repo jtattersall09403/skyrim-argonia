@@ -37,6 +37,11 @@ section`) across two or three axes at each turn worth trying: set `rot_deg`, run
 
 ## 2. How much of the source's ground to bring
 
+The world's ground is a fixed base, never regenerated (skill `world-build`): everything this skill does to the
+ground (the carried ground, a mound with the land brush, a pad, a bank) is the place's own patch, in its
+`land.jsonl` and `paint.jsonl`, laid by its build over the cells the place covers. Never ask for the world's
+ground to change to fit a place.
+
 The source's builders shaped their ground and built on it, so their place fits the ground it stood on. Decide by
 sections, per part of the place:
 

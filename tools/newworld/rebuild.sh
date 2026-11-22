@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # The new world's rebuild, one command (tools/newworld/rebuild.py holds the stages, their order, keys and checks; the
 # recipe is the skill world-build):
-#   tools/newworld/rebuild.sh plan         the order, and which stages are stale (and why) or current
+#   tools/newworld/rebuild.sh plan         the province's ground (a fixed base, never regenerated), the order, and which
+#                                          stages are stale (and why) or current; the owed ground patches
 #   tools/newworld/rebuild.sh small [plan|run|play] [--from <out/newworld>]   the same stages on the small test world
 #                                          (one block of the real build, out/newworld-small/): minutes; run it before
 #                                          a full run, whose preflight refuses stage code the block has not proved

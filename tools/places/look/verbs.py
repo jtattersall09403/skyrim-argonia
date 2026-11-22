@@ -54,9 +54,27 @@ def _save(img, path: str, cam: dict | None = None, extra: dict | None = None) ->
     return path
 
 
+def take_state(args: list[str]) -> tuple[list[str], str | None]:
+    """`--state <name>` out of a call's words: the quest state (the place's states.jsonl) the call sees the place in."""
+    if "--state" not in args:
+        return args, None
+    i = args.index("--state")
+    if i + 1 >= len(args):
+        raise ValueError("--state <state id or name> (python -m tools.places states <place> lists them)")
+    return args[:i] + args[i + 2:], args[i + 1]
+
+
 def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
     from tools.places.look.daemon import save_session
     space = "exterior"
+    args, d.qstate = take_state(args)
+    if d.qstate:
+        from tools.places import states
+        from tools.places.look.scene import PLACES
+        st = states.find(states.load(PLACES / place), d.qstate)
+        if st is None:
+            raise ValueError(f"{place} has no quest state {d.qstate!r}; `python -m tools.places states {place}` lists them")
+        d.qstate = st["id"]
     if verb == "in":   # look <place> in <room> <verb> ...: every verb inside a room
         if len(args) < 2:
             raise ValueError("in <room id or the name its door shows> <verb> ...")
@@ -184,6 +202,7 @@ def view(d, place, strokes, verb, args, keep=False, cam=None, space="exterior") 
     d.open(place)
     d.sync(strokes)
     d.go(space)
+    d.page_state()
     sc = d.scene(place, strokes, space)
     inside = space != "exterior"
     pos, o = _opts(args, {"from": True, "eye": False, "high": False, "top": False, "plain": False, "size": True,

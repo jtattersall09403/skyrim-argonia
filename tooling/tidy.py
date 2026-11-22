@@ -27,6 +27,8 @@ IDLE_H = float(os.environ.get("IDLE_H", "3"))          # a worktree untouched th
 LOUD_H = float(os.environ.get("TIDY_LOUD_H", "24"))    # a kept worktree older than this is shouted at session start
 JOB_DAYS = float(os.environ.get("TIDY_JOB_DAYS", "2"))  # job logs and scratch older than this go
 SESSION_DAYS = float(os.environ.get("TIDY_SESSION_DAYS", "3"))  # a session whose transcript is this old has ended
+SUB_DAYS = float(os.environ.get("TIDY_SUBAGENT_DAYS", "7"))  # a subagent transcript this old is no longer read
+PIP_MB = float(os.environ.get("TIDY_PIP_MB", "200"))  # the pip cache goes once it holds this much
 EVICT_GB = float(os.environ.get("TIDY_EVICT_GB", "1"))  # cached mod archives go once they hold this much
 FLOOR_GB = float(os.environ.get("DISK_FLOOR_GB", "15"))  # job_guard.sh run tidies the disk first under this
 BUCKET_EVERY_H = float(os.environ.get("TIDY_BUCKET_EVERY_H", "24"))
@@ -527,6 +529,72 @@ def stale_scratch(now: float, days: float = JOB_DAYS, tmp: Path = None, projects
     return out
 
 
+def old_subagent_transcripts(now: float, days: float = SUB_DAYS, projects: Path = None, procs: set[str] = None,
+                             live_days: float = SESSION_DAYS) -> list[tuple[Path, str]]:
+    """Subagent transcripts (<projects>/<project>/<session>/subagents/*) not written for `days`, of a session that is
+    not live (session_live). A session's own top-level transcript is never listed."""
+    projects = projects or HOME / ".claude/projects"
+    procs = session_procs() if procs is None else procs
+    out, live = [], {}
+    for d in projects.glob("*/*/subagents"):
+        sess = d.parent
+        if d.is_symlink() or not d.is_dir():
+            continue
+        if sess.name not in live:
+            live[sess.name] = session_live(sess.name, now, procs, live_days, projects)
+        if live[sess.name]:
+            continue
+        for f in d.iterdir():
+            try:
+                if not f.is_symlink() and now - _newest(f) >= days * 86400:
+                    out.append((f, f"a subagent transcript of a session that has ended, unwritten over {days:g} days"))
+            except OSError:
+                pass
+    return out
+
+
+def _running_uses(root: Path) -> bool:
+    """Does a live process run from, stand in or carry on its command line a path under `root`?"""
+    r = str(root)
+    for p in Path("/proc").glob("[0-9]*"):
+        try:
+            if os.readlink(p / "exe").startswith(r) or _inside(Path(os.readlink(p / "cwd")), root):
+                return True
+            if r.encode() in (p / "cmdline").read_bytes():
+                return True
+        except OSError:
+            pass
+    return False
+
+
+def old_vscode_servers(servers: Path = None) -> list[tuple[Path, str]]:
+    """VS Code CLI servers (Stable-*) but the newest by modification time and any a running process uses."""
+    servers = servers or HOME / ".vscode/cli/servers"
+    found = sorted((d for d in servers.glob("Stable-*") if d.is_dir() and not d.is_symlink()),
+                   key=lambda d: d.stat().st_mtime, reverse=True)
+    return [(d, "an old VS Code server") for d in found[1:] if not _running_uses(d)]
+
+
+def old_claude_versions(versions: Path = None, current: Path = None) -> list[tuple[Path, str]]:
+    """Claude CLI versions but the one `claude` resolves to, the newest other, and any a process runs."""
+    versions = versions or HOME / ".local/share/claude/versions"
+    if current is None:
+        c = shutil.which("claude", path=f"{HOME}/.local/bin:{os.environ.get('PATH', '')}")
+        current = Path(c).resolve() if c else None
+    vs = sorted((v for v in versions.iterdir() if not v.is_symlink()), key=lambda v: v.stat().st_mtime, reverse=True) \
+        if versions.is_dir() else []
+    keep = [v for v in vs if current and (v == current or _inside(current, v))]
+    keep += [v for v in vs if v not in keep][:1]
+    return [(v, "an old Claude CLI version") for v in vs if v not in keep and not _running_uses(v)]
+
+
+def big_pip_cache(cache: Path = None, mb: float = None) -> list[tuple[Path, str]]:
+    cache, mb = cache or HOME / ".cache/pip", PIP_MB if mb is None else mb
+    if cache.is_dir() and not cache.is_symlink() and _size(cache) > mb * 2**20:
+        return [(cache, f"the pip cache, over {mb:g} MB (pip refetches what it needs)")]
+    return []
+
+
 def tidy_disk(main: Path, dry: bool, log) -> int:
     now, freed = time.time(), 0
     verb = "would delete" if dry else "deleted"
@@ -553,6 +621,16 @@ def tidy_disk(main: Path, dry: bool, log) -> int:
         log(f"{verb} {p} ({what}, untouched over {JOB_DAYS:g} days, {n / 2**20:.0f} MB)")
         if not dry:
             _rm(p)
+    for what, items in (("subagent transcripts", old_subagent_transcripts(now)), ("VS Code servers", old_vscode_servers()),
+                        ("Claude CLI versions", old_claude_versions()), ("pip cache", big_pip_cache())):
+        if not items:
+            continue
+        n = sum(_size(p) for p, _ in items)
+        freed += n
+        log(f"{verb} {len(items)} {what} ({n / 2**20:.0f} MB; {items[0][1]})")
+        if not dry:
+            for p, _ in items:
+                _rm(p)
     # cached mod archives the bucket's mods/ holds: stack.py evict checks each against the manifest's hash, uploads
     # what the bucket lacks, then deletes the local copy; a restage fetches it back. Archives no manifest row names
     # stay. Only once they are worth it (EVICT_GB) or the disk is under its floor: a small cache saves refetching.

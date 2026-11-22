@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261122T070613",
+ "place_id": "outpost-m11-m63",
+ "name": "the weir's log walk (both logs and the trap on it) drawn 80 north so its bank end lies on the north bank and is walked onto",
+ "at": "2026-11-22T07:06:13Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82973.9,
+     -514365.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82973.9,
+     -514285.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T07:06:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK021PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82973.9,
+     -514965.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82973.9,
+     -514885.6,
+     54.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T07:06:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m11-m63.LOOK032PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -82960.0,
+     -514620.0,
+     75.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -82960.0,
+     -514540.0,
+     75.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T07:06:13Z"
+  }
+ ]
+}

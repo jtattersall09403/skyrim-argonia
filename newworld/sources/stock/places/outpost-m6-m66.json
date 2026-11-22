@@ -2,11 +2,12 @@
  "place_id": "outpost-m6-m66",
  "about": "Teel-Fen Weir's stock (place-stock skill): derived by `stock derive`, read against the place's facts. The camp chest by the wardens' beds is the household's store; the Owing's goods chest under the ground is the jail stage's and holds nothing; the sap-takers' pack at the reed hide delivers the treasure. Who the people are is newworld/sources/people/outpost-m6-m66.json.",
  "facts": {
-  "wealth": "P2",
-  "ceiling": "T2",
+  "wealth": "P1",
+  "ceiling": "T1",
   "open": "T1",
   "danger": "D3",
-  "why": "score 32 = outpost 6 + importance 1 5 + population 23 14 + trade 4 (1 roads, 1 traders) + economy +3 (+market) -> P2 Modest; ceiling T2 (wary: its people's own goods, its wealth's T2; reward band D2 T2)"
+  "why": "score 26 = outpost 6 + importance 1 5 + population 5 8 + trade 4 (1 roads, 1 traders) + economy +3 (+market) -> P1 Poor; ceiling T1 (the database's place_wealth row: the record's population is 5)",
+  "mix_why": "metal 0% against an expected 24%: bog iron stands at T2 on the ladder and the weir's ceiling is T1, so its wardens carry the marsh's own bone, flint and wood; their only bought make is the levy's Saxhleel issue"
  },
  "goods": [
   {
@@ -57,10 +58,10 @@
    "person": "outpost-m6-m66.BNWFXXF0AM8MRVF4KM7MPGHHVD",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16D",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy, night watch; leads the wardens on watch: a sword of T2 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the night watch's weapon within the weir's T1 ceiling: a Naga macana, a wooden club edged with flint, traded from the Naga bands of the marsh; he walks the log boom in the dark with a club, not a blade (kit guard: a flint blade)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -105,10 +106,16 @@
    "person": "outpost-m6-m66.VH5KST5J9YZKCX5FDTFKQCG8CS",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "PrvtI_ArgonianWeapons.esp:000807",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy, day watch: a sword of T2 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the day watch's sidearm within the weir's T1 ceiling: an Argonian bone shortsword, short enough to wear while she wades the traps (kit guard: a bone blade)"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:000826",
+     "count": 1,
+     "worn": false,
+     "why": "the wooden-handled fishing knife she cuts the eel traps free with (Argonian wood, T1; her trade: works the eel traps)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -153,10 +160,10 @@
    "person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
-     "why": "minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the tree-minder's knife for drawing sap at the scar and cutting fungus: an Argonian bone dagger (bone, T1); nothing forged is carried at the Hist (kit priest)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -171,10 +178,16 @@
    "person": "outpost-m6-m66.1E488HDG6T5QBFE131SAZPE7BH",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "eel-trapper at the weir: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "an eel-trapper's gutting knife: a Saxhleel flint fishing knife (flint, T1; kit fisher)"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00080D",
+     "count": 1,
+     "worn": false,
+     "why": "the bone fishing harpoon he lifts the eel traps with from the log boom (Argonian bone, T1; kit fisher)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -189,10 +202,10 @@
    "person": "outpost-m6-m66.1KMM80HDW5J3X6H9W7F0P42E82",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "cook at the pot by the drying rack: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the cook's knife for the day's eels and gar: a Naga tecpatl, a flint blade on a wooden haft traded from the Naga bands (flint, T1; kit host: a flint kitchen knife)"
     },
     {
      "item": "Skyrim.esm:00000F",

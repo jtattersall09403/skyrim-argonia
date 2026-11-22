@@ -222,22 +222,6 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m11-m63.LOOK020PLACE",
-     "outpost-m11-m63.LOOK017PLACE"
-    ],
-    "why": "the log walk laid along the top of the woven weir's fences, which carry it: the weir is the fences with the walk on them (section 145744128-0017)"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m11-m63.LOOK021PLACE",
-     "outpost-m11-m63.LOOK019PLACE"
-    ],
-    "why": "the log walk laid along the top of the woven weir's fences, which carry it: the weir is the fences with the walk on them (section 145744128-0017)"
-   },
-   {
-    "check": "overlap",
-    "ids": [
      "outpost-m11-m63.LOOK032PLACE",
      "outpost-m11-m63.LOOK020PLACE"
     ],
@@ -250,6 +234,22 @@
      "outpost-m11-m63.CTPG99Z82K1N8ZYDWPPBVPAAD8"
     ],
     "why": "a lifted weir trap set down on the landing deck, its frame on the boards"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK059PLACE",
+     "outpost-m11-m63.LOOK060PLACE"
+    ],
+    "why": "the two small river-mud rock piles laid into each other as one heap of offal stones at the water's edge below the weir (look 063947014-0001)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m11-m63.LOOK020PLACE",
+     "outpost-m11-m63.LOOK016PLACE"
+    ],
+    "why": "the log walk laid along the top of the woven weir's fences, which carry it: the weir is the fences with the walk on them (section 070159754-0001)"
    }
   ]
  },
@@ -390,6 +390,9 @@
   "agent-20261121T154103",
   "agent-20261121T155000",
   "agent-20261121T160846",
-  "agent-20261121T161609"
+  "agent-20261121T161609",
+  "agent-20261122T063731",
+  "agent-20261122T064137",
+  "agent-20261122T070613"
  ]
 }

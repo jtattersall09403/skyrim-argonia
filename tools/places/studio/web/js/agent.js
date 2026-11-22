@@ -3,6 +3,7 @@
 // own edit log, and draw one shot from a camera the tool chose (game coordinates, Z up) into a PNG.
 import * as THREE from 'three';
 import { pendingModels, drainAll } from './objects.js';
+import { findState, defaultState } from './states.js';
 
 const css = `html.agent body > *:not(#stage) { display: none !important; }
 html.agent #stage > *:not(#views), html.agent #views > *:not(#view-ours):not(.stage-canvas), html.agent #view-ours > *:not(.canvas-holder) { display: none !important; }
@@ -191,6 +192,14 @@ export function install(studio) {
       const out = studio.log.push(ops.map((o) => ({ ...o }))); return out.map((o) => o.n);
     },
     undo() { return studio.log.undo().length; },
+    // The quest state the view shows (states.js): by id or name; none: the game's start. Returns the state and how many
+    // refs it hides.
+    questState(name) {
+      const st = name ? findState(studio.states, name) : defaultState(studio.states);
+      if (name && !st) throw new Error(`no quest state ${name}`);
+      if ((st?.id || null) !== (studio.stateId || null)) studio.setQuestState(st?.id || null, { quiet: true });
+      return { state: st?.id || null, hidden: studio.questState?.hidden.size || 0 };
+    },
     reset() { studio.log.goto(0); studio.log.ops.length = 0; studio.log.cursor = 0; return true; },
     // Which space the view shows: 'exterior' or a room, as the studio enters it (main.js showSpace); a room is lit by
     // its own lighting (the game's, the studio's night mode), read from the cell it is copied from before the first shot.

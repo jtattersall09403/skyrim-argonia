@@ -58,9 +58,12 @@ variant, never over the place.
 
 ## After a world rebuild or single-thing edits
 
-Bring a place level only when `python3 -m tools.places worldparts <place_id>` names world records that moved under
-it, in the order of skill `world-build`. After edits of single placed things, `tools/newworld/rebuild.sh plan` names
-each place they reach.
+The province's ground is a fixed base that no world rebuild regenerates (skill `world-build`), so a rebuild leaves a
+place's ground as it stands; every change to a place's ground is the place's own patch (`land.jsonl`,
+`paint.jsonl`, its carried ground), made here and laid by its build. Bring a place level only when
+`python3 -m tools.places worldparts <place_id>` names world records that moved under it (a world patch in its
+cells, plants placed again, a navmesh rule), in the order of skill `world-build`. After edits of single placed
+things, `tools/newworld/rebuild.sh plan` names each place they reach.
 
 ## The owner's notes and edits
 

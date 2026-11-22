@@ -47,7 +47,13 @@
    "security": "S3",
    "tier": "T3",
    "gold": 200,
-   "items": [],
+   "items": [
+    {
+     "item": "Skyrim.esm:0877AB",
+     "count": 1,
+     "why": "stolen goods (record: the guards' pay and stolen goods in the longhouse): a silver garnet ring taken from a traveller on the Stormhold road (history: the Naga lived off that road), T3 at the chest's tier, inside its budget beside the pay"
+    }
+   ],
    "why": "the guards' pay and stolen goods in the longhouse (treasure: 'the guards' pay and stolen goods in the longhouse'; economy note: 'The Unbound pay the guards in coin'): the band's store, at the reward band's tier T3 (D3) behind an Adept lock, gold 200 of T3's 120-300",
    "cites": [
     "place_give:tribal-camp-m2-m68/1",
@@ -105,7 +111,28 @@
    "security": "S1",
    "tier": "T1",
    "gold": 5,
-   "items": [],
+   "items": [
+    {
+     "item": "King of the Murkmire.esp:0FD891",
+     "count": 3,
+     "why": "the camp's food by the cook fire: fat sleeper Nakhoo takes from the creek (kit fisher's catch; region good river-fish)"
+    },
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDB9E",
+     "count": 2,
+     "why": "crocodile meat from Sileeth's hunting (kit hunter; region good river-fish)"
+    },
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:440029",
+     "count": 3,
+     "why": "ripper eggs from the reeds (kit food eggs)"
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 3,
+     "why": "leather strips by the tanning rack for Nakhoo's tent mending (hide-and-leather; hide is the valley's local material)"
+    }
+   ],
    "why": "a chest in a shared space of Karsh-Naal Camp: the town's, ordinary (T1), the least gold",
    "cites": [
     "place_wealth:tribal-camp-m2-m68"
@@ -118,10 +145,10 @@
    "person": "tribal-camp-m2-m68.5M6BY4FP7QPYAMZNP3M5SWF84N",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
-     "why": "poles the jars downriver to the cult's crews: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "Naga Tecpatl (flint, T1): a knife to cut the boat's lines; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -136,10 +163,10 @@
    "person": "tribal-camp-m2-m68.62Z5T9BK5AG21A4P08BR3XGXSM",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
-     "why": "carries sap jars between the crews and the longhouse: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "a bone dagger (bone, T1): the knife of a porter who carries jars in from the marsh; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -154,34 +181,28 @@
    "person": "tribal-camp-m2-m68.7PPTW3WSTPDPAZ05VNAD6T0165",
    "items": [
     {
-     "item": "Skyrim.esm:07A91A",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:17427A",
      "count": 1,
      "worn": true,
-     "why": "the Unbound's hired warband, night watch; keeps the key to the cage: a sword of T2 (from far away (no maker or gate on the roads))"
+     "why": "Naga Tepoztopilli (flint, T1): the hired Naga's spear (mn04: a Naga guard with a spear); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
      "count": 1,
      "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Naga Leathers (marsh leather, T2): the hired Naga's own light cuirass, light for the marsh; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "King of the Murkmire.esp:27A2BB",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Saxhleel Tribal Boots (hide, T1): hide is the valley's local material (region profile)"
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "King of the Murkmire.esp:27F428",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from far away (no maker or gate on the roads))"
-    },
-    {
-     "item": "Skyrim.esm:013922",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's helmet at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Saxhleel Tribal Bracers (hide, T1): the hide wraps of the same set"
     },
     {
      "item": "Skyrim.esm:01D4EC",
@@ -196,16 +217,16 @@
      "why": "carried gold, 2-10 for W2 Poor"
     }
    ],
-   "why": "Jeeta-Sakka: guard, the Unbound's hired warband, night watch; keeps the key to the cage, W2; best tier T2"
+   "why": "Jeeta-Sakka: guard, the Unbound's hired warband, day watch at the longhouse fire; keeps the key to the cage, W2; best tier T2"
   },
   {
    "person": "tribal-camp-m2-m68.ADMKVT2ATB97NEDGY5P0H8WSDR",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F171",
      "count": 1,
      "worn": true,
-     "why": "stacks and counts the sap jars for the Unbound's crews: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "Naga Tecpatl (flint, T1): she cuts the knots of her tally cord with it; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -220,10 +241,10 @@
    "person": "tribal-camp-m2-m68.KKS4N5M31295M1G777AP7W3SKY",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
-     "why": "keeps the bone shrine to Sithis: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "a bone dagger (bone, T1): the knife of the keeper of the shrine of bones, cut from a trophy; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -238,10 +259,16 @@
    "person": "tribal-camp-m2-m68.MRBME68XR0QSKQ2K3MXFT36RFQ",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "fishes the creek and mends the hide tents: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "Saxhleel Fishing Knife (flint, T1): the fisher's knife (kit fisher); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00080D",
+     "count": 1,
+     "worn": true,
+     "why": "a bone fish spear (bone, T1): he spears fish in the creek below the camp (kit fisher)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -256,10 +283,22 @@
    "person": "tribal-camp-m2-m68.RNT2SPEMAH3J1PPYVW2TQWA1JT",
    "items": [
     {
-     "item": "Skyrim.esm:01397E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F170",
      "count": 1,
      "worn": true,
-     "why": "hunts the marsh for the camp's meat: a dagger of T1 (from far away (no maker or gate on the roads))"
+     "why": "Naga Tlahhuitolli (wood, T1): the hunter's bow (kit hunter); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+    },
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F168",
+     "count": 14,
+     "worn": true,
+     "why": "Naga Yaomitl (flint arrows, T1): for the bow"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00082D",
+     "count": 1,
+     "worn": true,
+     "why": "a bone dagger (bone, T1): a skinning knife (kit hunter)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -274,34 +313,28 @@
    "person": "tribal-camp-m2-m68.WHQGHMGVDP17ZTPTTZZ24E01A1",
    "items": [
     {
-     "item": "Skyrim.esm:07A91A",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16D",
      "count": 1,
      "worn": true,
-     "why": "the Unbound's hired warband, day watch: a sword of T2 (from far away (no maker or gate on the roads))"
+     "why": "Naga Macana (flint, T1): the hired Naga's blade; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
      "count": 1,
      "worn": true,
-     "why": "the levy's cuirass at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Naga Leathers (marsh leather, T2): the hired Naga's own light cuirass, light for the marsh; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "King of the Murkmire.esp:27A2BB",
      "count": 1,
      "worn": true,
-     "why": "the levy's boots at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Saxhleel Tribal Boots (hide, T1): hide is the valley's local material (region profile)"
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "King of the Murkmire.esp:27F428",
      "count": 1,
      "worn": true,
-     "why": "the levy's gauntlets at T2, light for the marsh (from far away (no maker or gate on the roads))"
-    },
-    {
-     "item": "Skyrim.esm:013922",
-     "count": 1,
-     "worn": true,
-     "why": "the levy's helmet at T2, light for the marsh (from far away (no maker or gate on the roads))"
+     "why": "Saxhleel Tribal Bracers (hide, T1): the hide wraps of the same set"
     },
     {
      "item": "Skyrim.esm:01D4EC",
@@ -316,7 +349,7 @@
      "why": "carried gold, 2-10 for W2 Poor"
     }
    ],
-   "why": "Mazh-Teel: guard, the Unbound's hired warband, day watch, W2; best tier T2"
+   "why": "Mazh-Teel: guard, the Unbound's hired warband, night watch, W2; best tier T2"
   }
  ],
  "traders": [],

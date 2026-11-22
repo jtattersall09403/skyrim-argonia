@@ -13,6 +13,9 @@ The source already works as a place; the adaptation makes it **our** place. Go r
 or moved, the `why` saying which) or `dropped`.
 Write the reason per group in the place's notes.
 
+Work from the promise list (`promises.jsonl`, made by `place-plan`): each row shown `kept`, `relabelled` or
+`added` is delivered here, and its `verdict` turns `built` with the refs that show it.
+
 ## The verdicts
 
 - **Keep as built**: what the record's look and promises name, or what such a place plainly has. Most of the source.

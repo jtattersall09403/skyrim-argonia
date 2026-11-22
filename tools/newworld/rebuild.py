@@ -1,7 +1,7 @@
 """The new world's rebuild: one command for every stage from the scope to the read-back, each stage run only when
 what it reads has changed, each check run straight after the stage it judges. The recipe is the skill world-build.
 
-    tools/newworld/rebuild.sh plan                  # the order, and which stages are stale (and why) or current
+    tools/newworld/rebuild.sh plan                  # the base fixed; the order, and which stages are stale (and why) or current
     tools/newworld/rebuild.sh small                 # the stale stages on the small test world first: minutes (tools/newworld/small)
     tools/newworld/rebuild.sh preflight             # everything checkable before the first long stage
     tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run [--to STAGE] [--force STAGE ...]
@@ -14,6 +14,12 @@ checks; its build key is the same without what its checks alone read. The key of
 `out/newworld/rebuild/<stage>.json`. A stage is current when its stamp holds today's key and its outputs exist and
 name the builds they stand on (`agree`); otherwise it is stale, and so is every stage after it until its own
 inputs prove unchanged once the stages before it have run.
+
+The province's ground is a fixed base. The stages marked `base` (scope, regions, terrain, water, land, landcover,
+cells, paint) are never stale and never run: the plan shows them as `base`, holding their outputs to the identity in
+BASE_PIN (`broken` when one differs, and a run then refuses). Every later change of ground is a local patch: a
+place's own by its place build, the world's own by the `ground-patch` stage over the cells a patch reaches. Only the
+owner can ask for a new base: `run` with OVERRIDE runs the base stages as stages and pins what they made.
 
 The stamp is the record of one run. `running` (the build key) is written before the stage's commands start, so a
 run that was killed, or whose command was red, leaves a stage that is stale whatever its inputs then are; `built`
@@ -68,6 +74,11 @@ DISK_GB = 4.0         # a whole rebuild rewrites about 2.3 GB under out/newworld
 # the prose and people columns of `place`: no ground stage reads them, so an edit to them moves no ground
 PLACE_GROUND = ("db:place[-summary,-held_by,-status,-population,-danger_band_id,-importance,-statement_tier_id,"
                 "-culture_id,-read_sure,-siting]")
+# the columns of `place` the terrain build reads (terrain.py, terrain_shape.py): where a place stands, its symbol, its
+# footprint, whether it stands on the water and its kind; nothing of its name, prose or people
+PLACE_TERRAIN = "db:place[id,px,py,world_x,world_y,symbol_id,on_water,footprint_radius_m,place_kind_id]"
+# the region notes the water kinds read (water_kinds.region_character): the ecology, look and landscape notes alone
+REGION_LOOK = "db:region_note{aspect_id=ecology|look|landscape}"
 # the columns of `place` the placed and mapped stages read: its position, size, kind, name and rank
 PLACE_MAP = ("db:place[-summary,-held_by,-status,-population,-danger_band_id,-statement_tier_id,-culture_id,"
              "-read_sure,-siting]")
@@ -106,6 +117,7 @@ class Stage:
     lock: str | None = None
     alone: bool = False
     adds: tuple = ()        # those of its reads its own commands may add to: read again after them, so the run that added is current
+    base: bool = False      # the province's ground: a fixed base, pinned by identity (BASE_PIN), never regenerated
 
 
 PY = "{py}"
@@ -115,6 +127,15 @@ LANDCOVER = "out:newworld/landcover/key.txt"
 PLACED = "out:newworld/plugin/placed/flora/manifest.json#key,shard_sha256"   # the placement as the rules made it
 FLORA = "out:newworld/plugin/refs/flora/manifest.json#key,shard_sha256"      # the same with the edits of single things applied
 EDITS_FILE = "newworld/sources/placed_edits.jsonl"                           # those edits, one row each
+GROUND_PATCHES = "newworld/sources/ground_patches.jsonl"   # the world's own local patches of ground, one row each
+PATCH_LAND = "out:newworld/plugin/patch/land/manifest.json"  # the patched rows' record: the cells patched, the base's key
+# The province's ground is a fixed base (owner, 2026-11-22): the stages marked `base` are never run, and their outputs
+# are held to the identity recorded in BASE_PIN. Only the owner can ask for the base to be made again, with the
+# override below on `run`; every later change of ground is a local patch (a place's own ground in its place build,
+# the world's own in GROUND_PATCHES).
+BASE_PIN = "newworld/sources/ground_base.json"
+OVERRIDE = "--regenerate-the-provinces-ground-because-the-owner-asked"
+BASE_DIRS = ("out:newworld/plugin/land", "out:newworld/plugin/tex", "out:newworld/landcover")
 CELLS = "out:newworld/plugin/cells.json"
 # The compiled tools are read by their sources: the same sources compile to different bytes from one build to the next.
 DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
@@ -186,12 +207,12 @@ STAGES: tuple[Stage, ...] = (
     Stage("scope", "the cells the world covers: the province, its margin and the cells beyond the picture",
           cmds=((PY, "-m", "tools.newworld.tiles", "scope"),),
           reads=(*MAPS, "src:tools/newworld/tiles.py", "src:tools/newworld/frame.py"),
-          writes=("out:newworld/scope_cells.json", "out:newworld/margin_cells.json"), gb=0.5, minutes=0.2),
+          writes=("out:newworld/scope_cells.json", "out:newworld/margin_cells.json"), gb=0.5, minutes=0.2, base=True),
     Stage("regions", "each cell's region",
           cmds=((PY, "-m", "tools.newworld.regions"),),
           reads=(*MAPS, "out:newworld/scope_cells.json", "src:tools/newworld/regions.py", "src:tools/newworld/tiles.py",
                  "src:tools/newworld/frame.py"),
-          writes=("out:newworld/cell_region.json",), gb=0.5, minutes=0.3),
+          writes=("out:newworld/cell_region.json",), gb=0.5, minutes=0.3, base=True),
     Stage("db", "the world database from its sources (the tables the ground stages read)",
           cmds=((PY, "-m", "tools.newworld.build_db"),),
           reads=DB_SOURCES, writes=("db:*",), gb=1.1, minutes=0.5, alone=True),
@@ -202,9 +223,10 @@ STAGES: tuple[Stage, ...] = (
                  "out:newworld/scope_cells.json", "out:newworld/roads.json",
                  "out:newworld/terrain_ref/tamriel_h.npy", "out:newworld/terrain_ref/tamriel_w.npy",
                  PLACE_CELLS,
-                 PLACE_GROUND, "db:place_terrain_need",
+                 PLACE_TERRAIN, "db:place_terrain_need[place_id,terrain_need_id,radius_m]",
                  "db:region[id,name,landform,kind,elevation_floor_m,elevation_summit_m,roughness_m,cliff_share,wetness]",
-                 "db:road_class", "db:settlement_tier", "db:symbol", "db:water_kind", "db:terrain_need", DBPY,
+                 "db:road_class", "db:settlement_tier[id,footprint_radius_m]", "db:symbol[id,settlement_tier_id]",
+                 "db:water_kind", "db:terrain_need", DBPY,
                  "src:newworld/sources/region_relief.json", "src:newworld/sources/terrain_held.json",
                  "src:newworld/sources/water_overrides.json", "src:newworld/sources/water_owner_bodies.png",
                  "src:tools/newworld/terrain.py", "src:tools/newworld/terrain_*.py", "src:tools/newworld/frame.py",
@@ -214,7 +236,7 @@ STAGES: tuple[Stage, ...] = (
                   "out:newworld/terrain/heightmap.npy", "out:newworld/terrain/check.json",
                   "out:newworld/terrain/places_terrain.json", "out:newworld/terrain/character.json",
                   "out:newworld/terrain/water_bodies.png", "out:newworld/water_bodies.json"),
-          proof=(PY, "-m", "tools.newworld.terrain", "inputs"), gb=5.7, minutes=9.0),
+          proof=(PY, "-m", "tools.newworld.terrain", "inputs"), gb=5.7, minutes=9.0, base=True),
     Stage("needs", "every place's terrain need on the built heightmap, against the accepted failures",
           cmds=((PY, "-m", "tools.newworld.terrain_needs"),),
           reads=(BUILD, "out:newworld/terrain/places_terrain.json", "db:place[id,on_water]",
@@ -229,13 +251,13 @@ STAGES: tuple[Stage, ...] = (
           reads=(BUILD, "out:newworld/water_bodies.json", "out:newworld/cell_region.json", "out:newworld/raster/water.png",
                  "src:newworld/sources/water_overrides.json", "src:newworld/sources/water_paint.json",
                  "src:newworld/sources/water_owner_bodies.png", "src:newworld/sources/water_accepted.json",
-                 "db:region", "db:region_note", "db:water_kind",
+                 "db:region", REGION_LOOK, "db:water_kind",
                  "src:tools/newworld/water_kinds.py", "src:tools/newworld/water_held.py", "src:tools/newworld/terrain_relief.py",
                  "src:tools/newworld/terrain_water.py", "src:tools/newworld/terrain.py", "src:tools/newworld/frame.py", DBPY),
           writes=("out:newworld/water_classified.json", "out:newworld/water_classified.png", "out:newworld/water_flow_cells.json",
                   "out:newworld/water_check.json"),
           agree=(("out:newworld/water_check.json#terrain_build", "out:newworld/terrain/build.json#id", "eq"),),
-          gb=1.1, minutes=0.7),
+          gb=1.1, minutes=0.7, base=True),
     Stage("db-water", "the database's record of the terrain build and its water bodies",
           cmds=((PY, "-m", "tools.newworld.build_db"),), after=("db",),
           reads=DB_SOURCES + ("out:newworld/terrain/build.json#id,sha256", "out:newworld/water_classified.json",
@@ -249,7 +271,7 @@ STAGES: tuple[Stage, ...] = (
           writes=("out:newworld/plugin/land/manifest.json", "out:newworld/plugin/land/limited.npy"),
           agree=(("out:newworld/plugin/land/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),
                  ("out:newworld/plugin/land/manifest.json#heightmap_sha256", "out:newworld/terrain/build.json#sha256", "eq")),
-          gb=0.6, minutes=0.3),
+          gb=0.6, minutes=0.3, base=True),
     Stage("relief", "read-back, relief rows: regions read apart, the land reaches past the picture, held ground kept",
           checks=((PY, "-m", "tools.newworld.verify", "--only", "relief"),),
           reads=(BUILD, "out:newworld/terrain/character.json", "out:newworld/terrain/check.json", LAND,
@@ -264,17 +286,17 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/landcover.py", "src:tools/newworld/terrain.py", "src:tools/newworld/frame.py"),
           writes=("out:newworld/landcover/key.txt", "out:newworld/landcover/legend.json"),
           agree=(("out:newworld/landcover/legend.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
-          gb=2.6, minutes=0.8),
+          gb=2.6, minutes=0.8, base=True),
     Stage("cells", "each cell's water record and region",
           cmds=((PY, "-m", "tools.newworld.world.cells", "--out", PLUGIN),),
           proof=(PY, "-m", "tools.newworld.world.cells", "--current", "--out", PLUGIN),
-          reads=(LAND, LANDCOVER, "out:newworld/water_flow_cells.json", "db:region", "db:region_note", "db:water_kind",
+          reads=(LAND, LANDCOVER, "out:newworld/water_flow_cells.json", "db:region", REGION_LOOK, "db:water_kind",
                  "src:tools/newworld/world/cells.py", "src:newworld/sources/identity/regions.json", "src:tools/newworld/world/water_types.py",
                  "src:tools/newworld/water_kinds.py", "src:tools/newworld/landcover.py", "src:tools/newworld/terrain.py",
                  "src:tools/newworld/frame.py"),
           writes=(CELLS,),
           agree=(("out:newworld/plugin/cells.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
-          gb=1.0, minutes=0.3),
+          gb=1.0, minutes=0.3, base=True),
     Stage("landings", "every teleport has its landing: dry land in each place's cell, each walk check's water near it",
           checks=((PY, "-m", "tools.newworld.teleports", "landings", "--plugin", PLUGIN),),
           reads=(LAND, CELLS, PLACE_MAP, *BUILT_PLACES, "src:tools/newworld/teleports.py",
@@ -325,7 +347,16 @@ STAGES: tuple[Stage, ...] = (
                        "src:newworld/sources/identity/adjacency.json", "src:newworld/sources/identity/regions.json"),
           writes=("out:newworld/plugin/tex/manifest.json", "out:newworld/plugin/tex/materials.json"),
           agree=(("out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/land/manifest.json#key", "starts"),),
-          after=EARLY_CHECKS, gb=5.6, minutes=21.0),
+          after=EARLY_CHECKS, gb=5.6, minutes=21.0, base=True),
+    Stage("ground-patch", "the local patches of ground laid over the fixed base: only the cells a patch reaches, rewritten "
+                          "in rows of their own beside the base's (tools/newworld/world/patches.py)",
+          cmds=((PY, "-m", "tools.newworld.world.patches", "apply", "--plugin", PLUGIN, "--patches", GROUND_PATCHES),),
+          checks=((PY, "-m", "tools.newworld.world.patches", "check", "--plugin", PLUGIN, "--patches", GROUND_PATCHES),),
+          reads=(LAND, f"src:{GROUND_PATCHES}", "src:tools/newworld/world/patches.py", "src:tools/newworld/world/land.py",
+                 "src:tools/newworld/world/quantize.py", "src:tools/newworld/world/units.py"),
+          writes=(PATCH_LAND,),
+          agree=((PATCH_LAND + "#base_key", "out:newworld/plugin/land/manifest.json#key", "eq"),),
+          gb=0.5, minutes=0.1),
     Stage("mist", "the low mist over marsh, swamp and pond",
           cmds=((PY, "-m", "tools.newworld.world.mist", "--out", PLUGIN),),
           reads=(LAND, LANDCOVER, CELLS, "out:newworld/plugin/refs/flora/counts.json", BUILD, "db:region_atmosphere", "db:atmosphere_class",
@@ -417,7 +448,7 @@ STAGES: tuple[Stage, ...] = (
           checks=(("tools/newworld/world/world.sh", "check"),
                   (PY, "-m", "tools.newworld.ecology.loot_check", "--esm", PLUGIN + "/ArgoniaNewWorld.esm"),
                   (PY, "-m", "tools.newworld.world.smithing", "check", "--out", PLUGIN)),
-          reads=(LAND, "out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/tex/materials.json", CELLS,
+          reads=(LAND, "out:newworld/plugin/patch/land", "out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/tex/materials.json", CELLS,
                  "out:newworld/plugin/atmosphere.json", FLORA, "out:newworld/plugin/refs/flora/bases.json",
                  "out:newworld/plugin/refs/mist", "out:newworld/plugin/navmesh/build.json#sha256",
                  "out:newworld/plugin/map/map.json", "out:newworld/plugin/map/markers.json",
@@ -457,12 +488,17 @@ STAGES: tuple[Stage, ...] = (
 
 # What a world rebuild leaves stale beyond this machine's out/newworld: (what, the stages that feed it, where its recipe is)
 DOWNSTREAM = (
-    ("the LOD on the play machine (terrain, trees, objects, the map)", ("land", "paint", "place", "edits", "map", "esm"),
+    ("the LOD on the play machine (terrain, trees, objects, the map)", ("land", "paint", "ground-patch", "place", "edits", "map", "esm"),
      "the skill world-lod"),
     ("the play machine's deploy of ArgoniaNewWorld.esm", ("esm",), "the skill world-build, section Deploy"),
-    ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "place", "edits", "navmesh", "esm"),
+    ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "ground-patch", "place", "edits", "navmesh", "esm"),
      "the skill place-change"),
 )
+
+
+def table_of(rest: str) -> str:
+    """The table a `db:` read names: `place[id,px]` and `region_note{aspect_id=look}` read `place` and `region_note`."""
+    return re.split(r"[\[{]", rest)[0]
 
 
 def _picked(doc, name: str):
@@ -510,6 +546,8 @@ class Tree:
     py: str = field(default=None)
     stack: Path = field(default=None)
     fresh: bool = False       # digest by content, whatever the cache holds: a run and a tool's proof decide so
+    pin_path: Path = field(default=None)
+    regenerate_base: bool = False   # the owner asked for the province's ground to be made again (OVERRIDE): base stages run
 
     def __post_init__(self):
         self.repo = Path(self.repo)
@@ -522,6 +560,39 @@ class Tree:
         self._cache: dict | None = None
         self._laid: dict[str, str] = {}
         self.by_name = {s.name: s for s in self.stages}
+        self.pin_path = Path(self.pin_path or self.repo / BASE_PIN)
+        self._pin: dict | None = None
+
+    # -- the fixed base
+
+    def base_specs(self, s: Stage) -> list[str]:
+        """What of a base stage's outputs its identity covers: each `out:` file it writes, and the whole folder of
+        shards beside a manifest it writes (BASE_DIRS)."""
+        outs = [w for w in s.writes if w.startswith("out:")]
+        return outs + [d for d in BASE_DIRS if any(w.startswith(d + "/") for w in outs)]
+
+    def base_identity(self) -> dict:
+        """{spec: digest} of every base stage's outputs as they stand on disk."""
+        return {spec: self.digest(spec) for st in self.stages if st.base for spec in self.base_specs(st)}
+
+    def pin(self) -> dict:
+        if self._pin is None:
+            try:
+                self._pin = json.loads(self.pin_path.read_text())
+            except (OSError, ValueError):
+                self._pin = {}
+        return self._pin
+
+    def base_fault(self, s: Stage) -> str | None:
+        """Why a base stage's outputs are not the pinned base, or None."""
+        held = self.pin().get("outputs") or {}
+        if not held:
+            return f"the base has no pin ({BASE_PIN} missing)"
+        bad = [spec for spec in self.base_specs(s) if held.get(spec) != self.digest(spec)]
+        if not bad:
+            return None
+        return "its outputs are not the pinned base: " + ", ".join(b.split(":", 1)[1] for b in bad[:3]) + (
+            f" and {len(bad) - 3} more" if len(bad) > 3 else "")
 
     # -- digests
 
@@ -591,7 +662,7 @@ class Tree:
         return f"{self._laid[sha]}:{self._file_sha(ml) if ml.exists() else 'absent'}"
 
     def save_cache(self) -> None:
-        if self._cache is not None and self.state.exists():
+        if self._cache is not None and self.state.exists() and not_the_writer(self) is None:
             tmp = self.state / "digests.json.tmp"
             tmp.write_text(json.dumps(self._cache))
             os.replace(tmp, self.state / "digests.json")
@@ -615,18 +686,21 @@ class Tree:
         if kind == "laid":
             return self._laid_digest(rest)
         if kind == "db":
-            m = re.fullmatch(r"([a-z_]+)(?:\[(.*)\])?", rest)
+            m = re.fullmatch(r"([a-z_]+)(?:\{([a-z_]+)=([^}]*)\})?(?:\[(.*)\])?", rest)
             p = self.db / f"{m.group(1)}.jsonl"
             if not p.exists():
                 return "absent"
-            if not m.group(2):
+            if not m.group(2) and not m.group(4):
                 return self._file_sha(p)
-            cols = [c.strip() for c in m.group(2).split(",")]
+            cols = [c.strip() for c in (m.group(4) or "").split(",") if c.strip()]
             drop, keep = {c[1:] for c in cols if c.startswith("-")}, [c for c in cols if not c.startswith("-")]
+            only = (m.group(2), set(m.group(3).split("|"))) if m.group(2) else None
             h = hashlib.sha256()
             for ln in p.read_text(encoding="utf-8").splitlines():
                 if ln.strip():
                     r = json.loads(ln)
+                    if only and str(r.get(only[0])) not in only[1]:
+                        continue
                     r = {k: r.get(k) for k in keep} if keep else {k: v for k, v in r.items() if k not in drop}
                     h.update(json.dumps(r, sort_keys=True).encode() + b"\n")
             return h.hexdigest()[:20]
@@ -721,7 +795,7 @@ class Tree:
     def path_of(self, spec: str) -> Path | None:
         kind, _, rest = spec.partition(":")
         if kind == "db":
-            return None if rest == "*" else self.db / f"{rest.split('[')[0]}.jsonl"
+            return None if rest == "*" else self.db / f"{table_of(rest)}.jsonl"
         if kind in ("ext", "laid"):
             return None
         return (self.repo if kind == "src" else self.out) / rest.split("#")[0]
@@ -789,7 +863,7 @@ def _feeds(write: str, read: str) -> bool:
     if wk != rk or wk == "ext":
         return False
     if wk == "db":
-        return wp == "*" or wp == rp.split("[")[0]
+        return wp == "*" or wp == table_of(rp)
     rp = rp.split("#")[0]
     return rp == wp or rp.startswith(wp + "/") or wp.startswith(rp + "/") or fnmatch.fnmatch(wp, rp)
 
@@ -809,7 +883,7 @@ def deps(stages: tuple, waits: bool = True) -> dict[str, list[str]]:
                 continue
             for w in o.writes:
                 for r in s.reads:
-                    if w == "db:*" and f"db:{r.partition(':')[2].split('[')[0]}" in narrow:
+                    if w == "db:*" and f"db:{table_of(r.partition(':')[2])}" in narrow:
                         continue
                     if _feeds(w, r) and o.name not in need:
                         need.append(o.name)
@@ -842,6 +916,11 @@ def plan(tree: Tree, force: tuple = ()) -> list[dict]:
         s = tree.by_name[name]
         if writer and any(r in NARROWED for r in s.reads + s.check_reads):
             tree.carry(s)       # the one writer keeps its records under the reads' names of today
+        if s.base and not tree.regenerate_base:
+            bad = tree.base_fault(s)
+            rows.append({"stage": name, "what": s.what, "after": d[name], "state": "broken" if bad else "base",
+                         "why": bad or "the province's ground: fixed base, never regenerated", "minutes": s.minutes, "gb": s.gb})
+            continue
         state, why = tree.own_state(s)
         if name in force:
             state, why = "stale", "forced"
@@ -856,8 +935,33 @@ def plan(tree: Tree, force: tuple = ()) -> list[dict]:
     return rows
 
 
-def print_plan(rows: list[dict], file=None) -> None:
+def owed_patches(tree: Tree) -> list[str]:
+    """The ground the database names that the fixed base does not hold, each owed as a local patch: a road the base's
+    landcover and paint were made without."""
+    held = set((tree.pin().get("roads") or {}).get("ids") or [])
+    p = tree.db / "road.jsonl"
+    if not held or not p.exists():
+        return []
+    new = [json.loads(ln)["id"] for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    return [f"road {r}: in the database, not in the base's paint or bed; its ground is a local patch "
+            f"(a place's paths in its place build, else a row of {GROUND_PATCHES})" for r in new if r not in held]
+
+
+def base_line(tree: Tree, rows: list[dict]) -> str | None:
+    base = [r["stage"] for r in rows if r["state"] in ("base", "broken")]
+    if not base:
+        return None
+    pin = tree.pin()
+    return (f"the province's ground: fixed base, never regenerated ({', '.join(base)}; pinned {pin.get('pinned_at', '?')}, "
+            f"terrain build {pin.get('terrain_build', '?')}). Every change of ground is a local patch; only the owner can "
+            f"ask for the base to be made again ({OVERRIDE}).")
+
+
+def print_plan(rows: list[dict], file=None, tree: Tree | None = None) -> None:
     file = file or sys.stdout
+    line = base_line(tree, rows) if tree is not None else None
+    if line:
+        print(line, file=file)
     print("order (derived from what each stage reads and writes):", file=file)
     for i, r in enumerate(rows, 1):
         print(f"  {i:2d}. {r['stage']:<11} after {', '.join(r['after']) or '-'}", file=file)
@@ -870,6 +974,12 @@ def print_plan(rows: list[dict], file=None) -> None:
         print(f"stale: 0 of {len(rows)}: every stage is current" + (" or proved" if any(r["state"] == "proved" for r in rows) else ""), file=file)
     for r in rows:
         print(f"  {r['state']:<7} {r['stage']:<11} {r['why']}", file=file)
+    broken = [r["stage"] for r in rows if r["state"] == "broken"]
+    if broken:
+        print(f"BASE BROKEN: {', '.join(broken)}: the outputs on disk are not the pinned base. They are never rebuilt: "
+              f"restore them (from the bucket or a copy). A run refuses until they match.", file=file)
+    for o in (owed_patches(tree) if tree is not None else []):
+        print(f"  owed patch: {o}", file=file)
 
 
 # what the form id check reads, and the stage that writes it: a stale stage's output is not judged, it is made again
@@ -918,7 +1028,10 @@ def not_the_writer(tree: Tree) -> str | None:
 def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
     """Everything checkable before the first long stage: (what, ok, detail) rows."""
     out: list[tuple[str, bool, str]] = []
-    stale = [tree.by_name[r["stage"]] for r in rows if r["state"] != "current"]
+    stale = [tree.by_name[r["stage"]] for r in rows if r["state"] not in ("current", "base")]
+    broken = [r["stage"] for r in rows if r["state"] == "broken"]
+    out.append(("the province's ground is the pinned base (" + BASE_PIN + ")", not broken,
+                "not the pin: " + ", ".join(broken) if broken else ""))
     # the tree: the one writer is the main tree, level with origin/main
     why = not_the_writer(tree)
     out.append(("this is the main tree, the one writer of out/ (a worktree only plans)", why is None, why or ""))
@@ -1057,7 +1170,7 @@ def unsettled(tree: Tree) -> list[str]:
         out.append("a rebuild is running: wait for it (tooling/job_guard.sh wait nw-rebuild)")
     except (OSError, ValueError):
         pass
-    stale = [r["stage"] for r in plan(tree) if r["state"] != "current" and r["stage"] != "upload"]
+    stale = [r["stage"] for r in plan(tree) if r["state"] not in ("current", "base") and r["stage"] != "upload"]
     if stale:
         out.append(f"the rebuild is owed for {', '.join(stale)}: tools/newworld/rebuild.sh plan, then run")
     out += [f"lane {ln} changes what the world file is built from: land it and rebuild, or wait for it"
@@ -1255,7 +1368,7 @@ def place_stale(tree: Tree, place_id: str) -> list[str]:
 def summary(tree: Tree, rows: list[dict], done: dict[str, dict]) -> dict:
     ran = [n for n, r in done.items() if r["result"] == "green"]
     red = [n for n, r in done.items() if r["result"] == "red"]
-    skipped = [r["stage"] for r in rows if r["state"] == "current"] + [n for n, r in done.items() if r["result"] == "skipped"]
+    skipped = [r["stage"] for r in rows if r["state"] in ("current", "base")] + [n for n, r in done.items() if r["result"] == "skipped"]
     proved = [n for n, r in done.items() if r["result"] == "proved"]
     checks_ok = sum(len(tree.by_name[n].checks) for n in ran + proved)
     tracked = _git(tree.repo, "status", "--short", "--", "mods/dependencies.json", "newworld/story/data/db",
@@ -1320,11 +1433,20 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
             print(f"no stage {n!r}; stages: {', '.join(order(tree.stages))}", file=sys.stderr)
             return 2
     tree.fresh = True        # a run decides by content, never by the digest cache
+    base = [n for n in force if tree.by_name[n].base]
+    if base and not tree.regenerate_base:
+        print(refusal(f"--force {', '.join(base)} would regenerate the province's ground"), file=sys.stderr)
+        return 2
     rows = plan(tree, force)
-    print_plan(rows)
+    print_plan(rows, tree=tree)
+    broken = [r["stage"] for r in rows if r["state"] == "broken"]
+    if broken:
+        print(refusal(f"the outputs of {', '.join(broken)} on disk are not the pinned base; restore them, never rebuild them"),
+              file=sys.stderr)
+        return 2
     edit_notes(rows, tree.out / "newworld/plugin", tree.repo / EDITS_FILE, tree.repo / "newworld/places")
     names = order(tree.stages)
-    todo = [r["stage"] for r in rows if r["state"] != "current"]
+    todo = [r["stage"] for r in rows if r["state"] not in ("current", "base")]
     if to:
         d = deps(tree.stages)
         keep, stack = set(), [to]
@@ -1359,7 +1481,37 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
         tree.save_cache()
     doc = summary(tree, rows, done)
     print_summary(doc)
+    if tree.regenerate_base and not doc["red"] and not doc["not_run"]:
+        print(f"the owner asked for the province's ground to be made again: the new base is pinned ({pin_base(tree)})")
     return 1 if doc["red"] else 0
+
+
+def refusal(what: str) -> str:
+    return (f"refused: {what}. The province's ground is a fixed base (owner ruling 2026-11-22): it is never regenerated, "
+            f"and every change of ground is a local patch (a place's own ground by its place build, the world's own in "
+            f"{GROUND_PATCHES}). Only the owner can ask for the base to be made again; then, and only then, "
+            f"run with {OVERRIDE}.")
+
+
+def pin_base(tree: Tree, note: str = "", roads: Path | None = None) -> str:
+    """Record the identity of the base's outputs as they stand on disk (BASE_PIN), with the roads its landcover and
+    paint hold. Reads out/ alone, every file by its content; writes only the tracked pin."""
+    tree.fresh = True
+    build = json.loads((tree.out / "newworld/terrain/build.json").read_text())
+    road = Path(roads or tree.db / "road.jsonl")     # the road table the base's landcover and paint were made from
+    doc = {"about": "The province's ground as a fixed base (owner, 2026-11-22): the identity of every base stage's "
+                    "outputs (tools/newworld/rebuild.py, stages marked base), as they stood on disk when pinned. "
+                    "The rebuild never runs those stages and refuses when an output differs. Written only by "
+                    "`rebuild.py pin-base` (first pin) or a run the owner asked for with " + OVERRIDE + ".",
+           "pinned_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+           "terrain_build": build.get("id"), "heightmap_sha256": build.get("sha256"),
+           "note": note or (tree.pin().get("note") or ""),
+           "roads": (not roads and tree.pin().get("roads")) or {"from": str(road.name), "ids": sorted(json.loads(ln)["id"] for ln in road.read_text().splitlines() if ln.strip())},
+           "outputs": dict(sorted(tree.base_identity().items()))}
+    tree.pin_path.parent.mkdir(parents=True, exist_ok=True)
+    tree.pin_path.write_text(json.dumps(doc, indent=1) + "\n")
+    tree._pin = doc
+    return str(tree.pin_path)
 
 
 def main(argv=None) -> int:
@@ -1372,11 +1524,24 @@ def main(argv=None) -> int:
     r.add_argument("--to", help="only the stale stages this stage needs, and itself")
     r.add_argument("--force", action="append", default=[], help="treat this stage as stale (repeatable)")
     r.add_argument("--budget-gb", type=float, help="memory the stages may use side by side (default: available less 2)")
+    r.add_argument(OVERRIDE, dest="regenerate", action="store_true",
+                   help="ONLY WHEN THE OWNER HAS ASKED: run the province's ground (the base stages) again and pin the result")
+    pb = sub.add_parser("pin-base", help="record the identity of the base's outputs as they stand (the first pin only)")
+    pb.add_argument(OVERRIDE, dest="regenerate", action="store_true", help="ONLY WHEN THE OWNER HAS ASKED: pin again")
+    pb.add_argument("--note", default="", help="what the pin assumes")
+    pb.add_argument("--roads", type=Path, help="the road table the base was made from (default: the database's)")
     a = ap.parse_args(argv)
-    tree = Tree()
+    tree = Tree(regenerate_base=bool(getattr(a, "regenerate", False)))
+    if a.cmd == "pin-base":
+        if tree.pin() and not a.regenerate:
+            print(refusal(f"the base is pinned already ({BASE_PIN}, {tree.pin().get('pinned_at')}); pinning again would "
+                          f"accept a different ground"), file=sys.stderr)
+            return 2
+        print(f"pinned: {pin_base(tree, a.note, a.roads)}")
+        return 0
     if a.cmd == "plan":
         rows = plan(tree)
-        print_plan(rows)
+        print_plan(rows, tree=tree)
         edit_notes(rows, tree.out / "newworld/plugin", tree.repo / EDITS_FILE, tree.repo / "newworld/places")
         return 0
     if a.cmd == "preflight":

@@ -1,6 +1,7 @@
 """`draft check <place_id>`: the draft's self-checks, on the place files, the source bundle and the ground bundle.
 
-Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped with a reason); a ref not seated as
+Fails on: a promise list fault (`tools/places/promises.py`: a gathered sentence of the record, its people or its
+quests that no row says, a row with no built evidence, a quest's state not built as a state); a source ref not accounted for (placed, adapted, replaced, or dropped with a reason); a ref not seated as
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
 had on land, or the reverse; a Nordic base added from outside the source place or a levelled base placed; a light off its fixture, an added forge
@@ -73,6 +74,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
                 bad.append(f"unaccounted source ref {sid}/{r['id']}")
     # the record is the brief: a plan against it, and nothing of the source's it does not bring
     bad += plan_checks(place, refs)
+    from tools.places import promises as promise_list     # the promise list, met at plan time, not at hand-over
+    bad += promise_list.faults(place_id, pdir)
     from tools.places.draft import promised
     unwanted = promised.drops(src.exterior.refs, bases, promised.record(place_id), (place.get("draft") or {}).get("add"))
     for r in refs:

@@ -246,6 +246,14 @@ walk.jsonl             the owner's walking zones, one per line (written only whe
                        point's z is the surface the pen was on (the walking mesh there, a deck's or stair's walkable
                        face, else the ground). The build honours them on every rebuild (Build, step 7: the owner's
                        walking zones): a zone says what the mesh should do, never which triangles to move
+promises.jsonl         the promise list, made at plan time (tools/places/promises.py): one row per promise of the
+                       record's notes, its people and its quests: {id, what, said: [{key, where, words}], show: kept |
+                       relabelled | added | schedule | state | give | quest, refs?, person?, quest?, give?, state?,
+                       verdict: built | accepted | open, why}; `promises <place> --gather` lists the sentences, the build's
+                       and draft check's promises check fails one no row says or a built row with no evidence
+states.jsonl           the place's quest states (tools/places/states.py): {id, name, default?, set_by: {quest, stage |
+                       ending(s), flag}, parents: {<enable parent ref>: bool}, hide, show, moves, key, why}; exactly
+                       one default (the game's start); a ref shows as its `enable_parent` says in each state
 paint.jsonl            the ground paint, one stroke per line (written only when it has rows), applied in id order
                        (`paint.0001`, `paint.0002`, ...): {id, texture (a land texture key) | erase: true, brush: soft |
                        hard | scatter, size (radius, units), softness 0..1, strength 0..1, seed? (scatter),
@@ -1067,6 +1075,16 @@ network cut and the server stopped). Android Chrome keeps a persisted site's sto
 free disk. iPad Safari (16.4 and later) has service workers, the Cache API and IndexedDB, but may clear a site's
 storage after seven days without a visit unless the studio is added to the home screen: on an iPad the studio is
 added to the home screen, and a held place is updated before going offline.
+
+## Quest states in the studio
+
+A place with `states.jsonl` (carried in the draft bundle) shows a **Quest state** switch in Our place's view bar,
+listing each state by its name and what sets it; the default is the game's start. Choosing one shows the place as
+the player sees it then: refs follow their enable parents, people and quest things the state switches off are
+hidden, a state's moves put people at their spots; the Source view shows the same state by the source's own
+parents (each of ours carried from a source ref). An edit made while a state other than the start is shown carries
+`state: <id>` on its op; edits apply to the refs as ever. Agents see the same with `look <place> <verb> --state
+<name>`. Tests: `tools/tests/test_places_promises.py`, `web/test/states.test.mjs`, `web/test/test_states_browser.py`.
 
 ## Quest things
 
