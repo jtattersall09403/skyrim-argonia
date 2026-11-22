@@ -140,7 +140,10 @@ def find(place: str, out: Path) -> tuple[Path | None, Path | None]:
         except Exception:  # noqa: BLE001  an unbuilt or half-built tree is just not a candidate
             p = None
         if p is not None and p.exists():
-            got.append((p.stat().st_mtime, p, o))
+            # the newer BUILD wins (its plan's time), never the newer export: an old shared build's mesh is exported
+            # again whenever asked and would otherwise outrank a fresh draft-check build
+            plan = o / "shards" / place / "plan.json"
+            got.append((plan.stat().st_mtime if plan.exists() else p.stat().st_mtime, p, o))
     if not got:
         return None, None
     _, p, o = max(got)
