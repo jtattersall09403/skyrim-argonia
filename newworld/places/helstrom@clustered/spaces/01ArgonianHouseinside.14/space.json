@@ -1,0 +1,9 @@
+{
+ "space_id": "01ArgonianHouseinside.14",
+ "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+ "name": "Hameel-Jo's House",
+ "door_from": "helstrom.WAEXC2DP3KNA8GWK9GFVDBGD07",
+ "parent": "exterior",
+ "room": "Black Marsh.esm:1E4419",
+ "added": true
+}

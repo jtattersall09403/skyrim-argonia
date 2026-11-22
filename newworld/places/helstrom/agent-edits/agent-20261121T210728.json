@@ -1,0 +1,142 @@
+{
+ "save_id": "agent-20261121T210728",
+ "place_id": "helstrom",
+ "name": "a stone ruin of the source's hills: the record's city has no stone save the old Xanmeer",
+ "at": "2026-11-21T21:07:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5NWVCPEKBJ542FSXKMD6ZB15SP",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5NWVCPEKBJ542FSXKMD6ZB15SP",
+    "base": "Black Marsh.esm:22B86A",
+    "kind": "building",
+    "pos": [
+     -42363.8,
+     -612187.58,
+     -169.53
+    ],
+    "rot": [
+     -0.14030148,
+     -0.1430031,
+     10.72924
+    ],
+    "scale": 2.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B86B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w57"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.98HVZ25C8T8JMGRJ6K8XS6Z9VF",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.98HVZ25C8T8JMGRJ6K8XS6Z9VF",
+    "base": "Black Marsh.esm:22B86C",
+    "kind": "building",
+    "pos": [
+     -39474.13,
+     -625801.55,
+     95.75
+    ],
+    "rot": [
+     -0.0733216,
+     -0.1862406,
+     10.32603
+    ],
+    "scale": 2.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B86D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s57"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DP08PZTJZSWTARCFBTY7J2NRV9",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DP08PZTJZSWTARCFBTY7J2NRV9",
+    "base": "Black Marsh.esm:22B86E",
+    "kind": "building",
+    "pos": [
+     -34694.37,
+     -625470.39,
+     -91.15
+    ],
+    "rot": [
+     1,
+     0,
+     5.23599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B86F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s173"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:28Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.KBME9VE5V6TE9X8QXVBR5H19RK",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.KBME9VE5V6TE9X8QXVBR5H19RK",
+    "base": "Black Marsh.esm:22B877",
+    "kind": "building",
+    "pos": [
+     -55611.8,
+     -619090.26,
+     -4.78
+    ],
+    "rot": [
+     0.39999998,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B878",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "w58"
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:28Z"
+  }
+ ]
+}

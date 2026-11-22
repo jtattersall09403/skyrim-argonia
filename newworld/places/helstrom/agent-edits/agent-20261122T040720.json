@@ -1,0 +1,45 @@
+{
+ "save_id": "agent-20261122T040720",
+ "place_id": "helstrom",
+ "name": "the flight laid from the pier's head stood inside the landing's platform: the landing is brought down to its bank instead",
+ "at": "2026-11-22T04:07:20Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.LOOK002STEPS",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.LOOK002STEPS",
+    "base": "Skyrim.esm:0AEDF3",
+    "kind": "building",
+    "pos": [
+     -33969.99,
+     -630339.57,
+     124.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.66519
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.BW1G9BK67YDXYCRW9ZPBYQG9DY",
+     "dz": -127.91
+    },
+    "why": "steps from helstrom.BW1G9BK67YDXYCRW9ZPBYQG9DY down to -34300,-629900",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:07:20Z"
+  }
+ ]
+}

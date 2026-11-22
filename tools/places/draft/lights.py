@@ -57,6 +57,15 @@ def orphans(rows: list[dict], bound: dict[str, str]) -> list[dict]:
     return [r for r in rows if r.get("src") in bound and bound[r["src"]] not in have]
 
 
+def turn_of(place: dict):
+    """The turn a source piece of cluster `cid` took (clockwise, radians): the cluster's own where the fit set it apart,
+    else the place's one transform's (a wholesale baseline turns every piece by `fit.rot_deg`)."""
+    fit = place.get("fit") or {}
+    per = fit.get("clusters") or {}
+    whole = math.radians(float(fit.get("rot_deg", 0.0))) if "wholesale" in place else 0.0
+    return lambda cid: float((per.get(cid) or {}).get("rot", whole))
+
+
 def seat(light: dict, fixture: dict) -> dict:
     """A light's seat rule: `on` its fixture, at its source height over the fixture's origin."""
     return {"mode": "on", "on": fixture["id"], "dz": round(light["pos"][2] - fixture["pos"][2], 2)}

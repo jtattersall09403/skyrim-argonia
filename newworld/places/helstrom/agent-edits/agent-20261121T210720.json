@@ -1,0 +1,76 @@
+{
+ "save_id": "agent-20261121T210720",
+ "place_id": "helstrom",
+ "name": "a stone ruin of the source's hills: the record's city has no stone save the old Xanmeer",
+ "at": "2026-11-21T21:07:20Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2DTJ0GKVTY5Y5N1H11DFWHA22E",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2DTJ0GKVTY5Y5N1H11DFWHA22E",
+    "base": "Black Marsh.esm:22B867",
+    "kind": "building",
+    "pos": [
+     -53248.5,
+     -601027.71,
+     -141.1
+    ],
+    "rot": [
+     -0.31693596,
+     0.5184341,
+     10.93447
+    ],
+    "scale": 2.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B868",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:20Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S8BC1V7C0C83BYAD82WHKNPFJR",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S8BC1V7C0C83BYAD82WHKNPFJR",
+    "base": "Black Marsh.esm:22B867",
+    "kind": "building",
+    "pos": [
+     -56191.53,
+     -608032.9,
+     207.49
+    ],
+    "rot": [
+     -0.31693596,
+     0.5184341,
+     10.93447
+    ],
+    "scale": 2.5,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:22B869",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b40"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:07:20Z"
+  }
+ ]
+}

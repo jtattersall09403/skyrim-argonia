@@ -1,36 +1,17 @@
 {
  "helstrom": {
-  "flagged": [
-   [
-    "kit priest",
-    "person helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7",
-    "Skyrim.esm:01397E"
-   ],
-   [
-    "kit priest",
-    "person helstrom.JTM30R0H4G18Z3F47P0AS01C6B",
-    "Skyrim.esm:01397E"
-   ],
-   [
-    "material reach",
-    "trader helstrom.FSF6529VRX65YHFS9SDR8JD794",
-    "Skyrim.esm:01399E"
-   ],
-   [
-    "material reach",
-    "trader helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
-    "Skyrim.esm:0139A6"
-   ]
-  ],
+  "flagged": [],
   "mix": {
    "by_material": {
-    "bog-iron": 95,
-    "copper-steel": 2,
-    "elven": 1,
-    "glass": 1,
+    "bog-iron": 46,
+    "bone": 21,
+    "copper-steel": 3,
+    "flint": 24,
     "hide": 6,
     "leather": 7,
-    "scale": 45
+    "saxhleel": 1,
+    "scale": 45,
+    "wood": 4
    },
    "targets": [
     [
@@ -38,14 +19,14 @@
       "organic"
      ],
      43,
-     8
+     40
     ],
     [
      [
       "metal"
      ],
      39,
-     62
+     31
     ],
     [
      [
@@ -59,7 +40,7 @@
       "foreign"
      ],
      9,
-     1
+     0
     ]
    ]
   }

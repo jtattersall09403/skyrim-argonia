@@ -1,0 +1,31 @@
+{
+ "save_id": "agent-20261122T094925",
+ "place_id": "helstrom",
+ "name": "the ledge cut's one vertex kept over the water line",
+ "at": "2026-11-22T09:49:25Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "land.patch",
+   "cell": [
+    -14,
+    -148
+   ],
+   "verts": [
+    [
+     28,
+     23,
+     -235.4,
+     -210.4
+    ]
+   ],
+   "call": "fault",
+   "note": "the ledge cut took one vertex 19 u under the water line: raised back to 6 u over it",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T09:49:25Z"
+  }
+ ]
+}

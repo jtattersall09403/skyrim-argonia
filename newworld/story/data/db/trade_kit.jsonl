@@ -1,4 +1,4 @@
-{"id":"assassin","label":"Assassin, Shadowscale","ord":18,"match":"\\b(assassins?|shadowscales?|empty cradle)\\b"}
+{"id":"assassin","label":"Assassin, Shadowscale","ord":18,"match":"\\b(assassins?|shadowscales?)\\b"}
 {"id":"boatman","label":"Boatman, porter, pilot, rootworm handler","ord":13,"match":"\\b(boat\\w*|porter|pilot|rootworm|ferry\\w*)\\b","roles":"boatman carter"}
 {"id":"bosmer-household","label":"A Bosmer pilot's household","ord":26,"races":"WoodElfRace"}
 {"id":"builder","label":"Builder, raft-builder, mender","ord":6,"match":"\\b(build\\w*|raft-builder|plank|mender|pole-\\w+)\\b"}
@@ -18,11 +18,11 @@
 {"id":"pirate","label":"Pirate, smuggler, corsair","ord":21,"match":"\\b(pirate|smuggler|corsair|privateer)s?\\b"}
 {"id":"priest","label":"Tree-minder, grave-singer, priest","ord":10,"match":"\\b(tree-minder|root-tender|grave-singer|priest|pilgrim|shaman)\\b","roles":"priest"}
 {"id":"resident","label":"Anyone else","ord":22,"match":".","roles":"resident child trainer spell-trader"}
-{"id":"sellsword","label":"Sellsword, caravan guard, hired blade","ord":17,"match":"\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?|marsh charter)\\b"}
+{"id":"sellsword","label":"Sellsword, caravan guard, hired blade","ord":17,"match":"\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?)\\b"}
 {"id":"slaver","label":"Slaver, slave-taker (House Dres's heirs)","ord":20,"match":"\\b(slavers?|slave-?takers?|slavemasters?)\\b"}
 {"id":"smith","label":"Smith","ord":8,"match":"\\bsmith\\b","roles":"smith"}
 {"id":"tanner","label":"Tanner, hide-curer","ord":7,"match":"\\b(tann\\w*|hide-\\w+|curer|scraper|leather-\\w+)\\b"}
-{"id":"thief","label":"Thief, fence, cutpurse","ord":16,"match":"\\b(thie(f|ves)|fences?|cutpurses?|burglars?|night-reed)\\b"}
+{"id":"thief","label":"Thief, fence, cutpurse","ord":16,"match":"\\b(thie(f|ves)|fences?|cutpurses?|burglars?|eelskins?)\\b"}
 {"id":"trader","label":"Trader, merchant, tally-keeper","ord":11,"match":"\\b(trader|merchant|seller|market|tally)\\b","roles":"merchant apothecary"}
 {"id":"tribe-crimson-red","label":"The Warden Marches: the tribe's own leaning","ord":27,"cultures":"crimson-red"}
 {"id":"tribe-forest-green","label":"The Root-Folk of Helstrom: the tribe's own leaning","ord":28,"cultures":"forest-green"}

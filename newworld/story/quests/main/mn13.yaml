@@ -127,7 +127,7 @@ things:
 - {id: thing.mn13.reelka-helm, kind: item, name: Reel-Ka Helm, source: 'Stormhold Warrior Armor helm under our name', where: given
     at stage 90}
 placements:
-- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: invented}, enabled: true, anchor: {place: helstrom, rule: navmesh, need: the back of Nesh-Deeka's House}}
+- {ref: npc.mn.never-writes-twice, kind: person, name: Never-Writes-Twice, base: {kind: template_person, id: as MN10 places her}, enabled: true, anchor: {place: helstrom, rule: navmesh, need: the back of Nesh-Deeka's House}}
 - {ref: door.mn.nesh-deeka-house, kind: door, placeName: Nesh-Deeka's House, anchor: {place: helstrom, rule: surface, need: the door of the quiet house}}
 - {ref: marker.mn13.lilmoth, kind: marker, placeName: Lilmoth, anchor: {place: lilmoth, rule: surface, need: the boat quay}}
 - {ref: marker.mn13.bell-station, kind: marker, placeName: Bell Station, anchor: {place: bell-station, rule: surface, need: the plank landing with

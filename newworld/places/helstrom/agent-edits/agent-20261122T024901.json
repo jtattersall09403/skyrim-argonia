@@ -1,0 +1,107 @@
+{
+ "save_id": "agent-20261122T024901",
+ "place_id": "helstrom",
+ "name": "a dry tree and a birch that floated over the ground in the source as here, and a mud-house window its house's move left in the ground: dropped",
+ "at": "2026-11-22T02:49:01Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.EQDXG1VBEBXZWFYHNB4QNSDBRW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.EQDXG1VBEBXZWFYHNB4QNSDBRW",
+    "base": "Black Marsh.esm:14FB38",
+    "kind": "tree",
+    "pos": [
+     -58919.87,
+     -591299.1,
+     503.13
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 2.3,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F019D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T02:49:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.G8TWA2MXHP98FZNBNEAQN2YA8H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.G8TWA2MXHP98FZNBNEAQN2YA8H",
+    "base": "Black Marsh.esm:11FE7E",
+    "kind": "tree",
+    "pos": [
+     -55639.52,
+     -591939.19,
+     426.56
+    ],
+    "rot": [
+     0,
+     0,
+     10.61918
+    ],
+    "scale": 1.7,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1F0124",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T02:49:01Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JG8RQ20AKPTARJTEEYKDTSHEZV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JG8RQ20AKPTARJTEEYKDTSHEZV",
+    "base": "Black Marsh.esm:1D90E1",
+    "kind": "static",
+    "pos": [
+     -36780.61,
+     -612410.15,
+     221.52
+    ],
+    "rot": [
+     -0.46865386,
+     0.08997264,
+     9.95771
+    ],
+    "scale": 2.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D910B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s42"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T02:49:01Z"
+  }
+ ]
+}

@@ -1787,5 +1787,159 @@
   "notes": "author Kadraeus. Records read for stock and copied into our plugins under our names; assets the player's own download.",
   "permission": "dependency only (player's own download)",
   "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Serpent Dagger (Nexus 45038)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/45038?tab=files&file_id=183020",
+  "version": "1.1 (row serpent-dagger)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Twabaam. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Stiletto Collection SE (Nexus 4429)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/4429?tab=files&file_id=8517",
+  "version": "1.0 (row stiletto-collection)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author DMagnus. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Thieves Guild Dagger SE (Nexus 43278)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/43278?tab=files&file_id=174226",
+  "version": "1.0 (row thieves-guild-dagger)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Ronnie Magnum. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "WarSickles of the East (Nexus 177841)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/177841?tab=files&file_id=753316",
+  "version": "1.1.0 (row warsickles-east)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author screamooo. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Stinger-Poisoner (Nexus 8919)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/8919?tab=files&file_id=22464",
+  "version": "1.0 (row stinger-poisoner)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author ClipsyMoon. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Daggerkiin SE (Nexus 29058)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/29058?tab=files&file_id=342282",
+  "version": "1.1 (row daggerkiin)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author johnskyrim. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Dark Brotherhood Armor SE (Nexus 57539)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/57539?tab=files&file_id=237218",
+  "version": "1 (row dark-brotherhood-armor-se)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Sithis Personal Tailor. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Perfect Legionnaire - Imperial Armor Reforged 6-0 (Nexus 1061)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/1061?tab=files&file_id=1008",
+  "version": "6.0 (row perfect-legionnaire)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Ali Bengali. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Imperial Tribune Armor (Nexus 54294)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/54294?tab=files&file_id=223559",
+  "version": "1.26 (row imperial-tribune-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Gypsymama. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Ancient Imperial Armor SE (Nexus 142655)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/142655?tab=files&file_id=624910",
+  "version": "4 (row ancient-imperial-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author ancient imperial dude. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Imperial Agent Armor (Nexus 94300)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/94300?tab=files&file_id=400982",
+  "version": "1.0 (row imperial-agent-armor)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author NordwarUA. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Semper Fi SE - An Imperial Armor Mod (Nexus 693)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/693?tab=files&file_id=2508",
+  "version": "1.01 (row semper-fi-standalone)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Rogue1024. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Maleficus' Blackjack (Nexus 54546)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/54546?tab=files&file_id=473609",
+  "version": "1.3 (row maleficus-blackjack)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Maleficus. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Wurim Armoury - Hook Sword (Nexus 37775)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/37775?tab=files&file_id=147850",
+  "version": "1.0 (row wurim-hook-sword)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): the items ladder (docs/design/items.md)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Dyuz. Records read for stock and copied into our plugins under our names; assets the player's own download.",
+  "permission": "dependency only (player's own download)",
+  "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
  }
 ]

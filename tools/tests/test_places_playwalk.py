@@ -299,3 +299,39 @@ def test_a_large_place_is_cut_into_tours():
     assert 2 <= len(tours) <= 3
     got = [n for t in tours for n in t["stops"]]
     assert sorted(got) == sorted(s["name"] for s in stops[:-1])
+
+
+
+def test_a_quest_spot_on_a_door_is_walked_to_at_the_door_s_arrival():
+    """A quest spot standing on a house door (its porch may be no walked ground) is walked to where one stands to open
+    the door: the door's arrival; a spot away from any door is walked to where it stands."""
+    from types import SimpleNamespace
+    from tools.places.look import playwalk as pw
+    door = {"id": "d", "kind": "door", "m": [[1, 0, 0, 100.0], [0, 1, 0, 200.0], [0, 0, 1, 50.0]],
+            "door": {"to_space": "house", "arrival": [100.0, 120.0, 0.0]}}
+    sc = SimpleNamespace(pieces=[door], by_id={"d": door})
+    files = {"quests": [{"ref": "door.q.house", "pos": [102.0, 198.0, 52.0]},
+                        {"ref": "marker.q.field", "pos": [900.0, 900.0, 0.0]}]}
+    got = [t["pos"] for t in pw.points_of_interest(sc, files)["targets"]]
+    assert [102.0, 198.0, 52.0] not in got and [100.0, 120.0, 0.0] in got   # one walk: the door's, at its arrival
+    assert [900.0, 900.0, 0.0] in got
+
+
+
+def test_a_stall_s_awning_over_the_eye_is_no_sunk_house_but_a_roof_at_head_height_is():
+    """A building filling the lens whose top stands 130 u over the eye (a market stall's awning, a mud dome) is as
+    built; one whose top is at head height is a house sunk to its eaves."""
+    from tools.places.look import playwalk as pw
+    near = {"kind": "building", "edid": "01Market1", "share": 0.76, "dist": 21.0}
+    ok = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=129)})
+    bad = pw.classify("left", "at centre", {"near": dict(near, top_over_eye=40)})
+    assert ok["fault"] != "place" and bad["fault"] == "place" and "eaves" in bad["why"]
+
+
+def test_at_a_doorway_the_door_filling_the_view_is_the_door_but_a_wall_is_a_fault():
+    """Walking up to a door, the door itself fills the view ahead; a wall or building there is the fault."""
+    from tools.places.look import playwalk as pw
+    door = {"kind": "door", "edid": "01loaddoorArg", "share": 0.8, "dist": 14.0}
+    wall = dict(door, kind="building", edid="01arghouse")
+    assert pw.classify("ahead", "doorway of house", {"near": door})["fault"] != "place"
+    assert pw.classify("ahead", "doorway of house", {"near": wall})["fault"] == "place"

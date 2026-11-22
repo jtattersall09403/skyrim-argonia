@@ -1,0 +1,60 @@
+{
+ "save_id": "agent-20261121T224100",
+ "place_id": "helstrom",
+ "name": "the ship's second load door, into the source's cell 01Exit2 (its way to the source's mainland), which the place does not carry: a door into nothing",
+ "at": "2026-11-21T22:41:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ",
+    "base": "Skyrim.esm:031897",
+    "kind": "door",
+    "pos": [
+     -28575.34,
+     -631441.86,
+     193.87
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 0.1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Black Marsh North.esp:04F22F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing",
+    "door": {
+     "to_space": "01Exit2",
+     "to_ref": "Black Marsh North.esp:04F226",
+     "to_pos": [
+      133.29791,
+      -790.3622,
+      683.03894
+     ],
+     "to_rot": [
+      -1.5999935,
+      3.5049925e-07,
+      -7.104894e-08
+     ],
+     "flags": "0"
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:41:00Z"
+  }
+ ]
+}

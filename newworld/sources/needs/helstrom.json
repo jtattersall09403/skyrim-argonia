@@ -97,7 +97,7 @@
    "line": "main",
    "rests": {
     "space": "exterior",
-    "ref": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
+    "ref": "helstrom.LOOK001PLACE"
    },
    "signs": [],
    "met": false,
@@ -187,7 +187,11 @@
    "why": "Met for the place's part. A Murkmire house south-east of the sacred tree, reached over the boardwalk off its porch, shows \"The Council House of the Xeech-Leel\" on its front door and opens on a copy of Dragonthorn Manor (the hall with writing desks and silver, the upper room that serves as the treasurer's, partition doors), open by day. A back door in its back wall, locked at Expert, opens towards the wardens' quarters; in the hall's back wall an Imperial iron door locked at Master leads to the Council Strongroom (a copy of Journey to Baan Malur's stone cellar). Six wardens keep the night watch round the house and sleep by day in the Council Wardens' Quarters (a copy of Dragonthorn Manor Barracks); the cook Gathe-Ru works in the hall. The gallery door up the stilts is the story's FreeClimb way in (thieves.md:333): the stilts and the upper floor's windows are there to climb, and no stair is added for it. The gold, seal ring and silver are the quest's own things.",
    "fit": "The council house as placed.",
    "narrow": "Nothing more to change for the place.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "A big council hall plus a guard post; its door reads Council House of the Xeech-Leel, it has a Council Strongroom door, and wardens stand outside."
+   }
   },
   {
    "seq": 7,
@@ -223,7 +227,7 @@
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "recognised",
-    "said": "2026-11-17: \"Nesh-Deeka's House\" by its door name; read as a crowded shared lodging (six beds), not a quiet house, and no one inside by day"
+    "said": "A small residential hut called Nesh-Deeka's House, with beds, an enchanter and a locked chest; the door is named for her."
    }
   },
   {
@@ -254,7 +258,7 @@
    "tier": "AGENT_INVENTED",
    "sight": {
     "result": "recognised",
-    "said": "2026-11-17: an inn at the docks by its door name and its keeper; the go-between and his men are not seen (the quest places them)"
+    "said": "The Boatmen's Lodge, a ship-shaped inn by the docks; rent a bed and buy food and drink from Sleeps-Last (the go-between and his men are the quest's own placements)."
    }
   },
   {
@@ -276,10 +280,14 @@
     }
    ],
    "met": true,
-   "why": "Met for the place's part. The cave by the waterfalls shows \"Tree-Minders' Hall\" on its door; inside the door stand the arcane enchanter and, beside it, a chest the game names \"Urn Case\", locked at Expert and owned by the town, which serves as the urn's niche. The hall is the source city's own cave, not built from King of the Murkmire's Hist-root pieces as the story words it; a player meets a hall of the order either way. Okan-Zeel, the two grave-singers and the urn itself are the quests' own placements and thing.",
+   "why": "Met for the place's part. The mossy cave mouth in its mud rocks west of the city tree's plaza shows \"Tree-Minders' Hall\" on its door; inside the door stand the arcane enchanter and, beside it, a chest the game names \"Urn Case\", locked at Expert and owned by the town, which serves as the urn's niche. The hall is the source city's own cave, not built from King of the Murkmire's Hist-root pieces as the story words it; a player meets a hall of the order either way. Okan-Zeel, the two grave-singers and the urn itself are the quests' own placements and thing.",
    "fit": "The hall's entrance, beside the enchanter, where the healer Taleeka-Ma already works.",
    "narrow": "Yes: one container placed by hand and its lock; nothing else changed.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "The Tree-Minders' Hall: its door is named for it and it holds an Arcane Enchanter and a locked Urn Case; spells and training from Taleeka-Ma."
+   }
   },
   {
    "seq": 10,
@@ -302,7 +310,11 @@
    "why": "Met for the place's part. The raft-master Poles-Upriver works at the city landing, and the market (the Market Cave with its stalls, and the traders round the sacred tree) is there by day. The treasurer is the quest's own placement, walking the market by day.",
    "fit": "The landing and the market as they stand.",
    "narrow": "Nothing to change.",
-   "tier": "AGENT_INVENTED"
+   "tier": "AGENT_INVENTED",
+   "sight": {
+    "result": "recognised",
+    "said": "A river dock with a boatwoman, Poles-Upriver, who offers passage by boat to other towns; the town's traders by the Hist tree are the nearest market."
+   }
   },
   {
    "seq": 11,
@@ -314,16 +326,16 @@
    "tier": "AGENT_INVENTED",
    "rests": {
     "space": "exterior",
-    "ref": "helstrom.NH7D6CHSYD27JCAJXRXG1NHRQ1"
+    "ref": "helstrom.TNC8WXFV335G5YAANE3XK77268"
    },
    "signs": [
     {
      "sign": "label",
-     "detail": "the world map marks \"Rootworm Landing (Helstrom)\" at the pool"
+     "detail": "the world map marks \"Rootworm Landing (Helstrom)\" beside the mud mouth"
     },
     {
      "sign": "look",
-     "detail": "the amber sap pool at the sacred tree's foot, with the rootworm's tunnel mouth at its far lip"
+     "detail": "the great city tree over the market by the landing, and the rootworm's mud mouth among its roots on its south-west side, apart from the tree's amber sap pool"
     },
     {
      "sign": "person",
@@ -331,10 +343,13 @@
      "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM"
     }
    ],
-   "met": false,
-   "why": "Partly met. Under the sacred tree (HistTree04), 900 units west of its trunk and apart from its own sap pool, the draft lays a clear root pool (Skyrim's still water puddle at 1.8 scale) with King of the Murkmire's rootworm tunnel mouth at its west lip, and a map marker \"Rootworm Landing (Helstrom)\" on its east lip; the root-tender Cheeval-Xu works at the pool's east lip and gives the rootworm stop (seq 0 of the record's gives). Not met: a Hist's root pool is its sap pool, never water (decision 0040, 3), so the stop, the tunnel mouth, the marker and Cheeval-Xu belong at the tree's own sap pool and the water puddle goes.",
-   "fit": "The water puddle stands where the stop is until the stop moves to the sap pool.",
-   "narrow": "Yes: move the tunnel mouth, the marker and Cheeval-Xu's work spot to the sap pool's lip and delete the puddle; no other row changes."
+   "met": true,
+   "why": "Met. The great city tree (King of the Murkmire's Hist at 2.3) stands over the plaza between the market and the city landing, its amber sap pool at its trunk; on its south-west side among the roots is the rootworm's tunnel mouth, a mound of churned mud where the worm comes up (owner, 2026-11-20: the worm surfaces through mud, never the sap pool), with the map marker \"Rootworm Landing (Helstrom)\" beside it; the root-tender Cheeval-Xu works between the mouth and the marker.",
+   "fit": "The root landing as placed.",
+   "sight": {
+    "result": "recognised",
+    "said": "The town centre at the Hist tree; the map marks Helstrom and the Rootworm Landing here (the root-tender works at the landing by reference to its mouth, which the sheet does not list)."
+   }
   },
   {
    "seq": 12,

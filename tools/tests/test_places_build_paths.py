@@ -151,3 +151,11 @@ def test_the_cells_a_path_crosses_are_fewer_than_the_cells_its_paint_reaches():
     line = [[300.0, -300.0], [900.0, -300.0]]
     out = build.plan_paths([{"id": "p.1", "kind": "path", "style": "dirt", "points": line, "width": 160}], facts(), walked)
     assert walked == {(0, -1)} and {(0, -1), (0, 0)} <= set(out)
+
+
+def test_a_trodden_walk_is_walked_and_never_painted():
+    """A walk over ground that already reads as walked (style trodden) paints nothing; its cells are still walked."""
+    walked = set()
+    out = build.plan_paths([{"id": "p.1", "kind": "path", "style": "trodden", "points": LINE, "width": 160}],
+                           facts(), walked)
+    assert out == {} and (0, 0) in walked

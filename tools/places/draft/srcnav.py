@@ -1,13 +1,15 @@
 """The source place's own exterior navmesh, carried to our place at the wholesale transform (place.json `fit` and
 `wholesale.offset`): every triangle of the source cells' NAVMs inside the footprint, in our coordinates, assigned to
-our cell by its middle, with three narrow rules where the town or ground was changed by hand:
+our cell by its middle, with four narrow rules where the town or ground was changed:
 
 1. a vertex ON the source's ground (within ON_GROUND of the source terrain) follows our ground: it takes our ground's
    height there (our relief is the source's + offset, so it moves only where a mound, a bank or the edge band changed
    it); a vertex on a deck keeps its height (decks moved only with their pieces);
 2. a triangle whose middle lies under a source piece we deleted or moved is dropped (its floor is gone or elsewhere);
    the build meshes again only those holes and what we added;
-3. a triangle outside the footprint radius is dropped: the footprint's edge is where the build's generated mesh,
+3. a triangle the source laid more than FLOAT_OVER over its own terrain with no source piece under it is dropped (the
+   source's land there changed after its mesh was made: it floats over nothing); the build meshes our ground there;
+4. a triangle outside the footprint radius is dropped: the footprint's edge is where the build's generated mesh,
    over our ground, takes over and is joined to it (finish at the seam as the interior copy does).
 
 Read only from the source bundle under out/ (nothing extracted is committed).
@@ -24,27 +26,36 @@ from pathlib import Path
 import numpy as np
 
 ON_GROUND = 40.0
+FLOAT_OVER = 96.0   # a source triangle this far over the source's own terrain stands on something, or on nothing
 JOINT_DZ = 32.0   # tools.navmesh.params.AGENT_CLIMB
 CELL = 4096.0
 
 
-def _transform(place: dict):
+def _transform(place: dict, src_ground=None, our_ground=None):
+    """(ours(x, y, z), the one offset): a source point in our coordinates. Under districts (place.json
+    `wholesale.districts`, tools/places/draft/heights.py) a point takes its district's offset, or follows the carried
+    ground where the grounds are given."""
+    from tools.places.draft.heights import of_place
     fit = place["fit"]
     pv, an = fit["pivot"], fit["anchor"]
     rot = math.radians(float(fit.get("rot_deg", 0.0)))
     c, s = math.cos(rot), math.sin(rot)
     off = float((place.get("wholesale") or {}).get("offset", 0.0))
+    H = of_place(place)
 
     def ours(x, y, z):
         dx, dy = x - pv[0], y - pv[1]
-        return an[0] + dx * c + dy * s, an[1] - dx * s + dy * c, z + off   # clockwise, as geom.Xf
+        X, Y = an[0] + dx * c + dy * s, an[1] - dx * s + dy * c   # clockwise, as geom.Xf
+        if not H:
+            return X, Y, z + off
+        return X, Y, z + H.dz(x, y, src_ground=src_ground, our_xy=(X, Y), our_ground=our_ground)
     return ours, off
 
 
 def carry(place: dict, navs: list[dict], src_ground, our_ground, changed_boxes: list, radius: float) -> dict:
     """{cells: {(cx,cy): {verts, tris}}, stats}: `src_ground(x,y)` the source terrain, `our_ground(x,y)` ours,
     `changed_boxes` [(x0,y0,x1,y1)] in our coordinates of source pieces deleted or moved."""
-    ours, off = _transform(place)
+    ours, off = _transform(place, src_ground, our_ground)
     centre = place["fit"]["anchor"]
     cells: dict[tuple[int, int], dict] = {}
     st = {"tris_in": 0, "kept": 0, "outside": 0, "under_changed": 0, "verts_on_ground": 0, "verts_on_deck": 0,
@@ -98,12 +109,12 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
     raised ground buries), is dropped and listed in `steep` (the build meshes that patch again, over the real pieces
     and ground)."""
     from tools.places.carrynav import MAX_SLOPE_DEG, slope_deg
-    ours, off = _transform(place)
+    ours, off = _transform(place, src_ground, our_ground)
     centre = place["fit"]["anchor"]
     st = {"tris_in": 0, "kept": 0, "outside": 0, "steep": 0, "joints": 0, "buried": 0, "regrounded": 0, "ground_moved_max": 0.0}
-    tris, steep = [], []
+    tris, steep, high = [], [], set()
     for m in navs:
-        V, moved, on, buried, fell = [], [], [], set(), []
+        V, moved, on, buried, fell, over = [], [], [], set(), [], []
         for x, y, z in (v[:3] for v in m["verts"]):
             X, Y, Z = ours(x, y, z)
             g = src_ground(x, y)
@@ -119,6 +130,7 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
                 if h is not None and Z < h - JOINT_DZ:
                     buried.add(len(V))
             V.append((X, Y, Z))
+            over.append(None if g is None else z - g)
             moved.append(abs(dz))
             fell.append(-dz)
             on.append(grounded)
@@ -148,9 +160,11 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
                     st["steep"] += 1
                     steep.append(tri)
                     continue
+            if all(over[i] is not None and over[i] > FLOAT_OVER for i in t[:3]):
+                high.add(len(tris))     # over the source's terrain: held by a source piece, or by nothing
             tris.append((tri, int(t[3]) if len(t) > 3 else 0, dz))
             st["kept"] += 1
-    return {"tris": tris, "steep": steep, "stats": st}
+    return {"tris": tris, "steep": steep, "high": high, "stats": st}
 
 
 def on_surface(posed, tri, r: float = 24.0, dz: float = 24.0) -> bool:
@@ -164,6 +178,15 @@ def on_surface(posed, tri, r: float = 24.0, dz: float = 24.0) -> bool:
 
 SOLID = {"building", "static", "furniture", "door", "container", "rock", "tree", "activator"}
 SKIP_KINDS = ("actor", "marker", "light", "plant", "clutter")
+
+
+def laid_rise(led: Path) -> dict[str, float]:
+    """The rise each source piece was laid at (ledger `rise`, written by `draft wholesale` under districts): the
+    height its laid pose stands at, against which a hand's move is told."""
+    if not led.exists():
+        return {}
+    return {e["src"]: float(e["rise"]) for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
+            if e.get("status") == "placed" and e.get("rise") is not None}
 
 
 def carried_disc(place: dict) -> tuple[list, float, float]:
@@ -193,15 +216,16 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
     bdir = root / "out" / "places" / "bundles" / f"src.{place['source_id']}"
     navs = [json.loads(ln) for ln in (bdir / "spaces/exterior/navmesh.jsonl").read_text().splitlines() if ln.strip()]
     sg = Ground.load(bdir)
-    ours, off = _transform(place)
+    ours, off = _transform(place, sg.height, sc.ground.height)
     rot = math.radians(float(place["fit"].get("rot_deg", 0.0)))
     centre, radius, reach = carried_disc(place)
     got = carried_tris(place, navs, sg.height, sc.ground.height, radius + reach)
     led = places / pid / "ledger.jsonl"
     dropped = {e.get("src") for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
                if e.get("status") == "dropped"} if led.exists() else set()
+    rises = laid_rise(led)
     now = {r["src"]: sc.by_id[r["id"]] for r in sc.refs.values() if r.get("src") and r["id"] in sc.by_id}
-    zones, moved_pairs = [], []
+    zones, moved_pairs, holds = [], [], []
     st = {"deleted": 0, "moved": 0, "added": 0}
 
     def zone_of(p):
@@ -212,12 +236,18 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
         if r.get("kind") in SKIP_KINDS:
             continue
         X, Y, Z = ours(*r["pos"])
+        if r["id"] in rises:
+            Z = r["pos"][2] + rises[r["id"]]
         if math.dist((X, Y), centre) > radius + reach:
             continue
         rr = list(r.get("rot") or [0, 0, 0])
         rr[2] = float(rr[2]) + rot
         sp = sc.piece({"id": "src:" + r["id"], "base": r["base"], "kind": r.get("kind"), "pos": [X, Y, Z], "rot": rr,
                        "scale": r.get("scale", 1)})
+        if r.get("kind") in SOLID:
+            h = Posed(sp).outline()
+            if len(h) >= 3:
+                holds.append(np.asarray(h, float))
         p = now.get(r["id"])
         if p is None:
             if r["id"] in dropped:      # never laid (wholesale's own drops: water, people, levelled)
@@ -245,8 +275,15 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
             zones.append(z)
             st["added"] += 1
     zones += [cn.ccw([(q[0], q[1]) for q in t]) for t in got["steep"]]
+    # a triangle the source laid well over its own terrain with no source piece under it floats over nothing (the
+    # source's land under it was changed after its mesh was made): the build meshes our ground there instead
+    unheld = unheld_tris(got["tris"], got.get("high", set()), holds)
+    zones += [cn.ccw([(q[0], q[1]) for q in got["tris"][i][0]]) for i in sorted(unheld)]
+    st["floating"] = len(unheld)
     moved, keep = [], []
-    for tri, flags, _ in got["tris"]:
+    for i, (tri, flags, _) in enumerate(got["tris"]):
+        if i in unheld:
+            continue
         k = next((j for j, (po0, _, _) in enumerate(moved_pairs) if on_surface(po0, tri)), None)
         if k is None:
             keep.append((tri, flags, 0))
@@ -257,6 +294,28 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
     st["moved_tris"] = len(moved)
     return {"tris": keep, "zones": zones, "moved": moved, "moved_on": [po1 for _, po1, _ in moved_pairs],
             "ground": sc.ground, "radius": radius, "centre": centre, "stats": {**got["stats"], **st}}
+
+
+def _inside(poly: np.ndarray, x: float, y: float) -> bool:
+    """(x, y) inside the plan polygon (even-odd rule)."""
+    px, py = poly[:, 0], poly[:, 1]
+    qx, qy = np.roll(px, -1), np.roll(py, -1)
+    cross = (py > y) != (qy > y)
+    xs = px + (y - py) * (qx - px) / np.where(qy - py == 0, 1e-9, qy - py)
+    return bool(np.count_nonzero(cross & (x < xs)) % 2)
+
+
+def unheld_tris(tris: list, high: set, holds: list, pad: float = 48.0) -> set:
+    """The indices in `high` (triangles laid well over the source's terrain) whose middle lies under no source piece's
+    outline (grown by pad in its box test): mesh floating over nothing."""
+    boxes = [(h[:, 0].min() - pad, h[:, 1].min() - pad, h[:, 0].max() + pad, h[:, 1].max() + pad) for h in holds]
+    out = set()
+    for i in high:
+        tri = tris[i][0]
+        mx, my = sum(p[0] for p in tri) / 3, sum(p[1] for p in tri) / 3
+        if not any(b[0] <= mx <= b[2] and b[1] <= my <= b[3] and _inside(h, mx, my) for b, h in zip(boxes, holds)):
+            out.add(i)
+    return out
 
 
 def edge_report(cell: dict) -> dict:
@@ -286,7 +345,7 @@ def main(argv: list[str]) -> int:
     bdir = Path("out/places/bundles") / f"src.{place['source_id']}"
     navs = [json.loads(ln) for ln in (bdir / "spaces/exterior/navmesh.jsonl").read_text().splitlines() if ln.strip()]
     sg = Ground.load(bdir)
-    ours, off = _transform(place)
+    ours, off = _transform(place, sg.height, sc.ground.height)
     # source pieces we deleted or moved: the wholesale row's position against the piece as it now stands
     src_of = {r["id"]: r.get("src") for r in (json.loads(ln) for ln in
               (Path("newworld/places") / pid / "spaces/exterior/refs.jsonl").read_text().splitlines() if ln.strip())}
@@ -294,18 +353,21 @@ def main(argv: list[str]) -> int:
     changed = []
     centre, radius, _ = carried_disc(place)
     led = Path("newworld/places") / pid / "ledger.jsonl"
+    rises = laid_rise(led)
     dropped = {e.get("src") for e in (json.loads(ln) for ln in led.read_text().splitlines() if ln.strip())
                if e.get("status") == "dropped"}
     for r in (json.loads(ln) for ln in (bdir / "spaces/exterior/refs.jsonl").read_text().splitlines() if ln.strip()):
         if r.get("kind") in ("actor", "marker", "light", "plant", "tree", "clutter"):
             continue
-        X, Y, _ = ours(*r["pos"])
+        X, Y, Z = ours(*r["pos"])
+        if r["id"] in rises:
+            Z = r["pos"][2] + rises[r["id"]]
         p = now.get(r["id"])
         if p is None and math.dist((X, Y), centre) <= radius:
             if r["id"] in dropped:     # never laid (wholesale's own drops: water, people, levelled)
                 continue
             changed.append((X - 150, Y - 150, X + 150, Y + 150))
-        elif p is not None and math.dist((p["m"][0][3], p["m"][1][3], p["m"][2][3]), (X, Y, r["pos"][2] + off)) > 10:
+        elif p is not None and math.dist((p["m"][0][3], p["m"][1][3], p["m"][2][3]), (X, Y, Z)) > 10:
             changed.append((X - 150, Y - 150, X + 150, Y + 150))
     res = carry(place, navs, sg.height, sc.ground.height, changed, radius)
     rep = {"stats": res["stats"], "changed_pieces": len(changed),

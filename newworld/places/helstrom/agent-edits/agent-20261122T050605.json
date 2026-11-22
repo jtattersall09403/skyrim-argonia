@@ -1,0 +1,43 @@
+{
+ "save_id": "agent-20261122T050605",
+ "place_id": "helstrom",
+ "name": "a poison bloom of the source (a trap): Helstrom is friendly and its danger is social; the row was held only by our own studio proof saves of 2026-11-10, now removed",
+ "at": "2026-11-22T05:06:05Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5",
+    "base": "Black Marsh.esm:1EECEB",
+    "kind": "clutter",
+    "pos": [
+     -62224.24,
+     -623067.52,
+     107.99
+    ],
+    "rot": [
+     2,
+     0,
+     5.23599
+    ],
+    "scale": 6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:200708",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s130"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:06:05Z"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T220506",
+ "place_id": "helstrom",
+ "name": "the moored ship's own door, which the source files apart from the landing: moved with the landing and its ship",
+ "at": "2026-11-21T22:05:06Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.H1AKX11EC5YCHF3K2Y08G8KR69",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -29007.21,
+     -630469.21,
+     887.9
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -27263.21,
+     -631447.21,
+     887.9
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:05:06Z"
+  }
+ ]
+}

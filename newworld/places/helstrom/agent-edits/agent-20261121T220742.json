@@ -1,0 +1,109 @@
+{
+ "save_id": "agent-20261121T220742",
+ "place_id": "helstrom",
+ "name": "lanterns that hung on the source's inlet bridge, which is not carried: they would hang 20 m in the air",
+ "at": "2026-11-21T22:07:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2XZPVT5V1AC5JD2N37QPT5N50P",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2XZPVT5V1AC5JD2N37QPT5N50P",
+    "base": "Skyrim.esm:01B065",
+    "kind": "clutter",
+    "pos": [
+     -44717.03,
+     -628395.69,
+     1646.66
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEFB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T22:07:42Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.VV89KMBWP1Z7N293VEZ4QQHQ6F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.VV89KMBWP1Z7N293VEZ4QQHQ6F",
+    "base": "Skyrim.esm:0B735D",
+    "kind": "light",
+    "pos": [
+     -44784.13,
+     -628356.72,
+     1580.63
+    ],
+    "rot": [
+     3.1415927,
+     -0.058407713,
+     8.37758
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEF9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T22:07:42Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.YYBBTDT4JK6ZXVXE81DNZZFRDX",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.YYBBTDT4JK6ZXVXE81DNZZFRDX",
+    "base": "Skyrim.esm:02D847",
+    "kind": "clutter",
+    "pos": [
+     -44787.04,
+     -628363.05,
+     1623.88
+    ],
+    "rot": [
+     0,
+     0,
+     5.43599
+    ],
+    "scale": 2.6,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEEFC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T22:07:42Z"
+  }
+ ]
+}

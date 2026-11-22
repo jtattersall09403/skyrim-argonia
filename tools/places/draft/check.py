@@ -444,9 +444,7 @@ def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) ->
     from tools.places.draft import lights
     ext = [r for r in src.exterior.refs]
     by_src = {r["id"]: r for r in ext}
-    turns = (place.get("fit") or {}).get("clusters") or {}
-    bad = lights.off_fixture(refs, by_src, lights.fixtures(ext, bases),
-                             lambda cid: float((turns.get(cid) or {}).get("rot", 0.0)))
+    bad = lights.off_fixture(refs, by_src, lights.fixtures(ext, bases), lights.turn_of(place))
     have = {r["id"] for r in refs}
     for r in lights.station_lights(place["place_id"], refs, place.get("stations")):
         if r["id"] not in have:
@@ -478,15 +476,21 @@ def nordic_in_copies(pdir: Path, src, bases: dict, bundles: Path = io.BUNDLES) -
         keep = interiors.kept(sp["copy_of"], sp.get("room"), sp.get("cut"))
         src_sp = io.copied_space(sp["copy_of"], src, bundles)
         place_source = src.meta.get("source_id") or src.meta.get("bundle_id", "").removeprefix("src.")
-        if sp.get("added") and src_sp and sp["copy_of"].split("/", 1)[0] != place_source:
+        outside = bool(sp.get("added") and src_sp and sp["copy_of"].split("/", 1)[0] != place_source)
+        if outside:
             bases = {**bases, **io.catalogue_bases({r["base"] for r in src_sp.refs})}
         for r in (src_sp.refs if src_sp else []):
             if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
                 continue
             row = rows.get(r["id"], r)
+            if not outside and row.get("base") == r.get("base"):
+                continue   # the place's own source room keeps its pieces as they come; only a swapped-in base is judged
             if not row.get("removed") and io.is_nordic(row.get("base"), bases.get(row.get("base")) or {}, review):
                 bad.append(f"{sp['space_id']}/{r['id']} keeps a Nordic base {row['base']}")
+        own = set() if outside else {r.get("base") for r in (src_sp.refs if src_sp else [])}
         for row in io.read_jsonl(sj.parent / "refs.jsonl"):
+            if row.get("base") in own:
+                continue   # a piece the room itself already uses (a second of its own doors) is not from outside
             if not row.get("src") and io.is_nordic(row.get("base"), bases.get(row.get("base")) or {}, review):
                 bad.append(f"{sp['space_id']}/{row['id']} adds a Nordic base {row['base']}")
     return bad

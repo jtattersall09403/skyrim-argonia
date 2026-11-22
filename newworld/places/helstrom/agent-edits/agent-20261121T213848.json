@@ -1,0 +1,440 @@
+{
+ "save_id": "agent-20261121T213848",
+ "place_id": "helstrom",
+ "name": "a house of a source cluster whose houses stood at different heights on the source's hill, laid at its cluster's height: brought, with its door, lights and steps, to stand on the carried ground at its own height over its own ground",
+ "at": "2026-11-21T21:38:48Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.ZHQC0GM9R182NGG535M4HWPY90",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -36019.12,
+     -611885.5,
+     52.24
+    ],
+    "rot": [
+     0,
+     0,
+     7.836
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -36019.12,
+     -611885.5,
+     256.94
+    ],
+    "rot": [
+     0,
+     0,
+     7.836
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.1S0MPNHKF9D8Z6079E75ED22E5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41853.79,
+     -604714.04,
+     449.98
+    ],
+    "rot": [
+     0,
+     0,
+     5.436
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41853.79,
+     -604714.04,
+     221.58
+    ],
+    "rot": [
+     0,
+     0,
+     5.436
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.RJJ83D3T9ECSYHGKB40GGV7PTT",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55517.77,
+     -614852.96,
+     1800.0
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55517.77,
+     -614852.96,
+     1911.0
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.1CR2XK54A29NFW8W95GMY6HKXG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55512.91,
+     -614857.97,
+     1843.25
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55512.91,
+     -614857.97,
+     1954.25
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.6EZ5AP3A3WKM2K7A3GNDGHA55Z",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55923.74,
+     -614710.61,
+     169.87
+    ],
+    "rot": [
+     0.01651038,
+     0.08433486,
+     10.83834
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55923.74,
+     -614710.61,
+     280.87
+    ],
+    "rot": [
+     0.01651038,
+     0.08433486,
+     10.83834
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.AH414NEYCV4XA2V8SCES1W946W",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55974.86,
+     -614610.32,
+     446.66
+    ],
+    "rot": [
+     1.5734464,
+     0.8166418,
+     8.12096
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55974.86,
+     -614610.32,
+     557.66
+    ],
+    "rot": [
+     1.5734464,
+     0.8166418,
+     8.12096
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.FP4R210JAM5JZEF1VN708BBKFJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55457.11,
+     -614804.54,
+     1866.03
+    ],
+    "rot": [
+     0,
+     0,
+     10.31918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55457.11,
+     -614804.54,
+     1977.03
+    ],
+    "rot": [
+     0,
+     0,
+     10.31918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.G5HRH01HTKNSJ73V8BGG2008KV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55377.11,
+     -614769.11,
+     1843.25
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55377.11,
+     -614769.11,
+     1954.25
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 2.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.MTDH5ADKGTE64XE91JW6TT11K1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55374.6,
+     -614732.52,
+     1812.75
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55374.6,
+     -614732.52,
+     1923.75
+    ],
+    "rot": [
+     3.0871463,
+     -0.02115424,
+     9.57815
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.7RDH30ZDX4DBD3NEJ6D73PDKR5",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55614.86,
+     -614365.24,
+     278.4
+    ],
+    "rot": [
+     -1.7381123,
+     0.9916481,
+     10.91922
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55614.86,
+     -614365.24,
+     389.4
+    ],
+    "rot": [
+     -1.7381123,
+     0.9916481,
+     10.91922
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:38:48Z"
+  }
+ ]
+}

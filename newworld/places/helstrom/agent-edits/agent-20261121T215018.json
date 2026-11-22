@@ -1,0 +1,569 @@
+{
+ "save_id": "agent-20261121T215018",
+ "place_id": "helstrom",
+ "name": "Nesh-Deeka's House (the mud house of the south-west district) moved whole 750 units north off the river's edge: the baseline stood its mound half in our water",
+ "at": "2026-11-21T21:50:18Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.0APZB0VVZ7G8AF9C63ZJVRWB5Z",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -36907.87,
+     -632047.33,
+     558.89
+    ],
+    "rot": [
+     0.13509189,
+     0.58642507,
+     5.47683
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -36907.87,
+     -631297.33,
+     558.89
+    ],
+    "rot": [
+     0.13509189,
+     0.58642507,
+     5.47683
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.2ZE9BXJJ9BWGZ09JSQWSZKM8Z9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37680.57,
+     -631598.03,
+     347.37
+    ],
+    "rot": [
+     0,
+     0,
+     7.636
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37680.57,
+     -630848.03,
+     347.37
+    ],
+    "rot": [
+     0,
+     0,
+     7.636
+    ],
+    "scale": 1.5,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.4WVA0WFQVRQJBYKM2RE238M7JZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37765.32,
+     -631560.7,
+     302.27
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37765.32,
+     -630810.7,
+     302.27
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.95AFSXGHD6HZAR6H98AHC943BZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38322.64,
+     -632263.52,
+     572.84
+    ],
+    "rot": [
+     -0.47657955,
+     -0.0013136867,
+     9.77952
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38322.64,
+     -631513.52,
+     572.84
+    ],
+    "rot": [
+     -0.47657955,
+     -0.0013136867,
+     9.77952
+    ],
+    "scale": 2.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.A13KP7CH0GY9TQ4A3T740MR2F2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38086.96,
+     -631335.61,
+     499.38
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38086.96,
+     -630585.61,
+     499.38
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.C9KJC9MNXATB4EYGRRW711GR3E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37672.82,
+     -631562.09,
+     185.24
+    ],
+    "rot": [
+     0,
+     0,
+     7.63599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37672.82,
+     -630812.09,
+     185.24
+    ],
+    "rot": [
+     0,
+     0,
+     7.63599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.GQD1A6RXYZP0ZEERXWA7X88FAQ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37485.79,
+     -632580.13,
+     -207.05
+    ],
+    "rot": [
+     -3.036557,
+     -0.086150296,
+     5.24161
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37485.79,
+     -631830.13,
+     -207.05
+    ],
+    "rot": [
+     -3.036557,
+     -0.086150296,
+     5.24161
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.P882FY8G0D4C8Q4PNH1H168RTH",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37358.01,
+     -631255.57,
+     364.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37358.01,
+     -630505.57,
+     364.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.QR40HQST9AW64BAAYKSDAQM10C",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38116.3,
+     -631426.28,
+     293.62
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38116.3,
+     -630676.28,
+     293.62
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.SAE5ZDB9ET7WFMB0BNYE6P78RX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38104.27,
+     -631346.53,
+     567.96
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38104.27,
+     -630596.53,
+     567.96
+    ],
+    "rot": [
+     0,
+     0,
+     6.43599
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TPEFQJJ7YP2W66DEJ7Z8AC1X8H",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37361.91,
+     -631235.49,
+     295.57
+    ],
+    "rot": [
+     3.1415927,
+     -0.14159817,
+     8.37758
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37361.91,
+     -630485.49,
+     295.57
+    ],
+    "rot": [
+     3.1415927,
+     -0.14159817,
+     8.37758
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.TSCXWNW2SV3MYP79NQCDKPENE1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -36892.03,
+     -632048.39,
+     633.99
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -36892.03,
+     -631298.39,
+     633.99
+    ],
+    "rot": [
+     3.084709,
+     0.0132629275,
+     10.1772
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.WQFD82WZCKM2FW95Z6M120XWBP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -37288.04,
+     -631295.68,
+     89.81
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -37288.04,
+     -630545.68,
+     89.81
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T21:50:18Z"
+  }
+ ]
+}

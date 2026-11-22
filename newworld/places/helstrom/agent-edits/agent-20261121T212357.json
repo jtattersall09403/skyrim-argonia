@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T212357",
+ "place_id": "helstrom",
+ "name": "the city tree placed by hand at the city's heart by the landing",
+ "at": "2026-11-21T21:23:57Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK001PLACE",
+    "base": "King of the Murkmire.esp:0D72B7",
+    "kind": "static",
+    "pos": [
+     -35000.0,
+     -626300.0,
+     155.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the city tree: the record's great Hist at the city's heart by the landing, King of the Murkmire's HistTree03 at 1.5 (draft.shrine), its root landing at its foot",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T21:23:57Z"
+  }
+ ]
+}

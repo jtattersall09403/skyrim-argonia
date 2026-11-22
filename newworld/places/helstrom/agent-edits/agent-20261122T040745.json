@@ -1,0 +1,110 @@
+{
+ "save_id": "agent-20261122T040745",
+ "place_id": "helstrom",
+ "name": "walkway pieces the streets stage laid to join the landing's island before the landing was lowered to its bank: no longer needed, they would stand over the platform",
+ "at": "2026-11-22T04:07:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.30K2NY2EHGGVNRKYZD2ANQY9EN",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.30K2NY2EHGGVNRKYZD2ANQY9EN",
+    "base": "Skyrim.esm:0AE62E",
+    "kind": "building",
+    "pos": [
+     -34624.66,
+     -629586.43,
+     195.46
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.67618
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "walk": 0.1,
+    "seat": {
+     "mode": "free",
+     "on": "helstrom.C438HAPX0NM8SRS4EWQZNTZJ7Q"
+    },
+    "why": "joins door helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE's walkable island to the town's network"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:07:45Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5C9S5QKCHJCH1GGSPXAXVTSV8Q",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5C9S5QKCHJCH1GGSPXAXVTSV8Q",
+    "base": "Skyrim.esm:0AE62E",
+    "kind": "building",
+    "pos": [
+     -34191.46,
+     -629105.56,
+     189.41
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.39668
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "walk": 0.1,
+    "seat": {
+     "mode": "free"
+    },
+    "why": "joins door helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE's walkable island to the town's network"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T04:07:45Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.C438HAPX0NM8SRS4EWQZNTZJ7Q",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.C438HAPX0NM8SRS4EWQZNTZJ7Q",
+    "base": "Skyrim.esm:0AE62E",
+    "kind": "building",
+    "pos": [
+     -34511.52,
+     -629632.97,
+     198.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.79166
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "walk": 0.1,
+    "seat": {
+     "mode": "free"
+    },
+    "why": "joins door helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE's walkable island to the town's network"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T04:07:45Z"
+  }
+ ]
+}

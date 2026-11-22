@@ -1,0 +1,44 @@
+{
+ "save_id": "agent-20261122T032108",
+ "place_id": "helstrom",
+ "name": "a flight of the landing's own dock steps from the pier's head down to the plaza's ground: the landing's decks stood over the bank with no way down",
+ "at": "2026-11-22T03:21:08Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK002STEPS",
+    "base": "Skyrim.esm:0AEDF3",
+    "kind": "building",
+    "pos": [
+     -33969.99,
+     -630339.57,
+     124.84
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.66519
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "helstrom.BW1G9BK67YDXYCRW9ZPBYQG9DY",
+     "dz": -127.91
+    },
+    "why": "steps from helstrom.BW1G9BK67YDXYCRW9ZPBYQG9DY down to -34300,-629900",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:21:08Z"
+  }
+ ]
+}

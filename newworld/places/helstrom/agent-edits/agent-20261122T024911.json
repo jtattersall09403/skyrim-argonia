@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T024911",
+ "place_id": "helstrom",
+ "name": "the red lamp's light brought down with its lamp",
+ "at": "2026-11-22T02:49:11Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.A13KP7CH0GY9TQ4A3T740MR2F2",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38086.96,
+     -630585.61,
+     442.58
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38086.96,
+     -630585.61,
+     304.58
+    ],
+    "rot": [
+     -3.0095022,
+     -0.05116014,
+     7.1742
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T02:49:11Z"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T041056",
+ "place_id": "helstrom",
+ "name": "a rowing boat the landing's move left on the bank: put on the river by the piers, afloat",
+ "at": "2026-11-22T04:10:56Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.QCYZYE41MTN3M0EMX6QW4X6T7C",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -31498.91,
+     -629511.56,
+     -95.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -29899.91,
+     -632949.56,
+     -5.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:10:56Z"
+  }
+ ]
+}

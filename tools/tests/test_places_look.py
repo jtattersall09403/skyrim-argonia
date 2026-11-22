@@ -853,3 +853,29 @@ def test_a_hand_placed_base_from_the_pool_resolves_from_the_catalogue(monkeypatc
     assert p["resolved"] and p["model"] == row["model"] and fake.bases["BM:tent"] is row
     q = Scene.piece(fake, {"id": "p.LOOK002PLACE", "base": "nowhere", "pos": [0, 0, 0]})
     assert q["missing"] and not q["resolved"]
+
+
+def test_the_newer_build_s_mesh_wins_not_the_newer_export(tmp_path, monkeypatch):
+    """An old shared build's mesh exported again (a new file time) never outranks a fresh draft-check build."""
+    import os
+    from tools.places import navexport
+    from tools.places.look import mesh
+    old, new = tmp_path, tmp_path / "draft_check" / "p"
+    for o, t_plan, t_nav in ((old, 100, 900), (new, 500, 600)):
+        (o / "shards" / "p").mkdir(parents=True, exist_ok=True)
+        (o / "nav").mkdir(parents=True, exist_ok=True)
+        for f, t in ((o / "shards" / "p" / "plan.json", t_plan), (o / "nav" / "p.json", t_nav)):
+            f.write_text("{}")
+            os.utime(f, (t, t))
+    monkeypatch.setattr(navexport, "current", lambda place, o: o / "nav" / f"{place}.json")
+    assert mesh.find("p", tmp_path) == (new / "nav" / "p.json", new)
+
+
+def test_the_gap_between_islands_finds_the_nearest_pair_without_weighing_every_pair():
+    """A long thin island and a small one above its middle: the break is where they come nearest, found by the
+    kd-tree (an island's edge of a million points against another never makes every pair at once)."""
+    from tools.places.look import mesh
+    V = [[0, 0, 0], [1000, 0, 0], [0, 10, 0], [495, 60, 0], [505, 60, 0], [500, 200, 0]]
+    M = mesh.Mesh(V, [[0, 1, 2], [3, 4, 5]], [[-1, -1, -1], [-1, -1, -1]])
+    g = M.gap(int(M.lab[0]), int(M.lab[1]))
+    assert g["kind"] == "missing strip" and 50 <= g["across"] <= 60 and abs(g["at"][0] - 500) <= 12
