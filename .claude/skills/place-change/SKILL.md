@@ -12,6 +12,8 @@ changes (the lead continues it); a change is as narrow as it can be correct.
 
 - A thing to move, turn, sink, prune, add or relabel is done by hand in the studio scene and `look commit`
   (`place-look`), by the recipe of the step that owns it (`place-site`, `place-adapt`, `place-story`).
+- A raise or lower of a seated thing (a door on its house, a box on a deck) is the seat's own `dz`: the studio's lift
+  handle and Up and Down buttons write it in every seat mode, so `python3 -m tools.places seat <place_id>` keeps it.
 - A rule's output is changed by its stage alone: `python3 -m tools.places draft <stage> <place_id>` changes only the
   rows the stage owns, leaves every other row byte for byte and prints the rows changed per file.
 

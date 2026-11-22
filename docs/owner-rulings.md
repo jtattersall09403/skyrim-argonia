@@ -145,6 +145,15 @@ added here the day they are made, with the date and the issue.
 - The gear ladder's priorities are breadth and fit to the feel and lore, across all our factions and cultures;
   a piece need not be exact, only fit when relabelled. Crossbows (Dawnguard) are in; a glass-recolour obsidian
   is fine unless a better one exists (2026-11-22).
+- The repository is the clean current truth: no history is kept for its own sake. Files that only record
+  retired names, dead quests or superseded plans are deleted; records we need are brought current (2026-11-22).
+- Walks through a place (roads, streets, walkways, gangplanks) are kept clear of tents, fires, cooking gear,
+  rigging, plants and clutter unless a walk is deliberately blocked for a written reason (2026-11-22, Ashgate
+  Landing). The owner deleting one barge's rigging because it blocked its gangplank is his call for that barge,
+  never a rule that ships lose their rigging: a lesson drawn from an owner edit is the fault's shape, not the fix.
+- The studio: the camera turns about what is selected; a thing made of several pieces (a house with its porch and
+  door, a ship with masts and rigging, a tent with its bedrolls) is selected and moved as one; people can be
+  selected and moved; moving in the wanted plane must be easy on a tablet (2026-11-22).
 
 ## The game
 

@@ -407,6 +407,22 @@ async def save_get(req: web.Request) -> web.Response:
     return jok(s) if s else jerr(404, "no such save")
 
 
+def flush_needs(cfg, pid: str, sid: str) -> list[str]:
+    """A named save carries the needs changes the owner made since the last one: written into the change log and
+    loaded into the database in this step; returns the tracked paths written (relative to the tree), to commit."""
+    root = cfg.sources / "needs"
+    if not needs.flush_held(pid, record(pid), cfg.out / AUTOSAVE, sid, root):
+        return []
+    p = needs.changes_path(record(pid), root).resolve()
+    if not p.is_relative_to(ROOT):
+        return []
+    from tools.argonia_world import db
+    from tools.newworld import needsdb
+    w = needsdb.reload()
+    tables = [Path(w.root) / db.DB_DIR / f"{t}.jsonl" for t in needsdb.TABLES]
+    return [str(p.relative_to(ROOT)), *[str(t.relative_to(ROOT)) for t in tables if t.exists()]]
+
+
 async def save_put(req: web.Request) -> web.Response:
     pid, sid = req.match_info["place_id"], req.match_info["save_id"]
     if not PLACE_ID.match(pid) or not SAVE_ID.match(sid):
@@ -437,10 +453,13 @@ async def save_put(req: web.Request) -> web.Response:
         kept = "disk+bucket"
     else:
         kept = "pending" if req.app["cfg"].commit else "disk"
-        if req.app["cfg"].commit:
+        cfg = req.app["cfg"]
+        extra = await asyncio.get_running_loop().run_in_executor(None, lambda: flush_needs(cfg, pid, sid))
+        if cfg.commit:
             rel = str(p.relative_to(ROOT))
             req.app["pending"][rel] = True
-            await req.app["commit_q"].put((rel, f"places: studio save {pid}/{sid} (rev {save['rev']})"))
+            msg = f"places: studio save {pid}/{sid} (rev {save['rev']})"
+            await req.app["commit_q"].put(((rel, *extra) if extra else rel, msg))
     return jok({"save_id": sid, "rev": save["rev"], "at": save["at"], "kept": kept})
 
 
@@ -544,8 +563,13 @@ async def needs_changed_post(req: web.Request) -> web.Response:
     try:
         if not isinstance(body, dict):
             raise ValueError("body must be a change")
-        row = await asyncio.get_running_loop().run_in_executor(
-            None, lambda: needs.record_change(record(pid), body, cfg.sources / "needs"))
+        if body.get("save") not in (None, "", AUTOSAVE):   # a named save: the change stands in the log now
+            row = await asyncio.get_running_loop().run_in_executor(
+                None, lambda: needs.record_change(record(pid), body, cfg.sources / "needs"))
+        else:   # an autosave is a working state: held outside every tracked file until a named save
+            row = await asyncio.get_running_loop().run_in_executor(
+                None, lambda: needs.hold_change(pid, record(pid), body, cfg.out / AUTOSAVE, cfg.sources / "needs"))
+            return jok(row)
     except (ValueError, TypeError) as e:
         return jerr(400, str(e))
     p = needs.changes_path(record(pid), cfg.sources / "needs")
