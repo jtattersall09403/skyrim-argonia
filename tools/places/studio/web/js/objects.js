@@ -92,9 +92,12 @@ export function plainMaterial(m, kind, tint = null) {
   return matCache.get(key);
 }
 
-let inFlight = 0; const queue = [];
-// Models asked for and not yet arrived, or arrived and not yet switched on (the agent view waits for none).
-export const pendingModels = () => inFlight + queue.length + ready.jobs.length;
+let inFlight = 0, asked = 0; const queue = [];
+// Models asked for and not yet arrived, or arrived and not yet switched on (the agent view waits for none). `asked`
+// counts groups whose model was asked for and not yet handed over: a model already in the page (another group's, or
+// this base's before a quest state let its group go) arrives as a promise already kept, whose hand-over runs after
+// the caller's own code, so without it a shot would see nothing pending and draw without the model.
+export const pendingModels = () => inFlight + queue.length + ready.jobs.length + asked;
 function pump() {
   while (inFlight < 4 && queue.length) {
     queue.sort((a, b) => a.pri - b.pri);
@@ -103,17 +106,14 @@ function pump() {
   }
 }
 const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
-// A shape name as three's glTF loader keeps it (it drops `[ ] . : /` and turns spaces into `_`), so a base's
-// `hide_shapes` (the record's alternate textures that resolve to nothing: tools/places/assets/alttex.py) match it.
-export const shapeName = (s) => String(s || '').replace(/\s/g, '_').replace(/[[\].:/]/g, '');
-export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, hide = null) {
-  const hidden = new Set((hide || []).map(shapeName));
-  const key = `${model}|${level}|${tint || ''}|${[...hidden].sort().join(',')}`;
+// `alt`: a base key whose alternate textures make its own variant of the model (the converter swaps them).
+export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null, alt = null) {
+  const key = `${model}|${level}|${tint || ''}|${alt || ''}`;
   if (!meshCache.has(key)) {
     meshCache.set(key, new Promise((resolve) => {
       queue.push({ pri, run: async () => {
         try {
-          const buf = await getMesh(model, { level });
+          const buf = await getMesh(model, { level, alt });
           const gltf = await loaderFor(kind).parseAsync(buf, '');
           gltf.scene.updateMatrixWorld(true);
           const parts = [];
@@ -123,8 +123,6 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other', tint = null
             if (o.name === 'placeholder' || o.material?.name === 'placeholder') parts.placeholder = true;
             // geometry the game never draws: editor markers (and all under them) show only in the Creation Kit
             for (let q = o; q; q = q.parent) if (/^editormarker/i.test(q.name || '')) return;
-            // shapes the record's alternate textures leave undrawn in the game (a dead Hist's leaves)
-            if (hidden.size) for (let q = o; q; q = q.parent) if (hidden.has(shapeName(q.name))) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
             parts.push({ geometry: g, material: plainMaterial(o.material, kind, tint) });
@@ -358,8 +356,10 @@ class Group {
     this.box.count = nb; this.box.visible = nb > 0; if (nb) sendInstances(this.box, nb);
     if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
     if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
-      this.wantModel = true;
-      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null, this.base.hide_shapes).then((parts) => {
+      this.wantModel = true; asked++;
+      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind, this.base.water?.shallow || null,
+        this.base.alt_tex?.length ? this.base.key : null).then((parts) => {
+        asked = Math.max(0, asked - 1);   // handed over in this same turn: queued below, or marked empty
         // a model that would not load is drawn as its bounds, flagged as a stand-in (the agent view hatches and lists
         // it), never left out unseen; a model that loads and holds nothing drawable (a furniture marker) is empty
         if (parts && !parts.length && !parts.failed) { this.empty = true; return; }
@@ -383,7 +383,7 @@ class Group {
 // models still queued are dropped, so the next place starts from what the device had before the last one (a tablet
 // that has drawn Helstrom has little left). Called after the old place's layers are disposed.
 export function releaseModels() {
-  queue.length = 0; ready.jobs.length = 0;
+  queue.length = 0; ready.jobs.length = 0; asked = 0;
   for (const p of meshCache.values()) p.then((parts) => { for (const x of parts || []) x.geometry.dispose(); });
   meshCache.clear();
   for (const m of matCache.values()) m.dispose();

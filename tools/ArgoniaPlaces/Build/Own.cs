@@ -1,6 +1,7 @@
 // Our own bases (tools/places/own_bases.py says what and why): per place, a water type of ours (a copy of a vanilla
 // water as the load order's winner has it, with the plan's values set) and a placed water of ours (an activator with a
-// vanilla model and bounds, carrying that water type). The plan's refs already name these records.
+// vanilla model and bounds, carrying that water type), and a clear texture set with the copies of the mod statics whose
+// alternate textures point at no texture set, those rows pointed at the clear set. The plan's refs already name these records.
 using System.Drawing;
 using System.Text.Json;
 using Mutagen.Bethesda;
@@ -20,7 +21,29 @@ static class Own
         foreach (var r in rows.EnumerateArray())
         {
             var fk = C.Fk(r.GetProperty("fk").GetString()!);
-            if (r.GetProperty("kind").GetString() == "water")
+            var kind = r.GetProperty("kind").GetString();
+            if (kind == "txst")   // a texture set naming one diffuse (our clear set: an existing texture, no art of ours)
+            {
+                ctx.Mod.TextureSets.Add(new TextureSet(fk, C.Rel)
+                {
+                    EditorID = r.GetProperty("edid").GetString(),
+                    Diffuse = r.GetProperty("diffuse").GetString()!.Replace('/', '\\').Replace("textures\\", ""),
+                });
+                continue;
+            }
+            if (kind == "static")   // a copy of a static whose alternate textures that resolve to nothing take `clear`
+            {
+                var src = C.Fk(r.GetProperty("copy").GetString()!);   // a mod's static, read from its own plugin
+                var st = (Static)ctx.Fc.Plugin(src.ModKey.FileName).Statics.First(x => x.FormKey == src).Duplicate(fk);
+                st.EditorID = r.GetProperty("edid").GetString();
+                var clear = C.Fk(r.GetProperty("clear").GetString()!);
+                foreach (var a in st.Model?.AlternateTextures ?? new())
+                    if (a.NewTexture.IsNull || !Cache.TryResolve<ITextureSetGetter>(a.NewTexture.FormKey, out _))
+                        a.NewTexture.SetTo(clear);
+                ctx.Mod.Statics.Add(st);
+                continue;
+            }
+            if (kind == "water")
             {
                 var src = r.GetProperty("copy").GetString()!.Split(':', 2);
                 var w = (Water)ctx.Fc.Find(src[0], src[1]).Duplicate(fk);

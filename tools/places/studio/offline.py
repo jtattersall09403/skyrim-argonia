@@ -147,15 +147,17 @@ class Bundles:
                     out.append((f"src.{src}", cell))
         return sorted(set(out))
 
-    def models(self) -> dict[tuple[str, int], set[str]]:
-        """(model, level) -> the kinds that draw it: every placed ref's base, every base of the source (what can be
-        added from it), and the grass the land textures grow."""
-        out: dict[tuple[str, int], set[str]] = {}
+    def models(self) -> dict[tuple[str, int, str], set[str]]:
+        """(model, level, alt) -> the kinds that draw it: every placed ref's base, every base of the source (what can
+        be added from it), and the grass the land textures grow; `alt` the key of a base whose alternate textures
+        make its own variant of the model (its `alt_tex`), else ''."""
+        out: dict[tuple[str, int, str], set[str]] = {}
 
-        def want(model, kind):
+        def want(model, kind, b=None):
             if model:
                 kind = kind or "other"
-                out.setdefault((model, 1 if kind in LIGHT else 0), set()).add(kind)
+                alt = b["key"] if b and b.get("alt_tex") else ""
+                out.setdefault((model, 1 if kind in LIGHT else 0, alt), set()).add(kind)
         for bid in self.ids():
             d = self.dir(bid)
             bases = {b["key"]: b for b in _jsonl(d / "bases.jsonl")}
@@ -163,10 +165,10 @@ class Bundles:
                 for r in _jsonl(refs):
                     b = bases.get(r.get("base"))
                     if b:
-                        want(b.get("model"), r.get("kind") or b.get("kind"))
+                        want(b.get("model"), r.get("kind") or b.get("kind"), b)
             if bid.startswith(("src.", "draft.")):
                 for b in bases.values():
-                    want(b.get("model"), b.get("kind"))
+                    want(b.get("model"), b.get("kind"), b)
             for t in d.glob("spaces/*/terrain.json"):
                 for lt in (json.loads(t.read_text(encoding="utf-8")).get("ltex") or {}).values():
                     for g in lt.get("grasses") or []:
@@ -237,9 +239,9 @@ def manifest(place_id: str, out: Path, places: Path, web: Path, asset, saves: li
             add(u, _size(B.dir(bid) / "spaces" / cell / "space.json"), "bundle")
     # meshes at the levels the views draw them, then the textures they name at the sizes the views ask for
     tex_kinds: dict[str, set[str]] = {}
-    for (model, level), kinds in sorted(B.models().items()):
-        glb = asset("mesh", model, level)
-        add(f"/api/asset/mesh?model={enc(model)}&level={level}", _size(glb), "mesh")
+    for (model, level, alt), kinds in sorted(B.models().items()):
+        glb = asset("mesh", model, level, None, alt or None)
+        add(f"/api/asset/mesh?model={enc(model)}&level={level}" + (f"&alt={enc(alt)}" if alt else ""), _size(glb), "mesh")
         for uri in glb_images(Path(glb)) if glb else []:
             tex_kinds.setdefault(uri, set()).update(kinds)
     tex_urls = sorted({sized(u, k) for u, ks in tex_kinds.items() for k in ks})

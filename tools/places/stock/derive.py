@@ -113,6 +113,17 @@ class Picker:
                                                i["key"] not in split.item_materials()["gear"], i["value"], i["key"]))
         return None
 
+    def issue_piece(self, materials: list[str], slot: str, cap: str) -> dict | None:
+        """A guard's piece of armour for `slot` (an armour keyword): the first of `materials` (in order) with an
+        unenchanted piece of the ladder at or below tier `cap`, its best tier, then cheapest."""
+        rank = {t["id"]: t["rank"] for t in self.scale["tiers"]}
+        for m in materials:
+            fit = [i for i in self.items if i["sig"] == "ARMO" and slot in i["keywords"] and self.ok(i)
+                   and split.material_of(i)[0] == m and rank[split.item_tier(i, self.scale)[0]] <= rank[cap]]
+            if fit:
+                return min(fit, key=lambda i: (-rank[split.item_tier(i, self.scale)[0]], i["value"], i["key"]))
+        return None
+
     def edid(self, e: str) -> dict | None:
         return self.by_edid.get(e)
 
@@ -199,7 +210,10 @@ def derive(p: Place) -> dict:
     members = defaultdict(list)
     for r in persons.values():
         members[r.household_id].append(r)
-    pick = Picker(p.rec, sc, reach.reaches(w, pid), ladder_records(),
+    lad = ladder_records()
+    if lad is None:
+        raise SystemExit("the ladder's plugins are not on this machine: the item pool is the ladder's, never the place's source's")
+    pick = Picker(lad, sc, reach.reaches(w, pid), None,
                   {r.material_id: r.band for r in w.rows("region_material", region_id=place.region_id)})
     pick.none_groups = {g for t in reach.expected_mix(w, pid)["targets"] if t["pct"] == 0 for g in t["groups"]}
     cite_wealth = f"place_wealth:{pid}"
@@ -315,7 +329,7 @@ def derive(p: Place) -> dict:
                 "cites": [cite_wealth]})
 
     # possessions: by role and wealth band, the tier the band reaches in this place; a guard's gear is the issue
-    issue = split.guard_issue(place.culture_id, ceiling, p.plugins() or split.source_plugins(pid), sc)
+    issue = split.guard_issue(split.place_facts(w, pid), ceiling, sc)
     issue_plain = next(o for o in sc["owner"] if o["id"] == "faction")["issue_tier"]
     for r in sorted(persons.values(), key=lambda x: x.id):
         b = wb[r.person_wealth_band_id]
@@ -328,8 +342,10 @@ def derive(p: Place) -> dict:
         wt = carry.typ if carry else ROLE_WEAPON.get(r.person_role_id, "WeapTypeDagger")
         prefer = carry.materials.split() if carry and carry.materials else None
         tw = t if wt != "WeapTypeDagger" else "T1"
-        if guard:  # the guard's issue (scale `guard_issue`): the weapon of its set, else the plain issue's sword
-            tw = tier_cap(issue_plain)   # the plain issue, never above the place's ceiling
+        if guard:  # the guard's issue (scale `guard_issue`): the weapon of its row, else its weapon materials, else the plain sword
+            wm = (issue["set"] or {}).get("weapon_materials")
+            tw = tier_cap(issue["tier"] if wm else issue_plain)   # never above the place's ceiling
+            prefer = wm or prefer
         weap = None if guard and issue["set"] and issue["set"].get("weapon") else pick.gear(tw, "weapon", wt, prefer)
         if guard and issue["set"] and issue["set"].get("weapon"):
             items.append({"item": issue["set"]["weapon"], "count": 1, "worn": True,
@@ -340,7 +356,12 @@ def derive(p: Place) -> dict:
                           "why": f"{r.trade}: a {wt[8:].lower()} of {tw}, {split.material_of(weap)[0]}"
                                  f"{' (' + carry.why + ', kit ' + carry.kit_id + ')' if carry else ''} ({prov})"})
         if guard and issue["set"]:
-            for k in issue["set"]["items"]:
+            keys = issue["set"].get("items") or []
+            if not keys:      # a row of materials: each slot's best piece of them, the fallback materials after
+                mats = issue["set"].get("materials", []) + issue["set"].get("fallback", [])
+                cap_t = min(issue["set"]["tier"], ceiling, key=lambda x: rank[x])
+                keys = [a["key"] for a in (pick.issue_piece(mats, slot, cap_t) for slot in ARMOUR_SLOTS) if a]
+            for k in keys:
                 items.append({"item": k, "count": 1, "worn": True,
                               "why": f"the levy's issue: {place.name}'s guards wear {issue['why']}"})
         elif guard:

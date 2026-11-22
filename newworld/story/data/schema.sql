@@ -459,6 +459,26 @@ CREATE TABLE "never_material" (
   "why" TEXT NOT NULL
 );
 
+-- What a place's guards wear, decided by our place (newworld/sources/stock/scale.json `guard_issue.table`): the first row,
+-- in `ord` order, whose conditions all hold for the place's kind, culture, region and holder and whose `min_ceiling` its
+-- ceiling reaches. A row names its `items` (a set filed whole) or its `materials` then `fallback`, in order.
+CREATE TABLE "guard_issue" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "ord" INTEGER NOT NULL UNIQUE,
+  "label" TEXT NOT NULL,
+  "kinds" TEXT,                          -- place_kind ids, space-separated; empty = any
+  "cultures" TEXT,                       -- culture ids, space-separated; empty = any
+  "regions" TEXT,                        -- region ids, space-separated; empty = any
+  "holder_pattern" TEXT,                 -- a pattern over the place's holder (held_by)
+  "min_ceiling" TEXT NOT NULL REFERENCES "stock_tier"("id"),
+  "tier" TEXT NOT NULL REFERENCES "stock_tier"("id"),
+  "items" TEXT,                          -- item ids of a set filed whole, space-separated
+  "materials" TEXT,                      -- materials of ours in order, space-separated
+  "fallback" TEXT,
+  "weapon_materials" TEXT,
+  "why" TEXT NOT NULL
+);
+
 -- How well a thing is kept (S0 open .. S5 vault); each tier above the open tier needs one more step.
 CREATE TABLE "security_level" (
   "id" TEXT NOT NULL PRIMARY KEY,

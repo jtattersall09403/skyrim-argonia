@@ -1,7 +1,9 @@
 // The place studio's catalogue reader (docs/design/place-studio.md, tools/places/assets/catalogue.py).
 // Usage: Catalogue <out dir> <plugin path>... (load order, earliest first). Writes:
 //   bases.raw.jsonl  every base with a model, the last plugin's version winning: key (origin plugin:6-hex id),
-//                    edid, type, name, model, bounds, plugin (the winner), keywords (editor ids)
+//                    edid, type, name, model, bounds, plugin (the winner), keywords (editor ids), alt_tex (the
+//                    model's alternate textures: [{shape, index, txst, edid, textures}], txst null or edid null when
+//                    the set does not resolve)
 //   lights.jsonl     every light base, with or without a model: key, edid, model, plugin, light {radius, colour,
 //                    flags, fov}
 //   ltex.jsonl       every land texture: key, edid, plugin, txst, diffuse, normal
@@ -87,6 +89,19 @@ foreach (var m in mods)
                 if (!rows.ContainsKey(key)) order.Add(key);
                 rows[key] = new() { ["key"] = key, ["edid"] = r.EditorID, ["type"] = code, ["name"] = name, ["model"] = model,
                                     ["bounds"] = bounds, ["plugin"] = m.ModKey.FileName.String, ["keywords"] = kw };
+                // the model's alternate textures (MODS): a named shape (by its 3D name and index) drawn with another
+                // texture set's textures, as the engine swaps them; a set that does not resolve is kept with txst null
+                var alt = r switch { IArmorGetter => null, IModeledGetter md2 => md2.Model?.AlternateTextures, _ => null };
+                if (alt != null && alt.Count > 0)
+                    rows[key]["alt_tex"] = alt.Select(a => {
+                        ITextureSetGetter? ts = null;
+                        var ok = !a.NewTexture.IsNull && cache.TryResolve<ITextureSetGetter>(a.NewTexture.FormKey, out ts);
+                        string? P(Mutagen.Bethesda.Plugins.Assets.IAssetLinkGetter? l) => l?.DataRelativePath.Path?.Replace('\\', '/').ToLowerInvariant();
+                        return new Dictionary<string, object?> { ["shape"] = a.Name, ["index"] = a.Index,
+                            ["txst"] = a.NewTexture.IsNull ? null : Key(a.NewTexture.FormKey), ["edid"] = ok ? ts!.EditorID : null,
+                            ["textures"] = ok ? new Dictionary<string, string?> { ["diffuse"] = P(ts!.Diffuse), ["normal"] = P(ts!.NormalOrGloss),
+                                ["glow"] = P(ts!.GlowOrDetailMap), ["env"] = P(ts!.Environment), ["specular"] = P(ts!.BacklightMaskOrSpecular) } : null };
+                    }).ToList();
                 // a placed water (an activator with a water type, as Skyrim's puddles and King of the Murkmire's Hist
                 // sap): its water's colours, so the studio draws the surface the colour the game shades it
                 if (r is IActivatorGetter act && !act.WaterType.IsNull && cache.TryResolve<IWaterGetter>(act.WaterType.FormKey, out var wt))

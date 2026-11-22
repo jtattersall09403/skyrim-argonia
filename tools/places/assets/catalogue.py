@@ -11,8 +11,8 @@ per base: `nordic` (decision 0006: Nordic architecture and Skyrim's cold-climate
 and model path), `kind` (the studio's kinds), `source` (the mod id), `has_model` (the model resolves in the NewWorld
 profile, so the converter can show it), and `text`, the plain-English descriptor lane V embeds for search.
 
-bases.jsonl rows: {key, edid, type, name, model, bounds, plugin, keywords, value?, ench?, nordic, kind, source, has_model,
-text}; `value` and `ench` (the enchantment's key or null) on item forms, so an item's stocking tier is known before
+bases.jsonl rows: {key, edid, type, name, model, bounds, plugin, keywords, value?, ench?, alt_tex?, nordic, kind, source,
+has_model, text}; `alt_tex` the model's alternate textures [{shape, index, txst, edid, textures, null_set?, set_absent?}]; `value` and `ench` (the enchantment's key or null) on item forms, so an item's stocking tier is known before
 `stockdb items` measures it."""
 from __future__ import annotations
 
@@ -66,6 +66,20 @@ def words(s: str | None) -> list[str]:
 def is_nordic(b: dict) -> bool:
     text = NORDIC_EXCEPT.sub("", f"{b.get('edid') or ''} {b.get('model') or ''}")
     return bool(NORDIC.search(text.lower()) or ICE.search(text))
+
+
+# The engine's hardcoded texture set 0x28, NullTextureSet: in no plugin (xEdit's Core/Hardcoded/Skyrim.esp holds it,
+# a TXST with no textures). Mods point an alternate texture row at it to take a shape away.
+NULL_TXST = "Skyrim.esm:000028"
+
+
+def mark_sets(b: dict) -> dict:
+    """An alternate texture row whose set no plugin holds: `null_set` when it is the engine's NullTextureSet, else
+    `set_absent` (a set that is nowhere: the swap does not apply)."""
+    for a in b.get("alt_tex") or []:
+        if a.get("textures") is None:
+            a["null_set" if a.get("txst") == NULL_TXST else "set_absent"] = True
+    return b
 
 
 def kind(b: dict) -> str:
@@ -210,6 +224,7 @@ def run(out: Path | None = None) -> dict:
             b = json.loads(line)
             origin = b["key"].rsplit(":", 1)[0].lower()
             mod, name = src.get(origin, src.get(b["plugin"].lower(), ("unknown", "unknown")))
+            mark_sets(b)
             b["nordic"] = is_nordic(b)
             b["kind"] = kind(b)
             b["source"] = mod

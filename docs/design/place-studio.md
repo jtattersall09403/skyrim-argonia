@@ -448,10 +448,11 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
   tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band
-  (`guard_issue`): their own culture's guard set where the place's mods provide one (the set's plugin is one of the
-  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian scale guard armour, T3, the scale material's tier, for a
-  Black Marsh place of ceiling T3 or more), with the set's weapon where the source's guards carried one; else the
-  plain issue at the `owner` faction's `issue_tier` (sound gear, T2). Every guard also carries one plain torch
+  (`guard_issue.table`, one row chosen by the place's kind, culture, region, holder and ceiling, never by the
+  source's plugins): BM&V's Argonian scale guard armour (T3) for an Argonian city, town, fort, keep or prison of
+  ceiling T3 or more, Saxhleel bone-and-leather for other settled Argonian places, bonemold at a Dunmer holdout, Imperial
+  issue at an Imperial post, hide and flint at a tribal camp; else the plain issue at the `owner` faction's
+  `issue_tier` (sound gear, T2). Every guard also carries one plain torch
   (`guard_issue.torch`, Skyrim.esm 01D4EC, never a levelled list), as Skyrim's guards do; the guard packages
   (copies of vanilla guard packages, their flags unchanged) let them carry it lit at night.
 - An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's
@@ -1202,6 +1203,34 @@ the light version: a mesh over 1,500 triangles simplified to the larger of 1,500
 cannot be read is a magenta half-transparent box of the base's bounds with `placeholder: true` and the reason;
 nothing is dropped. When the fault is not the mesh's (the reader not built, out of time on a busy machine, the
 disk) the box also has `retry: true`, is served `no-store` and is not kept: the next request converts again.
+
+**Alternate textures.** A base record can draw named shapes of its model with another texture set (its model's
+MODS: per shape, the shape's 3D name and index and a TXST). The catalogue lists them as the base's `alt_tex`
+`[{shape, index, txst, edid, textures: {diffuse, normal, glow, env, specular}, null_set?, set_absent?}]`;
+`textures` is null when the set is in no plugin, marked `null_set` when it is the engine's hardcoded NullTextureSet
+(Skyrim.esm:000028, a TXST with no textures, held only in the executable: xEdit's `Core/Hardcoded/Skyrim.esp`) and
+`set_absent` otherwise. The draft bundle carries `alt_tex` onto every base it uses, as the game will draw it with our
+plugin (`own_bases.alt_tex`). `mesh(model, level, bounds, alt=<base key>)` (`/api/asset/mesh?...&alt=<base key>`) is
+that base's variant of the model: a swapped shape takes the set's diffuse and normal map under the shape's own alpha
+test, so a clear set cuts the shape away; a shape swapped to NullTextureSet is not drawn; a shape whose set is
+absent keeps the mesh's own textures (the swap does not apply). Shapes are matched by name and, for two of one name,
+by index. The variant is cached under the model's bytes and the swap, so bases sharing a model and a swap share a
+file and different swaps never collide. The studio asks for it when a base has `alt_tex`; the offline download
+fetches the same URL. `look <place> probe --all` lists the place's bases with NullTextureSet or absent-set rows under
+`notes` (not faults). A placed ref carries no alternate textures in Skyrim's records, so the base's are the only ones.
+
+What is known and what is not: 591 rows in five mods (King of the Murkmire, Journey to Baan Malur, Explore Skyrim,
+Depths of Skyrim, Grey Quarter) point at NullTextureSet to take a shape away (a rock's moss, a lantern's glass, a
+dead Hist's crown), and those mods do not show purple in play; that a NullTextureSet row hides its shape in game is
+inferred from that use, not read from the engine. A set absent from every plugin (none in our mods today) is drawn
+unswapped on the same inference.
+
+King of the Murkmire's dead Hists (HistTree01Dead to 05Dead) take their crowns away that way. Our plugin does not
+lean on it for the dead Hists the places use: `own_bases.STATICS` (HistTree01Dead, HistTree04Dead) are copies whose
+crown rows take our clear texture set, ArgoniaClearTextureSet (vanilla's `textures/sky/alpha.dds`, alpha 3 of 255
+at most, under the crown's alpha test at 128), which cuts the crown away whatever the engine does with the null
+set. The build swaps each ref of a replaced base to the place's copy, and the studio draws the replaced base as the
+copy. HistTree02Dead cannot be cleared this way (one of its crown shapes has no alpha test); no place uses it.
 
 **Textures.** DDS (BC1 to BC7, uncompressed) to lossy WebP, halved to the largest power of two not over the
 requested size (64 to 2048); alpha kept on diffuse textures, dropped on normal maps and land textures.

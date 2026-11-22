@@ -36,7 +36,7 @@ PLACES = f.ROOT / "places"
 REPO = f.ROOT.parent
 
 TABLES = ("lock_level", "stock_tier", "place_wealth_band", "person_wealth_band", "place_wealth", "material",
-          "material_keyword", "material_maker", "material_reach", "tier_material", "never_material",
+          "material_keyword", "material_maker", "material_reach", "tier_material", "never_material", "guard_issue",
           "security_level", "effort_level", "container_kind", "item_kind", "item", "tier_item", "item_material",
           "good", "good_material", "good_kind", "item_good", "place_good", "region_profile", "region_people",
           "region_culture", "region_material", "region_good", "trade_kit", "trade_kit_item", "trade_kit_never",
@@ -94,6 +94,14 @@ def load(w) -> None:
         w.insert_many("tier_material", [{"stock_tier_id": tier, "slot": slot, "material_id": k, "ord": i}
                                         for i, k in enumerate(mats)])
     w.insert_many("never_material", [{"material_id": k, "why": md["never"]["why"]} for k in md["never"]["materials"]])
+    w.insert_many("guard_issue", [
+        {"id": r["id"], "ord": i, "label": r["label"], "kinds": " ".join(r.get("kinds", [])) or None,
+         "cultures": " ".join(r.get("cultures", [])) or None, "regions": " ".join(r.get("regions", [])) or None,
+         "holder_pattern": r.get("holder_pattern"), "min_ceiling": r["min_ceiling"], "tier": r["tier"],
+         "items": " ".join(r.get("items", [])) or None, "materials": " ".join(r.get("materials", [])) or None,
+         "fallback": " ".join(r.get("fallback", [])) or None,
+         "weapon_materials": " ".join(r.get("weapon_materials", [])) or None, "why": r["why"]}
+        for i, r in enumerate(sc["guard_issue"]["table"])])
     w.insert_many("security_level", [{"id": s["id"], "rank": i, "label": s["label"], "means": s["means"]}
                                      for i, s in enumerate(sc["security"])])
     w.insert_many("effort_level", [{"id": e["id"], "rank": i, "means": e["means"], "tier": e["tier"]}

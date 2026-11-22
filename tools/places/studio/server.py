@@ -229,7 +229,7 @@ async def asset_mesh(req: web.Request):
         return jerr(400, "model= is required")
     if lv not in ("0", "1"):
         return jerr(400, "level is 0 or 1")
-    return await asset(req, "mesh", (m, int(lv)))
+    return await asset(req, "mesh", (m, int(lv), None, req.query.get("alt") or None))
 
 
 MISSING_TEX: dict = {}
