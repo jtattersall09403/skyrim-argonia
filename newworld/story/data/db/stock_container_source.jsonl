@@ -149,6 +149,8 @@
 {"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","source_id":"cite-place-wealth-jal-veesa"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK028PLACE","source_id":"cite-place-give-outpost-m11-m63-3"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK028PLACE","source_id":"cite-place-note-outpost-m11-m63-hooks"}
+{"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK030PLACE","source_id":"cite-place-give-outpost-m11-m63-0"}
+{"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK030PLACE","source_id":"cite-place-note-outpost-m11-m63-economy"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","source_id":"cite-place-note-outpost-m13-m65-present"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEB52","source_id":"cite-person-outpost-m13-m65-rhyfydyg75ynbgw69r8x9pzfba"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEB52","source_id":"cite-place-wealth-outpost-m13-m65"}

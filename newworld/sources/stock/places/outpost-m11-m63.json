@@ -1,6 +1,6 @@
 {
  "place_id": "outpost-m11-m63",
- "about": "Reed-Sill Weir's stock (place-stock skill): derived by `stock derive`, read against the place's facts. The strongbox by the wardens' bedrolls is the household's store; the Owing's goods chest under the ground is the jail stage's and holds nothing; the thief's sack in the reeds delivers the treasure; the grey moss on the weir delivers the rare harvest. Who the people are is newworld/sources/people/outpost-m11-m63.json.",
+ "about": "Reed-Sill Weir's stock (place-stock skill): derived by `stock derive`, read against the place's facts. The fish basket on the landing deck is the household's store (the wardens keep no chest: a camp of five in tents); the Owing's goods chest under the ground is the jail stage's and holds nothing; the thief's sack in the reeds delivers the treasure; the grey moss on the weir delivers the rare harvest. Who the people are is newworld/sources/people/outpost-m11-m63.json.",
  "facts": {
   "wealth": "P1",
   "ceiling": "T1",
@@ -27,11 +27,41 @@
    "security": "S0",
    "tier": "T1",
    "gold": 18,
-   "items": [],
-   "why": "the thief's sack hidden in the reeds east of the weir (treasure: 'a thief's sack of stolen traps and coin hidden in the reeds'): nobody's (a thief's stash on the bank), at the reward band's tier T1 (D1), its coin the night's takings from the traps",
+   "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9",
+     "count": 2,
+     "worn": false,
+     "why": "eel taken from the robbed weir traps (record hooks: the traps are robbed at night), stuffed in the thief's sack with the night's coin"
+    }
+   ],
+   "why": "the thief's sack hidden in the reeds at the weir's south end (treasure: 'a thief's sack of eels from the robbed traps and coin hidden in the reeds'): nobody's (a thief's stash on the bank), at the reward band's tier T1 (D1), its coin the night's takings from the traps",
    "cites": [
     "place_give:outpost-m11-m63/3",
     "place_note:outpost-m11-m63/hooks"
+   ]
+  },
+  {
+   "ref": "outpost-m11-m63.LOOK030PLACE",
+   "space": "exterior",
+   "kind": "basket",
+   "owner_household": "outpost-m11-m63.household.exterior",
+   "lock": null,
+   "security": "S0",
+   "tier": "T1",
+   "gold": 0,
+   "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9",
+     "count": 4,
+     "worn": false,
+     "why": "the day's catch from the weir traps waiting at the landing (kit fisher: home river-fish; record gives: fishing, eels and gar), bound for Jal-Veesa's market"
+    }
+   ],
+   "why": "the wardens' fish basket on the landing deck: the household's catch, kept where it is landed (kit fisher, home river-fish); no gold, unlocked",
+   "cites": [
+    "place_give:outpost-m11-m63/0",
+    "place_note:outpost-m11-m63/economy"
    ]
   }
  ],
@@ -41,10 +71,10 @@
    "person": "outpost-m11-m63.01HWZ17E54W9YDV2CPHGS15WJJ",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "King of the Murkmire.esp:275050",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy, night watch: a sword of T2 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword, bone and leather work of the marsh, since Barsaebica tolls metal in and works none (region profile)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -89,10 +119,10 @@
    "person": "outpost-m11-m63.PF9DWPC1Z8Q6BZZQGDCJPX7A7W",
    "items": [
     {
-     "item": "King of the Murkmire.esp:735249",
+     "item": "King of the Murkmire.esp:275050",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy, day watch; leads the wardens on their turn at the weir: a sword of T2 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "the levy's sidearm at T2 (kit guard): a Saxhleel bone sword like the night watch's, the wardens' own issue rather than tolled-in iron (region profile: no smiths)"
     },
     {
      "item": "King of the Murkmire.esp:00ADB5",
@@ -137,10 +167,16 @@
    "person": "outpost-m11-m63.2D8TRNXGV4ZTY70CR2RRSPKDNQ",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy; mends the woven weir's fences: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "a flint fishing knife at T1 (kit fisher): she cuts twine and reed when she reweaves the weir"
+    },
+    {
+     "item": "Skyrim.esm:013790",
+     "count": 1,
+     "worn": true,
+     "why": "an iron hatchet at T1, tolled in from the road (bog iron, traded in Barsaebica): she cuts the weir's stakes with it, the one tool here worth buying in metal"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -155,10 +191,10 @@
    "person": "outpost-m11-m63.A18ZNRSB82MNW5N5XNFHP8324T",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Skyrim.esm:01397E",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy; guts the catch at the landing: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "an iron gutting knife at T1, tolled in (bog iron, traded): he guts the eels and gar at the landing, where a flint edge dulls"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -173,10 +209,16 @@
    "person": "outpost-m11-m63.Q8M0WVXC047WMHKQ1Q44E775VD",
    "items": [
     {
-     "item": "King of the Murkmire.esp:57AA3E",
+     "item": "Skyrim.esm:01397E",
      "count": 1,
      "worn": true,
-     "why": "weir-warden of the levy; walks the log walk at dusk: a dagger of T1 (from a neighbour (an import gate or maker, 8 km by road))"
+     "why": "an iron knife at T1, tolled in from the road (bog iron, traded in Barsaebica): he cuts the traps free from the weir on the log walk"
+    },
+    {
+     "item": "PrvtI_ArgonianWeapons.esp:00080D",
+     "count": 1,
+     "worn": true,
+     "why": "a bone fish-spear at T1 (kit fisher: a harpoon): he works the traps from the slick log walk at dusk"
     },
     {
      "item": "Skyrim.esm:00000F",
