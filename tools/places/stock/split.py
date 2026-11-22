@@ -70,32 +70,33 @@ def item_class(it: dict, r: dict | None = None) -> tuple[str, bool, str]:
     return kind, False, f"{kind} worth {value}"
 
 
-def source_plugins(place_id: str) -> list[str]:
-    """The place's mods: the plugins of its source (newworld/places/<id>/place.json `source_id`, sources.jsonl)."""
-    pj = REPO / "newworld" / "places" / place_id / "place.json"
-    sid = json.loads(pj.read_text()).get("source_id") if pj.exists() else None
-    for ln in (REPO / "newworld" / "places" / "sources.jsonl").read_text().splitlines():
-        row = json.loads(ln) if ln.strip() else {}
-        if sid and row.get("source_id") == sid:
-            return list(row.get("plugins", [])) + list(row.get("extra_refs_plugins", []))
-    return []
+def place_facts(w, place_id: str) -> dict:
+    """What decides a place's issue, all of it ours: its kind, culture, region and holder."""
+    p = w.get("place", place_id)
+    return {"kind": p.place_kind_id, "culture": p.culture_id, "region": p.region_id, "held_by": p.held_by or ""}
 
 
-def guard_issue(culture_id: str | None, ceiling: str, plugins: list[str], sc: dict | None = None) -> dict:
-    """What a place's guards are issued (scale.json `guard_issue`): {tier, set, torch, why}. Their own culture's guard
-    set where the place's mods provide one and the place's ceiling reaches its tier (`set` the scale's row), else the
-    plain issue at the faction's issue tier (`set` None)."""
+def guard_issue(facts: dict, ceiling: str, sc: dict | None = None) -> dict:
+    """What a place's guards are issued (scale.json `guard_issue`): {tier, set, row, torch, why}. The first row of the
+    table whose conditions hold for the place (its kind, culture, region, the holder's words, a ceiling that reaches the
+    row's `min_ceiling`); `set` is that row, None for the plain issue. Nothing of the place's source is read."""
     sc = sc or scale()
     gi = sc["guard_issue"]
     rank = {t["id"]: t["rank"] for t in sc["tiers"]}
     plain = next(o for o in sc["owner"] if o["id"] == "faction")["issue_tier"]
-    have = {p.lower() for p in plugins}
-    for s in gi["sets"]:
-        if culture_id in s["cultures"] and s["plugin"].lower() in have and rank[s["tier"]] <= rank[ceiling]:
-            return {"tier": s["tier"] if rank[s["tier"]] > rank[plain] else plain, "set": s, "torch": gi["torch"],
-                    "why": f"its own culture's guard set, {s['label']} ({s['tier']}): the place's mods provide it and "
-                           f"its ceiling ({ceiling}) reaches it"}
-    return {"tier": plain, "set": None, "torch": gi["torch"], "why": f"the plain issue ({plain})"}
+    for row in gi["table"]:
+        if row["id"] == "plain":
+            break
+        if (not row.get("kinds") or facts.get("kind") in row["kinds"]) \
+                and (not row.get("cultures") or facts.get("culture") in row["cultures"]) \
+                and (not row.get("regions") or facts.get("region") in row["regions"]) \
+                and (not row.get("holder_pattern") or re.search(row["holder_pattern"], facts.get("held_by") or "")) \
+                and (row.get("kinds") or row.get("cultures") or row.get("regions") or row.get("holder_pattern")) \
+                and rank[row["min_ceiling"]] <= rank[ceiling]:
+            return {"tier": row["tier"] if rank[row["tier"]] > rank[plain] else plain, "set": row, "row": row,
+                    "torch": gi["torch"], "why": f"{row['label']} ({row['id']}): {row['why']}"}
+    row = next(r for r in gi["table"] if r["id"] == "plain")
+    return {"tier": plain, "set": None, "row": row, "torch": gi["torch"], "why": f"the plain issue ({plain})"}
 
 
 WEAP_KINDS = {"WeapTypeDagger": "dagger", "WeapTypeSword": "sword", "WeapTypeWarAxe": "waraxe", "WeapTypeMace": "mace",
