@@ -81,12 +81,12 @@ The table below is the ladder as the data holds it, one line per material:
 | T1 | Flint and jadeflint | 23 |  |  |  | common | IronSword |
 | T1 | Hide and fibre |  |  | 4 | 1 | common | IronSword |
 | T1 | Wood and bamboo | 38 |  | 13 |  | common | IronSword |
-| T2 | Bog iron | 29 | 1 | 10 | 2 | uncommon | SteelSword |
+| T2 | Bog iron | 30 | 1 | 10 | 2 | uncommon | SteelSword |
 | T2 | Corsair's steel | 5 |  | 8 |  | situational | SteelSword |
 | T2 | Crossbow work (bog iron and wood) | 1 |  |  |  | situational | SteelSword |
 | T2 | Imperial issue | 18 | 11 | 28 | 5 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
-| T2 | Marsh leather |  |  | 8 |  | common | SteelSword |
+| T2 | Marsh leather | 1 |  | 8 |  | common | SteelSword |
 | T2 | Netch leather and Ashlander make |  |  | 25 | 2 | situational | SteelSword |
 | T2 | Saxhleel bone-and-leather work | 5 |  | 32 |  | common | SteelSword |
 | T2 | Turtle shell |  | 4 |  | 2 | uncommon | SteelSword |
@@ -96,7 +96,7 @@ The table below is the ladder as the data holds it, one line per material:
 | T3 | Bonemold | 24 | 8 | 4 | 5 | situational | ElvenSword |
 | T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 25 | 2 | situational | ElvenSword |
 | T3 | Chitin | 10 | 6 | 4 | 2 | uncommon | ElvenSword |
-| T3 | Copper-edged steel | 22 |  |  |  | uncommon | ElvenSword |
+| T3 | Copper-edged steel | 23 |  |  |  | uncommon | ElvenSword |
 | T3 | Greenwood (Bosmer make) | 3 | 5 | 6 |  | situational | ElvenSword |
 | T4 | Moonstone and Temple glass (Dunmer fine work) | 19 |  | 4 | 2 | situational | GlassSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |
@@ -256,16 +256,15 @@ Peoples and factions (gear rows as weapons / light / heavy / shields; "before" i
 | House Dres slavers | 0 | slaver kit | You can tell them by the netch slavemaster's coat, a bonemold blade and a whip. |
 | Bosmer pilots and seafarers (greenwood) | 0 | 6/12/5/0 | You can tell them by greenwood bows and bark-and-hide hoods; skull and feather headdresses are sold as wares. |
 | Khajiit traders (caravan steel, moon-monk robes) | 8/19/19/2 | 8/25/19/2 | You can tell them by curved scimitars, khukuris, Apex cuirasses and moon-monk robes and masks. |
-| Shadowscales (the Empty Cradle) | 4/12/0/0 | 12/21/0/0 | You can tell them by cradle-black leathers (the Shrouded set, reskinned by Dark Brotherhood Armor SE), a serpent-hilted dagger, needle stilettos and a black sickle; ranged is a blowgun or an ash-glass bow. Their signature is the Blade of the Empty Cradle (the Blade of Woe, disenchanted, T5). |
-| The Night-Reed Chapter (thieves) | 0/11/0/0 | 8 weapons, 4 master pieces added | You can tell them by soft leathers, a reed-cutter's sickle, thin stilettos and the Night-Reed knife; ranged is a short bow or a blowgun. The masters' signature is the Night-Reed blade, bow and leathers (Nightingale, disenchanted, T4). |
-| The Marsh Charter (sellswords) | 25/10/1/2 | unchanged | You can tell them by light mail jerkins, working swords and crossbows. |
+| Shadowscales | 4/12/0/0 | 12/21/0/0 | You can tell them by cradle-black leathers (the Shrouded set, reskinned by Dark Brotherhood Armor SE), a serpent-hilted dagger, needle stilettos and a black sickle; ranged is a blowgun or an ash-glass bow. Their signature is the Blade of the Shadowscales (the Blade of Woe, disenchanted, T5). |
+| The Eelskins (thieves) | 0/11/0/0 | 8 weapons, 4 master pieces added | You can tell them by soft leathers, an eel-hook, thin stilettos and the Eelskins knife; ranged is a short bow or a blowgun. The masters' signature is the Eelskins blade, bow and leathers (Nightingale, disenchanted, T4). |
+| Sellswords (no guild of their own) | 25/10/1/2 | unchanged | You can tell them by light mail jerkins, working swords and crossbows. |
 | Imperials, Warden forts, the Topal Bay Company, East Empire Company marines | 20/20/11/5 | 22/28/19/6 | You can tell them by old-pattern and Perfect Legionnaire Legion plate, a tribune's officer helm and bracers, the Legion officer's cuirass, Company agents' light armour and crossbows. The Topal Bay Company wears East Empire Company armour; no livery pack exists. |
-| Pirates, the Salt-Teeth (the Reed-Sail Compact's pirate branch) | 5/8/0/0 | unchanged | You can tell them by corsair coats, bandanas and cutlasses. The story names no other crews. |
-| Hist priests, the Many-Root Conclave, Nisswo of the Turning Path | 13/33/5/1 | 13/36/5/1 | You can tell them by Water-clan vestments and masks, funerary masks and ritual knives. |
-| Bone cultists, the Umbriel Witness Society | 11/0/4/0 | unchanged | You can tell them by bone-plate armour. No other cult vestments were found that work without an extra framework. |
+| Bramman's Brethren (pirates) | 5/8/0/0 | unchanged | You can tell them by corsair coats, bandanas and cutlasses. No crew of theirs needs a look of its own. |
+| Hist priests and the Sisei-Xul (healers, makers, grave-singers) | 13/33/5/1 | 13/36/5/1 | You can tell them by Water-clan vestments and masks, funerary masks and ritual knives. |
+| Bone cultists, House Cardruhn's necromancers of Thorn | 11/0/4/0 | unchanged | You can tell them by bone-plate armour. No other cult vestments were found that work without an extra framework. |
 | Kothringi remnants (the Chime-Keepers) | 13/6/8/4 | unchanged | You can tell them by Kothringi plate and chime-maces worn by Argonians. |
 | Lilmothiit | none | none | No model exists anywhere. They are carried by the Root-Folk's staves and hide, and by Kothringi relics in their old towns. |
-| The Sunken Archive, the League of Open Water, Rootworm Waykeepers, the Thorn Ash-Reed Accord | | | No gear of their own: they take their people's tribe overlay and their trade kit. |
 
 ## Bands, groups and reach
 
@@ -498,7 +497,7 @@ Left out: Armors of the Velothi I and II and the Colovian Prince Set (they need 
 framework, which we do not load); Styles of Skyrim robes (it needs SkyPatcher); Imperial Legion Armors (it only
 replaces vanilla armour, and its new records are enchanted swords).
 
-**Added in packet five** (replacers reconsidered; the Shadowscales' and the Night-Reed's own arms):
+**Added in packet five** (replacers reconsidered; the Shadowscales' and the Eelskins's own arms):
 
 | Mod | Nexus | Endorsements | Size | Filed as; what it changes globally |
 |---|---|---|---|---|
@@ -511,12 +510,12 @@ replaces vanilla armour, and its new records are enchanted swords).
 | Serpent Dagger | 45038 | 1,173 | 42 MB | shadowscale |
 | Stinger-Poisoner | 8919 | 325 | 8 MB | shadowscale (disenchanted) |
 | Daggerkiin | 29058 | 1,508 | 18 MB | shadowscale |
-| Stiletto Collection | 4429 | 290 | 108 MB | shadowscale needles; bog-iron and copper-steel stilettos for the Night-Reed |
-| WarSickles of the East | 177841 | 158 | 6 MB | black sickles (shadowscale); reed-cutters' sickles (Night-Reed); the Nordic and Falmer ones left out |
-| Thieves Guild Dagger | 43278 | 795 | 2 MB | the Night-Reed knife |
+| Stiletto Collection | 4429 | 290 | 108 MB | shadowscale needles; bog-iron and copper-steel stilettos for the Eelskins |
+| WarSickles of the East | 177841 | 158 | 6 MB | black sickles (shadowscale); eel-hooks (Eelskins); the Nordic and Falmer ones left out |
+| Thieves Guild Dagger | 43278 | 795 | 2 MB | the Eelskins knife |
 
 Already owned and now filed: the Blade of Woe and the Shrouded and Ancient Shrouded sets (Shadowscales), the
-Nightingale blade, bow and armour (the Night-Reed's masters), all disenchanted. Conflicts: no mod we load replaces
+Nightingale blade, bow and armour (the Eelskins's masters), all disenchanted. Conflicts: no mod we load replaces
 Skyrim's Imperial or Shrouded meshes as loose files. USSEP's archive holds mesh fixes, and a loose replacer wins
 over an archive, so the replacers win. Neither touches iron, steel or any piece filed as bog iron.
 Left out: Frankly HD Imperial and Imperial Armors Retexture (they would fight Perfect Legionnaire for the same

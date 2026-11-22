@@ -1578,6 +1578,9 @@
 {"item_id":"King of the Murkmire.esp:99E4A2","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"King of the Murkmire.esp:99E4A2","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"King of the Murkmire.esp:99E4A2","kind":"temper","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:0F5791","count":1}
+{"item_id":"Maleficus' Blackjack.esp:000D65","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
+{"item_id":"Maleficus' Blackjack.esp:000D65","kind":"forge","seq":1,"ingredient":"Skyrim.esm:06F993","count":1}
+{"item_id":"Maleficus' Blackjack.esp:000D65","kind":"temper","seq":0,"ingredient":"Skyrim.esm:0DB5D2","count":1}
 {"item_id":"Mercenary Light Iron Armor.esp:000D49","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE4","count":1}
 {"item_id":"Mercenary Light Iron Armor.esp:000D49","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":2}
 {"item_id":"Mercenary Light Iron Armor.esp:000D49","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0DB5D2","count":1}
@@ -2332,6 +2335,13 @@
 {"item_id":"WoodenClub_by_Flarescale.esp:000804","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":4}
 {"item_id":"WoodenClub_by_Flarescale.esp:000804","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":3}
 {"item_id":"WoodenClub_by_Flarescale.esp:000804","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"[Dyuz]HookSword.esp:000D63","kind":"forge","seq":0,"ingredient":"Here There Be Monsters - Curse of Cipactli.esp:81A1F3","count":2}
+{"item_id":"[Dyuz]HookSword.esp:000D63","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05AD93","count":1}
+{"item_id":"[Dyuz]HookSword.esp:000D63","kind":"forge","seq":2,"ingredient":"Skyrim.esm:0800E4","count":1}
+{"item_id":"[Dyuz]HookSword.esp:000D63","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
+{"item_id":"[Dyuz]HookSword.esp:001D8F","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":2}
+{"item_id":"[Dyuz]HookSword.esp:001D8F","kind":"forge","seq":1,"ingredient":"Skyrim.esm:05ACE4","count":3}
+{"item_id":"[Dyuz]HookSword.esp:001D8F","kind":"temper","seq":0,"ingredient":"Skyrim.esm:05ACE5","count":1}
 {"item_id":"bobmods_macua.esp:000D62","kind":"forge","seq":0,"ingredient":"Skyrim.esm:05AD9D","count":1}
 {"item_id":"bobmods_macua.esp:000D62","kind":"forge","seq":1,"ingredient":"Skyrim.esm:0800E4","count":1}
 {"item_id":"bobmods_macua.esp:000D62","kind":"forge","seq":2,"ingredient":"Skyrim.esm:06F993","count":2}

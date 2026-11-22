@@ -16766,6 +16766,38 @@
    "why": "tempered with saxhleel's main ingredient, as Skyrim tempers with one of its material"
   },
   {
+   "item": "Maleficus' Blackjack.esp:000D65",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE4",
+     1
+    ],
+    [
+     "Skyrim.esm:06F993",
+     1
+    ]
+   ],
+   "source": "kept:Maleficus' Blackjack.esp:000801",
+   "why": "the mod's own recipe (aaa_BlackjackRecipe): every ingredient is one of ours"
+  },
+  {
+   "item": "Maleficus' Blackjack.esp:000D65",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [],
+   "ingredients": [
+    [
+     "Skyrim.esm:0DB5D2",
+     1
+    ]
+   ],
+   "source": "generated",
+   "why": "tempered with leather's main ingredient, as Skyrim tempers with one of its material"
+  },
+  {
    "item": "Mercenary Light Iron Armor.esp:000D49",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -24620,6 +24652,82 @@
    "why": "the mod's own recipe (TemperWeaponWoodenWarClubUnique): every ingredient is one of ours"
   },
   {
+   "item": "[Dyuz]HookSword.esp:000D63",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "ElvenSmithing"
+   ],
+   "ingredients": [
+    [
+     "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+     2
+    ],
+    [
+     "Skyrim.esm:05AD93",
+     1
+    ],
+    [
+     "Skyrim.esm:0800E4",
+     1
+    ]
+   ],
+   "source": "overrides:[Dyuz]HookSword.esp:000D65",
+   "why": "Skyrim's sword shape (2 main, 1 strips) in copper-steel: Bog Iron edged with a Corundum Ingot: Skyrim's copper alloy; perk of WeapMaterialElven"
+  },
+  {
+   "item": "[Dyuz]HookSword.esp:000D63",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:[Dyuz]HookSword.esp:000D64",
+   "why": "the mod's own recipe (TemperWeaponHookSword): every ingredient is one of ours"
+  },
+  {
+   "item": "[Dyuz]HookSword.esp:001D8F",
+   "kind": "forge",
+   "station": "CraftingSmithingForge",
+   "perk": [
+    "SteelSmithing"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     2
+    ],
+    [
+     "Skyrim.esm:05ACE4",
+     3
+    ]
+   ],
+   "source": "kept:[Dyuz]HookSword.esp:001D92",
+   "why": "the mod's own recipe (RecipeWeaponHookSwordB): every ingredient is one of ours"
+  },
+  {
+   "item": "[Dyuz]HookSword.esp:001D8F",
+   "kind": "temper",
+   "station": "CraftingSmithingSharpeningWheel",
+   "perk": [
+    "ArcaneBlacksmith"
+   ],
+   "ingredients": [
+    [
+     "Skyrim.esm:05ACE5",
+     1
+    ]
+   ],
+   "source": "kept:[Dyuz]HookSword.esp:001D93",
+   "why": "the mod's own recipe (TemperWeaponHookSwordB): every ingredient is one of ours"
+  },
+  {
    "item": "bobmods_macua.esp:000D62",
    "kind": "forge",
    "station": "CraftingSmithingForge",
@@ -25977,8 +26085,8 @@
   }
  ],
  "audit": {
-  "mod_recipes": 1015,
-  "kept": 645,
-  "overridden": 362
+  "mod_recipes": 1020,
+  "kept": 649,
+  "overridden": 363
  }
 }

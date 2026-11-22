@@ -890,19 +890,19 @@
   {
    "item": "Cyrodiilic Thief.esp:000872",
    "material": "leather",
-   "why": "thieves' leathers (Night-Reed Chapter, faction 32)",
+   "why": "thieves' leathers (Eelskins Chapter, faction 32)",
    "name": "Thief's Leathers"
   },
   {
    "item": "Cyrodiilic Thief.esp:000873",
    "material": "leather",
-   "why": "thieves' leathers (Night-Reed Chapter, faction 32)",
+   "why": "thieves' leathers (Eelskins Chapter, faction 32)",
    "name": "Thief's Soft Boots"
   },
   {
    "item": "Cyrodiilic Thief.esp:000874",
    "material": "leather",
-   "why": "thieves' leathers (Night-Reed Chapter, faction 32)",
+   "why": "thieves' leathers (Eelskins Chapter, faction 32)",
    "name": "Thief's Gloves"
   },
   {
@@ -929,7 +929,7 @@
   {
    "item": "Daggerkiin - Johnskyrim.esp:000D62",
    "material": "shadowscale",
-   "why": "a curved killing knife: the Shadowscales (the Empty Cradle)",
+   "why": "a curved killing knife: the Shadowscales",
    "name": "Writ-Keeper's Knife"
   },
   {
@@ -2335,7 +2335,7 @@
   {
    "item": "King of the Murkmire.esp:2565F1",
    "material": "wood",
-   "why": "An-Xileel Mask: a carved wooden mask"
+   "why": "Xeech-Leel Mask: a carved wooden mask"
   },
   {
    "item": "King of the Murkmire.esp:27504F",
@@ -2423,63 +2423,70 @@
    "why": "Callia's Jacket: marsh leather (Saxhleel or masu skin)"
   },
   {
+   "item": "Maleficus' Blackjack.esp:000D65",
+   "material": "leather",
+   "name": "Eelskin Sap",
+   "why": "a leather sap for knocking a guard down quietly: the Eelskins",
+   "disenchant": true
+  },
+  {
    "item": "Mercenary Light Iron Armor.esp:000D49",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Guarded Gloves"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D4A",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Guarded Boots"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D66",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Mail Jerkin"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D67",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Gloves"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D68",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Boots"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D69",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Hood"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D6B",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Lowered Hood"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D7B",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Guarded Hood"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D7C",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Guarded Lowered Hood"
   },
   {
    "item": "Mercenary Light Iron Armor.esp:000D7D",
    "material": "bog-iron",
-   "why": "a sellsword's light mail (the Marsh Charter, faction 33)",
+   "why": "a sellsword's light mail",
    "name": "Sellsword's Guarded Jerkin"
   },
   {
@@ -2766,61 +2773,61 @@
   {
    "item": "Pirate Armor.esp:000801",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair Captain's Coat"
   },
   {
    "item": "Pirate Armor.esp:000803",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Boots"
   },
   {
    "item": "Pirate Armor.esp:000805",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Gloves"
   },
   {
    "item": "Pirate Armor.esp:00080B",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Bandana"
   },
   {
    "item": "Pirate Armor.esp:00080F",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair Mate's Coat"
   },
   {
    "item": "Pirate Armor.esp:000811",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Coat"
   },
   {
    "item": "Pirate Armor.esp:000817",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair Captain's Hat"
   },
   {
    "item": "Pirate Armor.esp:00081C",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Blade"
   },
   {
    "item": "Pirate Armor.esp:00081D",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Sword"
   },
   {
    "item": "Pirate Armor.esp:00082A",
    "material": "corsair",
-   "why": "pirates' coats and blades (the Salt-Teeth, pirate waters)",
+   "why": "pirates' coats and blades (Bramman's Brethren, pirate waters)",
    "name": "Corsair's Hat"
   },
   {
@@ -3243,31 +3250,31 @@
   {
    "item": "Redguard Assasin Armor.esp:000800",
    "material": "shadowscale",
-   "why": "an assassin's light armour (the Empty Cradle, hired blades)",
+   "why": "an assassin's light armour (the Shadowscales, hired blades)",
    "name": "Hired Blade's Shoes"
   },
   {
    "item": "Redguard Assasin Armor.esp:000801",
    "material": "shadowscale",
-   "why": "an assassin's light armour (the Empty Cradle, hired blades)",
+   "why": "an assassin's light armour (the Shadowscales, hired blades)",
    "name": "Hired Blade's Armour"
   },
   {
    "item": "Redguard Assasin Armor.esp:000802",
    "material": "shadowscale",
-   "why": "an assassin's light armour (the Empty Cradle, hired blades)",
+   "why": "an assassin's light armour (the Shadowscales, hired blades)",
    "name": "Hired Blade's Gloves"
   },
   {
    "item": "Redguard Assasin Armor.esp:000803",
    "material": "shadowscale",
-   "why": "an assassin's light armour (the Empty Cradle, hired blades)",
+   "why": "an assassin's light armour (the Shadowscales, hired blades)",
    "name": "Hired Blade's Hood"
   },
   {
    "item": "Redguard Assasin Armor.esp:00080E",
    "material": "shadowscale",
-   "why": "an assassin's light armour (the Empty Cradle, hired blades)",
+   "why": "an assassin's light armour (the Shadowscales, hired blades)",
    "name": "Hired Blade's Mask"
   },
   {
@@ -3374,7 +3381,7 @@
   {
    "item": "SerpentDagger.esp:000D65",
    "material": "shadowscale",
-   "why": "a serpent-hilted dagger: the Shadowscales (the Empty Cradle)",
+   "why": "a serpent-hilted dagger: the Shadowscales",
    "name": "Serpent's Tooth"
   },
   {
@@ -3434,7 +3441,7 @@
   {
    "item": "Skyrim.esm:05ABC4",
    "material": "shadowscale",
-   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales",
    "name": "Cradle-black Open Cowl",
    "disenchant": true
   },
@@ -3442,7 +3449,7 @@
    "item": "Skyrim.esm:05DB85",
    "material": "leather",
    "why": "the chapter masters' leathers (Nightingale); tier T4",
-   "name": "Night-Reed Boots",
+   "name": "Eelskin Boots",
    "tier": "T4",
    "disenchant": true
   },
@@ -3450,7 +3457,7 @@
    "item": "Skyrim.esm:05DB86",
    "material": "leather",
    "why": "the chapter masters' leathers (Nightingale); tier T4",
-   "name": "Night-Reed Leathers",
+   "name": "Eelskin Leathers",
    "tier": "T4",
    "disenchant": true
   },
@@ -3458,7 +3465,7 @@
    "item": "Skyrim.esm:05DB87",
    "material": "leather",
    "why": "the chapter masters' leathers (Nightingale); tier T4",
-   "name": "Night-Reed Gloves",
+   "name": "Eelskin Gloves",
    "tier": "T4",
    "disenchant": true
   },
@@ -3466,7 +3473,7 @@
    "item": "Skyrim.esm:05DB88",
    "material": "leather",
    "why": "the chapter masters' leathers (Nightingale); tier T4",
-   "name": "Night-Reed Hood",
+   "name": "Eelskin Hood",
    "tier": "T4",
    "disenchant": true
   },
@@ -3474,7 +3481,7 @@
    "item": "Skyrim.esm:07A917",
    "material": "copper-steel",
    "why": "the chapter's master blade (the Nightingale Blade); tier T4",
-   "name": "Night-Reed Blade",
+   "name": "Eelskin Blade",
    "tier": "T4",
    "disenchant": true
   },
@@ -3482,50 +3489,50 @@
    "item": "Skyrim.esm:07E5C3",
    "material": "wood",
    "why": "the chapter's master bow (the Nightingale Bow); tier T4",
-   "name": "Night-Reed Bow",
+   "name": "Eelskin Bow",
    "tier": "T4",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:09CCDC",
    "material": "shadowscale",
-   "why": "the order's own blade (the Blade of Woe): the Shadowscales (the Empty Cradle); tier T5",
-   "name": "Blade of the Empty Cradle",
+   "why": "the order's own blade (the Blade of Woe): the Shadowscales; tier T5",
+   "name": "Blade of the Shadowscales",
    "tier": "T5",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:0D2842",
    "material": "shadowscale",
-   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales",
    "name": "Cradle-black Cowl",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:0D2843",
    "material": "shadowscale",
-   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales",
    "name": "Cradle-black Gloves",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:0D2844",
    "material": "shadowscale",
-   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales",
    "name": "Cradle-black Armour",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:0D2845",
    "material": "shadowscale",
-   "why": "the order's black leathers (Shrouded Armour): the Shadowscales (the Empty Cradle)",
+   "why": "the order's black leathers (Shrouded Armour): the Shadowscales",
    "name": "Cradle-black Boots",
    "disenchant": true
   },
   {
    "item": "Skyrim.esm:0E1F14",
    "material": "shadowscale",
-   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "why": "the order's old leathers: the Shadowscales; tier T5",
    "name": "Old Cradle Boots",
    "tier": "T5",
    "disenchant": true
@@ -3533,7 +3540,7 @@
   {
    "item": "Skyrim.esm:0E1F15",
    "material": "shadowscale",
-   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "why": "the order's old leathers: the Shadowscales; tier T5",
    "name": "Old Cradle Armour",
    "tier": "T5",
    "disenchant": true
@@ -3541,7 +3548,7 @@
   {
    "item": "Skyrim.esm:0E1F16",
    "material": "shadowscale",
-   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "why": "the order's old leathers: the Shadowscales; tier T5",
    "name": "Old Cradle Gloves",
    "tier": "T5",
    "disenchant": true
@@ -3549,7 +3556,7 @@
   {
    "item": "Skyrim.esm:0E1F17",
    "material": "shadowscale",
-   "why": "the order's old leathers: the Shadowscales (the Empty Cradle); tier T5",
+   "why": "the order's old leathers: the Shadowscales; tier T5",
    "name": "Old Cradle Cowl",
    "tier": "T5",
    "disenchant": true
@@ -3581,46 +3588,46 @@
   {
    "item": "Stiletto Collection.esp:000D63",
    "material": "shadowscale",
-   "why": "the Writ-Keeper's stiletto: the Shadowscales (the Empty Cradle); tier T5: a senior's blade",
+   "why": "the Writ-Keeper's stiletto: the Shadowscales; tier T5: a senior's blade",
    "name": "Cradle Needle",
    "tier": "T5"
   },
   {
    "item": "Stiletto Collection.esp:001D8E",
    "material": "copper-steel",
-   "why": "a thin stiletto: the Night-Reed Chapter",
+   "why": "a thin stiletto: the Eelskins",
    "name": "Bright Stiletto"
   },
   {
    "item": "Stiletto Collection.esp:0048A8",
    "material": "shadowscale",
-   "why": "a needle stiletto: the Shadowscales (the Empty Cradle)",
+   "why": "a needle stiletto: the Shadowscales",
    "name": "Black-glass Needle"
   },
   {
    "item": "Stiletto Collection.esp:004E0D",
    "material": "bog-iron",
-   "why": "a thin stiletto: the Night-Reed Chapter",
+   "why": "a thin stiletto: the Eelskins",
    "name": "Reed Stiletto"
   },
   {
    "item": "Stiletto Collection.esp:004E10",
    "material": "copper-steel",
-   "why": "a thin stiletto: the Night-Reed Chapter",
+   "why": "a thin stiletto: the Eelskins",
    "name": "Copper Stiletto"
   },
   {
    "item": "Stinger-Poisoner.esp:000D63",
    "material": "shadowscale",
-   "why": "a poisoner's barbed sword: the Shadowscales (the Empty Cradle)",
+   "why": "a poisoner's barbed sword: the Shadowscales",
    "name": "Stinger",
    "disenchant": true
   },
   {
    "item": "ThievesGuildDagger_SE_ENG.esl:000D62",
    "material": "bog-iron",
-   "why": "the chapter's knife: the Night-Reed Chapter",
-   "name": "Night-Reed Knife"
+   "why": "the chapter's knife: the Eelskins",
+   "name": "Eelskin Knife"
   },
   {
    "item": "TribuneArmor.esp:005901",
@@ -3649,31 +3656,31 @@
   {
    "item": "WarSickles of the East.esp:00080B",
    "material": "bog-iron",
-   "why": "a reed-cutter's sickle: the Night-Reed Chapter",
-   "name": "Reed-cutter's Sickle"
+   "why": "an eel-hook: the Eelskins",
+   "name": "Eel-hook"
   },
   {
    "item": "WarSickles of the East.esp:00080E",
    "material": "copper-steel",
-   "why": "a reed-cutter's sickle: the Night-Reed Chapter",
-   "name": "Copper Reed Sickle"
+   "why": "an eel-hook: the Eelskins",
+   "name": "Copper Eel-hook"
   },
   {
    "item": "WarSickles of the East.esp:000A60",
    "material": "bog-iron",
-   "why": "a cane-cutter's hook: the Night-Reed Chapter",
-   "name": "Cane Sickle"
+   "why": "a cane-cutter's hook: the Eelskins",
+   "name": "Gutting Hook"
   },
   {
    "item": "WarSickles of the East.esp:000B62",
    "material": "shadowscale",
-   "why": "a hooked sickle: the Shadowscales (the Empty Cradle)",
+   "why": "a hooked sickle: the Shadowscales",
    "name": "Cradle Sickle"
   },
   {
    "item": "WarSickles of the East.esp:000B6A",
    "material": "shadowscale",
-   "why": "a blackened sickle: the Shadowscales (the Empty Cradle)",
+   "why": "a blackened sickle: the Shadowscales",
    "name": "Black Sickle"
   },
   {
@@ -3687,6 +3694,18 @@
    "material": "bog-iron",
    "why": "an iron-studded maul",
    "name": "Studded Maul"
+  },
+  {
+   "item": "[Dyuz]HookSword.esp:000D63",
+   "material": "copper-steel",
+   "name": "Hook-and-Eye Sword",
+   "why": "a hooked sword for catching a blade or a rope: the Eelskins"
+  },
+  {
+   "item": "[Dyuz]HookSword.esp:001D8F",
+   "material": "bog-iron",
+   "name": "Barbed Hook Sword",
+   "why": "a barbed hook sword: the Eelskins"
   },
   {
    "item": "bobmods_macua.esp:000D62",

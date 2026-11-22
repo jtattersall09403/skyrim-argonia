@@ -118,12 +118,13 @@
 {"kit_id":"tanner","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"their own leather"}
 {"kit_id":"tanner","seq":2,"use":"home","good_id":"hide-and-leather","why":"hides and leather"}
 {"kit_id":"tanner","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
-{"kit_id":"thief","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron copper-steel","why":"the Night-Reed knife or a thin stiletto"}
-{"kit_id":"thief","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"bog-iron copper-steel","why":"a reed-cutter's sickle"}
-{"kit_id":"thief","seq":2,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood","why":"a short bow or a blowgun"}
-{"kit_id":"thief","seq":3,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather saxhleel","why":"soft leathers that do not creak"}
-{"kit_id":"thief","seq":4,"use":"home","good_id":"salvage","why":"the takings"}
-{"kit_id":"thief","seq":5,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"thief","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron copper-steel","why":"the Eelskins knife or a thin stiletto"}
+{"kit_id":"thief","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"leather wood","why":"a sap for a quiet knock-down"}
+{"kit_id":"thief","seq":2,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"bog-iron copper-steel","why":"an eel-hook"}
+{"kit_id":"thief","seq":3,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood","why":"a short bow or a blowgun"}
+{"kit_id":"thief","seq":4,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather saxhleel","why":"soft leathers that do not creak"}
+{"kit_id":"thief","seq":5,"use":"home","good_id":"salvage","why":"the takings"}
+{"kit_id":"thief","seq":6,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"trader","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone","why":"a belt knife"}
 {"kit_id":"trader","seq":1,"use":"home","good_id":"river-goods","why":"the stall's stock"}
 {"kit_id":"trader","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}

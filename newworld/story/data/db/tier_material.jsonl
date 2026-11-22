@@ -24,9 +24,10 @@
 {"stock_tier_id":"T2","slot":"weapon","material_id":"bog-iron","ord":4}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"corsair","ord":5}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"crossbow","ord":2}
-{"stock_tier_id":"T2","slot":"weapon","material_id":"flint","ord":7}
+{"stock_tier_id":"T2","slot":"weapon","material_id":"flint","ord":8}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"imperial","ord":0}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"kothringi-relic","ord":3}
+{"stock_tier_id":"T2","slot":"weapon","material_id":"leather","ord":7}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"saxhleel","ord":6}
 {"stock_tier_id":"T2","slot":"weapon","material_id":"wood","ord":1}
 {"stock_tier_id":"T3","slot":"heavy","material_id":"bone-plate","ord":1}

@@ -836,7 +836,7 @@
   {
    "id": "thief",
    "label": "Thief, fence, cutpurse",
-   "match": "\\b(thie(f|ves)|fences?|cutpurses?|burglars?|night-reed)\\b",
+   "match": "\\b(thie(f|ves)|fences?|cutpurses?|burglars?|eelskins?)\\b",
    "carry": [
     {
      "slot": "weapon",
@@ -845,7 +845,16 @@
       "bog-iron",
       "copper-steel"
      ],
-     "why": "the Night-Reed knife or a thin stiletto"
+     "why": "the Eelskins knife or a thin stiletto"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeMace",
+     "materials": [
+      "leather",
+      "wood"
+     ],
+     "why": "a sap for a quiet knock-down"
     },
     {
      "slot": "weapon",
@@ -854,7 +863,7 @@
       "bog-iron",
       "copper-steel"
      ],
-     "why": "a reed-cutter's sickle"
+     "why": "an eel-hook"
     },
     {
      "slot": "weapon",
@@ -891,12 +900,12 @@
      "why": "a thief works light"
     }
    ],
-   "tell": "you can tell them by soft leathers, a reed-cutter's sickle and the Night-Reed knife; the masters' signature is the Night-Reed blade and bow"
+   "tell": "you can tell them by eel-dark leathers, a sap, an eel-hook and the Eelskin knife; the masters' signature is the Eelskin blade, bow and leathers"
   },
   {
    "id": "sellsword",
    "label": "Sellsword, caravan guard, hired blade",
-   "match": "\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?|marsh charter)\\b",
+   "match": "\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?)\\b",
    "carry": [
     {
      "slot": "weapon",
@@ -944,7 +953,7 @@
   {
    "id": "assassin",
    "label": "Assassin, Shadowscale",
-   "match": "\\b(assassins?|shadowscales?|empty cradle)\\b",
+   "match": "\\b(assassins?|shadowscales?)\\b",
    "carry": [
     {
      "slot": "weapon",
@@ -1001,7 +1010,7 @@
      "why": "an assassin works light"
     }
    ],
-   "tell": "you can tell them by cradle-black leathers, a serpent-hilted dagger and a black sickle; the signature is the Blade of the Empty Cradle"
+   "tell": "you can tell them by cradle-black leathers, a serpent-hilted dagger and a black sickle; the signature is the Blade of the Shadowscales"
   },
   {
    "id": "marine",

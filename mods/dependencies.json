@@ -5310,7 +5310,7 @@
    "version": "1.0",
    "archive": "Cyrodiilic Thief - Ver.1.0-29667-1-0-1570972109.rar",
    "size_kb": 39601,
-   "why": "thieves' leathers for the Night-Reed Chapter (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "thieves' leathers for the Eelskins (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -5372,7 +5372,7 @@
    "version": "1.0.6",
    "archive": "Mercenary Light Iron Armor-59897-1-0-6-1641199177.zip",
    "size_kb": 50897,
-   "why": "a sellsword's light iron armour for the Marsh Charter (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "a sellsword's light iron armour for sellswords (the items ladder, docs/design/items.md); asset-only: its records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -6361,7 +6361,7 @@
    "version": "1.0",
    "archive": "Stiletto Collection-4429-1-0.zip",
    "size_kb": 108495,
-   "why": "stilettos for the Shadowscales and the Night-Reed (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "stilettos for the Shadowscales and the Eelskins (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -6392,7 +6392,7 @@
    "version": "1.0",
    "archive": "Thieves Guild Dagger SE ENG ESL-43278-1-0-1607727796.rar",
    "size_kb": 1908,
-   "why": "a thief's dagger for the Night-Reed (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "a thief's dagger for the Eelskins (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -6423,7 +6423,7 @@
    "version": "1.1.0",
    "archive": "WarSickles of the East-177841-1-1-0-1779026987.zip",
    "size_kb": 6234,
-   "why": "reed-cutters' sickles for the Night-Reed (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "why": "hooked sickles for the Eelskins (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
    "required": true,
    "profile": "newworld",
    "licence": "none stated",
@@ -6681,6 +6681,68 @@
    "sha256": "2f3b72283926e5dd5b6209d25f06a5fba7937e6855cef166346ddef538ae934b",
    "plugins": [
     "SemperFi.esp"
+   ]
+  },
+  {
+   "id": "maleficus-blackjack",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 54546,
+    "file": 473609
+   },
+   "name": "Maleficus' Blackjack",
+   "author": "Maleficus",
+   "version": "1.3",
+   "archive": "Maleficus' Blackjack - Version 1.3-54546-1-3-1708634577.zip",
+   "size_kb": 2498,
+   "why": "a sap for the Eelskins' burglars (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (374 endorsements, updated 2024-02-22, not adult-flagged); the owner's ruling 2026-11-22",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet five)",
+   "asset_only": true,
+   "sha256": "67d5c58225736b7c69810decf120b3d8c6fd1ff48e16d215ffe2a55a6d3b00ff",
+   "plugins": [
+    "Maleficus' Blackjack.esp"
+   ]
+  },
+  {
+   "id": "wurim-hook-sword",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 37775,
+    "file": 147850
+   },
+   "name": "Wurim Armoury - Hook Sword",
+   "author": "Dyuz",
+   "version": "1.0",
+   "archive": "HookSword - SE - 2K-37775-1-0-1593365185.7z",
+   "size_kb": 7818,
+   "why": "a hook sword for the Eelskins (the items ladder, docs/design/items.md); asset-only: records read for stock and copied into our plugins under our names, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No terms read beyond the page text; we ship nothing of it and require it.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 record read 2026-11-22 (103 endorsements, updated 2020-06-28, not adult-flagged); the owner's ruling 2026-11-22",
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "from": "items ladder (packet five)",
+   "asset_only": true,
+   "sha256": "7f59b4e321e2c78149a204db09d676a49b622ac5519d706cf74c218e80e76a22",
+   "plugins": [
+    "[Dyuz]HookSword.esp"
    ]
   },
   {
