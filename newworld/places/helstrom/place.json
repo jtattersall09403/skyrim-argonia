@@ -1595,7 +1595,61 @@
      "why": "the landing's boats drawn up on the bank by the city tree, where the raft-masters work"
     }
    ]
-  }
+  },
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.9CD0J75GCA19AR4RYHWQK5H1DA",
+     "helstrom.QH43TMYTBTGD6D6C9RH1HZAMZC",
+     "helstrom.WDDCXC66YFRXZ13250NJSY25SY"
+    ],
+    "why": "three clumps of the source's own rock grass growing into one another in the mud quarter, as the source set them: low grass, nothing a walker meets"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.AH414NEYCV4XA2V8SCES1W946W",
+     "helstrom.7RDH30ZDX4DBD3NEJ6D73PDKR5",
+     "helstrom.ZRARDA2ENZB4KWG15VZAVD4R3E",
+     "helstrom.RE1M87QFVXKZER9YWXNWT2D8ZV",
+     "helstrom.2WBAQFVG0971XWXZRW8ETEJ0XC"
+    ],
+    "why": "the bark windows of the west houses set against the boulders they lean on, as the source built them: the boulder hides the window's back, seen from the street the window reads in the house wall"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.R9D0GA6FMQSXC4PBP1TGN54Q9Y",
+     "helstrom.2EFBAFHE6ZFHVSVQG21C1B84JK",
+     "helstrom.BW3MJKVEFVDQXDWQ9VZB1S53NH"
+    ],
+    "why": "the bark windows of a west-heights house against its boulder, as the source built them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.BYTMNX7Q8WSC0HGGRKJYBE21WF",
+     "helstrom.HNZ57ZW8PJPXDEZKGPCPN37D2S"
+    ],
+    "why": "a red lamp hung in the crown of a great tree, as the source hangs it: its fixture sits among the branches"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.3XJKCGK4SXX2H7N6GHQ3C7PMMM",
+     "helstrom.CANRW3SVZEQRY2TWQQKE2FRNP1"
+    ],
+    "why": "the moored ship and the dock steps down its side, as the source moors it: the steps are the ship's gangway"
+   },
+   {
+    "check": "doors",
+    "ids": [
+     "helstrom.PQWZQVN6QW2ZV1GSDP19XSGMEE"
+    ],
+    "why": "the Boatmen's Lodge's door lands on the moored ship's deck by its gangway steps, as the source lands it: the deck is walked, the steps' box only touches the landing"
+   }
+  ]
  },
  "fit": {
   "pivot": [
