@@ -52,7 +52,12 @@ foundation: 'Built from main-plot.md §5 quest 1 (passed by the owner, 2026-11-1
   is unlocked from outside. Dralin Uveran, the gang-master, speaks first on the landing (the quest''s one speaks-first line),
   says the player''s name was struck from his roll this morning on Vosh-Leera''s order, and passes on her word: she will
   have work for the player if they bring her some Sithis'' beard from Reed-Sill Weir (owner, 2026-11-18: one place at a
-  time, the moss first, then Vosh-Leera). The player''s pack holds two
+  time, the moss first, then Vosh-Leera). Before the player takes the road, Dralin offers one piece of
+  gear that dead cutters left behind (owner, 2026-11-22): a two-handed warhammer, a sword, a bow with arrows and a
+  knife, or a spell tome of Sparks, each given on the pick and the rest withdrawn; the player may go without. The
+  pieces are Black Marsh flint, wood and bamboo from Here There Be Monsters: Curse of Cipactli, matched to Skyrim''s
+  iron tier (#89). A player who walks off without picking keeps the marker on
+  Dralin, and MN02 waits until the pick or the refusal. The player''s pack holds two
   lockpicks. MN02 starts on this quest''s stage 90 and carries the markers on the weir''s moss and on Vosh-Leera''s door.
   The side quest What the Herald Sent is left out: the main quest only. Okeeh and Dralin first answer the line''s shared
   topics Hist, Jal-Veesa and the Owing.'
@@ -111,6 +116,14 @@ truth:
     to warm her sick tree's cooling egg-pool. Vosh-Leera, who chose the stranger off the barge's list, left word with
     Dralin that she will have work for the stranger if they bring the moss, for she gives work only to one who helps the
     tree-minder first.
+- id: t5
+  when: the seasons before the game opens
+  who:
+  - npc.mn.dralin-uveran
+  where: Ashgate Landing
+  what: Cutters who died of fever on the reed beds left their gear with Dralin, who keeps what nobody claimed, a
+    flint-studded warhammer, a flint-edged sword, a bamboo bow with flint arrows and a flint knife, and a spell tome
+    of Sparks one of them had carried up from Stormhold.
 playerStart:
 - The player knows nothing of the marsh
 - the gang or why they are here.
@@ -137,6 +150,11 @@ facts:
   claim: Vosh-Leera will have work for the player if they bring her Sithis' beard, a grey moss hanging on the woven weir at
     Reed-Sill Weir, which is on the road to the town.
   from: t4
+- id: fact.mn01.gear
+  claim: Dralin can spare one piece of what dead cutters left behind for the player's road, their pick of a
+    flint-studded warhammer, a flint-edged sword, a bamboo bow with twenty flint arrows and a flint knife, or a spell
+    tome of Sparks.
+  from: t5
 - id: fact.mn01.hist
   claim: A Hist is a great thinking tree, the size of a tower, with pale grey bark, roots standing out of the water and
     a pool of eggs at its foot; every Argonian village is built round one.
@@ -179,6 +197,7 @@ cast:
     fact.mn01.struck: knows
     fact.mn01.go-to-vosh: knows
     fact.mn01.moss: knows
+    fact.mn01.gear: knows
     fact.mn01.owing: knows
     fact.mn01.hist: knows
 - id: npc.mn.hara-jeel
@@ -210,6 +229,48 @@ things:
     all: carried
   where: the player's pack
   name: Lockpick
+- id: item.naga-cuauololli
+  kind: item
+  name: 'Naga Cuauololli'
+  source: 'Here There Be Monsters - Curse of Cipactli.esp:16F16F (CIPHTBMNagaWarhammer), Cipactli''s own flint-and-wood two-handed warhammer, as it is: damage 18, value 60, weight 24, Skyrim''s iron warhammer to the point (#89 tier 1)'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
+- id: item.naga-macana
+  kind: item
+  name: 'Naga Macana'
+  source: 'Here There Be Monsters - Curse of Cipactli.esp:16F16D (CIPHTBMNagaSword), Cipactli''s own flint-edged wooden sword, as it is: damage 7, value 25, weight 9, Skyrim''s iron sword to the point (#89 tier 1)'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
+- id: item.bamboo-bow
+  kind: item
+  name: 'Bamboo Bow'
+  source: 'Here There Be Monsters - Curse of Cipactli.esp:1B0F7F (CIPHTBMBambooBow1), Cipactli''s own brown bamboo bow, as it is: damage 7, value 30, weight 4, beside Skyrim''s long bow at 6 (#89 tier 1)'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
+- id: item.naga-yaomitl
+  kind: item
+  name: 'Naga Yaomitl'
+  source: 'Here There Be Monsters - Curse of Cipactli.esp:16F168 (CIPHTBMNagaArrow), Cipactli''s own flint-tipped arrow, as it is: damage 8, value 1, Skyrim''s iron arrow to the point; twenty given'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
+- id: item.naga-tecpatl
+  kind: item
+  name: 'Naga Tecpatl'
+  source: 'Here There Be Monsters - Curse of Cipactli.esp:16F16A (CIPHTBMNagaDagger1), Cipactli''s own flint knife, as it is: damage 4, value 10, weight 2, Skyrim''s iron dagger to the point (#89 tier 1)'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
+- id: item.spell-tome-sparks
+  kind: item
+  name: 'Spell Tome: Sparks'
+  source: 'Skyrim.esm:09CD53 (SpellTomeSparks), Skyrim''s novice Destruction tome, value 46; Sparks rather than Flames because a new character already knows Flames'
+  states:
+    all: with Dralin until picked, then carried
+  where: given by Dralin on the landing at the pick
 placements:
 - ref: npc.mn.okeeh
   kind: person
@@ -530,7 +591,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -586,7 +647,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -642,7 +703,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -698,7 +759,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -754,7 +815,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -810,7 +871,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -5136,7 +5197,7 @@ stages:
       - ≥
       - 90
   successors:
-  - to: 90
+  - to: 50
     when:
       topicHeardFrom:
       - topic.mn01-dralin-free
@@ -5157,18 +5218,184 @@ stages:
       - objective
       - marker:thing.mn01.hold-door
       - name:thing.mn01.hold-door
-- id: 90
+- id: 50
   place: outpost-m13-m65
-  journal: text.journal.mn01.90
+  journal: text.journal.mn01.50
   journalText: "Dralin Uveran, the Dunmer gang-master of Ashgate Landing, met me on the landing. He struck my name from
     his roll this morning, on an order brought by Vosh-Leera, the root-herald of Jal-Veesa, so I owe no months. He does
     not know why she wants me, and he is sour about it. He says she will have work for me if I bring her some Sithis'
-    beard, a grey moss that hangs on the woven weir at Reed-Sill Weir, east up the road. I should pick the moss first,
-    then take it to her house in Jal-Veesa, past the weir."
+    beard, a grey moss that hangs on the woven weir at Reed-Sill Weir, east up the road. Before I go, he offered me one
+    thing from what dead cutters left behind: a Naga warhammer, a Naga sword, a bamboo bow with arrows and a flint
+    knife, or a spell tome of Sparks. I should take my pick, or tell him I will manage without."
   learns:
   - fact.mn01.struck
   - fact.mn01.go-to-vosh
   - fact.mn01.moss
+  - fact.mn01.gear
+  objectives:
+  - id: pick-gear
+    text: text.objective.mn01.pick-gear
+    objectiveText: Take your pick of Dralin's gear, or tell him you will manage.
+    target: npc.mn.dralin-uveran
+    completeWhen:
+      questStage:
+      - quest.main.mn01
+      - ≥
+      - 51
+  successors:
+  - to: 51
+    when:
+      topicHeardFrom:
+      - topic.mn01-pick-warhammer
+      - npc.mn.dralin-uveran
+  - to: 52
+    when:
+      topicHeardFrom:
+      - topic.mn01-pick-sword
+      - npc.mn.dralin-uveran
+  - to: 53
+    when:
+      topicHeardFrom:
+      - topic.mn01-pick-bow
+      - npc.mn.dralin-uveran
+  - to: 54
+    when:
+      topicHeardFrom:
+      - topic.mn01-pick-tome
+      - npc.mn.dralin-uveran
+  - to: 90
+    when:
+      topicHeardFrom:
+      - topic.mn01-pick-none
+      - npc.mn.dralin-uveran
+  failForward:
+  - to: 90
+    when:
+      not:
+        npcAlive: npc.mn.dralin-uveran
+  information:
+    going: 'I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know
+      why. She will have work for me if I bring her Sithis'' beard. Dralin offers me one piece of dead cutters'' gear for
+      the road.'
+    next: Choose one of Dralin's four pieces of gear, or tell him I will manage; then the moss at Reed-Sill Weir.
+    ways: 'A choice of one: the warhammer (Two-Handed), the sword (One-Handed), the bow with arrows and a knife (Archery),
+      or the tome of Sparks (Destruction); or none. Whichever I take, the others are gone.'
+    carriers:
+    - know: I am free and who freed me
+      by:
+      - journal
+      - line:topic.mn01-dralin-free
+    - know: a root-herald speaks for a town and its tree
+      by:
+      - line:topic.mn01-dralin-free
+      - ask:topic.mn01-root-herald
+    - know: bring the moss to Vosh-Leera's house in Jal-Veesa, the moss first
+      by:
+      - journal
+      - line:topic.mn01-dralin-free
+      - ask:topic.mn01-moss
+    - know: what a Hist is and that Jal-Veesa has one
+      by:
+      - line:topic.mn01-dralin-free
+      - ask:topic.mn-hist
+      - ask:topic.mn-jal-veesa
+    - know: Dralin offers one of four pieces of gear, or none, and which skill each serves
+      by:
+      - journal
+      - objective
+      - marker:npc.mn.dralin-uveran
+      - line:topic.mn01-dralin-free
+- id: 51
+  place: outpost-m13-m65
+  journal: text.journal.mn01.51
+  journalText: "I chose the Naga warhammer from Dralin's gear, and he put the rest away."
+  onEnter:
+  - giveItem:
+    - item.naga-cuauololli
+    - 1
+  - setStage:
+    - quest.main.mn01
+    - 90
+  information:
+    going: I chose a warhammer from Dralin's gear, and the other pieces are put away.
+    next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    ways: One way on, the moss first.
+    carriers:
+    - know: what I took
+      by:
+      - journal
+      - line:topic.mn01-pick-warhammer
+- id: 52
+  place: outpost-m13-m65
+  journal: text.journal.mn01.52
+  journalText: "I chose the Naga sword from Dralin's gear, and he put the rest away."
+  onEnter:
+  - giveItem:
+    - item.naga-macana
+    - 1
+  - setStage:
+    - quest.main.mn01
+    - 90
+  information:
+    going: I chose a sword from Dralin's gear, and the other pieces are put away.
+    next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    ways: One way on, the moss first.
+    carriers:
+    - know: what I took
+      by:
+      - journal
+      - line:topic.mn01-pick-sword
+- id: 53
+  place: outpost-m13-m65
+  journal: text.journal.mn01.53
+  journalText: "I chose the bamboo bow from Dralin's gear, with twenty flint arrows and a flint knife, and he put the rest away."
+  onEnter:
+  - giveItem:
+    - item.bamboo-bow
+    - 1
+  - giveItem:
+    - item.naga-yaomitl
+    - 20
+  - giveItem:
+    - item.naga-tecpatl
+    - 1
+  - setStage:
+    - quest.main.mn01
+    - 90
+  information:
+    going: I chose a bow from Dralin's gear, and the other pieces are put away.
+    next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    ways: One way on, the moss first.
+    carriers:
+    - know: what I took
+      by:
+      - journal
+      - line:topic.mn01-pick-bow
+- id: 54
+  place: outpost-m13-m65
+  journal: text.journal.mn01.54
+  journalText: "I chose the spell tome of Sparks from Dralin's gear, and he put the rest away."
+  onEnter:
+  - giveItem:
+    - item.spell-tome-sparks
+    - 1
+  - setStage:
+    - quest.main.mn01
+    - 90
+  information:
+    going: I chose a spell tome from Dralin's gear, and the other pieces are put away.
+    next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
+    ways: One way on, the moss first.
+    carriers:
+    - know: what I took
+      by:
+      - journal
+      - line:topic.mn01-pick-tome
+- id: 90
+  place: outpost-m13-m65
+  journal: text.journal.mn01.90
+  journalText: "I should gather Sithis' beard at Reed-Sill Weir first, east up the road
+    where it meets the creek, then take it to Vosh-Leera's house in Jal-Veesa, past the weir."
   ending: complete
   endingId: e-freed
   directions: "Reed-Sill Weir is the first camp on the road east from the camp's gate, where the road meets the creek,
@@ -5179,14 +5406,6 @@ stages:
     next: Pick Sithis' beard at Reed-Sill Weir, east up the road, then take it to Vosh-Leera's House in Jal-Veesa.
     ways: One way on, the moss first; the crocodiles under the weir can be fought, shot from the log walk or kept clear of.
     carriers:
-    - know: I am free and who freed me
-      by:
-      - journal
-      - line:topic.mn01-dralin-free
-    - know: a root-herald speaks for a town and its tree
-      by:
-      - line:topic.mn01-dralin-free
-      - ask:topic.mn01-root-herald
     - know: bring the moss to Vosh-Leera's house in Jal-Veesa
       by:
       - journal
@@ -5196,11 +5415,6 @@ stages:
       - journal
       - line:topic.mn01-dralin-free
       - ask:topic.mn01-moss
-    - know: what a Hist is and that Jal-Veesa has one
-      by:
-      - line:topic.mn01-dralin-free
-      - ask:topic.mn-hist
-      - ask:topic.mn-jal-veesa
 - id: 95
   place: outpost-m13-m65
   journal: text.journal.mn01.95
@@ -5231,7 +5445,8 @@ stages:
       - journal
 endings:
 - id: e-freed
-  when: Dralin told the player they are free and sent them to Vosh-Leera
+  when: Dralin told the player they are free and sent them to Vosh-Leera, and the player took their pick of his
+    gear or went without (or Dralin was killed after freeing them)
   seen: the hold's door stands open; Dralin keeps to the hut and the reed beds; MN02 starts with the moss and Vosh-Leera's
     door marked
   rewards: []
@@ -5267,27 +5482,36 @@ terms:
   told: 'topic.mn01-where: the gang-master, a Dunmer who keeps the roll'
   ask: topic.mn01-dralin-who
 - term: Vosh-Leera
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"the root-herald of Jal-Veesa"'
   ask: topic.mn01-root-herald
 - term: root-herald
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"the one who speaks for the town''s elders and its tree to outsiders"'
   ask: topic.mn01-root-herald
 - term: Jal-Veesa
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"the town up the road east, round its Hist"'
   ask: topic.mn-jal-veesa
 - term: Hist
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"the town''s great tree"'
   ask: topic.mn-hist
 - term: Sithis' beard
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"a grey moss that hangs on the woven weir at Reed-Sill Weir"'
   ask: topic.mn01-moss
+- term: Naga
+  meets: 50, topic.mn01-dralin-free
+  told: '"Naga make: the tribes of the deep swamp set flint in wood"'
+- term: Sparks
+  meets: 50, topic.mn01-dralin-free
+  told: '"a spell tome of Sparks: read it and you can throw lightning from your hand"'
+- term: cuauololli, macana, yaomitl, tecpatl
+  meets: 51 to 53, the names the game gives the Naga pieces
+  told: 'the pick lines: what the dead cutter who carried each piece called it'
 - term: Reed-Sill Weir
-  meets: 90, topic.mn01-dralin-free
+  meets: 50, topic.mn01-dralin-free
   told: '"the weir-wardens'' camp on the road, where the road meets the creek"'
   ask: topic.mn01-moss
 topics:
@@ -6057,6 +6281,7 @@ topics:
   label: What is the Owing?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: 'Dralin. Tells: months of work owed instead of a cell; he buys them from the broker at Stormhold and his cutters
@@ -6094,6 +6319,7 @@ topics:
   label: What is a Hist?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: 'Dralin, a Dunmer. Tells: the Argonians'' great trees, grey-barked and as big as towers, with an egg-pool at the
@@ -6120,7 +6346,7 @@ topics:
   - 90
   essential: false
   intent: 'Okeeh. Tells: the town of the Veesa-Teeleel, the Sedge-Wardens, east up the road: stilt houses on mud banks round
-    its Hist, a lane down to the jetty on the creek, mats and fish drying on racks. The tall grey tree on its mound at
+    its Hist, a lane down to the jetty on the creek, nets and fish drying on racks. The tall grey tree on its mound at
     the middle of the town is its Hist. She buys the gang''s dried fish there. Checks: nothing. Does: nothing.'
   uses: []
   new: true
@@ -6128,6 +6354,7 @@ topics:
   label: What is Jal-Veesa?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: 'Dralin. Tells: the Sedge-Wardens'' town, east up the road past Reed-Sill Weir: stilt houses round a pool with
@@ -6196,17 +6423,72 @@ topics:
     player's months and has lost them. Vosh-Leera left word: she will have work for the player if they bring her some
     Sithis' beard, a grey moss that hangs on the woven weir at Reed-Sill Weir, the weir-wardens' camp where the road
     east meets the creek; her house is in Jal-Veesa, a little further on past the weir. What she wants with either of
-    them he does not know and does not care to. Mind the crocodiles under the weir. Does: sets stage 90. Checks:
+    them he does not know and does not care to. Mind the crocodiles under the weir. Then: the player will need to look
+    after themselves on the road. He has not got much to spare, but he can offer one of these, Naga make (the deep-swamp tribes set flint in wood) left behind by dead cutters when the fever took them: a Naga warhammer, flint set in a wooden head; a Naga sword, a wooden blade edged
+    with flint; a bamboo bow with twenty flint-tipped arrows and a flint knife; or a spell tome of Sparks that one of
+    them carried up from Stormhold, which teaches a lightning spell. Take your pick. Does: sets stage 50. Checks:
     nothing."
   uses:
   - fact.mn01.struck
   - fact.mn01.go-to-vosh
   - fact.mn01.moss
+  - fact.mn01.gear
+  new: true
+- id: topic.mn01-pick-warhammer
+  label: I'll take the warhammer.
+  person: npc.mn.dralin-uveran
+  stages:
+  - 50
+  essential: true
+  intent: "Dralin. Says: \"The warhammer. The cutter who carried it called it a cuauololli. It is heavy, but with a strong arm behind it the flint will crack a crocodile's skull. Take it. I'll put the rest away.\" Does: sets stage 51, which gives the Naga Cuauololli. Checks: nothing."
+  uses:
+  - fact.mn01.gear
+  new: true
+- id: topic.mn01-pick-sword
+  label: I'll take the sword.
+  person: npc.mn.dralin-uveran
+  stages:
+  - 50
+  essential: true
+  intent: "Dralin. Says: \"The sword. Its owner called it a macana. Keep the flint edge off stone, because it chips. Take it. I'll put the rest away.\" Does: sets stage 52, which gives the Naga Macana. Checks: nothing."
+  uses:
+  - fact.mn01.gear
+  new: true
+- id: topic.mn01-pick-bow
+  label: I'll take the bow, the arrows and the knife.
+  person: npc.mn.dralin-uveran
+  stages:
+  - 50
+  essential: true
+  intent: "Dralin. Says: \"The bow and the knife, then. The cutter who carried them called the arrows yaomitl and the knife a tecpatl. The arrows will not last, so pick them up after you shoot. Take the lot. I'll put the rest away.\" Does: sets stage 53, which gives the Bamboo Bow, twenty Naga Yaomitl and the Naga Tecpatl. Checks: nothing."
+  uses:
+  - fact.mn01.gear
+  new: true
+- id: topic.mn01-pick-tome
+  label: I'll take the spell tome.
+  person: npc.mn.dralin-uveran
+  stages:
+  - 50
+  essential: true
+  intent: "Dralin. Says: \"The tome. It is Sparks, a lightning spell. I never read it, and better you than the damp. Take it. I'll put the rest away.\" Does: sets stage 54, which gives the Spell Tome: Sparks. Checks: nothing."
+  uses:
+  - fact.mn01.gear
+  new: true
+- id: topic.mn01-pick-none
+  label: I'll manage without.
+  person: npc.mn.dralin-uveran
+  stages:
+  - 50
+  essential: true
+  intent: "Dralin. Says: \"Suit yourself. I'll put it all away. Follow the road east and you will reach the weir.\" Does: sets stage 90, which gives nothing. Checks: nothing."
+  uses:
+  - fact.mn01.gear
   new: true
 - id: topic.mn01-dralin-who
   label: Who are you?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: 'Dralin. Tells: the gang-master of Ashgate Landing, a Dunmer of Stormhold who buys Owing months and works them
@@ -6216,6 +6498,7 @@ topics:
   label: Who is Vosh-Leera?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: 'Dralin. Tells: Jal-Veesa''s root-herald. A root-herald speaks for a town''s elders and its tree to anyone from
@@ -6228,6 +6511,7 @@ topics:
   label: What is Sithis' beard?
   person: npc.mn.dralin-uveran
   stages:
+  - 50
   - 90
   essential: false
   intent: "Dralin. Tells: a long grey moss that hangs on the woven weir at Reed-Sill Weir, the first

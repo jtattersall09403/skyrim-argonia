@@ -1,0 +1,155 @@
+{
+ "save_id": "agent-20261122T042939",
+ "place_id": "jal-veesa",
+ "name": "the dry mud flat, its west end by the market and the lane to the creek painted dry brown mud (clay verge), feathered into the ground round it",
+ "at": "2026-11-22T04:29:39Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0001",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the dry mud flat where the source's lagoon lay, painted as dry brown mud (the world's clay verge, which reads as the source's own dried ochre banks round it) over the world's riverbed paint",
+    "texture": "ArgoniaNewWorld.esm:00096F",
+    "size": 384.0,
+    "softness": 0.6,
+    "polygon": [
+     [
+      -53500.0,
+      -506000.0
+     ],
+     [
+      -52700.0,
+      -506000.0
+     ],
+     [
+      -52300.0,
+      -507400.0
+     ],
+     [
+      -51600.0,
+      -508300.0
+     ],
+     [
+      -51300.0,
+      -509600.0
+     ],
+     [
+      -51800.0,
+      -510500.0
+     ],
+     [
+      -53300.0,
+      -511000.0
+     ],
+     [
+      -54300.0,
+      -510100.0
+     ],
+     [
+      -54500.0,
+      -508700.0
+     ],
+     [
+      -54000.0,
+      -507400.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the dry mud flat where the source's lagoon lay, painted as dry brown mud (the world's clay verge, which reads as the source's own dried ochre banks round it) over the world's riverbed paint",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:29:39Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0002",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the lane from the market down to the jetty on the creek, dry brown mud like the flat; the creek's own bed is left as it is",
+    "texture": "ArgoniaNewWorld.esm:00096F",
+    "size": 700.0,
+    "softness": 0.6,
+    "points": [
+     [
+      -51900.0,
+      -510600.0,
+      1.0
+     ],
+     [
+      -51650.0,
+      -511900.0,
+      1.0
+     ],
+     [
+      -51150.0,
+      -514300.0,
+      1.0
+     ],
+     [
+      -50750.0,
+      -516900.0,
+      1.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the lane from the market down to the jetty on the creek, dry brown mud like the flat; the creek's own bed is left as it is",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T04:29:39Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0003",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the dry flat's west end round the market, where the world's riverbed paint still showed: dry brown mud like the rest of the flat, feathered into the ground round it",
+    "texture": "ArgoniaNewWorld.esm:00096F",
+    "size": 700.0,
+    "softness": 1.0,
+    "strength": 0.85,
+    "polygon": [
+     [
+      -54300.0,
+      -510100.0
+     ],
+     [
+      -54500.0,
+      -508900.0
+     ],
+     [
+      -55300.0,
+      -509300.0
+     ],
+     [
+      -55500.0,
+      -510300.0
+     ],
+     [
+      -55000.0,
+      -511200.0
+     ],
+     [
+      -53300.0,
+      -511200.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the dry flat's west end round the market, where the world's riverbed paint still showed: dry brown mud like the rest of the flat, feathered into the ground round it",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T04:29:39Z"
+  }
+ ]
+}

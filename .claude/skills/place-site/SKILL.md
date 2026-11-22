@@ -89,6 +89,10 @@ and walkway end against what it meets.
   `place.json` `draft.accepted` `[{unit, flag, why}]` (a probe fault in `draft.accepted_faults`, `place-look`).
 - Buried is physical: a piece is buried when nothing of it shows; posts and rock feet in the ground are fine.
 
+- **Change the ground as little as possible.** The world's ground is generated with care; repaint or reshape it only
+  where a check, a walk fault or a plain visible fault needs it, in the smallest area that does the job. Never paint
+  over the world's ground to tidy it, and where a record's wording is only cosmetic, change the wording
+  ([consistency](../../../docs/design/consistency.md)).
 - **Ground that reads wrong** (a dry flat still painted as riverbed, a yard that should be bare earth): paint it,
   `look <place> paint textures` for the palette (the land textures the world and the source use here, most used
   first), then `look <place> paint <texture> --polygon x,y;x,y;x,y... [--size 384 --softness 0.6]` for an area,

@@ -1,0 +1,182 @@
+{
+ "save_id": "agent-20261122T032624",
+ "place_id": "jal-veesa",
+ "name": "four eggs in the pool's deeper middle sunk into the sap",
+ "at": "2026-11-22T03:26:24Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK005PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55074.0,
+     -505884.0,
+     507.0
+    ],
+    "rot": [
+     2.438,
+     -0.463,
+     4.50295
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55074.0,
+     -505884.0,
+     444.475
+    ],
+    "rot": [
+     2.438,
+     -0.463,
+     4.50295
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:26:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK012PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55006.0,
+     -505836.0,
+     507.0
+    ],
+    "rot": [
+     2.588,
+     -0.79,
+     0.29671
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55006.0,
+     -505836.0,
+     456.962
+    ],
+    "rot": [
+     2.588,
+     -0.79,
+     0.29671
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:26:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK013PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55081.0,
+     -505946.0,
+     507.0
+    ],
+    "rot": [
+     -1.816,
+     0.36,
+     4.36332
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55081.0,
+     -505946.0,
+     448.581
+    ],
+    "rot": [
+     -1.816,
+     0.36,
+     4.36332
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:26:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK014PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -55174.0,
+     -505961.0,
+     507.0
+    ],
+    "rot": [
+     -2.415,
+     0.025,
+     5.28835
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -55174.0,
+     -505961.0,
+     471.455
+    ],
+    "rot": [
+     -2.415,
+     0.025,
+     5.28835
+    ],
+    "scale": 1.4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:26:24Z"
+  }
+ ]
+}

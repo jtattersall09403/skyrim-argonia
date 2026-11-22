@@ -1,0 +1,334 @@
+{
+ "save_id": "agent-20261122T033053",
+ "place_id": "jal-veesa",
+ "name": "the fish-smoker's stall is Black Marsh's brown and teal market stand",
+ "at": "2026-11-22T03:30:53Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK033PLACE",
+    "base": "Black Marsh.esm:084B54",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK034PLACE",
+    "base": "Black Marsh.esm:084B56",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK035PLACE",
+    "base": "Black Marsh.esm:084B57",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK034PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51620.0,
+     -509200.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK035PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51620.0,
+     -508900.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK028PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK028PLACE",
+    "base": "Black Marsh.esm:084B55",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509820.0,
+     400.82
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the fish-smoker's stall the record promises (trader-innkeeper: 'a fish-smoker's stall by the fish racks on the lane to the jetty'): Black Marsh's own market stand, as Helstrom's market sets it, beside Mizeera's cooking pot",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK034PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK034PLACE",
+    "base": "Black Marsh.esm:084B56",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -509200.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK035PLACE",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.LOOK035PLACE",
+    "base": "Black Marsh.esm:084B57",
+    "kind": "static",
+    "pos": [
+     -51620.0,
+     -508900.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "trial",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-22T03:30:53Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.LOOK033PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51620.0,
+     -509500.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51620.0,
+     -509820.0,
+     397.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-22T03:30:53Z"
+  }
+ ]
+}
