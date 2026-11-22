@@ -139,7 +139,12 @@ class Pad:
         return self.ev("studio.log.applied().map((o) => ({ n: o.n, op: o.op, call: o.call, note: o.note || studio.log.notes.get(o.note_group)?.text, note_group: o.note_group, space: o.space, stroke: o.stroke, id: o.id || o.ref?.id || o.path?.id || o.person?.id, src: o.ref?.src, base: o.ref?.base, space_copy_of: o.space_copy_of }))")
 
     def shot(self, name):
-        self.page.screenshot(path=str(SHOTS / f"{name}.png"))
+        """A screenshot kept for a look, never a check: on a loaded machine software GL can take longer than the
+        screenshot's wait, which then skips the picture rather than failing the test."""
+        try:
+            self.page.screenshot(path=str(SHOTS / f"{name}.png"), timeout=60000 * SLOW)
+        except pw.TimeoutError:
+            print(f"screenshot {name} skipped: the page took too long to draw")
 
 
 def open_pad(browser, server, viewport, scheme="light", fresh=True, choose="draft"):
@@ -1840,3 +1845,48 @@ def test_34_markers(pad):
     pad.page.click("#markers-btn")
     assert drawn()
     pad.ev("studio.tools.opts.pieces = false; studio.selection.clear(); studio.tools.selectionChanged()")
+
+
+# ---------- 35: the tablet layout of the new controls, landscape and upright ----------
+LAYOUT = """(() => {
+  const vis = (e) => e && e.offsetParent !== null && !e.hidden && getComputedStyle(e).visibility !== 'hidden';
+  const R = (e) => e.getBoundingClientRect(), view = R(document.querySelector('#view-ours')), out = [];
+  const inside = (r, b) => r.left >= b.left - 1 && r.right <= b.right + 1 && r.top >= b.top - 1 && r.bottom <= b.bottom + 1;
+  const hs = [...document.querySelectorAll('#view-ours .gizmo .h')].filter(vis);
+  for (const h of hs) { const r = R(h); if (r.width < 44 || r.height < 44) out.push(`handle ${h.dataset.h} ${r.width}x${r.height}`); }
+  for (let i = 0; i < hs.length; i++) for (let j = i + 1; j < hs.length; j++) {
+    const a = R(hs[i]), b = R(hs[j]);
+    if (a.left < b.right - 2 && b.left < a.right - 2 && a.top < b.bottom - 2 && b.top < a.bottom - 2) out.push(`handles ${hs[i].dataset.h} and ${hs[j].dataset.h} overlap`);
+  }
+  for (const sel of ['#frame-sel', '#markers-btn']) {
+    const b = document.querySelector(sel); if (!vis(b)) { out.push(`${sel} not shown`); continue; }
+    const r = R(b); if (r.width < 44 || r.height < 44) out.push(`${sel} ${r.width}x${r.height}`);
+    if (!inside(r, view)) out.push(`${sel} cut off`);
+    if (document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2)?.closest(sel) == null) out.push(`${sel} covered`);
+  }
+  const lab = document.querySelector('#view-ours .unit-label'); if (vis(lab) && !inside(R(lab), view)) out.push('unit label cut off');
+  for (const b of [...document.querySelectorAll('#panel-body button')].filter(vis)) { const r = R(b); if (r.width < 44 || r.height < 44) out.push(`panel button "${b.textContent.trim()}" ${r.width}x${r.height}`); }
+  return out; })()"""
+
+
+@pytest.mark.parametrize("viewport", [LANDSCAPE, PORTRAIT], ids=["landscape", "portrait"])
+def test_35_tablet_layout_of_the_new_controls(browser, server, viewport):
+    p = open_pad(browser, server, viewport)
+    if p.ev("!document.getElementById('intro').hidden"):
+        p.page.click("#intro button")
+    p.page.click("#rail [data-tool=select]")
+    house = p.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(p, "ours", house, dist=3000, pitch=1.0)
+    p.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    p.page.wait_for_timeout(200)
+    assert p.ev(LAYOUT) == [], f"unit selected: {p.ev(LAYOUT)}"
+    p.shot(f"35-unit-{viewport['width']}")
+    one = p.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'clutter').id")
+    p.ev("(id) => { studio.tools.opts.pieces = true; studio.selection = new Set([id]); studio.tools.selectionChanged(); }", one)
+    look_at(p, "ours", p.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", one), dist=2000, pitch=1.0)
+    assert p.ev(LAYOUT) == [], f"one piece: {p.ev(LAYOUT)}"
+    p.ev("studio.people.select('fixplace.p2')")
+    assert p.ev(LAYOUT) == [], f"people panel: {p.ev(LAYOUT)}"
+    p.shot(f"35-people-{viewport['width']}")
+    assert not p.errors, p.errors
+    p.page.context.close()

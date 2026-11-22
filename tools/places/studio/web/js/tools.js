@@ -336,10 +336,15 @@ export class Tools {
     g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
     const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
     set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
-    // the axis handles point the way east and north lie on the screen
+    // the axis handles lie along the way east and north run on the screen, on whichever side of the middle keeps them
+    // clear of the other handles (an axis drags both ways)
+    const taken = [[0, 0], [0, -R * 1.2], [R, 0], [R * 0.72, R * 0.72]];
     for (const [h, d] of [['ax', [400, 0, 0]], ['ay', [0, 400, 0]]]) {
       const q = v.toScreen([c[0] + d[0], c[1] + d[1], c[2]]), dx = q.x - s.x, dy = q.y - s.y, l = Math.hypot(dx, dy) || 1;
-      set(h, (dx / l) * R * 0.62, (dy / l) * R * 0.62);
+      const k = R * 0.62, opts = [[(dx / l) * k, (dy / l) * k], [(-dx / l) * k, (-dy / l) * k]];
+      const room = (p) => Math.min(...taken.map((t) => Math.hypot(p[0] - t[0], p[1] - t[1])));
+      const at = room(opts[0]) >= room(opts[1]) ? opts[0] : opts[1];
+      set(h, at[0], at[1]); taken.push(at);
     }
     g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
