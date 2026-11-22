@@ -98,6 +98,13 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     wrefs = grd.exterior.refs if grd.exterior else []
     bad += obvious.faults(refs, {**io.catalogue_bases({r["base"] for r in refs + wrefs} - set(bases)), **bases}, G, wrefs,
                           (place.get("draft") or {}).get("accepted_faults") or [])
+    from tools.places.draft import companions              # a thing its source makes of two models stays one thing
+    srcs = [src.exterior.refs if src.exterior else []]
+    for sid in sorted({str((sp.get("space") or {}).get("copy_of") or "").split("/")[0] for sp in files["spaces"].values()} - {""}):
+        if (bundles / f"src.{sid}").exists():
+            other = io.load(f"src.{sid}", bundles)
+            srcs.append(other.exterior.refs if other.exterior else [])
+    bad += companions.faults(refs, srcs)
     if places == io.PLACES:                                # the plan answers the record and the source's structures
         from tools.places.draft import plan
         bad += [f"draft.plan: {c}: {d}" for c, d in plan.for_place(place_id)[1] if c != plan.MISSING]

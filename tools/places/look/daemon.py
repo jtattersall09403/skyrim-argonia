@@ -175,7 +175,11 @@ class Daemon:
                      and self.page_errors.append(f"console: {m.text}"[:300]))
         self.page.on("response", lambda r: r.status >= 400 and self.page_errors.append(f"{r.status}: {r.url}"[:300]))
         self.page.goto(f"http://127.0.0.1:{PORT}/?place={place}&agent=1")
-        self.page.wait_for_function("window.agent !== undefined", timeout=60000)
+        try:
+            self.page.wait_for_function("window.agent !== undefined", timeout=60000)
+        except Exception as e:     # say why the page never came up: its own errors, not only the timeout
+            raise RuntimeError(f"the studio page did not come up on {place} ({type(e).__name__}); its errors: "
+                               f"{self.page_errors[:10] or 'none reported'}") from None
         info = self.page.evaluate("agent.ready()")
         self.place, self.page_strokes, self.space, self.drew = place, [], "exterior", st
         self.timing["load_s"] = round(time.time() - t0, 1)
