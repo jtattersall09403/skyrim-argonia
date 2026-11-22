@@ -328,6 +328,26 @@ def test_a_stall_s_awning_over_the_eye_is_no_sunk_house_but_a_roof_at_head_heigh
     assert ok["fault"] != "place" and bad["fault"] == "place" and "eaves" in bad["why"]
 
 
+def test_a_route_s_looks_go_stale_when_anything_in_their_view_changes_and_only_then():
+    """A plant cleared, a piece moved or a land patch near the route makes its old looks stale (shot again); a change
+    far beyond what the route sees does not."""
+    from types import SimpleNamespace
+    from tools.places.look import playwalk as pw
+
+    def m(x, y):
+        return [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, 0]]
+    route = {"stations": [{"pos": [0.0, 0.0, 0.0]}, {"pos": [500.0, 0.0, 0.0]}]}
+
+    def sc(pieces, clear=(), land=()):
+        return SimpleNamespace(everything=lambda: pieces, files={"clear": list(clear), "land": list(land)})
+    near, far = {"id": "a", "base": "B", "m": m(100, 100)}, {"id": "z", "base": "B", "m": m(90000, 0)}
+    base = pw.view_digest(sc([near, far]), route)
+    assert pw.view_digest(sc([near]), route) == base                                         # far away: same looks
+    assert pw.view_digest(sc([dict(near, m=m(160, 100)), far]), route) != base                # moved near: stale
+    assert pw.view_digest(sc([near, far], clear=[{"base": "R", "pos": [300, 50, 0]}]), route) != base   # cleared
+    assert pw.view_digest(sc([near, far], land=[{"cell": [0, 0], "verts": [[1, 1, -20]]}]), route) != base
+
+
 def test_at_a_doorway_the_door_filling_the_view_is_the_door_but_a_wall_is_a_fault():
     """Walking up to a door, the door itself fills the view ahead; a wall or building there is the fault."""
     from tools.places.look import playwalk as pw
