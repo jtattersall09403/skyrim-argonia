@@ -18,8 +18,14 @@ only when it is meant to stop traffic, and then it says so: `blocks_way` on the 
 road"), or the path's `blocked_by` {id: reason} ("a barricade the quest clears", "the jetty's mooring posts either
 side of its deck").
 
-- `look <place> probe --all` lists what stands in a way under `ways`, each with the point to look at; the build's
-  `streets` check (and so `draft check`) fails it.
+- A thing stands in a way where the built walking mesh runs under it: a fence, rail or post the mesh goes round is
+  the walk's edge, a surface the mesh runs on is walked on, a tree blocks with its trunk and roots only, and hanging
+  things, ground pieces, moss, ferns and vines never block. `look <place> probe --all` lists what stands in a way
+  under `ways` (before a build, by the way's width alone), each with the point to look at; the build's `streets`
+  check (and so `draft check`) fails it.
+- The blockers found when the check came in are owed (`newworld/places/ways_owed.jsonl`): reported, not failing,
+  until the place's agent clears each (the row then goes: a row that names no blocker fails until deleted, and no
+  row is added). `handover` passes only with none owed, or each with its reason (`why`).
 - Move a blocker off as the unit it is: a tent with what is in it (its bedrolls, chests, rugs, lights, markers and
   floor platforms), a camp's fire with its spit, pot, seats and the stall that serves it, a stack with its pieces.
   Move them by the same shift, onto dry ground level enough for them, out of every other solid thing, as near as

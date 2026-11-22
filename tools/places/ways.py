@@ -3,9 +3,12 @@ street, path, walkway, boardwalk or gangplank of its own (`paths.jsonl`), and th
 arrival to the nearest of them, free of every solid thing, unless a written reason says it is meant to stand there.
 
 A blocker is any solid piece (classify: not a light, marker, sound, actor, groundcover, plant, effect or door, which
-is walked through; the world's own rocks and trees about the place too) whose real shape (its mesh's surface cloud
-in its pose, tools/places/shape.py) has a point between STEP and HEAD over the walked level, inside a way: lower is
-stepped over (a rug, a root, a deck's own boards), higher is walked under (an arch, a roof, a sign).
+is walked through; not a hanging fixture, a ground piece walked on, nor moss, fern or vine; the world's own rocks and
+trees about the place too) whose real shape (its mesh's surface cloud in its pose, tools/places/shape.py) has a
+point between STEP and HEAD over the walked level, inside a way, where the built walking mesh runs under it: lower
+is stepped over (a rug, a root, a deck's own boards), higher is walked under (an arch, a roof, a sign); a tree only
+with its trunk and roots (to TRUNK); a thing past the mesh's edge (a fence, a rail, a post the mesh goes round) is
+the walk's edge.
 
 - The world's road (`RoadPaint`): where the road's track textures show at least ROAD_SHARE on the ground, within
   the place's footprint and ROAD_REACH past it; the level is the ground; a deck or bridge over it is not a blocker.
@@ -23,6 +26,12 @@ path's `blocked_by` {ref or spot id: reason} ("a barricade the quest clears"); e
 
 `check.check_streets` (the build's streets check, and so `draft check`) fails each blocker; `look <place> probe`
 lists them under `ways`, with the point to look at.
+
+Staged as owed: the blockers found when the check came in (2026-11-22) are rows of OWED
+(`newworld/places/ways_owed.jsonl`, one home: {place, way, id, edid, at, since, why?}): the check reports them as
+owed, never failing; a blocker not in it fails; a row that no longer names a blocker is stale and fails until it is
+deleted, so the list only shrinks; a row is never added after STAGED. A place hands over (`handover`) with no owed row
+left, or each with a reason of a sentence (`why`).
 """
 from __future__ import annotations
 
@@ -32,7 +41,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 from tools.places import shape
-from tools.places.classify import NO_SOLID_KINDS, effect, kind_of
+from tools.places.classify import NO_SOLID_KINDS, effect, has, kind_of
 
 SHOULDER = 32.0       # beyond the walking width either side: a walker's elbows and a pack
 STEP = 24.0           # a thing lower than this over the walked level is stepped over
@@ -43,6 +52,9 @@ CLIMB = 48.0          # a level change taken between two samples (a stair's run,
 HOLD = 96.0           # a gap this long in a deck's walked surface is walked over at the deck's level
 WADE = 40.0           # ground under water deeper than this is not walked
 LEVEL_CLASSES = {"deck", "steps", "span", "boat"}    # what a walker walks on besides the ground
+NO_BODY_CLASSES = {"hanging fixture", "ground piece", "plant"}   # hung up, walked on, or walked through
+NO_BODY_WORDS = ("moss", "fern", "vine", "ivy", "cobweb")         # draped and leafy things a walker brushes past
+TRUNK = 64.0          # a tree blocks with its trunk and roots, this high over the walked level; its crown is passed under
 DOOR_WIDTH = 128.0    # the way from a door's arrival to the nearest walk
 DOOR_GAP = 96.0       # a way that ends at a door: its own doorway and the wall about it are walked through
 SPOT_R = 40.0         # a creature's or a person's own room on the ground
@@ -50,6 +62,8 @@ ROAD_SHARE = 0.45     # the world's road is where its track textures show at lea
 #                       starts below it)
 ROAD_REACH = 300.0    # the world's road is kept clear within the place's footprint and this far past it
 ROAD_WAY = "the world's road"
+STAGED = "2026-11-22"   # the day the owed blockers were written; no row is added after it
+CLEARED = 32.0        # a world plant within this of a cleared row of its base is the one the place switched off
 REASON_WORDS = 6
 FREE_STOPS = {"wander", "patrol", "sleep", "travel"}
 
@@ -138,6 +152,116 @@ class RoadPaint:
         return self.many(XY) >= ROAD_SHARE
 
 
+class NavGrid:
+    """The built walking mesh outside (`navexport`'s `out/places/nav/<place>.json`): its main network (the largest
+    set of joined dry triangles), as the heights of its triangles under a plan point (`heights`)."""
+    B = 128.0
+
+    def __init__(self, verts, tris, nb=None, kind=None):
+        V = np.asarray(verts, float).reshape(-1, 3)
+        T = np.asarray(tris, int).reshape(-1, 3)
+        dry = np.ones(len(T), bool) if kind is None else (np.asarray(kind, int) != 2)
+        keep = dry.copy()
+        if nb is not None and len(T):
+            N = np.asarray(nb, int).reshape(-1, 3)
+            comp, best, cid = np.full(len(T), -1), (0, -1), 0
+            for t0 in range(len(T)):
+                if comp[t0] >= 0 or not dry[t0]:
+                    continue
+                stack, size = [t0], 0
+                comp[t0] = cid
+                while stack:
+                    t = stack.pop()
+                    size += 1
+                    for u in N[t]:
+                        if u >= 0 and comp[u] < 0 and dry[u]:
+                            comp[u] = cid
+                            stack.append(u)
+                best = max(best, (size, cid))
+                cid += 1
+            keep = comp == best[1]
+        self.T = V[T[keep]]
+        lo = np.floor(self.T[:, :, :2].min(1) / self.B).astype(int)
+        hi = np.floor(self.T[:, :, :2].max(1) / self.B).astype(int)
+        self.bucket: dict = {}
+        for k, (a, b) in enumerate(zip(lo, hi)):
+            for i in range(a[0], b[0] + 1):
+                for j in range(a[1], b[1] + 1):
+                    self.bucket.setdefault((i, j), []).append(k)
+
+    @classmethod
+    def load(cls, path) -> "NavGrid | None":
+        import json
+        from pathlib import Path
+        p = Path(path)
+        if not p.exists():
+            return None
+        ext = (json.loads(p.read_text()).get("spaces") or {}).get("exterior")
+        return cls(ext["verts"], ext["tris"], ext.get("nb"), ext.get("kind")) if ext else None
+
+    def heights(self, x: float, y: float) -> list:
+        out = []
+        for k in self.bucket.get((math.floor(x / self.B), math.floor(y / self.B)), ()):
+            a, b, c = self.T[k]
+            d = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+            if abs(d) < 1e-9:
+                continue
+            l1 = ((b[1] - c[1]) * (x - c[0]) + (c[0] - b[0]) * (y - c[1])) / d
+            l2 = ((c[1] - a[1]) * (x - c[0]) + (a[0] - c[0]) * (y - c[1])) / d
+            if min(l1, l2, 1 - l1 - l2) >= -0.02:
+                out.append(float(l1 * a[2] + l2 * b[2] + (1 - l1 - l2) * c[2]))
+        return out
+
+
+class WalkableMesh:
+    """`check.check_streets`'s built mesh (`walk.Walkable`) as `NavGrid`'s `heights`: its main network's triangles
+    under a point."""
+
+    def __init__(self, W):
+        self.W = W
+
+    def heights(self, x: float, y: float) -> list:
+        c, dp, z = self.W._cands((x, y), 2.0)
+        return [float(h) for t, h in zip(c, z) if self.W.main[t]]
+
+
+def _on_mesh(mesh, P: np.ndarray, Z: np.ndarray, top: np.ndarray | float = None, cell: float = 4.0) -> np.ndarray:
+    """Whether each point stands in the walk on the built mesh: the mesh runs under it at about the walked level
+    (within CLIMB of Z) and the point is between STEP and `top` (HEAD) over the mesh there. A thing past the mesh's
+    edge (a fence, a rail, a post the mesh goes round) is the walk's edge; a surface the mesh runs on (a mound, a
+    landscape trim, a root it crosses) is walked on."""
+    top = np.full(len(P), HEAD) if top is None else np.broadcast_to(np.asarray(top, float), (len(P),))
+    keys = np.floor(np.asarray(P, float)[:, :2] / cell).astype(np.int64)
+    out = np.zeros(len(P), bool)
+    seen: dict = {}
+    for n, ((i, j), z) in enumerate(zip(keys, Z)):
+        hs = seen.get((i, j))
+        if hs is None:
+            hs = seen[(i, j)] = mesh.heights(i * cell, j * cell)
+        if not np.isfinite(z):
+            continue
+        near = [h for h in hs if abs(h - z) <= CLIMB]
+        if near:
+            over = P[n, 2] - min(near, key=lambda h: abs(h - z))
+            out[n] = STEP <= over <= top[n]
+    return out
+
+
+def _mesh_levels(S: np.ndarray, mesh, Z: np.ndarray, given: list) -> np.ndarray:
+    """The walked level on the built mesh at each sample: the mesh's height nearest the line's own height where it
+    carries one, else nearest the level before (the first: nearest the level `levels` read); `levels`' value where
+    the mesh has none."""
+    out = Z.copy()
+    prev = None
+    for k, (x, y) in enumerate(S):
+        hs = mesh.heights(x, y)
+        ref = given[k] if given and given[k] is not None else (prev if prev is not None else Z[k])
+        if hs and ref is not None and np.isfinite(ref):
+            out[k] = min(hs, key=lambda h: abs(h - ref))
+        prev = out[k] if np.isfinite(out[k]) else prev
+    return out
+
+
 def road_paint(place_id: str, bundles=None) -> RoadPaint:
     from tools.places.draft import io
     return RoadPaint.load((bundles or io.BUNDLES) / f"ground.{place_id}" / "spaces" / "exterior" / "terrain.json")
@@ -219,11 +343,8 @@ def levels(S: np.ndarray, ground, decks: list, given: list | None = None) -> np.
     z = np.zeros(len(S))
     prev, held = None, 0.0
     for k in range(len(S)):
-        if given is not None and given[k] is not None:       # the line's own height: the level nearest it
-            cands = G[k][1] + D[k]
-            near = [c for c in cands if abs(c - given[k]) <= CLIMB]
-            z[k] = min(near, key=lambda c: abs(c - given[k])) if near else given[k]
-            prev, held = z[k], 0.0
+        if given is not None and given[k] is not None:       # the line's own height is the level walked there
+            z[k], prev, held = given[k], given[k], 0.0
             continue
         g, gnd = G[k]
         dk = D[k]
@@ -280,125 +401,115 @@ def _reason(text) -> bool:
     return len(str(text or "").split()) >= REASON_WORDS
 
 
-def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), walked=None,
+def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), mesh=None,
              road: RoadPaint | None = None) -> list[dict]:
     """Every solid thing or spot standing in a way: [{way, id, edid, kind, at: [x, y, z], from_middle, reason?}],
     one per (way, thing), at its point nearest the way's middle; `reason` set when it is allowed (and so not a
-    fault). `walked(points)`: the built walking mesh's height at each sample point as the line is walked (None off
-    it; `check.check_streets` gives `walk.Walkable.walked`); the levels are read from the pieces (`levels`) where it
-    gives none, and everywhere without it (`look probe`)."""
+    fault). `mesh`: the built walking mesh (`NavGrid`, `WalkableMesh`): the walked level is read on it, and a thing
+    counts only where the mesh runs under it (`_on_mesh`); without it (`look probe` before a build) the levels are
+    read from the pieces (`levels`) and the way's width alone bounds it."""
     solid = [p for p in pieces if p.get("model") and p.get("resolved", True) and not p.get("missing")
-             and (p.get("kind") or "") not in NO_SOLID_KINDS | {"door"} and not effect(p)]
+             and (p.get("kind") or "") not in NO_SOLID_KINDS | {"door"} and not effect(p)
+             and kind_of(p) not in NO_BODY_CLASSES and not has(p, NO_BODY_WORDS)]
     from tools.places.look.geom import aabb
-    boxes = [(p, aabb(p)) for p in solid]          # the box first: a shape is read only for a piece near a way
-    shapes: dict = {}
-
-    def shaped(p):
-        if p["id"] not in shapes:
-            try:
-                shapes[p["id"]] = shape.posed(p)
-            except Exception:  # a model with no shape is reported by the probe's own rules, not here
-                shapes[p["id"]] = None
-        return shapes[p["id"]]
-
-    def near_box(lo, hi):
-        out = []
-        for p, (a, b) in boxes:
-            if b[0] >= lo[0] and a[0] <= hi[0] and b[1] >= lo[1] and a[1] <= hi[1]:
-                P = shaped(p)
-                if P is not None:
-                    out.append((p, P))
-        return out
     rows = {r["id"]: r for r in ((files.get("spaces") or {}).get("exterior") or {}).get("refs") or []}
     found = []
+
+    def shaped(p):
+        try:          # read once and let go after (a town's shapes do not all fit in memory at once)
+            return shape.Posed(p)
+        except Exception:  # a model with no shape is reported by the probe's own rules, not here
+            return None
+    # the ways first: each one's line, corridor, samples and walked levels (decks read for the levels only)
+    W = []
+    decks = [(p, aabb(p)) for p in solid if kind_of(p) in LEVEL_CLASSES]
     for w in ways(files):
         L = np.asarray([q[:2] for q in w["points"]], float)
         half = w["width"] / 2 + SHOULDER
         lo, hi = L.min(0) - half, L.max(0) + half
-        near = [(p, P) for p, P in near_box(lo, hi)
-                if P.hi[0] >= lo[0] and P.lo[0] <= hi[0] and P.hi[1] >= lo[1] and P.lo[1] <= hi[1]]
         S = np.asarray([q for _, q in _samples(w["points"])], float)
-        line = cKDTree(np.asarray([q for _, q in _samples(w["points"], LINE_STEP)], float))
-        Z = levels(S, ground, [P for p, P in near if kind_of(p) in LEVEL_CLASSES], _heights_given(w["points"]))
-        if walked is not None:
-            for k, h in enumerate(walked([tuple(q) for q in S])):
-                if h is not None:
-                    Z[k] = h
-        walked_on = set()                 # the decks the way runs on: their own rails and posts are its edges
-        for p, P in near:
-            if kind_of(p) not in LEVEL_CLASSES:
-                continue
-            for (x, y), z in zip(S, Z):
-                h = P.at(x, y, "walk")
-                if h is not None and np.isfinite(z) and abs(h - z) <= 6:
-                    walked_on.add(p["id"])
-                    break
-        for p, P in near:
-            if p["id"] in walked_on and not (rows.get(p["id"]) or {}).get("blocks_way"):
-                continue
-            C = P.P
+        given = _heights_given(w["points"])
+        if mesh is not None:
+            Z = _mesh_levels(S, mesh, levels(S, ground, [], given), given)
+        else:
+            dk = [P for P in (shaped(p) for p, (x, y) in decks
+                              if y[0] >= lo[0] and x[0] <= hi[0] and y[1] >= lo[1] and x[1] <= hi[1]) if P is not None]
+            Z = levels(S, ground, dk, given)
+        W.append({"w": w, "L": L, "half": half, "lo": lo, "hi": hi, "S": S, "Z": Z, "Stree": cKDTree(S[:, :2]),
+                  "line": cKDTree(np.asarray([q for _, q in _samples(w["points"], LINE_STEP)], float))})
+        for s_ in spots:
+            x, y = s_["pos"][:2]
+            dd = float(_dist_to_line(np.asarray([[x, y]], float), L)[0])
+            if dd <= half + SPOT_R:
+                why = (w.get("blocked_by") or {}).get(s_["id"])
+                found.append({"way": w["id"], "id": s_["id"], "edid": s_.get("what"), "kind": "spot",
+                              "at": [round(v) for v in s_["pos"][:3]], "from_middle": round(dd), "world": False,
+                              "reason": why if _reason(why) else None})
+    place = files.get("place") or {}
+    anchor = (place.get("fit") or {}).get("anchor")
+    reach = float(place.get("radius_m") or 50) * 70.0 + ROAD_REACH
+    on_road = road is not None and road.share and anchor
+    # then each solid thing once: tested against the ways its box meets, and the road
+    for p in solid:
+        a_, b_ = aabb(p)
+        mine = [v for v in W if b_[0] >= v["lo"][0] and a_[0] <= v["hi"][0] and b_[1] >= v["lo"][1] and a_[1] <= v["hi"][1]]
+        roadside = bool(on_road) and kind_of(p) not in LEVEL_CLASSES and \
+            math.dist(((a_[0] + b_[0]) / 2, (a_[1] + b_[1]) / 2), anchor) <= reach + max(b_[0] - a_[0], b_[1] - a_[1])
+        if not mine and not roadside:
+            continue
+        P = shaped(p)
+        if P is None:
+            continue
+        C0 = P.P
+        top = TRUNK if kind_of(p) == "tree" else HEAD
+        row = rows.get(p["id"]) or {}
+        for v in mine:
+            w, S, Z = v["w"], v["S"], v["Z"]
+            if kind_of(p) in LEVEL_CLASSES and not row.get("blocks_way"):   # the deck the way runs on is its floor
+                if any((h := P.at(x, y, "walk")) is not None and np.isfinite(z) and abs(h - z) <= 6
+                       for (x, y), z in zip(S, Z)):
+                    continue
+            lo, hi, half = v["lo"], v["hi"], v["half"]
+            C = C0[(C0[:, 0] >= lo[0]) & (C0[:, 0] <= hi[0]) & (C0[:, 1] >= lo[1]) & (C0[:, 1] <= hi[1])]
             if not len(C):
                 continue
-            m = (C[:, 0] >= lo[0]) & (C[:, 0] <= hi[0]) & (C[:, 1] >= lo[1]) & (C[:, 1] <= hi[1])
-            C = C[m]
-            if not len(C):
-                continue
-            d = line.query(C[:, :2], distance_upper_bound=half + LINE_STEP)[0]
+            d = v["line"].query(C[:, :2], distance_upper_bound=half + LINE_STEP)[0]
             keep = d <= half
             for q in w.get("doors") or []:
                 keep &= np.hypot(C[:, 0] - q[0], C[:, 1] - q[1]) > DOOR_GAP
             C, d = C[keep], d[keep]
             if not len(C):
                 continue
-            k = cKDTree(S[:, :2]).query(C[:, :2])[1]
+            k = v["Stree"].query(C[:, :2])[1]
             over = C[:, 2] - Z[k]
-            hit = np.isfinite(over) & (over >= STEP) & (over <= HEAD)
+            hit = np.isfinite(over) & (over >= STEP) & (over <= top)
+            if mesh is not None and hit.any():
+                hit[hit] = _on_mesh(mesh, C[hit], Z[k][hit], top)
             if not hit.any():
                 continue
             i = int(np.argmin(np.where(hit, d, np.inf)))
-            row = rows.get(p["id"]) or {}
             why = row.get("blocks_way") or (w.get("blocked_by") or {}).get(p["id"])
             found.append({"way": w["id"], "id": p["id"], "edid": p.get("edid"), "kind": p.get("kind"),
-                          "at": [round(float(v)) for v in C[i]], "from_middle": round(float(d[i])),
+                          "at": [round(float(x)) for x in C[i]], "from_middle": round(float(d[i])),
                           "world": bool(p.get("world")), "reason": why if _reason(why) else None})
-        for s in spots:
-            x, y = s["pos"][:2]
-            dd = float(_dist_to_line(np.asarray([[x, y]], float), L)[0])
-            if dd <= half + SPOT_R:
-                why = (w.get("blocked_by") or {}).get(s["id"])
-                found.append({"way": w["id"], "id": s["id"], "edid": s.get("what"), "kind": "spot",
-                              "at": [round(v) for v in s["pos"][:3]], "from_middle": round(dd), "world": False,
-                              "reason": why if _reason(why) else None})
-    place = files.get("place") or {}
-    anchor = (place.get("fit") or {}).get("anchor")
-    reach = float(place.get("radius_m") or 50) * 70.0 + ROAD_REACH
-    if road is not None and road.share and anchor:    # the world's road as painted, through the place: kept clear
-        for p, P in near_box((anchor[0] - reach, anchor[1] - reach), (anchor[0] + reach, anchor[1] + reach)):
-            if not road.on(np.asarray([[(P.lo[0] + P.hi[0]) / 2, (P.lo[1] + P.hi[1]) / 2], [P.lo[0], P.lo[1]],
-                                       [P.hi[0], P.hi[1]], [P.lo[0], P.hi[1]], [P.hi[0], P.lo[1]]])).any() \
-                    and not road.on(P.P[:, :2]).any():
-                continue
-            if math.dist(((P.lo[0] + P.hi[0]) / 2, (P.lo[1] + P.hi[1]) / 2), anchor) > reach:
-                continue
-            if kind_of(p) in LEVEL_CLASSES:     # a bridge or deck over the road is walked on or under
-                continue
-            C = P.P
-            if not len(C):
-                continue
-            C = C[road.on(C[:, :2])]
-            if not len(C):
-                continue
-            g = _heights(ground, C[:, :2])
-            over = C[:, 2] - g
-            band = np.isfinite(over) & (over >= STEP) & (over <= HEAD)
-            if not band.any():
-                continue
-            q = C[band]
-            k = int(np.argmax(road.many(q)))
-            why = (rows.get(p["id"]) or {}).get("blocks_way")
-            found.append({"way": ROAD_WAY, "id": p["id"], "edid": p.get("edid"), "kind": p.get("kind"),
-                          "at": [round(float(v)) for v in q[k]], "from_middle": 0, "world": bool(p.get("world")),
-                          "reason": why if _reason(why) else None})
+        if roadside and len(C0):      # the world's road as painted, through the place: kept clear
+            C = C0[road.on(C0[:, :2])]
+            C = C[np.hypot(C[:, 0] - anchor[0], C[:, 1] - anchor[1]) <= reach] if len(C) else C
+            if len(C):
+                g = _heights(ground, C[:, :2])
+                over = C[:, 2] - g
+                band = np.isfinite(over) & (over >= STEP) & (over <= top)
+                if mesh is not None and band.any():
+                    band[band] = _on_mesh(mesh, C[band], g[band], top)
+                if band.any():
+                    q = C[band]
+                    k = int(np.argmax(road.many(q)))
+                    why = row.get("blocks_way")
+                    found.append({"way": ROAD_WAY, "id": p["id"], "edid": p.get("edid"), "kind": p.get("kind"),
+                                  "at": [round(float(x)) for x in q[k]], "from_middle": 0,
+                                  "world": bool(p.get("world")), "reason": why if _reason(why) else None})
+        del P, C0
+    if on_road:
         for s_ in spots:
             if road.at(*s_["pos"][:2]) >= ROAD_SHARE and math.dist(s_["pos"][:2], anchor) <= reach:
                 found.append({"way": ROAD_WAY, "id": s_["id"], "edid": s_.get("what"), "kind": "spot",
@@ -433,17 +544,22 @@ def line(b: dict) -> str:
             f"`blocked_by`)")
 
 
-def faults(files: dict, pieces: list[dict], ground, walked=None, road: RoadPaint | None = None) -> list[str]:
-    return [line(b) for b in blockers(files, pieces, ground, spots(files), walked, road) if not b.get("reason")]
+def faults(files: dict, pieces: list[dict], ground, mesh=None, road: RoadPaint | None = None) -> list[str]:
+    return [line(b) for b in blockers(files, pieces, ground, spots(files), mesh, road) if not b.get("reason")]
 
 
-def place_faults(place_id: str, places=None, bundles=None, walked=None) -> list[str]:
+def place_faults(place_id: str, places=None, bundles=None, mesh=None) -> list[str]:
     """`faults` over the committed place files: its exterior rows (and the world's rows about it) as pieces, over
     its ground with its land patches."""
+    return [line(b) for b in _place_blockers(place_id, places, bundles, mesh) if not b.get("reason")]
+
+
+def _place_blockers(place_id: str, places=None, bundles=None, mesh=None) -> list[dict]:
     from tools.places import edits
     from tools.places.draft import io
     from tools.places.draft.obvious import piece, _seen
     from tools.places.look import geom as look
+    from pathlib import Path
     from tools.places.seat import Ground
     places = places or io.PLACES
     bundles = bundles or io.BUNDLES
@@ -454,10 +570,81 @@ def place_faults(place_id: str, places=None, bundles=None, walked=None) -> list[
     grd = io.load(f"ground.{place_id}", bundles)
     refs = [r for r in ((files["spaces"].get("exterior") or {}).get("refs") or []) if _seen(r)]
     wrefs = grd.exterior.refs if grd.exterior else []
+    gone: dict = {}           # the world's plants the place switches off (clear.jsonl: base and nearest position)
+    for c in files.get("clear") or []:
+        gone.setdefault(c.get("base"), []).append(c.get("pos") or [0, 0, 0])
+    if gone:
+        wrefs = [r for r in wrefs if not any(math.dist(r["pos"][:2], q[:2]) <= CLEARED for q in gone.get(r.get("base"), ()))]
     bases = io.place_bases(src, grd, place)
     bases.update(io.catalogue_bases({r["base"] for r in refs + list(wrefs) if r.get("base")} - set(bases)))
     G = Ground.load(grd.path)
     G.apply_patches(files.get("land") or [])
     pieces = [piece(r, bases) for r in refs]
     world = [dict(p, world=True) for p in (piece(r, bases) for r in look.world_rows(wrefs, bases)) if p.get("resolved")]
-    return faults(files, pieces + world, G, walked, road_paint(place_id, bundles))
+    if mesh is None:      # the place's last built walking mesh, when it has one
+        mesh = NavGrid.load(Path(bundles).parents[0] / "nav" / f"{place_id}.json")
+    return blockers(files, pieces + world, G, spots(files), mesh, road_paint(place_id, bundles))
+
+
+def place_blockers(place_id: str, places=None, bundles=None, mesh=None) -> list[dict]:
+    """`blockers` over the committed place files (as `place_faults` reads them), unreasoned ones only."""
+    return [b for b in _place_blockers(place_id, places, bundles, mesh) if not b.get("reason")]
+
+
+def owed_path(places=None):
+    from tools.places.draft import io
+    return (places or io.PLACES) / "ways_owed.jsonl"
+
+
+def owed(place_id: str, places=None) -> list[dict]:
+    import json
+    p = owed_path(places)
+    if not p.exists():
+        return []
+    return [r for r in (json.loads(x) for x in p.read_text().splitlines() if x.strip()) if r.get("place") == place_id]
+
+
+def _key(b: dict) -> tuple:
+    return (b["way"], b["id"])
+
+
+def split_owed(place_id: str, found: list[dict], places=None) -> tuple[list[dict], list[dict], list[str]]:
+    """(failing blockers, owed blockers, the owed list's own faults): a blocker in the owed list is owed; a list row
+    naming no blocker now is stale; a row written after STAGED is refused."""
+    rows = owed(place_id, places)
+    keys = {_key(r) for r in rows}
+    fail = [b for b in found if _key(b) not in keys]
+    got = [b for b in found if _key(b) in keys]
+    now = {_key(b) for b in found}
+    bad = [f"ways owed row {r['way']} / {r['id']} names no blocker now: delete it from {owed_path(places).name}"
+           for r in rows if _key(r) not in now]
+    bad += [f"ways owed row {r['way']} / {r['id']} was added after {STAGED}: a new blocker is mended, never owed"
+            for r in rows if str(r.get("since") or "") != STAGED]
+    return fail, got, bad
+
+
+def write_owed(place_ids: list, places=None, bundles=None) -> dict:
+    """Write the owed list from each place's blockers now (the staging, once): {place: rows}."""
+    import json
+    p = owed_path(places)
+    keep = [json.loads(x) for x in p.read_text().splitlines() if x.strip()] if p.exists() else []
+    keep = [r for r in keep if r.get("place") not in place_ids]
+    got = {}
+    for pid in place_ids:
+        rows = [{"place": pid, "way": b["way"], "id": b["id"], "edid": b.get("edid"), "at": b["at"], "since": STAGED}
+                for b in place_blockers(pid, places, bundles)]
+        got[pid] = rows
+        keep += rows
+    keep.sort(key=lambda r: (r["place"], r["way"], r["id"]))
+    p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in keep))
+    return got
+
+
+def handover_line(place_id: str, places=None) -> tuple[bool, str]:
+    """(passes, a line saying so): the place's owed blockers are cleared, or each has a reason of a sentence."""
+    rows = owed(place_id, places)
+    left = [r for r in rows if not _reason(r.get("why"))]
+    if not left:
+        return True, ("ways: nothing owed" if not rows else f"ways: {len(rows)} owed blocker(s), each with its reason")
+    return False, (f"ways FAILS: {len(left)} owed blocker(s) stand in a road or walk with no reason "
+                   f"({owed_path(places).name}): move each off its way, or give the reason it stands there")

@@ -56,9 +56,26 @@ def test_a_deck_the_way_runs_over_is_walked_on():
     deck["model"] = "test/ways/deck.nif"
     # a deck rising 100 over the ground is more than a climb: a way onto it from the ground meets its edge
     assert "deck" in ids(ways.blockers(files(), [deck], Flat()))
-    # the walked mesh says the line is on the deck there: the deck is walked on, not in the way
-    walked = lambda S: [100.0 if 980 <= q[0] <= 1420 else 0.0 for q in S]   # noqa: E731  (its ramps beyond its ends)
-    assert ids(ways.blockers(files(), [deck], Flat(), walked=walked)) == []
+    # the built mesh runs onto the deck there (ramps beyond its ends): the deck is walked on, not in the way
+    assert ids(ways.blockers(files(), [deck], Flat(), mesh=Mesh(lambda x, y: [100.0] if 980 <= x <= 1420 else [0.0]))) == []
+
+
+class Mesh:
+    """A stand-in built walking mesh: its heights under a point."""
+    def __init__(self, f):
+        self.f = f
+
+    def heights(self, x, y):
+        return self.f(x, y)
+
+
+def test_a_thing_past_the_meshes_edge_is_the_walks_edge_not_a_blocker():
+    # the mesh is 60 wide along the way: a fence 30 off the middle (past the mesh) is its edge; on the mesh it blocks
+    fence = piece("fence", "test/ways/crate.nif", 600, 75)
+    on = piece("crate", "test/ways/crate.nif", 900, 10)
+    mesh = Mesh(lambda x, y: [0.0] if abs(y) <= 30 else [])
+    assert ids(ways.blockers(files(), [fence, on], Flat(), mesh=mesh)) == ["crate"]
+    assert ids(ways.blockers(files(), [fence, on], Flat())) == ["crate", "fence"]   # without the mesh: the width alone
 
 
 def test_a_reason_on_the_ref_or_the_way_lets_it_stand():
@@ -125,3 +142,22 @@ def test_the_world_road_as_painted_is_kept_clear_in_the_footprint():
     allowed = ways.blockers(dict(f, spaces={"exterior": {"refs": [
         {"id": "tent", "blocks_way": "a toll booth the road is meant to pass through here"}]}}), [on], Flat(), road=road)
     assert ids(allowed) == [] and allowed[0]["reason"]
+
+
+def test_owed_blockers_are_reported_new_ones_fail_and_the_list_only_shrinks(tmp_path):
+    import json
+    row = {"place": "p", "way": "p.path.01", "id": "p.tent", "edid": "Tent", "at": [0, 0, 0], "since": ways.STAGED}
+    late = dict(row, id="p.crate", since="2027-01-01")
+    gone = dict(row, id="p.barrel")
+    (tmp_path / "ways_owed.jsonl").write_text("".join(json.dumps(r) + "\n" for r in (row, late, gone)))
+    found = [{"way": "p.path.01", "id": "p.tent"}, {"way": "p.path.01", "id": "p.crate"},
+             {"way": "p.path.01", "id": "p.cart"}]
+    fail, owed, bad = ways.split_owed("p", found, tmp_path)
+    assert [b["id"] for b in owed] == ["p.tent", "p.crate"] and [b["id"] for b in fail] == ["p.cart"]
+    assert any("p.barrel" in x and "names no blocker" in x for x in bad)       # stale: delete it
+    assert any("p.crate" in x and "added after" in x for x in bad)            # never added later
+    ok, line = ways.handover_line("p", tmp_path)
+    assert not ok and "ways FAILS" in line
+    (tmp_path / "ways_owed.jsonl").write_text(json.dumps(dict(row, why="the toll tent stands on the road on purpose")) + "\n")
+    assert ways.handover_line("p", tmp_path)[0]
+    assert ways.handover_line("other", tmp_path) == (True, "ways: nothing owed")

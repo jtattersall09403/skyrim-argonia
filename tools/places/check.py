@@ -913,9 +913,13 @@ def check_streets(ctx) -> list[str]:
     ways = []
     if pdir and ctx.get("place_id") and (pdir / "place.json").exists():   # every walk clear of solid things (tools/places/ways.py)
         from tools.places import ways as W_
-        ways = W_.place_faults(ctx["place_id"], Path(pdir).parent,
-                               walked=lambda S: [w[1] if w else None for w in W.walked(S)])
-        ctx["streets"]["blocked"] = len(ways)
+        found = W_.place_blockers(ctx["place_id"], Path(pdir).parent, mesh=W_.WalkableMesh(W))
+        fail, owed, bad = W_.split_owed(ctx["place_id"], found, Path(pdir).parent)
+        for b in owed:      # staged: a blocker owed since the check came in is reported, not failed
+            NOTES.append(f"owed (ways_owed.jsonl): {W_.line(b)}")
+        ways = [W_.line(b) for b in fail] + bad
+        ctx["streets"]["blocked"] = len(fail)
+        ctx["streets"]["owed"] = len(owed)
     return ([f"street {s} point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for s, q in st]
             + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for who, q in pa]
             + ways)
