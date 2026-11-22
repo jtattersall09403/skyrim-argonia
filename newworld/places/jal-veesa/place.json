@@ -730,6 +730,14 @@
      "jal-veesa.STATE.DEADHIST"
     ],
     "why": "the dead Hist twin stands in the living tree's pose, so the source's walkway runs through its root flare as it runs through the living tree's (accepted above, section and playwalk 2026-11-21)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.LOOK046PLACE",
+     "jal-veesa.CXK9BZ10H3J4B90ABH011C95E8"
+    ],
+    "why": "the dead state's bed of cracked mud lies low in the dry hollow over the source's great bank rock that the sap covered, as a crust laid on the rock (looked at in hist-dead from the east bank, 2026-11-22); shown only in the dead state"
    }
   ],
   "sap": {
