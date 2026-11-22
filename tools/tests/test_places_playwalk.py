@@ -188,6 +188,9 @@ def test_a_roof_at_head_height_and_a_trunk_beside():
     trunk = {"all_inside": "TreeX", "in_piece": "TreeX", "fills": [{"edid": "TreeX", "share": 0.9}], "land": 0.1}
     assert pw.classify("left", "stride", trunk)["fault"] == "capture"      # standing beside it
     assert pw.classify("ahead", "stride", trunk)["fault"] == "place"       # walking into it
+    hist = {"all_inside": "a tree's trunk (HistTree01)", "fills": [{"edid": "HistTree01", "share": 0.9}], "land": 0.1}
+    assert pw.classify("ahead", "at the Hist HistTree01, bridge end", hist)["fault"] == "capture"   # its own stop's foot
+    assert pw.classify("ahead", "stride", hist)["fault"] == "place"                                  # a way through it
 
 
 # ---------- the tour ----------

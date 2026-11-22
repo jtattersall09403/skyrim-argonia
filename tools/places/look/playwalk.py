@@ -491,6 +491,9 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         ev = dict(ev, all_inside=None, inside=None)
     if ev.get("all_inside"):
         p = ev["all_inside"]
+        if look in ("ahead", "down") and what.startswith("at the Hist") and HIST_RE.search(str(p)):
+            # the stop is the tree itself: the way ends at its foot, where the trunk fills the view ahead
+            return {"verdict": "failed", "fault": "capture", "why": f"the eye stands at the foot of {p}, the stop's own tree, which fills the view {look}"}
         if look in ("ahead", "down"):
             return {"verdict": "failed", "fault": "place", "why": f"the way passes through {p}: every spot near the station is inside it"}
         return {"verdict": "failed", "fault": "capture", "why": f"the eye stands against {p}, which fills the view {look}"}
