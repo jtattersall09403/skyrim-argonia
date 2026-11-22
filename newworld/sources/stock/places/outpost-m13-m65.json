@@ -32,64 +32,25 @@
    "space": "01dock3to4",
    "kind": "satchel",
    "security": "S0",
-   "tier": "T2",
-   "gold": 0,
+   "tier": "T1",
+   "gold": 3,
    "items": [
     {
-     "item": "Skyrim.esm:0135B8",
+     "item": "Skyrim.esm:065C97",
      "count": 1,
-     "why": "an Imperial sword (main plot, quest 1: the hold's kit)"
+     "why": "a heel of bread a cutter of the new gang keeps for the morning"
     },
     {
-     "item": "Skyrim.esm:013AB2",
-     "count": 1,
-     "why": "an Imperial light shield"
-    },
-    {
-     "item": "Skyrim.esm:013ED9",
-     "count": 1,
-     "why": "an Imperial light cuirass"
-    },
-    {
-     "item": "Skyrim.esm:013ED7",
-     "count": 1,
-     "why": "Imperial light boots"
-    },
-    {
-     "item": "Skyrim.esm:013EDA",
-     "count": 1,
-     "why": "Imperial light bracers"
-    },
-    {
-     "item": "Skyrim.esm:013EDB",
-     "count": 1,
-     "why": "an Imperial light helmet"
-    },
-    {
-     "item": "Skyrim.esm:013985",
-     "count": 1,
-     "why": "a hunting bow"
-    },
-    {
-     "item": "Skyrim.esm:01397D",
-     "count": 20,
-     "why": "twenty iron arrows"
-    },
-    {
-     "item": "Skyrim.esm:03EADD",
-     "count": 3,
-     "why": "three potions of minor healing"
+     "item": "Skyrim.esm:0669A5",
+     "count": 2,
+     "why": "two leeks from the cook's pot"
     }
    ],
-   "why": "the kit in the barge's hold where the player wakes (main plot, quest 1, ruled by the owner): nobody's, so a level-1 newcomer leaves the hold armed for the crocodiles in the reed beds",
+   "why": "a knapsack of the new gang's few things in the barge's hold, as Black Marsh & Valenwood leaves it there: bread, two leeks and a few coins, the household's own",
    "cites": [
-    "place_wealth:outpost-m13-m65",
-    "story/design/quests/lines/main-plot.md"
+    "place_note:outpost-m13-m65/present"
    ],
-   "owner_exception": {
-    "ruling": "owner, #80 story note 1, 2026-11-19: the barge-hold satchel keeps the kit he asked for",
-    "why": "the player's kit on waking in the hold; worth over an open satchel's budget by the owner's call"
-   }
+   "owner_household": "outpost-m13-m65.household.hold"
   },
   {
    "ref": "Black Marsh.esm:1BEB52",
