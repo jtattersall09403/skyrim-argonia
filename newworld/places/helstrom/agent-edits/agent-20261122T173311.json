@@ -1,0 +1,43 @@
+{
+ "save_id": "agent-20261122T173311",
+ "place_id": "helstrom",
+ "name": "a source dirt house buried whole under our terrace, its top a metre under the ground (survey house.57): nothing of it shows",
+ "at": "2026-11-22T17:33:11Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.A646DZD26ZKF35K1PDYEPVFM83",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.A646DZD26ZKF35K1PDYEPVFM83",
+    "base": "Black Marsh.esm:1CE8FC",
+    "kind": "building",
+    "pos": [
+     -54149.54,
+     -599708.05,
+     -148.89
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1.4,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3CEB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T17:33:11Z"
+  }
+ ]
+}
