@@ -98,11 +98,12 @@ export class Panels {
     if (note) parts.push(el(`<p class="tag">${esc(note)}</p>`));
     if (refs.length) {
       parts.push(el('<h3>Move a little</h3>'));
-      const step = 32, turn = Math.PI / 12, pad = el('<div class="row"></div>');
+      const turn = Math.PI / 12, pad = el('<div class="row"></div>'), st = () => T.opts.step;
       const btn = (label, fn) => { const b = el(`<button class="quiet">${label}</button>`); b.onclick = fn; return b; };
-      pad.append(btn('North', () => T.nudge(0, step, 0)), btn('South', () => T.nudge(0, -step, 0)), btn('West', () => T.nudge(-step, 0, 0)), btn('East', () => T.nudge(step, 0, 0)),
-        btn('Up', () => T.nudge(0, 0, 8)), btn('Down', () => T.nudge(0, 0, -8)), btn('Turn left', () => T.nudge(0, 0, 0, -turn)), btn('Turn right', () => T.nudge(0, 0, 0, turn)),
-        btn('Bigger', () => T.nudge(0, 0, 0, 0, 0.05)), btn('Smaller', () => T.nudge(0, 0, 0, 0, -0.05)));
+      pad.append(seg('Step', [['1', '1 unit'], ['10', '10'], ['50', '50']], String(T.opts.step), (v) => { T.opts.step = Number(v); }));
+      pad.append(btn('North', () => T.nudge(0, st(), 0)), btn('South', () => T.nudge(0, -st(), 0)), btn('West', () => T.nudge(-st(), 0, 0)), btn('East', () => T.nudge(st(), 0, 0)),
+        btn('Up', () => T.nudge(0, 0, st())), btn('Down', () => T.nudge(0, 0, -st())), btn('Turn left', () => T.nudge(0, 0, 0, -turn)), btn('Turn right', () => T.nudge(0, 0, 0, turn)),
+        btn('Bigger', () => T.nudge(0, 0, 0, 0, 0.05)), btn('Smaller', () => T.nudge(0, 0, 0, 0, -0.05)), btn('Undo', () => a.log.undo()));
       parts.push(pad);
       const acts = el('<div class="row"></div>');
       acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
@@ -118,7 +119,8 @@ export class Panels {
       toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }),
       toggle('Pieces: a tap picks one piece, not its whole unit', T.opts.pieces, (v) => { T.opts.pieces = v; }));
     const r2 = el('<div class="row"></div>');
-    r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }));
+    r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }),
+      toggle('Snap flush against what is beside it', T.opts.snapFaces, (v) => { T.opts.snapFaces = v; }), toggle('Stay on what it sits on', T.opts.keepSeat, (v) => { T.opts.keepSeat = v; }));
     const r3 = el('<div class="row"></div>');
     r3.append(toggle('Lights and invisible walls: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
     parts.push(r, r2, r3);

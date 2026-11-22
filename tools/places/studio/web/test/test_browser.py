@@ -1701,3 +1701,47 @@ def test_31_people_select_and_move(pad):
              return [s.at.ref, studio.people.stopPoint(s).p, studio.model.spaces.FixHouse02.refs.get(id).pos]; }""", bed)
     assert got[0] == bed and got[1][0] == got[2][0], got
     pad.ev("studio.log.undo(); studio.people.select(null); studio.tools.use('select')")
+
+
+# ---------- 32: moving in the plane you mean, at three camera angles ----------
+def test_32_drag_maps_to_the_view(pad):
+    pad.page.click("#rail [data-tool=select]")
+    pad.ev("studio.tools.opts.snapFaces = false")
+    rid = "fixplace.c3"
+    p = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", rid)
+    for pitch in (1.45, 0.8, 0.15):
+        look_at(pad, "ours", p, dist=1800, pitch=pitch)
+        pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.unit = null; studio.tools.selectionChanged(); }", rid)
+        yaw = pad.ev("studio.ours.view.rig.yaw")
+        import math
+        right, fwd = (-math.sin(yaw), math.cos(yaw)), (-math.cos(yaw), -math.sin(yaw))
+        for (dx, dy), want in (((70, 0), right), ((0, -70), fwd)):
+            h = gizmo_handle(pad, "move")
+            pad.pen("mouseMoved", *h)
+            pad.pen("mousePressed", *h)
+            assert pad.ev("document.querySelector('.gizmo .gz-hint').textContent").startswith("Slides along the ground")
+            for i in range(1, 5):
+                pad.pen("mouseMoved", h[0] + dx * i / 4, h[1] + dy * i / 4)
+            pad.pen("mouseReleased", h[0] + dx, h[1] + dy)
+            pad.page.wait_for_timeout(80)
+            last = pad.ev("studio.log.applied().at(-1)")
+            assert last["op"] == "ref.move" and last["id"] == rid, last
+            m = (last["after"]["pos"][0] - last["before"]["pos"][0], last["after"]["pos"][1] - last["before"]["pos"][1])
+            size = math.hypot(*m)
+            assert size > 10 and (m[0] * want[0] + m[1] * want[1]) > 0.85 * size, (pitch, (dx, dy), m, want)
+            pad.ev("studio.log.undo()")
+        # the east-west handle moves east or west only
+        h = gizmo_handle(pad, "ax")
+        pad.pen_drag([h, (h[0] + 50, h[1] + 40)])
+        last = pad.ev("studio.log.applied().at(-1)")
+        assert last["op"] == "ref.move" and abs(last["after"]["pos"][1] - last["before"]["pos"][1]) < 0.01, last
+        pad.ev("studio.log.undo()")
+    # the nudge step and one-tap undo
+    pad.page.get_by_role("button", name="50", exact=True).click()
+    pad.page.get_by_role("button", name="North", exact=True).click()
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert abs(last["after"]["pos"][1] - last["before"]["pos"][1] - 50) < 0.01
+    n = len(pad.ops())
+    pad.page.locator("#panel-body").get_by_role("button", name="Undo", exact=True).click()
+    assert len(pad.ops()) == n - 1
+    pad.ev("studio.tools.opts.snapFaces = true; studio.tools.opts.step = 10; studio.selection.clear(); studio.tools.selectionChanged()")

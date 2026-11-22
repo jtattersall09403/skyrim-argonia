@@ -377,3 +377,13 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .spot-shown { fill: none; stroke: var(--accent); stroke-width: 4; }
 .spots { list-style: none; padding: 0; margin: 0; }
 .spots li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
+
+/* the move handles: big for a finger, each way of moving its own handle, named before the drag */
+.gizmo .h.move { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+.gizmo .h.axis { width: 48px; height: 48px; margin: -24px 0 0 -24px; font-weight: 700; font-size: 13px; }
+.gizmo .h.lift { width: 76px; height: 56px; margin: -28px 0 0 -38px; border-radius: 28px; gap: 2px; grid-auto-flow: column; }
+.gizmo .h.lift span { font-size: 13px; font-weight: 600; }
+.gizmo .ring { border-width: 6px; border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-sizing: border-box; }
+.gizmo .gz-hint { position: absolute; left: 0; top: 118px; transform: translateX(-50%); white-space: nowrap; padding: 4px 10px; border-radius: 6px;
+  background: var(--accent); color: var(--accent-ink); font-weight: 600; pointer-events: none; }
+.sketch .axis-line { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 10 6; }

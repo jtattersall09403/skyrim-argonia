@@ -8,7 +8,8 @@ import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
-import { spotIn, rigid } from './units.js';
+import { spotIn, rigid, boxOf } from './units.js';
+import { dragDelta, dragMode, snapFaces } from './move_map.js';
 import { patrolOf, usersOf, followsLine } from './people.js';
 // what a thing is in a sentence: "bed", "bedroll", "work bench", else its kind
 const plainThing = (base, r) => { const n = `${base?.edid || ''} ${base?.name || ''}`; return /bedroll/i.test(n) ? 'bedroll' : /bed/i.test(n) ? 'bed' : r.kind === 'furniture' ? 'seat or station' : (base?.name || r.kind || 'thing').toLowerCase(); };
@@ -52,7 +53,7 @@ export function smoothLine(pts, tol = 60) {
 
 export class Tools {
   constructor(app) {
-    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, selMode: 'lasso', adds: false, pieces: false };
+    this.app = app; this.current = null; this.placing = null; this.opts = { snapGround: true, snapRot: true, snapFaces: true, keepSeat: true, step: 10, selMode: 'lasso', adds: false, pieces: false };
     this.unit = null; this.inside = null;   // the unit selected whole; the unit whose one piece is selected
     this.land = { kind: 'raise', radius: 384, strength: 0.5, level: null, picking: false };
     this.veg = { mode: 'clear', radius: 512 };
@@ -267,16 +268,23 @@ export class Tools {
   }
   buildGizmo() {
     const g = document.querySelector('#view-ours .gizmo');
-    g.innerHTML = `<div class="ring"></div><div class="h move" data-h="move" role="button" aria-label="Drag to move">${ICON.move}</div>
-      <div class="h" data-h="lift" role="button" aria-label="Drag up or down to lift">${ICON.lift}</div>
+    // one handle per way of moving, each big enough for a finger, its plane or axis named before the drag starts
+    g.innerHTML = `<div class="ring"></div>
+      <div class="h move" data-h="move" role="button" aria-label="Drag to slide along the ground">${ICON.move}</div>
+      <div class="h axis" data-h="ax" role="button" aria-label="Drag to move east or west only">E–W</div>
+      <div class="h axis" data-h="ay" role="button" aria-label="Drag to move north or south only">N–S</div>
+      <div class="h lift" data-h="lift" role="button" aria-label="Drag up or down to change the height">${ICON.lift}<span>Height</span></div>
       <div class="h" data-h="rotate" role="button" aria-label="Drag round to turn">${ICON.rotate}</div>
-      <div class="h" data-h="scale" role="button" aria-label="Drag to resize">${ICON.scale}</div>`;
+      <div class="h" data-h="scale" role="button" aria-label="Drag to resize">${ICON.scale}</div>
+      <div class="gz-hint" hidden></div>`;
     this.gizmo = g;
-    g.querySelectorAll('.h').forEach((h) => {
-      h.addEventListener('pointerdown', (e) => { e.stopPropagation(); if (e.pointerType === 'touch' && this.app.penSeen) return; h.setPointerCapture(e.pointerId); this.gizmoDown(h.dataset.h, e); });
+    g.querySelectorAll('[data-h]').forEach((h) => {
+      h.addEventListener('pointerenter', () => { if (!this.drag) this.hint(h.dataset.h); });
+      h.addEventListener('pointerleave', () => { if (!this.drag) this.hint(null); });
+      h.addEventListener('pointerdown', (e) => { e.stopPropagation(); if (e.pointerType === 'touch' && this.app.penSeen) return; h.setPointerCapture(e.pointerId); this.hint(h.dataset.h); this.gizmoDown(h.dataset.h, e); });
       h.addEventListener('pointermove', (e) => this.gizmoMove(e));
-      h.addEventListener('pointerup', (e) => this.gizmoUp(e));
-      h.addEventListener('pointercancel', () => this.gizmoCancel());
+      h.addEventListener('pointerup', (e) => { this.gizmoUp(e); this.hint(null); });
+      h.addEventListener('pointercancel', () => { this.gizmoCancel(); this.hint(null); });
     });
   }
   selRefs() { const m = this.app.placeRefsById(); return [...this.app.selection].map((id) => m.get(id)).filter(Boolean); }
@@ -324,10 +332,16 @@ export class Tools {
     g.hidden = !show; if (!show) return;
     const c = this.centre(refs), s = v.toScreen(c);
     if (s.behind) { g.hidden = true; return; }
-    const R = 78;
+    const R = 100, unit = this.selUnit();
     g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
-    const set = (h, x, y) => { const el = g.querySelector(`[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
-    set('move', 0, 0); set('lift', 0, -R); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
+    const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
+    set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
+    // the axis handles point the way east and north lie on the screen
+    for (const [h, d] of [['ax', [400, 0, 0]], ['ay', [0, 400, 0]]]) {
+      const q = v.toScreen([c[0] + d[0], c[1] + d[1], c[2]]), dx = q.x - s.x, dy = q.y - s.y, l = Math.hypot(dx, dy) || 1;
+      set(h, (dx / l) * R * 0.62, (dy / l) * R * 0.62);
+    }
+    g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
   }
   gizmoDown(kind, e) {
@@ -336,6 +350,12 @@ export class Tools {
     const unit = this.selUnit(); if (unit && kind === 'scale') return;   // a unit moves, turns and rises whole; its pieces are resized one by one
     this.drag = { kind, refs, unit, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
       x0: e.clientX, y0: e.clientY, g0: info.ground(), c: unit ? this.unitCentre(unit) : this.centre(refs), fol: this.followers(refs) };
+    // the plane or axis of a slide, fixed now for the whole drag (move_map.js)
+    const d = this.drag, o = v.origin, ray = (inf) => ({ o: [inf.ray.origin.x + o[0], inf.ray.origin.y + o[1], inf.ray.origin.z + o[2]], d: [inf.ray.direction.x, inf.ray.direction.y, inf.ray.direction.z] });
+    d.ray = ray; d.r0 = ray(info); d.mode = dragMode(d.r0); d.axis = kind === 'ax' ? 'x' : kind === 'ay' ? 'y' : null;
+    const cam = v.camera.position, far = Math.hypot(cam.x + o[0] - d.c[0], cam.y + o[1] - d.c[1], cam.z + o[2] - d.c[2]);
+    d.perPx = far * 2 * Math.tan((v.camera.fov * Math.PI) / 360) / (v.h || 800); d.yaw = v.rig.yaw;
+    d.others = this.opts.snapFaces ? this.neighbourBoxes(refs, d.c) : [];
     const sc = v.toScreen(this.drag.c), rect = v.canvas.getBoundingClientRect();
     this.drag.sx = sc.x + rect.left; this.drag.sy = sc.y + rect.top; this.drag.a0 = Math.atan2(e.clientY - this.drag.sy, e.clientX - this.drag.sx);
   }
@@ -343,11 +363,10 @@ export class Tools {
     const d = this.drag; if (!d) return;
     const v = this.app.ours.view, a = this.app;
     for (const r of d.refs) { const b = d.before.get(r.id); r.pos = [...b.pos]; r.rot = [...(b.rot || [0, 0, 0])]; r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat; }
+    const slide = ['move', 'ax', 'ay'].includes(d.kind) ? this.slideOf(d, e) : null;
     if (d.unit) {
-      const g = d.kind === 'move' ? v.info(e).ground() : null;
-      if (d.kind === 'move' && (!g || !d.g0)) return;
       let turn = 0, sh = [0, 0], dz = 0;
-      if (d.kind === 'move') sh = [g[0] - d.g0[0], g[1] - d.g0[1]];
+      if (slide) sh = slide;
       else if (d.kind === 'lift') dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
       else if (d.kind === 'rotate') { turn = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0; if (this.opts.snapRot) turn = Math.round(turn / (Math.PI / 12)) * (Math.PI / 12); }
       d.xf = this.poseUnit(d, turn, sh, dz); d.turn = turn;
@@ -355,9 +374,8 @@ export class Tools {
       this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
       return;
     }
-    if (d.kind === 'move') {
-      const g = v.info(e).ground(); if (!g || !d.g0) return;
-      const dx = g[0] - d.g0[0], dy = g[1] - d.g0[1];
+    if (slide) {
+      const [dx, dy] = slide;
       for (const r of d.refs) { r.pos[0] = rnd(r.pos[0] + dx); r.pos[1] = rnd(r.pos[1] + dy); this.reseat(r); }
     } else if (d.kind === 'lift') {
       const dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
@@ -387,6 +405,7 @@ export class Tools {
   }
   reseat(r) {
     if (this.app.ours.space !== 'exterior') return;
+    if (r.seat?.mode === 'on' && !this.opts.keepSeat) r.seat = { mode: 'ground', dz: 0 };   // let go of what it sat on
     if (this.opts.snapGround) { if (!r.seat || r.seat.mode === 'free') r.seat = { mode: 'ground', dz: 0 }; r.pos[2] = rnd(seatZ(this.app.terrain, r, this.app.placeRefsById())); }
   }
   // At the moment a thing a routine names is moved: "Hara-Jeel sleeps here: his routine follows this bed."
@@ -394,6 +413,44 @@ export class Tools {
     const a = this.app, ppl = [...(a.model?.people.values() || [])], lines = [];
     for (const r of refs) { const u = usersOf(ppl, r.id, r.src); if (u.length) lines.push(followsLine(u, `this ${plainThing(this.baseOf(r), r)}`)); }
     if (lines.length) a.toast(lines.slice(0, 2).join(' ') + (lines.length > 2 ? ` And ${lines.length - 2} more.` : ''), 6000);
+  }
+  // The slide of a drag now: along the plane or axis fixed when it began, then flush with a neighbour's face.
+  slideOf(d, e) {
+    const v = this.app.ours.view, inf = v.info(e);
+    let m = dragDelta({ mode: d.mode, r0: d.r0, r1: d.ray(inf), z: d.c[2], px: [e.clientX - d.x0, e.clientY - d.y0], perPx: d.perPx, yaw: d.yaw, axis: d.axis });
+    if (d.others.length) {
+      const b = d.box || (d.box = this.planBox(d.refs, d.before));
+      const [sx, sy] = snapFaces({ x0: b.x0 + m[0], y0: b.y0 + m[1], x1: b.x1 + m[0], y1: b.y1 + m[1] }, d.others);
+      m = [m[0] + (d.axis === 'y' ? 0 : sx), m[1] + (d.axis === 'x' ? 0 : sy)];
+    }
+    return m;
+  }
+  planBox(refs, before) {
+    const bs = refs.filter((r) => r.kind !== 'light' && !r.primitive).map((r) => boxOf({ ...r, ...before.get(r.id) }, this.baseOf(r), before.get(r.id).pos));
+    return bs.length ? bs.reduce((u, b) => ({ x0: Math.min(u.x0, b.x0), y0: Math.min(u.y0, b.y0), x1: Math.max(u.x1, b.x1), y1: Math.max(u.y1, b.y1) })) : { x0: 0, y0: 0, x1: 0, y1: 0 };
+  }
+  // The plan boxes of the things near what is dragged (not lights, invisible walls, plants or people), for face snaps.
+  neighbourBoxes(refs, c) {
+    const ids = new Set(refs.map((r) => r.id)), out = [];
+    for (const r of this.app.placeRefsById().values()) {
+      if (ids.has(r.id) || r.removed || !r.pos || r.kind === 'light' || r.primitive || ['tree', 'plant', 'groundcover', 'actor', 'marker'].includes(r.kind)) continue;
+      if (Math.hypot(r.pos[0] - c[0], r.pos[1] - c[1]) > 2500) continue;
+      out.push(boxOf(r, this.baseOf(r), this.app.seated(r).pos));
+    }
+    return out;
+  }
+  // What a handle does, said over the gizmo before and during its drag; an axis is drawn through the selection.
+  hint(kind) {
+    const el = this.gizmo?.querySelector('.gz-hint'); if (!el) return;
+    const v = this.app.ours.view; this.sketch(v).querySelector('.axis-line')?.remove();
+    const words = { move: 'Slides along the ground; keeps how it sits', ax: 'East and west only', ay: 'North and south only', lift: 'Up and down only',
+      rotate: `Turns about the up axis${this.opts.snapRot ? ', in 15° steps' : ''}`, scale: 'Bigger or smaller' }[kind];
+    el.hidden = !words; el.textContent = words || '';
+    if (kind === 'ax' || kind === 'ay') {
+      const c = this.selUnit() ? this.unitCentre(this.selUnit()) : this.centre(this.selRefs()), k = kind === 'ax' ? [1, 0] : [0, 1];
+      const a = v.toScreen([c[0] - k[0] * 3000, c[1] - k[1] * 3000, c[2]]), b = v.toScreen([c[0] + k[0] * 3000, c[1] + k[1] * 3000, c[2]]);
+      this.svg(v, 'line', { class: 'axis-line', x1: a.x, y1: a.y, x2: b.x, y2: b.y });
+    }
   }
   gizmoUp(e) {
     const d = this.drag; if (!d) return;

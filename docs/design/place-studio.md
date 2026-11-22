@@ -839,6 +839,27 @@ owner's walking zones lying wholly in it. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 
+**Moving** (`move_map.js` the mapping, `tools.js` the handles). Round a selection stand its handles, each one way of
+moving, big enough for a finger, and each named over the gizmo while the pen hovers on it and through its drag:
+- the middle (64 px) slides along the ground ("Slides along the ground; keeps how it sits"): the drag moves the thing
+  over a level plane at its own height, fixed when the drag starts, so the point under the pen stays under it, as
+  The Sims and Planet Coaster move things; what sits on the ground or on another thing keeps that seat and is seated
+  again where it lands. When the view looks along the ground (the pen's ray meets that plane at under about 10
+  degrees, where the plane would throw the thing far off), the drag maps the screen instead: right on the screen is
+  right in the view, up the screen is away from the camera, at the thing's distance. Which of the two is chosen when
+  the drag starts and never changes during it;
+- E–W and N–S, two handles pointing the way east and north lie on the screen, move along that axis only, with the
+  axis drawn through the selection as a dashed line;
+- Height, a separate large handle above, raises or lowers it (a seated thing's seat `dz`);
+- the turn handle on the ring turns it about the up axis, in 15 degree steps unless Turn in 15° steps is off;
+- the corner handle resizes it (never a unit whole).
+The panel's Move a little nudges by a step of 1, 10 or 50 units (North, South, West, East, Up, Down), turns by 15
+degrees and has Undo. Snaps, each a switch under How selecting works: Keep on the ground when moving; Snap flush
+against what is beside it (a dragged thing's plan box comes flush with a neighbour's opposite face within 24 units,
+along the axis being moved); Stay on what it sits on (off: a thing seated on another lets go and sits on the ground
+when moved). `test/move_map.test.mjs` proves the mapping at a view nearly straight down, three-quarter and nearly
+level; the browser test drags at the same three.
+
 **People in Select** (`people.js`). A tap on a person with Select picks them (before anything behind) and opens
 their People panel: who they are, then Their spots, each where it is (a thing by its name, or a spot of their own)
 with Show it, which sets the hour they are there, goes to its room and frames it with a ring: where they sleep (their
