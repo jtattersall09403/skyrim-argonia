@@ -94,6 +94,13 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
             res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f,
                    "accepted": sc.accepted_faults(), "notes": alt_tex_notes(sc)}
+            if space == "exterior" and getattr(sc, "files", None):   # what stands in a walk (tools/places/ways.py)
+                from tools.places import ways
+                bl = ways.blockers(sc.files, sc.everything(), sc.ground, ways.spots(sc.files))
+                res["ways"] = [b for b in bl if not b.get("reason")]
+                res["ways_allowed"] = [b for b in bl if b.get("reason")]
+                if res["ways"]:
+                    by["stands in a walk"] = len(res["ways"])
             if space != "exterior" and not o.get("no-void"):
                 res["openings"] = voids(d, place, sess["strokes"], sc)
                 if res["openings"]:

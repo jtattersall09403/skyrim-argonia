@@ -910,8 +910,15 @@ def check_streets(ctx) -> list[str]:
     ctx["streets"] = {"street_points": sum(len(walk.samples(p["points"])) for p in paths), "street_off": len(st),
                       "patrol_points": sum(len((p.get("patrol") or {}).get("points") or []) for p in folk),
                       "patrol_off": len(pa)}
+    ways = []
+    if pdir and ctx.get("place_id") and (pdir / "place.json").exists():   # every walk clear of solid things (tools/places/ways.py)
+        from tools.places import ways as W_
+        ways = W_.place_faults(ctx["place_id"], Path(pdir).parent,
+                               walked=lambda S: [w[1] if w else None for w in W.walked(S)])
+        ctx["streets"]["blocked"] = len(ways)
     return ([f"street {s} point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for s, q in st]
-            + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for who, q in pa])
+            + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for who, q in pa]
+            + ways)
 
 
 def _across(idx: NavIndex, n, mid, a=None, b=None) -> bool:
