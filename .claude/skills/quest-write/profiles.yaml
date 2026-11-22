@@ -10,7 +10,7 @@ default:
   families: {endure: 0.3}
 
 local:
-  from: "lines.json quest.line.local; 00-overview §4 (S-tier texture: mundane but one memorable thing)"
+  from: "lines.json quest.line.local (mundane but one memorable thing)"
   families: {speech: 1.2, endure: 0.3}
 
 main:
@@ -21,7 +21,7 @@ main:
   settings: [household, ruin, underwater]
 
 daedric:
-  from: "lines.json quest.line.daedric (the WONDER seam); 00-overview wonder budget"
+  from: "lines.json quest.line.daedric (the WONDER seam)"
   families: {magic: 2.5, speech: 1, combat: 0.8, craft: 1, endure: 0.3}
   skills: {conjuration: 2, mysticism: 2, enchanting: 1.5, illusion: 1.5}
   targets: [daedra, undead-and-spirits]
@@ -38,8 +38,8 @@ shadowscales:
 eelskins:
   from: "story/design/quests/lines/thieves.md (the Eelskins: a first heist, preparations, the great heist); nw-05c (sneak, pickpocket, lockpicking, speech, enchanting)"
   faction: faction.eelskins
-  families: {stealth: 3, speech: 1.5, magic: 1, craft: 0.6, combat: 0.3, endure: 0.2}
-  skills: {lockpicking: 3, pickpocket: 3, sneak: 3, speech: 1.5, alteration: 1.5, illusion: 1.2}
+  families: {stealth: 3, speech: 1.5, craft: 1.2, magic: 0.5, combat: 0.3, endure: 0.2}
+  skills: {lockpicking: 3, pickpocket: 3, sneak: 3, speech: 1.5, enchanting: 1.5}
   targets: [people]
   settings: [household, height, underwater, crowd]
 
@@ -58,3 +58,35 @@ lampbearers:
   skills: {speech: 3, sneak: 2, pickpocket: 1.5, lockpicking: 1.5, alchemy: 1.5, mysticism: 1.5}
   targets: [people]
   settings: [household, crowd, ruin]
+
+sisei-xul:
+  from: "story/design/quests/lines/sisei-xul.md (healing and poisons, the Hist and the dead staked); nw-05c (alchemy, smithing, enchanting, alteration, restoration, maybe destruction)"
+  faction: faction.sisei-xul
+  families: {craft: 3, magic: 2, stealth: 1, combat: 0.8, speech: 0.8, endure: 0.3}
+  skills: {alchemy: 3, restoration: 2.5, alteration: 2, enchanting: 2, smithing: 1.5, destruction: 1.2}
+  targets: [undead-and-spirits, beasts]
+  settings: [ruin, underwater, open-ground]
+
+house-cardruhn:
+  from: "story/design/quests/lines/house-cardruhn.md (tomb raids and the dead raised); nw-05c (conjuration, restoration's necromantic healing and anti-undead, enchanting, destruction)"
+  faction: faction.house-cardruhn
+  families: {magic: 3, craft: 1.2, stealth: 1, combat: 0.8, speech: 0.8, endure: 0.2}
+  skills: {conjuration: 3, restoration: 2, enchanting: 2, destruction: 2}
+  targets: [undead-and-spirits, people]
+  settings: [ruin, household]
+
+brammans-brethren:
+  from: "story/design/quests/lines/pirates.md (boardings, wreck dives and the raid on Gideon); nw-05c (pure combat, light and heavy armour, water scrolls, mayhem and frenzy)"
+  faction: faction.brammans-brethren
+  families: {combat: 3, endure: 1, magic: 0.8, stealth: 0.8, speech: 0.6, craft: 0.4}
+  skills: {one-handed: 2.5, two-handed: 2, archery: 2, block: 2, light-armor: 1.5, heavy-armor: 1.5, illusion: 1.2}
+  targets: [people]
+  settings: [underwater, open-ground, odds]
+
+topal-bay-company:
+  from: "story/design/quests/lines/merchants.md (trade, smithing goods, guarding shipping, taking down smugglers); nw-05c (speech, heavy armour, smithing, block, one- and two-handed)"
+  faction: faction.topal-bay-company
+  families: {combat: 2, speech: 2, craft: 2, endure: 1, stealth: 0.6, magic: 0.4}
+  skills: {speech: 2.5, smithing: 2.5, block: 2, one-handed: 2, two-handed: 1.5, heavy-armor: 1.5}
+  targets: [people, beasts]
+  settings: [open-ground, household, odds]
