@@ -117,6 +117,19 @@ def test_a_room_lands_before_its_door_as_the_door_now_stands():
     assert [round(v) for v in land] == [5000, 4900, 60] and ext[0]["door"]["arrival"] == land
 
 
+def test_a_light_turns_with_the_place():
+    # a wholesale baseline turns every piece by fit.rot_deg: a light's offset from its fixture turns with it, so the
+    # lights stage and the draft check judge it in the place's frame (a fit's own cluster turn wins where it has one)
+    from tools.places.draft import lights
+    place = {"fit": {"rot_deg": 90.0}, "wholesale": {}}
+    assert abs(lights.turn_of(place)("b01") - math.pi / 2) < 1e-9
+    place["fit"]["clusters"] = {"b01": {"rot": 0.25}}
+    assert lights.turn_of(place)("b01") == 0.25 and abs(lights.turn_of(place)("b02") - math.pi / 2) < 1e-9
+    assert lights.turn_of({"fit": {"rot_deg": 90.0}})("b01") == 0.0     # the clustered method's own frame
+    lt, fx = {"pos": [100.0, 0.0, 50.0]}, {"pos": [0.0, 0.0, 0.0]}
+    assert [round(v) for v in lights.offset(lt, fx, math.pi / 2)] == [0, -100]
+
+
 def test_the_carried_mesh_reads_the_districts():
     place = {"fit": {"pivot": [0.0, 0.0], "anchor": [0.0, 0.0], "rot_deg": 0.0},
              "wholesale": {"offset": 5.0, "districts": [{"name": "high", "offset": -900.0, "at": [[7000.0, 0.0]]}]}}

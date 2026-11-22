@@ -429,9 +429,7 @@ def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) ->
     from tools.places.draft import lights
     ext = [r for r in src.exterior.refs]
     by_src = {r["id"]: r for r in ext}
-    turns = (place.get("fit") or {}).get("clusters") or {}
-    bad = lights.off_fixture(refs, by_src, lights.fixtures(ext, bases),
-                             lambda cid: float((turns.get(cid) or {}).get("rot", 0.0)))
+    bad = lights.off_fixture(refs, by_src, lights.fixtures(ext, bases), lights.turn_of(place))
     have = {r["id"] for r in refs}
     for r in lights.station_lights(place["place_id"], refs, place.get("stations")):
         if r["id"] not in have:
