@@ -53,10 +53,13 @@ PATCHES = {"START_PLACE": START_PLACE, "WALK": []}
 PLAY_ESM, PLAY_WORLD = "ArgoniaSmallWorld.esm", "ArgoniaSmallWorld"     # the world's name, letter for letter as long
 REAL_ESM, REAL_WORLD = "ArgoniaNewWorld.esm", "ArgoniaBlackMarsh"
 # the rebuild's stages that run on the block, and the read-back's groups that judge a block's file
-STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "mist", "navmesh", "map", "ecology", "dressing", "smithing", "esm", "readback")
+STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "ground-patch", "mist", "navmesh", "map", "ecology", "dressing", "smithing", "esm", "readback")
 # the block's own edits of single placed things (the province's name cells the block does not hold): a file beside
 # the block, absent until a test of the edits writes rows to it (`small tool tools.newworld.place edit ... --edits <it>`)
 EDITS = "out/newworld-small/placed_edits.jsonl"
+# the block's own ground patches: absent (no patch) until a test writes rows to it; the block's land, landcover and
+# paint are the block's base, made here from the cut, and the patches are laid over them as over the province's
+GROUND_PATCHES = "out/newworld-small/ground_patches.jsonl"
 READBACK = "plugin,land,textures,water,refs,ecology,mist,navmesh,music,location"
 # the read-back's rows that count the whole province, by the start of their requirement, each with why
 READBACK_OFF = (
@@ -311,7 +314,8 @@ def plan_holds(root: Path = ROOT) -> int:
 # ---- the stages ---------------------------------------------------------------------------------------------------
 
 def _spec(s: str) -> str:
-    return s.replace(f"src:{_rb().EDITS_FILE}", f"out:{EDITS[4:]}").replace("out:newworld/", "out:newworld-small/")
+    return (s.replace(f"src:{_rb().EDITS_FILE}", f"out:{EDITS[4:]}").replace(f"src:{_rb().GROUND_PATCHES}", f"out:{GROUND_PATCHES[4:]}")
+            .replace("out:newworld/", "out:newworld-small/"))
 
 
 def stages(src: Path) -> tuple:
@@ -322,7 +326,8 @@ def stages(src: Path) -> tuple:
     def cmd(c: tuple) -> tuple:
         if "world.sh" in c[0]:
             return (*me, "esm", c[1])
-        c = tuple(a.replace(rb.PLUGIN, PLUGIN).replace(rb.EDITS_FILE, EDITS) if isinstance(a, str) else a for a in c)
+        c = tuple(a.replace(rb.PLUGIN, PLUGIN).replace(rb.EDITS_FILE, EDITS).replace(rb.GROUND_PATCHES, GROUND_PATCHES)
+                  if isinstance(a, str) else a for a in c)
         if c[:3] == me:
             return c
         if c[0] == rb.PY and c[1] == "-m":
@@ -360,7 +365,7 @@ def stages(src: Path) -> tuple:
             reads=tuple(_spec(r) for r in reads),
             check_reads=tuple(_spec(r) for r in s.check_reads), writes=tuple(_spec(w) for w in s.writes),
             agree=tuple((_spec(a), _spec(b), how) for a, b, how in s.agree),
-            after=tuple(a for a in s.after if a in STAGES), proof=()))
+            after=tuple(a for a in s.after if a in STAGES), proof=(), base=False))
     return tuple(out)
 
 

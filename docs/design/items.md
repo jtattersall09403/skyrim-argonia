@@ -218,8 +218,8 @@ every ingredient can be obtained.
   then says "items ladder: linked to the world file's copies".
 
 So the ladder reaches the game with the places deploy alone: no ground stage needs to run. Its home moves to the
-world file by itself at the next main-tree world rebuild. That rebuild is stale for other reasons, and
-`rebuild.sh run --to esm` runs every stale ground stage before `esm`.
+world file by itself at the next main-tree world rebuild (when the owner asks for one). The province's ground is
+a fixed base that rebuild never touches: `rebuild.sh run --to esm` runs only the stale stages before `esm`.
 
 The mods are asset-only, so their own plugins and recipes never load. Every recipe, kept or overridden, is written
 as ours, and none of theirs needs switching off. The stock check reads either copy back to its source:
