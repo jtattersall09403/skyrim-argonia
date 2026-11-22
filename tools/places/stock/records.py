@@ -120,6 +120,8 @@ class Records:
             out["value"], out["weight"] = _i32(data) or 0, _f32(data, 4) or 0.0
             if rec.sig == "WEAP" and data and len(data) >= 10:
                 out["damage"] = struct.unpack_from("<H", data, 8)[0]
+            if rec.sig == "WEAP":     # the engine's animation type (DNAM's first byte): 9 is a crossbow
+                out["anim"] = (rec.sub("DNAM") or b"\0")[0]
             if rec.sig == "ARMO":
                 out["rating"] = (_i32(rec.sub("DNAM")) or 0) / 100
                 out["slots"] = _u32(rec.sub("BOD2") or rec.sub("BODT")) or 0   # biped slot flags

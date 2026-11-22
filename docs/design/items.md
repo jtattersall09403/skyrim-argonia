@@ -78,27 +78,29 @@ The table below is the ladder as the data holds it, one line per material:
 | Tier | Material | Weapons | Heavy | Light | Shields | Band | Takes the stats of (a sword, e.g.) |
 |---|---|---|---|---|---|---|---|
 | T1 | Bone and horn | 16 |  |  |  | common | IronSword |
-| T1 | Flint and jadeflint | 18 |  |  |  | common | IronSword |
+| T1 | Flint and jadeflint | 23 |  |  |  | common | IronSword |
 | T1 | Hide and fibre |  |  | 4 | 1 | common | IronSword |
-| T1 | Wood and bamboo | 26 |  | 13 |  | common | IronSword |
-| T2 | Bog iron | 22 | 1 |  | 2 | uncommon | SteelSword |
-| T2 | Corsair's steel | 3 |  |  |  | situational | SteelSword |
+| T1 | Wood and bamboo | 38 |  | 13 |  | common | IronSword |
+| T2 | Bog iron | 25 | 1 | 10 | 2 | uncommon | SteelSword |
+| T2 | Corsair's steel | 5 |  | 8 |  | situational | SteelSword |
+| T2 | Crossbow work (bog iron and wood) | 1 |  |  |  | situational | SteelSword |
 | T2 | Imperial issue | 17 | 7 | 18 | 4 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
-| T2 | Marsh leather |  |  | 5 |  | common | SteelSword |
-| T2 | Netch leather and Ashlander make |  |  | 13 | 1 | situational | SteelSword |
-| T2 | Saxhleel bone-and-leather work | 5 |  | 25 |  | common | SteelSword |
+| T2 | Marsh leather |  |  | 8 |  | common | SteelSword |
+| T2 | Netch leather and Ashlander make |  |  | 23 | 2 | situational | SteelSword |
+| T2 | Saxhleel bone-and-leather work | 5 |  | 29 |  | common | SteelSword |
 | T2 | Turtle shell |  | 4 |  | 2 | uncommon | SteelSword |
 | T3 | Argonian scale |  |  | 16 | 2 | uncommon | ElvenSword |
 | T3 | Ayleid elven |  |  |  |  | ruin | ElvenSword |
-| T3 | Bone plate |  | 4 |  |  | uncommon | ElvenSword |
-| T3 | Bonemold | 12 | 2 |  | 4 | situational | ElvenSword |
-| T3 | Chitin | 1 | 4 | 4 | 1 | uncommon | ElvenSword |
+| T3 | Bone plate | 11 | 4 |  |  | uncommon | ElvenSword |
+| T3 | Bonemold | 16 | 8 | 4 | 5 | situational | ElvenSword |
+| T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 19 | 2 | situational | ElvenSword |
+| T3 | Chitin | 2 | 4 | 4 | 1 | uncommon | ElvenSword |
 | T3 | Copper-edged steel | 19 |  |  |  | uncommon | ElvenSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |
-| T4 | Shadowscale make | 4 |  | 6 |  | situational | GlassSword |
+| T4 | Shadowscale make | 4 |  | 11 |  | situational | GlassSword |
 | T4 | Skyrim glass |  |  |  |  | ruin | GlassSword |
-| T4 | Volcanic glass | 7 |  | 4 |  | rare | GlassSword |
+| T4 | Volcanic glass | 33 |  | 4 | 1 | rare | GlassSword |
 | T5 | Ebony |  |  |  |  | ruin | EbonySword |
 | T5 | Hist amber | 8 |  | 4 | 1 | rare | EbonySword |
 | T5 | Masu plate |  | 5 |  |  | rare | EbonySword |
@@ -108,6 +110,31 @@ Written at another tier than their material's, each with its reason:
 
 - T1: RogueBonemoldBoots: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot
 - T1: RogueBonemoldCuirass: the ladder's one plain heavy make at T1 (hide plates, no metal), filling the T1 heavy slot
+- T2: R88_DartGun: the crossbow's lowest rung (it takes the crossbow's action)
+- T2: R88_BlowDartAMMO: darts for the blowgun
+- T2: BOBMacuahuitl: the finest flint work
+- T3: ArmorRascalTier2Cuirass: a guild master's make
+- T3: ArmorRascalTier2Boots: a guild master's make
+- T3: ArmorRascalTier2Gloves: a guild master's make
+- T3: DLC1CrossBowEnhanced: the finer make of the crossbow, armour-piercing
+- T3: JS_ArmorImperialBoots: an officer's make
+- T3: JS_ArmorImperialGauntlets: an officer's make
+- T3: JS_ArmorImperialHelmet: an officer's make
+- T3: JS_ArmorImperialArmor: an officer's make
+- T3: JS_Imperialsword: an officer's make
+- T3: JS_ArmorImperialShield: an officer's make
+- T3: PI_SmotheredAshenBattleAxe: the poorer glass
+- T3: PI_SmotheredAshenGreatsword: the poorer glass
+- T3: PI_SmotheredAshenMace: the poorer glass
+- T3: PI_SmotheredAshenSword: the poorer glass
+- T3: PI_SmotheredAshenWarhammer: the poorer glass
+- T3: PI_SmotheredAshWarAxe: the poorer glass
+- T3: PI_SmotheredAshenSpear: the poorer glass
+- T3: PI_SmotheredAshenTrident: the poorer glass
+- T3: PI_SmotheredAshenDagger: the poorer glass
+- T3: PI_SmotheredAshenLongMace: the poorer glass
+- T3: PI_AshenShield: the poorer glass
+- T3: PI_SmotheredAshenBow: the poorer glass
 - T5: CIPHTBMXanmeerBattleaxe: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerWarhammer1: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
 - T5: CIPHTBMXanmeerGreatsword: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)
@@ -138,6 +165,13 @@ Under the collection's combat set-up, attacks are keyed on the engine's animatio
 | Whip | mace | Animated Armoury's own animations where its pack covers them |
 | Rapier | sword | the collection's SkySA rapier pack (keyed on Animated Armoury's keyword) |
 | Claw | dagger | the SkySA claw pack |
+| Crossbow | crossbow | Dawnguard's own crossbow animations (part of Special Edition); told apart from a bow by its animation type (9), since its keyword is the bow's |
+| Blowgun | crossbow | the blowgun takes the crossbow's action, so it is the crossbow's lowest rung (T2) |
+
+The crossbow is a seventh new type: Dawnguard's crossbow (T2, bog iron and wood), its enhanced make (T3) and steel
+bolts, with stats from Dawnguard's crossbows, plain to enhanced Dwarven. It is situational: Imperial posts, Dunmer
+holdouts, pirates and Company marines, and a rich trader's guards. The Dwarven crossbows stay never, and so does
+the Dawnguard order's armour: only the crossbow and its bolts are filed.
 
 The kit rules judge each new type as the vanilla type it swings as. For example, a fisher's metal two-handed weapon
 is barred, except a harpoon or a trident (the kit's `except`).
@@ -152,6 +186,34 @@ draws.
 Records of asset-only mods are read for their own new records only. Heavy Armory, for instance, re-keywords
 Skyrim's bows, but its plugin is never active, so its overrides of Skyrim's or another mod's records never reach the
 game and are never read.
+
+## Coverage by people and faction
+
+Gear rows on the ladder by the materials each people or faction uses (weapons / light / heavy / shields), before
+the widening and after it. A material can serve more than one row.
+
+| People or faction | Materials | Before | After | Still thin |
+|---|---|---|---|---|
+| Argonian tribes, marsh-wide | wood to copper-steel | 60 / 59 / 5 / 5 | 130 / 87 / 9 / 8 | heavy armour |
+| Argonian high craft, Hist priests | masu plate, bronze, Hist amber, obsidian | 12 / 4 / 8 / 0 | 57 / 8 / 8 / 3 | robes and masks (funerary masks only) |
+| Naga, Naga-Kur | shell, bone, leather, Naga-Kur set | 7 / 1 / 4 / 2 | 16 / 11 / 4 / 2 | no Naga weapon model anywhere |
+| Root-Folk, Lilmothiit-named towns | wood, hide, bone plate | 21 / 17 / 0 / 1 | 50 / 17 / 4 / 1 | Lilmothiit gear has no model |
+| Shadowscales (the Empty Cradle) | shadowscale | 4 / 6 / 0 / 0 | 4 / 11 / 0 / 0 | own weapons |
+| Chainbreakers, Archwardens, Warden forts | copper-steel, bog iron, imperial | 22 / 14 / 8 / 4 | 62 / 28 / 12 / 7 | |
+| Dunmer houses and holdouts | bonemold, chitin, netch leather | 9 / 0 / 0 / 3 | 18 / 31 / 14 / 8 | Telvanni, Hlaalu and Indoril looks |
+| Imperials, Topal Bay posts, East Empire Company | imperial, crossbow | 12 / 14 / 7 / 4 | 20 / 18 / 11 / 5 | |
+| Pirates, the Salt-Teeth, smugglers | corsair | 0 | 5 / 8 / 0 / 0 | |
+| Thieves (the Night-Reed Chapter) | leather | 0 / 1 / 0 / 0 | thieves' set 6 more | own weapons |
+| Sellswords (the Marsh Charter) | bog iron | 2 / 0 / 1 / 0 | 25 / 10 / 1 / 2 | |
+| Khajiit and Bosmer traders | caravan steel | 0 | 8 / 19 / 19 / 2 | Bosmer looks |
+| Kothringi remnants | Kothringi relic | 11 / 1 / 4 / 4 | 13 / 6 / 8 / 4 | |
+| Ayleid and Xanmeer ruins | elven, glass, ebony, Xanmeer relic | 0 / 5 / 8 / 2 | unchanged | weapons are relic-only by design |
+| Cults (bone cultists) | bone plate | 0 | 11 / 0 / 4 / 0 | priests' robes |
+
+Kits and overlays put these where each people is. There are four new kits: thief, sellsword, assassin, and marine
+(Company and Legion crossbowmen). Pirates wear corsair coats first. There are two new households, Khajiit and
+Bosmer. Regions with Khajiit or Bosmer peoples carry caravan steel, and regions with Imperial, outlaw or Dunmer
+peoples trade crossbows.
 
 ## Bands, groups and reach
 
@@ -338,20 +400,44 @@ Already loaded and now filed:
 Heavy Armory's Animated Armoury patch is a FOMOD option of the row: its plugin is never active, so the patch
 changes no record we copy.
 
-**Skipped after looking at them:**
+**Added for breadth** (the owner's ruling of 2026-11-22: breadth first, fit to the feel second, fits if relabelled):
 
-- Silvered Boneweave Arsenal (127 endorsements): silver blades, which read as polished Dunmer work.
-- Tribal Scimitar (372 endorsements): only first-person meshes, so it would be a crude blob in the world.
+| Mod | Nexus | Endorsements | Size | Filed as |
+|---|---|---|---|---|
+| Obsidian Weapons | 42572 | 17 | 34 MB | obsidian, black and clear makes |
+| New Armory: Ash Spawn Weapons | 72728 | 1,340 | 3 MB | ash-glass (obsidian T4, the dull make T3) |
+| Silvered Boneweave Arsenal | 110924 | 127 | 62 MB | coiled bone (bone-plate) |
+| Seagrave Trident | 125243 | 48 | 12 MB | fishbone trident (bone-plate) |
+| Argonian Macuahuitl | 46353 | 198 | 6 MB | flint, T2 |
+| Black Marsh weapons set | 101017 | 18 | 3 MB | flint |
+| Blowgun | 12910 | 558 | 16 MB | wood, crossbow action |
+| Spiked Club, Spiked Mace, Wooden War Club | 68768, 67926, 55676 | 104, 120, 132 | 35 MB | wood and bog iron |
+| Chitin Bow, Ivory Bow | 162526, 115856 | 471, 1,148 | 45 MB | chitin; bone-plate |
+| Bamboo Bows, Bamboo Quarterstaffs | 46406, 8887 | 108, 48 | 66 MB | reed-cane (wood) |
+| Netch Leather (THusky) | 26215 | 858 | 27 MB | netch leather |
+| Redoran Tombwarden Armors | 139546 | 488 | 249 MB | bonemold |
+| Khajiiti Apex Armory 1K | 17114 | 3,850 | 53 MB | caravan steel (new material, T3) |
+| Argonian Funerary Masks 2K | 143402 | 261 | 27 MB | saxhleel |
+| Cyrodiilic Thief Armor | 29667 | 7,068 | 40 MB | leather (the master's set T3) |
+| Redguard Assassin Armor | 61714 | 1,145 | 19 MB | shadowscale |
+| Mercenary Light Iron Armor | 59897 | 1,939 | 51 MB | bog iron |
+| Pirate Armor | 53225 | 549 | 45 MB | corsair |
+| Imperial Guard Centurion | 50410 | (row already held) | | imperial, T3 |
+
+**Left out after looking at them:**
+
+- Tribal Scimitar: only first-person meshes, so it would be a crude blob in the world.
+- The Masque of Argonian Vile: a patch with no gear records.
+- Apex Khajiit's Dro'Zira set and Ash Spawn's enchanted set: daedric and draugr pieces.
 - Pirates Wield Scurvy Cutlasses: textures only, with no records.
-- Maormer Seascale: needs a physics framework we do not load.
-- Seagrave Trident: 48 endorsements, and Heavy Armory covers tridents.
-- Adult-flagged packs and the big generic compilations.
+- Maormer Seascale: needs a physics framework we do not load. Adult-flagged packs.
+- The big compilations: not loaded; their fitting pieces are mostly covered by the packs above.
 
 **Still no model anywhere:**
 
 - crocodile, hackwing and giant-snake hide armour;
 - a turtle-shell shield;
-- an Argonian crossbow;
+- an Argonian-made crossbow (the crossbow is foreign gear);
 - coral, pearl and reed armour;
 - jade weapons;
 - the atlatl, net and gaff;

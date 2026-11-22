@@ -1,3 +1,4 @@
+{"kit_id":"assassin","seq":0,"slot":"heavy","why":"an assassin works light"}
 {"kit_id":"boatman","seq":0,"slot":"heavy","why":"a boatman swims: no heavy armour"}
 {"kit_id":"builder","seq":0,"slot":"heavy","why":"no armour"}
 {"kit_id":"builder","seq":1,"bands":"rare ruin unique","why":"nothing rare"}
@@ -28,6 +29,7 @@
 {"kit_id":"resident","seq":1,"bands":"ruin unique","why":"nothing a household could explain"}
 {"kit_id":"smith","seq":0,"bands":"ruin unique","why":"a smith sells what they make and trade, never relics"}
 {"kit_id":"tanner","seq":0,"slot":"heavy","why":"no heavy armour"}
+{"kit_id":"thief","seq":0,"slot":"heavy","why":"a thief works light"}
 {"kit_id":"trader","seq":0,"slot":"heavy","why":"no armour"}
 {"kit_id":"weaver","seq":0,"slot":"heavy","why":"no armour"}
 {"kit_id":"weaver","seq":1,"slot":"weapon","types":"WeapTypeGreatsword WeapTypeBattleaxe WeapTypeWarhammer","why":"no war weapon"}

@@ -333,3 +333,12 @@ def test_the_widened_ladder_fills_the_named_gaps():
     assert {"sword", "dagger", "mace", "waraxe", "bow"} <= {k for t, s, k, _ in on if t == "T5"}
     assert not [m for t, s, k, m in on if t == "T6" and s == "weapon"]                    # T6 weapons stay relics only
     assert {m for t, s, k, m in on if t == "T2" and s == "light"} - {"saxhleel"}
+
+
+def test_crossbows_are_on_the_ladder():
+    """Dawnguard's crossbow and bolts are itemised as crossbow work, with crossbow stats; the order's armour is not."""
+    gear = {r["item"]: r for r in json.loads((STOCK / "item_material.json").read_text())["gear"]}
+    assert gear["Dawnguard.esm:000801"]["material"] == "crossbow"
+    assert gear["Dawnguard.esm:000BB3"]["material"] == "crossbow"
+    assert not [k for k in gear if k.startswith("Dawnguard.esm:") and "armor" in (gear[k].get("why") or "").lower()]
+    assert json.loads((STOCK / "power.json").read_text())["kinds"]["crossbow"]["stats"]["T2"]["power"] == 19.0

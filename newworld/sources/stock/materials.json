@@ -1042,6 +1042,142 @@
      "why": "the record names pirates or smugglers"
     }
    ]
+  },
+  {
+   "id": "crossbow",
+   "label": "Crossbow work (bog iron and wood)",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "ladder_tier": "T2",
+   "lore": "the crossbow is a foreign weapon in the marsh: Imperial posts, Dunmer holdouts, pirates and Company marines carry it (foreign-powers.md); Dawnguard's crossbow and bolts, whose order's armour stays on the never list",
+   "power": {
+    "weapon": "WeapMaterialSteel",
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "imperial",
+     "why": "Imperial and Company armouries"
+    },
+    {
+     "kind": "people",
+     "value": "dunmer",
+     "why": "Dunmer holdouts"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "culture",
+     "value": "crimson-red",
+     "why": "the Warden Marches' forts are Imperial foundations"
+    },
+    {
+     "kind": "culture",
+     "value": "pale-green",
+     "why": "the Gideon frontier"
+    },
+    {
+     "kind": "culture",
+     "value": "umber",
+     "why": "Soulrest's Imperial-descended administrators"
+    },
+    {
+     "kind": "place-kind",
+     "value": "fort",
+     "why": "a fort"
+    },
+    {
+     "kind": "place-kind",
+     "value": "prison",
+     "why": "a prison"
+    },
+    {
+     "kind": "place-kind",
+     "value": "imperial-ruin",
+     "why": "an Imperial ruin"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(imperial|imperials|legion|legionaries|east empire company|topal bay company|garrison|customs house|penal)\\b",
+     "why": "the record names an Imperial presence"
+    },
+    {
+     "kind": "culture",
+     "value": "stone-grey",
+     "why": "Stormhold's Argonians and Dunmer"
+    },
+    {
+     "kind": "place-kind",
+     "value": "velothi-ruin",
+     "why": "a Velothi ruin"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b",
+     "why": "the record names Dunmer"
+    },
+    {
+     "kind": "place-kind",
+     "value": "outlaw-camp",
+     "why": "a pirate or smuggler camp"
+    },
+    {
+     "kind": "place-kind",
+     "value": "shipwreck",
+     "why": "a wreck"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(pirates?|smugglers?|corsairs?|privateers?|marque)\\b",
+     "why": "the record names pirates or smugglers"
+    },
+    {
+     "kind": "record",
+     "value": "\\b(marines?|company guards?|caravan guards?)\\b",
+     "why": "Company marines or a rich trader's guards"
+    }
+   ]
+  },
+  {
+   "id": "caravan-steel",
+   "label": "Caravan steel (Khajiit and Bosmer traders' make)",
+   "group": "foreign",
+   "band": "situational",
+   "tier": "CANON_DERIVED",
+   "ladder_tier": "T3",
+   "lore": "Khajiit coasters and Bosmer pilots trade along the coasts and rivers (foreign-powers.md, regions.json peoples); their guards' curved steel and padded mail",
+   "power": {
+    "weapon": "WeapMaterialSteel",
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "khajiit",
+     "why": "Khajiit caravans"
+    },
+    {
+     "kind": "people",
+     "value": "bosmer",
+     "why": "Bosmer traders"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "record",
+     "value": "\\b(khajiit\\w*|bosmer|wood elf|wood elves|caravans?|traders?)\\b",
+     "why": "the record names Khajiit, Bosmer or traders"
+    },
+    {
+     "kind": "culture",
+     "value": "gold",
+     "why": "Archon's harbour, where the caravans land"
+    }
+   ]
   }
  ],
  "never": {

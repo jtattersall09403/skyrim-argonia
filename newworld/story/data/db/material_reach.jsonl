@@ -5,11 +5,27 @@
 {"material_id":"bonemold","seq":1,"kind":"place-kind","value":"velothi-ruin","why":"a Velothi ruin"}
 {"material_id":"bonemold","seq":2,"kind":"record","value":"\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b","why":"the record names Dunmer"}
 {"material_id":"bronze","seq":0,"kind":"anywhere","why":"rare: its tier keeps it to the rich and the old"}
+{"material_id":"caravan-steel","seq":0,"kind":"record","value":"\\b(khajiit\\w*|bosmer|wood elf|wood elves|caravans?|traders?)\\b","why":"the record names Khajiit, Bosmer or traders"}
+{"material_id":"caravan-steel","seq":1,"kind":"culture","value":"gold","why":"Archon's harbour, where the caravans land"}
 {"material_id":"chitin","seq":0,"kind":"anywhere","why":"traded: the lead's call 2 (issue #89)"}
 {"material_id":"copper-steel","seq":0,"kind":"anywhere","why":"uncommon; its tier keeps it to the towns"}
 {"material_id":"corsair","seq":0,"kind":"place-kind","value":"outlaw-camp","why":"a pirate or smuggler camp"}
 {"material_id":"corsair","seq":1,"kind":"place-kind","value":"shipwreck","why":"a wreck"}
 {"material_id":"corsair","seq":2,"kind":"record","value":"\\b(pirates?|smugglers?|corsairs?|privateers?|marque)\\b","why":"the record names pirates or smugglers"}
+{"material_id":"crossbow","seq":0,"kind":"culture","value":"crimson-red","why":"the Warden Marches' forts are Imperial foundations"}
+{"material_id":"crossbow","seq":1,"kind":"culture","value":"pale-green","why":"the Gideon frontier"}
+{"material_id":"crossbow","seq":2,"kind":"culture","value":"umber","why":"Soulrest's Imperial-descended administrators"}
+{"material_id":"crossbow","seq":3,"kind":"place-kind","value":"fort","why":"a fort"}
+{"material_id":"crossbow","seq":4,"kind":"place-kind","value":"prison","why":"a prison"}
+{"material_id":"crossbow","seq":5,"kind":"place-kind","value":"imperial-ruin","why":"an Imperial ruin"}
+{"material_id":"crossbow","seq":6,"kind":"record","value":"\\b(imperial|imperials|legion|legionaries|east empire company|topal bay company|garrison|customs house|penal)\\b","why":"the record names an Imperial presence"}
+{"material_id":"crossbow","seq":7,"kind":"culture","value":"stone-grey","why":"Stormhold's Argonians and Dunmer"}
+{"material_id":"crossbow","seq":8,"kind":"place-kind","value":"velothi-ruin","why":"a Velothi ruin"}
+{"material_id":"crossbow","seq":9,"kind":"record","value":"\\b(dunmer|dark elf|dark elves|house dres|redoran|hlaalu|telvanni|velothi)\\b","why":"the record names Dunmer"}
+{"material_id":"crossbow","seq":10,"kind":"place-kind","value":"outlaw-camp","why":"a pirate or smuggler camp"}
+{"material_id":"crossbow","seq":11,"kind":"place-kind","value":"shipwreck","why":"a wreck"}
+{"material_id":"crossbow","seq":12,"kind":"record","value":"\\b(pirates?|smugglers?|corsairs?|privateers?|marque)\\b","why":"the record names pirates or smugglers"}
+{"material_id":"crossbow","seq":13,"kind":"record","value":"\\b(marines?|company guards?|caravan guards?)\\b","why":"Company marines or a rich trader's guards"}
 {"material_id":"daedric","seq":0,"kind":"unique","why":"a row of the world ledger (unique.json)"}
 {"material_id":"dragon","seq":0,"kind":"unique","why":"a row of the world ledger (unique.json)"}
 {"material_id":"ebony","seq":0,"kind":"place-family","value":"ruin","why":"a ruin's hoard"}

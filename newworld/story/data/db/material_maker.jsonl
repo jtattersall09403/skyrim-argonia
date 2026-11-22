@@ -4,9 +4,13 @@
 {"material_id":"bone-plate","kind":"good","value":"bone-and-horn","why":"the bone-workers"}
 {"material_id":"bonemold","kind":"people","value":"dunmer","why":"Morrowind's make"}
 {"material_id":"bronze","kind":"people","value":"argonian","why":"old gear kept and handed down"}
+{"material_id":"caravan-steel","kind":"people","value":"bosmer","why":"Bosmer traders"}
+{"material_id":"caravan-steel","kind":"people","value":"khajiit","why":"Khajiit caravans"}
 {"material_id":"chitin","kind":"people","value":"argonian","why":"bone- and chitin-workers (material-culture.md:63-64)"}
 {"material_id":"chitin","kind":"people","value":"dunmer","why":"Morrowind's own make"}
 {"material_id":"copper-steel","kind":"good","value":"ironwork","why":"the few smiths who edge steel with copper"}
+{"material_id":"crossbow","kind":"people","value":"dunmer","why":"Dunmer holdouts"}
+{"material_id":"crossbow","kind":"people","value":"imperial","why":"Imperial and Company armouries"}
 {"material_id":"flint","kind":"people","value":"argonian","why":"knapped in every village"}
 {"material_id":"flint","kind":"people","value":"naga","why":"the Naga's macahuitl are flint-edged wood"}
 {"material_id":"hide","kind":"people","value":"argonian","why":"every household dresses hide and weaves fibre"}

@@ -347,7 +347,8 @@
    "quarterstaff": {"T1": ["IronQStaff"], "T2": ["SteelQStaff"], "T3": ["ElvenQStaff"], "T4": ["GlassQStaff"], "T5": ["EbonyQStaff"], "T6": ["DaedricQStaff"]},
    "rapier": {"T1": ["IronRapier"], "T2": ["SteelRapier"], "T3": ["ElvenRapier"], "T4": ["GlassRapier"], "T5": ["EbonyRapier"], "T6": ["DaedricRapier"]},
    "whip": {"T1": ["IronWhip"], "T2": ["SteelWhip"], "T3": ["ElvenWhip"], "T4": ["GlassWhip"], "T5": ["EbonyWhip"], "T6": ["DaedricWhip"]},
-   "claw": {"T1": ["IronClaws"], "T2": ["SteelClaws"], "T3": ["ElvenClaws"], "T4": ["GlassClaws"], "T5": ["EbonyClaws"], "T6": ["DaedricClaws"]}
+   "claw": {"T1": ["IronClaws"], "T2": ["SteelClaws"], "T3": ["ElvenClaws"], "T4": ["GlassClaws"], "T5": ["EbonyClaws"], "T6": ["DaedricClaws"]},
+   "crossbow": {"T2": ["DLC1CrossBow"], "T3": ["DLC1CrossBowEnhanced"], "T4": ["DLC1DwarvenCrossBow"], "T5": ["DLC1DwarvenCrossBowEnhanced"]}
   },
   "stat_bases": {
    "dagger": {"T1": "IronDagger", "T2": "SteelDagger", "T3": "ElvenDagger", "T4": "GlassDagger", "T5": "EbonyDagger", "T6": "DaedricDagger"},
@@ -372,10 +373,12 @@
    "quarterstaff": {"T1": "IronQStaff", "T2": "SteelQStaff", "T3": "ElvenQStaff", "T4": "GlassQStaff", "T5": "EbonyQStaff", "T6": "DaedricQStaff"},
    "rapier": {"T1": "IronRapier", "T2": "SteelRapier", "T3": "ElvenRapier", "T4": "GlassRapier", "T5": "EbonyRapier", "T6": "DaedricRapier"},
    "whip": {"T1": "IronWhip", "T2": "SteelWhip", "T3": "ElvenWhip", "T4": "GlassWhip", "T5": "EbonyWhip", "T6": "DaedricWhip"},
-   "claw": {"T1": "IronClaws", "T2": "SteelClaws", "T3": "ElvenClaws", "T4": "GlassClaws", "T5": "EbonyClaws", "T6": "DaedricClaws"}
+   "claw": {"T1": "IronClaws", "T2": "SteelClaws", "T3": "ElvenClaws", "T4": "GlassClaws", "T5": "EbonyClaws", "T6": "DaedricClaws"},
+   "crossbow": {"T2": "DLC1CrossBow", "T3": "DLC1CrossBowEnhanced", "T4": "DLC1DwarvenCrossBow", "T5": "DLC1DwarvenCrossBowEnhanced"}
   },
   "stat_about": "The one Skyrim base each ladder tier takes its stats from, per kind (iron, steel, elven, glass, ebony, daedric weapons; hide, leather, scaled, gilded elven, glass, dragonscale light armour; iron, steel, dwarven, orcish, ebony, daedric heavy armour and shields): an item of our material takes its tier's base's damage or rating, weight and value; its speed and reach stay its type's (`stockdb power` measures them into power.json `stats`; the world build writes them as overrides).",
-  "new_types_about": "Pike, halberd, quarterstaff, rapier, whip and claw have no Skyrim base: their bases are Animated Armoury's (NewArmoury.esp, loaded by the collection) iron, steel, elven, glass, ebony and daedric pieces, measured from its plugin by `stockdb power`."
+  "new_types_about": "Pike, halberd, quarterstaff, rapier, whip and claw have no Skyrim base: their bases are Animated Armoury's (NewArmoury.esp, loaded by the collection) iron, steel, elven, glass, ebony and daedric pieces, measured from its plugin by `stockdb power`.",
+  "crossbow_about": "A crossbow is told apart by its animation type (9); its bases are Dawnguard crossbows, plain to enhanced Dwarven."
  },
  "mix": {
   "about": "The target mix of gear by our material's group (materials.json `groups`), by the place's class; `python -m tools.places stock mix <place>` prints a place's stock against it. A target, never a rule: it says what a place of the class looks like on the whole (issue #89).",

@@ -164,6 +164,8 @@ def power_kind(it: dict) -> str | None:
     kws = set(it.get("keywords") or [])
     sig = it.get("sig") or it.get("record")
     if sig == "WEAP":
+        if it.get("anim") == 9:              # a crossbow carries WeapTypeBow; its animation type tells it apart
+            return "crossbow"
         return next((v for k, v in (WEAP_KINDS_FIRST | WEAP_KINDS).items() if k in kws), None)
     if sig == "ARMO":
         if "ArmorShield" in kws:
@@ -179,7 +181,7 @@ def slot_of(it: dict) -> str | None:
     kind = power_kind(it)
     if kind is None:
         return None
-    if kind in WEAP_KINDS.values() or kind in WEAP_KINDS_FIRST.values():
+    if kind in WEAP_KINDS.values() or kind in WEAP_KINDS_FIRST.values() or kind == "crossbow":
         return "weapon"
     return "shield" if kind == "shield" else kind.split("-", 1)[0]
 
@@ -267,7 +269,9 @@ def misfiled(it: dict) -> str | None:
     on the ladder (the ladder is plain gear), ammunition read as a weapon."""
     edid = it.get("edid") or ""
     kind = power_kind(it)
-    if "Staff" in edid and kind not in (None, "warhammer", "quarterstaff"):
+    row = item_materials()["gear"].get(_key(it))
+    # a cane staff the ladder names as a weapon (a one-handed reed-cane staff, typed as a sword) is no magic staff
+    if "Staff" in edid and kind not in (None, "warhammer", "quarterstaff") and not (row and "Staff" in (row.get("name") or "")):
         return f"{edid} is a magic staff its record types as a {kind}"
     if (it.get("sig") or it.get("record")) == "AMMO" and kind:
         return f"{edid} is ammunition read as a {kind}"

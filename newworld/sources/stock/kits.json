@@ -825,6 +825,174 @@
    ]
   },
   {
+   "id": "thief",
+   "label": "Thief, fence, cutpurse",
+   "match": "\\b(thie(f|ves)|fences?|cutpurses?|burglars?|night-reed)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "bog-iron",
+      "flint",
+      "chitin"
+     ],
+     "why": "a quiet blade"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather",
+      "saxhleel"
+     ],
+     "why": "soft leathers that do not creak"
+    }
+   ],
+   "home": [
+    {
+     "good": "salvage",
+     "why": "the takings"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "a thief works light"
+    }
+   ]
+  },
+  {
+   "id": "sellsword",
+   "label": "Sellsword, caravan guard, hired blade",
+   "match": "\\b(sellswords?|mercenar(y|ies)|caravan guards?|hired (blade|sword)s?|marsh charter)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "bog-iron",
+      "caravan-steel",
+      "imperial"
+     ],
+     "why": "a working sword"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "crossbow",
+      "wood"
+     ],
+     "why": "a crossbow or bow for the road"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "bog-iron",
+      "leather",
+      "caravan-steel"
+     ],
+     "why": "light mail"
+    }
+   ],
+   "home": [
+    {
+     "good": "salvage",
+     "why": "pay in kind"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": []
+  },
+  {
+   "id": "assassin",
+   "label": "Assassin, Shadowscale",
+   "match": "\\b(assassins?|shadowscales?|empty cradle)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "shadowscale",
+      "obsidian",
+      "chitin"
+     ],
+     "why": "a killing blade"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "shadowscale",
+      "leather"
+     ],
+     "why": "dark close-fitting armour"
+    }
+   ],
+   "home": [],
+   "food": [
+    "river-fish"
+   ],
+   "never": [
+    {
+     "slot": "heavy",
+     "why": "an assassin works light"
+    }
+   ]
+  },
+  {
+   "id": "marine",
+   "label": "Company marine, Imperial post soldier",
+   "match": "\\b(marines?|company guards?|east empire|legionar(y|ies)|centurions?)\\b",
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "crossbow"
+     ],
+     "why": "the crossbow, the Company's and the Legion's arm"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "imperial",
+      "corsair"
+     ],
+     "why": "a short sword"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "imperial"
+     ],
+     "why": "Imperial and Company issue"
+    }
+   ],
+   "home": [],
+   "food": [
+    "saltrice"
+   ],
+   "never": []
+  },
+  {
    "id": "pirate",
    "label": "Pirate, smuggler, corsair",
    "match": "\\b(pirate|smuggler|corsair|privateer)s?\\b",
@@ -853,6 +1021,7 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
+      "corsair",
       "leather",
       "imperial"
      ],
@@ -1016,6 +1185,91 @@
      "why": "no Dunmer make in an Imperial household without a reason"
     }
    ]
+  },
+  {
+   "id": "khajiit-household",
+   "label": "A Khajiit trader's household",
+   "races": [
+    "KhajiitRace"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeSword",
+     "materials": [
+      "caravan-steel"
+     ],
+     "why": "a caravan scimitar"
+    },
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeDagger",
+     "materials": [
+      "caravan-steel"
+     ],
+     "why": "a khukuri"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "caravan-steel",
+      "leather"
+     ],
+     "why": "caravan mail"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "goods off the caravans"
+    }
+   ],
+   "food": [
+    "saltrice"
+   ],
+   "never": []
+  },
+  {
+   "id": "bosmer-household",
+   "label": "A Bosmer pilot's household",
+   "races": [
+    "WoodElfRace"
+   ],
+   "carry": [
+    {
+     "slot": "weapon",
+     "typ": "WeapTypeBow",
+     "materials": [
+      "wood",
+      "caravan-steel"
+     ],
+     "why": "a Bosmer's bow"
+    }
+   ],
+   "wear": [
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "leather",
+      "caravan-steel"
+     ],
+     "why": "light leathers"
+    }
+   ],
+   "home": [
+    {
+     "good": "river-goods",
+     "why": "goods off the boats"
+    }
+   ],
+   "food": [
+    "river-fish"
+   ],
+   "never": []
   }
  ]
 }

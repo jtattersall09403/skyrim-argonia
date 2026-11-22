@@ -1,7 +1,14 @@
+{"kit_id":"assassin","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"shadowscale obsidian chitin","why":"a killing blade"}
+{"kit_id":"assassin","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"shadowscale leather","why":"dark close-fitting armour"}
+{"kit_id":"assassin","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"boatman","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone","why":"a rope knife"}
 {"kit_id":"boatman","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"wood","why":"a pole or club"}
 {"kit_id":"boatman","seq":2,"use":"home","good_id":"reed-weaving","why":"rope"}
 {"kit_id":"boatman","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"bosmer-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"wood caravan-steel","why":"a Bosmer's bow"}
+{"kit_id":"bosmer-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather caravan-steel","why":"light leathers"}
+{"kit_id":"bosmer-household","seq":2,"use":"home","good_id":"river-goods","why":"goods off the boats"}
+{"kit_id":"bosmer-household","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"builder","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarAxe","materials":"flint bog-iron bone","why":"an axe for timber"}
 {"kit_id":"builder","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"wood","why":"a maul"}
 {"kit_id":"builder","seq":2,"use":"home","good_id":"timber-and-stone","why":"timber and pegs"}
@@ -60,6 +67,15 @@
 {"kit_id":"imperial-household","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"imperial leather","why":"Imperial light issue"}
 {"kit_id":"imperial-household","seq":2,"use":"home","good_id":"river-goods","why":"Cyrodiilic goods off the roads"}
 {"kit_id":"imperial-household","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"khajiit-household","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"caravan-steel","why":"a caravan scimitar"}
+{"kit_id":"khajiit-household","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"caravan-steel","why":"a khukuri"}
+{"kit_id":"khajiit-household","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"caravan-steel leather","why":"caravan mail"}
+{"kit_id":"khajiit-household","seq":3,"use":"home","good_id":"river-goods","why":"goods off the caravans"}
+{"kit_id":"khajiit-household","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"marine","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"crossbow","why":"the crossbow, the Company's and the Legion's arm"}
+{"kit_id":"marine","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"imperial corsair","why":"a short sword"}
+{"kit_id":"marine","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"imperial","why":"Imperial and Company issue"}
+{"kit_id":"marine","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"overseer","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bog-iron bonemold chitin","why":"a blade to keep order"}
 {"kit_id":"overseer","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeMace","materials":"bog-iron bonemold","why":"a cudgel"}
 {"kit_id":"overseer","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"chitin leather bonemold","why":"light armour"}
@@ -67,7 +83,7 @@
 {"kit_id":"overseer","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"pirate","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"corsair bog-iron","why":"a cutlass or rapier off a taken ship"}
 {"kit_id":"pirate","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"corsair bog-iron","why":"a corsair's knife"}
-{"kit_id":"pirate","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather imperial","why":"what fits off a taken ship"}
+{"kit_id":"pirate","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"corsair leather imperial","why":"what fits off a taken ship"}
 {"kit_id":"pirate","seq":3,"use":"home","good_id":"salvage","why":"the takings"}
 {"kit_id":"pirate","seq":4,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"priest","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bone obsidian","why":"a ritual knife"}
@@ -78,6 +94,11 @@
 {"kit_id":"resident","seq":1,"use":"home","good_id":"river-fish","why":"food"}
 {"kit_id":"resident","seq":2,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"resident","seq":3,"use":"food","good_id":"saltrice","why":"food in the house"}
+{"kit_id":"sellsword","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeSword","materials":"bog-iron caravan-steel imperial","why":"a working sword"}
+{"kit_id":"sellsword","seq":1,"use":"carry","slot":"weapon","typ":"WeapTypeBow","materials":"crossbow wood","why":"a crossbow or bow for the road"}
+{"kit_id":"sellsword","seq":2,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"bog-iron leather caravan-steel","why":"light mail"}
+{"kit_id":"sellsword","seq":3,"use":"home","good_id":"salvage","why":"pay in kind"}
+{"kit_id":"sellsword","seq":4,"use":"food","good_id":"saltrice","why":"food in the house"}
 {"kit_id":"smith","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeWarhammer","materials":"bog-iron","why":"the forge hammer"}
 {"kit_id":"smith","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"a leather apron"}
 {"kit_id":"smith","seq":2,"use":"home","good_id":"ironwork","why":"bog iron and tools"}
@@ -87,6 +108,10 @@
 {"kit_id":"tanner","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather","why":"their own leather"}
 {"kit_id":"tanner","seq":2,"use":"home","good_id":"hide-and-leather","why":"hides and leather"}
 {"kit_id":"tanner","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
+{"kit_id":"thief","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron flint chitin","why":"a quiet blade"}
+{"kit_id":"thief","seq":1,"use":"wear","slot":"light","typ":"ArmorCuirass","materials":"leather saxhleel","why":"soft leathers that do not creak"}
+{"kit_id":"thief","seq":2,"use":"home","good_id":"salvage","why":"the takings"}
+{"kit_id":"thief","seq":3,"use":"food","good_id":"river-fish","why":"food in the house"}
 {"kit_id":"trader","seq":0,"use":"carry","slot":"weapon","typ":"WeapTypeDagger","materials":"bog-iron bone","why":"a belt knife"}
 {"kit_id":"trader","seq":1,"use":"home","good_id":"river-goods","why":"the stall's stock"}
 {"kit_id":"trader","seq":2,"use":"food","good_id":"saltrice","why":"food in the house"}

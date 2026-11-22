@@ -1623,6 +1623,56 @@
      "value": 1250
     }
    }
+  },
+  "crossbow": {
+   "ceiling": {
+    "T2": 19.0,
+    "T3": 19.0,
+    "T4": 22.0,
+    "T5": 22.0
+   },
+   "bases": {
+    "T1": {},
+    "T2": {
+     "DLC1CrossBow": 19.0
+    },
+    "T3": {
+     "DLC1CrossBowEnhanced": 19.0
+    },
+    "T4": {
+     "DLC1DwarvenCrossBow": 22.0
+    },
+    "T5": {
+     "DLC1DwarvenCrossBowEnhanced": 22.0
+    },
+    "T6": {}
+   },
+   "stats": {
+    "T2": {
+     "edid": "DLC1CrossBow",
+     "power": 19.0,
+     "weight": 14.0,
+     "value": 120
+    },
+    "T3": {
+     "edid": "DLC1CrossBowEnhanced",
+     "power": 19.0,
+     "weight": 15.0,
+     "value": 200
+    },
+    "T4": {
+     "edid": "DLC1DwarvenCrossBow",
+     "power": 22.0,
+     "weight": 20.0,
+     "value": 350
+    },
+    "T5": {
+     "edid": "DLC1DwarvenCrossBowEnhanced",
+     "power": 22.0,
+     "weight": 21.0,
+     "value": 550
+    }
+   }
   }
  }
 }
