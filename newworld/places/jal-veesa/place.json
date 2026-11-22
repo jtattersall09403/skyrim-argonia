@@ -886,6 +886,21 @@
     "id": "jal-veesa.ZAQ0NG5NZMT03YQ0PJ4B3YZKC9",
     "fault": "floats",
     "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.LOOK036PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
+   },
+   {
+    "id": "jal-veesa.LOOK037PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
+   },
+   {
+    "id": "jal-veesa.LOOK038PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
    }
   ]
  },
