@@ -11,7 +11,7 @@ import { scaledPrim, wallsOf } from './prims.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
-  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['quests', 'Quests'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'], ['walking', 'Walking'],
+  ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['quests', 'Quests'], ['land', 'Land'], ['paint', 'Paint ground'], ['plants', 'Plants'], ['paths', 'Paths'], ['walking', 'Walking'],
   null, ['needs', 'Story'], ['history', 'History'], ['saves', 'Saves'], ['notes', 'Notes'], ['help', 'Help'],
 ];
 const rnd = (v, k = 100) => Math.round(v * k) / k;
@@ -91,7 +91,7 @@ export class Tools {
     const a = this.app;
     if (view === a.src.view) return a.people.active ? a.people.srcTool : this.srcSelect;
     if (this.placing) return this.placeTool;
-    return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool, quests: a.quests.tool, walking: a.walkTools.tool }[this.current] || this.selectTool;
+    return { select: this.selectTool, search: this.selectTool, land: this.landTool, paint: a.paintTool.tool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool, quests: a.quests.tool, walking: a.walkTools.tool }[this.current] || this.selectTool;
   }
   // Previews under the pen are drawn once per animation frame, however many pen events arrive in it.
   soon(name, fn) {

@@ -1466,3 +1466,46 @@ def test_28_walking_mesh(browser, server):
     assert 'Marked "No walking here"' in h and "Asked to join two walking areas" in h
     assert not pad.errors, pad.errors
     pad.page.context.close()
+
+
+
+# ---------- 29: paint ground: a texture and a brush from the panel, a pen stroke with pressure, undo, redo, save ----------
+def test_29_paint_ground(browser, server):
+    pad = open_pad(browser, server, {"width": 1180, "height": 820})
+    if pad.ev("studio.log.ops.length"):
+        pad.ev("studio.loadSave({ ops: [] })")
+    if pad.ev("!document.getElementById('intro').hidden"):
+        pad.page.click("#intro button")
+    pad.page.click("#rail [data-tool=paint]")
+    swatches = pad.page.locator("#panel-body .paint-swatch")
+    assert swatches.count() >= 1
+    swatches.last.click()
+    key = swatches.last.get_attribute("data-key")
+    pad.page.locator("#panel-body .seg button", has_text="Hard round").click()
+    z = pad.ev("studio.terrain.heightAt(3700, 3700)")
+    look_at(pad, "ours", [3700, 3700, z], dist=4200, pitch=1.15)
+    line = [pad.screen("ours", [3300 + 200 * k, 3700, z]) for k in range(5)]
+    pad.pen_drag(line, pressure=0.9, steps=6)
+    op = pad.ev("studio.log.applied().at(-1)")
+    assert op["op"] == "paint.add" and op["paint"]["texture"] == key and op["paint"]["brush"] == "hard", op
+    pts = op["paint"]["points"]
+    assert len(pts) >= 2 and all(abs(p[2] - 0.9) < 0.01 for p in pts), pts    # the pen's pressure kept with each point
+    assert 3200 < min(p[0] for p in pts) < 3600 and 3800 < max(p[0] for p in pts) < 4200, pts
+    # the land draws it: the painted texture is full under the stroke's middle (the rule the build shares)
+    full = pad.ev("""async (k) => { const { cellPaint } = await import('./js/paint_rule.js');
+                     const c = cellPaint(studio.ours.terrainMesh.paint(), [0, 0]); return c ? c.w.get(k)[29 * 33 + 29] : null; }""", key)
+    assert full is not None and abs(full - 0.8 * (0.5 + 0.5 * 0.9)) < 0.01, full   # strength 80%, pressure 0.9
+    pad.shot("29-paint-ground")
+    # the eraser: a second stroke; undo takes it away, redo brings it back
+    pad.page.locator("#panel-body .seg button", has_text="Eraser").click()
+    pad.pen_drag(line, pressure=0.5, steps=4)
+    op2 = pad.ev("studio.log.applied().at(-1)")
+    assert op2["op"] == "paint.add" and op2["paint"].get("erase") is True and op2["paint"]["id"] > op["paint"]["id"], op2
+    pad.ev("studio.log.undo()")
+    assert pad.ev("studio.model.paint.size") == 1
+    pad.ev("studio.log.redo()")
+    assert pad.ev("studio.model.paint.size") == 2
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=10000)
+    save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
+    assert [o["paint"]["id"] for o in save["ops"] if o["op"] == "paint.add"] == [op["paint"]["id"], op2["paint"]["id"]]
+    assert not pad.errors, pad.errors

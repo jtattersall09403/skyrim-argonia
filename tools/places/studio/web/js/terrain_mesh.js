@@ -1,9 +1,11 @@
 // The land drawn: a mesh per cell at every height point (every other point far away), splatted with the game's
-// land textures near the camera (base per quadrant, alpha layers, paths on top) and coloured by each texture's
+// land textures near the camera (base per quadrant, alpha layers, paths, then the place's ground paint on top:
+// paint_rule.js) and coloured by each texture's
 // average colour far away; water at each cell's water height, shaded by its depth over the land at the shore.
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
 import { cellLayers } from './path_paint.js';
+import { cellPaint } from './paint_rule.js';
 import { worldWaterPatch } from './water.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
@@ -48,8 +50,8 @@ const WATER = ['#3d6f78', '#4a6a5a', '#385f70', '#506b55', '#2f5f73'];
 function waterColour(type) { let h = 0; for (const ch of String(type)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return WATER[h % WATER.length]; }
 
 export class TerrainMesh {
-  constructor(terrain, origin, { paths = () => [], pathStyles = {}, landTex } = {}) {
-    this.t = terrain; this.origin = origin; this.group = new THREE.Group(); this.paths = paths; this.pathStyles = pathStyles;
+  constructor(terrain, origin, { paths = () => [], paint = () => [], pathStyles = {}, landTex } = {}) {
+    this.t = terrain; this.origin = origin; this.group = new THREE.Group(); this.paths = paths; this.paint = paint; this.pathStyles = pathStyles;
     this.lt = landTex; this.cells = new Map(); this.water = new THREE.Group(); this.group.add(this.water);
     this.showChanged = true; this.baked = new Set(); this.queue = []; this.onChange = () => {};
     const g = terrain.grid; this.fine = []; this.coarse = [];
@@ -188,6 +190,7 @@ export class TerrainMesh {
       const e = this.queue.shift();
       const keys = new Set(); for (const q of e.c.quadrants) { keys.add(q.base); for (const l of q.layers) keys.add(l.tex); }
       for (const p of this.paths()) for (const k of this.pathStyles[p.style]?.texs || []) keys.add(k);
+      for (const r of this.paint()) if (r.texture) keys.add(r.texture);
       await Promise.all([...keys].filter(Boolean).map((k) => this.lt?.load(k, this.t.ltex)));
       if (!e.canvas) { e.canvas = document.createElement('canvas'); e.canvas.width = e.canvas.height = TEX_PX; e.tex = new THREE.CanvasTexture(e.canvas); e.tex.colorSpace = THREE.SRGBColorSpace; e.tex.anisotropy = 4; }
       e.mat = e.mat || new THREE.MeshLambertMaterial({ map: e.tex, vertexColors: true });
@@ -236,6 +239,7 @@ export class TerrainMesh {
     // paths are painted as the build paints them (path_paint.js): verge, second track, first track, on the road ramp
     const g = this.t.grid, paths = [];
     for (const p of this.paths()) { const ops = cellLayers(p, e.c.cell, this.t); if (ops) paths.push([p, ops]); }
+    const painted = cellPaint(this.paint(), e.c.cell, this.t.size, g);
     for (let qi = 0; qi < 4; qi++) {
       // canvas y runs north to south; quadrants are SW, SE, NW, NE
       const qx = (qi % 2) * Q, qy = qi < 2 ? Q : 0, q = e.c.quadrants[qi];
@@ -267,12 +271,29 @@ export class TerrainMesh {
           mctx.putImageData(data, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(mask, 0, 0, 17, 17, qx, qy, Q, Q);
         }
       }
+      // the ground paint over it all: what is under it at 1 - its total, each texture at its weight (the canvas
+      // stacks, so each is drawn at weight / (what is under it and the paint up to it))
+      if (painted) {
+        const under = (r, c) => 1 - painted.total[(r0 + r) * g + c0 + c];
+        const acc = new Float32Array(289); for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) acc[r * 17 + c] = under(r, c);
+        for (const [tex, w] of painted.w) {
+          const a = new Float32Array(289);
+          for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) { const i = r * 17 + c, v = w[(r0 + r) * g + c0 + c]; acc[i] += v; a[i] = acc[i] > 1e-6 ? v / acc[i] : 0; }
+          layer((r, c) => a[r * 17 + c], tex, qx, qy, '#6e5a41');
+        }
+      }
     }
     e.tex.needsUpdate = true;
   }
   // Paths drawn again on the land: everywhere, or only in the cells a box [x0, y0, x1, y1] (game units) touches.
   rebakeAll(box = null) {
     const s = this.t.size, hit = (e) => !box || !(box[2] < e.c.cell[0] * s || box[0] > (e.c.cell[0] + 1) * s || box[3] < e.c.cell[1] * s || box[1] > (e.c.cell[1] + 1) * s);
+    // a texture painted for the first time is loaded, then the cells drawn again with it
+    const want = [...new Set(this.paint().map((r) => r.texture).filter((k) => k && this.lt && !this.lt.imgs.has(k)))];
+    if (want.length) {
+      this.paintLoading = (this.paintLoading || 0) + 1;
+      Promise.all(want.map((k) => this.lt.load(k, this.t.ltex))).then(() => { this.paintLoading -= 1; if (!this.disposed) this.rebakeAll(box); });
+    }
     for (const e of this.cells.values()) if (hit(e)) this.splatPaths(e);
     for (const e of this.baked) if (hit(e)) this.bake(e);
     this.onChange();
@@ -292,6 +313,13 @@ export class TerrainMesh {
           for (let k = 0; k < 3; k++) col[i * 3 + k] += (rgb[k] * (vc ? vc[i * 3 + k] / 255 : 1) - col[i * 3 + k]) * o;
         }
       }
+    }
+    const painted = cellPaint(this.paint(), e.c.cell, this.t.size, g);
+    if (painted) for (let i = 0; i < g * g; i++) {
+      const p = painted.total[i]; if (p < 1e-4) continue;
+      const mix = [0, 0, 0];
+      for (const [tex, w] of painted.w) { const rgb = hex(this.lt ? this.lt.avg(tex, this.t.ltex) : '#6e5a41'); for (let k = 0; k < 3; k++) mix[k] += rgb[k] * w[i]; }
+      for (let k = 0; k < 3; k++) col[i * 3 + k] = col[i * 3 + k] * (1 - p) + mix[k] * (vc ? vc[i * 3 + k] / 255 : 1);
     }
     e.farColour = Float32Array.from(col); this.tintCell(e);
   }

@@ -243,7 +243,8 @@ def read_place(pdir: Path) -> dict:
                               "refs": jsonl(d / "refs.jsonl")}
     return {"place": json.loads((pdir / "place.json").read_text()), "spaces": spaces,
             "people": jsonl(pdir / "people.jsonl"), "clear": jsonl(pdir / "clear.jsonl"),
-            "land": jsonl(pdir / "land.jsonl"), "paths": jsonl(pdir / "paths.jsonl"), "walk": jsonl(pdir / "walk.jsonl")}
+            "land": jsonl(pdir / "land.jsonl"), "paths": jsonl(pdir / "paths.jsonl"), "walk": jsonl(pdir / "walk.jsonl"),
+            "paint": jsonl(pdir / "paint.jsonl")}
 
 
 def place_key(pdir: Path, world_key: str) -> str:
@@ -441,7 +442,8 @@ def path_road_set(x: float, y: float) -> tuple[str, str, str]:
     return rp.ROAD_SETS[tx.PROVINCES[tx.PROV[prov - 1]]["road"] if prov else tx.DEFAULT_ROAD]
 
 
-def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dict[tuple[int, int], list[dict]]:
+def plan_paths(paths: list[dict], facts: dict, walked: set | None = None,
+               paint_rows: list[dict] | None = None) -> dict[tuple[int, int], list[dict]]:
     """Paths -> the land textures of every quadrant they reach, painted by the world's road rule
     (tools/newworld/world/roadpaint.py, which the studio's path_paint.js follows): from the path's edge (its half width)
     its straight ramp (full on the path, 0 by 8.55 m out for a road or a street, 6.8 m for a path, a dirt track or a
@@ -454,7 +456,10 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
     are then repainted too, with what the world paints there), so every vertex two quadrants share reads the same
     from both, repainted or not. -> {cell: [{quadrant, base, layers: [{texture, alpha}], paths, dropped}]}.
     `walked`, when given, is filled with the cells the paths themselves cross (a vertex within PATH_WALK_REACH of a
-    path's edge): the cells whose navmesh a path changes. Paint reaches further and changes no navmesh."""
+    path's edge): the cells whose navmesh a path changes. Paint reaches further and changes no navmesh.
+    `paint_rows` (the place's paint.jsonl, tools/places/paint.py) are laid over the world and the paths in the cells they
+    reach: each texture's painted weight added, everything under it times (1 - the paint's total); the painted textures
+    are kept like a path's, and a painted texture a quadrant still cannot keep is a problem."""
     from tools.newworld.world import roadpaint as rp, texture as tx
     ltex = {t["edid"]: t["fk"] for t in facts["ltex"]}
     world_keys = set(ltex.values())
@@ -483,7 +488,13 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
                 problem(f"path {p['id']}: no world land texture for style {style!r} ({', '.join(want)})")
                 continue
         specs.append((p, style, keys, rp.SCALE[rp.STYLE_CLASS.get(style, "minor")]))
-    if not specs:
+    from tools.places import paint as pt
+    painted = pt.plan(paint_rows or [])
+    paint_keys = {k for _, W in painted.values() for k in W}
+    for k in sorted(paint_keys):
+        if k not in world_keys and split_key(k)[0] not in PLACE_MASTERS:
+            problem(f"paint: land texture {k} is in no plugin the place layer loads")
+    if not specs and not painted:
         return {}
     # per cell vertex: the path with the strongest pull there, and its materials' weights
     best: dict[tuple[int, int], dict] = {}
@@ -527,7 +538,16 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
                     cur["w"][k] = np.where(take, 0.0, cur["w"][k])
                 for k, v in zip(keys, (wa, wb, wv)):
                     cur["w"][k] = cur["w"].get(k, np.zeros((VERTS, VERTS))) + np.where(take, v, 0.0)
-    path_keys = {k for _, _, keys, _ in specs for k in keys}
+    # the paint over the paths: everything under it times (1 - its total), its textures' weights added
+    for c, (Pp, Wp) in painted.items():
+        cur = best.setdefault(c, {"pull": np.zeros((VERTS, VERTS)), "w": {}, "paths": set()})
+        cur["paths"].add("paint")
+        for k in list(cur["w"]):
+            cur["w"][k] = cur["w"][k] * (1 - Pp)
+        for k, v in Wp.items():
+            cur["w"][k] = cur["w"].get(k, np.zeros((VERTS, VERTS))) + v
+        cur["pull"] = cur["pull"] * (1 - Pp) + Pp
+    path_keys = {k for _, _, keys, _ in specs for k in keys} | paint_keys
     by_cell = facts.get("by_cell", {})
 
     def world_quadrant(gq):
@@ -562,6 +582,10 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dic
             rest = sorted(tot, key=lambda k: -tot[k])
             keep = list(dict.fromkeys(corners + mine + rest))[:tx.MAXL]
             gone = [k for k in tot if k not in keep]
+            lost = [k for k in gone if k in paint_keys and float(w[k].max()) > 0.25]
+            if lost:
+                problem(f"paint: cell {c} quadrant {q} cannot keep painted {', '.join(lost)} (six land textures a "
+                        "quadrant): paint fewer textures there")
             quads[gq] = {"cell": c, "quadrant": q, "w": w, "keep": keep, "gone": set(gone), "paths": sorted(cur["paths"]),
                          "dropped": float(np.max(sum(w[k] for k in gone))) if gone else 0.0}
     # a quadrant that could not keep a texture: its neighbours are repainted too (with what the world paints there),
@@ -2010,6 +2034,16 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
             path_cells.add(cell_of(x, y))
     ext_cells = {tuple(r["cell"]) for r in S["refs"] if r["space"] == "exterior"}
     land_cells = {tuple(r["cell"]) for r in P["land"]}
+    from tools.places import paint as pt
+    good_paint = []
+    for r in P["paint"]:
+        try:
+            pt.check_row(r)
+            good_paint.append(r)
+        except pt.PaintError as e:
+            problem(f"paint.jsonl: {e}")
+    P["paint"] = good_paint
+    path_cells |= pt.cells_of(P["paint"])
     clear_cells = {cell_of(*r["pos"][:2]) for r in P["clear"]}
     ask = set()
     for c in ext_cells | land_cells | path_cells | clear_cells:
@@ -2021,7 +2055,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         raise SystemExit(f"the world ESM is not of the land build {land_build} its navmesh inputs hold: rebuild the world first")
     land, patched, land_changed = plan_land(P["land"], facts)
     path_walked: set = set()
-    path_layers = plan_paths(P["paths"], facts, path_walked)
+    path_layers = plan_paths(P["paths"], facts, path_walked, P["paint"])
     clear = plan_clear(P["clear"], facts)
     facts["patched"] = patched  # the land as built: people's stops outside are seated on it
     from tools.places import people as ppl

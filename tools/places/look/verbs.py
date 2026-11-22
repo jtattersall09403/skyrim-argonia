@@ -15,7 +15,7 @@ from tools.places.look import canopy, capture, draw, framing, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land")
+HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land", "paint")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -101,6 +101,10 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         return survey.run(d, place, sess["strokes"], args)
     if verb == "pick":
         return pick(d, place, sess["strokes"], args)
+    if verb == "paint" and args[:1] == ["textures"]:   # the palette, no stroke
+        from tools.places.look import paintverb
+        from tools.places.look.scene import data_out
+        return paintverb.run(d.scene(place, sess["strokes"], space), args, data_out())
     if verb in HANDS:
         pos, o = _opts(args, {})
         if "--view" in args:
@@ -979,6 +983,10 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         return _raw_ops(pos)
     if verb == "land":
         return land_ops(sc.files, sc.ground, pos, o)
+    if verb == "paint":
+        from tools.places.look import paintverb
+        from tools.places.look.scene import data_out
+        return paintverb.run(sc, args, data_out())
     th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:

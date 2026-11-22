@@ -360,3 +360,8 @@ ol.needs .row { margin: 8px 0 0; flex-wrap: wrap; }
 .sketch .wm-stroke { stroke-width: 5; stroke-dasharray: 2 6; }
 .sketch .wm-handle { fill: color-mix(in srgb, var(--wm-walk) 25%, transparent); stroke: var(--wm-walk); stroke-width: 3; }
 .sketch .wm-joina { fill: var(--wm-walk); stroke: #fff; stroke-width: 3; }
+/* Paint ground: the texture palette, a grid of pictures with plain names, big enough for a pen */
+.paint-palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+.paint-swatch { display: flex; flex-direction: column; align-items: stretch; gap: 4px; padding: 4px; min-height: 44px; border-radius: 10px; background: var(--panel-2); font-size: 12px; line-height: 1.2; text-align: left; }
+.paint-swatch img, .paint-swatch .noimg { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; background: #6e5a41; display: block; }
+.paint-swatch[aria-selected="true"] { outline: 3px solid var(--accent); }

@@ -89,6 +89,15 @@ and walkway end against what it meets.
   `place.json` `draft.accepted` `[{unit, flag, why}]` (a probe fault in `draft.accepted_faults`, `place-look`).
 - Buried is physical: a piece is buried when nothing of it shows; posts and rock feet in the ground are fine.
 
+- **Ground that reads wrong** (a dry flat still painted as riverbed, a yard that should be bare earth): paint it,
+  `look <place> paint textures` for the palette (the land textures the world and the source use here, most used
+  first), then `look <place> paint <texture> --polygon x,y;x,y;x,y... [--size 384 --softness 0.6]` for an area,
+  `--circle x,y,r` for a patch or `--stroke x,y;x,y;...` along a line, `[--brush soft|hard|scatter] [--strength f]`,
+  always `--why "<why>"`; `paint --erase ...` gives the world's own ground back. A texture is named by key, editor id
+  or one word of it (`river_mud`, `silt`). Each call is one stroke of the session (`undo` takes it back; `--view
+  <view verb>` for a before/after; `commit` writes it to `paint.jsonl`). Choose the source's own texture for what the
+  source shows there, else the world's nearest; no more than six textures meet in one 2048-unit quadrant.
+
 Enforced by the checks: nothing floating, nothing buried (`draft check`; `look probe --all`), the build's `seat`,
 `overlap` and `land` checks, `seat <place_id>` reporting 0 refs moved.
 

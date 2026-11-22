@@ -19,6 +19,9 @@ there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
 --until-feet-buried [--depth 8] [--force]]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
 each takes --view <view verb...> for a before/after.
+Paint (a stroke of the session like the hands): paint textures | paint <texture> (--circle x,y,r | --polygon
+x,y;x,y;... | --stroke x,y[,pressure];...) [--brush soft|hard|scatter] [--size u] [--softness f] [--strength f]
+[--seed n] --why "<why>" | paint --erase (--circle|--polygon|--stroke) ... --why "<why>" (tools/places/look/paintverb.py).
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
 commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
 release <row id> [--space <space>] -m "<why>": give a row an agent's hand placed back to the draft stages.
