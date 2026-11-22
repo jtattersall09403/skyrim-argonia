@@ -15,6 +15,7 @@ import { setupAtlas } from './atlas.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
 import { People } from './people.js';
+import { stateView, defaultState, stateLabel } from './states.js';
 import { Needs } from './needs.js';
 import { Quests } from './quests.js';
 import { Panels, plainKind } from './panels.js';
@@ -158,6 +159,7 @@ class Studio {
     if (!AGENT) this.walkLayer.loadState();
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops)); this.noteBar.render();
+    this.loadStates();
     this.leavePlace();
     this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place'); this._wbk = null;
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
@@ -342,10 +344,55 @@ class Studio {
   // ---------- what each view draws ----------
   refsOf(side) {
     if (side === this.ours) {
-      const placed = [...(this.model.spaces[side.space]?.refs.values() || [])];
+      const placed = this.shownInState([...(this.model.spaces[side.space]?.refs.values() || [])]);
       return side.space === 'exterior' ? [...this.worldRefs, ...placed] : placed;
     }
-    return this.srcBundle.spaces[side.space]?.refs || [];
+    const refs = this.srcBundle.spaces[side.space]?.refs || [];
+    const hid = this.srcStateHidden(); return hid.size ? refs.filter((r) => !hid.has(r.id)) : refs;
+  }
+  // ---------- quest states (states.js): the place as the player sees it in each state a quest puts it in ----------
+  loadStates() {
+    this.states = this.draft?.files?.states || [];
+    const wrap = $('#state-wrap'), sel = $('#state-pick');
+    if (wrap) wrap.hidden = !this.states.length;
+    if (sel) {
+      sel.innerHTML = '';
+      for (const s of this.states) { const o = document.createElement('option'); o.value = s.id; o.textContent = stateLabel(s); sel.append(o); }
+      sel.onchange = () => this.setQuestState(sel.value);
+    }
+    this.setQuestState(defaultState(this.states)?.id || null, { quiet: true });
+  }
+  setQuestState(id, { quiet = false } = {}) {
+    this.stateId = id; this._srcState = null;
+    const st = (this.states || []).find((s) => s.id === id), start = defaultState(this.states);
+    if ($('#state-pick') && id) $('#state-pick').value = id;
+    document.body.dataset.questState = id || '';
+    if (this.log) this.log.state = st && st !== start ? st.id : null;
+    this.computeState();
+    if (this.ours?.place) { this.refreshSide(this.ours); this.people.refresh(); this.quests.refresh(); }
+    if (this.src?.layer && this.srcBundle) this.refreshSide(this.src);
+    if (!quiet && st) this.toast(st === start ? `${st.name}: the place as the game starts.`
+      : `${st.name}: the place as the player sees it then. What you change now is marked as made in this state.`, 5000);
+  }
+  computeState() {
+    const refs = Object.values(this.model?.spaces || {}).flatMap((s) => [...(s.refs?.values() || [])]);
+    this.questState = stateView(this.states || [], this.stateId, refs);
+    return this.questState;
+  }
+  shownInState(refs) {
+    const hid = this.questState?.hidden; return hid?.size ? refs.filter((r) => !hid.has(r.id)) : refs;
+  }
+  // the source shows the same state by its own enable parents: each of our parents carried from a source ref
+  srcStateHidden() {
+    const st = this.questState?.state, bundle = this.srcBundle;
+    if (!st || !bundle) return new Set();
+    if (this._srcState?.bundle === bundle && this._srcState.id === st.id) return this._srcState.hidden;
+    const ours = new Map(Object.values(this.model?.spaces || {}).flatMap((s) => [...(s.refs?.values() || [])]).map((r) => [r.id, r]));
+    const parents = {};
+    for (const [p, on] of Object.entries(st.parents || {})) if (ours.get(p)?.src) parents[ours.get(p).src] = on;
+    const refs = Object.values(bundle.spaces || {}).flatMap((s) => s.refs || []);
+    const hidden = stateView([{ id: st.id, parents }], st.id, refs).hidden;
+    this._srcState = { bundle, id: st.id, hidden }; return hidden;
   }
   placeRefsById() { return this.model.spaces[this.ours.space]?.refs || new Map(); }
   // A placed ref as drawn: seated on the land as it is now.
@@ -406,7 +453,8 @@ class Studio {
         }
         side.world.setRefs(list);
       } else if (side.space !== 'exterior') side.world.setRefs([]);
-      side.place.setRefs([...(this.model.spaces[side.space]?.refs.values() || [])].map((r) => ({ ref: this.seated(r) })));
+      this.computeState();
+      side.place.setRefs(this.shownInState([...(this.model.spaces[side.space]?.refs.values() || [])]).map((r) => ({ ref: this.seated(r) })));
       this.tools.drawSelection();
     } else side.layer.setRefs(this.refsOf(side).map((r) => ({ ref: r })));
     side.view.lighting?.invalidate();   // a light added, moved or taken away lights the night view at once

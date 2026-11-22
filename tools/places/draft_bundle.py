@@ -28,8 +28,8 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 # A bundle ref's kind as the record type the build's room rule reads (tools.places.build.kind_of, inverted)
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
-FILES = ("people", "paths", "clear", "land", "walk", "paint")
-TOOL = "tools/places/draft_bundle.py v5"
+FILES = ("people", "paths", "clear", "land", "walk", "paint", "states")
+TOOL = "tools/places/draft_bundle.py v6"
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 _catalogue: dict = {}
 

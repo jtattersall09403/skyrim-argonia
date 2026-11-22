@@ -9,6 +9,10 @@ Step 7 of the place path ([place-system](../place-system/SKILL.md)). Stages: `pe
 stop), `jail`. Who each person is (name, household's story, trade, wealth) is `place-people`; the draft gives
 placeholder names.
 
+Every promise-list row shown by a `schedule` (a person at a stall, on a watch, asleep at an hour a quest sends
+the player) is delivered here: the person's routine puts them there at that hour, and the row turns `built` naming
+the person.
+
 ## On the source's own furniture
 
 The carried place already holds its people's furniture: beds, the trader's counter, the fire and cook stand, racks,

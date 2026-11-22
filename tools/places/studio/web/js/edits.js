@@ -304,6 +304,7 @@ export class EditLog {
     for (const op of list) {
       op.n = ++this.n; op.at = op.at || new Date().toISOString(); op.space = op.space || space;
       op.call = op.call || 'fault';
+      if (this.state && !op.state) op.state = this.state;   // made while a quest state other than the start is shown
       if (stroke && !op.stroke) op.stroke = stroke;
       applyOp(this.model, op); this.ops.push(op);
     }

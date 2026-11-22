@@ -27,9 +27,10 @@ def out_root(repo: Path = B.ROOT) -> Path:
 def changed_at(root: Path, d: Path) -> float:
     """When a place's files last changed: the later of its last commit and any uncommitted edit (a checkout's
     file times are the checkout's, so the commit time is the honest one). The owner's saves and notes (`edits/`) are
-    records of studio work, not the draft: a save does not make the built check old."""
+    records of studio work, not the draft: a save does not make the built check old. The promise list and the quest
+    states (`promises.jsonl`, `states.jsonl`) are read by the checks, never built into the plugin: they do not either."""
     import subprocess
-    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits"]
+    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits", f":(exclude){rel}/promises.jsonl", f":(exclude){rel}/states.jsonl"]
     try:
         ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
                                   capture_output=True, text=True, timeout=30).stdout.strip() or 0)
@@ -38,7 +39,7 @@ def changed_at(root: Path, d: Path) -> float:
     except (OSError, ValueError, subprocess.SubprocessError):
         ct, dirty = 0.0, "x"
     if dirty or not ct:
-        ct = max([ct] + [f.stat().st_mtime for f in d.rglob("*.json*") if f.relative_to(d).parts[0] != "edits"])
+        ct = max([ct] + [f.stat().st_mtime for f in d.rglob("*.json*") if f.relative_to(d).parts[0] not in ("edits", "promises.jsonl", "states.jsonl")])
     return ct
 
 

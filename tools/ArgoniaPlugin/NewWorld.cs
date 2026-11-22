@@ -50,6 +50,39 @@ static class NewWorld
         public JsonElement Marker => Root.GetProperty("marker");
     }
 
+    // The ground patches' row of cells (tools/newworld/world/patches.py) when one is written, else the fixed base's
+    static string LandRow(Manifest man, string name)
+    {
+        var p = Path.Combine(Path.GetDirectoryName(man.Dir)!, "patch", "land", name);
+        return File.Exists(p) ? p : Path.Combine(man.Dir, name);
+    }
+
+    // The cells the ground patches change, each with its heights (units, [y from the south][x]) from its patched row
+    static Dictionary<(int, int), float[]> PatchedHeights(Manifest man, int cx0)
+    {
+        var got = new Dictionary<(int, int), float[]>();
+        var pm = Path.Combine(Path.GetDirectoryName(man.Dir)!, "patch", "land", "manifest.json");
+        if (!File.Exists(pm)) return got;
+        var cb = 4 + V * V * 4;
+        foreach (var c in JsonDocument.Parse(File.ReadAllText(pm)).RootElement.GetProperty("cells").EnumerateArray())
+        {
+            int x = c[0].GetInt32(), y = c[1].GetInt32();
+            var row = File.ReadAllBytes(LandRow(man, $"cy{(y < 0 ? "-" : "+")}{Math.Abs(y):000}.bin"));
+            int o = (x - cx0) * cb;
+            var dec = new float[V * V];
+            double start = BitConverter.ToSingle(row, o);
+            for (var j = 0; j < V; j++)
+            {
+                start += unchecked((sbyte)row[o + 4 + j * V]);
+                double v = start;
+                dec[j * V] = (float)(v * 8);
+                for (var i = 1; i < V; i++) { v += unchecked((sbyte)row[o + 4 + j * V + i]); dec[j * V + i] = (float)(v * 8); }
+            }
+            got[(x, y)] = dec;
+        }
+        return got;
+    }
+
     static Manifest Load(string path)
     {
         var m = new Manifest(JsonDocument.Parse(File.ReadAllText(path)).RootElement) { Dir = Path.GetDirectoryName(Path.GetFullPath(path))! };
@@ -208,7 +241,7 @@ static class NewWorld
         foreach (var name in man.Root.GetProperty("shards").EnumerateArray().Select(e => e.GetString()!))
         {
             var cy = int.Parse(name[2..^4]);
-            using (var f = File.OpenRead(Path.Combine(man.Dir, name))) f.ReadExactly(buf);
+            using (var f = File.OpenRead(LandRow(man, name))) f.ReadExactly(buf);   // a patched row over the base's
             using (var f = File.OpenRead(Path.Combine(texDir, name))) f.ReadExactly(tbuf);
             for (var i = 0; i < nx; i++, k++)
             {
@@ -722,6 +755,8 @@ static class NewWorld
         if (ws.Climate.IsNull || ws.Water.IsNull) Fail("WRLD climate or water missing");
         if (ws.Parent is not null && !ws.Parent.Worldspace.IsNull) Fail("WRLD has a parent");
         var heights = new Dictionary<(int, int), float[]>();
+        var patched = PatchedHeights(man, cx0);   // a patched cell is held to its patch, every other cell to the base
+        long patchedVerts = 0, patchedOff = 0;
         double maxErr = 0; (int, int) maxAt = default; long over4 = 0, verts = 0, wrongWater = 0, noNormals = 0;
         // the start marker lives persistent in the world's persistent cell (a new game's MoveTo reaches it unloaded)
         IPlacedObjectGetter? marker = ws.TopCell?.Persistent.OfType<IPlacedObjectGetter>().FirstOrDefault(r => r.EditorID == StartMarker);
@@ -750,6 +785,11 @@ static class NewWorld
             }
             if (!heights.TryAdd((x, y), dec)) Fail($"cell {x},{y} twice");
             int north = (cyTop - y) * 32, west = (x - cx0) * 32;
+            if (patched.TryGetValue((x, y), out var want))
+            {
+                for (var p = 0; p < V * V; p++) { patchedVerts++; if (dec[p] != want[p]) patchedOff++; }
+                continue;
+            }
             for (var j = 0; j < V; j++)
                 for (var i = 0; i < V; i++)
                 {
@@ -769,6 +809,8 @@ static class NewWorld
             if (heights.TryGetValue((x, y + 1), out var n)) { seamEdges++; for (var i = 0; i < V; i++) if (d[32 * V + i] != n[i]) { seamBad++; break; } }
         }
         if (seamBad > 0) Fail($"{seamBad} seam mismatches");
+        if (patchedOff > 0) Fail($"{patchedOff} of {patchedVerts} vertices of the {patched.Count} patched cells are not their patch's height");
+        if (patched.Count > 0) Console.WriteLine($"ground patches: {patched.Count} cells held to their patch ({patchedVerts} vertices, {patchedOff} off), every other cell to the base");
         if (over4 > 0) Fail($"{over4} vertices more than half a step from the heightmap (limited or overflowed)");
         if (wrongWater > 0) Fail($"{wrongWater} cells without water height {water}");
         if (noNormals > 0) Fail($"{noNormals} cells without VNML");

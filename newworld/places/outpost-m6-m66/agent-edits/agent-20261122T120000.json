@@ -1,0 +1,213 @@
+{
+ "save_id": "agent-20261122T120000",
+ "place_id": "outpost-m6-m66",
+ "name": "the young Hist's sap pool and its rope lantern put on the living state's enable parent, and the dead twin's lantern on the opposite: in the dead ending the pool goes cold and dark with the tree, and no lantern hangs from a tree that is not there (quest states, hist-living and hist-dead)",
+ "at": "2026-11-22T12:00:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
+   "before": {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "kind": "clutter",
+    "pos": [
+     -44710.57,
+     -538749.89,
+     374.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.70092
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.TF70YOUNGHIST",
+     "dz": 331.9
+    },
+    "why": "a rope lantern on hang point 1 of HistTree04"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "kind": "clutter",
+    "pos": [
+     -44710.57,
+     -538749.89,
+     374.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.70092
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.TF70YOUNGHIST",
+     "dz": 331.9
+    },
+    "why": "a rope lantern on hang point 1 of HistTree04",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+   "before": {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "kind": "clutter",
+    "pos": [
+     -44617.88,
+     -538469.32,
+     328.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.01054
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.TF70YOUNGHISTDEAD",
+     "dz": 286.4
+    },
+    "why": "a rope lantern on hang point 2 of HistTree04Dead"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "kind": "clutter",
+    "pos": [
+     -44617.88,
+     -538469.32,
+     328.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.01054
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.TF70YOUNGHISTDEAD",
+     "dz": 286.4
+    },
+    "why": "a rope lantern on hang point 2 of HistTree04Dead",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "SetEnableStateToOppositeOfParent"
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.sap.TF70YOUNGHIST",
+   "before": {
+    "id": "outpost-m6-m66.sap.TF70YOUNGHIST",
+    "base": "ArgoniaOwn.esp:000A01",
+    "kind": "activator",
+    "pos": [
+     -44738.15,
+     -538610.78,
+     42.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18519
+    ],
+    "scale": 2.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "why": "the sap pool of HistTree04 at its roots (Lore:Hatching_Pools): our ArgoniaHistSapPool, amber Hist sap in a bowl"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m6-m66.sap.TF70YOUNGHIST",
+    "base": "ArgoniaOwn.esp:000A01",
+    "kind": "activator",
+    "pos": [
+     -44738.15,
+     -538610.78,
+     42.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.18519
+    ],
+    "scale": 2.2,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "free"
+    },
+    "why": "the sap pool of HistTree04 at its roots (Lore:Hatching_Pools): our ArgoniaHistSapPool, amber Hist sap in a bowl",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-22T12:00:00Z"
+  }
+ ]
+}

@@ -131,7 +131,7 @@ class Bundles:
             if (d / "spaces" / sid / "terrain.json").exists():
                 rel += [s + "terrain.json", s + "terrain.f32"]
         if bid.startswith("draft."):
-            rel += [f"{f}.jsonl" for f in ("people", "paths", "clear", "land", "walk", "paint")]
+            rel += [f"{f}.jsonl" for f in ("people", "paths", "clear", "land", "walk", "paint", "states")]
         return [r for r in rel if (d / _unenc(r)).is_file()]
 
     def rooms(self) -> list[tuple[str, str]]:

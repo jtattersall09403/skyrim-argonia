@@ -139,7 +139,7 @@ def test_each_stage_reads_the_tables_its_tool_names(s):
     """Every database table the stage's own tool module names is among the stage's reads (or the stage writes the database)."""
     if any(w.startswith("db:") for w in s.writes):
         return
-    read = {r[3:].split("[")[0] for r in s.reads + s.check_reads if r.startswith("db:")}
+    read = {R.table_of(r[3:]) for r in s.reads + s.check_reads if r.startswith("db:")}
     for c in s.cmds + s.checks:
         for m in R.tool_modules(c):
             src = _file(m).read_text()
@@ -159,12 +159,14 @@ def test_every_source_and_table_a_stage_reads_is_in_the_tree():
             if kind == "src" and r not in made:
                 assert tree._files(tree.repo, rest.split("#")[0]), (s.name, r)
             if kind == "db":
-                table, _, cols = rest.partition("[")
+                table, cols = R.table_of(rest), rest.partition("[")[2]
                 p = tree.db / f"{table}.jsonl"
                 assert p.exists(), (s.name, r)
-                first = next((ln for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip()), None)
-                if cols and first:
-                    assert {c.strip().lstrip("-") for c in cols.rstrip("]").split(",")} <= set(json.loads(first)), (s.name, r)
+                named = {k for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip() for k in json.loads(ln)}
+                if cols and named:   # a column a row leaves out when it holds nothing is still the table's
+                    assert {c.strip().lstrip("-") for c in cols.rstrip("]").split(",")} <= named, (s.name, r)
+                if "{" in rest:
+                    assert rest.split("{")[1].split("=")[0] in named, (s.name, r)
 
 
 def test_the_read_backs_groups_are_all_run_by_some_stage_or_machine():
@@ -701,9 +703,12 @@ def touch(t: Tree, spec: str, n: int) -> None:
     if kind == "laid":
         laid(t, x=f"h{n}")
     elif kind == "db":
-        table, _, cols = rest.partition("[")
+        table, cols = R.table_of(rest), rest.partition("[")[2]
         names = [c.strip() for c in cols.rstrip("]").split(",")] if cols else ["id"]
         row = {c.lstrip("-"): "same" if c.startswith("-") else f"v{n}" for c in names} | ({"other": f"v{n}"} if cols.startswith("-") else {})
+        if "{" in rest:                                 # a read of some rows: a row it reads
+            col, vals = rest.split("{")[1].split("}")[0].split("=")
+            row[col] = vals.split("|")[0]
         t.db.mkdir(parents=True, exist_ok=True)
         (t.db / f"{table}.jsonl").write_text(json.dumps(row) + "\n")
     else:

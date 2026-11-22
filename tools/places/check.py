@@ -1357,12 +1357,15 @@ def check_stock(ctx) -> list[str]:
 
 
 def check_promises(ctx) -> list[str]:
-    """The record's promises kept, and the place's promise to be its own: a later place on a shared source says how
+    """The record's promises kept (the stock's deliveries of the plan's gives, and the place's promise list with its
+    quest states: tools/places/promises.py), and the place's promise to be its own: a later place on a shared source says how
     it differs and takes another part or turn (tools/places/draft/differs.py)."""
     from tools.places.draft import differs
     from tools.places.stock import verify
     pdir = Path(ctx.get("place_dir") or B.PLACES / ctx.get("place_id", ""))
-    return verify.check_promises(ctx) + (differs.faults(pdir.name, pdir.parent) if (pdir / "place.json").exists() else [])
+    from tools.places import promises
+    own = promises.faults(pdir.name, pdir) if (pdir / "place.json").exists() else []
+    return verify.check_promises(ctx) + own + (differs.faults(pdir.name, pdir.parent) if (pdir / "place.json").exists() else [])
 
 
 def island_report(ctx, person: str | None = None) -> list[str]:

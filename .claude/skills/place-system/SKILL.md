@@ -38,20 +38,23 @@ record or asset content into a place file.
 | Step | What | Skill |
 |---|---|---|
 | 1 | The place's record: what it is, what it promises, its danger | `place-research` |
-| 2 | Read the record as the brief; choose the source by looking at candidates; pin it; write `draft.plan` | `place-plan` |
+| 2 | Read the record as the brief; make the promise list (record, people, quests, each quest state); choose the source against it; pin it; write `draft.plan` | `place-plan` |
 | 3 | How much of the source's ground to bring; the baseline laid at one transform; the source's rooms, walks and mesh carried; the place fitted to our ground (mounds, sinks, banks) | `place-site` |
 | 4 | Adapt to the record: relabel, prune, move, add (an added building placed where it can be walked to) | `place-adapt` |
 | 5 | Rooms: carried, added from one other source, inner doors, names | `place-rooms` |
 | 6 | The walking mesh carried from the source; what a hand change does to it; spurs to what is added; patrols | `place-streets` |
 | 7 | People on the source's furniture: beds, work spots, sleep, guards, services, the law | `place-routines` |
-| 8 | Quest things and persons placed where a player finds and recognises them; the sight test | `place-story` |
+| 8 | Quest things and persons placed where a player finds and recognises them; the sight test; each quest state built and checkable | `place-story` |
 | 9 | The rules then a look: sap pool, lights, lanterns, stations, collision boxes | `place-dressing` |
 | 10 | Look, probe and act in the studio's 3D scene; the hand-over look | `place-look` (the inner loop of every step) |
-| 11 | Verify once at the end: draft check, seat, build with the carried mesh, the seventeen checks | `place-check` |
+| 11 | Verify once at the end: draft check, seat, build with the carried mesh, the seventeen checks, the promises check green | `place-check` |
 | 12 | Who each person is (names, households), after the people are placed at step 7 | `place-people` |
 | 13 | What the place holds, every promise delivered | `place-stock` |
 | 14 | Any change to a drafted place; the owner's notes and variants | `place-change` |
 | 15 | The owner finalises a save: record, build, lessons, report | `place-lessons` (the finalise chain) |
+
+Steps 3 to 13 build against the promise list: each turns its rows `built` with their evidence, and `draft check`
+fails what is still unsaid or unbuilt, so nothing promised is first found missing at the end.
 
 Which skill for a common job:
 
