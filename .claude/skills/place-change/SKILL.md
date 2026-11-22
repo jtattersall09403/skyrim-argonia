@@ -52,6 +52,12 @@ variant, never over the place.
 - A stroke on an added thing rewrites its `draft.add` row, so the `add` stage places it there.
 - `look <place> release <row id> [--space <space>] -m "<why>"` gives a row back to the stages. An owner's row is
   never released by an agent.
+- An owner's row is changed by an agent only to answer him: his note asks for it ("you should fix ..."), or the lead
+  decides it. Commit those strokes with `look commit --answers <note id>` (or `--lead "<decision>"`); they apply over
+  his edit and the studio shows him each as changed in answer to that note. Against a session he has not saved yet,
+  work on a copy of it (`edits.apply_save` of his autosave on a scratch branch, never committed as his), and keep
+  the answers in `agent-edits/pending/` with `after_save: next`: finalise applies them right after his save. Any
+  other stroke on his rows is refused.
 - An edit made straight in a refs file is no hand: every placement goes through `look commit`.
 - A whole draft on a place holding the owner's finalised saves is refused; it needs `--force "<why no stage can be
   correct>"`, once, with the reason in the commit. A whole redraft only when a narrow change cannot be correct.

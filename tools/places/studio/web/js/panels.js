@@ -560,6 +560,21 @@ export class Panels {
       }
       parts.push(gl);
     }
+    // what the agent changed of your own edits, each in answer to one of your notes (place.json agent_answers)
+    const answers = a.log?.model?.place?.agent_answers || [];
+    if (answers.length) {
+      parts.push(el('<h3>Changed by the agent in answer to your notes</h3>'),
+        el('<p class="tag">Each is a change to something you had placed, made because a note of yours (or the lead\'s decision) asked for it. Select it to look; move it back as you like, and that is your edit.</p>'));
+      const al = el('<ol class="history notes agent-answers"></ol>');
+      for (const x of answers) {
+        const who = x.owner_save === 'lead' ? 'the lead\'s decision' : `your note ${esc(x.answers)}`;
+        const li = el(`<li><span class="what">Changed by the agent in answer to ${who}: "${esc(x.note || '')}"<span class="note">${x.rows.length === 1 ? 'one thing' : `${x.rows.length} things`}</span></span></li>`);
+        const ids = x.rows.filter((id) => a.placeRefsById().has(id));
+        if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; li.append(b); }
+        al.append(li);
+      }
+      parts.push(al);
+    }
     parts.push(el('<h3>Your notes</h3>'), sendBox);
     if (listErr) parts.push(el(`<p>The notes could not be listed: ${esc(listErr.message)}</p>`));
     if (!list.length) parts.push(el('<p class="tag">None yet.</p>'));

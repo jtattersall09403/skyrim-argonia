@@ -274,3 +274,32 @@ def test_drafting_sub_skills_are_passed_to_the_lessons_agent(tmp_path):
     site = tmp_path / ".claude/skills/place-site/SKILL.md"
     assert str(site) in {str(k) for k, _ in _kept(run)}
     assert str(site.parent) in agent_cmd(run, 1.0, 1)
+
+
+def test_the_agents_answers_apply_after_the_save(repo):
+    """An agent save made against the owner's unsaved session waits in agent-edits/pending until his save is
+    finalised; record applies it right after his save: a stroke answering a note (here a lead's decision) moves his
+    row from where he left it; a stroke on his rows that answers nothing is refused and named in the log."""
+    r, agent = repo
+    pend = r / "newworld/places/fixture/agent-edits/pending"
+    pend.mkdir(parents=True)
+    ok = {"op": "ref.move", "space": "exterior", "id": "fix.01", "n": 1, "stroke": 1, "call": "fault", "answers": "lead-1",
+          "before": {"pos": [1000, 1950, 52]}, "after": {"pos": [1000, 1940, 52]}}
+    bad = {"op": "ref.move", "space": "exterior", "id": "fix.10", "n": 2, "stroke": 2, "call": "fault",
+           "before": {"pos": [0, 0, 0]}, "after": {"pos": [1, 0, 0]}}
+    (pend / "agent-1.json").write_text(json.dumps({
+        "save_id": "agent-1", "place_id": "fixture", "name": "answers", "at": "z", "by": "agent", "final": False,
+        "after_save": "next", "ops": [ok, bad],
+        "notes": [{"id": "lead-1", "text": "the lead's decision: walkable for the quest", "at": "z", "by": "lead"}]}))
+    subprocess.run(["git", "-C", str(r), "add", "."], check=True)
+    subprocess.run(["git", "-C", str(r), "commit", "-qm", "pending answers"], check=True)
+    p = run_chain(r, agent)
+    assert p.returncode == 0, p.stderr
+    files = edits.load_place(r / "newworld/places/fixture")
+    got = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == "fix.01")
+    assert got["pos"] == [1000, 1940, 52]
+    assert files["place"]["agent_answers"][0]["answers"] == "lead-1"
+    assert "agent-1" in files["place"]["agent_saves_applied"]
+    assert not pend.exists() or not list(pend.glob("*.json"))
+    log = (r / "out/places/runs/fixture.s1/run.log").read_text()
+    assert "REFUSED" in log and "fix.10" in log
