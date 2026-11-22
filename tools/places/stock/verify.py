@@ -52,6 +52,10 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     sc = split.scale()
     copies_p = Path(str(esp) + ".copies.json")
     copies = json.loads(copies_p.read_text()) if copies_p.exists() else {}
+    # a ladder item the place links to the world file's copy (smithing/copies.json): read as its source, ladder stats
+    smith = frame.ROOT.parent / "out" / "newworld" / "plugin" / "smithing" / "copies.json"
+    if smith.exists():
+        copies.update({v: k for k, v in json.loads(smith.read_text()).items() if not k.startswith("new:")})
 
     def src(k):
         return copies.get(k, k) if isinstance(k, str) else k
@@ -74,7 +78,8 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
             return {"known": False, "significant": False, "value": 0, "tier": "T1", "kind": "?", "never": False, "edid": k}
         kind, sig, _ = split.item_class(it, rules)
         tier = split.item_tier(it, sc)[0]
-        return {"known": True, "significant": sig, "value": it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
+        lad = split.ladder_override(it, sc)
+        return {"known": True, "significant": sig, "value": lad["value"] if lad else it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
                 "sig": it["sig"], "name": it["name"], "never": split.never_reason(it, sc) is not None}
 
     items = {k: info(k) for k in keys if k}

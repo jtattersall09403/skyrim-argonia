@@ -67,7 +67,7 @@ class Picker:
         self.rec, self.scale, self.reach, self.region = rec, scale, reach, region or {}
         self.none_groups: set[str] = set()       # groups the place's expected mix holds at 0% (a tribal camp's metal)
         self.words = [w.lower() for w in scale["never"]["edid_words"]]
-        self.order = {(t["id"], s): t[s] for t in scale["tiers"] for s in ("weapon", "heavy", "light", "shield")}
+        self.order = split.ladder()          # {(tier, slot): materials}: the ladder, derived from each material's tier
         self.by_edid = {}
         self.items = []
         seen = set()
@@ -100,7 +100,7 @@ class Picker:
         region's local ones, then the tier's own order."""
         rank = [t["id"] for t in self.scale["tiers"]]
         for t in reversed(rank[:rank.index(tier) + 1]):
-            base = self.order[(t, slot)]
+            base = self.order.get((t, slot), [])
             local = [m for m in base if self.region.get(m) == "local"]
             order = list(dict.fromkeys([m for m in prefer or [] if m in base] + local + base))
             fit = [i for i in self.items if typ in i["keywords"] and split.slot_of(i) == slot and self.ok(i)

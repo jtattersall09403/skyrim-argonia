@@ -137,6 +137,16 @@ static class Write
         mod.ModHeader.Author = "Argonia";
         mod.ModHeader.Description = "The new world's places: built by tools/places/build.py";
         var fc = new ForeignCopy(mod, Masters.Select(m => ModKey.FromFileName(m)).Append(world.ModKey), C.Data, CopyFirst);
+        // the world file's ladder items (smithing/copies.json beside it): a stock row naming a mod's item gets the
+        // world's copy, with its ladder stats and recipes, never a copy of its own (docs/design/items.md)
+        var smith = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(worldEsm))!, "smithing", "copies.json");
+        if (File.Exists(smith))
+            foreach (var kv in JsonDocument.Parse(File.ReadAllText(smith)).RootElement.EnumerateObject())
+            {
+                if (kv.Name.StartsWith("new:")) continue;
+                FormKey F(string k) { var i = k.LastIndexOf(':'); return FormKey.Factory($"{k[(i + 1)..]}:{k[..i]}"); }
+                fc.Linked[F(kv.Name)] = F(kv.Value.GetString()!);
+            }
         var ctx = new Ctx { Mod = mod, Fc = fc, World = world };
         People.Fc = fc;
         ctx.Allowed.UnionWith(Masters.Select(m => ModKey.FromFileName(m)));

@@ -5,13 +5,16 @@
 {"material_id":"bronze","kind":"people","value":"argonian","why":"old gear kept and handed down"}
 {"material_id":"chitin","kind":"people","value":"argonian","why":"bone- and chitin-workers (material-culture.md:63-64)"}
 {"material_id":"chitin","kind":"people","value":"dunmer","why":"Morrowind's own make"}
+{"material_id":"copper-steel","kind":"good","value":"ironwork","why":"the few smiths who edge steel with copper"}
 {"material_id":"flint","kind":"people","value":"argonian","why":"knapped in every village"}
 {"material_id":"flint","kind":"people","value":"naga","why":"the Naga's macahuitl are flint-edged wood"}
 {"material_id":"hide","kind":"people","value":"argonian","why":"every household dresses hide and weaves fibre"}
 {"material_id":"hide","kind":"people","value":"naga","why":"Naga wear their own hide"}
 {"material_id":"imperial","kind":"culture","value":"pale-green","why":"Gideon's Imperial-descended families"}
 {"material_id":"leather","kind":"people","value":"argonian","why":"tanned wherever hunters bring hides"}
+{"material_id":"masu-plate","kind":"good","value":"ironwork","why":"a master smith"}
 {"material_id":"obsidian","kind":"good","value":"flint-and-obsidian","why":"the few who still knap and set volcanic glass"}
+{"material_id":"saxhleel","kind":"people","value":"argonian","why":"the Saxhleel bone-workers and tanners"}
 {"material_id":"scale","kind":"people","value":"argonian","why":"the tanners and armourers of the towns"}
 {"material_id":"shadowscale","kind":"faction","value":"shadowscale","why":"made for the Shadowscales alone"}
 {"material_id":"shell","kind":"people","value":"argonian","why":"shell-workers of the coasts and rivers"}
