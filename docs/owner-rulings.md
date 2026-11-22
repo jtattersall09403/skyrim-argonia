@@ -100,6 +100,14 @@ added here the day they are made, with the date and the issue.
 - Method changes are applied and recorded without asking; a goal change is an owner call (2026-10-28).
 - The owner judges look; agents check for Nordic tells, never feel (2026-10-30, #43).
 - Agents stop only when the work is complete, a blocker needs the owner, or at a handover the owner asked for.
+- A tool gap met in the work is closed by us: make whatever tool change is needed, then finish the work with
+  it; never hand the owner an item that "needs a tool change" (2026-11-22, #88, on a place's own ground paint).
+- A place's review issue carries only what needs the owner's eye. Working adaptations (houses from a second
+  source beside the main one, posts footed on added rocks where the ground cannot be raised) are always fine and
+  are not flagged (2026-11-22, #88). Decided by the lead, for the owner to confirm: a quest thing is reported
+  only when the player has no marker, journal line or spoken pointer to it; the sight test's bare result is not
+  an owner item. Everything a place's record promises (the eggs in Jal-Veesa's and Teel-Fen Weir's sap pools)
+  is audited against the built place before it lands (2026-11-22, #88).
 
 ## The game
 
