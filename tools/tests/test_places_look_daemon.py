@@ -58,6 +58,26 @@ def test_reap_finds_a_daemon_whose_checkout_is_gone(tmp_path):
             os.killpg(p.pid, 9)
 
 
+def test_reap_finds_a_studio_server_left_in_a_checkout_that_is_gone(tmp_path):
+    """A look daemon's studio server that outlived it in a deleted checkout holds the port the checkout's next daemon
+    needs: it is found and stopped too; a studio in a live checkout is left alone."""
+    gone, live = tmp_path / "gone", tmp_path / "live"
+    gone.mkdir()
+    (live / "tools" / "places").mkdir(parents=True)
+    args = [sys.executable, "-c", "import time; time.sleep(60)", "tools.places", "studio"]
+    p = subprocess.Popen(args, cwd=gone, start_new_session=True)
+    q = subprocess.Popen(args, cwd=live, start_new_session=True)
+    try:
+        gone.rmdir()
+        found = daemon.reap(dry=True)
+        assert any(str(p.pid) in line and "studio server" in line for line in found)
+        assert not any(str(q.pid) in line for line in found)
+    finally:
+        for r in (p, q):
+            if r.poll() is None:
+                os.killpg(r.pid, 9)
+
+
 def test_every_answer_says_which_state_it_drew(monkeypatch):
     monkeypatch.setattr(daemon, "state", lambda place: {"files": "f", "commit": "c", "working_tree": False})
 
@@ -77,3 +97,14 @@ def test_a_studio_left_on_the_port_by_a_dead_daemon_of_this_checkout_is_found():
              (13, ["python", "-m", "tools.places", "studio", "--port", "8765"], "/w/a"),
              (14, ["python", "-m", "tools.places", "look", "p", "probe"], "/w/a")]
     assert daemon.own_stale_servers(procs, "/w/a", 8967) == [11]
+
+
+def test_a_stroke_that_adds_a_piece_from_another_plugin_sends_its_base_to_the_page(monkeypatch):
+    """The page draws a hand-placed piece as its model: the stroke carries the catalogue's base row for what it adds."""
+    from tools.places import draft_bundle
+    tent = {"key": "Other.esp:000001", "model": "argonia/clutter/scaletent02.nif"}
+    monkeypatch.setattr(draft_bundle, "catalogue", lambda path=None: {tent["key"]: tent})
+    ops = [{"op": "ref.add", "ref": {"base": "Other.esp:000001"}}, {"op": "ref.move", "id": "x"},
+           {"op": "ref.add", "ref": {"base": "Gone.esp:000002"}}]
+    assert daemon.Daemon.added_bases(None, ops) == [tent]
+    assert daemon.Daemon.added_bases(None, [{"op": "ref.remove", "id": "y"}]) == []

@@ -38,9 +38,10 @@ def piece(r: dict, bases: dict) -> dict:
             "hi": list((b or STAND_IN)[1]), "door": r.get("door")}
 
 
-def faults(refs: list[dict], bases: dict, G, world_refs: list[dict] = ()) -> list[str]:
+def faults(refs: list[dict], bases: dict, G, world_refs: list[dict] = (), accepted: list[dict] = ()) -> list[str]:
     """Every obviously wrong piece of the exterior rows `refs` over the ground `G`, one line each. `world_refs`: the
-    world's own rows about the place (its trees, rocks), which hold up what hangs on or rests on them, as in probe."""
+    world's own rows about the place (its trees, rocks), which hold up what hangs on or rests on them, as in probe.
+    `accepted`: place.json `draft.accepted_faults`, split off as `probe --all` splits them (look.scene.split_accepted)."""
     bad: list[str] = []
     by_id = {r["id"]: r for r in refs}
     pieces = []
@@ -57,7 +58,9 @@ def faults(refs: list[dict], bases: dict, G, world_refs: list[dict] = ()) -> lis
     ends: dict[str, int] = {}
     world = [dict(p, world=True) for p in (piece(r, bases) for r in look.world_rows(world_refs, bases))
              if p.get("resolved")]
-    for f in look.faults(pieces, G, world):
+    from tools.places.look.scene import split_accepted
+    found, _ = split_accepted(look.faults(pieces, G, world), {"place": {"draft": {"accepted_faults": list(accepted)}}})
+    for f in found:
         i, name = f["id"], f.get("edid") or by_id[f["id"]].get("base")
         if f["fault"] in ("missing base", "unresolved"):
             bad.append(f"{i} ({name}, {by_id[i].get('kind')}) {UNRESOLVED}")

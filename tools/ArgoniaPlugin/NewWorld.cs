@@ -195,6 +195,7 @@ static class NewWorld
         var crittersByCell = Critters(plugDir, fc);
         var harvestByCell = Harvest(plugDir, fc, ids, mod);
         var dressingByCell = Dressing(plugDir, fc);
+        Smithing(plugDir, fc, ids, mod);
         uint refId = IdRefsCounted;
         var given = new HashSet<uint>();
         var mk = man.Marker;
@@ -582,6 +583,22 @@ static class NewWorld
                 l.Add((bk, pos, G("rz"), G("scale"), uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber)));
             }
         return res;
+    }
+
+    // The items ladder (<plugin dir>/smithing/records.json, tools/newworld/world/smithing.py; ItemLadder.cs), when the
+    // world file is to carry it; writes smithing/copies.json (each source key -> our copy's), which the places' build
+    // then links to instead of writing the ladder into the places plugin itself.
+    static void Smithing(string plugDir, ForeignCopy fc, FormIds ids, SkyrimMod mod)
+    {
+        var dir = Path.Combine(plugDir, "smithing");
+        var rj = Path.Combine(dir, "records.json");
+        if (!File.Exists(rj)) return;
+        var kind = fc.Kind;
+        fc.Kind = "base";
+        var (copies, line) = ItemLadder.Write(mod, fc, n => ids.Take("base", n), rj);
+        fc.Kind = kind;
+        File.WriteAllText(Path.Combine(dir, "copies.json"), JsonSerializer.Serialize(copies, new JsonSerializerOptions { WriteIndented = true }));
+        Console.WriteLine("  smithing: " + line);
     }
 
     // The small signature things (<plugin dir>/dressing/cy*.jsonl, tools/newworld/dressing/place.py): one reference a line,

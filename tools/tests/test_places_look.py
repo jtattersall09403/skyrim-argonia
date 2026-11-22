@@ -362,6 +362,24 @@ def _square_floor(z=0.0, size=1000.0):
     return room.Floor([[0, 0, z], [size, 0, z], [size, size, z], [0, size, z]], [[0, 1, 2], [0, 2, 3]])
 
 
+def test_stacked_floors_measure_a_piece_against_the_floor_under_it():
+    from tools.places.look import room
+    v = [[0, 0, 0], [1000, 0, 0], [1000, 1000, 0], [0, 1000, 0],
+         [0, 0, 250], [1000, 0, 250], [1000, 1000, 250], [0, 1000, 250]]
+    f = room.Floor(v, [[0, 1, 2], [0, 2, 3], [4, 5, 6], [4, 6, 7]])    # a hold floor under a deck
+    assert f.height(500, 500) == pytest.approx(250)                   # the walkable top, as before
+    assert f.height_below(500, 500, 10) == pytest.approx(0)            # a crate on the hold floor
+    assert f.height_below(500, 500, 255) == pytest.approx(250)         # a barrel on the deck
+    assert f.height_below(500, 500, -200) == pytest.approx(0)          # under every floor: the lowest
+    lower = [[2000, 0, 0], [3000, 0, 0], [3000, 1000, 0], [2000, 1000, 0]]     # the hold floor walked beside the deck
+    hold = room.Floor(v + lower, [[4, 5, 6], [4, 6, 7], [8, 9, 10], [8, 10, 11], [0, 1, 2]])
+    assert hold.height_below(200, 800, 10) is None       # at floor level under the deck, no hold floor walked there
+    assert hold.height_below(200, 800, -300) == pytest.approx(250)    # in the bilge: against the floor over it
+    cargo = room.Floor(v[:4] + [[2000, 0, -200], [3000, 0, -200], [3000, 1000, -200]], [[0, 1, 2], [0, 2, 3], [4, 5, 6]])
+    assert cargo.height_below(500, 500, -150) is None    # a crate on the lower cargo deck, its mesh cut round the stack
+    assert f.height_below(1500, 500, 0) is None
+
+
 def test_room_names_floor_and_navmesh_rows(tmp_path):
     from tools.places.look import room
     spaces = {"exterior": {"space": None}, "HutA": {"space": {"name": "Vosh-Leera's House"}},
@@ -506,6 +524,11 @@ def test_a_hand_places_any_base_and_a_studio_op_as_one_stroke(tmp_path):
     assert r["scale"] == 1 and op2["ref"]["scale"] == 1
     (op3,) = verbs._hand(sc, "place", ["B:tent", "1,2,300", "--scale", "0.56", "--why", "a tent on a small deck"], sess)
     assert op3["ref"]["scale"] == pytest.approx(0.56)
+    sc.bases = {"B:smoke": {"kind": "static", "model": "effects/ambient/fxsmokelargeclose01.nif"}, "B:egg": {"kind": "static"}}
+    (op4,) = verbs._hand(sc, "place", ["B:smoke", "1,2,300", "--why", "smoke over the fire"], sess)
+    assert op4["ref"]["kind"] == "other"                                 # the base's own kind, not "static"
+    (op5,) = verbs._hand(sc, "place", ["B:egg", "1,2,300", "--within", "p.nest", "--why", "an egg in its nest"], sess)
+    assert op5["ref"]["seat"]["carrier"] == "p.nest" and op5["ref"]["kind"] == "static"
     with pytest.raises(ValueError):
         verbs._hand(sc, "place", ["B:pole", "1,2,300"], sess)          # no reason, no piece
     f = tmp_path / "op.json"

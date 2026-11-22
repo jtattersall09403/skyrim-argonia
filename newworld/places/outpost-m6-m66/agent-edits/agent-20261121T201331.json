@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261121T201331",
+ "place_id": "outpost-m6-m66",
+ "name": "a sword-fern cluster left 0.7 m in the air pruned (probe --all, after the floating-plant fix)",
+ "at": "2026-11-21T20:13:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.4XCF2X85Z32GZ0DZZWWZS6CZCE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.4XCF2X85Z32GZ0DZZWWZS6CZCE",
+    "base": "Skyrim.esm:0B8A59",
+    "kind": "tree",
+    "pos": [
+     -42768.29,
+     -537096.73,
+     88.66
+    ],
+    "rot": [
+     0,
+     0,
+     6.44583
+    ],
+    "scale": 1.39,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE58",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T20:13:31Z"
+  }
+ ]
+}

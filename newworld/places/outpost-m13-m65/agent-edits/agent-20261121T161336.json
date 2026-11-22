@@ -1,0 +1,140 @@
+{
+ "save_id": "agent-20261121T161336",
+ "place_id": "outpost-m13-m65",
+ "name": "the hold's two added bedrolls moved out to the mess tent: the hold's own mesh does not reach them",
+ "at": "2026-11-21T16:13:36Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "01dock3to4",
+   "id": "outpost-m13-m65.LOOK035PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK035PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     2650.0,
+     3250.0,
+     7012.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T16:13:36Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "01dock3to4",
+   "id": "outpost-m13-m65.LOOK036PLACE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m13-m65.LOOK036PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     2650.0,
+     3420.0,
+     7012.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a bedroll of the new gang in the barge's hold, where Dralin locks them in to sleep (main quest 1: I woke in the hold of a barge among a gang of strangers)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T16:13:36Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK038PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100700.0,
+     -527700.0,
+     186.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll under the mess tent's fly, by its trestle tables: fifteen people sleep at the camp (record)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T16:13:36Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK039PLACE",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -100620.0,
+     -527790.0,
+     197.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a cutter's bedroll under the mess tent's fly, by its trestle tables: fifteen people sleep at the camp (record)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T16:13:36Z"
+  }
+ ]
+}

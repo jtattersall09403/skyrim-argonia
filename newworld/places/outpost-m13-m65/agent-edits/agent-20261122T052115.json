@@ -1,0 +1,527 @@
+{
+ "save_id": "agent-20261122T052115",
+ "place_id": "outpost-m13-m65",
+ "name": "north bank eased to a slope and repainted soft; south bank faced with rocks along the water",
+ "at": "2026-11-22T05:21:15Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     9,
+     6,
+     0.0,
+     -6.7
+    ],
+    [
+     9,
+     7,
+     0.0,
+     -28.8
+    ],
+    [
+     9,
+     8,
+     0.0,
+     -8.4
+    ],
+    [
+     10,
+     6,
+     0.0,
+     -26.9
+    ],
+    [
+     10,
+     7,
+     0.0,
+     -69.9
+    ],
+    [
+     10,
+     8,
+     0.0,
+     -30.7
+    ],
+    [
+     11,
+     6,
+     0.0,
+     -6.7
+    ],
+    [
+     11,
+     7,
+     0.0,
+     -28.8
+    ],
+    [
+     11,
+     8,
+     0.0,
+     -8.4
+    ]
+   ],
+   "call": "fault",
+   "note": "the bank north of the landing eased from a sheer step into a sloping shore, so its edge on the water runs free of the ground grid's straight lines",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     7,
+     6,
+     0.0,
+     -6.7
+    ],
+    [
+     7,
+     7,
+     0.0,
+     -28.8
+    ],
+    [
+     7,
+     8,
+     0.0,
+     -8.4
+    ],
+    [
+     8,
+     6,
+     0.0,
+     -26.9
+    ],
+    [
+     8,
+     7,
+     0.0,
+     -69.9
+    ],
+    [
+     8,
+     8,
+     0.0,
+     -30.7
+    ],
+    [
+     9,
+     6,
+     -6.7,
+     -13.4
+    ],
+    [
+     9,
+     7,
+     -28.8,
+     -57.6
+    ],
+    [
+     9,
+     8,
+     -8.4,
+     -16.8
+    ]
+   ],
+   "call": "fault",
+   "note": "the bank north of the landing eased from a sheer step into a sloping shore, so its edge on the water runs free of the ground grid's straight lines",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     5,
+     6,
+     0.0,
+     -6.7
+    ],
+    [
+     5,
+     7,
+     0.0,
+     -28.8
+    ],
+    [
+     5,
+     8,
+     0.0,
+     -8.4
+    ],
+    [
+     6,
+     6,
+     0.0,
+     -26.9
+    ],
+    [
+     6,
+     7,
+     0.0,
+     -69.9
+    ],
+    [
+     6,
+     8,
+     0.0,
+     -30.7
+    ],
+    [
+     7,
+     6,
+     -6.7,
+     -13.4
+    ],
+    [
+     7,
+     7,
+     -28.8,
+     -57.6
+    ],
+    [
+     7,
+     8,
+     -8.4,
+     -16.8
+    ]
+   ],
+   "call": "fault",
+   "note": "the bank north of the landing eased from a sheer step into a sloping shore, so its edge on the water runs free of the ground grid's straight lines",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "land.patch",
+   "cell": [
+    -25,
+    -129
+   ],
+   "verts": [
+    [
+     3,
+     6,
+     0.0,
+     -6.7
+    ],
+    [
+     3,
+     7,
+     0.0,
+     -28.8
+    ],
+    [
+     3,
+     8,
+     0.0,
+     -8.4
+    ],
+    [
+     4,
+     6,
+     0.0,
+     -26.9
+    ],
+    [
+     4,
+     7,
+     0.0,
+     -69.9
+    ],
+    [
+     4,
+     8,
+     0.0,
+     -30.7
+    ],
+    [
+     5,
+     6,
+     -6.7,
+     -13.4
+    ],
+    [
+     5,
+     7,
+     -28.8,
+     -57.6
+    ],
+    [
+     5,
+     8,
+     -8.4,
+     -16.8
+    ]
+   ],
+   "call": "fault",
+   "note": "the bank north of the landing eased from a sheer step into a sloping shore, so its edge on the water runs free of the ground grid's straight lines",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK050PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -102380.0,
+     -529500.0,
+     -45.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK051PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -102130.0,
+     -529470.0,
+     38.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.44346
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK052PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101880.0,
+     -529490.0,
+     88.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53786
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK053PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101630.0,
+     -529460.0,
+     35.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39626
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK054PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101380.0,
+     -529400.0,
+     183.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.49066
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK055PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -101180.0,
+     -529250.0,
+     78.19
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.58505
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -70.0
+    },
+    "why": "the steep earth bank south of the camp faced with rock along the water, as such a bank is dressed (owner ruling 2026-11-21): no sheer stepped earth wall shows",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-22T05:21:15Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0004",
+    "brush": "scatter",
+    "by": "agent",
+    "why": "the eased north bank: soft earth shore in place of the square red riverbed slab, feathered into the bank and the camp",
+    "texture": "ArgoniaNewWorld.esm:01005B",
+    "size": 300.0,
+    "softness": 0.9,
+    "seed": 22023,
+    "polygon": [
+     [
+      -101650.0,
+      -526700.0
+     ],
+     [
+      -101350.0,
+      -526650.0
+     ],
+     [
+      -101250.0,
+      -527000.0
+     ],
+     [
+      -101300.0,
+      -527500.0
+     ],
+     [
+      -101420.0,
+      -527950.0
+     ],
+     [
+      -101620.0,
+      -527900.0
+     ],
+     [
+      -101640.0,
+      -527300.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the eased north bank: soft earth shore in place of the square red riverbed slab, feathered into the bank and the camp",
+   "space": "exterior",
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-22T05:21:15Z"
+  }
+ ]
+}

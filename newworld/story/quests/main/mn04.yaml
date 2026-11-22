@@ -653,7 +653,7 @@ stages:
   - fact.mn04.draught
   - fact.mn04.seal
   directions: Jal-Veesa is west of the camp across the marsh, north of Teel-Fen Weir; Vosh-Leera's House is on the ring
-    of banks round the Hist pool.
+    of banks round the Hist.
   information:
     going: 'The Unbound, led by Cuts-the-Old-Knot, drain trees for a draught to do with "the Eye", and seal the scars. The
       question I carry: why seal a tree they only want sap from?'

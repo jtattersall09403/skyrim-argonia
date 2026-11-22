@@ -12,5 +12,6 @@
     <Compile Include="../../ArgoniaPlugin/ForeignCopy.cs" Link="Shared/ForeignCopy.cs" />
     <Compile Include="../../ArgoniaPlugin/FormIds.cs" Link="Shared/FormIds.cs" />
     <Compile Include="../../ArgoniaPlugin/Survey.cs" Link="Shared/Survey.cs" />
+    <Compile Include="../../ArgoniaPlugin/ItemLadder.cs" Link="Shared/ItemLadder.cs" />
   </ItemGroup>
 </Project>

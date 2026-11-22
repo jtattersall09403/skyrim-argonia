@@ -3,26 +3,48 @@
  "needs": [
   {
    "seq": 0,
-   "from": ["070b695c04"],
+   "from": [
+    "070b695c04"
+   ],
    "thing": "a barge moored in the river pool by the camp, with a furnished hold a person can stand in and a door that locks (Black Marsh & Valenwood's Imperial ship and its hold cell `01dock3to4`)",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m13-m65.9EWV90ZDDA3QMXE0W393QE157M"},
-   "signs": [{"sign": "look", "detail": "Black Marsh & Valenwood's Imperial ship moored against the camp's bank, its hold door on the deck"}],
-   "met": false,
-   "why": "Not met yet. The ship lies moored in the pool by the camp with its furnished hold behind a ship's door, and the cook Okeeh works at the hold's spit pot. But the ship's deck round the hold door is not joined to the bank: two dock pieces run from the ship's lower deck to the bank, and the deck the door opens on has no walked way down to them, so a player who comes out of the hold cannot walk ashore.",
-   "fit": "The barge is the right thing in the right place; only the way ashore is missing.",
-   "narrow": "Yes: a gangway from the deck at the hold door to the bank (the join), or the door moved to the lower deck the gangway already reaches.",
+   "rests": {
+    "space": "exterior",
+    "ref": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3"
+   },
+   "signs": [
+    {
+     "sign": "look",
+     "detail": "Black Marsh & Valenwood's Imperial ship moored along the camp's bank, masts up, its hold door in the waist, a jetty and two planks over its rail to the bank"
+    }
+   ],
+   "met": true,
+   "why": "Met. The barge lies moored in the pool below the camp with its furnished hold, the Barge Hold, behind a door in its waist; from the door a player walks aft over the waist, up a plank over the rail, down onto the jetty and ashore at the landing, where Dralin stands.",
    "tier": "AGENT_INVENTED"
   },
   {
    "seq": 1,
-   "from": ["59ef331161"],
-   "thing": "a strongbox with the easiest lock in the hut, its key on the gang-master's belt",
+   "from": [
+    "6d82ac6d11"
+   ],
+   "thing": "a strongbox with the easiest lock in the hut, its key on the gang-master's belt, holding 100 gold, an iron dagger, a Ring of Minor Health and a scroll each of firebolt and fast healing",
    "line": "main",
-   "rests": {"space": "exterior", "ref": "outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM"},
-   "signs": [{"sign": "label", "detail": "the game shows \"Dralin's Strongbox\" on it"}, {"sign": "beside", "detail": "inside the gang-master's large tent, by his bed"}],
+   "rests": {
+    "space": "AshgateHut",
+    "ref": "outpost-m13-m65.LOOK034PLACE"
+   },
+   "signs": [
+    {
+     "sign": "label",
+     "detail": "the game shows \"Dralin's Strongbox\" on it"
+    },
+    {
+     "sign": "beside",
+     "detail": "in the Gang-Master's Hut, beside his hammock"
+    }
+   ],
    "met": true,
-   "why": "Met. A strongbox named Dralin's Strongbox stands in the gang-master's tent, beside his bed, with a Novice lock (the stock source). The key is the quest's: it is carried by Dralin, whom quest 1 places.",
+   "why": "Met. A strong box named Dralin's Strongbox stands in the Gang-Master's Hut beside his hammock, behind a Novice lock whose key Dralin carries (stock), holding 100 gold, an iron dagger, a Ring of Minor Health and the two scrolls.",
    "tier": "AGENT_INVENTED"
   }
  ]

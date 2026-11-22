@@ -96,6 +96,19 @@ and walkway end against what it meets.
   `place.json` `draft.accepted` `[{unit, flag, why}]` (a probe fault in `draft.accepted_faults`, `place-look`).
 - Buried is physical: a piece is buried when nothing of it shows; posts and rock feet in the ground are fine.
 
+- **Change the ground as little as possible.** The world's ground is generated with care; repaint or reshape it only
+  where a check, a walk fault or a plain visible fault needs it, in the smallest area that does the job. Never paint
+  over the world's ground to tidy it, and where a record's wording is only cosmetic, change the wording
+  ([consistency](../../../docs/design/consistency.md)).
+- **Ground that reads wrong** (a dry flat still painted as riverbed, a yard that should be bare earth): paint it,
+  `look <place> paint textures` for the palette (the land textures the world and the source use here, most used
+  first), then `look <place> paint <texture> --polygon x,y;x,y;x,y... [--size 384 --softness 0.6]` for an area,
+  `--circle x,y,r` for a patch or `--stroke x,y;x,y;...` along a line, `[--brush soft|hard|scatter] [--strength f]`,
+  always `--why "<why>"`; `paint --erase ...` gives the world's own ground back. A texture is named by key, editor id
+  or one word of it (`river_mud`, `silt`). Each call is one stroke of the session (`undo` takes it back; `--view
+  <view verb>` for a before/after; `commit` writes it to `paint.jsonl`). Choose the source's own texture for what the
+  source shows there, else the world's nearest; no more than six textures meet in one 2048-unit quadrant.
+
 Enforced by the checks: nothing floating, nothing buried (`draft check`; `look probe --all`), the build's `seat`,
 `overlap` and `land` checks, `seat <place_id>` reporting 0 refs moved.
 
@@ -110,5 +123,7 @@ check). Run it again after buildings or doors move, then look.
 The source's own pieces stay as they come, lit or unlit as the source has them. Nordic pieces are judged case by
 case: keep one that is nearly fine, take a Tropical Skyrim version or an easy swap where there is one (a piece of
 like size and use, `search query "<what it is>"`, swapped by hand: `look delete` the old, `look place` the new at its
-pose), never laboriously replace; Nordic signs (a Doomstone, a word wall, a shrine of Talos) never stand (the build's `nordic` check).
+pose), never laboriously replace; a piece added from elsewhere that is judged fine gets its looked-at verdict in
+`newworld/places/nordic_review.jsonl` (`neutral`, with what was seen), which a copied room and the build's `nordic`
+check both follow; Nordic signs (a Doomstone, a word wall, a shrine of Talos) never stand (the build's `nordic` check).
 Nothing levelled is ever placed (decision 0035; the build's `levelled` check).

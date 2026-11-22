@@ -1,1146 +1,175 @@
 {
  "place_id": "outpost-m6-m66",
- "source_id": "kingofthemurkmire.marker.ree-an-wo",
- "redraft": {
-  "source_id": "kingofthemurkmire.huluxinoagvillagelocation",
-  "why": "source changed to Huluxinoag 2026-11-21 (its Hist, roots and platforms; Ree-An-Wo's tents added); this draft is still Ree-An-Wo's, kept until it is redrafted"
- },
+ "source_id": "kingofthemurkmire.huluxinoagvillagelocation",
  "similar": [],
  "draft": {
-  "rot_deg": 338,
   "people_from": [
    "kingofthemurkmire.keebahollowlocation",
    "kingofthemurkmire.seekhatyollocation"
   ],
-  "add": [
-   {
-    "base": "King of the Murkmire.esp:0D72B8",
-    "kind": "static",
-    "pos": [
-     -40523,
-     -540117
-    ],
-    "rot_z": 0.0,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the young Hist that grew from Jal-Veesa's roots, standing in the wardens' pool beside the platform where Heem-Jasa tends it (place record: faith note; main quest 3's need: the sealed scar is on its trunk): King of the Murkmire's HistTree04, a young Hist some 6 m tall"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -42750,
-     -543300
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -42542,
-     -543300
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -42334,
-     -543300
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -42126,
-     -543300
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
-   },
-   {
-    "base": "King of the Murkmire.esp:1AD5F2",
-    "kind": "static",
-    "pos": [
-     -41918,
-     -543300
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the woven weir across the creek below the camp's pool (place record: look note, 'a woven weir across the creek'; fishing: 'the traps: eels and carp'): King of the Murkmire's woven Saxhleel fence set in the creek bed"
-   },
-   {
-    "base": "King of the Murkmire.esp:15B1ED",
-    "kind": "tree",
-    "pos": [
-     -44300,
-     -544280
-    ],
-    "rot_z": 0.6,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "the lone dead tree the reed hide stands by, west of the weir: the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need); King of the Murkmire's dead swamp tree"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "static",
-    "pos": [
-     -44000,
-     -544350
-    ],
-    "rot_z": 4.71,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "the hide itself, a scale-hide lean-to of the source's own kind opening east toward the weir: the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need)"
-   },
-   {
-    "base": "Skyrim.esm:0C2C13",
-    "kind": "static",
-    "pos": [
-     -44200,
-     -544420
-    ],
-    "rot_z": 0.3,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "the crate on the hide's open west side that the note and the jars stand on (main quest 3's placements): the Unbound's reed hide beside a lone dead tree west of the weir (place record: hooks and dangers notes; main quest 3's need)"
-   },
-   {
-    "base": "Skyrim.esm:08632A",
-    "kind": "clutter",
-    "pos": [
-     -44250,
-     -544370
-    ],
-    "rot_z": 0.0,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars stacked at the hide, the rest clutter')"
-   },
-   {
-    "base": "Skyrim.esm:08632A",
-    "kind": "clutter",
-    "pos": [
-     -44265,
-     -544470
-    ],
-    "rot_z": 1.2,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars stacked at the hide, the rest clutter')"
-   },
-   {
-    "base": "Dragonborn.esm:039F87",
-    "kind": "container",
-    "pos": [
-     -44150,
-     -544530
-    ],
-    "rot_z": 0.0,
-    "need": 1,
-    "name": "Sap-Takers' Pack",
-    "tier": "AGENT_INVENTED",
-    "why": "the sap-takers' pack at the hide (place record: treasure, 'jars of sap and the sap-takers' packs at the reed hide'): Dragonborn's empty knapsack (King of the Murkmire's own carries a levelled list)"
-   },
-   {
-    "base": "Skyrim.esm:10638E",
-    "kind": "activator",
-    "pos": [
-     -42334,
-     -543600
-    ],
-    "rot_z": 0,
-    "dz": 40,
-    "need": 0,
-    "tier": "AGENT_INVENTED",
-    "why": "the traps on the woven weir (place record: fishing, 'the traps: eels and carp'): a fishing spot set at the weir"
-   },
-   {
-    "base": "Skyrim.esm:01769A",
-    "kind": "static",
-    "pos": [
-     -41250.0,
-     -540250.0
-    ],
-    "rot_z": 2.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the drying rack the camp's cooking pot stands by (place record: cooking-pot 'by the drying rack'; source note: 'Still to add: the drying rack'): Skyrim's fish drying rack, of no hold's kit"
-   },
-   {
-    "base": "King of the Murkmire.esp:05555C",
-    "kind": "static",
-    "pos": [
-     -42650.0,
-     -543215.0
-    ],
-    "rot_z": 0.0,
-    "dz": 40.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
-   },
-   {
-    "base": "King of the Murkmire.esp:05555C",
-    "kind": "static",
-    "pos": [
-     -41950.0,
-     -543215.0
-    ],
-    "rot_z": 0.0,
-    "dz": 58.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (place record: dangers, 'Crocodiles gather under the log boom'; source note: 'the woven weir with its log boom'): King of the Murkmire's long cypress log"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA35",
-    "kind": "static",
-    "pos": [
-     -41380.0,
-     -541380.0
-    ],
-    "rot_z": 0.0,
-    "dz": -83.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the landing: a plank jetty from the west bank into the creek below the camp (source note: 'Still to add: ... the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA35",
-    "kind": "static",
-    "pos": [
-     -41130.0,
-     -541380.0
-    ],
-    "rot_z": 0.0,
-    "dz": -51.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the landing: a plank jetty from the west bank into the creek below the camp (source note: 'Still to add: ... the landing'): King of the Murkmire's mud-hut walkway, the marsh's walkway piece"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "static",
-    "pos": [
-     -43186.23,
-     -540366.54
-    ],
-    "rot_z": 0.0,
-    "scale": 0.6,
-    "on": "outpost-m6-m66.0Y6AVWQXTSH4WPWJCSC22ZB4V2",
-    "dz": 4.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's pale hide tent on the camp's one low cypress deck (place record: look, 'pale hide tents on a small cypress platform round a young Hist'), in place of the tents of the dropped upper storeys"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "static",
-    "pos": [
-     -42934.04,
-     -540359.54
-    ],
-    "rot_z": 0.0,
-    "scale": 0.6,
-    "on": "outpost-m6-m66.6RJBZDHQNGV8T4QRCC7GVYC2SH",
-    "dz": 4.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's pale hide tent on the camp's one low cypress deck (place record: look, 'pale hide tents on a small cypress platform round a young Hist'), in place of the tents of the dropped upper storeys"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -44800,
-     -539500
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44870.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44730.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -44800,
-     -540300
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44870.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44730.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -44300,
-     -539500
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44370.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44230.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -44300,
-     -540300
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44370.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44230.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -43800,
-     -539500
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43870.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43730.0,
-     -539220.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52C",
-    "kind": "building",
-    "pos": [
-     -43800,
-     -540300
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a wardens' hide tent of the camp on the bank west of the platform: twenty-three people live at the weir (place record: population 23; look, 'pale hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43870.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43730.0,
-     -540020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -45000,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44750,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44500,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44250,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -44000,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43750,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43500,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -43250,
-     -539900
-    ],
-    "rot_z": 1.57,
-    "tier": "AGENT_INVENTED",
-    "why": "a warden's bedroll: twenty-three people live at the weir (place record: population 23), so each has a bed, in the open between the tents"
-   }
-  ],
-  "roles": {
-   "apothecary": {
-    "space": "exterior",
-    "pos": [
-     -40780,
-     -539860
-    ]
-   }
-  },
-  "replace": {
-   "King of the Murkmire.esp:005DBA": "King of the Murkmire.esp:B7F081"
-  },
-  "drop": {
-   "King of the Murkmire.esp:855049": "a rock plateau of Ree-An-Wo's own ground (ArgoniaRockPlateau02MarshGrass, 21 by 16 m), standing far out from the camp on our creek's bank, where it sinks 370 into our ground: our ground is not the source's, and the record has no use for it",
-   "King of the Murkmire.esp:85A26D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A28D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A26B": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A273": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27F": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A279": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A282": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A274": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A28A": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A288": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A275": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A271": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27D": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A26E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A284": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A286": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A285": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A278": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A272": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A283": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27A": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A281": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27B": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A26F": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A26C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A276": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A270": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A28E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A27E": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85A28C": "a Xanmeer ruin piece of the source's: Teel-Fen's record has no ruin (look: pale hide tents on a small cypress platform round a young Hist, a woven weir, a reed hide)",
-   "King of the Murkmire.esp:85F6EF": "a smith's grindstone: Teel-Fen's record has no smith and promises no smithing (place record)",
-   "King of the Murkmire.esp:85A2A2": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A264": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A2A3": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A269": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A2A1": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A26A": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A236": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85F6F6": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A247": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A245": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A230": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A243": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A238": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A244": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A231": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A263": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A2A4": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A248": "the upper storeys of the source's four-storey scaffold tower (cluster w01): the record's look is 'pale hide tents on a small cypress platform', so the tower is cut to its lowest deck",
-   "King of the Murkmire.esp:85A246": "a cypress scaffold floor of the source's, hung 7 m up a great tree with nothing under it on our ground (trees hold up no floor), with the two jars on it: the record's camp is on the bank",
-   "King of the Murkmire.esp:85A266": "a jar on the dropped tree-floor (85A246)",
-   "King of the Murkmire.esp:85A265": "a jar on the dropped tree-floor (85A246)"
-  },
   "plan": {
+   "source": "Huluxinoag (King of the Murkmire): the only candidate with a Hist, the place's heart and the quest's object, with its roots and glands in a living and a dead state (the dead state serves the Take and Give endings), platforms, mud-hut walkways, a waterside landing and boats. Ree-An-Wo (palisaded stockade hamlet, no Hist) already serves Reed-Sill Weir and Karsh-Naal Camp and lends only its tents here; argoniaworld-29-29 (no camp) and Black Rose (marble arches) were rejected on looking. No other place is laid from Huluxinoag's exterior (Tailfall Mound takes only its Roots room), so no differs entry is owed. Laid turned 80 degrees at the source's own height so its waterfront wraps our creek head.",
    "look": [
     {
-     "line": "pale hide tents on a small cypress platform round a young Hist",
-     "by": "two King of the Murkmire scale-hide tents (ALPAScaleTent03 at 0.6) on the source's lowest cypress scaffold deck (cluster w01, its upper storeys dropped) by the added young Hist (HistTree04) in its sap pool"
+     "line": "a young Hist",
+     "by": "King of the Murkmire's young Hist (HistTree04) and its dead twin on Huluxinoag's own living/dead enable parent, in place of the source's great Hist, on the camp's west side within the source's walkways"
+    },
+    {
+     "line": "pale hide tents",
+     "by": "three Ree-An-Wo scale-hide tents added on the source's cypress platforms (ALPAScaleTent02 x2, ALPAScaleTent03)"
+    },
+    {
+     "line": "a small cypress platform round the young Hist",
+     "by": "the source's cypress platforms and mud-hut walkways round the Hist, kept as built and seated on our ground"
     },
     {
      "line": "a woven weir across the creek",
-     "by": "5 added woven Saxhleel fences (ALPAFenceWoven04) across the creek"
+     "by": "woven Saxhleel fences (ALPAFenceWoven04) added across the creek below the camp, with a fishing spot at it"
     },
     {
-     "line": "the log boom (source note; dangers)",
-     "by": "2 added long cypress logs floating across the creek above the weir"
-    },
-    {
-     "line": "the drying rack with the cooking pot by it (gives)",
-     "by": "an added fish drying rack (FishRack01) by the source's Argonian cooking pot"
-    },
-    {
-     "line": "the landing (source note)",
-     "by": "2 added mud-hut walkways from the west bank into the creek"
+     "line": "the log boom above the weir",
+     "by": "cypress cut logs added end to end across the creek just above the weir"
     },
     {
      "line": "a reed hide by a lone dead tree on the bank to the west",
-     "by": "the added dead swamp tree with a scale-hide lean-to, crate, jars and the sap-takers' pack"
+     "by": "an added scale-hide lean-to screened with woven reed fences and banked with reeds, beside King of the Murkmire's bare dead swamp tree on the west bank, with a crate, jars and the sap-takers' pack"
     },
     {
-     "line": "the tanning rack on the platform (gives)",
-     "by": "the source's scale tanning rack marker"
+     "line": "the landing (source note)",
+     "by": "the source's waterside platform, plank and boats on our creek head, kept as built"
     },
     {
-     "line": "23 people (population)",
-     "by": "Heem-Jasa, two wardens on watch and twenty residents in the camp's tents and open bedrolls on the bank west of the platform"
+     "line": "the drying rack with the cooking pot by it",
+     "by": "an added fish drying rack beside Ree-An-Wo's Argonian cooking stand and pot over a fire on the bank by the north platform"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "by": "the source's fishing markers and gear on the waterside platform, and a fishing spot added at the weir (the traps: eels and carp)"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "Ree-An-Wo's Argonian cooking pot on its stand, added by the drying rack"
+    },
+    {
+     "kind": "tanning-rack",
+     "by": "Ree-An-Wo's scale tanning rack added on the waterside platform"
+    },
+    {
+     "kind": "trader-apothecary",
+     "by": "Heem-Jasa, the tree's minder, at the Hist with her merchant chest (place-stock)"
+    },
+    {
+     "kind": "trainer",
+     "by": "Heem-Jasa trains Alchemy (place-people)"
+    },
+    {
+     "kind": "combat-foes",
+     "by": "the three Unbound sap-takers of main quest 3 at the reed hide (the quest's own people)"
+    },
+    {
+     "kind": "treasure",
+     "by": "jars of sap and the sap-takers' packs at the reed hide (place-stock)"
     }
    ],
    "structures": [
     {
+     "cluster": "b01",
+     "what": "the Hist with its roots, glands, root bases and the walkways and steps round it",
+     "verdict": "kept",
+     "why": "kept: the walkways, steps and root rocks round the tree; the great Hist (crowns, trunk bases, roots, glands) replaced by a young Hist with its dead twin on the same enable parent; its hall entrance and door to Huluxinoag Roots pruned (no room: the record names none); three tall cliffs whose tops hung over our lower ground pruned"
+    },
+    {
+     "cluster": "b02",
+     "what": "the north cypress platforms: a thatch house and a thatch ruin on their platforms, furniture, crates, the workbench and fishing gear",
+     "verdict": "kept",
+     "why": "kept as platforms with their furniture; the thatch house and ruin shells pruned for hide tents (the record's look)"
+    },
+    {
+     "cluster": "b03",
+     "what": "the south-west cypress platform with a thatch ruin, beds and a bench",
+     "verdict": "kept",
+     "why": "kept and moved up 130 onto our higher ground; the ruin shell pruned for a hide tent over its beds"
+    },
+    {
      "cluster": "landing",
-     "what": "the source's Xanmeer ruin (walls, floors, stairs, columns, busts, rubble)",
-     "verdict": "dropped",
-     "why": "the record has no ruin"
-    },
-    {
-     "cluster": "landing",
-     "what": "the source camp's tents, fences, cooking stand and scaffold decks",
+     "what": "the waterside: boats, a walkway into the water, crates, the map marker",
      "verdict": "kept",
-     "why": "the record's hide tents on a cypress platform"
+     "why": "kept as the record's landing; a boat left on dry mud moved onto the creek; the map marker named Teel-Fen Weir"
     },
     {
-     "cluster": "w01",
-     "what": "a tower of cypress scaffold decks carrying two tents",
+     "cluster": "s01",
+     "what": "stairs, clay mud and gas traps across the source's channel",
      "verdict": "kept",
-     "why": "the record's platform of tents; still far larger than 'small'"
-    },
-    {
-     "cluster": "s06",
-     "what": "a scaffold deck with two tents and fences",
-     "verdict": "kept",
-     "why": "hide tents on a cypress platform"
-    },
-    {
-     "structure": "walls",
-     "what": "Ree-An-Wo's cypress stockade scaffolds, ramps and floors",
-     "verdict": "kept",
-     "why": "they are the record's small cypress platform the tents stand on, not a wall"
-    },
-    {
-     "structure": "mine",
-     "what": "one cypress stockade plank the classifier reads as a mine",
-     "verdict": "kept",
-     "why": "a plank of the camp's platform; the source has no mine here"
-    }
-   ],
-   "source": "Ree-An-Wo kept: hide tents on cypress platforms are what the record asks, and it is the source note's own choice; Left Hand Mine (Nordic) and Black Rose (ruin) are further off; near Loreisian is too small for 23 people. Its four-storey scaffold tower (w01) is still to be cut down to a small platform.",
-   "gives": [
-    {
-     "kind": "fishing",
-     "by": "a fishing spot on the woven weir across the creek (draft.add need 0), where eels and carp are taken"
-    },
-    {
-     "kind": "cooking-pot",
-     "by": "the camp's cooking stand by the drying rack (place.json stations)"
-    },
-    {
-     "kind": "tanning-rack",
-     "by": "the tanning rack on the platform (place.json stations)"
-    },
-    {
-     "kind": "trader-apothecary",
-     "by": "Heem-Jasa, the tree's minder (apothecary, people.jsonl services), selling sap, swamp fungus and eggshells"
-    },
-    {
-     "kind": "trainer",
-     "by": "Heem-Jasa (people.jsonl services: Adept Alchemy trainer)"
-    },
-    {
-     "kind": "combat-foes",
-     "by": "quest 3's own three Unbound sap-takers at a fixed level at the reed hide (quests.jsonl npc.mn03.sap-taker-1..3)"
-    },
-    {
-     "kind": "treasure",
-     "by": "the sap-takers' pack at the reed hide (draft.add need 1), stocked at T2"
+     "why": "kept: the stairs and clay; the gas traps and stage triggers pruned (the record's dangers name none)"
     }
    ]
-  }
+  },
+  "roles": {
+   "apothecary": {
+    "space": "exterior",
+    "pos": [
+     -44380.0,
+     -538470.0
+    ]
+   }
+  },
+  "accepted": [
+   {
+    "unit": "dock.01",
+    "flag": "floor under the ground",
+    "why": "the waterside platforms stand at the creek head's edge: their deck is over the water and the shallow mud, and only their landward corner meets the bank, 29 under its highest point (survey dock.01, sections west-east and south-north); set there so the plank to the north platform meets both decks"
+   },
+   {
+    "unit": "dock.01",
+    "flag": "foot buried deeper than its leg",
+    "why": "the waterside platforms' landward posts run into the rising bank, 11 deeper than their own leg, as the source's posts run into its bank; nothing shows"
+   },
+   {
+    "unit": "hist.07",
+    "flag": "root HistGland03Roots",
+    "why": "the roots hanging from the Hist's glands, as the source hangs them from its tree (scaled with it): they hang in the air under the glands by design"
+   },
+   {
+    "unit": "walkway.02",
+    "flag": "walkway end mismatched",
+    "why": "the plank from the Hist's walkways to the north platform meets its deck 14 under it (units --joints: QWWD4YCMBNK5 meets X6A0XR, dz -14), within a step; the unit's own figure is taken at its other end"
+   },
+   {
+    "unit": "added.small.01",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the south-west cypress platform's deck, not on the ground"
+   },
+   {
+    "unit": "added.small.02",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the waterside cypress platform's deck, not on the ground"
+   },
+   {
+    "unit": "added.small.03",
+    "flag": "foot not reaching the ground",
+    "why": "a scale-hide tent standing on the north cypress platform's deck, not on the ground"
+   }
+  ],
+  "accepted_checks": []
  },
  "fit": {
   "pivot": [
-   -124036.9,
-   -116298.8
+   -124900.0,
+   -142700.0
   ],
   "anchor": [
-   -40389.1,
-   -539061.8
+   -43309.1,
+   -538869.8
   ],
-  "rot_deg": 338.0,
-  "cost": 2829.451,
-  "clusters": {
-   "landing": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -42148.6,
-     -539422.2
-    ],
-    "rot": 5.11381,
-    "dx": -256.0,
-    "dy": 0.0,
-    "drot_deg": -45.0,
-    "cost_before": 765.625,
-    "cost_after": 546.875
-   },
-   "s01": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -36106.4,
-     -542356.9
-    ],
-    "rot": 6.42281,
-    "dx": 768.0,
-    "dy": -256.0,
-    "drot_deg": 30.0,
-    "cost_before": 714.286,
-    "cost_after": 0.0
-   },
-   "s02": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s03": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s04": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40335.6,
-     -538983.4
-    ],
-    "rot": 5.76831,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": -7.5,
-    "cost_before": 83.333,
-    "cost_after": 66.667
-   },
-   "s05": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -45334.3,
-     -538194.0
-    ],
-    "rot": 5.11381,
-    "dx": -1024.0,
-    "dy": 512.0,
-    "drot_deg": -45.0,
-    "cost_before": 333.333,
-    "cost_after": 0.0
-   },
-   "s06": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s08": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s09": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "s10": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -41029.3,
-     -539182.2
-    ],
-    "rot": 5.37561,
-    "dx": 256.0,
-    "dy": -512.0,
-    "drot_deg": -30.0,
-    "cost_before": 454.545,
-    "cost_after": 90.909
-   },
-   "w01": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -538165.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": -128.0,
-    "drot_deg": 0.0,
-    "cost_before": 125.0,
-    "cost_after": 125.0
-   },
-   "w02": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 1000.0,
-    "cost_after": 1000.0
-   },
-   "w03": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "w04": {
-    "pivot": [
-     -124036.9,
-     -116298.8
-    ],
-    "to": [
-     -40389.1,
-     -539061.8
-    ],
-    "rot": 5.89921,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 1000.0,
-    "cost_after": 1000.0
-   }
-  },
-  "separated": [
-   {
-    "cluster": "s04",
-    "dx": 73.5,
-    "dy": 177.4,
-    "clear_of": "landing"
-   },
-   {
-    "cluster": "w01",
-    "dx": 0.0,
-    "dy": 1024.0,
-    "clear_of": "s06"
-   }
-  ],
-  "clusters_info": [
-   {
-    "id": "landing",
-    "kind": "landing",
-    "head": null,
-    "members": 79,
-    "centre": [
-     -125078.0,
-     -118029.9
-    ]
-   },
-   {
-    "id": "s01",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -130691.8,
-     -122322.6
-    ]
-   },
-   {
-    "id": "s02",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -125370.1,
-     -112187.7
-    ]
-   },
-   {
-    "id": "s03",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -118902.6,
-     -114779.2
-    ]
-   },
-   {
-    "id": "s04",
-    "kind": "street",
-    "head": null,
-    "members": 12,
-    "centre": [
-     -123421.5,
-     -116764.9
-    ]
-   },
-   {
-    "id": "s05",
-    "kind": "street",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -127959.4,
-     -119627.1
-    ]
-   },
-   {
-    "id": "s06",
-    "kind": "street",
-    "head": null,
-    "members": 17,
-    "centre": [
-     -127478.2,
-     -117314.4
-    ]
-   },
-   {
-    "id": "s08",
-    "kind": "street",
-    "head": null,
-    "members": 2,
-    "centre": [
-     -121471.1,
-     -118365.6
-    ]
-   },
-   {
-    "id": "s09",
-    "kind": "street",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -129968.8,
-     -119140.3
-    ]
-   },
-   {
-    "id": "s10",
-    "kind": "street",
-    "head": null,
-    "members": 3,
-    "centre": [
-     -125683.1,
-     -117226.2
-    ]
-   },
-   {
-    "id": "w01",
-    "kind": "wet",
-    "head": null,
-    "members": 33,
-    "centre": [
-     -126948.5,
-     -117545.7
-    ]
-   },
-   {
-    "id": "w02",
-    "kind": "wet",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -118835.0,
-     -122500.4
-    ]
-   },
-   {
-    "id": "w03",
-    "kind": "wet",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -120046.6,
-     -112132.5
-    ]
-   },
-   {
-    "id": "w04",
-    "kind": "wet",
-    "head": null,
-    "members": 1,
-    "centre": [
-     -129276.4,
-     -111285.2
-    ]
-   }
-  ],
+  "rot_deg": 80,
+  "cost": 0.0,
+  "clusters": {},
+  "separated": [],
+  "clusters_info": [],
   "relief_norm": 64.0,
   "patch_max": 105.0
- },
- "clearance": {
-  "tree": {
-   "building": 55.1,
-   "door": 211.5,
-   "street": 128.4,
-   "samples": 252
-  },
-  "low": {
-   "building": 768.0,
-   "door": 111.2,
-   "street": 57.1,
-   "samples": 64
-  }
  },
  "factions": [
   {
@@ -1153,7 +182,7 @@
     "return": "outpost-m6-m66.AK1GWM5MSAQRNZ6SGRY4J1M0NT",
     "bed": "outpost-m6-m66.YTSFPTPFNAPWSXQPJKBTQ9FGNG",
     "stolen": "outpost-m6-m66.BMFRARB74875FFWDVTD53KYAXX",
-    "work_at": "the work stop 2 of the place's people share, on the nearest street with footing"
+    "work_at": "the work stop 1 of the place's people share"
    },
    "law": "native",
    "law_why": "Argonian law, no cell: Veesa-Teeleel weir-wardens"
@@ -1183,6 +212,86 @@
    "person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V"
   }
  ],
+ "ground": {
+  "bundle": "ground.outpost-m6-m66",
+  "sha": "8e7fc35f50767b002d6d75f9d8459c0c76a15dee44e9629a2949eac1ced79823",
+  "stamp": "1e55808f3184277b"
+ },
+ "radius_m": 65,
+ "wholesale": {
+  "offset": 0.0,
+  "band": 664.0,
+  "pieces": 176,
+  "dropped": 70,
+  "raised_max": 210.6,
+  "lowered_max": 147.9,
+  "band_steepest_deg": 20.9,
+  "source_water_area_m2": 1174,
+  "held_by_water": 2,
+  "laid": "2026-11-21T15:01:39Z"
+ },
+ "agent_saves_applied": [
+  "agent-20261121T150341",
+  "agent-20261121T150431",
+  "agent-20261121T150648",
+  "agent-20261121T152009",
+  "agent-20261121T152114",
+  "agent-20261121T152629",
+  "agent-20261121T153945",
+  "agent-20261121T160535",
+  "agent-20261121T160841",
+  "agent-20261121T163626",
+  "agent-20261121T170630",
+  "agent-20261121T172846",
+  "agent-20261121T182331",
+  "agent-20261121T184007",
+  "agent-20261121T193243",
+  "agent-20261121T201331",
+  "agent-20261121T205527",
+  "agent-20261121T205650",
+  "agent-20261121T211426",
+  "agent-20261121T212737",
+  "agent-20261122T033055"
+ ],
+ "sap": {
+  "added": [
+   {
+    "id": "outpost-m6-m66.sap.TF70YOUNGHIST",
+    "on": "TF70YOUNGHIST"
+   }
+  ]
+ },
+ "clearance": {
+  "tree": {
+   "building": 0.0,
+   "door": 51.1,
+   "street": 0.0,
+   "samples": 112
+  },
+  "low": {
+   "building": 210.5,
+   "door": 487.2,
+   "street": 0.0,
+   "samples": 31
+  }
+ },
+ "hang": {
+  "added": [
+   {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHIST.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "on": "outpost-m6-m66.TF70YOUNGHIST"
+   },
+   {
+    "id": "outpost-m6-m66.hang.TF70YOUNGHISTDEAD.0",
+    "base": "King of the Murkmire.esp:1A845D",
+    "on": "outpost-m6-m66.TF70YOUNGHISTDEAD"
+   }
+  ]
+ },
+ "lights": {
+  "added": []
+ },
  "stations": {
   "needed": [
    "cooking-pot",
@@ -1190,68 +299,13 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m6-m66.VQHCG9NFJASJMQ0G2VYY8JHYVQ"
+    "outpost-m6-m66.TF29POT"
    ],
    "tanning-rack": [
-    "outpost-m6-m66.G2SVD727X29WD3AMEVP8X75B8P"
+    "outpost-m6-m66.TF33TANNING"
    ]
   },
-  "missing": [],
   "added": [],
-  "rent_bed": null
- },
- "lights": {
-  "added": []
- },
- "hang": {
-  "added": [
-   {
-    "id": "outpost-m6-m66.hang.S60W22PPW4P7EYP4N7K13VYA9J.0",
-    "base": "King of the Murkmire.esp:2F01D6",
-    "on": "outpost-m6-m66.S60W22PPW4P7EYP4N7K13VYA9J"
-   }
-  ]
- },
- "ground": {
-  "bundle": "ground.outpost-m6-m66",
-  "sha": "8e7fc35f50767b002d6d75f9d8459c0c76a15dee44e9629a2949eac1ced79823",
-  "stamp": "1e55808f3184277b"
- },
- "source": {
-  "bundle": "src.kingofthemurkmire.marker.ree-an-wo",
-  "stamp": "cb1702a0d6ffd6d9"
- },
- "radius_m": 150,
- "counts": {
-  "source_refs": 477,
-  "placed": 29,
-  "adapted": 128,
-  "replaced": 1,
-  "dropped": 319,
-  "exterior_refs": 177,
-  "clusters": 14,
-  "land_patches": 0,
-  "plants_cleared": 53,
-  "paths": 2,
-  "interiors": 0,
-  "people": {
-   "apothecary": 1,
-   "guard": 2
-  },
-  "beds": 0
- },
- "draft_key": "b33686fb48c72e30",
- "sap": {
-  "added": [
-   {
-    "id": "outpost-m6-m66.sap.S60W22PPW4P7EYP4N7K13VYA9J",
-    "on": "S60W22PPW4P7EYP4N7K13VYA9J"
-   }
-  ]
- },
- "steps": {
-  "kit": [
-   "King of the Murkmire.esp:025C36"
-  ]
+  "missing": []
  }
 }

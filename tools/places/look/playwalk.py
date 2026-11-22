@@ -72,6 +72,7 @@ FURNITURE_RE = re.compile(r"bed|chair|bench|stool|table|throne|workbench|chest|b
                           r"cupboard|endtable|counter|desk|crafting|anvil|forge|grindstone|smelter|tanning|alchemy|"
                           r"enchant|cookingpot|spit|sitmarker|sleep", re.I)
 STALL_RE = re.compile(r"stall|market|merchant", re.I)
+from tools.places.classify import HULL_WORDS  # noqa: E402  the one classifier's list of ship and boat words
 HIST_RE = re.compile(r"histtree|^hist\d", re.I)    # the Hist itself (its roots and glands are its dressing)
 
 
@@ -491,6 +492,12 @@ def classify(look: str, what: str, ev: dict, inside: bool = False) -> dict:
         ev = dict(ev, all_inside=None, inside=None)
     if ev.get("all_inside"):
         p = ev["all_inside"]
+        if look in ("ahead", "down") and what.startswith("at the Hist") and HIST_RE.search(str(p)):
+            # the stop is the tree itself: the way ends at its foot, where the trunk fills the view ahead
+            return {"verdict": "failed", "fault": "capture", "why": f"the eye stands at the foot of {p}, the stop's own tree, which fills the view {look}"}
+        if look in ("ahead", "down") and any(w in str(p).lower() for w in HULL_WORDS):
+            # a ship's waist deck lies within its hull's shape: the way is on the deck the hull holds, not through it
+            return {"verdict": "failed", "fault": "capture", "why": f"the eye stands on the deck within {p}'s hull, which fills the view {look}"}
         if look in ("ahead", "down"):
             return {"verdict": "failed", "fault": "place", "why": f"the way passes through {p}: every spot near the station is inside it"}
         return {"verdict": "failed", "fault": "capture", "why": f"the eye stands against {p}, which fills the view {look}"}

@@ -19,6 +19,9 @@ there, then behind).
 Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
 --until-feet-buried [--depth 8] [--force]]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
 each takes --view <view verb...> for a before/after.
+Paint (a stroke of the session like the hands): paint textures | paint <texture> (--circle x,y,r | --polygon
+x,y;x,y;... | --stroke x,y[,pressure];...) [--brush soft|hard|scatter] [--size u] [--softness f] [--strength f]
+[--seed n] --why "<why>" | paint --erase (--circle|--polygon|--stroke) ... --why "<why>" (tools/places/look/paintverb.py).
 undo; snapshot <name>; restore <name>; compare <a|now> <b|now> <view verb...>; reset; status; stop.
 commit -m "<why>": the session into the place files as the agent's draft edits (never over an owner's row).
 release <row id> [--space <space>] -m "<why>": give a row an agent's hand placed back to the draft stages.
@@ -97,6 +100,8 @@ def ensure() -> float:
             break
         time.sleep(0.1)
     t0 = time.time()
+    from tools.places.look import daemon as _daemon
+    _daemon.reap()   # what a deleted checkout left running (a studio on this checkout's port) goes first
     LOOK_OUT.mkdir(parents=True, exist_ok=True)
     log = open(LOOK_OUT / "daemon.log", "a")
     subprocess.Popen([sys.executable, "-m", "tools.places.look.daemon"], stdout=log, stderr=subprocess.STDOUT,

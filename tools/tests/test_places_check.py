@@ -653,3 +653,19 @@ def test_an_accepted_build_finding_is_reported_apart_and_a_stale_or_bare_entry_f
     # an id is matched whole: a.1 does not accept a.10
     f2, a2 = CK.apply_accepted({"overlap": ["a.10 stands inside b.2"]}, rows[:1])
     assert a2["overlap"] == [] and f2["overlap"][0] == "a.10 stands inside b.2" and "stale" in f2["overlap"][1]
+    # a door finding names its door before a colon; an id's own colon still binds ("P.esm:1A" is not "P.esm:1AB")
+    door = "door p.door: its arrival point is inside p.masts"
+    why = "the rigging's bounds span the deck where nothing stands, seen at eye level"
+    f3, a3 = CK.apply_accepted({"doors": [door]}, [{"check": "doors", "ids": ["p.door", "p.masts"], "why": why}])
+    assert f3["doors"] == [] and a3["doors"] == [f"accepted: {why} ({door})"]
+    assert not CK._names("Room/P.esm:1AB stands inside x", "P.esm:1A")
+
+
+def test_an_accepted_door_is_matched_when_its_id_ends_a_clause():
+    """The doors check names a door as "door <id>: ..."; the colon ending the clause is not part of the id."""
+    from tools.places import check as CK
+    why = "The carpenter's arrival is on the low ramp walkway, seen at eye level from the door."
+    res = {"doors": ["door p.D1: its arrival point is inside p.W2"]}
+    fails, acc = CK.apply_accepted(res, [{"check": "doors", "ids": ["p.D1"], "why": why}])
+    assert fails["doors"] == [] and acc["doors"] == [f"accepted: {why} (door p.D1: its arrival point is inside p.W2)"]
+    assert not CK._names("door p.D1:x is another key", "p.D1") and not CK._names("p.D1.2 stands", "p.D1")

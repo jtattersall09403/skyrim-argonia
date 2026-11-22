@@ -1,0 +1,1100 @@
+{
+ "save_id": "agent-20261121T152009",
+ "place_id": "outpost-m6-m66",
+ "name": "added: three pale hide tents on the cypress platforms (Ree-An-Wo's scale tents), beds in them (the source's rustic bed for its two static twins, two bedrolls), Ree-An-Wo's fire and cooking set with a fish drying rack on the north bank, its tanning rack on the waterside platform; the woven weir across the creek below the camp with the log boom above it and a fishing spot; the reed hide by a lone dead tree on the west bank with a crate, jars and the sap-takers' pack",
+ "at": "2026-11-21T15:20:09Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK002PLACE",
+    "base": "King of the Murkmire.esp:10A52B",
+    "kind": "clutter",
+    "pos": [
+     -43330.0,
+     -537990.0,
+     100.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's pale hide tent on the north cypress platform over its bed (record look: pale hide tents on a small cypress platform round a young Hist; Ree-An-Wo's scale tent)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK003PLACE",
+    "base": "King of the Murkmire.esp:10A52B",
+    "kind": "clutter",
+    "pos": [
+     -45190.0,
+     -540450.0,
+     225.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's pale hide tent on the south-west cypress platform over its two beds (record look: pale hide tents; Ree-An-Wo's scale tent)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK004PLACE",
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "clutter",
+    "pos": [
+     -41620.0,
+     -537980.0,
+     106.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's pale hide tent on the waterside platform (record look: pale hide tents on a cypress platform; Ree-An-Wo's smaller scale tent)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF01WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -41000.0,
+     -541000.0,
+     -20.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF02WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -40800.0,
+     -541000.0,
+     -40.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF03WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -40600.0,
+     -541000.0,
+     -56.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.03,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF04WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -40400.0,
+     -541000.0,
+     -55.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.01,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF05WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -40200.0,
+     -541000.0,
+     -39.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF06WEIR",
+    "base": "King of the Murkmire.esp:1AD5F2",
+    "kind": "static",
+    "pos": [
+     -40000.0,
+     -541000.0,
+     -14.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the woven weir across the creek below the camp (record look: 'a woven weir across the creek'): King of the Murkmire's woven Saxhleel fence, standing on the creek bed, its top over the water",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF07BOOM",
+    "base": "King of the Murkmire.esp:03615B",
+    "kind": "static",
+    "pos": [
+     -40980,
+     -540680.0,
+     -12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (record dangers): King of the Murkmire's cut cypress logs end to end",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF08BOOM",
+    "base": "King of the Murkmire.esp:03615B",
+    "kind": "static",
+    "pos": [
+     -40550,
+     -540680.0,
+     -12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (record dangers): King of the Murkmire's cut cypress logs end to end",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 11,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF09BOOM",
+    "base": "King of the Murkmire.esp:03615B",
+    "kind": "static",
+    "pos": [
+     -40120,
+     -540680.0,
+     -12
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the log boom floating across the creek above the woven weir, where the crocodiles gather (record dangers): King of the Murkmire's cut cypress logs end to end",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 12,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF10FISH",
+    "base": "Skyrim.esm:10638E",
+    "kind": "activator",
+    "pos": [
+     -40500,
+     -540850.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the traps at the woven weir (record gives fishing: 'the traps: eels and carp'): Skyrim's fishing pond spot on the water above the weir",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 13,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF11DEADTREE",
+    "base": "King of the Murkmire.esp:15B1ED",
+    "kind": "tree",
+    "pos": [
+     -43260.0,
+     -542140.0,
+     108.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the lone dead tree the reed hide stands by, west of the weir (record hooks and dangers; main quest 3's vision): King of the Murkmire's tall dead swamp tree",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF12HIDE",
+    "base": "King of the Murkmire.esp:10A52C",
+    "kind": "clutter",
+    "pos": [
+     -43000.0,
+     -542300.0,
+     152.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 0.9,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the reed hide where strangers keep jars of sap (record hooks; main quest 3): a scale-hide lean-to of King of the Murkmire's kind, opening east toward the weir",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF13CRATE",
+    "base": "Skyrim.esm:0C2C13",
+    "kind": "static",
+    "pos": [
+     -43120.0,
+     -542390.0,
+     129.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.3
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the crate on the hide's open side that the note and the jars stand on (main quest 3's placements)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF14URN",
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -43060.0,
+     -542220.0,
+     145.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "clay jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars')",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 17,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF15URN",
+    "base": "Skyrim.esm:08632A",
+    "kind": "clutter",
+    "pos": [
+     -43150.0,
+     -542230.0,
+     148.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.9
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "clay jars stacked at the hide beside the quest's own jar of sap (main quest 3: 'one of several clay jars')",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 18,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF16PACK",
+    "base": "Dragonborn.esm:039F87",
+    "kind": "container",
+    "pos": [
+     -42940.0,
+     -542440.0,
+     117.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the sap-takers' pack at the hide (record treasure: 'jars of sap and the sap-takers' packs at the reed hide')",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 19,
+   "stroke": 4,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.XT9E6E4273SDCGAD7H5TJWXZ2Y",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.XT9E6E4273SDCGAD7H5TJWXZ2Y",
+    "base": "King of the Murkmire.esp:5515ED",
+    "kind": "static",
+    "pos": [
+     -45192.12,
+     -540480.54,
+     207.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FFA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 20,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF21BED",
+    "base": "King of the Murkmire.esp:08EADA",
+    "kind": "furniture",
+    "pos": [
+     -45192.1,
+     -540480.5,
+     207.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     7.45025
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's bed in the south-west tent: the source's own rustic bed (ALPARusticBed01R) where its static twin stood, so a person sleeps in it (place-routines: every named person with a role has a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 21,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1E3XSWZF40F3WJYB2WXKZXMRSW",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1E3XSWZF40F3WJYB2WXKZXMRSW",
+    "base": "King of the Murkmire.esp:5515ED",
+    "kind": "static",
+    "pos": [
+     -45221.71,
+     -540411.28,
+     207.34
+    ],
+    "rot": [
+     0,
+     0,
+     7.45025
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FF9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 22,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF22BED",
+    "base": "King of the Murkmire.esp:08EADA",
+    "kind": "furniture",
+    "pos": [
+     -45221.7,
+     -540411.3,
+     207.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     7.45025
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's bed in the south-west tent: the source's own rustic bed (ALPARusticBed01R) where its static twin stood, so a person sleeps in it (place-routines: every named person with a role has a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 23,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF23BEDROLL",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -41680,
+     -537920,
+     88.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's bedroll in the waterside tent (five people live at the weir: each has a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 24,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF24BEDROLL",
+    "base": "Skyrim.esm:03B3CD",
+    "kind": "furniture",
+    "pos": [
+     -41550,
+     -538040,
+     88.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a warden's bedroll in the waterside tent (five people live at the weir: each has a bed)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 25,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF25BURNER",
+    "base": "King of the Murkmire.esp:1AD5CF",
+    "kind": "clutter",
+    "pos": [
+     -43900.0,
+     -537700.0,
+     75.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.3
+    ],
+    "scale": 1.1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the camp's fire pit (Ree-An-Wo's wood burner with its fire, light and cook stand)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 26,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF26FIRE",
+    "base": "Skyrim.esm:04318B",
+    "kind": "static",
+    "pos": [
+     -43899.4,
+     -537701.3,
+     121.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.783
+    ],
+    "scale": 0.51,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the fire on the camp's wood burner (Ree-An-Wo's own set)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 27,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF27LIGHT",
+    "base": "Skyrim.esm:0AF8BA",
+    "kind": "light",
+    "pos": [
+     -43901.8,
+     -537701.8,
+     183.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the fire's light (Ree-An-Wo's own set: a fire is lit as Skyrim lights it)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 28,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF28STAND",
+    "base": "King of the Murkmire.esp:1AD604",
+    "kind": "clutter",
+    "pos": [
+     -43884.5,
+     -537598.8,
+     75.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.183
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cook stand over the fire (Ree-An-Wo's own set)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 29,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF29POT",
+    "base": "King of the Murkmire.esp:1AD601",
+    "kind": "furniture",
+    "pos": [
+     -43884.5,
+     -537598.8,
+     75.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.183
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the camp's cooking pot by the drying rack (record gives cooking-pot: 'by the drying rack'): Ree-An-Wo's Argonian pot on its stand",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 30,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF30ASH",
+    "base": "Dragonborn.esm:02000A",
+    "kind": "clutter",
+    "pos": [
+     -43895.2,
+     -537681.6,
+     76.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.483
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "ash about the fire (Ree-An-Wo's own set)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 31,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF31WOOD",
+    "base": "King of the Murkmire.esp:00AF40",
+    "kind": "clutter",
+    "pos": [
+     -43770.0,
+     -537968.0,
+     75.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.7
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the firewood stack by the fire (Ree-An-Wo's own set)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 32,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF32DRYRACK",
+    "base": "Skyrim.esm:01769A",
+    "kind": "static",
+    "pos": [
+     -43670.0,
+     -537560.0,
+     51.6
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the drying rack the cooking pot stands by (record gives cooking-pot: 'by the drying rack'): Skyrim's fish rack, eels and carp from the weir drying on it",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 33,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.TF33TANNING",
+    "base": "King of the Murkmire.esp:0AAE85",
+    "kind": "furniture",
+    "pos": [
+     -41980,
+     -538280,
+     88.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.2
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the tanning rack on the platform (record gives tanning-rack: 'on the platform'): Ree-An-Wo's scale tanning rack on the waterside platform",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 34,
+   "stroke": 5,
+   "at": "2026-11-21T15:20:09Z"
+  }
+ ]
+}

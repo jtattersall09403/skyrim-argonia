@@ -27,6 +27,16 @@
    "id": "outpost-m13-m65.household.tent-d",
    "home_space": "exterior",
    "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.hold",
+   "home_space": "01dock3to4",
+   "name": null
+  },
+  {
+   "id": "outpost-m13-m65.household.hut",
+   "home_space": "AshgateHut",
+   "name": null
   }
  ],
  "people": [
@@ -37,7 +47,7 @@
    "race": "DarkElfRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.exterior",
+    "id": "outpost-m13-m65.household.hut",
     "role": "head"
    },
    "role": "resident",
@@ -170,8 +180,8 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.tent-a",
-    "role": "lodger"
+    "id": "outpost-m13-m65.household.hold",
+    "role": "head"
    },
    "role": "resident",
    "trade": "reed-cutter of the new gang",
@@ -259,7 +269,7 @@
    "race": "ArgonianRace",
    "culture_id": "stone-grey",
    "household": {
-    "id": "outpost-m13-m65.household.tent-b",
+    "id": "outpost-m13-m65.household.hold",
     "role": "lodger"
    },
    "role": "resident",

@@ -1,0 +1,139 @@
+{
+ "save_id": "agent-20261122T054922",
+ "place_id": "outpost-m13-m65",
+ "name": "the south-west bank rocks raised to face the bank",
+ "at": "2026-11-22T05:49:22Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK056PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -102620.0,
+     -529480.0,
+     -145.484
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102620.0,
+     -529480.0,
+     54.516
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 120.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:49:22Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK057PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -102860.0,
+     -529560.0,
+     -87.903
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.01426
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102860.0,
+     -529560.0,
+     82.097
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.01426
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 90.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:49:22Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK058PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -103100.0,
+     -529620.0,
+     12.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    }
+   },
+   "after": {
+    "pos": [
+     -103100.0,
+     -529620.0,
+     102.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 10.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T05:49:22Z"
+  }
+ ]
+}

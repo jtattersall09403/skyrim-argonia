@@ -175,6 +175,13 @@ def sheet(pid: str, radius: float = 2000.0, places: Path = N.PLACES, root: Path 
     place_name = shown_place_name(pid)
     stock =N._json(N.SOURCES / "stock" / "places" / f"{pid}.json") or {}
     locks = {c["ref"]: c["lock"] for c in stock.get("containers", []) if c.get("lock")}   # the lock the game shows
+    try:    # the town's own map marker is the world ESM's, named from the record and standing at its centre
+        from tools.places.extract import load_place
+        rec = load_place(pid)
+        ext = ext + [{"id": "world.map_marker", "base": "Skyrim.esm:000010", "pos": [float(rec["world_x"]), float(rec["world_y"]), 0.0],
+                      "map_marker": {"Name": rec["name"]}}]
+    except Exception:   # noqa: BLE001 - a scratch root without the record reads the place's rows alone
+        pass
     markers = [r for r in ext if (r.get("map_marker") or {}).get("Name")]
     mark = next((r for r in markers if r["map_marker"]["Name"].lower() in names), markers[0] if markers else None)
     centre = mark["pos"] if mark else (ext[0]["pos"] if ext else [0, 0])

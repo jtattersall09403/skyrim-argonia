@@ -34,9 +34,21 @@ puddle) carrying our water type `ArgoniaHistSapWater` (tools/places/own_bases.py
 (`land.jsonl` rows `by` "sap"): the surface a few units under a level rim, the floor falling smoothly to 64 units at
 the middle, so the water has depth to shade. Never on open water: a Hist standing in our water has its pool on the
 nearest dry bank at its foot, or none (place.json `sap.none`, and the draft's plan says how the place shows its
-sap). A pool placed by hand on the trunk is kept. Run `sap` after a Hist is added, moved, swapped or dies. `draft
+sap). A pool placed by hand on the trunk is kept, and so is one at the tree's foot whose sap reaches the trunk (where
+roots or rocks hide the trunk's own ground, bring the pool out to the side the player comes from). A Hist built of
+a crown over trunk bases is one Hist with one pool. Run `sap` after a Hist is added, moved, swapped or dies. `draft
 check` fails a living Hist with no pool that `sap.none` does not list. How the pool must read in the game, and which
 field to change if it does not: [dressing](../../../docs/design/dressing.md), Hist sap.
+
+Where the record, its people or a quest say eggs are kept or hatched at the Hist (an egg-pool, hatchlings at the
+pool), the pool holds them: King of the Murkmire's `ArgonianEgg*01` (Pale, Bronze, Black, Blue, Red) at scale 1.3
+to 1.5, tilted on their sides as Seekhat Yol's hatchery lays them (rot x about 2 to 2.7, y up to 1), their middles
+at the sap's surface so each shows a dome over the amber, a hand's breadth apart over most of the pool; and on its
+rim a few `ArgonianEggNest01` (scale about 1.9) with an egg or two in each. The size of the clutch says whose it
+is: a town's egg-pool fills the pool, a small warden's or a camp's clutch keeps to one side of it. Each egg is
+probed: one over the pool's deeper middle is sunk until its feet are in the sap. The tree-minder or the egg-tenders
+the people rows name are the eggs' keepers (`place-people`), and an ending that kills the Hist takes the eggs with
+it (the quest's dead-tree state).
 
 A pool the record's look promises that is not a Hist's (black mud, a still pond) is the same puddle outline with the
 water type that reads as it (Skyrim's `WaterPuddle`, `PuddleWater`, near black, for black mud), set by hand as an

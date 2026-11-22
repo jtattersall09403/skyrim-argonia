@@ -1,0 +1,1984 @@
+{
+ "about": "The items ladder's authored half (docs/design/items.md): each Black Marsh item of gear and the material of ours it is made of (item_material), and each ware (ingredient, food and drink, poison, tool, trade good) with the good whose makers make it and, where it grows or drops in the wild, the ecology's harvestable it comes from (item_good; newworld/sources/ecology/harvestables.json stays the home of what grows where). `stockdb items` measures every item named here into items.json; an item with no row reads its material from its Skyrim keyword (materials.json `keywords`). A row's `tier` is set only where a record's numbers are a mod's own error, with its reason; otherwise the tier is measured by power (split.item_tier).",
+ "gear": [
+  {
+   "item": "1AncArgArm.esp:000801",
+   "material": "bronze",
+   "why": "Ancient Argonian Cuirass: Ancient Argonian Armor: pre-Duskfall war gear"
+  },
+  {
+   "item": "1AncArgArm.esp:000802",
+   "material": "bronze",
+   "why": "Ancient Argonian Gauntlets: Ancient Argonian Armor: pre-Duskfall war gear"
+  },
+  {
+   "item": "1AncArgArm.esp:000804",
+   "material": "bronze",
+   "why": "Ancient Argonian Tail Armor: Ancient Argonian Armor: pre-Duskfall war gear"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D6D",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldArrow: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D6E",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldBattleaxe: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D6F",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldGreatsword: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D70",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldDagger: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D71",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldMace: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D73",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldSword: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D74",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldWarAxe: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D76",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldWarhammer: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D77",
+   "material": "bonemold",
+   "why": "BSMAnArmorBonemoldShield01: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:000D79",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldClub: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:003C42",
+   "material": "bonemold",
+   "why": "BSMAnArmorBonemoldShield02: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:003C43",
+   "material": "bonemold",
+   "why": "BSMAnArmorBonemoldShield03: Dunmer bonemold"
+  },
+  {
+   "item": "BSMBonemoldSet.esp:006B14",
+   "material": "bonemold",
+   "why": "BSMAnBonemoldBow: Dunmer bonemold"
+  },
+  {
+   "item": "Black Marsh North.esp:037DDE",
+   "material": "shadowscale",
+   "why": "ShadowScale: BM&V's ShadowScale set"
+  },
+  {
+   "item": "Black Marsh North.esp:037DE5",
+   "material": "shadowscale",
+   "why": "Shadowscale Boots: BM&V's ShadowScale set"
+  },
+  {
+   "item": "Black Marsh North.esp:037DEA",
+   "material": "shadowscale",
+   "why": "SchadowScale Gloves: BM&V's ShadowScale set"
+  },
+  {
+   "item": "Black Marsh North.esp:037DED",
+   "material": "shadowscale",
+   "why": "ShadowScale Helm: BM&V's ShadowScale set"
+  },
+  {
+   "item": "Black Marsh North.esp:037DF0",
+   "material": "scale",
+   "why": "Argonian Light Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:037DF3",
+   "material": "scale",
+   "why": "Pants: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:037DF7",
+   "material": "scale",
+   "why": "Gloves: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:037E08",
+   "material": "scale",
+   "why": "Argonian Metal Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:037E0C",
+   "material": "scale",
+   "why": "Boots: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:03E3E0",
+   "material": "scale",
+   "why": "Argonian Metal Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:03E3E2",
+   "material": "scale",
+   "why": "Argonian Scale Armor: BM&V's Argonian scale guard armour (its record carries the Elven keyword)"
+  },
+  {
+   "item": "Black Marsh North.esp:03E3F9",
+   "material": "copper-steel",
+   "why": "Argonian Sword: BM&V's Argonian sword: steel"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012437",
+   "material": "imperial",
+   "why": "Legion Light Greaves: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012438",
+   "material": "imperial",
+   "why": "Legion Cuirass: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012439",
+   "material": "imperial",
+   "why": "Legion Light Bracers: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:01243A",
+   "material": "imperial",
+   "why": "Legion Light Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:01243C",
+   "material": "imperial",
+   "why": "Legion Heavy Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:01243D",
+   "material": "imperial",
+   "why": "Legion High Sandles: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:01243E",
+   "material": "imperial",
+   "why": "Legion Linothorax: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:01243F",
+   "material": "imperial",
+   "why": "Legion Wrist Wraps: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012440",
+   "material": "imperial",
+   "why": "Legion Cap: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012442",
+   "material": "imperial",
+   "why": "Legion Hoplon: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012444",
+   "material": "imperial",
+   "why": "Legion Leather Linothorax: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012445",
+   "material": "imperial",
+   "why": "Legion Kopis: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:012446",
+   "material": "imperial",
+   "why": "Legion Toxa: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EA6",
+   "material": "imperial",
+   "why": "Legion Xiphos: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EBE",
+   "material": "imperial",
+   "why": "Legion Doru: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEE",
+   "material": "kothringi-relic",
+   "why": "Kothringi Scimitar: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EEF",
+   "material": "kothringi-relic",
+   "why": "Kothringi War Axe: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:035EF9",
+   "material": "kothringi-relic",
+   "why": "Kothringi Arrow: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:038DC9",
+   "material": "imperial",
+   "why": "Legion Heavy Cuirass: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:038DCB",
+   "material": "imperial",
+   "why": "Legion Light Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:038DCF",
+   "material": "imperial",
+   "why": "Legion Heavy Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:03BCA2",
+   "material": "imperial",
+   "why": "Legion Gladius: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:03EB73",
+   "material": "imperial",
+   "why": "Legion Hoplon: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:04D922",
+   "material": "imperial",
+   "why": "Legion Leather Cuirass: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:073E7D",
+   "material": "leather",
+   "why": "Naga Leathers: Naga leathers"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:076D60",
+   "material": "kothringi-relic",
+   "why": "Kothringi Skull Club: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:109C01",
+   "material": "imperial",
+   "why": "Legion Xyston: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E10",
+   "material": "imperial",
+   "why": "Legion Heavy Boots: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E11",
+   "material": "imperial",
+   "why": "Legion Heavy Bracers: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E15",
+   "material": "imperial",
+   "why": "Legion Warhammer: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E18",
+   "material": "imperial",
+   "why": "Legion Dolabra: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E1A",
+   "material": "imperial",
+   "why": "Legion Spiked War Axe: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E1B",
+   "material": "imperial",
+   "why": "Legion Spiked Battleaxe: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:113E1E",
+   "material": "imperial",
+   "why": "Legion Pugio: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F4D",
+   "material": "imperial",
+   "why": "Legion Heavy Shield: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F4E",
+   "material": "imperial",
+   "why": "Legion Battered Heavy Shield: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5B",
+   "material": "kothringi-relic",
+   "why": "Kothringi Bone Hammer: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5C",
+   "material": "kothringi-relic",
+   "why": "Kothringi Great Scimitar: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F5D",
+   "material": "kothringi-relic",
+   "why": "Kothringi Cleaver: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:118F65",
+   "material": "kothringi-relic",
+   "why": "Kothringi Battle Staff: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF6",
+   "material": "kothringi-relic",
+   "why": "Kothringi Heavy Shield: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:150AF8",
+   "material": "kothringi-relic",
+   "why": "Kothringi Wheel Shield: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:150AFA",
+   "material": "kothringi-relic",
+   "why": "Kothringi Bone Shield: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:155C03",
+   "material": "kothringi-relic",
+   "why": "Kothringi Shortspear: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:155C05",
+   "material": "kothringi-relic",
+   "why": "Kothringi Spear: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE23",
+   "material": "shell",
+   "why": "Shellback Boots: the Shellbacks' turtle-shell armour"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE24",
+   "material": "shell",
+   "why": "Shellback Armor: the Shellbacks' turtle-shell armour"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE25",
+   "material": "shell",
+   "why": "Shellback Gauntlets: the Shellbacks' turtle-shell armour"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE26",
+   "material": "shell",
+   "why": "Shellback Helmet: the Shellbacks' turtle-shell armour"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15FE27",
+   "material": "shell",
+   "why": "Shellback Shield: the Shellbacks' turtle-shell armour"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:164F37",
+   "material": "scale",
+   "why": "Naga Elite Armor: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:164F38",
+   "material": "scale",
+   "why": "Naga Elite Sandals: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:164F39",
+   "material": "scale",
+   "why": "Naga Elite Bracers: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:164F3A",
+   "material": "scale",
+   "why": "Naga Elite Eagle Helmet: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:164F3F",
+   "material": "scale",
+   "why": "Naga Elite Jaguar Helmet: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F168",
+   "material": "flint",
+   "why": "Naga Yaomitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F169",
+   "material": "flint",
+   "why": "Naga Huey Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
+   "material": "flint",
+   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16B",
+   "material": "flint",
+   "why": "Naga Huey Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16C",
+   "material": "flint",
+   "why": "Naga Huitzauqui: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16D",
+   "material": "flint",
+   "why": "Naga Macana: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16E",
+   "material": "flint",
+   "why": "Naga Macahuitl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16F",
+   "material": "flint",
+   "why": "Naga Cuauololli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F170",
+   "material": "wood",
+   "why": "Naga Tlahhuitolli: a Naga wooden bow"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16F171",
+   "material": "flint",
+   "why": "Naga Tecpatl: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:17427A",
+   "material": "flint",
+   "why": "Naga Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:17427C",
+   "material": "flint",
+   "why": "Naga Huey Tepoztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:17427E",
+   "material": "flint",
+   "why": "Naga Itztopilli: a Naga weapon of wood edged with flint (HTBM's Naga line)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1928B9",
+   "material": "scale",
+   "why": "Naga Elite Shield: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1928BA",
+   "material": "hide",
+   "why": "Naga Chimalli: a hide chimalli"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1928BD",
+   "material": "scale",
+   "why": "Naga Elite Tall Shield: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979CE",
+   "material": "obsidian",
+   "why": "Xanmeer Yaomitl: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979CF",
+   "material": "obsidian",
+   "why": "Xanmeer Huey Macahuitl: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D0",
+   "material": "obsidian",
+   "why": "Xanmeer Tlahhuitolli: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D1",
+   "material": "obsidian",
+   "why": "Xanmeer Tecpatl: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D3",
+   "material": "obsidian",
+   "why": "Xanmeer Macana: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D4",
+   "material": "obsidian",
+   "why": "Xanmeer Macahuitl: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D5",
+   "material": "obsidian",
+   "why": "Xanmeer Quauhololli: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D7",
+   "material": "obsidian",
+   "why": "Xanmeer Huey Macana: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979D8",
+   "material": "obsidian",
+   "why": "Xanmeer Sacrificial Tecpatl: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979DA",
+   "material": "obsidian",
+   "why": "Xanmeer Huitzauqui: a volcanic-glass weapon of the Xanmeer make"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979DC",
+   "material": "flint",
+   "why": "Xanmeer Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1979DE",
+   "material": "flint",
+   "why": "Xanmeer Huey Tepoztopilli: a flint-headed spear (its numbers are the Naga spear's, not volcanic glass)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A08",
+   "material": "obsidian",
+   "why": "Cuauhtli Boots: Cuauhtli armour: volcanic glass plates on leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A09",
+   "material": "obsidian",
+   "why": "Cuauhtli Armor: Cuauhtli armour: volcanic glass plates on leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A0A",
+   "material": "obsidian",
+   "why": "Cuauhtli Gauntlets: Cuauhtli armour: volcanic glass plates on leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A0B",
+   "material": "obsidian",
+   "why": "Cuauhtli Helmet: Cuauhtli armour: volcanic glass plates on leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A10",
+   "material": "xanmeer-relic",
+   "why": "Ocelotl Boots: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A12",
+   "material": "xanmeer-relic",
+   "why": "Ocelotl Armor: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A14",
+   "material": "xanmeer-relic",
+   "why": "Ocelotl Gauntlets: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A16",
+   "material": "xanmeer-relic",
+   "why": "Ocelotl Helmet: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:197A1C",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Obsidian Shield: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F7D",
+   "material": "wood",
+   "why": "Bamboo Arrow: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F7E",
+   "material": "wood",
+   "why": "Bamboo Club: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F7F",
+   "material": "wood",
+   "why": "Bamboo Bow: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F82",
+   "material": "wood",
+   "why": "Bamboo Bow: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F84",
+   "material": "wood",
+   "why": "Bamboo Club: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F87",
+   "material": "wood",
+   "why": "Bamboo Staff: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F88",
+   "material": "wood",
+   "why": "Bamboo Staff: bamboo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:20EE15",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Burial Mask: a Xanmeer burial mask"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:23D5B9",
+   "material": "obsidian",
+   "why": "Xanmeer War Staff: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6C9",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Axe: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CB",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Sword: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CC",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Boots: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CD",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Armor: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CE",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Gauntlets: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6CF",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Helmet: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:2AD6D0",
+   "material": "kothringi-relic",
+   "why": "Zuuk's Shield: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:4A642A",
+   "material": "imperial",
+   "why": "Falcata: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:4C4C1C",
+   "material": "obsidian",
+   "why": "Xanmeer Warhammer: a volcanic-glass weapon of the Xanmeer make; tier T5: great obsidian: a two-handed volcanic-glass weapon is the finer make of the Xanmeer smiths (the lead's ladder, issue #89)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:53EB2A",
+   "material": "scale",
+   "why": "Naga Priest Armor: the Naga elite's and priests' scale"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5A996D",
+   "material": "kothringi-relic",
+   "why": "Kothringi Burial Mask: a Kothringi relic (their towns died in 2E 560)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FD9",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Light Boots: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDA",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Light Armor: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDB",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Light Gloves: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDC",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Light Helmet: a Xanmeer knight's or Ocelotl relic of the old layer; tier T5: Xanmeer light armour: the knights' light make stands a tier below their relic plate (the lead's ladder)",
+   "tier": "T5"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDD",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Heavy Boots: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDE",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Heavy Armor: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FDF",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Heavy Gloves: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5C2FE0",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Heavy Helmet: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5DC62F",
+   "material": "xanmeer-relic",
+   "why": "Xanmeer Golden Shield: a Xanmeer knight's or Ocelotl relic of the old layer"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:63CCFA",
+   "material": "imperial",
+   "why": "Legion Gladiator Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:781D12",
+   "material": "imperial",
+   "why": "Vesper's Bracers: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:781D13",
+   "material": "imperial",
+   "why": "Legion Heavy Cuirass: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:781D1D",
+   "material": "imperial",
+   "why": "Vesper's Cuirass: Legion issue: Imperial"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:786E47",
+   "material": "imperial",
+   "why": "Vesper's Helmet: Legion issue: Imperial"
+  },
+  {
+   "item": "King of the Murkmire.esp:0008D1",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Leggings: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0008F8",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0008FA",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0008FC",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:000D63",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:000D6B",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:005911",
+   "material": "shell",
+   "why": "Naga Spiked Shield: a spiked shell shield"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB0",
+   "material": "masu-plate",
+   "why": "Masu Skin Plate Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB1",
+   "material": "saxhleel",
+   "why": "Masu Skin Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB2",
+   "material": "saxhleel",
+   "why": "Masu Skin Gloves: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB3",
+   "material": "saxhleel",
+   "why": "Masu Skin Fingerless Gloves: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB4",
+   "material": "saxhleel",
+   "why": "Masu Skin Boots: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB5",
+   "material": "saxhleel",
+   "why": "Masu Skin Robe: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB6",
+   "material": "masu-plate",
+   "why": "Masu Skin Ebony Cuirass: masu skin with ebony plates"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB7",
+   "material": "bog-iron",
+   "why": "Masu Skin Iron Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"
+  },
+  {
+   "item": "King of the Murkmire.esp:00ADB8",
+   "material": "saxhleel",
+   "why": "Masu Skin Hood: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:030638",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:030639",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063A",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063B",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063C",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063D",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063E",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:03063F",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:030640",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:030641",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:030642",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:030643",
+   "material": "wood",
+   "why": "Argonian Funerary Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:05AC98",
+   "material": "masu-plate",
+   "why": "Reel-ka Cuirass: bog-iron plate over masu skin (Reel-ka, Masu plate)"
+  },
+  {
+   "item": "King of the Murkmire.esp:05AC99",
+   "material": "masu-plate",
+   "why": "Reel-ka Bracers: bog-iron plate over masu skin (Reel-ka, Masu plate)"
+  },
+  {
+   "item": "King of the Murkmire.esp:05AC9A",
+   "material": "masu-plate",
+   "why": "Reel-ka Boots: bog-iron plate over masu skin (Reel-ka, Masu plate)"
+  },
+  {
+   "item": "King of the Murkmire.esp:086686",
+   "material": "scale",
+   "why": "Scale Cuirass: Naga scale"
+  },
+  {
+   "item": "King of the Murkmire.esp:086687",
+   "material": "scale",
+   "why": "Scale Boots: Naga scale"
+  },
+  {
+   "item": "King of the Murkmire.esp:086688",
+   "material": "scale",
+   "why": "Scale Bracers: Naga scale"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC0",
+   "material": "copper-steel",
+   "why": "Saxhleel Battleaxe: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC1",
+   "material": "wood",
+   "why": "Saxhleel Green Bow: a wooden bow"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC2",
+   "material": "copper-steel",
+   "why": "Saxhleel Dagger: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC3",
+   "material": "copper-steel",
+   "why": "Saxhleel Tusik: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC4",
+   "material": "copper-steel",
+   "why": "Saxhleel Mace: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC5",
+   "material": "copper-steel",
+   "why": "Saxhleel Sabre: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC6",
+   "material": "copper-steel",
+   "why": "Saxhleel Axe: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098EC7",
+   "material": "copper-steel",
+   "why": "Saxhleel Longmace: the Saxhleel set: copper-edged steel"
+  },
+  {
+   "item": "King of the Murkmire.esp:098ECA",
+   "material": "wood",
+   "why": "Saxhleel Red Bow: a wooden bow"
+  },
+  {
+   "item": "King of the Murkmire.esp:098ECB",
+   "material": "wood",
+   "why": "Saxhleel Yellow Bow: a wooden bow"
+  },
+  {
+   "item": "King of the Murkmire.esp:0AD634",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0AD635",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0AD636",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0AD637",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Cuirass: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:0CC279",
+   "material": "saxhleel",
+   "why": "Elder's Armour: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:10C482",
+   "material": "shadowscale",
+   "why": "Shadowscale Blade: the Shadowscales' blade"
+  },
+  {
+   "item": "King of the Murkmire.esp:10C483",
+   "material": "shadowscale",
+   "why": "Shadowscale Dagger: the Shadowscales' blade"
+  },
+  {
+   "item": "King of the Murkmire.esp:10C484",
+   "material": "obsidian",
+   "why": "Ceremonial Tusik: a ceremonial tusik toothed with volcanic glass"
+  },
+  {
+   "item": "King of the Murkmire.esp:1C1C62",
+   "material": "wood",
+   "why": "Saxhleel Warclub: a wooden war club"
+  },
+  {
+   "item": "King of the Murkmire.esp:1C1C63",
+   "material": "wood",
+   "why": "Tum-Taleel Club: a wooden war club"
+  },
+  {
+   "item": "King of the Murkmire.esp:2565F1",
+   "material": "wood",
+   "why": "An-Xileel Mask: a carved wooden mask"
+  },
+  {
+   "item": "King of the Murkmire.esp:27504F",
+   "material": "saxhleel",
+   "why": "Saxhleel Bone Shortsword: Saxhleel bone"
+  },
+  {
+   "item": "King of the Murkmire.esp:275050",
+   "material": "saxhleel",
+   "why": "Saxhleel Bone Sword: Saxhleel bone"
+  },
+  {
+   "item": "King of the Murkmire.esp:27A2B7",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Bracers: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "King of the Murkmire.esp:27A2BB",
+   "material": "hide",
+   "why": "Saxhleel Tribal Boots: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"
+  },
+  {
+   "item": "King of the Murkmire.esp:27F427",
+   "material": "hide",
+   "why": "Saxhleel Tribal Robes: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"
+  },
+  {
+   "item": "King of the Murkmire.esp:27F428",
+   "material": "hide",
+   "why": "Saxhleel Tribal Bracers: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"
+  },
+  {
+   "item": "King of the Murkmire.esp:27F429",
+   "material": "hide",
+   "why": "Saxhleel Tribal Headband: Saxhleel tribal hide and fibre (its record carries a Forsworn keyword; it is Black Marsh make)"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA3C",
+   "material": "flint",
+   "why": "Saxhleel Fishing Knife: a flint fishing knife"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA3D",
+   "material": "saxhleel",
+   "why": "Saxhleel Bone Dagger: Saxhleel bone"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA3E",
+   "material": "bog-iron",
+   "why": "Saxhleel Iron Dagger: a bog-iron dagger"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA3F",
+   "material": "saxhleel",
+   "why": "Saxhleel Bone Mace: Saxhleel bone"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA40",
+   "material": "flint",
+   "why": "Saxhleel Tusik: a tusik: wood toothed with flint"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA41",
+   "material": "saxhleel",
+   "why": "Saxhleel Bone Bow: a bone bow"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA42",
+   "material": "wood",
+   "why": "Saxhleel Wooden Club: Saxhleel wood (its record calls it wooden)"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA46",
+   "material": "flint",
+   "why": "Saxhleel Great Tusik: a tusik: wood toothed with flint"
+  },
+  {
+   "item": "King of the Murkmire.esp:57AA47",
+   "material": "wood",
+   "why": "Saxhleel Wooden Longmace: Saxhleel wood (its record calls it wooden)"
+  },
+  {
+   "item": "King of the Murkmire.esp:99E4A2",
+   "material": "saxhleel",
+   "why": "Callia's Jacket: marsh leather (Saxhleel or masu skin)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000800",
+   "material": "bone",
+   "why": "Argonian Bone Mace: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000806",
+   "material": "wood",
+   "why": "Argonian Shortspear: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000807",
+   "material": "bone",
+   "why": "Argonian Bone Shortsword: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000809",
+   "material": "wood",
+   "why": "Argonian Wooden Quarterstaff: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00080D",
+   "material": "bone",
+   "why": "Argonian Fishing Harpoon: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00080F",
+   "material": "wood",
+   "why": "Argonian Great Mace: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000825",
+   "material": "bone",
+   "why": "Argonian Bone Spear: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000826",
+   "material": "wood",
+   "why": "Argonian Fishing Knife: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000828",
+   "material": "wood",
+   "why": "Argonian Hunting Bow: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00082B",
+   "material": "flint",
+   "why": "Argonian Arrow: flint-toothed wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00082D",
+   "material": "bone",
+   "why": "Argonian Bone Dagger: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00082E",
+   "material": "wood",
+   "why": "Argonian Wooden Club: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00082F",
+   "material": "bone",
+   "why": "Argonian Fishing Trident: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000832",
+   "material": "bone",
+   "why": "Argonian Bone Sword: Argonian bone (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:00083F",
+   "material": "bog-iron",
+   "why": "Iron Fishing Knife: a bog-iron fishing knife"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000974",
+   "material": "wood",
+   "why": "Argonian Wooden Tusik: Argonian wood (New Armory)"
+  },
+  {
+   "item": "PrvtI_ArgonianWeapons.esp:000976",
+   "material": "flint",
+   "why": "Argonian Great Tusik: flint-toothed wood (New Armory)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:000803",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Pants: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:000806",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Armor - No Pauldron: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:000808",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Armor - Left Pauldron: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:00080A",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Armor - Right Pauldron: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:000D63",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Armor: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "s6o6tStormholdWarriorArmor.esp:000D6B",
+   "material": "saxhleel",
+   "why": "Saxhleel Leather Gloves: Saxhleel leather (Stormhold Warrior)"
+  },
+  {
+   "item": "shadowscaleset.esp:000802",
+   "material": "shadowscale",
+   "why": "Shadowscale Armor: Shadowscale Reborn"
+  },
+  {
+   "item": "shadowscaleset.esp:000806",
+   "material": "shadowscale",
+   "why": "Shadowscale Sword: Shadowscale Reborn"
+  },
+  {
+   "item": "shadowscaleset.esp:000807",
+   "material": "shadowscale",
+   "why": "Shadowscale Bracers: Shadowscale Reborn"
+  },
+  {
+   "item": "shadowscaleset.esp:00080C",
+   "material": "shadowscale",
+   "why": "Shadowscale Hood: Shadowscale Reborn"
+  },
+  {
+   "item": "shadowscaleset.esp:000D62",
+   "material": "shadowscale",
+   "why": "Shadowscale Dagger: Shadowscale Reborn"
+  },
+  {
+   "item": "shadowscaleset.esp:000D80",
+   "material": "shadowscale",
+   "why": "Shadowscale Boots: Shadowscale Reborn"
+  }
+ ],
+ "wares": [
+  {
+   "item": "Dragonborn.esm:02B04E",
+   "good": "chitin-work",
+   "why": "Chitin Plate: the chitin-worker's, and Morrowind's trade (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0123BD",
+   "good": "eggs",
+   "why": "Hackwing's Egg: made or gathered by a place that makes eggs",
+   "harvestable": "hackwing-nest"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:02A2E3",
+   "good": "reed-weaving",
+   "why": "Swamp Pad: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:02D173",
+   "good": "reed-weaving",
+   "why": "Swamp Leaf: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:04A97B",
+   "good": "sap",
+   "why": "Somnalius Frond: made or gathered by a place that makes sap",
+   "harvestable": "somnalius-frond"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0A5B4C",
+   "good": "hide-and-leather",
+   "why": "Swamp Rat Tail: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0A5B51",
+   "good": "hide-and-leather",
+   "why": "Charred Swamp Rat Hide: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0AE83D",
+   "good": "bone-and-horn",
+   "why": "Lizard Tooth: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A80",
+   "good": "river-goods",
+   "why": "Blue Frog Leg: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A82",
+   "good": "river-goods",
+   "why": "Red Frog Leg: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A84",
+   "good": "river-goods",
+   "why": "Green Frog Leg: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A86",
+   "good": "river-goods",
+   "why": "Toad Leg: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A8C",
+   "good": "shell-work",
+   "why": "Turtle Shell: made or gathered by a place that makes shell-work"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0B8A8F",
+   "good": "feathers",
+   "why": "Hackwing Feathers: made or gathered by a place that makes feathers",
+   "harvestable": "hackwing-plume"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDB98",
+   "good": "hide-and-leather",
+   "why": "Wamasu Scales: made or gathered by a place that makes hide-and-leather",
+   "harvestable": "wamasu-organ"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDB9A",
+   "good": "hide-and-leather",
+   "why": "Wamasu Scales: made or gathered by a place that makes hide-and-leather",
+   "harvestable": "wamasu-organ"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDB9E",
+   "good": "river-fish",
+   "why": "Crocodile Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDBA1",
+   "good": "river-goods",
+   "why": "Rootworm Jelly: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0BDBA4",
+   "good": "feathers",
+   "why": "Serpent Feathers: made or gathered by a place that makes feathers",
+   "harvestable": "hackwing-plume"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0F5791",
+   "good": "bone-and-horn",
+   "why": "Brushboar Tusk: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E1",
+   "good": "flint-and-obsidian",
+   "why": "Obsidian: made or gathered by a place that makes flint-and-obsidian"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:0FA8E5",
+   "good": "river-fish",
+   "why": "Thorny Oyster Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:26B44C",
+   "good": "eggs",
+   "why": "Bantam Guar Egg: made or gathered by a place that makes eggs",
+   "harvestable": "bantam-guar-nest"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:36F366",
+   "good": "shell-work",
+   "why": "Baby Turtle Shell: made or gathered by a place that makes shell-work"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:36F368",
+   "good": "river-fish",
+   "why": "Mock Turtle Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:36F36A",
+   "good": "river-goods",
+   "why": "Mock Turtle Soup: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:37E802",
+   "good": "river-fish",
+   "why": "Scalehorse Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:3CFF5B",
+   "good": "river-fish",
+   "why": "Bantam Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:3CFF5D",
+   "good": "river-fish",
+   "why": "Grilled Bantam Breast: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:43AECC",
+   "good": "river-fish",
+   "why": "Brushboar Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:43AECE",
+   "good": "river-fish",
+   "why": "Roasted Brushboar Haunch: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:43AED0",
+   "good": "sap",
+   "why": "Centipede Venom: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440018",
+   "good": "bone-and-horn",
+   "why": "Verminous Stalker Fang: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44001A",
+   "good": "sap",
+   "why": "Verminous Stalker Venom: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44001F",
+   "good": "hide-and-leather",
+   "why": "Jaguar Pelt: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440020",
+   "good": "hide-and-leather",
+   "why": "Panther Pelt: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440021",
+   "good": "hide-and-leather",
+   "why": "Crocodile Leather: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440022",
+   "good": "hide-and-leather",
+   "why": "Salt Crocodile Pelt: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440027",
+   "good": "hide-and-leather",
+   "why": "Ripper Scales: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440029",
+   "good": "eggs",
+   "why": "Ripper Egg: made or gathered by a place that makes eggs"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44002D",
+   "good": "river-fish",
+   "why": "Kotu Gava Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44002F",
+   "good": "river-fish",
+   "why": "Mudrunner Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440031",
+   "good": "river-fish",
+   "why": "Mudshark Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440033",
+   "good": "river-fish",
+   "why": "Mudshark Steak: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44003C",
+   "good": "sap",
+   "why": "Moon-Adder Venom: made or gathered by a place that makes sap",
+   "harvestable": "moon-adder-venom"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44003E",
+   "good": "sap",
+   "why": "Rattler Venom: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440040",
+   "good": "sap",
+   "why": "Viper Venom: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:440043",
+   "good": "bone-and-horn",
+   "why": "Spike-Ox Horn: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:445196",
+   "good": "river-fish",
+   "why": "Trogfish Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:44519A",
+   "good": "river-fish",
+   "why": "Swamp Ray Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:516172",
+   "good": "sap",
+   "why": "Green Sithis' Beard: made or gathered by a place that makes sap",
+   "harvestable": "hanging-moss"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:516174",
+   "good": "sap",
+   "why": "Grey Sithis' Beard: made or gathered by a place that makes sap",
+   "harvestable": "hanging-moss"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:632A8E",
+   "good": "reed-weaving",
+   "why": "Sugar Cane: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:632A95",
+   "good": "reed-weaving",
+   "why": "Bamboo Leaves: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:632A97",
+   "good": "reed-weaving",
+   "why": "Bamboo: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:632A9A",
+   "good": "sap",
+   "why": "Hackle-Lo Leaf: made or gathered by a place that makes sap",
+   "harvestable": "hackle-lo"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:64C0F6",
+   "good": "river-goods",
+   "why": "Theilul: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:64C0F8",
+   "good": "sap",
+   "why": "Daril: made or gathered by a place that makes sap",
+   "harvestable": "moon-adder-venom"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:6605C3",
+   "good": "shell-work",
+   "why": "Kraken Barnacle: made or gathered by a place that makes shell-work",
+   "harvestable": "kraken-barnacle"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:70CFB5",
+   "good": "sap",
+   "why": "Stinkhorn Cap: made or gathered by a place that makes sap",
+   "harvestable": "stinkhorn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:70CFB8",
+   "good": "sap",
+   "why": "Muck: made or gathered by a place that makes sap",
+   "harvestable": "muck-sponge"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:70CFBB",
+   "good": "sap",
+   "why": "Bloat: made or gathered by a place that makes sap",
+   "harvestable": "bloatspore"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:70CFBE",
+   "good": "sap",
+   "why": "Bog Beacon Cap: made or gathered by a place that makes sap",
+   "harvestable": "bog-beacon"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:79B2F3",
+   "good": "sap",
+   "why": "Hist Sap: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:800BD7",
+   "good": "river-fish",
+   "why": "Fried Mudrunner Leg: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:800BD9",
+   "good": "river-fish",
+   "why": "Trogfish Steak: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:800BDB",
+   "good": "river-fish",
+   "why": "Scalehorse Chop: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:800BDD",
+   "good": "river-fish",
+   "why": "Swamp Ray Filet: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:800BDF",
+   "good": "river-fish",
+   "why": "Crocodile Flank Steak: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:805D0A",
+   "good": "river-goods",
+   "why": "Swamp Leaf Stew: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:805D0C",
+   "good": "river-goods",
+   "why": "Slimy Soup: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:805D0E",
+   "good": "river-goods",
+   "why": "Mud Chowder: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:81A1F3",
+   "good": "ironwork",
+   "why": "Bog Iron: made or gathered by a place that makes ironwork"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A2",
+   "good": "river-fish",
+   "why": "Root Snapper Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A4",
+   "good": "river-fish",
+   "why": "Root Snapper Steak: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5A9",
+   "good": "river-fish",
+   "why": "Longlure Eelfin Meat: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:85C5AB",
+   "good": "river-fish",
+   "why": "Longlure Eelfin Filet: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:000861",
+   "good": "river-goods",
+   "why": "Swamp Beast Riblet: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000864",
+   "good": "hide-and-leather",
+   "why": "Swamp Leviathan Hide: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "King of the Murkmire.esp:000867",
+   "good": "bone-and-horn",
+   "why": "Swamp Beast Claws: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "King of the Murkmire.esp:00093A",
+   "good": "river-goods",
+   "why": "Cooked Swamp Beast Riblet: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000961",
+   "good": "river-goods",
+   "why": "Masu Meat: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000962",
+   "good": "river-goods",
+   "why": "Masu Haunch: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000964",
+   "good": "hide-and-leather",
+   "why": "Masu Scales: made or gathered by a place that makes hide-and-leather",
+   "harvestable": "wamasu-organ"
+  },
+  {
+   "item": "King of the Murkmire.esp:0009B3",
+   "good": "river-goods",
+   "why": "Snail's Foot: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:0009B4",
+   "good": "river-goods",
+   "why": "Seared Snail's Foot: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:0009B8",
+   "good": "river-goods",
+   "why": "Snail Mucus: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000A09",
+   "good": "hide-and-leather",
+   "why": "Crocodile Hide: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "King of the Murkmire.esp:000A14",
+   "good": "river-goods",
+   "why": "Frog Legs: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:000B3B",
+   "good": "bone-and-horn",
+   "why": "Giant Centipede Mandible: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "King of the Murkmire.esp:005BCC",
+   "good": "hide-and-leather",
+   "why": "Swamp Stalker Hide: made or gathered by a place that makes hide-and-leather"
+  },
+  {
+   "item": "King of the Murkmire.esp:005C40",
+   "good": "river-goods",
+   "why": "Saltrice Noodles: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:005C41",
+   "good": "river-goods",
+   "why": "Marshmerrow Soup: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:005C43",
+   "good": "river-goods",
+   "why": "Saltrice Flatbreads: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:00AF47",
+   "good": "river-goods",
+   "why": "Theilul: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:01AAD6",
+   "good": "river-goods",
+   "why": "Bog Brew: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:08EAE2",
+   "good": "river-goods",
+   "why": "Dead Trodh: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:08EAE5",
+   "good": "river-goods",
+   "why": "Fresh Trodh: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:098ECC",
+   "good": "bone-and-horn",
+   "why": "Bone Flute: made or gathered by a place that makes bone-and-horn"
+  },
+  {
+   "item": "King of the Murkmire.esp:0A3267",
+   "good": "sap",
+   "why": "Carved Amber Atronach: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "King of the Murkmire.esp:0A3268",
+   "good": "reed-weaving",
+   "why": "Spriggan Xeech'ki: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "King of the Murkmire.esp:0B7A9B",
+   "good": "shell-work",
+   "why": "Shell: made or gathered by a place that makes shell-work"
+  },
+  {
+   "item": "King of the Murkmire.esp:0F7A90",
+   "good": "river-goods",
+   "why": "Milk of Snail: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:0F7A99",
+   "good": "river-goods",
+   "why": "Jeel-Sa: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:0F7AE7",
+   "good": "sap",
+   "why": "Carved Amber Bee: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "King of the Murkmire.esp:0F7AE8",
+   "good": "sap",
+   "why": "Carved Amber Spriggan: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD88A",
+   "good": "river-fish",
+   "why": "Michinitl: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD88B",
+   "good": "river-fish",
+   "why": "Fried Michinitl: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD88D",
+   "good": "river-fish",
+   "why": "Thick-Scaled Mullet: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD88F",
+   "good": "river-fish",
+   "why": "Hist Sap Shiner: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD891",
+   "good": "river-fish",
+   "why": "Fat Sleeper: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD893",
+   "good": "river-fish",
+   "why": "Fried Fat Sleeper: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD895",
+   "good": "river-fish",
+   "why": "Ayotlchin: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:0FD897",
+   "good": "river-fish",
+   "why": "Fried Ayotlchin: made or gathered by a place that makes river-fish"
+  },
+  {
+   "item": "King of the Murkmire.esp:102BD5",
+   "good": "river-goods",
+   "why": "Foul Fish Soup: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:102BED",
+   "good": "river-goods",
+   "why": "Fat Sleeper Stew: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:19DFC9",
+   "good": "reed-weaving",
+   "why": "Turtle Xeech'ki: made or gathered by a place that makes reed-weaving"
+  },
+  {
+   "item": "King of the Murkmire.esp:1AD5D1",
+   "good": "ironwork",
+   "why": "Saxhleel Pot: made or gathered by a place that makes ironwork"
+  },
+  {
+   "item": "King of the Murkmire.esp:1C1C86",
+   "good": "river-goods",
+   "why": "Murkmire Stew: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:1C6F52",
+   "good": "river-goods",
+   "why": "Tee-Lel: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:26ABAF",
+   "good": "river-goods",
+   "why": "Kotu Gava Nectar: made or gathered by a place that makes river-goods"
+  },
+  {
+   "item": "King of the Murkmire.esp:394B35",
+   "good": "sap",
+   "why": "Hist Sap: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "King of the Murkmire.esp:5D8195",
+   "good": "sap",
+   "why": "Fanik Goc Bark: made or gathered by a place that makes sap"
+  },
+  {
+   "item": "Skyrim.esm:034CDD",
+   "good": "bone-and-horn",
+   "why": "Bone Meal: the bone-worker's dust, bonemold's binder (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:03ADA4",
+   "good": "salvage",
+   "why": "Dragon Bone: only by story (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05ACE4",
+   "good": "ironwork",
+   "why": "Iron Ingot: a bog-iron smith's bar, and Dunmer and Imperial trade (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05ACE5",
+   "good": "ironwork",
+   "why": "Steel Ingot: for Imperial issue, carried in (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05AD93",
+   "good": "ironwork",
+   "why": "Corundum Ingot: copper alloy for copper-edged steel, carried in to the smiths (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05AD9D",
+   "good": "salvage",
+   "why": "Ebony Ingot: only from ruin salvage (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05AD9E",
+   "good": "salvage",
+   "why": "Gold Ingot: salvaged and melted from old emblems (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05AD9F",
+   "good": "salvage",
+   "why": "Refined Moonstone: only from Ayleid salvage (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:05ADA1",
+   "good": "salvage",
+   "why": "Refined Malachite: only from ruin salvage (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:06F993",
+   "good": "timber-and-stone",
+   "why": "Firewood: seasoned wood for hafts, clubs and bows (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:0800E4",
+   "good": "hide-and-leather",
+   "why": "Leather Strips: the tanner's, for every grip and strap (a smithing ingredient: recipe_rules.json)"
+  },
+  {
+   "item": "Skyrim.esm:0DB5D2",
+   "good": "hide-and-leather",
+   "why": "Leather: the tanner's (a smithing ingredient: recipe_rules.json)"
+  }
+ ]
+}

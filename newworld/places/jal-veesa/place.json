@@ -5,6 +5,12 @@
   "kingofthemurkmire.altenmeerhleellocation"
  ],
  "draft": {
+  "room_names": {
+   "AltenGeneralStore": {
+    "name": "Jetty Market",
+    "why": "the market the record promises at the jetty (trader-general: reed boats, mats, rope and dried fish at the jetty market); the source's name, Meerhleel Market, names the source town"
+   }
+  },
   "add": [
    {
     "base": "King of the Murkmire.esp:15731E",
@@ -334,7 +340,7 @@
     ],
     "rot_z": 0.0,
     "tier": "AGENT_INVENTED",
-    "why": "free-bed: the guest mat in the elders' long house (place record: 'a mat in the elders' long house'), unowned",
+    "why": "free-bed: the guest mat in the elders' hut (place record: 'a mat in the elders' hut'), unowned",
     "key": "21"
    },
    {
@@ -468,8 +474,8 @@
     },
     {
      "kind": "free-bed",
-     "by": "Seekhat Yol's elder's hut as the elders' long house, its guest mat an unowned bed",
-     "line": "a mat in the elders' long house"
+     "by": "Seekhat Yol's elder's hut as the elders' hut, its guest mat an unowned bed",
+     "line": "a mat in the elders' hut"
     },
     {
      "kind": "trainer",
@@ -536,9 +542,9 @@
     },
     {
      "cluster": "b05",
-     "what": "the elders' long house",
+     "what": "the elders' hut",
      "verdict": "kept",
-     "why": "Vosh-Leera's House, the elders' long house mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
+     "why": "Vosh-Leera's House, the elders' hut mn02 and mn03 send the player to; sunk whole to a short flight over our ground and joined to the fishers' deck at one height"
     },
     {
      "cluster": "landing",
@@ -639,6 +645,46 @@
     "unit": "door.jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS",
     "flag": "its arrival point is inside",
     "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp (box z -393..124): the doors check takes one deck height for a ramp (its top) and reads the arrival 60 under it; the arrival is on the ramp and on the navmesh (probe --mesh), 2026-11-21"
+   },
+   {
+    "unit": "house.SeekhatAccommodationHut",
+    "flag": "foot not reaching the ground",
+    "why": "its platform's west posts (4W48AB, x about -52115) end 54 to 110 over the mud on the rock bank west of the hut: a mound is refused there (the ground is already raised 97 of the land bound's 105) and bringing the hut down would break its bridges, so four of the source's rocks (ArgoniaRockL02) stand under the post ends as footings; seen from the west the posts go down into rock (2026-11-21), and a camera cannot stand west of them for the cliff rocks"
+   },
+   {
+    "unit": "house.SeekhatSmithyHut",
+    "flag": "floor under the ground",
+    "why": "the floor plate's uphill west edge is 12 under the slope; the walls meet the ground on every side (from SE at eye level, 2026-11-21): nothing shows"
+   },
+   {
+    "unit": "dock.11",
+    "flag": "floor under the ground",
+    "why": "the low jetty's bottom beam lies 15 to 25 in the mud under its stair piece (section along dock.11, 2026-11-21): a jetty foot sunk in mud, as it reads"
+   },
+   {
+    "unit": "dock.11",
+    "flag": "foot buried deeper than its leg",
+    "why": "the same beam sunk in the mud (section along dock.11, 2026-11-21)"
+   },
+   {
+    "unit": "dock.12",
+    "flag": "floor under the ground",
+    "why": "3 into the mud; seen from SW at eye level the jetty rests on the ground (2026-11-21)"
+   },
+   {
+    "unit": "added.house.AltenBunkhouse",
+    "flag": "floor under the ground",
+    "why": "the two bunkhouse huts' floors sit level with the ground (section along the unit, 2026-11-21); the 45 is the uphill corner's floor plate, inside closed walls"
+   },
+   {
+    "unit": "house.SeekhatFishersHut",
+    "flag": "steps not reaching the ground",
+    "why": "the 81 is the Murkmire stair's foot (HHGDS3), which rests on the low walkway C4P35R's deck as in the source (section along the stair, 2026-11-21); a walk-here zone carries the walking mesh up its treads"
+   },
+   {
+    "unit": "dock.07",
+    "flag": "foot not reaching the ground",
+    "why": "2 over: a foot touching the ground"
    }
   ],
   "accepted_checks": [
@@ -664,6 +710,14 @@
      "jal-veesa.FMXHG9NZ86AFF3MJ4FVAY8EGGS"
     ],
     "why": "the carpenter's door arrival is on MurkmireWalkwayLong01, a ramp: the doors check takes the ramp's top as its deck height; the arrival is on the ramp and on the navmesh (probe --mesh, 2026-11-21)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.Y793XRW2J0NHPVFAWTRD233DVE",
+     "jal-veesa.LOOK001PLACE"
+    ],
+    "why": "the rock footing under the Accommodation hut platform's south-west post is set into the source's cliff rock beside it, as rocks lie into each other on that bank; one rock pile seen from the west (2026-11-21)"
    }
   ],
   "sap": {
@@ -722,6 +776,131 @@
     "id": "jal-veesa.YEXHES44BRTPYKFJ0HJEBNNFYD",
     "fault": "unsupported end",
     "why": "probe 11:30: both ends held (MMRA83 at the W, KCS7WC at the E, supported); KCS7WC seen on the root mound (section 112301524): the bridge rests on decks at both ends"
+   },
+   {
+    "id": "jal-veesa.0ZSF9GAKZRGTSSRS1M1REG3CPD",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.4PWX57YRNHDCH20SZN4F4QPCYP",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.60H4ZKF3TWZQQECDBNWGX6BK6K",
+    "fault": "floats",
+    "why": "ivy hung on a thatch house's wall as Seekhat Yol hangs it: every look at it stands against the house it covers (MFXGT7, AHV1HX, 2026-11-21)"
+   },
+   {
+    "id": "jal-veesa.65Q80Z0Z4AYN4W732CYJCG04HH",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.7DVZJ8HAW3YVQZFN5WH5919X3C",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.AHV1HX2PBJZA8N86XB21B5THKA",
+    "fault": "floats",
+    "why": "ivy hung on a thatch house's wall as Seekhat Yol hangs it: every look at it stands against the house it covers (MFXGT7, AHV1HX, 2026-11-21)"
+   },
+   {
+    "id": "jal-veesa.C1PQZHXP8XW38WEER0F70DTF6G",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.C2XAE8GKCP8BFV18Q8QKVG3G37",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.DXF5ZX3ARGQMR1QZQ7ME1SCNGS",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.ETVCKQ1C8V5YBMA6N9D9B9RBRC",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.HK5XQ05T3CKABGE45YA92Y3NAK",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.K06Z1454F3Q4MS1HNN81D3EPMC",
+    "fault": "floats",
+    "why": "ivy hung on a thatch house's wall as Seekhat Yol hangs it: every look at it stands against the house it covers (MFXGT7, AHV1HX, 2026-11-21)"
+   },
+   {
+    "id": "jal-veesa.MFXGT7WAV2KNN40F3SJEV3Z0G0",
+    "fault": "floats",
+    "why": "ivy hung on a thatch house's wall as Seekhat Yol hangs it: every look at it stands against the house it covers (MFXGT7, AHV1HX, 2026-11-21)"
+   },
+   {
+    "id": "jal-veesa.QAJV4SXJ6B2Q2B5CTCTCVFZBE4",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.QVQ243DXQRYRAS3M5EZ90J0F7Z",
+    "fault": "floats",
+    "why": "ivy hung on a thatch house's wall as Seekhat Yol hangs it: every look at it stands against the house it covers (MFXGT7, AHV1HX, 2026-11-21)"
+   },
+   {
+    "id": "jal-veesa.RWF6N7YJEFKV4ACJRNDHVHR1TW",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.S3ZWFGQATZE96FQMCPNG6KTGW9",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.VTY8V7W5MR6DNCPSYPXQX6YY5H",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.WVXCX3901H1DZ4DN08GQSYFT5Y",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.XNGCWT2K7J6HK7ASAAZ20Z5SQK",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.YC3T11SV7DXXQPFS5CQKB5DP4E",
+    "fault": "floats",
+    "why": "a Hist flower hung in the Hist's crown as Seekhat Yol hangs it: seen among HistTree01's branches (at C1PQZH from SW, 2026-11-21); it hangs from a limb, not from a box"
+   },
+   {
+    "id": "jal-veesa.ZAQ0NG5NZMT03YQ0PJ4B3YZKC9",
+    "fault": "floats",
+    "why": "a hanging fern on the source's structures: seen hanging from a deck beam (at XNGCWT from SW, 2026-11-21), the others against a bridge or inside the Hist's roots where the camera cannot stand clear of them (ZAQ0NG, QAJV4S); Seekhat Yol hangs them so"
+   },
+   {
+    "id": "jal-veesa.LOOK036PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
+   },
+   {
+    "id": "jal-veesa.LOOK037PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
+   },
+   {
+    "id": "jal-veesa.LOOK038PLACE",
+    "fault": "floats",
+    "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
    }
   ]
  },
@@ -1538,7 +1717,21 @@
   "agent-20261121T085408",
   "agent-20261121T095803",
   "agent-20261121T112121",
-  "agent-20261121T115012"
+  "agent-20261121T115012",
+  "agent-20261121T184236",
+  "agent-20261121T211826",
+  "agent-20261121T212308",
+  "agent-20261121T233117",
+  "agent-20261121T233153",
+  "agent-20261121T233745",
+  "agent-20261122T032458",
+  "agent-20261122T032624",
+  "agent-20261122T032933",
+  "agent-20261122T033053",
+  "agent-20261122T033221",
+  "agent-20261122T033320",
+  "agent-20261122T033401",
+  "agent-20261122T042939"
  ],
  "wholesale": {
   "offset": 470.0,

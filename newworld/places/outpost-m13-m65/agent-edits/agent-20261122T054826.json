@@ -1,0 +1,106 @@
+{
+ "save_id": "agent-20261122T054826",
+ "place_id": "outpost-m13-m65",
+ "name": "rocks along the south-west bank",
+ "at": "2026-11-22T05:48:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK056PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -102620.0,
+     -529480.0,
+     -145.48
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.91986
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    },
+    "why": "the stepped earth bank south-west of the camp faced with rock along the water (owner ruling 2026-11-21): the world's bank there is a sheer grid-stepped wall the land brush cannot ease within its bound",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T05:48:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK057PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -102860.0,
+     -529560.0,
+     -87.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.01426
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    },
+    "why": "the stepped earth bank south-west of the camp faced with rock along the water (owner ruling 2026-11-21): the world's bank there is a sheer grid-stepped wall the land brush cannot ease within its bound",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T05:48:26Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK058PLACE",
+    "base": "Skyrim.esm:01819A",
+    "kind": "rock",
+    "pos": [
+     -103100.0,
+     -529620.0,
+     12.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -80.0
+    },
+    "why": "the stepped earth bank south-west of the camp faced with rock along the water (owner ruling 2026-11-21): the world's bank there is a sheer grid-stepped wall the land brush cannot ease within its bound",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T05:48:26Z"
+  }
+ ]
+}

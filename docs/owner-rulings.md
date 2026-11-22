@@ -100,6 +100,30 @@ added here the day they are made, with the date and the issue.
 - Method changes are applied and recorded without asking; a goal change is an owner call (2026-10-28).
 - The owner judges look; agents check for Nordic tells, never feel (2026-10-30, #43).
 - Agents stop only when the work is complete, a blocker needs the owner, or at a handover the owner asked for.
+- A tool gap met in the work is closed by us: make whatever tool change is needed, then finish the work with
+  it; never hand the owner an item that "needs a tool change" (2026-11-22, #88, on a place's own ground paint).
+- A place's review issue carries only what needs the owner's eye. Working adaptations (houses from a second
+  source beside the main one, posts footed on added rocks where the ground cannot be raised) are always fine and
+  are not flagged (2026-11-22, #88). Decided by the lead, for the owner to confirm: a quest thing is reported
+  only when the player has no marker, journal line or spoken pointer to it; the sight test's bare result is not
+  an owner item. Everything a place's record promises (the eggs in Jal-Veesa's and Teel-Fen Weir's sap pools)
+  is audited against the built place before it lands (2026-11-22, #88).
+- Items and gear are tailored to Black Marsh, with their data in the database: every tier of Skyrim's gear
+  progression has our own equivalent, some Skyrim materials shared where the feel stays Black Marsh; Imperial
+  gear is rare and situational (2026-11-22). Decided by the lead, for the owner to confirm (#89): the ladder and
+  bands of docs/design/items.md; bog iron uncommon; chitin traded, bonemold only in Dunmer places; smithing
+  perks kept through a power class per material; two mods added (New Armory Argonian Weapons, Beyond Skyrim
+  Bonemold Weapon Pack).
+- All weapons and armour have smithing recipes (2026-11-22).
+- MN01: no starter kit in the barge. Dralin says the player will need to look after themselves on the road, has
+  not much to spare, and offers a pick of one: a low two-handed hammer, a one-handed sword, a bow with arrows
+  and a dagger, or an offensive spell tome (2026-11-22).
+- Item types and frequency vary by region and locality as part of each region's identity, and make sense at
+  every level from one fisherman's hut up through locality and region to the province (2026-11-22).
+- A place's ground is changed as little as possible: much went into generating the world, and editing the place
+  is the expensive end of the ladder. Ground is repainted or reshaped only where a check, a walk fault or a plain
+  visible fault needs it; where the words are only cosmetic, the record, quest or story prose is changed to fit
+  what is there (2026-11-22).
 
 ## The game
 

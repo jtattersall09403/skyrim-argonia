@@ -50,12 +50,20 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
        goes under "For the owner" in `STATE.md` in plain English, with where it stands and the look that shows it.
     Then `look <place> survey` and
     `survey <unit>` for every structure, each tile read; the owner captures (`place-look`, the hand-over look).
-11. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
+11. The promise audit: every physical thing the record's notes (all aspects), its gives, its people's notes and the
+    quests that name the place say stands there (an egg-pool, a jetty, weirs, racks, a stall, a shrine, boats, a
+    bunkhouse), each listed in `STATE.md` with its verdict: built and recognisable from where the player comes, with
+    the look that shows it; or built now (by the skill that owns it); or the prose changed to what is built where the
+    detail is cosmetic (`docs/design/consistency.md`). For each quest need at the place, write down how the player
+    is told: the objective's text and target, a map marker, or the line that names it.
+12. A place on a source an earlier place uses: `look <place> versus <other>`, the sheet read whole; say what tells
     the two apart.
-12. Commit `newworld/places/<place_id>/` and the record change by path. The final build and check come after the
+13. Commit `newworld/places/<place_id>/` and the record change by path. The final build and check come after the
     LAST edit of any kind to the place's files: `check` ends with whether the built check is current against them,
     and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
-    consistency stage would refuse the landing). The place goes to `place-people`.
+    consistency stage would refuse the landing). For a stocked place, `handover` also needs `python -m tools.places
+    stock reach <place_id>` to flag no row (material reach, region, place class, trade kit; `place-stock`, section 4).
+    The place goes to `place-people`.
 
 ## Accepted findings
 
@@ -64,7 +72,7 @@ shown apart and never failing; an entry that no longer matches a finding fails a
 
 - a build check's (`overlap`, `doors`, `clear`, `nordic`): `place.json` `draft.accepted_checks` `[{check, ids, why}]`;
 - a unit's flag: `draft.accepted` `[{unit, flag, why}]` (`place-site`);
-- a probe fault: `draft.accepted_faults` `[{id, fault, why}]` (`place-look`).
+- a probe fault (`draft check` reads the same rows): `draft.accepted_faults` `[{id, fault, why}]` (`place-look`).
 
 ## A failure
 
@@ -81,6 +89,6 @@ Each failure's full list is in `out/places/shards/<place_id>/check_failures/<che
 | `people`, `services`, `jail` | `place-routines` |
 | lights, lanterns, sap, stations, `primitives` | `place-dressing` |
 | `promises`, needs | `place-story`, or `place-stock` for a promise of what the place holds |
-| `stock` | `place-stock` |
+| `stock`, `stock reach` | `place-stock` |
 
 A finding beyond the checks is weighed by what the player would notice.

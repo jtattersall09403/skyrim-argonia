@@ -210,6 +210,54 @@ def test_nordic_review_outranks_the_folder_rule(tmp_path):
     assert refused == ["replace A:1 -> refused: the replacement is a Nordic piece (decision 0006)"]
 
 
+def test_a_copied_rooms_nordic_pieces_follow_the_review():
+    from tools.places.draft import adds
+    review = {"J:1": {"base": "J:1", "verdict": "neutral", "why": "a stone house's shell, plain stone and thatch"},
+              "J:2": {"base": "J:2", "verdict": "nordic", "why": "a carved dragon post"}}
+    bases = {"J:1": {"nordic": True}, "J:2": {"nordic": False}, "J:3": {"nordic": True}, "J:4": {"nordic": False}}
+    assert adds.room_nordic({"J:1", "J:2", "J:3", "J:4", "J:5"}, bases, review) == {"J:2", "J:3"}
+
+
+def test_a_placed_bases_nordic_check_follows_the_review():
+    from tools.places.draft import check
+    review = {"J:1": {"base": "J:1", "verdict": "neutral", "why": "a plain stone house"}}
+    assert check.added_nordic("J:1", {"nordic": True, "edid": "Stonehouse"}, review) is None
+    assert check.added_nordic("J:2", {"nordic": True, "edid": "NordPost"}, review) == " from outside the source place"
+    assert check.added_nordic("J:1", {"nordic": False, "edid": "DoomstoneLord"}, review) == " (a Nordic sign)"
+
+
+def test_a_copied_rooms_nordic_check_follows_the_review(tmp_path, monkeypatch):
+    from types import SimpleNamespace as NS
+    from tools.places.draft import check, io as dio
+    room = tmp_path / "spaces" / "Hut"
+    room.mkdir(parents=True)
+    (room / "space.json").write_text('{"space_id": "Hut", "copy_of": "other/Hut", "added": true}')
+    (room / "refs.jsonl").write_text("")
+    cell = NS(refs=[{"id": "S:1", "base": "J:1", "kind": "building"}, {"id": "S:2", "base": "J:2", "kind": "static"}])
+    monkeypatch.setattr(dio, "copied_space", lambda *a, **k: cell)
+    monkeypatch.setattr(dio, "catalogue_bases", lambda keys, *a: {"J:1": {"nordic": True}, "J:2": {"nordic": True}})
+    monkeypatch.setattr(dio, "nordic_review", lambda *a: {"J:1": {"base": "J:1", "verdict": "neutral", "why": "plain"}})
+    assert check.nordic_in_copies(tmp_path, NS(meta={"source_id": "mine"}), {}) == ["Hut/S:2 keeps a Nordic base J:2"]
+
+
+def test_an_added_doors_arrival_on_a_deck_keeps_its_height():
+    from types import SimpleNamespace as NS
+    from tools.places.draft import adds
+
+    class G:
+        def height(self, x, y):
+            return -80.0          # the river bed under a moored ship
+
+    back = {"id": "S:2", "base": "D:1", "kind": "door", "pos": [0, 0, 0], "rot": [0, 0, 0],
+            "door": {"to_space": "exterior", "to_ref": "S:1"}}
+    sp = NS(refs=[back], meta={"name": "Hold"})
+    src = NS(spaces={"Hold": sp}, bases={})
+    for arrival, z in (([10.0, 20.0, 95.0], 95.0), ([10.0, 20.0], -80.0)):
+        door = {"id": "p.door", "pos": [0, 0, 83.0], "rot": [0, 0, 0]}
+        adds.room("p", door, {"copy_of": "s/Hold", "arrival": arrival}, src, {}, set(), G())
+        assert door["door"]["arrival"] == [10.0, 20.0, z]
+
+
 def test_a_replacement_keeps_the_walking_top():
     from tools.places.draft import io as dio
     steps = {"edid": "DockStepsDown02", "bounds": [[-258, -150, -508], [257, 157, 190]]}

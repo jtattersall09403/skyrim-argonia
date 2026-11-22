@@ -54,16 +54,65 @@ things, each person's tool or weapon, the guard's gear, jewellery and carried go
 list, all with reasons. It also lists what it leaves open. Treat it as a draft: read every row against the facts and
 change what the facts say otherwise.
 
-## 4. Author the stock source
+## 4. Materials: who holds what
+
+Everything of gear is made of a material of ours, and the material decides where it may be held and how often
+([items](../../../docs/design/items.md) explains the model; the facts are in `materials.json`, `item_material.json`,
+`regions.json`, `kits.json` and `scale.json`). Work from the province down to the person:
+
+1. **Province.** Each tier has its own Black Marsh materials for each slot (`scale.json` tiers `weapon`, `heavy`,
+   `light`, `shield`). An item's tier is its power (`items.json` `stock_tier_id`), never its keyword. Wood, bone,
+   flint, hide and leather are common. Bog iron, scale, shell and chitin are uncommon. Obsidian and bronze are rare.
+   Imperial gear, bonemold and Shadowscale gear are situational. Relics, Ayleid elven, glass and ebony are ruin
+   finds. Daedric and dragon gear enter only through the ledger. Dwarven, Orcish and decision 0006's list are never
+   stocked.
+2. **Region.** Read the region's profile (`region_profile`, `region_people`, `region_material`, `region_good`).
+   Prefer its local materials and its signature goods, carry traded materials in more thinly and at a higher price,
+   and hold nothing it marks absent. Give each region something a player would notice: Murkwood's fellrunner down and
+   sap jars, the Valley of Storms' chitin and saltrice, a Skeith Isle pirate's mixed hoard.
+3. **Place.** `python -m tools.places stock mix <place>` gives the expected mix and names the rule behind each share:
+   the class target, then the bends for the region's peoples, the place's culture, its trade and its metal. Stock
+   to within about 15 points of each share. A tribal or Naga camp holds organic gear only. A material whose reach the
+   place does not meet (an Imperial piece where the record gives no reason, glass outside a ruin) has no place there.
+4. **Household and person.** Each person takes their trade kit (`trade_kit`, matched by their trade or role) and
+   their race's overlay. The kit says what they carry, what they wear, what their store keeps, the food in the house,
+   and what they would never own. A household's store follows its head's kit. Where the facts call for something
+   outside the kit (a dead husband's sword over the door), keep it with an `exception` on the row that gives the
+   reason in words.
+
+Worked examples:
+
+- **An Argonian fisher in a village** (an eel-trapper at Teel-Fen Weir, W2). Kit `fisher`. She carries a T1 flint
+  fishing knife (Saxhleel Fishing Knife) and a bone harpoon (New Armory Argonian Fishing Harpoon) and wears hide
+  wraps. The hut's store holds dried fish, twine and traps (river-fish, reed-weaving), with saltrice and eggs as food.
+  She owns no metal two-handed weapon, no heavy armour and nothing rare.
+- **A Dunmer holdout's household** (a gang-master at Ashgate Landing, a stone-grey place that bonemold reaches).
+  Kit `overseer` with the `dunmer-household` overlay. He carries a bonemold sword (Bonemold Weapon Pack) and wears
+  chitin. The store holds saltrice and the work's stores. He keeps no Imperial issue without a reason.
+- **An Imperial clerk at a levy post** (a toll-keeper at a Warden Marches fort, where Imperial gear reaches through
+  the culture crimson-red). Kit `clerk` with the `imperial-household` overlay. He carries a Legion Pugio (HTBM, T1
+  Imperial), wears plain clothes and no armour, and keeps the post's ledgers and Cyrodiilic goods. He owns no
+  bonemold and no relic.
+
+The derive puts the smithing ingredients on the traders' lists. A smith sells every recipe ingredient whose good
+the place makes (five of each) or its region lists (three of each). A general trader sells the leather and wood
+among those. Both sell leather strips (six). Keep these rows unless the facts say otherwise.
+
+`python -m tools.places stock reach <place>` flags every row that breaks one of these rules, naming the rule
+(`material reach`, `region`, `place class` or `kit <id>`) and the record text it read. Bring it to zero before
+hand-over, by changing the row or by giving it an `exception`.
+
+## 5. Author the stock source
 
 Write `newworld/sources/stock/places/<place>.json` from the draft and the facts. For each kind of holder:
 
 **People's possessions** follow from who they are: role, household, wealth band, fixed level and backstory.
 - The baseline is the archetype of role × band × culture: the band's carried gold and clothes, a tool or weapon
   of the trade, and jewellery from W3 up.
+- Each person's gear follows their trade kit and their region (section 4).
 - Guards carry the guard's issue (scale.json `guard_issue`, which the derive applies). Where the place's mods
   provide its own culture's guard set and the place's ceiling reaches the set's tier, the guards wear that set
-  (in Black Marsh, the Argonian guard armour of BM&V, the Black Marsh & Valenwood mod, T3), with the set's weapon if the source's guards carried one.
+  (in Black Marsh, BM&V's Argonian scale guard armour, T3, the scale material's tier), with the set's weapon if the source's guards carried one.
   Otherwise they wear the plain issue (T2). Every guard also carries one plain torch to light the way after dark. Each
   reason says why the place earns the set, such as a capital or a city of standing.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a
@@ -122,7 +171,7 @@ argue for it.
 Give every row a `why` that names the facts it stands on. Add `cites` where a holder takes them from the record or
 the lore.
 
-## 5. Deliver every promise
+## 6. Deliver every promise
 
 `python3 -m tools.newworld.stockdb promises <place>` lists each `place_give` row and what delivers it. Loot,
 treasure and gold-hoard promises are yours: deliver each with a container or loose thing at the right tier, and a
@@ -138,20 +187,21 @@ its seq; the place files give it (the skill `place-routines`). When the place's 
 place files do not yet give them the service (a rootworm handler at the root landing for a `rootworm-stop`), run `python3 -m tools.places draft people <place>`, which gives a resident's promise to its keeper (the skill `place-people`, section 2). A promised station the files lack is `draft stations <place>`. Only when neither stage can give it, write the
 delivery `open`, `by: person`, naming them, with a `why` that says which service at which seq and where they work.
 
-## 6. What stocking never breaks
+## 7. What stocking never breaks
 
 - A thing a quest names is the quest's: never moved, removed or restocked.
 - Ownership is set wherever people live, so stealing is stealing.
 - A lock is a fixed level, never one that follows the player.
 - An authored container never respawns. Only a trader's merchant chest restocks, and only to its fixed list.
-- No levelled list anywhere, and no never-material (decision 0006).
+- No levelled list anywhere, and no never material (decision 0006), judged on our material.
 
-## 7. Load, check and iterate
+## 8. Load, check and iterate
 
 1. `python3 -m tools.newworld.stockdb items` (adds every item you named to the catalogue), then
    `python3 -m tools.newworld.refresh` (the tables, the story digest and the story explorer, in order). A load error reports the row and the
    column: fix the source, never the table.
-2. `python3 -m tools.newworld.stockdb promises <place>`: nothing open.
+2. `python3 -m tools.newworld.stockdb promises <place>`: nothing open. `python -m tools.places stock reach
+   <place>`: no row flagged; `stock mix <place>`: each share as expected or explained.
 3. Build and check the place (`python3 -m tools.places build <place>`, `check <place>`). Its `stock` check passes
    only when every significant thing traces to a row, every row is built, owners and locks are set, every keyed lock's key is with its holder, nothing respawns
    but a merchant chest, and each holder is within its budget and band. Its `promises` check passes only when no
@@ -162,7 +212,7 @@ delivery `open`, `by: person`, naming them, with a `why` that says which service
 5. Commit the sources and the tables the load rewrote (`newworld/story/data/db/`) by path
    (`tooling/lane_commit.sh`), with the place's counts in the message.
 
-## 8. Change a stocked place narrowly
+## 9. Change a stocked place narrowly
 
 The stock source is derived whole once. After that, change only the rows a change touches and leave every other
 row as it stands.
@@ -174,4 +224,4 @@ row as it stands.
 - The owner changed contents in the studio: those rows are the owner's and stand as finalised.
 
 Run `stock derive` to a scratch path to see what the facts give, and carry over only the rows you are
-changing; never write a fresh derive over the stock source. Then run section 7 again.
+changing; never write a fresh derive over the stock source. Then run section 8 again.

@@ -31,7 +31,7 @@ export function same(a, b) {
 // identities and stock are the place's people source and stock source as the server sends them (or null): the
 // content ops (identity.edit, stock.*) change them as edits.py does.
 export function emptyModel() {
-  return { spaces: {}, clear: new Map(), land: new Map(), landRows: new Map(), paths: new Map(), people: new Map(), quests: new Map(), walk: new Map(), place: {}, identities: null, stock: null };
+  return { spaces: {}, clear: new Map(), land: new Map(), landRows: new Map(), paths: new Map(), people: new Map(), quests: new Map(), walk: new Map(), paint: new Map(), place: {}, identities: null, stock: null };
 }
 
 // ---------- content ops: who people are and what things hold (edits.py CONTENT) ----------
@@ -101,6 +101,7 @@ export function modelFromFiles(files) {
   for (const p of files.people || []) m.people.set(p.id, clone(p));
   for (const p of files.quests || []) m.quests.set(p.id, clone(p));
   for (const p of files.walk || []) m.walk.set(p.id, clone(p));
+  for (const p of files.paint || []) m.paint.set(p.id, clone(p));
   return m;
 }
 
@@ -202,8 +203,9 @@ export function applyOp(m, op) {
       break;
     }
     case 'path.add': case 'path.edit': case 'path.remove': case 'person.add': case 'person.edit': case 'person.remove':
-    case 'quest.add': case 'quest.edit': case 'quest.remove': case 'walk.add': case 'walk.edit': case 'walk.remove': {
-      const [table, verb] = op.op.split('.'), rows = { path: m.paths, person: m.people, quest: m.quests, walk: m.walk }[table], row = op[table];
+    case 'quest.add': case 'quest.edit': case 'quest.remove': case 'walk.add': case 'walk.edit': case 'walk.remove':
+    case 'paint.add': case 'paint.remove': {
+      const [table, verb] = op.op.split('.'), rows = { path: m.paths, person: m.people, quest: m.quests, walk: m.walk, paint: m.paint }[table], row = op[table];
       const cur = rows.get(row.id);
       if (verb === 'add') { if (cur) conflict(op, `${table} ${row.id} already exists`); rows.set(row.id, clone(row)); break; }
       if (!cur) conflict(op, `${table} ${row.id} does not exist`);
@@ -281,6 +283,7 @@ export function modelToFiles(m) {
   const out = { place: m.place, spaces, clear, land, paths: [...m.paths.values()].sort(byId), people: [...m.people.values()].sort(byId) };
   if (m.quests.size) out.quests = [...m.quests.values()].sort(byId);   // kept only when it has rows, as edits.py
   if (m.walk.size) out.walk = [...m.walk.values()].sort(byId);
+  if (m.paint.size) out.paint = [...m.paint.values()].sort(byId);
   if (m.identities) out.identities = canonicalSource('identities', m.identities);
   if (m.stock) out.stock = canonicalSource('stock', m.stock);
   return sortKeys(out);
@@ -399,6 +402,8 @@ export function describe(op, nameOf = (k) => k) {
     case 'walk.add': return { block: 'Marked "No walking here"', walk: 'Marked "Walk here"', join: 'Asked to join two walking areas' }[op.walk.kind] || 'Added a walking zone';
     case 'walk.edit': return op.walk.note !== op.before?.note ? 'Gave a walking zone a note' : 'Moved a walking zone';
     case 'walk.remove': return 'Deleted a walking zone';
+    case 'paint.add': return op.paint.erase ? 'Erased ground paint' : `Painted the ground with ${nameOf(op.paint.texture)}`;
+    case 'paint.remove': return 'Took a ground paint stroke away';
     default: return CONTENT_OPS.includes(op.op) ? describeContent(op, nameOf) : op.op;
   }
 }

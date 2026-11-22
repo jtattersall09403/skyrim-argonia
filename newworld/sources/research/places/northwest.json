@@ -395,7 +395,7 @@
     },
     {
      "aspect": "present",
-     "text": "A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
+     "text": "A town of stilt houses round a Hist, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -458,7 +458,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist tree in a pool at the heart of the town, tended by a tree-minder; hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
+     "text": "A Hist tree stands on a mound at the heart of the town, with its sap pool at its foot. A tree-minder tends it, and hatchlings come here. In 4E 201 the tree is sick: its bark is dry and dark, its scar has closed and its egg-pool is cooling. The Veesa-Teeleel hold the Barsaebic ruins to be sick ground and teach children not to touch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -480,7 +480,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes cut through the sedge down to the creek, mats drying on racks, fish racks smoking on the road side.",
+     "text": "Pale reed-thatched stilt houses stand on a ring of mud banks round the Hist and its sap pool. Eggs lie in the pool. A lane runs down to the jetty and the weirs on the creek. Nets dry on racks along it, fish smoke over a fire, and the fish-smoker's stall stands beside them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -522,7 +522,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. The elders' long house is Vosh-Leera's: she heads the elders' household.",
+     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder looking for someone to fetch Sithis' beard from Reed-Sill Weir to warm the cooling pool. The elders' hut is Vosh-Leera's: she heads the elders' household.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -543,7 +543,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms house the households and its elder's hut serves as the elders' long house. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool: the jetty market on the stream, the levy's bunkhouse and a fisher household's house. Seekhat Yol's Nordic timber sheds and carved posts are replaced with Ree-An-Wo's hide tents and cypress posts. Unlike Natai, a salt-white line of huts on a beach, and Seafalls, platforms climbing a cliff over the surf, Jal-Veesa keeps the source's ring of houses round its Hist pool, inland on a stream. Still to add: the jetty and the weirs on the stream, the fish racks and the mat racks.",
+     "text": "Its main source, Seekhat Yol (King of the Murkmire), gives the pale reed-thatched stilt houses on platforms round its Hist, the closest match to the look; its rooms are the households' homes, and its elder's hut is the elders' hut. Three of Alten Meerhleel's (King of the Murkmire) houses are added from the pool and stand at the town's south edge: the jetty market, the levy's bunkhouse and the dockmaster's house. Seekhat Yol's Nordic timber sheds and carved posts are replaced with Ree-An-Wo's hide tents and cypress posts. Unlike Natai, a salt-white line of huts on a beach, and Seafalls, platforms climbing a cliff over the surf, Jal-Veesa keeps the source's ring of houses round its Hist, inland on a stream. Its jetty, weirs and racks lie along the lane to the creek. Still to add: the dry mud flat's own ground paint, and the Hist's sick and dead looks, which the quest sets.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -568,7 +568,7 @@
    "gives": [
     {
      "kind": "rootworm-stop",
-     "detail": "the Hist pool at the heart of the town, where the tree-minder calls the rootworm",
+     "detail": "the Hist's sap pool at the heart of the town, where the tree-minder calls the rootworm",
      "count": 1
     },
     {
@@ -578,12 +578,12 @@
     },
     {
      "kind": "trader-innkeeper",
-     "detail": "a fish-smoker's stall on the road side",
+     "detail": "a fish-smoker's stall by the fish racks on the lane to the jetty",
      "count": 1
     },
     {
      "kind": "free-bed",
-     "detail": "a mat in the elders' long house",
+     "detail": "a mat in the elders' hut",
      "count": 1
     },
     {
@@ -603,7 +603,7 @@
     },
     {
      "kind": "tanning-rack",
-     "detail": "by the boat sheds",
+     "detail": "on the deck by Kuxan-Deel's house, south of the Hist",
      "count": 1
     },
     {
@@ -6126,7 +6126,7 @@
    "status": "inhabited",
    "held_by": "A Dunmer gang-master and his Owing reed-cutters",
    "population": 15,
-   "footprint_radius_m": 35,
+   "footprint_radius_m": 50,
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
@@ -6190,7 +6190,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen cutters of every race, each serving months of the Owing.",
+     "text": "A Dunmer gang-master, Dralin Uveran, a cook named Okeeh and a dozen Argonian cutters, each serving months of the Owing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6272,7 +6272,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Military Camp Hjaalmarch Imperial (Skyrim), is an Imperial camp of sixteen people with no interior, and its pieces serve as the old post's gate and hut walls. Ree-An-Wo (King of the Murkmire) lends hide tents and a stall. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, ImperialShip01Base.nif, 29.3 m long and 10.1 m in the beam by its bounds) with its furnished hold, the interior cell 01dock3to4 (25 containers and 128 loose things), given a door that locks from outside. The river here is 29 to 41 m wide within 200 m, and a pool 63 m west-north-west of the hut is 81 m across and about 3.8 m deep; the hull is moored in that pool along the east bank, raised about 4 m above its own keel depth, and the river runs from the pool to the sea. Still to add: the moored barge and its door, the bundled reed by the landing, the strongbox in the hut and the grave-stake.",
+     "text": "Its main source is Military Camp Hjaalmarch Imperial (Skyrim), which supplies the whole camp: six Imperial hide tents round a cook's fire and spit, pitched on a level floor cut into the bank. The Legion's war table, smithy and field hospital are left out. The stone hut and its one room come from Baan Malur (Journey to Baan Malur), a house of dark stone under reed thatch, and the gate is a Legion stockade gate standing alone on the landward road. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, 29.3 m long and 10.1 m in the beam by its bounds). Its furnished hold, the interior cell 01dock3to4, lies behind a door in its waist. It lies moored along the pool's east bank at its own waterline with its keel in the river mud, and a Raven Rock jetty and two ship's planks over its rail join it to the bank. Within 200 m of the hut the river is 29 to 41 m wide, and the pool west-north-west of the hut is 81 m across and about 3.8 m deep. Still to add: nothing; the camp, the barge and its hold, the hut and its room, the gate, the reed, the grave-stake and the strongbox are built.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6570,7 +6570,7 @@
    "status": "inhabited",
    "held_by": "Veesa-Teeleel weir-wardens",
    "population": 5,
-   "footprint_radius_m": 40,
+   "footprint_radius_m": 65,
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 1,
@@ -6623,7 +6623,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five wardens and their families live on a small cypress platform on posts at the weir, with a landing, a drying rack of fish and the young Hist in the middle of the tents. Three nights ago the young tree's scar closed over a grey paste that none of its tenders put there.",
+     "text": "Three scale-hide tents stand on cypress platforms, raised on posts round the head of the creek. The camp has a landing, boats, a fire and a drying rack for fish. Plank walkways run from the platforms to the young Hist on the camp's west side. Three nights ago the young Hist's scar closed over a grey paste. The wardens and Heem-Jasa did not put it there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6639,7 +6639,7 @@
     },
     {
      "aspect": "people",
-     "text": "Veesa-Teeleel families live at the weir, five wardens and their kin, with Heem-Jasa, the young tree's minder.",
+     "text": "Five Veesa-Teeleel live here: two wardens, two kin of the wardens and Heem-Jasa, who minds the young Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6671,7 +6671,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The young Hist stands at the centre of the platform. The wardens hatch their eggs in its pool and worship at it.",
+     "text": "The young Hist stands on the camp's west side in a pool of its own sap. The wardens hatch their eggs in the sap pool and worship at the Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6683,7 +6683,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale hide tents on a small cypress platform round a young Hist, beside a woven weir across the creek, with a reed hide by a lone dead tree on the bank to the west.",
+     "text": "Dark scale-hide tents stand on cypress platforms round the head of a creek. Plank walkways join them to a young Hist. Below the camp a woven weir crosses the creek. A reed hide stands by a lone dead tree on the west bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6698,7 +6698,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles gather under the log boom. The wardens are wary of strangers, and strangers come and go at a reed hide beside a lone dead tree west of the weir.",
+     "text": "The wardens are wary of strangers. Strangers wait at a reed hide beside a lone dead tree west of the weir.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6720,7 +6720,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source, Huluxinoag (King of the Murkmire), is an Argonian village round a Hist with its roots and glands, some of them dead, on platforms and mud-hut walkways by water with docks and boats; its platforms and walkways round the tree are the weir camp, its mature trunk is swapped for a young Hist and its dead glands serve the ending. Ree-An-Wo (King of the Murkmire) lends the pale hide tents and a tanning rack. Nothing in it is Nordic; the huts and docks beyond the weir camp's size are dropped. Unlike Tailfall Mound, which uses only Huluxinoag's interior, Teel-Fen keeps its Hist and its platforms above the water. Still to add: the young Hist in its pool of Hist sap, the woven weir across the creek with its log boom, the drying rack, the landing and the reed hide beside the lone dead tree on the west bank.",
+     "text": "Its main source, Huluxinoag (King of the Murkmire), is an Argonian village round a Hist on platforms and mud-hut walkways by water, with docks and boats. Its great Hist is swapped for King of the Murkmire's young Hist and the young tree's dead twin, switched by the village's own living and dead state, which serves the endings. Its platforms, walkways, landing and boats are the weir camp; its thatch houses and ruins are dropped for tents. Ree-An-Wo (King of the Murkmire) lends the scale-hide tents, the fire and cooking set and a tanning rack. Added: the Hist's sap pool, the woven weir across the creek with its log boom, a drying rack, and the reed hide by a lone dead tree on the west bank, screened with woven reeds. Unlike Tailfall Mound, which uses only Huluxinoag's interior, Teel-Fen keeps its platforms. Still to add: nothing the record names.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

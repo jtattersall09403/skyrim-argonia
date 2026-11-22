@@ -1,0 +1,19 @@
+{"id":"boatman","label":"Boatman, porter, pilot, rootworm handler","ord":13,"match":"\\b(boat\\w*|porter|pilot|rootworm|ferry\\w*)\\b","roles":"boatman carter"}
+{"id":"builder","label":"Builder, raft-builder, mender","ord":6,"match":"\\b(build\\w*|raft-builder|plank|mender|pole-\\w+)\\b"}
+{"id":"carver","label":"Carver of bone, wood or stakes","ord":5,"match":"\\b(carv\\w*|whittl\\w*|bone-\\w+|grave-stake|depth-stick)\\b"}
+{"id":"clerk","label":"Clerk, toll-keeper, scribe","ord":14,"match":"\\b(clerk|toll\\w*|customs|scribe|tally-keeper|levy-master)\\b"}
+{"id":"dunmer-household","label":"A Dunmer household","ord":17,"races":"DarkElfRace"}
+{"id":"elder","label":"Elder, naheesh, leader","ord":9,"match":"\\b(naheesh|elder|assembly|speaker|chief)\\b","roles":"leader"}
+{"id":"fisher","label":"Fisher, net-maker, weir-warden","ord":1,"match":"\\b(fish\\w*|net-\\w+|eel\\w*|trodh|weir\\w*|gar)\\b"}
+{"id":"gatherer","label":"Gatherer of eggs, sap, herbs or fruit","ord":3,"match":"\\b(gather\\w*|picker|egg-\\w+|sap-\\w+|herb\\w*|fruit|lumberry|jar-sealer)\\b"}
+{"id":"guard","label":"Guard or levy","ord":0,"match":"\\b(levy|watch|guard|warden of the council)\\b","roles":"guard"}
+{"id":"host","label":"Innkeeper, cook, smoker, pickler","ord":12,"match":"\\b(inn\\w*|stew-pot|cook|pickler|smoker|lodge|lets a room)\\b","roles":"innkeeper"}
+{"id":"hunter","label":"Hunter, trapper, fletcher","ord":2,"match":"\\b(hunt\\w*|trapper|snare\\w*|nest-finder|fletcher|arrow-\\w+)\\b"}
+{"id":"imperial-household","label":"An Imperial or Imperial-descended household","ord":18,"races":"ImperialRace BretonRace"}
+{"id":"overseer","label":"Gang-master, slave-catcher, overseer","ord":15,"match":"\\b(gang-master|slave\\w*|catcher|overseer|enforcer)\\b"}
+{"id":"priest","label":"Tree-minder, grave-singer, priest","ord":10,"match":"\\b(tree-minder|root-tender|grave-singer|priest|pilgrim|shaman)\\b","roles":"priest"}
+{"id":"resident","label":"Anyone else","ord":16,"match":".","roles":"resident child trainer spell-trader"}
+{"id":"smith","label":"Smith","ord":8,"match":"\\bsmith\\b","roles":"smith"}
+{"id":"tanner","label":"Tanner, hide-curer","ord":7,"match":"\\b(tann\\w*|hide-\\w+|curer|scraper|leather-\\w+)\\b"}
+{"id":"trader","label":"Trader, merchant, tally-keeper","ord":11,"match":"\\b(trader|merchant|seller|market|tally)\\b","roles":"merchant apothecary"}
+{"id":"weaver","label":"Reed-cutter, weaver, rope-twister","ord":4,"match":"\\b(weav\\w*|plait\\w*|mat|basket\\w*|rope-\\w+|reed-\\w+|bundler|lacer)\\b"}

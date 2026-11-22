@@ -32,64 +32,25 @@
    "space": "01dock3to4",
    "kind": "satchel",
    "security": "S0",
-   "tier": "T2",
-   "gold": 0,
+   "tier": "T1",
+   "gold": 3,
    "items": [
     {
-     "item": "Skyrim.esm:0135B8",
+     "item": "Skyrim.esm:065C97",
      "count": 1,
-     "why": "an Imperial sword (main plot, quest 1: the hold's kit)"
+     "why": "a heel of bread a cutter of the new gang keeps for the morning"
     },
     {
-     "item": "Skyrim.esm:013AB2",
-     "count": 1,
-     "why": "an Imperial light shield"
-    },
-    {
-     "item": "Skyrim.esm:013ED9",
-     "count": 1,
-     "why": "an Imperial light cuirass"
-    },
-    {
-     "item": "Skyrim.esm:013ED7",
-     "count": 1,
-     "why": "Imperial light boots"
-    },
-    {
-     "item": "Skyrim.esm:013EDA",
-     "count": 1,
-     "why": "Imperial light bracers"
-    },
-    {
-     "item": "Skyrim.esm:013EDB",
-     "count": 1,
-     "why": "an Imperial light helmet"
-    },
-    {
-     "item": "Skyrim.esm:013985",
-     "count": 1,
-     "why": "a hunting bow"
-    },
-    {
-     "item": "Skyrim.esm:01397D",
-     "count": 20,
-     "why": "twenty iron arrows"
-    },
-    {
-     "item": "Skyrim.esm:03EADD",
-     "count": 3,
-     "why": "three potions of minor healing"
+     "item": "Skyrim.esm:0669A5",
+     "count": 2,
+     "why": "two leeks from the cook's pot"
     }
    ],
-   "why": "the kit in the barge's hold where the player wakes (main plot, quest 1, ruled by the owner): nobody's, so a level-1 newcomer leaves the hold armed for the crocodiles in the reed beds",
+   "why": "a knapsack of the new gang's few things in the barge's hold, as Black Marsh & Valenwood leaves it there: bread, two leeks and a few coins, the household's own",
    "cites": [
-    "place_wealth:outpost-m13-m65",
-    "story/design/quests/lines/main-plot.md"
+    "place_note:outpost-m13-m65/present"
    ],
-   "owner_exception": {
-    "ruling": "owner, #80 story note 1, 2026-11-19: the barge-hold satchel keeps the kit he asked for",
-    "why": "the player's kit on waking in the hold; worth over an open satchel's budget by the owner's call"
-   }
+   "owner_household": "outpost-m13-m65.household.hold"
   },
   {
    "ref": "Black Marsh.esm:1BEB52",
@@ -108,8 +69,8 @@
    ]
   },
   {
-   "ref": "outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM",
-   "space": "exterior",
+   "ref": "outpost-m13-m65.LOOK034PLACE",
+   "space": "AshgateHut",
    "kind": "strongbox",
    "owner_household": "outpost-m13-m65.household.exterior",
    "lock": "Novice",
@@ -494,23 +455,23 @@
   {
    "give_seq": 5,
    "by": "container",
-   "ref": "outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM",
+   "ref": "outpost-m13-m65.LOOK034PLACE",
    "status": "delivered",
-   "why": "the gang-master's strongbox stands in the hut (draft.add, need 1), stocked at T2 behind a Novice lock"
+   "why": "the gang-master's strongbox stands in his hut beside his hammock, stocked at T2 behind a Novice lock"
   },
   {
    "give_seq": 1,
    "by": "ref",
-   "ref": "outpost-m13-m65.ET81EX756BWY1815520YP5TYDW",
+   "ref": "outpost-m13-m65.LOOK033PLACE",
    "status": "delivered",
-   "why": "the free bed in the hut: an unowned bedroll by the hut's wall (draft.add, need 1)"
+   "why": "the free bed in the hut: an unowned bedroll by the plank bench (draft.free_beds)"
   },
   {
    "give_seq": 3,
    "by": "ref",
-   "ref": "outpost-m13-m65.SE3WHF8EFJ9DZW7KD9G9PEM967",
+   "ref": "outpost-m13-m65.LOOK026PLACE",
    "status": "delivered",
-   "why": "the reed beds on the river bank: marshmerrow sedge and swamp fungal pods, three of each along the bank (draft.add, need 3)"
+   "why": "the reed beds on the river bank: three marshmerrow sedge and three swamp fungus along the bank below the camp and by the landing"
   },
   {
    "give_seq": 4,

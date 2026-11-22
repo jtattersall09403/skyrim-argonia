@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261122T044943",
+ "place_id": "outpost-m13-m65",
+ "name": "the lamp-oil barrel off the rock, beside the stall's table",
+ "at": "2026-11-22T04:49:43Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK047PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -99500.0,
+     -528670.0,
+     328.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99580.0,
+     -528610.0,
+     328.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:49:43Z"
+  }
+ ]
+}

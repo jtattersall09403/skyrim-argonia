@@ -1,770 +1,51 @@
 {
  "place_id": "outpost-m13-m65",
- "source_id": "bmv.imperial-barge",
- "redraft": {
-  "source_id": "skyrim.marker.militarycamphjaalmarchimperialmapmarker",
-  "similar": [
-   "bmv.imperial-barge"
-  ],
-  "why": "source changed to Military Camp Hjaalmarch 2026-11-21 for the camp, the ship and its hold carried from the Imperial barge as the second source; this draft is still the barge's, kept until it is redrafted"
- },
- "similar": [],
- "draft": {
-  "drop": {
-   "Black Marsh.esm:0B6A34": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A37": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A38": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A39": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A3A": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A3C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A3D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A3E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A3F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A40": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A42": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A43": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A45": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A46": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A48": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A4B": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A4C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A4E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A4F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A51": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A52": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A53": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A54": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A56": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A57": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A81": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6BFF": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1307B0": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14547E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14547F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:145480": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14548C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14548D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14548E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:14548F": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1C408A": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1C408C": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1C408D": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:1C408E": "Black Rose's quay and its town round the ship: Ashgate Landing takes only the moored ship, its hold door and its own deck lanterns; the landing is our bank",
-   "Black Marsh.esm:0B6A35": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead",
-   "Black Marsh.esm:0B6A36": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead",
-   "Black Marsh.esm:0B6A44": "the quay's three dock pieces: they stand 170 over our shore, whose water is a wade deep under them, so no flight lands on dry ground; the barge is joined to the bank by a gangway at its own deck's height instead"
-  },
-  "anchor": [
-   -102100,
-   -527800
-  ],
-  "search": 512,
-  "rot_deg": 232,
-  "add": [
-   {
-    "base": "Black Marsh.esm:09AEAD",
-    "kind": "building",
-    "pos": [
-     -100640,
-     -529240
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "the gang-master's hut, the old road post's low stone hut (place record: look, 'a low stone hut'): Black Marsh & Valenwood's stone swamp house (01Swamphousestone), one storey of stone, Dralin's bed, his strongbox and the bench inside"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52B",
-    "kind": "building",
-    "pos": [
-     -100150,
-     -529950
-    ],
-    "rot_z": 4.3124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
-    "scale": 0.8
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52B",
-    "kind": "building",
-    "pos": [
-     -99800,
-     -529300
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
-    "scale": 0.8
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52B",
-    "kind": "building",
-    "pos": [
-     -99950,
-     -528550
-    ],
-    "rot_z": 5.1124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutters' hide tent (place record: look, 'the cutters' hide tents'; source note: Ree-An-Wo lends hide tents): King of the Murkmire's scale-hide tent",
-    "scale": 0.8
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100220.0,
-     -529670.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 1, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100080.0,
-     -529670.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 1, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -99870.0,
-     -529020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 2, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -99730.0,
-     -529020.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 2, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100020.0,
-     -528334.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 3, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -99880.0,
-     -528334.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll before tent 3, as the Hjaalmarch camp lays two to a small tent",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100350,
-     -528650
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100200,
-     -528900
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100600,
-     -528500
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100800,
-     -528750
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll in the open by the fire: sixteen people sleep where they can (place record: population 16)"
-   },
-   {
-    "base": "Skyrim.esm:03B436",
-    "kind": "furniture",
-    "pos": [
-     -100560,
-     -529380
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "the gang-master's bed in his hut (the Hjaalmarch camp's officer's bed)",
-    "dz": 0.0,
-    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
-   },
-   {
-    "base": "Skyrim.esm:068ADB",
-    "kind": "furniture",
-    "pos": [
-     -100700,
-     -528800
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the cook's fire by the hut (place_give cooking-pot: 'the cook's fire by the hut'); the Hjaalmarch camp's own cooking spit"
-   },
-   {
-    "base": "Skyrim.esm:10AAD2",
-    "kind": "container",
-    "pos": [
-     -100500,
-     -529180
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "Dralin's strongbox in the hut (main story, What the Herald Sent; place record hook: easiest lock, key on his belt); its owner, lock and contents are a stock row",
-    "name": "Dralin's Strongbox",
-    "need": 1,
-    "dz": 0.0,
-    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
-   },
-   {
-    "base": "Journey to Baan Malur.esp:2E4CC9",
-    "kind": "static",
-    "pos": [
-     -101350,
-     -527650
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
-   },
-   {
-    "base": "Journey to Baan Malur.esp:2E4CC9",
-    "kind": "static",
-    "pos": [
-     -101300,
-     -527800
-    ],
-    "rot_z": 0.3,
-    "tier": "AGENT_INVENTED",
-    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
-   },
-   {
-    "base": "Journey to Baan Malur.esp:2E4CC9",
-    "kind": "static",
-    "pos": [
-     -101380,
-     -527950
-    ],
-    "rot_z": 0.6,
-    "tier": "AGENT_INVENTED",
-    "why": "bundled reed stacked by the landing (place record: look note), as a bundle of cut stalks"
-   },
-   {
-    "base": "King of the Murkmire.esp:05557F",
-    "kind": "building",
-    "pos": [
-     -100100,
-     -527900
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the old road post's gate (place record: summary, 'the old road post's gate still stands'): King of the Murkmire's palisade gate on the road side of the camp"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100720,
-     -529110
-    ],
-    "rot_z": 4.7124,
-    "need": 1,
-    "tier": "AGENT_INVENTED",
-    "why": "the free bed in the hut (place record: free-bed, 'a bench in the hut'): an unowned bedroll by the hut's wall, where a traveller may sleep, as Skyrim's camps give a free bed",
-    "dz": 0.0,
-    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
-   },
-   {
-    "base": "King of the Murkmire.esp:03A575",
-    "kind": "plant",
-    "pos": [
-     -101494,
-     -528206
-    ],
-    "rot_z": 0.0,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "Skyrim.esm:07E8B8",
-    "kind": "plant",
-    "pos": [
-     -101090,
-     -528985
-    ],
-    "rot_z": 1.1,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "King of the Murkmire.esp:03A575",
-    "kind": "plant",
-    "pos": [
-     -101606,
-     -527836
-    ],
-    "rot_z": 2.2,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "Skyrim.esm:07E8B8",
-    "kind": "plant",
-    "pos": [
-     -101561,
-     -529396
-    ],
-    "rot_z": 3.3,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "King of the Murkmire.esp:03A575",
-    "kind": "plant",
-    "pos": [
-     -101320,
-     -526460
-    ],
-    "rot_z": 4.4,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "a reed bed's marshmerrow sedge on the river bank (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "Skyrim.esm:07E8B8",
-    "kind": "plant",
-    "pos": [
-     -100997,
-     -526145
-    ],
-    "rot_z": 5.5,
-    "need": 3,
-    "tier": "AGENT_INVENTED",
-    "why": "swamp fungus on the river bank's reed beds (place record: harvest-common, 'sedge and swamp fungus on the reed beds')"
-   },
-   {
-    "base": "King of the Murkmire.esp:01FA38",
-    "kind": "static",
-    "pos": [
-     -100260.0,
-     -527780.0
-    ],
-    "rot_z": 1.5708,
-    "tier": "AGENT_INVENTED",
-    "why": "the grave-stake by the old post's gate (source note: 'Still to add: ... the grave-stake'): a cypress stake of King of the Murkmire's (MudHutWalkwayPole), driven upright"
-   },
-   {
-    "base": "Skyrim.esm:01769A",
-    "kind": "static",
-    "pos": [
-     -100850.0,
-     -528900.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "the cook's stall of dried fish (place record: trader-general, 'the cook's stall of dried fish and lamp oil'): Skyrim's fish drying rack beside the cook's fire, where the cook sells"
-   },
-   {
-    "base": "Skyrim.esm:041EC7",
-    "kind": "static",
-    "pos": [
-     -100720,
-     -529260
-    ],
-    "rot_z": 4.7124,
-    "tier": "AGENT_INVENTED",
-    "why": "the bench in the hut (place record: free-bed, 'a bench in the hut'): a plank farm bench against the wall with the unowned bedroll laid beside it, where a guest of the camp sleeps",
-    "dz": 0.0,
-    "within": "outpost-m13-m65.XZH8BP15XAMSFB2G4F4YPR72JN"
-   },
-   {
-    "base": "King of the Murkmire.esp:10A52B",
-    "kind": "building",
-    "pos": [
-     -99650,
-     -529800
-    ],
-    "rot_z": 0.0,
-    "scale": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a fourth cutters' hide tent: sixteen people live at the camp (place record: population 16; look, 'the cutters' hide tents')"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -99720.0,
-     -529520.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -99580.0,
-     -529520.0
-    ],
-    "rot_z": 0.0,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed",
-    "dz": 0.0
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100450,
-     -528450
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100900,
-     -528600
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
-   },
-   {
-    "base": "Skyrim.esm:03B3CD",
-    "kind": "furniture",
-    "pos": [
-     -100250,
-     -528750
-    ],
-    "rot_z": 0.8,
-    "tier": "AGENT_INVENTED",
-    "why": "a cutter's bedroll: sixteen people live at the camp (place record: population 16), so each has a bed"
-   },
-   {
-    "base": "Skyrim.esm:0F6307",
-    "kind": "building",
-    "pos": [
-     -101917.43,
-     -526776.18
-    ],
-    "rot_z": 1.82778,
-    "on": "outpost-m13-m65.60T4J86V0FCV9CAJC916Z6Y91S",
-    "dz": 106.1,
-    "tier": "AGENT_INVENTED",
-    "why": "the barge's boarding plank laid over its rail on the bank side (main story, quest 1: the player walks out of the hold and off the barge): a flat plank deck, its two flights down to the waist and to the bank",
-    "within": "outpost-m13-m65.M83XKSNQRFV4NCNXG5Q8YVKS7D"
-   },
-   {
-    "base": "Skyrim.esm:0AE630",
-    "kind": "building",
-    "pos": [
-     -102298.34,
-     -526673.0
-    ],
-    "rot_z": 3.39858,
-    "on": "outpost-m13-m65.F3CRJF3RK0V660C4TPZ4Z7TA5V",
-    "dz": -124.11,
-    "within": [
-     "outpost-m13-m65.60T4J86V0FCV9CAJC916Z6Y91S",
-     "outpost-m13-m65.M83XKSNQRFV4NCNXG5Q8YVKS7D"
-    ],
-    "tier": "AGENT_INVENTED",
-    "why": "the steps down from the boarding plank into the barge's waist, where the hold door stands"
-   },
-   {
-    "base": "Skyrim.esm:0AE630",
-    "kind": "building",
-    "pos": [
-     -101542.81,
-     -526878.79
-    ],
-    "rot_z": 0.25698,
-    "on": "outpost-m13-m65.F3CRJF3RK0V660C4TPZ4Z7TA5V",
-    "dz": -124.11,
-    "tier": "AGENT_INVENTED",
-    "why": "the steps down from the boarding plank to the bank"
-   }
-  ],
-  "roles": {
-   "merchant": {
-    "space": "01dock3to4",
-    "pos": [
-     3167,
-     3640,
-     7020
-    ],
-    "why": "Okeeh, the cook (main story, quest 1: 'sitting by the hold's cook-pot a few steps from where the player wakes'): her work spot is the hold's own spit pot"
-   }
-  },
-  "room_names": {
-   "01dock3to4": {
-    "name": "Barge Hold",
-    "why": "the barge's hold where the player wakes (main quest 1, room 'Barge Hold'); the cook's fire is only what Okeeh tends there"
-   }
-  },
-  "plan": {
-   "look": [
-    {
-     "line": "a low stone hut",
-     "by": "the added stone swamp house of Black Marsh & Valenwood (01Swamphousestone), one low storey"
-    },
-    {
-     "line": "a wooden gate on the river bank",
-     "by": "the added cypress palisade gate (CypressStockadePalisadeGate)"
-    },
-    {
-     "line": "the cutters' hide tents",
-     "by": "3 added King of the Murkmire scale-hide tents (ALPAScaleTent02 at 0.8)"
-    },
-    {
-     "line": "bundled reed stacked by the landing",
-     "by": "3 added stick bundles of Journey to Baan Malur's"
-    },
-    {
-     "line": "the grave-stake (source note)",
-     "by": "an added cypress grave-stake by the gate"
-    },
-    {
-     "line": "the cook's stall of dried fish and lamp oil (trader-general)",
-     "by": "an added fish drying rack beside the cook's fire, where the cook sells"
-    },
-    {
-     "line": "a bench in the hut (free-bed)",
-     "by": "an added plank farm bench (FarmBench01Static) in the stone hut with the unowned bedroll beside it"
-    },
-    {
-     "line": "a work barge moored in the pool below the camp",
-     "by": "the source's Imperial ship hull moored in the pool with its hold door in the waist (owner-approved), boarded by a plank over its rail with steps down to the waist and to the bank (draft.add)"
-    },
-    {
-     "line": "15 people: the gang-master, the cook and the cutters, no guards",
-     "by": "fifteen by the record: Dralin Uveran the gang-master, Okeeh the cook, Hara-Jeel of the new gang and twelve cutters in the camp's beds (draft.guards 0)"
-    }
-   ],
-   "structures": [
-    {
-     "cluster": "landing",
-     "what": "the Imperial ship (the work barge) with its hold",
-     "verdict": "kept",
-     "why": "the record's work barge; owner-approved"
-    },
-    {
-     "structure": "harbour",
-     "what": "Black Rose's quay and walkways round the ship",
-     "verdict": "dropped",
-     "why": "the record's landing is our river bank; the barge is boarded by a plank laid over its rail with steps down to its waist and to the bank (draft.add), so the quay is not needed"
-    }
-   ],
-   "source": "The Imperial barge source kept (owner-approved barge, gangway, hold door, hold kit, strongbox); the camp round it is built from the pool (hide tents, gate, reed, stake, cook's rack), as no ranked source is a reed-cutters' camp with a stone hut.",
-   "gives": [
-    {
-     "kind": "trader-general",
-     "by": "Okeeh the cook (merchant, people.jsonl services): her stall is the fish drying rack beside the cook's fire, and she works the hold's spit pot in the mornings"
-    },
-    {
-     "kind": "free-bed",
-     "by": "the unowned bedroll beside the plank bench in the stone hut (draft.add need 1; draft.free_beds)"
-    },
-    {
-     "kind": "cooking-pot",
-     "by": "the cook's spit by the hut (draft.add, the Hjaalmarch camp's cooking spit; place.json stations)"
-    },
-    {
-     "kind": "harvest-common",
-     "by": "three marshmerrow sedge and three swamp fungus plants on the river bank's reed beds (draft.add need 3)"
-    },
-    {
-     "kind": "combat-creature",
-     "by": "quest 1's own placements at a fixed level in quests.jsonl: two mudcrabs at the bank's water edge and one young crocodile in the reed beds"
-    },
-    {
-     "kind": "treasure",
-     "by": "Dralin's strongbox in the stone hut (draft.add need 1), Novice lock, stocked at T2"
-    }
-   ]
-  },
-  "guards": 0,
-  "guards_why": "the record holds no watch: a Dunmer gang-master and his Owing reed-cutters (held by), so the camp keeps no guard; its people are the gang-master, the cook and the cutters",
-  "free_beds": [
-   "outpost-m13-m65.ET81EX756BWY1815520YP5TYDW"
-  ]
- },
+ "source_id": "skyrim.marker.militarycamphjaalmarchimperialmapmarker",
+ "similar": [
+  "bmv.imperial-barge"
+ ],
  "fit": {
   "pivot": [
-   137032.7,
-   -69543.6
+   -19600.0,
+   79300.0
   ],
   "anchor": [
-   -102228.0,
-   -527160.0
+   -100200.0,
+   -528350.0
   ],
-  "rot_deg": 232.0,
-  "cost": 333.333,
-  "clusters": {
-   "landing": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -103247.5,
-     -526526.6
-    ],
-    "rot": 4.31096,
-    "dx": -768.0,
-    "dy": 256.0,
-    "drot_deg": 15.0,
-    "cost_before": 1593.75,
-    "cost_after": 0.0
-   },
-   "s01": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -101266.5,
-     -527921.7
-    ],
-    "rot": 4.57276,
-    "dx": -256.0,
-    "dy": 0.0,
-    "drot_deg": 30.0,
-    "cost_before": 214.286,
-    "cost_after": 0.0
-   },
-   "s02": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -102228.0,
-     -527288.0
-    ],
-    "rot": 4.04916,
-    "dx": 0.0,
-    "dy": -128.0,
-    "drot_deg": 0.0,
-    "cost_before": 58.824,
-    "cost_after": 0.0
-   },
-   "w01": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -102228.0,
-     -527160.0
-    ],
-    "rot": 4.04916,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "w02": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -102228.0,
-     -527160.0
-    ],
-    "rot": 4.04916,
-    "dx": 0.0,
-    "dy": 0.0,
-    "drot_deg": 0.0,
-    "cost_before": 0.0,
-    "cost_after": 0.0
-   },
-   "w03": {
-    "pivot": [
-     137032.7,
-     -69543.6
-    ],
-    "to": [
-     -103764.0,
-     -525880.0
-    ],
-    "rot": 4.04916,
-    "dx": -1536.0,
-    "dy": 1280.0,
-    "drot_deg": 0.0,
-    "cost_before": 1000.0,
-    "cost_after": 333.333
-   }
-  },
+  "rot_deg": 340.0,
+  "cost": 0.0,
+  "clusters": {},
   "separated": [],
   "clusters_info": [
+   {
+    "id": "b01",
+    "kind": "building",
+    "head": "Skyrim.esm:096819",
+    "members": 48,
+    "centre": [
+     -20087.6,
+     78575.7
+    ]
+   },
+   {
+    "id": "b02",
+    "kind": "building",
+    "head": "Skyrim.esm:09682B",
+    "members": 32,
+    "centre": [
+     -20043.0,
+     80017.9
+    ]
+   },
    {
     "id": "landing",
     "kind": "landing",
     "head": null,
-    "members": 23,
+    "members": 3,
     "centre": [
-     137128.9,
-     -71278.3
+     -15015.0,
+     77743.6
     ]
    },
    {
@@ -773,38 +54,148 @@
     "head": null,
     "members": 2,
     "centre": [
-     135442.7,
-     -67270.1
+     -16707.6,
+     84941.6
     ]
    },
    {
     "id": "s02",
     "kind": "street",
     "head": null,
+    "members": 1,
+    "centre": [
+     -21157.8,
+     82159.9
+    ]
+   },
+   {
+    "id": "s03",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -17475.7,
+     78065.8
+    ]
+   },
+   {
+    "id": "s04",
+    "kind": "street",
+    "head": null,
+    "members": 17,
+    "centre": [
+     -19024.2,
+     78991.5
+    ]
+   },
+   {
+    "id": "s05",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -18048.7,
+     78497.0
+    ]
+   },
+   {
+    "id": "s06",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -16722.4,
+     77979.4
+    ]
+   },
+   {
+    "id": "s07",
+    "kind": "street",
+    "head": null,
     "members": 2,
     "centre": [
-     135977.6,
-     -65894.6
+     -17349.8,
+     79582.8
+    ]
+   },
+   {
+    "id": "s08",
+    "kind": "street",
+    "head": null,
+    "members": 16,
+    "centre": [
+     -23664.8,
+     83097.2
+    ]
+   },
+   {
+    "id": "s09",
+    "kind": "street",
+    "head": null,
+    "members": 3,
+    "centre": [
+     -23682.1,
+     82079.2
+    ]
+   },
+   {
+    "id": "s10",
+    "kind": "street",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -16146.6,
+     76753.3
+    ]
+   },
+   {
+    "id": "s11",
+    "kind": "street",
+    "head": null,
+    "members": 4,
+    "centre": [
+     -19044.8,
+     83041.1
+    ]
+   },
+   {
+    "id": "s12",
+    "kind": "street",
+    "head": null,
+    "members": 4,
+    "centre": [
+     -15764.0,
+     81694.2
+    ]
+   },
+   {
+    "id": "s13",
+    "kind": "street",
+    "head": null,
+    "members": 2,
+    "centre": [
+     -14021.2,
+     79378.9
     ]
    },
    {
     "id": "w01",
     "kind": "wet",
     "head": null,
-    "members": 12,
+    "members": 2,
     "centre": [
-     137837.0,
-     -68769.5
+     -24038.0,
+     84306.5
     ]
    },
    {
     "id": "w02",
     "kind": "wet",
     "head": null,
-    "members": 7,
+    "members": 2,
     "centre": [
-     137986.1,
-     -66422.3
+     -18990.1,
+     80795.2
     ]
    },
    {
@@ -813,8 +204,78 @@
     "head": null,
     "members": 1,
     "centre": [
-     135178.8,
-     -71704.4
+     -17335.7,
+     80739.4
+    ]
+   },
+   {
+    "id": "w04",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -21627.8,
+     82960.8
+    ]
+   },
+   {
+    "id": "w05",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -20244.1,
+     82322.4
+    ]
+   },
+   {
+    "id": "w06",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -18280.8,
+     80068.6
+    ]
+   },
+   {
+    "id": "w07",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -16447.3,
+     80614.2
+    ]
+   },
+   {
+    "id": "w08",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -22712.6,
+     82680.0
+    ]
+   },
+   {
+    "id": "w09",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -18333.3,
+     82346.8
+    ]
+   },
+   {
+    "id": "w10",
+    "kind": "wet",
+    "head": null,
+    "members": 1,
+    "centre": [
+     -15332.4,
+     79846.3
     ]
    }
   ],
@@ -823,16 +284,16 @@
  },
  "clearance": {
   "tree": {
-   "building": 768.0,
-   "door": 0.0,
-   "street": 0.0,
-   "samples": 2
+   "building": 403.1,
+   "door": 402.3,
+   "street": 228.0,
+   "samples": 260
   },
   "low": {
-   "building": 0.0,
-   "door": 0.0,
-   "street": 0.0,
-   "samples": 0
+   "building": 426.1,
+   "door": 722.9,
+   "street": 448.2,
+   "samples": 49
   }
  },
  "factions": [
@@ -876,7 +337,7 @@
   ],
   "found": {
    "cooking-pot": [
-    "outpost-m13-m65.S3NDEE0SCNN3EGBKJYJ6AVE74C"
+    "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K"
    ]
   },
   "missing": [],
@@ -889,39 +350,503 @@
  "hang": {
   "added": []
  },
+ "sap": {
+  "added": []
+ },
  "ground": {
   "bundle": "ground.outpost-m13-m65",
   "sha": "e5761ba411c5df54d1470d18ae78631f80b9b9c3085dcdb3ea9b6276f0b47bad",
   "stamp": "e07cb46620466a1e"
  },
  "source": {
-  "bundle": "src.bmv.imperial-barge",
-  "stamp": "7e116fa3f610d590"
+  "bundle": "src.skyrim.marker.militarycamphjaalmarchimperialmapmarker",
+  "stamp": "e005d85b64c81bb6"
  },
- "radius_m": 55,
+ "radius_m": 50,
  "counts": {
-  "source_refs": 69,
-  "placed": 1,
-  "adapted": 7,
-  "replaced": 3,
-  "dropped": 58,
-  "exterior_refs": 29,
-  "clusters": 6,
-  "land_patches": 0,
-  "plants_cleared": 2,
-  "paths": 1,
-  "interiors": 1,
+  "source_refs": 445,
+  "placed": 73,
+  "adapted": 81,
+  "replaced": 0,
+  "dropped": 291,
+  "exterior_refs": 155,
+  "clusters": 26,
+  "land_patches": 2,
+  "plants_cleared": 14,
+  "paths": 3,
+  "interiors": 0,
   "people": {
    "guard": 2,
-   "merchant": 1
+   "merchant": 1,
+   "resident": 1
   },
   "beds": 0
  },
- "draft_key": "1eafe1c13e2f2db7",
- "steps": {
-  "kit": [
-   "Skyrim.esm:0AE630",
-   "Skyrim.esm:0AEDF3"
+ "draft_key": "32c5b4d82f50f645",
+ "wholesale": {
+  "offset": 14100.0,
+  "band": 512.0,
+  "pieces": 138,
+  "dropped": 307,
+  "raised_max": 126.6,
+  "lowered_max": 85.4,
+  "band_steepest_deg": 0.0,
+  "source_water_area_m2": 572,
+  "held_by_water": 13,
+  "laid": "2026-11-21T14:46:39Z",
+  "navmesh": "source"
+ },
+ "agent_saves_applied": [
+  "agent-20261121T144850",
+  "agent-20261121T145013",
+  "agent-20261121T145226",
+  "agent-20261121T145820",
+  "agent-20261121T150205",
+  "agent-20261121T150757",
+  "agent-20261121T152501",
+  "agent-20261121T152724",
+  "agent-20261121T152802",
+  "agent-20261121T152932",
+  "agent-20261121T153752",
+  "agent-20261121T154543",
+  "agent-20261121T161336",
+  "agent-20261121T180440",
+  "agent-20261121T180614",
+  "agent-20261121T180628",
+  "agent-20261121T182359",
+  "agent-20261121T184228",
+  "agent-20261121T184300",
+  "agent-20261121T193347",
+  "agent-20261121T200056",
+  "agent-20261122T042433",
+  "agent-20261122T042802",
+  "agent-20261122T043126",
+  "agent-20261122T044943",
+  "agent-20261122T044957",
+  "agent-20261122T050601",
+  "agent-20261122T051905",
+  "agent-20261122T052115",
+  "agent-20261122T052140",
+  "agent-20261122T052236",
+  "agent-20261122T052936",
+  "agent-20261122T054732",
+  "agent-20261122T054826",
+  "agent-20261122T054922",
+  "agent-20261122T055009"
+ ],
+ "draft": {
+  "add": [
+   {
+    "key": "hold-door",
+    "base": "Skyrim.esm:027FE8",
+    "kind": "door",
+    "pos": [
+     -102202.3,
+     -527376.3
+    ],
+    "rot_z": 0.02922,
+    "on": "outpost-m13-m65.LOOK006PLACE",
+    "dz": 15.0,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "bmv.imperial-barge/01dock3to4",
+     "door": "Black Marsh.esm:1BECCD",
+     "space": "01dock3to4",
+     "arrival": [
+      -102202.3,
+      -527470.0,
+      100.0
+     ],
+     "drop": {
+      "Black Marsh.esm:1C9449": "a second load door into a cell the barge never reaches: the hold has one way out, the hatch to the waist",
+      "Black Marsh.esm:1BEBE6": "a bandit chest of levelled loot (decision 0035)",
+      "Black Marsh.esm:1BECF8": "a bandit chest of levelled loot (decision 0035)",
+      "Black Marsh.esm:1BEB5F": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BEC4D": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BECE9": "a trigger of the source's own scripted scene",
+      "Black Marsh.esm:1BECE7": "the Thieves Guild's crown gem activator, a quest thing of another story",
+      "Black Marsh.esm:1BEB18": "a table bench against the hull that Black Marsh & Valenwood's own walking mesh of the hold does not reach: without it the hold keeps that whole mesh, one walk from the hatch to every bed"
+     }
+    },
+    "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
+   },
+   {
+    "key": "hut-door",
+    "base": "Dragonborn.esm:03ABD2",
+    "kind": "door",
+    "pos": [
+     -99933.6,
+     -528901.5
+    ],
+    "rot_z": 3.05219,
+    "on": "outpost-m13-m65.LOOK012PLACE",
+    "dz": 90.1,
+    "tier": "AGENT_INVENTED",
+    "room": {
+     "copy_of": "journeytobaanmalur.baanmalurlocation/BaanDrHutSmall02",
+     "door": "Journey to Baan Malur.esp:2D06BE",
+     "space": "AshgateHut",
+     "arrival": [
+      -99935.0,
+      -528790.0
+     ],
+     "cut": {
+      "box": [
+       -860.0,
+       -2530.0,
+       -60.0,
+       -1960.0
+      ]
+     }
+    },
+    "why": "the stone hut's door, a Raven Rock door in the frame Baan Malur gives it, into a copy of that house's own room (its stone house part only, by a cut): where the gang-master sleeps, keeps his strongbox and lets a guest sleep on the bench (record: free-bed, treasure)"
+   }
+  ],
+  "room_names": {
+   "01dock3to4": {
+    "name": "Barge Hold",
+    "why": "the work barge's hold, where the new gang sleeps locked in (main quest 1 opens here; record hook)"
+   },
+   "AshgateHut": {
+    "name": "Gang-Master's Hut",
+    "why": "the old road post's stone hut where Dralin Uveran the gang-master sleeps and keeps his strongbox (record look and hook)"
+   }
+  },
+  "guards": 0,
+  "guards_why": "the record holds no watch: a Dunmer gang-master and his Owing reed-cutters (held by), so the camp keeps no guard; its people are the gang-master, the cook and the cutters",
+  "free_beds": [
+   "outpost-m13-m65.LOOK033PLACE"
+  ],
+  "roles": {
+   "merchant": {
+    "space": "01dock3to4",
+    "pos": [
+     3167,
+     3640,
+     7020
+    ],
+    "why": "Okeeh the cook (main quest 1: she asks the new gang's names in the hold, a few steps from where the player wakes): her work spot is the hold's mess table, by its food barrels"
+   }
+  },
+  "plan": {
+   "source": "Military Camp Hjaalmarch (Skyrim, Imperial side) for the camp, laid wholesale at one turn (340, +14100) with its level camp floor carried within 900 units and capped at 150, so its tents stand level on our river bank; Black Marsh & Valenwood's Imperial ship and its furnished hold for the work barge the main quest opens in (owner, 2026-11-21: the lane's recommendation applied). The camp is the closest match for a work camp of tents round a cook's fire; its Imperial tents give Ashgate a look no other place has (Reed-Sill Weir and Karsh-Naal Camp take Ree-An-Wo's hide tents). The stone hut and its room come whole from Journey to Baan Malur's Baan Malur, the one stone cottage with a one-room interior in the marsh's mods.",
+   "look": [
+    {
+     "line": "a low stone hut on the river bank",
+     "by": "Journey to Baan Malur's stone house (SOMRStonehouse01) with its door frame and a Raven Rock door, south of the cook's fire, set into the slope; its room copied from Baan Malur's own house (BaanDrHutSmall02, cut to the stone house), named Gang-Master's Hut"
+    },
+    {
+     "line": "a wooden gate on the river bank",
+     "by": "a Legion stockade gate standing alone on the landward road east of the tents, the old road post's"
+    },
+    {
+     "line": "the cutters' hide tents",
+     "by": "the source's six Imperial hide tents as it pitches them: three small tents of two bedrolls' room, the long tent (once the field hospital) with four bedrolls, the cook's tent with its bed and dresser, and the mess tent with its trestle tables and pelts"
+    },
+    {
+     "line": "bundled reed stacked by the landing",
+     "by": "seven bundles of cut reed (Journey to Baan Malur's stick bundles) at the jetty's land end, two of them stacked"
+    },
+    {
+     "line": "a work barge moored in the pool below the camp",
+     "by": "Black Marsh & Valenwood's Imperial ship, hull, masts and deck lanterns, moored along the east bank at its own waterline, its hold door in the waist; a Raven Rock jetty from the bank and two ship's planks over its rail"
+    },
+    {
+     "line": "the grave-stake (source note)",
+     "by": "a cypress pole driven upright outside the old post's gate"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "trader-general",
+     "by": "Okeeh the cook: her fish drying rack beside the cook's fire, and her trade at the barge hold's mess table where the main quest finds her"
+    },
+    {
+     "kind": "free-bed",
+     "by": "the unowned bedroll by the plank bench in the gang-master's hut (draft.free_beds)"
+    },
+    {
+     "kind": "cooking-pot",
+     "by": "the source's own cooking spit at the camp fire, north of the hut (stations)"
+    },
+    {
+     "kind": "harvest-common",
+     "by": "three marshmerrow sedge and three swamp fungus on the river bank below the camp and by the landing"
+    },
+    {
+     "kind": "combat-creature",
+     "by": "main quest 1's own placements (quests.jsonl): two mudcrabs at the river's edge and the young crocodile in the sedge"
+    },
+    {
+     "kind": "treasure",
+     "by": "the gang-master's strong box beside his hammock in the hut (contents, lock and key are stock rows)"
+    }
+   ],
+   "structures": [
+    {
+     "structure": "walls",
+     "what": "the camp's stockade scaffold tops, standing as trestle tables in the mess tent and the cook's tent",
+     "verdict": "kept",
+     "why": "relabelled: they are the camp's tables, not walls; the mess tent eats at them"
+    },
+    {
+     "cluster": "b02",
+     "what": "the Legion's command tent with its war table, map, banners and the small tent beside it",
+     "verdict": "kept",
+     "why": "relabelled as the cutters' mess tent: the war table, map, banners, lean and browse markers pruned, its trestle tables and pelts kept"
+    },
+    {
+     "cluster": "b01",
+     "what": "the officer's tent, the field hospital tent, the cook's fire with its spit, the smithy and the alchemy table",
+     "verdict": "kept",
+     "why": "relabelled: the officer's tent is the cook's tent, the hospital tent sleeps four cutters on bedrolls in place of its pallets; the fire and spit are the cook's fire; the smithy, surgeon's table, wounded markers, blood and levelled chests pruned"
+    },
+    {
+     "cluster": "s04",
+     "what": "the three small soldiers' tents with their bedrolls and firewood",
+     "verdict": "kept",
+     "why": "as built: the cutters' tents, their ground levelled into our slope"
+    }
+   ]
+  },
+  "accepted_checks": [
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK013PLACE",
+     "outpost-m13-m65.LOOK012PLACE"
+    ],
+    "why": "the stone hut's door frame stands in its doorway, as Baan Malur frames the same house's door"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "AshgateHut/Journey to Baan Malur.esp:2D06C8",
+     "outpost-m13-m65.LOOK033PLACE"
+    ],
+    "why": "the guest's bedroll is laid on the hut's rug, seen from above in the room's overview"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LANDINGPLANKDOWN",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LANDINGPLANKDOWN",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
+   },
+   {
+    "check": "doors",
+    "ids": [
+     "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the hold door's arrival is on the barge's open waist deck; the masts' rigging model spans the whole deck, so its bounds take in the arrival though nothing stands there (eye view from the rail into the waist)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMYB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB",
+     "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+    ],
+    "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK022PLACE",
+     "outpost-m13-m65.LOOK019PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK022PLACE",
+     "outpost-m13-m65.LOOK020PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK023PLACE",
+     "outpost-m13-m65.LOOK020PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK023PLACE",
+     "outpost-m13-m65.LOOK021PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK025PLACE",
+     "outpost-m13-m65.LOOK024PLACE"
+    ],
+    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK006PLACE",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK007PLACE",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK042PLACE",
+     "outpost-m13-m65.LOOK043PLACE"
+    ],
+    "why": "rocks facing the steep bank below the camp lie against each other as a rock pile does, seen from the river at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK043PLACE",
+     "outpost-m13-m65.LOOK042PLACE"
+    ],
+    "why": "rocks facing the steep bank below the camp lie against each other as a rock pile does, seen from the river at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK044PLACE",
+     "outpost-m13-m65.LOOK043PLACE"
+    ],
+    "why": "rocks facing the steep bank below the camp lie against each other as a rock pile does, seen from the river at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK044PLACE",
+     "outpost-m13-m65.LOOK045PLACE"
+    ],
+    "why": "rocks facing the steep bank below the camp lie against each other as a rock pile does, seen from the river at eye level"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK017PLACE",
+     "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
+    ],
+    "why": "a cutter's bedroll laid under the mess tent's canvas, where the cutters sleep out of the rain, seen from above"
+   }
+  ],
+  "accepted": [
+   {
+    "unit": "house.01",
+    "flag": "floor under the ground",
+    "why": "the mess tent is canvas pitched on the ground with no floor of its own: its lowest canvas edge sits a little into the rise on its east side, seen from the west at eye level standing on the ground"
+   },
+   {
+    "unit": "house.01",
+    "flag": "foot not reaching the ground",
+    "why": "one guy-rope peg of the mess tent stops short where the bank dips at its west corner; the tent itself stands on the ground, seen from the west at eye level"
+   },
+   {
+    "unit": "house.02",
+    "flag": "floor under the ground",
+    "why": "the cook's tent and the long tent are canvas pitched on the ground with no floor: the highest ground under them is at their guy ropes on the rise towards the hut, while their floors lie on the level camp floor, seen in the section through the long tent"
+   },
+   {
+    "unit": "house.02",
+    "flag": "foot buried deeper than its leg",
+    "why": "a guy-rope peg of the long tent runs into the rise towards the hut, as a peg is driven into a slope; the tent's poles stand on the level camp floor (section through the long tent)"
+   },
+   {
+    "unit": "house.03",
+    "flag": "floor under the ground",
+    "why": "the small tents are canvas pitched on the bank's slope with no floor: their uphill canvas edges sit in the ground, their bedrolls lie on it, seen at eye level from beside the fire"
+   },
+   {
+    "unit": "added.house.01dock3to4",
+    "flag": "foot not reaching the ground",
+    "why": "the barge floats at its own waterline in the pool; its keel and hull are over the river bed, as a moored ship's are, seen in the sections across its waist"
+   }
+  ],
+  "accepted_faults": [
+   {
+    "id": "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   },
+   {
+    "id": "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
+    "fault": "floats",
+    "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   }
   ]
  }
 }

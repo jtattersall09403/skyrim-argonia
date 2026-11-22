@@ -222,7 +222,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         row = {"id": io.mint(place_id, "exterior", rid), "base": r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0),
                "layer": "place", "flags": r.get("flags") or [], "src": rid, "seat": seat, "cluster": cid}
-        for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
+        for k in io.CARRIED_KEYS:
             if r.get(k) is not None:
                 row[k] = r[k]
         if rep:

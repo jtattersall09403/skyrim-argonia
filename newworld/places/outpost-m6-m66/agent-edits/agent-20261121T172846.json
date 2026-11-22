@@ -1,0 +1,152 @@
+{
+ "save_id": "agent-20261121T172846",
+ "place_id": "outpost-m6-m66",
+ "name": "the mud rock pile at the north flight's foot between the platforms pruned (the flight stood in it and the walking mesh broke there); two crates of the pruned house off the waterside deck, a bedroll moved onto the deck's walked part beside its fellow",
+ "at": "2026-11-21T17:28:46Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JEBVSDACNF4K9R1XZ5YXXHPV24",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.JEBVSDACNF4K9R1XZ5YXXHPV24",
+    "base": "King of the Murkmire.esp:065B5C",
+    "kind": "rock",
+    "pos": [
+     -42393.12,
+     -538027.46,
+     8.25
+    ],
+    "rot": [
+     0.017453292,
+     0.034906585,
+     2.09626
+    ],
+    "scale": 0.89,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDD0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T17:28:46Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.N9N8A1DY7ZTT8VG7KQB064DDE0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.N9N8A1DY7ZTT8VG7KQB064DDE0",
+    "base": "King of the Murkmire.esp:672FE5",
+    "kind": "clutter",
+    "pos": [
+     -41780.27,
+     -538025.28,
+     112.82
+    ],
+    "rot": [
+     0,
+     0,
+     2.49626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FE2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T17:28:46Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.XG3CJS5Z6RF4PAKDADM0PNSB9G",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.XG3CJS5Z6RF4PAKDADM0PNSB9G",
+    "base": "King of the Murkmire.esp:672FE4",
+    "kind": "clutter",
+    "pos": [
+     -41849.43,
+     -538054.46,
+     112.74
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FE0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T17:28:46Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF24BEDROLL",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41741.0,
+     -537766.8,
+     90.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41800.0,
+     -538029.8,
+     90.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.41289
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T17:28:46Z"
+  }
+ ]
+}

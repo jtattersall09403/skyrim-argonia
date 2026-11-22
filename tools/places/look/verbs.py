@@ -15,7 +15,7 @@ from tools.places.look import canopy, capture, draw, framing, geom, hands, room
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land")
+HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land", "paint")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -101,6 +101,10 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
         return survey.run(d, place, sess["strokes"], args)
     if verb == "pick":
         return pick(d, place, sess["strokes"], args)
+    if verb == "paint" and args[:1] == ["textures"]:   # the palette, no stroke
+        from tools.places.look import paintverb
+        from tools.places.look.scene import data_out
+        return paintverb.run(d.scene(place, sess["strokes"], space), args, data_out())
     if verb in HANDS:
         pos, o = _opts(args, {})
         if "--view" in args:
@@ -970,7 +974,7 @@ def hand(sc, verb, args, sess) -> list[dict]:
 
 def _hand(sc, verb, args, sess) -> list[dict]:
     pos, o = _opts(args, {"until-feet-buried": False, "why": True, "piece": False, "rot": True, "above": True,
-                          "kind": True, "depth": True, "force": False, "scale": True})
+                          "kind": True, "depth": True, "force": False, "scale": True, "within": True})
     if verb == "steps":
         return _steps(sc, pos, o, sess)
     if verb == "place":
@@ -979,6 +983,10 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         return _raw_ops(pos)
     if verb == "land":
         return land_ops(sc.files, sc.ground, pos, o)
+    if verb == "paint":
+        from tools.places.look import paintverb
+        from tools.places.look.scene import data_out
+        return paintverb.run(sc, args, data_out())
     th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
@@ -1040,8 +1048,11 @@ def next_n(sc, sess, suffix: str) -> int:
 
 
 def _place(sc, pos, o, sess) -> list[dict]:
-    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why>"`: one piece of any base, by hand,
-    as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above)."""
+    """`place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] [--within id] --why "<why>"`: one piece of
+    any base, by hand, as one ref.add: at z as given (seat free), or `--above dz` over the ground there (seat above). Its
+    kind is the base's own (the catalogue's, as the source's rows of that base have it: an effect is `other`, a basket of
+    fish `clutter`), `--kind` over it; `--within` names what it rests in (an egg in its nest or a sap pool, a basket on a
+    stall), the one carrier rule the overlap check reads (check.rests)."""
     why = str(o.get("why") or "").strip()
     if len(pos) < 2 or not why:
         raise ValueError('place <base> <x,y[,z]> [--rot deg] [--scale s] [--above dz] [--kind k] --why "<why it is here>"')
@@ -1055,8 +1066,21 @@ def _place(sc, pos, o, sess) -> list[dict]:
         if len(xyz) < 3:
             raise ValueError("place needs x,y,z, or x,y with --above dz")
         seat, z = {"mode": "free", "dz": 0.0}, xyz[2]
+    if o.get("within"):
+        seat["carrier"] = str(o["within"])
+    bases = getattr(sc, "bases", None)
+    if isinstance(bases, dict) and pos[0] not in bases:
+        from tools.places.look.scene import fill_from_catalogue
+        try:
+            fill_from_catalogue(bases, [pos[0]])
+        except Exception:  # noqa: BLE001 - no catalogue here: the kind falls back below
+            pass
+    b = ((bases or {}).get(pos[0]) or {}) if isinstance(bases, dict) else {}
+    model = str(b.get("model") or "").replace("\\", "/").lower()
+    # an effect (smoke, a fire's flames) is `other` as the extractor files it (Extractor.KindOfBase), never a solid
+    own = "other" if model.startswith("effects/") or model.rsplit("/", 1)[-1].startswith("fx") else b.get("kind")
     next_n(sc, sess, "PLACE")
-    row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or "static",
+    row = {"id": f"{sc.place_id}.LOOK{sess['n']:03d}PLACE", "base": pos[0], "kind": o.get("kind") or own or "static",
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
            "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}

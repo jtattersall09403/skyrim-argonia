@@ -566,7 +566,7 @@
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
-     "why": "tender of the elders' long house and its guest mat: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
+     "why": "tender of the elders' hut and its guest mat: a dagger of T1 (from a neighbour (an import gate or maker, 7 km by road))"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -575,7 +575,7 @@
      "why": "carried gold, 2-10 for W2 Poor"
     }
    ],
-   "why": "Ixheela: resident, tender of the elders' long house and its guest mat, W2; best tier T1"
+   "why": "Ixheela: resident, tender of the elders' hut and its guest mat, W2; best tier T1"
   },
   {
    "person": "jal-veesa.EWE1V6BCWS3V6JR7BDCBAJ6SSK",
@@ -913,7 +913,7 @@
      "why": "flat bread carried in from Stormhold's buyers, 7 km by road"
     }
    ],
-   "why": "a fish-smoker's stall on the road side (place record: trader-innkeeper): smoked and cooked fish of the weirs and racks, a stew, bread carried in; vanilla's trader-innkeeper gold times P3's 1.0",
+   "why": "a fish-smoker's stall by the fish racks on the lane to the jetty (place record: trader-innkeeper): smoked and cooked fish of the weirs and racks, a stew, bread carried in; vanilla's trader-innkeeper gold times P3's 1.0",
    "cites": [
     "place_wealth:jal-veesa",
     "place_give:jal-veesa/2"
@@ -926,7 +926,7 @@
    "by": "ref",
    "ref": "jal-veesa.1C08XYCB9Z9FGDH2W0ETQFC017",
    "status": "delivered",
-   "why": "the guest mat in the elders' long house (place record: free-bed 'a mat in the elders' long house'): the bedroll in Vosh-Leera's House, owned by nobody"
+   "why": "the guest mat in the elders' hut (place record: free-bed 'a mat in the elders' hut'): the bedroll in Vosh-Leera's House, owned by nobody"
   },
   {
    "give_seq": 5,

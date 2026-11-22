@@ -8,7 +8,7 @@ colours when the shader uses them (alpha only when it uses vertex alpha and is n
 alpha weights its wind), the diffuse as the base colour texture
 and the normal map as the normal texture, by URI (below). NiAlphaProperty's alpha test becomes alphaMode MASK at
 its threshold, alpha blend becomes BLEND, the shader's two-sided flag becomes doubleSided. Hidden shapes (an
-editor marker's) are left out; a skinned shape
+editor marker's) are left out, and so are effect-shader shapes in a mesh that has solid ones (a campfire's flames); a skinned shape
 (a book, a banner, a bird: skinned for physics or animation) is drawn in its bind pose.
 
 A texture is referenced, never embedded: its URI is the studio's texture route, `/api/asset/tex?path=<data path,
@@ -34,7 +34,7 @@ import numpy as np
 from tools.places.assets.glb import Builder
 
 NIFDUMP = Path(os.environ.get("ARGONIA_NIFDUMP", Path.home() / ".argonia" / "bin" / "nifdump"))
-VERSION = 6  # bump when the GLB this writes changes; it is part of every cache key
+VERSION = 8  # bump when the GLB this writes changes; it is part of every cache key
 LIGHT_TRIS = 1500
 ALPHA_BLEND, ALPHA_TEST = 0x1, 0x200
 TREE_ANIM = 1 << 29
@@ -120,8 +120,20 @@ def _simplify(s: dict, ratio: float) -> dict:
     return t
 
 
+def is_effect(s: dict) -> bool:
+    """An effect shader's shape, or a lit plane textured from the effects folder (a fire's heat-haze plane, whose
+    "diffuse" is a refraction normal map and would be drawn as a rainbow sheet)."""
+    tex = str((s.get("tex") or [""])[0] or "").replace("/", "\\").lower()
+    return "effect" in str((s.get("shader") or {}).get("type", "")).lower() or tex.startswith("textures\\effects\\")
+
+
 def drawable(head: dict) -> list[dict]:
-    return [s for s in head["shapes"] if not s.get("hidden") and s["tris"] > 0]
+    """The shapes drawn: not hidden, not empty, and not an effect shader's (a campfire's flames, a torch's glow: the
+    game draws them as additive light, a solid browser mesh would be a coloured block one walks into) unless the mesh
+    is nothing but effects (a mist or spray effect, drawn so it can be seen and picked)."""
+    shapes = [s for s in head["shapes"] if not s.get("hidden") and s["tris"] > 0]
+    solid = [s for s in shapes if not is_effect(s)]
+    return solid or shapes
 
 
 def build(head: dict, level: int = 0) -> tuple[bytes, dict]:

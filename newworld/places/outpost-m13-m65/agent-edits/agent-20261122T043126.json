@@ -1,0 +1,100 @@
+{
+ "save_id": "agent-20261122T043126",
+ "place_id": "outpost-m13-m65",
+ "name": "ground paint: a trodden clay way from the cook's fire to the landing; the dry south-west bank's riverbed paint made grass and stones",
+ "at": "2026-11-22T04:31:26Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0001",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the cutters' trodden way from the cook's fire round the mess tent to the landing: bare clay where the world painted grass and riverbed",
+    "texture": "ArgoniaNewWorld.esm:00096F",
+    "size": 150.0,
+    "softness": 0.7,
+    "points": [
+     [
+      -100150.0,
+      -528560.0,
+      1.0
+     ],
+     [
+      -100700.0,
+      -528350.0,
+      1.0
+     ],
+     [
+      -101100.0,
+      -528300.0,
+      1.0
+     ],
+     [
+      -101230.0,
+      -527950.0,
+      1.0
+     ],
+     [
+      -101270.0,
+      -527750.0,
+      1.0
+     ],
+     [
+      -101400.0,
+      -527750.0,
+      1.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the cutters' trodden way from the cook's fire round the mess tent to the landing: bare clay where the world painted grass and riverbed",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T04:31:26Z"
+  },
+  {
+   "op": "paint.add",
+   "paint": {
+    "id": "paint.0002",
+    "brush": "soft",
+    "by": "agent",
+    "why": "the dry high bank south-west of the camp, painted as riverbed though it stands well above the water: the grass and stones of the bank beside it",
+    "texture": "ArgoniaNewWorld.esm:010062",
+    "size": 384.0,
+    "softness": 0.6,
+    "polygon": [
+     [
+      -102300.0,
+      -529950.0
+     ],
+     [
+      -101150.0,
+      -529950.0
+     ],
+     [
+      -101150.0,
+      -529250.0
+     ],
+     [
+      -101700.0,
+      -529150.0
+     ],
+     [
+      -102300.0,
+      -529200.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "note": "the dry high bank south-west of the camp, painted as riverbed though it stands well above the water: the grass and stones of the bank beside it",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T04:31:26Z"
+  }
+ ]
+}

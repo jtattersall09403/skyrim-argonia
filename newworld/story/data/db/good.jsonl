@@ -1,7 +1,18 @@
+{"id":"bone-and-horn","name":"Bone and horn work","kind":"craft","about":"Bone and horn carved with bronze tools: daggers, short swords, maces, bows, flutes and charms."}
+{"id":"chimes","name":"Tin chimes","kind":"craft","about":"The Chime-Keepers' tin and bone chimes."}
+{"id":"chitin-work","name":"Chitin work","kind":"craft","about":"Chitin shaped into light armour and shields, traded both ways over the Morrowind border."}
 {"id":"eggs","name":"Eggs","kind":"food","about":"Bird and reptile eggs gathered for food."}
-{"id":"feathers","name":"Feathers","kind":"material","about":"Wading-bird and fellrunner feathers, dressed for fletching and finery."}
-{"id":"hide-and-leather","name":"Hide and leather","kind":"material","about":"Hides tanned into leather, and the light armour made of them."}
-{"id":"ironwork","name":"Iron and steel work","kind":"craft","about":"Weapons, armour and tools forged from iron and steel by a smith."}
+{"id":"feathers","name":"Feather dressing","kind":"material","about":"Wading-bird, hackwing and fellrunner feathers, dressed for fletching and finery."}
+{"id":"flint-and-obsidian","name":"Flint and obsidian work","kind":"craft","about":"Flint and jadeflint knapped and set in wood; in a few hands, volcanic glass."}
+{"id":"hide-and-leather","name":"Hide and leather","kind":"material","about":"Hides tanned into marsh leather (wamasu, crocodile, hackwing) and scale sewn on leather: light armour."}
+{"id":"ironwork","name":"Bog-iron smithing","kind":"craft","about":"Bog iron and copper-edged steel forged by one of the few smiths: blades, axes, maces, plate over masu skin and tools."}
+{"id":"pottery","name":"Clay and pottery","kind":"craft","about":"Red and mound clay worked into pots, jars and ochre-painted ware."}
+{"id":"reed-weaving","name":"Reed weaving","kind":"craft","about":"Reed, grass and fibre woven into mats, baskets, wraps and dolls."}
 {"id":"river-fish","name":"River fish","kind":"food","about":"Fish netted and speared from the rivers."}
 {"id":"river-goods","name":"River goods","kind":"craft","about":"Whatever the rafts and rootworms bring down the rivers to be redistributed: the interior's crafts and the coast's imports."}
-{"id":"sap","name":"Sap","kind":"material","about":"Tree sap tapped and sold for medicine and alchemy (not the Hist's own)."}
+{"id":"salt","name":"Salt","kind":"material","about":"Salt from the coast pans, bartered inland."}
+{"id":"saltrice","name":"Saltrice","kind":"food","about":"Saltrice grown in the paddies and estates, and the dishes made of it."}
+{"id":"salvage","name":"Salvage","kind":"material","about":"What wrecks, ruins and drowned spires give up: metal, carved stone, foreign goods."}
+{"id":"sap","name":"Sap and resin","kind":"material","about":"Tree sap and resin tapped for medicine, glue and alchemy (not the Hist's own), and the herbs gathered with it."}
+{"id":"shell-work","name":"Shell work","kind":"craft","about":"Turtle and haj mota shell for platters, mugs, shield bosses and whole shields."}
+{"id":"timber-and-stone","name":"Timber and stone","kind":"material","about":"Timber felled and stone quarried, and the heavy tools of both."}

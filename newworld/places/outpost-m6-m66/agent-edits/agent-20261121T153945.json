@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T153945",
+ "place_id": "outpost-m6-m66",
+ "name": "the hide's crate up 21 onto the ground (it stood half sunk)",
+ "at": "2026-11-21T15:39:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF13CRATE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -43120.0,
+     -542390.0,
+     129.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.3
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -43120.0,
+     -542390.0,
+     150.2
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.3
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:39:45Z"
+  }
+ ]
+}

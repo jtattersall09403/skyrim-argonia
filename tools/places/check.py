@@ -650,6 +650,23 @@ def sap_of(pool: dict, hist: dict) -> bool:
     return sap.holds(pool, hist)
 
 
+def in_pool(a: dict, b: dict) -> bool:
+    """`a` lies in `b`, a pool of Hist sap: the pool is water, not a solid, so what is laid in it (eggs in the sap's
+    shallow edge, a root) stands in it as things stand in any water."""
+    from tools.places.draft import sap
+
+    def pool(t):   # the sap stage's pool by its id (the plugin's read-back keeps the row's id), a hand pool by its base
+        return t.get("base") in sap.POOLS or ".sap." in str(t.get("id") or "")
+
+    def small(t):  # a thing laid in it (an egg, a jar), never a tree or a building: another Hist under a pool still faults
+        bb = t.get("bounds")
+        return bool(bb) and max(abs(v) for v in bb) * float(t.get("scale") or 1.0) <= POOL_SMALL
+    return (pool(b) and small(a)) or (pool(a) and small(b))
+
+
+POOL_SMALL = 64.0   # units: the largest half-extent of a thing that lies in a sap pool
+
+
 FRAME_WORDS = ("door", "entrance", "pillar", "arch", "frame", "gate", "portal", "jamb")
 FRAME_RING = 0.5  # a door whose origin is outside this share of a building's box stands in its wall
 
@@ -668,7 +685,7 @@ def _source_had(a: dict, b: dict) -> bool:
     """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
     pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
     moves a cluster as one rigid piece)."""
-    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a):
+    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a) or in_pool(a, b):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False
@@ -1323,7 +1340,10 @@ def check_levelled(ctx) -> list[str]:
 
 def check_stock(ctx) -> list[str]:
     from tools.places.stock import verify
-    return verify.check_stock(ctx)
+    bad = verify.check_stock(ctx)
+    for o in (ctx.get("stock") or {}).get("owed", []):   # the items ladder retiered it: the place's restock owes it
+        NOTES.append(f"stock owed to the restock (the items ladder retiered it; out/places/stock-audit): {o}")
+    return bad
 
 
 def check_promises(ctx) -> list[str]:
@@ -1639,7 +1659,8 @@ def accepted_checks(ctx: dict) -> list[dict]:
 
 
 def _names(finding: str, rid: str) -> bool:
-    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w.:-])", finding) is not None
+    # an id is never part of a longer id or key ("id.x", "id:x"); a colon or full stop that ends a clause may follow it
+    return re.search(rf"(?<![\w.:-]){re.escape(rid)}(?![\w-]|[.:][\w-])", finding) is not None
 
 
 def apply_accepted(res: dict[str, list[str]], rows: list[dict]) -> tuple[dict[str, list[str]], dict[str, list[str]]]:

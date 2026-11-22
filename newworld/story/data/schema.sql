@@ -394,13 +394,54 @@ CREATE TABLE "place_wealth" (
   "by" TEXT NOT NULL CHECK ("by" IN ('derived', 'owner'))
 );
 
--- What a tier is made of: its weapon and armour materials, by the game's material keyword, best first.
+-- Black Marsh's own materials (newworld/sources/stock/materials.json; docs/design/items.md): what a thing of gear
+-- is made of in our terms, whatever Skyrim keyword its record carries.
+CREATE TABLE "material" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- wood, bone, flint, hide, leather, scale, shell, chitin, bog-iron, obsidian ...
+  "label" TEXT NOT NULL,
+  "group" TEXT NOT NULL CHECK ("group" IN ('organic', 'plate', 'metal', 'foreign')),   -- its share of the target mix
+  "band" TEXT NOT NULL CHECK ("band" IN ('common', 'uncommon', 'rare', 'situational', 'ruin', 'unique', 'never')),
+  "lore" TEXT NOT NULL,                  -- its lore basis, with the page and lines
+  "statement_tier_id" TEXT NOT NULL REFERENCES "statement_tier"("id"),
+  "power_weapon" TEXT,                   -- its power class: the Skyrim material keyword of its tier (smithing, tempering)
+  "power_armour" TEXT
+);
+
+-- The Skyrim material keywords that read as one of our materials when an item has no item_material row.
+CREATE TABLE "material_keyword" (
+  "keyword" TEXT NOT NULL PRIMARY KEY,   -- the KYWD editor id (WeapMaterialIron)
+  "material_id" TEXT NOT NULL REFERENCES "material"("id")
+);
+
+-- Who makes a material: a people, a culture, a faction, a place kind, or the makers of a good.
+CREATE TABLE "material_maker" (
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('people', 'culture', 'faction', 'place-kind', 'good')),
+  "value" TEXT NOT NULL,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("material_id", "kind", "value")
+);
+
+-- Where a material may be held: any one row met is enough (tools/places/stock/reach.py); a material with no row is
+-- never held. anywhere: its tier ceiling alone limits it; place-kind / place-family / culture: the place's own;
+-- record: a pattern (case-insensitive) over the place's record text (name, summary, held_by, notes); unique: a ledger row.
+CREATE TABLE "material_reach" (
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
+  "seq" INTEGER NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('anywhere', 'place-kind', 'place-family', 'culture', 'record', 'unique')),
+  "value" TEXT,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("material_id", "seq")
+);
+
+-- The ladder: which of our materials each tier holds, by slot (scale.json tiers), best known first. An item's tier is
+-- measured by its power (split.item_tier); its material must stand at that tier for its slot.
 CREATE TABLE "tier_material" (
   "stock_tier_id" TEXT NOT NULL REFERENCES "stock_tier"("id"),
-  "slot" TEXT NOT NULL CHECK ("slot" IN ('weapon', 'armour')),
-  "keyword" TEXT NOT NULL,               -- the KYWD editor id (WeapMaterialSteel)
+  "slot" TEXT NOT NULL CHECK ("slot" IN ('weapon', 'heavy', 'light', 'shield')),
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
   "ord" INTEGER NOT NULL,
-  PRIMARY KEY ("stock_tier_id", "slot", "keyword")
+  PRIMARY KEY ("stock_tier_id", "slot", "material_id")
 );
 
 -- The other things a tier names: its soul gem, gems and jewellery (rows of the item catalogue).
@@ -411,9 +452,10 @@ CREATE TABLE "tier_item" (
   PRIMARY KEY ("stock_tier_id", "item_id")
 );
 
--- Materials and kits that never reach the player (decision 0006): Skyrim's own peoples' and orders' gear.
+-- Materials that never reach the player (decision 0006): Skyrim's own peoples' and orders' gear, joined on our material,
+-- so a Black Marsh piece whose record carries a Nordic or Forsworn keyword is judged by what it is made of.
 CREATE TABLE "never_material" (
-  "keyword" TEXT NOT NULL PRIMARY KEY,
+  "material_id" TEXT NOT NULL PRIMARY KEY REFERENCES "material"("id"),
   "why" TEXT NOT NULL
 );
 
@@ -458,11 +500,23 @@ CREATE TABLE "item" (
   "record" TEXT NOT NULL,                -- WEAP, ARMO, MISC, BOOK, ALCH, INGR, AMMO, SLGM, KEYM, SCRL
   "item_kind_id" TEXT NOT NULL REFERENCES "item_kind"("id"),
   "value" INTEGER NOT NULL,
-  "material" TEXT,                       -- its material keyword, if any
-  "stock_tier_id" TEXT REFERENCES "stock_tier"("id"),   -- by material, else by value against the tiers' value_max
+  "material" TEXT,                       -- its material keyword, if any (measured)
+  "material_id" TEXT REFERENCES "material"("id"),      -- our material: item_material, else its keyword's
+  "power_kind" TEXT,                     -- what its power is measured against: sword, light-cuirass, shield ...
+  "power" REAL,                          -- its damage or armour rating
+  "stock_tier_id" TEXT REFERENCES "stock_tier"("id"),   -- by power, else material keyword, else value (split.item_tier)
   "enchanted" BOOLEAN NOT NULL CHECK ("enchanted" IN (0, 1)),
   "significant" BOOLEAN NOT NULL CHECK ("significant" IN (0, 1)),
   "never" BOOLEAN NOT NULL CHECK ("never" IN (0, 1))    -- a never_material or a Skyrim-only kit (decision 0006)
+);
+
+-- An item of gear and the material of ours it is made of (newworld/sources/stock/item_material.json `gear`), with a
+-- tier only where the record's numbers are a mod's own error.
+CREATE TABLE "item_material" (
+  "item_id" TEXT NOT NULL PRIMARY KEY REFERENCES "item"("id"),
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
+  "stock_tier_id" TEXT REFERENCES "stock_tier"("id"),
+  "why" TEXT NOT NULL
 );
 
 -- Goods: what places make, trade and need (from the economy notes), so provenance is computable on the roads.
@@ -482,11 +536,27 @@ CREATE TABLE "place_good" (
   PRIMARY KEY ("place_id", "good_id", "relation")
 );
 
--- What an item kind is made from, so a place that makes the good makes the thing (made here is common and cheap).
+-- What a good yields, so a place that makes the good makes the thing (made here is common and cheap): materials of ours
+-- (good_material) and item kinds (good_kind).
 CREATE TABLE "good_material" (
   "good_id" TEXT NOT NULL REFERENCES "good"("id"),
-  "keyword" TEXT NOT NULL,               -- a material keyword the good yields (ArmorMaterialHide), or an item kind id
-  PRIMARY KEY ("good_id", "keyword")
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
+  PRIMARY KEY ("good_id", "material_id")
+);
+
+CREATE TABLE "good_kind" (
+  "good_id" TEXT NOT NULL REFERENCES "good"("id"),
+  "item_kind_id" TEXT NOT NULL REFERENCES "item_kind"("id"),
+  PRIMARY KEY ("good_id", "item_kind_id")
+);
+
+-- A ware (ingredient, food and drink, poison, tool, trade good) and the good whose makers make it; where it grows or
+-- drops in the wild, the ecology's harvestable (a kind or lore key of newworld/sources/ecology/harvestables.json).
+CREATE TABLE "item_good" (
+  "item_id" TEXT NOT NULL PRIMARY KEY REFERENCES "item"("id"),
+  "good_id" TEXT NOT NULL REFERENCES "good"("id"),
+  "harvestable" TEXT,
+  "why" TEXT NOT NULL
 );
 
 -- ---------------------------------------------------------------------------------------------------------
@@ -1175,4 +1245,109 @@ CREATE TABLE "place_source" (
   "population_after" INTEGER,            -- rank 0: place.population, from the source's residents
   "population_why" TEXT,
   PRIMARY KEY ("place_id", "rank")
+);
+
+-- ---------------------------------------------------------------------------------------------------------
+-- Stock by region and by trade (newworld/sources/stock/regions.json and kits.json; docs/design/items.md).
+-- ---------------------------------------------------------------------------------------------------------
+
+-- A region's stock profile: what a player should notice there and what is notably missing.
+CREATE TABLE "region_profile" (
+  "region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "region"("id"),
+  "signature" TEXT NOT NULL,
+  "missing" TEXT NOT NULL
+);
+
+-- The peoples present in a region and their share (major, minor, few), from its notes.
+CREATE TABLE "region_people" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "people" TEXT NOT NULL CHECK ("people" IN ('argonian', 'naga', 'paatru', 'dunmer', 'imperial', 'khajiit', 'bosmer', 'outlaw')),
+  "share" TEXT NOT NULL CHECK ("share" IN ('major', 'minor', 'few')),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("region_id", "people")
+);
+
+-- The cultures of a region's places and how many places each holds (generated from place; never authored).
+CREATE TABLE "region_culture" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "culture_id" TEXT NOT NULL REFERENCES "culture"("id"),
+  "places" INTEGER NOT NULL,
+  PRIMARY KEY ("region_id", "culture_id")
+);
+
+-- A material's standing in a region: local (made or found there), traded (carried in), scarce, or absent (never held
+-- there without a stock row's exception).
+CREATE TABLE "region_material" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "material_id" TEXT NOT NULL REFERENCES "material"("id"),
+  "band" TEXT NOT NULL CHECK ("band" IN ('local', 'traded', 'scarce', 'absent')),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("region_id", "material_id")
+);
+
+-- A region's signature goods; their wares are item_good rows.
+CREATE TABLE "region_good" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "good_id" TEXT NOT NULL REFERENCES "good"("id"),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("region_id", "good_id")
+);
+
+-- A trade kit (or a household overlay by race): matched by a pattern over a person's trade, or their role, or race.
+CREATE TABLE "trade_kit" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "label" TEXT NOT NULL,
+  "ord" INTEGER NOT NULL UNIQUE,         -- the order kits are tried in; overlays after every kit
+  "match" TEXT,                          -- a pattern over the trade (case-insensitive)
+  "roles" TEXT,                          -- person_role ids, space-separated
+  "races" TEXT                           -- an overlay's RACE editor ids, space-separated
+);
+
+-- What a kit expects: carried, worn, kept at home, eaten.
+CREATE TABLE "trade_kit_item" (
+  "kit_id" TEXT NOT NULL REFERENCES "trade_kit"("id"),
+  "seq" INTEGER NOT NULL,
+  "use" TEXT NOT NULL CHECK ("use" IN ('carry', 'wear', 'home', 'food')),
+  "slot" TEXT,                           -- weapon, heavy, light, shield
+  "typ" TEXT,                            -- a weapon type or armour slot keyword
+  "materials" TEXT,                      -- materials of ours in order of preference, space-separated
+  "good_id" TEXT REFERENCES "good"("id"),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("kit_id", "seq")
+);
+
+-- What a person of the kit would never own: every condition the row names must hold.
+CREATE TABLE "trade_kit_never" (
+  "kit_id" TEXT NOT NULL REFERENCES "trade_kit"("id"),
+  "seq" INTEGER NOT NULL,
+  "slot" TEXT,
+  "types" TEXT,                          -- weapon type keywords, space-separated
+  "materials" TEXT,
+  "groups" TEXT,
+  "bands" TEXT,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("kit_id", "seq")
+);
+
+-- Smithing recipes of the items ladder (newworld/sources/stock/recipes.json, generated from recipe_rules.json by
+-- `stockdb recipes`): a forge and a tempering recipe per piece of gear; a forge row with no station is a relic's
+-- (tempered, never forged), its reason in `why`.
+CREATE TABLE "recipe" (
+  "item_id" TEXT NOT NULL REFERENCES "item"("id"),
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('forge', 'temper')),
+  "station" TEXT,                        -- the workbench keyword (CraftingSmithingForge ...); null: not forged
+  "perk" TEXT,                           -- the perks it asks for, space-separated
+  "source" TEXT NOT NULL,                -- generated, kept:<the mod's COBJ>, overrides:<the mod's COBJ>, none
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("item_id", "kind")
+);
+
+CREATE TABLE "recipe_ingredient" (
+  "item_id" TEXT NOT NULL,
+  "kind" TEXT NOT NULL,
+  "seq" INTEGER NOT NULL,
+  "ingredient" TEXT NOT NULL,            -- an item key, or new:<editor id> for a record of ours (recipe_rules new_items)
+  "count" INTEGER NOT NULL,
+  PRIMARY KEY ("item_id", "kind", "seq"),
+  FOREIGN KEY ("item_id", "kind") REFERENCES "recipe"("item_id", "kind")
 );

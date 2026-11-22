@@ -24,8 +24,11 @@ and the stage says so: place.json `sap.none` lists it, with why, and the draft's
 Hist's sap.
 
 A living Hist is a row whose base's editor id is a Hist tree, trunk or gland (King of the Murkmire's HistTree*,
-HistTrunk*, HistGland*) and not dead (*Dead*: a dead Hist's pool is dry). Roots are not a Hist. A pool placed by hand
-(ours, or King of the Murkmire's WaterPuddleHist) centred on a trunk is that tree's own; the stage keeps it.
+ArgoniaTreeHist*, HistTrunk*, HistGland*) and not dead (*Dead*: a dead Hist's pool is dry). Roots are not a Hist. One
+Hist is one tree: a trunk or trunk base standing within a bigger trunk's pool is a piece of that tree and has none of
+its own (King of the Murkmire builds a Hist from a crown over several trunk bases). A pool placed by hand
+(ours, or King of the Murkmire's WaterPuddleHist) centred on a trunk, or at its foot with its sap reaching the trunk's
+centre (brought out from under the roots to where it is seen), is that tree's own; the stage keeps it.
 
     python -m tools.places.draft.sap <place_id>      the dry run: what the `sap` stage would add, nothing written
 """
@@ -57,7 +60,7 @@ BANK_REACH = 600.0                          # units past the tree's half-width a
 PATCH_MAX = 105.0                           # units: the most the dig lowers any point (the draft's land bound)
 BLOCKS = ("building", "furniture", "door", "container", "actor")   # kinds a bank bowl is never dug under
 NO_BANK = "the tree stands in water with no dry bank at its foot"
-LIVING = re.compile(r"^Hist(Tree|Trunk|Gland)\d+[A-Za-z]*$")
+LIVING = re.compile(r"^(Hist(Tree|Trunk|Gland)|ArgoniaTreeHist)\d+[A-Za-z]*$")
 
 
 def living(base: dict | None) -> bool:
@@ -183,7 +186,7 @@ def plan(place_id: str, ext: list[dict], bases: dict, G=None, none: list | None 
     own = [r for r in ext if r.get("base") in POOLS and ".sap." not in r["id"]]
     out = []
     for t in sorted(pooled(ext, bases), key=lambda r: r["id"]):
-        if any(math.dist(centre(p), t["pos"][:2]) <= TOL for p in own):
+        if any(hand_holds(p, t) for p in own):
             continue
         at = None
         if G is not None:
@@ -202,19 +205,34 @@ def pooled(ext: list[dict], bases: dict) -> list[dict]:
     """The living Hists that stand in a pool of their own: every Hist tree and trunk, and a gland only where it grows
     apart from them (a gland within a tree's pool is a growth of that tree, and its sap is the tree's pool)."""
     hists = [t for t in ext if living(bases.get(t["base"])) and t.get("kind") != "door"]
-    trees = [t for t in hists if "Gland" not in str(bases[t["base"]].get("edid"))]
-    reach = [(t, POOL_HALF * scale_of(t, bases[t["base"]])) for t in trees]
-    return trees + [g for g in hists if g not in trees
+    trees: list[dict] = []
+    reach: list[tuple[dict, float]] = []
+    # one Hist is one tree: a trunk or root base standing within a bigger trunk's pool is a piece of that tree (King
+    # of the Murkmire builds its Hists from a crown, a trunk and several trunk bases), not a Hist of its own
+    for t in sorted((t for t in hists if "Gland" not in str(bases[t["base"]].get("edid"))),
+                    key=lambda t: (-half_width(bases[t["base"]], float(t.get("scale", 1.0))), t["id"])):
+        if any(math.dist(t["pos"][:2], o["pos"][:2]) <= r for o, r in reach):
+            continue
+        trees.append(t)
+        reach.append((t, POOL_HALF * scale_of(t, bases[t["base"]])))
+    return trees + [g for g in hists if "Gland" in str(bases[g["base"]].get("edid"))
                     and not any(math.dist(g["pos"][:2], t["pos"][:2]) <= r for t, r in reach)]
 
 
 def owner_of(p: dict, hists: list[dict]) -> dict | None:
     """The Hist a pool row belongs to: the stage's by its id (`<place>.sap.<rest of the Hist's id>`), a hand pool by
-    standing centred on the trunk."""
+    standing centred on the trunk, else by its sap reaching the trunk (`hand_holds`)."""
     if ".sap." in p["id"]:
         rest = p["id"].split(".sap.", 1)[1]
         return next((t for t in hists if t["id"].split(".", 1)[-1] == rest), None)
-    return next((t for t in hists if math.dist(centre(p), t["pos"][:2]) <= TOL), None)
+    return next((t for t in hists if math.dist(centre(p), t["pos"][:2]) <= TOL), None) \
+        or next((t for t in hists if holds(p, t)), None)
+
+
+def hand_holds(p: dict, t: dict) -> bool:
+    """A pool placed by hand is a Hist's own when it is centred on the trunk, or lies at the tree's foot with its sap
+    reaching the trunk's centre (a pool brought out from under a Hist's roots to where it is seen)."""
+    return math.dist(centre(p), t["pos"][:2]) <= TOL or holds(p, t)
 
 
 def faults(ext: list[dict], bases: dict, none=()) -> list[str]:
@@ -225,6 +243,7 @@ def faults(ext: list[dict], bases: dict, none=()) -> list[str]:
     skip = {n.get("on") if isinstance(n, dict) else n for n in none or ()}
     out = []
     owned = {id(owner_of(p, hists)) for p in pools}
+    owned |= {id(t) for p in pools if ".sap." not in p["id"] for t in hists if hand_holds(p, t)}
     for t in pooled(ext, bases):
         if id(t) not in owned and t["id"] not in skip:
             out.append(f"{t['id']}: a Hist without its sap pool")

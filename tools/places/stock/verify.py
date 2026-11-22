@@ -52,6 +52,10 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     sc = split.scale()
     copies_p = Path(str(esp) + ".copies.json")
     copies = json.loads(copies_p.read_text()) if copies_p.exists() else {}
+    # a ladder item the place links to the world file's copy (smithing/copies.json): read as its source, ladder stats
+    smith = frame.ROOT.parent / "out" / "newworld" / "plugin" / "smithing" / "copies.json"
+    if smith.exists():
+        copies.update({v: k for k, v in json.loads(smith.read_text()).items() if not k.startswith("new:")})
 
     def src(k):
         return copies.get(k, k) if isinstance(k, str) else k
@@ -67,19 +71,17 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     keys |= {i.item_id for v in st.person_items.values() for i in v} | {i.item_id for v in st.trader_items.values() for i in v}
     rec = Records.load(plugins_of(keys))
     rules = sc["split"]
-    never_m = set(sc["never"]["materials"])
-    never_w = [x.lower() for x in sc["never"]["edid_words"]]
 
     def info(k: str) -> dict:
         it = rec.item(k)
         if it is None:
             return {"known": False, "significant": False, "value": 0, "tier": "T1", "kind": "?", "never": False, "edid": k}
         kind, sig, _ = split.item_class(it, rules)
-        mat = next((m for m in it["keywords"] if "Material" in m), None)
         tier = split.item_tier(it, sc)[0]
-        return {"known": True, "significant": sig, "value": it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
-                "sig": it["sig"],
-                "name": it["name"], "never": bool(mat in never_m or any(x in (it["edid"] or "").lower() for x in never_w))}
+        lad = split.ladder_override(it, sc)
+        return {"known": True, "significant": sig, "value": lad["value"] if lad else it["value"], "tier": tier,
+                "legacy_tier": split.legacy_tier(it, sc), "kind": kind, "edid": it["edid"],
+                "sig": it["sig"], "name": it["name"], "never": split.never_reason(it, sc) is not None}
 
     items = {k: info(k) for k in keys if k}
     pw = w.get("place_wealth", place_id)
@@ -220,10 +222,15 @@ def check_stock(ctx) -> list[str]:
             bad.append(f"never: {holder}: {i.get('edid')} ({k}) is of a never material or a Skyrim-only kit")
         if (i.get("tier") == "T6" or k in unique_items) and k not in unique_items:
             bad.append(f"ledger: {holder}: {i.get('edid')} ({k}) is {i.get('tier')} with no unique_item row")
+        # a row the items ladder retiered (its tier by the keyword and value rule it was stocked under fits) is owed
+        # to the place's restock (out/places/stock-audit/<place>.md), listed and never failing (docs/design/items.md)
+        old = R.get(i.get("legacy_tier"), 99)
         if i.get("significant") and k not in unique_items and R.get(i.get("tier"), 0) > top:
-            bad.append(f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above the place's ceiling {X['ceiling']}")
+            (X.setdefault("owed", []).append if old <= top else bad.append)(
+                f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above the place's ceiling {X['ceiling']}")
         if cap_tier and i.get("significant") and k != GOLD and k not in unique_items and R.get(i.get("tier"), 0) > R[cap_tier]:
-            bad.append(f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above its holder's {cap_tier}")
+            (X.setdefault("owed", []).append if old <= R[cap_tier] else bad.append)(
+                f"value: {holder}: {i.get('edid')} ({k}) is {i.get('tier')}, above its holder's {cap_tier}")
 
     # containers: every one of the place traces to its row (a container with no row holds nothing significant)
     for key, b in sorted(B["containers"].items()):

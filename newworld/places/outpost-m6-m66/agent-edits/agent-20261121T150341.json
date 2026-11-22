@@ -1,0 +1,2146 @@
+{
+ "save_id": "agent-20261121T150341",
+ "place_id": "outpost-m6-m66",
+ "name": "the Hist made young: its whole composite (trunk living and dead, roots, glands, root bases, hall entrance) scaled 0.55 about its axis on the ground; pruned: gas traps, stage triggers, the camp chest (the record's treasure is at the reed hide), the door to Huluxinoag Roots (no room), the two thatch ruins and the thatch house (the record's look is hide tents; their platforms kept for tents), their rubble, cupboard and wall shelves, five lily pads left on dry ground and two rock piles the ground buries",
+ "at": "2026-11-21T15:03:41Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ZFREB3W8N7YQ26RP8BH8G4KXEV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45314.88,
+     -538384.43,
+     -286.41
+    ],
+    "rot": [
+     0.023618469,
+     -0.19861862,
+     4.5603
+    ],
+    "scale": 0.58,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45175.6,
+     -538463.42,
+     -130.08
+    ],
+    "rot": [
+     0.023618469,
+     -0.19861862,
+     4.5603
+    ],
+    "scale": 0.319,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WF5JWE2MPDPH3JGXJ4SV4W0BWK",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44515.37,
+     -539316.06,
+     59.6
+    ],
+    "rot": [
+     0.11873306,
+     -0.16132244,
+     5.16984
+    ],
+    "scale": 1.21,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44735.87,
+     -538975.82,
+     60.23
+    ],
+    "rot": [
+     0.11873306,
+     -0.16132244,
+     5.16984
+    ],
+    "scale": 0.6655,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.6AKW8KJWPEMM6EB3ZE8C56JWAP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45024.49,
+     -539331.6,
+     260.61
+    ],
+    "rot": [
+     0,
+     0,
+     2.89626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45015.89,
+     -538984.36,
+     170.79
+    ],
+    "rot": [
+     0,
+     0,
+     2.89626
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WNAKDRWGHRH6CZ4ANVH4E48XDD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44772.94,
+     -538312.22,
+     346.52
+    ],
+    "rot": [
+     0.9706136,
+     0.7473359,
+     4.28993
+    ],
+    "scale": 0.97,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44877.53,
+     -538423.7,
+     218.04
+    ],
+    "rot": [
+     0.9706136,
+     0.7473359,
+     4.28993
+    ],
+    "scale": 0.5335,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RN9WAHVXKKNS69V8EY7AHYFTYW",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44824.94,
+     -538335.13,
+     440.45
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44906.13,
+     -538436.3,
+     269.7
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5AE5530GR6H2BKNP4CK6QEHZ11",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     682.29
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 1.61,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     402.71
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 0.8855,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.NT2F2YW929YF6A4KT8WS1T8D8E",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44738.54,
+     -538322.07,
+     -312.96
+    ],
+    "rot": [
+     -0.1999846,
+     0.0024639897,
+     6.26241
+    ],
+    "scale": 0.58,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44858.61,
+     -538429.12,
+     -144.68
+    ],
+    "rot": [
+     -0.1999846,
+     0.0024639897,
+     6.26241
+    ],
+    "scale": 0.319,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.CH3WQS5RV3Q224RB90EK4VWNSE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45550.58,
+     -538589.59,
+     -263.69
+    ],
+    "rot": [
+     0.20619835,
+     0.04512377,
+     5.57687
+    ],
+    "scale": 0.58,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45305.24,
+     -538576.26,
+     -117.58
+    ],
+    "rot": [
+     0.20619835,
+     0.04512377,
+     5.57687
+    ],
+    "scale": 0.319,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.5FM7P6P34WYHK03X2DJ0ECV109",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44840.88,
+     -539213.32,
+     -276.46
+    ],
+    "rot": [
+     0.04749402,
+     0.26771814,
+     2.68603
+    ],
+    "scale": 0.58,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44914.9,
+     -538919.31,
+     -124.6
+    ],
+    "rot": [
+     0.04749402,
+     0.26771814,
+     2.68603
+    ],
+    "scale": 0.319,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.DG5F4G6J2WVYQY98JSV3R4AP57",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     599.26
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 1.38,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     357.04
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 0.759,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.SSW39YVDZ17DPPB2VTEVG8057F",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44786.8,
+     -538733.38,
+     586.35
+    ],
+    "rot": [
+     1.2290168,
+     -0.49069977,
+     4.72598
+    ],
+    "scale": 0.97,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44885.16,
+     -538655.34,
+     349.94
+    ],
+    "rot": [
+     1.2290168,
+     -0.49069977,
+     4.72598
+    ],
+    "scale": 0.5335,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.QV658NBXGBB8DQB3QBP18FPWFY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45301.05,
+     -538545.96,
+     689.15
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     406.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JCRC1EBHP7CD13XYQP0RVM7KE9",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44567.69,
+     -538978.59,
+     109.22
+    ],
+    "rot": [
+     0,
+     0,
+     6.67946
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44764.65,
+     -538790.21,
+     87.52
+    ],
+    "rot": [
+     0,
+     0,
+     6.67946
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.PE5FNEAYHXSETPF661TWJTA2NC",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44411.51,
+     -538599.92,
+     2.63
+    ],
+    "rot": [
+     0,
+     0,
+     5.07945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44678.75,
+     -538581.94,
+     28.9
+    ],
+    "rot": [
+     0,
+     0,
+     5.07945
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.00JAH73NQZJSHKA8BEAW34GYH3",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44719.73,
+     -538887.06,
+     69.73
+    ],
+    "rot": [
+     0,
+     0,
+     5.27945
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44848.27,
+     -538739.86,
+     65.8
+    ],
+    "rot": [
+     0,
+     0,
+     5.27945
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.B73DNYQ7VQEDTASR2SBTW1CTT1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44752.57,
+     -538984.92,
+     60.19
+    ],
+    "rot": [
+     0,
+     0,
+     3.47946
+    ],
+    "scale": 1.24,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44866.33,
+     -538793.69,
+     60.55
+    ],
+    "rot": [
+     0,
+     0,
+     3.47946
+    ],
+    "scale": 0.682,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WHK2QBSY9PVX0MZJ8HXR4S00AX",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45048.4,
+     -538048.47,
+     126.25
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 1.19,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45029.04,
+     -538278.64,
+     96.89
+    ],
+    "rot": [
+     0,
+     0,
+     6.67945
+    ],
+    "scale": 0.6545,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.ZHERXS8GZD6943SGG787QRTNMD",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44473.24,
+     -538225.09,
+     165.87
+    ],
+    "rot": [
+     -0.17605287,
+     -0.0953913,
+     7.08788
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44712.7,
+     -538375.78,
+     118.68
+    ],
+    "rot": [
+     -0.17605287,
+     -0.0953913,
+     7.08788
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.A13S5510JCZPKN7DKY9AZCVJPJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44757.86,
+     -538073.03,
+     66.03
+    ],
+    "rot": [
+     -0.2245825,
+     -0.33385065,
+     4.41745
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44869.24,
+     -538292.15,
+     63.77
+    ],
+    "rot": [
+     -0.2245825,
+     -0.33385065,
+     4.41745
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.AMN04PPMJEK7G09PGXDX87GM4Z",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45505.38,
+     -539095.15,
+     447.24
+    ],
+    "rot": [
+     0,
+     0,
+     3.99626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45280.38,
+     -538854.31,
+     273.43
+    ],
+    "rot": [
+     0,
+     0,
+     3.99626
+    ],
+    "scale": 0.55,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RH4YW1QZAKTT6708QXEHE0M6B1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44815.52,
+     -538707.76,
+     689.15
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     406.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.MWEB508W5EDQ0G3DJM0F49AYAZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45335.07,
+     -538527.97,
+     586.35
+    ],
+    "rot": [
+     -1.259768,
+     0.26172298,
+     1.50128
+    ],
+    "scale": 0.97,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45186.71,
+     -538542.37,
+     349.94
+    ],
+    "rot": [
+     -1.259768,
+     0.26172298,
+     1.50128
+    ],
+    "scale": 0.5335,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JRTQVNWAHZ92YBGBVEWF547S6Q",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45228.82,
+     -537338.91,
+     92.46
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45128.27,
+     -537888.38,
+     78.3
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.33,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 23,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9YKDQWVX9RHB0TC7D6B66KK1WZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     682.29
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 1.61,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     402.71
+    ],
+    "rot": [
+     0,
+     0,
+     4.93345
+    ],
+    "scale": 0.8855,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 24,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.99BYE0A4DTRN08517K3PMZPZ31",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     599.26
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 1.38,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45005.37,
+     -538559.96,
+     357.04
+    ],
+    "rot": [
+     0,
+     0,
+     3.33345
+    ],
+    "scale": 0.759,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 25,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.WETE9R5TEP18ZB4D4MYSCVSBN4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44815.52,
+     -538707.76,
+     689.15
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44900.95,
+     -538641.25,
+     406.48
+    ],
+    "rot": [
+     -0.14332469,
+     0.1583249,
+     4.84396
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 26,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1RPR7E23DYBN024R6SFJJGHSG4",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45301.05,
+     -538545.96,
+     689.15
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45167.99,
+     -538552.26,
+     406.48
+    ],
+    "rot": [
+     0.17685042,
+     -0.11962509,
+     1.46155
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 27,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.19WPHKC7Z9Q8MF8PBT1WTN29FZ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44824.94,
+     -538335.13,
+     440.45
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.69,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44906.13,
+     -538436.3,
+     269.7
+    ],
+    "rot": [
+     -0.39080644,
+     -0.080341615,
+     3.56031
+    ],
+    "scale": 0.3795,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 28,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.W16EAMQ6MGW3QJE0X5XTV5M9BJ",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -45228.82,
+     -537338.91,
+     92.46
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.6,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -45128.27,
+     -537888.38,
+     78.3
+    ],
+    "rot": [
+     -0.28646058,
+     0.28311837,
+     5.03835
+    ],
+    "scale": 0.33,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 29,
+   "stroke": 1,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.BYYGG9376YGXAXV2F93X6JRRDE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.BYYGG9376YGXAXV2F93X6JRRDE",
+    "base": "King of the Murkmire.esp:089921",
+    "kind": "door",
+    "pos": [
+     -44555.76,
+     -539028.33,
+     154.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.36672
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:66DD94",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "door": {
+     "to_space": "HuluxinoagRoots",
+     "to_ref": "King of the Murkmire.esp:673105",
+     "to_pos": [
+      9709.254,
+      5517.274,
+      6017.2646
+     ],
+     "to_rot": [
+      0,
+      0,
+      -1.5707964
+     ],
+     "flags": "0"
+    }
+   },
+   "n": 30,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.J0WAVYMFGX5CXT1S5GNPBAK4NZ",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.J0WAVYMFGX5CXT1S5GNPBAK4NZ",
+    "base": "King of the Murkmire.esp:66DDD5",
+    "kind": "building",
+    "pos": [
+     -43062.92,
+     -538036.61,
+     51.13
+    ],
+    "rot": [
+     0,
+     0,
+     6.10865
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDA9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 31,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.JEVCNXMYXF8SWQQCW0VJDYAM28",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.JEVCNXMYXF8SWQQCW0VJDYAM28",
+    "base": "King of the Murkmire.esp:672FEE",
+    "kind": "building",
+    "pos": [
+     -45041.86,
+     -540586.19,
+     70.45
+    ],
+    "rot": [
+     0,
+     0,
+     4.30866
+    ],
+    "scale": 2.2,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDB1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 32,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.RB8B7B8N6ZH1G6WM4AEKDGYQNX",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.RB8B7B8N6ZH1G6WM4AEKDGYQNX",
+    "base": "King of the Murkmire.esp:672FE7",
+    "kind": "building",
+    "pos": [
+     -41690.75,
+     -537990.03,
+     -25.01
+    ],
+    "rot": [
+     0,
+     0,
+     1.88167
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDB4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 33,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.91FSSHPJXV062M1HWB1FDWHNZA",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.91FSSHPJXV062M1HWB1FDWHNZA",
+    "base": "King of the Murkmire.esp:04614F",
+    "kind": "rock",
+    "pos": [
+     -42414.2,
+     -541070.51,
+     4.09
+    ],
+    "rot": [
+     0,
+     0,
+     7.37945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDCC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s01"
+   },
+   "n": 34,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.BPWZY97VXT4P7CCE5TYWBHW1NE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.BPWZY97VXT4P7CCE5TYWBHW1NE",
+    "base": "King of the Murkmire.esp:04614F",
+    "kind": "rock",
+    "pos": [
+     -44434.13,
+     -540628.39,
+     2.91
+    ],
+    "rot": [
+     6.1959186,
+     0,
+     3.09626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DDD2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 35,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.M5XG8ZNGPV0MNG0PXSBT1HJDR7",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.M5XG8ZNGPV0MNG0PXSBT1HJDR7",
+    "base": "Skyrim.esm:082E18",
+    "kind": "activator",
+    "pos": [
+     -44258.6,
+     -540568.85,
+     161.11
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:66DE5D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 36,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.96G45RJ9FM0TJCNNM17H2XG22G",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.96G45RJ9FM0TJCNNM17H2XG22G",
+    "base": "Skyrim.esm:09F290",
+    "kind": "activator",
+    "pos": [
+     -44256.62,
+     -540606.16,
+     269.52
+    ],
+    "rot": [
+     0,
+     0,
+     2.29626
+    ],
+    "scale": 1.59,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE5E",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.M5XG8ZNGPV0MNG0PXSBT1HJDR7",
+     "flags": "0"
+    }
+   },
+   "n": 37,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.73PYZNVKZ2WSFQGMJ40Y0EJ91Z",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.73PYZNVKZ2WSFQGMJ40Y0EJ91Z",
+    "base": "Skyrim.esm:09F290",
+    "kind": "activator",
+    "pos": [
+     -43745.36,
+     -538020.93,
+     283.2
+    ],
+    "rot": [
+     0,
+     0,
+     4.49626
+    ],
+    "scale": 1.59,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE5F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.1YWFR0NGET76X3DTGRV4WDZ96C",
+     "flags": "0"
+    }
+   },
+   "n": 38,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1YWFR0NGET76X3DTGRV4WDZ96C",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1YWFR0NGET76X3DTGRV4WDZ96C",
+    "base": "Skyrim.esm:082E18",
+    "kind": "activator",
+    "pos": [
+     -43714.04,
+     -538041.29,
+     174.79
+    ],
+    "rot": [
+     0,
+     0,
+     4.49626
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:66DE60",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 39,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.E0JXDFQW7HGPY3RW3HYN7NYVM4",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.E0JXDFQW7HGPY3RW3HYN7NYVM4",
+    "base": "Skyrim.esm:082E18",
+    "kind": "activator",
+    "pos": [
+     -43465.69,
+     -540949.8,
+     161.11
+    ],
+    "rot": [
+     0,
+     0,
+     7.47945
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "King of the Murkmire.esp:66DE61",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s01"
+   },
+   "n": 40,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.7P4M4EGQQY6TGYPS1Z1JJV9ZMV",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.7P4M4EGQQY6TGYPS1Z1JJV9ZMV",
+    "base": "Skyrim.esm:09F290",
+    "kind": "activator",
+    "pos": [
+     -43431.53,
+     -540965.01,
+     269.52
+    ],
+    "rot": [
+     0,
+     0,
+     7.47945
+    ],
+    "scale": 1.59,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE62",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s01",
+    "enable_parent": {
+     "ref": "outpost-m6-m66.E0JXDFQW7HGPY3RW3HYN7NYVM4",
+     "flags": "0"
+    }
+   },
+   "n": 41,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.Y5M2MN7WCTBN60R37MMJC5F2E1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.Y5M2MN7WCTBN60R37MMJC5F2E1",
+    "base": "King of the Murkmire.esp:01A385",
+    "kind": "plant",
+    "pos": [
+     -43518.73,
+     -540277.53,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     2.39626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FD0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 42,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.CZSJ6AX8TXR5SP6NJWNGJ5HBD1",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.CZSJ6AX8TXR5SP6NJWNGJ5HBD1",
+    "base": "King of the Murkmire.esp:01A389",
+    "kind": "plant",
+    "pos": [
+     -43268.87,
+     -540320.27,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.19626
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FD1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 43,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.1FFK8RYMDRB2JS95WAQ1J7NSMP",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.1FFK8RYMDRB2JS95WAQ1J7NSMP",
+    "base": "King of the Murkmire.esp:01A389",
+    "kind": "plant",
+    "pos": [
+     -44138.85,
+     -539280.38,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     7.37945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FD2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01"
+   },
+   "n": 44,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.S2EG79SN443TJNXRWZ2HX90Z2F",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.S2EG79SN443TJNXRWZ2HX90Z2F",
+    "base": "King of the Murkmire.esp:01A386",
+    "kind": "plant",
+    "pos": [
+     -44187.65,
+     -539632.12,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.87945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FD3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 45,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.PE2R2MKPPB4S2TZV7YS0P8HDGH",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.PE2R2MKPPB4S2TZV7YS0P8HDGH",
+    "base": "King of the Murkmire.esp:01A383",
+    "kind": "plant",
+    "pos": [
+     -43901.24,
+     -539658.72,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     4.77945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FD4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 46,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.V1H6QFFQF2NRPGWTRWNHB6QVDN",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.V1H6QFFQF2NRPGWTRWNHB6QVDN",
+    "base": "King of the Murkmire.esp:672FDC",
+    "kind": "container",
+    "pos": [
+     -41502.0,
+     -537869.73,
+     87.58
+    ],
+    "rot": [
+     1.5707964,
+     -0.20000198,
+     7.67945
+    ],
+    "scale": 1.48,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FDE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 47,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.FBDV9GT2DSZCGX7D8EPQ3WZ86F",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.FBDV9GT2DSZCGX7D8EPQ3WZ86F",
+    "base": "King of the Murkmire.esp:08EAC5",
+    "kind": "static",
+    "pos": [
+     -42715.28,
+     -538131.83,
+     135.76
+    ],
+    "rot": [
+     0.05235988,
+     6.2308254,
+     1.39626
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FF8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 48,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.NJ7FB9N3R5A13G8A5VGK3Y8V6N",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.NJ7FB9N3R5A13G8A5VGK3Y8V6N",
+    "base": "King of the Murkmire.esp:08EAC5",
+    "kind": "static",
+    "pos": [
+     -45003.79,
+     -540878.65,
+     102.67
+    ],
+    "rot": [
+     -1.570796,
+     -1.0999997,
+     7.67945
+    ],
+    "scale": 1.5,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FFB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 49,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.GHQXCMA6GFT5NHTZTXJ88FRV15",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.GHQXCMA6GFT5NHTZTXJ88FRV15",
+    "base": "King of the Murkmire.esp:030A3B",
+    "kind": "container",
+    "pos": [
+     -44949.12,
+     -540564.54,
+     96.78
+    ],
+    "rot": [
+     0,
+     0,
+     7.17945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:672FFC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03",
+    "lock": {
+     "level": "Apprentice",
+     "key": null,
+     "flags": "0"
+    }
+   },
+   "n": 50,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.9KW7DE1SR7GCCJ9SAXVYCR8CAB",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.9KW7DE1SR7GCCJ9SAXVYCR8CAB",
+    "base": "Skyrim.esm:0C4B98",
+    "kind": "clutter",
+    "pos": [
+     -44808.27,
+     -540798.68,
+     8.08
+    ],
+    "rot": [
+     5.8817596,
+     0.2443461,
+     2.29627
+    ],
+    "scale": 0.73,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:673009",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 51,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.BR3WTN3PZC72FG40KBNQ6T1ZS0",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.BR3WTN3PZC72FG40KBNQ6T1ZS0",
+    "base": "Skyrim.esm:0C4B99",
+    "kind": "clutter",
+    "pos": [
+     -43019.13,
+     -538180.56,
+     14.77
+    ],
+    "rot": [
+     0,
+     0,
+     2.21308
+    ],
+    "scale": 0.72,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:67300C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 52,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.FEGVB7WQPAK9DMPHK2Z9VT9NDV",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.FEGVB7WQPAK9DMPHK2Z9VT9NDV",
+    "base": "Skyrim.esm:099312",
+    "kind": "activator",
+    "pos": [
+     -42606.91,
+     -541210.6,
+     147.87
+    ],
+    "rot": [
+     0,
+     0,
+     4.16706
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:7D44EF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s01",
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      1671.0156,
+      1574,
+      476.99182
+     ],
+     "color": [
+      204,
+      76,
+      51
+     ],
+     "unknown": 0.15
+    }
+   },
+   "n": 53,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.71K31N5F427TW4FQKMRB0JNMNE",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.71K31N5F427TW4FQKMRB0JNMNE",
+    "base": "Skyrim.esm:099312",
+    "kind": "activator",
+    "pos": [
+     -44442.49,
+     -539099.26,
+     243.43
+    ],
+    "rot": [
+     0,
+     0,
+     6.67946
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:7F2E25",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b01",
+    "primitive": {
+     "type": "Box",
+     "bounds": [
+      244.5625,
+      306.6875,
+      295.15628
+     ],
+     "color": [
+      204,
+      76,
+      51
+     ],
+     "unknown": 0.15
+    }
+   },
+   "n": 54,
+   "stroke": 2,
+   "at": "2026-11-21T15:03:41Z"
+  }
+ ]
+}

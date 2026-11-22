@@ -57,7 +57,7 @@ code changes.
    accepted in `place.json` `draft.accepted_faults` `[{id, fault, why}]`: listed apart, drawn without red.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
 3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
-   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] --why "<why>"` (one piece of any base), `steps <deck,
+   [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] [--within <id>] --why "<why>"` (one piece of any base, of its own kind; `--within` the thing it rests in: an egg in its nest or pool, a basket on a stall), `steps <deck,
    structure, walkway or door> <point or thing>`, `land <x,y> <radius> <dz> --why "<why>"` (raise or lower the ground
    inside the footprint, eased to nothing at the radius, refused past the land bound: a mud mound under legs that
    stop short, a ramp to an added door; when a mound would need more, bring the unit down instead). A structure named by its unit id (`units <place>`, `place-site`) moves, turns or sinks whole, and a house's body
@@ -87,7 +87,8 @@ A stage run rewrites the rows it owns: commit the look session first.
 shows; `door` names its way out. The room is drawn in its own light; `--lit` adds a neutral fill for judging shape.
 
 1. `in <room> overview`: from above with the ceiling cut away, and from where the way in lands at eye height.
-2. `in <room> probe --all`: floating and unresolved pieces, a door with no floor, and every **opening onto the
+2. `in <room> probe --all` (where floors stack, as in a ship's hold under its deck, each piece is judged against the
+   floor under it): floating and unresolved pieces, a door with no floor, and every **opening onto the
    void** (a cut room's edge left open, a hole in the shell), each with the side it lies to and where. An opening
    seen only from floor behind a closed door is one the player meets only by opening it: say which.
 3. `in <room> at <thing> --eye` for what a player sees; `in <room> walk door <thing>` from the way in.

@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T184228",
+ "place_id": "outpost-m13-m65",
+ "name": "a bedroll off the rock north of the mess tent",
+ "at": "2026-11-21T18:42:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK039PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -100240.0,
+     -527350.0,
+     174.375
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100390.0,
+     -527370.0,
+     174.375
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T18:42:28Z"
+  }
+ ]
+}

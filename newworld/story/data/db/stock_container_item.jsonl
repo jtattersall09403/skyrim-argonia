@@ -31,16 +31,9 @@
 {"place_id":"jal-veesa","space_id":"SeekhatFishersHut","ref_id":"King of the Murkmire.esp:1C1C95","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
 {"place_id":"jal-veesa","space_id":"SeekhatSmithyHut","ref_id":"King of the Murkmire.esp:1CC12A","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
 {"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","item_id":"Skyrim.esm:03B97C","count":1,"why":"modest savings in a ring"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0135B8","count":1,"why":"an Imperial sword (main plot, quest 1: the hold's kit)"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:01397D","count":20,"why":"twenty iron arrows"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013985","count":1,"why":"a hunting bow"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013AB2","count":1,"why":"an Imperial light shield"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED7","count":1,"why":"Imperial light boots"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013ED9","count":1,"why":"an Imperial light cuirass"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDA","count":1,"why":"Imperial light bracers"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:013EDB","count":1,"why":"an Imperial light helmet"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:03EADD","count":3,"why":"three potions of minor healing"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:01397E","count":1,"why":"an iron dagger (main plot, quest 1's side quest)"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:096598","count":1,"why":"a scroll of firebolt Vosh-Leera sent (main-plot.md:178, :698)"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0965AF","count":1,"why":"a scroll of fast healing Vosh-Leera sent (main-plot.md:178, :698)"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","item_id":"Skyrim.esm:0FCEFD","count":1,"why":"a Ring of Minor Health that Vosh-Leera sent the player, an ordinary enchanted ring as Fargoth's was in Morrowind (owner, 2026-11-19; main-plot.md, What the Herald Sent)"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:065C97","count":1,"why":"a heel of bread a cutter of the new gang keeps for the morning"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","item_id":"Skyrim.esm:0669A5","count":2,"why":"two leeks from the cook's pot"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","item_id":"Skyrim.esm:01397E","count":1,"why":"an iron dagger (main plot, quest 1's side quest)"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","item_id":"Skyrim.esm:096598","count":1,"why":"a scroll of firebolt Vosh-Leera sent (main-plot.md:178, :698)"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","item_id":"Skyrim.esm:0965AF","count":1,"why":"a scroll of fast healing Vosh-Leera sent (main-plot.md:178, :698)"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","item_id":"Skyrim.esm:0FCEFD","count":1,"why":"a Ring of Minor Health that Vosh-Leera sent the player, an ordinary enchanted ring as Fargoth's was in Morrowind (owner, 2026-11-19; main-plot.md, What the Herald Sent)"}

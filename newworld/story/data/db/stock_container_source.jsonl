@@ -149,19 +149,18 @@
 {"place_id":"jal-veesa","space_id":"SeekhatTreeminderHut","ref_id":"King of the Murkmire.esp:198D05","source_id":"cite-place-wealth-jal-veesa"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK028PLACE","source_id":"cite-place-give-outpost-m11-m63-3"}
 {"place_id":"outpost-m11-m63","space_id":"exterior","ref_id":"outpost-m11-m63.LOOK028PLACE","source_id":"cite-place-note-outpost-m11-m63-hooks"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","source_id":"cite-place-wealth-outpost-m13-m65"}
-{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","source_id":"cite-story-design-quests-lines-main-plot-md"}
+{"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEAF9","source_id":"cite-place-note-outpost-m13-m65-present"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEB52","source_id":"cite-person-outpost-m13-m65-rhyfydyg75ynbgw69r8x9pzfba"}
 {"place_id":"outpost-m13-m65","space_id":"01dock3to4","ref_id":"Black Marsh.esm:1BEB52","source_id":"cite-place-wealth-outpost-m13-m65"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","source_id":"cite-person-outpost-m13-m65-vd51zd4gp90n4wygpgw43d7ppc"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","source_id":"cite-place-give-outpost-m13-m65-5"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","source_id":"cite-place-note-outpost-m13-m65-hooks"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","source_id":"cite-place-wealth-outpost-m13-m65"}
-{"place_id":"outpost-m13-m65","space_id":"exterior","ref_id":"outpost-m13-m65.H2ST2KHQFZATRW9NEP4YSS6GRM","source_id":"cite-story-design-quests-lines-main-plot-md"}
-{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G","source_id":"cite-newworld-story-quests-main-mn03-yaml"}
-{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.AZW5NSGYVQ67YJSWRZYC14KD9G","source_id":"cite-place-give-outpost-m6-m66-6"}
-{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM","source_id":"cite-person-outpost-m6-m66-yd5kbebaej872qv0fz3x1w0d5v"}
-{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.K3W989FD0TF7HGKQ1JFTGB8HFM","source_id":"cite-place-wealth-outpost-m6-m66"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","source_id":"cite-person-outpost-m13-m65-vd51zd4gp90n4wygpgw43d7ppc"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","source_id":"cite-place-give-outpost-m13-m65-5"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","source_id":"cite-place-note-outpost-m13-m65-hooks"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","source_id":"cite-place-wealth-outpost-m13-m65"}
+{"place_id":"outpost-m13-m65","space_id":"AshgateHut","ref_id":"outpost-m13-m65.LOOK034PLACE","source_id":"cite-story-design-quests-lines-main-plot-md"}
+{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.TF16PACK","source_id":"cite-newworld-story-quests-main-mn03-yaml"}
+{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.TF16PACK","source_id":"cite-place-give-outpost-m6-m66-6"}
+{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.TF41CHEST","source_id":"cite-person-outpost-m6-m66-yd5kbebaej872qv0fz3x1w0d5v"}
+{"place_id":"outpost-m6-m66","space_id":"exterior","ref_id":"outpost-m6-m66.TF41CHEST","source_id":"cite-place-wealth-outpost-m6-m66"}
 {"place_id":"tribal-camp-m2-m68","space_id":"DushnikhYalCellar","ref_id":"Skyrim.esm:067899","source_id":"cite-place-wealth-tribal-camp-m2-m68"}
 {"place_id":"tribal-camp-m2-m68","space_id":"DushnikhYalCellar","ref_id":"Skyrim.esm:0EBA14","source_id":"cite-place-wealth-tribal-camp-m2-m68"}
 {"place_id":"tribal-camp-m2-m68","space_id":"DushnikhYalLonghouse","ref_id":"Skyrim.esm:0976F6","source_id":"cite-place-wealth-tribal-camp-m2-m68"}

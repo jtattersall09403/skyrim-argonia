@@ -1,0 +1,138 @@
+{
+ "save_id": "agent-20261121T233745",
+ "place_id": "jal-veesa",
+ "name": "rock footings (the source's ArgoniaRockL02) under the Accommodation hut platform's west posts",
+ "at": "2026-11-21T23:37:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK001PLACE",
+    "base": "King of the Murkmire.esp:03A899",
+    "kind": "static",
+    "pos": [
+     -52112.0,
+     -505720.0,
+     420.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a rock footing under the Accommodation hut platform's west post, whose leg ended over the mud (the land bound refuses a mound there)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T23:37:45Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK002PLACE",
+    "base": "King of the Murkmire.esp:03A899",
+    "kind": "static",
+    "pos": [
+     -52112.0,
+     -505400.0,
+     420.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a rock footing under the Accommodation hut platform's west post, whose leg ended over the mud (the land bound refuses a mound there)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T23:37:45Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK003PLACE",
+    "base": "King of the Murkmire.esp:03A899",
+    "kind": "static",
+    "pos": [
+     -52112.0,
+     -505086.0,
+     420.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a rock footing under the Accommodation hut platform's west post, whose leg ended over the mud (the land bound refuses a mound there)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T23:37:45Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK004PLACE",
+    "base": "King of the Murkmire.esp:03A899",
+    "kind": "static",
+    "pos": [
+     -52112.0,
+     -504843.0,
+     420.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a rock footing under the Accommodation hut platform's west post, whose leg ended over the mud (the land bound refuses a mound there)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-21T23:37:45Z"
+  }
+ ]
+}

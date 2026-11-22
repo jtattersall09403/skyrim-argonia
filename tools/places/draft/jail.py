@@ -309,6 +309,9 @@ def stand(x: float, y: float, things: list[dict], bases: dict, ground) -> tuple[
             continue
         b = overlap.box(t, bases)
         top, bottom = t["pos"][2] + b[1][2], t["pos"][2] + b[0][2]
+        w = t.get("walk") if t.get("walk") is not None else geom.walk(bases.get(t.get("base")) or {})
+        if w is not None:   # a walked piece is stood on at its deck, not at the top of its box (its posts, its rail)
+            top = t["pos"][2] + float(w) * float(t.get("scale") or 1.0)
         if bottom <= low + 64.0 and low < top <= low + STAND_REACH:
             tops.append((top, t["id"], t))
     if not tops:

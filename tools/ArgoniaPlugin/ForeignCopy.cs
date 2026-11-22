@@ -61,7 +61,11 @@ sealed class ForeignCopy : IDisposable
             var assets = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(data))!, "newworld-assets");
             if (path == "" && Directory.Exists(assets))
                 path = Directory.EnumerateDirectories(assets).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) ?? "";
-            if (path == "") throw new FileNotFoundException($"{file} not in {data}, the staged mods nor the asset mods");
+            // then a newworld row's plugin the catalogue unpacked from its archive (out/places/catalogue/plugins/<mod>/)
+            var unpacked = Path.GetFullPath("out/places/catalogue/plugins");
+            if (path == "" && Directory.Exists(unpacked))
+                path = Directory.EnumerateDirectories(unpacked).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) ?? "";
+            if (path == "") throw new FileNotFoundException($"{file} not in {data}, the staged mods, the asset mods nor the catalogue's unpacked plugins");
         }
         return plugins[file] = SkyrimMod.CreateFromBinaryOverlay(path, SkyrimRelease.SkyrimSE, Survey.NoStrings);
     }
@@ -86,15 +90,22 @@ sealed class ForeignCopy : IDisposable
     public FormKey Get(FormKey fk, string file, bool forceCopy = false)
     {
         if (Map.TryGetValue(fk, out var m)) return m;
+        if (Linked.TryGetValue(fk, out var l)) return l;
         if (!forceCopy && allowed.Contains(fk.ModKey)) return fk;
         var r = Plugin(file).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk)
                 ?? Plugin(fk.ModKey.FileName).EnumerateMajorRecords().First(x => x.FormKey == fk);
         return Get(r, file, forceCopy);
     }
 
+    /// Records another plugin of ours already holds as its copy (the world file's ladder items, smithing/copies.json):
+    /// a source named here is linked to that copy, never copied again, so a place's stock and the world's recipes
+    /// name one record.
+    public readonly Dictionary<FormKey, FormKey> Linked = new();
+
     public FormKey Get(IMajorRecordGetter src, string file, bool forceCopy = false)
     {
         if (Map.TryGetValue(src.FormKey, out var m)) return m;
+        if (Linked.TryGetValue(src.FormKey, out var l)) return l;
         if (!forceCopy && allowed.Contains(src.FormKey.ModKey)) return src.FormKey;
         var ours = new FormKey(mod.ModKey, Take(Kind, $"copy:{src.FormKey}"));
         Map[src.FormKey] = ours;

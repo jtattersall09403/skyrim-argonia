@@ -44,6 +44,8 @@ def _is_bc5(dds: bytes) -> bool:
 def to_webp(dds: bytes, size: int, keep_alpha: bool = True) -> tuple[bytes, dict]:
     """keep_alpha False for normal maps and land textures, whose alpha is specular, not cut-out."""
     im = decode(dds)
+    if not keep_alpha and im.mode == "RGBA":   # before any resize: PIL weights colour by alpha, so a zero alpha would blacken it
+        im = im.convert("RGB")
     w, h = im.size
     limit = clamp_size(size)
     while max(w, h) > limit and min(w, h) > 1:

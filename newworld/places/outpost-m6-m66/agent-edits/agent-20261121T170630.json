@@ -1,0 +1,122 @@
+{
+ "save_id": "agent-20261121T170630",
+ "place_id": "outpost-m6-m66",
+ "name": "the flight from the north platform moved off the tent's footprint to the deck's east edge; a chair moved clear of its head",
+ "at": "2026-11-21T17:06:30Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.LOOK005STEPS",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.LOOK005STEPS",
+    "base": "King of the Murkmire.esp:025C36",
+    "kind": "building",
+    "pos": [
+     -43121.63,
+     -537685.17,
+     36.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53785
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.R7HVN4CD4C8V3HD4YWA7X6A0XR",
+     "dz": 28.78
+    },
+    "why": "a flight from the north tent platform down to the bank by the fire: the deck stands a step and more over the mud and the build left it an island with the waterside platform",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T17:06:30Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "outpost-m6-m66.LOOK007STEPS",
+    "base": "King of the Murkmire.esp:025C36",
+    "kind": "building",
+    "pos": [
+     -42523.41,
+     -538024.4,
+     36.11
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.10865
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "src": null,
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m6-m66.R7HVN4CD4C8V3HD4YWA7X6A0XR",
+     "dz": 28.78
+    },
+    "why": "a flight from the north tent platform down to the bank on its east side, clear of the tent and the table: the deck stands a step and more over the mud and the build left it and the waterside platform an island",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-21T17:06:30Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m6-m66.91C59QKE0FE4MKMAPCSQ3A15DP",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42617.81,
+     -537982.74,
+     81.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42779.81,
+     -537799.74,
+     81.54
+    ],
+    "rot": [
+     1.5707964,
+     -0.5415947,
+     4.53786
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-21T17:06:30Z"
+  }
+ ]
+}

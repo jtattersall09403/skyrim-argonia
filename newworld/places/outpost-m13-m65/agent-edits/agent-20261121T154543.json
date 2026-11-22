@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261121T154543",
+ "place_id": "outpost-m13-m65",
+ "name": "the jetty raised 74 so its deck meets the bank's edge and the boarding plank's foot",
+ "at": "2026-11-21T15:45:43Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LANDINGJETTY",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -101530.0,
+     -527750.0,
+     26.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101530.0,
+     -527750.0,
+     100.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-21T15:45:43Z"
+  }
+ ]
+}

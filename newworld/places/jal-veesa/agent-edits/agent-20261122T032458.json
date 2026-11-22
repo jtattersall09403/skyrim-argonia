@@ -1,0 +1,554 @@
+{
+ "save_id": "agent-20261122T032458",
+ "place_id": "jal-veesa",
+ "name": "the cooling egg-pool: eggs in the Hist's sap pool and three nests on its rim",
+ "at": "2026-11-22T03:24:58Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK005PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -55074.0,
+     -505884.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.50295
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK006PLACE",
+    "base": "King of the Murkmire.esp:1655ED",
+    "kind": "static",
+    "pos": [
+     -55110.0,
+     -506093.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.23402
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK007PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -55047.0,
+     -506067.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.27089
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK008PLACE",
+    "base": "King of the Murkmire.esp:1655EB",
+    "kind": "static",
+    "pos": [
+     -54961.0,
+     -506031.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.84489
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK009PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -54950.0,
+     -505810.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     6.21337
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK010PLACE",
+    "base": "King of the Murkmire.esp:1655ED",
+    "kind": "static",
+    "pos": [
+     -55199.0,
+     -505908.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.05433
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK011PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -55018.0,
+     -505787.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.68781
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK012PLACE",
+    "base": "King of the Murkmire.esp:1655EB",
+    "kind": "static",
+    "pos": [
+     -55006.0,
+     -505836.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.29671
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK013PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -55081.0,
+     -505946.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.36332
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK014PLACE",
+    "base": "King of the Murkmire.esp:1655ED",
+    "kind": "static",
+    "pos": [
+     -55174.0,
+     -505961.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.28835
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK015PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -55095.0,
+     -505771.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.09636
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK016PLACE",
+    "base": "King of the Murkmire.esp:1655EB",
+    "kind": "static",
+    "pos": [
+     -54978.0,
+     -505756.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.05236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK017PLACE",
+    "base": "King of the Murkmire.esp:1655EF",
+    "kind": "static",
+    "pos": [
+     -54923.0,
+     -505957.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.31613
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 13,
+   "stroke": 13,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK018PLACE",
+    "base": "King of the Murkmire.esp:1655ED",
+    "kind": "static",
+    "pos": [
+     -54876.0,
+     -505989.0,
+     504.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.55531
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the cooling egg-pool of the record (faith: 'its egg-pool is cooling'; mn02, the Weeltul scene): a town's clutch of Argonian eggs lying half-sunk in the Hist's sap pool, as Seekhat Yol's egg-tenders keep theirs (King of the Murkmire's ArgonianEgg kit)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 14,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK019PLACE",
+    "base": "King of the Murkmire.esp:1655F6",
+    "kind": "static",
+    "pos": [
+     -54832.0,
+     -505747.0,
+     513.67
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.69813
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a tended nest of the egg-pool on the sap pool's rim, eggs in it, as Seekhat Yol's hatchery sets its nests (ArgonianEggNest01 with its eggs)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 15,
+   "stroke": 15,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK020PLACE",
+    "base": "King of the Murkmire.esp:1655F6",
+    "kind": "static",
+    "pos": [
+     -55318.0,
+     -505833.0,
+     524.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.79253
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a tended nest of the egg-pool on the sap pool's rim, eggs in it, as Seekhat Yol's hatchery sets its nests (ArgonianEggNest01 with its eggs)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 16,
+   "at": "2026-11-22T03:24:58Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK021PLACE",
+    "base": "King of the Murkmire.esp:1655F6",
+    "kind": "static",
+    "pos": [
+     -54976.0,
+     -506205.0,
+     517.16
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.97419
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a tended nest of the egg-pool on the sap pool's rim, eggs in it, as Seekhat Yol's hatchery sets its nests (ArgonianEggNest01 with its eggs)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 17,
+   "stroke": 17,
+   "at": "2026-11-22T03:24:58Z"
+  }
+ ]
+}
