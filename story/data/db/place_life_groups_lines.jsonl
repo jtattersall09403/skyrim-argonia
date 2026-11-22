@@ -1,5 +1,4 @@
 {"place_id":"place.dunmer-north.riverwalk","groups_ord":0,"ord":0,"value":"Calls the toll from the spit and writes each boat on a slate, one column for Thorn and one for Hissmir."}
-{"place_id":"place.dunmer-north.riverwalk","groups_ord":1,"ord":0,"value":"Takes the fares under the stage shelter; no canoe leaves with a passenger who has not eaten."}
 {"place_id":"place.dunmer-north.riverwalk","groups_ord":2,"ord":0,"value":"Airs the reed mattresses in the long house every dry morning."}
 {"place_id":"place.dunmer-north.riverwalk","groups_ord":2,"ord":1,"value":"Gathers herbs on the cove shore and sorts the bundles by smell."}
 {"place_id":"place.dunmer-north.riverwalk","groups_ord":2,"ord":2,"value":"Holds that trodh must be eaten alive."}
@@ -10,7 +9,6 @@
 {"place_id":"place.dunmer-north.riverwalk","groups_ord":4,"ord":1,"value":"Carries the toll box up from the spit at dusk."}
 {"place_id":"place.dunmer-north.the-wamasu-shrine","groups_ord":0,"ord":0,"value":"Keeps the shelf this wet season because it is her village's turn: sweeps the ash off the stone, sets the salt straight and pulls the burnt offerings back from the water."}
 {"place_id":"place.dunmer-north.the-wamasu-shrine","groups_ord":0,"ord":1,"value":"Leaves at dusk for Rimfield, the nearest of the villages, up the slope above the pond."}
-{"place_id":"place.hist-heartland.greenspring","groups_ord":0,"ord":0,"value":"Tends the Hist and clears the fallen leaves from its root each dusk."}
 {"place_id":"place.hist-heartland.greenspring","groups_ord":1,"ord":0,"value":"Keeps the tribe's ledger of the goods that go down the road to Helstrom."}
 {"place_id":"place.hist-heartland.greenspring","groups_ord":2,"ord":0,"value":"Holds the spring's ladle on a cord at the stone lip."}
 {"place_id":"place.hist-heartland.greenspring","groups_ord":3,"ord":0,"value":"Sells beds and rope at the village's agreed price."}
@@ -44,21 +42,11 @@
 {"place_id":"place.mercantile-coast.chasepoint","groups_ord":2,"ord":1,"value":"Walks the south shore at low water and drags the wreck timber above the tideline."}
 {"place_id":"place.mercantile-coast.chasepoint","groups_ord":2,"ord":2,"value":"Rope-burned palms and a habit of glancing at the second shed."}
 {"place_id":"place.mercantile-coast.chasepoint","groups_ord":2,"ord":3,"value":"Wears a silver frill clip and mends salvaged net on the rack."}
-{"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":0,"ord":0,"value":"Stands at the bow of a longboat to call the vote when the council writes."}
 {"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":1,"ord":0,"value":"Mends gear on the deck of the south hull and knows which moorings the tariff men do not pass."}
 {"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":2,"ord":0,"value":"Salt-cracked heels and a bunk below the foredeck."}
 {"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":2,"ord":1,"value":"Hauls cargo from the anchorage to the lighter's hold."}
 {"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":2,"ord":2,"value":"Coils rope on the lighter's deck and drinks Fish-Eye Rye with the nostrils plugged."}
 {"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":2,"ord":3,"value":"Bails the lighter between runs and keeps a jaw beetle in a box for the fights at Archon."}
-{"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":3,"ord":0,"value":"Has untaxed goods to sell off the tradeship and bunks to let below."}
-{"place_id":"place.mercantile-coast.lighter-flotilla","groups_ord":4,"ord":0,"value":"Casts off the Lilmoth lighter only on the speaker's nod."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":0,"ord":0,"value":"Meets pilgrims where the way meets the water and asks what offering they bring."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":1,"ord":0,"value":"Carries the bucket up from the landing."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":2,"ord":0,"value":"Has the bell that the pilgrims hear from the landing."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":3,"ord":0,"value":"Waist-deep in the shallows through each rite."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":3,"ord":1,"value":"Sleeps on a bedroll in the upper rooms."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":3,"ord":2,"value":"A long watch on the stair above the pilgrim landing."}
-{"place_id":"place.mercantile-coast.teeth-of-sithis","groups_ord":3,"ord":3,"value":"Carries the offerings in and leaves each one where it was laid."}
 {"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","groups_ord":0,"ord":0,"value":"Cuts a notched tally stick for every load and hands it over as a receipt."}
 {"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","groups_ord":1,"ord":0,"value":"Stands by the totem at the gate."}
 {"place_id":"place.naga-kur-deeps.naga-highway-camp-active-north","groups_ord":1,"ord":1,"value":"Smokes hides over the one fire and keeps the best for trade."}
@@ -74,7 +62,6 @@
 {"place_id":"place.pirate-freeholds.opening-work-camp","groups_ord":2,"ord":4,"value":"Carries the day's water up the slope and leaves the first cup at the shed door."}
 {"place_id":"place.pirate-freeholds.opening-work-camp","groups_ord":3,"ord":0,"value":"A ledger of debts, open on the lap by the fire."}
 {"place_id":"place.pirate-freeholds.opening-work-camp","groups_ord":3,"ord":1,"value":"Walks the yard at dusk and checks each door."}
-{"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":0,"ord":0,"value":"Keeps the offerings at the foot of the Hist filled."}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":1,"ord":0,"value":"Has the guest stores by the door and houses strangers under the elder's roof."}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":2,"ord":0,"value":"Has the trade-house key and trades cut cane and smoked fish at the door."}
 {"place_id":"place.pirate-freeholds.upriver-hist-village","groups_ord":2,"ord":1,"value":"Splits the catch for the smokehouse and turns each fish by hand."}

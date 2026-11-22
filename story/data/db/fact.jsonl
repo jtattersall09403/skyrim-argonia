@@ -259,19 +259,18 @@
 {"id":"fact.column.stayed","says":"Part of the column did not march home."}
 {"id":"fact.column.unpaid","says":"The column's men had not been paid."}
 {"id":"fact.compact.boats","says":"The Compact runs the boats on the rivers and the coast."}
-{"id":"fact.compact.guild","says":"The Reed-Sail Compact is the guild of boat crews, routes and ferries."}
+{"id":"fact.compact.guild","says":"The ferry pilots are the guild of boat crews, routes and ferries."}
 {"id":"fact.compact.monopoly","says":"The Compact holds its monopoly by stoppage."}
-{"id":"fact.compact.salt-teeth","says":"The Salt-Teeth are pirates who sail inside the Compact."}
 {"id":"fact.compact.shares","says":"The Compact fixes each crew's share of a route."}
 {"id":"fact.compact.two-weeks","says":"A council that tried to license the cargo boats at Lilmoth met a two-week stoppage."}
 {"id":"fact.conclave.consent","says":"The Conclave sees that each tree is asked for its consent."}
 {"id":"fact.conclave.keep-trees","says":"The Conclave's minders keep the trees."}
 {"id":"fact.conclave.sends-minders","says":"The Conclave sends minders out to the villages."}
-{"id":"fact.conclave.stewards","says":"The Many-Root Conclave is an order of Hist stewards."}
+{"id":"fact.conclave.stewards","says":"The tree-tenders are an order of Hist stewards."}
 {"id":"fact.cutcircle.helstrom","says":"The Cut Circle lies within a day of Helstrom."}
 {"id":"fact.cutcircle.piles","says":"One walk on piles leads in to the Cut Circle from the land."}
 {"id":"fact.cutcircle.stilt-hall","says":"The Cut Circle is a long stilt hall over still water at a lagoon's edge."}
-{"id":"fact.cutcircle.unbound-root","says":"The Unbound Root preaches at the Cut Circle in the open."}
+{"id":"fact.cutcircle.unbound","says":"The Unbound preaches at the Cut Circle in the open."}
 {"id":"fact.cyrodilic-collections.digs","says":"The Cyrodilic Collections digs up Argonian relics."}
 {"id":"fact.cyrodilic-collections.museum","says":"The Collections has not built its museum of Argonian history."}
 {"id":"fact.cyrodilic-collections.return","says":"The Collections offers to return the relics to Black Marsh."}
@@ -359,7 +358,7 @@
 {"id":"fact.greenspring.why-pressures-1","claim":"Salt is reaching the water from upstream.","source_field":"why.pressures","kind":"history","carrier_built_uid":"npc-spring-keeper","carrier_built_type":"npc","place_id":"place.hist-heartland.greenspring","ord":12}
 {"id":"fact.greenspring.why-pressures-2","claim":"The Hist has begun to sicken.","source_field":"why.pressures","kind":"feature","place_id":"place.hist-heartland.greenspring","ord":13,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.hist-heartland.greenspring.tree-minder"}
 {"id":"fact.greenspring.why-pressures-3","claim":"The village blames the salt works for the salt in the water.","source_field":"why.pressures","kind":"history","carrier_built_uid":"npc-root-herald","carrier_built_type":"npc","place_id":"place.hist-heartland.greenspring","ord":14}
-{"id":"fact.greenspring.why-pressures-4","claim":"Traffic for Helstrom brings cult couriers, tappers and the Veiled Reed's factors.","source_field":"why.pressures","kind":"activity","place_id":"place.hist-heartland.greenspring","ord":15,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.helstrom"}
+{"id":"fact.greenspring.why-pressures-4","claim":"Traffic for Helstrom brings cult couriers, tappers and the Toh-Reel-Ka's factors.","source_field":"why.pressures","kind":"activity","place_id":"place.hist-heartland.greenspring","ord":15,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.helstrom"}
 {"id":"fact.greenspring.why-siteAdvantages-1","claim":"Clean water rises from a stone lip on firm ground.","source_field":"why.siteAdvantages","kind":"feature","carrier_built_uid":"sp-ring","carrier_built_type":"piece-set","place_id":"place.hist-heartland.greenspring","ord":7}
 {"id":"fact.greenspring.why-siteAdvantages-2","claim":"The spring is a short walk from the road and from the river landing.","source_field":"why.siteAdvantages","kind":"feature","carrier_built_uid":"ld-","carrier_built_type":"piece-set","place_id":"place.hist-heartland.greenspring","ord":8}
 {"id":"fact.greenspring.why-wouldChangeIf-1","claim":"If the spring soured, the village would have to move to find a new source of fresh water.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.hist-heartland.greenspring","ord":34,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.hist-heartland.greenspring.spring-keeper"}
@@ -368,7 +367,7 @@
 {"id":"fact.helstrom.grove","says":"Helstrom is a city grown into a Hist grove."}
 {"id":"fact.helstrom.never-taken","says":"The Empire chose not to besiege Helstrom. No army has ever taken it."}
 {"id":"fact.helstrom.post-helstrom-convoy-dock","claim":"A dock factor keeps the convoy dock.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.convoy-dock","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":7,"provision":"promise.helstrom.post-helstrom-convoy-dock"}
-{"id":"fact.helstrom.post-helstrom-root-hub","claim":"A waykeeper keeps the rootworm station's waiting hall.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.root-hub","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":8,"provision":"promise.helstrom.post-helstrom-root-hub"}
+{"id":"fact.helstrom.post-helstrom-root-hub","claim":"A rootworm-keeper keeps the rootworm station's waiting hall.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.root-hub","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":8,"provision":"promise.helstrom.post-helstrom-root-hub"}
 {"id":"fact.helstrom.provision-boat-corimont-helstrom","claim":"Boats from Corimont tie up at the convoy dock.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.convoy-dock","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":9,"provision":"promise.helstrom.provision-boat-corimont-helstrom"}
 {"id":"fact.helstrom.provision-canon-root-talk-helstrom","claim":"Root-talk is held in the council house.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.root-talk","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":10,"provision":"promise.helstrom.provision-canon-root-talk-helstrom"}
 {"id":"fact.helstrom.provision-helstrom-archive","claim":"The city's accounts are kept in the archive.","source_field":"questProvisions","kind":"history","carrier_built_uid":"socket.helstrom.archive-accounts","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":11,"provision":"promise.helstrom.provision-helstrom-archive"}
@@ -377,7 +376,7 @@
 {"id":"fact.helstrom.provision-helstrom-inner-city","claim":"The inner city is entered through the intermediary's house.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.inner-city","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":14,"provision":"promise.helstrom.provision-helstrom-inner-city"}
 {"id":"fact.helstrom.provision-helstrom-root-archive","claim":"The root archive has a door among the roots in the grove.","source_field":"questProvisions","kind":"feature","carrier_built_uid":"socket.helstrom.root-archive-door","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":15,"provision":"promise.helstrom.provision-helstrom-root-archive"}
 {"id":"fact.helstrom.provision-helstrom-scalded-throne","claim":"The Scalded Throne stands in its hall.","source_field":"questProvisions","kind":"feature","carrier_built_uid":"socket.helstrom.throne-seat","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":16,"provision":"promise.helstrom.provision-helstrom-scalded-throne"}
-{"id":"fact.helstrom.provision-helstrom-veiled-reed-office","claim":"The Veiled Reed keeps an office in the galleries.","source_field":"questProvisions","kind":"history","carrier_built_uid":"socket.helstrom.veiled-reed-office","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":17,"provision":"promise.helstrom.provision-helstrom-veiled-reed-office"}
+{"id":"fact.helstrom.provision-helstrom-toh-reel-ka-office","claim":"the Toh-Reel-Ka keeps an office in the galleries.","source_field":"questProvisions","kind":"history","carrier_built_uid":"socket.helstrom.toh-reel-ka-office","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":17,"provision":"promise.helstrom.provision-helstrom-toh-reel-ka-office"}
 {"id":"fact.helstrom.provision-lq06-anchor","claim":"The map office stands on the market terraces.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.lq06-anchor","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":18,"provision":"promise.helstrom.provision-lq06-anchor"}
 {"id":"fact.helstrom.provision-mq32-epilogue-sockets","claim":"The main quest ends at the throne court, the convoy landing and the grove.","source_field":"questProvisions","kind":"activity","carrier_built_uid":"socket.helstrom.mq32-epilogue-sockets","carrier_built_type":"visual-cue","place_id":"place.hist-heartland.helstrom","ord":19,"provision":"promise.helstrom.provision-mq32-epilogue-sockets"}
 {"id":"fact.helstrom.refuge","says":"The native armies withdrew to Helstrom after the Battle of Argonia."}
@@ -444,9 +443,6 @@
 {"id":"fact.jungle-root-hollow.why-siteAdvantages-1","claim":"The void is dry and root-walled, with one defensible mouth.","source_field":"why.siteAdvantages","kind":"feature","place_id":"place.saxhleel-coast.jungle-root-hollow","ord":6,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.saxhleel-coast.root-transit"}
 {"id":"fact.jungle-root-hollow.why-wouldChangeIf-1","claim":"If it were cleared, the hiring camp's foraging range would double.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.saxhleel-coast.jungle-root-hollow","ord":23,"carrier_queued_type":"quest-beat","carrier_queued_ref":"quest.local.sx08"}
 {"id":"fact.keeper.ladle","says":"The spring-keeper holds the ladle on its cord at the stone lip."}
-{"id":"fact.league-of-open-water.citizenship","says":"The League of Open Water argues over citizenship and property."}
-{"id":"fact.league-of-open-water.hall","says":"The League has its hall in Gideon."}
-{"id":"fact.league-of-open-water.standing","says":"Its members seek civic standing apart from tribe or Hist."}
 {"id":"fact.legion.heirs","says":"The heirs of the garrisons count as Legion too."}
 {"id":"fact.legion.stages","says":"The Legion built the old road stages."}
 {"id":"fact.legion.stayed","says":"The Legion remnant is the garrisons that stayed when the Empire withdrew."}
@@ -574,9 +570,6 @@
 {"id":"fact.lukiul.assimilated","says":"A lukiul is an assimilated Argonian who took on Imperial ways."}
 {"id":"fact.lukiul.deaf","says":"Argonians hatched outside Black Marsh cannot hear the Hist."}
 {"id":"fact.lukiul.slur","says":"Lukiul is a slur that the An-Xileel coined for assimilated Argonians."}
-{"id":"fact.marsh-charter.charter","says":"The Empire's Fighters Guild charter ended with Imperial rule in Black Marsh."}
-{"id":"fact.marsh-charter.hire","says":"The Marsh Charter is a tradition of fighters for hire."}
-{"id":"fact.marsh-charter.opposes","says":"The Marsh Charter opposes accepting a foreign charter again."}
 {"id":"fact.minder.feels-trouble","says":"A minder feels when the eggs or the tribe are in trouble."}
 {"id":"fact.minder.leaves","says":"The tree-minder clears the fallen leaves from the root each dusk."}
 {"id":"fact.minder.reads-signs","says":"A tree-minder tends one Hist and reads its signs and its will."}
@@ -587,63 +580,6 @@
 {"id":"fact.morrowind.border","says":"The border between the provinces is cold and resented on both sides."}
 {"id":"fact.morrowind.mournhold","says":"Argonian armies sacked Mournhold in the Fourth Era."}
 {"id":"fact.morrowind.north","says":"Morrowind is the Dunmer province north of the marsh."}
-{"id":"fact.mq01.camp-burned","claim":"Two nights ago the gang's camp up the estuary burned: a woman with a knotted cord at her wrist killed the courier who walked with the gang and took his satchel, which was Nesh-Deeka's.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.camp-night","claim":"Raiders came off the water in the dark two nights ago and the gang's camp burned; Wuleen-Sei got the gang into the longboat by torchlight and never saw the raiders' faces.","ord":12,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.courier-unclaimed","claim":"Mee-Tuja, the courier killed at the camp, was the Reed's hand, walking with the gang as cover; the Reed claims neither his body nor his name.","ord":18,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.cutting-cut","claim":"The woman's people cut the camp's Hist cutting, a slip of the sacred tree the families' lives come from, from the eggs at its roots, and the eggs died.","ord":7,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.deniable","claim":"The Reed wants me because nobody can claim me: my name is on no roll, and if I am taken, the Reed never knew me; and the woman who spared me is the one the Reed is after.","ord":16,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.guest-pays","claim":"Salts-The-Catch, who keeps a house in Lilmoth, asked the broker for anyone off the ship who saw the camp burn; her guest, Nesh-Deeka, pays for work.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.jar","claim":"Dives-Without-A-Rope carried aboard a jar one of the cutters dropped by the fire, and will not let it go.","ord":11,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.no-name","claim":"No line of the broker's work roll is mine: I owe him nothing, so he cannot hire me out, and he wants me off his ship.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.owing-roll","claim":"Everyone in the ship's hold works off an Owing, months of work owed for a debt or a wrong, and the broker Buys-The-Months holds their months on his work roll.","ord":0,"from_ref":"t0","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.pay","claim":"The Reed puts fifty gold in a new hand's palm when they say yes, and Nesh-Deeka's door here stays open to them.","ord":17,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.port-hand","claim":"Ux-Xeek is the broker's port hand.","ord":4,"from_ref":"t0","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.pulled-aboard","claim":"The gang carried me aboard, hurt, from the bank by the fire at their camp the night it burned, and brought me down the estuary in their longboat to the broker's ship.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.reed","claim":"Nesh-Deeka serves the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh, and wants a hand nobody can claim.","ord":9,"from_ref":"t4","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.reed-answers","claim":"The Veiled Reed answers to the An-Xileel's offices at Stormhold, the state's city in the north-west, not to any tree, village or court, and none of them sees what it does.","ord":15,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.reed-work","claim":"The Veiled Reed watches for cults, smugglers and killers who would harm the state or the trees; it works through houses like Salts-The-Catch's and wears no mark.","ord":14,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.salts-house","claim":"Salts-The-Catch keeps the house below Lilmoth Dock and asks nothing of who comes to it.","ord":13,"from_ref":"t4","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first of its work the Reed has seen.","ord":10,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.spared","claim":"The gang say the woman with the knotted cord looked at me lying by the fire and let me live.","ord":8,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.two-things","claim":"Nesh-Deeka keeps two things from me and says so, and names neither.","ord":19,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.washed-out","claim":"Dives-Without-A-Rope's colour has thinned from years away from Nine Bends, the tree her family answers to.","ord":5,"from_ref":"t0","quest_id":"quest.main.mq01"}
-{"id":"fact.mq03.dream","claim":"Under the sap I spoke of the ship's hold, empty, with roots grown up through its deck in a ring like trees, and a door at the top of its stairs that nobody built, and a dry voice I could not make into words.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.errand","claim":"Nesh-Deeka wants the cutters' jar brought to her from the ship's hold, to read what the cutters wanted.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.hear-tree","claim":"Dives-Without-A-Rope means to lick the jar's sap to hear her own tree, Nine Bends, once before the jar is taken from her.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.jar-kept","claim":"Dives-Without-A-Rope keeps the cutters' jar locked in a lockbox at the far side of the ship's hold, with the key on her.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.jars-brought","claim":"The cutters came off the water with empty jars and filled them from the cut roots.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.long-work","claim":"The sap was drawn fresh at the roots into jars the cutters brought: the cell means to keep what it draws, so it is a long work and not a raid.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.low-reed","claim":"Word has come to Nesh-Deeka that the Hist of Low-Reed Village, east of Lilmoth, has turned its face.","ord":11,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.nobody-touches","claim":"Nobody in the hold will touch Dives-Without-A-Rope's lockbox since the camp.","ord":8,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.salts-door","claim":"Salts-The-Catch keeps the door of the house where Nesh-Deeka waits, and asks nothing of who comes through it.","ord":9,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.sap-fresh","claim":"The sap is fresh, drawn from cut roots, and the stopper and the jar's neck carry the rings of other jars filled beside it.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.spare-picks","claim":"The lockpicks on the hold's floor by the lockbox are Ux-Xeek's spares for the lighters' padlocks.","ord":10,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.taster","claim":"Sap shows a taster visions, and shows a stranger something different; Nesh-Deeka wants the player to taste it while she writes.","ord":5,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq04.camp-jars","claim":"Two men of the cell keep the jars of the tree's sap at the roots of a giant tree in the north reeds, past the leech water.","ord":6,"from_ref":"t6","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-cord","claim":"The two men with the jars wear the knotted cord at the wrist, as the woman who burned the gang's camp did.","ord":7,"from_ref":"t1","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-known","claim":"The cell that burned the gang's camp cut the cutting's roots and drew its sap into jars it brought.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut under the stilts and its sap drawn off, and the cut was sealed with black gum made in the village.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds the night the tree shut and went back out.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut; the cut severed the eggs in its pool, and they died.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.village-blames","claim":"The village blames the leeches at the roots, and Pays-Late, who let them in.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq04"}
-{"id":"fact.mq05.basin-lethal","claim":"What walks in the basin round Helstrom dies, and the levy warden by the paved road says so.","ord":1,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.mnemic-egg","claim":"A Hist that dies leaves a Mnemic Egg, a seed of its sap holding all its memories; the Dominion once used one to stop a generation of eggs hatching.","ord":0,"from_ref":"t6","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's tree-minders and Nisswo to hear what a cut Hist looks like, from someone it can deny.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist cut at the root are two things: silence kills no clutch, and the eggs at Low-Reed Village died of the cut.","ord":6,"from_ref":"t1","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.wasps","claim":"Two giant wasps keep the marsh way's far bend.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
-{"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.consent","claim":"No Hist speaks for all the Hist, and one tree's will does not bind another's people.","ord":9,"from_ref":"culture.faction.many-root-conclave#norms","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.founders-stakes","claim":"The founders' grave-stakes show a descent into the roots in a dry year, as a deed done for the tribe.","ord":5,"from_ref":"t2","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.rival-grove","claim":"A grove downstream withered in the founders' time, and its people left.","ord":6,"from_ref":"t1","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.river-fresh","claim":"The river above the fork tastes fresh; the salt is not coming down the river.","ord":0,"from_ref":"t3","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.salt-rises","claim":"The water in the root galleries grows saltier the deeper it is.","ord":2,"from_ref":"t3","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.sap-thin","claim":"The Hist at Greenspring is dropping leaves out of season and its sap runs thin.","ord":8,"from_ref":"t4","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.tool-marks","claim":"The cut is old and bears the marks of bone adzes like the ones on the founders' stakes.","ord":4,"from_ref":"t1","quest_id":"quest.mr.mr01"}
-{"id":"fact.mr01.works-closed","claim":"The salt works upstream closed their landing a year ago and ship nothing down the river.","ord":1,"from_ref":"t5","quest_id":"quest.mr.mr01"}
 {"id":"fact.murkmire.bay","says":"Murkmire is the southern region of Black Marsh, on Oliis Bay."}
 {"id":"fact.murkmire.nagakur","says":"The Naga-Kur rule the inner swamps of Murkmire."}
 {"id":"fact.murkmire.tribes","says":"Murkmire has at least a dozen tribes and no central ruler."}
@@ -692,9 +628,6 @@
 {"id":"fact.netmender.any-crew","says":"Anyone may bring a net to be mended."}
 {"id":"fact.netmender.deck","says":"The net-mender works in the open, where anyone can watch."}
 {"id":"fact.netmender.mends","says":"A net-mender makes torn nets and worn gear sound again."}
-{"id":"fact.night-reed-chapter.guild","says":"The Night-Reed Chapter is the thieves' guild."}
-{"id":"fact.night-reed-chapter.lookout","says":"A new member of the Night-Reed Chapter starts as a lookout."}
-{"id":"fact.night-reed-chapter.native","says":"The Night-Reed Chapter is a native guild that works canals, boats and flooded districts."}
 {"id":"fact.nine-bends.camp-a-day-down","says":"The camp that holds the refuge's clutch is a day downriver of the tree."}
 {"id":"fact.nine-bends.claims-old","says":"The village's claim to the traps and the port's claim to the landing are both old enough to be argued."}
 {"id":"fact.nine-bends.cut-at-landing","says":"One of the cut marks is at the village landing."}
@@ -836,9 +769,6 @@
 {"id":"fact.root-whisper-tribe.collections","says":"The Cyrodilic Collections helped the Root-Whisper tribe rise again."}
 {"id":"fact.root-whisper-tribe.plague","says":"The Root-Whisper's Hist withdrew after a plague."}
 {"id":"fact.root-whisper-tribe.sleeps","says":"The Root-Whisper's tree lies asleep and does not speak."}
-{"id":"fact.rootworm-waykeepers.air","says":"The Waykeepers look after the rootworm routes and their air pockets."}
-{"id":"fact.rootworm-waykeepers.secret","says":"The Waykeepers' routes are secret."}
-{"id":"fact.rootworm-waykeepers.station","says":"A rootworm station stands at Helstrom."}
 {"id":"fact.rose-bone-waystation.contents-loot-l1-1","claim":"A ledger or document at the station holds a lore fragment.","source_field":"contents.loot.l1","kind":"cache","carrier_built_uid":"socket.rose-bone-waystation.container-keeper-papers","carrier_built_type":"container","place_id":"place.imperial-penal-south.rose-bone-waystation","ord":14}
 {"id":"fact.rose-bone-waystation.contents-loot-l2-1","claim":"Grave goods at the station form a loot cache.","source_field":"contents.loot.l2","kind":"cache","carrier_built_uid":"socket.rose-bone-waystation.container-grave-goods","carrier_built_type":"container","place_id":"place.imperial-penal-south.rose-bone-waystation","ord":15}
 {"id":"fact.rose-bone-waystation.playerPurpose-hook-1","claim":"The Rose's families will not release a body without a fee.","source_field":"playerPurpose.hook","kind":"feature","place_id":"place.imperial-penal-south.rose-bone-waystation","ord":17,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.imperial-penal-south.rose-bone-waystation.tag-keeper"}
@@ -865,8 +795,6 @@
 {"id":"fact.rose.not-prison","says":"The families will not call the Rose a prison."}
 {"id":"fact.rose.old-prison","says":"The Rose is the old prison south of Blackrose."}
 {"id":"fact.rose.releases-dead","says":"The Rose releases the dead."}
-{"id":"fact.salt-teeth.pirates","says":"The Salt-Teeth are pirates who sail inside the Compact."}
-{"id":"fact.salt-teeth.raider","says":"A boat with the Compact's name may be a raider's."}
 {"id":"fact.salvage.guarded-stretch","says":"Each family guards its own stretch of shore."}
 {"id":"fact.salvage.hereditary","says":"The families hold hereditary salvage rights."}
 {"id":"fact.salvage.no-foreign-timber","says":"Taking timber from another family's stretch is forbidden."}
@@ -929,9 +857,6 @@
 {"id":"fact.sul-xan.cult","says":"The Sul-Xan are a Naga cult that takes souls."}
 {"id":"fact.sul-xan.fear","says":"Every tribe fears the Sul-Xan."}
 {"id":"fact.sul-xan.masks","says":"The Sul-Xan wear jade death masks and sacrifice outsiders and Argonians."}
-{"id":"fact.sunken-archive.custodians","says":"The Archive works between local custodians and the foreign mages."}
-{"id":"fact.sunken-archive.folk","says":"Argonians learn magic as a folk skill and have no guild."}
-{"id":"fact.sunken-archive.owns","says":"The Sunken Archive is an order of scholars who argue over who owns knowledge."}
 {"id":"fact.synod.artefacts","says":"The Synod has no hall in Argonia but hunts artefacts through buyers."}
 {"id":"fact.synod.guild","says":"The Synod and the College grew from the Mages Guild."}
 {"id":"fact.synod.necromancy","says":"The Synod forbids necromancy."}
@@ -991,22 +916,6 @@
 {"id":"fact.tender.moored","says":"The tenders are moored over the lots."}
 {"id":"fact.tender.never-enters","says":"The tender never enters the water."}
 {"id":"fact.tender.shared","says":"The diver families share the tenders."}
-{"id":"fact.tg01.chapter-way","claim":"The Chapter meets under Lilmoth, down a trapdoor on a ruin standing in the deep water east of Lilmoth.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.desk-door","claim":"Tilts-The-Jug keeps the Chapter's desk inside Soulrest's house.","ord":0,"from_ref":"t0","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.he-runs","claim":"Caught, Keeps-What-Floats runs rather than fights.","ord":4,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.necklace","claim":"Keeps-What-Floats took a necklace of polished blue jaspers from a sleeping Lookout of the Chapter.","ord":2,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.price","claim":"Keeps-What-Floats has no buyer for the necklace and would let it go to a good talker, or for sixty gold.","ord":5,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.strongbox","claim":"Keeps-What-Floats keeps his takings in a locked strongbox by the houses at the water's edge.","ord":3,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.test","claim":"The Chapter wants the keepsake back from the one who took it, with no harm done to him, to see how I work.","ord":1,"from_ref":"t2","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg02.beads-kothringi","claim":"The beads are Kothringi glass, the kind the old cairns hold, no Argonian family's work.","ord":8,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.box","claim":"A locked lockbox of pledged things lies on the floor of the deep water east of Lilmoth: a bee statue, a Neesak charm and a strand of Kothringi Glass Beads.","ord":1,"from_ref":"t1","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.charm-remounted","claim":"The charm sits in a new silver mount the merchant put on it, as no one does to a thing only pledged.","ord":7,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.claim-beads","claim":"Dar-Zeel says the beads are old family work.","ord":5,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.claim-charm","claim":"Okan-Tei says the charm was only pledged and never sold.","ord":4,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.claim-figurine","claim":"Neeta-Haj says the bee statue was made for her clutch.","ord":3,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.clients","claim":"Three of the merchant's clients are on the south bank of the deep water, each claiming one thing in the box.","ord":2,"from_ref":"t3","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.figurine-old","claim":"The statue is worn smooth by many years of handling, older than any clutch of Neeta-Haj's.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.job","claim":"Bent-Spine wants what is in a drowned merchant's lockbox on the floor of the deep water east of Lilmoth, and leaves to me what becomes of it.","ord":0,"from_ref":"t2","quest_id":"quest.tg.tg02"}
 {"id":"fact.the-broke-column.contents-loot-l1-1","claim":"A strongroom holds gear: Legion issue kept in fighting order.","source_field":"contents.loot.l1","kind":"cache","carrier_built_uid":"socket.the-broke-column.container-barrel","carrier_built_type":"container","place_id":"place.imperial-fringe.the-broke-column","ord":27}
 {"id":"fact.the-broke-column.contents-loot-l2-1","claim":"A ledger or document holds a lore fragment: the pay book, with the last entry in it.","source_field":"contents.loot.l2","kind":"cache","carrier_built_uid":"socket.the-broke-column.container-sack","carrier_built_type":"container","place_id":"place.imperial-fringe.the-broke-column","ord":28}
 {"id":"fact.the-broke-column.playerPurpose-hook-1","claim":"The camp holds a track junction off the Gideon road.","source_field":"playerPurpose.hook","kind":"feature","carrier_built_uid":"socket.the-broke-column.sign-track-way","carrier_built_type":"sign","place_id":"place.imperial-fringe.the-broke-column","ord":24}
@@ -1078,29 +987,26 @@
 {"id":"fact.the-wamasu-shrine.why-siteAdvantages-2","claim":"The shrine stands at the highest point reached by the flood.","source_field":"why.siteAdvantages","kind":"feature","place_id":"place.dunmer-north.the-wamasu-shrine","ord":7,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.shadowfen"}
 {"id":"fact.the-wamasu-shrine.why-wouldChangeIf-1","claim":"The shrine would be abandoned in a dry decade.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.dunmer-north.the-wamasu-shrine","ord":30,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.shadowfen"}
 {"id":"fact.the-wamasu-shrine.why-wouldChangeIf-2","claim":"The shrine would be set up again after the next bad flood.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.dunmer-north.the-wamasu-shrine","ord":31,"carrier_queued_type":"npc-topic","carrier_queued_ref":"rumour.shadowfen"}
-{"id":"fact.thorn-ash-reed-accord.floor","says":"The Accord has a magistracy, a militia hall and a counting floor."}
-{"id":"fact.thorn-ash-reed-accord.memory","says":"The Accord also argues over what is remembered of the border."}
-{"id":"fact.thorn-ash-reed-accord.title","says":"The Accord argues over title to the saltrice fields."}
-{"id":"fact.thorn.accord","says":"The Thorn Ash-Reed Accord argues over who holds title to the saltrice fields."}
+{"id":"fact.thorn.accord","says":"The Thorn's council argues over who holds title to the saltrice fields."}
 {"id":"fact.thorn.border-city","says":"Thorn is the northern border city of the saltrice fields."}
 {"id":"fact.thorn.dres-raid","says":"House Dres once raided Thorn for slaves and profited from its rice."}
 {"id":"fact.thorn.tear-road","says":"The Tear road runs from Thorn into Morrowind."}
+{"id":"fact.toh-reel-ka.covert","says":"the Toh-Reel-Ka is the covert office of the An-Xileel."}
+{"id":"fact.toh-reel-ka.factors","says":"the Toh-Reel-Ka's factors travel the interior as its agents."}
+{"id":"fact.toh-reel-ka.guards","says":"the Toh-Reel-Ka's agents guard the province against its enemies by secrecy and coercion."}
 {"id":"fact.toll.levy","says":"The toll is a levy on each boat, written down and paid at the toll post."}
 {"id":"fact.toll.pilgrim-water","says":"The toll is charged on boats entering the pilgrim water."}
 {"id":"fact.toll.slate","says":"Each boat is written on a slate with one column for Thorn and one for Hissmir."}
 {"id":"fact.toll.two-claimants","says":"Thorn and Hissmir each claim the toll."}
 {"id":"fact.travellers.stop","says":"Travellers bound for Helstrom stop at Greenspring for water and a bed."}
-{"id":"fact.umbriel-witness-society.archive","says":"The Society has its archive in Lilmoth."}
-{"id":"fact.umbriel-witness-society.memorial","says":"Some of its people want a memorial place that is not disturbed."}
-{"id":"fact.umbriel-witness-society.remembered","says":"The Society argues over how 4E 48 should be remembered."}
 {"id":"fact.umbriel.flying","says":"Umbriel is a flying city."}
 {"id":"fact.umbriel.lilmoth","says":"Umbriel destroyed Lilmoth in 4E 48."}
 {"id":"fact.umbriel.south","says":"Umbriel killed much of the south of Black Marsh."}
-{"id":"fact.unbound-root-cutting.piece","says":"A cutting is a piece taken from a Hist and planted away from the tree."}
-{"id":"fact.unbound-root-cutting.takes","says":"The Unbound Root takes cuttings from a Hist."}
-{"id":"fact.unbound-root.above","says":"The Unbound Root puts the Hist above every law."}
-{"id":"fact.unbound-root.mixed","says":"Some of the Unbound Root are victims of state abuse and some are fanatics."}
-{"id":"fact.unbound-root.sever","says":"The Unbound Root says real change needs a way to sever the bond."}
+{"id":"fact.unbound-cutting.piece","says":"A cutting is a piece taken from a Hist and planted away from the tree."}
+{"id":"fact.unbound-cutting.takes","says":"The Unbound takes cuttings from a Hist."}
+{"id":"fact.unbound.above","says":"The Unbound puts the Hist above every law."}
+{"id":"fact.unbound.mixed","says":"Some of the Unbound are victims of state abuse and some are fanatics."}
+{"id":"fact.unbound.sever","says":"The Unbound says real change needs a way to sever the bond."}
 {"id":"fact.upriver-hist-village.contents-loot-l1-1","claim":"The villagers give provisions to a stranger who brings news.","source_field":"contents.loot.l1","kind":"cache","carrier_built_uid":"socket.upriver-hist-village.container-elder-provisions","carrier_built_type":"container","place_id":"place.pirate-freeholds.upriver-hist-village","ord":21}
 {"id":"fact.upriver-hist-village.playerPurpose-hook-1","claim":"The tree stands nine bends upriver. Its minder says it has begun to go quiet.","source_field":"playerPurpose.hook","kind":"history","carrier_built_uid":"socket.upriver-hist-village.npc-tree-minder","carrier_built_type":"npc","place_id":"place.pirate-freeholds.upriver-hist-village","ord":19}
 {"id":"fact.upriver-hist-village.questHooks-opportunity-1","claim":"The tree is a day upriver from the camp where the families' clutch is kept.","source_field":"questHooks.opportunity","kind":"activity","place_id":"place.pirate-freeholds.upriver-hist-village","ord":20,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder"}
@@ -1132,9 +1038,6 @@
 {"id":"fact.upriver-hist-village.why-siteAdvantages-2","claim":"Nine bends of river lie between the village and the port.","source_field":"why.siteAdvantages","kind":"feature","place_id":"place.pirate-freeholds.upriver-hist-village","ord":12,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder"}
 {"id":"fact.upriver-hist-village.why-wouldChangeIf-1","claim":"If the tree withdraws, there is no reason left to keep the village nine bends from the work.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.pirate-freeholds.upriver-hist-village","ord":29,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder"}
 {"id":"fact.upriver-hist-village.why-wouldChangeIf-2","claim":"If the tree withdraws, the lower channel is left without a Hist that will speak to it.","source_field":"why.wouldChangeIf","kind":"activity","place_id":"place.pirate-freeholds.upriver-hist-village","ord":30,"carrier_queued_type":"npc-topic","carrier_queued_ref":"npc.pirate-freeholds.upriver-hist-village.npc-opening-upriver-elder"}
-{"id":"fact.veiled-reed.covert","says":"The Veiled Reed is the covert office of the An-Xileel."}
-{"id":"fact.veiled-reed.factors","says":"The Veiled Reed's factors travel the interior as its agents."}
-{"id":"fact.veiled-reed.guards","says":"The Veiled Reed's agents guard the province against its enemies by secrecy and coercion."}
 {"id":"fact.voriplasm-vault.contents-loot-l1-1","claim":"A hidden cache holds a unique item: whatever was worth sealing in with it.","source_field":"contents.loot.l1","kind":"cache","place_id":"place.imperial-penal-south.voriplasm-vault","ord":13,"carrier_queued_type":"quest-beat","carrier_queued_ref":"quest.local.lr52"}
 {"id":"fact.voriplasm-vault.contents-loot-l2-1","claim":"Workshop stock, as materials, lies in the main part of the vault.","source_field":"contents.loot.l2","kind":"cache","place_id":"place.imperial-penal-south.voriplasm-vault","ord":14,"carrier_queued_type":"quest-beat","carrier_queued_ref":"quest.local.lr52"}
 {"id":"fact.voriplasm-vault.entrance-1","claim":"The vault is entered by a stair-throat.","source_field":"entrance","kind":"feature","carrier_built_uid":"s-1","carrier_built_type":"visual-cue","place_id":"place.imperial-penal-south.voriplasm-vault","ord":15}
