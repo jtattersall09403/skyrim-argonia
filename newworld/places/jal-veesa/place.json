@@ -454,6 +454,10 @@
     {
      "line": "the smithy",
      "by": "dropped: Seekhat Yol's smelter and ore outside its smithy hut; the record has no smith (the hut is a home)"
+    },
+    {
+     "line": "the Hist sick in 4E 201 (scar closed, egg-pool cooling), healed or dead by the main quest's ending",
+     "by": "three states on two enable parents, off at the start (Teel-Fen Weir's way). Sick, the default: the living HistTree01 with its glands dried shut (King of the Murkmire's HistGland02/03Dead twins, opposite of STATE.HEALED), half its flowers, the egg-pool and sap. Healed (mn19 stages 30 and 31, flag.mn.trees-healed, enable jal-veesa.STATE.HEALED / ANWJalVeesaHistHealed): the living glands and every flower. Dead (mn19 stages 40 and 50, flag.mn.trees-parted, enable jal-veesa.STATE.DEAD / ANWJalVeesaHistDead): HistTree01Dead in the living tree's pose, and the eggs, nests, sap pool and flowers gone; the town's people leave by the quest"
     }
    ],
    "gives": [
@@ -718,6 +722,14 @@
      "jal-veesa.LOOK001PLACE"
     ],
     "why": "the rock footing under the Accommodation hut platform's south-west post is set into the source's cliff rock beside it, as rocks lie into each other on that bank; one rock pile seen from the west (2026-11-21)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.0DM6AFASR1VYJAF6383G5ADYFK",
+     "jal-veesa.STATE.DEADHIST"
+    ],
+    "why": "the dead Hist twin stands in the living tree's pose, so the source's walkway runs through its root flare as it runs through the living tree's (accepted above, section and playwalk 2026-11-21)"
    }
   ],
   "sap": {

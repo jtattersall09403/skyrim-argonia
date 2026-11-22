@@ -681,11 +681,26 @@ def door_frame(d: dict, f: dict) -> bool:
     return any(w in words for w in FRAME_WORDS) or not obb_contains(f, d["pos"], FRAME_RING)
 
 
+def never_together(a: dict, b: dict) -> bool:
+    """The pair are two states of one thing on one enable parent, one shown while the parent is enabled and the other
+    while it is not (a living Hist and its dead twin): the game never shows them together, so they may stand in each
+    other."""
+    def parent(r):   # a place row's {ref, flags}, or a build row's enable_parent key with enable_parent_flags beside it
+        ep = r.get("enable_parent")
+        if isinstance(ep, dict):
+            return ep.get("ref"), str(ep.get("flags") or "")
+        return ep, str(r.get("enable_parent_flags") or "")
+    (ra, fa), (rb, fb) = parent(a), parent(b)
+    opp = "SetEnableStateToOppositeOfParent"
+    return bool(ra) and ra == rb and ((opp in fa) != (opp in fb))
+
+
 def _source_had(a: dict, b: dict) -> bool:
     """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
     pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
     moves a cluster as one rigid piece)."""
-    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a) or in_pool(a, b):
+    if rests(a, b) or sap_of(a, b) or sap_of(b, a) or door_frame(a, b) or door_frame(b, a) or in_pool(a, b) \
+            or never_together(a, b):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False
