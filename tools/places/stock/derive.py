@@ -390,7 +390,7 @@ def derive(p: Place) -> dict:
                 if kind in ("weapon", "armour"):
                     for typ in types:
                         slots = ["weapon"] if kind == "weapon" else ["shield"] if typ == "ArmorShield" else ["light", "heavy"]
-                        it = next((g for s in slots if (g := pick.gear(t, s, typ))), None)
+                        it = next((gear for s in slots if (gear := pick.gear(t, s, typ))), None)   # `gear`: a walrus binds in the loop's scope, never `g` (the give)
                         if it:
                             step, prov = provenance(it, kind)
                             cnt = max(1, int(n * step["count"]))
