@@ -297,7 +297,7 @@ export class Tools {
       for (const r of d.refs) { r.pos[0] = rnd(r.pos[0] + dx); r.pos[1] = rnd(r.pos[1] + dy); this.reseat(r); }
     } else if (d.kind === 'lift') {
       const dz = rnd(-(e.clientY - d.y0) * v.rig.dist * 0.0012);
-      for (const r of d.refs) { if (r.seat && r.seat.mode !== 'free' && r.seat.mode !== 'on') r.seat = { ...r.seat, dz: rnd((r.seat.dz || 0) + dz) }; else r.pos[2] = rnd(r.pos[2] + dz); }
+      for (const r of d.refs) this.raise(r, dz);
     } else if (d.kind === 'rotate') {
       let ang = Math.atan2(e.clientY - d.sy, e.clientX - d.sx) - d.a0;
       if (this.opts.snapRot) ang = Math.round(ang / (Math.PI / 12)) * (Math.PI / 12);
@@ -314,6 +314,12 @@ export class Tools {
     }
     this.carry(d.fol);
     this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
+  }
+  // A vertical move of a seated thing is the seat's own offset (dz), in every mode, so the seat keeps it; a thing
+  // with no seat, a free one, an interior's, or one whose support is gone has its height moved directly.
+  raise(r, dz) {
+    const s = r.seat, held = s && s.mode !== 'free' && this.app.ours.space === 'exterior' && (s.mode !== 'on' || this.app.placeRefsById().get(s.on));
+    if (held) r.seat = { ...s, dz: rnd((s.dz || 0) + dz) }; else r.pos[2] = rnd(r.pos[2] + dz);
   }
   reseat(r) {
     if (this.app.ours.space !== 'exterior') return;
@@ -362,7 +368,7 @@ export class Tools {
     for (const r of this.selRefs()) {
       const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);
       after.pos[0] = rnd(after.pos[0] + dx); after.pos[1] = rnd(after.pos[1] + dy);
-      if (dz) { if (after.seat && after.seat.mode !== 'free' && after.seat.mode !== 'on') after.seat.dz = rnd((after.seat.dz || 0) + dz); else after.pos[2] = rnd(after.pos[2] + dz); }
+      if (dz) this.raise(after, dz);
       after.rot = [after.rot?.[0] || 0, after.rot?.[1] || 0, rnd(norm((after.rot?.[2] || 0) + drot), 10000)];
       if (dscale) after.scale = rnd(Math.max(0.1, after.scale * (1 + dscale)), 1000);
       if (after.seat && after.seat.mode !== 'free' && this.app.ours.space === 'exterior') after.pos[2] = rnd(seatZ(this.app.terrain, { ...r, ...after }, this.app.placeRefsById()));

@@ -282,6 +282,11 @@ masts, is named as the list of them). A flight of steps is seated `on` the deck 
 the deck's height; a flight down onto a ship's deck also names the ship as its `carrier`. `steps.kit` in
 `place.json` names the steps bases a flight was taken from out of a deck's own kit (the source having none).
 
+Raising or lowering a seated thing (the lift handle, the Up and Down buttons) changes the seat's own `dz`, in every
+mode (`on`, `ground`, `clear`, `above`, `water`, `stilts`), and the move op records the seat before and after with the
+`pos` z the seat works out; the seat pass then finds it where it was put and moves nothing. A free seat, an
+interior's ref, or a thing `on` a ref that is gone has its z changed directly.
+
 `place.json` also holds: `draft` (the agent's calls: `plan`, `add`, `roles`, `room_names`, `people_from`,
 `accepted_checks`, `accepted`, `accepted_faults`, `ground_cap`, `sap`; and, for drafts awaiting redraft, `anchor`,
 `rot_deg`, `search`, `replace`, `drop`, `keep_patches`; the place skills, `place-system`), `wholesale` (the

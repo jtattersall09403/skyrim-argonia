@@ -91,6 +91,10 @@ CASES2 = {
     "interior_copy": COPY,
     "veg_restore_draft_row": [{"n": 1, "op": "veg.restore", "space": "exterior", "items": [DRAFT_ROW]}],
     "walk_zones": WALK,
+    # raising a thing seated `on` another is its seat's own dz (the pos z is what the seat then works out)
+    "seated_raise": [{"n": 1, "op": "ref.move", "space": "exterior", "id": "fix.03", "call": "fault",
+                      "before": {"pos": [1010, 2050, 51], "rot": [0, 0, 0], "scale": 0.8, "seat": {"mode": "on", "dz": 0.0}},
+                      "after": {"pos": [1010, 2050, 81], "rot": [0, 0, 0], "scale": 0.8, "seat": {"mode": "on", "dz": 30.0}}}],
 }
 CONFLICTS2 = {
     "interior_door_unpaired": ([COPY[0], dict(COPY[1], ref=dict(DOOR_IN, door=dict(DOOR_IN["door"], to_ref="fix.99"))), COPY[2]],

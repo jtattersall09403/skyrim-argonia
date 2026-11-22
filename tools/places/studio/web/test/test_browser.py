@@ -1524,3 +1524,44 @@ def test_29_paint_ground(browser, server):
     save = json.load(urllib.request.urlopen(server + f"/api/place/{pad.ev('studio.place.place_id')}/saves/autosave"))
     assert [o["paint"]["id"] for o in save["ops"] if o["op"] == "paint.add"] == [op["paint"]["id"], op2["paint"]["id"]]
     assert not pad.errors, pad.errors
+
+
+# ---------- a thing seated on another keeps a raise or lower ----------
+def test_23_raise_of_a_seated_door_stays(pad, browser, server):
+    pad.page.click("#rail [data-tool=select]")
+    ids = pad.ev("""(() => { const rs = [...studio.model.spaces.exterior.refs.values()];
+        const d = rs.find((r) => r.kind === 'door'), b = rs.find((r) => r.kind === 'building'); return [d.id, b.id]; })()""")
+    door, house = ids
+    # the door is made to sit `on` the house, as the gang-master's hut door does
+    pad.ev("""([d, h]) => { const r = studio.model.spaces.exterior.refs.get(d), before = { pos: [...r.pos], seat: r.seat };
+        const after = { pos: [...r.pos], seat: { mode: 'on', on: h, dz: 120 } };
+        after.pos[2] = studio.model.spaces.exterior.refs.get(h).pos[2] + 120;
+        studio.push([{ op: 'ref.move', id: d, before, after }]); }""", [door, house])
+    z = lambda: pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door)  # noqa: E731
+    dz = lambda: pad.ev("(id) => studio.model.spaces.exterior.refs.get(id).seat.dz", door)  # noqa: E731
+    z0, dz0 = z(), dz()
+    pos = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", door)
+    look_at(pad, "ours", pos)
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", door)
+    h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=lift]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
+    pad.pen_drag([h, (h[0], h[1] - 60)])
+    pad.page.wait_for_timeout(400)
+    last = pad.ev("studio.log.applied().at(-1)")
+    assert last["op"] == "ref.move" and last["after"]["seat"]["mode"] == "on" and last["before"]["seat"]["dz"] == dz0, last
+    assert last["after"]["seat"]["dz"] > dz0 and last["after"]["pos"][2] > last["before"]["pos"][2], last
+    assert z() > z0 + 5 and abs(z() - (pad.ev("(h) => studio.model.spaces.exterior.refs.get(h).pos[2]", house) + dz())) < 0.01
+    z1, dz1 = z(), dz()
+    pad.ev("studio.refreshSide(studio.ours, { world: false, grass: false })")  # the refresh after letting go
+    assert z() == z1, "the raise stays after the refresh"
+    # the numeric nudge agrees, and undo gives the height back
+    pad.ev("studio.tools.nudge(0, 0, 8)")
+    assert z() == pytest.approx(z1 + 8, abs=0.01)
+    pad.ev("studio.log.undo()")
+    assert z() == z1
+    # Save and reload: the same height
+    pad.page.wait_for_function("document.getElementById('save-state').dataset.state === 'saved'", timeout=15000 * SLOW)
+    other = open_pad(browser, server, LANDSCAPE, choose="Continue the unsaved work")
+    other.page.wait_for_function("([id, v]) => studio.model.spaces.exterior.refs.get(id)?.seat?.dz === v", arg=[door, dz1], timeout=15000 * SLOW)
+    assert abs(other.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]", door) - z1) < 0.01
+    other.page.context.close()
+    pad.ev("studio.log.undo(); studio.log.undo()")
