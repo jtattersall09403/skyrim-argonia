@@ -124,6 +124,14 @@ added here the day they are made, with the date and the issue.
   is the expensive end of the ladder. Ground is repainted or reshaped only where a check, a walk fault or a plain
   visible fault needs it; where the words are only cosmetic, the record, quest or story prose is changed to fit
   what is there (2026-11-22).
+- The world rebuild is never run until the owner explicitly says so: it follows his edits and his save-and-finalise
+  of all the places. Even then it never redoes the province's ground: the ground is good and stays; ground changes
+  made by place building are local patches (2026-11-22).
+- A place is built starting from what its record, people and quests promise, not audited for promises only at the
+  end; what a quest needs of a place (a sick Hist, a dead-Hist ending) is built with the place, with a way for the
+  owner to check it (2026-11-22).
+- No owner capture sets for places: the owner looks in the studio. Reports do not repeat that nothing has been seen
+  in game or that feel is untested (2026-11-22).
 
 ## The game
 
