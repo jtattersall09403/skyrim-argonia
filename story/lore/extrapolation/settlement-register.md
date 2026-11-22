@@ -4,7 +4,7 @@ Packet 4 output, 2026-08-24. Closes gaps **G3.1** (which settlements exist),
 **G2.11** (magnitude), **G3.6** (White Rose Prison), **G3.7** (Fort Swampmoth)
 and feeds **G5.8** (xanmeer state).
 
-Owner decisions of 2026-08-24 ([owner-questions.md](owner-questions.md)) are
+Owner decisions of 2026-08-24 (owner-questions.md) are
 applied as binding. Hist entries come from
 [../topics/hist-placement.md](../topics/hist-placement.md); canon substance from
 [../regions/secondary-settlements.md](../regions/secondary-settlements.md).

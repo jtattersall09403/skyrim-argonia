@@ -1,9 +1,9 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/85-condition-vocabulary.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # The typed condition/action vocabulary
 
-> Module of the quest/narrative master plan (see [README](README.md)).
+> Module of the quest/narrative master plan (see README).
 > Established by decision
-> [0042](../old-decisions/0042-buildout-steers-and-engineering-standards.md);
+> 0042;
 > engineering standard 1 in [engineering-standards.md](../standards/engineering.md).
 
 **This is the only language a quest may gate or change the world in.** Every
@@ -235,7 +235,7 @@ A quest record's optional `startWhen` is any condition above: the first tick aft
 - **Q0** — the glossary/newcomer-topic coverage validator reads §A3 terms.
 - **Q1** — no authored condition may name a predicate absent from §A; no action
   may name a term absent from §B. This is the gate that makes the vocabulary
-  real (quests [80 §58](80-technical-architecture.md)).
+  real (quests 80 §58).
 - **2.11** — `packages/dialogue` evaluates §A and emits §B;
   `packages/narrative` applies the emitted actions and holds the stores,
   and its first test is a headless run of the exemplar quest (standard 5).

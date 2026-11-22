@@ -57,20 +57,17 @@ Findings about the sources:
   grand murder mystery finale. It will need to be grounded in lore and our lore extrapolation". Also 0025 line 20-23:
   "Must also be grounded in popular mystery storyline tropes ... Let's take some simple classic structures that are
   known to 'work' for detective/mystery storylines. We don't need to create completely original stories here."
-- OR 2026-11-13 story explorer (owner-bar earlier row, now dropped from owner-bar): a leaning to "fewer factions",
-  "could probably cut" the League of Open Water. SUPERSEDED by the 2026-11-16 list below, which has no League.
 - nw-05c lines 12-27, 2026-11-16: "We are going to overhaul our factions completely. We will have chainbreakers, the
-  detectives one, thieves guild type one (don't call it Night Reed though as we're already using "reed" in the Veiled
-  Reed, and "night" sounds more like the dark brotherhood), dark brotherhood type one (Shadowscales, secretly making
+  detectives one, thieves guild type one (don't call it Night Reed though as we're already using "reed" in the [main quest's order,
+  now the Toh-Reel-Ka], and "night" sounds more like the dark brotherhood), dark brotherhood type one (Shadowscales, secretly making
   their resurgence after the canon death of the "last" one recently - that was actually just cover), the pirate one,
   an argonian magic/alchemy one with a name in Argonian/jel, and one each for a Dunmer run one based in the north near
-  Morrowind (Thorn?) and an Imperial run one out of Gideon (plus the main quest two, the Veiled Reed and the Unbound,
+  Morrowind (Thorn?) and an Imperial run one out of Gideon (plus the main quest two, [the Toh-Reel-Ka] and the Unbound,
   which are kind of separate, and a non playable one ...). It's fun if they're in conflict with each other in various
   combinations." "How many quests does each faction line have in morrowind/skyrim? our factions should have similar."
   "I would like all the major cities covered across the set of factions (in terms of where they are based/have
   branches)."
-  EFFECT: drops Marsh Charter, Sunken Archive, Many-Root, League, Nisswo, Reed-Sail, Waykeepers, Umbriel Witness,
-  Thorn Ash-Reed, Night-Reed (renamed), Lamp-Bearers (= the detectives).
+  EFFECT: every older line is cut; the thieves are renamed (now the Eelskins) and the detectives are the Lampbearers.
 
 ### A2. Thieves (guild-style, building to a heist)
 - No verbatim "build up to a big heist like Oblivion" in either repo (see section 0). Nearest owner words:
@@ -283,11 +280,10 @@ Held already: escalation ladder and hand-authored rewards (line 77-79); teach-th
 detective who/means/motive/opportunity (130-132); rumours start a small find-the-faction quest; rival-lockout (146-149);
 the pointer to nw-05c. NOT held, as a list of rows to add:
 
-1. The 2026-11-16 faction roster as rulings, with its conflicts: detectives, a thieves' guild not called Night-Reed,
+1. The 2026-11-16 faction roster as rulings, with its conflicts: detectives, a thieves' guild (now the Eelskins),
    Shadowscales (resurgent, the "last one" a cover), pirates, an Argonian magic and alchemy order with a Jel name,
    Dunmer necromancers fronted by a reputable trading house at Thorn, Imperial merchants at Gideon, Chainbreakers, a
-   non-joinable Dunmer house of Owing-profiteers, plus the Reed and the Unbound. All other old lines are out. Fewer-
-   factions/League row was dropped from owner-bar without a replacement saying the League is gone.
+   non-joinable Dunmer house of Owing-profiteers, plus the Toh-Reel-Ka and the Unbound. All other old lines are out.
 2. Size: each line "similar" in quest count to Morrowind's and Skyrim's guild lines (31-39 in Morrowind guilds, about
    15-25 in Skyrim); every major city is home or branch to some faction (nw-05c 14-16, 40-41).
 3. Each faction's plot is a page in the main plot's form with Acts; the old stories and database rows are deleted and
@@ -382,11 +378,10 @@ style-core.md are marked "imported unchanged from ESA @ b581910f").
   and journal rumours (2026-11-16).
 - Quest scripting ceiling: "nothing harder than an average Skyrim quest" (2026-11-06) -> Morrowind-level (2026-11-12) +
   six narrow additions (2026-11-13, #71).
-- Faction set: ESA 32 factions / eight majors (Aug-Oct) -> "fewer factions, cut the League" (2026-11-13) -> the new
+- Faction set: ESA 32 factions / eight majors (Aug-Oct) -> "fewer factions" (2026-11-13) -> the new
   nine-plus-two roster (2026-11-16).
-- Night-Reed (native thieves, heist TG10) -> "thieves guild type one, not Night Reed" (2026-11-16), same heist
-  climax idea.
-- Lamp-Bearers -> the detectives (same line; now with the who/means/motive/opportunity form and the three-way arc).
+- The thieves -> "thieves guild type one" (2026-11-16), now the Eelskins, same heist climax idea.
+- The detectives -> the Lampbearers (same line; now with the who/means/motive/opportunity form and the three-way arc).
 - Pirates: cut as a boat system (ESA 0042) -> a full joinable line with possible sea fights (2026-11-16).
 - Chainbreakers: Owing record-rewriting as mechanism (ESA 0028) -> must be drama not chores (2026-11-13) -> full
   prison-break, safe-house and freed-people service design (2026-11-16).

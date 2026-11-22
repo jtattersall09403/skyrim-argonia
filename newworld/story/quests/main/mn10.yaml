@@ -70,7 +70,7 @@ recordSources:
   lore:
   - story/lore/extrapolation/argonia-4e201-state.md §2.5
   - §11.2
-  - docs/phases/new-worldspace-plan/research/rulers-rename-map.md
+  - story/design/retired-names.json
 centrepiece: INFILTRATE
 actionPlan:
 - skill: Pickpocket
@@ -970,4 +970,4 @@ review:
     ids:
     - topics.topic.mn-ranks
     finding: Toh-Wo glossed Secret-Speaker.
-    answer: 'sourced: main-plot.md Words; rulers-rename-map.md'
+    answer: 'sourced: main-plot.md Words; retired-names.json'

@@ -1,7 +1,7 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/index/README.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # The quest index — why it exists, the taxonomy, the novelty rule
 
-> Module of the quest/narrative master plan (see [../README.md](../README.md)).
+> Module of the quest/narrative master plan (see ../README.md).
 > **Every agent authoring a new quest reads this file first.** The first plan's generated quest views that sat
 > beside it are retired with that plan; the quests to scan are the line's and the place's own records.
 
@@ -18,7 +18,7 @@ row per quest, enough to spot a collision.
 
 It used to be a hand-maintained table, which could not take eight region agents
 at once and which nothing checked. It is now data plus a validator, which is
-what [90-production-sequence.md](../90-production-sequence.md) always intended
+what 90-production-sequence.md always intended
 for production stage Q1.
 
 ## 47b. The shape taxonomy
@@ -26,7 +26,7 @@ for production stage Q1.
 Every quest declares **one primary shape** (first in `shapes`) and up to two
 secondary shapes. The taxonomy is deliberately about *premise*, not verb — the
 verb tags (`COMBAT`, `DIVE`, `HEIST`) already exist in
-[00-overview.md](../00-overview.md) §4 and answer a different question.
+00-overview.md §4 and answer a different question.
 
 | Shape | The situation |
 |---|---|
@@ -84,5 +84,5 @@ Two supporting rules:
   region, and includes at least one `WONDER`.
 
 Validator support is specified in
-[80-technical-architecture.md](../80-technical-architecture.md) §63 and
+80-technical-architecture.md §63 and
 implemented in `tooling/world-generation/worldgen/quests.py`.
