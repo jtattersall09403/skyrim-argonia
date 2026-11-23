@@ -34,7 +34,7 @@ def test_unit_move_reads_as_its_members_moves():
     ops = json.loads((FIX / "unit_move.json").read_text())["ops"]
     unit = ops[-1]
     flat = expand([unit])
-    assert [o["op"] for o in flat] == ["ref.move"] * 3 + ["person.edit", "quest.edit", "walk.edit"]
+    assert [o["op"] for o in flat] == ["ref.move"] * 3 + ["person.edit", "quest.edit", "walk.edit", "path.edit"]
     assert all(o["n"] == unit["n"] and o.get("unit") == "u.house" for o in flat[:3])
     assert [hands._op_row(o)[1] for o in flat[:5]] == ["fix.01", "fix.03", "fix.30", "fix.p1", "q.fix/thing"]
     check_save({"save_id": "s", "place_id": "fixture", "ops": ops}, "fixture")

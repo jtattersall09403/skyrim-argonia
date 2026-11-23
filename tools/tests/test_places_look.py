@@ -272,7 +272,8 @@ def test_commit_writes_strokes_as_agent_edits_and_spares_the_owners_rows(tmp_pat
     with pytest.raises(ValueError):
         verbs.commit("jal-veesa", dict(sess), [], places=places)
     res = verbs.commit("jal-veesa", sess, ["-m", "seat a"], places=places)
-    assert res["left_for_owner"] == [{"stroke": 3, "owner_rows": [c["id"]]}]
+    assert res["left_for_owner"] == [{"stroke": 3, "owner_rows": [c["id"]], "why": "refused: it carries no note it answers"}]
+    assert "REFUSED" in res["warning"]
     after = {r["id"]: r for r in edits.load_place(pdir)["spaces"]["exterior"]["refs"]}
     assert after[a["id"]]["pos"][2] == pytest.approx(a["pos"][2] - 10)
     assert b["id"] not in after or after[b["id"]].get("removed")

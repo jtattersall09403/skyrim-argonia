@@ -160,7 +160,7 @@ def check_op(op: dict) -> None:
             if not isinstance(m, dict) or "id" not in m or set(m.get("before") or {}) != set(m.get("after") or {}) \
                     or not m.get("after") or not set(m["after"]) <= set(UNIT_FIELDS):
                 raise EditError(f"op {op['n']} (unit.move): each member needs id, and before and after naming the same fields of {UNIT_FIELDS}")
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             for m in op.get(key) or []:
                 if not isinstance(m, dict) or table not in m or "before" not in m or m[table].get("id") != m["before"].get("id"):
                     raise EditError(f"op {op['n']} (unit.move): each of {key} needs {table} and before, of the same id")
@@ -334,7 +334,7 @@ def expand(ops: list) -> list:
         keep = {k: op[k] for k in ("n", "at", "call", "note_group", "note", "stroke", "space", "state") if k in op}
         for m in op.get("refs") or []:
             out.append(dict(keep, op="ref.move", id=m["id"], before=m["before"], after=m["after"], unit=op.get("unit")))
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             for m in op.get(key) or []:
                 out.append(dict(keep, op=f"{table}.edit", **{table: m[table]}, before=m["before"]))
     return out
@@ -370,7 +370,7 @@ def _move_unit(files, op) -> None:
         if "door" in m["after"]:
             rows = _space(files, op)
             _link_partner(files, rows[_find(rows, m["id"])], (m["before"]["door"] or {}).get("arrival"))
-    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
         for m in op.get(key) or []:
             _apply_one(files, {"n": op["n"], "op": f"{table}.edit", table: m[table], "before": m["before"]})
 
@@ -687,7 +687,7 @@ def inverse(op: dict) -> dict:
         inv.update(before=op["after"], after=op["before"])
     elif kind == "unit.move":
         inv["refs"] = [dict(m, before=m["after"], after=m["before"]) for m in op["refs"]]
-        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk")):
+        for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
             if key in op:
                 inv[key] = [{table: m["before"], "before": m[table]} for m in op[key]]
     elif kind == "veg.clear":
@@ -741,31 +741,66 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
     return out
 
 
-def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), source=None) -> tuple[dict, list]:
+def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), source=None,
+                     touches: dict | None = None) -> tuple[dict, list]:
     """An agent's draft edits (the look tool's strokes, `look <place> commit`) applied once by the same `apply` as an
     owner's save, but recorded as the agent's: no owner tier on any word, no preference, the save listed under
-    place.json `agent_saves_applied` (never `saves_applied`). A stroke that touches a row the owner's finalised saves
-    touched (owner_ids) is left out whole and returned, so an agent never writes over an owner edit."""
+    place.json `agent_saves_applied` (never `saves_applied`).
+
+    A stroke that touches a row the owner's finalised saves touched (owner_ids) is left out whole and returned, so an
+    agent never writes over an owner edit, except a stroke that answers him: every op of it carries `answers`, the id
+    of a note of the owner's save that touched each such row (his "you should fix" note), or of a lead's decision in
+    this save's own notes (`{id, text, by: "lead"}`), and this save was made after that owner save. `touches`
+    ({row id: [{save, at, notes}]}, `draft.stages.owner_touches`) says which saves touched which rows. An answering
+    stroke applies over his save (its `before` is his `after`) and is listed in place.json `agent_answers`
+    `{save, stroke, answers, note, owner_save, rows}`, which the studio shows him as changed by the agent in answer to
+    that note, each to undo. Any other stroke on an owner's row is returned with why it was refused."""
     check_save(save, place_files.get("place", {}).get("place_id"))
     pl = place_files.get("place", {})
     done = pl.get("agent_saves_applied", [])
     if save["save_id"] in done or save["save_id"] in pl.get("saves_applied", []):
         raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
+    lead = {x["id"]: x["text"] for x in save.get("notes") or [] if x.get("by") == "lead"}
 
     def ids(op):
         return {op.get("id"), (op.get("ref") or {}).get("id")} - {None}
+
+    def answered(g, hit):
+        """(owner save, note words) when every op of the stroke answers a note that covers every row it touches."""
+        ans = {op.get("answers") for op in g}
+        if len(ans) != 1 or None in ans or touches is None:
+            return None, "it carries no note it answers"
+        a_ = ans.pop()
+        if a_ in lead:
+            return "lead", lead[a_]
+        got = None
+        for rid in hit:
+            ok = [t for t in touches.get(rid, []) if a_ in (t.get("notes") or {})
+                  and str(save.get("at") or "") > str(t.get("at") or "")]
+            if not ok:
+                return None, f"note {a_} is not a note of an earlier owner save that touched {rid}"
+            got = ok[-1]
+        return got["save"], got["notes"][a_]
     groups: dict = {}
     for op in save["ops"]:
         groups.setdefault(op.get("stroke", op["n"]), []).append(op)
-    keep, left = [], []
-    for g in groups.values():
+    keep, left, answers = [], [], []
+    for k, g in groups.items():
         hit = sorted(set().union(*(ids(op) for op in g)) & set(owner_ids))
-        if hit:
-            left.append({"stroke": g[0].get("stroke"), "owner_rows": hit})
-        else:
+        if not hit:
             keep += g
+            continue
+        who, words = answered(g, hit)
+        if who is None:
+            left.append({"stroke": g[0].get("stroke"), "owner_rows": hit, "why": f"refused: {words}"})
+            continue
+        keep += g
+        answers.append({"save": save["save_id"], "stroke": g[0].get("stroke", k), "answers": g[0]["answers"],
+                        "note": words, "owner_save": who, "rows": hit})
     out = apply(place_files, keep, source)
     out["place"]["agent_saves_applied"] = done + [save["save_id"]]
+    if answers:
+        out["place"]["agent_answers"] = list(out["place"].get("agent_answers") or []) + answers
     _follow_adds(out["place"], keep)
     return out, left
 

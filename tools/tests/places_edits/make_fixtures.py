@@ -113,7 +113,9 @@ CASES2["unit_move"] = [
                "after": {"pos": [1000, 2300, 50], "door": dict(UDOOR["door"], arrival=[1000, 2400, 50])}}],
      "people": [{"person": dict(P1, routine=[dict(P1["routine"][0], at=dict(P1["routine"][0]["at"], pos=[1400, 1900, 50]))]), "before": P1}],
      "quests": [{"quest": dict(UQ, pos=[1290, 2020, 60]), "before": UQ}],
-     "walks": [{"walk": dict(WALKZ, outline=[[x + 300, y, z] for x, y, z in WALKZ["outline"]]), "before": WALKZ}]},
+     "walks": [{"walk": dict(WALKZ, outline=[[x + 300, y, z] for x, y, z in WALKZ["outline"]]), "before": WALKZ}],
+     # the street ending at its door: the end moves with it, the point before it half as far
+     "paths": [{"path": dict(PLACE["paths"][0], points=[[1300, 1900], [1550, 1900]]), "before": PLACE["paths"][0]}]},
 ]
 CASES2["unit_move"].insert(3, {"n": 3, "op": "walk.add", "space": "exterior", "walk": WALKZ})   # a zone at its steps moves with it
 for i, o in enumerate(CASES2["unit_move"]):

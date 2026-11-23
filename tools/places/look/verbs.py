@@ -96,6 +96,14 @@ def run(d, place: str, sess: dict, verb: str, args: list[str]) -> dict:
                 by[x["fault"]] = by.get(x["fault"], 0) + 1
             res = {"place": place, "space": space, "pieces": len(sc.pieces), "counts": by, "faults": f,
                    "accepted": sc.accepted_faults(), "notes": alt_tex_notes(sc)}
+            if space == "exterior" and getattr(sc, "files", None):   # what stands in a walk (tools/places/ways.py)
+                from tools.places import ways
+                bl = ways.blockers(sc.files, sc.everything(), sc.ground, ways.spots(sc.files),
+                                   road=ways.road_paint(place))
+                res["ways"] = [b for b in bl if not b.get("reason")]
+                res["ways_allowed"] = [b for b in bl if b.get("reason")]
+                if res["ways"]:
+                    by["stands in a walk"] = len(res["ways"])
             if space != "exterior" and not o.get("no-void"):
                 res["openings"] = voids(d, place, sess["strokes"], sc)
                 if res["openings"]:
@@ -888,24 +896,36 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
     """`commit -m "<why>"`: the session's strokes written into the committed place files by the studio's own apply
     (edits.apply_agent_save), as the agent's draft edits: the save kept at <place>/agent-edits/<save_id>.json and
     listed in place.json `agent_saves_applied`; a stroke on a row the owner's finalised saves touched is left out and
-    reported. The session is then emptied (its snapshots too: they name the old files)."""
+    reported. `--answers <note id>` marks every stroke as the answer to that note of the owner's save (his "you should
+    fix ..."), `--lead "<decision>"` to a lead's decision kept in the save's notes: such a stroke may change his rows
+    (edits.apply_agent_save). The session is then emptied (its snapshots too: they name the old files)."""
     from tools.places.look.daemon import save_session
+    args, answers, lead = list(args), None, None
+    for flag in ("--answers", "--lead"):
+        if flag in args:
+            i = args.index(flag)
+            if i + 1 >= len(args):
+                raise ValueError(f"{flag} needs a value")
+            val = args[i + 1]
+            del args[i:i + 2]
+            answers, lead = (val, lead) if flag == "--answers" else (answers, val)
     why = " ".join(a for a in args if a not in ("-m", "--m")).strip()
     if not why:
         raise ValueError('commit needs -m "<why>"')
     if not sess["strokes"]:
         return {"committed": 0, "why": "the session has no strokes"}
-    got = write_agent_save(place, sess["strokes"], why, places, bundles)
+    got = write_agent_save(place, sess["strokes"], why, places, bundles, answers=answers, lead=lead)
     sess["strokes"], sess["snapshots"] = [], {}
     save_session(place, sess)
     return got
 
 
-def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=None, bundles=None) -> dict:
+def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=None, bundles=None,
+                     answers: str | None = None, lead: str | None = None) -> dict:
     """Strokes of ref ops written into the committed place files as one agent's draft-edit save (the path of `look
     commit`, also taken by `units apply`); a stroke on an owner's row is left out and reported."""
     from tools.places import edits
-    from tools.places.draft.stages import owner_rows
+    from tools.places.draft.stages import owner_rows, owner_touches
     from tools.places.look.scene import data_out
     from tools.places.seat import PLACES
     pdir = (places or PLACES) / place
@@ -914,20 +934,29 @@ def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=Non
     ad = pdir / "agent-edits"
     while (ad / f"{sid}.json").exists():
         sid += "b"
+    notes = [{"id": "lead-" + sid, "text": lead, "at": at, "by": "lead"}] if lead else []
+    tag = {"answers": answers or notes[0]["id"]} if (answers or lead) else {}
     ops, n = [], 0
     for k, stroke in enumerate(strokes, 1):
         for op in stroke:
             n += 1
-            ops.append({kk: v for kk, v in op.items() if not kk.startswith("_")} | {"n": n, "stroke": k, "at": at})
+            ops.append({kk: v for kk, v in op.items() if not kk.startswith("_")} | {"n": n, "stroke": k, "at": at} | tag)
     save = {"save_id": sid, "place_id": place, "name": why, "at": at, "by": "agent", "final": False, "ops": ops}
+    if notes:
+        save["notes"] = notes
     files = edits.load_place(pdir)
     out, left = edits.apply_agent_save(files, save, owner_rows(pdir),
-                                       edits.bundle_source(bundles or (data_out() / "bundles")))
+                                       edits.bundle_source(bundles or (data_out() / "bundles")), owner_touches(pdir))
     edits.write_place(pdir, out)
     ad.mkdir(exist_ok=True)
     (ad / f"{sid}.json").write_text(json.dumps(save, indent=1) + "\n")
-    return {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
-            "left_for_owner": left}
+    got = {"save": str(ad / f"{sid}.json"), "ops": n, "strokes": len({op["stroke"] for op in ops}),
+           "left_for_owner": left,
+           "answered": [a for a in (out["place"].get("agent_answers") or []) if a["save"] == sid]}
+    if left:
+        got["warning"] = (f"REFUSED: {len(left)} stroke(s) touch the owner's rows and answer none of his notes "
+                          f"(left out): {[x['why'] + ' ' + ','.join(x['owner_rows']) for x in left]}")
+    return got
 
 
 def release(place: str, args: list[str], places=None) -> dict:

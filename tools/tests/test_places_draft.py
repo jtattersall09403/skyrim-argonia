@@ -342,6 +342,8 @@ def test_fill_to_record_takes_guards_out_and_fills_the_open_beds():
     beds = {p["bed"]["ref"] for p in folk}
     assert len(added) == 3 and "b4" not in beds and {"b0", "b1", "b3"} <= beds
     assert short == 2 and all(p["routine"] for p in folk if p["id"] in added)
+    # with no centre, the town spot is a link to a bed, never a copy of its position (a moved bed takes it along)
+    assert all(p["work"].get("ref") == "b0" and "pos" not in p["work"] for p in folk if p["id"] in added), [p.get("work") for p in folk]
     # the record now holds fewer: residents go, last first, never the cast
     cast = added[0]
     gone, _, _ = P.fill_to_record("fx", folk, ext, bases, 2, keep_free={"b4"}, keep={cast})

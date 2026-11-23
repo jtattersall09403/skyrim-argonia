@@ -913,8 +913,19 @@ def check_streets(ctx) -> list[str]:
     ctx["streets"] = {"street_points": sum(len(walk.samples(p["points"])) for p in paths), "street_off": len(st),
                       "patrol_points": sum(len((p.get("patrol") or {}).get("points") or []) for p in folk),
                       "patrol_off": len(pa)}
+    ways = []
+    if pdir and ctx.get("place_id") and (pdir / "place.json").exists():   # every walk clear of solid things (tools/places/ways.py)
+        from tools.places import ways as W_
+        found = W_.place_blockers(ctx["place_id"], Path(pdir).parent, mesh=W_.WalkableMesh(W))
+        fail, owed, bad = W_.split_owed(ctx["place_id"], found, Path(pdir).parent)
+        for b in owed:      # staged: a blocker owed since the check came in is reported, not failed
+            NOTES.append(f"owed (ways_owed.jsonl): {W_.line(b)}")
+        ways = [W_.line(b) for b in fail] + bad
+        ctx["streets"]["blocked"] = len(fail)
+        ctx["streets"]["owed"] = len(owed)
     return ([f"street {s} point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for s, q in st]
-            + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for who, q in pa])
+            + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network{W.why(q)}" for who, q in pa]
+            + ways)
 
 
 def _across(idx: NavIndex, n, mid, a=None, b=None) -> bool:

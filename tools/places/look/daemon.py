@@ -175,7 +175,11 @@ class Daemon:
                      and self.page_errors.append(f"console: {m.text}"[:300]))
         self.page.on("response", lambda r: r.status >= 400 and self.page_errors.append(f"{r.status}: {r.url}"[:300]))
         self.page.goto(f"http://127.0.0.1:{PORT}/?place={place}&agent=1")
-        self.page.wait_for_function("window.agent !== undefined", timeout=60000)
+        try:
+            self.page.wait_for_function("window.agent !== undefined", timeout=60000)
+        except Exception as e:     # say why the page never came up: its own errors, not only the timeout
+            raise RuntimeError(f"the studio page did not come up on {place} ({type(e).__name__}); its errors: "
+                               f"{self.page_errors[:10] or 'none reported'}") from None
         info = self.page.evaluate("agent.ready()")
         self.place, self.page_strokes, self.space, self.drew = place, [], "exterior", st
         self.timing["load_s"] = round(time.time() - t0, 1)
@@ -281,11 +285,14 @@ def files_stamp(place: str, places=None) -> str:
 
 
 def uncommitted(place: str, places=None) -> bool:
+    """Whether the place files in the working tree differ from the committed ones the pictures draw: its agent
+    edits and its time log (`timelog.jsonl`, written by every verb while a pass is open) are drawn by nothing."""
     import subprocess
     from tools.places.seat import PLACES
     pdir = (places or PLACES) / place
     t = subprocess.run(["git", "-C", str(pdir), "status", "--porcelain", "--", "."], capture_output=True, text=True)
-    return t.returncode == 0 and any(ln and "agent-edits" not in ln for ln in t.stdout.splitlines())
+    return t.returncode == 0 and any(ln and "agent-edits" not in ln and not ln.endswith("timelog.jsonl")
+                                     for ln in t.stdout.splitlines())
 
 
 def why_leave(d, last: float, now: float, root: Path = ROOT) -> str | None:

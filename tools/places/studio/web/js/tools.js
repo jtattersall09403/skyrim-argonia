@@ -336,10 +336,15 @@ export class Tools {
     g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
     const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
     set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
-    // the axis handles point the way east and north lie on the screen
+    // the axis handles lie along the way east and north run on the screen, on whichever side of the middle keeps them
+    // clear of the other handles (an axis drags both ways)
+    const taken = [[0, 0], [0, -R * 1.2], [R, 0], [R * 0.72, R * 0.72]];
     for (const [h, d] of [['ax', [400, 0, 0]], ['ay', [0, 400, 0]]]) {
       const q = v.toScreen([c[0] + d[0], c[1] + d[1], c[2]]), dx = q.x - s.x, dy = q.y - s.y, l = Math.hypot(dx, dy) || 1;
-      set(h, (dx / l) * R * 0.62, (dy / l) * R * 0.62);
+      const k = R * 0.62, opts = [[(dx / l) * k, (dy / l) * k], [(-dx / l) * k, (-dy / l) * k]];
+      const room = (p) => Math.min(...taken.map((t) => Math.hypot(p[0] - t[0], p[1] - t[1])));
+      const at = room(opts[0]) >= room(opts[1]) ? opts[0] : opts[1];
+      set(h, at[0], at[1]); taken.push(at);
     }
     g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
@@ -553,7 +558,23 @@ export class Tools {
       if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
       walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
     }
-    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}) };
+    // a street that ends at one of its doors or on its footprint: its last point moves with it and the one before it
+    // half as far, so the street bends to the door rather than dragging its whole length
+    const paths = [], doors = new Set(u.members.filter((id) => a.placeRefsById().get(id)?.door));
+    for (const w of a.model.paths.values()) {
+      if (S !== 'exterior' || !Array.isArray(w.points) || w.points.length < 2) continue;
+      const pts = w.points.map((q) => [...q]), n = pts.length; let hit = false;
+      const end = (i, j, linked) => {
+        if (!linked && !spotIn(u, pts[i])) return;
+        const m = moved(pts[i]), dx = m[0] - pts[i][0], dy = m[1] - pts[i][1];
+        pts[i] = [rnd(m[0]), rnd(m[1]), ...pts[i].slice(2)];
+        if (n > 2 && !spotIn(u, pts[j])) pts[j] = [rnd(pts[j][0] + dx / 2), rnd(pts[j][1] + dy / 2), ...pts[j].slice(2)];
+        hit = true;
+      };
+      end(0, 1, doors.has(w.from)); end(n - 1, n - 2, doors.has(w.to));
+      if (hit) paths.push({ path: { ...clone(w), points: pts }, before: clone(w) });
+    }
+    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}), ...(paths.length ? { paths } : {}) };
   }
   // A unit moved by the panel's buttons: the same op as a drag.
   moveUnit(u, turn, sh, dz) {

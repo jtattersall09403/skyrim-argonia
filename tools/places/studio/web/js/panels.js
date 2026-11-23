@@ -131,7 +131,7 @@ export class Panels {
   unitCard(u) {
     const a = this.app, T = this.T, w = el('<div class="unit-card"></div>'), refs = a.placeRefsById();
     w.append(el(`<p><strong>${esc(u.name)}</strong>: one structure of ${u.members.length} pieces. Moving, turning or raising it takes every piece with it, `
-      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, and its lights.</p>'));
+      + 'with its doors\' arrivals, the beds and spots of the people who live or work in it, the quest things on it, its lights, and the ends of the streets that lead to its doors, which bend to follow.</p>'));
     w.append(el('<p class="tag">Tap a piece again to select only that piece. Tap away from it to come back to the whole.</p>'));
     w.append(this.whereEl(u.members.map((id) => refs.get(id)).filter(Boolean), 'ours'));
     const list = el('<ul class="members"></ul>');
@@ -613,6 +613,21 @@ export class Panels {
       }
       parts.push(gl);
     }
+    // what the agent changed of your own edits, each in answer to one of your notes (place.json agent_answers)
+    const answers = a.log?.model?.place?.agent_answers || [];
+    if (answers.length) {
+      parts.push(el('<h3>Changed by the agent in answer to your notes</h3>'),
+        el('<p class="tag">Each is a change to something you had placed, made because a note of yours (or the lead\'s decision) asked for it. Select it to look; move it back as you like, and that is your edit.</p>'));
+      const al = el('<ol class="history notes agent-answers"></ol>');
+      for (const x of answers) {
+        const who = x.owner_save === 'lead' ? 'the lead\'s decision' : `your note ${esc(x.answers)}`;
+        const li = el(`<li><span class="what">Changed by the agent in answer to ${who}: "${esc(x.note || '')}"<span class="note">${x.rows.length === 1 ? 'one thing' : `${x.rows.length} things`}</span></span></li>`);
+        const ids = x.rows.filter((id) => a.placeRefsById().has(id));
+        if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; li.append(b); }
+        al.append(li);
+      }
+      parts.push(al);
+    }
     parts.push(el('<h3>Your notes</h3>'), sendBox);
     if (listErr) parts.push(el(`<p>The notes could not be listed: ${esc(listErr.message)}</p>`));
     if (!list.length) parts.push(el('<p class="tag">None yet.</p>'));
@@ -683,6 +698,9 @@ export class Panels {
     let list = [];
     try { list = (await api.saves(pid)) || []; } catch (e) { if (!/404/.test(e.message)) a.toast(`Your saves could not be listed: ${e.message}`, 8000); return null; }
     const nOps = (x) => (Array.isArray(x.ops) ? x.ops.length : x.ops ?? 0);
+    // an emptied autosave (a finalise empties it) still has its revision: this tab's first save goes on from it
+    const auto = (list.saves || list).find((x) => x.save_id === 'autosave');
+    if (auto && !a.revs.autosave) a.revs.autosave = auto.rev || 0;
     list = (list.saves || list).map((x) => ({ ...x, ops: nOps(x) })).filter((x) => x.ops > 0 && !x.final)
       .sort((x, y) => (y.save_id === 'autosave') - (x.save_id === 'autosave') || String(y.at).localeCompare(String(x.at)));
     if (!list.length) return null;

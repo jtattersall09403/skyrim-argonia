@@ -57,7 +57,11 @@ never change this place, and no lesson asks for it to be drafted again.
    the wrong point. Quote the text to yourself; if no text led there, the recipe is silent on it.
 6. **Name the lesson as a class.** State the general mistake and its correction, true for any place: "footprints
    were fitted by their centre point, so long buildings overhang the bank; fit by the whole footprint", never
-   "house 12 was 3 m too far north". Test it: would it have prevented every op in the pattern, and would it be
+   "house 12 was 3 m too far north". A removal, a move or a swap is the owner's remedy, not the lesson: the lesson
+   is what was wrong with the thing where it stood (it stood in a walk, it floated, it read Nordic, it stood apart
+   from the thing it belongs to), and its correction is the rule that keeps that fault from happening (keep walks
+   clear of it, seat it, move its parts as one), never that this kind of thing is deleted, unless the note says the
+   kind never belongs at such a place. Test it: would it have prevented every op in the pattern, and would it be
    right at a place with a different layout?
 7. **Decide where it belongs.**
    - The builder's **judgement** (what to look at, which way to turn, what to keep clear, when to patch land):

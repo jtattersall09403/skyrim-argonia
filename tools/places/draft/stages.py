@@ -707,6 +707,24 @@ def owner_rows(pdir: Path) -> set[str]:
     return ids
 
 
+def owner_touches(pdir: Path) -> dict[str, list[dict]]:
+    """{row id: [{save, at, notes: {note id: words}}]} over the owner's finalised studio saves, in save order: which of
+    his saves touched each row, when, and the notes that save carries (an agent's answering stroke names one)."""
+    out: dict = {}
+    for p in sorted((pdir / "edits").glob("*.json")) if (pdir / "edits").exists() else []:
+        save = json.loads(p.read_text(encoding="utf-8"))
+        if not save.get("final"):
+            continue
+        notes = {x["id"]: x.get("text", "") for x in save.get("notes") or [] if isinstance(x, dict) and x.get("id")}
+        for op in save.get("ops") or []:
+            rid = op.get("id") or (op.get("ref") or {}).get("id")
+            if rid:
+                rows = out.setdefault(rid, [])
+                if not rows or rows[-1]["save"] != save["save_id"]:
+                    rows.append({"save": save["save_id"], "at": save.get("at"), "notes": notes})
+    return out
+
+
 def owner_saves(pdir: Path) -> list[str]:
     """The owner's finalised studio saves of a place (edits/*.json with `final`)."""
     out = []

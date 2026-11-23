@@ -219,7 +219,7 @@ export function applyOp(m, op) {
         applyOp(m, { n: op.n, op: 'ref.move', space: sp, id: u.id, before, after: u.after });
         if ('door' in u.after) linkPartner(m, space(m, sp).refs.get(u.id), u.before.door?.arrival);
       }
-      for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk']])
+      for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk'], ['paths', 'path']])
         for (const u of op[key] || []) applyOp(m, { n: op.n, op: `${table}.edit`, [table]: u[table], before: u.before });
       break;
     }
@@ -282,6 +282,7 @@ export function inverse(op) {
       if (op.people) inv.people = op.people.map((u) => ({ person: clone(u.before), before: clone(u.person) }));
       if (op.quests) inv.quests = op.quests.map((u) => ({ quest: clone(u.before), before: clone(u.quest) }));
       if (op.walks) inv.walks = op.walks.map((u) => ({ walk: clone(u.before), before: clone(u.walk) }));
+      if (op.paths) inv.paths = op.paths.map((u) => ({ path: clone(u.before), before: clone(u.path) }));
       break;
     case 'veg.clear': inv.op = 'veg.restore'; break;
     case 'veg.restore': inv.op = 'veg.clear'; break;
@@ -316,6 +317,7 @@ export function expand(ops) {
     for (const u of op.people || []) out.push({ ...keep, op: 'person.edit', person: u.person, before: u.before });
     for (const u of op.quests || []) out.push({ ...keep, op: 'quest.edit', quest: u.quest, before: u.before });
     for (const u of op.walks || []) out.push({ ...keep, op: 'walk.edit', walk: u.walk, before: u.before });
+    for (const u of op.paths || []) out.push({ ...keep, op: 'path.edit', path: u.path, before: u.before });
   }
   return out;
 }
@@ -446,7 +448,7 @@ export function describe(op, nameOf = (k) => k) {
     case 'ref.add': return `Added ${nameOf(op.ref.base)}`;
     case 'ref.remove': return `Removed ${nameOf(op.before?.base)}`;
     case 'ref.move': return `Moved ${nameOf(op.base || op.id)}`;
-    case 'unit.move': return `Moved the whole of ${op.name || 'a unit'} (${op.refs.length} pieces${(op.people?.length || 0) + (op.quests?.length || 0) ? `, with ${(op.people?.length || 0) + (op.quests?.length || 0)} spots` : ''})`;
+    case 'unit.move': return `Moved the whole of ${op.name || 'a unit'} (${op.refs.length} pieces${(op.people?.length || 0) + (op.quests?.length || 0) ? `, with ${(op.people?.length || 0) + (op.quests?.length || 0)} spots` : ''}${op.paths?.length ? `; the end of ${op.paths.length === 1 ? 'a street' : `${op.paths.length} streets`} moved with it` : ''})`;
     case 'veg.clear': return `Cleared ${op.items.length} plant${op.items.length === 1 ? '' : 's'}`;
     case 'veg.restore': return `Brought back ${op.items.length} plant${op.items.length === 1 ? '' : 's'}`;
     case 'land.patch': return `${{ raise: 'Raised', lower: 'Lowered', level: 'Levelled', smooth: 'Smoothed' }[op.tool?.kind] || 'Changed'} land (${op.verts.length} points)`;

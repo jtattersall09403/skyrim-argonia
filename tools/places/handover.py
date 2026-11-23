@@ -4,7 +4,8 @@ returning: an edit of any kind after the final build and check makes the check o
 
     python -m tools.places handover <place_id>      # exit 1 when the built check is older than the place files,
                                                     # or `stock reach` flags a stock row (material reach,
-                                                    # region, trade kit)
+                                                    # region, trade kit), or a blocker owed in a road or walk
+                                                    # (newworld/places/ways_owed.jsonl) has no reason
 """
 from __future__ import annotations
 
@@ -73,7 +74,10 @@ def main(argv: list[str]) -> int:
     print(reach_line)
     log_ok, log_line = timelog_marked(Path(a.places_dir) / a.place_id)
     print(log_line)
-    return 0 if ok and reach_ok and log_ok else 1
+    from tools.places import ways
+    ways_ok, ways_line = ways.handover_line(a.place_id, Path(a.places_dir))
+    print(ways_line)
+    return 0 if ok and reach_ok and log_ok and ways_ok else 1
 
 
 def timelog_marked(d: Path) -> tuple[bool, str]:

@@ -146,6 +146,12 @@ tests = ["tools/tests/test_newworld_atlas_state.py"]
 globs = ["tools/places/look*", "tools/places/studio/web/js/agent.js"]
 tests = ["tools/tests/test_places_look.py", "tools/tests/test_places_playwalk.py", "tools/tests/test_studio_web.py"]
 
+# The studio's page in a headless browser at the tablet's size (about eleven minutes on a loaded build machine): any
+# change to the page, its scripts, its styles, its dev server and fixture or its browser tests.
+[[rule]]
+globs = ["tools/places/studio/web/*"]
+tests = ["tools/places/studio/web/test/test_browser.py"]
+
 # The consistency checker (decision 0040): every new-world record against every other. It runs when the place
 # records and their sources, the quests, the story pages, the drafts, the faction records or the checker change.
 [[rule]]

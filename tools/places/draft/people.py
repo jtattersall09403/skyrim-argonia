@@ -546,8 +546,10 @@ def fill_to_record(place_id: str, folk: list[dict], ext: list[dict], bases: dict
     owned = {(p.get("bed") or {}).get("ref") for p in folk}
     beds = sorted((r for r in ext if r.get("kind") == "furniture" and interiors.is_bed(bases.get(r.get("base")) or {})
                    and r["id"] not in owned and r["id"] not in keep_free), key=lambda r: r["id"])
-    mid = centre or (beds[0]["pos"][:2] if beds else [0.0, 0.0])
-    town = {"space": "exterior", "pos": [round(mid[0], 1), round(mid[1], 1)], "radius": 1024}
+    # the middle of the town where residents spend the day: the place's centre, else a link to the first open bed (a
+    # moved bed takes the spot with it; never a copy of its position, which a move would leave behind)
+    town = ({"space": "exterior", "pos": [round(centre[0], 1), round(centre[1], 1)], "radius": 1024} if centre
+            else {"space": "exterior", "ref": beds[0]["id"], "radius": 1024} if beds else {"space": "exterior", "radius": 1024})
     taken = {p.get("name") for p in folk}
     n = sum(1 for p in folk if p.get("role") == "resident")
     ids = {p["id"] for p in folk}

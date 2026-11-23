@@ -1,11 +1,42 @@
 ---
 name: place-streets
-description: A place's walking - the source's own walking mesh carried by the build, what each hand change (delete, move, add, land brush) does to it, spurs and flights to what is added, carried walks and patrols, and how to read a streets, doors, navmesh or reach failure. Use when a walk, door arrival or patrol is judged, when a streets, doors or navmesh check fails, and when something added needs a way to it.
+description: A place's walking - the world's road and every walk kept clear, the source's own walking mesh carried by the build, what each hand change (delete, move, add, land brush) does to it, spurs and flights to what is added, carried walks and patrols, and how to read a streets, doors, navmesh or reach failure. Use when a walk, door arrival or patrol is judged, when something stands in a road or a walk, when a streets, doors or navmesh check fails, and when something added needs a way to it.
 ---
 
 # Walks and the walking mesh
 
 Step 6 of the place path ([place-system](../place-system/SKILL.md)).
+
+## Walks first, then everything keeps off them
+
+A place's ways are laid first and kept clear: the world's road through it as the ground paints it, each street,
+path, walkway, boardwalk and gangplank of its own (`paths.jsonl`), and the way from each door's arrival to the
+nearest of them. Everything else (buildings, tents, fires and cooking gear, stalls, furniture, crates, reed and
+wood stacks, rigging, trees, a creature's quest spot, a person's fixed stop) stands off them, across the way's
+walking width and a shoulder, from a step's height to a head's (`tools/places/ways.py`). A thing stands in a way
+only when it is meant to stop traffic, and then it says so: `blocks_way` on the ref ("a toll gate that stops the
+road"), or the path's `blocked_by` {id: reason} ("a barricade the quest clears", "the jetty's mooring posts either
+side of its deck").
+
+- A thing stands in a way where the built walking mesh runs under it: a fence, rail or post the mesh goes round is
+  the walk's edge, a surface the mesh runs on is walked on, a tree blocks with its trunk and roots only, and hanging
+  things, ground pieces, moss, ferns and vines never block. `look <place> probe --all` lists what stands in a way
+  under `ways` (before a build, by the way's width alone), each with the point to look at; the build's `streets`
+  check (and so `draft check`) fails it.
+- The blockers found when the check came in are owed (`newworld/places/ways_owed.jsonl`): reported, not failing,
+  until the place's agent clears each (the row then goes: a row that names no blocker fails until deleted, and no
+  row is added). `handover` passes only with none owed, or each with its reason (`why`).
+- Move a blocker off as the unit it is: a tent with what is in it (its bedrolls, chests, rugs, lights, markers and
+  floor platforms), a camp's fire with its spit, pot, seats and the stall that serves it, a stack with its pieces.
+  Move them by the same shift, onto dry ground level enough for them, out of every other solid thing, as near as
+  it can be to where it stood (or where the owner left it), and keep what the record says of it true (a cook still
+  at her fire, the fire still among the tents); when the words cannot stay true, they follow (the consistency
+  ladder). A world tree or rock in the way is cleared (`clear.jsonl`); never repaint or reshape the road to suit.
+- A walk that a stack, a fire or a tent now fills is laid again round it, over clear ground, never through it; a
+  walk to a door starts at the door's own arrival.
+- A way over a ship's rail, a jetty's end or a stair keeps the walk the source gives it (a jetty laid level with a
+  ship's rail as the source moors it); where a source's own pieces stand at a way's edge (posts either side of a
+  jetty), they are allowed on the path with that reason.
 
 ## The source's mesh is the place's
 
@@ -58,4 +89,5 @@ added thing, an arrival off its deck (put it on the deck), a moved unit whose en
 over pruned ground. A finding seen to be right is accepted (`place-check`).
 
 Enforced by the checks: every door on a path, every arrival clear and on ground or a deck, every walk and patrol
-point on the main walked network (`draft check`; the build's `streets`, `doors`, `navmesh` and `people` checks).
+point on the main walked network, and the road and every walk clear of solid things and spots
+(`draft check`; the build's `streets`, `doors`, `navmesh` and `people` checks).

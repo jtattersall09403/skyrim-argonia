@@ -33,11 +33,11 @@
     "kind": "street",
     "points": [
      [
-      1000,
+      1300,
       1900
      ],
      [
-      1400,
+      1550,
       1900
      ]
     ],
@@ -432,6 +432,42 @@
    "n": 5,
    "name": "the house",
    "op": "unit.move",
+   "paths": [
+    {
+     "before": {
+      "id": "fix.path1",
+      "kind": "street",
+      "points": [
+       [
+        1000,
+        1900
+       ],
+       [
+        1400,
+        1900
+       ]
+      ],
+      "style": "mud",
+      "width": 256
+     },
+     "path": {
+      "id": "fix.path1",
+      "kind": "street",
+      "points": [
+       [
+        1300,
+        1900
+       ],
+       [
+        1550,
+        1900
+       ]
+      ],
+      "style": "mud",
+      "width": 256
+     }
+    }
+   ],
    "people": [
     {
      "before": {

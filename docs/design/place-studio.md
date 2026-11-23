@@ -199,7 +199,8 @@ spaces/<space_id>/refs.jsonl     the place layer's refs, same row shape as a bun
                        in water, free) and src (the source ref it came from, if any). A light is seated `on` its
                        fixture (the lantern, sconce, window or fire within 128 units of it in the source) and
                        stands at its source offset from it. A copied room's lights stand on the bases the source
-                       placed, shadow casters among them (no cap on shadow-casting lights in a room)
+                       placed, shadow casters among them (no cap on shadow-casting lights in a room). `blocks_way`
+                       (a sentence): why the thing stands in the world's road or a walk on purpose (tools/places/ways.py)
 spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>", name}; the refs file holds only our
                        changes to the copy (moved, removed, added). `name` is what the game shows on the room's door
                        and inside it (the cell's name); the stage `names` gives it (Room names, below)
@@ -218,7 +219,11 @@ paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkw
                        then says so); a guard's patrol points lie on it too; `from` and `to`
                        name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
                        draws a person's way between two stops outside by the same rules (round buildings, never
-                       through open water, along these lines where one leads the right way)
+                       through open water, along these lines where one leads the right way). `blocked_by` {ref or spot
+                       id: a sentence}: what stands in this way on purpose (a toll gate, a jetty's own posts). The
+                       world's road (as the ground paints it), each path and the way from each door's arrival to the
+                       nearest path are kept clear of solid things and spots (tools/places/ways.py; the build's
+                       `streets` check fails what stands in one)
 quests.jsonl           where the quests' things at the place stand, one per line: {id: "<quest id>/<ref>", quest,
                        ref, space, pos, rot: [0, 0, heading], drafted?, why?}; `drafted` marks a first spot the
                        draft took from the placement's words, `why` says what it stands by; the one spot of a quest record's placement anchored
@@ -607,7 +612,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
 | `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive,unit}` (the fields it changes), `after:{...}` |
-| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]` |
+| `unit.move` | `unit`, `name`, `refs:[{id, before, after}]` (each member as a `ref.move`'s fields, plus `door` when its arrival turns with the unit), `people?:[{person, before}]`, `quests?:[{quest, before}]`, `walks?:[{walk, before}]`, `paths?:[{path, before}]` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -625,7 +630,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `quest.*` ops are `person.*`'s rules over `quests.jsonl` (keyed by `id`).
 - `unit.move` applies each member as a `ref.move` (its `door`, when given, set as given rather than shifted), then
-  each person, quest and walking-zone row as a `person.edit`, `quest.edit` and `walk.edit`; a door whose arrival changes moves the landing
+  each person, quest, walking-zone and street row as a `person.edit`, `quest.edit`, `walk.edit` and `path.edit`; a door whose arrival changes moves the landing
   (`to_pos`) of every door leading to it by as much, so a move and its inverse give it back exactly (a plain
   `ref.move` of a door does the same with the door's own shift). Its inverse swaps every before and after.
   `edits.expand` (and `expand` in `edits.js`) writes it as those plain ops for whatever reads ops one row at a time:
@@ -678,6 +683,17 @@ takes its note's words. The agent reads each note with exactly the changes it co
 from what to what, and where (`change_notes.present`): finalise's lessons step (`notes.json`), and
 `python -m tools.places notes --changes`, which lists them for every save not yet finalised. They are read at
 finalise and never before.
+
+**Agent answers.** An agent's strokes (`look commit`, kept in `agent-edits/`) never change a row the owner's
+finalised saves touched, except to answer him: `look commit --answers <note id>` marks every stroke as the answer to a
+note of his save ("you should fix ..."), and `--lead "<decision>"` to a lead's decision kept in the agent save's own
+`notes` as `{id, text, at, by: "lead"}`. Such a stroke applies when every op carries `answers`, the note belongs to
+an owner save that touched each of its rows (or is the save's lead decision), and the agent save was made after his;
+its `before` is his `after`. It is listed in `place.json` `agent_answers` `{save, stroke, answers, note, owner_save,
+rows}`, and the studio's Notes panel shows each as "Changed by the agent in answer to your note g8" with its things
+to select; he moves them back as he likes, which is his edit. Any other stroke on his rows is left out and reported
+as REFUSED. Answers made before his session is saved wait in `agent-edits/pending/` (`after_save: next`) and are
+applied by finalise right after his save.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -835,7 +851,8 @@ and is seated again where it lands; a free piece rises or falls with the ground 
 stays whole; a door's arrival turns with it and the door that leads to it (its room's door) lands as far along;
 the lights and invisible walls of its pieces follow as they follow any piece; and the spots standing in it move
 with it: a person's work place, routine stops and patrol points given as positions, the quest spots on it, and the
-owner's walking zones lying wholly in it. A
+owner's walking zones lying wholly in it. A street that ends at one of its doors (`from` or `to`) or on its footprint keeps its course: its end point moves with
+the unit and the point before it half as far, so it bends to the door; the panel says so. A
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 
@@ -1670,6 +1687,9 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    also writes its taste ops to `place.json` `preferences`), mark the save final, commit the place and the sources
    by path; with content ops, reload the stock tables and commit them (Stock: Finalise). The applied files are kept
    as `after.json` before they are written, so a run stopped while writing writes the same files again.
+   Right after the save, the agent's answers to it are applied (`finalise.apply_answers`): each
+   `agent-edits/pending/<save_id>.json` whose `after_save` is this save or `next`, made against his session before he
+   saved it, by `edits.apply_agent_save` with this save's rows and notes as his; see Agent answers below.
 2. **Build**: against the current world: `worldparts` decides whether the world moved under the place; if so the
    ground is taken again (`extract --ground`, `ground-check`); then seat, build, check, navexport, and the place layer
    onto the New World card (`infra/gpu-box/places_deploy.sh`, which waits out a live stream); `finalise --plan`
