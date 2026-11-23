@@ -13,10 +13,14 @@ static class Dump
 {
     public static int Run(string esp, string worldEsm, string outPath)
     {
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        var lap = 0.0;
+        void Phase(string what) { var t = sw.Elapsed.TotalSeconds; Console.WriteLine($"dump: phase {what} {t - lap:F1} s"); lap = t; }
         var mod = SkyrimMod.CreateFromBinaryOverlay(esp, C.Rel, Survey.NoStrings);
         var world = C.Open(worldEsm);
         var lo = Write.Masters.Select(m => C.Open(m)).Append(world).Append(mod).ToList();
         var cache = lo.ToImmutableLinkCache();
+        Phase("open");
         var me = mod.ModKey;
         var counts = new SortedDictionary<string, int>();
         void Count(string k) => counts[k] = counts.GetValueOrDefault(k) + 1;
@@ -30,6 +34,7 @@ static class Dump
                 if (!l.FormKey.IsNull && l.FormKey != PlayerRef && !cache.TryResolve(l.FormKey, l.Type, out _))
                     if (unresolved.Count < 200) unresolved.Add($"{C.Key(r.FormKey)} -> {C.Key(l.FormKey)} <{l.Type.Name}>");
         }
+        Phase("links of every record");
         var refs = new List<object>();
         var overrides = new List<object>();
         var land = new List<object>();
@@ -71,6 +76,7 @@ static class Dump
             foreach (var c in C.Cells(ws)) Walk(c, "exterior", c.Grid is { } g ? new[] { g.Point.X, g.Point.Y } : null);
         }
         foreach (var c in C.Interiors(mod).Where(c => c.FormKey.ModKey == me)) Walk(c, c.EditorID ?? C.Key(c.FormKey), null);
+        Phase("cells and refs");
 
         var npcs = mod.Npcs.Select(n => new Dictionary<string, object?>
         {
@@ -225,6 +231,7 @@ static class Dump
                 }
                 rentOffer.Add(row);
             }
+        Phase("records");
         C.WriteJson(outPath, new Dictionary<string, object?>
         {
             ["rent_voices"] = rentVoices, ["rent_offer"] = rentOffer,

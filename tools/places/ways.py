@@ -413,6 +413,57 @@ def _reason(text) -> bool:
     return len(str(text or "").split()) >= REASON_WORDS
 
 
+CORRIDOR_CELL = 64.0   # units: the squares a way's reach is marked on
+
+
+def _corridor(line_t, lo, hi, reach: float):
+    """The squares of a way's box whose middle lies within reach (and half a square's diagonal) of its line: a point
+    in any other square is further than reach from the line."""
+    G = CORRIDOR_CELL
+    nx, ny = int((hi[0] - lo[0]) // G) + 1, int((hi[1] - lo[1]) // G) + 1
+    xs, ys = lo[0] + (np.arange(nx) + 0.5) * G, lo[1] + (np.arange(ny) + 0.5) * G
+    centres = np.stack(np.meshgrid(xs, ys, indexing="ij"), -1).reshape(-1, 2)
+    r = reach + G * 0.7072 + 1.0
+    d = line_t.query(centres, distance_upper_bound=r)[0]
+    return (np.asarray(lo, float), (d <= r).reshape(nx, ny))
+
+
+def _in_corridor(near, C) -> np.ndarray:
+    lo, mask = near
+    i = np.clip(((C[:, 0] - lo[0]) // CORRIDOR_CELL).astype(int), 0, mask.shape[0] - 1)
+    j = np.clip(((C[:, 1] - lo[1]) // CORRIDOR_CELL).astype(int), 0, mask.shape[1] - 1)
+    return mask[i, j]
+
+
+def cloud(p: dict):
+    """A piece's surface cloud in the world, as shape.Posed(p).P makes it, without measuring its grids (most pieces
+    are only tested point by point); None when its model cannot be read."""
+    try:
+        M = np.asarray(p["m"], float)
+        mod = shape.model(p.get("model"), p.get("lo"), p.get("hi"))
+        return mod.P.astype(float) @ M[:3, :3].T + M[:3, 3] if len(mod.cols) else np.zeros((0, 3))
+    except Exception:  # a model with no shape is reported by the probe's own rules, not here
+        return None
+
+
+_LOCAL_BOX: dict = {}
+
+
+def plan_box(p: dict, C0: np.ndarray):
+    """A plan box holding every point of the piece's cloud: its model's own box, turned and placed (the model's box
+    read once a run), never smaller than the cloud's."""
+    mod = shape.model(p.get("model"), p.get("lo"), p.get("hi"))
+    k = id(mod)
+    if k not in _LOCAL_BOX:
+        P = mod.P
+        _LOCAL_BOX[k] = (mod, P.min(0).astype(float), P.max(0).astype(float))
+    _, lo, hi = _LOCAL_BOX[k]
+    M = np.asarray(p["m"], float)
+    corners = np.array([[x, y, z] for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])])
+    W = corners @ M[:3, :3].T + M[:3, 3]
+    return W[:, :2].min(0) - 1.0, W[:, :2].max(0) + 1.0
+
+
 def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), mesh=None,
              road: RoadPaint | None = None) -> list[dict]:
     """Every solid thing or spot standing in a way: [{way, id, edid, kind, at: [x, y, z], from_middle, reason?}],
@@ -447,8 +498,9 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
             dk = [P for P in (shaped(p) for p, (x, y) in decks
                               if y[0] >= lo[0] and x[0] <= hi[0] and y[1] >= lo[1] and x[1] <= hi[1]) if P is not None]
             Z = levels(S, ground, dk, given)
+        line_t = cKDTree(np.asarray([q for _, q in _samples(w["points"], LINE_STEP)], float))
         W.append({"w": w, "L": L, "half": half, "lo": lo, "hi": hi, "S": S, "Z": Z, "Stree": cKDTree(S[:, :2]),
-                  "line": cKDTree(np.asarray([q for _, q in _samples(w["points"], LINE_STEP)], float))})
+                  "line": line_t, "near": _corridor(line_t, lo, hi, half + LINE_STEP)})
         for s_ in spots:
             x, y = s_["pos"][:2]
             dd = float(_dist_to_line(np.asarray([[x, y]], float), L)[0])
@@ -469,10 +521,15 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
             math.dist(((a_[0] + b_[0]) / 2, (a_[1] + b_[1]) / 2), anchor) <= reach + max(b_[0] - a_[0], b_[1] - a_[1])
         if not mine and not roadside:
             continue
-        P = shaped(p)
-        if P is None:
+        C0 = cloud(p)
+        if C0 is None:
             continue
-        C0 = P.P
+        row = rows.get(p["id"]) or {}
+        P = None
+        if mine and kind_of(p) in LEVEL_CLASSES and not row.get("blocks_way"):   # its walked grid is read
+            P = shaped(p)
+            if P is None:
+                continue
         top = TRUNK if kind_of(p) == "tree" else HEAD
         row = rows.get(p["id"]) or {}
         for v in mine:
@@ -484,6 +541,8 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
                     continue
             lo, hi, half = v["lo"], v["hi"], v["half"]
             C = C0[(C0[:, 0] >= lo[0]) & (C0[:, 0] <= hi[0]) & (C0[:, 1] >= lo[1]) & (C0[:, 1] <= hi[1])]
+            if len(C):
+                C = C[_in_corridor(v["near"], C)]   # only points the line can come within reach of
             if not len(C):
                 continue
             d = v["line"].query(C[:, :2], distance_upper_bound=half + LINE_STEP)[0]
@@ -505,7 +564,7 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
             found.append({"way": w["id"], "id": p["id"], "edid": p.get("edid"), "kind": p.get("kind"),
                           "at": [round(float(x)) for x in C[i]], "from_middle": round(float(d[i])),
                           "world": bool(p.get("world")), "reason": why if _reason(why) else None})
-        if roadside and len(C0) and road.any_near(C0[:, :2].min(0), C0[:, :2].max(0)):   # the world's road as painted: kept clear
+        if roadside and len(C0) and road.any_near(*plan_box(p, C0)):   # the world's road as painted: kept clear
             C = C0[road.on(C0[:, :2])]
             C = C[np.hypot(C[:, 0] - anchor[0], C[:, 1] - anchor[1]) <= reach] if len(C) else C
             if len(C):

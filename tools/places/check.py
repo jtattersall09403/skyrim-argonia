@@ -260,7 +260,25 @@ def components(navs: dict[str, Nav], door_pairs: dict[str, str], wade=None) -> d
     """Connected components over every triangle: shared edges, edge links, and door triangles of paired doors. Water
     triangles join as any other, as Skyrim.esm's do (in Tamriel 16,729 water-dry shared edges and 1,670 water-dry
     edge links, measured): actors wade and swim them. `wade` (the water's level over a plan point): what joins without
-    swimming (water deeper than a ford, `walked`, joins nothing), the drafter's test that a deck reaches its bank."""
+    swimming (water deeper than a ford, `walked`, joins nothing), the drafter's test that a deck reaches its bank.
+    Without `wade`, answered once a run for each content of what it reads (the checks ask the same question often)."""
+    if wade is not None:
+        return _components(navs, door_pairs, wade)
+    h = hashlib.sha256(repr(sorted(door_pairs.items())).encode())
+    for fk, n in navs.items():
+        h.update(f"{fk}|{n.fk}|{len(n.tri)}|{n.links}|{n.doors}".encode())
+        h.update(np.ascontiguousarray(n.edge).tobytes() + np.ascontiguousarray(n.flags).tobytes())
+    k = h.hexdigest()
+    if k not in _COMPONENTS:
+        _COMPONENTS.clear()
+        _COMPONENTS[k] = _components(navs, door_pairs, None)
+    return dict(_COMPONENTS[k])
+
+
+_COMPONENTS: dict = {}
+
+
+def _components(navs: dict[str, Nav], door_pairs: dict[str, str], wade=None) -> dict[tuple[str, int], int]:
     parent: dict = {}
 
     def find(x):
