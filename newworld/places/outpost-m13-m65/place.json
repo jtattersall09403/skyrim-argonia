@@ -539,10 +539,6 @@
      "by": "Journey to Baan Malur's stone house (SOMRStonehouse01) with its door frame and a Raven Rock door, south of the cook's fire, set into the slope; its room copied from Baan Malur's own house (BaanDrHutSmall02, cut to the stone house), named Gang-Master's Hut"
     },
     {
-     "line": "a wooden gate on the river bank",
-     "by": "a Legion stockade gate standing alone on the landward road east of the tents, the old road post's"
-    },
-    {
      "line": "the cutters' hide tents",
      "by": "the source's six Imperial hide tents as it pitches them: three small tents of two bedrolls' room, the long tent (once the field hospital) with four bedrolls, the cook's tent with its bed and dresser, and the mess tent with its trestle tables and pelts"
     },
@@ -552,11 +548,7 @@
     },
     {
      "line": "a work barge moored in the pool below the camp",
-     "by": "Black Marsh & Valenwood's Imperial ship, hull, masts and deck lanterns, moored along the east bank at its own waterline, its hold door in the waist; a Raven Rock jetty from the bank and two ship's planks over its rail"
-    },
-    {
-     "line": "the grave-stake (source note)",
-     "by": "a cypress pole driven upright outside the old post's gate"
+     "by": "Black Marsh & Valenwood's Imperial ship, its hull and deck lanterns, moored along the east bank at its own waterline, its hold door in the waist; a Raven Rock jetty from the bank laid level with its rail, as that mod moors the ship at its own docks"
     }
    ],
    "gives": [
@@ -570,7 +562,7 @@
     },
     {
      "kind": "cooking-pot",
-     "by": "the source's own cooking spit at the camp fire, north of the hut (stations)"
+     "by": "the source's own cooking spit at the camp's fire among the tents (stations)"
     },
     {
      "kind": "harvest-common",
@@ -780,6 +772,22 @@
      "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
     ],
     "why": "a cutter's bedroll laid under the mess tent's canvas, where the cutters sleep out of the rain, seen from above"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.BOARDINGPLANK",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the boarding plank lies over the barge's rail and down into its waist, inside the hull's bounds as a ship's plank does, seen at eye level from the jetty"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.BOARDINGPLANK",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the boarding plank passes inside the bounds of the barge's masts and rigging, which the owner removed in his unsaved session (notes g1, g2); it goes when his session is finalised"
    }
   ],
   "accepted": [
