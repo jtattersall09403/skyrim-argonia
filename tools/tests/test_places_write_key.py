@@ -69,3 +69,31 @@ def test_a_tools_answer_is_kept_by_what_it_reads(tmp_path, monkeypatch):
         os.utime(src, (1000 + i, 1000 + i))   # kept in this order, whatever the clock's grain
         build.kept_answer(src, k2.parent / f"{i}.json")
     assert sorted(f.name for f in k2.parent.glob("*.json")) == ["2.json", "3.json", "4.json"]
+
+
+def test_a_plan_is_shared_only_under_its_own_key(tmp_path, monkeypatch, capsys):
+    """shared_shard copies another out's plan of the place when its key is the key this build would plan under, never
+    otherwise; kept_problems lists a kept plan's problems and stops a build that does not keep going."""
+    import json
+    pdir = tmp_path / "places" / "p"
+    pdir.mkdir(parents=True)
+    other, mine = tmp_path / "other", tmp_path / "mine"
+    src = other / "shards" / "p"
+    src.mkdir(parents=True)
+    (src / "plan.json").write_text('{"refs": [1]}')
+    (src / "world.json").write_text(json.dumps({"cells": [[0, 0]]}))
+    (src / "problems.json").write_text('["a door with no way in"]')
+    monkeypatch.setattr(build, "shard_homes", lambda pid: [other])
+    monkeypatch.setattr(build, "world_stamp", lambda pid, cells: {"key": "w"})
+    monkeypatch.setattr(build, "place_key", lambda pdir, wk: f"K:{wk}")
+    (src / "key.txt").write_text("K:old")
+    assert build.shared_shard("p", pdir, mine, False) is None                 # planned under another key: not taken
+    (src / "key.txt").write_text("K:w")
+    assert build.shared_shard("p", pdir, mine, True) is None                  # asked without a navmesh: another key
+    assert build.shared_shard("p", pdir, mine, False) == src
+    dst = mine / "shards" / "p"
+    assert (dst / "plan.json").read_text() == '{"refs": [1]}' and (dst / "key.txt").read_text() == "K:w"
+    assert build.kept_problems("p", dst, keep_going=True)
+    assert not build.kept_problems("p", dst, keep_going=False)
+    assert "p: a door with no way in" in capsys.readouterr().out
+    assert build.shared_shard("p", pdir, other, False) is None                # never from itself
