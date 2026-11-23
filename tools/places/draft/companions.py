@@ -70,7 +70,8 @@ def _always(key: tuple, off: tuple, rows: list[dict]) -> bool:
 
 
 def partners(src_refs: list[dict], known: dict | None = None) -> dict:
-    """{a's source id: b's source id}: each first model of a pair with its own second model, as the source sets them."""
+    """{a's source id: (b's source id, b's own offset in a's frame)}: each first model of a pair with its own second
+    model and the pose the source gives that one (a square deck may sit turned a half round on its leg)."""
     rows = _rows(src_refs)
     known = pairs(src_refs) if known is None else known
     out = {}
@@ -80,7 +81,9 @@ def partners(src_refs: list[dict], known: dict | None = None) -> dict:
             want = _want(a, off)
             got = [b for b in bs if math.dist(b["pos"], want) <= TOL]
             if got:
-                out[a["id"]] = got[0]["id"]
+                b = got[0]
+                ta, tb = (a.get("rot") or [0, 0, 0])[2], (b.get("rot") or [0, 0, 0])[2]
+                out[a["id"]] = (b["id"], off[:3] + (tb - ta,))
     return out
 
 
@@ -104,8 +107,10 @@ def faults(refs: list[dict], src_ref_lists: list[list[dict]]) -> list[str]:
     bad = []
     for (ba, bb), (dx, dy, dz, dt) in sorted(known.items()):
         for a in by_base.get(ba, []):
-            if a.get("src") in mate:    # carried from the source: its own partner, where the place still holds it
-                near = [b for b in by_src.get(mate[a["src"]], []) if b.get("base") == bb]
+            off_a = (dx, dy, dz, dt)
+            if a.get("src") in mate:    # carried from the source: its own partner at its own pose there
+                mid, off_a = mate[a["src"]]
+                near = [b for b in by_src.get(mid, []) if b.get("base") == bb]
             elif a.get("src"):          # a source piece the source set without that model: nothing to keep with it
                 continue
             else:                       # placed by hand: the nearest of the second model
@@ -113,11 +118,11 @@ def faults(refs: list[dict], src_ref_lists: list[list[dict]]) -> list[str]:
             if not near:
                 continue
             ta = (a.get("rot") or [0, 0, 0])[2]
-            want = _want(a, (dx, dy, dz, dt))
+            want = _want(a, off_a)
             b = min(near, key=lambda b: math.dist(b["pos"], want))
             off = math.dist(b["pos"], want)
             tb = (b.get("rot") or [0, 0, 0])[2]
-            turn_off = abs(math.remainder(tb - ta - dt, math.tau))
+            turn_off = abs(math.remainder(tb - ta - off_a[3], math.tau))
             if (off > TOL or turn_off > TURN_TOL * 5) and not any(b["id"] in x for x in bad):
                 bad.append(f"{b['id']} stands {off:.0f} units (turned {math.degrees(turn_off):.0f} degrees) off where "
                            f"{a['id']} puts it: its source sets the two models as one thing; move them as one")
