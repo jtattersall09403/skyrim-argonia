@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261123T064128",
+ "place_id": "helstrom",
+ "name": "a bench stood in the walks by the dockside bridge (the ways check): stepped 220 u off them, onto the ground beside",
+ "at": "2026-11-23T06:41:28Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.YVKA7WG70F1CBD2QW7KGV9MRSE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -42762.82,
+     -620780.82,
+     2.69
+    ],
+    "rot": [
+     0,
+     0,
+     10.11918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -42897.498,
+     -620954.779,
+     2.69
+    ],
+    "rot": [
+     0,
+     0,
+     10.11918
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T06:41:28Z"
+  }
+ ]
+}

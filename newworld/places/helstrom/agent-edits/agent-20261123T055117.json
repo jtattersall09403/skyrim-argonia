@@ -1,0 +1,138 @@
+{
+ "save_id": "agent-20261123T055117",
+ "place_id": "helstrom",
+ "name": "the world's trees, roots and a rock in the walks cleared",
+ "at": "2026-11-23T05:51:17Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "veg.clear",
+   "call": "fault",
+   "items": [
+    {
+     "base": "ArgoniaNewWorld.esm:002519",
+     "pos": [
+      -45342.2,
+      -618198.3,
+      257.9
+     ],
+     "ref": "ArgoniaNewWorld.esm:23EE58"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002501",
+     "pos": [
+      -63674.8,
+      -595734.5,
+      322.3
+     ],
+     "ref": "ArgoniaNewWorld.esm:276B75"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:00250B",
+     "pos": [
+      -63043.9,
+      -594289.4,
+      173.0
+     ],
+     "ref": "ArgoniaNewWorld.esm:2E1723"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002511",
+     "pos": [
+      -63682.5,
+      -592219.4,
+      244.1
+     ],
+     "ref": "ArgoniaNewWorld.esm:2ED2F3"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:00251A",
+     "pos": [
+      -51430.9,
+      -600563.9,
+      120.0
+     ],
+     "ref": "ArgoniaNewWorld.esm:3AAF66"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:0023B0",
+     "pos": [
+      -51822.6,
+      -600706.8,
+      301.7
+     ],
+     "ref": "ArgoniaNewWorld.esm:447AD4"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:0024D0",
+     "pos": [
+      -52983.1,
+      -593324.0,
+      184.8
+     ],
+     "ref": "ArgoniaNewWorld.esm:48C181"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:0023B1",
+     "pos": [
+      -51284.7,
+      -599985.9,
+      31.3
+     ],
+     "ref": "ArgoniaNewWorld.esm:55042D"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002511",
+     "pos": [
+      -62639.7,
+      -597341.1,
+      314.4
+     ],
+     "ref": "ArgoniaNewWorld.esm:5AA19C"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002511",
+     "pos": [
+      -62449.4,
+      -597293.1,
+      311.6
+     ],
+     "ref": "ArgoniaNewWorld.esm:5E3CAC"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002501",
+     "pos": [
+      -62166.8,
+      -598926.5,
+      280.4
+     ],
+     "ref": "ArgoniaNewWorld.esm:656DFD"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:0023C7",
+     "pos": [
+      -51173.8,
+      -600829.9,
+      11.6
+     ],
+     "ref": "ArgoniaNewWorld.esm:677ED2"
+    },
+    {
+     "base": "ArgoniaNewWorld.esm:002500",
+     "pos": [
+      -48460.7,
+      -614992.3,
+      183.8
+     ],
+     "ref": "ArgoniaNewWorld.esm:6D2EEE"
+    }
+   ],
+   "note": "the world's trees, roots and a rock standing in Helstrom's walks (the ways check): cleared, as a world tree or rock in a way is",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T05:51:17Z"
+  }
+ ]
+}
