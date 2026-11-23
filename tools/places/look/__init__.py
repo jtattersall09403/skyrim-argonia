@@ -7,7 +7,8 @@ section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every v
 [--no-canopy | --canopy] [--lit] [--ceiling u]. Every verb: [--people] draws people as named stand-ins; [--state <quest state>] sees the place as the player
 does in that state of the place's states.jsonl (`python -m tools.places states <place>` lists them; none: the game's start).
 Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
-Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per thing, one page call.
+Survey: survey [<structure or unit> ...] [--changed | --all]: a scored contact sheet per thing (--all: every unit, in
+one call on one warm scene), each sheet within its time budget.
 Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--rooms]: the place walked as a player,
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
@@ -197,7 +198,8 @@ def main(argv: list[str]) -> int:
         print(json.dumps(out, indent=1))
         return 0
     t0 = time.time()
-    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
+    long = 6 * 3600.0 if "--all" in args else 7200.0   # a survey of every unit: about a minute a sheet
+    out = call({"place": place, "verb": verb, "args": args}, long if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)
     if "playwalk" in (verb, *args[:2]) and out.get("ok") and (out.get("lines") or out.get("plan")):   # the plan and each route, one line each
         print("\n".join(out.get("plan") or out["lines"]))

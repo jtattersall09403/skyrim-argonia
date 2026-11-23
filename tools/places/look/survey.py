@@ -145,6 +145,7 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path, budget: float | None
         calls.append(round(time.time() - tc, 2))
         for i, r in got:
             c = cams[i]
+            tp = time.time()
             img = draw.from_data_url(r["png"])
             s, ids = verbs.judge(sc, c, r, th, False)
             if c.get("_section"):
@@ -158,6 +159,9 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path, budget: float | None
             imgs[i], ids_keep[i] = img, {"ids": ids, "table": r["table"], "id0": r["id0"]}
             rows[i] = {"tile": tiles[i]["name"], "side": tiles[i].get("side"), "height": tiles[i].get("height"),
                        "distance": tiles[i].get("scale")} | s
+            # where a tile's time went: the page's (waiting for models, drawing, the PNG, the id passes) and ours
+            rows[i]["times_ms"] = {k: r.get(k) for k in ("ms", "waits", "render_ms", "png_ms", "ids_ms")} | {
+                "judge_ms": round((time.time() - tp) * 1000)}
 
     d.open(place)
     d.sync(strokes)
@@ -186,6 +190,7 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path, budget: float | None
         from PIL import ImageDraw
         dd = ImageDraw.Draw(imgs[i])
         draw.tag(dd, (TW // 2, TH - 10), cap, size=12, fill=(255, 255, 160, 240))
+    ts = time.time()
     out_dir.mkdir(parents=True, exist_ok=True)
     tdir = out_dir / "tiles"
     tdir.mkdir(exist_ok=True)
@@ -208,7 +213,8 @@ def sheet(d, place, strokes, sc, th, faults, out_dir: Path, budget: float | None
     (out_dir / "table.json").write_text(json.dumps(rows, indent=1))
     (out_dir / "table.txt").write_text(table_text(th["name"], rows))
     return {"structure": th["name"], "sheet": str(png), "failed": sum(r.get("capture") == "failed" for r in rows),
-            "tiles": len(rows), "tiles_dir": str(tdir), "files": [r["file"] for r in rows], "s": round(time.time() - t0, 1), "page_calls_s": calls}
+            "tiles": len(rows), "tiles_dir": str(tdir), "files": [r["file"] for r in rows], "s": round(time.time() - t0, 1), "page_calls_s": calls,
+            "save_s": round(time.time() - ts, 1)}
 
 
 def _page(c: dict) -> dict:
@@ -217,14 +223,17 @@ def _page(c: dict) -> dict:
 
 def run(d, place: str, strokes, args: list[str]) -> dict:
     t0 = time.time()
-    pos, o = verbs._opts(args, {"changed": False})
+    pos, o = verbs._opts(args, {"changed": False, "all": False})
     sc = d.scene(place, strokes, "exterior")
     faults = {x["id"] for x in sc.faults()}
     root = LOOK_OUT / place / "survey"
     state_p = root / "state.json"
     now = structure_hashes(sc.files["spaces"]["exterior"]["refs"])
     names = pos
-    if o.get("changed"):
+    if o.get("all"):   # every unit of the place, one sheet each, in this one call on the one warm scene
+        from tools.places import units
+        names = [u["id"] for u in units.Place(place, scene=sc).units]
+    elif o.get("changed"):
         last = json.loads(state_p.read_text()) if state_p.exists() else {}
         names = changed(last, now)
     elif not names:
@@ -236,7 +245,14 @@ def run(d, place: str, strokes, args: list[str]) -> dict:
             allp = [p for c, ps in cl.items() if not c.startswith("w") and c != "outside" for p in ps] or sc.pieces
             th = sc._of(place, "place", allp)
         else:
-            th = sc.resolve(n)
+            try:
+                th = sc.resolve(n)
+            except KeyError as e:
+                if not o.get("all"):
+                    raise
+                out.append({"structure": n, "sheet": "", "failed": 0, "tiles": 0, "tiles_dir": "", "s": 0, "page_calls_s": [],
+                            "why": str(e)})
+                continue
         out.append(sheet(d, place, strokes, sc, th, faults, root / ("place" if n == "_place" else n)))
     last = json.loads(state_p.read_text()) if state_p.exists() else {}
     last |= {n: now[n] for n in names if n in now}
