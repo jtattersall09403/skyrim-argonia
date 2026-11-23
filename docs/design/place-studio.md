@@ -698,7 +698,8 @@ Answers land on main at once, never held for his save. His open session (the aut
 when he reloads the tab, and his save replays over it when he finalises, by one rule (`edits._rebased`, mirrored by
 the studio's `rebaseOp`): a move or removal of an answered row whose `before` no longer fits is his edit over the row
 as it stands (his favour), except an op of the note the answer names, which is kept as no change (the answer, made
-over his edit, stands). Any other op that no longer fits stops the replay there, as before. A submitted note still
+over his edit, stands); any op of that note on that row that no longer fits (the answer removed the row, or put it
+where he did) is kept as no change too. Any other op that no longer fits stops the replay there, as before. A submitted note still
 open past `notes.ANSWER_HOURS` is named by `notes` and fails `handover`.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
