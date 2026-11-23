@@ -131,8 +131,11 @@ static class Write
     public static int Run(string esp, string worldEsm, string[] shards)
     {
         var sw = Stopwatch.StartNew();
+        var lap = 0.0;
+        void Phase(string what) { var t = sw.Elapsed.TotalSeconds; Console.WriteLine($"write: phase {what} {t - lap:F1} s"); lap = t; }
         var world = C.Open(worldEsm);
         var ws = world.Worldspaces.Single();
+        Phase("open the world file");
         var mod = new SkyrimMod(ModKey.FromFileName(Path.GetFileName(esp)), C.Rel);
         mod.ModHeader.Author = "Argonia";
         mod.ModHeader.Description = "The new world's places: built by tools/places/build.py";
@@ -157,6 +160,7 @@ static class Write
         else if (File.Exists(ladder))
             Console.WriteLine("items ladder: the world file does not carry it yet; written into this plugin: "
                               + ItemLadder.Write(mod, fc, _ => fc.NextIdTake(), ladder).line);
+        Phase("items ladder");
         var ctx = new Ctx { Mod = mod, Fc = fc, World = world };
         People.Fc = fc;
         ctx.Allowed.UnionWith(Masters.Select(m => ModKey.FromFileName(m)));
@@ -172,6 +176,7 @@ static class Write
         var plans = shards.Select(p => JsonDocument.Parse(File.ReadAllText(p))).ToList();
         foreach (var d in plans) foreach (var c in d.RootElement.GetProperty("cells").EnumerateArray()) want.Add((c.GetProperty("x").GetInt32(), c.GetProperty("y").GetInt32()));
         foreach (var c in C.Cells(ws)) if (c.Grid is { } g && want.Contains((g.Point.X, g.Point.Y))) worldCells[(g.Point.X, g.Point.Y)] = c;
+        Phase("read the plans and the world's cells");
         var cells = new Dictionary<(int, int), Cell>();
         Cell Ext(int x, int y)
         {
@@ -360,6 +365,7 @@ static class Write
             if (plan.TryGetProperty("stock", out var stock) && stock.ValueKind == JsonValueKind.Object)
                 Stock.Build(ctx, stock);
             Console.WriteLine($"write: {pid}");
+            Phase($"place {pid}");
         }
 
         // a base copied in from a plugin that is no master (a template of one of ours) carries no levelled list either:
@@ -383,7 +389,9 @@ static class Write
             var meta = Meta(new[] { "Skyrim.esm", world.ModKey.FileName.String }, mod.ModKey.FileName);
             mod.NavigationMeshInfoMaps.Add(NavigationMeshInfoMap.CreateFromBinary(Frame(Navi(nvmi), meta)));
         }
+        Phase("blocks and NAVI");
         WriteMod(mod, esp, world);
+        Phase("write the plugin");
         // which of our records is a copy of which foreign one: the check reads a copied item as its source record
         C.WriteJson(esp + ".copies.json", ctx.Fc.Map.Concat(ctx.Remap).GroupBy(kv => kv.Value).ToDictionary(g => C.Key(g.Key), g => C.Key(g.First().Key)));
         Console.WriteLine($"write: {esp}: {nRefs} refs, {interiors.Count} interiors, {nClear} cleared, {nLand} LAND, {nNavm} NAVM, {cells.Count} cell overrides, {sw.Elapsed.TotalSeconds:F1} s");

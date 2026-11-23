@@ -192,6 +192,16 @@ def tool(*args: str) -> None:
         log(r.stdout.strip())
 
 
+def write_key(esp: Path, shards: list[str], world_sha: str) -> str:
+    """The key of one `write`: every shard's plan by content, the items, the world file, the tool's own bytes and the
+    plugin's path (the shards are named by path, so a moved out dir writes again)."""
+    h = hashlib.sha256(f"{esp}|{world_sha}|{sha256(TOOL)}".encode())
+    h.update((esp.parent / "items.json").read_bytes())
+    for s in shards:
+        h.update(s.encode() + sha256(Path(s)).encode())
+    return h.hexdigest()
+
+
 def code_key() -> str:
     h = hashlib.sha256()
     world = ROOT / "tools" / "newworld" / "world"  # the road rule and the ground's road sets the paths are painted by
@@ -2239,9 +2249,21 @@ def main(argv: list[str]) -> int:
     # them, else writes these into the places plugin itself
     from tools.newworld.world import smithing
     atomic_json(esp.parent / "items.json", smithing.records())
-    tool("write", str(esp), str(WORLD_ESM), *shards)
+    # the writer is a pure function of its inputs: the shards' plans, the items, the world file and the tool itself;
+    # when none changed since the plugin on disk was written (a draft check after a build), it stands
+    wk = write_key(esp, shards, world_sha)
+    wkp = esp.parent / "write.key"
+    if not a.force and esp.exists() and wkp.exists() and wkp.read_text() == wk:
+        log("write: unchanged (its plans, items, world file and tool are those of the plugin on disk)")
+        report["write_skipped"] = True
+    else:
+        wkp.unlink(missing_ok=True)
+        tool("write", str(esp), str(WORLD_ESM), *shards)
+        wkp.write_text(wk)
     report["write_s"] = round(time.time() - t2, 1)
     report["total_s"] = round(time.time() - t0, 1)
+    from tools.places import heavy_lock as _hl
+    report["lock_wait_s"] = round(_hl.WAITED, 1)   # of total_s, spent waiting on another build's dotnet tool
     report["esp"] = str(esp.relative_to(ROOT)) if esp.is_relative_to(ROOT) else str(esp)
     report["esp_sha256"] = sha256(esp)
     atomic_json(out / "plugin" / "build.json", report)
