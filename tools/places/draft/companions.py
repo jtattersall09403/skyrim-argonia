@@ -20,9 +20,9 @@ def _turn(dx, dy, t):
     return dx * c - dy * s, dx * s + dy * c
 
 
-def pairs(src_refs: list[dict]) -> dict:
-    """{(base a, base b): (dx, dy, dz, dturn) of b in a's own frame} over a source's pieces set together."""
-    out = {}
+def _instances(src_refs: list[dict]) -> dict:
+    """{(base a, base b): [(a id, b id, (dx, dy, dz, dturn))]} for every two source pieces set together."""
+    out: dict = {}
     rows = [r for r in src_refs if r.get("kind") in KINDS and r.get("base")]
     for a in rows:
         for b in rows:
@@ -35,25 +35,62 @@ def pairs(src_refs: list[dict]) -> dict:
                 continue
             # a ref's z turn runs clockwise: its own frame is the world turned by +turn
             dx, dy = _turn(b["pos"][0] - a["pos"][0], b["pos"][1] - a["pos"][1], ta)
-            out.setdefault((a["base"], b["base"]), (dx, dy, b["pos"][2] - a["pos"][2], tb - ta))
+            out.setdefault((a["base"], b["base"]), []).append((a["id"], b["id"], (dx, dy, b["pos"][2] - a["pos"][2], tb - ta)))
     return out
+
+
+def _same(u, v) -> bool:
+    return math.dist(u[:3], v[:3]) <= TOL and abs(math.remainder(u[3] - v[3], math.tau)) <= TURN_TOL * 5
+
+
+def pairs(src_refs: list[dict]) -> dict:
+    """{(base a, base b): (dx, dy, dz, dturn) of b in a's own frame} over the source's things made of two models: a
+    pair set at one offset wherever the source sets it, and every a of the source with its b. A modular kit (a
+    scaffold's legs and decks, stacked at many offsets, or a leg standing alone) is many things, never a pair."""
+    out = {}
+    counts: dict = {}
+    for r in src_refs:
+        if r.get("kind") in KINDS and r.get("base"):
+            counts[r["base"]] = counts.get(r["base"], 0) + 1
+    for (ba, bb), inst in _instances(src_refs).items():
+        offs = [o for _, _, o in inst]
+        if any(not _same(o, offs[0]) for o in offs) or len({a for a, _, _ in inst}) != counts.get(ba, 0):
+            continue
+        out[(ba, bb)] = offs[0]
+    return out
+
+
+def partners(src_refs: list[dict]) -> dict:
+    """{a's source id: b's source id} for every pair `pairs` keeps: the two models of one thing in the source."""
+    keep = pairs(src_refs)
+    return {a: b for k, inst in _instances(src_refs).items() if k in keep for a, b, _ in inst}
 
 
 def faults(refs: list[dict], src_ref_lists: list[list[dict]]) -> list[str]:
     known: dict = {}
+    mate: dict = {}
     for rows in src_ref_lists:
         for k, v in pairs(rows).items():
             known.setdefault(k, v)
+        mate.update(partners(rows))
     if not known:
         return []
+    live = [r for r in refs if not r.get("removed")]
     by_base: dict = {}
-    for r in refs:
-        if not r.get("removed"):
-            by_base.setdefault(r.get("base"), []).append(r)
+    by_src: dict = {}
+    for r in live:
+        by_base.setdefault(r.get("base"), []).append(r)
+        if r.get("src"):
+            by_src.setdefault(r["src"], []).append(r)
     bad = []
     for (ba, bb), (dx, dy, dz, dt) in sorted(known.items()):
         for a in by_base.get(ba, []):
-            near = [b for b in by_base.get(bb, []) if math.dist(a["pos"][:2], b["pos"][:2]) <= NEAR]
+            if a.get("src") in mate:    # carried from the source: its own partner, where the place still holds it
+                near = [b for b in by_src.get(mate[a["src"]], []) if b.get("base") == bb]
+            elif a.get("src"):          # a source piece the source set alone: nothing to keep with it
+                continue
+            else:                       # placed by hand: the nearest of the second model
+                near = [b for b in by_base.get(bb, []) if math.dist(a["pos"][:2], b["pos"][:2]) <= NEAR]
             if not near:
                 continue
             ta = (a.get("rot") or [0, 0, 0])[2]

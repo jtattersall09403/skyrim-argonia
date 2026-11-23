@@ -29,3 +29,28 @@ def test_the_masts_turned_the_wrong_way_or_moved_alone_fail():
 
 def test_without_the_masts_nothing_is_asked():
     assert companions.faults(place([-102249.8, -527920.4, 0.4])[:1], [SOURCE]) == []
+
+
+LEG, DECK = "K.esp:000001", "K.esp:000002"
+KIT = [{"id": "s.leg1", "base": LEG, "kind": "static", "pos": [0, 0, 0], "rot": [0, 0, 0]},
+       {"id": "s.deck1", "base": DECK, "kind": "static", "pos": [0, 0, 190], "rot": [0, 0, 0]},
+       {"id": "s.leg2", "base": LEG, "kind": "static", "pos": [1000, 0, 0], "rot": [0, 0, 0]},
+       {"id": "s.deck2", "base": DECK, "kind": "static", "pos": [1000, 0, 380], "rot": [0, 0, 0]},
+       {"id": "s.leg3", "base": LEG, "kind": "static", "pos": [2000, 0, 0], "rot": [0, 0, 0]}]
+
+
+def test_a_modular_kit_is_many_things_not_a_pair():
+    """A scaffold's legs and decks stacked at many offsets (and a leg standing alone) make no pair to keep."""
+    assert companions.pairs(KIT) == {}
+    moved = [dict(r, id=r["id"][2:], src=r["id"]) for r in KIT]
+    moved[1]["pos"] = [300, 0, 160]          # a deck sunk and shifted by hand
+    assert companions.faults(moved, [KIT]) == []
+
+
+def test_a_carried_pair_is_checked_against_its_own_partner():
+    """A hull carried from the source is judged with its own masts."""
+    s_hull, s_masts = SOURCE[0], SOURCE[1]
+    carried = [dict(s_hull, id="hull", src="s.hull"), dict(s_masts, id="masts", src="s.masts")]
+    assert companions.faults(carried, [SOURCE]) == []          # as the source sets them
+    carried[1] = dict(carried[1], pos=[s_masts["pos"][0] + 40, s_masts["pos"][1] + 40, 0.0])
+    assert companions.faults(carried, [SOURCE])                # the masts moved off their own hull
