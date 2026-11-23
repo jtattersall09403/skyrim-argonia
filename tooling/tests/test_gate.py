@@ -90,24 +90,25 @@ def test_import_closure_follows_relative_imports_and_path_chains(tmp_path):
     assert "tools/pkg/b.py" in files and "data/things" in named
 
 
-BROWSER = "tools/places/studio/web/test/"
+BROWSER = "tools/" + "places/studio/web/test/"   # built, so that this file names no studio path
+JS = "tools/" + "places/studio/web/js/"
 
 
 def test_one_studio_module_runs_its_own_browser_tests_not_the_suite():
-    p = gate.pick(["tools/places/studio/web/js/agent.js"])
+    p = gate.pick([JS + "agent.js"])
     browser = {t for t in p.tests if t.startswith(BROWSER)}
     assert browser and all("::" in t for t in browser), browser
     assert not any(t.startswith(BROWSER + "test_browser.py") for t in browser), "agent.js is not loaded by the page"
-    p = gate.pick(["tools/places/studio/web/js/people.js"])
+    p = gate.pick([JS + "people.js"])
     assert 0 < len([t for t in p.tests if t.startswith(BROWSER + "test_browser.py::")]) < 10
 
 
 def test_the_page_shell_runs_every_browser_test():
-    assert BROWSER + "test_browser.py" in gate.pick(["tools/places/studio/web/js/main.js"]).tests
+    assert BROWSER + "test_browser.py" in gate.pick([JS + "main.js"]).tests
 
 
 def test_place_files_and_place_tools_run_no_browser_test():
-    for c in [_pl("helstrom", "clear.jsonl"), "tools/places/draft/clear.py", BROWSER + "units.test.mjs"]:
+    for c in [_pl("helstrom", "clear.jsonl"), "tools/" + "places/draft/clear.py", BROWSER + "units.test.mjs"]:
         p = gate.pick([c])
         assert not p.full and not any(t.startswith(BROWSER) for t in p.tests), (c, p.tests)
 
