@@ -2,7 +2,10 @@
 body and its roof, set by the source at one pose (their origins within COMPANION units and turned alike). Where the
 place has both models of such a pair near each other, the second stands where the first puts it, at the source's
 offset turned with the first; a piece set apart by hand (an offset turned the wrong way, one piece moved without the
-other) is a fault. `draft check` calls `faults` with the place's sources (its own and each copied room's).
+other) is a fault. A piece carried from the source is judged with its own partner there; a piece placed by hand with
+the nearest of the second model. A kit's modular pieces set together at many poses (a scaffold's base and its
+floor) are many things, never a pair. `draft check` calls `faults` with the place's sources (its own and each copied
+room's).
 """
 from __future__ import annotations
 
@@ -20,10 +23,22 @@ def _turn(dx, dy, t):
     return dx * c - dy * s, dx * s + dy * c
 
 
-def _instances(src_refs: list[dict]) -> dict:
-    """{(base a, base b): [(a id, b id, (dx, dy, dz, dturn))]} for every two source pieces set together."""
-    out: dict = {}
-    rows = [r for r in src_refs if r.get("kind") in KINDS and r.get("base")]
+def _rows(src_refs: list[dict]) -> list[dict]:
+    return [r for r in src_refs if r.get("kind") in KINDS and r.get("base")]
+
+
+def _want(a: dict, off: tuple) -> tuple:
+    """Where a's second model stands, at the source's offset turned with a."""
+    dx, dy, dz, _ = off
+    ta = (a.get("rot") or [0, 0, 0])[2]
+    wx, wy = _turn(dx, dy, -ta)
+    return (a["pos"][0] + wx, a["pos"][1] + wy, a["pos"][2] + dz)
+
+
+def pairs(src_refs: list[dict]) -> dict:
+    """{(base a, base b): (dx, dy, dz, dturn) of b in a's own frame} over a source's pieces set together."""
+    out = {}
+    rows = _rows(src_refs)
     for a in rows:
         for b in rows:
             if a is b or a["base"] == b["base"]:
@@ -35,67 +50,70 @@ def _instances(src_refs: list[dict]) -> dict:
                 continue
             # a ref's z turn runs clockwise: its own frame is the world turned by +turn
             dx, dy = _turn(b["pos"][0] - a["pos"][0], b["pos"][1] - a["pos"][1], ta)
-            out.setdefault((a["base"], b["base"]), []).append((a["id"], b["id"], (dx, dy, b["pos"][2] - a["pos"][2], tb - ta)))
-    return out
+            out.setdefault((a["base"], b["base"]), (dx, dy, b["pos"][2] - a["pos"][2], tb - ta))
+    # a kit's modular pieces (a scaffold's base and its floor) are set together at many poses: a pair is one thing
+    # only where the source never sets the two near each other at another pose
+    return {k: v for k, v in out.items() if _always(k, v, rows)}
 
 
-def _same(u, v) -> bool:
-    return math.dist(u[:3], v[:3]) <= TOL and abs(math.remainder(u[3] - v[3], math.tau)) <= TURN_TOL * 5
-
-
-def pairs(src_refs: list[dict]) -> dict:
-    """{(base a, base b): (dx, dy, dz, dturn) of b in a's own frame} over the source's things made of two models: a
-    pair set at one offset wherever the source sets it, and every a of the source with its b. A modular kit (a
-    scaffold's legs and decks, stacked at many offsets, or a leg standing alone) is many things, never a pair."""
-    out = {}
-    counts: dict = {}
-    for r in src_refs:
-        if r.get("kind") in KINDS and r.get("base"):
-            counts[r["base"]] = counts.get(r["base"], 0) + 1
-    for (ba, bb), inst in _instances(src_refs).items():
-        offs = [o for _, _, o in inst]
-        if any(not _same(o, offs[0]) for o in offs) or len({a for a, _, _ in inst}) != counts.get(ba, 0):
+def _always(key: tuple, off: tuple, rows: list[dict]) -> bool:
+    ba, bb = key
+    bs = [r for r in rows if r["base"] == bb]
+    for a in (r for r in rows if r["base"] == ba):
+        near = [b for b in bs if math.dist(a["pos"][:2], b["pos"][:2]) <= NEAR]
+        if not near:
             continue
-        out[(ba, bb)] = offs[0]
+        want = _want(a, off)
+        if not any(math.dist(b["pos"], want) <= TOL for b in near):
+            return False
+    return True
+
+
+def partners(src_refs: list[dict], known: dict | None = None) -> dict:
+    """{a's source id: b's source id}: each first model of a pair with its own second model, as the source sets them."""
+    rows = _rows(src_refs)
+    known = pairs(src_refs) if known is None else known
+    out = {}
+    for (ba, bb), off in known.items():
+        bs = [r for r in rows if r["base"] == bb]
+        for a in (r for r in rows if r["base"] == ba):
+            want = _want(a, off)
+            got = [b for b in bs if math.dist(b["pos"], want) <= TOL]
+            if got:
+                out[a["id"]] = got[0]["id"]
     return out
-
-
-def partners(src_refs: list[dict]) -> dict:
-    """{a's source id: b's source id} for every pair `pairs` keeps: the two models of one thing in the source."""
-    keep = pairs(src_refs)
-    return {a: b for k, inst in _instances(src_refs).items() if k in keep for a, b, _ in inst}
 
 
 def faults(refs: list[dict], src_ref_lists: list[list[dict]]) -> list[str]:
     known: dict = {}
     mate: dict = {}
     for rows in src_ref_lists:
-        for k, v in pairs(rows).items():
+        got = pairs(rows)
+        for k, v in got.items():
             known.setdefault(k, v)
-        mate.update(partners(rows))
+        mate.update(partners(rows, got))
     if not known:
         return []
-    live = [r for r in refs if not r.get("removed")]
     by_base: dict = {}
     by_src: dict = {}
-    for r in live:
-        by_base.setdefault(r.get("base"), []).append(r)
-        if r.get("src"):
-            by_src.setdefault(r["src"], []).append(r)
+    for r in refs:
+        if not r.get("removed"):
+            by_base.setdefault(r.get("base"), []).append(r)
+            if r.get("src"):
+                by_src.setdefault(r["src"], []).append(r)
     bad = []
     for (ba, bb), (dx, dy, dz, dt) in sorted(known.items()):
         for a in by_base.get(ba, []):
             if a.get("src") in mate:    # carried from the source: its own partner, where the place still holds it
                 near = [b for b in by_src.get(mate[a["src"]], []) if b.get("base") == bb]
-            elif a.get("src"):          # a source piece the source set alone: nothing to keep with it
+            elif a.get("src"):          # a source piece the source set without that model: nothing to keep with it
                 continue
             else:                       # placed by hand: the nearest of the second model
                 near = [b for b in by_base.get(bb, []) if math.dist(a["pos"][:2], b["pos"][:2]) <= NEAR]
             if not near:
                 continue
             ta = (a.get("rot") or [0, 0, 0])[2]
-            wx, wy = _turn(dx, dy, -ta)
-            want = (a["pos"][0] + wx, a["pos"][1] + wy, a["pos"][2] + dz)
+            want = _want(a, (dx, dy, dz, dt))
             b = min(near, key=lambda b: math.dist(b["pos"], want))
             off = math.dist(b["pos"], want)
             tb = (b.get("rot") or [0, 0, 0])[2]

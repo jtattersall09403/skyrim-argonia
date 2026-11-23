@@ -170,14 +170,14 @@ def test_water_weed_is_brushed_past_not_a_blocker():
     assert not has({"edid": "ArgoniaRockCliff07MarshGrass", "model": "landscape/rocks/rockcliff07.nif"}, ways.NO_BODY_WORDS)
 
 
-def test_the_ways_verb_reports_failing_owed_and_stale(monkeypatch, capsys):
-    """`python -m tools.places ways <place>` says each blocker and its standing; it fails while one fails or a row
-    of the owed list is stale."""
-    b = {"way": "p.path.01", "id": "p.TENT", "edid": "Tent", "at": [0, 0, 0], "from_middle": 10}
+def test_ways_is_a_verb_that_lists_a_places_blockers(monkeypatch, capsys):
+    """`python -m tools.places ways <place>` (the place-streets recipe) runs: owed and failing blockers, then the
+    handover line; it fails on a failing blocker."""
+    b = {"way": "p.path.01", "id": "p.bush", "edid": "Bush", "kind": "tree", "at": [1.0, 2.0, 3.0], "from_middle": 10}
     monkeypatch.setattr(ways, "place_blockers", lambda pid: [b])
-    monkeypatch.setattr(ways, "split_owed", lambda pid, found: ([], found, []))
-    assert ways.main(["p"]) == 0
-    assert "1 owed" in capsys.readouterr().out
-    monkeypatch.setattr(ways, "split_owed", lambda pid, found: (found, [], []))
+    monkeypatch.setattr(ways, "owed", lambda pid, places=None: [])
+    monkeypatch.setattr(ways, "handover_line", lambda pid, places=None: (True, "ways: nothing owed"))
     assert ways.main(["p"]) == 1
-    assert "FAIL way p.path.01" in capsys.readouterr().out
+    assert "FAILS way p.path.01: p.bush" in capsys.readouterr().out
+    monkeypatch.setattr(ways, "place_blockers", lambda pid: [])
+    assert ways.main(["p"]) == 0
