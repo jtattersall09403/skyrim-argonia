@@ -349,3 +349,16 @@ def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
     for w in WATER.values():
         for name in ("Opacity", "DamagePerSecond"):   # byte and ushort in the WATR record: the build reads an integer
             assert isinstance(w["set"].get(name, 0), int), name
+
+
+def test_clearance_never_clears_a_plant_another_row_already_clears(fx):
+    """A plant a hand edit (look, no `ref`) or the owner already cleared keeps that row alone: the stage adds no
+    second row for it."""
+    p = fx / "places/fx/clear.jsonl"
+    rs = rows(p)
+    mine = next(r for r in rs if r.get("by") == "draft")
+    rs = [r for r in rs if r is not mine] + [{"base": mine["base"], "pos": list(mine["pos"]), "by": "agent"}]
+    p.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rs))
+    stages.run("clearance", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    at = [r for r in rows(p) if r["base"] == mine["base"] and r["pos"] == mine["pos"]]
+    assert [r["by"] for r in at] == ["agent"]

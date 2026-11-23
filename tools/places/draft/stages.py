@@ -400,7 +400,13 @@ def clearance(st: Standing, log=print) -> None:
         o = was.get(r.get("ref"))
         same = o is not None and o.get("base") == r.get("base") and math.dist(o["pos"], r["pos"]) <= 1.0
         return o if same else r
-    st.files["clear"] = [r for r in st.files["clear"] if r.get("by") != "draft"] + [kept(r) for r in rows]
+    # a plant any other row already clears (the owner's, an agent's hand edit) is not cleared a second time
+    held = [r for r in st.files["clear"] if r.get("by") != "draft"]
+    refs = {r.get("ref") for r in held if r.get("ref")}
+
+    def cleared(r: dict) -> bool:
+        return r.get("ref") in refs or any(h["base"] == r["base"] and math.dist(h["pos"], r["pos"]) <= 1.0 for h in held)
+    st.files["clear"] = held + [kept(r) for r in rows if not cleared(r)]
 
 
 def streets(place_id: str, places: Path, log=print) -> None:

@@ -348,3 +348,13 @@ def test_real_helstrom_identity_and_stock_ops():
             "before": had}]
     out = apply(files, ops)
     assert apply(out, invert(ops)) == canonical(files)
+
+
+def test_an_agents_cleared_plant_is_the_agents_row():
+    from tools.places.edits import apply_agent_save
+    save = {"save_id": "agent-1", "place_id": "fixture", "name": "t", "at": "2026-11-09T00:00:00Z", "by": "agent",
+            "final": False, "ops": [{"n": 1, "op": "veg.clear", "space": "exterior",
+                                     "items": [{"base": "W:000001", "pos": [1.0, 2.0, 3.0]}]}]}
+    out, left = apply_agent_save(copy.deepcopy(PLACE), save)
+    assert not left
+    assert [c["by"] for c in out["clear"] if c["base"] == "W:000001"] == ["agent"]

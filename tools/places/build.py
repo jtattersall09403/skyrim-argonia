@@ -756,23 +756,32 @@ def plan_paths(paths: list[dict], facts: dict, walked: set | None = None,
 # ---- clearance ------------------------------------------------------------------------------------------------------
 
 def plan_clear(rows: list[dict], facts: dict) -> list[dict]:
-    out, taken = [], set()
+    out, taken = [], {}
     for r in rows:
         x, y = r["pos"][0], r["pos"][1]
         cx, cy = cell_of(x, y)
-        best, bd = None, CLEAR_TOL
+        best, bd, twice = None, CLEAR_TOL, None
         for dx in (-1, 0, 1):
             for dy in (-1, 0, 1):
                 for ref in (facts["by_cell"].get((cx + dx, cy + dy)) or {}).get("refs", []):
-                    if ref.get("base") != r["base"] or ref["fk"] in taken or "pos" not in ref:
+                    if ref.get("base") != r["base"] or "pos" not in ref:
                         continue
                     d = math.hypot(ref["pos"][0] - x, ref["pos"][1] - y)
+                    if ref["fk"] in taken:
+                        if d <= CLEAR_TOL:
+                            twice = twice or taken[ref["fk"]]
+                        continue
                     if d <= bd:
                         best, bd = ref, d
+        if best is None and twice is not None:
+            problem(f"clear.jsonl: two rows clear one world ref of {r['base']} at {x:.0f},{y:.0f} "
+                    f"({twice.get('ref') or twice.get('id')} and {r.get('ref') or r.get('id')}, by {twice.get('by')} and {r.get('by')}): "
+                    f"one of them goes")
+            continue
         if best is None:
             problem(f"clear.jsonl: {r.get('id')}: no world ref of {r['base']} within {CLEAR_TOL:.0f} units of {x:.0f},{y:.0f}")
             continue
-        taken.add(best["fk"])
+        taken[best["fk"]] = r
         out.append({"fk": best["fk"], "base": best["base"], "pos": best["pos"], "cell": list(cell_of(*best["pos"][:2]))})
     return out
 

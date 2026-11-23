@@ -858,7 +858,10 @@ def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), sourc
         keep += g
         answers.append({"save": save["save_id"], "stroke": g[0].get("stroke", k), "answers": g[0]["answers"],
                         "note": words, "owner_save": who, "rows": hit})
-    out = apply(place_files, keep, source)
+    # a plant an agent's hand clears is the agent's row, never the owner's (the owner's are protected)
+    marked = [dict(op, items=[dict(it, by=it.get("by", "agent")) for it in op["items"]]) if op.get("op") == "veg.clear" else op
+              for op in keep]
+    out = apply(place_files, marked, source)
     out["place"]["agent_saves_applied"] = done + [save["save_id"]]
     if answers:
         out["place"]["agent_answers"] = list(out["place"].get("agent_answers") or []) + answers
