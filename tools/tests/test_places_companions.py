@@ -29,3 +29,18 @@ def test_the_masts_turned_the_wrong_way_or_moved_alone_fail():
 
 def test_without_the_masts_nothing_is_asked():
     assert companions.faults(place([-102249.8, -527920.4, 0.4])[:1], [SOURCE]) == []
+
+
+def test_a_kits_modular_pieces_set_together_at_many_poses_are_not_one_thing():
+    """King of the Murkmire's cypress scaffold: a base under a floor at one spot, the same two at another pose nearby
+    elsewhere in the source. The pair is a kit, not one thing: a deck laid by hand from it is no fault."""
+    base, floor = "K:base", "K:floor"
+    src = [{"id": "s1", "base": base, "kind": "static", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 1.0]},
+           {"id": "s2", "base": floor, "kind": "static", "pos": [0.0, 0.0, 190.0], "rot": [0, 0, 1.0]},
+           {"id": "s3", "base": base, "kind": "static", "pos": [5000.0, 0.0, 0.0], "rot": [0, 0, 0.0]},
+           {"id": "s4", "base": floor, "kind": "static", "pos": [5100.0, 150.0, 190.0], "rot": [0, 0, 2.0]}]
+    assert companions.pairs(src) == {}
+    ours = [{"id": "b", "base": base, "kind": "static", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0.3]},
+            {"id": "f", "base": floor, "kind": "static", "pos": [200.0, 0.0, 190.0], "rot": [0, 0, 1.9]}]
+    assert companions.faults(ours, [src]) == []
+    assert companions.pairs(SOURCE)                                  # a ship's hull and masts stay one thing

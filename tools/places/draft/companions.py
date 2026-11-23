@@ -36,7 +36,25 @@ def pairs(src_refs: list[dict]) -> dict:
             # a ref's z turn runs clockwise: its own frame is the world turned by +turn
             dx, dy = _turn(b["pos"][0] - a["pos"][0], b["pos"][1] - a["pos"][1], ta)
             out.setdefault((a["base"], b["base"]), (dx, dy, b["pos"][2] - a["pos"][2], tb - ta))
-    return out
+    # a kit's modular pieces (a scaffold's base and its floor) are set together at many poses: a pair is one thing
+    # only where the source never sets the two near each other at another pose
+    return {k: v for k, v in out.items() if _always(k, v, rows)}
+
+
+def _always(key: tuple, off: tuple, rows: list[dict]) -> bool:
+    ba, bb = key
+    dx, dy, dz, dt = off
+    bs = [r for r in rows if r["base"] == bb]
+    for a in (r for r in rows if r["base"] == ba):
+        near = [b for b in bs if math.dist(a["pos"][:2], b["pos"][:2]) <= NEAR]
+        if not near:
+            continue
+        ta = (a.get("rot") or [0, 0, 0])[2]
+        wx, wy = _turn(dx, dy, -ta)
+        want = (a["pos"][0] + wx, a["pos"][1] + wy, a["pos"][2] + dz)
+        if not any(math.dist(b["pos"], want) <= TOL for b in near):
+            return False
+    return True
 
 
 def faults(refs: list[dict], src_ref_lists: list[list[dict]]) -> list[str]:
