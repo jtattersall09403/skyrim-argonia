@@ -31,3 +31,4 @@
 {"t": "cmd", "place": "helstrom", "verb": "look", "sub": "at", "kind": "looking", "start": 1795411728.09, "end": 1795411775.84, "secs": 47.8, "rc": 0, "queue": 0.0, "depth": 0, "job": "", "pass": "p1795411525", "args": "helstrom at CWV8SW3WV4 --high --size 960x720", "counts": {}}
 {"t": "cmd", "place": "helstrom", "verb": "look", "sub": "at", "kind": "looking", "start": 1795411776.11, "end": 1795411824.63, "secs": 48.5, "rc": 0, "queue": 0.0, "depth": 0, "job": "", "pass": "p1795411525", "args": "helstrom at 4CAFECF1NH --high --size 960x720", "counts": {}}
 {"t": "phase", "at": 1795411991.91, "name": "check", "note": "", "pass": "p1795411525"}
+{"t": "cmd", "place": "helstrom", "verb": "ways", "sub": "", "kind": "other", "start": 1795411994.92, "end": 1795412361.3, "secs": 366.4, "rc": 1, "queue": 0.0, "depth": 0, "job": "", "pass": "p1795411525", "args": "helstrom", "counts": {}}
