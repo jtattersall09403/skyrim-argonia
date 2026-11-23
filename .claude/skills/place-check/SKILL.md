@@ -66,7 +66,9 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
     and `python3 -m tools.places handover <place_id>` says it again before returning (exit 1 when not, and the
     consistency stage would refuse the landing). For a stocked place, `handover` also needs `python -m tools.places
     stock reach <place_id>` to flag no row (material reach, region, place class, trade kit; `place-stock`, section 4).
-    `handover` also needs the place's time log to have its phase markers (`place-system`, The time log).
+    `handover` also needs the place's time log to have its phase markers (`place-system`, The time log), no blocker
+    owed in a road or walk without its reason (`place-streets`), and no note the owner submitted still open past its
+    answer time (`place-change`).
     The place goes to `place-people`.
 
 ## Accepted findings

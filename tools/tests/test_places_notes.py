@@ -63,3 +63,25 @@ def test_notes_list_shows_the_notes_on_changes(tmp_path):
     (auto / "x.json").unlink()
     assert notes.change_notes("x", places=tmp_path, autosaves=auto) == ""
     assert '"off the boardwalk"' in notes.change_notes("x", True, places=tmp_path, autosaves=auto)
+
+
+def test_a_submitted_note_left_open_past_its_answer_time_fails_handover(tmp_path):
+    """A note the owner submitted is answered at once (its change lands on main, over his open session) and closed
+    with `done`; one still open past notes.ANSWER_HOURS is named by `notes` and fails `handover`, so a hold cannot sit
+    unseen."""
+    import calendar
+    import time
+    from tools.places import handover
+    notes.add("x", {"text": "the door is too high"}, tmp_path)
+    notes.add("x", {"text": "a second"}, tmp_path)
+    notes.send("x", tmp_path)
+    notes.add("x", {"text": "still his, unsent"}, tmp_path)
+    sent = calendar.timegm(time.strptime(notes.read("x", tmp_path)[0]["sent_at"], "%Y-%m-%dT%H:%M:%SZ"))
+    assert notes.overdue("x", tmp_path, now=sent + 3600) == []
+    late = notes.overdue("x", tmp_path, now=sent + (notes.ANSWER_HOURS + 1) * 3600)
+    assert [n["id"] for n in late] == ["n1", "n2"]          # the unsent note is still his: never overdue
+    notes.done("x", "n1", "lowered", tmp_path)
+    notes.done("x", "n2", "done", tmp_path)
+    assert handover.notes_answered("x", tmp_path)[0]
+    notes.done("x", "n2", places=tmp_path, undo=True)
+    assert notes.overdue("x", tmp_path, now=sent + (notes.ANSWER_HOURS + 1) * 3600)

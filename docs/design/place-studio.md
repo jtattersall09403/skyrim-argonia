@@ -686,14 +686,20 @@ finalise and never before.
 
 **Agent answers.** An agent's strokes (`look commit`, kept in `agent-edits/`) never change a row the owner's
 finalised saves touched, except to answer him: `look commit --answers <note id>` marks every stroke as the answer to a
-note of his save ("you should fix ..."), and `--lead "<decision>"` to a lead's decision kept in the agent save's own
-`notes` as `{id, text, at, by: "lead"}`. Such a stroke applies when every op carries `answers`, the note belongs to
-an owner save that touched each of its rows (or is the save's lead decision), and the agent save was made after his;
-its `before` is his `after`. It is listed in `place.json` `agent_answers` `{save, stroke, answers, note, owner_save,
-rows}`, and the studio's Notes panel shows each as "Changed by the agent in answer to your note g8" with its things
-to select; he moves them back as he likes, which is his edit. Any other stroke on his rows is left out and reported
-as REFUSED. Answers made before his session is saved wait in `agent-edits/pending/` (`after_save: next`) and are
-applied by finalise right after his save.
+note of his ("you should fix ..."), and `--lead "<decision>"` to a lead's decision kept in the agent save's own
+`notes` as `{id, text, at, by: "lead"}`. On a finalised row such a stroke applies when every op carries `answers`, the
+note belongs to an owner save that touched each of its rows (or is the save's lead decision), and the agent save was
+made after his; its `before` is his `after`. Any other stroke on his rows is left out and reported as REFUSED. Every
+answering stroke is listed in `place.json` `agent_answers` `{save, stroke, answers, note, owner_save, rows}`
+(`owner_save` "open session" for a note of his unsaved work), and the studio's Notes panel shows each as "Changed by
+the agent in answer to your note g8" with its things to select.
+
+Answers land on main at once, never held for his save. His open session (the autosave) replays over the new draft
+when he reloads the tab, and his save replays over it when he finalises, by one rule (`edits._rebased`, mirrored by
+the studio's `rebaseOp`): a move or removal of an answered row whose `before` no longer fits is his edit over the row
+as it stands (his favour), except an op of the note the answer names, which is kept as no change (the answer, made
+over his edit, stands). Any other op that no longer fits stops the replay there, as before. A submitted note still
+open past `notes.ANSWER_HOURS` is named by `notes` and fails `handover`.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -1687,9 +1693,7 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    also writes its taste ops to `place.json` `preferences`), mark the save final, commit the place and the sources
    by path; with content ops, reload the stock tables and commit them (Stock: Finalise). The applied files are kept
    as `after.json` before they are written, so a run stopped while writing writes the same files again.
-   Right after the save, the agent's answers to it are applied (`finalise.apply_answers`): each
-   `agent-edits/pending/<save_id>.json` whose `after_save` is this save or `next`, made against his session before he
-   saved it, by `edits.apply_agent_save` with this save's rows and notes as his; see Agent answers below.
+   His save replays over the agent's answers already in the draft by the replay rule (Agent answers, below).
 2. **Build**: against the current world: `worldparts` decides whether the world moved under the place; if so the
    ground is taken again (`extract --ground`, `ground-check`); then seat, build, check, navexport, and the place layer
    onto the New World card (`infra/gpu-box/places_deploy.sh`, which waits out a live stream); `finalise --plan`

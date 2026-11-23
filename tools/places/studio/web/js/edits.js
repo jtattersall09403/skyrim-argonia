@@ -155,6 +155,22 @@ function space(m, sid) {
   return m.spaces[sid];
 }
 
+// An owner's op replayed over a draft an agent changed in answer to him (place.json agent_answers): a move or
+// removal of an answered row whose before no longer fits is his edit over the row as it stands (his favour), except
+// when the answer names this op's own note: the answer stands and his op is kept as no change (edits.py _rebased).
+export function rebaseOp(m, op) {
+  if (op.op !== 'ref.move' && op.op !== 'ref.remove') return op;
+  const notes = new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(op.id)).map((a) => a.answers));
+  if (!notes.size) return op;
+  const r = m.spaces[op.space || 'exterior']?.refs.get(op.id);
+  if (!r || r.removed) return op;
+  if (op.op === 'ref.remove') return same(r, op.before) ? op : { ...op, before: clone(r) };
+  if (Object.entries(op.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return op;
+  const before = Object.fromEntries(Object.keys(op.before).map((k) => [k, clone(r[k] ?? null)]));
+  if (notes.has(op.note_group) || notes.has(op.note)) return { ...op, before, after: clone(before) };
+  return { ...op, before };
+}
+
 // Apply one op; throws EditConflict when its before does not match, leaving the model as it was.
 export function applyOp(m, op) {
   const sp = op.space || 'exterior';
@@ -434,7 +450,8 @@ export class EditLog {
   load(ops, notes = []) {
     this.notes = new Map((notes || []).filter((x) => x?.id).map((x) => [x.id, { id: x.id, text: String(x.text ?? ''), at: x.at }]));
     this.ops = []; this.cursor = 0; this.n = 0; let err = null;
-    for (const op of ops) {
+    for (const raw of ops) {
+      const op = rebaseOp(this.model, raw);
       try { applyOp(this.model, op); } catch (e) { err = e; break; }
       this.ops.push(op); this.n = Math.max(this.n, op.n || 0);
     }
