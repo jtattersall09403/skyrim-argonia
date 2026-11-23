@@ -1,0 +1,43 @@
+{
+ "save_id": "agent-20261122T234319",
+ "place_id": "outpost-m6-m66",
+ "name": "an undergrowth bush taken out of the walk from the landing (it filled path.01 at -43552,-537586)",
+ "at": "2026-11-22T23:43:19Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.PWYC9JVC3V2JG3Y026PM8MQQF4",
+   "call": "fault",
+   "before": {
+    "id": "outpost-m6-m66.PWYC9JVC3V2JG3Y026PM8MQQF4",
+    "base": "King of the Murkmire.esp:0F0ACD",
+    "kind": "tree",
+    "pos": [
+     -43553.4,
+     -537595.95,
+     49.72
+    ],
+    "rot": [
+     0,
+     0,
+     4.87945
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:66DE2F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-22T23:43:19Z"
+  }
+ ]
+}

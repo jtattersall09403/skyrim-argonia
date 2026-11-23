@@ -152,5 +152,4 @@
 {"place": "outpost-m13-m65", "way": "the world's road", "id": "outpost-m13-m65.LOOK047PLACE", "edid": "Barrel02Static", "at": [-99479, -528583, 365], "since": "2026-11-22"}
 {"place": "outpost-m13-m65", "way": "the world's road", "id": "outpost-m13-m65.VQHMA7ZZHZ02SCSPED1SZQ5TR6", "edid": "CommonTableRound01", "at": [-100203, -528932, 336], "since": "2026-11-22"}
 {"place": "outpost-m13-m65", "way": "the world's road", "id": "outpost-m13-m65.WK1KGY0SYBD7XZBVZSDYW54QTZ", "edid": "TreeReachTree01", "at": [-99197, -528370, 400], "since": "2026-11-22"}
-{"place": "outpost-m6-m66", "way": "outpost-m6-m66.path.01", "id": "outpost-m6-m66.PWYC9JVC3V2JG3Y026PM8MQQF4", "edid": "ArgoniaTreeUndergrowth02", "at": [-43552, -537586, 118], "since": "2026-11-22"}
 {"place": "tribal-camp-m2-m68", "way": "tribal-camp-m2-m68.path.01", "id": "quest.main.mn04/npc.mn04.guard-2", "edid": "quest spot npc.mn04.guard-2", "at": [-10840, -552140, 231], "since": "2026-11-22"}
