@@ -148,6 +148,18 @@ class RoadPaint:
         out[ok] = ((G[a, b] * (1 - fx) + G[a + 1, b] * fx) * (1 - fy) + (G[a, b + 1] * (1 - fx) + G[a + 1, b + 1] * fx) * fy)
         return out
 
+    def any_near(self, lo, hi) -> bool:
+        """Whether any ground vertex the points in plan box [lo, hi] are read between carries road (else `many` is
+        0 for every one of them)."""
+        if not self.share:
+            return False
+        ni, nj = self.grid.shape
+        i0 = max(math.floor(lo[0] / 128.0) - self.i0, 0)
+        i1 = min(math.floor(hi[0] / 128.0) - self.i0 + 2, ni)
+        j0 = max(math.floor(lo[1] / 128.0) - self.j0, 0)
+        j1 = min(math.floor(hi[1] / 128.0) - self.j0 + 2, nj)
+        return i0 < i1 and j0 < j1 and bool(self.grid[i0:i1, j0:j1].max() > 0)
+
     def on(self, XY: np.ndarray) -> np.ndarray:
         return self.many(XY) >= ROAD_SHARE
 
@@ -466,8 +478,9 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
         for v in mine:
             w, S, Z = v["w"], v["S"], v["Z"]
             if kind_of(p) in LEVEL_CLASSES and not row.get("blocks_way"):   # the deck the way runs on is its floor
-                if any((h := P.at(x, y, "walk")) is not None and np.isfinite(z) and abs(h - z) <= 6
-                       for (x, y), z in zip(S, Z)):
+                H = P.at_many(S[:, :2], "walk")   # the deck's walked height under each sample (nan: none there)
+                Zs = np.asarray(Z, float)
+                if np.any(~np.isnan(H) & np.isfinite(Zs) & (np.abs(H - Zs) <= 6)):
                     continue
             lo, hi, half = v["lo"], v["hi"], v["half"]
             C = C0[(C0[:, 0] >= lo[0]) & (C0[:, 0] <= hi[0]) & (C0[:, 1] >= lo[1]) & (C0[:, 1] <= hi[1])]
@@ -492,7 +505,7 @@ def blockers(files: dict, pieces: list[dict], ground, spots: list[dict] = (), me
             found.append({"way": w["id"], "id": p["id"], "edid": p.get("edid"), "kind": p.get("kind"),
                           "at": [round(float(x)) for x in C[i]], "from_middle": round(float(d[i])),
                           "world": bool(p.get("world")), "reason": why if _reason(why) else None})
-        if roadside and len(C0):      # the world's road as painted, through the place: kept clear
+        if roadside and len(C0) and road.any_near(C0[:, :2].min(0), C0[:, :2].max(0)):   # the world's road as painted: kept clear
             C = C0[road.on(C0[:, :2])]
             C = C[np.hypot(C[:, 0] - anchor[0], C[:, 1] - anchor[1]) <= reach] if len(C) else C
             if len(C):

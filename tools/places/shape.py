@@ -357,6 +357,18 @@ class Posed:
         x, y = self.cell_xy(ii, jj)
         return np.stack([x, y, F[ii, jj]], 1) if len(ii) else np.zeros((0, 3))
 
+    def at_many(self, XY, field: str = "under") -> np.ndarray:
+        """`at` for many plan points at once: nan where `at` gives None."""
+        F = getattr(self, field)
+        XY = np.asarray(XY, float).reshape(-1, 2)
+        i = np.floor(XY[:, 0] / CELL).astype(np.int64) - self.i0
+        j = np.floor(XY[:, 1] / CELL).astype(np.int64) - self.j0
+        out = np.full(len(XY), np.nan)
+        ok = (i >= 0) & (i < F.shape[0]) & (j >= 0) & (j < F.shape[1])
+        if ok.any():
+            out[ok] = F[i[ok], j[ok]]
+        return out
+
     def at(self, x: float, y: float, field: str = "under") -> float | None:
         F = getattr(self, field)
         i, j = int(math.floor(x / CELL)) - self.i0, int(math.floor(y / CELL)) - self.j0
