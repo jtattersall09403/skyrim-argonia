@@ -432,7 +432,9 @@
   "agent-20261122T054732",
   "agent-20261122T054826",
   "agent-20261122T054922",
-  "agent-20261122T055009"
+  "agent-20261122T055009",
+  "agent-20261123T040120",
+  "agent-20261123T040326"
  ],
  "draft": {
   "add": [
@@ -475,10 +477,10 @@
     "base": "Dragonborn.esm:03ABD2",
     "kind": "door",
     "pos": [
-     -99933.6,
-     -528901.5
+     -99366.84,
+     -529299.53
     ],
-    "rot_z": 3.05219,
+    "rot_z": 2.52863,
     "on": "outpost-m13-m65.LOOK012PLACE",
     "dz": 90.1,
     "tier": "AGENT_INVENTED",
@@ -499,7 +501,8 @@
       ]
      }
     },
-    "why": "the stone hut's door, a Raven Rock door in the frame Baan Malur gives it, into a copy of that house's own room (its stone house part only, by a cut): where the gang-master sleeps, keeps his strongbox and lets a guest sleep on the bench (record: free-bed, treasure)"
+    "why": "the stone hut's door, a Raven Rock door in the frame Baan Malur gives it, into a copy of that house's own room (its stone house part only, by a cut): where the gang-master sleeps, keeps his strongbox and lets a guest sleep on the bench (record: free-bed, treasure)",
+    "scale": 1
    }
   ],
   "room_names": {
@@ -848,5 +851,615 @@
     "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
    }
   ]
- }
+ },
+ "agent_answers": [
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 1,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.0EXM3E7YC849YXYSXFA1S7P510"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 2,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 3,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.3H3B7DGQD56H6DTX78YNNQBZB9"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 4,
+   "answers": "g6",
+   "note": "Tent hovering, stilts not all touching ground",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 5,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMYB"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 6,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 7,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.6BF6D2QC47K39AKFWQDTFBQJX1"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 8,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.7HPC5MTENFFM4HVCWF0AVVERMT"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 9,
+   "answers": "g8",
+   "note": "Deleted pointless gate (standing by itself with no fence); house was blocking entrance to tent and blocking road; tents are still blicking road now but is too hard to move. Have left house door in bad position, can't change height, you should fix",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 10,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.9F2QTWS9MQHXRDGNMZ1VCAXFK6"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 11,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.A2G9ZZHDN3CZ967X5EY1D5G18V"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 12,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 13,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.BOARDINGPLANK"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 14,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.COOKFIRE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 15,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.COOKFIRELIGHT"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 16,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.E9ARFX3QKBKZQ8HAQ7ATWNTGCQ"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 17,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.ET5VQPJ70WENFBW6RWT35WJ4ZR"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 18,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 19,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.FQ190PDGQVMEBD9NSK3CXVRP94"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 20,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.GEE7G54GMFT3X45DZDQ75JPNN3"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 21,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.GRAVECANDLES"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 22,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 23,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.K7BJRFWEVZXJ4134QBBN982EQZ"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 24,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 25,
+   "answers": "g8",
+   "note": "Deleted pointless gate (standing by itself with no fence); house was blocking entrance to tent and blocking road; tents are still blicking road now but is too hard to move. Have left house door in bad position, can't change height, you should fix",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK012PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 26,
+   "answers": "g8",
+   "note": "Deleted pointless gate (standing by itself with no fence); house was blocking entrance to tent and blocking road; tents are still blicking road now but is too hard to move. Have left house door in bad position, can't change height, you should fix",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK013PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 27,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK016PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 28,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK046PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 29,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK047PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 30,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK049PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 31,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.MKS48D9CG0SSC9RW6V94J6CXVJ"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 32,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 33,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.N6YSM8093XTZ0H3JH0F3E5J01E"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 34,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.P9JC0D1DP06GJF2AGKVKDD3JX0"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 35,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 36,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.RS0STBC5TTBHHCKXY4WY7K1N4D"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 37,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 38,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 39,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.VQHMA7ZZHZ02SCSPED1SZQ5TR6"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 40,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.WESVAKXHDCQ10R75AGY1KF0XFP"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 41,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.WK1KGY0SYBD7XZBVZSDYW54QTZ"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 42,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 43,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70"
+   ]
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 55,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 56,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040120",
+   "stroke": 57,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g1",
+   "note": "Rigging misaligned",
+   "owner_save": "open session",
+   "rows": [],
+   "reply": "The barge's hull and its masts stood where Black Marsh & Valenwood sets them together; you removed the masts, and they stay removed. A new check now keeps a ship's parts together so they never drift apart."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g2",
+   "note": "Rigging was blocking walk off barge",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.BOARDINGPLANK"
+   ],
+   "reply": "With the rigging and the planks gone, the barge's deck lies below its rail where your raised jetty meets it, so nobody could walk off it (main quest 1 starts in the hold). One boarding plank now runs from the jetty's end over the rail down into the waist, clear of everything; move or restyle it as you like."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g3",
+   "note": "Reeds were blocking walkway",
+   "owner_save": "open session",
+   "rows": [],
+   "reply": "Your reed stays where you stacked it; the camp's path now goes round the north of the tents to the landing instead of through the reed."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g4",
+   "note": "Creatures cluttering the landing",
+   "owner_save": "open session",
+   "rows": [],
+   "reply": "The creatures stay where you moved them, off the landing; a new check keeps creature spots off the paths."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g6",
+   "note": "Tent hovering, stilts not all touching ground",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
+   ],
+   "reply": "The mess tent sits 26 units lower than you left it, so its canvas and poles meet the ground on the downhill side, and its four floor platforms are lowered until every leg is in the ground."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g7",
+   "note": "Weird X markers??",
+   "owner_save": "open session",
+   "rows": [],
+   "reply": "Those X shapes are invisible markers that tell people where to stand and walk; nobody sees them in the game, and the studio will hide them."
+  },
+  {
+   "save": "agent-20261123T040120",
+   "answers": "g8",
+   "note": "Deleted pointless gate (standing by itself with no fence); house was blocking entrance to tent and blocking road; tents are still blicking road now but is too hard to move. Have left house door in bad position, can't change height, you should fix",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK012PLACE",
+    "outpost-m13-m65.LOOK013PLACE",
+    "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG",
+    "outpost-m13-m65.COOKFIRE"
+   ],
+   "reply": "The hut you moved is brought down to the ground so its door's sill meets the ground before it, and the door and its frame sit in the hut's doorway. The gate, the grave-stake and the grave are gone as you removed them, and the record and the people's words no longer mention them. The tents, the cook's fire, the spit, the stall and the seats are moved off the road and the paths as whole groups, near where they stood."
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 44,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 45,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 46,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 47,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 48,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 49,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 50,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 51,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 52,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 53,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T040326",
+   "stroke": 54,
+   "answers": "lead-ashgate",
+   "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  }
+ ]
 }
