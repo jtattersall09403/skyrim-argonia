@@ -88,9 +88,63 @@ class Resolver:
         b = self.read(modl)
         if b is None:
             return None
+        got = cached_collision(b)
+        if got is not None:
+            return got
         try:
             c = nif.collision(b)
         except (ValueError, IndexError, KeyError) as e:  # a layout we do not read: counted by the caller
             return nif.Collision(None, None, {f"error:{type(e).__name__}": 1})
         keep = [i for i, layer in enumerate(c.layers) if layer in nif.SOLID_LAYERS]
-        return nif.Collision(c.tris[keep] if len(c.tris) else c.tris, c.layers[keep], c.skipped)
+        out = nif.Collision(c.tris[keep] if len(c.tris) else c.tris, c.layers[keep], c.skipped)
+        store_collision(b, out)
+        return out
+
+
+# ---- the solid collision of a mesh, kept on disk by the mesh's bytes and the reader's code ----------------------------
+COLLISION_CACHE = Path(os.environ.get("ARGONIA_COLLISION_CACHE") or Path(__file__).resolve().parents[2] / "out" / "places" / "cache" / "collision")
+
+
+@lru_cache(maxsize=1)
+def _reader_key() -> str:
+    import hashlib
+    h = hashlib.sha256()
+    for f in (Path(nif.__file__), Path(__file__)):
+        h.update(f.read_bytes())
+    return h.hexdigest()[:12]
+
+
+def _collision_path(b: bytes) -> Path:
+    import hashlib
+    k = hashlib.sha256(b).hexdigest()
+    return COLLISION_CACHE / _reader_key() / k[:2] / f"{k}.npz"
+
+
+def cached_collision(b: bytes) -> nif.Collision | None:
+    """The solid collision read from these bytes before, by this code; None when not kept (or unreadable)."""
+    p = _collision_path(b)
+    if not p.exists():
+        return None
+    try:
+        import json
+        import numpy as np
+        z = np.load(p, allow_pickle=False)
+        return nif.Collision(z["tris"], z["layers"], json.loads(str(z["skipped"])))
+    except Exception:  # noqa: BLE001  a torn or old file: read the mesh again
+        return None
+
+
+def store_collision(b: bytes, c: nif.Collision) -> None:
+    import json
+    import numpy as np
+    if not (isinstance(c.tris, np.ndarray) and isinstance(c.layers, np.ndarray)
+            and all(isinstance(k, str) for k in c.skipped)):
+        return   # kept only what comes back the same from the file
+    p = _collision_path(b)
+    try:
+        p.parent.mkdir(parents=True, exist_ok=True)
+        tmp = p.with_suffix(f".{os.getpid()}.tmp.npz")
+        np.savez(tmp, tris=np.asarray(c.tris), layers=np.asarray(c.layers), skipped=json.dumps(c.skipped))
+        os.replace(tmp, p)
+    except OSError:
+        pass

@@ -14,6 +14,7 @@ from pathlib import Path
 
 _depth = 0
 _fd = None
+WAITED = 0.0   # seconds this process has waited on another holder: a build's report subtracts it from its own time
 _mutex = threading.RLock()
 
 
@@ -23,7 +24,7 @@ def lock_path() -> Path:
 
 @contextmanager
 def heavy_lock():
-    global _depth, _fd
+    global _depth, _fd, WAITED
     if os.environ.get("ARGONIA_PLACES_NO_LOCK") == "1":
         yield
         return
@@ -38,7 +39,9 @@ def heavy_lock():
                 except BlockingIOError:
                     holder = os.pread(fd, 400, 0).decode(errors="replace").strip() or "unknown"
                     print(f"waiting for another place build: {holder}", flush=True)
+                    t0 = time.time()
                     fcntl.flock(fd, fcntl.LOCK_EX)
+                    WAITED += time.time() - t0
                 os.ftruncate(fd, 0)
                 os.pwrite(fd, f"pid {os.getpid()} cwd {os.getcwd()} since {time.strftime('%H:%M:%S')}".encode(), 0)
             except BaseException:

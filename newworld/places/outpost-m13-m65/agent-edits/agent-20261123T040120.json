@@ -1,0 +1,1659 @@
+{
+ "save_id": "agent-20261123T040120",
+ "place_id": "outpost-m13-m65",
+ "name": "answers to the owner's notes over his open session",
+ "at": "2026-11-23T04:01:20Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.0EXM3E7YC849YXYSXFA1S7P510",
+   "before": {
+    "pos": [
+     -99813.32,
+     -528527.36,
+     262.31
+    ]
+   },
+   "after": {
+    "pos": [
+     -99863.32,
+     -528327.36,
+     213.78
+    ]
+   },
+   "n": 1,
+   "stroke": 1,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
+   "before": {
+    "pos": [
+     -100457.81,
+     -529175.85,
+     285.98
+    ]
+   },
+   "after": {
+    "pos": [
+     -100907.81,
+     -529850.85,
+     382.69
+    ]
+   },
+   "n": 2,
+   "stroke": 2,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.3H3B7DGQD56H6DTX78YNNQBZB9",
+   "before": {
+    "pos": [
+     -100748.2,
+     -527735.74,
+     277.7
+    ]
+   },
+   "after": {
+    "pos": [
+     -100748.2,
+     -527735.74,
+     198.1
+    ]
+   },
+   "n": 3,
+   "stroke": 3,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1",
+   "before": {
+    "pos": [
+     -100561.84,
+     -527826.86,
+     216.91
+    ],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100561.84,
+     -527826.86,
+     145.55
+    ],
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "g6"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.634WG9H3KVPWCPE9RHKX6WNCMYB",
+   "before": {
+    "pos": [
+     -100404.99,
+     -529357.22,
+     287.26
+    ]
+   },
+   "after": {
+    "pos": [
+     -100854.99,
+     -530032.22,
+     370.88
+    ]
+   },
+   "n": 5,
+   "stroke": 5,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.68EAJXYRPECKKYN6FWBXZTBZ8K",
+   "before": {
+    "pos": [
+     -99895.25,
+     -528491.71,
+     306.09
+    ],
+    "rot": [
+     0,
+     -1.2665987e-07,
+     3.85093
+    ]
+   },
+   "after": {
+    "pos": [
+     -99945.25,
+     -528291.71,
+     265.36
+    ],
+    "rot": [
+     0,
+     -0.0,
+     3.85093
+    ]
+   },
+   "n": 6,
+   "stroke": 6,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.6BF6D2QC47K39AKFWQDTFBQJX1",
+   "before": {
+    "pos": [
+     -100361.38,
+     -529181.09,
+     284.0
+    ]
+   },
+   "after": {
+    "pos": [
+     -100811.38,
+     -529856.09,
+     396.74
+    ]
+   },
+   "n": 7,
+   "stroke": 7,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.7HPC5MTENFFM4HVCWF0AVVERMT",
+   "before": {
+    "pos": [
+     -100311.55,
+     -528997.32,
+     280.0
+    ]
+   },
+   "after": {
+    "pos": [
+     -100761.55,
+     -529672.32,
+     367.95
+    ]
+   },
+   "n": 8,
+   "stroke": 8,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+   "before": {
+    "pos": [
+     -99933.6,
+     -528901.5,
+     320.1
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.05219
+    ],
+    "scale": 1.0
+   },
+   "after": {
+    "pos": [
+     -99366.84,
+     -529299.53,
+     382.687
+    ],
+    "rot": [
+     0,
+     0,
+     2.52863
+    ],
+    "scale": 1
+   },
+   "n": 9,
+   "stroke": 9,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.9F2QTWS9MQHXRDGNMZ1VCAXFK6",
+   "before": {
+    "pos": [
+     -100305.1,
+     -529313.61,
+     284.0
+    ]
+   },
+   "after": {
+    "pos": [
+     -100755.1,
+     -529988.61,
+     395.91
+    ]
+   },
+   "n": 10,
+   "stroke": 10,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.A2G9ZZHDN3CZ967X5EY1D5G18V",
+   "before": {
+    "pos": [
+     -99796.86,
+     -528674.82,
+     252.94
+    ]
+   },
+   "after": {
+    "pos": [
+     -99846.86,
+     -528474.82,
+     232.89
+    ]
+   },
+   "n": 11,
+   "stroke": 11,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX",
+   "before": {
+    "pos": [
+     -100663.14,
+     -527789.14,
+     273.78
+    ]
+   },
+   "after": {
+    "pos": [
+     -100663.14,
+     -527789.14,
+     194.18
+    ]
+   },
+   "n": 12,
+   "stroke": 12,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m13-m65.BOARDINGPLANK",
+    "base": "Journey to Baan Malur.esp:042C7F",
+    "kind": "static",
+    "pos": [
+     -102068.0,
+     -527810.0,
+     127.0
+    ],
+    "rot": [
+     0,
+     0.2,
+     3.14159
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "restored for main quest 1 (the player and the hold's sleepers walk off the barge): the ship's plank from the rail down into the waist, on the line of the jetty raised to the rail; the owner to move or restyle it as he likes"
+   },
+   "n": 13,
+   "stroke": 13,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.COOKFIRE",
+   "before": {
+    "pos": [
+     -99927.83,
+     -528542.13,
+     306.904
+    ]
+   },
+   "after": {
+    "pos": [
+     -99977.83,
+     -528342.13,
+     264.644
+    ]
+   },
+   "n": 14,
+   "stroke": 14,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.COOKFIRELIGHT",
+   "before": {
+    "pos": [
+     -99930.84,
+     -528530.76,
+     364.194
+    ]
+   },
+   "after": {
+    "pos": [
+     -99980.84,
+     -528330.76,
+     321.934
+    ]
+   },
+   "n": 15,
+   "stroke": 15,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.E9ARFX3QKBKZQ8HAQ7ATWNTGCQ",
+   "before": {
+    "pos": [
+     -99466.24,
+     -528846.74,
+     216.3
+    ],
+    "rot": [
+     0.087330386,
+     -0.17204905,
+     10.8488
+    ]
+   },
+   "after": {
+    "pos": [
+     -99666.24,
+     -529206.74,
+     240.16
+    ],
+    "rot": [
+     0.08733,
+     -0.17205,
+     10.8488
+    ]
+   },
+   "n": 16,
+   "stroke": 16,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.ET5VQPJ70WENFBW6RWT35WJ4ZR",
+   "before": {
+    "pos": [
+     -99917.47,
+     -528524.74,
+     245.37
+    ],
+    "rot": [
+     0.007478003,
+     -0.049438074,
+     10.49632
+    ]
+   },
+   "after": {
+    "pos": [
+     -99967.47,
+     -528324.74,
+     202.36
+    ],
+    "rot": [
+     0.00748,
+     -0.04944,
+     10.49632
+    ]
+   },
+   "n": 17,
+   "stroke": 17,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.EZEREKYW3SV4XC2ZKY2FF78GTCB",
+   "before": {
+    "pos": [
+     -100433.4,
+     -529266.29,
+     287.32
+    ]
+   },
+   "after": {
+    "pos": [
+     -100883.4,
+     -529941.29,
+     391.76
+    ]
+   },
+   "n": 18,
+   "stroke": 18,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FQ190PDGQVMEBD9NSK3CXVRP94",
+   "before": {
+    "pos": [
+     -100502.74,
+     -527802.21,
+     342.23
+    ]
+   },
+   "after": {
+    "pos": [
+     -100502.74,
+     -527802.21,
+     261.73
+    ]
+   },
+   "n": 19,
+   "stroke": 19,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GEE7G54GMFT3X45DZDQ75JPNN3",
+   "before": {
+    "pos": [
+     -100454.77,
+     -528906.19,
+     280.52
+    ]
+   },
+   "after": {
+    "pos": [
+     -100454.77,
+     -528786.19,
+     282.15
+    ]
+   },
+   "n": 20,
+   "stroke": 20,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GRAVECANDLES",
+   "before": {
+    "id": "outpost-m13-m65.GRAVECANDLES",
+    "base": "Skyrim.esm:0C842B",
+    "kind": "static",
+    "pos": [
+     -98925.0,
+     -528530.0,
+     339.438
+    ],
+    "rot": [
+     0,
+     0,
+     0.6
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "clay candles the gang left burnt down at the grave-stake's foot, the camp's one mark of worship (record faith)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 21,
+   "stroke": 21,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N",
+   "before": {
+    "pos": [
+     -100500.85,
+     -527642.5,
+     277.81
+    ]
+   },
+   "after": {
+    "pos": [
+     -100500.85,
+     -527642.5,
+     197.31
+    ]
+   },
+   "n": 22,
+   "stroke": 22,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.K7BJRFWEVZXJ4134QBBN982EQZ",
+   "before": {
+    "pos": [
+     -100667.8,
+     -527779.49,
+     405.17
+    ]
+   },
+   "after": {
+    "pos": [
+     -100667.8,
+     -527779.49,
+     325.57
+    ]
+   },
+   "n": 23,
+   "stroke": 23,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG",
+   "before": {
+    "pos": [
+     -100410.47,
+     -529197.43,
+     225.43
+    ]
+   },
+   "after": {
+    "pos": [
+     -100860.47,
+     -529872.43,
+     330.51
+    ]
+   },
+   "n": 24,
+   "stroke": 24,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK012PLACE",
+   "before": {
+    "pos": [
+     -99900.0,
+     -529150.0,
+     230.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.06096
+    ],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99213.5,
+     -529497.94,
+     292.587
+    ],
+    "rot": [
+     0,
+     0,
+     2.5374
+    ],
+    "seat": {
+     "mode": "ground",
+     "dz": -120.19
+    }
+   },
+   "n": 25,
+   "stroke": 25,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK013PLACE",
+   "before": {
+    "pos": [
+     -99928.5,
+     -528964.2,
+     302.8
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.05223
+    ]
+   },
+   "after": {
+    "pos": [
+     -99331.08,
+     -529351.28,
+     365.39
+    ],
+    "rot": [
+     0,
+     0,
+     2.52867
+    ]
+   },
+   "n": 26,
+   "stroke": 26,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK016PLACE",
+   "before": {
+    "pos": [
+     -99640.0,
+     -528530.0,
+     334.875
+    ]
+   },
+   "after": {
+    "pos": [
+     -99690.0,
+     -528330.0,
+     289.317
+    ]
+   },
+   "n": 27,
+   "stroke": 27,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK046PLACE",
+   "before": {
+    "pos": [
+     -99560.0,
+     -528620.0,
+     329.25
+    ]
+   },
+   "after": {
+    "pos": [
+     -99610.0,
+     -528420.0,
+     319.705
+    ]
+   },
+   "n": 28,
+   "stroke": 28,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK047PLACE",
+   "before": {
+    "pos": [
+     -99495.0,
+     -528560.0,
+     333.0
+    ]
+   },
+   "after": {
+    "pos": [
+     -99545.0,
+     -528360.0,
+     314.596
+    ]
+   },
+   "n": 29,
+   "stroke": 29,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK049PLACE",
+   "before": {
+    "pos": [
+     -99565.0,
+     -528615.0,
+     391.562
+    ]
+   },
+   "after": {
+    "pos": [
+     -99615.0,
+     -528415.0,
+     380.435
+    ]
+   },
+   "n": 30,
+   "stroke": 30,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.MKS48D9CG0SSC9RW6V94J6CXVJ",
+   "before": {
+    "pos": [
+     -99806.38,
+     -528669.17,
+     258.52
+    ]
+   },
+   "after": {
+    "pos": [
+     -99856.38,
+     -528469.17,
+     236.11
+    ]
+   },
+   "n": 31,
+   "stroke": 31,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK",
+   "before": {
+    "pos": [
+     -100602.02,
+     -527915.66,
+     273.47
+    ]
+   },
+   "after": {
+    "pos": [
+     -100602.02,
+     -527915.66,
+     207.17
+    ]
+   },
+   "n": 32,
+   "stroke": 32,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N6YSM8093XTZ0H3JH0F3E5J01E",
+   "before": {
+    "pos": [
+     -100507.49,
+     -527640.19,
+     337.25
+    ]
+   },
+   "after": {
+    "pos": [
+     -100507.49,
+     -527640.19,
+     256.75
+    ]
+   },
+   "n": 33,
+   "stroke": 33,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.P9JC0D1DP06GJF2AGKVKDD3JX0",
+   "before": {
+    "pos": [
+     -99122.65,
+     -528040.29,
+     222.57
+    ],
+    "rot": [
+     -0.005991058,
+     0.06031951,
+     11.39744
+    ]
+   },
+   "after": {
+    "pos": [
+     -98922.65,
+     -527790.29,
+     206.86
+    ],
+    "rot": [
+     -0.00599,
+     0.06032,
+     11.39744
+    ]
+   },
+   "n": 34,
+   "stroke": 34,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PVE1RF3C5M9Y5TV0DQ4BZY9RQMB",
+   "before": {
+    "pos": [
+     -100492.54,
+     -529089.5,
+     284.58
+    ]
+   },
+   "after": {
+    "pos": [
+     -100942.54,
+     -529764.5,
+     358.71
+    ]
+   },
+   "n": 35,
+   "stroke": 35,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.RS0STBC5TTBHHCKXY4WY7K1N4D",
+   "before": {
+    "pos": [
+     -100590.66,
+     -527765.99,
+     278.11
+    ]
+   },
+   "after": {
+    "pos": [
+     -100590.66,
+     -527765.99,
+     198.51
+    ]
+   },
+   "n": 36,
+   "stroke": 36,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC",
+   "before": {
+    "pos": [
+     -100471.38,
+     -527857.09,
+     278.85
+    ]
+   },
+   "after": {
+    "pos": [
+     -100471.38,
+     -527857.09,
+     212.35
+    ]
+   },
+   "n": 37,
+   "stroke": 37,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G",
+   "before": {
+    "pos": [
+     -100443.68,
+     -527844.91,
+     273.44
+    ]
+   },
+   "after": {
+    "pos": [
+     -100443.68,
+     -527844.91,
+     206.94
+    ]
+   },
+   "n": 38,
+   "stroke": 38,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.VQHMA7ZZHZ02SCSPED1SZQ5TR6",
+   "before": {
+    "pos": [
+     -100212.16,
+     -528893.11,
+     276.07
+    ]
+   },
+   "after": {
+    "pos": [
+     -100292.16,
+     -528773.11,
+     277.62
+    ]
+   },
+   "n": 39,
+   "stroke": 39,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WESVAKXHDCQ10R75AGY1KF0XFP",
+   "before": {
+    "pos": [
+     -100725.5,
+     -527982.49,
+     274.0
+    ]
+   },
+   "after": {
+    "pos": [
+     -100725.5,
+     -527982.49,
+     207.7
+    ]
+   },
+   "n": 40,
+   "stroke": 40,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WK1KGY0SYBD7XZBVZSDYW54QTZ",
+   "before": {
+    "pos": [
+     -99180.88,
+     -528063.68,
+     224.42
+    ],
+    "rot": [
+     -0.01237979,
+     -0.009261908,
+     9.13716
+    ]
+   },
+   "after": {
+    "pos": [
+     -98980.88,
+     -527813.68,
+     208.67
+    ],
+    "rot": [
+     -0.01238,
+     -0.00926,
+     9.13716
+    ]
+   },
+   "n": 41,
+   "stroke": 41,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39",
+   "before": {
+    "pos": [
+     -100568.01,
+     -527866.46,
+     278.97
+    ]
+   },
+   "after": {
+    "pos": [
+     -100568.01,
+     -527866.46,
+     212.67
+    ]
+   },
+   "n": 42,
+   "stroke": 42,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
+   "before": {
+    "pos": [
+     -100520.37,
+     -527725.0,
+     273.47
+    ]
+   },
+   "after": {
+    "pos": [
+     -100520.37,
+     -527725.0,
+     192.97
+    ]
+   },
+   "n": 43,
+   "stroke": 43,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "path.edit",
+   "space": "exterior",
+   "path": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99376.0,
+      -528448.0
+     ],
+     [
+      -99312.0,
+      -528384.0
+     ],
+     [
+      -99312.0,
+      -528256.0
+     ],
+     [
+      -99248.0,
+      -528192.0
+     ],
+     [
+      -99248.0,
+      -527968.0
+     ],
+     [
+      -99344.0,
+      -527872.0
+     ],
+     [
+      -99504.0,
+      -527808.0
+     ],
+     [
+      -99600.0,
+      -527712.0
+     ],
+     [
+      -99760.0,
+      -527712.0
+     ],
+     [
+      -99856.0,
+      -527616.0
+     ],
+     [
+      -100048.0,
+      -527616.0
+     ],
+     [
+      -100272.0,
+      -527392.0
+     ],
+     [
+      -100432.0,
+      -527360.0
+     ],
+     [
+      -100464.0,
+      -527328.0
+     ],
+     [
+      -100496.0,
+      -527360.0
+     ],
+     [
+      -100624.0,
+      -527360.0
+     ],
+     [
+      -100688.0,
+      -527424.0
+     ],
+     [
+      -100816.0,
+      -527424.0
+     ],
+     [
+      -101300.0,
+      -527810.0,
+      155.0
+     ],
+     [
+      -101600.0,
+      -527810.0,
+      151.0
+     ],
+     [
+      -101850.0,
+      -527810.0,
+      153.0
+     ],
+     [
+      -101950.0,
+      -527810.0,
+      150.0
+     ],
+     [
+      -102230.0,
+      -527810.0,
+      100.0
+     ],
+     [
+      -102205.0,
+      -527700.0,
+      98.0
+     ],
+     [
+      -102205.0,
+      -527560.0,
+      98.0
+     ],
+     [
+      -102202.3,
+      -527470.0,
+      98.0
+     ]
+    ],
+    "laid": "by hand over the owner's 2026-11-22 session: from the hut's door, across the world's road and round the north of the tents (the reed he stacked by the bank fills the way along it), down to the jetty he laid level with the barge's rail, over the rail into the waist to the hold door",
+    "blocked_by": {
+     "outpost-m13-m65.LANDINGJETTY": "the jetty's own mooring posts stand at its far end either side of its deck, which the way runs along between them",
+     "outpost-m13-m65.LOOK006PLACE": "the barge's rail at its waist is stepped over from the jetty, which lies level with it as Black Marsh & Valenwood moors this ship at its own docks"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99935.0,
+      -528790.0
+     ],
+     [
+      -99947.5,
+      -528715.0
+     ],
+     [
+      -99960.0,
+      -528640.0
+     ],
+     [
+      -100023.3,
+      -528613.3
+     ],
+     [
+      -100086.7,
+      -528586.7
+     ],
+     [
+      -100150.0,
+      -528560.0
+     ],
+     [
+      -100211.1,
+      -528536.7
+     ],
+     [
+      -100272.2,
+      -528513.3
+     ],
+     [
+      -100333.3,
+      -528490.0
+     ],
+     [
+      -100394.4,
+      -528466.7
+     ],
+     [
+      -100455.6,
+      -528443.3
+     ],
+     [
+      -100516.7,
+      -528420.0
+     ],
+     [
+      -100577.8,
+      -528396.7
+     ],
+     [
+      -100638.9,
+      -528373.3
+     ],
+     [
+      -100700.0,
+      -528350.0
+     ],
+     [
+      -100766.7,
+      -528341.7
+     ],
+     [
+      -100833.3,
+      -528333.3
+     ],
+     [
+      -100900.0,
+      -528325.0
+     ],
+     [
+      -100966.7,
+      -528316.7
+     ],
+     [
+      -101033.3,
+      -528308.3
+     ],
+     [
+      -101100.0,
+      -528300.0
+     ],
+     [
+      -101126.0,
+      -528230.0
+     ],
+     [
+      -101152.0,
+      -528160.0
+     ],
+     [
+      -101178.0,
+      -528090.0
+     ],
+     [
+      -101204.0,
+      -528020.0
+     ],
+     [
+      -101230.0,
+      -527950.0
+     ],
+     [
+      -101243.3,
+      -527883.3
+     ],
+     [
+      -101256.7,
+      -527816.7
+     ],
+     [
+      -101270.0,
+      -527750.0
+     ],
+     [
+      -101346.7,
+      -527750.0
+     ],
+     [
+      -101423.3,
+      -527750.0
+     ],
+     [
+      -101500.0,
+      -527750.0
+     ],
+     [
+      -101576.0,
+      -527750.0
+     ],
+     [
+      -101652.0,
+      -527750.0
+     ],
+     [
+      -101728.0,
+      -527750.0
+     ],
+     [
+      -101804.0,
+      -527750.0
+     ],
+     [
+      -101880.0,
+      -527750.0
+     ],
+     [
+      -101947.5,
+      -527750.0
+     ],
+     [
+      -102015.0,
+      -527750.0
+     ],
+     [
+      -102082.5,
+      -527750.0
+     ],
+     [
+      -102150.0,
+      -527750.0
+     ],
+     [
+      -102175.0,
+      -527675.0
+     ],
+     [
+      -102200.0,
+      -527600.0
+     ],
+     [
+      -102201.1,
+      -527535.0
+     ],
+     [
+      -102202.3,
+      -527470.0
+     ]
+    ],
+    "laid": "by hand: from the hut's door past the cook's fire, round the south and west of the mess tent along the bank to the landing, along the jetty and over the boarding planks to the barge's hold door"
+   },
+   "n": 44,
+   "stroke": 55,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "path.remove",
+   "space": "exterior",
+   "path": {
+    "id": "outpost-m13-m65.path.02",
+    "kind": "path",
+    "width": 160.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.path.01",
+    "to": "outpost-m13-m65.LOOK014PLACE",
+    "points": [
+     [
+      -100150,
+      -528560
+     ],
+     [
+      -100085.7,
+      -528534.3
+     ],
+     [
+      -100021.4,
+      -528508.6
+     ],
+     [
+      -99957.1,
+      -528482.9
+     ],
+     [
+      -99892.9,
+      -528457.1
+     ],
+     [
+      -99828.6,
+      -528431.4
+     ],
+     [
+      -99764.3,
+      -528405.7
+     ],
+     [
+      -99700.0,
+      -528380.0
+     ],
+     [
+      -99633.3,
+      -528366.7
+     ],
+     [
+      -99566.7,
+      -528353.3
+     ],
+     [
+      -99500.0,
+      -528340.0
+     ],
+     [
+      -99433.3,
+      -528326.7
+     ],
+     [
+      -99366.7,
+      -528313.3
+     ],
+     [
+      -99300.0,
+      -528300.0
+     ],
+     [
+      -99235.7,
+      -528300.0
+     ],
+     [
+      -99171.4,
+      -528300.0
+     ],
+     [
+      -99107.1,
+      -528300.0
+     ],
+     [
+      -99042.9,
+      -528300.0
+     ],
+     [
+      -98978.6,
+      -528300.0
+     ],
+     [
+      -98914.3,
+      -528300.0
+     ],
+     [
+      -98850.0,
+      -528300.0
+     ]
+    ],
+    "laid": "by hand: from the cook's fire east through the old post's gate onto the landward road"
+   },
+   "n": 45,
+   "stroke": 56,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  },
+  {
+   "op": "path.edit",
+   "space": "exterior",
+   "path": {
+    "id": "outpost-m13-m65.path.add.9EFSHMFNB5T35WZ544NAVKJ395",
+    "kind": "path",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99368.0,
+      -529188.0
+     ]
+    ],
+    "width": 128.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.path.01",
+    "laid": "a spur from an added door to the nearest street"
+   },
+   "before": {
+    "id": "outpost-m13-m65.path.add.9EFSHMFNB5T35WZ544NAVKJ395",
+    "kind": "path",
+    "points": [
+     [
+      -99935.0,
+      -528790.0
+     ],
+     [
+      -99935.0,
+      -528790.0
+     ]
+    ],
+    "width": 128.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.path.01",
+    "laid": "a spur from an added door to the nearest street"
+   },
+   "n": 46,
+   "stroke": 57,
+   "call": "fault",
+   "at": "2026-11-23T04:01:20Z",
+   "answers": "lead-ashgate"
+  }
+ ],
+ "notes": [
+  {
+   "id": "g6",
+   "text": "Tent hovering, stilts not all touching ground",
+   "at": "2026-11-22T15:35:40.521Z"
+  },
+  {
+   "id": "g8",
+   "text": "Deleted pointless gate (standing by itself with no fence); house was blocking entrance to tent and blocking road; tents are still blicking road now but is too hard to move. Have left house door in bad position, can't change height, you should fix",
+   "at": "2026-11-22T15:48:06.430Z"
+  },
+  {
+   "id": "lead-ashgate",
+   "text": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "at": "2026-11-22T15:48:08Z",
+   "by": "lead"
+  }
+ ]
+}

@@ -145,7 +145,6 @@ def step_record(run: Run) -> dict:
         (run.dir / "before.json").write_text(json.dumps(files, sort_keys=True))
         src = edits.bundle_source(run.repo / "out/places/bundles")
         out = edits.apply_save(files, save, src)
-        out = apply_answers(run, out, save, src)
         tmp = run.dir / "after.json.tmp"
         tmp.write_text(json.dumps(out))
         tmp.replace(after)
@@ -166,42 +165,6 @@ def step_record(run: Run) -> dict:
     if content:
         res["stock"] = reload_stock(run, content)
     return res
-
-
-def apply_answers(run: Run, files: dict, save: dict, source) -> dict:
-    """The agent's answers to this save, applied right after it: each `agent-edits/pending/<save_id>.json` whose
-    `after_save` is this save's id or `next` (made against the owner's session before he saved it), by
-    edits.apply_agent_save with this save's rows and notes as the owner's; an answering stroke applies over his edit,
-    any other stroke on his rows is refused and named in the run's log. Each applied pending save moves to
-    agent-edits/ and is listed in place.json `agent_saves_applied`."""
-    from tools.places.draft.stages import owner_rows, owner_touches
-    pend = sorted((run.place / "agent-edits" / "pending").glob("*.json"))
-    if not pend:
-        return files
-    rows = owner_rows(run.place)
-    touches = owner_touches(run.place)
-    notes = {x["id"]: x.get("text", "") for x in save.get("notes") or [] if isinstance(x, dict) and x.get("id")}
-    for op in save["ops"]:
-        rid = op.get("id") or (op.get("ref") or {}).get("id")
-        if rid:
-            rows.add(rid)
-            t = touches.setdefault(rid, [])
-            if not t or t[-1]["save"] != save["save_id"]:
-                t.append({"save": save["save_id"], "at": save.get("at"), "notes": notes})
-    for p in pend:
-        sv = json.loads(p.read_text(encoding="utf-8"))
-        if sv.get("after_save") not in (save["save_id"], "next"):
-            continue
-        files, left = edits.apply_agent_save(files, sv, rows, source, touches)
-        for x in left:
-            run.log(f"record: the agent's stroke {x['stroke']} of {sv['save_id']} REFUSED on the owner's rows "
-                    f"{', '.join(x['owner_rows'])}: {x['why']}")
-        sv.pop("after_save", None)
-        (run.place / "agent-edits" / p.name).write_text(json.dumps(sv, indent=1) + "\n")
-        p.unlink()
-        run.log(f"record: the agent's answers {sv['save_id']} applied after the save "
-                f"({len(sv['ops'])} edits, {len(left)} strokes refused)")
-    return files
 
 
 def stockdb_cmd(run: Run, verb: str) -> list[str] | None:

@@ -372,9 +372,12 @@ def load(place_id: str, out: Path) -> dict:
     tmp = out / "tmp" / f"check_{place_id}"
     tmp.mkdir(parents=True, exist_ok=True)
     B.build_tool()
-    B.tool("dump", str(esp), str(B.WORLD_ESM), str(tmp / "dump.json"))
-    dump = json.loads((tmp / "dump.json").read_text())
-    (tmp / "dump.json").unlink()
+    # the dump is a function of the plugin, the world file and the tool: kept by their sha256
+    kept = B.tool_cache("dump", [B.file_sha(esp), B.file_sha(B.WORLD_ESM)])
+    if not kept.exists():
+        B.tool("dump", str(esp), str(B.WORLD_ESM), str(tmp / "dump.json"))
+        B.kept_answer(tmp / "dump.json", kept)
+    dump = json.loads(kept.read_text())
     cells = {(c["x"], c["y"]) for c in plan["cells"]}
     facts = B.world_facts(cells, tmp)
     tmp.rmdir()

@@ -150,6 +150,7 @@ class Studio {
     this.terrain = ground.spaces.exterior?.terrain;
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     this.model = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles(), quests: questData?.spots || [] });
+    this.model.place = { ...(this.model.place || {}), agent_answers: this.place.agent_answers || [] };   // edits.rebaseOp, the Notes panel
     this.spaceInfo = Object.fromEntries(Object.entries(this.draft.spaces).map(([k, v]) => [k, v.info]));
     // what the stories need of the place: fetched beside the rest, never waited for
     this.needs.load(id).then(() => { if (this.place?.place_id === id && this.panels.name === 'needs') this.needs.panel(); });
@@ -611,6 +612,7 @@ class Studio {
     // back to the draft, then the save's ops in order
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     const m = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles(), quests: this.quests.data?.spots || [] });
+    m.place = { ...(m.place || {}), agent_answers: this.place.agent_answers || [] };   // his ops replay over the agent's answers
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
     this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || [], save.notes || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }

@@ -617,12 +617,21 @@ export class Panels {
     const answers = a.log?.model?.place?.agent_answers || [];
     if (answers.length) {
       parts.push(el('<h3>Changed by the agent in answer to your notes</h3>'),
-        el('<p class="tag">Each is a change to something you had placed, made because a note of yours (or the lead\'s decision) asked for it. Select it to look; move it back as you like, and that is your edit.</p>'));
+        el('<p class="tag">What the agent did for each of your notes, over your edits. Select to look; move anything back as you like, and that is your edit.</p>'));
       const al = el('<ol class="history notes agent-answers"></ol>');
+      const by = new Map();   // one line per note: its words, what was done, the things it changed
       for (const x of answers) {
-        const who = x.owner_save === 'lead' ? 'the lead\'s decision' : `your note ${esc(x.answers)}`;
-        const li = el(`<li><span class="what">Changed by the agent in answer to ${who}: "${esc(x.note || '')}"<span class="note">${x.rows.length === 1 ? 'one thing' : `${x.rows.length} things`}</span></span></li>`);
-        const ids = x.rows.filter((id) => a.placeRefsById().has(id));
+        const g = by.get(x.answers) || { x, rows: new Set(), replies: [], n: 0 };
+        for (const id of x.rows || []) g.rows.add(id);
+        if (x.reply) g.replies.push(x.reply); else g.n += 1;
+        by.set(x.answers, g);
+      }
+      for (const [id, g] of by) {
+        const lead = g.x.owner_save === 'lead' || String(id).startsWith('lead');
+        const who = lead ? 'the lead\'s decision' : `your note ${esc(id)}`;
+        const said = g.replies.length ? g.replies.map(esc).join(' ') : `${g.n} change${g.n === 1 ? '' : 's'}`;
+        const li = el(`<li><span class="what">Changed by the agent in answer to ${who}: "${esc(g.x.note || '')}"<span class="note reply">${said}</span></span></li>`);
+        const ids = [...g.rows].filter((r) => a.placeRefsById().has(r));
         if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; li.append(b); }
         al.append(li);
       }

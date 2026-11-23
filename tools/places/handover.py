@@ -5,7 +5,8 @@ returning: an edit of any kind after the final build and check makes the check o
     python -m tools.places handover <place_id>      # exit 1 when the built check is older than the place files,
                                                     # or `stock reach` flags a stock row (material reach,
                                                     # region, trade kit), or a blocker owed in a road or walk
-                                                    # (newworld/places/ways_owed.jsonl) has no reason
+                                                    # (newworld/places/ways_owed.jsonl) has no reason,
+                                                    # or a submitted note is still open past its answer time
 """
 from __future__ import annotations
 
@@ -77,7 +78,22 @@ def main(argv: list[str]) -> int:
     from tools.places import ways
     ways_ok, ways_line = ways.handover_line(a.place_id, Path(a.places_dir))
     print(ways_line)
-    return 0 if ok and reach_ok and log_ok and ways_ok else 1
+    notes_ok, notes_line = notes_answered(a.place_id, Path(a.places_dir))
+    print(notes_line)
+    return 0 if ok and reach_ok and log_ok and ways_ok and notes_ok else 1
+
+
+def notes_answered(pid: str, places: Path) -> tuple[bool, str]:
+    """(passes, a line saying so): no note the owner submitted has stayed unanswered past notes.ANSWER_HOURS; each
+    late one is named, so a hold on his work cannot sit unseen."""
+    from tools.places import notes
+    late = notes.overdue(pid, places)
+    if not late:
+        return True, "notes: every submitted note answered in time"
+    return False, ("notes FAILS: " + "; ".join(f"{n['id']} (submitted {n.get('sent_at') or n.get('at')}): "
+                                                f"\"{str(n.get('text', ''))[:80]}\"" for n in late)
+                   + f" not answered within {notes.ANSWER_HOURS:g} hours: land the change on main now, over his open "
+                   "session, and close it with `notes done`")
 
 
 def timelog_marked(d: Path) -> tuple[bool, str]:

@@ -16,6 +16,8 @@ the skill for each step.
 - Read line ranges, not whole files; routine before and after looks at a small size, full size for a final
   judgement.
 - Decide inside the brief and the owner's rulings; record each call of your own with what you saw. Ask nothing.
+- The owner's submitted notes are answered at once, landed on main over his open session (skill `place-change`);
+  nothing you do waits for his Save or his finalise, and you never save or finalise for him.
 - When a tool misleads you, fix the tool with a test (or say exactly what is wrong for a tool lane), then go on.
 - Your first act of every pass is `python -m tools.places timelog <place> pass start "<what the lead asked>"`; your last is
   `pass end`, then `timelog <place> report --md` in your hand-back. Nothing is logged outside an open pass.
