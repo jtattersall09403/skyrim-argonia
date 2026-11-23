@@ -140,6 +140,8 @@ Brethren* completes. The stage that makes the player a Deckhand also makes peace
 Brethren's crews, a faction of ours. From then on the crews at Bramman's Watch, Kelp-Mouth Cave, Marque Landing and
 Rainbreaker Keep, who attack strangers on sight, let the player walk among them.
 
+The Hollow Tide crew, Rajeel-Kosh's smugglers at Hollow Tide Camp on Skeith Isle, is one crew of Bramman's Brethren.
+
 **What shuts the door.** Joining the Topal Bay Company. The two lines tell the same events from the two sides from
 their second quests on, so a player plays only one of them. When Nuxal-Tei signs the player on in Gideon,
 *Bramman's Brethren* fails with the entry "I have taken the Company's silver. The Brethren will not take me on now."

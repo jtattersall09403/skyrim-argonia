@@ -1674,7 +1674,11 @@ UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2
 
 
 def gizmo_handle(pad, name):
-    return pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+    # after the layout has settled (a panel opening resizes the view, which places the handles again)
+    pad.ev("() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))")
+    h = pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+    assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == name, pad.ev("([x, y]) => document.elementFromPoint(x, y)?.outerHTML.slice(0, 120)", h)
+    return h
 
 
 def test_30_units_move_whole(pad):
@@ -1827,7 +1831,7 @@ def test_32_drag_maps_to_the_view(pad):
         right, fwd = (-math.sin(yaw), math.cos(yaw)), (-math.cos(yaw), -math.sin(yaw))
         for (dx, dy), want in (((70, 0), right), ((0, -70), fwd)):
             h = gizmo_handle(pad, "move")
-            assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == "move"
+            assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == "move", pad.ev("([x, y]) => [document.elementFromPoint(x, y)?.outerHTML.slice(0, 160), JSON.stringify(document.querySelector('.gizmo').getBoundingClientRect()), document.querySelector('.gizmo').style.cssText, JSON.stringify(document.querySelector('#view-ours').getBoundingClientRect()), JSON.stringify(document.querySelector('.view-link').getBoundingClientRect()), (() => { const T = studio.tools, r = T.selRefs(), v = studio.ours.view; return JSON.stringify([T.gizmoAnchor(T.selUnit(), r, v.toScreen(T.centre(r)), v, 100), v.toScreen(T.centre(r)), T.gizmoAnchor.toString().slice(900, 1700)]); })()]", h)
             pad.pen("mouseMoved", *h)
             pad.pen("mousePressed", *h)
             assert pad.ev("document.querySelector('.gizmo .gz-hint').textContent").startswith("Slides along the ground")
@@ -1956,3 +1960,55 @@ def test_35_tablet_layout_of_the_new_controls(browser, server, viewport):
     p.shot(f"35-people-{viewport['width']}")
     assert not p.errors, p.errors
     p.page.context.close()
+
+
+# ---------- 36: handles out of the way while moving; walk speed and look sensitivity; a controller answers at once ----------
+def test_36_moving_look_speed_and_controller(pad):
+    # the handles stand beside the thing, a clear gap off its screen footprint, at rest and while it moves; no box is
+    # drawn, only a faint line drawing of the selected pieces' own meshes
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", house, dist=3000, pitch=1.0)
+    pad.page.wait_for_function("(id) => [...studio.ours.place.groups.values()].some((g) => g.fullParts && g.refs.some((r) => r.id === id))", arg="fixplace.b1")
+    pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+    foot = """() => { const v = studio.ours.view, b = studio.tools.selUnit().box; let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      for (let i = 0; i < 8; i++) { const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); }
+      const r = v.canvas.getBoundingClientRect(); return [x0 + r.left, y0 + r.top, x1 + r.left, y1 + r.top]; }"""
+    beside = lambda h, f: h[0] > f[2] + 20 or h[0] < f[0] - 20 or h[1] > f[3] + 20 or h[1] < f[1] - 20  # noqa: E731  (beside it, or below or above in a narrow view)
+    h = gizmo_handle(pad, "move")
+    assert beside(h, pad.ev(foot)), (h, pad.ev(foot))
+    assert not pad.ev("studio.tools.outline.parent"), "no box"
+    assert pad.ev("studio.tools.shape?.children.length") > 0, "the meshes' line drawing"
+    pad.pen("mouseMoved", *h)
+    pad.pen("mousePressed", *h)
+    pad.pen("mouseMoved", h[0] + 30, h[1] + 5)
+    pad.page.wait_for_timeout(120)
+    assert beside(gizmo_handle(pad, "move"), pad.ev(foot)) and not pad.ev("studio.tools.outline.parent")
+    pad.pen("mouseReleased", h[0] + 30, h[1] + 5)
+    pad.page.wait_for_timeout(80)
+    pad.ev("studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+    assert not pad.ev("studio.tools.shape")
+    # a controller: the right stick turns the view on the next frame and stops on the frame it returns to centre
+    pad.ev("""(() => { window.__pad = { connected: true, axes: [0, 0, 0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false, value: 0 })) };
+             navigator.getGamepads = () => [window.__pad]; })()""")
+    frame = "() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))"
+    pad.ev(frame)
+    y0 = pad.ev("studio.ours.view.rig.yaw")
+    pad.ev("window.__pad.axes[2] = 1")
+    pad.ev(frame)
+    y1 = pad.ev("studio.ours.view.rig.yaw")
+    assert y1 != y0, "the view turns on the next frame"
+    pad.ev("window.__pad.axes[2] = 0")
+    pad.ev(frame)
+    y2 = pad.ev("studio.ours.view.rig.yaw")
+    pad.ev(frame)
+    assert pad.ev("studio.ours.view.rig.yaw") == y2, "and stops when the stick is back at centre"
+    # RB walks faster, LB slower; the walk speed and look are remembered for this viewer
+    s0 = pad.ev("studio.sticks.state.speed")
+    pad.ev("window.__pad.buttons[5] = { pressed: true, value: 1 }")
+    pad.ev(frame)
+    pad.ev("window.__pad.buttons[5] = { pressed: false, value: 0 }")
+    pad.ev(frame)
+    assert pad.ev("studio.sticks.state.speed") == s0 * 2
+    assert pad.ev("JSON.parse(localStorage.getItem('studio.sticks.v1')).speed") == s0 * 2
+    pad.ev("studio.sticks.stepSpeed(-1)")
+    pad.ev("delete navigator.getGamepads")

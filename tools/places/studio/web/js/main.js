@@ -697,6 +697,7 @@ class Studio {
     else w.hidden = true;
   }
   toolFor(view) { return this.tools.forView(view); }
+  viewResized(view) { if (view === this.ours?.view && this.model) this.tools?.placeGizmo(); }
   // What the view of our place turns and zooms about: the selected unit's middle, else the selection's, else nothing.
   pivotFor(view) {
     if (view !== this.ours.view || !this.model || !this.selection.size) return null;
@@ -713,6 +714,9 @@ class Studio {
   cameraMoved(view) {
     const side = view === this.ours.view ? this.ours : this.src;
     if (side.space === 'exterior') side.terrainMesh?.update(view.rig.target);
+    // while a stick drives the camera only the ground and the handles follow each frame; the labels, routes and pins
+    // are worked out once it stops, so the turn never waits on them
+    if (this._driving) { this._camLater = view; this.tools.cameraMoved(view); return; }
     this.tools.cameraMoved(view); this.people.cameraMoved(view); this.needs.cameraMoved(view); this.quests.cameraMoved(view);
     this.walkLayer.cameraMoved(view); this.walkTools.cameraMoved(view);
     if (!this.linked || this.ours.space !== 'exterior' || this.src.space !== 'exterior') return;
@@ -734,9 +738,10 @@ class Studio {
     const tick = (now) => {
       // the view in use draws every frame it changes; the other, while the first moves, every srcEvery-th frame
       const main = this.focused === this.src.view ? this.src.view : this.ours.view, other = main === this.ours.view ? this.src.view : this.ours.view;
-      this.sticks?.frame(now);   // a held thumb stick moves the view it drives every frame (sticks.js)
+      const driving = !!this.sticks?.frame(now);   // a stick or controller moves the view it drives every frame (sticks.js)
+      if (driving !== !!this._driving) { this._driving = driving; if (!driving && this._camLater) { const v = this._camLater; this._camLater = null; this.cameraMoved(v); } }
       const t0 = performance.now(), a = main.render(now);
-      const b = (!a || ++n % this.governor.srcEvery() === 0) ? other.render(now) : false;
+      const b = !driving && (!a || ++n % this.governor.srcEvery() === 0) ? other.render(now) : false;
       this.governor.frame(now, a || b, performance.now() - t0);
       if (a || b) this.frames = (this.frames || 0) + 1;
       requestAnimationFrame(tick);
