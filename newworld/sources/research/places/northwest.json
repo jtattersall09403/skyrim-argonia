@@ -6130,14 +6130,14 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "A reed-cutters' camp of the Owing on the river west of Loriasel, where the old road post's gate still stands and a work barge lies moored at the landing.",
+   "summary": "A reed-cutters' camp of the Owing on the river west of Loriasel, where the old road post's stone hut still stands and a work barge lies moored at the landing.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut and gate still stand there.",
+     "text": "Ashgate Landing is a camp of Owing reed-cutters on the river west of Loriasel. The gangs serve their months of the Owing cutting reed for Stormhold's mat-makers, and the barge that brings each gang lies moored at the landing. It keeps the name of the road post whose stone hut still stands there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6206,7 +6206,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Cut reed goes downriver to Stormhold's mat-makers by barge. The cook sells dried fish and lamp oil from a stall by the hut.",
+     "text": "Cut reed goes downriver to Stormhold's mat-makers by barge. The cook sells dried fish and lamp oil from a stall by the cook's fire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6223,7 +6223,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A grave-stake stands by the gate for the cutters who died here. It is the camp's sole mark of worship.",
+     "text": "The cutters lay the first reed of each month on the river for those who died here. It is the camp's sole mark of worship.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6235,7 +6235,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low stone hut and a wooden gate stand on the river bank, with the cutters' hide tents, bundled reed stacked by the landing and a work barge moored in the pool below the camp.",
+     "text": "A low stone hut stands on the river bank, with the cutters' hide tents, bundled reed stacked by the landing and a work barge moored in the pool below the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6272,7 +6272,7 @@
     },
     {
      "aspect": "source",
-     "text": "Its main source is Military Camp Hjaalmarch Imperial (Skyrim), which supplies the whole camp: six Imperial hide tents round a cook's fire and spit, pitched on a level floor cut into the bank. The Legion's war table, smithy and field hospital are left out. The stone hut and its one room come from Baan Malur (Journey to Baan Malur), a house of dark stone under reed thatch, and the gate is a Legion stockade gate standing alone on the landward road. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, 29.3 m long and 10.1 m in the beam by its bounds). Its furnished hold, the interior cell 01dock3to4, lies behind a door in its waist. It lies moored along the pool's east bank at its own waterline with its keel in the river mud, and a Raven Rock jetty and two ship's planks over its rail join it to the bank. Within 200 m of the hut the river is 29 to 41 m wide, and the pool west-north-west of the hut is 81 m across and about 3.8 m deep. Still to add: nothing; the camp, the barge and its hold, the hut and its room, the gate, the reed, the grave-stake and the strongbox are built.",
+     "text": "Its main source is Military Camp Hjaalmarch Imperial (Skyrim), which supplies the whole camp: six Imperial hide tents round a cook's fire and spit, pitched on a level floor cut into the bank. The Legion's war table, smithy and field hospital are left out. The stone hut and its one room come from Baan Malur (Journey to Baan Malur), a house of dark stone under reed thatch. The barge is Black Marsh & Valenwood's Imperial ship (Black Marsh.esm, hull 0ShipImperial, 29.3 m long and 10.1 m in the beam by its bounds). Its furnished hold, the interior cell 01dock3to4, lies behind a door in its waist. It lies moored along the pool's east bank at its own waterline with its keel in the river mud, and a Raven Rock jetty laid level with its rail joins it to the bank. Within 200 m of the hut the river is 29 to 41 m wide, and the pool west-north-west of the hut is 81 m across and about 3.8 m deep. Still to add: nothing; the camp, the barge and its hold, the hut and its room, the reed and the strongbox are built.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6290,7 +6290,7 @@
     {
      "id": "flat-pad",
      "radius_m": 35,
-     "why": "hut and gate"
+     "why": "hut"
     }
    ],
    "gives": [
@@ -6306,7 +6306,7 @@
     },
     {
      "kind": "cooking-pot",
-     "detail": "the cook's fire by the hut",
+     "detail": "the cook's fire among the tents",
      "count": 1
     },
     {

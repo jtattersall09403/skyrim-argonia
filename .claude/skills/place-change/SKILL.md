@@ -63,11 +63,8 @@ variant, never over the place.
 - `look <place> release <row id> [--space <space>] -m "<why>"` gives a row back to the stages. An owner's row is
   never released by an agent.
 - An owner's row is changed by an agent only to answer him: his note asks for it ("you should fix ..."), or the lead
-  decides it. Commit those strokes with `look commit --answers <note id>` (or `--lead "<decision>"`); they apply over
-  his edit and the studio shows him each as changed in answer to that note. Against a session he has not saved yet,
-  work on a copy of it (`edits.apply_save` of his autosave on a scratch branch, never committed as his), and keep
-  the answers in `agent-edits/pending/` with `after_save: next`: finalise applies them right after his save. Any
-  other stroke on his rows is refused.
+  decides it. Commit those strokes with `look commit --answers <note id>` (or `--lead "<decision>"`); the studio shows
+  him each as changed in answer to that note. Any other stroke on his rows is refused.
 - An edit made straight in a refs file is no hand: every placement goes through `look commit`.
 - A whole draft on a place holding the owner's finalised saves is refused; it needs `--force "<why no stage can be
   correct>"`, once, with the reason in the commit. A whole redraft only when a narrow change cannot be correct.
@@ -83,14 +80,22 @@ things, `tools/newworld/rebuild.sh plan` names each place they reach.
 
 ## The owner's notes and edits
 
-The owner edits the built place in the studio, saves and finalises a save; finalise applies it, builds, checks and
-runs `place-lessons`.
+The owner edits the place in the studio; his work is autosaved as he goes and stays his, open, until he chooses to
+save and finalise it (finalise applies it, builds, checks and runs `place-lessons`). Saving and finalising are his
+alone: an agent never saves or finalises for him, and nothing an agent does waits for either.
 
-1. Read sent, open notes with `python3 -m tools.places notes` (notes he has not sent are his still). A note about the
-   place or selected things is answered with a narrow change by the skill that owns it, and closed with
-   `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"` in plain English. A question,
-   or a change larger than a narrow one, is closed with a reply saying what it would take, and nothing changes.
-2. A note on changes travels in its save and is answered by the lessons step when the save is finalised.
+1. Read submitted notes with `python3 -m tools.places notes` (the studio's "submit for agent"; notes he has not
+   submitted are his still). Answer each at once with a narrow change by the skill that owns it, landed on main at
+   once, and close it with `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"` in
+   plain English. A question, or a change larger than a narrow one, is closed with a reply saying what it would
+   take, and nothing changes. A note still open past its answer time is named by `notes` and fails `handover`.
+2. The notes on his changes (the g-notes in his autosave, `notes --changes`) are answered the same way, at once, over
+   his open session: work out the change on a copy of his autosave applied to the place (`edits.apply_save` in a
+   scratch checkout, never his file, never committed as his), then land it on main as agent edits; a stroke on a row
+   his session touched carries the note it answers (`look commit --answers g8`). When he reloads the tab his session
+   replays over the new draft: an op of an answered note keeps the answer, any other op of his wins
+   (`edits._rebased`, the studio's mirror). What only his save can settle (a row he removed, a word that follows
+   it) is said in the note's reply, never held back.
 3. What the owner changed stays as he left it, his ground paint (`paint.jsonl` rows `by: owner`) too: a stage never
    writes paint, and an agent's repaint is a new stroke over his, never an edit of his rows.
 

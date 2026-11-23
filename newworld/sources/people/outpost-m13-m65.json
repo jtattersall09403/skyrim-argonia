@@ -92,7 +92,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the hut. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.",
+     "text": "She cooks for the reed gang and sells dried fish and lamp oil from her stall by the cook's fire. Each new gang meets her first, at the spit pot in the barge's hold, before the gang-master takes their names.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m13-m65/0",
@@ -373,7 +373,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She cuts beside Ra-tah and mends the tent's hides with sinew when the rain has loosened them. She leaves the first reed she cuts each month at the grave-stake by the gate.",
+     "text": "She cuts beside Ra-tah and mends the tent's hides with sinew when the rain has loosened them. She lays the first reed she cuts each month on the river for the cutters who died here.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:outpost-m13-m65/faith",
@@ -436,7 +436,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He is the best hand with the cutting hook at Ashgate, and the others say the gang-master has never faulted his bundles. He tells visitors that the stone gate was once a road post's.",
+     "text": "He is the best hand with the cutting hook at Ashgate, and the others say the gang-master has never faulted his bundles. He tells visitors that the stone hut was once a road post's.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_note:outpost-m13-m65/history",
@@ -465,7 +465,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "He keeps the cook's fire by the hut burning through the evening and carries lamp oil from Okeeh's stall to the tents. He sleeps through the barge's creak when his tent-mates do not.",
+     "text": "He keeps the cook's fire among the tents burning through the evening and carries lamp oil from Okeeh's stall to the tents. He sleeps through the barge's creak when his tent-mates do not.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m13-m65/2",
