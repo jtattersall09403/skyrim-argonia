@@ -129,6 +129,9 @@ with builds and checks run beside his editing:
 7. The owner captures taken (each side at eye level, each structure the record names, each room a story needs).
 8. The final build and check come after the LAST edit of any kind to the place's files; `python3 -m tools.places
    handover <place_id>` says "built check current" (the consistency stage's rule, `edits/` aside).
+9. Every note the owner submitted is answered and closed (`notes done`), its change landed on main over his open
+   session: `handover` fails while one stays open past its answer time. Nothing waits for his Save or finalise,
+   which are his alone.
 
 ## Planner sessions: how the lead runs place work
 

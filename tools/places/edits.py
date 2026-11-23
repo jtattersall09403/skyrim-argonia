@@ -623,11 +623,45 @@ def apply(place_files: dict, ops: list, source=None) -> dict:
         given = {sid: {r["id"]: r for r in rows} for sid, rows in source.items()}
         source = lambda sid, info: given.get(sid, {})   # noqa: E731
     files["_source"] = _cached(source) if source else None
+    answered = _answered(place_files)
     for op in ops:
-        _apply_one(files, op)
+        _apply_one(files, _rebased(files, op, answered) if answered else op)
     _check_doors(files, ops)
     files.pop("_source")
     return canonical(files)
+
+
+def _answered(place_files: dict) -> dict:
+    """{row id: {note ids}} of the rows an agent changed in answer to the owner (place.json `agent_answers`)."""
+    out: dict = {}
+    for a in (place_files.get("place") or {}).get("agent_answers") or []:
+        for rid in a.get("rows") or []:
+            out.setdefault(rid, set()).add(a.get("answers"))
+    return out
+
+
+def _rebased(files, op, answered: dict):
+    """An owner's op replayed over a draft an agent changed in answer to him (his session saved, or opened, after
+    the answer landed): a move or removal of a row the agent answered, whose `before` no longer fits, is his edit
+    over the row as it stands now (his favour), except when the agent's answer names this op's own note: then the
+    answer, made over his edit, stands and his op is kept as no change. Any other op is as given."""
+    rid = op.get("id")
+    if op["op"] not in ("ref.move", "ref.remove") or rid not in answered:
+        return op
+    rows = (files["spaces"].get(op["space"]) or {}).get("refs") or []
+    i = _find(rows, rid)
+    if i is None or rows[i].get("removed"):
+        return op
+    row = rows[i]
+    fits = same(row, op["before"]) if op["op"] == "ref.remove" else all(same(row.get(k), v) for k, v in op["before"].items())
+    if fits:
+        return op
+    if op["op"] == "ref.remove":
+        return dict(op, before=copy.deepcopy(row))
+    before = {k: copy.deepcopy(row.get(k)) for k in op["before"]}
+    if op.get("note_group") in answered[rid] or op.get("note") in answered[rid]:
+        return dict(op, before=before, after=copy.deepcopy(before))   # the answer stands: his op is kept, as no change
+    return dict(op, before=before)
 
 
 def _cached(source):
@@ -789,6 +823,12 @@ def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), sourc
         hit = sorted(set().union(*(ids(op) for op in g)) & set(owner_ids))
         if not hit:
             keep += g
+            a_ = g[0].get("answers")
+            if a_ and all(op.get("answers") == a_ for op in g):   # an answer to a note of his open session
+                words = {x["id"]: x.get("text", "") for x in save.get("notes") or []}.get(a_, "")
+                answers.append({"save": save["save_id"], "stroke": g[0].get("stroke", k), "answers": a_,
+                                "note": words, "owner_save": "open session",
+                                "rows": sorted(set().union(*(ids(op) for op in g)))})
             continue
         who, words = answered(g, hit)
         if who is None:

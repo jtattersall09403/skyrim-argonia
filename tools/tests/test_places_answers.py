@@ -84,3 +84,38 @@ def test_a_lead_decision_in_the_save_answers_too(fx):
     note = [{"id": "lead-1", "text": "the barge must be walkable for main quest 1", "at": "x", "by": "lead"}]
     out, left = agent(pdir, rid, "2026-11-22T20:00:00Z", answers="lead-1", notes=note)
     assert not left and out["place"]["agent_answers"][0]["owner_save"] == "lead"
+
+
+def test_his_open_session_replays_over_the_agents_answers(fx):
+    """His session is still open (unsaved): the agent's answers land in the draft first (each naming his note), then
+    his ops replay over the new draft: an op of the answered note is kept as no change (the answer, made over his
+    edit, stands); an op of another note on an answered row is his edit over the row as it stands (his favour); an
+    op on a row nobody answered that no longer fits is still a conflict."""
+    pdir = fx / "places/fx"
+    refs = rows(pdir / EXT)
+    a_id, b_id = refs[0]["id"], refs[1]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    rb = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == b_id)
+    # his open session: he moves a (note g8) and b (note g6)
+    mine = [dict(move(ra, 100.0), n=1, call="fault", note_group="g8"), dict(move(rb, 50.0), n=2, call="fault", note_group="g6")]
+    session = {"save_id": "autosave", "place_id": "fx", "at": "2026-11-22T15:48:08Z", "ops": mine,
+               "notes": [{"id": "g8", "text": "the door, you should fix", "at": "x"}, {"id": "g6", "text": "hovering", "at": "x"}]}
+    # the agent's answers, made over his session, land in the draft: a where he left it plus 7 (g8); b by 3 (g8 too)
+    ans = [{"op": "ref.move", "space": "exterior", "id": a_id, "n": 1, "stroke": 1, "call": "fault", "answers": "g8",
+            "before": {"pos": list(ra["pos"])}, "after": {"pos": [ra["pos"][0] + 107.0, ra["pos"][1], ra["pos"][2]]}},
+           {"op": "ref.move", "space": "exterior", "id": b_id, "n": 2, "stroke": 1, "call": "fault", "answers": "g8",
+            "before": {"pos": list(rb["pos"])}, "after": {"pos": [rb["pos"][0] + 3.0, rb["pos"][1], rb["pos"][2]]}}]
+    sv = {"save_id": "agent-a", "place_id": "fx", "at": "2026-11-22T20:00:00Z", "by": "agent", "final": False,
+          "ops": ans, "notes": session["notes"]}
+    drafted, left = edits.apply_agent_save(files, sv)
+    assert not left and drafted["place"]["agent_answers"][0]["owner_save"] == "open session"
+    out = edits.apply_save(drafted, session)
+    got = {r["id"]: r["pos"][0] for r in out["spaces"]["exterior"]["refs"]}
+    assert abs(got[a_id] - (ra["pos"][0] + 107.0)) < 1e-6      # g8 answered: the answer stands
+    assert abs(got[b_id] - (rb["pos"][0] + 50.0)) < 1e-6       # g6 not the answer's note: his edit wins
+    # a row nobody answered that no longer fits is still a conflict
+    other = dict(move(ra, 1.0), n=3, call="fault", id=refs[2]["id"], before={"pos": [0.0, 0.0, 0.0]})
+    import pytest
+    with pytest.raises(edits.EditConflict):
+        edits.apply_save(drafted, dict(session, ops=[other]))

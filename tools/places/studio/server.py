@@ -186,6 +186,7 @@ async def places(req: web.Request) -> web.Response:
                     "stamps": {"draft": draft, "ground": bundle_stamp(cfg, variant.ground(pid)),
                                "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")},
                     "fit": pl.get("fit"),
+                    "agent_answers": pl.get("agent_answers") or [],   # replayed over and shown beside his session
                     "bytes": bundle_bytes(cfg, f"draft.{pid}") + bundle_bytes(cfg, f"src.{pl.get('source_id')}"),
                     **({"draft_error": draft_error} if draft_error else {})})
     return jok(out)

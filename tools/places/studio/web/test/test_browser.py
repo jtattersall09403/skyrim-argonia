@@ -174,6 +174,7 @@ def open_pad(browser, server, viewport, scheme="light", fresh=True, choose="draf
     if REAL:  # the real place builds its land in slices after the first frame
         page.wait_for_function("document.getElementById('progress').hidden", timeout=WAIT)
     page.wait_for_timeout(500)
+    page.wait_for_function("!studio.choosing || document.querySelector('#start .sheet')", timeout=WAIT)
     if choose and page.locator("#start .sheet").is_visible():  # saved work: nothing applied until chosen
         if choose == "draft":
             page.get_by_role("button", name="Start from the builder's draft").click()
@@ -530,11 +531,6 @@ def test_27_thumb_sticks(pad):
     assert not pad.errors, pad.errors
 
 
-# ---------- 30: composite things move as one ----------
-UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2 = (v) => Math.round(v * 100) / 100;
-  const refs = {}; for (const [id, r] of ex) refs[id] = { pos: r.pos.map(r2), rot: (r.rot || []).map((v) => Math.round(v * 1e4)), seat: r.seat ?? null, door: r.door || null };
-  const room = m.spaces.FixHouse02.refs.get('fixplaceFixHouse02.door');
-  return { refs, bram: m.people.get('fixplace.p2'), room: room.door }; })()"""
 
 
 # ---------- 35: the tablet layout of the new controls, landscape and upright ----------
@@ -580,3 +576,72 @@ def test_35_tablet_layout_of_the_new_controls(browser, server, viewport):
     p.shot(f"35-people-{viewport['width']}")
     assert not p.errors, p.errors
     p.page.context.close()
+
+
+def gizmo_handle(pad, name):
+    """The page point of a gizmo handle once the layout has settled (a panel opening resizes the view, which places the
+    handles again), checked to be what a pen there would grab."""
+    pad.ev("() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))")
+    h = pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+    assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == name, pad.ev("([x, y]) => document.elementFromPoint(x, y)?.outerHTML.slice(0, 120)", h)
+    return h
+
+
+# ---------- 36: handles beside the selection, grabbable; no box; a controller answers at once ----------
+FOOT = """() => { const v = studio.ours.view, b = studio.tools.selUnit().box; let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+  for (let i = 0; i < 8; i++) { const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); }
+  const r = v.canvas.getBoundingClientRect(); return [x0 + r.left, y0 + r.top, x1 + r.left, y1 + r.top]; }"""
+FRAME = "() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))"
+
+
+def _beside(h, f):   # beside the thing's screen footprint, or below or above it in a narrow view, by a clear gap
+    return h[0] > f[2] + 20 or h[0] < f[0] - 20 or h[1] > f[3] + 20 or h[1] < f[1] - 20
+
+
+@pytest.mark.parametrize("viewport", [LANDSCAPE, PORTRAIT], ids=["landscape", "portrait"])
+def test_36_handles_beside_and_controller(browser, server, viewport):
+    """In landscape and upright, with the Selected panel open and closed: the move handle stands beside the selected
+    unit and a pen there grabs it, at rest and mid-drag; no box is drawn, only the pieces' own line drawing. A
+    controller's right stick turns the view on the next frame and stops on the frame it returns to centre (the stick
+    maths is proved in sticks.test.mjs)."""
+    pad = open_pad(browser, server, viewport)
+    if pad.ev("!document.getElementById('intro').hidden"):
+        pad.page.click("#intro button")
+    pad.page.click("#rail [data-tool=select]")
+    house = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", "fixplace.b1")
+    look_at(pad, "ours", house, dist=3000, pitch=1.0)
+    pad.page.wait_for_function("(id) => [...studio.ours.place.groups.values()].some((g) => g.fullParts && g.refs.some((r) => r.id === id))", arg="fixplace.b1")
+    for panel in ("open", "closed"):
+        pad.ev("studio.tools.selectUnit(studio.unitIndex().units.get('h01'))")
+        if panel == "closed":
+            pad.ev("studio.panels.close()")
+        assert pad.ev("!document.getElementById('panel').hidden") == (panel == "open"), panel
+        h = gizmo_handle(pad, "move")
+        assert _beside(h, pad.ev(FOOT)), (panel, h, pad.ev(FOOT))
+        assert not pad.ev("studio.tools.outline.parent"), "no box"
+        assert pad.ev("studio.tools.shape?.children.length") > 0, "the meshes' line drawing"
+        n0 = len(pad.ops())
+        pad.pen("mouseMoved", *h)
+        pad.pen("mousePressed", *h)
+        pad.pen("mouseMoved", h[0] + 30, h[1] + 5)
+        pad.page.wait_for_timeout(120)
+        assert _beside(gizmo_handle(pad, "move"), pad.ev(FOOT)) and not pad.ev("studio.tools.outline.parent"), panel
+        pad.pen("mouseReleased", h[0] + 30, h[1] + 5)
+        pad.page.wait_for_timeout(80)
+        assert len(pad.ops()) == n0 + 1, f"the drag moved the unit ({panel})"
+        pad.ev("studio.log.undo(); studio.selection.clear(); studio.tools.selectionChanged()")
+        assert not pad.ev("studio.tools.shape")
+    pad.ev("""(() => { window.__pad = { connected: true, axes: [0, 0, 0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false, value: 0 })) };
+             navigator.getGamepads = () => [window.__pad]; })()""")
+    pad.ev(FRAME)
+    y0 = pad.ev("studio.ours.view.rig.yaw")
+    pad.ev("window.__pad.axes[2] = 1")
+    pad.ev(FRAME)
+    assert pad.ev("studio.ours.view.rig.yaw") != y0, "the view turns on the next frame"
+    pad.ev("window.__pad.axes[2] = 0")
+    pad.ev(FRAME)
+    y2 = pad.ev("studio.ours.view.rig.yaw")
+    pad.ev(FRAME)
+    assert pad.ev("studio.ours.view.rig.yaw") == y2, "and stops when the stick is back at centre"
+    assert not pad.errors, pad.errors
+    pad.page.context.close()

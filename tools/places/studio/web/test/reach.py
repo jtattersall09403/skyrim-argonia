@@ -38,4 +38,5 @@ REACH = {
     f"{B}::test_22_start_choice": SAVES,
     f"{B}::test_27_thumb_sticks": ["js/sticks.js"],
     f"{B}::test_35_tablet_layout_of_the_new_controls": ["js/units.js", "js/people.js", "js/sticks.js"],
+    f"{B}::test_36_handles_beside_and_controller": ["js/units.js", "js/sticks.js"],
 }

@@ -44,3 +44,14 @@ test('walk keeps the eye at a person\'s height over a fixture ground; flying kee
   const f = stepCamera(cam0, { move: deflection(0, -60, 60), rise: WALK }, 0.1); near(f.z, 500 + WALK * 0.1);
   const lost = stepCamera(c, { move: deflection(0, -60, 60) }, 0.1, { walk: true, ground: () => null }); near(lost.z, c.z);
 });
+
+test('a controller stick: a round dead zone, a gentle curve, full at the edge; look sensitivity scales the turn', async () => {
+  const { padDeflection, turnRates: tr, YAW_RATE } = await import('../js/sticks.js');
+  assert.deepEqual(padDeflection(0.1, 0.05), { x: 0, y: 0, m: 0 });
+  near(padDeflection(1, 0).x, 1); assert.ok(padDeflection(0.5, 0).x < 0.5 && padDeflection(0.5, 0).x > 0);
+  near(tr({ x: 1, y: 0 }, 2).yaw, -2 * YAW_RATE);
+});
+test('a slow frame still turns as far as the time it took', () => {
+  const a = stepCamera(cam0, { look: { x: 1, y: 0 } }, 0.2);
+  near(a.yaw, cam0.yaw - 1.8 * 0.2);
+});

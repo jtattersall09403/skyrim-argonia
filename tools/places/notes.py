@@ -129,6 +129,28 @@ def _now() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+ANSWER_HOURS = 4.0     # a submitted note is answered (its change landed on main, closed with `done`) within this
+
+
+def overdue(place_id: str, places: Path = PLACES, now: float | None = None, hours: float = ANSWER_HOURS) -> list[dict]:
+    """The place's submitted notes still open longer than `hours` since they were sent: an agent answers a submitted
+    note at once, over the owner's open session; nothing it does waits for his Save or his finalise."""
+    import calendar
+    now = time.time() if now is None else now
+    out = []
+    for n in read(place_id, places):
+        if state(n) != "sent":
+            continue
+        at = n.get("sent_at") or n.get("at") or ""
+        try:
+            t = calendar.timegm(time.strptime(at, "%Y-%m-%dT%H:%M:%SZ"))
+        except ValueError:
+            t = now
+        if now - t > hours * 3600:
+            out.append(n)
+    return out
+
+
 def state(n: dict) -> str:
     """unsent (the owner's still), sent (waiting for the agent) or done."""
     return "done" if n.get("done") else "sent" if n.get("sent", True) else "unsent"
@@ -262,7 +284,12 @@ def main(argv: list[str]) -> int:
     ids = [a.place_id] if a.place_id else sorted(d.name for d in a.places.iterdir() if (d / "edits").is_dir())
     wanted = {"sent"} | ({"unsent"} if a.unsent or a.all else set()) | ({"done"} if a.all else set())
     shown = 0
+    late = 0
     for pid in ids:
+        for n in overdue(pid, a.places):
+            print(f"OVERDUE {pid} {n['id']}: submitted {n.get('sent_at') or n.get('at')} and not answered within "
+                  f"{ANSWER_HOURS:g} hours: land its change now and close it with `notes done`")
+            late += 1
         for n in read(pid, a.places):
             if state(n) in wanted:
                 print(show(pid, n))
@@ -273,4 +300,4 @@ def main(argv: list[str]) -> int:
             shown += 1
     if not shown:
         print("no notes" if a.all else "no open notes")
-    return 0
+    return 1 if late else 0

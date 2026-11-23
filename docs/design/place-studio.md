@@ -686,14 +686,20 @@ finalise and never before.
 
 **Agent answers.** An agent's strokes (`look commit`, kept in `agent-edits/`) never change a row the owner's
 finalised saves touched, except to answer him: `look commit --answers <note id>` marks every stroke as the answer to a
-note of his save ("you should fix ..."), and `--lead "<decision>"` to a lead's decision kept in the agent save's own
-`notes` as `{id, text, at, by: "lead"}`. Such a stroke applies when every op carries `answers`, the note belongs to
-an owner save that touched each of its rows (or is the save's lead decision), and the agent save was made after his;
-its `before` is his `after`. It is listed in `place.json` `agent_answers` `{save, stroke, answers, note, owner_save,
-rows}`, and the studio's Notes panel shows each as "Changed by the agent in answer to your note g8" with its things
-to select; he moves them back as he likes, which is his edit. Any other stroke on his rows is left out and reported
-as REFUSED. Answers made before his session is saved wait in `agent-edits/pending/` (`after_save: next`) and are
-applied by finalise right after his save.
+note of his ("you should fix ..."), and `--lead "<decision>"` to a lead's decision kept in the agent save's own
+`notes` as `{id, text, at, by: "lead"}`. On a finalised row such a stroke applies when every op carries `answers`, the
+note belongs to an owner save that touched each of its rows (or is the save's lead decision), and the agent save was
+made after his; its `before` is his `after`. Any other stroke on his rows is left out and reported as REFUSED. Every
+answering stroke is listed in `place.json` `agent_answers` `{save, stroke, answers, note, owner_save, rows}`
+(`owner_save` "open session" for a note of his unsaved work), and the studio's Notes panel shows each as "Changed by
+the agent in answer to your note g8" with its things to select.
+
+Answers land on main at once, never held for his save. His open session (the autosave) replays over the new draft
+when he reloads the tab, and his save replays over it when he finalises, by one rule (`edits._rebased`, mirrored by
+the studio's `rebaseOp`): a move or removal of an answered row whose `before` no longer fits is his edit over the row
+as it stands (his favour), except an op of the note the answer names, which is kept as no change (the answer, made
+over his edit, stands). Any other op that no longer fits stops the replay there, as before. A submitted note still
+open past `notes.ANSWER_HOURS` is named by `notes` and fails `handover`.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -837,7 +843,7 @@ a unit, worked out afresh from the space's refs whenever the place changes:
 4. two or more pieces one sees make a unit: a building with only its lights or invisible walls is none.
 A unit is named for its head piece, the lowest of its buildings (the hull under the sail), else its biggest piece.
 
-A tap with Select picks the whole unit of the thing tapped: one outline round all of it and its name over it
+A tap with Select picks the whole unit of the thing tapped: a faint line drawing of all its pieces and its name over it
 ("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
 panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
 comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
@@ -856,7 +862,12 @@ the unit and the point before it half as far, so it bends to the door; the panel
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 
-**Moving** (`move_map.js` the mapping, `tools.js` the handles). Round a selection stand its handles, each one way of
+**What is selected** is drawn as a faint, thin line drawing of its own meshes (each model's outline and creases,
+hidden where the mesh hides it; for a unit, all its pieces), never a box and never a tint, so the thing is seen as it
+reads while it is selected and moved (`objects.js outlineOf`). The handles stand beside it on the screen, a clear gap
+off its footprint's right edge (the left when there is no room), at rest and while it moves, never over it.
+
+**Moving** (`move_map.js` the mapping, `tools.js` the handles). Beside a selection stand its handles, each one way of
 moving, big enough for a finger, and each named over the gizmo while the pen hovers on it and through its drag:
 - the middle (64 px) slides along the ground ("Slides along the ground; keeps how it sits"): the drag moves the thing
   over a level plane at its own height, fixed when the drag starts, so the point under the pen stays under it, as
@@ -953,7 +964,12 @@ with walls. With Walk off the sticks fly the camera and two buttons raise and lo
 stick drives it alone; both sticks work at once; the pen never moves a stick; the one-finger, two-finger and pen
 gestures are unchanged. Movement is integrated each animation frame (frame-rate independent); the views draw while
 a stick is held. The sticks show on a touch device and are switched by Sticks in our view's bar; shown, walk and
-step are remembered per browser. Shift with the wheel still tilts the view from a mouse.
+step are remembered per browser. Shift with the wheel still tilts the view from a mouse. A game controller drives the same camera (the standard mapping, read every animation frame): the left stick
+walks, the right stick looks, LB and RB step the walk speed slower and faster, LT and RT lower and raise the flying
+camera; a controller's stick has a round dead zone of 15% and a gentle curve, and no smoothing, so the view answers
+on the next frame and stops on the frame the stick is back at centre. Walk speed (x0.25 to x8) and Look (x0.5 to x3)
+sit over the right stick, remembered per browser. While a stick drives the camera the other view waits and the
+labels, routes and pins are worked out once it stops; a slow frame turns as far as the time it took.
 
 **Opening and leaving a place.** The studio opens the place in the address, else the one this browser last had
 open, else the lightest place (the draft and source bundles' bytes, `bytes` in `/api/places`). Leaving a place lets
@@ -1687,9 +1703,7 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    also writes its taste ops to `place.json` `preferences`), mark the save final, commit the place and the sources
    by path; with content ops, reload the stock tables and commit them (Stock: Finalise). The applied files are kept
    as `after.json` before they are written, so a run stopped while writing writes the same files again.
-   Right after the save, the agent's answers to it are applied (`finalise.apply_answers`): each
-   `agent-edits/pending/<save_id>.json` whose `after_save` is this save or `next`, made against his session before he
-   saved it, by `edits.apply_agent_save` with this save's rows and notes as his; see Agent answers below.
+   His save replays over the agent's answers already in the draft by the replay rule (Agent answers, below).
 2. **Build**: against the current world: `worldparts` decides whether the world moved under the place; if so the
    ground is taken again (`extract --ground`, `ground-check`); then seat, build, check, navexport, and the place layer
    onto the New World card (`infra/gpu-box/places_deploy.sh`, which waits out a live stream); `finalise --plan`
