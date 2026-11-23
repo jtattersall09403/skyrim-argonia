@@ -699,7 +699,8 @@ when he reloads the tab, and his save replays over it when he finalises, by one 
 the studio's `rebaseOp`): a move or removal of an answered row whose `before` no longer fits is his edit over the row
 as it stands (his favour), except an op of the note the answer names, which is kept as no change (the answer, made
 over his edit, stands); any op of that note on that row that no longer fits (the answer removed the row, or put it
-where he did) is kept as no change too. Any other op that no longer fits stops the replay there, as before. A submitted note still
+where he did) is kept as no change too. A change of his that a later request of his undoes (rigging he removed and then asked to have back) is
+listed on that answer as `undoes: [note]`: his ops of that note on its rows replay as no change. Any other op that no longer fits stops the replay there, as before. A submitted note still
 open past `notes.ANSWER_HOURS` is named by `notes` and fails `handover`.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
