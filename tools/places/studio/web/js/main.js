@@ -697,6 +697,7 @@ class Studio {
     else w.hidden = true;
   }
   toolFor(view) { return this.tools.forView(view); }
+  viewResized(view) { if (view === this.ours?.view && this.model) this.tools?.placeGizmo(); }
   // What the view of our place turns and zooms about: the selected unit's middle, else the selection's, else nothing.
   pivotFor(view) {
     if (view !== this.ours.view || !this.model || !this.selection.size) return null;

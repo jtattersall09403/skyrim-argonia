@@ -120,7 +120,7 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .sketch .who.name.sel { font-size: 14px; fill: var(--accent); }
 
 /* the gizmo: big handles round the selection, for a pen or a finger */
-.gizmo { position: absolute; width: 0; height: 0; z-index: 3; }
+.gizmo { position: absolute; width: 0; height: 0; z-index: 5; }   /* over the thumb sticks: the handles can always be grabbed */
 .gizmo .h { position: absolute; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; display: grid; place-items: center;
   background: var(--panel); color: var(--ink); box-shadow: var(--shadow); touch-action: none; border: 2px solid var(--accent); font-size: 11px; }
 .gizmo .h svg { width: 24px; height: 24px; }

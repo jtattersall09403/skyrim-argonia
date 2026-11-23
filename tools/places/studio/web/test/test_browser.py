@@ -1674,7 +1674,11 @@ UNIT_STATE = """(() => { const m = studio.model, ex = m.spaces.exterior.refs, r2
 
 
 def gizmo_handle(pad, name):
-    return pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+    # after the layout has settled (a panel opening resizes the view, which places the handles again)
+    pad.ev("() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))")
+    h = pad.ev(f"(() => {{ const r = document.querySelector('.gizmo [data-h={name}]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }})()")
+    assert pad.ev("([x, y]) => document.elementFromPoint(x, y)?.closest('[data-h]')?.dataset.h", h) == name, pad.ev("([x, y]) => document.elementFromPoint(x, y)?.outerHTML.slice(0, 120)", h)
+    return h
 
 
 def test_30_units_move_whole(pad):
@@ -1969,7 +1973,7 @@ def test_36_moving_look_speed_and_controller(pad):
     foot = """() => { const v = studio.ours.view, b = studio.tools.selUnit().box; let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
       for (let i = 0; i < 8; i++) { const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); }
       const r = v.canvas.getBoundingClientRect(); return [x0 + r.left, y0 + r.top, x1 + r.left, y1 + r.top]; }"""
-    beside = lambda h, f: h[0] > f[2] + 20 or h[0] < f[0] - 20  # noqa: E731
+    beside = lambda h, f: h[0] > f[2] + 20 or h[0] < f[0] - 20 or h[1] > f[3] + 20 or h[1] < f[1] - 20  # noqa: E731  (beside it, or below or above in a narrow view)
     h = gizmo_handle(pad, "move")
     assert beside(h, pad.ev(foot)), (h, pad.ev(foot))
     assert not pad.ev("studio.tools.outline.parent"), "no box"

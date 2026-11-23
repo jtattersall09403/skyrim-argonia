@@ -366,10 +366,10 @@ export class Tools {
   gizmoAnchor(unit, refs, s, v, R) {
     const boxes = unit ? [unit.box] : refs.filter((r) => r.kind !== 'light' && !r.primitive).map((r) => boxOf(r, this.baseOf(r), this.app.seated(r).pos));
     if (!boxes.length) return [s.x, s.y + R * 0.9];
-    let x0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     for (const b of boxes) for (let i = 0; i < 8; i++) {
       const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); if (q.behind) continue;
-      x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y);
+      x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y);
     }
     if (!Number.isFinite(y1)) return [s.x, s.y + R * 0.9];
     // beside it, a clear gap off its right edge (the left when the right is off the screen), at its middle's height
@@ -381,8 +381,15 @@ export class Tools {
       const pr = o.getBoundingClientRect();
       if (pr.width && pr.left > vr.left && pr.bottom > vr.top && pr.top < vr.bottom) W = Math.min(W, pr.left - vr.left);
     }
-    const x = x1 + gap < W - R * 1.25 ? x1 + gap : x0 - gap > R * 0.8 ? x0 - gap : Math.min(W - R * 1.25, x1 + gap);
-    return [Math.max(R * 0.6, Math.min(W - R * 0.6, x)), Math.max(R * 1.35, Math.min(H - R, s.y))];   // always inside what is seen
+    // the places to try, best first: right of it, left of it, below it, above it, then the nearest spot inside the view;
+    // the first whose middle the pen can reach (nothing of the page lies over it) wins
+    const ym = Math.max(R * 1.35, Math.min(H - R, s.y)), cx = Math.max(R, Math.min(W - R * 1.25, s.x));
+    const tries = [[x1 + gap, ym], [x0 - gap, ym], [cx, y1 + R * 0.75], [cx, y0 - R * 0.75]]
+      .filter(([x, y]) => x > R * 0.8 && x < W - R * 1.25 && y > R * 1.35 && y < H - R * 0.6);
+    const free = (x, y) => { const e = document.elementFromPoint(vr.left + x, vr.top + y); return !e || !!e.closest?.(`#${v.el.id}`); };
+    const pick = tries.find(([x, y]) => free(x, y)) || tries[0];
+    if (pick) return pick;
+    return [Math.max(R * 0.6, Math.min(W - R * 0.6, x1 + gap)), ym];   // always inside what is seen
   }
   gizmoDown(kind, e) {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
