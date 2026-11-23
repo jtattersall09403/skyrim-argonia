@@ -435,7 +435,8 @@
   "agent-20261122T055009",
   "agent-20261123T040120",
   "agent-20261123T040326",
-  "agent-20261123T072313"
+  "agent-20261123T072313",
+  "agent-20261123T083140"
  ],
  "draft": {
   "add": [
@@ -749,6 +750,46 @@
      "outpost-m13-m65.LOOK006PLACE"
     ],
     "why": "the boarding plank lies over the barge's rail and down into its waist, inside the hull's bounds as a ship's plank does, seen at eye level from the jetty"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LANDINGPLANKDOWN",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
+   },
+   {
+    "check": "doors",
+    "ids": [
+     "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the hold door's arrival is on the barge's open waist deck; the masts' rigging model spans the whole deck, so its bounds take in the arrival though nothing stands there (eye view from the rail into the waist)"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK006PLACE",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK007PLACE",
+     "outpost-m13-m65.LOOK006PLACE"
+    ],
+    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.BOARDINGPLANK",
+     "outpost-m13-m65.LOOK007PLACE"
+    ],
+    "why": "the boarding plank runs over the barge's rail down into its waist, inside the masts' and rigging's bounds as a gangplank does; the owner is positioning the ship with its rigging, restored at his request 2026-11-23"
    }
   ],
   "accepted": [
@@ -1281,10 +1322,8 @@
    "answers": "g1",
    "note": "Rigging misaligned",
    "owner_save": "open session",
-   "rows": [
-    "outpost-m13-m65.LOOK007PLACE"
-   ],
-   "reply": "The barge's masts and rigging are removed, as you removed them (note g2), for this barge only: they stood over the boarding plank."
+   "rows": [],
+   "reply": "You removed the masts and rigging; at your later request they are back on the barge, joined to the ship as one unit (see your request of 2026-11-23)."
   },
   {
    "save": "agent-20261123T040120",
@@ -1292,10 +1331,9 @@
    "note": "Rigging was blocking walk off barge",
    "owner_save": "open session",
    "rows": [
-    "outpost-m13-m65.BOARDINGPLANK",
-    "outpost-m13-m65.LOOK007PLACE"
+    "outpost-m13-m65.BOARDINGPLANK"
    ],
-   "reply": "With the rigging and the planks gone, the barge's deck lies below its rail where your raised jetty meets it, so nobody could walk off it (main quest 1 starts in the hold). One boarding plank now runs from the jetty's end over the rail down into the waist, clear of everything; move or restyle it as you like."
+   "reply": "You removed the masts and rigging; at your later request they are back on the barge, joined to the ship as one unit (see your request of 2026-11-23)."
   },
   {
    "save": "agent-20261123T040120",
@@ -1475,6 +1513,23 @@
    "note": "Creatures cluttering the landing",
    "owner_save": "open session",
    "rows": []
+  },
+  {
+   "save": "agent-20261123T083140",
+   "answers": "request-2026-11-23",
+   "note": "can you add the rigging back (aligned correctly with the ship as the source had it) and make it part of the composite of the ship - so I can move the whole lot around as one thing? I'll then play around with it to get the positioning right.",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK007PLACE",
+    "outpost-m13-m65.LOOK006PLACE",
+    "outpost-m13-m65.BOARDINGPLANK",
+    "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3"
+   ],
+   "undoes": [
+    "g1",
+    "g2"
+   ],
+   "reply": "Rigging put back and joined to the ship as one unit, as you asked: select the ship and move it whole; your earlier moves and removal of the rigging are kept as no change."
   }
  ]
 }

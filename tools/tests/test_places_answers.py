@@ -141,3 +141,20 @@ def test_an_answer_that_makes_his_change_keeps_his_ops_as_no_change(fx):
     assert not left
     out = edits.apply_save(drafted, session)
     assert all(r["id"] != a_id or r.get("removed") for r in out["spaces"]["exterior"]["refs"])
+
+
+def test_a_later_request_undoes_his_earlier_change(fx):
+    """He removed a row in his open session, then asked to have it back: the agent's answer lists his earlier note
+    under `undoes`, and his ops of that note on that row replay as no change, so the row stays as the answer put it."""
+    pdir = fx / "places/fx"
+    a_id = rows(pdir / EXT)[0]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    m1 = dict(move(ra, 10.0), n=1, call="fault", note_group="g2")
+    rm = {"op": "ref.remove", "space": "exterior", "id": a_id, "before": dict(ra, pos=m1["after"]["pos"]), "n": 2,
+          "call": "fault", "note_group": "g2"}
+    files["place"]["agent_answers"] = [{"answers": "request-1", "rows": [a_id], "undoes": ["g2"]}]
+    out = edits.apply_save(files, {"save_id": "autosave", "place_id": "fx", "at": "x", "ops": [m1, rm],
+                                   "notes": [{"id": "g2", "text": "in the way", "at": "x"}]})
+    got = next(r for r in out["spaces"]["exterior"]["refs"] if r["id"] == a_id)
+    assert not got.get("removed") and got["pos"] == ra["pos"]

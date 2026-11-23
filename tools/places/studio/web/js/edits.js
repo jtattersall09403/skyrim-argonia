@@ -457,7 +457,10 @@ export class EditLog {
   load(ops, notes = []) {
     this.notes = new Map((notes || []).filter((x) => x?.id).map((x) => [x.id, { id: x.id, text: String(x.text ?? ''), at: x.at }]));
     this.ops = []; this.cursor = 0; this.n = 0; let err = null;
+    const undone = new Set((this.model.place?.agent_answers || []).flatMap((a) => (a.undoes || []).flatMap((g) => (a.rows || []).map((id) => `${id} ${g}`))));
     for (const raw of ops) {
+      // a change of his a later request of his asked the agent to undo is kept as no change (edits.py _undone)
+      if (undone.has(`${rowId(raw)} ${raw.note_group || raw.note}`)) continue;
       const op = rebaseOp(this.model, raw);
       // an op of a note the agent answered on its row, which no longer fits: the answer already made the row what
       // the op makes it, so it is kept as no change (edits.py apply)

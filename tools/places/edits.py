@@ -623,8 +623,10 @@ def apply(place_files: dict, ops: list, source=None) -> dict:
         given = {sid: {r["id"]: r for r in rows} for sid, rows in source.items()}
         source = lambda sid, info: given.get(sid, {})   # noqa: E731
     files["_source"] = _cached(source) if source else None
-    answered = _answered(place_files)
+    answered, undone = _answered(place_files), _undone(place_files)
     for op in ops:
+        if (_row_id(op), op.get("note_group") or op.get("note")) in undone:
+            continue   # a later request of his undid this change of his: kept as no change
         try:
             _apply_one(files, _rebased(files, op, answered) if answered else op)
         except EditConflict:
@@ -642,6 +644,18 @@ def _answered(place_files: dict) -> dict:
     for a in (place_files.get("place") or {}).get("agent_answers") or []:
         for rid in a.get("rows") or []:
             out.setdefault(rid, set()).add(a.get("answers"))
+    return out
+
+
+def _undone(place_files: dict) -> set:
+    """{(row id, note id)}: changes of the owner's open session that a later request of his asked the agent to undo
+    (place.json `agent_answers` rows with `undoes`, e.g. rigging he removed and then asked to have back). His ops of
+    that note on that row replay as no change, whatever they would do."""
+    out = set()
+    for a in (place_files.get("place") or {}).get("agent_answers") or []:
+        for note in a.get("undoes") or []:
+            for rid in a.get("rows") or []:
+                out.add((rid, note))
     return out
 
 
