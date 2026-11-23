@@ -648,3 +648,25 @@ def handover_line(place_id: str, places=None) -> tuple[bool, str]:
         return True, ("ways: nothing owed" if not rows else f"ways: {len(rows)} owed blocker(s), each with its reason")
     return False, (f"ways FAILS: {len(left)} owed blocker(s) stand in a road or walk with no reason "
                    f"({owed_path(places).name}): move each off its way, or give the reason it stands there")
+
+
+def main(argv=None) -> int:
+    """python -m tools.places ways <place_id> ...: each place's blockers now (owed or failing), the owed list's own
+    faults and the handover line; exit 1 when any blocker fails or any owed row is stale."""
+    import argparse
+    ap = argparse.ArgumentParser(prog="python -m tools.places ways")
+    ap.add_argument("places", nargs="+")
+    a = ap.parse_args(argv)
+    rc = 0
+    for pid in a.places:
+        fail, got, bad = split_owed(pid, place_blockers(pid))
+        for b in fail:
+            print(f"{pid}: FAILS {line(b)}")
+        for b in got:
+            print(f"{pid}: owed {line(b)}")
+        for f in bad:
+            print(f"{pid}: {f}")
+        ok, says = handover_line(pid)
+        print(f"{pid}: {'clear' if not (fail or got or bad) else 'not clear'}; {says}")
+        rc |= 1 if fail or bad or not ok else 0
+    return rc
