@@ -321,14 +321,52 @@ def cell_holders(order: list[str], key: str) -> list[str]:
 
 # ---- world facts ----------------------------------------------------------------------------------------------------
 
+_SHA: dict = {}
+
+
+def file_sha(p: Path) -> str:
+    """sha256 of a file, kept for the run by its path, size and time."""
+    st = p.stat()
+    k = (str(p), st.st_size, st.st_mtime_ns)
+    if k not in _SHA:
+        _SHA[k] = sha256(p)
+    return _SHA[k]
+
+
+def tool_cache(kind: str, key_parts: list) -> Path:
+    """Where a dotnet tool's answer is kept: out/places/cache/<kind>/<key>.json, the key over what the answer is a
+    function of (the asked, the files read by their sha256, the tool's own bytes)."""
+    h = hashlib.sha256(json.dumps(key_parts, sort_keys=True).encode())
+    h.update(file_sha(TOOL).encode())
+    return OUT / "cache" / kind / f"{h.hexdigest()[:32]}.json"
+
+
+TOOL_CACHE_KEEP = 32   # answers kept per kind: the newest; older ones go as a new one is kept
+
+
+def kept_answer(src: Path, kept: Path) -> None:
+    """Move a tool's answer into its place in the cache, and let the oldest of its kind go."""
+    kept.parent.mkdir(parents=True, exist_ok=True)
+    os.replace(src, kept)
+    old = sorted(kept.parent.glob("*.json"), key=lambda f: f.stat().st_mtime)[:-TOOL_CACHE_KEEP]
+    for f in old:
+        f.unlink(missing_ok=True)
+
+
 def world_facts(cells: set, tmp: Path) -> dict:
-    req = tmp / "world_req.json"
-    out = tmp / "world.json"
-    atomic_json(req, {"cells": sorted([list(c) for c in cells])})
-    tool("world", str(WORLD_ESM), str(req), str(out))
-    w = json.loads(out.read_text())
-    req.unlink()
-    out.unlink()
+    """The world's records for these cells (`tool world`): kept by the cells, the world file's sha256 and the tool."""
+    asked = sorted([list(c) for c in cells])
+    kept = tool_cache("world_facts", [asked, file_sha(WORLD_ESM)])
+    if kept.exists():
+        w = json.loads(kept.read_text())
+    else:
+        req = tmp / "world_req.json"
+        out = tmp / "world.json"
+        atomic_json(req, {"cells": asked})
+        tool("world", str(WORLD_ESM), str(req), str(out))
+        w = json.loads(out.read_text())
+        req.unlink()
+        kept_answer(out, kept)
     w["by_cell"] = {(c["x"], c["y"]): c for c in w["cells"]}
     return w
 

@@ -1,6 +1,6 @@
 """The places build writes the plugin again only when what the writer reads changed (tools/places/build.py
 write_key): a shard's plan, the items, the world file or the tool itself; a heavy-lock wait is counted."""
-from pathlib import Path
+import os
 
 from tools.places import build, heavy_lock
 
@@ -35,7 +35,6 @@ def test_write_key_follows_every_input(tmp_path, monkeypatch):
 
 def test_a_lock_wait_is_counted(tmp_path, monkeypatch):
     import fcntl
-    import os
     import threading
     monkeypatch.setenv("ARGONIA_PLACES_LOCK_FILE", str(tmp_path / "lock"))
     monkeypatch.delenv("ARGONIA_PLACES_NO_LOCK", raising=False)
@@ -46,3 +45,27 @@ def test_a_lock_wait_is_counted(tmp_path, monkeypatch):
     with heavy_lock.heavy_lock():
         pass
     assert heavy_lock.WAITED - was >= 0.3
+
+
+def test_a_tools_answer_is_kept_by_what_it_reads(tmp_path, monkeypatch):
+    tool = tmp_path / "tool.dll"
+    tool.write_bytes(b"tool v1")
+    monkeypatch.setattr(build, "TOOL", tool)
+    monkeypatch.setattr(build, "OUT", tmp_path / "out")
+    w = tmp_path / "world.esm"
+    w.write_bytes(b"world 1")
+    k = build.tool_cache("world_facts", [[[1, 2]], build.file_sha(w)])
+    assert build.tool_cache("world_facts", [[[1, 2]], build.file_sha(w)]) == k
+    assert build.tool_cache("world_facts", [[[1, 3]], build.file_sha(w)]) != k       # other cells
+    w.write_bytes(b"world 2, longer")
+    assert build.tool_cache("world_facts", [[[1, 2]], build.file_sha(w)]) != k       # another world file
+    tool.write_bytes(b"tool v2, longer")
+    k2 = build.tool_cache("world_facts", [[[1, 2]], build.file_sha(w)])
+    assert k2 != k                                                                  # another tool
+    monkeypatch.setattr(build, "TOOL_CACHE_KEEP", 3)
+    for i in range(5):
+        src = tmp_path / f"a{i}.json"
+        src.write_text(str(i))
+        os.utime(src, (1000 + i, 1000 + i))   # kept in this order, whatever the clock's grain
+        build.kept_answer(src, k2.parent / f"{i}.json")
+    assert sorted(f.name for f in k2.parent.glob("*.json")) == ["2.json", "3.json", "4.json"]

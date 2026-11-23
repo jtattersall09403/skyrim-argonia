@@ -9,8 +9,6 @@ from __future__ import annotations
 import base64
 import re
 
-import math
-
 import numpy as np
 
 NOTHING, LAND, WATER, OTHER, HELPER = 0, 1, 2, 3, 4

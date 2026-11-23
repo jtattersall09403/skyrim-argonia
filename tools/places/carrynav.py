@@ -627,7 +627,6 @@ def _splits(m: Mesh, extra: list) -> dict:
     if not len(m.T) or not len(P):
         return out
     T = np.asarray(m.T, np.int64).reshape(-1, 3)
-    nT = len(T)
     # the open edges (one use), in triangle order then edge order: as m.edges() meets them
     U = np.stack([T[:, 0], T[:, 1], T[:, 2]], 1).ravel()
     W = np.stack([T[:, 1], T[:, 2], T[:, 0]], 1).ravel()
