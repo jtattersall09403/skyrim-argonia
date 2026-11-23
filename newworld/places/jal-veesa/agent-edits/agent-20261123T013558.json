@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261123T013558",
+ "place_id": "jal-veesa",
+ "name": "ways: a bottle tree (carried filler) deleted from the world's road",
+ "at": "2026-11-23T01:35:58Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.TM37PW7GCDNZN0XCZQDE4ZM38A",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.TM37PW7GCDNZN0XCZQDE4ZM38A",
+    "base": "King of the Murkmire.esp:156009",
+    "kind": "tree",
+    "pos": [
+     -51367.63,
+     -508883.37,
+     499.468
+    ],
+    "rot": [
+     0,
+     0,
+     5.48319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:179EC3",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T01:35:58Z"
+  }
+ ]
+}
