@@ -182,6 +182,7 @@ def open_pad(browser, server, viewport, scheme="light", fresh=True, choose="draf
     if REAL:  # the real place builds its land in slices after the first frame
         page.wait_for_function("document.getElementById('progress').hidden", timeout=WAIT)
     page.wait_for_timeout(500)
+    page.wait_for_function("!studio.choosing || document.querySelector('#start .sheet')", timeout=WAIT)
     if choose and page.locator("#start .sheet").is_visible():  # saved work: nothing applied until chosen
         if choose == "draft":
             page.get_by_role("button", name="Start from the builder's draft").click()
@@ -1343,6 +1344,8 @@ def reopen(pad, lose=False):
              if (lose) setTimeout(() => { const e = studio.ours.view.renderer.getContext().getExtension('WEBGL_lose_context');
                e.loseContext(); setTimeout(() => e.restoreContext(), 400); }, 150); }""", lose)
     pad.page.wait_for_function("studio.ready && document.getElementById('loading').hidden", timeout=WAIT)
+    # the start choice lists the saves after the place is ready: wait until it has shown or found nothing to offer
+    pad.page.wait_for_function("!studio.choosing || document.querySelector('#start .sheet')", timeout=WAIT)
     if pad.page.locator("#start .sheet").is_visible():
         pad.page.get_by_role("button", name="Start from the builder's draft").click()
     pad.page.wait_for_timeout(1500 * SLOW)
