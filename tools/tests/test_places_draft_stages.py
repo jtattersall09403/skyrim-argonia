@@ -2,6 +2,7 @@
 lights' rules (tools/places/draft/stages.py, lights.py)."""
 import json
 import math
+import shutil
 import sys
 from pathlib import Path
 
@@ -15,15 +16,29 @@ from tools.places import draft as D  # noqa: E402
 from tools.places.draft import interiors, jail, lights, run, stages  # noqa: E402
 
 
+def _patch(mp):
+    mp.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
+    mp.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
+
+
+@pytest.fixture(scope="session")
+def drafted(tmp_path_factory):
+    """The fixture place drafted once, as a whole draft leaves it; each test works on its own copy."""
+    root = F.build(tmp_path_factory.mktemp("drafted"))
+    with pytest.MonkeyPatch.context() as mp:
+        _patch(mp)
+        run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+        for st_ in ("jail", "add", "names"):   # as a whole draft ends
+            stages.run(st_, "fx", root / "places", root / "bundles", log=lambda *_: None)
+        stages.Standing("fx", root / "places", root / "bundles").write()  # the files as a join leaves them: canonical
+    return root
+
+
 @pytest.fixture()
-def fx(tmp_path, monkeypatch):
-    root = F.build(tmp_path)
-    monkeypatch.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
-    monkeypatch.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
-    run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
-    for st_ in ("jail", "add", "names"):   # as a whole draft ends
-        stages.run(st_, "fx", root / "places", root / "bundles", log=lambda *_: None)
-    stages.Standing("fx", root / "places", root / "bundles").write()     # the files as a join leaves them: canonical
+def fx(drafted, tmp_path, monkeypatch):
+    _patch(monkeypatch)
+    root = tmp_path / "fx"
+    shutil.copytree(drafted, root, symlinks=True)
     return root
 
 

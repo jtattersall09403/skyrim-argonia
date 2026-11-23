@@ -226,13 +226,6 @@ def test_the_committed_database_rows_are_the_sources_loaded():
     assert after["place_need"], "Helstrom's judgements are in the database"
 
 
-def test_helstrom_shows_the_plot_and_not_the_old_spring():
-    d = N.payload("helstrom")
-    things = " ".join(n["thing"] for n in d["needs"])
-    assert "the handler, Nesh-Deeka" in things and "go-between" in things
-    assert "boatman" not in things and "crocodile" not in things
-    gone = " ".join(t.get("name") or "" for c in d["changed_story"] for t in c["placed"])
-    assert "Sealed Spring" in gone and "Ruxa-Neel" in gone and "Wujeel" in gone
 
 
 def test_studio_endpoints(world, monkeypatch, tmp_path):

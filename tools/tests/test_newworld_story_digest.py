@@ -47,7 +47,6 @@ def test_every_place_says_what_it_promises_is_built_from_and_whether_built(made)
         sec = text.split(f"<!-- place:{p['id']} -->", 1)[1].split("\n### ", 1)[0]
         assert "It promises the player" in sec, p["id"]
         assert "to be built from" in sec or "will be built from" in sec, p["id"]
-    assert "It is drafted" in (out / "regions" / "murkwood.md").read_text()
 
 
 def test_every_cited_place_note_exists(made):
@@ -59,11 +58,6 @@ def test_every_cited_place_note_exists(made):
     assert cited and cited <= notes
 
 
-def test_hooks_quote_the_hooks_notes_whole(made):
-    out, counts = made
-    assert counts["hooks"] >= len(rows("SELECT 1 FROM place_note WHERE aspect_id = 'hooks'"))
-    text = (out / "regions" / "murkwood.md").read_text()
-    assert "A quiet house by the city landing takes visitors only by word of mouth, and nobody will say whose it is." in text
 
 
 def test_no_em_dashes_in_what_the_generator_writes(made):

@@ -21,6 +21,7 @@ pw = pytest.importorskip("playwright.sync_api")
 WEB = Path(__file__).resolve().parents[1]
 SHOTS = Path(os.environ["SHOTS"]) if os.environ.get("SHOTS") else None   # screenshots only when asked for: software GL draws them slowly
 REAL = bool(os.environ.get("STUDIO_URL"))
+REACH_OUT = os.environ.get("REACH_OUT")   # a file to append each test's measured JS reach to (the modules whose code ran)
 SLOW = 5 if REAL else 1  # real bundles under software GL load in ~45 s, not ~3 s
 WAIT = 90000 * SLOW   # every playwright wait: generous, for a build machine under load (each still ends on its condition)
 LANDSCAPE, PORTRAIT = {"width": 1280, "height": 800}, {"width": 800, "height": 1280}  # MatePad Pro 12.6 at DPR 2
@@ -219,7 +220,21 @@ def fresh_ui(request):
           T.use('select'); Object.assign(T.opts, { pieces: false, adds: false, snapFaces: true, snapGround: true, snapRot: true, keepSeat: true, step: 10 });
           s.people.sel = null; s.people.drag = null; T.lastTap = null; T.unit = null; T.inside = null;
           s.selection.clear(); T.selectionChanged(); s.panels.close(); })()""")
+    if not REACH_OUT or "pad" not in request.fixturenames:
+        yield
+        return
+    pad = request.getfixturevalue("pad")
+    if not getattr(pad, "profiling", False):
+        pad.cdp.send("Profiler.enable")
+        pad.cdp.send("Profiler.startPreciseCoverage", {"callCount": True, "detailed": False})
+        pad.profiling = True
+    pad.cdp.send("Profiler.takePreciseCoverage")   # resets the counters: what follows is this test's own
     yield
+    ran = pad.cdp.send("Profiler.takePreciseCoverage")["result"]
+    mods = sorted({m.group(1) for r in ran if (m := re.search(r"/(js/[a-z_]+\.js)", r["url"]))
+                   and any(f["ranges"][0]["count"] for f in r["functions"])})
+    with open(REACH_OUT, "a") as f:
+        f.write(json.dumps({"test": request.node.name, "js": mods}) + "\n")
 
 
 @pytest.fixture(scope="module")
@@ -1023,9 +1038,15 @@ def test_21_world_map(pad, browser, server):
 
 def test_22_start_choice(pad, browser, server):
     pid = pad.pid
+    # unsaved work of its own: one change, autosaved
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", first_ref(pad, "building")["id"])
+    pad.page.get_by_role("button", name="North", exact=True).click()
+    n = len(pad.ops())
+    pad.page.wait_for_function("""async ([pid, n]) => (await (await fetch(`/api/place/${pid}/saves`)).json())
+                                  .some((x) => x.save_id === 'autosave' && x.ops >= n)""", arg=[pid, n], timeout=WAIT)
     saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))
     auto = next((x for x in saves if x["save_id"] == "autosave" and x["ops"]), None)
-    assert auto, "an earlier test left unsaved work"
+    assert auto, "the change was autosaved"
     # a named save made on an older draft
     old = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves/autosave"))
     body = {**old, "save_id": "older-draft", "name": "Older draft work", "rev": 0, "base": {**old["base"], "draft_key": "an-older-draft"}}

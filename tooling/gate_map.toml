@@ -1,6 +1,8 @@
 # The scoped gate's map (read by tooling/gate.py). A changed path picks stages and test files in three ways:
-#   1. automatically: a test file (or a stage's module) runs when the path is in its import closure inside the repo,
-#      or is a repo path its code names in a string or in a `REPO / "a" / "b"` chain;
+#   1. automatically: a test file (or a stage's module) runs when the path is in its import closure inside the repo
+#      (followed name by name: what each imported function or name reaches, not every import of its module), or is a
+#      repo path its code names in a string or in a `REPO / "a" / "b"` chain;
+#   1b. a suite in `per_test_reach` runs test by test, from the reach its module declares;
 #   2. by a rule below: path globs -> make stages and pytest files or directories;
 #   3. by `full` below, or by matching nothing at all: the whole gate runs.
 # An edit to this file is scoped like any other change: only the rules added, removed or altered count as changed
@@ -38,6 +40,9 @@ named_direct = ["tools/places/needs.py"]
 # folders of independent members: code that names the whole folder is reached by a root file of it, or by a file of a
 # member it names itself (newworld/places/<id>), never by a file inside some other member
 trees = ["newworld/places"]
+# slow suites picked test by test: each module declares its suite's files, the core every test depends on and each
+# test's own reach (tooling/gate.py `per_test`; tools/tests/test_studio_browser_reach.py checks the declaration is whole)
+per_test_reach = ["tools/places/studio/web/test/reach.py"]
 
 [stages]
 adaptation = "tools.argonia_world.adaptation_check"
@@ -146,17 +151,13 @@ tests = ["tools/tests/test_newworld_atlas_state.py"]
 globs = ["tools/places/look*", "tools/places/studio/web/js/agent.js"]
 tests = ["tools/tests/test_places_look.py", "tools/tests/test_places_playwalk.py", "tools/tests/test_studio_web.py"]
 
-# The studio's page in a headless browser at the tablet's size (about eleven minutes on a loaded build machine): any
-# change to the page, its scripts, its styles, its dev server and fixture or its browser tests.
-[[rule]]
-globs = ["tools/places/studio/web/*"]
-tests = ["tools/places/studio/web/test/test_browser.py"]
 
 # The consistency checker (decision 0040): every new-world record against every other. It runs when the place
-# records and their sources, the quests, the story pages, the drafts, the faction records or the checker change.
+# records and their sources, the quests, the story pages (the line pages it reads, every story page the retired-name
+# scan reads), the drafts, the faction records or the checker change.
 [[rule]]
 globs = ["newworld/story/data/*", "newworld/sources/research/*", "newworld/sources/people/*", "newworld/story/quests/*",
-         "story/design/quests/lines/*", "newworld/places/*", "story/data/db/faction*", "tools/newworld/consistency.py",
+         "story/design/*", "newworld/places/*", "story/data/db/faction*", "tools/newworld/consistency.py",
          "tools/newworld/record_check.py"]
 stages = ["consistency"]
 tests = ["tools/tests/test_newworld_consistency.py", "tools/tests/test_newworld_record_check.py"]

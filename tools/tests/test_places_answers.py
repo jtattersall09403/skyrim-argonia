@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from test_places_draft_stages import fx, rows  # noqa: E402,F401
+from test_places_draft_stages import drafted, fx, rows  # noqa: E402,F401
 
 from tools.places import edits  # noqa: E402
 from tools.places.draft import stages  # noqa: E402
