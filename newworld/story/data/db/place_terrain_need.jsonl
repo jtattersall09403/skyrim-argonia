@@ -221,7 +221,7 @@
 {"place_id":"outpost-m1-m61","terrain_need_id":"flat-pad","radius_m":35.0,"why":"toll-house and bar"}
 {"place_id":"outpost-m11-m102","terrain_need_id":"flat-pad","radius_m":40.0,"why":"platform and landing"}
 {"place_id":"outpost-m11-m63","terrain_need_id":"shore-access","radius_m":40.0,"why":"weir and landing"}
-{"place_id":"outpost-m13-m65","terrain_need_id":"flat-pad","radius_m":35.0,"why":"hut and gate"}
+{"place_id":"outpost-m13-m65","terrain_need_id":"flat-pad","radius_m":35.0,"why":"hut"}
 {"place_id":"outpost-m13-m79","terrain_need_id":"flat-pad","radius_m":40.0,"why":"the station's built ground"}
 {"place_id":"outpost-m13-m79","terrain_need_id":"shore-access","radius_m":30.0,"why":"the landing"}
 {"place_id":"outpost-m13-m96","terrain_need_id":"flat-pad","radius_m":40.0,"why":"platform and landing"}
