@@ -155,6 +155,8 @@ added here the day they are made, with the date and the issue.
   door, a ship with masts and rigging, a tent with its bedrolls) is selected and moved as one; people can be
   selected and moved; moving in the wanted plane must be easy on a tablet (2026-11-22).
 
+- 2026-11-23: the studio's autosave is the owner's save. He does not have to press Save for agents to act on a session: when he says a place's edits are made, the lead finalises the autosaved session on his behalf (Ashgate Landing, 149 edits, was held seven hours waiting on a Save he had no reason to press).
+
 ## The game
 
 - Set in Argonia (Black Marsh), 4E 201; no Nordic element reaches the player through what we add (0006);
