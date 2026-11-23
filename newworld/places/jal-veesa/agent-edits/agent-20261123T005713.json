@@ -1,0 +1,280 @@
+{
+ "save_id": "agent-20261123T005713",
+ "place_id": "jal-veesa",
+ "name": "ways: carried filler off the walks and road deleted (a date palm on the flat, two undergrowth clumps); a swamp tree and two cliff rocks moved off the world's road",
+ "at": "2026-11-23T00:57:13Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.K38FA87VVP20RDYB8JYJCSE5TN",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.K38FA87VVP20RDYB8JYJCSE5TN",
+    "base": "King of the Murkmire.esp:0EB91B",
+    "kind": "tree",
+    "pos": [
+     -52768.19,
+     -507468.67,
+     462.64
+    ],
+    "rot": [
+     0,
+     0,
+     5.78319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:179EC9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.GNFSW2S727X18AYRPVPHZ8WJTW",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.GNFSW2S727X18AYRPVPHZ8WJTW",
+    "base": "King of the Murkmire.esp:0F0ACE",
+    "kind": "tree",
+    "pos": [
+     -55286.45,
+     -508138.5,
+     458.522
+    ],
+    "rot": [
+     0,
+     0,
+     5.78319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:16567D",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.49M7AY09H4Z4A3H1DG28242GQY",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.49M7AY09H4Z4A3H1DG28242GQY",
+    "base": "King of the Murkmire.esp:0F0ACE",
+    "kind": "tree",
+    "pos": [
+     -49403.26,
+     -504589.2,
+     783.62
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:189443",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MSXJX4JYHJQ0DZVC4YQ9YQW6XA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54484.4,
+     -502877.5,
+     381.72
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54134.4,
+     -502527.5,
+     381.72
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.MSXJX4JYHJQ0DZVC4YQ9YQW6XA",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54134.4,
+     -502527.5,
+     381.72
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54134.4,
+     -502527.5,
+     381.72
+    ],
+    "rot": [
+     0,
+     0,
+     5.08319
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RVMCKJKRH7BYF0TD48RD42GNN1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51093.02,
+     -507760.95,
+     575.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.66647
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50913.02,
+     -507760.95,
+     575.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.66647
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-23T00:57:13Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.Y793XRW2J0NHPVFAWTRD233DVE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52106.87,
+     -505726.76,
+     555.45
+    ],
+    "rot": [
+     6.280871,
+     0.20371658,
+     0.08328
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52106.87,
+     -505886.76,
+     555.45
+    ],
+    "rot": [
+     6.280871,
+     0.20371658,
+     0.08328
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-23T00:57:13Z"
+  }
+ ]
+}

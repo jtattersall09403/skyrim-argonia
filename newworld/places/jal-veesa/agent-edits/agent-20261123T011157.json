@@ -1,0 +1,130 @@
+{
+ "save_id": "agent-20261123T011157",
+ "place_id": "jal-veesa",
+ "name": "ways: the old smithy's coal pile (the town has no smith) deleted; the great swamp tree moved east off the smithy landing's walks",
+ "at": "2026-11-23T01:11:57Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "jal-veesa.XS154RGZV9Z2MR0TKQC33S1CE5",
+   "call": "fault",
+   "before": {
+    "id": "jal-veesa.XS154RGZV9Z2MR0TKQC33S1CE5",
+    "base": "King of the Murkmire.esp:0CE5C0",
+    "kind": "static",
+    "pos": [
+     -54792.42,
+     -507470.54,
+     570.8
+    ],
+    "rot": [
+     0,
+     0,
+     6.18319
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "King of the Murkmire.esp:1B78D6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04",
+    "walk": 28.7
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T01:11:57Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QVQ1JD5XFQ6MNW3FS66799FPJG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54456.68,
+     -507704.32,
+     455.08
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54076.68,
+     -507824.32,
+     455.08
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-23T01:11:57Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.QVQ1JD5XFQ6MNW3FS66799FPJG",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -54076.68,
+     -507824.32,
+     455.08
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -54076.68,
+     -507824.32,
+     455.08
+    ],
+    "rot": [
+     0,
+     0,
+     2.2
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-23T01:11:57Z"
+  }
+ ]
+}
