@@ -434,7 +434,8 @@
   "agent-20261122T054922",
   "agent-20261122T055009",
   "agent-20261123T040120",
-  "agent-20261123T040326"
+  "agent-20261123T040326",
+  "agent-20261123T072313"
  ],
  "draft": {
   "add": [
@@ -632,22 +633,6 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m13-m65.LANDINGPLANKDOWN",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
-   },
-   {
-    "check": "doors",
-    "ids": [
-     "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the hold door's arrival is on the barge's open waist deck; the masts' rigging model spans the whole deck, so its bounds take in the arrival though nothing stands there (eye view from the rail into the waist)"
-   },
-   {
-    "check": "overlap",
-    "ids": [
      "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
      "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
     ],
@@ -720,22 +705,6 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m13-m65.LOOK006PLACE",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK007PLACE",
-     "outpost-m13-m65.LOOK006PLACE"
-    ],
-    "why": "the barge's hull and its masts and rigging are one ship in two models, placed together as Black Marsh & Valenwood places them"
-   },
-   {
-    "check": "overlap",
-    "ids": [
      "outpost-m13-m65.LOOK042PLACE",
      "outpost-m13-m65.LOOK043PLACE"
     ],
@@ -780,14 +749,6 @@
      "outpost-m13-m65.LOOK006PLACE"
     ],
     "why": "the boarding plank lies over the barge's rail and down into its waist, inside the hull's bounds as a ship's plank does, seen at eye level from the jetty"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.BOARDINGPLANK",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the boarding plank passes inside the bounds of the barge's masts and rigging, which the owner removed in his unsaved session (notes g1, g2); it goes when his session is finalised"
    }
   ],
   "accepted": [
@@ -1320,8 +1281,10 @@
    "answers": "g1",
    "note": "Rigging misaligned",
    "owner_save": "open session",
-   "rows": [],
-   "reply": "The barge's hull and its masts stood where Black Marsh & Valenwood sets them together; you removed the masts, and they stay removed. A new check now keeps a ship's parts together so they never drift apart."
+   "rows": [
+    "outpost-m13-m65.LOOK007PLACE"
+   ],
+   "reply": "The barge's masts and rigging are removed, as you removed them (note g2), for this barge only: they stood over the boarding plank."
   },
   {
    "save": "agent-20261123T040120",
@@ -1329,7 +1292,8 @@
    "note": "Rigging was blocking walk off barge",
    "owner_save": "open session",
    "rows": [
-    "outpost-m13-m65.BOARDINGPLANK"
+    "outpost-m13-m65.BOARDINGPLANK",
+    "outpost-m13-m65.LOOK007PLACE"
    ],
    "reply": "With the rigging and the planks gone, the barge's deck lies below its rail where your raised jetty meets it, so nobody could walk off it (main quest 1 starts in the hold). One boarding plank now runs from the jetty's end over the rail down into the waist, clear of everything; move or restyle it as you like."
   },
@@ -1338,16 +1302,21 @@
    "answers": "g3",
    "note": "Reeds were blocking walkway",
    "owner_save": "open session",
-   "rows": [],
-   "reply": "Your reed stays where you stacked it; the camp's path now goes round the north of the tents to the landing instead of through the reed."
+   "rows": [
+    "outpost-m13-m65.LOOK024PLACE",
+    "outpost-m13-m65.LOOK025PLACE"
+   ],
+   "reply": "Your reed stays where you stacked it: the two bundles you moved off the walkway are now there in the draft too, and the camp's path goes round the north of the tents to the landing."
   },
   {
    "save": "agent-20261123T040120",
    "answers": "g4",
    "note": "Creatures cluttering the landing",
    "owner_save": "open session",
-   "rows": [],
-   "reply": "The creatures stay where you moved them, off the landing; a new check keeps creature spots off the paths."
+   "rows": [
+    "quest.main.mn01/npc.mn01.young-crocodile"
+   ],
+   "reply": "The creatures stay where you moved them, off the landing: the young crocodile's spot is now where you set it in the draft too; a new check keeps creature spots off the paths."
   },
   {
    "save": "agent-20261123T040120",
@@ -1466,6 +1435,44 @@
    "stroke": 54,
    "answers": "lead-ashgate",
    "note": "The lead's decisions (2026-11-22), from the owner's words to the lead: the tents and the cook's fire with its cooking gear off the road and the walks, as their units; the barge walkable for main quest 1",
+   "owner_save": "open session",
+   "rows": []
+  },
+  {
+   "save": "agent-20261123T072313",
+   "stroke": 1,
+   "answers": "g2",
+   "note": "Rigging was blocking walk off barge",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK007PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T072313",
+   "stroke": 2,
+   "answers": "g3",
+   "note": "Reeds were blocking walkway",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK024PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T072313",
+   "stroke": 3,
+   "answers": "g3",
+   "note": "Reeds were blocking walkway",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK025PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261123T072313",
+   "stroke": 4,
+   "answers": "g4",
+   "note": "Creatures cluttering the landing",
    "owner_save": "open session",
    "rows": []
   }

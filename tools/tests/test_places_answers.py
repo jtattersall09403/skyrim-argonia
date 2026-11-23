@@ -119,3 +119,25 @@ def test_his_open_session_replays_over_the_agents_answers(fx):
     import pytest
     with pytest.raises(edits.EditConflict):
         edits.apply_save(drafted, dict(session, ops=[other]))
+
+
+def test_an_answer_that_makes_his_change_keeps_his_ops_as_no_change(fx):
+    """The agent delivers on the draft what his open session does (removes the row he removed, puts a row where he
+    moved it); his ops of that note on that row no longer fit and are kept as no change, so the scene he sees is
+    the one his session made."""
+    pdir = fx / "places/fx"
+    refs = rows(pdir / EXT)
+    a_id = refs[0]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    m1 = dict(move(ra, 10.0), n=1, call="fault", note_group="g2")
+    moved = dict(ra, pos=m1["after"]["pos"])
+    rm = {"op": "ref.remove", "space": "exterior", "id": a_id, "before": moved, "n": 2, "call": "fault", "note_group": "g2"}
+    session = {"save_id": "autosave", "place_id": "fx", "at": "x", "ops": [m1, rm], "notes": [{"id": "g2", "text": "in the way", "at": "x"}]}
+    ans = [{"op": "ref.remove", "space": "exterior", "id": a_id, "n": 1, "stroke": 1, "call": "fault", "answers": "g2",
+            "before": ra}]
+    drafted, left = edits.apply_agent_save(files, {"save_id": "agent-b", "place_id": "fx", "at": "y", "by": "agent",
+                                                    "final": False, "ops": ans, "notes": session["notes"]})
+    assert not left
+    out = edits.apply_save(drafted, session)
+    assert all(r["id"] != a_id or r.get("removed") for r in out["spaces"]["exterior"]["refs"])

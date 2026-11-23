@@ -1,0 +1,30 @@
+{
+ "save_id": "agent-20261123T055832",
+ "place_id": "helstrom",
+ "name": "a world root in a west walk cleared",
+ "at": "2026-11-23T05:58:32Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "veg.clear",
+   "call": "fault",
+   "items": [
+    {
+     "base": "ArgoniaNewWorld.esm:002503",
+     "pos": [
+      -60658.1,
+      -602847.4,
+      270.1
+     ],
+     "ref": "ArgoniaNewWorld.esm:4D71BA"
+    }
+   ],
+   "note": "the world's trees, roots and a rock standing in Helstrom's walks (the ways check): cleared, as a world tree or rock in a way is",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T05:58:32Z"
+  }
+ ]
+}

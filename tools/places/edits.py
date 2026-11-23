@@ -625,7 +625,12 @@ def apply(place_files: dict, ops: list, source=None) -> dict:
     files["_source"] = _cached(source) if source else None
     answered = _answered(place_files)
     for op in ops:
-        _apply_one(files, _rebased(files, op, answered) if answered else op)
+        try:
+            _apply_one(files, _rebased(files, op, answered) if answered else op)
+        except EditConflict:
+            if not _answered_note(op, answered):
+                raise
+            # the agent's answer to this op's own note already made the row what his op makes it: kept as no change
     _check_doors(files, ops)
     files.pop("_source")
     return canonical(files)
@@ -638,6 +643,22 @@ def _answered(place_files: dict) -> dict:
         for rid in a.get("rows") or []:
             out.setdefault(rid, set()).add(a.get("answers"))
     return out
+
+
+def _row_id(op: dict):
+    """The row an op is about: a ref's id, or the id of the quest spot, walk, path or person it carries."""
+    if op.get("id"):
+        return op["id"]
+    for k in ("ref", "quest", "walk", "path", "person"):
+        if isinstance(op.get(k), dict) and op[k].get("id"):
+            return op[k]["id"]
+    return None
+
+
+def _answered_note(op: dict, answered: dict) -> bool:
+    """Whether an agent answered the note this op of the owner's belongs to, on the row it is about."""
+    notes = answered.get(_row_id(op)) or set()
+    return bool(notes) and (op.get("note_group") in notes or op.get("note") in notes)
 
 
 def _rebased(files, op, answered: dict):

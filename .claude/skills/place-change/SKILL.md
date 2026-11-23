@@ -94,8 +94,9 @@ alone: an agent never saves or finalises for him, and nothing an agent does wait
    scratch checkout, never his file, never committed as his), then land it on main as agent edits; a stroke on a row
    his session touched carries the note it answers (`look commit --answers g8`). When he reloads the tab his session
    replays over the new draft: an op of an answered note keeps the answer, any other op of his wins
-   (`edits._rebased`, the studio's mirror). What only his save can settle (a row he removed, a word that follows
-   it) is said in the note's reply, never held back.
+   (`edits._rebased`, the studio's mirror). A change of his own that a check needs on main (a row he removed or
+   moved off a way) is delivered the same way: an answer naming his note makes on the draft what his session makes,
+   and his op replays as no change. Nothing is left owed until he finalises.
 3. What the owner changed stays as he left it, his ground paint (`paint.jsonl` rows `by: owner`) too: a stage never
    writes paint, and an agent's repaint is a new stroke over his, never an edit of his rows.
 
