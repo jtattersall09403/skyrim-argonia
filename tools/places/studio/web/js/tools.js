@@ -230,8 +230,8 @@ export class Tools {
   }
   drawSelection() {
     const a = this.app; if (!a.model) return;
-    const sel = this.selRefs(), u = this.selUnit();
-    if (u) this.drawBoxes(a.ours, [u.box], this.outline); else this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
+    const sel = this.selRefs();
+    this.drawShape(a.ours, sel.map((r) => a.seated(r)));
     // a selected light, and the lights of a selected fixture, show their radius rings
     a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).filter((f) => !f.wall).map((f) => f.ref)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
@@ -244,6 +244,17 @@ export class Tools {
     line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
     if (line.parent !== side.view.overlay) side.view.overlay.add(line);
     side.view.redraw();
+  }
+  // The selection drawn as a faint line drawing of its own meshes (a unit: all its pieces), never a box.
+  drawShape(side, refs) {
+    const v = side.view;
+    if (this.shape) { this.shape.removeFromParent(); this.shape = null; }
+    if (refs.length && side.place) {
+      this.shape = side.place.outlineOf(refs); this.shape.userData.selection = true; v.overlay.add(this.shape);
+      // a selected piece whose model arrives later is drawn when it does
+      side.place.onModel = (g) => { if (g.refs.some((r) => this.app.selection.has(r.id))) this.soon('shape', () => this.drawSelection()); };
+    }
+    v.redraw();
   }
   // world boxes {x0,y0,x1,y1,z0,z1} as outlines (a unit is drawn as one)
   drawBoxes(side, boxes, line) {
@@ -333,7 +344,9 @@ export class Tools {
     const c = this.centre(refs), s = v.toScreen(c);
     if (s.behind) { g.hidden = true; return; }
     const R = 100, unit = this.selUnit();
-    g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
+    // the handles stand beside what is selected on the screen, at rest and while it moves, never over it
+    const at = this.gizmoAnchor(unit, refs, s, v, R);
+    g.style.left = `${at[0]}px`; g.style.top = `${at[1]}px`;
     const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
     set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
     // the axis handles lie along the way east and north run on the screen, on whichever side of the middle keeps them
@@ -348,6 +361,28 @@ export class Tools {
     }
     g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
+  }
+  // Where the gizmo's middle stands on the screen: beside the selection's screen footprint, never over it.
+  gizmoAnchor(unit, refs, s, v, R) {
+    const boxes = unit ? [unit.box] : refs.filter((r) => r.kind !== 'light' && !r.primitive).map((r) => boxOf(r, this.baseOf(r), this.app.seated(r).pos));
+    if (!boxes.length) return [s.x, s.y + R * 0.9];
+    let x0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const b of boxes) for (let i = 0; i < 8; i++) {
+      const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); if (q.behind) continue;
+      x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y);
+    }
+    if (!Number.isFinite(y1)) return [s.x, s.y + R * 0.9];
+    // beside it, a clear gap off its right edge (the left when the right is off the screen), at its middle's height
+    // the room is the view as seen: less the panel, the strip between the views or the other view over its edge
+    const vr = v.el.getBoundingClientRect(), H = vr.height || v.h || 800, gap = R * 1.15;
+    let W = vr.width || v.w || 1200;
+    for (const o of document.querySelectorAll('#panel, .view-link, #view-src')) {
+      if (o.hidden || getComputedStyle(o).display === 'none') continue;
+      const pr = o.getBoundingClientRect();
+      if (pr.width && pr.left > vr.left && pr.bottom > vr.top && pr.top < vr.bottom) W = Math.min(W, pr.left - vr.left);
+    }
+    const x = x1 + gap < W - R * 1.25 ? x1 + gap : x0 - gap > R * 0.8 ? x0 - gap : Math.min(W - R * 1.25, x1 + gap);
+    return [Math.max(R * 0.6, Math.min(W - R * 0.6, x)), Math.max(R * 1.35, Math.min(H - R, s.y))];   // always inside what is seen
   }
   gizmoDown(kind, e) {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
