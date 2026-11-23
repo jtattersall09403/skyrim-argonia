@@ -3,7 +3,7 @@ street, path, walkway, boardwalk or gangplank of its own (`paths.jsonl`), and th
 arrival to the nearest of them, free of every solid thing, unless a written reason says it is meant to stand there.
 
 A blocker is any solid piece (classify: not a light, marker, sound, actor, groundcover, plant, effect or door, which
-is walked through; not a hanging fixture, a ground piece walked on, nor moss, fern or vine; the world's own rocks and
+is walked through; not a hanging fixture, a ground piece walked on, nor moss, fern, weed or vine; the world's own rocks and
 trees about the place too) whose real shape (its mesh's surface cloud in its pose, tools/places/shape.py) has a
 point between STEP and HEAD over the walked level, inside a way, where the built walking mesh runs under it: lower
 is stepped over (a rug, a root, a deck's own boards), higher is walked under (an arch, a roof, a sign); a tree only
@@ -53,7 +53,7 @@ HOLD = 96.0           # a gap this long in a deck's walked surface is walked ove
 WADE = 40.0           # ground under water deeper than this is not walked
 LEVEL_CLASSES = {"deck", "steps", "span", "boat"}    # what a walker walks on besides the ground
 NO_BODY_CLASSES = {"hanging fixture", "ground piece", "plant"}   # hung up, walked on, or walked through
-NO_BODY_WORDS = ("moss", "fern", "vine", "ivy", "cobweb", "weed")  # draped and leafy things a walker brushes past (water weed too)
+NO_BODY_WORDS = ("moss", "fern", "vine", "ivy", "cobweb", "weed")  # draped and leafy things a walker brushes past
 TRUNK = 64.0          # a tree blocks with its trunk and roots, this high over the walked level; its crown is passed under
 DOOR_WIDTH = 128.0    # the way from a door's arrival to the nearest walk
 DOOR_GAP = 96.0       # a way that ends at a door: its own doorway and the wall about it are walked through

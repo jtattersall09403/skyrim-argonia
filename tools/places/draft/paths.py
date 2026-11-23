@@ -166,6 +166,34 @@ def dist_to_paths(p, paths: list[dict]) -> float:
     return max(best, 0.0)
 
 
+class PathIndex:
+    """The streets' segments by GRID square, for `within`: each segment filed under every square its box, grown by
+    its half width and `reach`, meets, so a point's own square holds every segment that can come within reach of it."""
+    GRID = 512.0
+
+    def __init__(self, paths: list[dict], reach: float = 0.0):
+        self.reach = reach
+        self.cells: dict = {}
+        for pa in paths:
+            half = pa.get("width", STREET_WIDTH) / 2
+            pts = pa["points"]
+            g = half + reach + 1.0
+            for a, b in zip(pts, pts[1:]):
+                x0, x1 = min(a[0], b[0]) - g, max(a[0], b[0]) + g
+                y0, y1 = min(a[1], b[1]) - g, max(a[1], b[1]) + g
+                for gx in range(math.floor(x0 / self.GRID), math.floor(x1 / self.GRID) + 1):
+                    for gy in range(math.floor(y0 / self.GRID), math.floor(y1 / self.GRID) + 1):
+                        self.cells.setdefault((gx, gy), []).append((a, b, half))
+
+    def within(self, p, d: float) -> bool:
+        """dist_to_paths(p, paths) <= d, for 0 <= d <= reach: some segment's own distance less its half width is."""
+        assert 0.0 <= d <= self.reach
+        for a, b, half in self.cells.get((math.floor(p[0] / self.GRID), math.floor(p[1] / self.GRID)), ()):
+            if seg_dist(p, a, b) - half <= d:
+                return True
+        return False
+
+
 def connected(paths: list[dict], join: float = 32.0) -> bool:
     """One network: every path touches another within `join` units."""
     if len(paths) <= 1:

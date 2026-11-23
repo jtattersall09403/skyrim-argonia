@@ -20,7 +20,7 @@
   {
    "good": "river-fish",
    "relation": "trades",
-   "why": "The cook sells dried fish and lamp oil from a stall by the hut (place note: economy)",
+   "why": "The cook sells dried fish and lamp oil from a stall by the cook's fire (place note: economy)",
    "cites": [
     "place_note:outpost-m13-m65/economy"
    ]

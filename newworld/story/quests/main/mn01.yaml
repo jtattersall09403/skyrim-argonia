@@ -5398,7 +5398,7 @@ stages:
     where it meets the creek, then take it to Vosh-Leera's house in Jal-Veesa, past the weir."
   ending: complete
   endingId: e-freed
-  directions: "Reed-Sill Weir is the first camp on the road east from the camp's gate, where the road meets the creek,
+  directions: "Reed-Sill Weir is the first camp on the road east from the camp, where the road meets the creek,
     a short walk away; Jal-Veesa is a little further on past the weir."
   information:
     going: 'I am free of the Owing: Vosh-Leera, root-herald of Jal-Veesa, had my name struck from the roll. I do not know

@@ -7,7 +7,8 @@ section <x1,y1> <x2,y2> | section <thing> [--axis] [--slab u]; overview. Every v
 [--no-canopy | --canopy] [--lit] [--ceiling u]. Every verb: [--people] draws people as named stand-ins; [--state <quest state>] sees the place as the player
 does in that state of the place's states.jsonl (`python -m tools.places states <place>` lists them; none: the game's start).
 Inside a room: look <place> in <room id or the name its door shows> <verb> ... (every verb; `door` is its way out).
-Survey: survey [<structure or unit> ...] [--changed]: a scored contact sheet per thing, one page call.
+Survey: survey [<structure or unit> ...] [--changed | --all]: a scored contact sheet per thing (--all: every unit, in
+one call on one warm scene), each sheet within its time budget.
 Playwalk: playwalk [<from> <to>] [--plan] [--changed] [--stride u] [--again] [--rooms]: the place walked as a player,
 on its built walkable mesh: strips of every station's looks, faults of the capture and of the place told apart.
 Every view says what it shows (subject seen, frame filled, occluders, capture good|failed and why) and retries a
@@ -43,6 +44,50 @@ PIDF = LOOK_OUT / "daemon.pid"
 
 
 RESET = (ConnectionResetError, BrokenPipeError)
+
+
+def kill_daemon(grace: float = 5.0) -> str:
+    """The daemon of PIDF killed with its process group (its browser and studio server share it: it starts in a
+    session of its own), SIGTERM then SIGKILL after `grace` seconds; the pid and socket files removed. The way
+    `look stop` ends a daemon busy on a verb that never returns."""
+    import signal
+    try:
+        pid = int(PIDF.read_text())
+    except (OSError, ValueError):
+        pid = None
+    what = "no daemon"
+    if pid:
+        try:
+            pg = os.getpgid(pid)
+        except OSError:
+            pg = None
+        if pg is not None and pg == pid:   # never another group (a reused pid in this shell's group)
+            for sig, wait in ((signal.SIGTERM, grace), (signal.SIGKILL, 2.0)):
+                try:
+                    os.killpg(pg, sig)
+                except OSError:
+                    break
+                t = time.time()
+                while time.time() - t < wait:
+                    try:
+                        os.kill(pid, 0)
+                    except OSError:
+                        break
+                    try:
+                        os.waitpid(pid, os.WNOHANG)
+                    except ChildProcessError:
+                        pass
+                    time.sleep(0.1)
+                else:
+                    continue
+                break
+            what = f"look daemon {pid} and its group"
+    for f in (SOCK, PIDF):
+        try:
+            f.unlink()
+        except OSError:
+            pass
+    return what
 
 
 def _call_once(req: dict, timeout: float) -> dict:
@@ -136,10 +181,12 @@ def main(argv: list[str]) -> int:
             call({"verb": "_stop", "place": "", "args": []}, 10)
         except OSError:
             pass
-        for _ in range(200):   # gone, browser and server with it
+        for _ in range(50):   # gone, browser and server with it
             if not PIDF.exists():
                 break
             time.sleep(0.1)
+        if PIDF.exists():   # busy on a long verb (it reads the next request only after it): its whole group goes
+            print(f"stopped {kill_daemon()}")
         return 0
     place, verb, args = argv[0], argv[1], argv[2:]
     started = ensure()
@@ -151,7 +198,8 @@ def main(argv: list[str]) -> int:
         print(json.dumps(out, indent=1))
         return 0
     t0 = time.time()
-    out = call({"place": place, "verb": verb, "args": args}, 7200.0 if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
+    long = 6 * 3600.0 if "--all" in args else 7200.0   # a survey of every unit: about a minute a sheet
+    out = call({"place": place, "verb": verb, "args": args}, long if {"playwalk", "survey"} & {verb, *args[:2]} else 900.0)
     out["wall_s"] = round(time.time() - t0, 2)
     if "playwalk" in (verb, *args[:2]) and out.get("ok") and (out.get("lines") or out.get("plan")):   # the plan and each route, one line each
         print("\n".join(out.get("plan") or out["lines"]))

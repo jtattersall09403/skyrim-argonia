@@ -192,6 +192,16 @@ def tool(*args: str) -> None:
         log(r.stdout.strip())
 
 
+def write_key(esp: Path, shards: list[str], world_sha: str) -> str:
+    """The key of one `write`: every shard's plan by content, the items, the world file, the tool's own bytes and the
+    plugin's path (the shards are named by path, so a moved out dir writes again)."""
+    h = hashlib.sha256(f"{esp}|{world_sha}|{sha256(TOOL)}".encode())
+    h.update((esp.parent / "items.json").read_bytes())
+    for s in shards:
+        h.update(s.encode() + sha256(Path(s)).encode())
+    return h.hexdigest()
+
+
 def code_key() -> str:
     h = hashlib.sha256()
     world = ROOT / "tools" / "newworld" / "world"  # the road rule and the ground's road sets the paths are painted by
@@ -311,14 +321,52 @@ def cell_holders(order: list[str], key: str) -> list[str]:
 
 # ---- world facts ----------------------------------------------------------------------------------------------------
 
+_SHA: dict = {}
+
+
+def file_sha(p: Path) -> str:
+    """sha256 of a file, kept for the run by its path, size and time."""
+    st = p.stat()
+    k = (str(p), st.st_size, st.st_mtime_ns)
+    if k not in _SHA:
+        _SHA[k] = sha256(p)
+    return _SHA[k]
+
+
+def tool_cache(kind: str, key_parts: list) -> Path:
+    """Where a dotnet tool's answer is kept: out/places/cache/<kind>/<key>.json, the key over what the answer is a
+    function of (the asked, the files read by their sha256, the tool's own bytes)."""
+    h = hashlib.sha256(json.dumps(key_parts, sort_keys=True).encode())
+    h.update(file_sha(TOOL).encode())
+    return OUT / "cache" / kind / f"{h.hexdigest()[:32]}.json"
+
+
+TOOL_CACHE_KEEP = 32   # answers kept per kind: the newest; older ones go as a new one is kept
+
+
+def kept_answer(src: Path, kept: Path) -> None:
+    """Move a tool's answer into its place in the cache, and let the oldest of its kind go."""
+    kept.parent.mkdir(parents=True, exist_ok=True)
+    os.replace(src, kept)
+    old = sorted(kept.parent.glob("*.json"), key=lambda f: f.stat().st_mtime)[:-TOOL_CACHE_KEEP]
+    for f in old:
+        f.unlink(missing_ok=True)
+
+
 def world_facts(cells: set, tmp: Path) -> dict:
-    req = tmp / "world_req.json"
-    out = tmp / "world.json"
-    atomic_json(req, {"cells": sorted([list(c) for c in cells])})
-    tool("world", str(WORLD_ESM), str(req), str(out))
-    w = json.loads(out.read_text())
-    req.unlink()
-    out.unlink()
+    """The world's records for these cells (`tool world`): kept by the cells, the world file's sha256 and the tool."""
+    asked = sorted([list(c) for c in cells])
+    kept = tool_cache("world_facts", [asked, file_sha(WORLD_ESM)])
+    if kept.exists():
+        w = json.loads(kept.read_text())
+    else:
+        req = tmp / "world_req.json"
+        out = tmp / "world.json"
+        atomic_json(req, {"cells": asked})
+        tool("world", str(WORLD_ESM), str(req), str(out))
+        w = json.loads(out.read_text())
+        req.unlink()
+        kept_answer(out, kept)
     w["by_cell"] = {(c["x"], c["y"]): c for c in w["cells"]}
     return w
 
@@ -2174,6 +2222,54 @@ def world_stamp(pid: str, asked) -> dict:
     return worldparts.stamp(WORLD_ESM, asked, arrivals)
 
 
+def shard_homes(pid: str) -> list[Path]:
+    """Where a plan of this place may already stand: the places build's own out, the draft check's, and any out
+    named in ARGONIA_PLACES_SHARDS_FROM (paths joined by the path separator)."""
+    more = [Path(x) for x in os.environ.get("ARGONIA_PLACES_SHARDS_FROM", "").split(os.pathsep) if x]
+    return [OUT, OUT / "draft_check" / pid, *more]
+
+
+def shared_shard(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> Path | None:
+    """Another build's plan of this place copied into this one's shard when its key is the key this build would plan
+    under (the place files, the code, the stock and travel, the world records it read): a draft check and the places
+    build plan the same place once between them. Returns where it came from, or None."""
+    import shutil
+    for home in shard_homes(pid):
+        src = home / "shards" / pid
+        if home.resolve() == out.resolve() or not all((src / f).exists() for f in ("plan.json", "world.json", "key.txt", "problems.json")):
+            continue
+        try:
+            held = (src / "key.txt").read_text()
+            was = json.loads((src / "world.json").read_text())
+            key = place_key(pdir, world_stamp(pid, was["cells"])["key"]) + (":nonav" if no_navmesh else "")
+            if held != key:
+                continue
+            dst = out / "shards" / pid
+            dst.mkdir(parents=True, exist_ok=True)
+            for f in ("plan.json", "world.json", "problems.json"):
+                tmp = dst / f"{f}.tmp"
+                shutil.copyfile(src / f, tmp)
+                os.replace(tmp, dst / f)
+            if (src / "key.txt").read_text() != held:   # planned again while it was copied: plan here instead
+                (dst / "key.txt").unlink(missing_ok=True)
+                continue
+            (dst / "key.txt").write_text(held)
+            return src
+        except (OSError, ValueError, KeyError):
+            continue
+    return None
+
+
+def kept_problems(pid: str, shard: Path, keep_going: bool) -> bool:
+    """The problems a kept plan was planned with, listed as planning lists them; False when there are any and the
+    build does not keep going (a build stops on any, planned now or before)."""
+    p = shard / "problems.json"
+    probs = json.loads(p.read_text()) if p.exists() else []
+    for m in probs:
+        print(f"{pid}: {m}")
+    return keep_going or not probs
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="python -m tools.places build")
     ap.add_argument("places", nargs="*")
@@ -2206,6 +2302,15 @@ def main(argv: list[str]) -> int:
         if key and kp.exists() and kp.read_text() == key and (shard / "plan.json").exists():
             report["places"][pid] = {"rebuilt": False}
             log(f"build {pid}: unchanged")
+            if not kept_problems(pid, shard, a.keep_going):
+                return 1
+            continue
+        got = None if a.force or a.plan else shared_shard(pid, pdir, out, a.no_navmesh)
+        if got is not None:
+            report["places"][pid] = {"rebuilt": False, "shared_from": str(got)}
+            log(f"build {pid}: its plan for these place files, world and code taken from {got}")
+            if not kept_problems(pid, shard, a.keep_going):
+                return 1
             continue
         t1 = time.time()
         PROBLEMS.clear()
@@ -2221,6 +2326,7 @@ def main(argv: list[str]) -> int:
         world = world_stamp(pid, plan["world"]["asked"])
         atomic_json(shard / "plan.json", plan)
         atomic_json(shard / "world.json", world)
+        atomic_json(shard / "problems.json", list(PROBLEMS))
         kp.write_text(place_key(pdir, world["key"]) + (":nonav" if a.no_navmesh else ""))
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
         log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(plan['refs'])} refs, {len(plan['interiors'])} interiors, "
@@ -2239,9 +2345,21 @@ def main(argv: list[str]) -> int:
     # them, else writes these into the places plugin itself
     from tools.newworld.world import smithing
     atomic_json(esp.parent / "items.json", smithing.records())
-    tool("write", str(esp), str(WORLD_ESM), *shards)
+    # the writer is a pure function of its inputs: the shards' plans, the items, the world file and the tool itself;
+    # when none changed since the plugin on disk was written (a draft check after a build), it stands
+    wk = write_key(esp, shards, world_sha)
+    wkp = esp.parent / "write.key"
+    if not a.force and esp.exists() and wkp.exists() and wkp.read_text() == wk:
+        log("write: unchanged (its plans, items, world file and tool are those of the plugin on disk)")
+        report["write_skipped"] = True
+    else:
+        wkp.unlink(missing_ok=True)
+        tool("write", str(esp), str(WORLD_ESM), *shards)
+        wkp.write_text(wk)
     report["write_s"] = round(time.time() - t2, 1)
     report["total_s"] = round(time.time() - t0, 1)
+    from tools.places import heavy_lock as _hl
+    report["lock_wait_s"] = round(_hl.WAITED, 1)   # of total_s, spent waiting on another build's dotnet tool
     report["esp"] = str(esp.relative_to(ROOT)) if esp.is_relative_to(ROOT) else str(esp)
     report["esp_sha256"] = sha256(esp)
     atomic_json(out / "plugin" / "build.json", report)

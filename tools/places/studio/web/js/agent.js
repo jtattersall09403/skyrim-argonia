@@ -16,20 +16,25 @@ const tick = () => new Promise((r) => setTimeout(r, 30));
 // The canopy over a height: every model whose name says tree, Hist, moss, vine or canopy (roots kept) clipped at z
 // for one shot through its own materials (local clipping); returns the undo.
 const CANOPY = /tree|hist|canopy|moss|vine|willow|mangrove|palm|fern|hanging|leaves|branch/i, ROOTS = /root|stump|log/i;
+// A tree's materials are shared with every model drawn with the same texture (objects.js plainMaterial: a dome given a
+// tree's bark by its alternate textures): the cut goes on the tree's own copies of them, never on the shared ones.
 function canopyCut(view, c, o) {
-  const plane = new THREE.Plane(new THREE.Vector3(0, 0, -1), c.z - o[2]), undo = [];
+  const plane = new THREE.Plane(new THREE.Vector3(0, 0, -1), c.z - o[2]), undo = [], copies = new Map();
+  const cutOf = (mat) => {
+    if (!mat) return mat;
+    if (!copies.has(mat)) { const k = mat.clone(); k.clippingPlanes = [plane]; copies.set(mat, k); }
+    return copies.get(mat);
+  };
   view.renderer.localClippingEnabled = true;
   for (const lay of view.objects || []) for (const g of lay.groups?.values() || []) {
     const name = `${g.base?.edid || ''} ${g.base?.model || ''}`;
     if (!(g.kind === 'tree' || CANOPY.test(name)) || ROOTS.test(g.base?.edid || '')) continue;
     for (const m of g.full || []) {
-      for (const mat of Array.isArray(m.material) ? m.material : [m.material]) {
-        if (!mat || undo.some((u) => u[0] === mat)) continue;
-        undo.push([mat, mat.clippingPlanes]); mat.clippingPlanes = [plane];
-      }
+      undo.push([m, m.material]);
+      m.material = Array.isArray(m.material) ? m.material.map(cutOf) : cutOf(m.material);
     }
   }
-  return () => { for (const [mat, was] of undo) mat.clippingPlanes = was; };
+  return () => { for (const [m, was] of undo) m.material = was; for (const k of copies.values()) k.dispose(); };
 }
 
 

@@ -193,6 +193,29 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
     def gap(a, b):
         return geom.box_gap(*boxes[a], *boxes[b])
 
+    # the pieces whose boxes come within TOUCH of a piece's in plan, by a grid of their boxes: a box further off on
+    # one axis is further than TOUCH whatever box_gap makes of the others
+    G = 512.0
+    grid: dict = {}
+    for q, (qlo, qhi) in boxes.items():
+        for gx in range(math.floor(qlo[0] / G), math.floor(qhi[0] / G) + 1):
+            for gy in range(math.floor(qlo[1] / G), math.floor(qhi[1] / G) + 1):
+                grid.setdefault((gx, gy), []).append(q)
+    _near: dict = {}
+
+    def close_to(pid) -> set:
+        if pid not in _near:
+            lo, hi = boxes[pid]
+            got = set()
+            for gx in range(math.floor((lo[0] - TOUCH) / G), math.floor((hi[0] + TOUCH) / G) + 1):
+                for gy in range(math.floor((lo[1] - TOUCH) / G), math.floor((hi[1] + TOUCH) / G) + 1):
+                    for q in grid.get((gx, gy), ()):
+                        qlo, qhi = boxes[q]
+                        if qlo[0] - TOUCH <= hi[0] and lo[0] - TOUCH <= qhi[0] and qlo[1] - TOUCH <= hi[1] and lo[1] - TOUCH <= qhi[1]:
+                            got.add(q)
+            _near[pid] = got
+        return _near[pid]
+
     def under(pid, tol=32.0):
         lo, hi = boxes[pid]
         pts = [((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2)] + [(q[0], q[1]) for q in geom.bottom_points(by[pid])]
@@ -292,7 +315,8 @@ def derive(pieces: list[dict], ground=None, bases: dict | None = None, prefix: s
                 if r0 == "ground" and p.get("kind") not in ("plant", "groundcover", "flora"):
                     continue
                 lo, hi = boxes[pid]
-                touch = [q for q in unit_of if units[unit_of[q]]["kind"] in kinds and gap(pid, q) <= TOUCH]
+                close = close_to(pid)
+                touch = [q for q in unit_of if q in close and units[unit_of[q]]["kind"] in kinds and gap(pid, q) <= TOUCH]
                 if not touch:
                     continue
                 if r0 == "door":

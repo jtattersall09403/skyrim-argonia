@@ -1,0 +1,96 @@
+{
+ "save_id": "agent-20261123T000044",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "the bone totem (shrine of bones) moved 90 east off the walk south past the fire camp",
+ "at": "2026-11-23T00:00:44Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -11150.0,
+     -553680.0,
+     206.404
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11060.0,
+     -553680.0,
+     206.404
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T00:00:44Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "tribal-camp-m2-m68.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -11060.0,
+     -553680.0,
+     206.404
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -11060.0,
+     -553680.0,
+     206.404
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-23T00:00:44Z"
+  }
+ ]
+}

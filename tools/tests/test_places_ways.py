@@ -164,6 +164,13 @@ def test_owed_blockers_are_reported_new_ones_fail_and_the_list_only_shrinks(tmp_
     assert ways.handover_line("other", tmp_path) == (True, "ways: nothing owed")
 
 
+def test_water_weed_is_brushed_past_not_a_blocker():
+    """A walker wades through water weed as through ferns: it never stands in a way; a rock still does."""
+    from tools.places.classify import has
+    assert has({"edid": "ArgoniaWaterWeed01", "model": "argonia/plants/waterweed01.nif"}, ways.NO_BODY_WORDS)
+    assert not has({"edid": "ArgoniaRockCliff07MarshGrass", "model": "landscape/rocks/rockcliff07.nif"}, ways.NO_BODY_WORDS)
+
+
 def test_ways_is_a_verb_that_lists_a_places_blockers(monkeypatch, capsys):
     """`python -m tools.places ways <place>` (the place-streets recipe) runs: owed and failing blockers, then the
     handover line; it fails on a failing blocker."""

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from tools.places.draft import geom
 from tools.places.draft.cluster import rect_dist
-from tools.places.draft.paths import dist_to_paths
+from tools.places.draft.paths import PathIndex, dist_to_paths
 
 CLEAR_PCT = 0.1
 REACH = 1536.0          # plants this close to a building count towards the measure
@@ -88,6 +88,7 @@ def stray(world: list[dict], cleared: set, placed: list[dict], bases: dict, path
             for gy in range(int((b["pos"][1] - rad) // 1024), int((b["pos"][1] + rad) // 1024) + 1):
                 grid.setdefault((gx, gy), []).append(b)
     near_paths = paths
+    on_street = PathIndex(paths) if paths else None
     for r in world:
         if r.get("kind") not in CLEARED_KINDS or r.get("id") in cleared:
             continue
@@ -96,7 +97,7 @@ def stray(world: list[dict], cleared: set, placed: list[dict], bases: dict, path
             continue
         if inside_placed(r, near, bases):
             bad.append(f"world plant {r.get('id')} ({r['base']}) stands in {next(b['id'] for b in near if inside_placed(r, [b], bases))}")
-        elif paths and dist_to_paths(r["pos"][:2], paths) <= 0.0:
+        elif paths and on_street.within(r["pos"][:2], 0.0):
             bad.append(f"world plant {r.get('id')} ({r['base']}) stands on a street")
     return bad
 
@@ -155,11 +156,12 @@ def along(world: list[dict], clearance: dict, paths: list[dict], cleared: set) -
     """The rows `apply` adds for streets alone, for world plants not yet cleared: what a street laid after the draft
     (re-laid on the built network) clears by the same measure."""
     rows = []
+    idx = PathIndex(paths, max([max(c["street"], 0.0) for c in clearance.values()] + [0.0]))
     for r in world:
         if r.get("kind") not in CLEARED_KINDS or r.get("id") in cleared:
             continue
         p = (r["pos"][0], r["pos"][1])
-        if dist_to_paths(p, paths) <= max(clearance[_cls(r["kind"])]["street"], 0.0):
+        if idx.within(p, max(clearance[_cls(r["kind"])]["street"], 0.0)):
             rows.append({"base": r["base"], "pos": [round(v, 1) for v in r["pos"]], "by": "draft", "why": "street",
                          "ref": r.get("id")})
     return rows
