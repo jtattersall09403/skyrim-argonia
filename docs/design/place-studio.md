@@ -1697,6 +1697,22 @@ whole `draft <place_id>` refuses a place with finalised saves unless `--force "<
 that plugin), so a draft that passes it passes `check` on the build; it also mends every street again on that
 built mesh and fails if a stretch is re-laid (the streets are settled).
 
+### Speed
+
+Everything slow is kept by the content of what it reads and redone only when that changes: a place's plan (its
+key; a draft check and the build take each other's plan of the same files), each carried-navmesh cell's cut and finish,
+each room's interior navmesh, the world's facts, a plugin's dump (by its sha256), mesh collision, outline hulls and the
+quest records' YAML. A built check is current by content (`check.stamp_stale`), never by file times. After one change
+Helstrom builds in about 80 s and draft-checks in about 190 s; a small place builds in about 28 s and draft-checks in
+about 70 s. Two costs remain, each a known next step:
+
+- **The plugin dump, about 32 s on every plugin that changed.** It is all reading in the C# tool, not start-up: half
+  is resolving every record's links, half the cells and refs, and both build Mutagen's lookup indexes over the
+  392 MB world file and the masters. The fix is per-master record indexes kept on disk by the master's sha256.
+- **The writer, about 25 s on every plan that changed, most of it the unchanged items ladder.** The plugin is written
+  whole from the plans. The fix is a record-level writer that patches the records of the changed parts of a plan into
+  the plugin on disk and keeps the rest.
+
 ## Finalise
 
 `POST finalise` runs `python -m tools.places finalise <place_id> <save_id>` under `tooling/job_guard.sh`:

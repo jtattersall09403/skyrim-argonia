@@ -59,13 +59,41 @@ def _short(s, n: int = 140) -> str:
 
 
 def records(quests: Path = QUESTS) -> list[dict]:
-    import yaml
     out = []
     for p in sorted(quests.glob("*/*.yaml")):
-        q = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+        q = _parsed(p.read_bytes())
         if isinstance(q, dict) and q.get("id"):
             out.append(q)
     return out
+
+
+_YAML: dict = {}
+YAML_CACHE = Path(__file__).resolve().parents[2] / "out" / "places" / "cache" / "yaml"
+
+
+def _parsed(b: bytes):
+    """A record file's YAML, parsed once for each content (in this run, and on disk across runs): every place check
+    reads every quest record, and the YAML reader is slow. A fresh copy each time, so no caller shares another's."""
+    import copy
+    import hashlib
+    import os
+    import pickle
+    import yaml
+    k = hashlib.sha256(b).hexdigest()
+    if k not in _YAML:
+        f = YAML_CACHE / f"{yaml.__version__}" / k[:2] / f"{k}.pkl"
+        try:
+            _YAML[k] = pickle.loads(f.read_bytes())
+        except (OSError, pickle.UnpicklingError, EOFError, ValueError):
+            _YAML[k] = yaml.safe_load(b.decode("utf-8")) or {}
+            try:
+                f.parent.mkdir(parents=True, exist_ok=True)
+                tmp = f.with_suffix(f".{os.getpid()}.tmp")
+                tmp.write_bytes(pickle.dumps(_YAML[k]))
+                os.replace(tmp, f)
+            except OSError:
+                pass
+    return copy.deepcopy(_YAML[k])
 
 
 def switches(recs: list[dict]) -> dict[str, list[dict]]:
