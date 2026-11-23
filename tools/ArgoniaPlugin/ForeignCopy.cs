@@ -76,6 +76,20 @@ sealed class ForeignCopy : IDisposable
     }
 
     readonly Dictionary<string, Dictionary<string, IMajorRecordGetter>> edids = new(StringComparer.OrdinalIgnoreCase);
+    readonly Dictionary<string, Dictionary<FormKey, IMajorRecordGetter>> keys = new(StringComparer.OrdinalIgnoreCase);
+
+    /// The plugin's record of this form key (its first, as the plugin lists them), or null: every record of the plugin
+    /// indexed once by its key, never walked again for each lookup.
+    public IMajorRecordGetter? InFile(string file, FormKey fk)
+    {
+        if (!keys.TryGetValue(file, out var ix))
+        {
+            ix = new();
+            foreach (var r in Plugin(file).EnumerateMajorRecords()) ix.TryAdd(r.FormKey, r);
+            keys[file] = ix;
+        }
+        return ix.TryGetValue(fk, out var rec) ? rec : null;
+    }
 
     public IMajorRecordGetter Find(string file, string edid)
     {
@@ -97,8 +111,7 @@ sealed class ForeignCopy : IDisposable
         if (Map.TryGetValue(fk, out var m)) return m;
         if (Linked.TryGetValue(fk, out var l)) return l;
         if (!forceCopy && allowed.Contains(fk.ModKey)) return fk;
-        var r = Plugin(file).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk)
-                ?? (PluginOrNull(fk.ModKey.FileName)?.EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk));
+        var r = InFile(file, fk) ?? (PluginOrNull(fk.ModKey.FileName) is null ? null : InFile(fk.ModKey.FileName, fk));
         // a link into a record no plugin we can read holds (Heavy Armory's keywords of a patch it does not ship) is
         // nulled in every copy that names it, and said so
         if (r is null)
@@ -168,8 +181,7 @@ sealed class ForeignCopy : IDisposable
         or IDialogTopicGetter or IDialogResponsesGetter or INavigationMeshGetter or ILandscapeGetter or IAStoryManagerNodeGetter;
 
     IMajorRecordGetter? Find(FormKey fk, string file) =>
-        Plugin(file).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk)
-        ?? (Exists(fk) ? Plugin(fk.ModKey.FileName).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk) : null);
+        InFile(file, fk) ?? (Exists(fk) ? InFile(fk.ModKey.FileName, fk) : null);
 
     // "Black Marsh North.esp" -> BMN, "King of the Murkmire.esp" -> KotM, "DepthsOfSkyrim.esp" -> DOS
     public static string Initials(string file) =>

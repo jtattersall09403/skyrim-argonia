@@ -53,7 +53,7 @@ Step 11 of the place path ([place-system](../place-system/SKILL.md)). The inner 
        further: it goes under "For the owner" in `STATE.md` in plain English, with where it stands and the look
        that shows it.
     Then `look <place> survey` and
-    `survey <unit>` for every structure, each tile read. No capture set is made for the owner: he looks in the studio.
+    `look <place> survey --all` (every unit, one call), each tile read. No capture set is made for the owner: he looks in the studio.
 11. The promises check is green: `python -m tools.places promises <place_id> --check` passes (the build's `promises`
     check runs the same): every gathered sentence of the record, its people and its quests has a row, every built row
     its evidence in the place files, every quest state its `states.jsonl` row with its key refs. Look at each state

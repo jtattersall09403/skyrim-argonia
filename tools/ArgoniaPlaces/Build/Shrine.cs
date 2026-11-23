@@ -55,7 +55,7 @@ static class Shrine
             var ac = s.GetProperty("activator");
             var from = C.Fk(ac.GetProperty("model_from").GetString()!);
             var src = Cache.TryResolve<IMajorRecordGetter>(from, out var r) ? r
-                : ctx.Fc.Plugin(from.ModKey.FileName).EnumerateMajorRecords().First(x => x.FormKey == from);
+                : ctx.Fc.InFile(from.ModKey.FileName, from) ?? throw new InvalidOperationException($"{from} is not in {from.ModKey.FileName}");
             var a = new Mutagen.Bethesda.Skyrim.Activator(C.Fk(ac.GetProperty("fk").GetString()!), C.Rel)
             {
                 EditorID = ac.GetProperty("edid").GetString(), Name = T(ac.GetProperty("name").GetString()!),

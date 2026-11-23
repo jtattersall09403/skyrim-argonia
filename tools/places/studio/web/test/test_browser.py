@@ -1024,9 +1024,21 @@ def test_21_world_map(pad, browser, server):
 
 def test_22_start_choice(pad, browser, server):
     pid = pad.pid
-    saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))
-    auto = next((x for x in saves if x["save_id"] == "autosave" and x["ops"]), None)
-    assert auto, "an earlier test left unsaved work"
+    # unsaved work of its own: a building nudged twice in the module's tab (a place an earlier test finalised is
+    # opened for work again first: a finalised place is never autosaved), then its autosave waited for on the server
+    was_final = pad.ev("studio.finalised")
+    pad.ev("async () => { const s = await (await fetch(`/api/place/${studio.place.place_id}/saves`)).json(); const a = s.find((x) => x.save_id === 'autosave'); if (a) studio.revs.autosave = a.rev; studio.finalised = false; }")
+    pad.ev("""(() => { const refs = studio.model.spaces.exterior.refs, id = [...refs.values()].find((x) => x.kind === 'building').id;
+        for (const dx of [16, -16]) { const was = [...refs.get(id).pos], now = [was[0] + dx, was[1], was[2]];
+          studio.push([{ op: 'ref.move', id, before: { pos: was }, after: { pos: now } }]); } })()""")
+
+    def autosaved():
+        saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))
+        return next((x for x in saves if x["save_id"] == "autosave" and (x["ops"] or 0) >= 2), None)
+    t0 = time.time()
+    while (auto := autosaved()) is None and time.time() - t0 < WAIT / 1000:
+        pad.page.wait_for_timeout(250)
+    assert auto, "the nudges were autosaved"
     # a named save made on an older draft
     old = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves/autosave"))
     body = {**old, "save_id": "older-draft", "name": "Older draft work", "rev": 0, "base": {**old["base"], "draft_key": "an-older-draft"}}
@@ -1050,6 +1062,8 @@ def test_22_start_choice(pad, browser, server):
     p.page.get_by_role("button", name="Start from the builder's draft").click()
     assert p.ev("studio.log.applied().length") == 0
     p.page.context.close()
+    # the module's tab as the next tests expect it: the two nudges gone from its log, finalised as it was
+    pad.ev("(f) => { clearTimeout(studio.autoT); studio.log.undo(); studio.log.undo(); studio.log.ops.length = studio.log.cursor; studio.finalised = f; }", was_final)
 
 
 # ---------- 23: what things hold and who people are ----------

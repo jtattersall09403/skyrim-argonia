@@ -22,6 +22,7 @@ join_seams the links). Pure numpy: no game data here."""
 from __future__ import annotations
 
 import math
+import os
 from collections import defaultdict
 
 import numpy as np
@@ -126,6 +127,14 @@ def clip(poly, h):
             out.append(p)
         if (dp > 0 and dq < 0) or (dp < 0 and dq > 0):
             out.append(_cut(p, q, h))
+    return _cleaned(out)
+
+
+SURE = 1e-3   # units: a corner this far inside (or outside) a half-plane is in it (or out of it) beyond any rounding
+
+
+def _cleaned(out):
+    """clip's clean-up of its points: runs of one point made one, and None for what is left without area."""
     ded = []
     for p in out:
         if not ded or (abs(p[0] - ded[-1][0]) > 1e-6 or abs(p[1] - ded[-1][1]) > 1e-6):
@@ -170,15 +179,55 @@ def _overlap(a, b) -> bool:
     return a[0] <= b[2] and b[0] <= a[2] and a[1] <= b[3] and b[1] <= a[3]
 
 
+ZONE_GRID = 512.0   # units: the square the zones are indexed by
+
+
 class Region:
     """The carried region: inside `outer` (convex), outside every zone (convex)."""
 
     def __init__(self, outer, zones=()):
         self.outer = ccw(list(outer))
         self.outer_h = planes(self.outer)
+        self._outer_ab = np.asarray([h[:2] for h in self.outer_h], float).reshape(-1, 2)
+        self._outer_c = np.asarray([h[2] for h in self.outer_h], float)
         self.zones = [ccw(list(z)) for z in zones if len(z) >= 3]
         self.zone_h = [planes(z) for z in self.zones]
         self.zone_box = [_bbox(z) for z in self.zones]
+        self._zgrid: dict = defaultdict(list)   # the zones by ZONE_GRID square of their box: a piece meets only those near it
+        for i, bb in enumerate(self.zone_box):
+            for gx in range(math.floor(bb[0] / ZONE_GRID), math.floor(bb[2] / ZONE_GRID) + 1):
+                for gy in range(math.floor(bb[1] / ZONE_GRID), math.floor(bb[3] / ZONE_GRID) + 1):
+                    self._zgrid[(gx, gy)].append(i)
+
+    def near(self, bb) -> list:
+        """The zones whose box meets box bb, in their order: every other zone leaves a piece inside bb as it is."""
+        got = set()
+        for gx in range(math.floor(bb[0] / ZONE_GRID), math.floor(bb[2] / ZONE_GRID) + 1):
+            for gy in range(math.floor(bb[1] / ZONE_GRID), math.floor(bb[3] / ZONE_GRID) + 1):
+                got.update(self._zgrid.get((gx, gy), ()))
+        return sorted(i for i in got if _overlap(bb, self.zone_box[i]))
+
+    def outer_cut(self, poly):
+        """intersect(poly, self.outer_h), with the two plain cases answered at once: a polygon whose every corner lies
+        well inside every edge of the ring is what clip makes of it (clip's own clean-up, once: a clip that cuts
+        nothing changes nothing more), and one whose corners all lie well outside one edge is nothing. Otherwise
+        the clips, edge by edge."""
+        side = np.asarray(poly, float)[:, :2] @ self._outer_ab.T + self._outer_c
+        if (side > SURE).all():
+            return _cleaned(list(poly))
+        if (side < -SURE).all(axis=0).any():
+            return None
+        return intersect(poly, self.outer_h)
+
+    def outer_minus(self, poly) -> list:
+        """minus(poly, self.outer_h) by outer_cut: untouched, whole; wholly inside, nothing; else minus itself."""
+        q = self.outer_cut(poly)
+        if q is None:
+            return [poly]
+        side = np.asarray(poly, float)[:, :2] @ self._outer_ab.T + self._outer_c
+        if (side > SURE).all():
+            return []
+        return minus(poly, self.outer_h)
 
     def segments(self) -> list:
         segs = []
@@ -187,11 +236,12 @@ class Region:
         return segs
 
     def carried(self, poly) -> list:
-        p = intersect(poly, self.outer_h)
+        p = self.outer_cut(poly)
         if p is None:
             return []
         pieces = [p]
-        for h, bb in zip(self.zone_h, self.zone_box):
+        for i in self.near(_bbox(p)):   # every piece lies inside p: a zone clear of p's box cuts none of them
+            h, bb = self.zone_h[i], self.zone_box[i]
             nxt = []
             for q in pieces:
                 nxt += minus(q, h) if _overlap(_bbox(q), bb) else [q]
@@ -199,25 +249,27 @@ class Region:
         return pieces
 
     def generated(self, poly) -> list:
-        out = minus(poly, self.outer_h)
-        inside = intersect(poly, self.outer_h)
+        out = self.outer_minus(poly)
+        inside = self.outer_cut(poly)
         if inside is None:
             return out
         bbi = _bbox(inside)
-        for k, (h, bb) in enumerate(zip(self.zone_h, self.zone_box)):
-            if not _overlap(bbi, bb):
-                continue
+        near = self.near(bbi)           # every piece below lies inside `inside`: the zones clear of its box touch none
+        for n, k in enumerate(near):
+            h = self.zone_h[k]
             q = intersect(inside, h)
             if q is None:
                 continue
             pieces = [q]
-            for j in range(k):          # a spot two zones share is generated once
-                if _overlap(_bbox(q), self.zone_box[j]):
+            bq = _bbox(q)
+            for j in near[:n]:          # a spot two zones share is generated once
+                if _overlap(bq, self.zone_box[j]):
                     pieces = [r for p in pieces for r in minus(p, self.zone_h[j])]
             out += pieces
         if self.cover is not None:      # a hole in the source's mesh where our ground is walkable: generated
             free = [inside]
-            for h, bb in zip(self.zone_h, self.zone_box):
+            for k in near:
+                h, bb = self.zone_h[k], self.zone_box[k]
                 free = [r for p in free for r in (minus(p, h) if _overlap(_bbox(p), bb) else [p])]
             zlo, zhi = min(q[2] for q in inside) - COVER_DZ, max(q[2] for q in inside) + COVER_DZ
             for i in self._covering(bbi):
@@ -281,7 +333,19 @@ def snap(V: np.ndarray, segs, fixed: np.ndarray | None = None, tol: float = SNAP
         return 0
     moved = np.zeros(len(V), bool)
     free = np.ones(len(V), bool) if fixed is None else ~fixed
-    for a, b in segs:
+    if not free.any():
+        return 0
+    # a segment whose box, grown by tol, misses every free vertex moves none: only the others are walked, the free
+    # vertices' box kept up to date as vertices move (onto a segment, so never further than its grown box)
+    F = V[free]
+    bx0, by0, bx1, by1 = float(F[:, 0].min()), float(F[:, 1].min()), float(F[:, 0].max()), float(F[:, 1].max())
+    S = np.asarray([[a[0], a[1], b[0], b[1]] for a, b in segs], float)
+    sx0, sx1 = np.minimum(S[:, 0], S[:, 2]) - tol, np.maximum(S[:, 0], S[:, 2]) + tol
+    sy0, sy1 = np.minimum(S[:, 1], S[:, 3]) - tol, np.maximum(S[:, 1], S[:, 3]) + tol
+    for si in range(len(segs)):
+        if sx1[si] < bx0 or sx0[si] > bx1 or sy1[si] < by0 or sy0[si] > by1:
+            continue
+        a, b = segs[si]
         a = np.asarray(a[:2], float)
         b = np.asarray(b[:2], float)
         d = b - a
@@ -306,6 +370,9 @@ def snap(V: np.ndarray, segs, fixed: np.ndarray | None = None, tol: float = SNAP
         on = (t > 0) & (t < 1) & (dist <= tol) & (dist > 0)
         V[idx[on], 0], V[idx[on], 1] = proj[on, 0], proj[on, 1]
         moved[idx[on]] = True
+        Q = V[idx, :2]
+        bx0, by0 = min(bx0, float(Q[:, 0].min())), min(by0, float(Q[:, 1].min()))
+        bx1, by1 = max(bx1, float(Q[:, 0].max())), max(by1, float(Q[:, 1].max()))
     return int(moved.sum())
 
 
@@ -548,6 +615,83 @@ def drop_flat(m: Mesh) -> int:
 
 def _splits(m: Mesh, extra: list) -> dict:
     """{triangle: {edge k: [(t along the edge, vertex index or a point to add)]}}: every vertex of the mesh (or point
+    of `extra`, a neighbour cell's border vertices) lying on an open edge's inside. The open edges and the points near
+    each (by a grid of G squares) are paired all at once; the answer is _splits_loop's, edge by edge in triangle order
+    and each edge's points in the grid's order."""
+    G = 64.0
+    V = np.asarray(m.V, float).reshape(-1, 3)
+    X = np.asarray(extra, float).reshape(-1, 3)
+    P = np.concatenate([V, X]) if len(X) else V
+    pid = np.concatenate([np.arange(len(V)), np.full(len(X), -1)])
+    out: dict = defaultdict(lambda: defaultdict(list))
+    if not len(m.T) or not len(P):
+        return out
+    T = np.asarray(m.T, np.int64).reshape(-1, 3)
+    # the open edges (one use), in triangle order then edge order: as m.edges() meets them
+    U = np.stack([T[:, 0], T[:, 1], T[:, 2]], 1).ravel()
+    W = np.stack([T[:, 1], T[:, 2], T[:, 0]], 1).ravel()
+    lo, hi = np.minimum(U, W), np.maximum(U, W)
+    key = lo * (len(V) + 1) + hi
+    _, inv, cnt = np.unique(key, return_inverse=True, return_counts=True)
+    open_ = np.flatnonzero(cnt[inv] == 1)
+    if not len(open_):
+        return out
+    ti, kk = open_ // 3, open_ % 3
+    A, B = V[U[open_]], V[W[open_]]
+    D = B[:, :2] - A[:, :2]
+    L2 = D[:, 0] * D[:, 0] + D[:, 1] * D[:, 1]
+    keep = L2 >= 1e-9
+    ti, kk, A, B, D, L2, eu, ew = ti[keep], kk[keep], A[keep], B[keep], D[keep], L2[keep], U[open_][keep], W[open_][keep]
+    if not len(ti):
+        return out
+    # the points by grid square, in their own order within a square
+    gx = np.floor(P[:, 0] / G).astype(np.int64)
+    gy = np.floor(P[:, 1] / G).astype(np.int64)
+    gx0, gy0 = int(gx.min()), int(gy.min())
+    ny = int(gy.max()) - gy0 + 1
+    nx = int(gx.max()) - gx0 + 1
+    sq = (gx - gx0) * ny + (gy - gy0)
+    order = np.argsort(sq, kind="stable")
+    start = np.searchsorted(sq[order], np.arange(nx * ny), "left")
+    end = np.searchsorted(sq[order], np.arange(nx * ny), "right")
+    # each edge's squares, x then y, as the loop walks them
+    x0 = np.floor((np.minimum(A[:, 0], B[:, 0]) - ON_EDGE) / G).astype(np.int64)
+    y0 = np.floor((np.minimum(A[:, 1], B[:, 1]) - ON_EDGE) / G).astype(np.int64)
+    x1 = np.floor((np.maximum(A[:, 0], B[:, 0]) + ON_EDGE) / G).astype(np.int64)
+    y1 = np.floor((np.maximum(A[:, 1], B[:, 1]) + ON_EDGE) / G).astype(np.int64)
+    nxe, nye = x1 - x0 + 1, y1 - y0 + 1
+    ns = nxe * nye
+    e_of = np.repeat(np.arange(len(ti)), ns)
+    r = np.arange(len(e_of)) - np.repeat(np.cumsum(ns) - ns, ns)
+    sx = x0[e_of] + r // nye[e_of]
+    sy = y0[e_of] + r % nye[e_of]
+    inside = (sx >= gx0) & (sx < gx0 + nx) & (sy >= gy0) & (sy < gy0 + ny)
+    e_of, sx, sy = e_of[inside], sx[inside], sy[inside]
+    s_id = (sx - gx0) * ny + (sy - gy0)
+    n_in = end[s_id] - start[s_id]
+    e2 = np.repeat(e_of, n_in)
+    r2 = np.arange(len(e2)) - np.repeat(np.cumsum(n_in) - n_in, n_in)
+    q_ix = order[np.repeat(start[s_id], n_in) + r2]
+    if not len(e2):
+        return out
+    i_of = pid[q_ix]
+    Pq = P[q_ix]
+    Ae, De = A[e2], D[e2]
+    t = ((Pq[:, 0] - Ae[:, 0]) * De[:, 0] + (Pq[:, 1] - Ae[:, 1]) * De[:, 1]) / L2[e2]
+    ok = (i_of != eu[e2]) & (i_of != ew[e2]) & (t > 1e-4) & (t < 1 - 1e-4)
+    qx, qy = Ae[:, 0] + t * De[:, 0], Ae[:, 1] + t * De[:, 1]
+    ok &= np.hypot(Pq[:, 0] - qx, Pq[:, 1] - qy) <= ON_EDGE
+    z = Ae[:, 2] + t * (B[e2][:, 2] - Ae[:, 2])
+    ok &= np.abs(Pq[:, 2] - z) <= WELD_Z
+    for j in np.flatnonzero(ok):
+        e = int(e2[j])
+        i = int(i_of[j])
+        out[int(ti[e])][int(kk[e])].append((float(t[j]), i) if i >= 0 else (float(t[j]), (float(qx[j]), float(qy[j]), float(z[j]))))
+    return out
+
+
+def _splits_loop(m: Mesh, extra: list) -> dict:
+    """{triangle: {edge k: [(t along the edge, vertex index or a point to add)]}}: every vertex of the mesh (or point
     of `extra`, a neighbour cell's border vertices) lying on an open edge's inside."""
     V = np.asarray(m.V, float) if m.V else np.zeros((0, 3))
     pts = [(i, V[i]) for i in range(len(V))] + [(None, np.asarray(p, float)) for p in extra]
@@ -753,7 +897,9 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
                   (np.abs(GV[:, 1] - y0) < 0.5) | (np.abs(GV[:, 1] - y0 - CELL) < 0.5) if len(GV) else np.zeros(0, bool)
         snapped += snap(GV, segs, fixed=on_line)
         gen[c] = [(GV[3 * i:3 * i + 3].tolist(), f) for i, (_, f) in enumerate(rows)]
-    meshes: dict = defaultdict(Mesh)
+    # each cell's triangles in the order the cells take them (the carried in their order, then the generated): a cell's
+    # mesh is assembled from its own pieces alone, so the cells are cut side by side
+    rows_of: dict = defaultdict(list)
     for tri, flags, tag in carried:
         poly = [tuple(p) for p in tri]
         if area2(poly) < 0:
@@ -762,23 +908,85 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
         x0, y0, x1, y1 = _bbox(poly)
         for cx in range(math.floor(x0 / CELL), math.floor(x1 / CELL) + 1):
             for cy in range(math.floor(y0 / CELL), math.floor(y1 / CELL) + 1):
-                q = intersect(poly, planes(cell_box((cx, cy))))
-                if q is None:
-                    continue
-                # a moved unit's own triangles (tag > 0) stand where the unit now is, in its zone: cut by cells only
-                for piece in (region.carried(q) if tag == 0 else [q]):
-                    meshes[(cx, cy)].add_poly(piece, f, tag)
-    for c, rows in gen.items():
-        for tri, flags in rows:
-            poly = [tuple(p) for p in tri]
-            if area2(poly) < 0:
-                poly = poly[::-1]
-            for piece in region.generated(poly):
-                meshes[c].add_poly(piece, int(flags) & ~(EDGE_BITS | DOOR) & 0xFFFF, -1)
+                rows_of[(cx, cy)].append((poly, f, tag))
+    order = list(rows_of) + [c for c in gen if c not in rows_of]
+    got = _cells_side_by_side(_cut_cell, order, {"rows": rows_of, "gen": gen, "region": region})
+    meshes = {c: m for c, m in zip(order, got) if m is not None}
     out = finish_cells(meshes, neighbours)
     for c in out:
         out[c]["stats"]["snapped"] = snapped
     return out
+
+
+def _cut_cell(c):
+    """One cell's mesh from its carried pieces (cut by the cell's box and the region) and its generated triangles (cut
+    by the region); None when nothing lands in it."""
+    J = _JOB
+    m, n = Mesh(), 0
+    box = planes(cell_box(c))
+    for poly, f, tag in J["rows"].get(c, ()):
+        q = intersect(poly, box)
+        if q is None:
+            continue
+        # a moved unit's own triangles (tag > 0) stand where the unit now is, in its zone: cut by cells only
+        for piece in (J["region"].carried(q) if tag == 0 else [q]):
+            m.add_poly(piece, f, tag)
+            n += 1
+    for tri, flags in J["gen"].get(c, ()):
+        poly = [tuple(p) for p in tri]
+        if area2(poly) < 0:
+            poly = poly[::-1]
+        for piece in J["region"].generated(poly):
+            m.add_poly(piece, int(flags) & ~(EDGE_BITS | DOOR) & 0xFFFF, -1)
+            n += 1
+    return m if n else None
+
+
+JOBS = int(os.environ.get("ARGONIA_PLACES_JOBS") or min(3, os.cpu_count() or 1))   # worker processes for the cells
+_JOB: dict = {}
+
+
+def _cells_side_by_side(fn, cells: list, job: dict) -> list:
+    """fn(cell) for every cell, in order: in JOBS forked workers that read `job` (as _JOB) from the parent's memory,
+    or here when one job is asked or the cells are few. Each cell's work reads nothing another cell's writes, so the
+    answers are the same either way."""
+    global _JOB
+    _JOB = job
+    try:
+        if JOBS <= 1 or len(cells) < 4:
+            return [fn(c) for c in cells]
+        import multiprocessing as mp
+        with mp.get_context("fork").Pool(min(JOBS, len(cells))) as pool:
+            return pool.map(fn, cells, chunksize=1)
+    finally:
+        _JOB = {}
+
+
+def _finish_one(c):
+    J = _JOB
+    m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
+    x0, y0 = c[0] * CELL, c[1] * CELL
+    extra = []
+    for o in ((c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)):
+        for v in border.get(o, ()):
+            if (abs(v[0] - x0) < 0.5 or abs(v[0] - x0 - CELL) < 0.5) and y0 - 0.5 <= v[1] <= y0 + CELL + 0.5 or \
+               (abs(v[1] - y0) < 0.5 or abs(v[1] - y0 - CELL) < 0.5) and x0 - 0.5 <= v[0] <= x0 + CELL + 0.5:
+                extra.append(v)
+    splits = fix_t_junctions(m, extra)
+    collapsed = collapse_short(m, cell=c)
+    for _ in range(8):                        # a flat triangle goes; its long edge's neighbour is split instead
+        flats = drop_flat(m)
+        splits += fix_t_junctions(m, extra)
+        if not flats:
+            break
+    sides = {}
+    for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
+                        ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
+        if o in neighbours and o not in meshes:  # a neighbour rebuilt here matches by its new border
+            sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
+    unsplit = unsplit_border(m, c, sides)
+    folds = drop_folds(m, c)
+    return finish_cell(m), (splits, collapsed, unsplit, folds)
 
 
 def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
@@ -794,30 +1002,10 @@ def finish_cells(meshes: dict, neighbours: dict | None = None) -> dict:
         border[c] += [list(p) for p in pts]
     out = {}
     splits = collapsed = unsplit = folds = 0
-    for c in sorted(meshes):
-        m = meshes[c]
-        x0, y0 = c[0] * CELL, c[1] * CELL
-        extra = []
-        for o in ((c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)):
-            for v in border.get(o, ()):
-                if (abs(v[0] - x0) < 0.5 or abs(v[0] - x0 - CELL) < 0.5) and y0 - 0.5 <= v[1] <= y0 + CELL + 0.5 or \
-                   (abs(v[1] - y0) < 0.5 or abs(v[1] - y0 - CELL) < 0.5) and x0 - 0.5 <= v[0] <= x0 + CELL + 0.5:
-                    extra.append(v)
-        splits += fix_t_junctions(m, extra)
-        collapsed += collapse_short(m, cell=c)
-        for _ in range(8):                        # a flat triangle goes; its long edge's neighbour is split instead
-            flats = drop_flat(m)
-            splits += fix_t_junctions(m, extra)
-            if not flats:
-                break
-        sides = {}
-        for o, ax, line in (((c[0] - 1, c[1]), 0, x0), ((c[0] + 1, c[1]), 0, x0 + CELL),
-                            ((c[0], c[1] - 1), 1, y0), ((c[0], c[1] + 1), 1, y0 + CELL)):
-            if o in (neighbours or {}) and o not in meshes:  # a neighbour rebuilt here matches by its new border
-                sides[(ax, line)] = [p for p in neighbours[o] if abs(p[ax] - line) < 0.5]
-        unsplit += unsplit_border(m, c, sides)
-        folds += drop_folds(m, c)
-        got = finish_cell(m)
+    cells = sorted(meshes)
+    done = _cells_side_by_side(_finish_one, cells, {"meshes": meshes, "neighbours": neighbours or {}, "border": border})
+    for c, (got, n) in zip(cells, done):
+        splits, collapsed, unsplit, folds = splits + n[0], collapsed + n[1], unsplit + n[2], folds + n[3]
         if got["tris"]:
             out[c] = got
     for c in out:

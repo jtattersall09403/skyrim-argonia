@@ -38,7 +38,7 @@ code changes.
 | One piece's feet, rest and neighbours | `probe <thing>` |
 | Where each stair, bridge and walkway end meets its deck or the ground | `python -m tools.places units <place> --joints`, then a `section` through each end it names |
 | Heights at a glance; proof a piece is seated | `section <thing> --axis` or `section <x1,y1> <x2,y2>` |
-| Judge a structure from every side at once | `survey <place> [<structure or unit> ...]`, `survey <place> --changed`: the sheet is the index; read each tile in `survey/<structure>/tiles/` (1280x960, listed with its score in `table.txt`) for detail |
+| Judge a structure from every side at once | `survey <place> [<structure or unit> ...]`, `survey <place> --changed`, `survey <place> --all` (every unit in one call); a sheet that runs past its time budget fails the tiles it did not reach, said so: the sheet is the index; read each tile in `survey/<structure>/tiles/` (1280x960, listed with its score in `table.txt`) for detail |
 | One more look at a structure | `at <thing> [--from n..nw] [--eye\|--high\|--top]` (1920x1440; `--grid` adds the ground grid, off by default), `orbit <thing>` (each panel its own file); `at <thing> --stand x,y[,z]` when the automatic camera lands in a roof: the eye at that point, over the deck under it |
 | The numbers of every house, deck, door, tree and loose piece | `measure` |
 | See what stands under trees | any view with `--no-canopy` (from high or above it is cut by itself when the canopy hides most of the subject) |
@@ -99,8 +99,8 @@ shows; `door` names its way out. The room is drawn in its own light; `--lit` add
 Before a place goes to the owner (the bar in `place-system`):
 
 1. `probe --all` reports nothing open.
-2. `survey <place>` and `survey <place> <structure>` for each structure, every tile good or struck through with
-   its reason; for each room a story needs, its `in <room> overview` and `probe --all`.
+2. `survey <place>` and `survey <place> --all` (every unit, one sheet each, in one call), every tile good or
+   struck through with its reason; for each room a story needs, its `in <room> overview` and `probe --all`.
 3. `playwalk` of the whole place (one tour past every door, stall, station, the Hist and quest spot; its plan's counts print first) and `playwalk --rooms`; read the forward filmstrip of the tour, then its strips.
    A red struck tile is the camera's: judge nothing from it. An orange PLACE tile (the way passes through a piece,
    a door opens onto a wall, no boards under a bridge, the void in a room) is a fault: fix it. Every "cannot be
