@@ -55,4 +55,4 @@ def test_a_check_with_no_stamp_says_so(tmp_path, monkeypatch):
     root, pdir = setup(tmp_path, monkeypatch)
     (root / "out/places/shards/fen/check.json").write_text("{}")
     ok, line = handover.built_check_current(root, root / "out", "fen")
-    assert not ok and "no content stamp" in line
+    assert not ok and "before content stamps" in line

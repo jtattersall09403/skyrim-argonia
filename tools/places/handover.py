@@ -26,6 +26,23 @@ def out_root(repo: Path = B.ROOT) -> Path:
     return repo / "out"
 
 
+def _committed_at(root: Path, d: Path) -> float:
+    """For a check made before content stamps only: when the files the build or the checks read were last
+    committed (uncommitted changes: now); the time log, `edits/` and prose never count."""
+    import subprocess
+    import time
+    rel = str(d.relative_to(root))
+    only = [rel, f":(exclude){rel}/edits", f":(exclude){rel}/timelog.jsonl", f":(exclude){rel}/*.md"]
+    try:
+        ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
+                                  capture_output=True, text=True, timeout=30).stdout.strip() or 0)
+        dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", *only],
+                               capture_output=True, text=True, timeout=30).stdout.strip()
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return time.time()
+    return time.time() if dirty or not ct else ct
+
+
 def built_check_current(root: Path, out: Path, pid: str) -> tuple[bool, str]:
     """(current, a line saying so): the place's built check (out/places/shards/<pid>/check.json) stands for the place
     as it is: by content, every file the build and the checks read unchanged, and the code and records the plan stands
@@ -37,7 +54,12 @@ def built_check_current(root: Path, out: Path, pid: str) -> tuple[bool, str]:
     chk = shard / "check.json"
     if not chk.exists():
         return False, f"built check NOT CURRENT: {pid} has no built check; build and check it after the last edit"
-    why = C.stamp_stale(json.loads(chk.read_text()).get("stamp"), root / "newworld/places" / pid, shard)
+    stamp = json.loads(chk.read_text()).get("stamp")
+    if stamp is None:   # a check made before content stamps: no rebuild for that alone; its next check stamps it
+        ok = chk.stat().st_mtime >= _committed_at(root, root / "newworld/places" / pid)
+        return ok, (f"built check {'current' if ok else 'NOT CURRENT'}: made before content stamps, so judged by the "
+                    f"place files' last commit until its next check stamps it by content")
+    why = C.stamp_stale(stamp, root / "newworld/places" / pid, shard)
     if not why:
         return True, "built check current: every file the build and the checks read is as it was checked (by content)"
     return False, (f"built check NOT CURRENT: {'; '.join(why[:8])}{f' (and {len(why) - 8} more)' if len(why) > 8 else ''}: "
