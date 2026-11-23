@@ -8,7 +8,7 @@ import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
-import { spotIn, rigid, boxOf } from './units.js';
+import { spotIn, rigid, boxOf, spotsMoved } from './units.js';
 import { dragDelta, dragMode, snapFaces } from './move_map.js';
 import { patrolOf, usersOf, followsLine } from './people.js';
 // what a thing is in a sentence: "bed", "bedroll", "work bench", else its kind
@@ -575,48 +575,10 @@ export class Tools {
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     return { op: 'unit.move', unit: d.unit.id, name: d.unit.name, refs, ...this.spotsMoved(d.unit, moved, d.turn || 0) };
   }
-  // The people's spots (work, routine stops, patrol points) and the quest spots standing in a unit, moved with it.
-  // A bed, a station or anything a stop names by its ref goes with its ref, needing no change of the person.
+  // The people's, quest, walking-zone and street spots a unit carries (units.js spotsMoved).
   spotsMoved(u, moved, turn) {
-    const a = this.app, S = a.ours.space, people = [], quests = [];
-    for (const p of a.model.people.values()) {
-      const after = clone(p); let hit = false;
-      const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
-      at(after.work); for (const st of after.routine || []) at(st.at);
-      const pts = patrolOf(after);
-      pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
-      if (hit) people.push({ person: after, before: clone(p) });
-    }
-    for (const q of a.model.quests.values()) {
-      if ((q.space || 'exterior') !== S || !Array.isArray(q.pos) || !spotIn(u, q.pos)) continue;
-      const after = { ...clone(q), pos: moved(q.pos) };
-      if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
-      quests.push({ quest: after, before: clone(q) });
-    }
-    // the owner's walking zones lying wholly in it (a "walk here" at its steps): their outline moves with it
-    const walks = [];
-    for (const w of a.model.walk.values()) {
-      const k = w.kind === 'join' ? 'points' : 'outline', pts = w[k];
-      if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
-      walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
-    }
-    // a street that ends at one of its doors or on its footprint: its last point moves with it and the one before it
-    // half as far, so the street bends to the door rather than dragging its whole length
-    const paths = [], doors = new Set(u.members.filter((id) => a.placeRefsById().get(id)?.door));
-    for (const w of a.model.paths.values()) {
-      if (S !== 'exterior' || !Array.isArray(w.points) || w.points.length < 2) continue;
-      const pts = w.points.map((q) => [...q]), n = pts.length; let hit = false;
-      const end = (i, j, linked) => {
-        if (!linked && !spotIn(u, pts[i])) return;
-        const m = moved(pts[i]), dx = m[0] - pts[i][0], dy = m[1] - pts[i][1];
-        pts[i] = [rnd(m[0]), rnd(m[1]), ...pts[i].slice(2)];
-        if (n > 2 && !spotIn(u, pts[j])) pts[j] = [rnd(pts[j][0] + dx / 2), rnd(pts[j][1] + dy / 2), ...pts[j].slice(2)];
-        hit = true;
-      };
-      end(0, 1, doors.has(w.from)); end(n - 1, n - 2, doors.has(w.to));
-      if (hit) paths.push({ path: { ...clone(w), points: pts }, before: clone(w) });
-    }
-    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}), ...(paths.length ? { paths } : {}) };
+    const a = this.app;
+    return spotsMoved(a.model, a.ours.space, u, moved, turn, a.placeRefsById());
   }
   // A unit moved by the panel's buttons: the same op as a drag.
   moveUnit(u, turn, sh, dz) {
