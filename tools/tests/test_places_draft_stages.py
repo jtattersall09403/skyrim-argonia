@@ -34,6 +34,13 @@ def drafted(tmp_path_factory):
     return root
 
 
+def test_the_shared_draft_leaves_no_patch_behind(drafted):
+    """The session's one draft patches the place record and the law only while it drafts: later tests (and other
+    files in the same run) see the real functions."""
+    assert run.place_record.__module__ == run.__name__ and run.place_record.__name__ == "place_record"
+    assert jail.law.__module__ == jail.__name__ and jail.law.__name__ == "law"
+
+
 @pytest.fixture()
 def fx(drafted, tmp_path, monkeypatch):
     _patch(monkeypatch)
