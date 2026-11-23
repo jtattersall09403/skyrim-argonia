@@ -58,7 +58,7 @@
 {"place": "helstrom", "way": "helstrom.YXTF51QTDRH9QKY3B1CTDKT8V5", "id": "helstrom.4BT72PN2KW23D2FN72FPPS8FMG", "edid": "DLC2DarkElfUrn01Food_NoRespawn", "at": [-33477, -626910, 190], "since": "2026-11-22"}
 {"place": "helstrom", "way": "helstrom.YXTF51QTDRH9QKY3B1CTDKT8V5", "id": "helstrom.EZK9HHJ7SHHNK293XWGKGR71BN", "edid": "MurkmireHouse07Red", "at": [-32934, -626320, 172], "since": "2026-11-22"}
 {"place": "helstrom", "way": "the world's road", "id": "helstrom.C9HM249NBEDNRCT0XZVXX2GS0Z", "edid": "001palm", "at": [-53037, -604568, 231], "since": "2026-11-22"}
-{"place": "helstrom", "way": "the world's road", "id": "helstrom.E8B99MX1CJD8QZ0TCWV8SW3WV4", "edid": "01arghousedoor", "at": [-54493, -602017, 153], "since": "2026-11-22"}
+{"place": "helstrom", "way": "the world's road", "id": "helstrom.E8B99MX1CJD8QZ0TCWV8SW3WV4", "edid": "01arghousedoor", "at": [-54493, -602017, 153], "since": "2026-11-22", "why": "the world's road paint runs under this source dome's entrance porch; the road there is paint on the ground, not a built walk, and people walk round the porch"}
 {"place": "helstrom", "way": "the world's road", "id": "helstrom.F2FNZKMNVEWJKTY4H4ZEQQ0FQ1", "edid": "01mudrock", "at": [-43647, -626817, 296], "since": "2026-11-22"}
 {"place": "helstrom", "way": "the world's road", "id": "helstrom.R05N2N0PXJBNRTV0KD907GTB2H", "edid": "CaveGRockM04", "at": [-53497, -611291, 599], "since": "2026-11-22"}
 {"place": "jal-veesa", "way": "door jal-veesa.5BM9M4E3MN26ESR12251TDCHRS", "id": "jal-veesa.A0WVSX5D0M8M7YSXV440T927H6", "edid": "ALPARusticTable03", "at": [-51418, -504982, 1263], "since": "2026-11-22"}
