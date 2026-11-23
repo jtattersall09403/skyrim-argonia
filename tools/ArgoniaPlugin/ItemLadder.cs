@@ -63,7 +63,7 @@ static class ItemLadder
         {
             var edid = n.GetProperty("edid").GetString()!;
             var from = Src(n.GetProperty("model_from").GetString()!);
-            var srcRec = fc.Plugin(from.ModKey.FileName).EnumerateMajorRecords().First(x => x.FormKey == from);
+            var srcRec = fc.InFile(from.ModKey.FileName, from) ?? throw new InvalidOperationException($"{from} is not in {from.ModKey.FileName}");
             var key = fc.CopyAs(srcRec, from.ModKey.FileName, newId("smithing-new:" + edid));
             var m = mod.MiscItems[key];
             m.EditorID = edid;

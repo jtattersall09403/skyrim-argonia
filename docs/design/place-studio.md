@@ -1200,7 +1200,7 @@ the player sees it then: refs follow their enable parents, people and quest thin
 hidden, a state's moves put people at their spots; the Source view shows the same state by the source's own
 parents (each of ours carried from a source ref). An edit made while a state other than the start is shown carries
 `state: <id>` on its op; edits apply to the refs as ever. Agents see the same with `look <place> <verb> --state
-<name>`. Tests: `tools/tests/test_places_promises.py`, `web/test/states.test.mjs`, `web/test/test_states_browser.py`.
+<name>`. Tests: `tools/tests/test_places_promises.py`, `web/test/states.test.mjs`, `tools/tests/test_places_look.py` (the agent view in a real page).
 
 ## Quest things
 

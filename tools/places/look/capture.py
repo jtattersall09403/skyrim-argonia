@@ -97,6 +97,8 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             continue
         if p.get("kind") == "building" and not enclosed(p, pos):   # under a porch or an eave: its box, not its walls
             continue
+        if p.get("kind") == "rock" and not in_rock(p, pos):   # over a mound or beside a boulder: its box, not its stone
+            continue
         if treelike(p):   # a tree's box (a Hist's too) is mostly air: inside its crown (the upper part) or its trunk
             if crowns_cut is not None and pos[2] > crowns_cut:
                 continue
@@ -106,6 +108,23 @@ def camera_inside(pos, pieces: list[dict], ground_z: float | None, room: bool = 
             return f"the camera is inside a tree's {part} ({p.get('edid') or p.get('id')})"
         return f"the camera is inside {p.get('edid') or p.get('id')} ({p.get('kind')}, {p.get('id')})"
     return None
+
+
+def in_rock(p: dict, pos) -> bool:
+    """A point inside a rock's box is inside the rock when its mesh's column there holds it: between the lowest and
+    the highest surface over that spot (a grassy mound's box reaches far over the open ground round its hump, and a
+    person stands on the mound). A rock with no mesh read counts as solid (its box, as before)."""
+    try:
+        from tools.places import shape
+        S = shape.posed(p)
+        if not S.mesh:
+            return True
+        top, under = S.at(pos[0], pos[1], "top"), S.at(pos[0], pos[1], "under")
+    except Exception:
+        return True
+    if top is None:
+        return False
+    return (under if under is not None else -1e9) - 4.0 <= pos[2] <= top + 4.0
 
 
 ENCLOSE_R = 1200.0   # how far round a point a building's walls are looked for
@@ -158,9 +177,57 @@ def tree_part(p: dict, pt) -> str | None:
     f = (loc - lo) / np.maximum(hi - lo, 1e-6)
     if f[2] >= CROWN_FROM:
         return "crown"
+    tr = trunk_at(p, float(pt[2]))
+    if tr is not None:
+        x0, y0, cell, grid = tr
+        i, j = int((pt[0] - x0) // cell), int((pt[1] - y0) // cell)
+        return "trunk" if 0 <= i < grid.shape[0] and 0 <= j < grid.shape[1] and grid[i, j] else None
     if abs(f[0] - 0.5) <= TRUNK and abs(f[1] - 0.5) <= TRUNK:
         return "trunk"
     return None
+
+
+TRUNK_SLAB = 64.0   # units of height: a tree's trunk is read from its mesh's points this near the point's height
+TRUNK_CELL = 24.0   # units: the cell its cut is drawn on
+_TRUNKS: dict = {}
+
+
+def trunk_at(p: dict, z: float):
+    """A tree's trunk where it stands at height z: the cut of its mesh's points within TRUNK_SLAB of z, drawn on a
+    TRUNK_CELL grid with what they close round filled in, as (x0, y0, cell, grid of bools); an empty cut (the open
+    air) gives an empty grid. A tree's box is its crown's width and its middle is seldom over the trunk (a leaning
+    cypress's box runs off to one side; one mesh can hold several trunks), and a great tree's roots spread far round
+    its foot under an eye: only the wood at the eye's own height walls the eye off. None when no mesh is read (the
+    box rule then)."""
+    k = (str(p.get("model") or "").lower(), tuple(np.round(np.asarray(p["m"], float).ravel(), 3)))
+    if k not in _TRUNKS:
+        try:
+            from tools.places import shape
+            S = shape.posed(p)
+            P = S.P
+            _TRUNKS[k] = P[np.argsort(P[:, 2])] if S.mesh and len(P) >= 8 else None
+        except Exception:
+            _TRUNKS[k] = None
+    P = _TRUNKS[k]
+    if P is None:
+        return None
+    sk = (k, int(z // (TRUNK_SLAB / 2)))
+    if sk in _TRUNKS:
+        return _TRUNKS[sk]
+    zc = (sk[1] + 0.5) * TRUNK_SLAB / 2
+    lo, hi = np.searchsorted(P[:, 2], [zc - TRUNK_SLAB, zc + TRUNK_SLAB])
+    cut = P[lo:hi]
+    if not len(cut):
+        got = (0.0, 0.0, TRUNK_CELL, np.zeros((0, 0), bool))
+    else:
+        from scipy import ndimage
+        x0, y0 = float(cut[:, 0].min()) - TRUNK_CELL, float(cut[:, 1].min()) - TRUNK_CELL
+        ij = ((cut[:, :2] - [x0, y0]) // TRUNK_CELL).astype(int)
+        grid = np.zeros(tuple(ij.max(axis=0) + 2), bool)
+        grid[ij[:, 0], ij[:, 1]] = True
+        got = (x0, y0, TRUNK_CELL, ndimage.binary_fill_holes(grid))
+    _TRUNKS[sk] = got
+    return got
 
 
 def _size(p: dict) -> float:

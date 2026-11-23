@@ -95,12 +95,9 @@ JS = "tools/" + "places/studio/web/js/"
 
 
 def test_one_studio_module_runs_its_own_browser_tests_not_the_suite():
-    p = gate.pick([JS + "agent.js"])
-    browser = {t for t in p.tests if t.startswith(BROWSER)}
-    assert browser and all("::" in t for t in browser), browser
-    assert not any(t.startswith(BROWSER + "test_browser.py") for t in browser), "agent.js is not loaded by the page"
-    p = gate.pick([JS + "people.js"])
-    assert 0 < len([t for t in p.tests if t.startswith(BROWSER + "test_browser.py::")]) < 10
+    assert not any(t.startswith(BROWSER) for t in gate.pick([JS + "agent.js"]).tests), "agent.js is not loaded by the page"
+    picked = [t for t in gate.pick([JS + "people.js"]).tests if t.startswith(BROWSER)]
+    assert picked and all("::" in t for t in picked) and len(picked) < 4, picked
 
 
 def test_the_page_shell_runs_every_browser_test():

@@ -36,4 +36,11 @@ def test_every_page_module_is_core_or_reached_by_a_test():
     reached = {f for files in R["REACH"].values() for f in files}
     for p in sorted((WEB / "js").glob("*.js")):
         rel = p.relative_to(WEB).as_posix()
-        assert rel in reached or any(fnmatchcase(rel, g) for g in R["CORE"]), f"{rel}: no browser test reaches it"
+        assert rel in reached or rel in R["OUTSIDE"] or any(fnmatchcase(rel, g) for g in R["CORE"]), \
+            f"{rel}: no browser test reaches it"
+    for rel, test in R["OUTSIDE"].items():
+        assert (REPO / test).is_file(), (rel, test)
+
+
+def test_the_suite_stays_a_small_smoke_set():
+    assert len(R["REACH"]) <= 8, "page logic is proved by the fast node tests; a browser test only for a real page"
