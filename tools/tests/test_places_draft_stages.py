@@ -2,6 +2,7 @@
 lights' rules (tools/places/draft/stages.py, lights.py)."""
 import json
 import math
+import shutil
 import sys
 from pathlib import Path
 
@@ -15,15 +16,36 @@ from tools.places import draft as D  # noqa: E402
 from tools.places.draft import interiors, jail, lights, run, stages  # noqa: E402
 
 
+def _patch(mp):
+    mp.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
+    mp.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
+
+
+@pytest.fixture(scope="session")
+def drafted(tmp_path_factory):
+    """The fixture place drafted once, as a whole draft leaves it; each test works on its own copy."""
+    root = F.build(tmp_path_factory.mktemp("drafted"))
+    with pytest.MonkeyPatch.context() as mp:
+        _patch(mp)
+        run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+        for st_ in ("jail", "add", "names"):   # as a whole draft ends
+            stages.run(st_, "fx", root / "places", root / "bundles", log=lambda *_: None)
+        stages.Standing("fx", root / "places", root / "bundles").write()  # the files as a join leaves them: canonical
+    return root
+
+
+def test_the_shared_draft_leaves_no_patch_behind(drafted):
+    """The session's one draft patches the place record and the law only while it drafts: later tests (and other
+    files in the same run) see the real functions."""
+    assert run.place_record.__module__ == run.__name__ and run.place_record.__name__ == "place_record"
+    assert jail.law.__module__ == jail.__name__ and jail.law.__name__ == "law"
+
+
 @pytest.fixture()
-def fx(tmp_path, monkeypatch):
-    root = F.build(tmp_path)
-    monkeypatch.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
-    monkeypatch.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
-    run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
-    for st_ in ("jail", "add", "names"):   # as a whole draft ends
-        stages.run(st_, "fx", root / "places", root / "bundles", log=lambda *_: None)
-    stages.Standing("fx", root / "places", root / "bundles").write()     # the files as a join leaves them: canonical
+def fx(drafted, tmp_path, monkeypatch):
+    _patch(monkeypatch)
+    root = tmp_path / "fx"
+    shutil.copytree(drafted, root, symlinks=True)
     return root
 
 
@@ -327,3 +349,16 @@ def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
     for w in WATER.values():
         for name in ("Opacity", "DamagePerSecond"):   # byte and ushort in the WATR record: the build reads an integer
             assert isinstance(w["set"].get(name, 0), int), name
+
+
+def test_clearance_never_clears_a_plant_another_row_already_clears(fx):
+    """A plant a hand edit (look, no `ref`) or the owner already cleared keeps that row alone: the stage adds no
+    second row for it."""
+    p = fx / "places/fx/clear.jsonl"
+    rs = rows(p)
+    mine = next(r for r in rs if r.get("by") == "draft")
+    rs = [r for r in rs if r is not mine] + [{"base": mine["base"], "pos": list(mine["pos"]), "by": "agent"}]
+    p.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rs))
+    stages.run("clearance", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    at = [r for r in rows(p) if r["base"] == mine["base"] and r["pos"] == mine["pos"]]
+    assert [r["by"] for r in at] == ["agent"]

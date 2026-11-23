@@ -22,8 +22,8 @@ them to freedom, before slavery there ended.
 
 The Chainbreakers are an outlawed band who free people from Owings that have grown into slavery. A member breaks
 people out of farms, mines, forts and barges, takes the rolls that bind them, and frightens or fights the buyers who
-will not let go. They see themselves, in part, as the heirs of Morrowind's Twin Lamps, with swords where the Twin
-Lamps had only hiding places (section 2).
+will not let go. They are a more militant, interventionist successor and sister organisation to Morrowind's Twin Lamps, with
+swords where the Twin Lamps had only hiding places (section 2); they are not the Lampbearers, our detectives.
 
 They are outlawed by half. In custom the Owing is a just sentence and the cornerstone of native justice
 (`topics/labour-and-bondage.md:202-206`), so a Chainbreaker who takes a roll is a thief. In Stormhold and Thorn the

@@ -45,3 +45,30 @@ test('a row nobody answered that no longer fits still stops the load', () => {
   const err = log.load([{ n: 1, op: 'ref.move', space: 'exterior', id: c, before: { pos: [0, 0, 0] }, after: { pos: [1, 0, 0] } }]);
   assert.ok(err);
 });
+
+test('an op of an answered note on a row the answer removed is kept as no change', () => {
+  const { files, a, was } = drafted();
+  files.spaces.exterior.refs = files.spaces.exterior.refs.filter((r) => r.id !== a);   // the answer removed a, as he did
+  const m = modelFromFiles(files), log = new EditLog(m);
+  const ops = [
+    { n: 1, op: 'ref.move', space: 'exterior', id: a, note_group: 'g8', before: { pos: was.a }, after: { pos: [was.a[0] + 1, was.a[1], was.a[2]] } },
+    { n: 2, op: 'ref.remove', space: 'exterior', id: a, note_group: 'g8', before: { id: a, pos: [was.a[0] + 1, was.a[1], was.a[2]] } },
+  ];
+  assert.equal(log.load(ops, [{ id: 'g8', text: 'fix it' }]), null);
+  assert.ok(!m.spaces.exterior.refs.get(a) || m.spaces.exterior.refs.get(a).removed);
+});
+
+test('his changes a later request of his undid replay as no change', () => {
+  const { files, c } = drafted();
+  const r = files.spaces.exterior.refs.find((x) => x.id === c);
+  const was = [...r.pos];
+  files.place.agent_answers.push({ answers: 'request-1', rows: [c], undoes: ['g2'] });
+  const m = modelFromFiles(files), log = new EditLog(m);
+  const ops = [
+    { n: 1, op: 'ref.move', space: 'exterior', id: c, note_group: 'g2', before: { pos: was }, after: { pos: [was[0] + 9, was[1], was[2]] } },
+    { n: 2, op: 'ref.remove', space: 'exterior', id: c, note_group: 'g2', before: { ...r, pos: [was[0] + 9, was[1], was[2]] } },
+  ];
+  assert.equal(log.load(ops, [{ id: 'g2', text: 'in the way' }]), null);
+  assert.deepEqual(m.spaces.exterior.refs.get(c).pos, was);
+  assert.ok(!m.spaces.exterior.refs.get(c).removed);
+});

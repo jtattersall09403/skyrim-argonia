@@ -1,0 +1,42 @@
+{
+ "save_id": "agent-20261123T070131",
+ "place_id": "helstrom",
+ "name": "a fern left 9 m in the air when the filler it grew on went from the walks",
+ "at": "2026-11-23T07:01:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HWM723QXYDC3SBM835SFBTCXD0",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HWM723QXYDC3SBM835SFBTCXD0",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -60425.06,
+     -597233.28,
+     972.93
+    ],
+    "rot": [
+     0,
+     0,
+     11.41917
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEAB2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T07:01:31Z"
+  }
+ ]
+}

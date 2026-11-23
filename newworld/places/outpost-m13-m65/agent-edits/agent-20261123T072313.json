@@ -1,0 +1,192 @@
+{
+ "save_id": "agent-20261123T072313",
+ "place_id": "outpost-m13-m65",
+ "name": "the owner's moves of his open session delivered: masts, reed, crocodile",
+ "at": "2026-11-23T07:23:13Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "id": "outpost-m13-m65.LOOK007PLACE",
+   "before": {
+    "id": "outpost-m13-m65.LOOK007PLACE",
+    "base": "Black Marsh.esm:0D8484",
+    "kind": "building",
+    "pos": [
+     -102269.7,
+     -527895.1,
+     0.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge moored in the pool along the east bank (record look: a work barge moored in the pool below the camp; main quest 1 opens in its hold): Black Marsh & Valenwood's Imperial ship: its masts and rigging, as the source sets them on the hull",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "call": "fault",
+   "at": "2026-11-23T07:23:13Z",
+   "answers": "g2",
+   "space": "exterior"
+  },
+  {
+   "op": "ref.move",
+   "id": "outpost-m13-m65.LOOK024PLACE",
+   "before": {
+    "pos": [
+     -101200.0,
+     -527870.0,
+     170.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.17453
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101229.21,
+     -527989.78,
+     170.35
+    ],
+    "rot": [
+     0,
+     0,
+     0.17453
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "call": "fault",
+   "at": "2026-11-23T07:23:13Z",
+   "answers": "g3",
+   "space": "exterior"
+  },
+  {
+   "op": "ref.move",
+   "id": "outpost-m13-m65.LOOK025PLACE",
+   "before": {
+    "pos": [
+     -101170.0,
+     -527870.0,
+     172.625
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.08727
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101199.21,
+     -527989.78,
+     174.1
+    ],
+    "rot": [
+     0,
+     0,
+     0.08727
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "call": "fault",
+   "at": "2026-11-23T07:23:13Z",
+   "answers": "g3",
+   "space": "exterior"
+  },
+  {
+   "op": "quest.edit",
+   "quest": {
+    "id": "quest.main.mn01/npc.mn01.young-crocodile",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.young-crocodile",
+    "space": "exterior",
+    "pos": [
+     -107640.3,
+     -527017.42,
+     -69.18
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   "before": {
+    "id": "quest.main.mn01/npc.mn01.young-crocodile",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.young-crocodile",
+    "space": "exterior",
+    "pos": [
+     -101370.67,
+     -527952.0,
+     159.67
+    ],
+    "rot": [
+     0,
+     0,
+     3.61
+    ],
+    "drafted": true,
+    "why": "by plant outpost-m13-m65.LOOK026PLACE (the words: reed, beds, river, reed, beds); on a walkable triangle"
+   },
+   "n": 4,
+   "stroke": 4,
+   "call": "fault",
+   "at": "2026-11-23T07:23:13Z",
+   "answers": "g4",
+   "space": "exterior"
+  }
+ ],
+ "notes": [
+  {
+   "id": "g2",
+   "text": "Rigging was blocking walk off barge",
+   "at": "2026-11-22T15:22:08.707Z"
+  },
+  {
+   "id": "g3",
+   "text": "Reeds were blocking walkway",
+   "at": "2026-11-22T15:24:38.193Z"
+  },
+  {
+   "id": "g4",
+   "text": "Creatures cluttering the landing",
+   "at": "2026-11-22T15:30:16.749Z"
+  }
+ ]
+}

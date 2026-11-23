@@ -1,0 +1,101 @@
+{
+ "save_id": "agent-20261123T083140",
+ "place_id": "outpost-m13-m65",
+ "name": "the rigging back on the barge, the ship one unit (the owner's request)",
+ "at": "2026-11-23T08:31:40Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "ref": {
+    "id": "outpost-m13-m65.LOOK007PLACE",
+    "base": "Black Marsh.esm:0D8484",
+    "kind": "building",
+    "pos": [
+     -102269.7,
+     -527895.1,
+     0.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the work barge's masts and rigging, as Black Marsh & Valenwood sets them on the hull, put back at the owner's request (2026-11-23) as one unit with the ship",
+    "tier": "AGENT_INVENTED",
+    "unit": "ship.barge",
+    "blocks_way": "the owner is positioning the ship; rigging restored at his request 2026-11-23"
+   },
+   "n": 1,
+   "stroke": 1,
+   "call": "taste",
+   "at": "2026-11-23T08:31:40Z",
+   "answers": "request-2026-11-23",
+   "space": "exterior"
+  },
+  {
+   "op": "ref.move",
+   "id": "outpost-m13-m65.LOOK006PLACE",
+   "before": {
+    "unit": null
+   },
+   "after": {
+    "unit": "ship.barge"
+   },
+   "n": 2,
+   "stroke": 1,
+   "call": "taste",
+   "at": "2026-11-23T08:31:40Z",
+   "answers": "request-2026-11-23",
+   "space": "exterior"
+  },
+  {
+   "op": "ref.move",
+   "id": "outpost-m13-m65.BOARDINGPLANK",
+   "before": {
+    "unit": null
+   },
+   "after": {
+    "unit": "ship.barge"
+   },
+   "n": 3,
+   "stroke": 1,
+   "call": "taste",
+   "at": "2026-11-23T08:31:40Z",
+   "answers": "request-2026-11-23",
+   "space": "exterior"
+  },
+  {
+   "op": "ref.move",
+   "id": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+   "before": {
+    "unit": null
+   },
+   "after": {
+    "unit": "ship.barge"
+   },
+   "n": 4,
+   "stroke": 1,
+   "call": "taste",
+   "at": "2026-11-23T08:31:40Z",
+   "answers": "request-2026-11-23",
+   "space": "exterior"
+  }
+ ],
+ "notes": [
+  {
+   "id": "request-2026-11-23",
+   "text": "can you add the rigging back (aligned correctly with the ship as the source had it) and make it part of the composite of the ship - so I can move the whole lot around as one thing? I'll then play around with it to get the positioning right.",
+   "at": "2026-11-23T08:31:40Z",
+   "by": "lead"
+  }
+ ]
+}

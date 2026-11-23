@@ -1,0 +1,107 @@
+{
+ "save_id": "agent-20261123T053958",
+ "place_id": "helstrom",
+ "name": "carried filler a relaid walk now crosses (a palm, a mountain tree, a grass-topped rock): no promise or quest state names them",
+ "at": "2026-11-23T05:39:58Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2PC39A4HHRNQNGXS2YSJFWFBQA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2PC39A4HHRNQNGXS2YSJFWFBQA",
+    "base": "Black Marsh.esm:069B19",
+    "kind": "rock",
+    "pos": [
+     -42627.41,
+     -614641.32,
+     82.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.83599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:069B61",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T05:39:58Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2WZ2T70CJH2HB0VQ8QJST97XFV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2WZ2T70CJH2HB0VQ8QJST97XFV",
+    "base": "Black Marsh.esm:1D3CCB",
+    "kind": "static",
+    "pos": [
+     -48362.58,
+     -610167.21,
+     211.24
+    ],
+    "rot": [
+     0,
+     0,
+     9.51918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3CD0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-23T05:39:58Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8DHNW41G65PE7QXQZDJAAMWVDG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8DHNW41G65PE7QXQZDJAAMWVDG",
+    "base": "Black Marsh.esm:089DB1",
+    "kind": "tree",
+    "pos": [
+     -42181.31,
+     -614722.81,
+     61.16
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9C6",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-23T05:39:58Z"
+  }
+ ]
+}

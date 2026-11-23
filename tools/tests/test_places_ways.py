@@ -93,6 +93,7 @@ def test_lights_markers_plants_and_effects_never_block():
     ps = [dict(piece(k, "test/ways/crate.nif", 400 + 100 * n, 0), kind=k) for n, k in enumerate(("light", "marker", "plant"))]
     ps.append(dict(piece("mist", "test/ways/crate.nif", 800, 0), edid="FXMistLow01"))
     ps.append(dict(piece("door", "test/ways/crate.nif", 900, 0), kind="door"))
+    ps.append(dict(piece("weed", "test/ways/crate.nif", 1100, 0), kind="tree", edid="ArgoniaWaterWeed01"))   # brushed past
     assert ids(ways.blockers(files(), ps, Flat())) == []
 
 

@@ -1,0 +1,271 @@
+{
+ "save_id": "agent-20261123T052635",
+ "place_id": "helstrom",
+ "name": "carried filler standing in a walk or the world's road (three palms, two mud rocks, a rock, a cave rock): no promise or quest state names them",
+ "at": "2026-11-23T05:26:35Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.2Y7EWG3WQM55SXMBBF4AW0Q06R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.2Y7EWG3WQM55SXMBBF4AW0Q06R",
+    "base": "Black Marsh.esm:089DB1",
+    "kind": "tree",
+    "pos": [
+     -52328.38,
+     -607920.39,
+     -155.41
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9BA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.35C8ZT0NA1TW0FMPP8VNTNWR1T",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.35C8ZT0NA1TW0FMPP8VNTNWR1T",
+    "base": "Black Marsh.esm:069B29",
+    "kind": "rock",
+    "pos": [
+     -50038.36,
+     -608269.94,
+     128.04
+    ],
+    "rot": [
+     0,
+     0,
+     10.51918
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:069B63",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.C9HM249NBEDNRCT0XZVXX2GS0Z",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.C9HM249NBEDNRCT0XZVXX2GS0Z",
+    "base": "Black Marsh.esm:089DAA",
+    "kind": "tree",
+    "pos": [
+     -53511.01,
+     -604309.01,
+     116.31
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9BC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.F2FNZKMNVEWJKTY4H4ZEQQ0FQ1",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.F2FNZKMNVEWJKTY4H4ZEQQ0FQ1",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -43297.07,
+     -627663.79,
+     -165.14
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D61",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.FJQ4Z7Z5DRBZHJZH8Q0RG8V77M",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.FJQ4Z7Z5DRBZHJZH8Q0RG8V77M",
+    "base": "Black Marsh.esm:089DB0",
+    "kind": "tree",
+    "pos": [
+     -54896.47,
+     -604909.69,
+     192.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9BD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.G3DJFAGGNSQE9KKSP6ZTDA49FC",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.G3DJFAGGNSQE9KKSP6ZTDA49FC",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -60287.12,
+     -596494.86,
+     213.44
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D9131",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.R05N2N0PXJBNRTV0KD907GTB2H",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.R05N2N0PXJBNRTV0KD907GTB2H",
+    "base": "Skyrim.esm:0224EE",
+    "kind": "rock",
+    "pos": [
+     -53925.21,
+     -610734.71,
+     -259.1
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D5B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.S8JGM0BW5N0QPTCAVDPNHG6WQW",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.S8JGM0BW5N0QPTCAVDPNHG6WQW",
+    "base": "Black Marsh.esm:089DB1",
+    "kind": "tree",
+    "pos": [
+     -43622.4,
+     -610020.72,
+     -1346.22
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 2.1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1CE9C4",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b22"
+   },
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-23T05:26:35Z"
+  }
+ ]
+}

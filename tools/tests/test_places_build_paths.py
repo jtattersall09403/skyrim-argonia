@@ -159,3 +159,13 @@ def test_a_trodden_walk_is_walked_and_never_painted():
     out = build.plan_paths([{"id": "p.1", "kind": "path", "style": "trodden", "points": LINE, "width": 160}],
                            facts(), walked)
     assert out == {} and (0, 0) in walked
+
+
+def test_two_clear_rows_naming_one_world_ref_are_named_plainly(monkeypatch):
+    ref = {"base": "W:000001", "fk": "W:AAAA", "pos": [10.0, 10.0, 0.0]}
+    facts = {"by_cell": {build.cell_of(10.0, 10.0): {"refs": [ref]}}}
+    probs = []
+    monkeypatch.setattr(build, "problem", probs.append)
+    out = build.plan_clear([{"id": "a", "base": "W:000001", "pos": [10.0, 10.0, 0.0], "by": "agent"},
+                            {"id": "b", "base": "W:000001", "pos": [12.0, 10.0, 0.0], "ref": "W:AAAA", "by": "draft"}], facts)
+    assert len(out) == 1 and len(probs) == 1 and "two rows clear one world ref" in probs[0]

@@ -157,6 +157,8 @@ added here the day they are made, with the date and the issue.
 
 - 2026-11-23: notes sent with the studio's "submit for agent" button are actioned at once, on top of the owner's open autosaved session, which stays his and unfinalised; agents never wait for a Save and never finalise for him. Save and finalise is his alone and means the place is finished (Ashgate Landing was held seven hours waiting on a Save, then nearly finalised for him: both wrong).
 
+- 2026-11-23 (#91): Marque Landing is kept. The Twin Lamps stay: the Chainbreakers are their more militant, interventionist successor and sister organisation. Names in general: keep what is lore and canon, drop what we invented that the owner has asked to be dropped; this is not put to him as a question again. Lead's decisions under it: the Hollow Tide crew is kept as one crew of Bramman's Brethren; the forms-of-address line keeps its canon groups only.
+
 ## The game
 
 - Set in Argonia (Black Marsh), 4E 201; no Nordic element reaches the player through what we add (0006);

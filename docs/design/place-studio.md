@@ -698,7 +698,9 @@ Answers land on main at once, never held for his save. His open session (the aut
 when he reloads the tab, and his save replays over it when he finalises, by one rule (`edits._rebased`, mirrored by
 the studio's `rebaseOp`): a move or removal of an answered row whose `before` no longer fits is his edit over the row
 as it stands (his favour), except an op of the note the answer names, which is kept as no change (the answer, made
-over his edit, stands). Any other op that no longer fits stops the replay there, as before. A submitted note still
+over his edit, stands); any op of that note on that row that no longer fits (the answer removed the row, or put it
+where he did) is kept as no change too. A change of his that a later request of his undoes (rigging he removed and then asked to have back) is
+listed on that answer as `undoes: [note]`: his ops of that note on its rows replay as no change. Any other op that no longer fits stops the replay there, as before. A submitted note still
 open past `notes.ANSWER_HOURS` is named by `notes` and fails `handover`.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
@@ -843,7 +845,7 @@ a unit, worked out afresh from the space's refs whenever the place changes:
 4. two or more pieces one sees make a unit: a building with only its lights or invisible walls is none.
 A unit is named for its head piece, the lowest of its buildings (the hull under the sail), else its biggest piece.
 
-A tap with Select picks the whole unit of the thing tapped: one outline round all of it and its name over it
+A tap with Select picks the whole unit of the thing tapped: a faint line drawing of all its pieces and its name over it
 ("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
 panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
 comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
@@ -862,7 +864,12 @@ the unit and the point before it half as far, so it bends to the door; the panel
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 
-**Moving** (`move_map.js` the mapping, `tools.js` the handles). Round a selection stand its handles, each one way of
+**What is selected** is drawn as a faint, thin line drawing of its own meshes (each model's outline and creases,
+hidden where the mesh hides it; for a unit, all its pieces), never a box and never a tint, so the thing is seen as it
+reads while it is selected and moved (`objects.js outlineOf`). The handles stand beside it on the screen, a clear gap
+off its footprint's right edge (the left when there is no room), at rest and while it moves, never over it.
+
+**Moving** (`move_map.js` the mapping, `tools.js` the handles). Beside a selection stand its handles, each one way of
 moving, big enough for a finger, and each named over the gizmo while the pen hovers on it and through its drag:
 - the middle (64 px) slides along the ground ("Slides along the ground; keeps how it sits"): the drag moves the thing
   over a level plane at its own height, fixed when the drag starts, so the point under the pen stays under it, as
@@ -959,7 +966,12 @@ with walls. With Walk off the sticks fly the camera and two buttons raise and lo
 stick drives it alone; both sticks work at once; the pen never moves a stick; the one-finger, two-finger and pen
 gestures are unchanged. Movement is integrated each animation frame (frame-rate independent); the views draw while
 a stick is held. The sticks show on a touch device and are switched by Sticks in our view's bar; shown, walk and
-step are remembered per browser. Shift with the wheel still tilts the view from a mouse.
+step are remembered per browser. Shift with the wheel still tilts the view from a mouse. A game controller drives the same camera (the standard mapping, read every animation frame): the left stick
+walks, the right stick looks, LB and RB step the walk speed slower and faster, LT and RT lower and raise the flying
+camera; a controller's stick has a round dead zone of 15% and a gentle curve, and no smoothing, so the view answers
+on the next frame and stops on the frame the stick is back at centre. Walk speed (x0.25 to x8) and Look (x0.5 to x3)
+sit over the right stick, remembered per browser. While a stick drives the camera the other view waits and the
+labels, routes and pins are worked out once it stops; a slow frame turns as far as the time it took.
 
 **Opening and leaving a place.** The studio opens the place in the address, else the one this browser last had
 open, else the lightest place (the draft and source bundles' bytes, `bytes` in `/api/places`). Leaving a place lets
@@ -1206,7 +1218,7 @@ the player sees it then: refs follow their enable parents, people and quest thin
 hidden, a state's moves put people at their spots; the Source view shows the same state by the source's own
 parents (each of ours carried from a source ref). An edit made while a state other than the start is shown carries
 `state: <id>` on its op; edits apply to the refs as ever. Agents see the same with `look <place> <verb> --state
-<name>`. Tests: `tools/tests/test_places_promises.py`, `web/test/states.test.mjs`, `web/test/test_states_browser.py`.
+<name>`. Tests: `tools/tests/test_places_promises.py`, `web/test/states.test.mjs`, `tools/tests/test_places_look.py` (the agent view in a real page).
 
 ## Quest things
 

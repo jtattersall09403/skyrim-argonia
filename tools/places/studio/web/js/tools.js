@@ -8,7 +8,7 @@ import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
 import { scaledPrim, wallsOf } from './prims.js';
-import { spotIn, rigid, boxOf } from './units.js';
+import { spotIn, rigid, boxOf, spotsMoved } from './units.js';
 import { dragDelta, dragMode, snapFaces } from './move_map.js';
 import { patrolOf, usersOf, followsLine } from './people.js';
 // what a thing is in a sentence: "bed", "bedroll", "work bench", else its kind
@@ -230,8 +230,8 @@ export class Tools {
   }
   drawSelection() {
     const a = this.app; if (!a.model) return;
-    const sel = this.selRefs(), u = this.selUnit();
-    if (u) this.drawBoxes(a.ours, [u.box], this.outline); else this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
+    const sel = this.selRefs();
+    this.drawShape(a.ours, sel.map((r) => a.seated(r)));
     // a selected light, and the lights of a selected fixture, show their radius rings
     a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).filter((f) => !f.wall).map((f) => f.ref)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
@@ -244,6 +244,17 @@ export class Tools {
     line.geometry.dispose(); line.geometry = new THREE.BufferGeometry(); line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
     if (line.parent !== side.view.overlay) side.view.overlay.add(line);
     side.view.redraw();
+  }
+  // The selection drawn as a faint line drawing of its own meshes (a unit: all its pieces), never a box.
+  drawShape(side, refs) {
+    const v = side.view;
+    if (this.shape) { this.shape.removeFromParent(); this.shape = null; }
+    if (refs.length && side.place) {
+      this.shape = side.place.outlineOf(refs); this.shape.userData.selection = true; v.overlay.add(this.shape);
+      // a selected piece whose model arrives later is drawn when it does
+      side.place.onModel = (g) => { if (g.refs.some((r) => this.app.selection.has(r.id))) this.soon('shape', () => this.drawSelection()); };
+    }
+    v.redraw();
   }
   // world boxes {x0,y0,x1,y1,z0,z1} as outlines (a unit is drawn as one)
   drawBoxes(side, boxes, line) {
@@ -333,7 +344,9 @@ export class Tools {
     const c = this.centre(refs), s = v.toScreen(c);
     if (s.behind) { g.hidden = true; return; }
     const R = 100, unit = this.selUnit();
-    g.style.left = `${s.x}px`; g.style.top = `${s.y}px`;
+    // the handles stand beside what is selected on the screen, at rest and while it moves, never over it
+    const at = this.gizmoAnchor(unit, refs, s, v, R);
+    g.style.left = `${at[0]}px`; g.style.top = `${at[1]}px`;
     const set = (h, x, y) => { const el = g.querySelector(`.h[data-h="${h}"]`); el.style.left = `${x}px`; el.style.top = `${y}px`; };
     set('move', 0, 0); set('lift', 0, -R * 1.2); set('rotate', R, 0); set('scale', R * 0.72, R * 0.72);
     // the axis handles lie along the way east and north run on the screen, on whichever side of the middle keeps them
@@ -348,6 +361,35 @@ export class Tools {
     }
     g.querySelector('.h[data-h="scale"]').hidden = !!unit;   // a unit is never resized whole
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
+  }
+  // Where the gizmo's middle stands on the screen: beside the selection's screen footprint, never over it.
+  gizmoAnchor(unit, refs, s, v, R) {
+    const boxes = unit ? [unit.box] : refs.filter((r) => r.kind !== 'light' && !r.primitive).map((r) => boxOf(r, this.baseOf(r), this.app.seated(r).pos));
+    if (!boxes.length) return [s.x, s.y + R * 0.9];
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    for (const b of boxes) for (let i = 0; i < 8; i++) {
+      const q = v.toScreen([i & 1 ? b.x1 : b.x0, i & 2 ? b.y1 : b.y0, i & 4 ? b.z1 : b.z0]); if (q.behind) continue;
+      x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y);
+    }
+    if (!Number.isFinite(y1)) return [s.x, s.y + R * 0.9];
+    // beside it, a clear gap off its right edge (the left when the right is off the screen), at its middle's height
+    // the room is the view as seen: less the panel, the strip between the views or the other view over its edge
+    const vr = v.el.getBoundingClientRect(), H = vr.height || v.h || 800, gap = R * 1.15;
+    let W = vr.width || v.w || 1200;
+    for (const o of document.querySelectorAll('#panel, .view-link, #view-src')) {
+      if (o.hidden || getComputedStyle(o).display === 'none') continue;
+      const pr = o.getBoundingClientRect();
+      if (pr.width && pr.left > vr.left && pr.bottom > vr.top && pr.top < vr.bottom) W = Math.min(W, pr.left - vr.left);
+    }
+    // the places to try, best first: right of it, left of it, below it, above it, then the nearest spot inside the view;
+    // the first whose middle the pen can reach (nothing of the page lies over it) wins
+    const ym = Math.max(R * 1.35, Math.min(H - R, s.y)), cx = Math.max(R, Math.min(W - R * 1.25, s.x));
+    const tries = [[x1 + gap, ym], [x0 - gap, ym], [cx, y1 + R * 0.75], [cx, y0 - R * 0.75]]
+      .filter(([x, y]) => x > R * 0.8 && x < W - R * 1.25 && y > R * 1.35 && y < H - R * 0.6);
+    const free = (x, y) => { const e = document.elementFromPoint(vr.left + x, vr.top + y); return !e || !!e.closest?.(`#${v.el.id}`); };
+    const pick = tries.find(([x, y]) => free(x, y)) || tries[0];
+    if (pick) return pick;
+    return [Math.max(R * 0.6, Math.min(W - R * 0.6, x1 + gap)), ym];   // always inside what is seen
   }
   gizmoDown(kind, e) {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
@@ -533,48 +575,10 @@ export class Tools {
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     return { op: 'unit.move', unit: d.unit.id, name: d.unit.name, refs, ...this.spotsMoved(d.unit, moved, d.turn || 0) };
   }
-  // The people's spots (work, routine stops, patrol points) and the quest spots standing in a unit, moved with it.
-  // A bed, a station or anything a stop names by its ref goes with its ref, needing no change of the person.
+  // The people's, quest, walking-zone and street spots a unit carries (units.js spotsMoved).
   spotsMoved(u, moved, turn) {
-    const a = this.app, S = a.ours.space, people = [], quests = [];
-    for (const p of a.model.people.values()) {
-      const after = clone(p); let hit = false;
-      const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
-      at(after.work); for (const st of after.routine || []) at(st.at);
-      const pts = patrolOf(after);
-      pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
-      if (hit) people.push({ person: after, before: clone(p) });
-    }
-    for (const q of a.model.quests.values()) {
-      if ((q.space || 'exterior') !== S || !Array.isArray(q.pos) || !spotIn(u, q.pos)) continue;
-      const after = { ...clone(q), pos: moved(q.pos) };
-      if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
-      quests.push({ quest: after, before: clone(q) });
-    }
-    // the owner's walking zones lying wholly in it (a "walk here" at its steps): their outline moves with it
-    const walks = [];
-    for (const w of a.model.walk.values()) {
-      const k = w.kind === 'join' ? 'points' : 'outline', pts = w[k];
-      if ((w.space || 'exterior') !== S || !Array.isArray(pts) || !pts.length || !pts.every((q) => spotIn(u, q))) continue;
-      walks.push({ walk: { ...clone(w), [k]: pts.map(moved) }, before: clone(w) });
-    }
-    // a street that ends at one of its doors or on its footprint: its last point moves with it and the one before it
-    // half as far, so the street bends to the door rather than dragging its whole length
-    const paths = [], doors = new Set(u.members.filter((id) => a.placeRefsById().get(id)?.door));
-    for (const w of a.model.paths.values()) {
-      if (S !== 'exterior' || !Array.isArray(w.points) || w.points.length < 2) continue;
-      const pts = w.points.map((q) => [...q]), n = pts.length; let hit = false;
-      const end = (i, j, linked) => {
-        if (!linked && !spotIn(u, pts[i])) return;
-        const m = moved(pts[i]), dx = m[0] - pts[i][0], dy = m[1] - pts[i][1];
-        pts[i] = [rnd(m[0]), rnd(m[1]), ...pts[i].slice(2)];
-        if (n > 2 && !spotIn(u, pts[j])) pts[j] = [rnd(pts[j][0] + dx / 2), rnd(pts[j][1] + dy / 2), ...pts[j].slice(2)];
-        hit = true;
-      };
-      end(0, 1, doors.has(w.from)); end(n - 1, n - 2, doors.has(w.to));
-      if (hit) paths.push({ path: { ...clone(w), points: pts }, before: clone(w) });
-    }
-    return { ...(people.length ? { people } : {}), ...(quests.length ? { quests } : {}), ...(walks.length ? { walks } : {}), ...(paths.length ? { paths } : {}) };
+    const a = this.app;
+    return spotsMoved(a.model, a.ours.space, u, moved, turn, a.placeRefsById());
   }
   // A unit moved by the panel's buttons: the same op as a drag.
   moveUnit(u, turn, sh, dz) {

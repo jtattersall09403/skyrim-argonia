@@ -4,6 +4,9 @@ import * as THREE from 'three';
 import { mintId } from './ids.js';
 import { clock } from './geom.js';
 import { Walk, along } from './routes.js';
+import { patrolOf, setPatrol, usersOf, followsLine } from './routines.js';
+
+export { patrolOf, setPatrol, usersOf, followsLine };
 import { NavMesh } from './navroute.js';
 
 const COLOURS = ['#2f7fd1', '#c2410c', '#15803d', '#7e22ce', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
@@ -12,12 +15,6 @@ const clone = (o) => JSON.parse(JSON.stringify(o));
 const rnd = (v) => Math.round(v * 100) / 100;
 export const STOP_KINDS = { sleep: 'Sleeping', eat: 'Eating', work: 'Working', wander: 'Walking about', sandbox: 'Idling about', patrol: 'On patrol' };
 // A patrol is {points: [[x,y] | [x,y,z] | stop...], loop}; an older bare list of points is read the same.
-export const patrolOf = (p) => (Array.isArray(p.patrol) ? p.patrol : p.patrol?.points) || [];
-export function setPatrol(x, pts) {
-  if (!pts.length) { delete x.patrol; return; }
-  x.patrol = { points: pts, loop: Array.isArray(x.patrol) ? true : (x.patrol?.loop ?? true) };
-}
-
 const FIGURE = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
 // the standing figure of a person, as the People layer and the Quests layer both draw one
 export const figureGeometry = () => new THREE.LatheGeometry(FIGURE.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
@@ -377,29 +374,3 @@ export class People {
 
 export const isInnkeeper = (p) => /innkeeper/i.test(p.role || '');
 
-// Who names a ref in their day (pure): [{person, how}] where how is 'sleeps' (their bed or a sleep stop), 'works',
-// 'eats' or 'stops' (another stop), each at most once per person. A routine names a bed, a station or any spot by
-// its ref, so moving that ref moves where they go: nothing of theirs needs changing.
-export function usersOf(people, refId, srcId) {
-  const out = [], is = (at) => at && (at.ref === refId || (srcId && at.ref === srcId));
-  const HOW = { sleep: 'sleeps', work: 'works', eat: 'eats' };
-  for (const p of people) {
-    const bed = typeof p.bed === 'string' ? { ref: p.bed } : p.bed;
-    const hows = new Set();
-    if (is(bed)) hows.add('sleeps');
-    if (is(p.work)) hows.add('works');
-    for (const s of p.routine || []) if (is(s.at)) hows.add(HOW[s.kind] || 'stops');
-    for (const q of patrolOf(p)) if (!Array.isArray(q) && is(q)) hows.add('patrols');
-    for (const how of hows) out.push({ person: p, how });
-  }
-  return out;
-}
-// The plain sentence for the people a ref serves: "Hara-Jeel sleeps here: his routine follows this bed."
-export function followsLine(users, thing = 'this') {
-  if (!users.length) return '';
-  const by = new Map(); for (const u of users) { if (!by.has(u.person.id)) by.set(u.person.id, { p: u.person, hows: [] }); by.get(u.person.id).hows.push(u.how); }
-  const one = (x) => `${x.p.name || 'Someone'} ${x.hows.join(' and ')} here`;
-  const list = [...by.values()].map(one);
-  const who = list.length === 1 ? list[0] : `${list.slice(0, -1).join('; ')} and ${list.at(-1)}`;
-  return `${who}: ${by.size === 1 ? 'their routine follows' : 'their routines follow'} ${thing}.`;
-}

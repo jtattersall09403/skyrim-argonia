@@ -158,6 +158,13 @@ function space(m, sid) {
 // An owner's op replayed over a draft an agent changed in answer to him (place.json agent_answers): a move or
 // removal of an answered row whose before no longer fits is his edit over the row as it stands (his favour), except
 // when the answer names this op's own note: the answer stands and his op is kept as no change (edits.py _rebased).
+const rowId = (op) => op.id || ['ref', 'quest', 'walk', 'path', 'person'].map((k) => op[k]?.id).find(Boolean);
+export function answeredNote(m, op) {
+  const id = rowId(op);
+  const notes = new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(id)).map((a) => a.answers));
+  return notes.size > 0 && (notes.has(op.note_group) || notes.has(op.note));
+}
+
 export function rebaseOp(m, op) {
   if (op.op !== 'ref.move' && op.op !== 'ref.remove') return op;
   const notes = new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(op.id)).map((a) => a.answers));
@@ -450,9 +457,14 @@ export class EditLog {
   load(ops, notes = []) {
     this.notes = new Map((notes || []).filter((x) => x?.id).map((x) => [x.id, { id: x.id, text: String(x.text ?? ''), at: x.at }]));
     this.ops = []; this.cursor = 0; this.n = 0; let err = null;
+    const undone = new Set((this.model.place?.agent_answers || []).flatMap((a) => (a.undoes || []).flatMap((g) => (a.rows || []).map((id) => `${id} ${g}`))));
     for (const raw of ops) {
+      // a change of his a later request of his asked the agent to undo is kept as no change (edits.py _undone)
+      if (undone.has(`${rowId(raw)} ${raw.note_group || raw.note}`)) continue;
       const op = rebaseOp(this.model, raw);
-      try { applyOp(this.model, op); } catch (e) { err = e; break; }
+      // an op of a note the agent answered on its row, which no longer fits: the answer already made the row what
+      // the op makes it, so it is kept as no change (edits.py apply)
+      try { applyOp(this.model, op); } catch (e) { if (answeredNote(this.model, raw)) continue; err = e; break; }
       this.ops.push(op); this.n = Math.max(this.n, op.n || 0);
     }
     this.cursor = this.ops.length; this.emit('load', this.ops); return err;

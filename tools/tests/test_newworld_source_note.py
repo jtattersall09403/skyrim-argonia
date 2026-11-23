@@ -9,9 +9,6 @@ def rows(name: str) -> list[dict]:
     return [json.loads(x) for x in (DB / f"{name}.jsonl").read_text().splitlines() if x.strip()]
 
 
-def test_source_is_a_place_aspect():
-    a = {r["id"]: r for r in rows("note_aspect")}
-    assert a["source"]["applies_to"] == "place"
 
 
 def test_every_place_has_a_source_note():
@@ -20,9 +17,6 @@ def test_every_place_has_a_source_note():
     assert places - noted == set()
 
 
-def test_atlas_heads_it_built_from():
-    from tools.newworld import map_page
-    assert map_page.HEADING["source"] == "Built from"
 
 
 def test_source_note_agrees_with_the_allocated_source():

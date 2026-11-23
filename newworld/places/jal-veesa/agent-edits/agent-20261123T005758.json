@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261123T005758",
+ "place_id": "jal-veesa",
+ "name": "the bank rock moved north off the world's road",
+ "at": "2026-11-23T00:57:58Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "jal-veesa.RVMCKJKRH7BYF0TD48RD42GNN1",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -50913.02,
+     -507760.95,
+     575.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.66647
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -50913.02,
+     -507460.95,
+     575.3
+    ],
+    "rot": [
+     0,
+     0,
+     5.66647
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-23T00:57:58Z"
+  }
+ ]
+}

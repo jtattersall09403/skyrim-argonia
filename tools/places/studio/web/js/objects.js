@@ -259,6 +259,7 @@ const primBoxMat = new THREE.ShaderMaterial({
       gl_FragColor = vec4(vC, mix(uFill, uLine, 1.0 - smoothstep(0.75, 1.75, mid)));
     }`,
 });
+let outlineMat = null; const edgesOf = new WeakMap();   // the selection's line drawing: one material, each model's edges once
 const primSphereMat = new THREE.MeshBasicMaterial({ color: '#ffffff', wireframe: true, transparent: true, opacity: 0.3, depthWrite: false });
 // One base's instances.
 class Group {
@@ -539,6 +540,27 @@ export class ObjectLayer {
     return hits;
   }
   // World-space box corners of a ref, for selection outlines and lasso tests.
+  // A faint line drawing of the selected things' own meshes (each model's outline and creases, hidden where the
+  // mesh hides it), no box and no tint: what the thing really looks like while it is selected or moved. A ref whose
+  // model has not arrived yet, or that has none, is drawn by nothing here.
+  outlineOf(refs) {
+    const out = new THREE.Group(); out.renderOrder = 9;
+    const mat = outlineMat || (outlineMat = new THREE.LineBasicMaterial({ color: '#1fb5a8', transparent: true, opacity: 0.45, depthWrite: false }));
+    const want = new Map(refs.map((r) => [r.id, r]));
+    for (const g of this.groups.values()) {
+      if (!g.fullParts || g.ghost || g.prim || g.bulb) continue;
+      for (const r0 of g.refs) {
+        const r = want.get(r0.id); if (!r) continue;
+        const m = new THREE.Matrix4().fromArray(refMatrix(r.pos, r.rot || [0, 0, 0], r.scale ?? 1, this.origin));
+        for (const part of g.fullParts) {
+          let e = edgesOf.get(part.geometry);
+          if (!e) { e = new THREE.EdgesGeometry(part.geometry, 35); edgesOf.set(part.geometry, e); }
+          const l = new THREE.LineSegments(e, mat); l.matrixAutoUpdate = false; l.matrix.copy(m); l.renderOrder = 9; out.add(l);
+        }
+      }
+    }
+    return out;
+  }
   worldBox(ref) {
     const base = this.bases.get(ref.base), h = hasPrim(ref) ? halfExtents(ref) : null;
     const b = h ? [h.map((v) => -v), h] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];

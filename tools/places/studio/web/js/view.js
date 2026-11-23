@@ -79,6 +79,7 @@ export class View {
   resize() {
     const r = this.el.getBoundingClientRect(); if (!r.width || !r.height) return;
     this.w = r.width; this.h = r.height; this.camera.aspect = r.width / r.height; this.camera.updateProjectionMatrix(); this.redraw();
+    this.app?.viewResized?.(this);   // what stands over the view (the handles) is placed again for its new size
   }
   // Hidden under the other view shown full screen.
   hidden() { const full = this.el.parentElement?.querySelector('.view.full'); return !this.el.offsetWidth || (full && full !== this.el); }

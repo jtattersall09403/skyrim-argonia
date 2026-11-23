@@ -623,9 +623,16 @@ def apply(place_files: dict, ops: list, source=None) -> dict:
         given = {sid: {r["id"]: r for r in rows} for sid, rows in source.items()}
         source = lambda sid, info: given.get(sid, {})   # noqa: E731
     files["_source"] = _cached(source) if source else None
-    answered = _answered(place_files)
+    answered, undone = _answered(place_files), _undone(place_files)
     for op in ops:
-        _apply_one(files, _rebased(files, op, answered) if answered else op)
+        if (_row_id(op), op.get("note_group") or op.get("note")) in undone:
+            continue   # a later request of his undid this change of his: kept as no change
+        try:
+            _apply_one(files, _rebased(files, op, answered) if answered else op)
+        except EditConflict:
+            if not _answered_note(op, answered):
+                raise
+            # the agent's answer to this op's own note already made the row what his op makes it: kept as no change
     _check_doors(files, ops)
     files.pop("_source")
     return canonical(files)
@@ -638,6 +645,34 @@ def _answered(place_files: dict) -> dict:
         for rid in a.get("rows") or []:
             out.setdefault(rid, set()).add(a.get("answers"))
     return out
+
+
+def _undone(place_files: dict) -> set:
+    """{(row id, note id)}: changes of the owner's open session that a later request of his asked the agent to undo
+    (place.json `agent_answers` rows with `undoes`, e.g. rigging he removed and then asked to have back). His ops of
+    that note on that row replay as no change, whatever they would do."""
+    out = set()
+    for a in (place_files.get("place") or {}).get("agent_answers") or []:
+        for note in a.get("undoes") or []:
+            for rid in a.get("rows") or []:
+                out.add((rid, note))
+    return out
+
+
+def _row_id(op: dict):
+    """The row an op is about: a ref's id, or the id of the quest spot, walk, path or person it carries."""
+    if op.get("id"):
+        return op["id"]
+    for k in ("ref", "quest", "walk", "path", "person"):
+        if isinstance(op.get(k), dict) and op[k].get("id"):
+            return op[k]["id"]
+    return None
+
+
+def _answered_note(op: dict, answered: dict) -> bool:
+    """Whether an agent answered the note this op of the owner's belongs to, on the row it is about."""
+    notes = answered.get(_row_id(op)) or set()
+    return bool(notes) and (op.get("note_group") in notes or op.get("note") in notes)
 
 
 def _rebased(files, op, answered: dict):
@@ -837,7 +872,10 @@ def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), sourc
         keep += g
         answers.append({"save": save["save_id"], "stroke": g[0].get("stroke", k), "answers": g[0]["answers"],
                         "note": words, "owner_save": who, "rows": hit})
-    out = apply(place_files, keep, source)
+    # a plant an agent's hand clears is the agent's row, never the owner's (the owner's are protected)
+    marked = [dict(op, items=[dict(it, by=it.get("by", "agent")) for it in op["items"]]) if op.get("op") == "veg.clear" else op
+              for op in keep]
+    out = apply(place_files, marked, source)
     out["place"]["agent_saves_applied"] = done + [save["save_id"]]
     if answers:
         out["place"]["agent_answers"] = list(out["place"].get("agent_answers") or []) + answers

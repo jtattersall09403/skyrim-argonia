@@ -84,10 +84,58 @@ def test_import_closure_follows_relative_imports_and_path_chains(tmp_path):
     (tmp_path / "data").mkdir()
     (tmp_path / "tools" / "__init__.py").write_text("")
     (tmp_path / "tools" / "pkg" / "__init__.py").write_text("")
-    (tmp_path / "tools" / "pkg" / "a.py").write_text("from . import b\n")
+    (tmp_path / "tools" / "pkg" / "a.py").write_text("from . import b\nprint(b.X)\n")
     (tmp_path / "tools" / "pkg" / "b.py").write_text('X = ROOT / "data" / "things"\n')
     files, named = gate.Index(tmp_path).closure(tmp_path / "tools" / "pkg" / "a.py")
     assert "tools/pkg/b.py" in files and "data/things" in named
+
+
+BROWSER = "tools/" + "places/studio/web/test/"   # built, so that this file names no studio path
+JS = "tools/" + "places/studio/web/js/"
+
+
+def test_one_studio_module_runs_its_own_browser_tests_not_the_suite():
+    assert not any(t.startswith(BROWSER) for t in gate.pick([JS + "agent.js"]).tests), "agent.js is not loaded by the page"
+    picked = [t for t in gate.pick([JS + "people.js"]).tests if t.startswith(BROWSER)]
+    assert picked and all("::" in t for t in picked) and len(picked) < 4, picked
+
+
+def test_the_page_shell_runs_every_browser_test():
+    assert BROWSER + "test_browser.py" in gate.pick([JS + "main.js"]).tests
+
+
+def test_place_files_and_place_tools_run_no_browser_test():
+    for c in [_pl("helstrom", "clear.jsonl"), "tools/" + "places/draft/clear.py", BROWSER + "units.test.mjs"]:
+        p = gate.pick([c])
+        assert not p.full and not any(t.startswith(BROWSER) for t in p.tests), (c, p.tests)
+
+
+def _tree(tmp_path, files):
+    for rel, text in {"tools/__init__.py": "", "tools/pkg/__init__.py": "", **files}.items():
+        (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / rel).write_text(text)
+    return gate.Index(tmp_path)
+
+
+def test_a_lazy_import_reaches_only_the_callers_of_its_function(tmp_path):
+    idx = _tree(tmp_path, {
+        "tools/pkg/hub.py": "def small():\n    return 1\n\ndef big():\n    from tools.pkg import heavy\n    return heavy.go()\n",
+        "tools/pkg/heavy.py": "def go():\n    return 2\n",
+        "tools/pkg/a.py": "from tools.pkg.hub import small\nsmall()\n",
+        "tools/pkg/b.py": "from tools.pkg import hub\nhub.big()\n"})
+    assert "tools/pkg/heavy.py" not in idx.closure(tmp_path / "tools/pkg/a.py")[0]
+    assert "tools/pkg/heavy.py" in idx.closure(tmp_path / "tools/pkg/b.py")[0]
+
+
+def test_a_path_held_in_a_module_name_reaches_only_its_users(tmp_path):
+    (tmp_path / "data").mkdir()
+    idx = _tree(tmp_path, {
+        "tools/pkg/m.py": 'DB = ROOT / "data" / "db"\n\n\ndef f():\n    return DB\n\n\ndef g():\n    return 1\n',
+        "tools/pkg/a.py": "from tools.pkg.m import g\n",
+        "tools/pkg/b.py": "from tools.pkg.m import f\n"})
+    assert "data/db" not in idx.closure(tmp_path / "tools/pkg/a.py")[1]
+    assert "data/db" in idx.closure(tmp_path / "tools/pkg/b.py")[1]
+    assert "data" not in idx.closure(tmp_path / "tools/pkg/b.py")[1], "a chain names its whole path, not its prefixes"
 
 
 def test_every_mapped_stage_is_a_stage_with_a_make_target():
