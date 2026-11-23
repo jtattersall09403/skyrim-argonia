@@ -150,10 +150,11 @@ def current(place_id: str, out: Path) -> Path | None:
 
 
 def older_than_files(export_path: Path, place_dir: Path) -> bool:
-    """Is this walking mesh from a build older than the place's committed files? The studio then says it is from the
-    last build; it never keeps the owner from opening or editing the place."""
-    newest = max((f.stat().st_mtime for f in Path(place_dir).rglob("*") if f.is_file()), default=0.0)
-    return newest > Path(export_path).stat().st_mtime
+    """Is this walking mesh from a build of other place files than these (by content: build.plan_stale of the plan
+    it was exported from)? The studio then says it is from the last build; it never keeps the owner from opening or
+    editing the place."""
+    export_path, place_dir = Path(export_path), Path(place_dir)
+    return bool(B.plan_stale(place_dir, export_path.parent.parent / "shards" / export_path.stem))
 
 
 def main(argv: list[str]) -> int:

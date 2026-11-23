@@ -54,7 +54,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from tools.places import variant
-from tools.places.handover import built_check_current, changed_at, out_root  # noqa: F401  the draft rule's home
+from tools.places.handover import built_check_current, out_root  # noqa: F401  the draft rule's home
 
 REPO = Path(__file__).resolve().parents[2]
 DBREL = Path("newworld/story/data/db")
@@ -185,7 +185,7 @@ def load_drafts(root: Path, out: Path) -> dict:
                              if x.strip()} if (pj.parent / "quests.jsonl").exists() else set())
                            | cast_spots(root, pid),
                   "check": json.loads(chk.read_text()) if chk.exists() else None,
-                  "check_newer": built_check_current(root, out, pid)[0]}
+                  **dict(zip(("check_newer", "check_why"), built_check_current(root, out, pid)))}
     return d
 
 
@@ -779,7 +779,7 @@ def check_drafts(ctx, R: Report, only=None):
             R.add("draft", "a draft with no built check", pid, "no out/places/shards/<id>/check.json", rel)
             continue
         if not d["check_newer"]:
-            R.add("draft", "the built check is older than the draft", pid, "check.json predates the place files",
+            R.add("draft", "the built check is stale against the draft", pid, d.get("check_why") or "a file the build or checks read changed",
                   f"out/places/shards/{pid}/check.json")
         for k, cause in (("nordic", "a Nordic piece in the draft"), ("seat", "a floating or sunk piece in the draft"),
                          ("land", "a floating or sunk piece in the draft"), ("primitives", "an unresolved model in the draft")):

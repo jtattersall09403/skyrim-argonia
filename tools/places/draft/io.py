@@ -165,14 +165,32 @@ def catalogue_bases(keys: set[str], path: Path | None = None) -> dict[str, dict]
     path = path or CATALOGUE
     if not keys or not path.exists():
         return {}
-    out = {}
-    with path.open() as f:
-        for line in f:
-            if any(k in line for k in keys):
-                r = json.loads(line)
-                if r.get("key") in keys:
-                    out[r["key"]] = r
-    return out
+    ix = _catalogue_index(path)
+    got = sorted((ix[k][0], k) for k in keys if k in ix)   # in the file's order, as a read of the whole file meets them
+    return {k: json.loads(ix[k][1]) for _, k in got}
+
+
+_CAT: dict = {}
+
+
+def _catalogue_index(path: Path) -> dict[str, tuple[int, str]]:
+    """The catalogue's lines by their base key: (where the key first stands, its last line), as a read of the whole
+    file orders and keeps them; read once a run for each state of the file."""
+    st = path.stat()
+    k = (str(path), st.st_size, st.st_mtime_ns)
+    if k not in _CAT:
+        _CAT.clear()
+        ix: dict[str, tuple[int, str]] = {}
+        with path.open() as f:
+            for n, line in enumerate(f):
+                if line.startswith('{"key": "'):
+                    key = line[9:line.index('"', 9)]
+                else:
+                    key = json.loads(line).get("key")
+                if key is not None:
+                    ix[key] = (ix[key][0] if key in ix else n, line)
+        _CAT[k] = ix
+    return _CAT[k]
 
 
 def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:

@@ -189,7 +189,7 @@ def test_drafts():
     got, _ = causes(ctx(drafts={"a": bad}), "draft")
     assert {"the plan misses a gives row", "a plan line delivered by nothing", "a major structure without a verdict",
             "the draft's people differ from the population", "a Nordic piece in the draft",
-            "the built check is older than the draft"} <= got
+            "the built check is stale against the draft"} <= got
     nop = copy.deepcopy(d)
     nop["place"]["draft"] = {}
     assert "a draft with no plan" in causes(ctx(drafts={"a": nop}), "draft")[0]
@@ -235,22 +235,6 @@ def test_a_draft_of_another_source_fails_unless_marked_awaiting_its_redraft():
     assert "a redraft mark naming another source than the allocated one" in causes(ctx(drafts={"a": old}), "draft")[0]
     d["place"]["redraft"] = {"source_id": "s1", "why": "source changed to s1 2026-11-21 by hand"}
     assert "a redraft mark on a draft already of its source" in causes(ctx(drafts={"a": d}), "draft")[0]
-
-
-def test_a_studio_save_does_not_make_the_built_check_old(tmp_path):
-    import os
-    import subprocess
-    from tools.newworld import consistency
-    def g(*a, when=None):
-        env = dict(os.environ, GIT_COMMITTER_DATE=when, GIT_AUTHOR_DATE=when) if when else None
-        subprocess.run(["git", "-C", str(tmp_path), *a], check=True, capture_output=True, env=env)
-    g("init", "-q"); g("config", "user.email", "t@t"); g("config", "user.name", "t")
-    (tmp_path / "p").mkdir(); (tmp_path / "p/place.json").write_text("{}")
-    g("add", "."); g("commit", "-q", "-m", "draft", when="2020-01-01T00:00:00Z")
-    (tmp_path / "p/edits").mkdir(); (tmp_path / "p/edits/s.json").write_text("{}")
-    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # an uncommitted save: still the draft's
-    g("add", "."); g("commit", "-q", "-m", "save", when="2026-01-01T00:00:00Z")
-    assert consistency.changed_at(tmp_path, tmp_path / "p") == 1577836800.0   # a committed save: still the draft's
 
 
 def test_a_retired_name_fails_outside_its_allowed_sense_and_owed_paths_shrink(tmp_path):

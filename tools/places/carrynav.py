@@ -21,9 +21,13 @@ under our water level); door, edge-link and cover bits are cleared (finish_navme
 join_seams the links). Pure numpy: no game data here."""
 from __future__ import annotations
 
+import hashlib
 import math
 import os
+import pickle
+import zlib
 from collections import defaultdict
+from pathlib import Path
 
 import numpy as np
 
@@ -918,9 +922,77 @@ def build_cells(carried: list, generated: dict, region: Region, water=None, neig
     return out
 
 
+# ---- each cell's work kept on disk by everything it reads: a change redoes only the cells it reaches ------------------
+CELL_CACHE = Path(os.environ.get("ARGONIA_CARRY_CACHE") or Path(__file__).resolve().parents[2] / "out" / "places" / "cache" / "carry")
+CELL_CACHE_KEEP = 6000   # files kept: the newest (a hit is touched)
+_CODE: list = []
+
+
+def _code_key() -> str:
+    if not _CODE:
+        _CODE.append(hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:12])
+    return _CODE[0]
+
+
+def _kept(kind: str, key, make):
+    """make()'s answer, kept under the sha256 of `key` (a picklable value holding everything make reads) and this
+    file's code; a torn or unreadable file is made again."""
+    k = hashlib.sha256(pickle.dumps((kind, key), protocol=5)).hexdigest()
+    f = CELL_CACHE / _code_key() / k[:2] / f"{k}.pkl"
+    if f.exists():
+        try:
+            got = pickle.loads(zlib.decompress(f.read_bytes()))
+            os.utime(f)
+            return got
+        except Exception:  # noqa: BLE001
+            pass
+    got = make()
+    try:
+        f.parent.mkdir(parents=True, exist_ok=True)
+        tmp = f.with_suffix(f".{os.getpid()}.tmp")
+        tmp.write_bytes(zlib.compress(pickle.dumps(got, protocol=5), 1))
+        os.replace(tmp, f)
+    except OSError:
+        pass
+    return got
+
+
+def prune_cell_cache() -> None:
+    """This code's kept cells, the newest CELL_CACHE_KEEP of them; another code's (another checkout's) a day unused go."""
+    import shutil
+    import time
+    if not CELL_CACHE.is_dir():
+        return
+    for d in CELL_CACHE.iterdir():
+        if d.is_dir() and d.name != _code_key() and time.time() - d.stat().st_mtime > 86400:
+            shutil.rmtree(d, ignore_errors=True)
+    files = sorted((CELL_CACHE / _code_key()).glob("*/*.pkl"), key=lambda f: f.stat().st_mtime)
+    for f in files[:-CELL_CACHE_KEEP]:
+        f.unlink(missing_ok=True)
+
+
+def _cut_key(c):
+    """Everything _cut_cell reads for cell c: its rows, its generated triangles, the ring, and the zones and covering
+    triangles whose boxes meet the cell's box grown over its generated triangles (no other can touch its pieces)."""
+    J = _JOB
+    R = J["region"]
+    x0, y0 = c[0] * CELL - 1.0, c[1] * CELL - 1.0
+    U = [x0, y0, x0 + CELL + 2.0, y0 + CELL + 2.0]
+    for tri, _ in J["gen"].get(c, ()):
+        bb = _bbox(tri)
+        U = [min(U[0], bb[0]), min(U[1], bb[1]), max(U[2], bb[2]), max(U[3], bb[3])]
+    zones = [(R.zone_h[k], R.zone_box[k]) for k in R.near(U)]
+    cover = None if R.cover is None else [R.cover[i] for i in R._covering(U) if _overlap(R.cover[i][1], U)]
+    return (c, J["rows"].get(c), J["gen"].get(c), R.outer_h, zones, cover)
+
+
 def _cut_cell(c):
     """One cell's mesh from its carried pieces (cut by the cell's box and the region) and its generated triangles (cut
-    by the region); None when nothing lands in it."""
+    by the region); None when nothing lands in it. Kept by everything it reads (_cut_key)."""
+    return _kept("cut", _cut_key(c), lambda: _cut_cell_made(c))
+
+
+def _cut_cell_made(c):
     J = _JOB
     m, n = Mesh(), 0
     box = planes(cell_box(c))
@@ -963,6 +1035,15 @@ def _cells_side_by_side(fn, cells: list, job: dict) -> list:
 
 
 def _finish_one(c):
+    """One cell finished; kept by everything it reads: its mesh, and the four neighbours' borders and kinds."""
+    J = _JOB
+    m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
+    nb = [(c[0] - 1, c[1]), (c[0] + 1, c[1]), (c[0], c[1] - 1), (c[0], c[1] + 1)]
+    key = (c, m.V, m.T, m.F, m.tag, [(border.get(o), o in neighbours, o in meshes, neighbours.get(o)) for o in nb])
+    return _kept("finish", key, lambda: _finish_made(c))
+
+
+def _finish_made(c):
     J = _JOB
     m, neighbours, border, meshes = J["meshes"][c], J["neighbours"], J["border"], J["meshes"]
     x0, y0 = c[0] * CELL, c[1] * CELL
@@ -1053,6 +1134,7 @@ def place_cells(carried: list, generated: dict, region: Region, water=None, neig
                 break
             island |= lone
     out, live = run()
+    prune_cell_cache()
     return out, {"moved_kept": len(live), "moved_island": len(island)}
 
 

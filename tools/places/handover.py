@@ -1,8 +1,8 @@
 """Whether a place is ready to hand over as built: its built check is current against its files, by the consistency
-stage's own rule (built_check_current here, which tools/newworld/consistency reads; `edits/` aside). Run it as the last step before
-returning: an edit of any kind after the final build and check makes the check old, and the landing is refused.
+stage's own rule (built_check_current here, by content, which tools/newworld/consistency reads). Run it as the last step before
+returning: a change to any file the build or the checks read after the final build and check makes the check stale, and the landing is refused.
 
-    python -m tools.places handover <place_id>      # exit 1 when the built check is older than the place files,
+    python -m tools.places handover <place_id>      # exit 1 when the built check is stale (names the file),
                                                     # or `stock reach` flags a stock row (material reach,
                                                     # region, trade kit), or a blocker owed in a road or walk
                                                     # (newworld/places/ways_owed.jsonl) has no reason,
@@ -26,41 +26,22 @@ def out_root(repo: Path = B.ROOT) -> Path:
     return repo / "out"
 
 
-def changed_at(root: Path, d: Path) -> float:
-    """When a place's files last changed: the later of its last commit and any uncommitted edit (a checkout's
-    file times are the checkout's, so the commit time is the honest one). The owner's saves and notes (`edits/`) are
-    records of studio work, not the draft: a save does not make the built check old. The promise list and the quest
-    states (`promises.jsonl`, `states.jsonl`) are read by the checks, never built into the plugin: they do not either, nor does the time log
-    (`timelog.jsonl`, tools/places/timelog.py)."""
-    import subprocess
-    rel = str(d.relative_to(root)); only = [rel, f":(exclude){rel}/edits", f":(exclude){rel}/promises.jsonl", f":(exclude){rel}/states.jsonl", f":(exclude){rel}/timelog.jsonl"]
-    try:
-        ct = float(subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%ct", "--", *only],
-                                  capture_output=True, text=True, timeout=30).stdout.strip() or 0)
-        dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--", *only],
-                               capture_output=True, text=True, timeout=30).stdout.strip()
-    except (OSError, ValueError, subprocess.SubprocessError):
-        ct, dirty = 0.0, "x"
-    if dirty or not ct:
-        ct = max([ct] + [f.stat().st_mtime for f in d.rglob("*.json*") if f.relative_to(d).parts[0] not in ("edits", "promises.jsonl", "states.jsonl", "timelog.jsonl")])
-    return ct
-
-
 def built_check_current(root: Path, out: Path, pid: str) -> tuple[bool, str]:
-    """(current, a line saying so): the place's built check (out/places/shards/<pid>/check.json) is no older than
-    its files' last change (changed_at, which leaves `edits/` out): the draft family's rule."""
-    from datetime import datetime
-    chk = out / "places/shards" / pid / "check.json"
+    """(current, a line saying so): the place's built check (out/places/shards/<pid>/check.json) stands for the place
+    as it is: by content, every file the build and the checks read unchanged, and the code and records the plan stands
+    on (check.stamp_stale); file times never count, and files no build or check reads (the time log, `edits/`) never
+    make it stale. The line names what changed."""
+    import json
+    from tools.places import check as C
+    shard = out / "places/shards" / pid
+    chk = shard / "check.json"
     if not chk.exists():
         return False, f"built check NOT CURRENT: {pid} has no built check; build and check it after the last edit"
-    made, changed = chk.stat().st_mtime, changed_at(root, root / "newworld/places" / pid)
-
-    def at(t):
-        return datetime.fromtimestamp(t).strftime("%Y-%m-%d %H:%M:%S")
-    if made >= changed:
-        return True, f"built check current: made {at(made)}, the place files last changed {at(changed)} (edits/ aside)"
-    return False, (f"built check NOT CURRENT: made {at(made)}, the place files changed after it ({at(changed)}): "
-                   f"build and check again after the last edit, or the consistency stage refuses the landing")
+    why = C.stamp_stale(json.loads(chk.read_text()).get("stamp"), root / "newworld/places" / pid, shard)
+    if not why:
+        return True, "built check current: every file the build and the checks read is as it was checked (by content)"
+    return False, (f"built check NOT CURRENT: {'; '.join(why[:8])}{f' (and {len(why) - 8} more)' if len(why) > 8 else ''}: "
+                   f"build and check again, or the consistency stage refuses the landing")
 
 
 def main(argv: list[str]) -> int:

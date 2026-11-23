@@ -251,7 +251,7 @@ class Models:
     def __init__(self, data: Path, resolver=None):
         from tools.navmesh import meshes
         self.data = data
-        self.res = resolver or meshes.Resolver(data)
+        self.res = resolver or meshes.shared(data)
         self.modl: dict[str, str] = {}
         self.tris: dict[str, np.ndarray | None] = {}
 
@@ -561,7 +561,7 @@ def collide(refs: list[dict], data: Path, own: dict[str, str], resolver=None) ->
     from tools.navmesh import meshes
     info = bases(data, {x["base"] for x in refs if x["base"] not in own})
     info.update({k: (m, None) for k, m in own.items()})
-    res = resolver or meshes.Resolver(data)
+    res = resolver or meshes.shared(data)
     out: list[np.ndarray] = []
     tally = {"refs": len(refs), "collision": 0, "no_collision": 0, "box_fallback": 0, "no_base": 0, "triangles": 0}
     tally["primitive"] = 0

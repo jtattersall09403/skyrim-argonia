@@ -342,7 +342,10 @@ def test_mesh_point_off_and_on_by_height():
     assert M.tri_at(150, 50, 290)[1] == pytest.approx(300)
 
 
-def test_mesh_stale_when_a_place_file_is_newer(tmp_path):
+def test_mesh_stale_when_a_place_file_changed(tmp_path):
+    """By content, never by time (build.plan_stale): a touched file is current, a changed one is stale and named."""
+    import json
+    from tools.places import build as B
     from tools.places.look import mesh
     plan = tmp_path / "b" / "shards" / "p" / "plan.json"
     plan.parent.mkdir(parents=True)
@@ -351,10 +354,12 @@ def test_mesh_stale_when_a_place_file_is_newer(tmp_path):
     (pd / "spaces").mkdir(parents=True)
     f = pd / "spaces" / "refs.jsonl"
     f.write_text("")
+    (plan.parent / "files.json").write_text(json.dumps(B.built_files(pd)))
     os.utime(f, (plan.stat().st_mtime + 10, plan.stat().st_mtime + 10))
-    assert mesh.stale(pd, tmp_path / "b", "p")["stale"]
-    os.utime(f, (plan.stat().st_mtime - 10, plan.stat().st_mtime - 10))
     assert not mesh.stale(pd, tmp_path / "b", "p")["stale"]
+    f.write_text('{"id": "a"}\n')
+    got = mesh.stale(pd, tmp_path / "b", "p")
+    assert got["stale"] and got["newer_files"] == ["spaces/refs.jsonl: changed"]
 
 
 # ---------- inside a room (room.py) ----------

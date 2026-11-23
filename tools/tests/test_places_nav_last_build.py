@@ -4,13 +4,22 @@ import os
 from tools.places import navexport
 
 
-def test_a_walking_mesh_older_than_the_place_files_is_from_the_last_build(tmp_path):
-    exp, pdir = tmp_path / "nav.json", tmp_path / "p"
+def test_a_walking_mesh_of_other_place_files_is_from_the_last_build(tmp_path):
+    """By content, never by time: a newer file of the same bytes leaves the mesh current; a changed one does not."""
+    import json
+    from tools.places import build as B
+    out, pdir = tmp_path / "out", tmp_path / "p"
     pdir.mkdir()
-    exp.write_text("{}")
     (pdir / "place.json").write_text("{}")
+    shard = out / "shards" / "p"
+    shard.mkdir(parents=True)
+    (shard / "plan.json").write_text("{}")
+    (shard / "files.json").write_text(json.dumps(B.built_files(pdir)))
+    exp = out / "nav" / "p.json"
+    exp.parent.mkdir()
+    exp.write_text("{}")
     os.utime(exp, (100, 100))
     os.utime(pdir / "place.json", (200, 200))
-    assert navexport.older_than_files(exp, pdir)
-    os.utime(exp, (300, 300))
     assert not navexport.older_than_files(exp, pdir)
+    (pdir / "place.json").write_text('{"x": 1}')
+    assert navexport.older_than_files(exp, pdir)

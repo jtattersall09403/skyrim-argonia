@@ -156,13 +156,14 @@ def find(place: str, out: Path) -> tuple[Path | None, Path | None]:
 
 
 def stale(place_dir: Path, build: Path, place: str) -> dict:
-    """The build's plan against the place files: stale when a place file is newer than the plan the mesh is of."""
+    """The build's plan against the place files, by content (build.plan_stale): stale when a file the build reads
+    was added, has gone or changed since the plan the mesh is of; file times never count."""
+    from tools.places import build as B
     plan = build / "shards" / place / "plan.json"
     if not plan.exists():
         return {"stale": True, "why": "no plan of the build"}
-    t = plan.stat().st_mtime
-    newer = sorted(str(f.relative_to(place_dir)) for f in place_dir.rglob("*.json*") if f.stat().st_mtime > t)
-    return {"stale": bool(newer), "built": plan.stat().st_mtime, "newer_files": newer[:8]}
+    why = B.plan_stale(Path(place_dir), build / "shards" / place)
+    return {"stale": bool(why), "built": plan.stat().st_mtime, "newer_files": why[:8]}
 
 
 def load(path: Path, space: str = "exterior") -> Mesh | None:

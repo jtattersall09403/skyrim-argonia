@@ -36,6 +36,17 @@ def plugin_file(name: str, data: Path, stack: Path = STACK) -> Path | None:
     return None
 
 
+_RESOLVERS: dict = {}
+
+
+def shared(data: Path) -> "Resolver":
+    """One Resolver a run for each game data folder, stack and profile: making one walks every mod's loose meshes."""
+    k = (str(data), str(STACK), PROFILE)
+    if k not in _RESOLVERS:
+        _RESOLVERS[k] = Resolver(data)
+    return _RESOLVERS[k]
+
+
 class Resolver:
     def __init__(self, data: Path, stack: Path = STACK):
         self.data = data
@@ -108,9 +119,8 @@ COLLISION_CACHE = Path(os.environ.get("ARGONIA_COLLISION_CACHE") or Path(__file_
 @lru_cache(maxsize=1)
 def _reader_key() -> str:
     import hashlib
-    h = hashlib.sha256()
-    for f in (Path(nif.__file__), Path(__file__)):
-        h.update(f.read_bytes())
+    h = hashlib.sha256(Path(nif.__file__).read_bytes())   # the reader, and the layers this file keeps of what it reads
+    h.update(repr(sorted(nif.SOLID_LAYERS)).encode() + b"|solid-v1")
     return h.hexdigest()[:12]
 
 

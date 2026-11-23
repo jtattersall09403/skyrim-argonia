@@ -152,10 +152,10 @@ def test_handover_and_the_gate_leave_the_log_out(tmp_path):
     (d / "place.json").write_text("{}\n")
     for a in (["init", "-q"], ["add", "-A"], ["-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "x"]):
         subprocess.run(["git", "-C", str(root), *a], check=True)
-    t0 = handover.changed_at(root, d)
+    from tools.places import build
+    t0 = build.checked_files(d)
     (d / "timelog.jsonl").write_text("{}\n")
-    os.utime(d / "timelog.jsonl", (t0 + 9000, t0 + 9000))
-    assert handover.changed_at(root, d) == t0
+    assert build.checked_files(d) == t0
     plan = gate.pick(["newworld/places/fen/timelog.jsonl"])
     assert plan.inert == ["newworld/places/fen/timelog.jsonl"] and not plan.stages and not plan.tests
 

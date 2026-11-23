@@ -271,10 +271,47 @@ def place_key(pdir: Path, world_key: str) -> str:
     h = hashlib.sha256((world_key + code_key() + stockplan.key(pdir.name)).encode())
     h.update(json.dumps([[s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pdir.name],
                          travel_routes(pdir.name)], sort_keys=True).encode())  # the network's part in the place
-    for p in sorted(pdir.rglob("*")):
-        if p.is_file() and p.name != "formids.json" and "edits" not in p.parts:
-            h.update(str(p.relative_to(pdir)).encode() + p.read_bytes())
+    for rel, sha in built_files(pdir).items():
+        h.update(f"{rel}:{sha}".encode())
     return h.hexdigest()
+
+
+# the place's files no build step reads: the time log, the promise list and the quest states (the checks read those
+# two: checked_files), the owner's saves and notes (edits/), prose; and its form ids, which the build writes
+NOT_BUILT = {"timelog.jsonl", "promises.jsonl", "states.jsonl", "formids.json"}
+CHECKED_TOO = ("promises.jsonl", "states.jsonl")
+
+
+def built_files(pdir: Path) -> dict[str, str]:
+    """{path in the place folder: sha256} of every place file the build reads, by content (never by time)."""
+    out = {}
+    for p in sorted(pdir.rglob("*")):
+        rel = p.relative_to(pdir)
+        if p.is_file() and p.name not in NOT_BUILT and "edits" not in rel.parts and p.suffix != ".md":
+            out[str(rel)] = hashlib.sha256(p.read_bytes()).hexdigest()
+    return out
+
+
+def plan_stale(pdir: Path, shard: Path) -> list[str]:
+    """Why a built plan no longer stands for the place files, by content: each file the build reads that was added,
+    has gone or changed since the plan (its files.json); nothing when current. File times never count."""
+    fj = shard / "files.json"
+    if not (shard / "plan.json").exists():
+        return ["no plan of the build"]
+    if not fj.exists():
+        return ["the plan carries no list of the files it read (planned before lists): build once"]
+    was, now = json.loads(fj.read_text()), built_files(pdir)
+    return [f"{f}: {'added' if f not in was else 'gone' if f not in now else 'changed'}"
+            for f in sorted(set(was) | set(now)) if was.get(f) != now.get(f)]
+
+
+def checked_files(pdir: Path) -> dict[str, str]:
+    """built_files and the files only the checks read: what a built check stands on, by content."""
+    out = built_files(pdir)
+    for n in CHECKED_TOO:
+        if (pdir / n).is_file():
+            out[n] = hashlib.sha256((pdir / n).read_bytes()).hexdigest()
+    return out
 
 
 def sources() -> dict:
@@ -338,17 +375,17 @@ def tool_cache(kind: str, key_parts: list) -> Path:
     function of (the asked, the files read by their sha256, the tool's own bytes)."""
     h = hashlib.sha256(json.dumps(key_parts, sort_keys=True).encode())
     h.update(file_sha(TOOL).encode())
-    return OUT / "cache" / kind / f"{h.hexdigest()[:32]}.json"
+    return Path(os.environ.get("ARGONIA_PLACES_CACHE") or OUT / "cache") / kind / f"{h.hexdigest()[:32]}.json"
 
 
 TOOL_CACHE_KEEP = 32   # answers kept per kind: the newest; older ones go as a new one is kept
 
 
-def kept_answer(src: Path, kept: Path) -> None:
+def kept_answer(src: Path, kept: Path, keep: int | None = None) -> None:
     """Move a tool's answer into its place in the cache, and let the oldest of its kind go."""
     kept.parent.mkdir(parents=True, exist_ok=True)
     os.replace(src, kept)
-    old = sorted(kept.parent.glob("*.json"), key=lambda f: f.stat().st_mtime)[:-TOOL_CACHE_KEEP]
+    old = sorted(kept.parent.glob("*.json"), key=lambda f: f.stat().st_mtime)[:-(keep or TOOL_CACHE_KEEP)]
     for f in old:
         f.unlink(missing_ok=True)
 
@@ -1305,7 +1342,7 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
     """Collision of `rows` (refs of one interior) meshed by the same Recast run as the world's (ArgoniaNav, the same
     params): moved into synthetic cells, meshed, moved back and welded. `ground`: a plane just under the lowest
     collision (the floor a room's walls stand on), cut away outside the collision's bounds. -> (verts, tris)."""
-    from tools.navmesh import params, stitch
+    from tools.navmesh import params
     from tools.navmesh.__main__ import NAV_BIN, build_tool as nav_tool
     coll = []
     for r in rows:
@@ -1315,6 +1352,24 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
     tris, _ = place_collide(coll)
     if not len(tris):
         return [], []
+    # the room's mesh is a function of its collision, the Recast parameters and the mesher: kept by them
+    nav_tool()
+    kept = tool_cache("interior_navmesh", [hashlib.sha256(np.ascontiguousarray(tris, np.float64).tobytes()).hexdigest(),
+                                           tag, bool(ground), params.recast(), file_sha(Path(NAV_BIN))])
+    if kept.exists():
+        got = json.loads(kept.read_text())
+        return got["verts"], got["tris"]
+    out = _recast_refs(tris, work, tag, ground)
+    tmp = kept.with_suffix(".json.tmp")
+    kept.parent.mkdir(parents=True, exist_ok=True)
+    tmp.write_text(json.dumps({"verts": out[0], "tris": out[1]}))
+    kept_answer(tmp, kept, 2000)
+    return out
+
+
+def _recast_refs(tris, work: Path, tag: str, ground: bool) -> tuple[list, list]:
+    from tools.navmesh import params, stitch
+    from tools.navmesh.__main__ import NAV_BIN, build_tool as nav_tool
     lo, hi = tris.reshape(-1, 3).min(axis=0), tris.reshape(-1, 3).max(axis=0)
     span = hi[:2] - lo[:2]
     ncx, ncy = int(span[0] // (CELL - 512)) + 1, int(span[1] // (CELL - 512)) + 1
@@ -2236,7 +2291,7 @@ def shared_shard(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> Path | No
     import shutil
     for home in shard_homes(pid):
         src = home / "shards" / pid
-        if home.resolve() == out.resolve() or not all((src / f).exists() for f in ("plan.json", "world.json", "key.txt", "problems.json")):
+        if home.resolve() == out.resolve() or not all((src / f).exists() for f in ("plan.json", "world.json", "key.txt", "problems.json", "files.json")):
             continue
         try:
             held = (src / "key.txt").read_text()
@@ -2246,7 +2301,7 @@ def shared_shard(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> Path | No
                 continue
             dst = out / "shards" / pid
             dst.mkdir(parents=True, exist_ok=True)
-            for f in ("plan.json", "world.json", "problems.json"):
+            for f in ("plan.json", "world.json", "problems.json", "files.json"):
                 tmp = dst / f"{f}.tmp"
                 shutil.copyfile(src / f, tmp)
                 os.replace(tmp, dst / f)
@@ -2327,6 +2382,7 @@ def main(argv: list[str]) -> int:
         atomic_json(shard / "plan.json", plan)
         atomic_json(shard / "world.json", world)
         atomic_json(shard / "problems.json", list(PROBLEMS))
+        atomic_json(shard / "files.json", built_files(pdir))   # what this plan read, by content (plan_stale)
         kp.write_text(place_key(pdir, world["key"]) + (":nonav" if a.no_navmesh else ""))
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
         log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(plan['refs'])} refs, {len(plan['interiors'])} interiors, "

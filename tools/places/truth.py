@@ -289,17 +289,16 @@ def tier_fresh(pid: str, files: dict, ctx: dict, sample: int | None, out: list) 
     if dirty:
         out.append(("fresh", f"{pid}: the place files differ from the commit ({len(dirty.splitlines())} paths): units, "
                     "draft check and truth read the working tree; the studio's pictures draw the committed files"))
-    # the place files' age: their last commit, or now when the working tree differs (checkout times mean nothing)
-    import time
-    newest = time.time() if dirty else float(_git("log", "-1", "--format=%ct", "--", str(pdir)) or 0)
     cat = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
     for b in sorted(ctx["bundles"].glob(f"ground.{pid}")) + sorted(ctx["bundles"].glob(f"src.{files['place'].get('source_id')}")):
         bj = b / "bundle.json"
         if cat.exists() and bj.exists() and bj.stat().st_mtime < cat.stat().st_mtime:
             out.append(("note", f"{b.name}: bundle older than the catalogue (a base added since reads as missing until it is rebuilt)"))
     shard = ctx["shards"] / pid / "plan.json"
-    if shard.exists() and shard.stat().st_mtime < newest:
-        ctx["stale_shard"] = f"the built shard ({shard}) is older than the place files"
+    from tools.places import build as _B
+    why = _B.plan_stale(pdir, shard.parent) if shard.exists() else []
+    if why:   # by content: a file the build reads changed since the plan (file times never count)
+        ctx["stale_shard"] = f"the built shard ({shard}) is of other place files: {'; '.join(why[:4])}"
         out.append(("note", ctx["stale_shard"]))
     from tools.places import build
     if build.TOOL.exists():

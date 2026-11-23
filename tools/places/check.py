@@ -1721,6 +1721,40 @@ def apply_accepted(res: dict[str, list[str]], rows: list[dict]) -> tuple[dict[st
     return fails, acc
 
 
+def check_code_key() -> str:
+    return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:16]
+
+
+def check_stamp(pdir: Path, shard: Path) -> dict:
+    """What a built check stands on, by content: the plan's key (the place files the build reads, the code, the stock,
+    travel and world records: build.place_key), each file the build or the checks read by its sha256, and this code."""
+    kp = shard / "key.txt"
+    return {"plan_key": kp.read_text() if kp.exists() else None, "files": B.checked_files(pdir), "check_code": check_code_key()}
+
+
+def stamp_stale(stamp: dict | None, pdir: Path, shard: Path) -> list[str]:
+    """Why a built check no longer stands for the place as it is: each file whose content differs (added, gone or
+    changed), else the code or the records the plan reads; nothing when it is current. File times never count."""
+    if not stamp:
+        return ["the built check carries no content stamp (made before stamps): build and check once"]
+    now = B.checked_files(pdir)
+    was = stamp.get("files") or {}
+    why = [f"{f}: {'added' if f not in was else 'gone' if f not in now else 'changed'}"
+           for f in sorted(set(now) | set(was)) if now.get(f) != was.get(f)]
+    if why:
+        return why
+    if stamp.get("check_code") != check_code_key():
+        return ["the checks' code changed (tools/places/check.py)"]
+    wj = shard / "world.json"
+    if not wj.exists():
+        return ["the built plan is gone"]
+    was_cells = json.loads(wj.read_text())["cells"]
+    key = B.place_key(pdir, B.world_stamp(pdir.name, was_cells)["key"])
+    if stamp.get("plan_key") not in (key, key + ":nonav"):
+        return ["the build's code, the place's stock or travel, or the world records it stands on changed"]
+    return []
+
+
 def run(ctx: dict) -> dict[str, list[str]]:
     NOTES.clear()
     res = {name: fn(ctx) for name, fn in CHECKS.items()}
@@ -1750,7 +1784,8 @@ def main(argv: list[str]) -> int:
               "esp_sha256": esp_sha,
               "results": {k: {"ok": not v, "failures": v[:50], "n": len(v), "accepted": ctx["accepted"].get(k, []),
                               "n_accepted": len(ctx["accepted"].get(k, []))} for k, v in res.items()},
-              "notes": list(NOTES), "primitives": ctx.get("primitives")}
+              "notes": list(NOTES), "primitives": ctx.get("primitives"),
+              "stamp": check_stamp(Path(a.places_dir) / a.place_id, Path(a.out) / "shards" / a.place_id)}
     shard = Path(a.out) / "shards" / a.place_id
     (shard / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
     # the full lists, never cut, one file per check, so nothing is hidden

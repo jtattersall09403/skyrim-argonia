@@ -67,7 +67,7 @@ footprint and eaves, a plant's root collar, lean and crown, a hanging thing's ha
 - A place dir that differs from its commit: units, draft check and truth read the working tree; the studio draws the
   committed files. Said per place.
 - A bundle older than the catalogue: a base added since reads as missing until the bundle is rebuilt.
-- The built shard older than the place files' last commit: its heights and poses are not compared.
+- The built shard of other place files than these (by content: a file the build reads changed since the plan; file times never count): its heights and poses are not compared.
 - The compiled builder older than its C# source, or another checkout's.
 
 ## Limits that remain

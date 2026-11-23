@@ -170,6 +170,13 @@ def carried_tris(place: dict, navs: list[dict], src_ground, our_ground, radius: 
 def on_surface(posed, tri, r: float = 24.0, dz: float = 24.0) -> bool:
     """A triangle rests on a piece's walked surface (tools/places/shape.py): its middle, or every corner, within r in
     plan and dz in height of the piece's top or walked height there."""
+    from tools.places.shape import CELL
+    xs, ys = [p[0] for p in tri], [p[1] for p in tri]
+    U = getattr(posed, "under", None)
+    n0, n1 = U.shape[:2] if U is not None and U.ndim == 2 else (0, 0)
+    if U is not None and (max(xs) + r < posed.i0 * CELL or min(xs) - r >= (posed.i0 + n0) * CELL
+            or max(ys) + r < posed.j0 * CELL or min(ys) - r >= (posed.j0 + n1) * CELL):
+        return False   # every corner, and the middle, off the piece's grid: surface_near finds nothing for any
     mx, my, mz = (sum(p[i] for p in tri) / 3 for i in range(3))
     if posed.surface_near(mx, my, mz, r, dz) is not None:
         return True

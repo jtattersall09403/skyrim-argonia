@@ -83,6 +83,7 @@ def test_a_plan_is_shared_only_under_its_own_key(tmp_path, monkeypatch, capsys):
     (src / "plan.json").write_text('{"refs": [1]}')
     (src / "world.json").write_text(json.dumps({"cells": [[0, 0]]}))
     (src / "problems.json").write_text('["a door with no way in"]')
+    (src / "files.json").write_text("{}")
     monkeypatch.setattr(build, "shard_homes", lambda pid: [other])
     monkeypatch.setattr(build, "world_stamp", lambda pid, cells: {"key": "w"})
     monkeypatch.setattr(build, "place_key", lambda pdir, wk: f"K:{wk}")

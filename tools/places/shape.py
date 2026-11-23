@@ -385,7 +385,7 @@ class Posed:
     def outline(self) -> list[list[float]]:
         """The true plan outline as the occupied cells' convex hull (for the drawing); occupancy is `occ`."""
         pts = self.cells("under")[:, :2]
-        return [[round(float(a), 1), round(float(b), 1)] for a, b in _hull(pts)] if len(pts) else []
+        return kept_hull(pts) if len(pts) else []
 
     # ground against the mesh
     def clearance(self, ground, band: float = 48.0) -> dict | None:
@@ -591,6 +591,40 @@ class Posed:
         ii, jj = np.nonzero(T >= z - 1.0)
         x, y = self.cell_xy(ii, jj)
         return [round(float(x.mean()), 1), round(float(y.mean()), 1), round(z, 1)]
+
+
+HULL_CACHE = Path(os.environ.get("ARGONIA_HULL_CACHE") or Path(__file__).resolve().parents[2] / "out" / "places" / "cache" / "hulls")
+_HULL_CODE: list = []
+
+
+def kept_hull(pts: np.ndarray) -> list[list[float]]:
+    """The rounded convex hull of plan points (_hull), kept on disk by the points' bytes and this file's code: a
+    place's outlines are measured again on every build, nearly all of them unchanged."""
+    import hashlib
+    import json
+    if not _HULL_CODE:
+        _HULL_CODE.append(hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:12])
+        import shutil
+        import time
+        for d in HULL_CACHE.iterdir() if HULL_CACHE.is_dir() else []:   # other code's hulls, a day unused, go
+            if d.name != _HULL_CODE[0] and time.time() - d.stat().st_mtime > 86400:
+                shutil.rmtree(d, ignore_errors=True)
+    a = np.ascontiguousarray(pts, np.float64)
+    k = hashlib.sha256(str(a.shape).encode() + a.tobytes()).hexdigest()
+    f = HULL_CACHE / _HULL_CODE[0] / k[:2] / f"{k}.json"
+    try:
+        return json.loads(f.read_text())
+    except (OSError, ValueError):
+        pass
+    got = [[round(float(x), 1), round(float(y), 1)] for x, y in _hull(pts)]
+    try:
+        f.parent.mkdir(parents=True, exist_ok=True)
+        tmp = f.with_suffix(f".{os.getpid()}.tmp")
+        tmp.write_text(json.dumps(got))
+        os.replace(tmp, f)
+    except OSError:
+        pass
+    return got
 
 
 _POSED: dict = {}
