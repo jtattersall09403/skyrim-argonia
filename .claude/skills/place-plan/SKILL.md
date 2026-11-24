@@ -67,6 +67,9 @@ committed match (`newworld/sources/source_match/place_source.jsonl`), the catalo
 6. Pin it: add the place to the JUDGED table in `tools/places/sources_match.py` with the reason, then
    `python -m tools.places sources-match --pin <place_id>`; set `place.json` `source_id` to it. Never edit the match
    files by hand.
+   The first `draft wholesale` of a new place seeds `draft.replace` from the easy-swap table
+   (`newworld/sources/dressing/swaps.json`: tents, lamp posts, braziers, doors and the Talos shrine swapped for held native
+   pieces of like size, each passing `keeps_function`); a drafted place is never re-seeded, and its own rows stand.
 7. A place whose `place.json` carries a `redraft` mark (its source was re-chosen after it was drafted) is redrafted
    fresh from the new source: `source_id` set to the mark's, the mark removed, then this skill and `place-site` from
    the start; nothing of the old draft is carried over. Its `differs` duty is reckoned from the new source.

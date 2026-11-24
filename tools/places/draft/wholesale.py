@@ -459,7 +459,14 @@ def main(argv=None) -> int:
     io.write_jsonl(pdir / "land.jsonl", land)
     io.write_jsonl(pdir / "paths.jsonl", [])
     place = json.loads((pdir / "place.json").read_text())
-    walk = (place.get("wholesale") or {}).get("navmesh")    # the drafter's choice of walking mesh stays (build.source_navmesh)
+    if not (place.get("wholesale") or {}).get("laid"):      # a new place's first lay: its replace starts from the easy swaps
+        dec = place.setdefault("draft", {})
+        dec["replace"] = {**io.seed_swaps(st.src.bases, dec.get("replace")), **(dec.get("replace") or {})}
+        if not dec["replace"]:
+            del dec["replace"]
+        dec["vary_interiors"] = True    # each further door into one source interior takes another held one of like size
+        place["draft"] = dec
+    walk = (place.get("wholesale") or {}).get("navmesh")  # the drafter's choice of walking mesh stays (build.source_navmesh)
     place["wholesale"] = {k: rep.get(k) for k in ("offset", "band", "pieces", "dropped", "raised_max", "lowered_max",
                                                   "band_steepest_deg", "source_water_area_m2", "held_by_water", "districts")
                           if rep.get(k) is not None}

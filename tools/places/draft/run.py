@@ -12,6 +12,8 @@ The agent's own calls (skills place-plan to place-story) are inputs, read from p
   keep_patches     false to forbid land patches (the check then lists what needs one)
   style_order      [plugin file...]: whose pieces the things this place adds are taken from first (default: the
                    marsh's own mods); a place of another people names its own mods
+  vary_interiors   true (set by a new place's first `draft wholesale`): of several doors into one source interior the
+                   first keeps it and each further door takes another held interior of like size (interiors.variant_targets)
   add              [{base, pos:[x, y], rot_z?, kind?, dz?, why}]: something the record promises that the source
                    lacks (a forge, a shrine), placed on our land and seated on the ground
 Everything else in the place files is written here, deterministically.
@@ -411,7 +413,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # --- interiors ---
     ext_doors = [by_src[r["src"]] for r in our if r.get("door") and r["door"].get("to_space") in src.spaces
                  and r["door"]["to_space"] != "exterior"]
-    spaces = interiors.plan(place_id, src, ext_doors, our_id, bases, replace, ledger)
+    spaces = interiors.plan(place_id, src, ext_doors, our_id, bases, replace, ledger, vary=bool(dec.get("vary_interiors")))
     our_by_id = {r["id"]: r for r in our}
     for sid, sp in spaces.items():
         if sp["parent"] == "exterior":

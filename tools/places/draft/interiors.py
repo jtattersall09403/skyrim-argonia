@@ -255,8 +255,41 @@ def mouth(door: dict, clusters, of: dict, by_src: dict) -> set[str]:
     return out
 
 
+LIKE = (0.5, 2.0)   # a held interior stands in for another of like size: its ref count within these ratios
+
+
+def variant_targets(src: Bundle, by_target: dict[str, list[dict]], house: dict[str, bool]) -> dict[str, str]:
+    """{exterior door id: source interior} for the doors that would repeat an interior: of the doors into one source
+    interior (not one building with several doors) the first keeps it and each further door takes a different interior
+    of the same source that no door of ours reaches, that has its own way out to the exterior, that no other interior
+    leads to, that is no mine, cave or crypt (SITE) and that is of like size (LIKE); the nearest in size first, each
+    used once. A source with no such spare interior repeats the one it has."""
+    inner = {door_target(r) for sp in src.spaces.values() for r in sp.refs if door_target(r) not in (None, "exterior")}
+    spare = {}
+    for sid, sp in src.spaces.items():
+        if sid == "exterior" or sid in by_target or sid in inner or not sp.interior:
+            continue
+        if SITE.search(re.sub(r"(?<=[a-z])(?=[A-Z])", " ", f"{sid} {sp.meta.get('name') or ''}")):
+            continue
+        if any(door_target(r) == "exterior" for r in sp.refs):
+            spare[sid] = len(sp.refs)
+    out: dict[str, str] = {}
+    for t in sorted(by_target):
+        if house.get(t):
+            continue
+        size = len(src.spaces[t].refs)
+        for d in sorted(by_target[t], key=lambda r: r["id"])[1:]:
+            like = [s for s, n in spare.items() if LIKE[0] * size <= n <= LIKE[1] * size]
+            if not like:
+                break
+            pick = min(like, key=lambda s: (abs(spare[s] - size), s))
+            del spare[pick]
+            out[d["id"]] = pick
+    return out
+
+
 def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str], bases: dict | None = None,
-         replace: dict | None = None, ledger: list | None = None) -> dict:
+         replace: dict | None = None, ledger: list | None = None, vary: bool = False) -> dict:
     """{our_space_id: {space_id, copy_of, src_space, door_from, door_back, room, parent, name, overrides}}.
 
     ext_doors: the source's exterior door refs we placed; our_door_id: source ref id -> our ref id (exterior).
@@ -272,9 +305,11 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
             by_target.setdefault(t, []).append(d)
     house = {t: len(ds) > 1 and one_building(f"{source_id}/{t}", src.spaces[t].refs) for t, ds in by_target.items()}
     also: dict[str, str] = {}   # a further door of one building: its source ref -> our exterior door
+    other = variant_targets(src, by_target, house) if vary else {}   # doors that take another held interior
     for t, ds in by_target.items():
         for d in (ds[:1] if house[t] else ds):
-            queue.append((t, our_door_id[d["id"]], d["id"], "exterior", (t,)))
+            t_d = other.get(d["id"], t)
+            queue.append((t_d, our_door_id[d["id"]], d["id"], "exterior", (t_d,)))
         if house[t]:
             also.update({d["id"]: our_door_id[d["id"]] for d in ds[1:]})
     while queue:

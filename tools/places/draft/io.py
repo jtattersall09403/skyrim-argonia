@@ -251,6 +251,43 @@ def replacements(dec: dict, bases: dict, refused: list | None = None) -> dict[st
     return out
 
 
+SWAPS = ROOT / "newworld" / "sources" / "dressing" / "swaps.json"
+
+
+def seed_swaps(src_bases, have: dict | None = None, path: Path | None = None) -> dict[str, str]:
+    """The easy swaps (newworld/sources/dressing/swaps.json) a NEW place's draft.replace starts from: {source base:
+    native base} for each swap whose old base the source holds, whose new base the catalogue holds and is not
+    Nordic, and which keeps the original's function (`keeps_function`). A row the place already has is kept."""
+    path = path or SWAPS
+    if not path.exists():
+        return {}
+    rows = [r for r in json.loads(path.read_text())["swaps"] if r["old"] in src_bases and r["old"] not in (have or {})]
+    new = catalogue_bases({r["new"] for r in rows})
+    review = nordic_review()
+    out = {}
+    for r in rows:
+        b = new.get(r["new"])
+        if b and not is_nordic(r["new"], b, review) and keeps_function(src_bases[r["old"]], b):
+            out[r["old"]] = r["new"]
+    return out
+
+
+NETWORK = ROOT / "newworld" / "sources" / "travel" / "network.json"
+
+
+def stop_boats(place_id: str, path: Path | None = None) -> list[str]:
+    """The native boat bases of a place's boat stop (the travel network's operator `boat` row: the barge where the
+    stop's `boat_class` is `barge`, else the river boats); empty for a place with no such stop or an operator that
+    keeps its own build (the sea-coaster)."""
+    n = json.loads((path or NETWORK).read_text())
+    ops = {o["id"]: o for o in n["operators"]}
+    for s in n["stops"]:
+        boat = (ops.get(s["operator"]) or {}).get("boat")
+        if s["place"] == place_id and s["mode"] == "boat" and boat:
+            return [boat["barge"]] if s.get("boat_class") == "barge" and boat.get("barge") else list(boat["bases"])
+    return []
+
+
 STATION_EDID = {
     "forge": r"^CraftingBlacksmithForge", "anvil": r"Anvil", "grindstone": r"SharpeningWheel|Grindstone",
     "smelter": r"Smelter", "tanning-rack": r"TanningRack", "alchemy-lab": r"AlchemyWorkbench|AlchemyLab",

@@ -1,0 +1,345 @@
+{
+ "about": "Easy swaps of Nordic pieces for held native ones of like size and function. place-plan seeds a NEW place's draft.replace from the rows whose `old` the place's source holds (tools/places/draft/io.py seed_swaps, called by draft wholesale on a place's first lay, never on a drafted place). Each row was looked at (search sheet) and passes io.keeps_function; the draft's own check still refuses a Nordic replacement. Keep what is nearly fine, prefer the Tropical Skyrim version, take an easy swap, never laboriously replace (owner, 2026-11-20).",
+ "swaps": [
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:0800E2",
+   "old_edid": "NorTentSmall",
+   "new": "Black Marsh.esm:2001F3",
+   "new_edid": "01smallgreentent",
+   "old_size": [
+    269,
+    268,
+    181
+   ],
+   "new_size": [
+    328,
+    218,
+    187
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "small tent: the Black Marsh small tent, the same canvas size (Black Marsh.esm)"
+  },
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:085FE4",
+   "old_edid": "NorTentSmallSnow",
+   "new": "Black Marsh.esm:2001F3",
+   "new_edid": "01smallgreentent",
+   "old_size": [
+    269,
+    268,
+    181
+   ],
+   "new_size": [
+    328,
+    218,
+    187
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "small tent: the Black Marsh small tent, the same canvas size (Black Marsh.esm)"
+  },
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:0BE2A2",
+   "old_edid": "ImperialTentSmallSnow",
+   "new": "Black Marsh.esm:2001F3",
+   "new_edid": "01smallgreentent",
+   "old_size": [
+    328,
+    218,
+    187
+   ],
+   "new_size": [
+    328,
+    218,
+    187
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "small tent: the Black Marsh small tent, the same canvas size (Black Marsh.esm)"
+  },
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:0800DE",
+   "old_edid": "NorTentLarge",
+   "new": "Black Marsh.esm:2001EE",
+   "new_edid": "01greentent",
+   "old_size": [
+    585,
+    457,
+    242
+   ],
+   "new_size": [
+    410,
+    583,
+    318
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "large tent: the Black Marsh large tent, a little shorter and longer"
+  },
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:0EA068",
+   "old_edid": "NorTentLargeSnow",
+   "new": "Black Marsh.esm:2001EE",
+   "new_edid": "01greentent",
+   "old_size": [
+    585,
+    457,
+    242
+   ],
+   "new_size": [
+    410,
+    583,
+    318
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "large tent: the Black Marsh large tent, a little shorter and longer"
+  },
+  {
+   "kind": "tent",
+   "old": "Skyrim.esm:0BE2A3",
+   "old_edid": "ImperialTentLargeSnow",
+   "new": "Black Marsh.esm:2001EE",
+   "new_edid": "01greentent",
+   "old_size": [
+    410,
+    583,
+    318
+   ],
+   "new_size": [
+    410,
+    583,
+    318
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "large tent: the Black Marsh large tent, a little shorter and longer"
+  },
+  {
+   "kind": "lantern",
+   "old": "Skyrim.esm:1097E7",
+   "old_edid": "RTLampPost01",
+   "new": "Journey to Baan Malur.esp:0489DF",
+   "new_edid": "SOMRLanternPost",
+   "old_size": [
+    32,
+    136,
+    321
+   ],
+   "new_size": [
+    130,
+    102,
+    405
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "street lamp post: a wooden lantern post of the Dunmer, the same height class; Riften's lamp post is Nordic"
+  },
+  {
+   "kind": "lantern",
+   "old": "Skyrim.esm:093A89",
+   "old_edid": "WHfirebrazier01",
+   "new": "King of the Murkmire.esp:056D2E",
+   "new_edid": "XanmeerBrazier03",
+   "old_size": [
+    114,
+    114,
+    167
+   ],
+   "new_size": [
+    98,
+    98,
+    132
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "fire brazier: King of the Murkmire's stone fire bowl on its foot (Xanmeer, the old stone of the marsh), the same bowl size"
+  },
+  {
+   "kind": "lantern",
+   "old": "Skyrim.esm:08278D",
+   "old_edid": "WRBrazier01",
+   "new": "King of the Murkmire.esp:056D2E",
+   "new_edid": "XanmeerBrazier03",
+   "old_size": [
+    82,
+    80,
+    121
+   ],
+   "new_size": [
+    98,
+    98,
+    132
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "fire brazier: King of the Murkmire's stone fire bowl on its foot (Xanmeer, the old stone of the marsh), the same bowl size"
+  },
+  {
+   "kind": "lantern",
+   "old": "Journey to Baan Malur.esp:0EDB0D",
+   "old_edid": "RedoranBrazierAsh",
+   "new": "King of the Murkmire.esp:056D2E",
+   "new_edid": "XanmeerBrazier03",
+   "old_size": [
+    116,
+    115,
+    151
+   ],
+   "new_size": [
+    98,
+    98,
+    132
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "fire brazier: King of the Murkmire's stone fire bowl on its foot (Xanmeer, the old stone of the marsh), the same bowl size"
+  },
+  {
+   "kind": "lantern",
+   "old": "Journey to Baan Malur.esp:03DD74",
+   "old_edid": "RedoranBrazier",
+   "new": "King of the Murkmire.esp:056D2E",
+   "new_edid": "XanmeerBrazier03",
+   "old_size": [
+    116,
+    115,
+    151
+   ],
+   "new_size": [
+    98,
+    98,
+    132
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "fire brazier: King of the Murkmire's stone fire bowl on its foot (Xanmeer, the old stone of the marsh), the same bowl size"
+  },
+  {
+   "kind": "door",
+   "old": "Skyrim.esm:0A56FF",
+   "old_edid": "RiftenDoor02",
+   "new": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+   "new_edid": "CIPHTBMVillageHutDoorLoad",
+   "old_size": [
+    127,
+    14,
+    176
+   ],
+   "new_size": [
+    116,
+    10,
+    181
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "plank house door: the arched wooden door of an Argonian village hut, the same leaf size"
+  },
+  {
+   "kind": "door",
+   "old": "Skyrim.esm:04D6ED",
+   "old_edid": "RiftenDoorLoad01",
+   "new": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+   "new_edid": "CIPHTBMVillageHutDoorLoad",
+   "old_size": [
+    128,
+    39,
+    176
+   ],
+   "new_size": [
+    116,
+    10,
+    181
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "plank house door: the arched wooden door of an Argonian village hut, the same leaf size"
+  },
+  {
+   "kind": "door",
+   "old": "Skyrim.esm:0453D8",
+   "old_edid": "SHouseDoor02",
+   "new": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+   "new_edid": "CIPHTBMVillageHutDoorLoad",
+   "old_size": [
+    112,
+    7,
+    185
+   ],
+   "new_size": [
+    116,
+    10,
+    181
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "plank house door: the arched wooden door of an Argonian village hut, the same leaf size"
+  },
+  {
+   "kind": "door",
+   "old": "Skyrim.esm:029CB0",
+   "old_edid": "FarmhouseLDoor01",
+   "new": "King of the Murkmire.esp:093D0D",
+   "new_edid": "MudHutLDoor02",
+   "old_size": [
+    95,
+    45,
+    176
+   ],
+   "new_size": [
+    96,
+    29,
+    176
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "farm house door: King of the Murkmire's mud-hut door, the same leaf size"
+  },
+  {
+   "kind": "door",
+   "old": "Skyrim.esm:012EB1",
+   "old_edid": "FarmhouseDoor01",
+   "new": "King of the Murkmire.esp:093D0D",
+   "new_edid": "MudHutLDoor02",
+   "old_size": [
+    95,
+    12,
+    176
+   ],
+   "new_size": [
+    96,
+    29,
+    176
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "farm house door: King of the Murkmire's mud-hut door, the same leaf size"
+  },
+  {
+   "kind": "shrine",
+   "old": "Skyrim.esm:100780",
+   "old_edid": "ShrineofTalos",
+   "new": "Skyrim.esm:0D9881",
+   "new_edid": "ShrineofDibella",
+   "old_size": [
+    30,
+    30,
+    42
+   ],
+   "new_size": [
+    31,
+    30,
+    55
+   ],
+   "keeps_function": true,
+   "looked": true,
+   "why": "Talos shrine: the shrine of Dibella, the Nine goddess the Kothringi and Gideon keep (story/lore/regions/secondary-settlements.md), the same size; Talos is the Nords' (decision 0006)"
+  }
+ ]
+}

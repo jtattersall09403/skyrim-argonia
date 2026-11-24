@@ -27,6 +27,10 @@ Work from the promise list (`promises.jsonl`, made by `place-plan`): each row sh
   footprint or a prune left out (a gate with no fence or wall either side, a gatepost, a hitching rail with no road,
   a sign for a pruned shop). `look delete <thing>`; a whole structure goes with its doors, rooms and what hangs on it.
   After each prune, look at what stood with it for such orphans.
+- **Swap**: keep what is nearly fine and take an easy swap of a Nordic piece for a held native one of like size and
+  function: the baseline's `draft.replace` already holds the swap table's rows (`swaps.json`, seeded by `place-plan`);
+  a boat stop's boats are the travel network's native ones (`io.stop_boats <place>`: reed-covered plank river boats,
+  the 25 m barge for a ferry or freight stop); add a row to the table when a swap serves every place, never laboriously replace a piece.
 - **Move**: what belongs on our ground somewhere else in the place: boats, jetty and weirs to our creek; a shell that
   hides the Hist's pool. A unit moves whole (`look move <unit> dx dy dz`), then is seated (`place-site`).
 - **Add**: what the record and stories need that the source lacks: a building and its rooms, a cage, a jar stack, a
