@@ -500,7 +500,8 @@ export class EditLog {
       const op = rebaseOp(this.model, raw);
       // an op of a note the agent answered on its row, which no longer fits: the answer already made the row what
       // the op makes it, so it is kept as no change (edits.py apply)
-      try { applyOp(this.model, op); } catch (e) { if (answeredNote(this.model, raw)) continue; err = e; break; }
+      // (kept in his history as his: undoing it undoes what it did, which the answer had already made)
+      try { applyOp(this.model, op); } catch (e) { if (!answeredNote(this.model, raw)) { err = e; break; } this.ops.push(raw); this.n = Math.max(this.n, raw.n || 0); continue; }
       this.ops.push(op); this.n = Math.max(this.n, op.n || 0);
     }
     this.cursor = this.ops.length; this.emit('load', this.ops); return err;

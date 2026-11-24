@@ -55,6 +55,7 @@ test('an op of an answered note on a row the answer removed is kept as no change
     { n: 2, op: 'ref.remove', space: 'exterior', id: a, note_group: 'g8', before: { id: a, pos: [was.a[0] + 1, was.a[1], was.a[2]] } },
   ];
   assert.equal(log.load(ops, [{ id: 'g8', text: 'fix it' }]), null);
+  assert.equal(log.ops.length, 2, 'both of his ops stay in his history');
   assert.ok(!m.spaces.exterior.refs.get(a) || m.spaces.exterior.refs.get(a).removed);
 });
 
