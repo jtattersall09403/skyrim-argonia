@@ -124,7 +124,7 @@ function pick(id) {
   const m = $("#main"); m.replaceChildren();
   const head = el("section", { class: "panel" }, el("h2", { text: a.name }), el("p", { class: "muted", text: a.status, style: "margin:4px 0 0" }), el("p", { text: a.summary, style: "margin:8px 0 0;max-width:70ch" }),
     el("dl", { class: "kv" }, el("dt", { text: "Why make it" }), el("dd", {}, tagFor(a.need.verdict), document.createTextNode(" " + a.need.why)), el("dt", { text: "Lore" }), el("dd", { text: a.need.lore }), el("dt", { text: "Where it goes" }), el("dd", { text: a.need.use }),
-      el("dt", { text: "Brief" }), el("dd", { text: a.brief.length_m + " m long, " + a.brief.beam_m + " m wide; " + a.brief.material + ". None of: " + a.brief.no + "." }),
+      el("dt", { text: "Brief" }), el("dd", { text: a.brief.text }),
       el("dt", { text: "Fees" }), el("dd", { text: "About $" + a.fees.total.toFixed(2) + ". " + a.fees.note })));
   const view = el("section", { class: "panel" }, el("h3", { text: "The model" }), el("div", { id: "viewer" }, el("div", { id: "hud" }), el("div", { id: "hud2", hidden: "" }), el("div", { id: "split", hidden: "" }), el("div", { id: "pinhint", hidden: "" , text: "Click the spot on the model. Press Escape to cancel." })),
     el("div", { class: "bar", id: "models" }), el("div", { class: "bar", id: "cmp" }), el("div", { class: "bar", id: "modes" }), el("div", { id: "pinform" }));
@@ -173,7 +173,7 @@ function initViewer() {
   renderer.domElement.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY]; });
   renderer.domElement.addEventListener("pointerup", e => { if (!S.pinning || !R.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 5) return;
     const r0 = renderer.domElement.getBoundingClientRect(), r = S.compare ? { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height } : r0; if (e.clientX > r.left + r.width) return; const p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, cam);
-    const hit = rc.intersectObject(R.root, true)[0]; if (!hit) return;   // the real triangles of the model, never a box
+    const hit = rc.intersectObject(R.root, true).filter(h => !h.object.userData.overlay)[0]; if (!hit) return;   // the real triangles of the model, never a box
     const nrm = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : new THREE.Vector3(0, 1, 0);
     setPinning(false); startNote({ kind: "pin", field: "model", label: "A spot on " + modelLabel(S.model), model: S.model, point: hit.point.toArray().map(v => +v.toFixed(4)), normal: nrm.toArray().map(v => +v.toFixed(3)), camera: { position: cam.position.toArray().map(v => +v.toFixed(3)), target: ctl.target.toArray().map(v => +v.toFixed(3)) } }); });
   addEventListener("keydown", e => { if (e.key === "Escape") setPinning(false); });
@@ -188,7 +188,9 @@ function renderBars() {
     el("button", { class: "chip", "aria-pressed": String(S.scale), onclick: () => { S.scale = !S.scale; R.man.visible = R.man2.visible = S.scale; R.grid.visible = R.grid2.visible = S.scale; renderBars(); markModel(); }, text: "1.8 m figure and 1 m grid" }),
     el("button", { class: "btn", id: "pinbtn", onclick: () => setPinning(!S.pinning), text: "Pin a note on the model" }));
 }
-function place(root) { root.traverse(o => { if (o.isMesh) { o.userData.mat = o.material; o.material.side = THREE.DoubleSide; } });
+function place(root) { root.traverse(o => { if (!o.isMesh) return; const nm = (o.name || "") + " " + ((o.parent && o.parent.name) || "");
+    if (/door_plate|arrival/.test(nm)) { o.userData.overlay = true; o.material = new THREE.MeshBasicMaterial({ color: 0xff9628, transparent: true, opacity: /arrival/.test(nm) ? 0.9 : 0.45, depthWrite: false, side: THREE.DoubleSide }); return; }
+    o.userData.mat = o.material; o.material.side = THREE.DoubleSide; });
   const b = new THREE.Box3().setFromObject(root), c = b.getCenter(new THREE.Vector3()); root.position.y -= b.min.y; root.position.x -= c.x; root.position.z -= c.z; return b.getSize(new THREE.Vector3()); }
 function setCompare(id) { const was = !!S.compare; if (was !== !!id) { const k = id ? 1.7 : 1 / 1.7; R.cam.position.sub(R.ctl.target).multiplyScalar(k).add(R.ctl.target); } S.compare = id; $("#split").hidden = !id; $("#hud2").hidden = !id; if (R.root2) { R.scene2.remove(R.root2); R.root2 = null; } R.size(); renderBars(); markModel();
   if (!id) return; $("#hud2").textContent = "Loading " + modelLabel(id);
@@ -202,12 +204,13 @@ function loadModel(id) {
     if (S.model !== id) return; if (R.root) R.scene.remove(R.root); R.root = g.scene; R.scene.add(R.root);
     const s = place(R.root);      // stand every version on the ground at the middle, whatever frame it came in
     const mm = S.asset.measures[id] || {}; const dims = [s.x, s.y, s.z].sort((p, q) => q - p);
-    $("#hud").textContent = modelLabel(id) + " · " + (mm.triangles ? mm.triangles.toLocaleString() + " triangles · " : "") + dims[0].toFixed(2) + " m long";
-    R.man.position.set(-dims[0] * 0.25, 0, -(Math.max(s.z, 0.6) / 2 + 0.6)); R.man2.position.copy(R.man.position); R.ctl.target.set(0, s.y / 2, 0); const d = Math.max(dims[0], 1.5); R.cam.position.set(d * 0.95, d * 0.5, d * 0.95);
+    $("#hud").textContent = modelLabel(id) + " · " + (mm.triangles ? mm.triangles.toLocaleString() + " triangles · " : "") + dims[0].toFixed(2) + " m " + (s.y === dims[0] ? "tall" : "across");
+    R.man.position.set(-Math.max(s.x * 0.25, 0.55), 0, -(Math.max(s.z, 0.3) / 2 + 0.55)); R.man2.position.copy(R.man.position);
+    R.ctl.target.set(0, s.y / 2, 0); const d = 0.5 * Math.hypot(s.x, s.y, s.z) / Math.sin(16 * Math.PI / 180) * (S.compare ? 1.7 : 1) * 0.95; R.cam.position.set(d * 0.66, s.y / 2 + d * 0.36, d * 0.66);
     applyMode(); drawPins();
   }, undefined, () => { $("#hud").textContent = "This version could not be loaded."; });
 }
-function applyMode() { if (!R) return; for (const root of [R.root, R.root2]) if (root) root.traverse(o => { if (!o.isMesh) return;
+function applyMode() { if (!R) return; for (const root of [R.root, R.root2]) if (root) root.traverse(o => { if (!o.isMesh || o.userData.overlay) return;
   if (S.mode === "tex") o.material = o.userData.mat; else if (S.mode === "clay") o.material = new THREE.MeshStandardMaterial({ color: 0x9c978c, roughness: 0.95, side: THREE.DoubleSide }); else o.material = new THREE.MeshBasicMaterial({ color: 0xe9ede8, wireframe: true }); }); }
 function drawPins() { if (!R) return; while (R.pins.children.length) R.pins.remove(R.pins.children[0]);
   const all = S.notes.concat(...S.batches.map(b => b.notes || [])).filter(n => n.kind === "pin" && n.item === S.asset.id && n.model === S.model && n.point);

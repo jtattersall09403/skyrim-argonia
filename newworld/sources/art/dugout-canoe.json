@@ -10,70 +10,279 @@
   "lore": "Riverback country is \"a drowned marsh navigable by small rafts, canoes, and little else\"; personal rafts are \"the old ways\" and the default vehicle (story/lore/topics/material-culture.md, lines 95 to 106).",
   "use": "Moored at the 22 raft-master boat stops, and at fishing camps and creek landings. A static: boarding is a line of dialogue that fast-travels, so it needs no seat."
  },
- "brief": {"length_m": 4.5, "beam_m": 0.7, "material": "one swamp cypress log, hewn with an adze", "no": "paint, metal, ornament, rope or any other thin part"},
- "fees": {"note": "From Fal's list prices as read on 24 November, not from a bill.", "lines": [["3 reference images at 2K", 0.36], ["1 image edit (rope removed)", 0.12], ["2 Tripo P2 models, detailed texture", 2.40], ["2 Tripo H3.1 models, detailed texture", 0.80], ["1 material swatch at 2K", 0.12]], "total": 3.80},
+ "brief": {
+  "length_m": 4.5,
+  "beam_m": 0.7,
+  "material": "one swamp cypress log, hewn with an adze",
+  "no": "paint, metal, ornament, rope or any other thin part",
+  "text": "4.5 m long, 0.7 m wide; one swamp cypress log, hewn with an adze. None of: paint, metal, ornament, rope or any other thin part."
+ },
+ "fees": {
+  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "lines": [
+   [
+    "3 reference images at 2K",
+    0.36
+   ],
+   [
+    "1 image edit (rope removed)",
+    0.12
+   ],
+   [
+    "2 Tripo P2 models, detailed texture",
+    2.4
+   ],
+   [
+    "2 Tripo H3.1 models, detailed texture",
+    0.8
+   ],
+   [
+    "1 material swatch at 2K",
+    0.12
+   ]
+  ],
+  "total": 3.8
+ },
  "stages": [
-  {"id": "reference", "name": "1. Reference images", "verdict": "pass, after one change",
+  {
+   "id": "reference",
+   "name": "1. Reference images",
+   "verdict": "pass, after one change",
    "did": "Three reference images from one written brief (Fal, Nano Banana 2.1), plain grey background, three-quarter view from above so the hollow and one full side show.",
-   "measured": {"images": 3, "size_px": "2752 x 1536", "whole_object_in_frame": "3 of 3", "plain_background": "3 of 3"},
+   "measured": {
+    "images": 3,
+    "size_px": "2752 x 1536",
+    "whole_object_in_frame": "3 of 3",
+    "plain_background": "3 of 3"
+   },
    "looked": "All three read as a dugout. The second was chosen: the cleanest outline, blunt ends, the hollow fully visible. Each carried a rope as the brief asked, and that turned out to be the mistake (next stage).",
    "decision": "After the first generation the rope was edited out of the chosen image and nothing else changed. Lesson for the brief: no rope, cord or other thin part in a reference; thin parts are added by hand afterwards.",
-   "images": [["dugout-canoe.ref1.jpg", "Reference 1: rope hangs down the side"], ["dugout-canoe.ref2.jpg", "Reference 2: chosen"], ["dugout-canoe.ref3.jpg", "Reference 3: most character, but a hanging rope and a soft shadow"], ["dugout-canoe.ref2-norope.jpg", "Reference 2 with the rope edited out: the image the kept model was made from"]],
-   "requests": {"images": "google/nano-banana-2.1 01a20c8c-3a24-7c32-ba73-b091c797eeac", "edit": "google/nano-banana-2.1/edit 01a20c8f-9afc-77e1-afee-19c09f75e429"},
-   "prompt": "Game asset reference photo of a single dugout canoe carved from one swamp cypress log, about 4.5 metres long and 0.7 metres wide, empty, no people, no paddle, no water. Blunt rounded bow and stern, thick walls about 5 cm, the inside hollowed with visible adze chop marks, outside bark stripped, a shallow carved notch at the bow with one loop of frayed plant-fibre rope tied through it. Old, dark, weathered wet wood, grey-brown, a little green algae near the waterline, muted desaturated colours, worn edges, no ornament, no paint, no metal. Three-quarter view from slightly above so the whole hollow interior and one full side are visible, the entire canoe inside the frame with margin. Flat even diffuse studio lighting with no hard shadows and no highlights, plain mid-grey seamless background, nothing else in the picture."},
-  {"id": "try1", "name": "2. Generation, first try", "verdict": "thrown away",
+   "images": [
+    [
+     "dugout-canoe.ref1.jpg",
+     "Reference 1: rope hangs down the side"
+    ],
+    [
+     "dugout-canoe.ref2.jpg",
+     "Reference 2: chosen"
+    ],
+    [
+     "dugout-canoe.ref3.jpg",
+     "Reference 3: most character, but a hanging rope and a soft shadow"
+    ],
+    [
+     "dugout-canoe.ref2-norope.jpg",
+     "Reference 2 with the rope edited out: the image the kept model was made from"
+    ]
+   ],
+   "requests": {
+    "images": "google/nano-banana-2.1 01a20c8c-3a24-7c32-ba73-b091c797eeac",
+    "edit": "google/nano-banana-2.1/edit 01a20c8f-9afc-77e1-afee-19c09f75e429"
+   },
+   "prompt": "Game asset reference photo of a single dugout canoe carved from one swamp cypress log, about 4.5 metres long and 0.7 metres wide, empty, no people, no paddle, no water. Blunt rounded bow and stern, thick walls about 5 cm, the inside hollowed with visible adze chop marks, outside bark stripped, a shallow carved notch at the bow with one loop of frayed plant-fibre rope tied through it. Old, dark, weathered wet wood, grey-brown, a little green algae near the waterline, muted desaturated colours, worn edges, no ornament, no paint, no metal. Three-quarter view from slightly above so the whole hollow interior and one full side are visible, the entire canoe inside the frame with margin. Flat even diffuse studio lighting with no hard shadows and no highlights, plain mid-grey seamless background, nothing else in the picture."
+  },
+  {
+   "id": "try1",
+   "name": "2. Generation, first try",
+   "verdict": "thrown away",
    "did": "The chosen image went to two generators at once, Tripo P2 and Tripo H3.1, each asked for at most 20,000 triangles with a detailed texture.",
-   "measured_models": ["try1-p2", "try1-h31"],
+   "measured_models": [
+    "try1-p2",
+    "try1-h31"
+   ],
    "looked": "Both are plainly a dugout. On both, the rope became lumps of stray geometry: a yellow tangle at the bow on P2, and on H3.1 one lump at the bow and another in the middle of the floor. H3.1 also drew panel lines across the floor that are not in the reference.",
    "decision": "Thrown away. The numbers agreed with the eye: P2 came back in 287 separate pieces with 483 edges shared by more than two faces. Regenerate from a reference with no rope.",
-   "images": [["dugout-canoe.look-try1-p2.jpg", "Tripo P2, first try, six fixed views"], ["dugout-canoe.look-try1-h31.jpg", "Tripo H3.1, first try, six fixed views"]],
-   "models": ["try1-p2", "try1-h31"],
-   "requests": {"p2": "tripo3d/p2/image-to-3d 01a20c8d-2e51-7813-86bb-5d273d0b8306", "h31": "tripo3d/h3.1/image-to-3d 01a20c8d-384c-75c3-ad86-33fa44ba4dcf"}},
-  {"id": "try2", "name": "3. Generation, second try", "verdict": "pass: H3.1 kept",
+   "images": [
+    [
+     "dugout-canoe.look-try1-p2.jpg",
+     "Tripo P2, first try, six fixed views"
+    ],
+    [
+     "dugout-canoe.look-try1-h31.jpg",
+     "Tripo H3.1, first try, six fixed views"
+    ]
+   ],
+   "models": [
+    "try1-p2",
+    "try1-h31"
+   ],
+   "requests": {
+    "p2": "tripo3d/p2/image-to-3d 01a20c8d-2e51-7813-86bb-5d273d0b8306",
+    "h31": "tripo3d/h3.1/image-to-3d 01a20c8d-384c-75c3-ad86-33fa44ba4dcf"
+   }
+  },
+  {
+   "id": "try2",
+   "name": "3. Generation, second try",
+   "verdict": "pass: H3.1 kept",
    "did": "The same two generators, from the rope-free image.",
-   "measured_models": ["try2-p2", "try2-h31"],
+   "measured_models": [
+    "try2-p2",
+    "try2-h31"
+   ],
    "looked": "No stray lumps on either. P2 gives a slim, even boat shape with a mottled, pebbly surface that does not read as wood. H3.1 gives a chunkier hewn log with a flat-cut stern, a cracked rim and a surface that does read as carved wood. It came back turned at an angle in its own frame, which the next stage corrects.",
    "decision": "H3.1 kept: one closed piece with no open or shared edges, and the better look. P2 kept beside it as the alternative, since its hull is the more boat-like.",
-   "images": [["dugout-canoe.look-try2-h31.jpg", "Tripo H3.1, second try: kept"], ["dugout-canoe.look-try2-p2.jpg", "Tripo P2, second try: the alternative"]],
-   "models": ["try2-h31", "try2-p2"],
-   "requests": {"p2": "tripo3d/p2/image-to-3d 01a20c90-2f89-7ba0-8f14-e9fe3e1b5539", "h31": "tripo3d/h3.1/image-to-3d 01a20c90-3841-7412-a8e8-d530c2b6f94a"}},
-  {"id": "shape", "name": "4. Shaping", "verdict": "pass, with one open point",
+   "images": [
+    [
+     "dugout-canoe.look-try2-h31.jpg",
+     "Tripo H3.1, second try: kept"
+    ],
+    [
+     "dugout-canoe.look-try2-p2.jpg",
+     "Tripo P2, second try: the alternative"
+    ]
+   ],
+   "models": [
+    "try2-h31",
+    "try2-p2"
+   ],
+   "requests": {
+    "p2": "tripo3d/p2/image-to-3d 01a20c90-2f89-7ba0-8f14-e9fe3e1b5539",
+    "h31": "tripo3d/h3.1/image-to-3d 01a20c90-3841-7412-a8e8-d530c2b6f94a"
+   }
+  },
+  {
+   "id": "shape",
+   "name": "4. Shaping",
+   "verdict": "pass, with one open point",
    "did": "Turned to its own long axis, found from the real vertices; set upright by which side is the open one; scaled so the length is 4.5 m; stood on the ground with its middle at the origin.",
-   "measured_models": ["shaped"],
+   "measured_models": [
+    "shaped"
+   ],
    "looked": "Upright, level, reads as a hewn dugout from all six views. The hole at the bow survives.",
    "decision": "Open point: the beam is 1.18 m where the brief asked for 0.7 m. It is a wide, tub-like dugout. Narrowing it is one more step by hand if you want it slimmer.",
-   "images": [["dugout-canoe.look-shaped.jpg", "Shaped: aligned, upright, 4.5 m"]],
-   "models": ["shaped"]},
-  {"id": "clean", "name": "5. Clean-up", "verdict": "pass at the second setting",
+   "images": [
+    [
+     "dugout-canoe.look-shaped.jpg",
+     "Shaped: aligned, upright, 4.5 m"
+    ]
+   ],
+   "models": [
+    "shaped"
+   ]
+  },
+  {
+   "id": "clean",
+   "name": "5. Clean-up",
+   "verdict": "pass at the second setting",
    "did": "Checked for stray vertices, loose pieces, holes and bad edges (none on this model), then cut the triangle count while keeping the texture layout.",
-   "measured_models": ["cleaned-4000", "cleaned"],
+   "measured_models": [
+    "cleaned-4000",
+    "cleaned"
+   ],
    "looked": "At 4,000 triangles the rim turns visibly angular in the three-quarter view. At 8,000 the six views are hard to tell from the 19,978-triangle original.",
    "decision": "4,000 undone as too rough; 8,000 kept. For scale, the 29 m Imperial ship we hold is 12,324 triangles, so 8,000 is heavy for a 4.5 m boat. Getting lower without the angular rim means rebuilding the rim by hand, which the quick test did not do.",
-   "images": [["dugout-canoe.look-cleaned-4000.jpg", "4,000 triangles: rim too angular, undone"], ["dugout-canoe.look-cleaned.jpg", "8,000 triangles: kept"], ["dugout-canoe.look-cleaned-wire.jpg", "The triangles at 4,000"]],
-   "models": ["cleaned"]},
-  {"id": "surface", "name": "6. Surface", "verdict": "open: your call",
+   "images": [
+    [
+     "dugout-canoe.look-cleaned-4000.jpg",
+     "4,000 triangles: rim too angular, undone"
+    ],
+    [
+     "dugout-canoe.look-cleaned.jpg",
+     "8,000 triangles: kept"
+    ],
+    [
+     "dugout-canoe.look-cleaned-wire.jpg",
+     "The triangles at 4,000"
+    ]
+   ],
+   "models": [
+    "cleaned"
+   ]
+  },
+  {
+   "id": "surface",
+   "name": "6. Surface",
+   "verdict": "open: your call",
    "did": "Three surfaces on the same cleaned shape. A: the generator's own texture, one picture for the whole boat. B: a repeating hewn-cypress material made once from a Fal swatch, wrapped on by box projection from the real face normals at 1,280 pixels per metre, grain along the hull. C: the same material, with shading and wear carried as vertex colour sampled from the generator's texture, which is Skyrim's own way to darken and tint.",
-   "measured": {"A_pixels_per_metre": "about 260 (4,096 px over 15.7 m2 of surface, if the layout were fully used)", "B_and_C_pixels_per_metre": 1280, "material_mean_brightness": 0.347, "material_mean_saturation": 0.146, "ranges_measured_from_the_game": "not yet: no level 0 sheet exists"},
+   "measured": {
+    "A_pixels_per_metre": "about 260 (4,096 px over 15.7 m2 of surface, if the layout were fully used)",
+    "B_and_C_pixels_per_metre": 1280,
+    "material_mean_brightness": 0.347,
+    "material_mean_saturation": 0.146,
+    "ranges_measured_from_the_game": "not yet: no level 0 sheet exists"
+   },
    "looked": "A has the most character: a dark hollow, a pale worn rim, cracks, a green stain. B reads as wood with the grain running the right way, but flat and pale, and it loses the rim, the cracks and the stain. The first attempt at B was worse, because the material was made to repeat by mirroring and showed kaleidoscope patterns; it was remade by cross-fading its edges into its own middle. C gets the dark hollow and underside back and sits between the two.",
    "decision": "Not settled, and it bears on the plan. The shared material gives sharpness and sameness across a set; the generated texture gives the character. On this object the generated texture looks better. C suggests the way through: shared material for the surface, the generation's shading carried on top. Look at all three and say which direction you want.",
-   "images": [["dugout-canoe.look-cleaned.jpg", "A: the generator's own texture"], ["dugout-canoe.look-shared.jpg", "B: shared repeating material"], ["dugout-canoe.look-shared-shaded.jpg", "C: shared material with shading as vertex colour"], ["material.hewn-cypress.jpg", "The repeating hewn-cypress material"]],
-   "models": ["cleaned", "shared", "shared-shaded"],
-   "requests": {"swatch": "google/nano-banana-2.1 01a20c95-1a85-7791-9786-ff52216a39f2"}},
-  {"id": "game", "name": "7. Into the game", "verdict": "not done",
+   "images": [
+    [
+     "dugout-canoe.look-cleaned.jpg",
+     "A: the generator's own texture"
+    ],
+    [
+     "dugout-canoe.look-shared.jpg",
+     "B: shared repeating material"
+    ],
+    [
+     "dugout-canoe.look-shared-shaded.jpg",
+     "C: shared material with shading as vertex colour"
+    ],
+    [
+     "material.hewn-cypress.jpg",
+     "The repeating hewn-cypress material"
+    ]
+   ],
+   "models": [
+    "cleaned",
+    "shared",
+    "shared-shaded"
+   ],
+   "requests": {
+    "swatch": "google/nano-banana-2.1 01a20c95-1a85-7791-9786-ff52216a39f2"
+   }
+  },
+  {
+   "id": "game",
+   "name": "7. Into the game",
+   "verdict": "not done",
    "did": "Nothing yet. This is the proof in the proposal, not part of the quick test.",
    "looked": "",
    "decision": "Still owed: Skyrim's model format; a collision shape taken from the real hull so a player can stand in it; the colour and brightness ranges measured from the game; a distant-view model; placing it at a boat stop; your look in game.",
-   "images": [], "models": []}
+   "images": [],
+   "models": []
+  }
  ],
  "models": [
-  {"id": "try1-p2", "label": "Try 1, Tripo P2", "state": "thrown away"},
-  {"id": "try1-h31", "label": "Try 1, Tripo H3.1", "state": "thrown away"},
-  {"id": "try2-p2", "label": "Try 2, Tripo P2", "state": "alternative"},
-  {"id": "try2-h31", "label": "Try 2, Tripo H3.1, as generated", "state": "kept"},
-  {"id": "shaped", "label": "Shaped, 4.5 m", "state": "kept"},
-  {"id": "cleaned", "label": "A: cleaned, generator texture", "state": "candidate"},
-  {"id": "shared", "label": "B: shared material", "state": "candidate"},
-  {"id": "shared-shaded", "label": "C: shared material, shaded", "state": "candidate"}
+  {
+   "id": "try1-p2",
+   "label": "Try 1, Tripo P2",
+   "state": "thrown away"
+  },
+  {
+   "id": "try1-h31",
+   "label": "Try 1, Tripo H3.1",
+   "state": "thrown away"
+  },
+  {
+   "id": "try2-p2",
+   "label": "Try 2, Tripo P2",
+   "state": "alternative"
+  },
+  {
+   "id": "try2-h31",
+   "label": "Try 2, Tripo H3.1, as generated",
+   "state": "kept"
+  },
+  {
+   "id": "shaped",
+   "label": "Shaped, 4.5 m",
+   "state": "kept"
+  },
+  {
+   "id": "cleaned",
+   "label": "A: cleaned, generator texture",
+   "state": "candidate"
+  },
+  {
+   "id": "shared",
+   "label": "B: shared material",
+   "state": "candidate"
+  },
+  {
+   "id": "shared-shaded",
+   "label": "C: shared material, shaded",
+   "state": "candidate"
+  }
  ],
  "default_model": "cleaned"
 }

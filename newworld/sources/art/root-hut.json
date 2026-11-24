@@ -1,0 +1,184 @@
+{
+ "id": "root-hut",
+ "name": "Root-grown hut",
+ "kind": "Building shell with a door plate",
+ "status": "Example. Exterior shell generated, scaled by its door, cleaned, and given a door plate, as a standard 3D model. No interior, not yet in Skyrim's model format and not in the game.",
+ "summary": "A one-room dwelling of the interior, trained from living root and limb. It shows the buildings route for an organic shape: one generated shell, door included, with the door then found on the real geometry and covered by a plate that would carry the prompt.",
+ "need": {
+  "verdict": "make",
+  "why": "Root pieces are held (ramps, roots, Hist trunks) but no root-grown hut was found in any mod we hold, by name or by looking. The Root-Folk's 19 places have 3 source interiors between them for 22 households.",
+  "lore": "\"The interior does not build a house, it trains one. Root and canopy limb are grafted, bent and tied over years into wall, floor, stair and threshold while still alive\"; sealed with Hist-sap resin, roofed in bark shingle and layered canopy leaf, never reed thatch, no stone (story/lore/topics/material-culture.md, the grown-root kit).",
+  "use": "Swapped in for a source building at the adapting stage of a Root-Folk place draft, its door on the source door's position, with an interior behind it."
+ },
+ "brief": {
+  "text": "A rounded, slightly lopsided dome of thick grafted roots, gaps sealed with amber sap, a roof of bark shingle and broad leaves, one low arched plank door, two round sap windows. No stone, thatch, stilts, metal, ropes, hanging things or thin root tendrils."
+ },
+ "fees": {
+  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "lines": [
+   [
+    "2 reference images at 2K",
+    0.24
+   ],
+   [
+    "1 image edit (painted concept to a photograph, tendrils removed)",
+    0.12
+   ],
+   [
+    "1 Tripo H3.1 model",
+    0.4
+   ],
+   [
+    "1 Tripo P2 model",
+    1.2
+   ]
+  ],
+  "total": 1.96
+ },
+ "stages": [
+  {
+   "id": "reference",
+   "name": "1. Reference images",
+   "verdict": "pass, after one change",
+   "did": "Two images from one brief, three-quarter view from the front. Both came back as painted concept art with thin root tendrils spreading over a patch of ground. The better one was then edited into a photograph of the same building with the tendrils and ground removed.",
+   "measured": {
+    "images": 2,
+    "size_px": "2400 x 1792",
+    "whole_object_in_frame": "2 of 2",
+    "photographic": "0 of 2 before the edit"
+   },
+   "looked": "Both read at once as a root-grown hut and match the lore: grafted roots, sap windows, bark and leaf roof, no stone. The first shows its plank door clearly; the second half hides it. As paintings they would bake a painted look into the model, and the tendrils are the canoe's rope again.",
+   "decision": "Reference 1, edited. Lesson for the brief: ask for a photograph of a physical object by name, and for a flat clean base.",
+   "images": [
+    [
+     "root-hut.ref1.jpg",
+     "Reference 1: chosen, painted"
+    ],
+    [
+     "root-hut.ref2.jpg",
+     "Reference 2: door half hidden"
+    ],
+    [
+     "root-hut.ref1-photo.jpg",
+     "Reference 1 as a photograph, tendrils and ground removed: the image the model was made from"
+    ]
+   ],
+   "requests": {
+    "images": "google/nano-banana-2.1 01a20ca3-6207-7e91-bca6-4ff7905a9aeb",
+    "edit": "google/nano-banana-2.1/edit 01a20ca4-44d0-7b60-bd41-520b797b7a8e"
+   }
+  },
+  {
+   "id": "generation",
+   "name": "2. Generation",
+   "verdict": "pass at the first try: H3.1 kept",
+   "did": "The edited image to Tripo H3.1 and Tripo P2, each asked for at most 40,000 triangles.",
+   "measured_models": [
+    "try-h31",
+    "try-p2"
+   ],
+   "looked": "Both are the hut, from every side: the generator invented a believable back with more roots and sap windows. H3.1 is closed underneath. P2 came back as a hollow shell open at the base, in 226 pieces, with a glossier, wetter look.",
+   "decision": "H3.1 kept: nearly one closed piece (4 open edges against 7,223).",
+   "images": [
+    [
+     "root-hut.look-try-h31.jpg",
+     "Tripo H3.1: kept"
+    ],
+    [
+     "root-hut.look-try-p2.jpg",
+     "Tripo P2: hollow and in pieces"
+    ]
+   ],
+   "models": [
+    "try-h31",
+    "try-p2"
+   ],
+   "requests": {
+    "h31": "tripo3d/h3.1/image-to-3d 01a20ca5-4b89-7212-85bf-4ff5b3b250ee",
+    "p2": "tripo3d/p2/image-to-3d 01a20ca5-52fb-7f21-bc90-efd35fb9574a"
+   }
+  },
+  {
+   "id": "shape",
+   "name": "3. Shaping and clean-up",
+   "verdict": "pass, with one open point",
+   "did": "Two loose pieces removed. The whole shell was scaled so that its door is 2.3 m high, since a building's size has to follow its door, then turned so the door faces forward and stood on the ground. Triangles cut from 39,104 to 14,000 with the texture layout kept.",
+   "measured_models": [
+    "shell"
+   ],
+   "looked": "The cut to 14,000 triangles does not show from the six views. At this size the hut is 8.9 m across and 5.5 m high: larger than the 6 m of the brief, but in line with King of the Murkmire's mud hut, which is about 10 m by 13 m.",
+   "decision": "Kept. Open point: one texture over a building this size gives about 240 pixels per metre, which is soft at arm's length. This is the size problem the plan answers with repeating materials; it has not been done on this example, so walk up to the wall in the viewer and judge it.",
+   "images": [
+    [
+     "root-hut.look-shell.jpg",
+     "Shaped and cleaned: 14,000 triangles"
+    ],
+    [
+     "root-hut.look-shell-wire.jpg",
+     "The triangles"
+    ]
+   ],
+   "models": [
+    "shell"
+   ]
+  },
+  {
+   "id": "door",
+   "name": "4. The door plate",
+   "verdict": "pass on the third attempt, with one open point",
+   "did": "The painted door was found on the real geometry: the largest flat patch facing outward at ground level, then grown over the neighbouring faces at the same depth to take in the whole door. A plate was made to that outline, 2 cm thick and 4 cm in front of the door, and an arrival point set 1.3 m out. In the game the plate would be invisible and carry the prompt; here it is drawn in orange.",
+   "measured": {
+    "door_width_m": 1.21,
+    "door_height_m": 2.31,
+    "plate_outline_points": 19,
+    "plate_in_front_of_door_m": 0.04,
+    "arrival_point_in_front_m": 1.3,
+    "vanilla_house_doors_m": "1.4 to 1.8 wide, 2.5 to 2.7 high"
+   },
+   "looked": "First attempt: the plate covered a single plank, 0.73 m wide, because the grooves between planks broke the flat patch. Second attempt, with looser limits: the plate landed on a flat stretch of wall on another side of the hut, nowhere near the door. Third attempt, growing outward from the strict match: the plate sits in the doorway and reaches the ground.",
+   "decision": "Kept. Open point: the door's cross-bar and sill stand out further than the plate, so a crosshair aimed low would meet the bar first. The plate should stand in front of the furthest part of the doorway; that is the next hand step. The door is also narrower and lower than a vanilla house door.",
+   "images": [
+    [
+     "root-hut.look-door.jpg",
+     "The shell with its door plate and arrival point in orange"
+    ]
+   ],
+   "models": [
+    "shell-door"
+   ]
+  },
+  {
+   "id": "game",
+   "name": "5. Interior and the game",
+   "verdict": "not done",
+   "did": "Nothing yet.",
+   "looked": "",
+   "decision": "Still owed: a matching interior of one or more rooms; collision a player can walk against; a distant-view model; repeating bark, sap and shingle materials so the wall is sharp up close; Skyrim's model format; one swap into a Root-Folk place draft; your look in game.",
+   "images": [],
+   "models": []
+  }
+ ],
+ "models": [
+  {
+   "id": "try-h31",
+   "label": "Tripo H3.1, as generated",
+   "state": "kept"
+  },
+  {
+   "id": "try-p2",
+   "label": "Tripo P2, as generated",
+   "state": "alternative"
+  },
+  {
+   "id": "shell",
+   "label": "Shell, 8.9 m across",
+   "state": "candidate"
+  },
+  {
+   "id": "shell-door",
+   "label": "Shell with door plate",
+   "state": "candidate"
+  }
+ ],
+ "default_model": "shell-door"
+}

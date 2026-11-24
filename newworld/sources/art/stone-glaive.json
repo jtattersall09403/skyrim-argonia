@@ -1,0 +1,169 @@
+{
+ "id": "stone-glaive",
+ "name": "Stone-Sleeper glaive",
+ "kind": "Weapon, acts as a halberd",
+ "status": "Example. Head generated, shaft made by hand to the donor's measurements, assembled as a standard 3D model. Not yet in Skyrim's model format and not in the game.",
+ "summary": "A halberd for the Stone-Sleepers of Tsonac: a knapped obsidian blade with a flint hook, bound into a split hardwood socket. It shows the 'acts like an existing thing' route for a long weapon: only the head is generated, and the rest is built to the donor halberd's own numbers.",
+ "need": {
+  "verdict": "make, pending the index",
+  "why": "The Stone-Sleepers are told apart by glaives and volcanic glass, and their signature weapon is the halberd in obsidian and flint (docs/design/items.md, the tribe table). Every halberd in our gear tables is Animated Armoury's iron, steel or Imperial make, or a Khajiit or Dunmer one. No halberd or glaive in a Black Marsh make was found by name; this has not yet been checked by looking, so it stays provisional.",
+  "lore": "\"You can tell them by glaives and volcanic glass\" (docs/design/items.md); obsidian and flint are the tribe's materials on the items ladder.",
+  "use": "Carried by Stone-Sleeper warriors. It copies Animated Armoury's halberd record, so it swings as a battleaxe with that record's own keywords, sounds and reach."
+ },
+ "brief": {
+  "text": "Head only from the generator: a leaf-shaped obsidian blade about 45 cm long with a flint hook, in a split hardwood socket bound with sinew, on a short cut stub. No long shaft, no loose cord, no feathers. The shaft is made by hand."
+ },
+ "fees": {
+  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "lines": [
+   [
+    "2 reference images at 2K",
+    0.24
+   ],
+   [
+    "1 Tripo H3.1 model",
+    0.4
+   ],
+   [
+    "1 Tripo P2 model",
+    1.2
+   ]
+  ],
+  "total": 1.84
+ },
+ "stages": [
+  {
+   "id": "reference",
+   "name": "1. Reference images",
+   "verdict": "pass",
+   "did": "Two images of the head alone from one brief, flat side view. The brief carried the canoe's lesson: no shaft, no loose cord, bindings wound flat.",
+   "measured": {
+    "images": 2,
+    "size_px": "1792 x 2400",
+    "whole_object_in_frame": "1 of 2"
+   },
+   "looked": "Both read as a knapped obsidian glaive head with a flint hook and three sinew bands. In the second the stub runs out of the frame, so the first was chosen.",
+   "decision": "Reference 1.",
+   "images": [
+    [
+     "stone-glaive.ref1.jpg",
+     "Reference 1: chosen"
+    ],
+    [
+     "stone-glaive.ref2.jpg",
+     "Reference 2: stub cropped by the frame"
+    ]
+   ],
+   "requests": {
+    "images": "google/nano-banana-2.1 01a20ca2-c554-7aa3-a68c-b6c143fbcdbe"
+   },
+   "prompt": "Game asset reference photo of the HEAD ONLY of a tribal swamp halberd (a glaive), no long shaft. A broad, heavy, leaf-shaped blade about 45 cm long knapped from black volcanic glass (obsidian), its two edges flaked into shallow scallops, a dull grey band of unflaked stone down the middle. Behind the blade a short backward-pointing hook spike of pale flint. The blade is seated in the split end of a thick dark hardwood socket and bound with dark sinew cord wound flat and tight in three wide bands, no loose ends, no dangling strands, no feathers, no tassels. Below the socket only a short stub of round wooden shaft about 15 cm long, cut off flat. Old, used, muted colours, matte, no shine, no ornament, no metal. Exact flat side view, blade pointing up, the whole object inside the frame with margin. Flat even diffuse lighting, no shadows, no highlights, plain mid-grey seamless background, nothing else in the picture."
+  },
+  {
+   "id": "generation",
+   "name": "2. Generation",
+   "verdict": "pass at the first try: H3.1 kept",
+   "did": "The chosen image to Tripo H3.1 and Tripo P2, each asked for at most 12,000 triangles.",
+   "measured_models": [
+    "head-h31",
+    "head-p2"
+   ],
+   "looked": "Both are a clean glaive head with no stray lumps: the no-thin-parts brief held. H3.1 has the fuller blade, a clear flint hook and distinct sinew bands. P2 is thinner, its hook is small, and it came in six pieces.",
+   "decision": "H3.1 kept: one closed piece, the stronger look.",
+   "images": [
+    [
+     "stone-glaive.look-head-h31.jpg",
+     "Tripo H3.1 head: kept"
+    ],
+    [
+     "stone-glaive.look-head-p2.jpg",
+     "Tripo P2 head: the alternative"
+    ]
+   ],
+   "models": [
+    "head-h31",
+    "head-p2"
+   ],
+   "requests": {
+    "h31": "tripo3d/h3.1/image-to-3d 01a20ca4-c735-7b01-a8e3-c41416ae13be",
+    "p2": "tripo3d/p2/image-to-3d 01a20ca4-d32a-7a42-b3da-237c33e40c25"
+   }
+  },
+  {
+   "id": "donor",
+   "name": "3. The donor's measurements",
+   "verdict": "pass",
+   "did": "Animated Armoury's iron halberd model was read on the build machine: where its grip, butt and tip sit, which way the blade lies. These numbers are the target; nothing of the donor's shape or texture is used.",
+   "measured": {
+    "donor": "Animated Armoury IronHalberd.nif",
+    "length_m": 2.257,
+    "grip": "at the model's origin",
+    "butt_below_grip_m": 0.433,
+    "tip_above_grip_m": 1.824,
+    "blade_lies_in": "the model's X axis, 0.40 m across",
+    "thickness_m": 0.066,
+    "triangles": 2409
+   },
+   "looked": "Not drawn: the donor is a mod's model and stays off this page. Its numbers are shown as the target in the next stage.",
+   "decision": "Our weapon must put its grip at the origin, its butt 0.43 m below and its tip 1.82 m above, with the blade's flat faces the same way round, so every animation, the sheathed position and the reach in the record fit without change.",
+   "images": [],
+   "models": []
+  },
+  {
+   "id": "shape",
+   "name": "4. Shaping and clean-up",
+   "verdict": "pass, with two open points",
+   "did": "The head was turned so the blade lies as the donor's does, scaled to 0.80 m, and set with its tip where the donor's tip is. Its triangles were cut from 11,916 to 3,000 with the texture layout kept. The shaft was made by hand from simple shapes: a slightly uneven, very slightly bowed pole from the donor's butt up into the head's stub, its radius taken from the stub's real vertices, with a rounded butt.",
+   "measured": {
+    "length_m": "2.263 (donor 2.257)",
+    "tip_above_grip_m": "1.823 (donor 1.824)",
+    "butt_below_grip_m": "0.441 (donor 0.433)",
+    "grip_at_origin": "yes",
+    "blade_width_m": "0.16 (donor 0.40)",
+    "thickness_m": "0.09 (donor 0.07)",
+    "triangles": "3,714: head 3,000, shaft 714 (donor 2,409)",
+    "shaft_radius_m": "0.029, from the stub's 0.030",
+    "shaft_wood_colour": "taken from the stub's own texture (70, 49, 38)"
+   },
+   "looked": "Reads as a glaive from the front, side and three-quarter views, and the head survives the cut to 3,000 triangles. The first shaft was wrong: its wood was a patch copied from the head's texture, and the patch had caught black obsidian flakes, which repeated up the pole. It was redone as plain wood grain in the stub's measured colour.",
+   "decision": "Kept. Open points: the shaft is a bare pole, a shade redder than the dark socket, and wants a sinew grip wrap and some wear by hand; and the blade is much narrower than the donor's axe head, which is right for a glaive but should be seen in a hand before it is called done.",
+   "images": [
+    [
+     "stone-glaive.look-assembled.jpg",
+     "Assembled: front, side, three-quarter, and both ends close"
+    ]
+   ],
+   "models": [
+    "assembled"
+   ]
+  },
+  {
+   "id": "game",
+   "name": "5. Into the game",
+   "verdict": "not done",
+   "did": "Nothing yet.",
+   "looked": "",
+   "decision": "Still owed: the swap into a copy of the donor's model file so its tags and drop collision are kept; a copy of the donor's record with only the model changed; the game's measured colour ranges; your look at it in a Stone-Sleeper's hand.",
+   "images": [],
+   "models": []
+  }
+ ],
+ "models": [
+  {
+   "id": "head-h31",
+   "label": "Head, Tripo H3.1, as generated",
+   "state": "kept"
+  },
+  {
+   "id": "head-p2",
+   "label": "Head, Tripo P2, as generated",
+   "state": "alternative"
+  },
+  {
+   "id": "assembled",
+   "label": "Assembled glaive, 2.26 m",
+   "state": "candidate"
+  }
+ ],
+ "default_model": "assembled"
+}
