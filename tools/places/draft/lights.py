@@ -155,9 +155,15 @@ def station_lights(place_id: str, rows: list[dict], stations: dict, own=frozense
                     "seat": {"mode": "on", "on": st["id"], "dz": w}, "cluster": st.get("cluster"),
                     "why": f"the {a['station']}'s fire light, as Skyrim's forges carry it"})
     # every other light source we add (one the measured table pairs with a light) carries its light the same way
-    lit_on = {(r.get("seat") or {}).get("on") for r in rows if r.get("kind") == "light" and r["id"] not in own}
+    lit = [r for r in rows if r.get("kind") == "light" and r["id"] not in own and not r.get("removed")]
+    lit_on = {(r.get("seat") or {}).get("on") for r in lit}
+    # a light seated on nothing (a lamp set copied whole with its light) is its fixture's by nearness, as a source
+    # light is (`fixtures`): an added source with such a light within BIND is already lit
+    free = [r["pos"] for r in lit if not (r.get("seat") or {}).get("on")]
     for r in rows:
         if r.get("src") or r.get("layer") != "place" or r["id"] in done or r["id"] in lit_on or r.get("removed"):
+            continue
+        if r.get("kind") != "light" and any(math.dist(r["pos"], p) <= BIND for p in free):
             continue
         row = light_row(r, io.mint(place_id, "light", r["id"]))
         if row is not None:

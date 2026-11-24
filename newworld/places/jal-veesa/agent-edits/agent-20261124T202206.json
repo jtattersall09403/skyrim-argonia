@@ -1,0 +1,106 @@
+{
+ "save_id": "agent-20261124T202206",
+ "place_id": "jal-veesa",
+ "name": "Weeltul's sap spigot driven into the Hist's east root at the deck where she kneels, her jar of Hist Sap under it, and a second jar for the healed state (have-get-make section 5; p02, p04)",
+ "at": "2026-11-24T20:22:06Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK039PLACE",
+    "base": "Skyrim.esm:0E1FC1",
+    "kind": "activator",
+    "pos": [
+     -56182.0,
+     -505472.0,
+     1266.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.24115
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "Weeltul's sap spigot (have-get-make section 5; promises p02, p04): the tree-minder's wooden tap driven into the end of the Hist's east root where it meets the deck she kneels on, its jar under it; at twice its size, a tap for a tree this big",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T20:22:06Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK040PLACE",
+    "base": "King of the Murkmire.esp:394B35",
+    "kind": "clutter",
+    "pos": [
+     -56160.0,
+     -505461.0,
+     1221.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "Weeltul's sap jar (p02, p04): KotM's Hist Sap on the deck under her spigot, hers to take",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-24T20:22:06Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "jal-veesa.LOOK041PLACE",
+    "base": "King of the Murkmire.esp:394B35",
+    "kind": "clutter",
+    "pos": [
+     -56148.0,
+     -505477.0,
+     1221.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "a second jar of sap beside Weeltul's spigot, shown only once the Hist is healed (MN19's Use ending: the scar weeps sap): on the healed state's parent",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-24T20:22:06Z"
+  }
+ ]
+}

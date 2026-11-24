@@ -67,3 +67,18 @@ def test_a_second_run_keeps_the_lights_the_first_added():
     again = lights.station_lights("p", [fix, *first], {}, {r["id"] for r in first})
     assert [r["id"] for r in again] == [r["id"] for r in first]
     assert lights.station_lights("p", [fix, *first], {}) == []   # a light the stage did not add does count as lit
+
+
+def test_a_lamp_set_copied_with_its_free_light_is_lit_and_a_bare_fire_is_not():
+    """A lamp set duplicated whole carries its own light seated on nothing: that light is the set's by nearness, as a
+    source light is its fixture's, so neither the lamp nor its flame takes a second light; a fire with no light near
+    it still gets its own."""
+    lamp = {"id": "p.L", "base": "Skyrim.esm:05D6EA", "kind": "static", "pos": [0.0, 0.0, 0.0],
+            "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place"}
+    flame = dict(lamp, id="p.F", pos=[2.0, 2.0, 50.0])
+    light = {"id": "p.X", "base": "Skyrim.esm:075C32", "kind": "light", "pos": [10.0, 12.0, 58.0],
+             "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "free"}}
+    assert lights.station_lights("p", [lamp, flame, light], {}) == []
+    far = dict(flame, id="p.G", pos=[1000.0, 0.0, 0.0])
+    got = lights.station_lights("p", [lamp, flame, light, far], {})
+    assert [r["seat"]["on"] for r in got] == ["p.G"]

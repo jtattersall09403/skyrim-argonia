@@ -251,11 +251,34 @@
    ]
   }
  ],
- "loose": [],
+ "loose": [
+  {
+   "id": "jal-veesa.LOOK040PLACE",
+   "space": "exterior",
+   "item": "King of the Murkmire.esp:394B35",
+   "count": 1,
+   "owner_person": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+   "why": "Weeltul's jar of Hist sap under her spigot in the Hist's east root (place record: the tree-minder tends the Hist, p02, p04): the cooling tree's thin sap, hers, so taking it is stealing; gone with the living tree in the dead ending"
+  },
+  {
+   "id": "jal-veesa.LOOK041PLACE",
+   "space": "exterior",
+   "item": "King of the Murkmire.esp:394B35",
+   "count": 1,
+   "owner_person": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
+   "why": "a second jar beside Weeltul's spigot, shown only in the healed state (MN19's Use ending: the scar weeps sap); hers"
+  }
+ ],
  "possessions": [
   {
    "person": "jal-veesa.0CAH44F1QYB0TNMHBKDRG21EAZ",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit fisher: plain woven clothes): he sets the eel traps in the weir channels"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -339,6 +362,12 @@
    "person": "jal-veesa.2W0S9FR08886SKP3HS2VPP27C9",
    "items": [
     {
+     "item": "King of the Murkmire.esp:086677",
+     "count": 1,
+     "worn": true,
+     "why": "a sashed Saxhleel tunic in the Hist's green (kit priest: a priest's robes, fine cloth): the tree-minder's dress for the pool and its blessing"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
@@ -363,6 +392,12 @@
    "person": "jal-veesa.45E3Z7N1Q00XRWAJ9E4T3H0JSC",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit fisher: plain woven clothes): the weir keeper, out on the creeks"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
@@ -386,6 +421,18 @@
   {
    "person": "jal-veesa.4MC5QNQFYMTG1YV6VQE7Y2002Q",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F67",
+     "count": 1,
+     "worn": true,
+     "why": "native boots (cloth): for the ruins' track to Gemin"
+    },
+    {
+     "item": "King of the Murkmire.esp:08666F",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic in marsh green (kit resident: plain woven clothes): a ruin-warden between her turns, teaching archery"
+    },
     {
      "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
@@ -417,6 +464,12 @@
    "person": "jal-veesa.607CTZ7SDHTJX923TX01PR9CZ6",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit boatman: plain woven clothes): the boat-wright, caulking reed boats"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
@@ -441,6 +494,18 @@
    "person": "jal-veesa.66SDMA56E38FGAF0NT42B0GGE7",
    "items": [
     {
+     "item": "King of the Murkmire.esp:0AD638",
+     "count": 1,
+     "worn": true,
+     "why": "Saxhleel sandals (cloth): he walks the road to Stormhold more than anyone"
+    },
+    {
+     "item": "King of the Murkmire.esp:086670",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit resident: plain woven clothes): the carrier on the Stormhold road"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
      "worn": true,
@@ -458,6 +523,12 @@
   {
    "person": "jal-veesa.6BEYF4Z8B41QMHVED6THSNNQ33",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:086680",
+     "count": 1,
+     "worn": true,
+     "why": "a sashed Saxhleel tunic (kit elder: an elder's sashed dress, fine cloth): the root-herald who speaks for the elders to Stormhold's buyers"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -483,6 +554,12 @@
    "person": "jal-veesa.6J2HENA7BDWSHRD3H1J2EHD6PK",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes (kit resident: plain woven clothes): the sedge cutter, poling out before dawn"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -500,6 +577,12 @@
   {
    "person": "jal-veesa.6TGZWS3BBEKKSY2T3NM2B7GCGJ",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes, the native weavers' dress (kit weaver: plain woven clothes): she plaits mats from Kuxan-Deel's sedge"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -519,6 +602,12 @@
    "person": "jal-veesa.7GKGKQSG76DQJ4TY2QHMBQECQV",
    "items": [
     {
+     "item": "King of the Murkmire.esp:086674",
+     "count": 1,
+     "worn": true,
+     "why": "a sashed Saxhleel tunic in smoke-brown (kit host: a host's sashed tunic, fine cloth): she keeps the fish-smoker's stall"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00083F",
      "count": 1,
      "worn": true,
@@ -537,6 +626,12 @@
    "person": "jal-veesa.7SW0XMDB8GZ3TZ40VMXVC6R3FC",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes, the native weavers' dress (kit weaver: plain woven clothes): she plaits mats for her mother's stall"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -554,6 +649,18 @@
   {
    "person": "jal-veesa.7W40EGBARBV6S6HWTT0D8284JX",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F67",
+     "count": 1,
+     "worn": true,
+     "why": "native boots (cloth): for the ruins' track to Loriasel"
+    },
+    {
+     "item": "King of the Murkmire.esp:086670",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit resident: plain woven clothes): a ruin-warden home from her turn at Loriasel"
+    },
     {
      "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
@@ -584,6 +691,12 @@
   {
    "person": "jal-veesa.EKZ821NZRVCMEK7M532SH6978X",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic in the elders' purple (kit resident: plain woven clothes): she tends the elders' hut beside Vosh-Leera"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -660,6 +773,12 @@
   {
    "person": "jal-veesa.HVXFP5GXQ7X8T0FBGN9T38CWQF",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08667D",
+     "count": 1,
+     "worn": true,
+     "why": "a sashed Saxhleel tunic (kit trader: a trader's sashed tunic, fine cloth): she meets Stormhold's buyers at the jetty market"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3E",
      "count": 1,
@@ -743,6 +862,12 @@
    "person": "jal-veesa.MAKJAE10PQDAMQ4CYCTPAX9TWY",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes, the native weavers' dress (kit weaver: plain woven clothes): she twists sedge fibre into rope"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -760,6 +885,12 @@
   {
    "person": "jal-veesa.PT329S5J02ND56EMP6XQYX391H",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit fisher: plain woven clothes): he fishes eels and gar from the weir channels"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -785,6 +916,12 @@
    "person": "jal-veesa.S37T4PKC2VTPJP3FE9NVEC8N4C",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "a plain Saxhleel tunic (kit fisher: plain woven clothes): he hauls the catch to the racks and his sister's stall"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
@@ -802,6 +939,12 @@
   {
    "person": "jal-veesa.Y1SNMXM4CBWBVQ318NRP5GPK33",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes, the native weavers' dress (kit weaver: plain woven clothes): she lays the town's rope by the creek"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -826,6 +969,12 @@
   {
    "person": "jal-veesa.YVMAKC3EE6DW3J23J5Y51VZA33",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "rough fibre clothes (kit weaver: plain woven clothes): an old sedge cutter who mends the traps' baskets on her son's step"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,

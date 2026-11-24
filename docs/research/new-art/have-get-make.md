@@ -126,7 +126,7 @@ narrowly; the tables above reach a drafted place only that way.
 |---|---|---|---|---|
 | helstrom | native boats at the raft-master stop | KotM `ALPABoat02`, `ALPABoat03` (barge `ALPABoat04` if a ferry) | the hub's landing (today ShipRowBoat01, ShipRowBoatAnim01, 01boatracked) | its travel stop; `io.stop_boats` |
 | helstrom | door swap | `Skyrim.esm:0453D8` SHouseDoor02 to `CIPHTBMVillageHutDoorLoad` | 15 refs | swaps.json |
-| helstrom | sap spigot and sap jar | `dunSleepingTreeCampSpigot` / `Skyrim.esm:0AED90` | the city Hist's pool | promises p014, p021 (sap seller), p032 (tree-minders' hall) |
+| helstrom | sap spigot and sap jar | USSEP's static "Sap Spigot" `Skyrim.esm:0E1FC1` / King of the Murkmire's "Hist Sap" jar `394B35` (not `dunSleepingTreeCampSpigot` 0AED89 or `0AED90`: the giants' harvestable Sleeping Tree Sap) | the city Hist's pool | promises p014, p021 (sap seller), p032 (tree-minders' hall) |
 | helstrom | guard cuirass | argonian-scale issue (altscalearmor) | 14 guards wear BMArgBody, which has no model | scale.json guard_issue |
 | helstrom | clothing | the kits' clothing rows | 80 of 110 people wear nothing authored | kits.json |
 | jal-veesa | sap spigot and jar | as above | the sick Hist's pool | p02, p03, p04 (tree-minder Weeltul) |

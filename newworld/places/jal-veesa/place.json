@@ -738,6 +738,14 @@
      "jal-veesa.CXK9BZ10H3J4B90ABH011C95E8"
     ],
     "why": "the dead state's bed of cracked mud lies low in the dry hollow over the source's great bank rock that the sap covered, as a crust laid on the rock (looked at in hist-dead from the east bank, 2026-11-22); shown only in the dead state"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "jal-veesa.LOOK039PLACE",
+     "jal-veesa.7SWK29SQSJ276Q5JVM1M6FCTK4"
+    ],
+    "why": "Weeltul's sap spigot is a tap driven into the Hist's east root: its shank stands in the wood by design and its spout and handle stand out over her jar (eye view from the deck, 2026-11-24)"
    }
   ],
   "sap": {
@@ -1687,7 +1695,13 @@
   "rent_bed": null
  },
  "lights": {
-  "added": []
+  "added": [
+   {
+    "id": "jal-veesa.MA66EHG33TJ56JQA2RB3YMAMBF",
+    "base": "Skyrim.esm:0B345B",
+    "on": "jal-veesa.LOOK031PLACE"
+   }
+  ]
  },
  "hang": {
   "added": []
@@ -1763,7 +1777,8 @@
   "agent-20261123T005758",
   "agent-20261123T005820",
   "agent-20261123T011157",
-  "agent-20261123T013558"
+  "agent-20261123T013558",
+  "agent-20261124T202206"
  ],
  "wholesale": {
   "offset": 470.0,
