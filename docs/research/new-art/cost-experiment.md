@@ -108,3 +108,20 @@ well, or several. What each route offers:
 and Generate in Parts, at 70 credits ($0.25 on Max), so it arrives with its own detail at the game's density. Through
 Fal (by tool, no subscription), it stays $0.46 and is finished with densify.py. Props under about 70 square metres
 keep the current route.
+
+## The consistency test (the line-up in the asset explorer, $1.23 in Fal fees)
+
+How to make generated models look like one game without throwing their textures away. Reference numbers per
+material were measured from the game's own textures and the mods we hold (`tools/newart/reference.py`): Skyrim's
+textures are dark and muted (median lightness 24 to 35 of 100), with normal maps that tilt 7 to 22 degrees, and wood
+at about 650 pixels per metre, stone at 330. Each model was then measured against them as a "distance" (lower is
+closer). Records: `newworld/sources/art/lineup.json`.
+
+| Method | Result | Verdict |
+|---|---|---|
+| Grade the generator's own texture toward the reference, region by region (`grade.py`, free) | canoe 1.6 to 0.6, hut 8.0 to 3.2, glaive 6.2 to 1.7; the wear and detail stay | recommended |
+| A family from one approved anchor (two sibling reference images, then Tripo H3.1; $0.93) | spear and axe heads plainly one family with the glaive (4.3 and 4.1): consistent with each other, then graded toward the game | recommended for sets |
+| Meshy 7 retexture from a held Black Marsh hut as the style image ($0.30) | geometry kept, but flat clay paint: door, windows, roots and leaves lost (11.7) | rejected |
+
+The graded obsidian reads as a dark grey stone rather than near black; the owner's eye decides whether it stays
+blacker.

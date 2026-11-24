@@ -106,7 +106,7 @@ judging, undoing. Records and shaders only make the dressing cheap to repeat.
 - R2 Texture-set twins: `Clean`, `Dirty`, `Wet`, `Mossy`, `Silted`, `Drowned` TXST per kit, chosen per shape by MODS
   (KotM does clean/dirty/wet/moss on Ayleid already). Cost: one TXST per kit state, no mesh.
 - R3 New material objects of our own (silt, algae, tide-line, soot): copy KotM's MossMaterialArgonia values, change
-  colour and falloff. Colour-only (single pass), no texture file needed. The `Meshes\ShaderTests\ShaderBox.nif` that 23 material records name in
+  colour and falloff. Colour-only (single pass), no texture file needed. The `Meshes\ShaderTests\ShaderBox.nif` that 25 material records name in
   their MODL (16 Skyrim.esm, 1 Dawnguard, 5 Dragonborn, 3 KotM) is a mesh, not a texture, and ships in no BSA of the
   game or our mods (all 41 archives' file tables read, no loose copy on disk): it is the Creation Kit's preview mesh.
   The game draws a directional material from the record's DATA (falloff, UV scales, projection, single-pass colour),

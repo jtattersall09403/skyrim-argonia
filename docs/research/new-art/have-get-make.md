@@ -46,7 +46,7 @@ For every thing, in this order, and "not held" only with the searches and looks 
 Drafted places keep what they have: nothing above redrafts or re-stocks them. A drafted place takes any of it only
 through a narrow change by its own agent.
 
-The moss material's file: the 23 material records that name `Meshes\ShaderTests\ShaderBox.nif` (16 Skyrim.esm,
+The moss material's file: the 25 material records that name `Meshes\ShaderTests\ShaderBox.nif` (16 Skyrim.esm,
 1 Dawnguard, 5 Dragonborn, 3 KotM) point at the Creation Kit's preview mesh, which ships in no archive of the game
 or of any mod; the game draws the material from the record's own colour and falloff values
 ([ruins-and-weathering](ruins-and-weathering.md)).
