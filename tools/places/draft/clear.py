@@ -102,6 +102,12 @@ def stray(world: list[dict], cleared: set, placed: list[dict], bases: dict, path
     return bad
 
 
+# the reasons `apply`, `along` and `across` give: the clearance stage's own rows. A draft row with any other reason (a
+# plant cleared off the world's road by the ways check) is another step's and the stage keeps it
+STAGE_WHYS = ("inside a placed footprint", "doorway", "street", "building", "its body lies across a street",
+              "its body stands in a doorway")
+
+
 def apply(world: list[dict], clearance: dict, buildings: list[dict], bases: dict, paths: list[dict],
           doors: list, footprints: list[dict]) -> list[dict]:
     reach = max(max(c[k] for k in ("building", "street", "door")) for c in clearance.values()) + 2048.0

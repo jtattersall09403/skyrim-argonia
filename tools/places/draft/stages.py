@@ -400,8 +400,9 @@ def clearance(st: Standing, log=print) -> None:
         o = was.get(r.get("ref"))
         same = o is not None and o.get("base") == r.get("base") and math.dist(o["pos"], r["pos"]) <= 1.0
         return o if same else r
-    # a plant any other row already clears (the owner's, an agent's hand edit) is not cleared a second time
-    held = [r for r in st.files["clear"] if r.get("by") != "draft"]
+    # a plant any other row already clears (the owner's, an agent's hand edit, another step's draft row such as the
+    # ways check's off the world's road) is kept and not cleared a second time
+    held = [r for r in st.files["clear"] if r.get("by") != "draft" or r.get("why") not in clearmod.STAGE_WHYS]
     refs = {r.get("ref") for r in held if r.get("ref")}
 
     def cleared(r: dict) -> bool:

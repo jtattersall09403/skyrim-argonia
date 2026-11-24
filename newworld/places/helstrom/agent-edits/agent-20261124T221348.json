@@ -1,0 +1,53 @@
+{
+ "save_id": "agent-20261124T221348",
+ "place_id": "helstrom",
+ "name": "the Tree-Minders' Hall's mouth rock back at its height: sunk, it swallowed the hall's door; its tilted base stands a little off the ground on one side as the source sets it",
+ "at": "2026-11-24T22:13:48Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     385.21
+    ],
+    "rot": [
+     5.95359,
+     5.77225,
+     5.3228
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     511.61
+    ],
+    "rot": [
+     5.95359,
+     5.77225,
+     5.3228
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T22:13:48Z"
+  }
+ ]
+}

@@ -351,6 +351,18 @@ def test_our_waters_whole_number_fields_are_written_as_whole_numbers():
             assert isinstance(w["set"].get(name, 0), int), name
 
 
+def test_clearance_keeps_a_draft_row_another_step_made(fx):
+    """A draft row whose reason is not the clearance stage's own (a plant the ways check cleared off the world's road)
+    is that step's: the stage keeps it as it stands."""
+    p = fx / "places/fx/clear.jsonl"
+    rs = rows(p)
+    road = {"base": "T.esm:00ROAD", "pos": [1.0, 2.0, 3.0], "by": "draft",
+            "why": "it stands in the world's road through the place (the ways check)", "ref": "T.esm:ROADPLANT"}
+    p.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rs + [road]))
+    stages.run("clearance", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    assert road in rows(p)
+
+
 def test_clearance_never_clears_a_plant_another_row_already_clears(fx):
     """A plant a hand edit (look, no `ref`) or the owner already cleared keeps that row alone: the stage adds no
     second row for it."""

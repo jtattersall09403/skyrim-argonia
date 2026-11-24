@@ -1685,6 +1685,13 @@
     ],
     "why": "Wujeel's sap spigot is driven into the city Hist's south root leg, its back end in the wood as a tap is (seen from the market at eye level, 2026-11-24)"
    }
+  ],
+  "accepted_faults": [
+   {
+    "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+    "fault": "floats",
+    "why": "the mud rock over the Tree-Minders' Hall's mouth, tilted as the source tilts it: one edge of its base stands 0.9 m off the ground while the rock reads as resting from all four sides; sunk to the ground it swallows the hall's door (orbit, 2026-11-24)"
+   }
   ]
  },
  "fit": {
@@ -2187,7 +2194,8 @@
   "agent-20261124T212147",
   "agent-20261124T214006",
   "agent-20261124T215611",
-  "agent-20261124T215623"
+  "agent-20261124T215623",
+  "agent-20261124T221348"
  ],
  "wholesale": {
   "offset": 180.0,
