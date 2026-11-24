@@ -29,7 +29,17 @@ PLACES = REPO / "newworld" / "story" / "data" / "db" / "place.jsonl"
 ALLOCATIONS = REPO / "newworld" / "places"
 PROJECT = REPO / "tools" / "ArgoniaPlaces" / "Extract"
 BIN = REPO / "out" / "tools" / "ArgoniaPlacesExtract"
-WORLD_ESM = REPO / "out" / "newworld" / "plugin" / "ArgoniaNewWorld.esm"
+def _out_root(root: Path = REPO) -> Path:
+    """The tree whose out/ holds the built world and the unpacked catalogue, read and never written: this tree's, else
+    the nearest enclosing tree's (a lane's worktree has no out/ of its own)."""
+    for r in (root, *root.parents):
+        if (r / "out" / "newworld" / "plugin" / "ArgoniaNewWorld.esm").exists():
+            return r / "out"
+    return root / "out"
+
+
+OUT_ROOT = _out_root()
+WORLD_ESM = OUT_ROOT / "newworld" / "plugin" / "ArgoniaNewWorld.esm"
 WORLD_EDID = "ArgoniaBlackMarsh"
 UNITS_PER_M = 70.0          # 1 game unit = 1.428 cm
 GROUND_REACH_M = 500.0      # a town may be fitted anywhere within this of the place's centre
@@ -58,7 +68,7 @@ def search_dirs() -> list[str]:
         dirs += sorted(p for p in assets.iterdir() if p.is_dir())
     dirs.append(WORLD_ESM.parent)
     # a newworld row's plugin the catalogue unpacked from its archive (a mod whose assets are not laid here yet)
-    unpacked = REPO / "out" / "places" / "catalogue" / "plugins"
+    unpacked = OUT_ROOT / "places" / "catalogue" / "plugins"
     if unpacked.is_dir():
         dirs += sorted(p for p in unpacked.iterdir() if p.is_dir())
     return [str(d) for d in dirs if d.is_dir()]
