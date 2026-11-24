@@ -4,13 +4,13 @@ Reads the asset records (newworld/sources/art/, in this checkout) and the worksh
 tree, found from git's common directory, so a lane in a worktree reads the same models), and writes a fresh folder
 out/newart/explorer-site/ holding exactly what the page serves: index.html, data/catalog.json, the models of every
 version and the pictures the stages show, each at its served path, every path canonical (no symbolic link anywhere),
-and PUBLISH.json beside them: the page's url, the entry file, every served path with its size, the total, and the
-paths served by the last build that this one no longer serves (to remove on publish). A lane builds; the lead
+and PUBLISH.json beside them: the page's url, the entry file, every served path with its size and hash, the total,
+what was added, changed and removed since the last build, and the publish batches (each under 64 MB). A lane builds; the lead
 publishes the folder exactly as PUBLISH.json lists it.
 
 It refuses to build when a version's web copy is missing or when a version is not at its brief's size in true metres
 (every model and the 1.8 m person share one scene, so a model in a generator's own unit would be shown at a false size)."""
-import json, shutil, subprocess, time
+import hashlib, json, shutil, subprocess, time
 from pathlib import Path
 HERE = Path(__file__).resolve().parent; ROOT = HERE.parents[1]
 MAIN = Path(subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--path-format=absolute", "--git-common-dir"], capture_output=True, text=True, check=True).stdout.strip()).resolve().parent
@@ -59,6 +59,7 @@ def build() -> dict:
     old = json.loads((SITE / "PUBLISH.json").read_text()) if (SITE / "PUBLISH.json").exists() else {"files": {}}
     if SITE.exists():
         shutil.rmtree(SITE)
+    assets.sort(key=lambda a: (a.get("order", 0), a["id"]))          # the things first, the line-up after them
     cat = {"version": time.strftime("%Y-%m-%dT%H:%M"), "assets": assets}
     (SITE / "data").mkdir(parents=True)
     (SITE / "data/catalog.json").write_text(json.dumps(cat, indent=1).replace("<", "\\u003c"))
@@ -66,14 +67,23 @@ def build() -> dict:
     for p in served:
         (SITE / p).parent.mkdir(parents=True, exist_ok=True); shutil.copyfile((SRC / p).resolve(), SITE / p)   # real copies, never links
     files = {p.relative_to(SITE).as_posix(): p.stat().st_size for p in sorted(SITE.rglob("*")) if p.is_file()}
+    sha = {k: hashlib.sha256((SITE / k).read_bytes()).hexdigest() for k in files}
     links = [str(p) for p in SITE.rglob("*") if p.is_symlink()]
     assert not links and SITE.resolve() == SITE, f"links in the site: {links or SITE}"
-    pub = {"url": URL, "root": str(SITE), "entry": "index.html", "built": cat["version"], "files": files, "total_bytes": sum(files.values()),
-           "removed_since_last_build": sorted(set(old.get("files", {})) - set(files)),
-           "how": "Publish index.html with every other path in files at its own path (root = this folder); remove the removed paths. Several publishes to the same url if over 64 MB."}
+    was, was_sha = old.get("files", {}), old.get("sha256", {})
+    changed = sorted(k for k in files if k in was and (sha[k] != was_sha[k] if k in was_sha else files[k] != was[k]))
+    batches, cur, size = [], [], 0                      # publish batches under the 64 MB a publish may carry, the page and catalogue in the first
+    for k in sorted(files, key=lambda k: (k not in ("index.html", "data/catalog.json"), k)):
+        if cur and size + files[k] > 60_000_000: batches.append(cur); cur, size = [], 0
+        cur.append(k); size += files[k]
+    batches.append(cur)
+    pub = {"url": URL, "root": str(SITE), "entry": "index.html", "built": cat["version"], "files": files, "sha256": sha, "total_bytes": sum(files.values()),
+           "since_last_build": {"added": sorted(set(files) - set(was)), "changed": changed, "removed": sorted(set(was) - set(files))},
+           "batches": [{"paths": b_, "bytes": sum(files[k] for k in b_)} for b_ in batches],
+           "how": "Publish index.html with every other path in files at its own path (root = this folder), batch by batch to the same url; set every removed path to null."}
     (SITE / "PUBLISH.json").write_text(json.dumps(pub, indent=1))
     return pub
 
 
 if __name__ == "__main__":
-    p = build(); print(f"{len(p['files'])} files, {p['total_bytes'] / 1e6:.1f} MB, in {p['root']}; removed since last build: {len(p['removed_since_last_build'])}")
+    p = build(); d = p['since_last_build']; print(f"{len(p['files'])} files, {p['total_bytes'] / 1e6:.1f} MB in {len(p['batches'])} batches, in {p['root']}; since the last build: {len(d['added'])} added, {len(d['changed'])} changed, {len(d['removed'])} removed")

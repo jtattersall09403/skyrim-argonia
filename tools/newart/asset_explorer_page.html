@@ -14,7 +14,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15p
 .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 60px;max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 h1,h2,h3{font-family:var(--head);font-weight:600;margin:0;text-wrap:balance}
 h1{font-size:1.1rem;color:var(--mute);letter-spacing:.02em}h2{font-size:1.3rem}h3{font-size:1rem}
-.things{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.things{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
 .thing{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-align:left;cursor:pointer;min-height:44px}
 .thing strong{display:block;font-family:var(--head);font-size:1.02rem}.thing small{color:var(--mute)}
 .thing[aria-current="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
@@ -30,7 +30,7 @@ h1{font-size:1.1rem;color:var(--mute);letter-spacing:.02em}h2{font-size:1.3rem}h
 .vtools button{font:inherit;font-size:.8rem;color:#eef2ee;background:#000a;border:1px solid #ffffff33;border-radius:999px;padding:4px 10px;cursor:pointer;min-height:32px}
 .vtools button[aria-pressed="true"]{background:#eef2ee;color:#1c2420}
 .steps{flex:1 1 auto;min-width:0;display:flex;gap:6px;align-items:stretch;overflow-x:auto;padding-bottom:2px}
-.step{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;text-align:left;min-width:0;flex:1 1 0;min-height:44px}
+.step{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;text-align:left;flex:1 0 108px;min-height:44px}
 .step b{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:600}
 .step[aria-current="true"]{border-color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
 .arrow{font:inherit;font-size:1.2rem;background:var(--panel);color:inherit;border:1px solid var(--line);border-radius:8px;padding:0 12px;cursor:pointer;min-height:44px}
@@ -142,6 +142,7 @@ function renderSteps() {
     el("div", { class: "steps", role: "list", "aria-label": "How it was made" }, ...steps.map((v, k) => el("button", { class: "step", role: "listitem", "aria-current": String(v.id === S.model), onclick: () => show(v.id) },
       el("b", { text: (k + 1) + (v.id === S.asset.best ? " · best" : "") }), document.createTextNode(v.label)))),
     el("button", { class: "arrow", "aria-label": "Next stage", onclick: () => go(1), disabled: i < 0 || i >= steps.length - 1 ? "" : null, text: "›" }));
+  const cur = $("#stepsrow .step[aria-current=\"true\"]"); if (cur) { const box = cur.parentElement; box.scrollLeft = Math.max(0, cur.offsetLeft - box.offsetLeft - (box.clientWidth - cur.clientWidth) / 2); }
 }
 function pillFor(v) { if (v.id === S.asset.best) return el("span", { class: "pill best", text: "best version" }); return el("span", { class: "pill " + v.verdict, text: v.verdict === "comparison" ? "for comparison" : v.verdict }); }
 function measures(id) { const m = (S.asset.measures || {})[id]; if (!m) return null; const sz = m.size_m || [];
@@ -170,7 +171,7 @@ function renderVersion() {
 }
 function renderOthers() {
   const a = S.asset, tried = a.versions.filter(v => v.group === "tried").sort((p, q) => (p.rank || 99) - (q.rank || 99)), comps = a.versions.filter(v => v.group === "comparison");
-  const pick0 = making()[0];
+  const pick0 = making()[0]; $("#others").hidden = !tried.length && !comps.length; if (!tried.length && !comps.length) return;
   const row = (n, v, extra) => el("button", { class: "li", "aria-current": String(S.model === v.id), onclick: () => { show(v.id, true); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); } },
     el("span", { class: "n", text: n }), el("span", {}, el("strong", { text: extra || v.label }), document.createTextNode(" "), pillFor(v)), el("span", { class: "p", text: money(v.price_usd) }), el("span", { class: "why", text: v.why }));
   $("#others").replaceChildren(el("h3", { text: "Other generators tried" }), el("p", { class: "muted", style: "margin:0", text: "Same reference, ranked by look and measure. Tap one to see it; use Compare to put it beside the best." }),
@@ -235,7 +236,7 @@ function place(root) { root.traverse(o => { if (!o.isMesh) return; const nm = (o
   root.position.set(-c.x, -b.min.y, -c.z); root.updateMatrixWorld(true); return b.getSize(new THREE.Vector3()); }
 function standMan(side, s) { R[side].man.position.set(-(s.x / 2) - 0.6, 0, Math.min(s.z / 2, 0.8)); }       // beside the model, at its left end, on the same ground
 function frame() { const s = R.A.size || new THREE.Vector3(2, 2, 2), s2 = (S.compare && R.B.size) || s, W = Math.max(s.x, s2.x) + 1.4, H = Math.max(s.y, s2.y, 1.8), D = Math.max(s.z, s2.z, 0.8);
-  R.ctl.target.set(-0.35, H / 2, 0); const d = 0.5 * Math.hypot(W, H, D) / Math.tan(17.5 * Math.PI / 180) * (S.compare ? 1.15 : 1); R.cam.position.set(-0.35 + d * 0.62, H / 2 + d * 0.32, d * 0.72); R.ctl.update(); }
+  R.ctl.target.set(-0.35, H / 2, 0); const d = 0.5 * Math.hypot(W, H, D) / Math.tan(17.5 * Math.PI / 180) * (S.compare ? 1.15 : 1) * (R.cam.aspect < 1 ? 1 / Math.sqrt(R.cam.aspect) : 1); R.cam.position.set(-0.35 + d * 0.62, H / 2 + d * 0.32, d * 0.72); R.ctl.update(); }
 function loadInto(side, id, reframe) {
   const hud = side === "A" ? $("#hudA") : $("#hudB"); hud.textContent = "Loading " + label(id) + "…";
   new THREE.GLTFLoader().load("models/" + S.asset.id + "." + id + ".gltf.json", g => {

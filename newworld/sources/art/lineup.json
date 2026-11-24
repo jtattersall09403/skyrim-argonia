@@ -1,0 +1,163 @@
+{
+ "id": "lineup",
+ "name": "Consistency line-up",
+ "short": "Line-up",
+ "order": 9,
+ "kind": "Our three things beside vanilla neighbours",
+ "status": "A test of three ways to make the generated models look like they belong in Skyrim, keeping Tripo H3.1's own textures. Approval is by eye here; one spot check in the game per family after.",
+ "summary": "Each scene stands one of our things beside a held vanilla neighbour of the same kind (a rowboat, a Redoran hut, a Forsworn staff) under one light, with the 1.8 m person. Step through the scenes, or compare a thing as generated with the same thing graded, under one camera.",
+ "need": {
+  "verdict": "test",
+  "why": "The owner ruled that our shared material looks worse than the generator's texture, and asked for another way to make a set of models consistent, approved off the game with confidence it holds in it.",
+  "lore": "Not a lore question: a look question.",
+  "use": "Decides how every generated model is finished before it goes to the game."
+ },
+ "brief": {
+  "text": "Measure what consistent with Skyrim is, per material; grade the generated textures toward it; try a retexture from a Black Marsh building; try siblings from one approved anchor; show them all beside real neighbours."
+ },
+ "fees": {
+  "note": "Fal list prices for the options used, read on 24 November 2026; not a bill.",
+  "lines": [
+   [
+    "Meshy 7 retexture of the hut",
+    0.3
+   ],
+   [
+    "2 sibling reference images (edits at 2K)",
+    0.13
+   ],
+   [
+    "2 sibling heads, Tripo H3.1 detailed texture",
+    0.8
+   ]
+  ],
+  "total": 1.23
+ },
+ "best": "hut-graded",
+ "versions": [
+  {
+   "id": "canoe-generated",
+   "label": "Canoe, as generated",
+   "line": "Tripo H3.1's own texture beside the vanilla rowboat.",
+   "made_by": "Tripo H3.1; the rowboat from the game",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Already close to the game's weathered wood (distance 1.6), but its normal map is flat.",
+   "group": "making"
+  },
+  {
+   "id": "canoe-graded",
+   "label": "Canoe, graded",
+   "line": "The same canoe, its texture graded toward the game's weathered wood.",
+   "made_by": "By hand: grade.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Distance 0.6; the wear and grain stay, the light ends come down.",
+   "group": "making"
+  },
+  {
+   "id": "hut-generated",
+   "label": "Hut, as generated",
+   "line": "Tripo H3.1's own texture beside the vanilla Redoran hut.",
+   "made_by": "Tripo H3.1; the hut from the game",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Brighter and greener than the game (distance 8.0).",
+   "group": "making"
+  },
+  {
+   "id": "hut-graded",
+   "label": "Hut, graded",
+   "line": "The same hut, its roots graded toward weathered wood and its leaf roof toward reed and thatch; the amber windows left alone.",
+   "made_by": "By hand: grade.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Distance 3.2: darker, less green, with the same detail. Recommended.",
+   "group": "making"
+  },
+  {
+   "id": "hut-retextured",
+   "label": "Hut, retextured",
+   "line": "The hut's shell repainted by Meshy 7's retexture with a Black Marsh mud hut from the mods we hold as the style image.",
+   "made_by": "Meshy 7 retexture on Fal",
+   "price_usd": 0.3,
+   "verdict": "rejected",
+   "why": "The geometry is unchanged (the same 13,248 vertices, scaled back from Meshy's 2-unit box), but it made new UVs and painted flat clay: the door, windows, roots and leaves are gone (distance 11.7).",
+   "group": "making"
+  },
+  {
+   "id": "glaive-generated",
+   "label": "Glaive, as generated",
+   "line": "The finished glaive beside the vanilla Forsworn staff.",
+   "made_by": "Tripo H3.1 head, finished by hand; the staff from the game",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "The obsidian is near black, darker than the game's stone (distance 6.2).",
+   "group": "making"
+  },
+  {
+   "id": "glaive-graded",
+   "label": "Glaive, graded",
+   "line": "The same glaive, its head graded toward the game's stone, its socket toward wood and its binding toward rope.",
+   "made_by": "By hand: grade.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Distance 1.7; the obsidian reads as a dark grey stone. Your eye decides whether obsidian should stay blacker.",
+   "group": "making"
+  },
+  {
+   "id": "glaive-family",
+   "label": "Glaive family from one anchor",
+   "line": "The approved glaive head, and a spear head and an axe head generated from reference images drawn from its own, beside the Forsworn staff.",
+   "made_by": "Nano Banana 2.1 edit, then Tripo H3.1, on Fal",
+   "price_usd": 0.93,
+   "verdict": "kept",
+   "why": "Plainly one family: the same obsidian, socket and binding (distances 6.2, 4.3, 4.1). Consistent with itself, not yet with Skyrim: grade after.",
+   "group": "making"
+  }
+ ],
+ "failed": [],
+ "stages": [
+  {
+   "id": "reference",
+   "name": "1. What Skyrim measures as",
+   "verdict": "pass",
+   "did": "reference.py read meshes from the game's own archives and the mods we hold, found each material by its diffuse texture's path, and measured every shape on its real triangles and UVs: texel density, the diffuse's lightness, chroma and hue, the normal map's tilt and the specular mask.",
+   "measured": {
+    "rope_and_binding": "L 21.4/31.9/44.0 (10th, median, 90th), chroma 12.1, hue 78, normal tilt 22.0 deg, specular 0.1, 881.1 px per m (median of 6)",
+    "bone": "L 6.7/15.2/42.3 (10th, median, 90th), chroma 5.4, hue 70, normal tilt 13.4 deg, specular 0.1, 929.3 px per m (median of 24)",
+    "reed_and_thatch": "L 18.4/35.2/50.8 (10th, median, 90th), chroma 10.2, hue 85, normal tilt 8.2 deg, specular 0.1, 587.6 px per m (median of 10)",
+    "weathered_wood": "L 18.2/29.0/39.2 (10th, median, 90th), chroma 5.3, hue 85, normal tilt 7.5 deg, specular 0.1, 649.3 px per m (median of 24)",
+    "stone": "L 14.0/24.0/34.0 (10th, median, 90th), chroma 4.8, hue 113, normal tilt 7.4 deg, specular 0.2, 330.2 px per m (median of 24)",
+    "iron_and_bronze": "L 15.5/23.8/30.9 (10th, median, 90th), chroma 2.6, hue 91, normal tilt 6.5 deg, specular 0.2, 647.0 px per m (median of 24)"
+   },
+   "looked": "Skyrim's diffuse textures are dark and muted (median lightness 24 to 35 of 100, chroma 3 to 12), with normal maps that tilt 7 to 22 degrees; texel density is 330 px per metre for stone and 650 for wood.",
+   "decision": "These are the reference numbers every generated texture is measured against.",
+   "models": [],
+   "images": []
+  },
+  {
+   "id": "numbers",
+   "name": "2. Each model against the reference",
+   "verdict": "pass",
+   "did": "The same measures on our models, before and after each method.",
+   "measured": {
+    "Canoe, generated": "L 14.8/28.6/45.7, chroma 6.5, normal 0.3 deg, 814.1 px per m; distance to weathered wood: 1.6",
+    "Canoe, graded": "L 19.7/28.8/37.4, chroma 5.7, normal 7.7 deg, 814.1 px per m; distance to weathered wood: 0.6",
+    "Hut, generated": "L 8.1/29.9/51.0, chroma 12.4, normal 0.3 deg, 182.7 px per m; distance to weathered wood: 8.0",
+    "Hut, graded": "L 17.1/29.0/43.8, chroma 8.5, normal 6.7 deg, 182.7 px per m; distance to weathered wood: 3.2",
+    "Hut, retextured from a Black Marsh hut": "L 31.3/32.7/43.7, chroma 13.3, normal none deg, 407.2 px per m; distance to weathered wood: 11.7",
+    "Glaive head, generated": "L 6.7/19.6/42.0, chroma 3.0, normal 1.0 deg, 6854.6 px per m; distance to stone: 6.2",
+    "Glaive head, graded": "L 14.2/25.5/34.7, chroma 4.6, normal 8.7 deg, 6854.6 px per m; distance to stone: 1.7",
+    "Spear head, anchored sibling": "L 7.7/21.1/45.0, chroma 3.4, normal 1.1 deg, 5724.5 px per m; distance to stone: 4.3",
+    "Axe head, anchored sibling": "L 9.3/22.3/44.8, chroma 2.4, normal 1.0 deg, 3882.5 px per m; distance to stone: 4.1"
+   },
+   "looked": "Grading brings all three into the game's band. The hut's texture is still softer than the game's wood (183 px per metre against 420 to 830): one texture over a whole building; that needs new UVs or a tiling detail, not a grade. The glaive head's density is far above the game's because a head is small for its texture.",
+   "decision": "Recommend grading (method 1), with an anchor for each family (method 3) where a set must match itself first. The retexture is rejected.",
+   "models": [
+    "hut-graded"
+   ],
+   "images": []
+  }
+ ]
+}
