@@ -152,7 +152,13 @@
     "why": "a scale-hide tent standing on the north cypress platform's deck, not on the ground"
    }
   ],
-  "accepted_checks": []
+  "accepted_checks": [],
+  "fit_tilt_kept": [
+   {
+    "id": "outpost-m6-m66.XSFH9JZ5B3CRHJQ21W8H0YGSQE",
+    "why": "its source pose under the fit stands across the camp street and the two watchmen's patrol laid round its older pose (outpost-m6-m66 streets and people checks fail with it), so it keeps that pose"
+   }
+  ]
  },
  "fit": {
   "pivot": [

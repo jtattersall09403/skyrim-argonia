@@ -7,7 +7,9 @@ and puts them right.
 For each row of a wholesale place whose source ref is tilted and whose fit turns: `true` is the source's pose carried
 by the fit (Rz(-fit) . R(source)); `old` the rotation the draft wrote; `new` turn_rot's. The probe is the largest
 distance between the mesh's vertices placed by each and by `true`. A row whose rotation is no longer `old` was set by a
-hand (the agent's or the owner's) and stays as it stands.
+hand (the agent's or the owner's) and stays as it stands; so does a row named in place.json `draft.fit_tilt_kept`
+[{id, why}]: one whose true pose breaks what a hand laid round its older one (a street, a patrol, a pair of rocks
+leaning together), found by building the place with the change and running its checks.
 
     python -m tools.places fit_tilt [<place_id> ...]            the rows, their probes, what would change
     python -m tools.places fit_tilt <place_id> ... --apply       change them in the place files
@@ -44,9 +46,10 @@ def rows_of(place_id: str, places: Path, bundles: Path, verts_of) -> list[dict]:
     by_src = {r["id"]: r for r in src.exterior.refs}
     out = []
     rows = [json.loads(ln) for ln in (places / place_id / "spaces" / "exterior" / "refs.jsonl").read_text().splitlines() if ln.strip()]
+    kept = {k["id"] for k in (files.get("draft") or {}).get("fit_tilt_kept") or []}
     for r in rows:
         s = by_src.get(r.get("src"))
-        if s is None:
+        if s is None or r["id"] in kept:   # kept in its older pose: what a hand laid round it needs it there
             continue
         sr = [float(v) for v in (s.get("rot") or [0, 0, 0])]
         if abs(math.remainder(sr[0], 2 * math.pi)) < 1e-6 and abs(math.remainder(sr[1], 2 * math.pi)) < 1e-6:

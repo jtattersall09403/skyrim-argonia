@@ -14,6 +14,7 @@ found way crosses.
 
     python -m tools.places houses_cut <place_id> [--nav out/places/nav/<place_id>.json] [--fix]
 
+A way through the place accepts by name (place.json `draft.ways_through_accepted` [{id, why}]) is listed, not failed.
 --fix adds a `block` walking zone over each way through (the place's walk.jsonl, `by: agent`), which the next build
 cuts from the mesh (walknav), so the found ways go round it.
 """
@@ -151,7 +152,7 @@ def through(nav: dict, h: np.ndarray, z0: float) -> dict | None:
         return None
     groups.sort(key=len, reverse=True)
     shapes = [V[T[sorted(g)]].reshape(-1, 3) for g in groups]
-    return {"inside": len(ins), "openings": len(groups), "round": rnd,
+    return {"inside": len(ins), "floor": float(C[sorted(ins), 2].mean()), "openings": len(groups), "round": rnd,
             "doors": [{"hull": hull(s[:, :2]), "z": float(s[:, 2].mean())} for s in shapes]}
 
 
@@ -203,7 +204,7 @@ def block_row(h: dict) -> dict:
     c = h["hull"].mean(axis=0)
     ring = [c + (p - c) * max(0.0, 1 - RADIUS / max(1e-6, float(np.hypot(*(p - c))))) for p in h["hull"]]
     return {"id": f"{h['id']}.no-way-through", "kind": "block", "space": "exterior", "by": "agent",
-            "outline": [[round(float(p[0]), 1), round(float(p[1]), 1), round(h["z0"], 1)] for p in ring],
+            "outline": [[round(float(p[0]), 1), round(float(p[1]), 1), round(h.get("floor", h["z0"]), 1)] for p in ring],
             "note": f"no way through {h['edid'] or h['base']}: the mesh ran in at {h['openings']} openings; its footprint, from its collision walls"}
 
 
@@ -225,7 +226,10 @@ def main(argv: list[str]) -> int:
     bases = dict(src.bases)
     bases.update(io.catalogue_bases({r["base"] for r in rows if r.get("base")} - set(bases)))
     hs = houses(rows, bases, _collision_tris)
-    got = cut(nav, rows, bases, _collision_tris)
+    accepted = {a["id"]: a["why"] for a in (files["place"].get("draft") or {}).get("ways_through_accepted") or []}
+    got = [g for g in cut(nav, rows, bases, _collision_tris) if g["id"] not in accepted]
+    for i, why in accepted.items():
+        print(f"  {i}: a way through, accepted: {why}")
     print(f"houses_cut {a.place_id}: {len(hs)} houses and tents, {len(got)} with a way through")
     for g in got:
         print(f"  {g['id']} ({g['edid']}): {g['inside']} triangles inside, {g['openings']} openings round {g['round'] * 30} degrees")

@@ -145,6 +145,18 @@
     ],
     "why": "The second flight of the Xanmeer steps up the longhouse knoll runs along the mossy rock outcrop on its north side and cuts into its foot; from below and from the door (owner 05, 02) the steps read as laid between the rocks, the way a stair is cut through a bank."
    }
+  ],
+  "fit_tilt_kept": [
+   {
+    "id": "tribal-camp-m2-m68.HDSGW1N9X25C7KBF85A1849H20",
+    "why": "one of the two boulders on the south creek bank the agent leant together as one outcrop (accepted overlap); its source pose would part them"
+   }
+  ],
+  "ways_through_accepted": [
+   {
+    "id": "tribal-camp-m2-m68.QTQNYZ565SZ476EQS642TVNZHW",
+    "why": "the longhouse's floor is open to the camp on several sides and people live in it; closing all but one opening cuts the camp's walking mesh at a cell seam (the navmesh check's unjoined seam), so its openings stay"
+   }
   ]
  },
  "fit": {

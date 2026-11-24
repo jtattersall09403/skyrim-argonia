@@ -922,6 +922,12 @@
     "fault": "floats",
     "why": "a basket of fish on the fish-smoker's stall: the section across the stall (2026-11-22) shows it resting on the stall's counter at about 452, 50 over the ground; the stall's counter is not a box the probe reads"
    }
+  ],
+  "ways_through_accepted": [
+   {
+    "id": "jal-veesa.Q41AVRE2HVRDYY5MVRQAQ8YS06",
+    "why": "the thatch house its dweller lives in opens to its platform at both ends; closing either cuts the dweller off from the rest of their day (people check), so both stay its doors"
+   }
   ]
  },
  "fit": {

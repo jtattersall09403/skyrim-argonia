@@ -101,7 +101,9 @@ writes the three angles as they stand, which is how the game and the Creation Ki
 The fit carries a source ref the same way (`draft/wholesale.py`, `draft/srcnav.py`, the studio's `fitRot`): its turn about the up
 axis composes with the ref's own rotation, so a tilted rock or plank keeps the pose it had beside its neighbours in the
 source; `python -m tools.places fit_tilt [<place>] [--apply]` finds a row left in the older composition, probes it on its
-mesh's vertices against the source's pose and puts it right, leaving a row a hand turned as it stands.
+mesh's vertices against the source's pose and puts it right, leaving a row a hand turned as it stands, and one named in place.json `draft.fit_tilt_kept` with its reason (its
+true pose breaks a street, a patrol or an outcrop a hand laid round the older one, found by building the place with
+the change and running its checks).
 
 ## Bundles (derived, never committed)
 
@@ -971,7 +973,8 @@ house and tent that encloses (its collision fills plan cells from a walker's fee
 quarters of the way round), and names each the mesh runs through (in at two or more openings, or round more than half
 of it). `--fix` writes the cure as the place's own walking zones (walk.jsonl, `block`): a house or tent no one walks
 into is cut from the mesh whole; one someone must reach (a bed, a stop, a door's arrival inside) keeps its widest
-opening as its door and has its other openings closed; the next build applies them and the probe then finds none. To make someone walk a particular way into a stop, the stop's Draw the way here (Redraw, Clear
+opening as its door and has its other openings closed; the next build applies them and the probe then finds none. Where closing would cut the mesh wrongly (an open hall
+at a cell seam), the way is accepted by name with its reason (place.json `draft.ways_through_accepted`) and listed. To make someone walk a particular way into a stop, the stop's Draw the way here (Redraw, Clear
 the drawn way) takes taps along the way, in order, then Done: saved as the stop's `route` (`[[x, y, z], ...]`,
 outside) in one `person.edit` op. The build lays it as Bethesda sends someone along a given route: a chain of markers on
 the drawn points, each linked to the next, and a patrol package over it (`people.py`, the Patrol template), scheduled
