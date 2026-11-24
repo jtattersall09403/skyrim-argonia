@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#3a3d42;font:14px sans-serif;color:#eee} #g{display:grid;grid-template-columns:repeat(3,640px);gap:4px;padding:4px}
+.c{position:relative;width:640px;height:420px;background:#5b5f66} .c span{position:absolute;left:6px;top:4px;background:#000a;padding:1px 6px}
+</style></head><body><div id="g"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+const q=new URLSearchParams(location.search), url=q.get('glb'), mode=q.get('mode')||'tex';
+const VIEWS=[['three-quarter',[1,0.55,1]],['side',[0,0.05,1]],['top',[0.0001,1,0]],['bow-on',[1,0.15,0]],['stern three-quarter',[-1,0.5,-1]],['underside',[0.6,-0.8,0.8]]];
+new THREE.GLTFLoader().load(url,g=>{
+  const root=g.scene; const box=new THREE.Box3().setFromObject(root); const c=box.getCenter(new THREE.Vector3()); const s=box.getSize(new THREE.Vector3()); const r=s.length()/2;
+  root.traverse(o=>{ if(o.isMesh){ if(mode==='clay'){o.material=new THREE.MeshStandardMaterial({color:0xb9b4aa,roughness:0.9,flatShading:false});}
+     if(mode==='wire'){o.material=new THREE.MeshBasicMaterial({color:0x111111,wireframe:true});} o.material.side=THREE.DoubleSide; }});
+  for(const [name,d] of VIEWS){ const div=document.createElement('div');div.className='c';div.innerHTML='<span>'+name+' · '+mode+'</span>';document.getElementById('g').appendChild(div);
+    const rn=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true}); rn.setSize(640,420); rn.outputEncoding=THREE.sRGBEncoding; div.appendChild(rn.domElement);
+    const sc=new THREE.Scene(); sc.background=new THREE.Color(mode==='wire'?0xdddddd:0x5b5f66); sc.add(root.clone(true));
+    sc.add(new THREE.HemisphereLight(0xffffff,0x555555,1.0)); const dl=new THREE.DirectionalLight(0xffffff,0.9); dl.position.set(2,4,3); sc.add(dl);
+    const cam=new THREE.PerspectiveCamera(30,640/420,0.01,100); const v=new THREE.Vector3(...d).normalize().multiplyScalar(r*3.9); cam.position.copy(c).add(v); cam.lookAt(c); rn.render(sc,cam); }
+  document.title='done';
+},undefined,e=>{document.title='error';document.body.append(String(e))});
+</script></body></html>

@@ -1,0 +1,4 @@
+{
+ "url": "https://claude.ai/artifact/QcwA43dLwFabYVNJi8hSpC",
+ "about": "The asset explorer: a private page of every model we make, stage by stage, with a 3D view. The owner's notes are documents of the page's database: drafts in `drafts`, sent notes in `batches` ({status: submitted | picked up | actioned, submittedAt, dataVersion, notes[], reply}); a note has kind (pin | stage), item (asset id), field (stage id, or model), model, point and normal (model space, metres, Y up), camera, note and reply. Built by tools/newart/asset_explorer.py from newworld/sources/art/*.json and out/newart/<asset>/measures.json; models go up as single-file glTF JSON (.gltf.json), since the host does not serve .glb."
+}

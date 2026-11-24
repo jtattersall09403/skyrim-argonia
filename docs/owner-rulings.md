@@ -381,6 +381,10 @@ added here the day they are made, with the date and the issue.
   in whole and our own buildings are swapped in at the adapting stage. Sources that contradict the lore are corrected
   to better matches (shared sources allowed). Agents hand-dressing rooms must not scatter things about the floor:
   follow a written method ([the proposal](research/new-art/PROPOSAL.md)).
+- 2026-11-24 (#93/#94, in session): the owner asked for one quick test piece under the standing "no art" rule: the
+  simplest thing we could make, put in a new asset explorer page for him to inspect in 3D, the page to grow into a
+  general explorer of our asset work with feedback notes for agents on specific spots. A dugout canoe was agreed. This
+  permits that one piece and the page; it is not the ruling on #94.
 
 ## Writing
 

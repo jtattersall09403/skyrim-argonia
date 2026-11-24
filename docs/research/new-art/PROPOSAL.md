@@ -327,6 +327,24 @@ Fees are Fal's. Agent time is on top and unmeasured.
 
 Not at any level for now: rooms straight from a generator; new animations; the ball court and the banyan.
 
+### The first test: a dugout canoe
+
+Made on 24 November at the owner's ask, as far as a standard 3D model, and shown in the
+[asset explorer](https://claude.ai/artifact/QcwA43dLwFabYVNJi8hSpC) (its record: `newworld/sources/art/dugout-canoe.json`;
+the tools: `tools/newart/`). Fal fees about $3.80 by list price. What it showed:
+
+- **The loop works and earns its keep.** The first generation was thrown away on both measure and look: a rope in the
+  reference image came back as stray lumps (287 separate pieces on one model). A rope-free reference fixed it. Rule for
+  briefs: no thin parts in a reference.
+- **Two generators from one image differ a lot.** Tripo H3.1 gave one closed piece that reads as carved wood; Tripo P2
+  a slimmer boat with a pebbly surface and loose pieces. Running two and choosing by eye is worth the extra dollar.
+- **Clean-up has a floor.** 19,978 triangles to 8,000 is invisible from six views; 4,000 turns the rim angular. Going
+  lower means rebuilding the rim by hand.
+- **The shared-material idea is not yet proven for look.** On this object the generator's own texture has more
+  character than the repeating material, which reads as wood but flat. Carrying the generation's shading as vertex
+  colour over the shared material sits between the two. The owner's eye decides the direction.
+- **Not done:** Skyrim's model format, collision, the game's measured colour ranges, a distant-view model, placement.
+
 ## 6. Risks and what would have to change
 
 - **King of the Murkmire's terms.** Its author asks that add-ons not use AI; your permission of 24 September
