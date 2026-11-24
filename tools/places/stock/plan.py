@@ -29,6 +29,7 @@ Nothing levelled is left by it: every list is read at level 1 the way the writer
 from __future__ import annotations
 
 import hashlib
+import json
 from collections import defaultdict
 from pathlib import Path
 
@@ -50,14 +51,37 @@ def stock_source(place_id: str) -> Path:
     return STOCK_SRC / "places" / f"{place_id}.json"
 
 
+SHARED_TABLES = ("lock_level", "unique_item")   # lookups every place reads whole
+
+
+def own_rows(place_id: str, text: str) -> bytes:
+    """A table's rows that belong to one place, in file order: its `place_id`, or a person, household or ref id under
+    its prefix. Another place's rows never reach its key."""
+    pre = place_id + "."
+    keep = []
+    for ln in text.splitlines():
+        if not ln.strip():
+            continue
+        r = json.loads(ln)
+        if r.get("place_id") == place_id or any(str(r.get(k) or "").startswith(pre) for k in ("person_id", "id", "household_id")):
+            keep.append(ln)
+    return "\n".join(keep).encode()
+
+
 def key(place_id: str) -> str:
-    """The stock's part of a shard's key: the stock tables, the people and stock sources and this code."""
+    """The stock's part of a shard's key: the place's own rows of the stock tables (the shared lookups whole), its
+    people and stock sources, the scale and this code; one place's stock never changes another place's key."""
     h = hashlib.sha256(place_id.encode())
     here = Path(__file__).parent
     for p in [stock_source(place_id), PEOPLE_SRC / f"{place_id}.json", STOCK_SRC / "scale.json"] + \
-             [DB_DIR / f"{t}.jsonl" for t in TABLES] + [here / n for n in ("plan.py", "split.py", "records.py")]:
+             [here / n for n in ("plan.py", "split.py", "records.py")]:
         if p.exists():
             h.update(p.name.encode() + p.read_bytes())
+    for t in TABLES:
+        p = DB_DIR / f"{t}.jsonl"
+        if p.exists():
+            body = p.read_bytes() if t in SHARED_TABLES else own_rows(place_id, p.read_text(encoding="utf-8"))
+            h.update(p.name.encode() + body)
     return h.hexdigest()[:16]
 
 
