@@ -80,6 +80,8 @@ mesh.
   only where a check, a walk or a plain fault needs it, never to tidy it.
 - Patrols are the source's own marker chains, kept where they still run on our place; a chain across water or a
   pruned part is redrawn by hand along the walks (`people.jsonl` `patrol`, at least two points).
+- People's ways between their stops follow the walks: the paths and walks are preferred-path triangles on the built
+  mesh, and a way drawn by hand on a stop (`route`) makes the mesh under it preferred too (`place-routines`).
 - Work stops and day spots stand on the mesh (`place-routines`).
 
 ## Read it

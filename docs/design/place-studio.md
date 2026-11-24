@@ -932,6 +932,20 @@ unit's move carries those wholly in it), and the walking mesh itself, which the 
 moved. The Selected panel of a thing a routine names says so ("Ada sleeps here: their routine follows it wherever it
 goes"), and moving it says it at the moment of the move.
 
+**What a person's lines are, and a way drawn by hand.** The line between two stops is a picture of the way the
+game's own pathfinding walks between the two packages: on the built walking mesh (`navroute.js`, preferred-path
+triangles cheaper, water dearer) once the place is built, else over our ground (`routes.js`), round every house and
+tent and along the paths. What stands in the way there is read from the real triangles of each piece's mesh
+(`routes.js meshFootprint`: a triangle reaching between 24 and 180 units over the ground shuts the cells it crosses;
+a floor at the feet or a roof overhead does not), a piece whose mesh has not loaded standing by its record's bounds
+when it is a building; the net is made again as the meshes arrive. A patrol (dashed) is the person's own chain of
+markers, which the game walks point by point. To make someone walk a particular way to a stop, the stop's Draw the
+way here (Redraw, Clear the drawn way) takes taps along the way, in order, then Done: saved as the stop's `route`
+(`[[x, y, z], ...]`, outside) in one `person.edit` op, drawn exactly as drawn, and authoritative over the found way
+in the studio. The build makes the walking mesh under it the preferred way (`build.drawn_ways`: a road polyline for
+the generated mesh, `carrynav.prefer_along` for the carried triangles), Bethesda's own preferred-path flag, which
+the game's pathfinding takes before any other; a way that must be followed point for point is a patrol.
+
 **Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
 view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over
 the place, outside and in a room: a translucent surface lying 10 units over the ground, decks, bridges and stairs it

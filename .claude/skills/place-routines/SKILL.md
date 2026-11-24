@@ -21,6 +21,15 @@ idle and sit markers. Put each person there by hand, by trade and household: the
 person whose role the source has no furniture for gets it added beside the place's own (`place-adapt`). Look at
 each spot (`look at <person>`); every spot stands on the walking mesh.
 
+## The ways between stops
+
+The game walks a person between their stops by its own pathfinding on the walking mesh, preferring preferred-path
+triangles: the place's paths and walks, and any way drawn by hand. A way that cuts through a house or a tent in the
+studio is a fault of the mesh or of a piece standing where the mesh does not know it (`place-streets`), never fixed by
+moving the stop. Where a person must take one way to a stop (round the back of the tents, along the jetty), draw it:
+the stop's Draw the way here in the People panel, taps along the way, Done (a stop's `route`). A way that must be
+walked point for point, a guard's round, is a patrol (at least two points).
+
 ## How complete people are
 
 A place's people are as complete as King of the Murkmire's own places, by type of person and place, and no more:

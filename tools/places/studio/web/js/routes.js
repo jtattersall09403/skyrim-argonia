@@ -1,6 +1,10 @@
-// Walking routes outside, as people would take them: round buildings, never through open water (decks and
+// Walking routes outside, as people would take them: round buildings and tents, never through open water (decks and
 // bridges are walked), and along the paths and streets wherever one leads the right way. A search over a grid of
-// 128-unit cells (the land's own grid), the result eased into a line one would walk. Pure: no drawing, no DOM.
+// 128-unit cells (the land's own grid), the result eased into a line one would walk. What stands in the way is read
+// from the real triangles of each piece's mesh (meshFootprint): every triangle reaching into a body's height over the
+// ground shuts the cells it crosses; a piece whose mesh is not loaded yet stands by its record's bounds when it is a
+// building. Pure: no drawing, no DOM.
+import { rotationMatrix } from './xform.js';
 const STEP = 128;
 const WALKWAY = /dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty/i;
 const STREET = 0.45;   // a step on a path costs this much of a step beside it
@@ -8,6 +12,31 @@ const BY_WALL = 1.6;   // a step right beside a wall: people keep to the middle 
 const END_FREE = 3;    // cells round each end that are never shut (a stop at a wall, on a ship's deck, at a door)
 const MAX_CELLS = 300000; // enough for a walk the length of a town (a search that gave up drew a straight line)
 const key = (i, j) => (i + 32768) * 65536 + (j + 32768);
+const BODY_LOW = 24, BODY_HIGH = 180;   // a triangle reaching between these over the ground stands in a walker's way
+const NOT_IN_WAY = new Set(['light', 'marker', 'actor', 'plant', 'groundcover', 'sound', 'tree']);
+
+// The cells a placed mesh shuts: each triangle in world space that reaches into a body's height over the ground there,
+// its edges and its middle sampled every half cell. parts: [{pos (flat model-space xyz), index | null}].
+export function meshFootprint(ref, parts, groundAt, each) {
+  const R = rotationMatrix(ref.rot || [0, 0, 0]), s = ref.scale ?? 1, P = ref.pos;
+  const w = (a, i) => [P[0] + s * (R[0] * a[i] + R[3] * a[i + 1] + R[6] * a[i + 2]),
+    P[1] + s * (R[1] * a[i] + R[4] * a[i + 1] + R[7] * a[i + 2]), P[2] + s * (R[2] * a[i] + R[5] * a[i + 1] + R[8] * a[i + 2])];
+  const mark = (x, y) => each(Math.round(x / STEP), Math.round(y / STEP));
+  for (const { pos, index } of parts) {
+    const n = index ? index.length / 3 : pos.length / 9;
+    for (let f = 0; f < n; f++) {
+      const t = [0, 1, 2].map((k) => w(pos, 3 * (index ? index[f * 3 + k] : f * 3 + k)));
+      const zlo = Math.min(t[0][2], t[1][2], t[2][2]), zhi = Math.max(t[0][2], t[1][2], t[2][2]);
+      const cx = (t[0][0] + t[1][0] + t[2][0]) / 3, cy = (t[0][1] + t[1][1] + t[2][1]) / 3, g = groundAt(cx, cy) ?? zlo;
+      if (zhi < g + BODY_LOW || zlo > g + BODY_HIGH) continue;   // a floor at the feet, or overhead (a roof, an awning)
+      for (let e = 0; e < 3; e++) {
+        const a = t[e], b = t[(e + 1) % 3], m = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / (STEP / 2)));
+        for (let q = 0; q <= m; q++) mark(a[0] + ((b[0] - a[0]) * q) / m, a[1] + ((b[1] - a[1]) * q) / m);
+      }
+      mark(cx, cy);
+    }
+  }
+}
 
 // A small binary heap of [cost, cell key].
 class Heap {
@@ -48,20 +77,25 @@ function footprintCells(ref, bounds, shrink, each) {
 
 export class Walk {
   // terrain: {heightAt(x, y), waterAt(x, y)} or null (an even floor); refs: the place's outdoor refs;
-  // bases: Map(key -> {model, bounds}); paths: [{points, width}]
-  constructor({ terrain = null, refs = [], bases = new Map(), paths = [] } = {}) {
+  // bases: Map(key -> {model, bounds}); paths: [{points, width}]; meshOf(ref): its mesh's parts when loaded, else null
+  constructor({ terrain = null, refs = [], bases = new Map(), paths = [], meshOf = null } = {}) {
     this.t = terrain; this.wall = new Set(); this.wallOf = new Map(); this.deck = new Set(); this.street = new Set(); this.byWall = new Set(); this.wetMemo = new Map();
     let n = 0;
+    const groundAt = (x, y) => (terrain ? terrain.heightAt(x, y) : 0);
     for (const r of refs) {
-      if (r.kind !== 'building') continue;
-      const id = ++n;
+      if (NOT_IN_WAY.has(r.kind) || r.removed) continue;
       const b = bases.get(r.base), bd = b?.bounds;
       if (!bd || bd[1].some((v, k) => v - bd[0][k] > 20000)) continue;
       const deck = r.walk != null || WALKWAY.test(b.model || '');
-      footprintCells(r, bd, deck ? -32 : 48, (i, j) => {
+      const parts = deck ? null : meshOf?.(r);
+      if (!parts && r.kind !== 'building') continue;
+      const id = ++n;
+      const put = (i, j) => {
         const k = key(i, j);
         if (deck) this.deck.add(k); else { this.wall.add(k); const w = this.wallOf.get(k); if (w) w.push(id); else this.wallOf.set(k, [id]); }
-      });
+      };
+      if (parts) meshFootprint(r, parts, groundAt, put);
+      else footprintCells(r, bd, deck ? -32 : 48, put);
     }
     for (const k of this.deck) this.wall.delete(k);   // one walks a deck even where a house stands on it
     for (const k of this.wall) {

@@ -1667,7 +1667,20 @@ def footprint_cells(place: dict) -> set:
             if cn.intersect([(*p, 0.0) for p in cn.cell_box((cx, cy))], ring) is not None}
 
 
-def carried_navmesh(mine: list[dict], pid: str, places: Path) -> dict:
+def drawn_ways(people: list[dict]) -> list[list[tuple]]:
+    """The ways drawn by hand into people's stops (a routine stop's `route`, outside), each from the stop before it
+    through the drawn points to the stop: the walking mesh under them is the preferred way (Bethesda's preferred-path
+    triangles, which the game's pathfinding takes first). Their own stop ends are left to the found way."""
+    out = []
+    for p in people:
+        for st in p.get("routine") or []:
+            pts = st.get("route") or []
+            if pts and ((st.get("at") or {}).get("space") or "exterior") == "exterior":
+                out.append([(float(q[0]), float(q[1]), False) for q in pts])
+    return out
+
+
+def carried_navmesh(mine: list[dict], pid: str, places: Path, ways=()) -> dict:
     """Write a wholesale place's source navmesh into the shipped cells its footprint touches (place.json
     `wholesale.navmesh: "source"`; docs/design/place-studio.md, Navmesh): inside the footprint the source's own
     triangles (srcnav.place_carry: carried at the place's one transform, ground vertices on our ground), in its zones
@@ -1713,6 +1726,8 @@ def carried_navmesh(mine: list[dict], pid: str, places: Path) -> dict:
         if cell is None:
             problem(f"navmesh: cell {c[0]},{c[1]} has no walkable triangle once the carried mesh is written")
             continue
+        if ways:
+            cn.prefer_along(cell, ways)
         n["nv"] = cn.to_nvnm(cell, n["nv"])
         n["joined"] = True
         n["nvmi"] = None
@@ -2211,8 +2226,9 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         touched |= walk_cells(walk_ext)
         if touched:
             objects, tally = collision_objects(S["refs"])
-            polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]]
-            carry = (lambda mine: carried_navmesh(mine, pid, pdir.parent)) if source_navmesh(P) else None
+            ways = drawn_ways(P["people"])
+            polylines = navworld.road_polylines() + [[(x, y, False) for x, y, *_ in p["points"]] for p in P["paths"]] + ways
+            carry = (lambda mine: carried_navmesh(mine, pid, pdir.parent, ways)) if source_navmesh(P) else None
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
                                               [r["pos"] for r in clear], carry, walk_ext)
             nav_info["collision"] = tally

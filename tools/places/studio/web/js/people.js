@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { mintId } from './ids.js';
 import { clock } from './geom.js';
 import { Walk, along } from './routes.js';
+import { partsOf } from './objects.js';
 import { patrolOf, setPatrol, usersOf, followsLine } from './routines.js';
 
 export { patrolOf, setPatrol, usersOf, followsLine };
@@ -92,7 +93,16 @@ export class People {
   }
   walkNet() {
     const a = this.app;
-    if (!this._walk) this._walk = new Walk({ terrain: a.terrain, bases: a.bases, paths: [...a.model.paths.values()], refs: [...(a.model.spaces.exterior?.refs.values() || [])] });
+    // the pieces' meshes load after the place: the net is made again (at most every few seconds) while more of them arrive
+    const refs = [...(a.model.spaces.exterior?.refs.values() || [])], now = performance.now();
+    const meshOf = (r) => { const parts = partsOf((a.bases.get(r.base) || a.srcBases?.get(r.base))?.model); return parts?.length ? parts.map((x) => ({ pos: x.geometry.attributes.position.array, index: x.geometry.index?.array || null })) : null; };
+    if (this._walk && this._walk.short && now - this._walkAt > 4000 && refs.some((r) => !this._walk.seen.has(r.id) && meshOf(r))) { this._walk = null; this._legs.clear(); }
+    if (!this._walk) {
+      const seen = new Set();
+      this._walk = new Walk({ terrain: a.terrain, bases: a.bases, paths: [...a.model.paths.values()], refs,
+        meshOf: (r) => { const m = meshOf(r); if (m) seen.add(r.id); return m; } });
+      this._walk.seen = seen; this._walk.short = seen.size < refs.length; this._walkAt = now;
+    }
     return this._walk;
   }
   // The way from p to q in space S as [[x, y, z], ...]; .built says it lies on the built mesh (its heights are the mesh's).
@@ -109,13 +119,19 @@ export class People {
     return r;
   }
   // Several spots in turn as one walked line (back to the first when closed); each point knows whether it lies on the built mesh.
-  walked(S, spots, closed) {
+  // ways[k]: the way drawn by hand into spots[k] (a stop's `route`), walked as drawn.
+  walked(S, spots, closed, ways = null) {
     const out = [];
     for (let i = 0; i + 1 < spots.length || (closed && i < spots.length && spots.length > 1); i++) {
-      const L = this.leg(S, spots[i], spots[(i + 1) % spots.length]);
+      const L = this.legInto(S, spots[i], spots[(i + 1) % spots.length], ways?.[(i + 1) % spots.length]);
       for (const pt of out.length ? L.slice(1) : L) out.push(L.built ? [pt[0], pt[1], pt[2], true] : pt);
     }
     return out.length ? out : spots;
+  }
+  // The leg into a stop: the way drawn by hand to it when there is one (outside), else the found way.
+  legInto(S, p, q, way) {
+    if (!way?.length || S !== 'exterior') return this.leg(S, p, q);
+    return [p, ...way.map((w) => [w[0], w[1], w[2] ?? p[2]]), q];
   }
   sorted(p) { return [...(p.routine || [])].sort((a, b) => a.start - b.start); }
   active_(p, t) {
@@ -140,7 +156,7 @@ export class People {
       const A = pat[i], B = pat[(i + 1) % n], q = along(this.leg(S, A, B), u); pos = [q[0], q[1], A[2] + (B[2] - A[2]) * u];
     } else if (a.rel < 0.5) { // walking from the last stop for the first half hour
       const from = this.seenFrom(S, a.prev);
-      if (from?.p) { const u = a.rel / 0.5, q = along(this.leg(S, from.p, here.p), u); pos = [q[0], q[1], from.p[2] + (here.p[2] - from.p[2]) * u]; }
+      if (from?.p) { const u = a.rel / 0.5, q = along(this.legInto(S, from.p, here.p, a.s.route), u); pos = [q[0], q[1], from.p[2] + (here.p[2] - from.p[2]) * u]; }
     }
     return { pos, inside: here.inside, stop: a.s };
   }
@@ -199,7 +215,7 @@ export class People {
       const c = this.colour(p), mine = this.sel === p.id;
       if (this.sel && !mine) continue;
       const pts = this.sorted(p).map((s) => ({ s, w: this.seenFrom(S, s) })).filter((x) => x.w?.p);
-      if (pts.length > 1) add('polyline', { class: 'route', stroke: c, 'stroke-opacity': mine ? 0.95 : 0.5, points: this.walked(S, pts.map((x) => x.w.p), true).map((p) => { const q = scr(p); return `${q.x},${q.y}`; }).join(' ') });
+      if (pts.length > 1) add('polyline', { class: 'route', stroke: c, 'stroke-opacity': mine ? 0.95 : 0.5, points: this.walked(S, pts.map((x) => x.w.p), true, pts.map((x) => x.s.route)).map((p) => { const q = scr(p); return `${q.x},${q.y}`; }).join(' ') });
       const pat = this.patrolPts(p);
       if (pat.length && S === 'exterior') add('polygon', { class: 'route', stroke: c, 'stroke-dasharray': '8 6', points: this.walked(S, pat, true).map((q) => { const s = scr(q); return `${s.x},${s.y}`; }).join(' ') });
       if (mine) {
@@ -207,6 +223,7 @@ export class People {
           const q = scr(x.w.p); add('circle', { class: 'stop', cx: q.x, cy: q.y, r: 9, fill: c, 'fill-opacity': x.w.inside ? 0.45 : 1 });
           add('text', { class: 'who', x: q.x + 12, y: q.y - 8 }, `${clock(x.s.start)} ${STOP_KINDS[x.s.kind] || x.s.kind}${x.w.inside ? ' (inside)' : ''}`);
         }
+        if (this.armed?.kind === 'way' && this.armed.id === p.id && this.armed.pts.length) add('polyline', { class: 'route', stroke: c, 'stroke-dasharray': '3 5', points: this.armed.pts.map((q) => { const z = scr(q); return `${z.x},${z.y}`; }).join(' ') });
         pat.forEach((q, i) => { if (S !== 'exterior') return; const s = scr(q); add('rect', { class: 'stop', x: s.x - 7, y: s.y - 7, width: 14, height: 14, fill: c }); add('text', { class: 'who', x: s.x + 10, y: s.y + 4 }, `Patrol ${i + 1}`); });
       }
     }
@@ -338,6 +355,7 @@ export class People {
         work: null, services: [], faction_ranks: [], routine: [{ start: 0, hours: 24, kind: 'wander', at }] };
       a.push({ op: 'person.add', person }); this.armed = null; this.select(person.id); return;
     }
+    if (arm.kind === 'way') { if (S !== 'exterior') { a.toast('A way is drawn outside.'); return; } arm.pts.push(at.pos); this.drawRoutes(); return; }
     const p = a.model.people.get(arm.id); if (!p) return;
     const before = clone(p), after = clone(p);
     if (arm.kind === 'stop') { const s = this.sorted(after)[arm.i]; const idx = after.routine.findIndex((r) => r.start === s.start && r.kind === s.kind); after.routine[idx].at = { ...after.routine[idx].at, ...at, ref: undefined }; delete after.routine[idx].at.ref; }
@@ -348,6 +366,16 @@ export class People {
     }
     this.armed = arm.kind === 'patrol' && arm.i == null ? arm : null;
     a.push({ op: 'person.edit', person: after, before }); this.refresh(); a.panels.open('people');
+  }
+  // Draw the way a person walks into one of their stops: tap the points in order, then Done. Saved as the stop's
+  // `route` (a person.edit op); the build marks the walking mesh under it as the preferred way, which the game's
+  // pathfinding takes. An empty drawing clears it.
+  drawWay(id, i) { this.arm('way', { id, i, pts: [] }); this.drawRoutes(); }
+  finishWay() {
+    const arm = this.armed; this.armed = null; if (arm?.kind !== 'way') return;
+    const s0 = this.sorted(this.app.model.people.get(arm.id) || { routine: [] })[arm.i]; if (!s0) return;
+    this.edit(arm.id, (x) => { const r = x.routine.find((q) => q.start === s0.start && q.kind === s0.kind); if (!r) return; if (arm.pts.length) r.route = arm.pts; else delete r.route; });
+    this.invalidateRoutes(); this.refresh();
   }
   edit(id, fn) {
     const a = this.app, p = a.model.people.get(id); if (!p) return;

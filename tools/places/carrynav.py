@@ -1138,6 +1138,29 @@ def place_cells(carried: list, generated: dict, region: Region, water=None, neig
     return out, {"moved_kept": len(live), "moved_island": len(island)}
 
 
+def prefer_along(cell: dict, lines, half: float | None = None) -> int:
+    """Mark PREFERRED every triangle of a finished cell whose middle lies within `half` (the roads' worn strip,
+    tools.navmesh.inputs.ROAD_HALF_UNITS) of a line [(x, y, ...), ...]: a way drawn by hand is walked as a road is.
+    Returns how many triangles it marked."""
+    from tools.navmesh.inputs import ROAD_HALF_UNITS
+    h2 = (ROAD_HALF_UNITS if half is None else half) ** 2
+    V = np.asarray(cell["verts"], float).reshape(-1, 3)
+    segs = [(np.array(a[:2], float), np.array(b[:2], float)) for ln in lines for a, b in zip(ln, ln[1:])]
+    n = 0
+    for i, t in enumerate(cell["tris"]):
+        if cell["flags"][i] & PREFERRED:
+            continue
+        c = V[list(t), :2].mean(axis=0)
+        for a, b in segs:
+            d = b - a
+            u = 0.0 if not d.any() else float(np.clip(np.dot(c - a, d) / np.dot(d, d), 0, 1))
+            if float(np.sum((a + u * d - c) ** 2)) <= h2:
+                cell["flags"][i] = int(cell["flags"][i]) | PREFERRED
+                n += 1
+                break
+    return n
+
+
 def to_nvnm(cell: dict, template):
     """A finished cell as an Nvnm, its header (world, grid) from `template` (the generated mesh of that cell)."""
     from tools.navmesh import nvnm

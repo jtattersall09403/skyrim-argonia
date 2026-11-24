@@ -330,9 +330,9 @@ export class Panels {
   peoplePanel() {
     const a = this.app, P = a.people, parts = [];
     if (P.armed) {
-      const what = { new: 'where the new person should stand', stop: 'where this stop should be', patrol: 'where the patrol point should be', all: 'where this person should stand' }[P.armed.kind];
-      parts.push(el(`<p><strong>Tap our place ${what}.</strong>${P.armed.kind === 'patrol' && P.armed.i == null ? ' Keep tapping to add more points.' : ''}</p>`));
-      const c = el('<button class="quiet">Done</button>'); c.onclick = () => { P.armed = null; this.peoplePanel(); }; parts.push(c);
+      const what = { new: 'where the new person should stand', stop: 'where this stop should be', patrol: 'where the patrol point should be', all: 'where this person should stand', way: 'along the way they walk to this stop, point by point, in order' }[P.armed.kind];
+      parts.push(el(`<p><strong>Tap our place ${what}.</strong>${(P.armed.kind === 'patrol' && P.armed.i == null) || P.armed.kind === 'way' ? ' Keep tapping to add more points.' : ''}</p>`));
+      const c = el('<button class="quiet">Done</button>'); c.onclick = () => { if (P.armed?.kind === 'way') P.finishWay(); else P.armed = null; this.peoplePanel(); }; parts.push(c);
     }
     if (P.navOf(a.ours.space)) parts.push(el('<p class="tag">Each line is the way that person walks in the game: it is found on the built place\'s own walking mesh. A thing you have moved since the place was last built is walked to over our ground until you finalise.</p>'));
     const p = P.sel && a.model.people.get(P.sel);
@@ -374,7 +374,10 @@ export class Panels {
         const mv = el('<button class="quiet">Put on map</button>'); mv.onclick = () => P.arm('stop', { id: p.id, i });
         const go = el('<button class="quiet">See it</button>'); go.onclick = () => { a.setTime(s.start + Math.min(1, s.hours / 2)); if (sp.space !== a.ours.space) { const door = P.doorTo('exterior', sp.space); if (sp.space === 'exterior') a.leave(a.ours, 0); else if (door) a.enter(a.ours, door); } };
         const rm = el('<button class="quiet" aria-label="Remove this stop">Remove</button>'); rm.onclick = () => { P.edit(p.id, (x) => { x.routine.splice(x.routine.indexOf(find(x)), 1); }); this.peoplePanel(); };
-        const row = el('<div class="row"></div>'); row.append(go, mv, rm); li.querySelector('.what').append(row);
+        const way = el(`<button class="quiet">${s.route?.length ? 'Redraw the way here' : 'Draw the way here'}</button>`); way.onclick = () => { P.drawWay(p.id, i); this.peoplePanel(); };
+        const row = el('<div class="row"></div>'); row.append(go, mv, way, rm);
+        if (s.route?.length) { const cw = el('<button class="quiet">Clear the drawn way</button>'); cw.onclick = () => { P.edit(p.id, (x) => { delete find(x).route; }); P.invalidateRoutes(); P.refresh(); this.peoplePanel(); }; row.append(cw); }
+        li.querySelector('.what').append(row);
         list.append(li);
       });
       parts.push(list);
