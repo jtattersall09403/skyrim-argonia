@@ -156,6 +156,99 @@
    "decision": "Still owed: a matching interior of one or more rooms; collision a player can walk against; a distant-view model; repeating bark, sap and shingle materials so the wall is sharp up close; Skyrim's model format; one swap into a Root-Folk place draft; your look in game.",
    "images": [],
    "models": []
+  },
+  {
+   "id": "experiment",
+   "name": "Cost experiment: cheaper generators",
+   "verdict": "see the table",
+   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "measured": {
+    "prices": "Prices are Fal's list prices, not from a bill.",
+    "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
+   },
+   "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
+   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "images": [
+    [
+     "root-hut.look-x-trellis.jpg",
+     "Trellis, $0.02: kept after clean-up"
+    ],
+    [
+     "root-hut.look-x-trellis-2.jpg",
+     "Trellis 2, $0.05: thrown away"
+    ],
+    [
+     "root-hut.look-x-hunyuan2-mini-turbo-textured.jpg",
+     "Hunyuan 2 mini turbo, textured, $0.24: kept after clean-up"
+    ],
+    [
+     "root-hut.look-x-idol-max-turbo.jpg",
+     "Idol max turbo, $0.10: kept after clean-up"
+    ]
+   ],
+   "models": [
+    "x-trellis",
+    "x-trellis-2",
+    "x-hunyuan2-mini-turbo-textured",
+    "x-idol-max-turbo"
+   ],
+   "routes": [
+    {
+     "route": "Trellis",
+     "price_usd": 0.02,
+     "seconds": 30,
+     "triangles": 40014,
+     "loose_pieces": 13,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "Clearly the root hut: arched plank door, glowing amber windows, roots and leaf roof. 13 small loose pieces and 17 open edges; the roof leaves are pale and blotchy.",
+     "request": "fal-ai/trellis 01a20d62-7660-7ee0-98ac-8aacbe2a676e"
+    },
+    {
+     "route": "Trellis 2",
+     "price_usd": 0.05,
+     "seconds": null,
+     "triangles": 30126,
+     "loose_pieces": 212,
+     "closed": false,
+     "verdict": "thrown away",
+     "look": "Looks right from outside, but the shell is full of holes (7,092 open edges) and 212 loose pieces, and the underside shows camouflage-like smears.",
+     "request": "fal-ai/trellis-2 01a20d62-7654-7ff3-b40f-0b24e66b4938"
+    },
+    {
+     "route": "Hunyuan 2 mini turbo, textured",
+     "price_usd": 0.24,
+     "seconds": null,
+     "triangles": 40000,
+     "loose_pieces": 19,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "Reads as the hut, with door and amber windows; the roof is a smooth tan with little detail, it stands taller than the others, and 19 stray bits float under it.",
+     "request": "fal-ai/hunyuan3d/v2/mini/turbo 01a20d62-763d-7413-9137-1053a553e49a"
+    },
+    {
+     "route": "Hunyuan 3.1 rapid",
+     "price_usd": 0.015,
+     "seconds": null,
+     "triangles": null,
+     "loose_pieces": null,
+     "closed": null,
+     "verdict": "failed",
+     "look": "Rejected before it ran: the reference image was 2,083 KB and this route takes at most 950 KB. Nothing came back.",
+     "request": "fal-ai/hunyuan-3d/v3.1/rapid/image-to-3d 01a20d62-770a-7932-b324-34a28ccfa125"
+    },
+    {
+     "route": "Idol max turbo",
+     "price_usd": 0.1,
+     "seconds": 51,
+     "triangles": 29786,
+     "loose_pieces": 248,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "The richest of the set: layered leaf roof, door, lit windows that show through inside; but 248 small loose pieces to remove (the building tool already does this).",
+     "request": "speridlabs/idol/max/turbo 01a20d62-7629-7e63-990f-919728f93d46"
+    }
+   ]
   }
  ],
  "models": [
@@ -178,6 +271,26 @@
    "id": "shell-door",
    "label": "Shell with door plate",
    "state": "candidate"
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis, $0.02",
+   "state": "test: kept after clean-up"
+  },
+  {
+   "id": "x-trellis-2",
+   "label": "Trellis 2, $0.05",
+   "state": "test: thrown away"
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo, textured, $0.24",
+   "state": "test: kept after clean-up"
+  },
+  {
+   "id": "x-idol-max-turbo",
+   "label": "Idol max turbo, $0.10",
+   "state": "test: kept after clean-up"
   }
  ],
  "default_model": "shell-door"

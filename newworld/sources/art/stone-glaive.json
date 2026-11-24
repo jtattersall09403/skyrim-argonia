@@ -146,6 +146,104 @@
    "decision": "Still owed: the swap into a copy of the donor's model file so its tags and drop collision are kept; a copy of the donor's record with only the model changed; the game's measured colour ranges; your look at it in a Stone-Sleeper's hand.",
    "images": [],
    "models": []
+  },
+  {
+   "id": "experiment",
+   "name": "Cost experiment: cheaper generators",
+   "verdict": "see the table",
+   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "measured": {
+    "prices": "Prices are Fal's list prices, not from a bill.",
+    "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
+   },
+   "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
+   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "images": [
+    [
+     "stone-glaive.look-x-trellis.jpg",
+     "Trellis, $0.02: thrown away"
+    ],
+    [
+     "stone-glaive.look-x-trellis-2.jpg",
+     "Trellis 2, $0.05: kept after clean-up"
+    ],
+    [
+     "stone-glaive.look-x-hunyuan2-mini-turbo-textured.jpg",
+     "Hunyuan 2 mini turbo, textured, $0.24: kept"
+    ],
+    [
+     "stone-glaive.look-x-hunyuan3.1-rapid.jpg",
+     "Hunyuan 3.1 rapid, $0.015: kept"
+    ],
+    [
+     "stone-glaive.look-x-idol-max-turbo.jpg",
+     "Idol max turbo, $0.10: kept after clean-up"
+    ]
+   ],
+   "models": [
+    "x-trellis",
+    "x-trellis-2",
+    "x-hunyuan2-mini-turbo-textured",
+    "x-hunyuan3.1-rapid",
+    "x-idol-max-turbo"
+   ],
+   "routes": [
+    {
+     "route": "Trellis",
+     "price_usd": 0.02,
+     "seconds": 13,
+     "triangles": 2198,
+     "loose_pieces": 0,
+     "closed": false,
+     "verdict": "thrown away",
+     "look": "Two symmetrical spurs where the reference has one, so the outline is wrong; the flaking is soft and smeared. One piece, 2,198 triangles.",
+     "request": "fal-ai/trellis 01a20d62-6964-78d2-8f65-afcbfdf5c571"
+    },
+    {
+     "route": "Trellis 2",
+     "price_usd": 0.05,
+     "seconds": null,
+     "triangles": 28562,
+     "loose_pieces": 209,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "Good flaked obsidian edge and the one bone spur, but 205 small loose pieces and 4 open edges to clear first.",
+     "request": "fal-ai/trellis-2 01a20d62-6964-78d2-8f65-afd57119ed7f"
+    },
+    {
+     "route": "Hunyuan 2 mini turbo, textured",
+     "price_usd": 0.24,
+     "seconds": null,
+     "triangles": 40000,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept",
+     "look": "Faithful outline with the single spur and the lashing; one closed piece; flaking clear though a little soft; the blade is thinner than H3.1 (thickness 6.5% of length, H3.1 11.7%).",
+     "request": "fal-ai/hunyuan3d/v2/mini/turbo 01a20d62-6978-76f3-b331-b02eb389a3d5"
+    },
+    {
+     "route": "Hunyuan 3.1 rapid",
+     "price_usd": 0.015,
+     "seconds": null,
+     "triangles": 50000,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept",
+     "look": "The best head of the set: crisp flake scars, the pale core, one spur, lashed socket and grained wood, all in one closed piece of 50,000 triangles. Needs cutting to about 12,000 triangles for the game.",
+     "request": "fal-ai/hunyuan-3d/v3.1/rapid/image-to-3d 01a20d62-7640-7590-b1e5-051148a8518e"
+    },
+    {
+     "route": "Idol max turbo",
+     "price_usd": 0.1,
+     "seconds": 19,
+     "triangles": 30000,
+     "loose_pieces": 2,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "Sharp flaking and the right outline, but it came back tilted about 20 degrees and in 3 pieces (2 small); straighten and remove the bits.",
+     "request": "speridlabs/idol/max/turbo 01a20d62-762f-7721-8c50-29ca9b2ddef7"
+    }
+   ]
   }
  ],
  "models": [
@@ -163,6 +261,31 @@
    "id": "assembled",
    "label": "Assembled glaive, 2.26 m",
    "state": "candidate"
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis, $0.02",
+   "state": "test: thrown away"
+  },
+  {
+   "id": "x-trellis-2",
+   "label": "Trellis 2, $0.05",
+   "state": "test: kept after clean-up"
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo, textured, $0.24",
+   "state": "test: kept"
+  },
+  {
+   "id": "x-hunyuan3.1-rapid",
+   "label": "Hunyuan 3.1 rapid, $0.015",
+   "state": "test: kept"
+  },
+  {
+   "id": "x-idol-max-turbo",
+   "label": "Idol max turbo, $0.10",
+   "state": "test: kept after clean-up"
   }
  ],
  "default_model": "assembled"

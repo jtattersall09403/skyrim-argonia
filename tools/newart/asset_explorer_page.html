@@ -138,11 +138,15 @@ function measureTable(ids) { const rows = [["", "Triangles", "Pieces", "Open edg
   for (const id of ids) { const mm = S.asset.measures[id], lab = (S.asset.models.find(x => x.id === id) || {}).label || id; if (!mm) continue; const s = mm.size_m.slice().sort((p, q) => q - p);
     rows.push([lab, mm.triangles.toLocaleString(), mm.components, mm.open_edges, mm.non_manifold_edges, mm.watertight ? "yes" : "no", [s[0], mm.size_m[1], s[0] === mm.size_m[0] ? mm.size_m[2] : mm.size_m[0]].map(v => v.toFixed(2)).join(" x ")]); }
   return el("div", { class: "tw" }, el("table", {}, ...rows.map((r, i) => el("tr", {}, ...r.map(c => el(i ? "td" : "th", { text: String(c) })))))); }
+function routeTable(rows) { const h = ["Route", "Price", "Seconds", "Triangles", "Loose pieces", "Closed", "Verdict", "Looked at"];
+  const cell = r => [r.route, "$" + r.price_usd, r.seconds ?? "not reported", r.triangles == null ? "none" : r.triangles.toLocaleString(), r.loose_pieces ?? "none", r.closed == null ? "none" : r.closed ? "yes" : "no", r.verdict, r.look];
+  return el("div", { class: "tw" }, el("table", {}, el("tr", {}, ...h.map(c => el("th", { text: c }))), ...rows.map(r => el("tr", {}, ...cell(r).map(c => el("td", { text: String(c) })))))); }
 function stageNode(s) {
   const measured = s.measured_models ? measureTable(s.measured_models) : s.measured ? el("div", { class: "tw" }, el("table", {}, ...Object.entries(s.measured).map(([k, v]) => el("tr", {}, el("th", { text: k.replace(/_/g, " ") }), el("td", { text: String(v) }))))) : el("p", { class: "muted", text: "Nothing measured." });
   const n = el("div", { class: "stage", id: "stage-" + s.id }, el("header", {}, el("h3", { text: s.name }), tagFor(s.verdict), el("button", { class: "chip", onclick: () => startNote({ kind: "stage", field: s.id, label: s.name }) , text: "Note on this stage" })),
     el("p", { text: s.did, style: "margin:6px 0 0;max-width:75ch" }),
     s.measured_models ? el("div", { class: "two wide" }, el("div", {}, el("h4", { text: "Measured" }), measured)) : null,
+    s.routes ? el("div", { class: "two wide" }, el("div", {}, el("h4", { text: "Routes" }), routeTable(s.routes))) : null,
     el("div", { class: "two" }, s.measured_models ? null : el("div", {}, el("h4", { text: "Measured" }), measured), el("div", {}, el("h4", { text: "Looked at" }), el("p", { text: s.looked || "Not yet." })), el("div", {}, el("h4", { text: "Decided" }), el("p", { text: s.decision }))));
   if (s.models && s.models.length) n.append(el("div", { class: "bar" }, el("span", { class: "muted", text: "Show:" }), ...s.models.map(id => el("button", { class: "chip", onclick: () => { loadModel(id); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); }, text: (S.asset.models.find(x => x.id === id) || {}).label || id }))));
   if (s.images && s.images.length) n.append(el("div", { class: "shots" }, ...s.images.map(([f, c]) => el("figure", {}, el("img", { src: "img/" + f, alt: c, loading: "lazy", onclick: e => zoom(e.target.src) }), el("figcaption", { text: c })))));
@@ -184,7 +188,7 @@ const modelLabel = id => (S.asset.models.find(x => x.id === id) || {}).label || 
 function renderBars() {
   $("#models").replaceChildren(el("span", { class: "muted", text: "Version:" }), ...S.asset.models.map(m => el("button", { class: "chip", "data-id": m.id, "aria-pressed": "false", onclick: () => loadModel(m.id) }, document.createTextNode(m.label), el("span", { class: "st", text: m.state }))));
   $("#cmp").replaceChildren(el("span", { class: "muted", text: "Compare beside it:" }), el("button", { class: "chip", "aria-pressed": String(!S.compare), onclick: () => setCompare(null), text: "Nothing" }),
-    ...S.asset.models.filter(m => m.state === "candidate" || m.state === "alternative").map(m => el("button", { class: "chip", "aria-pressed": String(S.compare === m.id), onclick: () => setCompare(m.id), text: m.label })));
+    ...S.asset.models.map(m => el("button", { class: "chip", "aria-pressed": String(S.compare === m.id), onclick: () => setCompare(m.id), text: m.label })));
   const mode = (id, t) => el("button", { class: "chip", "data-mode": id, "aria-pressed": String(S.mode === id), onclick: () => { S.mode = id; applyMode(); renderBars(); markModel(); }, text: t });
   $("#modes").replaceChildren(el("span", { class: "muted", text: "Show as:" }), mode("tex", "Surfaced"), mode("clay", "Plain clay"), mode("wire", "Triangles"),
     el("button", { class: "chip", "aria-pressed": String(S.scale), onclick: () => { S.scale = !S.scale; R.man.visible = R.man2.visible = S.scale; R.grid.visible = R.grid2.visible = S.scale; renderBars(); markModel(); }, text: "1.8 m figure and 1 m grid" }),

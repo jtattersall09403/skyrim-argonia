@@ -240,6 +240,131 @@
    "decision": "Still owed: Skyrim's model format; a collision shape taken from the real hull so a player can stand in it; the colour and brightness ranges measured from the game; a distant-view model; placing it at a boat stop; your look in game.",
    "images": [],
    "models": []
+  },
+  {
+   "id": "experiment",
+   "name": "Cost experiment: cheaper generators",
+   "verdict": "see the table",
+   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "measured": {
+    "prices": "Prices are Fal's list prices, not from a bill.",
+    "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
+   },
+   "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
+   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "images": [
+    [
+     "dugout-canoe.look-x-trellis.jpg",
+     "Trellis, $0.02: kept"
+    ],
+    [
+     "dugout-canoe.look-x-trellis-2.jpg",
+     "Trellis 2, $0.05: kept"
+    ],
+    [
+     "dugout-canoe.look-x-hunyuan2-mini-turbo-textured.jpg",
+     "Hunyuan 2 mini turbo, textured, $0.24: kept after clean-up"
+    ],
+    [
+     "dugout-canoe.look-x-idol-max-turbo.jpg",
+     "Idol max turbo, $0.10: kept after clean-up"
+    ],
+    [
+     "dugout-canoe.look-x-tripo-h3.1-bare.jpg",
+     "Tripo H3.1 bare, $0.20: kept (shape only)"
+    ],
+    [
+     "dugout-canoe.look-x-tripo-h3.1-bare-shared.jpg",
+     "Tripo H3.1 bare + our material, $0.20: kept"
+    ]
+   ],
+   "models": [
+    "x-trellis",
+    "x-trellis-2",
+    "x-hunyuan2-mini-turbo-textured",
+    "x-idol-max-turbo",
+    "x-tripo-h3.1-bare",
+    "x-tripo-h3.1-bare-shared"
+   ],
+   "routes": [
+    {
+     "route": "Trellis",
+     "price_usd": 0.02,
+     "seconds": 16,
+     "triangles": 3258,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept",
+     "look": "Plainly the dugout: blunt ends, the mooring holes, a clean hollow, dark weathered wood with a green stain. Only 3,258 triangles, one closed piece; the texture is softer than H3.1 but right in colour. Usable as it comes after scaling.",
+     "request": "fal-ai/trellis 01a20d62-6964-72c0-b594-38c34143af40"
+    },
+    {
+     "route": "Trellis 2",
+     "price_usd": 0.05,
+     "seconds": null,
+     "triangles": 29366,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept",
+     "look": "Reads well and keeps the outline; wood with grey weathering and moss, a little lumpy along the rim. One closed piece, 29,366 triangles.",
+     "request": "fal-ai/trellis-2 01a20d62-6965-7030-8c02-c299bd3892d9"
+    },
+    {
+     "route": "Hunyuan 2 mini turbo, textured",
+     "price_usd": 0.24,
+     "seconds": null,
+     "triangles": 40000,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept after clean-up",
+     "look": "Right shape, one closed piece, but the texture is a flat brown with almost no grain or wear; it would want our shared material on top.",
+     "request": "fal-ai/hunyuan3d/v2/mini/turbo 01a20d62-69c8-7e03-9638-4aff994d379e"
+    },
+    {
+     "route": "Hunyuan 3.1 rapid",
+     "price_usd": 0.015,
+     "seconds": null,
+     "triangles": null,
+     "loose_pieces": null,
+     "closed": null,
+     "verdict": "failed",
+     "look": "Rejected before it ran: the reference image was 1,204 KB and this route takes at most 950 KB. Nothing came back.",
+     "request": "fal-ai/hunyuan-3d/v3.1/rapid/image-to-3d 01a20d62-6965-78b2-9f92-c6b61d25e88b"
+    },
+    {
+     "route": "Idol max turbo",
+     "price_usd": 0.1,
+     "seconds": 27,
+     "triangles": 30000,
+     "loose_pieces": 10,
+     "closed": false,
+     "verdict": "kept after clean-up",
+     "look": "Reads as a dugout but the bow came out pointed (the reference is blunt), the texture is blurred, and there are 10 small loose pieces to remove; it also arrived turned on a diagonal.",
+     "request": "speridlabs/idol/max/turbo 01a20d62-6966-7881-95d1-98e851e47d9e"
+    },
+    {
+     "route": "Tripo H3.1 bare",
+     "price_usd": 0.2,
+     "seconds": null,
+     "triangles": 19738,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept (shape only)",
+     "look": "Asked for no texture, it still came back painted: a good closed hull of 19,738 triangles in the right proportions, but scratchy marks like writing in the hollow. Kept for its shape.",
+     "request": "tripo3d/h3.1/image-to-3d 01a20d62-7674-7521-93c5-bad5753f0612"
+    },
+    {
+     "route": "Tripo H3.1 bare + our material",
+     "price_usd": 0.2,
+     "seconds": null,
+     "triangles": 19738,
+     "loose_pieces": 0,
+     "closed": true,
+     "verdict": "kept",
+     "look": "The same bare hull wrapped in our hewn-cypress material: reads as one hewn log, even and sharp, but flat, with none of the generated wear.",
+     "request": "tripo3d/h3.1/image-to-3d 01a20d62-7674-7521-93c5-bad5753f0612"
+    }
+   ]
   }
  ],
  "models": [
@@ -282,6 +407,36 @@
    "id": "shared-shaded",
    "label": "C: shared material, shaded",
    "state": "candidate"
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis, $0.02",
+   "state": "test: kept"
+  },
+  {
+   "id": "x-trellis-2",
+   "label": "Trellis 2, $0.05",
+   "state": "test: kept"
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo, textured, $0.24",
+   "state": "test: kept after clean-up"
+  },
+  {
+   "id": "x-idol-max-turbo",
+   "label": "Idol max turbo, $0.10",
+   "state": "test: kept after clean-up"
+  },
+  {
+   "id": "x-tripo-h3.1-bare",
+   "label": "Tripo H3.1 bare, $0.20",
+   "state": "test: kept (shape only)"
+  },
+  {
+   "id": "x-tripo-h3.1-bare-shared",
+   "label": "Tripo H3.1 bare + our material, $0.20",
+   "state": "test: kept"
   }
  ],
  "default_model": "cleaned"
