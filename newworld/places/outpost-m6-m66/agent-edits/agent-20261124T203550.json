@@ -1,0 +1,206 @@
+{
+ "save_id": "agent-20261124T203550",
+ "place_id": "outpost-m6-m66",
+ "name": "the sap jar under the spigot is a Murkmire clay pot: Hist Sap (T2) is above the weir's T1 ceiling, so it leaves the open root and the minder's list",
+ "at": "2026-11-24T20:35:50Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m6-m66.TF90SAPJAR",
+   "before": {
+    "id": "outpost-m6-m66.TF90SAPJAR",
+    "base": "King of the Murkmire.esp:394B35",
+    "kind": "clutter",
+    "pos": [
+     -44630.0,
+     -538600.0,
+     86.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "a jar of the young Hist's sap set on the root under the spigot (promises p02, p13: the minder sells sap): King of the Murkmire's Hist Sap, the same jar model as Skyrim's Sleeping Tree Sap under the name a Saxhleel camp would give it"
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T20:35:50Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "ref": {
+    "id": "outpost-m6-m66.TF91SAPPOT",
+    "base": "King of the Murkmire.esp:5E24AF",
+    "kind": "static",
+    "pos": [
+     -44622.0,
+     -538600.0,
+     91.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.4
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "enable_parent": {
+     "ref": "outpost-m6-m66.5088NN8EV33EH6CCZWK8JWA14B",
+     "flags": "0"
+    },
+    "tier": "AGENT_INVENTED",
+    "why": "the minder's sap pot set in the root crook under the spigot (promises p02, p13): a Murkmire clay pot (King of the Murkmire's Xanmeer pot), fixed in place; Skyrim's Sleeping Tree Sap jar and King of the Murkmire's Hist Sap (100 gold, T2) are above the weir's T1 ceiling and cannot lie in the open here"
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T20:35:50Z"
+  },
+  {
+   "op": "stock.loose.remove",
+   "loose": {
+    "id": "outpost-m6-m66.TF90SAPJAR",
+    "space": "exterior",
+    "item": "King of the Murkmire.esp:394B35",
+    "count": 1,
+    "owner_person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V",
+    "why": "the jar under the Hist's spigot is Heem-Jasa's, the minder's: taking it is stealing from her (promise p13)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T20:35:50Z"
+  },
+  {
+   "op": "stock.trader.set",
+   "trader": {
+    "person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V",
+    "give_seq": 3,
+    "gold": 375,
+    "items": [
+     {
+      "item": "Skyrim.esm:03EADD",
+      "count": 2,
+      "why": "T1 RestoreHealth (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE0",
+      "count": 2,
+      "why": "T1 RestoreMagicka (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE5",
+      "count": 2,
+      "why": "T1 RestoreStamina (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EADE",
+      "count": 1,
+      "why": "T2 RestoreHealth (grade 2)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE1",
+      "count": 1,
+      "why": "T2 RestoreMagicka (grade 2)"
+     },
+     {
+      "item": "Skyrim.esm:039BE8",
+      "count": 1,
+      "why": "T2 RestoreStamina (grade 2)"
+     },
+     {
+      "item": "Skyrim.esm:07E8B7",
+      "count": 5,
+      "why": "swamp fungus cut from the Hist's roots and the cypress platforms (promise p13: she sells swamp fungus)"
+     }
+    ],
+    "why": "Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells: vanilla's trader-apothecary gold times P2's 0.75; tiers T1 to T2, fewer of each tier upward, within a list value of 900",
+    "cites": [
+     "place_wealth:outpost-m6-m66",
+     "place_give:outpost-m6-m66/3"
+    ]
+   },
+   "before": {
+    "person": "outpost-m6-m66.YD5KBEBAEJ872QV0FZ3X1W0D5V",
+    "give_seq": 3,
+    "gold": 375,
+    "items": [
+     {
+      "item": "Skyrim.esm:03EADD",
+      "count": 2,
+      "why": "T1 RestoreHealth (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE0",
+      "count": 2,
+      "why": "T1 RestoreMagicka (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE5",
+      "count": 2,
+      "why": "T1 RestoreStamina (grade 1)"
+     },
+     {
+      "item": "Skyrim.esm:03EADE",
+      "count": 1,
+      "why": "T2 RestoreHealth (grade 2)"
+     },
+     {
+      "item": "Skyrim.esm:03EAE1",
+      "count": 1,
+      "why": "T2 RestoreMagicka (grade 2)"
+     },
+     {
+      "item": "Skyrim.esm:039BE8",
+      "count": 1,
+      "why": "T2 RestoreStamina (grade 2)"
+     },
+     {
+      "item": "King of the Murkmire.esp:394B35",
+      "count": 2,
+      "why": "the young Hist's sap, drawn at the spigot before the scar closed and kept in jars (promise p13: she sells sap)"
+     },
+     {
+      "item": "Skyrim.esm:07E8B7",
+      "count": 5,
+      "why": "swamp fungus cut from the Hist's roots and the cypress platforms (promise p13: she sells swamp fungus)"
+     }
+    ],
+    "why": "Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells: vanilla's trader-apothecary gold times P2's 0.75; tiers T1 to T2, fewer of each tier upward, within a list value of 900",
+    "cites": [
+     "place_wealth:outpost-m6-m66",
+     "place_give:outpost-m6-m66/3"
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T20:35:50Z"
+  }
+ ]
+}

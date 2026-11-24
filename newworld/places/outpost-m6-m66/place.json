@@ -158,6 +158,18 @@
     "id": "outpost-m6-m66.XSFH9JZ5B3CRHJQ21W8H0YGSQE",
     "why": "its source pose under the fit stands across the camp street and the two watchmen's patrol laid round its older pose (outpost-m6-m66 streets and people checks fail with it), so it keeps that pose"
    }
+  ],
+  "accepted_faults": [
+   {
+    "id": "outpost-m6-m66.TF89SPIGOT",
+    "fault": "floats",
+    "why": "the sap spigot is driven into the young Hist's trunk on its east face (section along y -538600: its tapered end inside the bark at z 140); the probe lets no tree hold a thing, so a tap in a trunk reads as floating"
+   },
+   {
+    "id": "outpost-m6-m66.TF91SAPPOT",
+    "fault": "floats",
+    "why": "the sap pot stands on the Hist's root flare in the crook under the spigot (sections along y -538600 and x -44622: its base on the root's top at z 88 to 91); the probe lets no tree hold a thing up from below, so a pot on a root reads as floating"
+   }
   ]
  },
  "fit": {
@@ -260,7 +272,9 @@
   "agent-20261122T033055",
   "agent-20261122T120000",
   "agent-20261122T134711",
-  "agent-20261122T234319"
+  "agent-20261122T234319",
+  "agent-20261124T201930",
+  "agent-20261124T203550"
  ],
  "sap": {
   "added": [
