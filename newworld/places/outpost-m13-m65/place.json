@@ -345,7 +345,23 @@
   "rent_bed": null
  },
  "lights": {
-  "added": []
+  "added": [
+   {
+    "id": "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
+    "base": "Skyrim.esm:0B735D",
+    "on": "outpost-m13-m65.LOOK008PLACE"
+   },
+   {
+    "id": "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P",
+    "base": "Skyrim.esm:0B735D",
+    "on": "outpost-m13-m65.LOOK010PLACE"
+   },
+   {
+    "id": "outpost-m13-m65.7QB2GYXEVDD9ZP0A4440CZRQQJ",
+    "base": "Skyrim.esm:0B735D",
+    "on": "outpost-m13-m65.LOOK049PLACE"
+   }
+  ]
  },
  "hang": {
   "added": []
@@ -443,7 +459,10 @@
   "agent-20261124T152827b",
   "agent-20261124T152828",
   "agent-20261124T152828b",
-  "agent-20261124T154525"
+  "agent-20261124T154525",
+  "agent-20261124T170921",
+  "agent-20261124T171031",
+  "agent-20261124T171440"
  ],
  "draft": {
   "add": [
@@ -1624,6 +1643,41 @@
    "note": "",
    "owner_save": "open session",
    "rows": []
+  },
+  {
+   "save": "agent-20261124T170921",
+   "stroke": 1,
+   "answers": "g11",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.BOARDINGPLANK",
+    "outpost-m13-m65.path.01",
+    "outpost-m13-m65.walk.jetty",
+    "outpost-m13-m65.walk.plank"
+   ]
+  },
+  {
+   "save": "agent-20261124T171031",
+   "stroke": 1,
+   "answers": "g11",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
+    "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P"
+   ]
+  },
+  {
+   "save": "agent-20261124T171440",
+   "stroke": 1,
+   "answers": "g11",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
+    "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P"
+   ]
   }
  ]
 }

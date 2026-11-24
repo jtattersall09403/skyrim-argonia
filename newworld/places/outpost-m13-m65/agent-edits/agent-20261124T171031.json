@@ -1,0 +1,78 @@
+{
+ "save_id": "agent-20261124T171031",
+ "place_id": "outpost-m13-m65",
+ "name": "g11: the two barge lanterns' lights, added by the lights stage, set where the lanterns stand on the barge the owner moved",
+ "at": "2026-11-24T17:10:31Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
+   "before": {
+    "pos": [
+     -102335.58,
+     -527561.97,
+     177.3
+    ],
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m13-m65.LOOK008PLACE",
+     "dz": -16.6
+    }
+   },
+   "after": {
+    "pos": [
+     -102608.83,
+     -526795.97,
+     144.89
+    ],
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m13-m65.LOOK008PLACE",
+     "dz": -16.6
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:10:31Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P",
+   "before": {
+    "pos": [
+     -102070.18,
+     -527562.07,
+     177.3
+    ],
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m13-m65.LOOK010PLACE",
+     "dz": -16.6
+    }
+   },
+   "after": {
+    "pos": [
+     -102343.43,
+     -526796.07,
+     144.89
+    ],
+    "seat": {
+     "mode": "on",
+     "on": "outpost-m13-m65.LOOK010PLACE",
+     "dz": -16.6
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:10:31Z",
+   "answers": "g11"
+  }
+ ]
+}

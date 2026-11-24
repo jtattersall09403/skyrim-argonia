@@ -1,0 +1,475 @@
+{
+ "save_id": "agent-20261124T170921",
+ "place_id": "outpost-m13-m65",
+ "name": "n3 and g11: the boarding plank, where the owner put it, tilted 15 degrees so its foot rests on the jetty's deck and its head on the barge's forward deck (each end within 3 cm of the deck under it); the jetty's and plank's walking zones and the camp path's heights laid on the jetty deck (108) and the plank",
+ "at": "2026-11-24T17:09:21Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.BOARDINGPLANK",
+   "before": {
+    "pos": [
+     -102068.0,
+     -527810.0,
+     127.0
+    ],
+    "rot": [
+     0,
+     0.2,
+     3.14159
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102077.63,
+     -527407.33,
+     146.5
+    ],
+    "rot": [
+     0,
+     -0.259,
+     3.1416
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:09:21Z",
+   "answers": "g11"
+  },
+  {
+   "op": "path.edit",
+   "path": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99376,
+      -528448
+     ],
+     [
+      -99312,
+      -528384
+     ],
+     [
+      -99312,
+      -528256
+     ],
+     [
+      -99248,
+      -528192
+     ],
+     [
+      -99248,
+      -527968
+     ],
+     [
+      -99344,
+      -527872
+     ],
+     [
+      -99504,
+      -527808
+     ],
+     [
+      -99600,
+      -527712
+     ],
+     [
+      -99760,
+      -527712
+     ],
+     [
+      -99856,
+      -527616
+     ],
+     [
+      -100048,
+      -527616
+     ],
+     [
+      -100272,
+      -527392
+     ],
+     [
+      -100432,
+      -527360
+     ],
+     [
+      -100464,
+      -527328
+     ],
+     [
+      -100496,
+      -527360
+     ],
+     [
+      -100624,
+      -527360
+     ],
+     [
+      -100688,
+      -527424
+     ],
+     [
+      -100816,
+      -527424
+     ],
+     [
+      -101100.0,
+      -527430.0
+     ],
+     [
+      -101440.0,
+      -527440.0
+     ],
+     [
+      -101470.0,
+      -527440.0,
+      108.0
+     ],
+     [
+      -101892.0,
+      -527407.0,
+      108.0
+     ],
+     [
+      -102262.0,
+      -527407.0,
+      200.0
+     ],
+     [
+      -102420.0,
+      -527380.0,
+      200.0
+     ],
+     [
+      -102450.0,
+      -527200.0,
+      110.0
+     ],
+     [
+      -102450.0,
+      -527050.0,
+      72.0
+     ],
+     [
+      -102476.0,
+      -526780.0,
+      68.0
+     ],
+     [
+      -102475.55,
+      -526704.0,
+      60.0
+     ]
+    ],
+    "laid": "by hand: from the hut's door, across the world's road and round the north of the tents to the land end of the jetty the owner laid by the barge, along its deck, up the boarding plank onto the barge's forward deck and aft down its waist to the hold door",
+    "blocked_by": {
+     "outpost-m13-m65.LANDINGJETTY": "the jetty's own mooring posts stand at its far end either side of its deck, which the way runs along between them",
+     "outpost-m13-m65.LOOK006PLACE": "the barge's rail at its waist is stepped over from the jetty, which lies level with it as Black Marsh & Valenwood moors this ship at its own docks"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.path.01",
+    "kind": "path",
+    "width": 160,
+    "style": "dirt",
+    "from": "outpost-m13-m65.9EFSHMFNB5T35WZ544NAVKJ395",
+    "to": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "points": [
+     [
+      -99368.0,
+      -529188.0
+     ],
+     [
+      -99376,
+      -528448
+     ],
+     [
+      -99312,
+      -528384
+     ],
+     [
+      -99312,
+      -528256
+     ],
+     [
+      -99248,
+      -528192
+     ],
+     [
+      -99248,
+      -527968
+     ],
+     [
+      -99344,
+      -527872
+     ],
+     [
+      -99504,
+      -527808
+     ],
+     [
+      -99600,
+      -527712
+     ],
+     [
+      -99760,
+      -527712
+     ],
+     [
+      -99856,
+      -527616
+     ],
+     [
+      -100048,
+      -527616
+     ],
+     [
+      -100272,
+      -527392
+     ],
+     [
+      -100432,
+      -527360
+     ],
+     [
+      -100464,
+      -527328
+     ],
+     [
+      -100496,
+      -527360
+     ],
+     [
+      -100624,
+      -527360
+     ],
+     [
+      -100688,
+      -527424
+     ],
+     [
+      -100816,
+      -527424
+     ],
+     [
+      -101100.0,
+      -527430.0
+     ],
+     [
+      -101440.0,
+      -527440.0
+     ],
+     [
+      -101470.0,
+      -527440.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527430.0,
+      172.0
+     ],
+     [
+      -102240.0,
+      -527407.0,
+      195.0
+     ],
+     [
+      -102420.0,
+      -527380.0,
+      195.0
+     ],
+     [
+      -102450.0,
+      -527200.0,
+      110.0
+     ],
+     [
+      -102450.0,
+      -527050.0,
+      72.0
+     ],
+     [
+      -102476.0,
+      -526780.0,
+      68.0
+     ],
+     [
+      -102475.55,
+      -526704.0,
+      60.0
+     ]
+    ],
+    "laid": "by hand: from the hut's door, across the world's road and round the north of the tents to the land end of the jetty the owner laid by the barge, along its deck, up the boarding plank onto the barge's forward deck and aft down its waist to the hold door",
+    "blocked_by": {
+     "outpost-m13-m65.LANDINGJETTY": "the jetty's own mooring posts stand at its far end either side of its deck, which the way runs along between them",
+     "outpost-m13-m65.LOOK006PLACE": "the barge's rail at its waist is stepped over from the jetty, which lies level with it as Black Marsh & Valenwood moors this ship at its own docks"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:09:21Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.jetty",
+    "kind": "walk",
+    "note": "the landing jetty deck where the owner laid it by the barge, from the bank to the boarding plank",
+    "outline": [
+     [
+      -101450.0,
+      -527560.0,
+      108.0
+     ],
+     [
+      -101982.0,
+      -527560.0,
+      108.0
+     ],
+     [
+      -101982.0,
+      -527330.0,
+      108.0
+     ],
+     [
+      -101450.0,
+      -527330.0,
+      108.0
+     ]
+    ],
+    "space": "exterior"
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.jetty",
+    "kind": "walk",
+    "note": "the landing jetty deck where the owner laid it by the barge, from the bank to the boarding plank",
+    "outline": [
+     [
+      -101450.0,
+      -527560.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527560.0,
+      172.0
+     ],
+     [
+      -101990.0,
+      -527330.0,
+      172.0
+     ],
+     [
+      -101450.0,
+      -527330.0,
+      172.0
+     ]
+    ],
+    "space": "exterior"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:09:21Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the boarding plank from the jetty end up over the rail onto the barge forward deck",
+    "outline": [
+     [
+      -101892.0,
+      -527450.0,
+      108.0
+     ],
+     [
+      -102262.0,
+      -527450.0,
+      200.0
+     ],
+     [
+      -102262.0,
+      -527364.0,
+      200.0
+     ],
+     [
+      -101892.0,
+      -527364.0,
+      108.0
+     ]
+    ]
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the boarding plank from the jetty end up over the rail onto the barge forward deck",
+    "outline": [
+     [
+      -101990.0,
+      -527455.0,
+      172.0
+     ],
+     [
+      -102250.0,
+      -527455.0,
+      195.0
+     ],
+     [
+      -102250.0,
+      -527359.0,
+      195.0
+     ],
+     [
+      -101990.0,
+      -527359.0,
+      172.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:09:21Z",
+   "answers": "g11"
+  }
+ ]
+}
