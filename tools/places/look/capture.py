@@ -312,7 +312,8 @@ def score(ids: np.ndarray, table: list, id0: int, subject: set[str], wide: dict 
 
 
 def banner(img, text: str):
-    """A red banner across the image saying why a capture failed."""
+    """A red banner along the image's foot saying why a capture failed: the subject is framed at the centre, so the
+    banner never covers it and the failed picture can still be read."""
     from PIL import ImageDraw
     from tools.places.look import draw
     img = img.convert("RGBA")
@@ -328,7 +329,7 @@ def banner(img, text: str):
             cur = (cur + " " + wd).strip()
     lines.append(cur)
     lh = 20 * k
-    y0 = img.height // 2 - lh / 2 * len(lines)
+    y0 = img.height - lh * len(lines) - 6 * k
     d.rectangle([0, y0 - 6 * k, img.width, y0 + lh * len(lines) + 4 * k], fill=(200, 20, 20, 235))
     for i, ln in enumerate(lines):
         d.text((8 * k, y0 + lh * i), ln, fill=(255, 255, 255, 255), font=f)

@@ -39,3 +39,12 @@ def test_no_mesh_read_keeps_the_box(monkeypatch):
         raise FileNotFoundError
     monkeypatch.setattr(shape, "posed", boom)
     assert capture.camera_inside((-200, 300, 160), [_house()], 0.0) is not None
+
+
+def test_failed_banner_leaves_the_frame_centre_clear():
+    """A failed capture's banner sits at the foot of the image, so the subject framed at the centre stays readable."""
+    from PIL import Image
+    from tools.places.look import capture
+    img = capture.banner(Image.new("RGB", (900, 600), (0, 0, 255)), "the subject fills 0.5% of the frame " * 3)
+    assert img.getpixel((450, 300))[:3] == (0, 0, 255)
+    assert img.getpixel((450, 595))[:3] != (0, 0, 255)
