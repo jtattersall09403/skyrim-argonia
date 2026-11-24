@@ -280,6 +280,18 @@ def test_a_record_change_changes_the_hash(tmp_path):
     assert se.sources_hash(root) != before
 
 
+def test_the_digests_database_stamp_does_not_change_the_hash_but_its_text_does(tmp_path):
+    root = record_tree(tmp_path / "r")
+    idx = root / se.WORLD / "index.md"
+    idx.parent.mkdir(parents=True, exist_ok=True)
+    idx.write_text("# The province\n\nMade 2026-11-24 from database revision `aaaa` (the first 16 hex digits).\n\nReeds.\n")
+    before = se.sources_hash(root)
+    idx.write_text("# The province\n\nMade 2026-11-25 from database revision `bbbb` (the first 16 hex digits).\n\nReeds.\n")
+    assert se.sources_hash(root) == before   # a stock row elsewhere moves only the stamp
+    idx.write_text("# The province\n\nMade 2026-11-25 from database revision `bbbb` (the first 16 hex digits).\n\nRushes.\n")
+    assert se.sources_hash(root) != before
+
+
 PLAY_YAML = """
 id: quest.main.mn02
 code: MN02

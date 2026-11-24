@@ -71,10 +71,15 @@ def record_files(root: Path = ROOT) -> list[Path]:
     return sorted((root / RECORDS).glob("*/*.yaml"))
 
 
+STAMP = re.compile(rb"^Made \d{4}-\d{2}-\d{2} from database revision .*\n", re.M)
+
+
 def sources_hash(root: Path = ROOT) -> str:
+    """The hash of what the explorer shows. The digest's stamp line (the day and the revision of the whole database)
+    is left out: it moves with any table row, a place's stock among them, while the story the page shows has not."""
     h = hashlib.sha256()
     for rel in sources(root):
-        h.update(str(rel).encode() + b"\0" + (root / rel).read_bytes() + b"\0")
+        h.update(str(rel).encode() + b"\0" + STAMP.sub(b"", (root / rel).read_bytes()) + b"\0")
     return h.hexdigest()[:16]
 
 
