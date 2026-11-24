@@ -680,6 +680,10 @@ def _rebased(files, op, answered: dict):
     the answer landed): a move or removal of a row the agent answered, whose `before` no longer fits, is his edit
     over the row as it stands now (his favour), except when the agent's answer names this op's own note: then the
     answer, made over his edit, stands and his op is kept as no change. Any other op is as given."""
+    if op["op"] == "unit.move":
+        return _rebased_unit(files, op, answered)
+    if op["op"] in ROW_EDITS:
+        return _rebased_row(files, op, answered)
     rid = op.get("id")
     if op["op"] not in ("ref.move", "ref.remove") or rid not in answered:
         return op
@@ -697,6 +701,48 @@ def _rebased(files, op, answered: dict):
     if op.get("note_group") in answered[rid] or op.get("note") in answered[rid]:
         return dict(op, before=before, after=copy.deepcopy(before))   # the answer stands: his op is kept, as no change
     return dict(op, before=before)
+
+
+ROW_EDITS = ("person.edit", "quest.edit", "walk.edit", "path.edit")
+
+
+def _rebased_row(files, op, answered: dict, note=None):
+    """A person's, quest spot's, walk's or path's edit of his on a row an agent answered, whose `before` no longer
+    fits: his row over the row as it stands (his favour), or no change when the answer names his note (_rebased)."""
+    table = op["op"].split(".")[0]
+    rid = (op.get(table) or {}).get("id")
+    if rid not in answered:
+        return op
+    rows = files.get(TABLES[table]) or []
+    i = _find(rows, rid)
+    if i is None or same(rows[i], op["before"]):
+        return op
+    cur = copy.deepcopy(rows[i])
+    if (note or op.get("note_group") or op.get("note")) in answered[rid]:
+        return dict(op, before=cur, **{table: copy.deepcopy(cur)})
+    return dict(op, before=cur)
+
+
+def _rebased_unit(files, op, answered: dict):
+    """A unit his session moved whole, some of whose members an agent answered: each answered member is rebased as
+    its own move would be (ref members as _rebased, spots as _rebased_row), the rest as given."""
+    note = op.get("note_group") or op.get("note")
+    rows = (files["spaces"].get(op.get("space", "exterior")) or {}).get("refs") or []
+    refs = []
+    for m in op.get("refs") or []:
+        i = _find(rows, m["id"]) if m["id"] in answered else None
+        if i is None or rows[i].get("removed") or all(same(rows[i].get(k), v) for k, v in m["before"].items()):
+            refs.append(m)
+            continue
+        before = {k: copy.deepcopy(rows[i].get(k)) for k in m["before"]}
+        refs.append(dict(m, before=before, after=copy.deepcopy(before) if note in answered[m["id"]] else m["after"]))
+    out = dict(op, refs=refs)
+    for key, table in (("people", "person"), ("quests", "quest"), ("walks", "walk"), ("paths", "path")):
+        if op.get(key):
+            got = [_rebased_row(files, {"op": f"{table}.edit", table: m[table], "before": m["before"]}, answered, note)
+                   for m in op[key]]
+            out[key] = [dict(m, **{table: g[table], "before": g["before"]}) for m, g in zip(op[key], got)]
+    return out
 
 
 def _cached(source):
@@ -832,7 +878,7 @@ def apply_agent_save(place_files: dict, save: dict, owner_ids=frozenset(), sourc
     lead = {x["id"]: x["text"] for x in save.get("notes") or [] if x.get("by") == "lead"}
 
     def ids(op):
-        return {op.get("id"), (op.get("ref") or {}).get("id")} - {None}
+        return {i for o in expand([op]) for i in (o.get("id"), (o.get("ref") or {}).get("id"), _row_id(o))} - {None}
 
     def answered(g, hit):
         """(owner save, note words) when every op of the stroke answers a note that covers every row it touches."""

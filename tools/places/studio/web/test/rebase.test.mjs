@@ -72,3 +72,21 @@ test('his changes a later request of his undid replay as no change', () => {
   assert.deepEqual(m.spaces.exterior.refs.get(c).pos, was);
   assert.ok(!m.spaces.exterior.refs.get(c).removed);
 });
+
+test('his unit moves and person edits replay over answers by the same rule', () => {
+  const { files, a, b, was } = drafted();
+  files.people = [...(files.people || []), { id: 'fx.p1', name: 'P', routine: [{ start: 8, kind: 'wander', at: { space: 'exterior', pos: [9, 9] } }] }];
+  files.place.agent_answers.push({ save: 'agent-a', stroke: 2, answers: 'g12', rows: ['fx.p1'] });
+  const p0 = { id: 'fx.p1', name: 'P', routine: [{ start: 8, kind: 'wander', at: { space: 'exterior', pos: [0, 0] } }] };
+  const m = modelFromFiles(files), log = new EditLog(m);
+  const ops = [
+    { n: 1, op: 'unit.move', space: 'exterior', unit: 'u1', note_group: 'g8', refs: [
+      { id: a, before: { pos: was.a }, after: { pos: [was.a[0] + 100, was.a[1], was.a[2]] } },
+      { id: b, before: { pos: was.b }, after: { pos: [was.b[0] + 100, was.b[1], was.b[2]] } }] },
+    { n: 2, op: 'person.edit', note_group: 'g12', person: { ...p0, routine: [{ start: 8, kind: 'wander', at: { space: 'exterior', pos: [5, 5] } }] }, before: p0 },
+  ];
+  assert.equal(log.load(ops, [{ id: 'g8', text: 'fix it' }, { id: 'g12', text: 'taste' }]), null);
+  assert.equal(m.spaces.exterior.refs.get(a).pos[0], was.a[0] + 107);   // answered for g8: the answer stands
+  assert.equal(m.spaces.exterior.refs.get(b).pos[0], was.b[0] + 3);     // b answered for g8 too: that answer stands
+  assert.deepEqual(m.people.get('fx.p1').routine[0].at.pos, [9, 9]);    // g12 answered: the answer stands
+});

@@ -165,9 +165,40 @@ export function answeredNote(m, op) {
   return notes.size > 0 && (notes.has(op.note_group) || notes.has(op.note));
 }
 
+const answersOn = (m, id) => new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(id)).map((a) => a.answers));
+const ROW_TABLES = { person: 'people', quest: 'quests', walk: 'walk', path: 'paths' };
+
+// A person's, quest spot's, walk's or path's edit of his on an answered row whose before no longer fits: his row
+// over the row as it stands, or no change when the answer names his note (edits.py _rebased_row).
+function rebaseRow(m, op, note) {
+  const table = op.op.split('.')[0], row = op[table], notes = answersOn(m, row?.id);
+  if (!notes.size) return op;
+  const cur = m[ROW_TABLES[table]]?.get(row.id);
+  if (!cur || same(cur, op.before)) return op;
+  if (notes.has(note ?? (op.note_group || op.note))) return { ...op, before: clone(cur), [table]: clone(cur) };
+  return { ...op, before: clone(cur) };
+}
+
+// A unit he moved whole, some of whose members an agent answered: each answered member rebased as its own move
+// would be, the spots it carries as rebaseRow (edits.py _rebased_unit).
+function rebaseUnit(m, op) {
+  const note = op.note_group || op.note, refs = m.spaces[op.space || 'exterior']?.refs;
+  const out = { ...op, refs: op.refs.map((u) => {
+    const notes = answersOn(m, u.id), r = notes.size ? refs?.get(u.id) : null;
+    if (!r || r.removed || Object.entries(u.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return u;
+    const before = Object.fromEntries(Object.keys(u.before).map((k) => [k, clone(r[k] ?? null)]));
+    return { ...u, before, after: notes.has(note) ? clone(before) : u.after };
+  }) };
+  for (const [key, table] of [['people', 'person'], ['quests', 'quest'], ['walks', 'walk'], ['paths', 'path']])
+    if (op[key]) out[key] = op[key].map((u) => { const g = rebaseRow(m, { op: `${table}.edit`, [table]: u[table], before: u.before }, note); return { ...u, [table]: g[table], before: g.before }; });
+  return out;
+}
+
 export function rebaseOp(m, op) {
+  if (op.op === 'unit.move') return rebaseUnit(m, op);
+  if (['person.edit', 'quest.edit', 'walk.edit', 'path.edit'].includes(op.op)) return rebaseRow(m, op);
   if (op.op !== 'ref.move' && op.op !== 'ref.remove') return op;
-  const notes = new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(op.id)).map((a) => a.answers));
+  const notes = answersOn(m, op.id);
   if (!notes.size) return op;
   const r = m.spaces[op.space || 'exterior']?.refs.get(op.id);
   if (!r || r.removed) return op;

@@ -158,3 +158,41 @@ def test_a_later_request_undoes_his_earlier_change(fx):
                                    "notes": [{"id": "g2", "text": "in the way", "at": "x"}]})
     got = next(r for r in out["spaces"]["exterior"]["refs"] if r["id"] == a_id)
     assert not got.get("removed") and got["pos"] == ra["pos"]
+
+
+def test_his_unit_moves_and_spot_edits_replay_over_answers(fx):
+    """A unit he moved whole, a member of which the agent answered, and a person's edit of his on a person the agent
+    answered, replay by the same rule: the answered note's change is kept as no change (the answer stands), another
+    note's is his edit over the row as it stands. The agent's answer lists the person it touched among its rows."""
+    pdir = fx / "places/fx"
+    refs = rows(pdir / EXT)
+    a_id, b_id = refs[0]["id"], refs[1]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    rb = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == b_id)
+    files.setdefault("people", []).append({"id": "fx.p1", "name": "P", "routine": [{"start": 8, "kind": "wander", "at": {"space": "exterior", "pos": [0, 0]}}]})
+    p0 = json.loads(json.dumps(files["people"][-1]))
+    p_his = dict(p0, routine=[{"start": 8, "kind": "wander", "at": {"space": "exterior", "pos": [5, 5]}}])
+    shift = lambda r, dx: {"pos": [r["pos"][0] + dx, r["pos"][1], r["pos"][2]]}   # noqa: E731
+    unit = {"op": "unit.move", "space": "exterior", "unit": "u1", "n": 1, "call": "fault", "note_group": "g10",
+            "refs": [{"id": a_id, "before": {"pos": list(ra["pos"])}, "after": shift(ra, 100.0)},
+                     {"id": b_id, "before": {"pos": list(rb["pos"])}, "after": shift(rb, 100.0)}]}
+    pe = {"op": "person.edit", "n": 2, "call": "fault", "note_group": "g12", "person": p_his, "before": p0}
+    session = {"save_id": "autosave", "place_id": "fx", "at": "x", "ops": [unit, pe],
+               "notes": [{"id": "g10", "text": "tent in the way", "at": "x"}, {"id": "g12", "text": "taste", "at": "x"}]}
+    p_ans = dict(p0, routine=[{"start": 8, "kind": "wander", "at": {"space": "exterior", "pos": [9, 9]}}])
+    ans = [{"op": "ref.move", "space": "exterior", "id": a_id, "n": 1, "stroke": 1, "call": "fault", "answers": "g10",
+            "before": {"pos": list(ra["pos"])}, "after": shift(ra, 107.0)},
+           {"op": "person.edit", "n": 2, "stroke": 2, "call": "fault", "answers": "g12", "person": p_ans, "before": p0},
+           {"op": "ref.move", "space": "exterior", "id": b_id, "n": 3, "stroke": 3, "call": "fault", "answers": "g6",
+            "before": {"pos": list(rb["pos"])}, "after": shift(rb, 3.0)}]
+    drafted, left = edits.apply_agent_save(files, {"save_id": "agent-u", "place_id": "fx", "at": "y", "by": "agent",
+                                                    "final": False, "ops": ans, "notes": session["notes"]})
+    assert not left
+    assert "fx.p1" in drafted["place"]["agent_answers"][1]["rows"]
+    out = edits.apply_save(drafted, session)
+    got = {r["id"]: r["pos"][0] for r in out["spaces"]["exterior"]["refs"]}
+    assert abs(got[a_id] - (ra["pos"][0] + 107.0)) < 1e-6     # g10 answered on a: the answer stands
+    assert abs(got[b_id] - (rb["pos"][0] + 100.0)) < 1e-6     # b answered for another note: his move wins
+    person = next(p for p in out["people"] if p["id"] == "fx.p1")
+    assert person["routine"][0]["at"]["pos"] == [9, 9]           # g12 answered: the answer stands
