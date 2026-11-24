@@ -1012,7 +1012,7 @@
 {"place_id":"outpost-m6-m66","seq":0,"give_kind_id":"fishing","detail":"the traps: eels and carp","count":1}
 {"place_id":"outpost-m6-m66","seq":1,"give_kind_id":"cooking-pot","detail":"by the drying rack","count":1}
 {"place_id":"outpost-m6-m66","seq":2,"give_kind_id":"tanning-rack","detail":"on the platform","count":1}
-{"place_id":"outpost-m6-m66","seq":3,"give_kind_id":"trader-apothecary","detail":"Heem-Jasa, the tree's minder, selling sap, swamp fungus and eggshells","count":1}
+{"place_id":"outpost-m6-m66","seq":3,"give_kind_id":"trader-apothecary","detail":"Heem-Jasa, the tree's minder, selling swamp fungus and remedies","count":1}
 {"place_id":"outpost-m6-m66","seq":4,"give_kind_id":"trainer","detail":"Adept Alchemy trainer, Heem-Jasa","count":1}
 {"place_id":"outpost-m6-m66","seq":5,"give_kind_id":"combat-foes","detail":"three Unbound sap-takers at the reed hide","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the reed hide beside a lone dead tree west of the weir","bearing_deg":270.0,"distance_m":130.0}
 {"place_id":"outpost-m6-m66","seq":6,"give_kind_id":"treasure","detail":"jars of sap and the sap-takers' packs at the reed hide","count":1,"setting":"nearby"}

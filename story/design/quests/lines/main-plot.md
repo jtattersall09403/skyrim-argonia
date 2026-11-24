@@ -225,7 +225,7 @@ quest cannot go on without Heem-Jasa until the player holds the note: if she die
 the main quest's message says its thread is cut. If she dies after, the note carries the player on to quest 4.
 
 - *The truth.* The player says it may die. Heem-Jasa thanks them for not lying. From then on she trains the player
-  in Alchemy (Adept) and sells them sap, swamp fungus and eggshells.
+  in Alchemy (Adept) and sells them swamp fungus and remedies.
 - *A comfort.* The player says it will live. Heem-Jasa gives them three potions of Cure Poison (Skyrim's) on the
   spot. She trains and trades only with kin and with those who have been straight with her, so her training and her
   stall stay closed to the player.

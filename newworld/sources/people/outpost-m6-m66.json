@@ -31,7 +31,7 @@
     "role": "head"
    },
    "role": "apothecary",
-   "trade": "minder of the young Hist; sells sap, swamp fungus and eggshells; teaches alchemy",
+   "trade": "minder of the young Hist; sells swamp fungus and remedies; teaches alchemy",
    "wealth": "W2",
    "level": null,
    "status": "alive",
@@ -40,7 +40,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, and she sells what it and the creek give. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste. She turns the wardens' clutch in the sap pool each morning and sells the shells the hatchlings leave.",
+     "text": "She has tended the weir's young Hist since it first broke from the roots of Jal-Veesa's tree, turns the wardens' clutch in its sap pool each morning, and sells remedies made from the fungus on its roots, but never its sap. She speaks bluntly to strangers and has not slept well since its scar closed over the grey paste.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:outpost-m6-m66/3",

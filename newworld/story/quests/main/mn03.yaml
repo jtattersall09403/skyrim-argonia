@@ -137,8 +137,7 @@ cast:
     status: invented
     race: Argonian
     sex: female
-    role: tree-minder of Teel-Fen Weir; Adept Alchemy trainer; sells sap
-    swamp fungus and eggshells: null
+    role: tree-minder of Teel-Fen Weir; Adept Alchemy trainer; sells swamp fungus and remedies
     home: outpost-m6-m66
     voice: blunt
     frightened for her tree: null
@@ -713,14 +712,14 @@ stages:
 - id: 90
   place: outpost-m6-m66
   journal: text.journal.mn03.90
-  journalText: "I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me
-    alchemy and sell me sap, fungus and eggshells. Next comes Karsh-Naal Camp, the Naga camp in the marsh east of
+  journalText: "I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying. She will teach me
+    alchemy and sell me swamp fungus and remedies. Next comes Karsh-Naal Camp, the Naga camp in the marsh east of
     Teel-Fen Weir, where the note sends the jars."
   ending: complete
   endingId: e-truth
   information:
     going: I told Heem-Jasa the truth, that her tree may die. She thanked me for not lying, and will teach me alchemy and
-      sell me sap, fungus and eggshells.
+      sell me swamp fungus and remedies.
     next: Go to Karsh-Naal Camp, east of Teel-Fen Weir (MN04 marks it on the map).
     ways: None in this quest.
     carriers:
@@ -798,7 +797,7 @@ endings:
   - setFlag:
     - flag.mn03.truth
     - true
-  seen: Heem-Jasa's Alchemy training (Adept) and her stall of sap, swamp fungus and eggshells open to the player (both gated
+  seen: Heem-Jasa's Alchemy training (Adept) and her stall of swamp fungus and remedies open to the player (both gated
     on flag.mn03.truth)
   rewards: []
 - id: e-comfort
@@ -947,7 +946,7 @@ topics:
     away from them. There are three. A warden heard one call the others "Unbound"; Heem-Jasa takes it to mean people with
     no tree and no kin to answer to, and knows nothing more of them. The player can go at them, shoot them from the reeds
     east of the hide, or creep round to the hide''s open west side where they stack their jars. She teaches alchemy and
-    sells sap, fungus and eggshells, but only to kin and to those who are straight with her. Does: sets stage 50. Checks:
+    sells swamp fungus and remedies, but only to kin and to those who are straight with her. Does: sets stage 50. Checks:
     nothing.'
   uses:
   - fact.mn03.paste
@@ -974,7 +973,7 @@ topics:
   - 60
   essential: true
   intent: 'Heem-Jasa. Tells: she thanks the player for not lying. From now on she will teach them alchemy and sell them
-    sap, swamp fungus and eggshells. Does: sets stage 90. Checks: nothing.'
+    swamp fungus and remedies. Does: sets stage 90. Checks: nothing.'
   new: true
 - id: topic.mn03-comfort
   label: It will live.
