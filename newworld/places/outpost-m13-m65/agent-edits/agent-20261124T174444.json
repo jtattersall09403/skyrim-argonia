@@ -1,0 +1,200 @@
+{
+ "save_id": "agent-20261124T174444",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the gate, its pole and the grave mound he deleted, the chopping block where he moved it",
+ "at": "2026-11-24T17:44:44Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GRAVEEARTH",
+   "before": {
+    "id": "outpost-m13-m65.GRAVEEARTH",
+    "base": "Skyrim.esm:045605",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528630.0,
+     347.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.25,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 4.0
+    },
+    "why": "the grave at the grave-stake's foot, for the cutters who died here (record faith: a grave-stake by the gate): a low body-long mound of heaped earth with the stake at its head",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:44Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK014PLACE",
+   "before": {
+    "id": "outpost-m13-m65.LOOK014PLACE",
+    "base": "Skyrim.esm:01AE14",
+    "kind": "door",
+    "pos": [
+     -99050.0,
+     -528300.0,
+     336.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "the old road post's gate, still standing on the landward road into the camp (record summary: where the old road post's gate still stands): a Legion stockade gate, the kind such a post was built with",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:44Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK015PLACE",
+   "before": {
+    "id": "outpost-m13-m65.LOOK015PLACE",
+    "base": "King of the Murkmire.esp:01FA38",
+    "kind": "static",
+    "pos": [
+     -98960.0,
+     -528520.0,
+     324.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": -12.0
+    },
+    "why": "the grave-stake outside the old post's gate (record source note: still to add the grave-stake): a cypress pole driven upright where the camp buried one of its own",
+    "tier": "AGENT_INVENTED"
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:44Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.QVRBVWTFYKMYVGA7SBGZCDZGQV",
+   "before": {
+    "pos": [
+     -99669.94,
+     -529483.28,
+     294.71
+    ],
+    "rot": [
+     0,
+     0,
+     7.97412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -98847.62,
+     -529671.54,
+     426.31
+    ],
+    "rot": [
+     0,
+     0,
+     1.1673
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -28.19
+    }
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:44Z",
+   "answers": "g8"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.XZJNPRG9PXTX4NCX2A1J4J6ZVQ",
+   "before": {
+    "pos": [
+     -99535.79,
+     -529155.24,
+     278.6
+    ],
+    "rot": [
+     0,
+     0,
+     10.40052
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99535.79,
+     -529155.24,
+     278.6
+    ],
+    "rot": [
+     0,
+     0,
+     10.40052
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:44Z",
+   "answers": "g8"
+  }
+ ]
+}

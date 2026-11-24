@@ -235,3 +235,23 @@ def test_replay_says_what_his_session_opens_to(fx):
     assert not got["conflicts"] and got["no_change"] == {"g8": 1} and got["applied"] == 1
     assert got["rows"]["where_he_left"] == 1 and got["rows"]["changed_by_answer"] == {"g8": [a_id]}
     assert not got["rows"]["moved_without_answer"]
+
+
+def test_his_changes_with_no_note_are_answered_as_unnoted(fx):
+    """A change of his that carries no note (a thing added, a turn made outside a note) is answered by an answer that
+    names `unnoted`: his op replays as no change, and an add of a row the answer already made is no conflict."""
+    pdir = fx / "places/fx"
+    a_id = rows(pdir / EXT)[0]["id"]
+    files = edits.load_place(pdir)
+    ra = next(x for x in files["spaces"]["exterior"]["refs"] if x["id"] == a_id)
+    new = dict(ra, id="fx.torch", pos=[ra["pos"][0] + 5.0, ra["pos"][1], ra["pos"][2]])
+    session = {"save_id": "autosave", "place_id": "fx", "at": "x", "ops": [
+        {"op": "ref.add", "space": "exterior", "ref": new, "n": 1, "call": "fault"},
+        dict(move(ra, 30.0), n=2, call="fault")]}
+    files["spaces"]["exterior"]["refs"].append(dict(new))
+    files["place"]["agent_answers"] = [{"answers": edits.UNNOTED, "rows": ["fx.torch", a_id]}]
+    files["spaces"]["exterior"]["refs"] = [dict(r, pos=[r["pos"][0] + 30.0, r["pos"][1], r["pos"][2]]) if r["id"] == a_id else r
+                                           for r in files["spaces"]["exterior"]["refs"]]
+    out = edits.apply_save(files, session)
+    got = {r["id"]: r for r in out["spaces"]["exterior"]["refs"]}
+    assert "fx.torch" in got and abs(got[a_id]["pos"][0] - (ra["pos"][0] + 30.0)) < 1e-6

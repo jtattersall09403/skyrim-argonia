@@ -1,0 +1,664 @@
+{
+ "save_id": "agent-20261124T174509",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the barge, its masts, lanterns, hold door and its quest spot, and the barge's walking zones where he moved them",
+ "at": "2026-11-24T17:45:09Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "unit.move",
+   "space": "exterior",
+   "unit": "ship.barge",
+   "refs": [
+    {
+     "id": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+     "before": {
+      "pos": [
+       -102202.3,
+       -527376.3,
+       83.0
+      ],
+      "rot": [
+       0.0,
+       0.0,
+       0.02922
+      ],
+      "scale": 1.0,
+      "seat": {
+       "mode": "on",
+       "on": "outpost-m13-m65.LOOK006PLACE",
+       "dz": 15.0
+      },
+      "door": {
+       "to_space": "01dock3to4",
+       "to_ref": "outpost-m13-m65.CB0C5KN6YDBEMDXAP5JRJMRWKY",
+       "to_pos": [
+        2930.3938,
+        3790.4885,
+        7255.7437
+       ],
+       "to_rot": [
+        0,
+        0,
+        2.8831916
+       ],
+       "flags": "0",
+       "arrival": [
+        -102202.3,
+        -527470.0,
+        100.0
+       ]
+      }
+     },
+     "after": {
+      "pos": [
+       -102475.55,
+       -526610.3,
+       50.59
+      ],
+      "rot": [
+       0,
+       0,
+       0.0292
+      ],
+      "scale": 1,
+      "seat": {
+       "mode": "on",
+       "on": "outpost-m13-m65.LOOK006PLACE",
+       "dz": 15
+      },
+      "door": {
+       "to_space": "01dock3to4",
+       "to_ref": "outpost-m13-m65.CB0C5KN6YDBEMDXAP5JRJMRWKY",
+       "to_pos": [
+        2930.3938,
+        3790.4885,
+        7255.7437
+       ],
+       "to_rot": [
+        0,
+        0,
+        2.8831916
+       ],
+       "flags": "0",
+       "arrival": [
+        -102475.55,
+        -526704,
+        67.59
+       ]
+      }
+     }
+    }
+   ],
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LANDINGJETTY",
+   "before": {
+    "pos": [
+     -101530.0,
+     -527750.0,
+     100.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101727.31,
+     -527446.25,
+     108.64
+    ],
+    "rot": [
+     0,
+     0,
+     1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 128.55
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK006PLACE",
+   "before": {
+    "pos": [
+     -102250.0,
+     -527900.0,
+     68.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102523.25,
+     -527134,
+     35.59
+    ],
+    "rot": [
+     0,
+     0,
+     -1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK007PLACE",
+   "before": {
+    "pos": [
+     -102269.7,
+     -527895.1,
+     0.4
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.71239
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102542.95,
+     -527129.1,
+     -32.01
+    ],
+    "rot": [
+     0,
+     0,
+     -1.5708
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK008PLACE",
+   "before": {
+    "pos": [
+     -102337.8,
+     -527560.4,
+     193.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102611.05,
+     -526794.4,
+     161.49
+    ],
+    "rot": [
+     0,
+     0,
+     0.9125
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK009PLACE",
+   "before": {
+    "pos": [
+     -102335.2,
+     -527554.2,
+     227.3
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102608.45,
+     -526788.2,
+     194.89
+    ],
+    "rot": [
+     0,
+     0,
+     0.9125
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK010PLACE",
+   "before": {
+    "pos": [
+     -102072.4,
+     -527560.5,
+     193.9
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102345.65,
+     -526794.5,
+     161.49
+    ],
+    "rot": [
+     0,
+     0,
+     0.9125
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK011PLACE",
+   "before": {
+    "pos": [
+     -102067.5,
+     -527553.8,
+     226.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.91246
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -102340.75,
+     -526787.8,
+     194.09
+    ],
+    "rot": [
+     0,
+     0,
+     0.9125
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "quest.edit",
+   "quest": {
+    "id": "quest.main.mn01/thing.mn01.hold-door",
+    "quest": "quest.main.mn01",
+    "ref": "thing.mn01.hold-door",
+    "space": "exterior",
+    "pos": [
+     -102475.55,
+     -526610.3,
+     50.59
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "drafted": true,
+    "why": "by the door of Barge Hold (the words: hold, dock, door, barge, hold)"
+   },
+   "before": {
+    "id": "quest.main.mn01/thing.mn01.hold-door",
+    "quest": "quest.main.mn01",
+    "ref": "thing.mn01.hold-door",
+    "space": "exterior",
+    "pos": [
+     -102202.3,
+     -527376.3,
+     83.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.0
+    ],
+    "drafted": true,
+    "why": "by the door of Barge Hold (the words: hold, dock, door, barge, hold)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank-foot",
+    "kind": "join",
+    "space": "exterior",
+    "note": "the boarding plank's foot joined to the waist deck",
+    "points": [
+     [
+      -102513.25,
+      -527044,
+      68.59
+     ],
+     [
+      -102513.25,
+      -526994,
+      65.59
+     ]
+    ]
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.plank-foot",
+    "kind": "join",
+    "space": "exterior",
+    "note": "the boarding plank's foot joined to the waist deck",
+    "points": [
+     [
+      -102240.0,
+      -527810.0,
+      101.0
+     ],
+     [
+      -102240.0,
+      -527760.0,
+      98.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.waist",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the barge's open waist deck, from below its rail where the jetty meets it to its hold door",
+    "outline": [
+     [
+      -102553.25,
+      -527034,
+      65.59
+     ],
+     [
+      -102233.25,
+      -527034,
+      65.59
+     ],
+     [
+      -102233.25,
+      -526734,
+      65.59
+     ],
+     [
+      -102553.25,
+      -526734,
+      65.59
+     ]
+    ]
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.waist",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the barge's open waist deck, from below its rail where the jetty meets it to its hold door",
+    "outline": [
+     [
+      -102280.0,
+      -527800.0,
+      98.0
+     ],
+     [
+      -101960.0,
+      -527800.0,
+      98.0
+     ],
+     [
+      -101960.0,
+      -527500.0,
+      98.0
+     ],
+     [
+      -102280.0,
+      -527500.0,
+      98.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "id": "outpost-m13-m65.walk.waist-join",
+    "kind": "join",
+    "space": "exterior",
+    "points": [
+     [
+      -102123.25,
+      -527044,
+      120.59
+     ],
+     [
+      -102173.25,
+      -527044,
+      139.59
+     ]
+    ],
+    "gap": 256,
+    "note": "the jetty's end joined to the boarding plank's top over the rail",
+    "by": "agent"
+   },
+   "before": {
+    "id": "outpost-m13-m65.walk.waist-join",
+    "kind": "join",
+    "space": "exterior",
+    "points": [
+     [
+      -101850.0,
+      -527810.0,
+      153.0
+     ],
+     [
+      -101900.0,
+      -527810.0,
+      172.0
+     ]
+    ],
+    "gap": 256,
+    "note": "the jetty's end joined to the boarding plank's top over the rail",
+    "by": "agent"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  },
+  {
+   "op": "path.edit",
+   "path": {
+    "id": "outpost-m13-m65.path.add.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "kind": "path",
+    "points": [
+     [
+      -102475.55,
+      -526704
+     ],
+     [
+      -102475.55,
+      -526704
+     ]
+    ],
+    "width": 128,
+    "style": "dirt",
+    "from": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "to": "outpost-m13-m65.path.01",
+    "laid": "a spur from an added door to the nearest street"
+   },
+   "before": {
+    "id": "outpost-m13-m65.path.add.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "kind": "path",
+    "points": [
+     [
+      -102202.3,
+      -527470.0
+     ],
+     [
+      -102202.3,
+      -527470.0
+     ]
+    ],
+    "width": 128.0,
+    "style": "dirt",
+    "from": "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "to": "outpost-m13-m65.path.01",
+    "laid": "a spur from an added door to the nearest street"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g11"
+  }
+ ]
+}

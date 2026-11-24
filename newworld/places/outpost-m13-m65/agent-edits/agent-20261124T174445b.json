@@ -1,0 +1,406 @@
+{
+ "save_id": "agent-20261124T174445b",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the small tents' bedrolls, wood pile and camp markers where he moved them",
+ "at": "2026-11-24T17:44:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.2GF6DG8940PXABKHCXY4FTDFCK",
+   "before": {
+    "pos": [
+     -99341.14,
+     -528127.98,
+     236.63
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100606.83,
+     -528343.13,
+     242.96
+    ],
+    "rot": [
+     0,
+     0,
+     -2.7053
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.A2E7HBFXS74A82BH44N33ENMXQ",
+   "before": {
+    "pos": [
+     -99823.63,
+     -528026.07,
+     231.15
+    ],
+    "rot": [
+     0,
+     0.099999994,
+     6.50713
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100777.76,
+     -528259.71,
+     221.85
+    ],
+    "rot": [
+     0,
+     0.099999994,
+     -2.1323
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+   "before": {
+    "pos": [
+     -99679.75,
+     -528483.73,
+     249.05
+    ],
+    "rot": [
+     0,
+     0,
+     8.95354
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99953.34,
+     -528273.44,
+     259.98
+    ],
+    "rot": [
+     0,
+     0,
+     2.9322
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FNJXG1T0FK1CBHCK987JYDZ8ZY",
+   "before": {
+    "pos": [
+     -99646.74,
+     -528770.14,
+     263.95
+    ],
+    "rot": [
+     0,
+     0,
+     10.45452
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99995.58,
+     -528558.63,
+     274.88
+    ],
+    "rot": [
+     0,
+     0,
+     -1.8501
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK018PLACE",
+   "before": {
+    "pos": [
+     -100450.0,
+     -528330.0,
+     251.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100402.43,
+     -528936.72,
+     284.43
+    ],
+    "rot": [
+     0,
+     0,
+     1.39626
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.PWV25FM26EJC5BFHN4B4RAWN2T",
+   "before": {
+    "pos": [
+     -99557.29,
+     -528403.52,
+     391.74
+    ],
+    "rot": [
+     0.023128279,
+     -0.020667367,
+     8.76377
+    ],
+    "scale": 1.68,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99814.29,
+     -528227.66,
+     402.67
+    ],
+    "rot": [
+     0.023128279,
+     -0.020667367,
+     2.7424
+    ],
+    "scale": 1.68,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.S3685Y2QVFEC79DQ58SMF3XAZC",
+   "before": {
+    "pos": [
+     -99536.54,
+     -528080.45,
+     226.58
+    ],
+    "rot": [
+     0,
+     0,
+     6.49793
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100942.31,
+     -528018.27,
+     196.25
+    ],
+    "rot": [
+     0,
+     0,
+     -2.1415
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.W4EPQBA8Y0SQYBBRVAJQARDRZ7",
+   "before": {
+    "pos": [
+     -99863.32,
+     -528363.13,
+     279.51
+    ],
+    "rot": [
+     0,
+     0,
+     9.73412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100099.44,
+     -528109.44,
+     290.44
+    ],
+    "rot": [
+     0,
+     0,
+     -2.5705
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.XZJNPRG9PXTX4NCX2A1J4J6ZVQ",
+   "before": {
+    "pos": [
+     -99535.79,
+     -529155.24,
+     278.6
+    ],
+    "rot": [
+     0,
+     0,
+     10.40052
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99412.31,
+     -529284.56,
+     358.83
+    ],
+    "rot": [
+     0,
+     0,
+     -2.4277
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": -28.19
+    }
+   },
+   "call": "fault",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g10"
+  }
+ ]
+}

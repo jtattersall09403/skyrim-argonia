@@ -1,0 +1,1001 @@
+{
+ "save_id": "agent-20261124T174445",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the mess tent and its pieces, the small tent's bedrolls and the bank rock where he moved them",
+ "at": "2026-11-24T17:44:45Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.3H3B7DGQD56H6DTX78YNNQBZB9",
+   "before": {
+    "pos": [
+     -100748.2,
+     -527735.74,
+     198.1
+    ],
+    "rot": [
+     0,
+     0,
+     6.93412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100607.52,
+     -526576.89,
+     102.42
+    ],
+    "rot": [
+     0,
+     0,
+     0.9127
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1",
+   "before": {
+    "pos": [
+     -100561.84,
+     -527826.86,
+     145.55
+    ],
+    "rot": [
+     0,
+     0,
+     10.60492
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "after": {
+    "pos": [
+     -100451.1,
+     -526713.14,
+     49.87
+    ],
+    "rot": [
+     0,
+     0,
+     -1.6997
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.9FC8AMSD4DC8D3W8PRVN3JGYZG",
+   "before": {
+    "pos": [
+     -100104.5,
+     -527959.63,
+     226.58
+    ],
+    "rot": [
+     0,
+     0,
+     9.63412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100043.7,
+     -526959.76,
+     130.9
+    ],
+    "rot": [
+     0,
+     0,
+     -2.6705
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX",
+   "before": {
+    "pos": [
+     -100663.14,
+     -527789.14,
+     194.18
+    ],
+    "rot": [
+     0,
+     0,
+     9.03412
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100539.18,
+     -526650.49,
+     98.5
+    ],
+    "rot": [
+     0,
+     0,
+     3.0127
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.FQ190PDGQVMEBD9NSK3CXVRP94",
+   "before": {
+    "pos": [
+     -100502.74,
+     -527802.21,
+     261.73
+    ],
+    "rot": [
+     0,
+     0,
+     10.60492
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100387.63,
+     -526704.63,
+     166.05
+    ],
+    "rot": [
+     0,
+     0,
+     -1.6997
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N",
+   "before": {
+    "pos": [
+     -100500.85,
+     -527642.5,
+     197.31
+    ],
+    "rot": [
+     0,
+     0,
+     6.67793
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100344.47,
+     -526550.85,
+     101.63
+    ],
+    "rot": [
+     0,
+     0,
+     0.6565
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.K7BJRFWEVZXJ4134QBBN982EQZ",
+   "before": {
+    "pos": [
+     -100667.8,
+     -527779.49,
+     325.57
+    ],
+    "rot": [
+     0,
+     0,
+     5.93412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100541.19,
+     -526639.96,
+     229.89
+    ],
+    "rot": [
+     0,
+     0,
+     -0.0873
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 7,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK017PLACE",
+   "before": {
+    "pos": [
+     -100560.0,
+     -528050.0,
+     222.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100507.07,
+     -526929.16,
+     122.15
+    ],
+    "rot": [
+     0,
+     0,
+     1.4835
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 8,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK038PLACE",
+   "before": {
+    "pos": [
+     -100550.0,
+     -527350.0,
+     158.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99708.85,
+     -527085.93,
+     175.07
+    ],
+    "rot": [
+     0,
+     0,
+     0.4363
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 9,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK039PLACE",
+   "before": {
+    "pos": [
+     -100790.0,
+     -527280.0,
+     142.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.22173
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99818.56,
+     -527043.14,
+     168.39
+    ],
+    "rot": [
+     0,
+     0,
+     0.4363
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 10,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK",
+   "before": {
+    "pos": [
+     -100602.02,
+     -527915.66,
+     207.17
+    ],
+    "rot": [
+     0,
+     0,
+     9.03412
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100512.89,
+     -526788.52,
+     111.49
+    ],
+    "rot": [
+     0,
+     0,
+     3.0127
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 11,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.N6YSM8093XTZ0H3JH0F3E5J01E",
+   "before": {
+    "pos": [
+     -100507.49,
+     -527640.19,
+     256.75
+    ],
+    "rot": [
+     0,
+     0,
+     6.74449
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100350.28,
+     -526546.9,
+     161.07
+    ],
+    "rot": [
+     0,
+     0,
+     0.7231
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 12,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.Q3XEYTXGDHD14J16G67V2P3T2S",
+   "before": {
+    "pos": [
+     -100199.31,
+     -528175.11,
+     332.3
+    ],
+    "rot": [
+     0,
+     0,
+     9.08845
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100191.05,
+     -527143.36,
+     236.62
+    ],
+    "rot": [
+     0,
+     0,
+     3.0671
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 13,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.RS0STBC5TTBHHCKXY4WY7K1N4D",
+   "before": {
+    "pos": [
+     -100590.66,
+     -527765.99,
+     198.51
+    ],
+    "rot": [
+     0,
+     0,
+     9.01731
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100463.18,
+     -526646.89,
+     102.83
+    ],
+    "rot": [
+     0,
+     0,
+     2.9959
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 14,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC",
+   "before": {
+    "pos": [
+     -100471.38,
+     -527857.09,
+     212.35
+    ],
+    "rot": [
+     0,
+     0,
+     8.81952
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100371.54,
+     -526765.75,
+     116.67
+    ],
+    "rot": [
+     0,
+     0,
+     2.7981
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 15,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G",
+   "before": {
+    "pos": [
+     -100443.68,
+     -527844.91,
+     206.94
+    ],
+    "rot": [
+     0,
+     0,
+     12.17571
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100341.63,
+     -526761.16,
+     111.26
+    ],
+    "rot": [
+     0,
+     0,
+     -0.1289
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 16,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WESVAKXHDCQ10R75AGY1KF0XFP",
+   "before": {
+    "pos": [
+     -100725.5,
+     -527982.49,
+     207.7
+    ],
+    "rot": [
+     0,
+     0,
+     10.40052
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100649.46,
+     -526821.11,
+     112.02
+    ],
+    "rot": [
+     0,
+     0,
+     -1.9041
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 17,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.WTDS3SNSRSRCBGKJKTPE251J5W",
+   "before": {
+    "pos": [
+     -100136.92,
+     -527255.44,
+     76.46
+    ],
+    "rot": [
+     0.09431799,
+     -0.26541618,
+     11.08483
+    ],
+    "scale": 1.26,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99151.15,
+     -527078.87,
+     209.48
+    ],
+    "rot": [
+     0.09431799,
+     -0.26541618,
+     11.08483
+    ],
+    "scale": 1.26,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 18,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39",
+   "before": {
+    "pos": [
+     -100568.01,
+     -527866.46,
+     212.67
+    ],
+    "rot": [
+     0,
+     0,
+     9.03412
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100467.31,
+     -526749.8,
+     116.99
+    ],
+    "rot": [
+     0,
+     0,
+     3.0127
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 19,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+   "before": {
+    "pos": [
+     -100111.79,
+     -527970.84,
+     231.49
+    ],
+    "rot": [
+     0,
+     0,
+     6.50793
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100053.65,
+     -526968.7,
+     135.81
+    ],
+    "rot": [
+     0,
+     0,
+     0.4865
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 20,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
+   "before": {
+    "pos": [
+     -100520.37,
+     -527725.0,
+     192.97
+    ],
+    "rot": [
+     0,
+     0,
+     12.17571
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100384.68,
+     -526625.49,
+     97.29
+    ],
+    "rot": [
+     0,
+     0,
+     -0.1289
+    ],
+    "scale": 1.04,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 21,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  },
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.north-tent",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the floor of the small tent beside the mess tent, where its cutter sleeps, walked out to the open ground east of it: the mess tent beside it cut the mesh under its canvas",
+    "outline": [
+     [
+      -100219.88,
+      -527016.46,
+      137.82
+     ],
+     [
+      -99910.79,
+      -527099.28,
+      136.62
+     ],
+     [
+      -99864.2,
+      -526925.42,
+      129.62
+     ],
+     [
+      -100173.3,
+      -526842.59,
+      121.32
+     ]
+    ]
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.north-tent",
+    "kind": "walk",
+    "space": "exterior",
+    "note": "the floor of the small tent beside the mess tent, where its cutter sleeps, walked out to the open ground east of it: the mess tent beside it cut the mesh under its canvas",
+    "outline": [
+     [
+      -100260.0,
+      -528060.0,
+      233.5
+     ],
+     [
+      -99940.0,
+      -528060.0,
+      232.3
+     ],
+     [
+      -99940.0,
+      -527880.0,
+      225.3
+     ],
+     [
+      -100260.0,
+      -527880.0,
+      217.0
+     ]
+    ]
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 22,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:45Z",
+   "answers": "g9"
+  }
+ ]
+}

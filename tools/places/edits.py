@@ -669,10 +669,17 @@ def _row_id(op: dict):
     return None
 
 
+UNNOTED = "unnoted"   # the note an answer names for his changes that carry none
+
+
+def _note_of(op: dict) -> str:
+    """The note an op of the owner's belongs to: its note group, its own note, else UNNOTED."""
+    return op.get("note_group") or op.get("note") or UNNOTED
+
+
 def _answered_note(op: dict, answered: dict) -> bool:
     """Whether an agent answered the note this op of the owner's belongs to, on the row it is about."""
-    notes = answered.get(_row_id(op)) or set()
-    return bool(notes) and (op.get("note_group") in notes or op.get("note") in notes)
+    return _note_of(op) in (answered.get(_row_id(op)) or set())
 
 
 def _rebased(files, op, answered: dict):
@@ -692,7 +699,7 @@ def _rebased(files, op, answered: dict):
     if i is None or rows[i].get("removed"):
         return op
     row = rows[i]
-    mine = op.get("note_group") in answered[rid] or op.get("note") in answered[rid]
+    mine = _note_of(op) in answered[rid]
     if op["op"] == "ref.move" and mine:   # the answer, made over his session, stands: his op is kept as no change
         before = {k: copy.deepcopy(row.get(k)) for k in op["before"]}
         return dict(op, before=before, after=copy.deepcopy(before))
@@ -719,7 +726,7 @@ def _rebased_row(files, op, answered: dict, note=None):
     if i is None:
         return op
     cur = copy.deepcopy(rows[i])
-    if (note or op.get("note_group") or op.get("note")) in answered[rid]:
+    if (note or _note_of(op)) in answered[rid]:
         return dict(op, before=cur, **{table: copy.deepcopy(cur)})
     if same(rows[i], op["before"]):
         return op
@@ -729,7 +736,7 @@ def _rebased_row(files, op, answered: dict, note=None):
 def _rebased_unit(files, op, answered: dict):
     """A unit his session moved whole, some of whose members an agent answered: each answered member is rebased as
     its own move would be (ref members as _rebased, spots as _rebased_row), the rest as given."""
-    note = op.get("note_group") or op.get("note")
+    note = _note_of(op)
     rows = (files["spaces"].get(op.get("space", "exterior")) or {}).get("refs") or []
     refs = []
     for m in op.get("refs") or []:

@@ -159,10 +159,12 @@ function space(m, sid) {
 // removal of an answered row whose before no longer fits is his edit over the row as it stands (his favour), except
 // when the answer names this op's own note: the answer stands and his op is kept as no change (edits.py _rebased).
 const rowId = (op) => op.id || ['ref', 'quest', 'walk', 'path', 'person'].map((k) => op[k]?.id).find(Boolean);
+// The note an op of the owner's belongs to: its note group, its own note, else 'unnoted' (edits.py _note_of).
+const noteOf = (op) => op.note_group || op.note || 'unnoted';
 export function answeredNote(m, op) {
   const id = rowId(op);
   const notes = new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(id)).map((a) => a.answers));
-  return notes.size > 0 && (notes.has(op.note_group) || notes.has(op.note));
+  return notes.size > 0 && notes.has(noteOf(op));
 }
 
 const answersOn = (m, id) => new Set((m.place?.agent_answers || []).filter((a) => (a.rows || []).includes(id)).map((a) => a.answers));
@@ -175,14 +177,14 @@ function rebaseRow(m, op, note) {
   if (!notes.size) return op;
   const cur = m[ROW_TABLES[table]]?.get(row.id);
   if (!cur) return op;
-  if (notes.has(note ?? (op.note_group || op.note))) return { ...op, before: clone(cur), [table]: clone(cur) };
+  if (notes.has(note ?? noteOf(op))) return { ...op, before: clone(cur), [table]: clone(cur) };
   return same(cur, op.before) ? op : { ...op, before: clone(cur) };
 }
 
 // A unit he moved whole, some of whose members an agent answered: each answered member rebased as its own move
 // would be, the spots it carries as rebaseRow (edits.py _rebased_unit).
 function rebaseUnit(m, op) {
-  const note = op.note_group || op.note, refs = m.spaces[op.space || 'exterior']?.refs;
+  const note = noteOf(op), refs = m.spaces[op.space || 'exterior']?.refs;
   const out = { ...op, refs: op.refs.map((u) => {
     const notes = answersOn(m, u.id), r = notes.size ? refs?.get(u.id) : null;
     if (!r || r.removed) return u;
@@ -207,7 +209,7 @@ export function rebaseOp(m, op) {
   if (op.op === 'ref.remove') return same(r, op.before) ? op : { ...op, before: clone(r) };
   const before = Object.fromEntries(Object.keys(op.before).map((k) => [k, clone(r[k] ?? null)]));
   // the answer, made over his session, stands: his op of the answered note is kept as no change
-  if (notes.has(op.note_group) || notes.has(op.note)) return { ...op, before, after: clone(before) };
+  if (notes.has(noteOf(op))) return { ...op, before, after: clone(before) };
   if (Object.entries(op.before).every(([k, v]) => same(r[k] ?? null, v ?? null))) return op;
   return { ...op, before };
 }

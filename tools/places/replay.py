@@ -67,7 +67,7 @@ def replay(files: dict, save: dict, source=None, base: dict | None = None) -> di
     cur["_source"] = edits._cached(source) if source else None
     applied, kept, conflicts = 0, defaultdict(int), []
     for op in save.get("ops") or []:
-        note = op.get("note_group") or op.get("note")
+        note = edits._note_of(op)
         reb = edits._rebased(cur, op, answered) if answered else op
         before = copy.deepcopy({k: v for k, v in cur.items() if k != "_source"})
         try:

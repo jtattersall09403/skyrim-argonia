@@ -1,0 +1,84 @@
+{
+ "save_id": "agent-20261124T174443",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the two markers he deleted",
+ "at": "2026-11-24T17:44:43Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.41VDR6G7HX6194BX0AWD7GKGMA",
+   "before": {
+    "id": "outpost-m13-m65.41VDR6G7HX6194BX0AWD7GKGMA",
+    "base": "Skyrim.esm:00003B",
+    "kind": "marker",
+    "pos": [
+     -99945.89,
+     -528118.19,
+     230.84
+    ],
+    "rot": [
+     0,
+     0,
+     10.40052
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:07771F",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02",
+    "edid": "MilitaryCampHjaalmarchImperialGuardMarker2"
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:43Z",
+   "answers": "g7"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "outpost-m13-m65.GY72RRXYZEQCKMK5A4HAGPY3TD",
+   "before": {
+    "id": "outpost-m13-m65.GY72RRXYZEQCKMK5A4HAGPY3TD",
+    "base": "Skyrim.esm:00003B",
+    "kind": "marker",
+    "pos": [
+     -99839.96,
+     -528178.72,
+     234.22
+    ],
+    "rot": [
+     0,
+     0,
+     10.45452
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [
+     "persistent"
+    ],
+    "src": "Skyrim.esm:052986",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s04",
+    "edid": "CWGarrisonReservationMarkerCampHjaalmarchImperial"
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:43Z",
+   "answers": "g7"
+  }
+ ]
+}

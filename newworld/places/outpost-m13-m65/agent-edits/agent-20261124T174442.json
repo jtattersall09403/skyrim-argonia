@@ -1,0 +1,96 @@
+{
+ "save_id": "agent-20261124T174442",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the mudcrabs where he moved them off the landing",
+ "at": "2026-11-24T17:44:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "quest.edit",
+   "quest": {
+    "id": "quest.main.mn01/npc.mn01.mudcrab-1",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.mudcrab-1",
+    "space": "exterior",
+    "pos": [
+     -98596.3,
+     -524708.92,
+     13.88
+    ],
+    "rot": [
+     0,
+     0,
+     1.6
+    ]
+   },
+   "before": {
+    "id": "quest.main.mn01/npc.mn01.mudcrab-1",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.mudcrab-1",
+    "space": "exterior",
+    "pos": [
+     -101250.0,
+     -528230.0,
+     20.12
+    ],
+    "rot": [
+     0,
+     0,
+     1.6
+    ],
+    "drafted": true,
+    "why": "set by hand on the river bank below the camp, among the sedge and fungus above the rocks (record dangers: mudcrabs work the river bank)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:42Z",
+   "answers": "g4"
+  },
+  {
+   "op": "quest.edit",
+   "quest": {
+    "id": "quest.main.mn01/npc.mn01.mudcrab-2",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.mudcrab-2",
+    "space": "exterior",
+    "pos": [
+     -100578.1,
+     -525099.57,
+     15.31
+    ],
+    "rot": [
+     0,
+     0,
+     1.4
+    ]
+   },
+   "before": {
+    "id": "quest.main.mn01/npc.mn01.mudcrab-2",
+    "quest": "quest.main.mn01",
+    "ref": "npc.mn01.mudcrab-2",
+    "space": "exterior",
+    "pos": [
+     -101330.0,
+     -527330.0,
+     113.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.4
+    ],
+    "drafted": true,
+    "why": "set by hand at the river's edge north of the landing (record dangers: mudcrabs work the river bank)"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:42Z",
+   "answers": "g4"
+  }
+ ]
+}

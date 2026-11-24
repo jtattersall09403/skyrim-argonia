@@ -1,0 +1,274 @@
+{
+ "save_id": "agent-20261124T174441",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the reed bundles where he stacked them",
+ "at": "2026-11-24T17:44:41Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK019PLACE",
+   "before": {
+    "pos": [
+     -101160.0,
+     -527640.0,
+     152.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.48353
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101160.0,
+     -527640.0,
+     152.5
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.48353
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK020PLACE",
+   "before": {
+    "pos": [
+     -101160.0,
+     -527675.0,
+     156.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.65806
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101160.0,
+     -527675.0,
+     156.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.65806
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK021PLACE",
+   "before": {
+    "pos": [
+     -101160.0,
+     -527710.0,
+     160.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101160.0,
+     -527710.0,
+     160.875
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.53589
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "call": "fault",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK022PLACE",
+   "before": {
+    "pos": [
+     -101160.0,
+     -527658.0,
+     180.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6057
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101160.0,
+     -527658.0,
+     180.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.6057
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    }
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK023PLACE",
+   "before": {
+    "pos": [
+     -101160.0,
+     -527693.0,
+     185.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.46608
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101160.0,
+     -527693.0,
+     185.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.46608
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 26.0
+    }
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.LOOK030PLACE",
+   "before": {
+    "pos": [
+     -101320.0,
+     -527450.0,
+     126.75
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -101398.34,
+     -527500.14,
+     125.97
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "above",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:41Z",
+   "answers": "g3"
+  }
+ ]
+}

@@ -99,3 +99,14 @@ test('an answer that keeps a row as the draft had it stands against his op of th
   assert.equal(log.load([{ n: 1, op: 'ref.move', space: 'exterior', id: c, note_group: 'g10', before: { pos: was }, after: { pos: [was[0] + 300, was[1], was[2]] } }], [{ id: 'g10', text: 'tents' }]), null);
   assert.deepEqual(m.spaces.exterior.refs.get(c).pos, was);
 });
+
+test('his changes with no note are answered as unnoted, an add included', () => {
+  const { files, c } = drafted();
+  const r = files.spaces.exterior.refs.find((x) => x.id === c);
+  const torch = { ...r, id: 'fx.torch', pos: [r.pos[0] + 5, r.pos[1], r.pos[2]] };
+  files.spaces.exterior.refs.push({ ...torch });
+  files.place.agent_answers.push({ answers: 'unnoted', rows: ['fx.torch'] });
+  const m = modelFromFiles(files), log = new EditLog(m);
+  assert.equal(log.load([{ n: 1, op: 'ref.add', space: 'exterior', ref: torch }]), null);
+  assert.ok(m.spaces.exterior.refs.get('fx.torch'));
+});

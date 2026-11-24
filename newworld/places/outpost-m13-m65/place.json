@@ -347,19 +347,9 @@
  "lights": {
   "added": [
    {
-    "id": "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
-    "base": "Skyrim.esm:0B735D",
-    "on": "outpost-m13-m65.LOOK008PLACE"
-   },
-   {
-    "id": "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P",
-    "base": "Skyrim.esm:0B735D",
-    "on": "outpost-m13-m65.LOOK010PLACE"
-   },
-   {
-    "id": "outpost-m13-m65.7QB2GYXEVDD9ZP0A4440CZRQQJ",
-    "base": "Skyrim.esm:0B735D",
-    "on": "outpost-m13-m65.LOOK049PLACE"
+    "id": "outpost-m13-m65.2KJFST0NYGAM2G2B0SQ9TKJECX",
+    "base": "Skyrim.esm:0BCC9D",
+    "on": "outpost-m13-m65.01M86PMFH7CSAHFRWRJ936NA8D"
    }
   ]
  },
@@ -463,7 +453,18 @@
   "agent-20261124T170921",
   "agent-20261124T171031",
   "agent-20261124T171440",
-  "agent-20261124T172408"
+  "agent-20261124T172408",
+  "agent-20261124T174440",
+  "agent-20261124T174441",
+  "agent-20261124T174442",
+  "agent-20261124T174442b",
+  "agent-20261124T174443",
+  "agent-20261124T174444",
+  "agent-20261124T174445",
+  "agent-20261124T174445b",
+  "agent-20261124T174509",
+  "agent-20261124T174509b",
+  "agent-20261124T174510"
  ],
  "draft": {
   "add": [
@@ -472,10 +473,10 @@
     "base": "Skyrim.esm:027FE8",
     "kind": "door",
     "pos": [
-     -102202.3,
-     -527376.3
+     -102475.55,
+     -526610.3
     ],
-    "rot_z": 0.02922,
+    "rot_z": 0.0292,
     "on": "outpost-m13-m65.LOOK006PLACE",
     "dz": 15.0,
     "tier": "AGENT_INVENTED",
@@ -499,7 +500,8 @@
       "Black Marsh.esm:1BEB18": "a table bench against the hull that Black Marsh & Valenwood's own walking mesh of the hold does not reach: without it the hold keeps that whole mesh, one walk from the hatch to every bed"
      }
     },
-    "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold"
+    "why": "the barge's hold door in its waist, where Black Marsh & Valenwood stands it on the ship (record hook: the barge's hold locks from outside and a new gang waits in it; main quest 1 opens in the hold), into a copy of the ship's own furnished hold",
+    "scale": 1
    },
    {
     "key": "hut-door",
@@ -653,14 +655,6 @@
    {
     "check": "overlap",
     "ids": [
-     "outpost-m13-m65.LANDINGPLANKDOWN",
-     "outpost-m13-m65.LOOK006PLACE"
-    ],
-    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
-   },
-   {
-    "check": "overlap",
-    "ids": [
      "outpost-m13-m65.12W0JBQJR56V56RN51H15NA73YB",
      "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
     ],
@@ -689,38 +683,6 @@
      "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG"
     ],
     "why": "a cutter's bedroll lies inside the long tent where the source laid its field-hospital pallets; seen in the section through the tent, on the ground under its canvas"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK022PLACE",
-     "outpost-m13-m65.LOOK019PLACE"
-    ],
-    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK022PLACE",
-     "outpost-m13-m65.LOOK020PLACE"
-    ],
-    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK023PLACE",
-     "outpost-m13-m65.LOOK020PLACE"
-    ],
-    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LOOK023PLACE",
-     "outpost-m13-m65.LOOK021PLACE"
-    ],
-    "why": "bundled reed stacked by the landing (record look): the bundles lie side by side and some are laid on top of the others, seen from the bank at eye level"
    },
    {
     "check": "overlap",
@@ -771,22 +733,6 @@
     "why": "a cutter's bedroll laid under the mess tent's canvas, where the cutters sleep out of the rain, seen from above"
    },
    {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.BOARDINGPLANK",
-     "outpost-m13-m65.LOOK006PLACE"
-    ],
-    "why": "the boarding plank lies over the barge's rail and down into its waist, inside the hull's bounds as a ship's plank does, seen at eye level from the jetty"
-   },
-   {
-    "check": "overlap",
-    "ids": [
-     "outpost-m13-m65.LANDINGPLANKDOWN",
-     "outpost-m13-m65.LOOK007PLACE"
-    ],
-    "why": "the boarding plank runs over the barge's rail down into its waist, inside the hull's and the rigging's bounds as a gangplank does; seen from the bank at eye level, it rests on the rail"
-   },
-   {
     "check": "doors",
     "ids": [
      "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
@@ -817,6 +763,22 @@
      "outpost-m13-m65.LOOK007PLACE"
     ],
     "why": "the boarding plank runs over the barge's rail down into its waist, inside the masts' and rigging's bounds as a gangplank does; the owner is positioning the ship with its rigging, restored at his request 2026-11-23"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK021PLACE",
+     "outpost-m13-m65.LOOK024PLACE"
+    ],
+    "why": "the reed bundles lean into one another in the stack the owner laid at the landing, as bundled reed is stacked; seen at eye level from the east, every bundle stands on the ground"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "outpost-m13-m65.LOOK021PLACE",
+     "outpost-m13-m65.LOOK025PLACE"
+    ],
+    "why": "the reed bundles lean into one another in the stack the owner laid at the landing, as bundled reed is stacked; seen at eye level from the east, every bundle stands on the ground"
    }
   ],
   "accepted": [
@@ -1689,6 +1651,177 @@
    "rows": [
     "outpost-m13-m65.walk.bank-tent-south",
     "outpost-m13-m65.walk.east-tent"
+   ]
+  },
+  {
+   "save": "agent-20261124T174440",
+   "stroke": 1,
+   "answers": "g2",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LANDINGJETTY",
+    "outpost-m13-m65.LANDINGPLANKDOWN",
+    "outpost-m13-m65.LANDINGPLANKUP"
+   ]
+  },
+  {
+   "save": "agent-20261124T174441",
+   "stroke": 1,
+   "answers": "g3",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.LOOK019PLACE",
+    "outpost-m13-m65.LOOK020PLACE",
+    "outpost-m13-m65.LOOK021PLACE",
+    "outpost-m13-m65.LOOK022PLACE",
+    "outpost-m13-m65.LOOK023PLACE",
+    "outpost-m13-m65.LOOK030PLACE"
+   ]
+  },
+  {
+   "save": "agent-20261124T174442",
+   "stroke": 1,
+   "answers": "g4",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "quest.main.mn01/npc.mn01.mudcrab-1",
+    "quest.main.mn01/npc.mn01.mudcrab-2"
+   ]
+  },
+  {
+   "save": "agent-20261124T174442b",
+   "stroke": 1,
+   "answers": "g6",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1"
+   ]
+  },
+  {
+   "save": "agent-20261124T174443",
+   "stroke": 1,
+   "answers": "g7",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.41VDR6G7HX6194BX0AWD7GKGMA",
+    "outpost-m13-m65.GY72RRXYZEQCKMK5A4HAGPY3TD"
+   ]
+  },
+  {
+   "save": "agent-20261124T174444",
+   "stroke": 1,
+   "answers": "g8",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.GRAVEEARTH",
+    "outpost-m13-m65.LOOK014PLACE",
+    "outpost-m13-m65.LOOK015PLACE",
+    "outpost-m13-m65.QVRBVWTFYKMYVGA7SBGZCDZGQV",
+    "outpost-m13-m65.XZJNPRG9PXTX4NCX2A1J4J6ZVQ"
+   ]
+  },
+  {
+   "save": "agent-20261124T174445",
+   "stroke": 1,
+   "answers": "g9",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.3H3B7DGQD56H6DTX78YNNQBZB9",
+    "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1",
+    "outpost-m13-m65.9FC8AMSD4DC8D3W8PRVN3JGYZG",
+    "outpost-m13-m65.BJYPV0MEWTDTBM2569HNGXXEVX",
+    "outpost-m13-m65.FQ190PDGQVMEBD9NSK3CXVRP94",
+    "outpost-m13-m65.H49G0DMZZSNAMCC9CHSPYB2X1N",
+    "outpost-m13-m65.K7BJRFWEVZXJ4134QBBN982EQZ",
+    "outpost-m13-m65.LOOK017PLACE",
+    "outpost-m13-m65.LOOK038PLACE",
+    "outpost-m13-m65.LOOK039PLACE",
+    "outpost-m13-m65.N2G54SXDXHYPSDYYVA08EP8KAK",
+    "outpost-m13-m65.N6YSM8093XTZ0H3JH0F3E5J01E",
+    "outpost-m13-m65.Q3XEYTXGDHD14J16G67V2P3T2S",
+    "outpost-m13-m65.RS0STBC5TTBHHCKXY4WY7K1N4D",
+    "outpost-m13-m65.T42P7DQJ78F3NBSRQJNVXTY8RC",
+    "outpost-m13-m65.TC20MNT7X93YNYCFCXPT22NN4G",
+    "outpost-m13-m65.WESVAKXHDCQ10R75AGY1KF0XFP",
+    "outpost-m13-m65.WTDS3SNSRSRCBGKJKTPE251J5W",
+    "outpost-m13-m65.X12HCQRY7MDSWPZRPXQT21WW39",
+    "outpost-m13-m65.X48WCKQS8KG0SZM16N5538ZEGZ",
+    "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
+    "outpost-m13-m65.walk.north-tent"
+   ]
+  },
+  {
+   "save": "agent-20261124T174445b",
+   "stroke": 1,
+   "answers": "g10",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.2GF6DG8940PXABKHCXY4FTDFCK",
+    "outpost-m13-m65.A2E7HBFXS74A82BH44N33ENMXQ",
+    "outpost-m13-m65.EASW7WE2YTDTSSS4X6JAZTWVXY",
+    "outpost-m13-m65.FNJXG1T0FK1CBHCK987JYDZ8ZY",
+    "outpost-m13-m65.LOOK018PLACE",
+    "outpost-m13-m65.PWV25FM26EJC5BFHN4B4RAWN2T",
+    "outpost-m13-m65.S3685Y2QVFEC79DQ58SMF3XAZC",
+    "outpost-m13-m65.W4EPQBA8Y0SQYBBRVAJQARDRZ7",
+    "outpost-m13-m65.XZJNPRG9PXTX4NCX2A1J4J6ZVQ"
+   ]
+  },
+  {
+   "save": "agent-20261124T174509",
+   "stroke": 1,
+   "answers": "g11",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "outpost-m13-m65.LANDINGJETTY",
+    "outpost-m13-m65.LOOK006PLACE",
+    "outpost-m13-m65.LOOK007PLACE",
+    "outpost-m13-m65.LOOK008PLACE",
+    "outpost-m13-m65.LOOK009PLACE",
+    "outpost-m13-m65.LOOK010PLACE",
+    "outpost-m13-m65.LOOK011PLACE",
+    "outpost-m13-m65.path.add.7RAHXHEWCC609DSQNSEY2J6QY3",
+    "outpost-m13-m65.walk.plank-foot",
+    "outpost-m13-m65.walk.waist",
+    "outpost-m13-m65.walk.waist-join",
+    "quest.main.mn01/thing.mn01.hold-door"
+   ]
+  },
+  {
+   "save": "agent-20261124T174509b",
+   "stroke": 1,
+   "answers": "g12",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.7HPC5MTENFFM4HVCWF0AVVERMT",
+    "outpost-m13-m65.E9ARFX3QKBKZQ8HAQ7ATWNTGCQ",
+    "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA"
+   ]
+  },
+  {
+   "save": "agent-20261124T174510",
+   "stroke": 1,
+   "answers": "unnoted",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.01M86PMFH7CSAHFRWRJ936NA8D",
+    "outpost-m13-m65.LOOK019PLACE",
+    "outpost-m13-m65.LOOK020PLACE",
+    "outpost-m13-m65.LOOK021PLACE",
+    "outpost-m13-m65.LOOK022PLACE",
+    "outpost-m13-m65.LOOK023PLACE"
    ]
   }
  ]

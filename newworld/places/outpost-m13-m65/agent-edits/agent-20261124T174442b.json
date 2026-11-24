@@ -1,0 +1,54 @@
+{
+ "save_id": "agent-20261124T174442b",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): the mess tent as he left it",
+ "at": "2026-11-24T17:44:42Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.3WV15KHT40684ARBZ68KYZDEN1",
+   "before": {
+    "pos": [
+     -100561.84,
+     -527826.86,
+     145.55
+    ],
+    "rot": [
+     0,
+     0,
+     10.60492
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "after": {
+    "pos": [
+     -100561.84,
+     -527826.86,
+     145.55
+    ],
+    "rot": [
+     0,
+     0,
+     10.60492
+    ],
+    "scale": 1.3,
+    "seat": {
+     "mode": "free",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:44:42Z",
+   "answers": "g6"
+  }
+ ]
+}

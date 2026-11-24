@@ -1,0 +1,294 @@
+{
+ "save_id": "agent-20261124T174509b",
+ "place_id": "outpost-m13-m65",
+ "name": "Delivered on the draft as his open session makes it (so the draft alone and with his session are the same): his taste moves of Dralin's and Mee-shei's spots and two pieces",
+ "at": "2026-11-24T17:45:09Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.7HPC5MTENFFM4HVCWF0AVVERMT",
+   "before": {
+    "pos": [
+     -100761.55,
+     -529672.32,
+     367.95
+    ],
+    "rot": [
+     0,
+     0,
+     8.91732
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -100773.53,
+     -529718.58,
+     382.97
+    ],
+    "rot": [
+     0,
+     0,
+     8.91732
+    ],
+    "scale": 1,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g12"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "outpost-m13-m65.E9ARFX3QKBKZQ8HAQ7ATWNTGCQ",
+   "before": {
+    "pos": [
+     -99666.24,
+     -529206.74,
+     240.16
+    ],
+    "rot": [
+     0.08733,
+     -0.17205,
+     10.8488
+    ],
+    "scale": 0.78,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -99541.68,
+     -529835.15,
+     423.99
+    ],
+    "rot": [
+     0.08733,
+     -0.17205,
+     10.8488
+    ],
+    "scale": 0.78,
+    "seat": {
+     "mode": "ground",
+     "dz": 0
+    }
+   },
+   "call": "fault",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g12"
+  },
+  {
+   "op": "person.edit",
+   "person": {
+    "id": "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA",
+    "name": "Dralin Uveran",
+    "base_from": "Black Marsh North.esp:01CCD8",
+    "role": "resident",
+    "home": "AshgateHut",
+    "bed": {
+     "space": "AshgateHut",
+     "ref": "Journey to Baan Malur.esp:02E77C",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101230,
+      -527760
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101350.38,
+        -527427.81,
+        122.08
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230,
+        -527760
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hut",
+     "relation": "head"
+    }
+   },
+   "before": {
+    "id": "outpost-m13-m65.RHYFYDYG75YNBGW69R8X9PZFBA",
+    "name": "Dralin Uveran",
+    "base_from": "Black Marsh North.esp:01CCD8",
+    "role": "resident",
+    "home": "AshgateHut",
+    "bed": {
+     "space": "AshgateHut",
+     "ref": "Journey to Baan Malur.esp:02E77C",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -101230.0,
+      -527760.0
+     ],
+     "radius": 256
+    },
+    "services": [],
+    "faction_ranks": [
+     {
+      "faction": "outpost-m13-m65.crime",
+      "rank": 0
+     },
+     {
+      "faction": "outpost-m13-m65.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 10,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230.0,
+        -527760.0
+       ],
+       "radius": 256
+      }
+     },
+     {
+      "start": 18,
+      "hours": 2,
+      "kind": "eat",
+      "at": {
+       "space": "AshgateHut",
+       "ref": "Journey to Baan Malur.esp:02E77C",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 20,
+      "hours": 4,
+      "kind": "wander",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -101230.0,
+        -527760.0
+       ],
+       "radius": 256
+      }
+     }
+    ],
+    "household": {
+     "id": "outpost-m13-m65.household.hut",
+     "relation": "head"
+    }
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T17:45:09Z",
+   "answers": "g12"
+  }
+ ]
+}
