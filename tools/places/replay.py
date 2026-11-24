@@ -53,9 +53,13 @@ def _fits(row, want) -> bool:
     kind, val = want
     if row is None:
         return False
-    if kind == "fields":
-        return all(edits.same(row.get(k), v) for k, v in val.items())
+    if kind == "fields":   # a seated height read back to a thousandth by the seat is where he left it
+        return all(_near(row.get(k), v) if k == "pos" else edits.same(row.get(k), v) for k, v in val.items())
     return edits.same(row, val)
+
+
+def _near(a, b, tol: float = 0.05) -> bool:
+    return isinstance(a, list) and isinstance(b, list) and len(a) == len(b) and all(abs(x - y) <= tol for x, y in zip(a, b))
 
 
 def replay(files: dict, save: dict, source=None, base: dict | None = None) -> dict:
