@@ -1,0 +1,2699 @@
+{
+ "save_id": "agent-20261124T212024",
+ "place_id": "helstrom",
+ "name": "native boats at the landing (KotM ALPABoat02/03 in place of the Nordic rowboats; the racked boats pruned from the Hist's sap pool), the raft-master by his boats, 15 hut doors in place of SHouseDoor02, Wujeel's sap spigot and two Hist Sap jars at the city Hist's south root with his morning stop by them",
+ "at": "2026-11-24T21:20:24Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.QCYZYE41MTN3M0EMX6QW4X6T7C",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.QCYZYE41MTN3M0EMX6QW4X6T7C",
+    "base": "Skyrim.esm:050368",
+    "kind": "building",
+    "pos": [
+     -29899.91,
+     -632949.56,
+     -5.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E44B1",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3QWNT6D1J3T2YBFNEYW6VG5Z59",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3QWNT6D1J3T2YBFNEYW6VG5Z59",
+    "base": "Skyrim.esm:089D2B",
+    "kind": "building",
+    "pos": [
+     -30300.12,
+     -632600.35,
+     -4.82
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E44B2",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "landing"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK002PLACE",
+    "base": "King of the Murkmire.esp:16B9CA",
+    "kind": "static",
+    "pos": [
+     -29929.0,
+     -633002.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the raft-masters' native river boat at the city landing (travel network raft-master boat; replaces the Nordic rowboat)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK003PLACE",
+    "base": "King of the Murkmire.esp:16B9CC",
+    "kind": "static",
+    "pos": [
+     -30329.0,
+     -632652.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the raft-masters' reed-roofed native river boat at the city landing (travel network raft-master boat; replaces the Nordic rowboat)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK003PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -30329.0,
+     -632652.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -30545.0,
+     -632669.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK003PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -30545.0,
+     -632669.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -30545.0,
+     -632669.0,
+     10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK002PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -29929.0,
+     -633002.0,
+     0.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -29929.0,
+     -633002.0,
+     10.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.5236
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.F800YEF8G5A7CAKR6JJGW1EQXZ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.F800YEF8G5A7CAKR6JJGW1EQXZ",
+    "base": "Black Marsh.esm:08ABC1",
+    "kind": "building",
+    "pos": [
+     -35189.21,
+     -627028.7,
+     168.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E44AF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s63"
+   },
+   "n": 8,
+   "stroke": 8,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.HPJK55SXTPJHXVMSB4AMABE02R",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.HPJK55SXTPJHXVMSB4AMABE02R",
+    "base": "Black Marsh.esm:08ABC1",
+    "kind": "building",
+    "pos": [
+     -35347.37,
+     -627291.52,
+     160.79
+    ],
+    "rot": [
+     0,
+     0,
+     5.23599
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1E44B0",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s63"
+   },
+   "n": 9,
+   "stroke": 9,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "person.edit",
+   "space": "exterior",
+   "person": {
+    "id": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR",
+    "name": "Poles-Upriver",
+    "base_from": "Skyrim.esm:0B2E11",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside",
+     "relation": "head"
+    },
+    "role": "boatman",
+    "home": "01ArgonianHouseinside",
+    "bed": {
+     "space": "01ArgonianHouseinside",
+     "ref": "Black Marsh.esm:1DE5FD",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -30500.0,
+      -632279.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 1,
+      "kind": "boat-stop",
+      "detail": "raft-masters at the city landing",
+      "destinations": [
+       "julo",
+       "gul-tej",
+       "stormhold",
+       "truowa",
+       "korydon"
+      ]
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "ref": "Black Marsh.esm:1DE5FD",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -30500.0,
+        -632279.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR",
+    "name": "Poles-Upriver",
+    "base_from": "Skyrim.esm:0B2E11",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside",
+     "relation": "head"
+    },
+    "role": "boatman",
+    "home": "01ArgonianHouseinside",
+    "bed": {
+     "space": "01ArgonianHouseinside",
+     "ref": "Black Marsh.esm:1DE5FD",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -32487.8,
+      -631384.6
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 1,
+      "kind": "boat-stop",
+      "detail": "raft-masters at the city landing",
+      "destinations": [
+       "julo",
+       "gul-tej",
+       "stormhold",
+       "truowa",
+       "korydon"
+      ]
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "ref": "Black Marsh.esm:1DE5FD",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -32487.8,
+        -631384.6
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "call": "fault",
+   "n": 10,
+   "stroke": 10,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.32D1FHP7MJNM9CT3KJFN9XKTDT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.32D1FHP7MJNM9CT3KJFN9XKTDT",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -38721.01,
+     -611366.8,
+     280.15
+    ],
+    "rot": [
+     0,
+     0,
+     9.61919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D601",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b16"
+   },
+   "n": 11,
+   "stroke": 11,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK004PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -38721.01,
+     -611366.8,
+     98.15
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.336
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.32D1FHP7MJNM9CT3KJFN9XKTDT; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 12,
+   "stroke": 12,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.3KC6JBNGKS3KDY5XRHMRF8NXNB",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.3KC6JBNGKS3KDY5XRHMRF8NXNB",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -41265.65,
+     -607210.95,
+     138.35
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D602",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b12"
+   },
+   "n": 13,
+   "stroke": 13,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK005PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -41265.65,
+     -607210.95,
+     -43.65
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.3KC6JBNGKS3KDY5XRHMRF8NXNB; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 14,
+   "stroke": 14,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.5K6ZXRH6J53HHAM0TDX7CF8R4D",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.5K6ZXRH6J53HHAM0TDX7CF8R4D",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -49013.34,
+     -621759.17,
+     420.39
+    ],
+    "rot": [
+     0,
+     0,
+     6.336
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FB",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s11"
+   },
+   "n": 15,
+   "stroke": 15,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK006PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -49013.34,
+     -621759.17,
+     238.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.05281
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.5K6ZXRH6J53HHAM0TDX7CF8R4D; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 16,
+   "stroke": 16,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.6MQJS2J80KJFV3HD8RFXQZWWV5",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.6MQJS2J80KJFV3HD8RFXQZWWV5",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -44999.35,
+     -603568.88,
+     231.88
+    ],
+    "rot": [
+     0,
+     0,
+     10.61919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D604",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b18"
+   },
+   "n": 17,
+   "stroke": 17,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK007PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -44999.35,
+     -603568.88,
+     49.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.33601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.6MQJS2J80KJFV3HD8RFXQZWWV5; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 18,
+   "stroke": 18,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.73XKARY89H7YDK7RMGPH4V6JWQ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.73XKARY89H7YDK7RMGPH4V6JWQ",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -49118.1,
+     -617734.1,
+     271.43
+    ],
+    "rot": [
+     0,
+     0,
+     5.736
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FD",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b02"
+   },
+   "n": 19,
+   "stroke": 19,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK008PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -49118.1,
+     -617734.1,
+     89.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.73601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.73XKARY89H7YDK7RMGPH4V6JWQ; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 20,
+   "stroke": 20,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.8J7VRXQGC2S9SX1T72SAH74P1Q",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.8J7VRXQGC2S9SX1T72SAH74P1Q",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -51240.77,
+     -614318.15,
+     518.07
+    ],
+    "rot": [
+     0,
+     0,
+     5.936
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5F8",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b20"
+   },
+   "n": 21,
+   "stroke": 21,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK009PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -51240.77,
+     -614318.15,
+     336.07
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.936
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.8J7VRXQGC2S9SX1T72SAH74P1Q; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 22,
+   "stroke": 22,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9T7BAX9X9BFJ1EFE6R56JCNAMT",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9T7BAX9X9BFJ1EFE6R56JCNAMT",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -52785.57,
+     -616274.76,
+     260.64
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5F9",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b06"
+   },
+   "n": 23,
+   "stroke": 23,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK010PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -52785.57,
+     -616274.76,
+     78.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.9T7BAX9X9BFJ1EFE6R56JCNAMT; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 24,
+   "stroke": 24,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.DQNHMXW68T2KHC9XG7M1CG026F",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.DQNHMXW68T2KHC9XG7M1CG026F",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -41954.53,
+     -604816.36,
+     178.78
+    ],
+    "rot": [
+     0,
+     0,
+     10.01919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D603",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "s12"
+   },
+   "n": 25,
+   "stroke": 25,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK011PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -41954.53,
+     -604816.36,
+     -3.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.736
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.DQNHMXW68T2KHC9XG7M1CG026F; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 26,
+   "stroke": 26,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ESP1YAA2SQ8YJC7K1EDXEHDGFV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ESP1YAA2SQ8YJC7K1EDXEHDGFV",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -38675.26,
+     -614314.38,
+     162.48
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D600",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b11"
+   },
+   "n": 27,
+   "stroke": 27,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK012PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -38675.26,
+     -614314.38,
+     -19.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.ESP1YAA2SQ8YJC7K1EDXEHDGFV; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 28,
+   "stroke": 28,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JH09XJC68VF3HNXMSW7PEYHT4J",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JH09XJC68VF3HNXMSW7PEYHT4J",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -44564.44,
+     -623598.51,
+     418.78
+    ],
+    "rot": [
+     0,
+     0,
+     10.41919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FF",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b17"
+   },
+   "n": 29,
+   "stroke": 29,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK013PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -44564.44,
+     -623598.51,
+     236.78
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.13601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.JH09XJC68VF3HNXMSW7PEYHT4J; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 30,
+   "stroke": 30,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.JM1WZ0HQHCDJHVJRRX5JRJS7DH",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.JM1WZ0HQHCDJHVJRRX5JRJS7DH",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -49704.61,
+     -616782.91,
+     314.21
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5F7",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b07"
+   },
+   "n": 31,
+   "stroke": 31,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK014PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -49704.61,
+     -616782.91,
+     132.21
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.JM1WZ0HQHCDJHVJRRX5JRJS7DH; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 32,
+   "stroke": 32,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.N7J80BR3JXDP2NFA6BS9N9HT8X",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.N7J80BR3JXDP2NFA6BS9N9HT8X",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -44335.07,
+     -621675.32,
+     351.51
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FE",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b08"
+   },
+   "n": 33,
+   "stroke": 33,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK015PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -44335.07,
+     -621675.32,
+     169.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.N7J80BR3JXDP2NFA6BS9N9HT8X; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 34,
+   "stroke": 34,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.P555PAYV93BVEVTJ70S6YKRQYD",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.P555PAYV93BVEVTJ70S6YKRQYD",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -51172.61,
+     -621402.79,
+     284.29
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FA",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b04"
+   },
+   "n": 35,
+   "stroke": 35,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK016PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -51172.61,
+     -621402.79,
+     102.29
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.P555PAYV93BVEVTJ70S6YKRQYD; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 36,
+   "stroke": 36,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.WFV40T534KC0375MZMN3Z1E13A",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.WFV40T534KC0375MZMN3Z1E13A",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -51404.1,
+     -623660.8,
+     287.87
+    ],
+    "rot": [
+     0,
+     0,
+     10.81919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D5FC",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b03"
+   },
+   "n": 37,
+   "stroke": 37,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK017PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -51404.1,
+     -623660.8,
+     105.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.WFV40T534KC0375MZMN3Z1E13A; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 38,
+   "stroke": 38,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.ZEG6JWYPQYT5768WX2CJ8392NA",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.ZEG6JWYPQYT5768WX2CJ8392NA",
+    "base": "Skyrim.esm:0453D8",
+    "kind": "door",
+    "pos": [
+     -46367.07,
+     -606158.6,
+     223.02
+    ],
+    "rot": [
+     0,
+     0,
+     11.01919
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh North.esp:08D605",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b13"
+   },
+   "n": 39,
+   "stroke": 39,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK018PLACE",
+    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
+    "kind": "door",
+    "pos": [
+     -46367.07,
+     -606158.6,
+     41.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.736
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "the house's arched doorway closed by an Argonian village hut door in place of the Solitude plank door (helstrom.ZEG6JWYPQYT5768WX2CJ8392NA; swaps.json SHouseDoor02 to CIPHTBMVillageHutDoorLoad, same leaf size, its foot where the old door's foot stood)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 40,
+   "stroke": 40,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK012PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38675.26,
+     -614314.38,
+     -19.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38675.26,
+     -614314.38,
+     -19.52
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 41,
+   "stroke": 41,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK004PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38721.01,
+     -611366.8,
+     98.15
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.336
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38721.01,
+     -611366.8,
+     98.15
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.19441
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 42,
+   "stroke": 42,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK005PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41265.65,
+     -607210.95,
+     -43.65
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41265.65,
+     -607210.95,
+     -43.65
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 43,
+   "stroke": 43,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK006PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49013.34,
+     -621759.17,
+     238.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.05281
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49013.34,
+     -621759.17,
+     238.39
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.1944
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 44,
+   "stroke": 44,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK007PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44999.35,
+     -603568.88,
+     49.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.33601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44999.35,
+     -603568.88,
+     49.88
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.19442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 45,
+   "stroke": 45,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK008PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49118.1,
+     -617734.1,
+     89.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.73601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49118.1,
+     -617734.1,
+     89.43
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.59442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 46,
+   "stroke": 46,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK009PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51240.77,
+     -614318.15,
+     336.07
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     5.936
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51240.77,
+     -614318.15,
+     336.07
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     2.79441
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 47,
+   "stroke": 47,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK010PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52785.57,
+     -616274.76,
+     78.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52785.57,
+     -616274.76,
+     78.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 48,
+   "stroke": 48,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK011PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -41954.53,
+     -604816.36,
+     -3.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     3.736
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -41954.53,
+     -604816.36,
+     -3.22
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.59441
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 49,
+   "stroke": 49,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK013PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     236.78
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.13601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     236.78
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.99442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 50,
+   "stroke": 50,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK014PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49704.61,
+     -616782.91,
+     132.21
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49704.61,
+     -616782.91,
+     132.21
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 51,
+   "stroke": 51,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK015PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44335.07,
+     -621675.32,
+     169.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44335.07,
+     -621675.32,
+     169.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 52,
+   "stroke": 52,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK016PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51172.61,
+     -621402.79,
+     102.29
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51172.61,
+     -621402.79,
+     102.29
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 53,
+   "stroke": 53,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK017PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51404.1,
+     -623660.8,
+     105.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51404.1,
+     -623660.8,
+     105.87
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 54,
+   "stroke": 54,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK018PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -46367.07,
+     -606158.6,
+     41.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.736
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -46367.07,
+     -606158.6,
+     41.02
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.59441
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 55,
+   "stroke": 55,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK010PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -52785.57,
+     -616274.76,
+     78.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -52785.57,
+     -616274.76,
+     78.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 56,
+   "stroke": 56,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK014PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -49704.61,
+     -616782.91,
+     132.21
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -49704.61,
+     -616782.91,
+     132.21
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 57,
+   "stroke": 57,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK015PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44335.07,
+     -621675.32,
+     169.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44335.07,
+     -621675.32,
+     169.51
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 58,
+   "stroke": 58,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK016PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -51172.61,
+     -621402.79,
+     102.29
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.39442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -51172.61,
+     -621402.79,
+     102.29
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.53601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 59,
+   "stroke": 59,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK013PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     236.78
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.99442
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -44564.44,
+     -623598.51,
+     236.78
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     4.13601
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 60,
+   "stroke": 60,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK020PLACE",
+    "base": "Skyrim.esm:0E1FC1",
+    "kind": "activator",
+    "pos": [
+     -34852.0,
+     -627316.0,
+     246.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "why": "Wujeel's sap spigot at the city Hist (have-get-make section 5; promises p014, p021): the sap-seller's wooden tap driven into the south face of the Hist's root leg over the lip of its sap pool, facing the market and his stall; at twice its size, a tap for a tree this big (the province's sap gear, as at Jal-Veesa)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 61,
+   "stroke": 61,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK021PLACE",
+    "base": "King of the Murkmire.esp:394B35",
+    "kind": "clutter",
+    "pos": [
+     -34850.0,
+     -627445.0,
+     146.13
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "Wujeel's sap jar (p014, p021): King of the Murkmire's Hist Sap at the foot of the root under his spigot, his to take and sell (stock loose row, owner Wujeel)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 62,
+   "stroke": 62,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "ref.add",
+   "space": "exterior",
+   "call": "fault",
+   "ref": {
+    "id": "helstrom.LOOK022PLACE",
+    "base": "King of the Murkmire.esp:394B35",
+    "kind": "clutter",
+    "pos": [
+     -34822.0,
+     -627452.0,
+     146.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "layer": "place",
+    "flags": [],
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    },
+    "why": "a second jar of Hist sap beside Wujeel's spigot, filled and waiting to be carried to his stall (p021)",
+    "tier": "AGENT_INVENTED"
+   },
+   "n": 63,
+   "stroke": 63,
+   "at": "2026-11-24T21:20:24Z"
+  },
+  {
+   "op": "person.edit",
+   "space": "exterior",
+   "person": {
+    "id": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+    "name": "Wujeel",
+    "base_from": "Black Marsh.esm:045E50",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside.4",
+     "relation": "head"
+    },
+    "role": "apothecary",
+    "home": "01ArgonianHouseinside.4",
+    "bed": {
+     "space": "01ArgonianHouseinside.4",
+     "ref": "Black Marsh.esm:1DE831",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -37050.0,
+      -628400.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trader-apothecary",
+      "detail": "sap and herb seller"
+     },
+     {
+      "seq": 18,
+      "kind": "trainer",
+      "detail": "Journeyman Alchemy (the sap-seller)"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.vendor.04",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "ref": "Black Marsh.esm:1DE831",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 2,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -34850.0,
+        -627520.0
+       ],
+       "radius": 128
+      }
+     },
+     {
+      "start": 10,
+      "hours": 10,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -37050.0,
+        -628400.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+    "name": "Wujeel",
+    "base_from": "Black Marsh.esm:045E50",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside.4",
+     "relation": "head"
+    },
+    "role": "apothecary",
+    "home": "01ArgonianHouseinside.4",
+    "bed": {
+     "space": "01ArgonianHouseinside.4",
+     "ref": "Black Marsh.esm:1DE831",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -37050.0,
+      -628400.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trader-apothecary",
+      "detail": "sap and herb seller"
+     },
+     {
+      "seq": 18,
+      "kind": "trainer",
+      "detail": "Journeyman Alchemy (the sap-seller)"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.vendor.04",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "ref": "Black Marsh.esm:1DE831",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 12,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -37050.0,
+        -628400.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "call": "fault",
+   "n": 64,
+   "stroke": 64,
+   "at": "2026-11-24T21:20:24Z"
+  }
+ ]
+}

@@ -1676,6 +1676,14 @@
      "helstrom.HNZ57ZW8PJPXDEZKGPCPN37D2S"
     ],
     "why": "a red lamp hung in the crown of a great tree, as the source hangs it: its fixture sits among the branches"
+   },
+   {
+    "check": "overlap",
+    "ids": [
+     "helstrom.LOOK020PLACE",
+     "helstrom.LOOK001PLACE"
+    ],
+    "why": "Wujeel's sap spigot is driven into the city Hist's south root leg, its back end in the wood as a tap is (seen from the market at eye level, 2026-11-24)"
    }
   ]
  },
@@ -2074,8 +2082,18 @@
   "added": [
    {
     "id": "helstrom.HT0S62YWPQSE1XWJ4K4R49WDKN",
-    "base": "Skyrim.esm:0B15EE",
+    "base": "Dragonborn.esm:03CF1E",
     "on": "helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T"
+   },
+   {
+    "id": "helstrom.8EQ46GWAFDQS7B48DH1KBGJYF3",
+    "base": "Skyrim.esm:0879AC",
+    "on": "helstrom.H33MDSVP53QYRF7R9SV4PECRHW"
+   },
+   {
+    "id": "helstrom.27V9CNSTD96ZRAZH7HCD9W2P8Y",
+    "base": "Skyrim.esm:0879AC",
+    "on": "helstrom.Y8T5B43NSXE7MHFMPW92MSFS98"
    }
   ]
  },
@@ -2164,7 +2182,12 @@
   "agent-20261123T055117",
   "agent-20261123T055832",
   "agent-20261123T064128",
-  "agent-20261123T070131"
+  "agent-20261123T070131",
+  "agent-20261124T212024",
+  "agent-20261124T212147",
+  "agent-20261124T214006",
+  "agent-20261124T215611",
+  "agent-20261124T215623"
  ],
  "wholesale": {
   "offset": 180.0,

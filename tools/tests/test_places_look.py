@@ -184,6 +184,8 @@ def test_wall_fixed_things_are_held_and_a_lantern_in_mid_air_is_not():
     win = piece("win", [305, 0, 200], [-6, -40, -40], [6, 40, 40], edid="MudWindow01")                           # in the wall
     stray = piece("stray", [2000, 0, 300], [-10, -10, -30], [10, 10, 30], kind="clutter", edid="CandleLantern01")
     assert {x["id"] for x in geom.faults([house, lamp, win, stray], g) if x["fault"] == "floats"} == {"stray"}
+    tap = piece("tap", [0, -305, 150], [-3, -8, 0], [3, 8, 2], kind="activator", edid="dunSleepingTreeSapSpigot")  # driven in
+    assert not [x for x in geom.faults([house, tap], g) if x["fault"] == "floats"]
 
 
 def test_a_plant_is_buried_only_when_most_of_it_is_under():

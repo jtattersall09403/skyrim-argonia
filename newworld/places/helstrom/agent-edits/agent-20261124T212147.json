@@ -1,0 +1,54 @@
+{
+ "save_id": "agent-20261124T212147",
+ "place_id": "helstrom",
+ "name": "MN04's Sesk on the landing planks a few steps from the raft-master's moved spot by the boats, facing him (her placement's relation kept)",
+ "at": "2026-11-24T21:21:47Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "quest.edit",
+   "space": "exterior",
+   "quest": {
+    "id": "quest.main.mn04/npc.mn04.sesk-landing",
+    "quest": "quest.main.mn04",
+    "ref": "npc.mn04.sesk-landing",
+    "space": "exterior",
+    "pos": [
+     -30343.0,
+     -632367.0,
+     158.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.224
+    ],
+    "drafted": true,
+    "why": "on the landing pier's planks by the water, a few steps east of where the raft-master Poles-Upriver works, facing him, as MN04 places her (the spot had been drafted by the rootworm landing marker under the city tree)"
+   },
+   "before": {
+    "id": "quest.main.mn04/npc.mn04.sesk-landing",
+    "quest": "quest.main.mn04",
+    "ref": "npc.mn04.sesk-landing",
+    "space": "exterior",
+    "pos": [
+     -32288.0,
+     -631385.0,
+     158.0
+    ],
+    "rot": [
+     0,
+     0,
+     4.7124
+    ],
+    "drafted": true,
+    "why": "on the landing pier's planks by the water, a few steps east of where the raft-master Poles-Upriver works, facing him, as MN04 places her (the spot had been drafted by the rootworm landing marker under the city tree)"
+   },
+   "call": "fault",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T21:21:47Z"
+  }
+ ]
+}

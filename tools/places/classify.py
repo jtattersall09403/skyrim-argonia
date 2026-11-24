@@ -28,7 +28,7 @@ FRAME_WORDS = ("doorframe", "doorway", "door frame", "window")   # a wall part: 
 RUIN_WORDS = ("ruin", "/ayleidruins/", "obelisk", "totem", "temple", "aztec")   # a standing old structure, no house
 CLUTTER_WORDS = ("/clutter/", "/food/", "/weapons/", "/books/", "/ore/", "/bones/", "/potions/", "/argonianeggs/",
                  "campfire", "cookingstand")
-WALL_WORDS = HANG_WORDS + ("window",)
+WALL_WORDS = HANG_WORDS + ("window", "spigot")   # a spigot is driven into the trunk or root it taps
 HULL_WORDS = ("/ships/", "ship", "boat", "barge", "hull")
 PART_WORDS = ("door", "window", "floor")
 MOUND_WORDS = ("mound", "mudpile", "dirtpile", "/landscape/", "root")

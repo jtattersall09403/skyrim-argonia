@@ -1,0 +1,421 @@
+{
+ "save_id": "agent-20261124T214006",
+ "place_id": "helstrom",
+ "name": "sap spigot's origin out of the root it is driven into; the two Hist Sap jars against the root's foot off the ways round the tree; Wujeel's morning stop and Sesk's landing spot off the walks' middles",
+ "at": "2026-11-24T21:40:06Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK020PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -34852.0,
+     -627316.0,
+     246.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -34852.0,
+     -627324.0,
+     246.0
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "scale": 2.0,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T21:40:06Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK021PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -34850.0,
+     -627445.0,
+     146.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -34885.0,
+     -627372.0,
+     146.125
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     0.34907
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-24T21:40:06Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK022PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -34822.0,
+     -627452.0,
+     146.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -34872.0,
+     -627398.0,
+     146.64
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-24T21:40:06Z"
+  },
+  {
+   "op": "person.edit",
+   "space": "exterior",
+   "person": {
+    "id": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+    "name": "Wujeel",
+    "base_from": "Black Marsh.esm:045E50",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside.4",
+     "relation": "head"
+    },
+    "role": "apothecary",
+    "home": "01ArgonianHouseinside.4",
+    "bed": {
+     "space": "01ArgonianHouseinside.4",
+     "ref": "Black Marsh.esm:1DE831",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -37050.0,
+      -628400.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trader-apothecary",
+      "detail": "sap and herb seller"
+     },
+     {
+      "seq": 18,
+      "kind": "trainer",
+      "detail": "Journeyman Alchemy (the sap-seller)"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.vendor.04",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "ref": "Black Marsh.esm:1DE831",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 2,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -34930.0,
+        -627390.0
+       ],
+       "radius": 128
+      }
+     },
+     {
+      "start": 10,
+      "hours": 10,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -37050.0,
+        -628400.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "before": {
+    "id": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+    "name": "Wujeel",
+    "base_from": "Black Marsh.esm:045E50",
+    "household": {
+     "id": "helstrom.household.01ArgonianHouseinside.4",
+     "relation": "head"
+    },
+    "role": "apothecary",
+    "home": "01ArgonianHouseinside.4",
+    "bed": {
+     "space": "01ArgonianHouseinside.4",
+     "ref": "Black Marsh.esm:1DE831",
+     "radius": 128
+    },
+    "work": {
+     "space": "exterior",
+     "pos": [
+      -37050.0,
+      -628400.0
+     ],
+     "radius": 384
+    },
+    "services": [
+     {
+      "seq": 4,
+      "kind": "trader-apothecary",
+      "detail": "sap and herb seller"
+     },
+     {
+      "seq": 18,
+      "kind": "trainer",
+      "detail": "Journeyman Alchemy (the sap-seller)"
+     }
+    ],
+    "faction_ranks": [
+     {
+      "faction": "helstrom.crime",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.town",
+      "rank": 0
+     },
+     {
+      "faction": "helstrom.vendor.04",
+      "rank": 0
+     }
+    ],
+    "routine": [
+     {
+      "start": 0,
+      "hours": 7,
+      "kind": "sleep",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "ref": "Black Marsh.esm:1DE831",
+       "radius": 128
+      }
+     },
+     {
+      "start": 7,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 8,
+      "hours": 2,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -34850.0,
+        -627520.0
+       ],
+       "radius": 128
+      }
+     },
+     {
+      "start": 10,
+      "hours": 10,
+      "kind": "work",
+      "at": {
+       "space": "exterior",
+       "pos": [
+        -37050.0,
+        -628400.0
+       ],
+       "radius": 384
+      }
+     },
+     {
+      "start": 20,
+      "hours": 1,
+      "kind": "eat",
+      "at": {
+       "space": "01ArgonianHouseinside.4",
+       "radius": 1024
+      }
+     },
+     {
+      "start": 21,
+      "hours": 3,
+      "kind": "wander",
+      "at": {
+       "space": "01Ship",
+       "radius": 1024
+      }
+     }
+    ]
+   },
+   "call": "fault",
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-24T21:40:06Z"
+  },
+  {
+   "op": "quest.edit",
+   "space": "exterior",
+   "quest": {
+    "id": "quest.main.mn04/npc.mn04.sesk-landing",
+    "quest": "quest.main.mn04",
+    "ref": "npc.mn04.sesk-landing",
+    "space": "exterior",
+    "pos": [
+     -30446.0,
+     -632424.0,
+     158.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.224
+    ],
+    "drafted": true,
+    "why": "on the landing pier's planks by the water, a few steps east of where the raft-master Poles-Upriver works, facing him, as MN04 places her (the spot had been drafted by the rootworm landing marker under the city tree)"
+   },
+   "before": {
+    "id": "quest.main.mn04/npc.mn04.sesk-landing",
+    "quest": "quest.main.mn04",
+    "ref": "npc.mn04.sesk-landing",
+    "space": "exterior",
+    "pos": [
+     -30343.0,
+     -632367.0,
+     158.0
+    ],
+    "rot": [
+     0,
+     0,
+     5.224
+    ],
+    "drafted": true,
+    "why": "on the landing pier's planks by the water, a few steps east of where the raft-master Poles-Upriver works, facing him, as MN04 places her (the spot had been drafted by the rootworm landing marker under the city tree)"
+   },
+   "call": "fault",
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-24T21:40:06Z"
+  }
+ ]
+}

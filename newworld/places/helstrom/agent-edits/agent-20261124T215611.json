@@ -1,0 +1,268 @@
+{
+ "save_id": "agent-20261124T215611",
+ "place_id": "helstrom",
+ "name": "three source pieces the tilt migration buried out of sight (two red mushrooms, a mud rock) and a fern it left 2.5 m over nothing pruned; a mud rock left 0.9 m over the plaza sunk to the ground; the second sap jar against the root foot clear of the ways round the Hist",
+ "at": "2026-11-24T21:56:11Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.9Y8MT5DZ8V51NJNTKVREZYFFVJ",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.9Y8MT5DZ8V51NJNTKVREZYFFVJ",
+    "base": "Black Marsh.esm:1B32CE",
+    "kind": "plant",
+    "pos": [
+     -62460.63,
+     -605179.11,
+     78.44
+    ],
+    "rot": [
+     6.07486,
+     5.9392,
+     2.67231
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D3C",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.CDK9TXFZXN3FR6DMB3EM5SGKVG",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.CDK9TXFZXN3FR6DMB3EM5SGKVG",
+    "base": "Black Marsh.esm:1B32CE",
+    "kind": "plant",
+    "pos": [
+     -53115.29,
+     -600108.77,
+     -203.31
+    ],
+    "rot": [
+     6.07486,
+     5.9392,
+     2.67231
+    ],
+    "scale": 1,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D3D2B",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    },
+    "cluster": "b24"
+   },
+   "n": 2,
+   "stroke": 2,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.TG2KZAHH43HGT8XNGXQ84AP8BV",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.TG2KZAHH43HGT8XNGXQ84AP8BV",
+    "base": "Black Marsh.esm:1D911E",
+    "kind": "rock",
+    "pos": [
+     -54895.82,
+     -609011.79,
+     -673.41
+    ],
+    "rot": [
+     2.33237,
+     5.04789,
+     3.97941
+    ],
+    "scale": 10,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1D9138",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 3,
+   "stroke": 3,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.HD819ZSCJS8P22TGW3NYCEE2VV",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     511.61
+    ],
+    "rot": [
+     5.95359,
+     5.77225,
+     5.3228
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -38518.36,
+     -626203.18,
+     385.21
+    ],
+    "rot": [
+     5.95359,
+     5.77225,
+     5.3228
+    ],
+    "scale": 4,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 4,
+   "stroke": 4,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.XDNKBY5YHTP12R8M5SRPF50A8W",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -59475.1,
+     -606614.76,
+     775.23
+    ],
+    "rot": [
+     0.35099,
+     6.08723,
+     5.10113
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -59475.1,
+     -606614.76,
+     775.23
+    ],
+    "rot": [
+     0.35099,
+     6.08723,
+     5.10113
+    ],
+    "scale": 2,
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 5,
+   "stroke": 5,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.move",
+   "space": "exterior",
+   "id": "helstrom.LOOK022PLACE",
+   "call": "fault",
+   "before": {
+    "pos": [
+     -34872.0,
+     -627398.0,
+     144.858
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "after": {
+    "pos": [
+     -34895.0,
+     -627345.0,
+     144.858
+    ],
+    "rot": [
+     0.0,
+     0.0,
+     1.309
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "above",
+     "dz": 0.0
+    }
+   },
+   "n": 6,
+   "stroke": 6,
+   "at": "2026-11-24T21:56:11Z"
+  },
+  {
+   "op": "ref.remove",
+   "space": "exterior",
+   "id": "helstrom.XDNKBY5YHTP12R8M5SRPF50A8W",
+   "call": "fault",
+   "before": {
+    "id": "helstrom.XDNKBY5YHTP12R8M5SRPF50A8W",
+    "base": "Black Marsh.esm:155105",
+    "kind": "plant",
+    "pos": [
+     -59475.1,
+     -606614.76,
+     775.23
+    ],
+    "rot": [
+     0.35099,
+     6.08723,
+     5.10113
+    ],
+    "scale": 2,
+    "layer": "place",
+    "flags": [],
+    "src": "Black Marsh.esm:1DEC64",
+    "seat": {
+     "mode": "free",
+     "dz": 0.0
+    }
+   },
+   "n": 7,
+   "stroke": 7,
+   "at": "2026-11-24T21:56:11Z"
+  }
+ ]
+}

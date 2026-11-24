@@ -1210,6 +1210,22 @@
    "count": 1,
    "owner_faction": "helstrom.town",
    "why": "kept: an ordinary scroll (50 gold, T1) in a shared room of the city, the town's"
+  },
+  {
+   "id": "helstrom.LOOK021PLACE",
+   "space": "exterior",
+   "item": "King of the Murkmire.esp:394B35",
+   "count": 1,
+   "owner_person": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+   "why": "Wujeel's jar of Hist sap under his spigot at the city Hist's south root (p014, p021): drawn this morning for his stall, owned by him, so taking it is stealing"
+  },
+  {
+   "id": "helstrom.LOOK022PLACE",
+   "space": "exterior",
+   "item": "King of the Murkmire.esp:394B35",
+   "count": 1,
+   "owner_person": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+   "why": "a second jar of Hist sap beside Wujeel's spigot, waiting to be carried to his stall (p021): owned by him, so taking it is stealing"
   }
  ],
  "possessions": [
@@ -1223,10 +1239,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -1259,9 +1275,9 @@
    "person": "helstrom.1WMHR9CC0ASZH8S4KYVNRGTYW0",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -1307,15 +1323,15 @@
    "person": "helstrom.235848SZ2REAN855Y2BFV3TP49",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "net-maker: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "why": "a Saxhleel fishing knife of knapped flint, for gutting and cutting cord (kit fisher)",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:0261C0",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
      "worn": true
     },
     {
@@ -1330,6 +1346,12 @@
   {
    "person": "helstrom.27HEYZ8JQ16G29JJ49V6PW551Z",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "feather-dresser: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -1349,6 +1371,12 @@
    "person": "helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "lumberry gatherer and cook: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "why": "a flint blade for cutting stems, roots and sap-scores (kit gatherer)",
@@ -1367,6 +1395,12 @@
    "person": "helstrom.2XC26VFV49CVC6MMG24SW81Z5N",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "egg-tender: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 16,
      "why": "carried gold, 8-25 for W3 Modest",
@@ -1378,6 +1412,12 @@
   {
    "person": "helstrom.2XGAS6151RPSP9V039WAPCAVWE",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666F",
+     "count": 1,
+     "worn": true,
+     "why": "herb-gatherer: Green Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -1403,10 +1443,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -1439,9 +1479,9 @@
    "person": "helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -1493,10 +1533,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -1535,10 +1575,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -1571,9 +1611,9 @@
    "person": "helstrom.6E8A5X2P02B4VC5QE4D7CPY62V",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -1619,9 +1659,9 @@
    "person": "helstrom.6K5TAAAS7NZWRCPFSWQ7K7H912",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -1667,6 +1707,12 @@
    "person": "helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "trodh fisher: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "why": "a Saxhleel fishing knife of knapped flint, for gutting and cutting cord (kit fisher)",
@@ -1685,10 +1731,10 @@
    "person": "helstrom.6TM1KF73XG3CFP2A0MCDVDHH8E",
    "items": [
     {
-     "item": "Skyrim.esm:0209A6",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
      "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
+     "worn": true,
+     "why": "scale-groomer: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -1702,6 +1748,12 @@
   {
    "person": "helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:086670",
+     "count": 1,
+     "worn": true,
+     "why": "tanner: Grey Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -1727,6 +1779,12 @@
    "person": "helstrom.70XB8VD8S4A3J2CHESHXF26B2C",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08667A",
+     "count": 1,
+     "worn": true,
+     "why": "handler of the Toh-Reel-Ka, known in the city as a tally-keeper of goods landed at the river fork: Grey Tunic with Sash (a clerk's sashed tunic (kit clerk)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 16,
      "why": "carried gold, 8-25 for W3 Modest",
@@ -1738,6 +1796,12 @@
   {
    "person": "helstrom.7Z7FD862R24F7SFGXB2226RMJ8",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "lets a room behind the market's stalls: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:01397E",
      "count": 1,
@@ -1757,6 +1821,12 @@
    "person": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "raft-builder: Purple Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
      "why": "a raft-builder's axe for cutting cane",
@@ -1775,9 +1845,9 @@
    "person": "helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -1823,6 +1893,12 @@
    "person": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F",
    "items": [
     {
+     "item": "King of the Murkmire.esp:086671",
+     "count": 1,
+     "worn": true,
+     "why": "keeper of the boatmen's lodge: Blue Tunic with Sash (a host's sashed tunic (kit host)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "why": "a bone knife (kit host: bog-iron or bone; the city's own hands make bone)",
@@ -1841,6 +1917,12 @@
    "person": "helstrom.93DEY86JNKQHJMDD6XG2CEMEY6",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "egg-gatherer: Purple Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 22,
      "why": "carried gold, 8-25 for W3 Modest",
@@ -1852,6 +1934,12 @@
   {
    "person": "helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "porter at the landing: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:00000F",
      "count": 2,
@@ -1889,15 +1977,15 @@
    "person": "helstrom.A9T6BFQ0VP4VSXGY7WRQ9745KF",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "depth-stick carver: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "why": "a bone knife, the carver's own work (kit carver)",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:01BE1A",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
      "worn": true
     },
     {
@@ -1912,6 +2000,12 @@
   {
    "person": "helstrom.AADTD3DNC5VXN4R7TWAZXV034D",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "plank-walk mender: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
@@ -1930,6 +2024,12 @@
   {
    "person": "helstrom.AZBB3MKKD7RXK477V5P4Q20373",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "porter at the landing: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:00000F",
      "count": 2,
@@ -1985,6 +2085,12 @@
    "person": "helstrom.BW3NCY7HAY3B814SESJG6NG0ZW",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "grave-stake carver: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
      "why": "an axe for cutting grave-stakes",
@@ -2003,6 +2109,12 @@
    "person": "helstrom.C27961WTY6QXSFMPVKFY3T2FPH",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "apprentice smith: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:01397E",
      "count": 1,
      "why": "an apprentice's first blade, from his father's forge",
@@ -2020,6 +2132,12 @@
   {
    "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "rootworm handler at the root landing: Purple Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:01397E",
      "count": 1,
@@ -2045,6 +2163,12 @@
    "person": "helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666F",
+     "count": 1,
+     "worn": true,
+     "why": "root-tender, learning the tree-minder's work: Green Tunic (a root-tender's plain tunic in the Hist's green (kit priest)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "why": "a bone knife; nothing forged is carried at the Hist (kit priest)",
@@ -2069,10 +2193,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -2135,6 +2259,12 @@
    "person": "helstrom.FSF6529VRX65YHFS9SDR8JD794",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08667D",
+     "count": 1,
+     "worn": true,
+     "why": "market trader in Murkwood feathers, sap, eggs and river fish: Orange Tunic with Sash (a trader's sashed tunic (kit trader)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "why": "a Saxhleel fishing knife of knapped flint, for gutting and cutting cord (kit fisher)",
@@ -2165,6 +2295,12 @@
    "person": "helstrom.GB97J7STHRZRTTP72ZHG4RN4BE",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "fisher; serves turns in the levy: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "why": "a Saxhleel fishing knife of knapped flint, for gutting and cutting cord (kit fisher)",
@@ -2183,6 +2319,12 @@
    "person": "helstrom.GSD19Y7FZNH25ASYFXRF61NYYT",
    "items": [
     {
+     "item": "King of the Murkmire.esp:086674",
+     "count": 1,
+     "worn": true,
+     "why": "pickler of frog's eyes: Brown Tunic with Sash (a host's sashed tunic (kit host)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 11,
      "why": "carried gold, 8-25 for W3 Modest",
@@ -2195,9 +2337,9 @@
    "person": "helstrom.H2SJRZ04Y8B7N1Q9D4SC7R8Z02",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -2243,6 +2385,12 @@
    "person": "helstrom.HV5320ZME61ST3NG6ANDRGJSAS",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "builder of plank walks: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
      "why": "a builder's axe for plank walks and stilt footings",
@@ -2267,15 +2415,15 @@
    "person": "helstrom.JBHQ2KBMH5X4HR0WQWJY5TMH1K",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "sap-gatherer: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "why": "a flint blade for cutting stems, roots and sap-scores (kit gatherer)",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:0261C0",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
      "worn": true
     },
     {
@@ -2291,10 +2439,10 @@
    "person": "helstrom.JH3BJB8DC2FXNSYD3F2KJ6FRE0",
    "items": [
     {
-     "item": "Skyrim.esm:03452E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
      "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
+     "worn": true,
+     "why": "net-mender: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -2309,6 +2457,12 @@
    "person": "helstrom.JTM30R0H4G18Z3F47P0AS01C6B",
    "items": [
     {
+     "item": "King of the Murkmire.esp:086677",
+     "count": 1,
+     "worn": true,
+     "why": "pilgrim guide: Green Tunic with Sash (a pilgrim guide's sashed tunic in the Hist's green (kit priest)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "why": "a bone knife; nothing forged is carried at the Hist (kit priest)",
@@ -2319,12 +2473,6 @@
      "count": 1,
      "why": "a healing draught for the pilgrims she guides",
      "worn": false
-    },
-    {
-     "item": "Skyrim.esm:01BE1A",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -2339,10 +2487,10 @@
    "person": "helstrom.JVCV7101QV5QE2000KQ5RJ8WRY",
    "items": [
     {
-     "item": "Skyrim.esm:0209A6",
+     "item": "King of the Murkmire.esp:08666D",
      "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
+     "worn": true,
+     "why": "officer of the Toh-Reel-Ka over Nesh-Deeka, known in the city as a raft-pilot: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -2356,6 +2504,12 @@
   {
    "person": "helstrom.K3KEW6JNDH6HQTS3EANF71X664",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "feather-trapper: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
@@ -2387,9 +2541,9 @@
    "person": "helstrom.K4PGMQRCH4TMQD9YTKRX4889CV",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -2435,9 +2589,9 @@
    "person": "helstrom.KXGAGQM60ANV7DVJBNTY46FYAN",
    "items": [
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
-     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword.",
      "worn": true
     },
     {
@@ -2483,6 +2637,12 @@
    "person": "helstrom.NJMSPRDE0S07463DPEQBAYTKY4",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "river fisher: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 22,
      "why": "carried gold, 8-25 for W3 Modest",
@@ -2494,6 +2654,12 @@
   {
    "person": "helstrom.P47W625FPEBNNT468NCZNW8Q41",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "maker of fleshfly emollient and scale balm: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -2512,6 +2678,12 @@
   {
    "person": "helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "Heart-Mud digger: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:0E3C16",
      "count": 1,
@@ -2561,10 +2733,10 @@
      "why": "the city levy, warden of the council house by night: a sword of T2 (made here)"
     },
     {
-     "item": "Black Marsh North.esp:037DF0",
+     "item": "Black Marsh North.esp:03E3E2",
      "count": 1,
      "worn": true,
-     "why": "the levy's issue: Helstrom's guards wear its own culture's guard set, BM&V's Argonian guard armour (T3): the place's mods provide it and its ceiling (T4) reaches it"
+     "why": "the levy's issue: Helstrom's guards wear BM&V's Argonian scale guard armour (argonian-scale): The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
     },
     {
      "item": "Black Marsh North.esp:037DF3",
@@ -2597,6 +2769,12 @@
    "person": "helstrom.QX0K55RYNW76K37N2DWEGSDHEP",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "resin-caulker: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 10,
      "why": "carried gold, 2-10 for W2 Poor",
@@ -2620,6 +2798,12 @@
   {
    "person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "Root-Folk smith at the market smithy: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Black Marsh North.esp:03E3F9",
      "count": 1,
@@ -2645,10 +2829,10 @@
    "person": "helstrom.T6GST0YXKCQPYBXWZ0JP71REBA",
    "items": [
     {
-     "item": "Skyrim.esm:01BE1A",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
      "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
+     "worn": true,
+     "why": "frog-catcher: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -2662,6 +2846,12 @@
   {
    "person": "helstrom.TQRTJ0F942RQNR31D17MBB4J60",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "rootworm courier: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -2705,6 +2895,12 @@
    "person": "helstrom.V8XSN0ZJXPXDQZ7YC5R2EQYRBK",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "cook to the council house: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:01397E",
      "count": 1,
      "worn": true,
@@ -2722,6 +2918,12 @@
   {
    "person": "helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "pilgrim host and river fisher: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -2747,6 +2949,12 @@
    "person": "helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "bark-shingle cutter: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
      "why": "an axe for cutting bark shingles",
@@ -2765,10 +2973,10 @@
    "person": "helstrom.Y46N24V2QMQMA14C1EF3ZC8NP0",
    "items": [
     {
-     "item": "Skyrim.esm:03452E",
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
      "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
-     "worn": true
+     "worn": true,
+     "why": "water-carrier: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
     },
     {
      "item": "Skyrim.esm:00000F",
@@ -2783,15 +2991,15 @@
    "person": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "raft-master at the city landing: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "why": "a bone knife (kit boatman: bog-iron or bone; the city's own hands make bone)",
-     "worn": true
-    },
-    {
-     "item": "Skyrim.esm:0209A6",
-     "count": 1,
-     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
      "worn": true
     },
     {
@@ -2806,6 +3014,12 @@
   {
    "person": "helstrom.041MSR40K1Q7QSE19P9WVQ8YEK",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "feather-sorter: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -2825,6 +3039,12 @@
    "person": "helstrom.1B0D0R0NB8YGKTRA0FBDG63D36",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "sap-boiler: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:03B97C",
      "count": 1,
      "worn": true,
@@ -2842,6 +3062,12 @@
   {
    "person": "helstrom.1X5VCA76VVSKZ77C7XSYFY05YG",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "basket-weaver: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -2861,6 +3087,12 @@
    "person": "helstrom.2291A6BWF2GAS93ES68NRXP33Y",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "pole-whittler: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
@@ -2878,6 +3110,12 @@
   {
    "person": "helstrom.4C6FP1MGNZFSXNH3GMZVXDJNGT",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "feather-trapper: Purple Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:098ECB",
      "count": 1,
@@ -2909,6 +3147,12 @@
    "person": "helstrom.54H88Q0ZDG962BBNKGMWPQGMNJ",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "egg-gatherer: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:03B97C",
      "count": 1,
      "worn": true,
@@ -2927,6 +3171,12 @@
    "person": "helstrom.6DGNFKKQKGPJ1PA3BFWH23PD0W",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "egg-tender: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 6,
      "worn": false,
@@ -2939,6 +3189,12 @@
    "person": "helstrom.74BRDR7G71970VP71SNFA60T7F",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "jar-sealer: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 6,
      "worn": false,
@@ -2950,6 +3206,12 @@
   {
    "person": "helstrom.79KD1MDRY5KH2ER77056CDDDZK",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "net-mender: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -2969,6 +3231,12 @@
    "person": "helstrom.7WFCYXX7WMX5J34QXE0FQZ3P04",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "bone-needle carver: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
@@ -2987,6 +3255,12 @@
    "person": "helstrom.8MD2K0ANCPP0G310Z34MEHHEBM",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "sap-gatherer's apprentice: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -3004,6 +3278,12 @@
   {
    "person": "helstrom.94S90JY82158FHN5AY5YP5ZZDD",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "arrow-fletcher: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -3035,6 +3315,12 @@
    "person": "helstrom.9KTJXVEC98AQMA102H36RAZ4NC",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "stew-pot keeper: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 3,
      "worn": false,
@@ -3046,6 +3332,12 @@
   {
    "person": "helstrom.BHNM413RZTQSZ9GQEBBHED0W6G",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "snare-maker: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -3065,6 +3357,12 @@
    "person": "helstrom.C96468PJHSE2DMV1HV8BR6P8D1",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "reed-basket weaver: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -3082,6 +3380,12 @@
   {
    "person": "helstrom.D7F5JD4W07GZEZDYM8XD4CW34H",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "hide-scraper: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -3101,6 +3405,12 @@
    "person": "helstrom.D8V18AKGNMRPKCWSZHDSZVMV6K",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "reed-cutter: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -3119,6 +3429,12 @@
    "person": "helstrom.ETTKJD26YX7XDKFXRPAAG9Z1H6",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "nest-finder: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 7,
      "worn": false,
@@ -3130,6 +3446,12 @@
   {
    "person": "helstrom.F4HS8HSE0Q2Z8BQ2M1B68G5097",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "egg-carrier at the market: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:03B97C",
      "count": 1,
@@ -3149,6 +3471,12 @@
    "person": "helstrom.GXND23X5N514GARXRSWJ4Y7QJ5",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "trodh fisher: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
      "worn": true,
@@ -3166,6 +3494,12 @@
   {
    "person": "helstrom.H1Y2S0QD2H95J3E9PMD9H0V8SA",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "fish-smoker: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -3185,6 +3519,12 @@
    "person": "helstrom.HD30TDCTDY5CBQWW164SXD9DA4",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "fruit-picker: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 9,
      "worn": false,
@@ -3196,6 +3536,12 @@
   {
    "person": "helstrom.HPK0Z430HKWAS1WJSNGNNCN7GZ",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "hide-curer: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -3221,6 +3567,12 @@
    "person": "helstrom.J0GE8Y1M5WTZVE2JB5HS98VWCX",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "leather-lacer: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:0800E4",
      "count": 6,
      "worn": false,
@@ -3239,6 +3591,12 @@
    "person": "helstrom.KF9XW7089ABBAK7Q4EFG3DH3QH",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "feather carrier: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 3,
      "worn": false,
@@ -3250,6 +3608,12 @@
   {
    "person": "helstrom.KY2FC5T1DJ4T88SMA4X4W8QP7D",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "market stall-hand: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:00000F",
      "count": 6,
@@ -3263,6 +3627,12 @@
    "person": "helstrom.M8WA4PAGSXR9V1BCW71QA6SW4R",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "curing-frame minder: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 9,
      "worn": false,
@@ -3275,6 +3645,12 @@
    "person": "helstrom.MFTZGGGA7KY19CD7ZQBP1VM9K1",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "potter of sap jars: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 7,
      "worn": false,
@@ -3286,6 +3662,12 @@
   {
    "person": "helstrom.N5M9Z77098EVAF6MHVEAQXHJYN",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:086670",
+     "count": 1,
+     "worn": true,
+     "why": "rope-twister: Grey Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -3311,6 +3693,12 @@
    "person": "helstrom.NXGPADXSQWGBP7CBPVEPAMM0RD",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "raft-hand: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 5,
      "worn": false,
@@ -3323,6 +3711,12 @@
    "person": "helstrom.QY05QVJ1PT6FY6VJ6Z8NSQH3AZ",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "pitch-boiler: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 9,
      "worn": false,
@@ -3334,6 +3728,12 @@
   {
    "person": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "river fisher: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -3359,6 +3759,12 @@
    "person": "helstrom.RZSPBET53PEZP1V0AFYJPJ6WRW",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "cook of lumberry cakes: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
      "worn": true,
@@ -3383,6 +3789,12 @@
    "person": "helstrom.S0DK76G100XS52WQZDVVYBTVE2",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "jar carrier: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 7,
      "worn": false,
@@ -3394,6 +3806,12 @@
   {
    "person": "helstrom.TDZHH1CN4V2FMYTSJEQZWC3W5P",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666F",
+     "count": 1,
+     "worn": true,
+     "why": "lumberry gatherer: Green Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -3419,6 +3837,12 @@
    "person": "helstrom.TFA15J5FMR0CJDWTV9RR1ZG2M8",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666D",
+     "count": 1,
+     "worn": true,
+     "why": "raft-builder: Blue Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:02F2F4",
      "count": 1,
      "worn": true,
@@ -3442,6 +3866,12 @@
   {
    "person": "helstrom.V5FJWXX6RQPHXWZFAD2SAD3DFP",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:086670",
+     "count": 1,
+     "worn": true,
+     "why": "tanner: Grey Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
@@ -3473,6 +3903,12 @@
    "person": "helstrom.V5Y1EKPHX5PAP9G9GECDA0AHFT",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666B",
+     "count": 1,
+     "worn": true,
+     "why": "sinker-stone shaper: Purple Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "PrvtI_ArgonianWeapons.esp:00082D",
      "count": 1,
      "worn": true,
@@ -3497,6 +3933,12 @@
    "person": "helstrom.VPMG44DPGP6JWZDYSAW9DBG459",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+     "count": 1,
+     "worn": true,
+     "why": "snare-minder's helper: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 2,
      "worn": false,
@@ -3508,6 +3950,12 @@
   {
    "person": "helstrom.VT71KAR18C85YJV38BTMS9WE2X",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "fish-gutter, learning the nets: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "King of the Murkmire.esp:57AA3C",
      "count": 1,
@@ -3526,6 +3974,12 @@
   {
    "person": "helstrom.WGTQZW29PT5EPQ7FYDC0CYG34Q",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666F",
+     "count": 1,
+     "worn": true,
+     "why": "reed-mat weaver: Green Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -3551,6 +4005,12 @@
    "person": "helstrom.WJ5QZC09TW1VB7NNK91WWR0VRD",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "raft-builder's apprentice: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16E",
      "count": 1,
      "worn": true,
@@ -3569,6 +4029,12 @@
    "person": "helstrom.XJKEWR69HF9X5F38J2NPJ0629N",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+     "count": 1,
+     "worn": true,
+     "why": "nest-basket minder: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 7,
      "worn": false,
@@ -3581,6 +4047,12 @@
    "person": "helstrom.XK37Y5Y4A0W0N31AJ0HXS1KE55",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "stall-runner: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 9,
      "worn": false,
@@ -3592,6 +4064,12 @@
   {
    "person": "helstrom.XZ2V2NQ5YES9X1SP8SQ8P072SH",
    "items": [
+    {
+     "item": "King of the Murkmire.esp:08666C",
+     "count": 1,
+     "worn": true,
+     "why": "sap-gatherer: Orange Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
      "count": 1,
@@ -3617,6 +4095,12 @@
    "person": "helstrom.Y0P87B6GQ1HGAB4NGKSZPE3JTV",
    "items": [
     {
+     "item": "King of the Murkmire.esp:08666E",
+     "count": 1,
+     "worn": true,
+     "why": "dyer of reed mats: Brown Tunic (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:03B97C",
      "count": 1,
      "worn": true,
@@ -3635,6 +4119,12 @@
    "person": "helstrom.YD6YW29MAAE8H5YPGGTD6JKJ1J",
    "items": [
     {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "thatch-layer: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
+    {
      "item": "Skyrim.esm:00000F",
      "count": 9,
      "worn": false,
@@ -3646,6 +4136,12 @@
   {
    "person": "helstrom.YZJDRDTCVBY1H416H6H5M1WW9T",
    "items": [
+    {
+     "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+     "count": 1,
+     "worn": true,
+     "why": "reed-sorter: Rough Fiber Clothes (plain woven clothes: the dress of the trade (items.md, section Clothing)); chosen by hand for Helstrom: the interior's own dress (HTBM's native fibre clothes, King of the Murkmire's Saxhleel tunics), never a Naga's or a Kothringi's, which name other peoples (story/lore/tribes.md: Middle Argonia's Naga are tribeless and hostile; the Kothringi are long gone)"
+    },
     {
      "item": "Skyrim.esm:00000F",
      "count": 7,
