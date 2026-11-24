@@ -852,7 +852,7 @@ a unit, worked out afresh from the space's refs whenever the place changes:
 4. two or more pieces one sees make a unit: a building with only its lights or invisible walls is none.
 A unit is named for its head piece, the lowest of its buildings (the hull under the sail), else its biggest piece.
 
-A tap with Select picks the whole unit of the thing tapped: a faint line drawing of all its pieces and its name over it
+A tap with Select picks the whole unit of the thing tapped: a faint outline round all its pieces and its name over it
 ("Ship imperial (8 pieces)"). A second tap on a piece of the selected unit goes inside to that piece alone (its
 panel says "Part of ..." with Select the whole unit and Take out of this unit); a tap on empty ground while inside
 comes back out to the whole. Pieces (a switch under How selecting works) makes every tap pick one piece, as does
@@ -871,9 +871,11 @@ the unit and the point before it half as far, so it bends to the door; the panel
 bed, a station or anything else a routine names by its ref needs no change: it moves as a member. A unit is never
 resized whole; its pieces are, one by one.
 
-**What is selected** is drawn as a faint, thin line drawing of its own meshes (each model's outline and creases,
-hidden where the mesh hides it; for a unit, all its pieces), never a box and never a tint, so the thing is seen as it
-reads while it is selected and moved (`objects.js outlineOf`). The handles stand beside it on the screen, a clear gap
+**What is selected** is drawn as a faint outline round its outer edge only (`objects.js outlineOf`: each piece's
+mesh again, its back faces pushed out along their normals by a few pixels' width at any distance, so only the rim
+standing past the thing's own front shows; for a unit, each of its pieces), never lines over its surfaces, a box or a
+tint, so the thing is seen as it reads while it is selected and moved. Deselect in the Selected panel, or a tap on
+empty ground, lets it go. The handles stand beside it on the screen, a clear gap
 off its footprint's right edge (the left when there is no room), at rest and while it moves, never over it.
 
 **Moving** (`move_map.js` the mapping, `tools.js` the handles). Beside a selection stand its handles, each one way of
@@ -902,11 +904,29 @@ along the axis being moved); Stay on what it sits on (off: a thing seated on ano
 when moved). `test/move_map.test.mjs` proves the mapping at a view nearly straight down, three-quarter and nearly
 level; the browser test drags at the same three.
 
-**The camera about the selection** (`view.js`). With something selected in our place, turning the view (one
-finger, the mouse's other button, the right thumb stick's look excepted) turns it about the selection, a unit's middle
-when a unit is selected whole, which stays where it is on the screen; pinching or the wheel zooms towards it. With
-nothing selected the view turns and zooms about where it looks. Frame in the view's bar brings the selection into
-view whole.
+**The camera** (`view.js`). Touch has one gesture model, the same whether or not anything is selected: one finger
+swiped turns the view; two fingers dragged move the scene with them in the screen plane (up and down move the view up
+and down, never towards or away); two fingers pinched move the camera towards or away from the ground under the
+fingers' middle, which stays put on the screen; two fingers twisted turn the view. A two-finger gesture is worked out
+from where the fingers touched down (`twoBegin`), so a lost or reordered move cannot drift it, and a finger left on
+the glass after it never jumps the view. A finger that lands on a selection's handle is still one of the view's
+fingers: a second finger makes the pair the view's gesture and lets the handle's drag go (this was what made pinch and
+pan work only sometimes: the handle took the finger and the view saw one). With something selected, a swipe turns the
+view about it (a unit's middle when a unit is selected whole) and eases it to the middle of the screen as the swipe
+goes on; with nothing selected the view turns about where it looks. The wheel zooms, the mouse's other button turns,
+Shift or the wheel button slides. Frame in the view's bar brings the selection into view whole.
+`test_browser.py test_42` drives real two-finger touches, with and without a selection, and holds each gesture to
+the same camera change every time.
+
+**The world's trees and plants** (`tools.js takeTree`). A tap on a tree or plant the world placed, where nothing of
+the place is, chooses it: the Selected panel names it and the depth its pivot sits under the ground. Leave a note
+about this tree keeps a note whose thing carries the tree's base, where the world had it (`world`), its position and
+its sink in metres (`sink_m`); `python -m tools.places notes` lists such notes grouped by tree type with the
+placement rule's sink for that base (`flora_base` `sink_lo_m`..`sink_hi_m`, tools/newworld/place/place.py `sink_m`)
+beside the owner's, for the placement rules to take forward. Move this tree takes it into the place in one undo step:
+the world's own placement is cleared there (`veg.clear`, which every rebuild and the place's clearance respect) and
+the same tree added as a row of the place at the same pose (`ref.add`, `world: {base, pos}`, seated on the ground at
+the depth it stood), so it then moves, turns and sinks like any piece and the world's generation never undoes it.
 
 **Markers** (`markers.js`). The helpers the game never shows in play (heading and plain markers, the map marker, the
 editor's start point, the north marker, idle and patrol markers, furniture markers, sound, room and light markers, an

@@ -39,6 +39,15 @@ The order of the stages is the command's, never yours: no stage is run by hand, 
 Lanes working beside a build: section 8. Weighing a review's findings: section 6. Costs: section 10. A new base,
 only on the owner's word: section 11.
 
+
+## A world plant moved at a place
+
+A tree or plant the world placed is moved at a place by the place, never by the world: the place clears the world's
+placement there (`clear.jsonl`, `veg.clear`) and carries the same base as its own row at the new pose (`world: {base,
+pos}` naming where the world had it). A rebuild of the world keeps placing the tree there and the place keeps
+clearing it, so the move is never undone. A depth the owner corrects on trees of one type is fed back as that type's
+sink in `flora_base` (`sink_lo_m`, `sink_hi_m`) from the tree notes grouped by type (`python -m tools.places notes`).
+
 ## 1. Measure first
 
 A threshold, a profile or a limit comes from a measurement of Skyrim's own data (decision 0034), taken before the

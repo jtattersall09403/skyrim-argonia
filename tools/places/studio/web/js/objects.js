@@ -543,12 +543,24 @@ export class ObjectLayer {
     return hits;
   }
   // World-space box corners of a ref, for selection outlines and lasso tests.
-  // A faint line drawing of the selected things' own meshes (each model's outline and creases, hidden where the
-  // mesh hides it), no box and no tint: what the thing really looks like while it is selected or moved. A ref whose
-  // model has not arrived yet, or that has none, is drawn by nothing here.
+  // A faint outline round the selected things' outer edge only, nothing drawn over their surfaces: each piece's mesh
+  // again, its back faces pushed out along their normals by a few pixels' width (the same on screen near or far), so
+  // only the rim that stands past the thing's own front shows. A unit of many pieces shows each piece's rim. A ref
+  // whose model has not arrived yet, or that has none, is drawn by nothing here.
   outlineOf(refs) {
     const out = new THREE.Group(); out.renderOrder = 9;
-    const mat = outlineMat || (outlineMat = new THREE.LineBasicMaterial({ color: '#1fb5a8', transparent: true, opacity: 0.45, depthWrite: false }));
+    const mat = outlineMat || (outlineMat = new THREE.ShaderMaterial({
+      side: THREE.BackSide, transparent: true, depthWrite: false,
+      uniforms: { colour: { value: new THREE.Color('#1fb5a8') }, width: { value: 0.0035 } },
+      vertexShader: `uniform float width;
+        void main() {
+          vec4 mv = modelViewMatrix * vec4(position, 1.0);
+          vec3 n = normalize(normalMatrix * normal);
+          mv.xyz += n * (-mv.z) * width;
+          gl_Position = projectionMatrix * mv;
+        }`,
+      fragmentShader: `uniform vec3 colour; void main() { gl_FragColor = vec4(colour, 0.7); }`,
+    }));
     const want = new Map(refs.map((r) => [r.id, r]));
     for (const g of this.groups.values()) {
       if (!g.fullParts || g.ghost || g.prim || g.bulb) continue;
@@ -557,8 +569,8 @@ export class ObjectLayer {
         const m = new THREE.Matrix4().fromArray(refMatrix(r.pos, r.rot || [0, 0, 0], r.scale ?? 1, this.origin));
         for (const part of g.fullParts) {
           let e = edgesOf.get(part.geometry);
-          if (!e) { e = new THREE.EdgesGeometry(part.geometry, 35); edgesOf.set(part.geometry, e); }
-          const l = new THREE.LineSegments(e, mat); l.matrixAutoUpdate = false; l.matrix.copy(m); l.renderOrder = 9; out.add(l);
+          if (!e) { e = part.geometry.attributes.normal ? part.geometry : part.geometry.clone(); if (!e.attributes.normal) e.computeVertexNormals(); edgesOf.set(part.geometry, e); }
+          const l = new THREE.Mesh(e, mat); l.matrixAutoUpdate = false; l.matrix.copy(m); l.renderOrder = 9; out.add(l);
         }
       }
     }

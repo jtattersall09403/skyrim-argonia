@@ -83,10 +83,21 @@ export class Panels {
   // ---------- selection ----------
   selectionInfo(refs, note) {
     if (this.name === 'source' && this.app.tools.placing) return; // keep the source card while adding
-    if (this.name === 'select' || this.name === 'source' || (!this.name && refs.length && this.app.tools.current === 'select')) { this.name = 'select'; this.selectPanel(refs, note); }
+    if (this.name === 'select' || this.name === 'source' || (!this.name && (refs.length || this.T.worldTree) && this.app.tools.current === 'select')) { this.name = 'select'; this.selectPanel(refs, note); }
   }
   selectPanel(refs = this.T.selRefs(), note = '') {
     const a = this.app, T = this.T, parts = [];
+    if (!refs.length && T.worldTree) {
+      const t = T.worldTree, b = a.bases.get(t.base) || {}, sink = T.sinkOf(t);
+      parts.push(el(`<p><strong>A ${esc(t.kind || 'tree')} of the world: ${esc(b.name || b.edid || t.base)}</strong>. Its pivot sits ${sink == null ? 'at an unknown depth' : `${sink} m`} under the ground.</p>`));
+      parts.push(el('<p class="tag">The world placed it. Move this tree takes it into our place (the world\'s one here is cleared), where it moves, turns and sinks like any piece.</p>'));
+      const acts = el('<div class="row"></div>');
+      const mv = el('<button class="primary">Move this tree</button>'); mv.onclick = () => T.takeTree(t);
+      const nb = el('<button class="quiet">Leave a note about this tree</button>'); nb.onclick = () => { this.name = 'notes'; T.markRail('notes'); this.notesPanel(true); };
+      const dz = el('<button class="quiet">Deselect</button>'); dz.onclick = () => { T.worldTree = null; T.selectionChanged(); };
+      acts.append(mv, nb, dz); parts.push(acts);
+      this.show('Selected', parts); return;
+    }
     if (!refs.length) {
       parts.push(el(`<p>Tap a thing in our place to select it. Draw round several with the pen to select them all. Tap the same spot again to reach what is behind.</p>`));
       parts.push(el('<p>To copy from the source place, tap a thing on the source side, then tap our place where it should go.</p>'));
@@ -119,7 +130,7 @@ export class Panels {
       };
       parts.push(ang);
       const acts = el('<div class="row"></div>');
-      acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
+      acts.append(btn('Deselect', () => { a.selection.clear(); T.unit = null; T.inside = null; T.selectionChanged(); }), btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
       if (refs.length === 1 && wallMount(T.baseOf(refs[0]))) acts.append(btn('Hang on a wall', () => T.hangOnWall()));
       const rm = el('<button class="danger">Remove from our place</button>'); rm.onclick = () => T.remove(); acts.append(rm);
       parts.push(acts);
@@ -558,7 +569,7 @@ export class Panels {
   // (edits/notes.jsonl), unsent until the owner sends them all as one batch; then an agent makes the changes and its
   // reply shows under each note.
   async notesPanel(aboutSelection = false) {
-    const a = this.app, pid = a.place.place_id, parts = [], sel = this.T.selRefs();
+    const a = this.app, pid = a.place.place_id, parts = [], sel = [...this.T.selRefs(), ...(this.T.worldTree && !this.T.selRefs().length ? [this.T.worldTree] : [])];
     const nameOf = (r) => { const b = a.bases.get(r.base) || {}; return b.name || b.edid || 'Unnamed'; };
     const text = el('<textarea class="text note-text" rows="4" placeholder="What should change? Say it as you would to a person." aria-label="Your note"></textarea>');
     text.value = this.noteDraft || ''; text.oninput = () => { this.noteDraft = text.value; };
@@ -577,7 +588,11 @@ export class Panels {
       keep.disabled = true;
       try {
         await api.note(pid, { text: words, view: { space: a.ours.space, at: [v.x + o[0], v.y + o[1], v.z + o[2]] },
-          things: with_.map((r) => ({ id: r.id, space: a.ours.space, base: r.base, name: nameOf(r), kind: r.kind, pos: r.pos, src: r.src })) });
+          things: with_.map((r) => {
+            const tree = r.world || (r === this.T.worldTree ? { base: r.base, pos: r.pos } : null);
+            return { id: r.id || `world:${r.base}@${r.pos.map(Math.round).join(',')}`, space: a.ours.space, base: r.base, name: nameOf(r), kind: r.kind, pos: a.seated(r).pos, src: r.src,
+              ...(tree ? { world: tree, sink_m: this.T.sinkOf(r), ground: a.terrain?.heightAt(r.pos[0], r.pos[1]) } : {}) };
+          }) });
         this.noteDraft = ''; a.toast('Note kept. Send your notes when you are ready.');
       } catch (e) { a.toast(`The note was not kept: ${e.message}. It is still in the box; try again.`, 7000); }
       if (this.name === 'notes') this.notesPanel();

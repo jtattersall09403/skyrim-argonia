@@ -88,7 +88,50 @@ def _thing(t: dict) -> dict:
     out = {k: str(t[k])[:200] for k in ("id", "space", "base", "name", "kind", "src") if t.get(k) is not None}
     if _xyz(t.get("pos")):
         out["pos"] = _xyz(t["pos"])
+    # a world plant (a tree the world placed): where the world put it, and how deep its pivot sits under the ground
+    w = t.get("world")
+    if isinstance(w, dict) and _xyz(w.get("pos")):
+        out["world"] = {"base": str(w.get("base") or "")[:200], "pos": _xyz(w["pos"])}
+    for k in ("sink_m", "ground"):
+        v = t.get(k)
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and v == v and abs(v) < 1e7:
+            out[k] = round(float(v), 3)
     return out
+
+
+def rule_sink(base: str) -> dict | None:
+    """The placement rule's sink for a tree's base (tools/newworld/place/place.py sink_m: flora_base sink_lo/hi_m or
+    sink_m, metres at scale 1), or None when the base is not one of the world's flora."""
+    try:
+        from tools.newworld.place.place import jsonl
+        rows = jsonl("flora_base")
+    except (OSError, ValueError, ImportError):
+        return None
+    plugin, _, fid = str(base).rpartition(":")      # ours "Black Marsh.esm:0D864C"; the db "0D864C:black marsh.esm"
+    b = next((r for r in rows if str(r.get("form_key", "")).lower() == f"{fid}:{plugin}".lower()), None)
+    if not b:
+        return None
+    return {k: b.get(k) for k in ("sink_lo_m", "sink_hi_m", "sink_m", "height_m") if b.get(k) is not None}
+
+
+def tree_notes(rows_by_place: dict[str, list[dict]]) -> str:
+    """Notes about world trees, grouped by tree type: the owner's corrected sink against the placement rule's, for the
+    placement rules (tools/newworld/place) to take forward."""
+    by: dict[str, list] = {}
+    for pid, rows in rows_by_place.items():
+        for n in rows:
+            for t in n.get("things", []):
+                if t.get("world"):
+                    by.setdefault(t["world"].get("base") or t.get("base"), []).append((pid, n, t))
+    out = []
+    for base, items in sorted(by.items()):
+        r = rule_sink(base)
+        rule = (f"rule sink {r.get('sink_lo_m')}-{r.get('sink_hi_m')} m" if r and r.get("sink_lo_m") is not None
+                else f"rule sink {r['sink_m']} m" if r and r.get("sink_m") is not None else "no flora rule for this base")
+        out.append(f"tree type {items[0][2].get('name') or base} ({base}): {rule}")
+        for pid, n, t in items:
+            out.append(f"  {pid} {n['id']}: owner's sink {t.get('sink_m', '?')} m at {t.get('pos')}: {n.get('text', '')[:160]}")
+    return "\n".join(out)
 
 
 def _next_id(rows: list[dict]) -> str:
@@ -231,7 +274,9 @@ def show(place_id: str, n: dict) -> str:
         out.append(f"  written looking at {n['view']['space']} near {n['view']['at']}")
     for t in n.get("things", []):
         out.append(f"  about: {t.get('name') or t.get('base')} ({t.get('kind', 'thing')}) id {t.get('id')} in {t.get('space')}"
-                   f" at {t.get('pos')}" + (f", copied from source thing {t['src']}" if t.get("src") else ""))
+                   f" at {t.get('pos')}" + (f", copied from source thing {t['src']}" if t.get("src") else "")
+                   + (f", the world's tree from {t['world']['pos']}" if t.get("world") else "")
+                   + (f", its pivot {t['sink_m']} m under the ground" if t.get("sink_m") is not None else ""))
     if n.get("reply"):
         out.append(f"  reply: {n['reply']}")
     return "\n".join(out)
@@ -298,6 +343,10 @@ def main(argv: list[str]) -> int:
         if text:
             print(text)
             shown += 1
+    trees = tree_notes({pid: [n for n in read(pid, a.places) if state(n) in wanted] for pid in ids})
+    if trees:
+        print("Tree notes by tree type (for the placement rules, tools/newworld/place):\n" + trees)
+        shown += 1
     if not shown:
         print("no notes" if a.all else "no open notes")
     return 1 if late else 0

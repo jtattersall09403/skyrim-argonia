@@ -181,6 +181,13 @@ export class Tools {
       const u = h && byUnit ? this.unitOfRef(h.ref.id) : null;
       if (u && whole?.id !== u.id && this.inside !== u.id) { this.cycleNote = ''; this.selectUnit(u); return; }
       if (u && whole?.id === u.id && same) { h = hits[0]; this.lastTap.idx = 0; }
+      // nothing of the place there: a tree or plant the world placed is chosen (shown in the panel; Move this tree
+      // takes it into the place, where it moves and sinks like any piece)
+      this.worldTree = null;
+      if (!h && !this.opts.adds) {
+        const w = this.app.ours.world?.pick(e.ray, { kinds: VEG }).find((x) => !x.ghost && !this.app.isCleared(x.ref));
+        if (w) { selSet.clear(); this.unit = null; this.inside = null; this.worldTree = w.ref; this.cycleNote = ''; this.selectionChanged(); return; }
+      }
       if (!this.opts.adds) selSet.clear();
       if (h) { selSet.has(h.ref.id) && this.opts.adds ? selSet.delete(h.ref.id) : selSet.add(h.ref.id); }
       this.unit = null; this.inside = u ? u.id : null;
@@ -294,10 +301,17 @@ export class Tools {
     g.querySelectorAll('[data-h]').forEach((h) => {
       h.addEventListener('pointerenter', () => { if (!this.drag) this.hint(h.dataset.h); });
       h.addEventListener('pointerleave', () => { if (!this.drag) this.hint(null); });
-      h.addEventListener('pointerdown', (e) => { e.stopPropagation(); if (e.pointerType === 'touch' && this.app.penSeen) return; h.setPointerCapture(e.pointerId); this.hint(h.dataset.h); this.gizmoDown(h.dataset.h, e); });
-      h.addEventListener('pointermove', (e) => this.gizmoMove(e));
-      h.addEventListener('pointerup', (e) => { this.gizmoUp(e); this.hint(null); });
-      h.addEventListener('pointercancel', () => { this.gizmoCancel(); this.hint(null); });
+      // A finger on a handle is still one of the view's fingers: a second finger anywhere makes the pair the view's
+      // two-finger gesture (the handle's drag is let go), so a pinch or pan that begins on a handle works like any other.
+      const view = () => this.app.ours.view, two = (e) => e.pointerType === 'touch' && view().touches() >= 2;
+      h.addEventListener('pointerdown', (e) => {
+        e.stopPropagation(); if (e.pointerType === 'touch') view().down(e, { handle: true });
+        if (e.pointerType === 'touch' && this.app.penSeen) return;
+        h.setPointerCapture(e.pointerId); this.hint(h.dataset.h); if (!two(e)) this.gizmoDown(h.dataset.h, e);
+      });
+      h.addEventListener('pointermove', (e) => { if (two(e)) { view().move(e); return; } this.gizmoMove(e); });
+      h.addEventListener('pointerup', (e) => { const both = two(e); if (e.pointerType === 'touch') view().up(e); if (!both) this.gizmoUp(e); this.hint(null); });
+      h.addEventListener('pointercancel', (e) => { if (e.pointerType === 'touch') view().up(e, true); this.gizmoCancel(); this.hint(null); });
     });
   }
   selRefs() { const m = this.app.placeRefsById(); return [...this.app.selection].map((id) => m.get(id)).filter(Boolean); }
@@ -727,6 +741,20 @@ export class Tools {
     l.seat = a.ours.space === 'exterior' ? { mode: 'on', on: r.id, dz: rnd(l.pos[2] - r.pos[2]) } : { mode: 'free' };
     return [{ op: 'ref.add', ref: l }];
   }
+  // A world tree taken into the place: the world's own placement cleared there (veg.clear, which every rebuild
+  // respects) and the same tree added as the place's row at the same pose, its seat on the ground at the depth it
+  // stood, with `world` naming where the world had it. One undo step; the new row is selected to move or sink.
+  takeTree(t) {
+    const a = this.app, id = mintId(a.place.place_id), g = a.terrain?.heightAt(t.pos[0], t.pos[1]);
+    const row = { id, base: t.base, kind: t.kind || 'tree', pos: [...t.pos], rot: [...(t.rot || [0, 0, 0])], scale: t.scale ?? 1, layer: 'place', flags: [],
+      seat: g == null ? { mode: 'free' } : { mode: 'ground', dz: rnd(t.pos[2] - g) }, world: { base: t.base, pos: [...t.pos] },
+      why: "the world's tree here, moved by hand" };
+    a.push([{ op: 'veg.clear', items: [{ base: t.base, pos: t.pos }], space: 'exterior' }, { op: 'ref.add', ref: row }]);
+    this.worldTree = null; a.selection = new Set([id]); this.selectionChanged();
+    return id;
+  }
+  // How deep a tree's pivot sits under the ground there, in metres (a note's measured sink).
+  sinkOf(r) { const g = this.app.terrain?.heightAt(r.pos[0], r.pos[1]); const z = this.app.seated ? this.app.seated(r).pos[2] : r.pos[2]; return g == null ? null : Math.round(((g - z) / 70) * 1000) / 1000; }
   // Put the selected wall thing on the next wall tapped.
   hangOnWall() {
     const r = this.selRefs()[0]; if (!r) return;

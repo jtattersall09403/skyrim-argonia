@@ -159,18 +159,23 @@ export class View {
     if (e.pointerType === 'touch') return 'touch';
     return 'tool';
   }
-  down(e) {
-    this.canvas.setPointerCapture?.(e.pointerId);
+  // How many fingers are on this view (those on a selection's handles among them).
+  touches() { return [...this.pointers.values()].filter((q) => q.role === 'touch' || q.role === 'nav').length; }
+  down(e, { handle = false } = {}) {
+    if (!handle) this.canvas.setPointerCapture?.(e.pointerId);
     this.el.parentElement?.querySelectorAll('.view').forEach((v) => v.classList.toggle('focus', v === this.el));
     this.app.focusView?.(this);
     const role = this.role(e);
-    const p = { id: e.pointerId, role, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t0: performance.now(), moved: false, toolActive: false };
+    const p = { id: e.pointerId, role, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t0: performance.now(), moved: false, toolActive: false, handle };
     this.pointers.set(e.pointerId, p);
     const navs = [...this.pointers.values()].filter((q) => q.role !== 'tool');
     if (navs.length >= 2) { // a second finger: cancel any tool gesture it began
       for (const q of navs) if (q.toolActive) { this.app.tool?.cancel?.(this.info(e)); q.toolActive = false; }
-      this.pinch = null;
+      if (navs.some((q) => q.handle) && this.app.tools?.drag) this.app.tools.gizmoCancel();   // a handle's drag gives way
+      // the two-finger gesture begins where the fingers touched down, before either has moved
+      this.pinch = this.twoBegin(navs[0], navs[1]);
     }
+    if (handle) return;
     const tool = this.app.toolFor(this);
     if (role === 'tool' || (role === 'touch' && navs.length < 2 && tool?.wantsDrag?.(this.info(e)))) {
       if (tool?.down?.(this.info(e)) !== false && tool?.wantsDrag?.(this.info(e))) p.toolActive = true;
@@ -186,18 +191,26 @@ export class View {
     if (navs.length >= 2) {
       const [a, b] = navs, cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2, d = Math.hypot(a.x - b.x, a.y - b.y);
       const ang = Math.atan2(b.y - a.y, b.x - a.x);
-      if (this.pinch) {
-        this.zoom(this.pinch.d / Math.max(1, d), true); this.pan(cx - this.pinch.cx, cy - this.pinch.cy, true);
-        this.rig.yaw -= ang - this.pinch.ang; this.changed();
-      }
-      this.pinch = { cx, cy, d, ang }; return;
+      // the same every time, selected or not, worked out from where the two fingers began (so no lost or reordered
+      // move can drift it): their middle drags the scene in the screen plane, their spread dollies towards the point
+      // under them as they began (the ground there), their twist turns the view
+      if (!this.pinch) this.pinch = this.twoBegin(a, b);
+      const P = this.pinch, r = this.rig;
+      r.target.copy(P.rig.t); r.dist = P.rig.dist; r.yaw = P.rig.yaw; r.pitch = P.rig.pitch; this.updateCamera();
+      this.pan(cx - P.cx, cy - P.cy, true);
+      this.zoomAt(P.d / Math.max(1, d), P.at, true);
+      r.yaw -= ang - P.ang; this.changed();
+      return;
     }
     if (p.role === 'pan') this.pan(dx, dy);
-    else if (p.role !== 'tool' && p.moved) this.orbit(dx, dy);
+    else if (p.role !== 'tool' && p.moved && !p.afterTwo) this.orbit(dx, dy);
   }
   up(e, cancelled) {
     const p = this.pointers.get(e.pointerId); if (!p) return;
     this.pointers.delete(e.pointerId); this.pinch = null;
+    // a finger left on the glass after a two-finger gesture starts afresh: it never turns the view by the jump
+    for (const q of this.pointers.values()) { q.x0 = q.x; q.y0 = q.y; q.moved = false; q.afterTwo = true; }
+    if (p.handle) return;
     const tool = this.app.toolFor(this);
     if (p.toolActive) { cancelled ? tool?.cancel?.(this.info(e)) : tool?.up?.(this.info(e)); return; }
     const isTap = !cancelled && !p.moved && performance.now() - p.t0 < TAP_MS * 2 && this.pointers.size === 0;
@@ -223,17 +236,40 @@ export class View {
       const sign = dir.distanceTo(new THREE.Vector3(...cam(r.yaw, r.pitch))) < 1e-6 ? -1 : 1;
       v.applyAxisAngle(side, sign * (r.pitch - pitch0));
       r.target.set(P[0] + v.x, P[1] + v.y, P[2] + v.z);
+      // and the pivot eases to the middle of the screen as the swipe goes on: a fifth of the way each step
+      const turned = Math.abs(r.yaw - yaw0) + Math.abs(r.pitch - pitch0), k = Math.min(1, turned * 4) * 0.2;
+      r.target.set(r.target.x + (P[0] - r.target.x) * k, r.target.y + (P[1] - r.target.y) * k, r.target.z + (P[2] - r.target.z) * k);
     }
     this.changed();
   }
   // The point turned and zoomed about, in view coordinates, or null.
   pivot() { const g = this.app.pivotFor?.(this); return g && this.origin ? [g[0] - this.origin[0], g[1] - this.origin[1], g[2] - this.origin[2]] : null; }
+  // The scene follows the fingers in the screen plane: dragging right slides it right, dragging down slides it down
+  // (the view moves up), never towards or away from the camera.
   pan(dx, dy, quiet) {
-    const k = this.rig.dist * 0.0016, c = Math.cos(this.rig.yaw), s = Math.sin(this.rig.yaw);
-    // dragging right slides the land right; dragging down pulls the land towards the camera
-    this.rig.target.x += (s * dx - c * dy) * k;
-    this.rig.target.y += (-c * dx - s * dy) * k;
+    const k = (2 * this.rig.dist * Math.tan((this.camera.fov * Math.PI) / 360)) / (this.h || 800);
+    const right = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0), up = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
+    this.rig.target.addScaledVector(right, -dx * k).addScaledVector(up, dy * k);
     if (!quiet) this.changed(); else this.updateCamera();
+  }
+  // Where a two-finger gesture begins: the fingers' middle, spread and twist, the ground under their middle and the camera.
+  twoBegin(a, b) {
+    const r = this.rig, cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+    return { cx, cy, d: Math.hypot(a.x - b.x, a.y - b.y), ang: Math.atan2(b.y - a.y, b.x - a.x), at: this.pointAt(cx, cy),
+      rig: { t: r.target.clone(), dist: r.dist, yaw: r.yaw, pitch: r.pitch } };
+  }
+  // The ground under a point of the view (page pixels), in game units, or null.
+  pointAt(px, py) {
+    const r = this.canvas.getBoundingClientRect(), rc = new THREE.Raycaster();
+    rc.setFromCamera(new THREE.Vector2(((px - r.left) / r.width) * 2 - 1, -((py - r.top) / r.height) * 2 + 1), this.camera);
+    return this.groundAt(rc.ray);
+  }
+  // Dolly towards (f < 1) or away from a point in game units (else the point looked at), which stays put on the screen.
+  zoomAt(f, at, quiet) {
+    const d0 = this.rig.dist; this.rig.dist = Math.max(150, Math.min(80000, d0 * f));
+    const k = this.rig.dist / d0, t = this.rig.target;
+    if (at && this.origin && k !== 1) { const P = [at[0] - this.origin[0], at[1] - this.origin[1], at[2] - this.origin[2]]; t.set(P[0] + (t.x - P[0]) * k, P[1] + (t.y - P[1]) * k, P[2] + (t.z - P[2]) * k); }
+    quiet ? this.updateCamera() : this.changed();
   }
   // Zooming goes towards what is selected (it stays where it is on the screen), else towards where the view looks.
   zoom(f, quiet) {

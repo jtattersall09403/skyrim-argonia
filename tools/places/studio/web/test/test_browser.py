@@ -716,3 +716,100 @@ def test_41_draw_a_persons_way(pad):
     assert [[round(p[0]), round(p[1])] for p in line[1:-1]] == [[round(x), round(y)] for x, y in way]
     pad.ev("studio.log.undo(); studio.log.undo(); studio.tools.use('select')")
     assert not pad.errors, pad.errors
+
+
+# ---------- 42: one gesture model on touch, with or without a selection ----------
+def _rig(pad):
+    return pad.ev("(() => { const r = studio.ours.view.rig; return { d: r.dist, x: r.target.x, y: r.target.y, z: r.target.z, yaw: r.yaw, pitch: r.pitch }; })()")
+
+
+def _two_drag(pad, a, b, d, steps=8):
+    pad.touch("touchStart", [a, b])
+    for i in range(1, steps + 1):
+        f = i / steps
+        pad.touch("touchMove", [(a[0] + d[0] * f, a[1] + d[1] * f), (b[0] + d[0] * f, b[1] + d[1] * f)])
+    pad.touch("touchEnd", [])
+    pad.page.wait_for_timeout(60)
+
+
+def test_42_touch_pinch_and_pan_are_the_same_with_or_without_a_selection(pad):
+    """Pinch dollies towards the point looked at, two fingers drag the scene in the screen plane (up and down move the
+    view up and down, never forward or back), the same every time and whether or not anything is selected."""
+    pad.page.click("#rail [data-tool=select]")
+    v = pad.ev("(() => { const r = studio.ours.view.canvas.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; })()")
+    b = pad.ev("(() => { const r = [...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building'); return r.id; })()")
+    out = {}
+    for sel in (False, True, False, True):
+        pad.ev("(id) => { studio.selection = id ? new Set([id]) : new Set(); studio.tools.selectionChanged(); }", b if sel else None)
+        pad.ev("(() => { const r = studio.ours.view.rig; r.dist = 3000; r.pitch = 0.6; r.yaw = 1; studio.ours.view.changed(); })()")
+        r0 = _rig(pad)
+        pad.pinch((v[0], v[1]), 60, 160)
+        r1 = _rig(pad)
+        assert r1["d"] < r0["d"] * 0.6, (sel, "pinch out comes closer", r0, r1)
+        pad.ev("(() => { const r = studio.ours.view.rig; r.dist = 3000; r.pitch = 0.6; r.yaw = 1; studio.ours.view.changed(); })()")
+        r2 = _rig(pad)
+        _two_drag(pad, (v[0] - 60, v[1]), (v[0] + 60, v[1]), (0, 120))
+        r3 = _rig(pad)
+        assert abs(r3["d"] - r2["d"]) < 0.02 * r2["d"] and abs(r3["yaw"] - r2["yaw"]) < 0.02, (sel, "a two-finger drag neither zooms nor turns", r2, r3)
+        assert r3["z"] - r2["z"] > 50, (sel, "dragging down moves the view up the screen plane", r2, r3)
+        out.setdefault(sel, []).append((round(r1["d"] / r0["d"], 3), round(r3["z"] - r2["z"], 1)))
+    assert out[False][0] == out[False][1] == out[True][0] == out[True][1], out
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    assert not pad.errors, pad.errors
+
+
+# ---------- 43: a world tree selected, noted, taken into the place and lowered ----------
+def test_43_world_tree_selected_noted_and_lowered(pad):
+    """A tap on a tree the world placed chooses it; Move this tree takes it into the place (the world's cleared there,
+    one undo step); lowered 20 cm it keeps that depth; a note about it carries its type, where the world had it and
+    the depth its pivot sits."""
+    pad.page.click("#rail [data-tool=select]")
+    t = pad.ev("(() => { const g = [...studio.ours.world.groups.values()].find((g) => g.kind === 'tree' && !g.ghost && g.refs.length); return g ? g.refs.find((r) => !studio.isCleared(r)) : null; })()")
+    assert t, "the fixture's world has a tree"
+    pad.ev("(t) => { const T = studio.tools; T.worldTree = [...studio.ours.world.groups.values()].flatMap((g) => g.refs).find((r) => r.base === t.base && r.pos[0] === t.pos[0] && r.pos[1] === t.pos[1]); T.selectionChanged(); }", t)
+    assert pad.page.get_by_role("button", name="Move this tree").is_visible()
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="Move this tree").click()
+    ops = pad.ops()
+    assert [o["op"] for o in ops[n0:]] == ["veg.clear", "ref.add"], ops[n0:]
+    rid = ops[-1]["id"]
+    z = "(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]"
+    z0 = pad.ev(z, rid)
+    assert abs(z0 - t["pos"][2]) < 0.05, "taken in where the world had it"
+    pad.ev("studio.tools.nudge(0, 0, -14)")          # 20 cm
+    assert abs(pad.ev(z, rid) - (z0 - 14)) < 0.05
+    sink = pad.ev("(id) => studio.tools.sinkOf(studio.model.spaces.exterior.refs.get(id))", rid)
+    pad.page.get_by_role("button", name=re.compile("Leave a note")).first.click()
+    pad.page.fill(".note-text", "This tree sits too high: it wants about 20 cm deeper")
+    with pad.page.expect_response(lambda r: "/notes" in r.url and r.request.method == "POST") as resp:
+        pad.page.get_by_role("button", name="Keep the note", exact=True).click()
+    note = resp.value.json()
+    th = note["things"][0]
+    assert th["world"]["base"] == t["base"] and abs(th["sink_m"] - sink) < 0.002, th
+    # the ops replay from the log as they were made, with nothing lost
+    before = pad.ev("JSON.stringify([...studio.model.spaces.exterior.refs.values()].map((r) => [r.id, r.pos, r.seat]))")
+    pad.ev("studio.loadSave({ ops: studio.log.applied() })")
+    assert pad.ev("JSON.stringify([...studio.model.spaces.exterior.refs.values()].map((r) => [r.id, r.pos, r.seat]))") == before
+    for _ in range(3):
+        pad.ev("studio.log.undo()")
+    pad.ev("studio.tools.worldTree = null; studio.selection.clear(); studio.tools.selectionChanged()")
+    assert not pad.errors, pad.errors
+
+
+# ---------- 44: a selected unit shows an outline round its edge, nothing over its surfaces ----------
+def test_44_selection_outline_is_an_edge_only(pad):
+    pad.page.click("#rail [data-tool=select]")
+    b = pad.ev("(() => [...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building' && r.cluster))()")
+    seated = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", b["id"])
+    look_at(pad, "ours", seated)
+    x, y = pad.screen("ours", [seated[0], seated[1], seated[2] + 150])
+    pad.pen_tap(x, y)
+    pad.page.wait_for_timeout(400)
+    kinds = pad.ev("(() => { const s = studio.tools.shape; return s ? s.children.map((c) => c.type + ':' + (c.material.side === 1 ? 'back' : 'front')) : []; })()")
+    assert kinds and all(k == "Mesh:back" for k in kinds), kinds   # a back-face rim per piece, no lines
+    pad.ev("(() => { const r = studio.ours.view.rig; r.dist = 1400; r.pitch = 0.55; studio.ours.view.changed(); })()")
+    pad.page.wait_for_timeout(600)
+    pad.shot("44-selected-unit-outline")
+    pad.page.get_by_role("button", name="Deselect", exact=True).click()
+    assert not pad.ev("[...studio.selection].length")
+    assert not pad.errors, pad.errors
