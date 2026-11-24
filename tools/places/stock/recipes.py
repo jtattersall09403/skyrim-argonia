@@ -90,7 +90,7 @@ def generate() -> dict:
     out = []
     for key, row in sorted(gear.items()):
         it = rec.item(key)
-        if it is None:
+        if it is None or row.get("races"):       # clothing is cut and sewn, never forged or tempered
             continue
         mid, kind, slot = row["material"], split.power_kind(it), split.slot_of(it)
         tier = split.item_tier(it)[0]
@@ -137,7 +137,9 @@ def check(doc: dict, wares: dict, made: set[str]) -> list[str]:
     for r in doc["recipes"]:
         have[r["item"]][r["kind"]] = r
     new = {f"new:{n['edid']}" for n in doc.get("new_items", [])}
-    for key in split.item_materials()["gear"]:
+    for key, row in split.item_materials()["gear"].items():
+        if row.get("races"):                      # clothing has no forge or tempering recipe
+            continue
         h = have.get(key, {})
         if "temper" not in h or not h["temper"]["ingredients"]:
             bad.append(f"{key}: no tempering recipe")

@@ -49,6 +49,14 @@
       "hide"
      ],
      "why": "light for the marsh"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -112,6 +120,14 @@
       "leather"
      ],
      "why": "wraps and a leather jerkin at most"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -202,6 +218,14 @@
       "scale"
      ],
      "why": "hackwing or crocodile leather: quick and quiet"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -247,7 +271,16 @@
      "why": "a cutting knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "sap",
@@ -301,7 +334,16 @@
      "why": "a reed knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "reed-weaving",
@@ -351,7 +393,16 @@
      "why": "carving knives"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "bone-and-horn",
@@ -399,7 +450,16 @@
      "why": "a maul"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "timber-and-stone",
@@ -448,6 +508,14 @@
       "leather"
      ],
      "why": "their own leather"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -491,6 +559,14 @@
       "leather"
      ],
      "why": "a leather apron"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -531,7 +607,17 @@
      "why": "a ceremonial blade"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "an elder's sashed and embroidered dress (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "sap",
@@ -578,6 +664,15 @@
       "saxhleel"
      ],
      "why": "Water-clan vestments and a priest's mask (an alternative)"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "a priest's robes (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -624,7 +719,17 @@
      "why": "a belt knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "a trader's sashed tunic (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "river-goods",
@@ -661,7 +766,17 @@
      "why": "a kitchen knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "a host's sashed tunic (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "river-fish",
@@ -720,7 +835,16 @@
      "why": "a pole or club"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "reed-weaving",
@@ -752,7 +876,17 @@
      "why": "a belt knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "a clerk's sashed tunic (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "river-goods",
@@ -812,6 +946,14 @@
       "bonemold"
      ],
      "why": "light armour"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -883,6 +1025,14 @@
       "saxhleel"
      ],
      "why": "soft leathers that do not creak"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -937,6 +1087,14 @@
       "caravan-steel"
      ],
      "why": "light mail"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -998,6 +1156,14 @@
       "shadowscale"
      ],
      "why": "the order's cradle-black leathers"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [],
@@ -1043,6 +1209,14 @@
       "imperial"
      ],
      "why": "Imperial and Company issue"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [],
@@ -1083,6 +1257,14 @@
       "netch-leather"
      ],
      "why": "the Dres slavemaster's netch"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -1130,6 +1312,14 @@
       "imperial"
      ],
      "why": "what fits off a taken ship"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
     }
    ],
    "home": [
@@ -1169,7 +1359,16 @@
      "why": "a knife"
     }
    ],
-   "wear": [],
+   "wear": [
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "cloth"
+     ],
+     "why": "plain woven clothes: the dress of the trade (items.md, section Clothing)"
+    }
+   ],
    "home": [
     {
      "good": "river-fish",
@@ -1224,6 +1423,14 @@
       "bonemold"
      ],
      "why": "netch, chitin and bonemold"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth"
+     ],
+     "why": "Telvanni robes, the Dunmer household's dress"
     }
    ],
    "home": [
@@ -1272,6 +1479,15 @@
       "leather"
      ],
      "why": "Imperial light issue"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "plain clothes of the wearer's own people (no marsh piece fits them: Skyrim's own clothes)"
     }
    ],
    "home": [
@@ -1325,6 +1541,15 @@
       "leather"
      ],
      "why": "caravan mail"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "plain clothes of the wearer's own people (no marsh piece fits them: Skyrim's own clothes)"
     }
    ],
    "home": [
@@ -1373,6 +1598,15 @@
       "leather"
      ],
      "why": "bark-and-hide Bosmer armour"
+    },
+    {
+     "slot": "clothing",
+     "typ": "ArmorClothing",
+     "materials": [
+      "fine-cloth",
+      "cloth"
+     ],
+     "why": "plain clothes of the wearer's own people (no marsh piece fits them: Skyrim's own clothes)"
     }
    ],
    "home": [
@@ -1485,10 +1719,9 @@
      "slot": "light",
      "typ": "ArmorCuirass",
      "materials": [
-      "shell",
       "saxhleel"
      ],
-     "why": "shell-plated harness that swims"
+     "why": "shell-plated harness that swims: the saxhleel light harness (no light shell piece is held; the held Shellback shell is heavy, which harbour folk never wear)"
     }
    ],
    "home": [],
@@ -1790,10 +2023,18 @@
    ],
    "wear": [
     {
-     "slot": "light",
+     "slot": "heavy",
      "typ": "ArmorCuirass",
      "materials": [
       "shell"
+     ],
+     "why": "the Shellback cuirass, the held turtle-shell body (no held light shell piece exists: its record is heavy)"
+    },
+    {
+     "slot": "light",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "saxhleel"
      ],
      "why": "shell harness"
     }
@@ -1911,6 +2152,14 @@
     }
    ],
    "wear": [
+    {
+     "slot": "heavy",
+     "typ": "ArmorCuirass",
+     "materials": [
+      "bone-plate"
+     ],
+     "why": "the Bone Cultist's cuirass, the held bone-plate body (no held light bone-plate piece is unenchanted: the Kothringi light set is enchanted, and its record is not issued)"
+    },
     {
      "slot": "light",
      "typ": "ArmorCuirass",

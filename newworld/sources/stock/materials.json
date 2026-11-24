@@ -1249,6 +1249,67 @@
      "why": "Soulrest's Bosmer seafarers"
     }
    ]
+  },
+  {
+   "id": "cloth",
+   "label": "Woven cloth and plain clothes",
+   "group": "organic",
+   "band": "common",
+   "tier": "CANON_DERIVED",
+   "lore": "pre-Duskfall layered cloth, grass and fibre weaving, dyed yarn (material-culture.md:53-56, 69-70): the everyday dress of a marsh household, worn over no armour",
+   "power": {
+    "weapon": null,
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "argonian",
+     "why": "every household weaves its own cloth"
+    },
+    {
+     "kind": "people",
+     "value": "naga",
+     "why": "the Naga wear their own rags and snakeskins"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "anywhere",
+     "value": null,
+     "why": "the marsh's own make"
+    }
+   ],
+   "ladder_tier": "T1"
+  },
+  {
+   "id": "fine-cloth",
+   "label": "Fine cloth, sashes and robes",
+   "group": "organic",
+   "band": "uncommon",
+   "tier": "CANON_DERIVED",
+   "lore": "dyed yarn, silks and sashed tunics, the robes of elders, priests and traders (material-culture.md:53-56, 165-171)",
+   "power": {
+    "weapon": null,
+    "armour": null
+   },
+   "keywords": [],
+   "makers": [
+    {
+     "kind": "people",
+     "value": "argonian",
+     "why": "the weavers' dyed and sashed work"
+    }
+   ],
+   "reach": [
+    {
+     "kind": "anywhere",
+     "value": null,
+     "why": "the marsh's own make"
+    }
+   ],
+   "ladder_tier": "T2"
   }
  ],
  "never": {

@@ -82,9 +82,11 @@ The table below is the ladder as the data holds it, one line per material:
 | T1 | Flint and jadeflint | 23 |  |  |  | common | IronSword |
 | T1 | Hide and fibre |  |  | 4 | 1 | common | IronSword |
 | T1 | Wood and bamboo | 38 |  | 13 |  | common | IronSword |
-| T2 | Bog iron | 30 | 1 | 10 | 2 | uncommon | SteelSword |
+| T1 | Woven cloth and plain clothes |  |  |  |  | common | IronSword |
+| T2 | Bog iron | 37 | 1 | 10 | 2 | uncommon | SteelSword |
 | T2 | Corsair's steel | 5 |  | 8 |  | situational | SteelSword |
 | T2 | Crossbow work (bog iron and wood) | 1 |  |  |  | situational | SteelSword |
+| T2 | Fine cloth, sashes and robes |  |  |  |  | uncommon | SteelSword |
 | T2 | Imperial issue | 18 | 11 | 28 | 5 | situational | SteelSword |
 | T2 | Kothringi relic | 13 | 8 | 6 | 4 | ruin | SteelSword |
 | T2 | Marsh leather | 1 |  | 8 |  | common | SteelSword |
@@ -97,7 +99,7 @@ The table below is the ladder as the data holds it, one line per material:
 | T3 | Bonemold | 24 | 8 | 4 | 5 | situational | ElvenSword |
 | T3 | Caravan steel (Khajiit and Bosmer traders' make) | 8 | 19 | 25 | 2 | situational | ElvenSword |
 | T3 | Chitin | 10 | 6 | 4 | 2 | uncommon | ElvenSword |
-| T3 | Copper-edged steel | 23 |  |  |  | uncommon | ElvenSword |
+| T3 | Copper-edged steel | 16 |  |  |  | uncommon | ElvenSword |
 | T3 | Greenwood (Bosmer make) | 3 | 5 | 6 |  | situational | ElvenSword |
 | T4 | Moonstone and Temple glass (Dunmer fine work) | 19 |  | 4 | 2 | situational | GlassSword |
 | T4 | Pre-Duskfall bronze |  | 3 |  |  | rare | GlassSword |

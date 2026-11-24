@@ -8,6 +8,7 @@
 {"material_id":"caravan-steel","seq":0,"kind":"record","value":"\\b(khajiit\\w*|bosmer|wood elf|wood elves|caravans?|traders?)\\b","why":"the record names Khajiit, Bosmer or traders"}
 {"material_id":"caravan-steel","seq":1,"kind":"culture","value":"gold","why":"Archon's harbour, where the caravans land"}
 {"material_id":"chitin","seq":0,"kind":"anywhere","why":"traded: the lead's call 2 (issue #89)"}
+{"material_id":"cloth","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"copper-steel","seq":0,"kind":"anywhere","why":"uncommon; its tier keeps it to the towns"}
 {"material_id":"corsair","seq":0,"kind":"place-kind","value":"outlaw-camp","why":"a pirate or smuggler camp"}
 {"material_id":"corsair","seq":1,"kind":"place-kind","value":"shipwreck","why":"a wreck"}
@@ -32,6 +33,7 @@
 {"material_id":"ebony","seq":1,"kind":"place-family","value":"sunken","why":"a drowned ruin's hoard"}
 {"material_id":"elven","seq":0,"kind":"place-kind","value":"ayleid-ruin","why":"a Barsaebic Ayleid ruin"}
 {"material_id":"elven","seq":1,"kind":"record","value":"\\bayleids?\\b","why":"the record names the Ayleids"}
+{"material_id":"fine-cloth","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"flint","seq":0,"kind":"anywhere","why":"the marsh's own make"}
 {"material_id":"glass","seq":0,"kind":"place-family","value":"ruin","why":"a ruin's hoard"}
 {"material_id":"glass","seq":1,"kind":"place-family","value":"sunken","why":"a drowned ruin's hoard"}

@@ -191,8 +191,9 @@
     "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
     "min_ceiling": "T3",
     "tier": "T3",
-    "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"],
+    "items": ["Black Marsh North.esp:03E3E2", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"],
     "outfit": "Black Marsh North.esp:037DF8",
+    "was": ["Black Marsh North.esp:037DF0"],
     "weapon": null,
     "why": "The watch of a Black Marsh town or city wears the Argonian scale set (cuirass, boots, gauntlets), the scale material at T3 with Skyrim's scaled armour stats: a city, town, fort, keep or prison of the Argonian cultures whose ceiling reaches T3 issues it. The sidearm stays the plain issue's sword."
    },

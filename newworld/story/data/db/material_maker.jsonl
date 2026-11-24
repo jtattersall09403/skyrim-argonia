@@ -8,9 +8,12 @@
 {"material_id":"caravan-steel","kind":"people","value":"khajiit","why":"Khajiit caravans"}
 {"material_id":"chitin","kind":"people","value":"argonian","why":"bone- and chitin-workers (material-culture.md:63-64)"}
 {"material_id":"chitin","kind":"people","value":"dunmer","why":"Morrowind's own make"}
+{"material_id":"cloth","kind":"people","value":"argonian","why":"every household weaves its own cloth"}
+{"material_id":"cloth","kind":"people","value":"naga","why":"the Naga wear their own rags and snakeskins"}
 {"material_id":"copper-steel","kind":"good","value":"ironwork","why":"the few smiths who edge steel with copper"}
 {"material_id":"crossbow","kind":"people","value":"dunmer","why":"Dunmer holdouts"}
 {"material_id":"crossbow","kind":"people","value":"imperial","why":"Imperial and Company armouries"}
+{"material_id":"fine-cloth","kind":"people","value":"argonian","why":"the weavers' dyed and sashed work"}
 {"material_id":"flint","kind":"people","value":"argonian","why":"knapped in every village"}
 {"material_id":"flint","kind":"people","value":"naga","why":"the Naga's macahuitl are flint-edged wood"}
 {"material_id":"greenwood","kind":"people","value":"bosmer","why":"Bosmer craft"}

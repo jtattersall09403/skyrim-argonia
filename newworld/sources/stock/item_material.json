@@ -2234,8 +2234,8 @@
   },
   {
    "item": "King of the Murkmire.esp:098EC0",
-   "material": "copper-steel",
-   "why": "Saxhleel Battleaxe: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel battleaxe: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC1",
@@ -2244,33 +2244,33 @@
   },
   {
    "item": "King of the Murkmire.esp:098EC2",
-   "material": "copper-steel",
-   "why": "Saxhleel Dagger: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel dagger: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC3",
-   "material": "copper-steel",
-   "why": "Saxhleel Tusik: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel greatsword: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC4",
-   "material": "copper-steel",
-   "why": "Saxhleel Mace: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel mace: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC5",
-   "material": "copper-steel",
-   "why": "Saxhleel Sabre: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel sabre: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC6",
-   "material": "copper-steel",
-   "why": "Saxhleel Axe: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel axe: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098EC7",
-   "material": "copper-steel",
-   "why": "Saxhleel Longmace: the Saxhleel set: copper-edged steel"
+   "material": "bog-iron",
+   "why": "Saxhleel longmace: the Saxhleel's own dark smelted-iron make (King of the Murkmire's argonianweapons), curved blades and block-headed hafts: bog iron, filed here because its look is the marsh's iron, never copper-edged steel"
   },
   {
    "item": "King of the Murkmire.esp:098ECA",
@@ -3921,6 +3921,446 @@
    "item": "shadowscaleset.esp:000D80",
    "material": "shadowscale",
    "why": "Shadowscale Boots: Shadowscale Reborn"
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6F",
+   "material": "cloth",
+   "why": "Rough Fiber Clothes: the native weavers' fibre dress (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6B",
+   "material": "cloth",
+   "why": "Rough Fiber Clothes: the native weavers' fibre dress (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F69",
+   "material": "cloth",
+   "why": "Rough Fiber Clothes: the native weavers' fibre dress (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08666B",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08666C",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08666D",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08666E",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08666F",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086670",
+   "material": "cloth",
+   "why": "a plain Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:5AEAAC",
+   "material": "cloth",
+   "why": "Lizard-Skin Wraps: the Kothringi's wraps (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:183595",
+   "material": "cloth",
+   "why": "Naga Snakeskins: the Naga's snakeskin dress (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:15AD12",
+   "material": "cloth",
+   "why": "Naga Rags: the poorest Naga dress (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6E",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:4A12F1",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6C",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F6D",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1B0F67",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:0AD638",
+   "material": "cloth",
+   "why": "native hood, hats, arm wraps, shoes, boots and sandals (An-Wamasu, HTBM natives, King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086671",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086672",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086673",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086674",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086675",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086676",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086677",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086678",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086679",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667A",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667B",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667C",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667D",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667E",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:08667F",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086680",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086681",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "King of the Murkmire.esp:086682",
+   "material": "fine-cloth",
+   "why": "a sashed Saxhleel tunic (King of the Murkmire): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:18869E",
+   "material": "fine-cloth",
+   "why": "Naga Elite Silks: the elite's embroidered sash (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:16A052",
+   "material": "fine-cloth",
+   "why": "Naga Priest Skirt: the priests' green skirt (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:20EE1E",
+   "material": "fine-cloth",
+   "why": "Sacrificial Robes: the Kothringi priests' embroidered sash (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1468C3",
+   "material": "fine-cloth",
+   "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1468CE",
+   "material": "fine-cloth",
+   "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "Here There Be Monsters - Curse of Cipactli.esp:1468CF",
+   "material": "fine-cloth",
+   "why": "Kothringi Robes: the Kothringi hakama (HTBM Curse of Cipactli): clothing",
+   "races": [
+    "ArgonianRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036F2",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D6",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D5",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D4",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D3",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "TelvanniRobes.esp:0036D2",
+   "material": "fine-cloth",
+   "why": "a Telvanni robe: a Dunmer household's dress: clothing",
+   "races": [
+    "DarkElfRace"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:01BE1A",
+   "material": "cloth",
+   "why": "Skyrim's farm clothes: the plain fallback where no marsh piece fits the wearer: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:0209A6",
+   "material": "cloth",
+   "why": "Skyrim's farm clothes: the plain fallback where no marsh piece fits the wearer: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:0261C0",
+   "material": "cloth",
+   "why": "Skyrim's farm clothes: the plain fallback where no marsh piece fits the wearer: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:03452E",
+   "material": "cloth",
+   "why": "Skyrim's farm clothes: the plain fallback where no marsh piece fits the wearer: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:0BACF3",
+   "material": "cloth",
+   "why": "Skyrim's monk robes: the plain fallback where no marsh piece fits the wearer: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:086991",
+   "material": "fine-cloth",
+   "why": "Skyrim's fine clothes: the fallback finer dress: clothing",
+   "races": [
+    "*"
+   ]
+  },
+  {
+   "item": "Skyrim.esm:0CEE80",
+   "material": "fine-cloth",
+   "why": "Skyrim's fine clothes: the fallback finer dress: clothing",
+   "races": [
+    "*"
+   ]
   }
  ],
  "wares": [

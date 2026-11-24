@@ -144,7 +144,8 @@ def audit(w, pid: str, doc: dict) -> list[dict]:
     bad = []
     guards = {p.id for p in w.rows("person", place_id=pid) if p.person_role_id == "guard"}
     issue = split.guard_issue(split.place_facts(w, pid), w.get("place_wealth", pid).ceiling_tier_id)["set"]
-    issue_keys = set((issue or {}).get("items") or [])
+    # `was`: a cuirass the row issued before (BM&V's own record has no ground model): a drafted place's guards keep it
+    issue_keys = set((issue or {}).get("items") or []) | set((issue or {}).get("was") or [])
     issue_mats = set((issue or {}).get("materials", []) + (issue or {}).get("fallback", []))
     for row in stock_rows(doc):
         it = items.get(row["item"])

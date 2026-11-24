@@ -110,7 +110,24 @@ class Picker:
                    and split.item_tier(i, self.scale)[0] == t and split.material_of(i)[0] in order]
             if fit:
                 return min(fit, key=lambda i: (order.index(split.material_of(i)[0]),
-                                               i["key"] not in split.item_materials()["gear"], i["value"], i["key"]))
+                                               i["key"] not in split.item_materials()["gear"],
+                                               i["key"].rsplit(":", 1)[0] in VANILLA_PLUGINS, i["value"], i["key"]))
+        return None
+
+    def clothing(self, materials: list[str], race: str, band_rank: int, top_rank: int = 5) -> dict | None:
+        """A person's one worn outfit: a body piece of clothing filed under the first of `materials` that has one the
+        wearer's race fits (item_material `races`: the pieces made for the race first, then those every race wears,
+        Skyrim's own), cheapest for the poorest band and dearer up the bands."""
+        gear = split.item_materials()["gear"]
+        for m in materials:
+            body = [i for i in self.items if i["sig"] == "ARMO" and "ArmorClothing" in i["keywords"]
+                    and (i.get("slots") or 0) & 0x4 and not i["ench"] and split.material_of(i)[0] == m
+                    and i["key"] in gear and gear[i["key"]].get("races")]
+            for races in ([race], ["*"]):
+                pool = sorted((i for i in body if set(gear[i["key"]]["races"]) & set(races)),
+                              key=lambda i: (i["value"], i["key"]))
+                if pool:
+                    return pool[min(len(pool) - 1, (max(band_rank, 1) - 1) * len(pool) // top_rank)]
         return None
 
     def issue_piece(self, materials: list[str], slot: str, cap: str) -> dict | None:
@@ -355,6 +372,15 @@ def derive(p: Place) -> dict:
             items.append({"item": weap["key"], "count": 1, "worn": True,
                           "why": f"{r.trade}: a {wt[8:].lower()} of {tw}, {split.material_of(weap)[0]}"
                                  f"{' (' + carry.why + ', kit ' + carry.kit_id + ')' if carry else ''} ({prov})"})
+        if not guard:   # one worn outfit from the kit's clothing row (the race overlay's own before the trade's)
+            row = next((x for k in sorted(kits, key=lambda k: not (k.races or k.cultures))
+                        for x in w.rows("trade_kit_item", kit_id=k.id) if x.use == "wear" and x.slot == "clothing"), None)
+            cloth = pick.clothing(row.materials.split(), r.race_id, b["rank"]) if row and row.materials else None
+            if cloth:
+                step, prov = provenance(cloth, "clothing")
+                items.append({"item": cloth["key"], "count": 1, "worn": True,
+                              "why": f"{r.trade}: {cloth['name'] or cloth['edid']} ({split.material_of(cloth)[0]}; "
+                                     f"{row.why}, kit {row.kit_id}) ({prov})"})
         if guard and issue["set"]:
             keys = issue["set"].get("items") or []
             if not keys:      # a row of materials: each slot's best piece of them, the fallback materials after
