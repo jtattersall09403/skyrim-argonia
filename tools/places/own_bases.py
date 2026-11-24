@@ -88,15 +88,23 @@ FURNITURE = {
 # unchanged. Our materials are copies of the mod's MossMaterialArgonia01 (a single-pass colour; the mod's moss colour
 # is Dragonborn's MossMaterialSolstheim01's) with the colour set: moss kept as the mod has it, silt a pale grey brown
 # (what settles below a waterline), algae a thin bright green. Falloff, thickness and projection are the mod's.
-MOSS_MATERIAL, SILT_MATERIAL, ALGAE_MATERIAL = (f"{PLUGIN}:000A{n}" for n in ("20", "21", "22"))
+MOSS_MATERIAL, SILT_MATERIAL, ALGAE_MATERIAL, ROCK_MOSS_MATERIAL = (f"{PLUGIN}:000A{n}" for n in ("20", "21", "22", "23"))
+# the moss on a rock: Moss Shaders Restored (Nexus SE 55279, Exalderan) puts moss on 28 Skyrim rock statics with
+# EVE_ReachMossMaterialObject / EVE_TundraMossMaterialObject, one set of values for all: falloff scale 0.5 and bias 0.55
+# (the ruin walls' material has 0.4 and 0.71), noise scale 64 (large blotches across a big rock, not the walls' 1280 fine
+# grain) and normal dampener 0.4 (the walls' 0.7). Ours takes those four; colour and projection stay the walls'.
+ROCK_MOSS_SET = {"FalloffScale": 0.5, "FalloffBias": 0.55, "NoiseUvScale": 64.0, "NormalDampener": 0.4}
 MATERIALS = {
     MOSS_MATERIAL: {"edid": "ArgoniaMoss", "copy": "King of the Murkmire.esp:MossMaterialArgonia01", "set": {}},
     SILT_MATERIAL: {"edid": "ArgoniaSilt", "copy": "King of the Murkmire.esp:MossMaterialArgonia01",
                     "set": {"SinglePassColor": [0.52, 0.47, 0.38]}},
     ALGAE_MATERIAL: {"edid": "ArgoniaAlgae", "copy": "King of the Murkmire.esp:MossMaterialArgonia01",
                      "set": {"SinglePassColor": [0.14, 0.30, 0.10]}},
+    ROCK_MOSS_MATERIAL: {"edid": "ArgoniaRockMoss", "copy": "King of the Murkmire.esp:MossMaterialArgonia01",
+                         "set": ROCK_MOSS_SET},
 }
 VARIANTS = (("Moss", MOSS_MATERIAL), ("Silt", SILT_MATERIAL), ("Algae", ALGAE_MATERIAL))
+ROCK_VARIANTS = (("Moss", ROCK_MOSS_MATERIAL), ("Silt", SILT_MATERIAL), ("Algae", ALGAE_MATERIAL))
 # the first family: the Ayleid, old Imperial and Xanmeer ruin pieces of King of the Murkmire that Black Marsh's ruins
 # source (id in the mod, editor id, model, bounds); the angle is the surface slope the layer takes: 90 the mod's
 # default, 75 for rubble (docs/research/new-art/ruins-and-weathering.md, R1)
@@ -124,6 +132,26 @@ TWIN_FAMILY = (
 )
 RUBBLE = {"015689", "015683", "04B5D8", "5E249A", "01A81C", "005C85"}
 TWIN_BASE = 0x00B000
+# the second family: the rocks our world plants most (newworld/story/data/db/region_flora.jsonl density: King of the
+# Murkmire's rock bases and Valenwood's mountain trims) among those Moss Shaders Restored gives a moss material, each at
+# the surface angle that mod gives it (plugin, id in it, editor id, model, bounds, angle). Their keys follow the ruin
+# pieces', so no key moves.
+ROCK_FAMILY = (
+    ("King of the Murkmire.esp", "03A89E", "ArgoniaRockM01", "landscape/rocks/rockm01.nif", [[-128, -74, -13], [119, 90, 110]], 100),
+    ("King of the Murkmire.esp", "065B5C", "ArgoniaRockPileM01Mud", "landscape/rocks/rockpilem01.nif", [[-268, -300, -41], [267, 306, 51]], 90),
+    ("King of the Murkmire.esp", "065BD4", "ArgoniaRockPileM02Mud", "landscape/rocks/rockpilem02.nif", [[-180, -244, -34], [202, 231, 67]], 90),
+    ("King of the Murkmire.esp", "0ADFE9", "ArgoniaRockPileL01Rainforest", "landscape/rocks/rockpilel01.nif", [[-274, -439, -49], [253, 438, 323]], 90),
+    ("King of the Murkmire.esp", "07A3D8", "ArgoniaRockPileL02Rainforest", "landscape/rocks/rockpilel02.nif", [[-465, -415, -83], [445, 491, 90]], 90),
+    ("King of the Murkmire.esp", "07524A", "ArgoniaRockPileL03Rainforest", "landscape/rocks/rockpilel03.nif", [[-596, -592, -112], [509, 539, 148]], 90),
+    ("King of the Murkmire.esp", "138592", "ArgoniaRockPileS01Mud", "landscape/rocks/rockpiles01.nif", [[-102, -153, -17], [125, 126, 42]], 120),
+    ("King of the Murkmire.esp", "36B5B6", "ArgoniaRockPileS02Mud", "landscape/rocks/rockpiles02.nif", [[-121, -133, -22], [129, 118, 56]], 120),
+    ("King of the Murkmire.esp", "02ACCB", "ArgoniaRockCliff02MarshGrass", "landscape/rocks/rockcliff02.nif", [[-358, -1157, -27], [659, 1017, 733]], 90),
+    ("King of the Murkmire.esp", "02ACCE", "ArgoniaRockCliff05MarshGrass", "landscape/rocks/rockcliff05.nif", [[-447, -969, -72], [667, 972, 838]], 90),
+    ("King of the Murkmire.esp", "06AE8A", "ArgoniaRockCliff07Rainforest", "landscape/rocks/rockcliff07.nif", [[-440, -1075, -6], [1037, 1009, 838]], 90),
+    ("King of the Murkmire.esp", "02FE30", "ArgoniaMountainTrim03MarshGrass", "landscape/mountains/mountaintrim03.nif", [[-1144, -1128, 38], [1145, 1155, 225]], 90),
+    ("Valenwood.esp", "069401", "01MountainTrim01FieldGrass01", "landscape/mountains/mountaintrim01.nif", [[-916, -1118, -144], [916, 1118, 205]], 80),
+    ("Valenwood.esp", "069407", "01MountainTrim02Rocks01", "landscape/mountains/mountaintrim02.nif", [[-744, -1126, -88], [787, 1126, 241]], 80),
+)
 
 
 def _twins() -> dict[str, dict]:
@@ -133,6 +161,11 @@ def _twins() -> dict[str, dict]:
             out[f"{PLUGIN}:{TWIN_BASE + i * 4 + j:06X}"] = {
                 "edid": f"Argonia{edid}{name}", "copy": f"King of the Murkmire.esp:{fid}", "material": mat,
                 "angle": 75 if fid in RUBBLE else 90, "model": model, "bounds": bounds}
+    for i, (plug, fid, edid, model, bounds, angle) in enumerate(ROCK_FAMILY, len(TWIN_FAMILY)):
+        for j, (name, mat) in enumerate(ROCK_VARIANTS, 1):
+            out[f"{PLUGIN}:{TWIN_BASE + i * 4 + j:06X}"] = {
+                "edid": f"Argonia{edid.removeprefix('Argonia')}{name}", "copy": f"{plug}:{fid}", "material": mat,
+                "angle": angle, "model": model, "bounds": bounds}
     return out
 
 

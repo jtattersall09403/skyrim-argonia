@@ -2040,5 +2040,50 @@
   "used_by": "new world places (asset-only models)",
   "linked_or_forked_by": "assets copied by our records; not redistributed",
   "notes": "Credit: Edhildil. credit Edhildil."
+ },
+ {
+  "name": "Moss Shaders Restored - Cut Content Restoration",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/55279",
+  "version": "1.4 (file 283708)",
+  "licence": "not stated by the author",
+  "used_by": "new world weathered twins (moss material values read as data)",
+  "linked_or_forked_by": "values read as data; not redistributed",
+  "notes": "Author Exalderan. Terms found on the Nexus page (2026-11-24): none stated. Reconfirm with the author before any distribution."
+ },
+ {
+  "name": "Shaders of Solstheim - Ash and Moss",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/60144",
+  "version": "0.3 (file 622543)",
+  "licence": "not stated by the author",
+  "used_by": "new world weathered twins (moss material values read as data)",
+  "linked_or_forked_by": "values read as data; not redistributed",
+  "notes": "Author wankingSkeever. Terms found on the Nexus page (2026-11-24): none stated. Reconfirm with the author before any distribution."
+ },
+ {
+  "name": "AmA Argonian Mercenary Armor with Armored Tail",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/27676",
+  "version": "1.3 (file 104483)",
+  "licence": "not stated by the author",
+  "used_by": "new world places (asset-only models, converted from 2011 Skyrim to SE by infra/gpu-box/nifconv)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Author Spyke-Mayfly53. Terms found on the Nexus page (2026-11-24): none stated (no permission, credit or upload terms in the description). Owner ruled 2026-11-24: a private, undistributed build, so taken. Reconfirm with the author before any distribution."
+ },
+ {
+  "name": "HistBone and Bonewood Argonian Armors",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/99144",
+  "version": "2019 (file 1000303740)",
+  "licence": "not stated by the author",
+  "used_by": "new world places (asset-only models, converted from 2011 Skyrim to SE by infra/gpu-box/nifconv)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Author Sabbath6100. Terms found on the Nexus page (2026-11-24): none stated (no permission, credit or upload terms in the description). Owner ruled 2026-11-24: a private, undistributed build, so taken. Reconfirm with the author before any distribution."
+ },
+ {
+  "name": "Ayleid Ruins Building Kit",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/90667",
+  "version": "001 (file 1000271869)",
+  "licence": "not stated by the author",
+  "used_by": "new world places (asset-only models, converted from 2011 Skyrim to SE by infra/gpu-box/nifconv)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Author Imperial Geographical Society (a shared account of modders; the kit descends from Varlaisaran's Adabala resource, retextured and expanded by the Beyond Skyrim team, with Tarius's interior kit). Terms found on the Nexus page (2026-11-24): none stated (no permission, credit or upload terms in the description). Owner ruled 2026-11-24: a private, undistributed build, so taken. Reconfirm with the author before any distribution."
  }
 ]

@@ -48,6 +48,7 @@ static class Own
                     st.Material.SetTo(C.Fk(mt.GetString()!));
                     st.MaxAngle = r.GetProperty("angle").GetSingle();
                 }
+                ctx.Localize(st);   // links into the mod's plugin (its texture sets) come in as ours: the mod is no master
                 ctx.Mod.Statics.Add(st);
                 continue;
             }
@@ -67,6 +68,7 @@ static class Own
                 var src = C.Fk(r.GetProperty("copy").GetString()!);
                 var f = (Furniture)ctx.Fc.Plugin(src.ModKey.FileName).Furniture.First(x => x.FormKey == src).Duplicate(fk);
                 f.EditorID = r.GetProperty("edid").GetString();
+                ctx.Localize(f);
                 ctx.Mod.Furniture.Add(f);
                 continue;
             }
@@ -107,7 +109,9 @@ static class Own
     {
         var p = typeof(MaterialObject).GetProperty(name) ?? throw new InvalidDataException($"MATO has no member {name}");
         var ty = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
-        object o = ty == typeof(P3Float) ? new P3Float(val[0].GetSingle(), val[1].GetSingle(), val[2].GetSingle())
+        static int B(JsonElement v) => (int)Math.Round(v.GetSingle() * 255f);   // the record's colour is three floats 0..1, Mutagen's is a byte colour
+        object o = ty == typeof(Color) ? Color.FromArgb(0, B(val[0]), B(val[1]), B(val[2]))
+            : ty == typeof(P3Float) ? new P3Float(val[0].GetSingle(), val[1].GetSingle(), val[2].GetSingle())
             : ty == typeof(float) ? (object)val.GetSingle()
             : throw new InvalidDataException($"MATO member {name} is {ty.Name}");
         p.SetValue(m, o);

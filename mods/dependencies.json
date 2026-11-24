@@ -7092,7 +7092,7 @@
    "size_kb": 204506,
    "why": "green tree models for the new world's land; asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
    "required": true,
-   "profile": "held",
+   "profile": "newworld",
    "licence": "credit required, do not rename",
    "permission_summary": "Author's Nexus description (API, read 2026-11-24): credit Ga-Knomboe Boy; do not rename.",
    "ai_clause": "not stated",
@@ -7103,8 +7103,17 @@
    "conflicts": "none known; not yet loaded",
    "linked_or_forked_by": "none: assets copied by our records, never redistributed",
    "asset_only": true,
-   "check": "LE (2011) meshes: held in the private cache only (profile 'held': stage never lays it) until an LE-to-SE mesh converter is in the pipeline",
-   "sha256": "b418af92fa67c6a3115d68a4e89cdd42057b53cdc354ff02990c68b369c115f6"
+   "sha256": "b418af92fa67c6a3115d68a4e89cdd42057b53cdc354ff02990c68b369c115f6",
+   "convert_le": true,
+   "pick": [
+    "7700/data/*"
+   ],
+   "drop": [
+    "meshes/lod/*",
+    "textures/lod/*",
+    "meshes/terrain/*",
+    "textures/terrain/*"
+   ]
   },
   {
    "id": "harvestables",
@@ -7121,7 +7130,7 @@
    "size_kb": 6911,
    "why": "harvestable plant models for the new world's land; asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
    "required": true,
-   "profile": "held",
+   "profile": "newworld",
    "licence": "see Nexus description",
    "permission_summary": "Author's Nexus description (API, read 2026-11-24): see Nexus description (ChickenDownUnder).",
    "ai_clause": "not stated",
@@ -7132,8 +7141,23 @@
    "conflicts": "none known; not yet loaded",
    "linked_or_forked_by": "none: assets copied by our records, never redistributed",
    "asset_only": true,
-   "check": "LE (2011) meshes: held in the private cache only (profile 'held': stage never lays it) until an LE-to-SE mesh converter is in the pipeline",
-   "sha256": "d3c040229b8f89163049d5e1f3252e5eb3875ee2caa5e07288ed7c1845a6e980"
+   "sha256": "d3c040229b8f89163049d5e1f3252e5eb3875ee2caa5e07288ed7c1845a6e980",
+   "convert_le": true,
+   "inner_rars": true,
+   "pick": [
+    "AppleTrees002v/*",
+    "AshYam002v/*",
+    "Blueberry001v/*",
+    "Carrot002v/*",
+    "Garlic002v/*",
+    "Hacklelo002v/*",
+    "Marshmerrow001v/*",
+    "Saltrice002v/*",
+    "Stoneflower002v/*",
+    "Sugarcane002v/*",
+    "TramaRoot002v/*",
+    "Wheat002v/*"
+   ]
   },
   {
    "id": "strotis-stilt-house",
@@ -7150,7 +7174,7 @@
    "size_kb": 1379,
    "why": "a stilt house model, the Black Marsh dwelling the new world lacks; asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
    "required": true,
-   "profile": "held",
+   "profile": "newworld",
    "licence": "free mods only",
    "permission_summary": "Author's Nexus description (API, read 2026-11-24): free mods only (Stroti and Tamira).",
    "ai_clause": "not stated",
@@ -7161,8 +7185,8 @@
    "conflicts": "none known; not yet loaded",
    "linked_or_forked_by": "none: assets copied by our records, never redistributed",
    "asset_only": true,
-   "check": "LE (2011) meshes: held in the private cache only (profile 'held': stage never lays it) until an LE-to-SE mesh converter is in the pipeline",
-   "sha256": "df70b3407b05d96dedfdbfca05605be5ab1bd7eafc8bd7cb8fd840d391795cab"
+   "sha256": "df70b3407b05d96dedfdbfca05605be5ab1bd7eafc8bd7cb8fd840d391795cab",
+   "convert_le": true
   },
   {
    "id": "argonian-war-tails",
@@ -7179,7 +7203,7 @@
    "size_kb": 424,
    "why": "Argonian tail armour models; asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
    "required": true,
-   "profile": "held",
+   "profile": "newworld",
    "licence": "credit required",
    "permission_summary": "Author's Nexus description (API, read 2026-11-24): credit Edhildil.",
    "ai_clause": "not stated",
@@ -7190,8 +7214,166 @@
    "conflicts": "none known; not yet loaded",
    "linked_or_forked_by": "none: assets copied by our records, never redistributed",
    "asset_only": true,
-   "check": "LE (2011) meshes: held in the private cache only (profile 'held': stage never lays it) until an LE-to-SE mesh converter is in the pipeline",
-   "sha256": "ee7eb36cea60cea707df77b097adaae2eae3defae277205d8c7e60426f4fefc4"
+   "sha256": "ee7eb36cea60cea707df77b097adaae2eae3defae277205d8c7e60426f4fefc4",
+   "convert_le": true,
+   "pick": [
+    "Edhildils_Argonian_War_Tails/Blank folder path/data/*",
+    "Edhildils_Argonian_War_Tails/morningstar",
+    "Edhildils_Argonian_War_Tails/scorpion",
+    "Edhildils_Argonian_War_Tails/spiked",
+    "Edhildils_Argonian_War_Tails/thorned",
+    "Edhildils_Argonian_War_Tails/trident"
+   ],
+   "pick_to": {
+    "Edhildils_Argonian_War_Tails/morningstar": "meshes/edhildil/wartails/morningstar",
+    "Edhildils_Argonian_War_Tails/scorpion": "meshes/edhildil/wartails/scorpion",
+    "Edhildils_Argonian_War_Tails/spiked": "meshes/edhildil/wartails/spiked",
+    "Edhildils_Argonian_War_Tails/thorned": "meshes/edhildil/wartails/thorned",
+    "Edhildils_Argonian_War_Tails/trident": "meshes/edhildil/wartails/trident"
+   }
+  },
+  {
+   "id": "ama-argonian-mercenary-armor",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 27676,
+    "file": 104483
+   },
+   "name": "AmA Argonian Mercenary Armor with Armored Tail",
+   "author": "Spyke-Mayfly53",
+   "version": "1.3",
+   "archive": "AmA - Full Armor With Tail -light-heavy version-27676-1-3.zip",
+   "size_kb": 3077,
+   "why": "Argonian armour and a standalone armoured tail (models and textures); asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
+   "required": true,
+   "profile": "newworld",
+   "licence": "not stated by the author (private undistributed build)",
+   "permission_summary": "Author's Nexus description (API, read 2026-11-24) states no permissions. Owner ruled 2026-11-24: private, undistributed build, take it. Reconfirm with the author before any distribution.",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description of skyrim/27676: no permission or credit terms stated",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "none known; not yet loaded",
+   "linked_or_forked_by": "none: assets copied by our records, never redistributed",
+   "asset_only": true,
+   "sha256": "06a640b95dc7438be44b9b7d3629770c564b185065138b8f5d38416a2ce66965",
+   "convert_le": true
+  },
+  {
+   "id": "histbone-bonewood-argonian-armors",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 99144,
+    "file": 1000303740
+   },
+   "name": "HistBone and Bonewood Argonian Armors",
+   "author": "Sabbath6100",
+   "version": "2019",
+   "archive": "Standalone Histbone and Bonewood Armors-99144-2019-1566937753.7z",
+   "size_kb": 6357,
+   "why": "Argonian hood armours of hist-bone and bonewood; asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
+   "required": true,
+   "profile": "newworld",
+   "licence": "not stated by the author (private undistributed build)",
+   "permission_summary": "Author's Nexus description (API, read 2026-11-24) states no permissions. Owner ruled 2026-11-24: private, undistributed build, take it. Reconfirm with the author before any distribution.",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description of skyrim/99144: no permission or credit terms stated",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "none known; not yet loaded",
+   "linked_or_forked_by": "none: assets copied by our records, never redistributed",
+   "asset_only": true,
+   "sha256": "24555caf1dc231a58b024a2d7720125ac9484f43995c65cc288a4e29185e4007",
+   "convert_le": true
+  },
+  {
+   "id": "ayleid-ruins-building-kit",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 90667,
+    "file": 1000271869
+   },
+   "name": "Ayleid Ruins Building Kit",
+   "author": "Imperial Geographical Society",
+   "version": "001",
+   "archive": "Ayleid Building Kit-90667-001.zip",
+   "size_kb": 63587,
+   "why": "Ayleid ruin building pieces (over 250 exterior and interior pieces); asset-only: its meshes and textures laid loose (BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-24)",
+   "required": true,
+   "profile": "newworld",
+   "licence": "not stated by the author (private undistributed build)",
+   "permission_summary": "Author's Nexus description (API, read 2026-11-24) states no permissions. Owner ruled 2026-11-24: private, undistributed build, take it. Reconfirm with the author before any distribution.",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description of skyrim/90667: no permission or credit terms stated",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "none known; not yet loaded",
+   "linked_or_forked_by": "none: assets copied by our records, never redistributed",
+   "asset_only": true,
+   "sha256": "5f465b70c2f04ccaa780f693dbe1a9da55cc572aea058d7b8f49ac1ebd75c3d2",
+   "convert_le": true
+  },
+  {
+   "id": "moss-shaders-restored",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 55279,
+    "file": 283708
+   },
+   "name": "Moss Shaders Restored - Cut Content Restoration",
+   "author": "Exalderan",
+   "version": "1.4",
+   "archive": "EVE - Moss Shaders Restored - Cut Content Restoration-55279-1-4-1652558102.7z",
+   "size_kb": 5,
+   "why": "moss material shaders (restored cut content) given to hundreds of Skyrim rock statics; read as data for which rocks and ruins take moss and with what material values, and our weathered twins copy values from it; plugin never active (owner, 2026-11-24)",
+   "required": false,
+   "profile": "newworld",
+   "licence": "not stated by the author (private undistributed build)",
+   "permission_summary": "Author's Nexus description (API, read 2026-11-24) states no permissions or credit terms; Nexus default terms apply. Private, undistributed build. Reconfirm with the author before any distribution.",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description of skyrimspecialedition/55279 file 283708: no permission or credit terms stated",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "none known; not loaded",
+   "linked_or_forked_by": "none: values read as data, never redistributed",
+   "asset_only": true,
+   "sha256": "691dee0f4ea813da3bbb29d80dd6c51fbfea722501996872f49118e41ca64c1e"
+  },
+  {
+   "id": "shaders-of-solstheim-ash-and-moss",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60144,
+    "file": 622543
+   },
+   "name": "Shaders of Solstheim - Ash and Moss",
+   "author": "wankingSkeever",
+   "version": "0.3",
+   "archive": "Shaders of Solstheim - Ash and Moss-60144-0-3-1746065950.7z",
+   "size_kb": 3428,
+   "why": "light-weight ash and moss material shaders for Solstheim's statics (ESL, no worldspace or cell edits); read as data for the moss material values and the statics that take them; plugin never active (owner, 2026-11-24)",
+   "required": false,
+   "profile": "newworld",
+   "licence": "not stated by the author (private undistributed build)",
+   "permission_summary": "Author's Nexus description (API, read 2026-11-24) states no permissions or credit terms; Nexus default terms apply. Private, undistributed build. Reconfirm with the author before any distribution.",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description of skyrimspecialedition/60144 file 622543: no permission or credit terms stated",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "none known; not loaded",
+   "linked_or_forked_by": "none: values read as data, never redistributed",
+   "asset_only": true,
+   "sha256": "a525ff63ee2667ff062b70b7f43f43fd07cc4848d2e257dff7bd9767829e128b"
   }
  ]
 }

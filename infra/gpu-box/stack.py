@@ -629,6 +629,29 @@ def assets_only(data):
     print(f"  asset-only: {n} files extracted from BSAs; plugins and BSAs removed")
 
 
+NIFCONV = pathlib.Path.home() / ".argonia" / "bin" / "nifconv"  # infra/gpu-box/nifconv/build.sh
+
+
+def convert_le(data):
+    """A 2011 (Skyrim LE, stream 83) pack's meshes to Skyrim SE (stream 100) in place, by nifconv (nifly's
+    OptimizeFor: NiTriShape to BSTriShape, vertex layout, skin partitions). An SE mesh is left as it is."""
+    nifs = [f for f in data.rglob("*") if f.is_file() and f.suffix.lower() == ".nif"]
+    if not NIFCONV.exists():
+        raise SystemExit(f"{NIFCONV} not built: run infra/gpu-box/nifconv/build.sh")
+    tmp = data.with_name(data.name + ".conv")
+    req = "".join(f"conv\t{f}\t{tmp / f.relative_to(data)}\n" for f in nifs)
+    out = subprocess.run([str(NIFCONV), "--batch"], input=req, text=True, capture_output=True, check=True).stdout.split("\n")
+    bad = [f"{f.relative_to(data)}: {a}" for f, a in zip(nifs, out) if not a.startswith("ok")]
+    if bad:
+        shutil.rmtree(tmp, ignore_errors=True)
+        raise SystemExit(f"nifconv: {len(bad)} of {len(nifs)} meshes failed, e.g. {bad[:3]}")
+    le = sum(1 for a in out if a == "ok 83")
+    for f in nifs:
+        os.replace(tmp / f.relative_to(data), f)
+    shutil.rmtree(tmp, ignore_errors=True)
+    print(f"  convert_le: {le} of {len(nifs)} meshes LE to SE (the rest already SE)")
+
+
 def prune(data, m):
     for f in list(data.rglob("*")):
         if f.is_file() and (f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt"
@@ -809,6 +832,11 @@ def cmd_stage(a):
         if stale:
             raise SystemExit(f"stage: this tree is behind origin/main on {', '.join(stale)}; merge main first (the "
                              "stack is shared: an older manifest would be laid over main's and pushed)")
+    only = getattr(a, "only", None)
+    if only:  # a dry run's chosen rows (scratch dir only, like --group)
+        if not getattr(a, "into", None):
+            raise SystemExit("--only stages into a scratch dir only (--into DIR)")
+        rows = [m for m in rows if m["id"] in only]
     group = getattr(a, "group", None)
     if group:  # one group alone: a dry run's file lists, never the real stack (it would remove every other row)
         if not getattr(a, "into", None):
@@ -849,6 +877,9 @@ def cmd_stage(a):
                 room(stage_need(m, archive_path(m).stat().st_size), f"unpack {m['id']}")  # unpacked plus staged copy
                 resume = None
                 unpack(archive_path(m), src)
+                for inner in sorted(src.glob("*.rar")) if m.get("inner_rars") else ():  # an archive of rars (Harvestables)
+                    unrar_into(inner, src)
+                    inner.unlink()
                 data.mkdir()
                 if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
                     shutil.rmtree(tools / m["id"], ignore_errors=True)
@@ -856,6 +887,8 @@ def cmd_stage(a):
             shutil.rmtree(src, ignore_errors=True)
             if m.get("asset_only"):
                 assets_only(data)
+            if m.get("convert_le"):
+                convert_le(data)
             prune(data, m)
             if resume is not None:
                 complete_nested(m, archive_path(m), data, src, resume)
@@ -1333,6 +1366,7 @@ def main():
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
         elif name == "stage":
+            s.add_argument("--only", nargs="*", help="with --into: only these rows")
             s.add_argument("--into", help="stage into this dir instead of ~/.argonia/stack (a dry run)")
             s.add_argument("--group", help="with --into: only this group's rows")
             s.add_argument("--reserve-gb", type=int, help="free space every big write must leave, for this run "
