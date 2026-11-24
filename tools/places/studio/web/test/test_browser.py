@@ -684,3 +684,35 @@ def test_40_door_height_in_every_seat_mode(pad):
             for _ in range(4):
                 pad.ev("studio.log.undo()")
     assert not pad.errors, pad.errors
+
+
+# ---------- 41: a way drawn by hand into a person's stop ----------
+def test_41_draw_a_persons_way(pad):
+    """Draw the way here takes taps along the way, then Done: one person.edit op whose stop carries the drawn
+    `route`, and the leg into that stop is drawn through those points."""
+    pid = pad.ev("""(() => { const p = [...studio.model.people.values()][0]; if (!p) return null;
+      const c = studio.ours.view.lookAt ? null : null, r = [...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building');
+      const before = JSON.parse(JSON.stringify(p)), after = JSON.parse(JSON.stringify(p)), x = r.pos[0], y = r.pos[1];
+      after.routine = [{ start: 8, hours: 8, kind: 'work', at: { space: 'exterior', pos: [x - 600, y - 600, r.pos[2]], radius: 256 } },
+                       { start: 16, hours: 16, kind: 'wander', at: { space: 'exterior', pos: [x + 600, y + 600, r.pos[2]], radius: 256 } }];
+      studio.push({ op: 'person.edit', person: after, before }); return p.id; })()""")
+    assert pid, "the fixture has a person"
+    pad.ev("studio.tools.use('people')")
+    pad.ev("(id) => studio.people.select(id)", pid)
+    i = pad.ev("(id) => studio.people.sorted(studio.model.people.get(id)).findIndex((s) => (s.at?.space || 'exterior') === 'exterior' && s.at?.pos)", pid)
+    s = pad.ev("([id, i]) => studio.people.sorted(studio.model.people.get(id))[i]", [pid, i])
+    pad.ev("([id, i]) => studio.people.drawWay(id, i)", [pid, i])
+    way = [[s["at"]["pos"][0] + 300, s["at"]["pos"][1] - 200], [s["at"]["pos"][0] + 200, s["at"]["pos"][1] + 50]]
+    n0 = len(pad.ops())
+    for x, y in way:
+        g = pad.ev("([x, y]) => studio.terrain?.heightAt(x, y) ?? 0", [x, y])
+        pad.ev("(g) => studio.people.placeArmed({ ground: () => g })", [x, y, g])
+    pad.page.get_by_role("button", name="Done", exact=True).click()
+    ops = pad.ops()
+    assert len(ops) == n0 + 1 and ops[-1]["op"] == "person.edit", ops[-1:]
+    got = pad.ev("([id, i]) => studio.people.sorted(studio.model.people.get(id))[i].route", [pid, i])
+    assert [[round(p[0]), round(p[1])] for p in got] == [[round(x), round(y)] for x, y in way]
+    line = pad.ev("([id, i]) => { const P = studio.people, st = P.sorted(studio.model.people.get(id)); const from = P.stopPoint(st[(i - 1 + st.length) % st.length]).p, to = P.stopPoint(st[i]).p; return P.legInto('exterior', from, to, st[i].route); }", [pid, i])
+    assert [[round(p[0]), round(p[1])] for p in line[1:-1]] == [[round(x), round(y)] for x, y in way]
+    pad.ev("studio.log.undo(); studio.log.undo(); studio.tools.use('select')")
+    assert not pad.errors, pad.errors
