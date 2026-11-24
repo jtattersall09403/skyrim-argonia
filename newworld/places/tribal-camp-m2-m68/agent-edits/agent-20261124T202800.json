@@ -1,0 +1,346 @@
+{
+ "save_id": "agent-20261124T202800",
+ "place_id": "tribal-camp-m2-m68",
+ "name": "worn Naga clothes for the camp's six residents",
+ "at": "2026-11-24T20:28:00Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.5M6BY4FP7QPYAMZNP3M5SWF84N",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:15AD12",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: Naga Rags, the tribeless Naga's patched hide and fibre (cloth, T1; a tribal camp holds organic gear only), worn through on the pole of the jar-boat he works downriver"
+     },
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tecpatl (flint, T1): a knife to cut the boat's lines; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 5,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Druuz: resident, poles the jars downriver to the cult's crews, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.5M6BY4FP7QPYAMZNP3M5SWF84N",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F16A",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tecpatl (flint, T1): a knife to cut the boat's lines; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 5,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Druuz: resident, poles the jars downriver to the cult's crews, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.62Z5T9BK5AG21A4P08BR3XGXSM",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:15AD12",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: Naga Rags, the tribeless Naga's patched hide and fibre (cloth, T1; organic gear only), stained with the sap he carries between the crews and the longhouse"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): the knife of a porter who carries jars in from the marsh; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 6,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Ozhi-Rak: resident, carries sap jars between the crews and the longhouse, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.62Z5T9BK5AG21A4P08BR3XGXSM",
+    "items": [
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): the knife of a porter who carries jars in from the marsh; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 6,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Ozhi-Rak: resident, carries sap jars between the crews and the longhouse, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.ADMKVT2ATB97NEDGY5P0H8WSDR",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:183595",
+      "count": 1,
+      "worn": true,
+      "why": "her clothes: Naga Snakeskins (cloth, T1; organic gear only), the better dress of the one who counts the jars for the Unbound"
+     },
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F171",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tecpatl (flint, T1): she cuts the knots of her tally cord with it; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Hesseth: resident, stacks and counts the sap jars for the Unbound's crews, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.ADMKVT2ATB97NEDGY5P0H8WSDR",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F171",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tecpatl (flint, T1): she cuts the knots of her tally cord with it; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 9,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Hesseth: resident, stacks and counts the sap jars for the Unbound's crews, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 3,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.KKS4N5M31295M1G777AP7W3SKY",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16A052",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: a Naga Priest Skirt (fine-cloth, organic; the Naga's own priest's dress), the one mark of the keeper of the bone shrine to Sithis"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): the knife of the keeper of the shrine of bones, cut from a trophy; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 6,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Vuxalt: resident, keeps the bone shrine to Sithis, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.KKS4N5M31295M1G777AP7W3SKY",
+    "items": [
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): the knife of the keeper of the shrine of bones, cut from a trophy; a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 6,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Vuxalt: resident, keeps the bone shrine to Sithis, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 4,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.MRBME68XR0QSKQ2K3MXFT36RFQ",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:15AD12",
+      "count": 1,
+      "worn": true,
+      "why": "his clothes: Naga Rags, the tribeless Naga's patched hide and fibre (cloth, T1; organic gear only), patched with the same hide he mends the tents with"
+     },
+     {
+      "item": "King of the Murkmire.esp:57AA3C",
+      "count": 1,
+      "worn": true,
+      "why": "Saxhleel Fishing Knife (flint, T1): the fisher's knife (kit fisher); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00080D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone fish spear (bone, T1): he spears fish in the creek below the camp (kit fisher)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 10,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Nakhoo: resident, fishes the creek and mends the hide tents, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.MRBME68XR0QSKQ2K3MXFT36RFQ",
+    "items": [
+     {
+      "item": "King of the Murkmire.esp:57AA3C",
+      "count": 1,
+      "worn": true,
+      "why": "Saxhleel Fishing Knife (flint, T1): the fisher's knife (kit fisher); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00080D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone fish spear (bone, T1): he spears fish in the creek below the camp (kit fisher)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 10,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Nakhoo: resident, fishes the creek and mends the hide tents, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 5,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  },
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "tribal-camp-m2-m68.RNT2SPEMAH3J1PPYVW2TQWA1JT",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:183595",
+      "count": 1,
+      "worn": true,
+      "why": "her clothes: Naga Snakeskins (cloth, T1; organic gear only), the skins of what she hunts in the marsh for the camp's meat"
+     },
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F170",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tlahhuitolli (wood, T1): the hunter's bow (kit hunter); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F168",
+      "count": 14,
+      "worn": true,
+      "why": "Naga Yaomitl (flint arrows, T1): for the bow"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): a skinning knife (kit hunter)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 2,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Sileeth: resident, hunts the marsh for the camp's meat, W2; best tier T1"
+   },
+   "before": {
+    "person": "tribal-camp-m2-m68.RNT2SPEMAH3J1PPYVW2TQWA1JT",
+    "items": [
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F170",
+      "count": 1,
+      "worn": true,
+      "why": "Naga Tlahhuitolli (wood, T1): the hunter's bow (kit hunter); a tribeless Naga camp holds organic gear only (tribal place class: no metal)"
+     },
+     {
+      "item": "Here There Be Monsters - Curse of Cipactli.esp:16F168",
+      "count": 14,
+      "worn": true,
+      "why": "Naga Yaomitl (flint arrows, T1): for the bow"
+     },
+     {
+      "item": "PrvtI_ArgonianWeapons.esp:00082D",
+      "count": 1,
+      "worn": true,
+      "why": "a bone dagger (bone, T1): a skinning knife (kit hunter)"
+     },
+     {
+      "item": "Skyrim.esm:00000F",
+      "count": 2,
+      "worn": false,
+      "why": "carried gold, 2-10 for W2 Poor"
+     }
+    ],
+    "why": "Sileeth: resident, hunts the marsh for the camp's meat, W2; best tier T1"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 6,
+   "stroke": 1,
+   "at": "2026-11-24T20:28:00Z"
+  }
+ ]
+}
