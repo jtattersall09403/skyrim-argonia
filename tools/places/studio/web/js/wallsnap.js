@@ -7,6 +7,7 @@
 // the Creation Kit's own placements of these bases stand with the origin on the wall face, turned so that axis is the
 // face's normal. The face is found on the wall's real triangles (rayTriangles), never its box.
 import { localOf, poseFor, lightsOf, isFixture } from './lights.js';
+import { applyRot } from './xform.js';
 
 const WALL_NAME = /sconce|torchholder|torch_?holder|wallmount|wall_?shelf|shelf|sign|banner|plaque|tapestry|trophy|wallhang|wall_?torch|walllantern|lanternhook/i;
 const BACK = 0.25;      // the back of the bounds lies within this share of the depth from the origin
@@ -60,22 +61,20 @@ export function onWall(mount, point, normal) {
   return { pos: [...point], rot: [0, 0, Math.round(z * 10000) / 10000] };
 }
 
-// Default lights for a fixture no fixture of its base in the place or its source already shows lit: Skyrim's own
-// no-shadow lights (Skyrim.esm), by what the fixture is, at the top of its bounds over their middle.
-const DEFAULT_LIGHTS = [
-  [/campfire|firepit|fire_?pit|hearth|bonfire|cookfire|fire0/i, 'Skyrim.esm:05D948', 0.5],   // WRLightFire01
-  [/candle|lantern|lamp|chandel/i, 'Skyrim.esm:088238', 0.9],                               // DefaultCandleLight01NS
-  [/torch|sconce|brazier|fire|ember|glow/i, 'Skyrim.esm:088243', 1.0],                      // DefaultTorch01NS
-];
-
-// The light a fixture added to the place comes with: [light ref (no id), local] or null. The pairing is the lights
-// stage's (a light belongs to the nearest fixture within reach): a fixture of the same base already lit in our place
-// or its source gives its light's base and its place in the fixture's own frame; else Skyrim's default light for the
-// kind of fixture. `refs` are every ref the pairing may learn from; `baseOf(ref)` its base.
-export function lightFor(fix, base, refs, baseOf) {
-  if (!isFixture(fix, base) || fix.kind === 'light') return null;
-  const same = refs.filter((r) => r.base === fix.base && r !== fix && !r.removed);
-  for (const f of same) {
+// The light a light source added to the place comes with: a light ref (no id) or null. `table` is the measured pairing
+// (tools/places/light_pairs.json, served at /api/light_pairs): for each base Skyrim, its DLCs and our source mods
+// place with a light beside it, that light and its offset in the base's own frame. A base the table does not hold
+// takes the light a placed one of the same base has in the place (the lights stage's binding: the nearest fixture
+// within reach), else none. `refs` are the place's refs; `baseOf(ref)` its base.
+export function lightFor(fix, base, refs, baseOf, table = {}) {
+  if (fix.kind === 'light') return null;
+  const t = table?.[fix.base];
+  if (t) {
+    const s = fix.scale ?? 1, o = applyRot(fix.rot || [0, 0, 0], t.offset.map((v) => v * s));
+    return { base: t.light, kind: 'light', pos: fix.pos.map((v, i) => Math.round((v + o[i]) * 100) / 100), rot: [0, 0, 0], scale: 1, layer: 'place', flags: [] };
+  }
+  if (!isFixture(fix, base)) return null;
+  for (const f of refs.filter((r) => r.base === fix.base && r !== fix && !r.removed)) {
     const pair = lightsOf([f], refs, baseOf)[0];
     if (!pair) continue;
     const [light] = pair, local = localOf(light, f);
@@ -84,12 +83,7 @@ export function lightFor(fix, base, refs, baseOf) {
     delete out.id; delete out.src; delete out.cluster; delete out.unit;
     return { ...out, pos: pos.map((v) => Math.round(v * 100) / 100), rot, layer: 'place' };
   }
-  const name = `${base?.edid || ''} ${base?.model || ''} ${base?.name || ''}`;
-  const hit = DEFAULT_LIGHTS.find(([re]) => re.test(name)); if (!hit) return null;
-  const b = base?.bounds || [[0, 0, 0], [0, 0, 64]];
-  const local = { x: ((b[0][0] + b[1][0]) / 2), y: ((b[0][1] + b[1][1]) / 2), z: b[0][2] + (b[1][2] - b[0][2]) * hit[2], rz: 0 };
-  const [pos, rot] = poseFor(local, fix, { rot: [0, 0, 0] });
-  return { base: hit[1], kind: 'light', pos: pos.map((v) => Math.round(v * 100) / 100), rot, scale: 1, layer: 'place', flags: [] };
+  return null;
 }
 
 const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];

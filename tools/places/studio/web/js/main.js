@@ -147,6 +147,7 @@ class Studio {
     this.ground = ground; this.draft = draft || emptyDraft(id);
     if (!draft) this.toast('This place has no draft yet: you see our ground with nothing placed on it.', 6000);
     this.bases = new Map([...ground.bases, ...this.draft.bases]); this.npcs = new Map([...ground.npcs, ...this.draft.npcs]);
+    if (!this.lightPairs) getJSON('/light_pairs', { optional: true }).then((t) => { this.lightPairs = t || {}; }).catch(() => { this.lightPairs = {}; });
     this.terrain = ground.spaces.exterior?.terrain;
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     this.model = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles(), quests: questData?.spots || [] });

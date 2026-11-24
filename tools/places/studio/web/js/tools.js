@@ -722,7 +722,7 @@ export class Tools {
   // on it, so it moves, turns and goes with it as every fixture's light does.
   lightOps(r, base) {
     const a = this.app, refs = [...a.placeRefsById().values()];
-    const l = lightFor(r, base, refs, (x) => this.baseOf(x)); if (!l) return [];
+    const l = lightFor(r, base, refs, (x) => this.baseOf(x), a.lightPairs); if (!l) return [];
     l.id = mintId(a.place.place_id);
     l.seat = a.ours.space === 'exterior' ? { mode: 'on', on: r.id, dz: rnd(l.pos[2] - r.pos[2]) } : { mode: 'free' };
     return [{ op: 'ref.add', ref: l }];

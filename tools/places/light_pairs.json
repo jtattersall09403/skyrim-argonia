@@ -1,0 +1,2425 @@
+{
+"plugins": [
+"Skyrim.esm",
+"Update.esm",
+"Dawnguard.esm",
+"HearthFires.esm",
+"Dragonborn.esm",
+"ccBGSSSE001-Fish.esm",
+"ccBGSSSE025-AdvDSGS.esm",
+"evgSIRENROOT.esm",
+"Black Marsh.esm",
+"Tropical Skyrim.esp",
+"Black Marsh North.esp",
+"King of the Murkmire.esp",
+"Grey_Quarter_Overhaul.esp",
+"Here There Be Monsters.esp",
+"Here There Be Monsters - Curse of Cipactli.esp",
+"Journey to Baan Malur.esp",
+"Nyhus.esp",
+"Wyrmstooth.esp",
+"moonpath.esp"
+],
+"min_lit": 3,
+"min_share": 0.1,
+"pairs": {
+"Black Marsh North.esp:00C5EF": {
+"light": "Skyrim.esm:07531F",
+"offset": [
+-15.8,
+-8.4,
+-6.7
+],
+"lit": 358,
+"placed": 319,
+"edid": "01housedreswindow"
+},
+"Black Marsh North.esp:00C5F2": {
+"light": "Skyrim.esm:07531F",
+"offset": [
+2.1,
+-2,
+-18.7
+],
+"lit": 54,
+"placed": 19,
+"edid": "01housedreslamp"
+},
+"Black Marsh North.esp:097D17": {
+"light": "Dragonborn.esm:032691",
+"offset": [
+0.9,
+-4.4,
+25.6
+],
+"lit": 4,
+"placed": 5,
+"edid": "01doorbook"
+},
+"Black Marsh.esm:08ABAB": {
+"light": "Skyrim.esm:0A0F3F",
+"offset": [
+-5.9,
+17.9,
+12.6
+],
+"lit": 9,
+"placed": 43,
+"edid": "0cheese"
+},
+"Black Marsh.esm:1CE8D6": {
+"light": "Skyrim.esm:0B735D",
+"offset": [
+20.9,
+21.3,
+-30.5
+],
+"lit": 6,
+"placed": 21,
+"edid": "01arghousedoor"
+},
+"Black Marsh.esm:1D90E1": {
+"light": "Skyrim.esm:0B735D",
+"offset": [
+21.0,
+-3.0,
+3.8
+],
+"lit": 14,
+"placed": 22,
+"edid": "01mudwindow"
+},
+"Black Marsh.esm:1D90E4": {
+"light": "Skyrim.esm:0B735D",
+"offset": [
+-36.5,
+9.9,
+-35.7
+],
+"lit": 3,
+"placed": 21,
+"edid": "01arghousedoormud"
+},
+"Black Marsh.esm:1DE96F": {
+"light": "Skyrim.esm:0C9F38",
+"offset": [
+11.9,
+10.3,
+-52.7
+],
+"lit": 62,
+"placed": 36,
+"edid": "01redlight"
+},
+"Black Marsh.esm:1E44D6": {
+"light": "Skyrim.esm:0BBAE5",
+"offset": [
+-4.2,
+3.1,
+14.0
+],
+"lit": 6,
+"placed": 2,
+"edid": "01mudChandelier"
+},
+"Dawnguard.esm:00080D": {
+"light": "Skyrim.esm:013FD4",
+"offset": [
+0.0,
+-48.0,
+96.0
+],
+"lit": 7,
+"placed": 50,
+"edid": "CasSmHall2way01"
+},
+"Dawnguard.esm:0037D8": {
+"light": "Dawnguard.esm:00EFE3",
+"offset": [
+5.3,
+0.1,
+68.7
+],
+"lit": 8,
+"placed": 50,
+"edid": "Caveworm3Group"
+},
+"Dawnguard.esm:0037D9": {
+"light": "Dawnguard.esm:00EFE3",
+"offset": [
+9,
+-18.6,
+66.1
+],
+"lit": 3,
+"placed": 29,
+"edid": "CavewormSmall"
+},
+"Dawnguard.esm:0074C8": {
+"light": "Dawnguard.esm:00EFE3",
+"offset": [
+-11,
+17.3,
+13.6
+],
+"lit": 17,
+"placed": 38,
+"edid": "DLC1CavewormTriggerControl"
+},
+"Dawnguard.esm:00BF4B": {
+"light": "Dawnguard.esm:00BF49",
+"offset": [
+0,
+0,
+0
+],
+"lit": 7,
+"placed": 11,
+"edid": "DLC01IdealMasterCrystal"
+},
+"Dragonborn.esm:0278A1": {
+"light": "Dragonborn.esm:0327AF",
+"offset": [
+9.9,
+105.0,
+-1.8
+],
+"lit": 6,
+"placed": 55,
+"edid": "ApoHeadScone01"
+},
+"Dragonborn.esm:0289E8": {
+"light": "Dragonborn.esm:0336E7",
+"offset": [
+-0.3,
+12,
+78
+],
+"lit": 14,
+"placed": 22,
+"edid": "Campfire01LandBurning_Ash"
+},
+"Dragonborn.esm:0296B6": {
+"light": "Dragonborn.esm:032691",
+"offset": [
+0.8,
+9.6,
+14.6
+],
+"lit": 3,
+"placed": 3,
+"edid": "DLC2dunHighpointGlow"
+},
+"Dragonborn.esm:02AAB8": {
+"light": "Dragonborn.esm:02BCA4",
+"offset": [
+21.3,
+-53.5,
+61.2
+],
+"lit": 5,
+"placed": 33,
+"edid": "DLC2CastleKarstaagTorch"
+},
+"Dragonborn.esm:03912A": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+9.6,
+-99.7,
+-126.1
+],
+"lit": 4,
+"placed": 36,
+"edid": "DLC2DarkElfLantern02"
+},
+"Dragonborn.esm:039B87": {
+"light": "Dragonborn.esm:0327AF",
+"offset": [
+63.4,
+108.6,
+1.5
+],
+"lit": 23,
+"placed": 63,
+"edid": "ApoPaperTwister03"
+},
+"Dragonborn.esm:039BB8": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+-1.1,
+-0.3,
+-123.5
+],
+"lit": 26,
+"placed": 180,
+"edid": "DLC2DarkElfLantern04"
+},
+"Dragonborn.esm:039BB9": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+2.7,
+-5.1,
+-81.6
+],
+"lit": 44,
+"placed": 176,
+"edid": "DLC2DarkElfLantern05"
+},
+"Dragonborn.esm:039BBA": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+6.9,
+-0.9,
+-42.2
+],
+"lit": 86,
+"placed": 141,
+"edid": "DLC2DarkElfLantern06"
+},
+"Dragonborn.esm:039BBC": {
+"light": "Skyrim.esm:09CB00",
+"offset": [
+48.9,
+-6.9,
+-56
+],
+"lit": 3,
+"placed": 23,
+"edid": "DLC2DarkElfLanternGlow05"
+},
+"Dragonborn.esm:039BBD": {
+"light": "Skyrim.esm:088237",
+"offset": [
+25.3,
+-31.9,
+-32.9
+],
+"lit": 7,
+"placed": 44,
+"edid": "DLC2DarkElfLanternGlow06"
+},
+"Dragonborn.esm:039E51": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+-43.8,
+-5.1,
+95.6
+],
+"lit": 15,
+"placed": 59,
+"edid": "DLC2RRLanternPost01"
+},
+"Dragonborn.esm:03D442": {
+"light": "Dragonborn.esm:0327AF",
+"offset": [
+2.4,
+111.1,
+-8.4
+],
+"lit": 5,
+"placed": 49,
+"edid": "ApoHeadScone03ACT"
+},
+"Grey_Quarter_Overhaul.esp:01820A": {
+"light": "Skyrim.esm:0576E5",
+"offset": [
+4,
+24.7,
+-99.9
+],
+"lit": 11,
+"placed": 20,
+"edid": "DLC2DarkElfLanternGlow06NoRope"
+},
+"HearthFires.esm:00309C": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-2.0,
+5.8,
+-10.3
+],
+"lit": 4,
+"placed": 33,
+"edid": "BYOHInteriorSwapTrigger"
+},
+"HearthFires.esm:0030B0": {
+"light": "Skyrim.esm:059A93",
+"offset": [
+7.6,
+0.0,
+10.5
+],
+"lit": 5,
+"placed": 48,
+"edid": "BYOHHouseCraftingTrigger"
+},
+"Here There Be Monsters - Curse of Cipactli.esp:31D7A9": {
+"light": "Skyrim.esm:0B345B",
+"offset": [
+0.0,
+8.0,
+104.0
+],
+"lit": 4,
+"placed": 14,
+"edid": "CIPHTBMRuinsXanBrazier"
+},
+"Journey to Baan Malur.esp:005A86": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+5.1,
+-1.5,
+-61.2
+],
+"lit": 13,
+"placed": 81,
+"edid": "SOMRLanternPaper01"
+},
+"Journey to Baan Malur.esp:005A87": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+-9.9,
+35.8,
+-26
+],
+"lit": 9,
+"placed": 90,
+"edid": "SOMRLanternPaper01Blue"
+},
+"Journey to Baan Malur.esp:005A88": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+-1.6,
+-2.2,
+-24.9
+],
+"lit": 3,
+"placed": 5,
+"edid": "SOMRLanternPaper03"
+},
+"Journey to Baan Malur.esp:005A89": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+1.1,
+-4.9,
+17.1
+],
+"lit": 81,
+"placed": 108,
+"edid": "SOMRLanternPaper02"
+},
+"Journey to Baan Malur.esp:005A8C": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+4.3,
+0.1,
+7.0
+],
+"lit": 35,
+"placed": 38,
+"edid": "SOMRLamp"
+},
+"Journey to Baan Malur.esp:03DAB4": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+12.6,
+24.1,
+68
+],
+"lit": 6,
+"placed": 60,
+"edid": "FireplaceWood01BurningNOASH"
+},
+"Journey to Baan Malur.esp:06BB87": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+26.8,
+-5.0,
+-42.2
+],
+"lit": 5,
+"placed": 13,
+"edid": "SOMRSignpoleWall"
+},
+"Journey to Baan Malur.esp:0B81CC": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+0.4,
+4.3,
+77.4
+],
+"lit": 123,
+"placed": 140,
+"edid": "KwamaEggPlant"
+},
+"Journey to Baan Malur.esp:0D7A2C": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+-2.2,
+47.4,
+4.8
+],
+"lit": 17,
+"placed": 24,
+"edid": "DWRLight"
+},
+"Journey to Baan Malur.esp:14D37F": {
+"light": "Dragonborn.esm:03CF1E",
+"offset": [
+-3.5,
+-46.7,
+17.7
+],
+"lit": 6,
+"placed": 6,
+"edid": "OvenCombination02"
+},
+"Journey to Baan Malur.esp:27F00D": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+3.1,
+-40.7,
+14.2
+],
+"lit": 15,
+"placed": 18,
+"edid": "OvenCombination01"
+},
+"Journey to Baan Malur.esp:2E4CBB": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+-9.1,
+0.8,
+-6.2
+],
+"lit": 3,
+"placed": 5,
+"edid": "CandleSkull"
+},
+"King of the Murkmire.esp:000A15": {
+"light": "King of the Murkmire.esp:025D3D",
+"offset": [
+-26.3,
+-20.5,
+23.8
+],
+"lit": 4,
+"placed": 19,
+"edid": "FrogLegCooked"
+},
+"King of the Murkmire.esp:01A86B": {
+"light": "Skyrim.esm:0E2172",
+"offset": [
+-18.1,
+-6.3,
+191.6
+],
+"lit": 3,
+"placed": 25,
+"edid": "AYLDRubbleCrystals03"
+},
+"King of the Murkmire.esp:01A896": {
+"light": "Skyrim.esm:0E2172",
+"offset": [
+5.0,
+-1.4,
+6.5
+],
+"lit": 6,
+"placed": 22,
+"edid": "AYLDIntWelkyndClusterFX01"
+},
+"King of the Murkmire.esp:03611B": {
+"light": "Skyrim.esm:0CD065",
+"offset": [
+32.5,
+-34.4,
+47.5
+],
+"lit": 3,
+"placed": 15,
+"edid": "ALPAClutterPapers02"
+},
+"King of the Murkmire.esp:04C4F3": {
+"light": "Skyrim.esm:0F7CC2",
+"offset": [
+-37.4,
+-1.5,
+5.9
+],
+"lit": 13,
+"placed": 29,
+"edid": "DweIchorGoo02Gas"
+},
+"King of the Murkmire.esp:09E0DE": {
+"light": "King of the Murkmire.esp:09E0F0",
+"offset": [
+50.2,
+0,
+-64
+],
+"lit": 3,
+"placed": 27,
+"edid": "HistRootHall3way"
+},
+"King of the Murkmire.esp:09E0DF": {
+"light": "King of the Murkmire.esp:09E0F0",
+"offset": [
+6.2,
+-8.0,
+-61.6
+],
+"lit": 9,
+"placed": 23,
+"edid": "HistRootHall4way"
+},
+"King of the Murkmire.esp:0CC2AD": {
+"light": "Skyrim.esm:075C32",
+"offset": [
+21.2,
+-6.8,
+20.3
+],
+"lit": 6,
+"placed": 19,
+"edid": "ALPAClutterLantern01"
+},
+"King of the Murkmire.esp:30EFD0": {
+"light": "Skyrim.esm:0E2172",
+"offset": [
+2.2,
+-10.8,
+85
+],
+"lit": 5,
+"placed": 10,
+"edid": "ArgoniaLuminousRussula02MarshGrass"
+},
+"King of the Murkmire.esp:5758C1": {
+"light": "King of the Murkmire.esp:025D3D",
+"offset": [
+13.3,
+20.4,
+18.3
+],
+"lit": 4,
+"placed": 6,
+"edid": "MurkmireRoundHut02Int"
+},
+"King of the Murkmire.esp:5E24A2": {
+"light": "King of the Murkmire.esp:644F72",
+"offset": [
+103.0,
+0.0,
+46.0
+],
+"lit": 51,
+"placed": 286,
+"edid": "XanmeerBustArgonian03Open"
+},
+"King of the Murkmire.esp:941EC1": {
+"light": "Skyrim.esm:0E2172",
+"offset": [
+8.3,
+-19.2,
+72.2
+],
+"lit": 4,
+"placed": 6,
+"edid": "ArgoniaLuminousRussula02Xanmeer"
+},
+"Nyhus.esp:0826F0": {
+"light": "Skyrim.esm:0FFF48",
+"offset": [
+0.9,
+75.6,
+57.7
+],
+"lit": 10,
+"placed": 31,
+"edid": "NyhusinArCrystalSingle01"
+},
+"Skyrim.esm:0132FC": {
+"light": "Skyrim.esm:088238",
+"offset": [
+15,
+-18.1,
+71.1
+],
+"lit": 35,
+"placed": 185,
+"edid": "NorHallSm2way01"
+},
+"Skyrim.esm:013816": {
+"light": "Skyrim.esm:088238",
+"offset": [
+22,
+-29.9,
+64
+],
+"lit": 4,
+"placed": 30,
+"edid": "NorHallSm2way02"
+},
+"Skyrim.esm:01381D": {
+"light": "Skyrim.esm:088241",
+"offset": [
+7.6,
+-52.5,
+76.0
+],
+"lit": 6,
+"placed": 36,
+"edid": "NorHallSm4way01"
+},
+"Skyrim.esm:013985": {
+"light": "Skyrim.esm:059A93",
+"offset": [
+79.5,
+52.9,
+66.3
+],
+"lit": 6,
+"placed": 44,
+"edid": "HuntingBow"
+},
+"Skyrim.esm:013E87": {
+"light": "Skyrim.esm:059B5F",
+"offset": [
+-45.9,
+-59,
+78
+],
+"lit": 9,
+"placed": 12,
+"edid": "FarmIntDoorway01"
+},
+"Skyrim.esm:0153C8": {
+"light": "Skyrim.esm:0B345A",
+"offset": [
+1.7,
+-0.2,
+71.2
+],
+"lit": 26,
+"placed": 60,
+"edid": "C06FXfireBlueWithEmbersHeavy"
+},
+"Skyrim.esm:01643A": {
+"light": "Skyrim.esm:02EDFC",
+"offset": [
+-39.8,
+-12.4,
+-5.1
+],
+"lit": 6,
+"placed": 24,
+"edid": "FXSmokeWispsLg1x1Adjust"
+},
+"Skyrim.esm:01643D": {
+"light": "Skyrim.esm:088241",
+"offset": [
+4.4,
+45.4,
+50.9
+],
+"lit": 25,
+"placed": 209,
+"edid": "FXMistLow01HalfVisAdjust"
+},
+"Skyrim.esm:016441": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-17.2,
+-7.2,
+42.1
+],
+"lit": 292,
+"placed": 1821,
+"edid": "FXMistLow01Adjust"
+},
+"Skyrim.esm:016442": {
+"light": "Skyrim.esm:088242",
+"offset": [
+-19.4,
+14.9,
+-108.1
+],
+"lit": 17,
+"placed": 169,
+"edid": "FXMistLow02Adjust"
+},
+"Skyrim.esm:01843B": {
+"light": "Skyrim.esm:088238",
+"offset": [
+37.6,
+-21.2,
+81.4
+],
+"lit": 25,
+"placed": 117,
+"edid": "NorCatHallSm2way01"
+},
+"Skyrim.esm:018BAE": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-5.1,
+5.5,
+75.5
+],
+"lit": 12,
+"placed": 57,
+"edid": "NorCatHallSm3way01"
+},
+"Skyrim.esm:018BB0": {
+"light": "Skyrim.esm:088241",
+"offset": [
+2.4,
+36.5,
+82.6
+],
+"lit": 5,
+"placed": 38,
+"edid": "NorCatHallSm4way01"
+},
+"Skyrim.esm:018BB1": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-47.4,
+3.4,
+85.6
+],
+"lit": 4,
+"placed": 16,
+"edid": "NorCatHallSm4way02"
+},
+"Skyrim.esm:019E25": {
+"light": "Skyrim.esm:0C1D01",
+"offset": [
+25.0,
+0.2,
+58.0
+],
+"lit": 10,
+"placed": 44,
+"edid": "RuinsSmallFloorSconce"
+},
+"Skyrim.esm:01EC3C": {
+"light": "Skyrim.esm:0B9E26",
+"offset": [
+5.2,
+41.1,
+87.8
+],
+"lit": 6,
+"placed": 56,
+"edid": "CaveGHall1Way64D01"
+},
+"Skyrim.esm:01F248": {
+"light": "Skyrim.esm:088238",
+"offset": [
+1.4,
+-63.5,
+-4.1
+],
+"lit": 153,
+"placed": 962,
+"edid": "CandleHornWall01"
+},
+"Skyrim.esm:01F24A": {
+"light": "Skyrim.esm:088238",
+"offset": [
+1.6,
+-13.3,
+45.3
+],
+"lit": 194,
+"placed": 1251,
+"edid": "CandleHornTable01"
+},
+"Skyrim.esm:0233F7": {
+"light": "Skyrim.esm:01CBB3",
+"offset": [
+0.1,
+3.5,
+-0.2
+],
+"lit": 3,
+"placed": 3,
+"edid": "dunKagrenzelFX"
+},
+"Skyrim.esm:024F20": {
+"light": "Skyrim.esm:059A93",
+"offset": [
+0.9,
+-1.5,
+-1.3
+],
+"lit": 171,
+"placed": 318,
+"edid": "CandleHornChandelier01"
+},
+"Skyrim.esm:026826": {
+"light": "Skyrim.esm:088241",
+"offset": [
+27.8,
+77.7,
+14.2
+],
+"lit": 3,
+"placed": 9,
+"edid": "GenPullBar01"
+},
+"Skyrim.esm:026858": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+-19,
+57.7,
+-11
+],
+"lit": 7,
+"placed": 58,
+"edid": "GenPullChain01"
+},
+"Skyrim.esm:026C09": {
+"light": "Skyrim.esm:08824B",
+"offset": [
+51.2,
+-21.1,
+60.3
+],
+"lit": 3,
+"placed": 6,
+"edid": "CaveGHall2Way02c"
+},
+"Skyrim.esm:02B86F": {
+"light": "Skyrim.esm:01F8B0",
+"offset": [
+-77.8,
+18.0,
+26.8
+],
+"lit": 6,
+"placed": 56,
+"edid": "NorRmShaftTop01"
+},
+"Skyrim.esm:02D847": {
+"light": "Skyrim.esm:0B735D",
+"offset": [
+2.6,
+0.8,
+-16.6
+],
+"lit": 1923,
+"placed": 3264,
+"edid": "CandleLanternwithCandle01"
+},
+"Skyrim.esm:02EB0D": {
+"light": "Skyrim.esm:08799C",
+"offset": [
+-14.7,
+0.4,
+2.9
+],
+"lit": 203,
+"placed": 581,
+"edid": "FXGlowFillRoundDim"
+},
+"Skyrim.esm:02EB0E": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-15.9,
+-0.9,
+22.0
+],
+"lit": 331,
+"placed": 991,
+"edid": "FXGlowFillRoundMid"
+},
+"Skyrim.esm:02EB0F": {
+"light": "Skyrim.esm:08824B",
+"offset": [
+6.0,
+10.2,
+-9.9
+],
+"lit": 58,
+"placed": 263,
+"edid": "FXGlowFillRoundXBrt"
+},
+"Skyrim.esm:02EB10": {
+"light": "Skyrim.esm:02EE00",
+"offset": [
+-46.5,
+39.2,
+11.2
+],
+"lit": 10,
+"placed": 33,
+"edid": "FXGlowFillRoundXDim"
+},
+"Skyrim.esm:02EB11": {
+"light": "Skyrim.esm:057A43",
+"offset": [
+4.6,
+11.6,
+0
+],
+"lit": 148,
+"placed": 857,
+"edid": "FXGlowFillRoundBrt"
+},
+"Skyrim.esm:030AD2": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+1.4,
+2.1,
+4.0
+],
+"lit": 17,
+"placed": 90,
+"edid": "DweChandelier01"
+},
+"Skyrim.esm:033DA4": {
+"light": "Skyrim.esm:088243",
+"offset": [
+0.6,
+-0.8,
+55.3
+],
+"lit": 503,
+"placed": 1702,
+"edid": "FXfireWithEmbersHeavy"
+},
+"Skyrim.esm:033DA9": {
+"light": "Skyrim.esm:088243",
+"offset": [
+-2.5,
+0.1,
+48.5
+],
+"lit": 479,
+"placed": 1655,
+"edid": "FXfireWithEmbersLight"
+},
+"Skyrim.esm:034D23": {
+"light": "Skyrim.esm:059B71",
+"offset": [
+9.8,
+-1.8,
+-60.4
+],
+"lit": 36,
+"placed": 201,
+"edid": "SnowberryWreath"
+},
+"Skyrim.esm:035F47": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+-0.1,
+1.2,
+62.9
+],
+"lit": 35,
+"placed": 102,
+"edid": "Campfire01LandBurning"
+},
+"Skyrim.esm:035F49": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+1.1,
+2.4,
+85.5
+],
+"lit": 124,
+"placed": 287,
+"edid": "Campfire01Burning"
+},
+"Skyrim.esm:035F4A": {
+"light": "Skyrim.esm:059B71",
+"offset": [
+-1.4,
+-1.6,
+48.9
+],
+"lit": 43,
+"placed": 227,
+"edid": "FireplaceWood01Burning"
+},
+"Skyrim.esm:03836B": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+5.8,
+-31.7,
+86.4
+],
+"lit": 4,
+"placed": 29,
+"edid": "ImpHall1Way03"
+},
+"Skyrim.esm:03A217": {
+"light": "Skyrim.esm:01950B",
+"offset": [
+-5.5,
+-32.6,
+79.3
+],
+"lit": 3,
+"placed": 18,
+"edid": "ImpLHall3Way02"
+},
+"Skyrim.esm:03B34A": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-8.3,
+52.6,
+76.8
+],
+"lit": 3,
+"placed": 23,
+"edid": "ImpLHallDoor01"
+},
+"Skyrim.esm:03CB81": {
+"light": "Skyrim.esm:019529",
+"offset": [
+68.8,
+-11.1,
+77.2
+],
+"lit": 5,
+"placed": 20,
+"edid": "NorRmSmWallSideFireplace01"
+},
+"Skyrim.esm:03CB82": {
+"light": "Skyrim.esm:0A2697",
+"offset": [
+7.7,
+-6.8,
+11.3
+],
+"lit": 7,
+"placed": 16,
+"edid": "NorRmSmWallFrontFireplace01"
+},
+"Skyrim.esm:03EB2E": {
+"light": "Skyrim.esm:059A93",
+"offset": [
+17.6,
+28,
+69.6
+],
+"lit": 3,
+"placed": 9,
+"edid": "FortifySkillSmithing01"
+},
+"Skyrim.esm:04318B": {
+"light": "Skyrim.esm:0B345B",
+"offset": [
+-5.3,
+-3.8,
+45.0
+],
+"lit": 150,
+"placed": 431,
+"edid": "FXfireWithEmbersLogs01"
+},
+"Skyrim.esm:0481B0": {
+"light": "Skyrim.esm:0DDF68",
+"offset": [
+0.7,
+0.3,
+70.6
+],
+"lit": 8,
+"placed": 77,
+"edid": "SoulGemHolderWithStand"
+},
+"Skyrim.esm:048748": {
+"light": "Skyrim.esm:0B15EE",
+"offset": [
+0.4,
+-3.6,
+77.1
+],
+"lit": 4,
+"placed": 11,
+"edid": "CraftingBlacksmithForgeSTATIC"
+},
+"Skyrim.esm:049B02": {
+"light": "Skyrim.esm:0F7CBF",
+"offset": [
+-0.4,
+9.1,
+-36.4
+],
+"lit": 4,
+"placed": 6,
+"edid": "RiftenRWPortholeDoor01"
+},
+"Skyrim.esm:04C55F": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+2.6,
+14.6,
+59
+],
+"lit": 14,
+"placed": 102,
+"edid": "DweHallBg1wayRamp01"
+},
+"Skyrim.esm:056627": {
+"light": "Skyrim.esm:088242",
+"offset": [
+4.2,
+-11.9,
+74.0
+],
+"lit": 6,
+"placed": 24,
+"edid": "HotIron"
+},
+"Skyrim.esm:05AD5B": {
+"light": "Skyrim.esm:0B9BE7",
+"offset": [
+3.1,
+0.2,
+-43.4
+],
+"lit": 89,
+"placed": 135,
+"edid": "CandleHornChandelier02"
+},
+"Skyrim.esm:05AE7C": {
+"light": "Skyrim.esm:077761",
+"offset": [
+-44.9,
+-1.5,
+-5.1
+],
+"lit": 6,
+"placed": 55,
+"edid": "DweWallSconceSmall02"
+},
+"Skyrim.esm:05BDB2": {
+"light": "Skyrim.esm:02EE04",
+"offset": [
+-25.1,
+-27.1,
+38.5
+],
+"lit": 7,
+"placed": 33,
+"edid": "TGRFOBusinessLedger"
+},
+"Skyrim.esm:05D6E4": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-66.8,
+7.4,
+-39
+],
+"lit": 82,
+"placed": 383,
+"edid": "ImpWallSconceCandle01"
+},
+"Skyrim.esm:05D6E5": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-68.4,
+0.3,
+-27.2
+],
+"lit": 40,
+"placed": 236,
+"edid": "ImpWallSconceCandle02"
+},
+"Skyrim.esm:05D6EA": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-67.1,
+-2.6,
+-38.8
+],
+"lit": 102,
+"placed": 337,
+"edid": "ImpWallSconce02CandleOn01"
+},
+"Skyrim.esm:05F21D": {
+"light": "Skyrim.esm:088238",
+"offset": [
+2.0,
+1.4,
+-42.9
+],
+"lit": 150,
+"placed": 291,
+"edid": "ImpChandellierCandle01"
+},
+"Skyrim.esm:05F222": {
+"light": "Skyrim.esm:088241",
+"offset": [
+1.0,
+5.5,
+83.5
+],
+"lit": 59,
+"placed": 511,
+"edid": "ImpCandelabraCandle01"
+},
+"Skyrim.esm:060AB1": {
+"light": "Skyrim.esm:057A43",
+"offset": [
+-12,
+6.9,
+0
+],
+"lit": 6,
+"placed": 28,
+"edid": "SMdETraCon04"
+},
+"Skyrim.esm:0616F0": {
+"light": "Skyrim.esm:077FCE",
+"offset": [
+-2.5,
+0.8,
+50.7
+],
+"lit": 4,
+"placed": 12,
+"edid": "WRIntFloorDirtStrFireAlcove01"
+},
+"Skyrim.esm:064B39": {
+"light": "Skyrim.esm:0B9522",
+"offset": [
+-30.2,
+7.5,
+69.3
+],
+"lit": 3,
+"placed": 23,
+"edid": "FoodLongTaffyTreat"
+},
+"Skyrim.esm:065128": {
+"light": "Skyrim.esm:03C5A5",
+"offset": [
+-97.2,
+6.5,
+62.8
+],
+"lit": 3,
+"placed": 30,
+"edid": "FXAmbBeamDust03"
+},
+"Skyrim.esm:06ABE1": {
+"light": "Skyrim.esm:0CE016",
+"offset": [
+0,
+12,
+-76
+],
+"lit": 20,
+"placed": 139,
+"edid": "SLGCArchCon01"
+},
+"Skyrim.esm:06B36A": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+-2.2,
+1.6,
+8.1
+],
+"lit": 38,
+"placed": 116,
+"edid": "DweChandelier02"
+},
+"Skyrim.esm:06ED62": {
+"light": "Skyrim.esm:02EDF0",
+"offset": [
+-2.3,
+8.0,
+69.3
+],
+"lit": 4,
+"placed": 37,
+"edid": "FXAmbBeamDustBig03"
+},
+"Skyrim.esm:0722BD": {
+"light": "Skyrim.esm:059B71",
+"offset": [
+4.0,
+-11.1,
+42.0
+],
+"lit": 3,
+"placed": 16,
+"edid": "FoodVenisonCooked"
+},
+"Skyrim.esm:073C58": {
+"light": "Skyrim.esm:0CE016",
+"offset": [
+2.0,
+-12.0,
+112.0
+],
+"lit": 8,
+"placed": 69,
+"edid": "SMdFArchCei01"
+},
+"Skyrim.esm:073CC2": {
+"light": "Skyrim.esm:0A0F3F",
+"offset": [
+17.4,
+15.7,
+101.6
+],
+"lit": 52,
+"placed": 322,
+"edid": "BoneDeerSkullHornedStatic"
+},
+"Skyrim.esm:075DC5": {
+"light": "Skyrim.esm:088247",
+"offset": [
+12.2,
+5.6,
+-87.7
+],
+"lit": 4,
+"placed": 20,
+"edid": "FXAmbBeamXbDust01"
+},
+"Skyrim.esm:075DDB": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-23.8,
+5.5,
+-2
+],
+"lit": 7,
+"placed": 25,
+"edid": "FXGlowFlatRndBrt"
+},
+"Skyrim.esm:075DDC": {
+"light": "Skyrim.esm:088248",
+"offset": [
+-8.0,
+-40.0,
+0.0
+],
+"lit": 6,
+"placed": 15,
+"edid": "FXGlowFlatRndXBrt"
+},
+"Skyrim.esm:0775FE": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+12.1,
+0.2,
+-24.6
+],
+"lit": 13,
+"placed": 20,
+"edid": "CharredSkeever03"
+},
+"Skyrim.esm:077771": {
+"light": "Skyrim.esm:07531F",
+"offset": [
+-2.0,
+12.3,
+44.9
+],
+"lit": 12,
+"placed": 42,
+"edid": "FXMistLow02RndHalfVis"
+},
+"Skyrim.esm:077775": {
+"light": "Skyrim.esm:094E65",
+"offset": [
+-55.8,
+33.8,
+18.0
+],
+"lit": 12,
+"placed": 68,
+"edid": "FXSmokeWispsLg1x1"
+},
+"Skyrim.esm:0777A1": {
+"light": "Skyrim.esm:0172C4",
+"offset": [
+-6.7,
+-3.9,
+66.0
+],
+"lit": 5,
+"placed": 22,
+"edid": "FXAmbBeamWetMist02"
+},
+"Skyrim.esm:0777A9": {
+"light": "Skyrim.esm:08CBA7",
+"offset": [
+-29,
+-2.4,
+-133.8
+],
+"lit": 3,
+"placed": 26,
+"edid": "FXAmbBeamWetMist03"
+},
+"Skyrim.esm:078A6C": {
+"light": "Skyrim.esm:03F29D",
+"offset": [
+-2.5,
+-4.5,
+6.3
+],
+"lit": 5,
+"placed": 9,
+"edid": "WHFXwindowglow01"
+},
+"Skyrim.esm:07D901": {
+"light": "Skyrim.esm:0B6466",
+"offset": [
+-6.2,
+3.0,
+-6.5
+],
+"lit": 4,
+"placed": 35,
+"edid": "TrapFallingOilLampExtender"
+},
+"Skyrim.esm:07EA40": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-69.6,
+4.6,
+12.2
+],
+"lit": 117,
+"placed": 656,
+"edid": "RuinsCandleSconceOn1"
+},
+"Skyrim.esm:07EA42": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-72.7,
+-0.4,
+2.1
+],
+"lit": 111,
+"placed": 550,
+"edid": "RuinsCandleSconceOn2"
+},
+"Skyrim.esm:07EE00": {
+"light": "Skyrim.esm:08799C",
+"offset": [
+10.2,
+-51.6,
+18.9
+],
+"lit": 205,
+"placed": 1180,
+"edid": "GlowingMushroomCluster"
+},
+"Skyrim.esm:082E18": {
+"light": "Skyrim.esm:01FD9B",
+"offset": [
+41.7,
+1.8,
+10.4
+],
+"lit": 16,
+"placed": 140,
+"edid": "TrapExplosiveGas"
+},
+"Skyrim.esm:086015": {
+"light": "Skyrim.esm:03611F",
+"offset": [
+13,
+27.2,
+72.7
+],
+"lit": 30,
+"placed": 300,
+"edid": "SilverCandleStick03"
+},
+"Skyrim.esm:088896": {
+"light": "Skyrim.esm:0F7CC2",
+"offset": [
+-89,
+0,
+12
+],
+"lit": 25,
+"placed": 127,
+"edid": "DweIchorGoo02"
+},
+"Skyrim.esm:088897": {
+"light": "Skyrim.esm:090007",
+"offset": [
+-0.9,
+-7.4,
+45.0
+],
+"lit": 18,
+"placed": 103,
+"edid": "DweIchorGoo01"
+},
+"Skyrim.esm:08D28A": {
+"light": "Skyrim.esm:089AF6",
+"offset": [
+0,
+0,
+89
+],
+"lit": 3,
+"placed": 5,
+"edid": "DweChandelier01Simple"
+},
+"Skyrim.esm:090726": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+-4.4,
+81.8,
+29.3
+],
+"lit": 71,
+"placed": 189,
+"edid": "TorchPermanent01"
+},
+"Skyrim.esm:090CA4": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+3.5,
+3.1,
+73.5
+],
+"lit": 3,
+"placed": 6,
+"edid": "Campfire01LandBurning_ReachDirt01"
+},
+"Skyrim.esm:090EFC": {
+"light": "Skyrim.esm:02EE00",
+"offset": [
+9.9,
+-7.4,
+-10.2
+],
+"lit": 27,
+"placed": 155,
+"edid": "TrapFallingOilLamp01"
+},
+"Skyrim.esm:09151E": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+1.9,
+81.2,
+21.2
+],
+"lit": 217,
+"placed": 354,
+"edid": "RemovableTorchSconce01"
+},
+"Skyrim.esm:098593": {
+"light": "moonpath.esp:04AEAD",
+"offset": [
+81.6,
+19.1,
+-68.0
+],
+"lit": 4,
+"placed": 21,
+"edid": "ShipKatariahWoodSmSecondFloor01"
+},
+"Skyrim.esm:098668": {
+"light": "Skyrim.esm:02EE05",
+"offset": [
+-3.0,
+52.3,
+-2.8
+],
+"lit": 21,
+"placed": 70,
+"edid": "NorPullBar01"
+},
+"Skyrim.esm:09DC6B": {
+"light": "Skyrim.esm:074ED2",
+"offset": [
+6.6,
+1.9,
+83.2
+],
+"lit": 4,
+"placed": 8,
+"edid": "RiftenRWHall1WayCeilGrate01"
+},
+"Skyrim.esm:09DC87": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+7.6,
+-0.5,
+-19.1
+],
+"lit": 3,
+"placed": 26,
+"edid": "WRPrisonCellFloorGrate01"
+},
+"Skyrim.esm:0A34E6": {
+"light": "Skyrim.esm:0B33F0",
+"offset": [
+-3.7,
+9.7,
+112.7
+],
+"lit": 5,
+"placed": 24,
+"edid": "RifRmSmKeepWallExSm01"
+},
+"Skyrim.esm:0A696C": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-21.3,
+-57.8,
+-42.6
+],
+"lit": 5,
+"placed": 26,
+"edid": "FXAmbBeamXbDust_Dim02"
+},
+"Skyrim.esm:0A6C19": {
+"light": "Skyrim.esm:088245",
+"offset": [
+-9.8,
+36.1,
+58.5
+],
+"lit": 4,
+"placed": 23,
+"edid": "FXAmbBeamXbDust_Dim01"
+},
+"Skyrim.esm:0A6C1C": {
+"light": "Skyrim.esm:03C5A5",
+"offset": [
+0.8,
+45.7,
+-3.6
+],
+"lit": 9,
+"placed": 17,
+"edid": "FXAmbBeamXbDustBig_Dim01"
+},
+"Skyrim.esm:0A6C21": {
+"light": "evgSIRENROOT.esm:000F03",
+"offset": [
+-11.5,
+-3.6,
+115.8
+],
+"lit": 4,
+"placed": 16,
+"edid": "FXAmbBeamDustBig_Dim00"
+},
+"Skyrim.esm:0A6C3C": {
+"light": "Skyrim.esm:088246",
+"offset": [
+-14.7,
+-24.8,
+82.2
+],
+"lit": 3,
+"placed": 11,
+"edid": "FXAmbBeamSlowFog01"
+},
+"Skyrim.esm:0A6C3D": {
+"light": "Skyrim.esm:0897B4",
+"offset": [
+-0.5,
+8.1,
+0.7
+],
+"lit": 8,
+"placed": 37,
+"edid": "FXAmbBeamSlowFog02"
+},
+"Skyrim.esm:0A7919": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+-15.5,
+6.8,
+-99.1
+],
+"lit": 3,
+"placed": 25,
+"edid": "FXAmbBeamWetMistBig_Dim03"
+},
+"Skyrim.esm:0A894C": {
+"light": "Skyrim.esm:077FCE",
+"offset": [
+2.4,
+49.3,
+58.8
+],
+"lit": 3,
+"placed": 11,
+"edid": "WRIntFloorWoodCap02"
+},
+"Skyrim.esm:0B09E4": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+1.9,
+-3.0,
+9.7
+],
+"lit": 47,
+"placed": 250,
+"edid": "FXSmokeChimney01"
+},
+"Skyrim.esm:0B09EA": {
+"light": "Skyrim.esm:0B15EE",
+"offset": [
+11.6,
+0.9,
+56.8
+],
+"lit": 3,
+"placed": 3,
+"edid": "FXSmokeRiverwoodSmith01"
+},
+"Skyrim.esm:0B09ED": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+1.8,
+0.0,
+6.5
+],
+"lit": 47,
+"placed": 207,
+"edid": "FXSmokeChimney02"
+},
+"Skyrim.esm:0B7A0E": {
+"light": "Skyrim.esm:0B6466",
+"offset": [
+-21.7,
+-14.7,
+-62.8
+],
+"lit": 14,
+"placed": 138,
+"edid": "TrapFallingOilLampRopeBase01"
+},
+"Skyrim.esm:0B93DB": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+37,
+-54.1,
+-45.4
+],
+"lit": 8,
+"placed": 34,
+"edid": "FXSmokeWetMistLgVol01"
+},
+"Skyrim.esm:0B9BE0": {
+"light": "Dawnguard.esm:00D260",
+"offset": [
+-5.8,
+-2.2,
+58.0
+],
+"lit": 13,
+"placed": 73,
+"edid": "GlazedCandles01"
+},
+"Skyrim.esm:0B9FAD": {
+"light": "Skyrim.esm:0D0E40",
+"offset": [
+11.8,
+7.2,
+38.4
+],
+"lit": 75,
+"placed": 65,
+"edid": "TESTCandleFlame01"
+},
+"Skyrim.esm:0C0C6E": {
+"light": "Skyrim.esm:059B71",
+"offset": [
+-11.6,
+-1.9,
+86.9
+],
+"lit": 11,
+"placed": 30,
+"edid": "WHfireplace01"
+},
+"Skyrim.esm:0C3D37": {
+"light": "Skyrim.esm:02F363",
+"offset": [
+2.4,
+26,
+18.1
+],
+"lit": 5,
+"placed": 8,
+"edid": "Whfirepit02"
+},
+"Skyrim.esm:0C4BC1": {
+"light": "Skyrim.esm:088237",
+"offset": [
+64.6,
+-21.1,
+-57.8
+],
+"lit": 6,
+"placed": 14,
+"edid": "ImpChandellierCandle03"
+},
+"Skyrim.esm:0C4BC2": {
+"light": "Skyrim.esm:088238",
+"offset": [
+3.8,
+-1.9,
+-36.4
+],
+"lit": 9,
+"placed": 19,
+"edid": "ImpChandellierCandle02"
+},
+"Skyrim.esm:0C6918": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+1.1,
+-5.3,
+52.1
+],
+"lit": 3,
+"placed": 8,
+"edid": "Campfire01LandBurningFallForestDirt01"
+},
+"Skyrim.esm:0C841C": {
+"light": "Dawnguard.esm:00D260",
+"offset": [
+1.6,
+0.3,
+66.5
+],
+"lit": 55,
+"placed": 355,
+"edid": "GlazedCandlesStatic"
+},
+"Skyrim.esm:0C842B": {
+"light": "Dragonborn.esm:0336E8",
+"offset": [
+2.1,
+-4,
+35.2
+],
+"lit": 103,
+"placed": 503,
+"edid": "GlazedCandlesStatic02"
+},
+"Skyrim.esm:0CBB2F": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+-4.6,
+7.0,
+49.0
+],
+"lit": 6,
+"placed": 10,
+"edid": "Campfire01LandBurningRocks01"
+},
+"Skyrim.esm:0CD823": {
+"light": "Skyrim.esm:02EDF5",
+"offset": [
+-10.4,
+-17.0,
+29.2
+],
+"lit": 50,
+"placed": 155,
+"edid": "FXfireWithEmbers01_lite"
+},
+"Skyrim.esm:0CD824": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+1.8,
+-0.4,
+54.8
+],
+"lit": 11,
+"placed": 95,
+"edid": "FXfireWithEmbers01_Cheap"
+},
+"Skyrim.esm:0D5A8C": {
+"light": "Skyrim.esm:0B735D",
+"offset": [
+0,
+0,
+0
+],
+"lit": 31,
+"placed": 286,
+"edid": "TrapPoisonGasSmoke"
+},
+"Skyrim.esm:0D9881": {
+"light": "Skyrim.esm:088241",
+"offset": [
+-6.6,
+-7.5,
+59.2
+],
+"lit": 3,
+"placed": 15,
+"edid": "ShrineofDibella"
+},
+"Skyrim.esm:0DAB8B": {
+"light": "Skyrim.esm:0B9BE7",
+"offset": [
+1.5,
+-4.2,
+113.6
+],
+"lit": 4,
+"placed": 23,
+"edid": "SovCandleStick01Static"
+},
+"Skyrim.esm:0DB682": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+-0.6,
+8.8,
+23.3
+],
+"lit": 5,
+"placed": 9,
+"edid": "Campfire01LandBurningDirt01"
+},
+"Skyrim.esm:0DCA19": {
+"light": "Dragonborn.esm:0327AF",
+"offset": [
+-25.8,
+-32.5,
+41.6
+],
+"lit": 32,
+"placed": 165,
+"edid": "FXSlowDustMist"
+},
+"Skyrim.esm:0E72C6": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+29.4,
+-4.8,
+-100.8
+],
+"lit": 17,
+"placed": 47,
+"edid": "DweChandelier01SimpleOn"
+},
+"Skyrim.esm:0E72C7": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+0,
+-0.4,
+7.1
+],
+"lit": 25,
+"placed": 65,
+"edid": "DweChandelier02On"
+},
+"Skyrim.esm:0E72C9": {
+"light": "Skyrim.esm:0B9E2A",
+"offset": [
+94.5,
+17.9,
+50.1
+],
+"lit": 6,
+"placed": 23,
+"edid": "DweWallSconce01On"
+},
+"Skyrim.esm:0E72CB": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-83.9,
+2.6,
+-6.8
+],
+"lit": 53,
+"placed": 202,
+"edid": "DweWallSconceSmall01On"
+},
+"Skyrim.esm:0E72CC": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-137.4,
+41.3,
+-35.1
+],
+"lit": 9,
+"placed": 29,
+"edid": "DweWallSconceSmall02On"
+},
+"Skyrim.esm:0E769A": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+4.8,
+1.5,
+81.9
+],
+"lit": 13,
+"placed": 34,
+"edid": "DweChandelier01On"
+},
+"Skyrim.esm:0E769B": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+0.0,
+0.0,
+-96.7
+],
+"lit": 12,
+"placed": 24,
+"edid": "DweChandelier01BareOn"
+},
+"Skyrim.esm:0E7AFC": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-108.6,
+5.8,
+-28.8
+],
+"lit": 7,
+"placed": 34,
+"edid": "DweWallSconceSmall02OnSputter"
+},
+"Skyrim.esm:0E7C2A": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+-66.8,
+4.2,
+-20.5
+],
+"lit": 26,
+"placed": 95,
+"edid": "DweWallSconceSmall01OnSputter"
+},
+"Skyrim.esm:0E7C2B": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+55.4,
+-0.2,
+30.9
+],
+"lit": 10,
+"placed": 49,
+"edid": "DweWallSconce02OnSputter"
+},
+"Skyrim.esm:0E7C2D": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+22.5,
+4.9,
+148.9
+],
+"lit": 4,
+"placed": 28,
+"edid": "DweFloorLanternOnSputter"
+},
+"Skyrim.esm:0E7C2E": {
+"light": "Skyrim.esm:0879AD",
+"offset": [
+3,
+1.4,
+8
+],
+"lit": 10,
+"placed": 23,
+"edid": "DweChandelier02OnSputter"
+},
+"Skyrim.esm:0E7C2F": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+9.2,
+1.0,
+-61.7
+],
+"lit": 27,
+"placed": 63,
+"edid": "DweChandelier01OnSputter"
+},
+"Skyrim.esm:0E7C30": {
+"light": "Skyrim.esm:0879AC",
+"offset": [
+11.9,
+-9.3,
+-171.7
+],
+"lit": 34,
+"placed": 57,
+"edid": "DweChandelier01BareOnSputter"
+},
+"Skyrim.esm:0E7C9A": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+-1.0,
+7.5,
+81.4
+],
+"lit": 3,
+"placed": 6,
+"edid": "Campfire01LandBurningRiverBedEdge01"
+},
+"Skyrim.esm:0F4782": {
+"light": "Skyrim.esm:059A93",
+"offset": [
+24.8,
+28.9,
+-109.2
+],
+"lit": 6,
+"placed": 8,
+"edid": "FarmIntLHLoftTop01"
+},
+"Skyrim.esm:0FBFF0": {
+"light": "Skyrim.esm:02EE05",
+"offset": [
+6.0,
+0.4,
+51.5
+],
+"lit": 4,
+"placed": 35,
+"edid": "DB10FireDamageTriggerBox"
+},
+"Skyrim.esm:1010B3": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+8.8,
+35.3,
+45.1
+],
+"lit": 26,
+"placed": 252,
+"edid": "CraftingCookingPotSm"
+},
+"Skyrim.esm:101592": {
+"light": "Skyrim.esm:0BCC9D",
+"offset": [
+1.4,
+70.5,
+1.6
+],
+"lit": 338,
+"placed": 806,
+"edid": "TorchPermanantOn"
+},
+"Skyrim.esm:1018E3": {
+"light": "Dragonborn.esm:0336E7",
+"offset": [
+7.3,
+46.3,
+57.9
+],
+"lit": 16,
+"placed": 106,
+"edid": "CookingSpitSm01"
+},
+"Skyrim.esm:1092E2": {
+"light": "Skyrim.esm:02EE00",
+"offset": [
+-46.5,
+24.5,
+167.4
+],
+"lit": 3,
+"placed": 16,
+"edid": "FXfireWithEmbersHeavyToggle"
+},
+"Skyrim.esm:1094AB": {
+"light": "Skyrim.esm:088238",
+"offset": [
+2.3,
+0.2,
+26.6
+],
+"lit": 18,
+"placed": 38,
+"edid": "FXFireSovngarde"
+},
+"Skyrim.esm:10F81C": {
+"light": "Skyrim.esm:0FFF48",
+"offset": [
+-1.3,
+4.9,
+36.8
+],
+"lit": 3,
+"placed": 3,
+"edid": "MGR02FocalPointTrigger"
+},
+"Update.esm:003076": {
+"light": "ccBGSSSE025-AdvDSGS.esm:000C73",
+"offset": [
+5.3,
+-17.3,
+79
+],
+"lit": 5,
+"placed": 43,
+"edid": "ccBGS_FireStalkBud"
+},
+"Update.esm:00316D": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-0.4,
+-1,
+53.1
+],
+"lit": 36,
+"placed": 108,
+"edid": "ccBGS_ARCandlePlate01"
+},
+"Update.esm:00316E": {
+"light": "Skyrim.esm:088238",
+"offset": [
+-0.6,
+-1.8,
+79.6
+],
+"lit": 19,
+"placed": 57,
+"edid": "ccBGS_ARCandlePlate02"
+},
+"Update.esm:003170": {
+"light": "evgSIRENROOT.esm:014BB8",
+"offset": [
+-8.0,
+0.0,
+40.0
+],
+"lit": 4,
+"placed": 6,
+"edid": "ccBGS_ARCeilingWelkyndGreen01"
+},
+"Update.esm:0031C3": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+2.2,
+-14.7,
+-35.7
+],
+"lit": 14,
+"placed": 121,
+"edid": "ccBGS_ARRubbleCrystals02"
+},
+"Update.esm:0031EA": {
+"light": "Skyrim.esm:088238",
+"offset": [
+112,
+32,
+32
+],
+"lit": 4,
+"placed": 39,
+"edid": "ccBGS_ARWallShelf01"
+},
+"Update.esm:0031EE": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+0.0,
+0.0,
+25.0
+],
+"lit": 31,
+"placed": 63,
+"edid": "ccBGS_ARWelkyndClusterFX01"
+},
+"Update.esm:0031F0": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+8.2,
+7.4,
+94.8
+],
+"lit": 7,
+"placed": 53,
+"edid": "ccBGS_ARWelkyndPlanter01"
+},
+"Wyrmstooth.esp:02ABBD": {
+"light": "Skyrim.esm:0668F2",
+"offset": [
+-3.8,
+-10.2,
+81.5
+],
+"lit": 5,
+"placed": 8,
+"edid": "WTCandleLanternwithCandle01_snow"
+},
+"ccBGSSSE001-Fish.esm:00087C": {
+"light": "Skyrim.esm:0AF8BA",
+"offset": [
+-15.9,
+24,
+5.6
+],
+"lit": 3,
+"placed": 9,
+"edid": "ccBGSSSE001_FoodBucketFishCooked"
+},
+"ccBGSSSE001-Fish.esm:000FB3": {
+"light": "ccBGSSSE001-Fish.esm:000CB0",
+"offset": [
+-38,
+-93.2,
+43.3
+],
+"lit": 3,
+"placed": 15,
+"edid": "ccBGSSSE001FishTankLargeAct"
+},
+"ccBGSSSE001-Fish.esm:000FFB": {
+"light": "ccBGSSSE001-Fish.esm:000CAF",
+"offset": [
+50.6,
+-86.2,
+48.3
+],
+"lit": 3,
+"placed": 19,
+"edid": "ccBGSSSE001FishTankSmallAct"
+},
+"ccBGSSSE025-AdvDSGS.esm:086ABF": {
+"light": "ccBGSSSE025-AdvDSGS.esm:000C73",
+"offset": [
+46.7,
+-60.7,
+19.1
+],
+"lit": 3,
+"placed": 3,
+"edid": "ccBGSSSE025_critterSpawnButterflies24x7"
+},
+"evgSIRENROOT.esm:003B93": {
+"light": "evgSIRENROOT.esm:014BB7",
+"offset": [
+-7.6,
+0,
+76.8
+],
+"lit": 6,
+"placed": 39,
+"edid": "ccBGS_ARButton01Siren"
+},
+"evgSIRENROOT.esm:01F16D": {
+"light": "evgSIRENROOT.esm:01F173",
+"offset": [
+1.3,
+4.0,
+4.3
+],
+"lit": 3,
+"placed": 2,
+"edid": "EVGSirenVarlaSapphire"
+}
+}
+}

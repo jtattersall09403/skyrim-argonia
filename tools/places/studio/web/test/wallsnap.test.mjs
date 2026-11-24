@@ -44,9 +44,13 @@ test('an added torch sconce comes with its light: learned from a lit one of its 
   const base = { key: 'X:1', edid: 'TorchSconce01', model: 'clutter/torchsconce01.nif', bounds: [[0, -10, -20], [30, 10, 40]] };
   const bases = new Map([['X:1', base], ['L:1', { key: 'L:1', edid: 'TorchLightX' }]]);
   const fix = { id: 'new', base: 'X:1', kind: 'static', pos: [1000, 1000, 200], rot: [0, 0, Math.PI / 2], scale: 1 };
-  const plain = lightFor(fix, base, [fix], (r) => bases.get(r.base));
+  // the measured table: its light at its offset in the fixture's own frame (here 30 out along +X, 50 up)
+  const table = { 'X:1': { light: 'Skyrim.esm:088243', offset: [30, 0, 50] } };
+  const plain = lightFor(fix, base, [fix], (r) => bases.get(r.base), table);
   assert.equal(plain.base, 'Skyrim.esm:088243');
   assert.equal(plain.kind, 'light');
+  assert.deepEqual(plain.pos, [1000, 970, 250]);
+  assert.equal(lightFor(fix, base, [fix], (r) => bases.get(r.base), {}), null, 'no table row and none lit in the place: none');
   const lit = { id: 'f1', base: 'X:1', kind: 'static', pos: [0, 0, 100], rot: [0, 0, 0], scale: 1 };
   const light = { id: 'l1', base: 'L:1', kind: 'light', pos: [20, 0, 140], rot: [0, 0, 0], scale: 1 };
   const got = lightFor(fix, base, [fix, lit, light], (r) => bases.get(r.base));

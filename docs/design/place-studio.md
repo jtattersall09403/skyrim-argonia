@@ -731,6 +731,7 @@ GET  /api/asset/tex?path=<path>&size=<n>      WebP; cached a month (immutable: t
 GET  /api/asset/thumb?model=<path>            256 px WebP thumbnail of a mesh
 GET  /api/asset/land                          land.json: the land textures for the terrain splat (Assets, below)
 GET  /api/asset/land/<file>                   one land texture, WebP
+GET  /api/light_pairs                          the measured pairing of light sources and their lights: {base: {light, offset}}
 GET  /api/search?q=&scope=source|all&source_id=&kind=&limit=
                                               {q, scope, results:[{key, edid, name, model, type, kind, nordic,
                                               plugin, score, thumb}]}; kind may be a comma list
@@ -1032,12 +1033,20 @@ fixture it belongs to, and a fixture's lights. Moving, turning, resizing, seatin
 takes its lights with it in the same undo step, each keeping its place in the fixture's frame and its height through
 its own seat. A light selected by itself moves or goes alone.
 
-**A fixture added comes with its light** (`wallsnap.js` `lightFor`). A fixture added from Add things (the rule above
-says what a fixture is) is added with a light in the same undo step, seated `on` it: the lights stage's own pairing
-read off the place, so a fixture of the same base already lit in the place gives its light's base and its place in
-the fixture's frame; where none is, Skyrim's own no-shadow light for its kind at the top of its bounds over their
-middle (a campfire, fire pit or hearth WRLightFire01 at half its height; a candle, lantern, lamp or chandelier
-DefaultCandleLight01NS; a torch, sconce or brazier DefaultTorch01NS). A duplicate's light is the copy of its own.
+**A light source comes with its light** (`tools/places/light_pairs.py`, `light_pairs.json`). Which bases carry a
+light is measured, never listed by hand: `ArgoniaPlacesBuild lightpairs` reads every interior cell and worldspace of
+Skyrim.esm, its DLCs and the mods our places draw from, binds each placed light to the nearest other placed ref within
+128 units (the lights stage's own rule), and counts per base how often it stands with a light, which light and where
+in the base's own frame. A base placed with a light at least 3 times and in at least a tenth of its placements is in
+the table (218 bases: candles, candle horns, chandeliers, wall sconces, braziers, campfires, forges, glowing crystals
+and more), with the light most often beside it at the median offset; `python -m tools.places.light_pairs
+<evidence.json> [n]` writes it and names each light-looking base left out with its reason (most are self-lit: their
+mesh glows and nothing is placed beside them). That table is the one pairing: the lights stage gives every source
+added to the place (a row of ours with no `src`, unlit) its light seated `on` it (`draft/lights.py station_lights`,
+which `draft check` holds), `look place` adds it with the thing, and the studio's Add things adds it in the same undo
+step (`/api/light_pairs`, `wallsnap.js lightFor`); a base the table does not hold takes the light a placed one of
+the same base has in the place, else none. A duplicate's light is the copy of its own; moving, turning or removing a
+source takes its light with it.
 
 **Wall things** (`wallsnap.js`). A thing whose record names a sconce, torch holder, shelf, sign, banner, plaque,
 tapestry or trophy, and whose bounds run from about its origin out along one level axis, hangs on a wall: Bethesda

@@ -285,6 +285,12 @@ async def asset_land_file(req: web.Request):
     return await send_file(req, p, cache="public, max-age=86400") if p else jerr(404, "no such land texture")
 
 
+async def light_pairs(req: web.Request) -> web.Response:
+    """The measured pairing of light sources and their lights (tools/places/light_pairs.py): {base: {light, offset}}."""
+    from tools.places.light_pairs import pairs
+    return jok({k: {"light": v["light"], "offset": v["offset"]} for k, v in pairs().items()})
+
+
 async def search(req: web.Request) -> web.Response:
     from urllib.parse import quote
 
@@ -880,6 +886,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/asset/land", asset_land)
     r.add_get("/api/asset/land/{file:.+}", asset_land_file)
     r.add_get("/api/search", search)
+    r.add_get("/api/light_pairs", light_pairs)
     r.add_get("/api/place/{place_id}/saves", saves_list)
     r.add_get("/api/place/{place_id}/saves/{save_id}", save_get)
     r.add_put("/api/place/{place_id}/saves/{save_id}", save_put)

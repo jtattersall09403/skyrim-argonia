@@ -1144,7 +1144,9 @@ def _place(sc, pos, o, sess) -> list[dict]:
            "pos": [round(xyz[0], 2), round(xyz[1], 2), round(z, 2)],
            "rot": [0.0, 0.0, round(math.radians(float(o.get("rot") or 0.0)), 5)], "scale": float(o.get("scale") or 1), "layer": "place",
            "flags": [], "seat": seat, "why": why, "tier": "AGENT_INVENTED"}
-    return [{"op": "ref.add", "space": sc.space, "call": "fault", "ref": row}]
+    from tools.places.light_pairs import light_row   # a light source comes with its light, as the game places it
+    lit = light_row(row, f"{row['id']}L", sc.space == "exterior")
+    return [{"op": "ref.add", "space": sc.space, "call": "fault", "ref": r} for r in [row] + ([lit] if lit else [])]
 
 
 def land_ops(files: dict, ground, pos, o) -> list[dict]:

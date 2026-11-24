@@ -125,14 +125,24 @@ def off_fixture(rows: list[dict], by_src: dict[str, dict], bound: dict[str, str]
 
 # --- what we add ---
 def station_lights(place_id: str, rows: list[dict], stations: dict) -> list[dict]:
-    """The light rows our added stations carry: one per added exterior station whose kind Skyrim lights, at the
-    vanilla offset in the station's own frame, seated `on` it."""
+    """The light rows what we add carries: each added light source the measured pairing holds
+    (tools/places/light_pairs.py: the light Skyrim, its DLCs and our source mods place beside that base, at its offset
+    in the base's own frame), an added station by the same table, else a forge at FORGE_OFFSET; seated `on` it."""
+    from tools.places.light_pairs import light_row
     by_id = {r["id"]: r for r in rows}
-    out = []
+    out, done = [], set()
     for a in (stations or {}).get("added") or []:
         lit, st = STATION_LIGHT.get(a.get("station")), by_id.get(a.get("id"))
-        if not lit or st is None or a.get("space", "exterior") != "exterior":
+        if st is None or a.get("space", "exterior") != "exterior":
             continue
+        row = light_row(st, io.mint(place_id, "light", a["id"]))
+        if row is not None:
+            out.append(dict(row, cluster=st.get("cluster"), src=None))
+            done.add(st["id"])
+            continue
+        if not lit:
+            continue
+        done.add(st["id"])
         base, (u, v, w) = lit
         rz = st["rot"][2]
         c, s = math.cos(rz), math.sin(rz)
@@ -142,6 +152,14 @@ def station_lights(place_id: str, rows: list[dict], stations: dict) -> list[dict
                     "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "flags": [], "src": None,
                     "seat": {"mode": "on", "on": st["id"], "dz": w}, "cluster": st.get("cluster"),
                     "why": f"the {a['station']}'s fire light, as Skyrim's forges carry it"})
+    # every other light source we add (one the measured table pairs with a light) carries its light the same way
+    lit_on = {(r.get("seat") or {}).get("on") for r in rows if r.get("kind") == "light"}
+    for r in rows:
+        if r.get("src") or r.get("layer") != "place" or r["id"] in done or r["id"] in lit_on or r.get("removed"):
+            continue
+        row = light_row(r, io.mint(place_id, "light", r["id"]))
+        if row is not None:
+            out.append(dict(row, cluster=r.get("cluster"), src=None))
     return [{k: v for k, v in r.items() if v is not None or k == "src"} for r in out]
 
 
