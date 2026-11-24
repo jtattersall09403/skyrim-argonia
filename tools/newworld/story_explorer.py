@@ -17,6 +17,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import os
 import re
 import shutil
 import sys
@@ -732,6 +733,11 @@ def main(argv: list[str]) -> int:
         return 0
     if cmd == "check":
         msg = check()
+        if msg and os.environ.get("STUDIO_OWNER_SAVE") == "1":
+            # the owner's own save never waits on an agent: it commits, and the republish is owed to the next agent
+            # turn, whose commits this check still refuses until the page is current
+            print(f"story explorer owed (the owner's save commits; an agent republishes it next): {msg}")
+            return 0
         print(msg or "story explorer current")
         return 1 if msg else 0
     if cmd == "mark-published":

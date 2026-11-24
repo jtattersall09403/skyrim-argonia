@@ -613,7 +613,8 @@ async def commit_worker(app: web.Application) -> None:
         for path, m in latest.items():
             proc = await asyncio.create_subprocess_exec(
                 str(ROOT / "tooling" / "lane_commit.sh"), "-m", m, "--", *([path] if isinstance(path, str) else path), cwd=ROOT,
-                stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT)
+                stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT,
+                env=dict(os.environ, STUDIO_OWNER_SAVE="1"))   # his save never waits on the story explorer's republish
             out, _ = await proc.communicate()
             print(f"commit {path}: rc={proc.returncode} {out.decode(errors='replace')[-300:]}", flush=True)
             if proc.returncode == 0 or b"nothing to commit" in out:

@@ -1138,7 +1138,10 @@ when it has not been built, which the button then says. Nothing of the Atlas is 
 write, so it survives a stopped machine and a lost disk; the autosave goes to the private bucket at most once a
 minute. Saves and notes are committed one at a time; a commit that fails (another commit in the tree at that
 moment, the network) is tried again after a wait, six times in all, and the finalise chain does the same with its
-own commits, so the server and the chain never fail each other. Notes are changed under a lock on the place's
+own commits, so the server and the chain never fail each other. The owner's save never waits on an agent: its
+commit runs with `STUDIO_OWNER_SAVE=1`, under which a story explorer left behind by a needs change passes the gate as
+owed (`story_explorer check` says so), and every agent's commit is still refused until an agent regenerates and
+republishes it. Notes are changed under a lock on the place's
 `edits/` folder, so the server and an agent's `notes done` never lose each other's change. Request bodies are
 capped by kind: a save 64 MB, a note 512 KB, a finalise 4 KB; the page's log line keeps its first 4,000 bytes.
 
