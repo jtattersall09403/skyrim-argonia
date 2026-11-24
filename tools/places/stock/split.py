@@ -321,10 +321,14 @@ def ladder() -> dict:
 
 
 def never_reason(it: dict, sc: dict | None = None) -> str | None:
-    """Why an item may never be stocked (decision 0006), or None: its material of ours is a never material — a Black
-    Marsh piece filed under its true material passes, whatever keyword its record carries — or, unfiled, its editor
-    id names a Skyrim-only kit."""
+    """Why an item may never be stocked, or None: its own gear row says so (a make another make of the same material
+    replaces, with the reason); its material of ours is a never material (decision 0006) — a Black Marsh piece filed
+    under its true material passes, whatever keyword its record carries — or, unfiled, its editor id names a
+    Skyrim-only kit."""
     sc = sc or scale()
+    own = item_materials()["gear"].get(_key(it), {}).get("never")
+    if own:
+        return own
     mid, how = material_of(it)
     if mid in materials()["never"]:
         return (f"{materials()['materials'][mid]['label']} ({how}) is Skyrim's own gear, which has no road into Black "

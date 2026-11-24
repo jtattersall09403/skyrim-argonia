@@ -388,6 +388,18 @@ added here the day they are made, with the date and the issue.
 - 2026-11-24 (#93/#94, in session, after the first three examples): the shafts of halberds and similar long weapons are
   custom too, not a plain made-by-script pole. The loose things scattered about at Ashgate Landing's exterior (reed
   bundles and others, which he moved by hand) are the "floor scatter" fault; it is a row in skill-fixes.
+- 2026-11-24 (#94, the owner's reply on the new-art plan): the three examples cost $7.07, too much; work out the
+  cheapest route to the full amount at the quality needed, within about $90 (a month of Tripo's Max plan, $90 of Fal
+  credits, or something else), with a few-dollar experiment that compares options and extrapolates to scale. The door
+  is marked by the agent by hand, not found by a tool. Long-weapon shafts are generated, or made, so the head seats
+  cleanly in a socket: two pieces are fine if they read as made to fit. The rule for references is "no moving parts":
+  nothing the player would expect to move on its own (a dangling rope or string, a tassel); a coiled or taut rope is
+  fine. King of the Murkmire is used as planned, no message to its author; reconfirm only if we ever publish. Swapping
+  one plant for another across the province is allowed and is not a terrain rebuild; the terrain is never redone;
+  never place BM&V's bamboo (it came out an artificial turquoise); be cautious, keep the regions' distinctive ground
+  cover, no big overhauls. Obsidian: the Xanmeer weapons for everything they cover, the glass recolours only for gaps.
+  The studio's agent actions (grid snap, piece palette, stairs, placing by relation) are for the owner to use in the
+  studio as well. Blender work is batched: an agent keeps one session open and works many things in it.
 
 ## Writing
 

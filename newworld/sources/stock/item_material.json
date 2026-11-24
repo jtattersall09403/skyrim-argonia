@@ -2689,18 +2689,21 @@
   {
    "item": "Obsidian Weapons Update 4.esp:000D6A",
    "material": "obsidian",
-   "why": "volcanic glass, the black make (Obsidian Weapons)"
+   "why": "volcanic glass, the black make (Obsidian Weapons)",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:001836",
    "material": "obsidian",
    "why": "volcanic glass, the clear make (Obsidian Weapons)",
-   "name": "Clear Obsidian Dagger"
+   "name": "Clear Obsidian Dagger",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:001837",
    "material": "obsidian",
-   "why": "volcanic glass, the black make (Obsidian Weapons)"
+   "why": "volcanic glass, the black make (Obsidian Weapons)",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:001DA1",
@@ -2717,13 +2720,15 @@
    "item": "Obsidian Weapons Update 4.esp:00230B",
    "material": "obsidian",
    "why": "volcanic glass, the clear make (Obsidian Weapons)",
-   "name": "Clear Obsidian War Axe"
+   "name": "Clear Obsidian War Axe",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:002310",
    "material": "obsidian",
    "why": "volcanic glass, the black make (Obsidian Weapons)",
-   "name": "Obsidian War Axe"
+   "name": "Obsidian War Axe",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:002876",
@@ -2741,12 +2746,14 @@
    "item": "Obsidian Weapons Update 4.esp:003344",
    "material": "obsidian",
    "why": "volcanic glass, the clear make (Obsidian Weapons)",
-   "name": "Clear Obsidian Mace"
+   "name": "Clear Obsidian Mace",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:003345",
    "material": "obsidian",
-   "why": "volcanic glass, the black make (Obsidian Weapons)"
+   "why": "volcanic glass, the black make (Obsidian Weapons)",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:00334D",
@@ -2763,12 +2770,14 @@
    "item": "Obsidian Weapons Update 4.esp:003356",
    "material": "obsidian",
    "why": "volcanic glass, the clear make (Obsidian Weapons)",
-   "name": "Clear Obsidian Bow"
+   "name": "Clear Obsidian Bow",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Obsidian Weapons Update 4.esp:003357",
    "material": "obsidian",
-   "why": "volcanic glass, the black make (Obsidian Weapons)"
+   "why": "volcanic glass, the black make (Obsidian Weapons)",
+   "never": "the Xanmeer make (Here There Be Monsters) is Black Marsh's obsidian for this weapon at this tier; this glass recolour fills only a type or tier the Xanmeer make lacks (owner, #94, 2026-11-24)"
   },
   {
    "item": "Pirate Armor.esp:000801",

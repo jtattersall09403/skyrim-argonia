@@ -11591,7 +11591,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:001836",
@@ -11609,7 +11609,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:001837",
@@ -11627,7 +11627,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:001DA1",
@@ -11681,7 +11681,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:002310",
@@ -11699,7 +11699,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:002876",
@@ -11753,7 +11753,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:003345",
@@ -11771,7 +11771,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:00334D",
@@ -11825,7 +11825,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Obsidian Weapons Update 4.esp:003357",
@@ -11843,7 +11843,7 @@
    "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
-   "never": false
+   "never": true
   },
   {
    "id": "Pirate Armor.esp:000801",
@@ -14222,24 +14222,6 @@
    "never": false
   },
   {
-   "id": "Skyrim.esm:013985",
-   "form_key": "013985:Skyrim.esm",
-   "plugin": "Skyrim.esm",
-   "edid": "HuntingBow",
-   "name": null,
-   "record": "WEAP",
-   "item_kind_id": "weapon",
-   "value": 50,
-   "material": "WeapMaterialSteel",
-   "material_id": "bog-iron",
-   "power_kind": "bow",
-   "power": 7.0,
-   "stock_tier_id": "T1",
-   "enchanted": false,
-   "significant": true,
-   "never": false
-  },
-  {
    "id": "Skyrim.esm:013986",
    "form_key": "013986:Skyrim.esm",
    "plugin": "Skyrim.esm",
@@ -14289,42 +14271,6 @@
    "power_kind": "sword",
    "power": 8.0,
    "stock_tier_id": "T1",
-   "enchanted": false,
-   "significant": true,
-   "never": false
-  },
-  {
-   "id": "Skyrim.esm:01399E",
-   "form_key": "01399E:Skyrim.esm",
-   "plugin": "Skyrim.esm",
-   "edid": "ElvenDagger",
-   "name": null,
-   "record": "WEAP",
-   "item_kind_id": "weapon",
-   "value": 95,
-   "material": "WeapMaterialElven",
-   "material_id": "elven",
-   "power_kind": "dagger",
-   "power": 8.0,
-   "stock_tier_id": "T3",
-   "enchanted": false,
-   "significant": true,
-   "never": false
-  },
-  {
-   "id": "Skyrim.esm:0139A6",
-   "form_key": "0139A6:Skyrim.esm",
-   "plugin": "Skyrim.esm",
-   "edid": "GlassDagger",
-   "name": null,
-   "record": "WEAP",
-   "item_kind_id": "weapon",
-   "value": 165,
-   "material": "WeapMaterialGlass",
-   "material_id": "glass",
-   "power_kind": "dagger",
-   "power": 9.0,
-   "stock_tier_id": "T4",
    "enchanted": false,
    "significant": true,
    "never": false
