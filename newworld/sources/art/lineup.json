@@ -76,6 +76,16 @@
    "group": "making"
   },
   {
+   "id": "hut-densified",
+   "label": "Hut, densified",
+   "line": "The Redoran hut, the hut as generated and the hut densified, side by side. Densified: new texture layout at 420 pixels per metre (the low end of the game's weathered wood) in two 8192-pixel atlases, the generator's own texture copied onto it, and a fine grain from our hewn-cypress swatch laid along each part's own strokes.",
+   "made_by": "By hand: densify.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Same look, colour and painted features (mean lightness 28.3 before and after, chroma 12.8 before and after); close up the door and roots gain fine grain. In the game file it is 420 px per metre against 183 as generated. This web copy is cut to 2048-pixel textures so it loads on a phone: here the densified hut shows 105 px per metre and the generated one 91, so judge the grain on the close-up pictures in stage 3, not in the 3D view.",
+   "group": "making"
+  },
+  {
    "id": "hut-retextured",
    "label": "Hut, retextured",
    "line": "The hut's shell repainted by Meshy 7's retexture with a Black Marsh mud hut from the mods we hold as the style image.",
@@ -158,6 +168,29 @@
     "hut-graded"
    ],
    "images": []
+  },
+  {
+   "id": "density",
+   "name": "3. The hut's texture density",
+   "verdict": "pass",
+   "did": "densify.py gave the hut a new texture layout at 420 pixels per metre, copied the generator's own texture onto it texel by texel, and laid a fine grain from our hewn-cypress swatch at its true size only where the copy lacks fine detail and the colour is wood-like (not on the amber windows or the moss), turned per part to follow the painted strokes, with its own offset and scale per part. The grain only changes lightness up and down, so the colour stays. Close-ups at 1.5 m and 0.6 m beside the Redoran hut at the same distance.",
+   "measured": {
+    "Hut, as generated": "183 px per m: 278.7 square metres of surface on one 4096 texture; 14,000 triangles",
+    "Hut, densified": "421 px per m: two 8192 atlases (70% and 5% used), 14,000 triangles (unchanged), 1,539 charts, 5,930 vertices added along the new seams",
+    "Colour": "mean lightness 28.32 to 28.32, mean chroma 12.83 to 12.83 (the large atlas)",
+    "Fine detail": "1.57 to 1.91 (lightness difference from a 2-pixel blur, mean over the large atlas)",
+    "This page's 3D copy": "textures cut to 2048: 105 px per m densified, 91 as generated"
+   },
+   "images": [
+    [
+     "lineup.hut-densified-close-1.5m.jpg",
+     "Door, wall, roots and roof at 1.5 m: as generated, densified, the Redoran hut"
+    ],
+    [
+     "lineup.hut-densified-close-0.6m.jpg",
+     "Door and a root at 0.6 m: as generated (left), densified (right)"
+    ]
+   ]
   }
  ]
 }

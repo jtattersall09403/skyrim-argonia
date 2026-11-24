@@ -1,5 +1,5 @@
 """Write the asset explorer's web copy of a model: one glTF JSON file (.gltf.json) with its buffers and textures as
-data URIs (the page host serves no .glb), textures as JPEG at a set size; a model over the triangle cap is refused (cut it with shape.py first).
+data URIs (the page host serves no .glb), textures as JPEG no larger than a set size (never enlarged); a model over the triangle cap is refused (cut it with shape.py first).
 usage: webcopy.py in.(glb|obj) out.gltf.json [px=1024] [max_triangles=60000]   prints what it did as JSON"""
 import sys, io, json, base64, tempfile, os, trimesh
 from PIL import Image
@@ -16,7 +16,7 @@ def webcopy(src, out, px=1024, cap=60000):
         for k in ('baseColorTexture', 'normalTexture'):
             im = getattr(mat, k, None)
             if im is not None:
-                b = io.BytesIO(); im.convert('RGB').resize((px, px), Image.LANCZOS).save(b, 'JPEG', quality=85); b.seek(0); setattr(mat, k, Image.open(b))
+                b = io.BytesIO(); im.convert('RGB').resize((min(px, im.width), min(px, im.height)), Image.LANCZOS).save(b, 'JPEG', quality=85); b.seek(0); setattr(mat, k, Image.open(b))
         for k in ('metallicRoughnessTexture', 'occlusionTexture', 'emissiveTexture'):
             if getattr(mat, k, None) is not None: setattr(mat, k, None)
         mat.metallicFactor = 0.0; mat.roughnessFactor = 0.9

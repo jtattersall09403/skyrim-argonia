@@ -76,3 +76,35 @@ textured one we make.
 3. Save every reference image as a JPEG under 700 KB before sending it, so every route accepts it.
 4. Tripo's texture task takes a style reference image (+5 credits in the studio). That matters for making a family of
    models look alike, and is part of the consistency test.
+
+## Buildings: asking for a dense enough texture
+
+The root hut came back with 278.7 square metres of surface on one 4096-pixel texture: 183 pixels per metre, where
+Skyrim's weathered wood is 420 to 830 (median 650). Tripo's own layout used about 56% of its picture. One atlas
+covers, at 75% use:
+
+| Atlas | At 420 px per m (wood's low end) | At 650 px per m (wood's median) |
+|---|---|---|
+| 4096 (4K) | 71 square metres | 30 square metres |
+| 8192 (8K) | 285 square metres | 119 square metres |
+
+So anything bigger than a canoe needs more than one 4K picture, and a hut-sized building needs one 8K atlas laid out
+well, or several. What each route offers:
+
+- **Through Fal** (`tripo3d/h3.1/image-to-3d`): `texture_quality` is only standard or detailed, and detailed came back
+  4096 for both H3.1 and P2 on the hut. There is no 8K texture and no generating in parts. P2 has an `extreme`
+  texture quality whose size is not documented; it was not tried. The Fal route therefore stays $0.46 a building,
+  followed by `tools/newart/densify.py`, which relays the texture at 420 px per metre and adds fine grain along the
+  painted strokes (free, about five minutes). It does not add the generator's own detail: close up, the painted look
+  is the same, slightly sharper on doors and roots.
+- **Tripo's web studio**: 8K textures are included on paid plans, and Generate in Parts (+30 credits) gives each part
+  its own texture. A building is HD Generate 15 + Texture Gen 10 + HD Texture 10 + PBR 5 + Generate in Parts 30 =
+  70 credits: $0.25 on the Max plan ($90 for 25,000 credits), $0.47 on Pro ($20 for 3,000). Three or four parts (walls,
+  roof, roots or posts, door) each with its own 8K picture would, by the table above, reach 420 to 650 px per metre on a
+  hut of this size (not yet tried).
+  This is by hand in the studio.
+
+**Recommendation.** A building whose surface is over about 70 square metres goes to Tripo's studio with the 8K texture
+and Generate in Parts, at 70 credits ($0.25 on Max), so it arrives with its own detail at the game's density. Through
+Fal (by tool, no subscription), it stays $0.46 and is finished with densify.py. Props under about 70 square metres
+keep the current route.
