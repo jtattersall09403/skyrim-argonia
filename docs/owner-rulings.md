@@ -97,6 +97,14 @@ added here the day they are made, with the date and the issue.
 - Owner check-ins are plain English: one check per bullet, places named, how to reply, costs.
 - Hand over nothing partially finished; "known issues" only for what truly cannot be fixed, each with why
   (2026-10-30, 2026-11-03, 2026-11-04).
+- Work is finished when what was asked is done. An agent's return that lists things falling short of the ask is
+  not finished and is not reported as finished: the agent is continued until each is done (2026-11-24, #96).
+- The lead (planner) session runs Fable 5.2 at medium effort by default (2026-11-24, #96).
+- When the owner reopens the studio after agents have answered his notes, he sees his last autosave, where he had
+  got to, with the new actions on top (2026-11-24, #96). Studio asks of the same day: every thing that acts as a
+  light source carries its light, not only torches; two fingers drag the scene, pinch moves towards what is looked
+  at, a swipe orbits the selected thing into the centre; a Deselect button; a faint edge outline; trees can be
+  selected, noted and moved, and tree notes feed that tree type's generation rule; a drawn route is walked.
 - Method changes are applied and recorded without asking; a goal change is an owner call (2026-10-28).
 - The owner judges look; agents check for Nordic tells, never feel (2026-10-30, #43).
 - Agents stop only when the work is complete, a blocker needs the owner, or at a handover the owner asked for.
@@ -400,6 +408,15 @@ added here the day they are made, with the date and the issue.
   cover, no big overhauls. Obsidian: the Xanmeer weapons for everything they cover, the glass recolours only for gaps.
   The studio's agent actions (grid snap, piece palette, stairs, placing by relation) are for the owner to use in the
   studio as well. Blender work is batched: an agent keeps one session open and works many things in it.
+- 2026-11-24 (#94, new art, in session, afternoon): from his look at the cost experiment, Tripo H3.1 is clearly the
+  best on all three test models (canoe, hut, glaive) and gives the best textures; the shared repeating materials do
+  not look as good, so the generator's texture is kept and consistency is got another way. The proposal's "things
+  genuinely missing" track goes after the plants and the Black Marsh treatment tracks, so the no-new-art tracks run
+  first as a minimal option. The order of work: use the full breadth of what we hold (the looked-at index), source
+  the extras, then review the genuine gaps, then rewrite the proposal whole from that state, restructured round what
+  he needs to know and the decision he is taking, with costs and the quickest, best-value wins first. Ask about
+  Meshy as well as Tripo. The asset explorer is tidied: less on the page, the missing versions made (the hut with
+  its door marked by hand, the glaive with grip, wear and end caps), a Meshy example, the person at true scale.
 
 ## Writing
 
