@@ -350,6 +350,11 @@
     "id": "outpost-m13-m65.2KJFST0NYGAM2G2B0SQ9TKJECX",
     "base": "Skyrim.esm:0BCC9D",
     "on": "outpost-m13-m65.01M86PMFH7CSAHFRWRJ936NA8D"
+   },
+   {
+    "id": "outpost-m13-m65.7QB2GYXEVDD9ZP0A4440CZRQQJ",
+    "base": "Skyrim.esm:0B735D",
+    "on": "outpost-m13-m65.LOOK049PLACE"
    }
   ]
  },
@@ -848,6 +853,26 @@
     "id": "outpost-m13-m65.ZH5B6E3AVX099C1407XGZ0XF70",
     "fault": "floats",
     "why": "the mess tent's plank floor, its tables, pelts and end table, laid on the tent's own raised frame as the Hjaalmarch camp lays them: the section across the tent shows the frame's legs standing on the ground under the planks"
+   }
+  ],
+  "fit_tilt_kept": [
+   {
+    "id": "outpost-m13-m65.E9ARFX3QKBKZQ8HAQ7ATWNTGCQ",
+    "why": "the owner moved this rock by the hut himself in his open session (note g12), so it stands as he left it, turn and all"
+   },
+   {
+    "id": "outpost-m13-m65.WTDS3SNSRSRCBGKJKTPE251J5W",
+    "why": "the owner moved this rock pile on the bank himself in his open session (note g9), so it stands as he left it, turn and all"
+   }
+  ],
+  "ways_through_accepted": [
+   {
+    "id": "outpost-m13-m65.LOOK007PLACE",
+    "why": "this is the barge's upper works (masts, rails and bulwarks over its deck), not a house: its deck is walked from the boarding plank at the bow to the hold door aft, and those are its two openings; closing either would cut the hold off from the landing"
+   },
+   {
+    "id": "outpost-m13-m65.KF1HK7YVRJTDFWK82PWQ3ZYPEG",
+    "why": "the long tent where four cutters sleep: its two side openings were closed by walking zones and the mesh still meets it on three sides under its canvas skirts on the slope, but no person's found way between two stops crosses it (every leg of every routine tested against its walls in the studio's own pathfinding on the built mesh); the only ways into it are its sleepers' own to their bedrolls"
    }
   ]
  },
@@ -1549,9 +1574,7 @@
     "outpost-m13-m65.QER3N9APP2GQWZ1CH4GKQCS8H9",
     "outpost-m13-m65.RY5TFQN2QN6JFDE656C8M7R26X",
     "outpost-m13-m65.V87NJ88BEGP98H8B9GHN2WX61J",
-    "outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E",
-    "outpost-m13-m65.path.01",
-    "outpost-m13-m65.path.add.9EFSHMFNB5T35WZ544NAVKJ395"
+    "outpost-m13-m65.ZNWCS6X12YXYQ1SW3R4F04QQ1E"
    ]
   },
   {
