@@ -1941,5 +1941,104 @@
   "notes": "author Dyuz. Records read for stock and copied into our plugins under our names; assets the player's own download.",
   "permission": "dependency only (player's own download)",
   "permission_condition": "Its assets are never shipped by us and the mod is a dependency of ours; credited here."
+ },
+ {
+  "name": "Tropical Lands Assets - Cathnoquey The Fractured Isles Asset Dump",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33446",
+  "version": "1.1 (file 440893)",
+  "licence": "permissive",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: CreatyChameleon. Feel free to use any and all of these assets."
+ },
+ {
+  "name": "Waterplants",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/6092",
+  "version": "1.8 (file 440036)",
+  "licence": "credit required",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Halifax0815. credit required (Halifax0815)."
+ },
+ {
+  "name": "Ships and boats of Tamriel",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/41653",
+  "version": "1.2 (file 406330)",
+  "licence": "credit, not-for-profit",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: ThatShipGuy. credit ThatShipGuy; not-for-profit use."
+ },
+ {
+  "name": "Incaendo's Banner Resource SSE",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/17604",
+  "version": "1.1 (file 415992)",
+  "licence": "modders resource",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Incaendo. modders resource (Incaendo)."
+ },
+ {
+  "name": "Simple Straw Hats",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/89962",
+  "version": "1.0 (file 381715)",
+  "licence": "credit required",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: GolinskiPRH. credit GolinskiPRH."
+ },
+ {
+  "name": "Morrowind Hlaalu Architecture",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/157997",
+  "version": "v2.0 (file 672522)",
+  "licence": "credit required",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Angelio. credit Angelio."
+ },
+ {
+  "name": "Phitt's Morrowind Resources Remapped SSE (Velothi Resources file)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/107571",
+  "version": "i1.0.2 (file 531201)",
+  "licence": "credit required",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: pancake. credit phitt, tamira, mihail."
+ },
+ {
+  "name": "GKB Green Trees",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/19268",
+  "version": "G7700 (file 1000044622)",
+  "licence": "credit required, do not rename",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Ga-Knomboe Boy. credit Ga-Knomboe Boy; do not rename."
+ },
+ {
+  "name": "Harvestables",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/15108",
+  "version": "0.002 (file 54161)",
+  "licence": "see Nexus description",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: ChickenDownUnder. see Nexus description (ChickenDownUnder)."
+ },
+ {
+  "name": "Stroti's Stilt House Resource",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/61824",
+  "version": "1.0 (file 1000143534)",
+  "licence": "free mods only",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Stroti and Tamira. free mods only (Stroti and Tamira)."
+ },
+ {
+  "name": "Edhildils Argonian War Tails",
+  "source_url": "https://www.nexusmods.com/skyrim/mods/28502",
+  "version": "1 (file 105864)",
+  "licence": "credit required",
+  "used_by": "new world places (asset-only models)",
+  "linked_or_forked_by": "assets copied by our records; not redistributed",
+  "notes": "Credit: Edhildil. credit Edhildil."
  }
 ]

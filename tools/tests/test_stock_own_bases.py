@@ -34,3 +34,19 @@ def test_twin_family_is_three_per_model_with_unique_keys_and_rows():
     assert len({t["edid"] for t in ob.TWINS.values()}) == len(ob.TWINS)
     keys = {r["key"] for r in ob.own_rows()}
     assert ob.HAMMOCK_BED in keys and set(ob.TWINS) <= keys
+
+
+def test_pack_statics_are_unique_own_keys_and_planned_as_model_statics():
+    from tools.places import own_bases as ob
+    ps = ob.PACK_STATICS
+    assert ps and all(ob.is_own(k) for k in ps)
+    assert len({a["edid"] for a in ps.values()}) == len(ps)
+    assert not set(ps) & (set(ob.TWINS) | set(ob.STATICS) | set(ob.FURNITURE) | set(ob.ACTIVATORS))
+    assert {a["pack"] for a in ps.values()} == {"ships-and-boats-of-tamriel", "incaendo-banner-resource",
+                                                "morrowind-hlaalu-architecture", "phitt-velothi-resources"}
+    k = next(iter(ps))
+    refs = [{"base": k}]
+    rows = ob.plan_own(refs, lambda n: f"Argonia.esp:{abs(hash(n)) % 0xFFFFFF:06X}", "test-place")
+    assert rows[0]["kind"] == "modelstatic" and rows[0]["model"] == ps[k]["model"]
+    assert refs[0]["base"].startswith("Argonia.esp:")
+    assert any(r["key"] == k and r["type"] == "STAT" for r in ob.own_rows())

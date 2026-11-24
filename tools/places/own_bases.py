@@ -22,6 +22,9 @@ carries it, ArgoniaHistSapPool.
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 PLUGIN = "ArgoniaOwn.esp"
 SAP_POOL = f"{PLUGIN}:000A01"
 SAP_WATER = f"{PLUGIN}:000A02"
@@ -136,6 +139,14 @@ def _twins() -> dict[str, dict]:
 TWINS = _twins()
 
 
+# Model-only packs (asset-only rows with no plugin: Ships and Boats of Tamriel, Incaendo's banners, Morrowind Hlaalu
+# Architecture, Phitt's Velothi resources): one static of ours per chosen model, key and bounds in
+# newworld/sources/own/pack_statics.json ({key: {edid, model, pack, bounds}}; keys ArgoniaOwn.esp:00C000 up), the model
+# path as the pack lays it under meshes/. The writer makes a plain static of that model (kind "modelstatic").
+PACK_FILE = Path(__file__).resolve().parents[2] / "newworld" / "sources" / "own" / "pack_statics.json"
+PACK_STATICS = json.loads(PACK_FILE.read_text()) if PACK_FILE.exists() else {}
+
+
 def alt_tex(key: str, alt: list[dict] | None) -> list[dict] | None:
     """A base's alternate textures as the game will draw them with our plugin: a replaced base's rows that resolve to
     no texture set take our clear set."""
@@ -166,7 +177,9 @@ def own_rows() -> list[dict]:
         {"key": k, "edid": f["edid"], "type": "FURN", "model": f["model"], "bounds": f["bounds"], "name": f["name"],
          "plugin": PLUGIN, "keywords": f["keywords"]} for k, f in FURNITURE.items()] + [
         {"key": k, "edid": t["edid"], "type": "STAT", "model": t["model"], "bounds": t["bounds"], "name": None,
-         "plugin": PLUGIN, "keywords": []} for k, t in TWINS.items()]
+         "plugin": PLUGIN, "keywords": []} for k, t in TWINS.items()] + [
+        {"key": k, "edid": t["edid"], "type": "STAT", "model": t["model"], "bounds": t["bounds"], "name": t.get("name"),
+         "plugin": PLUGIN, "keywords": []} for k, t in PACK_STATICS.items()]
 
 
 def plan_own(refs: list[dict], ids, place_id: str) -> list[dict]:
@@ -209,6 +222,10 @@ def plan_own(refs: list[dict], ids, place_id: str) -> list[dict]:
         fk[k] = ids(f"stat:own:{k}")
         out.append({"kind": "static", "fk": fk[k], "edid": f"{t['edid']}_{tag}", "copy": t["copy"],
                     "material": fk[t["material"]], "angle": t["angle"]})
+    for k in [u for u in used if u in PACK_STATICS]:
+        t = PACK_STATICS[k]
+        fk[k] = ids(f"stat:own:{k}")
+        out.append({"kind": "modelstatic", "fk": fk[k], "edid": f"{t['edid']}_{tag}", "model": t["model"], "bounds": t["bounds"]})
     for r in refs:
         if r.get("base") in fk:
             r["base"] = fk[r["base"]]

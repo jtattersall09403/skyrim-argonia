@@ -51,6 +51,17 @@ static class Own
                 ctx.Mod.Statics.Add(st);
                 continue;
             }
+            if (kind == "modelstatic")   // a plain static of a model-only resource pack's mesh (no record to copy)
+            {
+                var b = r.GetProperty("bounds").EnumerateArray().SelectMany(c => c.EnumerateArray()).Select(v => (short)Math.Round(v.GetDouble())).ToArray();
+                ctx.Mod.Statics.Add(new Static(fk, C.Rel)
+                {
+                    EditorID = r.GetProperty("edid").GetString(),
+                    Model = new Model { File = r.GetProperty("model").GetString()!.Replace('/', '\\').Replace("meshes\\", "") },
+                    ObjectBounds = new ObjectBounds { First = new P3Int16(b[0], b[1], b[2]), Second = new P3Int16(b[3], b[4], b[5]) },
+                });
+                continue;
+            }
             if (kind == "furniture")   // a copy of a mod's furniture (the hammock bed: its sleep markers kept)
             {
                 var src = C.Fk(r.GetProperty("copy").GetString()!);

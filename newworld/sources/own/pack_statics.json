@@ -1,0 +1,4226 @@
+{
+ "ArgoniaOwn.esp:00C000": {
+  "edid": "ArgoniaPackShipshipbreticanchor01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticanchor01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -84.2,
+    -63.7,
+    -93.8
+   ],
+   [
+    84.2,
+    63.7,
+    93.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C001": {
+  "edid": "ArgoniaPackShipshipbreticanchorrope01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticanchorrope01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -2.9,
+    -3.7,
+    -564.4
+   ],
+   [
+    3.1,
+    2.6,
+    0.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C002": {
+  "edid": "ArgoniaPackShipshipbreticgangplank01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticgangplank01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -153.9,
+    -46.0,
+    3.1
+   ],
+   [
+    152.6,
+    43.3,
+    11.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C003": {
+  "edid": "ArgoniaPackShipshipbreticgangplank02",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticgangplank02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -112.8,
+    -22.3,
+    -5.9
+   ],
+   [
+    112.8,
+    22.3,
+    6.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C004": {
+  "edid": "ArgoniaPackShipshipbreticmooringrope01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticmooringrope01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -2.8,
+    -2.9,
+    0.2
+   ],
+   [
+    30.5,
+    42.4,
+    99.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C005": {
+  "edid": "ArgoniaPackShipshipbreticplanks01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticplanks01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -56.0,
+    -34.4,
+    -0.2
+   ],
+   [
+    55.8,
+    34.9,
+    8.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C006": {
+  "edid": "ArgoniaPackShipshipbreticropecoil01",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticropecoil01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -24.2,
+    -32.9,
+    -0.6
+   ],
+   [
+    26.5,
+    25.9,
+    6.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C007": {
+  "edid": "ArgoniaPackShipshipbreticropecoil02",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticropecoil02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -30.0,
+    -29.8,
+    -1.1
+   ],
+   [
+    33.4,
+    36.8,
+    22.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C008": {
+  "edid": "ArgoniaPackShipshipbreticropecoil03",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticropecoil03.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -15.5,
+    -11.2,
+    -33.0
+   ],
+   [
+    14.5,
+    11.3,
+    7.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C009": {
+  "edid": "ArgoniaPackShipshipbreticropecoil04",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticropecoil04.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -14.9,
+    -12.8,
+    -44.3
+   ],
+   [
+    9.5,
+    11.5,
+    5.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00A": {
+  "edid": "ArgoniaPackShipshipbreticropecoil05",
+  "model": "BSTamriel/dungeons/ships/Breticships/clutter/shipbreticropecoil05.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -6.2,
+    -10.0,
+    -41.6
+   ],
+   [
+    8.0,
+    9.1,
+    16.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00B": {
+  "edid": "ArgoniaPackShipshipbreticCarryk01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticCarryk01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -421.4,
+    -785.1,
+    -156.6
+   ],
+   [
+    421.4,
+    792.9,
+    1275.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00C": {
+  "edid": "ArgoniaPackShipshipbreticCarryk01sailing",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticCarryk01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -434.0,
+    -893.0,
+    -156.6
+   ],
+   [
+    434.0,
+    792.9,
+    1275.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00D": {
+  "edid": "ArgoniaPackShipshipbreticCarrykcs",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticCarryk_cs.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -421.4,
+    -785.1,
+    -156.6
+   ],
+   [
+    421.4,
+    792.9,
+    1275.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00E": {
+  "edid": "ArgoniaPackShipshipbreticCarrykcssailing",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticCarryk_cs_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -434.0,
+    -893.0,
+    -156.6
+   ],
+   [
+    434.0,
+    792.9,
+    1275.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C00F": {
+  "edid": "ArgoniaPackShipshipbreticCarrykhull01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticCarryk_hull01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -252.7,
+    -729.9,
+    -156.6
+   ],
+   [
+    252.7,
+    770.5,
+    483.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C010": {
+  "edid": "ArgoniaPackShipshipbreticGreyteship01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticGreyteship01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -485.7,
+    -1262.9,
+    -324.4
+   ],
+   [
+    486.0,
+    1066.3,
+    1900.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C011": {
+  "edid": "ArgoniaPackShipshipbreticGreyteship01sailing",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticGreyteship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -499.4,
+    -1382.6,
+    -324.4
+   ],
+   [
+    499.4,
+    1066.3,
+    1900.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C012": {
+  "edid": "ArgoniaPackShipshipbreticGreyteshiphull01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticGreyteship_hull01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -409.6,
+    -1150.6,
+    -324.4
+   ],
+   [
+    409.6,
+    1042.1,
+    624.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C013": {
+  "edid": "ArgoniaPackShipshipbreticRauenboat01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticRauenboat01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -91.5,
+    -220.4,
+    -28.3
+   ],
+   [
+    91.5,
+    222.1,
+    86.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C014": {
+  "edid": "ArgoniaPackShipshipbreticRennenboat01",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticRennenboat01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -126.6,
+    -350.2,
+    -44.7
+   ],
+   [
+    174.6,
+    350.2,
+    522.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C015": {
+  "edid": "ArgoniaPackShipshipbreticRennenboat01sailing",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticRennenboat01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -126.6,
+    -350.2,
+    -44.7
+   ],
+   [
+    193.8,
+    350.2,
+    522.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C016": {
+  "edid": "ArgoniaPackShipshipbreticRennenboat02",
+  "model": "BSTamriel/dungeons/ships/Breticships/shipbreticRennenboat02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -126.6,
+    -260.2,
+    -44.7
+   ],
+   [
+    126.6,
+    350.2,
+    99.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C017": {
+  "edid": "ArgoniaPackShipshipbreticCarrykhalfwreck01",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticCarryk_halfwreck01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -252.7,
+    -697.4,
+    -155.9
+   ],
+   [
+    252.7,
+    110.5,
+    502.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C018": {
+  "edid": "ArgoniaPackShipshipbreticCarrykhalfwreck02",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticCarryk_halfwreck02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -252.4,
+    -94.8,
+    -155.9
+   ],
+   [
+    247.8,
+    770.5,
+    395.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C019": {
+  "edid": "ArgoniaPackShipshipbreticCarrykwreck01",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticCarryk_wreck01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -284.1,
+    -697.4,
+    -155.9
+   ],
+   [
+    284.1,
+    770.5,
+    502.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01A": {
+  "edid": "ArgoniaPackShipshipbreticGreyteshiphalfwreck01",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticGreyteship_halfwreck01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -409.6,
+    -1150.6,
+    -324.1
+   ],
+   [
+    429.1,
+    -123.3,
+    789.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01B": {
+  "edid": "ArgoniaPackShipshipbreticGreyteshiphalfwreck02",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticGreyteship_halfwreck02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -407.4,
+    -424.4,
+    -324.1
+   ],
+   [
+    407.4,
+    1042.1,
+    624.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01C": {
+  "edid": "ArgoniaPackShipshipbreticGreyteshipwreck01",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticGreyteship_wreck01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -429.1,
+    -1262.9,
+    -324.4
+   ],
+   [
+    429.1,
+    1042.1,
+    1355.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01D": {
+  "edid": "ArgoniaPackShipshipbreticGreyteshipwreck02",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticGreyteship_wreck02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -429.1,
+    -1150.6,
+    -324.4
+   ],
+   [
+    409.6,
+    1042.1,
+    789.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01E": {
+  "edid": "ArgoniaPackShipshipbreticrauenboathalfwreck01",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticrauenboat_halfwreck01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -90.4,
+    -51.8,
+    -28.3
+   ],
+   [
+    90.4,
+    222.1,
+    86.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C01F": {
+  "edid": "ArgoniaPackShipshipbreticrauenboathalfwreck02",
+  "model": "BSTamriel/dungeons/ships/Breticships/wrecks/shipbreticrauenboat_halfwreck02.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -91.5,
+    -220.4,
+    -26.6
+   ],
+   [
+    88.5,
+    6.5,
+    72.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C020": {
+  "edid": "ArgoniaPackShipshipCyrodiilicCityFerry01",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicCityFerry01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -170.0,
+    -298.6,
+    -35.6
+   ],
+   [
+    162.7,
+    298.6,
+    446.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C021": {
+  "edid": "ArgoniaPackShipshipCyrodiilicGalleon01docked",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicGalleon01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -499.4,
+    -1377.5,
+    -289.2
+   ],
+   [
+    499.4,
+    1194.9,
+    1882.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C022": {
+  "edid": "ArgoniaPackShipshipCyrodiilicGalleon01sailing",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicGalleon01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -507.4,
+    -1388.6,
+    -289.2
+   ],
+   [
+    507.4,
+    1194.9,
+    1882.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C023": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipLarge01docked",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipLarge01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -624.2,
+    -2481.4,
+    -333.4
+   ],
+   [
+    624.2,
+    1671.0,
+    2432.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C024": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipLarge01sailing",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipLarge01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -646.9,
+    -2514.5,
+    -333.4
+   ],
+   [
+    646.9,
+    1671.0,
+    2432.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C025": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipMedium01docked",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipMedium01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -551.7,
+    -1723.5,
+    -268.7
+   ],
+   [
+    551.6,
+    1268.9,
+    2305.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C026": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipMedium01sailing",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipMedium01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -592.9,
+    -1745.5,
+    -268.7
+   ],
+   [
+    592.8,
+    1268.9,
+    2305.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C027": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipSmall01docked",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipSmall01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -282.8,
+    -814.8,
+    -123.2
+   ],
+   [
+    282.6,
+    521.3,
+    1085.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C028": {
+  "edid": "ArgoniaPackShipshipCyrodiilicNavyShipSmall01sailing",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicNavyShipSmall01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -282.8,
+    -814.8,
+    -123.2
+   ],
+   [
+    282.6,
+    521.3,
+    1085.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C029": {
+  "edid": "ArgoniaPackShipshipCyrodiilicRowboat01",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipCyrodiilicRowboat01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -91.5,
+    -220.4,
+    -28.3
+   ],
+   [
+    91.5,
+    222.1,
+    86.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02A": {
+  "edid": "ArgoniaPackShipshipEECTradeship01",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipEECTradeship01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -474.4,
+    -1057.4,
+    -223.1
+   ],
+   [
+    474.4,
+    1056.8,
+    1325.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02B": {
+  "edid": "ArgoniaPackShipshipEECTradeship01sailing",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipEECTradeship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -506.5,
+    -1138.1,
+    -223.1
+   ],
+   [
+    506.5,
+    1056.8,
+    1325.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02C": {
+  "edid": "ArgoniaPackShipshipcyrodiilicRiverFerry01",
+  "model": "BSTamriel/dungeons/ships/Cyrodiilicships/shipcyrodiilicRiverFerry01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -300.3,
+    -365.2,
+    -41.0
+   ],
+   [
+    310.6,
+    365.2,
+    391.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02D": {
+  "edid": "ArgoniaPackShipshipredguardLargeshipCorsair01docked",
+  "model": "BSTamriel/dungeons/ships/Redguardships/Corsairships/shipredguardLargeshipCorsair01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -2383.5,
+    -78.7
+   ],
+   [
+    392.2,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02E": {
+  "edid": "ArgoniaPackShipshipredguardLargeshipCorsair01sailing",
+  "model": "BSTamriel/dungeons/ships/Redguardships/Corsairships/shipredguardLargeshipCorsair01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -2383.5,
+    -78.7
+   ],
+   [
+    659.6,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C02F": {
+  "edid": "ArgoniaPackShipshipredguardCannonship01docked",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardCannonship01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -1474.3,
+    -78.7
+   ],
+   [
+    392.2,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C030": {
+  "edid": "ArgoniaPackShipshipredguardCannonship01sailing",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardCannonship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -1474.3,
+    -78.7
+   ],
+   [
+    659.6,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C031": {
+  "edid": "ArgoniaPackShipshipredguardLargeship01docked",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardLargeship01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -2383.5,
+    -78.7
+   ],
+   [
+    392.2,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C032": {
+  "edid": "ArgoniaPackShipshipredguardLargeship01sailing",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardLargeship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -392.2,
+    -2383.5,
+    -78.7
+   ],
+   [
+    659.6,
+    1797.6,
+    2011.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C033": {
+  "edid": "ArgoniaPackShipshipredguardMediumship01docked",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardMediumship01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -243.3,
+    -1081.2,
+    38.1
+   ],
+   [
+    293.0,
+    1180.0,
+    1466.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C034": {
+  "edid": "ArgoniaPackShipshipredguardMediumship01sailing",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardMediumship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -243.3,
+    -1081.2,
+    38.1
+   ],
+   [
+    600.2,
+    1180.0,
+    1466.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C035": {
+  "edid": "ArgoniaPackShipshipredguardRowboat01",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardRowboat01.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -75.3,
+    -285.2,
+    1.1
+   ],
+   [
+    111.2,
+    272.1,
+    147.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C036": {
+  "edid": "ArgoniaPackShipshipredguardSmallship01docked",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardSmallship01_docked.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -177.8,
+    -1154.4,
+    -0.5
+   ],
+   [
+    255.5,
+    955.7,
+    836.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C037": {
+  "edid": "ArgoniaPackShipshipredguardSmallship01sailing",
+  "model": "BSTamriel/dungeons/ships/Redguardships/shipredguardSmallship01_sailing.nif",
+  "pack": "ships-and-boats-of-tamriel",
+  "bounds": [
+   [
+    -177.8,
+    -1154.4,
+    -0.5
+   ],
+   [
+    461.9,
+    955.7,
+    836.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C038": {
+  "edid": "ArgoniaPackBannerIncaendoBanner01",
+  "model": "Incaendo/Banners/Incaendo_Banner01.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C039": {
+  "edid": "ArgoniaPackBannerIncaendoBanner02",
+  "model": "Incaendo/Banners/Incaendo_Banner02.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03A": {
+  "edid": "ArgoniaPackBannerIncaendoBanner03",
+  "model": "Incaendo/Banners/Incaendo_Banner03.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03B": {
+  "edid": "ArgoniaPackBannerIncaendoBanner04",
+  "model": "Incaendo/Banners/Incaendo_Banner04.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03C": {
+  "edid": "ArgoniaPackBannerIncaendoBanner05",
+  "model": "Incaendo/Banners/Incaendo_Banner05.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03D": {
+  "edid": "ArgoniaPackBannerIncaendoBanner06",
+  "model": "Incaendo/Banners/Incaendo_Banner06.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03E": {
+  "edid": "ArgoniaPackBannerIncaendoBanner07",
+  "model": "Incaendo/Banners/Incaendo_Banner07.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C03F": {
+  "edid": "ArgoniaPackBannerIncaendoBanner08",
+  "model": "Incaendo/Banners/Incaendo_Banner08.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C040": {
+  "edid": "ArgoniaPackBannerIncaendoBanner09",
+  "model": "Incaendo/Banners/Incaendo_Banner09.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C041": {
+  "edid": "ArgoniaPackBannerIncaendoBanner10",
+  "model": "Incaendo/Banners/Incaendo_Banner10.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C042": {
+  "edid": "ArgoniaPackBannerIncaendoBanner11",
+  "model": "Incaendo/Banners/Incaendo_Banner11.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C043": {
+  "edid": "ArgoniaPackBannerIncaendoBanner12",
+  "model": "Incaendo/Banners/Incaendo_Banner12.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C044": {
+  "edid": "ArgoniaPackBannerIncaendoBanner13",
+  "model": "Incaendo/Banners/Incaendo_Banner13.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C045": {
+  "edid": "ArgoniaPackBannerIncaendoBanner14",
+  "model": "Incaendo/Banners/Incaendo_Banner14.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C046": {
+  "edid": "ArgoniaPackBannerIncaendoBanner15",
+  "model": "Incaendo/Banners/Incaendo_Banner15.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C047": {
+  "edid": "ArgoniaPackBannerIncaendoBanner16",
+  "model": "Incaendo/Banners/Incaendo_Banner16.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C048": {
+  "edid": "ArgoniaPackBannerIncaendoBanner17",
+  "model": "Incaendo/Banners/Incaendo_Banner17.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C049": {
+  "edid": "ArgoniaPackBannerIncaendoBanner18",
+  "model": "Incaendo/Banners/Incaendo_Banner18.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04A": {
+  "edid": "ArgoniaPackBannerIncaendoBanner19",
+  "model": "Incaendo/Banners/Incaendo_Banner19.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04B": {
+  "edid": "ArgoniaPackBannerIncaendoBanner20",
+  "model": "Incaendo/Banners/Incaendo_Banner20.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04C": {
+  "edid": "ArgoniaPackBannerIncaendoBanner21",
+  "model": "Incaendo/Banners/Incaendo_Banner21.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04D": {
+  "edid": "ArgoniaPackBannerIncaendoBanner22",
+  "model": "Incaendo/Banners/Incaendo_Banner22.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04E": {
+  "edid": "ArgoniaPackBannerIncaendoBanner23",
+  "model": "Incaendo/Banners/Incaendo_Banner23.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C04F": {
+  "edid": "ArgoniaPackBannerIncaendoBanner24",
+  "model": "Incaendo/Banners/Incaendo_Banner24.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C050": {
+  "edid": "ArgoniaPackBannerIncaendoBanner25",
+  "model": "Incaendo/Banners/Incaendo_Banner25.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C051": {
+  "edid": "ArgoniaPackBannerIncaendoBanner26",
+  "model": "Incaendo/Banners/Incaendo_Banner26.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C052": {
+  "edid": "ArgoniaPackBannerIncaendoBanner27",
+  "model": "Incaendo/Banners/Incaendo_Banner27.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C053": {
+  "edid": "ArgoniaPackBannerIncaendoBanner28",
+  "model": "Incaendo/Banners/Incaendo_Banner28.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C054": {
+  "edid": "ArgoniaPackBannerIncaendoBanner29",
+  "model": "Incaendo/Banners/Incaendo_Banner29.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C055": {
+  "edid": "ArgoniaPackBannerIncaendoBanner30",
+  "model": "Incaendo/Banners/Incaendo_Banner30.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C056": {
+  "edid": "ArgoniaPackBannerIncaendoBanner31",
+  "model": "Incaendo/Banners/Incaendo_Banner31.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C057": {
+  "edid": "ArgoniaPackBannerIncaendoBanner32",
+  "model": "Incaendo/Banners/Incaendo_Banner32.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C058": {
+  "edid": "ArgoniaPackBannerIncaendoBanner33",
+  "model": "Incaendo/Banners/Incaendo_Banner33.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C059": {
+  "edid": "ArgoniaPackBannerIncaendoBanner34",
+  "model": "Incaendo/Banners/Incaendo_Banner34.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05A": {
+  "edid": "ArgoniaPackBannerIncaendoBanner35",
+  "model": "Incaendo/Banners/Incaendo_Banner35.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05B": {
+  "edid": "ArgoniaPackBannerIncaendoBanner36",
+  "model": "Incaendo/Banners/Incaendo_Banner36.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05C": {
+  "edid": "ArgoniaPackBannerIncaendoBanner37",
+  "model": "Incaendo/Banners/Incaendo_Banner37.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05D": {
+  "edid": "ArgoniaPackBannerIncaendoBanner38",
+  "model": "Incaendo/Banners/Incaendo_Banner38.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05E": {
+  "edid": "ArgoniaPackBannerIncaendoBanner39",
+  "model": "Incaendo/Banners/Incaendo_Banner39.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C05F": {
+  "edid": "ArgoniaPackBannerIncaendoBanner40",
+  "model": "Incaendo/Banners/Incaendo_Banner40.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C060": {
+  "edid": "ArgoniaPackBannerIncaendoBanner41",
+  "model": "Incaendo/Banners/Incaendo_Banner41.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C061": {
+  "edid": "ArgoniaPackBannerIncaendoBanner42",
+  "model": "Incaendo/Banners/Incaendo_Banner42.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C062": {
+  "edid": "ArgoniaPackBannerIncaendoBanner43",
+  "model": "Incaendo/Banners/Incaendo_Banner43.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C063": {
+  "edid": "ArgoniaPackBannerIncaendoBanner44",
+  "model": "Incaendo/Banners/Incaendo_Banner44.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C064": {
+  "edid": "ArgoniaPackBannerIncaendoBanner45",
+  "model": "Incaendo/Banners/Incaendo_Banner45.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C065": {
+  "edid": "ArgoniaPackBannerIncaendoBanner46",
+  "model": "Incaendo/Banners/Incaendo_Banner46.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C066": {
+  "edid": "ArgoniaPackBannerIncaendoBanner47",
+  "model": "Incaendo/Banners/Incaendo_Banner47.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C067": {
+  "edid": "ArgoniaPackBannerIncaendoBanner48",
+  "model": "Incaendo/Banners/Incaendo_Banner48.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C068": {
+  "edid": "ArgoniaPackBannerIncaendoBanner49",
+  "model": "Incaendo/Banners/Incaendo_Banner49.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C069": {
+  "edid": "ArgoniaPackBannerIncaendoBanner50",
+  "model": "Incaendo/Banners/Incaendo_Banner50.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06A": {
+  "edid": "ArgoniaPackBannerIncaendoBanner51",
+  "model": "Incaendo/Banners/Incaendo_Banner51.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06B": {
+  "edid": "ArgoniaPackBannerIncaendoBanner52",
+  "model": "Incaendo/Banners/Incaendo_Banner52.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06C": {
+  "edid": "ArgoniaPackBannerIncaendoBanner53",
+  "model": "Incaendo/Banners/Incaendo_Banner53.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06D": {
+  "edid": "ArgoniaPackBannerIncaendoBanner54",
+  "model": "Incaendo/Banners/Incaendo_Banner54.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06E": {
+  "edid": "ArgoniaPackBannerIncaendoBanner55",
+  "model": "Incaendo/Banners/Incaendo_Banner55.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C06F": {
+  "edid": "ArgoniaPackBannerIncaendoBanner56",
+  "model": "Incaendo/Banners/Incaendo_Banner56.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C070": {
+  "edid": "ArgoniaPackBannerIncaendoBanner57",
+  "model": "Incaendo/Banners/Incaendo_Banner57.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C071": {
+  "edid": "ArgoniaPackBannerIncaendoBanner58",
+  "model": "Incaendo/Banners/Incaendo_Banner58.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C072": {
+  "edid": "ArgoniaPackBannerIncaendoBanner59",
+  "model": "Incaendo/Banners/Incaendo_Banner59.nif",
+  "pack": "incaendo-banner-resource",
+  "bounds": [
+   [
+    -102.3,
+    -45.5,
+    -183.7
+   ],
+   [
+    -3.6,
+    44.1,
+    3.0
+   ]
+  ],
+  "name": "Banner"
+ },
+ "ArgoniaOwn.esp:00C073": {
+  "edid": "ArgoniaPackHlaalubaseentrance00",
+  "model": "HlaaluArchitecture/Custom/baseentrance00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -211.5,
+    -18.3,
+    -44.0
+   ],
+   [
+    336.4,
+    477.1,
+    450.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C074": {
+  "edid": "ArgoniaPackHlaalubaseentrance01",
+  "model": "HlaaluArchitecture/Custom/baseentrance01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -211.3,
+    -18.2,
+    -44.0
+   ],
+   [
+    336.4,
+    477.1,
+    450.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C075": {
+  "edid": "ArgoniaPackHlaalubasetower00",
+  "model": "HlaaluArchitecture/Custom/basetower00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.6,
+    -212.8,
+    -11.2
+   ],
+   [
+    287.8,
+    282.5,
+    441.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C076": {
+  "edid": "ArgoniaPackHlaalubasetower01",
+  "model": "HlaaluArchitecture/Custom/basetower01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.6,
+    -212.9,
+    -11.2
+   ],
+   [
+    287.8,
+    282.5,
+    441.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C077": {
+  "edid": "ArgoniaPackHlaaludome",
+  "model": "HlaaluArchitecture/Custom/dome.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -596.0,
+    -596.0,
+    -256.0
+   ],
+   [
+    596.0,
+    596.0,
+    328.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C078": {
+  "edid": "ArgoniaPackHlaaluentrance00",
+  "model": "HlaaluArchitecture/Custom/entrance00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    146.8,
+    -91.9,
+    -524.1
+   ],
+   [
+    546.8,
+    159.2,
+    259.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C079": {
+  "edid": "ArgoniaPackHlaaluhouse01",
+  "model": "HlaaluArchitecture/Custom/house01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -607.7,
+    -320.1,
+    -565.1
+   ],
+   [
+    231.0,
+    477.1,
+    469.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07A": {
+  "edid": "ArgoniaPackHlaaluhouse01base",
+  "model": "HlaaluArchitecture/Custom/house01base.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -334.9,
+    -320.1,
+    -15.4
+   ],
+   [
+    160.6,
+    477.1,
+    450.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07B": {
+  "edid": "ArgoniaPackHlaaluhousebase00",
+  "model": "HlaaluArchitecture/Custom/housebase00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -211.3,
+    -18.2,
+    -15.4
+   ],
+   [
+    284.1,
+    477.1,
+    450.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07C": {
+  "edid": "ArgoniaPackHlaaluhousebase01",
+  "model": "HlaaluArchitecture/Custom/housebase01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -211.5,
+    -18.3,
+    -15.4
+   ],
+   [
+    284.1,
+    477.1,
+    450.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07D": {
+  "edid": "ArgoniaPackHlaaluhousetall01",
+  "model": "HlaaluArchitecture/Custom/housetall01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -273.2,
+    -277.8,
+    536.0
+   ],
+   [
+    281.4,
+    274.7,
+    924.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07E": {
+  "edid": "ArgoniaPackHlaalulargewindow00",
+  "model": "HlaaluArchitecture/Custom/largewindow00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -122.1,
+    458.2,
+    309.4
+   ],
+   [
+    -55.8,
+    476.9,
+    562.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C07F": {
+  "edid": "ArgoniaPackHlaalumiddletower00",
+  "model": "HlaaluArchitecture/Custom/middletower00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -200.5,
+    -205.7,
+    424.3
+   ],
+   [
+    280.7,
+    275.4,
+    870.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C080": {
+  "edid": "ArgoniaPackHlaalumiddletower01",
+  "model": "HlaaluArchitecture/Custom/middletower01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.3,
+    -212.9,
+    424.3
+   ],
+   [
+    289.0,
+    281.2,
+    870.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C081": {
+  "edid": "ArgoniaPackHlaaluroof",
+  "model": "HlaaluArchitecture/Custom/roof.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -246.3,
+    -147.2,
+    479.4
+   ],
+   [
+    246.2,
+    329.8,
+    647.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C082": {
+  "edid": "ArgoniaPackHlaalutoptower00",
+  "model": "HlaaluArchitecture/Custom/toptower00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -212.8,
+    851.8
+   ],
+   [
+    287.7,
+    282.5,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C083": {
+  "edid": "ArgoniaPackHlaalutoptower01",
+  "model": "HlaaluArchitecture/Custom/toptower01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -212.9,
+    851.8
+   ],
+   [
+    289.0,
+    282.5,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C084": {
+  "edid": "ArgoniaPackHlaalutower00",
+  "model": "HlaaluArchitecture/Custom/tower00.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -267.6,
+    -11.2
+   ],
+   [
+    287.8,
+    227.8,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C085": {
+  "edid": "ArgoniaPackHlaalutower01",
+  "model": "HlaaluArchitecture/Custom/tower01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -1042.7,
+    -524.1
+   ],
+   [
+    546.8,
+    -547.3,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C086": {
+  "edid": "ArgoniaPackHlaalutower02",
+  "model": "HlaaluArchitecture/Custom/tower02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -245.1,
+    -11.2
+   ],
+   [
+    289.0,
+    250.4,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C087": {
+  "edid": "ArgoniaPackHlaalutower03",
+  "model": "HlaaluArchitecture/Custom/tower03.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -253.0,
+    -11.2
+   ],
+   [
+    289.0,
+    242.4,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C088": {
+  "edid": "ArgoniaPackHlaalutower04",
+  "model": "HlaaluArchitecture/Custom/tower04.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -213.7,
+    -524.1
+   ],
+   [
+    546.8,
+    281.8,
+    887.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C089": {
+  "edid": "ArgoniaPackHlaalutower05",
+  "model": "HlaaluArchitecture/Custom/tower05.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -288.4,
+    -11.2
+   ],
+   [
+    287.8,
+    207.0,
+    887.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08A": {
+  "edid": "ArgoniaPackHlaalutower06",
+  "model": "HlaaluArchitecture/Custom/tower06.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -234.9,
+    -11.2
+   ],
+   [
+    289.0,
+    260.6,
+    887.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08B": {
+  "edid": "ArgoniaPackHlaalutower07",
+  "model": "HlaaluArchitecture/Custom/tower07.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -1042.7,
+    -11.2
+   ],
+   [
+    289.0,
+    -547.3,
+    887.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08C": {
+  "edid": "ArgoniaPackHlaalutower08",
+  "model": "HlaaluArchitecture/Custom/tower08.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -207.7,
+    -212.9,
+    -524.1
+   ],
+   [
+    546.8,
+    282.5,
+    1317.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08D": {
+  "edid": "ArgoniaPackHlaaluMiniWall",
+  "model": "HlaaluArchitecture/Hammerfell/MiniWall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -203.3,
+    -3.2,
+    4.4
+   ],
+   [
+    202.5,
+    3.2,
+    82.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08E": {
+  "edid": "ArgoniaPackHlaaluStoneWall001",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWall001.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -160.0,
+    -60.0,
+    -213.7
+   ],
+   [
+    160.0,
+    60.0,
+    266.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C08F": {
+  "edid": "ArgoniaPackHlaaluStoneWall002",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWall002.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -240.0,
+    -60.0,
+    -213.7
+   ],
+   [
+    240.0,
+    60.0,
+    266.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C090": {
+  "edid": "ArgoniaPackHlaaluStoneWall003",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWall003.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -320.0,
+    -60.0,
+    -213.7
+   ],
+   [
+    320.0,
+    60.0,
+    283.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C091": {
+  "edid": "ArgoniaPackHlaaluStoneWallCorner001",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWallCorner001.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -0.0,
+    -0.0,
+    -213.7
+   ],
+   [
+    220.0,
+    220.0,
+    266.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C092": {
+  "edid": "ArgoniaPackHlaaluStoneWallCurve001",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWallCurve001.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -540.0,
+    -0.0,
+    -213.7
+   ],
+   [
+    0.0,
+    540.0,
+    266.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C093": {
+  "edid": "ArgoniaPackHlaaluStoneWallEndPillar001",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWallEndPillar001.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -71.2,
+    -71.2,
+    -258.6
+   ],
+   [
+    71.2,
+    71.2,
+    323.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C094": {
+  "edid": "ArgoniaPackHlaaluStoneWallGateArc001",
+  "model": "HlaaluArchitecture/Hammerfell/Misc Walls/StoneWallGateArc001.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -320.0,
+    -60.0,
+    -213.7
+   ],
+   [
+    320.0,
+    60.0,
+    349.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C095": {
+  "edid": "ArgoniaPackHlaaluStairs01",
+  "model": "HlaaluArchitecture/Hammerfell/Stairs01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -252.3,
+    -240.3,
+    -10.5
+   ],
+   [
+    264.5,
+    186.0,
+    150.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C096": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWall",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.4,
+    -22.0
+   ],
+   [
+    128.0,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C097": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWall90a",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWall90a.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.4,
+    -22.0
+   ],
+   [
+    28.4,
+    128.0,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C098": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallBrokenA",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallBrokenA.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -78.7,
+    -28.4,
+    -22.0
+   ],
+   [
+    128.0,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C099": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallBrokenB",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallBrokenB.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -49.4,
+    -28.4,
+    -22.0
+   ],
+   [
+    128.0,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09A": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallBrokenC",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallBrokenC.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -109.6,
+    -28.4,
+    -22.0
+   ],
+   [
+    67.6,
+    28.4,
+    49.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09B": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallEnd",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallEnd.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    0.0,
+    -28.4,
+    -22.0
+   ],
+   [
+    134.3,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09C": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallEnterA",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallEnterA.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.4,
+    -22.0
+   ],
+   [
+    128.0,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09D": {
+  "edid": "ArgoniaPackHlaaluTRGmLCWallEnterB",
+  "model": "HlaaluArchitecture/Hammerfell/TRGmLCWallEnterB.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.4,
+    -22.0
+   ],
+   [
+    128.0,
+    28.4,
+    240.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09E": {
+  "edid": "ArgoniaPackHlaaluTrCrane02Base",
+  "model": "HlaaluArchitecture/Hammerfell/TrCrane02Base.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -120.7,
+    -116.8,
+    -84.0
+   ],
+   [
+    118.2,
+    115.2,
+    84.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C09F": {
+  "edid": "ArgoniaPackHlaaluTrGMCover1",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMCover1.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -112.8,
+    -114.5,
+    -18.6
+   ],
+   [
+    138.8,
+    153.3,
+    253.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A0": {
+  "edid": "ArgoniaPackHlaaluTrGMCover2",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMCover2.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -141.4,
+    -128.7,
+    -18.3
+   ],
+   [
+    141.9,
+    139.1,
+    254.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A1": {
+  "edid": "ArgoniaPackHlaaluTrGMCoverStairs",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMCoverStairs.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -152.6,
+    -128.7,
+    -18.7
+   ],
+   [
+    402.4,
+    139.1,
+    253.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A2": {
+  "edid": "ArgoniaPackHlaaluTrGMFence",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMFence.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -23.0,
+    -10.0
+   ],
+   [
+    128.0,
+    23.0,
+    120.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A3": {
+  "edid": "ArgoniaPackHlaaluTrGMFenceEnd",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMFenceEnd.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    0.0,
+    -23.0,
+    -10.0
+   ],
+   [
+    138.2,
+    23.0,
+    120.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A4": {
+  "edid": "ArgoniaPackHlaaluTrGMFencePost",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMFencePost.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -30.0,
+    -30.0,
+    -10.0
+   ],
+   [
+    30.0,
+    30.0,
+    132.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A5": {
+  "edid": "ArgoniaPackHlaaluTrGMStairs01",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMStairs01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -2.9,
+    -127.7,
+    -17.6
+   ],
+   [
+    311.9,
+    114.4,
+    244.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A6": {
+  "edid": "ArgoniaPackHlaaluTrGMStoneBlock01",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMStoneBlock01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -230.0,
+    -230.0,
+    -127.3
+   ],
+   [
+    230.0,
+    230.0,
+    11.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A7": {
+  "edid": "ArgoniaPackHlaaluTrGMStoneBlock02",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMStoneBlock02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -120.0,
+    -230.0,
+    -127.3
+   ],
+   [
+    120.0,
+    230.0,
+    11.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A8": {
+  "edid": "ArgoniaPackHlaaluTrGMStoneBlock03",
+  "model": "HlaaluArchitecture/Hammerfell/TrGMStoneBlock03.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -120.0,
+    -120.0,
+    -127.3
+   ],
+   [
+    120.0,
+    120.0,
+    11.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0A9": {
+  "edid": "ArgoniaPackHlaaluTrGmBridge01",
+  "model": "HlaaluArchitecture/Hammerfell/TrGmBridge01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -233.9,
+    -106.5,
+    -28.9
+   ],
+   [
+    233.9,
+    106.5,
+    190.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AA": {
+  "edid": "ArgoniaPackHlaaluTrGmBridge02",
+  "model": "HlaaluArchitecture/Hammerfell/TrGmBridge02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -467.9,
+    -109.2,
+    -194.9
+   ],
+   [
+    467.9,
+    109.5,
+    190.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AB": {
+  "edid": "ArgoniaPackHlaaluTradeHome",
+  "model": "HlaaluArchitecture/Hammerfell/TradeHome.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -213.6,
+    6.1,
+    0.0
+   ],
+   [
+    177.5,
+    311.7,
+    259.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AC": {
+  "edid": "ArgoniaPackHlaalumwimparchdock01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdock01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -256.0,
+    -164.0,
+    0.0
+   ],
+   [
+    256.0,
+    164.0,
+    788.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AD": {
+  "edid": "ArgoniaPackHlaalumwimparchdock02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdock02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -292.0,
+    -172.0,
+    0.0
+   ],
+   [
+    256.0,
+    172.0,
+    788.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AE": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatcorin01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatcorin01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -256.0,
+    0.0,
+    -768.0
+   ],
+   [
+    0.0,
+    256.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0AF": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatcorout01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatcorout01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -164.0,
+    -0.0,
+    -768.0
+   ],
+   [
+    -0.0,
+    164.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B0": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatfront01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatfront01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -164.0,
+    -256.0,
+    -768.0
+   ],
+   [
+    -0.0,
+    256.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B1": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatfront02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatfront02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -164.0,
+    -256.0,
+    -768.0
+   ],
+   [
+    -0.0,
+    256.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B2": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatfront03",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatfront03.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -256.0,
+    -256.0,
+    -768.0
+   ],
+   [
+    0.0,
+    256.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B3": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatfrontShort01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatfrontShort01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -164.0,
+    -128.0,
+    -768.0
+   ],
+   [
+    -0.0,
+    128.0,
+    20.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B4": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatmid01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatmid01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    0.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B5": {
+  "edid": "ArgoniaPackHlaalumwimparchdockplatmid02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchdockplatmid02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -256.0,
+    -256.0,
+    0.0
+   ],
+   [
+    256.0,
+    256.0,
+    0.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B6": {
+  "edid": "ArgoniaPackHlaalumwimparchentrance01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchentrance01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -116.1,
+    -64.0,
+    -31.5
+   ],
+   [
+    116.1,
+    32.0,
+    228.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B7": {
+  "edid": "ArgoniaPackHlaalumwimparchentrance02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchentrance02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -96.0,
+    -44.0,
+    -44.0
+   ],
+   [
+    96.0,
+    32.0,
+    216.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B8": {
+  "edid": "ArgoniaPackHlaalumwimparchledge01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledge01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -260.0,
+    -256.0,
+    0.0
+   ],
+   [
+    0.0,
+    256.0,
+    544.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0B9": {
+  "edid": "ArgoniaPackHlaalumwimparchledge01short",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledge01short.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -260.0,
+    -128.0,
+    0.0
+   ],
+   [
+    0.0,
+    128.0,
+    544.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BA": {
+  "edid": "ArgoniaPackHlaalumwimparchledgecorin01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgecorin01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -512.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    512.0,
+    563.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BB": {
+  "edid": "ArgoniaPackHlaalumwimparchledgecorout01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgecorout01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -268.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    268.0,
+    563.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BC": {
+  "edid": "ArgoniaPackHlaalumwimparchledgemid01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgemid01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    0.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BD": {
+  "edid": "ArgoniaPackHlaalumwimparchledgemid02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgemid02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -256.0,
+    -256.0,
+    0.0
+   ],
+   [
+    256.0,
+    256.0,
+    0.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BE": {
+  "edid": "ArgoniaPackHlaalumwimparchledgestairs01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgestairs01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -444.0,
+    -256.0,
+    -0.0
+   ],
+   [
+    0.0,
+    256.0,
+    563.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0BF": {
+  "edid": "ArgoniaPackHlaalumwimparchledgestairsl01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgestairsl01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -444.0,
+    -256.0,
+    -0.0
+   ],
+   [
+    0.0,
+    0.0,
+    563.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C0": {
+  "edid": "ArgoniaPackHlaalumwimparchledgestairsmid01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgestairsmid01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -432.0,
+    -128.0,
+    0.0
+   ],
+   [
+    0.0,
+    128.0,
+    512.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C1": {
+  "edid": "ArgoniaPackHlaalumwimparchledgestairsr01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchledgestairsr01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -444.0,
+    -0.0,
+    -0.0
+   ],
+   [
+    0.0,
+    256.0,
+    563.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C2": {
+  "edid": "ArgoniaPackHlaalumwimparchpool01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchpool01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -401.0,
+    -401.0,
+    -192.0
+   ],
+   [
+    401.0,
+    401.0,
+    147.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C3": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallcor01tall",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallcor01tall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -28.0,
+    -28.0,
+    -256.0
+   ],
+   [
+    128.0,
+    128.0,
+    84.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C4": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallcor02tall",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallcor02tall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -28.0,
+    -28.0,
+    -256.0
+   ],
+   [
+    131.0,
+    128.0,
+    274.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C5": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallpost02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallpost02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -36.0,
+    -36.0,
+    -256.0
+   ],
+   [
+    36.0,
+    36.0,
+    103.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C6": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallstraight01tall",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallstraight01tall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.3,
+    -28.0,
+    -256.0
+   ],
+   [
+    128.0,
+    28.0,
+    84.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C7": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallstraight01tallrubble",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallstraight01tallrubble.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.0,
+    -256.0
+   ],
+   [
+    128.0,
+    28.0,
+    84.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C8": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallstraight02",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallstraight02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -28.0,
+    0.0
+   ],
+   [
+    131.0,
+    28.0,
+    274.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0C9": {
+  "edid": "ArgoniaPackHlaalumwimparchstonewallstraight02tall",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchstonewallstraight02tall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.3,
+    -28.0,
+    -256.0
+   ],
+   [
+    131.0,
+    28.0,
+    274.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CA": {
+  "edid": "ArgoniaPackHlaalumwimparchtowerbg01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchtowerbg01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -264.0,
+    -264.0,
+    -0.0
+   ],
+   [
+    264.0,
+    264.0,
+    256.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CB": {
+  "edid": "ArgoniaPackHlaalumwimparchtowerbgbase01",
+  "model": "HlaaluArchitecture/MorrowindImperialFort/mwimparchtowerbgbase01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -268.0,
+    -268.0,
+    -256.0
+   ],
+   [
+    268.0,
+    268.0,
+    0.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CC": {
+  "edid": "ArgoniaPackHlaaluChest02",
+  "model": "HlaaluArchitecture/Objects/Chest02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -22.4,
+    -17.8,
+    -0.4
+   ],
+   [
+    29.8,
+    11.5,
+    28.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CD": {
+  "edid": "ArgoniaPackHlaaluCrane01",
+  "model": "HlaaluArchitecture/Objects/Crane01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -304.3,
+    -84.0,
+    -72.6
+   ],
+   [
+    532.0,
+    108.0,
+    658.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CE": {
+  "edid": "ArgoniaPackHlaaluCrane02",
+  "model": "HlaaluArchitecture/Objects/Crane02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -304.3,
+    -84.0,
+    -72.6
+   ],
+   [
+    539.4,
+    108.0,
+    658.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0CF": {
+  "edid": "ArgoniaPackHlaaluCrane03",
+  "model": "HlaaluArchitecture/Objects/Crane03.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -304.3,
+    -84.0,
+    -72.6
+   ],
+   [
+    551.9,
+    108.0,
+    658.7
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D0": {
+  "edid": "ArgoniaPackHlaaluTRlanternpost0arm",
+  "model": "HlaaluArchitecture/Objects/TRlanternpost0arm.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -12.0,
+    -11.7,
+    -114.8
+   ],
+   [
+    11.9,
+    12.1,
+    115.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D1": {
+  "edid": "ArgoniaPackHlaaluTRlanternpost1arm",
+  "model": "HlaaluArchitecture/Objects/TRlanternpost1arm.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -12.0,
+    -78.3,
+    -114.8
+   ],
+   [
+    11.9,
+    12.1,
+    115.9
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D2": {
+  "edid": "ArgoniaPackHlaaluTRlanternpost2arm",
+  "model": "HlaaluArchitecture/Objects/TRlanternpost2arm.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -12.0,
+    -78.8,
+    -115.3
+   ],
+   [
+    11.9,
+    78.8,
+    116.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D3": {
+  "edid": "ArgoniaPackHlaaluTRlanternpost4arm",
+  "model": "HlaaluArchitecture/Objects/TRlanternpost4arm.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -78.9,
+    -78.9,
+    -115.7
+   ],
+   [
+    78.9,
+    78.9,
+    116.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D4": {
+  "edid": "ArgoniaPackHlaaluTRlanternpostArm",
+  "model": "HlaaluArchitecture/Objects/TRlanternpostArm.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -0.6,
+    -38.3,
+    -20.6
+   ],
+   [
+    0.5,
+    39.1,
+    6.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D5": {
+  "edid": "ArgoniaPackHlaaluTRlanternpostBase",
+  "model": "HlaaluArchitecture/Objects/TRlanternpostBase.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -18.8,
+    -18.8,
+    -15.0
+   ],
+   [
+    18.8,
+    18.8,
+    18.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D6": {
+  "edid": "ArgoniaPackHlaaludbstainglassframe01",
+  "model": "HlaaluArchitecture/Objects/dbstainglassframe01.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -7.5,
+    -152.8,
+    -152.8
+   ],
+   [
+    7.5,
+    152.8,
+    152.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D7": {
+  "edid": "ArgoniaPackHlaalusbigplanter02t",
+  "model": "HlaaluArchitecture/Objects/sbigplanter02t.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -13.2,
+    -13.2,
+    0.0
+   ],
+   [
+    13.2,
+    13.2,
+    29.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D8": {
+  "edid": "ArgoniaPackHlaaluredoranwalldivider",
+  "model": "HlaaluArchitecture/Redoran/redoranwalldivider.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -36.3,
+    -117.1,
+    -68.1
+   ],
+   [
+    36.3,
+    117.1,
+    623.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0D9": {
+  "edid": "ArgoniaPackHlaaluwindow02",
+  "model": "HlaaluArchitecture/Seaview/window02.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -33.0,
+    -9.4,
+    -72.4
+   ],
+   [
+    33.2,
+    9.4,
+    61.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DA": {
+  "edid": "ArgoniaPackHlaalu2way",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/2way.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -122.7,
+    -128.0,
+    0.0
+   ],
+   [
+    122.7,
+    128.0,
+    237.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DB": {
+  "edid": "ArgoniaPackHlaalu3way",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/3way.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    122.7,
+    128.0,
+    237.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DC": {
+  "edid": "ArgoniaPackHlaalu4way",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/4way.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    237.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DD": {
+  "edid": "ArgoniaPackHlaaludoorjamarched",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/doorjamarched.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -120.0,
+    -17.8,
+    -0.0
+   ],
+   [
+    120.0,
+    17.8,
+    236.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DE": {
+  "edid": "ArgoniaPackHlaaluendcap",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/endcap.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -122.7,
+    -128.0,
+    0.0
+   ],
+   [
+    122.7,
+    128.0,
+    237.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0DF": {
+  "edid": "ArgoniaPackHlaalurmcentre",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/rmcentre.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    237.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E0": {
+  "edid": "ArgoniaPackHlaalurmcorner",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/rmcorner.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -122.7,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    237.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E1": {
+  "edid": "ArgoniaPackHlaalurmentry",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/rmentry.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -128.0,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    237.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E2": {
+  "edid": "ArgoniaPackHlaalurmwall",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/rmwall.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -122.7,
+    -128.0,
+    0.0
+   ],
+   [
+    128.0,
+    128.0,
+    237.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E3": {
+  "edid": "ArgoniaPackHlaalustairs",
+  "model": "HlaaluArchitecture/Sheogorad Ressource/stairs.nif",
+  "pack": "morrowind-hlaalu-architecture",
+  "bounds": [
+   [
+    -132.4,
+    -134.9,
+    -256.0
+   ],
+   [
+    131.4,
+    132.4,
+    237.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E4": {
+  "edid": "ArgoniaPackVelothifoundation",
+  "model": "sheogorad/aldredanyia/foundation.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -550.0,
+    -430.5,
+    -256.0
+   ],
+   [
+    550.0,
+    430.5,
+    256.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E5": {
+  "edid": "ArgoniaPackVelothihouse01",
+  "model": "sheogorad/aldredanyia/house01.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -403.0,
+    -318.3,
+    -256.4
+   ],
+   [
+    403.0,
+    317.4,
+    168.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E6": {
+  "edid": "ArgoniaPackVelothihouse02",
+  "model": "sheogorad/aldredanyia/house02.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -582.4,
+    -411.4,
+    -516.6
+   ],
+   [
+    585.6,
+    428.8,
+    608.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E7": {
+  "edid": "ArgoniaPackVelothihouse03",
+  "model": "sheogorad/aldredanyia/house03.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -338.0,
+    -318.3,
+    -256.4
+   ],
+   [
+    338.0,
+    317.4,
+    105.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E8": {
+  "edid": "ArgoniaPackVelothihouse04",
+  "model": "sheogorad/aldredanyia/house04.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -582.4,
+    -411.4,
+    -516.6
+   ],
+   [
+    110.6,
+    428.8,
+    608.1
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0E9": {
+  "edid": "ArgoniaPackVelothiwindow",
+  "model": "sheogorad/aldredanyia/window.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -35.6,
+    -39.4,
+    -56.0
+   ],
+   [
+    35.1,
+    39.0,
+    58.3
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0EA": {
+  "edid": "ArgoniaPackVelothiRubblePile",
+  "model": "sheogorad/velothi/RubblePile.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -279.1,
+    -313.2,
+    -150.9
+   ],
+   [
+    287.4,
+    299.2,
+    21.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0EB": {
+  "edid": "ArgoniaPackVelothiRuinedWall01",
+  "model": "sheogorad/velothi/RuinedWall01.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -19.4,
+    -469.4,
+    -453.2
+   ],
+   [
+    21.7,
+    121.8,
+    574.5
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0EC": {
+  "edid": "ArgoniaPackVelothiRuinedWall02",
+  "model": "sheogorad/velothi/RuinedWall02.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -148.5,
+    -23.4,
+    -445.5
+   ],
+   [
+    160.8,
+    16.8,
+    392.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0ED": {
+  "edid": "ArgoniaPackVelothiTower01",
+  "model": "sheogorad/velothi/Tower01.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -570.5,
+    -256.7,
+    -411.9
+   ],
+   [
+    569.7,
+    256.7,
+    1795.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0EE": {
+  "edid": "ArgoniaPackVelothiTower02",
+  "model": "sheogorad/velothi/Tower02.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -339.8,
+    -287.3,
+    -380.3
+   ],
+   [
+    343.6,
+    287.3,
+    1109.0
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0EF": {
+  "edid": "ArgoniaPackVelothiTower03",
+  "model": "sheogorad/velothi/Tower03.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -279.5,
+    -219.4,
+    -107.9
+   ],
+   [
+    273.3,
+    202.4,
+    1474.8
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0F0": {
+  "edid": "ArgoniaPackVelothiVelothildoor01",
+  "model": "sheogorad/velothi/Velothildoor01.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -62.0,
+    -7.1,
+    -1.0
+   ],
+   [
+    68.8,
+    15.1,
+    208.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0F1": {
+  "edid": "ArgoniaPackVelothiextbridge",
+  "model": "sheogorad/velothi/extbridge.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -632.5,
+    -388.0,
+    -586.3
+   ],
+   [
+    2351.4,
+    388.9,
+    238.6
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0F2": {
+  "edid": "ArgoniaPackVelothiextdoor",
+  "model": "sheogorad/velothi/extdoor.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -63.2,
+    -2.5,
+    -95.4
+   ],
+   [
+    63.2,
+    2.5,
+    95.4
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0F3": {
+  "edid": "ArgoniaPackVelothiextentrance",
+  "model": "sheogorad/velothi/extentrance.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -262.5,
+    -352.0,
+    -233.5
+   ],
+   [
+    262.5,
+    350.0,
+    221.2
+   ]
+  ]
+ },
+ "ArgoniaOwn.esp:00C0F4": {
+  "edid": "ArgoniaPackVelothiexttower",
+  "model": "sheogorad/velothi/exttower.nif",
+  "pack": "phitt-velothi-resources",
+  "bounds": [
+   [
+    -667.0,
+    -833.2,
+    -513.5
+   ],
+   [
+    667.0,
+    833.2,
+    518.3
+   ]
+  ]
+ }
+}
