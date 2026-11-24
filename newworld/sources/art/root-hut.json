@@ -1,6 +1,7 @@
 {
  "id": "root-hut",
  "name": "Root-grown hut",
+ "short": "Hut",
  "kind": "Building shell with a door plate",
  "status": "Example. Exterior shell generated, scaled by its door, cleaned, and given a door plate, as a standard 3D model. No interior, not yet in Skyrim's model format and not in the game.",
  "summary": "A one-room dwelling of the interior, trained from living root and limb. It shows the buildings route for an organic shape: one generated shell, door included, with the door then found on the real geometry and covered by a plate that would carry the prompt.",
@@ -14,26 +15,26 @@
   "text": "A rounded, slightly lopsided dome of thick grafted roots, gaps sealed with amber sap, a roof of bark shingle and broad leaves, one low arched plank door, two round sap windows. No stone, thatch, stilts, metal, ropes, hanging things or thin root tendrils."
  },
  "fees": {
-  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "note": "Fal's list prices for the options used, read on 24 November 2026 from each model's Fal page; Fal's request history shows no charge per request, so these are not from a bill.",
   "lines": [
    [
     "2 reference images at 2K",
-    0.24
-   ],
-   [
-    "1 image edit (painted concept to a photograph, tendrils removed)",
     0.12
    ],
    [
-    "1 Tripo H3.1 model",
+    "1 image edit at 2K",
+    0.06
+   ],
+   [
+    "1 Tripo H3.1 model, detailed texture",
     0.4
    ],
    [
-    "1 Tripo P2 model",
+    "1 Tripo P2 model, detailed texture",
     1.2
    ]
   ],
-  "total": 1.96
+  "total": 1.78
  },
  "stages": [
   {
@@ -102,12 +103,12 @@
    "id": "shape",
    "name": "3. Shaping and clean-up",
    "verdict": "pass, with one open point",
-   "did": "Two loose pieces removed. The whole shell was scaled so that its door is 2.3 m high, since a building's size has to follow its door, then turned so the door faces forward and stood on the ground. Triangles cut from 39,104 to 14,000 with the texture layout kept.",
+   "did": "Two loose pieces removed and the triangles cut from 39,104 to 14,000 with the texture layout kept (building.py shell). The size comes from the door, marked by hand in the next step.",
    "measured_models": [
     "shell"
    ],
-   "looked": "The cut to 14,000 triangles does not show from the six views. At this size the hut is 8.9 m across and 5.5 m high: larger than the 6 m of the brief, but in line with King of the Murkmire's mud hut, which is about 10 m by 13 m.",
-   "decision": "Kept. Open point: one texture over a building this size gives about 240 pixels per metre, which is soft at arm's length. This is the size problem the plan answers with repeating materials; it has not been done on this example, so walk up to the wall in the viewer and judge it.",
+   "looked": "The cut does not show from the six views.",
+   "decision": "Kept. One texture over a building this size gives about 245 pixels per metre, soft at arm's length: walk up to the wall in the viewer and judge it.",
    "images": [
     [
      "root-hut.look-shell.jpg",
@@ -124,23 +125,28 @@
   },
   {
    "id": "door",
-   "name": "4. The door plate",
-   "verdict": "pass on the third attempt, with one open point",
-   "did": "The painted door was found on the real geometry: the largest flat patch facing outward at ground level, then grown over the neighbouring faces at the same depth to take in the whole door. A plate was made to that outline, 2 cm thick and 4 cm in front of the door, and an arrival point set 1.3 m out. In the game the plate would be invisible and carry the prompt; here it is drawn in orange.",
+   "name": "4. The door, marked by hand",
+   "verdict": "pass",
+   "did": "The shell was drawn from its four sides as flat pictures with a grid (building.py view). The door was found by eye on the front and its outline marked as seven points along the painted planks and arch. The tool then scaled the shell so the marked door is 2.3 m high, cast one ray per point inside the outline onto the real surface, fitted the door leaf's own lean, and laid the plate on it, in front of the leaf's proudest part, with the arrival point 1.3 m out. A section through the door from the side checks it.",
    "measured": {
-    "door_width_m": 1.21,
-    "door_height_m": 2.31,
-    "plate_outline_points": 19,
-    "plate_in_front_of_door_m": 0.04,
-    "arrival_point_in_front_m": 1.3,
+    "door_width_m": 1.43,
+    "door_height_m": 2.3,
+    "rays_on_the_door": 36845,
+    "door_leaf_lean_m_per_m": -0.102,
+    "plate_in_front_of_leaf_m": "median 0.10, at most 0.18",
+    "hut_size_m": "8.9 across, 8.6 deep, 5.5 high",
     "vanilla_house_doors_m": "1.4 to 1.8 wide, 2.5 to 2.7 high"
    },
-   "looked": "First attempt: the plate covered a single plank, 0.73 m wide, because the grooves between planks broke the flat patch. Second attempt, with looser limits: the plate landed on a flat stretch of wall on another side of the hut, nowhere near the door. Third attempt, growing outward from the strict match: the plate sits in the doorway and reaches the ground.",
-   "decision": "Kept. Open point: the door's cross-bar and sill stand out further than the plate, so a crosshair aimed low would meet the bar first. The plate should stand in front of the furthest part of the doorway; that is the next hand step. The door is also narrower and lower than a vanilla house door.",
+   "looked": "From the front the outline follows the planks and the arch. From the side the plate leans with the door and stands just clear of the cross-bar; the only part in front of it is a root of the frame at one edge, about 0.5% of the outline's area.",
+   "decision": "Kept. The automatic door finder is gone: a door is always marked by eye. The door is narrower than a vanilla house door (1.4 m against 1.4 to 1.8).",
    "images": [
     [
-     "root-hut.look-door.jpg",
-     "The shell with its door plate and arrival point in orange"
+     "root-hut.elevations.jpg",
+     "The four sides as drawn for marking: the door is on the first"
+    ],
+    [
+     "root-hut.look-door-hand.jpg",
+     "The marked door from the front, and the section from the side: grey is the surface, orange the plate"
     ]
    ],
    "models": [
@@ -161,13 +167,13 @@
    "id": "experiment",
    "name": "Cost experiment: cheaper generators",
    "verdict": "see the table",
-   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "did": "The same reference image went once to each cheaper route on Fal, and to Meshy 7.1. Every result is scaled to the brief (tobrief.py) before it is shown, so all of them stand in true metres beside the 1.8 m person.",
    "measured": {
     "prices": "Prices are Fal's list prices, not from a bill.",
     "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
    },
    "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
-   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "decision": "The owner's pick is Tripo H3.1: the best shape and the best texture of all three things. The rest are listed under 'Other generators tried', ranked.",
    "images": [
     [
      "root-hut.look-x-trellis.jpg",
@@ -206,7 +212,7 @@
     },
     {
      "route": "Trellis 2",
-     "price_usd": 0.05,
+     "price_usd": 0.3,
      "seconds": null,
      "triangles": 30126,
      "loose_pieces": 212,
@@ -217,7 +223,7 @@
     },
     {
      "route": "Hunyuan 2 mini turbo, textured",
-     "price_usd": 0.24,
+     "price_usd": 0.08,
      "seconds": null,
      "triangles": 40000,
      "loose_pieces": 19,
@@ -228,7 +234,7 @@
     },
     {
      "route": "Hunyuan 3.1 rapid",
-     "price_usd": 0.015,
+     "price_usd": 0.225,
      "seconds": null,
      "triangles": null,
      "loose_pieces": null,
@@ -247,51 +253,154 @@
      "verdict": "kept after clean-up",
      "look": "The richest of the set: layered leaf roof, door, lit windows that show through inside; but 248 small loose pieces to remove (the building tool already does this).",
      "request": "speridlabs/idol/max/turbo 01a20d62-7629-7e63-990f-919728f93d46"
+    },
+    {
+     "route": "Meshy 7.1",
+     "price_usd": 1.2,
+     "seconds": null,
+     "triangles": 30805,
+     "loose_pieces": 383,
+     "closed": false,
+     "verdict": "kept",
+     "look": "A rich hut with a good door, but more windows than the brief and 384 loose pieces to clear. Three times H3.1's price.",
+     "request": "meshy/v7.1/image-to-3d 01a20e45-d71d-7c50-bfce-125c7e6cdabd"
     }
    ]
   }
  ],
- "models": [
+ "best": "shell-door",
+ "size": {
+  "rule": "across",
+  "across_m": 8.9,
+  "door_h_m": 2.3
+ },
+ "versions": [
   {
    "id": "try-h31",
-   "label": "Tripo H3.1, as generated",
-   "state": "kept"
-  },
-  {
-   "id": "try-p2",
-   "label": "Tripo P2, as generated",
-   "state": "alternative"
+   "label": "Generated",
+   "line": "The model as Tripo H3.1 made it, sized to the finished shell's 8.9 m.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.4,
+   "verdict": "kept",
+   "why": "Door, amber windows, grafted roots and a leaf roof all read.",
+   "group": "making",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "options": {
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "face_limit": 40000
+   },
+   "request": "01a20ca5-4b89-7212-85bf-4ff5b3b250ee"
   },
   {
    "id": "shell",
-   "label": "Shell, 8.9 m across",
-   "state": "candidate"
+   "label": "Cleaned shell",
+   "line": "Two loose pieces off, cut to 14,000 triangles with its own texture, sized by its door.",
+   "made_by": "By hand: building.py shell",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "The cut does not show from any side.",
+   "group": "making"
   },
   {
    "id": "shell-door",
-   "label": "Shell with door plate",
-   "state": "candidate"
+   "label": "Door marked by hand",
+   "line": "The painted door marked by eye on the front view; the invisible door plate laid on the real surface there, with the arrival point 1.3 m out.",
+   "made_by": "By hand: building.py view and door",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "The plate covers the whole painted door, leans with it and stands in front of its cross-bar; turn on 'Door plate' to see it.",
+   "group": "making"
   },
   {
-   "id": "x-trellis",
-   "label": "Trellis, $0.02",
-   "state": "test: kept after clean-up"
-  },
-  {
-   "id": "x-trellis-2",
-   "label": "Trellis 2, $0.05",
-   "state": "test: thrown away"
-  },
-  {
-   "id": "x-hunyuan2-mini-turbo-textured",
-   "label": "Hunyuan 2 mini turbo, textured, $0.24",
-   "state": "test: kept after clean-up"
+   "id": "x-meshy-7.1",
+   "label": "Meshy 7.1",
+   "line": "Meshy's newest model, from the same reference, textured.",
+   "made_by": "Meshy 7.1 on Fal",
+   "price_usd": 1.2,
+   "verdict": "kept",
+   "why": "A rich hut with a good door, but more windows than the brief and 384 loose pieces to clear. Three times H3.1's price.",
+   "group": "tried",
+   "endpoint": "meshy/v7.1/image-to-3d",
+   "options": {
+    "should_texture": true,
+    "target_polycount": 30000,
+    "topology": "triangle"
+   },
+   "request": "01a20e45-d71d-7c50-bfce-125c7e6cdabd",
+   "rank": 2
   },
   {
    "id": "x-idol-max-turbo",
-   "label": "Idol max turbo, $0.10",
-   "state": "test: kept after clean-up"
+   "label": "Idol max turbo",
+   "line": "Speridlabs' Idol, turbo, no PBR.",
+   "made_by": "Idol max turbo on Fal",
+   "price_usd": 0.1,
+   "verdict": "kept",
+   "why": "The richest leaf roof and lit windows; 248 small loose pieces to remove.",
+   "group": "tried",
+   "endpoint": "speridlabs/idol/max/turbo",
+   "rank": 3
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis",
+   "line": "The original Trellis.",
+   "made_by": "Trellis on Fal",
+   "price_usd": 0.02,
+   "verdict": "kept",
+   "why": "Clearly the hut; 13 loose pieces, pale blotchy roof leaves.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis",
+   "rank": 4
+  },
+  {
+   "id": "try-p2",
+   "label": "Tripo P2",
+   "line": "Tripo's P2 model from the same reference.",
+   "made_by": "Tripo P2 on Fal",
+   "price_usd": 1.2,
+   "verdict": "alternative",
+   "why": "Good, but softer than H3.1 at three times the price.",
+   "group": "tried",
+   "endpoint": "tripo3d/p2/image-to-3d",
+   "rank": 5
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo",
+   "line": "Tencent's Hunyuan 2 mini turbo, textured.",
+   "made_by": "Hunyuan 2 mini turbo on Fal",
+   "price_usd": 0.08,
+   "verdict": "rejected",
+   "why": "A smooth tan roof with little detail, taller than the rest, 19 stray bits under it.",
+   "group": "tried",
+   "endpoint": "fal-ai/hunyuan3d/v2/mini/turbo",
+   "options": {
+    "textured_mesh": true
+   },
+   "rank": 6
+  },
+  {
+   "id": "x-trellis-2",
+   "label": "Trellis 2",
+   "line": "Trellis 2 at 1024 resolution, 2048 texture.",
+   "made_by": "Trellis 2 on Fal",
+   "price_usd": 0.3,
+   "verdict": "rejected",
+   "why": "The shell is full of holes (7,092 open edges) and 212 loose pieces.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis-2",
+   "options": {
+    "resolution": 1024,
+    "texture_size": 2048,
+    "decimation_target": 30000
+   },
+   "rank": 7
   }
  ],
- "default_model": "shell-door"
+ "failed": [
+  "Hunyuan 3.1 rapid ($0.225): refused before it ran; our reference was 2,083 KB and it takes at most 950 KB."
+ ]
 }

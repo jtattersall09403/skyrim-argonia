@@ -1,6 +1,7 @@
 {
  "id": "dugout-canoe",
  "name": "Dugout canoe",
+ "short": "Canoe",
  "kind": "Small craft, static prop",
  "status": "Quick test. Shaped, cleaned and surfaced as a standard 3D model. Not yet in Skyrim's model format and not in the game.",
  "summary": "A single hollowed cypress log, 4.5 m long. The first thing made under owner call #93, to try the measure-and-look loop end to end and to give the asset explorer something real to show.",
@@ -18,15 +19,15 @@
   "text": "4.5 m long, 0.7 m wide; one swamp cypress log, hewn with an adze. None of: paint, metal, ornament, rope or any other thin part."
  },
  "fees": {
-  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "note": "Fal's list prices for the options used, read on 24 November 2026 from each model's Fal page; Fal's request history shows no charge per request, so these are not from a bill.",
   "lines": [
    [
-    "3 reference images at 2K",
-    0.36
+    "3 reference images at 2K (Nano Banana 2.1)",
+    0.18
    ],
    [
-    "1 image edit (rope removed)",
-    0.12
+    "1 image edit at 2K (rope removed)",
+    0.06
    ],
    [
     "2 Tripo P2 models, detailed texture",
@@ -38,10 +39,10 @@
    ],
    [
     "1 material swatch at 2K",
-    0.12
+    0.06
    ]
   ],
-  "total": 3.8
+  "total": 3.5
  },
  "stages": [
   {
@@ -145,12 +146,12 @@
    "id": "shape",
    "name": "4. Shaping",
    "verdict": "pass, with one open point",
-   "did": "Turned to its own long axis, found from the real vertices; set upright by which side is the open one; scaled so the length is 4.5 m; stood on the ground with its middle at the origin.",
+   "did": "Turned to its own long axis, found from the real vertices; set upright by which side is the open one; scaled so the length is 4.5 m; stood on the ground with its middle at the origin. The hull was then brought to the brief's beam: the generation was 1.18 m across at 4.5 m long, so its cross-section (width and depth together) was scaled to 0.7 m across, its length kept (tobrief.py).",
    "measured_models": [
     "shaped"
    ],
    "looked": "Upright, level, reads as a hewn dugout from all six views. The hole at the bow survives.",
-   "decision": "Open point: the beam is 1.18 m where the brief asked for 0.7 m. It is a wide, tub-like dugout. Narrowing it is one more step by hand if you want it slimmer.",
+   "decision": "Kept at 4.5 m by 0.7 m, 0.39 m deep, as the brief asks.",
    "images": [
     [
      "dugout-canoe.look-shaped.jpg",
@@ -245,13 +246,13 @@
    "id": "experiment",
    "name": "Cost experiment: cheaper generators",
    "verdict": "see the table",
-   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "did": "The same reference image went once to each cheaper route on Fal, and to Meshy 7.1. Every result is scaled to the brief (tobrief.py) before it is shown, so all of them stand in true metres beside the 1.8 m person.",
    "measured": {
     "prices": "Prices are Fal's list prices, not from a bill.",
     "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
    },
    "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
-   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "decision": "The owner's pick is Tripo H3.1: the best shape and the best texture of all three things. The rest are listed under 'Other generators tried', ranked.",
    "images": [
     [
      "dugout-canoe.look-x-trellis.jpg",
@@ -300,7 +301,7 @@
     },
     {
      "route": "Trellis 2",
-     "price_usd": 0.05,
+     "price_usd": 0.3,
      "seconds": null,
      "triangles": 29366,
      "loose_pieces": 0,
@@ -311,7 +312,7 @@
     },
     {
      "route": "Hunyuan 2 mini turbo, textured",
-     "price_usd": 0.24,
+     "price_usd": 0.08,
      "seconds": null,
      "triangles": 40000,
      "loose_pieces": 0,
@@ -322,7 +323,7 @@
     },
     {
      "route": "Hunyuan 3.1 rapid",
-     "price_usd": 0.015,
+     "price_usd": 0.225,
      "seconds": null,
      "triangles": null,
      "loose_pieces": null,
@@ -363,81 +364,232 @@
      "verdict": "kept",
      "look": "The same bare hull wrapped in our hewn-cypress material: reads as one hewn log, even and sharp, but flat, with none of the generated wear.",
      "request": "tripo3d/h3.1/image-to-3d 01a20d62-7674-7521-93c5-bad5753f0612"
+    },
+    {
+     "route": "Meshy 7.1",
+     "price_usd": 1.2,
+     "seconds": null,
+     "triangles": 30657,
+     "loose_pieces": 5,
+     "closed": false,
+     "verdict": "kept",
+     "look": "A clean, symmetrical hull; smoother and greyer than H3.1 with fainter adze marks. Six pieces (five specks). Three times H3.1's price.",
+     "request": "meshy/v7.1/image-to-3d 01a20e45-d72f-7540-832d-1a317a14a02d"
     }
    ]
   }
  ],
- "models": [
-  {
-   "id": "try1-p2",
-   "label": "Try 1, Tripo P2",
-   "state": "thrown away"
-  },
-  {
-   "id": "try1-h31",
-   "label": "Try 1, Tripo H3.1",
-   "state": "thrown away"
-  },
-  {
-   "id": "try2-p2",
-   "label": "Try 2, Tripo P2",
-   "state": "alternative"
-  },
+ "best": "cleaned",
+ "size": {
+  "rule": "length",
+  "length_m": 4.5,
+  "beam_m": 0.7
+ },
+ "versions": [
   {
    "id": "try2-h31",
-   "label": "Try 2, Tripo H3.1, as generated",
-   "state": "kept"
+   "label": "Generated",
+   "line": "The model as Tripo H3.1 made it from the rope-free reference, sized to 4.5 m.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.4,
+   "verdict": "kept",
+   "why": "One closed hull with the blunt ends, adze marks and wear of the reference.",
+   "group": "making",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "options": {
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "face_limit": 20000,
+    "auto_size": true
+   },
+   "request": "01a20c90-3841-7412-a8e8-d530c2b6f94a"
   },
   {
    "id": "shaped",
-   "label": "Shaped, 4.5 m",
-   "state": "kept"
+   "label": "Straightened",
+   "line": "Turned to its own long axis and sized to the brief: 4.5 m long, 0.7 m across.",
+   "made_by": "By hand: shape.py and tobrief.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "The hull now sits level, bow along the length, at the brief's size.",
+   "group": "making"
   },
   {
    "id": "cleaned",
-   "label": "A: cleaned, generator texture",
-   "state": "candidate"
+   "label": "Finished",
+   "line": "Cut to 8,000 triangles with the generator's own texture kept.",
+   "made_by": "By hand: shape.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "The cut does not show; this is the canoe as it would go to the game.",
+   "group": "making"
   },
   {
    "id": "shared",
-   "label": "B: shared material",
-   "state": "candidate"
+   "label": "Shared material",
+   "line": "Our own shared material instead of the generator's texture: the owner prefers the generator's.",
+   "made_by": "By hand: surface.py",
+   "price_usd": 0,
+   "verdict": "comparison",
+   "why": "Even and sharp, but flat: none of the generated wear.",
+   "group": "comparison"
   },
   {
    "id": "shared-shaded",
-   "label": "C: shared material, shaded",
-   "state": "candidate"
+   "label": "Shared material, shaded",
+   "line": "Our own shared material instead of the generator's texture: the owner prefers the generator's. This one carries the generator's shading over it.",
+   "made_by": "By hand: surface.py",
+   "price_usd": 0,
+   "verdict": "comparison",
+   "why": "Closer to the generated look, still flatter than it.",
+   "group": "comparison"
   },
   {
-   "id": "x-trellis",
-   "label": "Trellis, $0.02",
-   "state": "test: kept"
+   "id": "x-meshy-7.1",
+   "label": "Meshy 7.1",
+   "line": "Meshy's newest model, from the same reference, textured.",
+   "made_by": "Meshy 7.1 on Fal",
+   "price_usd": 1.2,
+   "verdict": "kept",
+   "why": "A clean, symmetrical hull; smoother and greyer than H3.1 with fainter adze marks. Six pieces (five specks). Three times H3.1's price.",
+   "group": "tried",
+   "endpoint": "meshy/v7.1/image-to-3d",
+   "options": {
+    "should_texture": true,
+    "target_polycount": 30000,
+    "topology": "triangle"
+   },
+   "request": "01a20e45-d72f-7540-832d-1a317a14a02d",
+   "rank": 2
   },
   {
    "id": "x-trellis-2",
-   "label": "Trellis 2, $0.05",
-   "state": "test: kept"
+   "label": "Trellis 2",
+   "line": "Microsoft's Trellis 2 at 1024 resolution, 2048 texture.",
+   "made_by": "Trellis 2 on Fal",
+   "price_usd": 0.3,
+   "verdict": "kept",
+   "why": "Keeps the outline; grey weathering and moss, a little lumpy along the rim. One closed piece.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis-2",
+   "options": {
+    "resolution": 1024,
+    "texture_size": 2048,
+    "decimation_target": 30000
+   },
+   "request": "01a20d62-6965-7030-8c02-c299bd3892d9",
+   "rank": 3
   },
   {
-   "id": "x-hunyuan2-mini-turbo-textured",
-   "label": "Hunyuan 2 mini turbo, textured, $0.24",
-   "state": "test: kept after clean-up"
+   "id": "try2-p2",
+   "label": "Tripo P2",
+   "line": "Tripo's P2 model from the same reference.",
+   "made_by": "Tripo P2 on Fal",
+   "price_usd": 1.2,
+   "verdict": "alternative",
+   "why": "A good hull but a softer texture than H3.1, at three times the price.",
+   "group": "tried",
+   "endpoint": "tripo3d/p2/image-to-3d",
+   "request": "01a20c90-2f89-7ba0-8f14-e9fe3e1b5539",
+   "rank": 4
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis",
+   "line": "The original Trellis: the cheapest route tried.",
+   "made_by": "Trellis on Fal",
+   "price_usd": 0.02,
+   "verdict": "kept",
+   "why": "Plainly the dugout in one closed piece of 3,258 triangles; softer texture than H3.1.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis",
+   "request": "01a20d62-6964-72c0-b594-38c34143af40",
+   "rank": 5
   },
   {
    "id": "x-idol-max-turbo",
-   "label": "Idol max turbo, $0.10",
-   "state": "test: kept after clean-up"
+   "label": "Idol max turbo",
+   "line": "Speridlabs' Idol, turbo, no PBR.",
+   "made_by": "Idol max turbo on Fal",
+   "price_usd": 0.1,
+   "verdict": "rejected",
+   "why": "The bow came out pointed (the reference is blunt), blurred texture, 10 loose pieces.",
+   "group": "tried",
+   "endpoint": "speridlabs/idol/max/turbo",
+   "request": "01a20d62-6966-7881-95d1-98e851e47d9e",
+   "rank": 6
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo",
+   "line": "Tencent's Hunyuan 2 mini turbo, textured.",
+   "made_by": "Hunyuan 2 mini turbo on Fal",
+   "price_usd": 0.08,
+   "verdict": "rejected",
+   "why": "Right shape, but a flat brown texture with almost no grain or wear.",
+   "group": "tried",
+   "endpoint": "fal-ai/hunyuan3d/v2/mini/turbo",
+   "options": {
+    "textured_mesh": true
+   },
+   "request": "01a20d62-69c8-7e03-9638-4aff994d379e",
+   "rank": 7
   },
   {
    "id": "x-tripo-h3.1-bare",
-   "label": "Tripo H3.1 bare, $0.20",
-   "state": "test: kept (shape only)"
+   "label": "Tripo H3.1, no texture asked",
+   "line": "H3.1 asked for no texture; it came back painted anyway.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.2,
+   "verdict": "rejected",
+   "why": "A good hull, but scratchy marks in the hollow, and it buys nothing over the textured run.",
+   "group": "tried",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "options": {
+    "texture": false,
+    "face_limit": 20000,
+    "auto_size": true
+   },
+   "request": "01a20d62-7674-7521-93c5-bad5753f0612",
+   "rank": 8
   },
   {
    "id": "x-tripo-h3.1-bare-shared",
-   "label": "Tripo H3.1 bare + our material, $0.20",
-   "state": "test: kept"
+   "label": "H3.1 hull, shared material",
+   "line": "Our own shared material instead of the generator's texture: the owner prefers the generator's.",
+   "made_by": "Tripo H3.1 on Fal, then surface.py",
+   "price_usd": 0.2,
+   "verdict": "comparison",
+   "why": "Reads as one hewn log, even and sharp, but flat.",
+   "group": "comparison"
+  },
+  {
+   "id": "try1-h31",
+   "label": "First try, H3.1",
+   "line": "The first H3.1 run, from a reference with a mooring rope.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.4,
+   "verdict": "rejected",
+   "why": "The rope came out as lumps; the rope was taken out of the reference.",
+   "group": "tried",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "rank": 9
+  },
+  {
+   "id": "try1-p2",
+   "label": "First try, P2",
+   "line": "The first P2 run, from the same roped reference.",
+   "made_by": "Tripo P2 on Fal",
+   "price_usd": 1.2,
+   "verdict": "rejected",
+   "why": "As above: the rope became lumps.",
+   "group": "tried",
+   "endpoint": "tripo3d/p2/image-to-3d",
+   "rank": 10
   }
  ],
- "default_model": "cleaned"
+ "failed": [
+  "Hunyuan 3.1 rapid ($0.225): refused before it ran; our reference was 1,204 KB and it takes at most 950 KB. Fal does not charge a request refused at input."
+ ]
 }

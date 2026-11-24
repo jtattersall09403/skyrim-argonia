@@ -1,75 +1,81 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Argonia Asset Explorer</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
 <style>
-/* Layout: a list of assets at the left, one asset at the right: its 3D view on top, then its stages as a ledger. */
-:root{--bg:#eef0ea;--panel:#f8f9f5;--ink:#1d2420;--mute:#5d6a62;--line:#cfd6cc;--accent:#2f6b57;--warn:#9a5b12;--bad:#9b2f2a;--ok:#2f6b57;--stage:#454b4f;
+/* Layout: pick a thing, see its best version large with a person beside it, step through its making, compare, note. */
+:root{--bg:#eceee8;--panel:#f7f8f4;--ink:#1c2420;--mute:#5a6760;--line:#cdd5cb;--accent:#2f6b57;--accent-ink:#f4f7f2;--stage:#4a5054;--ok:#2f6b57;--warn:#8f5a14;--bad:#9b2f2a;
   --body:"Inter",system-ui,sans-serif;--head:"Space Grotesk","Inter",system-ui,sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141917;--panel:#1b2220;--ink:#e4e9e3;--mute:#98a59c;--line:#2f3a35;--accent:#6fc0a3;--warn:#e0a558;--bad:#ef8b83;--ok:#6fc0a3;--stage:#2a2f33;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#141917;--panel:#1b2220;--ink:#e4e9e3;--mute:#98a59c;--line:#2f3a35;--accent:#6fc0a3;--warn:#e0a558;--bad:#ef8b83;--ok:#6fc0a3;--stage:#2a2f33;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131816;--panel:#1a211f;--ink:#e3e9e3;--mute:#97a49b;--line:#2e3934;--accent:#6fc0a3;--accent-ink:#0f1513;--stage:#2a2f33;--ok:#6fc0a3;--warn:#e0a558;--bad:#ef8b83;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131816;--panel:#1a211f;--ink:#e3e9e3;--mute:#97a49b;--line:#2e3934;--accent:#6fc0a3;--accent-ink:#0f1513;--stage:#2a2f33;--ok:#6fc0a3;--warn:#e0a558;--bad:#ef8b83;color-scheme:dark}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
-.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 60px;max-width:1280px;margin:0 auto}
-h1,h2,h3{font-family:var(--head);font-weight:600;text-wrap:balance;margin:0}
-h1{font-size:1.5rem}h2{font-size:1.25rem}h3{font-size:1.02rem}
-.top{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;margin-bottom:14px}
-.top p{margin:0;color:var(--mute);max-width:65ch}
-.cols{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px}
-@media (max-width:820px){.cols{grid-template-columns:minmax(0,1fr)}}
-.list{display:flex;flex-direction:column;gap:8px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;text-align:left;font:inherit;color:inherit;cursor:pointer}
-.card[aria-current="true"]{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
-.card small{display:block;color:var(--mute)}
-.muted{color:var(--mute)}
-main{min-width:0;display:flex;flex-direction:column;gap:16px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
-.kv{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;margin:8px 0 0}
-.kv dt{color:var(--mute)}.kv dd{margin:0}
-.tag{display:inline-block;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:1px 8px;border-radius:999px;border:1px solid currentColor}
-.tag.make,.tag.pass{color:var(--ok)}.tag.redo,.tag.open{color:var(--warn)}.tag.bad{color:var(--bad)}.tag.none{color:var(--mute)}
-#viewer{position:relative;background:var(--stage);border-radius:6px;overflow:hidden;aspect-ratio:16/10;max-width:100%}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 60px;max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1,h2,h3{font-family:var(--head);font-weight:600;margin:0;text-wrap:balance}
+h1{font-size:1.1rem;color:var(--mute);letter-spacing:.02em}h2{font-size:1.3rem}h3{font-size:1rem}
+.things{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.thing{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;text-align:left;cursor:pointer;min-height:44px}
+.thing strong{display:block;font-family:var(--head);font-size:1.02rem}.thing small{color:var(--mute)}
+.thing[aria-current="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
+#viewer{position:relative;background:var(--stage);border-radius:8px;overflow:hidden;aspect-ratio:16/9;max-width:100%;touch-action:none}
+@media (max-width:700px){#viewer{aspect-ratio:4/5}}
 #viewer canvas{display:block;width:100%;height:100%;touch-action:none}
-#hud{position:absolute;left:10px;bottom:8px;color:#e8ece8;font-size:.82rem;background:#0008;padding:2px 8px;border-radius:4px;font-variant-numeric:tabular-nums}
-#hud2{position:absolute;right:10px;bottom:8px;color:#e8ece8;font-size:.82rem;background:#0008;padding:2px 8px;border-radius:4px}
-#split{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#0009}
-#pinhint{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:#000b;color:#fff;padding:4px 12px;border-radius:4px;font-size:.85rem}
-.bar{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
-.chip{font:inherit;font-size:.86rem;color:inherit;background:transparent;border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.chip:focus-visible,.card:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.chip .st{opacity:.7;font-size:.76rem;margin-left:4px}
-.btn{font:inherit;font-weight:500;color:var(--bg);background:var(--accent);border:0;border-radius:5px;padding:6px 13px;cursor:pointer}
+.tagbox{position:absolute;color:#eef2ee;font-size:.8rem;background:#000a;padding:3px 8px;border-radius:4px;font-variant-numeric:tabular-nums;max-width:calc(50% - 16px);pointer-events:none}
+#hudA{left:8px;bottom:8px}#hudB{right:8px;bottom:8px;text-align:right}
+#viewer.portrait.cmp #hudA{bottom:calc(50% + 8px)}#viewer.portrait #hudB{right:auto;left:8px;text-align:left}
+#split{position:absolute;background:#000b}
+#pinhint{position:absolute;left:50%;top:8px;transform:translateX(-50%);background:#000c;color:#fff;padding:5px 12px;border-radius:4px;font-size:.85rem;white-space:nowrap}
+.vtools{position:absolute;right:8px;top:8px;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:70%}
+.vtools button{font:inherit;font-size:.8rem;color:#eef2ee;background:#000a;border:1px solid #ffffff33;border-radius:999px;padding:4px 10px;cursor:pointer;min-height:32px}
+.vtools button[aria-pressed="true"]{background:#eef2ee;color:#1c2420}
+.steps{flex:1 1 auto;min-width:0;display:flex;gap:6px;align-items:stretch;overflow-x:auto;padding-bottom:2px}
+.step{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;text-align:left;min-width:0;flex:1 1 0;min-height:44px}
+.step b{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.step[aria-current="true"]{border-color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
+.arrow{font:inherit;font-size:1.2rem;background:var(--panel);color:inherit;border:1px solid var(--line);border-radius:8px;padding:0 12px;cursor:pointer;min-height:44px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.muted{color:var(--mute)}
+.pill{display:inline-block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:1px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.kept{color:var(--ok)}.pill.rejected{color:var(--bad)}.pill.comparison,.pill.alternative{color:var(--warn)}.pill.best{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+.btn{font:inherit;font-weight:500;color:var(--accent-ink);background:var(--accent);border:0;border-radius:6px;padding:8px 14px;cursor:pointer;min-height:40px}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.stage{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
-.stage:first-of-type{border-top:0;margin-top:6px;padding-top:0}
-.stage header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 22px;margin-top:8px}
-.two h4{margin:0;font:600 .78rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.two p{margin:2px 0 0}
-.two.wide{grid-template-columns:minmax(0,1fr)}
-td:first-child{white-space:nowrap}
-table{border-collapse:collapse;font-size:.86rem;font-variant-numeric:tabular-nums;margin-top:4px}
-th,td{padding:2px 12px 2px 0;text-align:left;vertical-align:top}th{color:var(--mute);font-weight:500}
-.tw{overflow-x:auto}
-.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:10px}
-.shots figure{margin:0}.shots img{border-radius:4px;border:1px solid var(--line);cursor:zoom-in;display:block;width:100%}
-.shots figcaption{font-size:.82rem;color:var(--mute);margin-top:3px}
-details{margin-top:8px}summary{cursor:pointer;color:var(--mute);font-size:.88rem}
-pre{white-space:pre-wrap;font-size:.8rem;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px;margin:6px 0 0}
-#zoom{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:20;cursor:zoom-out;padding:12px}
-#zoom img{max-width:100%;max-height:100%}
-.note{border:1px solid var(--line);border-radius:5px;padding:8px 10px;margin-top:8px;background:var(--bg)}
-.note .where{font-size:.8rem;color:var(--mute)}
-.note .reply{border-left:3px solid var(--accent);padding-left:8px;margin-top:6px}
-textarea{width:100%;min-height:70px;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px;box-sizing:border-box}
-.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+select{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 8px;min-height:40px;max-width:100%}
+button:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.list{display:flex;flex-direction:column}
+.li{display:grid;grid-template-columns:2rem minmax(0,1fr) auto;gap:4px 10px;align-items:baseline;padding:9px 2px;border-top:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;font:inherit;color:inherit;text-align:left;width:100%}
+.li:first-child{border-top:0}.li .n{color:var(--mute);font-variant-numeric:tabular-nums}.li .p{font-variant-numeric:tabular-nums;color:var(--mute)}
+.li .why{grid-column:2/4;color:var(--mute);font-size:.88rem}
+.li[aria-current="true"]{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.fail{color:var(--mute);font-size:.88rem;padding-top:6px;border-top:1px dashed var(--line)}
+details>summary{cursor:pointer;color:var(--mute);font-size:.9rem;min-height:32px;display:flex;align-items:center}
+.tw{overflow-x:auto}table{border-collapse:collapse;font-size:.85rem;font-variant-numeric:tabular-nums}th,td{padding:2px 12px 2px 0;text-align:left;vertical-align:top}th{color:var(--mute);font-weight:500}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}.shots figure{margin:0}.shots img{width:100%;border-radius:4px;border:1px solid var(--line);cursor:zoom-in;display:block}.shots figcaption{font-size:.8rem;color:var(--mute)}
+pre{white-space:pre-wrap;font-size:.78rem;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px;margin:0}
+.stagetext p{margin:4px 0;max-width:72ch}
+#zoom{position:fixed;inset:0;background:#000d;display:flex;align-items:center;justify-content:center;z-index:20;padding:12px;cursor:zoom-out}#zoom img{max-width:100%;max-height:100%}
+.note{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg);display:flex;flex-direction:column;gap:4px}
+.note .where{font-size:.8rem;color:var(--mute)}.note .reply{border-left:3px solid var(--accent);padding-left:8px}
+textarea{width:100%;min-height:80px;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;box-sizing:border-box}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}@media (max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 <div class="wrap">
-  <div class="top"><h1>Argonia Asset Explorer</h1><p>Every model we make, stage by stage: what was measured, what was seen, what was decided. Turn the model, then pin a note on the exact spot you mean.</p></div>
-  <div class="cols">
-    <nav class="list" id="list" aria-label="Assets"></nav>
-    <main id="main"><div class="panel muted">Loading the catalogue.</div></main>
+  <h1>Argonia Asset Explorer</h1>
+  <nav class="things" id="things" aria-label="Things"></nav>
+  <div id="viewer">
+    <div class="vtools" id="vtools"></div>
+    <div class="tagbox" id="hudA"></div><div class="tagbox" id="hudB" hidden></div><div id="split" hidden></div>
+    <div id="pinhint" hidden>Tap the spot you mean</div>
   </div>
+  <div class="row" id="stepsrow" style="flex-wrap:nowrap"></div>
+  <section class="card" id="version"></section>
+  <div class="two">
+    <section class="card" id="others"></section>
+    <section class="card" id="notes"></section>
+  </div>
+  <section class="card" id="about"></section>
 </div>
 <div id="zoom" hidden><img alt=""></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -77,22 +83,24 @@ textarea{width:100%;min-height:70px;font:inherit;color:inherit;background:var(--
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 "use strict";
-// The models carry their textures inside one file. The loader would fetch() those, which the page host refuses; with this off it draws them as ordinary images.
+// The models carry their textures inside one file; with createImageBitmap off the loader draws them as plain images (the host refuses its fetch()).
 try { window.createImageBitmap = undefined; } catch (e) {}
 const $ = (s, r = document) => r.querySelector(s);
-const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const k in a) { if (k === "text") e.textContent = a[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]); else e.setAttribute(k, a[k]); } for (const c of kids) if (c != null) e.append(c); return e; };
-const S = { cat: null, asset: null, model: null, mode: "tex", scale: true, compare: null, pinning: false, notes: [], batches: [], db: null, uid: "me", pendingPin: null };
+const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const k in a) { if (a[k] == null) continue; if (k === "text") e.textContent = a[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]); else e.setAttribute(k, a[k]); } for (const c of kids) if (c != null) e.append(c); return e; };
+const S = { cat: null, asset: null, model: null, compare: null, mode: "tex", person: true, plate: true, pinning: false, notes: [], batches: [], db: null, uid: "me", pending: null };
 const LS = "argonia-asset-explorer-drafts";
+const money = p => p == null ? "" : p === 0 ? "no fee" : "$" + p.toFixed(3).replace(/0$/, "");
+const ver = id => (S.asset.versions.find(v => v.id === id) || { id, label: id, line: "" });
+const label = id => ver(id).label;
 
-/* ---------- data ---------- */
+/* ---------- data and the note store (contract: drafts and batches, see asset_explorer.json) ---------- */
 async function boot() {
-  try { S.cat = await (await fetch("data/catalog.json")).json(); }
-  catch (e) { $("#main").replaceChildren(el("div", { class: "panel", text: "The catalogue could not be loaded." })); return; }
+  try { S.cat = await (await fetch("data/catalog.json")).json(); } catch (e) { $("#version").textContent = "The catalogue could not be loaded. Reload the page."; return; }
   try { S.notes = JSON.parse(localStorage.getItem(LS) || "[]"); } catch (e) { S.notes = []; }
-  renderList(); pick((location.hash || "").slice(1) || S.cat.assets[0].id);
-  addEventListener("hashchange", () => pick(location.hash.slice(1)));
-  connect();
+  $("#things").replaceChildren(...S.cat.assets.map(a => el("button", { class: "thing", "data-id": a.id, onclick: () => { location.hash = a.id; } }, el("strong", { text: a.short || a.name }), el("small", { text: a.kind }))));
+  initViewer(); route(); addEventListener("hashchange", route); connect();
 }
+function route() { const id = (location.hash || "").slice(1); pick(S.cat.assets.some(a => a.id === id) ? id : S.cat.assets[0].id); }
 async function connect() {
   let db = null, user = null;
   try { db = await window.claude?.use?.("db"); user = await window.claude?.use?.("user"); } catch (e) {}
@@ -100,141 +108,171 @@ async function connect() {
   S.db = db; try { if (user) S.uid = await user.id(); } catch (e) {}
   try {
     db.collection("drafts").onSnapshot(s => { const live = []; s.forEach(d => { const v = d.data(); if (v && !v.deleted) live.push(v); });
-      const byId = new Map(S.notes.map(n => [n.id, n])); for (const n of live) { const o = byId.get(n.id); if (!o || (n.updatedAt || 0) >= (o.updatedAt || 0)) byId.set(n.id, n); }
-      S.notes = [...byId.values()]; saveLocal(); renderNotes(); drawPins(); }, () => {});
-    db.collection("batches").onSnapshot(s => { const b = []; s.forEach(d => b.push({ id: d.id, ...d.data() })); S.batches = b.sort((a, c) => (c.submittedAt || 0) - (a.submittedAt || 0)); renderNotes(); }, () => {});
+      const by = new Map(S.notes.map(n => [n.id, n])); for (const n of live) { const o = by.get(n.id); if (!o || (n.updatedAt || 0) >= (o.updatedAt || 0)) by.set(n.id, n); }
+      S.notes = [...by.values()]; saveLocal(); renderNotes(); drawPins(); }, () => {});
+    db.collection("batches").onSnapshot(s => { const b = []; s.forEach(d => b.push({ id: d.id, ...d.data() })); S.batches = b.sort((a, c) => (c.submittedAt || 0) - (a.submittedAt || 0)); renderNotes(); drawPins(); }, () => {});
   } catch (e) {}
+  renderNotes();
 }
 const saveLocal = () => { try { localStorage.setItem(LS, JSON.stringify(S.notes)); } catch (e) {} };
 async function putDraft(n) { n.updatedAt = Date.now(); n.by = S.uid; const i = S.notes.findIndex(x => x.id === n.id); if (i < 0) S.notes.push(n); else S.notes[i] = n; saveLocal();
   if (S.db) { try { await S.db.doc("drafts/" + n.id).set(n); } catch (e) {} } renderNotes(); drawPins(); }
 async function dropDraft(id) { S.notes = S.notes.filter(n => n.id !== id); saveLocal(); if (S.db) { try { await S.db.doc("drafts/" + id).set({ id, deleted: true, updatedAt: Date.now() }); } catch (e) {} } renderNotes(); drawPins(); }
-async function submitNotes() {
-  const mine = S.notes.filter(n => n.note && n.note.trim()); if (!mine.length || !S.db) return;
-  const id = "b" + Date.now();
+async function sendNotes() {
+  const mine = S.notes.filter(n => n.note && n.note.trim()); if (!mine.length || !S.db) return; const id = "b" + Date.now();
   try { await S.db.doc("batches/" + id).set({ status: "submitted", submittedAt: Date.now(), dataVersion: S.cat.version, notes: mine.map(n => ({ ...n, reply: null })) });
     for (const n of mine) await S.db.doc("drafts/" + n.id).set({ id: n.id, deleted: true, updatedAt: Date.now() });
-    S.notes = S.notes.filter(n => !mine.includes(n)); saveLocal(); renderNotes(); drawPins(); } catch (e) { $("#sendmsg").textContent = "The notes could not be sent. They are still here as drafts."; }
+    S.notes = S.notes.filter(n => !mine.includes(n)); saveLocal(); renderNotes(); drawPins(); }
+  catch (e) { const m = $("#sendmsg"); if (m) m.textContent = "Not sent: the store did not answer. Your notes are still here as drafts; try again."; }
 }
 
-/* ---------- list and asset page ---------- */
-function renderList() { $("#list").replaceChildren(...S.cat.assets.map(a => el("button", { class: "card", "data-id": a.id, onclick: () => { location.hash = a.id; pick(a.id); } }, el("strong", { text: a.name }), el("small", { text: a.kind }), el("small", { text: a.stages.filter(s => /^pass/.test(s.verdict)).length + " of " + a.stages.length + " stages passed" })))); }
-function tagFor(v) { const c = /^pass/.test(v) ? "pass" : /thrown|undone/.test(v) ? "bad" : /open|redo/.test(v) ? "open" : /^make/.test(v) ? "make" : "none"; return el("span", { class: "tag " + c, text: v }); }
+/* ---------- one thing ---------- */
 function pick(id) {
-  const a = S.cat.assets.find(x => x.id === id) || S.cat.assets[0]; S.asset = a;
-  for (const c of document.querySelectorAll("#list .card")) c.setAttribute("aria-current", c.dataset.id === a.id ? "true" : "false");
-  const m = $("#main"); m.replaceChildren();
-  const head = el("section", { class: "panel" }, el("h2", { text: a.name }), el("p", { class: "muted", text: a.status, style: "margin:4px 0 0" }), el("p", { text: a.summary, style: "margin:8px 0 0;max-width:70ch" }),
-    el("dl", { class: "kv" }, el("dt", { text: "Why make it" }), el("dd", {}, tagFor(a.need.verdict), document.createTextNode(" " + a.need.why)), el("dt", { text: "Lore" }), el("dd", { text: a.need.lore }), el("dt", { text: "Where it goes" }), el("dd", { text: a.need.use }),
-      el("dt", { text: "Brief" }), el("dd", { text: a.brief.text }),
-      el("dt", { text: "Fees" }), el("dd", { text: "About $" + a.fees.total.toFixed(2) + ". " + a.fees.note })));
-  const view = el("section", { class: "panel" }, el("h3", { text: "The model" }), el("div", { id: "viewer" }, el("div", { id: "hud" }), el("div", { id: "hud2", hidden: "" }), el("div", { id: "split", hidden: "" }), el("div", { id: "pinhint", hidden: "" , text: "Click the spot on the model. Press Escape to cancel." })),
-    el("div", { class: "bar", id: "models" }), el("div", { class: "bar", id: "cmp" }), el("div", { class: "bar", id: "modes" }), el("div", { id: "pinform" }));
-  const stages = el("section", { class: "panel" }, el("h3", { text: "Stages" }), ...a.stages.map(stageNode));
-  const notes = el("section", { class: "panel", id: "notes" });
-  m.append(head, view, stages, notes); initViewer(); renderBars(); loadModel(a.default_model); renderNotes();
+  const a = S.cat.assets.find(x => x.id === id); S.asset = a; S.compare = null;
+  for (const b of document.querySelectorAll("#things .thing")) b.setAttribute("aria-current", String(b.dataset.id === id));
+  renderAbout(); renderOthers(); show(a.best, true); renderNotes();
 }
-function measureTable(ids) { const rows = [["", "Triangles", "Pieces", "Open edges", "Shared edges", "Closed", "Size, m (long, high, wide)"]];
-  for (const id of ids) { const mm = S.asset.measures[id], lab = (S.asset.models.find(x => x.id === id) || {}).label || id; if (!mm) continue; const s = mm.size_m.slice().sort((p, q) => q - p);
-    rows.push([lab, mm.triangles.toLocaleString(), mm.components, mm.open_edges, mm.non_manifold_edges, mm.watertight ? "yes" : "no", [s[0], mm.size_m[1], s[0] === mm.size_m[0] ? mm.size_m[2] : mm.size_m[0]].map(v => v.toFixed(2)).join(" x ")]); }
-  return el("div", { class: "tw" }, el("table", {}, ...rows.map((r, i) => el("tr", {}, ...r.map(c => el(i ? "td" : "th", { text: String(c) })))))); }
-function routeTable(rows) { const h = ["Route", "Price", "Seconds", "Triangles", "Loose pieces", "Closed", "Verdict", "Looked at"];
-  const cell = r => [r.route, "$" + r.price_usd, r.seconds ?? "not reported", r.triangles == null ? "none" : r.triangles.toLocaleString(), r.loose_pieces ?? "none", r.closed == null ? "none" : r.closed ? "yes" : "no", r.verdict, r.look];
-  return el("div", { class: "tw" }, el("table", {}, el("tr", {}, ...h.map(c => el("th", { text: c }))), ...rows.map(r => el("tr", {}, ...cell(r).map(c => el("td", { text: String(c) })))))); }
-function stageNode(s) {
-  const measured = s.measured_models ? measureTable(s.measured_models) : s.measured ? el("div", { class: "tw" }, el("table", {}, ...Object.entries(s.measured).map(([k, v]) => el("tr", {}, el("th", { text: k.replace(/_/g, " ") }), el("td", { text: String(v) }))))) : el("p", { class: "muted", text: "Nothing measured." });
-  const n = el("div", { class: "stage", id: "stage-" + s.id }, el("header", {}, el("h3", { text: s.name }), tagFor(s.verdict), el("button", { class: "chip", onclick: () => startNote({ kind: "stage", field: s.id, label: s.name }) , text: "Note on this stage" })),
-    el("p", { text: s.did, style: "margin:6px 0 0;max-width:75ch" }),
-    s.measured_models ? el("div", { class: "two wide" }, el("div", {}, el("h4", { text: "Measured" }), measured)) : null,
-    s.routes ? el("div", { class: "two wide" }, el("div", {}, el("h4", { text: "Routes" }), routeTable(s.routes))) : null,
-    el("div", { class: "two" }, s.measured_models ? null : el("div", {}, el("h4", { text: "Measured" }), measured), el("div", {}, el("h4", { text: "Looked at" }), el("p", { text: s.looked || "Not yet." })), el("div", {}, el("h4", { text: "Decided" }), el("p", { text: s.decision }))));
-  if (s.models && s.models.length) n.append(el("div", { class: "bar" }, el("span", { class: "muted", text: "Show:" }), ...s.models.map(id => el("button", { class: "chip", onclick: () => { loadModel(id); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); }, text: (S.asset.models.find(x => x.id === id) || {}).label || id }))));
-  if (s.images && s.images.length) n.append(el("div", { class: "shots" }, ...s.images.map(([f, c]) => el("figure", {}, el("img", { src: "img/" + f, alt: c, loading: "lazy", onclick: e => zoom(e.target.src) }), el("figcaption", { text: c })))));
-  if (s.prompt || s.requests) n.append(el("details", {}, el("summary", { text: "The request, for the record" }), el("pre", { text: (s.prompt ? s.prompt + "\n\n" : "") + (s.requests ? Object.entries(s.requests).map(([k, v]) => k + ": " + v).join("\n") : "") })));
-  return n;
+function making() { return S.asset.versions.filter(v => v.group === "making"); }
+function show(id, reframe) { S.model = id; S.pending = null; setPinning(false); renderSteps(); renderVersion(); renderOthers(); loadInto("A", id, reframe); renderTools(); }
+
+function renderSteps() {
+  const steps = making(), i = steps.findIndex(v => v.id === S.model);
+  const go = d => { const j = (i < 0 ? steps.length - 1 : i) + d; if (j >= 0 && j < steps.length) show(steps[j].id); };
+  $("#stepsrow").replaceChildren(el("button", { class: "arrow", "aria-label": "Previous stage", onclick: () => go(-1), disabled: i <= 0 ? "" : null, text: "‹" }),
+    el("div", { class: "steps", role: "list", "aria-label": "How it was made" }, ...steps.map((v, k) => el("button", { class: "step", role: "listitem", "aria-current": String(v.id === S.model), onclick: () => show(v.id) },
+      el("b", { text: (k + 1) + (v.id === S.asset.best ? " · best" : "") }), document.createTextNode(v.label)))),
+    el("button", { class: "arrow", "aria-label": "Next stage", onclick: () => go(1), disabled: i < 0 || i >= steps.length - 1 ? "" : null, text: "›" }));
 }
+function pillFor(v) { if (v.id === S.asset.best) return el("span", { class: "pill best", text: "best version" }); return el("span", { class: "pill " + v.verdict, text: v.verdict === "comparison" ? "for comparison" : v.verdict }); }
+function measures(id) { const m = (S.asset.measures || {})[id]; if (!m) return null; const sz = m.size_m || [];
+  const rows = [["Size", sz.map(x => x.toFixed(2)).join(" × ") + " m (along, up, across)"], ["Triangles", (m.triangles || 0).toLocaleString()], ["Pieces", m.components], ["Closed", m.watertight ? "yes" : "no"], ["Open edges", m.open_edges], ["Surface", m.surface_m2 + " m²"]];
+  if (m.to_brief && m.to_brief.scale_applied) rows.push(["Scaled to the brief", "×" + m.to_brief.scale_applied + (m.to_brief.beam_scale && m.to_brief.beam_scale !== 1 ? ", cross-section ×" + m.to_brief.beam_scale : "")]);
+  return el("div", { class: "tw" }, el("table", {}, ...rows.map(([k, v]) => el("tr", {}, el("th", { text: k }), el("td", { text: String(v) }))))); }
+function stageBlock(s) {
+  const kv = s.measured ? el("div", { class: "tw" }, el("table", {}, ...Object.entries(s.measured).map(([k, v]) => el("tr", {}, el("th", { text: k.replace(/_/g, " ") }), el("td", { text: String(v) }))))) : null;
+  return el("div", { class: "stagetext" }, el("h3", { text: s.name }), el("p", { text: s.did }), kv, s.looked ? el("p", {}, el("strong", { text: "Seen: " }), document.createTextNode(s.looked)) : null, s.decision ? el("p", {}, el("strong", { text: "Decided: " }), document.createTextNode(s.decision)) : null,
+    s.images && s.images.length ? el("div", { class: "shots" }, ...s.images.map(([f, c]) => el("figure", {}, el("img", { src: "img/" + f, alt: c, loading: "lazy", onclick: e => zoom(e.target.src) }), el("figcaption", { text: c })))) : null,
+    s.prompt || s.requests ? el("pre", { text: (s.prompt ? s.prompt + "\n\n" : "") + (s.requests ? Object.entries(s.requests).map(([k, v]) => k + ": " + v).join("\n") : "") }) : null);
+}
+function renderVersion() {
+  const v = ver(S.model), stages = S.asset.stages.filter(s => (s.models || []).includes(v.id) || (s.measured_models || []).includes(v.id));
+  const opts = S.asset.versions.filter(x => x.id !== v.id);
+  const cmp = el("select", { id: "cmpsel", "aria-label": "Compare with" }, el("option", { value: "", text: "Compare with…" }), ...opts.map(x => el("option", { value: x.id, text: x.label + (x.group === "tried" ? " (other generator)" : "") })));
+  cmp.value = S.compare || ""; cmp.addEventListener("change", () => setCompare(cmp.value || null));
+  const req = [v.endpoint ? "Endpoint: " + v.endpoint : null, v.options ? "Options: " + JSON.stringify(v.options) : null, v.request ? "Request: " + v.request : null].filter(Boolean).join("\n");
+  $("#version").replaceChildren(
+    el("div", { class: "row" }, el("h2", { text: S.asset.short + ": " + v.label }), pillFor(v)),
+    el("p", { style: "margin:0;max-width:72ch", text: v.line }),
+    el("p", { class: "muted", style: "margin:0", text: v.made_by + " · " + money(v.price_usd) + (v.why ? " · " + v.why : "") }),
+    el("div", { class: "row" }, cmp, el("button", { class: "btn", id: "pinbtn", onclick: () => setPinning(!S.pinning), text: "Note on a spot" }), el("button", { class: "btn ghost", onclick: () => startNote({ kind: "stage", field: v.id, label: label(v.id) }), text: "Note on this version" })),
+    el("div", { id: "pinform" }),
+    el("details", {}, el("summary", { text: "Details: measures, what was done, the request" }), measures(v.id), ...stages.map(stageBlock), req ? el("pre", { text: req }) : null));
+}
+function renderOthers() {
+  const a = S.asset, tried = a.versions.filter(v => v.group === "tried").sort((p, q) => (p.rank || 99) - (q.rank || 99)), comps = a.versions.filter(v => v.group === "comparison");
+  const pick0 = making()[0];
+  const row = (n, v, extra) => el("button", { class: "li", "aria-current": String(S.model === v.id), onclick: () => { show(v.id, true); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); } },
+    el("span", { class: "n", text: n }), el("span", {}, el("strong", { text: extra || v.label }), document.createTextNode(" "), pillFor(v)), el("span", { class: "p", text: money(v.price_usd) }), el("span", { class: "why", text: v.why }));
+  $("#others").replaceChildren(el("h3", { text: "Other generators tried" }), el("p", { class: "muted", style: "margin:0", text: "Same reference, ranked by look and measure. Tap one to see it; use Compare to put it beside the best." }),
+    el("div", { class: "list" }, row("1", { ...pick0, verdict: "kept" }, "Tripo H3.1 · owner's pick"), ...tried.map(v => row(String(v.rank), v))),
+    ...(a.failed || []).map(f => el("div", { class: "fail", text: "Failed: " + f })),
+    comps.length ? el("h3", { style: "margin-top:8px", text: "Comparisons" }) : null, comps.length ? el("div", { class: "list" }, ...comps.map(v => row("·", v))) : null);
+}
+function renderAbout() { const a = S.asset;
+  $("#about").replaceChildren(el("details", {}, el("summary", { text: "About the " + (a.short || a.name).toLowerCase() + ": brief, why we make it, fees" }),
+    el("p", { style: "margin:0;max-width:72ch", text: a.summary }),
+    el("div", { class: "tw" }, el("table", {}, ...[["Brief", a.brief.text], ["Why make it", a.need.why], ["Lore", a.need.lore], ["Where it goes", a.need.use], ["Status", a.status],
+      ["Fees so far", "$" + a.fees.total.toFixed(2) + ": " + a.fees.lines.map(([k, v]) => k + " $" + v.toFixed(2)).join("; ") + ". " + a.fees.note]].map(([k, v]) => el("tr", {}, el("th", { text: k }), el("td", { text: v }))))),
+    ...a.stages.filter(s => !(s.models || []).length && !(s.measured_models || []).length).map(stageBlock))); }
 function zoom(src) { const z = $("#zoom"); z.firstElementChild.src = src; z.hidden = false; } $("#zoom").addEventListener("click", () => { $("#zoom").hidden = true; });
 
-/* ---------- 3D ---------- */
+/* ---------- 3D: one camera, true metres, a 1.8 m person ---------- */
 let R = null;
+function person() { const g = new THREE.Group(), m = new THREE.MeshStandardMaterial({ color: 0xc9d3cc, roughness: 1 });
+  const add = (geo, x, y, z) => { const o = new THREE.Mesh(geo, m); o.position.set(x, y, z); o.userData.overlay = true; g.add(o); };
+  add(new THREE.CylinderGeometry(0.075, 0.06, 0.86, 10), -0.1, 0.43, 0); add(new THREE.CylinderGeometry(0.075, 0.06, 0.86, 10), 0.1, 0.43, 0);   // legs
+  add(new THREE.CylinderGeometry(0.19, 0.16, 0.62, 12), 0, 1.17, 0); add(new THREE.CylinderGeometry(0.05, 0.045, 0.62, 8), -0.25, 1.15, 0); add(new THREE.CylinderGeometry(0.05, 0.045, 0.62, 8), 0.25, 1.15, 0);
+  add(new THREE.CylinderGeometry(0.05, 0.05, 0.08, 8), 0, 1.52, 0); add(new THREE.SphereGeometry(0.11, 14, 10), 0, 1.68, 0);                         // neck, head: top at 1.79 m
+  return g; }
+function sceneSet() { const sc = new THREE.Scene(); sc.background = new THREE.Color(0x5b6066); sc.add(new THREE.HemisphereLight(0xffffff, 0x4a4f48, 0.95)); const sun = new THREE.DirectionalLight(0xffffff, 0.8); sun.position.set(4, 8, 5); sc.add(sun);
+  const grid = new THREE.GridHelper(24, 24, 0x7d8680, 0x5f666a); sc.add(grid); const man = person(); sc.add(man); return { sc, grid, man, root: null }; }
 function initViewer() {
-  const box = $("#viewer"); if (R) { cancelAnimationFrame(R.raf); R.renderer.dispose(); }
-  const renderer = new THREE.WebGLRenderer({ antialias: true }); renderer.outputEncoding = THREE.sRGBEncoding; renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); box.prepend(renderer.domElement);
-  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x5b5f66); const cam = new THREE.PerspectiveCamera(32, 16 / 10, 0.02, 400); cam.position.set(5.2, 2.6, 5.2);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x4a4f48, 0.95)); const sun = new THREE.DirectionalLight(0xffffff, 0.85); sun.position.set(3, 6, 4); scene.add(sun);
-  const grid = new THREE.GridHelper(12, 12, 0x8a948c, 0x5d665f); scene.add(grid);
-  const man = new THREE.Group(); const mat = new THREE.MeshStandardMaterial({ color: 0x8fa39a, roughness: 1, transparent: true, opacity: 0.55 });
-  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.19, 1.55, 16), mat); body.position.y = 0.775; const headM = new THREE.Mesh(new THREE.SphereGeometry(0.125, 16, 12), mat); headM.position.y = 1.675; man.add(body, headM); man.position.set(0, 0, 1.6); scene.add(man);
-  const ctl = new THREE.OrbitControls(cam, renderer.domElement); ctl.target.set(0, 0.35, 0); ctl.enableDamping = true;
-  const pins = new THREE.Group(); scene.add(pins);
-  const scene2 = new THREE.Scene(); scene2.background = scene.background; scene2.add(new THREE.HemisphereLight(0xffffff, 0x4a4f48, 0.95)); const sun2 = sun.clone(); scene2.add(sun2);
-  const grid2 = grid.clone(); scene2.add(grid2); const man2 = man.clone(); scene2.add(man2);
-  R = { renderer, scene, scene2, cam, ctl, grid, grid2, man, man2, pins, root: null, root2: null, raf: 0, box };
-  const size = () => { const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); cam.aspect = (S.compare ? w / 2 : w) / h; cam.updateProjectionMatrix(); }; R.size = size;
-  new ResizeObserver(size).observe(box); size();
-  const tick = () => { R.raf = requestAnimationFrame(tick); ctl.update(); const w = box.clientWidth, h = box.clientHeight;
-    if (S.compare && R.root2) { renderer.setScissorTest(true); renderer.setViewport(0, 0, w / 2, h); renderer.setScissor(0, 0, w / 2, h); renderer.render(scene, cam);
-      renderer.setViewport(w / 2, 0, w / 2, h); renderer.setScissor(w / 2, 0, w / 2, h); renderer.render(scene2, cam); renderer.setScissorTest(false); }
-    else { renderer.setViewport(0, 0, w, h); renderer.render(scene, cam); } }; tick();
-  renderer.domElement.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY]; });
-  renderer.domElement.addEventListener("pointerup", e => { if (!S.pinning || !R.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 5) return;
-    const r0 = renderer.domElement.getBoundingClientRect(), r = S.compare ? { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height } : r0; if (e.clientX > r.left + r.width) return; const p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, cam);
-    const hit = rc.intersectObject(R.root, true).filter(h => !h.object.userData.overlay)[0]; if (!hit) return;   // the real triangles of the model, never a box
+  const box = $("#viewer"); const renderer = new THREE.WebGLRenderer({ antialias: true }); renderer.outputEncoding = THREE.sRGBEncoding; renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); box.prepend(renderer.domElement);
+  const cam = new THREE.PerspectiveCamera(35, 1, 0.02, 500); const ctl = new THREE.OrbitControls(cam, renderer.domElement); ctl.enableDamping = true; ctl.screenSpacePanning = true;
+  R = { renderer, cam, ctl, box, A: sceneSet(), B: sceneSet(), pins: new THREE.Group() }; R.A.sc.add(R.pins);
+  const size = () => { const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); const port = h > w; box.classList.toggle("portrait", port);
+    const sp = $("#split"); if (port) Object.assign(sp.style, { left: "0", right: "0", top: "50%", height: "2px", width: "auto", bottom: "auto" }); else Object.assign(sp.style, { top: "0", bottom: "0", left: "50%", width: "2px", height: "auto", right: "auto" });
+    cam.aspect = S.compare ? (port ? w / (h / 2) : (w / 2) / h) : w / h; cam.updateProjectionMatrix(); }; R.size = size; new ResizeObserver(size).observe(box); size();
+  const tick = () => { requestAnimationFrame(tick); ctl.update(); const w = box.clientWidth, h = box.clientHeight;
+    if (S.compare) { const port = h > w; renderer.setScissorTest(true);
+      const vA = port ? [0, h / 2, w, h / 2] : [0, 0, w / 2, h], vB = port ? [0, 0, w, h / 2] : [w / 2, 0, w / 2, h];
+      renderer.setViewport(...vA); renderer.setScissor(...vA); renderer.render(R.A.sc, cam); renderer.setViewport(...vB); renderer.setScissor(...vB); renderer.render(R.B.sc, cam); renderer.setScissorTest(false); }
+    else { renderer.setViewport(0, 0, w, h); renderer.render(R.A.sc, cam); } }; tick();
+  const cv = renderer.domElement; cv.addEventListener("pointerdown", e => { R.down = [e.clientX, e.clientY, e.pointerType]; });
+  cv.addEventListener("pointerup", e => { if (!S.pinning || !R.A.root || !R.down || Math.hypot(e.clientX - R.down[0], e.clientY - R.down[1]) > 8) return;
+    const r0 = cv.getBoundingClientRect(), port = r0.height > r0.width; const r = !S.compare ? r0 : port ? { left: r0.left, top: r0.top, width: r0.width, height: r0.height / 2 } : { left: r0.left, top: r0.top, width: r0.width / 2, height: r0.height };
+    if (e.clientX > r.left + r.width || e.clientY > r.top + r.height) return;
+    const p = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), rc = new THREE.Raycaster(); rc.setFromCamera(p, R.cam);
+    const hit = rc.intersectObject(R.A.root, true).filter(h => !h.object.userData.overlay)[0]; if (!hit) return;    // the model's real triangles
     const nrm = hit.face ? hit.face.normal.clone().transformDirection(hit.object.matrixWorld) : new THREE.Vector3(0, 1, 0);
-    setPinning(false); startNote({ kind: "pin", field: "model", label: "A spot on " + modelLabel(S.model), model: S.model, point: hit.point.toArray().map(v => +v.toFixed(4)), normal: nrm.toArray().map(v => +v.toFixed(3)), camera: { position: cam.position.toArray().map(v => +v.toFixed(3)), target: ctl.target.toArray().map(v => +v.toFixed(3)) } }); });
+    setPinning(false); startNote({ kind: "pin", field: "model", label: "A spot on " + label(S.model), model: S.model, point: hit.point.toArray().map(v => +v.toFixed(4)), normal: nrm.toArray().map(v => +v.toFixed(3)),
+      camera: { position: R.cam.position.toArray().map(v => +v.toFixed(3)), target: R.ctl.target.toArray().map(v => +v.toFixed(3)) } }); });
   addEventListener("keydown", e => { if (e.key === "Escape") setPinning(false); });
 }
-const modelLabel = id => (S.asset.models.find(x => x.id === id) || {}).label || id;
-function renderBars() {
-  $("#models").replaceChildren(el("span", { class: "muted", text: "Version:" }), ...S.asset.models.map(m => el("button", { class: "chip", "data-id": m.id, "aria-pressed": "false", onclick: () => loadModel(m.id) }, document.createTextNode(m.label), el("span", { class: "st", text: m.state }))));
-  $("#cmp").replaceChildren(el("span", { class: "muted", text: "Compare beside it:" }), el("button", { class: "chip", "aria-pressed": String(!S.compare), onclick: () => setCompare(null), text: "Nothing" }),
-    ...S.asset.models.map(m => el("button", { class: "chip", "aria-pressed": String(S.compare === m.id), onclick: () => setCompare(m.id), text: m.label })));
-  const mode = (id, t) => el("button", { class: "chip", "data-mode": id, "aria-pressed": String(S.mode === id), onclick: () => { S.mode = id; applyMode(); renderBars(); markModel(); }, text: t });
-  $("#modes").replaceChildren(el("span", { class: "muted", text: "Show as:" }), mode("tex", "Surfaced"), mode("clay", "Plain clay"), mode("wire", "Triangles"),
-    el("button", { class: "chip", "aria-pressed": String(S.scale), onclick: () => { S.scale = !S.scale; R.man.visible = R.man2.visible = S.scale; R.grid.visible = R.grid2.visible = S.scale; renderBars(); markModel(); }, text: "1.8 m figure and 1 m grid" }),
-    el("button", { class: "btn", id: "pinbtn", onclick: () => setPinning(!S.pinning), text: "Pin a note on the model" }));
+function renderTools() {
+  const t = (txt, on, fn, show = true) => show ? el("button", { "aria-pressed": String(on), onclick: () => { fn(); renderTools(); } , text: txt }) : null;
+  const hasPlate = [S.model, S.compare].some(id => /door/.test(id || ""));
+  const modes = { tex: "Surfaced", clay: "Clay", wire: "Triangles" }, next = { tex: "clay", clay: "wire", wire: "tex" };
+  $("#vtools").replaceChildren(...[t("Person 1.8 m", S.person, () => { S.person = !S.person; for (const k of ["A", "B"]) { R[k].man.visible = R[k].grid.visible = S.person; } }),
+    t("Door plate", S.plate, () => { S.plate = !S.plate; applyMode(); }, hasPlate),
+    el("button", { onclick: () => { S.mode = next[S.mode]; applyMode(); renderTools(); }, text: modes[S.mode] }),
+    t("Reset view", false, () => frame())].filter(Boolean));
 }
 function place(root) { root.traverse(o => { if (!o.isMesh) return; const nm = (o.name || "") + " " + ((o.parent && o.parent.name) || "");
-    if (/door_plate|arrival/.test(nm)) { o.userData.overlay = true; o.material = new THREE.MeshBasicMaterial({ color: 0xff9628, transparent: true, opacity: /arrival/.test(nm) ? 0.9 : 0.45, depthWrite: false, side: THREE.DoubleSide }); return; }
+    if (/door_plate|arrival/.test(nm)) { o.userData.overlay = true; o.userData.plate = true; o.material = new THREE.MeshBasicMaterial({ color: 0xff9628, transparent: true, opacity: /arrival/.test(nm) ? 0.9 : 0.5, depthWrite: false, side: THREE.DoubleSide }); return; }
     o.userData.mat = o.material; o.material.side = THREE.DoubleSide; });
-  const b = new THREE.Box3().setFromObject(root), c = b.getCenter(new THREE.Vector3()); root.position.y -= b.min.y; root.position.x -= c.x; root.position.z -= c.z; return b.getSize(new THREE.Vector3()); }
-function setCompare(id) { const was = !!S.compare; if (was !== !!id) { const k = id ? 1.7 : 1 / 1.7; R.cam.position.sub(R.ctl.target).multiplyScalar(k).add(R.ctl.target); } S.compare = id; $("#split").hidden = !id; $("#hud2").hidden = !id; if (R.root2) { R.scene2.remove(R.root2); R.root2 = null; } R.size(); renderBars(); markModel();
-  if (!id) return; $("#hud2").textContent = "Loading " + modelLabel(id);
-  new THREE.GLTFLoader().load("models/" + S.asset.id + "." + id + ".gltf.json", g => { if (S.compare !== id) return; R.root2 = g.scene; R.scene2.add(R.root2); place(R.root2); R.man2.position.copy(R.man.position); $("#hud2").textContent = modelLabel(id); applyMode(); },
-    undefined, () => { $("#hud2").textContent = "This version could not be loaded."; }); }
-function markModel() { for (const c of document.querySelectorAll("#models .chip")) c.setAttribute("aria-pressed", String(c.dataset.id === S.model)); }
-function setPinning(on) { S.pinning = on; $("#pinhint").hidden = !on; R.renderer.domElement.style.cursor = on ? "crosshair" : ""; }
-function loadModel(id) {
-  S.model = id; markModel(); $("#hud").textContent = "Loading " + modelLabel(id);
+  const b = new THREE.Box3(); root.traverse(o => { if (o.isMesh && !o.userData.plate) b.expandByObject(o); }); const c = b.getCenter(new THREE.Vector3());
+  root.position.set(-c.x, -b.min.y, -c.z); root.updateMatrixWorld(true); return b.getSize(new THREE.Vector3()); }
+function standMan(side, s) { R[side].man.position.set(-(s.x / 2) - 0.6, 0, Math.min(s.z / 2, 0.8)); }       // beside the model, at its left end, on the same ground
+function frame() { const s = R.A.size || new THREE.Vector3(2, 2, 2), s2 = (S.compare && R.B.size) || s, W = Math.max(s.x, s2.x) + 1.4, H = Math.max(s.y, s2.y, 1.8), D = Math.max(s.z, s2.z, 0.8);
+  R.ctl.target.set(-0.35, H / 2, 0); const d = 0.5 * Math.hypot(W, H, D) / Math.tan(17.5 * Math.PI / 180) * (S.compare ? 1.15 : 1); R.cam.position.set(-0.35 + d * 0.62, H / 2 + d * 0.32, d * 0.72); R.ctl.update(); }
+function loadInto(side, id, reframe) {
+  const hud = side === "A" ? $("#hudA") : $("#hudB"); hud.textContent = "Loading " + label(id) + "…";
   new THREE.GLTFLoader().load("models/" + S.asset.id + "." + id + ".gltf.json", g => {
-    if (S.model !== id) return; if (R.root) R.scene.remove(R.root); R.root = g.scene; R.scene.add(R.root);
-    const s = place(R.root);      // stand every version on the ground at the middle, whatever frame it came in
-    const mm = S.asset.measures[id] || {}; const dims = [s.x, s.y, s.z].sort((p, q) => q - p);
-    $("#hud").textContent = modelLabel(id) + " · " + (mm.triangles ? mm.triangles.toLocaleString() + " triangles · " : "") + dims[0].toFixed(2) + " m " + (s.y === dims[0] ? "tall" : "across");
-    R.man.position.set(-Math.max(s.x * 0.25, 0.55), 0, -(Math.max(s.z, 0.3) / 2 + 0.55)); R.man2.position.copy(R.man.position);
-    R.ctl.target.set(0, s.y / 2, 0); const d = 0.5 * Math.hypot(s.x, s.y, s.z) / Math.sin(16 * Math.PI / 180) * (S.compare ? 1.7 : 1) * 0.95; R.cam.position.set(d * 0.66, s.y / 2 + d * 0.36, d * 0.66);
-    applyMode(); drawPins();
-  }, undefined, () => { $("#hud").textContent = "This version could not be loaded."; });
+    if ((side === "A" ? S.model : S.compare) !== id) return; const P = R[side]; if (P.root) P.sc.remove(P.root); P.root = g.scene; P.sc.add(P.root);
+    const s = place(P.root); P.size = s; standMan(side, s); const dims = [s.x, s.y, s.z]; const big = Math.max(...dims);
+    hud.textContent = label(id) + " · " + (big === s.y ? s.y.toFixed(2) + " m tall" : big.toFixed(2) + " m long, " + s.y.toFixed(2) + " m high");
+    applyMode(); if (side === "A") drawPins(); if (reframe || side === "B") frame();
+  }, undefined, () => { hud.textContent = label(id) + " could not be loaded. Reload the page."; });
 }
-function applyMode() { if (!R) return; for (const root of [R.root, R.root2]) if (root) root.traverse(o => { if (!o.isMesh || o.userData.overlay) return;
-  if (S.mode === "tex") o.material = o.userData.mat; else if (S.mode === "clay") o.material = new THREE.MeshStandardMaterial({ color: 0x9c978c, roughness: 0.95, side: THREE.DoubleSide }); else o.material = new THREE.MeshBasicMaterial({ color: 0xe9ede8, wireframe: true }); }); }
-function drawPins() { if (!R) return; while (R.pins.children.length) R.pins.remove(R.pins.children[0]);
+function setCompare(id) { S.compare = id || null; $("#viewer").classList.toggle("cmp", !!S.compare); $("#split").hidden = $("#hudB").hidden = !S.compare; const P = R.B; if (P.root) { P.sc.remove(P.root); P.root = null; } R.size(); renderTools();
+  const sel = $("#cmpsel"); if (sel) sel.value = S.compare || ""; if (S.compare) loadInto("B", S.compare, true); else frame(); }
+function applyMode() { for (const k of ["A", "B"]) { const root = R[k].root; if (!root) continue; root.traverse(o => { if (!o.isMesh) return; if (o.userData.plate) { o.visible = S.plate; return; }
+  o.material = S.mode === "tex" ? o.userData.mat : S.mode === "clay" ? new THREE.MeshStandardMaterial({ color: 0x9c978c, roughness: 0.95, side: THREE.DoubleSide }) : new THREE.MeshBasicMaterial({ color: 0xe9ede8, wireframe: true }); }); } }
+function setPinning(on) { S.pinning = on; $("#pinhint").hidden = !on; if (on) $("#viewer").scrollIntoView({ block: "center" }); const b = $("#pinbtn"); if (b) b.textContent = on ? "Cancel: tap the model" : "Note on a spot"; if (R) R.renderer.domElement.style.cursor = on ? "crosshair" : ""; }
+function drawPins() { if (!R) return; while (R.pins.children.length) R.pins.remove(R.pins.children[0]); if (!S.asset) return;
   const all = S.notes.concat(...S.batches.map(b => b.notes || [])).filter(n => n.kind === "pin" && n.item === S.asset.id && n.model === S.model && n.point);
-  for (const n of all) { const m = new THREE.Mesh(new THREE.SphereGeometry(0.035, 12, 10), new THREE.MeshBasicMaterial({ color: n.reply ? 0x6fc0a3 : 0xffb347, depthTest: false })); m.position.fromArray(n.point); m.renderOrder = 5; R.pins.add(m); } }
+  const r = Math.max(0.03, ((R.A.size && Math.max(R.A.size.x, R.A.size.y, R.A.size.z)) || 1) * 0.012);
+  for (const n of all) { const m = new THREE.Mesh(new THREE.SphereGeometry(r, 12, 10), new THREE.MeshBasicMaterial({ color: n.reply ? 0x6fc0a3 : 0xffb347, depthTest: false })); m.position.fromArray(n.point); m.renderOrder = 5; m.userData.overlay = true; R.pins.add(m); } }
 
 /* ---------- notes ---------- */
-function startNote(base) { S.pendingPin = { id: "n" + Date.now() + Math.random().toString(36).slice(2, 6), item: S.asset.id, view: location.hash || "#" + S.asset.id, version: S.cat.version, note: "", ...base };
-  const f = $("#pinform"); const ta = el("textarea", { id: "note-text", placeholder: "What should change, or what do you think of this?" });
-  f.replaceChildren(el("div", { class: "note" }, el("div", { class: "where", text: S.pendingPin.label }), ta, el("div", { class: "row" }, el("button", { class: "btn", onclick: () => { const t = ta.value.trim(); if (!t) return; S.pendingPin.note = t; const n = S.pendingPin; S.pendingPin = null; f.replaceChildren(); putDraft(n); }, text: "Keep note" }), el("button", { class: "btn ghost", onclick: () => { S.pendingPin = null; f.replaceChildren(); }, text: "Cancel" }))));
+function startNote(base) { S.pending = { id: "n" + Date.now() + Math.random().toString(36).slice(2, 6), item: S.asset.id, view: "#" + S.asset.id, version: S.cat.version, note: "", ...base };
+  const f = $("#pinform"); const ta = el("textarea", { id: "note-text", placeholder: "What should change, or what do you think of it?" });
+  f.replaceChildren(el("div", { class: "note" }, el("div", { class: "where", text: S.pending.label }), ta, el("div", { class: "row" },
+    el("button", { class: "btn", onclick: () => { const t = ta.value.trim(); if (!t) { ta.focus(); return; } const n = { ...S.pending, note: t }; S.pending = null; f.replaceChildren(); putDraft(n); }, text: "Keep note" }),
+    el("button", { class: "btn ghost", onclick: () => { S.pending = null; f.replaceChildren(); }, text: "Cancel" }))));
   f.scrollIntoView({ behavior: "smooth", block: "center" }); ta.focus(); }
-function noteNode(n, draft) { const k = el("div", { class: "note" }, el("div", { class: "where", text: (n.label || n.field) + (n.kind === "pin" && n.model ? " · " + modelLabel(n.model) : "") }), el("div", { text: n.note }));
-  if (n.kind === "pin" && n.camera) k.append(el("button", { class: "chip", style: "margin-top:6px", onclick: () => { const go = () => { R.cam.position.fromArray(n.camera.position); R.ctl.target.fromArray(n.camera.target); }; if (S.model !== n.model) { loadModel(n.model); setTimeout(go, 900); } else go(); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); }, text: "Show the spot" }));
-  if (draft) k.append(el("button", { class: "chip", style: "margin:6px 0 0 6px", onclick: () => dropDraft(n.id), text: "Remove" }));
+function noteNode(n, draft) { const k = el("div", { class: "note" }, el("div", { class: "where", text: (n.label || n.field) + (n.kind === "pin" && n.model ? "" : "") }), el("div", { text: n.note }));
+  const row = el("div", { class: "row" });
+  if (n.kind === "pin" && n.camera) row.append(el("button", { class: "btn ghost", onclick: () => { const go = () => { R.cam.position.fromArray(n.camera.position); R.ctl.target.fromArray(n.camera.target); };
+    if (S.asset.id !== n.item) { location.hash = n.item; setTimeout(() => { show(n.model); setTimeout(go, 1200); }, 50); } else if (S.model !== n.model) { show(n.model); setTimeout(go, 1200); } else go(); $("#viewer").scrollIntoView({ behavior: "smooth", block: "center" }); }, text: "Show the spot" }));
+  if (draft) row.append(el("button", { class: "btn ghost", onclick: () => dropDraft(n.id), text: "Remove" })); if (row.children.length) k.append(row);
   if (n.reply) k.append(el("div", { class: "reply", text: n.reply })); return k; }
-function renderNotes() { const box = $("#notes"); if (!box || !S.asset) return; const drafts = S.notes.filter(n => n.item === S.asset.id);
-  box.replaceChildren(el("h3", { text: "Your notes" }), el("p", { class: "muted", style: "margin:4px 0 0", text: S.db ? "Notes wait here as drafts until you send them. An agent picks up each sent batch and answers every note here." : "Notes are kept in this browser only until the page can reach its store. Sending is off." }),
-    ...(drafts.length ? drafts.map(n => noteNode(n, true)) : [el("p", { class: "muted", text: "No drafts. Pin a note on the model, or use a stage's note button." })]),
-    el("div", { class: "row" }, S.db && drafts.length ? el("button", { class: "btn", onclick: submitNotes, text: "Send " + drafts.length + (drafts.length === 1 ? " note" : " notes") }) : null, el("span", { id: "sendmsg", class: "muted" })),
-    ...S.batches.filter(b => (b.notes || []).some(n => n.item === S.asset.id)).map(b => el("details", { open: "" }, el("summary", { text: "Sent " + new Date(b.submittedAt).toLocaleString() + " · " + b.status }), b.reply ? el("div", { class: "note", text: b.reply }) : null, ...(b.notes || []).filter(n => n.item === S.asset.id).map(n => noteNode(n, false))))); }
+function renderNotes() { const box = $("#notes"); if (!box || !S.asset) return; const drafts = S.notes.filter(n => n.item === S.asset.id), all = S.notes.filter(n => n.note && n.note.trim());
+  box.replaceChildren(el("h3", { text: "Your notes" }),
+    el("p", { class: "muted", style: "margin:0", text: S.db ? "Notes wait here until you send them. An agent picks up each sent batch and answers every note here." : "Notes are kept in this browser until the page reaches its store; sending is off for now." }),
+    ...(drafts.length ? drafts.map(n => noteNode(n, true)) : [el("p", { class: "muted", style: "margin:0", text: "No notes on the " + (S.asset.short || S.asset.name).toLowerCase() + " yet. Use 'Note on a spot' and tap the model." })]),
+    el("div", { class: "row" }, S.db && all.length ? el("button", { class: "btn", onclick: sendNotes, text: "Send " + all.length + (all.length === 1 ? " note" : " notes") }) : null, el("span", { id: "sendmsg", class: "muted" })),
+    ...S.batches.filter(b => (b.notes || []).some(n => n.item === S.asset.id)).map(b => el("details", {}, el("summary", { text: "Sent " + new Date(b.submittedAt).toLocaleString() + " · " + b.status }), b.reply ? el("div", { class: "note", text: b.reply }) : null, ...(b.notes || []).filter(n => n.item === S.asset.id).map(n => noteNode(n, false))))); }
 boot();
 </script>

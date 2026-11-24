@@ -1,6 +1,7 @@
 {
  "id": "stone-glaive",
  "name": "Stone-Sleeper glaive",
+ "short": "Glaive",
  "kind": "Weapon, acts as a halberd",
  "status": "Example. Head generated, shaft made by hand to the donor's measurements, assembled as a standard 3D model. Not yet in Skyrim's model format and not in the game.",
  "summary": "A halberd for the Stone-Sleepers of Tsonac: a knapped obsidian blade with a flint hook, bound into a split hardwood socket. It shows the 'acts like an existing thing' route for a long weapon: only the head is generated, and the rest is built to the donor halberd's own numbers.",
@@ -14,22 +15,30 @@
   "text": "Head only from the generator: a leaf-shaped obsidian blade about 45 cm long with a flint hook, in a split hardwood socket bound with sinew, on a short cut stub. No long shaft, no loose cord, no feathers. The shaft is made by hand."
  },
  "fees": {
-  "note": "From Fal's list prices as read on 24 November, not from a bill.",
+  "note": "Fal's list prices for the options used, read on 24 November 2026 from each model's Fal page; Fal's request history shows no charge per request, so these are not from a bill.",
   "lines": [
    [
     "2 reference images at 2K",
-    0.24
+    0.12
    ],
    [
-    "1 Tripo H3.1 model",
+    "1 Tripo H3.1 head, detailed texture",
     0.4
    ],
    [
-    "1 Tripo P2 model",
+    "1 Tripo P2 head, detailed texture",
     1.2
+   ],
+   [
+    "2 end-piece references (image edits at 2K)",
+    0.13
+   ],
+   [
+    "2 end pieces, Tripo H3.1 detailed texture",
+    0.8
    ]
   ],
-  "total": 1.84
+  "total": 2.65
  },
  "stages": [
   {
@@ -126,7 +135,7 @@
     "shaft_wood_colour": "taken from the stub's own texture (70, 49, 38)"
    },
    "looked": "Reads as a glaive from the front, side and three-quarter views, and the head survives the cut to 3,000 triangles. The first shaft was wrong: its wood was a patch copied from the head's texture, and the patch had caught black obsidian flakes, which repeated up the pole. It was redone as plain wood grain in the stub's measured colour.",
-   "decision": "Kept. Open points: the shaft is a bare pole, a shade redder than the dark socket, and wants a sinew grip wrap and some wear by hand; and the blade is much narrower than the donor's axe head, which is right for a glaive but should be seen in a hand before it is called done.",
+   "decision": "Kept as the plain-pole version. Its open points (a bare pole, no grip) are what the finishing stage answers.",
    "images": [
     [
      "stone-glaive.look-assembled.jpg",
@@ -138,8 +147,75 @@
    ]
   },
   {
+   "id": "finish",
+   "name": "5. Finishing the weapon",
+   "verdict": "pass",
+   "did": "The proposal's hybrid. The generated head is kept as it is. The shaft is remade from inside the butt cap up into the head's socket, its wood unique along its length so wear falls where it would: darker and muddier at the butt, smoother and lighter where the hands go, knocks and scrapes along it. A raised cord grip is two cords wound over the hands' span; a binding collar is wound over the joint where the shaft seats into the socket, in the sinew colour measured from the head's own bindings. Two short end pieces were generated on their own by Tripo H3.1 from references made to match the head: a bone butt cap and a carved grip band. Each was cut to under 1,000 triangles and sized so its hole fits the shaft's real radius, measured by rays from its axis.",
+   "measured": {
+    "length_m": "2.256 (donor 2.257)",
+    "tip_and_butt_m": "1.823 and -0.433 (donor 1.824 and -0.433)",
+    "grip_m_from_the_origin": "-0.17 to 0.36",
+    "cord_thickness_mm": 8.4,
+    "butt_cap_m": "0.168 long, 0.095 across",
+    "grip_band_m": "0.106 high, 0.144 across",
+    "triangles": "13850 in all (head 3000, shaft 1092, cord 5240, collar 730, cap 2192, band 1596)"
+   },
+   "looked": "Reads as a finished, used weapon: the head seats under its collar, the grip stands proud of the wood, and the bone cap and grip band are the small carved ends the proposal asked for. Nothing hangs. The grip band is chunky; the cord grip is most of the triangles and can be thinned.",
+   "decision": "Kept as the best version. Open: 13,850 triangles against the donor's 2,409; the cord can be fewer turns, and the caps cut further, before it goes to the game.",
+   "images": [
+    [
+     "stone-glaive.look-finished.jpg",
+     "The finished weapon: whole, the head and the butt close"
+    ],
+    [
+     "stone-glaive.ref-buttcap.jpg",
+     "Reference for the butt cap"
+    ],
+    [
+     "stone-glaive.ref-gripband.jpg",
+     "Reference for the grip band"
+    ]
+   ],
+   "models": [
+    "finished"
+   ],
+   "requests": {
+    "butt cap": "tripo3d/h3.1/image-to-3d 01a20e4c-994e-7e92-a343-41e265944b6f",
+    "grip band": "tripo3d/h3.1/image-to-3d 01a20e4c-9950-7ac3-9e06-3b8d8c0e7311",
+    "references": "google/nano-banana-2.1/edit 01a20e45-d771-7a22-bd59-b1724967a8e6, 01a20e45-d746-76a2-86b8-c09abf9ee345"
+   }
+  },
+  {
+   "id": "whole",
+   "name": "Comparison: the whole weapon generated",
+   "verdict": "thrown away",
+   "did": "For comparison, one long reference of the whole glaive (made from the head's reference so the head matches) went to Tripo H3.1 in one piece, and the result was sized to the donor's 2.26 m.",
+   "measured_models": [
+    "whole-h31"
+   ],
+   "looked": "The shaft and grip are fine, but the long shape starves the head: the blade came out a blocky slab with none of the flaking, and two pieces float loose beside it.",
+   "decision": "Thrown away. The head on a hand-made shaft is the route for long weapons, as the proposal said.",
+   "images": [
+    [
+     "stone-glaive.ref-whole.jpg",
+     "The whole-weapon reference"
+    ],
+    [
+     "stone-glaive.look-whole-h31.jpg",
+     "What came back"
+    ]
+   ],
+   "models": [
+    "whole-h31"
+   ],
+   "requests": {
+    "reference": "google/nano-banana-2.1/edit 01a20e45-d717-7180-ad8e-badc87662077",
+    "model": "tripo3d/h3.1/image-to-3d 01a20e4c-9972-7a41-9ee3-e02aa3881e65"
+   }
+  },
+  {
    "id": "game",
-   "name": "5. Into the game",
+   "name": "6. Into the game",
    "verdict": "not done",
    "did": "Nothing yet.",
    "looked": "",
@@ -151,13 +227,13 @@
    "id": "experiment",
    "name": "Cost experiment: cheaper generators",
    "verdict": "see the table",
-   "did": "The same reference image went once to each cheaper route on Fal (owner call #94), to see which would give a keepable model for less. Each result is shown here as generated, beside the kept Tripo H3.1 version, with no shaping.",
+   "did": "The same reference image went once to each cheaper route on Fal, and to Meshy 7.1. Every result is scaled to the brief (tobrief.py) before it is shown, so all of them stand in true metres beside the 1.8 m person.",
    "measured": {
     "prices": "Prices are Fal's list prices, not from a bill.",
     "seconds": "The generator's own reported time where it reports one; Trellis 2, Hunyuan and Tripo do not report it."
    },
    "looked": "Each result was looked at from six fixed views; the one-line note per route is in the table.",
-   "decision": "Not a change to this asset: the kept version stays. This is evidence for which route to use for this kind of thing; see docs/research/new-art/cost-experiment.md.",
+   "decision": "The owner's pick is Tripo H3.1: the best shape and the best texture of all three things. The rest are listed under 'Other generators tried', ranked.",
    "images": [
     [
      "stone-glaive.look-x-trellis.jpg",
@@ -201,7 +277,7 @@
     },
     {
      "route": "Trellis 2",
-     "price_usd": 0.05,
+     "price_usd": 0.3,
      "seconds": null,
      "triangles": 28562,
      "loose_pieces": 209,
@@ -212,7 +288,7 @@
     },
     {
      "route": "Hunyuan 2 mini turbo, textured",
-     "price_usd": 0.24,
+     "price_usd": 0.08,
      "seconds": null,
      "triangles": 40000,
      "loose_pieces": 0,
@@ -223,7 +299,7 @@
     },
     {
      "route": "Hunyuan 3.1 rapid",
-     "price_usd": 0.015,
+     "price_usd": 0.225,
      "seconds": null,
      "triangles": 50000,
      "loose_pieces": 0,
@@ -242,51 +318,179 @@
      "verdict": "kept after clean-up",
      "look": "Sharp flaking and the right outline, but it came back tilted about 20 degrees and in 3 pieces (2 small); straighten and remove the bits.",
      "request": "speridlabs/idol/max/turbo 01a20d62-762f-7721-8c50-29ca9b2ddef7"
+    },
+    {
+     "route": "Meshy 7.1",
+     "price_usd": 1.2,
+     "seconds": null,
+     "triangles": 30705,
+     "loose_pieces": 1,
+     "closed": false,
+     "verdict": "kept",
+     "look": "A truer grey core band and clean socket; shallower flaking than H3.1. Three times the price.",
+     "request": "meshy/v7.1/image-to-3d 01a20e45-d791-75b3-9e7d-023bfcbb0cdc"
     }
    ]
   }
  ],
- "models": [
+ "best": "finished",
+ "size": {
+  "rule": "height",
+  "head_m": 0.8,
+  "weapon_m": 2.257
+ },
+ "versions": [
   {
    "id": "head-h31",
-   "label": "Head, Tripo H3.1, as generated",
-   "state": "kept"
-  },
-  {
-   "id": "head-p2",
-   "label": "Head, Tripo P2, as generated",
-   "state": "alternative"
+   "label": "Generated head",
+   "line": "The head as Tripo H3.1 made it, sized to 0.80 m.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.4,
+   "verdict": "kept",
+   "why": "The fullest blade, a clear flint hook, distinct sinew bands, one closed piece.",
+   "group": "making",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "options": {
+    "texture_quality": "detailed",
+    "face_limit": 12000
+   },
+   "request": "01a20ca4-c735-7b01-a8e3-c41416ae13be"
   },
   {
    "id": "assembled",
-   "label": "Assembled glaive, 2.26 m",
-   "state": "candidate"
+   "label": "On a plain pole",
+   "line": "The head cut to 3,000 triangles on a pole made by hand to the donor halberd's measurements.",
+   "made_by": "By hand: polearm.py",
+   "price_usd": 0,
+   "verdict": "kept",
+   "why": "Reads as a glaive, but the pole is bare and the joint is plain.",
+   "group": "making"
   },
   {
-   "id": "x-trellis",
-   "label": "Trellis, $0.02",
-   "state": "test: thrown away"
+   "id": "finished",
+   "label": "Finished weapon",
+   "line": "A raised cord grip, a binding collar where the shaft seats into the head's socket, wear along the shaft, a bone butt cap and a carved grip band.",
+   "made_by": "By hand: polearm.py finish; the two end pieces by Tripo H3.1",
+   "price_usd": 0.93,
+   "verdict": "kept",
+   "why": "Every piece sits on the shaft's real radius; nothing hangs. 2.256 m against the donor's 2.257.",
+   "group": "making"
   },
   {
-   "id": "x-trellis-2",
-   "label": "Trellis 2, $0.05",
-   "state": "test: kept after clean-up"
+   "id": "whole-h31",
+   "label": "Whole weapon generated",
+   "line": "The whole glaive generated in one piece from one long reference, for comparison.",
+   "made_by": "Tripo H3.1 on Fal",
+   "price_usd": 0.46,
+   "verdict": "rejected",
+   "why": "The long shape starves the head: the blade came out a blocky slab and two pieces float loose beside it.",
+   "group": "comparison",
+   "endpoint": "tripo3d/h3.1/image-to-3d",
+   "options": {
+    "texture_quality": "detailed",
+    "face_limit": 20000
+   },
+   "request": "01a20e4c-9972-7a41-9ee3-e02aa3881e65"
   },
   {
-   "id": "x-hunyuan2-mini-turbo-textured",
-   "label": "Hunyuan 2 mini turbo, textured, $0.24",
-   "state": "test: kept"
+   "id": "x-meshy-7.1",
+   "label": "Meshy 7.1",
+   "line": "Meshy's newest model, from the same head reference, textured.",
+   "made_by": "Meshy 7.1 on Fal",
+   "price_usd": 1.2,
+   "verdict": "kept",
+   "why": "A truer grey core band and clean socket; shallower flaking than H3.1. Three times the price.",
+   "group": "tried",
+   "endpoint": "meshy/v7.1/image-to-3d",
+   "options": {
+    "should_texture": true,
+    "target_polycount": 30000,
+    "topology": "triangle"
+   },
+   "request": "01a20e45-d791-75b3-9e7d-023bfcbb0cdc",
+   "rank": 2
   },
   {
    "id": "x-hunyuan3.1-rapid",
-   "label": "Hunyuan 3.1 rapid, $0.015",
-   "state": "test: kept"
+   "label": "Hunyuan 3.1 rapid",
+   "line": "Tencent's Hunyuan 3.1 rapid.",
+   "made_by": "Hunyuan 3.1 rapid on Fal",
+   "price_usd": 0.225,
+   "verdict": "kept",
+   "why": "Crisp flake scars and the pale core in one closed piece; 50,000 triangles to cut.",
+   "group": "tried",
+   "endpoint": "fal-ai/hunyuan-3d/v3.1/rapid/image-to-3d",
+   "request": "01a20d62-7640-7590-b1e5-051148a8518e",
+   "rank": 3
+  },
+  {
+   "id": "x-hunyuan2-mini-turbo-textured",
+   "label": "Hunyuan 2 mini turbo",
+   "line": "Tencent's Hunyuan 2 mini turbo, textured.",
+   "made_by": "Hunyuan 2 mini turbo on Fal",
+   "price_usd": 0.08,
+   "verdict": "kept",
+   "why": "Faithful outline, one closed piece; the blade is thin and the flaking soft.",
+   "group": "tried",
+   "endpoint": "fal-ai/hunyuan3d/v2/mini/turbo",
+   "options": {
+    "textured_mesh": true
+   },
+   "rank": 4
+  },
+  {
+   "id": "x-trellis-2",
+   "label": "Trellis 2",
+   "line": "Trellis 2 at 1024 resolution, 2048 texture.",
+   "made_by": "Trellis 2 on Fal",
+   "price_usd": 0.3,
+   "verdict": "kept",
+   "why": "A good flaked edge, but 205 loose pieces to clear.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis-2",
+   "options": {
+    "resolution": 1024,
+    "texture_size": 2048,
+    "decimation_target": 30000
+   },
+   "rank": 5
   },
   {
    "id": "x-idol-max-turbo",
-   "label": "Idol max turbo, $0.10",
-   "state": "test: kept after clean-up"
+   "label": "Idol max turbo",
+   "line": "Speridlabs' Idol, turbo.",
+   "made_by": "Idol max turbo on Fal",
+   "price_usd": 0.1,
+   "verdict": "kept",
+   "why": "Sharp flaking, but tilted 20 degrees and in three pieces.",
+   "group": "tried",
+   "endpoint": "speridlabs/idol/max/turbo",
+   "rank": 6
+  },
+  {
+   "id": "head-p2",
+   "label": "Tripo P2",
+   "line": "Tripo's P2 model from the same reference.",
+   "made_by": "Tripo P2 on Fal",
+   "price_usd": 1.2,
+   "verdict": "alternative",
+   "why": "Thinner, a small hook, six pieces.",
+   "group": "tried",
+   "endpoint": "tripo3d/p2/image-to-3d",
+   "rank": 7
+  },
+  {
+   "id": "x-trellis",
+   "label": "Trellis",
+   "line": "The original Trellis.",
+   "made_by": "Trellis on Fal",
+   "price_usd": 0.02,
+   "verdict": "rejected",
+   "why": "Two spurs where the reference has one; smeared flaking.",
+   "group": "tried",
+   "endpoint": "fal-ai/trellis",
+   "rank": 8
   }
  ],
- "default_model": "assembled"
+ "failed": []
 }
