@@ -13,8 +13,25 @@ def test_table_keeps_bases_placed_with_a_light_and_says_why_others_are_left_out(
         {"base": "S:2", "edid": "Crate01", "type": "STAT", "placed": 400, "lights": [["L:1", 50, 0, 0]]},
         {"base": "S:3", "edid": "LanternGlow", "type": "STAT", "placed": 12, "lights": []}]}
     t, left = lp.table(ev)
-    assert t == {"S:1": {"light": "L:1", "offset": [0, 0, 11], "lit": 4, "placed": 10, "edid": "CandleHorn"}}
-    assert [r["base"] for r in left] == ["S:3"] and "never placed with a light" in left[0]["why"]
+    assert t == {"S:1": {"light": "L:1", "offset": [0, 0, 11], "how": "measured", "lit": 4, "placed": 10,
+                         "edid": "CandleHorn", "class": "flame"}}
+    assert [r["base"] for r in left] == ["S:3"] and "no mesh" in left[0]["why"]
+
+
+def test_never_lit_sources_take_their_class_light_at_their_own_mesh_offset_and_unlit_ones_are_named_out():
+    ev = {"plugins": [], "lights": 9, "bound": 8, "bases": [
+        {"base": "S:1", "edid": "CandleHorn", "model": "horn.nif", "type": "STAT", "placed": 10,
+         "lights": [["L:1", 0, 0, 10], ["L:1", 0, 0, 12], ["L:1", 2, 0, 11]]},
+        {"base": "S:2", "edid": "CandleLantern02", "model": "candle2.nif", "type": "STAT", "placed": 3, "lights": []},
+        {"base": "S:3", "edid": "CandleLampOff", "model": "off.nif", "type": "STAT", "placed": 3, "lights": []},
+        {"base": "S:4", "edid": "FirewoodPile01", "model": "wood.nif", "type": "STAT", "placed": 3, "lights": []},
+        {"base": "S:5", "edid": "RareCandle", "model": "r.nif", "type": "STAT", "placed": 40, "lights": [["L:2", 1, 1, 30]]}]}
+    meshes = {"horn.nif": ([0, 0, 0], 40.0), "candle2.nif": ([1.0, 2.0, 33.0], 45.0)}
+    t, left = lp.table(ev, lambda m: meshes.get(m))
+    assert t["S:2"] == {"light": "L:1", "offset": [1.0, 2.0, 33.0], "how": "by class", "lit": 0, "placed": 3,
+                        "edid": "CandleLantern02", "class": "flame", "like": "S:1"}
+    assert t["S:5"]["how"] == "measured, rarely" and t["S:5"]["light"] == "L:2"
+    assert {r["base"]: r["why"].split(" (")[0] for r in left} == {"S:3": "an unlit variant", "S:4": "not a light source"}
 
 
 def test_the_committed_table_lights_a_burning_campfire():

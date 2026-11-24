@@ -41,8 +41,9 @@ export function unfitPoint(fit, q) {
   const x = q[0] - (fit.dx || 0), y = q[1] - (fit.dy || 0);
   return [(c * x + s * y) / k, (-s * x + c * y) / k, (q[2] - (fit.dz || 0)) / k];
 }
-// A source ref's angles carried onto ours: the fit turns about Z, clockwise angles subtract it.
-export function fitRot(fit, rot) { return [rot[0], rot[1], rot[2] - (fit.rot || 0)]; }
+// A source ref's angles carried onto ours: the fit turns about Z (counter-clockwise), so a level ref's clockwise Z angle
+// subtracts it and a tilted one keeps its tilt in the world (turnRot).
+export function fitRot(fit, rot) { return (rot[0] || rot[1]) ? turnRot(rot, -(fit.rot || 0)) : [rot[0], rot[1], rot[2] - (fit.rot || 0)]; }
 
 const wrap = (a) => { a %= 2 * Math.PI; if (a <= -Math.PI) a += 2 * Math.PI; else if (a > Math.PI) a -= 2 * Math.PI; return Math.abs(a) < 1e-12 ? 0 : a; };
 // A column-major 4x4 back to pos, rot (each in (-pi, pi]) and scale, as tools/places/xform.py `decompose`.

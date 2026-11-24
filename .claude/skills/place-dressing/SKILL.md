@@ -20,7 +20,8 @@ baseline carried from the source (its lights with fixtures, its lanterns, its co
   anything else the measured pairing holds (`tools/places/light_pairs.json`: what Skyrim, its DLCs and our source mods
   place with a light beside it, that light and its offset in the thing's own frame). The `lights` stage, `look place`
   and the studio's Add things all add it, seated on the thing; `draft check` fails an added source without it. A thing
-  that looks lit but is not in the table is self-lit (its mesh glows) or was never placed lit, and gets no light.
+  that looks lit but was never placed lit takes the light of the measured thing of its class nearest its size, at the
+  flame or glow its own mesh shows; one named an unlit variant, or not a source at all, gets none.
   A new source plugin is measured again (`ArgoniaPlacesBuild lightpairs`, then `python -m tools.places.light_pairs`)
   before its things are added.
 - A sconce, torch holder, shelf, sign or banner hangs on a wall: in the studio Hang on a wall and a tap on the face

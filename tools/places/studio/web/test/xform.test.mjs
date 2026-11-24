@@ -3,7 +3,16 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { refMatrix, decompose, rotationMatrix, turnRot, tiltRot } from '../js/xform.js';
+import { refMatrix, decompose, rotationMatrix, turnRot, tiltRot, fitRot } from '../js/xform.js';
+
+test('a tilted source ref carried by a turned fit keeps its tilt in the world', () => {
+  const rot = [0.3, -0.2, 1.1], fit = { rot: 0.7 }, c = Math.cos(0.7), s = Math.sin(0.7);
+  const Rf = [c, s, 0, -s, c, 0, 0, 0, 1];   // the fit's counter-clockwise turn, column-major
+  const R = rotationMatrix(rot), want = new Array(9);
+  for (let k = 0; k < 3; k++) for (let r = 0; r < 3; r++) want[k * 3 + r] = Rf[r] * R[k * 3] + Rf[3 + r] * R[k * 3 + 1] + Rf[6 + r] * R[k * 3 + 2];
+  rotationMatrix(fitRot(fit, rot)).forEach((v, i) => assert.ok(Math.abs(v - want[i]) < 1e-9));
+  assert.deepEqual(fitRot(fit, [0, 0, 1]), [0, 0, 1 - 0.7]);
+});
 
 const V = JSON.parse(readFileSync(fileURLToPath(new URL('../../../xform_vectors.json', import.meta.url)), 'utf8'));
 const near = (a, b, msg) => assert.ok(Math.abs(a - b) < 1e-6, `${msg}: ${a} vs ${b}`);

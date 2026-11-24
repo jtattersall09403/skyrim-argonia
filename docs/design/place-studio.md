@@ -98,6 +98,10 @@ one keeps its tilt in the world: `Rz(-a) . R`), and `tilt_rot` / `tiltRot` tilts
 front, +Y, end down) or its own Y axis (Roll), `R . Rk(-a)`, each read back as the record's three angles. The build
 writes the three angles as they stand, which is how the game and the Creation Kit store them (X, Y, Z rotation);
 `tools/tests/test_places_tilt.py` proves the studio's matrix is the plugin's (`tools.navmesh.placed.rotation`).
+The fit carries a source ref the same way (`draft/wholesale.py`, `draft/srcnav.py`, the studio's `fitRot`): its turn about the up
+axis composes with the ref's own rotation, so a tilted rock or plank keeps the pose it had beside its neighbours in the
+source; `python -m tools.places fit_tilt [<place>] [--apply]` finds a row left in the older composition, probes it on its
+mesh's vertices against the source's pose and puts it right, leaving a row a hand turned as it stands.
 
 ## Bundles (derived, never committed)
 
@@ -1063,11 +1067,16 @@ its own seat. A light selected by itself moves or goes alone.
 light is measured, never listed by hand: `ArgoniaPlacesBuild lightpairs` reads every interior cell and worldspace of
 Skyrim.esm, its DLCs and the mods our places draw from, binds each placed light to the nearest other placed ref within
 128 units (the lights stage's own rule), and counts per base how often it stands with a light, which light and where
-in the base's own frame. A base placed with a light at least 3 times and in at least a tenth of its placements is in
-the table (218 bases: candles, candle horns, chandeliers, wall sconces, braziers, campfires, forges, glowing crystals
-and more), with the light most often beside it at the median offset; `python -m tools.places.light_pairs
-<evidence.json> [n]` writes it and names each light-looking base left out with its reason (most are self-lit: their
-mesh glows and nothing is placed beside them). That table is the one pairing: the lights stage gives every source
+in the base's own frame. Each row says how it was made (`how`): `measured`, a base placed with a light at least 3
+times and in at least a tenth of its placements, given the light most often beside it at the median offset;
+`measured, rarely`, a light-looking base lit fewer times, given the light it is given most often; `by class`, a
+light-looking base never placed with a light, sorted by what it is (flame, ember, lamp, crystal, fungus, window or
+glow, from its record's editor id and model), given the light the measured base of its class nearest its size
+carries (`like`), at the place its own mesh gives: the middle of its effect or glow-mapped shapes, else for a flame or
+an ember the middle of its topmost vertices, else of all its vertices (`mesh_offset`). A base whose name says it is an
+unlit variant (off, unlit, dead, empty) or not a source at all (firewood, a book, a potion) is named out with that
+reason. `python -m tools.places.light_pairs <evidence.json> [n]` writes the table (879 bases: 218 measured, 145
+measured rarely, 516 by class; 84 named out) and lists what it left out. That table is the one pairing: the lights stage gives every source
 added to the place (a row of ours with no `src`, unlit) its light seated `on` it (`draft/lights.py station_lights`,
 which `draft check` holds), `look place` adds it with the thing, and the studio's Add things adds it in the same undo
 step (`/api/light_pairs`, `wallsnap.js lightFor`); a base the table does not hold takes the light a placed one of

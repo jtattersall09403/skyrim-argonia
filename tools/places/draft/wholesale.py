@@ -24,6 +24,7 @@ import math
 import shutil
 import sys
 
+from tools.places import xform
 from tools.places.draft import geom, ground, heights, io
 from tools.places.draft.stages import Standing
 from tools.places.seat import Ground
@@ -66,8 +67,11 @@ def lay(st: Standing, offset: float, carry_radius: float | None = None, cap: flo
         if why:
             ledger.append({"src": rid, "space": "exterior", "status": "dropped", "why": why})
             continue
+        # the fit turns the source about the up axis: a level piece adds the turn to its Z angle, a tilted one keeps its
+        # tilt in the world (xform.turn_rot)
         rz = list(r.get("rot") or [0, 0, 0])
-        rz[2] = round(float(rz[2]) + rot, 5)
+        rz = [rz[0], rz[1], round(float(rz[2]) + rot, 5)] if not (rz[0] or rz[1]) else \
+            [round(v % (2 * math.pi), 5) for v in xform.turn_rot(rz, rot)]
         row = {"id": io.mint(st.place_id, "exterior", rid), "base": r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), round(float(r["pos"][2]) + offset, 2)], "rot": rz,
                "scale": r.get("scale", 1.0), "layer": "place", "flags": r.get("flags") or [], "src": rid,

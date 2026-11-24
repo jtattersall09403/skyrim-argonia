@@ -25,6 +25,8 @@ from pathlib import Path
 
 import numpy as np
 
+from tools.places import xform
+
 ON_GROUND = 40.0
 FLOAT_OVER = 96.0   # a source triangle this far over the source's own terrain stands on something, or on nothing
 JOINT_DZ = 32.0   # tools.navmesh.params.AGENT_CLIMB
@@ -248,7 +250,7 @@ def place_carry(pid: str, places: Path | None = None) -> dict:
         if math.dist((X, Y), centre) > radius + reach:
             continue
         rr = list(r.get("rot") or [0, 0, 0])
-        rr[2] = float(rr[2]) + rot
+        rr = [rr[0], rr[1], float(rr[2]) + rot] if not (rr[0] or rr[1]) else xform.turn_rot(rr, rot)   # a tilted piece keeps its tilt
         sp = sc.piece({"id": "src:" + r["id"], "base": r["base"], "kind": r.get("kind"), "pos": [X, Y, Z], "rot": rr,
                        "scale": r.get("scale", 1)})
         if r.get("kind") in SOLID:
