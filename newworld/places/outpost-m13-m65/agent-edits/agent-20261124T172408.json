@@ -1,0 +1,115 @@
+{
+ "save_id": "agent-20261124T172408",
+ "place_id": "outpost-m13-m65",
+ "name": "g10: walking ground under the two small tents the owner turned by the bank, out of their mouths to the open ground, so Chee-jeem and Ee-wulm reach their bedrolls (the tents cut the mesh under their canvas)",
+ "at": "2026-11-24T17:24:08Z",
+ "by": "agent",
+ "final": false,
+ "ops": [
+  {
+   "op": "walk.edit",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.east-tent",
+    "kind": "walk",
+    "note": "the floor of the small tent by the bank where Chee-jeem sleeps, walked out east of its mouth to the open ground: the tent cut the mesh under its canvas",
+    "outline": [
+     [
+      -101062.0,
+      -528108.0,
+      191.25
+     ],
+     [
+      -100562.0,
+      -528108.0,
+      225.62
+     ],
+     [
+      -100562.0,
+      -527928.0,
+      214.38
+     ],
+     [
+      -101062.0,
+      -527928.0,
+      183.12
+     ]
+    ],
+    "space": "exterior"
+   },
+   "before": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.east-tent",
+    "kind": "walk",
+    "note": "the floor of the east small tent, where Chee-jeem sleeps, walked out to the open ground south of it: the mesh was cut away under its canvas when its ground was levelled",
+    "outline": [
+     [
+      -99620.0,
+      -528300.0,
+      282.0
+     ],
+     [
+      -99450.0,
+      -528300.0,
+      309.0
+     ],
+     [
+      -99450.0,
+      -528000.0,
+      231.0
+     ],
+     [
+      -99620.0,
+      -528000.0,
+      210.0
+     ]
+    ],
+    "space": "exterior"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 1,
+   "stroke": 1,
+   "at": "2026-11-24T17:24:08Z",
+   "answers": "g10"
+  },
+  {
+   "op": "walk.add",
+   "walk": {
+    "by": "agent",
+    "id": "outpost-m13-m65.walk.bank-tent-south",
+    "kind": "walk",
+    "space": "exterior",
+    "outline": [
+     [
+      -100898,
+      -528320,
+      215.75
+     ],
+     [
+      -100398,
+      -528320,
+      253.12
+     ],
+     [
+      -100398,
+      -528200,
+      241.62
+     ],
+     [
+      -100898,
+      -528200,
+      210.38
+     ]
+    ],
+    "note": "the floor of the second small tent by the bank where Ee-wulm sleeps, walked out east of its mouth to the open ground: the tent cut the mesh under its canvas"
+   },
+   "call": "fault",
+   "space": "exterior",
+   "n": 2,
+   "stroke": 1,
+   "at": "2026-11-24T17:24:08Z",
+   "answers": "g10"
+  }
+ ]
+}

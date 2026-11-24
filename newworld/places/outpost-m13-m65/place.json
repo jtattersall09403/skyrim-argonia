@@ -462,7 +462,8 @@
   "agent-20261124T154525",
   "agent-20261124T170921",
   "agent-20261124T171031",
-  "agent-20261124T171440"
+  "agent-20261124T171440",
+  "agent-20261124T172408"
  ],
  "draft": {
   "add": [
@@ -1677,6 +1678,17 @@
    "rows": [
     "outpost-m13-m65.5KPXD3YH2MHRDZ8NKRYE1FDQ9V",
     "outpost-m13-m65.9BNYHCKR8QYHF6C9YV84CAW77P"
+   ]
+  },
+  {
+   "save": "agent-20261124T172408",
+   "stroke": 1,
+   "answers": "g10",
+   "note": "",
+   "owner_save": "open session",
+   "rows": [
+    "outpost-m13-m65.walk.bank-tent-south",
+    "outpost-m13-m65.walk.east-tent"
    ]
   }
  ]
