@@ -7,9 +7,10 @@ How to find a real actor for a lore creature kind the mods we hold do not cover,
 
 1. List the wanted kinds: every kind in the 24 region files (`newworld/sources/ecology/regions/`) whose binding is
    dropped or nearest.
-2. Search Nexus Skyrim SE by every name of the kind: the lore name, its ESO name, its Morrowind or Oblivion name,
-   the real animal and its family (`python3 tooling/nexus_search.py <term> ...`: GraphQL name search, most endorsed
-   first, translations and patches dropped). Web search finds few ids; the API finds them.
+2. Search Nexus, Special Edition and the 2011 game both, by every name of the kind: the lore name, its ESO name, its Morrowind or Oblivion name,
+   the real animal and its family (`python3 tooling/nexus_search.py <term> ...`: names and description text, most endorsed
+   first, translations and patches dropped; a `skyrim:` id is a mod of the 2011 game, whose meshes need converting;
+   many resource packs name what they hold only in the description). Web search finds few ids; the API finds them.
 3. Sweep the big creature authors by series name: Mihail ("Mihail Monsters and Animals"), Skinwalker21 ("Animal
    Series", "Creature Series", "Prehistoric Content Series"), Pixie, Chakra, Vicn; and the Creation Club plugins
    already in `Data` (`cc*.esm`).
