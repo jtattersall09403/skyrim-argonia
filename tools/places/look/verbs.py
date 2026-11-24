@@ -921,6 +921,21 @@ def commit(place: str, sess: dict, args: list[str], places=None, bundles=None) -
     return got
 
 
+def owner_note_text(place: str, note_id: str, pdir) -> str:
+    """The words of the owner's note `note_id` (a g-note of a change): his open session's autosave first, then his
+    saves in the place's edits folder; "" when none holds it."""
+    from tools.places.notes import AUTOSAVES
+    for p in [AUTOSAVES / f"{place}.json", *sorted((pdir / "edits").glob("*.json"))]:
+        try:
+            save = json.loads(p.read_text()) if p.exists() else {}
+        except (OSError, ValueError):
+            continue
+        for n in save.get("notes") or []:
+            if isinstance(n, dict) and n.get("id") == note_id and n.get("text"):
+                return str(n["text"])
+    return ""
+
+
 def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=None, bundles=None,
                      answers: str | None = None, lead: str | None = None) -> dict:
     """Strokes of ref ops written into the committed place files as one agent's draft-edit save (the path of `look
@@ -936,6 +951,10 @@ def write_agent_save(place: str, strokes: list[list[dict]], why: str, places=Non
     while (ad / f"{sid}.json").exists():
         sid += "b"
     notes = [{"id": "lead-" + sid, "text": lead, "at": at, "by": "lead"}] if lead else []
+    if answers and not lead:     # his note's own words, from his open session or a save of his, so the studio shows them
+        words = owner_note_text(place, answers, pdir)
+        if words:
+            notes.append({"id": answers, "text": words, "at": at, "by": "owner"})
     tag = {"answers": answers or notes[0]["id"]} if (answers or lead) else {}
     ops, n = [], 0
     for k, stroke in enumerate(strokes, 1):

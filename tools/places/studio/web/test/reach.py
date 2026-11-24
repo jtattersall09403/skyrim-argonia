@@ -5,7 +5,8 @@ The browser suite is a small smoke set that proves only what a real page can: th
 place, touch turns and zooms the view, a tap selects and a drag on the gizmo moves, a save is picked up by another
 session and finalised, the start choice over saved work, the thumb sticks, the tablet layout. Every rule of the
 page's logic (edits, undo, units, markers, paths, notes, stock, states, the walking mesh) is proved by the fast node
-tests beside it (`*.test.mjs`, run by tools/tests/test_studio_web.py) or by a Python test of the server, never here.
+tests beside it (`*.test.mjs`, run by tools/tests/test_studio_web.py) or by a Python test of the server, never here
+(the selection's edge-only outline, which needs three.js to draw, by tools/tests/test_studio_outline_rule.py on its source).
 A new browser test is added only for something no fast test can prove, each test makes its own state (any one
 passes alone), and it is given a row below.
 
