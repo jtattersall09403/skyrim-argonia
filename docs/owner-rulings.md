@@ -368,6 +368,19 @@ added here the day they are made, with the date and the issue.
   character creation. The province is not only Argonian: Imperial remnants and their infrastructure, ruins of
   different eras, Dunmer culture and architecture and more, each looking tropicalised, overgrown or kept according to
   its place, age and upkeep ([the proposal](research/new-art/PROPOSAL.md)).
+- 2026-11-24 (#93/#94, new art, in session, evening; the making rules bind only if the "no art" rule is relaxed): never
+  rebuild what exists: before anything is called missing, be properly sure what we already hold, have composed from
+  held pieces, or can get, by searching record names as well as files and by looking (grave-stakes, cattails, weirs
+  and native boats were all wrongly called missing). Every model is both measured and visually inspected at every
+  stage (generation, with a throw-away and a new prompt where needed; editing; clean-up; interior planning;
+  placement), and the skills for those stages are built up and refined as the place skills are. Clean-up removes stray
+  vertices and messy mesh and cuts the triangle count without losing the look. Bigger things are generated from a
+  reference and their textures redone by hand, not hand-crafted whole. Placing, snapping and any use of a model is
+  from its actual precise geometry, never bounding boxes. A new building's door is part of its mesh as generated, with
+  an invisible plate over it carrying the prompt; the door need not animate. In a new place draft the source is brought
+  in whole and our own buildings are swapped in at the adapting stage. Sources that contradict the lore are corrected
+  to better matches (shared sources allowed). Agents hand-dressing rooms must not scatter things about the floor:
+  follow a written method ([the proposal](research/new-art/PROPOSAL.md)).
 
 ## Writing
 
