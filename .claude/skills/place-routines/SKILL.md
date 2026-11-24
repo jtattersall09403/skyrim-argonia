@@ -23,12 +23,14 @@ each spot (`look at <person>`); every spot stands on the walking mesh.
 
 ## The ways between stops
 
-The game walks a person between their stops by its own pathfinding on the walking mesh, preferring preferred-path
-triangles: the place's paths and walks, and any way drawn by hand. A way that cuts through a house or a tent in the
-studio is a fault of the mesh or of a piece standing where the mesh does not know it (`place-streets`), never fixed by
-moving the stop. Where a person must take one way to a stop (round the back of the tents, along the jetty), draw it:
-the stop's Draw the way here in the People panel, taps along the way, Done (a stop's `route`). A way that must be
-walked point for point, a guard's round, is a patrol (at least two points).
+The game walks a person between their stops by its own pathfinding on the walking mesh, preferring the place's paths
+and walks. The build cuts every house and tent no one walks into from the mesh, so no found way crosses one; a way
+that still cuts through a house or tent in the studio is a piece standing where the mesh does not know it
+(`place-streets`; `python -m tools.places houses_cut <place>` names it), never fixed by moving the stop. Where a person
+must take one way to a stop (round the back of the tents, along the jetty), draw it: the stop's Draw the way here in
+the People panel, taps along the way, Done (a stop's `route`); the build lays it as a marker chain the person walks
+point by point before the stop, which `check people` reads back. A person has at most ten drawn ways. A round walked
+all the while, a guard's, is a patrol (at least two points).
 
 ## How complete people are
 

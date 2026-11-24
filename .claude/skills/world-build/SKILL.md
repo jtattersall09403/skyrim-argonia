@@ -45,8 +45,11 @@ only on the owner's word: section 11.
 A tree or plant the world placed is moved at a place by the place, never by the world: the place clears the world's
 placement there (`clear.jsonl`, `veg.clear`) and carries the same base as its own row at the new pose (`world: {base,
 pos}` naming where the world had it). A rebuild of the world keeps placing the tree there and the place keeps
-clearing it, so the move is never undone. A depth the owner corrects on trees of one type is fed back as that type's
-sink in `flora_base` (`sink_lo_m`, `sink_hi_m`) from the tree notes grouped by type (`python -m tools.places notes`).
+clearing it, so the move is never undone. A depth the owner corrects on trees of one type becomes that type's rule:
+`python -m tools.places tree_rules` lists his sent tree notes by tree type with the sink window each would set and how
+many placed trees the next rebuild reseats; `--apply` sets `flora_base` `sink_lo_m`, `sink_hi_m` and `sink_m` from his
+depths and answers each note with the old and new window. The world is not rebuilt for it: `rebuild.sh plan` shows the
+`place` and `edits` stages stale from `db:flora_base` until the owner asks for a rebuild.
 
 ## 1. Measure first
 

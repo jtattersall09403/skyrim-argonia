@@ -810,11 +810,13 @@ def check_people(ctx) -> list[str]:
                 bad.append(f"{who}: package {k} missing")
                 continue
             tgt = p.get("location") or p.get("target")
-            if p.get("target_linked"):  # a patrol, the vanilla way: the actor's own linked ref (no keyword) starts the chain
+            if p.get("target_linked"):  # a patrol, the vanilla way: the actor's own linked ref starts the chain (a drawn
+                # way's leg: the linked ref under the leg's keyword)
                 act = next((a for a in ctx["dump"]["actors"] if a.get("base") == n["fk"]), {})
-                tgt = next((ln["ref"] for ln in act.get("linked") or [] if not ln.get("keyword")), None)
+                kw = p.get("link_keyword") or ""
+                tgt = next((ln["ref"] for ln in act.get("linked") or [] if (ln.get("keyword") or "") == kw), None)
                 if tgt is None:
-                    bad.append(f"{who}: {p['edid']} patrols its linked ref, but the actor has no linked ref without a keyword")
+                    bad.append(f"{who}: {p['edid']} walks its linked ref, but the actor has no linked ref {('under ' + kw) if kw else 'without a keyword'}")
                     continue
                 chain, cur = [], tgt
                 while cur and cur not in chain:  # the chain of markers must be ours and resolve

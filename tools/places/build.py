@@ -214,7 +214,7 @@ def write_key(esp: Path, shards: list[str], world_sha: str) -> str:
 def code_key() -> str:
     h = hashlib.sha256()
     world = ROOT / "tools" / "newworld" / "world"  # the road rule and the ground's road sets the paths are painted by
-    for p in sorted([Path(__file__), Path(__file__).with_name("people.py"), Path(__file__).with_name("carrynav.py"),
+    for p in sorted([Path(__file__), Path(__file__).with_name("people.py"), Path(__file__).with_name("carrynav.py"), Path(__file__).with_name("houses_cut.py"),
                      Path(__file__).parent / "draft" / "srcnav.py", world / "roadpaint.py", world / "texture.py"]
                     + list(TOOL_PROJ.glob("*.cs"))):
         if p.exists():
@@ -1676,6 +1676,18 @@ def footprint_cells(place: dict) -> set:
             if cn.intersect([(*p, 0.0) for p in cn.cell_box((cx, cy))], ring) is not None}
 
 
+def house_blocks(P: dict, S: dict) -> list[dict]:
+    """The walking zones that cut each house's and tent's footprint from the place's walking mesh (houses_cut.blocks),
+    from the rows as built and the place's people."""
+    from tools.places import houses_cut
+    from tools.places.seat import _collision_tris
+    rows = [r for r in S["refs"] if r.get("space") == "exterior" and r.get("layer") != "world"]
+    files = {"spaces": {"exterior": {"refs": rows}}, "people": P["people"]}
+    from tools.places.draft import io
+    bases = io.catalogue_bases({r["base"] for r in rows if r.get("base")})
+    return houses_cut.blocks(rows, bases, _collision_tris, houses_cut.lived_in(files))
+
+
 def drawn_ways(people: list[dict]) -> list[list[tuple]]:
     """The ways drawn by hand into people's stops (a routine stop's `route`, outside), each from the stop before it
     through the drawn points to the stop: the walking mesh under them is the preferred way (Bethesda's preferred-path
@@ -2232,6 +2244,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         if source_navmesh(P):   # every cell the carried mesh can reach is ours, so its ring round them is shipped too
             touched |= footprint_cells(P["place"])
         walk_ext = [r for r in P["walk"] if (r.get("space") or "exterior") == "exterior"]
+        walk_ext = house_blocks(P, S) + walk_ext   # no way through a house or tent no one walks into (houses_cut.py)
         touched |= walk_cells(walk_ext)
         if touched:
             objects, tally = collision_objects(S["refs"])

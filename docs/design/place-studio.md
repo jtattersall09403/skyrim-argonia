@@ -953,19 +953,25 @@ unit's move carries those wholly in it), and the walking mesh itself, which the 
 moved. The Selected panel of a thing a routine names says so ("Ada sleeps here: their routine follows it wherever it
 goes"), and moving it says it at the moment of the move.
 
-**What a person's lines are, and a way drawn by hand.** The line between two stops is a picture of the way the
-game's own pathfinding walks between the two packages: on the built walking mesh (`navroute.js`, preferred-path
-triangles cheaper, water dearer) once the place is built, else over our ground (`routes.js`), round every house and
-tent and along the paths. What stands in the way there is read from the real triangles of each piece's mesh
-(`routes.js meshFootprint`: a triangle reaching between 24 and 180 units over the ground shuts the cells it crosses;
-a floor at the feet or a roof overhead does not), a piece whose mesh has not loaded standing by its record's bounds
-when it is a building; the net is made again as the meshes arrive. A patrol (dashed) is the person's own chain of
-markers, which the game walks point by point. To make someone walk a particular way to a stop, the stop's Draw the
-way here (Redraw, Clear the drawn way) takes taps along the way, in order, then Done: saved as the stop's `route`
-(`[[x, y, z], ...]`, outside) in one `person.edit` op, drawn exactly as drawn, and authoritative over the found way
-in the studio. The build makes the walking mesh under it the preferred way (`build.drawn_ways`: a road polyline for
-the generated mesh, `carrynav.prefer_along` for the carried triangles), Bethesda's own preferred-path flag, which
-the game's pathfinding takes before any other; a way that must be followed point for point is a patrol.
+**What a person's lines are, and a way drawn by hand.** Between two stops the game walks a person by its own
+pathfinding on the walking mesh, preferring preferred-path triangles (the place's paths and walks). The studio draws
+that way on the built walking mesh (`navroute.js`) once the place is built, else over our ground (`routes.js`), round
+every house and tent and along the paths, judged from the real triangles of each piece's mesh (`routes.js
+meshFootprint`: a triangle reaching between 24 and 180 units over the ground shuts the cells it crosses). The build
+makes the game's way keep out of them too: each house and tent no one is meant to walk into (no bed, stop, drawn point
+or door arrival inside it) has its footprint cut from the walking mesh, the hull of its collision walls standing in a
+walker's height less a walker's radius, as a `block` walking zone (`houses_cut.blocks`, applied with the owner's
+zones); `python -m tools.places houses_cut <place>` holds a built mesh against every house and tent and names any
+with triangles inside. To make someone walk a particular way into a stop, the stop's Draw the way here (Redraw, Clear
+the drawn way) takes taps along the way, in order, then Done: saved as the stop's `route` (`[[x, y, z], ...]`,
+outside) in one `person.edit` op. The build lays it as Bethesda sends someone along a given route: a chain of markers on
+the drawn points, each linked to the next, and a patrol package over it (`people.py`, the Patrol template), scheduled
+from the stop's hour for the walk's length plus ten minutes and listed before the stop's own package, whose linked-ref
+target is keyed by one of Skyrim's generic link keywords (LinkCustom01 to 10, one per drawn way of the person) under
+which the actor's linked ref names the chain's first marker. `check people` reads the built plugin back and holds each
+leg's chain to its markers in order, on the walking mesh and reachable from the stop before. A drawn way bends with a
+unit it passes over (`units.js spotsMoved`). The way the build marks preferred under a drawn way
+(`build.drawn_ways`) stays for the stretch between the chain's last marker and the stop.
 
 **Walking mesh** (`walkmesh.js` the data, `walk_layer.js` the drawing, `walk_tools.js` the tools). Walking mesh in our
 view's bar (beside Player's view and Sticks; remembered per browser) draws the built place's walking mesh (`/nav`) over

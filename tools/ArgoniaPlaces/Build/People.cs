@@ -12,6 +12,14 @@ using Noggog;
 
 static class People
 {
+    // A linked ref row {ref, keyword}: the keyword (a KYWD key) when it has one, as the Creation Kit's Linked Ref tab.
+    static LinkedReferences Link(System.Text.Json.JsonElement l)
+    {
+        var lr = new LinkedReferences(); lr.Reference.SetTo(C.Fk(l.GetProperty("ref").GetString()!));
+        if (l.TryGetProperty("keyword", out var kw) && kw.GetString() is { Length: > 0 } k) lr.KeywordOrReference.SetTo(C.Fk(k));
+        return lr;
+    }
+
     static ILinkCache? cache;
     public static ILinkCache Cache => cache ??= C.Cache(Write.Masters);
 
@@ -143,7 +151,7 @@ static class People
             o.Base.SetTo(ctx.Link(m.GetProperty("base").GetString()!));
             o.Placement = new Placement { Position = P(m.GetProperty("pos")), Rotation = P(m.GetProperty("rot")) };
             if (m.TryGetProperty("linked", out var ln))
-                foreach (var l in ln.EnumerateArray()) { var lr = new LinkedReferences(); lr.Reference.SetTo(C.Fk(l.GetProperty("ref").GetString()!)); o.LinkedReferences.Add(lr); }
+                foreach (var l in ln.EnumerateArray()) o.LinkedReferences.Add(Link(l));
             refs[C.Key(o.FormKey)] = o;
             var space = m.GetProperty("space").GetString()!;
             if (space == "__chests__") chests!.Persistent.Add(o);
@@ -192,7 +200,12 @@ static class People
             }
             if (p.TryGetProperty("target_linked", out var tl) && tl.GetBoolean())  // vanilla patrols: the actor's own linked ref, no keyword
                 foreach (var d in k.Data.Values.OfType<PackageDataTarget>().Take(1))
-                    d.Target = new PackageTargetLinkedReference();
+                {
+                    var t = new PackageTargetLinkedReference();
+                    // a drawn way's leg: the actor's linked ref under that leg's keyword (LinkCustomNN) starts its chain
+                    if (S(p, "link_keyword") is { } kw) t.Keyword.SetTo(C.Fk(kw));
+                    d.Target = t;
+                }
             else if (S(p, "target") is { } tgt)
                 foreach (var d in k.Data.Values.OfType<PackageDataTarget>().Take(1))
                 {
@@ -277,7 +290,7 @@ static class People
             o.Base.SetTo(C.Fk(a.GetProperty("base").GetString()!));
             o.Placement = new Placement { Position = P(a.GetProperty("pos")), Rotation = P(a.GetProperty("rot")) };
             if (a.TryGetProperty("linked", out var aln))
-                foreach (var l in aln.EnumerateArray()) { var lr = new LinkedReferences(); lr.Reference.SetTo(C.Fk(l.GetProperty("ref").GetString()!)); o.LinkedReferences.Add(lr); }
+                foreach (var l in aln.EnumerateArray()) o.LinkedReferences.Add(Link(l));
             var space = a.GetProperty("space").GetString()!;
             if (space == "exterior") ((Worldspace)mod.Worldspaces.First()).TopCell!.Persistent.Add(o);
             else interiors[space].Persistent.Add(o);

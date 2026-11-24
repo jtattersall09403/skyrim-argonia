@@ -163,6 +163,7 @@ static class Dump
             ["radius"] = p.Data.Values.OfType<IPackageDataLocationGetter>().Select(d => (int?)d.Location.Radius).FirstOrDefault(),
             ["target"] = p.Data.Values.OfType<IPackageDataTargetGetter>().Select(d => d.Target is IPackageTargetSpecificReferenceGetter s ? C.Key(s.Reference.FormKey) : null).FirstOrDefault(x => x != null),
             ["target_linked"] = p.Data.Values.OfType<IPackageDataTargetGetter>().Take(1).Any(d => d.Target is IPackageTargetLinkedReferenceGetter),
+            ["link_keyword"] = p.Data.Values.OfType<IPackageDataTargetGetter>().Take(1).Select(d => d.Target as IPackageTargetLinkedReferenceGetter).Where(t => t != null && !t.Keyword.IsNull).Select(t => C.Key(t!.Keyword.FormKey)).FirstOrDefault(),
         }).ToList();
         var factions = mod.Factions.Select(f => new Dictionary<string, object?>
         {

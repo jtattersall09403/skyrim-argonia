@@ -28,7 +28,7 @@ changes (the lead continues it); a change is as narrow as it can be correct.
 - A world tree that stands wrong (too high, sunk too deep, in the way) is moved by Move this tree, which makes it the
   place's row (the world's one cleared there); its note names its type and measured sink, and `notes` lists tree
   notes by tree type against the placement rule's sink. A depth the owner corrects on several trees of one type is a
-  change to that type's sink in the placement rules (`world-build`), never a hand fix tree by tree.
+  change to that type's sink, made by `python -m tools.places tree_rules --apply` (`world-build`), never a hand fix tree by tree.
 - A way a person walks to a stop is drawn on the stop (People: Draw the way here, taps in order, Done; Clear the
   drawn way to give it back to the game's pathfinding); the build makes the walking mesh under it the preferred way.
 - In the studio a thing slides along the ground by its middle handle, along one axis by E–W or N–S, up or down by

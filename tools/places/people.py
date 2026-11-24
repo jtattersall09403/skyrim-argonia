@@ -47,6 +47,11 @@ TEMPLATE = {  # routine kind -> the vanilla package copied (Skyrim.esm)
     "patrol": "Skyrim.esm:10DE27",  # GuardRiftenBarracksPatrol (Patrol)
 }
 XMARKER_HEADING = "Skyrim.esm:000034"
+# The generic linked-ref keywords (Skyrim.esm LinkCustom01..10) a drawn way's leg is keyed by: the actor's linked ref
+# under that keyword starts the leg's marker chain, and the leg's package targets its linked ref with that keyword.
+LINK_CUSTOM = ["Skyrim.esm:05D5E6", "Skyrim.esm:05D5E7", "Skyrim.esm:05D5E8", "Skyrim.esm:05D5FE", "Skyrim.esm:05D5FF",
+               "Skyrim.esm:0B9502", "Skyrim.esm:0B9503", "Skyrim.esm:0B9504", "Skyrim.esm:0B9505", "Skyrim.esm:0B9506"]
+WAY_UNITS_PER_MINUTE = 240.0   # a walker covers about 80 units a real second; a game minute is 3 real seconds
 CHEST_CELL_LIGHT = "Skyrim.esm:0300E2"
 IS_GUARD = "Skyrim.esm:086EEE"
 GUARD_DIALOGUE = "Skyrim.esm:02BE3B"  # GuardDialogueFaction: DialogueCrimeGuards' quest condition, with IsGuard
@@ -222,6 +227,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             p["bed"] = b["id"] if b else p["bed"]["ref"]
         packs = []
         patrol_start = None
+        way_links = []   # {ref, keyword}: each drawn way's first marker, under its leg's keyword
         for i, st in enumerate(p.get("routine", [])):
             kind = st["kind"]
             if kind not in TEMPLATE:
@@ -257,6 +263,27 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                     at = {"ref": p["bed"]}
                 row["location"] = {"ref": place_at(at, f"{who}:{i}"),
                                    "radius": int(at.get("radius", SLEEP_RADIUS if kind == "sleep" else DEFAULT_RADIUS))}
+            way = st.get("route") or []
+            if way and kind != "patrol" and (st.get("at") or {}).get("space", "exterior") == "exterior":
+                # a way drawn into this stop is walked as drawn, the way Bethesda sends someone along a given route: a
+                # patrol over a chain of markers laid on the drawn points, scheduled from the stop's hour for as long
+                # as the walk takes and listed before the stop, whose own package then takes over at its end
+                if len(way_links) >= len(LINK_CUSTOM):
+                    raise Bad(f"people.jsonl: {who}: more than {len(LINK_CUSTOM)} drawn ways")
+                kw = LINK_CUSTOM[len(way_links)]
+                chain = [place_at({"space": "exterior", "pos": [float(v) for v in q[:3]] if len(q) >= 3 else [float(q[0]), float(q[1])]},
+                                  f"{who}:{i}:way{j}") for j, q in enumerate(way)]
+                for a, b in zip(chain, chain[1:]):
+                    by_fk[a].setdefault("linked", []).append({"ref": b, "keyword": ""})
+                pts = [by_fk[c]["pos"] for c in chain]
+                length = sum(((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) ** 0.5 for a, b in zip(pts, pts[1:]))
+                minutes = int(min(120, max(10, round(length / WAY_UNITS_PER_MINUTE) + 10)))
+                wfk = ids(f"pack:{who}:{i}:way")
+                out["packages"].append({"fk": wfk, "edid": f"ANP_{pid}_{_edid(who)}_way{i}", "from": TEMPLATE["patrol"], "kind": "way",
+                                        "hour": int(st["start"]), "minutes": minutes, "days": st.get("days"),
+                                        "target_linked": True, "link_keyword": kw})
+                packs.append(wfk)
+                way_links.append({"ref": chain[0], "keyword": kw})
             out["packages"].append(row)
             packs.append(fk)
         home = p.get("home_at") or first_stop(p)
@@ -404,7 +431,8 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                             **({"travel": travel} if travel else {})})
         out["actors"].append({"fk": ids(f"actor:{who}"), "base": npc_fk, "space": space, "pos": pos, "rot": [0.0, 0.0, 0.0],
                               "cell": list(cell_of(*pos[:2])) if space == "exterior" else None, "person": who,
-                              **({"linked": [{"ref": patrol_start, "keyword": ""}]} if patrol_start else {})})
+                              **({"linked": ([{"ref": patrol_start, "keyword": ""}] if patrol_start else []) + way_links}
+                                 if patrol_start or way_links else {})})
     from tools.places.build import problem
     for p in people:
         try:

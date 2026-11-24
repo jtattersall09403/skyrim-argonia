@@ -132,6 +132,8 @@ export function spotsMoved(model, S, u, moved, turn, refsById) {
     const after = clone(p); let hit = false;
     const at = (o) => { if (o && !o.ref && (o.space || 'exterior') === S && Array.isArray(o.pos) && spotIn(u, o.pos)) { o.pos = moved(o.pos); hit = true; } };
     at(after.work); for (const st of after.routine || []) at(st.at);
+    // a way drawn into a stop bends with the unit where it passes over or ends at it: each of its points standing in the unit moves with it
+    if (S === 'exterior') for (const st of after.routine || []) (st.route || []).forEach((q, i) => { if (spotIn(u, q)) { st.route[i] = moved(q); hit = true; } });
     const pts = patrolOf(after);
     pts.forEach((q, i) => { if (Array.isArray(q)) { if (S === 'exterior' && spotIn(u, q)) { pts[i] = moved(q); hit = true; } } else at(q); });
     if (hit) people.push({ person: after, before: clone(p) });
