@@ -151,6 +151,12 @@ tests = ["tools/tests/test_newworld_atlas_state.py"]
 globs = ["tools/places/look*", "tools/places/studio/web/js/agent.js"]
 tests = ["tools/tests/test_places_look.py", "tools/tests/test_places_playwalk.py", "tools/tests/test_studio_web.py"]
 
+# The browser suite's declaration (reach.py) is read by path, not imported, so a change to a suite file or to its
+# reach module reaches the test that holds the declaration whole and the suite within its cap.
+[[rule]]
+globs = ["tools/places/studio/web/test/*.py"]
+tests = ["tools/tests/test_studio_browser_reach.py"]
+
 
 # The consistency checker (decision 0040): every new-world record against every other. It runs when the place
 # records and their sources, the quests, the story pages (the line pages it reads, every story page the retired-name
