@@ -77,6 +77,8 @@ textarea{width:100%;min-height:70px;font:inherit;color:inherit;background:var(--
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 "use strict";
+// The models carry their textures inside one file. The loader would fetch() those, which the page host refuses; with this off it draws them as ordinary images.
+try { window.createImageBitmap = undefined; } catch (e) {}
 const $ = (s, r = document) => r.querySelector(s);
 const el = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const k in a) { if (k === "text") e.textContent = a[k]; else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]); else e.setAttribute(k, a[k]); } for (const c of kids) if (c != null) e.append(c); return e; };
 const S = { cat: null, asset: null, model: null, mode: "tex", scale: true, compare: null, pinning: false, notes: [], batches: [], db: null, uid: "me", pendingPin: null };

@@ -385,6 +385,9 @@ added here the day they are made, with the date and the issue.
   simplest thing we could make, put in a new asset explorer page for him to inspect in 3D, the page to grow into a
   general explorer of our asset work with feedback notes for agents on specific spots. A dugout canoe was agreed. This
   permits that one piece and the page; it is not the ruling on #94.
+- 2026-11-24 (#93/#94, in session, after the first three examples): the shafts of halberds and similar long weapons are
+  custom too, not a plain made-by-script pole. The loose things scattered about at Ashgate Landing's exterior (reed
+  bundles and others, which he moved by hand) are the "floor scatter" fault; it is a row in skill-fixes.
 
 ## Writing
 
