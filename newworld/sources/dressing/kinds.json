@@ -362,6 +362,43 @@
     2,
     1
    ]
+  },
+  "grave-stakes": {
+   "sort": "bones",
+   "per100": 4,
+   "habitat": "open",
+   "regions": [
+    "valley-of-storms",
+    "tulmek-washes"
+   ],
+   "thing": "carved grave-stakes standing for the unstaked dead: 'the grave-stake tradition' of the valley (valley-of-storms faith note) and the stakes of Tulmek's drowned villages (place notes abandoned-village-9-m97, -m4-m109); grave-stakes are the Argonians' own dead-marker (story/lore/topics/material-culture.md, Fittings). One stake mesh of the mod passes the size gate; stakes 1, 2 and 5 are taller than MAX_HALF and stake 4 is a rooster vane.",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRuinsXanGraveStake3"
+   ]
+  },
+  "hackwing-nests": {
+   "sort": "nests_eggs",
+   "per100": 4,
+   "habitat": "rock",
+   "regions": [
+    "skeith-isle"
+   ],
+   "thing": "nesting hackwings on the sea-worn crags (skeith-isle dangers note: 'cliffs and nesting hackwings')",
+   "bases": [
+    "King of the Murkmire.esp:ArgonianEggNest01"
+   ]
+  },
+  "landing-totems": {
+   "sort": "bones",
+   "per100": 3,
+   "habitat": "shore",
+   "regions": [
+    "murkwood"
+   ],
+   "thing": "wood, mud and plumage totems at the landings: 'Totems everywhere' (story/lore/topics/material-culture.md, Hutan-Tzel's runed totems; the totem-posts at the Hutan landings in the outposts' faith notes)",
+   "bases": [
+    "ArgonianLakeHouse.esl:00GV_ArgonianTotem01"
+   ]
   }
  }
 }

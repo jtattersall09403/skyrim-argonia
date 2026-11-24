@@ -270,7 +270,7 @@ Law: no law. It meets a visitor as abandoned (the place is uninhabited. Whatever
 
 The nearest stop is the boat stop at Tsonac, 290 m away across the marsh on foot. Roads run from it to Chalkmoth Pit (track, 510 m south). <!-- travel_approach:kaochalit; road_node:place=kaochalit -->
 
-It is to be built from Dunnashammipuri in Journey to Baan Malur.esp (a ruin daedric: 469 buildings, 1 interior, 0 residents, 13 hostile, about 63 m across). The source reads: "Dunnashammipuri: a ruin daedric built in daedric and nordic style with ruin, shrine, camp pieces. 0 people live there, 13 hostile. 1 interiors (Dunnashammipuri). By water." Similar sources: Redeyn Ancestral Tomb (ruin dunmer, 18 buildings, 1 interior), Ashimmidarum (ruin daedric, 355 buildings, 1 interior) and Frossel (ruin dunmer, 491 buildings, 1 interior). <!-- place_source:kaochalit/0; source_place:journeytobaanmalur.dunnashammipurilocation; place_source:kaochalit/1; place_source:kaochalit/2; place_source:kaochalit/3 -->
+It is to be built from Redeyn Ancestral Tomb in Journey to Baan Malur.esp (a ruin dunmer: 18 buildings, 1 interior, 0 residents, 13 hostile, about 57 m across). The source reads: "Redeyn Ancestral Tomb: a ruin dunmer built in dunmer and ayleid style with shrine, ruin, mine pieces. 0 people live there, 13 hostile. 1 interiors (Redeyn Ancestral Tomb). By water." Similar sources: Ashimmidarum (ruin daedric, 355 buildings, 1 interior), Frossel (ruin dunmer, 491 buildings, 1 interior) and Cursed Tomb (ruin dunmer, 88 buildings, 1 interior). <!-- place_source:kaochalit/0; source_place:journeytobaanmalur.redeynancestraltomblocation; place_source:kaochalit/1; place_source:kaochalit/2; place_source:kaochalit/3 -->
 
 ### Nuxhal
 

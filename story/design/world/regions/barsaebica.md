@@ -280,7 +280,7 @@ Agia Nero is a Third Empire road post on the high ground west of Loriasel, on th
 
 A broken stone wall, a stump of a tower and an archway half-buried in mud. <!-- place_note:agia-nero/look --> Once a road post on the Gideon-Stormhold way, it is now stripped of anything of value and offers only shelter. <!-- place_note:agia-nero/economy --> No Hist shoot grows at this Imperial post; only a worn plinth is left of its shrine. <!-- place_note:agia-nero/faith -->
 
-Built from: Its main source, Fort Kastav (Skyrim), is an Imperial fort with two interiors, four doors and bandits, and fits a broken road post. One of its interiors, a hold of barrels, hay and sacks, serves as the smugglers' cache under the tower, and its Nordic pieces are replaced. Nightcaller Temple and Old Laboratory are not used, being a temple and a lab. Still to add: the tower stump, the half-buried arch, the worn plinth and the scavenger corner in the yard. <!-- place_note:agia-nero/source -->
+Built from: Its main source, Tamriel 18,35 (Depths of Skyrim), is a small sunken Imperial fort of ten ruin pieces standing in the water, with no interior, and fits a broken road post whose yard has gone under. The smugglers' cache under the tower is a cellar added from one other source's Imperial interior, and Nordic pieces are replaced with plain Imperial rubble. Still to add: the tower stump, the half-buried arch, the worn plinth and the scavenger corner in the yard. <!-- place_note:agia-nero/source -->
 
 It promises the player: Hostile occupants: smugglers in the broken walls (x4); Boss fight: the smugglers' chief; Boss chest: the cache under the tower. <!-- place_give:agia-nero/0; place_give:agia-nero/1; place_give:agia-nero/2 -->
 
@@ -288,7 +288,7 @@ Law: no law. It meets a visitor as hostile (held by people who attack on sight: 
 
 The nearest stop is the coach stop at Slough Point, 440 m away across the marsh on foot. No road reaches it. <!-- travel_approach:agia-nero; road_node:place=agia-nero -->
 
-It is to be built from Fort Kastav in Skyrim.esm (a fort: 419 buildings, 2 interiors, 0 residents, 84 hostile, about 96 m across). The source reads: "Fort Kastav: a fort built in imperial and nordic style with fort, mine, ruin pieces. 0 people live there, 84 hostile. 2 interiors. By water." Similar sources: Nightcaller Temple (ruin imperial, 620 buildings, 1 interior), Molten Depths (ruin imperial, 423 buildings, 1 interior) and Old Laboratory (ruin imperial, 427 buildings, 1 interior). <!-- place_source:agia-nero/0; source_place:skyrim.fortkastavlocation; place_source:agia-nero/1; place_source:agia-nero/2; place_source:agia-nero/3 -->
+It is to be built from Tamriel 18,35 in DepthsOfSkyrim.esp (a ruin imperial: 10 buildings, 0 interiors, 0 residents, 0 hostile, about 49 m across). The source reads: "Tamriel 18,35: a ruin imperial built in imperial style with ruin pieces. 0 people live there, 0 hostile. By water." Similar sources: Nightcaller Temple (ruin imperial, 620 buildings, 1 interior), Molten Depths (ruin imperial, 423 buildings, 1 interior) and Driftshade Sanctuary (ruin imperial, 479 buildings, 2 interiors). <!-- place_source:agia-nero/0; source_place:depthsofskyrim.cluster.tbpimpfortsunk.17.36; place_source:agia-nero/1; place_source:agia-nero/2; place_source:agia-nero/3 -->
 
 ## What ranges it
 

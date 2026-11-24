@@ -378,7 +378,7 @@ Law: no law. It meets a visitor as abandoned (the place is uninhabited. Whatever
 
 The nearest stop is the boat stop at Mir-Xal, 360 m away across the marsh on foot. No road reaches it. <!-- travel_approach:lilmothiit-ruin-m6-m104; road_node:place=lilmothiit-ruin-m6-m104 -->
 
-It is to be built from Avanchnzel in Skyrim.esm (a ruin dwemer: 3105 buildings, 3 interiors, 0 residents, 77 hostile, about 88 m across). The source reads: "Avanchnzel: a ruin dwemer built in dwemer and imperial style with mine, cave, ruin pieces. 0 people live there, 77 hostile. 3 interiors. By water." Similar sources: Huluxinoag (ruin argonian, 59 buildings, 1 interior), Haj-Uxith (ruin argonian, 66 buildings, 1 interior) and Teeth of Sithis (ruin argonian, 5729 buildings, 3 interiors). <!-- place_source:lilmothiit-ruin-m6-m104/0; source_place:skyrim.avanchnzellocation; place_source:lilmothiit-ruin-m6-m104/1; place_source:lilmothiit-ruin-m6-m104/2; place_source:lilmothiit-ruin-m6-m104/3 -->
+It is to be built from Haj-Uxith in King of the Murkmire.esp (a ruin argonian: 66 buildings, 1 interior, 3 residents, 2 hostile, about 66 m across). The source reads: "Haj-Uxith: a ruin argonian built in argonian and nordic style with ruin, mine, lighthouse pieces. 3 people live there, 2 hostile. 1 interiors (Haj-Uxith). By water." Similar sources: Huluxinoag (ruin argonian, 59 buildings, 1 interior), Teeth of Sithis (ruin argonian, 5729 buildings, 3 interiors) and Wajeem-Krona (ruin argonian, 89 buildings, 1 interior). <!-- place_source:lilmothiit-ruin-m6-m104/0; source_place:kingofthemurkmire.hiddennestplayerhomeextlocation; place_source:lilmothiit-ruin-m6-m104/1; place_source:lilmothiit-ruin-m6-m104/2; place_source:lilmothiit-ruin-m6-m104/3 -->
 
 ### Reedfall Farm
 
