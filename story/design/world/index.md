@@ -2,7 +2,7 @@
 
 A digest of the new world's database (Project Tamriel's Black Marsh, built as our own worldspace) for the people who write its story. It is generated, never edited by hand: change the database or the generator and regenerate. The other files in this folder (the numbered lore-system notes) are written by hand and are not part of the digest.
 
-Made 2026-11-24 from database revision `37aace13323de3aa` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
+Made 2026-11-24 from database revision `3fbcee254804b83a` (the first 16 hex digits of a SHA-256 over `newworld/story/data/schema.sql` and every `newworld/story/data/db/*.jsonl`, in name order).
 
     python3 -m tools.newworld.story_digest [--out story/design/world]
 

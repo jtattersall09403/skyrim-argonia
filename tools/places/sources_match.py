@@ -138,21 +138,12 @@ JUDGED = {
                 "Shedet's stilt town on water gives the moorings the main quest's boats call at and the market ring"),
     # Sources whose culture the lore contradicts (a Dwemer, Daedric, snowy Nordic or Nordic-stone source for a
     # Lilmothiit, Velothi, Imperial or Kothringi ruin), re-chosen from the match's own candidates.
-    "lilmothiit-ruin-m6-m104": ("kingofthemurkmire.hiddennestplayerhomeextlocation",
-                                "Haj-Uxith's mud domes and burrow interior for a Lilmothiit turf-and-leaf den; the "
-                                "Dwemer hall it was matched to is the wrong people (story/lore/topics/lost-peoples.md)"),
     "lilmothiit-ruin-m6-m97": ("kingofthemurkmire.hiddennestplayerhomeextlocation",
                                "Haj-Uxith's mud domes for a ruined turf-and-leaf dome of the Lilmothiit, not the Dwemer "
                                "hall it was matched to (story/lore/topics/lost-peoples.md)"),
-    "kaochalit": ("journeytobaanmalur.redeynancestraltomblocation",
-                  "a Dunmer ancestral tomb hall for a dead Velothi settlement whose halls the Stone-Sleepers avoid; "
-                  "the Daedric ruin it was matched to is not Velothi"),
     "ovezza": ("dragonborn.dlc2frossellocation",
                "Frossel's ruined Dunmer town on the water for a Velothi town emptied by the Flu; the Daedric ruin "
                "it was matched to is not Velothi"),
-    "velothi-ruin-28-m92": ("journeytobaanmalur.cluster.bossarenakoemia.-30.7",
-                            "a small Dunmer holding ruin for the Velothi headland hold; the Daedric ruin it was "
-                            "matched to is not Velothi"),
     "agia-nero": ("depthsofskyrim.cluster.tbpimpfortsunk.17.36",
                   "a sunken Imperial fort for a broken Imperial post with its yard sunk; the snowy Nordic-held Fort "
                   "Kastav it was matched to is the wrong look"),
@@ -162,14 +153,8 @@ JUDGED = {
     "imperial-ruin-m19-m74": ("kingofthemurkmire.cluster.oldimplaboratoryext.-23.-37",
                               "King of the Murkmire's old Imperial tower ruin for a ruined watchtower; the snowy "
                               "Bloodlet Throne it was matched to is the wrong look"),
-    "imperial-ruin-m23-m103": ("kingofthemurkmire.cluster.oldimplaboratoryext.-23.-37",
-                               "King of the Murkmire's old Imperial ruin on marsh ground for the abandoned coast fort; "
-                               "the snowy Morvunskar it was matched to is the wrong look"),
     "kothringi-ruin-m12-m93": ("kingofthemurkmire.teethofsithislocation",
                                "a long hall of columns in old stone for the music-hall of chimes; the Nordic hamlet "
-                               "it was matched to has no such stone"),
-    "kothringi-ruin-m19-m79": ("kingofthemurkmire.teethofsithislocation",
-                               "a stone hall with interiors for the longhouse and its strongroom; the Nordic cellar "
                                "it was matched to has no such stone"),
     "kothringi-ruin-m14-m71": ("kingofthemurkmire.rootwhispervillagelocation",
                                "an emptied tiered village on stone footings for the dead town of cairns; the Nordic "
