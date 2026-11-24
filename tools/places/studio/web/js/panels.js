@@ -677,7 +677,7 @@ export class Panels {
     const change = async (body) => { try { await api.note(pid, body); } catch (e) { a.toast(`Not changed: ${e.message}`); } redo(); };
     for (const n of [...list].reverse()) {
       const st = n.done ? 'done' : n.sent === false ? 'unsent' : 'sent';
-      const said = { unsent: 'not sent yet', sent: 'sent: the agent is working on it', done: 'done' }[st];
+      const said = { unsent: 'not sent yet', sent: 'sent: the agent is working on it', done: n.asked ? `done, as you asked in ${n.asked}` : 'done' }[st];
       const things = n.things?.length ? (n.things.length === 1 ? `About ${n.things[0].name || 'one thing'}` : `About ${n.things.length} things`) : 'About the place';
       const li = el(`<li class="${st === 'done' ? 'future' : ''}" data-state="${st}"><span class="what">${esc(n.text)}<span class="note">${esc(things)} · ${esc(new Date(n.at).toLocaleString())} · <span class="state">${said}</span></span>${n.reply ? `<span class="note reply">Agent: ${esc(n.reply)}</span>` : ''}</span></li>`);
       const btns = el('<div class="row"></div>');

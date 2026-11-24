@@ -98,7 +98,9 @@ alone: an agent never saves or finalises for him, and nothing an agent does wait
 1. Read submitted notes with `python3 -m tools.places notes` (the studio's "submit for agent"; notes he has not
    submitted are his still). Answer each at once with a narrow change by the skill that owns it, landed on main at
    once, and close it with `python3 -m tools.places notes done <place_id> <note id> --reply "<what was done>"` in
-   plain English. A question, or a change larger than a narrow one, is closed with a reply saying what it would
+   plain English. When the owner asks for his notes to be actioned whether sent or not (an owner issue), his unsent
+   notes are answered the same way with `--asked "<where he asked, e.g. #96>"`, which the studio shows him beside
+   the reply; without his asking, an unsent note is left alone. A question, or a change larger than a narrow one, is closed with a reply saying what it would
    take, and nothing changes. A note still open past its answer time is named by `notes` and fails `handover`.
 2. The notes on his changes (the g-notes in his autosave, `notes --changes`) are answered the same way, at once, over
    his open session: work out the change on a copy of his autosave applied to the place (`edits.apply_save` in a

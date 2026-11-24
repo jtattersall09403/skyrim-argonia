@@ -81,7 +81,7 @@ mesh.
 - Patrols are the source's own marker chains, kept where they still run on our place; a chain across water or a
   pruned part is redrawn by hand along the walks (`people.jsonl` `patrol`, at least two points).
 - People's ways between their stops follow the walks: the paths and walks are preferred-path triangles on the built
-  mesh; every house and tent no one walks into is cut from the mesh by the build (`houses_cut`); a way drawn by hand
+  mesh; a house or tent the mesh runs through is closed by `houses_cut --fix` (walking zones); a way drawn by hand
   on a stop (`route`) is walked as a marker chain (`place-routines`).
 - Work stops and day spots stand on the mesh (`place-routines`).
 

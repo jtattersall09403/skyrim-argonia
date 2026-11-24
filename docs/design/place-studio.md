@@ -961,12 +961,13 @@ goes"), and moving it says it at the moment of the move.
 pathfinding on the walking mesh, preferring preferred-path triangles (the place's paths and walks). The studio draws
 that way on the built walking mesh (`navroute.js`) once the place is built, else over our ground (`routes.js`), round
 every house and tent and along the paths, judged from the real triangles of each piece's mesh (`routes.js
-meshFootprint`: a triangle reaching between 24 and 180 units over the ground shuts the cells it crosses). The build
-makes the game's way keep out of them too: each house and tent no one is meant to walk into (no bed, stop, drawn point
-or door arrival inside it) has its footprint cut from the walking mesh, the hull of its collision walls standing in a
-walker's height less a walker's radius, as a `block` walking zone (`houses_cut.blocks`, applied with the owner's
-zones); `python -m tools.places houses_cut <place>` holds a built mesh against every house and tent and names any
-with triangles inside. To make someone walk a particular way into a stop, the stop's Draw the way here (Redraw, Clear
+meshFootprint`: a triangle reaching between 24 and 180 units over the ground shuts the cells it crosses). The game's
+way keeps out of them as well: `python -m tools.places houses_cut <place>` holds the built walking mesh against every
+house and tent that encloses (its collision fills plan cells from a walker's feet to over its head on at least three
+quarters of the way round), and names each the mesh runs through (in at two or more openings, or round more than half
+of it). `--fix` writes the cure as the place's own walking zones (walk.jsonl, `block`): a house or tent no one walks
+into is cut from the mesh whole; one someone must reach (a bed, a stop, a door's arrival inside) keeps its widest
+opening as its door and has its other openings closed; the next build applies them and the probe then finds none. To make someone walk a particular way into a stop, the stop's Draw the way here (Redraw, Clear
 the drawn way) takes taps along the way, in order, then Done: saved as the stop's `route` (`[[x, y, z], ...]`,
 outside) in one `person.edit` op. The build lays it as Bethesda sends someone along a given route: a chain of markers on
 the drawn points, each linked to the next, and a patrol package over it (`people.py`, the Patrol template), scheduled

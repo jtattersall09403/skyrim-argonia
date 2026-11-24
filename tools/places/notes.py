@@ -210,11 +210,17 @@ def _change(place_id: str, note_id: str, places: Path, fn) -> dict:
         return r
 
 
-def done(place_id: str, note_id: str, reply: str = "", places: Path = PLACES, undo: bool = False) -> dict:
-    """Close a sent note with the agent's reply, or reopen it (undo). A note not sent yet is the owner's still."""
+def done(place_id: str, note_id: str, reply: str = "", places: Path = PLACES, undo: bool = False,
+         asked: str = "") -> dict:
+    """Close a sent note with the agent's reply, or reopen it (undo). A note not sent yet is the owner's still, unless
+    he asked for his notes to be actioned sent or not: `asked` names where he did (an owner issue, "#96"), kept on the
+    note and shown to him with the reply."""
     def close(r, rows):
+        if state(r) == "unsent" and not (asked and not undo):
+            raise ValueError(f"note {note_id} on {place_id} has not been sent yet; only a sent note is answered "
+                             f"(or one the owner asked to be actioned unsent: --asked \"<where he asked>\")")
         if state(r) == "unsent":
-            raise ValueError(f"note {note_id} on {place_id} has not been sent yet; only a sent note is answered")
+            r["sent"], r["sent_at"], r["asked"] = True, _now(), str(asked)[:200]
         r["done"] = not undo
         if undo:
             r.pop("done_at", None)
@@ -315,9 +321,10 @@ def main(argv: list[str]) -> int:
         ap.add_argument("place_id")
         ap.add_argument("note_id")
         ap.add_argument("--reply", default="")
+        ap.add_argument("--asked", default="", help="where the owner asked for his notes to be actioned unsent (\"#96\")")
         ap.add_argument("--places", type=Path, default=PLACES, help=argparse.SUPPRESS)   # a test place's folder
         a = ap.parse_args(argv[1:])
-        print(show(a.place_id, done(a.place_id, a.note_id, a.reply, a.places)))
+        print(show(a.place_id, done(a.place_id, a.note_id, a.reply, a.places, asked=a.asked)))
         return 0
     ap = argparse.ArgumentParser(prog="python -m tools.places notes")
     ap.add_argument("place_id", nargs="?")
