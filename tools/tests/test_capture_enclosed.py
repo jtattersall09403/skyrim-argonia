@@ -48,3 +48,15 @@ def test_failed_banner_leaves_the_frame_centre_clear():
     img = capture.banner(Image.new("RGB", (900, 600), (0, 0, 255)), "the subject fills 0.5% of the frame " * 3)
     assert img.getpixel((450, 300))[:3] == (0, 0, 255)
     assert img.getpixel((450, 595))[:3] != (0, 0, 255)
+
+
+def test_scale_figure_stands_beside_a_small_subject():
+    """The 1.8 m figure stands off a small subject's box, so the subject at the frame's centre is not hidden by it."""
+    from tools.places.look import draw, geom
+    cam = {"pos": [0.0, -500.0, 100.0], "target": [0.0, 0.0, 100.0], "w": 900, "h": 600, "fov": 50.0}
+    lo, hi = [-8.0, -8.0, 90.0], [8.0, 8.0, 110.0]
+    x, y = draw.figure_spot(cam, lo, hi)
+    assert abs(x) >= 8 + draw.FIGURE_GAP - 1e-6 and abs(y) < 1e-6
+    sub = geom.project(cam, [[0.0, 0.0, 100.0]])[0]
+    fig = geom.project(cam, [[x, y, 100.0]])[0]
+    assert abs(fig[0] - sub[0]) > 20

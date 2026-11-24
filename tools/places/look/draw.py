@@ -117,6 +117,30 @@ def draw_ring(d: ImageDraw.ImageDraw, cam: dict, scene, w: int, h: int, k: float
         tag(d, (float(best[0]), float(best[1]) - 10 * k), f"ring {ring['radius_m']:g} m", fill=(255, 220, 170, 235), size=11)
 
 
+FIGURE_GAP = 48.0   # the scale figure stands at least this far off the subject's box (units)
+
+
+def figure_spot(cam: dict, lo, hi) -> tuple[float, float]:
+    """Where the 1.8 m figure stands: beside the subject, never on it. The box's middle moved off along the camera's
+    own right (or left) by half the box's width across the view plus FIGURE_GAP, the side nearer the frame's middle,
+    so a small subject at the frame's centre stays in sight beside its scale."""
+    lo, hi = np.asarray(lo, float), np.asarray(hi, float)
+    mid = (lo + hi) / 2
+    right = geom.axes(cam)[0][:2]
+    n = float(np.linalg.norm(right))
+    right = right / n if n > 1e-9 else np.array([1.0, 0.0])
+    half = float(np.abs((hi - lo)[:2] / 2) @ np.abs(right))
+    off = half + FIGURE_GAP
+    best = None
+    for sgn in (1.0, -1.0):
+        x, y = mid[:2] + sgn * off * right
+        q = geom.project(cam, [[x, y, lo[2]]])[0]
+        score = abs(q[0] - cam["w"] / 2) if q[2] > 0 else float("inf")
+        if best is None or score < best[0]:
+            best = (score, float(x), float(y))
+    return best[1], best[2]
+
+
 def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids: set[str], side_text: str,
              grid: bool = False) -> tuple[Image.Image, list[dict]]:
     """A perspective look's labels. Returns the image and the labels drawn [{text, at}]."""
@@ -176,7 +200,7 @@ def annotate(img: Image.Image, cam: dict, scene, subject: dict | None, fault_ids
     # a person's height at the subject, on the ground
     if subject is not None:
         lo, hi = subject["lo"], subject["hi"]
-        gx, gy = lo[0], (lo[1] + hi[1]) / 2
+        gx, gy = figure_spot(cam, lo, hi)
         g = scene.ground.height(gx, gy) or lo[2]
         a, b = geom.project(cam, [[gx, gy, g], [gx, gy, g + geom.PERSON]])
         if a[2] > 0 and b[2] > 0 and _inside(a, w, h):
