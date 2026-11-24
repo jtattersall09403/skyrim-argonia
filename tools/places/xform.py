@@ -83,6 +83,27 @@ def _wrap(a: float) -> float:
     return 0.0 if abs(a) < 1e-12 else a
 
 
+def _angles(r: list[list[float]]) -> list[float]:
+    """A 3x3 rotation back to the record's three angles, each in (-pi, pi]."""
+    return decompose([row + [0.0] for row in r] + [[0.0, 0.0, 0.0, 1.0]])[1]
+
+
+def turn_rot(rot: list[float], a: float) -> list[float]:
+    """The angles of a ref turned by `a` about the world's up axis (the game's clockwise heading). A level ref only
+    adds `a` to its Z angle; a tilted one keeps its tilt in the world: Rz(-a) . R, read back as angles."""
+    x, y, z = (float(v) for v in rot)
+    if not x and not y:
+        return [x, y, z + a]
+    return _angles(_mul(_rz(-a), rotation([x, y, z])))
+
+
+def tilt_rot(rot: list[float], axis: int, a: float) -> list[float]:
+    """The angles of a ref tilted by `a` about its own X axis (axis 0: pitch, its front end down for a > 0) or its own
+    Y axis (axis 1: roll, clockwise seen from behind): R . Rk(-a), read back as angles."""
+    r = rotation([float(v) for v in rot])
+    return _angles(_mul(r, _rx(-a) if axis == 0 else _ry(-a)))
+
+
 def up(rot: list[float]) -> list[float]:
     """The ref's model +Z in world space."""
     r = rotation(rot)

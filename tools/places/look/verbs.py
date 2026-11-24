@@ -12,10 +12,11 @@ from pathlib import Path
 import numpy as np
 
 from tools.places.look import canopy, capture, draw, framing, geom, hands, room
+from tools.places import xform
 from tools.places.look.scene import LOOK_OUT
 
 VIEWS = ("at", "orbit", "walk", "section", "overview")
-HANDS = ("move", "turn", "sink", "delete", "duplicate", "steps", "place", "op", "land", "paint")
+HANDS = ("move", "turn", "tilt", "roll", "sink", "delete", "duplicate", "steps", "place", "op", "land", "paint")
 
 
 def _opts(args: list[str], flags: dict) -> tuple[list[str], dict]:
@@ -1010,7 +1011,8 @@ def _shift(r, dx, dy, dz, rot=None, moved=frozenset()):
     if a.get("seat") and a["seat"].get("mode", "free") != "free" and a["seat"].get("on") not in moved:
         a["seat"] = dict(a["seat"], dz=round(float(a["seat"].get("dz", 0)) + dz, 3))
     if rot is not None:
-        a["rot"] = [a["rot"][0], a["rot"][1], round((a["rot"][2] + rot) % (2 * math.pi), 5)]
+        a["rot"] = [round(v % (2 * math.pi), 5) for v in xform.turn_rot(a["rot"], rot)] if a["rot"][0] or a["rot"][1] \
+            else [a["rot"][0], a["rot"][1], round((a["rot"][2] + rot) % (2 * math.pi), 5)]
     return a
 
 
@@ -1037,7 +1039,7 @@ def _hand(sc, verb, args, sess) -> list[dict]:
         from tools.places.look import paintverb
         from tools.places.look.scene import data_out
         return paintverb.run(sc, args, data_out())
-    th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "sink") else sc.resolve(pos[0])
+    th = hands.thing(sc, pos[0], bool(o.get("piece"))) if verb in ("move", "turn", "tilt", "roll", "sink") else sc.resolve(pos[0])
     rows = _rows(sc, th)
     if not rows:
         raise ValueError(f"{pos[0]} has no pieces to act on")
@@ -1057,6 +1059,14 @@ def _hand(sc, verb, args, sess) -> list[dict]:
             nx, ny = cx + ox * math.cos(a) + oy * math.sin(a), cy - ox * math.sin(a) + oy * math.cos(a)   # clockwise, as the game's yaw
             ops.append(_move_op(r, _shift(r, nx - r["pos"][0], ny - r["pos"][1], 0.0, rot=a, moved=ids)))
         return ops
+    if verb in ("tilt", "roll"):   # about the piece's own X (tilt: its front end down) or own Y (roll: clockwise from behind)
+        if len(rows) != 1:
+            raise ValueError(f"{pos[0]} has {len(rows)} pieces: {verb} one piece at a time (--piece)")
+        r = rows[0]
+        a = _pose(r)
+        rot = xform.tilt_rot(a["rot"], 0 if verb == "tilt" else 1, math.radians(float(pos[1])))
+        a["rot"] = [round(v % (2 * math.pi), 5) for v in rot]
+        return [_move_op(r, a)]
     if verb == "sink":
         if len(pos) > 1 and not o.get("until-feet-buried"):
             dz = -abs(float(pos[1]))

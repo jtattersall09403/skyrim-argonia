@@ -14,6 +14,11 @@ changes (the lead continues it); a change is as narrow as it can be correct.
   (`place-look`), by the recipe of the step that owns it (`place-site`, `place-adapt`, `place-story`).
 - A raise or lower of a seated thing (a door on its house, a box on a deck) is the seat's own `dz`: the studio's lift
   handle and Up and Down buttons write it in every seat mode, so `python3 -m tools.places seat <place_id>` keeps it.
+- A piece that must lean (a boarding plank from a dock to a deck, a fallen beam) is tilted, not sunk: select the piece
+  (the Pieces switch on, or a second tap inside its unit), then Tilt forward or back and Roll in Move a little, or type
+  Tilt°, Roll° and Turn° (the record's own X, Y, Z angles); the agent's hands are `look tilt|roll <piece> deg`. Set the
+  turn first so its length points from one end's landing to the other's, then the tilt as asin(height difference /
+  length), then the height so both ends rest on their surfaces; a section through it shows each end on its deck.
 - A structure (a house with its porch and door, a ship with its masts, a tent with its bedding) is moved, turned or
   raised whole as its unit, one `unit.move` that carries its doors' arrivals, its people's spots and its quest spots
   (`docs/design/place-studio.md`, Units). A piece the unit rule leaves out or takes in wrongly is put right with the

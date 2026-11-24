@@ -55,3 +55,18 @@ export function decompose(m) {
   else { c = 0; a = Math.atan2(r(2, 1), r(1, 1)); }
   return { pos, rot: [wrap(-a), wrap(-b), wrap(-c)], scale };
 }
+
+// A 3x3 column-major rotation back to the record's angles, each in (-pi, pi] (as xform.py `_angles`).
+function anglesOf(r) { return decompose([r[0], r[1], r[2], 0, r[3], r[4], r[5], 0, r[6], r[7], r[8], 0, 0, 0, 0, 1]).rot; }
+// A ref turned by a about the world's up axis (the game's clockwise heading), as xform.py `turn_rot`: a level ref only
+// adds a to its Z angle; a tilted one keeps its tilt in the world.
+export function turnRot(rot, a) {
+  const x = rot?.[0] || 0, y = rot?.[1] || 0, z = rot?.[2] || 0;
+  if (!x && !y) return [x, y, z + a];
+  return anglesOf(mul3(rz(-a), rotationMatrix([x, y, z])));
+}
+// A ref tilted by a about its own X axis (axis 0: pitch) or own Y axis (axis 1: roll), as xform.py `tilt_rot`.
+export function tiltRot(rot, axis, a) {
+  const r = rotationMatrix([rot?.[0] || 0, rot?.[1] || 0, rot?.[2] || 0]);
+  return anglesOf(mul3(r, axis === 0 ? rx(-a) : ry(-a)));
+}

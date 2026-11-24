@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import { ICON } from './icons.js';
 import { mintId } from './ids.js';
-import { fitRot } from './xform.js';
+import { fitRot, turnRot, tiltRot } from './xform.js';
 import { seatZ } from './bundle.js';
 import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
@@ -435,7 +435,7 @@ export class Tools {
       for (const r of d.refs) {
         const ox = r.pos[0] - d.c[0], oy = r.pos[1] - d.c[1];
         if (d.refs.length > 1) { r.pos[0] = rnd(d.c[0] + c * ox - s * oy); r.pos[1] = rnd(d.c[1] + s * ox + c * oy); this.reseat(r); }
-        r.rot = [r.rot[0], r.rot[1], rnd(norm(r.rot[2] + ang), 10000)];
+        r.rot = turnRot(r.rot, ang).map((v) => rnd(norm(v), 10000));
       }
     } else if (d.kind === 'scale') {
       const f = Math.max(0.1, Math.min(10, Math.exp(((e.clientX - d.x0) - (e.clientY - d.y0)) * 0.004)));
@@ -550,7 +550,7 @@ export class Tools {
     }
     for (const r of d.refs) {
       const b = d.before.get(r.id), p = plan(b.pos);
-      r.pos = [rnd(p[0]), rnd(p[1]), b.pos[2]]; r.rot = [b.rot?.[0] || 0, b.rot?.[1] || 0, rnd(norm((b.rot?.[2] || 0) + turn), 10000)];
+      r.pos = [rnd(p[0]), rnd(p[1]), b.pos[2]]; r.rot = turnRot(b.rot, turn).map((v) => rnd(norm(v), 10000));
       r.scale = b.scale; r.seat = b.seat ? { ...b.seat } : b.seat;
       const s = r.seat, held = s && s.mode !== 'free' && ext && (s.mode !== 'on' || a.placeRefsById().get(s.on));
       if (held) { if (dz) r.seat = { ...s, dz: rnd((s.dz || 0) + dz) }; } else r.pos[2] = rnd(b.pos[2] + dz + gdz);
@@ -604,20 +604,35 @@ export class Tools {
     this.clearSketch(view);
   }
   // Nudge by a step in the game's directions, or turn by the snap step.
-  nudge(dx, dy, dz, drot = 0, dscale = 0) {
-    const u = this.selUnit(); if (dx || dy || dz || drot) this.sayFollows(this.selRefs());
-    if (u && !dscale) { this.moveUnit(u, drot, [dx, dy], dz); return; }
+  // dtilt and droll tilt each piece about its own X axis (its front end down) and its own Y axis (clockwise seen from behind).
+  nudge(dx, dy, dz, drot = 0, dscale = 0, dtilt = 0, droll = 0) {
+    const u = this.selUnit(); if (dx || dy || dz || drot || dtilt || droll) this.sayFollows(this.selRefs());
+    if (u && !dscale && !dtilt && !droll) { this.moveUnit(u, drot, [dx, dy], dz); return; }
     const ops = [];
     for (const r of this.selRefs()) {
       const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);
       after.pos[0] = rnd(after.pos[0] + dx); after.pos[1] = rnd(after.pos[1] + dy);
       if (dz) this.raise(after, dz);
-      after.rot = [after.rot?.[0] || 0, after.rot?.[1] || 0, rnd(norm((after.rot?.[2] || 0) + drot), 10000)];
+      let rot = drot ? turnRot(after.rot, drot) : [after.rot?.[0] || 0, after.rot?.[1] || 0, after.rot?.[2] || 0];
+      if (dtilt) rot = tiltRot(rot, 0, dtilt);
+      if (droll) rot = tiltRot(rot, 1, droll);
+      after.rot = rot.map((v) => rnd(norm(v), 10000));
       if (dscale) after.scale = rnd(Math.max(0.1, after.scale * (1 + dscale)), 1000);
       if (after.seat && after.seat.mode !== 'free' && this.app.ours.space === 'exterior') after.pos[2] = rnd(seatZ(this.app.terrain, { ...r, ...after }, this.app.placeRefsById()));
       ops.push({ op: 'ref.move', id: r.id, before, after });
     }
     this.app.push(this.withFollowers(this.selRefs(), ops));
+  }
+  // The record's own three angles typed in degrees (the Creation Kit's X, Y and Z rotation): null keeps that one.
+  setAngles(deg) {
+    const ops = [];
+    for (const r of this.selRefs()) {
+      const before = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), after = clone(before);
+      after.rot = [0, 1, 2].map((k) => (deg[k] == null || Number.isNaN(deg[k]) ? (after.rot?.[k] || 0) : rnd(norm((deg[k] * Math.PI) / 180), 10000)));
+      if (after.rot.every((v, k) => v === (before.rot?.[k] || 0))) continue;
+      ops.push({ op: 'ref.move', id: r.id, before, after });
+    }
+    if (ops.length) this.app.push(this.withFollowers(this.selRefs(), ops));
   }
   snapToGround() {
     const ops = [];

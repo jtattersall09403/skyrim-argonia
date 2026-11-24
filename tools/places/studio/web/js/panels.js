@@ -104,8 +104,19 @@ export class Panels {
       pad.append(seg('Step', [['1', '1 unit'], ['10', '10'], ['50', '50']], String(T.opts.step), (v) => { T.opts.step = Number(v); }));
       pad.append(btn('North', () => T.nudge(0, st(), 0)), btn('South', () => T.nudge(0, -st(), 0)), btn('West', () => T.nudge(-st(), 0, 0)), btn('East', () => T.nudge(st(), 0, 0)),
         btn('Up', () => T.nudge(0, 0, st())), btn('Down', () => T.nudge(0, 0, -st())), btn('Turn left', () => T.nudge(0, 0, 0, -turn)), btn('Turn right', () => T.nudge(0, 0, 0, turn)),
+        btn('Tilt forward', () => T.nudge(0, 0, 0, 0, 0, turn / 3)), btn('Tilt back', () => T.nudge(0, 0, 0, 0, 0, -turn / 3)),
+        btn('Roll left', () => T.nudge(0, 0, 0, 0, 0, 0, -turn / 3)), btn('Roll right', () => T.nudge(0, 0, 0, 0, 0, 0, turn / 3)),
         btn('Bigger', () => T.nudge(0, 0, 0, 0, 0.05)), btn('Smaller', () => T.nudge(0, 0, 0, 0, -0.05)), btn('Undo', () => a.log.undo()));
       parts.push(pad);
+      // the record's own angles typed in degrees: Tilt is its X angle, Roll its Y, Turn its Z (the Creation Kit's X, Y, Z)
+      const deg = (k) => (refs.length === 1 ? Math.round((((refs[0].rot?.[k] || 0) * 180) / Math.PI) * 10) / 10 : '');
+      const ang = el(`<div class="row angles"><label>Tilt° <input type="number" step="1" data-k="0" value="${deg(0)}" style="width:5em"></label>
+        <label>Roll° <input type="number" step="1" data-k="1" value="${deg(1)}" style="width:5em"></label>
+        <label>Turn° <input type="number" step="1" data-k="2" value="${deg(2)}" style="width:5em"></label></div>`);
+      for (const inp of ang.querySelectorAll('input')) inp.onchange = () => {
+        const v = [null, null, null]; v[Number(inp.dataset.k)] = inp.value === '' ? null : Number(inp.value); T.setAngles(v);
+      };
+      parts.push(ang);
       const acts = el('<div class="row"></div>');
       acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
       const rm = el('<button class="danger">Remove from our place</button>'); rm.onclick = () => T.remove(); acts.append(rm);

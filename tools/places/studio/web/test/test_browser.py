@@ -646,3 +646,41 @@ def test_36_handles_beside_and_controller(browser, server, viewport):
     assert pad.ev("studio.ours.view.rig.yaw") == y2, "and stops when the stick is back at centre"
     assert not pad.errors, pad.errors
     pad.page.context.close()
+
+
+# ---------- 40: a door's height changes in every seat mode and is kept ----------
+def test_40_door_height_in_every_seat_mode(pad):
+    """A door raised or lowered, by the Up and Down buttons and by the lift handle, stands at its new height in
+    every seat mode, alone or as its building's piece, and keeps it through the log's replay."""
+    pad.page.click("#rail [data-tool=select]")
+    door = pad.ev("(() => { const r = [...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'door' && r.seat); return r && r.id; })()")
+    assert door, "the fixture has a seated door"
+    z = "(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos[2]"
+    for mode in ("on", "ground", "above", "stilts", "clear", "water", "free"):
+        for pieces in (True, False):
+            pad.ev("""([id, mode, pieces]) => { const s = studio, r = s.model.spaces.exterior.refs.get(id);
+                      const pose = (x) => JSON.parse(JSON.stringify({ pos: x.pos, rot: x.rot, scale: x.scale ?? 1, seat: x.seat }));
+                      const before = pose(r), after = pose(r);
+                      after.seat = mode === 'on' ? { mode: 'on', on: 'fixplace.b0', dz: 120 } : mode === 'free' ? { mode } : { mode, dz: 0 };
+                      if (JSON.stringify(after) !== JSON.stringify(before)) s.push([{ op: 'ref.move', id, before, after }]);
+                      s.tools.opts.pieces = pieces; s.selection = new Set([id]); s.tools.unit = null; s.tools.selectionChanged(); }""",
+                   [door, mode, pieces])
+            z0 = pad.ev(z, door)
+            pad.page.get_by_role("button", name="Up", exact=True).click()
+            pad.page.get_by_role("button", name="Up", exact=True).click()
+            z1 = pad.ev(z, door)
+            assert abs(z1 - z0 - 20) < 0.01, (mode, pieces, z0, z1)
+            pad.page.get_by_role("button", name="Down", exact=True).click()
+            assert abs(pad.ev(z, door) - z0 - 10) < 0.01, (mode, pieces)
+            # the lift handle
+            pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", door)
+            h = pad.ev("(() => { const r = document.querySelector('.gizmo [data-h=lift]').getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; })()")
+            pad.pen_drag([h, (h[0], h[1] - 40)])
+            z2 = pad.ev(z, door)
+            assert z2 > z0 + 10.5, (mode, pieces, "lift", z0, z2)
+            # the log replayed from its ops (a reload) gives the same height
+            pad.ev("studio.loadSave({ ops: studio.log.applied() })")
+            assert abs(pad.ev(z, door) - z2) < 0.01, (mode, pieces, "replay")
+            for _ in range(4):
+                pad.ev("studio.log.undo()")
+    assert not pad.errors, pad.errors

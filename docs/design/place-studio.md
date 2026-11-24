@@ -92,6 +92,12 @@ counter-clockwise rotations, column vectors): world = pos + scale * R . model. O
 record's position, angles and scale into a matrix and back; nothing else does that maths. `python -m tools.places
 xform prove <bundle_id>` proves the convention on a bundle's real data (slope-conformed refs against the land's
 normal; door teleport markers against their doors). The browser converts to its own axes only at render time.
+Every hand change of an angle goes through the same pair: `turn_rot` / `turnRot` turns a ref about the world's up
+axis (a level ref adds to its Z angle alone, so a place with no tilt reads and builds byte for byte as before; a tilted
+one keeps its tilt in the world: `Rz(-a) . R`), and `tilt_rot` / `tiltRot` tilts it about its own X axis (Tilt: its
+front, +Y, end down) or its own Y axis (Roll), `R . Rk(-a)`, each read back as the record's three angles. The build
+writes the three angles as they stand, which is how the game and the Creation Kit store them (X, Y, Z rotation);
+`tools/tests/test_places_tilt.py` proves the studio's matrix is the plugin's (`tools.navmesh.placed.rotation`).
 
 ## Bundles (derived, never committed)
 
@@ -881,10 +887,15 @@ moving, big enough for a finger, and each named over the gizmo while the pen hov
 - E–W and N–S, two handles pointing the way east and north lie on the screen, move along that axis only, with the
   axis drawn through the selection as a dashed line;
 - Height, a separate large handle above, raises or lowers it (a seated thing's seat `dz`);
-- the turn handle on the ring turns it about the up axis, in 15 degree steps unless Turn in 15° steps is off;
+- the turn handle on the ring turns it about the up axis (a tilted piece keeps its tilt), in 15 degree steps unless Turn in 15° steps is off;
 - the corner handle resizes it (never a unit whole).
 The panel's Move a little nudges by a step of 1, 10 or 50 units (North, South, West, East, Up, Down), turns by 15
-degrees and has Undo. Snaps, each a switch under How selecting works: Keep on the ground when moving; Snap flush
+degrees, tilts and rolls by 5 degrees (Tilt forward, Tilt back: about the piece's own across axis, its front end down
+or up; Roll left, Roll right: about its own length), and has Undo. Under it Tilt°, Roll° and Turn° take the record's
+own X, Y and Z angles typed in degrees (the Creation Kit's rotation fields); each change is one `ref.move` with the
+lights and walls that follow it. Up and Down, and the Height handle, write a seated thing's seat `dz` in every seat
+mode; a thing seated `on` another stands on that support's seated height (`seatZ` seats the support first, as
+`seat.py seat_all` does), so `seat` and the build put it where the studio showed it. Snaps, each a switch under How selecting works: Keep on the ground when moving; Snap flush
 against what is beside it (a dragged thing's plan box comes flush with a neighbour's opposite face within 24 units,
 along the axis being moved); Stay on what it sits on (off: a thing seated on another lets go and sits on the ground
 when moved). `test/move_map.test.mjs` proves the mapping at a view nearly straight down, three-quarter and nearly

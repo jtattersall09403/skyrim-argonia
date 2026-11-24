@@ -37,7 +37,7 @@ PREFIX = "source."
 # short, under the shared out folder: a unix socket path is capped at 108 bytes
 BASE = Path(os.environ.get("LOOK_SOURCE_BASE") or data_out().resolve() / "look" / f"{TREE}s")
 PORT = LOOK_PORT + 1000
-HANDS = {"move", "turn", "sink", "delete", "duplicate", "steps", "land", "paint", "commit", "release", "undo", "snapshot",
+HANDS = {"move", "turn", "tilt", "roll", "sink", "delete", "duplicate", "steps", "land", "paint", "commit", "release", "undo", "snapshot",
          "restore", "compare", "reset"}
 
 

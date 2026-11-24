@@ -18,7 +18,7 @@ as a place in its own ground, before a draft (srcview.py).
 Audit: truth [<place> --sample N]: the golden scene's known answers (or a real draft sampled) held against the pictures.
 Compare: versus <other place>: two places on one source from above and at eye level from four sides, one sheet.\nNumbers: probe <thing> | probe --all | probe --mesh [<a> <b>]; measure; pick <png> <px> <py> (what is drawn
 there, then behind).
-Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; sink <thing> [units |
+Hands (a scratch session, never the place files): move <thing> dx dy dz; turn <thing> deg; tilt|roll <piece> deg (about its own X: front end down | own Y); sink <thing> [units |
 --until-feet-buried [--depth 8] [--force]]; delete <thing>; duplicate <thing> [dx dy] --why "<why>"; steps <deck|door> <point|thing>;
 each takes --view <view verb...> for a before/after.
 Paint (a stroke of the session like the hands): paint textures | paint <texture> (--circle x,y,r | --polygon

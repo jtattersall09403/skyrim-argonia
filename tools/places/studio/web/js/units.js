@@ -16,6 +16,7 @@
 // A unit of one piece one sees (its lights and invisible walls aside) is no unit.
 
 import { patrolOf } from './routines.js';
+import { turnRot } from './xform.js';
 
 const rnd = (v, k = 100) => Math.round(v * k) / k;
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -138,7 +139,7 @@ export function spotsMoved(model, S, u, moved, turn, refsById) {
   for (const q of model.quests.values()) {
     if ((q.space || 'exterior') !== S || !Array.isArray(q.pos) || !spotIn(u, q.pos)) continue;
     const after = { ...clone(q), pos: moved(q.pos) };
-    if (q.rot) after.rot = [q.rot[0] || 0, q.rot[1] || 0, rnd(norm((q.rot[2] || 0) + turn), 10000)];
+    if (q.rot) after.rot = turnRot(q.rot, turn).map((v) => rnd(norm(v), 10000));
     quests.push({ quest: after, before: clone(q) });
   }
   // the owner's walking zones lying wholly in it (a "walk here" at its steps): their outline moves with it

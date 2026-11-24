@@ -137,7 +137,8 @@ function footGround(t, x, y, rz, foot, stilts, high = false) {
   }
   return out;
 }
-export function seatZ(terrain, ref, refsById) {
+// A ref seated on another stands on its support's seated height (tools/places/seat.py seat_all seats supporters first).
+export function seatZ(terrain, ref, refsById, depth = 0) {
   const s = ref.seat, mode = s?.mode || 'free';
   if (mode === 'free' || !terrain) return ref.pos[2];
   const [x, y] = ref.pos, rz = ref.rot?.[2] || 0;
@@ -147,7 +148,7 @@ export function seatZ(terrain, ref, refsById) {
   else if (mode === 'clear') base = footGround(terrain, x, y, rz, s.foot, false, true);
   else if (mode === 'above') base = terrain.heightAt(x, y);
   else if (mode === 'water') base = terrain.waterAt(x, y) ?? terrain.heightAt(x, y);
-  else if (mode === 'on') { const sup = refsById?.get(s.on); if (!sup) return ref.pos[2]; base = sup.pos[2]; }
+  else if (mode === 'on') { const sup = refsById?.get(s.on); if (!sup) return ref.pos[2]; base = depth < 8 ? seatZ(terrain, sup, refsById, depth + 1) : sup.pos[2]; }
   if (base == null) return ref.pos[2];
   return Math.round((base + (s.dz || 0)) * 1000) / 1000;
 }

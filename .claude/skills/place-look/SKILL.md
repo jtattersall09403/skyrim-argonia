@@ -56,7 +56,7 @@ code changes.
    fault seen to be the source's own arrangement and reading as built (posts on roots, a span's end on a deck) is
    accepted in `place.json` `draft.accepted_faults` `[{id, fault, why}]`: listed apart, drawn without red.
 2. For each fault a `section` through it; `pick` anything in the image the probe did not name.
-3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `sink <thing>
+3. `snapshot <name>`; act with a hand and its `--view`: `move <thing> dx dy dz`, `turn <thing> deg`, `tilt <piece> deg` (about its own across axis, front end down) and `roll <piece> deg` (about its own length), `sink <thing>
    [units | --until-feet-buried [--depth 8] [--force]]` (the mesh's feet go that deep; over 200 is refused without --force), `delete <thing>`, `duplicate <thing> [dx dy] --why "<why>"`, `place <base> <x,y[,z]> [--rot deg] [--above dz] [--within <id>] --why "<why>"` (one piece of any base, of its own kind; `--within` the thing it rests in: an egg in its nest or pool, a basket on a stall), `steps <deck,
    structure, walkway or door> <point or thing>`, `land <x,y> <radius> <dz> --why "<why>"` (raise or lower the ground
    inside the footprint, eased to nothing at the radius, refused past the land bound: a mud mound under legs that
