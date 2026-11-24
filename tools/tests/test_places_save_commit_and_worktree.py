@@ -71,3 +71,15 @@ def test_a_worktree_reads_source_bundles_from_the_enclosing_tree(tmp_path):
     lane = tmp_path / "main" / ".claude" / "worktrees" / "lane"
     lane.mkdir(parents=True)
     assert draft_bundle.read_bundles(lane) == b
+
+
+def test_a_worktree_reads_the_world_plugin_of_the_enclosing_tree(tmp_path):
+    """The built check's stamp reads the world's plugin; a lane's worktree has none, so it reads the main tree's
+    (else every place's built check reads as stale in a lane and the gate refuses its landing)."""
+    from tools.places import build
+    esm = tmp_path / "main" / "out" / "newworld" / "plugin" / "ArgoniaNewWorld.esm"
+    esm.parent.mkdir(parents=True)
+    esm.write_bytes(b"")
+    lane = tmp_path / "main" / ".claude" / "worktrees" / "lane"
+    lane.mkdir(parents=True)
+    assert build._world_dir(lane) == esm.parent

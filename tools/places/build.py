@@ -43,7 +43,16 @@ from tools.places.heavy_lock import heavy_lock
 ROOT = Path(__file__).resolve().parents[2]
 PLACES = ROOT / "newworld" / "places"
 OUT = ROOT / "out" / "places"
-WORLD_DIR = ROOT / "out" / "newworld" / "plugin"
+def _world_dir(root: Path = ROOT) -> Path:
+    """The world's plugin folder, read and never written: this tree's, else the nearest enclosing tree's (a lane's
+    worktree builds nothing of the world)."""
+    for r in (root, *root.parents):
+        if (r / "out" / "newworld" / "plugin" / "ArgoniaNewWorld.esm").exists():
+            return r / "out" / "newworld" / "plugin"
+    return root / "out" / "newworld" / "plugin"
+
+
+WORLD_DIR = _world_dir()
 WORLD_ESM = WORLD_DIR / "ArgoniaNewWorld.esm"
 WORLD_NAV = WORLD_DIR / "navmesh"
 TOOL_PROJ = ROOT / "tools" / "ArgoniaPlaces" / "Build"
