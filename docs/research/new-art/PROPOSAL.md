@@ -1,11 +1,12 @@
 # New art for Argonia: what we could do, and what I recommend
 
 Written 2026-11-24 for owner call #93; the choice is owner call #94. Nothing has been created or bought. This
-page is the proposal; the seven research reports behind it sit beside it in this folder:
+page is the proposal; the eight research reports behind it sit beside it in this folder:
 
 - [tooling.md](tooling.md): the tools, prices and policies for making 3D models with an agent.
 - [skyrim-asset-pipeline.md](skyrim-asset-pipeline.md): what it takes to turn a generated model into a working Skyrim asset.
 - [visual-consistency.md](visual-consistency.md): how sets of AI-made assets are kept looking like one game.
+- [interiors.md](interiors.md): how interiors work, and what a new building with an interior would take.
 - [gear-and-clothing.md](gear-and-clothing.md): weapons, armour and clothing.
 - [places-and-pieces.md](places-and-pieces.md): places against their source places, and the most Skyrim-looking pieces.
 - [identity-vs-lore.md](identity-vs-lore.md): every region, culture and faction against the lore.
@@ -35,7 +36,7 @@ things:
 - No tribe has a standard and no story line has a sign.
 
 The largest gap is still **what people wear**. The proper search found more Argonian clothing and armour than I
-first reported, which helps; making skinned clothing ourselves stays out of reach (section 7).
+first reported, which helps; making skinned clothing ourselves stays out of reach (section 8).
 
 ## 2. What the audits found
 
@@ -138,7 +139,7 @@ game engine and not to Skyrim. For scale, all of today's research lanes together
 - **Fal's output terms** are already recorded for our music as owned by us with commercial use allowed. Before
   bulk spend I would read the same terms for the 3D models and record them the same way.
 - **King of the Murkmire** is the one mod of ours whose page says add-ons should "not make use of AI". Our
-  record says your permission from its author, held since 24 September, covers our use. See section 8.
+  record says your permission from its author, held since 24 September, covers our use. See section 9.
 
 ## 4. The route: "acts like an existing thing"
 
@@ -247,7 +248,56 @@ set" from level 3, without any model needing to be consistent by luck.
 - No style training. Fal's own guide says it pays only at hundreds of images, and we would never train on the
   game's or a mod's textures.
 
-## 6. The four options
+## 6. New buildings and interiors
+
+You asked what we would need to know to make new buildings with interiors. The short answer: **the generators
+cannot make a room, but a new building does not need them to**, because of how Skyrim and the Argonian mods
+already build houses.
+
+**How it works today.** A Skyrim interior is a separate space behind a door; the game never shows inside and
+outside together. Bethesda's snap-together kits (on a grid of about two metres) are for dungeons. Houses are
+done differently, and the Argonian mods follow suit: King of the Murkmire, Here There Be Monsters and the lake
+house hold about 21 one-piece interior shells, each paired with a one-piece exterior. The interior's footprint
+runs from 80% to 120% of its exterior's (one mud hut is 708 by 932 units outside and 974 by 698 inside), and
+vanilla interiors are commonly said to be about one and a half times their exteriors. So a loose match is what
+players already accept; nobody measures.
+
+**What we do now.** Our place skills carry each source place's rooms whole. In the four drafted places with
+rooms there are 41 rooms from 24 source rooms, and 18 of the 41 are the same one: Helstrom's Argonian house
+interior, repeated. About four rooms use a foreign kit (Dunmer, Orc) and about eight King of the Murkmire huts
+carry vanilla farmhouse clutter. So the interior problem today is sameness, not a missing kit. No model was
+opened for this, so how the held shells look is unjudged.
+
+**What the tools can do.**
+
+- Tripo, Hunyuan 3D, Meshy, Rodin and Trellis make objects seen from outside. None has a feature that makes a
+  room; Tripo's "parts" features only split an object.
+- The "world" generators make either a cloud of coloured points or a single mesh of 600,000 to a million
+  triangles with holes: not walkable game rooms.
+- The research systems that lay out rooms place ready-made furniture inside a box; they do not make the box.
+- I found no Claude Code skill or write-up for matching an interior to an exterior, and no shipped
+  snap-together kit made by AI. Reviews of driving Blender by agent say room building is possible but the
+  positioning is hit and miss.
+
+**Routes for us, easiest first:**
+
+| Route | What it is | What it needs | Verdict |
+|---|---|---|---|
+| 1. Vary the held shells | give each house a different one of the 21 Argonian interior shells instead of one repeated | records only; the place skills already do it | do now; part of "least, part A" |
+| 2. Re-dress a held shell | the same room in our shared materials: reed, mud, a tribe's colours | texture work only; shape, collision and walking mesh unchanged | part of "least, part B" if you want it; whether it reads as a different room is for your eye |
+| 3. A new exterior over a held interior | a new building outside (a static shell), with a door leading to one of the held interiors | one new building block: a model file with walkable collision; then a walking-mesh cut and a distant-view model. Built by script from simple shapes and dressed in shared repeating materials, so size does not blur it; a generator supplies only ornaments (a carved lintel, a roof finial) | the cheap way to a "new building"; only after the pilot has proved collision writing |
+| 4. A small scripted interior kit | 12 to 20 wall, floor, post and doorway pieces made by script, snapping on the game's grid | the same collision block, plus lighting and a walking mesh per room | one trial room at most, after route 3 works |
+| 5. An interior carved from a generated exterior | hollow out a generated hull | hand repair; probably not walkable | no |
+| 6. Fully generated rooms | | | not feasible today |
+
+**What this means for the plan.** Routes 1 and 2 change nothing in the rule and fix the fault we actually
+have. Route 3 is what "a new building with an interior" would mean for us: the outside is ours, the inside is
+a held shell behind the door, and the two match as loosely as Skyrim's own do. I have put one such trial in the
+"most" list. It would also be the way to the root-grown house the Root-Folk lack, if the trial goes well. One
+caution: a new shell would stand beside King of the Murkmire's huts, which sharpens the question for its
+author in section 9.
+
+## 7. The four options
 
 Each option includes the one before it. Fees are Fal's; agent work is extra and unmeasured.
 
@@ -270,7 +320,8 @@ new is made.
 2. **A swap table for Argonian places**, using Argonian models we already hold: the vanilla candle lantern
    (173 placements in six drafts) to the Argonian lanterns; Nordic-ruin and Solitude doors (56 of 119 doors)
    to King of the Murkmire's mud, thatch and bamboo doors where the frame fits; hide tents to the scale tents;
-   shrines of the Nine to the Hist shrine; generic banners to the Argonian banners. This is your ruling of 20
+   shrines of the Nine to the Hist shrine; generic banners to the Argonian banners; and inside, a different one
+   of the 21 held Argonian interior shells for each house, where today one is repeated 18 times. This is your ruling of 20
    November ("an easy swap is taken where there is one") made into one table, and it matters most for the 126
    places built from vanilla pieces.
 3. **Give the held hammocks a bed record**, so camps can sleep in hammocks instead of on fur bedrolls.
@@ -356,18 +407,19 @@ a block; pick from it once the "more" batch has shown what the pipeline does wel
 | Native houseboats and wrecks | twin-hull canoe, houseboat, a houseboat wreck | size: walkable decks, repeating materials instead of one texture |
 | Fungus, coral | four each | narrow regions |
 | Working pieces | kiln, clay wall, reed tent, woven screens | hut-sized |
+| One new building, as a trial | a scripted exterior shell in shared materials with generated ornaments, over a held interior (section 6, route 3) | walkable collision, a walking-mesh cut and a distant-view model |
 
 ### What I would not do at any level
 
-- **Houses and hut kits.** King of the Murkmire holds about 200 hut, stockade and house pieces, and a stilt
-  house resource exists; size is the generator's weakest point; and buildings need walkable collision and
-  walking meshes.
-- **The root-grown house.** It is a real gap for the 19 Root-Folk places, but it is a whole building kit.
-- **Full outfits and anything cloth.** See section 7.
+- **Generated houses, hut kits and rooms.** King of the Murkmire holds about 200 hut, stockade and house
+  pieces, and a stilt house resource exists; size is the generator's weakest point, and no generator makes a
+  room. The one way to a new building is section 6's route 3, as a single trial.
+- **The root-grown house, for now.** It is a real gap for the 19 Root-Folk places; it waits on that trial.
+- **Full outfits and anything cloth.** See section 8.
 - **Bows, crossbows, blowguns and thrown weapons.** All need animation work.
 - **The ball court and the banyan.** Rare, or not in our lore.
 
-## 7. The honest gap: clothing
+## 8. The honest gap: clothing
 
 Clothing is the largest hole the audit found and the one this pipeline helps least. A loincloth, wrap or robe
 has to bend with the body and tail, which means weight-painting to the skeleton and a second fit for Argonian
@@ -386,7 +438,7 @@ What can be done, in order of value for effort:
 Dress will still be the weakest part of the province's look. If it matters most to you, the answer beyond
 these is a human-made clothing mod or a commission, not this pipeline.
 
-## 8. Risks and what would have to change
+## 9. Risks and what would have to change
 
 - **King of the Murkmire's terms.** Its author asks that add-ons not use AI, and your permission of 24
   September is what covers us today. Putting AI-made models beside its buildings in 40-odd places is a step
@@ -411,9 +463,9 @@ these is a human-made clothing mod or a commission, not this pipeline.
   list, with every request recorded. The style sheets are committed as data. Nothing binary is committed.
 - **The rule.** Decision 0006 point 5 and the "Never make art" line in CLAUDE.md would be amended to name
   exactly what is allowed (flat images on existing models; small solid models by template swap or as static
-  props, made under the style sheets), and what stays banned (section 6's last list).
+  props, made under the style sheets), and what stays banned (section 7's last list).
 
-## 9. The ten best returns, in order
+## 10. The ten best returns, in order
 
 1. Open the packs the search found. It costs nothing and may shrink everything else.
 2. The swap table for lanterns, doors, tents, shrines and banners, and a bed record for the hammocks. No art.
@@ -426,7 +478,7 @@ these is a human-made clothing mod or a commission, not this pipeline.
 9. The fish weir kit. Two Act I places are named for weirs.
 10. Sap jar, sap tap and a real egg clutch, with saltrice, cypress knees and mushroom trees placed.
 
-## 10. What I need from you
+## 11. What I need from you
 
 One choice, on owner call #94: **nothing, least (part A only, or A and B), more, or most**. My recommendation
 is part A now, part B with the small rule change, and the five-model pilot as the gate to "more". And one yes
