@@ -137,3 +137,4 @@
 {"t": "cmd", "place": "jal-veesa", "verb": "build", "sub": "", "kind": "building", "start": 1795552957.36, "end": 1795552995.92, "secs": 38.6, "rc": 0, "queue": 0.0, "depth": 0, "job": "", "pass": "p1795550371", "args": "jal-veesa", "counts": {"dotnet_s": 36}}
 {"t": "cmd", "place": "jal-veesa", "verb": "check", "sub": "", "kind": "checking", "start": 1795552996.25, "end": 1795553097.87, "secs": 101.6, "rc": 0, "queue": 0.0, "depth": 0, "job": "", "pass": "p1795550371", "args": "jal-veesa", "counts": {"dotnet_s": 64, "checks_green": 17, "checks": 17}}
 {"t": "phase", "at": 1795553389.65, "name": "waiting on lead", "note": "", "pass": "p1795550371"}
+{"t": "pass", "at": 1795556004.65, "edge": "end", "what": "sap spigot and jar at the sick Hist's pool; dress 19 undressed people from kits", "pass": "p1795550371"}
